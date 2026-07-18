@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* TipTap editor in toolbar */
+.node-editor-tiptap .tiptap {
+  outline: none;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 24px;
+  font-family: inherit;
+}
+
+.node-editor-tiptap .tiptap p {
+  margin: 0;
+}
+
+.node-editor-tiptap .tiptap ::selection {
+  background: #bfdbfe;
+}
+
+/* Rich text display inside nodes */
+.rich-text-display p {
+  margin: 0;
+}
+
+.rich-text-display strong {
+  font-weight: 700;
+}
+
+.rich-text-display em {
+  font-style: italic;
+}
+
+.rich-text-display u {
+  text-decoration: underline;
+}
+
+.rich-text-display s {
+  text-decoration: line-through;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}

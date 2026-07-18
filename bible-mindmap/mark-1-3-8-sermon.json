@@ -1,0 +1,153 @@
+{
+  "nodes": [
+
+    { "id": "topic-main", "type": "topic", "position": { "x": 460, "y": 20 },
+      "data": { "title": "막 1:3-8 — 광야의 소리, 오실 이를 준비하라", "keywords": ["광야","세례요한","회개","성령세례","엘리야","새출애굽"] } },
+
+    { "id": "topic-mark-context", "type": "topic", "position": { "x": 460, "y": 200 },
+      "data": { "title": "마가복음 문맥\n서론부(1:1-15) — '복음의 시작'(막 1:1)\n마가는 탄생기사 없이 예언 성취로 시작", "keywords": ["마가복음","서론","복음의시작","이사야"] } },
+
+    { "id": "v-mk1-3", "type": "verse", "position": { "x": 40, "y": 180 },
+      "data": { "reference": "마가복음 1:3", "text": "광야에 외치는 자의 소리가 있어 이르되 너희는 주의 길을 준비하라 그의 오실 길을 곧게 하라 하였으니", "color": "#3b82f6" } },
+
+    { "id": "v-mk1-4", "type": "verse", "position": { "x": 40, "y": 360 },
+      "data": { "reference": "마가복음 1:4", "text": "세례 요한이 광야에 이르러 죄 사함을 받게 하는 회개의 세례를 전파하니", "color": "#3b82f6" } },
+
+    { "id": "v-mk1-5", "type": "verse", "position": { "x": 40, "y": 530 },
+      "data": { "reference": "마가복음 1:5", "text": "온 유대 지방과 예루살렘 사람이 다 나아가 자기 죄를 자복하고 요단 강에서 그에게 세례를 받더라", "color": "#3b82f6" } },
+
+    { "id": "v-mk1-6", "type": "verse", "position": { "x": 40, "y": 700 },
+      "data": { "reference": "마가복음 1:6", "text": "요한은 낙타털 옷을 입고 허리에 가죽 띠를 띠고 메뚜기와 석청을 먹더라", "color": "#3b82f6" } },
+
+    { "id": "v-mk1-7", "type": "verse", "position": { "x": 40, "y": 880 },
+      "data": { "reference": "마가복음 1:7", "text": "그가 전파하여 이르되 나보다 능력 많으신 이가 내 뒤에 오시나니 나는 굽혀 그의 신발끈을 풀기도 감당하지 못하겠노라", "color": "#3b82f6" } },
+
+    { "id": "v-mk1-8", "type": "verse", "position": { "x": 40, "y": 1060 },
+      "data": { "reference": "마가복음 1:8", "text": "나는 너희에게 물로 세례를 베풀었거니와 그는 성령으로 너희에게 세례를 베푸시리라", "color": "#3b82f6" } },
+
+    { "id": "v-isa-40-3", "type": "verse", "position": { "x": -360, "y": 180 },
+      "data": { "reference": "이사야 40:3", "text": "외치는 자의 소리여 이르되 너희는 광야에서 여호와의 길을 예비하라 사막에서 우리 하나님의 대로를 평탄하게 하라", "color": "#f59e0b" } },
+
+    { "id": "v-mal-3-1", "type": "verse", "position": { "x": -360, "y": 380 },
+      "data": { "reference": "말라기 3:1", "text": "보라 내가 내 사자를 보내리니 그가 내 앞에서 길을 준비할 것이요", "color": "#f59e0b" } },
+
+    { "id": "v-exod-23-20", "type": "verse", "position": { "x": -360, "y": 560 },
+      "data": { "reference": "출애굽기 23:20", "text": "보라 내가 사자를 네 앞서 보내어 길에서 너를 보호하여 내가 준비한 곳에 이르게 하리니", "color": "#f59e0b" } },
+
+    { "id": "v-2kgs-1-8", "type": "verse", "position": { "x": -360, "y": 700 },
+      "data": { "reference": "열왕기하 1:8", "text": "그는 털이 많은 사람인데 허리에 가죽 띠를 띠었더이다 왕이 이르되 그는 디셉 사람 엘리야로다", "color": "#f59e0b" } },
+
+    { "id": "v-joel-2-28", "type": "verse", "position": { "x": -360, "y": 1060 },
+      "data": { "reference": "요엘 2:28", "text": "그 후에 내가 내 영을 만민에게 부어 주리니 너희 자녀들이 장래 일을 말할 것이며 너희 늙은이는 꿈을 꾸며 너희 젊은이는 이상을 볼 것이며", "color": "#f59e0b" } },
+
+    { "id": "v-mt3-11", "type": "verse", "position": { "x": 1560, "y": 360 },
+      "data": { "reference": "마태복음 3:11-12", "text": "나는 회개하게 하기 위하여 물로 세례를 베풀거니와 내 뒤에 오시는 이는 성령과 불로 세례를 베푸실 것이요", "color": "#10b981" } },
+
+    { "id": "v-lk3-16", "type": "verse", "position": { "x": 1560, "y": 560 },
+      "data": { "reference": "누가복음 3:16", "text": "나는 물로 너희에게 세례를 베풀거니와 나보다 능력이 많으신 이가 오시나니 나는 그의 신발끈을 풀기도 감당하지 못하겠노라 그는 성령과 불로 너희에게 세례를 베푸실 것이요", "color": "#10b981" } },
+
+    { "id": "v-jn1-26", "type": "verse", "position": { "x": 1560, "y": 180 },
+      "data": { "reference": "요한복음 1:26-27", "text": "나는 물로 세례를 베풀거니와 너희 가운데 너희가 알지 못하는 한 사람이 섰으니 곧 내 뒤에 오시는 그이라 나는 그의 신발끈을 풀기도 감당하지 못하겠노라", "color": "#10b981" } },
+
+    { "id": "topic-new-exodus", "type": "topic", "position": { "x": 460, "y": 400 },
+      "data": { "title": "새 출애굽 모티프 (New Exodus)\n이사야 40장: 포로 귀환 = 새 출애굽\n마가의 프레임: 예수 사역 = 제2의 출애굽", "keywords": ["새출애굽","이사야40","광야","하나님나라"] } },
+
+    { "id": "topic-repentance", "type": "topic", "position": { "x": 460, "y": 600 },
+      "data": { "title": "회개 신학\nμετάνοια — 방향 전환, 마음의 돌이킴\n죄 사함(ἄφεσιν)과의 연결 구조", "keywords": ["회개","μετάνοια","죄사함","방향전환","세례"] } },
+
+    { "id": "topic-christology", "type": "topic", "position": { "x": 460, "y": 800 },
+      "data": { "title": "기독론 — 오실 이의 정체성\nὁ ἰσχυρότερός μου (나보다 능력 많으신 이)\n요한의 상대적 위치로 드러나는 예수의 절대적 위대함", "keywords": ["기독론","메시아","능력","정체성"] } },
+
+    { "id": "topic-baptism", "type": "topic", "position": { "x": 460, "y": 1000 },
+      "data": { "title": "세례 신학 — 물에서 성령으로\n물 세례(인간 행위) → 성령 세례(하나님 능력)\n종말론적 성령 부어주심 (욜 2:28 → 행 2장)", "keywords": ["성령세례","물세례","종말론","오순절"] } },
+
+    { "id": "note-grammar-1", "type": "note", "position": { "x": 840, "y": 360 },
+      "data": { "title": "문법 분석 (1:4)", "text": "βάπτισμα μετανοίας εἰς ἄφεσιν ἁμαρτιῶν\n'죄 사함을 받게 하는 회개의 세례'\n\n• εἰς = '~을 향하여'(목적격): 세례의 방향성\n• μετάνοια: 생각(νοῦς)의 변화 — 단순 감정이 아닌 세계관 전환\n• ἄφεσις: 석방, 해방 — 죄의 속박에서 자유" } },
+
+    { "id": "note-grammar-2", "type": "note", "position": { "x": 840, "y": 840 },
+      "data": { "title": "문법 분석 (1:7)", "text": "ὁ ἰσχυρότερός μου\n'나보다 능력 많으신 이'\n\n• 비교급 형용사: 요한의 위대함을 전제하면서 더 큰 분을 선포\n• ὑποδήματος ἱμάντα λῦσαι: 신발끈 풀기\n  → 이방 노예도 주인의 신발은 벗김\n  → 요한: 노예 이하의 자리로 자신을 낮춤\n• '감당하지 못하겠노라(ἱκανός εἰμι)' — 자격 없음의 겸손 선언" } },
+
+    { "id": "note-history-john", "type": "note", "position": { "x": 840, "y": 560 },
+      "data": { "title": "역사적 배경: 세례 요한", "text": "• 제사장 가문 출신(눅 1:5) — 그러나 성전 체제 밖에서 사역\n• 요세푸스(유대고대사 18.5.2)도 언급한 역사적 인물\n• 광야 사역 — 쿰란 공동체와 유사하나 독립적\n• 유대 개종자 세례(proselyte baptism) 맥락에서 독창적 의미 부여\n• 막 9:13: '엘리야가 왔으되' — 예수님의 직접 확인" } },
+
+    { "id": "note-history-wilderness", "type": "note", "position": { "x": 840, "y": 760 },
+      "data": { "title": "광야 신학 (Wilderness Theology)", "text": "광야(ἔρημος): 하나님 만남의 장소\n• 출애굽(출 3장): 모세와 하나님의 만남\n• 엘리야(왕상 19장): 광야에서 회복\n• 이사야 40:3: 광야에서 귀환의 길 예비\n\n마가의 신학: 예수 = 새 출애굽의 주인공\n광야에서 새 언약 공동체 형성 모티프" } },
+
+    { "id": "note-elijah-motif", "type": "note", "position": { "x": 840, "y": 980 },
+      "data": { "title": "엘리야 모티프", "text": "요한의 복장(낙타털 + 가죽띠) = 왕하 1:8 엘리야 묘사와 동일\n\n말 4:5 '엘리야를 보내리니' 예언의 성취\n→ 요한 = 새 엘리야(말라기의 선구자 예언)\n→ 심판 전 마지막 회개 촉구\n\n예수님도 제자들에게 확인: '엘리야가 왔으되'(막 9:13)" } },
+
+    { "id": "note-sermon-intro", "type": "note", "position": { "x": 1230, "y": 20 },
+      "data": { "title": "✝ 설교 서론", "text": "제목: '광야에서 온 소리 — 준비된 길을 걸으라'\n\n도입 질문:\n마가복음은 왜 탄생 이야기 없이 시작하는가?\n왜 하필 '광야'와 '외치는 소리'인가?\n\n핵심 통찰:\n예수 이전의 모든 역사가 이미 '준비'였다\n— 하나님의 섭리는 오실 이를 위해 미리 길을 내신다" } },
+
+    { "id": "note-sermon-1", "type": "note", "position": { "x": 1230, "y": 240 },
+      "data": { "title": "✝ 설교 대지 1 — 하나님은 역사 속에 미리 준비하신다 (1:3)", "text": "① 700년 전 이사야의 예언이 성취됨\n② 말라기 3:1 + 출 23:20 + 이사야 40:3의 삼중 인용\n   → 율법·선지서·시가서 전체가 이 순간을 가리킴\n③ 새 출애굽 모티프: 포로에서 해방, 죄에서 해방\n\n적용: 지금 당신의 광야가 준비의 시간임을 믿으라\n— 하나님은 먼저 길을 내시고, 그 다음 부르신다" } },
+
+    { "id": "note-sermon-2", "type": "note", "position": { "x": 1230, "y": 470 },
+      "data": { "title": "✝ 설교 대지 2 — 회개는 오실 이를 위한 길 닦기다 (1:4-5)", "text": "① 회개(μετάνοια) = 방향 전환 — 단순 후회가 아닌 삶의 전환\n② '죄 사함을 받게 하는' — 회개가 죄사함의 통로\n③ 공적 자복(ἐξομολογούμενοι): 개인적·집단적 회개\n④ 온 예루살렘의 반응 — 영적 각성의 파급력\n\n적용: 회개는 그리스도를 받아들일 공간을 만드는 행위\n— 마음의 광야에 대로를 낸다" } },
+
+    { "id": "note-sermon-3", "type": "note", "position": { "x": 1230, "y": 700 },
+      "data": { "title": "✝ 설교 대지 3 — 참된 사역자는 자신보다 크신 이를 가리킨다 (1:6-7)", "text": "① 엘리야 복식: 선지자적 권위 — 말씀의 능력으로 섬\n② 신발끈: 노예도 안 하는 일을 자원함\n   → 요한은 섬기는 종을 넘어 '자격 없는 자'로 자기를 정의\n③ 사역자의 본질: Pointer(가리키는 자)\n   — 자신이 아닌 그리스도를 향해 손가락을 들어야\n\n적용: 내가 주목받는 사역이 아니라\n나를 통해 사람들이 그리스도께 나아가는 사역" } },
+
+    { "id": "note-sermon-4", "type": "note", "position": { "x": 1230, "y": 940 },
+      "data": { "title": "✝ 설교 대지 4 — 예수는 성령으로 우리를 충만하게 하신다 (1:8)", "text": "① 물 세례(외적 의식) vs 성령 세례(내적 변화, 능력)\n② 성령 세례의 종말론적 성격\n   — 욜 2:28: '그 후에 내 영을 만민에게 부어주리니'\n   — 행 2:1-4: 오순절 성취\n③ 요한의 사역 = 예비, 예수의 사역 = 성취\n\n적용: 우리에게 필요한 것은 더 많은 의식이 아니라\n성령의 충만함 — 그것만이 내면을 변화시킨다" } },
+
+    { "id": "note-sermon-conclusion", "type": "note", "position": { "x": 1230, "y": 1170 },
+      "data": { "title": "✝ 설교 결론 — 광야의 소리는 오늘도 울린다", "text": "세례 요한의 사역은 끝났지만\n'회개하고, 오실 이를 준비하라'는 소리는 여전히 울린다\n\n우리는 두 가지 역할을 동시에 산다:\n1. 소리를 듣는 자 — 회개하고 그리스도를 맞이하는 자\n2. 소리를 전하는 자 — 광야에서 외치는 소리가 되어야\n\n마지막 질문:\n'나는 나의 삶으로 무엇을 가리키고 있는가?'" } }
+
+  ],
+  "edges": [
+
+    { "id": "e-context-main", "source": "topic-mark-context", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+
+    { "id": "e-v3-main", "source": "v-mk1-3", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-v4-main", "source": "v-mk1-4", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-v5-main", "source": "v-mk1-5", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-v6-main", "source": "v-mk1-6", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-v7-main", "source": "v-mk1-7", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-v8-main", "source": "v-mk1-8", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+
+    { "id": "e-flow-3-4", "source": "v-mk1-3", "target": "v-mk1-4", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "예언 선포 → 실제 사역 전개" } },
+    { "id": "e-flow-4-5", "source": "v-mk1-4", "target": "v-mk1-5", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "세례 전파 → 백성의 반응" } },
+    { "id": "e-flow-6-7", "source": "v-mk1-6", "target": "v-mk1-7", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "선구자 외모 → 선구자 선포" } },
+    { "id": "e-flow-7-8", "source": "v-mk1-7", "target": "v-mk1-8", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "인물 대조 → 사역 대조" } },
+
+    { "id": "e-isa-v3", "source": "v-isa-40-3", "target": "v-mk1-3", "type": "citation", "label": "인용", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "8 4", "note": "이사야 40:3 직접 인용 — '광야에서 외치는 소리'" } },
+    { "id": "e-mal-context", "source": "v-mal-3-1", "target": "topic-mark-context", "type": "citation", "label": "인용", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "8 4", "note": "막 1:2의 말라기 인용 — 삼중 복합 인용의 첫 번째" } },
+    { "id": "e-exod-context", "source": "v-exod-23-20", "target": "topic-mark-context", "type": "citation", "label": "인용", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "8 4", "note": "막 1:2의 출애굽기 인용 — 삼중 복합 인용의 두 번째" } },
+    { "id": "e-2kgs-v6", "source": "v-2kgs-1-8", "target": "v-mk1-6", "type": "echo", "label": "반향", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "6 3", "note": "엘리야 복식 반향 — 요한=새 엘리야 모티프" } },
+    { "id": "e-joel-v8", "source": "v-joel-2-28", "target": "v-mk1-8", "type": "echo", "label": "반향", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "6 3", "note": "성령 부어주심 예언 — 오순절 성취(행 2:16-17)" } },
+
+    { "id": "e-isa-exodus", "source": "v-isa-40-3", "target": "topic-new-exodus", "type": "echo", "label": "반향", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "6 3", "note": "이사야 40장 = 새 출애굽 신학의 핵심 본문" } },
+    { "id": "e-v3-exodus", "source": "v-mk1-3", "target": "topic-new-exodus", "type": "topic", "label": "주제", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-v4-repentance", "source": "v-mk1-4", "target": "topic-repentance", "type": "topic", "label": "주제", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "회개의 세례 선포" } },
+    { "id": "e-v5-repentance", "source": "v-mk1-5", "target": "topic-repentance", "type": "topic", "label": "주제", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "공적 죄 고백" } },
+    { "id": "e-v7-christology", "source": "v-mk1-7", "target": "topic-christology", "type": "topic", "label": "주제", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "오실 이의 정체성 선포" } },
+    { "id": "e-v8-baptism", "source": "v-mk1-8", "target": "topic-baptism", "type": "topic", "label": "주제", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "물→성령 세례 대비" } },
+    { "id": "e-joel-baptism", "source": "v-joel-2-28", "target": "topic-baptism", "type": "echo", "label": "반향", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "6 3", "note": "성령 세례의 구약 배경" } },
+
+    { "id": "e-baptism-christology", "source": "topic-baptism", "target": "topic-christology", "type": "parallel", "label": "평행", "data": { "thickness": 1, "pathType": "bezier", "arrow": "both", "dash": "", "note": "성령 세례 = 메시아만이 베풀 수 있는 고유 권한" } },
+
+    { "id": "e-v7-jn", "source": "v-mk1-7", "target": "v-jn1-26", "type": "parallel", "label": "평행", "data": { "thickness": 1, "pathType": "bezier", "arrow": "both", "dash": "", "note": "신발끈 — 요한복음 평행 본문" } },
+    { "id": "e-v8-mt", "source": "v-mk1-8", "target": "v-mt3-11", "type": "parallel", "label": "평행", "data": { "thickness": 1, "pathType": "bezier", "arrow": "both", "dash": "", "note": "마태는 '성령과 불로' — 심판 강조 추가" } },
+    { "id": "e-v8-lk", "source": "v-mk1-8", "target": "v-lk3-16", "type": "parallel", "label": "평행", "data": { "thickness": 1, "pathType": "bezier", "arrow": "both", "dash": "", "note": "누가 평행 — 마가와 거의 동일" } },
+
+    { "id": "e-gram1-v4", "source": "note-grammar-1", "target": "v-mk1-4", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-gram2-v7", "source": "note-grammar-2", "target": "v-mk1-7", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "straight", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-hist-john-context", "source": "note-history-john", "target": "topic-mark-context", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-hist-wild-exodus", "source": "note-history-wilderness", "target": "topic-new-exodus", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-elijah-v6", "source": "note-elijah-motif", "target": "v-mk1-6", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-elijah-2kgs", "source": "note-elijah-motif", "target": "v-2kgs-1-8", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+
+    { "id": "e-s-intro-main", "source": "note-sermon-intro", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } },
+    { "id": "e-s1-v3", "source": "note-sermon-1", "target": "v-mk1-3", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s1-exodus", "source": "note-sermon-1", "target": "topic-new-exodus", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s2-v4", "source": "note-sermon-2", "target": "v-mk1-4", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s2-repent", "source": "note-sermon-2", "target": "topic-repentance", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s3-v7", "source": "note-sermon-3", "target": "v-mk1-7", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s3-christology", "source": "note-sermon-3", "target": "topic-christology", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s4-v8", "source": "note-sermon-4", "target": "v-mk1-8", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-s4-baptism", "source": "note-sermon-4", "target": "topic-baptism", "type": "topic", "label": "주제", "data": { "thickness": 1, "pathType": "bezier", "arrow": "end", "dash": "4 4", "note": "" } },
+    { "id": "e-conclusion-main", "source": "note-sermon-conclusion", "target": "topic-main", "type": "relation", "label": "관계", "data": { "thickness": 2, "pathType": "bezier", "arrow": "end", "dash": "", "note": "" } }
+
+  ]
+}
