@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사용 가이드 — 성경 마인드맵 · PARK MIN HYUN</title>
+  <meta name="description" content="성경 마인드맵 앱 사용 설명서 — 노드 추가, 원문 탭, 렉시콘 팝업, 교차 참조, 저장 방법 안내" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:   #059669;
+      --green2:  #10b981;
+      --amber:   #d97706;
+      --purple:  #7c3aed;
+      --blue:    #2563eb;
+      --bg:      #0a0f1e;
+      --surface: #111827;
+      --card:    #1a2236;
+      --border:  rgba(255,255,255,0.07);
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.8;
+    }
+
+    /* ── 오로라 배경 ── */
+    .orb-wrap {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); will-change: transform, opacity; }
+    .orb-1 {
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse, #059669 0%, #10b981 40%, transparent 70%);
+      opacity: .30; top: -280px; left: -260px;
+      animation: aurora-1 12s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 800px; height: 650px;
+      background: radial-gradient(ellipse, #7c3aed 0%, #a855f7 45%, transparent 70%);
+      opacity: .26; bottom: -260px; right: -200px;
+      animation: aurora-2 16s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 600px; height: 500px;
+      background: radial-gradient(ellipse, #d97706 0%, #f59e0b 50%, transparent 70%);
+      opacity: .18; top: 40%; left: 45%;
+      animation: aurora-3 10s ease-in-out infinite;
+    }
+    .orb-4 {
+      width: 700px; height: 550px;
+      background: radial-gradient(ellipse, #0891b2 0%, #06b6d4 50%, transparent 70%);
+      opacity: .20; top: -180px; right: -180px;
+      animation: aurora-4 14s ease-in-out infinite;
+    }
+    .orb-5 {
+      width: 1100px; height: 350px; border-radius: 50%;
+      background: radial-gradient(ellipse, #059669 0%, #10b981 30%, transparent 65%);
+      opacity: .14; bottom: 5%; left: -10%;
+      animation: aurora-5 18s ease-in-out infinite;
+    }
+    @keyframes aurora-1 {
+      0%   { transform: translate(0px,0px)    scale(1)    rotate(0deg);  opacity:.30; }
+      20%  { transform: translate(80px,40px)  scale(1.1)  rotate(5deg);  opacity:.42; }
+      40%  { transform: translate(40px,100px) scale(.95)  rotate(-3deg); opacity:.24; }
+      60%  { transform: translate(120px,60px) scale(1.15) rotate(8deg);  opacity:.38; }
+      80%  { transform: translate(20px,80px)  scale(1.05) rotate(-5deg); opacity:.28; }
+      100% { transform: translate(0px,0px)    scale(1)    rotate(0deg);  opacity:.30; }
+    }
+    @keyframes aurora-2 {
+      0%   { transform: translate(0px,0px)     scale(1)    rotate(0deg);  opacity:.26; }
+      25%  { transform: translate(-90px,-50px) scale(1.12) rotate(-6deg); opacity:.38; }
+      50%  { transform: translate(-40px,-110px)scale(.92)  rotate(4deg);  opacity:.20; }
+      75%  { transform: translate(-120px,-30px)scale(1.08) rotate(-9deg); opacity:.32; }
+      100% { transform: translate(0px,0px)     scale(1)    rotate(0deg);  opacity:.26; }
+    }
+    @keyframes aurora-3 {
+      0%   { transform: translate(-50%,-50%) scale(1)   rotate(0deg);  opacity:.18; }
+      30%  { transform: translate(-45%,-55%) scale(1.2) rotate(10deg); opacity:.28; }
+      60%  { transform: translate(-55%,-45%) scale(.85) rotate(-8deg); opacity:.12; }
+      100% { transform: translate(-50%,-50%) scale(1)   rotate(0deg);  opacity:.18; }
+    }
+    @keyframes aurora-4 {
+      0%   { transform: translate(0px,0px)    scale(1)   rotate(0deg);  opacity:.20; }
+      35%  { transform: translate(-60px,70px) scale(1.1) rotate(-7deg); opacity:.32; }
+      70%  { transform: translate(-100px,30px)scale(.9)  rotate(5deg);  opacity:.14; }
+      100% { transform: translate(0px,0px)    scale(1)   rotate(0deg);  opacity:.20; }
+    }
+    @keyframes aurora-5 {
+      0%   { transform: translateX(0%)  scaleX(1);    opacity:.14; }
+      40%  { transform: translateX(8%)  scaleX(1.15); opacity:.22; }
+      70%  { transform: translateX(-5%) scaleX(.9);   opacity:.09; }
+      100% { transform: translateX(0%)  scaleX(1);    opacity:.14; }
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      padding: 14px 0;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(10,15,30,0.85);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      max-width: 900px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo-text { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 1rem; color: var(--text); }
+    .nav-links { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav-link {
+      padding: 7px 16px; border-radius: 999px; font-size: .82rem; font-weight: 500;
+      text-decoration: none; color: var(--muted); border: 1px solid transparent;
+      transition: all .2s;
+    }
+    .nav-link:hover { color: var(--text); border-color: var(--border); background: rgba(255,255,255,.05); }
+    .nav-link.primary {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff; border: none;
+    }
+    .nav-link.primary:hover { opacity: .9; }
+
+    /* ── LAYOUT ── */
+    .page { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 60px 24px 100px; }
+
+    /* ── HERO ── */
+    .guide-hero {
+      text-align: center; padding: 60px 0 56px;
+      border-bottom: 1px solid var(--border); margin-bottom: 64px;
+    }
+    .guide-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 14px; border-radius: 999px;
+      background: rgba(5,150,105,.12); border: 1px solid rgba(5,150,105,.3);
+      font-size: .75rem; color: var(--green2); font-weight: 600;
+      margin-bottom: 20px; letter-spacing: .04em;
+    }
+    .guide-hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 700; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .guide-hero p { color: var(--muted); font-size: 1rem; max-width: 560px; margin: 0 auto; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px 32px; margin-bottom: 64px;
+    }
+    .toc h2 { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 16px; }
+    .toc ol { padding-left: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 6px 24px; }
+    .toc li { font-size: .9rem; }
+    .toc a { color: var(--green2); text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ── SECTIONS ── */
+    .guide-section { margin-bottom: 72px; }
+    .section-num {
+      display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .08em;
+      color: var(--green2); background: rgba(5,150,105,.12); border: 1px solid rgba(5,150,105,.25);
+      border-radius: 999px; padding: 3px 11px; margin-bottom: 12px;
+    }
+    .guide-section h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700;
+      margin-bottom: 20px; line-height: 1.3;
+    }
+    .guide-section > p { color: var(--muted); font-size: .95rem; margin-bottom: 24px; max-width: 700px; }
+
+    /* ── CARDS ── */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 24px;
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; }
+    .card h3 { font-size: .95rem; font-weight: 700; margin-bottom: 7px; }
+    .card p { font-size: .84rem; color: var(--muted); line-height: 1.6; }
+    .card.accent-green { border-color: rgba(5,150,105,.3); }
+    .card.accent-amber { border-color: rgba(217,119,6,.3); }
+    .card.accent-purple { border-color: rgba(124,58,237,.3); }
+    .card.accent-blue { border-color: rgba(37,99,235,.3); }
+
+    /* ── STEPS ── */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 20px; padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem; font-weight: 700; color: #fff; margin-top: 2px;
+    }
+    .step-body h3 { font-size: .95rem; font-weight: 700; margin-bottom: 5px; }
+    .step-body p { font-size: .86rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── TABLE ── */
+    .guide-table { width: 100%; border-collapse: collapse; font-size: .86rem; margin-bottom: 24px; }
+    .guide-table th {
+      background: var(--card); padding: 11px 16px; text-align: left;
+      font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+    }
+    .guide-table td {
+      padding: 11px 16px; border-bottom: 1px solid rgba(255,255,255,.04);
+      vertical-align: top; line-height: 1.6;
+    }
+    .guide-table tr:hover td { background: rgba(255,255,255,.02); }
+    .guide-table code {
+      font-family: monospace; font-size: .82rem;
+      background: rgba(255,255,255,.08); border-radius: 4px; padding: 1px 6px;
+      color: var(--green2);
+    }
+
+    /* ── CALLOUT ── */
+    .callout {
+      border-left: 3px solid var(--green2); background: rgba(5,150,105,.07);
+      border-radius: 0 10px 10px 0; padding: 14px 18px; margin: 16px 0;
+      font-size: .88rem; color: var(--muted); line-height: 1.7;
+    }
+    .callout strong { color: var(--green2); }
+    .callout.amber { border-color: #fbbf24; background: rgba(217,119,6,.07); }
+    .callout.amber strong { color: #fbbf24; }
+    .callout.blue { border-color: #93c5fd; background: rgba(37,99,235,.07); }
+    .callout.blue strong { color: #93c5fd; }
+
+    /* ── TAG ── */
+    .tag {
+      display: inline-block; font-size: .72rem; font-weight: 600;
+      padding: 2px 9px; border-radius: 999px; margin: 2px;
+    }
+    .tag.green { background: rgba(5,150,105,.2); color: var(--green2); }
+    .tag.amber { background: rgba(217,119,6,.2); color: #fbbf24; }
+    .tag.purple { background: rgba(124,58,237,.2); color: #a78bfa; }
+    .tag.blue { background: rgba(37,99,235,.2); color: #93c5fd; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border); padding: 36px 0;
+      text-align: center; color: var(--muted); font-size: .8rem;
+    }
+    footer a { color: var(--green2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 640px) {
+      .cards { grid-template-columns: 1fr; }
+      .toc ol { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="orb-wrap">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+  <div class="orb orb-5"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="./index.html" class="logo">
+      <span class="logo-text">📖 성경 마인드맵</span>
+    </a>
+    <div class="nav-links">
+      <a href="./index.html" class="nav-link">홈</a>
+      <a href="./app/" class="nav-link primary">앱 열기 →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="guide-hero">
+    <div class="guide-badge">📋 USER GUIDE</div>
+    <h1>사용 가이드</h1>
+    <p>성경 마인드맵의 모든 기능을 단계별로 안내합니다.<br/>처음 사용자도 5분이면 시작할 수 있습니다.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>목차</h2>
+    <ol>
+      <li><a href="#overview">앱 개요</a></li>
+      <li><a href="#canvas">캔버스 기본 조작</a></li>
+      <li><a href="#nodes">노드 종류</a></li>
+      <li><a href="#verse">구절 노드 심화</a></li>
+      <li><a href="#lexicon">원문 렉시콘 팝업</a></li>
+      <li><a href="#crossref">교차 참조</a></li>
+      <li><a href="#parallel">병렬 보기 & 단어 페어링</a></li>
+      <li><a href="#save">저장 & 불러오기</a></li>
+      <li><a href="#shortcuts">단축키</a></li>
+      <li><a href="#sources">데이터 출처</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. 개요 -->
+  <section class="guide-section" id="overview">
+    <span class="section-num">01</span>
+    <h2>앱 개요</h2>
+    <p>성경 마인드맵은 성경 구절·인물·장소·시대를 캔버스 위에 노드로 올려놓고, 서로 연결선을 그어 관계를 시각화하는 인터랙티브 도구입니다. 설치 없이 브라우저에서 바로 사용하며, 작업한 내용은 브라우저 로컬 스토리지에 자동 저장됩니다.</p>
+    <div class="cards">
+      <div class="card accent-green">
+        <div class="card-icon">🗺️</div>
+        <h3>무한 캔버스</h3>
+        <p>줌·패닝이 자유롭고 노드를 어디든 배치할 수 있습니다.</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">📜</div>
+        <h3>원문 성경</h3>
+        <p>헬라어 신약(NTGT), 히브리어 구약(WLC), 개역한글(KRV), ESV를 탭으로 전환합니다.</p>
+      </div>
+      <div class="card accent-amber">
+        <div class="card-icon">🔤</div>
+        <h3>원문 형태소 분석</h3>
+        <p>단어를 클릭하면 Strong's 번호·형태소·사전 정의·이 책에서의 용례를 팝업으로 확인합니다.</p>
+      </div>
+      <div class="card accent-purple">
+        <div class="card-icon">🔗</div>
+        <h3>교차 참조</h3>
+        <p>OpenBible 데이터 기반으로 연관 구절을 자동 추천하고 캔버스에 바로 추가합니다.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>저장 위치:</strong> 모든 캔버스 데이터는 현재 브라우저의 로컬 스토리지에만 저장됩니다. 다른 기기나 다른 브라우저에서는 보이지 않으므로, 중요한 작업은 JSON 파일로 내보내 백업하세요.
+    </div>
+  </section>
+
+  <!-- 2. 캔버스 -->
+  <section class="guide-section" id="canvas">
+    <span class="section-num">02</span>
+    <h2>캔버스 기본 조작</h2>
+    <p>React Flow 기반의 무한 캔버스입니다. 마우스와 트랙패드 제스처를 모두 지원합니다.</p>
+    <table class="guide-table">
+      <thead>
+        <tr><th>동작</th><th>방법</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>화면 이동 (패닝)</strong></td><td>빈 공간을 드래그 / 트랙패드 두 손가락 스와이프</td></tr>
+        <tr><td><strong>줌 인/아웃</strong></td><td>마우스 휠 / 트랙패드 핀치 / 우측 하단 +/− 버튼</td></tr>
+        <tr><td><strong>전체 보기</strong></td><td>우측 하단 □ 버튼 (Fit View)</td></tr>
+        <tr><td><strong>노드 이동</strong></td><td>노드 헤더 영역 드래그</td></tr>
+        <tr><td><strong>노드 크기 조절</strong></td><td>노드 오른쪽 하단 모서리 드래그</td></tr>
+        <tr><td><strong>노드 선택</strong></td><td>클릭 (복수 선택: Shift+클릭 또는 드래그 박스)</td></tr>
+        <tr><td><strong>노드 삭제</strong></td><td>선택 후 <code>Delete</code> / <code>Backspace</code></td></tr>
+        <tr><td><strong>연결선 그리기</strong></td><td>노드 엣지의 핸들(●)을 다른 노드로 드래그</td></tr>
+        <tr><td><strong>연결선 삭제</strong></td><td>연결선 클릭 후 <code>Delete</code></td></tr>
+        <tr><td><strong>실행취소 / 재실행</strong></td><td><code>Ctrl+Z</code> / <code>Ctrl+Shift+Z</code></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>미니맵:</strong> 우측 하단의 작은 지도를 클릭·드래그해 캔버스 위치를 빠르게 이동할 수 있습니다.
+    </div>
+  </section>
+
+  <!-- 3. 노드 종류 -->
+  <section class="guide-section" id="nodes">
+    <span class="section-num">03</span>
+    <h2>노드 종류</h2>
+    <p>왼쪽 사이드바에서 원하는 노드 타입을 선택해 캔버스에 추가합니다.</p>
+    <div class="cards">
+      <div class="card accent-blue">
+        <div class="card-icon">📖</div>
+        <h3>구절 노드 (Verse)</h3>
+        <p>성경 구절을 담는 핵심 노드. 책·장·절을 지정하면 번역과 원문을 자동으로 불러옵니다. 원문 탭·교차 참조·렉시콘 팝업이 여기서 작동합니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📝</div>
+        <h3>메모 노드 (Note)</h3>
+        <p>자유롭게 텍스트를 입력하는 노드. 주해·설교 아이디어·개인 묵상을 적을 때 사용합니다.</p>
+      </div>
+      <div class="card accent-purple">
+        <div class="card-icon">💡</div>
+        <h3>주제 노드 (Topic)</h3>
+        <p>신학적 주제·키워드를 표시하는 노드. 구절들과 연결해 주제 중심 지도를 만들 수 있습니다.</p>
+      </div>
+      <div class="card accent-green">
+        <div class="card-icon">👤</div>
+        <h3>인물 노드 (Person)</h3>
+        <p>성경 인물을 검색하면 Wikidata에서 생몰 연도·설명을 자동 로드합니다. 동시대 인물 버튼으로 관련 인물을 한 번에 추가합니다.</p>
+      </div>
+      <div class="card accent-amber">
+        <div class="card-icon">📍</div>
+        <h3>장소 노드 (Place)</h3>
+        <p>성경 지명을 검색해 좌표와 설명을 자동으로 가져옵니다. 연관 인물도 탐색할 수 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🕰️</div>
+        <h3>시대 노드 (Period)</h3>
+        <p>족장·출애굽·왕정·포로·귀환·중간·사도 등 성경의 주요 시대를 표시하는 노드입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 구절 노드 심화 -->
+  <section class="guide-section" id="verse">
+    <span class="section-num">04</span>
+    <h2>구절 노드 심화</h2>
+    <p>구절 노드는 가장 강력한 기능을 제공합니다. 노드를 선택한 뒤 상단 편집 바에서 모든 기능에 접근할 수 있습니다.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>구절 추가</h3>
+          <p>좌측 사이드바 → 구절(📖) 선택 → 책·장·절 입력 → 추가. 또는 편집 바의 책·장·절 입력란에 직접 입력합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>번역 탭 전환</h3>
+          <p>노드 내 탭 버튼으로 <span class="tag green">개역한글</span> <span class="tag blue">ESV</span> <span class="tag amber">원어</span>를 전환합니다. 원어 탭에서는 헬라어 신약(NTGT) 또는 히브리어 구약(WLC)을 표시합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>원문 탭 — 단어 클릭</h3>
+          <p>원어 탭 활성화 후 단어를 클릭하면 렉시콘 팝업이 열립니다. 팝업은 헤더를 드래그해 위치를 자유롭게 옮길 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>교차 참조</h3>
+          <p>편집 바의 <strong>🔗 교차 참조</strong> 버튼을 클릭하면 OpenBible 투표 수 기반 관련 구절 목록이 나타납니다. <strong>+ 추가</strong> 버튼으로 캔버스에 바로 연결해 추가합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>병렬 보기 (단어 페어링)</h3>
+          <p>편집 바의 <strong>단어 페어링</strong> 버튼으로 원문↔번역 단어를 나란히 놓고, 대응하는 단어쌍을 색깔로 표시하는 분석 화면이 열립니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 렉시콘 팝업 -->
+  <section class="guide-section" id="lexicon">
+    <span class="section-num">05</span>
+    <h2>원문 렉시콘 팝업</h2>
+    <p>원문 탭에서 단어를 클릭하면 나타나는 팝업입니다. STEPBible 형태소 분석 + Bolls.life 사전 + Strong 용례 인덱스로 구성됩니다.</p>
+    <div class="cards">
+      <div class="card accent-blue">
+        <div class="card-icon">📖</div>
+        <h3>사전 정의 탭</h3>
+        <p>
+          <strong>Strong's 번호</strong> — BibleHub 링크<br/>
+          <strong>사전형 (Lemma)</strong> — 원형 단어<br/>
+          <strong>형태소</strong> — 격·수·성·태·법 분석<br/>
+          <strong>기본뜻</strong> — 영어 글로스<br/>
+          <strong>BDB / Greek Lexicon</strong> — 상세 사전 정의
+        </p>
+      </div>
+      <div class="card accent-green">
+        <div class="card-icon">🔍</div>
+        <h3>용례 탭</h3>
+        <p>같은 Strong 번호를 가진 단어가 이 책의 다른 구절에서 어떻게 쓰이는지 전체 목록을 표시합니다. 절 번호(예: <code>요한 3:16</code>)를 클릭하면 해당 구절이 캔버스에 바로 추가됩니다.</p>
+      </div>
+    </div>
+    <div class="callout blue">
+      <strong>드래그:</strong> 팝업 상단 헤더(파란/노란 배경)를 드래그하면 화면 어디로든 이동할 수 있습니다. <code>Esc</code> 키 또는 팝업 바깥 클릭으로 닫습니다.
+    </div>
+  </section>
+
+  <!-- 6. 교차 참조 -->
+  <section class="guide-section" id="crossref">
+    <span class="section-num">06</span>
+    <h2>교차 참조 (Cross-Reference)</h2>
+    <p>OpenBible.info의 크라우드소싱 교차 참조 데이터를 기반으로, 선택한 구절과 주제적으로 연관된 다른 구절을 자동 추천합니다.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>교차 참조 열기</h3>
+          <p>구절 노드 선택 → 상단 편집 바 → <strong>🔗 교차 참조</strong> 버튼 클릭. 투표 수 기준 상위 12개 관련 구절이 표시됩니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>캔버스에 추가</h3>
+          <p>목록에서 원하는 구절의 <strong>+ 추가</strong> 버튼을 클릭하면 번역을 자동으로 불러오고, 원본 노드 오른쪽에 새 구절 노드가 생성되며 교차 참조 엣지(점선)로 연결됩니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>패널 닫기</h3>
+          <p><strong>🔗 교차 참조</strong> 버튼을 다시 클릭하면 패널이 닫힙니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 병렬 보기 -->
+  <section class="guide-section" id="parallel">
+    <span class="section-num">07</span>
+    <h2>병렬 보기 & 단어 페어링</h2>
+    <p>원문과 번역을 나란히 놓고 단어 대응 관계를 색깔로 표시하는 심층 분석 화면입니다. 설교 준비·원어 연구에 유용합니다.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>열기</h3>
+          <p>구절 노드 선택 → 편집 바 → <strong>단어 페어링</strong> 버튼. 원문 열(헬라어/히브리어)과 번역 열이 나란히 열립니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>단어 대응 표시</h3>
+          <p>원문 단어를 클릭하면 파란색으로 선택됩니다. 번역 열에서 대응하는 단어를 클릭하면 같은 색으로 연결됩니다. 최대 8가지 색상 쌍을 지원합니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>원문 단어 렉시콘</h3>
+          <p>병렬 보기 안에서도 원문 단어를 <code>Cmd+클릭</code>(Mac) / <code>Ctrl+클릭</code>(Windows)하면 렉시콘 팝업이 열립니다.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>저장</h3>
+          <p><strong>💾 저장 후 닫기</strong>를 클릭하면 페어링 정보가 노드에 반영됩니다. 취소는 우측 상단 ✕로 닫으면 됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 저장 -->
+  <section class="guide-section" id="save">
+    <span class="section-num">08</span>
+    <h2>저장 & 불러오기</h2>
+    <div class="cards">
+      <div class="card accent-green">
+        <div class="card-icon">💾</div>
+        <h3>자동 저장</h3>
+        <p>캔버스가 변경될 때마다 브라우저 로컬 스토리지에 자동으로 저장됩니다. 페이지를 닫았다 다시 열면 이전 작업이 복원됩니다.</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">📤</div>
+        <h3>JSON 내보내기</h3>
+        <p>우측 패널의 <strong>내보내기</strong> 버튼으로 현재 캔버스를 JSON 파일로 저장합니다. 다른 기기로 이전하거나 백업할 때 사용합니다.</p>
+      </div>
+      <div class="card accent-amber">
+        <div class="card-icon">📥</div>
+        <h3>JSON 불러오기</h3>
+        <p>내보낸 JSON 파일을 불러와 캔버스를 복원합니다. 기존 캔버스는 덮어쓰이므로 주의하세요.</p>
+      </div>
+    </div>
+    <div class="callout amber">
+      <strong>주의:</strong> 로컬 스토리지는 브라우저 데이터를 지우면 삭제됩니다. 중요한 작업은 반드시 JSON 파일로 내보내 보관하세요.
+    </div>
+  </section>
+
+  <!-- 9. 단축키 -->
+  <section class="guide-section" id="shortcuts">
+    <span class="section-num">09</span>
+    <h2>단축키</h2>
+    <table class="guide-table">
+      <thead>
+        <tr><th>단축키</th><th>기능</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>Ctrl+Z</code></td><td>실행취소</td></tr>
+        <tr><td><code>Ctrl+Shift+Z</code></td><td>다시 실행</td></tr>
+        <tr><td><code>Delete</code> / <code>Backspace</code></td><td>선택된 노드 또는 엣지 삭제</td></tr>
+        <tr><td><code>Esc</code></td><td>렉시콘 팝업 닫기 / 선택 해제</td></tr>
+        <tr><td><code>Cmd+클릭</code> (원문 단어)</td><td>병렬 보기에서 렉시콘 팝업 열기</td></tr>
+        <tr><td><code>Shift+클릭</code> (단어)</td><td>병렬 보기에서 같은 색 그룹 전체 선택</td></tr>
+        <tr><td>마우스 휠</td><td>줌 인/아웃</td></tr>
+        <tr><td>빈 공간 드래그</td><td>캔버스 이동</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 10. 데이터 출처 -->
+  <section class="guide-section" id="sources">
+    <span class="section-num">10</span>
+    <h2>데이터 출처</h2>
+    <table class="guide-table">
+      <thead>
+        <tr><th>데이터</th><th>출처</th><th>라이선스</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>헬라어 신약 형태소 분석 (TAGNT)</td>
+          <td><a href="https://github.com/STEPBible/STEPBible-Data" target="_blank">STEPBible-Data</a></td>
+          <td><span class="tag green">CC BY 4.0</span></td>
+        </tr>
+        <tr>
+          <td>히브리어 구약 형태소 분석 (TAHOT)</td>
+          <td><a href="https://github.com/STEPBible/STEPBible-Data" target="_blank">STEPBible-Data</a></td>
+          <td><span class="tag green">CC BY 4.0</span></td>
+        </tr>
+        <tr>
+          <td>헬라어 신약 원문 (NTGT)</td>
+          <td><a href="https://bolls.life" target="_blank">Bolls.life API</a></td>
+          <td><span class="tag amber">API 이용</span></td>
+        </tr>
+        <tr>
+          <td>히브리어 구약 원문 (WLC)</td>
+          <td><a href="https://bolls.life" target="_blank">Bolls.life API</a></td>
+          <td><span class="tag amber">API 이용</span></td>
+        </tr>
+        <tr>
+          <td>성경 번역 (KRV 개역한글, ESV)</td>
+          <td><a href="https://bolls.life" target="_blank">Bolls.life API</a></td>
+          <td><span class="tag amber">API 이용</span></td>
+        </tr>
+        <tr>
+          <td>Strong 사전 정의 (BDB, Greek Lexicon)</td>
+          <td><a href="https://bolls.life" target="_blank">Bolls.life API</a></td>
+          <td><span class="tag amber">API 이용</span></td>
+        </tr>
+        <tr>
+          <td>교차 참조 데이터</td>
+          <td><a href="https://openbible.info/xref" target="_blank">OpenBible.info Cross-References</a></td>
+          <td><span class="tag green">CC BY 4.0</span></td>
+        </tr>
+        <tr>
+          <td>성경 인물·장소 정보</td>
+          <td><a href="https://www.wikidata.org" target="_blank">Wikidata</a></td>
+          <td><span class="tag green">CC0</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>제작:</strong> PARK MIN HYUN &nbsp;·&nbsp; Built with <strong>Jarvis</strong> (claude-sonnet · 2026)<br/>
+      모든 성경 원문 데이터는 해당 라이선스 조건 하에 사용되었습니다.
+    </div>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="max-width:900px;margin:0 auto;padding:0 24px;">
+    <p>
+      <strong>PARK MIN HYUN</strong> &nbsp;·&nbsp;
+      Built with <strong>Jarvis</strong> (claude-sonnet · 2026) &nbsp;·&nbsp;
+      📖 성경 마인드맵 &nbsp;·&nbsp;
+      <a href="./index.html">홈으로</a> &nbsp;·&nbsp;
+      <a href="./app/">앱 열기</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

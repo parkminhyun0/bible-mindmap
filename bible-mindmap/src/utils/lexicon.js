@@ -55,34 +55,119 @@ export async function loadVerseLexicon(bookId, chapter, verse) {
   }
 }
 
-// ── Strong's 사전 API (Bolls.life) ─────────────────────────────────────────
+// ── Strong 용례 (concordance) 인덱스 로더 ─────────────────────────────────
+// 파일: public/data/strongs/{lang}/{bookId}.json
+// 형식: { "G2316": [{ch,v,w,m,l}, ...], ... }
+const _strongsBookCache = new Map();
+
+/**
+ * 주어진 Strong 번호가 특정 책에서 어디에 쓰이는지 반환.
+ * @returns {Promise<Array<{ch:number, v:number, w:string, m:string, l:string}>>}
+ */
+export async function fetchStrongConcordance(strongId, bookId) {
+  if (!strongId || !bookId) return [];
+  const lang = isOT(bookId) ? 'hot' : 'gnt';
+  const cacheKey = `${lang}/${bookId}`;
+
+  let bookData;
+  if (_strongsBookCache.has(cacheKey)) {
+    bookData = await _strongsBookCache.get(cacheKey);
+  } else {
+    const url = `${BASE}data/strongs/${lang}/${bookId}.json`;
+    const promise = fetch(url).then((r) => {
+      if (!r.ok) throw new Error(`strongs ${r.status}`);
+      return r.json();
+    }).catch(() => ({}));
+    _strongsBookCache.set(cacheKey, promise);
+    bookData = await promise;
+  }
+
+  return bookData[strongId] || [];
+}
+
+// ── Strong's 정의 사전 (로컬 청크) ───────────────────────────────────────────
+// 빌드 시 openscriptures/strongs 데이터로 생성된 청크 파일에서 즉시 조회.
+// 청크 번호 = floor((strongNum - 1) / 1000) — 인덱스 파일 불필요.
+const _chunkDefCache = new Map(); // 'gnt-3' → Promise<{G3004:{d,e,k,l,t}}>
+const CHUNK_SZ = 1000;
+
+function strongsChunkIdx(strongNum) {
+  const n = parseInt(strongNum.replace(/^[GH]/, ''), 10);
+  return Math.floor((n - 1) / CHUNK_SZ);
+}
+
+async function loadStrongsChunk(lang, ci) {
+  const key = `${lang}-${ci}`;
+  if (!_chunkDefCache.has(key)) {
+    const url = `${BASE}data/strongs-def/${lang}/${ci}.json`;
+    const p = fetch(url)
+      .then(r => r.ok ? r.json() : {})
+      .catch(() => ({}));
+    _chunkDefCache.set(key, p);
+  }
+  return _chunkDefCache.get(key);
+}
+
+async function lookupLocalDef(strongNum) {
+  const lang = strongNum.startsWith('H') ? 'hot' : 'gnt';
+  const ci   = strongsChunkIdx(strongNum);
+  const chunk = await loadStrongsChunk(lang, ci);
+  const raw   = chunk[strongNum];
+  if (!raw) return null;
+
+  // 정의 HTML 조립
+  const parts = [];
+  if (raw.e) parts.push(`<p class="lex-etym"><b>어원:</b> ${raw.e}</p>`);
+  if (raw.d) parts.push(`<p>${raw.d.trim()}</p>`);
+  if (raw.k) parts.push(`<p class="lex-kjv"><b>KJV 용례:</b> ${raw.k}</p>`);
+
+  return parts.length ? { topic: strongNum, definition: parts.join(''), source: 'local' } : null;
+}
+
+// ── bolls.life BDBT (히브리어 BDB 정의 — 더 상세) ──────────────────────────
+async function fetchBDBDef(strongNum) {
+  const numOnly = strongNum.replace(/^H/, '');
+  for (const id of [strongNum, numOnly]) {
+    try {
+      const res = await fetch(`https://bolls.life/dictionary-definition/BDBT/${id}/`);
+      if (!res.ok) continue;
+      const arr = await res.json();
+      if (Array.isArray(arr) && arr[0]) return { ...arr[0], source: 'bdbt' };
+    } catch { /* try next */ }
+  }
+  return null;
+}
+
 const _defCache = new Map();
 
 /**
  * Strong's 번호로 사전 정의 조회.
- *   - Hebrew: BDBT (Brown-Driver-Briggs Theological)
- *   - Greek : GreekStrong (Bolls dictionary)
- * 반환: { topic, definition } 또는 null
+ * 우선순위:
+ *   Hebrew: (1) 로컬 청크 + (2) bolls.life BDBT 병렬 → 더 상세한 쪽 반환
+ *   Greek : (1) 로컬 청크만 (즉시, 외부 API 없음)
+ * 반환: { topic, definition, source } 또는 null
  */
 export async function fetchStrongDefinition(strongNum) {
   if (!strongNum) return null;
   if (_defCache.has(strongNum)) return _defCache.get(strongNum);
 
   const isHeb = strongNum.startsWith('H');
-  const dict = isHeb ? 'BDBT' : 'GreekStrong';
-  const url = `https://bolls.life/dictionary-definition/${dict}/${strongNum}/`;
 
-  try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`bolls ${res.status}`);
-    const arr = await res.json();
-    const entry = Array.isArray(arr) && arr[0] ? arr[0] : null;
-    _defCache.set(strongNum, entry);
-    return entry;
-  } catch {
-    _defCache.set(strongNum, null);
-    return null;
+  let entry;
+  if (isHeb) {
+    // 히브리어: 로컬과 BDBT 병렬 fetch — 둘 다 성공하면 BDBT 우선(더 상세)
+    const [local, bdbt] = await Promise.all([
+      lookupLocalDef(strongNum).catch(() => null),
+      fetchBDBDef(strongNum).catch(() => null),
+    ]);
+    entry = bdbt || local || null;
+  } else {
+    // 헬라어: 로컬 청크만 (외부 API 불필요)
+    entry = await lookupLocalDef(strongNum).catch(() => null);
   }
+
+  _defCache.set(strongNum, entry);
+  return entry;
 }
 
 // ── Morphology 코드 해석 ───────────────────────────────────────────────────

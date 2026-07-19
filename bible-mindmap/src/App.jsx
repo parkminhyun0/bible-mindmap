@@ -29,6 +29,7 @@ import { fetchAllTranslations } from './api/bibleApi';
 import { formatReference, parseReference } from './utils/citationDetector';
 import { isOT } from './data/bibleBooks';
 import { getBibleTags } from './data/bibleReferences';
+import { CanvasContext } from './context/CanvasContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
 
@@ -58,6 +59,83 @@ const edgeTypes = {
   echo: CustomEdge,
   relation: CustomEdge,
   crossref: CustomEdge,
+};
+
+const LAYOUT_OPTIONS = [
+  { mode: 'genealogy', icon: '→', label: '계보식', title: '좌→우 계보 배열 (인용 흐름)' },
+  { mode: 'tree',      icon: '↓', label: '트리식', title: '위→아래 트리 배열 (주제 계층)' },
+  { mode: 'radial',   icon: '⊙', label: '방사형', title: '중심 방사형 배열' },
+];
+
+const layoutBtnStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  padding: '4px 10px',
+  fontSize: 12,
+  fontWeight: 600,
+  background: '#eff6ff',
+  border: '1.5px solid #bfdbfe',
+  borderRadius: 6,
+  color: '#1d4ed8',
+  cursor: 'pointer',
+};
+
+const panelContainerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 6,
+  background: '#fff',
+  padding: '8px 14px',
+  borderRadius: 10,
+  boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
+  marginBottom: 8,
+  maxWidth: 620,
+};
+
+const panelRowStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
+};
+
+const edgeBtnStyle = {
+  padding: '4px 10px',
+  fontSize: 12,
+  border: 'none',
+  borderRadius: 6,
+  cursor: 'pointer',
+  display: 'flex',
+  alignItems: 'center',
+};
+
+const optGroupStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: 2,
+};
+
+const optLabelStyle = {
+  fontSize: 10,
+  color: '#94a3b8',
+  fontWeight: 600,
+  marginRight: 2,
+  flexShrink: 0,
+};
+
+const optBtnStyle = {
+  padding: '3px 7px',
+  fontSize: 11,
+  border: 'none',
+  borderRadius: 4,
+  cursor: 'pointer',
+};
+
+const anchorBtnStyle = {
+  padding: '4px 10px',
+  fontSize: 11,
+  fontWeight: 600,
+  border: 'none',
+  borderRadius: 5,
 };
 
 const EDGE_TYPE_OPTIONS = [
@@ -324,6 +402,52 @@ export default function App() {
     };
   }, []);
 
+  // 교차 참조 구절을 캔버스에 추가 — 원본 verse 노드 오른쪽에 생성하고 crossref 엣지 연결
+  const handleAddCrossRef = useCallback(
+    async (refData, sourceNodeId) => {
+      const sourceNode = nodes.find((n) => n.id === sourceNodeId);
+      const position = sourceNode
+        ? { x: sourceNode.position.x + 380, y: sourceNode.position.y + 80 }
+        : { x: 400, y: 300 };
+
+      let translations = { krv: null, esv: null, original: null, lxx: null };
+      try {
+        translations = await fetchAllTranslations(
+          refData.bookId,
+          refData.chapter,
+          refData.verseStart,
+          refData.verseEnd,
+        );
+      } catch { /* 로드 실패 시 무시 */ }
+
+      const primaryText = translations.krv || '(본문 로드 실패)';
+      const color = isOT(refData.bookId) ? '#f59e0b' : '#3b82f6';
+      const id = `verse-crossref-${++idCounter.current}`;
+
+      const newNode = {
+        id,
+        type: 'verse',
+        position,
+        data: {
+          reference: refData.reference,
+          text: primaryText,
+          color,
+          bookId: refData.bookId,
+          chapter: refData.chapter,
+          verseStart: refData.verseStart,
+          verseEnd: refData.verseEnd,
+          translations,
+        },
+      };
+      const newEdge = createCitationEdge(sourceNodeId, id, '', 'crossref');
+
+      record();
+      setNodes((nds) => [...nds, newNode]);
+      setEdges((eds) => [...eds, newEdge]);
+    },
+    [nodes, setNodes, setEdges, record, createCitationEdge],
+  );
+
   const handleConnectExistingCitation = useCallback(
     (sourceNodeId, targetNodeId) => {
       record();
@@ -475,6 +599,7 @@ export default function App() {
   }, [undo, redo]);
 
   return (
+    <CanvasContext.Provider value={{ onAddVerse: handleAddCrossRef }}>
     <div style={{ display: 'flex', height: '100vh', fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
       <Sidebar
         onAddNode={handleAddNode}
@@ -491,6 +616,7 @@ export default function App() {
           canUndo={canUndo}
           canRedo={canRedo}
           onAddContemporary={handleAddContemporary}
+          onAddCrossRef={handleAddCrossRef}
         />
 
         <CitationSuggest
@@ -537,6 +663,8 @@ export default function App() {
                 if (n.type === 'period') return '#6d28d9';
                 return '#94a3b8';
               }}
+              pannable
+              zoomable
               style={{ border: '1px solid #e2e8f0' }}
             />
           )}
@@ -883,82 +1011,6 @@ export default function App() {
         </>
       )}
     </div>
+    </CanvasContext.Provider>
   );
 }
-
-const LAYOUT_OPTIONS = [
-  { mode: 'genealogy', icon: '→', label: '계보식', title: '좌→우 계보 배열 (인용 흐름)' },
-  { mode: 'tree',      icon: '↓', label: '트리식', title: '위→아래 트리 배열 (주제 계층)' },
-  { mode: 'radial',   icon: '⊙', label: '방사형', title: '중심 방사형 배열' },
-];
-
-const layoutBtnStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  padding: '4px 10px',
-  fontSize: 12,
-  fontWeight: 600,
-  background: '#eff6ff',
-  border: '1.5px solid #bfdbfe',
-  borderRadius: 6,
-  color: '#1d4ed8',
-  cursor: 'pointer',
-};
-
-const panelContainerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
-  background: '#fff',
-  padding: '8px 14px',
-  borderRadius: 10,
-  boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
-  marginBottom: 8,
-  maxWidth: 620,
-};
-
-const panelRowStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 4,
-};
-
-const edgeBtnStyle = {
-  padding: '4px 10px',
-  fontSize: 12,
-  border: 'none',
-  borderRadius: 6,
-  cursor: 'pointer',
-  display: 'flex',
-  alignItems: 'center',
-};
-
-const optGroupStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  gap: 2,
-};
-
-const optLabelStyle = {
-  fontSize: 10,
-  color: '#94a3b8',
-  fontWeight: 600,
-  marginRight: 2,
-  flexShrink: 0,
-};
-
-const optBtnStyle = {
-  padding: '3px 7px',
-  fontSize: 11,
-  border: 'none',
-  borderRadius: 4,
-  cursor: 'pointer',
-};
-
-const anchorBtnStyle = {
-  padding: '4px 10px',
-  fontSize: 11,
-  fontWeight: 600,
-  border: 'none',
-  borderRadius: 5,
-};

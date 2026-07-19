@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>성경 마인드맵 — Bible Mindmap</title>
   <meta name="description" content="성경 원문(헬라어·히브리어)과 인물·장소·시대를 연결하는 인터랙티브 성경 마인드맵" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="성경 마인드맵 — Bible Mindmap" />
+  <meta property="og:description" content="성경 원문(헬라어·히브리어)과 인물·장소·시대를 연결하는 인터랙티브 성경 마인드맵" />
+  <meta property="og:image" content="https://parkminhyun0.github.io/bible-mindmap/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://parkminhyun0.github.io/bible-mindmap/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="성경 마인드맵 — Bible Mindmap" />
+  <meta name="twitter:description" content="성경 원문(헬라어·히브리어)과 인물·장소·시대를 연결하는 인터랙티브 성경 마인드맵" />
+  <meta name="twitter:image" content="https://parkminhyun0.github.io/bible-mindmap/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
@@ -35,18 +47,75 @@
       overflow-x: hidden;
     }
 
-    /* ── 배경 오브 ── */
+    /* ── 오로라 배경 ── */
     .orb-wrap {
       position: fixed; inset: 0; pointer-events: none; z-index: 0;
       overflow: hidden;
     }
-    .orb {
-      position: absolute; border-radius: 50%; filter: blur(120px); opacity: .18;
+    .orb { position: absolute; border-radius: 50%; filter: blur(80px); will-change: transform, opacity; }
+    .orb-1 {
+      width: 900px; height: 700px;
+      background: radial-gradient(ellipse, #059669 0%, #10b981 40%, transparent 70%);
+      opacity: .30; top: -280px; left: -260px;
+      animation: aurora-1 12s ease-in-out infinite;
     }
-    .orb-1 { width: 700px; height: 700px; background: var(--green);  top: -200px; left: -200px; animation: drift 18s ease-in-out infinite alternate; }
-    .orb-2 { width: 600px; height: 600px; background: var(--purple); bottom: -200px; right: -150px; animation: drift 22s ease-in-out infinite alternate-reverse; }
-    .orb-3 { width: 400px; height: 400px; background: var(--amber);  top: 50%; left: 50%; transform: translate(-50%,-50%); animation: drift 14s ease-in-out infinite alternate; }
-    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(40px, 30px) scale(1.08); } }
+    .orb-2 {
+      width: 800px; height: 650px;
+      background: radial-gradient(ellipse, #7c3aed 0%, #a855f7 45%, transparent 70%);
+      opacity: .26; bottom: -260px; right: -200px;
+      animation: aurora-2 16s ease-in-out infinite;
+    }
+    .orb-3 {
+      width: 600px; height: 500px;
+      background: radial-gradient(ellipse, #d97706 0%, #f59e0b 50%, transparent 70%);
+      opacity: .18; top: 40%; left: 45%;
+      animation: aurora-3 10s ease-in-out infinite;
+    }
+    .orb-4 {
+      width: 700px; height: 550px;
+      background: radial-gradient(ellipse, #0891b2 0%, #06b6d4 50%, transparent 70%);
+      opacity: .20; top: -180px; right: -180px;
+      animation: aurora-4 14s ease-in-out infinite;
+    }
+    .orb-5 {
+      width: 1100px; height: 350px; border-radius: 50%;
+      background: radial-gradient(ellipse, #059669 0%, #10b981 30%, transparent 65%);
+      opacity: .14; bottom: 5%; left: -10%;
+      animation: aurora-5 18s ease-in-out infinite;
+    }
+    @keyframes aurora-1 {
+      0%   { transform: translate(0px,0px)    scale(1)    rotate(0deg);  opacity:.30; }
+      20%  { transform: translate(80px,40px)  scale(1.1)  rotate(5deg);  opacity:.42; }
+      40%  { transform: translate(40px,100px) scale(.95)  rotate(-3deg); opacity:.24; }
+      60%  { transform: translate(120px,60px) scale(1.15) rotate(8deg);  opacity:.38; }
+      80%  { transform: translate(20px,80px)  scale(1.05) rotate(-5deg); opacity:.28; }
+      100% { transform: translate(0px,0px)    scale(1)    rotate(0deg);  opacity:.30; }
+    }
+    @keyframes aurora-2 {
+      0%   { transform: translate(0px,0px)     scale(1)    rotate(0deg);  opacity:.26; }
+      25%  { transform: translate(-90px,-50px) scale(1.12) rotate(-6deg); opacity:.38; }
+      50%  { transform: translate(-40px,-110px)scale(.92)  rotate(4deg);  opacity:.20; }
+      75%  { transform: translate(-120px,-30px)scale(1.08) rotate(-9deg); opacity:.32; }
+      100% { transform: translate(0px,0px)     scale(1)    rotate(0deg);  opacity:.26; }
+    }
+    @keyframes aurora-3 {
+      0%   { transform: translate(-50%,-50%) scale(1)   rotate(0deg);  opacity:.18; }
+      30%  { transform: translate(-45%,-55%) scale(1.2) rotate(10deg); opacity:.28; }
+      60%  { transform: translate(-55%,-45%) scale(.85) rotate(-8deg); opacity:.12; }
+      100% { transform: translate(-50%,-50%) scale(1)   rotate(0deg);  opacity:.18; }
+    }
+    @keyframes aurora-4 {
+      0%   { transform: translate(0px,0px)    scale(1)   rotate(0deg);  opacity:.20; }
+      35%  { transform: translate(-60px,70px) scale(1.1) rotate(-7deg); opacity:.32; }
+      70%  { transform: translate(-100px,30px)scale(.9)  rotate(5deg);  opacity:.14; }
+      100% { transform: translate(0px,0px)    scale(1)   rotate(0deg);  opacity:.20; }
+    }
+    @keyframes aurora-5 {
+      0%   { transform: translateX(0%)  scaleX(1);    opacity:.14; }
+      40%  { transform: translateX(8%)  scaleX(1.15); opacity:.22; }
+      70%  { transform: translateX(-5%) scaleX(.9);   opacity:.09; }
+      100% { transform: translateX(0%)  scaleX(1);    opacity:.14; }
+    }
 
     /* ── 레이아웃 ── */
     .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
@@ -250,13 +319,42 @@
     /* ── 푸터 ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 40px 0;
-      text-align: center;
+      padding: 56px 0 40px;
       color: var(--muted);
       font-size: .82rem;
     }
     footer a { color: var(--green2); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
+    .footer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px; margin-bottom: 40px; text-align: left;
+    }
+    .footer-col h4 {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #64748b; margin-bottom: 12px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .footer-col li { font-size: .82rem; color: var(--muted); line-height: 1.5; }
+    .footer-col li a { color: var(--muted); }
+    .footer-col li a:hover { color: var(--green2); }
+    .footer-divider { border: none; border-top: 1px solid var(--border); margin: 0 0 28px; }
+    .footer-bottom {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      align-items: center; justify-content: space-between;
+    }
+    .footer-credit { font-size: .8rem; color: #475569; line-height: 1.7; }
+    .footer-credit strong { color: var(--muted); }
+    .btn-guide {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 20px; border-radius: 999px; font-size: .82rem; font-weight: 600;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-guide:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.15); text-decoration: none; }
+    @media (max-width: 640px) {
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
 
     /* ── 반응형 ── */
     @media (max-width: 640px) {
@@ -279,6 +377,8 @@
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
   <div class="orb orb-3"></div>
+  <div class="orb orb-4"></div>
+  <div class="orb orb-5"></div>
 </div>
 
 <!-- NAV -->
@@ -288,7 +388,10 @@
       <span class="logo-icon">📖</span>
       <span class="logo-text">성경 마인드맵</span>
     </a>
-    <a href="./app/" class="nav-enter">앱 열기 →</a>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <a href="./guide.html" style="font-size:.85rem;color:#94a3b8;text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.07);transition:all .2s;" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='none'">📋 가이드</a>
+      <a href="./app/" class="nav-enter">앱 열기 →</a>
+    </div>
   </div>
 </nav>
 
@@ -358,11 +461,11 @@
       <div class="feat-card blue fade-up">
         <div class="feat-icon blue">📜</div>
         <h3>원문 성경 탭</h3>
-        <p>구절 노드에서 한국어 번역과 함께 SBLGNT 헬라어 신약 / WLC 히브리어 구약 / LXX 칠십인역을 나란히 봅니다.</p>
+        <p>구절 노드에서 개역한글·ESV 번역과 함께 NTGT 헬라어 신약 / WLC 히브리어 구약 원문을 나란히 봅니다.</p>
         <div class="feat-tags">
-          <span class="feat-tag blue">SBLGNT</span>
-          <span class="feat-tag blue">WLC</span>
-          <span class="feat-tag blue">LXX Rahlfs</span>
+          <span class="feat-tag blue">NTGT 헬라어</span>
+          <span class="feat-tag blue">WLC 히브리어</span>
+          <span class="feat-tag blue">개역한글 · ESV</span>
         </div>
       </div>
 
@@ -400,7 +503,7 @@
     <div class="original-grid fade-up">
       <div class="orig-card">
         <div class="orig-word">🔤</div>
-        <div class="orig-name">Greek NT · SBLGNT</div>
+        <div class="orig-name">Greek NT · NTGT</div>
         <div class="orig-sample">Ἐν ἀρχῇ ἦν ὁ Λόγος</div>
         <div class="orig-sub">요한복음 1:1 — 헬라어 원문</div>
       </div>
@@ -431,8 +534,8 @@
         <div class="stat-label">캔버스 노드 타입</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">3종</div>
-        <div class="stat-label">원문 텍스트</div>
+        <div class="stat-num">2종</div>
+        <div class="stat-label">원문 텍스트 (헬라어·히브리어)</div>
       </div>
     </div>
   </div>
@@ -454,17 +557,55 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <p>
-      📖 성경 마인드맵 &nbsp;·&nbsp;
-      원문 데이터: <a href="https://github.com/STEPBible/STEPBible-Data" target="_blank">STEPBible CC-BY</a> &nbsp;·&nbsp;
-      인물/장소: <a href="https://www.wikidata.org" target="_blank">Wikidata</a> &nbsp;·&nbsp;
-      <a href="https://github.com/parkminhyun0/bible-mindmap" target="_blank">GitHub</a>
-    </p>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>원문 성경 데이터</h4>
+        <ul>
+          <li><a href="https://github.com/STEPBible/STEPBible-Data" target="_blank">STEPBible TAGNT / TAHOT</a><br/>헬라어·히브리어 형태소 분석 (CC BY 4.0)</li>
+          <li>NTGT — 헬라어 신약 원문</li>
+          <li>WLC (Westminster Leningrad Codex) — 히브리어 구약</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>번역 및 사전</h4>
+        <ul>
+          <li><a href="https://bolls.life" target="_blank">Bolls.life API</a><br/>KRV 개역한글 · ESV · Strong 사전 (BDB / Greek Lexicon)</li>
+          <li><a href="https://openbible.info" target="_blank">OpenBible.info</a><br/>교차 참조 (Cross-Reference) 데이터</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>인물 · 장소 데이터</h4>
+        <ul>
+          <li><a href="https://www.wikidata.org" target="_blank">Wikidata</a><br/>성경 인물 · 장소 정보 (CC0)</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>링크</h4>
+        <ul>
+          <li><a href="./app/" target="_blank">앱 열기</a></li>
+          <li><a href="./guide.html">사용 가이드</a></li>
+          <li><a href="https://github.com/parkminhyun0/bible-mindmap" target="_blank">GitHub 소스</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-bottom">
+      <div class="footer-credit">
+        <strong>PARK MIN HYUN</strong> &nbsp;·&nbsp;
+        Built with <strong>Jarvis</strong> (claude-sonnet · 2026) &nbsp;·&nbsp;
+        📖 성경 마인드맵
+      </div>
+      <a href="./guide.html" class="btn-guide">📋 사용 가이드 보기</a>
+    </div>
+
   </div>
 </footer>
 
 <script>
-  // 스크롤 등장 애니메이션
+  // ── 스크롤 등장 애니메이션 ──
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
     { threshold: 0.12 }

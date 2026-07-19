@@ -5,17 +5,6 @@ import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
 
-// 원어 문자 정규화 — 문장부호·발음기호·형태소 구분자 제거
-function normalizeOriginal(s) {
-  if (!s) return '';
-  return String(s)
-    .normalize('NFD').replace(/[̀-֑ͯ-ׇ]/g, '')
-    .replace(/[\/\\]/g, '')
-    .replace(/[·.,;:!?"'()\[\]«»‹›—–]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
   { type: 'echo',      label: '반향',  color: '#ca8a04', bg: '#fefce8' },
@@ -38,7 +27,6 @@ export default function VerseNode({ id, data, selected }) {
   const fontSize = data.fontSize || 13;
 
   const hasMulti = !!data.bookId;
-  const visibleTabs = TABS;
 
   // Count edges by type for this node
   const edgeCounts = useMemo(() => {
@@ -111,7 +99,7 @@ export default function VerseNode({ id, data, selected }) {
 
   // ── Lexicon (원어 탭 전용) ─────────────────────────────────────────
   const [lexEntries, setLexEntries] = useState([]);
-  const [popup, setPopup] = useState(null);
+  const [popups, setPopups] = useState([]);
 
   useEffect(() => {
     if (activeTab !== 'original' || !data.bookId) return;
@@ -122,51 +110,26 @@ export default function VerseNode({ id, data, selected }) {
     return () => { cancelled = true; };
   }, [activeTab, data.bookId, data.chapter, data.verseStart]);
 
-  // 원어 탭 텍스트를 단어별 chip으로 렌더링 (선택된 노드에서만 활성화)
+  // lexEntries(STEPBible 원문 단어)를 직접 chip으로 렌더링
   const renderOriginalWithLexicon = () => {
-    if (!displayText || !selected) return null;
-    // HTML → 텍스트
-    const doc = new DOMParser().parseFromString(displayText, 'text/html');
-    const text = doc.body.textContent || '';
-    const parts = text.split(/(\s+)/);
-
-    // lemma 인덱스
-    const lexIdx = new Map();
-    const consumed = new Map();
-    for (const e of lexEntries) {
-      const key = normalizeOriginal(e.w);
-      if (!key) continue;
-      if (!lexIdx.has(key)) lexIdx.set(key, []);
-      lexIdx.get(key).push(e);
-    }
-
-    return parts.map((p, i) => {
-      if (/^\s+$/.test(p)) return <span key={i} style={{ whiteSpace: 'pre' }}>{p}</span>;
-      if (!p) return null;
-      const key = normalizeOriginal(p);
-      const bucket = lexIdx.get(key);
-      const nth = consumed.get(key) || 0;
-      const entry = bucket?.[nth] || bucket?.[bucket ? bucket.length - 1 : 0];
-      if (bucket) consumed.set(key, nth + 1);
-      const hasLex = !!entry;
-      return (
+    if (!selected) return null;
+    return lexEntries.map((e, i) => (
+      <span key={i}>
         <span
-          key={i}
-          onClick={hasLex ? (e) => {
-            e.stopPropagation();
-            setPopup({ entry, anchor: { x: e.clientX, y: e.clientY } });
-          } : undefined}
-          className={hasLex ? 'nodrag' : undefined}
-          style={{
-            cursor: hasLex ? 'pointer' : 'default',
-            borderBottom: hasLex ? '1px dotted #8b5cf6' : 'none',
+          onClick={(ev) => {
+            ev.stopPropagation();
+            const rect = ev.currentTarget.getBoundingClientRect();
+            setPopups(prev => [...prev, { id: Date.now(), entry: e, anchor: { x: rect.left + rect.width / 2, y: rect.bottom } }]);
           }}
-          title={hasLex ? `${entry.tr || ''} · ${entry.s || ''} · ${entry.g || ''} — 클릭: 어형 카드` : undefined}
+          className="nodrag"
+          style={{ cursor: 'pointer', borderBottom: '1px dotted #8b5cf6' }}
+          title={`${e.tr || ''} · ${e.s || ''} · ${e.g || ''} — 클릭: 어형 카드`}
         >
-          {p}
+          {e.w}
         </span>
-      );
-    });
+        {' '}
+      </span>
+    ));
   };
 
   return (
@@ -238,7 +201,7 @@ export default function VerseNode({ id, data, selected }) {
       {/* Translation tabs */}
       {hasMulti && (
         <div style={{ display: 'flex', gap: 2, marginBottom: 8, flexWrap: 'wrap' }}>
-          {visibleTabs.map((t) => (
+          {TABS.map((t) => (
             <button
               key={t.id}
               onClick={() => handleTabClick(t.id)}
@@ -265,7 +228,7 @@ export default function VerseNode({ id, data, selected }) {
       {isLoading ? (
         <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
       ) : activeTab === 'original' && selected && lexEntries.length > 0 ? (
-        <div style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: 'SBL BibLit, Cardo, serif' }}>
+        <div style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}>
           {renderOriginalWithLexicon()}
           <div style={{ fontSize: 9, color: '#94a3b8', marginTop: 4 }}>
             💡 밑줄 단어 클릭 → 어형 분석
@@ -288,13 +251,15 @@ export default function VerseNode({ id, data, selected }) {
       <Handle type="source" position={Position.Bottom} id="bottom" style={{ background: borderColor }} />
       <Handle type="target" position={Position.Top}    id="top"    style={{ background: borderColor }} />
 
-      {popup && (
+      {popups.map((p) => (
         <LexiconPopup
-          entry={popup.entry}
-          anchor={popup.anchor}
-          onClose={() => setPopup(null)}
+          key={p.id}
+          entry={p.entry}
+          anchor={p.anchor}
+          bookId={data.bookId}
+          onClose={() => setPopups((prev) => prev.filter((x) => x.id !== p.id))}
         />
-      )}
+      ))}
     </div>
   );
 }

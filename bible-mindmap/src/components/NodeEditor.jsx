@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import useMobile from '../hooks/useMobile';
 import { searchContemporaries, searchPersonsAtPlace } from '../api/wikidataApi';
+import { fetchCrossRefs } from '../api/crossrefApi';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
@@ -33,7 +34,7 @@ const TEXT_COLORS = [
 
 const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 50];
 
-export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary }) {
+export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
   const [editData, setEditData] = useState(null);
   const [, setTick] = useState(0);
   const [tagInput, setTagInput] = useState('');
@@ -41,6 +42,8 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
   const [contError, setContError] = useState('');
   const [placePersons, setPlacePersons] = useState(null); // null | 'loading' | []
   const [placePersonError, setPlacePersonError] = useState('');
+  const [crossRefs, setCrossRefs] = useState(null); // null | 'loading' | []
+  const [crossRefError, setCrossRefError] = useState('');
 
   // 방금 로컬 편집으로 저장한 (nodeId, tab, html) — 이 값이 data로 되돌아오면 setContent 스킵
   const lastLocalEditRef = useRef({ nodeId: null, tab: null, html: null });
@@ -76,6 +79,8 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
       setContError('');
       setPlacePersons(null);
       setPlacePersonError('');
+      setCrossRefs(null);
+      setCrossRefError('');
       return;
     }
     // 다른 노드로 전환 시 관련 인물 패널 닫기
@@ -84,6 +89,8 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
       setContError('');
       setPlacePersons(null);
       setPlacePersonError('');
+      setCrossRefs(null);
+      setCrossRefError('');
     }
     const newData = { ...selectedNode.data };
     setEditData(newData);
@@ -205,6 +212,27 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
     } catch (err) {
       setContemporaries([]);
       setContError('검색 오류: ' + err.message);
+    }
+  };
+
+  // 교차 참조 검색 (verse 노드 전용)
+  const handleFetchCrossRefs = async () => {
+    if (!hasNode || nodeType !== 'verse') return;
+    const { bookId, chapter, verseStart } = editData || {};
+    if (!bookId || chapter == null || verseStart == null) {
+      setCrossRefError('구절 정보가 없습니다.');
+      setCrossRefs([]);
+      return;
+    }
+    setCrossRefs('loading');
+    setCrossRefError('');
+    try {
+      const results = await fetchCrossRefs(bookId, chapter, verseStart);
+      setCrossRefs(results);
+      if (results.length === 0) setCrossRefError('교차 참조 구절을 찾지 못했습니다.');
+    } catch (err) {
+      setCrossRefs([]);
+      setCrossRefError('검색 오류: ' + err.message);
     }
   };
 
@@ -598,7 +626,65 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
           >
             🔤 단어 페어링 (병렬 뷰)
           </button>
+
+          <div style={{ width: 1, height: 20, background: '#e2e8f0', margin: '0 4px' }} />
+
+          <button
+            onClick={() => {
+              if (crossRefs !== null) { setCrossRefs(null); setCrossRefError(''); }
+              else handleFetchCrossRefs();
+            }}
+            disabled={!canPair}
+            title="이 구절과 연결된 교차 참조 구절 목록"
+            style={{
+              padding: '3px 10px', fontSize: 11, fontWeight: 600, border: 'none', borderRadius: 4,
+              background: crossRefs !== null ? '#f1f5f9' : (canPair ? '#ecfdf5' : '#e2e8f0'),
+              color: crossRefs !== null ? '#64748b' : (canPair ? '#065f46' : '#94a3b8'),
+              cursor: canPair ? 'pointer' : 'default',
+              borderLeft: canPair && crossRefs === null ? '2px solid #10b981' : 'none',
+            }}
+          >
+            🔗 교차 참조
+          </button>
         </div>
+      )}
+
+      {/* 교차 참조 결과 패널 */}
+      {hasNode && nodeType === 'verse' && editData?.bookId && (
+        <>
+          {crossRefs === 'loading' && (
+            <div style={{ fontSize: 11, color: '#64748b', padding: '4px 8px' }}>🔍 교차 참조 검색 중…</div>
+          )}
+          {crossRefError && (
+            <div style={{ fontSize: 11, color: '#ef4444', padding: '2px 4px' }}>{crossRefError}</div>
+          )}
+          {Array.isArray(crossRefs) && crossRefs.length > 0 && (
+            <div style={{
+              border: '1px solid #6ee7b7', borderRadius: 6, background: '#f0fdf4',
+              maxHeight: 180, overflowY: 'auto',
+            }}>
+              {crossRefs.map((ref, i) => (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 6,
+                  padding: '5px 8px', borderBottom: '1px solid #d1fae5',
+                }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: '#065f46' }}>📖 {ref.reference}</span>
+                    <span style={{ fontSize: 9, color: '#6b7280', marginLeft: 6 }}>투표 {ref.votes}</span>
+                  </div>
+                  <button
+                    onClick={() => onAddCrossRef && onAddCrossRef(ref, selectedNode?.id)}
+                    style={{
+                      padding: '3px 8px', fontSize: 11, fontWeight: 700,
+                      background: '#059669', color: '#fff',
+                      border: 'none', borderRadius: 4, cursor: 'pointer', flexShrink: 0,
+                    }}
+                  >+ 추가</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
       )}
 
       {/* 병렬 뷰 모달 */}
@@ -881,7 +967,7 @@ const activeStyle = { background: '#3b82f6', color: '#fff' };
 const barStyle = {
   position: 'absolute',
   top: 0, left: 0, right: 0,
-  zIndex: 10,
+  zIndex: 25,
   display: 'flex',
   flexDirection: 'column',
   gap: 4,

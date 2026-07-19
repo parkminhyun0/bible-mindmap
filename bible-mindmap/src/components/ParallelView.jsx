@@ -1,23 +1,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import { fetchVerse } from '../api/bibleApi';
+import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
+import { normalizeOriginal } from '../utils/normalizeOriginal';
 import LexiconPopup from './LexiconPopup';
-
-// 원어 문자 정규화 — chip 텍스트를 STEPBible 단어와 매칭하기 위한 키
-// 문장부호, 결합 발음기호(악센트/breathing/nikkud), 히브리 morpheme 구분자를 제거
-function normalizeOriginal(s) {
-  if (!s) return '';
-  return String(s)
-    // combining diacritics (accents, breathing marks, nikkud, cantillation)
-    .normalize('NFD').replace(/[̀-֑ͯ-ׇ]/g, '')
-    // Hebrew morpheme separator '/' inside TAGNT/TAHOT words
-    .replace(/[\/\\]/g, '')
-    // punctuation
-    .replace(/[·.,;:!?"'()\[\]«»‹›—–]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
 /**
  * 3단 병렬 뷰 모달 — 세 역본의 단어를 chip으로 표시하고
  * 클릭·연결·색칠로 대응 관계를 만든다.
@@ -170,8 +156,6 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 로딩/에러 상태
   const [loading, setLoading] = useState({ krv: false, esv: false, original: false });
   const [errors, setErrors] = useState({});
-  // 원본 fetch 텍스트 캐시 — 저장 시 사용자가 편집하지 않은 열은 그대로 보존
-  const [fetchedRaw, setFetchedRaw] = useState({});
 
   // 열별로 현재 선택된 chip 인덱스 목록
   const [selected, setSelected] = useState({ krv: [], esv: [], original: [] });
@@ -208,8 +192,8 @@ export default function ParallelView({ node, onSave, onClose }) {
   }, [node.data.bookId, node.data.chapter, node.data.verseStart]);
 
   // 원어 chip 텍스트 → STEPBible entry 매칭 (동일 normalize 키)
-  const originalTokens = tokensByTab.original || [];
   const lexByChip = useMemo(() => {
+    const tokens = tokensByTab.original || [];
     if (!lexEntries.length) return new Map();
     // 각 lex entry의 정규화 키 → entry 배열 (동일 단어가 여러 번 나올 수 있음)
     const idx = new Map();
@@ -221,8 +205,8 @@ export default function ParallelView({ node, onSave, onClose }) {
     }
     // chip index → lex entry (같은 키가 여러 번이면 순서대로 소진)
     const result = new Map();
-    const consumed = new Map(); // key → next index
-    originalTokens.forEach((t, i) => {
+    const consumed = new Map();
+    tokens.forEach((t, i) => {
       if (t.space) return;
       const key = normalizeOriginal(t.text);
       if (!key) return;
@@ -234,10 +218,10 @@ export default function ParallelView({ node, onSave, onClose }) {
       consumed.set(key, nth + 1);
     });
     return result;
-  }, [lexEntries, originalTokens]);
+  }, [lexEntries, tokensByTab]);
 
   // 부족한 역본 자동 로드
-  const loadColumn = async (colId, force = false) => {
+  const loadColumn = async (colId) => {
     const { bookId, chapter, verseStart, verseEnd } = node.data;
     if (!bookId) return;
     setLoading((prev) => ({ ...prev, [colId]: true }));
@@ -245,7 +229,6 @@ export default function ParallelView({ node, onSave, onClose }) {
     try {
       const text = await fetchVerse(bookId, chapter, verseStart, verseEnd, colId);
       setTokensByTab((prev) => ({ ...prev, [colId]: htmlToTokens(text) }));
-      setFetchedRaw((prev) => ({ ...prev, [colId]: text }));
     } catch (err) {
       setErrors((prev) => ({ ...prev, [colId]: err.message || '로드 실패' }));
     } finally {
@@ -414,7 +397,7 @@ export default function ParallelView({ node, onSave, onClose }) {
                     title="글자 크게"
                   >A+</button>
                   <button
-                    onClick={() => loadColumn(col.id, true)}
+                    onClick={() => loadColumn(col.id)}
                     disabled={loading[col.id]}
                     title="이 역본을 서버에서 다시 불러오기"
                     style={{
@@ -432,7 +415,7 @@ export default function ParallelView({ node, onSave, onClose }) {
                 ...chipsWrapStyle,
                 fontFamily: col.font,
                 fontSize: fontSizes[col.id],
-                direction: col.id === 'original' && isRTLBook(node.data.bookId) ? 'rtl' : 'ltr',
+                direction: col.id === 'original' && isOT(node.data.bookId) ? 'rtl' : 'ltr',
               }}>
                 {errors[col.id] && (
                   <div style={{ color: '#ef4444', fontSize: 12, padding: 12, background: '#fef2f2', borderRadius: 6 }}>
@@ -460,7 +443,8 @@ export default function ParallelView({ node, onSave, onClose }) {
                         // Cmd/Ctrl+클릭: 원어 어형 팝업
                         if (col.id === 'original' && hasLex && (e.metaKey || e.ctrlKey)) {
                           e.preventDefault();
-                          setPopup({ entry: lexEntry, anchor: { x: e.clientX, y: e.clientY } });
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          setPopup({ entry: lexEntry, anchor: { x: rect.left + rect.width / 2, y: rect.bottom } });
                           return;
                         }
                         if (e.shiftKey && t.syncId) selectWholeGroup(t.syncId);
@@ -535,18 +519,12 @@ export default function ParallelView({ node, onSave, onClose }) {
         <LexiconPopup
           entry={popup.entry}
           anchor={popup.anchor}
+          bookId={node.data.bookId}
           onClose={() => setPopup(null)}
         />
       )}
     </div>
   );
-}
-
-// 히브리어(구약) 여부 — 원어 열 RTL 지원
-function isRTLBook(bookId) {
-  if (!bookId) return false;
-  const OT = ['gen','exo','lev','num','deu','jos','jdg','rut','1sa','2sa','1ki','2ki','1ch','2ch','ezr','neh','est','job','psa','pro','ecc','sng','isa','jer','lam','ezk','dan','hos','jol','amo','oba','jon','mic','nam','hab','zep','hag','zec','mal'];
-  return OT.includes(bookId);
 }
 
 // ── styles ────────────────────────────────────────────────────────────────

@@ -22,6 +22,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
 const RAW_DIR = '/tmp/stepbible-raw';
 const OUT_DIR = path.join(REPO_ROOT, 'public/data/lex');
+const STRONGS_DIR = path.join(REPO_ROOT, 'public/data/strongs');
 
 const BASE_URL = 'https://raw.githubusercontent.com/STEPBible/STEPBible-Data/master/Translators%20Amalgamated%20OT%2BNT';
 
@@ -193,21 +194,47 @@ async function processFile(src) {
     processed++;
   }
 
-  console.log(`  ↳ ${processed.toLocaleString()} words → writing chapter files`);
+  console.log(`  ↳ ${processed.toLocaleString()} words → writing chapter files + Strong index`);
+
+  // Strong 인덱스: { strongNum → [{ch, v, w, m, l}] } per book
+  // key: bookId → Map<strongNum, [{ch,v,w,m,l}]>
+  const strongIndex = new Map(); // bookId → Map<s, entries[]>
 
   for (const [bookId, chMap] of byBook) {
     const bookDir = path.join(OUT_DIR, src.lang, bookId);
     await fs.mkdir(bookDir, { recursive: true });
+
+    if (!strongIndex.has(bookId)) strongIndex.set(bookId, new Map());
+    const sMap = strongIndex.get(bookId);
+
     for (const [chapter, vMap] of chMap) {
       const obj = {};
-      // verse 순서 정렬
       for (const v of [...vMap.keys()].sort((a, b) => a - b)) {
-        obj[v] = vMap.get(v);
+        const words = vMap.get(v);
+        obj[v] = words;
+        // Strong 인덱스에 추가 (w, m, l만 — 글로스는 팝업에 이미 있음)
+        for (const word of words) {
+          if (!word.s) continue;
+          if (!sMap.has(word.s)) sMap.set(word.s, []);
+          sMap.get(word.s).push({ ch: chapter, v, w: word.w, m: word.m || '', l: word.l || '' });
+        }
       }
       const outfile = path.join(bookDir, `${chapter}.json`);
       await fs.writeFile(outfile, JSON.stringify(obj));
     }
   }
+
+  // Strong 인덱스 파일 저장: public/data/strongs/{lang}/{bookId}.json
+  const strongsLangDir = path.join(STRONGS_DIR, src.lang);
+  await fs.mkdir(strongsLangDir, { recursive: true });
+  for (const [bookId, sMap] of strongIndex) {
+    const obj = {};
+    for (const [s, entries] of sMap) {
+      obj[s] = entries;
+    }
+    await fs.writeFile(path.join(strongsLangDir, `${bookId}.json`), JSON.stringify(obj));
+  }
+  console.log(`  ↳ Strong index written to ${strongsLangDir}/`);
 }
 
 async function writeManifest() {
@@ -227,6 +254,79 @@ async function writeManifest() {
   console.log('\n✓ manifest.json written');
 }
 
+// ── Strong's 정의 사전 (openscriptures/strongs, Public Domain) ──────────────
+// 청킹 전략: chunk = floor((strongNum - 1) / 1000) — 인덱스 파일 불필요
+const CHUNK_SIZE = 1000;
+const DEF_DIR = path.join(REPO_ROOT, 'public/data/strongs-def');
+
+const STRONGS_DICT_URLS = {
+  gnt: [
+    'https://raw.githubusercontent.com/openscriptures/strongs/master/greek/strongs-greek-dictionary.js',
+    'https://raw.githubusercontent.com/openscriptures/strongs/master/strongs-greek-dictionary.js',
+  ],
+  hot: [
+    'https://raw.githubusercontent.com/openscriptures/strongs/master/hebrew/strongs-hebrew-dictionary.js',
+    'https://raw.githubusercontent.com/openscriptures/strongs/master/strongs-hebrew-dictionary.js',
+  ],
+};
+
+async function fetchFirstOk(urls) {
+  for (const url of urls) {
+    try {
+      const r = await fetch(url);
+      if (r.ok) { console.log(`  ✓ got: ${url}`); return r; }
+    } catch { /* try next */ }
+  }
+  throw new Error(`All URLs failed:\n  ${urls.join('\n  ')}`);
+}
+
+function parseStrongsJs(text) {
+  // 파일 형식: var/const X = { ... }; 또는 module.exports = { ... }
+  const start = text.indexOf('{');
+  const end   = text.lastIndexOf('}');
+  if (start < 0 || end < 0) throw new Error('JSON object not found in strongs JS');
+  return JSON.parse(text.slice(start, end + 1));
+}
+
+async function buildStrongsDefChunks(lang) {
+  console.log(`\n▶ Strong's def dictionary: ${lang}`);
+  const res  = await fetchFirstOk(STRONGS_DICT_URLS[lang]);
+  const text = await res.text();
+  const raw  = parseStrongsJs(text);
+
+  // 키 정규화: "G0001" / "G1" 모두 "G1" 형태로
+  const prefix = lang === 'gnt' ? 'G' : 'H';
+  const entries = Object.entries(raw).map(([k, v]) => {
+    const num = parseInt(k.replace(/^[GH]/, ''), 10);
+    const key = `${prefix}${num}`;
+    return [key, {
+      d: v.strongs_def || v.definition || v.def || '',
+      e: v.derivation  || '',             // etymology
+      k: v.kjv_def     || v.kjv || '',
+      l: v.lemma        || '',
+      t: v.translit     || v.pronunciation || '',
+    }];
+  });
+  console.log(`  ↳ ${entries.length} entries`);
+
+  // 청크로 분할해 저장
+  const outDir = path.join(DEF_DIR, lang);
+  await fs.mkdir(outDir, { recursive: true });
+
+  const chunks = new Map(); // chunkIdx → { key: entry }
+  for (const [key, val] of entries) {
+    const num = parseInt(key.slice(1), 10);
+    const ci  = Math.floor((num - 1) / CHUNK_SIZE);
+    if (!chunks.has(ci)) chunks.set(ci, {});
+    chunks.get(ci)[key] = val;
+  }
+
+  for (const [ci, obj] of chunks) {
+    await fs.writeFile(path.join(outDir, `${ci}.json`), JSON.stringify(obj));
+  }
+  console.log(`  ↳ ${chunks.size} chunk files → ${outDir}`);
+}
+
 async function main() {
   await fs.mkdir(RAW_DIR, { recursive: true });
   await fs.mkdir(OUT_DIR, { recursive: true });
@@ -234,6 +334,14 @@ async function main() {
     await processFile(src);
   }
   await writeManifest();
+
+  // Strong's 정의 사전 빌드 (실패해도 전체는 중단 안 함)
+  for (const lang of ['gnt', 'hot']) {
+    await buildStrongsDefChunks(lang).catch(e =>
+      console.warn(`  ⚠ strongs-def ${lang} skipped:`, e.message)
+    );
+  }
+
   console.log('\n✅ done. Output:', OUT_DIR);
 }
 
