@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Generated lexicon data (built by scripts/build-lexicon.mjs during CI)
+public/data/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

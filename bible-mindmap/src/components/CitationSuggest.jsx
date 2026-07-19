@@ -1,5 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { buildSuggestions, formatReference } from '../utils/citationDetector';
+import useMobile from '../hooks/useMobile';
+
+const OFFSET_KEY = 'citation-suggest-offset-v1';
+
+function loadOffset() {
+  try {
+    return JSON.parse(localStorage.getItem(OFFSET_KEY)) || { x: 0, y: 0 };
+  } catch { return { x: 0, y: 0 }; }
+}
 
 export default function CitationSuggest({
   selectedNode,
@@ -9,11 +18,42 @@ export default function CitationSuggest({
   onConnectExisting,
   onAddAll,
 }) {
+  const isMobile = useMobile();
   const [suggestions, setSuggestions] = useState([]);
   const [loadingSuggestions, setLoadingSuggestions] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
   const [loadingKey, setLoadingKey] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
+  const [offset, setOffset] = useState(loadOffset);
+  const dragStartRef = useRef(null);
+
+  const startDrag = (e) => {
+    if (isMobile) return;
+    e.preventDefault();
+    dragStartRef.current = { mx: e.clientX, my: e.clientY, ox: offset.x, oy: offset.y };
+    const move = (ev) => {
+      const s = dragStartRef.current;
+      if (!s) return;
+      setOffset({ x: s.ox + (ev.clientX - s.mx), y: s.oy + (ev.clientY - s.my) });
+    };
+    const up = () => {
+      dragStartRef.current = null;
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+      // 위치 저장 — 이때 최신 offset 값을 읽기 위해 setOffset의 함수형 업데이트 사용
+      setOffset((cur) => {
+        try { localStorage.setItem(OFFSET_KEY, JSON.stringify(cur)); } catch {}
+        return cur;
+      });
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  const resetPosition = () => {
+    setOffset({ x: 0, y: 0 });
+    try { localStorage.removeItem(OFFSET_KEY); } catch {}
+  };
 
   // 선택 노드 변경 시 제안 목록 (재)로드 — buildSuggestions는 이제 async
   useEffect(() => {
@@ -26,20 +66,31 @@ export default function CitationSuggest({
     setCollapsed(false);
     setErrorMsg('');
     setLoadingKey(null);
-    buildSuggestions(selectedNode, nodes, edges).then((result) => {
-      if (!cancelled) {
-        setSuggestions(result);
-        setLoadingSuggestions(false);
-      }
-    });
+    buildSuggestions(selectedNode, nodes, edges)
+      .then((result) => {
+        if (!cancelled) {
+          setSuggestions(result);
+          setLoadingSuggestions(false);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setLoadingSuggestions(false);
+      });
     return () => { cancelled = true; };
   // nodes/edges 변경 시에도 재계산 (연결 상태 갱신)
   }, [selectedNode?.id, nodes, edges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!selectedNode || selectedNode.type !== 'verse') return null;
+
+  const mobilePanelStyle = isMobile
+    ? { ...panelStyle, left: 8, right: 8, width: 'auto', top: 46, maxHeight: '60vh', overflowY: 'auto', zIndex: 20 }
+    : { ...panelStyle, transform: `translate(${offset.x}px, ${offset.y}px)` };
+
+  const stopProp = (e) => { e.stopPropagation(); };
+
   if (loadingSuggestions) {
     return (
-      <div style={panelStyle}>
+      <div style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
         <div style={headerStyle}>
           <span style={titleStyle}>🔗 교차 참조 로딩 중…</span>
         </div>
@@ -83,19 +134,39 @@ export default function CitationSuggest({
   const crossrefSuggs = suggestions.filter((s) => s.isCrossref);
   const firstNote = manualSuggs[0]?.note;
 
+  const dragged = offset.x !== 0 || offset.y !== 0;
+
   return (
-    <div style={panelStyle}>
-      <div style={headerStyle}>
+    <div style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
+      <div
+        style={{ ...headerStyle, cursor: isMobile ? 'default' : 'move', userSelect: 'none' }}
+        onMouseDown={startDrag}
+        title={isMobile ? '' : '드래그하여 이동'}
+      >
         <span style={titleStyle}>
+          {!isMobile && <span style={{ color: '#cbd5e1', marginRight: 4 }}>⋮⋮</span>}
           🔗 교차 참조 ({suggestions.length}건)
         </span>
-        <button
-          onClick={() => setCollapsed((v) => !v)}
-          style={collapseBtnStyle}
-          title={collapsed ? '펼치기' : '접기'}
-        >
-          {collapsed ? '▼' : '▲'}
-        </button>
+        <div style={{ display: 'flex', gap: 2 }}>
+          {!isMobile && dragged && (
+            <button
+              onClick={resetPosition}
+              onMouseDown={(e) => e.stopPropagation()}
+              style={{ ...collapseBtnStyle, fontSize: 10 }}
+              title="위치 초기화"
+            >
+              ⤺
+            </button>
+          )}
+          <button
+            onClick={() => setCollapsed((v) => !v)}
+            onMouseDown={(e) => e.stopPropagation()}
+            style={collapseBtnStyle}
+            title={collapsed ? '펼치기' : '접기'}
+          >
+            {collapsed ? '▼' : '▲'}
+          </button>
+        </div>
       </div>
 
       {!collapsed && (
@@ -191,7 +262,7 @@ const panelStyle = {
   position: 'absolute',
   top: 96,
   right: 16,
-  zIndex: 8,
+  zIndex: 15,
   width: 320,
   background: '#fff',
   border: '1px solid #e2e8f0',

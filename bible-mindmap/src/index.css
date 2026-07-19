@@ -5,3 +5,17 @@ html, body, #root {
   height: 100%;
   overflow: hidden;
 }
+
+/* 모바일 TipTap 에디터 — ReactFlow touch-action 격리 */
+.node-editor-tiptap--mobile .ProseMirror {
+  touch-action: auto !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  outline: none;
+  min-height: 60px;
+  cursor: text;
+}
+
+.node-editor-tiptap--mobile .ProseMirror p {
+  margin: 0;
+}

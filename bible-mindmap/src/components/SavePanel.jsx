@@ -1,4 +1,35 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const VISITOR_KEY = 'bible-mindmap-visitor';
+const COUNTER_URL = 'https://api.counterapi.dev/v1/parkminhyun0-bible-mindmap/visits/up';
+
+function useVisitorCount() {
+  const [count, setCount] = useState(null);
+
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem(VISITOR_KEY) || 'null');
+    const now = Date.now();
+    const ONE_DAY = 24 * 60 * 60 * 1000;
+
+    if (stored && now - stored.ts < ONE_DAY) {
+      setCount(stored.count);
+      return;
+    }
+
+    fetch(COUNTER_URL)
+      .then((r) => r.json())
+      .then((d) => {
+        const n = d.count ?? d.value ?? null;
+        if (n !== null) {
+          setCount(n);
+          localStorage.setItem(VISITOR_KEY, JSON.stringify({ count: n, ts: now }));
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  return count;
+}
 
 const STORAGE_KEY = 'bible-mindmap-saves';
 const OBSIDIAN_DIR_KEY = 'bible-mindmap-obsidian-dir';
@@ -16,22 +47,22 @@ const SEED_FILES = [
         { id: 'topic-center', type: 'topic', position: { x: 480, y: 20 }, data: { title: '막 1:4-8 — 세례 요한과 메시아 예비', keywords: ['세례요한', '회개', '메시아', '성령세례', '엘리야'] } },
 
         // ── 본문 구절 ──
-        { id: 'v-mk1-4', type: 'verse', position: { x: 40, y: 160 }, data: { reference: '막 1:4', text: '세례 요한이 광야에 이르러 죄 사함을 받게 하는 회개의 세례를 전파하니', color: '#3b82f6' } },
-        { id: 'v-mk1-5', type: 'verse', position: { x: 40, y: 340 }, data: { reference: '막 1:5', text: '온 유대 지방과 예루살렘 사람이 다 나아가 자기 죄를 자복하고 요단 강에서 그에게 세례를 받더라', color: '#3b82f6' } },
-        { id: 'v-mk1-6', type: 'verse', position: { x: 40, y: 520 }, data: { reference: '막 1:6', text: '요한이 낙타 털옷을 입고 허리에 가죽 띠를 띠고 메뚜기와 석청을 먹더라', color: '#3b82f6' } },
-        { id: 'v-mk1-7', type: 'verse', position: { x: 480, y: 340 }, data: { reference: '막 1:7', text: '그가 전파하여 이르되 나보다 능력이 많으신 이가 내 뒤에 오시나니 나는 굽혀 그의 신발끈을 풀기도 감당하지 못하겠노라', color: '#ef4444' } },
-        { id: 'v-mk1-8', type: 'verse', position: { x: 480, y: 520 }, data: { reference: '막 1:8', text: '나는 너희에게 물로 세례를 베풀었거니와 그는 성령으로 너희에게 세례를 베푸시리라', color: '#ef4444' } },
+        { id: 'v-mk1-4', type: 'verse', position: { x: 40, y: 160 }, data: { reference: '마가복음 1:4', text: '세례 요한이 광야에 이르러 죄 사함을 받게 하는 회개의 세례를 전파하니', color: '#3b82f6' } },
+        { id: 'v-mk1-5', type: 'verse', position: { x: 40, y: 340 }, data: { reference: '마가복음 1:5', text: '온 유대 지방과 예루살렘 사람이 다 나아가 자기 죄를 자복하고 요단 강에서 그에게 세례를 받더라', color: '#3b82f6' } },
+        { id: 'v-mk1-6', type: 'verse', position: { x: 40, y: 520 }, data: { reference: '마가복음 1:6', text: '요한이 낙타 털옷을 입고 허리에 가죽 띠를 띠고 메뚜기와 석청을 먹더라', color: '#3b82f6' } },
+        { id: 'v-mk1-7', type: 'verse', position: { x: 480, y: 340 }, data: { reference: '마가복음 1:7', text: '그가 전파하여 이르되 나보다 능력이 많으신 이가 내 뒤에 오시나니 나는 굽혀 그의 신발끈을 풀기도 감당하지 못하겠노라', color: '#ef4444' } },
+        { id: 'v-mk1-8', type: 'verse', position: { x: 480, y: 520 }, data: { reference: '마가복음 1:8', text: '나는 너희에게 물로 세례를 베풀었거니와 그는 성령으로 너희에게 세례를 베푸시리라', color: '#ef4444' } },
 
         // ── 구약 배경 ──
-        { id: 'v-2ki-1-8', type: 'verse', position: { x: 40, y: 720 }, data: { reference: '왕하 1:8', text: '그는 털옷을 입고 허리에 가죽 띠를 띤 자니이다. 왕이 이르되 그는 디셉 사람 엘리야이니라', color: '#f59e0b' } },
-        { id: 'v-mal-4-5', type: 'verse', position: { x: 320, y: 720 }, data: { reference: '말 4:5', text: '보라 여호와의 크고 두려운 날이 이르기 전에 내가 선지자 엘리야를 너희에게 보내리니', color: '#f59e0b' } },
+        { id: 'v-2ki-1-8', type: 'verse', position: { x: 40, y: 720 }, data: { reference: '열왕기하 1:8', text: '그는 털옷을 입고 허리에 가죽 띠를 띤 자니이다. 왕이 이르되 그는 디셉 사람 엘리야이니라', color: '#f59e0b' } },
+        { id: 'v-mal-4-5', type: 'verse', position: { x: 320, y: 720 }, data: { reference: '말라기 4:5', text: '보라 여호와의 크고 두려운 날이 이르기 전에 내가 선지자 엘리야를 너희에게 보내리니', color: '#f59e0b' } },
         { id: 'v-isa-44-3', type: 'verse', position: { x: 700, y: 720 }, data: { reference: '이사야 44:3', text: '내가 목마른 자에게 물을 주며 마른 땅에 시내를 흐르게 하며 나의 영을 네 자손에게, 나의 복을 네 후손에게 내리리니', color: '#f59e0b' } },
         { id: 'v-joel-2-28', type: 'verse', position: { x: 700, y: 900 }, data: { reference: '요엘 2:28', text: '그 후에 내가 내 영을 만민에게 부어 주리니 너희 자녀들이 장래 일을 말할 것이며', color: '#f59e0b' } },
 
         // ── 평행 본문 ──
-        { id: 'v-mt3-11', type: 'verse', position: { x: 820, y: 340 }, data: { reference: '마태 3:11-12', text: '나는 너희를 회개하게 하기 위하여 물로 세례를 베풀거니와 내 뒤에 오시는 이는... 성령과 불로 세례를 베푸실 것이요. 손에 키를 들고 타작 마당을 정하게 하사', color: '#10b981' } },
-        { id: 'v-lk3-16', type: 'verse', position: { x: 820, y: 520 }, data: { reference: '누가 3:16', text: '요한이 모든 사람에게 대답하여 이르되 나는 물로 너희에게 세례를 베풀거니와 나보다 능력이 많으신 이가 오시나니... 그는 성령과 불로 너희에게 세례를 베푸실 것이요', color: '#10b981' } },
-        { id: 'v-jn1-26', type: 'verse', position: { x: 820, y: 160 }, data: { reference: '요한 1:26-27', text: '요한이 대답하되 나는 물로 세례를 베풀거니와 너희 가운데 너희가 알지 못하는 한 사람이 섰으니 곧 내 뒤에 오시는 그이라 나는 그의 신발끈을 풀기도 감당하지 못하겠노라', color: '#10b981' } },
+        { id: 'v-mt3-11', type: 'verse', position: { x: 820, y: 340 }, data: { reference: '마태복음 3:11-12', text: '나는 너희를 회개하게 하기 위하여 물로 세례를 베풀거니와 내 뒤에 오시는 이는... 성령과 불로 세례를 베푸실 것이요. 손에 키를 들고 타작 마당을 정하게 하사', color: '#10b981' } },
+        { id: 'v-lk3-16', type: 'verse', position: { x: 820, y: 520 }, data: { reference: '누가복음 3:16', text: '요한이 모든 사람에게 대답하여 이르되 나는 물로 너희에게 세례를 베풀거니와 나보다 능력이 많으신 이가 오시나니... 그는 성령과 불로 너희에게 세례를 베푸실 것이요', color: '#10b981' } },
+        { id: 'v-jn1-26', type: 'verse', position: { x: 820, y: 160 }, data: { reference: '요한복음 1:26-27', text: '요한이 대답하되 나는 물로 세례를 베풀거니와 너희 가운데 너희가 알지 못하는 한 사람이 섰으니 곧 내 뒤에 오시는 그이라 나는 그의 신발끈을 풀기도 감당하지 못하겠노라', color: '#10b981' } },
 
         // ── 주제 노드 ──
         { id: 'topic-repent', type: 'topic', position: { x: 200, y: 160 }, data: { title: '회개와 세례', keywords: ['회개', '세례', '죄사함', '요단강'] } },
@@ -96,21 +127,21 @@ const SEED_FILES = [
         { id: 'rt-topic-center', type: 'topic', position: { x: 440, y: 20 }, data: { title: '룻 2:1-7 — 섭리 안에서의 만남', keywords: ['섭리', '이삭줍기', '보아스', '룻', '기업무를자'] } },
 
         // ── 본문 구절 ──
-        { id: 'rt-v1', type: 'verse', position: { x: 40, y: 160 }, data: { reference: '룻 2:1', text: '나오미의 남편 엘리멜렉의 친족으로 유력한 자가 있으니 그의 이름은 보아스더라', color: '#3b82f6' } },
-        { id: 'rt-v2', type: 'verse', position: { x: 40, y: 340 }, data: { reference: '룻 2:2', text: '모압 여인 룻이 나오미에게 이르되 원하건대 내가 밭으로 가서 내가 누구에게든지 은혜를 입으면 그를 따라서 이삭을 줍겠나이다', color: '#3b82f6' } },
-        { id: 'rt-v3', type: 'verse', position: { x: 40, y: 520 }, data: { reference: '룻 2:3', text: '룻이 가서 베는 자를 따라 밭에서 이삭을 줍는데 우연히 엘리멜렉의 친족 보아스에게 속한 밭에 이르렀더라', color: '#ef4444' } },
-        { id: 'rt-v4', type: 'verse', position: { x: 440, y: 340 }, data: { reference: '룻 2:4', text: '마침 보아스가 베들레헴에서부터 와서 베는 자들에게 이르되 여호와께서 너희와 함께 하시기를 원하노라. 그들이 대답하되 여호와께서 당신에게 복 주시기를 원하나이다', color: '#3b82f6' } },
-        { id: 'rt-v5', type: 'verse', position: { x: 440, y: 520 }, data: { reference: '룻 2:5', text: '보아스가 베는 자들을 거느린 사환에게 이르되 이는 누구의 소녀냐', color: '#3b82f6' } },
-        { id: 'rt-v6', type: 'verse', position: { x: 440, y: 680 }, data: { reference: '룻 2:6', text: '베는 자를 거느린 사환이 대답하여 이르되 이는 나오미와 함께 모압 지방에서 돌아온 모압 소녀인데', color: '#3b82f6' } },
-        { id: 'rt-v7', type: 'verse', position: { x: 40, y: 680 }, data: { reference: '룻 2:7', text: '그가 말하기를 베는 자를 따라서 단 사이에서 이삭을 줍게 하소서 하고 아침부터 지금까지 쉬지 않고 잠깐 집에서 쉬었을 뿐이니이다', color: '#3b82f6' } },
+        { id: 'rt-v1', type: 'verse', position: { x: 40, y: 160 }, data: { reference: '룻기 2:1', text: '나오미의 남편 엘리멜렉의 친족으로 유력한 자가 있으니 그의 이름은 보아스더라', color: '#3b82f6' } },
+        { id: 'rt-v2', type: 'verse', position: { x: 40, y: 340 }, data: { reference: '룻기 2:2', text: '모압 여인 룻이 나오미에게 이르되 원하건대 내가 밭으로 가서 내가 누구에게든지 은혜를 입으면 그를 따라서 이삭을 줍겠나이다', color: '#3b82f6' } },
+        { id: 'rt-v3', type: 'verse', position: { x: 40, y: 520 }, data: { reference: '룻기 2:3', text: '룻이 가서 베는 자를 따라 밭에서 이삭을 줍는데 우연히 엘리멜렉의 친족 보아스에게 속한 밭에 이르렀더라', color: '#ef4444' } },
+        { id: 'rt-v4', type: 'verse', position: { x: 440, y: 340 }, data: { reference: '룻기 2:4', text: '마침 보아스가 베들레헴에서부터 와서 베는 자들에게 이르되 여호와께서 너희와 함께 하시기를 원하노라. 그들이 대답하되 여호와께서 당신에게 복 주시기를 원하나이다', color: '#3b82f6' } },
+        { id: 'rt-v5', type: 'verse', position: { x: 440, y: 520 }, data: { reference: '룻기 2:5', text: '보아스가 베는 자들을 거느린 사환에게 이르되 이는 누구의 소녀냐', color: '#3b82f6' } },
+        { id: 'rt-v6', type: 'verse', position: { x: 440, y: 680 }, data: { reference: '룻기 2:6', text: '베는 자를 거느린 사환이 대답하여 이르되 이는 나오미와 함께 모압 지방에서 돌아온 모압 소녀인데', color: '#3b82f6' } },
+        { id: 'rt-v7', type: 'verse', position: { x: 40, y: 680 }, data: { reference: '룻기 2:7', text: '그가 말하기를 베는 자를 따라서 단 사이에서 이삭을 줍게 하소서 하고 아침부터 지금까지 쉬지 않고 잠깐 집에서 쉬었을 뿐이니이다', color: '#3b82f6' } },
 
         // ── 구약 배경 (이삭줍기 율법) ──
-        { id: 'rt-v-lev19', type: 'verse', position: { x: 40, y: 880 }, data: { reference: '레 19:9-10', text: '너희가 너희의 땅에서 곡식을 거둘 때에 밭 모퉁이까지 다 거두지 말고 거둔 후에 이삭을 줍지 말며... 가난한 사람과 거류민을 위하여 버려두라', color: '#f59e0b' } },
-        { id: 'rt-v-deut24', type: 'verse', position: { x: 320, y: 880 }, data: { reference: '신 24:19-21', text: '밭에서 곡식을 벨 때에 그 한 뭇을 밭에 잊었거든 다시 가서 가져오지 말고 나그네와 고아와 과부를 위하여 남겨두라... 네 하나님 여호와께서 네 손으로 하는 모든 일에 복을 내리시리라', color: '#f59e0b' } },
-        { id: 'rt-v-deut25', type: 'verse', position: { x: 640, y: 880 }, data: { reference: '신 25:5-6', text: '형제가 함께 사는데 그 중 하나가 아들 없이 죽거든 그 죽은 자의 아내는... 그 남편의 형제가 그에게로 들어가서 그를 아내로 삼아 그 형제의 의무를 이행할 것이요', color: '#f59e0b' } },
+        { id: 'rt-v-lev19', type: 'verse', position: { x: 40, y: 880 }, data: { reference: '레위기 19:9-10', text: '너희가 너희의 땅에서 곡식을 거둘 때에 밭 모퉁이까지 다 거두지 말고 거둔 후에 이삭을 줍지 말며... 가난한 사람과 거류민을 위하여 버려두라', color: '#f59e0b' } },
+        { id: 'rt-v-deut24', type: 'verse', position: { x: 320, y: 880 }, data: { reference: '신명기 24:19-21', text: '밭에서 곡식을 벨 때에 그 한 뭇을 밭에 잊었거든 다시 가서 가져오지 말고 나그네와 고아와 과부를 위하여 남겨두라... 네 하나님 여호와께서 네 손으로 하는 모든 일에 복을 내리시리라', color: '#f59e0b' } },
+        { id: 'rt-v-deut25', type: 'verse', position: { x: 640, y: 880 }, data: { reference: '신명기 25:5-6', text: '형제가 함께 사는데 그 중 하나가 아들 없이 죽거든 그 죽은 자의 아내는... 그 남편의 형제가 그에게로 들어가서 그를 아내로 삼아 그 형제의 의무를 이행할 것이요', color: '#f59e0b' } },
 
         // ── 신약 연결 ──
-        { id: 'rt-v-mt1', type: 'verse', position: { x: 780, y: 160 }, data: { reference: '마태 1:5', text: '살몬은 라합에게서 보아스를 낳고 보아스는 룻에게서 오벳을 낳고 오벳은 이새를 낳고', color: '#10b981' } },
+        { id: 'rt-v-mt1', type: 'verse', position: { x: 780, y: 160 }, data: { reference: '마태복음 1:5', text: '살몬은 라합에게서 보아스를 낳고 보아스는 룻에게서 오벳을 낳고 오벳은 이새를 낳고', color: '#10b981' } },
 
         // ── 주제 노드 ──
         { id: 'rt-topic-gleaning', type: 'topic', position: { x: 180, y: 880 }, data: { title: '이삭줍기 율법 — 가난한 자를 위한 제도', keywords: ['이삭줍기', '레위기', '신명기', '사회정의', '과부'] } },
@@ -249,6 +280,7 @@ async function readFromDirectory(dirHandle, filename) {
 }
 
 export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle }) {
+  const visitorCount = useVisitorCount();
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
@@ -263,7 +295,6 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   );
   const [obsidianStatus, setObsidianStatus] = useState('');
   const [obsidianAutoSync, setObsidianAutoSync] = useState(true);
-  const obsidianDirRef = useRef(null);
 
   useEffect(() => { saveTree(tree); }, [tree]);
 
@@ -785,6 +816,26 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           onDragCancel={() => { setDragId(null); setDropTargetId(null); setDropPosition(null); }}
         />
       </div>
+
+      {/* 방문자 카운터 */}
+      <div style={{
+        padding: '8px 12px',
+        borderTop: '1px solid #e2e8f0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 6,
+        color: '#94a3b8',
+        fontSize: 11,
+      }}>
+        <span>👁</span>
+        <span>
+          {visitorCount === null
+            ? '...'
+            : `누적 방문 ${visitorCount.toLocaleString()}회`}
+        </span>
+        <span style={{ color: '#cbd5e1' }}>· 24h 갱신</span>
+      </div>
     </div>
   );
 }
@@ -960,7 +1011,10 @@ function TreeNode({
             e.preventDefault();
             if (dragId) onDropEnd(dragId, item.id, 'inside');
           }}
-          style={{ paddingLeft: 24 + depth * 16, color: '#94a3b8', fontSize: 11, padding: '4px 8px', paddingLeft: 24 + depth * 16,
+          style={{
+            padding: '4px 8px',
+            paddingLeft: 24 + depth * 16,
+            color: '#94a3b8', fontSize: 11,
             background: isDropTarget && dropPosition === 'inside' ? '#ede9fe' : 'transparent',
           }}
         >

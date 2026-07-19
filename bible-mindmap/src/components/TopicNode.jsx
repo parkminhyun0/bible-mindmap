@@ -1,4 +1,7 @@
-import { Handle, Position } from '@xyflow/react';
+import { Handle, Position, NodeResizer } from '@xyflow/react';
+
+const resizerHandle = { width: 9, height: 9, borderRadius: 3, border: '1.5px solid #94a3b8', background: '#fff' };
+const resizerLine = { borderColor: '#94a3b8', borderWidth: 1 };
 
 export default function TopicNode({ data, selected }) {
   const fontSize = data.fontSize || 15;
@@ -14,13 +17,16 @@ export default function TopicNode({ data, selected }) {
         border: '2px solid #7c3aed',
         borderRadius: 20,
         padding: '10px 18px',
-        minWidth: 160,
+        width: '100%',
+        minWidth: 140,
+        boxSizing: 'border-box',
         textAlign: data.textAlign || 'center',
         boxShadow: selected
           ? '0 0 0 2px #7c3aed60, 0 2px 8px rgba(124,58,237,0.2)'
           : '0 2px 8px rgba(124,58,237,0.15)',
       }}
     >
+      <NodeResizer color="#7c3aed" isVisible={selected} minWidth={120} minHeight={40} handleStyle={resizerHandle} lineStyle={resizerLine} />
       <div
         style={{
           fontWeight: data.bold !== false ? 700 : 400,

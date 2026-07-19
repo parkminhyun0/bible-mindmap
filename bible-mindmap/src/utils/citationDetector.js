@@ -1,4 +1,4 @@
-import { ALL_BOOKS, getBook } from '../data/bibleBooks';
+import { ALL_BOOKS, getBook, KO_ABBR } from '../data/bibleBooks';
 import { CITATIONS } from '../data/citations';
 
 // ── CrossRef lazy-loader ──────────────────────────────────────────────────────
@@ -7,7 +7,7 @@ const _crossrefCache = new Map(); // bookId → entry[]
 async function loadCrossref(bookId) {
   if (_crossrefCache.has(bookId)) return _crossrefCache.get(bookId);
   try {
-    const res = await fetch(`/crossref/${bookId}.json`);
+    const res = await fetch(`${import.meta.env.BASE_URL}crossref/${bookId}.json`);
     if (!res.ok) { _crossrefCache.set(bookId, []); return []; }
     const data = await res.json();
     _crossrefCache.set(bookId, data);
@@ -54,8 +54,9 @@ export function parseReference(refString) {
   const verseStart = parseInt(m[3], 10);
   const verseEnd = m[4] ? parseInt(m[4], 10) : verseStart;
 
+  const abbrId = KO_ABBR[bookName];
   const book = ALL_BOOKS.find(
-    (b) => b.ko === bookName || b.en === bookName || b.id === bookName,
+    (b) => b.ko === bookName || b.en === bookName || b.id === bookName || b.id === abbrId,
   );
   if (!book) return null;
 
@@ -145,7 +146,7 @@ export async function buildSuggestions(selectedNode, nodes, edges) {
   }
 
   // 2) OpenBible.info crossref (수동 인용과 중복되지 않는 항목만)
-  const crossrefs = await findCrossrefsFor(parsed, 8);
+  const crossrefs = await findCrossrefsFor(parsed, 12);
   for (const cr of crossrefs) {
     const src = {
       book: cr.to.book,

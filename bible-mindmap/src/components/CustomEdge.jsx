@@ -141,8 +141,8 @@ export default function CustomEdge(props) {
         style={{ cursor: 'pointer' }}
       />
 
-      {/* 앵커 포인트 (항상 표시) */}
-      {anchors.map((anchor, i) => (
+      {/* 앵커 포인트 (선택 시에만 표시) */}
+      {selected && anchors.map((anchor, i) => (
         <AnchorPoint
           key={`anchor-${i}`}
           index={i}
@@ -187,6 +187,13 @@ export default function CustomEdge(props) {
 function AnchorPoint({ index, x, y, color, anchors, updateAnchors }) {
   const [dragging, setDragging] = useState(false);
 
+  const handleDoubleClick = useCallback((evt) => {
+    evt.stopPropagation();
+    evt.preventDefault();
+    const next = anchors.filter((_, i) => i !== index);
+    updateAnchors(next);
+  }, [index, anchors, updateAnchors]);
+
   const handleMouseDown = useCallback((evt) => {
     if (evt.button !== 0) return;
     evt.stopPropagation();
@@ -214,12 +221,13 @@ function AnchorPoint({ index, x, y, color, anchors, updateAnchors }) {
   }, [index, anchors, updateAnchors]);
 
   return (
-    <g style={{ cursor: dragging ? 'grabbing' : 'grab' }}>
+    <g style={{ cursor: dragging ? 'grabbing' : 'grab' }} title="드래그: 이동 / 더블클릭: 삭제">
       <circle
         cx={x} cy={y} r={14}
         fill="transparent"
         style={{ pointerEvents: 'all', cursor: dragging ? 'grabbing' : 'grab' }}
         onMouseDown={handleMouseDown}
+        onDoubleClick={handleDoubleClick}
       />
       <circle
         cx={x} cy={y}
@@ -235,6 +243,7 @@ function AnchorPoint({ index, x, y, color, anchors, updateAnchors }) {
             : 'drop-shadow(0 1px 2px rgba(0,0,0,0.15))',
         }}
         onMouseDown={handleMouseDown}
+        onDoubleClick={handleDoubleClick}
       />
       <circle
         cx={x} cy={y}

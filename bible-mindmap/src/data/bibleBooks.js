@@ -72,6 +72,28 @@ export const NT_BOOKS = [
 
 export const ALL_BOOKS = [...OT_BOOKS, ...NT_BOOKS];
 
+// 한글 약어 → book id 매핑 (수동 입력·시드 데이터 호환용)
+export const KO_ABBR = {
+  // 구약
+  창: 'Gen', 출: 'Exod', 레: 'Lev', 민: 'Num', 신: 'Deut',
+  수: 'Josh', 삿: 'Judg', 룻: 'Ruth',
+  삼상: '1Sam', 삼하: '2Sam', 왕상: '1Kgs', 왕하: '2Kgs',
+  대상: '1Chr', 대하: '2Chr', 스: 'Ezra', 느: 'Neh', 에: 'Esth',
+  욥: 'Job', 시: 'Ps', 잠: 'Prov', 전: 'Eccl', 아: 'Song',
+  사: 'Isa', 렘: 'Jer', 애: 'Lam', 겔: 'Ezek', 단: 'Dan',
+  호: 'Hos', 욜: 'Joel', 암: 'Amos', 옵: 'Obad', 욘: 'Jonah',
+  미: 'Mic', 나: 'Nah', 합: 'Hab', 습: 'Zeph', 학: 'Hag',
+  슥: 'Zech', 말: 'Mal',
+  // 신약
+  마: 'Matt', 마태: 'Matt', 막: 'Mark', 눅: 'Luke', 누가: 'Luke',
+  요: 'John', 요한: 'John', 행: 'Acts', 롬: 'Rom',
+  고전: '1Cor', 고후: '2Cor', 갈: 'Gal', 엡: 'Eph', 빌: 'Phil',
+  골: 'Col', 살전: '1Thess', 살후: '2Thess',
+  딤전: '1Tim', 딤후: '2Tim', 딛: 'Titus', 몬: 'Phlm',
+  히: 'Heb', 약: 'Jas', 벧전: '1Pet', 벧후: '2Pet',
+  요일: '1John', 요이: '2John', 요삼: '3John', 유: 'Jude', 계: 'Rev',
+};
+
 export function getBook(id) {
   return ALL_BOOKS.find((b) => b.id === id);
 }
