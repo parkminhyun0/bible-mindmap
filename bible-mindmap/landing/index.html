@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>성경 마인드맵 — Bible Mindmap</title>
+  <meta name="description" content="성경 원문(헬라어·히브리어)과 인물·장소·시대를 연결하는 인터랙티브 성경 마인드맵" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:   #059669;
+      --green2:  #10b981;
+      --amber:   #d97706;
+      --purple:  #7c3aed;
+      --blue:    #2563eb;
+      --bg:      #0a0f1e;
+      --surface: #111827;
+      --card:    #1a2236;
+      --border:  rgba(255,255,255,0.07);
+      --text:    #f1f5f9;
+      --muted:   #94a3b8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── 배경 오브 ── */
+    .orb-wrap {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(120px); opacity: .18;
+    }
+    .orb-1 { width: 700px; height: 700px; background: var(--green);  top: -200px; left: -200px; animation: drift 18s ease-in-out infinite alternate; }
+    .orb-2 { width: 600px; height: 600px; background: var(--purple); bottom: -200px; right: -150px; animation: drift 22s ease-in-out infinite alternate-reverse; }
+    .orb-3 { width: 400px; height: 400px; background: var(--amber);  top: 50%; left: 50%; transform: translate(-50%,-50%); animation: drift 14s ease-in-out infinite alternate; }
+    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(40px, 30px) scale(1.08); } }
+
+    /* ── 레이아웃 ── */
+    .wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(10,15,30,0.6);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-icon { font-size: 24px; }
+    .logo-text { font-family: 'Noto Serif KR', serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+    .nav-enter {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 22px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff; font-size: .88rem; font-weight: 600;
+      text-decoration: none; transition: opacity .2s, transform .2s;
+      box-shadow: 0 0 20px rgba(5,150,105,.3);
+    }
+    .nav-enter:hover { opacity: .9; transform: scale(1.03); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 16px; border-radius: 999px;
+      background: rgba(5,150,105,.12); border: 1px solid rgba(5,150,105,.3);
+      font-size: .78rem; color: var(--green2); font-weight: 500;
+      margin-bottom: 28px; letter-spacing: .04em;
+    }
+    .badge::before { content: '✦'; font-size: .7rem; }
+    .hero h1 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      font-weight: 700; line-height: 1.15;
+      background: linear-gradient(135deg, #fff 0%, var(--green2) 50%, var(--blue) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      max-width: 600px; font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--muted); line-height: 1.8; margin: 0 auto 48px;
+      font-weight: 300;
+    }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 16px 40px; border-radius: 999px; font-size: 1.05rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+      color: #fff; text-decoration: none;
+      box-shadow: 0 0 40px rgba(5,150,105,.35), 0 2px 20px rgba(37,99,235,.2);
+      transition: transform .2s, box-shadow .2s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.15), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(5,150,105,.5), 0 4px 30px rgba(37,99,235,.3); }
+    .btn-primary:hover::after { opacity: 1; }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 32px; border-radius: 999px; font-size: 1rem; font-weight: 500;
+      background: rgba(255,255,255,.06); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none; transition: background .2s, border-color .2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.15); }
+
+    /* ── 스크롤 힌트 ── */
+    .scroll-hint {
+      margin-top: 60px; display: flex; flex-direction: column; align-items: center; gap: 8px;
+      color: var(--muted); font-size: .78rem; letter-spacing: .06em;
+    }
+    .scroll-dot {
+      width: 1.5px; height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: scroll-drop 2s ease-in-out infinite;
+    }
+    @keyframes scroll-drop { 0%,100% { opacity: .4; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.2); } }
+
+    /* ── 기능 섹션 ── */
+    .section { padding: 100px 0; }
+    .section-label {
+      text-align: center; font-size: .78rem; letter-spacing: .12em;
+      color: var(--green2); font-weight: 600; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .section-title {
+      text-align: center; font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      text-align: center; color: var(--muted); font-size: 1rem;
+      max-width: 560px; margin: 0 auto 64px; line-height: 1.8;
+    }
+
+    /* ── 피처 그리드 ── */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .feat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px;
+      transition: border-color .25s, transform .25s, box-shadow .25s;
+      position: relative; overflow: hidden;
+    }
+    .feat-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      transition: opacity .3s;
+      border-radius: 20px;
+    }
+    .feat-card:hover { transform: translateY(-4px); }
+    .feat-card.green:hover  { border-color: rgba(5,150,105,.4); box-shadow: 0 8px 40px rgba(5,150,105,.12); }
+    .feat-card.amber:hover  { border-color: rgba(217,119,6,.4); box-shadow: 0 8px 40px rgba(217,119,6,.12); }
+    .feat-card.purple:hover { border-color: rgba(124,58,237,.4); box-shadow: 0 8px 40px rgba(124,58,237,.12); }
+    .feat-card.blue:hover   { border-color: rgba(37,99,235,.4); box-shadow: 0 8px 40px rgba(37,99,235,.12); }
+    .feat-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px; flex-shrink: 0;
+    }
+    .feat-icon.green  { background: rgba(5,150,105,.15); }
+    .feat-icon.amber  { background: rgba(217,119,6,.15); }
+    .feat-icon.purple { background: rgba(124,58,237,.15); }
+    .feat-icon.blue   { background: rgba(37,99,235,.15); }
+    .feat-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .feat-card p  { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+    .feat-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .feat-tag {
+      font-size: .72rem; padding: 3px 10px; border-radius: 999px;
+      font-weight: 500;
+    }
+    .feat-tag.green  { background: rgba(5,150,105,.15); color: var(--green2); }
+    .feat-tag.amber  { background: rgba(217,119,6,.15);  color: #fbbf24; }
+    .feat-tag.purple { background: rgba(124,58,237,.15); color: #a78bfa; }
+    .feat-tag.blue   { background: rgba(37,99,235,.15);  color: #93c5fd; }
+
+    /* ── 원문 섹션 ── */
+    .original-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 0; }
+    @media (max-width: 640px) { .original-grid { grid-template-columns: 1fr; } }
+    .orig-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+    }
+    .orig-word { font-size: 2rem; margin-bottom: 8px; }
+    .orig-name { font-size: .78rem; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 12px; }
+    .orig-sample { font-size: 1.3rem; letter-spacing: .04em; line-height: 1.8; color: var(--text); font-weight: 500; }
+    .orig-sub { font-size: .78rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── 스탯 ── */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+    .stat-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 2.4rem; font-weight: 700;
+      background: linear-gradient(135deg, var(--green2), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { font-size: .82rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── CTA 섹션 ── */
+    .cta-section {
+      padding: 120px 0;
+      text-align: center;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(5,150,105,.1), rgba(37,99,235,.1));
+      border: 1px solid rgba(5,150,105,.2);
+      border-radius: 28px; padding: 72px 40px;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(5,150,105,.15), transparent 70%);
+      pointer-events: none;
+    }
+    .cta-box h2 {
+      font-family: 'Noto Serif KR', serif;
+      font-size: clamp(1.6rem, 4vw, 2.6rem); font-weight: 700;
+      margin-bottom: 16px; position: relative;
+    }
+    .cta-box p { color: var(--muted); font-size: 1rem; margin-bottom: 44px; line-height: 1.8; position: relative; }
+    .cta-box .btn-primary { font-size: 1.1rem; padding: 18px 52px; position: relative; }
+
+    /* ── 푸터 ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    footer a { color: var(--green2); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── 반응형 ── */
+    @media (max-width: 640px) {
+      .features { grid-template-columns: 1fr; }
+      .hero { padding: 100px 24px 60px; }
+      .section { padding: 70px 0; }
+    }
+
+    /* ── 부드러운 등장 애니메이션 ── */
+    .fade-up {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<div class="orb-wrap">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">📖</span>
+      <span class="logo-text">성경 마인드맵</span>
+    </a>
+    <a href="./app/" class="nav-enter">앱 열기 →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Open Source · 무료 · 원문 성경</div>
+  <h1>성경을 연결하다<br/>마음으로 그리다</h1>
+  <p>
+    인물·장소·시대를 캔버스 위에 펼치고,<br/>
+    헬라어·히브리어 원문까지 손끝으로 탐색하는<br/>
+    인터랙티브 성경 마인드맵
+  </p>
+  <div class="hero-cta">
+    <a href="./app/" class="btn-primary">
+      ✦ 지금 시작하기
+    </a>
+    <a href="#features" class="btn-secondary">
+      기능 살펴보기 ↓
+    </a>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- 기능 -->
+<section class="section" id="features">
+  <div class="wrap">
+    <p class="section-label fade-up">FEATURES</p>
+    <h2 class="section-title fade-up">성경 공부를 새롭게</h2>
+    <p class="section-sub fade-up">원문부터 인물 관계까지, 한 캔버스에서 모두</p>
+
+    <div class="features">
+      <div class="feat-card green fade-up">
+        <div class="feat-icon green">👤</div>
+        <h3>성경 인물 탐색</h3>
+        <p>Wikidata 연동으로 인물 정보를 자동 로드. 동시대 인물 버튼 하나로 관련 인물을 캔버스에 즉시 추가합니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag green">동시대 인물</span>
+          <span class="feat-tag green">생몰 연도</span>
+          <span class="feat-tag green">성경 태그</span>
+        </div>
+      </div>
+
+      <div class="feat-card amber fade-up">
+        <div class="feat-icon amber">📍</div>
+        <h3>성경 장소 연결</h3>
+        <p>우르·예루살렘·베들레헴 등 성경 지명을 검색하고, 그 장소와 연관된 인물 목록을 자동 탐색합니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag amber">관련 인물</span>
+          <span class="feat-tag amber">지도 연동</span>
+          <span class="feat-tag amber">좌표 표시</span>
+        </div>
+      </div>
+
+      <div class="feat-card purple fade-up">
+        <div class="feat-icon purple">🕰️</div>
+        <h3>시대 흐름 정리</h3>
+        <p>족장 시대부터 사도 시대까지 성경의 각 시대를 노드로 정리하고 인물·사건과 연결합니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag purple">주요 사건</span>
+          <span class="feat-tag purple">확정/추정/논쟁</span>
+        </div>
+      </div>
+
+      <div class="feat-card blue fade-up">
+        <div class="feat-icon blue">📜</div>
+        <h3>원문 성경 탭</h3>
+        <p>구절 노드에서 한국어 번역과 함께 SBLGNT 헬라어 신약 / WLC 히브리어 구약 / LXX 칠십인역을 나란히 봅니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag blue">SBLGNT</span>
+          <span class="feat-tag blue">WLC</span>
+          <span class="feat-tag blue">LXX Rahlfs</span>
+        </div>
+      </div>
+
+      <div class="feat-card green fade-up">
+        <div class="feat-icon green">✏️</div>
+        <h3>메모 & 성경 태그</h3>
+        <p>인물·장소·시대 노드에 자유롭게 메모를 추가하고, 관련 성경 본문을 태그로 붙여 정리합니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag green">자유 메모</span>
+          <span class="feat-tag green">본문 태그</span>
+        </div>
+      </div>
+
+      <div class="feat-card purple fade-up">
+        <div class="feat-icon purple">↔️</div>
+        <h3>드래그 & 리사이즈</h3>
+        <p>모든 노드를 마우스 드래그로 자유롭게 이동·크기 조절. 폰트 크기 최대 50pt까지 지원합니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag purple">6종 노드</span>
+          <span class="feat-tag purple">폰트 50pt</span>
+          <span class="feat-tag purple">무한 캔버스</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 원문 성경 -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <p class="section-label fade-up">ORIGINAL TEXT</p>
+    <h2 class="section-title fade-up">원문 그대로</h2>
+    <p class="section-sub fade-up">Strong 번호 · 형태소 · 영어 글로스까지 한눈에</p>
+
+    <div class="original-grid fade-up">
+      <div class="orig-card">
+        <div class="orig-word">🔤</div>
+        <div class="orig-name">Greek NT · SBLGNT</div>
+        <div class="orig-sample">Ἐν ἀρχῇ ἦν ὁ Λόγος</div>
+        <div class="orig-sub">요한복음 1:1 — 헬라어 원문</div>
+      </div>
+      <div class="orig-card">
+        <div class="orig-word">📖</div>
+        <div class="orig-name">Hebrew OT · WLC</div>
+        <div class="orig-sample">בְּרֵאשִׁית בָּרָא אֱלֹהִים</div>
+        <div class="orig-sub">창세기 1:1 — 히브리어 원문</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 통계 -->
+<section class="section" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="stats fade-up">
+      <div class="stat-card">
+        <div class="stat-num">31,102</div>
+        <div class="stat-label">성경 구절 수</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">66</div>
+        <div class="stat-label">성경 권수</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">6종</div>
+        <div class="stat-label">캔버스 노드 타입</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3종</div>
+        <div class="stat-label">원문 텍스트</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="wrap">
+    <div class="cta-box fade-up">
+      <h2>지금 바로 시작해 보세요</h2>
+      <p>설치 없이 브라우저에서 바로 사용.<br/>저장된 캔버스는 브라우저에 안전하게 보관됩니다.</p>
+      <a href="./app/" class="btn-primary">
+        ✦ &nbsp;성경 마인드맵 열기
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p>
+      📖 성경 마인드맵 &nbsp;·&nbsp;
+      원문 데이터: <a href="https://github.com/STEPBible/STEPBible-Data" target="_blank">STEPBible CC-BY</a> &nbsp;·&nbsp;
+      인물/장소: <a href="https://www.wikidata.org" target="_blank">Wikidata</a> &nbsp;·&nbsp;
+      <a href="https://github.com/parkminhyun0/bible-mindmap" target="_blank">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // 스크롤 등장 애니메이션
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build && cp -r landing/. dist/",
+    "deploy": "gh-pages -d dist --dotfiles"
   },
   "dependencies": {
     "@dagrejs/dagre": "^3.0.0",
