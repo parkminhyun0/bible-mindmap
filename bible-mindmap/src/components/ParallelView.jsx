@@ -208,14 +208,27 @@ export default function ParallelView({ node, onSave, onClose }) {
     const consumed = new Map();
     tokens.forEach((t, i) => {
       if (t.space) return;
-      const key = normalizeOriginal(t.text);
-      if (!key) return;
-      const bucket = idx.get(key);
+      // 직접 매칭 시도
+      let matchKey = normalizeOriginal(t.text);
+      if (!matchKey) return;
+      let bucket = idx.get(matchKey);
+      // 직접 매칭 실패 → WLC 마카프(U+05BE)로 연결된 단어쌍이면 분리 후 재시도
+      // 예: כִּי־טֹוב → ['כִּי', 'טֹוב'] 각각 매칭 시도
+      if (!bucket && t.text.includes('־')) {
+        for (const part of t.text.split('־')) {
+          const partKey = normalizeOriginal(part);
+          if (partKey && idx.has(partKey)) {
+            matchKey = partKey;
+            bucket = idx.get(partKey);
+            break;
+          }
+        }
+      }
       if (!bucket) return;
-      const nth = consumed.get(key) || 0;
+      const nth = consumed.get(matchKey) || 0;
       const entry = bucket[nth] || bucket[bucket.length - 1];
       if (entry) result.set(i, entry);
-      consumed.set(key, nth + 1);
+      consumed.set(matchKey, nth + 1);
     });
     return result;
   }, [lexEntries, tokensByTab]);
