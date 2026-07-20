@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
+import ManualModal from './ManualModal';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
@@ -8,6 +9,7 @@ import { getBibleTags } from '../data/bibleReferences';
 export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
+  const [showManual, setShowManual] = useState(false);
   const [reference, setReference] = useState('');
   const [text, setText] = useState('');
   const [color, setColor] = useState('#3b82f6');
@@ -147,7 +149,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px 8px' }}>
             <h2 style={{ fontSize: 15, fontWeight: 700, color: '#1e293b', margin: 0 }}>✝️ 성경 마인드맵</h2>
-            <button onClick={onMobileClose} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: '#64748b' }}>✕</button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
+              <button onClick={onMobileClose} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: '#64748b' }}>✕</button>
+            </div>
           </div>
 
           {/* 탭 */}
@@ -207,8 +212,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
     return (
       <div style={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #e2e8f0' }}>
         {/* 섹션 1: 타이틀 */}
-        <div style={titleBarStyle}>
+        <div style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
+          <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘</button>
         </div>
 
         {/* 섹션 2: 탭 (세로) */}
@@ -258,10 +264,12 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
 
   // ─── 열린 상태 ───
   return (
+    <>
     <div style={containerStyle}>
       {/* ═══ 섹션 1: 타이틀 ═══ */}
-      <div style={titleBarStyle}>
+      <div style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
+        <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
       </div>
 
       {/* ═══ 섹션 2: 본문 탭 (구절/노트/주제) ═══ */}
@@ -487,6 +495,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
         </div>
       </div>
     </div>
+
+    {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+    </>
   );
 }
 
@@ -508,6 +519,15 @@ const containerStyle = {
   flexDirection: 'column',
   borderRight: '1px solid #e2e8f0',
   background: '#f8fafc',
+};
+
+const manualBtnStyle = {
+  display: 'flex', alignItems: 'center', gap: 4,
+  padding: '4px 10px', fontSize: 11, fontWeight: 700,
+  background: 'linear-gradient(135deg, #1e3a8a, #2563eb)',
+  color: '#fff', border: 'none', borderRadius: 7,
+  cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap',
+  boxShadow: '0 2px 8px rgba(37,99,235,0.35)',
 };
 
 // 섹션 1: 타이틀
