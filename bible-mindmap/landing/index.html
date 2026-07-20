@@ -416,6 +416,23 @@
       .footer-bottom { flex-direction: column; align-items: flex-start; }
     }
 
+    /* ── 히어로 기능 pill ── */
+    .hero-pills {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center; margin-top: 36px;
+    }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 999px; font-size: .8rem; font-weight: 500;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      color: var(--muted); letter-spacing: .01em;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .hero-pill:hover { border-color: rgba(255,255,255,.2); color: var(--text); background: rgba(255,255,255,.08); }
+    .hero-pill .dot {
+      width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+    }
+
     /* ── 반응형 ── */
     @media (max-width: 640px) {
       .features { grid-template-columns: 1fr; }
@@ -472,6 +489,16 @@
       기능 살펴보기 ↓
     </a>
   </div>
+
+  <!-- 핵심 기능 한눈에 -->
+  <div class="hero-pills">
+    <span class="hero-pill"><span class="dot" style="background:#10b981;"></span>어형 분석 · 레마 사전</span>
+    <span class="hero-pill"><span class="dot" style="background:#a78bfa;"></span>Strong's 번호 연동</span>
+    <span class="hero-pill"><span class="dot" style="background:#60a5fa;"></span>원문↔번역 단어 페어링</span>
+    <span class="hero-pill"><span class="dot" style="background:#f59e0b;"></span>교차 참조 자동 연결</span>
+    <span class="hero-pill"><span class="dot" style="background:#94a3b8;"></span>설치 없이 브라우저 실행</span>
+  </div>
+
   <div class="scroll-hint">
     <span>SCROLL</span>
     <div class="scroll-dot"></div>
