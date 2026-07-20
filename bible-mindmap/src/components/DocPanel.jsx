@@ -391,16 +391,27 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
     setCurrentDocId(loadedDoc.id);
     if (data.docType === 'sermon') {
       setActiveTab('sermon');
-      setStructure(data.sermon.structure || '3part');
-      setSermonTitle(data.sermon.title || '');
-      setScripture(data.sermon.scripture || '');
-      setSections(data.sermon.sections || SERMON_3.map(() => ({})));
+      setStructure(data.sermon?.structure || '3part');
+      setSermonTitle(data.sermon?.title || '');
+      setScripture(data.sermon?.scripture || '');
+      setSections(data.sermon?.sections || SERMON_3.map(() => ({})));
     } else {
       setActiveTab('sketch');
-      setSketchTitle(data.sketch.title || '');
-      setSketchText(data.sketch.text || '');
+      setSketchTitle(data.sketch?.title || '');
+      setSketchText(data.sketch?.text || '');
     }
   }, [loadedDoc]);
+
+  // 새 문서 초기화
+  const handleNewDoc = () => {
+    if (currentDocId) {
+      if (!confirm('현재 문서를 닫고 새 문서를 작성하시겠습니까?\n저장하지 않은 내용은 사라집니다.')) return;
+    }
+    setCurrentDocId(null);
+    setSermonTitle(''); setScripture('');
+    setStructure('3part'); setSections(SERMON_3.map(() => ({})));
+    setSketchTitle(''); setSketchText('');
+  };
 
   // 저장소에 저장
   const handleStorageSave = () => {
@@ -507,6 +518,18 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                     저장됨
                   </span>
                 )}
+                <button
+                  onClick={handleNewDoc}
+                  title="새 문서 작성"
+                  style={{
+                    padding: '5px 8px', fontSize: 11, fontWeight: 700,
+                    background: 'rgba(255,255,255,0.12)', color: '#e2e8f0',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: 14, cursor: 'pointer', whiteSpace: 'nowrap',
+                  }}
+                >
+                  + 새 문서
+                </button>
                 <button
                   onClick={handleStorageSave}
                   title="내 저장소 → 설교 문서 작성 폴더에 저장"

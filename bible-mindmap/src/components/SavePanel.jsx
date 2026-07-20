@@ -433,6 +433,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       const data = await readFromDirectory(obsidianDir, 'mindmap-saves.json');
       if (data?.id === 'root' && data?.children) {
         if (confirm('옵시디언 백업에서 저장소 전체를 복원하시겠습니까?\n기존 저장소 데이터가 대체됩니다.')) {
+          ensureDocRoot(data);
           setTree(data);
           setObsidianStatus('저장소 복원 완료');
         }
@@ -527,7 +528,9 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const handleSave = () => {
     const name = prompt('저장할 이름을 입력하세요:', `마인드맵 ${new Date().toLocaleDateString('ko')}`);
     if (!name) return;
-    const parentId = selectedId || 'root';
+    // doc-root는 설교 문서 전용 폴더이므로 마인드맵 저장 대상에서 제외
+    const rawId = selectedId || 'root';
+    const parentId = rawId === 'doc-root' ? 'root' : rawId;
     const data = { nodes: JSON.parse(JSON.stringify(nodes)), edges: JSON.parse(JSON.stringify(edges)) };
     updateTree((t) => {
       const parent = findNode(t, parentId);
@@ -638,6 +641,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         const data = JSON.parse(ev.target.result);
         if (data.id === 'root' && data.children) {
           if (confirm(`저장소 전체를 "${file.name}" 파일로 복원하시겠습니까?\n기존 저장소 데이터가 대체됩니다.`)) {
+            ensureDocRoot(data);
             setTree(data);
           }
         } else {
