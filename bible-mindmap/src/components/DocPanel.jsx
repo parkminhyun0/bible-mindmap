@@ -229,7 +229,7 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
       {/* 헤더 메타 */}
       <div style={{ padding: '10px 12px', borderBottom: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: 6 }}>
         <input
@@ -262,7 +262,7 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
       </div>
 
       {/* 섹션들 */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '10px 12px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: '10px 12px', minHeight: 0 }}>
         {sectionDefs.map((def, i) => (
           <SermonSection
             key={def.label + structure}
@@ -303,7 +303,7 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
   const getMd = () => docTitle ? `# ${docTitle}\n\n${text}` : text;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
       <div style={{ padding: '10px 12px', borderBottom: '1px solid #e2e8f0' }}>
         <input
           placeholder="문서 제목 (선택)"
@@ -321,7 +321,7 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
         onChange={(e) => setText(e.target.value)}
         placeholder={'마크다운으로 자유롭게 작성하세요.\n\n예)\n# 제목\n## 소제목\n**굵은 글씨**, *이탤릭*\n- 항목 1\n- 항목 2\n> 인용구'}
         style={{
-          flex: 1, padding: '12px 14px', border: 'none', resize: 'none',
+          flex: 1, minHeight: 0, padding: '12px 14px', border: 'none', resize: 'none',
           fontSize: 13, lineHeight: 1.8, fontFamily: "'D2Coding', 'Fira Code', monospace",
           outline: 'none', color: '#1e293b', background: '#fafafa',
         }}
@@ -498,6 +498,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
           display: 'flex',
           flexDirection: 'column',
           flexShrink: 0,
+          overflow: 'hidden',
         }}>
           {/* 패널 헤더 & 탭 */}
           <div style={{
@@ -531,7 +532,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
           </div>
 
           {/* 탭 콘텐츠 */}
-          <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ flex: 1, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
             {activeTab === 'sermon' ? (
               <SermonTab
                 structure={structure}
