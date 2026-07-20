@@ -388,13 +388,12 @@ export default function DocPanel({ open, onToggle }) {
         }}
       >
         <span style={{
-          writingMode: 'vertical-rl',
+          writingMode: 'vertical-lr',
           fontSize: 11,
           fontWeight: 700,
           color: open ? '#fff' : '#64748b',
           letterSpacing: '.05em',
           userSelect: 'none',
-          transform: 'rotate(180deg)',
         }}>
           ✍️ 문서 작성
         </span>
