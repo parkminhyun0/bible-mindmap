@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>랜딩 페이지 편집 · 관리자</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0f1e; --surface: #111827; --card: #1a2236;
+      --border: rgba(255,255,255,.08); --border-strong: rgba(255,255,255,.14);
+      --text: #f1f5f9; --muted: #94a3b8; --dim: #64748b;
+      --green: #059669; --green2: #10b981; --amber: #d97706;
+      --red: #ef4444; --blue: #2563eb;
+    }
+    body {
+      font-family: 'Noto Sans KR', -apple-system, sans-serif;
+      background: var(--bg); color: var(--text);
+      min-height: 100vh; padding: 0 0 100px;
+    }
+    a { color: var(--green2); }
+
+    header.top {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,15,30,.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    header.top h1 { font-size: 1rem; font-weight: 700; }
+    header.top .actions { display: flex; gap: 8px; align-items: center; }
+    header.top .badge {
+      font-size: .72rem; padding: 4px 10px; border-radius: 999px;
+      background: rgba(16,185,129,.15); color: var(--green2);
+      border: 1px solid rgba(16,185,129,.3);
+    }
+    .btn {
+      padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border-strong);
+      background: var(--card); color: var(--text); font-family: inherit;
+      font-size: .85rem; cursor: pointer; transition: background .15s;
+    }
+    .btn:hover { background: var(--surface); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      border: none; color: #fff; font-weight: 600;
+    }
+    .btn.primary:hover { opacity: .92; }
+    .btn.danger { color: var(--red); border-color: rgba(239,68,68,.3); }
+    .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+    main { max-width: 900px; margin: 0 auto; padding: 24px; }
+
+    .setup {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+    }
+    .setup h2 { font-size: 1.15rem; margin-bottom: 8px; }
+    .setup p { color: var(--muted); margin-bottom: 14px; font-size: .92rem; line-height: 1.6; }
+    .setup ol { padding-left: 22px; color: var(--muted); font-size: .9rem; line-height: 1.8; margin-bottom: 20px; }
+    .setup ol code { background: rgba(255,255,255,.06); padding: 2px 6px; border-radius: 4px; color: #fbbf24; font-size: .85em; }
+    .setup label { display:block; font-size:.85rem; margin-bottom:6px; color:var(--muted); }
+    .setup input[type="password"] {
+      width: 100%; padding: 12px 14px; border-radius: 8px;
+      background: var(--bg); border: 1px solid var(--border-strong);
+      color: var(--text); font-family: monospace; font-size: .9rem;
+    }
+    .setup input[type="password"]:focus { outline: none; border-color: var(--green2); }
+    .setup .row { display:flex; gap:10px; margin-top:14px; }
+
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      padding: 12px 20px; border-radius: 10px; font-size: .9rem; font-weight: 500;
+      z-index: 50; box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    .toast.success { background: var(--green); color: #fff; }
+    .toast.error { background: var(--red); color: #fff; }
+
+    /* ── 폼 스타일 ── */
+    section.card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px; margin-bottom: 20px;
+    }
+    section.card h2 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    section.card > .desc { font-size: .82rem; color: var(--dim); margin-bottom: 16px; }
+    .field { margin-bottom: 14px; }
+    .field label {
+      display: block; font-size: .8rem; color: var(--muted);
+      margin-bottom: 5px; font-weight: 500;
+    }
+    .field input[type="text"],
+    .field input[type="color"],
+    .field textarea,
+    .field select {
+      width: 100%; padding: 9px 12px; border-radius: 6px;
+      background: var(--bg); border: 1px solid var(--border-strong);
+      color: var(--text); font-family: inherit; font-size: .9rem;
+    }
+    .field input[type="color"] { padding: 4px 6px; height: 38px; cursor: pointer; }
+    .field textarea { resize: vertical; min-height: 62px; line-height: 1.6; }
+    .field input:focus, .field textarea:focus, .field select:focus {
+      outline: none; border-color: var(--green2);
+    }
+    .field-inline { display: grid; grid-template-columns: 80px 1fr; gap: 10px; align-items: center; }
+    .field-inline label { margin: 0; }
+
+    /* 리스트 항목 카드 */
+    .list-item {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px; margin-bottom: 10px;
+      position: relative;
+    }
+    .list-item .item-head {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 10px;
+    }
+    .list-item .item-head strong { font-size: .82rem; color: var(--muted); }
+    .list-item .item-actions { display: flex; gap: 4px; }
+    .list-item button.icon-btn {
+      background: transparent; border: 1px solid var(--border-strong);
+      color: var(--muted); padding: 4px 8px; border-radius: 5px;
+      cursor: pointer; font-size: .75rem;
+    }
+    .list-item button.icon-btn:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    .list-item button.icon-btn.del { color: var(--red); border-color: rgba(239,68,68,.25); }
+    .list-actions { margin-top: 8px; }
+    .list-actions button.add {
+      width: 100%; padding: 10px; border-radius: 6px;
+      background: transparent; border: 1px dashed var(--border-strong);
+      color: var(--muted); cursor: pointer; font-family: inherit; font-size: .82rem;
+    }
+    .list-actions button.add:hover { color: var(--green2); border-color: var(--green2); }
+
+    #status { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .82rem; }
+    #status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--dim); }
+    #status.loaded .dot { background: var(--green2); }
+    #status.dirty .dot { background: var(--amber); }
+    #status.saving .dot { background: var(--blue); animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { opacity: .3; } }
+
+    .loading { text-align: center; padding: 60px 20px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div style="display:flex;align-items:center;gap:12px;">
+    <h1>📝 랜딩 페이지 편집</h1>
+    <span class="badge" id="repo-badge" style="display:none;">parkminhyun0/bible-mindmap</span>
+  </div>
+  <div class="actions">
+    <span id="status"><span class="dot"></span><span class="txt">로그인 필요</span></span>
+    <a class="btn" href="../" target="_blank" rel="noopener">🌐 미리보기</a>
+    <button class="btn primary" id="save-btn" disabled>💾 저장</button>
+    <button class="btn danger" id="logout-btn" style="display:none;">로그아웃</button>
+  </div>
+</header>
+
+<main>
+  <div id="setup" class="setup" style="display:none;">
+    <h2>🔐 GitHub Personal Access Token 설정</h2>
+    <p>어드민 편집은 GitHub API를 통해 저장소의 <code>landing/data/content.json</code>을 직접 커밋합니다. 아래 순서로 <strong>Fine-grained PAT</strong>를 발급해 붙여넣으세요.</p>
+    <ol>
+      <li><a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub → Fine-grained tokens 발급 페이지</a> 열기</li>
+      <li><strong>Repository access</strong>: "Only select repositories" → <code>bible-mindmap</code> 선택</li>
+      <li><strong>Repository permissions</strong>: <code>Contents</code> → <strong>Read and write</strong></li>
+      <li>만료 기간 설정 후 <strong>Generate token</strong> 클릭</li>
+      <li>발급된 토큰(ghp_ 또는 github_pat_ 로 시작) 복사 → 아래 붙여넣기</li>
+    </ol>
+    <label for="pat-input">Personal Access Token</label>
+    <input type="password" id="pat-input" placeholder="github_pat_..." autocomplete="off" />
+    <div class="row">
+      <button class="btn primary" id="pat-save">저장 & 시작</button>
+      <span style="color:var(--dim);font-size:.8rem;align-self:center;">
+        토큰은 브라우저 localStorage에만 저장되며 어디로도 전송되지 않습니다.
+      </span>
+    </div>
+  </div>
+
+  <div id="editor" style="display:none;">
+    <div class="loading" id="loading">📥 콘텐츠 불러오는 중...</div>
+    <div id="form"></div>
+  </div>
+</main>
+
+<div id="toast" class="toast" style="display:none;"></div>
+
+<script>
+const REPO_OWNER = 'parkminhyun0';
+const REPO_NAME  = 'bible-mindmap';
+const BRANCH     = 'main';
+const CONTENT_PATH = 'bible-mindmap/landing/data/content.json';
+const LS_PAT = 'bmm-admin-pat';
+
+// ── 스키마: 각 섹션의 필드 정의 ──
+const SCHEMA = [
+  { key: 'hero', label: '🎯 히어로', fields: [
+    { key: 'badge', type: 'text', label: '상단 배지 텍스트' },
+    { key: 'titleLines', type: 'lines', label: '메인 제목 (한 줄에 한 라인)' },
+    { key: 'subtitleLines', type: 'lines', label: '서브 텍스트 (한 줄에 한 라인)' },
+    { key: 'ctaPrimaryText', type: 'text', label: '주 버튼 텍스트' },
+    { key: 'ctaSecondaryText', type: 'text', label: '보조 버튼 텍스트' },
+    { key: 'pills', type: 'list', label: '핵심 기능 pill', itemLabel: 'Pill',
+      item: [
+        { key: 'color', type: 'color', label: '색상 (dot)' },
+        { key: 'label', type: 'text', label: '라벨' }
+      ]}
+  ]},
+  { key: 'features', label: '⭐ 기능 섹션', fields: [
+    { key: 'label', type: 'text', label: '섹션 라벨 (예: FEATURES)' },
+    { key: 'title', type: 'text', label: '섹션 제목' },
+    { key: 'subtitle', type: 'text', label: '섹션 부제' },
+    { key: 'cards', type: 'list', label: '기능 카드', itemLabel: '카드',
+      item: [
+        { key: 'color', type: 'select', label: '색상 계열', options: ['green','amber','purple','blue'] },
+        { key: 'icon', type: 'text', label: '아이콘 (이모지 1개)' },
+        { key: 'title', type: 'text', label: '카드 제목' },
+        { key: 'description', type: 'textarea', label: '설명' },
+        { key: 'tags', type: 'tags', label: '태그 (쉼표로 구분)' }
+      ]}
+  ]},
+  { key: 'stats', label: '📊 통계 카드', topLevelList: true, itemLabel: '통계',
+    item: [
+      { key: 'number', type: 'text', label: '숫자/값' },
+      { key: 'label', type: 'text', label: '라벨' }
+    ]},
+  { key: 'cta', label: '🚀 CTA 섹션', fields: [
+    { key: 'title', type: 'text', label: '제목' },
+    { key: 'descriptionLines', type: 'lines', label: '설명 (한 줄에 한 라인)' },
+    { key: 'buttonText', type: 'text', label: '버튼 텍스트' }
+  ]},
+  { key: 'credit', label: '📝 푸터 크레딧', topLevelString: true }
+];
+
+// ── State ──
+let currentData = null;
+let currentSha = null;
+let dirty = false;
+
+// ── DOM refs ──
+const $ = (id) => document.getElementById(id);
+const setStatus = (cls, txt) => {
+  const el = $('status');
+  el.className = cls;
+  el.querySelector('.txt').textContent = txt;
+};
+const setDirty = (v) => {
+  dirty = v;
+  $('save-btn').disabled = !v;
+  if (v) setStatus('dirty', '저장되지 않은 변경사항');
+  else setStatus('loaded', '동기화됨');
+};
+
+// ── Toast ──
+let toastTimer;
+function toast(msg, kind = 'success') {
+  const t = $('toast');
+  t.className = 'toast ' + kind;
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.style.display = 'none', 3500);
+}
+
+// ── PAT 관리 ──
+function getPat() { return localStorage.getItem(LS_PAT); }
+function savePat(p) { localStorage.setItem(LS_PAT, p); }
+function clearPat() { localStorage.removeItem(LS_PAT); }
+
+// ── GitHub API ──
+async function ghGet() {
+  const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}?ref=${BRANCH}`, {
+    headers: { Authorization: `Bearer ${getPat()}`, Accept: 'application/vnd.github+json' }
+  });
+  if (!r.ok) throw new Error(`GET 실패 (${r.status}): ${(await r.text()).slice(0,200)}`);
+  const j = await r.json();
+  const decoded = decodeURIComponent(escape(atob(j.content.replace(/\s/g, ''))));
+  return { data: JSON.parse(decoded), sha: j.sha };
+}
+async function ghPut(newData, sha) {
+  const bodyText = JSON.stringify(newData, null, 2) + '\n';
+  const b64 = btoa(unescape(encodeURIComponent(bodyText)));
+  const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}`, {
+    method: 'PUT',
+    headers: {
+      Authorization: `Bearer ${getPat()}`,
+      Accept: 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: 'admin: 랜딩 콘텐츠 업데이트',
+      content: b64,
+      sha, branch: BRANCH
+    })
+  });
+  if (!r.ok) throw new Error(`PUT 실패 (${r.status}): ${(await r.text()).slice(0,200)}`);
+  return (await r.json()).content.sha;
+}
+
+// ── Form 렌더링 ──
+const el = (tag, attrs = {}, children = []) => {
+  const n = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (k === 'className') n.className = v;
+    else if (k === 'style' && typeof v === 'object') Object.assign(n.style, v);
+    else if (k.startsWith('on') && typeof v === 'function') n.addEventListener(k.slice(2).toLowerCase(), v);
+    else if (v !== null && v !== undefined) n.setAttribute(k, v);
+  }
+  (Array.isArray(children) ? children : [children]).forEach(c => {
+    if (c == null) return;
+    n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+  });
+  return n;
+};
+
+function renderFieldInput(field, value, onChange) {
+  if (field.type === 'text') {
+    return el('input', { type: 'text', value: value ?? '', onInput: (e) => onChange(e.target.value) });
+  }
+  if (field.type === 'textarea') {
+    const ta = el('textarea', { rows: 3, onInput: (e) => onChange(e.target.value) });
+    ta.value = value ?? '';
+    return ta;
+  }
+  if (field.type === 'color') {
+    return el('input', { type: 'color', value: value || '#10b981', onInput: (e) => onChange(e.target.value) });
+  }
+  if (field.type === 'select') {
+    const sel = el('select', { onChange: (e) => onChange(e.target.value) });
+    (field.options || []).forEach(opt => {
+      const o = el('option', { value: opt }, opt);
+      if (opt === value) o.selected = true;
+      sel.appendChild(o);
+    });
+    return sel;
+  }
+  if (field.type === 'lines') {
+    const arr = Array.isArray(value) ? value : (value ? [value] : []);
+    const ta = el('textarea', { rows: Math.max(2, arr.length), onInput: (e) => onChange(e.target.value.split('\n')) });
+    ta.value = arr.join('\n');
+    return ta;
+  }
+  if (field.type === 'tags') {
+    const arr = Array.isArray(value) ? value : [];
+    return el('input', {
+      type: 'text',
+      value: arr.join(', '),
+      placeholder: '태그1, 태그2, 태그3',
+      onInput: (e) => onChange(e.target.value.split(',').map(s => s.trim()).filter(Boolean))
+    });
+  }
+  return el('span', {}, '(지원되지 않는 타입: ' + field.type + ')');
+}
+
+function renderField(field, obj) {
+  const wrap = el('div', { className: 'field' });
+  wrap.appendChild(el('label', {}, field.label));
+  wrap.appendChild(renderFieldInput(field, obj[field.key], (v) => { obj[field.key] = v; setDirty(true); }));
+  return wrap;
+}
+
+function renderListItem(itemSchema, item, idx, arr, container, itemLabel) {
+  const box = el('div', { className: 'list-item' });
+  const head = el('div', { className: 'item-head' });
+  head.appendChild(el('strong', {}, `${itemLabel || '항목'} #${idx + 1}`));
+  const actions = el('div', { className: 'item-actions' });
+  actions.appendChild(el('button', {
+    className: 'icon-btn', title: '위로',
+    onClick: () => { if (idx > 0) { [arr[idx-1], arr[idx]] = [arr[idx], arr[idx-1]]; setDirty(true); rerenderList(container, arr, itemSchema, itemLabel); } }
+  }, '▲'));
+  actions.appendChild(el('button', {
+    className: 'icon-btn', title: '아래로',
+    onClick: () => { if (idx < arr.length - 1) { [arr[idx+1], arr[idx]] = [arr[idx], arr[idx+1]]; setDirty(true); rerenderList(container, arr, itemSchema, itemLabel); } }
+  }, '▼'));
+  actions.appendChild(el('button', {
+    className: 'icon-btn del', title: '삭제',
+    onClick: () => { if (confirm(`${itemLabel || '항목'} #${idx + 1}을(를) 삭제할까요?`)) { arr.splice(idx, 1); setDirty(true); rerenderList(container, arr, itemSchema, itemLabel); } }
+  }, '🗑'));
+  head.appendChild(actions);
+  box.appendChild(head);
+  itemSchema.forEach(f => box.appendChild(renderField(f, item)));
+  return box;
+}
+
+function rerenderList(container, arr, itemSchema, itemLabel) {
+  container.querySelectorAll('.list-item').forEach(n => n.remove());
+  const actionsRow = container.querySelector('.list-actions');
+  arr.forEach((item, idx) => container.insertBefore(renderListItem(itemSchema, item, idx, arr, container, itemLabel), actionsRow));
+}
+
+function renderList(fieldSpec, arr, parentObj, parentKey) {
+  const wrap = el('div', { className: 'field' });
+  if (fieldSpec.label) wrap.appendChild(el('label', {}, fieldSpec.label));
+  const listBox = el('div', { className: 'list-box' });
+
+  const actionsRow = el('div', { className: 'list-actions' });
+  const addBtn = el('button', {
+    className: 'add',
+    onClick: () => {
+      const empty = {};
+      fieldSpec.item.forEach(f => { empty[f.key] = f.type === 'tags' ? [] : (f.type === 'lines' ? [''] : ''); });
+      arr.push(empty);
+      setDirty(true);
+      rerenderList(listBox, arr, fieldSpec.item, fieldSpec.itemLabel);
+    }
+  }, '+ ' + (fieldSpec.itemLabel || '항목') + ' 추가');
+  actionsRow.appendChild(addBtn);
+
+  arr.forEach((item, idx) => listBox.appendChild(renderListItem(fieldSpec.item, item, idx, arr, listBox, fieldSpec.itemLabel)));
+  listBox.appendChild(actionsRow);
+  wrap.appendChild(listBox);
+  return wrap;
+}
+
+function renderSection(section, data) {
+  const card = el('section', { className: 'card' });
+  card.appendChild(el('h2', {}, section.label));
+
+  if (section.topLevelString) {
+    const wrap = el('div', { className: 'field' });
+    const ta = el('textarea', { rows: 2, onInput: (e) => { data[section.key] = e.target.value; setDirty(true); } });
+    ta.value = data[section.key] ?? '';
+    wrap.appendChild(ta);
+    card.appendChild(wrap);
+    return card;
+  }
+  if (section.topLevelList) {
+    if (!Array.isArray(data[section.key])) data[section.key] = [];
+    card.appendChild(renderList({ item: section.item, itemLabel: section.itemLabel }, data[section.key], data, section.key));
+    return card;
+  }
+  if (!data[section.key]) data[section.key] = {};
+  const obj = data[section.key];
+  section.fields.forEach(f => {
+    if (f.type === 'list') {
+      if (!Array.isArray(obj[f.key])) obj[f.key] = [];
+      card.appendChild(renderList(f, obj[f.key], obj, f.key));
+    } else {
+      card.appendChild(renderField(f, obj));
+    }
+  });
+  return card;
+}
+
+function renderForm() {
+  const form = $('form');
+  form.innerHTML = '';
+  SCHEMA.forEach(s => form.appendChild(renderSection(s, currentData)));
+}
+
+// ── 초기화 ──
+async function loadContent() {
+  try {
+    $('loading').style.display = 'block';
+    const { data, sha } = await ghGet();
+    currentData = data;
+    currentSha = sha;
+    $('loading').style.display = 'none';
+    $('repo-badge').style.display = 'inline-block';
+    renderForm();
+    setStatus('loaded', '동기화됨');
+  } catch (e) {
+    $('loading').textContent = '❌ 불러오기 실패: ' + e.message;
+    console.error(e);
+    if (String(e.message).includes('401') || String(e.message).includes('403')) {
+      toast('토큰이 유효하지 않아요. 로그아웃 후 재등록하세요.', 'error');
+    }
+  }
+}
+
+async function save() {
+  if (!dirty || !currentData) return;
+  setStatus('saving', '저장 중...');
+  $('save-btn').disabled = true;
+  try {
+    const newSha = await ghPut(currentData, currentSha);
+    currentSha = newSha;
+    setDirty(false);
+    toast('✅ 저장 완료! GitHub Actions가 배포합니다 (약 1분)', 'success');
+  } catch (e) {
+    toast('저장 실패: ' + e.message, 'error');
+    setStatus('dirty', '저장 실패');
+    $('save-btn').disabled = false;
+  }
+}
+
+function showEditor() {
+  $('setup').style.display = 'none';
+  $('editor').style.display = 'block';
+  $('logout-btn').style.display = 'inline-block';
+  loadContent();
+}
+function showSetup() {
+  $('setup').style.display = 'block';
+  $('editor').style.display = 'none';
+  $('logout-btn').style.display = 'none';
+  setStatus('', '로그인 필요');
+  $('save-btn').disabled = true;
+}
+
+$('pat-save').addEventListener('click', () => {
+  const v = $('pat-input').value.trim();
+  if (!v.startsWith('ghp_') && !v.startsWith('github_pat_')) {
+    toast('올바른 GitHub PAT 형식이 아닙니다.', 'error');
+    return;
+  }
+  savePat(v);
+  $('pat-input').value = '';
+  showEditor();
+});
+$('logout-btn').addEventListener('click', () => {
+  if (confirm('로그아웃하시겠습니까? 저장된 PAT가 삭제됩니다.')) {
+    clearPat();
+    currentData = null;
+    currentSha = null;
+    dirty = false;
+    showSetup();
+  }
+});
+$('save-btn').addEventListener('click', save);
+
+// 실수로 페이지 이탈 방지
+window.addEventListener('beforeunload', (e) => {
+  if (dirty) { e.preventDefault(); e.returnValue = ''; }
+});
+// Ctrl/Cmd+S 저장
+window.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 's') { e.preventDefault(); save(); }
+});
+
+// Boot
+if (getPat()) showEditor();
+else showSetup();
+</script>
+
+</body>
+</html>

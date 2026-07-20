@@ -474,24 +474,24 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge">Open Source · 무료 · 원문 성경</div>
-  <h1>성경을 연결하다<br/>마음으로 그리다</h1>
-  <p>
+  <div class="badge" data-cms="hero.badge">Open Source · 무료 · 원문 성경</div>
+  <h1 data-cms-lines="hero.titleLines">성경을 연결하다<br/>마음으로 그리다</h1>
+  <p data-cms-lines="hero.subtitleLines">
     인물·장소·시대를 캔버스 위에 펼치고,<br/>
     헬라어·히브리어 원문까지 손끝으로 탐색하는<br/>
     인터랙티브 성경 마인드맵
   </p>
   <div class="hero-cta">
-    <a href="./app/" class="btn-primary">
+    <a href="./app/" class="btn-primary" data-cms="hero.ctaPrimaryText">
       ✦ 지금 시작하기
     </a>
-    <a href="#features" class="btn-secondary">
+    <a href="#features" class="btn-secondary" data-cms="hero.ctaSecondaryText">
       기능 살펴보기 ↓
     </a>
   </div>
 
   <!-- 핵심 기능 한눈에 -->
-  <div class="hero-pills">
+  <div class="hero-pills" data-cms-list="hero.pills" data-cms-tpl="pill">
     <span class="hero-pill"><span class="dot" style="background:#10b981;"></span>어형 분석 · 레마 사전</span>
     <span class="hero-pill"><span class="dot" style="background:#a78bfa;"></span>Strong's 번호 연동</span>
     <span class="hero-pill"><span class="dot" style="background:#60a5fa;"></span>원문↔번역 단어 페어링</span>
@@ -508,11 +508,11 @@
 <!-- 기능 -->
 <section class="section" id="features">
   <div class="wrap">
-    <p class="section-label fade-up">FEATURES</p>
-    <h2 class="section-title fade-up">성경 공부를 새롭게</h2>
-    <p class="section-sub fade-up">원문부터 인물 관계까지, 한 캔버스에서 모두</p>
+    <p class="section-label fade-up" data-cms="features.label">FEATURES</p>
+    <h2 class="section-title fade-up" data-cms="features.title">성경 공부를 새롭게</h2>
+    <p class="section-sub fade-up" data-cms="features.subtitle">원문부터 인물 관계까지, 한 캔버스에서 모두</p>
 
-    <div class="features">
+    <div class="features" data-cms-list="features.cards" data-cms-tpl="featCard">
       <div class="feat-card green fade-up">
         <div class="feat-icon green">👤</div>
         <h3>성경 인물 탐색</h3>
@@ -704,7 +704,7 @@
 <!-- 통계 -->
 <section class="section" style="padding-top: 0;">
   <div class="wrap">
-    <div class="stats fade-up">
+    <div class="stats fade-up" data-cms-list="stats" data-cms-tpl="stat">
       <div class="stat-card">
         <div class="stat-num">31,102</div>
         <div class="stat-label">성경 구절 수</div>
@@ -729,9 +729,9 @@
 <section class="cta-section">
   <div class="wrap">
     <div class="cta-box fade-up">
-      <h2>지금 바로 시작해 보세요</h2>
-      <p>설치 없이 브라우저에서 바로 사용.<br/>저장된 캔버스는 브라우저에 안전하게 보관됩니다.</p>
-      <a href="./app/" class="btn-primary">
+      <h2 data-cms="cta.title">지금 바로 시작해 보세요</h2>
+      <p data-cms-lines="cta.descriptionLines">설치 없이 브라우저에서 바로 사용.<br/>저장된 캔버스는 브라우저에 안전하게 보관됩니다.</p>
+      <a href="./app/" class="btn-primary" data-cms="cta.buttonText">
         ✦ &nbsp;성경 마인드맵 열기
       </a>
     </div>
@@ -779,7 +779,7 @@
     <hr class="footer-divider" />
 
     <div class="footer-bottom">
-      <div class="footer-credit">
+      <div class="footer-credit" data-cms="credit">
         <strong>PARK MIN HYUN</strong> &nbsp;·&nbsp;
         Built with <strong>Jarvis</strong> (claude-sonnet · 2026) &nbsp;·&nbsp;
         📖 성경 마인드맵
@@ -790,6 +790,17 @@
   </div>
 </footer>
 
+<!-- 관리자 진입 버튼 (숨김/표시는 JS가 결정) -->
+<a id="admin-fab" href="./admin/" title="관리자 편집" style="
+  display:none;position:fixed;bottom:24px;right:24px;z-index:200;
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,#059669,#2563eb);
+  color:#fff;font-size:22px;text-decoration:none;
+  align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 20px rgba(5,150,105,.4);
+  transition:transform .2s,box-shadow .2s;
+" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">⚙️</a>
+
 <script>
   // ── 스크롤 등장 애니메이션 ──
   const observer = new IntersectionObserver(
@@ -797,6 +808,69 @@
     { threshold: 0.12 }
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── 관리자 모드 토글 (?admin=on / ?admin=off) ──
+  (function(){
+    const params = new URLSearchParams(location.search);
+    const mode = params.get('admin');
+    if (mode === 'on')  { localStorage.setItem('bmm-admin','1'); params.delete('admin'); history.replaceState({},'',location.pathname + (params.toString() ? '?'+params : '')); }
+    if (mode === 'off') { localStorage.removeItem('bmm-admin'); params.delete('admin'); history.replaceState({},'',location.pathname + (params.toString() ? '?'+params : '')); }
+    if (localStorage.getItem('bmm-admin')) {
+      const fab = document.getElementById('admin-fab');
+      if (fab) fab.style.display = 'flex';
+    }
+  })();
+
+  // ── content.json 하이드레이션 (편집된 콘텐츠 반영) ──
+  (function(){
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const get = (obj, path) => path.split('.').reduce((o,k) => (o == null ? o : o[k]), obj);
+
+    const TEMPLATES = {
+      pill: (item) => `<span class="hero-pill"><span class="dot" style="background:${esc(item.color)};"></span>${esc(item.label)}</span>`,
+      featCard: (item) => {
+        const color = esc(item.color || 'green');
+        const tags = (item.tags || []).map(t => `<span class="feat-tag ${color}">${esc(t)}</span>`).join('');
+        return `<div class="feat-card ${color} fade-up">
+          <div class="feat-icon ${color}">${esc(item.icon)}</div>
+          <h3>${esc(item.title)}</h3>
+          <p>${esc(item.description)}</p>
+          <div class="feat-tags">${tags}</div>
+        </div>`;
+      },
+      stat: (item) => `<div class="stat-card">
+        <div class="stat-num">${esc(item.number)}</div>
+        <div class="stat-label">${esc(item.label)}</div>
+      </div>`
+    };
+
+    fetch('./data/content.json?t=' + Date.now())
+      .then(r => r.ok ? r.json() : null)
+      .then(data => {
+        if (!data) return;
+        // 단일 텍스트
+        document.querySelectorAll('[data-cms]').forEach(el => {
+          const v = get(data, el.dataset.cms);
+          if (v != null) el.textContent = v;
+        });
+        // 여러 줄 (<br/> 조인)
+        document.querySelectorAll('[data-cms-lines]').forEach(el => {
+          const arr = get(data, el.dataset.cmsLines);
+          if (Array.isArray(arr)) el.innerHTML = arr.map(esc).join('<br/>');
+        });
+        // 배열 리스트 (템플릿으로 렌더)
+        document.querySelectorAll('[data-cms-list]').forEach(el => {
+          const arr = get(data, el.dataset.cmsList);
+          const tpl = TEMPLATES[el.dataset.cmsTpl];
+          if (Array.isArray(arr) && tpl) {
+            el.innerHTML = arr.map(tpl).join('');
+            // 새로 렌더된 fade-up 요소도 옵저버에 등록
+            el.querySelectorAll('.fade-up').forEach(node => observer.observe(node));
+          }
+        });
+      })
+      .catch(() => {/* 폴백: 정적 HTML 그대로 표시 */});
+  })();
 </script>
 
 </body>
