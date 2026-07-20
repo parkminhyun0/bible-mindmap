@@ -207,58 +207,77 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
     );
   }
 
-  // ─── 접힌 상태 ───
+  // ─── 접힌 상태 (얇은 세로 rail) ───────────────────────────────────
   if (!contentOpen) {
+    const ALL_TABS = [...TABS, ...BG_TABS];
+    const openWithTab = (key) => { setTab(key); setContentOpen(true); };
+
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', borderRight: '1px solid #e2e8f0' }}>
-        {/* 섹션 1: 타이틀 */}
-        <div style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
-          <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘</button>
-        </div>
-
-        {/* 섹션 2: 탭 (세로) */}
-        <div style={{ ...tabBarStyle, flexDirection: 'column', padding: '8px 4px', gap: 4 }}>
-          {TABS.map((t) => (
+      <>
+        <div style={{
+          width: 44,
+          display: 'flex',
+          flexDirection: 'column',
+          borderRight: '1px solid #e2e8f0',
+          background: '#f8fafc',
+          flexShrink: 0,
+        }}>
+          {/* 상단: 로고 + 매뉴얼 아이콘 */}
+          <div style={{
+            padding: '10px 0', borderBottom: '1px solid #e2e8f0',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+            background: '#fff',
+          }}>
+            <span style={{ fontSize: 20 }} title="성경 마인드맵">✝️</span>
             <button
-              key={t.key}
-              onClick={() => setTab(t.key)}
-              style={{
-                ...tabBtnStyle,
-                background: tab === t.key ? '#3b82f6' : '#e2e8f0',
-                color: tab === t.key ? '#fff' : '#64748b',
-                fontWeight: tab === t.key ? 700 : 400,
-                padding: '6px 8px',
-                fontSize: 18,
-              }}
-              title={t.label}
-            >
-              {t.icon}
-            </button>
-          ))}
+              onClick={() => setShowManual(true)}
+              title="사용자 매뉴얼"
+              style={railIconBtn('#1e3a8a', '#fff')}
+            >📘</button>
+          </div>
+
+          {/* 노드 타입 rail — 클릭 시 해당 탭으로 열기 */}
+          <div style={{
+            padding: '8px 0', display: 'flex', flexDirection: 'column',
+            alignItems: 'center', gap: 4,
+          }}>
+            {ALL_TABS.map((t) => (
+              <button
+                key={t.key}
+                onClick={() => openWithTab(t.key)}
+                title={`${t.label} — 패널 열기`}
+                style={railIconBtn(tab === t.key ? '#dbeafe' : 'transparent',
+                                   tab === t.key ? '#1e40af' : '#475569', tab === t.key)}
+              >{t.icon}</button>
+            ))}
+          </div>
+
+          {/* 하단: 세로 라벨 (열기 트리거) */}
+          <div
+            onClick={() => setContentOpen(true)}
+            title="입력 패널 열기"
+            style={{
+              flex: 1,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer',
+              background: 'linear-gradient(180deg, transparent, rgba(59,130,246,0.05))',
+              transition: 'background 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.08)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, transparent, rgba(59,130,246,0.05))')}
+          >
+            <span style={{
+              writingMode: 'vertical-lr',
+              fontSize: 11, fontWeight: 700, color: '#64748b',
+              letterSpacing: '.05em', userSelect: 'none',
+            }}>
+              ▶ 입력 패널 열기
+            </span>
+          </div>
         </div>
 
-        {/* 열기 탭 */}
-        <div
-          onClick={() => setContentOpen(true)}
-          style={{
-            flex: 1,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            writingMode: 'vertical-rl',
-            fontSize: 12,
-            color: '#64748b',
-            fontWeight: 600,
-            userSelect: 'none',
-            background: '#f8fafc',
-            padding: '8px 6px',
-          }}
-        >
-          📖 입력 패널 열기 ▶
-        </div>
-      </div>
+        {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+      </>
     );
   }
 
@@ -529,6 +548,18 @@ const manualBtnStyle = {
   cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap',
   boxShadow: '0 2px 8px rgba(37,99,235,0.35)',
 };
+
+// 접힘 상태 rail 의 아이콘 버튼
+function railIconBtn(bg, color, active) {
+  return {
+    width: 32, height: 32, padding: 0,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    background: bg, color, fontSize: 16,
+    border: active ? '1px solid rgba(59,130,246,0.4)' : '1px solid transparent',
+    borderRadius: 7, cursor: 'pointer',
+    transition: 'background .15s, border-color .15s',
+  };
+}
 
 // 섹션 1: 타이틀
 const titleBarStyle = {
