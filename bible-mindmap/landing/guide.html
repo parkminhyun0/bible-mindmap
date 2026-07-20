@@ -461,29 +461,74 @@
   <!-- 5. 렉시콘 팝업 -->
   <section class="guide-section" id="lexicon">
     <span class="section-num">05</span>
-    <h2>원문 렉시콘 팝업</h2>
-    <p>원문 탭에서 단어를 클릭하면 나타나는 팝업입니다. STEPBible 형태소 분석 + Strong's 원어 사전 + 용례 인덱스로 구성됩니다.</p>
+    <h2>원문 렉시콘 & 어형 분석 팝업</h2>
+    <p>원문 탭에서 단어를 클릭하면 나타나는 팝업입니다. <strong>본문형(어형) 표시 → 스트롱 번호 → 레마 사전 조회</strong> 의 세 단계로 연결됩니다.</p>
+
+    <!-- 본문형 vs 레마 구분 설명 -->
+    <div class="callout blue" style="margin-bottom:16px;">
+      <strong>📌 본문형(어형) vs. 레마(기본형) — 무엇이 다른가?</strong><br/>
+      <table style="width:100%;margin-top:10px;border-collapse:collapse;font-size:.88rem;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.1);color:#94a3b8;font-weight:600;">구분</th>
+            <th style="text-align:left;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.1);color:#94a3b8;font-weight:600;">헬라어 예시</th>
+            <th style="text-align:left;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.1);color:#94a3b8;font-weight:600;">히브리어 예시</th>
+            <th style="text-align:left;padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.1);color:#94a3b8;font-weight:600;">설명</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:7px 10px;color:#fbbf24;font-weight:600;">본문형 (칩)</td>
+            <td style="padding:7px 10px;font-family:'Gentium Plus',Cardo,serif;">δοῦλοι</td>
+            <td style="padding:7px 10px;font-family:'SBL BibLit',serif;direction:rtl;text-align:right;">בָּרָא</td>
+            <td style="padding:7px 10px;color:var(--muted);">성경 본문에 실제 등장한 활용형 (복수·격·시제 등 변화 포함)</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;color:#10b981;font-weight:600;">레마 (팝업)</td>
+            <td style="padding:7px 10px;font-family:'Gentium Plus',Cardo,serif;">δοῦλος</td>
+            <td style="padding:7px 10px;font-family:'SBL BibLit',serif;direction:rtl;text-align:right;">בָּרָא</td>
+            <td style="padding:7px 10px;color:var(--muted);">사전의 표제어 역할을 하는 기본형 (Strong's 번호로 연결)</td>
+          </tr>
+          <tr>
+            <td style="padding:7px 10px;color:#a78bfa;font-weight:600;">Strong's 번호</td>
+            <td style="padding:7px 10px;">G1401</td>
+            <td style="padding:7px 10px;">H1254</td>
+            <td style="padding:7px 10px;color:var(--muted);">레마와 1:1 대응. 팝업 사전 조회의 열쇠</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px;font-size:.82rem;color:var(--muted);">
+        즉, 칩은 <em>"이 단어가 본문에서 어떤 형태로 쓰였는가"</em>를 보여주고,<br/>
+        팝업은 <em>"그 단어 어근의 기본 의미가 무엇인가"</em>를 알려줍니다.
+      </p>
+    </div>
+
+    <!-- 팝업 구성 -->
     <div class="cards">
       <div class="card accent-blue">
         <div class="card-icon">📖</div>
-        <h3>사전 정의 탭</h3>
+        <h3>팝업 상단 — 형태소 정보</h3>
         <p>
-          <strong>Strong's 번호</strong> — BibleHub 원문 사전 바로가기 링크<br/>
-          <strong>사전형 (Lemma)</strong> — 원형 단어<br/>
-          <strong>형태소</strong> — 격·수·성·태·법 분석<br/>
-          <strong>기본뜻</strong> — 영어 글로스<br/>
-          <strong>헬라어</strong> — openscriptures/strongs 공개 사전 정의 (Public Domain)<br/>
-          <strong>히브리어</strong> — BDB(Brown·Driver·Briggs) 상세 정의
+          <strong>Strong's 번호</strong> — 클릭 시 BibleHub 원문 사전으로 이동<br/>
+          <strong>레마 (l:)</strong> — 사전 기본형 (있는 경우)<br/>
+          <strong>음역 (tr:)</strong> — 라틴 문자 발음 표기<br/>
+          <strong>형태소 (g:)</strong> — 문법 분석 (격·수·성·태·법·시제 등)<br/>
+          <strong>기본뜻</strong> — STEPBible 영어 글로스
         </p>
       </div>
       <div class="card accent-green">
-        <div class="card-icon">🔍</div>
-        <h3>용례 탭</h3>
-        <p>같은 Strong 번호를 가진 단어가 이 책의 다른 구절에서 어떻게 쓰이는지 전체 목록을 표시합니다. 절 번호(예: <code>요한 3:16</code>)를 클릭하면 해당 구절이 캔버스에 바로 추가됩니다.</p>
+        <div class="card-icon">📚</div>
+        <h3>팝업 하단 — 사전 정의</h3>
+        <p>
+          <strong>헬라어</strong> — openscriptures/strongs 공개 사전 정의 (Public Domain)<br/>
+          <strong>히브리어</strong> — BDB(Brown·Driver·Briggs) 상세 정의 + openscriptures 보완<br/>
+          정의 내 <code>H1234</code>·<code>G5678</code> 코드를 클릭하면 관련 단어 BibleHub 페이지로 이동
+        </p>
       </div>
     </div>
+
     <div class="callout blue">
-      <strong>다중 팝업:</strong> 여러 단어를 클릭하면 팝업이 각각 독립적으로 열립니다. 헤더를 드래그해 원하는 위치로 이동하고, <strong>X 버튼</strong> 또는 <code>Esc</code> 키로 닫습니다.
+      <strong>다중 팝업 & 이동:</strong> 여러 단어를 클릭하면 팝업이 각각 독립적으로 열립니다. 헤더를 드래그해 원하는 위치로 이동. <strong>X 버튼</strong> 또는 <code>Esc</code> 키로 닫습니다.
     </div>
     <div class="callout" style="margin-top:12px">
       <strong>데이터 출처:</strong>

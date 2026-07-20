@@ -278,6 +278,66 @@
     .orig-sample { font-size: 1.3rem; letter-spacing: .04em; line-height: 1.8; color: var(--text); font-weight: 500; }
     .orig-sub { font-size: .78rem; color: var(--muted); margin-top: 6px; }
 
+    /* ── 렉시콘 섹션 ── */
+    .lex-flow {
+      display: flex; align-items: stretch; gap: 0;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; overflow: hidden;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 640px) { .lex-flow { flex-direction: column; } }
+    .lex-box {
+      flex: 1; padding: 32px 28px;
+    }
+    .lex-box.left  { border-right: 1px solid var(--border); }
+    @media (max-width: 640px) { .lex-box.left { border-right: none; border-bottom: 1px solid var(--border); } }
+    .lex-arrow {
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 20px; flex-shrink: 0; color: var(--muted); font-size: 1.5rem;
+    }
+    @media (max-width: 640px) { .lex-arrow { padding: 12px 0; font-size: 1.2rem; transform: rotate(90deg); } }
+    .lex-chip-label {
+      font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+      font-weight: 700; margin-bottom: 10px;
+    }
+    .lex-chip-label.inflected { color: #f59e0b; }
+    .lex-chip-label.lemma     { color: #10b981; }
+    .lex-word {
+      font-size: 2rem; font-weight: 500; margin-bottom: 6px; line-height: 1.2;
+    }
+    .lex-morph {
+      font-size: .78rem; color: var(--muted); margin-bottom: 12px;
+    }
+    .lex-desc {
+      font-size: .85rem; line-height: 1.7; color: var(--muted);
+    }
+    .lex-strong {
+      display: inline-block; font-size: .75rem; font-weight: 700;
+      padding: 2px 10px; border-radius: 999px; margin-bottom: 8px;
+      background: rgba(16,185,129,.12); color: #10b981;
+      border: 1px solid rgba(16,185,129,.25);
+    }
+    .lex-def-preview {
+      font-size: .85rem; color: #c4b5fd; font-style: italic; margin-top: 6px;
+    }
+
+    .lex-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .lex-step {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 22px 20px;
+      display: flex; gap: 14px; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .lex-step:hover { border-color: rgba(124,58,237,.35); }
+    .lex-step-num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(124,58,237,.15); border: 1px solid rgba(124,58,237,.3);
+      color: #a78bfa; font-size: .8rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lex-step-body h4 { font-size: .88rem; font-weight: 700; margin-bottom: 4px; }
+    .lex-step-body p  { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+
     /* ── 스탯 ── */
     .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
     .stat-card {
@@ -514,6 +574,103 @@
         <div class="orig-sub">창세기 1:1 — 히브리어 원문</div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- 원어 사전 구조 설명 -->
+<section class="section" style="padding-top: 0;" id="lexicon">
+  <div class="wrap">
+    <p class="section-label fade-up">LEXICON SYSTEM</p>
+    <h2 class="section-title fade-up">어형 분석 & 원어 사전</h2>
+    <p class="section-sub fade-up">
+      본문에 쓰인 단어의 활용형을 그대로 보면서,<br/>
+      클릭 하나로 레마(기본형) 사전 정의까지 확인합니다
+    </p>
+
+    <!-- 본문형 → 레마 흐름 카드 -->
+    <div class="lex-flow fade-up">
+      <!-- 왼쪽: 본문형(어형) -->
+      <div class="lex-box left">
+        <div class="lex-chip-label inflected">① 본문형 — 칩에 표시</div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;">
+          <!-- 헬라어 예시 -->
+          <div>
+            <div class="lex-word" style="font-family:'Gentium Plus',Cardo,serif;">δοῦλοι</div>
+            <div class="lex-morph">빌립보서 1:1 · 헬라어</div>
+            <div class="lex-desc">
+              본문에 실제 등장한 <strong>활용된 어형</strong><br/>
+              <span style="color:#fbbf24;">복수 주격</span> — "종들이"
+            </div>
+          </div>
+          <!-- 히브리어 예시 -->
+          <div>
+            <div class="lex-word" style="font-family:'SBL BibLit','Ezra SIL',serif;direction:rtl;">בָּרָא</div>
+            <div class="lex-morph">창세기 1:1 · 히브리어</div>
+            <div class="lex-desc">
+              본문에 실제 등장한 <strong>활용된 어형</strong><br/>
+              <span style="color:#fbbf24;">3인칭 남성 단수 완료형</span> — "창조했다"
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 화살표 -->
+      <div class="lex-arrow">→</div>
+
+      <!-- 오른쪽: 레마 사전 -->
+      <div class="lex-box">
+        <div class="lex-chip-label lemma">② 레마(기본형) — 팝업 사전</div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;">
+          <!-- 헬라어 예시 -->
+          <div>
+            <div class="lex-word" style="font-family:'Gentium Plus',Cardo,serif;">δοῦλος</div>
+            <span class="lex-strong">Strong's G1401</span>
+            <div class="lex-desc">사전 기본형 — 단수 주격</div>
+            <div class="lex-def-preview">"a slave, bondman, man of servile condition"</div>
+          </div>
+          <!-- 히브리어 예시 -->
+          <div>
+            <div class="lex-word" style="font-family:'SBL BibLit','Ezra SIL',serif;direction:rtl;">בָּרָא</div>
+            <span class="lex-strong">Strong's H1254</span>
+            <div class="lex-desc">사전 기본형 — 칼 부정사</div>
+            <div class="lex-def-preview">"to create, shape, form (used only of divine creation)"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 활용 3단계 -->
+    <div class="lex-steps fade-up">
+      <div class="lex-step">
+        <div class="lex-step-num">1</div>
+        <div class="lex-step-body">
+          <h4>구절 노드 → '원어' 탭</h4>
+          <p>캔버스에 구절 노드를 선택한 뒤 <strong>원어</strong> 탭을 클릭하면 STEPBible 형태소 분석 기반의 단어 칩이 나타납니다. 각 칩이 본문의 단어 하나입니다.</p>
+        </div>
+      </div>
+      <div class="lex-step">
+        <div class="lex-step-num">2</div>
+        <div class="lex-step-body">
+          <h4>밑줄 단어 클릭 → 어형 팝업</h4>
+          <p>점선 밑줄이 있는 단어를 클릭하면 팝업이 열립니다. <strong>레마·스트롱 번호·문법 분석·영어 글로스</strong>가 표시되고, 여러 단어를 동시에 띄울 수도 있습니다.</p>
+        </div>
+      </div>
+      <div class="lex-step">
+        <div class="lex-step-num">3</div>
+        <div class="lex-step-body">
+          <h4>사전 정의 & BibleHub 연결</h4>
+          <p>팝업 안에서 Strong's 원어 정의(openscriptures), 히브리어는 BDB 사전(Bolls.life)까지 확인 가능. 하단 BibleHub 링크로 심화 학습을 이어갑니다.</p>
+        </div>
+      </div>
+      <div class="lex-step">
+        <div class="lex-step-num">4</div>
+        <div class="lex-step-body">
+          <h4>병렬 뷰에서 단어 페어링</h4>
+          <p>원어 탭 우측 <strong>병렬 뷰</strong> 아이콘을 누르면 개역한글·ESV·원어 세 열에서 단어를 선택해 색상으로 대응 관계를 만들 수 있습니다.</p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
