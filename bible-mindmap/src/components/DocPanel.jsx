@@ -3,6 +3,7 @@ import {
   DOC_ROOT_ID, DOC_ROOT_NAME,
   loadTree, saveTree, findNode, generateDocId,
 } from '../utils/storageTree';
+import { extractScriptureTags, parseTagInput } from '../utils/sermonTags';
 
 // ── 마크다운 툴바 헬퍼 ──────────────────────────────────────────────────
 function insertMarkdown(ref, setter, before, after = '') {
@@ -93,11 +94,22 @@ async function downloadDocx(filename, mdText) {
   URL.revokeObjectURL(a.href);
 }
 
+// 태그 배열을 옵시디언 스타일 라인으로 변환 (공백 태그는 하이픈으로)
+function formatTagsLine(tags) {
+  if (!tags?.length) return '';
+  return tags.map((t) => `#${String(t).replace(/\s+/g, '-')}`).join(' ');
+}
+
 // ── 설교 구성 → 마크다운 변환 ───────────────────────────────────────────
-function sermonToMd(title, scripture, structure, sections) {
+function sermonToMd(title, scripture, structure, sections, tags) {
   const lines = [];
   if (title) lines.push(`# ${title}`, '');
-  if (scripture) lines.push(`**성경 본문:** ${scripture}`, '', '---', '');
+  if (scripture) lines.push(`**성경 본문:** ${scripture}`, '');
+  // 자동 + 수동 태그 병합 후 옵시디언 스타일 태그 라인 추가
+  const autoTags = extractScriptureTags(scripture);
+  const allTags  = Array.from(new Set([...autoTags, ...(Array.isArray(tags) ? tags : [])]));
+  if (allTags.length) lines.push(formatTagsLine(allTags), '');
+  if (scripture || allTags.length) lines.push('---', '');
 
   const labels = structure === '3part'
     ? ['서론', '본론', '결론']
@@ -257,8 +269,9 @@ const SERMON_4 = [
 ];
 
 // ── 설교 구성 탭 (controlled) ─────────────────────────────────────────────
-function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections, onExportMd, onExportDocx }) {
+function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections, tags, setTags, onExportMd, onExportDocx }) {
   const [exporting, setExporting] = useState(false);
+  const [tagInput, setTagInput] = useState('');
 
   const sectionDefs = structure === '3part' ? SERMON_3 : SERMON_4;
 
@@ -285,6 +298,25 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
     finally { setExporting(false); }
   };
 
+  // 성경 본문에서 자동 추출된 태그
+  const autoTags = extractScriptureTags(scripture);
+  const removeTag = (t) => setTags((prev) => prev.filter((x) => x !== t));
+  const commitTagInput = () => {
+    const parsed = parseTagInput(tagInput);
+    if (!parsed.length) { setTagInput(''); return; }
+    setTags((prev) => Array.from(new Set([...prev, ...parsed])));
+    setTagInput('');
+  };
+  const handleTagKey = (e) => {
+    if (e.key === 'Enter' || (e.key === ',' && !e.nativeEvent.isComposing)) {
+      e.preventDefault();
+      commitTagInput();
+    } else if (e.key === 'Backspace' && !tagInput && tags.length) {
+      // 빈 상태에서 백스페이스 → 마지막 태그 제거
+      setTags((prev) => prev.slice(0, -1));
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
       {/* 헤더 메타 */}
@@ -296,11 +328,62 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
           style={metaInputStyle}
         />
         <input
-          placeholder="성경 본문 (예: 요한복음 3:16)"
+          placeholder="성경 본문 (예: 요한복음 3:16 · 창 1:1-5)"
           value={scripture}
           onChange={(e) => setScripture(e.target.value)}
           style={metaInputStyle}
         />
+
+        {/* 자동 추출 태그 (성경 본문 기반) */}
+        {autoTags.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'center' }}>
+            <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600, marginRight: 2 }}>자동:</span>
+            {autoTags.map((t) => (
+              <span key={t} style={{
+                fontSize: 10, padding: '2px 7px', borderRadius: 10,
+                background: '#dbeafe', color: '#1e40af', fontWeight: 600,
+              }}>#{t}</span>
+            ))}
+          </div>
+        )}
+
+        {/* 수동 주제 태그 */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'center',
+          padding: '4px 6px', border: '1px solid #e2e8f0', borderRadius: 7,
+          background: '#fff', minHeight: 26,
+        }}>
+          {tags.map((t) => (
+            <span key={t} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 3,
+              fontSize: 10, padding: '2px 4px 2px 7px', borderRadius: 10,
+              background: '#f5f3ff', color: '#6d28d9', fontWeight: 600,
+            }}>
+              #{t}
+              <button
+                onClick={() => removeTag(t)}
+                title="태그 제거"
+                style={{
+                  padding: 0, width: 14, height: 14, lineHeight: 1,
+                  fontSize: 12, color: '#7c3aed',
+                  border: 'none', background: 'transparent', cursor: 'pointer',
+                }}
+              >×</button>
+            </span>
+          ))}
+          <input
+            placeholder={tags.length ? '' : '주제 태그 (Enter 또는 , 로 추가)'}
+            value={tagInput}
+            onChange={(e) => setTagInput(e.target.value)}
+            onKeyDown={handleTagKey}
+            onBlur={commitTagInput}
+            style={{
+              flex: 1, minWidth: 100, border: 'none', outline: 'none',
+              fontSize: 11, padding: '2px 4px', background: 'transparent',
+            }}
+          />
+        </div>
+
         {/* 구조 선택 */}
         <div style={{ display: 'flex', gap: 4 }}>
           {[['3part', '서론 / 본론 / 결론'], ['4part', '발달 / 전개 / 절정 / 결말']].map(([v, label]) => (
@@ -431,6 +514,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   const [sermonTitle, setSermonTitle] = useState('');
   const [scripture, setScripture]   = useState('');
   const [sections, setSections]     = useState(SERMON_3.map(() => ({})));
+  const [tags, setTags]             = useState([]);  // 수동 주제 태그
 
   // 스케치 탭 상태
   const [sketchTitle, setSketchTitle] = useState('');
@@ -440,7 +524,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   // (버튼 클릭 시 IME 조합 중이거나 setState 커밋 전이라도 안전하게 최신값 사용)
   const stateRef = useRef({});
   stateRef.current = {
-    sermonTitle, scripture, structure, sections,
+    sermonTitle, scripture, structure, sections, tags,
     sketchTitle, sketchText,
   };
 
@@ -455,6 +539,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       setSermonTitle(data.sermon?.title || '');
       setScripture(data.sermon?.scripture || '');
       setSections(data.sermon?.sections || SERMON_3.map(() => ({})));
+      setTags(Array.isArray(data.sermon?.tags) ? data.sermon.tags : []);
     } else {
       setActiveTab('sketch');
       setSketchTitle(data.sketch?.title || '');
@@ -470,6 +555,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
     setCurrentDocId(null);
     setSermonTitle(''); setScripture('');
     setStructure('3part'); setSections(SERMON_3.map(() => ({})));
+    setTags([]);
     setSketchTitle(''); setSketchText('');
   };
 
@@ -483,7 +569,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       : (s.sketchTitle || '무제 스케치');
 
     const docData = isSermon
-      ? { docType: 'sermon', sermon: { title: s.sermonTitle, scripture: s.scripture, structure: s.structure, sections: s.sections } }
+      ? { docType: 'sermon', sermon: { title: s.sermonTitle, scripture: s.scripture, structure: s.structure, sections: s.sections, tags: s.tags } }
       : { docType: 'sketch', sketch: { title: s.sketchTitle, text: s.sketchText } };
 
     const tree = loadTree();
@@ -529,12 +615,12 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   const sanitizeName = (n) => (n || '').replace(/\s+/g, '_') || '무제';
   const exportSermonMd = () => {
     const s = stateRef.current;
-    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections);
+    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections, s.tags);
     downloadMd(`${sanitizeName(s.sermonTitle || '설교')}.md`, md);
   };
   const exportSermonDocx = async () => {
     const s = stateRef.current;
-    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections);
+    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections, s.tags);
     await downloadDocx(`${sanitizeName(s.sermonTitle || '설교')}.docx`, md);
   };
   const exportSketchMd = () => {
@@ -662,6 +748,8 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                 setScripture={setScripture}
                 sections={sections}
                 setSections={setSections}
+                tags={tags}
+                setTags={setTags}
                 onExportMd={exportSermonMd}
                 onExportDocx={exportSermonDocx}
               />

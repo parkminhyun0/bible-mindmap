@@ -1,8 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import {
   DOC_ROOT_ID, ensureDocRoot,
   loadTree as loadTreeCore, saveTree, findNode, findParent, generateFileId as generateId,
 } from '../utils/storageTree';
+import { collectDocTags } from '../utils/sermonTags';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
 const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
@@ -273,6 +274,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
   const [renameValue, setRenameValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');  // 태그·이름 검색어
   const fileInputRef = useRef(null);
   const importAllRef = useRef(null);
 
@@ -419,6 +421,29 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const [dragId, setDragId] = useState(null);
   const [dropTargetId, setDropTargetId] = useState(null);
   const [dropPosition, setDropPosition] = useState(null); // 'inside' | 'before' | 'after'
+
+  // 검색어 → 태그·이름 매칭으로 트리 필터링. 검색어 없으면 원본 트리 그대로.
+  const filteredTree = useMemo(() => {
+    const q = searchQuery.trim().replace(/^#+/, '').toLowerCase();
+    if (!q) return tree;
+    const matches = (node) => {
+      if (node.name?.toLowerCase().includes(q)) return true;
+      if (node.type === 'doc' && node.data?.docType === 'sermon') {
+        const t = collectDocTags(node.data.sermon);
+        if (t.some((tag) => tag.toLowerCase().includes(q))) return true;
+      }
+      return false;
+    };
+    const walk = (node) => {
+      if (!node.children) return matches(node) ? { ...node } : null;
+      const kept = node.children.map(walk).filter(Boolean);
+      if (kept.length || matches(node)) {
+        return { ...node, children: kept, open: true };
+      }
+      return null;
+    };
+    return walk(tree) || { ...tree, children: [] };
+  }, [tree, searchQuery]);
 
   function isDescendant(tree, ancestorId, nodeId) {
     const ancestor = findNode(tree, ancestorId);
@@ -792,10 +817,38 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         <input ref={importAllRef} type="file" accept=".json" onChange={handleImportAll} style={{ display: 'none' }} />
       </div>
 
+      {/* 태그·이름 검색 */}
+      <div style={{ padding: '6px 10px', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', background: '#fff' }}>
+        <div style={{ position: 'relative' }}>
+          <input
+            placeholder="🔍 태그 또는 이름 검색 (예: #사랑, 요한복음, 구원)"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%', padding: '5px 26px 5px 8px', fontSize: 11,
+              border: '1px solid #e2e8f0', borderRadius: 6, outline: 'none',
+              background: '#f8fafc', boxSizing: 'border-box',
+            }}
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery('')}
+              title="검색 지우기"
+              style={{
+                position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)',
+                padding: 0, width: 20, height: 20, lineHeight: 1,
+                fontSize: 14, color: '#94a3b8',
+                background: 'transparent', border: 'none', cursor: 'pointer',
+              }}
+            >×</button>
+          )}
+        </div>
+      </div>
+
       {/* Tree */}
       <div style={{ flex: 1, overflowY: 'auto', padding: '6px 0' }}>
         <TreeNode
-          item={tree}
+          item={filteredTree}
           depth={0}
           selectedId={selectedId}
           onSelect={setSelectedId}
