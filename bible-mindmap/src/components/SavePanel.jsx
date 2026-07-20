@@ -12,7 +12,7 @@ function useAppVisitorCount() {
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
 
-    // 오늘 방문: 오늘 첫 방문이면 플래그만 저장, 새로고침해도 재카운트 안 함
+    // 오늘 방문: 하루 1회 플래그 (새로고침 무관)
     let todayData = null;
     try { todayData = JSON.parse(localStorage.getItem(TODAY_LS)); } catch (e) {}
     if (!todayData || todayData.date !== today) {
@@ -20,16 +20,16 @@ function useAppVisitorCount() {
     }
     setTodayCount(1);
 
-    // 전체 누적: 이 디바이스에서 최초 1회만 /up, 이후엔 /get
-    const alreadyCounted = localStorage.getItem(COUNTED_KEY) === '1';
-    const endpoint = `https://api.counterapi.dev/v1/${APP_NS}/visits/${alreadyCounted ? 'get' : 'up'}`;
-
-    // 캐시된 값 즉시 표시
+    // 전체 누적: 캐시 즉시 표시
     let cache = null;
     try { cache = JSON.parse(localStorage.getItem(TOTAL_CACHE)); } catch (e) {}
     if (cache && cache.count != null) setTotalCount(cache.count);
 
-    fetch(endpoint)
+    // 이미 카운트된 디바이스 → API 호출 없음
+    if (localStorage.getItem(COUNTED_KEY) === '1') return;
+
+    // 첫 방문: /up 호출 후 플래그 저장
+    fetch(`https://api.counterapi.dev/v1/${APP_NS}/visits/up`)
       .then((r) => r.json())
       .then((d) => {
         const n = d.count ?? d.value;
@@ -37,7 +37,7 @@ function useAppVisitorCount() {
           setTotalCount(n);
           try {
             localStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
-            if (!alreadyCounted) localStorage.setItem(COUNTED_KEY, '1');
+            localStorage.setItem(COUNTED_KEY, '1');
           } catch (e) {}
         }
       })

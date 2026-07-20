@@ -875,17 +875,17 @@
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // ── 방문자 카운터 (디바이스 고유 방문 1회 카운팅) ──
+  // ── 방문자 카운터 (디바이스 고유 1회 카운팅 — 이미 카운트된 디바이스는 API 미호출) ──
   (function () {
     var NS          = 'parkminhyun0-bible-mindmap';
-    var COUNTED_KEY = 'bmm-counted-v1';   // 영구: 이 디바이스에서 총 카운터 증가 완료 여부
-    var TODAY_KEY   = 'bmm-today-v2';     // 일별: 오늘 방문 여부
-    var TOTAL_CACHE = 'bmm-total-v2';     // 총 카운트 표시용 캐시
+    var COUNTED_KEY = 'bmm-counted-v1';   // 영구 플래그: 이 디바이스에서 /up 완료 여부
+    var TODAY_KEY   = 'bmm-today-v2';     // 일별 플래그: 오늘 방문 여부
+    var TOTAL_CACHE = 'bmm-total-v2';     // 전체 누적 표시용 캐시
     var todayEl = document.getElementById('visit-today');
     var totalEl = document.getElementById('visit-total');
     var today   = new Date().toISOString().slice(0, 10);
 
-    // 오늘 방문: 오늘 첫 방문이면 플래그 저장, 새로고침해도 재카운트 안 함
+    // 오늘 방문: 하루 1회 플래그 (새로고침 무관)
     var todayData = null;
     try { todayData = JSON.parse(localStorage.getItem(TODAY_KEY)); } catch (e) {}
     if (!todayData || todayData.date !== today) {
@@ -893,19 +893,18 @@
     }
     if (todayEl) todayEl.textContent = '1';
 
-    // 전체 누적: 이 디바이스에서 최초 1회만 /up 호출, 이후엔 /get (읽기 전용)
-    var alreadyCounted = localStorage.getItem(COUNTED_KEY) === '1';
-    var endpoint = 'https://api.counterapi.dev/v1/' + NS + '/visits/'
-                   + (alreadyCounted ? 'get' : 'up');
-
-    // 캐시된 값 즉시 표시
+    // 전체 누적: 캐시 즉시 표시
     var totalCache = null;
     try { totalCache = JSON.parse(localStorage.getItem(TOTAL_CACHE)); } catch (e) {}
     if (totalCache && totalCache.count && totalEl) {
       totalEl.textContent = Number(totalCache.count).toLocaleString();
     }
 
-    fetch(endpoint)
+    // 이미 카운트된 디바이스 → API 호출 없음 (강력한 새로고침도 재카운트 없음)
+    if (localStorage.getItem(COUNTED_KEY) === '1') return;
+
+    // 첫 방문: /up 호출 후 플래그 저장 (플래그 저장 성공 후에만 완료 처리)
+    fetch('https://api.counterapi.dev/v1/' + NS + '/visits/up')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var n = d.count != null ? d.count : d.value;
@@ -913,7 +912,7 @@
           if (totalEl) totalEl.textContent = Number(n).toLocaleString();
           try {
             localStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
-            if (!alreadyCounted) localStorage.setItem(COUNTED_KEY, '1');
+            localStorage.setItem(COUNTED_KEY, '1');
           } catch (e) {}
         }
       })
