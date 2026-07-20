@@ -34,11 +34,37 @@ import { CanvasContext } from './context/CanvasContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
 
+// 구절·노트·주제 노드의 저장된 크기를 제거해 디폴트 크기로 로드
+// (사용자가 필요 시 리사이저로 자유롭게 재조정)
+const RESET_SIZE_TYPES = new Set(['verse', 'note', 'topic']);
+function normalizeLoadedNodes(nodes) {
+  if (!Array.isArray(nodes)) return nodes;
+  return nodes.map((n) => {
+    if (!RESET_SIZE_TYPES.has(n?.type)) return n;
+    const clone = { ...n };
+    delete clone.width;
+    delete clone.height;
+    delete clone.measured;
+    if (clone.style && typeof clone.style === 'object') {
+      const s = { ...clone.style };
+      delete s.width;
+      delete s.height;
+      delete s.minWidth;
+      delete s.minHeight;
+      if (Object.keys(s).length === 0) delete clone.style;
+      else clone.style = s;
+    }
+    return clone;
+  });
+}
+
 function loadFromStorage() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    if (parsed?.nodes) parsed.nodes = normalizeLoadedNodes(parsed.nodes);
+    return parsed;
   } catch {
     return null;
   }
@@ -334,21 +360,7 @@ export default function App() {
   const handleLoad = useCallback(
     (loadedNodes, loadedEdges) => {
       record();
-      // 구절/노트/주제 노드는 저장된 width/height 를 무시하고 디폴트 크기로 로드
-      // (사용자가 필요시 리사이저로 자유롭게 조정)
-      const RESET_SIZE_TYPES = new Set(['verse', 'note', 'topic']);
-      const normalized = loadedNodes.map((n) => {
-        if (!RESET_SIZE_TYPES.has(n.type)) return n;
-        const { width, height, style, ...rest } = n;
-        const nextStyle = { ...(style || {}) };
-        delete nextStyle.width;
-        delete nextStyle.height;
-        return {
-          ...rest,
-          ...(Object.keys(nextStyle).length ? { style: nextStyle } : {}),
-        };
-      });
-      setNodes(normalized);
+      setNodes(normalizeLoadedNodes(loadedNodes));
       setEdges(loadedEdges);
     },
     [setNodes, setEdges, record],
