@@ -908,25 +908,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         </div>
 
         {/* Email contact */}
-        <a
-          href="mailto:biblemindmap9@gmail.com"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            padding: '7px 10px',
-            background: '#f1f5f9',
-            borderRadius: 8,
-            color: '#475569',
-            fontSize: 11,
-            textDecoration: 'none',
-            border: '1px solid #e2e8f0',
-          }}
-        >
-          <span>✉️</span>
-          <span style={{ fontWeight: 600 }}>문의 · 기능 제안</span>
-          <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 'auto', wordBreak: 'break-all' }}>biblemindmap9@gmail.com</span>
-        </a>
+        <EmailContact address="biblemindmap9@gmail.com" />
+
       </div>
     </div>
   );
@@ -1152,3 +1135,108 @@ const obsidianSmBtn = {
 const tinyBtn = {
   background: 'none', border: 'none', cursor: 'pointer', fontSize: 11, padding: '1px', lineHeight: 1,
 };
+
+// ── 이메일 문의 버튼 (메일앱 / Gmail 웹 / 주소 복사) ──────────────────
+function EmailContact({ address }) {
+  const [open, setOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const wrapRef = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => { if (!wrapRef.current?.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', onDoc);
+    return () => document.removeEventListener('mousedown', onDoc);
+  }, [open]);
+
+  const subject = '[성경 마인드맵] 문의 · 기능 제안';
+  const mailto  = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
+  const gmail   = `https://mail.google.com/mail/?view=cm&fu=1&to=${encodeURIComponent(address)}&su=${encodeURIComponent(subject)}`;
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // 클립보드 API 실패 시 폴백: textarea 이용
+      const ta = document.createElement('textarea');
+      ta.value = address;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); setCopied(true); setTimeout(() => setCopied(false), 1500); }
+      finally { document.body.removeChild(ta); }
+    }
+  };
+
+  const optionStyle = {
+    display: 'flex', alignItems: 'center', gap: 6,
+    padding: '6px 8px', fontSize: 11, textAlign: 'left',
+    background: '#fff', border: 'none', borderRadius: 5,
+    cursor: 'pointer', color: '#334155', width: '100%',
+    textDecoration: 'none',
+  };
+
+  return (
+    <div ref={wrapRef} style={{ position: 'relative' }}>
+      <button
+        onClick={() => setOpen((v) => !v)}
+        style={{
+          display: 'flex', alignItems: 'center', gap: 6,
+          padding: '7px 10px', width: '100%',
+          background: open ? '#e0f2fe' : '#f1f5f9',
+          borderRadius: 8, color: '#475569', fontSize: 11,
+          border: '1px solid #e2e8f0', cursor: 'pointer', textAlign: 'left',
+        }}
+        title="문의 · 기능 제안 (메일 앱 · Gmail · 주소 복사)"
+      >
+        <span>✉️</span>
+        <span style={{ fontWeight: 600 }}>문의 · 기능 제안</span>
+        <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 'auto', wordBreak: 'break-all' }}>{address}</span>
+      </button>
+
+      {open && (
+        <div style={{
+          position: 'absolute', right: 0, bottom: 'calc(100% + 6px)',
+          minWidth: 200, padding: 6,
+          background: '#fff', border: '1px solid #e2e8f0',
+          borderRadius: 8, boxShadow: '0 8px 20px rgba(0,0,0,0.12)',
+          display: 'flex', flexDirection: 'column', gap: 2,
+          zIndex: 100,
+        }}>
+          <a
+            href={mailto}
+            onClick={() => setOpen(false)}
+            style={optionStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
+          >
+            <span>📧</span>
+            <span style={{ fontWeight: 600 }}>메일 앱으로 작성</span>
+          </a>
+          <a
+            href={gmail}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            style={optionStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
+          >
+            <span>🌐</span>
+            <span style={{ fontWeight: 600 }}>Gmail 웹에서 작성</span>
+          </a>
+          <button
+            onClick={handleCopy}
+            style={optionStyle}
+            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
+          >
+            <span>{copied ? '✅' : '📋'}</span>
+            <span style={{ fontWeight: 600 }}>{copied ? '주소가 복사되었습니다' : '이메일 주소 복사'}</span>
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
