@@ -1,35 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 
-const VISITOR_KEY = 'bible-mindmap-visitor';
-const COUNTER_URL = 'https://api.counterapi.dev/v1/parkminhyun0-bible-mindmap/visits/up';
-
-function useVisitorCount() {
-  const [count, setCount] = useState(null);
-
-  useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem(VISITOR_KEY) || 'null');
-    const now = Date.now();
-    const ONE_DAY = 24 * 60 * 60 * 1000;
-
-    if (stored && now - stored.ts < ONE_DAY) {
-      setCount(stored.count);
-      return;
-    }
-
-    fetch(COUNTER_URL)
-      .then((r) => r.json())
-      .then((d) => {
-        const n = d.count ?? d.value ?? null;
-        if (n !== null) {
-          setCount(n);
-          localStorage.setItem(VISITOR_KEY, JSON.stringify({ count: n, ts: now }));
-        }
-      })
-      .catch(() => {});
-  }, []);
-
-  return count;
-}
 
 const STORAGE_KEY = 'bible-mindmap-saves';
 const OBSIDIAN_DIR_KEY = 'bible-mindmap-obsidian-dir';
@@ -280,7 +250,6 @@ async function readFromDirectory(dirHandle, filename) {
 }
 
 export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle }) {
-  const visitorCount = useVisitorCount();
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
@@ -817,24 +786,53 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         />
       </div>
 
-      {/* 방문자 카운터 */}
+      {/* 방문자 수 + 이메일 */}
       <div style={{
-        padding: '8px 12px',
+        padding: '10px 12px',
         borderTop: '1px solid #e2e8f0',
+        background: '#f8fafc',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 6,
-        color: '#94a3b8',
-        fontSize: 11,
+        flexDirection: 'column',
+        gap: 7,
       }}>
-        <span>👁</span>
-        <span>
-          {visitorCount === null
-            ? '...'
-            : `누적 방문 ${visitorCount.toLocaleString()}회`}
-        </span>
-        <span style={{ color: '#cbd5e1' }}>· 24h 갱신</span>
+        {/* Visitor counter card */}
+        <div style={{
+          background: '#0f172a',
+          borderRadius: 10,
+          padding: '10px 12px',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
+        }}>
+          <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 7 }}>
+            👥 앱 방문자
+          </div>
+          <img
+            src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fparkminhyun0.github.io%2Fbible-mindmap%2Fapp%2F&count_bg=%2310b981&title_bg=%231e3a5f&icon=book&icon_color=%23ffffff&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=true"
+            alt="방문자 수"
+            style={{ width: '100%', height: 'auto', borderRadius: 6, display: 'block' }}
+          />
+          <div style={{ fontSize: 10, color: '#475569', marginTop: 5, textAlign: 'right' }}>오늘 / 전체 누적</div>
+        </div>
+
+        {/* Email contact */}
+        <a
+          href="mailto:biblemindmap9@gmail.com"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            padding: '7px 10px',
+            background: '#f1f5f9',
+            borderRadius: 8,
+            color: '#475569',
+            fontSize: 11,
+            textDecoration: 'none',
+            border: '1px solid #e2e8f0',
+          }}
+        >
+          <span>✉️</span>
+          <span style={{ fontWeight: 600 }}>문의 · 기능 제안</span>
+          <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 'auto', wordBreak: 'break-all' }}>biblemindmap9@gmail.com</span>
+        </a>
       </div>
     </div>
   );
