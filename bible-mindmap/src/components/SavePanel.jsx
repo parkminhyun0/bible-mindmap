@@ -249,7 +249,7 @@ async function readFromDirectory(dirHandle, filename) {
   }
 }
 
-export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle }) {
+export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle, mobileInline }) {
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
@@ -608,9 +608,9 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   return (
     <div
       style={{
-        width: 280,
+        width: mobileInline ? '100%' : 280,
         background: '#f8fafc',
-        borderLeft: '1px solid #e2e8f0',
+        borderLeft: mobileInline ? 'none' : '1px solid #e2e8f0',
         display: 'flex',
         flexDirection: 'column',
         fontSize: 12,
