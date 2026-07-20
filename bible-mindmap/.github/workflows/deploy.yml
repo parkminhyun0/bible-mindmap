@@ -38,6 +38,11 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Copy landing pages to dist root
+        run: |
+          cp -r landing/. dist/
+          touch dist/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: bible-mindmap/dist
