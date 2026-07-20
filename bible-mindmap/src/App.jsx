@@ -334,7 +334,21 @@ export default function App() {
   const handleLoad = useCallback(
     (loadedNodes, loadedEdges) => {
       record();
-      setNodes(loadedNodes);
+      // 구절/노트/주제 노드는 저장된 width/height 를 무시하고 디폴트 크기로 로드
+      // (사용자가 필요시 리사이저로 자유롭게 조정)
+      const RESET_SIZE_TYPES = new Set(['verse', 'note', 'topic']);
+      const normalized = loadedNodes.map((n) => {
+        if (!RESET_SIZE_TYPES.has(n.type)) return n;
+        const { width, height, style, ...rest } = n;
+        const nextStyle = { ...(style || {}) };
+        delete nextStyle.width;
+        delete nextStyle.height;
+        return {
+          ...rest,
+          ...(Object.keys(nextStyle).length ? { style: nextStyle } : {}),
+        };
+      });
+      setNodes(normalized);
       setEdges(loadedEdges);
     },
     [setNodes, setEdges, record],
