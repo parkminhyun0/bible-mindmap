@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
-import { TRANSLATIONS, fetchVerse } from '../api/bibleApi';
+import { TRANSLATIONS, fetchAllTranslations } from '../api/bibleApi';
 
 const STEPS = { BOOK: 0, CHAPTER: 1, VERSE: 2, RESULT: 3 };
 
@@ -13,6 +13,7 @@ export default function BibleSearch({ onSelect }) {
   const [verseEnd, setVerseEnd] = useState(1);
   const [step, setStep] = useState(STEPS.BOOK);
   const [fetchedText, setFetchedText] = useState('');
+  const [fetchedTranslations, setFetchedTranslations] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -61,15 +62,17 @@ export default function BibleSearch({ onSelect }) {
     setLoading(true);
     setError('');
     setFetchedText('');
+    setFetchedTranslations(null);
     try {
-      const text = await fetchVerse(
+      const translations = await fetchAllTranslations(
         selectedBook.id,
         selectedChapter,
         verseStart,
         verseEnd,
-        translation,
       );
-      setFetchedText(text);
+      const preview = translations[translation] || translations.krv || '(본문 없음)';
+      setFetchedText(preview);
+      setFetchedTranslations(translations);
       setStep(STEPS.RESULT);
     } catch (e) {
       setError(e.message);
@@ -90,7 +93,7 @@ export default function BibleSearch({ onSelect }) {
 
     onSelect({
       reference,
-      text: fetchedText,
+      text: fetchedTranslations?.krv || fetchedText,
       color,
       translation: trans?.label || '',
       translationId: translation,
@@ -98,6 +101,8 @@ export default function BibleSearch({ onSelect }) {
       chapter: selectedChapter,
       verseStart,
       verseEnd,
+      translations: fetchedTranslations || { [translation]: fetchedText },
+      activeTab: translation,
     });
   };
 
@@ -108,6 +113,7 @@ export default function BibleSearch({ onSelect }) {
     setVerseEnd(1);
     setStep(STEPS.BOOK);
     setFetchedText('');
+    setFetchedTranslations(null);
     setError('');
   };
 

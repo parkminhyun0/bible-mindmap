@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Handle, Position, useReactFlow, useEdges, NodeResizer } from '@xyflow/react';
 import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
@@ -45,32 +45,44 @@ export default function VerseNode({ id, data, selected }) {
   const activeTab = data.activeTab || 'krv';
   const [tabLoading, setTabLoading] = useState({});
   const [tabErrors, setTabErrors]   = useState({});
+  const tabErrorsRef = useRef(tabErrors);
+  useEffect(() => { tabErrorsRef.current = tabErrors; });
 
-  const handleTabClick = async (tabId) => {
-    // data.activeTab을 업데이트 → VerseNode(props)와 NodeEditor 모두 동기화
+  const handleTabClick = (tabId) => {
     setNodes((nds) =>
       nds.map((n) => n.id === id ? { ...n, data: { ...n.data, activeTab: tabId } } : n)
     );
-    if (!hasMulti) return;
-    if (tabErrors[tabId]) return;
-    if (typeof data.translations?.[tabId] === 'string') return; // already loaded
-
-    setTabLoading((prev) => ({ ...prev, [tabId]: true }));
-    try {
-      const text = await fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, tabId);
-      setNodes((nds) =>
-        nds.map((n) =>
-          n.id === id
-            ? { ...n, data: { ...n.data, translations: { ...n.data.translations, [tabId]: text } } }
-            : n,
-        ),
-      );
-    } catch (e) {
-      setTabErrors((prev) => ({ ...prev, [tabId]: e.message || '불러오기 실패' }));
-    } finally {
-      setTabLoading((prev) => ({ ...prev, [tabId]: false }));
-    }
   };
+
+  // Auto-fetch translation whenever activeTab changes and it isn't loaded yet.
+  // This fires for both VerseNode tab clicks and NodeEditor tab changes.
+  useEffect(() => {
+    if (!hasMulti) return;
+    if (typeof data.translations?.[activeTab] === 'string') return;
+    if (tabErrorsRef.current[activeTab]) return;
+
+    let cancelled = false;
+    setTabLoading((prev) => ({ ...prev, [activeTab]: true }));
+    fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, activeTab)
+      .then((text) => {
+        if (cancelled) return;
+        setNodes((nds) =>
+          nds.map((n) =>
+            n.id === id
+              ? { ...n, data: { ...n.data, translations: { ...n.data.translations, [activeTab]: text } } }
+              : n,
+          ),
+        );
+      })
+      .catch((e) => {
+        if (!cancelled) setTabErrors((prev) => ({ ...prev, [activeTab]: e.message || '불러오기 실패' }));
+      })
+      .finally(() => {
+        if (!cancelled) setTabLoading((prev) => ({ ...prev, [activeTab]: false }));
+      });
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd, id]);
 
   let displayText = '';
   let displayHtml = false;

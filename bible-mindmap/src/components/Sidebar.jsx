@@ -104,14 +104,15 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
     }
   };
 
-  const handleBibleSelect = ({ reference: ref, text: txt, color: c, translationId, bookId, chapter, verseStart, verseEnd }) => {
+  const handleBibleSelect = ({ reference: ref, text: txt, color: c, translationId, bookId, chapter, verseStart, verseEnd, translations, activeTab }) => {
     const structuredExtra = bookId
       ? {
           bookId,
           chapter,
           verseStart,
           verseEnd,
-          translations: { [translationId || 'krv']: txt },
+          translations: translations || { [translationId || 'krv']: txt },
+          activeTab: activeTab || translationId || 'krv',
         }
       : {};
     onAddNode({
