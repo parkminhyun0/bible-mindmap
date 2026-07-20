@@ -1,41 +1,47 @@
 import { useState, useEffect, useRef } from 'react';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
-const APP_TODAY_LS = 'bmm-today-v2';
-const APP_TOTAL_LS = 'bmm-total-v2';
+const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
+const TODAY_LS     = 'bmm-today-v2';     // 일별: 오늘 방문 여부
+const TOTAL_CACHE  = 'bmm-total-v2';     // 총 카운트 표시용 캐시
 
 function useAppVisitorCount() {
-  const [todayCount, setTodayCount] = useState(null);
+  const [todayCount, setTodayCount] = useState(1);
   const [totalCount, setTotalCount] = useState(null);
 
   useEffect(() => {
     const today = new Date().toISOString().slice(0, 10);
 
-    // 오늘 방문: localStorage 일별 카운트
+    // 오늘 방문: 오늘 첫 방문이면 플래그만 저장, 새로고침해도 재카운트 안 함
     let todayData = null;
-    try { todayData = JSON.parse(localStorage.getItem(APP_TODAY_LS)); } catch (e) {}
-    const tc = (todayData && todayData.date === today) ? todayData.count + 1 : 1;
-    try { localStorage.setItem(APP_TODAY_LS, JSON.stringify({ date: today, count: tc })); } catch (e) {}
-    setTodayCount(tc);
-
-    // 전체 누적: counterapi.dev (하루 1회 캐시)
-    let totalCache = null;
-    try { totalCache = JSON.parse(localStorage.getItem(APP_TOTAL_LS)); } catch (e) {}
-
-    if (totalCache && totalCache.date === today) {
-      setTotalCount(totalCache.count);
-    } else {
-      fetch(`https://api.counterapi.dev/v1/${APP_NS}/visits/up`)
-        .then((r) => r.json())
-        .then((d) => {
-          const n = d.count ?? d.value;
-          if (n != null) {
-            setTotalCount(n);
-            try { localStorage.setItem(APP_TOTAL_LS, JSON.stringify({ date: today, count: n })); } catch (e) {}
-          }
-        })
-        .catch(() => setTotalCount('?'));
+    try { todayData = JSON.parse(localStorage.getItem(TODAY_LS)); } catch (e) {}
+    if (!todayData || todayData.date !== today) {
+      try { localStorage.setItem(TODAY_LS, JSON.stringify({ date: today })); } catch (e) {}
     }
+    setTodayCount(1);
+
+    // 전체 누적: 이 디바이스에서 최초 1회만 /up, 이후엔 /get
+    const alreadyCounted = localStorage.getItem(COUNTED_KEY) === '1';
+    const endpoint = `https://api.counterapi.dev/v1/${APP_NS}/visits/${alreadyCounted ? 'get' : 'up'}`;
+
+    // 캐시된 값 즉시 표시
+    let cache = null;
+    try { cache = JSON.parse(localStorage.getItem(TOTAL_CACHE)); } catch (e) {}
+    if (cache && cache.count != null) setTotalCount(cache.count);
+
+    fetch(endpoint)
+      .then((r) => r.json())
+      .then((d) => {
+        const n = d.count ?? d.value;
+        if (n != null) {
+          setTotalCount(n);
+          try {
+            localStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
+            if (!alreadyCounted) localStorage.setItem(COUNTED_KEY, '1');
+          } catch (e) {}
+        }
+      })
+      .catch(() => { if (!cache) setTotalCount('?'); });
   }, []);
 
   return { todayCount, totalCount };

@@ -875,40 +875,51 @@
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-  // ── 방문자 카운터 (counterapi.dev / localStorage 기반, 이미지 배지 미사용) ──
+  // ── 방문자 카운터 (디바이스 고유 방문 1회 카운팅) ──
   (function () {
-    const NS = 'parkminhyun0-bible-mindmap';
-    const TODAY_KEY = 'bmm-today-v2';
-    const TOTAL_KEY = 'bmm-total-v2';
-    const todayEl  = document.getElementById('visit-today');
-    const totalEl  = document.getElementById('visit-total');
-    const today    = new Date().toISOString().slice(0, 10);
+    var NS          = 'parkminhyun0-bible-mindmap';
+    var COUNTED_KEY = 'bmm-counted-v1';   // 영구: 이 디바이스에서 총 카운터 증가 완료 여부
+    var TODAY_KEY   = 'bmm-today-v2';     // 일별: 오늘 방문 여부
+    var TOTAL_CACHE = 'bmm-total-v2';     // 총 카운트 표시용 캐시
+    var todayEl = document.getElementById('visit-today');
+    var totalEl = document.getElementById('visit-total');
+    var today   = new Date().toISOString().slice(0, 10);
 
-    // 오늘 방문 수: localStorage 기반 (디바이스별 일별 방문 횟수)
-    let todayData = null;
+    // 오늘 방문: 오늘 첫 방문이면 플래그 저장, 새로고침해도 재카운트 안 함
+    var todayData = null;
     try { todayData = JSON.parse(localStorage.getItem(TODAY_KEY)); } catch (e) {}
-    let todayCount = (todayData && todayData.date === today) ? (todayData.count + 1) : 1;
-    try { localStorage.setItem(TODAY_KEY, JSON.stringify({ date: today, count: todayCount })); } catch (e) {}
-    if (todayEl) todayEl.textContent = todayCount.toLocaleString();
-
-    // 전체 누적: counterapi.dev (하루 1회 캐시)
-    let totalCache = null;
-    try { totalCache = JSON.parse(localStorage.getItem(TOTAL_KEY)); } catch (e) {}
-
-    if (totalCache && totalCache.date === today) {
-      if (totalEl) totalEl.textContent = Number(totalCache.count).toLocaleString();
-    } else {
-      fetch('https://api.counterapi.dev/v1/' + NS + '/visits/up')
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          var n = d.count != null ? d.count : d.value;
-          if (n != null && totalEl) {
-            totalEl.textContent = Number(n).toLocaleString();
-            try { localStorage.setItem(TOTAL_KEY, JSON.stringify({ date: today, count: n })); } catch (e) {}
-          }
-        })
-        .catch(function () { if (totalEl) totalEl.textContent = '?'; });
+    if (!todayData || todayData.date !== today) {
+      try { localStorage.setItem(TODAY_KEY, JSON.stringify({ date: today })); } catch (e) {}
     }
+    if (todayEl) todayEl.textContent = '1';
+
+    // 전체 누적: 이 디바이스에서 최초 1회만 /up 호출, 이후엔 /get (읽기 전용)
+    var alreadyCounted = localStorage.getItem(COUNTED_KEY) === '1';
+    var endpoint = 'https://api.counterapi.dev/v1/' + NS + '/visits/'
+                   + (alreadyCounted ? 'get' : 'up');
+
+    // 캐시된 값 즉시 표시
+    var totalCache = null;
+    try { totalCache = JSON.parse(localStorage.getItem(TOTAL_CACHE)); } catch (e) {}
+    if (totalCache && totalCache.count && totalEl) {
+      totalEl.textContent = Number(totalCache.count).toLocaleString();
+    }
+
+    fetch(endpoint)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var n = d.count != null ? d.count : d.value;
+        if (n != null) {
+          if (totalEl) totalEl.textContent = Number(n).toLocaleString();
+          try {
+            localStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
+            if (!alreadyCounted) localStorage.setItem(COUNTED_KEY, '1');
+          } catch (e) {}
+        }
+      })
+      .catch(function () {
+        if (totalEl && (!totalCache || !totalCache.count)) totalEl.textContent = '?';
+      });
   })();
 
   // ── 관리자 모드 토글 (?admin=on / ?admin=off) ──
