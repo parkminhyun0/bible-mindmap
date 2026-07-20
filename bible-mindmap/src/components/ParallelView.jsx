@@ -177,11 +177,10 @@ export default function ParallelView({ node, onSave, onClose }) {
   };
 
   useEffect(() => {
-    const { bookId, chapter, verseStart } = node.data;
+    const { bookId, chapter, verseStart, verseEnd } = node.data;
     if (!bookId) return;
     let cancelled = false;
-    // MVP: verseStart 기준 (여러 절이 포함된 노드도 첫 절 기준으로 시작)
-    loadVerseLexicon(bookId, chapter, verseStart)
+    loadVerseLexicon(bookId, chapter, verseStart, verseEnd)
       .then((entries) => {
         if (cancelled) return;
         if (!entries) { setLexError('원어 어형 데이터 없음'); return; }
@@ -189,7 +188,7 @@ export default function ParallelView({ node, onSave, onClose }) {
       })
       .catch((e) => !cancelled && setLexError(e.message));
     return () => { cancelled = true; };
-  }, [node.data.bookId, node.data.chapter, node.data.verseStart]);
+  }, [node.data.bookId, node.data.chapter, node.data.verseStart, node.data.verseEnd]);
 
   // 원어 chip 텍스트 → STEPBible entry 매칭 (동일 normalize 키)
   const lexByChip = useMemo(() => {

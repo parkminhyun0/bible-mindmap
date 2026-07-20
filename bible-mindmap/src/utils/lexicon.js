@@ -44,12 +44,24 @@ export async function loadChapterLexicon(bookId, chapter) {
 }
 
 /**
- * 특정 절의 단어 배열을 반환. 실패 시 null.
+ * 특정 절 또는 절 범위의 단어 배열을 반환. 실패 시 null.
+ *
+ * @param {string} bookId
+ * @param {number} chapter
+ * @param {number} verseStart
+ * @param {number} [verseEnd]  생략 시 verseStart 한 절만 로드
  */
-export async function loadVerseLexicon(bookId, chapter, verse) {
+export async function loadVerseLexicon(bookId, chapter, verseStart, verseEnd) {
   try {
     const ch = await loadChapterLexicon(bookId, chapter);
-    return ch?.[verse] || null;
+    if (!ch) return null;
+    const end = verseEnd ?? verseStart;
+    const combined = [];
+    for (let v = verseStart; v <= end; v++) {
+      const words = ch[v];
+      if (Array.isArray(words)) combined.push(...words);
+    }
+    return combined.length ? combined : null;
   } catch {
     return null;
   }

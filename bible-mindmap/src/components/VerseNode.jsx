@@ -116,11 +116,11 @@ export default function VerseNode({ id, data, selected }) {
   useEffect(() => {
     if (activeTab !== 'original' || !data.bookId) return;
     let cancelled = false;
-    loadVerseLexicon(data.bookId, data.chapter, data.verseStart)
+    loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd)
       .then((entries) => { if (!cancelled) setLexEntries(entries || []); })
       .catch(() => { if (!cancelled) setLexEntries([]); });
     return () => { cancelled = true; };
-  }, [activeTab, data.bookId, data.chapter, data.verseStart]);
+  }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd]);
 
   // lexEntries(STEPBible 원문 단어)를 직접 chip으로 렌더링
   const renderOriginalWithLexicon = () => {
