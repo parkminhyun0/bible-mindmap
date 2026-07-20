@@ -106,7 +106,9 @@ function sermonToMd(title, scripture, structure, sections) {
   labels.forEach((label, i) => {
     const s = sections[i] || {};
     lines.push(`## ${label}${s.subtitle ? ` — ${s.subtitle}` : ''}`, '');
-    if (s.content) lines.push(s.content, '');
+    // content 가 문자열이 아니거나 비어 있어도 자리표시자를 남겨 다음 헤더와 붙지 않게 함
+    const content = typeof s.content === 'string' ? s.content : '';
+    lines.push(content, '');
   });
   return lines.join('\n');
 }
@@ -202,7 +204,9 @@ function MdToolbar({ areaRef, setter }) {
 }
 
 // ── 섹션 에디터 (설교 구성) ──────────────────────────────────────────────
-function SermonSection({ label, data, onChange, color }) {
+// onFieldChange(field, value): 필드 단위 업데이트 — 부모의 setSections 는
+// 항상 최신 sections[i]를 읽어 병합하므로 stale closure 로 인한 데이터 손실 없음.
+function SermonSection({ label, data, onFieldChange, color }) {
   const areaRef = useRef(null);
   return (
     <div style={{
@@ -214,7 +218,7 @@ function SermonSection({ label, data, onChange, color }) {
         <input
           placeholder="소제목 (선택)"
           value={data.subtitle || ''}
-          onChange={(e) => onChange({ ...data, subtitle: e.target.value })}
+          onChange={(e) => onFieldChange('subtitle', e.target.value)}
           style={{
             flex: 1, border: 'none', background: 'rgba(255,255,255,0.2)',
             borderRadius: 4, padding: '2px 8px', fontSize: 11,
@@ -222,11 +226,11 @@ function SermonSection({ label, data, onChange, color }) {
           }}
         />
       </div>
-      <MdToolbar areaRef={areaRef} setter={(v) => onChange({ ...data, content: v })} />
+      <MdToolbar areaRef={areaRef} setter={(v) => onFieldChange('content', v)} />
       <textarea
         ref={areaRef}
         value={data.content || ''}
-        onChange={(e) => onChange({ ...data, content: e.target.value })}
+        onChange={(e) => onFieldChange('content', e.target.value)}
         placeholder={`${label} 내용을 입력하세요…`}
         style={{
           width: '100%', minHeight: 90, padding: '8px 10px',
@@ -253,13 +257,18 @@ const SERMON_4 = [
 ];
 
 // ── 설교 구성 탭 (controlled) ─────────────────────────────────────────────
-function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections }) {
+function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections, onExportMd, onExportDocx }) {
   const [exporting, setExporting] = useState(false);
 
   const sectionDefs = structure === '3part' ? SERMON_3 : SERMON_4;
 
-  const updateSection = useCallback((i, val) => {
-    setSections((prev) => { const n = [...prev]; n[i] = val; return n; });
+  // 필드 단위 업데이트 — prev[i] 를 기준으로 병합하므로 다른 필드가 유실되지 않음
+  const updateSectionField = useCallback((i, field, value) => {
+    setSections((prev) => {
+      const n = [...prev];
+      n[i] = { ...(n[i] || {}), [field]: value };
+      return n;
+    });
   }, [setSections]);
 
   const handleStructure = (v) => {
@@ -269,12 +278,9 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
     setSections(newDefs.map(() => ({})));
   };
 
-  const getMd = () => sermonToMd(docTitle, scripture, structure, sections);
-  const fname  = (docTitle || '설교').replace(/\s+/g, '_');
-
   const handleDocx = async () => {
     setExporting(true);
-    try { await downloadDocx(`${fname}.docx`, getMd()); }
+    try { await onExportDocx(); }
     catch (e) { alert('Word 내보내기 실패: ' + e.message); }
     finally { setExporting(false); }
   };
@@ -320,14 +326,14 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
             label={def.label}
             color={def.color}
             data={sections[i] || {}}
-            onChange={(v) => updateSection(i, v)}
+            onFieldChange={(field, value) => updateSectionField(i, field, value)}
           />
         ))}
       </div>
 
       {/* 내보내기 */}
       <ExportBar
-        onMd={() => downloadMd(`${fname}.md`, getMd())}
+        onMd={onExportMd}
         onDocx={handleDocx}
         exporting={exporting}
       />
@@ -336,21 +342,16 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
 }
 
 // ── 아이디어 스케치 탭 (controlled) ─────────────────────────────────────
-function SketchTab({ text, setText, docTitle, setSketchTitle }) {
+function SketchTab({ text, setText, docTitle, setSketchTitle, onExportMd, onExportDocx }) {
   const [exporting, setExporting] = useState(false);
   const areaRef = useRef(null);
 
-  const fname = (docTitle || '스케치').replace(/\s+/g, '_');
-
   const handleDocx = async () => {
     setExporting(true);
-    const md = docTitle ? `# ${docTitle}\n\n${text}` : text;
-    try { await downloadDocx(`${fname}.docx`, md); }
+    try { await onExportDocx(); }
     catch (e) { alert('Word 내보내기 실패: ' + e.message); }
     finally { setExporting(false); }
   };
-
-  const getMd = () => docTitle ? `# ${docTitle}\n\n${text}` : text;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
@@ -378,7 +379,7 @@ function SketchTab({ text, setText, docTitle, setSketchTitle }) {
       />
 
       <ExportBar
-        onMd={() => downloadMd(`${fname}.md`, getMd())}
+        onMd={onExportMd}
         onDocx={handleDocx}
         exporting={exporting}
       />
@@ -435,6 +436,14 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   const [sketchTitle, setSketchTitle] = useState('');
   const [sketchText, setSketchText]   = useState('');
 
+  // 편집 중인 최신 상태를 항상 참조할 수 있도록 ref 로 미러링
+  // (버튼 클릭 시 IME 조합 중이거나 setState 커밋 전이라도 안전하게 최신값 사용)
+  const stateRef = useRef({});
+  stateRef.current = {
+    sermonTitle, scripture, structure, sections,
+    sketchTitle, sketchText,
+  };
+
   // 저장된 문서 불러오기
   useEffect(() => {
     if (!loadedDoc) return;
@@ -466,14 +475,16 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
 
   // 저장소에 저장
   const handleStorageSave = () => {
+    // 커밋되지 않은 편집 내용이 유실되지 않도록 stateRef 로 최신 상태를 읽음
+    const s = stateRef.current;
     const isSermon = activeTab === 'sermon';
     const name = isSermon
-      ? (sermonTitle || '무제 설교')
-      : (sketchTitle || '무제 스케치');
+      ? (s.sermonTitle || '무제 설교')
+      : (s.sketchTitle || '무제 스케치');
 
     const docData = isSermon
-      ? { docType: 'sermon', sermon: { title: sermonTitle, scripture, structure, sections } }
-      : { docType: 'sketch', sketch: { title: sketchTitle, text: sketchText } };
+      ? { docType: 'sermon', sermon: { title: s.sermonTitle, scripture: s.scripture, structure: s.structure, sections: s.sections } }
+      : { docType: 'sketch', sketch: { title: s.sketchTitle, text: s.sketchText } };
 
     const tree = loadTree();
 
@@ -512,6 +523,29 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
     setCurrentDocId(newDoc.id);
     if (onDocSaved) onDocSaved();
     alert(`"${name}" 문서가 '${DOC_ROOT_NAME}' 폴더에 저장되었습니다.`);
+  };
+
+  // ── 내보내기 (stateRef 로 최신 상태 참조) ──────────────────────────────
+  const sanitizeName = (n) => (n || '').replace(/\s+/g, '_') || '무제';
+  const exportSermonMd = () => {
+    const s = stateRef.current;
+    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections);
+    downloadMd(`${sanitizeName(s.sermonTitle || '설교')}.md`, md);
+  };
+  const exportSermonDocx = async () => {
+    const s = stateRef.current;
+    const md = sermonToMd(s.sermonTitle, s.scripture, s.structure, s.sections);
+    await downloadDocx(`${sanitizeName(s.sermonTitle || '설교')}.docx`, md);
+  };
+  const exportSketchMd = () => {
+    const s = stateRef.current;
+    const md = s.sketchTitle ? `# ${s.sketchTitle}\n\n${s.sketchText}` : s.sketchText;
+    downloadMd(`${sanitizeName(s.sketchTitle || '스케치')}.md`, md);
+  };
+  const exportSketchDocx = async () => {
+    const s = stateRef.current;
+    const md = s.sketchTitle ? `# ${s.sketchTitle}\n\n${s.sketchText}` : s.sketchText;
+    await downloadDocx(`${sanitizeName(s.sketchTitle || '스케치')}.docx`, md);
   };
 
   return (
@@ -628,6 +662,8 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                 setScripture={setScripture}
                 sections={sections}
                 setSections={setSections}
+                onExportMd={exportSermonMd}
+                onExportDocx={exportSermonDocx}
               />
             ) : (
               <SketchTab
@@ -635,6 +671,8 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                 setText={setSketchText}
                 docTitle={sketchTitle}
                 setSketchTitle={setSketchTitle}
+                onExportMd={exportSketchMd}
+                onExportDocx={exportSketchDocx}
               />
             )}
           </div>
