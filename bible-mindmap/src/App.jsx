@@ -22,6 +22,7 @@ import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdg
 import Sidebar from './components/Sidebar';
 import NodeEditor from './components/NodeEditor';
 import SavePanel from './components/SavePanel';
+import DocPanel from './components/DocPanel';
 import CitationSuggest from './components/CitationSuggest';
 import useHistory from './hooks/useHistory';
 import useMobile from './hooks/useMobile';
@@ -180,6 +181,7 @@ export default function App() {
   const [selectedEdgeId, setSelectedEdgeId] = useState(null);
   const isMobile = useMobile();
   const [savePanelOpen, setSavePanelOpen] = useState(!isMobile);
+  const [docPanelOpen, setDocPanelOpen] = useState(false);
   const [showEdgeOptions, setShowEdgeOptions] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const idCounter = useRef(100);
@@ -925,14 +927,20 @@ export default function App() {
       </div>
 
       {!isMobile && (
-        <SavePanel
-          nodes={nodes}
-          edges={edges}
-          onLoad={handleLoad}
-          onNewMap={handleNewMap}
-          open={savePanelOpen}
-          onToggle={() => setSavePanelOpen((v) => !v)}
-        />
+        <>
+          <DocPanel
+            open={docPanelOpen}
+            onToggle={() => setDocPanelOpen((v) => !v)}
+          />
+          <SavePanel
+            nodes={nodes}
+            edges={edges}
+            onLoad={handleLoad}
+            onNewMap={handleNewMap}
+            open={savePanelOpen}
+            onToggle={() => setSavePanelOpen((v) => !v)}
+          />
+        </>
       )}
 
       {/* 모바일 좌우 고정 탭 */}
