@@ -843,19 +843,19 @@
 
   <!-- 방문자 수 카드 -->
   <div class="visitor-card">
-    <div style="font-size:10px; color:#64748b; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px;">
+    <div style="font-size:10px; color:#64748b; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px;">
       👥 방문자 현황
     </div>
-    <img
-      src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fparkminhyun0.github.io%2Fbible-mindmap%2F&count_bg=%2310b981&title_bg=%231e3a5f&icon=book&icon_color=%23ffffff&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=true"
-      alt="방문자 수 (오늘 / 전체)"
-      style="width:100%; height:auto; border-radius:6px; display:block;"
-      loading="lazy"
-      onerror="this.style.display='none';document.getElementById('visit-err').style.display='block';"
-    />
-    <div id="visit-err" style="display:none; font-size:11px; color:#475569; margin-top:4px;">카운터 로드 실패</div>
-    <div style="font-size:10px; color:#475569; margin-top:6px; text-align:right; letter-spacing:.02em;">
-      오늘 방문 &nbsp;/&nbsp; 전체 누적
+    <div style="display:flex; align-items:center;">
+      <div style="flex:1; text-align:center;">
+        <div id="visit-today" style="font-size:22px; font-weight:800; color:#10b981; line-height:1; font-variant-numeric:tabular-nums;">–</div>
+        <div style="font-size:9px; color:#64748b; margin-top:4px; letter-spacing:.04em;">오늘 방문</div>
+      </div>
+      <div style="width:1px; height:34px; background:rgba(255,255,255,.12); flex-shrink:0;"></div>
+      <div style="flex:1; text-align:center;">
+        <div id="visit-total" style="font-size:22px; font-weight:800; color:#60a5fa; line-height:1; font-variant-numeric:tabular-nums;">–</div>
+        <div style="font-size:9px; color:#64748b; margin-top:4px; letter-spacing:.04em;">전체 누적</div>
+      </div>
     </div>
   </div>
 
@@ -874,6 +874,42 @@
     { threshold: 0.12 }
   );
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── 방문자 카운터 (counterapi.dev / localStorage 기반, 이미지 배지 미사용) ──
+  (function () {
+    const NS = 'parkminhyun0-bible-mindmap';
+    const TODAY_KEY = 'bmm-today-v2';
+    const TOTAL_KEY = 'bmm-total-v2';
+    const todayEl  = document.getElementById('visit-today');
+    const totalEl  = document.getElementById('visit-total');
+    const today    = new Date().toISOString().slice(0, 10);
+
+    // 오늘 방문 수: localStorage 기반 (디바이스별 일별 방문 횟수)
+    let todayData = null;
+    try { todayData = JSON.parse(localStorage.getItem(TODAY_KEY)); } catch (e) {}
+    let todayCount = (todayData && todayData.date === today) ? (todayData.count + 1) : 1;
+    try { localStorage.setItem(TODAY_KEY, JSON.stringify({ date: today, count: todayCount })); } catch (e) {}
+    if (todayEl) todayEl.textContent = todayCount.toLocaleString();
+
+    // 전체 누적: counterapi.dev (하루 1회 캐시)
+    let totalCache = null;
+    try { totalCache = JSON.parse(localStorage.getItem(TOTAL_KEY)); } catch (e) {}
+
+    if (totalCache && totalCache.date === today) {
+      if (totalEl) totalEl.textContent = Number(totalCache.count).toLocaleString();
+    } else {
+      fetch('https://api.counterapi.dev/v1/' + NS + '/visits/up')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          var n = d.count != null ? d.count : d.value;
+          if (n != null && totalEl) {
+            totalEl.textContent = Number(n).toLocaleString();
+            try { localStorage.setItem(TOTAL_KEY, JSON.stringify({ date: today, count: n })); } catch (e) {}
+          }
+        })
+        .catch(function () { if (totalEl) totalEl.textContent = '?'; });
+    }
+  })();
 
   // ── 관리자 모드 토글 (?admin=on / ?admin=off) ──
   (function(){

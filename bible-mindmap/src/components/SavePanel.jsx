@@ -1,5 +1,46 @@
 import { useState, useEffect, useRef } from 'react';
 
+const APP_NS       = 'parkminhyun0-bible-mindmap-app';
+const APP_TODAY_LS = 'bmm-app-today-v2';
+const APP_TOTAL_LS = 'bmm-app-total-v2';
+
+function useAppVisitorCount() {
+  const [todayCount, setTodayCount] = useState(null);
+  const [totalCount, setTotalCount] = useState(null);
+
+  useEffect(() => {
+    const today = new Date().toISOString().slice(0, 10);
+
+    // 오늘 방문: localStorage 일별 카운트
+    let todayData = null;
+    try { todayData = JSON.parse(localStorage.getItem(APP_TODAY_LS)); } catch (e) {}
+    const tc = (todayData && todayData.date === today) ? todayData.count + 1 : 1;
+    try { localStorage.setItem(APP_TODAY_LS, JSON.stringify({ date: today, count: tc })); } catch (e) {}
+    setTodayCount(tc);
+
+    // 전체 누적: counterapi.dev (하루 1회 캐시)
+    let totalCache = null;
+    try { totalCache = JSON.parse(localStorage.getItem(APP_TOTAL_LS)); } catch (e) {}
+
+    if (totalCache && totalCache.date === today) {
+      setTotalCount(totalCache.count);
+    } else {
+      fetch(`https://api.counterapi.dev/v1/${APP_NS}/visits/up`)
+        .then((r) => r.json())
+        .then((d) => {
+          const n = d.count ?? d.value;
+          if (n != null) {
+            setTotalCount(n);
+            try { localStorage.setItem(APP_TOTAL_LS, JSON.stringify({ date: today, count: n })); } catch (e) {}
+          }
+        })
+        .catch(() => setTotalCount('?'));
+    }
+  }, []);
+
+  return { todayCount, totalCount };
+}
+
 
 const STORAGE_KEY = 'bible-mindmap-saves';
 const OBSIDIAN_DIR_KEY = 'bible-mindmap-obsidian-dir';
@@ -250,6 +291,7 @@ async function readFromDirectory(dirHandle, filename) {
 }
 
 export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle, mobileInline }) {
+  const { todayCount, totalCount } = useAppVisitorCount();
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
@@ -802,15 +844,24 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           padding: '10px 12px',
           boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
         }}>
-          <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 7 }}>
+          <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
             👥 앱 방문자
           </div>
-          <img
-            src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fparkminhyun0.github.io%2Fbible-mindmap%2Fapp%2F&count_bg=%2310b981&title_bg=%231e3a5f&icon=book&icon_color=%23ffffff&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=true"
-            alt="방문자 수"
-            style={{ width: '100%', height: 'auto', borderRadius: 6, display: 'block' }}
-          />
-          <div style={{ fontSize: 10, color: '#475569', marginTop: 5, textAlign: 'right' }}>오늘 / 전체 누적</div>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={{ flex: 1, textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#10b981', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+                {todayCount != null ? todayCount.toLocaleString() : '–'}
+              </div>
+              <div style={{ fontSize: 9, color: '#64748b', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
+            </div>
+            <div style={{ width: 1, height: 34, background: 'rgba(255,255,255,.12)', flexShrink: 0 }} />
+            <div style={{ flex: 1, textAlign: 'center' }}>
+              <div style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
+                {totalCount != null ? (typeof totalCount === 'number' ? totalCount.toLocaleString() : totalCount) : '–'}
+              </div>
+              <div style={{ fontSize: 9, color: '#64748b', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
+            </div>
+          </div>
         </div>
 
         {/* Email contact */}
