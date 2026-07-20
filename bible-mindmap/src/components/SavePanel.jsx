@@ -296,7 +296,7 @@ async function readFromDirectory(dirHandle, filename) {
   }
 }
 
-export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle, mobileInline }) {
+export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle, mobileInline, docSaveKey, onOpenDoc }) {
   const { todayCount, totalCount } = useAppVisitorCount();
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
@@ -314,6 +314,11 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const [obsidianAutoSync, setObsidianAutoSync] = useState(true);
 
   useEffect(() => { saveTree(tree); }, [tree]);
+
+  // DocPanel에서 문서 저장 시 트리 새로고침
+  useEffect(() => {
+    if (docSaveKey) setTree(loadTree());
+  }, [docSaveKey]);
 
   // 페이지 로드 시 이전 연결이 있었으면 재연결 안내 표시
   useEffect(() => {
@@ -524,6 +529,10 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   };
 
   const handleLoad = (item) => {
+    if (item.type === 'doc') {
+      if (onOpenDoc) onOpenDoc(item);
+      return;
+    }
     if (item.type !== 'file' || !item.data) return;
     if (!confirm(`"${item.name}"을(를) 불러오시겠습니까?\n현재 작업은 저장하지 않으면 사라집니다.`)) return;
     onLoad(item.data.nodes, item.data.edges);
@@ -1001,7 +1010,7 @@ function TreeNode({
         }}
       >
         <span style={{ fontSize: 13, flexShrink: 0, cursor: !isRoot && !isRenaming ? 'grab' : 'default' }}>
-          {isFolder ? (item.open ? '📂' : '📁') : '📄'}
+          {isFolder ? (item.open ? '📂' : '📁') : item.type === 'doc' ? '✍️' : '📄'}
         </span>
 
         {isRenaming ? (
@@ -1023,8 +1032,8 @@ function TreeNode({
         {!isRoot && !isRenaming && isSelected && (
           <div style={{ display: 'flex', gap: 2 }} onClick={(e) => e.stopPropagation()}>
             <button onClick={() => onStartRename(item)} style={tinyBtn} title="이름 변경">✏️</button>
-            {!isFolder && <button onClick={() => onOverwrite(item.id)} style={tinyBtn} title="덮어쓰기">💾</button>}
-            {!isFolder && <button onClick={() => onLoad(item)} style={tinyBtn} title="불러오기">📤</button>}
+            {!isFolder && item.type !== 'doc' && <button onClick={() => onOverwrite(item.id)} style={tinyBtn} title="덮어쓰기">💾</button>}
+            {!isFolder && <button onClick={() => onLoad(item)} style={tinyBtn} title={item.type === 'doc' ? '문서 열기' : '불러오기'}>{item.type === 'doc' ? '✍️' : '📤'}</button>}
             <button onClick={() => onDelete(item.id)} style={tinyBtn} title="삭제">🗑️</button>
           </div>
         )}

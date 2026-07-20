@@ -182,6 +182,8 @@ export default function App() {
   const isMobile = useMobile();
   const [savePanelOpen, setSavePanelOpen] = useState(!isMobile);
   const [docPanelOpen, setDocPanelOpen] = useState(false);
+  const [docSaveKey, setDocSaveKey] = useState(0);
+  const [openedDoc, setOpenedDoc] = useState(null);
   const [showEdgeOptions, setShowEdgeOptions] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const idCounter = useRef(100);
@@ -931,6 +933,8 @@ export default function App() {
           <DocPanel
             open={docPanelOpen}
             onToggle={() => setDocPanelOpen((v) => !v)}
+            loadedDoc={openedDoc}
+            onDocSaved={() => setDocSaveKey((k) => k + 1)}
           />
           <SavePanel
             nodes={nodes}
@@ -939,6 +943,8 @@ export default function App() {
             onNewMap={handleNewMap}
             open={savePanelOpen}
             onToggle={() => setSavePanelOpen((v) => !v)}
+            docSaveKey={docSaveKey}
+            onOpenDoc={(item) => { setOpenedDoc(item); setDocPanelOpen(true); }}
           />
         </>
       )}

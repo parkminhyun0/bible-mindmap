@@ -1,4 +1,22 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
+
+// ── 로컬스토리지 저장소 헬퍼 ─────────────────────────────────────────────
+const STORAGE_KEY = 'bible-mindmap-saves';
+
+function loadTree() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTree(); }
+  catch { return defaultTree(); }
+}
+function defaultTree() {
+  return { id: 'root', type: 'folder', name: '저장소', open: true, children: [] };
+}
+function saveTree(tree) { localStorage.setItem(STORAGE_KEY, JSON.stringify(tree)); }
+function generateDocId() { return `doc-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`; }
+function findNode(node, id) {
+  if (node.id === id) return node;
+  if (node.children) for (const c of node.children) { const f = findNode(c, id); if (f) return f; }
+  return null;
+}
 
 // ── 마크다운 툴바 헬퍼 ──────────────────────────────────────────────────
 function insertMarkdown(ref, setter, before, after = '') {
@@ -37,13 +55,13 @@ function downloadMd(filename, content) {
 
 // ── DOCX 내보내기 (동적 import) ─────────────────────────────────────────
 async function downloadDocx(filename, mdText) {
-  const { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } = await import('docx');
+  const { Document, Packer, Paragraph, TextRun, HeadingLevel } = await import('docx');
 
   const lines = mdText.split('\n');
   const children = [];
 
   for (const line of lines) {
-    if (line.startsWith('# '))      children.push(new Paragraph({ text: line.slice(2), heading: HeadingLevel.HEADING_1 }));
+    if (line.startsWith('# '))       children.push(new Paragraph({ text: line.slice(2), heading: HeadingLevel.HEADING_1 }));
     else if (line.startsWith('## ')) children.push(new Paragraph({ text: line.slice(3), heading: HeadingLevel.HEADING_2 }));
     else if (line.startsWith('### '))children.push(new Paragraph({ text: line.slice(4), heading: HeadingLevel.HEADING_3 }));
     else if (line.startsWith('> '))  children.push(new Paragraph({ text: line.slice(2), indent: { left: 720 } }));
@@ -54,9 +72,7 @@ async function downloadDocx(filename, mdText) {
     } else if (line.trim() === '') {
       children.push(new Paragraph({ text: '' }));
     } else {
-      // 인라인 **bold** 처리
       const parts = [];
-      let rest = line;
       const bold = /\*\*(.+?)\*\*/g;
       let last = 0; let m;
       while ((m = bold.exec(line)) !== null) {
@@ -84,21 +100,15 @@ function sermonToMd(title, scripture, structure, sections) {
   if (title) lines.push(`# ${title}`, '');
   if (scripture) lines.push(`**성경 본문:** ${scripture}`, '', '---', '');
 
-  if (structure === '3part') {
-    const labels = [['서론', '서론'], ['본론', '본론'], ['결론', '결론']];
-    labels.forEach(([key, label], i) => {
-      const s = sections[i] || {};
-      lines.push(`## ${label}${s.subtitle ? ` — ${s.subtitle}` : ''}`, '');
-      if (s.content) lines.push(s.content, '');
-    });
-  } else {
-    const labels = ['발달', '전개', '절정', '결말'];
-    labels.forEach((label, i) => {
-      const s = sections[i] || {};
-      lines.push(`## ${label}${s.subtitle ? ` — ${s.subtitle}` : ''}`, '');
-      if (s.content) lines.push(s.content, '');
-    });
-  }
+  const labels = structure === '3part'
+    ? ['서론', '본론', '결론']
+    : ['발달', '전개', '절정', '결말'];
+
+  labels.forEach((label, i) => {
+    const s = sections[i] || {};
+    lines.push(`## ${label}${s.subtitle ? ` — ${s.subtitle}` : ''}`, '');
+    if (s.content) lines.push(s.content, '');
+  });
   return lines.join('\n');
 }
 
@@ -178,7 +188,7 @@ function SermonSection({ label, data, onChange, color }) {
   );
 }
 
-// ── 설교 구성 탭 ─────────────────────────────────────────────────────────
+// ── 설교 구성 상수 ───────────────────────────────────────────────────────
 const SERMON_3 = [
   { label: '서론', color: '#3b82f6' },
   { label: '본론', color: '#10b981' },
@@ -191,18 +201,15 @@ const SERMON_4 = [
   { label: '결말', color: '#10b981' },
 ];
 
-function SermonTab() {
-  const [structure, setStructure] = useState('3part');
-  const [docTitle, setDocTitle]   = useState('');
-  const [scripture, setScripture] = useState('');
+// ── 설교 구성 탭 (controlled) ─────────────────────────────────────────────
+function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections, onSave }) {
   const [exporting, setExporting] = useState(false);
 
   const sectionDefs = structure === '3part' ? SERMON_3 : SERMON_4;
-  const [sections, setSections]   = useState(sectionDefs.map(() => ({})));
 
   const updateSection = useCallback((i, val) => {
     setSections((prev) => { const n = [...prev]; n[i] = val; return n; });
-  }, []);
+  }, [setSections]);
 
   const handleStructure = (v) => {
     if (v === structure) return;
@@ -212,7 +219,7 @@ function SermonTab() {
   };
 
   const getMd = () => sermonToMd(docTitle, scripture, structure, sections);
-  const fname  = (docTitle || '설교') .replace(/\s+/g, '_');
+  const fname  = (docTitle || '설교').replace(/\s+/g, '_');
 
   const handleDocx = async () => {
     setExporting(true);
@@ -271,16 +278,15 @@ function SermonTab() {
       <ExportBar
         onMd={() => downloadMd(`${fname}.md`, getMd())}
         onDocx={handleDocx}
+        onSave={onSave}
         exporting={exporting}
       />
     </div>
   );
 }
 
-// ── 아이디어 스케치 탭 ───────────────────────────────────────────────────
-function SketchTab() {
-  const [text, setText]       = useState('');
-  const [docTitle, setDocTitle] = useState('');
+// ── 아이디어 스케치 탭 (controlled) ─────────────────────────────────────
+function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
   const [exporting, setExporting] = useState(false);
   const areaRef = useRef(null);
 
@@ -302,7 +308,7 @@ function SketchTab() {
         <input
           placeholder="문서 제목 (선택)"
           value={docTitle}
-          onChange={(e) => setDocTitle(e.target.value)}
+          onChange={(e) => setSketchTitle(e.target.value)}
           style={metaInputStyle}
         />
       </div>
@@ -324,6 +330,7 @@ function SketchTab() {
       <ExportBar
         onMd={() => downloadMd(`${fname}.md`, getMd())}
         onDocx={handleDocx}
+        onSave={onSave}
         exporting={exporting}
       />
     </div>
@@ -331,18 +338,30 @@ function SketchTab() {
 }
 
 // ── 내보내기 바 ──────────────────────────────────────────────────────────
-function ExportBar({ onMd, onDocx, exporting }) {
+function ExportBar({ onMd, onDocx, onSave, exporting }) {
   return (
     <div style={{
       padding: '8px 12px', borderTop: '1px solid #e2e8f0',
-      background: '#f8fafc', display: 'flex', gap: 6,
+      background: '#f8fafc', display: 'flex', gap: 6, flexDirection: 'column',
     }}>
-      <button onClick={onMd} style={exportBtnStyle('#10b981')}>
-        ⬇ Markdown (.md)
+      <button
+        onClick={onSave}
+        style={{
+          padding: '8px 0', fontSize: 12, fontWeight: 700,
+          background: 'linear-gradient(135deg, #1e3a8a, #1d4ed8)',
+          color: '#fff', border: 'none', borderRadius: 7, cursor: 'pointer',
+        }}
+      >
+        💾 저장소에 저장
       </button>
-      <button onClick={onDocx} disabled={exporting} style={exportBtnStyle('#3b82f6')}>
-        {exporting ? '생성 중…' : '⬇ Word (.docx)'}
-      </button>
+      <div style={{ display: 'flex', gap: 6 }}>
+        <button onClick={onMd} style={exportBtnStyle('#10b981')}>
+          ⬇ Markdown (.md)
+        </button>
+        <button onClick={onDocx} disabled={exporting} style={exportBtnStyle('#3b82f6')}>
+          {exporting ? '생성 중…' : '⬇ Word (.docx)'}
+        </button>
+      </div>
     </div>
   );
 }
@@ -365,8 +384,79 @@ const TABS = [
   { id: 'sketch', icon: '✏️', label: '아이디어 스케치' },
 ];
 
-export default function DocPanel({ open, onToggle }) {
+export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   const [activeTab, setActiveTab] = useState('sermon');
+  const [currentDocId, setCurrentDocId] = useState(null);
+
+  // 설교 탭 상태
+  const [structure, setStructure]   = useState('3part');
+  const [sermonTitle, setSermonTitle] = useState('');
+  const [scripture, setScripture]   = useState('');
+  const [sections, setSections]     = useState(SERMON_3.map(() => ({})));
+
+  // 스케치 탭 상태
+  const [sketchTitle, setSketchTitle] = useState('');
+  const [sketchText, setSketchText]   = useState('');
+
+  // 저장된 문서 불러오기
+  useEffect(() => {
+    if (!loadedDoc) return;
+    const { data } = loadedDoc;
+    setCurrentDocId(loadedDoc.id);
+    if (data.docType === 'sermon') {
+      setActiveTab('sermon');
+      setStructure(data.sermon.structure || '3part');
+      setSermonTitle(data.sermon.title || '');
+      setScripture(data.sermon.scripture || '');
+      setSections(data.sermon.sections || SERMON_3.map(() => ({})));
+    } else {
+      setActiveTab('sketch');
+      setSketchTitle(data.sketch.title || '');
+      setSketchText(data.sketch.text || '');
+    }
+  }, [loadedDoc]);
+
+  // 저장소에 저장
+  const handleStorageSave = () => {
+    const isSermon = activeTab === 'sermon';
+    const name = isSermon
+      ? (sermonTitle || '무제 설교')
+      : (sketchTitle || '무제 스케치');
+
+    const docData = isSermon
+      ? { docType: 'sermon', sermon: { title: sermonTitle, scripture, structure, sections } }
+      : { docType: 'sketch', sketch: { title: sketchTitle, text: sketchText } };
+
+    const tree = loadTree();
+
+    if (currentDocId) {
+      // 기존 문서 업데이트
+      const existing = findNode(tree, currentDocId);
+      if (existing) {
+        existing.name = name;
+        existing.data = docData;
+        existing.savedAt = new Date().toISOString();
+        saveTree(tree);
+        if (onDocSaved) onDocSaved();
+        alert(`"${name}" 문서가 저장소에 업데이트되었습니다.`);
+        return;
+      }
+    }
+
+    // 새 문서 추가
+    const newDoc = {
+      id: generateDocId(),
+      type: 'doc',
+      name,
+      data: docData,
+      savedAt: new Date().toISOString(),
+    };
+    tree.children.push(newDoc);
+    saveTree(tree);
+    setCurrentDocId(newDoc.id);
+    if (onDocSaved) onDocSaved();
+    alert(`"${name}" 문서가 저장소에 저장되었습니다.`);
+  };
 
   return (
     <>
@@ -414,8 +504,13 @@ export default function DocPanel({ open, onToggle }) {
             padding: '10px 12px 0',
             background: 'linear-gradient(135deg, #1e3a8a, #0f172a)',
           }}>
-            <div style={{ color: '#fff', fontSize: 13, fontWeight: 800, marginBottom: 8 }}>
-              ✍️ 문서 작성
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
+              <span style={{ color: '#fff', fontSize: 13, fontWeight: 800 }}>✍️ 문서 작성</span>
+              {currentDocId && (
+                <span style={{ fontSize: 10, color: '#93c5fd', background: 'rgba(59,130,246,0.2)', padding: '2px 6px', borderRadius: 4 }}>
+                  저장됨
+                </span>
+              )}
             </div>
             <div style={{ display: 'flex', gap: 2 }}>
               {TABS.map((t) => (
@@ -437,7 +532,27 @@ export default function DocPanel({ open, onToggle }) {
 
           {/* 탭 콘텐츠 */}
           <div style={{ flex: 1, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-            {activeTab === 'sermon' ? <SermonTab /> : <SketchTab />}
+            {activeTab === 'sermon' ? (
+              <SermonTab
+                structure={structure}
+                setStructure={setStructure}
+                docTitle={sermonTitle}
+                setDocTitle={setSermonTitle}
+                scripture={scripture}
+                setScripture={setScripture}
+                sections={sections}
+                setSections={setSections}
+                onSave={handleStorageSave}
+              />
+            ) : (
+              <SketchTab
+                text={sketchText}
+                setText={setSketchText}
+                docTitle={sketchTitle}
+                setSketchTitle={setSketchTitle}
+                onSave={handleStorageSave}
+              />
+            )}
           </div>
         </div>
       )}
