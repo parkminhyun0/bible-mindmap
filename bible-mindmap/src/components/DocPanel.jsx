@@ -202,7 +202,7 @@ const SERMON_4 = [
 ];
 
 // ── 설교 구성 탭 (controlled) ─────────────────────────────────────────────
-function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections, onSave }) {
+function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, setScripture, sections, setSections }) {
   const [exporting, setExporting] = useState(false);
 
   const sectionDefs = structure === '3part' ? SERMON_3 : SERMON_4;
@@ -278,7 +278,6 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
       <ExportBar
         onMd={() => downloadMd(`${fname}.md`, getMd())}
         onDocx={handleDocx}
-        onSave={onSave}
         exporting={exporting}
       />
     </div>
@@ -286,7 +285,7 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
 }
 
 // ── 아이디어 스케치 탭 (controlled) ─────────────────────────────────────
-function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
+function SketchTab({ text, setText, docTitle, setSketchTitle }) {
   const [exporting, setExporting] = useState(false);
   const areaRef = useRef(null);
 
@@ -330,7 +329,6 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
       <ExportBar
         onMd={() => downloadMd(`${fname}.md`, getMd())}
         onDocx={handleDocx}
-        onSave={onSave}
         exporting={exporting}
       />
     </div>
@@ -338,30 +336,18 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onSave }) {
 }
 
 // ── 내보내기 바 ──────────────────────────────────────────────────────────
-function ExportBar({ onMd, onDocx, onSave, exporting }) {
+function ExportBar({ onMd, onDocx, exporting }) {
   return (
     <div style={{
       padding: '8px 12px', borderTop: '1px solid #e2e8f0',
-      background: '#f8fafc', display: 'flex', gap: 6, flexDirection: 'column',
+      background: '#f8fafc', display: 'flex', gap: 6,
     }}>
-      <button
-        onClick={onSave}
-        style={{
-          padding: '8px 0', fontSize: 12, fontWeight: 700,
-          background: 'linear-gradient(135deg, #1e3a8a, #1d4ed8)',
-          color: '#fff', border: 'none', borderRadius: 7, cursor: 'pointer',
-        }}
-      >
-        💾 저장소에 저장
+      <button onClick={onMd} style={exportBtnStyle('#10b981')}>
+        ⬇ Markdown (.md)
       </button>
-      <div style={{ display: 'flex', gap: 6 }}>
-        <button onClick={onMd} style={exportBtnStyle('#10b981')}>
-          ⬇ Markdown (.md)
-        </button>
-        <button onClick={onDocx} disabled={exporting} style={exportBtnStyle('#3b82f6')}>
-          {exporting ? '생성 중…' : '⬇ Word (.docx)'}
-        </button>
-      </div>
+      <button onClick={onDocx} disabled={exporting} style={exportBtnStyle('#3b82f6')}>
+        {exporting ? '생성 중…' : '⬇ Word (.docx)'}
+      </button>
     </div>
   );
 }
@@ -443,7 +429,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       }
     }
 
-    // 새 문서 추가
+    // 새 문서 추가 — doc-root 폴더에 우선 저장
     const newDoc = {
       id: generateDocId(),
       type: 'doc',
@@ -451,11 +437,19 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       data: docData,
       savedAt: new Date().toISOString(),
     };
-    tree.children.push(newDoc);
+    const docRoot = findNode(tree, 'doc-root');
+    if (docRoot) {
+      if (!docRoot.children) docRoot.children = [];
+      docRoot.children.push(newDoc);
+      docRoot.open = true;
+    } else {
+      if (!tree.children) tree.children = [];
+      tree.children.push(newDoc);
+    }
     saveTree(tree);
     setCurrentDocId(newDoc.id);
     if (onDocSaved) onDocSaved();
-    alert(`"${name}" 문서가 저장소에 저장되었습니다.`);
+    alert(`"${name}" 문서가 '✍️ 설교 문서 작성' 폴더에 저장되었습니다.`);
   };
 
   return (
@@ -507,11 +501,28 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
               <span style={{ color: '#fff', fontSize: 13, fontWeight: 800 }}>✍️ 문서 작성</span>
-              {currentDocId && (
-                <span style={{ fontSize: 10, color: '#93c5fd', background: 'rgba(59,130,246,0.2)', padding: '2px 6px', borderRadius: 4 }}>
-                  저장됨
-                </span>
-              )}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                {currentDocId && (
+                  <span style={{ fontSize: 10, color: '#93c5fd', background: 'rgba(59,130,246,0.2)', padding: '2px 6px', borderRadius: 4 }}>
+                    저장됨
+                  </span>
+                )}
+                <button
+                  onClick={handleStorageSave}
+                  title="내 저장소 → 설교 문서 작성 폴더에 저장"
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 4,
+                    padding: '5px 10px', fontSize: 11, fontWeight: 800,
+                    background: 'linear-gradient(135deg, #dc2626, #b91c1c)',
+                    color: '#fff', border: '2px solid #fca5a5',
+                    borderRadius: 20, cursor: 'pointer',
+                    boxShadow: '0 0 8px rgba(239,68,68,0.5)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  💾 저장소에 저장
+                </button>
+              </div>
             </div>
             <div style={{ display: 'flex', gap: 2 }}>
               {TABS.map((t) => (
@@ -543,7 +554,6 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                 setScripture={setScripture}
                 sections={sections}
                 setSections={setSections}
-                onSave={handleStorageSave}
               />
             ) : (
               <SketchTab
@@ -551,7 +561,6 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                 setText={setSketchText}
                 docTitle={sketchTitle}
                 setSketchTitle={setSketchTitle}
-                onSave={handleStorageSave}
               />
             )}
           </div>

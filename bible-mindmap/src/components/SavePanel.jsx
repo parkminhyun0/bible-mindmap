@@ -216,6 +216,20 @@ const SEED_FILES = [
   },
 ];
 
+function ensureDocRoot(tree) {
+  if (!tree.children) tree.children = [];
+  const exists = tree.children.find((c) => c.id === 'doc-root');
+  if (!exists) {
+    tree.children.unshift({
+      id: 'doc-root',
+      type: 'folder',
+      name: '✍️ 설교 문서 작성',
+      open: true,
+      children: [],
+    });
+  }
+}
+
 function loadTree() {
   let tree;
   try {
@@ -223,6 +237,7 @@ function loadTree() {
   } catch {
     tree = defaultTree();
   }
+  ensureDocRoot(tree);
   const seeded = JSON.parse(localStorage.getItem(SEED_KEY) || '[]');
   for (const file of SEED_FILES) {
     if (!seeded.includes(file.id)) {
