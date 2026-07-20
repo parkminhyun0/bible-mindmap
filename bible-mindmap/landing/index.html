@@ -769,11 +769,12 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>링크</h4>
+        <h4>링크 · 문의</h4>
         <ul>
           <li><a href="./app/" target="_blank">앱 열기</a></li>
           <li><a href="./guide.html">사용 가이드</a></li>
           <li><a href="https://github.com/parkminhyun0/bible-mindmap" target="_blank">GitHub 소스</a></li>
+          <li><a href="mailto:biblemindmap9@gmail.com">✉️ biblemindmap9@gmail.com</a><br/>문의 · 기능 제안</li>
         </ul>
       </div>
     </div>
@@ -792,16 +793,68 @@
   </div>
 </footer>
 
-<!-- 관리자 진입 버튼 (숨김/표시는 JS가 결정) -->
-<a id="admin-fab" href="./admin/" title="관리자 편집" style="
-  display:none;position:fixed;bottom:24px;right:24px;z-index:200;
-  width:52px;height:52px;border-radius:50%;
-  background:linear-gradient(135deg,#059669,#2563eb);
-  color:#fff;font-size:22px;text-decoration:none;
-  align-items:center;justify-content:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 20px rgba(5,150,105,.4);
-  transition:transform .2s,box-shadow .2s;
-" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">⚙️</a>
+<!-- 우측 하단 고정 위젯 스택 (방문자 수 + 이메일 + 관리자 FAB) -->
+<div id="br-stack" style="
+  position:fixed; bottom:24px; right:20px; z-index:200;
+  display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+">
+
+  <!-- 관리자 FAB (관리자 모드에서만 표시) -->
+  <a id="admin-fab" href="./admin/" title="관리자 편집" style="
+    display:none;
+    width:48px; height:48px; border-radius:50%;
+    background:linear-gradient(135deg,#059669,#2563eb);
+    color:#fff; font-size:20px; text-decoration:none;
+    align-items:center; justify-content:center;
+    box-shadow:0 6px 20px rgba(0,0,0,.4),0 0 16px rgba(5,150,105,.4);
+    transition:transform .2s;
+    flex-shrink:0;
+  " onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">⚙️</a>
+
+  <!-- 방문자 수 카드 -->
+  <div style="
+    background:rgba(15,23,42,.9); backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.1); border-radius:14px;
+    padding:12px 16px; min-width:170px;
+    box-shadow:0 8px 32px rgba(0,0,0,.45);
+  ">
+    <div style="font-size:10px; color:#64748b; font-weight:700; letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px;">
+      👥 방문자 현황
+    </div>
+    <img
+      src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fparkminhyun0.github.io%2Fbible-mindmap%2F&count_bg=%2310b981&title_bg=%231e3a5f&icon=book&icon_color=%23ffffff&title=%EB%B0%A9%EB%AC%B8%EC%9E%90&edge_flat=true"
+      alt="방문자 수 (오늘 / 전체)"
+      style="width:100%; height:auto; border-radius:6px; display:block;"
+      loading="lazy"
+      onerror="this.style.display='none';document.getElementById('visit-err').style.display='block';"
+    />
+    <div id="visit-err" style="display:none; font-size:11px; color:#475569; margin-top:4px;">카운터 로드 실패</div>
+    <div style="font-size:10px; color:#475569; margin-top:6px; text-align:right; letter-spacing:.02em;">
+      오늘 방문 &nbsp;/&nbsp; 전체 누적
+    </div>
+  </div>
+
+  <!-- 이메일 문의 버튼 -->
+  <a href="mailto:biblemindmap9@gmail.com"
+    title="biblemindmap9@gmail.com"
+    style="
+      background:rgba(15,23,42,.9); backdrop-filter:blur(16px);
+      border:1px solid rgba(255,255,255,.1); border-radius:10px;
+      padding:9px 14px; text-decoration:none;
+      box-shadow:0 4px 16px rgba(0,0,0,.35);
+      display:flex; align-items:center; gap:7px;
+      color:#94a3b8; font-size:11.5px;
+      transition:color .18s, border-color .18s, background .18s;
+      white-space:nowrap;
+    "
+    onmouseover="this.style.color='#10b981';this.style.borderColor='rgba(16,185,129,.35)';this.style.background='rgba(16,185,129,.08)'"
+    onmouseout="this.style.color='#94a3b8';this.style.borderColor='rgba(255,255,255,.1)';this.style.background='rgba(15,23,42,.9)'"
+  >
+    <span style="font-size:14px;">✉️</span>
+    <span>문의 · 개선 제안</span>
+  </a>
+
+</div>
 
 <script>
   // ── 스크롤 등장 애니메이션 ──
