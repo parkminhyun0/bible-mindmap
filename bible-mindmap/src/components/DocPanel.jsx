@@ -39,6 +39,28 @@ function downloadMd(filename, content) {
   URL.revokeObjectURL(a.href);
 }
 
+// 인라인 마크업(**bold**, <span style="color:#hex">colored</span>)을 TextRun 배열로 파싱.
+// docx는 hex 색상에서 '#' 없이 6자리만 허용.
+function parseInlineRuns(TextRun, line, baseStyle = {}) {
+  const parts = [];
+  // 정규식이 (span 태그) 또는 (**bold**) 를 순차적으로 잡음
+  const rx = /<span\s+style=["']color:\s*#?([0-9a-fA-F]{6})["']>([\s\S]*?)<\/span>|\*\*(.+?)\*\*/g;
+  let last = 0; let m;
+  while ((m = rx.exec(line)) !== null) {
+    if (m.index > last) parts.push(new TextRun({ text: line.slice(last, m.index), ...baseStyle }));
+    if (m[1] !== undefined) {
+      // color span: 내부에 **bold**가 있으면 재귀 파싱
+      const inner = parseInlineRuns(TextRun, m[2], { ...baseStyle, color: m[1].toUpperCase() });
+      parts.push(...inner);
+    } else if (m[3] !== undefined) {
+      parts.push(new TextRun({ text: m[3], bold: true, ...baseStyle }));
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < line.length) parts.push(new TextRun({ text: line.slice(last), ...baseStyle }));
+  return parts;
+}
+
 // ── DOCX 내보내기 (동적 import) ─────────────────────────────────────────
 async function downloadDocx(filename, mdText) {
   const { Document, Packer, Paragraph, TextRun, HeadingLevel } = await import('docx');
@@ -47,27 +69,18 @@ async function downloadDocx(filename, mdText) {
   const children = [];
 
   for (const line of lines) {
-    if (line.startsWith('# '))       children.push(new Paragraph({ text: line.slice(2), heading: HeadingLevel.HEADING_1 }));
-    else if (line.startsWith('## ')) children.push(new Paragraph({ text: line.slice(3), heading: HeadingLevel.HEADING_2 }));
-    else if (line.startsWith('### '))children.push(new Paragraph({ text: line.slice(4), heading: HeadingLevel.HEADING_3 }));
-    else if (line.startsWith('> '))  children.push(new Paragraph({ text: line.slice(2), indent: { left: 720 } }));
+    if (line.startsWith('# '))       children.push(new Paragraph({ children: parseInlineRuns(TextRun, line.slice(2)), heading: HeadingLevel.HEADING_1 }));
+    else if (line.startsWith('## ')) children.push(new Paragraph({ children: parseInlineRuns(TextRun, line.slice(3)), heading: HeadingLevel.HEADING_2 }));
+    else if (line.startsWith('### '))children.push(new Paragraph({ children: parseInlineRuns(TextRun, line.slice(4)), heading: HeadingLevel.HEADING_3 }));
+    else if (line.startsWith('> '))  children.push(new Paragraph({ children: parseInlineRuns(TextRun, line.slice(2)), indent: { left: 720 } }));
     else if (line.startsWith('- ') || line.startsWith('* ')) {
-      children.push(new Paragraph({ text: '• ' + line.slice(2) }));
+      children.push(new Paragraph({ children: [new TextRun('• '), ...parseInlineRuns(TextRun, line.slice(2))] }));
     } else if (/^\d+\. /.test(line)) {
-      children.push(new Paragraph({ text: line }));
+      children.push(new Paragraph({ children: parseInlineRuns(TextRun, line) }));
     } else if (line.trim() === '') {
       children.push(new Paragraph({ text: '' }));
     } else {
-      const parts = [];
-      const bold = /\*\*(.+?)\*\*/g;
-      let last = 0; let m;
-      while ((m = bold.exec(line)) !== null) {
-        if (m.index > last) parts.push(new TextRun(line.slice(last, m.index)));
-        parts.push(new TextRun({ text: m[1], bold: true }));
-        last = m.index + m[0].length;
-      }
-      if (last < line.length) parts.push(new TextRun(line.slice(last)));
-      children.push(new Paragraph({ children: parts.length ? parts : [new TextRun(line)] }));
+      children.push(new Paragraph({ children: parseInlineRuns(TextRun, line) }));
     }
   }
 
@@ -114,20 +127,72 @@ function ToolbarBtn({ label, title, onClick }) {
   );
 }
 
+// ── 컬러 팔레트 (8색) ────────────────────────────────────────────────────
+const TEXT_COLORS = [
+  { name: '빨강',  hex: '#dc2626' },
+  { name: '주황',  hex: '#ea580c' },
+  { name: '노랑',  hex: '#ca8a04' },
+  { name: '초록',  hex: '#16a34a' },
+  { name: '파랑',  hex: '#2563eb' },
+  { name: '남색',  hex: '#1e3a8a' },
+  { name: '보라',  hex: '#7c3aed' },
+  { name: '회색',  hex: '#6b7280' },
+];
+
+function ColorBtn({ hex, name, onClick }) {
+  return (
+    <button
+      onMouseDown={(e) => { e.preventDefault(); onClick(); }}
+      title={`글자색: ${name}`}
+      style={{
+        width: 18, height: 18, padding: 0,
+        background: hex, border: '1px solid #cbd5e1',
+        borderRadius: 4, cursor: 'pointer', flexShrink: 0,
+      }}
+    />
+  );
+}
+
+// 선택 영역을 <span style="color:HEX">...</span> 로 감싸기
+function wrapColor(ref, setter, hex) {
+  insertMarkdown(ref, setter, `<span style="color:${hex}">`, `</span>`);
+}
+
+// 선택 영역에 걸린 color span 을 제거 (커서 지점 기준 가장 가까운 span 제거)
+function clearColor(ref, setter) {
+  const el = ref.current;
+  if (!el) return;
+  const { selectionStart: s, selectionEnd: e, value } = el;
+  if (s === e) return;
+  const before = value.slice(0, s);
+  const sel    = value.slice(s, e);
+  const after  = value.slice(e);
+  // 선택 영역 내부에 span이 있으면 전부 제거
+  const stripped = sel.replace(/<span\s+style=["']color:[^"']+["']>|<\/span>/g, '');
+  const next = before + stripped + after;
+  setter(next);
+  setTimeout(() => { el.focus(); el.setSelectionRange(s, s + stripped.length); }, 0);
+}
+
 // ── 마크다운 툴바 ────────────────────────────────────────────────────────
 function MdToolbar({ areaRef, setter }) {
   const ins = (b, a) => insertMarkdown(areaRef, setter, b, a);
   const inl = (p)    => insertLine(areaRef, setter, p);
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, padding: '5px 8px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, padding: '5px 8px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0', alignItems: 'center' }}>
       <ToolbarBtn label="H1" title="제목 1" onClick={() => inl('# ')} />
       <ToolbarBtn label="H2" title="제목 2" onClick={() => inl('## ')} />
       <ToolbarBtn label="H3" title="제목 3" onClick={() => inl('### ')} />
-      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px' }} />
+      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
       <ToolbarBtn label="B"  title="굵게 (**bold**)"    onClick={() => ins('**', '**')} />
       <ToolbarBtn label="I"  title="이탤릭 (*italic*)"  onClick={() => ins('*', '*')} />
       <ToolbarBtn label="~~" title="취소선"             onClick={() => ins('~~', '~~')} />
-      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px' }} />
+      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
+      {TEXT_COLORS.map((c) => (
+        <ColorBtn key={c.hex} hex={c.hex} name={c.name} onClick={() => wrapColor(areaRef, setter, c.hex)} />
+      ))}
+      <ToolbarBtn label="↺" title="글자색 제거" onClick={() => clearColor(areaRef, setter)} />
+      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
       <ToolbarBtn label="—"  title="구분선"     onClick={() => insertLine(areaRef, setter, '---\n')} />
       <ToolbarBtn label="• " title="글머리 기호" onClick={() => inl('- ')} />
       <ToolbarBtn label="1." title="번호 목록"   onClick={() => inl('1. ')} />
