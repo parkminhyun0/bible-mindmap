@@ -642,22 +642,27 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     return (
       <div
         onClick={onToggle}
+        title="저장소 열기"
         style={{
-          width: 28,
-          background: '#f8fafc',
-          borderLeft: '1px solid #e2e8f0',
+          width: 30,
+          background: 'linear-gradient(180deg, #d1fae5, #ecfdf5)',
+          borderLeft: '1px solid #86efac',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           cursor: 'pointer',
-          writingMode: 'vertical-rl',
-          fontSize: 12,
-          color: '#64748b',
-          fontWeight: 600,
+          writingMode: 'vertical-lr',
+          fontSize: 11,
+          color: '#065f46',
+          fontWeight: 700,
+          letterSpacing: '.05em',
           userSelect: 'none',
+          transition: 'background 0.2s',
         }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, #a7f3d0, #d1fae5)')}
+        onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, #d1fae5, #ecfdf5)')}
       >
-        📂 저장소
+        ◀ 📂 저장소 열기
       </div>
     );
   }

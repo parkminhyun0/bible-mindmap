@@ -215,41 +215,57 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
     return (
       <>
         <div style={{
-          width: 44,
+          width: 56,
           display: 'flex',
           flexDirection: 'column',
-          borderRight: '1px solid #e2e8f0',
-          background: '#f8fafc',
+          borderRight: '1px solid #bfdbfe',
+          background: 'linear-gradient(180deg, #eff6ff, #f0f9ff)',
           flexShrink: 0,
         }}>
           {/* 상단: 로고 + 매뉴얼 아이콘 */}
           <div style={{
-            padding: '10px 0', borderBottom: '1px solid #e2e8f0',
+            padding: '10px 0', borderBottom: '1px solid #dbeafe',
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
-            background: '#fff',
+            background: 'linear-gradient(180deg, #ffffff, #f0f9ff)',
           }}>
-            <span style={{ fontSize: 20 }} title="성경 마인드맵">✝️</span>
+            <span style={{ fontSize: 22, filter: 'drop-shadow(0 1px 1px rgba(30,58,138,0.15))' }} title="성경 마인드맵">✝️</span>
             <button
               onClick={() => setShowManual(true)}
               title="사용자 매뉴얼"
-              style={railIconBtn('#1e3a8a', '#fff')}
+              style={{
+                ...railIconBtn('linear-gradient(135deg,#1e3a8a,#2563eb)', '#fff'),
+                width: 36, height: 28, fontSize: 13, boxShadow: '0 2px 6px rgba(37,99,235,0.35)',
+              }}
             >📘</button>
           </div>
 
-          {/* 노드 타입 rail — 클릭 시 해당 탭으로 열기 */}
+          {/* 노드 타입 rail — 아이콘 + 미니 라벨 */}
           <div style={{
             padding: '8px 0', display: 'flex', flexDirection: 'column',
-            alignItems: 'center', gap: 4,
+            alignItems: 'center', gap: 3,
           }}>
-            {ALL_TABS.map((t) => (
-              <button
-                key={t.key}
-                onClick={() => openWithTab(t.key)}
-                title={`${t.label} — 패널 열기`}
-                style={railIconBtn(tab === t.key ? '#dbeafe' : 'transparent',
-                                   tab === t.key ? '#1e40af' : '#475569', tab === t.key)}
-              >{t.icon}</button>
-            ))}
+            {ALL_TABS.map((t) => {
+              const active = tab === t.key;
+              return (
+                <button
+                  key={t.key}
+                  onClick={() => openWithTab(t.key)}
+                  title={`${t.label} — 패널 열기`}
+                  style={{
+                    width: 48, padding: '5px 0',
+                    display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1,
+                    background: active ? '#dbeafe' : 'transparent',
+                    color: active ? '#1e40af' : '#475569',
+                    border: active ? '1px solid rgba(59,130,246,0.4)' : '1px solid transparent',
+                    borderRadius: 7, cursor: 'pointer',
+                    transition: 'background .15s, border-color .15s',
+                  }}
+                >
+                  <span style={{ fontSize: 15, lineHeight: 1 }}>{t.icon}</span>
+                  <span style={{ fontSize: 9, fontWeight: 700, lineHeight: 1.2, letterSpacing: '-0.02em' }}>{t.label}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* 하단: 세로 라벨 (열기 트리거) */}
@@ -260,15 +276,16 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
               flex: 1,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: 'pointer',
-              background: 'linear-gradient(180deg, transparent, rgba(59,130,246,0.05))',
+              background: 'linear-gradient(180deg, transparent, rgba(37,99,235,0.08))',
               transition: 'background 0.2s',
+              borderTop: '1px solid #dbeafe',
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(59,130,246,0.08)')}
-            onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, transparent, rgba(59,130,246,0.05))')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(37,99,235,0.12)')}
+            onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, transparent, rgba(37,99,235,0.08))')}
           >
             <span style={{
               writingMode: 'vertical-lr',
-              fontSize: 11, fontWeight: 700, color: '#64748b',
+              fontSize: 11, fontWeight: 700, color: '#1e40af',
               letterSpacing: '.05em', userSelect: 'none',
             }}>
               ▶ 입력 패널 열기

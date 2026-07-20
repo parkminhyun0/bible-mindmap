@@ -647,15 +647,17 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
 
   return (
     <>
-      {/* 세로 탭 트리거 버튼 */}
+      {/* 세로 탭 트리거 버튼 — 남/보라 톤 */}
       <div
         onClick={onToggle}
         title={open ? '문서 작성 창 닫기' : '문서 작성 창 열기'}
         style={{
-          width: 28,
-          background: open ? '#1e3a8a' : '#f1f5f9',
-          borderLeft: '1px solid #e2e8f0',
-          borderRight: '1px solid #e2e8f0',
+          width: 30,
+          background: open
+            ? 'linear-gradient(180deg, #1e3a8a, #4c1d95)'
+            : 'linear-gradient(180deg, #ede9fe, #ddd6fe)',
+          borderLeft: '1px solid #c4b5fd',
+          borderRight: '1px solid #c4b5fd',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -668,7 +670,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
           writingMode: 'vertical-lr',
           fontSize: 11,
           fontWeight: 700,
-          color: open ? '#fff' : '#64748b',
+          color: open ? '#fff' : '#5b21b6',
           letterSpacing: '.05em',
           userSelect: 'none',
         }}>
