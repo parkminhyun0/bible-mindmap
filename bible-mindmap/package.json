@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:lexicon": "node scripts/build-lexicon.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
+    "prebuild": "node -e \"const fs=require('fs');const p='public/data/strongs-def/gnt/0.json';if(!fs.existsSync(p)){console.log('▶ lexicon 데이터 없음 — build-lexicon 실행');require('child_process').execSync('npm run build:lexicon',{stdio:'inherit'});}\"",
     "predeploy": "npm run build && cp -r landing/. dist/",
     "deploy": "gh-pages -d dist --dotfiles"
   },
