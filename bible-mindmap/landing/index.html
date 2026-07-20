@@ -468,11 +468,36 @@
       border-color: rgba(16,185,129,.35);
       background: rgba(16,185,129,.08);
     }
+    .email-btn { cursor: pointer; font-family: inherit; }
+
+    /* 이메일 옵션 팝오버 */
+    .email-popover {
+      position: absolute; bottom: calc(100% + 8px); right: 0;
+      min-width: 220px; padding: 6px;
+      background: rgba(15,23,42,.98); backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.12); border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(0,0,0,.5);
+      display: none; flex-direction: column; gap: 2px;
+      z-index: 100;
+    }
+    .email-popover.open { display: flex; }
+    .email-popover .opt {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 10px; border-radius: 6px;
+      background: transparent; border: none; cursor: pointer;
+      color: #cbd5e1; font-size: 12px; font-weight: 600;
+      text-align: left; text-decoration: none;
+      font-family: inherit;
+    }
+    .email-popover .opt:hover { background: rgba(255,255,255,.08); color: #fff; }
+    .email-popover .opt-ico { font-size: 14px; width: 16px; text-align: center; }
+
     @media (max-width: 480px) {
       #br-stack { bottom: 14px; right: 10px; gap: 6px; }
       .visitor-card { min-width: 140px; padding: 9px 12px; border-radius: 10px; }
       .email-btn { padding: 7px 10px; font-size: 10.5px; }
       .email-btn .email-label { display: none; }
+      .email-popover { min-width: 200px; }
     }
 
     /* ── 부드러운 등장 애니메이션 ── */
@@ -871,15 +896,84 @@
     </div>
   </div>
 
-  <!-- 이메일 문의 버튼 -->
-  <a href="mailto:biblemindmap9@gmail.com" title="biblemindmap9@gmail.com" class="email-btn">
-    <span style="font-size:14px;">✉️</span>
-    <span class="email-label">문의 · 개선 제안</span>
-  </a>
+  <!-- 이메일 문의 버튼 + 팝오버 -->
+  <div id="email-wrap" style="position:relative;">
+    <button type="button" id="email-trigger" title="biblemindmap9@gmail.com" class="email-btn" aria-haspopup="true" aria-expanded="false">
+      <span style="font-size:14px;">✉️</span>
+      <span class="email-label">문의 · 개선 제안</span>
+    </button>
+    <div id="email-popover" class="email-popover" role="menu">
+      <a class="opt" id="email-mailto" href="#" role="menuitem">
+        <span class="opt-ico">📧</span><span>메일 앱으로 작성</span>
+      </a>
+      <a class="opt" id="email-gmail" href="#" target="_blank" rel="noreferrer" role="menuitem">
+        <span class="opt-ico">🌐</span><span>Gmail 웹에서 작성</span>
+      </a>
+      <button class="opt" id="email-copy" type="button" role="menuitem">
+        <span class="opt-ico" id="email-copy-ico">📋</span>
+        <span id="email-copy-label">이메일 주소 복사</span>
+      </button>
+    </div>
+  </div>
 
 </div>
 
 <script>
+  // ── 이메일 문의 팝오버 ──
+  (function () {
+    var EMAIL   = 'biblemindmap9@gmail.com';
+    var SUBJECT = '[성경 마인드맵] 문의 · 기능 제안';
+    var wrap    = document.getElementById('email-wrap');
+    var trigger = document.getElementById('email-trigger');
+    var pop     = document.getElementById('email-popover');
+    var mailto  = document.getElementById('email-mailto');
+    var gmail   = document.getElementById('email-gmail');
+    var copy    = document.getElementById('email-copy');
+    var copyIco = document.getElementById('email-copy-ico');
+    var copyLbl = document.getElementById('email-copy-label');
+    if (!wrap || !trigger || !pop) return;
+
+    mailto.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(SUBJECT);
+    gmail.href  = 'https://mail.google.com/mail/?view=cm&fu=1&to=' + encodeURIComponent(EMAIL) + '&su=' + encodeURIComponent(SUBJECT);
+
+    function setOpen(v) {
+      pop.classList.toggle('open', v);
+      trigger.setAttribute('aria-expanded', v ? 'true' : 'false');
+    }
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!pop.classList.contains('open'));
+    });
+    document.addEventListener('mousedown', function (e) {
+      if (!wrap.contains(e.target)) setOpen(false);
+    });
+    // 메뉴 항목 클릭 시 자동으로 닫힘
+    mailto.addEventListener('click', function () { setOpen(false); });
+    gmail.addEventListener('click',  function () { setOpen(false); });
+
+    copy.addEventListener('click', function () {
+      var done = function () {
+        copyIco.textContent = '✅';
+        copyLbl.textContent = '주소가 복사되었습니다';
+        setTimeout(function () {
+          copyIco.textContent = '📋';
+          copyLbl.textContent = '이메일 주소 복사';
+        }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL).then(done, fallback);
+      } else {
+        fallback();
+      }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = EMAIL; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); }
+        finally { document.body.removeChild(ta); }
+      }
+    });
+  })();
+
   // ── 스크롤 등장 애니메이션 ──
   const observer = new IntersectionObserver(
     (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
