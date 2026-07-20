@@ -40,9 +40,20 @@ function downloadMd(filename, content) {
   URL.revokeObjectURL(a.href);
 }
 
+// XML 1.0 유효 문자만 남김 — Google Docs · Apple Pages · 일부 뷰어에서
+// 문서 렌더링이 잘리는 것을 방지 (제어 문자·미할당 코드포인트 제거).
+// XML 1.0 유효: #x9(TAB), #xA(LF), #xD(CR), #x20-#xD7FF, #xE000-#xFFFD, #x10000-#x10FFFF
+// eslint-disable-next-line no-control-regex
+const XML_INVALID_RX = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\uFFFE\uFFFF]/g;
+function sanitizeXmlText(s) {
+  if (typeof s !== 'string') return s;
+  return s.replace(XML_INVALID_RX, '');
+}
+
 // 인라인 마크업(**bold**, <span style="color:#hex">colored</span>)을 TextRun 배열로 파싱.
 // docx는 hex 색상에서 '#' 없이 6자리만 허용.
-function parseInlineRuns(TextRun, line, baseStyle = {}) {
+function parseInlineRuns(TextRun, rawLine, baseStyle = {}) {
+  const line = sanitizeXmlText(rawLine);
   const parts = [];
   // 정규식이 (span 태그) 또는 (**bold**) 를 순차적으로 잡음
   const rx = /<span\s+style=["']color:\s*#?([0-9a-fA-F]{6})["']>([\s\S]*?)<\/span>|\*\*(.+?)\*\*/g;
