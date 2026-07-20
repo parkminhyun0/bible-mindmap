@@ -51,28 +51,3 @@ export const SyncMark = Mark.create({
   },
 });
 
-/**
- * HTML 문자열에서 특정 syncId를 가진 모든 span의 style을 업데이트.
- * (다른 역본을 재렌더링하지 않고 저장된 HTML만 갱신할 때 사용)
- */
-export function updateSyncSpanStyle(html, syncId, patch) {
-  if (!html || !syncId) return html;
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  const spans = doc.querySelectorAll(`span[data-sync-id="${cssEscape(syncId)}"]`);
-  spans.forEach((span) => {
-    if ('bold' in patch) {
-      span.style.fontWeight = patch.bold ? 'bold' : '';
-    }
-    if ('color' in patch) {
-      span.style.color = patch.color || '';
-    }
-    // 빈 style 정리
-    if (!span.getAttribute('style')?.trim()) span.removeAttribute('style');
-  });
-  return doc.body.innerHTML;
-}
-
-function cssEscape(s) {
-  // CSS 선택자 안전화 — 실제 syncId는 항상 우리가 생성하므로 간단히 처리
-  return String(s).replace(/["\\]/g, '\\$&');
-}

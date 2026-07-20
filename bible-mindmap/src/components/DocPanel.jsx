@@ -1,22 +1,8 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
-
-// ── 로컬스토리지 저장소 헬퍼 ─────────────────────────────────────────────
-const STORAGE_KEY = 'bible-mindmap-saves';
-
-function loadTree() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTree(); }
-  catch { return defaultTree(); }
-}
-function defaultTree() {
-  return { id: 'root', type: 'folder', name: '저장소', open: true, children: [] };
-}
-function saveTree(tree) { localStorage.setItem(STORAGE_KEY, JSON.stringify(tree)); }
-function generateDocId() { return `doc-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`; }
-function findNode(node, id) {
-  if (node.id === id) return node;
-  if (node.children) for (const c of node.children) { const f = findNode(c, id); if (f) return f; }
-  return null;
-}
+import {
+  DOC_ROOT_ID, DOC_ROOT_NAME,
+  loadTree, saveTree, findNode, generateDocId,
+} from '../utils/storageTree';
 
 // ── 마크다운 툴바 헬퍼 ──────────────────────────────────────────────────
 function insertMarkdown(ref, setter, before, after = '') {
@@ -448,7 +434,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       data: docData,
       savedAt: new Date().toISOString(),
     };
-    const docRoot = findNode(tree, 'doc-root');
+    const docRoot = findNode(tree, DOC_ROOT_ID);
     if (docRoot) {
       if (!docRoot.children) docRoot.children = [];
       docRoot.children.push(newDoc);
@@ -460,7 +446,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
     saveTree(tree);
     setCurrentDocId(newDoc.id);
     if (onDocSaved) onDocSaved();
-    alert(`"${name}" 문서가 '✍️ 설교 문서 작성' 폴더에 저장되었습니다.`);
+    alert(`"${name}" 문서가 '${DOC_ROOT_NAME}' 폴더에 저장되었습니다.`);
   };
 
   return (

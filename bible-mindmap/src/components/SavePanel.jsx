@@ -1,4 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
+import {
+  DOC_ROOT_ID, ensureDocRoot,
+  loadTree as loadTreeCore, saveTree, findNode, findParent, generateFileId as generateId,
+} from '../utils/storageTree';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
 const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
@@ -48,7 +52,6 @@ function useAppVisitorCount() {
 }
 
 
-const STORAGE_KEY = 'bible-mindmap-saves';
 const OBSIDIAN_DIR_KEY = 'bible-mindmap-obsidian-dir';
 const SEED_KEY = 'bible-mindmap-seeded';
 
@@ -216,71 +219,24 @@ const SEED_FILES = [
   },
 ];
 
-function ensureDocRoot(tree) {
-  if (!tree.children) tree.children = [];
-  const exists = tree.children.find((c) => c.id === 'doc-root');
-  if (!exists) {
-    tree.children.unshift({
-      id: 'doc-root',
-      type: 'folder',
-      name: '✍️ 설교 문서 작성',
-      open: true,
-      children: [],
-    });
-  }
-}
-
+// 시드 파일을 포함한 초기 트리 로드 — 시드 로직은 SavePanel 전용
 function loadTree() {
-  let tree;
-  try {
-    tree = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTree();
-  } catch {
-    tree = defaultTree();
-  }
-  ensureDocRoot(tree);
+  const tree = loadTreeCore();
   const seeded = JSON.parse(localStorage.getItem(SEED_KEY) || '[]');
+  let mutated = false;
   for (const file of SEED_FILES) {
     if (!seeded.includes(file.id)) {
       if (!tree.children) tree.children = [];
       tree.children.push(JSON.parse(JSON.stringify(file)));
       seeded.push(file.id);
+      mutated = true;
     }
   }
-  localStorage.setItem(SEED_KEY, JSON.stringify(seeded));
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
+  if (mutated) {
+    localStorage.setItem(SEED_KEY, JSON.stringify(seeded));
+    saveTree(tree);
+  }
   return tree;
-}
-
-function defaultTree() {
-  return { id: 'root', name: '내 저장소', type: 'folder', children: [], open: true };
-}
-
-function saveTree(tree) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
-}
-
-function generateId() {
-  return 'f' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-}
-
-function findParent(tree, targetId) {
-  if (!tree.children) return null;
-  for (const child of tree.children) {
-    if (child.id === targetId) return tree;
-    const found = findParent(child, targetId);
-    if (found) return found;
-  }
-  return null;
-}
-
-function findNode(tree, id) {
-  if (tree.id === id) return tree;
-  if (!tree.children) return null;
-  for (const child of tree.children) {
-    const found = findNode(child, id);
-    if (found) return found;
-  }
-  return null;
 }
 
 function downloadJSON(data, filename) {
@@ -530,7 +486,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     if (!name) return;
     // doc-root는 설교 문서 전용 폴더이므로 마인드맵 저장 대상에서 제외
     const rawId = selectedId || 'root';
-    const parentId = rawId === 'doc-root' ? 'root' : rawId;
+    const parentId = rawId === DOC_ROOT_ID ? 'root' : rawId;
     const data = { nodes: JSON.parse(JSON.stringify(nodes)), edges: JSON.parse(JSON.stringify(edges)) };
     updateTree((t) => {
       const parent = findNode(t, parentId);

@@ -944,7 +944,7 @@ export default function App() {
             open={savePanelOpen}
             onToggle={() => setSavePanelOpen((v) => !v)}
             docSaveKey={docSaveKey}
-            onOpenDoc={(item) => { setOpenedDoc(item); setDocPanelOpen(true); }}
+            onOpenDoc={(item) => { setOpenedDoc({ ...item }); setDocPanelOpen(true); }}
           />
         </>
       )}
