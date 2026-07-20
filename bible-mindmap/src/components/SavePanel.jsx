@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
-const APP_NS       = 'parkminhyun0-bible-mindmap-app';
-const APP_TODAY_LS = 'bmm-app-today-v2';
-const APP_TOTAL_LS = 'bmm-app-total-v2';
+const APP_NS       = 'parkminhyun0-bible-mindmap';
+const APP_TODAY_LS = 'bmm-today-v2';
+const APP_TOTAL_LS = 'bmm-total-v2';
 
 function useAppVisitorCount() {
   const [todayCount, setTodayCount] = useState(null);
