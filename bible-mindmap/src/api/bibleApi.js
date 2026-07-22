@@ -97,3 +97,12 @@ export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd
   ]);
   return { krv, esv, original };
 }
+
+// 해당 장의 총 절 수를 반환 (KRV 기준, 캐시 재사용).
+export async function fetchVerseCount(bookId, chapter) {
+  const bookNum = BOLLS_BOOK_MAP[bookId];
+  if (!bookNum) return null;
+  const verses = await fetchChapter('KRV', bookNum, chapter);
+  if (!Array.isArray(verses) || !verses.length) return null;
+  return verses[verses.length - 1].verse;
+}

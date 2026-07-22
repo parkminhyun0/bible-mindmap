@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
-import { TRANSLATIONS, fetchAllTranslations } from '../api/bibleApi';
+import { TRANSLATIONS, fetchAllTranslations, fetchVerseCount } from '../api/bibleApi';
 
 const STEPS = { BOOK: 0, CHAPTER: 1, VERSE: 2, RESULT: 3 };
 
@@ -11,6 +11,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
   const [selectedChapter, setSelectedChapter] = useState(null);
   const [verseStart, setVerseStart] = useState(1);
   const [verseEnd, setVerseEnd] = useState(1);
+  const [maxVerses, setMaxVerses] = useState(null);   // 현재 장의 총 절 수
+  const [verseCountLoading, setVerseCountLoading] = useState(false);
   const [step, setStep] = useState(STEPS.BOOK);
   const [fetchedText, setFetchedText] = useState('');
   const [fetchedTranslations, setFetchedTranslations] = useState(null);
@@ -52,9 +54,18 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
     setSelectedChapter(ch);
     setVerseStart(1);
     setVerseEnd(1);
+    setMaxVerses(null);
     setStep(STEPS.VERSE);
     setFetchedText('');
     setError('');
+    // 해당 장의 총 절 수를 비동기로 조회 (캐시 활용 — 이미 fetch된 장은 즉시 반환)
+    if (selectedBook) {
+      setVerseCountLoading(true);
+      fetchVerseCount(selectedBook.id, ch)
+        .then(count => setMaxVerses(count))
+        .catch(() => {})
+        .finally(() => setVerseCountLoading(false));
+    }
   };
 
   const handleFetch = async () => {
@@ -111,6 +122,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
     setSelectedChapter(null);
     setVerseStart(1);
     setVerseEnd(1);
+    setMaxVerses(null);
     setStep(STEPS.BOOK);
     setFetchedText('');
     setFetchedTranslations(null);
@@ -269,16 +281,30 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {/* Step 3: Verse selection */}
       {step === STEPS.VERSE && (
         <>
-          <div style={{ fontSize: 12, color: '#64748b', fontWeight: 600 }}>
-            절 범위
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{ fontSize: 12, color: '#64748b', fontWeight: 600 }}>절 범위</span>
+            {verseCountLoading && (
+              <span style={{ fontSize: 10, color: '#94a3b8' }}>절 수 조회 중…</span>
+            )}
+            {maxVerses && !verseCountLoading && (
+              <span style={{
+                fontSize: 11, fontWeight: 700,
+                background: '#eff6ff', color: '#1d4ed8',
+                border: '1px solid #bfdbfe', borderRadius: 99,
+                padding: '1px 8px',
+              }}>
+                총 {maxVerses}절
+              </span>
+            )}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <input
               type="number"
               min={1}
+              max={maxVerses ?? undefined}
               value={verseStart}
               onChange={(e) => {
-                const v = Math.max(1, +e.target.value);
+                const v = Math.max(1, Math.min(+e.target.value, maxVerses ?? Infinity));
                 setVerseStart(v);
                 if (verseEnd < v) setVerseEnd(v);
               }}
@@ -288,11 +314,23 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
             <input
               type="number"
               min={verseStart}
+              max={maxVerses ?? undefined}
               value={verseEnd}
-              onChange={(e) => setVerseEnd(Math.max(verseStart, +e.target.value))}
+              onChange={(e) => setVerseEnd(Math.max(verseStart, Math.min(+e.target.value, maxVerses ?? Infinity)))}
               style={{ ...numInputStyle, width: 56 }}
             />
             <span style={{ fontSize: 12, color: '#94a3b8' }}>절</span>
+            {maxVerses && (
+              <button
+                onClick={() => { setVerseEnd(maxVerses); }}
+                title="마지막 절로 설정"
+                style={{
+                  fontSize: 10, padding: '3px 7px', border: '1px solid #bfdbfe',
+                  borderRadius: 4, background: '#eff6ff', color: '#1d4ed8',
+                  cursor: 'pointer', whiteSpace: 'nowrap', fontWeight: 600,
+                }}
+              >끝절</button>
+            )}
           </div>
 
           <button
