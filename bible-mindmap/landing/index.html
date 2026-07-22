@@ -462,12 +462,14 @@
     }
     .new-feat-chip-icon.purple { background: rgba(109,40,217,.25); }
     .new-feat-chip-icon.cyan   { background: rgba(8,145,178,.25); }
+    .new-feat-chip-icon.gold   { background: rgba(217,119,6,.25); }
     .new-feat-chip-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
     .new-feat-chip-label {
       font-size: .65rem; font-weight: 700; letter-spacing: .08em;
       text-transform: uppercase; color: #a78bfa;
     }
     .new-feat-chip-label.cyan { color: #67e8f9; }
+    .new-feat-chip-label.gold { color: #fbbf24; }
     .new-feat-chip-name { font-size: .85rem; font-weight: 600; color: var(--text); }
     .new-feat-chip-sub  { font-size: .72rem; color: var(--muted); }
 
@@ -638,6 +640,7 @@
     <span class="hero-pill"><span class="dot" style="background:#dc2626;"></span>설교 문서 작성 · 전용 저장소</span>
     <span class="hero-pill"><span class="dot" style="background:#6d28d9;"></span>본문 흐름 분석 · 절 구조 시각화</span>
     <span class="hero-pill"><span class="dot" style="background:#0891b2;"></span>구문 구조 분석 · 절 구조 · 트리</span>
+    <span class="hero-pill"><span class="dot" style="background:#d97706;"></span>원어 성경 다언어 검색 · 원문·영어·한글</span>
   </div>
 
   <!-- 신규 기능 하이라이트 -->
@@ -656,6 +659,14 @@
         <span class="new-feat-chip-label cyan">NEW</span>
         <span class="new-feat-chip-name">구문 구조 분석</span>
         <span class="new-feat-chip-sub">절 구조 (S·P·O·C) + 구문 트리 (NP·VP)</span>
+      </div>
+    </a>
+    <a href="#wordsearch" class="new-feat-chip">
+      <div class="new-feat-chip-icon gold">🔍</div>
+      <div class="new-feat-chip-text">
+        <span class="new-feat-chip-label gold">NEW</span>
+        <span class="new-feat-chip-name">원어 성경 다언어 검색</span>
+        <span class="new-feat-chip-sub">원문·영어·한글 3모드 · 용례 전체 검색</span>
       </div>
     </a>
   </div>
@@ -759,6 +770,18 @@
           <span class="feat-tag blue">NP·VP 구문 트리</span>
           <span class="feat-tag blue">히브리어·헬라어</span>
           <span class="feat-tag blue">다중 창 동시 비교</span>
+        </div>
+      </div>
+
+      <div class="feat-card amber fade-up" id="wordsearch" style="border-color:rgba(217,119,6,.25);">
+        <div class="feat-icon amber">🔍</div>
+        <h3>원어 성경 다언어 검색</h3>
+        <p>히브리어·헬라어 <strong>원문</strong>, 영어 <strong>글로스(Gloss)</strong>, 한글 <strong>KRV 본문</strong> 세 가지 모드로 성경 전체를 검색합니다. 검색 결과에서 해당 단어가 하이라이트된 원문·ESV·KRV 절이 동시에 제공되며, 단어형(형태소) 필터와 책별 분포 차트로 용례를 심층 분석할 수 있습니다.</p>
+        <div class="feat-tags">
+          <span class="feat-tag amber">원문 히브리어·헬라어</span>
+          <span class="feat-tag amber">영어 Gloss 검색</span>
+          <span class="feat-tag amber">KRV 한글 검색</span>
+          <span class="feat-tag amber">형태소 필터 · 책별 분포</span>
         </div>
       </div>
 
@@ -963,6 +986,29 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- 원어 성경 다언어 검색 -->
+    <div class="fade-up" style="margin-top:32px;background:rgba(217,119,6,.06);border:1px solid rgba(217,119,6,.22);border-radius:18px;padding:32px 28px;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:42px;height:42px;border-radius:12px;background:rgba(217,119,6,.2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🔍</div>
+        <div>
+          <div style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fbbf24;margin-bottom:2px;">NEW</div>
+          <h3 style="font-size:1.15rem;font-weight:700;color:var(--text);margin:0;">원어 성경 다언어 검색</h3>
+        </div>
+      </div>
+      <p style="font-size:.92rem;color:var(--muted);line-height:1.7;margin-bottom:22px;">히브리어·헬라어 원문, 영어 글로스(Gloss), 한글 KRV 세 가지 입력 모드로 성경 전체를 검색합니다. 검색된 단어가 하이라이트된 원문·ESV·KRV 본문이 동시에 제공되며, 형태소 필터 칩과 책별 분포 도넛 차트로 단어의 용례를 심층 분석할 수 있습니다.</p>
+      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(217,119,6,.2);margin-bottom:22px;">
+        <img src="images/wordsearch-demo.png" alt="원어 성경 다언어 검색 — אֱלֹהִים(엘로힘) 검색 예시" style="width:100%;display:block;">
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">원문 히브리어·헬라어</span>
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">영어 Gloss 검색</span>
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">KRV 한글 검색</span>
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">형태소 필터 칩</span>
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">책별 분포 도넛 차트</span>
+        <span style="font-size:.78rem;font-weight:700;color:#fbbf24;background:rgba(217,119,6,.15);border:1px solid rgba(217,119,6,.25);border-radius:99px;padding:3px 10px;">3,000건 고속 병렬 검색</span>
+      </div>
     </div>
   </div>
 </section>

@@ -319,6 +319,7 @@
       <li><a href="#docpanel">문서 작성 패널</a></li>
       <li><a href="#arcing">본문 흐름 분석</a></li>
       <li><a href="#syntax">구문 구조 분석</a></li>
+      <li><a href="#wordsearch">원어 성경 다언어 검색</a></li>
       <li><a href="#shortcuts">단축키</a></li>
       <li><a href="#sources">데이터 출처</a></li>
     </ol>
@@ -359,6 +360,11 @@
         <div class="card-icon">🔤</div>
         <h3>구문 구조 분석</h3>
         <p>단어를 S·P·O·C 열로 배치하는 <strong>[절 구조]</strong>와 NP·VP로 분기하는 <strong>[트리]</strong> 두 가지 뷰로 구약·신약 원어 문장 구조를 분석합니다. → <a href="#syntax" style="color:var(--green2);">자세히 보기</a></p>
+      </div>
+      <div class="card" style="background:var(--surface2);border:1px solid rgba(217,119,6,.3);">
+        <div class="card-icon">🔍</div>
+        <h3>원어 성경 다언어 검색</h3>
+        <p>히브리어·헬라어 원문, 영어 글로스, 한글 KRV 세 모드로 성경 전체 단어를 검색합니다. 형태소 필터와 책별 분포 차트로 용례를 분석할 수 있습니다. → <a href="#wordsearch" style="color:var(--green2);">자세히 보기</a></p>
       </div>
     </div>
     <div class="callout">
@@ -817,9 +823,62 @@
     </div>
   </section>
 
-  <!-- 12. 단축키 -->
-  <section class="guide-section" id="shortcuts">
+  <!-- 12. 원어 성경 다언어 검색 -->
+  <section class="guide-section" id="wordsearch">
     <span class="section-num">12</span>
+    <h2>원어 성경 다언어 검색</h2>
+    <p>오른쪽 사이드바의 <strong>🔍 원어 성경 다언어 검색</strong> 버튼을 클릭하면 전체화면 검색 팝업이 열립니다. 히브리어·헬라어 원문, 영어 글로스(Gloss), 한글 KRV 세 가지 입력 모드를 지원하며, 검색 결과를 원문·ESV·KRV 세 언어 탭으로 동시에 확인할 수 있습니다.</p>
+
+    <div style="border-radius:12px;overflow:hidden;border:1px solid var(--border);margin-bottom:28px;">
+      <img src="images/wordsearch-demo.png" alt="원어 성경 다언어 검색 — אֱלֹהִים(엘로힘) 검색 예시" style="width:100%;display:block;">
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 12px;">① 입력 모드 선택</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:20px;">팝업 상단의 세 탭으로 입력 언어를 선택합니다. 입력한 문자를 자동 감지하여 탭이 전환되기도 합니다.</p>
+    <div class="cards" style="margin-bottom:24px;">
+      <div class="card accent-purple">
+        <div class="card-icon">א</div>
+        <h3>원문 입력 (히·헬)</h3>
+        <p>히브리어 또는 헬라어 원문 글자를 입력합니다. 단어형(w)과 레마(l) 양쪽에서 일치 여부를 확인합니다.</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">Gloss</div>
+        <h3>영어 입력</h3>
+        <p>영어 글로스(Gloss) 필드로 검색합니다. <code>love</code>, <code>god</code> 등 영단어를 입력하면 해당 단어가 포함된 레마 전체를 찾아줍니다.</p>
+      </div>
+      <div class="card accent-green">
+        <div class="card-icon">한글</div>
+        <h3>한글 입력 (KRV)</h3>
+        <p>KRV 본문 전체를 스캔하여 한글 단어가 포함된 절을 검색합니다. 절 단위 결과로 제공됩니다.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 12px;">② 결과 탭 — 원문·영어·한글 동시 제공</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:20px;">검색이 완료되면 <strong>[원문]</strong> <strong>[영어]</strong> <strong>[한글]</strong> 탭에서 각각의 본문으로 용례를 확인할 수 있습니다. 해당 검색어는 각 절에 색상 하이라이트로 표시됩니다.</p>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 12px;">③ 형태소 필터 칩</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:20px;">결과 목록 상단의 칩(예: <em>명사·남성·복수·독립형 512</em>)을 클릭하면 해당 형태론 분류만 필터링됩니다. 칩 옆 숫자는 현재 책 필터 기준 실제 결과 수이며, 다시 클릭하면 필터가 해제됩니다.</p>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 12px;">④ 책별 분포 도넛 차트</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:24px;">오른쪽 패널의 도넛 차트는 검색어가 나타나는 성경 책의 분포를 보여줍니다. 차트 조각을 클릭하면 해당 책의 결과만 필터링됩니다.</p>
+
+    <div class="cards">
+      <div class="card accent-green">
+        <div class="card-icon">🔍</div>
+        <h3>사용 방법</h3>
+        <p>① 사이드바 <strong>🔍 원어 성경 다언어 검색</strong> 클릭 → ② 입력 모드 선택(원문·영어·한글) → ③ 검색어 입력 후 검색 → ④ 원문·영어·한글 탭으로 결과 확인 → ⑤ 형태소 칩·도넛 차트로 필터링</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">A−&nbsp;A+</div>
+        <h3>폰트 크기 조절</h3>
+        <p>팝업 오른쪽 상단의 <strong>A−</strong> / <strong>A+</strong> 버튼으로 결과 목록의 본문 크기를 10 ~ 50pt 범위에서 자유롭게 조절할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. 단축키 -->
+  <section class="guide-section" id="shortcuts">
+    <span class="section-num">13</span>
     <h2>단축키</h2>
     <table class="guide-table">
       <thead>
@@ -838,9 +897,9 @@
     </table>
   </section>
 
-  <!-- 13. 데이터 출처 -->
+  <!-- 14. 데이터 출처 -->
   <section class="guide-section" id="sources">
-    <span class="section-num">13</span>
+    <span class="section-num">14</span>
     <h2>데이터 출처</h2>
     <table class="guide-table">
       <thead>
