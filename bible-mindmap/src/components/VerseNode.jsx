@@ -4,6 +4,7 @@ import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
+import SyntaxPanel from './SyntaxPanel';
 
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
@@ -18,6 +19,7 @@ const TABS = [
   { id: 'krv',      label: '개역한글' },
   { id: 'esv',      label: 'ESV' },
   { id: 'original', label: '원어' },
+  { id: 'syntax',   label: '구문' },
 ];
 
 export default function VerseNode({ id, data, selected }) {
@@ -111,14 +113,17 @@ export default function VerseNode({ id, data, selected }) {
 
   // ── Lexicon (원어 탭 전용) ─────────────────────────────────────────
   const [lexEntries, setLexEntries] = useState([]);
+  const [lexLoading, setLexLoading] = useState(false);
   const [popups, setPopups] = useState([]);
 
   useEffect(() => {
-    if (activeTab !== 'original' || !data.bookId) return;
+    if ((activeTab !== 'original' && activeTab !== 'syntax') || !data.bookId) return;
     let cancelled = false;
+    setLexLoading(true);
     loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd)
       .then((entries) => { if (!cancelled) setLexEntries(entries || []); })
-      .catch(() => { if (!cancelled) setLexEntries([]); });
+      .catch(() => { if (!cancelled) setLexEntries([]); })
+      .finally(() => { if (!cancelled) setLexLoading(false); });
     return () => { cancelled = true; };
   }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd]);
 
@@ -239,6 +244,10 @@ export default function VerseNode({ id, data, selected }) {
       {/* Content */}
       {isLoading ? (
         <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
+      ) : activeTab === 'syntax' ? (
+        lexLoading
+          ? <div style={{ color: '#94a3b8', fontSize: 11 }}>불러오는 중…</div>
+          : <SyntaxPanel entries={lexEntries} bookId={data.bookId} />
       ) : activeTab === 'original' && selected && lexEntries.length > 0 ? (
         <div style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}>
           {renderOriginalWithLexicon()}

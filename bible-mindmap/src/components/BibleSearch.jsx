@@ -4,7 +4,7 @@ import { TRANSLATIONS, fetchAllTranslations } from '../api/bibleApi';
 
 const STEPS = { BOOK: 0, CHAPTER: 1, VERSE: 2, RESULT: 3 };
 
-export default function BibleSearch({ onSelect }) {
+export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
   const [testament, setTestament] = useState('ot');
   const [translation, setTranslation] = useState('krv');
   const [selectedBook, setSelectedBook] = useState(null);
@@ -341,10 +341,42 @@ export default function BibleSearch({ onSelect }) {
             {fetchedText}
           </div>
 
-          <div style={{ display: 'flex', gap: 4 }}>
-            <button onClick={handleAddToMap} style={addBtnStyle}>
-              + 캔버스에 추가
-            </button>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            <div style={{ display: 'flex', gap: 4 }}>
+              <button onClick={handleAddToMap} style={addBtnStyle}>
+                + 구절 추가
+              </button>
+              {onAddArcing && selectedBook && (
+                <button
+                  onClick={() => {
+                    const range = verseStart === verseEnd ? `${verseStart}절` : `${verseStart}-${verseEnd}절`;
+                    onAddArcing({
+                      bookId: selectedBook.id,
+                      chapter: selectedChapter,
+                      verseStart,
+                      verseEnd,
+                      title: `${selectedBook.ko} ${selectedChapter}:${range}`,
+                    });
+                  }}
+                  style={{ ...addBtnStyle, background: '#6d28d9', flex: 1, fontSize: 11.5, whiteSpace: 'nowrap', padding: '8px 6px' }}
+                >
+                  📖 본문 흐름 분석
+                </button>
+              )}
+              {onOpenSyntax && selectedBook && (
+                <button
+                  onClick={() => onOpenSyntax({
+                    bookId: selectedBook.id,
+                    chapter: selectedChapter,
+                    verseStart,
+                    verseEnd,
+                  })}
+                  style={{ ...addBtnStyle, background: '#065f46', flex: 1, whiteSpace: 'nowrap', padding: '8px 6px' }}
+                >
+                  🔤 구문 분석
+                </button>
+              )}
+            </div>
             <button onClick={() => setStep(STEPS.VERSE)} style={backBtnStyle}>
               ← 다시
             </button>

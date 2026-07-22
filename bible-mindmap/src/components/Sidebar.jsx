@@ -6,7 +6,7 @@ import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
 import { getBibleTags } from '../data/bibleReferences';
 
-export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
+export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax }) {
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
   const [showManual, setShowManual] = useState(false);
@@ -106,6 +106,20 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
     }
   };
 
+  const handleAddArcing = ({ bookId, chapter, verseStart, verseEnd, title }) => {
+    onAddNode({
+      type: 'arcing',
+      data: {
+        title: title || `${bookId} ${chapter}:${verseStart}-${verseEnd}`,
+        color: '#6d28d9',
+        bookId,
+        chapter,
+        verseStart,
+        verseEnd,
+      },
+    });
+  };
+
   const handleBibleSelect = ({ reference: ref, text: txt, color: c, translationId, bookId, chapter, verseStart, verseEnd, translations, activeTab }) => {
     const structuredExtra = bookId
       ? {
@@ -192,7 +206,11 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
                 <button onClick={() => setVerseMode('manual')} style={{ ...modeTabStyle, background: verseMode === 'manual' ? '#6366f1' : '#e2e8f0', color: verseMode === 'manual' ? '#fff' : '#64748b' }}>✏️ 직접입력</button>
               </div>
               {verseMode === 'search' ? (
-                <BibleSearch onSelect={(sel) => { handleBibleSelect(sel); onMobileClose(); }} />
+                <BibleSearch
+                  onSelect={(sel) => { handleBibleSelect(sel); onMobileClose(); }}
+                  onAddArcing={(p) => { handleAddArcing(p); onMobileClose(); }}
+                  onOpenSyntax={(p) => { onOpenSyntax?.(p); onMobileClose(); }}
+                />
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <input placeholder="구절 참조 (예: 창세기 1:1)" value={reference} onChange={(e) => setReference(e.target.value)} style={inputStyle} />
@@ -497,7 +515,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose }) {
             </div>
 
             {verseMode === 'search' ? (
-              <BibleSearch onSelect={handleBibleSelect} />
+              <BibleSearch onSelect={handleBibleSelect} onAddArcing={handleAddArcing} onOpenSyntax={onOpenSyntax} />
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                 <input placeholder="구절 참조 (예: 창세기 1:1)" value={reference} onChange={(e) => setReference(e.target.value)} style={inputStyle} />

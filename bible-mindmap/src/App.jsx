@@ -18,11 +18,14 @@ import TopicNode from './components/TopicNode';
 import PersonNode from './components/PersonNode';
 import PlaceNode from './components/PlaceNode';
 import PeriodNode from './components/PeriodNode';
+import ArcingNode from './components/ArcingNode';
 import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdge';
 import Sidebar from './components/Sidebar';
 import NodeEditor from './components/NodeEditor';
 import SavePanel from './components/SavePanel';
 import DocPanel from './components/DocPanel';
+import ArcingPanel from './components/ArcingPanel';
+import SyntaxPanel from './components/SyntaxPanel';
 import CitationSuggest from './components/CitationSuggest';
 import useHistory from './hooks/useHistory';
 import useMobile from './hooks/useMobile';
@@ -78,7 +81,7 @@ function saveToStorage(nodes, edges) {
   }
 }
 
-const nodeTypes = { verse: VerseNode, note: NoteNode, topic: TopicNode, person: PersonNode, place: PlaceNode, period: PeriodNode };
+const nodeTypes = { verse: VerseNode, note: NoteNode, topic: TopicNode, person: PersonNode, place: PlaceNode, period: PeriodNode, arcing: ArcingNode };
 const edgeTypes = {
   citation: CustomEdge,
   parallel: CustomEdge,
@@ -212,6 +215,10 @@ export default function App() {
   const [openedDoc, setOpenedDoc] = useState(null);
   const [showEdgeOptions, setShowEdgeOptions] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [arcingPanels, setArcingPanels] = useState([]); // 다중 절 구조 분석 창
+  const arcingIdRef = useRef(0);
+  const [syntaxPanels, setSyntaxPanels] = useState([]); // 다중 구문 분석 창
+  const syntaxIdRef = useRef(0);
   const idCounter = useRef(100);
   const reactFlowRef = useRef(null);
 
@@ -629,12 +636,19 @@ export default function App() {
   }, [undo, redo]);
 
   return (
-    <CanvasContext.Provider value={{ onAddVerse: handleAddCrossRef }}>
+    <CanvasContext.Provider value={{ onAddVerse: handleAddCrossRef, onOpenArcing: (passage) => {
+      const id = ++arcingIdRef.current;
+      setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
+    } }}>
     <div style={{ display: 'flex', height: '100vh', fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
       <Sidebar
         onAddNode={handleAddNode}
         mobileOpen={mobileSidebarOpen}
         onMobileClose={() => setMobileSidebarOpen(false)}
+        onOpenSyntax={(p) => {
+          const id = ++syntaxIdRef.current;
+          setSyntaxPanels(prev => [...prev, { id, passage: p }]);
+        }}
       />
 
       <div style={{ flex: 1, position: 'relative' }}>
@@ -974,6 +988,23 @@ export default function App() {
           />
         </>
       )}
+
+      {arcingPanels.map((panel, idx) => (
+        <ArcingPanel
+          key={panel.id}
+          passage={panel.passage}
+          panelIndex={idx}
+          onClose={() => setArcingPanels(prev => prev.filter(p => p.id !== panel.id))}
+        />
+      ))}
+      {syntaxPanels.map((panel, idx) => (
+        <SyntaxPanel
+          key={panel.id}
+          passage={panel.passage}
+          panelIndex={idx}
+          onClose={() => setSyntaxPanels(prev => prev.filter(p => p.id !== panel.id))}
+        />
+      ))}
 
       {/* 모바일 좌우 고정 탭 */}
       {isMobile && (

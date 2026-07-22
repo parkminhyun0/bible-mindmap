@@ -218,6 +218,121 @@ const SEED_FILES = [
       ],
     },
   },
+  // ── 룻기 1장 — 절 관계 다이어그램 (Arcing) ──────────────────────────────
+  {
+    id: 'seed-ruth1-arcing',
+    name: '룻기 1장 — 절 관계 다이어그램 (Arcing)',
+    type: 'file',
+    savedAt: new Date().toISOString(),
+    data: {
+      nodes: [
+        // 단일 Arcing 노드로 전체 장 표시
+        { id: 'rt1-arc', type: 'arcing', position: { x: 60, y: 40 },
+          data: {
+            title: '룻기 1장 — 나오미의 귀환',
+            color: '#6d28d9',
+            bookId: 'Ruth',
+            chapter: 1,
+            verseStart: 1,
+            verseEnd: 22,
+          } },
+      ],
+      edges: [],
+    },
+  },
+  // ── (구버전) 룻기 1장 — 구문 분석 테스트 캔버스 (숨김) ─────────────────
+  {
+    id: 'seed-ruth1-syntax-hidden',
+    name: '(숨김) 룻기 1장 — 절별 구문 분석',
+    type: 'file',
+    savedAt: new Date().toISOString(),
+    data: {
+      nodes: [
+        // ── 제목 ──
+        { id: 'rt1-title', type: 'topic', position: { x: 400, y: 20 },
+          data: { title: '룻기 1장 — 나오미의 귀환', keywords: ['룻', '나오미', '헤세드', '귀환', '고엘'] } },
+
+        // ── 장면 레이블 ──
+        { id: 'rt1-sc1', type: 'topic', position: { x: 50, y: 120 },
+          data: { title: '▶ 장면 1 — 시련 (1-7절)', keywords: ['기근', '이주', '모압', '죽음'] } },
+        { id: 'rt1-sc2', type: 'topic', position: { x: 400, y: 120 },
+          data: { title: '▶ 장면 2 — 나오미의 만류 (8-15절)', keywords: ['나오미', '오르바', '룻', '귀향 권고'] } },
+        { id: 'rt1-sc3', type: 'topic', position: { x: 750, y: 120 },
+          data: { title: '▶ 장면 3 — 룻의 선언과 귀환 (16-22절)', keywords: ['룻의 선언', '헤세드', '마라', '보리 추수'] } },
+
+        // ── 구문 안내 노트 ──
+        { id: 'rt1-guide', type: 'note', position: { x: -290, y: 200 },
+          data: { title: '📌 구문 탭 사용법', text: '각 절 노드 클릭 → "구문" 탭 선택\n원어 문법 구조가 색상으로 표시됩니다.\n\n동사(보라) — 이야기의 주동사\n접속사(회색) — 절 연결\n\n히브리어는 격 표시가 없으므로\n주어·목적어는 문맥으로 판단합니다.' } },
+
+        // ── 장면 1: 1-7절 (x=50) ──
+        { id: 'rt1-v1',  type: 'verse', position: { x: 50, y: 200  }, data: { reference: '룻기 1:1',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 1,  verseEnd: 1,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v2',  type: 'verse', position: { x: 50, y: 360  }, data: { reference: '룻기 1:2',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 2,  verseEnd: 2,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v3',  type: 'verse', position: { x: 50, y: 520  }, data: { reference: '룻기 1:3',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 3,  verseEnd: 3,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v4',  type: 'verse', position: { x: 50, y: 680  }, data: { reference: '룻기 1:4',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 4,  verseEnd: 4,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v5',  type: 'verse', position: { x: 50, y: 840  }, data: { reference: '룻기 1:5',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 5,  verseEnd: 5,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v6',  type: 'verse', position: { x: 50, y: 1000 }, data: { reference: '룻기 1:6',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 6,  verseEnd: 6,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v7',  type: 'verse', position: { x: 50, y: 1160 }, data: { reference: '룻기 1:7',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 7,  verseEnd: 7,  translations: {}, activeTab: 'krv' } },
+
+        // ── 장면 2: 8-15절 (x=400) ──
+        { id: 'rt1-v8',  type: 'verse', position: { x: 400, y: 200  }, data: { reference: '룻기 1:8',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 8,  verseEnd: 8,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v9',  type: 'verse', position: { x: 400, y: 360  }, data: { reference: '룻기 1:9',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 9,  verseEnd: 9,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v10', type: 'verse', position: { x: 400, y: 520  }, data: { reference: '룻기 1:10', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 10, verseEnd: 10, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v11', type: 'verse', position: { x: 400, y: 680  }, data: { reference: '룻기 1:11', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 11, verseEnd: 11, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v12', type: 'verse', position: { x: 400, y: 840  }, data: { reference: '룻기 1:12', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 12, verseEnd: 12, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v13', type: 'verse', position: { x: 400, y: 1000 }, data: { reference: '룻기 1:13', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 13, verseEnd: 13, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v14', type: 'verse', position: { x: 400, y: 1160 }, data: { reference: '룻기 1:14', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 14, verseEnd: 14, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v15', type: 'verse', position: { x: 400, y: 1320 }, data: { reference: '룻기 1:15', text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 15, verseEnd: 15, translations: {}, activeTab: 'krv' } },
+
+        // ── 장면 3: 16-22절 (x=750) ──
+        { id: 'rt1-v16', type: 'verse', position: { x: 750, y: 200  }, data: { reference: '룻기 1:16', text: '', color: '#ef4444', bookId: 'Ruth', chapter: 1, verseStart: 16, verseEnd: 16, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v17', type: 'verse', position: { x: 750, y: 360  }, data: { reference: '룻기 1:17', text: '', color: '#ef4444', bookId: 'Ruth', chapter: 1, verseStart: 17, verseEnd: 17, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v18', type: 'verse', position: { x: 750, y: 520  }, data: { reference: '룻기 1:18', text: '', color: '#10b981', bookId: 'Ruth', chapter: 1, verseStart: 18, verseEnd: 18, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v19', type: 'verse', position: { x: 750, y: 680  }, data: { reference: '룻기 1:19', text: '', color: '#10b981', bookId: 'Ruth', chapter: 1, verseStart: 19, verseEnd: 19, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v20', type: 'verse', position: { x: 750, y: 840  }, data: { reference: '룻기 1:20', text: '', color: '#10b981', bookId: 'Ruth', chapter: 1, verseStart: 20, verseEnd: 20, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v21', type: 'verse', position: { x: 750, y: 1000 }, data: { reference: '룻기 1:21', text: '', color: '#10b981', bookId: 'Ruth', chapter: 1, verseStart: 21, verseEnd: 21, translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v22', type: 'verse', position: { x: 750, y: 1160 }, data: { reference: '룻기 1:22', text: '', color: '#10b981', bookId: 'Ruth', chapter: 1, verseStart: 22, verseEnd: 22, translations: {}, activeTab: 'krv' } },
+
+        // ── 핵심 노트 ──
+        { id: 'rt1-note-decl', type: 'note', position: { x: 1110, y: 200 },
+          data: { title: '❤️ 룻의 선언 — 헤세드의 언어 (1:16-17)', text: '당신이 가는 곳에 나도 가고\n당신이 머무는 곳에 나도 머물겠습니다\n당신의 백성이 내 백성이고\n당신의 하나님이 내 하나님입니다\n\n히브리어 원문은 점층적 병행 구조(ABA\').\n이방인 룻의 언약 편입을 선언하는 장면으로\n헤세드(חֶסֶד, 언약적 사랑)의 핵심 표현입니다.' } },
+        { id: 'rt1-note-mara', type: 'note', position: { x: 1110, y: 840 },
+          data: { title: '나오미 → 마라 (쓴 것)', text: '나오미(נָעֳמִי) = "기쁨·달콤함"\n마라(מָרָא) = "쓴 것"\n\n이름 변경은 정체성의 재정의.\n그러나 서술자는 계속 "나오미"라 부름 —\n저자는 독자에게 그녀의 이야기가\n아직 끝나지 않았음을 암시합니다.' } },
+      ],
+      edges: [
+        // ── 서사 흐름 (내러티브 순서) ──
+        { id: 'rt1-e-1-2',   source: 'rt1-v1',  target: 'rt1-v2',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-2-3',   source: 'rt1-v2',  target: 'rt1-v3',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-3-4',   source: 'rt1-v3',  target: 'rt1-v4',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-4-5',   source: 'rt1-v4',  target: 'rt1-v5',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-5-6',   source: 'rt1-v5',  target: 'rt1-v6',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-6-7',   source: 'rt1-v6',  target: 'rt1-v7',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-7-8',   source: 'rt1-v7',  target: 'rt1-v8',  type: 'relation', label: '장면 2→' },
+        { id: 'rt1-e-8-9',   source: 'rt1-v8',  target: 'rt1-v9',  type: 'relation', label: '↓' },
+        { id: 'rt1-e-9-10',  source: 'rt1-v9',  target: 'rt1-v10', type: 'relation', label: '↓' },
+        { id: 'rt1-e-10-11', source: 'rt1-v10', target: 'rt1-v11', type: 'relation', label: '↓' },
+        { id: 'rt1-e-11-12', source: 'rt1-v11', target: 'rt1-v12', type: 'relation', label: '↓' },
+        { id: 'rt1-e-12-13', source: 'rt1-v12', target: 'rt1-v13', type: 'relation', label: '↓' },
+        { id: 'rt1-e-13-14', source: 'rt1-v13', target: 'rt1-v14', type: 'relation', label: '↓' },
+        { id: 'rt1-e-14-15', source: 'rt1-v14', target: 'rt1-v15', type: 'relation', label: '↓' },
+        { id: 'rt1-e-15-16', source: 'rt1-v15', target: 'rt1-v16', type: 'relation', label: '장면 3→' },
+        { id: 'rt1-e-16-17', source: 'rt1-v16', target: 'rt1-v17', type: 'relation', label: '↓' },
+        { id: 'rt1-e-17-18', source: 'rt1-v17', target: 'rt1-v18', type: 'relation', label: '↓' },
+        { id: 'rt1-e-18-19', source: 'rt1-v18', target: 'rt1-v19', type: 'relation', label: '↓' },
+        { id: 'rt1-e-19-20', source: 'rt1-v19', target: 'rt1-v20', type: 'relation', label: '↓' },
+        { id: 'rt1-e-20-21', source: 'rt1-v20', target: 'rt1-v21', type: 'relation', label: '↓' },
+        { id: 'rt1-e-21-22', source: 'rt1-v21', target: 'rt1-v22', type: 'relation', label: '↓' },
+        // ── 핵심 노트 연결 ──
+        { id: 'rt1-e-decl-16',  source: 'rt1-v16', target: 'rt1-note-decl', type: 'topic' },
+        { id: 'rt1-e-decl-17',  source: 'rt1-v17', target: 'rt1-note-decl', type: 'topic' },
+        { id: 'rt1-e-mara-20',  source: 'rt1-v20', target: 'rt1-note-mara', type: 'topic' },
+        { id: 'rt1-e-mara-21',  source: 'rt1-v21', target: 'rt1-note-mara', type: 'topic' },
+        // ── 장면 제목 연결 ──
+        { id: 'rt1-e-sc1-v1',  source: 'rt1-sc1', target: 'rt1-v1',  type: 'topic' },
+        { id: 'rt1-e-sc2-v8',  source: 'rt1-sc2', target: 'rt1-v8',  type: 'topic' },
+        { id: 'rt1-e-sc3-v16', source: 'rt1-sc3', target: 'rt1-v16', type: 'topic' },
+      ],
+    },
+  },
 ];
 
 // 시드 파일을 포함한 초기 트리 로드 — 시드 로직은 SavePanel 전용

@@ -322,7 +322,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
             {nodeType === 'verse' && editData?.bookId && (
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
                 <span style={{ fontSize: 10, color: '#94a3b8' }}>역본:</span>
-                {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }].map((t) => {
+                {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }, { id: 'syntax', label: '구문' }].map((t) => {
                   const isSel = (editData?.activeTab || 'krv') === t.id;
                   return (
                     <button key={t.id}
@@ -596,7 +596,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
       {hasNode && editData?.bookId && (
         <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
           <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>편집 역본:</span>
-          {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }].map((t) => {
+          {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }, { id: 'syntax', label: '구문' }].map((t) => {
             const isActiveTab = (editData?.activeTab || 'krv') === t.id;
             return (
               <button key={t.id}

@@ -317,6 +317,8 @@
       <li><a href="#parallel">병렬 보기 & 단어 페어링</a></li>
       <li><a href="#save">저장 & 불러오기</a></li>
       <li><a href="#docpanel">문서 작성 패널</a></li>
+      <li><a href="#arcing">본문 흐름 분석</a></li>
+      <li><a href="#syntax">구문 구조 분석</a></li>
       <li><a href="#shortcuts">단축키</a></li>
       <li><a href="#sources">데이터 출처</a></li>
     </ol>
@@ -711,9 +713,103 @@
     </div>
   </section>
 
-  <!-- 10. 단축키 -->
-  <section class="guide-section" id="shortcuts">
+  <!-- 10. 본문 흐름 분석 -->
+  <section class="guide-section" id="arcing">
     <span class="section-num">10</span>
+    <h2>본문 흐름 분석</h2>
+    <p>구절 노드를 선택한 뒤 <strong>📖 본문 흐름 분석</strong> 버튼을 클릭하면 열립니다. 각 절의 <strong>주동사(★)</strong>를 중심으로 절들이 어떻게 이어지는지를 한눈에 보여주는 패널입니다.</p>
+
+    <div class="callout blue" style="margin-bottom:20px;">
+      <strong>★ 주동사란?</strong> 히브리어에서는 <em>바이-이크톨(Wayyiqtol)</em> 형태의 동사, 헬라어에서는 <em>직설법·명령법·가정법</em> 동사를 주동사로 분류합니다. 문장의 뼈대를 이루는 핵심 동사로, 이야기의 흐름을 이끌어 가는 역할을 합니다.
+    </div>
+
+    <div class="callout amber" style="margin-bottom:28px;">
+      <strong>원어가 보이지 않는 경우:</strong> 해당 절에 원어 데이터(히브리어/헬라어)가 아직 제공되지 않는 경우, 한글 번역본(KRV)만 표시됩니다. 이것은 데이터 범위의 한계이며 앱 오류가 아닙니다.
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">구약 — 히브리어 본문 흐름</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">창세기 1:1–10 예시. Wayyiqtol 주동사(★)를 중심으로 선행절·후행절이 계층적으로 배열됩니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/arcing-ot.png" alt="본문 흐름 분석 — 구약(히브리어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">신약 — 헬라어 본문 흐름</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">마가복음 1:1–10 예시. 직설법·명령법·가정법 주동사(★)를 기준으로 종속절의 역할(이유·결과·시간·상황 등)이 표시됩니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/arcing-nt.png" alt="본문 흐름 분석 — 신약(헬라어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <div class="cards">
+      <div class="card accent-green">
+        <div class="card-icon">📖</div>
+        <h3>사용 방법</h3>
+        <p>검색창에서 절 범위를 선택하고 <strong>📖 본문 흐름 분석</strong> 버튼을 클릭합니다. 여러 창을 동시에 열어 구약·신약을 나란히 비교할 수 있습니다.</p>
+      </div>
+      <div class="card accent-purple">
+        <div class="card-icon">A±</div>
+        <h3>글자 크기 조절</h3>
+        <p>패널 상단 <strong>A−−/A−/숫자/A+/A++</strong> 버튼으로 표시 크기를 조절합니다. 범례·설명 텍스트도 함께 크기가 바뀝니다.</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">★</div>
+        <h3>절 역할 범례</h3>
+        <p><strong>★</strong> 주동사, <strong>→ 이유</strong>, <strong>→ 결과</strong>, <strong>→ 시간</strong>, <strong>→ 상황</strong>, <strong>→ 발화</strong> 등의 역할 태그로 절 관계를 파악합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 구문 구조 분석 -->
+  <section class="guide-section" id="syntax">
+    <span class="section-num">11</span>
+    <h2>구문 구조 분석</h2>
+    <p>구절 노드를 선택하고 <strong>🔤 구문 분석</strong> 버튼을 클릭하면 열립니다. <strong>[절 구조]</strong>와 <strong>[트리]</strong> 두 탭으로 구성되며, 각 단어의 문법적 역할을 시각화합니다.</p>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">① 절 구조 탭 — 구약(히브리어)</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">창세기 1:1–10 예시. 각 절의 단어들을 주어(S)·서술어(P)·목적어(O)·보어(C) 열로 정렬해 문장 구조를 보여줍니다. 히브리어는 오른쪽에서 왼쪽으로 읽습니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/syntax-flow-ot.png" alt="절 구조 탭 — 구약(히브리어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">① 절 구조 탭 — 신약(헬라어)</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">마가복음 1:1–10 예시. 헬라어는 왼쪽에서 오른쪽으로 읽으며, 동일한 S·P·O·C 열 구조로 표시됩니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/syntax-flow-nt.png" alt="절 구조 탭 — 신약(헬라어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">② 트리 탭 — 구약(히브리어)</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">창세기 1:1–10 예시. 문장(S)을 명사구(NP)·동사구(VP)로 분기하는 트리 구조입니다. 히브리어 단어가 오른쪽에서 왼쪽 방향으로 표시됩니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/syntax-tree-ot.png" alt="트리 탭 — 구약(히브리어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <h3 style="font-size:1rem;font-weight:700;color:var(--fg);margin:0 0 16px;">② 트리 탭 — 신약(헬라어)</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:16px;">마가복음 1:1–10 예시. 헬라어 단어가 왼쪽에서 오른쪽 방향으로 표시되며, NP·VP 분기 구조가 동일하게 적용됩니다.</p>
+    <div style="margin-bottom:32px;border-radius:12px;overflow:hidden;border:1px solid var(--border);">
+      <img src="images/syntax-tree-nt.png" alt="트리 탭 — 신약(헬라어) 예시" style="width:100%;display:block;">
+    </div>
+
+    <div class="cards">
+      <div class="card accent-green">
+        <div class="card-icon">🔤</div>
+        <h3>사용 방법</h3>
+        <p>검색창에서 절 범위를 선택하고 <strong>🔤 구문 분석</strong> 버튼을 클릭합니다. 여러 창을 동시에 열어 구약·신약 구문을 나란히 비교할 수 있습니다.</p>
+      </div>
+      <div class="card accent-blue">
+        <div class="card-icon">S·P·O·C</div>
+        <h3>[절 구조] 탭</h3>
+        <p>각 단어를 <strong>S(주어)·P(서술어)·O(목적어)·C(보어)</strong> 열로 배치해 문장의 뼈대를 한눈에 파악합니다. 색상으로 품사를 구분합니다.</p>
+      </div>
+      <div class="card accent-purple">
+        <div class="card-icon">🌲</div>
+        <h3>[트리] 탭</h3>
+        <p>문장(S)을 명사구(NP)·동사구(VP)로 분기하는 <strong>구문 트리</strong>를 SVG로 렌더링합니다. NP 아래 관사(Det)·명사(N) 등 세부 구조도 확인할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. 단축키 -->
+  <section class="guide-section" id="shortcuts">
+    <span class="section-num">12</span>
     <h2>단축키</h2>
     <table class="guide-table">
       <thead>
@@ -732,9 +828,9 @@
     </table>
   </section>
 
-  <!-- 11. 데이터 출처 -->
+  <!-- 13. 데이터 출처 -->
   <section class="guide-section" id="sources">
-    <span class="section-num">11</span>
+    <span class="section-num">13</span>
     <h2>데이터 출처</h2>
     <table class="guide-table">
       <thead>

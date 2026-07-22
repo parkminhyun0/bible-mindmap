@@ -358,6 +358,120 @@ const SECTIONS = [
     ],
   },
   {
+    id: 'arcing',
+    icon: '📖',
+    title: '본문 흐름 분석',
+    content: [
+      {
+        type: 'desc',
+        text: '구절 노드를 선택하고 📖 본문 흐름 분석 버튼을 클릭하면 열립니다. 각 절의 주동사(★)를 중심으로 절들이 어떻게 이어지는지를 한눈에 보여주는 패널입니다.',
+      },
+      {
+        type: 'list',
+        title: '★ 주동사란?',
+        items: [
+          '히브리어(구약): 바이-이크톨(Wayyiqtol) 형태의 동사 — 서사 이야기를 이끌어 가는 핵심 동사',
+          '헬라어(신약): 직설법·명령법·가정법 동사 — 문장의 뼈대를 이루는 주동사',
+          '원어 데이터가 없는 절은 한글 번역본(KRV)만 표시됩니다 (오류가 아닙니다)',
+        ],
+      },
+      {
+        type: 'image',
+        src: '/images/arcing-ot.png',
+        alt: '본문 흐름 분석 — 구약(히브리어) 창세기 1:1-10 예시',
+        caption: '▲ 구약(히브리어) — 창세기 1:1–10 예시. Wayyiqtol 주동사(★)를 중심으로 선행절·후행절이 배열됩니다.',
+      },
+      {
+        type: 'image',
+        src: '/images/arcing-nt.png',
+        alt: '본문 흐름 분석 — 신약(헬라어) 마가복음 1:1-10 예시',
+        caption: '▲ 신약(헬라어) — 마가복음 1:1–10 예시. 직설법·명령법·가정법 주동사(★)와 종속절 역할 태그.',
+      },
+      {
+        type: 'step',
+        title: '사용 방법',
+        steps: [
+          '왼쪽 패널에서 성경책·장·절 범위 선택',
+          '📖 본문 흐름 분석 버튼 클릭',
+          '패널 상단 A−−/A−/A+/A++ 버튼으로 글자 크기 조절',
+          '여러 창을 동시에 열어 구약·신약 나란히 비교 가능',
+        ],
+      },
+      {
+        type: 'tip',
+        text: '범례: ★ = 주동사, → 이유 / 결과 / 시간 / 상황 / 발화 = 종속절 역할. 절 관계를 파악하며 본문 흐름을 읽어 보세요.',
+      },
+    ],
+  },
+  {
+    id: 'syntax',
+    icon: '🔤',
+    title: '구문 구조 분석',
+    content: [
+      {
+        type: 'desc',
+        text: '구절 노드를 선택하고 🔤 구문 분석 버튼을 클릭하면 열립니다. [절 구조]와 [트리] 두 탭으로 각 단어의 문법적 역할을 시각화합니다.',
+      },
+      {
+        type: 'list',
+        title: '[절 구조] 탭 — S·P·O·C 열 배치',
+        items: [
+          'S(주어) · P(서술어) · O(목적어) · C(보어) 열로 단어를 배치해 문장 구조 파악',
+          '히브리어(구약)는 오른쪽→왼쪽, 헬라어(신약)는 왼쪽→오른쪽으로 표시',
+          '색상으로 품사(동사·명사·대명사 등) 구분',
+        ],
+      },
+      {
+        type: 'image',
+        src: '/images/syntax-flow-ot.png',
+        alt: '절 구조 탭 — 구약(히브리어) 창세기 1:1-10 예시',
+        caption: '▲ [절 구조] 구약(히브리어) — 창세기 1:1–10 예시.',
+      },
+      {
+        type: 'image',
+        src: '/images/syntax-flow-nt.png',
+        alt: '절 구조 탭 — 신약(헬라어) 마가복음 1:1-10 예시',
+        caption: '▲ [절 구조] 신약(헬라어) — 마가복음 1:1–10 예시.',
+      },
+      {
+        type: 'list',
+        title: '[트리] 탭 — 구문 트리',
+        items: [
+          '문장(S)을 명사구(NP)·동사구(VP)로 분기하는 트리 구조',
+          'NP 아래 관사(Det)·명사(N), VP 아래 동사(V)·목적어 등 세부 구조 확인',
+          '히브리어·헬라어 원어 단어가 각 언어 방향에 맞게 표시',
+        ],
+      },
+      {
+        type: 'image',
+        src: '/images/syntax-tree-ot.png',
+        alt: '트리 탭 — 구약(히브리어) 창세기 1:1-10 예시',
+        caption: '▲ [트리] 구약(히브리어) — 창세기 1:1–10 예시.',
+      },
+      {
+        type: 'image',
+        src: '/images/syntax-tree-nt.png',
+        alt: '트리 탭 — 신약(헬라어) 마가복음 1:1-10 예시',
+        caption: '▲ [트리] 신약(헬라어) — 마가복음 1:1–10 예시.',
+      },
+      {
+        type: 'step',
+        title: '사용 방법',
+        steps: [
+          '왼쪽 패널에서 성경책·장·절 범위 선택',
+          '🔤 구문 분석 버튼 클릭',
+          '[절 구조] / [트리] 탭 전환으로 두 가지 뷰 확인',
+          '히브리어/헬라어 폰트 크기는 패널 상단 조절 버튼 사용',
+          '여러 창을 동시에 열어 구약·신약 나란히 비교 가능',
+        ],
+      },
+      {
+        type: 'tip',
+        text: '원어 데이터가 제공되는 절은 원어 단어가 표시되고, 데이터가 없는 절은 한글 번역본(KRV)만 나타납니다.',
+      },
+    ],
+  },
+  {
     id: 'obsidian',
     icon: '🔮',
     title: 'Obsidian 연동',
@@ -498,6 +612,24 @@ function renderContent(block, idx) {
               ))}
             </tbody>
           </table>
+        </div>
+      );
+    case 'image':
+      return (
+        <div key={idx} style={{ margin: '12px 0' }}>
+          <img
+            src={block.src}
+            alt={block.alt || ''}
+            style={{
+              width: '100%', display: 'block',
+              borderRadius: 8, border: '1px solid #e2e8f0',
+            }}
+          />
+          {block.caption && (
+            <div style={{ fontSize: 11, color: '#64748b', marginTop: 5, lineHeight: 1.5 }}>
+              {block.caption}
+            </div>
+          )}
         </div>
       );
     default:

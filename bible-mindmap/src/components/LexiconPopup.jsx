@@ -13,7 +13,7 @@ import { useCanvas } from '../context/CanvasContext';
  *   onClose
  *   onAddVerse(ref)                     용례에서 "+ 추가" 클릭 시 호출
  */
-export default function LexiconPopup({ entry, anchor, bookId, onClose }) {
+export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
   const [tab, setTab] = useState('def'); // 'def' | 'usage'
   const [definition, setDefinition] = useState(null);
@@ -117,7 +117,7 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose }) {
         style={{
           position: 'fixed',
           left, top, width, maxHeight,
-          zIndex: 2501,
+          zIndex: zIndex ?? 2501,
           background: '#fff',
           borderRadius: 10,
           boxShadow: '0 12px 40px rgba(0,0,0,0.25)',
