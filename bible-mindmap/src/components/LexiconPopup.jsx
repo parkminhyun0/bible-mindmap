@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph } from '../utils/lexicon';
+import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 
@@ -414,29 +414,4 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
   );
 }
 
-/**
- * 렉시콘 정의 HTML 안의 참조 코드를 클릭 가능한 링크로 변환.
- * - TWOT—852a  → biblehub.com/twot/852.htm
- * - H1234      → biblehub.com/hebrew/1234.htm
- * - G1234      → biblehub.com/greek/1234.htm
- */
-function linkifyDefinition(html, isHebrew) {
-  if (!html) return '';
-  const LINK = (href, text) =>
-    `<a href="${href}" target="_blank" rel="noreferrer" style="color:#3b82f6;text-decoration:none;font-weight:600">${text} ↗</a>`;
-
-  return html
-    // TWOT—852a  /  TWOT 852  /  TWOT-852
-    .replace(/TWOT[—\-\s]+(\d+[a-z]?)/gi, (m, code) => {
-      const num = code.replace(/[a-z]+$/i, '');
-      return LINK(`https://biblehub.com/twot/${num}.htm`, m);
-    })
-    // 히브리어 Strong 교차 참조: H1234
-    .replace(/\bH(\d{3,5})\b/g, (m, n) =>
-      LINK(`https://biblehub.com/hebrew/${n}.htm`, m)
-    )
-    // 헬라어 Strong 교차 참조: G1234
-    .replace(/\bG(\d{3,5})\b/g, (m, n) =>
-      LINK(`https://biblehub.com/greek/${n}.htm`, m)
-    );
-}
+// linkifyDefinition is now exported from ../utils/lexicon

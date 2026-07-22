@@ -124,7 +124,10 @@ async function lookupLocalDef(strongNum) {
   const lang = strongNum.startsWith('H') ? 'hot' : 'gnt';
   const ci   = strongsChunkIdx(strongNum);
   const chunk = await loadStrongsChunk(lang, ci);
-  const raw   = chunk[strongNum];
+  // lex 데이터는 H0430 형식, 청크 키는 H430 — 선행 0 제거 후 조회
+  const prefix = strongNum[0];
+  const normalized = prefix + parseInt(strongNum.slice(1), 10);
+  const raw = chunk[normalized] ?? chunk[strongNum];
   if (!raw) return null;
 
   // 정의 HTML 조립
@@ -138,8 +141,10 @@ async function lookupLocalDef(strongNum) {
 
 // ── bolls.life BDBT (히브리어 BDB 정의 — 더 상세) ──────────────────────────
 async function fetchBDBDef(strongNum) {
-  const numOnly = strongNum.replace(/^H/, '');
-  for (const id of [strongNum, numOnly]) {
+  // H0430 → H430 정규화, 숫자만도 시도
+  const normalized = 'H' + parseInt(strongNum.replace(/^H/, ''), 10);
+  const numOnly    = String(parseInt(strongNum.replace(/^H/, ''), 10));
+  for (const id of [normalized, numOnly]) {
     try {
       const res = await fetch(`https://bolls.life/dictionary-definition/BDBT/${id}/`);
       if (!res.ok) continue;
@@ -161,6 +166,9 @@ const _defCache = new Map();
  */
 export async function fetchStrongDefinition(strongNum) {
   if (!strongNum) return null;
+  // 선행 0 제거 정규화: H0430 → H430
+  const prefix = strongNum[0];
+  strongNum = prefix + parseInt(strongNum.slice(1), 10);
   if (_defCache.has(strongNum)) return _defCache.get(strongNum);
 
   const isHeb = strongNum.startsWith('H');
@@ -284,4 +292,17 @@ export function humanizeMorph(code) {
   if (!code) return '';
   if (code.startsWith('H')) return parseHebrewMorph(code)?.human || code;
   return parseGreekMorph(code)?.human || code;
+}
+
+export function linkifyDefinition(html, isHebrew) {
+  if (!html) return '';
+  const LINK = (href, text) =>
+    `<a href="${href}" target="_blank" rel="noreferrer" style="color:#3b82f6;text-decoration:none;font-weight:600">${text} ↗</a>`;
+  return html
+    .replace(/TWOT[—\-\s]+(\d+[a-z]?)/gi, (m, code) => {
+      const num = code.replace(/[a-z]+$/i, '');
+      return LINK(`https://biblehub.com/twot/${num}.htm`, m);
+    })
+    .replace(/\bH(\d{3,5})\b/g, (m, n) => LINK(`https://biblehub.com/hebrew/${n}.htm`, m))
+    .replace(/\bG(\d{3,5})\b/g, (m, n) => LINK(`https://biblehub.com/greek/${n}.htm`, m));
 }

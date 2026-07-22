@@ -1,15 +1,34 @@
 import { useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
 import ManualModal from './ManualModal';
+import WordSearchModal from './WordSearchModal';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
 import { getBibleTags } from '../data/bibleReferences';
+import { detectInputMode } from '../utils/wordSearch';
 
 export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax }) {
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
   const [showManual, setShowManual] = useState(false);
+
+  // 원어 검색
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchMode, setSearchMode] = useState('original');
+  const [showWordSearch, setShowWordSearch] = useState(false);
+  const [wordSearchKey, setWordSearchKey] = useState(0);
+  const [pendingSearch, setPendingSearch] = useState(null);
+
+  const handleWordSearch = (q, m) => {
+    if (!q.trim()) return;
+    setPendingSearch({ q, m });
+    setShowWordSearch(false);
+    setTimeout(() => {
+      setShowWordSearch(true);
+      setWordSearchKey((k) => k + 1);
+    }, 0);
+  };
   const [reference, setReference] = useState('');
   const [text, setText] = useState('');
   const [color, setColor] = useState('#3b82f6');
@@ -312,6 +331,14 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
         </div>
 
         {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+        {showWordSearch && pendingSearch && (
+          <WordSearchModal
+            key={wordSearchKey}
+            initialQuery={pendingSearch.q}
+            initialMode={pendingSearch.m}
+            onClose={() => setShowWordSearch(false)}
+          />
+        )}
       </>
     );
   }
@@ -324,6 +351,51 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       <div style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
         <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
+      </div>
+
+      {/* ═══ 섹션 1b: 원어 검색 바 ═══ */}
+      <div style={{ padding: '8px 12px', borderBottom: '1px solid #f1f5f9', background: '#f8fafc' }}>
+        {/* 모드 토글 */}
+        <div style={{ display: 'flex', gap: 3, marginBottom: 6 }}>
+          {[['original','원문'],['english','영어'],['korean','한글']].map(([k,l]) => (
+            <button key={k} onClick={() => setSearchMode(k)}
+              style={{
+                flex: 1, fontSize: 10, padding: '3px 0', border: 'none', borderRadius: 4,
+                cursor: 'pointer', fontWeight: searchMode === k ? 700 : 400,
+                background: searchMode === k
+                  ? (k === 'original' ? '#1d4ed8' : k === 'english' ? '#059669' : '#d97706')
+                  : '#e2e8f0',
+                color: searchMode === k ? '#fff' : '#64748b',
+              }}>{l}</button>
+          ))}
+        </div>
+        {/* 검색 입력 */}
+        <div style={{ display: 'flex', gap: 4 }}>
+          <input
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              const det = detectInputMode(e.target.value);
+              if (det) setSearchMode(det);
+            }}
+            onKeyDown={(e) => e.key === 'Enter' && handleWordSearch(searchQuery, searchMode)}
+            placeholder="원어·영어·한글 검색..."
+            style={{
+              flex: 1, padding: '6px 8px', borderRadius: 6,
+              border: '1px solid #cbd5e1', fontSize: 11.5, outline: 'none',
+              fontFamily: searchMode === 'original'
+                ? '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif'
+                : 'inherit',
+            }}
+          />
+          <button
+            onClick={() => handleWordSearch(searchQuery, searchMode)}
+            style={{
+              padding: '6px 10px', border: 'none', borderRadius: 6,
+              background: '#1d4ed8', color: '#fff', fontSize: 13, cursor: 'pointer',
+            }}
+          >🔍</button>
+        </div>
       </div>
 
       {/* ═══ 섹션 2: 본문 탭 (구절/노트/주제) ═══ */}
@@ -551,6 +623,14 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
     </div>
 
     {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+    {showWordSearch && pendingSearch && (
+      <WordSearchModal
+        key={wordSearchKey}
+        initialQuery={pendingSearch.q}
+        initialMode={pendingSearch.m}
+        onClose={() => setShowWordSearch(false)}
+      />
+    )}
     </>
   );
 }

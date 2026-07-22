@@ -19,3 +19,51 @@ html, body, #root {
 .node-editor-tiptap--mobile .ProseMirror p {
   margin: 0;
 }
+
+/* ── 원어 사전 정의 HTML (LexiconPopup / WordSearchModal) ── */
+.lex-def {
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.75;
+  color: #374151;
+}
+.lex-def p {
+  margin: 4px 0 6px;
+  width: 100%;
+}
+.lex-def ol,
+.lex-def ul {
+  margin: 4px 0;
+  padding-left: 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+}
+.lex-def li {
+  margin-bottom: 3px;
+}
+.lex-def b {
+  color: #1e293b;
+}
+.lex-def .lex-etym {
+  background: #f8fafc;
+  border-left: 3px solid #94a3b8;
+  padding: 4px 10px;
+  margin: 6px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.92em;
+  color: #475569;
+}
+.lex-def .lex-kjv {
+  background: #fefce8;
+  border-left: 3px solid #fbbf24;
+  padding: 4px 10px;
+  margin: 6px 0;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.92em;
+  color: #78350f;
+}
+
+/* ── WordSearchModal — 용례 행 호버 ── */
+.wsm-usage-row { transition: background 0.1s; cursor: pointer; }
+.wsm-usage-row:hover { background: #eff6ff !important; }
+.wsm-usage-row:hover .wsm-word { color: #1d4ed8 !important; }
