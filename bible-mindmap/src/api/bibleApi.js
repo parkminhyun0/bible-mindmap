@@ -54,13 +54,29 @@ async function fetchChapter(translationCode, bookNum, chapter) {
 }
 
 // ── bolls.life (KRV, ESV, WLC, NTGT) ──────────────────────────────────────
+// 절 번호를 인라인 <span>으로 삽입하여 여러 절을 이어 붙일 때도 구분되도록 함.
+// TipTap TextStyle 확장이 style 속성을 보존하므로 편집 후에도 유지됨.
+const VERSE_NUM_STYLE = 'font-weight:700;color:#94a3b8;font-size:0.78em;margin-right:3px;vertical-align:0.28em;';
+
 async function fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, translationCode) {
   const bookNum = BOLLS_BOOK_MAP[bookId];
   if (!bookNum) throw new Error('Unknown book');
   const verses = await fetchChapter(translationCode, bookNum, chapter);
   const filtered = verses.filter((v) => v.verse >= verseStart && v.verse <= verseEnd);
   if (!filtered.length) throw new Error('해당 구절 없음');
-  return filtered.map((v) => v.text.replace(/<[^>]*>/g, '').trim()).join(' ');
+
+  const cleaned = filtered.map((v) => ({
+    verse: v.verse,
+    text: v.text.replace(/<[^>]*>/g, '').trim(),
+  }));
+
+  // 단일 절: 절 번호 없이 텍스트만 반환 (기존 동작 유지)
+  if (cleaned.length === 1) return cleaned[0].text;
+
+  // 다중 절: 각 절 앞에 절 번호 <span> 삽입
+  return cleaned
+    .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
+    .join(' ');
 }
 
 // ── fetchVerse ────────────────────────────────────────────────────────────
