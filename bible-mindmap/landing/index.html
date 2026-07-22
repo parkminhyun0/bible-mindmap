@@ -440,6 +440,79 @@
       width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
     }
 
+    /* ── 신규 기능 히어로 하이라이트 ── */
+    .new-feat-banner {
+      display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      margin-top: 28px;
+    }
+    .new-feat-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 18px; border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.12);
+      backdrop-filter: blur(8px);
+      transition: border-color .2s, background .2s;
+      text-decoration: none;
+    }
+    .new-feat-chip:hover { border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.08); }
+    .new-feat-chip-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .new-feat-chip-icon.purple { background: rgba(109,40,217,.25); }
+    .new-feat-chip-icon.cyan   { background: rgba(8,145,178,.25); }
+    .new-feat-chip-text { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+    .new-feat-chip-label {
+      font-size: .65rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: #a78bfa;
+    }
+    .new-feat-chip-label.cyan { color: #67e8f9; }
+    .new-feat-chip-name { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .new-feat-chip-sub  { font-size: .72rem; color: var(--muted); }
+
+    /* ── 구문 분석 섹션 ── */
+    .analysis-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 48px;
+    }
+    @media (max-width: 720px) { .analysis-grid { grid-template-columns: 1fr; } }
+    .analysis-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 32px 28px;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .analysis-card:hover { transform: translateY(-4px); }
+    .analysis-card.purple:hover { border-color: rgba(109,40,217,.45); box-shadow: 0 8px 40px rgba(109,40,217,.14); }
+    .analysis-card.cyan:hover   { border-color: rgba(8,145,178,.45);  box-shadow: 0 8px 40px rgba(8,145,178,.14); }
+    .analysis-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 20px;
+    }
+    .analysis-icon.purple { background: rgba(109,40,217,.18); }
+    .analysis-icon.cyan   { background: rgba(8,145,178,.18); }
+    .analysis-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    .analysis-card p  { font-size: .88rem; color: var(--muted); line-height: 1.75; margin-bottom: 18px; }
+    .analysis-detail {
+      display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;
+    }
+    .analysis-row {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .82rem; color: var(--muted);
+    }
+    .analysis-row-icon {
+      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 13px;
+      background: rgba(255,255,255,.06);
+    }
+    .analysis-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .analysis-tag {
+      font-size: .72rem; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+    }
+    .analysis-tag.purple { background: rgba(109,40,217,.15); color: #a78bfa; }
+    .analysis-tag.cyan   { background: rgba(8,145,178,.15);  color: #67e8f9; }
+
     /* ── 반응형 ── */
     @media (max-width: 640px) {
       .features { grid-template-columns: 1fr; }
@@ -565,6 +638,26 @@
     <span class="hero-pill"><span class="dot" style="background:#dc2626;"></span>설교 문서 작성 · 전용 저장소</span>
     <span class="hero-pill"><span class="dot" style="background:#6d28d9;"></span>본문 흐름 분석 · 절 구조 시각화</span>
     <span class="hero-pill"><span class="dot" style="background:#0891b2;"></span>구문 구조 분석 · 절 구조 · 트리</span>
+  </div>
+
+  <!-- 신규 기능 하이라이트 -->
+  <div class="new-feat-banner fade-up">
+    <a href="#analysis" class="new-feat-chip">
+      <div class="new-feat-chip-icon purple">📖</div>
+      <div class="new-feat-chip-text">
+        <span class="new-feat-chip-label">NEW</span>
+        <span class="new-feat-chip-name">본문 흐름 분석</span>
+        <span class="new-feat-chip-sub">★ 주동사 중심으로 절 흐름 시각화</span>
+      </div>
+    </a>
+    <a href="#analysis" class="new-feat-chip">
+      <div class="new-feat-chip-icon cyan">🔤</div>
+      <div class="new-feat-chip-text">
+        <span class="new-feat-chip-label cyan">NEW</span>
+        <span class="new-feat-chip-name">구문 구조 분석</span>
+        <span class="new-feat-chip-sub">절 구조 (S·P·O·C) + 구문 트리 (NP·VP)</span>
+      </div>
+    </a>
   </div>
 
   <div class="scroll-hint">
@@ -801,6 +894,76 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- 원어 구문 분석 -->
+<section class="section" id="analysis" style="padding-top: 0;">
+  <div class="wrap">
+    <p class="section-label fade-up">SYNTAX ANALYSIS</p>
+    <h2 class="section-title fade-up">원어 구문 분석</h2>
+    <p class="section-sub fade-up">
+      절의 흐름과 문장 구조를 원어 그대로 읽어내는 두 가지 도구.<br/>
+      구약 히브리어부터 신약 헬라어까지 구절 범위를 선택하면 즉시 분석합니다.
+    </p>
+
+    <div class="analysis-grid fade-up">
+
+      <!-- 본문 흐름 분석 -->
+      <div class="analysis-card purple">
+        <div class="analysis-icon purple">📖</div>
+        <h3>본문 흐름 분석</h3>
+        <p>여러 절의 서사 흐름을 한눈에 파악합니다. 원어 데이터에서 주동사(★)를 자동 식별하고, 종속절의 역할을 이유·결과·시간·상황·발화 태그로 구분해 절과 절의 논리적 연결을 시각화합니다.</p>
+        <div class="analysis-detail">
+          <div class="analysis-row">
+            <div class="analysis-row-icon">📜</div>
+            <span><strong style="color:var(--text);">구약(히브리어)</strong> — Wayyiqtol(וַיִּ) 서사 동사를 ★ 주선으로, 나머지 절을 선행·후행절로 배치</span>
+          </div>
+          <div class="analysis-row">
+            <div class="analysis-row-icon">✝️</div>
+            <span><strong style="color:var(--text);">신약(헬라어)</strong> — 직설법·명령법·가정법 동사를 ★ 주선으로, 분사·부정사 절은 종속절로 표시</span>
+          </div>
+          <div class="analysis-row">
+            <div class="analysis-row-icon">🪟</div>
+            <span>여러 창을 동시에 열어 구약·신약 본문을 나란히 비교 가능</span>
+          </div>
+        </div>
+        <div class="analysis-tags">
+          <span class="analysis-tag purple">★ 주동사 자동 식별</span>
+          <span class="analysis-tag purple">이유 · 결과 · 시간</span>
+          <span class="analysis-tag purple">구약 · 신약 전체</span>
+          <span class="analysis-tag purple">다중 창 비교</span>
+        </div>
+      </div>
+
+      <!-- 구문 구조 분석 -->
+      <div class="analysis-card cyan">
+        <div class="analysis-icon cyan">🔤</div>
+        <h3>구문 구조 분석</h3>
+        <p>한 절 안의 단어들을 문법 역할별로 분해합니다. <strong style="color:var(--text);">[절 구조]</strong> 탭은 S·P·O·C 열로 단어를 배치해 문장 뼈대를 보여주고, <strong style="color:var(--text);">[트리]</strong> 탭은 NP·VP로 분기하는 구문 트리를 SVG로 렌더링합니다.</p>
+        <div class="analysis-detail">
+          <div class="analysis-row">
+            <div class="analysis-row-icon">⬛</div>
+            <span><strong style="color:var(--text);">[절 구조]</strong> — S(주어) · P(서술어) · O(목적어) · C(보어) 열 배치, 품사별 색상 구분</span>
+          </div>
+          <div class="analysis-row">
+            <div class="analysis-row-icon">🌲</div>
+            <span><strong style="color:var(--text);">[트리]</strong> — NP→Det/N, VP→V/NP 분기 구문 트리, SVG 렌더링</span>
+          </div>
+          <div class="analysis-row">
+            <div class="analysis-row-icon">↔️</div>
+            <span>히브리어 RTL, 헬라어 LTR — 각 언어 방향에 맞춰 원어 단어 표시</span>
+          </div>
+        </div>
+        <div class="analysis-tags">
+          <span class="analysis-tag cyan">S · P · O · C 절 구조</span>
+          <span class="analysis-tag cyan">NP · VP 구문 트리</span>
+          <span class="analysis-tag cyan">히브리어 · 헬라어</span>
+          <span class="analysis-tag cyan">다중 창 비교</span>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
