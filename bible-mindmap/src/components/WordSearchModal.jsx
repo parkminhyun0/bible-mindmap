@@ -52,21 +52,44 @@ function findKoreanWord(texts) {
   return best[0]?.[0] || null;
 }
 
-function ColorHighlightText({ text, query, color, dir = 'ltr', fontFamily, fallback = '(본문 없음)' }) {
+// Highlight ALL occurrences of `query` in `text`, case-insensitive by default.
+function ColorHighlightText({ text, query, color, dir = 'ltr', fontFamily, fallback = '(본문 없음)', caseSensitive = false }) {
   const baseStyle = { color: '#374151', direction: dir, ...(fontFamily ? { fontFamily } : {}) };
   if (!text) return <span style={{ color: '#94a3b8' }}>{fallback}</span>;
   if (!query) return <span style={baseStyle}>{text}</span>;
-  const idx = text.indexOf(query);
-  if (idx === -1) return <span style={baseStyle}>{text}</span>;
+  const hay = caseSensitive ? text : text.toLowerCase();
+  const needle = caseSensitive ? query : query.toLowerCase();
+  if (!needle) return <span style={baseStyle}>{text}</span>;
+
+  const parts = [];
+  let idx = 0;
+  while (idx < text.length) {
+    const found = hay.indexOf(needle, idx);
+    if (found === -1) { parts.push({ h: false, s: text.slice(idx) }); break; }
+    if (found > idx) parts.push({ h: false, s: text.slice(idx, found) });
+    parts.push({ h: true, s: text.slice(found, found + needle.length) });
+    idx = found + needle.length;
+  }
+  if (!parts.some(p => p.h)) return <span style={baseStyle}>{text}</span>;
+
   return (
     <span style={baseStyle}>
-      {text.slice(0, idx)}
-      <mark style={{ background: color + '33', color, fontWeight: 700, borderRadius: 2, padding: '0 1px' }}>
-        {text.slice(idx, idx + query.length)}
-      </mark>
-      {text.slice(idx + query.length)}
+      {parts.map((p, i) => p.h
+        ? <mark key={i} style={{ background: color + '33', color, fontWeight: 700, borderRadius: 2, padding: '0 1px' }}>{p.s}</mark>
+        : <span key={i}>{p.s}</span>
+      )}
     </span>
   );
+}
+
+// Pick the best English gloss variant to highlight: prefer one that actually appears in `verse`.
+function pickEnglishHl(glossStr, verse) {
+  if (!glossStr) return null;
+  const parts = glossStr.split('/').map(s => s.trim()).filter(Boolean);
+  if (!parts.length) return null;
+  if (!verse) return parts[0];
+  const lower = verse.toLowerCase();
+  return parts.find(p => lower.includes(p.toLowerCase())) || parts[0];
 }
 
 function lighten(hex) {
@@ -95,17 +118,23 @@ function groupByLemma(wordResults) {
 
 function HighlightText({ text, query }) {
   if (!query || !text) return <span>{text}</span>;
-  const parts = text.split(query);
+  const hay = text.toLowerCase();
+  const needle = query.toLowerCase();
+  const parts = [];
+  let idx = 0;
+  while (idx < text.length) {
+    const found = hay.indexOf(needle, idx);
+    if (found === -1) { parts.push({ h: false, s: text.slice(idx) }); break; }
+    if (found > idx) parts.push({ h: false, s: text.slice(idx, found) });
+    parts.push({ h: true, s: text.slice(found, found + needle.length) });
+    idx = found + needle.length;
+  }
   return (
     <span>
-      {parts.map((p, i) => (
-        <span key={i}>
-          {p}
-          {i < parts.length - 1 && (
-            <mark style={{ background: '#fef08a', padding: '0 1px', borderRadius: 2, color: '#1e293b' }}>{query}</mark>
-          )}
-        </span>
-      ))}
+      {parts.map((p, i) => p.h
+        ? <mark key={i} style={{ background: '#fef08a', padding: '0 1px', borderRadius: 2, color: '#1e293b' }}>{p.s}</mark>
+        : <span key={i}>{p.s}</span>
+      )}
     </span>
   );
 }
@@ -245,7 +274,7 @@ function DragHandle({ onMouseDown, active, borderColor }) {
   );
 }
 
-function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap }) {
+function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searchedQuery }) {
   const [def, setDef] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filterBook, setFilterBook] = useState(null);
@@ -487,12 +516,19 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap }) {
             const morphKey = r.word.m || form || '?';
             const fc = formStats?.get(morphKey)?.color || '#94a3b8';
             const verseText = verseMap?.get(`${r.bookId}-${r.chapter}-${r.verse}`);
-            // Highlight query per tab
-            const hlWord = isKoreanView
-              ? (formHighlightWords?.get(morphKey) || null)
-              : isEnglishView
-                ? (r.word.g?.split('/')[0] || null)
-                : form; // original: exact Hebrew/Greek form
+            // Highlight query per tab — prefer user's original search query if it appears in the verse.
+            const userQ = searchedQuery?.trim();
+            const verseLower = verseText?.toLowerCase();
+            const userHit = userQ && verseLower && verseLower.includes(userQ.toLowerCase());
+            let hlWord;
+            if (isKoreanView) {
+              hlWord = userHit ? userQ : (formHighlightWords?.get(morphKey) || null);
+            } else if (isEnglishView) {
+              hlWord = userHit ? userQ : pickEnglishHl(r.word.g, verseText);
+            } else {
+              // Original tab: prefer exact form (verse text is composed of these), else user query.
+              hlWord = form || (userHit ? userQ : null);
+            }
             // Direction & font per tab
             const textDir = isKoreanView || isEnglishView ? 'ltr' : dir;
             const textFont = isKoreanView || isEnglishView ? undefined : font;
@@ -519,7 +555,8 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap }) {
                 </div>
                 <span style={{ fontSize: fz, lineHeight: 1.65 }}>
                   <ColorHighlightText text={verseText} query={hlWord} color={fc}
-                    dir={textDir} fontFamily={textFont} fallback={fallbackMsg} />
+                    dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
+                    caseSensitive={!isKoreanView && !isEnglishView} />
                 </span>
               </div>
             );
@@ -545,7 +582,7 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap }) {
   );
 }
 
-function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap }) {
+function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap, searchedQuery }) {
   const fz = fs || FS_DEF;
   const ac = accentColor(group.strong);
   const abg = accentBg(group.strong);
@@ -596,7 +633,7 @@ function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap }) {
         </div>
       </div>
       {showDict && (
-        <DictionaryPanel strong={group.strong} isHeb={group.isHeb} fs={fs} items={group.items} viewMode={viewMode} verseMap={verseMap} />
+        <DictionaryPanel strong={group.strong} isHeb={group.isHeb} fs={fs} items={group.items} viewMode={viewMode} verseMap={verseMap} searchedQuery={searchedQuery} />
       )}
     </div>
   );
@@ -653,6 +690,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
 
   const [byMode, setByMode] = useState({ original: [], english: [], korean: [], origLangText: [], englishText: [] });
   const [displayMode, setDisplayMode] = useState(initialMode);
+  const [searchedQuery, setSearchedQuery] = useState(initialQuery);
   const [primarySearching, setPrimarySearching] = useState(false);
   const [derivingLangs, setDerivingLangs] = useState(false);
   const [done, setDone] = useState(false);
@@ -685,6 +723,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
     setDictKeys(new Set());
     setDone(false);
     setIsDerived({ original: false, english: false, korean: false });
+    setSearchedQuery(q);
 
     const detected = detectInputMode(q) || inputLang;
     setDisplayMode(detected);
@@ -1000,6 +1039,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
                     onToggleDict={() => toggleDict(g.key)}
                     fs={fs} viewMode={displayMode}
                     verseMap={displayMode === 'korean' ? koreanMap : displayMode === 'english' ? englishMap : origLangMap}
+                    searchedQuery={searchedQuery}
                   />
                 ))}
               </>

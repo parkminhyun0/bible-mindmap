@@ -11,7 +11,15 @@ import { ALL_BOOKS, OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
 
 const BASE = import.meta.env.BASE_URL;
 const CONCURRENCY = 10;         // 로컬 lex JSON
-const BOLLS_CONCURRENCY = 6;    // 원격 Bolls.life — 부하 완화
+const BOLLS_CONCURRENCY = 4;    // 원격 Bolls.life — 부하 완화 (rate-limit 회피)
+
+// ── 원문 정규화: nikud·cantillation·Greek accent 제거 + 소문자화 ──────────
+// Hebrew combining marks: U+0591–U+05C7 (nikud/cantillation)
+// Greek combining marks (via NFD): U+0300–U+036F
+// Regex uses explicit \u escapes to avoid literal-character range corruption.
+const _NORM_MARKS = /[̀-֑ͯ-ׇ]/g;
+export const normalizeOrig = (s) =>
+  (s || '').normalize('NFD').replace(_NORM_MARKS, '').toLowerCase();
 
 const BOLLS_BOOK_MAP = Object.fromEntries(ALL_BOOKS.map((b, i) => [b.id, i + 1]));
 
@@ -50,7 +58,7 @@ const stripHtml = (str) => str
        .trim()
   : '';
 
-// ── Bolls.life 장 로드 (번역본별) — 캐시 + 1회 재시도 ────────────────────
+// ── Bolls.life 장 로드 — 캐시 + 백오프 3회 재시도 ────────────────────────
 const _bollsCache = new Map();
 async function _fetchBollsOnce(translation, bookNum, chapter, signal) {
   try {
@@ -74,12 +82,14 @@ async function fetchBollsChapter(translation, bookId, chapter, signal) {
   if (cached) return cached;
 
   const promise = (async () => {
-    let result = await _fetchBollsOnce(translation, bookNum, chapter, signal);
-    if (result === null && !signal?.aborted) {
-      await new Promise(r => setTimeout(r, 250));
-      result = await _fetchBollsOnce(translation, bookNum, chapter, signal);
+    const delays = [0, 400, 1200]; // 최대 3회 시도, 백오프
+    for (const d of delays) {
+      if (signal?.aborted) return null;
+      if (d) await new Promise(r => setTimeout(r, d));
+      const result = await _fetchBollsOnce(translation, bookNum, chapter, signal);
+      if (result !== null) return result;
     }
-    return result;
+    return null;
   })();
   _bollsCache.set(key, promise);
   const result = await promise;
@@ -116,10 +126,12 @@ async function scanLexChapter(book, chapter, matchFn, signal) {
   return hits;
 }
 
-// ── 원문 검색 (w: 본문형, l: 레마) ───────────────────────────────────────
+// ── 원문 검색 (w: 본문형, l: 레마) — nikud/accent 무시 매칭 ──────────────
 export async function searchByOriginal(query, onResult, signal) {
   const q = query.trim();
   if (!q) return;
+  const qNorm = normalizeOrig(q);
+  if (!qNorm) return;
 
   const manifest = await getManifest();
   const books = [
@@ -134,8 +146,11 @@ export async function searchByOriginal(query, onResult, signal) {
       const hits = await scanLexChapter(
         book, ch,
         (w) => {
-          if (w.w && w.w.replace(/\//g, '').includes(q)) return 'w';
-          if (w.l && w.l.includes(q)) return 'l';
+          if (w.w) {
+            const clean = w.w.replace(/\//g, '');
+            if (clean.includes(q) || normalizeOrig(clean).includes(qNorm)) return 'w';
+          }
+          if (w.l && (w.l.includes(q) || normalizeOrig(w.l).includes(qNorm))) return 'l';
           return null;
         },
         signal
@@ -229,9 +244,9 @@ export async function searchByKorean(query, scope, onResult, signal) {
 // ── 입력 문자 기반 모드 자동 감지 ────────────────────────────────────────
 export function detectInputMode(query) {
   if (!query) return null;
-  if (/[֐-׿יִ-ﭏ]/.test(query)) return 'original';
-  if (/[Ͱ-Ͽἀ-῿]/.test(query)) return 'original';
-  if (/[가-힯ᄀ-ᇿ]/.test(query)) return 'korean';
+  if (/[֐-׿יִ-ﭏ]/.test(query)) return 'original'; // Hebrew
+  if (/[Ͱ-Ͽἀ-῿]/.test(query)) return 'original'; // Greek
+  if (/[가-힣ᄀ-ᇿ]/.test(query)) return 'korean';   // Korean
   return 'english';
 }
 
