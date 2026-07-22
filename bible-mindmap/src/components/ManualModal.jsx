@@ -614,11 +614,12 @@ function renderContent(block, idx) {
           </table>
         </div>
       );
-    case 'image':
+    case 'image': {
+      const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '');
       return (
         <div key={idx} style={{ margin: '12px 0' }}>
           <img
-            src={block.src}
+            src={`${base}${block.src}`}
             alt={block.alt || ''}
             style={{
               width: '100%', display: 'block',
@@ -632,6 +633,7 @@ function renderContent(block, idx) {
           )}
         </div>
       );
+    }
     default:
       return null;
   }
