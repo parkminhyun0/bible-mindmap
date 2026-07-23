@@ -701,10 +701,15 @@ function renderContent(block, idx) {
 }
 
 export default function ManualModal({ onClose }) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const [minimized, setMinimized] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
-  const [pos, setPos] = useState({ x: window.innerWidth / 2 - 320, y: 60 });
-  const [size, setSize] = useState({ w: 640, h: 560 });
+  const [pos, setPos] = useState(() => isMobile
+    ? { x: 0, y: 0 }
+    : { x: window.innerWidth / 2 - 320, y: 60 });
+  const [size, setSize] = useState(() => isMobile
+    ? { w: window.innerWidth, h: window.innerHeight }
+    : { w: 640, h: 560 });
 
   const dragging   = useRef(false);
   const resizing   = useRef(false);
@@ -769,9 +774,9 @@ export default function ManualModal({ onClose }) {
         width: size.w,
         zIndex: 2000,
         background: '#fff',
-        borderRadius: 12,
-        boxShadow: '0 20px 60px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.12)',
-        border: '1px solid #e2e8f0',
+        borderRadius: isMobile ? 0 : 12,
+        boxShadow: isMobile ? 'none' : '0 20px 60px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.12)',
+        border: isMobile ? 'none' : '1px solid #e2e8f0',
         fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
         userSelect: dragging.current ? 'none' : 'auto',
         display: 'flex',
@@ -865,8 +870,8 @@ export default function ManualModal({ onClose }) {
         </div>
       )}
 
-      {/* ── 리사이즈 핸들 ── */}
-      {!minimized && (
+      {/* ── 리사이즈 핸들 (데스크톱 전용) ── */}
+      {!minimized && !isMobile && (
         <div
           onMouseDown={onResizeMouseDown}
           style={{

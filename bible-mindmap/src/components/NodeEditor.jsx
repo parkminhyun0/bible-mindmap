@@ -34,7 +34,7 @@ const TEXT_COLORS = [
 
 const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 50];
 
-export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
+export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
   const [editData, setEditData] = useState(null);
   const [, setTick] = useState(0);
   const [tagInput, setTagInput] = useState('');
@@ -256,6 +256,23 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
   const isMobile = useMobile();
   const disabledOpacity = disabled ? 0.4 : 1;
 
+  // 모바일: 노드 선택 시 편집 시트의 primary 입력을 자동 포커스해서 소프트 키보드 오픈
+  const mobileInputRef = useRef(null);
+  useEffect(() => {
+    if (!isMobile || !selectedNode?.id) return;
+    const t = setTimeout(() => {
+      mobileInputRef.current?.focus();
+    }, 120);
+    return () => clearTimeout(t);
+  }, [isMobile, selectedNode?.id]);
+
+  const handleDeleteSelected = () => {
+    if (!selectedNode?.id) return;
+    if (window.confirm('이 노드를 삭제할까요?')) {
+      onDeleteNode?.(selectedNode.id);
+    }
+  };
+
   // 모바일: 노드 미선택 시 상단 미니바, 선택 시 하단 편집 시트
   if (isMobile) {
     return (
@@ -297,11 +314,12 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
               <div style={{ width: 36, height: 4, borderRadius: 2, background: '#cbd5e1' }} />
             </div>
 
-            {/* 참조/제목 입력 */}
+            {/* 참조/제목 입력 + 삭제 버튼 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontSize: 16 }}>{nodeType === 'verse' ? '📖' : nodeType === 'note' ? '📝' : '🏷️'}</span>
+              <span style={{ fontSize: 16 }}>{nodeType === 'verse' ? '📖' : nodeType === 'note' ? '📝' : nodeType === 'topic' ? '🏷️' : nodeType === 'person' ? '👤' : nodeType === 'place' ? '📍' : nodeType === 'period' ? '🕰️' : '📖'}</span>
               {(nodeType === 'verse') && (
                 <input
+                  ref={mobileInputRef}
                   value={editData?.reference || ''}
                   onChange={(e) => update({ reference: e.target.value })}
                   style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
@@ -310,12 +328,32 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onUndo, onRedo,
               )}
               {(nodeType === 'note' || nodeType === 'topic') && (
                 <input
+                  ref={mobileInputRef}
                   value={editData?.title || ''}
                   onChange={(e) => update({ title: e.target.value })}
                   style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
                   placeholder="제목"
                 />
               )}
+              {(nodeType === 'person' || nodeType === 'place' || nodeType === 'period') && (
+                <input
+                  ref={mobileInputRef}
+                  value={editData?.name || editData?.label || ''}
+                  onChange={(e) => update({ name: e.target.value })}
+                  style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
+                  placeholder="이름"
+                />
+              )}
+              <button
+                onClick={handleDeleteSelected}
+                title="삭제"
+                style={{
+                  padding: '8px 12px', border: 'none', borderRadius: 8,
+                  background: '#fee2e2', color: '#dc2626',
+                  fontSize: 15, fontWeight: 700, cursor: 'pointer',
+                  minWidth: 44, minHeight: 38, flexShrink: 0,
+                }}
+              >🗑️</button>
             </div>
 
             {/* 역본 탭 선택 (verse + bookId 노드만) */}

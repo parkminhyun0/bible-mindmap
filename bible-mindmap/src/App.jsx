@@ -345,6 +345,17 @@ export default function App() {
     [setNodes],
   );
 
+  const handleDeleteNode = useCallback(
+    (nodeId) => {
+      if (!nodeId) return;
+      record();
+      setNodes((nds) => nds.filter((n) => n.id !== nodeId));
+      setEdges((eds) => eds.filter((e) => e.source !== nodeId && e.target !== nodeId));
+      setSelectedNodeId(null);
+    },
+    [setNodes, setEdges, record],
+  );
+
   const handleNodesChange = useCallback(
     (changes) => {
       const hasMoved = changes.some((c) => c.type === 'position' && c.dragging === false);
@@ -655,6 +666,7 @@ export default function App() {
         <NodeEditor
           selectedNode={selectedNode}
           onUpdateNode={handleUpdateNode}
+          onDeleteNode={handleDeleteNode}
           onUndo={undo}
           onRedo={redo}
           canUndo={canUndo}

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
 import ManualModal from './ManualModal';
 import WordSearchModal from './WordSearchModal';
+import ContextBibleModal from './ContextBibleModal';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
@@ -12,6 +13,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
   const [showManual, setShowManual] = useState(false);
+  const [showContextBible, setShowContextBible] = useState(false);
 
   // 원어 검색
   const [searchQuery, setSearchQuery] = useState('');
@@ -188,6 +190,80 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             </div>
           </div>
 
+          {/* 문맥 성경 (모바일) */}
+          <div style={{ padding: '0 16px 8px' }}>
+            <button
+              onClick={() => setShowContextBible(true)}
+              style={{
+                width: '100%', padding: '10px 12px',
+                background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
+                border: '1px solid rgba(217,119,6,.35)',
+                borderRadius: 8, cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                color: '#d97706', fontSize: 13, fontWeight: 700,
+              }}
+            >
+              📖 문맥 성경 (로마서)
+            </button>
+          </div>
+
+          {/* 원어 다언어 검색 (모바일) */}
+          <div style={{ padding: '0 16px 10px' }}>
+            <div style={{
+              padding: '10px 12px', borderRadius: 10,
+              background: '#ffffff', border: '1px solid #e2e8f0',
+            }}>
+              <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8',
+                letterSpacing: 1, marginBottom: 6 }}>원어 다언어 검색</div>
+              <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+                {[['original','원문'],['english','영어'],['korean','한글']].map(([k,l]) => (
+                  <button key={k} onClick={() => setSearchMode(k)}
+                    style={{
+                      flex: 1, fontSize: 12, padding: '7px 0', border: 'none', borderRadius: 6,
+                      cursor: 'pointer', fontWeight: searchMode === k ? 700 : 500,
+                      background: searchMode === k
+                        ? (k === 'original' ? '#1d4ed8' : k === 'english' ? '#059669' : '#d97706')
+                        : '#e2e8f0',
+                      color: searchMode === k ? '#fff' : '#64748b',
+                      minHeight: 34,
+                    }}>{l}</button>
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: 6 }}>
+                <input
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    const det = detectInputMode(e.target.value);
+                    if (det) setSearchMode(det);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      handleWordSearch(searchQuery, searchMode);
+                    }
+                  }}
+                  placeholder="원어·영어·한글 검색..."
+                  style={{
+                    flex: 1, padding: '9px 10px', borderRadius: 8,
+                    border: '1px solid #cbd5e1', fontSize: 13, outline: 'none',
+                    fontFamily: searchMode === 'original'
+                      ? '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif'
+                      : 'inherit',
+                    minHeight: 38,
+                  }}
+                />
+                <button
+                  onClick={() => handleWordSearch(searchQuery, searchMode)}
+                  style={{
+                    padding: '9px 14px', border: 'none', borderRadius: 8,
+                    background: '#1d4ed8', color: '#fff', fontSize: 15, cursor: 'pointer',
+                    minWidth: 44, minHeight: 38,
+                  }}
+                >🔍</button>
+              </div>
+            </div>
+          </div>
+
           {/* 탭 */}
           <div style={{ display: 'flex', gap: 4, padding: '0 16px 10px' }}>
             {TABS.map((t) => (
@@ -240,6 +316,18 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             </div>
           )}
         </div>
+        {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+        {showContextBible && (
+          <ContextBibleModal onClose={() => setShowContextBible(false)} />
+        )}
+        {showWordSearch && pendingSearch && (
+          <WordSearchModal
+            key={wordSearchKey}
+            initialQuery={pendingSearch.q}
+            initialMode={pendingSearch.m}
+            onClose={() => setShowWordSearch(false)}
+          />
+        )}
       </>
     );
   }
@@ -339,6 +427,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             onClose={() => setShowWordSearch(false)}
           />
         )}
+        {showContextBible && (
+          <ContextBibleModal onClose={() => setShowContextBible(false)} />
+        )}
       </>
     );
   }
@@ -434,6 +525,26 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             <button onClick={handleAdd} style={btnStyle}>+ 주제 추가</button>
           </div>
         )}
+      </div>
+
+      {/* ═══ 섹션 2c: 문맥 성경 버튼 ═══ */}
+      <div style={{ ...tabBarStyle, borderTop: '1px solid #f1f5f9', paddingTop: 10 }}>
+        <button
+          onClick={() => setShowContextBible(true)}
+          style={{
+            width: '100%', padding: '8px 12px',
+            background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
+            border: '1px solid rgba(217,119,6,.35)',
+            borderRadius: 8, cursor: 'pointer',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+            color: '#d97706', fontSize: 12, fontWeight: 700,
+            transition: 'background .18s, border-color .18s',
+          }}
+          onMouseOver={e => { e.currentTarget.style.background = 'rgba(217,119,6,.25)'; e.currentTarget.style.borderColor = 'rgba(217,119,6,.6)'; }}
+          onMouseOut={e => { e.currentTarget.style.background = 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))'; e.currentTarget.style.borderColor = 'rgba(217,119,6,.35)'; }}
+        >
+          📖 문맥 성경
+        </button>
       </div>
 
       {/* ═══ 섹션 2b: 배경 탭 (인물/장소/시대) ═══ */}
@@ -630,6 +741,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
         initialMode={pendingSearch.m}
         onClose={() => setShowWordSearch(false)}
       />
+    )}
+    {showContextBible && (
+      <ContextBibleModal onClose={() => setShowContextBible(false)} />
     )}
     </>
   );
