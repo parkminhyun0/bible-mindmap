@@ -119,16 +119,24 @@ function detectQAPairs(analyzed, krv) {
   return result;
 }
 
+// 담화 들여쓰기 규칙 (강력 규칙 — 모든 책 동일 적용)
+// level 1 = 종속절·설명절·목적절 (앞 주장의 부연·이유·목적)
+// level 0 = 주절·선언·전환·주요 구조 마커
+// ── GNT: reason(γάρ) · purpose(ἵνα) · Q&A 답변
+// ── HOT: ki_reason(כִּי) · hinneh(הִנֵּה) · Q&A 답변
+// ── 신규 책 추가 시: 위 id 목록에 해당 corpus 의 이유/목적 접속사 id 를 추가할 것
 function buildIndentLevels(analyzed, qaPairs, krv) {
   const lv = {};
   for (const { verse } of krv) {
     const ana = analyzed[verse];
     const qa  = qaPairs[verse];
     const id  = ana?.discourse?.id;
-    if (qa?.type === 'A')        lv[verse] = 1;
-    else if (id === 'reason')    lv[verse] = 1;
-    else if (id === 'purpose')   lv[verse] = 1;
-    else                          lv[verse] = 0;
+    if (qa?.type === 'A')           lv[verse] = 1; // Q&A 답변절 (GNT·HOT 공통)
+    else if (id === 'reason')       lv[verse] = 1; // GNT: γάρ — 이유·설명
+    else if (id === 'ki_reason')    lv[verse] = 1; // HOT: כִּי — 이유·설명 (γάρ 대응)
+    else if (id === 'purpose')      lv[verse] = 1; // GNT: ἵνα — 목적
+    else if (id === 'hinneh')       lv[verse] = 1; // HOT: הִנֵּה — 주의 환기 (서사 내 부각절)
+    else                             lv[verse] = 0;
   }
   return lv;
 }
