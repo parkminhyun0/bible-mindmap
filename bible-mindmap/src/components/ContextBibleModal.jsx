@@ -5,6 +5,38 @@ const BASE = import.meta.env.BASE_URL;
 const BOOK = { ko: '로마서', bollsNum: 45, lexId: 'Rom' };
 const CHAPTERS = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 
+// ── 책 배경 메타데이터 (로마서) ──────────────────────────────────────────
+const BOOK_META = {
+  year: 'AD 57년경',
+  yearNote: '3차 전도여행 말미, 예루살렘행 직전',
+  place: '고린도 (겐그레아 항구 인근)',
+  placeNote: '가이오의 집 (롬 16:23) · 뵈뵈 집사가 편지 전달',
+  author: '사도 바울',
+  authorNote: '더디오가 대필 (롬 16:22)',
+  audience: '로마 교회 성도들',
+  audienceNote: '유대인·이방인 혼합, 대부분 미방문',
+  theme: '하나님의 의 (δικαιοσύνη θεοῦ)',
+  themeNote: '이신칭의 복음 — 유대인·이방인 모두에게',
+  chapterAgenda: {
+    1:  '인사·복음의 능력·이방인의 죄',
+    2:  '유대인의 죄·율법의 무능',
+    3:  '모든 인류의 죄·이신칭의 선언 (3:21-26)',
+    4:  '아브라함의 믿음 — 이신칭의의 원형',
+    5:  '칭의의 열매·아담과 그리스도',
+    6:  '죄에서 해방·세례와 연합',
+    7:  '율법과 죄·내적 갈등',
+    8:  '성령 안의 삶·하나님의 사랑 (절정)',
+    9:  '이스라엘의 선택·하나님의 주권',
+    10: '이스라엘의 불신앙·복음 전파의 필요',
+    11: '남은 자·이스라엘의 회복·송영',
+    12: '산 제사·교회 공동체 윤리',
+    13: '국가 권세·이웃 사랑',
+    14: '연약한 자·강한 자의 관용',
+    15: '그리스도의 본·바울의 선교 계획',
+    16: '문안 인사·마지막 권면·송영',
+  },
+};
+
 const strip = (s) => s ? s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : '';
 
 // ── 담화 접속사 규칙 (우선순위 순) ─────────────────────────────────────────
@@ -174,6 +206,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [threadStrongs, setThreadStrongs] = useState(null);
   const [threadData, setThreadData]       = useState([]);
   const [threadLoading, setThreadLoading] = useState(false);
+  const [metaOpen, setMetaOpen]           = useState(true);
 
   // ── 팝업 창 상태 (데스크톱 전용) ──────────────────────────────────────
   const [minimized, setMinimized] = useState(false);
@@ -439,24 +472,44 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             userSelect:'none' }}>
           <div style={{ display:'flex',alignItems:'center',gap: isMobile?8:10,minWidth:0,flex:1 }}>
             {isMobile ? (
-              <button
-                onClick={() => setChapterPickerOpen(true)}
-                style={{ display:'flex',alignItems:'center',gap:6,
-                  background:'linear-gradient(135deg, rgba(217,119,6,.14), rgba(251,191,36,.08))',
-                  border:'1px solid rgba(217,119,6,.28)',
-                  borderRadius:10,padding:'6px 12px',cursor:'pointer',minHeight:36 }}>
-                <span style={{ fontSize:11,fontWeight:700,color:'#b45309',letterSpacing:'.08em' }}>롬</span>
-                <span style={{ fontSize:16,fontWeight:800,color:'#0f172a',lineHeight:1 }}>
-                  {activeRef.ch}
+              <>
+                <button
+                  onClick={() => setChapterPickerOpen(true)}
+                  style={{ display:'flex',alignItems:'center',gap:6,
+                    background:'linear-gradient(135deg, rgba(217,119,6,.14), rgba(251,191,36,.08))',
+                    border:'1px solid rgba(217,119,6,.28)',
+                    borderRadius:10,padding:'6px 12px',cursor:'pointer',minHeight:36 }}>
+                  <span style={{ fontSize:11,fontWeight:700,color:'#b45309',letterSpacing:'.08em' }}>롬</span>
+                  <span style={{ fontSize:16,fontWeight:800,color:'#0f172a',lineHeight:1 }}>
+                    {activeRef.ch}
+                  </span>
+                  <span style={{ fontSize:11,color:'#64748b',fontWeight:600 }}>:{activeRef.verse}</span>
+                  <span style={{ fontSize:10,color:'#94a3b8',marginLeft:2 }}>▾</span>
+                </button>
+                <span style={{
+                  fontSize:8, fontWeight:800, color:'#b45309',
+                  background:'rgba(251,191,36,.18)',
+                  border:'1px solid rgba(217,119,6,.35)',
+                  borderRadius:4, padding:'2px 5px',
+                  letterSpacing:'.06em', flexShrink:0,
+                  fontFamily:"'Menlo','Monaco',monospace" }}>
+                  TEST 0.1
                 </span>
-                <span style={{ fontSize:11,color:'#64748b',fontWeight:600 }}>:{activeRef.verse}</span>
-                <span style={{ fontSize:10,color:'#94a3b8',marginLeft:2 }}>▾</span>
-              </button>
+              </>
             ) : (
               <>
                 <span style={{ fontSize:16,flexShrink:0 }}>📖</span>
                 <span style={{ fontSize:14,fontWeight:800,color:'#fff',flexShrink:0,letterSpacing:'.02em' }}>
                   문맥 성경 — {BOOK.ko} {activeRef.ch}:{activeRef.verse}
+                </span>
+                <span style={{
+                  fontSize:9, fontWeight:800, color:'#fbbf24',
+                  background:'rgba(0,0,0,.28)',
+                  border:'1px solid rgba(251,191,36,.4)',
+                  borderRadius:4, padding:'2px 6px',
+                  letterSpacing:'.06em', flexShrink:0,
+                  fontFamily:"'Menlo','Monaco',monospace" }}>
+                  TEST VER 0.1
                 </span>
                 {!minimized && (
                   <span style={{ fontSize:11,color:'rgba(255,255,255,.7)',flexShrink:0 }}>
@@ -796,6 +849,106 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               </div>
             )}
             <div style={{ padding: isMobile ? '4px 0 calc(env(safe-area-inset-bottom, 0px) + 20px)' : 0 }}>
+
+            {/* ────── 책 배경 메타 패널 (verse 모드에서만) ────── */}
+            {rightMode === 'verse' && (
+              <div style={{
+                marginBottom: 14,
+                borderRadius: 10,
+                border: '1px solid rgba(217,119,6,.28)',
+                background: 'linear-gradient(180deg, rgba(251,191,36,.08), rgba(217,119,6,.04))',
+                overflow: 'hidden',
+              }}>
+                <button
+                  onClick={() => setMetaOpen(v => !v)}
+                  style={{
+                    width:'100%', display:'flex', alignItems:'center',
+                    justifyContent:'space-between', gap:6,
+                    padding:'8px 12px', border:'none',
+                    background:'transparent', cursor:'pointer',
+                    color:'#b45309', fontSize:11, fontWeight:800,
+                    letterSpacing:'.04em',
+                  }}>
+                  <span style={{ display:'flex',alignItems:'center',gap:6 }}>
+                    <span style={{ fontSize:13 }}>📜</span>
+                    <span>배경 · {BOOK.ko}</span>
+                  </span>
+                  <span style={{ fontSize:11,color:'#94a3b8' }}>
+                    {metaOpen ? '▾' : '▸'}
+                  </span>
+                </button>
+                {metaOpen && (
+                  <div style={{ padding:'2px 12px 12px' }}>
+                    {[
+                      { label:'저작 연도', value: BOOK_META.year,     note: BOOK_META.yearNote },
+                      { label:'저작 장소', value: BOOK_META.place,    note: BOOK_META.placeNote },
+                      { label:'저자',      value: BOOK_META.author,   note: BOOK_META.authorNote },
+                      { label:'1차 독자',  value: BOOK_META.audience, note: BOOK_META.audienceNote },
+                      { label:'핵심 주제', value: BOOK_META.theme,    note: BOOK_META.themeNote },
+                    ].map(row => (
+                      <div key={row.label} style={{
+                        display:'grid', gridTemplateColumns:'60px 1fr',
+                        gap:6, marginBottom:6,
+                      }}>
+                        <span style={{ fontSize:10, color:'#94a3b8',
+                          fontWeight:700, letterSpacing:'.04em' }}>{row.label}</span>
+                        <div>
+                          <div style={{ fontSize:11,fontWeight:700,color:'#1e293b',lineHeight:1.4 }}>
+                            {row.value}
+                          </div>
+                          {row.note && (
+                            <div style={{ fontSize:10,color:'#64748b',lineHeight:1.4,marginTop:1 }}>
+                              {row.note}
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+
+                    {/* 각 장 의제 요약 */}
+                    <div style={{ marginTop:10,paddingTop:8,
+                      borderTop:'1px dashed rgba(217,119,6,.3)' }}>
+                      <div style={{ fontSize:10,color:'#94a3b8',
+                        fontWeight:700,letterSpacing:'.04em',marginBottom:6 }}>
+                        각 장 의제
+                      </div>
+                      {CHAPTERS.map(ch => {
+                        const isActive = ch === activeRef.ch;
+                        return (
+                          <div key={ch}
+                            onClick={() => scrollTo(ch, 1)}
+                            style={{
+                              display:'grid', gridTemplateColumns:'22px 1fr',
+                              gap:6, padding:'4px 6px', marginBottom:1,
+                              borderRadius:5, cursor:'pointer',
+                              background: isActive ? 'rgba(217,119,6,.14)' : 'transparent',
+                              transition:'background .12s',
+                            }}
+                            onMouseEnter={e => {
+                              if (!isActive) e.currentTarget.style.background = 'rgba(15,23,42,.04)';
+                            }}
+                            onMouseLeave={e => {
+                              if (!isActive) e.currentTarget.style.background = 'transparent';
+                            }}>
+                            <span style={{
+                              fontSize:10, fontWeight:800,
+                              color: isActive ? '#b45309' : '#94a3b8',
+                              textAlign:'right', lineHeight:1.4,
+                            }}>{ch}장</span>
+                            <span style={{
+                              fontSize:10.5,
+                              color: isActive ? '#1e293b' : '#475569',
+                              fontWeight: isActive ? 700 : 500,
+                              lineHeight:1.4,
+                            }}>{BOOK_META.chapterAgenda[ch]}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {rightMode === 'thread' && (
               <div key={`thread-${threadStrongs}`} style={{ animation:'ctx-fade .2s ease' }}>
