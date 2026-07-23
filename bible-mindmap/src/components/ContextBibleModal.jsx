@@ -175,8 +175,74 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [threadData, setThreadData]       = useState([]);
   const [threadLoading, setThreadLoading] = useState(false);
 
+  // ── 팝업 창 상태 (데스크톱 전용) ──────────────────────────────────────
+  const [minimized, setMinimized] = useState(false);
+  const [fontSize, setFontSize]   = useState(14); // 11~22
+  const [pos, setPos] = useState(() => {
+    if (typeof window === 'undefined') return { x: 40, y: 40 };
+    const w = Math.min(1040, window.innerWidth - 40);
+    return { x: Math.max(20, (window.innerWidth - w) / 2), y: 48 };
+  });
+  const [size, setSize] = useState(() => {
+    if (typeof window === 'undefined') return { w: 1040, h: 640 };
+    return {
+      w: Math.min(1040, window.innerWidth - 40),
+      h: Math.min(720, window.innerHeight - 96),
+    };
+  });
+
   const scrollRef = useRef(null);
   const obsRef    = useRef(null);
+  const dragging  = useRef(false);
+  const resizing  = useRef(false);
+  const dragStart = useRef({ mx:0,my:0,px:0,py:0 });
+  const resizeStart = useRef({ mx:0,my:0,w:0,h:0 });
+
+  const onHeaderMouseDown = useCallback((e) => {
+    if (isMobile || e.button !== 0) return;
+    // 버튼 등 자식 요소 클릭은 드래그 시작 X
+    if (e.target.closest('button, input')) return;
+    dragging.current = true;
+    dragStart.current = { mx:e.clientX, my:e.clientY, px:pos.x, py:pos.y };
+    e.preventDefault();
+  }, [isMobile, pos]);
+
+  const onResizeMouseDown = useCallback((e) => {
+    if (isMobile || e.button !== 0) return;
+    resizing.current = true;
+    resizeStart.current = { mx:e.clientX, my:e.clientY, w:size.w, h:size.h };
+    e.preventDefault();
+    e.stopPropagation();
+  }, [isMobile, size]);
+
+  useEffect(() => {
+    if (isMobile) return;
+    const onMove = (e) => {
+      if (dragging.current) {
+        const dx = e.clientX - dragStart.current.mx;
+        const dy = e.clientY - dragStart.current.my;
+        setPos({
+          x: Math.max(0, Math.min(window.innerWidth - 200, dragStart.current.px + dx)),
+          y: Math.max(0, Math.min(window.innerHeight - 60, dragStart.current.py + dy)),
+        });
+      }
+      if (resizing.current) {
+        const dw = e.clientX - resizeStart.current.mx;
+        const dh = e.clientY - resizeStart.current.my;
+        setSize({
+          w: Math.max(560, Math.min(window.innerWidth - 40, resizeStart.current.w + dw)),
+          h: Math.max(320, Math.min(window.innerHeight - 40, resizeStart.current.h + dh)),
+        });
+      }
+    };
+    const onUp = () => { dragging.current = false; resizing.current = false; };
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    };
+  }, [isMobile]);
 
   // ── 단일 장 로드 ────────────────────────────────────────────────────────
   const loadChapter = useCallback(async (ch) => {
@@ -345,33 +411,32 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   }, [activeCh, activeRef.verse]);
 
   // ── 렌더 ──────────────────────────────────────────────────────────────
-  return (
-    <div
-      style={{ position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:1200,
-        background:'rgba(15,23,42,.55)',
-        WebkitBackdropFilter:'blur(6px)', backdropFilter:'blur(6px)',
-        display:'flex',alignItems:'center',
-        justifyContent:'center',padding: isMobile ? 0 : 16 }}
-      onClick={onClose}
-    >
+  const modalInner = (
       <div
         style={{ background:'#ffffff',
-          borderRadius: isMobile ? 0 : 18,
-          border: isMobile ? 'none' : '1px solid rgba(15,23,42,.08)',
-          width:'100%',
-          maxWidth: isMobile ? '100%' : 1040,
-          height: isMobile ? '100dvh' : '92vh',
+          borderRadius: isMobile ? 0 : 12,
+          border: isMobile ? 'none' : '1px solid rgba(15,23,42,.1)',
+          width: isMobile ? '100%' : size.w,
+          maxWidth: isMobile ? '100%' : 'none',
+          height: isMobile ? '100dvh' : (minimized ? 'auto' : size.h),
           display:'flex',flexDirection:'column',
           overflow:'hidden',
-          boxShadow: isMobile ? 'none' : '0 24px 80px rgba(15,23,42,.25)',
-          position:'relative' }}
+          boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
+          position:'relative',
+          userSelect: dragging.current ? 'none' : 'auto' }}
         onClick={e => e.stopPropagation()}
       >
-        {/* ── 헤더 ── */}
-        <div style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
-          padding: isMobile ? 'calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px' : '13px 22px 11px',
-          borderBottom:'1px solid rgba(15,23,42,.08)',flexShrink:0,gap:8,
-          background:'#ffffff' }}>
+        {/* ── 헤더 (데스크톱: 드래그 핸들) ── */}
+        <div
+          onMouseDown={onHeaderMouseDown}
+          style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
+            padding: isMobile ? 'calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px' : '9px 12px 9px 16px',
+            borderBottom:'1px solid rgba(255,255,255,.15)',flexShrink:0,gap:8,
+            background: isMobile ? '#ffffff'
+              : 'linear-gradient(135deg, #b45309, #d97706)',
+            borderRadius: isMobile ? 0 : (minimized ? 12 : '12px 12px 0 0'),
+            cursor: isMobile ? 'default' : 'grab',
+            userSelect:'none' }}>
           <div style={{ display:'flex',alignItems:'center',gap: isMobile?8:10,minWidth:0,flex:1 }}>
             {isMobile ? (
               <button
@@ -389,13 +454,15 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               </button>
             ) : (
               <>
-                <span style={{ background:'rgba(217,119,6,.12)',border:'1px solid rgba(217,119,6,.3)',
-                  borderRadius:8,padding:'4px 10px',fontSize:11,fontWeight:700,
-                  color:'#b45309',letterSpacing:'.08em',flexShrink:0 }}>문맥 성경</span>
-                <span style={{ fontSize:15,fontWeight:700,color:'#0f172a',flexShrink:0 }}>
-                  {BOOK.ko} {activeRef.ch}:{activeRef.verse}
+                <span style={{ fontSize:16,flexShrink:0 }}>📖</span>
+                <span style={{ fontSize:14,fontWeight:800,color:'#fff',flexShrink:0,letterSpacing:'.02em' }}>
+                  문맥 성경 — {BOOK.ko} {activeRef.ch}:{activeRef.verse}
                 </span>
-                <span style={{ fontSize:11,color:'#94a3b8' }}>헬라어 담화구조 → 개역한글 · 전체 문맥</span>
+                {!minimized && (
+                  <span style={{ fontSize:11,color:'rgba(255,255,255,.7)',flexShrink:0 }}>
+                    · 헬라어 담화구조
+                  </span>
+                )}
               </>
             )}
           </div>
@@ -408,13 +475,43 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   fontSize:18,cursor:'pointer',padding:'6px 8px',borderRadius:8,
                   minWidth:36,minHeight:36 }}>ⓘ</button>
             )}
-            <button onClick={onClose}
-              style={{ background:'none',border:'none',color:'#94a3b8',
+            {!isMobile && !minimized && (
+              <>
+                <button
+                  onMouseDown={e => e.stopPropagation()}
+                  onClick={() => setFontSize(v => Math.max(11, v - 1))}
+                  title="글자 작게"
+                  style={popupIconBtn}>A－</button>
+                <span style={{ fontSize:10,color:'rgba(255,255,255,.85)',
+                  minWidth:24,textAlign:'center',fontWeight:700 }}>{fontSize}</span>
+                <button
+                  onMouseDown={e => e.stopPropagation()}
+                  onClick={() => setFontSize(v => Math.min(22, v + 1))}
+                  title="글자 크게"
+                  style={popupIconBtn}>A＋</button>
+                <div style={{ width:1,height:18,background:'rgba(255,255,255,.2)',margin:'0 4px' }} />
+              </>
+            )}
+            {!isMobile && (
+              <button
+                onMouseDown={e => e.stopPropagation()}
+                onClick={() => setMinimized(v => !v)}
+                title={minimized ? '펼치기' : '최소화'}
+                style={popupIconBtn}>{minimized ? '▲' : '▼'}</button>
+            )}
+            <button
+              onMouseDown={e => e.stopPropagation()}
+              onClick={onClose}
+              title="닫기"
+              style={{ ...(isMobile ? {
+                background:'none',border:'none',color:'#94a3b8',
                 fontSize:22,cursor:'pointer',padding:'4px 8px',borderRadius:8,
-                minWidth:36,minHeight:36 }}>✕</button>
+                minWidth:36,minHeight:36
+              } : { ...popupIconBtn, background:'rgba(239,68,68,.35)' })}}>✕</button>
           </div>
         </div>
 
+        {!minimized && (<>
         {/* ── 담화 레전드 (모바일은 접힘 가능) ── */}
         {(!isMobile || legendOpen) && (
           <div style={{ display:'flex',alignItems:'center',
@@ -601,7 +698,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                             </div>
 
                             <div style={{ flex:1,minWidth:0 }}>
-                              <div style={{ fontSize: isMobile?16:13.5,color:'#1e293b',
+                              <div style={{ fontSize: isMobile?16:fontSize,color:'#1e293b',
                                 lineHeight: isMobile?1.75:1.85,wordBreak:'keep-all' }}>
                                 {vData.text}
                               </div>
@@ -978,6 +1075,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 boxShadow:'0 3px 10px rgba(217,119,6,.35)' }}>☰</button>
           </div>
         )}
+        </>)}
 
         {/* ── 챕터 피커 (모바일) ── */}
         {isMobile && chapterPickerOpen && (
@@ -1031,18 +1129,77 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             </div>
           </div>
         )}
-      </div>
 
-      <style>{`
-        @keyframes ctx-fade {
-          from { opacity:0; transform:translateY(5px); }
-          to   { opacity:1; transform:translateY(0); }
-        }
-        @keyframes ctx-slideup {
-          from { transform:translateY(100%); }
-          to   { transform:translateY(0); }
-        }
-      `}</style>
+        {/* ── 리사이즈 핸들 (데스크톱, 최소화 아닐 때) ── */}
+        {!isMobile && !minimized && (
+          <div
+            onMouseDown={onResizeMouseDown}
+            title="크기 조절"
+            style={{
+              position:'absolute', right:0, bottom:0,
+              width:18, height:18, cursor:'se-resize',
+              borderRadius:'0 0 12px 0',
+              background:'linear-gradient(135deg, transparent 45%, #cbd5e1 45%, #94a3b8 100%)',
+              zIndex:20,
+            }}
+          />
+        )}
+      </div>
+  );
+
+  const styleBlock = (
+    <style>{`
+      @keyframes ctx-fade {
+        from { opacity:0; transform:translateY(5px); }
+        to   { opacity:1; transform:translateY(0); }
+      }
+      @keyframes ctx-slideup {
+        from { transform:translateY(100%); }
+        to   { transform:translateY(0); }
+      }
+    `}</style>
+  );
+
+  // 모바일: 풀스크린 + 백드롭
+  if (isMobile) {
+    return (
+      <div
+        style={{ position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:1200,
+          background:'rgba(15,23,42,.55)',
+          WebkitBackdropFilter:'blur(6px)', backdropFilter:'blur(6px)',
+          display:'flex',alignItems:'stretch',justifyContent:'center' }}
+        onClick={onClose}
+      >
+        {modalInner}
+        {styleBlock}
+      </div>
+    );
+  }
+
+  // 데스크톱: 백드롭 없는 팝업 창 (드래그 + 리사이즈)
+  return (
+    <div
+      style={{ position:'fixed',
+        left:pos.x, top:pos.y, zIndex:1200,
+        fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}
+    >
+      {modalInner}
+      {styleBlock}
     </div>
   );
 }
+
+const popupIconBtn = {
+  background: 'rgba(255,255,255,.15)',
+  border: 'none',
+  borderRadius: 6,
+  color: '#fff',
+  fontSize: 11,
+  fontWeight: 700,
+  minWidth: 28, height: 26,
+  padding: '0 6px',
+  cursor: 'pointer',
+  display: 'inline-flex',
+  alignItems: 'center', justifyContent: 'center',
+  flexShrink: 0,
+};
