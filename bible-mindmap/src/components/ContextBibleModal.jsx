@@ -285,8 +285,10 @@ export default function ContextBibleModal({ onClose }) {
   // ── 렌더 ──────────────────────────────────────────────────────────────
   return (
     <div
-      style={{ position:'fixed',inset:0,zIndex:1200,background:'rgba(15,23,42,.45)',
-        backdropFilter:'blur(6px)',display:'flex',alignItems:'center',
+      style={{ position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:1200,
+        background:'rgba(15,23,42,.55)',
+        WebkitBackdropFilter:'blur(6px)', backdropFilter:'blur(6px)',
+        display:'flex',alignItems:'center',
         justifyContent:'center',padding: isMobile ? 0 : 16 }}
       onClick={onClose}
     >
@@ -296,7 +298,7 @@ export default function ContextBibleModal({ onClose }) {
           border: isMobile ? 'none' : '1px solid rgba(15,23,42,.08)',
           width:'100%',
           maxWidth: isMobile ? '100%' : 1040,
-          height: isMobile ? '100vh' : '92vh',
+          height: isMobile ? '100dvh' : '92vh',
           display:'flex',flexDirection:'column',
           overflow:'hidden',
           boxShadow: isMobile ? 'none' : '0 24px 80px rgba(15,23,42,.25)',
