@@ -155,7 +155,7 @@ function buildIndentLevels(analyzed, qaPairs, krv) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
-export default function ContextBibleModal({ onClose }) {
+export default function ContextBibleModal({ onClose, initialRef }) {
   const isMobile = useMobile();
   // 모바일 바텀시트: 'closed' | 'peek' | 'full'
   const [sheetSnap, setSheetSnap] = useState('closed');
@@ -163,8 +163,12 @@ export default function ContextBibleModal({ onClose }) {
   const [legendOpen, setLegendOpen] = useState(false);
   const [chapters, setChapters] = useState({}); // { [ch]: { krv, lex, analyzed, theoFreq, paragraphs, qaPairs, indentLevels } }
   const [loading, setLoading] = useState(true);
+  const [failedChapters, setFailedChapters] = useState([]); // [{ch, err}]
+  const [retrying, setRetrying] = useState(false);
   const [error, setError]     = useState('');
-  const [activeRef, setActiveRef] = useState({ ch: 1, verse: 1 });
+  const scrolledToInitial = useRef(false);
+  const [activeRef, setActiveRef] = useState(() =>
+    initialRef?.ch && initialRef?.verse ? initialRef : { ch: 1, verse: 1 });
 
   const [rightMode, setRightMode]         = useState('verse');
   const [threadStrongs, setThreadStrongs] = useState(null);
@@ -174,36 +178,77 @@ export default function ContextBibleModal({ onClose }) {
   const scrollRef = useRef(null);
   const obsRef    = useRef(null);
 
-  // ── 로마서 전체 로드 ────────────────────────────────────────────────────
-  useEffect(() => {
-    let cancelled = false;
-    setLoading(true); setError('');
-
-    Promise.all(CHAPTERS.map(async ch => {
-      const [krvRaw, lexData] = await Promise.all([
-        fetch(`https://bolls.life/get-text/KRV/${BOOK.bollsNum}/${ch}/`).then(r => r.json()),
-        fetch(`${BASE}data/lex/gnt/${BOOK.lexId}/${ch}.json`).then(r => r.json()),
-      ]);
-      const krv = krvRaw.map(v => ({ verse: Number(v.verse), text: strip(v.text) }));
-      const analyzed = {};
-      for (const [v, words] of Object.entries(lexData)) {
-        analyzed[Number(v)] = analyzeVerse(words);
-      }
-      const theoFreq     = calcChapterTheoFreq(lexData);
-      const paragraphs   = buildParagraphs(krv, analyzed);
-      const qaPairs      = detectQAPairs(analyzed, krv);
-      const indentLevels = buildIndentLevels(analyzed, qaPairs, krv);
-      return [ch, { krv, lex: lexData, analyzed, theoFreq, paragraphs, qaPairs, indentLevels }];
-    })).then(entries => {
-      if (cancelled) return;
-      setChapters(Object.fromEntries(entries));
-      setLoading(false);
-    }).catch(e => { if (!cancelled) { setError(e.message); setLoading(false); } });
-
-    return () => { cancelled = true; };
+  // ── 단일 장 로드 ────────────────────────────────────────────────────────
+  const loadChapter = useCallback(async (ch) => {
+    const [krvRaw, lexData] = await Promise.all([
+      fetch(`https://bolls.life/get-text/KRV/${BOOK.bollsNum}/${ch}/`).then(r => {
+        if (!r.ok) throw new Error(`KRV ${ch}장 HTTP ${r.status}`);
+        return r.json();
+      }),
+      fetch(`${BASE}data/lex/gnt/${BOOK.lexId}/${ch}.json`).then(r => {
+        if (!r.ok) throw new Error(`lex ${ch}장 HTTP ${r.status}`);
+        return r.json();
+      }),
+    ]);
+    const krv = krvRaw.map(v => ({ verse: Number(v.verse), text: strip(v.text) }));
+    const analyzed = {};
+    for (const [v, words] of Object.entries(lexData)) {
+      analyzed[Number(v)] = analyzeVerse(words);
+    }
+    const theoFreq     = calcChapterTheoFreq(lexData);
+    const paragraphs   = buildParagraphs(krv, analyzed);
+    const qaPairs      = detectQAPairs(analyzed, krv);
+    const indentLevels = buildIndentLevels(analyzed, qaPairs, krv);
+    return { krv, lex: lexData, analyzed, theoFreq, paragraphs, qaPairs, indentLevels };
   }, []);
 
-  const chReady   = !loading && Object.keys(chapters).length === CHAPTERS.length;
+  // ── 로마서 전체 로드 (실패 챕터 격리) ────────────────────────────────────
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true); setError(''); setFailedChapters([]);
+
+    Promise.allSettled(CHAPTERS.map(ch => loadChapter(ch).then(v => [ch, v])))
+      .then(results => {
+        if (cancelled) return;
+        const ok = [];
+        const failed = [];
+        results.forEach((r, i) => {
+          if (r.status === 'fulfilled') ok.push(r.value);
+          else failed.push({ ch: CHAPTERS[i], err: r.reason?.message || '로드 실패' });
+        });
+        setChapters(Object.fromEntries(ok));
+        setFailedChapters(failed);
+        if (ok.length === 0) setError('모든 장 로드 실패 — 네트워크 확인 후 재시도');
+        setLoading(false);
+      });
+
+    return () => { cancelled = true; };
+  }, [loadChapter]);
+
+  // ── 실패 챕터 재시도 ──────────────────────────────────────────────────────
+  const retryFailed = useCallback(async () => {
+    if (!failedChapters.length || retrying) return;
+    setRetrying(true);
+    const chs = failedChapters.map(f => f.ch);
+    const results = await Promise.allSettled(chs.map(ch => loadChapter(ch).then(v => [ch, v])));
+    const newOk = {};
+    const stillFailed = [];
+    results.forEach((r, i) => {
+      if (r.status === 'fulfilled') {
+        const [ch, v] = r.value;
+        newOk[ch] = v;
+      } else {
+        stillFailed.push({ ch: chs[i], err: r.reason?.message || '로드 실패' });
+      }
+    });
+    setChapters(prev => ({ ...prev, ...newOk }));
+    setFailedChapters(stillFailed);
+    if (Object.keys(newOk).length > 0) setError('');
+    setRetrying(false);
+  }, [failedChapters, retrying, loadChapter]);
+
+  const loadedCount = Object.keys(chapters).length;
+  const chReady   = !loading && loadedCount > 0;
   const activeCh  = chapters[activeRef.ch];
   const activeKrv = activeCh?.krv || [];
   const activeAna = activeCh?.analyzed?.[activeRef.verse] || { discourse: null, theoTerms: [] };
@@ -235,6 +280,23 @@ export default function ContextBibleModal({ onClose }) {
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
   }, [onClose]);
+
+  // ── initialRef 로 자동 스크롤 (챕터 로드 완료 후 한 번만) ─────────────
+  useEffect(() => {
+    if (!chReady || scrolledToInitial.current) return;
+    if (!initialRef?.ch || !initialRef?.verse) {
+      scrolledToInitial.current = true;
+      return;
+    }
+    // 해당 챕터가 로드됐는지 확인
+    if (!chapters[initialRef.ch]) return;
+    scrolledToInitial.current = true;
+    requestAnimationFrame(() => {
+      scrollRef.current
+        ?.querySelector(`[data-ch="${initialRef.ch}"][data-verse="${initialRef.verse}"]`)
+        ?.scrollIntoView({ behavior: 'auto', block: 'center' });
+    });
+  }, [chReady, chapters, initialRef]);
 
   const scrollTo = useCallback((ch, verse) => {
     setActiveRef({ ch, verse });
@@ -413,7 +475,39 @@ export default function ContextBibleModal({ onClose }) {
               </div>
             )}
             {error && (
-              <div style={{ color:'#dc2626',textAlign:'center',marginTop:60,fontSize:13 }}>{error}</div>
+              <div style={{ color:'#dc2626',textAlign:'center',marginTop:60,fontSize:13 }}>
+                {error}
+                <div style={{ marginTop:10 }}>
+                  <button onClick={retryFailed} disabled={retrying}
+                    style={{ padding:'6px 14px',fontSize:12,fontWeight:700,
+                      background:'#dc2626',color:'#fff',border:'none',
+                      borderRadius:6,cursor: retrying?'default':'pointer',
+                      opacity: retrying?0.6:1 }}>
+                    {retrying ? '재시도 중…' : '↻ 재시도'}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {chReady && failedChapters.length > 0 && (
+              <div style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
+                gap:8,padding:'8px 12px',marginBottom:10,
+                background:'rgba(220,38,38,.08)',border:'1px solid rgba(220,38,38,.25)',
+                borderRadius:8,fontSize:12,color:'#991b1b' }}>
+                <span>
+                  ⚠ {failedChapters.length}개 장 로드 실패
+                  <span style={{ marginLeft:6,color:'#94a3b8',fontWeight:400 }}>
+                    ({failedChapters.map(f => f.ch).join(', ')}장)
+                  </span>
+                </span>
+                <button onClick={retryFailed} disabled={retrying}
+                  style={{ padding:'4px 10px',fontSize:11,fontWeight:700,
+                    background:'#dc2626',color:'#fff',border:'none',
+                    borderRadius:5,cursor: retrying?'default':'pointer',
+                    opacity: retrying?0.6:1,flexShrink:0 }}>
+                  {retrying ? '재시도 중…' : '↻ 재시도'}
+                </button>
+              </div>
             )}
 
             {chReady && CHAPTERS.map(ch => {
@@ -912,17 +1006,25 @@ export default function ContextBibleModal({ onClose }) {
               <div style={{ display:'grid',gridTemplateColumns:'repeat(4, 1fr)',gap:8 }}>
                 {CHAPTERS.map(ch => {
                   const isActive = ch === activeRef.ch;
+                  const isFailed = !chapters[ch];
                   return (
                     <button key={ch}
+                      disabled={isFailed}
                       onClick={() => { scrollTo(ch, 1); setChapterPickerOpen(false); }}
                       style={{
                         padding:'14px 0',fontSize:16,fontWeight:800,
-                        border:'none',borderRadius:12,cursor:'pointer',
-                        background: isActive ? 'linear-gradient(135deg,#d97706,#f59e0b)' : 'rgba(15,23,42,.05)',
-                        color: isActive ? '#fff' : '#334155',
+                        border:'none',borderRadius:12,
+                        cursor: isFailed ? 'not-allowed' : 'pointer',
+                        background: isActive ? 'linear-gradient(135deg,#d97706,#f59e0b)'
+                          : isFailed ? 'rgba(220,38,38,.08)' : 'rgba(15,23,42,.05)',
+                        color: isActive ? '#fff' : isFailed ? '#dc2626' : '#334155',
+                        opacity: isFailed ? 0.55 : 1,
                         boxShadow: isActive ? '0 4px 12px rgba(217,119,6,.35)' : 'none',
                         transition:'transform .1s',
-                      }}>{ch}</button>
+                      }}>
+                      {ch}
+                      {isFailed && <span style={{ fontSize:9,display:'block',marginTop:2 }}>✕</span>}
+                    </button>
                   );
                 })}
               </div>

@@ -9,7 +9,7 @@ import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
 import { getBibleTags } from '../data/bibleReferences';
 import { detectInputMode } from '../utils/wordSearch';
 
-export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax }) {
+export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
   const [showManual, setShowManual] = useState(false);
@@ -318,7 +318,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
         </div>
         {showManual && <ManualModal onClose={() => setShowManual(false)} />}
         {showContextBible && (
-          <ContextBibleModal onClose={() => setShowContextBible(false)} />
+          <ContextBibleModal
+            initialRef={contextBibleInitialRef}
+            onClose={() => setShowContextBible(false)}
+          />
         )}
         {showWordSearch && pendingSearch && (
           <WordSearchModal
@@ -362,6 +365,15 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
                 width: 36, height: 28, fontSize: 13, boxShadow: '0 2px 6px rgba(37,99,235,0.35)',
               }}
             >📘</button>
+            <button
+              onClick={() => setShowContextBible(true)}
+              title="문맥 성경 (로마서)"
+              style={{
+                ...railIconBtn('linear-gradient(135deg,#d97706,#f59e0b)', '#fff'),
+                width: 36, height: 28, fontSize: 13,
+                boxShadow: '0 2px 6px rgba(217,119,6,0.4)',
+              }}
+            >📖</button>
           </div>
 
           {/* 노드 타입 rail — 아이콘 + 미니 라벨 */}
@@ -428,7 +440,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           />
         )}
         {showContextBible && (
-          <ContextBibleModal onClose={() => setShowContextBible(false)} />
+          <ContextBibleModal
+            initialRef={contextBibleInitialRef}
+            onClose={() => setShowContextBible(false)}
+          />
         )}
       </>
     );
@@ -743,7 +758,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       />
     )}
     {showContextBible && (
-      <ContextBibleModal onClose={() => setShowContextBible(false)} />
+      <ContextBibleModal
+        initialRef={contextBibleInitialRef}
+        onClose={() => setShowContextBible(false)}
+      />
     )}
     </>
   );

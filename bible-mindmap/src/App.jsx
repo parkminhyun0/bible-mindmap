@@ -234,6 +234,16 @@ export default function App() {
     [edges, selectedEdgeId],
   );
 
+  // 문맥 성경(로마서) — 선택된 verse 노드가 로마서면 그 절부터 시작
+  const contextBibleInitialRef = useMemo(() => {
+    const d = selectedNode?.data;
+    if (selectedNode?.type !== 'verse' || d?.bookId !== 'Rom') return null;
+    const ch = Number(d.chapter);
+    const verse = Number(d.verseStart);
+    if (!ch || !verse) return null;
+    return { ch, verse };
+  }, [selectedNode]);
+
   // 엣지 선택 시 해당 엣지의 설정을 로드
   useEffect(() => {
     if (selectedEdge) {
@@ -656,6 +666,7 @@ export default function App() {
         onAddNode={handleAddNode}
         mobileOpen={mobileSidebarOpen}
         onMobileClose={() => setMobileSidebarOpen(false)}
+        contextBibleInitialRef={contextBibleInitialRef}
         onOpenSyntax={(p) => {
           const id = ++syntaxIdRef.current;
           setSyntaxPanels(prev => [...prev, { id, passage: p }]);
