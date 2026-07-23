@@ -1579,7 +1579,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   {ana.theoTerms.map(t => (
                                     <span key={t.strongs}
                                       onClick={e => { e.stopPropagation(); startThread(t.strongs); }}
-                                      title={`"${t.ko}" ${ee.ko} 전체 추적 →`}
+                                      title={`"${t.ko}" ${BOOK.ko} 전체 추적 →`}
                                       style={{ fontSize: isMobile?9:fontSizes.meta-1,fontWeight:700,color:t.color,
                                         background:t.color+'22',border:`1px solid ${t.color}55`,
                                         borderRadius:99,padding:'1px 7px',cursor:'pointer',
@@ -1834,12 +1834,12 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
                 {threadLoading ? (
                   <div style={{ color:'#64748b',fontSize:12,textAlign:'center',paddingTop:30 }}>
-                    {ee.ko} 전체 스캔 중…
+                    {BOOK.ko} 전체 스캔 중…
                   </div>
                 ) : (
                   <>
                     <div style={{ fontSize:10,color:'#64748b',marginBottom:12 }}>
-                      {ee.ko} 전체 <strong style={{ color:THEO_TERMS[threadStrongs]?.color }}>
+                      {BOOK.ko} 전체 <strong style={{ color:THEO_TERMS[threadStrongs]?.color }}>
                         {threadData.length}절
                       </strong>에서 등장
                     </div>
@@ -2154,7 +2154,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   e.currentTarget.style.borderColor = 'rgba(15,23,42,.15)';
                   e.currentTarget.style.color = '#334155';
                 }}
-              >← {ee.ko}로 돌아가기</button>
+              >← {BOOK.ko}로 돌아가기</button>
             </div>
           </div>
         )}
@@ -2228,7 +2228,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               </div>
               <div style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
                 marginBottom:14 }}>
-                <span style={{ fontSize:15,fontWeight:800,color:'#0f172a' }}>{ee.ko} 목차</span>
+                <span style={{ fontSize:15,fontWeight:800,color:'#0f172a' }}>{BOOK.ko} 목차</span>
                 <button onClick={() => setChapterPickerOpen(false)}
                   style={{ background:'none',border:'none',fontSize:20,color:'#94a3b8',
                     cursor:'pointer',padding:'4px 8px' }}>✕</button>
