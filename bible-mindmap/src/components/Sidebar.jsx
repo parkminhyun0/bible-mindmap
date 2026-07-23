@@ -547,16 +547,28 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
         <button
           onClick={() => setShowContextBible(true)}
           style={{
-            width: '100%', padding: '8px 12px',
-            background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
-            border: '1px solid rgba(217,119,6,.35)',
+            width: '100%', padding: '9px 12px',
+            background: '#593E2E',
+            border: '1px solid #3d2a20',
             borderRadius: 8, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-            color: '#d97706', fontSize: 12, fontWeight: 700,
-            transition: 'background .18s, border-color .18s',
+            color: '#EAD7C1', fontSize: 12, fontWeight: 700,
+            letterSpacing: '.02em',
+            transition: 'background .18s, color .18s, border-color .18s, box-shadow .18s',
+            boxShadow: '0 1px 3px rgba(89,62,46,.25)',
           }}
-          onMouseOver={e => { e.currentTarget.style.background = 'rgba(217,119,6,.25)'; e.currentTarget.style.borderColor = 'rgba(217,119,6,.6)'; }}
-          onMouseOut={e => { e.currentTarget.style.background = 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))'; e.currentTarget.style.borderColor = 'rgba(217,119,6,.35)'; }}
+          onMouseOver={e => {
+            e.currentTarget.style.background = '#BF9B7A';
+            e.currentTarget.style.color = '#33131D';
+            e.currentTarget.style.borderColor = '#9c7d5f';
+            e.currentTarget.style.boxShadow = '0 2px 6px rgba(191,155,122,.4)';
+          }}
+          onMouseOut={e => {
+            e.currentTarget.style.background = '#593E2E';
+            e.currentTarget.style.color = '#EAD7C1';
+            e.currentTarget.style.borderColor = '#3d2a20';
+            e.currentTarget.style.boxShadow = '0 1px 3px rgba(89,62,46,.25)';
+          }}
         >
           📖 문맥 성경
         </button>

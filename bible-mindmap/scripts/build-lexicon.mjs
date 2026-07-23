@@ -128,16 +128,29 @@ function parseWordTr(field) {
   return [field.trim(), ''];
 }
 
-// STEPBible ref: "Mat.1.1#01=NKO" or "Gen.1.1#01=L"
-// → { book: 'Matt', chapter: 1, verse: 1 }
+// STEPBible ref 형식:
+//   "Mat.1.1#01=NKO"                — 표준 (일치)
+//   "Gen.31.55(32.1)#01=L"          — Primary=영어(KJV/KRV) · Parenthetical=히브리 MT
+//   "Rom.3.26(3.25)#..."            — Primary=영어 · Parenthetical=헬라 원어
+//   → Primary 를 그대로 사용 (KRV 매칭)
+//   → 괄호 안 값을 원어(hebRef) 로 저장
 function parseRef(refField) {
   if (!refField) return null;
-  const m = refField.match(/^(\w+)\.(\d+)\.(\d+)#/);
+  const m = refField.match(/^(\w+)\.(\d+)\.(\d+)(?:\(([\d.]+)\))?#/);
   if (!m) return null;
   const bookCode = m[1];
   const bookId = BOOK_MAP[bookCode];
   if (!bookId) return null;
-  return { bookId, chapter: +m[2], verse: +m[3] };
+  const chapter = +m[2];   // 영어 (primary · KRV 매칭)
+  const verse   = +m[3];
+  let hebRef    = null;
+  if (m[4]) {
+    const parts = m[4].split('.');
+    if (parts.length === 2) {
+      hebRef = `${parts[0]}:${parts[1]}`; // 원어 (히브리 MT / 헬라 NA28)
+    }
+  }
+  return { bookId, chapter, verse, hebRef };
 }
 
 async function processFile(src) {
@@ -148,6 +161,8 @@ async function processFile(src) {
 
   // byBook[bookId][chapter][verse] = [wordObj, ...]
   const byBook = new Map();
+  // 히브리↔영어 절 번호 차이 저장: hebRefsByBook[bookId][chapter][englishVerse] = 'hebCh:hebV'
+  const hebRefsByBook = new Map();
 
   let processed = 0;
   for (const raw of lines) {
@@ -191,6 +206,14 @@ async function processFile(src) {
     const vMap = chMap.get(ref.chapter);
     if (!vMap.has(ref.verse)) vMap.set(ref.verse, []);
     vMap.get(ref.verse).push(w);
+    // hebRef 기록 (동일 절엔 한 번만)
+    if (ref.hebRef) {
+      if (!hebRefsByBook.has(ref.bookId)) hebRefsByBook.set(ref.bookId, new Map());
+      const hbMap = hebRefsByBook.get(ref.bookId);
+      if (!hbMap.has(ref.chapter)) hbMap.set(ref.chapter, {});
+      const chObj = hbMap.get(ref.chapter);
+      if (!(ref.verse in chObj)) chObj[ref.verse] = ref.hebRef;
+    }
     processed++;
   }
 
@@ -207,6 +230,7 @@ async function processFile(src) {
     if (!strongIndex.has(bookId)) strongIndex.set(bookId, new Map());
     const sMap = strongIndex.get(bookId);
 
+    const hbMap = hebRefsByBook.get(bookId);
     for (const [chapter, vMap] of chMap) {
       const obj = {};
       for (const v of [...vMap.keys()].sort((a, b) => a - b)) {
@@ -218,6 +242,11 @@ async function processFile(src) {
           if (!sMap.has(word.s)) sMap.set(word.s, []);
           sMap.get(word.s).push({ ch: chapter, v, w: word.w, m: word.m || '', l: word.l || '' });
         }
+      }
+      // 히브리↔영어 절 번호 차이 병기 (있을 때만)
+      const hebRefsThisCh = hbMap?.get(chapter);
+      if (hebRefsThisCh && Object.keys(hebRefsThisCh).length) {
+        obj._hebRefs = hebRefsThisCh;
       }
       const outfile = path.join(bookDir, `${chapter}.json`);
       await fs.writeFile(outfile, JSON.stringify(obj));
