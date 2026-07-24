@@ -692,12 +692,170 @@ export const EXO_CTX = {
   },
 };
 
+// ── 마가복음 전용 구조 마커 (자동 감지 위에 오버레이) ────────────────────
+// 신약학 표준 신학 모티프 반영 (Wrede, Marcus, France, Hooker, Bock 등)
+const MRK_STRUCTURAL_RULES = [
+  { id: 'immediately', role: '즉시 (마가 시그니처)', icon: '⚡', color: '#eab308', bg: 'rgba(234,179,8,.13)',
+    gr: 'εὐθύς', tr: '유튀스', indent: 1,
+    desc: '"곧·즉시" — 마가 특유 부사, 복음서 통틀어 41회 등장 (마가 26·마태 5·누가 1). 사건의 긴박성·성령 주도성 강조.',
+    match: (s) => s.has('G2117') || s.has('G2112') },
+  { id: 'son_of_god', role: '하나님의 아들 계시', icon: '👑', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'υἱὸς θεοῦ', tr: '휘오스 테우',
+    desc: '"하나님의 아들 예수 그리스도" (1:1) — 서두 · 세례 (1:11) · 변화산 (9:7) · 백부장 고백 (15:39) 을 잇는 대주제.',
+    match: null },
+  { id: 'heaven_torn', role: '하늘 찢어짐 · Inclusio', icon: '🕊️', color: '#0891b2', bg: 'rgba(8,145,178,.14)',
+    gr: 'σχιζομένους', tr: '스키조메누스',
+    desc: '"하늘이 갈라짐" (1:10 세례) 과 "성전 휘장 위로부터 아래까지 찢어짐" (15:38) 이 동일 어근으로 대응 — 하나님·인간 사이 진입 개방의 신학적 액자 (inclusio).',
+    match: null },
+  { id: 'messianic_secret', role: '메시아 비밀 (침묵 명령)', icon: '🤫', color: '#64748b', bg: 'rgba(100,116,139,.15)',
+    gr: 'μηδενὶ μηδὲν εἴπῃς', tr: '메데니 메덴 에이페스',
+    desc: '"아무에게도 이르지 말라" — 예수가 자신의 정체·이적을 함구하도록 명령. Wrede 이후 신약학 표준 개념. 1:44, 3:12, 5:43, 7:36, 8:30, 9:9.',
+    match: null },
+  { id: 'passion_prediction', role: '수난 예고 (3회)', icon: '✝️', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'δεῖ τὸν υἱὸν τοῦ ἀνθρώπου πολλὰ παθεῖν', tr: '데이 톤 휘온 투 안트로푸 폴라 파테인',
+    desc: '"인자가 반드시 많은 고난을 받고" — 8:31, 9:31, 10:33-34 세 지점에서 정확히 반복. 마가 서사 중심축이 갈릴리→예루살렘·정체계시→수난으로 전환.',
+    match: null },
+  { id: 'transfiguration', role: '변화산 계시', icon: '🌟', color: '#f59e0b', bg: 'rgba(245,158,11,.14)',
+    gr: 'μετεμορφώθη', tr: '메테모르포테',
+    desc: '"그가 변화되사" (9:2) — 예수의 신성 계시. 모세·엘리야 함께 · 하늘 음성 "이는 내 사랑하는 아들이니 너희는 그의 말을 들으라" (9:7).',
+    match: null },
+  { id: 'ransom', role: '대속물 · 신학적 정점', icon: '🎯', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'λύτρον ἀντὶ πολλῶν', tr: '뤼트론 안티 폴론',
+    desc: '"많은 사람의 대속물로 자기 목숨을 주려 함이니라" (10:45) — 마가복음의 신학적 정점. 섬김·자기 비움·구속 신학이 응결.',
+    match: null },
+  { id: 'temple_action', role: '성전 정화·심판', icon: '🏛️', color: '#b45309', bg: 'rgba(180,83,9,.13)',
+    gr: 'ἐξέβαλεν τοὺς πωλοῦντας', tr: '엑세발렌 투스 폴룬타스',
+    desc: '"파는 자들을 내쫓으시니라" (11:15) — 무화과 저주와 샌드위치 구조로 성전 심판 예고. 예루살렘 갈등의 도화선.',
+    match: null },
+  { id: 'centurion_confession', role: '백부장 고백 (Inclusio 완성)', icon: '💀', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'ἀληθῶς οὗτος ὁ ἄνθρωπος υἱὸς θεοῦ ἦν', tr: '알레토스 후토스 호 안트로포스 휘오스 테우 엔',
+    desc: '"이 사람은 진실로 하나님의 아들이었도다" (15:39) — 이방인 백부장이 십자가 앞에서 마가 서두 (1:1) 를 완성하는 고백. Inclusio 신학적 절정.',
+    match: null },
+  { id: 'empty_tomb', role: '빈 무덤 · 부활 선포', icon: '🎭', color: '#10b981', bg: 'rgba(16,185,129,.14)',
+    gr: 'ἠγέρθη, οὐκ ἔστιν ὧδε', tr: '에게르테 우크 에스틴 호데',
+    desc: '"그가 살아나셨고 여기 계시지 아니하니라" (16:6) — 마가 원본 종결점. 여인들의 두려움 · 침묵 (16:8) 으로 열린 결말.',
+    match: null },
+];
+
+// 마가복음 수동 담화 주석: 정체 계시 · 메시아 비밀 · 수난·부활 서사의 신학적 결정 지점
+const MRK_MANUAL_DISCOURSE = {
+  '1:1':   'son_of_god',            // 표제 · 하나님의 아들 예수 그리스도의 복음
+  '1:10':  'heaven_torn',           // 하늘 갈라짐 · 성령 강림 (Inclusio 시작)
+  '1:11':  'son_of_god',            // 하늘 음성 "너는 내 사랑하는 아들이라"
+  '1:15':  'immediately',           // 때가 찼고 하나님 나라가 가까이 왔다
+  '1:44':  'messianic_secret',      // 나병환자에게 침묵 명령
+  '3:12':  'messianic_secret',      // 귀신들에게 침묵 명령
+  '5:43':  'messianic_secret',      // 야이로 딸 살리심 · 침묵 명령
+  '7:36':  'messianic_secret',      // 귀 먹은 자 고침 · 침묵 명령
+  '8:29':  'son_of_god',            // 베드로의 고백 "주는 그리스도시니이다"
+  '8:30':  'messianic_secret',      // 자기의 일을 말하지 말라
+  '8:31':  'passion_prediction',    // 첫 번째 수난 예고
+  '9:2':   'transfiguration',       // 변화산 · 메테모르포테
+  '9:7':   'son_of_god',            // 변화산 하늘 음성
+  '9:9':   'messianic_secret',      // 인자가 죽은 자 가운데서 살아난 뒤에야
+  '9:31':  'passion_prediction',    // 두 번째 수난 예고
+  '10:33': 'passion_prediction',    // 세 번째 수난 예고 (상세)
+  '10:45': 'ransom',                // 대속물 · 신학적 정점
+  '11:15': 'temple_action',         // 성전 정화
+  '13:26': 'son_of_god',            // 인자가 구름 타고 오심 (재림)
+  '14:22': 'ransom',                // 성찬 제정 · 이는 내 몸이니라
+  '14:36': 'ransom',                // 겟세마네 · 아바 아버지
+  '14:62': 'son_of_god',            // "내가 그니라" · 재판 대답
+  '15:34': 'passion_prediction',    // 엘로이 엘로이 · 십자가 절규
+  '15:38': 'heaven_torn',           // 성전 휘장 찢어짐 (Inclusio 완성)
+  '15:39': 'centurion_confession',  // 백부장 고백 · 진실로 하나님의 아들
+  '16:6':  'empty_tomb',            // 그가 살아나셨고 여기 계시지 아니하니라
+  '16:8':  'empty_tomb',            // 여인들의 두려움 · 원본 종결
+};
+
+// ── 마가복음 컨텍스트 ──────────────────────────────────────────────────
+export const MRK_CTX = {
+  id: 'Mark',
+  book: { ko: '마가복음', bollsNum: 41, lexId: 'Mark', lexCorpus: 'gnt', en: 'Mark', testament: 'NT' },
+  chapters: 16,
+  discourseRules: [...GNT_DISCOURSE_RULES, ...MRK_STRUCTURAL_RULES],
+  manualDiscourse: MRK_MANUAL_DISCOURSE,
+  theoTerms: ROM_THEO_TERMS, // 신약 신학어 재사용 (은혜·죄·믿음·의·성령 등)
+  meta: {
+    genre: '신약 복음서 · 공관복음 (가장 짧고 이른)',
+    genreNote: '4복음서 중 최초 기록 (AD 65-70) · 마태·누가의 자료원 (마가 우선설)',
+    year: 'AD 65-70년경',
+    yearNote: '네로 박해 · 성전 파괴 직전. 로마 교회 청중 대상 (라틴어 차용어 다수)',
+    place: '로마 (전통)',
+    placeNote: '초대교회 전승 (파피아스·이레네우스): 베드로 통역자 마가가 로마에서 기록',
+    author: '마가 요한 (베드로의 통역자)',
+    authorNote: '베드로의 설교를 기록 · 바나바의 사촌 (골 4:10) · 바울과 동행 (행 12:25)',
+    audience: '로마 교회 이방 그리스도인',
+    audienceNote: '박해 상황 · 예수의 고난·인내 강조 · 유대 관습 설명 (7:3) · 아람어 번역 (5:41, 15:34)',
+    theme: '하나님의 아들 예수 그리스도 (υἱὸς θεοῦ)',
+    themeNote: '정체 계시 → 메시아 비밀 → 수난·부활. 십자가 신학 · 종말론적 긴박성',
+    chapterAgenda: {
+      1:  '세례요한·예수 세례·광야 시험·갈릴리 사역 개시 (하늘 찢어짐)',
+      2:  '중풍병자 죄사함·레위 부르심·안식일 논쟁',
+      3:  '12제자 임명·바알세불 논쟁·참된 가족',
+      4:  '씨 뿌리는 자 비유·등불·풍랑 잠재우심',
+      5:  '거라사 광인·야이로 딸·혈루증 여인',
+      6:  '나사렛 배척·12제자 파송·오병이어·물 위 걸으심',
+      7:  '장로들의 전통·수로보니게 여인·귀먹은 자',
+      8:  '사천 명 먹이심·표적 요구·베드로 고백·첫 수난 예고',
+      9:  '변화산·귀신들린 아이·둘째 수난 예고·섬김 가르침',
+      10: '이혼 논쟁·부자 청년·셋째 수난 예고·대속물 선언·바디매오',
+      11: '예루살렘 입성·성전 정화·무화과 저주 (샌드위치 구조)',
+      12: '악한 소작농·가이사·부활·큰 계명·과부의 두 렙돈',
+      13: '성전 파괴 예언·인자의 재림·깨어 있으라 (소묵시록)',
+      14: '향유 부음·유월절 성찬·겟세마네·체포·재판·베드로 부인',
+      15: '빌라도 재판·십자가·성전 휘장 찢어짐·백부장 고백',
+      16: '빈 무덤·여인들의 두려움 (원본 종결 · 16:9-20 후대 부록)',
+    },
+  },
+  macro: {
+    sections: [
+      { id: 's1', fromCh: 1,  toCh: 8,  color: '#0891b2', label: '갈릴리 사역 · 정체 계시' },
+      { id: 's2', fromCh: 8,  toCh: 10, color: '#dc2626', label: '수난 예고 3회 · 도상 (途上)' },
+      { id: 's3', fromCh: 11, toCh: 13, color: '#b45309', label: '예루살렘 · 논쟁·묵시' },
+      { id: 's4', fromCh: 14, toCh: 16, color: '#7c3aed', label: '수난·부활' },
+    ],
+    pivots: [
+      { id: 'p1',  ch: 1,  verse: 1,  color: '#7c3aed', label: '표제 · 하나님의 아들' },
+      { id: 'p2',  ch: 1,  verse: 10, color: '#0891b2', label: '하늘 찢어짐 (세례)' },
+      { id: 'p3',  ch: 1,  verse: 11, color: '#7c3aed', label: '하늘 음성 · 사랑하는 아들' },
+      { id: 'p4',  ch: 1,  verse: 15, color: '#eab308', label: '하나님 나라 선포' },
+      { id: 'p5',  ch: 8,  verse: 29, color: '#7c3aed', label: '베드로 고백 · 그리스도' },
+      { id: 'p6',  ch: 8,  verse: 31, color: '#dc2626', label: '첫 수난 예고' },
+      { id: 'p7',  ch: 9,  verse: 7,  color: '#7c3aed', label: '변화산 · 하늘 음성' },
+      { id: 'p8',  ch: 9,  verse: 31, color: '#dc2626', label: '두 번째 수난 예고' },
+      { id: 'p9',  ch: 10, verse: 33, color: '#dc2626', label: '세 번째 수난 예고' },
+      { id: 'p10', ch: 10, verse: 45, color: '#059669', label: '대속물 · 신학적 정점' },
+      { id: 'p11', ch: 11, verse: 15, color: '#b45309', label: '성전 정화' },
+      { id: 'p12', ch: 14, verse: 22, color: '#059669', label: '성찬 제정' },
+      { id: 'p13', ch: 14, verse: 36, color: '#7c3aed', label: '겟세마네 · 아바 아버지' },
+      { id: 'p14', ch: 15, verse: 34, color: '#dc2626', label: '엘로이 엘로이 · 절규' },
+      { id: 'p15', ch: 15, verse: 38, color: '#0891b2', label: '성전 휘장 찢어짐' },
+      { id: 'p16', ch: 15, verse: 39, color: '#7c3aed', label: '백부장 고백 (Inclusio 완성)' },
+      { id: 'p17', ch: 16, verse: 6,  color: '#10b981', label: '부활 · 여기 계시지 않다' },
+    ],
+    arcs: [
+      { id: 'a1',  from: 'p1',  to: 'p16', color: '#7c3aed', label: '표제 → 백부장 고백 (Inclusio · 하나님의 아들)' },
+      { id: 'a2',  from: 'p2',  to: 'p15', color: '#0891b2', label: '하늘 찢어짐 → 휘장 찢어짐 (진입 개방)' },
+      { id: 'a3',  from: 'p3',  to: 'p7',  color: '#7c3aed', label: '세례 음성 → 변화산 음성 (아들 확증)' },
+      { id: 'a4',  from: 'p5',  to: 'p6',  color: '#dc2626', label: '베드로 고백 → 첫 수난 예고 (전환점)' },
+      { id: 'a5',  from: 'p6',  to: 'p9',  color: '#dc2626', label: '수난 예고 3회 반복' },
+      { id: 'a6',  from: 'p6',  to: 'p10', color: '#059669', label: '수난 → 대속물 (섬김 신학)' },
+      { id: 'a7',  from: 'p10', to: 'p14', color: '#dc2626', label: '대속물 예고 → 십자가 절규 (성취)' },
+      { id: 'a8',  from: 'p11', to: 'p15', color: '#b45309', label: '성전 정화 → 성전 심판 (휘장)' },
+      { id: 'a9',  from: 'p5',  to: 'p16', color: '#7c3aed', label: '유대인 제자 → 이방 백부장 (대비)' },
+      { id: 'a10', from: 'p1',  to: 'p17', color: '#10b981', label: '복음 시작 → 부활 (전체 대주제)' },
+    ],
+  },
+};
+
 // ── 등록된 책 컨텍스트 (activeBookId 로 조회) ────────────────────────────
 export const BOOK_CONTEXTS = {
   Gen: GEN_CTX,
   Exo: EXO_CTX,
   Rom: ROM_CTX,
   Ruth: RUTH_CTX,
+  Mark: MRK_CTX,
 };
 
 export const SUPPORTED_BOOK_IDS = Object.keys(BOOK_CONTEXTS);

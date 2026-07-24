@@ -379,6 +379,10 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       'burning_bush', 'divine_name', 'passover', 'exodus_deliverance',
       'divine_warrior', 'sinai_covenant', 'decalogue', 'tabernacle',
       'glory_shekinah', 'mediator', 'face_shining', 'sabbath_sign',
+      // 마가복음 구조
+      'son_of_god', 'heaven_torn', 'messianic_secret', 'passion_prediction',
+      'transfiguration', 'ransom', 'temple_action', 'centurion_confession',
+      'empty_tomb',
     ]);
     for (const [key, ruleId] of Object.entries(manual)) {
       const [c, v] = key.split(':').map(Number);
