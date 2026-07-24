@@ -985,26 +985,26 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           </div>
         )}
 
-        {/* ── 성경 66권 라벨링 칩 (다이어리 인덱스 스타일) ── */}
-        {!isMobile && (
-          <div
-            ref={chipRowRef}
-            style={{
-              padding:'14px 20px 0',
-              background:`linear-gradient(180deg, rgba(255,255,255,0) 0%, ${activeFadeTint} 100%)`,
-              flexShrink:0,
-              overflowX:'auto',
-              overflowY:'hidden',
-              position:'relative',
-            }}>
-            <div style={{
-              display:'flex',
-              alignItems:'flex-end',
-              gap:3,
-              minWidth:'max-content',
-              paddingTop:6,
-              paddingBottom:2,
-            }}>
+        {/* ── 성경 66권 라벨링 칩 (다이어리 인덱스 스타일) — 모바일·데스크톱 공통 ── */}
+        <div
+          ref={chipRowRef}
+          style={{
+            padding: isMobile ? '10px 12px 0' : '14px 20px 0',
+            background:`linear-gradient(180deg, rgba(255,255,255,0) 0%, ${activeFadeTint} 100%)`,
+            flexShrink:0,
+            overflowX:'auto',
+            overflowY:'hidden',
+            position:'relative',
+            WebkitOverflowScrolling:'touch',
+          }}>
+          <div style={{
+            display:'flex',
+            alignItems:'flex-end',
+            gap: isMobile ? 2 : 3,
+            minWidth:'max-content',
+            paddingTop: isMobile ? 4 : 6,
+            paddingBottom:2,
+          }}>
               {/* 구약 뱃지 */}
               {(() => { const p = BOOK_CHIP_PALETTE.OT; return (
                 <span style={{
@@ -1098,9 +1098,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   </div>
                 );
               })}
-            </div>
           </div>
-        )}
+        </div>
 
         {/* ── 장 네비게이션 (데스크톱, 흐름 아래, Rom 전용) ── */}
         {isSupported && !isMobile && chReady && (
