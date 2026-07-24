@@ -1,9 +1,22 @@
-html, body, #root {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+  /* iOS Safari 주소창 표시/숨김에 따라 100% 가 재계산되며 root 가 0 이 되는
+     white-screen 방지. 100vh 최소 보장 + 지원 시 100dvh 로 정확한 뷰포트 사용 */
+  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
+}
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  /* height: 100% 대신 min-height 사용 → 초기 렌더링 시점에 0 되는 문제 방지 */
+  display: flex;
+  flex-direction: column;
 }
 
 /* 모바일 TipTap 에디터 — ReactFlow touch-action 격리 */

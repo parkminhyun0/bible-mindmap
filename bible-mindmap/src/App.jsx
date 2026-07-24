@@ -661,7 +661,12 @@ export default function App() {
       const id = ++arcingIdRef.current;
       setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
     } }}>
-    <div style={{ display: 'flex', height: '100vh', fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
+    <div style={{ display: 'flex',
+      height: '100vh',
+      height: '100dvh',
+      minHeight: '100vh',
+      minHeight: '100dvh',
+      fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
       <Sidebar
         onAddNode={handleAddNode}
         mobileOpen={mobileSidebarOpen}
