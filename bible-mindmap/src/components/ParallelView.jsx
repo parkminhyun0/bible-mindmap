@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
+import useMobile from '../hooks/useMobile';
 import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
@@ -144,6 +145,15 @@ function isEmptyHtml(s) {
 }
 
 export default function ParallelView({ node, onSave, onClose }) {
+  const isMobile = useMobile();
+  // 모바일 오버라이드
+  const mOverlay = isMobile ? { padding: 0 } : {};
+  const mModal   = isMobile ? { maxWidth: '100%', width: '100%', maxHeight: 'none',
+    height: '100vh', height: '100dvh', borderRadius: 0 } : {};
+  const mHeader  = isMobile ? { padding: 'calc(env(safe-area-inset-top, 0px) + 12px) 14px 12px' } : {};
+  const mCols    = isMobile ? { gridTemplateColumns: '1fr', gap: 8, padding: 10 } : {};
+  const mToolbar = isMobile ? { flexWrap: 'wrap', gap: 8, padding: '10px 14px' } : {};
+  const mFooter  = isMobile ? { padding: '12px 14px calc(env(safe-area-inset-bottom, 0px) + 12px)' } : {};
   // 각 열의 토큰 상태
   const [tokensByTab, setTokensByTab] = useState(() => {
     const init = {};
@@ -367,10 +377,10 @@ export default function ParallelView({ node, onSave, onClose }) {
   const selectedCount = COLUMNS.reduce((sum, c) => sum + (selected[c.id]?.length || 0), 0);
 
   return (
-    <div style={overlayStyle} onClick={onClose}>
-      <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
+    <div style={{ ...overlayStyle, ...mOverlay }} onClick={onClose}>
+      <div style={{ ...modalStyle, ...mModal }} onClick={(e) => e.stopPropagation()}>
         {/* 헤더 */}
-        <div style={headerStyle}>
+        <div style={{ ...headerStyle, ...mHeader }}>
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 700, fontSize: 15, color: '#1e293b' }}>
               🔤 단어 페어링 — {node.data.reference}
@@ -380,11 +390,14 @@ export default function ParallelView({ node, onSave, onClose }) {
             </div>
           </div>
 
-          <button onClick={onClose} style={closeBtnStyle}>✕</button>
+          <button onClick={onClose} style={{ ...closeBtnStyle, ...(isMobile ? { fontSize: 24, minWidth: 44, minHeight: 44 } : {}) }}>✕</button>
         </div>
 
-        {/* 3열 */}
-        <div style={columnsWrapStyle}>
+        {/* 3열 (모바일: 세로 스택) */}
+        <div className={isMobile ? 'momentum-scroll' : undefined}
+          style={{ ...columnsWrapStyle, ...mCols,
+            overflow: isMobile ? 'auto' : 'hidden',
+            WebkitOverflowScrolling: 'touch' }}>
           {COLUMNS.map((col) => (
             <div key={col.id} style={columnStyle}>
               <div style={{ ...columnHeaderStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
@@ -423,12 +436,15 @@ export default function ParallelView({ node, onSave, onClose }) {
                   </button>
                 </div>
               </div>
-              <div style={{
-                ...chipsWrapStyle,
-                fontFamily: col.font,
-                fontSize: fontSizes[col.id],
-                direction: col.id === 'original' && isOT(node.data.bookId) ? 'rtl' : 'ltr',
-              }}>
+              <div className={isMobile ? 'momentum-scroll' : undefined}
+                style={{
+                  ...chipsWrapStyle,
+                  fontFamily: col.font,
+                  fontSize: fontSizes[col.id],
+                  direction: col.id === 'original' && isOT(node.data.bookId) ? 'rtl' : 'ltr',
+                  maxHeight: isMobile ? 260 : undefined,
+                  WebkitOverflowScrolling: 'touch',
+                }}>
                 {errors[col.id] && (
                   <div style={{ color: '#ef4444', fontSize: 12, padding: 12, background: '#fef2f2', borderRadius: 6 }}>
                     ⚠️ {errors[col.id]}
@@ -493,7 +509,7 @@ export default function ParallelView({ node, onSave, onClose }) {
         </div>
 
         {/* 하단 도구 바 */}
-        <div style={toolbarStyle}>
+        <div style={{ ...toolbarStyle, ...mToolbar }}>
           <div style={{ fontSize: 12, color: '#475569', flex: 1 }}>
             {message || (
               selectedCount > 0
@@ -508,22 +524,30 @@ export default function ParallelView({ node, onSave, onClose }) {
                 onClick={() => applyColor(p.color)}
                 title={`${p.label} — 선택 단어를 이 색상으로 페어링`}
                 style={{
-                  width: 22, height: 22, borderRadius: '50%', border: '2px solid #fff',
+                  width: isMobile ? 36 : 22,
+                  height: isMobile ? 36 : 22,
+                  borderRadius: '50%', border: '2px solid #fff',
                   background: p.color, cursor: 'pointer', padding: 0,
                   boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
                 }}
               />
             ))}
             <div style={{ width: 1, height: 22, background: '#e2e8f0', margin: '0 4px' }} />
-            <button onClick={clearGroup} disabled={selectedCount === 0} style={{ ...secondaryBtnStyle, opacity: selectedCount === 0 ? 0.4 : 1 }} title="선택한 chip의 그룹 해제">🚫 해제</button>
-            <button onClick={clearSelection} disabled={selectedCount === 0} style={{ ...secondaryBtnStyle, opacity: selectedCount === 0 ? 0.4 : 1 }} title="선택 초기화">↺ 선택 취소</button>
+            <button onClick={clearGroup} disabled={selectedCount === 0}
+              style={{ ...secondaryBtnStyle, ...(isMobile ? { minHeight: 40, padding: '8px 12px', fontSize: 13 } : {}),
+                opacity: selectedCount === 0 ? 0.4 : 1 }}
+              title="선택한 chip의 그룹 해제">🚫 해제</button>
+            <button onClick={clearSelection} disabled={selectedCount === 0}
+              style={{ ...secondaryBtnStyle, ...(isMobile ? { minHeight: 40, padding: '8px 12px', fontSize: 13 } : {}),
+                opacity: selectedCount === 0 ? 0.4 : 1 }}
+              title="선택 초기화">↺ 선택 취소</button>
           </div>
         </div>
 
         {/* 저장/닫기 */}
-        <div style={footerStyle}>
-          <button onClick={onClose} style={cancelBtnStyle}>닫기</button>
-          <button onClick={handleSave} style={saveBtnStyle}>💾 저장 후 닫기</button>
+        <div style={{ ...footerStyle, ...mFooter }}>
+          <button onClick={onClose} style={{ ...cancelBtnStyle, ...(isMobile ? { minHeight: 44, padding: '12px 20px', fontSize: 14 } : {}) }}>닫기</button>
+          <button onClick={handleSave} style={{ ...saveBtnStyle, ...(isMobile ? { minHeight: 44, padding: '12px 20px', fontSize: 14 } : {}) }}>💾 저장 후 닫기</button>
         </div>
       </div>
 
