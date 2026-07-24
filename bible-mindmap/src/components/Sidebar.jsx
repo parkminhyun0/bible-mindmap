@@ -203,7 +203,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
                 color: '#d97706', fontSize: 13, fontWeight: 700,
               }}
             >
-              📖 문맥 성경 (로마서)
+              📖 문맥 성경
             </button>
           </div>
 
@@ -367,7 +367,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             >📘</button>
             <button
               onClick={() => setShowContextBible(true)}
-              title="문맥 성경 (로마서)"
+              title="문맥 성경"
               style={{
                 ...railIconBtn('linear-gradient(135deg,#d97706,#f59e0b)', '#fff'),
                 width: 36, height: 28, fontSize: 13,

@@ -794,7 +794,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                     background:'linear-gradient(135deg, rgba(217,119,6,.14), rgba(251,191,36,.08))',
                     border:'1px solid rgba(217,119,6,.28)',
                     borderRadius:10,padding:'6px 12px',cursor:'pointer',minHeight:36 }}>
-                  <span style={{ fontSize:11,fontWeight:700,color:'#b45309',letterSpacing:'.08em' }}>롬</span>
+                  <span style={{ fontSize:11,fontWeight:700,color:'#b45309',letterSpacing:'.08em' }}>{KO_ABBR_BY_ID[BOOK.lexId] || BOOK.ko}</span>
                   <span style={{ fontSize:16,fontWeight:800,color:'#0f172a',lineHeight:1 }}>
                     {activeRef.ch}
                   </span>
