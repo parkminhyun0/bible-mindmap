@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import useMobile from '../hooks/useMobile';
 import { OT_BOOKS, NT_BOOKS } from '../data/bibleBooks';
 import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/bookContext';
+import CrossrefPopup from './CrossrefPopup';
+import VersePreviewPopup from './VersePreviewPopup';
 
 // 책 id → 한글 약어
 const KO_ABBR_BY_ID = {
@@ -139,6 +141,39 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [sheetSnap, setSheetSnap] = useState('closed');
   const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
   const [legendOpen, setLegendOpen] = useState(false);
+  // 관주(crossref) 팝업 상태 — { ch, verse, anchor: {x,y} }
+  const [crossrefOpen, setCrossrefOpen] = useState(null);
+  // 참조 본문 미리보기 팝업 · 다중 오픈 지원
+  // 각 항목: { id, bookId, chapter, verseStart, verseEnd, reference, x, y, z }
+  const [previews, setPreviews] = useState([]);
+  const previewIdRef = useRef(0);
+  const previewZRef = useRef(3000);
+  const openPreview = useCallback((item, anchor) => {
+    previewIdRef.current += 1;
+    previewZRef.current += 1;
+    const id = previewIdRef.current;
+    // 겹침 방지: 기존 팝업 개수만큼 offset
+    const offset = previews.length * 24;
+    const x = Math.max(10, Math.min((anchor?.x ?? window.innerWidth / 2) - 190 + offset,
+                                     window.innerWidth - 400));
+    const y = Math.max(10, Math.min((anchor?.y ?? window.innerHeight / 2) + 12 + offset,
+                                     window.innerHeight - 340));
+    setPreviews(p => [...p, {
+      id,
+      bookId: item.bookId, chapter: item.chapter,
+      verseStart: item.verseStart, verseEnd: item.verseEnd,
+      reference: item.reference,
+      x, y, z: previewZRef.current,
+    }]);
+  }, [previews.length]);
+  const closePreview = useCallback((id) => {
+    setPreviews(p => p.filter(v => v.id !== id));
+  }, []);
+  const focusPreview = useCallback((id) => {
+    previewZRef.current += 1;
+    const z = previewZRef.current;
+    setPreviews(p => p.map(v => v.id === id ? { ...v, z } : v));
+  }, []);
   const [chapters, setChapters] = useState({}); // { [ch]: { krv, lex, analyzed, theoFreq, paragraphs, qaPairs, indentLevels } }
   const [loading, setLoading] = useState(true);
   const [failedChapters, setFailedChapters] = useState([]); // [{ch, err}]
@@ -1642,6 +1677,29 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   color: qa.type === 'A' ? '#dc2626' : '#b45309',
                                 }}>{qa.type === 'QA' ? 'Q·A' : qa.type}</span>
                               )}
+                              {/* 관주 (crossref) 아이콘 · 클릭 시 팝업 */}
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  const rect = e.currentTarget.getBoundingClientRect();
+                                  setCrossrefOpen({
+                                    ch, verse,
+                                    anchor: { x: rect.left + rect.width / 2, y: rect.bottom },
+                                  });
+                                }}
+                                title="관주 (인용·참조 구절)"
+                                aria-label={`${ch}장 ${verse}절 관주 열기`}
+                                style={{
+                                  background: 'none', border: 'none', padding: 0,
+                                  cursor: 'pointer', lineHeight: 1,
+                                  fontSize: isMobile ? 13 : fontSizes.meta + 1,
+                                  opacity: .55,
+                                  minWidth: isMobile ? 32 : undefined,
+                                  minHeight: isMobile ? 32 : undefined,
+                                }}
+                                onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
+                                onMouseLeave={(e) => { e.currentTarget.style.opacity = '.55' }}
+                              >🔗</button>
                             </div>
 
                             <div style={{ flex:1,minWidth:0 }}>
@@ -2377,6 +2435,37 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     `}</style>
   );
 
+  // 관주 팝업 (모바일·데스크톱 공통 렌더) — 각 항목 클릭 시 미리보기 팝업 오픈
+  const crossrefNode = crossrefOpen && (
+    <CrossrefPopup
+      sourceBookId={BOOK.lexId}
+      sourceChapter={crossrefOpen.ch}
+      sourceVerse={crossrefOpen.verse}
+      sourceRef={`${BOOK.ko} ${crossrefOpen.ch}:${crossrefOpen.verse}`}
+      anchor={crossrefOpen.anchor}
+      onClose={() => setCrossrefOpen(null)}
+      onOpenPreview={(item, anchor) => openPreview(item, anchor)}
+    />
+  );
+
+  // 참조 본문 미리보기 팝업들 (다중)
+  const previewNodes = previews.map(p => (
+    <VersePreviewPopup
+      key={p.id}
+      id={p.id}
+      bookId={p.bookId}
+      chapter={p.chapter}
+      verseStart={p.verseStart}
+      verseEnd={p.verseEnd}
+      reference={p.reference}
+      initialX={p.x}
+      initialY={p.y}
+      zIndex={p.z}
+      onClose={() => closePreview(p.id)}
+      onFocus={focusPreview}
+    />
+  ));
+
   // 모바일: 풀스크린 + 백드롭
   if (isMobile) {
     return (
@@ -2389,6 +2478,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       >
         {modalInner}
         {styleBlock}
+        {crossrefNode}
+        {previewNodes}
       </div>
     );
   }
@@ -2402,6 +2493,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     >
       {modalInner}
       {styleBlock}
+      {crossrefNode}
+      {previewNodes}
     </div>
   );
 }
