@@ -1,4 +1,5 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import useMobile from '../hooks/useMobile';
 import {
   searchByOriginal, searchByEnglish, searchByKorean, detectInputMode,
   fetchKRVVerses, fetchESVVerses, fetchOrigLangVerses, deriveOriginalFromKorean,
@@ -275,6 +276,7 @@ function DragHandle({ onMouseDown, active, borderColor }) {
 }
 
 function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searchedQuery }) {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const [def, setDef] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filterBook, setFilterBook] = useState(null);
@@ -418,9 +420,15 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
   const srcLabel = def?.source === 'bdbt' ? 'BDB' : "Strong's";
   const srcColor = def?.source === 'bdbt' ? { bg: '#fef3c7', text: '#92400e' } : { bg: '#d1fae5', text: '#065f46' };
 
-  const col1Style = colW.dict != null ? { width: colW.dict, flexShrink: 0, flexGrow: 0 } : { flex: '1.2', minWidth: COL_MIN };
-  const col2Style = colW.usage != null ? { width: colW.usage, flexShrink: 0, flexGrow: 0 } : { flex: '1', minWidth: COL_MIN };
-  const col3Style = { width: colW.donut ?? 185, flexShrink: 0, flexGrow: 0 };
+  const col1Style = isMobile
+    ? { width: '100%', flexShrink: 0, flexGrow: 0 }
+    : (colW.dict != null ? { width: colW.dict, flexShrink: 0, flexGrow: 0 } : { flex: '1.2', minWidth: COL_MIN });
+  const col2Style = isMobile
+    ? { width: '100%', flexShrink: 0, flexGrow: 0 }
+    : (colW.usage != null ? { width: colW.usage, flexShrink: 0, flexGrow: 0 } : { flex: '1', minWidth: COL_MIN });
+  const col3Style = isMobile
+    ? { width: '100%', flexShrink: 0, flexGrow: 0 }
+    : { width: colW.donut ?? 185, flexShrink: 0, flexGrow: 0 };
 
   return (
     <div style={{ borderTop: `1px solid ${ab}`, background: isHeb ? '#fffbf0' : '#f8faff' }}>
@@ -438,9 +446,18 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
         )}
       </div>
 
-      <div ref={containerRef} style={{ display: 'flex', height: 460, overflow: 'hidden' }}>
+      <div ref={containerRef} style={{
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        height: isMobile ? 'auto' : 460,
+        overflow: 'hidden',
+      }}>
         {/* Col 1: Dictionary */}
-        <div ref={col1Ref} style={{ ...col1Style, overflowY: 'auto', padding: '12px 14px', boxSizing: 'border-box' }}>
+        <div ref={col1Ref} className={isMobile ? 'momentum-scroll' : undefined}
+          style={{ ...col1Style, overflowY: 'auto', padding: '12px 14px', boxSizing: 'border-box',
+            maxHeight: isMobile ? 260 : undefined,
+            borderBottom: isMobile ? '1px solid rgba(15,23,42,.08)' : undefined,
+            WebkitOverflowScrolling: 'touch' }}>
           {loading && <div style={{ color: '#94a3b8', fontSize: fz - 1 }}>사전 조회 중…</div>}
           {!loading && !def && (
             <div style={{ fontSize: fz - 1, color: '#94a3b8' }}>
@@ -456,10 +473,17 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
           )}
         </div>
 
-        <DragHandle onMouseDown={e => startDrag(1, e)} active={dragActive && dragRef.current?.which === 1} borderColor={ab} />
+        {!isMobile && (
+          <DragHandle onMouseDown={e => startDrag(1, e)} active={dragActive && dragRef.current?.which === 1} borderColor={ab} />
+        )}
 
         {/* Col 2: Usage list */}
-        <div ref={col2Ref} style={{ ...col2Style, overflowY: 'auto', minWidth: COL_MIN }}>
+        <div ref={col2Ref} className={isMobile ? 'momentum-scroll' : undefined}
+          style={{ ...col2Style, overflowY: 'auto',
+            minWidth: isMobile ? undefined : COL_MIN,
+            maxHeight: isMobile ? 320 : undefined,
+            borderBottom: isMobile ? '1px solid rgba(15,23,42,.08)' : undefined,
+            WebkitOverflowScrolling: 'touch' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '5px 10px', background: '#f8fafc', borderBottom: `1px solid ${ab}`, position: 'sticky', top: 0, zIndex: 1 }}>
             {filterBook || filterForm ? (
               <>
@@ -567,10 +591,16 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
           )}
         </div>
 
-        <DragHandle onMouseDown={e => startDrag(2, e)} active={dragActive && dragRef.current?.which === 2} borderColor={ab} />
+        {!isMobile && (
+          <DragHandle onMouseDown={e => startDrag(2, e)} active={dragActive && dragRef.current?.which === 2} borderColor={ab} />
+        )}
 
         {/* Col 3: Donut */}
-        <div ref={col3Ref} style={{ ...col3Style, overflowY: 'auto', background: '#fafbfc', minWidth: COL_MIN }}>
+        <div ref={col3Ref} className={isMobile ? 'momentum-scroll' : undefined}
+          style={{ ...col3Style, overflowY: 'auto', background: '#fafbfc',
+            minWidth: isMobile ? undefined : COL_MIN,
+            maxHeight: isMobile ? 320 : undefined,
+            WebkitOverflowScrolling: 'touch' }}>
           <DonutChart items={allItems} selectedBook={filterBook} onSelectBook={setFilterBook} />
         </div>
       </div>
@@ -679,9 +709,30 @@ const PLACEHOLDERS = {
 };
 
 export default function WordSearchModal({ initialQuery = '', initialMode = 'original', onClose }) {
+  const isMobile = useMobile();
   const [minimized, setMinimized] = useState(false);
-  const [pos,  setPos]  = useState({ x: Math.max(20, window.innerWidth / 2 - 450), y: 60 });
-  const [size, setSize] = useState({ w: Math.min(960, window.innerWidth - 40), h: 640 });
+  const [pos,  setPos]  = useState(() => isMobile
+    ? { x: 0, y: 0 }
+    : { x: Math.max(20, (typeof window !== 'undefined' ? window.innerWidth / 2 - 450 : 100)), y: 60 });
+  const [size, setSize] = useState(() => isMobile
+    ? { w: typeof window !== 'undefined' ? window.innerWidth : 375,
+        h: typeof window !== 'undefined' ? window.innerHeight : 667 }
+    : { w: Math.min(960, (typeof window !== 'undefined' ? window.innerWidth - 40 : 800)), h: 640 });
+
+  // 모바일 orientation/resize 대응
+  useEffect(() => {
+    if (!isMobile) return;
+    const onR = () => {
+      setPos({ x: 0, y: 0 });
+      setSize({ w: window.innerWidth, h: window.innerHeight });
+    };
+    window.addEventListener('resize', onR);
+    window.addEventListener('orientationchange', onR);
+    return () => {
+      window.removeEventListener('resize', onR);
+      window.removeEventListener('orientationchange', onR);
+    };
+  }, [isMobile]);
 
   const [query, setQuery] = useState(initialQuery);
   const [inputLang, setInputLang] = useState(initialMode);
@@ -889,23 +940,35 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
   const hasResults = groups.length > 0 || verseResults.length > 0;
 
   return (
-    <div style={{
-      position: 'fixed', left: pos.x, top: pos.y, width: size.w, zIndex: 2100,
-      background: '#fff', borderRadius: 12,
-      boxShadow: '0 20px 60px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.10)',
-      border: '1px solid #e2e8f0',
-      fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
-      display: 'flex', flexDirection: 'column',
-    }}>
+    <div
+      className={isMobile ? 'h-screen-safe' : undefined}
+      style={{
+        position: 'fixed',
+        left: isMobile ? 0 : pos.x,
+        top: isMobile ? 0 : pos.y,
+        width: isMobile ? '100%' : size.w,
+        height: isMobile ? undefined : (minimized ? 'auto' : size.h),
+        zIndex: 2100,
+        background: '#fff',
+        borderRadius: isMobile ? 0 : 12,
+        boxShadow: isMobile ? 'none' : '0 20px 60px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.10)',
+        border: isMobile ? 'none' : '1px solid #e2e8f0',
+        fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
+        display: 'flex', flexDirection: 'column',
+      }}>
       {/* Titlebar */}
-      <div onMouseDown={onHeaderMouseDown} style={{
-        display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px',
+      <div onMouseDown={isMobile ? undefined : onHeaderMouseDown} style={{
+        display: 'flex', alignItems: 'center', gap: 8,
+        padding: isMobile
+          ? 'calc(env(safe-area-inset-top, 0px) + 10px) calc(env(safe-area-inset-right, 0px) + 14px) 10px calc(env(safe-area-inset-left, 0px) + 14px)'
+          : '10px 14px',
         background: 'linear-gradient(135deg,#1e3a8a,#0f172a)',
-        borderRadius: minimized ? 12 : '12px 12px 0 0',
-        cursor: 'grab', userSelect: 'none',
+        borderRadius: isMobile ? 0 : (minimized ? 12 : '12px 12px 0 0'),
+        cursor: isMobile ? 'default' : 'grab', userSelect: 'none',
+        flexShrink: 0,
       }}>
         <span style={{ fontSize: 16 }}>🔍</span>
-        <span style={{ flex: 1, fontWeight: 700, fontSize: 14, color: '#fff' }}>원어 성경 다언어 검색</span>
+        <span style={{ flex: 1, fontWeight: 700, fontSize: 14, color: '#fff' }}>{isMobile ? '원어 다언어 검색' : '원어 성경 다언어 검색'}</span>
         {isSearching && <span style={{ fontSize: 11, color: '#fde68a' }}>{statusText}</span>}
         {!isSearching && done && (
           <span style={{ fontSize: 11, color: '#93c5fd', background: 'rgba(255,255,255,0.1)', padding: '2px 8px', borderRadius: 99 }}>
@@ -918,28 +981,45 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
       </div>
 
       {!minimized && (
-        <div style={{ display: 'flex', flexDirection: 'column', height: size.h, overflow: 'hidden', borderRadius: '0 0 12px 12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column',
+          flex: isMobile ? 1 : undefined,
+          height: isMobile ? undefined : size.h,
+          overflow: 'hidden',
+          borderRadius: isMobile ? 0 : '0 0 12px 12px' }}>
           {/* Search controls */}
-          <div style={{ padding: '10px 14px 8px', borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0 }}>
-            <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+          <div style={{ padding: isMobile ? '10px 14px 10px' : '10px 14px 8px',
+            borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0 }}>
+            <div className={isMobile ? 'momentum-scroll' : undefined}
+              style={{ display: 'flex', gap: 4, marginBottom: 8,
+                overflowX: isMobile ? 'auto' : 'visible' }}>
               {INPUT_OPTS.map(opt => (
                 <button key={opt.key} onClick={() => setInputLang(opt.key)} style={{
-                  flex: 1, padding: '5px 0', border: 'none', borderRadius: 6, cursor: 'pointer',
-                  fontSize: 11, fontWeight: inputLang === opt.key ? 700 : 400,
+                  flex: isMobile ? '0 0 auto' : 1,
+                  padding: isMobile ? '8px 12px' : '5px 0',
+                  minHeight: isMobile ? 44 : undefined,
+                  minWidth: isMobile ? 64 : undefined,
+                  border: 'none', borderRadius: 6, cursor: 'pointer',
+                  fontSize: isMobile ? 12 : 11,
+                  fontWeight: inputLang === opt.key ? 700 : 400,
                   background: inputLang === opt.key ? TAB_COLORS[opt.key] : '#e2e8f0',
                   color: inputLang === opt.key ? '#fff' : '#64748b',
+                  flexShrink: 0,
                 }}>
                   {opt.label}
-                  <div style={{ fontSize: 9, opacity: 0.8, fontWeight: 400 }}>{opt.sub}</div>
+                  <div style={{ fontSize: isMobile ? 10 : 9, opacity: 0.8, fontWeight: 400 }}>{opt.sub}</div>
                 </button>
               ))}
               {inputLang === 'korean' && (
                 [['all', '전체'], ['ot', '구약'], ['nt', '신약']].map(([k, l]) => (
                   <button key={k} onClick={() => setKoScope(k)} style={{
-                    padding: '5px 8px', border: 'none', borderRadius: 6, cursor: 'pointer',
-                    fontSize: 11, fontWeight: koScope === k ? 700 : 400,
+                    padding: isMobile ? '8px 12px' : '5px 8px',
+                    minHeight: isMobile ? 44 : undefined,
+                    border: 'none', borderRadius: 6, cursor: 'pointer',
+                    fontSize: isMobile ? 12 : 11,
+                    fontWeight: koScope === k ? 700 : 400,
                     background: koScope === k ? '#d97706' : '#e2e8f0',
                     color: koScope === k ? '#fff' : '#64748b',
+                    flexShrink: 0,
                   }}>{l}</button>
                 ))
               )}
@@ -949,16 +1029,23 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
                 onKeyDown={e => e.key === 'Enter' && handleSearch()}
                 placeholder={PLACEHOLDERS[inputLang] || ''}
                 style={{
-                  flex: 1, padding: '8px 10px', borderRadius: 6, border: '1px solid #cbd5e1',
-                  fontSize: fs, outline: 'none',
+                  flex: 1,
+                  padding: isMobile ? '12px 12px' : '8px 10px',
+                  minHeight: isMobile ? 44 : undefined,
+                  borderRadius: 6, border: '1px solid #cbd5e1',
+                  fontSize: isMobile ? Math.max(16, fs) : fs, outline: 'none',
                   fontFamily: inputLang === 'original' ? `${HEB_FONT}, ${GRK_FONT}, sans-serif` : 'inherit',
                   direction: inputLang === 'original' ? 'rtl' : 'ltr',
                 }}
                 autoFocus
               />
               {isSearching
-                ? <button onClick={handleStop} style={{ ...actionBtn, background: '#ef4444' }}>■ 중단</button>
-                : <button onClick={handleSearch} style={{ ...actionBtn, background: '#1d4ed8' }}>🔍 검색</button>
+                ? <button onClick={handleStop} style={{ ...actionBtn, background: '#ef4444',
+                    minHeight: isMobile ? 44 : undefined,
+                    padding: isMobile ? '12px 16px' : undefined }}>■ 중단</button>
+                : <button onClick={handleSearch} style={{ ...actionBtn, background: '#1d4ed8',
+                    minHeight: isMobile ? 44 : undefined,
+                    padding: isMobile ? '12px 16px' : undefined }}>🔍 검색</button>
               }
             </div>
           </div>
@@ -996,7 +1083,11 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
           )}
 
           {/* Results area */}
-          <div style={{ flex: 1, overflowY: 'auto' }}>
+          <div className={isMobile ? 'momentum-scroll' : undefined}
+            style={{ flex: 1, overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              overscrollBehavior: 'contain',
+              paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0 }}>
             {isSearching && !hasResults && (
               <div style={{ padding: 40, textAlign: 'center', color: '#94a3b8', fontSize: fs }}>
                 <div style={{ fontSize: 24, marginBottom: 10 }}>⏳</div>
