@@ -251,6 +251,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const splitStart = useRef({ mx:0, w:0 });
   const programmaticScrollRef = useRef(false);
   const programmaticScrollTimer = useRef(null);
+  // 모바일 좌우 스와이프 → 이전/다음 챕터 이동
+  const touchStart = useRef({ x: 0, y: 0, t: 0 });
   const dragStart = useRef({ mx:0,my:0,px:0,py:0 });
   const resizeStart = useRef({ mx:0,my:0,w:0,h:0 });
 
@@ -836,12 +838,23 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           </div>
           <div style={{ display:'flex',alignItems:'center',gap:2,flexShrink:0 }}>
             {isMobile && (
-              <button onClick={() => setLegendOpen(v => !v)}
-                title="담화 범례"
-                style={{ background:'none',border:'none',
-                  color: legendOpen ? '#d97706' : '#94a3b8',
-                  fontSize:18,cursor:'pointer',padding:'6px 8px',borderRadius:8,
-                  minWidth:36,minHeight:36 }}>ⓘ</button>
+              <>
+                <button
+                  onClick={() => setShowHebRef(v => !v)}
+                  title={showOrigRef ? `${origLangFull} 원문 절 번호 숨기기` : `${origLangFull} 원문 절 번호 병기`}
+                  style={{ background: showOrigRef ? 'rgba(251,191,36,.28)' : 'transparent',
+                    border: showOrigRef ? '1px solid rgba(217,119,6,.55)' : '1px solid transparent',
+                    color: showOrigRef ? '#b45309' : '#94a3b8',
+                    fontSize:11,fontWeight:800,letterSpacing:'.05em',
+                    cursor:'pointer',padding:'0 10px',borderRadius:8,
+                    minWidth:40,minHeight:40 }}>{origLangShort}</button>
+                <button onClick={() => setLegendOpen(v => !v)}
+                  title="담화 범례 · 폰트"
+                  style={{ background:'none',border:'none',
+                    color: legendOpen ? '#d97706' : '#94a3b8',
+                    fontSize:18,cursor:'pointer',padding:'6px 8px',borderRadius:8,
+                    minWidth:40,minHeight:40 }}>{legendOpen ? '⚙︎' : 'ⓘ'}</button>
+              </>
             )}
             {!isMobile && (
               <button
@@ -906,7 +919,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 flexShrink:0,display:'inline-block' }} />
               진술
             </span>
-            {/* 폰트 조절 컨트롤 (데스크톱만) — modern segmented steppers */}
+            {/* 폰트 조절 컨트롤 (데스크톱: legend row 인라인 · 모바일: 별도 row 아래) — modern segmented steppers */}
             {!isMobile && (
               <div style={fontPanelWrapper}>
                 <div style={fontPanelBrand}>
@@ -958,6 +971,41 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* ── 폰트 조절 (모바일 · legendOpen 시) — 본문·분석·부가만 노출 ── */}
+        {isMobile && legendOpen && (
+          <div style={{ display:'flex',alignItems:'center',gap:8,
+            padding:'6px 14px',
+            borderBottom:'1px solid rgba(15,23,42,.06)',
+            background:'rgba(212,153,79,.06)',flexShrink:0,
+            overflowX:'auto',WebkitOverflowScrolling:'touch' }}>
+            <span style={{ fontSize:11,fontWeight:800,color:'#8A6027',
+              letterSpacing:'.02em',flexShrink:0 }}>Aa</span>
+            {[
+              { key:'body',     label:'본문' },
+              { key:'analysis', label:'분석' },
+              { key:'meta',     label:'부가' },
+            ].map(g => (
+              <div key={g.key} style={{ display:'flex',alignItems:'center',gap:2,
+                background:'rgba(255,255,255,.7)',
+                border:'1px solid rgba(212,153,79,.3)',
+                borderRadius:8,padding:'2px 4px',flexShrink:0 }}>
+                <span style={{ fontSize:10,fontWeight:700,color:'#8A6027',
+                  padding:'0 4px' }}>{g.label}</span>
+                <button onClick={() => bumpFont(g.key, -1)}
+                  style={{ minWidth:28,minHeight:28,background:'transparent',
+                    border:'none',color:'#8A6027',fontSize:14,fontWeight:800,
+                    cursor:'pointer',borderRadius:6 }}>−</button>
+                <span style={{ fontSize:11,fontWeight:800,color:'#4A3210',
+                  minWidth:16,textAlign:'center' }}>{fontSizes[g.key]}</span>
+                <button onClick={() => bumpFont(g.key, 1)}
+                  style={{ minWidth:28,minHeight:28,background:'transparent',
+                    border:'none',color:'#8A6027',fontSize:14,fontWeight:800,
+                    cursor:'pointer',borderRadius:6 }}>+</button>
+              </div>
+            ))}
           </div>
         )}
 
@@ -1187,11 +1235,27 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         <div style={{ display:'flex',flex:1,overflow:'hidden',position:'relative' }}>
 
           {/* 좌: 전체 본문 (연속 스크롤 + 좌측 거시구조 거터) */}
-          <div ref={scrollRef} style={{ flex:1,minWidth:0,overflowY:'auto',
-            padding: isMobile?'8px 10px':0,
-            position:'relative',
-            WebkitOverflowScrolling:'touch',
-            overscrollBehavior:'contain' }}>
+          <div ref={scrollRef}
+            onTouchStart={isMobile ? (e) => {
+              const t = e.touches[0];
+              touchStart.current = { x: t.clientX, y: t.clientY, t: Date.now() };
+            } : undefined}
+            onTouchEnd={isMobile ? (e) => {
+              const t = e.changedTouches[0];
+              const dx = t.clientX - touchStart.current.x;
+              const dy = t.clientY - touchStart.current.y;
+              const dt = Date.now() - touchStart.current.t;
+              // 짧은 시간 · 수평 우세 · 충분한 거리일 때만 챕터 이동
+              if (dt < 500 && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 2) {
+                if (dx > 0 && activeRef.ch > 1) scrollTo(activeRef.ch - 1, 1);
+                else if (dx < 0 && activeRef.ch < maxCh) scrollTo(activeRef.ch + 1, 1);
+              }
+            } : undefined}
+            style={{ flex:1,minWidth:0,overflowY:'auto',
+              padding: isMobile?'8px 10px':0,
+              position:'relative',
+              WebkitOverflowScrolling:'touch',
+              overscrollBehavior:'contain' }}>
 
             {loading && (
               <div style={{ color:'#64748b',textAlign:'center',marginTop:60,fontSize:13,lineHeight:1.6 }}>
