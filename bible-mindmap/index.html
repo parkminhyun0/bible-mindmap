@@ -2,10 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- index.html 캐시 방지 (모바일 사파리·크롬이 오래된 번들 해시 참조하는 문제 해결)
+         번들 파일(index-*.js)은 해시가 붙어 있어 캐시 안전 · index.html 만 no-cache 로 유지 -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>성경 마인드맵 · PARK MIN HYUN · Jarvis claude-sonnet 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
