@@ -28,6 +28,17 @@
       .lex-def li { margin-bottom: 3px; }
       .lex-etym { color: #64748b !important; font-size: 11px; }
       .lex-kjv  { color: #64748b !important; font-size: 11px; border-top: 1px solid #f1f5f9; padding-top: 6px; margin-top: 6px; }
+
+      /* 모바일 반응형 유틸리티 (전역) */
+      html, body { overscroll-behavior-y: none; }
+      /* iOS Safari 15+ dvh 지원, 미지원은 vh fallback */
+      .h-screen-safe { height: 100vh; height: 100dvh; }
+      /* iOS 관성 스크롤 (전 스크롤 컨테이너 공용 클래스) */
+      .momentum-scroll { -webkit-overflow-scrolling: touch; }
+      /* 최소 탭 타깃 (Apple HIG 44px 권장, 최소 40px 보장) */
+      @media (max-width: 767px) {
+        .tap-target { min-width: 40px; min-height: 40px; }
+      }
     </style>
   </head>
   <body>

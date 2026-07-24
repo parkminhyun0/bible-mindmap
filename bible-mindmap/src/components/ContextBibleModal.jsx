@@ -195,6 +195,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     () => Array.from({ length: bookCtx?.chapters || 0 }, (_, i) => i + 1),
     [bookCtx],
   );
+  // 활성 책의 최대 챕터 수 (범위 계산 · 하드코딩 방지)
+  const maxCh = bookCtx?.chapters || 1;
 
   // 활성 testament (구약/신약) 판별 + 그라데이션 톤
   const activeTestament = OT_BOOKS.some(b => b.id === activeBookId) ? 'OT' : 'NT';
@@ -683,8 +685,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           return;
         }
       }
-    } else if (nextIdx >= verses.length && ch < 16) {
-      for (let c = ch + 1; c <= 16; c++) {
+    } else if (nextIdx >= verses.length && ch < maxCh) {
+      for (let c = ch + 1; c <= maxCh; c++) {
         const next = chapters[c];
         if (next?.krv?.length) {
           scrollTo(c, next.krv[0].verse);
@@ -692,14 +694,14 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         }
       }
     }
-  }, [activeRef, chapters, scrollTo]);
+  }, [activeRef, chapters, scrollTo, maxCh]);
 
   const moveChapter = useCallback((delta) => {
     const target = activeRef.ch + delta;
-    if (target < 1 || target > 16) return;
+    if (target < 1 || target > maxCh) return;
     if (!chapters[target]) return;
     scrollTo(target, 1);
-  }, [activeRef.ch, chapters, scrollTo]);
+  }, [activeRef.ch, chapters, scrollTo, maxCh]);
 
   useEffect(() => {
     const h = e => {
@@ -761,12 +763,13 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   // ── 렌더 ──────────────────────────────────────────────────────────────
   const modalInner = (
       <div
+        className={isMobile ? 'h-screen-safe' : undefined}
         style={{ background:'#ffffff',
           borderRadius: isMobile ? 0 : 12,
           border: isMobile ? 'none' : '1px solid rgba(15,23,42,.1)',
           width: isMobile ? '100%' : size.w,
           maxWidth: isMobile ? '100%' : 'none',
-          height: isMobile ? '100dvh' : (minimized ? 'auto' : size.h),
+          height: isMobile ? undefined : (minimized ? 'auto' : size.h),
           display:'flex',flexDirection:'column',
           overflow:'hidden',
           boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
@@ -778,7 +781,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         <div
           onMouseDown={onHeaderMouseDown}
           style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
-            padding: isMobile ? 'calc(env(safe-area-inset-top, 0px) + 10px) 14px 10px' : '9px 12px 9px 16px',
+            padding: isMobile
+              ? 'calc(env(safe-area-inset-top, 0px) + 10px) calc(env(safe-area-inset-right, 0px) + 14px) 10px calc(env(safe-area-inset-left, 0px) + 14px)'
+              : '9px 12px 9px 16px',
             borderBottom:'1px solid rgba(255,255,255,.15)',flexShrink:0,gap:8,
             background: isMobile ? '#ffffff'
               : 'linear-gradient(135deg, #b45309, #d97706)',
@@ -1184,7 +1189,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           {/* 좌: 전체 본문 (연속 스크롤 + 좌측 거시구조 거터) */}
           <div ref={scrollRef} style={{ flex:1,minWidth:0,overflowY:'auto',
             padding: isMobile?'8px 10px':0,
-            position:'relative' }}>
+            position:'relative',
+            WebkitOverflowScrolling:'touch',
+            overscrollBehavior:'contain' }}>
 
             {loading && (
               <div style={{ color:'#64748b',textAlign:'center',marginTop:60,fontSize:13,lineHeight:1.6 }}>
@@ -1640,6 +1647,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               overflowY: isMobile ? (sheetSnap === 'full' ? 'auto' : 'hidden') : 'auto',
               padding: isMobile ? '0 16px' : '14px 16px',
               background: '#ffffff',
+              WebkitOverflowScrolling:'touch',
+              overscrollBehavior:'contain',
               ...(isMobile ? {
                 position: 'absolute',
                 left: 0, right: 0, bottom: 0,
@@ -1650,6 +1659,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 transition: 'height .28s cubic-bezier(.4,0,.2,1)',
                 zIndex: 6,
                 overflow: sheetSnap === 'closed' ? 'hidden' : undefined,
+                paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 16px)',
+                paddingRight: 'calc(env(safe-area-inset-right, 0px) + 16px)',
               } : { background: '#f8fafc' })
             }}>
             {isMobile && sheetSnap !== 'closed' && (
@@ -2154,53 +2165,57 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         )}
 
         {/* ── 모바일 바텀 네비 ── */}
-        {isMobile && chReady && (
-          <div style={{ display:'flex',alignItems:'center',gap:6,
-            padding:'8px 12px calc(env(safe-area-inset-bottom, 0px) + 8px)',
-            borderTop:'1px solid rgba(15,23,42,.08)',background:'#ffffff',
-            flexShrink:0 }}>
-            <button
-              onClick={() => activeRef.ch > 1 && scrollTo(activeRef.ch - 1, 1)}
-              disabled={activeRef.ch <= 1}
-              style={{ display:'flex',alignItems:'center',gap:4,
-                background: activeRef.ch>1 ? 'rgba(15,23,42,.05)' : 'transparent',
-                border:'none',borderRadius:10,
-                padding:'8px 12px',cursor: activeRef.ch>1?'pointer':'default',
-                color: activeRef.ch>1 ? '#334155' : '#cbd5e1',
-                fontSize:12,fontWeight:700,minHeight:40 }}>
-              ◀ {activeRef.ch > 1 ? activeRef.ch - 1 : ''}장
-            </button>
-            <div style={{ flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:4 }}>
-              <span style={{ fontSize:10,color:'#64748b',fontWeight:700 }}>
-                {activeRef.ch}<span style={{ color:'#cbd5e1' }}> / 16</span>
-              </span>
-              <div style={{ width:'100%',maxWidth:180,height:4,background:'rgba(15,23,42,.08)',
-                borderRadius:99,overflow:'hidden' }}>
-                <div style={{ width:`${(activeRef.ch/16)*100}%`,height:'100%',
-                  background:'linear-gradient(90deg,#d97706,#f59e0b)',
-                  borderRadius:99,transition:'width .3s' }} />
+        {isMobile && chReady && (() => {
+          const canPrev = activeRef.ch > 1;
+          const canNext = activeRef.ch < maxCh;
+          return (
+            <div style={{ display:'flex',alignItems:'center',gap:6,
+              padding:'8px calc(env(safe-area-inset-right, 0px) + 12px) calc(env(safe-area-inset-bottom, 0px) + 8px) calc(env(safe-area-inset-left, 0px) + 12px)',
+              borderTop:'1px solid rgba(15,23,42,.08)',background:'#ffffff',
+              flexShrink:0 }}>
+              <button
+                onClick={() => canPrev && scrollTo(activeRef.ch - 1, 1)}
+                disabled={!canPrev}
+                style={{ display:'flex',alignItems:'center',gap:4,
+                  background: canPrev ? 'rgba(15,23,42,.05)' : 'transparent',
+                  border:'none',borderRadius:10,
+                  padding:'8px 12px',cursor: canPrev?'pointer':'default',
+                  color: canPrev ? '#334155' : '#cbd5e1',
+                  fontSize:12,fontWeight:700,minHeight:44,minWidth:44 }}>
+                ◀ {canPrev ? activeRef.ch - 1 : ''}장
+              </button>
+              <div style={{ flex:1,display:'flex',flexDirection:'column',alignItems:'center',gap:4 }}>
+                <span style={{ fontSize:10,color:'#64748b',fontWeight:700 }}>
+                  {activeRef.ch}<span style={{ color:'#cbd5e1' }}> / {maxCh}</span>
+                </span>
+                <div style={{ width:'100%',maxWidth:180,height:4,background:'rgba(15,23,42,.08)',
+                  borderRadius:99,overflow:'hidden' }}>
+                  <div style={{ width:`${(activeRef.ch/maxCh)*100}%`,height:'100%',
+                    background:'linear-gradient(90deg,#d97706,#f59e0b)',
+                    borderRadius:99,transition:'width .3s' }} />
+                </div>
               </div>
+              <button
+                onClick={() => canNext && scrollTo(activeRef.ch + 1, 1)}
+                disabled={!canNext}
+                style={{ display:'flex',alignItems:'center',gap:4,
+                  background: canNext ? 'rgba(15,23,42,.05)' : 'transparent',
+                  border:'none',borderRadius:10,
+                  padding:'8px 12px',cursor: canNext?'pointer':'default',
+                  color: canNext ? '#334155' : '#cbd5e1',
+                  fontSize:12,fontWeight:700,minHeight:44,minWidth:44 }}>
+                {canNext ? activeRef.ch + 1 : ''}장 ▶
+              </button>
+              <button
+                onClick={() => setChapterPickerOpen(true)}
+                style={{ background:'linear-gradient(135deg,#d97706,#f59e0b)',
+                  border:'none',color:'#fff',borderRadius:10,
+                  padding:'8px 12px',cursor:'pointer',
+                  fontSize:14,fontWeight:800,minHeight:44,minWidth:44,
+                  boxShadow:'0 3px 10px rgba(217,119,6,.35)' }}>☰</button>
             </div>
-            <button
-              onClick={() => activeRef.ch < 16 && scrollTo(activeRef.ch + 1, 1)}
-              disabled={activeRef.ch >= 16}
-              style={{ display:'flex',alignItems:'center',gap:4,
-                background: activeRef.ch<16 ? 'rgba(15,23,42,.05)' : 'transparent',
-                border:'none',borderRadius:10,
-                padding:'8px 12px',cursor: activeRef.ch<16?'pointer':'default',
-                color: activeRef.ch<16 ? '#334155' : '#cbd5e1',
-                fontSize:12,fontWeight:700,minHeight:40 }}>
-              {activeRef.ch < 16 ? activeRef.ch + 1 : ''}장 ▶
-            </button>
-            <button
-              onClick={() => setChapterPickerOpen(true)}
-              style={{ background:'linear-gradient(135deg,#d97706,#f59e0b)',
-                border:'none',color:'#fff',borderRadius:10,
-                padding:'8px 12px',cursor:'pointer',
-                fontSize:14,fontWeight:800,minHeight:40,minWidth:44,
-                boxShadow:'0 3px 10px rgba(217,119,6,.35)' }}>☰</button>
-          </div>
-        )}
+          );
+        })()}
         </>)}
 
         {/* ── 챕터 피커 (모바일) ── */}
