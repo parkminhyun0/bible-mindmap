@@ -183,6 +183,8 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           paddingBottom: 'env(safe-area-inset-bottom, 0px)',
           paddingLeft: 'env(safe-area-inset-left, 0px)',
           paddingRight: 'env(safe-area-inset-right, 0px)',
+          willChange: 'transform',
+          transform: 'translateZ(0)',
         }}>
           {/* 드로어 핸들 */}
           <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>

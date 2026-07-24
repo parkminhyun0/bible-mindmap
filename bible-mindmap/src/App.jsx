@@ -1098,6 +1098,8 @@ export default function App() {
             paddingBottom: 'env(safe-area-inset-bottom, 0px)',
             paddingLeft: 'env(safe-area-inset-left, 0px)',
             paddingRight: 'env(safe-area-inset-right, 0px)',
+            willChange: 'transform',
+            transform: 'translateZ(0)',
           }}>
             <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>
               <div style={{ width: 40, height: 4, borderRadius: 2, background: '#cbd5e1' }} />

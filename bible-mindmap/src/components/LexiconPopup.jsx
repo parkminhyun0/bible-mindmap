@@ -134,6 +134,9 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
           display: 'flex', flexDirection: 'column',
           paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
+          // GPU 합성 힌트 (등장 트랜지션 부드럽게)
+          willChange: 'transform, opacity',
+          transform: 'translateZ(0)',
         }}
         onClick={(e) => e.stopPropagation()}
       >

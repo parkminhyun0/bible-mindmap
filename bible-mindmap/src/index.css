@@ -19,6 +19,31 @@ html, body {
   flex-direction: column;
 }
 
+/* ─── 애니메이션 성능 유틸리티 (Round C · 2) ─── */
+/* GPU 합성 힌트 · transform/opacity 애니메이션 대상에 부여 */
+.gpu-accel { will-change: transform, opacity; transform: translateZ(0); }
+.gpu-height { will-change: height; }
+
+/* 접근성: 모션 감소 선호 사용자 지원 (iOS 설정 · 매크로S 등) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* PWA standalone 모드 (홈 화면 설치 후 실행) 감지용 · JS 없이 스타일 조정 가능 */
+@media (display-mode: standalone) {
+  body { -webkit-user-select: none; user-select: none; }
+  /* 입력·편집 가능한 요소는 선택 유지 */
+  input, textarea, [contenteditable="true"], .lex-def, .ProseMirror {
+    -webkit-user-select: text !important;
+    user-select: text !important;
+  }
+}
+
 /* 모바일 TipTap 에디터 — ReactFlow touch-action 격리 */
 .node-editor-tiptap--mobile .ProseMirror {
   touch-action: auto !important;

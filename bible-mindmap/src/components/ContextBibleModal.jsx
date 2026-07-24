@@ -1721,6 +1721,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 borderRadius: '18px 18px 0 0',
                 boxShadow: '0 -8px 32px rgba(15,23,42,.18)',
                 transition: 'height .28s cubic-bezier(.4,0,.2,1)',
+                willChange: 'height',
                 zIndex: 6,
                 overflow: sheetSnap === 'closed' ? 'hidden' : undefined,
                 paddingLeft: 'calc(env(safe-area-inset-left, 0px) + 16px)',
