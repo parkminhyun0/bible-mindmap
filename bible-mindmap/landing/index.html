@@ -1418,6 +1418,19 @@
       })
       .catch(() => {/* 폴백: 정적 HTML 그대로 표시 */});
   })();
+
+  // 앱 링크 캐시 우회: 랜딩에서 앱으로 이동 시 timestamp query 자동 부착
+  // → 모바일 브라우저가 이전 캐시된 index.html 을 재사용하지 못하도록 강제
+  (function bustAppLinkCache() {
+    var stamp = Date.now();
+    document.querySelectorAll('a[href*="./app/"], a[href*="/app/"]').forEach(function(a) {
+      try {
+        var u = new URL(a.getAttribute('href'), location.href);
+        u.searchParams.set('_v', stamp);
+        a.setAttribute('href', u.pathname + u.search);
+      } catch (e) { /* 무시 */ }
+    });
+  })();
 </script>
 
 </body>

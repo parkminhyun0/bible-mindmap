@@ -32,6 +32,29 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- 캐시된 이전 번들 자동 감지 · 강제 재로드 (모바일 white screen 방어)
+         이전에 캐시된 index.html 이 이미 삭제된 index-*.js 를 참조하면 404
+         이전 index.html 이 오래된 번들 참조 시 ReferenceError 발생 → 감지 후 재로드 -->
+    <script>
+      (function selfHealCache() {
+        var reloaded = sessionStorage.getItem('__bm_cache_reload');
+        // 1) 스크립트 로드 실패 감지 (404 등)
+        window.addEventListener('error', function(e) {
+          var isBundle = e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK');
+          var isRefErr = e.error && /is not defined|Cannot read propert/.test(e.error.message || '');
+          if ((isBundle || isRefErr) && !reloaded) {
+            sessionStorage.setItem('__bm_cache_reload', '1');
+            var url = new URL(location.href);
+            url.searchParams.set('_v', Date.now());
+            location.replace(url.toString());
+          }
+        }, true);
+        // 2) 정상 로드 후에는 flag 리셋 (다음 세션 대비)
+        window.addEventListener('load', function() {
+          setTimeout(function() { sessionStorage.removeItem('__bm_cache_reload'); }, 3000);
+        });
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
