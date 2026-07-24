@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
+import useMobile from '../hooks/useMobile';
 
 /**
  * 원어 단어 어형 분석 카드.
@@ -15,6 +16,7 @@ import { useCanvas } from '../context/CanvasContext';
  */
 export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
+  const isMobile = useMobile();
   const [tab, setTab] = useState('def'); // 'def' | 'usage'
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
@@ -100,31 +102,38 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
 
-  // 단어 바로 아래 → 뷰포트 경계 클램프 → 드래그 오프셋 적용
-  const width = 380;
-  const maxHeight = Math.min(600, (typeof window !== 'undefined' ? window.innerHeight : 800) - 40);
-  const margin = 12;
+  // 데스크톱: 단어 바로 아래 앵커 · 뷰포트 클램프 · 드래그 오프셋
+  // 모바일: 하단 시트 스타일 (전체 폭, 화면 하단 부착, 최대 85dvh)
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const baseLeft = Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
-  const baseTop  = Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - maxHeight - margin));
-  const left = baseLeft + dragOffset.x;
-  const top  = baseTop  + dragOffset.y;
+  const width = isMobile ? vw : 380;
+  const maxHeight = isMobile ? Math.round(vh * 0.85) : Math.min(600, vh - 40);
+  const margin = 12;
+  const baseLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
+  const baseTop  = isMobile ? (vh - maxHeight) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - maxHeight - margin));
+  const left = isMobile ? 0 : baseLeft + dragOffset.x;
+  const top  = isMobile ? baseTop : baseTop + dragOffset.y;
 
   return createPortal(
     <>
+      {isMobile && (
+        <div onClick={onClose} style={{ position:'fixed',inset:0,
+          background:'rgba(15,23,42,.4)',zIndex:(zIndex ?? 2501) - 1 }} />
+      )}
       <div
+        className={isMobile ? 'momentum-scroll' : undefined}
         style={{
           position: 'fixed',
           left, top, width, maxHeight,
           zIndex: zIndex ?? 2501,
           background: '#fff',
-          borderRadius: 10,
-          boxShadow: '0 12px 40px rgba(0,0,0,0.25)',
-          border: '1px solid #e2e8f0',
+          borderRadius: isMobile ? '16px 16px 0 0' : 10,
+          boxShadow: isMobile ? '0 -8px 32px rgba(15,23,42,.24)' : '0 12px 40px rgba(0,0,0,0.25)',
+          border: isMobile ? 'none' : '1px solid #e2e8f0',
           overflow: 'hidden',
           fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
           display: 'flex', flexDirection: 'column',
+          paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
         }}
         onClick={(e) => e.stopPropagation()}
       >

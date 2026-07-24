@@ -171,12 +171,18 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           }}
         />
         {/* 드로어 */}
-        <div style={{
+        <div className="momentum-scroll" style={{
           position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
           background: '#f8fafc', borderRadius: '16px 16px 0 0',
           boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-          maxHeight: '80vh', overflowY: 'auto',
+          maxHeight: '80vh',
+          maxHeight: '80dvh',
+          overflowY: 'auto',
+          overscrollBehavior: 'contain',
           display: 'flex', flexDirection: 'column',
+          paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          paddingLeft: 'env(safe-area-inset-left, 0px)',
+          paddingRight: 'env(safe-area-inset-right, 0px)',
         }}>
           {/* 드로어 핸들 */}
           <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>

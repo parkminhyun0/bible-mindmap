@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import useMobile from '../hooks/useMobile';
 
 const SECTIONS = [
   {
@@ -788,14 +789,15 @@ function renderContent(block, idx) {
 }
 
 export default function ManualModal({ onClose }) {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isMobile = useMobile();
   const [minimized, setMinimized] = useState(false);
   const [activeSection, setActiveSection] = useState('intro');
   const [pos, setPos] = useState(() => isMobile
     ? { x: 0, y: 0 }
-    : { x: window.innerWidth / 2 - 320, y: 60 });
+    : { x: (typeof window !== 'undefined' ? window.innerWidth / 2 - 320 : 100), y: 60 });
   const [size, setSize] = useState(() => isMobile
-    ? { w: window.innerWidth, h: window.innerHeight }
+    ? { w: typeof window !== 'undefined' ? window.innerWidth : 375,
+        h: typeof window !== 'undefined' ? window.innerHeight : 667 }
     : { w: 640, h: 560 });
 
   const dragging   = useRef(false);
@@ -803,6 +805,21 @@ export default function ManualModal({ onClose }) {
   const dragStart  = useRef({ mx: 0, my: 0, px: 0, py: 0 });
   const resizeStart = useRef({ mx: 0, my: 0, w: 0, h: 0 });
   const modalRef   = useRef(null);
+
+  // 모바일 orientation 변경 · viewport resize 대응
+  useEffect(() => {
+    if (!isMobile) return;
+    const onResize = () => {
+      setPos({ x: 0, y: 0 });
+      setSize({ w: window.innerWidth, h: window.innerHeight });
+    };
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+    };
+  }, [isMobile]);
 
   // ── 드래그 ──────────────────────────────────────────
   const onHeaderMouseDown = useCallback((e) => {
@@ -906,13 +923,23 @@ export default function ManualModal({ onClose }) {
 
       {/* ── 본문 (최소화 시 숨김) ── */}
       {!minimized && (
-        <div style={{ display: 'flex', height: size.h, minHeight: 200, overflow: 'hidden', borderRadius: '0 0 12px 12px' }}>
+        <div style={{ display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          height: size.h, minHeight: 200, overflow: 'hidden',
+          borderRadius: isMobile ? 0 : '0 0 12px 12px' }}>
 
-          {/* 사이드 네비 */}
-          <div style={{
-            width: 156, flexShrink: 0,
-            background: '#f8fafc', borderRight: '1px solid #e2e8f0',
-            overflowY: 'auto', padding: '8px 0',
+          {/* 사이드 네비 (모바일: 상단 가로 스크롤) */}
+          <div className="momentum-scroll" style={{
+            width: isMobile ? '100%' : 156,
+            height: isMobile ? 'auto' : undefined,
+            flexShrink: 0,
+            background: '#f8fafc', borderRight: isMobile ? 'none' : '1px solid #e2e8f0',
+            borderBottom: isMobile ? '1px solid #e2e8f0' : 'none',
+            overflowY: isMobile ? 'hidden' : 'auto',
+            overflowX: isMobile ? 'auto' : 'hidden',
+            padding: isMobile ? '6px 8px' : '8px 0',
+            display: isMobile ? 'flex' : 'block',
+            gap: isMobile ? 4 : 0,
           }}>
             {SECTIONS.map((s) => (
               <button
@@ -920,14 +947,23 @@ export default function ManualModal({ onClose }) {
                 onClick={() => setActiveSection(s.id)}
                 style={{
                   display: 'flex', alignItems: 'center', gap: 7,
-                  width: '100%', padding: '8px 12px',
+                  width: isMobile ? 'auto' : '100%',
+                  padding: isMobile ? '8px 12px' : '8px 12px',
+                  flexShrink: 0,
+                  whiteSpace: 'nowrap',
                   background: activeSection === s.id ? '#eff6ff' : 'transparent',
-                  border: 'none',
-                  borderLeft: activeSection === s.id ? '3px solid #3b82f6' : '3px solid transparent',
+                  border: isMobile
+                    ? (activeSection === s.id ? '1px solid #3b82f6' : '1px solid #e2e8f0')
+                    : 'none',
+                  borderRadius: isMobile ? 8 : 0,
+                  borderLeft: isMobile
+                    ? undefined
+                    : (activeSection === s.id ? '3px solid #3b82f6' : '3px solid transparent'),
                   cursor: 'pointer',
                   fontSize: 12, color: activeSection === s.id ? '#1d4ed8' : '#374151',
                   fontWeight: activeSection === s.id ? 700 : 400,
                   textAlign: 'left',
+                  minHeight: 40,
                 }}
               >
                 <span style={{ fontSize: 15, flexShrink: 0 }}>{s.icon}</span>
@@ -937,7 +973,11 @@ export default function ManualModal({ onClose }) {
           </div>
 
           {/* 콘텐츠 */}
-          <div style={{ flex: 1, overflowY: 'auto', padding: '16px 18px' }}>
+          <div className="momentum-scroll" style={{
+            flex: 1, overflowY: 'auto',
+            padding: isMobile ? '14px 16px calc(env(safe-area-inset-bottom, 0px) + 20px)' : '16px 18px',
+            overscrollBehavior: 'contain',
+          }}>
             {activeData && (
               <>
                 <div style={{
