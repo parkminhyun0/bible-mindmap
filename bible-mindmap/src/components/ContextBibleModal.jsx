@@ -173,8 +173,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     }));
   }, []);
 
-  // 활성 책 (칩으로 전환 가능) — 기본값은 로마서
-  const [activeBookId, setActiveBookId] = useState('Rom');
+  // 활성 책 (칩으로 전환 가능) — 기본값은 창세기 (성경 첫 권)
+  const [activeBookId, setActiveBookId] = useState('Gen');
   const activeBook = useMemo(
     () => [...OT_BOOKS, ...NT_BOOKS].find(b => b.id === activeBookId) || null,
     [activeBookId],
