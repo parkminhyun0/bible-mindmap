@@ -1,10 +1,23 @@
 import { useState, useMemo } from 'react';
 import { OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
 import { TRANSLATIONS, fetchAllTranslations, fetchVerseCount } from '../api/bibleApi';
+import useMobile from '../hooks/useMobile';
 
 const STEPS = { BOOK: 0, CHAPTER: 1, VERSE: 2, RESULT: 3 };
 
 export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
+  const isMobile = useMobile();
+  // 모바일 tap-friendly 오버라이드 (Apple HIG 44px)
+  const mBook   = isMobile ? { padding:'10px 4px', fontSize:13, minHeight:44 } : {};
+  const mNum    = isMobile ? { padding:'12px 0',   fontSize:14, minHeight:44 } : {};
+  const mChip   = isMobile ? { padding:'8px 12px', fontSize:13, minHeight:36, borderRadius:16 } : {};
+  const mTab    = isMobile ? { padding:'12px 0',   fontSize:14, minHeight:44 } : {};
+  const mInput  = isMobile ? { padding:'10px 8px', fontSize:15, minHeight:44 } : {};
+  const mFetch  = isMobile ? { padding:'12px 0',   fontSize:14, minHeight:44 } : {};
+  const mAdd    = isMobile ? { padding:'12px 0',   fontSize:14, minHeight:44 } : {};
+  const mBack   = isMobile ? { padding:'10px 0',   fontSize:13, minHeight:40 } : {};
+  const mGridBook = isMobile ? { gridTemplateColumns:'repeat(3, 1fr)', gap:6, maxHeight:'52vh' } : {};
+  const mGridChap = isMobile ? { gridTemplateColumns:'repeat(5, 1fr)', gap:6, maxHeight:'50vh' } : {};
   const [testament, setTestament] = useState('ot');
   const [translation, setTranslation] = useState('krv');
   const [selectedBook, setSelectedBook] = useState(null);
@@ -150,6 +163,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
             onClick={() => setTranslation(t.id)}
             style={{
               ...chipStyle,
+              ...mChip,
               background: translation === t.id ? '#6366f1' : '#e2e8f0',
               color: translation === t.id ? '#fff' : '#475569',
               fontWeight: translation === t.id ? 700 : 400,
@@ -166,6 +180,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           onClick={() => handleTestamentChange('ot')}
           style={{
             ...tabStyle,
+            ...mTab,
             background: testament === 'ot' ? '#f59e0b' : '#e2e8f0',
             color: testament === 'ot' ? '#fff' : '#64748b',
           }}
@@ -176,6 +191,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           onClick={() => handleTestamentChange('nt')}
           style={{
             ...tabStyle,
+            ...mTab,
             background: testament === 'nt' ? '#3b82f6' : '#e2e8f0',
             color: testament === 'nt' ? '#fff' : '#64748b',
           }}
@@ -216,12 +232,15 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {/* Step 1: Book selection */}
       {step === STEPS.BOOK && (
         <div
+          className="momentum-scroll"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             gap: 3,
             maxHeight: 420,
             overflowY: 'auto',
+            overscrollBehavior: 'contain',
+            ...mGridBook,
           }}
         >
           {books.map((book) => (
@@ -230,6 +249,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               onClick={() => handleBookSelect(book)}
               style={{
                 ...bookBtnStyle,
+                ...mBook,
                 background:
                   selectedBook?.id === book.id ? '#6366f1' : '#fff',
                 color: selectedBook?.id === book.id ? '#fff' : '#334155',
@@ -244,16 +264,19 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {/* Step 2: Chapter selection */}
       {step === STEPS.CHAPTER && selectedBook && (
         <>
-          <div style={{ fontSize: 12, color: '#64748b', fontWeight: 600 }}>
+          <div style={{ fontSize: isMobile ? 13 : 12, color: '#64748b', fontWeight: 600 }}>
             장 선택 ({selectedBook.chapters}장)
           </div>
           <div
+            className="momentum-scroll"
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(6, 1fr)',
               gap: 3,
               maxHeight: 360,
               overflowY: 'auto',
+              overscrollBehavior: 'contain',
+              ...mGridChap,
             }}
           >
             {Array.from({ length: selectedBook.chapters }, (_, i) => i + 1).map(
@@ -263,6 +286,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                   onClick={() => handleChapterSelect(ch)}
                   style={{
                     ...numBtnStyle,
+                    ...mNum,
                     background: selectedChapter === ch ? '#6366f1' : '#fff',
                     color: selectedChapter === ch ? '#fff' : '#334155',
                   }}
@@ -272,7 +296,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               ),
             )}
           </div>
-          <button onClick={() => setStep(STEPS.BOOK)} style={backBtnStyle}>
+          <button onClick={() => setStep(STEPS.BOOK)} style={{ ...backBtnStyle, ...mBack }}>
             ← 책 목록
           </button>
         </>
@@ -297,9 +321,11 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               </span>
             )}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
             <input
               type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
               min={1}
               max={maxVerses ?? undefined}
               value={verseStart}
@@ -308,16 +334,18 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                 setVerseStart(v);
                 if (verseEnd < v) setVerseEnd(v);
               }}
-              style={{ ...numInputStyle, width: 56 }}
+              style={{ ...numInputStyle, ...mInput, width: isMobile ? 72 : 56 }}
             />
             <span style={{ color: '#94a3b8', fontSize: 13 }}>~</span>
             <input
               type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
               min={verseStart}
               max={maxVerses ?? undefined}
               value={verseEnd}
               onChange={(e) => setVerseEnd(Math.max(verseStart, Math.min(+e.target.value, maxVerses ?? Infinity)))}
-              style={{ ...numInputStyle, width: 56 }}
+              style={{ ...numInputStyle, ...mInput, width: isMobile ? 72 : 56 }}
             />
             <span style={{ fontSize: 12, color: '#94a3b8' }}>절</span>
             {maxVerses && (
@@ -325,9 +353,12 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                 onClick={() => { setVerseEnd(maxVerses); }}
                 title="마지막 절로 설정"
                 style={{
-                  fontSize: 10, padding: '3px 7px', border: '1px solid #bfdbfe',
+                  fontSize: isMobile ? 12 : 10,
+                  padding: isMobile ? '6px 10px' : '3px 7px',
+                  border: '1px solid #bfdbfe',
                   borderRadius: 4, background: '#eff6ff', color: '#1d4ed8',
                   cursor: 'pointer', whiteSpace: 'nowrap', fontWeight: 600,
+                  minHeight: isMobile ? 40 : undefined,
                 }}
               >끝절</button>
             )}
@@ -338,6 +369,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
             disabled={loading}
             style={{
               ...fetchBtnStyle,
+              ...mFetch,
               opacity: loading ? 0.6 : 1,
             }}
           >
@@ -345,14 +377,14 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           </button>
 
           {error && (
-            <div style={{ fontSize: 11, color: '#ef4444', lineHeight: 1.4 }}>
+            <div style={{ fontSize: isMobile ? 12 : 11, color: '#ef4444', lineHeight: 1.4 }}>
               {error}
             </div>
           )}
 
           <button
             onClick={() => setStep(STEPS.CHAPTER)}
-            style={backBtnStyle}
+            style={{ ...backBtnStyle, ...mBack }}
           >
             ← 장 선택
           </button>
@@ -363,15 +395,17 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {step === STEPS.RESULT && fetchedText && (
         <>
           <div
+            className="momentum-scroll"
             style={{
               background: '#fff',
               border: '1px solid #e2e8f0',
               borderRadius: 8,
-              padding: 10,
-              fontSize: 13,
+              padding: isMobile ? 14 : 10,
+              fontSize: isMobile ? 15 : 13,
               lineHeight: 1.6,
-              maxHeight: 160,
+              maxHeight: isMobile ? 240 : 160,
               overflowY: 'auto',
+              overscrollBehavior: 'contain',
               color: '#1e293b',
               whiteSpace: 'pre-wrap',
             }}
@@ -380,8 +414,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <button onClick={handleAddToMap} style={addBtnStyle}>
+            <div style={{ display: 'flex', gap: 4, flexWrap: isMobile ? 'wrap' : 'nowrap' }}>
+              <button onClick={handleAddToMap} style={{ ...addBtnStyle, ...mAdd }}>
                 + 구절 추가
               </button>
               {onAddArcing && selectedBook && (
@@ -396,7 +430,9 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                       title: `${selectedBook.ko} ${selectedChapter}:${range}`,
                     });
                   }}
-                  style={{ ...addBtnStyle, background: '#6d28d9', flex: 1, fontSize: 11.5, whiteSpace: 'nowrap', padding: '8px 6px' }}
+                  style={{ ...addBtnStyle, ...mAdd, background: '#6d28d9', flex: 1,
+                    fontSize: isMobile ? 13 : 11.5, whiteSpace: 'nowrap',
+                    padding: isMobile ? '12px 8px' : '8px 6px' }}
                 >
                   📖 본문 흐름 분석
                 </button>
@@ -409,13 +445,15 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                     verseStart,
                     verseEnd,
                   })}
-                  style={{ ...addBtnStyle, background: '#065f46', flex: 1, whiteSpace: 'nowrap', padding: '8px 6px' }}
+                  style={{ ...addBtnStyle, ...mAdd, background: '#065f46', flex: 1,
+                    whiteSpace: 'nowrap',
+                    padding: isMobile ? '12px 8px' : '8px 6px' }}
                 >
                   🔤 구문 분석
                 </button>
               )}
             </div>
-            <button onClick={() => setStep(STEPS.VERSE)} style={backBtnStyle}>
+            <button onClick={() => setStep(STEPS.VERSE)} style={{ ...backBtnStyle, ...mBack }}>
               ← 다시
             </button>
           </div>
