@@ -1081,11 +1081,18 @@ export default function App() {
             onClick={() => setSavePanelOpen(false)}
             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 1100 }}
           />
-          <div style={{
+          <div className="momentum-scroll" style={{
             position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
             background: '#fff', borderRadius: '16px 16px 0 0',
             boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-            maxHeight: '75vh', overflowY: 'auto',
+            maxHeight: '75vh',
+            maxHeight: '75dvh',
+            overflowY: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            overscrollBehavior: 'contain',
+            paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+            paddingLeft: 'env(safe-area-inset-left, 0px)',
+            paddingRight: 'env(safe-area-inset-right, 0px)',
           }}>
             <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>
               <div style={{ width: 40, height: 4, borderRadius: 2, background: '#cbd5e1' }} />

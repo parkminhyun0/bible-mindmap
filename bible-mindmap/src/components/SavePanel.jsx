@@ -790,30 +790,42 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         borderLeft: mobileInline ? 'none' : '1px solid #e2e8f0',
         display: 'flex',
         flexDirection: 'column',
-        fontSize: 12,
+        fontSize: mobileInline ? 14 : 12,
       }}
     >
       {/* Header */}
-      <div style={{ padding: '10px 12px', borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ fontWeight: 700, fontSize: 14, color: '#1e293b', flex: 1 }}>📂 저장소</span>
-        <button onClick={onToggle} style={iconBtnTop} title="패널 닫기">✕</button>
+      <div style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
+        borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: '#1e293b', flex: 1 }}>📂 저장소</span>
+        <button onClick={onToggle}
+          style={mobileInline
+            ? { ...iconBtnTop, minWidth: 44, minHeight: 44, fontSize: 18 }
+            : iconBtnTop}
+          title="패널 닫기">✕</button>
       </div>
 
       {/* Actions: new map, save, folder */}
-      <div style={{ padding: '8px 12px', display: 'flex', flexDirection: 'column', gap: 4, borderBottom: '1px solid #e2e8f0' }}>
+      <div style={{ padding: mobileInline ? '10px 14px' : '8px 12px',
+        display: 'flex', flexDirection: 'column', gap: mobileInline ? 6 : 4,
+        borderBottom: '1px solid #e2e8f0' }}>
         <button
           onClick={() => {
             if (nodes.length === 0 || confirm('현재 작업을 초기화하고 새 마인드맵을 시작하시겠습니까?\n저장하지 않은 작업은 사라집니다.')) {
               onNewMap();
             }
           }}
-          style={newMapBtn}
+          style={mobileInline
+            ? { ...newMapBtn, minHeight: 44, fontSize: 14, padding: '12px' }
+            : newMapBtn}
         >
           ✨ 새 마인드맵
         </button>
-        <div style={{ display: 'flex', gap: 4 }}>
-          <button onClick={handleSave} style={actionBtn}>💾 저장</button>
-          <button onClick={handleNewFolder} style={{ ...actionBtn, background: '#e2e8f0', color: '#475569' }}>📁 새 폴더</button>
+        <div style={{ display: 'flex', gap: mobileInline ? 6 : 4 }}>
+          <button onClick={handleSave}
+            style={mobileInline ? { ...actionBtn, minHeight: 44, fontSize: 14, padding: '12px' } : actionBtn}>💾 저장</button>
+          <button onClick={handleNewFolder}
+            style={{ ...actionBtn, ...(mobileInline ? { minHeight: 44, fontSize: 14, padding: '12px' } : {}),
+              background: '#e2e8f0', color: '#475569' }}>📁 새 폴더</button>
         </div>
       </div>
 

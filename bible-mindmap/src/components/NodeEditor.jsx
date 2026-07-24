@@ -297,6 +297,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
         {/* 하단 편집 시트: 노드 선택 시만 표시 */}
         {hasNode && (
           <div
+            className="momentum-scroll"
             onPointerDown={(e) => e.stopPropagation()}
             style={{
               position: 'fixed', left: 0, right: 0, bottom: 0,
@@ -304,9 +305,13 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
               background: '#fff',
               borderRadius: '16px 16px 0 0',
               boxShadow: '0 -4px 20px rgba(0,0,0,0.18)',
-              padding: '12px 16px 20px',
+              padding: '12px calc(env(safe-area-inset-right, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + 20px) calc(env(safe-area-inset-left, 0px) + 16px)',
               display: 'flex', flexDirection: 'column', gap: 10,
-              maxHeight: '55vh', overflowY: 'auto',
+              maxHeight: '55vh',
+              maxHeight: '55dvh',
+              overflowY: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              overscrollBehavior: 'contain',
             }}
           >
             {/* 핸들 */}
@@ -322,7 +327,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
                   ref={mobileInputRef}
                   value={editData?.reference || ''}
                   onChange={(e) => update({ reference: e.target.value })}
-                  style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
+                  style={{ ...fieldStyle, flex: 1, fontSize: 16, minHeight: 44 }}
                   placeholder="구절 참조 (예: 마가복음 1:4)"
                 />
               )}
@@ -331,7 +336,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
                   ref={mobileInputRef}
                   value={editData?.title || ''}
                   onChange={(e) => update({ title: e.target.value })}
-                  style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
+                  style={{ ...fieldStyle, flex: 1, fontSize: 16, minHeight: 44 }}
                   placeholder="제목"
                 />
               )}
@@ -340,7 +345,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
                   ref={mobileInputRef}
                   value={editData?.name || editData?.label || ''}
                   onChange={(e) => update({ name: e.target.value })}
-                  style={{ ...fieldStyle, flex: 1, fontSize: 13 }}
+                  style={{ ...fieldStyle, flex: 1, fontSize: 16, minHeight: 44 }}
                   placeholder="이름"
                 />
               )}
@@ -382,7 +387,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
 
             {/* 본문 편집기 — 원어 포함 모든 역본 편집 가능 */}
             <div
-              style={{ ...editorWrapStyle, maxHeight: 140, fontSize: 13, touchAction: 'auto', userSelect: 'text', WebkitUserSelect: 'text' }}
+              style={{ ...editorWrapStyle, maxHeight: 200, fontSize: 16, touchAction: 'auto', userSelect: 'text', WebkitUserSelect: 'text' }}
               className="node-editor-tiptap node-editor-tiptap--mobile"
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
