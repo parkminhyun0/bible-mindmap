@@ -98,6 +98,8 @@ export default function CrossrefPopup({
           transform: 'translateZ(0)',
         }}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={(e) => e.stopPropagation()}
+        onTouchEnd={(e) => e.stopPropagation()}
       >
         {/* 헤더 (데스크톱: 드래그 핸들) */}
         <div

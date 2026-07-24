@@ -138,7 +138,10 @@ export default function VersePreviewPopup({
     <div
       role="dialog"
       aria-label={`참조 본문 · ${reference}`}
-      onMouseDown={() => onFocus?.(id)}
+      onMouseDown={(e) => { e.stopPropagation(); onFocus?.(id) }}
+      onClick={(e) => e.stopPropagation()}
+      onTouchStart={(e) => e.stopPropagation()}
+      onTouchEnd={(e) => e.stopPropagation()}
       style={{
         position: 'fixed', left, top, width, maxHeight,
         zIndex,
