@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="bookL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#f8fafc"/>
+    </linearGradient>
+    <linearGradient id="bookR" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#cbd5e1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="13" fill="url(#bg)"/>
+
+  <!-- Connection lines (mindmap) -->
+  <line x1="32" y1="23" x2="32" y2="10" stroke="#10b981" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="28" y1="26" x2="13" y2="15" stroke="#a78bfa" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="36" y1="26" x2="51" y2="15" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="28" y1="40" x2="13" y2="52" stroke="#f59e0b" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="36" y1="40" x2="51" y2="52" stroke="#f472b6" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Open book — left page -->
+  <path d="M14 40 L31 36 L31 22 L14 27 Z" fill="url(#bookL)" rx="1"/>
+  <!-- Open book — right page -->
+  <path d="M33 22 L50 27 L50 40 L33 36 Z" fill="url(#bookR)"/>
+  <!-- Spine -->
+  <rect x="30.5" y="21" width="3" height="19" rx="1.5" fill="#3b82f6"/>
+  <!-- Page lines left -->
+  <line x1="18" y1="30" x2="29" y2="28" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+  <line x1="18" y1="33.5" x2="29" y2="31.5" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+  <line x1="18" y1="37" x2="29" y2="35" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+  <!-- Page lines right -->
+  <line x1="35" y1="28" x2="46" y2="30" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+  <line x1="35" y1="31.5" x2="46" y2="33.5" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+  <line x1="35" y1="35" x2="46" y2="37" stroke="#94a3b8" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Node dots -->
+  <circle cx="32" cy="8"  r="4" fill="#10b981"/>
+  <circle cx="11" cy="13" r="3.5" fill="#a78bfa"/>
+  <circle cx="53" cy="13" r="3.5" fill="#60a5fa"/>
+  <circle cx="11" cy="54" r="3.5" fill="#f59e0b"/>
+  <circle cx="53" cy="54" r="3.5" fill="#f472b6"/>
+</svg>
