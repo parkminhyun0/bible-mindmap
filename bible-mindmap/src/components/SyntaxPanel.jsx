@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { loadChapterLexicon, humanizeMorph } from '../utils/lexicon';
+import useMobile from '../hooks/useMobile';
 import { fetchVerse } from '../api/bibleApi';
 import { ALL_BOOKS } from '../data/bibleBooks';
 import { buildPhraseTree, analyzeClause, getNodeColor } from '../utils/phraseMarker';
@@ -603,6 +604,15 @@ const hdrBtn = {
   flexShrink: 0, padding: '0 6px',
 };
 
+// 모바일: tap target 44px + 폰트 확대
+const mHdrBtn = {
+  height: 40,
+  minWidth: 44,
+  fontSize: 12,
+  padding: '0 12px',
+  borderRadius: 8,
+};
+
 // ── 데이터 로드 ────────────────────────────────────────────────────────────
 async function loadSyntaxData(bookId, chapter, verseStart, verseEnd) {
   const chLex = await loadChapterLexicon(bookId, chapter);
@@ -622,12 +632,32 @@ async function loadSyntaxData(bookId, chapter, verseStart, verseEnd) {
 
 // ── 메인 팝업 ────────────────────────────────────────────────────────────────
 export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex = 0 }) {
+  const isMobile = useMobile();
   const [pos,  setPos]  = useState(() => {
+    if (isMobile) return { x: 0, y: 0 };
     const offset = panelIndex * 36;
-    return { x: Math.max(0, window.innerWidth / 2 - 430 + offset), y: 70 + offset };
+    return { x: Math.max(0, (typeof window !== 'undefined' ? window.innerWidth / 2 - 430 : 100) + offset), y: 70 + offset };
   });
-  const [size, setSize] = useState({ w: 860, h: 580 });
+  const [size, setSize] = useState(() => isMobile
+    ? { w: typeof window !== 'undefined' ? window.innerWidth : 375,
+        h: typeof window !== 'undefined' ? window.innerHeight : 667 }
+    : { w: 860, h: 580 });
   const [minimized, setMinimized] = useState(false);
+
+  // 모바일 orientation/resize 자동 대응
+  useEffect(() => {
+    if (!isMobile) return;
+    const onR = () => {
+      setPos({ x: 0, y: 0 });
+      setSize({ w: window.innerWidth, h: window.innerHeight });
+    };
+    window.addEventListener('resize', onR);
+    window.addEventListener('orientationchange', onR);
+    return () => {
+      window.removeEventListener('resize', onR);
+      window.removeEventListener('orientationchange', onR);
+    };
+  }, [isMobile]);
 
   const dragging    = useRef(false);
   const resizing    = useRef(false);
@@ -710,22 +740,36 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
     : '';
 
   return createPortal(
-    <div style={{
-      position: 'fixed', left: pos.x, top: pos.y, width: size.w, zIndex: 8900,
-      background: '#fff', borderRadius: 12,
-      boxShadow: '0 20px 60px rgba(0,0,0,0.26), 0 4px 16px rgba(0,0,0,0.1)',
-      border: '1px solid #6ee7b7',
-      fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
-      display: 'flex', flexDirection: 'column',
-    }}>
+    <div
+      className={isMobile ? 'h-screen-safe' : undefined}
+      style={{
+        position: 'fixed',
+        left: isMobile ? 0 : pos.x,
+        top: isMobile ? 0 : pos.y,
+        width: isMobile ? '100%' : size.w,
+        height: isMobile ? undefined : (minimized ? 'auto' : undefined),
+        zIndex: 8900,
+        background: '#fff',
+        borderRadius: isMobile ? 0 : 12,
+        boxShadow: isMobile ? 'none' : '0 20px 60px rgba(0,0,0,0.26), 0 4px 16px rgba(0,0,0,0.1)',
+        border: isMobile ? 'none' : '1px solid #6ee7b7',
+        fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
+        display: 'flex', flexDirection: 'column',
+      }}>
 
       {/* ── 타이틀바 ── */}
-      <div onMouseDown={onHeaderMouseDown} style={{
-        display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'nowrap',
-        padding: '0 10px', height: 44, flexShrink: 0,
+      <div onMouseDown={isMobile ? undefined : onHeaderMouseDown} style={{
+        display: 'flex', alignItems: 'center', gap: 6,
+        flexWrap: isMobile ? 'wrap' : 'nowrap',
+        padding: isMobile
+          ? 'calc(env(safe-area-inset-top, 0px) + 8px) calc(env(safe-area-inset-right, 0px) + 12px) 8px calc(env(safe-area-inset-left, 0px) + 12px)'
+          : '0 10px',
+        height: isMobile ? 'auto' : 44,
+        minHeight: isMobile ? 52 : undefined,
+        flexShrink: 0,
         background: 'linear-gradient(135deg, #064e3b, #065f46)',
-        borderRadius: minimized ? 12 : '12px 12px 0 0',
-        cursor: 'grab', userSelect: 'none',
+        borderRadius: isMobile ? 0 : (minimized ? 12 : '12px 12px 0 0'),
+        cursor: isMobile ? 'default' : 'grab', userSelect: 'none',
       }}>
         <span style={{ fontSize: 14 }}>🔤</span>
         <span style={{ fontWeight: 700, fontSize: 12, color: '#d1fae5', flexShrink: 0 }}>구문 구조</span>
@@ -738,11 +782,11 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         {!minimized && verses && (
           <>
             <button onMouseDown={e => e.stopPropagation()} onClick={() => setViewMode('flow')}
-              style={{ ...hdrBtn, background: viewMode === 'flow' ? '#047857' : 'transparent' }}>
+              style={{ ...hdrBtn, ...(isMobile ? mHdrBtn : {}), background: viewMode === 'flow' ? '#047857' : 'transparent' }}>
               📋 절 구조
             </button>
             <button onMouseDown={e => e.stopPropagation()} onClick={() => setViewMode('tree')}
-              style={{ ...hdrBtn, background: viewMode === 'tree' ? '#047857' : 'transparent' }}>
+              style={{ ...hdrBtn, ...(isMobile ? mHdrBtn : {}), background: viewMode === 'tree' ? '#047857' : 'transparent' }}>
               🌲 트리
             </button>
           </>
@@ -751,7 +795,7 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         {/* 크기 설정 */}
         {!minimized && (
           <button onMouseDown={e => e.stopPropagation()} onClick={() => setShowSizes(v => !v)}
-            style={{ ...hdrBtn, background: showSizes ? '#047857' : 'transparent' }}
+            style={{ ...hdrBtn, ...(isMobile ? mHdrBtn : {}), background: showSizes ? '#047857' : 'transparent' }}
             title="글자 크기 조절">
             ⚙️
           </button>
@@ -759,18 +803,20 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
 
         {/* 본문 선택 */}
         <button onMouseDown={e => e.stopPropagation()} onClick={() => setShowForm(v => !v)}
-          style={{ ...hdrBtn, background: showForm ? '#047857' : 'transparent' }}>
+          style={{ ...hdrBtn, ...(isMobile ? mHdrBtn : {}), background: showForm ? '#047857' : 'transparent' }}>
           {showForm ? '▲' : '본문'}
         </button>
 
-        {/* 최소화 */}
-        <button onMouseDown={e => e.stopPropagation()} onClick={() => setMinimized(v => !v)} style={hdrBtn}>
-          {minimized ? '▲' : '▼'}
-        </button>
+        {/* 최소화 (데스크톱만) */}
+        {!isMobile && (
+          <button onMouseDown={e => e.stopPropagation()} onClick={() => setMinimized(v => !v)} style={hdrBtn}>
+            {minimized ? '▲' : '▼'}
+          </button>
+        )}
 
         {/* 닫기 */}
         <button onMouseDown={e => e.stopPropagation()} onClick={onClose}
-          style={{ ...hdrBtn, border: '1px solid #7f1d1d', color: '#fca5a5' }}>✕</button>
+          style={{ ...hdrBtn, ...(isMobile ? mHdrBtn : {}), border: '1px solid #7f1d1d', color: '#fca5a5' }}>✕</button>
       </div>
 
       {/* ── 본문 선택 폼 ── */}
@@ -785,7 +831,13 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
 
       {/* ── 내용 ── */}
       {!minimized && !showForm && (
-        <div style={{ height: size.h, display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '0 0 12px 12px' }}>
+        <div style={{
+          flex: isMobile ? 1 : undefined,
+          height: isMobile ? undefined : size.h,
+          display: 'flex', flexDirection: 'column',
+          overflow: 'hidden',
+          borderRadius: isMobile ? 0 : '0 0 12px 12px',
+        }}>
 
           {/* 설명 + 범례 (트리 뷰) */}
           {verses && viewMode === 'tree' && (
@@ -854,7 +906,13 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
           )}
 
           {!loading && verses && (
-            <div style={{ flex: 1, overflowY: 'auto', padding: viewMode === 'tree' ? '14px 14px 24px' : '0' }}>
+            <div className={isMobile ? 'momentum-scroll' : undefined}
+              style={{ flex: 1, overflowY: 'auto',
+                padding: viewMode === 'tree' ? (isMobile ? '10px 12px calc(env(safe-area-inset-bottom, 0px) + 24px)' : '14px 14px 24px') : '0',
+                WebkitOverflowScrolling: 'touch',
+                overscrollBehavior: 'contain',
+                paddingBottom: isMobile && viewMode !== 'tree' ? 'calc(env(safe-area-inset-bottom, 0px) + 12px)' : undefined,
+              }}>
               {viewMode === 'tree' ? (
                 <>
                   {verses.map(v => (
