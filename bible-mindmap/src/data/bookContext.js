@@ -735,35 +735,76 @@ const MRK_STRUCTURAL_RULES = [
     gr: 'ἠγέρθη, οὐκ ἔστιν ὧδε', tr: '에게르테 우크 에스틴 호데',
     desc: '"그가 살아나셨고 여기 계시지 아니하니라" (16:6) — 마가 원본 종결점. 여인들의 두려움 · 침묵 (16:8) 으로 열린 결말.',
     match: null },
+  { id: 'son_of_man', role: '인자 (Son of Man)', icon: '🧑', color: '#0369a1', bg: 'rgba(3,105,161,.13)',
+    gr: 'ὁ υἱὸς τοῦ ἀνθρώπου', tr: '호 휘오스 투 안트로푸',
+    desc: '예수의 자기 지칭 · 마가 14회 · 다니엘 7:13 배경. 지상 권세(2:10·28) → 수난(8:31 이후) → 재림(13:26·14:62) 세 국면으로 발전. Marcus·Hooker 마가 기독론 핵심.',
+    match: null },
+  { id: 'kingdom_of_god', role: '하나님 나라 선포', icon: '👑', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'βασιλεία τοῦ θεοῦ', tr: '바실레이아 투 테우',
+    desc: '"하나님 나라가 가까이 왔으니 회개하고 복음을 믿으라" (1:15) — 마가 14회 · 예수 사역의 총주제. 이미/아직 (already/not yet) 긴장. France·Kingsbury 마가 대주제.',
+    match: (s) => s.has('G0932') && s.has('G2316') },
+  { id: 'way_of_lord', role: '도상 신학 (the Way)', icon: '🛤️', color: '#d97706', bg: 'rgba(217,119,6,.13)',
+    gr: 'ἐν τῇ ὁδῷ', tr: '엔 테 호도',
+    desc: '"길에서" — 마가 8:27-10:52 도상 부분의 신학적 뼈대. 예수의 길 (수난)  = 제자의 길 (자기부인). Marcus *Way of the Lord* 는 이 부분을 마가 서사 중심 척추로 봄.',
+    match: null },
+  { id: 'elijah_motif', role: '엘리야 모티프', icon: '🌿', color: '#a16207', bg: 'rgba(161,98,7,.12)',
+    gr: 'Ἠλίας', tr: '엘리아스',
+    desc: '세례요한 = 엘리야 (1:2-3, 9:11-13) · 변화산 함께 등장 (9:4) · 십자가 절규 오해 (15:35-36). 말라기 4:5 종말론 성취 프레임. Öhler·Marcus 강조.',
+    match: (s) => s.has('G2243') },
+  { id: 'intercalation', role: '샌드위치 구조 (A-B-A)', icon: '🌀', color: '#be185d', bg: 'rgba(190,24,93,.13)',
+    gr: 'A-B-A', tr: '인터칼레이션',
+    desc: '마가 특유 서사 기법 · 한 이야기(A)를 시작 → 다른 이야기(B) 삽입 → 원래 이야기(A) 완결. 두 이야기가 상호 해석. 5:21-43(야이로/혈루증) · 11:12-25(무화과/성전) · 14:1-11(음모/향유) · 14:53-72(재판/베드로 부인). Edwards "Markan Sandwiches" 표준 개념.',
+    match: null },
 ];
 
 // 마가복음 수동 담화 주석: 정체 계시 · 메시아 비밀 · 수난·부활 서사의 신학적 결정 지점
+// 신약학 표준 15종 마커 반영 (Wrede·Marcus·France·Hooker·Edwards·Öhler)
 const MRK_MANUAL_DISCOURSE = {
   '1:1':   'son_of_god',            // 표제 · 하나님의 아들 예수 그리스도의 복음
+  '1:2':   'elijah_motif',          // 세례요한 = 엘리야 (말라기·이사야 결합 인용)
   '1:10':  'heaven_torn',           // 하늘 갈라짐 · 성령 강림 (Inclusio 시작)
   '1:11':  'son_of_god',            // 하늘 음성 "너는 내 사랑하는 아들이라"
-  '1:15':  'immediately',           // 때가 찼고 하나님 나라가 가까이 왔다
+  '1:15':  'kingdom_of_god',        // 때가 찼고 하나님 나라가 가까이 왔다 (총주제)
   '1:44':  'messianic_secret',      // 나병환자에게 침묵 명령
+  '2:10':  'son_of_man',            // 인자가 땅에서 죄를 사하는 권세 (지상 권세 국면)
+  '2:28':  'son_of_man',            // 인자는 안식일의 주인
   '3:12':  'messianic_secret',      // 귀신들에게 침묵 명령
+  '4:11':  'kingdom_of_god',        // 하나님 나라의 비밀 (비유의 신비)
+  '4:26':  'kingdom_of_god',        // 스스로 자라나는 씨 비유
+  '5:25':  'intercalation',         // 야이로 딸 도중 혈루증 여인 삽입 (샌드위치 A-B-A)
   '5:43':  'messianic_secret',      // 야이로 딸 살리심 · 침묵 명령
+  '6:15':  'elijah_motif',          // 사람들이 예수를 엘리야라고 함
   '7:36':  'messianic_secret',      // 귀 먹은 자 고침 · 침묵 명령
+  '8:27':  'way_of_lord',           // 도상 부분 시작 · "길에서 물으시되"
   '8:29':  'son_of_god',            // 베드로의 고백 "주는 그리스도시니이다"
   '8:30':  'messianic_secret',      // 자기의 일을 말하지 말라
   '8:31':  'passion_prediction',    // 첫 번째 수난 예고
+  '8:38':  'son_of_man',            // 인자가 아버지 영광으로 올 때 (재림 국면)
   '9:2':   'transfiguration',       // 변화산 · 메테모르포테
+  '9:4':   'elijah_motif',          // 엘리야가 모세와 함께 나타남
   '9:7':   'son_of_god',            // 변화산 하늘 음성
   '9:9':   'messianic_secret',      // 인자가 죽은 자 가운데서 살아난 뒤에야
+  '9:11':  'elijah_motif',          // 엘리야가 먼저 와야 하리라
   '9:31':  'passion_prediction',    // 두 번째 수난 예고
+  '10:15': 'kingdom_of_god',        // 어린 아이와 같이 · 하나님 나라 받음
+  '10:32': 'way_of_lord',           // 예수께서 앞서서 예루살렘으로 올라가시는 길
   '10:33': 'passion_prediction',    // 세 번째 수난 예고 (상세)
   '10:45': 'ransom',                // 대속물 · 신학적 정점
+  '10:52': 'way_of_lord',           // 바디매오 · 예수를 길에서 따르니라 (도상 종결)
+  '11:12': 'intercalation',         // 무화과 저주 · 성전 정화 · 무화과 마름 (샌드위치)
   '11:15': 'temple_action',         // 성전 정화
-  '13:26': 'son_of_god',            // 인자가 구름 타고 오심 (재림)
+  '12:34': 'kingdom_of_god',        // 네가 하나님 나라에서 멀지 아니하도다
+  '13:26': 'son_of_man',            // 인자가 구름 타고 오심 (재림 국면 절정)
+  '14:1':  'intercalation',         // 종교지도자 음모 · 향유 부음 · 유다 배신 (샌드위치)
   '14:22': 'ransom',                // 성찬 제정 · 이는 내 몸이니라
   '14:36': 'ransom',                // 겟세마네 · 아바 아버지
-  '14:62': 'son_of_god',            // "내가 그니라" · 재판 대답
+  '14:53': 'intercalation',         // 재판 · 베드로 부인 (샌드위치 · A-B-A)
+  '14:62': 'son_of_man',            // "내가 그니라" · 재판 대답 · 인자 클라이맥스
   '15:34': 'passion_prediction',    // 엘로이 엘로이 · 십자가 절규
+  '15:35': 'elijah_motif',          // 사람들이 엘리야를 부른다 오해
   '15:38': 'heaven_torn',           // 성전 휘장 찢어짐 (Inclusio 완성)
   '15:39': 'centurion_confession',  // 백부장 고백 · 진실로 하나님의 아들
+  '15:43': 'kingdom_of_god',        // 요셉 · 하나님 나라를 기다리는 자
   '16:6':  'empty_tomb',            // 그가 살아나셨고 여기 계시지 아니하니라
   '16:8':  'empty_tomb',            // 여인들의 두려움 · 원본 종결
 };
@@ -819,32 +860,41 @@ export const MRK_CTX = {
       { id: 'p1',  ch: 1,  verse: 1,  color: '#7c3aed', label: '표제 · 하나님의 아들' },
       { id: 'p2',  ch: 1,  verse: 10, color: '#0891b2', label: '하늘 찢어짐 (세례)' },
       { id: 'p3',  ch: 1,  verse: 11, color: '#7c3aed', label: '하늘 음성 · 사랑하는 아들' },
-      { id: 'p4',  ch: 1,  verse: 15, color: '#eab308', label: '하나님 나라 선포' },
-      { id: 'p5',  ch: 8,  verse: 29, color: '#7c3aed', label: '베드로 고백 · 그리스도' },
-      { id: 'p6',  ch: 8,  verse: 31, color: '#dc2626', label: '첫 수난 예고' },
-      { id: 'p7',  ch: 9,  verse: 7,  color: '#7c3aed', label: '변화산 · 하늘 음성' },
-      { id: 'p8',  ch: 9,  verse: 31, color: '#dc2626', label: '두 번째 수난 예고' },
-      { id: 'p9',  ch: 10, verse: 33, color: '#dc2626', label: '세 번째 수난 예고' },
-      { id: 'p10', ch: 10, verse: 45, color: '#059669', label: '대속물 · 신학적 정점' },
-      { id: 'p11', ch: 11, verse: 15, color: '#b45309', label: '성전 정화' },
-      { id: 'p12', ch: 14, verse: 22, color: '#059669', label: '성찬 제정' },
-      { id: 'p13', ch: 14, verse: 36, color: '#7c3aed', label: '겟세마네 · 아바 아버지' },
-      { id: 'p14', ch: 15, verse: 34, color: '#dc2626', label: '엘로이 엘로이 · 절규' },
-      { id: 'p15', ch: 15, verse: 38, color: '#0891b2', label: '성전 휘장 찢어짐' },
-      { id: 'p16', ch: 15, verse: 39, color: '#7c3aed', label: '백부장 고백 (Inclusio 완성)' },
-      { id: 'p17', ch: 16, verse: 6,  color: '#10b981', label: '부활 · 여기 계시지 않다' },
+      { id: 'p4',  ch: 1,  verse: 15, color: '#059669', label: '하나님 나라 선포' },
+      { id: 'p5',  ch: 2,  verse: 10, color: '#0369a1', label: '인자 · 죄사함 권세 (지상)' },
+      { id: 'p6',  ch: 8,  verse: 27, color: '#d97706', label: '도상 신학 시작 (길에서)' },
+      { id: 'p7',  ch: 8,  verse: 29, color: '#7c3aed', label: '베드로 고백 · 그리스도' },
+      { id: 'p8',  ch: 8,  verse: 31, color: '#dc2626', label: '첫 수난 예고' },
+      { id: 'p9',  ch: 9,  verse: 7,  color: '#7c3aed', label: '변화산 · 하늘 음성' },
+      { id: 'p10', ch: 9,  verse: 31, color: '#dc2626', label: '두 번째 수난 예고' },
+      { id: 'p11', ch: 10, verse: 33, color: '#dc2626', label: '세 번째 수난 예고' },
+      { id: 'p12', ch: 10, verse: 45, color: '#059669', label: '대속물 · 신학적 정점' },
+      { id: 'p13', ch: 10, verse: 52, color: '#d97706', label: '바디매오 · 길에서 따름 (도상 종결)' },
+      { id: 'p14', ch: 11, verse: 15, color: '#b45309', label: '성전 정화' },
+      { id: 'p15', ch: 13, verse: 26, color: '#0369a1', label: '인자 재림 · 구름 (묵시)' },
+      { id: 'p16', ch: 14, verse: 22, color: '#059669', label: '성찬 제정' },
+      { id: 'p17', ch: 14, verse: 36, color: '#7c3aed', label: '겟세마네 · 아바 아버지' },
+      { id: 'p18', ch: 14, verse: 62, color: '#0369a1', label: '"내가 그니라" · 인자 클라이맥스' },
+      { id: 'p19', ch: 15, verse: 34, color: '#dc2626', label: '엘로이 엘로이 · 절규' },
+      { id: 'p20', ch: 15, verse: 38, color: '#0891b2', label: '성전 휘장 찢어짐' },
+      { id: 'p21', ch: 15, verse: 39, color: '#7c3aed', label: '백부장 고백 (Inclusio 완성)' },
+      { id: 'p22', ch: 16, verse: 6,  color: '#10b981', label: '부활 · 여기 계시지 않다' },
     ],
     arcs: [
-      { id: 'a1',  from: 'p1',  to: 'p16', color: '#7c3aed', label: '표제 → 백부장 고백 (Inclusio · 하나님의 아들)' },
-      { id: 'a2',  from: 'p2',  to: 'p15', color: '#0891b2', label: '하늘 찢어짐 → 휘장 찢어짐 (진입 개방)' },
-      { id: 'a3',  from: 'p3',  to: 'p7',  color: '#7c3aed', label: '세례 음성 → 변화산 음성 (아들 확증)' },
-      { id: 'a4',  from: 'p5',  to: 'p6',  color: '#dc2626', label: '베드로 고백 → 첫 수난 예고 (전환점)' },
-      { id: 'a5',  from: 'p6',  to: 'p9',  color: '#dc2626', label: '수난 예고 3회 반복' },
-      { id: 'a6',  from: 'p6',  to: 'p10', color: '#059669', label: '수난 → 대속물 (섬김 신학)' },
-      { id: 'a7',  from: 'p10', to: 'p14', color: '#dc2626', label: '대속물 예고 → 십자가 절규 (성취)' },
-      { id: 'a8',  from: 'p11', to: 'p15', color: '#b45309', label: '성전 정화 → 성전 심판 (휘장)' },
-      { id: 'a9',  from: 'p5',  to: 'p16', color: '#7c3aed', label: '유대인 제자 → 이방 백부장 (대비)' },
-      { id: 'a10', from: 'p1',  to: 'p17', color: '#10b981', label: '복음 시작 → 부활 (전체 대주제)' },
+      { id: 'a1',  from: 'p1',  to: 'p21', color: '#7c3aed', label: '표제 → 백부장 고백 (Inclusio · 하나님의 아들)' },
+      { id: 'a2',  from: 'p2',  to: 'p20', color: '#0891b2', label: '하늘 찢어짐 → 휘장 찢어짐 (진입 개방)' },
+      { id: 'a3',  from: 'p3',  to: 'p9',  color: '#7c3aed', label: '세례 음성 → 변화산 음성 (아들 확증)' },
+      { id: 'a4',  from: 'p5',  to: 'p18', color: '#0369a1', label: '인자 · 지상 권세 → 재판 대답 (기독론 발전)' },
+      { id: 'a5',  from: 'p18', to: 'p15', color: '#0369a1', label: '인자 · 재림 (13:26) → 재판 (14:62) 상호 조명' },
+      { id: 'a6',  from: 'p6',  to: 'p13', color: '#d97706', label: '도상 신학 (8:27 → 10:52) · 길에서 물으심 → 길에서 따름' },
+      { id: 'a7',  from: 'p7',  to: 'p8',  color: '#dc2626', label: '베드로 고백 → 첫 수난 예고 (전환점)' },
+      { id: 'a8',  from: 'p8',  to: 'p11', color: '#dc2626', label: '수난 예고 3회 반복' },
+      { id: 'a9',  from: 'p8',  to: 'p12', color: '#059669', label: '수난 → 대속물 (섬김 신학)' },
+      { id: 'a10', from: 'p12', to: 'p19', color: '#dc2626', label: '대속물 예고 → 십자가 절규 (성취)' },
+      { id: 'a11', from: 'p14', to: 'p20', color: '#b45309', label: '성전 정화 → 성전 심판 (휘장)' },
+      { id: 'a12', from: 'p4',  to: 'p12', color: '#059669', label: '하나님 나라 선포 → 대속물 (나라의 대가)' },
+      { id: 'a13', from: 'p7',  to: 'p21', color: '#7c3aed', label: '유대인 제자 → 이방 백부장 (대비 아이러니)' },
+      { id: 'a14', from: 'p1',  to: 'p22', color: '#10b981', label: '복음 시작 → 부활 (전체 대주제)' },
     ],
   },
 };

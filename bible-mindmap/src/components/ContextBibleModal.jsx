@@ -382,7 +382,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       // 마가복음 구조
       'son_of_god', 'heaven_torn', 'messianic_secret', 'passion_prediction',
       'transfiguration', 'ransom', 'temple_action', 'centurion_confession',
-      'empty_tomb',
+      'empty_tomb', 'son_of_man', 'kingdom_of_god', 'way_of_lord',
+      'elijah_motif', 'intercalation',
     ]);
     for (const [key, ruleId] of Object.entries(manual)) {
       const [c, v] = key.split(':').map(Number);
