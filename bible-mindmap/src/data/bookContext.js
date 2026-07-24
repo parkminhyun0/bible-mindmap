@@ -467,9 +467,183 @@ export const GEN_CTX = {
   },
 };
 
+// ── 출애굽기 전용 구조 마커 (자동 감지 위에 오버레이) ────────────────────
+const EXO_STRUCTURAL_RULES = [
+  { id: 'burning_bush', role: '불붙는 떨기나무·소명', icon: '🔥', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'הַסְּנֶה', tr: '하-스네', indent: 1,
+    desc: '"떨기나무 가운데로부터 나오는 불꽃 안에서" (3:2) — 모세의 소명 사건. 하나님이 인격적으로 부르시는 결정적 순간.',
+    match: null },
+  { id: 'divine_name', role: '여호와 이름 계시', icon: '🎯', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'אֶהְיֶה אֲשֶׁר אֶהְיֶה', tr: '에흐예 아쉐르 에흐예',
+    desc: '"나는 스스로 있는 자니라" (3:14) · "여호와" 이름의 신학적 의미. 6:3 에서 언약적 재확인.',
+    match: null },
+  { id: 'plagues', role: '열 재앙 · 심판', icon: '🩸', color: '#991b1b', bg: 'rgba(153,27,27,.13)',
+    gr: 'מַכָּה', tr: '마카',
+    desc: '애굽 신들에 대한 심판 · 여호와의 절대 주권 계시 (7-12장). 애굽인이 알게 되리라.',
+    match: null },
+  { id: 'passover', role: '유월절 · 어린양', icon: '🐑', color: '#e11d48', bg: 'rgba(225,29,72,.13)',
+    gr: 'פֶּסַח', tr: '페사흐',
+    desc: '"내가 애굽 땅을 칠 때에 그 피가 너희를 위하여 표적이 될지라" (12:13) — 대속의 원형 · 그리스도 예표.',
+    match: null },
+  { id: 'exodus_deliverance', role: '홍해·구원 사건', icon: '🌊', color: '#0891b2', bg: 'rgba(8,145,178,.14)',
+    gr: 'יְשׁוּעַת יְהוָה', tr: '예슈아트 아도나이',
+    desc: '"여호와께서 오늘 너희를 위하여 행하시는 구원을 보라" (14:13) — 출애굽 서사의 정점. 모세의 노래로 응답 (15장).',
+    match: null },
+  { id: 'sinai_covenant', role: '시내 언약', icon: '⛰️', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'בְּרִית סִינַי', tr: '브릿 시나이',
+    desc: '"너희는 내 소유가 되겠고 제사장 나라·거룩한 백성이 되리라" (19:5-6) — 이스라엘 국가·언약 정체성의 결정적 형성.',
+    match: null },
+  { id: 'decalogue', role: '십계명 선포', icon: '📜', color: '#a78bfa', bg: 'rgba(167,139,250,.14)',
+    gr: 'עֲשֶׂרֶת הַדְּבָרִים', tr: '아세렛 하-데바림',
+    desc: '"하나님이 이 모든 말씀으로 이르시되" (20:1) — 언약 백성의 기본 규범. 신구약 윤리의 근간.',
+    match: null },
+  { id: 'tabernacle', role: '성막 · 임재의 처소', icon: '🏛️', color: '#d97706', bg: 'rgba(217,119,6,.14)',
+    gr: 'מִשְׁכָּן', tr: '미쉬칸',
+    desc: '"내가 그들 중에 거할 성소를 그들이 나를 위하여 짓되" (25:8) — 하나님이 언약 백성 가운데 거하시는 표징. 그리스도 성육신 예표.',
+    match: null },
+  { id: 'glory_shekinah', role: '여호와의 영광 임재', icon: '💎', color: '#f59e0b', bg: 'rgba(245,158,11,.14)',
+    gr: 'כְּבוֹד יְהוָה', tr: '크보드 아도나이',
+    desc: '"여호와의 영광이 성막에 충만하매" (40:34) — 시내산·성막에 임재하신 영광의 신학적 절정. 출애굽기 서사의 최종 응답.',
+    match: null },
+];
+
+// 출애굽기 수동 담화 주석: 소명·재앙·유월절·홍해·시내·성막 서사의 신학적 결정 지점
+const EXO_MANUAL_DISCOURSE = {
+  '1:8':   'wayehi_setting',      // 새 왕의 즉위 · 억압 서사 개시
+  '2:24':  'sinai_covenant',      // 하나님이 언약을 기억하시니라
+  '3:2':   'burning_bush',        // 불붙는 떨기나무
+  '3:14':  'divine_name',         // 에흐예 아쉐르 에흐예 (I AM)
+  '4:22':  'divine_name',         // 이스라엘은 내 아들 · 내 장자
+  '6:3':   'divine_name',         // 엘 샤다이 → 여호와 이름 재계시
+  '6:7':   'sinai_covenant',      // 내가 너희를 애굽인의 무거운 짐 밑에서 빼내고
+  '7:5':   'plagues',             // 애굽인이 나를 여호와인 줄 알리라
+  '12:13': 'passover',            // 피가 표적이 되어 · 넘어가리라
+  '12:23': 'passover',            // 여호와께서 애굽 땅을 치실 때 넘어가시고
+  '12:29': 'plagues',             // 애굽 땅에 모든 장자를 치시매
+  '13:21': 'exodus_deliverance',  // 여호와께서 구름·불기둥으로 인도하시니
+  '14:13': 'exodus_deliverance',  // 너희는 두려워 말고 가만히 서서 구원을 보라
+  '14:21': 'exodus_deliverance',  // 여호와께서 큰 동풍으로 바다를 물러가게 하시니
+  '15:2':  'exodus_deliverance',  // 여호와는 나의 힘·나의 노래·나의 구원
+  '19:5':  'sinai_covenant',      // 너희는 내 소유가 되겠고
+  '19:16': 'sinai_covenant',      // 시내산 강림 · 우레·번개·나팔소리
+  '20:1':  'decalogue',           // 하나님이 이 모든 말씀으로 이르시되
+  '24:8':  'sinai_covenant',      // 언약의 피 · 여호와가 세우신 언약의 피니라
+  '24:17': 'glory_shekinah',      // 여호와의 영광의 모양이 맹렬한 불 같이
+  '25:8':  'tabernacle',          // 성소를 지으라 · 내가 그들 중에 거하리라
+  '32:14': 'sinai_covenant',      // 여호와께서 뜻을 돌이키사
+  '33:11': 'divine_name',         // 여호와께서 모세와 대면하여 말씀하시며
+  '34:6':  'divine_name',         // 여호와의 성품 · 자비·은혜·오래 참음
+  '40:34': 'glory_shekinah',      // 여호와의 영광이 성막에 충만하매 (결론)
+};
+
+// ── 출애굽기 컨텍스트 ──────────────────────────────────────────────────
+export const EXO_CTX = {
+  id: 'Exo',
+  book: { ko: '출애굽기', bollsNum: 2, lexId: 'Exod', lexCorpus: 'hot', en: 'Exodus', testament: 'OT' },
+  chapters: 40,
+  discourseRules: [...HEBREW_NARRATIVE_RULES, ...EXO_STRUCTURAL_RULES],
+  manualDiscourse: EXO_MANUAL_DISCOURSE,
+  theoTerms: HEBREW_OT_THEO_TERMS,
+  meta: {
+    genre: '구약 오경 · 구속사·언약 서사',
+    genreNote: '토라(תּוֹרָה) 두 번째 · 출애굽부터 시내언약·성막 건축까지',
+    year: '편집: BC 15세기 (전통) · BC 6-5세기 (문서비평)',
+    yearNote: '사건 배경: BC 1446년경 출애굽 (전통) · BC 13세기 (수정 연대)',
+    place: '편집 장소 불명',
+    placeNote: '전통: 시내 광야 · 문서비평: 유대 후기 편집',
+    author: '모세 (전통) · 익명 편집자들',
+    authorNote: '탈무드·초대교회: 모세 저작 · 문서비평: J·E·P 편집설',
+    audience: '이스라엘 백성',
+    audienceNote: '출애굽 세대 → 정착 세대 → 포로 세대까지 정체성·법 근간',
+    theme: '구속·언약·임재 (יְצִיאָה)',
+    themeNote: '노예에서 언약 백성으로 · 여호와가 그들 중에 거하시다',
+    chapterAgenda: {
+      1:  '이스라엘의 애굽 압제',
+      2:  '모세 출생·미디안 도피',
+      3:  '불붙는 떨기나무·소명',
+      4:  '표적 3가지·귀환',
+      5:  '바로와의 첫 대면·짚 없이 벽돌',
+      6:  '여호와 이름 재계시·계보',
+      7:  '아론의 지팡이·1재앙 피',
+      8:  '2·3·4재앙 개구리·이·파리',
+      9:  '5·6·7재앙 가축·독종·우박',
+      10: '8·9재앙 메뚜기·흑암',
+      11: '10재앙 예고·장자 심판',
+      12: '유월절 규례·출애굽 시작',
+      13: '초태생·구름/불기둥 인도',
+      14: '홍해가 갈라지다',
+      15: '모세와 미리암의 노래',
+      16: '만나와 메추라기',
+      17: '반석의 물·아말렉 전쟁',
+      18: '이드로의 방문·재판 조언',
+      19: '시내산 강림·언약 제안',
+      20: '십계명 선포',
+      21: '종·상해·살인 판례법',
+      22: '재산·도덕 판례법',
+      23: '공의·절기·정복 언약',
+      24: '언약 체결·언약의 피',
+      25: '성막 설계·법궤·상·등대',
+      26: '성막 휘장·널판·문',
+      27: '번제단·성막 뜰',
+      28: '제사장 예복·에봇·판결흉패',
+      29: '제사장 위임식',
+      30: '분향단·물두멍·관유·향',
+      31: '브살렐 소명·안식일 언약',
+      32: '금송아지·모세의 중보',
+      33: '여호와의 얼굴·모세와 대면',
+      34: '언약 갱신·여호와 성품 계시',
+      35: '안식일·성막 자원 헌금',
+      36: '성막 시공 시작·재료 넘침',
+      37: '브살렐이 법궤·상·등대 만듬',
+      38: '번제단·물두멍·성막 뜰',
+      39: '제사장 예복 완성·검열',
+      40: '성막 봉헌·여호와 영광 임재',
+    },
+  },
+  macro: {
+    sections: [
+      { id: 's1', fromCh: 1,  toCh: 12, color: '#e11d48', label: '애굽에서 · 구속' },
+      { id: 's2', fromCh: 13, toCh: 18, color: '#0891b2', label: '광야에서 · 인도' },
+      { id: 's3', fromCh: 19, toCh: 24, color: '#059669', label: '시내에서 · 언약' },
+      { id: 's4', fromCh: 25, toCh: 40, color: '#d97706', label: '성막 · 임재' },
+    ],
+    pivots: [
+      { id: 'p1',  ch: 1,  verse: 8,  color: '#e11d48', label: '새 왕 · 압제 시작' },
+      { id: 'p2',  ch: 3,  verse: 2,  color: '#dc2626', label: '불붙는 떨기나무' },
+      { id: 'p3',  ch: 3,  verse: 14, color: '#7c3aed', label: '여호와 이름 · 에흐예' },
+      { id: 'p4',  ch: 6,  verse: 3,  color: '#7c3aed', label: '엘 샤다이 → 여호와' },
+      { id: 'p5',  ch: 12, verse: 13, color: '#e11d48', label: '유월절 · 피의 표적' },
+      { id: 'p6',  ch: 12, verse: 29, color: '#991b1b', label: '장자 심판' },
+      { id: 'p7',  ch: 14, verse: 13, color: '#0891b2', label: '가만히 서서 구원을 보라' },
+      { id: 'p8',  ch: 14, verse: 21, color: '#0891b2', label: '홍해 갈라짐' },
+      { id: 'p9',  ch: 15, verse: 2,  color: '#0891b2', label: '여호와는 나의 구원' },
+      { id: 'p10', ch: 19, verse: 5,  color: '#059669', label: '제사장 나라 · 거룩한 백성' },
+      { id: 'p11', ch: 20, verse: 1,  color: '#a78bfa', label: '십계명 선포' },
+      { id: 'p12', ch: 24, verse: 8,  color: '#059669', label: '언약의 피' },
+      { id: 'p13', ch: 25, verse: 8,  color: '#d97706', label: '내가 그들 중에 거하리라' },
+      { id: 'p14', ch: 32, verse: 14, color: '#059669', label: '뜻을 돌이키사 (중보)' },
+      { id: 'p15', ch: 34, verse: 6,  color: '#7c3aed', label: '여호와의 성품 계시' },
+      { id: 'p16', ch: 40, verse: 34, color: '#f59e0b', label: '여호와 영광 성막 충만' },
+    ],
+    arcs: [
+      { id: 'a1', from: 'p1',  to: 'p2',  color: '#dc2626', label: '압제 → 소명' },
+      { id: 'a2', from: 'p3',  to: 'p4',  color: '#7c3aed', label: '이름 계시 → 재확인' },
+      { id: 'a3', from: 'p2',  to: 'p8',  color: '#0891b2', label: '소명 → 구원 사건' },
+      { id: 'a4', from: 'p5',  to: 'p6',  color: '#e11d48', label: '유월절 → 장자 심판' },
+      { id: 'a5', from: 'p7',  to: 'p9',  color: '#0891b2', label: '구원 → 찬양' },
+      { id: 'a6', from: 'p10', to: 'p11', color: '#059669', label: '언약 → 규범 (십계명)' },
+      { id: 'a7', from: 'p11', to: 'p12', color: '#a78bfa', label: '규범 → 언약의 피' },
+      { id: 'a8', from: 'p12', to: 'p14', color: '#059669', label: '언약 체결 → 중보' },
+      { id: 'a9', from: 'p13', to: 'p16', color: '#d97706', label: '성막 명령 → 영광 임재' },
+      { id: 'a10', from: 'p1',  to: 'p16', color: '#94a3b8', label: '압제 → 임재 (전체 대주제)' },
+    ],
+  },
+};
+
 // ── 등록된 책 컨텍스트 (activeBookId 로 조회) ────────────────────────────
 export const BOOK_CONTEXTS = {
   Gen: GEN_CTX,
+  Exo: EXO_CTX,
   Rom: ROM_CTX,
   Ruth: RUTH_CTX,
 };
