@@ -371,6 +371,10 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       // 창세기 구조
       'creation', 'protoevangelium', 'toledot', 'covenant_call',
       'faith_reckoned', 'aqedah', 'israel_name', 'divine_providence',
+      // 출애굽기 구조
+      'burning_bush', 'divine_name', 'passover', 'exodus_deliverance',
+      'divine_warrior', 'sinai_covenant', 'decalogue', 'tabernacle',
+      'glory_shekinah', 'mediator', 'face_shining', 'sabbath_sign',
     ]);
     for (const [key, ruleId] of Object.entries(manual)) {
       const [c, v] = key.split(':').map(Number);
