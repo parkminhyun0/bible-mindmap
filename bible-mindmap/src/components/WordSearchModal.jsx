@@ -941,6 +941,9 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
 
   return (
     <div
+      role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      aria-label="원어 성경 다언어 검색"
       className={isMobile ? 'h-screen-safe' : undefined}
       style={{
         position: 'fixed',

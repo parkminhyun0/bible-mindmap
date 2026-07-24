@@ -871,6 +871,9 @@ export default function ManualModal({ onClose }) {
   return (
     <div
       ref={modalRef}
+      role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      aria-label="사용자 매뉴얼"
       style={{
         position: 'fixed',
         left: pos.x,

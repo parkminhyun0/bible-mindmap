@@ -741,6 +741,9 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
 
   return createPortal(
     <div
+      role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      aria-label={`원어 구문 분석${passageLabel ? ' · ' + passageLabel : ''}`}
       className={isMobile ? 'h-screen-safe' : undefined}
       style={{
         position: 'fixed',

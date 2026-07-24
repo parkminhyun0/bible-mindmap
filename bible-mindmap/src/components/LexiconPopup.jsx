@@ -121,6 +121,9 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           background:'rgba(15,23,42,.4)',zIndex:(zIndex ?? 2501) - 1 }} />
       )}
       <div
+        role="dialog"
+        aria-modal={isMobile ? 'true' : 'false'}
+        aria-label={`원어 사전 · ${entry.w || entry.tr || entry.s || ''}`}
         className={isMobile ? 'momentum-scroll' : undefined}
         style={{
           position: 'fixed',

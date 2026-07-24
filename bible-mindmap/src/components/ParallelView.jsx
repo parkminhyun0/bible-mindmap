@@ -377,8 +377,13 @@ export default function ParallelView({ node, onSave, onClose }) {
   const selectedCount = COLUMNS.reduce((sum, c) => sum + (selected[c.id]?.length || 0), 0);
 
   return (
-    <div style={{ ...overlayStyle, ...mOverlay }} onClick={onClose}>
-      <div style={{ ...modalStyle, ...mModal }} onClick={(e) => e.stopPropagation()}>
+    <div style={{ ...overlayStyle, ...mOverlay }} onClick={onClose}
+      role="presentation">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`단어 페어링 · ${node?.data?.reference || ''}`}
+        style={{ ...modalStyle, ...mModal }} onClick={(e) => e.stopPropagation()}>
         {/* 헤더 */}
         <div style={{ ...headerStyle, ...mHeader }}>
           <div style={{ flex: 1, minWidth: 0 }}>

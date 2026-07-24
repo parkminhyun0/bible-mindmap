@@ -44,6 +44,43 @@ html, body {
   }
 }
 
+/* ─── 접근성 (Round C · 3) ─── */
+
+/* 스크린 리더 전용 라벨 (시각적으로 숨김, aria-label 대신 텍스트 노드 사용 시) */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus ring 통일 — 키보드 네비게이션 사용자용 (마우스 클릭엔 표시 안 됨) */
+button:focus-visible,
+[role="button"]:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #d97706;         /* 앱 브랜드 오렌지 */
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* 이미 border 있는 요소는 outline offset 축소 */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 0;
+}
+/* 마우스 클릭엔 focus 링 표시하지 않음 (:focus 는 유지하되 outline 없음) */
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* 모바일 TipTap 에디터 — ReactFlow touch-action 격리 */
 .node-editor-tiptap--mobile .ProseMirror {
   touch-action: auto !important;

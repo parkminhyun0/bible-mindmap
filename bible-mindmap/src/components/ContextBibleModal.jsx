@@ -765,6 +765,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   // ── 렌더 ──────────────────────────────────────────────────────────────
   const modalInner = (
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`문맥 성경 · ${BOOK.ko || ''}`}
         className={isMobile ? 'h-screen-safe' : undefined}
         style={{ background:'#ffffff',
           borderRadius: isMobile ? 0 : 12,
@@ -884,6 +887,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               onMouseDown={e => e.stopPropagation()}
               onClick={onClose}
               title="닫기"
+              aria-label="문맥 성경 닫기"
               style={{ ...(isMobile ? {
                 background:'none',border:'none',color:'#94a3b8',
                 fontSize:22,cursor:'pointer',padding:'4px 8px',borderRadius:8,
@@ -1258,13 +1262,15 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               overscrollBehavior:'contain' }}>
 
             {loading && (
-              <div style={{ color:'#64748b',textAlign:'center',marginTop:60,fontSize:13,lineHeight:1.6 }}>
+              <div role="status" aria-live="polite"
+                style={{ color:'#64748b',textAlign:'center',marginTop:60,fontSize:13,lineHeight:1.6 }}>
                 지금 성경 본문을 빠르게 불러오고 있습니다.<br/>
                 조금만 기다려주세요~ ^^
               </div>
             )}
             {error && (
-              <div style={{ color:'#dc2626',textAlign:'center',marginTop:60,fontSize:13 }}>
+              <div role="alert" aria-live="assertive"
+                style={{ color:'#dc2626',textAlign:'center',marginTop:60,fontSize:13 }}>
                 {error}
                 <div style={{ marginTop:10 }}>
                   <button onClick={retryFailed} disabled={retrying}
