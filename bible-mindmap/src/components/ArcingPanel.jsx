@@ -5,6 +5,7 @@ import { loadVerseLexicon, humanizeMorph } from '../utils/lexicon';
 import { buildArcingFromPassage } from '../utils/arcingBuilder';
 import { ALL_BOOKS, isOT } from '../data/bibleBooks';
 import LexiconPopup from './LexiconPopup';
+import useMobile from '../hooks/useMobile';
 
 // ── 선행 종속절 행 ──────────────────────────────────────────────────────────
 function PrecedingRow({ item, fontSize }) {
@@ -198,13 +199,34 @@ const iconBtn = {
 
 // ── 메인 팝업 ────────────────────────────────────────────────────────────────
 export default function ArcingPanel({ passage: passageProp, onClose, panelIndex = 0 }) {
-  // ── 팝업 위치·크기 ────────────────────────────────────────────────────────
+  const isMobile = useMobile();
+
+  // ── 팝업 위치·크기 (모바일: 풀스크린 · 데스크톱: 드래그·리사이즈) ─────────
   const [pos, setPos]   = useState(() => {
+    if (isMobile) return { x: 0, y: 0 };
     const offset = panelIndex * 36;
     return { x: Math.max(0, window.innerWidth / 2 - 380 + offset), y: 60 + offset };
   });
-  const [size, setSize] = useState({ w: 760, h: 580 });
+  const [size, setSize] = useState(() => isMobile
+    ? { w: typeof window !== 'undefined' ? window.innerWidth : 375,
+        h: typeof window !== 'undefined' ? window.innerHeight : 667 }
+    : { w: 760, h: 580 });
   const [minimized, setMinimized] = useState(false);
+
+  // 모바일 orientation/resize 자동 대응
+  useEffect(() => {
+    if (!isMobile) return;
+    const onR = () => {
+      setPos({ x: 0, y: 0 });
+      setSize({ w: window.innerWidth, h: window.innerHeight });
+    };
+    window.addEventListener('resize', onR);
+    window.addEventListener('orientationchange', onR);
+    return () => {
+      window.removeEventListener('resize', onR);
+      window.removeEventListener('orientationchange', onR);
+    };
+  }, [isMobile]);
 
   const dragging    = useRef(false);
   const resizing    = useRef(false);
@@ -322,27 +344,41 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
   const keyed = (structure || []).map((item, i) => ({ ...item, _key: `item-${i}` }));
 
   return createPortal(
-    <div style={{
-      position: 'fixed', left: pos.x, top: pos.y, width: size.w,
-      zIndex: 9000,
-      background: '#fff',
-      borderRadius: 12,
-      boxShadow: '0 20px 60px rgba(0,0,0,0.28), 0 4px 16px rgba(0,0,0,0.12)',
-      border: '1px solid #c4b5fd',
-      fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
-      display: 'flex', flexDirection: 'column',
-      userSelect: dragging.current ? 'none' : 'auto',
-    }}>
+    <div
+      role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      aria-label={`본문 흐름 분석${passageLabel ? ' · ' + passageLabel : ''}`}
+      className={isMobile ? 'h-screen-safe' : undefined}
+      style={{
+        position: 'fixed',
+        left: isMobile ? 0 : pos.x,
+        top: isMobile ? 0 : pos.y,
+        width: isMobile ? '100%' : size.w,
+        zIndex: 9000,
+        background: '#fff',
+        borderRadius: isMobile ? 0 : 12,
+        boxShadow: isMobile ? 'none' : '0 20px 60px rgba(0,0,0,0.28), 0 4px 16px rgba(0,0,0,0.12)',
+        border: isMobile ? 'none' : '1px solid #c4b5fd',
+        fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
+        display: 'flex', flexDirection: 'column',
+        userSelect: dragging.current ? 'none' : 'auto',
+      }}>
 
-      {/* ── 타이틀바 (드래그 핸들) ── */}
+      {/* ── 타이틀바 (모바일: 정적·safe-area · 데스크톱: 드래그 핸들) ── */}
       <div
-        onMouseDown={onHeaderMouseDown}
+        onMouseDown={isMobile ? undefined : onHeaderMouseDown}
         style={{
-          display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'nowrap',
-          padding: '0 12px', height: 44, flexShrink: 0,
+          display: 'flex', alignItems: 'center', gap: 8,
+          flexWrap: isMobile ? 'wrap' : 'nowrap',
+          padding: isMobile
+            ? 'calc(env(safe-area-inset-top, 0px) + 8px) calc(env(safe-area-inset-right, 0px) + 12px) 8px calc(env(safe-area-inset-left, 0px) + 12px)'
+            : '0 12px',
+          height: isMobile ? 'auto' : 44,
+          minHeight: isMobile ? 52 : undefined,
+          flexShrink: 0,
           background: 'linear-gradient(135deg, #1e1b4b, #312e81)',
-          borderRadius: minimized ? 12 : '12px 12px 0 0',
-          cursor: 'grab', userSelect: 'none',
+          borderRadius: isMobile ? 0 : (minimized ? 12 : '12px 12px 0 0'),
+          cursor: isMobile ? 'default' : 'grab', userSelect: 'none',
         }}
       >
         <span style={{ fontSize: 14 }}>📖</span>
@@ -355,7 +391,12 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
           </span>
         )}
 
-        <div style={{ flex: 1 }} />
+        {/* pusher: 데스크톱은 flex:1 로 우측 정렬 · 모바일은 100% flexBasis 로 강제 줄바꿈 */}
+        <div style={{
+          flex: isMobile ? undefined : 1,
+          flexBasis: isMobile ? '100%' : undefined,
+          height: isMobile ? 0 : undefined,
+        }} />
 
         {/* 글자 크기 */}
         {!minimized && !showForm && (
@@ -432,9 +473,14 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
         <PassageForm initial={passage} onAnalyze={(p) => { analyze(p); setShowForm(false); }} fontSize={fontSize} />
       )}
 
-      {/* ── 내용 영역 ── */}
+      {/* ── 내용 영역 (모바일: flex:1 · 데스크톱: 고정 높이) ── */}
       {!minimized && !showForm && (
-        <div style={{ height: size.h, display: 'flex', flexDirection: 'column', overflow: 'hidden', borderRadius: '0 0 12px 12px' }}>
+        <div style={{
+          flex: isMobile ? 1 : undefined,
+          height: isMobile ? undefined : size.h,
+          display: 'flex', flexDirection: 'column', overflow: 'hidden',
+          borderRadius: isMobile ? 0 : '0 0 12px 12px',
+        }}>
 
           {/* 범례 + 언어별 설명 — fontSize에 연동 */}
           {structure && (
@@ -491,9 +537,17 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
             </div>
           )}
 
-          {/* 구조 목록 */}
+          {/* 구조 목록 (모바일: 관성 스크롤·safe-area 하단 여백) */}
           {!loading && structure && (
-            <div style={{ flex: 1, overflowY: 'auto', padding: '12px 8px 24px' }}>
+            <div className={isMobile ? 'momentum-scroll' : undefined}
+              style={{
+                flex: 1, overflowY: 'auto',
+                padding: isMobile
+                  ? '12px 12px calc(env(safe-area-inset-bottom, 0px) + 24px)'
+                  : '12px 8px 24px',
+                WebkitOverflowScrolling: 'touch',
+                overscrollBehavior: 'contain',
+              }}>
               {keyed.map((item) => {
                 if (item.divider) return null; // 자동 생성 구조에는 divider 없음
                 const hasPre   = (item.preceding?.length ?? 0) > 0;
@@ -547,8 +601,8 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
         </div>
       )}
 
-      {/* ── 리사이즈 핸들 (우하단) ── */}
-      {!minimized && (
+      {/* ── 리사이즈 핸들 (데스크톱만 노출) ── */}
+      {!minimized && !isMobile && (
         <div
           onMouseDown={onResizeMouseDown}
           style={{

@@ -977,6 +977,13 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 flexShrink:0,display:'inline-block' }} />
               진술
             </span>
+            {/* [ ] 빨강: 사본 논쟁절 (disputedRanges) — 안내 문구 필수 (2026-07-25 규칙 확립) */}
+            <span style={{ fontSize: isMobile?10:fontSizes.legend,color:'#dc2626',fontWeight:800,
+              display:'flex',alignItems:'center',gap:3,flexShrink:0, cursor:'help' }}
+              title="⚠ 사본 논쟁절: 대괄호 [ ]와 빨간색은 고대 사본들 사이에서 원문 여부가 논쟁되는 본문임을 표시합니다. 예: 마 6:13 주기도문 송영·요 5:4 천사·요 7:53-8:11 간음한 여인·눅 22:43-44 겟세마네 피땀. 자세한 사본 정보는 옆의 ✎ 아이콘을 눌러 확인하세요.">
+              <span style={{ fontFamily:'"Times New Roman",serif',fontWeight:900,fontSize: isMobile?12:fontSizes.legend+1,letterSpacing:-1 }}>[ ]</span>
+              사본 논쟁절
+            </span>
             {/* 폰트 조절 컨트롤 (데스크톱: legend row 인라인 · 모바일: 별도 row 아래) — modern segmented steppers */}
             {!isMobile && (
               <div style={fontPanelWrapper}>
@@ -1757,11 +1764,13 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                 lineHeight: isMobile?1.75:1.85,wordBreak:'keep-all',
                                 textAlign:'justify', textJustify:'inter-character' }}>
                                 {isFirstDisputed && (
-                                  <span style={{ color:'#dc2626', fontWeight:800, marginRight:2 }}>[</span>
+                                  <span title={`⚠ 사본 논쟁절 · ${disputed.label} — 대괄호 [ ]와 빨간색은 고대 사본들 사이에서 원문 여부가 논쟁 되는 본문임을 표시합니다. 자세한 이문은 옆의 ✎ 아이콘을 눌러 확인하세요.`}
+                                    style={{ color:'#dc2626', fontWeight:800, marginRight:2, cursor:'help' }}>[</span>
                                 )}
                                 {vData.text}
                                 {isLastDisputed && (
-                                  <span style={{ color:'#dc2626', fontWeight:800, marginLeft:2 }}>]</span>
+                                  <span title={`⚠ 사본 논쟁절 끝 · ${disputed.label}`}
+                                    style={{ color:'#dc2626', fontWeight:800, marginLeft:2, cursor:'help' }}>]</span>
                                 )}
                               </div>
                               {ana.theoTerms.length > 0 && (

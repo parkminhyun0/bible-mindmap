@@ -35,6 +35,9 @@ jobs:
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
+      - name: Build SBLGNT apparatus variants (NT 사본 이문 JSON)
+        run: node scripts/parse-sblgnt.mjs
+
       - name: Build app
         run: npm run build
 

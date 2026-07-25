@@ -409,9 +409,9 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               color: '#1e293b',
               whiteSpace: 'pre-wrap',
             }}
-          >
-            {fetchedText}
-          </div>
+            // 본문 preview는 절 번호가 <span> 태그로 감싸진 HTML · dangerouslySetInnerHTML 로 렌더
+            dangerouslySetInnerHTML={{ __html: fetchedText }}
+          />
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
             <div style={{ display: 'flex', gap: 4, flexWrap: isMobile ? 'wrap' : 'nowrap' }}>

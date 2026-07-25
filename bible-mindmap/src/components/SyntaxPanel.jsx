@@ -779,7 +779,12 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         {passageLabel && (
           <span style={{ fontSize: 10, color: '#6ee7b7', flexShrink: 0 }}>— {passageLabel}</span>
         )}
-        <div style={{ flex: 1 }} />
+        {/* pusher: 데스크톱은 flex:1 로 우측 정렬 · 모바일은 100% flexBasis 로 강제 줄바꿈 */}
+        <div style={{
+          flex: isMobile ? undefined : 1,
+          flexBasis: isMobile ? '100%' : undefined,
+          height: isMobile ? 0 : undefined,
+        }} />
 
         {/* 뷰 모드 토글 */}
         {!minimized && verses && (

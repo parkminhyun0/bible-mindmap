@@ -24,6 +24,28 @@ html, body {
 .gpu-accel { will-change: transform, opacity; transform: translateZ(0); }
 .gpu-height { will-change: height; }
 
+/* ─── 모바일 풀스크린 모달 · 안전 뷰포트 (SyntaxPanel · ArcingPanel · ContextBibleModal 등) ─── */
+/* iOS Safari 주소창·홈 인디케이터 대응 · 정확한 뷰포트 · 내부 flex:1 스크롤 컨테이너 활성화 */
+.h-screen-safe {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh; /* 지원 브라우저 · 주소창 반응형 */
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow: hidden;                  /* 외부 스크롤 차단 · 내부 flex:1 자식이 overflow: auto 로 스크롤 담당 */
+  overscroll-behavior: contain;      /* iOS 바운스 격리 */
+  -webkit-overflow-scrolling: touch; /* iOS 관성 스크롤 */
+}
+/* landscape (가로) 특수 대응 — 짧아진 세로 공간에서 팝업 여백 최소화 */
+@media (orientation: landscape) and (max-height: 500px) {
+  .h-screen-safe {
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
 /* 접근성: 모션 감소 선호 사용자 지원 (iOS 설정 · 매크로S 등) */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
