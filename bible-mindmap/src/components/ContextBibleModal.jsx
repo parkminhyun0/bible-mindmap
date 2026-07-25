@@ -1478,14 +1478,17 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           const cx = 98 - bend;
                           const path = `M 98 ${a.y1} C ${cx} ${a.y1}, ${cx} ${a.y2}, 98 ${a.y2}`;
                           const isHover = hoveredArc === a.id;
+                          // pivot hover 시 그 pivot을 endpoint로 하는 arc도 강조 (연결 관계 시각화)
+                          const linkedByPivot = hoveredPivot && (a.from === hoveredPivot || a.to === hoveredPivot);
+                          const active = isHover || linkedByPivot;
                           return (
                             <g key={a.id} pointerEvents="auto">
                               <path
                                 d={path}
                                 stroke={a.color}
-                                strokeWidth={isHover ? 1.6 : 1}
+                                strokeWidth={active ? 1.6 : 1}
                                 fill="none"
-                                opacity={isHover ? 0.85 : 0.32}
+                                opacity={active ? 0.85 : 0.32}
                                 strokeLinecap="round"
                                 style={{ transition:'opacity .15s, stroke-width .15s' }} />
                               <path
@@ -1501,6 +1504,12 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                         {/* pivot dots — 링 스타일 (도넛) */}
                         {macroLayout.pivots.map(p => {
                           const isHover = hoveredPivot === p.id;
+                          // arc hover 시 그 arc의 endpoint pivot 두 개를 강조 (연결 관계 시각화)
+                          const linkedByArc = hoveredArc && (() => {
+                            const arc = macroLayout.arcs.find(a => a.id === hoveredArc);
+                            return arc && (arc.from === p.id || arc.to === p.id);
+                          })();
+                          const active = isHover || linkedByArc;
                           return (
                             <g key={p.id} pointerEvents="auto"
                               onMouseEnter={() => setHoveredPivot(p.id)}
@@ -1508,22 +1517,22 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                               onClick={() => scrollTo(p.ch, p.verse)}
                               style={{ cursor:'pointer' }}>
                               {/* halo */}
-                              {isHover && (
+                              {active && (
                                 <circle cx={98} cy={p.y} r={9}
                                   fill={p.color} opacity={0.18} />
                               )}
                               {/* 링 */}
                               <circle
                                 cx={98} cy={p.y}
-                                r={isHover ? 5 : 4}
+                                r={active ? 5 : 4}
                                 fill="#ffffff"
                                 stroke={p.color}
-                                strokeWidth={isHover ? 2.2 : 1.8}
+                                strokeWidth={active ? 2.2 : 1.8}
                                 style={{ transition:'r .15s, stroke-width .15s' }} />
                               {/* 중앙 */}
                               <circle
                                 cx={98} cy={p.y}
-                                r={isHover ? 2 : 1.5}
+                                r={active ? 2 : 1.5}
                                 fill={p.color}
                                 style={{ transition:'r .15s' }} />
                             </g>
@@ -1543,13 +1552,20 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                       const label = hoveredArc
                         ? item.label
                         : `${item.ch}:${item.verse} · ${item.label}`;
+                      // arc hover 시 연결된 두 pivot의 장:절 정보 (어느 절과 어느 절이 연결됐는지 명시)
+                      const arcEndpoints = hoveredArc ? (() => {
+                        const fromP = macroLayout.pivots.find(p => p.id === item.from);
+                        const toP = macroLayout.pivots.find(p => p.id === item.to);
+                        if (!fromP || !toP) return null;
+                        return `${fromP.ch}:${fromP.verse} ↔ ${toP.ch}:${toP.verse}`;
+                      })() : null;
                       return (
                         <div style={{
                           position: 'absolute',
                           left: 2,
                           top: y,
                           transform: 'translateY(-50%)',
-                          width: 90,
+                          width: hoveredArc ? 118 : 90,
                           padding: '6px 9px',
                           background: 'rgba(15,23,42,.96)',
                           color: '#fff',
@@ -1568,6 +1584,20 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           backdropFilter: 'blur(2px)',
                         }}>
                           {label}
+                          {arcEndpoints && (
+                            <div style={{
+                              marginTop: 4,
+                              paddingTop: 4,
+                              borderTop: '1px solid rgba(255,255,255,.18)',
+                              fontSize: 9.5,
+                              fontWeight: 700,
+                              opacity: 0.92,
+                              letterSpacing: '.02em',
+                              fontVariantNumeric: 'tabular-nums',
+                            }}>
+                              {arcEndpoints}
+                            </div>
+                          )}
                           {/* 오른쪽으로 향하는 화살표 (pivot 방향) */}
                           <div style={{
                             position: 'absolute',
