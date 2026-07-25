@@ -4,6 +4,8 @@ import { OT_BOOKS, NT_BOOKS } from '../data/bibleBooks';
 import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/bookContext';
 import CrossrefPopup from './CrossrefPopup';
 import VersePreviewPopup from './VersePreviewPopup';
+import VariantPopup from './VariantPopup';
+import { hasVariant, loadBookVariants, isVariantLoaded } from '../data/textualVariants';
 
 // 책 id → 한글 약어
 const KO_ABBR_BY_ID = {
@@ -143,6 +145,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [legendOpen, setLegendOpen] = useState(false);
   // 관주(crossref) 팝업 상태 — { ch, verse, anchor: {x,y} }
   const [crossrefOpen, setCrossrefOpen] = useState(null);
+  // 비평장치 팝업 상태 — { ch, verse, anchor: {x,y} }
+  const [variantOpen, setVariantOpen] = useState(null);
   // 참조 본문 미리보기 팝업 · 다중 오픈 지원
   // 각 항목: { id, bookId, chapter, verseStart, verseEnd, reference, x, y, z }
   const [previews, setPreviews] = useState([]);
@@ -445,6 +449,16 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       if (scrollRef.current) scrollRef.current.scrollTop = 0;
     }
   }, [activeBookId]);
+
+  // ── 이문 데이터 동적 로드 (NT: SBLGNT JSON · OT: 이미 로드됨) ──────────
+  const [variantLoadTick, setVariantLoadTick] = useState(0);
+  useEffect(() => {
+    if (!BOOK.lexId) return;
+    if (isVariantLoaded(BOOK.lexId)) return;
+    loadBookVariants(BOOK.lexId).then(() => {
+      setVariantLoadTick(t => t + 1);
+    });
+  }, [BOOK.lexId]);
 
   // ── 활성 책 전체 로드 (배치 · 스트리밍 · 자동 재시도) ─────────────────
   useEffect(() => {
@@ -1637,6 +1651,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           ? (qaAmber ? 'rgba(245,158,11,.22)' : (d?.bg || 'rgba(15,23,42,.06)'))
                           : tintBg;
 
+                        // ── 비평장치: 의심 구절 범위 (disputedRanges) — bookCtx 최상위 ──
+                        const disputed = bookCtx?.disputedRanges?.find(r => r.ch === ch && verse >= r.from && verse <= r.to);
+                        const isFirstDisputed = disputed && verse === disputed.from;
+                        const isLastDisputed  = disputed && verse === disputed.to;
+
                         return (
                           <div key={verse} data-ch={ch} data-verse={verse}
                             onClick={() => {
@@ -1700,13 +1719,50 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
                                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '.55' }}
                               >🔗</button>
+                              {/* 비평장치 아이콘 · 등록된 절에만 노출 */}
+                              {hasVariant(BOOK.lexId, ch, verse) && (
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    const rect = e.currentTarget.getBoundingClientRect();
+                                    setVariantOpen({
+                                      ch, verse,
+                                      anchor: { x: rect.left + rect.width / 2, y: rect.bottom },
+                                    });
+                                  }}
+                                  title="비평장치 (Apparatus)"
+                                  aria-label={`${ch}장 ${verse}절 비평장치 열기`}
+                                  style={{
+                                    background: 'rgba(234,179,8,.18)',
+                                    border: '1px solid rgba(234,179,8,.45)',
+                                    padding: '1px 4px',
+                                    cursor: 'pointer', lineHeight: 1,
+                                    fontSize: isMobile ? 11 : fontSizes.meta,
+                                    fontWeight: 800,
+                                    color: '#78350f',
+                                    borderRadius: 4,
+                                    minWidth: isMobile ? 28 : undefined,
+                                    minHeight: isMobile ? 28 : undefined,
+                                  }}
+                                  onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(234,179,8,.32)' }}
+                                  onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(234,179,8,.18)' }}
+                                >✎</button>
+                              )}
                             </div>
 
                             <div style={{ flex:1,minWidth:0 }}>
-                              <div style={{ fontSize: isMobile?16:fontSizes.body,color:'#1e293b',
+                              <div style={{ fontSize: isMobile?16:fontSizes.body,
+                                color: disputed ? '#dc2626' : '#1e293b',
+                                fontWeight: disputed ? 700 : 400,
                                 lineHeight: isMobile?1.75:1.85,wordBreak:'keep-all',
                                 textAlign:'justify', textJustify:'inter-character' }}>
+                                {isFirstDisputed && (
+                                  <span style={{ color:'#dc2626', fontWeight:800, marginRight:2 }}>[</span>
+                                )}
                                 {vData.text}
+                                {isLastDisputed && (
+                                  <span style={{ color:'#dc2626', fontWeight:800, marginLeft:2 }}>]</span>
+                                )}
                               </div>
                               {ana.theoTerms.length > 0 && (
                                 <div style={{ display:'flex',flexWrap:'wrap',gap:4,marginTop:5 }}>
@@ -2448,6 +2504,18 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     />
   );
 
+  // 비평장치 팝업 (단일 · 각 절에 한 번에 하나만)
+  const variantNode = variantOpen && (
+    <VariantPopup
+      bookId={BOOK.lexId}
+      chapter={variantOpen.ch}
+      verse={variantOpen.verse}
+      sourceRef={`${BOOK.ko} ${variantOpen.ch}:${variantOpen.verse}`}
+      anchor={variantOpen.anchor}
+      onClose={() => setVariantOpen(null)}
+    />
+  );
+
   // 참조 본문 미리보기 팝업들 (다중)
   const previewNodes = previews.map(p => (
     <VersePreviewPopup
@@ -2479,6 +2547,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         {modalInner}
         {styleBlock}
         {crossrefNode}
+        {variantNode}
         {previewNodes}
       </div>
     );
@@ -2494,6 +2563,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       {modalInner}
       {styleBlock}
       {crossrefNode}
+      {variantNode}
       {previewNodes}
     </div>
   );
