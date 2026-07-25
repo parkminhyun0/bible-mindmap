@@ -347,7 +347,7 @@ const _loadedBooks = new Set()  // 이미 로드된 bookId
 const _loadingBooks = new Map() // 로드 중인 bookId → Promise
 
 // SBLGNT JSON 을 동적으로 fetch 하는 NT 책 목록 (CC BY 4.0)
-const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom'])
+const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom', 'Gal', 'Eph'])
 
 // OSHB Ketiv/Qere JSON 을 동적으로 fetch 하는 OT 책 목록 (Stage 3-A · 2026-07-25 도입)
 // 근거: openscriptures/morphhb · CC BY 4.0 · WLC 마소라 Ketiv/Qere 표기 자동 파싱

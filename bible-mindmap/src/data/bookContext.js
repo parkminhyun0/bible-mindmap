@@ -2127,6 +2127,395 @@ export const LEV_CTX = {
   },
 };
 
+// ═══════════════════════════════════════════════════════════════════════════
+// 갈라디아서 (GAL_CTX) — 바울 초기 서신 · 이신칭의·자유·성령·율법에서 해방
+// 신약학 표준: Betz(Hermeneia) · Longenecker(WBC) · Bruce(NIGTC) · Moo(BECNT) · Martyn(AB) · Dunn(BNTC) · Schreiner(ZECNT) · deSilva(NICNT) · Silva(BECNT lex)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const GAL_STRUCTURAL_RULES = [
+  { id: 'justification_faith', role: '이신칭의 (δικαιόω ἐκ πίστεως)', icon: '⚖️', color: '#0369a1', bg: 'rgba(3,105,161,.13)',
+    gr: 'δικαιοῦται ἐκ πίστεως', tr: '디카이우타이 에크 피스테오스',
+    desc: '"사람이 의롭게 되는 것은 율법의 행위로 말미암음이 아니요 오직 예수 그리스도를 믿음으로 말미암는 줄 앎이라" (2:16) — 갈라디아서 심장 · 종교개혁 정식. Bruce·Moo·Schreiner·Dunn NPP 논쟁.',
+    match: (s) => s.has('G1344') && s.has('G4102') },
+  { id: 'law_works', role: '율법의 행위 (ἔργα νόμου)', icon: '📜', color: '#b45309', bg: 'rgba(180,83,9,.13)',
+    gr: 'ἔργα νόμου', tr: '에르가 노무',
+    desc: '"율법의 행위" — 갈라디아서 6회 (2:16 3회 · 3:2·3:5·3:10). 전통(도덕 행위) vs NPP(할례·안식일·정결법 = 유대 정체성 표지 · Dunn·Wright). Sanders·Moo 반박.',
+    match: (s) => s.has('G2041') && s.has('G3551') },
+  { id: 'spirit_flesh', role: '성령 vs 육체 (πνεῦμα vs σάρξ)', icon: '🕊️', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'πνεύματι περιπατεῖτε', tr: '프뉴마티 페리파테이테',
+    desc: '"성령을 따라 행하라 · 육체의 욕심을 이루지 아니하리라" (5:16) — 5-6장 윤리 대립축. 성령 vs 육체 이원 대립. Fee 성령론 · Martyn 묵시론 해석.',
+    match: (s) => s.has('G4151') && s.has('G4561') },
+  { id: 'freedom_liberty', role: '자유 (ἐλευθερία)', icon: '🔓', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'τῇ ἐλευθερίᾳ ἡμᾶς Χριστὸς ἠλευθέρωσεν', tr: '테 엘류테리아 헤마스 크리스토스 엘류테로센',
+    desc: '"그리스도께서 우리를 자유롭게 하려고 자유를 주셨으니" (5:1) — 갈라디아서 대주제어 (11회 · 신약 최다권). 종의 멍에 아님 · Betz·Longenecker "카르타 마그나".',
+    match: (s) => s.has('G1657') || s.has('G1659') },
+  { id: 'cross_crucified', role: '십자가 (σταυρός · συνεσταύρωμαι)', icon: '✝️', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'Χριστῷ συνεσταύρωμαι', tr: '크리스토 쉬네스타우로마이',
+    desc: '"내가 그리스도와 함께 십자가에 못 박혔나니" (2:20) · "그리스도의 십자가 외에는 자랑할 것이 없으니" (6:14). Käsemann·Martyn 십자가 신학.',
+    match: (s) => s.has('G4716') || s.has('G4957') },
+  { id: 'curse_of_law', role: '율법의 저주 · 대속 저주', icon: '⚡', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'κατάρα τοῦ νόμου', tr: '카타라 투 노무',
+    desc: '"우리를 위하여 저주가 되사 · 율법의 저주에서 우리를 속량하셨으니" (3:13 · 신 21:23 인용). 대속 신학 · Cranfield·Wright·Moo.',
+    match: (s) => s.has('G2671') || s.has('G1943') },
+  { id: 'abraham_seed', role: '아브라함의 씨 (σπέρμα Ἀβραάμ)', icon: '🌱', color: '#eab308', bg: 'rgba(234,179,8,.14)',
+    gr: 'σπέρμα Ἀβραάμ', tr: '스페르마 아브라암',
+    desc: '"믿음으로 말미암은 자들은 아브라함의 자손인 줄 알지어다" (3:7) · "아브라함의 씨"는 단수 = 그리스도 (3:16). Betz·Longenecker·Wright 성경 신학.',
+    match: (s) => s.has('G4690') && s.has('G0011') },
+  { id: 'sons_adoption', role: '아들 됨·양자 (υἱοθεσία)', icon: '👶', color: '#0891b2', bg: 'rgba(8,145,178,.14)',
+    gr: 'υἱοθεσία · Ἀββα ὁ πατήρ', tr: '휘오테시아 · 압바 호 파테르',
+    desc: '"때가 차매 하나님이 그 아들을 보내사 · 아들의 명분을 얻게 하려 하심이라" (4:4-5) · "압바 아버지"(4:6). 양자 됨 신학 · Burke·Scott·Dunn.',
+    match: (s) => s.has('G5206') || (s.has('G0005') && s.has('G3962')) },
+  { id: 'spirit_fruit', role: '성령의 열매 (καρπὸς τοῦ πνεύματος)', icon: '🍇', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'καρπὸς τοῦ πνεύματος', tr: '카르포스 투 프뉴마토스',
+    desc: '"성령의 열매는 사랑·희락·화평·오래 참음·자비·양선·충성·온유·절제니" (5:22-23) — 9가지. 육체의 일 (5:19-21) 대조. Barclay·Fee.',
+    match: (s) => s.has('G2590') && s.has('G4151') },
+  { id: 'galatians_folly', role: '갈라디아 어리석음 (ὦ ἀνόητοι Γαλάται)', icon: '❗', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'ὦ ἀνόητοι Γαλάται', tr: '오 아노에토이 갈라타이',
+    desc: '"어리석도다 갈라디아 사람들아 · 누가 너희를 꾀더냐" (3:1) — 바울 격정적 책망. 성령으로 시작 → 육체로 마치려 하는가 (3:3). Betz 수사학·Martyn 묵시.',
+    match: (s) => s.has('G0453') && s.has('G1052') },
+  { id: 'no_partial_gospel', role: '다른 복음 저주 (ἀνάθεμα)', icon: '⛔', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'ἀνάθεμα ἔστω', tr: '아나테마 에스토',
+    desc: '"다른 복음을 전하면 저주를 받을지어다" (1:8-9 반복) — 갈라디아서 서두 문제 진술. 유대주의자 대적 · Betz 편지 형식 이례적 (감사 생략).',
+    match: (s) => s.has('G0331') },
+  { id: 'new_creation', role: '새로 지음 받은 자 (καινὴ κτίσις)', icon: '🌱', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'καινὴ κτίσις', tr: '카이네 크티시스',
+    desc: '"할례나 무할례가 아무것도 아니로되 오직 새로 지음 받는 것만이 중요하니라" (6:15). 종말론적 새 창조 · Martyn 묵시·Wright.',
+    match: (s) => s.has('G2537') && s.has('G2937') },
+  { id: 'antioch_incident', role: '안디옥 사건 (베드로 대면)', icon: '⚔️', color: '#b45309', bg: 'rgba(180,83,9,.13)',
+    gr: 'κατὰ πρόσωπον αὐτῷ ἀντέστην', tr: '카타 프로소폰 아우토 안테스텐',
+    desc: '"내가 그를 면대하여 책망하였노라" (2:11) — 갈 2:11-14 안디옥 사건. 이방·유대 식탁 교제 문제 · 이신칭의 실천적 근거. Bruce·Dunn·Bauckham 재구성.',
+    match: null },
+  { id: 'faith_working_love', role: '사랑으로 역사하는 믿음', icon: '❤️', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'πίστις διʼ ἀγάπης ἐνεργουμένη', tr: '피스티스 디 아가페스 에네르구메네',
+    desc: '"그리스도 예수 안에서는 할례나 무할례가 효력이 없되 사랑으로써 역사하는 믿음뿐이니라" (5:6). 야고보 vs 바울 화해 지점 · Luther·Calvin.',
+    match: (s) => s.has('G4102') && s.has('G0026') },
+];
+
+const GAL_MANUAL_DISCOURSE = {
+  '1:6':   'no_partial_gospel',       // 다른 복음 좇음 · 이상히 여기노라
+  '1:8':   'no_partial_gospel',       // 다른 복음 전하면 저주
+  '1:9':   'no_partial_gospel',       // 저주 재선언
+  '1:12':  'freedom_liberty',         // 사람에게 받은 것도 아니요 · 계시로
+  '1:16':  'freedom_liberty',         // 이방에 그를 전하기 위하여
+  '2:11':  'antioch_incident',        // 안디옥에서 · 게바를 면대하여 책망
+  '2:14':  'antioch_incident',        // 복음의 진리를 따라 바로 행하지 아니함
+  '2:16':  'justification_faith',     // 이신칭의 정식 (율법 행위 아님)
+  '2:20':  'cross_crucified',         // 그리스도와 함께 십자가에 못 박혔나니
+  '3:1':   'galatians_folly',         // 어리석도다 갈라디아 사람들아
+  '3:2':   'spirit_flesh',            // 성령을 받은 것이 율법의 행위로냐 · 믿음으로냐
+  '3:5':   'spirit_flesh',            // 성령 주시고 능력 행하시는 이가
+  '3:6':   'abraham_seed',            // 아브라함이 하나님을 믿으매 (창 15:6)
+  '3:7':   'abraham_seed',            // 믿음으로 말미암은 자들 · 아브라함의 자손
+  '3:10':  'curse_of_law',            // 율법 책에 기록된 대로 저주 아래
+  '3:11':  'justification_faith',     // 의인은 믿음으로 살리라 (합 2:4)
+  '3:13':  'curse_of_law',            // 우리를 위하여 저주가 되사 (신 21:23)
+  '3:16':  'abraham_seed',            // 아브라함의 씨 = 단수 = 그리스도
+  '3:22':  'justification_faith',     // 성경이 모든 것을 죄 아래 가두었으니
+  '3:24':  'law_works',               // 율법이 그리스도께로 인도하는 초등교사
+  '3:26':  'sons_adoption',           // 너희가 다 믿음으로 말미암아 하나님의 아들
+  '3:28':  'sons_adoption',           // 유대인·헬라인·종·자유인·남자·여자 하나
+  '4:4':   'sons_adoption',           // 때가 차매 하나님이 아들을 보내사
+  '4:6':   'sons_adoption',           // 압바 아버지
+  '4:9':   'freedom_liberty',         // 어찌하여 다시 초등학문으로 돌아가려
+  '5:1':   'freedom_liberty',         // 자유를 주셨으니 · 종의 멍에 X
+  '5:2':   'law_works',               // 만일 할례를 받으면 · 그리스도 무익
+  '5:4':   'justification_faith',     // 율법 안에서 의롭다 함을 얻으려 하는 자
+  '5:6':   'faith_working_love',      // 사랑으로 역사하는 믿음
+  '5:11':  'cross_crucified',         // 십자가의 걸림돌 (σκάνδαλον)
+  '5:13':  'freedom_liberty',         // 자유를 육체의 기회 삼지 말고
+  '5:14':  'faith_working_love',      // 온 율법 · 이웃 사랑
+  '5:16':  'spirit_flesh',            // 성령을 따라 행하라 · 육체 욕심 이루지 아니
+  '5:19':  'spirit_flesh',            // 육체의 일 (15가지)
+  '5:22':  'spirit_fruit',            // 성령의 열매 9가지
+  '5:24':  'cross_crucified',         // 그리스도의 사람들은 육체와 정욕을 못 박음
+  '5:25':  'spirit_flesh',            // 성령으로 살면 또한 성령으로 행할지니
+  '6:2':   'faith_working_love',      // 짐을 서로 지라 · 그리스도의 법
+  '6:7':   'spirit_flesh',            // 사람이 무엇으로 심든지 그대로 거두리라
+  '6:8':   'spirit_flesh',            // 육체를 위하여 심는 자·성령을 위하여 심는 자
+  '6:14':  'cross_crucified',         // 자랑할 것은 십자가 뿐 · 세상이 못 박히고
+  '6:15':  'new_creation',            // 새로 지음 받는 것만이 중요
+  '6:17':  'cross_crucified',         // 내 몸에 예수의 흔적을 가졌노라 (στίγματα)
+};
+
+export const GAL_CTX = {
+  id: 'Gal',
+  book: { ko: '갈라디아서', bollsNum: 48, lexId: 'Gal', lexCorpus: 'gnt', en: 'Galatians', testament: 'NT' },
+  chapters: 6,
+  discourseRules: [...GNT_DISCOURSE_RULES, ...GAL_STRUCTURAL_RULES],
+  manualDiscourse: GAL_MANUAL_DISCOURSE,
+  theoTerms: ROM_THEO_TERMS,
+  meta: {
+    genre: '신약 서신 · 바울 초기 서신',
+    genreNote: '논쟁적 서신 (감사 부분 생략 · 갈 1:6 즉시 문제 제기 · Betz "사법적 수사" 대 Longenecker "심의적")',
+    year: 'AD 48-49 (남갈라디아설·이른 연대) 또는 AD 55 (북갈라디아설·늦은 연대)',
+    yearNote: '남갈라디아설: 예루살렘 공의회 이전 · Bruce·Longenecker·Witherington. 북갈라디아설: 3차 여행 중 · Betz·Martyn·Lightfoot',
+    place: '안디옥 (남갈라디아설) 또는 에베소/마게도냐 (북갈라디아설)',
+    placeNote: '남갈라디아설(이른 연대)이면 안디옥에서 · 북갈라디아설이면 3차 여행 중 아시아·마게도냐 어느 지점',
+    author: '바울 (친서 · 논쟁 없음 · 7 홈로고우메나 중 하나)',
+    authorNote: '전 학계 만장 · 갈 1:1 · 5:2 · 6:11 (큰 글자로 친필 서명) · 자서전 1-2장',
+    audience: '갈라디아 지역 여러 교회 (남갈라디아: 비시디아 안디옥·이고니온·루스드라·더베 · 1차 선교 개척)',
+    audienceNote: '유대주의자(Judaizers) 침투 · 이방인 신자에게 할례·유대 율법 강요 · 갈 1:6 "속히 이르는 다른 복음"',
+    theme: '이신칭의 · 성령의 자유 · 율법에서 해방 · 새 창조',
+    themeNote: '중심 진술 (2:16 이신칭의) · 자유 (5:1 카르타 마그나) · 성령 vs 육체 (5:16) · 새 창조 (6:15) 4중 축',
+    chapterAgenda: {
+      1: '서문 · 다른 복음 저주(1:6-9)·바울 사도직 변호(사람 아닌 계시로 받음)·회심 후 아라비아·다메섹',
+      2: '예루살렘 방문 (14년 후·야고보·게바·요한 악수)·안디옥 사건 (베드로 대면·2:11-14)·이신칭의 정식(2:16)·그리스도와 함께 십자가(2:20)',
+      3: '어리석도다 갈라디아(3:1)·성령 vs 율법(3:2-5)·아브라함 믿음(3:6-9)·율법의 저주 대속(3:13)·아브라함 씨=그리스도(3:16)·초등교사(3:24)·유대·헬라·남·여 하나(3:28)',
+      4: '때가 차매 아들 보내심·양자 됨·압바 아버지(4:4-7)·사라·하갈 알레고리(4:21-31)·두 언약·시내산 vs 예루살렘',
+      5: '자유 카르타 마그나(5:1)·할례 받으면 그리스도 무익(5:2-4)·사랑으로 역사하는 믿음(5:6)·성령 따라 행하라(5:16)·육체의 일 15가지·성령의 열매 9가지(5:22-23)',
+      6: '짐 서로 지라(6:2)·심는 대로 거둠(6:7-8)·큰 글자 친필(6:11)·자랑할 것은 십자가(6:14)·새 창조(6:15)·예수의 흔적(6:17)',
+    },
+  },
+  macro: {
+    sections: [
+      { id: 's1', fromCh: 1, toCh: 2, color: '#b45309', label: '자서전 · 사도직 변호 · 예루살렘·안디옥' },
+      { id: 's2', fromCh: 3, toCh: 4, color: '#0369a1', label: '신학 논증 · 이신칭의·아브라함·양자 됨' },
+      { id: 's3', fromCh: 5, toCh: 6, color: '#059669', label: '윤리 적용 · 자유·성령·새 창조' },
+    ],
+    pivots: [
+      { id: 'p1',  ch: 1, verse: 8,  color: '#dc2626', label: '다른 복음 저주 (ἀνάθεμα)' },
+      { id: 'p2',  ch: 1, verse: 12, color: '#7c3aed', label: '계시로 받음 (사람으로부터 아님)' },
+      { id: 'p3',  ch: 2, verse: 11, color: '#b45309', label: '안디옥 사건 · 게바 면대 책망' },
+      { id: 'p4',  ch: 2, verse: 16, color: '#0369a1', label: '이신칭의 정식 (율법 행위 아님)' },
+      { id: 'p5',  ch: 2, verse: 20, color: '#dc2626', label: '그리스도와 함께 십자가에 못 박혔나니' },
+      { id: 'p6',  ch: 3, verse: 1,  color: '#dc2626', label: '어리석도다 갈라디아 사람들아' },
+      { id: 'p7',  ch: 3, verse: 6,  color: '#eab308', label: '아브라함 · 믿음이 의로 여겨짐' },
+      { id: 'p8',  ch: 3, verse: 11, color: '#0369a1', label: '의인은 믿음으로 살리라 (합 2:4)' },
+      { id: 'p9',  ch: 3, verse: 13, color: '#dc2626', label: '우리를 위하여 저주가 되사 (대속)' },
+      { id: 'p10', ch: 3, verse: 16, color: '#eab308', label: '아브라함의 씨 = 그리스도 (단수)' },
+      { id: 'p11', ch: 3, verse: 28, color: '#0891b2', label: '유대·헬라·종·자유·남·여 하나' },
+      { id: 'p12', ch: 4, verse: 4,  color: '#0891b2', label: '때가 차매 아들 보내심' },
+      { id: 'p13', ch: 4, verse: 6,  color: '#0891b2', label: '압바 아버지 (성령의 아들 인장)' },
+      { id: 'p14', ch: 5, verse: 1,  color: '#059669', label: '자유 · 종의 멍에 X (카르타 마그나)' },
+      { id: 'p15', ch: 5, verse: 6,  color: '#dc2626', label: '사랑으로 역사하는 믿음' },
+      { id: 'p16', ch: 5, verse: 14, color: '#dc2626', label: '온 율법 · 이웃 사랑' },
+      { id: 'p17', ch: 5, verse: 16, color: '#7c3aed', label: '성령을 따라 행하라 · 육체 욕심 이루지 아니' },
+      { id: 'p18', ch: 5, verse: 22, color: '#059669', label: '성령의 열매 9가지' },
+      { id: 'p19', ch: 6, verse: 2,  color: '#dc2626', label: '짐을 서로 지라 · 그리스도의 법' },
+      { id: 'p20', ch: 6, verse: 14, color: '#dc2626', label: '자랑할 것은 십자가 뿐' },
+      { id: 'p21', ch: 6, verse: 15, color: '#059669', label: '새로 지음 받는 것만이 중요 (새 창조)' },
+      { id: 'p22', ch: 6, verse: 17, color: '#dc2626', label: '내 몸에 예수의 흔적 (στίγματα)' },
+    ],
+    arcs: [
+      { id: 'a1',  from: 'p1',  to: 'p4',  color: '#dc2626', label: '다른 복음 저주 → 이신칭의 (문제 → 해답)' },
+      { id: 'a2',  from: 'p4',  to: 'p14', color: '#0369a1', label: '이신칭의 → 자유 (의롭게 됨의 결과)' },
+      { id: 'a3',  from: 'p5',  to: 'p20', color: '#dc2626', label: '2:20 십자가 → 6:14 십자가 자랑 (Inclusio)' },
+      { id: 'a4',  from: 'p7',  to: 'p10', color: '#eab308', label: '아브라함 믿음 → 씨=그리스도 (성경 신학)' },
+      { id: 'a5',  from: 'p9',  to: 'p12', color: '#0891b2', label: '저주 대속 → 아들 보내심·양자' },
+      { id: 'a6',  from: 'p12', to: 'p13', color: '#0891b2', label: '아들 보내심 → 압바 아버지 (양자 신학)' },
+      { id: 'a7',  from: 'p11', to: 'p14', color: '#059669', label: '하나 됨 → 자유 (신분·해방)' },
+      { id: 'a8',  from: 'p14', to: 'p17', color: '#7c3aed', label: '자유 → 성령 따라 행함 (자유의 실체)' },
+      { id: 'a9',  from: 'p15', to: 'p16', color: '#dc2626', label: '사랑 역사 믿음 → 이웃 사랑 (자유의 목적)' },
+      { id: 'a10', from: 'p17', to: 'p18', color: '#059669', label: '성령 행함 → 성령의 열매' },
+      { id: 'a11', from: 'p6',  to: 'p21', color: '#dc2626', label: '갈라디아 어리석음 → 새 창조 (책망 → 목표)' },
+      { id: 'a12', from: 'p3',  to: 'p11', color: '#b45309', label: '안디옥 사건 → 하나 됨 (식탁 교제 신학)' },
+      { id: 'a13', from: 'p2',  to: 'p22', color: '#7c3aed', label: '계시로 받음 → 예수의 흔적 (사도직 Inclusio)' },
+      { id: 'a14', from: 'p1',  to: 'p21', color: '#dc2626', label: '다른 복음 → 새 창조 (거짓 대안 → 참 대안)' },
+    ],
+  },
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// 에베소서 (EPH_CTX) — 옥중서신 · 교회론 정점 · 그리스도 안에서 · 성령 인침 · 영적 전쟁
+// 신약학 표준: Lincoln(WBC) · O'Brien(Pillar) · Hoehner(Baker) · Thielman(BECNT) · Barth(AB 2권) · Arnold(ZECNT) · Best(ICC) · Bruce(NICNT)
+// ═══════════════════════════════════════════════════════════════════════════
+
+const EPH_STRUCTURAL_RULES = [
+  { id: 'in_christ', role: '그리스도 안에서 (ἐν Χριστῷ)', icon: '👑', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'ἐν Χριστῷ Ἰησοῦ', tr: '엔 크리스토 이에수',
+    desc: '"그리스도 안에서" — 에베소서 34회 (신약 최다권 · 1:3-14 한 문장 안에 12회+). 신자 존재론적 위치·연합 신학. Best·Lincoln·Barth "in Christ" 신비.',
+    match: (s) => s.has('G1722') && s.has('G5547') },
+  { id: 'heavenly_blessings', role: '하늘 신령한 복 (ἐν τοῖς ἐπουρανίοις)', icon: '☁️', color: '#0369a1', bg: 'rgba(3,105,161,.13)',
+    gr: 'ἐν τοῖς ἐπουρανίοις', tr: '엔 토이스 에푸라니오이스',
+    desc: '"하늘에 속한 모든 신령한 복" (1:3) — 에베소서 특유 표현 5회 (1:3·1:20·2:6·3:10·6:12). 우주적 지평·영적 세계 · Lincoln·Arnold "heavenly places".',
+    match: (s) => s.has('G2032') },
+  { id: 'mystery_oikonomia', role: '만유 통일 신비 (μυστήριον)', icon: '🔮', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'τὸ μυστήριον τοῦ θελήματος αὐτοῦ', tr: '토 뮈스테리온 투 텔레마토스 아우투',
+    desc: '"그 뜻의 비밀을 우리에게 알리셨으니 · 하늘·땅 모든 것을 그리스도 안에서 통일되게 하려 하심이라" (1:9-10). 에베소서 μυστήριον 6회. Caragounis·Lincoln.',
+    match: (s) => s.has('G3466') },
+  { id: 'spirit_seal', role: '성령 인침 (σφραγίζω)', icon: '🔏', color: '#0891b2', bg: 'rgba(8,145,178,.14)',
+    gr: 'ἐσφραγίσθητε τῷ πνεύματι', tr: '에스프라기스테테 토 프뉴마티',
+    desc: '"약속의 성령으로 인치심을 받았으니" (1:13) · "구원의 날까지 인치심을 받았느니라" (4:30). 성령 = 종말론적 보증금 (ἀρραβών · 1:14). Fee·O\'Brien.',
+    match: (s) => s.has('G4972') || s.has('G0728') },
+  { id: 'grace_faith_not_works', role: '은혜 · 믿음 · 자랑 없음 (2:8-9)', icon: '🎁', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'χάριτί ἐστε σεσῳσμένοι διὰ πίστεως', tr: '카리티 에스테 세소스메노이 디아 피스테오스',
+    desc: '"너희는 그 은혜에 의하여 믿음으로 말미암아 구원을 받았으니 · 하나님의 선물 · 행위에서 난 것이 아니니" (2:8-9). 종교개혁 정식. Hoehner·Thielman.',
+    match: (s) => s.has('G5485') && s.has('G4102') && s.has('G4982') },
+  { id: 'one_new_man', role: '새 사람 하나 (유대·이방)', icon: '🤝', color: '#6366f1', bg: 'rgba(99,102,241,.13)',
+    gr: 'εἰς ἕνα καινὸν ἄνθρωπον', tr: '에이스 헤나 카이논 안트로폰',
+    desc: '"둘로 자기 안에서 한 새 사람을 지어 화평하게 하시고 · 중간에 막힌 담을 자기 육체로 허시고" (2:14-15). 유대·이방 화해 신학. Lincoln·Best·Barth.',
+    match: (s) => s.has('G1520') && s.has('G2537') && s.has('G0444') },
+  { id: 'church_body', role: '그리스도의 몸 (σῶμα Χριστοῦ)', icon: '⛪', color: '#0891b2', bg: 'rgba(8,145,178,.14)',
+    gr: 'τὸ σῶμα Χριστοῦ', tr: '토 소마 크리스투',
+    desc: '"교회는 그의 몸이니 만물 안에서 만물을 충만하게 하시는 이의 충만함이니라" (1:23) · "몸이 하나요 성령도 한 분이시니" (4:4). 에베소 교회론 정점. Best·Barth.',
+    match: (s) => s.has('G4983') },
+  { id: 'cornerstone_temple', role: '모퉁잇돌·성전 지어짐', icon: '🏛️', color: '#b45309', bg: 'rgba(180,83,9,.13)',
+    gr: 'ἀκρογωνιαῖος · ναὸς ἅγιος', tr: '아크로고니아이오스 · 나오스 하기오스',
+    desc: '"그리스도 예수께서 친히 모퉁잇돌 · 각 건물마다 서로 연결하여 주 안에서 성전이 되어 가고" (2:20-21). 사도·선지자 터 위 · McKelvey·O\'Brien.',
+    match: (s) => s.has('G0204') || (s.has('G3485') && s.has('G0040')) },
+  { id: 'reveal_mystery_gentile', role: '이방인 신비 계시 (동일 상속자)', icon: '🌍', color: '#6366f1', bg: 'rgba(99,102,241,.13)',
+    gr: 'συγκληρονόμα · σύσσωμα · συμμέτοχα', tr: '슁클레로노마 · 슁소마 · 슁메토카',
+    desc: '"이방인들이 함께 상속자가 되고 함께 지체가 되고 함께 약속에 참여하는 자가 됨이라" (3:6) — 3중 "함께"(συν-). 만세 감추었던 신비 계시. Thielman·Lincoln.',
+    match: (s) => s.has('G4789') || s.has('G4954') },
+  { id: 'five_offices', role: '사역자 5직 (4:11)', icon: '👥', color: '#0369a1', bg: 'rgba(3,105,161,.13)',
+    gr: 'ἀποστόλους · προφήτας · εὐαγγελιστάς · ποιμένας καὶ διδασκάλους', tr: '아포스톨루스 · 프로페타스 · 유앙겔리스타스 · 포이메나스 카이 디다스칼루스',
+    desc: '"그가 어떤 사람은 사도로 · 어떤 사람은 선지자로 · 어떤 사람은 복음 전하는 자로 · 어떤 사람은 목사와 교사로 삼으셨으니" (4:11). 목사-교사 = 단일 직 논쟁. Lincoln·Hoehner.',
+    match: (s) => s.has('G0652') && s.has('G4396') },
+  { id: 'new_self_walk', role: '새 사람 옷 입음·행함', icon: '🚶', color: '#059669', bg: 'rgba(5,150,105,.14)',
+    gr: 'ἐνδύσασθαι τὸν καινὸν ἄνθρωπον', tr: '엔뒤사스타이 톤 카이논 안트로폰',
+    desc: '"옛 사람을 벗어 버리고 · 새 사람을 입으라 · 하나님을 따라 의와 진리의 거룩함으로" (4:22-24) · "사랑 가운데 행하라" (5:2). 실천 신학 · Lincoln.',
+    match: (s) => s.has('G1746') && s.has('G2537') },
+  { id: 'spirit_filled', role: '성령으로 충만 (5:18)', icon: '🕊️', color: '#7c3aed', bg: 'rgba(124,58,237,.14)',
+    gr: 'πληροῦσθε ἐν πνεύματι', tr: '플레루스테 엔 프뉴마티',
+    desc: '"술 취하지 말라 · 오직 성령으로 충만함을 받으라" (5:18) — 명령형 · 현재 수동 (지속적 충만). 5:19-21 5분사 결과 (찬송·감사·복종). Fee·O\'Brien.',
+    match: (s) => s.has('G4137') && s.has('G4151') },
+  { id: 'household_code', role: '가정 규칙 (Haustafel)', icon: '🏠', color: '#b45309', bg: 'rgba(180,83,9,.13)',
+    gr: 'αἱ γυναῖκες · οἱ ἄνδρες · τὰ τέκνα · οἱ δοῦλοι', tr: '하이 귀나이케스 · 호이 안드레스 · 타 테크나 · 호이 둘로이',
+    desc: '"아내들이여 · 남편들이여 · 자녀들아 · 종들아" (5:22-6:9) — 그레코-로마 가정 규칙 재구성. 그리스도와 교회 (5:32) 신학적 기초. Lincoln·Thielman.',
+    match: null },
+  { id: 'spiritual_warfare', role: '전신갑주 · 영적 전쟁 (6:10-18)', icon: '⚔️', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'πανοπλίαν τοῦ θεοῦ', tr: '파노플리안 투 테우',
+    desc: '"하나님의 전신갑주를 입으라 · 우리의 씨름은 혈과 육이 아니라 · 통치자·권세·어둠의 세상 주관자·악의 영들" (6:10-12) · 6가지 무기. Arnold·Lincoln.',
+    match: (s) => s.has('G3833') },
+  { id: 'love_supreme', role: '사랑 (ἀγάπη · 지극한 사랑)', icon: '❤️', color: '#dc2626', bg: 'rgba(220,38,38,.13)',
+    gr: 'τῇ ἀγάπῃ τοῦ Χριστοῦ', tr: '테 아가페 투 크리스투',
+    desc: '"그리스도의 사랑의 너비·길이·높이·깊이가 어떠함을 깨달아" (3:18-19) · "사랑 가운데서 진리를 말하여" (4:15) · "사랑 가운데서 행하라" (5:2). O\'Brien·Best.',
+    match: (s) => s.has('G0026') },
+];
+
+const EPH_MANUAL_DISCOURSE = {
+  '1:3':   'heavenly_blessings',      // 하늘에 속한 모든 신령한 복
+  '1:4':   'in_christ',               // 창세 전에 그리스도 안에서 택하사
+  '1:7':   'grace_faith_not_works',   // 그의 피로 말미암아 속량 · 죄사함
+  '1:9':   'mystery_oikonomia',       // 그 뜻의 비밀 알리셨으니
+  '1:10':  'mystery_oikonomia',       // 만유 통일 (하늘·땅) 그리스도 안에서
+  '1:13':  'spirit_seal',             // 약속의 성령으로 인치심을 받았으니
+  '1:14':  'spirit_seal',             // 성령 = 보증 (ἀρραβών) · 기업의 보증이 되사
+  '1:20':  'heavenly_blessings',      // 하늘에서 자기의 오른편에 앉히사
+  '1:22':  'church_body',             // 만물을 그의 발 아래 · 교회의 머리
+  '1:23':  'church_body',             // 교회는 그의 몸 · 만물 안 만물 충만
+  '2:5':   'grace_faith_not_works',   // 허물로 죽은 우리 · 함께 살리셨고
+  '2:6':   'in_christ',               // 그리스도 예수 안에서 함께 하늘에 앉히시니
+  '2:8':   'grace_faith_not_works',   // 은혜에 의하여 믿음으로 말미암아
+  '2:9':   'grace_faith_not_works',   // 행위에서 난 것 아님 · 자랑하지 못하게
+  '2:10':  'new_self_walk',           // 그의 만드신 바 · 선한 일 위해 지으심
+  '2:13':  'in_christ',               // 그리스도 예수 안에서 · 그의 피로 가까워짐
+  '2:14':  'one_new_man',             // 화평 · 중간에 막힌 담을 허심
+  '2:15':  'one_new_man',             // 한 새 사람 지어 화평
+  '2:19':  'one_new_man',             // 하나님 권속 · 성도들과 동일 시민
+  '2:20':  'cornerstone_temple',      // 그리스도 예수 친히 모퉁잇돌
+  '2:21':  'cornerstone_temple',      // 각 건물 연결 · 주 안에서 성전
+  '3:6':   'reveal_mystery_gentile',  // 이방인 함께 상속자 · 지체 · 참여자 (3중 συν-)
+  '3:10':  'church_body',             // 교회로 말미암아 · 통치·권세들에게 각종 지혜
+  '3:12':  'in_christ',               // 그 안에서 담대함과 확신 · 나아감
+  '3:18':  'love_supreme',            // 사랑의 너비·길이·높이·깊이
+  '3:20':  'heavenly_blessings',      // 넘치도록 하실 이
+  '4:3':   'one_new_man',             // 성령이 하나 되게 하신 것 지키라
+  '4:4':   'church_body',             // 몸이 하나 · 성령도 하나 (7개 하나)
+  '4:11':  'five_offices',            // 사역자 5직 (사도·선지자·복음전하는 자·목사·교사)
+  '4:13':  'church_body',             // 온전한 사람 · 그리스도 장성한 분량
+  '4:15':  'love_supreme',            // 사랑 가운데 진리를 말하여
+  '4:22':  'new_self_walk',           // 옛 사람 벗어 버리고
+  '4:24':  'new_self_walk',           // 새 사람 입으라 · 의와 진리의 거룩함
+  '4:30':  'spirit_seal',             // 성령을 근심하게 하지 말라 · 구원의 날까지 인침
+  '5:2':   'love_supreme',            // 사랑 가운데 행하라
+  '5:8':   'new_self_walk',           // 빛의 자녀들처럼 행하라
+  '5:18':  'spirit_filled',           // 술 취하지 말고 성령으로 충만
+  '5:19':  'spirit_filled',           // 시와 찬미와 신령한 노래
+  '5:22':  'household_code',          // 아내들이여 남편에게 복종
+  '5:25':  'household_code',          // 남편들아 아내 사랑 · 그리스도가 교회 사랑
+  '5:32':  'church_body',             // 이 비밀이 크도다 · 그리스도와 교회
+  '6:1':   'household_code',          // 자녀들아 부모에게 순종
+  '6:5':   'household_code',          // 종들아 상전에게 두려워하고
+  '6:10':  'spiritual_warfare',       // 주 안에서 · 그 힘의 능력으로 강건하여지고
+  '6:11':  'spiritual_warfare',       // 하나님의 전신갑주를 입으라
+  '6:12':  'spiritual_warfare',       // 우리 씨름은 혈과 육이 아니라 · 통치·권세·주관자·악의 영들
+  '6:17':  'spiritual_warfare',       // 성령의 검·하나님의 말씀
+  '6:18':  'spirit_filled',           // 모든 기도와 간구를 하되 성령 안에서
+};
+
+export const EPH_CTX = {
+  id: 'Eph',
+  book: { ko: '에베소서', bollsNum: 49, lexId: 'Eph', lexCorpus: 'gnt', en: 'Ephesians', testament: 'NT' },
+  chapters: 6,
+  discourseRules: [...GNT_DISCOURSE_RULES, ...EPH_STRUCTURAL_RULES],
+  manualDiscourse: EPH_MANUAL_DISCOURSE,
+  theoTerms: ROM_THEO_TERMS,
+  meta: {
+    genre: '신약 서신 · 옥중서신 (골로새서·빌립보서·빌레몬서와 함께)',
+    genreNote: '회람 서신 가능성 (일부 사본 1:1 "에베소" 부재 · Best·Lincoln) · 예전·찬송 요소 다수 (1:3-14 한 문장 202단어)',
+    year: 'AD 60-62 (로마 감금기 · 전통) 또는 AD 80-100 (후기 저작설)',
+    yearNote: '옥중서신 그룹 · 두기고 골로새·에베소 동시 전달 (엡 6:21 = 골 4:7) · Lincoln·Barth 후기 저작설 vs Bruce·O\'Brien·Hoehner 바울 친서',
+    place: '로마 감금 (전통) · 또는 가이사랴',
+    placeNote: '엡 3:1·4:1·6:20 갇힌 자 언급 · 로마 감금 (행 28:16-31) 다수설',
+    author: '바울 (전통) 또는 바울 학파 (현대 다수 · 문체·어휘·신학 논쟁)',
+    authorNote: '바울 친서 지지: Bruce·O\'Brien·Hoehner·Thielman·Arnold. 학파설: Lincoln·Best·Käsemann·Barth · 문체 이례성·긴 문장·교회론 발전',
+    audience: '에베소 교회 (전통) · 또는 소아시아 이방 기독교 회람 서신',
+    audienceNote: '엡 1:15·3:2 "듣기만 하고" = 바울 직접 안 만난 교회 · 회람설 뒷받침 · 이방 기독교 정체성 확립',
+    theme: '그리스도 안에서 · 교회의 신비 · 유대·이방 하나 · 영적 전쟁 · 우주적 화해',
+    themeNote: '1-3 교리 (그리스도 안에서·성령 인침·교회론) → 4-6 실천 (일치·거룩·가정·전신갑주) 2부 구조. "그리스도 안에서" 34회.',
+    chapterAgenda: {
+      1: '인사·삼위 찬송(1:3-14 한 문장·성부 택하심·성자 속량·성령 인침)·바울 감사·기도(교회 눈 밝히사)·그리스도 부활·승귀·교회 머리',
+      2: '허물로 죽은 자에서 함께 살리심(2:1-10 은혜·믿음·구원 정식)·유대·이방 하나 됨(2:11-22 중간 담·새 사람·성전 지어짐)',
+      3: '이방인 신비 계시(3:1-13 함께 상속자·지체·참여자)·바울 기도(3:14-21 사랑 너비·길이·높이·깊이·풍성한 도달)',
+      4: '몸의 하나됨(4:1-6 7개 하나)·사역자 5직·그리스도 장성한 분량(4:11-16)·옛 사람 벗음·새 사람 입음(4:17-32)',
+      5: '사랑 가운데 행함·빛의 자녀·성령 충만(5:1-21)·부부론 "이 비밀이 크도다"(5:22-33)',
+      6: '자녀·부모·종·상전(6:1-9)·전신갑주 6가지·영적 전쟁·주 안에서 강건(6:10-20)·두기고·마지막 인사',
+    },
+  },
+  macro: {
+    sections: [
+      { id: 's1', fromCh: 1, toCh: 3, color: '#7c3aed', label: '교리 · 그리스도 안에서·교회 신비·이방 편입' },
+      { id: 's2', fromCh: 4, toCh: 6, color: '#059669', label: '실천 · 일치·거룩·가정·영적 전쟁' },
+    ],
+    pivots: [
+      { id: 'p1',  ch: 1, verse: 3,  color: '#0369a1', label: '하늘 신령한 복 (찬송 시작)' },
+      { id: 'p2',  ch: 1, verse: 4,  color: '#7c3aed', label: '창세 전 그리스도 안에서 택하심' },
+      { id: 'p3',  ch: 1, verse: 7,  color: '#dc2626', label: '그의 피로 속량 · 죄사함' },
+      { id: 'p4',  ch: 1, verse: 10, color: '#7c3aed', label: '만유 통일 · 하늘·땅 그리스도 안에서' },
+      { id: 'p5',  ch: 1, verse: 13, color: '#0891b2', label: '약속의 성령으로 인치심 (보증)' },
+      { id: 'p6',  ch: 1, verse: 22, color: '#0891b2', label: '만물 발 아래 · 교회의 머리' },
+      { id: 'p7',  ch: 2, verse: 8,  color: '#059669', label: '은혜로·믿음으로 구원 (선물)' },
+      { id: 'p8',  ch: 2, verse: 10, color: '#059669', label: '그의 만드신 바 · 선한 일 위해 지으심' },
+      { id: 'p9',  ch: 2, verse: 14, color: '#6366f1', label: '화평 · 중간 담을 허심' },
+      { id: 'p10', ch: 2, verse: 15, color: '#6366f1', label: '한 새 사람 지어 화평 (유대·이방)' },
+      { id: 'p11', ch: 2, verse: 20, color: '#b45309', label: '그리스도 예수 · 모퉁잇돌' },
+      { id: 'p12', ch: 3, verse: 6,  color: '#6366f1', label: '이방인 함께 상속자·지체·참여자 (3중 συν)' },
+      { id: 'p13', ch: 3, verse: 10, color: '#0891b2', label: '교회로 말미암아 · 통치·권세들에게 각종 지혜' },
+      { id: 'p14', ch: 3, verse: 18, color: '#dc2626', label: '사랑의 너비·길이·높이·깊이' },
+      { id: 'p15', ch: 3, verse: 20, color: '#0369a1', label: '넘치도록 하실 이 (송영)' },
+      { id: 'p16', ch: 4, verse: 3,  color: '#6366f1', label: '성령이 하나 되게 하신 것 지키라' },
+      { id: 'p17', ch: 4, verse: 4,  color: '#0891b2', label: '몸이 하나 · 7개 하나 (일치 신학)' },
+      { id: 'p18', ch: 4, verse: 11, color: '#0369a1', label: '사역자 5직 (사도·선지자·복음전자·목사·교사)' },
+      { id: 'p19', ch: 4, verse: 15, color: '#dc2626', label: '사랑 가운데 진리를 말하여' },
+      { id: 'p20', ch: 4, verse: 24, color: '#059669', label: '새 사람 입으라 · 의·진리의 거룩함' },
+      { id: 'p21', ch: 4, verse: 30, color: '#0891b2', label: '성령을 근심 X · 구원의 날까지 인침' },
+      { id: 'p22', ch: 5, verse: 2,  color: '#dc2626', label: '사랑 가운데 행하라' },
+      { id: 'p23', ch: 5, verse: 18, color: '#7c3aed', label: '성령으로 충만 · 술 취하지 말고' },
+      { id: 'p24', ch: 5, verse: 32, color: '#0891b2', label: '이 비밀이 크도다 · 그리스도와 교회 (부부론)' },
+      { id: 'p25', ch: 6, verse: 11, color: '#dc2626', label: '하나님의 전신갑주를 입으라' },
+      { id: 'p26', ch: 6, verse: 12, color: '#dc2626', label: '우리 씨름은 · 통치·권세·주관자·악의 영들' },
+      { id: 'p27', ch: 6, verse: 17, color: '#dc2626', label: '성령의 검 · 하나님의 말씀' },
+    ],
+    arcs: [
+      { id: 'a1',  from: 'p2',  to: 'p10', color: '#7c3aed', label: '창세 전 택하심 → 새 사람 (구원 사역)' },
+      { id: 'a2',  from: 'p4',  to: 'p9',  color: '#6366f1', label: '만유 통일 → 유대·이방 화평 (우주 → 인간)' },
+      { id: 'a3',  from: 'p5',  to: 'p21', color: '#0891b2', label: '성령 인침 (1차) → 구원의 날까지 인침 (재확인)' },
+      { id: 'a4',  from: 'p6',  to: 'p17', color: '#0891b2', label: '교회 머리 → 몸 하나 (교회론 Inclusio)' },
+      { id: 'a5',  from: 'p7',  to: 'p8',  color: '#059669', label: '은혜·믿음 구원 → 선한 일 위해 지으심' },
+      { id: 'a6',  from: 'p9',  to: 'p12', color: '#6366f1', label: '중간 담 허심 → 함께 상속자 (이방 편입 3중)' },
+      { id: 'a7',  from: 'p11', to: 'p18', color: '#b45309', label: '모퉁잇돌 → 5직 세우심 (교회 건축)' },
+      { id: 'a8',  from: 'p14', to: 'p22', color: '#dc2626', label: '사랑 4차원 → 사랑 가운데 행하라' },
+      { id: 'a9',  from: 'p16', to: 'p23', color: '#7c3aed', label: '성령 하나 지킴 → 성령 충만 (성령 신학)' },
+      { id: 'a10', from: 'p20', to: 'p22', color: '#059669', label: '새 사람 입음 → 사랑 행함 (실천)' },
+      { id: 'a11', from: 'p24', to: 'p25', color: '#0891b2', label: '부부론 → 전신갑주 (교회 실천 → 우주 전쟁)' },
+      { id: 'a12', from: 'p25', to: 'p27', color: '#dc2626', label: '전신갑주 → 성령의 검 (무기 축)' },
+      { id: 'a13', from: 'p3',  to: 'p26', color: '#dc2626', label: '피로 속량 → 악의 영들 (우주적 승리)' },
+      { id: 'a14', from: 'p1',  to: 'p15', color: '#0369a1', label: '신령한 복 (찬송 시작) → 송영 (3장 결론)' },
+    ],
+  },
+};
+
 // ── 등록된 책 컨텍스트 (activeBookId 로 조회) ────────────────────────────
 export const BOOK_CONTEXTS = {
   Gen: GEN_CTX,
@@ -2139,6 +2528,8 @@ export const BOOK_CONTEXTS = {
   Luke: LUK_CTX,
   John: JHN_CTX,
   Acts: ACT_CTX,
+  Gal: GAL_CTX,
+  Eph: EPH_CTX,
 };
 
 export const SUPPORTED_BOOK_IDS = Object.keys(BOOK_CONTEXTS);
