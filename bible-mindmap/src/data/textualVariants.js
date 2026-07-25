@@ -288,7 +288,7 @@ const _loadingBooks = new Map() // 로드 중인 bookId → Promise
 
 // SBLGNT JSON 을 동적으로 fetch 하는 NT 책 목록
 // (OT 는 수동 큐레이션 데이터만 사용; BHS 비평장치 저작권 문제)
-const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'Rom'])
+const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Rom'])
 
 const BASE_URL = (() => {
   try { return import.meta.env.BASE_URL || '/' } catch { return '/' }

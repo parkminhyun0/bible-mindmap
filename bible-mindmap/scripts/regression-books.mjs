@@ -19,7 +19,7 @@ const LEX_DIR = join(ROOT, 'public/data/lex')
 const VARIANTS_DIR = join(ROOT, 'public/data/variants')
 
 // SBLGNT 자동 로드 대상 (textualVariants.js의 SBLGNT_BOOKS와 동기화)
-const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'Rom'])
+const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Rom'])
 
 const ok = (msg) => console.log(`  ✅ ${msg}`)
 const fail = (msg) => { console.log(`  ❌ ${msg}`); return 1 }
