@@ -194,6 +194,7 @@ function parseSBLGNT(bookId, text) {
         chapter: ch,
         verse,
         type,
+        source: 'sblgnt', // ← UI 배지 · 자동 감지 표시
         title: buildTitle(type, lhsText, rhsEntries),
         summary: buildSummary(lhsText, lhsWits, rhsEntries),
         witnesses: buildWitnesses(type, lhsText, lhsWits, rhsEntries),

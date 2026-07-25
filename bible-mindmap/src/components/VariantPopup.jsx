@@ -12,10 +12,10 @@ import useMobile from '../hooks/useMobile'
  *   onClose
  */
 export default function VariantPopup({
-  bookId, chapter, verse, sourceRef, anchor, onClose,
+  bookId, chapter, verse, sourceRef, anchor, onClose, apparatusMode = 'standard',
 }) {
   const isMobile = useMobile()
-  const variants = getVariants(bookId, chapter, verse)
+  const variants = getVariants(bookId, chapter, verse, apparatusMode)
 
   // 데스크톱 드래그
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200
@@ -154,7 +154,7 @@ export default function VariantPopup({
                 border: `1px solid ${t.color}44`,
                 borderLeft: `4px solid ${t.color}`,
               }}>
-                {/* 헤더 · 유형 · Metzger 등급 */}
+                {/* 헤더 · 유형 · Metzger 등급 · 출처 (자동/수동 구분) */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, flexWrap: 'wrap' }}>
                   <span style={{ width: 10, height: 10, borderRadius: '50%',
                     background: t.color, flexShrink: 0 }} />
@@ -167,6 +167,42 @@ export default function VariantPopup({
                       style={{ fontSize: 10, fontWeight: 800, color: '#fff',
                         padding: '2px 6px', background: metzgerColor(grade), borderRadius: 4 }}>
                       {grade}
+                    </span>
+                  )}
+                  {/* 출처 배지 · 자동 감지(SBLGNT·OSHB) vs 수동 큐레이션 시각 구분 */}
+                  {v.source === 'oshb' && (
+                    <span title="OSHB (Open Scriptures Hebrew Bible · CC BY 4.0) 마소라 Ketiv/Qere 자동 파싱"
+                      style={{ fontSize: 9, fontWeight: 800, color: '#0f766e',
+                        padding: '2px 6px', background: '#ccfbf1', border: '1px solid #5eead4', borderRadius: 4 }}>
+                      🤖 자동 (OSHB K/Q)
+                    </span>
+                  )}
+                  {v.source === 'sp-mt' && (
+                    <span title="DT-UCPH Samaritan Pentateuch (CC BY-NC 4.0) vs WLC MT 자음 텍스트 자동 대조. Tal (1994) · Florentin (2005) 학술 기준. 학술 검증 권장."
+                      style={{ fontSize: 9, fontWeight: 800, color: '#7c3aed',
+                        padding: '2px 6px', background: '#f3e8ff', border: '1px solid #c4b5fd', borderRadius: 4 }}>
+                      🤖 자동 (SP-MT 대조)
+                    </span>
+                  )}
+                  {v.source === 'lxx-mt' && (
+                    <span title="LXX (Rahlfs Septuagint · openscriptures/GreekResources) vs WLC MT 구조 대조. 절 누락·추가·단어 수 큰 차이 자동 감지. Tov (2012) 학술 검증 권장. 언어 차이로 노이즈 존재."
+                      style={{ fontSize: 9, fontWeight: 800, color: '#c2410c',
+                        padding: '2px 6px', background: '#ffedd5', border: '1px solid #fdba74', borderRadius: 4 }}>
+                      🤖 자동 (LXX-MT 대조)
+                    </span>
+                  )}
+                  {v.source === 'sblgnt' && (
+                    <span title="SBLGNT Apparatus (Faithlife/SBL · CC BY 4.0) 자동 파싱"
+                      style={{ fontSize: 9, fontWeight: 800, color: '#0369a1',
+                        padding: '2px 6px', background: '#e0f2fe', border: '1px solid #7dd3fc', borderRadius: 4 }}>
+                      🤖 자동 (SBLGNT)
+                    </span>
+                  )}
+                  {!v.source && (
+                    <span title="학술 큐레이션 (Metzger · NET Bible · BHS/BHQ 참조 · 수동 등록)"
+                      style={{ fontSize: 9, fontWeight: 800, color: '#b45309',
+                        padding: '2px 6px', background: '#fef3c7', border: '1px solid #fcd34d', borderRadius: 4 }}>
+                      ✍️ 큐레이션
                     </span>
                   )}
                   <span style={{ fontSize: 12, fontWeight: 800, color: '#0f172a' }}>

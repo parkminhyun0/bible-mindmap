@@ -14,6 +14,9 @@ dist-ssr
 
 # Generated lexicon data (built by scripts/build-lexicon.mjs during CI)
 public/data/
+# SBLGNT / OSHB XML 다운로드 캐시 (CI에서 재다운로드 · 로컬 반복 실행 가속)
+.sblgnt-cache/
+.oshb-cache/
 
 # Editor directories and files
 .vscode/*

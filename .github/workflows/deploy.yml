@@ -38,6 +38,15 @@ jobs:
       - name: Build SBLGNT apparatus variants (NT 사본 이문 JSON)
         run: node scripts/parse-sblgnt.mjs
 
+      - name: Build OSHB Ketiv/Qere variants (OT 마소라 K/Q 자동 이문)
+        run: node scripts/parse-oshb.mjs
+
+      - name: Build SP-MT variants (오경 사마리아 vs 마소라 자동 대조 · scripts/data/sp-verses.json 사용)
+        run: node scripts/parse-sp-mt.mjs
+
+      - name: Build LXX-MT variants (39권 OT 셉투아긴트 vs 마소라 구조 자동 대조)
+        run: node scripts/parse-lxx-mt.mjs
+
       - name: Build app
         run: npm run build
 

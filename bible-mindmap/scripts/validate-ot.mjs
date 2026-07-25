@@ -164,10 +164,28 @@ ok('히브리어 인용 저작권 리스크 스캔 완료 (경고만)')
 console.log('\n📋 표준 OT 시글 참고 (whitelist)')
 console.log(`   ${[...ALLOWED_SIGLA].join(' · ')}`)
 
+// ── Test 6: OSHB Ketiv/Qere 자동 이문 커버리지 (Stage 3-A) ─
+console.log('\n🧪 [Test 6] OSHB Ketiv/Qere 자동 커버리지 (변수 · 옵션)')
+import { existsSync as _exists } from 'node:fs'
+const VARIANTS_DIR = join(ROOT, 'public/data/variants')
+let oshbTotal = 0, oshbBooks = 0
+for (const [id, ctx] of OT_BOOKS) {
+  const p = join(VARIANTS_DIR, `${id}.json`)
+  if (!_exists(p)) { info(`${id}: OSHB JSON 없음 (parse-oshb.mjs 미실행)`); continue }
+  try {
+    const arr = JSON.parse(readFileSync(p, 'utf8'))
+    const list = Array.isArray(arr) ? arr : []
+    const oshbN = list.filter(v => v.source === 'oshb').length
+    if (oshbN > 0) { ok(`${id}: OSHB Ketiv/Qere ${oshbN}건`); oshbTotal += oshbN; oshbBooks++ }
+  } catch (e) { warn(`${id}: JSON 파싱 실패 (${e.message})`) }
+}
+if (oshbBooks) ok(`OSHB 로드 총계: ${oshbBooks}권 · ${oshbTotal}건 자동 감지`)
+else info('OSHB 데이터 없음 · node scripts/parse-oshb.mjs 실행 시 자동 확장')
+
 // ── 최종 리포트 ─────────────────────────────────────────────
 console.log('')
 if (totalErrs === 0) {
-  console.log(`✅ OT validation PASS · ${OT_BOOKS.length}권 · 이문 ${otVariantBlocks.length}건 표준 준수`)
+  console.log(`✅ OT validation PASS · ${OT_BOOKS.length}권 · 이문 ${otVariantBlocks.length}건 표준 준수 · OSHB 자동 ${oshbTotal}건`)
   process.exit(0)
 } else {
   console.log(`❌ OT validation FAIL · ${totalErrs}건`)

@@ -346,9 +346,24 @@ const _versesByBook = new Map() // 'bookId:ch' → Set(verse)
 const _loadedBooks = new Set()  // 이미 로드된 bookId
 const _loadingBooks = new Map() // 로드 중인 bookId → Promise
 
-// SBLGNT JSON 을 동적으로 fetch 하는 NT 책 목록
-// (OT 는 수동 큐레이션 데이터만 사용; BHS 비평장치 저작권 문제)
+// SBLGNT JSON 을 동적으로 fetch 하는 NT 책 목록 (CC BY 4.0)
 const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Rom'])
+
+// OSHB Ketiv/Qere JSON 을 동적으로 fetch 하는 OT 책 목록 (Stage 3-A · 2026-07-25 도입)
+// 근거: openscriptures/morphhb · CC BY 4.0 · WLC 마소라 Ketiv/Qere 표기 자동 파싱
+// 수동 큐레이션(신학 결정적 지점)은 하드코딩 · OSHB(마소라 K/Q)는 자동 로드 · 함께 표시
+const OSHB_BOOKS = new Set([
+  'Gen', 'Exod', 'Lev', 'Num', 'Deut',
+  'Josh', 'Judg', 'Ruth', '1Sam', '2Sam', '1Kgs', '2Kgs',
+  '1Chr', '2Chr', 'Ezra', 'Neh', 'Esth',
+  'Job', 'Ps', 'Prov', 'Eccl', 'Song',
+  'Isa', 'Jer', 'Lam', 'Ezek', 'Dan',
+  'Hos', 'Joel', 'Amos', 'Obad', 'Jonah',
+  'Mic', 'Nah', 'Hab', 'Zeph', 'Hag', 'Zech', 'Mal',
+])
+
+// 자동 로드 대상 통합 (SBLGNT + OSHB)
+const AUTO_LOAD_BOOKS = new Set([...SBLGNT_BOOKS, ...OSHB_BOOKS])
 
 const BASE_URL = (() => {
   try { return import.meta.env.BASE_URL || '/' } catch { return '/' }
@@ -367,21 +382,25 @@ function _registerVariants(list) {
   }
 }
 
-// 수동 큐레이션 데이터 즉시 등록
+// 수동 큐레이션 데이터 즉시 등록 (curated)
 _registerVariants(VARIANTS)
-// SBLGNT 자동 로드 대상(신약)은 _loadedBooks에 표시하지 않음 — JSON fetch가 실행되어야 나머지 apparatus 데이터가 로드됨
+// 자동 로드 대상(SBLGNT NT + OSHB OT)은 _loadedBooks에 표시하지 않음
+// — JSON fetch가 실행되어야 나머지 apparatus 데이터가 로드됨
 for (const v of VARIANTS) {
-  if (!SBLGNT_BOOKS.has(v.bookId)) _loadedBooks.add(v.bookId)
+  if (!AUTO_LOAD_BOOKS.has(v.bookId)) _loadedBooks.add(v.bookId)
 }
 
 /**
- * 특정 책의 비평장치 데이터 로드 (NT: SBLGNT JSON · OT: 이미 로드됨)
+ * 특정 책의 비평장치 데이터 로드
+ *   - NT (SBLGNT_BOOKS): variants/{Book}.json fetch (파싱 이문)
+ *   - OT (OSHB_BOOKS):   variants/{Book}.json fetch (Ketiv/Qere · Stage 3-A)
+ *   - 기타 OT:          이미 curated 로드됨 (즉시 resolve)
  * 반환값: Promise<void> — 완료 후 hasVariant / getVariants 가 동작함
  */
 export function loadBookVariants(bookId) {
   if (_loadedBooks.has(bookId)) return Promise.resolve()
   if (_loadingBooks.has(bookId)) return _loadingBooks.get(bookId)
-  if (!SBLGNT_BOOKS.has(bookId)) {
+  if (!AUTO_LOAD_BOOKS.has(bookId)) {
     _loadedBooks.add(bookId)
     return Promise.resolve()
   }
@@ -396,11 +415,17 @@ export function loadBookVariants(bookId) {
       _loadedBooks.add(bookId)
       _loadingBooks.delete(bookId)
       const verses = new Set()
-      for (const v of list) verses.add(`${v.chapter}:${v.verse}`)
-      console.log(`[비평장치] ✅ ${bookId} 로드 완료: ${list.length}건 · ${verses.size}개 절 커버`)
+      const sources = {}
+      for (const v of list) {
+        verses.add(`${v.chapter}:${v.verse}`)
+        const src = v.source || (SBLGNT_BOOKS.has(bookId) ? 'sblgnt' : 'curated')
+        sources[src] = (sources[src] || 0) + 1
+      }
+      const srcSummary = Object.entries(sources).map(([k, n]) => `${k}:${n}`).join(' · ')
+      console.log(`[비평장치] ✅ ${bookId} 로드: ${list.length}건 · ${verses.size}개 절 · ${srcSummary}`)
     })
     .catch(e => {
-      console.error(`[비평장치] ❌ ${bookId} 로드 실패:`, e)
+      console.warn(`[비평장치] ⚠ ${bookId} JSON 로드 실패 (curated 만 사용):`, e.message)
       _loadedBooks.add(bookId) // 재시도 방지
       _loadingBooks.delete(bookId)
     })
@@ -413,12 +438,32 @@ export function isVariantLoaded(bookId) {
   return _loadedBooks.has(bookId)
 }
 
-export function hasVariant(bookId, chapter, verse) {
-  return _byVerse.has(`${bookId}:${chapter}:${verse}`)
+// ── apparatus mode 필터링 ──────────────────────────────────
+// mode: 'off' | 'standard' | 'scholarly'
+//   off:       apparatus 완전 숨김
+//   standard:  curated (source 없음) + SBLGNT Metzger A/B + curated 수동 이문만
+//   scholarly: 모든 자동/수동 이문 (전체 노출)
+function filterByMode(variants, mode) {
+  if (!variants || variants.length === 0) return []
+  if (mode === 'scholarly') return variants
+  if (mode === 'off') return []
+  // standard: curated (source 없음 or 'curated') + SBLGNT Metzger A/B
+  return variants.filter((v) => {
+    if (!v.source || v.source === 'curated') return true // 수동 큐레이션은 항상 노출
+    if (v.source === 'sblgnt' && (v.metzger === 'A' || v.metzger === 'B')) return true
+    return false // 나머지 자동 (OSHB · SP-MT · LXX-MT · SBLGNT C/D) 는 학술 모드에서만
+  })
 }
 
-export function getVariants(bookId, chapter, verse) {
-  return _byVerse.get(`${bookId}:${chapter}:${verse}`) || []
+export function hasVariant(bookId, chapter, verse, mode = 'standard') {
+  const arr = _byVerse.get(`${bookId}:${chapter}:${verse}`)
+  if (!arr || arr.length === 0) return false
+  return filterByMode(arr, mode).length > 0
+}
+
+export function getVariants(bookId, chapter, verse, mode = 'standard') {
+  const arr = _byVerse.get(`${bookId}:${chapter}:${verse}`) || []
+  return filterByMode(arr, mode)
 }
 
 export function getVariantVerseSet(bookId, chapter) {

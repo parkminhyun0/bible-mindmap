@@ -147,6 +147,16 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [crossrefOpen, setCrossrefOpen] = useState(null);
   // 비평장치 팝업 상태 — { ch, verse, anchor: {x,y} }
   const [variantOpen, setVariantOpen] = useState(null);
+  // 비평장치 모드 · localStorage 저장 · 'off' | 'standard' | 'scholarly'
+  const [apparatusMode, setApparatusMode] = useState(() => {
+    try {
+      const saved = typeof window !== 'undefined' && window.localStorage?.getItem('apparatus_mode');
+      return saved === 'off' || saved === 'standard' || saved === 'scholarly' ? saved : 'off';
+    } catch { return 'off'; }
+  });
+  useEffect(() => {
+    try { window.localStorage?.setItem('apparatus_mode', apparatusMode); } catch {}
+  }, [apparatusMode]);
   // 참조 본문 미리보기 팝업 · 다중 오픈 지원
   // 각 항목: { id, bookId, chapter, verseStart, verseEnd, reference, x, y, z }
   const [previews, setPreviews] = useState([]);
@@ -984,9 +994,48 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               <span style={{ fontFamily:'"Times New Roman",serif',fontWeight:900,fontSize: isMobile?12:fontSizes.legend+1,letterSpacing:-1 }}>[ ]</span>
               사본 논쟁절
             </span>
-            {/* 폰트 조절 컨트롤 (데스크톱: legend row 인라인 · 모바일: 별도 row 아래) — modern segmented steppers */}
+            {/* 폰트 조절 · 비평 토글 (2026-07-25 UI · 폰트 패널 왼쪽에 비평 토글 배치) */}
             {!isMobile && (
-              <div style={fontPanelWrapper}>
+              <div style={{
+                display:'flex', alignItems:'center', gap:12,
+                flexBasis:'100%',  // 새 행 강제 (chips 아래)
+                marginTop:6, flexShrink:0,
+              }}>
+                {/* 비평 토글 (폰트 패널 왼쪽) */}
+                <div title="비평장치(Apparatus) 표시 · OFF: 숨김 · 일반: 학술 유의미 지점만 · 학술: 자동 감지 전체"
+                  style={{ display:'flex', alignItems:'center', gap:2, flexShrink:0,
+                    background:'#FFFBEB', borderRadius:8, padding:3,
+                    border:'1.5px solid #F59E0B',
+                    boxShadow:'0 1px 3px rgba(245,158,11,.20)' }}>
+                  <span style={{ fontSize:fontSizes.legend, fontWeight:900, color:'#B45309',
+                    padding:'0 8px 0 6px', letterSpacing:'.02em',
+                    borderRight:'1px solid rgba(245,158,11,.35)' }}>✎ 비평</span>
+                  {[
+                    { key:'off',       label:'OFF',  bg:'#6B7280', title:'비평장치 아이콘 완전 숨김 (깔끔한 읽기)' },
+                    { key:'standard',  label:'일반', bg:'#059669', title:'학술 유의미 (수동 큐레이션 + SBLGNT Metzger A/B 등급)' },
+                    { key:'scholarly', label:'학술', bg:'#7C3AED', title:'자동 감지 전체 (OSHB · SP-MT · LXX-MT 포함 · 노이즈 있음)' },
+                  ].map(({ key, label, bg, title }) => {
+                    const active = apparatusMode === key
+                    return (
+                      <button key={key}
+                        onClick={() => setApparatusMode(key)}
+                        title={title}
+                        style={{
+                          fontSize:fontSizes.legend,
+                          fontWeight: active ? 900 : 700,
+                          padding:'3px 10px',
+                          borderRadius:5, cursor:'pointer',
+                          background: active ? bg : '#fff',
+                          color: active ? '#fff' : '#78716C',
+                          border: active ? `1px solid ${bg}` : '1px solid #FDE68A',
+                          boxShadow: active ? `0 1px 2px ${bg}66` : 'none',
+                          transition:'all .12s',
+                        }}>{label}</button>
+                    )
+                  })}
+                </div>
+                {/* 폰트 패널 (기존) — modern segmented steppers */}
+                <div style={fontPanelWrapper}>
                 <div style={fontPanelBrand}>
                   <span style={{
                     fontSize: 14, fontWeight: 800, color: '#8A6027',
@@ -1034,6 +1083,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                     </div>
                   </div>
                 ))}
+                </div>
               </div>
             )}
           </div>
@@ -1727,7 +1777,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '.55' }}
                               >🔗</button>
                               {/* 비평장치 아이콘 · 등록된 절에만 노출 */}
-                              {hasVariant(BOOK.lexId, ch, verse) && (
+                              {hasVariant(BOOK.lexId, ch, verse, apparatusMode) && (
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation();
@@ -2521,6 +2571,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       verse={variantOpen.verse}
       sourceRef={`${BOOK.ko} ${variantOpen.ch}:${variantOpen.verse}`}
       anchor={variantOpen.anchor}
+      apparatusMode={apparatusMode}
       onClose={() => setVariantOpen(null)}
     />
   );

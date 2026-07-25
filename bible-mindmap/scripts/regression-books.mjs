@@ -20,6 +20,16 @@ const VARIANTS_DIR = join(ROOT, 'public/data/variants')
 
 // SBLGNT 자동 로드 대상 (textualVariants.js의 SBLGNT_BOOKS와 동기화)
 const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Rom'])
+// OSHB Ketiv/Qere 자동 로드 대상 (Stage 3-A · 2026-07-25)
+const OSHB_BOOKS = new Set([
+  'Gen', 'Exod', 'Lev', 'Num', 'Deut',
+  'Josh', 'Judg', 'Ruth', '1Sam', '2Sam', '1Kgs', '2Kgs',
+  '1Chr', '2Chr', 'Ezra', 'Neh', 'Esth',
+  'Job', 'Ps', 'Prov', 'Eccl', 'Song',
+  'Isa', 'Jer', 'Lam', 'Ezek', 'Dan',
+  'Hos', 'Joel', 'Amos', 'Obad', 'Jonah',
+  'Mic', 'Nah', 'Hab', 'Zeph', 'Hag', 'Zech', 'Mal',
+])
 
 const ok = (msg) => console.log(`  ✅ ${msg}`)
 const fail = (msg) => { console.log(`  ❌ ${msg}`); return 1 }
@@ -84,6 +94,28 @@ for (const [key, ctx] of Object.entries(BOOK_CONTEXTS)) {
     const count = Array.isArray(parsed) ? parsed.length : (parsed.variants?.length ?? 0)
     ok(`${key} variants: ${count}건`)
   }
+}
+
+// ── Test 4b: OT OSHB variants JSON (Stage 3-A) ──────
+console.log('\n🧪 [Test 4b] OT OSHB variants JSON (OSHB_BOOKS · Ketiv/Qere 자동)')
+let oshbFound = 0, oshbMissing = 0
+for (const [key, ctx] of Object.entries(BOOK_CONTEXTS)) {
+  if (ctx.book?.testament !== 'OT') continue
+  if (!OSHB_BOOKS.has(key)) continue
+  const variantPath = join(VARIANTS_DIR, `${key}.json`)
+  if (existsSync(variantPath)) {
+    const parsed = JSON.parse(readFileSync(variantPath, 'utf8'))
+    const count = Array.isArray(parsed) ? parsed.length : (parsed.variants?.length ?? 0)
+    const oshbCount = (Array.isArray(parsed) ? parsed : []).filter(v => v.source === 'oshb').length
+    ok(`${key} variants: ${count}건 (OSHB 자동 ${oshbCount})`)
+    oshbFound++
+  } else {
+    warn(`${key}: OSHB JSON 아직 없음 (node scripts/parse-oshb.mjs ${key} 로 생성 필요)`)
+    oshbMissing++
+  }
+}
+if (oshbFound + oshbMissing > 0) {
+  console.log(`  ℹ️  OT 등록됨 ${oshbFound + oshbMissing}권 · JSON 있음 ${oshbFound} · 없음 ${oshbMissing}`)
 }
 
 // ── Test 5: validate-book-ctx 위임 ──────────────────
