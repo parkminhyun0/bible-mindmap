@@ -95,6 +95,66 @@ const VARIANTS = [
   },
 
   // ═══════════════════════════════════════════════════════════════
+  // 레위기 (Leviticus)
+  // ═══════════════════════════════════════════════════════════════
+  {
+    bookId: 'Lev', chapter: 16, verse: 8,
+    type: 'translation',
+    title: '아사셀 (עֲזָאזֵל) 해석 논쟁',
+    summary: 'MT: "לַעֲזָאזֵל" (for Azazel) · 3설: (1) 광야 악마 · (2) 지명(절벽) · (3) "완전한 제거" 추상어',
+    witnesses: { variants: {
+      MT: 'לַעֲזָאזֵל (라-아자젤)',
+      LXX: 'τῷ ἀποπομπαίῳ (for the sender-away · 추상적 처리)',
+      Vulgate: 'capro emissario (보내는 염소 · scapegoat 어원)',
+    }},
+    metzger: 'B',
+    translations: {
+      kjv: 'scapegoat (보내는 염소 · Tyndale·Vulgate 전통)',
+      esv: 'Azazel (음역 · 고유명사)',
+      krv: '아사셀 (음역)',
+      niv: 'scapegoat',
+    },
+    significance: '대속죄일 두 염소 중 하나가 아사셀 몫으로 광야로. 해석에 따라 죄 이전(제거) 신학·악마 몫(추방) 이해 갈림. Milgrom·Levine 3설 · 신약 히 13:11-12 연결.',
+    refs: ['WLC (Westminster Leningrad Codex, 파블릭 도메인) 기반 히브리어 인용', 'NET Bible 각주 기반 큐레이션 (netbible.org)', '⚠ 학술 검증: BHS·BHQ·DSS 1차 자료 대조 권장'],
+  },
+  {
+    bookId: 'Lev', chapter: 17, verse: 11,
+    type: 'translation',
+    title: '피의 속죄 신학 · "생명은 피에" (הַנֶּפֶשׁ בַּדָּם)',
+    summary: 'MT: "כִּי־נֶפֶשׁ הַבָּשָׂר בַּדָּם הִוא" — 육체의 생명(네페쉬)은 피에. 속죄의 근거 논쟁: 피=생명 대체 vs 피=죽음 상징',
+    witnesses: { variants: {
+      MT: 'כִּי־נֶפֶשׁ הַבָּשָׂר בַּדָּם הִוא',
+      LXX: 'ἡ γὰρ ψυχὴ πάσης σαρκὸς αἷμα αὐτοῦ ἐστιν (그 생명이 곧 피니라)',
+    }},
+    metzger: 'A',
+    translations: {
+      kjv: 'the life of the flesh is in the blood',
+      esv: 'the life of the flesh is in the blood',
+      krv: '육체의 생명은 피에 있음이라',
+      niv: 'the life of a creature is in the blood',
+    },
+    significance: '구약 속죄 신학 핵심 · 신약 히 9:22 (피 흘림 없이는 사함이 없느니라) 근거. Milgrom: 피는 생명 대체 · Kiuchi: 죄인의 죽음 상징. 정통 기독론 대속의 성경적 근거.',
+    refs: ['WLC (Westminster Leningrad Codex, 파블릭 도메인) 기반 히브리어 인용', 'NET Bible 각주 기반 큐레이션 (netbible.org)', '⚠ 학술 검증: BHS·BHQ·DSS 1차 자료 대조 권장'],
+  },
+  {
+    bookId: 'Lev', chapter: 18, verse: 5,
+    type: 'translation',
+    title: '"준행하면 살리라" (וָחַי בָּהֶם) · 구원론 논쟁',
+    summary: 'MT: "그로 인하여 살리라" — 율법 준행과 생명의 관계. 신약(롬 10:5 · 갈 3:12) 인용',
+    witnesses: { variants: {
+      MT: 'וָחַי בָּהֶם (베하이 바헴 · 그로 인하여 살리라)',
+      LXX: 'ζήσεται ἐν αὐτοῖς (그것들 안에서 살리라)',
+    }},
+    metzger: 'A',
+    translations: {
+      kjv: 'shall live in them', esv: 'shall live by them',
+      krv: '그로 인하여 살리라', niv: 'will live by them',
+    },
+    significance: '유대교 랍비 전통: 영원한 생명(내세) 함의 · 바울(롬 10:5·갈 3:12): 율법으로는 못 얻는 생명 대조 · 개혁주의: 언약 순종 원리. 율법·복음 관계 신학 논쟁 정점.',
+    refs: ['WLC (Westminster Leningrad Codex, 파블릭 도메인) 기반 히브리어 인용', 'NET Bible 각주 기반 큐레이션 (netbible.org)', '⚠ 학술 검증: BHS·BHQ·DSS 1차 자료 대조 권장'],
+  },
+
+  // ═══════════════════════════════════════════════════════════════
   // 로마서 (Romans)
   // ═══════════════════════════════════════════════════════════════
   {
