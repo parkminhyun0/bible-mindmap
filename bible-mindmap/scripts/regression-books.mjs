@@ -19,7 +19,7 @@ const LEX_DIR = join(ROOT, 'public/data/lex')
 const VARIANTS_DIR = join(ROOT, 'public/data/variants')
 
 // SBLGNT 자동 로드 대상 (textualVariants.js의 SBLGNT_BOOKS와 동기화)
-const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom', 'Gal', 'Eph', 'Phil', 'Col', '1Thess'])
+const SBLGNT_BOOKS = new Set(['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom', 'Gal', 'Eph', 'Phil', 'Col', '1Thess', '2Thess', 'Phlm'])
 // OSHB Ketiv/Qere 자동 로드 대상 (Stage 3-A · 2026-07-25)
 const OSHB_BOOKS = new Set([
   'Gen', 'Exod', 'Lev', 'Num', 'Deut',

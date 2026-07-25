@@ -248,7 +248,7 @@ function parseSBLGNT(bookId, text) {
 }
 
 // ── 메인: 다운로드 + 파싱 + 저장 ─────────────────────────────────────────
-const BOOKS_TO_PROCESS = ['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom', 'Gal', 'Eph', 'Phil', 'Col', '1Thess']  // 현재 앱에 있는 NT 책
+const BOOKS_TO_PROCESS = ['Matt', 'Mark', 'Luke', 'John', 'Acts', 'Rom', 'Gal', 'Eph', 'Phil', 'Col', '1Thess', '2Thess', 'Phlm']  // 현재 앱에 있는 NT 책
 
 try { mkdirSync(CACHE_DIR, { recursive: true }) } catch {}
 try { mkdirSync(OUT_DIR, { recursive: true })   } catch {}
