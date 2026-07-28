@@ -1523,7 +1523,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   setHoveredArc(null);
                                   setArcMouseY(null);
                                 }}
-                                style={{ cursor:'help' }} />
+                                style={{ cursor:'default' }} />
                             </g>
                           );
                         })}
