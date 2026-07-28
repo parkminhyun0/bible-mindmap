@@ -50,6 +50,21 @@ export default function PersonNode({ data, selected }) {
         </div>
       )}
 
+      {data.originalName && (
+        <div style={{
+          marginBottom: 5, padding: '5px 7px', borderRadius: 6,
+          fontSize: Math.max(9, fontSize - 3), lineHeight: 1.45,
+          color: data.testament === 'nt' ? '#5b21b6' : '#92400e',
+          background: data.testament === 'nt' ? '#f5f3ff' : '#fffbeb',
+        }}>
+          <div>
+            {data.originalLanguage}: <b dir={data.testament === 'ot' ? 'rtl' : 'ltr'}>{data.originalName}</b>
+          </div>
+          <div>음역: {data.transliteration}</div>
+          <div>뜻: {data.nameMeaning}</div>
+        </div>
+      )}
+
       {(data.birthDate || data.deathDate) && (
         <div style={{ fontSize: Math.max(9, fontSize - 3), color: '#047857', fontWeight: 600, marginBottom: 3 }}>
           {data.birthDate && data.deathDate
