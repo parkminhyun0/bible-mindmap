@@ -35,6 +35,11 @@ import { formatReference, parseReference } from './utils/citationDetector';
 import { isOT } from './data/bibleBooks';
 import { getBibleTags, getBiblicalPersonRelationship } from './data/bibleReferences';
 import { CanvasContext } from './context/CanvasContext';
+import {
+  loadWorkspaceRecord,
+  migrateLegacyStorage,
+  persistCurrentCanvas,
+} from './storage/storageCore';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
 const CANVAS_NODE_TYPES = new Set(['verse', 'note', 'topic', 'person', 'place', 'period', 'arcing']);
@@ -81,11 +86,13 @@ function loadFromStorage() {
 }
 
 function saveToStorage(nodes, edges) {
+  const data = { nodes, edges };
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ nodes, edges }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
     // 저장 실패 시 무시
   }
+  persistCurrentCanvas(data, { reason: 'canvas-autosave' }).catch(() => {});
 }
 
 const nodeTypes = { verse: VerseNode, note: NoteNode, topic: TopicNode, person: PersonNode, place: PlaceNode, period: PeriodNode, arcing: ArcingNode };
@@ -229,6 +236,23 @@ export default function App() {
   const [backgroundBibleRef, setBackgroundBibleRef] = useState(null);
   const idCounter = useRef(100);
   const reactFlowRef = useRef(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    migrateLegacyStorage()
+      .then(async () => {
+        if (cancelled || saved?.nodes?.length) return;
+        const record = await loadWorkspaceRecord('current-canvas');
+        if (!cancelled && record?.data?.nodes) {
+          setNodes(normalizeLoadedNodes(record.data.nodes));
+          setEdges(record.data.edges || []);
+        }
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  // 최초 실행 시 레거시 자료를 보존 이관하고, 레거시 현재 맵이 없을 때만 V2 자료를 복구한다.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const { record, undo, redo, canUndo, canRedo } = useHistory(nodes, edges, setNodes, setEdges);
 
