@@ -4,6 +4,13 @@ import {
   loadTree as loadTreeCore, saveTree, findNode, findParent, generateFileId as generateId,
 } from '../utils/storageTree';
 import { collectDocTags } from '../utils/sermonTags';
+import {
+  buildWorkspaceBackup,
+  getWorkspaceId,
+  restoreWorkspaceBackup,
+  STORAGE_SCHEMA_VERSION,
+  validateWorkspaceBackup,
+} from '../storage/storageCore';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
 const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
@@ -372,6 +379,54 @@ async function writeToDirectory(dirHandle, filename, data) {
   await writable.close();
 }
 
+async function writeTextToDirectory(dirHandle, filename, text) {
+  const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+  const writable = await fileHandle.createWritable();
+  await writable.write(text);
+  await writable.close();
+}
+
+function nodeToMarkdown(node) {
+  const data = node.data || {};
+  const heading = data.reference || data.title || data.name || node.type;
+  const body = data.text || data.description || data.notes || '';
+  return `### ${heading}\n\n${String(body).replace(/<[^>]*>/g, '')}`;
+}
+
+function toObsidianCanvas(nodes, edges) {
+  return {
+    nodes: nodes.map((node) => ({
+      id: node.id,
+      type: 'text',
+      x: Math.round(node.position?.x || 0),
+      y: Math.round(node.position?.y || 0),
+      width: Math.round(node.width || node.measured?.width || 320),
+      height: Math.round(node.height || node.measured?.height || 180),
+      text: nodeToMarkdown(node),
+    })),
+    edges: edges.map((edge) => ({
+      id: edge.id,
+      fromNode: edge.source,
+      toNode: edge.target,
+      fromSide: 'right',
+      toSide: 'left',
+      label: edge.label || edge.data?.relationship || '',
+    })),
+  };
+}
+
+function documentToMarkdown(item) {
+  if (item.data?.docType === 'sermon') {
+    const sermon = item.data.sermon || {};
+    const sections = (sermon.sections || [])
+      .map((section, index) => `## ${section.title || `${index + 1}부`}\n\n${section.content || section.text || ''}`)
+      .join('\n\n');
+    return `---\nbible_mindmap_id: ${item.id}\ntype: sermon\nscripture: "${sermon.scripture || ''}"\ntags: [${(sermon.tags || []).join(', ')}]\n---\n\n# ${sermon.title || item.name}\n\n${sections}`;
+  }
+  const sketch = item.data?.sketch || {};
+  return `---\nbible_mindmap_id: ${item.id}\ntype: sketch\n---\n\n# ${sketch.title || item.name}\n\n${sketch.text || ''}`;
+}
+
 async function readFromDirectory(dirHandle, filename) {
   try {
     const fileHandle = await dirHandle.getFileHandle(filename);
@@ -392,6 +447,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const [searchQuery, setSearchQuery] = useState('');  // 태그·이름 검색어
   const fileInputRef = useRef(null);
   const importAllRef = useRef(null);
+  const importWorkspaceV2Ref = useRef(null);
 
   // ─── 옵시디언 자동 저장 ───
   const [obsidianDir, setObsidianDir] = useState(null);
@@ -435,6 +491,18 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       });
       // 저장소 트리 전체 백업
       await writeToDirectory(dirHandle, 'mindmap-saves.json', currentTree);
+      await writeToDirectory(dirHandle, 'manifest.json', {
+        format: 'bible-mindmap-obsidian',
+        schemaVersion: STORAGE_SCHEMA_VERSION,
+        workspaceId: getWorkspaceId(),
+        syncedAt: new Date().toISOString(),
+        currentCanvas: 'current-mindmap.canvas',
+      });
+      await writeTextToDirectory(
+        dirHandle,
+        'current-mindmap.canvas',
+        JSON.stringify(toObsidianCanvas(currentNodes, currentEdges), null, 2),
+      );
       // 저장소의 개별 파일들도 각각 저장 (saves 하위 폴더에)
       const files = collectFiles(currentTree);
       if (files.length > 0) {
@@ -447,6 +515,14 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
             edges: f.data.edges,
             savedAt: f.savedAt,
           });
+        }
+      }
+      const documents = collectDocuments(currentTree);
+      if (documents.length > 0) {
+        const docsDir = await dirHandle.getDirectoryHandle('documents', { create: true });
+        for (const doc of documents) {
+          const safeName = `${doc.id}-${doc.name}`.replace(/[/\\:*?"<>|.]/g, '_').replace(/\s+/g, '_');
+          await writeTextToDirectory(docsDir, `${safeName}.md`, documentToMarkdown(doc));
         }
       }
       setObsidianStatus(`동기화 완료 (${new Date().toLocaleTimeString('ko')})`);
@@ -706,6 +782,46 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     downloadJSON(tree, `마인드맵_저장소_${ts}.json`);
   };
 
+  const handleExportWorkspaceV2 = async () => {
+    const ts = new Date().toISOString().slice(0, 10);
+    const backup = await buildWorkspaceBackup();
+    downloadJSON(backup, `성경마인드맵_개인작업공간_v2_${ts}.bmm.json`);
+  };
+
+  const handleImportWorkspaceV2 = (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = async (loadEvent) => {
+      try {
+        const backup = JSON.parse(loadEvent.target.result);
+        if (!validateWorkspaceBackup(backup)) {
+          alert('올바른 성경 마인드맵 개인 작업공간 백업이 아닙니다.');
+          return;
+        }
+        if (!confirm(
+          '개인 작업공간 V2 백업을 복원하시겠습니까?\n'
+          + '복원 전에 현재 작업공간 안전 백업이 자동 다운로드되며, 기존 자료는 변경 이력에 보존됩니다.',
+        )) return;
+
+        const beforeRestore = await buildWorkspaceBackup();
+        const ts = new Date().toISOString().replace(/[:.]/g, '-');
+        downloadJSON(beforeRestore, `복원전_안전백업_${ts}.bmm.json`);
+        await restoreWorkspaceBackup(backup);
+        setTree(loadTree());
+        const current = backup.records.find((record) => record.kind === 'current-canvas');
+        if (current?.data?.nodes && current?.data?.edges) {
+          onLoad(current.data.nodes, current.data.edges);
+        }
+        alert('개인 작업공간 V2 복원이 완료되었습니다.');
+      } catch (error) {
+        alert(`작업공간을 복원하지 못했습니다.\n${error.message || ''}`);
+      }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+  };
+
   const handleImportFile = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -945,8 +1061,23 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
             🗄️ 저장소 복원
           </button>
         </div>
+        <button
+          onClick={handleExportWorkspaceV2}
+          style={{ ...fileBtn, background: '#dbeafe', color: '#1d4ed8', width: '100%' }}
+          title="현재 캔버스·저장소·변경 이력과 레거시 호환 자료를 함께 백업"
+        >
+          🛡️ 개인 작업공간 V2 안전 백업
+        </button>
+        <button
+          onClick={() => importWorkspaceV2Ref.current?.click()}
+          style={{ ...fileBtn, background: '#e0e7ff', color: '#3730a3', width: '100%' }}
+          title="복원 전 안전 백업을 자동 생성한 뒤 V2 작업공간을 복원"
+        >
+          ♻️ 개인 작업공간 V2 안전 복원
+        </button>
         <input ref={fileInputRef} type="file" accept=".json" onChange={handleImportFile} style={{ display: 'none' }} />
         <input ref={importAllRef} type="file" accept=".json" onChange={handleImportAll} style={{ display: 'none' }} />
+        <input ref={importWorkspaceV2Ref} type="file" accept=".json,.bmm.json" onChange={handleImportWorkspaceV2} style={{ display: 'none' }} />
       </div>
 
       {/* 태그·이름 검색 */}
@@ -1057,6 +1188,15 @@ function collectFiles(node) {
     for (const child of node.children) {
       result.push(...collectFiles(child));
     }
+  }
+  return result;
+}
+
+function collectDocuments(node) {
+  const result = [];
+  if (node.type === 'doc' && node.data) result.push(node);
+  if (node.children) {
+    for (const child of node.children) result.push(...collectDocuments(child));
   }
   return result;
 }
