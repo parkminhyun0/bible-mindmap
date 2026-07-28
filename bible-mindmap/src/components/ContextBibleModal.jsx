@@ -300,6 +300,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [macroLayout, setMacroLayout] = useState({ height: 0, sections: [], pivots: [], arcs: [] });
   const [hoveredArc, setHoveredArc] = useState(null);
   const [hoveredPivot, setHoveredPivot] = useState(null);
+  // arc hover 시 마우스 y 좌표 추적 → pill이 마우스 근처에 뜸 (어느 지점 hover해도 즉시 정보)
+  const [arcMouseY, setArcMouseY] = useState(null);
   const dragging  = useRef(false);
   const resizing  = useRef(false);
   const splitDragging = useRef(false);
@@ -1500,8 +1502,27 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                               <path
                                 d={path}
                                 stroke="transparent" strokeWidth={14} fill="none"
-                                onMouseEnter={() => setHoveredArc(a.id)}
-                                onMouseLeave={() => setHoveredArc(null)}
+                                onMouseEnter={(e) => {
+                                  setHoveredArc(a.id);
+                                  // arc 진입 시 마우스 y좌표 (SVG 좌표계) 캡처
+                                  const svg = e.currentTarget.ownerSVGElement;
+                                  if (svg) {
+                                    const rect = svg.getBoundingClientRect();
+                                    setArcMouseY(e.clientY - rect.top);
+                                  }
+                                }}
+                                onMouseMove={(e) => {
+                                  // arc 내 이동 시 pill이 마우스 따라감
+                                  const svg = e.currentTarget.ownerSVGElement;
+                                  if (svg) {
+                                    const rect = svg.getBoundingClientRect();
+                                    setArcMouseY(e.clientY - rect.top);
+                                  }
+                                }}
+                                onMouseLeave={() => {
+                                  setHoveredArc(null);
+                                  setArcMouseY(null);
+                                }}
                                 style={{ cursor:'help' }} />
                             </g>
                           );
@@ -1557,12 +1578,24 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           const textW = label.length * 6.2;
                           const pillW = textW + 16;
                           const pillH = 20;
-                          // arc bend 중간 좌표 (bezier midpoint · x=0.25*98 + 0.75*cx · y=중간)
+                          // arc bend 좌표 · y는 마우스 위치 따라감 (없으면 midpoint fallback)
                           const dy = Math.abs(arc.y2 - arc.y1);
                           const bend = Math.min(72, 20 + dy * 0.05);
                           const cx = 98 - bend;
-                          const midX = 0.25 * 98 + 0.75 * cx;
-                          const midY = (arc.y1 + arc.y2) / 2;
+                          // pill y: 마우스 y가 있으면 그 지점, 없으면 arc bend 중간
+                          let midY = arcMouseY != null
+                            ? Math.max(Math.min(arc.y1, arc.y2) + 12, Math.min(Math.max(arc.y1, arc.y2) - 12, arcMouseY))
+                            : (arc.y1 + arc.y2) / 2;
+                          // Bezier x(t) = (1-t)^3*98 + 3(1-t)^2*t*cx + 3(1-t)*t^2*cx + t^3*98
+                          // 곡선 y는 (1-t)^3*y1 + 3(1-t)^2*t*y1 + 3(1-t)*t^2*y2 + t^3*y2
+                          //       = (1-t)^2*[(1-t)+3t]*y1 + t^2*[3(1-t)+t]*y2 -- 특수 (control이 endpoint와 같은 y)
+                          // 간단화: t를 mid y에서 역산 (control이 y1,y2와 같아서 t는 y 위치와 정확히 대응 안 함 · 근사)
+                          const t = arc.y2 !== arc.y1
+                            ? Math.max(0.15, Math.min(0.85, (midY - arc.y1) / (arc.y2 - arc.y1)))
+                            : 0.5;
+                          // x는 t=0.5에서 최대 bend (곡선 정점) · 양 끝에서 x=98
+                          const bendFactor = 4 * t * (1 - t); // t=0.5일 때 1, 양 끝 0
+                          const midX = 98 - bend * bendFactor * 0.75;
                           // pill 좌표 (중앙 정렬 · macro column 116 내부에 최대한 유지)
                           let pillX = midX - pillW / 2;
                           if (pillX < 2) pillX = 2;
