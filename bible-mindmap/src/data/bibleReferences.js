@@ -55,6 +55,53 @@ export const BIBLE_REFS = {
   'Q15975': ['창세기 32', '창세기 35', '사사기', '호세아 6'],                   // 벧엘
 };
 
+// 프로젝트에서 검색·검증하는 모든 성경 인물의 표준 이름과 원어 정보.
+// meaning이 '어원 불확실'인 경우 학설 중 하나를 단정하지 않는다.
+export const BIBLICAL_PERSON_PROFILES = {
+  Q160: { canonicalName: '아담', testament: 'ot', originalName: 'אָדָם', transliteration: '아담(ʾĀdām)', meaning: '사람, 땅에서 난 자', aliases: ['Adam'] },
+  Q46622: { canonicalName: '하와', testament: 'ot', originalName: 'חַוָּה', transliteration: '하와(Ḥawwāh)', meaning: '생명, 살아 있는 자', aliases: ['Eve'] },
+  Q93063: { canonicalName: '노아', testament: 'ot', originalName: 'נֹחַ', transliteration: '노아흐(Nōaḥ)', meaning: '쉼, 안식', aliases: ['Noah'] },
+  Q9181: { canonicalName: '아브라함', testament: 'ot', originalName: 'אַבְרָהָם', transliteration: '아브라함(ʾAḇrāhām)', meaning: '많은 무리의 아버지', aliases: ['아브람', 'Abram', 'Abraham'] },
+  Q194808: { canonicalName: '사라', testament: 'ot', originalName: 'שָׂרָה', transliteration: '사라(Śārāh)', meaning: '여주인, 공주', aliases: ['사래', 'Sarai', 'Sarah'] },
+  Q40574: { canonicalName: '롯', testament: 'ot', originalName: 'לוֹט', transliteration: '로트(Lôṭ)', meaning: '어원 불확실', aliases: ['Lot'] },
+  Q219395: { canonicalName: '멜기세덱', testament: 'ot', originalName: 'מַלְכִּי־צֶדֶק', transliteration: '말키체데크(Malkî-ṣeḏeq)', meaning: '의의 왕', aliases: ['Melchizedek'] },
+  Q214617: { canonicalName: '하갈', testament: 'ot', originalName: 'הָגָר', transliteration: '하가르(Hāḡār)', meaning: '어원 불확실', aliases: ['Hagar'] },
+  Q183403: { canonicalName: '이스마엘', testament: 'ot', originalName: 'יִשְׁמָעֵאל', transliteration: '이쉬마엘(Yišmāʿēl)', meaning: '하나님이 들으신다', aliases: ['Ishmael'] },
+  Q1386: { canonicalName: '이삭', testament: 'ot', originalName: 'יִצְחָק', transliteration: '이츠하크(Yiṣḥāq)', meaning: '그가 웃는다', aliases: ['Isaac'] },
+  Q193703: { canonicalName: '야곱', testament: 'ot', originalName: 'יַעֲקֹב', transliteration: '야아코브(Yaʿăqōḇ)', meaning: '발꿈치를 잡는 자', aliases: ['이스라엘', 'Jacob', 'Israel'] },
+  Q286215: { canonicalName: '요셉', testament: 'ot', originalName: 'יוֹסֵף', transliteration: '요세프(Yôsēp̄)', meaning: '그가 더하시기를', aliases: ['Joseph'] },
+  Q9077: { canonicalName: '모세', testament: 'ot', originalName: 'מֹשֶׁה', transliteration: '모셰(Mōšeh)', meaning: '물에서 건져냄', aliases: ['Moses'] },
+  Q179272: { canonicalName: '아론', testament: 'ot', originalName: 'אַהֲרֹן', transliteration: '아하론(ʾAhărōn)', meaning: '어원 불확실', aliases: ['Aaron'] },
+  Q25324: { canonicalName: '여호수아', testament: 'ot', originalName: 'יְהוֹשֻׁעַ', transliteration: '예호슈아(Yəhôšuaʿ)', meaning: '여호와는 구원이시다', aliases: ['호세아', 'Hoshea', 'Joshua'] },
+  Q213538: { canonicalName: '기드온', testament: 'ot', originalName: 'גִּדְעוֹן', transliteration: '기드온(Gidʿôn)', meaning: '찍어 넘어뜨리는 자', aliases: ['여룹바알', 'Gideon', 'Jerubbaal'] },
+  Q61742: { canonicalName: '삼손', testament: 'ot', originalName: 'שִׁמְשׁוֹן', transliteration: '심숀(Šimšôn)', meaning: '태양과 관련된 이름', aliases: ['Samson'] },
+  Q134539: { canonicalName: '룻', testament: 'ot', originalName: 'רוּת', transliteration: '루트(Rûṯ)', meaning: '어원 불확실', aliases: ['Ruth'] },
+  Q43259: { canonicalName: '사무엘', testament: 'ot', originalName: 'שְׁמוּאֵל', transliteration: '셰무엘(Šəmûʾēl)', meaning: '하나님께서 들으셨다', aliases: ['Samuel'] },
+  Q206949: { canonicalName: '사울', testament: 'ot', originalName: 'שָׁאוּל', transliteration: '샤울(Šāʾûl)', meaning: '구하여 얻은 자', aliases: ['Saul'] },
+  Q41370: { canonicalName: '다윗', testament: 'ot', originalName: 'דָּוִד', transliteration: '다비드(Dāwiḏ)', meaning: '사랑받는 자', aliases: ['David'] },
+  Q37085: { canonicalName: '솔로몬', testament: 'ot', originalName: 'שְׁלֹמֹה', transliteration: '쉘로모(Šəlōmōh)', meaning: '평화', aliases: ['Solomon'] },
+  Q133705: { canonicalName: '엘리야', testament: 'ot', originalName: 'אֵלִיָּהוּ', transliteration: '엘리야후(ʾĒlîyāhû)', meaning: '나의 하나님은 여호와이시다', aliases: ['Elijah'] },
+  Q8073: { canonicalName: '엘리사', testament: 'ot', originalName: 'אֱלִישָׁע', transliteration: '엘리샤(ʾĔlîšāʿ)', meaning: '하나님은 구원이시다', aliases: ['Elisha'] },
+  Q40640: { canonicalName: '욥', testament: 'ot', originalName: 'אִיּוֹב', transliteration: '이요브(ʾIyyôḇ)', meaning: '어원 불확실', aliases: ['Job'] },
+  Q9142: { canonicalName: '이사야', testament: 'ot', originalName: 'יְשַׁעְיָהוּ', transliteration: '예샤야후(Yəšaʿyāhû)', meaning: '여호와는 구원이시다', aliases: ['Isaiah'] },
+  Q133535: { canonicalName: '예레미야', testament: 'ot', originalName: 'יִרְמְיָהוּ', transliteration: '이르메야후(Yirməyāhû)', meaning: '여호와께서 세우신다', aliases: ['Jeremiah'] },
+  Q128569: { canonicalName: '느헤미야', testament: 'ot', originalName: 'נְחֶמְיָה', transliteration: '느헴야(Nəḥemyāh)', meaning: '여호와께서 위로하신다', aliases: ['Nehemiah'] },
+  Q49479: { canonicalName: '에스라', testament: 'ot', originalName: 'עֶזְרָא', transliteration: '에즈라(ʿEzrāʾ)', meaning: '도움', aliases: ['Ezra'] },
+  Q45765: { canonicalName: '에스더', testament: 'ot', originalName: 'אֶסְתֵּר', transliteration: '에스테르(ʾEstēr)', meaning: '페르시아식 이름, 어원 논쟁 있음', aliases: ['하닷사', 'Hadassah', 'Esther'] },
+  Q133748: { canonicalName: '다니엘', testament: 'ot', originalName: 'דָּנִיֵּאל', transliteration: '다니엘(Dāniyyēʾl)', meaning: '하나님은 나의 재판장이시다', aliases: ['Daniel'] },
+  Q43264: { canonicalName: '세례 요한', testament: 'nt', originalName: 'Ἰωάννης', transliteration: '이오안네스(Iōannēs)', meaning: '여호와께서 은혜를 베푸셨다', aliases: ['침례 요한', 'John the Baptist'] },
+  Q302: { canonicalName: '예수', testament: 'nt', originalName: 'Ἰησοῦς', transliteration: '이에수스(Iēsous)', meaning: '여호와는 구원이시다', aliases: ['Jesus'] },
+  Q16815: { canonicalName: '마리아', testament: 'nt', originalName: 'Μαριάμ', transliteration: '마리암(Mariam)', meaning: '어원 불확실', aliases: ['Mary'] },
+  Q33923: { canonicalName: '베드로', testament: 'nt', originalName: 'Πέτρος', transliteration: '페트로스(Petros)', meaning: '돌, 반석', aliases: ['시몬', '게바', 'Simon', 'Cephas', 'Peter'] },
+  Q9412: { canonicalName: '사도 요한', testament: 'nt', originalName: 'Ἰωάννης', transliteration: '이오안네스(Iōannēs)', meaning: '여호와께서 은혜를 베푸셨다', aliases: ['요한', 'John'] },
+  Q9200: { canonicalName: '바울', testament: 'nt', originalName: 'Παῦλος', transliteration: '파울로스(Paulos)', meaning: '작은 자', aliases: ['사울', 'Saul of Tarsus', 'Paul'] },
+  Q43274: { canonicalName: '야고보', testament: 'nt', originalName: 'Ἰάκωβος', transliteration: '이아코보스(Iakōbos)', meaning: '야곱에서 유래한 이름', aliases: ['James'] },
+};
+
+export function getBiblicalPersonProfile(wikidataId) {
+  return BIBLICAL_PERSON_PROFILES[wikidataId] || null;
+}
+
 /**
  * Wikidata QID로 성경 본문 태그 배열 반환.
  * 매핑 없으면 빈 배열.
@@ -83,13 +130,48 @@ function normalizeName(value) {
 
 export function resolveBiblicalName(query) {
   const normalized = normalizeName(query);
-  const match = BIBLICAL_NAME_ALIASES.find((entry) =>
-    normalizeName(entry.canonicalName) === normalized
-    || entry.aliases.some((alias) => normalizeName(alias) === normalized),
+  // 정확한 표준 이름을 별칭보다 먼저 해석한다.
+  // 예: 구약 왕 '사울'이 바울의 이전 이름 별칭에 가로채이지 않도록 한다.
+  const canonicalProfileMatch = Object.entries(BIBLICAL_PERSON_PROFILES).find(([, profile]) =>
+    normalizeName(profile.canonicalName) === normalized
+    || normalizeName(profile.originalName) === normalized
+    || normalizeName(profile.transliteration) === normalized,
   );
-  return match
-    ? { query: match.canonicalName, matchedName: String(query).trim(), ...match }
-    : { query: String(query || '').trim(), matchedName: null };
+  if (canonicalProfileMatch) {
+    const [qid, profile] = canonicalProfileMatch;
+    const nameInfo = BIBLICAL_NAME_ALIASES.find((entry) => entry.qid === qid);
+    return {
+      query: profile.canonicalName,
+      matchedName: String(query).trim(),
+      canonicalName: profile.canonicalName,
+      aliases: profile.aliases,
+      qid,
+      note: nameInfo?.note,
+      reference: nameInfo?.reference,
+    };
+  }
+
+  const aliasMatch = BIBLICAL_NAME_ALIASES.find((entry) =>
+    entry.aliases.some((alias) => normalizeName(alias) === normalized),
+  );
+  if (aliasMatch) {
+    return { query: aliasMatch.canonicalName, matchedName: String(query).trim(), ...aliasMatch };
+  }
+
+  const profileMatch = Object.entries(BIBLICAL_PERSON_PROFILES).find(([, profile]) =>
+    profile.aliases.some((alias) => normalizeName(alias) === normalized),
+  );
+  if (profileMatch) {
+    const [qid, profile] = profileMatch;
+    return {
+      query: profile.canonicalName,
+      matchedName: String(query).trim(),
+      canonicalName: profile.canonicalName,
+      aliases: profile.aliases,
+      qid,
+    };
+  }
+  return { query: String(query || '').trim(), matchedName: null };
 }
 
 export function getBiblicalNameInfo(wikidataId) {
