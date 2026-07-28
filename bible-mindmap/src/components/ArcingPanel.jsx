@@ -5,6 +5,7 @@ import { loadVerseLexicon, humanizeMorph } from '../utils/lexicon';
 import { buildArcingFromPassage } from '../utils/arcingBuilder';
 import { ALL_BOOKS, isOT } from '../data/bibleBooks';
 import LexiconPopup from './LexiconPopup';
+import PassageAnnotationPin from './PassageAnnotationPin';
 import useMobile from '../hooks/useMobile';
 
 // ── 선행 종속절 행 ──────────────────────────────────────────────────────────
@@ -343,6 +344,7 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
 
   return createPortal(
     <div
+      data-annotation-root
       role="dialog"
       aria-modal={isMobile ? 'true' : 'false'}
       aria-label={`본문 흐름 분석${passageLabel ? ' · ' + passageLabel : ''}`}
@@ -387,6 +389,14 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
           <span style={{ fontSize: 11, color: '#818cf8', flexShrink: 0, marginLeft: 2 }}>
             — {passageLabel}
           </span>
+        )}
+        {passage && (
+          <PassageAnnotationPin
+            passage={passage}
+            referenceLabel={passageLabel}
+            translationId="original"
+            compact
+          />
         )}
 
         {/* pusher: 데스크톱은 flex:1 로 우측 정렬 · 모바일은 100% flexBasis 로 강제 줄바꿈 */}
