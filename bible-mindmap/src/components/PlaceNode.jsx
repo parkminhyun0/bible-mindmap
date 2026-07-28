@@ -1,9 +1,6 @@
-import { Handle, Position, NodeResizer } from '@xyflow/react';
+import BackgroundNodeFrame from './BackgroundNodeFrame';
 
-const resizerHandle = { width: 9, height: 9, borderRadius: 3, border: '1.5px solid #94a3b8', background: '#fff' };
-const resizerLine = { borderColor: '#94a3b8', borderWidth: 1 };
-
-export default function PlaceNode({ data, selected }) {
+export default function PlaceNode({ id, data, selected }) {
   const fontSize = data.fontSize || 14;
   const hasCoords = data.lat != null && data.lon != null;
   const mapsUrl = hasCoords
@@ -11,20 +8,16 @@ export default function PlaceNode({ data, selected }) {
     : null;
 
   return (
-    <div style={{
-      background: 'linear-gradient(135deg, #fef3c7, #fde68a)',
-      border: `2px solid ${selected ? '#b45309' : '#d97706'}`,
-      borderRadius: 16,
-      padding: '10px 16px',
-      width: '100%',
-      minWidth: 160,
-      boxSizing: 'border-box',
-      boxShadow: selected
-        ? '0 0 0 2px #b4530960, 0 2px 10px rgba(180,83,9,0.25)'
-        : '0 2px 8px rgba(217,119,6,0.15)',
-    }}>
-      <NodeResizer color="#d97706" isVisible={selected} minWidth={140} minHeight={50} handleStyle={resizerHandle} lineStyle={resizerLine} />
-      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
+    <BackgroundNodeFrame
+      id={id}
+      selected={selected}
+      title="장소"
+      icon="📍"
+      accent="#b45309"
+      headerBackground="#fef3c7"
+      minWidth={180}
+      minHeight={70}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>📍</span>
         <span style={{ fontWeight: 700, fontSize, color: '#78350f' }}>
@@ -107,12 +100,6 @@ export default function PlaceNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
-      </div>
-
-      <Handle type="target" position={Position.Top} style={{ background: '#d97706' }} />
-      <Handle type="source" position={Position.Bottom} style={{ background: '#d97706' }} />
-      <Handle type="target" position={Position.Left} style={{ background: '#d97706' }} />
-      <Handle type="source" position={Position.Right} style={{ background: '#d97706' }} />
-    </div>
+    </BackgroundNodeFrame>
   );
 }
