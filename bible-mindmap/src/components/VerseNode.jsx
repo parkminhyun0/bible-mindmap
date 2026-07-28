@@ -180,7 +180,6 @@ export default function VerseNode({ id, data, selected }) {
     const t = data.translations?.[activeTab];
     if (typeof t === 'string') {
       displayText = t;
-      displayHtml = t.includes('<');
     } else if (tabErrors[activeTab]) {
       displayText = '';
     } else if (tabLoading[activeTab]) {
