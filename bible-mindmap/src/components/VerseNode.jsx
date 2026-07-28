@@ -6,6 +6,7 @@ import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
 import BackgroundNodeFrame from './BackgroundNodeFrame';
 import PassageAnnotationPin from './PassageAnnotationPin';
+import useResearchAnnotations from '../research/useResearchAnnotations';
 
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
@@ -23,8 +24,103 @@ const TABS = [
 ];
 const TRANSLATION_TAB_IDS = ['krv', 'esv', 'original'];
 
+function collectTextNodes(root) {
+  const nodes = [];
+  const visit = (node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      nodes.push(node);
+      return;
+    }
+    if (node.nodeType !== Node.ELEMENT_NODE || node.dataset?.annotationPin === 'true') return;
+    [...node.childNodes].forEach(visit);
+  };
+  [...root.childNodes].forEach(visit);
+  return nodes;
+}
+
+function stripAnnotationMarkup(root) {
+  root.querySelectorAll('[data-annotation-pin="true"]').forEach((pin) => pin.remove());
+  root.querySelectorAll('mark[data-annotation-highlight="true"]').forEach((mark) => {
+    mark.replaceWith(...mark.childNodes);
+  });
+  root.normalize();
+}
+
+function cleanEditableHtml(element) {
+  const clone = element.cloneNode(true);
+  stripAnnotationMarkup(clone);
+  return clone.innerHTML;
+}
+
+function decorateAnnotatedHtml(html, annotations) {
+  if (!html || annotations.length === 0) return html;
+  const root = document.createElement('div');
+  root.innerHTML = html;
+
+  annotations.forEach((annotation) => {
+    const selectedText = annotation.anchor?.selectedText?.trim();
+    if (!selectedText) return;
+    const textNodes = collectTextNodes(root);
+    const fullText = textNodes.map((node) => node.textContent).join('');
+    const start = fullText.indexOf(selectedText);
+    if (start < 0) return;
+    const end = start + selectedText.length;
+    let cursor = 0;
+    let startNode;
+    let startOffset;
+    let endNode;
+    let endOffset;
+
+    for (const node of textNodes) {
+      const next = cursor + node.textContent.length;
+      if (!startNode && start >= cursor && start < next) {
+        startNode = node;
+        startOffset = start - cursor;
+      }
+      if (endNode == null && end > cursor && end <= next) {
+        endNode = node;
+        endOffset = end - cursor;
+        break;
+      }
+      cursor = next;
+    }
+    if (!startNode || !endNode) return;
+
+    const range = document.createRange();
+    range.setStart(startNode, startOffset);
+    range.setEnd(endNode, endOffset);
+    const mark = document.createElement('mark');
+    mark.dataset.annotationHighlight = 'true';
+    mark.title = annotation.content
+      ? `📌 ${annotation.content}`
+      : '📌 이 문구에 개인 주석이 있습니다.';
+    const color = /^#[0-9a-f]{6}$/i.test(annotation.color || '') ? annotation.color : '#eab308';
+    mark.style.background = `${color}26`;
+    mark.style.borderBottom = `2px solid ${color}`;
+    mark.style.borderRadius = '3px';
+    mark.style.padding = '0 1px';
+
+    const fragment = range.extractContents();
+    mark.append(fragment);
+    const pin = document.createElement('span');
+    pin.dataset.annotationPin = 'true';
+    pin.contentEditable = 'false';
+    pin.textContent = '📌';
+    pin.title = mark.title;
+    pin.style.fontSize = '0.72em';
+    pin.style.marginInline = '2px';
+    pin.style.verticalAlign = '0.2em';
+    pin.style.direction = 'ltr';
+    mark.append(pin);
+    range.insertNode(mark);
+  });
+
+  return root.innerHTML;
+}
+
 export default function VerseNode({ id, data, selected }) {
   const { setNodes } = useReactFlow();
+  const { annotationsForPassage } = useResearchAnnotations();
   const allEdges = useEdges();
   const borderColor = data.color || '#3b82f6';
   const fontSize = data.fontSize || 13;
@@ -200,15 +296,34 @@ export default function VerseNode({ id, data, selected }) {
   const editableRef = useRef(null);
   const [inlineEditing, setInlineEditing] = useState(false);
   const [selectionPin, setSelectionPin] = useState(null);
+  const passage = useMemo(() => ({
+    bookId: data.bookId,
+    chapter: data.chapter,
+    verseStart: data.verseStart,
+    verseEnd: data.verseEnd || data.verseStart,
+  }), [data.bookId, data.chapter, data.verseStart, data.verseEnd]);
+  const passageAnnotations = annotationsForPassage(passage);
+  const wholePassageAnnotations = passageAnnotations.filter(
+    (annotation) => !annotation.anchor?.selectedText?.trim(),
+  );
+  const selectedTextAnnotations = passageAnnotations.filter((annotation) => {
+    if (!annotation.anchor?.selectedText?.trim()) return false;
+    return !annotation.anchor.translationId || annotation.anchor.translationId === activeTab;
+  });
+  const annotationSignature = selectedTextAnnotations
+    .map((annotation) => `${annotation.id}:${annotation.updatedAt}:${annotation.anchor.selectedText}`)
+    .join('|');
 
   useEffect(() => {
     const editable = editableRef.current;
     if (!editable || document.activeElement === editable) return;
-    if (editable.innerHTML !== displayText) editable.innerHTML = displayText;
-  }, [displayText, activeTab]);
+    const decorated = decorateAnnotatedHtml(displayText, selectedTextAnnotations);
+    if (editable.innerHTML !== decorated) editable.innerHTML = decorated;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [displayText, activeTab, inlineEditing, annotationSignature]);
 
   const saveInlineText = () => {
-    const html = editableRef.current?.innerHTML ?? '';
+    const html = editableRef.current ? cleanEditableHtml(editableRef.current) : '';
     setNodes((nodes) => nodes.map((node) => {
       if (node.id !== id) return node;
       if (!hasMulti) return { ...node, data: { ...node.data, text: html } };
@@ -288,12 +403,7 @@ export default function VerseNode({ id, data, selected }) {
       minHeight={60}
       headerActions={hasMulti ? (
         <PassageAnnotationPin
-          passage={{
-            bookId: data.bookId,
-            chapter: data.chapter,
-            verseStart: data.verseStart,
-            verseEnd: data.verseEnd || data.verseStart,
-          }}
+          passage={passage}
           referenceLabel={data.reference}
           translationId={activeTab}
           selectionRootRef={annotationRootRef}
@@ -316,6 +426,21 @@ export default function VerseNode({ id, data, selected }) {
       >
         📖 {data.reference}
       </div>
+
+      {wholePassageAnnotations.length > 0 && (
+        <div
+          title="이 본문 범위 전체에 개인 주석이 있습니다."
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 4,
+            margin: '-1px 0 7px', padding: '3px 8px',
+            border: '1px solid #fbbf24', borderRadius: 10,
+            background: '#fffbeb', color: '#92400e',
+            fontSize: 10, fontWeight: 800,
+          }}
+        >
+          📌 이 구절에 주석 {wholePassageAnnotations.length}개
+        </div>
+      )}
 
       {/* Edge count badges */}
       {activeBadges.length > 0 && (
@@ -392,7 +517,10 @@ export default function VerseNode({ id, data, selected }) {
       ) : isLoading ? (
         <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
       ) : activeTab === 'original' && selected && lexEntries.length > 0 ? (
-        <div style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}>
+        <div
+          onMouseUp={revealSelectionPin}
+          style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}
+        >
           {renderOriginalWithLexicon()}
           <div style={{ fontSize: 9, color: '#94a3b8', marginTop: 4 }}>
             💡 밑줄 단어 클릭 → 어형 분석
@@ -405,7 +533,11 @@ export default function VerseNode({ id, data, selected }) {
           contentEditable
           suppressContentEditableWarning
           spellCheck={activeTab === 'esv'}
-          onFocus={() => setInlineEditing(true)}
+          onFocus={() => {
+            stripAnnotationMarkup(editableRef.current);
+            setSelectionPin(null);
+            setInlineEditing(true);
+          }}
           onBlur={() => {
             saveInlineText();
             setInlineEditing(false);
@@ -429,8 +561,40 @@ export default function VerseNode({ id, data, selected }) {
           title="클릭하여 본문을 바로 편집하거나 문구를 선택해 주석을 추가하세요"
         />
       ) : (
-        <div style={{ color: displayText.startsWith('(') ? '#94a3b8' : '#1e293b', direction: isRTL ? 'rtl' : 'ltr' }}>
-          {displayText || <span style={{ color: '#cbd5e1', fontSize: 11 }}>탭을 클릭하면 본문을 불러옵니다</span>}
+        displayText ? (
+          <div
+            className="rich-text-display nodrag nopan"
+            onMouseUp={revealSelectionPin}
+            style={{
+              color: displayText.startsWith('(') ? '#94a3b8' : '#1e293b',
+              direction: isRTL ? 'rtl' : 'ltr',
+              fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
+            }}
+            dangerouslySetInnerHTML={{
+              __html: decorateAnnotatedHtml(displayText, selectedTextAnnotations),
+            }}
+          />
+        ) : (
+          <span style={{ color: '#cbd5e1', fontSize: 11 }}>탭을 클릭하면 본문을 불러옵니다</span>
+        )
+      )}
+
+      {selectedTextAnnotations.length > 0 && (
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 8 }}>
+          {selectedTextAnnotations.map((annotation) => (
+            <span
+              key={annotation.id}
+              title={annotation.content || '선택 문구 개인 주석'}
+              style={{
+                maxWidth: '100%', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                padding: '2px 7px', borderRadius: 9,
+                background: '#fef9c3', color: '#854d0e',
+                border: '1px solid #fde68a', fontSize: 9, fontWeight: 700,
+              }}
+            >
+              📌 “{annotation.anchor.selectedText}”
+            </span>
+          ))}
         </div>
       )}
 
@@ -445,12 +609,7 @@ export default function VerseNode({ id, data, selected }) {
           }}
         >
           <PassageAnnotationPin
-            passage={{
-              bookId: data.bookId,
-              chapter: data.chapter,
-              verseStart: data.verseStart,
-              verseEnd: data.verseEnd || data.verseStart,
-            }}
+            passage={passage}
             referenceLabel={data.reference}
             translationId={activeTab}
             selectionRootRef={annotationRootRef}
