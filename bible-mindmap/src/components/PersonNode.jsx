@@ -1,29 +1,20 @@
-import { Handle, Position, NodeResizer } from '@xyflow/react';
+import BackgroundNodeFrame from './BackgroundNodeFrame';
 
-const resizerHandle = { width: 9, height: 9, borderRadius: 3, border: '1.5px solid #94a3b8', background: '#fff' };
-const resizerLine = { borderColor: '#94a3b8', borderWidth: 1 };
-
-export default function PersonNode({ data, selected }) {
+export default function PersonNode({ id, data, selected }) {
   const fontSize = data.fontSize || 14;
   const isHistorical = data.category === 'historical';
   const accent = isHistorical ? '#d97706' : '#059669';
   return (
-    <div style={{
-      background: isHistorical
-        ? 'linear-gradient(135deg, #fffbeb, #fef3c7)'
-        : 'linear-gradient(135deg, #dcfce7, #d1fae5)',
-      border: `2px solid ${selected ? accent : (isHistorical ? '#f59e0b' : '#10b981')}`,
-      borderRadius: 16,
-      padding: '10px 16px',
-      width: '100%',
-      minWidth: 160,
-      boxSizing: 'border-box',
-      boxShadow: selected
-        ? '0 0 0 2px #05966960, 0 2px 10px rgba(5,150,105,0.25)'
-        : '0 2px 8px rgba(16,185,129,0.15)',
-    }}>
-      <NodeResizer color={accent} isVisible={selected} minWidth={140} minHeight={50} handleStyle={resizerHandle} lineStyle={resizerLine} />
-      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
+    <BackgroundNodeFrame
+      id={id}
+      selected={selected}
+      title="인물"
+      icon="👤"
+      accent={accent}
+      headerBackground={isHistorical ? '#fef3c7' : '#dcfce7'}
+      minWidth={180}
+      minHeight={70}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>👤</span>
         <span style={{ fontWeight: 700, fontSize, color: isHistorical ? '#92400e' : '#065f46' }}>
@@ -115,12 +106,6 @@ export default function PersonNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
-      </div>
-
-      <Handle type="target" position={Position.Top} style={{ background: accent }} />
-      <Handle type="source" position={Position.Bottom} style={{ background: accent }} />
-      <Handle type="target" position={Position.Left} style={{ background: accent }} />
-      <Handle type="source" position={Position.Right} style={{ background: accent }} />
-    </div>
+    </BackgroundNodeFrame>
   );
 }
