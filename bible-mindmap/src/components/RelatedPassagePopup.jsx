@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { fetchAllTranslations, fetchVerseCount } from '../api/bibleApi';
 import { getBook, isOT } from '../data/bibleBooks';
+import PassageAnnotationPin from './PassageAnnotationPin';
 
 const TABS = [
   { id: 'krv', label: '개역한글' },
@@ -28,6 +29,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
     clampPosition({ x: Math.max(24, window.innerWidth / 2 - 310), y: 84 }),
   );
   const dragRef = useRef(null);
+  const contentRef = useRef(null);
 
   const isSingleChapterSelection = firstChapter === lastChapter;
   const range = useMemo(() => {
@@ -39,6 +41,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
     }
     return { start: 1, end: null };
   }, [initialRef, isSingleChapterSelection]);
+  const [resolvedVerseEnd, setResolvedVerseEnd] = useState(range.end || null);
 
   useEffect(() => {
     let cancelled = false;
@@ -48,6 +51,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
     const load = async () => {
       const verseEnd = range.end || await fetchVerseCount(initialRef.bookId, chapter);
       if (!verseEnd) throw new Error('본문의 절 범위를 확인하지 못했습니다.');
+      if (!cancelled) setResolvedVerseEnd(verseEnd);
       return fetchAllTranslations(initialRef.bookId, chapter, range.start, verseEnd);
     };
 
@@ -183,10 +187,25 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
               {tab.label}
             </button>
           ))}
+          {resolvedVerseEnd && (
+            <PassageAnnotationPin
+              passage={{
+                bookId: initialRef.bookId,
+                chapter,
+                verseStart: range.start,
+                verseEnd: resolvedVerseEnd,
+              }}
+              referenceLabel={referenceLabel}
+              translationId={activeTab}
+              selectionRootRef={contentRef}
+            />
+          )}
         </div>
       </div>
 
       <div
+        ref={contentRef}
+        data-annotation-root
         style={{
           padding: '13px 16px 18px',
           overflow: 'auto',
