@@ -24,6 +24,7 @@ export default function PlaceNode({ data, selected }) {
         : '0 2px 8px rgba(217,119,6,0.15)',
     }}>
       <NodeResizer color="#d97706" isVisible={selected} minWidth={140} minHeight={50} handleStyle={resizerHandle} lineStyle={resizerLine} />
+      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>📍</span>
         <span style={{ fontWeight: 700, fontSize, color: '#78350f' }}>
@@ -88,6 +89,7 @@ export default function PlaceNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
+      </div>
 
       <Handle type="target" position={Position.Top} style={{ background: '#d97706' }} />
       <Handle type="source" position={Position.Bottom} style={{ background: '#d97706' }} />

@@ -215,6 +215,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
         birthYear ?? null,
         deathYear ?? null,
         testament || 'all',
+        (biblicalResults) => setContemporaries(biblicalResults),
       );
       setContemporaries(results);
       if (results.length === 0) setContError('해당 시대 인물을 찾지 못했습니다.');

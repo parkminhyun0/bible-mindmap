@@ -23,6 +23,7 @@ export default function PersonNode({ data, selected }) {
         : '0 2px 8px rgba(16,185,129,0.15)',
     }}>
       <NodeResizer color={accent} isVisible={selected} minWidth={140} minHeight={50} handleStyle={resizerHandle} lineStyle={resizerLine} />
+      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>👤</span>
         <span style={{ fontWeight: 700, fontSize, color: isHistorical ? '#92400e' : '#065f46' }}>
@@ -62,6 +63,7 @@ export default function PersonNode({ data, selected }) {
           </div>
           <div>음역: {data.transliteration}</div>
           <div>뜻: {data.nameMeaning}</div>
+          {data.nameMeaningBasis && <div>뜻 근거: {data.nameMeaningBasis}</div>}
         </div>
       )}
 
@@ -113,6 +115,7 @@ export default function PersonNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
+      </div>
 
       <Handle type="target" position={Position.Top} style={{ background: accent }} />
       <Handle type="source" position={Position.Bottom} style={{ background: accent }} />

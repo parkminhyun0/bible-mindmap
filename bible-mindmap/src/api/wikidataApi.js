@@ -2,6 +2,7 @@ import {
   BIBLICAL_CHRONOLOGY,
   getBibleTags,
   getBiblicalChronology,
+  getBiblicalNameMeaningBasis,
   getBiblicalNameInfo,
   getBiblicalPersonProfile,
   getStaticPlacePersons,
@@ -208,6 +209,7 @@ export async function searchBiblicalPerson(query, testament = 'all') {
       originalName: personProfile?.originalName || null,
       transliteration: personProfile?.transliteration || null,
       nameMeaning: personProfile?.meaning || null,
+      nameMeaningBasis: getBiblicalNameMeaningBasis(qid),
       originalLanguage: personProfile?.testament === 'nt' ? '헬라어' : personProfile ? '히브리어' : null,
       matchedName: resolvedName.matchedName,
       source: category === 'biblical' ? '성경 본문 + Wikidata 식별자' : 'Wikidata 역사 연대',
@@ -351,7 +353,13 @@ export async function searchPersonsAtPlace(wikidataId) {
 // ── 동시대 인물 검색 ─────────────────────────────────────────────────────────
 // SPARQL로 같은 시대에 활동한 성경·역사 인물 검색 (±150년 범위)
 // birthYear/deathYear 는 숫자 (BC=음수)
-export async function searchContemporaries(wikidataId, birthYear, deathYear, testament = 'all') {
+export async function searchContemporaries(
+  wikidataId,
+  birthYear,
+  deathYear,
+  testament = 'all',
+  onBiblicalResults,
+) {
   const baseChronology = getBiblicalChronology(wikidataId);
   const resolvedBirthYear = birthYear ?? baseChronology?.birthYear ?? null;
   const resolvedDeathYear = deathYear ?? baseChronology?.deathYear ?? null;
@@ -363,6 +371,49 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
 
   const startY = mid - 150;
   const endY   = mid + 150;
+
+  const staticBiblical = Object.entries(BIBLICAL_CHRONOLOGY)
+    .filter(([qid, chronology]) => (
+      qid !== wikidataId
+      && chronology.birthYear >= startY
+      && chronology.birthYear <= endY
+    ))
+    .map(([qid, chronology]) => {
+      const bibleTags = getBibleTags(qid);
+      const itemTestament = classifyTestament(bibleTags);
+      const nameInfo = getBiblicalNameInfo(qid);
+      const personProfile = getBiblicalPersonProfile(qid);
+      return {
+        id: qid,
+        wikidataId: qid,
+        name: chronology.name,
+        label: chronology.name,
+        description: '성경 인물 대표 연대 기준',
+        birthDate: formatEstimatedYear(chronology.birthYear),
+        deathDate: formatEstimatedYear(chronology.deathYear),
+        birthYear: chronology.birthYear,
+        deathYear: chronology.deathYear,
+        bibleTags,
+        testament: itemTestament,
+        category: 'biblical',
+        nameAliases: nameInfo?.aliases || [],
+        nameChangeNote: nameInfo?.note || null,
+        nameChangeReference: nameInfo?.reference || null,
+        originalName: personProfile?.originalName || null,
+        transliteration: personProfile?.transliteration || null,
+        nameMeaning: personProfile?.meaning || null,
+        nameMeaningBasis: getBiblicalNameMeaningBasis(qid),
+        originalLanguage: personProfile?.testament === 'nt' ? '헬라어' : personProfile ? '히브리어' : null,
+        source: '성경 본문 + 프로젝트 성경 연대 기준',
+        verified: true,
+      };
+    })
+    .filter((item) => matchesTestament(item.testament, testament));
+
+  // 성경 내부 기준 결과를 외부 네트워크보다 먼저 즉시 표시한다.
+  if (typeof onBiblicalResults === 'function' && staticBiblical.length > 0) {
+    onBiblicalResults(staticBiblical.slice(0, 10));
+  }
 
   const sparql = `
     SELECT DISTINCT ?person ?personLabel ?personDescription ?birth ?death WHERE {
@@ -383,13 +434,20 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
 
   const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}&format=json`;
   let bindings = [];
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 3500);
   try {
-    const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+    const res = await fetch(url, {
+      headers: { Accept: 'application/sparql-results+json' },
+      signal: controller.signal,
+    });
     if (!res.ok) throw new Error(`SPARQL ${res.status}`);
     const data = await res.json();
     bindings = data.results?.bindings || [];
   } catch {
     // Wikidata가 일시적으로 실패해도 아래 정적 성경 연대 결과는 계속 제공한다.
+  } finally {
+    clearTimeout(timeoutId);
   }
 
   const results = bindings.map((b) => {
@@ -443,43 +501,6 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
     && r.testament
     && (r.category === 'historical' || matchesTestament(r.testament, testament))
   );
-
-  const staticBiblical = Object.entries(BIBLICAL_CHRONOLOGY)
-    .filter(([qid, chronology]) => (
-      qid !== wikidataId
-      && chronology.birthYear >= startY
-      && chronology.birthYear <= endY
-    ))
-    .map(([qid, chronology]) => {
-      const bibleTags = getBibleTags(qid);
-      const itemTestament = classifyTestament(bibleTags);
-      const nameInfo = getBiblicalNameInfo(qid);
-      const personProfile = getBiblicalPersonProfile(qid);
-      return {
-        id: qid,
-        wikidataId: qid,
-        name: chronology.name,
-        label: chronology.name,
-        description: '성경 인물 대표 연대 기준',
-        birthDate: formatEstimatedYear(chronology.birthYear),
-        deathDate: formatEstimatedYear(chronology.deathYear),
-        birthYear: chronology.birthYear,
-        deathYear: chronology.deathYear,
-        bibleTags,
-        testament: itemTestament,
-        category: 'biblical',
-        nameAliases: nameInfo?.aliases || [],
-        nameChangeNote: nameInfo?.note || null,
-        nameChangeReference: nameInfo?.reference || null,
-        originalName: personProfile?.originalName || null,
-        transliteration: personProfile?.transliteration || null,
-        nameMeaning: personProfile?.meaning || null,
-        originalLanguage: personProfile?.testament === 'nt' ? '헬라어' : personProfile ? '히브리어' : null,
-        source: '성경 본문 + 프로젝트 성경 연대 기준',
-        verified: true,
-      };
-    })
-    .filter((item) => matchesTestament(item.testament, testament));
 
   const deduped = [...new Map(
     [...staticBiblical, ...results].map((item) => [item.wikidataId, item]),
