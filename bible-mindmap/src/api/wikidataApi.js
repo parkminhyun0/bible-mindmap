@@ -180,7 +180,9 @@ export async function searchBiblicalPerson(query, testament = 'all') {
       )
       : null;
 
-    const label = e.labels?.ko?.value || e.labels?.en?.value || qid;
+    // 이름 변경·별칭 사전에 등록된 성경 인물은 Wikidata 번역 라벨보다
+    // 프로젝트의 성경 표준 이름을 우선한다. 예: Q194808의 '세라' → '사라'
+    const label = nameInfo?.canonicalName || e.labels?.ko?.value || e.labels?.en?.value || qid;
     const desc  = e.descriptions?.ko?.value || e.descriptions?.en?.value || '';
 
     const birthRaw = claimValue(claims, 'P569');
