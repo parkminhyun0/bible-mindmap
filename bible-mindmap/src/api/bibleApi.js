@@ -17,6 +17,8 @@ const BOLLS_BOOK_MAP = Object.fromEntries(
 // Deduplicates concurrent requests and eliminates repeat fetches for the same chapter.
 const _chapterCache = new Map();
 const CACHE_MAX = 60;
+const FETCH_TIMEOUT_MS = 8000;
+const FETCH_RETRIES = 1;
 
 function cacheGet(key) {
   const hit = _chapterCache.get(key);
@@ -35,16 +37,47 @@ function cacheSet(key, value) {
   }
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+async function fetchJsonWithRetry(url) {
+  let lastError;
+
+  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt += 1) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      if (!res.ok) {
+        const error = new Error(`bolls.life ${res.status}`);
+        error.retryable = res.status === 429 || res.status >= 500;
+        throw error;
+      }
+      return await res.json();
+    } catch (error) {
+      lastError = error.name === 'AbortError'
+        ? new Error('성경 본문 요청 시간이 초과되었습니다.')
+        : error;
+
+      const retryable = error.name === 'AbortError' || error.retryable || error instanceof TypeError;
+      if (!retryable || attempt === FETCH_RETRIES) break;
+      await sleep(250 * (attempt + 1));
+    } finally {
+      clearTimeout(timeoutId);
+    }
+  }
+
+  throw lastError;
+}
+
 async function fetchChapter(translationCode, bookNum, chapter) {
   const key = `${translationCode}:${bookNum}:${chapter}`;
   const cached = cacheGet(key);
   if (cached) return cached;
 
-  const promise = fetch(`https://bolls.life/get-text/${translationCode}/${bookNum}/${chapter}/`)
-    .then((res) => {
-      if (!res.ok) throw new Error(`bolls.life ${res.status}`);
-      return res.json();
-    })
+  const promise = fetchJsonWithRetry(
+    `https://bolls.life/get-text/${translationCode}/${bookNum}/${chapter}/`,
+  )
     .catch((err) => {
       _chapterCache.delete(key); // 실패 시 캐시 무효화하여 재시도 허용
       throw err;
