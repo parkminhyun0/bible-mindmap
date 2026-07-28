@@ -5,6 +5,7 @@ import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
 import BackgroundNodeFrame from './BackgroundNodeFrame';
+import PassageAnnotationPin from './PassageAnnotationPin';
 
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
@@ -199,6 +200,7 @@ export default function VerseNode({ id, data, selected }) {
   const [lexEntries, setLexEntries] = useState([]);
   const [lexLoading, setLexLoading] = useState(false);
   const [popups, setPopups] = useState([]);
+  const annotationRootRef = useRef(null);
 
   useEffect(() => {
     if (activeTab !== 'original' || !data.bookId) return;
@@ -244,6 +246,7 @@ export default function VerseNode({ id, data, selected }) {
       minWidth={240}
       minHeight={60}
     >
+      <div ref={annotationRootRef} data-annotation-root>
       {/* Header */}
       <div
         style={{
@@ -257,6 +260,22 @@ export default function VerseNode({ id, data, selected }) {
       >
         📖 {data.reference}
       </div>
+
+      {hasMulti && (
+        <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '-2px 0 5px' }}>
+          <PassageAnnotationPin
+            passage={{
+              bookId: data.bookId,
+              chapter: data.chapter,
+              verseStart: data.verseStart,
+              verseEnd: data.verseEnd || data.verseStart,
+            }}
+            referenceLabel={data.reference}
+            translationId={activeTab}
+            selectionRootRef={annotationRootRef}
+          />
+        </div>
+      )}
 
       {/* Edge count badges */}
       {activeBadges.length > 0 && (
@@ -360,6 +379,7 @@ export default function VerseNode({ id, data, selected }) {
           onClose={() => setPopups((prev) => prev.filter((x) => x.id !== p.id))}
         />
       ))}
+      </div>
     </BackgroundNodeFrame>
   );
 }
