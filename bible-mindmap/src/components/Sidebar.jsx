@@ -707,8 +707,19 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               renderDetail={(d) => (
                 <>
                   <div style={detailRow}><b>이름</b> {d.name}</div>
+                  {d.region && <div style={detailRow}><b>성경 지역</b> {d.region}</div>}
                   {d.lat != null && <div style={detailRow}><b>좌표</b> {d.lat}°N {d.lon}°E</div>}
                   {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
+                  {d.locationBasis && (
+                    <div style={{
+                      margin: '5px 0', padding: '6px 8px', borderRadius: 6,
+                      background: d.certainty === 'disputed' ? '#fff7ed' : '#f0fdf4',
+                      color: d.certainty === 'disputed' ? '#9a3412' : '#166534', fontSize: 10,
+                    }}>
+                      <b>위치 검증:</b> {d.certainty === 'confirmed' ? '확정적' : d.certainty === 'probable' ? '유력' : '논쟁 중'}
+                      <div style={{ marginTop: 2 }}>{d.locationBasis}</div>
+                    </div>
+                  )}
                   <BibleEvidence detail={d} />
                 </>
               )}
