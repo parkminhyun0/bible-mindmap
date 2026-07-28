@@ -7,6 +7,7 @@ import {
   getBiblicalPersonProfile,
   getStaticPlacePersons,
   resolveBiblicalName,
+  searchStaticBiblicalPlaces,
 } from '../data/bibleReferences.js';
 
 const BASE = 'https://www.wikidata.org/w/api.php';
@@ -516,6 +517,8 @@ export async function searchContemporaries(
 //       아나톨리아(터키), 그리스, 이탈리아(로마) → 베들레헴(펜실베이니아) 등 제외
 export async function searchBiblicalPlace(query, testament = 'all') {
   if (!query.trim()) return [];
+  const staticResults = searchStaticBiblicalPlaces(query, testament);
+  if (staticResults.length > 0) return staticResults;
 
   // 한국어 + 영어 병행 검색 → 중복 제거 후 합산 (우르/Ur 같은 영어 지명 커버)
   const [koData, enData] = await Promise.all([
