@@ -40,6 +40,7 @@ import {
   migrateLegacyStorage,
   persistCurrentCanvas,
 } from './storage/storageCore';
+import { ResearchAnnotationsProvider } from './research/ResearchAnnotationsContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
 const CANVAS_NODE_TYPES = new Set(['verse', 'note', 'topic', 'person', 'place', 'period', 'arcing']);
@@ -718,6 +719,7 @@ export default function App() {
   }, [undo, redo]);
 
   return (
+    <ResearchAnnotationsProvider>
     <CanvasContext.Provider value={{
       onAddVerse: handleAddCrossRef,
       onOpenBible: setBackgroundBibleRef,
@@ -1189,5 +1191,6 @@ export default function App() {
       )}
     </div>
     </CanvasContext.Provider>
+    </ResearchAnnotationsProvider>
   );
 }
