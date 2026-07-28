@@ -25,6 +25,20 @@ body {
   background: #bfdbfe;
 }
 
+.app-top-toolbar,
+.app-top-toolbar button,
+.app-top-toolbar input,
+.app-top-toolbar select,
+.app-top-toolbar textarea {
+  font-size: var(--app-toolbar-font-size, 13px) !important;
+}
+
+.app-top-toolbar button,
+.app-top-toolbar input,
+.app-top-toolbar select {
+  font-family: inherit;
+}
+
 /* Rich text display inside nodes */
 .rich-text-display p {
   margin: 0;

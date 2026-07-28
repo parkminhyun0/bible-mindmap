@@ -43,6 +43,9 @@ export default function PassageAnnotationPin({
   translationId = null,
   selectionRootRef = null,
   compact = false,
+  showLabel = false,
+  label = '개인 주석',
+  prominent = false,
 }) {
   const {
     annotationsForPassage,
@@ -299,17 +302,23 @@ export default function PassageAnnotationPin({
         aria-label={`${referenceLabel} 개인 주석 ${annotations.length ? `${annotations.length}개` : '추가'}`}
         style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 2,
-          minWidth: compact ? 24 : 30, height: compact ? 24 : 26,
-          padding: compact ? '0 4px' : '0 7px',
-          border: annotations.length ? '1px solid #93c5fd' : '1px dashed #cbd5e1',
-          borderRadius: 12,
-          background: annotations.length ? '#eff6ff' : '#fff',
-          color: annotations.length ? '#1d4ed8' : '#94a3b8',
+          minWidth: compact ? 24 : 30, height: prominent ? 28 : (compact ? 24 : 26),
+          padding: compact ? '0 5px' : '0 9px',
+          border: prominent
+            ? '1px solid #f59e0b'
+            : (annotations.length ? '1px solid #93c5fd' : '1px dashed #94a3b8'),
+          borderRadius: 14,
+          background: prominent ? '#fff7d6' : (annotations.length ? '#eff6ff' : '#fff'),
+          color: prominent ? '#92400e' : (annotations.length ? '#1d4ed8' : '#475569'),
           cursor: 'pointer', fontSize: compact ? 10 : 11, fontWeight: 800,
-          boxShadow: annotations.length ? '0 1px 4px rgba(37,99,235,.15)' : 'none',
+          boxShadow: prominent
+            ? '0 2px 7px rgba(146,64,14,.18)'
+            : (annotations.length ? '0 1px 4px rgba(37,99,235,.15)' : 'none'),
+          whiteSpace: 'nowrap',
         }}
       >
         <span>{icons.length ? icons.join('') : '📌'}</span>
+        {showLabel && <span>{label}</span>}
         {annotations.length > 0 && <span>{annotations.length}</span>}
       </button>
       {panel}

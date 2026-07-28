@@ -172,12 +172,10 @@ export default function VerseNode({ id, data, selected }) {
   };
 
   let displayText = '';
-  let displayHtml = false;
   let isLoading   = false;
 
   if (!hasMulti) {
     displayText = data.text || '';
-    displayHtml = displayText.includes('<');
   } else {
     const t = data.translations?.[activeTab];
     if (typeof t === 'string') {
@@ -198,18 +196,62 @@ export default function VerseNode({ id, data, selected }) {
 
   // ── Lexicon (원어 탭 전용) ─────────────────────────────────────────
   const [lexEntries, setLexEntries] = useState([]);
-  const [lexLoading, setLexLoading] = useState(false);
   const [popups, setPopups] = useState([]);
   const annotationRootRef = useRef(null);
+  const editableRef = useRef(null);
+  const [inlineEditing, setInlineEditing] = useState(false);
+  const [selectionPin, setSelectionPin] = useState(null);
+
+  useEffect(() => {
+    const editable = editableRef.current;
+    if (!editable || document.activeElement === editable) return;
+    if (editable.innerHTML !== displayText) editable.innerHTML = displayText;
+  }, [displayText, activeTab]);
+
+  const saveInlineText = () => {
+    const html = editableRef.current?.innerHTML ?? '';
+    setNodes((nodes) => nodes.map((node) => {
+      if (node.id !== id) return node;
+      if (!hasMulti) return { ...node, data: { ...node.data, text: html } };
+      return {
+        ...node,
+        data: {
+          ...node.data,
+          translations: { ...node.data.translations, [activeTab]: html },
+          ...(activeTab === 'krv' ? { text: html } : {}),
+        },
+      };
+    }));
+  };
+
+  const revealSelectionPin = () => {
+    requestAnimationFrame(() => {
+      const selection = window.getSelection?.();
+      if (!selection || selection.isCollapsed || !selection.rangeCount) {
+        setSelectionPin(null);
+        return;
+      }
+      const range = selection.getRangeAt(0);
+      const root = annotationRootRef.current;
+      if (!root?.contains(range.commonAncestorContainer)) {
+        setSelectionPin(null);
+        return;
+      }
+      const rangeRect = range.getBoundingClientRect();
+      const rootRect = root.getBoundingClientRect();
+      setSelectionPin({
+        left: Math.max(4, Math.min(rangeRect.left - rootRect.left, rootRect.width - 86)),
+        top: Math.max(36, rangeRect.top - rootRect.top - 34),
+      });
+    });
+  };
 
   useEffect(() => {
     if (activeTab !== 'original' || !data.bookId) return;
     let cancelled = false;
-    setLexLoading(true);
     loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd)
       .then((entries) => { if (!cancelled) setLexEntries(entries || []); })
       .catch(() => { if (!cancelled) setLexEntries([]); })
-      .finally(() => { if (!cancelled) setLexLoading(false); });
     return () => { cancelled = true; };
   }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd]);
 
@@ -245,8 +287,23 @@ export default function VerseNode({ id, data, selected }) {
       headerBackground={isOT(data.bookId) ? '#fef3c7' : '#dbeafe'}
       minWidth={240}
       minHeight={60}
+      headerActions={hasMulti ? (
+        <PassageAnnotationPin
+          passage={{
+            bookId: data.bookId,
+            chapter: data.chapter,
+            verseStart: data.verseStart,
+            verseEnd: data.verseEnd || data.verseStart,
+          }}
+          referenceLabel={data.reference}
+          translationId={activeTab}
+          selectionRootRef={annotationRootRef}
+          showLabel
+          prominent
+        />
+      ) : null}
     >
-      <div ref={annotationRootRef} data-annotation-root>
+      <div ref={annotationRootRef} data-annotation-root style={{ position: 'relative' }}>
       {/* Header */}
       <div
         style={{
@@ -260,22 +317,6 @@ export default function VerseNode({ id, data, selected }) {
       >
         📖 {data.reference}
       </div>
-
-      {hasMulti && (
-        <div style={{ display: 'flex', justifyContent: 'flex-end', margin: '-2px 0 5px' }}>
-          <PassageAnnotationPin
-            passage={{
-              bookId: data.bookId,
-              chapter: data.chapter,
-              verseStart: data.verseStart,
-              verseEnd: data.verseEnd || data.verseStart,
-            }}
-            referenceLabel={data.reference}
-            translationId={activeTab}
-            selectionRootRef={annotationRootRef}
-          />
-        </div>
-      )}
 
       {/* Edge count badges */}
       {activeBadges.length > 0 && (
@@ -358,15 +399,67 @@ export default function VerseNode({ id, data, selected }) {
             💡 밑줄 단어 클릭 → 어형 분석
           </div>
         </div>
-      ) : displayHtml ? (
+      ) : activeTab !== 'original' ? (
         <div
-          className="rich-text-display"
-          style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr' }}
-          dangerouslySetInnerHTML={{ __html: displayText }}
+          ref={editableRef}
+          className="rich-text-display nodrag nopan"
+          contentEditable
+          suppressContentEditableWarning
+          spellCheck={activeTab === 'esv'}
+          onFocus={() => setInlineEditing(true)}
+          onBlur={() => {
+            saveInlineText();
+            setInlineEditing(false);
+          }}
+          onInput={saveInlineText}
+          onMouseUp={revealSelectionPin}
+          onKeyUp={revealSelectionPin}
+          style={{
+            color: '#1e293b',
+            direction: isRTL ? 'rtl' : 'ltr',
+            minHeight: 28,
+            padding: '6px 7px',
+            margin: '-6px -7px',
+            borderRadius: 6,
+            outline: inlineEditing ? '2px solid #93c5fd' : '1px solid transparent',
+            background: inlineEditing ? '#f8fbff' : 'transparent',
+            cursor: 'text',
+            userSelect: 'text',
+            WebkitUserSelect: 'text',
+          }}
+          title="클릭하여 본문을 바로 편집하거나 문구를 선택해 주석을 추가하세요"
         />
       ) : (
         <div style={{ color: displayText.startsWith('(') ? '#94a3b8' : '#1e293b', direction: isRTL ? 'rtl' : 'ltr' }}>
           {displayText || <span style={{ color: '#cbd5e1', fontSize: 11 }}>탭을 클릭하면 본문을 불러옵니다</span>}
+        </div>
+      )}
+
+      {selectionPin && hasMulti && (
+        <div
+          className="nodrag nopan"
+          style={{
+            position: 'absolute',
+            left: selectionPin.left,
+            top: selectionPin.top,
+            zIndex: 20,
+          }}
+        >
+          <PassageAnnotationPin
+            passage={{
+              bookId: data.bookId,
+              chapter: data.chapter,
+              verseStart: data.verseStart,
+              verseEnd: data.verseEnd || data.verseStart,
+            }}
+            referenceLabel={data.reference}
+            translationId={activeTab}
+            selectionRootRef={annotationRootRef}
+            compact
+            showLabel
+            label="선택 주석"
+            prominent
+          />
         </div>
       )}
 
