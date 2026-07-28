@@ -666,6 +666,17 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
                       <div style={{ marginTop: 2 }}>{d.nameChangeNote} · {d.nameChangeReference}</div>
                     </div>
                   )}
+                  {d.originalName && (
+                    <div style={{
+                      margin: '5px 0', padding: '6px 8px', borderRadius: 6,
+                      background: d.testament === 'nt' ? '#f5f3ff' : '#fffbeb',
+                      color: d.testament === 'nt' ? '#5b21b6' : '#92400e', fontSize: 10,
+                    }}>
+                      <div><b>{d.originalLanguage}:</b> <span dir={d.testament === 'ot' ? 'rtl' : 'ltr'}>{d.originalName}</span></div>
+                      <div><b>음역:</b> {d.transliteration}</div>
+                      <div><b>뜻:</b> {d.nameMeaning}</div>
+                    </div>
+                  )}
                   {d.birthDate && <div style={detailRow}><b>출생</b> {d.birthDate}</div>}
                   {d.deathDate && <div style={detailRow}><b>사망</b> {d.deathDate}</div>}
                   {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
