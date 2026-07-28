@@ -27,6 +27,7 @@ export default function PeriodNode({ data, selected }) {
         : '0 2px 8px rgba(109,40,217,0.15)',
     }}>
       <NodeResizer color="#6d28d9" isVisible={selected} minWidth={160} minHeight={60} handleStyle={resizerHandle} lineStyle={resizerLine} />
+      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>🕰️</span>
         <span style={{ fontWeight: 700, fontSize, color: '#3730a3', flex: 1 }}>
@@ -83,6 +84,7 @@ export default function PeriodNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
+      </div>
 
       <Handle type="target" position={Position.Top} style={{ background: '#6d28d9' }} />
       <Handle type="source" position={Position.Bottom} style={{ background: '#6d28d9' }} />
