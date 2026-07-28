@@ -49,9 +49,27 @@ export default function PlaceNode({ data, selected }) {
         </div>
       )}
 
+      {data.region && (
+        <div style={{ fontSize: Math.max(9, fontSize - 3), color: '#78350f', marginBottom: 3 }}>
+          성경 지역: {data.region}
+        </div>
+      )}
+
       {data.description && (
         <div style={{ fontSize: Math.max(9, fontSize - 3), color: '#374151', lineHeight: 1.4, marginTop: 2 }}>
           {data.description}
+        </div>
+      )}
+
+      {data.locationBasis && (
+        <div style={{
+          marginTop: 5, padding: '5px 7px', borderRadius: 6,
+          fontSize: Math.max(9, fontSize - 3), lineHeight: 1.4,
+          color: data.certainty === 'disputed' ? '#9a3412' : '#166534',
+          background: data.certainty === 'disputed' ? '#fff7ed' : '#f0fdf4',
+        }}>
+          위치: {data.certainty === 'confirmed' ? '확정적' : data.certainty === 'probable' ? '유력' : '논쟁 중'}
+          <div>{data.locationBasis}</div>
         </div>
       )}
 

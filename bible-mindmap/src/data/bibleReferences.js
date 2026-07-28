@@ -128,12 +128,103 @@ export function getBiblicalNameMeaningBasis(wikidataId) {
       : '히브리어 이름의 보편적 성경학 어원');
 }
 
+// 성경 본문에 명시되거나 본문의 계보·서술에서 직접 확인되는 인물 관계.
+// key는 방향과 무관하게 정렬하며, source/target 방향에 따라 부모·자녀 라벨을 바꾼다.
+const BIBLICAL_PERSON_RELATIONSHIPS = {
+  'Q160|Q46622': { type: '부부', reference: '창세기 2:22-25; 3:20' },
+  'Q9181|Q194808': { type: '부부', reference: '창세기 11:29; 17:15' },
+  'Q214617|Q9181': { type: '가족', reference: '창세기 16:3-4', note: '하갈은 사라의 여종이며 아브라함의 첩' },
+  'Q183403|Q9181': { type: 'parent-child', parent: 'Q9181', reference: '창세기 16:15' },
+  'Q1386|Q9181': { type: 'parent-child', parent: 'Q9181', reference: '창세기 21:2-3' },
+  'Q1386|Q194808': { type: 'parent-child', parent: 'Q194808', reference: '창세기 21:2-3' },
+  'Q40574|Q9181': { type: '친척', reference: '창세기 11:27; 12:5', note: '롯은 아브라함의 조카' },
+  'Q219395|Q9181': { type: '동료', reference: '창세기 14:18-20', note: '멜기세덱이 아브라함을 축복함' },
+  'Q1386|Q183403': { type: '가족', reference: '창세기 16:15; 21:2-3', note: '이복형제' },
+  'Q1386|Q193703': { type: 'parent-child', parent: 'Q1386', reference: '창세기 25:21-26' },
+  'Q193703|Q286215': { type: 'parent-child', parent: 'Q193703', reference: '창세기 30:22-24' },
+  'Q179272|Q9077': { type: '가족', reference: '출애굽기 4:14', note: '형제' },
+  'Q25324|Q9077': { type: '동료', reference: '출애굽기 24:13; 민수기 27:18-23', note: '후계자·수종자' },
+  'Q43259|Q206949': { type: '동료', reference: '사무엘상 9-10', note: '선지자와 왕' },
+  'Q206949|Q41370': { type: '가족', reference: '사무엘상 18:18-27', note: '장인과 사위' },
+  'Q41370|Q37085': { type: 'parent-child', parent: 'Q41370', reference: '사무엘하 12:24; 열왕기상 1:28-30' },
+  'Q133705|Q8073': { type: '동료', reference: '열왕기상 19:19-21; 열왕기하 2:9-15', note: '스승과 제자' },
+  'Q302|Q43264': { type: '친척', reference: '누가복음 1:36', note: '어머니들이 친족' },
+  'Q302|Q33923': { type: '동료', reference: '마태복음 4:18-20; 16:16-19', note: '예수와 제자' },
+  'Q302|Q9412': { type: '동료', reference: '마태복음 4:21-22; 요한복음 13:23', note: '예수와 제자' },
+  'Q33923|Q9412': { type: '동료', reference: '누가복음 5:10; 사도행전 3:1', note: '동료 사도' },
+  'Q33923|Q9200': { type: '동료', reference: '갈라디아서 1:18; 2:7-9', note: '동료 사도' },
+  'Q43274|Q9412': { type: '가족', reference: '마태복음 4:21', note: '형제' },
+};
+
+export function getBiblicalPersonRelationship(sourceQid, targetQid) {
+  if (!sourceQid || !targetQid) return { label: '동시대', reference: null };
+  const relationship = BIBLICAL_PERSON_RELATIONSHIPS[`${sourceQid}|${targetQid}`]
+    || BIBLICAL_PERSON_RELATIONSHIPS[`${targetQid}|${sourceQid}`];
+  if (!relationship) return { label: '동시대', reference: null };
+  if (relationship.type === 'parent-child') {
+    return {
+      label: sourceQid === relationship.parent ? '자녀' : '부모',
+      reference: relationship.reference,
+      note: relationship.note || '',
+    };
+  }
+  return {
+    label: relationship.type,
+    reference: relationship.reference,
+    note: relationship.note || '',
+  };
+}
+
+// 동명이의가 많은 성경 지명을 외부 번역 라벨이 아닌 본문·지역·좌표로 식별한다.
+// disputed는 유적 비정이 논쟁 중인 경우이며 좌표는 대표 후보지의 근사값이다.
+export const BIBLICAL_PLACE_PROFILES = {
+  'place:ur-chaldeans': { canonicalName: '갈대아 우르', aliases: ['우르', 'Ur', 'Ur of the Chaldeans'], testament: 'ot', region: '남부 메소포타미아', lat: 30.9625, lon: 46.1031, certainty: 'probable', description: '아브람의 고향으로 언급되는 갈대아 우르', bibleTags: ['창세기 11:28-31'], locationBasis: '창세기 11:28-31; 전통적으로 이라크 남부 텔 엘무카이야르와 연결' },
+  'place:haran': { canonicalName: '하란', aliases: ['Haran', 'Charan'], testament: 'ot', region: '상부 메소포타미아', lat: 36.8634, lon: 39.0312, certainty: 'probable', description: '아브람이 가나안으로 떠나기 전 머문 도시', bibleTags: ['창세기 11:31-12:5', '창세기 27:43-29:4'], locationBasis: '창세기 본문과 튀르키예 남동부 하란의 지명 연속성' },
+  'place:jerusalem': { canonicalName: '예루살렘', aliases: ['Jerusalem', '시온', 'Zion'], testament: 'both', region: '유다 산지', lat: 31.7780, lon: 35.2354, certainty: 'confirmed', description: '다윗 왕국과 성전의 중심이며 신약 수난·부활 사건의 도시', bibleTags: ['사무엘하 5:6-10', '열왕기상 8', '누가복음 19-24', '사도행전 1-7'], locationBasis: '성경 본문·고대 문헌·고고학적 지명 연속성' },
+  'place:jericho': { canonicalName: '여리고', aliases: ['Jericho'], testament: 'both', region: '요단 계곡', lat: 31.8706, lon: 35.4439, certainty: 'confirmed', description: '가나안 정복과 예수의 사역에 등장하는 요단 계곡 도시', bibleTags: ['여호수아 2-6', '누가복음 18:35-19:10'], locationBasis: '텔 에스술탄과 신약 시대 여리고 유적' },
+  'place:bethlehem-judah': { canonicalName: '베들레헴', qualifiedName: '유다 베들레헴', aliases: ['베들레헴 에브라다', 'Bethlehem', 'Bethlehem Ephrathah'], testament: 'both', region: '유다', lat: 31.7054, lon: 35.2024, certainty: 'confirmed', description: '다윗의 고향이며 예수의 탄생지', bibleTags: ['룻기 1-4', '미가 5:2', '마태복음 2:1-6', '누가복음 2:1-20'], locationBasis: '본문에서 에브라다·유다와 연결되어 스불론 베들레헴과 구별' },
+  'place:bethlehem-zebulun': { canonicalName: '베들레헴', qualifiedName: '스불론 베들레헴', aliases: ['Bethlehem of Zebulun'], testament: 'ot', region: '스불론', lat: 32.7356, lon: 35.1908, certainty: 'probable', description: '스불론 지파의 성읍으로 유다 베들레헴과 다른 장소', bibleTags: ['여호수아 19:15'], locationBasis: '여호수아 19장의 스불론 성읍 목록; 갈릴리 베들레헴과 연결' },
+  'place:bethel': { canonicalName: '벧엘', aliases: ['Bethel', '루스', 'Luz'], testament: 'ot', region: '에브라임·베냐민 경계', lat: 31.9267, lon: 35.2386, certainty: 'probable', description: '야곱의 돌베개 사건과 북왕국 성소로 알려진 장소', bibleTags: ['창세기 28:10-22', '창세기 35:1-15', '열왕기상 12:28-33'], locationBasis: '본문의 루스·아이·예루살렘 상대 위치; 베이틴이 대표 후보' },
+  'place:ramah-benjamin': { canonicalName: '라마', qualifiedName: '베냐민 라마', aliases: ['Ramah of Benjamin'], testament: 'ot', region: '베냐민', lat: 31.8493, lon: 35.2342, certainty: 'probable', description: '베냐민 지파의 라마', bibleTags: ['여호수아 18:25', '예레미야 31:15'], locationBasis: '베냐민 성읍 목록과 예루살렘 북쪽 지리' },
+  'place:ramah-samuel': { canonicalName: '라마', qualifiedName: '사무엘의 라마', aliases: ['Ramathaim', 'Ramathaim-zophim'], testament: 'ot', region: '에브라임 산지', lat: 31.8327, lon: 35.1808, certainty: 'disputed', description: '사무엘의 고향과 거주지로 전해지는 라마', bibleTags: ['사무엘상 1:1', '사무엘상 7:17'], locationBasis: '라마다임소빔의 정확한 위치는 논쟁 중이며 여러 후보지가 있음' },
+  'place:antioch-syria': { canonicalName: '안디옥', qualifiedName: '수리아 안디옥', aliases: ['Antioch', 'Antioch on the Orontes'], testament: 'nt', region: '수리아', lat: 36.2021, lon: 36.1603, certainty: 'confirmed', description: '제자들이 처음 그리스도인이라 불린 교회의 중심지', bibleTags: ['사도행전 11:19-30', '사도행전 13:1-3'], locationBasis: '오론테스 강변 안티오키아 유적과 고대 문헌' },
+  'place:antioch-pisidia': { canonicalName: '안디옥', qualifiedName: '비시디아 안디옥', aliases: ['Pisidian Antioch', 'Antioch in Pisidia'], testament: 'nt', region: '비시디아·갈라디아 남부', lat: 38.3067, lon: 31.1897, certainty: 'confirmed', description: '바울의 제1차 전도여행 설교가 기록된 도시', bibleTags: ['사도행전 13:13-52', '사도행전 14:19-22'], locationBasis: '얄바츠 인근 안티오키아 유적과 로마 도로 자료' },
+  'place:caesarea-maritima': { canonicalName: '가이사랴', qualifiedName: '해변 가이사랴', aliases: ['Caesarea', 'Caesarea Maritima'], testament: 'nt', region: '지중해 연안', lat: 32.5008, lon: 34.8928, certainty: 'confirmed', description: '고넬료 사건과 바울의 구금에 등장하는 로마 행정 도시', bibleTags: ['사도행전 10', '사도행전 23-26'], locationBasis: '헤롯 항구·극장·비문이 남은 가이사랴 유적' },
+  'place:caesarea-philippi': { canonicalName: '가이사랴', qualifiedName: '가이사랴 빌립보', aliases: ['Caesarea Philippi'], testament: 'nt', region: '헤르몬 산 남서 기슭', lat: 33.2486, lon: 35.6944, certainty: 'confirmed', description: '베드로의 신앙고백 배경으로 언급되는 도시', bibleTags: ['마태복음 16:13-20', '마가복음 8:27-30'], locationBasis: '바니아스의 고대 파네아스·가이사랴 빌립보 유적' },
+};
+
+function normalizePlaceName(value) {
+  return String(value || '').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+}
+
+export function searchStaticBiblicalPlaces(query, testament = 'all') {
+  const normalized = normalizePlaceName(query);
+  if (!normalized) return [];
+  return Object.entries(BIBLICAL_PLACE_PROFILES)
+    .filter(([, place]) => (
+      normalizePlaceName(place.canonicalName).includes(normalized)
+      || normalizePlaceName(place.qualifiedName).includes(normalized)
+      || place.aliases.some((alias) => normalizePlaceName(alias).includes(normalized))
+    ))
+    .filter(([, place]) => testament === 'all' || place.testament === 'both' || place.testament === testament)
+    .map(([id, place]) => ({
+      id,
+      wikidataId: id,
+      label: place.qualifiedName || place.canonicalName,
+      name: place.qualifiedName || place.canonicalName,
+      canonicalName: place.canonicalName,
+      ...place,
+      source: '성경 본문 + 프로젝트 성경 지명 식별 자료',
+      verified: true,
+    }));
+}
+
 /**
  * Wikidata QID로 성경 본문 태그 배열 반환.
  * 매핑 없으면 빈 배열.
  */
 export function getBibleTags(wikidataId) {
-  return BIBLE_REFS[wikidataId] || [];
+  return BIBLE_REFS[wikidataId] || BIBLICAL_PLACE_PROFILES[wikidataId]?.bibleTags || [];
 }
 
 // 성경 본문 안에서 이름이 변경되거나 함께 사용되는 주요 인물 이름.

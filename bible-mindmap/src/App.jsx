@@ -32,7 +32,7 @@ import useMobile from './hooks/useMobile';
 import { fetchAllTranslations } from './api/bibleApi';
 import { formatReference, parseReference } from './utils/citationDetector';
 import { isOT } from './data/bibleBooks';
-import { getBibleTags } from './data/bibleReferences';
+import { getBibleTags, getBiblicalPersonRelationship } from './data/bibleReferences';
 import { CanvasContext } from './context/CanvasContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
@@ -429,9 +429,30 @@ export default function App() {
           category: personData.category || (getBibleTags(personData.wikidataId).length > 0 ? 'biblical' : 'historical'),
         },
       };
+      const relationship = getBiblicalPersonRelationship(
+        sourceNode?.data?.wikidataId,
+        personData.wikidataId,
+      );
+      const relationEdge = sourceNodeId ? {
+        id: `e-${++idCounter.current}`,
+        source: sourceNodeId,
+        target: id,
+        type: 'relation',
+        label: relationship.label,
+        data: {
+          thickness: 2,
+          pathType: 'bezier',
+          arrow: 'end',
+          dash: '',
+          note: [relationship.note, relationship.reference].filter(Boolean).join(' · '),
+          relationship: relationship.label,
+          relationshipReference: relationship.reference,
+        },
+      } : null;
       setNodes((nds) => [...nds, newNode]);
+      if (relationEdge) setEdges((eds) => [...eds, relationEdge]);
     },
-    [nodes, setNodes, record],
+    [nodes, setNodes, setEdges, record],
   );
 
   const handleNewMap = useCallback(() => {
