@@ -1,7 +1,25 @@
-import { getStaticPlacePersons } from '../data/bibleReferences.js';
+import { getBibleTags, getStaticPlacePersons } from '../data/bibleReferences.js';
 
 const BASE = 'https://www.wikidata.org/w/api.php';
 const _cache = new Map();
+
+const NT_BOOK_NAMES = [
+  '마태복음', '마가복음', '누가복음', '요한복음', '사도행전', '로마서',
+  '고린도', '갈라디아서', '에베소서', '빌립보서', '골로새서', '데살로니가',
+  '디모데', '디도서', '빌레몬서', '히브리서', '야고보서', '베드로',
+  '요한1', '요한2', '요한3', '유다서', '요한계시록',
+];
+
+function classifyTestament(bibleTags) {
+  const hasNT = bibleTags.some((tag) => NT_BOOK_NAMES.some((book) => tag.includes(book)));
+  const hasOT = bibleTags.some((tag) => !NT_BOOK_NAMES.some((book) => tag.includes(book)));
+  if (hasOT && hasNT) return 'both';
+  return hasNT ? 'nt' : 'ot';
+}
+
+function matchesTestament(itemTestament, requested) {
+  return !requested || requested === 'all' || itemTestament === 'both' || itemTestament === requested;
+}
 
 // wbgetentities/wbsearchentities 공통 fetcher
 async function apiFetch(params) {
@@ -71,7 +89,7 @@ const BIBLICAL_PERSON_TYPES = new Set([
   'Q21070568', 'Q18336849', 'Q4638', 'Q2078004',
 ]);
 
-export async function searchBiblicalPerson(query) {
+export async function searchBiblicalPerson(query, testament = 'all') {
   if (!query.trim()) return [];
 
   // 1단계: 한국어 + 영어 병행 검색 → 중복 제거 (솔로몬/Solomon, 우르/Ur 동시 커버)
@@ -100,6 +118,11 @@ export async function searchBiblicalPerson(query) {
     if (!e) continue;
 
     const claims = e.claims || {};
+    const bibleTags = getBibleTags(qid);
+    // 검색 결과는 성경 본문 근거가 검증·등록된 항목만 허용한다.
+    if (bibleTags.length === 0) continue;
+    const itemTestament = classifyTestament(bibleTags);
+    if (!matchesTestament(itemTestament, testament)) continue;
     const types = (claims.P31 || []).map((s) => s.mainsnak?.datavalue?.value?.id).filter(Boolean);
 
     const isBiblical    = types.includes('Q41940') || types.includes('Q20643955');
@@ -132,13 +155,17 @@ export async function searchBiblicalPerson(query) {
     results.push({
       id: qid,
       wikidataId: qid,
+      label,
       name: label,
       description: desc,
       birthDate: parseTime(birthRaw),
       deathDate: parseTime(deathRaw),
       birthYear,   // 숫자 (BC = 음수), 동시대 인물 검색에 사용
       deathYear,
-      source: 'Wikidata',
+      bibleTags,
+      testament: itemTestament,
+      source: '성경 본문 + Wikidata 식별자',
+      verified: true,
     });
 
     if (results.length >= 5) break;
@@ -341,7 +368,7 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear) {
 // 통과 조건: P625(좌표) 보유 + 위도 20-48 / 경도 10-65
 // 커버: 이스라엘·팔레스타인, 이집트, 메소포타미아(이라크), 페르시아(이란),
 //       아나톨리아(터키), 그리스, 이탈리아(로마) → 베들레헴(펜실베이니아) 등 제외
-export async function searchBiblicalPlace(query) {
+export async function searchBiblicalPlace(query, testament = 'all') {
   if (!query.trim()) return [];
 
   // 한국어 + 영어 병행 검색 → 중복 제거 후 합산 (우르/Ur 같은 영어 지명 커버)
@@ -369,6 +396,11 @@ export async function searchBiblicalPlace(query) {
     if (!e) continue;
 
     const claims = e.claims || {};
+    const bibleTags = getBibleTags(qid);
+    // 좌표만 맞는 동명 현대 도시를 막고, 성경 본문에 연결된 장소만 허용한다.
+    if (bibleTags.length === 0) continue;
+    const itemTestament = classifyTestament(bibleTags);
+    if (!matchesTestament(itemTestament, testament)) continue;
     const coordRaw = claimValue(claims, 'P625');
     if (!coordRaw) continue;
 
@@ -385,11 +417,15 @@ export async function searchBiblicalPlace(query) {
     results.push({
       id: qid,
       wikidataId: qid,
+      label,
       name: label,
       description: desc,
       lat: parseFloat(lat.toFixed(4)),
       lon: parseFloat(lon.toFixed(4)),
-      source: 'Wikidata',
+      bibleTags,
+      testament: itemTestament,
+      source: '성경 본문 + Wikidata 식별자',
+      verified: true,
     });
 
     if (results.length >= 5) break;
