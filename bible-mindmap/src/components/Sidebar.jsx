@@ -46,10 +46,23 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
   const [bgDetail, setBgDetail] = useState(null);    // 상세 데이터
   const [bgLoading, setBgLoading] = useState(false);
   const [bgError, setBgError] = useState('');
+  const [bgTestament, setBgTestament] = useState('all');
   const debounceRef = useRef(null);
 
   // period 상태
   const [selectedPeriodId, setSelectedPeriodId] = useState(BIBLICAL_PERIODS[0].id);
+
+  useEffect(() => {
+    if (tab !== 'period') return;
+    const visiblePeriods = BIBLICAL_PERIODS.filter(
+      (period) => bgTestament === 'all'
+        || period.testament === 'both'
+        || period.testament === bgTestament,
+    );
+    if (!visiblePeriods.some((period) => period.id === selectedPeriodId)) {
+      setSelectedPeriodId(visiblePeriods[0]?.id || BIBLICAL_PERIODS[0].id);
+    }
+  }, [bgTestament, selectedPeriodId, tab]);
 
   // 탭 전환 시 배경 노드 상태 초기화
   useEffect(() => {
@@ -67,7 +80,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       setBgLoading(true); setBgError(''); setBgResults([]); setBgDetail(null);
       try {
         const search = tab === 'person' ? searchBiblicalPerson : searchBiblicalPlace;
-        const results = await search(bgQuery);
+        const results = await search(bgQuery, bgTestament);
         setBgResults(results);
         if (results.length > 0) {
           setBgSelected(results[0].id);
@@ -82,7 +95,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       }
     }, 600);
     return () => clearTimeout(debounceRef.current);
-  }, [bgQuery, tab]);
+  }, [bgQuery, bgTestament, tab]);
 
   // 후보 선택 시 해당 결과 데이터로 즉시 교체 (추가 fetch 없음)
   useEffect(() => {
@@ -116,10 +129,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       setTitle('');
       setKeywords('');
     } else if (tab === 'person' && bgDetail) {
-      onAddNode({ type: 'person', data: { ...bgDetail, bibleTags: getBibleTags(bgDetail.wikidataId) } });
+      onAddNode({ type: 'person', data: { ...bgDetail, bibleTags: bgDetail.bibleTags || getBibleTags(bgDetail.wikidataId) } });
       setBgQuery(''); setBgResults([]); setBgSelected(null); setBgDetail(null);
     } else if (tab === 'place' && bgDetail) {
-      onAddNode({ type: 'place', data: { ...bgDetail, bibleTags: getBibleTags(bgDetail.wikidataId) } });
+      onAddNode({ type: 'place', data: { ...bgDetail, bibleTags: bgDetail.bibleTags || getBibleTags(bgDetail.wikidataId) } });
       setBgQuery(''); setBgResults([]); setBgSelected(null); setBgDetail(null);
     } else if (tab === 'period') {
       const p = BIBLICAL_PERIODS.find((p) => p.id === selectedPeriodId);
@@ -585,6 +598,25 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       <div style={{ ...tabBarStyle, borderTop: '1px solid #f1f5f9' }}>
         <div style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', marginBottom: 2, letterSpacing: 1 }}>배경</div>
         <div style={{ display: 'flex', gap: 4, width: '100%' }}>
+          {[
+            { key: 'all', label: '전체' },
+            { key: 'ot', label: '구약' },
+            { key: 'nt', label: '신약' },
+          ].map((item) => (
+            <button
+              key={item.key}
+              onClick={() => setBgTestament(item.key)}
+              style={{
+                ...testamentBtnStyle,
+                background: bgTestament === item.key ? '#334155' : '#f1f5f9',
+                color: bgTestament === item.key ? '#fff' : '#64748b',
+              }}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 4, width: '100%' }}>
           {BG_TABS.map((t) => (
             <button
               key={t.key}
@@ -623,6 +655,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
                   {d.birthDate && <div style={detailRow}><b>출생</b> {d.birthDate}</div>}
                   {d.deathDate && <div style={detailRow}><b>사망</b> {d.deathDate}</div>}
                   {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
+                  <BibleEvidence detail={d} />
                 </>
               )}
             />
@@ -650,6 +683,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
                   <div style={detailRow}><b>이름</b> {d.name}</div>
                   {d.lat != null && <div style={detailRow}><b>좌표</b> {d.lat}°N {d.lon}°E</div>}
                   {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
+                  <BibleEvidence detail={d} />
                 </>
               )}
             />
@@ -667,7 +701,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               onChange={(e) => setSelectedPeriodId(e.target.value)}
               style={inputStyle}
             >
-              {BIBLICAL_PERIODS.map((p) => (
+              {BIBLICAL_PERIODS
+                .filter((p) => bgTestament === 'all' || p.testament === 'both' || p.testament === bgTestament)
+                .map((p) => (
                 <option key={p.id} value={p.id}>{p.icon} {p.name} — {p.range}</option>
               ))}
             </select>
@@ -676,6 +712,19 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               return p ? (
                 <div style={{ fontSize: 11, color: '#4338ca', lineHeight: 1.6, padding: '4px 0' }}>
                   {p.events.map((ev, i) => <div key={i}>• {ev}</div>)}
+                  <div style={{ marginTop: 5, fontSize: 10, fontWeight: 700, color: '#334155' }}>
+                    ✓ 근거 본문
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, marginTop: 3 }}>
+                    {(p.bibleTags || []).map((tag) => (
+                      <span key={tag} style={{
+                        padding: '2px 6px', borderRadius: 8, fontSize: 9,
+                        background: '#eef2ff', color: '#4338ca', border: '1px solid #c7d2fe',
+                      }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ) : null;
             })()}
@@ -859,6 +908,16 @@ const tabBtnStyle = {
   cursor: 'pointer',
 };
 
+const testamentBtnStyle = {
+  flex: 1,
+  padding: '4px 0',
+  fontSize: 10,
+  fontWeight: 700,
+  border: 'none',
+  borderRadius: 5,
+  cursor: 'pointer',
+};
+
 const tabInputArea = {
   display: 'flex',
   flexDirection: 'column',
@@ -971,7 +1030,7 @@ function WikidataSearchUI({ query, setQuery, results, selected, onSelect, detail
         }}>
           {renderDetail(detail)}
           <div style={{ fontSize: 9, color: '#9ca3af', marginTop: 4 }}>
-            출처: Wikidata · {detail.wikidataId}
+            출처: {detail.source || '성경 본문 검증'} · {detail.wikidataId}
           </div>
         </div>
       )}
@@ -979,6 +1038,35 @@ function WikidataSearchUI({ query, setQuery, results, selected, onSelect, detail
       {query && !loading && results.length === 0 && !error && (
         <div style={{ fontSize: 11, color: '#94a3b8' }}>결과 없음 — 다른 이름으로 검색해 보세요</div>
       )}
+    </div>
+  );
+}
+
+function BibleEvidence({ detail }) {
+  const tags = detail?.bibleTags || [];
+  if (tags.length === 0) return null;
+  const testamentLabel = detail.testament === 'both'
+    ? '구약·신약'
+    : detail.testament === 'nt' ? '신약' : '구약';
+
+  return (
+    <div style={{
+      marginTop: 6, paddingTop: 6, borderTop: '1px solid #e2e8f0',
+      display: 'flex', flexDirection: 'column', gap: 4,
+    }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: '#334155' }}>
+        ✓ 성경 본문 확인 · {testamentLabel}
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
+        {tags.map((tag) => (
+          <span key={tag} style={{
+            padding: '2px 6px', borderRadius: 8, fontSize: 9,
+            background: '#eff6ff', color: '#1d4ed8', border: '1px solid #bfdbfe',
+          }}>
+            {tag}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
