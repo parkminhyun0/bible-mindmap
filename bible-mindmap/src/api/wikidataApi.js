@@ -1,5 +1,7 @@
 import {
+  BIBLICAL_CHRONOLOGY,
   getBibleTags,
+  getBiblicalChronology,
   getBiblicalNameInfo,
   getStaticPlacePersons,
   resolveBiblicalName,
@@ -32,6 +34,11 @@ function historicalScopeFromYears(birthYear, deathYear) {
   if (representative < -4) return 'ot';
   if (representative <= 100) return 'nt';
   return null;
+}
+
+function formatEstimatedYear(year) {
+  if (year == null) return null;
+  return year < 0 ? `BC ${Math.abs(year)} (추정)` : `AD ${year} (추정)`;
 }
 
 // wbgetentities/wbsearchentities 공통 fetcher
@@ -139,8 +146,9 @@ export async function searchBiblicalPerson(query, testament = 'all') {
     const isBiblical    = types.includes('Q41940') || types.includes('Q20643955');
     const isKnownPerson = types.some((t) => BIBLICAL_PERSON_TYPES.has(t));
 
-    const birthYear = claimTimeYear(claims, 'P569');
-    const deathYear = claimTimeYear(claims, 'P570');
+    const chronology = getBiblicalChronology(qid);
+    const birthYear = claimTimeYear(claims, 'P569') ?? chronology?.birthYear ?? null;
+    const deathYear = claimTimeYear(claims, 'P570') ?? chronology?.deathYear ?? null;
 
     // 날짜가 있으면 연대 기반으로도 통과 가능 (AD 500 이전)
     const hasAncientDate =
@@ -182,8 +190,8 @@ export async function searchBiblicalPerson(query, testament = 'all') {
       label,
       name: label,
       description: desc,
-      birthDate: parseTime(birthRaw),
-      deathDate: parseTime(deathRaw),
+      birthDate: parseTime(birthRaw) || (chronology ? formatEstimatedYear(chronology.birthYear) : null),
+      deathDate: parseTime(deathRaw) || (chronology ? formatEstimatedYear(chronology.deathYear) : null),
       birthYear,   // 숫자 (BC = 음수), 동시대 인물 검색에 사용
       deathYear,
       bibleTags,
@@ -335,8 +343,13 @@ export async function searchPersonsAtPlace(wikidataId) {
 // SPARQL로 같은 시대에 활동한 성경·역사 인물 검색 (±150년 범위)
 // birthYear/deathYear 는 숫자 (BC=음수)
 export async function searchContemporaries(wikidataId, birthYear, deathYear, testament = 'all') {
+  const baseChronology = getBiblicalChronology(wikidataId);
+  const resolvedBirthYear = birthYear ?? baseChronology?.birthYear ?? null;
+  const resolvedDeathYear = deathYear ?? baseChronology?.deathYear ?? null;
   // 기준 연도 결정
-  const mid = birthYear !== null ? birthYear : (deathYear !== null ? deathYear - 30 : null);
+  const mid = resolvedBirthYear !== null
+    ? resolvedBirthYear
+    : (resolvedDeathYear !== null ? resolvedDeathYear - 30 : null);
   if (mid === null) return [];
 
   const startY = mid - 150;
@@ -360,11 +373,17 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
   `;
 
   const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}&format=json`;
-  const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
-  if (!res.ok) throw new Error(`SPARQL ${res.status}`);
-  const data = await res.json();
+  let bindings = [];
+  try {
+    const res = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+    if (!res.ok) throw new Error(`SPARQL ${res.status}`);
+    const data = await res.json();
+    bindings = data.results?.bindings || [];
+  } catch {
+    // Wikidata가 일시적으로 실패해도 아래 정적 성경 연대 결과는 계속 제공한다.
+  }
 
-  const results = (data.results?.bindings || []).map((b) => {
+  const results = bindings.map((b) => {
     const qid = b.person?.value?.split('/').pop() || '';
     const parseSparql = (s) => {
       if (!s) return null;
@@ -416,7 +435,41 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
     && (r.category === 'historical' || matchesTestament(r.testament, testament))
   );
 
-  const deduped = [...new Map(results.map((item) => [item.wikidataId, item])).values()];
+  const staticBiblical = Object.entries(BIBLICAL_CHRONOLOGY)
+    .filter(([qid, chronology]) => (
+      qid !== wikidataId
+      && chronology.birthYear >= startY
+      && chronology.birthYear <= endY
+    ))
+    .map(([qid, chronology]) => {
+      const bibleTags = getBibleTags(qid);
+      const itemTestament = classifyTestament(bibleTags);
+      const nameInfo = getBiblicalNameInfo(qid);
+      return {
+        id: qid,
+        wikidataId: qid,
+        name: chronology.name,
+        label: chronology.name,
+        description: '성경 인물 대표 연대 기준',
+        birthDate: formatEstimatedYear(chronology.birthYear),
+        deathDate: formatEstimatedYear(chronology.deathYear),
+        birthYear: chronology.birthYear,
+        deathYear: chronology.deathYear,
+        bibleTags,
+        testament: itemTestament,
+        category: 'biblical',
+        nameAliases: nameInfo?.aliases || [],
+        nameChangeNote: nameInfo?.note || null,
+        nameChangeReference: nameInfo?.reference || null,
+        source: '성경 본문 + 프로젝트 성경 연대 기준',
+        verified: true,
+      };
+    })
+    .filter((item) => matchesTestament(item.testament, testament));
+
+  const deduped = [...new Map(
+    [...staticBiblical, ...results].map((item) => [item.wikidataId, item]),
+  ).values()];
   const biblical = deduped.filter((item) => item.category === 'biblical').slice(0, 10);
   const historical = deduped.filter((item) => item.category === 'historical').slice(0, 10);
   return [...biblical, ...historical];
