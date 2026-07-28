@@ -251,6 +251,12 @@ export async function restoreWorkspaceBackup(backup) {
   } else if (backup.legacy?.repositoryTree) {
     localStorage.setItem(LEGACY_TREE_KEY, backup.legacy.repositoryTree);
   }
+  if (
+    typeof window !== 'undefined'
+    && backup.records.some((record) => record.kind === 'research-annotations')
+  ) {
+    window.dispatchEvent(new CustomEvent('bible-mindmap:research-annotations-changed'));
+  }
 
   return { restoredKinds: [...new Set(restored)], legacyCompatibilityUpdated: true };
 }

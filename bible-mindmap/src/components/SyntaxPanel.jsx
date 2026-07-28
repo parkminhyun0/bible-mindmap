@@ -7,6 +7,7 @@ import { ALL_BOOKS } from '../data/bibleBooks';
 import { buildPhraseTree, analyzeClause, getNodeColor } from '../utils/phraseMarker';
 import { isOT } from '../data/bibleBooks';
 import LexiconPopup from './LexiconPopup';
+import PassageAnnotationPin from './PassageAnnotationPin';
 
 // ── 트리 레이아웃 상수 ──────────────────────────────────────────────────────
 // LEAF_W·LEVEL_H 는 글자 크기에 따라 ParseTreeSVG 내부에서 동적으로 계산
@@ -736,6 +737,7 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
 
   return createPortal(
     <div
+      data-annotation-root
       role="dialog"
       aria-modal={isMobile ? 'true' : 'false'}
       aria-label={`원어 구문 분석${passageLabel ? ' · ' + passageLabel : ''}`}
@@ -773,6 +775,14 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         <span style={{ fontWeight: 700, fontSize: 12, color: '#d1fae5', flexShrink: 0 }}>구문 구조</span>
         {passageLabel && (
           <span style={{ fontSize: 10, color: '#6ee7b7', flexShrink: 0 }}>— {passageLabel}</span>
+        )}
+        {passage && (
+          <PassageAnnotationPin
+            passage={passage}
+            referenceLabel={passageLabel}
+            translationId="original"
+            compact
+          />
         )}
         {/* pusher: 데스크톱은 flex:1 로 우측 정렬 · 모바일은 100% flexBasis 로 강제 줄바꿈 */}
         <div style={{

@@ -11,6 +11,11 @@ import {
   STORAGE_SCHEMA_VERSION,
   validateWorkspaceBackup,
 } from '../storage/storageCore';
+import {
+  listResearchAnnotations,
+  RESEARCH_ANNOTATIONS_CHANGED,
+} from '../storage/researchRepository';
+import { getBook } from '../data/bibleBooks';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
 const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
@@ -427,6 +432,44 @@ function documentToMarkdown(item) {
   return `---\nbible_mindmap_id: ${item.id}\ntype: sketch\n---\n\n# ${sketch.title || item.name}\n\n${sketch.text || ''}`;
 }
 
+const ANNOTATION_TYPE_LABELS = {
+  note: '📌 개인 메모',
+  highlight: '💡 묵상·강조',
+  question: '❓ 연구 질문',
+  'original-language': '🔤 원어 연구',
+  syntax: '🧩 구문 연구',
+  'cross-reference': '🔗 교차 참조',
+  sermon: '📝 설교 메모',
+};
+
+function annotationsToMarkdown(annotations) {
+  const sorted = [...annotations].sort((a, b) => {
+    const left = `${a.anchor?.bookId}:${String(a.anchor?.chapter).padStart(3, '0')}:${String(a.anchor?.verseStart).padStart(3, '0')}`;
+    const right = `${b.anchor?.bookId}:${String(b.anchor?.chapter).padStart(3, '0')}:${String(b.anchor?.verseStart).padStart(3, '0')}`;
+    return left.localeCompare(right);
+  });
+  const sections = sorted.map((annotation) => {
+    const anchor = annotation.anchor || {};
+    const book = getBook(anchor.bookId);
+    const range = `${book?.ko || anchor.bookId} ${anchor.chapter}:${anchor.verseStart}${
+      anchor.verseEnd !== anchor.verseStart ? `-${anchor.verseEnd}` : ''
+    }`;
+    const selected = anchor.selectedText
+      ? `\n> ${anchor.selectedText.replace(/\n+/g, '\n> ')}\n`
+      : '';
+    return [
+      `## ${ANNOTATION_TYPE_LABELS[annotation.type] || '📌 개인 주석'} · ${range}`,
+      '',
+      `- ID: \`${annotation.id}\``,
+      `- 수정: ${annotation.updatedAt}`,
+      anchor.translationId ? `- 역본: ${anchor.translationId}` : null,
+      selected,
+      annotation.content || '',
+    ].filter((line) => line !== null).join('\n');
+  });
+  return `---\ntype: bible-mindmap-research-annotations\nexported_at: ${new Date().toISOString()}\ncount: ${annotations.length}\n---\n\n# 개인 성경 연구 주석\n\n${sections.join('\n\n---\n\n')}`;
+}
+
 async function readFromDirectory(dirHandle, filename) {
   try {
     const fileHandle = await dirHandle.getFileHandle(filename);
@@ -456,6 +499,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   );
   const [obsidianStatus, setObsidianStatus] = useState('');
   const [obsidianAutoSync, setObsidianAutoSync] = useState(true);
+  const [annotationRevision, setAnnotationRevision] = useState(0);
 
   useEffect(() => { saveTree(tree); }, [tree]);
 
@@ -471,6 +515,12 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     }
   }, []);
 
+  useEffect(() => {
+    const markChanged = () => setAnnotationRevision((value) => value + 1);
+    window.addEventListener(RESEARCH_ANNOTATIONS_CHANGED, markChanged);
+    return () => window.removeEventListener(RESEARCH_ANNOTATIONS_CHANGED, markChanged);
+  }, []);
+
   // 옵시디언 자동 동기화: 트리가 변경될 때마다 자동 저장
   useEffect(() => {
     if (!obsidianDir || !obsidianAutoSync) return;
@@ -478,7 +528,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       syncToObsidian(obsidianDir, tree, nodes, edges);
     }, 1500);
     return () => clearTimeout(timer);
-  }, [tree, nodes, edges, obsidianDir, obsidianAutoSync]);
+  }, [tree, nodes, edges, obsidianDir, obsidianAutoSync, annotationRevision]);
 
   const syncToObsidian = async (dirHandle, currentTree, currentNodes, currentEdges) => {
     try {
@@ -491,17 +541,30 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       });
       // 저장소 트리 전체 백업
       await writeToDirectory(dirHandle, 'mindmap-saves.json', currentTree);
+      const researchAnnotations = await listResearchAnnotations();
       await writeToDirectory(dirHandle, 'manifest.json', {
         format: 'bible-mindmap-obsidian',
         schemaVersion: STORAGE_SCHEMA_VERSION,
         workspaceId: getWorkspaceId(),
         syncedAt: new Date().toISOString(),
         currentCanvas: 'current-mindmap.canvas',
+        researchAnnotations: {
+          count: researchAnnotations.length,
+          json: 'research/annotations.json',
+          markdown: 'research/annotations.md',
+        },
       });
       await writeTextToDirectory(
         dirHandle,
         'current-mindmap.canvas',
         JSON.stringify(toObsidianCanvas(currentNodes, currentEdges), null, 2),
+      );
+      const researchDir = await dirHandle.getDirectoryHandle('research', { create: true });
+      await writeToDirectory(researchDir, 'annotations.json', researchAnnotations);
+      await writeTextToDirectory(
+        researchDir,
+        'annotations.md',
+        annotationsToMarkdown(researchAnnotations),
       );
       // 저장소의 개별 파일들도 각각 저장 (saves 하위 폴더에)
       const files = collectFiles(currentTree);

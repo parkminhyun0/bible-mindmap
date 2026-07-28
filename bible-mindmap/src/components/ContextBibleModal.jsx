@@ -5,7 +5,9 @@ import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/bookContext';
 import CrossrefPopup from './CrossrefPopup';
 import VersePreviewPopup from './VersePreviewPopup';
 import VariantPopup from './VariantPopup';
+import PassageAnnotationPin from './PassageAnnotationPin';
 import { hasVariant, loadBookVariants, isVariantLoaded } from '../data/textualVariants';
+import useResearchAnnotations from '../research/useResearchAnnotations';
 
 // 책 id → 한글 약어
 const KO_ABBR_BY_ID = {
@@ -145,6 +147,7 @@ function buildIndentLevels(analyzed, qaPairs, krv) {
 // ─────────────────────────────────────────────────────────────────────────
 export default function ContextBibleModal({ onClose, initialRef }) {
   const isMobile = useMobile();
+  const { annotationsForPassage } = useResearchAnnotations();
   // 모바일 바텀시트: 'closed' | 'peek' | 'full'
   const [sheetSnap, setSheetSnap] = useState('closed');
   const [chapterPickerOpen, setChapterPickerOpen] = useState(false);
@@ -1833,6 +1836,13 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                         const d     = ana.discourse;
                         const qa    = chData.qaPairs[verse];
                         const isActive = ch === activeRef.ch && verse === activeRef.verse;
+                        const annotationPassage = {
+                          bookId: activeBookId,
+                          chapter: ch,
+                          verseStart: verse,
+                          verseEnd: verse,
+                        };
+                        const annotationCount = annotationsForPassage(annotationPassage).length;
                         const level = chData.indentLevels[verse] || 0;
 
                         const qaAmber = qa && (qa.type === 'Q' || qa.type === 'A' || qa.type === 'QA');
@@ -1851,6 +1861,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
                         return (
                           <div key={verse} data-ch={ch} data-verse={verse}
+                            data-annotation-root
                             onClick={() => {
                               setActiveRef({ ch, verse });
                               if (isMobile) setSheetSnap(prev => prev === 'closed' ? 'peek' : prev);
@@ -1888,6 +1899,14 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   background: qa.type === 'A' ? 'rgba(239,68,68,.15)' : 'rgba(245,158,11,.22)',
                                   color: qa.type === 'A' ? '#dc2626' : '#b45309',
                                 }}>{qa.type === 'QA' ? 'Q·A' : qa.type}</span>
+                              )}
+                              {(isActive || annotationCount > 0) && (
+                                <PassageAnnotationPin
+                                  passage={annotationPassage}
+                                  referenceLabel={`${BOOK.ko} ${ch}:${verse}`}
+                                  translationId="krv"
+                                  compact
+                                />
                               )}
                               {/* 관주 (crossref) 아이콘 · 클릭 시 팝업 */}
                               <button
