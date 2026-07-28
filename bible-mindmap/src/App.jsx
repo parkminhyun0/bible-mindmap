@@ -36,6 +36,7 @@ import { getBibleTags, getBiblicalPersonRelationship } from './data/bibleReferen
 import { CanvasContext } from './context/CanvasContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
+const BACKGROUND_NODE_TYPES = new Set(['person', 'place', 'period']);
 
 // 구절·노트·주제 노드의 저장된 크기를 제거해 디폴트 크기로 로드
 // (사용자가 필요 시 리사이저로 자유롭게 재조정)
@@ -43,8 +44,13 @@ const RESET_SIZE_TYPES = new Set(['verse', 'note', 'topic']);
 function normalizeLoadedNodes(nodes) {
   if (!Array.isArray(nodes)) return nodes;
   return nodes.map((n) => {
-    if (!RESET_SIZE_TYPES.has(n?.type)) return n;
-    const clone = { ...n };
+    const clone = {
+      ...n,
+      ...(BACKGROUND_NODE_TYPES.has(n?.type)
+        ? { dragHandle: '.background-node-drag-handle' }
+        : {}),
+    };
+    if (!RESET_SIZE_TYPES.has(n?.type)) return clone;
     delete clone.width;
     delete clone.height;
     delete clone.measured;
@@ -299,6 +305,9 @@ export default function App() {
       const newNode = {
         id,
         type,
+        ...(BACKGROUND_NODE_TYPES.has(type)
+          ? { dragHandle: '.background-node-drag-handle' }
+          : {}),
         position: { x: 300 + Math.random() * 200, y: 200 + Math.random() * 200 },
         data,
       };
@@ -422,6 +431,7 @@ export default function App() {
       const newNode = {
         id,
         type: 'person',
+        dragHandle: '.background-node-drag-handle',
         position: { x: baseX, y: baseY + Math.random() * 40 - 20 },
         data: {
           ...personData,
