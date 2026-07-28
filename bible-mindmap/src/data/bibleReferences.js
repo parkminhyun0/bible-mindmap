@@ -67,7 +67,7 @@ export function getBibleTags(wikidataId) {
 // 검색은 어느 이름으로 입력해도 canonicalName 기준으로 통합한다.
 export const BIBLICAL_NAME_ALIASES = [
   { aliases: ['아브람', 'Abram'], canonicalName: '아브라함', qid: 'Q9181', note: '아브람에서 아브라함으로 이름이 변경됨', reference: '창세기 17:5' },
-  { aliases: ['사래', 'Sarai'], canonicalName: '사라', qid: 'Q194808', note: '사래에서 사라로 이름이 변경됨', reference: '창세기 17:15' },
+  { aliases: ['사래', 'Sarai', 'Sarah'], canonicalName: '사라', qid: 'Q194808', note: '사래에서 사라로 이름이 변경됨', reference: '창세기 17:15' },
   { aliases: ['야곱', 'Jacob'], canonicalName: '이스라엘', qid: 'Q193703', note: '야곱에게 이스라엘이라는 이름이 주어짐', reference: '창세기 32:28; 35:10' },
   { aliases: ['호세아', 'Hoshea'], canonicalName: '여호수아', qid: 'Q25324', note: '모세가 호세아를 여호수아라 부름', reference: '민수기 13:16' },
   { aliases: ['기드온', 'Gideon'], canonicalName: '여룹바알', qid: 'Q213538', note: '기드온이 여룹바알이라 불림', reference: '사사기 6:32' },

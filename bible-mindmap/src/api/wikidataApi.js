@@ -120,8 +120,10 @@ export async function searchBiblicalPerson(query, testament = 'all') {
     apiFetch({ action: 'wbsearchentities', search: searchQuery, language: 'en', uselang: 'ko', type: 'item', limit: '10' }),
   ]);
   const seen = new Set();
-  const candidates = [...(koData.search || []), ...(enData.search || [])]
-    .map((r) => r.id)
+  // 이름 변경·별칭 사전에 연결된 성경 인물은 일반 동명이인보다 항상 먼저 검증한다.
+  // 예: 사라 → Q194808을 우선해 동명의 역사 인물/성인이 앞서는 것을 방지한다.
+  const candidates = [resolvedName.qid, ...(koData.search || []).map((r) => r.id), ...(enData.search || []).map((r) => r.id)]
+    .filter(Boolean)
     .filter((id) => { if (seen.has(id)) return false; seen.add(id); return true; })
     .slice(0, 15);
   if (!candidates.length) return [];
