@@ -202,8 +202,8 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   const handleSearchContemporaries = async () => {
     if (!hasNode || nodeType !== 'person') return;
     const { wikidataId, birthYear, deathYear, testament } = editData || {};
-    if (!wikidataId || (birthYear == null && deathYear == null)) {
-      setContError('연대 정보가 없어 검색할 수 없습니다.');
+    if (!wikidataId) {
+      setContError('인물 식별 정보가 없어 검색할 수 없습니다.');
       setContemporaries([]);
       return;
     }
