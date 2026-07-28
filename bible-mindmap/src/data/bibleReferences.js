@@ -6,6 +6,11 @@ export const BIBLE_REFS = {
   'Q46622': ['창세기 2-4'],                                                        // 하와
   'Q93063': ['창세기 6-9'],                                                        // 노아
   'Q9181':  ['창세기 12-25'],                                                      // 아브라함
+  'Q194808':['창세기 11-23'],                                                      // 사라
+  'Q40574': ['창세기 11-19'],                                                      // 롯
+  'Q219395':['창세기 14:18-20'],                                                   // 멜기세덱
+  'Q214617':['창세기 16', '창세기 21'],                                           // 하갈
+  'Q183403':['창세기 16-17', '창세기 21', '창세기 25:12-18'],                    // 이스마엘
   'Q1386':  ['창세기 21-35'],                                                      // 이삭
   'Q193703':['창세기 25-50'],                                                      // 야곱
   'Q286215':['창세기 37-50'],                                                      // 요셉(창세기)
@@ -62,7 +67,7 @@ export function getBibleTags(wikidataId) {
 // 검색은 어느 이름으로 입력해도 canonicalName 기준으로 통합한다.
 export const BIBLICAL_NAME_ALIASES = [
   { aliases: ['아브람', 'Abram'], canonicalName: '아브라함', qid: 'Q9181', note: '아브람에서 아브라함으로 이름이 변경됨', reference: '창세기 17:5' },
-  { aliases: ['사래', 'Sarai'], canonicalName: '사라', qid: 'Q259830', note: '사래에서 사라로 이름이 변경됨', reference: '창세기 17:15' },
+  { aliases: ['사래', 'Sarai'], canonicalName: '사라', qid: 'Q194808', note: '사래에서 사라로 이름이 변경됨', reference: '창세기 17:15' },
   { aliases: ['야곱', 'Jacob'], canonicalName: '이스라엘', qid: 'Q193703', note: '야곱에게 이스라엘이라는 이름이 주어짐', reference: '창세기 32:28; 35:10' },
   { aliases: ['호세아', 'Hoshea'], canonicalName: '여호수아', qid: 'Q25324', note: '모세가 호세아를 여호수아라 부름', reference: '민수기 13:16' },
   { aliases: ['기드온', 'Gideon'], canonicalName: '여룹바알', qid: 'Q213538', note: '기드온이 여룹바알이라 불림', reference: '사사기 6:32' },
@@ -89,6 +94,50 @@ export function resolveBiblicalName(query) {
 
 export function getBiblicalNameInfo(wikidataId) {
   return BIBLICAL_NAME_ALIASES.find((entry) => entry.qid && entry.qid === wikidataId) || null;
+}
+
+// 성경 인물의 대표 활동 연대. 고대 연대기는 학설 차이가 있으므로 모두 추정값으로 취급한다.
+// Wikidata에 연도가 없는 인물의 동시대 검색 기준과 정적 결과 보완에 사용한다.
+export const BIBLICAL_CHRONOLOGY = {
+  Q93063: { name: '노아', birthYear: -3000, deathYear: -2500 },
+  Q9181: { name: '아브라함', birthYear: -2000, deathYear: -1825 },
+  Q194808: { name: '사라', birthYear: -1990, deathYear: -1865 },
+  Q40574: { name: '롯', birthYear: -1985, deathYear: -1870 },
+  Q219395: { name: '멜기세덱', birthYear: -2000, deathYear: -1900 },
+  Q214617: { name: '하갈', birthYear: -1980, deathYear: -1880 },
+  Q183403: { name: '이스마엘', birthYear: -1914, deathYear: -1777 },
+  Q1386: { name: '이삭', birthYear: -1900, deathYear: -1720 },
+  Q193703: { name: '야곱', birthYear: -1840, deathYear: -1690 },
+  Q286215: { name: '요셉', birthYear: -1750, deathYear: -1640 },
+  Q179272: { name: '아론', birthYear: -1400, deathYear: -1280 },
+  Q9077: { name: '모세', birthYear: -1390, deathYear: -1270 },
+  Q25324: { name: '여호수아', birthYear: -1350, deathYear: -1240 },
+  Q213538: { name: '기드온', birthYear: -1200, deathYear: -1100 },
+  Q61742: { name: '삼손', birthYear: -1120, deathYear: -1080 },
+  Q134539: { name: '룻', birthYear: -1120, deathYear: -1030 },
+  Q43259: { name: '사무엘', birthYear: -1100, deathYear: -1010 },
+  Q206949: { name: '사울', birthYear: -1080, deathYear: -1010 },
+  Q41370: { name: '다윗', birthYear: -1040, deathYear: -970 },
+  Q37085: { name: '솔로몬', birthYear: -990, deathYear: -930 },
+  Q133705: { name: '엘리야', birthYear: -920, deathYear: -850 },
+  Q8073: { name: '엘리사', birthYear: -900, deathYear: -800 },
+  Q9142: { name: '이사야', birthYear: -765, deathYear: -685 },
+  Q133535: { name: '예레미야', birthYear: -650, deathYear: -570 },
+  Q133748: { name: '다니엘', birthYear: -620, deathYear: -535 },
+  Q45765: { name: '에스더', birthYear: -500, deathYear: -430 },
+  Q49479: { name: '에스라', birthYear: -480, deathYear: -400 },
+  Q128569: { name: '느헤미야', birthYear: -475, deathYear: -390 },
+  Q16815: { name: '마리아', birthYear: -20, deathYear: 45 },
+  Q43264: { name: '세례 요한', birthYear: -5, deathYear: 30 },
+  Q302: { name: '예수', birthYear: -6, deathYear: 30 },
+  Q33923: { name: '베드로', birthYear: -1, deathYear: 64 },
+  Q9412: { name: '사도 요한', birthYear: 6, deathYear: 100 },
+  Q9200: { name: '바울', birthYear: 5, deathYear: 67 },
+  Q43274: { name: '야고보', birthYear: 1, deathYear: 44 },
+};
+
+export function getBiblicalChronology(wikidataId) {
+  return BIBLICAL_CHRONOLOGY[wikidataId] || null;
 }
 
 // ── 정적 장소-인물 보완 매핑 ──────────────────────────────────────────────────
