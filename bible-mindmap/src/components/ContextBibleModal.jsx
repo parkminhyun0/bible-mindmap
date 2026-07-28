@@ -229,7 +229,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   }, []);
 
   // 활성 책 (칩으로 전환 가능) — 기본값은 창세기 (성경 첫 권)
-  const [activeBookId, setActiveBookId] = useState('Gen');
+  const [activeBookId, setActiveBookId] = useState(() => initialRef?.bookId || 'Gen');
   const activeBook = useMemo(
     () => [...OT_BOOKS, ...NT_BOOKS].find(b => b.id === activeBookId) || null,
     [activeBookId],

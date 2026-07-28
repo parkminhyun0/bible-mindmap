@@ -27,6 +27,7 @@ import DocPanel from './components/DocPanel';
 import ArcingPanel from './components/ArcingPanel';
 import SyntaxPanel from './components/SyntaxPanel';
 import CitationSuggest from './components/CitationSuggest';
+import ContextBibleModal from './components/ContextBibleModal';
 import useHistory from './hooks/useHistory';
 import useMobile from './hooks/useMobile';
 import { fetchAllTranslations } from './api/bibleApi';
@@ -225,6 +226,7 @@ export default function App() {
   const arcingIdRef = useRef(0);
   const [syntaxPanels, setSyntaxPanels] = useState([]); // 다중 구문 분석 창
   const syntaxIdRef = useRef(0);
+  const [backgroundBibleRef, setBackgroundBibleRef] = useState(null);
   const idCounter = useRef(100);
   const reactFlowRef = useRef(null);
 
@@ -689,10 +691,14 @@ export default function App() {
   }, [undo, redo]);
 
   return (
-    <CanvasContext.Provider value={{ onAddVerse: handleAddCrossRef, onOpenArcing: (passage) => {
-      const id = ++arcingIdRef.current;
-      setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
-    } }}>
+    <CanvasContext.Provider value={{
+      onAddVerse: handleAddCrossRef,
+      onOpenBible: setBackgroundBibleRef,
+      onOpenArcing: (passage) => {
+        const id = ++arcingIdRef.current;
+        setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
+      },
+    }}>
     <div style={{ display: 'flex',
       height: '100dvh',
       minHeight: '100dvh',
@@ -1063,6 +1069,13 @@ export default function App() {
           onClose={() => setSyntaxPanels(prev => prev.filter(p => p.id !== panel.id))}
         />
       ))}
+      {backgroundBibleRef && (
+        <ContextBibleModal
+          key={`${backgroundBibleRef.bookId}-${backgroundBibleRef.ch}-${backgroundBibleRef.verse}`}
+          initialRef={backgroundBibleRef}
+          onClose={() => setBackgroundBibleRef(null)}
+        />
+      )}
 
       {/* 모바일 좌우 고정 탭 */}
       {isMobile && (

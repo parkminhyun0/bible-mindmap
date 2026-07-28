@@ -1,4 +1,5 @@
 import BackgroundNodeFrame from './BackgroundNodeFrame';
+import BibleReferenceTags from './BibleReferenceTags';
 
 export default function PlaceNode({ id, data, selected }) {
   const fontSize = data.fontSize || 14;
@@ -72,19 +73,11 @@ export default function PlaceNode({ id, data, selected }) {
         </div>
       )}
 
-      {data.bibleTags && data.bibleTags.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
-          {data.bibleTags.map((tag, i) => (
-            <span key={i} style={{
-              fontSize: Math.max(10, fontSize - 2), fontWeight: 700,
-              background: '#fef9c3', color: '#78350f',
-              border: '1px solid #fcd34d',
-              borderRadius: 10, padding: '2px 8px',
-              lineHeight: 1.6,
-            }}>📖 {tag}</span>
-          ))}
-        </div>
-      )}
+      <BibleReferenceTags
+        tags={data.bibleTags}
+        fontSize={fontSize}
+        palette={{ background: '#fef9c3', color: '#78350f', border: '#fcd34d' }}
+      />
 
       {data.notes && (
         <div style={{
