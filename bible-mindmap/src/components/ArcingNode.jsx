@@ -1,8 +1,8 @@
-import { Handle, Position, NodeResizer } from '@xyflow/react';
 import { useCanvas } from '../context/CanvasContext';
 import { ALL_BOOKS } from '../data/bibleBooks';
+import BackgroundNodeFrame from './BackgroundNodeFrame';
 
-export default function ArcingNode({ data, selected }) {
+export default function ArcingNode({ id, data, selected }) {
   const { onOpenArcing } = useCanvas() || {};
   const borderColor = data.color || '#6d28d9';
   const fontSize = data.fontSize || 11;
@@ -24,21 +24,16 @@ export default function ArcingNode({ data, selected }) {
   };
 
   return (
-    <div style={{
-      background: '#fff',
-      border: `2px solid ${borderColor}`,
-      borderRadius: 10,
-      padding: '12px 16px',
-      width: 420,
-      boxSizing: 'border-box',
-      boxShadow: selected
-        ? `0 0 0 2px ${borderColor}40, 0 4px 20px rgba(0,0,0,0.12)`
-        : '0 2px 12px rgba(0,0,0,0.08)',
-      fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
-    }}>
-      <NodeResizer color={borderColor} isVisible={selected} minWidth={320} minHeight={100}
-        handleStyle={{ width: 9, height: 9, borderRadius: 3, border: '1.5px solid #94a3b8', background: '#fff' }}
-        lineStyle={{ borderColor: '#94a3b8', borderWidth: 1 }} />
+    <BackgroundNodeFrame
+      id={id}
+      selected={selected}
+      title="절 관계 다이어그램"
+      icon="🧩"
+      accent={borderColor}
+      headerBackground="#ede9fe"
+      minWidth={320}
+      minHeight={100}
+    >
 
       {/* 헤더 */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10,
@@ -94,8 +89,6 @@ export default function ArcingNode({ data, selected }) {
         )}
       </div>
 
-      <Handle type="source" position={Position.Right} style={{ background: borderColor }} />
-      <Handle type="target" position={Position.Left}  style={{ background: borderColor }} />
-    </div>
+    </BackgroundNodeFrame>
   );
 }
