@@ -102,6 +102,32 @@ export function getBiblicalPersonProfile(wikidataId) {
   return BIBLICAL_PERSON_PROFILES[wikidataId] || null;
 }
 
+// 이름의 뜻을 성경 본문이 직접 설명하는 경우 그 본문을 우선한다.
+// 직접 설명이 없는 이름은 원어 사전과 보편적 성경학의 어원 풀이임을 명시한다.
+const BIBLICAL_NAME_MEANING_REFERENCES = {
+  Q160: '창세기 2:7 — 땅의 흙으로 사람을 지으심',
+  Q46622: '창세기 3:20 — 모든 산 자의 어머니',
+  Q93063: '창세기 5:29 — 수고에서 안위하리라',
+  Q9181: '창세기 17:5 — 여러 민족의 아버지',
+  Q194808: '창세기 17:15-16 — 사래를 사라로 부르심',
+  Q183403: '창세기 16:11 — 여호와께서 고통을 들으심',
+  Q1386: '창세기 17:19; 18:12 — 웃음과 연결된 이름',
+  Q193703: '창세기 25:26; 32:28 — 발꿈치와 이스라엘 이름',
+  Q9077: '출애굽기 2:10 — 물에서 건져냄',
+  Q43259: '사무엘상 1:20 — 여호와께 구하여 얻음',
+  Q302: '마태복음 1:21 — 자기 백성을 죄에서 구원하실 분',
+  Q33923: '요한복음 1:42 — 게바, 번역하면 베드로',
+};
+
+export function getBiblicalNameMeaningBasis(wikidataId) {
+  const profile = getBiblicalPersonProfile(wikidataId);
+  if (!profile) return null;
+  return BIBLICAL_NAME_MEANING_REFERENCES[wikidataId]
+    || (profile.testament === 'nt'
+      ? '헬라어 이름의 보편적 성경학 어원'
+      : '히브리어 이름의 보편적 성경학 어원');
+}
+
 /**
  * Wikidata QID로 성경 본문 태그 배열 반환.
  * 매핑 없으면 빈 배열.
