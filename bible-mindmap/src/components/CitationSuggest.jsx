@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { buildSuggestions, formatReference } from '../utils/citationDetector';
 import useMobile from '../hooks/useMobile';
 
@@ -25,7 +25,29 @@ export default function CitationSuggest({
   const [loadingKey, setLoadingKey] = useState(null);
   const [errorMsg, setErrorMsg] = useState('');
   const [offset, setOffset] = useState(loadOffset);
+  const [panelTop, setPanelTop] = useState(96);
   const dragStartRef = useRef(null);
+  const panelRef = useRef(null);
+
+  const clampOffset = (next) => {
+    const panel = panelRef.current;
+    const container = panel?.offsetParent;
+    if (!panel || !container) return next;
+
+    const panelRect = panel.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const baseLeft = containerRect.width - 16 - panelRect.width;
+    const minX = 8 - baseLeft;
+    const maxX = containerRect.width - 8 - panelRect.width - baseLeft;
+    // 상단 편집기 아래가 패널의 최상단 경계다. 헤더가 편집기 뒤로 숨지 않게 한다.
+    const minY = 0;
+    const maxY = containerRect.height - 8 - panelRect.height - panelTop;
+
+    return {
+      x: Math.min(Math.max(next.x, minX), Math.max(minX, maxX)),
+      y: Math.min(Math.max(next.y, minY), Math.max(minY, maxY)),
+    };
+  };
 
   const startDrag = (e) => {
     if (isMobile) return;
@@ -34,7 +56,10 @@ export default function CitationSuggest({
     const move = (ev) => {
       const s = dragStartRef.current;
       if (!s) return;
-      setOffset({ x: s.ox + (ev.clientX - s.mx), y: s.oy + (ev.clientY - s.my) });
+      setOffset(clampOffset({
+        x: s.ox + (ev.clientX - s.mx),
+        y: s.oy + (ev.clientY - s.my),
+      }));
     };
     const up = () => {
       dragStartRef.current = null;
@@ -54,6 +79,40 @@ export default function CitationSuggest({
     setOffset({ x: 0, y: 0 });
     try { localStorage.removeItem(OFFSET_KEY); } catch {}
   };
+
+  // 상단 편집기가 여러 줄로 커져도 패널 헤더가 그 아래에서 시작하도록 실제 높이를 측정한다.
+  useLayoutEffect(() => {
+    if (isMobile) return undefined;
+
+    const placeBelowToolbar = () => {
+      const panel = panelRef.current;
+      const container = panel?.offsetParent;
+      const toolbar = container?.querySelector('[data-node-editor-toolbar="true"]');
+      if (!container || !toolbar) return;
+      const containerRect = container.getBoundingClientRect();
+      const toolbarRect = toolbar.getBoundingClientRect();
+      setPanelTop(Math.max(16, toolbarRect.bottom - containerRect.top + 12));
+    };
+
+    placeBelowToolbar();
+    const observer = typeof ResizeObserver === 'undefined'
+      ? null
+      : new ResizeObserver(placeBelowToolbar);
+    const toolbar = panelRef.current?.offsetParent?.querySelector('[data-node-editor-toolbar="true"]');
+    if (toolbar) observer?.observe(toolbar);
+    window.addEventListener('resize', placeBelowToolbar);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', placeBelowToolbar);
+    };
+  }, [isMobile, selectedNode?.id]);
+
+  useLayoutEffect(() => {
+    if (isMobile || !panelRef.current) return;
+    setOffset((current) => clampOffset(current));
+  // panelTop이 바뀌거나 패널이 펼쳐질 때 화면 밖으로 나가지 않게 보정한다.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile, panelTop, collapsed, suggestions.length]);
 
   // 선택 노드 변경 시 제안 목록 (재)로드 — buildSuggestions는 이제 async
   useEffect(() => {
@@ -84,13 +143,13 @@ export default function CitationSuggest({
 
   const mobilePanelStyle = isMobile
     ? { ...panelStyle, left: 8, right: 8, width: 'auto', top: 46, maxHeight: '60vh', overflowY: 'auto', zIndex: 20 }
-    : { ...panelStyle, transform: `translate(${offset.x}px, ${offset.y}px)` };
+    : { ...panelStyle, top: panelTop, transform: `translate(${offset.x}px, ${offset.y}px)` };
 
   const stopProp = (e) => { e.stopPropagation(); };
 
   if (loadingSuggestions) {
     return (
-      <div style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
+      <div ref={panelRef} style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
         <div style={headerStyle}>
           <span style={titleStyle}>🔗 교차 참조 로딩 중…</span>
         </div>
@@ -137,7 +196,7 @@ export default function CitationSuggest({
   const dragged = offset.x !== 0 || offset.y !== 0;
 
   return (
-    <div style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
+    <div ref={panelRef} style={mobilePanelStyle} onPointerDown={stopProp} onTouchStart={stopProp}>
       <div
         style={{ ...headerStyle, cursor: isMobile ? 'default' : 'move', userSelect: 'none' }}
         onMouseDown={startDrag}
@@ -262,7 +321,7 @@ const panelStyle = {
   position: 'absolute',
   top: 96,
   right: 16,
-  zIndex: 15,
+  zIndex: 40,
   width: 320,
   background: '#fff',
   border: '1px solid #e2e8f0',
