@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { Handle, Position, useReactFlow, useEdges, NodeResizer } from '@xyflow/react';
-import { fetchVerse } from '../api/bibleApi';
+import { fetchAllTranslations, fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
@@ -21,6 +21,7 @@ const TABS = [
   { id: 'original', label: '원어' },
   { id: 'syntax',   label: '구문' },
 ];
+const TRANSLATION_TAB_IDS = ['krv', 'esv', 'original'];
 
 export default function VerseNode({ id, data, selected }) {
   const { setNodes } = useReactFlow();
@@ -47,8 +48,15 @@ export default function VerseNode({ id, data, selected }) {
   const activeTab = data.activeTab || 'krv';
   const [tabLoading, setTabLoading] = useState({});
   const [tabErrors, setTabErrors]   = useState({});
-  const tabErrorsRef = useRef(tabErrors);
-  useEffect(() => { tabErrorsRef.current = tabErrors; });
+  const retryingRef = useRef(new Set());
+  const mountedRef = useRef(true);
+
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   const handleTabClick = (tabId) => {
     setNodes((nds) =>
@@ -56,35 +64,111 @@ export default function VerseNode({ id, data, selected }) {
     );
   };
 
-  // Auto-fetch translation whenever activeTab changes and it isn't loaded yet.
-  // This fires for both VerseNode tab clicks and NodeEditor tab changes.
+  // 노드가 열리면 누락된 세 역본을 한 번에 미리 로드한다.
+  // 탭 전환 시 요청을 취소하지 않으므로 빠르게 클릭해도 로딩 상태가 고착되지 않는다.
   useEffect(() => {
     if (!hasMulti) return;
-    if (typeof data.translations?.[activeTab] === 'string') return;
-    if (tabErrorsRef.current[activeTab]) return;
-
+    const missing = TRANSLATION_TAB_IDS.filter(
+      (tabId) => typeof data.translations?.[tabId] !== 'string',
+    );
+    if (missing.length === 0) return;
     let cancelled = false;
-    setTabLoading((prev) => ({ ...prev, [activeTab]: true }));
-    fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, activeTab)
-      .then((text) => {
+    setTabLoading((prev) => ({
+      ...prev,
+      ...Object.fromEntries(missing.map((tabId) => [tabId, true])),
+    }));
+    setTabErrors((prev) => {
+      const next = { ...prev };
+      missing.forEach((tabId) => delete next[tabId]);
+      return next;
+    });
+
+    fetchAllTranslations(data.bookId, data.chapter, data.verseStart, data.verseEnd)
+      .then((translations) => {
         if (cancelled) return;
         setNodes((nds) =>
           nds.map((n) =>
             n.id === id
-              ? { ...n, data: { ...n.data, translations: { ...n.data.translations, [activeTab]: text } } }
+              ? {
+                  ...n,
+                  data: {
+                    ...n.data,
+                    ...(typeof translations.krv === 'string' ? { text: translations.krv } : {}),
+                    translations: {
+                      ...n.data.translations,
+                      ...Object.fromEntries(
+                        Object.entries(translations).filter(([, text]) => typeof text === 'string'),
+                      ),
+                    },
+                  },
+                }
+              : n,
+          ),
+        );
+        setTabErrors((prev) => ({
+          ...prev,
+          ...Object.fromEntries(
+            missing
+              .filter((tabId) => typeof translations[tabId] !== 'string')
+              .map((tabId) => [tabId, '본문을 불러오지 못했습니다.']),
+          ),
+        }));
+      })
+      .finally(() => {
+        if (!cancelled) {
+          setTabLoading((prev) => ({
+            ...prev,
+            ...Object.fromEntries(missing.map((tabId) => [tabId, false])),
+          }));
+        }
+      });
+    return () => { cancelled = true; };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.bookId, data.chapter, data.verseStart, data.verseEnd, id]);
+
+  const retryTranslation = (tabId) => {
+    if (!TRANSLATION_TAB_IDS.includes(tabId) || retryingRef.current.has(tabId)) return;
+    retryingRef.current.add(tabId);
+    setTabErrors((prev) => {
+      const next = { ...prev };
+      delete next[tabId];
+      return next;
+    });
+    setTabLoading((prev) => ({ ...prev, [tabId]: true }));
+
+    fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, tabId)
+      .then((text) => {
+        if (!mountedRef.current) return;
+        setNodes((nds) =>
+          nds.map((n) =>
+            n.id === id
+              ? {
+                  ...n,
+                  data: {
+                    ...n.data,
+                    ...(tabId === 'krv' ? { text } : {}),
+                    translations: { ...n.data.translations, [tabId]: text },
+                  },
+                }
               : n,
           ),
         );
       })
-      .catch((e) => {
-        if (!cancelled) setTabErrors((prev) => ({ ...prev, [activeTab]: e.message || '불러오기 실패' }));
+      .catch((error) => {
+        if (mountedRef.current) {
+          setTabErrors((prev) => ({
+            ...prev,
+            [tabId]: error.message || '본문을 불러오지 못했습니다.',
+          }));
+        }
       })
       .finally(() => {
-        if (!cancelled) setTabLoading((prev) => ({ ...prev, [activeTab]: false }));
+        retryingRef.current.delete(tabId);
+        if (mountedRef.current) {
+          setTabLoading((prev) => ({ ...prev, [tabId]: false }));
+        }
       });
-    return () => { cancelled = true; };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd, id]);
+  };
 
   let displayText = '';
   let displayHtml = false;
@@ -93,15 +177,15 @@ export default function VerseNode({ id, data, selected }) {
   if (!hasMulti) {
     displayText = data.text || '';
     displayHtml = displayText.includes('<');
-  } else if (tabLoading[activeTab]) {
-    isLoading = true;
-  } else if (tabErrors[activeTab]) {
-    displayText = `(${tabErrors[activeTab]})`;
   } else {
     const t = data.translations?.[activeTab];
     if (typeof t === 'string') {
       displayText = t;
       displayHtml = t.includes('<');
+    } else if (tabErrors[activeTab]) {
+      displayText = '';
+    } else if (tabLoading[activeTab]) {
+      isLoading = true;
     } else {
       // Fall back to data.text for KRV if translations.krv not loaded yet
       displayText = activeTab === 'krv' && data.text ? data.text : '';
@@ -242,7 +326,25 @@ export default function VerseNode({ id, data, selected }) {
       )}
 
       {/* Content */}
-      {isLoading ? (
+      {activeTab !== 'syntax' && tabErrors[activeTab] ? (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+          <span style={{ color: '#dc2626', fontSize: 11 }}>{tabErrors[activeTab]}</span>
+          <button
+            type="button"
+            className="nodrag"
+            onClick={(event) => {
+              event.stopPropagation();
+              retryTranslation(activeTab);
+            }}
+            style={{
+              padding: '3px 8px', border: '1px solid #fecaca', borderRadius: 4,
+              background: '#fef2f2', color: '#b91c1c', fontSize: 10, cursor: 'pointer',
+            }}
+          >
+            다시 시도
+          </button>
+        </div>
+      ) : isLoading ? (
         <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
       ) : activeTab === 'syntax' ? (
         lexLoading
