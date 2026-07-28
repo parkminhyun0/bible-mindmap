@@ -33,6 +33,11 @@ const TEXT_COLORS = [
 ];
 
 const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 50];
+const TRANSLATION_TABS = [
+  { id: 'krv', label: '개역한글' },
+  { id: 'esv', label: 'ESV' },
+  { id: 'original', label: '원어' },
+];
 
 export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
   const [editData, setEditData] = useState(null);
@@ -89,8 +94,11 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
       setCrossRefError('');
     }
     const newData = { ...selectedNode.data };
+    const activeTab = TRANSLATION_TABS.some((tab) => tab.id === newData.activeTab)
+      ? newData.activeTab
+      : 'krv';
+    newData.activeTab = activeTab;
     setEditData(newData);
-    const activeTab = newData.activeTab || 'krv';
 
     const html = newData.translations?.[activeTab] ?? newData.text ?? '';
 
@@ -274,7 +282,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     return (
       <>
         {/* 상단 미니바: undo/redo */}
-        <div style={{ ...barStyle, padding: '4px 10px', minHeight: 'unset', zIndex: 10 }}>
+        <div data-node-editor-toolbar="true" style={{ ...barStyle, padding: '4px 10px', minHeight: 'unset', zIndex: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <button onClick={onUndo} disabled={!canUndo} style={{ ...fmtBtnStyle, opacity: canUndo ? 1 : 0.3, fontSize: 16 }} title="되돌리기">↩</button>
             <button onClick={onRedo} disabled={!canRedo} style={{ ...fmtBtnStyle, opacity: canRedo ? 1 : 0.3, fontSize: 16 }} title="다시 실행">↪</button>
@@ -360,7 +368,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
             {nodeType === 'verse' && editData?.bookId && (
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
                 <span style={{ fontSize: 10, color: '#94a3b8' }}>역본:</span>
-                {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }, { id: 'syntax', label: '구문' }].map((t) => {
+                {TRANSLATION_TABS.map((t) => {
                   const isSel = (editData?.activeTab || 'krv') === t.id;
                   return (
                     <button key={t.id}
@@ -454,7 +462,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   }
 
   return (
-    <div style={barStyle}>
+    <div data-node-editor-toolbar="true" style={barStyle}>
       {/* Row 1: tools */}
       <div style={rowStyle}>
         {/* Undo / Redo — always active */}
@@ -634,7 +642,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
       {hasNode && editData?.bookId && (
         <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
           <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>편집 역본:</span>
-          {[{ id: 'krv', label: '개역한글' }, { id: 'esv', label: 'ESV' }, { id: 'original', label: '원어' }, { id: 'syntax', label: '구문' }].map((t) => {
+          {TRANSLATION_TABS.map((t) => {
             const isActiveTab = (editData?.activeTab || 'krv') === t.id;
             return (
               <button key={t.id}
