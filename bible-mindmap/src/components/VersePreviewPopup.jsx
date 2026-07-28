@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { fetchVerse } from '../api/bibleApi'
 import { getCanonCategory } from '../utils/canon'
 import useMobile from '../hooks/useMobile'
+import PassageAnnotationPin from './PassageAnnotationPin'
 
 // bolls.life 본문 텍스트 파싱 · 절 번호 span 을 우리 스타일로 재렌더
 // 규칙: 첫 절만 "장:절", 이후 같은 장은 "절"만 (crossref 는 항상 한 장 내라 장 변경 없음)
@@ -83,6 +84,7 @@ export default function VersePreviewPopup({
   const [error, setError] = useState(null)
   const [pos, setPos] = useState({ x: initialX, y: initialY })
   const dragging = useRef(false)
+  const contentRef = useRef(null)
   const dragStart = useRef({ mx: 0, my: 0, px: 0, py: 0 })
 
   const cat = getCanonCategory(bookId)
@@ -180,6 +182,13 @@ export default function VersePreviewPopup({
             {cat.label} · KRV
           </div>
         </div>
+        <PassageAnnotationPin
+          passage={{ bookId, chapter, verseStart, verseEnd }}
+          referenceLabel={reference}
+          translationId="krv"
+          selectionRootRef={contentRef}
+          compact
+        />
         <button onClick={onClose} aria-label="본문 팝업 닫기"
           style={{
             background: 'rgba(255,255,255,.7)',
@@ -193,7 +202,7 @@ export default function VersePreviewPopup({
       </div>
 
       {/* 본문 */}
-      <div className="momentum-scroll" style={{
+      <div ref={contentRef} data-annotation-root className="momentum-scroll" style={{
         flex: 1, overflowY: 'auto',
         padding: isMobile ? '14px 16px calc(env(safe-area-inset-bottom, 0px) + 16px)' : '12px 14px 14px',
         WebkitOverflowScrolling: 'touch',
