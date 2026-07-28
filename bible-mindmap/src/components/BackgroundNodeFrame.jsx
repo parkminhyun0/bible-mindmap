@@ -18,6 +18,7 @@ export default function BackgroundNodeFrame({
   headerBackground,
   minWidth = 160,
   minHeight = 50,
+  headerActions = null,
   children,
 }) {
   const { deleteElements } = useReactFlow();
@@ -71,6 +72,11 @@ export default function BackgroundNodeFrame({
         <span style={{ flex: 1, fontSize: 11, fontWeight: 800, letterSpacing: '0.02em' }}>
           {title}
         </span>
+        {headerActions && (
+          <div className="nodrag nopan" style={{ display: 'flex', alignItems: 'center' }}>
+            {headerActions}
+          </div>
+        )}
         <span style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>
         <button
           type="button"
