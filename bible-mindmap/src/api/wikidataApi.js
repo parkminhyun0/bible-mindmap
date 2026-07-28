@@ -11,13 +11,20 @@ async function apiFetch(params) {
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
 
   const key = url.toString();
-  if (_cache.has(key)) return _cache.get(key);
+  const cached = _cache.get(key);
+  if (cached) return cached;
 
-  const res = await fetch(url.toString());
-  if (!res.ok) throw new Error(`Wikidata ${res.status}`);
-  const data = await res.json();
-  _cache.set(key, data);
-  return data;
+  const promise = fetch(url.toString())
+    .then((res) => {
+      if (!res.ok) throw new Error(`Wikidata ${res.status}`);
+      return res.json();
+    })
+    .catch((err) => {
+      _cache.delete(key); // 실패 시 캐시 무효화하여 재시도 허용
+      throw err;
+    });
+  _cache.set(key, promise);
+  return promise;
 }
 
 // Wikidata time 문자열 → 표시용 연대

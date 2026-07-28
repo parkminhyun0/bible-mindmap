@@ -124,7 +124,7 @@ function buildHebrewStructure(chLex, verseTexts, chapter, verseStart, verseEnd) 
     if (mainWords.length === 0) {
       // 비-wayyiqtol 절 → 선행 or 후행
       const role = hebrewClauseRole(words);
-      const subClause = { verse: ref, ko: fullKo, role };
+      const subClause = { verse: ref, ko, role };
 
       if (structure.length === 0) {
         pendingPre.push(subClause);
@@ -178,12 +178,13 @@ function buildGreekStructure(chLex, verseTexts, chapter, verseStart, verseEnd) {
   for (let v = verseStart; v <= verseEnd; v++) {
     const words = chLex[v] || [];
     const fullKo = verseTexts[v] || '';
+    const ko = truncateKo(fullKo);
     const ref = makeVerseRef(chapter, v);
 
     const mainWords = words.filter(w => isGrkMainVerb(w.m));
 
     if (mainWords.length === 0) {
-      const subClause = { verse: ref, ko: fullKo, role: greekClauseRole(words) };
+      const subClause = { verse: ref, ko, role: greekClauseRole(words) };
       if (structure.length === 0) {
         pendingPre.push(subClause);
       } else {

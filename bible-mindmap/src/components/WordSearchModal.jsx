@@ -140,25 +140,6 @@ function HighlightText({ text, query }) {
   );
 }
 
-function MorphTag({ code, isHeb, fs }) {
-  if (!code) return null;
-  const parts = humanizeMorph(code).split(/\s*[·|]\s*/).filter(Boolean);
-  const tagFs = Math.max(8, (fs || FS_DEF) - 3);
-  return (
-    <span style={{ display: 'flex', flexWrap: 'wrap', gap: 2, alignItems: 'center' }}>
-      {parts.map((p, i) => (
-        <span key={i} style={{
-          fontSize: tagFs, padding: '1px 4px', borderRadius: 99,
-          background: isHeb ? '#fef9ee' : '#eff6ff',
-          color:      isHeb ? '#92400e' : '#1e40af',
-          border:     `1px solid ${isHeb ? '#fde68a' : '#bfdbfe'}`,
-          fontWeight: 600, whiteSpace: 'nowrap',
-        }}>{p}</span>
-      ))}
-    </span>
-  );
-}
-
 function DonutChart({ items, selectedBook, onSelectBook }) {
   const [hovered, setHovered] = useState(null);
   const total = items.length;
@@ -917,7 +898,11 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
     return { groups: groupByLemma(words), wordCount: words.length, verseResults: verses };
   }, [byMode, displayMode]);
 
-  const toggleDict    = (key) => setDictKeys(p => { const n = new Set(p); n.has(key) ? n.delete(key) : n.add(key); return n; });
+  const toggleDict    = (key) => setDictKeys(p => {
+    const n = new Set(p);
+    if (n.has(key)) n.delete(key); else n.add(key);
+    return n;
+  });
   const openAllDicts  = () => setDictKeys(new Set(groups.map(g => g.key)));
   const closeAllDicts = () => setDictKeys(new Set());
 

@@ -89,7 +89,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
     if (!bgSelected || bgResults.length === 0) return;
     const found = bgResults.find((r) => r.id === bgSelected);
     if (found) setBgDetail(found);
-  }, [bgSelected]);
+  }, [bgSelected, bgResults]);
 
   const colors = [
     { value: '#3b82f6', label: '파랑 (신약)' },
@@ -175,7 +175,6 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
           background: '#f8fafc', borderRadius: '16px 16px 0 0',
           boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-          maxHeight: '80vh',
           maxHeight: '80dvh',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
