@@ -50,15 +50,22 @@ export function parseBackgroundBibleReference(tag) {
   if (!book) return null;
 
   const remainder = clean.slice(matchedName.length).trim();
-  const chapterMatch = remainder.match(/^(\d+)/);
-  const verseMatch = remainder.match(/^(\d+):(\d+)/);
+  const chapterMatch = remainder.match(/^(\d+)(?:\s*-\s*(\d+))?/);
+  const verseMatch = remainder.match(/^(\d+):(\d+)(?:\s*-\s*(\d+))?/);
   const chapter = Math.min(Math.max(Number(verseMatch?.[1] || chapterMatch?.[1] || 1), 1), book.chapters);
+  const chapterEnd = Math.min(
+    Math.max(Number(verseMatch?.[1] || chapterMatch?.[2] || chapter), chapter),
+    book.chapters,
+  );
   const verse = Math.max(Number(verseMatch?.[2] || 1), 1);
+  const verseEnd = Math.max(Number(verseMatch?.[3] || verse), verse);
 
   return {
     bookId: book.id,
     ch: chapter,
+    chapterEnd,
     verse,
+    verseEnd,
     reference: tag,
   };
 }

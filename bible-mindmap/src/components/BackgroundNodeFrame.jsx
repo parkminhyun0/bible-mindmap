@@ -51,7 +51,7 @@ export default function BackgroundNodeFrame({
       />
 
       <div
-        className="background-node-drag-handle"
+        className="canvas-node-drag-handle background-node-drag-handle"
         style={{
           minHeight: 34,
           padding: '6px 8px 6px 11px',

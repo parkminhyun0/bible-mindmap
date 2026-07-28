@@ -27,7 +27,7 @@ import DocPanel from './components/DocPanel';
 import ArcingPanel from './components/ArcingPanel';
 import SyntaxPanel from './components/SyntaxPanel';
 import CitationSuggest from './components/CitationSuggest';
-import ContextBibleModal from './components/ContextBibleModal';
+import RelatedPassagePopup from './components/RelatedPassagePopup';
 import useHistory from './hooks/useHistory';
 import useMobile from './hooks/useMobile';
 import { fetchAllTranslations } from './api/bibleApi';
@@ -37,7 +37,7 @@ import { getBibleTags, getBiblicalPersonRelationship } from './data/bibleReferen
 import { CanvasContext } from './context/CanvasContext';
 
 const STORAGE_KEY = 'bible-mindmap-v1';
-const BACKGROUND_NODE_TYPES = new Set(['person', 'place', 'period']);
+const CANVAS_NODE_TYPES = new Set(['verse', 'note', 'topic', 'person', 'place', 'period', 'arcing']);
 
 // 구절·노트·주제 노드의 저장된 크기를 제거해 디폴트 크기로 로드
 // (사용자가 필요 시 리사이저로 자유롭게 재조정)
@@ -47,8 +47,8 @@ function normalizeLoadedNodes(nodes) {
   return nodes.map((n) => {
     const clone = {
       ...n,
-      ...(BACKGROUND_NODE_TYPES.has(n?.type)
-        ? { dragHandle: '.background-node-drag-handle' }
+      ...(CANVAS_NODE_TYPES.has(n?.type)
+        ? { dragHandle: '.canvas-node-drag-handle' }
         : {}),
     };
     if (!RESET_SIZE_TYPES.has(n?.type)) return clone;
@@ -307,8 +307,8 @@ export default function App() {
       const newNode = {
         id,
         type,
-        ...(BACKGROUND_NODE_TYPES.has(type)
-          ? { dragHandle: '.background-node-drag-handle' }
+        ...(CANVAS_NODE_TYPES.has(type)
+          ? { dragHandle: '.canvas-node-drag-handle' }
           : {}),
         position: { x: 300 + Math.random() * 200, y: 200 + Math.random() * 200 },
         data,
@@ -433,7 +433,7 @@ export default function App() {
       const newNode = {
         id,
         type: 'person',
-        dragHandle: '.background-node-drag-handle',
+        dragHandle: '.canvas-node-drag-handle',
         position: { x: baseX, y: baseY + Math.random() * 40 - 20 },
         data: {
           ...personData,
@@ -519,6 +519,7 @@ export default function App() {
       const newNode = {
         id,
         type: 'verse',
+        dragHandle: '.canvas-node-drag-handle',
         position,
         data: {
           reference: refData.reference,
@@ -575,6 +576,7 @@ export default function App() {
       const newNode = {
         id,
         type: 'verse',
+        dragHandle: '.canvas-node-drag-handle',
         position,
         data: {
           reference,
@@ -637,6 +639,7 @@ export default function App() {
             node: {
               id,
               type: 'verse',
+              dragHandle: '.canvas-node-drag-handle',
               position,
               data: {
                 reference,
@@ -1070,7 +1073,7 @@ export default function App() {
         />
       ))}
       {backgroundBibleRef && (
-        <ContextBibleModal
+        <RelatedPassagePopup
           key={`${backgroundBibleRef.bookId}-${backgroundBibleRef.ch}-${backgroundBibleRef.verse}`}
           initialRef={backgroundBibleRef}
           onClose={() => setBackgroundBibleRef(null)}
