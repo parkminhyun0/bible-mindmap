@@ -149,7 +149,7 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 모바일 오버라이드
   const mOverlay = isMobile ? { padding: 0 } : {};
   const mModal   = isMobile ? { maxWidth: '100%', width: '100%', maxHeight: 'none',
-    height: '100vh', height: '100dvh', borderRadius: 0 } : {};
+    height: '100dvh', borderRadius: 0 } : {};
   const mHeader  = isMobile ? { padding: 'calc(env(safe-area-inset-top, 0px) + 12px) 14px 12px' } : {};
   const mCols    = isMobile ? { gridTemplateColumns: '1fr', gap: 8, padding: 10 } : {};
   const mToolbar = isMobile ? { flexWrap: 'wrap', gap: 8, padding: '10px 14px' } : {};

@@ -29,6 +29,12 @@ const KO_ABBR_BY_ID = {
 
 const BASE = import.meta.env.BASE_URL;
 
+// 미등록 책의 폴백 값 — 모듈 스코프 상수로 고정해 매 렌더마다 새 참조가
+// 생성되어 memo(useMemo/useCallback)가 무효화되는 것을 방지
+const EMPTY_MACRO_STRUCTURE = { sections: [], pivots: [], arcs: [] };
+const EMPTY_DISCOURSE_RULES = [];
+const EMPTY_THEO_TERMS = {};
+
 const strip = (s) => s ? s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : '';
 
 // ── 분석 함수 (규칙과 신학어를 파라미터로 받음 · 책마다 다름) ─────────────
@@ -237,9 +243,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const origLangShort = BOOK.lexCorpus === 'hot' ? '히' : '헬';
   const origLangFull  = BOOK.lexCorpus === 'hot' ? '히브리어' : '헬라어';
   const BOOK_META = bookCtx?.meta || null;
-  const MACRO_STRUCTURE = bookCtx?.macro || { sections: [], pivots: [], arcs: [] };
-  const DISCOURSE_RULES = bookCtx?.discourseRules || [];
-  const THEO_TERMS = bookCtx?.theoTerms || {};
+  const MACRO_STRUCTURE = bookCtx?.macro || EMPTY_MACRO_STRUCTURE;
+  const DISCOURSE_RULES = bookCtx?.discourseRules || EMPTY_DISCOURSE_RULES;
+  const THEO_TERMS = bookCtx?.theoTerms || EMPTY_THEO_TERMS;
   const CHAPTERS = useMemo(
     () => Array.from({ length: bookCtx?.chapters || 0 }, (_, i) => i + 1),
     [bookCtx],

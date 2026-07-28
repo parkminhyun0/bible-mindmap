@@ -1,5 +1,5 @@
 // 설교 문서 검색을 위한 태그 추출/관리 유틸
-import { ALL_BOOKS, OT_BOOKS, NT_BOOKS, KO_ABBR, getBook, isOT } from '../data/bibleBooks';
+import { ALL_BOOKS, KO_ABBR, getBook, isOT } from '../data/bibleBooks';
 
 // 성경 카테고리 (신약/구약 세부 구분)
 const BOOK_CATEGORIES = {

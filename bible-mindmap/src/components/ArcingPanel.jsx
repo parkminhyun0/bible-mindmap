@@ -57,9 +57,7 @@ function MainRow({ item, hasPreceding, fontSize, isExpanded, onToggle, words, lo
   const verbLabel  = isHebrew
     ? 'wayyiqtol (וַיִּקְטֹל)'
     : `${grkVerbLabel(item.morph)} 동사`;
-  const verbNote   = isHebrew
-    ? '주동사 · 단어 클릭 → 어형 분석 · 사전 · 용례'
-    : '주동사 · 단어 클릭 → 어형 분석 · 사전 · 용례';
+  const verbNote   = '주동사 · 단어 클릭 → 어형 분석 · 사전 · 용례';
 
   return (
     <div>

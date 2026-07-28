@@ -2,9 +2,29 @@ import { ALL_BOOKS } from '../data/bibleBooks';
 
 const BASE = import.meta.env.BASE_URL; // /bible-mindmap/app/
 const _cache = new Map();
+// bookId → Promise<json> — 책 전체 파일 캐시 (동시/반복 요청 시 중복 fetch 방지)
+const _bookCache = new Map();
 
 // bookId → 한글 책 이름
 const KO_NAME = Object.fromEntries(ALL_BOOKS.map((b) => [b.id, b.ko]));
+
+function fetchBookCrossRefs(bookId) {
+  let promise = _bookCache.get(bookId);
+  if (promise) return promise;
+
+  const url = `${BASE}crossref/${bookId}.json`;
+  promise = fetch(url)
+    .then((res) => {
+      if (!res.ok) throw new Error(`crossref ${res.status}`);
+      return res.json();
+    })
+    .catch((err) => {
+      _bookCache.delete(bookId); // 실패 시 캐시 무효화하여 재시도 허용
+      throw err;
+    });
+  _bookCache.set(bookId, promise);
+  return promise;
+}
 
 /**
  * 구절의 교차 참조 목록 반환 (votes 높은 순, 상위 limit개)
@@ -18,10 +38,7 @@ export async function fetchCrossRefs(bookId, chapter, verse, limit = 12) {
   const key = `${bookId}:${chapter}:${verse}`;
   if (_cache.has(key)) return _cache.get(key);
 
-  const url = `${BASE}crossref/${bookId}.json`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`crossref ${res.status}`);
-  const data = await res.json();
+  const data = await fetchBookCrossRefs(bookId);
 
   const results = data
     .filter((r) => r.from.ch === chapter && r.from.vs <= verse && r.from.ve >= verse)

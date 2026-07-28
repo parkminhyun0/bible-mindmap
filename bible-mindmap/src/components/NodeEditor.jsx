@@ -65,10 +65,6 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     onSelectionUpdate: () => setTick((t) => t + 1),
   });
 
-  // Track current translation content so editor refreshes when async fetch completes
-  const activeTabKey = selectedNode?.data?.activeTab || 'krv';
-  const currentTranslation = selectedNode?.data?.translations?.[activeTabKey];
-
   useEffect(() => {
     if (!editor) return;
     if (!selectedNode) {
@@ -107,7 +103,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     if (editor.getHTML() !== html) {
       editor.commands.setContent(html);
     }
-  }, [selectedNode?.id, selectedNode?.data?.activeTab, currentTranslation, editor]);
+  }, [selectedNode, editor]);
 
   useEffect(() => {
     if (!editor) return;
@@ -307,7 +303,6 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
               boxShadow: '0 -4px 20px rgba(0,0,0,0.18)',
               padding: '12px calc(env(safe-area-inset-right, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + 20px) calc(env(safe-area-inset-left, 0px) + 16px)',
               display: 'flex', flexDirection: 'column', gap: 10,
-              maxHeight: '55vh',
               maxHeight: '55dvh',
               overflowY: 'auto',
               WebkitOverflowScrolling: 'touch',

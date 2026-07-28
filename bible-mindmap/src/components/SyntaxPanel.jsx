@@ -33,15 +33,10 @@ function assignXY(node, x0, width, y, levelH) {
 }
 function* walkNodes(n) { yield n; for (const c of n.children) yield* walkNodes(c); }
 function* walkEdges(n) { for (const c of n.children) { yield { from: n, to: c }; yield* walkEdges(c); } }
-function getLeaves(node, acc = []) {
-  if (!node.children.length) acc.push(node);
-  else node.children.forEach(c => getLeaves(c, acc));
-  return acc;
-}
 
 
 // ── SVG 트리 ──────────────────────────────────────────────────────────────
-function ParseTreeSVG({ tree, koText, sizes, onWordClick }) {
+function ParseTreeSVG({ tree, sizes, onWordClick }) {
   const laid = useMemo(() => {
     if (!tree) return null;
     const copy = JSON.parse(JSON.stringify(tree));
@@ -157,7 +152,7 @@ function VerseTreeCard({ data, sizes, onWordClick }) {
       </div>
       {tree ? (
         <div style={{ overflowX: 'auto', paddingBottom: 4 }}>
-          <ParseTreeSVG tree={tree} koText={data.ko} sizes={sizes} onWordClick={onWordClick} />
+          <ParseTreeSVG tree={tree} sizes={sizes} onWordClick={onWordClick} />
         </div>
       ) : (
         <span style={{ fontSize: 12, color: '#94a3b8', fontStyle: 'italic' }}>원어 데이터 없음</span>
@@ -464,7 +459,7 @@ function FlowCell({ color, sizes, entries, note, implied, onWordClick, cellBg, c
             const isGreek = entry.s?.startsWith('G');
             return (
               <div key={i}
-                title={`${entry.tr || ''} · ${entry.g || ''} · ${entry.s || ''}`}
+                title={`${entry.tr || ''} · ${humanizeMorph(entry.m)} · ${entry.s || ''}`}
                 onClick={(ev) => {
                   const r = ev.currentTarget.getBoundingClientRect();
                   onWordClick(entry, { x: r.left + r.width / 2, y: r.bottom + 6 });

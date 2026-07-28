@@ -249,11 +249,11 @@ export default function App() {
     if (selectedEdge) {
       setEdgeType(selectedEdge.type || 'citation');
       setEdgeThickness(selectedEdge.data?.thickness || 2);
-      setEdgePathType(selectedEdge.data?.pathType || 'straight');
+      setEdgePathType(selectedEdge.data?.pathType || 'bezier');
       setEdgeArrow(selectedEdge.data?.arrow || 'end');
       setEdgeDash(selectedEdge.data?.dash ?? EDGE_CONFIGS[selectedEdge.type]?.dash ?? '');
     }
-  }, [selectedEdgeId]);
+  }, [selectedEdgeId, selectedEdge]);
 
   // 선택된 엣지 스타일 업데이트
   const updateSelectedEdge = useCallback(
@@ -662,9 +662,7 @@ export default function App() {
       setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
     } }}>
     <div style={{ display: 'flex',
-      height: '100vh',
       height: '100dvh',
-      minHeight: '100vh',
       minHeight: '100dvh',
       fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
       <Sidebar
@@ -1090,7 +1088,6 @@ export default function App() {
             position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
             background: '#fff', borderRadius: '16px 16px 0 0',
             boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-            maxHeight: '75vh',
             maxHeight: '75dvh',
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
