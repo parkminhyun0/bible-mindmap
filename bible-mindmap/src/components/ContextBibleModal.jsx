@@ -1582,9 +1582,10 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           const dy = Math.abs(arc.y2 - arc.y1);
                           const bend = Math.min(72, 20 + dy * 0.05);
                           const cx = 98 - bend;
-                          // pill y: 마우스 y가 있으면 그 지점, 없으면 arc bend 중간
+                          // pill y: 마우스 커서 "위"에 표시 (마우스 가려지지 않도록 pillH+8 만큼 위로 오프셋)
+                          const cursorOffset = 20; // pill 중심을 마우스 y보다 위로
                           let midY = arcMouseY != null
-                            ? Math.max(Math.min(arc.y1, arc.y2) + 12, Math.min(Math.max(arc.y1, arc.y2) - 12, arcMouseY))
+                            ? Math.max(Math.min(arc.y1, arc.y2) + 12, Math.min(Math.max(arc.y1, arc.y2) - 12, arcMouseY - cursorOffset))
                             : (arc.y1 + arc.y2) / 2;
                           // Bezier x(t) = (1-t)^3*98 + 3(1-t)^2*t*cx + 3(1-t)*t^2*cx + t^3*98
                           // 곡선 y는 (1-t)^3*y1 + 3(1-t)^2*t*y1 + 3(1-t)*t^2*y2 + t^3*y2
