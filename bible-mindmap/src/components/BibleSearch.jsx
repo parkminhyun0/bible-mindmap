@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
-import { TRANSLATIONS, fetchAllTranslations, fetchVerseCount } from '../api/bibleApi';
+import { TRANSLATIONS, fetchAllTranslations, fetchVerse, fetchVerseCount } from '../api/bibleApi';
 import useMobile from '../hooks/useMobile';
 
 const STEPS = { BOOK: 0, CHAPTER: 1, VERSE: 2, RESULT: 3 };
@@ -31,6 +31,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
   const [fetchedTranslations, setFetchedTranslations] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const fetchRequestRef = useRef(0);
 
   const books = testament === 'ot' ? OT_BOOKS : NT_BOOKS;
 
@@ -83,25 +84,43 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
 
   const handleFetch = async () => {
     if (!selectedBook || !selectedChapter) return;
+    const requestId = ++fetchRequestRef.current;
     setLoading(true);
     setError('');
     setFetchedText('');
     setFetchedTranslations(null);
     try {
-      const translations = await fetchAllTranslations(
+      // 사용자가 선택한 역본을 먼저 표시한다. 나머지는 결과 화면에서 백그라운드 로드.
+      const preview = await fetchVerse(
         selectedBook.id,
         selectedChapter,
         verseStart,
         verseEnd,
+        translation,
       );
-      const preview = translations[translation] || translations.krv || '(본문 없음)';
+      if (requestId !== fetchRequestRef.current) return;
       setFetchedText(preview);
-      setFetchedTranslations(translations);
+      setFetchedTranslations({ [translation]: preview });
       setStep(STEPS.RESULT);
+
+      void fetchAllTranslations(
+        selectedBook.id,
+        selectedChapter,
+        verseStart,
+        verseEnd,
+      ).then((translations) => {
+        if (requestId !== fetchRequestRef.current) return;
+        setFetchedTranslations((prev) => ({
+          ...(prev || {}),
+          ...Object.fromEntries(
+            Object.entries(translations).filter(([, text]) => typeof text === 'string'),
+          ),
+        }));
+      });
     } catch (e) {
-      setError(e.message);
+      if (requestId === fetchRequestRef.current) setError(e.message);
     } finally {
-      setLoading(false);
+      if (requestId === fetchRequestRef.current) setLoading(false);
     }
   };
 
@@ -131,6 +150,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
   };
 
   const handleReset = () => {
+    fetchRequestRef.current += 1;
     setSelectedBook(null);
     setSelectedChapter(null);
     setVerseStart(1);
