@@ -3,6 +3,7 @@ import {
   getBibleTags,
   getBiblicalChronology,
   getBiblicalNameInfo,
+  getBiblicalPersonProfile,
   getStaticPlacePersons,
   resolveBiblicalName,
 } from '../data/bibleReferences.js';
@@ -179,10 +180,10 @@ export async function searchBiblicalPerson(query, testament = 'all') {
           : getBiblicalNameInfo(qid)
       )
       : null;
+    const personProfile = category === 'biblical' ? getBiblicalPersonProfile(qid) : null;
 
-    // 이름 변경·별칭 사전에 등록된 성경 인물은 Wikidata 번역 라벨보다
-    // 프로젝트의 성경 표준 이름을 우선한다. 예: Q194808의 '세라' → '사라'
-    const label = nameInfo?.canonicalName || e.labels?.ko?.value || e.labels?.en?.value || qid;
+    // 등록된 성경 인물은 Wikidata 번역 라벨보다 프로젝트 표준 이름을 우선한다.
+    const label = personProfile?.canonicalName || nameInfo?.canonicalName || e.labels?.ko?.value || e.labels?.en?.value || qid;
     const desc  = e.descriptions?.ko?.value || e.descriptions?.en?.value || '';
 
     const birthRaw = claimValue(claims, 'P569');
@@ -204,6 +205,10 @@ export async function searchBiblicalPerson(query, testament = 'all') {
       nameAliases: nameInfo?.aliases || [],
       nameChangeNote: nameInfo?.note || null,
       nameChangeReference: nameInfo?.reference || null,
+      originalName: personProfile?.originalName || null,
+      transliteration: personProfile?.transliteration || null,
+      nameMeaning: personProfile?.meaning || null,
+      originalLanguage: personProfile?.testament === 'nt' ? '헬라어' : personProfile ? '히브리어' : null,
       matchedName: resolvedName.matchedName,
       source: category === 'biblical' ? '성경 본문 + Wikidata 식별자' : 'Wikidata 역사 연대',
       verified: category === 'biblical',
@@ -449,6 +454,7 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
       const bibleTags = getBibleTags(qid);
       const itemTestament = classifyTestament(bibleTags);
       const nameInfo = getBiblicalNameInfo(qid);
+      const personProfile = getBiblicalPersonProfile(qid);
       return {
         id: qid,
         wikidataId: qid,
@@ -465,6 +471,10 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear, tes
         nameAliases: nameInfo?.aliases || [],
         nameChangeNote: nameInfo?.note || null,
         nameChangeReference: nameInfo?.reference || null,
+        originalName: personProfile?.originalName || null,
+        transliteration: personProfile?.transliteration || null,
+        nameMeaning: personProfile?.meaning || null,
+        originalLanguage: personProfile?.testament === 'nt' ? '헬라어' : personProfile ? '히브리어' : null,
         source: '성경 본문 + 프로젝트 성경 연대 기준',
         verified: true,
       };
