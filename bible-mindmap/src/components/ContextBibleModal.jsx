@@ -1545,6 +1545,72 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           );
                         })}
 
+                        {/* Arc hover 시 완전 연결 정보 pill "장:절 ↔ 장:절" (SVG 내 확실 렌더 · arc bend 중간 위치) */}
+                        {hoveredArc && (() => {
+                          const arc = macroLayout.arcs.find(a => a.id === hoveredArc);
+                          if (!arc) return null;
+                          const fromP = macroLayout.pivots.find(p => p.id === arc.from);
+                          const toP = macroLayout.pivots.find(p => p.id === arc.to);
+                          if (!fromP || !toP) return null;
+                          const label = `${fromP.ch}:${fromP.verse} ↔ ${toP.ch}:${toP.verse}`;
+                          // 텍스트 폭 추정 (mono font 6px per char + 여백)
+                          const textW = label.length * 6.2;
+                          const pillW = textW + 16;
+                          const pillH = 20;
+                          // arc bend 중간 좌표 (bezier midpoint · x=0.25*98 + 0.75*cx · y=중간)
+                          const dy = Math.abs(arc.y2 - arc.y1);
+                          const bend = Math.min(72, 20 + dy * 0.05);
+                          const cx = 98 - bend;
+                          const midX = 0.25 * 98 + 0.75 * cx;
+                          const midY = (arc.y1 + arc.y2) / 2;
+                          // pill 좌표 (중앙 정렬 · macro column 116 내부에 최대한 유지)
+                          let pillX = midX - pillW / 2;
+                          if (pillX < 2) pillX = 2;
+                          if (pillX + pillW > 114) pillX = 114 - pillW;
+                          const pillY = midY - pillH / 2;
+                          return (
+                            <g pointerEvents="none">
+                              {/* pill 그림자 (subtle depth) */}
+                              <rect
+                                x={pillX} y={pillY + 1}
+                                width={pillW} height={pillH}
+                                fill="rgba(15,23,42,.22)"
+                                rx={pillH / 2}
+                              />
+                              {/* pill 배경 (arc 색상) */}
+                              <rect
+                                x={pillX} y={pillY}
+                                width={pillW} height={pillH}
+                                fill={arc.color}
+                                rx={pillH / 2}
+                                opacity={0.98}
+                              />
+                              {/* pill 테두리 (contrast) */}
+                              <rect
+                                x={pillX} y={pillY}
+                                width={pillW} height={pillH}
+                                fill="none"
+                                stroke="#ffffff"
+                                strokeWidth={1}
+                                rx={pillH / 2}
+                                opacity={0.5}
+                              />
+                              {/* pill 텍스트 */}
+                              <text
+                                x={pillX + pillW / 2} y={midY + 4}
+                                fontSize={11}
+                                fontWeight={800}
+                                fill="#ffffff"
+                                textAnchor="middle"
+                                fontFamily="'SF Mono','JetBrains Mono',ui-monospace,monospace"
+                                style={{ letterSpacing:'.03em' }}
+                              >
+                                {label}
+                              </text>
+                            </g>
+                          );
+                        })()}
+
                       </svg>
                     )}
 
