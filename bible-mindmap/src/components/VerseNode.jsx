@@ -1,9 +1,10 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
-import { Handle, Position, useReactFlow, useEdges, NodeResizer } from '@xyflow/react';
+import { useReactFlow, useEdges } from '@xyflow/react';
 import { fetchAllTranslations, fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
+import BackgroundNodeFrame from './BackgroundNodeFrame';
 
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
@@ -233,30 +234,16 @@ export default function VerseNode({ id, data, selected }) {
   };
 
   return (
-    <div
-      style={{
-        background: '#fff',
-        border: `2px solid ${borderColor}`,
-        borderRadius: 8,
-        padding: '10px 14px',
-        width: '100%',
-        minWidth: 240,
-        boxSizing: 'border-box',
-        boxShadow: selected
-          ? `0 0 0 2px ${borderColor}60, 0 2px 8px rgba(0,0,0,0.12)`
-          : '0 2px 8px rgba(0,0,0,0.08)',
-        fontSize,
-        lineHeight: 1.6,
-      }}
+    <BackgroundNodeFrame
+      id={id}
+      selected={selected}
+      title="성경 본문"
+      icon="📖"
+      accent={borderColor}
+      headerBackground={isOT(data.bookId) ? '#fef3c7' : '#dbeafe'}
+      minWidth={240}
+      minHeight={60}
     >
-      <NodeResizer
-        color={borderColor}
-        isVisible={selected}
-        minWidth={200}
-        minHeight={60}
-        handleStyle={resizerHandle}
-        lineStyle={resizerLine}
-      />
       {/* Header */}
       <div
         style={{
@@ -364,11 +351,6 @@ export default function VerseNode({ id, data, selected }) {
         </div>
       )}
 
-      <Handle type="source" position={Position.Right} style={{ background: borderColor }} />
-      <Handle type="target" position={Position.Left}  style={{ background: borderColor }} />
-      <Handle type="source" position={Position.Bottom} id="bottom" style={{ background: borderColor }} />
-      <Handle type="target" position={Position.Top}    id="top"    style={{ background: borderColor }} />
-
       {popups.map((p) => (
         <LexiconPopup
           key={p.id}
@@ -378,12 +360,6 @@ export default function VerseNode({ id, data, selected }) {
           onClose={() => setPopups((prev) => prev.filter((x) => x.id !== p.id))}
         />
       ))}
-    </div>
+    </BackgroundNodeFrame>
   );
 }
-
-const resizerHandle = {
-  width: 9, height: 9, borderRadius: 3,
-  border: '1.5px solid #94a3b8', background: '#fff',
-};
-const resizerLine = { borderColor: '#94a3b8', borderWidth: 1 };
