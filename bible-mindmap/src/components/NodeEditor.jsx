@@ -38,6 +38,7 @@ const TRANSLATION_TABS = [
   { id: 'esv', label: 'ESV' },
   { id: 'original', label: '원어' },
 ];
+const TOOLBAR_FONT_STORAGE_KEY = 'bible-mindmap-toolbar-font-size';
 
 export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
   const [editData, setEditData] = useState(null);
@@ -49,6 +50,15 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   const [placePersonError, setPlacePersonError] = useState('');
   const [crossRefs, setCrossRefs] = useState(null); // null | 'loading' | []
   const [crossRefError, setCrossRefError] = useState('');
+  const [toolbarFontSize, setToolbarFontSize] = useState(() => {
+    const stored = Number(window.localStorage.getItem(TOOLBAR_FONT_STORAGE_KEY));
+    return Number.isFinite(stored) && stored >= 11 && stored <= 18 ? stored : 13;
+  });
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--app-toolbar-font-size', `${toolbarFontSize}px`);
+    window.localStorage.setItem(TOOLBAR_FONT_STORAGE_KEY, String(toolbarFontSize));
+  }, [toolbarFontSize]);
 
   // 방금 로컬 편집으로 저장한 (nodeId, tab, html) — 이 값이 data로 되돌아오면 setContent 스킵
   const lastLocalEditRef = useRef({ nodeId: null, tab: null, html: null });
@@ -288,10 +298,11 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     return (
       <>
         {/* 상단 미니바: undo/redo */}
-        <div data-node-editor-toolbar="true" style={{ ...barStyle, padding: '4px 10px', minHeight: 'unset', zIndex: 10 }}>
+        <div className="app-top-toolbar" data-node-editor-toolbar="true" style={{ ...barStyle, padding: '4px 10px', minHeight: 'unset', zIndex: 10 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <button onClick={onUndo} disabled={!canUndo} style={{ ...fmtBtnStyle, opacity: canUndo ? 1 : 0.3, fontSize: 16 }} title="되돌리기">↩</button>
             <button onClick={onRedo} disabled={!canRedo} style={{ ...fmtBtnStyle, opacity: canRedo ? 1 : 0.3, fontSize: 16 }} title="다시 실행">↪</button>
+            <ToolbarFontSizeControl value={toolbarFontSize} onChange={setToolbarFontSize} />
             {hasNode && (
               <>
                 <div style={{ width: 1, height: 20, background: '#e2e8f0', margin: '0 2px' }} />
@@ -468,7 +479,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   }
 
   return (
-    <div data-node-editor-toolbar="true" style={barStyle}>
+    <div className="app-top-toolbar" data-node-editor-toolbar="true" style={barStyle}>
       {/* Row 1: tools */}
       <div style={rowStyle}>
         {/* Undo / Redo — always active */}
@@ -642,6 +653,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
             ))}
           </div>
         )}
+        <ToolbarFontSizeControl value={toolbarFontSize} onChange={setToolbarFontSize} />
       </div>
 
       {/* Row 2: 역본 탭 + 병렬 뷰 트리거 */}
@@ -1003,6 +1015,28 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   );
 }
 
+function ToolbarFontSizeControl({ value, onChange }) {
+  return (
+    <div
+      className="toolbar-font-size-control"
+      role="group"
+      aria-label="상단 메뉴 글자 크기"
+      title="상단 메뉴 글자 크기"
+      style={{
+        display: 'inline-flex', alignItems: 'center', gap: 3,
+        padding: '2px 5px', marginLeft: 'auto',
+        border: '1px solid #93c5fd', borderRadius: 7,
+        background: '#eff6ff', color: '#1d4ed8',
+      }}
+    >
+      <span style={{ fontWeight: 800, whiteSpace: 'nowrap' }}>메뉴 글자</span>
+      <button type="button" onClick={() => onChange(Math.max(11, value - 1))} aria-label="메뉴 글자 축소" style={toolbarSizeButtonStyle}>A−</button>
+      <strong style={{ minWidth: 32, textAlign: 'center' }}>{value}px</strong>
+      <button type="button" onClick={() => onChange(Math.min(18, value + 1))} aria-label="메뉴 글자 확대" style={toolbarSizeButtonStyle}>A+</button>
+    </div>
+  );
+}
+
 function AlignLeftIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
@@ -1080,4 +1114,11 @@ const editorWrapStyle = {
   maxHeight: 100,
   overflowY: 'auto',
   background: '#fff',
+};
+
+const toolbarSizeButtonStyle = {
+  height: 24, padding: '0 6px',
+  border: '1px solid #bfdbfe', borderRadius: 5,
+  background: '#fff', color: '#1d4ed8',
+  fontWeight: 900, cursor: 'pointer',
 };
