@@ -1,7 +1,4 @@
-import { Handle, Position, NodeResizer } from '@xyflow/react';
-
-const resizerHandle = { width: 9, height: 9, borderRadius: 3, border: '1.5px solid #94a3b8', background: '#fff' };
-const resizerLine = { borderColor: '#94a3b8', borderWidth: 1 };
+import BackgroundNodeFrame from './BackgroundNodeFrame';
 
 const CERTAINTY_STYLE = {
   confirmed: { label: '★확정', color: '#1d4ed8', bg: '#dbeafe' },
@@ -9,25 +6,21 @@ const CERTAINTY_STYLE = {
   debated:   { label: '논쟁',  color: '#b45309', bg: '#fef3c7' },
 };
 
-export default function PeriodNode({ data, selected }) {
+export default function PeriodNode({ id, data, selected }) {
   const fontSize = data.fontSize || 14;
   const cert = CERTAINTY_STYLE[data.certainty] || CERTAINTY_STYLE.estimated;
 
   return (
-    <div style={{
-      background: 'linear-gradient(135deg, #ede9fe, #ddd6fe)',
-      border: `2px solid ${selected ? '#4338ca' : '#6d28d9'}`,
-      borderRadius: 16,
-      padding: '10px 16px',
-      width: '100%',
-      minWidth: 180,
-      boxSizing: 'border-box',
-      boxShadow: selected
-        ? '0 0 0 2px #4338ca60, 0 2px 10px rgba(67,56,202,0.25)'
-        : '0 2px 8px rgba(109,40,217,0.15)',
-    }}>
-      <NodeResizer color="#6d28d9" isVisible={selected} minWidth={160} minHeight={60} handleStyle={resizerHandle} lineStyle={resizerLine} />
-      <div className="nodrag nopan" style={{ userSelect: 'text', WebkitUserSelect: 'text', cursor: 'text' }}>
+    <BackgroundNodeFrame
+      id={id}
+      selected={selected}
+      title="시대"
+      icon="🕰️"
+      accent="#6d28d9"
+      headerBackground="#ede9fe"
+      minWidth={190}
+      minHeight={80}
+    >
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
         <span style={{ fontSize: 16 }}>🕰️</span>
         <span style={{ fontWeight: 700, fontSize, color: '#3730a3', flex: 1 }}>
@@ -84,12 +77,6 @@ export default function PeriodNode({ data, selected }) {
           ✏️ {data.notes}
         </div>
       )}
-      </div>
-
-      <Handle type="target" position={Position.Top} style={{ background: '#6d28d9' }} />
-      <Handle type="source" position={Position.Bottom} style={{ background: '#6d28d9' }} />
-      <Handle type="target" position={Position.Left} style={{ background: '#6d28d9' }} />
-      <Handle type="source" position={Position.Right} style={{ background: '#6d28d9' }} />
-    </div>
+    </BackgroundNodeFrame>
   );
 }
