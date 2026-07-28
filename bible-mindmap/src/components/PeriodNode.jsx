@@ -1,4 +1,5 @@
 import BackgroundNodeFrame from './BackgroundNodeFrame';
+import BibleReferenceTags from './BibleReferenceTags';
 
 const CERTAINTY_STYLE = {
   confirmed: { label: '★확정', color: '#1d4ed8', bg: '#dbeafe' },
@@ -49,19 +50,11 @@ export default function PeriodNode({ id, data, selected }) {
         </ul>
       )}
 
-      {data.bibleTags && data.bibleTags.length > 0 && (
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
-          {data.bibleTags.map((tag, i) => (
-            <span key={i} style={{
-              fontSize: Math.max(10, fontSize - 2), fontWeight: 700,
-              background: '#ede9fe', color: '#3730a3',
-              border: '1px solid #c4b5fd',
-              borderRadius: 10, padding: '2px 8px',
-              lineHeight: 1.6,
-            }}>📖 {tag}</span>
-          ))}
-        </div>
-      )}
+      <BibleReferenceTags
+        tags={data.bibleTags}
+        fontSize={fontSize}
+        palette={{ background: '#ede9fe', color: '#3730a3', border: '#c4b5fd' }}
+      />
 
       {data.notes && (
         <div style={{
