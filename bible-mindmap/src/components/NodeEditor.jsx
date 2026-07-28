@@ -201,7 +201,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   // 동시대 인물 검색
   const handleSearchContemporaries = async () => {
     if (!hasNode || nodeType !== 'person') return;
-    const { wikidataId, birthYear, deathYear } = editData || {};
+    const { wikidataId, birthYear, deathYear, testament } = editData || {};
     if (!wikidataId || (birthYear == null && deathYear == null)) {
       setContError('연대 정보가 없어 검색할 수 없습니다.');
       setContemporaries([]);
@@ -210,7 +210,12 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     setContemporaries('loading');
     setContError('');
     try {
-      const results = await searchContemporaries(wikidataId, birthYear ?? null, deathYear ?? null);
+      const results = await searchContemporaries(
+        wikidataId,
+        birthYear ?? null,
+        deathYear ?? null,
+        testament || 'all',
+      );
       setContemporaries(results);
       if (results.length === 0) setContError('해당 시대 인물을 찾지 못했습니다.');
     } catch (err) {
@@ -931,31 +936,48 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
                   border: '1px solid #bfdbfe', borderRadius: 6, background: '#f8fafc',
                   maxHeight: 200, overflowY: 'auto',
                 }}>
-                  {contemporaries.map((p) => (
-                    <div key={p.id} style={{
-                      display: 'flex', alignItems: 'center', gap: 6,
-                      padding: '5px 8px', borderBottom: '1px solid #e2e8f0',
-                    }}>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 11, fontWeight: 700, color: '#065f46', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          👤 {p.name}
+                  {['biblical', 'historical'].map((category) => {
+                    const group = contemporaries.filter((p) => p.category === category);
+                    if (group.length === 0) return null;
+                    const isBiblical = category === 'biblical';
+                    return (
+                      <div key={category}>
+                        <div style={{
+                          padding: '5px 8px', fontSize: 10, fontWeight: 800,
+                          color: isBiblical ? '#065f46' : '#92400e',
+                          background: isBiblical ? '#ecfdf5' : '#fffbeb',
+                          borderBottom: '1px solid #e2e8f0',
+                        }}>
+                          {isBiblical ? '📖 성경 본문 동시대 인물' : '🏛️ 역사 인물 · 연대 추정'}
                         </div>
-                        {(p.birthDate || p.deathDate) && (
-                          <div style={{ fontSize: 9, color: '#6b7280' }}>
-                            {p.birthDate && p.deathDate ? `${p.birthDate} – ${p.deathDate}` : p.birthDate || p.deathDate}
+                        {group.map((p) => (
+                          <div key={p.id} style={{
+                            display: 'flex', alignItems: 'center', gap: 6,
+                            padding: '5px 8px', borderBottom: '1px solid #e2e8f0',
+                          }}>
+                            <div style={{ flex: 1, minWidth: 0 }}>
+                              <div style={{ fontSize: 11, fontWeight: 700, color: isBiblical ? '#065f46' : '#92400e', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                👤 {p.name}
+                              </div>
+                              {(p.birthDate || p.deathDate) && (
+                                <div style={{ fontSize: 9, color: '#6b7280' }}>
+                                  {p.birthDate && p.deathDate ? `${p.birthDate} – ${p.deathDate}` : p.birthDate || p.deathDate}
+                                </div>
+                              )}
+                            </div>
+                            <button
+                              onClick={() => onAddContemporary && onAddContemporary(p, selectedNode?.id)}
+                              style={{
+                                padding: '3px 8px', fontSize: 11, fontWeight: 700,
+                                background: isBiblical ? '#059669' : '#d97706', color: '#fff',
+                                border: 'none', borderRadius: 4, cursor: 'pointer', flexShrink: 0,
+                              }}
+                            >+ 추가</button>
                           </div>
-                        )}
+                        ))}
                       </div>
-                      <button
-                        onClick={() => onAddContemporary && onAddContemporary(p, selectedNode?.id)}
-                        style={{
-                          padding: '3px 8px', fontSize: 11, fontWeight: 700,
-                          background: '#059669', color: '#fff',
-                          border: 'none', borderRadius: 4, cursor: 'pointer', flexShrink: 0,
-                        }}
-                      >+ 추가</button>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               )}
             </div>

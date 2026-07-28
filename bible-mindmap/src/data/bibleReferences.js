@@ -58,6 +58,39 @@ export function getBibleTags(wikidataId) {
   return BIBLE_REFS[wikidataId] || [];
 }
 
+// 성경 본문 안에서 이름이 변경되거나 함께 사용되는 주요 인물 이름.
+// 검색은 어느 이름으로 입력해도 canonicalName 기준으로 통합한다.
+export const BIBLICAL_NAME_ALIASES = [
+  { aliases: ['아브람', 'Abram'], canonicalName: '아브라함', qid: 'Q9181', note: '아브람에서 아브라함으로 이름이 변경됨', reference: '창세기 17:5' },
+  { aliases: ['사래', 'Sarai'], canonicalName: '사라', qid: 'Q259830', note: '사래에서 사라로 이름이 변경됨', reference: '창세기 17:15' },
+  { aliases: ['야곱', 'Jacob'], canonicalName: '이스라엘', qid: 'Q193703', note: '야곱에게 이스라엘이라는 이름이 주어짐', reference: '창세기 32:28; 35:10' },
+  { aliases: ['호세아', 'Hoshea'], canonicalName: '여호수아', qid: 'Q25324', note: '모세가 호세아를 여호수아라 부름', reference: '민수기 13:16' },
+  { aliases: ['기드온', 'Gideon'], canonicalName: '여룹바알', qid: 'Q213538', note: '기드온이 여룹바알이라 불림', reference: '사사기 6:32' },
+  { aliases: ['하닷사', 'Hadassah'], canonicalName: '에스더', qid: 'Q45765', note: '하닷사의 페르시아식 이름이 에스더임', reference: '에스더 2:7' },
+  { aliases: ['시몬', '게바', 'Simon', 'Cephas'], canonicalName: '베드로', qid: 'Q33923', note: '시몬에게 게바·베드로라는 이름이 주어짐', reference: '요한복음 1:42' },
+  { aliases: ['사울', 'Saul of Tarsus'], canonicalName: '바울', qid: 'Q9200', note: '사울과 바울은 같은 인물의 유대식·로마식 이름', reference: '사도행전 13:9' },
+  { aliases: ['요셉 바사바', '바사바'], canonicalName: '유스도', qid: null, note: '요셉이 바사바·유스도라는 이름으로도 불림', reference: '사도행전 1:23' },
+];
+
+function normalizeName(value) {
+  return String(value || '').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+}
+
+export function resolveBiblicalName(query) {
+  const normalized = normalizeName(query);
+  const match = BIBLICAL_NAME_ALIASES.find((entry) =>
+    normalizeName(entry.canonicalName) === normalized
+    || entry.aliases.some((alias) => normalizeName(alias) === normalized),
+  );
+  return match
+    ? { query: match.canonicalName, matchedName: String(query).trim(), ...match }
+    : { query: String(query || '').trim(), matchedName: null };
+}
+
+export function getBiblicalNameInfo(wikidataId) {
+  return BIBLICAL_NAME_ALIASES.find((entry) => entry.qid && entry.qid === wikidataId) || null;
+}
+
 // ── 정적 장소-인물 보완 매핑 ──────────────────────────────────────────────────
 // Wikidata 데이터 공백 보완: P19/P551이 해당 장소로 직접 연결되지 않는 주요 인물
 // 예) 아브라함 P19 없음, P551 = 메소포타미아(Q11767) → 우르 검색 시 누락

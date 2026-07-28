@@ -652,6 +652,20 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               renderDetail={(d) => (
                 <>
                   <div style={detailRow}><b>이름</b> {d.name}</div>
+                  {d.category === 'historical' && (
+                    <div style={{ ...detailRow, color: '#92400e', fontWeight: 700 }}>
+                      🏛️ 역사 인물 · 연대 추정 (성경 본문 직접 등장 인물 아님)
+                    </div>
+                  )}
+                  {d.nameChangeNote && (
+                    <div style={{
+                      margin: '5px 0', padding: '6px 8px', borderRadius: 6,
+                      background: '#eef2ff', color: '#3730a3', fontSize: 10,
+                    }}>
+                      <b>이름 변경:</b> {d.matchedName && d.matchedName !== d.name ? `${d.matchedName} → ${d.name}` : d.nameChangeNote}
+                      <div style={{ marginTop: 2 }}>{d.nameChangeNote} · {d.nameChangeReference}</div>
+                    </div>
+                  )}
                   {d.birthDate && <div style={detailRow}><b>출생</b> {d.birthDate}</div>}
                   {d.deathDate && <div style={detailRow}><b>사망</b> {d.deathDate}</div>}
                   {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
@@ -660,7 +674,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               )}
             />
             <button onClick={handleAdd} disabled={!bgDetail} style={{ ...btnStyle, background: '#059669', opacity: bgDetail ? 1 : 0.4 }}>
-              + 인물 추가
+              + {bgDetail?.category === 'historical' ? '역사 인물' : '성경 인물'} 추가
             </button>
           </div>
         )}
@@ -1017,7 +1031,7 @@ function WikidataSearchUI({ query, setQuery, results, selected, onSelect, detail
         >
           {results.map((r) => (
             <option key={r.id} value={r.id}>
-              {r.label} {r.description ? `— ${r.description.slice(0, 40)}` : ''}
+              {r.category === 'biblical' ? '[성경]' : r.category === 'historical' ? '[역사·추정]' : ''} {r.label} {r.description ? `— ${r.description.slice(0, 40)}` : ''}
             </option>
           ))}
         </select>

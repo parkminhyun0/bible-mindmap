@@ -425,7 +425,8 @@ export default function App() {
         position: { x: baseX, y: baseY + Math.random() * 40 - 20 },
         data: {
           ...personData,
-          bibleTags: getBibleTags(personData.wikidataId),
+          bibleTags: personData.bibleTags || getBibleTags(personData.wikidataId),
+          category: personData.category || (getBibleTags(personData.wikidataId).length > 0 ? 'biblical' : 'historical'),
         },
       };
       setNodes((nds) => [...nds, newNode]);

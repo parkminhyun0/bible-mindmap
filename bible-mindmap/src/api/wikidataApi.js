@@ -1,4 +1,9 @@
-import { getBibleTags, getStaticPlacePersons } from '../data/bibleReferences.js';
+import {
+  getBibleTags,
+  getBiblicalNameInfo,
+  getStaticPlacePersons,
+  resolveBiblicalName,
+} from '../data/bibleReferences.js';
 
 const BASE = 'https://www.wikidata.org/w/api.php';
 const _cache = new Map();
@@ -19,6 +24,14 @@ function classifyTestament(bibleTags) {
 
 function matchesTestament(itemTestament, requested) {
   return !requested || requested === 'all' || itemTestament === 'both' || itemTestament === requested;
+}
+
+function historicalScopeFromYears(birthYear, deathYear) {
+  const representative = birthYear ?? deathYear;
+  if (representative == null) return null;
+  if (representative < -4) return 'ot';
+  if (representative <= 100) return 'nt';
+  return null;
 }
 
 // wbgetentities/wbsearchentities 공통 fetcher
@@ -91,11 +104,13 @@ const BIBLICAL_PERSON_TYPES = new Set([
 
 export async function searchBiblicalPerson(query, testament = 'all') {
   if (!query.trim()) return [];
+  const resolvedName = resolveBiblicalName(query);
+  const searchQuery = resolvedName.query;
 
   // 1단계: 한국어 + 영어 병행 검색 → 중복 제거 (솔로몬/Solomon, 우르/Ur 동시 커버)
   const [koData, enData] = await Promise.all([
-    apiFetch({ action: 'wbsearchentities', search: query, language: 'ko', uselang: 'ko', type: 'item', limit: '10' }),
-    apiFetch({ action: 'wbsearchentities', search: query, language: 'en', uselang: 'ko', type: 'item', limit: '10' }),
+    apiFetch({ action: 'wbsearchentities', search: searchQuery, language: 'ko', uselang: 'ko', type: 'item', limit: '10' }),
+    apiFetch({ action: 'wbsearchentities', search: searchQuery, language: 'en', uselang: 'ko', type: 'item', limit: '10' }),
   ]);
   const seen = new Set();
   const candidates = [...(koData.search || []), ...(enData.search || [])]
@@ -119,10 +134,6 @@ export async function searchBiblicalPerson(query, testament = 'all') {
 
     const claims = e.claims || {};
     const bibleTags = getBibleTags(qid);
-    // 검색 결과는 성경 본문 근거가 검증·등록된 항목만 허용한다.
-    if (bibleTags.length === 0) continue;
-    const itemTestament = classifyTestament(bibleTags);
-    if (!matchesTestament(itemTestament, testament)) continue;
     const types = (claims.P31 || []).map((s) => s.mainsnak?.datavalue?.value?.id).filter(Boolean);
 
     const isBiblical    = types.includes('Q41940') || types.includes('Q20643955');
@@ -146,6 +157,19 @@ export async function searchBiblicalPerson(query, testament = 'all') {
     if (!isBiblical && birthYear !== null && birthYear > 500) continue;
     if (!isBiblical && deathYear !== null && deathYear > 500) continue;
 
+    const category = bibleTags.length > 0 ? 'biblical' : 'historical';
+    const itemTestament = category === 'biblical'
+      ? classifyTestament(bibleTags)
+      : historicalScopeFromYears(birthYear, deathYear);
+    if (!itemTestament || !matchesTestament(itemTestament, testament)) continue;
+    const nameInfo = category === 'biblical'
+      ? (
+        resolvedName.qid === qid
+          ? resolvedName
+          : getBiblicalNameInfo(qid)
+      )
+      : null;
+
     const label = e.labels?.ko?.value || e.labels?.en?.value || qid;
     const desc  = e.descriptions?.ko?.value || e.descriptions?.en?.value || '';
 
@@ -164,14 +188,22 @@ export async function searchBiblicalPerson(query, testament = 'all') {
       deathYear,
       bibleTags,
       testament: itemTestament,
-      source: '성경 본문 + Wikidata 식별자',
-      verified: true,
+      category,
+      nameAliases: nameInfo?.aliases || [],
+      nameChangeNote: nameInfo?.note || null,
+      nameChangeReference: nameInfo?.reference || null,
+      matchedName: resolvedName.matchedName,
+      source: category === 'biblical' ? '성경 본문 + Wikidata 식별자' : 'Wikidata 역사 연대',
+      verified: category === 'biblical',
     });
 
     if (results.length >= 5) break;
   }
 
-  return results;
+  return results.sort((a, b) => {
+    if (a.category !== b.category) return a.category === 'biblical' ? -1 : 1;
+    return 0;
+  });
 }
 
 // ── 장소 연관 인물 검색 ──────────────────────────────────────────────────────
@@ -300,9 +332,9 @@ export async function searchPersonsAtPlace(wikidataId) {
 }
 
 // ── 동시대 인물 검색 ─────────────────────────────────────────────────────────
-// SPARQL로 같은 시대에 활동한 성경 인물 검색 (±150년 범위)
+// SPARQL로 같은 시대에 활동한 성경·역사 인물 검색 (±150년 범위)
 // birthYear/deathYear 는 숫자 (BC=음수)
-export async function searchContemporaries(wikidataId, birthYear, deathYear) {
+export async function searchContemporaries(wikidataId, birthYear, deathYear, testament = 'all') {
   // 기준 연도 결정
   const mid = birthYear !== null ? birthYear : (deathYear !== null ? deathYear - 30 : null);
   if (mid === null) return [];
@@ -311,10 +343,9 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear) {
   const endY   = mid + 150;
 
   const sparql = `
-    SELECT DISTINCT ?person ?personLabel ?birth ?death WHERE {
-      { ?person wdt:P31 wd:Q20643955. }
-      UNION
-      { ?person wdt:P31 wd:Q41940. }
+    SELECT DISTINCT ?person ?personLabel ?personDescription ?birth ?death WHERE {
+      VALUES ?type { wd:Q20643955 wd:Q41940 wd:Q9430 wd:Q29645880 wd:Q5 }
+      ?person wdt:P31 ?type.
       OPTIONAL { ?person wdt:P569 ?birth. }
       OPTIONAL { ?person wdt:P570 ?death. }
       FILTER(?person != wd:${wikidataId})
@@ -325,7 +356,7 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear) {
       SERVICE wikibase:label { bd:serviceParam wikibase:language "ko,en". }
     }
     ORDER BY ASC(COALESCE(YEAR(?birth), YEAR(?death)))
-    LIMIT 10
+    LIMIT 40
   `;
 
   const url = `https://query.wikidata.org/sparql?query=${encodeURIComponent(sparql)}&format=json`;
@@ -333,7 +364,7 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear) {
   if (!res.ok) throw new Error(`SPARQL ${res.status}`);
   const data = await res.json();
 
-  return (data.results?.bindings || []).map((b) => {
+  const results = (data.results?.bindings || []).map((b) => {
     const qid = b.person?.value?.split('/').pop() || '';
     const parseSparql = (s) => {
       if (!s) return null;
@@ -350,18 +381,45 @@ export async function searchContemporaries(wikidataId, birthYear, deathYear) {
       const y = parseInt(abs.split('-')[0], 10);
       return (!y || isNaN(y)) ? null : (bc ? -y : y);
     };
+    const bibleTags = getBibleTags(qid);
+    const category = bibleTags.length > 0 ? 'biblical' : 'historical';
+    const itemTestament = category === 'biblical'
+      ? classifyTestament(bibleTags)
+      : historicalScopeFromYears(
+        sparqlYear(b.birth?.value),
+        sparqlYear(b.death?.value),
+      );
+    const nameInfo = category === 'biblical' ? getBiblicalNameInfo(qid) : null;
     return {
       id: qid,
       wikidataId: qid,
       name: b.personLabel?.value || qid,
-      description: '',
+      label: b.personLabel?.value || qid,
+      description: b.personDescription?.value || '',
       birthDate: parseSparql(b.birth?.value),
       deathDate: parseSparql(b.death?.value),
       birthYear: sparqlYear(b.birth?.value),
       deathYear: sparqlYear(b.death?.value),
-      source: 'Wikidata',
+      bibleTags,
+      testament: itemTestament,
+      category,
+      nameAliases: nameInfo?.aliases || [],
+      nameChangeNote: nameInfo?.note || null,
+      nameChangeReference: nameInfo?.reference || null,
+      source: category === 'biblical' ? '성경 본문 + Wikidata 식별자' : 'Wikidata 역사 연대',
+      verified: category === 'biblical',
     };
-  }).filter((r) => r.name && r.name !== r.wikidataId); // 라벨 없는 결과 제거
+  }).filter((r) =>
+    r.name
+    && r.name !== r.wikidataId
+    && r.testament
+    && (r.category === 'historical' || matchesTestament(r.testament, testament))
+  );
+
+  const deduped = [...new Map(results.map((item) => [item.wikidataId, item])).values()];
+  const biblical = deduped.filter((item) => item.category === 'biblical').slice(0, 10);
+  const historical = deduped.filter((item) => item.category === 'historical').slice(0, 10);
+  return [...biblical, ...historical];
 }
 
 // ── 장소 검색 ────────────────────────────────────────────────────────────────
