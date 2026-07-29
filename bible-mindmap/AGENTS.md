@@ -2,6 +2,23 @@
 
 **모든 AI 에이전트(Claude·ChatGPT 등)는 이 저장소에서 작업하기 전에 이 파일을 반드시 읽고 준수합니다.** 관련 원칙 문서는 Notion 「🏗 시스템 아키텍처 / 📜 정책·규칙」에 동기화됩니다.
 
+## 📌 어떻게 강제되는가
+
+- **자동 읽기**: `AGENTS.md`는 OpenAI Codex·Cursor·Aider·Claude Code 등 최신 코딩 에이전트가 세션 시작 시 저장소 루트에서 **자동으로 읽는 표준 파일**입니다. 별도 명령 불필요.
+- **자동 차단(하드 게이트)**: 위 원칙을 어긴 커밋이 push되면 CI post-build 스텝 `scripts/guard-no-source-mutation.mjs`가 감지해 **배포를 자동 차단**합니다. 문서를 읽지 않은 에이전트도 실질적으로 라이브 반영 불가.
+- **PR 체크리스트**: `.github/PULL_REQUEST_TEMPLATE.md`가 모든 PR에 원칙 체크리스트를 자동 표시합니다.
+
+## 🧷 사용자용 세션 시작 스니펫 (수동 리마인더가 필요할 때)
+
+일반 ChatGPT 웹처럼 저장소를 자동 읽지 못하는 환경이면 세션 시작 시 아래 한 문장을 붙여넣으세요:
+
+```
+이 저장소에서 작업하기 전에 반드시 bible-mindmap/AGENTS.md를 먼저 읽고,
+'빌드타임 소스 변형 금지'와 릴리스 워크플로우(로컬→커밋→푸시→CI→verify:deploy→
+Notion→대시보드 LIVE 마지막 갱신)를 준수해. 위반 시 CI post-build
+guard-no-source-mutation.mjs가 배포를 자동 차단해.
+```
+
 ## 🚫 금지 안티패턴 (반복 사고 방지)
 
 ### 1. 빌드타임 소스 변형 금지
