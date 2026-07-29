@@ -23,7 +23,7 @@ import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdg
 import NodeEditor from './components/NodeEditor';
 import CitationSuggest from './components/CitationSuggest';
 import useHistory from './hooks/useHistory';
-import useMobile from './hooks/useMobile';
+import { useDeviceProfile } from './hooks/useMobile';
 import { fetchAllTranslations } from './api/bibleApi';
 import { formatReference, parseReference } from './utils/citationDetector';
 import { isOT } from './data/bibleBooks';
@@ -225,7 +225,8 @@ export default function App() {
   const [edgeDash, setEdgeDash] = useState('');
   const [selectedNodeId, setSelectedNodeId] = useState(null);
   const [selectedEdgeId, setSelectedEdgeId] = useState(null);
-  const isMobile = useMobile();
+  const deviceProfile = useDeviceProfile();
+  const isMobile = deviceProfile.layout === 'mobile';
   const [savePanelOpen, setSavePanelOpen] = useState(!isMobile);
   const [docPanelOpen, setDocPanelOpen] = useState(false);
   const [docSaveKey, setDocSaveKey] = useState(0);
@@ -239,6 +240,23 @@ export default function App() {
   const [backgroundBibleRef, setBackgroundBibleRef] = useState(null);
   const idCounter = useRef(100);
   const reactFlowRef = useRef(null);
+  const previousLayoutRef = useRef(deviceProfile.layout);
+
+  useEffect(() => {
+    const previousLayout = previousLayoutRef.current;
+    if (previousLayout === deviceProfile.layout) return;
+    previousLayoutRef.current = deviceProfile.layout;
+
+    if (deviceProfile.layout === 'mobile') {
+      setSavePanelOpen(false);
+      setDocPanelOpen(false);
+      setMobileSidebarOpen(false);
+      setShowEdgeOptions(false);
+    } else {
+      setMobileSidebarOpen(false);
+      setSavePanelOpen(true);
+    }
+  }, [deviceProfile.layout]);
 
   useEffect(() => {
     let cancelled = false;
@@ -730,7 +748,12 @@ export default function App() {
         setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
       },
     }}>
-    <div className="app-shell" style={{ display: 'flex',
+    <div
+      className={`app-shell app-shell--${deviceProfile.layout}`}
+      data-device={deviceProfile.device}
+      data-layout={deviceProfile.layout}
+      data-orientation={deviceProfile.orientation}
+      style={{ display: 'flex',
       fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
       {(!isMobile || mobileSidebarOpen) && (
         <Suspense fallback={<div className="deferred-feature-loading">입력 도구를 불러오는 중…</div>}>
@@ -749,6 +772,7 @@ export default function App() {
 
       <div className="app-canvas-shell" style={{ flex: 1, position: 'relative' }}>
         <NodeEditor
+          isMobile={isMobile}
           selectedNode={selectedNode}
           onUpdateNode={handleUpdateNode}
           onDeleteNode={handleDeleteNode}

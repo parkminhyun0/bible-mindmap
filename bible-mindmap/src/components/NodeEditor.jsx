@@ -1,5 +1,4 @@
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
-import useMobile from '../hooks/useMobile';
 import { searchContemporaries, searchPersonsAtPlace } from '../api/wikidataApi';
 import { fetchCrossRefs } from '../api/crossrefApi';
 import { useEditor, EditorContent } from '@tiptap/react';
@@ -42,7 +41,11 @@ const TRANSLATION_TABS = [
 ];
 const TOOLBAR_FONT_STORAGE_KEY = 'bible-mindmap-toolbar-font-size';
 
-export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
+function isEditorUsable(editor) {
+  return !!editor && !editor.isDestroyed;
+}
+
+export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
   const [editData, setEditData] = useState(null);
   const [, setTick] = useState(0);
   const [tagInput, setTagInput] = useState('');
@@ -69,6 +72,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   const [parallelOpen, setParallelOpen] = useState(false);
 
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit,
       Underline,
@@ -83,7 +87,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   });
 
   useEffect(() => {
-    if (!editor) return;
+    if (!isEditorUsable(editor)) return;
     if (!selectedNode) {
       setEditData(null);
       lastLocalEditRef.current = { nodeId: null, tab: null, html: null };
@@ -120,15 +124,15 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     if (last.nodeId === selectedNode.id && last.tab === activeTab && last.html === html) {
       return;
     }
-    if (editor.getHTML() !== html) {
+    if (isEditorUsable(editor) && editor.getHTML() !== html) {
       editor.commands.setContent(html);
     }
   }, [selectedNode, editor]);
 
   useEffect(() => {
-    if (!editor) return;
+    if (!isEditorUsable(editor)) return;
     const handler = () => {
-      if (!selectedNode) return;
+      if (!selectedNode || !isEditorUsable(editor)) return;
       const html = editor.getHTML();
       const activeTab = editData?.activeTab || 'krv';
       const hasTranslations = !!editData?.bookId;
@@ -148,7 +152,9 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
       }
     };
     editor.on('update', handler);
-    return () => editor.off('update', handler);
+    return () => {
+      if (!editor.isDestroyed) editor.off('update', handler);
+    };
   }, [editor, selectedNode?.id, editData, onUpdateNode]);
 
   const hasNode = !!selectedNode && !!editData;
@@ -163,7 +169,23 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     onUpdateNode(selectedNode.id, next);
   };
 
-  const isActive = (name, attrs) => editor?.isActive(name, attrs) || false;
+  const runEditorCommand = (command) => {
+    if (!isEditorUsable(editor)) return false;
+    try {
+      command(editor);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+  const isActive = (name, attrs) => {
+    if (!isEditorUsable(editor)) return false;
+    try {
+      return editor.isActive(name, attrs);
+    } catch {
+      return false;
+    }
+  };
   const activeTabId = editData?.activeTab || 'krv';
   const canPair = hasNode && !!editData?.bookId && nodeType === 'verse';
 
@@ -275,7 +297,6 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
     };
     setParallelOpen(false);
   };
-  const isMobile = useMobile();
   const disabledOpacity = disabled ? 0.4 : 1;
 
   // 모바일: 노드 선택 시 편집 시트의 primary 입력을 자동 포커스해서 소프트 키보드 오픈
@@ -413,7 +434,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
               onPointerDown={(e) => e.stopPropagation()}
               onTouchStart={(e) => e.stopPropagation()}
               onTouchEnd={(e) => e.stopPropagation()}
-              onClick={() => editor?.chain().focus().run()}
+              onClick={() => runEditorCommand((instance) => instance.chain().focus().run())}
             >
               <EditorContent editor={editor} />
             </div>
@@ -563,22 +584,22 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
         {/* Inline formatting */}
         <div style={sectionStyle}>
           <button
-            onMouseDown={(e) => { e.preventDefault(); if (!disabled) editor?.chain().focus().toggleBold().run(); }}
+            onMouseDown={(e) => { e.preventDefault(); if (!disabled) runEditorCommand((instance) => instance.chain().focus().toggleBold().run()); }}
             style={{ ...fmtBtnStyle, fontWeight: 900, ...(isActive('bold') ? activeStyle : {}) }}
             title="굵게 (Ctrl+B)"
           >B</button>
           <button
-            onMouseDown={(e) => { e.preventDefault(); if (!disabled) editor?.chain().focus().toggleItalic().run(); }}
+            onMouseDown={(e) => { e.preventDefault(); if (!disabled) runEditorCommand((instance) => instance.chain().focus().toggleItalic().run()); }}
             style={{ ...fmtBtnStyle, fontStyle: 'italic', fontFamily: 'Georgia, serif', ...(isActive('italic') ? activeStyle : {}) }}
             title="기울임 (Ctrl+I)"
           >I</button>
           <button
-            onMouseDown={(e) => { e.preventDefault(); if (!disabled) editor?.chain().focus().toggleUnderline().run(); }}
+            onMouseDown={(e) => { e.preventDefault(); if (!disabled) runEditorCommand((instance) => instance.chain().focus().toggleUnderline().run()); }}
             style={{ ...fmtBtnStyle, textDecoration: 'underline', ...(isActive('underline') ? activeStyle : {}) }}
             title="밑줄 (Ctrl+U)"
           >U</button>
           <button
-            onMouseDown={(e) => { e.preventDefault(); if (!disabled) editor?.chain().focus().toggleStrike().run(); }}
+            onMouseDown={(e) => { e.preventDefault(); if (!disabled) runEditorCommand((instance) => instance.chain().focus().toggleStrike().run()); }}
             style={{ ...fmtBtnStyle, textDecoration: 'line-through', ...(isActive('strike') ? activeStyle : {}) }}
             title="취소선"
           >S</button>
@@ -595,7 +616,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
           ].map((a) => (
             <button
               key={a.value}
-              onMouseDown={(e) => { e.preventDefault(); if (!disabled) editor?.chain().focus().setTextAlign(a.value).run(); }}
+              onMouseDown={(e) => { e.preventDefault(); if (!disabled) runEditorCommand((instance) => instance.chain().focus().setTextAlign(a.value).run()); }}
               style={{
                 ...fmtBtnStyle, width: 26,
                 ...(isActive({ textAlign: a.value }) ? activeStyle : {}),
@@ -621,8 +642,8 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
               onMouseDown={(e) => {
                 e.preventDefault();
                 if (disabled) return;
-                if (c.value === '#1e293b') editor?.chain().focus().unsetColor().run();
-                else editor?.chain().focus().setColor(c.value).run();
+                if (c.value === '#1e293b') runEditorCommand((instance) => instance.chain().focus().unsetColor().run());
+                else runEditorCommand((instance) => instance.chain().focus().setColor(c.value).run());
               }}
               style={{
                 width: 16, height: 16, borderRadius: '50%',
