@@ -66,7 +66,7 @@ export default defineConfig({
             urlPattern: /\/bible-mindmap\/app\/(?:index\.html)?(?:\?.*)?$/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'bm-app-html-v3',
+              cacheName: 'bm-app-html-v4',
               networkTimeoutSeconds: 4,
               expiration: { maxEntries: 3, maxAgeSeconds: 60 * 60 * 24 },
               cacheableResponse: { statuses: [200] },
@@ -79,7 +79,7 @@ export default defineConfig({
             urlPattern: /\/bible-mindmap\/app\/assets\/.+\.js$/,
             handler: 'StaleWhileRevalidate',
             options: {
-              cacheName: 'bm-feature-chunks-v2',
+              cacheName: 'bm-feature-chunks-v3',
               expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 7 },
               cacheableResponse: { statuses: [200] },
             },

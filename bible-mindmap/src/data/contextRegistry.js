@@ -1,5 +1,5 @@
 import { ALL_BOOKS } from './bibleBooks.js';
-import { BOOK_CONTEXTS as SPECIALIZED_BOOK_CONTEXTS, GNT_DISCOURSE_RULES } from './bookContext.js';
+import { BOOK_CONTEXTS as SPECIALIZED_BOOK_CONTEXTS, GNT_DISCOURSE_RULES, HEBREW_NARRATIVE_RULES } from './bookContext.js';
 import { buildExpandedContext } from './expandedContextEngine.js';
 import { EXPANDED_OT1 } from './expandedProfilesOT1.js';
 import { EXPANDED_OT2 } from './expandedProfilesOT2.js';
@@ -8,7 +8,10 @@ import { adaptContextToV2, applyChapterDetails, auditContextV2 } from './context
 import { CURATED_CHAPTER_DETAILS } from './curatedChapterDetails.js';
 
 const EXPANDED_BOOK_PROFILES = { ...EXPANDED_OT1, ...EXPANDED_OT2, ...EXPANDED_NT };
-const FALLBACK_OT_RULES = [];
+// 구약(히브리어) 신호어 자동감지 규칙 — 전문 4권(창·출·레·룻) 외 구조화/fallback OT
+// 전권에도 동일 적용해야 [배경]의 원어 신호어가 66권 모두에서 작동한다.
+// (Strong H-번호 + 모폴로지 기반이라 어느 히브리 서사·산문에나 통용)
+const OT_DISCOURSE_RULES = HEBREW_NARRATIVE_RULES;
 const COLORS = ['#7c3aed','#dc2626','#059669','#0369a1','#d97706','#0891b2'];
 
 function normalizeArcSet(context) {
@@ -47,7 +50,7 @@ function makeFallbackContext(book, index) {
       testament,
     },
     chapters: book.chapters,
-    discourseRules: testament === 'NT' ? GNT_DISCOURSE_RULES : FALLBACK_OT_RULES,
+    discourseRules: testament === 'NT' ? GNT_DISCOURSE_RULES : OT_DISCOURSE_RULES,
     manualDiscourse: {},
     theoTerms: {},
     meta: {
@@ -135,7 +138,7 @@ const BASE_CONTEXTS = Object.fromEntries(
     if (specialized) return [book.id, normalizeArcSet(specialized)];
 
     const profile = EXPANDED_BOOK_PROFILES[book.id];
-    const baseRules = index < 39 ? FALLBACK_OT_RULES : GNT_DISCOURSE_RULES;
+    const baseRules = index < 39 ? OT_DISCOURSE_RULES : GNT_DISCOURSE_RULES;
     const expanded = profile ? buildExpandedContext(book, index, profile, baseRules) : null;
     return [book.id, normalizeArcSet(expanded || makeFallbackContext(book, index))];
   }),
