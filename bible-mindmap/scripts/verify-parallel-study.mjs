@@ -87,11 +87,11 @@ if (canCompareOriginalLanguages('Gen', 'Exod', isOT) !== true) {
 const modalPath = path.resolve(__dirname, '../src/components/ParallelStudyModal.jsx');
 const relatedPath = path.resolve(__dirname, '../src/components/RelatedPassagePopup.jsx');
 const launcherPath = path.resolve(__dirname, '../src/components/ParallelStudyLauncher.jsx');
-const mainPath = path.resolve(__dirname, '../src/main.jsx');
+const sidebarPath = path.resolve(__dirname, '../src/components/Sidebar.jsx');
 const modalSource = fs.readFileSync(modalPath, 'utf8');
 const relatedSource = fs.readFileSync(relatedPath, 'utf8');
 const launcherSource = fs.readFileSync(launcherPath, 'utf8');
-const mainSource = fs.readFileSync(mainPath, 'utf8');
+const sidebarSource = fs.readFileSync(sidebarPath, 'utf8');
 
 for (const marker of ['data-parallel-study', '공통·추가·생략·어순', '히브리어 OT ↔ 헬라어 NT']) {
   if (!modalSource.includes(marker)) fail(`ParallelStudyModal 필수 안전/UX 마커 누락: ${marker}`);
@@ -111,11 +111,15 @@ if (!launcherSource.includes('minHeight: 44') || !launcherSource.includes("touch
 if (!launcherSource.includes("lazy(() => import('./ParallelStudyModal'))")) {
   fail('독립 병렬연구 버튼 → ParallelStudyModal 연결 누락');
 }
-if (!mainSource.includes("import ParallelStudyLauncher from './components/ParallelStudyLauncher.jsx'")) {
-  fail('main.jsx 독립 병렬연구 버튼 import 누락');
+if (!sidebarSource.includes("import ParallelStudyLauncher from './ParallelStudyLauncher'")) {
+  fail('Sidebar 병렬연구 버튼 import 누락 (문맥 성경 아래 배치)');
 }
-if (!mainSource.includes('<ParallelStudyLauncher />')) {
-  fail('main.jsx 독립 병렬연구 버튼 mount 누락');
+const sidebarMountCount = (sidebarSource.match(/<ParallelStudyLauncher\b/g) || []).length;
+if (sidebarMountCount < 3) {
+  fail(`Sidebar 병렬연구 버튼 mount 부족: ${sidebarMountCount}/3 (모바일·태블릿 rail·데스크톱)`);
+}
+if (!sidebarSource.includes('<ParallelStudyLauncher variant="rail" />')) {
+  fail('Sidebar 태블릿 rail용 rail variant 마운트 누락');
 }
 
 console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · relation kinds ${Object.keys(PARALLEL_KIND).length} · independent launcher OK`);

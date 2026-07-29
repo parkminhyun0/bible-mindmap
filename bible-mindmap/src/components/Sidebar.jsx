@@ -10,6 +10,7 @@ import { detectInputMode } from '../utils/wordSearch';
 const ManualModal = lazy(() => import('./ManualModal'));
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const ContextBibleModal = lazy(() => import('./ContextBibleModal'));
+import ParallelStudyLauncher from './ParallelStudyLauncher';
 
 export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
   const isMobile = useMobile();
@@ -267,6 +268,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             >
               📖 문맥 성경
             </button>
+            <div style={{ marginTop: 6 }}>
+              <ParallelStudyLauncher />
+            </div>
           </div>
 
           {/* 원어 다언어 검색 (모바일) */}
@@ -506,6 +510,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 boxShadow: '0 2px 6px rgba(217,119,6,0.4)',
               }}
             >📖</button>
+            <ParallelStudyLauncher variant="rail" />
           </div>
 
           {/* 노드 타입 rail — 아이콘 + 미니 라벨 */}
@@ -690,6 +695,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
         >
           📖 문맥 성경
         </button>
+        <div style={{ marginTop: 8 }}>
+          <ParallelStudyLauncher />
+        </div>
       </div>
 
       {/* ═══ 섹션 2b: 배경 탭 (인물/장소/시대) ═══ */}
