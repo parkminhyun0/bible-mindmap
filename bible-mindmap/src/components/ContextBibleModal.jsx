@@ -8,6 +8,7 @@ import VariantPopup from './VariantPopup';
 import PassageAnnotationPin from './PassageAnnotationPin';
 import { hasVariant, loadBookVariants, isVariantLoaded } from '../data/textualVariants';
 import useResearchAnnotations from '../research/useResearchAnnotations';
+import { getArcExplanation } from '../utils/arcExplanation';
 
 // 책 id → 한글 약어
 const KO_ABBR_BY_ID = {
@@ -304,7 +305,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [hoveredArc, setHoveredArc] = useState(null);
   const [hoveredPivot, setHoveredPivot] = useState(null);
   const [mobileArcVisible, setMobileArcVisible] = useState(false);
-  const [selectedMobileArc, setSelectedMobileArc] = useState(null);
+  const [selectedArc, setSelectedArc] = useState(null);
   // arc hover 시 마우스 y 좌표 추적 → pill이 마우스 근처에 뜸 (어느 지점 hover해도 즉시 정보)
   const [arcMouseY, setArcMouseY] = useState(null);
   const dragging  = useRef(false);
@@ -319,7 +320,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const resizeStart = useRef({ mx:0,my:0,w:0,h:0 });
 
   useEffect(() => {
-    setSelectedMobileArc(null);
+    setSelectedArc(null);
     if (MACRO_STRUCTURE.arcs.length === 0 && MACRO_STRUCTURE.pivots.length === 0) {
       setMobileArcVisible(false);
     }
@@ -997,7 +998,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   aria-pressed={mobileArcVisible}
                   onClick={() => {
                     setMobileArcVisible((visible) => !visible);
-                    setSelectedMobileArc(null);
+                    setSelectedArc(null);
                   }}
                   disabled={MACRO_STRUCTURE.arcs.length === 0 && MACRO_STRUCTURE.pivots.length === 0}
                   title={mobileArcVisible ? 'Arc 숨기기' : 'Arc 보기'}
@@ -1568,7 +1569,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           const bend = Math.min(38, 14 + distance * .035);
                           const controlX = 49 - bend;
                           const path = `M 49 ${arc.y1} C ${controlX} ${arc.y1}, ${controlX} ${arc.y2}, 49 ${arc.y2}`;
-                          const selected = selectedMobileArc === arc.id;
+                          const selected = selectedArc === arc.id;
                           return (
                             <g key={arc.id}>
                               <path
@@ -1589,12 +1590,12 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                 aria-label={`${arc.label} Arc`}
                                 onClick={(event) => {
                                   event.stopPropagation();
-                                  setSelectedMobileArc((current) => current === arc.id ? null : arc.id);
+                                  setSelectedArc((current) => current === arc.id ? null : arc.id);
                                 }}
                                 onKeyDown={(event) => {
                                   if (event.key !== 'Enter' && event.key !== ' ') return;
                                   event.preventDefault();
-                                  setSelectedMobileArc((current) => current === arc.id ? null : arc.id);
+                                  setSelectedArc((current) => current === arc.id ? null : arc.id);
                                 }}
                                 style={{ cursor:'pointer' }}
                               />
@@ -1721,9 +1722,10 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                           const cx = 98 - bend;
                           const path = `M 98 ${a.y1} C ${cx} ${a.y1}, ${cx} ${a.y2}, 98 ${a.y2}`;
                           const isHover = hoveredArc === a.id;
+                          const isSelected = selectedArc === a.id;
                           // pivot hover 시 그 pivot을 endpoint로 하는 arc도 강조 (연결 관계 시각화)
                           const linkedByPivot = hoveredPivot && (a.from === hoveredPivot || a.to === hoveredPivot);
-                          const active = isHover || linkedByPivot;
+                          const active = isHover || isSelected || linkedByPivot;
                           return (
                             <g key={a.id} pointerEvents="auto">
                               <path
@@ -1737,6 +1739,15 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                               <path
                                 d={path}
                                 stroke="transparent" strokeWidth={14} fill="none"
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${a.label} · 연결 근거 보기`}
+                                onClick={() => setSelectedArc((current) => current === a.id ? null : a.id)}
+                                onKeyDown={(event) => {
+                                  if (event.key !== 'Enter' && event.key !== ' ') return;
+                                  event.preventDefault();
+                                  setSelectedArc((current) => current === a.id ? null : a.id);
+                                }}
                                 onMouseEnter={(e) => {
                                   setHoveredArc(a.id);
                                   // arc 진입 시 마우스 y좌표 (SVG 좌표계) 캡처
@@ -1758,7 +1769,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   setHoveredArc(null);
                                   setArcMouseY(null);
                                 }}
-                                style={{ cursor:'default' }} />
+                                style={{ cursor:'pointer' }} />
                             </g>
                           );
                         })}
@@ -1937,6 +1948,16 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                               fontVariantNumeric: 'tabular-nums',
                             }}>
                               {arcEndpoints}
+                            </div>
+                          )}
+                          {hoveredArc && (
+                            <div style={{
+                              marginTop: 4,
+                              fontSize: 8.5,
+                              fontWeight: 600,
+                              color: '#bfdbfe',
+                            }}>
+                              클릭하여 연결 근거·의미 보기
                             </div>
                           )}
                           {/* 오른쪽으로 향하는 화살표 (pivot 방향) */}
@@ -2800,27 +2821,49 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           </div>
         )}
 
-        {/* ── 모바일 Arc 탭 정보 카드 ── */}
-        {isMobile && mobileArcVisible && selectedMobileArc && (() => {
-          const arc = macroLayout.arcs.find((item) => item.id === selectedMobileArc)
-            || MACRO_STRUCTURE.arcs.find((item) => item.id === selectedMobileArc);
+        {/* ── Arc 연결 해설 카드: 모바일 터치 · 데스크톱 클릭 공통 ── */}
+        {selectedArc && (!isMobile || mobileArcVisible) && (() => {
+          const arc = macroLayout.arcs.find((item) => item.id === selectedArc)
+            || MACRO_STRUCTURE.arcs.find((item) => item.id === selectedArc);
           if (!arc) return null;
-          const from = MACRO_STRUCTURE.pivots.find((pivot) => pivot.id === arc.from);
-          const to = MACRO_STRUCTURE.pivots.find((pivot) => pivot.id === arc.to);
+          const explanation = getArcExplanation({
+            arc,
+            macro: MACRO_STRUCTURE,
+            book: {
+              ko: BOOK.ko,
+              theme: BOOK_META?.theme,
+              themeNote: BOOK_META?.themeNote,
+            },
+          });
+          const from = explanation?.from;
+          const to = explanation?.to;
           if (!from || !to) return null;
+          const desktopWidth = Math.min(420, Math.max(310, size.w - rightPanelWidth - 190));
+          const explanationRows = [
+            ['연결 기준', explanation.criterion, '#1d4ed8', '#eff6ff'],
+            ['본문 근거', explanation.evidence, '#047857', '#ecfdf5'],
+            ['신학적 의미', explanation.meaning, '#7c3aed', '#f5f3ff'],
+            ['해석 주의', explanation.caution, '#9a3412', '#fff7ed'],
+          ];
           return (
             <section
-              role="status"
+              role="dialog"
+              aria-label={`${arc.label || '본문 논리 연결'} 해설`}
               aria-live="polite"
               style={{
                 position:'absolute',
-                left:'calc(env(safe-area-inset-left, 0px) + 12px)',
-                right:'calc(env(safe-area-inset-right, 0px) + 12px)',
-                bottom:'calc(env(safe-area-inset-bottom, 0px) + 72px)',
-                zIndex:9,
-                padding:'12px',
+                left: isMobile ? 'calc(env(safe-area-inset-left, 0px) + 12px)' : 128,
+                right: isMobile ? 'calc(env(safe-area-inset-right, 0px) + 12px)' : 'auto',
+                bottom: isMobile ? 'calc(env(safe-area-inset-bottom, 0px) + 72px)' : 18,
+                width: isMobile ? 'auto' : desktopWidth,
+                maxHeight: isMobile ? 'min(54dvh, 520px)' : 'calc(100% - 160px)',
+                overflowY:'auto',
+                overscrollBehavior:'contain',
+                WebkitOverflowScrolling:'touch',
+                zIndex:12,
+                padding: isMobile ? '12px' : '14px',
                 border:`1px solid ${arc.color}66`,
-                borderRadius:16,
+                borderRadius: isMobile ? 16 : 12,
                 background:'rgba(255,255,255,.97)',
                 boxShadow:'0 12px 34px rgba(15,23,42,.22)',
                 backdropFilter:'blur(14px)',
@@ -2833,17 +2876,27 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   <div style={{ color:'#0f172a', fontSize:13, fontWeight:900, lineHeight:1.35 }}>
                     {arc.label || '본문 논리 연결'}
                   </div>
-                  <div style={{ marginTop:3, color:'#64748b', fontSize:11, lineHeight:1.4 }}>
-                    Arc를 다시 누르거나 아래 구절을 선택해 이동하세요.
+                  <div style={{ marginTop:4, display:'flex', gap:5, flexWrap:'wrap', alignItems:'center' }}>
+                    <span style={{
+                      padding:'3px 7px', borderRadius:99,
+                      background:`${arc.color}16`, color:arc.color,
+                      fontSize:10, fontWeight:900,
+                    }}>
+                      {explanation.type}
+                    </span>
+                    <span style={{ color:'#64748b', fontSize:9.5, lineHeight:1.35 }}>
+                      {explanation.method}
+                    </span>
                   </div>
                 </div>
                 <button
                   type="button"
-                  onClick={() => setSelectedMobileArc(null)}
+                  onClick={() => setSelectedArc(null)}
                   aria-label="Arc 정보 닫기"
                   style={{
                     width:40, height:40, margin:-5, border:0, borderRadius:10,
-                    background:'#f1f5f9', color:'#64748b', fontSize:18,
+                    background:'#f1f5f9', color:'#64748b', fontSize:18, cursor:'pointer',
+                    flexShrink:0,
                   }}
                 >×</button>
               </div>
@@ -2873,6 +2926,33 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                   <strong style={{ display:'block', color:to.color, fontSize:13 }}>{to.ch}:{to.verse}</strong>
                   {to.label}
                 </button>
+              </div>
+              <div style={{ display:'grid', gap:7, marginTop:10 }}>
+                {explanationRows.map(([title, content, color, background]) => (
+                  <div
+                    key={title}
+                    style={{
+                      padding:'8px 9px',
+                      borderRadius:10,
+                      border:`1px solid ${color}20`,
+                      background,
+                    }}
+                  >
+                    <div style={{ color, fontSize:10, fontWeight:900, marginBottom:3 }}>
+                      {title}
+                    </div>
+                    <div style={{
+                      color:'#334155',
+                      fontSize: isMobile ? 11.5 : 11,
+                      lineHeight:1.55,
+                      fontWeight:550,
+                      userSelect:'text',
+                      WebkitUserSelect:'text',
+                    }}>
+                      {content}
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
           );
