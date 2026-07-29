@@ -33,6 +33,32 @@ html, body {
   overflow: hidden;
 }
 
+.app-shell[data-layout='desktop'] {
+  flex-direction: row;
+}
+
+.app-shell[data-layout='mobile'] {
+  flex-direction: column;
+  touch-action: manipulation;
+}
+
+.app-shell[data-layout='mobile'] button,
+.app-shell[data-layout='mobile'] [role='button'],
+.app-shell[data-layout='mobile'] input,
+.app-shell[data-layout='mobile'] select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-shell[data-device='mobile'] .react-flow__controls {
+  left: max(10px, env(safe-area-inset-left, 0px));
+  bottom: max(12px, env(safe-area-inset-bottom, 0px));
+}
+
+.app-shell[data-device='mobile'] .react-flow__controls button {
+  width: 40px;
+  height: 40px;
+}
+
 .app-canvas-shell {
   min-width: 0;
   min-height: 0;
