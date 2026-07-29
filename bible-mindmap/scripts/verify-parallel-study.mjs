@@ -42,6 +42,9 @@ for (const set of SYNOPTIC_PARALLELS) {
 
   for (const bookId of SYNOPTIC_BOOKS) {
     if (!localBooks.has(bookId)) fail(`${set.id}: 공관복음 ${bookId} 본문 누락`);
+    if (typeof set.emphasis?.[bookId] !== 'string' || set.emphasis[bookId].trim().length < 20) {
+      fail(`${set.id}: ${bookId} curated 편집·신학 관찰 누락/과도하게 짧음`);
+    }
   }
 
   for (const bookId of Object.keys(set.emphasis || {})) {
