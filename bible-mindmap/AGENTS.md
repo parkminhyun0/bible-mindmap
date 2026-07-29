@@ -41,15 +41,31 @@ guard-no-source-mutation.mjs가 배포를 자동 차단해.
 - **데이터 생성물**은 `public/data/*` 또는 `dist/*`에 쓰기(빌드 아티팩트). tracked 소스는 결코 변형하지 않음.
 - **UI/설계 변경은 소스 파일을 직접 편집**하고 원자 커밋. patch 스크립트로 우회하지 않음.
 
-## 🔁 릴리스 워크플로우 (모든 작업 완료 시)
+## 🔁 릴리스 워크플로우 (모든 작업 완료 시 · 자동+수동 2계층)
 
-1. **로컬 검증**: `npm run build` (predev/prebuild verifier 통과 + guard 통과). 로마서 gold standard(pivots 12·arcs 8·chapterAgenda 16) 불변.
+**자동 계층 (CI가 강제 · 사람이 잊어도 동작)**: `main` push → `.github/workflows/deploy.yml`가
+`build(+prebuild verifier·guard) → deploy → verify:deploy(8회 재시도) → pages-verify-deploy 커밋 상태 →
+notion(🤖 CI 자동 배포 로그 갱신)` 순으로 자동 실행. Notion 자동 갱신은 `scripts/notion-live-update.mjs`가
+`secrets.NOTION_API_TOKEN` 있을 때만 동작(없으면 skip, 배포는 계속). 갱신 대상은 대시보드 **🤖 CI 자동 배포 로그**
+콜아웃뿐 — 사람이 큐레이팅하는 🔴 LIVE 콜아웃은 자동으로 덮어쓰지 않음.
+
+**수동 계층 (에이전트가 매 작업 마지막에 수행)**:
+1. **로컬 검증**: `npm run build` (predev/prebuild verifier 전부 통과 + guard 통과). 로마서 gold standard(pivots 12·arcs 8·chapterAgenda 16) 불변.
 2. **커밋** — 원자 단위. 워크스페이스 홈 파일은 커밋 대상 아님.
-3. **푸시** `git push origin main`.
-4. **배포 검증**: 배포 = `.github/workflows/deploy.yml` (Pages `build_type=workflow`). `gh run watch <id> --exit-status` 성공 확인 후 `npm run verify:deploy`로 라이브 commit == 로컬 HEAD.
-   - `npm run deploy`(gh-pages 브랜치 푸시)는 이 설정에서 **무의미**.
-5. **Notion 업데이트**: 관련 설계 페이지(아키텍처 등) + 당일 수정 기록 페이지에 구현/검증/배포 구분 기록.
-6. **★ 최상위 대시보드 LIVE 갱신** (반드시 마지막): 대시보드의 🔴 LIVE 콜아웃 + 🗺️ 기능 구조도 + 📂 로컬 파일 구조 코드 블록을 필요 시 함께 갱신.
+3. **푸시** `git push origin main` → 위 자동 계층 트리거.
+4. **배포 검증**: `gh run watch <id> --exit-status` 성공 확인 후 `npm run verify:deploy`로 라이브 commit == 로컬 HEAD. (`npm run deploy` gh-pages 방식은 무의미.)
+5. **Notion 수동 업데이트**: 관련 설계 페이지 + 당일 수정 기록 페이지에 구현/검증/배포 기록.
+6. **★ 최상위 대시보드 🔴 LIVE 콜아웃 갱신** (반드시 마지막 · 사람 큐레이팅 내러티브). 필요 시 🗺️ 기능 구조도·📂 파일 구조 코드 블록도 함께.
+
+> CI에 Notion 자동 갱신을 활성화하려면: GitHub repo Settings → Secrets에 `NOTION_API_TOKEN`(Notion integration 토큰), 필요 시 Variables에 `NOTION_CI_LOG_BLOCK`(기본값은 스크립트 내장) 등록.
+
+## 📱 모바일 안전 규칙 (필수 · 위반 시 CI 차단) — Notion 「📱 모바일 안전 규칙」과 동기화
+
+1. **모달 언마운트 금지**: `App.jsx`는 `(!isMobile || mobileSidebarOpen) && <Sidebar/>`로 시트 열림 시에만 Sidebar를 마운트. **Sidebar 내부 모달(문맥 성경·병렬 연구)을 여는 버튼은 절대 `onMobileClose`로 시트를 닫지 말 것** — 시트를 닫으면 Sidebar 전체가 언마운트되어 모달이 열리자마자 사라진다(모바일 튕김 크래시). 모달은 시트를 열어둔 채 그 위에 겹쳐 띄운다.
+2. **zIndex 계층**: 모바일 시트 `zIndex=1201`. portal로 body에 탈출하는 모달(`ParallelStudyModal`)은 루트 오버레이 `zIndex ≥ 1250`. 인라인 모달(`ContextBibleModal`)은 시트 내부 stacking 최상위.
+3. **스크롤 방어**: 모바일 스크롤 컨테이너는 `overflowY:auto + overscrollBehavior:contain + WebkitOverflowScrolling:touch + touchAction:pan-y`. 큰 보조 UI(스캐폴딩 등)는 모바일 기본 접힘 + `maxHeight(45vh)` + 내부 스크롤 (뷰포트 초과로 본문 `flex:1` 크러시 방지).
+
+> 강제: `scripts/verify-mobile-safety.mjs`가 predev/prebuild(CI)에서 위 규칙을 자동 검사. 위반 시 빌드 실패로 배포 차단.
 
 ## 🧭 데이터 소스 단일화
 

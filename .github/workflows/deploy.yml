@@ -119,3 +119,26 @@ jobs:
                 : 'Live deployment verification failed',
               target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
             });
+
+  notion:
+    name: notion-live-update
+    needs: verify
+    if: success()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # NOTION_API_TOKEN 시크릿이 설정된 경우에만 노션 자동 로그를 갱신한다.
+      # 시크릿이 없으면 스크립트가 조용히 skip 하므로 이 잡이 배포를 실패시키지 않는다.
+      - name: Update Notion CI 자동 배포 로그
+        working-directory: bible-mindmap
+        env:
+          NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+          NOTION_CI_LOG_BLOCK: ${{ vars.NOTION_CI_LOG_BLOCK }}
+          DEPLOY_SHA: ${{ github.sha }}
+          DEPLOY_RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: node scripts/notion-live-update.mjs
