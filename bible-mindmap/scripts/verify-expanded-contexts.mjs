@@ -43,9 +43,17 @@ for (const book of expected) {
   if (Object.keys(context?.meta?.chapterAgenda || {}).length !== book.chapters) contextProblems.push('chapterAgenda');
   if (!Array.isArray(context?.macro?.sections) || !context.macro.sections.length) contextProblems.push('macro sections');
   if (!Array.isArray(context?.macro?.pivots) || !context.macro.pivots.length) contextProblems.push('macro pivots');
-  if (!Array.isArray(context?.macro?.arcs)) contextProblems.push('macro arcs');
+  if (!Array.isArray(context?.macro?.arcs) || (context.macro.pivots.length > 1 && !context.macro.arcs.length)) contextProblems.push('macro arcs');
+  for (const arc of context?.macro?.arcs || []) {
+    const from = context.macro.pivots.find((pivot) => pivot.id === arc.from);
+    const to = context.macro.pivots.find((pivot) => pivot.id === arc.to);
+    if (!from || !to) contextProblems.push(`arc endpoint ${arc.id}`);
+    for (const field of ['label','type','method','criterion','evidence','meaning','caution']) {
+      if (!arc[field]) contextProblems.push(`arc ${arc.id} ${field}`);
+    }
+  }
   if (!Array.isArray(context?.disputedRanges)) contextProblems.push('disputedRanges contract');
-  if (context?.contextTier !== 'structured' || context?.contextStatus?.isSpecialized !== false) contextProblems.push('status contract');
+  if (context?.contextTier !== 'structured' || context?.contextStatus?.isSpecialized !== false || context?.contextStatus?.hasArcSemantics !== true) contextProblems.push('status contract');
   if (contextProblems.length) invalidContexts.push({ id:book.id, problems:[...new Set(contextProblems)] });
 }
 
@@ -61,4 +69,4 @@ if (missing.length || unexpected.length || invalidProfiles.length || invalidCont
 }
 
 console.log(`✓ context coverage verified: ${specialized.size} specialized + ${expected.length} structured = ${ALL_BOOKS.length} books`);
-console.log('✓ all 45 expanded books satisfy the Romans-parity context contract');
+console.log('✓ all 45 expanded books satisfy Romans-parity context + Arc explanation contracts');
