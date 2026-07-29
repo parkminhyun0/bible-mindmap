@@ -1,6 +1,8 @@
-import { CITATIONS } from './citations';
-import { formatReference } from '../utils/citationDetector';
-import { fetchCrossRefs } from '../api/crossrefApi';
+import { CITATIONS } from './citations.js';
+import { ALL_BOOKS } from './bibleBooks.js';
+import { fetchCrossRefs } from '../api/crossrefApi.js';
+
+const KO_NAME = Object.fromEntries(ALL_BOOKS.map((book) => [book.id, book.ko]));
 
 function ref(book, chapter, verseStart, verseEnd = verseStart) {
   return { book, chapter, verseStart, verseEnd };
@@ -18,6 +20,14 @@ function overlaps(a, b) {
 
 function refKey(value) {
   return `${value.book}:${value.chapter}:${value.verseStart}-${value.verseEnd}`;
+}
+
+function formatParallelReference(value) {
+  const bookName = KO_NAME[value.book] || value.book;
+  const verses = value.verseStart === value.verseEnd
+    ? `${value.verseStart}`
+    : `${value.verseStart}-${value.verseEnd}`;
+  return `${bookName} ${value.chapter}:${verses}`;
 }
 
 export const PARALLEL_KIND = {
@@ -207,7 +217,7 @@ export async function buildParallelSuggestions(anchor, limit = 12) {
     suggestions.push({
       ...item,
       key,
-      reference: formatReference(item.ref),
+      reference: formatParallelReference(item.ref),
     });
   };
 
