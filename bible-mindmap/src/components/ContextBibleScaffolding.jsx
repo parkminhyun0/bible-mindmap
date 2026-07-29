@@ -147,6 +147,7 @@ export function ContextBibleScaffoldingBar({
   isMobile, activeBookId, activeRef,
   activeCourse, currentStepIdx, selectedLensId,
   onSelectCourse, onExitCourse, onStepClick, onSelectLens,
+  onReopenOnboarding,
 }) {
   const [expanded, setExpanded] = useState(true);
   const selectedLens = useMemo(() => findLens(selectedLensId, CONTEXT_STUDY_LENSES), [selectedLensId]);
@@ -159,22 +160,39 @@ export function ContextBibleScaffoldingBar({
       borderBottom: '1px solid rgba(217,119,6,.15)',
       flexShrink: 0,
     }}>
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        style={{
-          width: '100%', display: 'flex', alignItems: 'center', gap: 6,
-          padding: '5px 8px', border: 'none', background: 'transparent',
-          cursor: 'pointer', fontSize: 11, fontWeight: 700, color: '#92400e',
-          borderRadius: 6,
-        }}
-      >
-        <span>🎓 학습 스캐폴딩</span>
-        <span style={{ fontSize: 9, color: '#a16207', fontWeight: 600 }}>
-          {activeCourse ? `· 진행 중: ${activeCourse.title}` : '· 코스·렌즈·관찰 카드'}
-        </span>
-        <span style={{ marginLeft: 'auto', fontSize: 10, color: '#a16207' }}>{expanded ? '접기 ▲' : '펼치기 ▼'}</span>
-      </button>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          style={{
+            flex: 1, display: 'flex', alignItems: 'center', gap: 6,
+            padding: '5px 8px', border: 'none', background: 'transparent',
+            cursor: 'pointer', fontSize: 11, fontWeight: 700, color: '#92400e',
+            borderRadius: 6, textAlign: 'left',
+          }}
+        >
+          <span>🎓 학습 스캐폴딩</span>
+          <span style={{ fontSize: 9, color: '#a16207', fontWeight: 600 }}>
+            {activeCourse ? `· 진행 중: ${activeCourse.title}` : '· 코스·렌즈·관찰 카드'}
+          </span>
+          <span style={{ marginLeft: 'auto', fontSize: 10, color: '#a16207' }}>{expanded ? '접기 ▲' : '펼치기 ▼'}</span>
+        </button>
+        {onReopenOnboarding && (
+          <button
+            type="button"
+            onClick={onReopenOnboarding}
+            data-context-onboarding-reopen
+            aria-label="문맥 성경 사용법 안내 다시 보기"
+            title="사용법 안내 다시 보기"
+            style={{
+              minHeight: 32, padding: '4px 8px', border: '1px solid #fbbf24',
+              borderRadius: 6, background: '#fef3c7', color: '#78350f',
+              fontSize: 10.5, fontWeight: 700, cursor: 'pointer',
+              display: 'inline-flex', alignItems: 'center', gap: 3, flexShrink: 0,
+            }}
+          >🎓 <span>안내</span></button>
+        )}
+      </div>
 
       {expanded && (
         <div style={{ marginTop: 6 }}>

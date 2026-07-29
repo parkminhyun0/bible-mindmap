@@ -394,7 +394,8 @@ export function useOnboarding(onboarding = PARALLEL_ONBOARDING, prefix = 'parall
     if (typeof window !== 'undefined') window.localStorage.setItem(lsKey, '1');
     setVisible(false);
   };
-  return { visible, dismiss };
+  const reopen = () => setVisible(true);
+  return { visible, dismiss, reopen };
 }
 
 export function OnboardingOverlay({ onDone, onboarding = PARALLEL_ONBOARDING, marker = 'data-parallel-onboarding' }) {

@@ -415,6 +415,16 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
             <strong style={{ display: 'block', fontSize: 14 }}>병렬 본문 연구</strong>
             <span style={{ display: 'block', fontSize: 10.5, marginTop: 1, opacity: isMobile ? 1 : .85, color: isMobile ? '#64748b' : '#ecfeff' }}>공관복음 · 구약↔신약 · 인용·반향 · 관주 비교</span>
           </div>
+          <button type="button" onClick={onboarding.reopen}
+            data-parallel-onboarding-reopen
+            aria-label="병렬 연구 사용법 안내 다시 보기"
+            title="사용법 안내 다시 보기"
+            style={{ minHeight: 40, padding: '0 10px', border: 'none', borderRadius: 8,
+              background: isMobile ? '#e0f2fe' : 'rgba(255,255,255,.15)',
+              color: isMobile ? '#0c4a6e' : '#ecfeff',
+              fontSize: 11, fontWeight: 700, cursor: 'pointer', flexShrink: 0,
+              display: 'inline-flex', alignItems: 'center', gap: 4 }}
+          >🎓 <span>안내</span></button>
           <button type="button" onClick={onClose} aria-label="병렬 본문 연구 닫기"
             style={{ width: 44, height: 44, border: 'none', borderRadius: 9,
               background: isMobile ? '#f1f5f9' : 'rgba(255,255,255,.15)',

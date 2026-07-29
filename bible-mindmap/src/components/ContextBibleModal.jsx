@@ -1498,6 +1498,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             onExitCourse={() => { setActiveCourse(null); setCurrentStepIdx(0); }}
             onStepClick={handleContextStepClick}
             onSelectLens={setSelectedLensId}
+            onReopenOnboarding={contextOnboarding.reopen}
           />
         )}
 

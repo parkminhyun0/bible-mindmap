@@ -210,6 +210,8 @@ for (const helper of ['GuidedCourseCarousel', 'ActiveCoursePanel', 'LensPicker',
   if (!modalSource.includes(helper) && helper !== 'GlossaryText' && helper !== 'LensDetailPanel' && helper !== 'ActiveCoursePanel') fail(`ParallelStudyModal이 ${helper}를 사용하지 않음`);
 }
 if (!modalSource.includes('data-parallel-suggestions')) fail('ParallelStudyModal: data-parallel-suggestions 마커 누락 (온보딩 selector 대상)');
+if (!modalSource.includes('data-parallel-onboarding-reopen')) fail('ParallelStudyModal: 온보딩 재실행 버튼(data-parallel-onboarding-reopen) 누락');
+if (!modalSource.includes('onboarding.reopen')) fail('ParallelStudyModal: onboarding.reopen 호출 누락');
 
 console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · lenses ${RESEARCH_LENSES.length} · courses ${GUIDED_STUDIES.length} · glossary ${RESEARCH_GLOSSARY.length} · syn cards ${Object.keys(SYNOPTIC_PROMPT_CARDS).length} · cit cards ${Object.keys(CITATION_PROMPT_CARDS).length}`);
 

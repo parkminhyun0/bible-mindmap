@@ -76,10 +76,10 @@ const scaffoldingPath = path.resolve(__dirname, '../src/components/ContextBibleS
 const modalPath = path.resolve(__dirname, '../src/components/ContextBibleModal.jsx');
 const scaffoldingSource = fs.readFileSync(scaffoldingPath, 'utf8');
 const modalSource = fs.readFileSync(modalPath, 'utf8');
-for (const marker of ['data-context-chapter-card']) {
+for (const marker of ['data-context-chapter-card','data-context-onboarding-reopen']) {
   if (!scaffoldingSource.includes(marker)) fail(`ContextBibleScaffolding 마커 누락: ${marker}`);
 }
-for (const marker of ['data-context-book-index']) {
+for (const marker of ['data-context-book-index','onReopenOnboarding','contextOnboarding.reopen']) {
   if (!modalSource.includes(marker)) fail(`ContextBibleModal 마커 누락: ${marker}`);
 }
 for (const name of ['ContextBibleScaffoldingBar','ContextOnboardingOverlay','useContextOnboarding','handleSelectContextCourse','handleContextStepClick','activeCourse','selectedLensId']) {
