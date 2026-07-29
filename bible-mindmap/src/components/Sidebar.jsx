@@ -1,9 +1,10 @@
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
 import useMobile from '../hooks/useMobile';
-import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
+import { searchBiblicalPerson } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
-import { getBibleTags, getPlacesByReference } from '../data/bibleReferences';
+import { getBibleTags } from '../data/bibleReferences';
+import { searchPlacesCombined, getPlacesByReferenceCombined, loadPlacesIndex } from '../data/placesIndex';
 import { detectInputMode } from '../utils/wordSearch';
 
 const ManualModal = lazy(() => import('./ManualModal'));
@@ -70,6 +71,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
   // 탭 전환 시 배경 노드 상태 초기화
   useEffect(() => {
     setBgQuery(''); setBgResults([]); setBgSelected(null); setBgDetail(null); setBgError('');
+    setBulkQuery(''); setBulkMsg('');
+    if (tab === 'place') loadPlacesIndex(); // 지명 색인 미리 로드
   }, [tab]);
 
   // 검색어 변경 시 SPARQL 자동 검색 (디바운스 600ms)
@@ -82,7 +85,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     debounceRef.current = setTimeout(async () => {
       setBgLoading(true); setBgError(''); setBgResults([]); setBgDetail(null);
       try {
-        const search = tab === 'person' ? searchBiblicalPerson : searchBiblicalPlace;
+        const search = tab === 'person' ? searchBiblicalPerson : searchPlacesCombined;
         const results = await search(bgQuery, bgTestament);
         setBgResults(results);
         if (results.length > 0) {
@@ -189,10 +192,17 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     setBulkMsg(n ? `${n}곳을 캔버스에 추가했습니다.` : '');
   };
 
-  const handleBulkAddByReference = () => {
-    const places = getPlacesByReference(bulkQuery, bgTestament);
-    const n = addPlaceNodes(places);
-    setBulkMsg(n ? `‘${bulkQuery}’ 관련 ${n}곳을 캔버스에 추가했습니다.` : `‘${bulkQuery}’에 해당하는 지명이 없습니다.`);
+  const BULK_MAX = 60;
+  const handleBulkAddByReference = async () => {
+    if (!bulkQuery.trim()) return;
+    setBulkMsg('불러오는 중…');
+    const all = await getPlacesByReferenceCombined(bulkQuery, bgTestament);
+    if (!all.length) { setBulkMsg(`‘${bulkQuery}’에 해당하는 지명이 없습니다.`); return; }
+    const picked = all.slice(0, BULK_MAX);
+    const n = addPlaceNodes(picked);
+    setBulkMsg(all.length > BULK_MAX
+      ? `‘${bulkQuery}’ 관련 총 ${all.length}곳 중 핵심 ${n}곳을 추가했습니다. (더 좁히려면 책·지역명을 구체적으로)`
+      : `‘${bulkQuery}’ 관련 ${n}곳을 캔버스에 추가했습니다.`);
   };
 
   const deferredOverlays = (
