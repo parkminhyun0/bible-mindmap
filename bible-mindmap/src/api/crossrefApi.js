@@ -1,6 +1,6 @@
 import { ALL_BOOKS } from '../data/bibleBooks';
 
-const BASE = import.meta.env.BASE_URL; // /bible-mindmap/app/
+const BASE = import.meta.env?.BASE_URL || '/'; // /bible-mindmap/app/ in Vite; safe fallback for read-only Node verifiers
 const _cache = new Map();
 // bookId → Promise<json> — 책 전체 파일 캐시 (동시/반복 요청 시 중복 fetch 방지)
 const _bookCache = new Map();
