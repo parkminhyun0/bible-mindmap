@@ -3,7 +3,7 @@ export const ARGUMENT_RELATION_STYLES = {
   contrast: { label: '대조·전환', icon: '↔', color: '#b91c1c', bg: '#fef2f2' },
   explanation: { label: '설명·수단', icon: '→', color: '#1d4ed8', bg: '#eff6ff' },
   ground: { label: '근거·목적', icon: '◆', color: '#7c3aed', bg: '#f5f3ff' },
-  extension: { label: '확장', icon: '＋', color: '#b45309', bg: '#fffbeb' },
+  extension: { label: '진행·확장', icon: '＋', color: '#b45309', bg: '#fffbeb' },
   clarification: { label: '반론·명료화', icon: '?', color: '#0f766e', bg: '#f0fdfa' },
 };
 
@@ -12,6 +12,7 @@ const ROMANS_3 = {
   title: '로마서 3장 논증 지도',
   summary: '보편적 죄의 결론에서 하나님의 의의 계시, 믿음으로 말미암는 칭의, 자랑의 배제와 율법의 확립까지 이어지는 논증입니다.',
   method: '본문 문맥 → 헬라어 담화 신호 → 절·단락 기능 → 논증 관계',
+  precision: 'curated',
   nodes: [
     { id: 'r3-n1', from: 9, to: 9, title: '보편적 죄의 고발', excerpt: '유대인이나 헬라인이나 다 죄 아래에 있다' },
     { id: 'r3-n2', from: 19, to: 20, title: '율법 아래의 결론', excerpt: '온 세상이 하나님의 심판 아래 있고 율법의 행위로 의롭다 하심을 얻지 못한다' },
@@ -23,62 +24,95 @@ const ROMANS_3 = {
     { id: 'r3-n8', from: 31, to: 31, title: '율법 폐기 반론의 해소', excerpt: '믿음으로 율법을 폐하지 않고 도리어 굳게 세운다' },
   ],
   relations: [
-    {
-      id: 'r3-a1', source: 'r3-n1', target: 'r3-n2', type: 'conclusion',
-      signal: 'γάρ 및 3:10–18의 성경 인용 연쇄',
-      evidence: '3:9의 “다 죄 아래”라는 고발을 3:10–18의 인용들이 뒷받침하고, 3:19–20이 “온 세상”과 “율법의 행위로 의롭다 함을 얻지 못함”으로 결론을 맺습니다.',
-      meaning: '바울은 특정 집단의 실패가 아니라 모든 인간의 죄책을 확정하여, 뒤이어 제시될 하나님의 의가 모두에게 필요한 이유를 마련합니다.',
-      caution: '3:19–20을 율법 자체의 악함으로 읽기보다, 율법이 죄를 드러내며 인간이 자기 행위로 의롭다 함을 얻을 수 없음을 밝히는 문맥으로 읽어야 합니다.',
-    },
-    {
-      id: 'r3-a2', source: 'r3-n2', target: 'r3-n3', type: 'contrast',
-      signal: 'νυνὶ δὲ · “그러나 이제는”',
-      evidence: '3:20의 인간 무능 직후 3:21이 νυνὶ δὲ로 시작하면서 논증 방향을 하나님의 구원 행위로 전환합니다.',
-      meaning: '칭의는 인간의 율법 성취에서 출발하지 않고 하나님이 나타내신 의에서 출발한다는 복음의 대전환을 보여줍니다.',
-      caution: '“율법 외에”를 구약과 단절된 새 종교로 이해하지 않습니다. 같은 절이 “율법과 선지자들에게 증거를 받은 것”이라고 한정합니다.',
-    },
-    {
-      id: 'r3-a3', source: 'r3-n3', target: 'r3-n4', type: 'explanation',
-      signal: 'διὰ πίστεως Ἰησοῦ Χριστοῦ · 믿음을 통한 수단 설명',
-      evidence: '3:21에서 나타난 “하나님의 의”가 3:22–24에서 예수 그리스도를 믿음, 모든 믿는 자, 은혜로 값없이 의롭다 하심이라는 표현으로 구체화됩니다.',
-      meaning: '하나님의 의가 추상적 개념에 머물지 않고 그리스도의 구속과 믿음을 통해 죄인에게 주어지는 칭의로 설명됩니다.',
-      caution: 'πίστις Χριστοῦ의 문법적 해석에는 논의가 있으므로 이 지도는 개역한글의 “예수 그리스도를 믿음으로”라는 독법을 기본 표시하되 다른 학술적 해석 가능성을 배제하지 않습니다.',
-    },
-    {
-      id: 'r3-a4', source: 'r3-n4', target: 'r3-n5', type: 'ground',
-      signal: 'ὃν προέθετο ὁ θεός · 하나님이 그리스도를 제시하심',
-      evidence: '3:24의 “그리스도 예수 안에 있는 구속”이 3:25–26에서 하나님이 그리스도를 제시하신 사건과 하나님의 의로우심의 현현으로 더 깊게 설명됩니다.',
-      meaning: '칭의의 근거는 죄를 무시하는 선언이 아니라 그리스도의 구속 사건 안에서 하나님의 의와 은혜가 함께 드러나는 데 있습니다.',
-      caution: 'ἱλαστήριον의 번역과 속죄 이해에는 학술적 논의가 있으므로 특정 속죄 이론 하나만을 이 관계선의 유일한 의미로 고정하지 않습니다.',
-    },
-    {
-      id: 'r3-a5', source: 'r3-n5', target: 'r3-n6', type: 'conclusion',
-      signal: 'οὖν · “그런즉/그러므로”',
-      evidence: '3:27은 οὖν과 함께 “그런즉 자랑할 데가 어디뇨”라고 질문하며, 3:28에서 앞선 칭의 논증을 믿음의 결론으로 요약합니다.',
-      meaning: '칭의가 하나님의 은혜와 그리스도의 구속에 근거하므로 인간의 자기 자랑이 배제되고 믿음이 결론의 중심에 놓입니다.',
-      caution: '3:28을 선행 문맥에서 떼어 “행위가 언제나 무의미하다”는 일반 명제로 확대하지 않고, 의롭다 하심의 근거와 수단에 관한 논증으로 읽습니다.',
-    },
-    {
-      id: 'r3-a6', source: 'r3-n6', target: 'r3-n7', type: 'extension',
-      signal: 'ἢ Ἰουδαίων ὁ θεὸς μόνον; · 수사적 질문',
-      evidence: '자랑을 배제한 믿음의 칭의가 3:29–30의 “유대인의 하나님뿐이시냐”라는 질문을 통해 유대인과 이방인 모두에게 적용됩니다.',
-      meaning: '한 하나님에 대한 신앙과 믿음으로 말미암는 칭의는 하나님의 백성을 민족적 특권으로 제한하지 않는 복음의 보편성을 드러냅니다.',
-      caution: '유대인과 이방인의 구별 자체가 무의미해진다는 뜻이 아니라, 의롭다 하심의 근거 앞에서 어느 집단도 우월한 지위를 주장할 수 없다는 논지입니다.',
-    },
-    {
-      id: 'r3-a7', source: 'r3-n7', target: 'r3-n8', type: 'clarification',
-      signal: 'οὖν + μὴ γένοιτο · 예상 반론과 강한 부정',
-      evidence: '3:31은 “그러면 우리가 믿음으로 말미암아 율법을 폐하느뇨”라는 예상 반론을 제기하고 μὴ γένοιτο로 부정한 뒤 “도리어 율법을 굳게 세운다”고 답합니다.',
-      meaning: '믿음으로 말미암는 칭의는 하나님의 이전 계시를 무효화하는 것이 아니라, 율법이 증언한 하나님의 의와 구원 목적을 바르게 위치시킵니다.',
-      caution: '“율법을 굳게 세운다”의 세부 의미는 로마서 4장 이하와 함께 해석해야 하며, 이 한 절만으로 율법과 복음의 모든 관계를 단정하지 않습니다.',
-    },
+    { id: 'r3-a1', source: 'r3-n1', target: 'r3-n2', type: 'conclusion', signal: 'γάρ 및 3:10–18의 성경 인용 연쇄', evidence: '3:9의 “다 죄 아래”라는 고발을 3:10–18의 인용들이 뒷받침하고, 3:19–20이 “온 세상”과 “율법의 행위로 의롭다 함을 얻지 못함”으로 결론을 맺습니다.', meaning: '바울은 특정 집단의 실패가 아니라 모든 인간의 죄책을 확정하여, 뒤이어 제시될 하나님의 의가 모두에게 필요한 이유를 마련합니다.', caution: '3:19–20을 율법 자체의 악함으로 읽기보다, 율법이 죄를 드러내며 인간이 자기 행위로 의롭다 함을 얻을 수 없음을 밝히는 문맥으로 읽어야 합니다.' },
+    { id: 'r3-a2', source: 'r3-n2', target: 'r3-n3', type: 'contrast', signal: 'νυνὶ δὲ · “그러나 이제는”', evidence: '3:20의 인간 무능 직후 3:21이 νυνὶ δὲ로 시작하면서 논증 방향을 하나님의 구원 행위로 전환합니다.', meaning: '칭의는 인간의 율법 성취에서 출발하지 않고 하나님이 나타내신 의에서 출발한다는 복음의 대전환을 보여줍니다.', caution: '“율법 외에”를 구약과 단절된 새 종교로 이해하지 않습니다. 같은 절이 “율법과 선지자들에게 증거를 받은 것”이라고 한정합니다.' },
+    { id: 'r3-a3', source: 'r3-n3', target: 'r3-n4', type: 'explanation', signal: 'διὰ πίστεως Ἰησοῦ Χριστοῦ · 믿음을 통한 수단 설명', evidence: '3:21에서 나타난 “하나님의 의”가 3:22–24에서 예수 그리스도를 믿음, 모든 믿는 자, 은혜로 값없이 의롭다 하심이라는 표현으로 구체화됩니다.', meaning: '하나님의 의가 추상적 개념에 머물지 않고 그리스도의 구속과 믿음을 통해 죄인에게 주어지는 칭의로 설명됩니다.', caution: 'πίστις Χριστοῦ의 문법적 해석에는 논의가 있으므로 이 지도는 개역한글의 “예수 그리스도를 믿음으로”라는 독법을 기본 표시하되 다른 학술적 해석 가능성을 배제하지 않습니다.' },
+    { id: 'r3-a4', source: 'r3-n4', target: 'r3-n5', type: 'ground', signal: 'ὃν προέθετο ὁ θεός · 하나님이 그리스도를 제시하심', evidence: '3:24의 “그리스도 예수 안에 있는 구속”이 3:25–26에서 하나님이 그리스도를 제시하신 사건과 하나님의 의로우심의 현현으로 더 깊게 설명됩니다.', meaning: '칭의의 근거는 죄를 무시하는 선언이 아니라 그리스도의 구속 사건 안에서 하나님의 의와 은혜가 함께 드러나는 데 있습니다.', caution: 'ἱλαστήριον의 번역과 속죄 이해에는 학술적 논의가 있으므로 특정 속죄 이론 하나만을 이 관계선의 유일한 의미로 고정하지 않습니다.' },
+    { id: 'r3-a5', source: 'r3-n5', target: 'r3-n6', type: 'conclusion', signal: 'οὖν · “그런즉/그러므로”', evidence: '3:27은 οὖν과 함께 “그런즉 자랑할 데가 어디뇨”라고 질문하며, 3:28에서 앞선 칭의 논증을 믿음의 결론으로 요약합니다.', meaning: '칭의가 하나님의 은혜와 그리스도의 구속에 근거하므로 인간의 자기 자랑이 배제되고 믿음이 결론의 중심에 놓입니다.', caution: '3:28을 선행 문맥에서 떼어 “행위가 언제나 무의미하다”는 일반 명제로 확대하지 않고, 의롭다 하심의 근거와 수단에 관한 논증으로 읽습니다.' },
+    { id: 'r3-a6', source: 'r3-n6', target: 'r3-n7', type: 'extension', signal: 'ἢ Ἰουδαίων ὁ θεὸς μόνον; · 수사적 질문', evidence: '자랑을 배제한 믿음의 칭의가 3:29–30의 “유대인의 하나님뿐이시냐”라는 질문을 통해 유대인과 이방인 모두에게 적용됩니다.', meaning: '한 하나님에 대한 신앙과 믿음으로 말미암는 칭의는 하나님의 백성을 민족적 특권으로 제한하지 않는 복음의 보편성을 드러냅니다.', caution: '유대인과 이방인의 구별 자체가 무의미해진다는 뜻이 아니라, 의롭다 하심의 근거 앞에서 어느 집단도 우월한 지위를 주장할 수 없다는 논지입니다.' },
+    { id: 'r3-a7', source: 'r3-n7', target: 'r3-n8', type: 'clarification', signal: 'οὖν + μὴ γένοιτο · 예상 반론과 강한 부정', evidence: '3:31은 “그러면 우리가 믿음으로 말미암아 율법을 폐하느뇨”라는 예상 반론을 제기하고 μὴ γένοιτο로 부정한 뒤 “도리어 율법을 굳게 세운다”고 답합니다.', meaning: '믿음으로 말미암는 칭의는 하나님의 이전 계시를 무효화하는 것이 아니라, 율법이 증언한 하나님의 의와 구원 목적을 바르게 위치시킵니다.', caution: '“율법을 굳게 세운다”의 세부 의미는 로마서 4장 이하와 함께 해석해야 하며, 이 한 절만으로 율법과 복음의 모든 관계를 단정하지 않습니다.' },
   ],
 };
 
-export const ARGUMENT_MAPS = {
-  Rom: { 3: ROMANS_3 },
+export const ARGUMENT_MAPS = { Rom: { 3: ROMANS_3 } };
+
+const truncate = (text, max = 26) => {
+  const clean = String(text || '').replace(/\s+/g, ' ').trim();
+  return clean.length > max ? `${clean.slice(0, max)}…` : clean;
 };
 
-export function getArgumentMap(bookId, chapter) {
-  return ARGUMENT_MAPS?.[bookId]?.[chapter] || null;
+function relationTypeFor(discourse, genre = '') {
+  const id = discourse?.id || '';
+  const role = discourse?.role || '';
+  if (['major_concl', 'concl', 'doxology', 'summary_statement'].includes(id) || /결론|송영|요약/.test(role)) return 'conclusion';
+  if (['contrast', 'me_genoito'].includes(id) || /대조|반박|반전/.test(role)) return 'contrast';
+  if (['rhetorical_q'].includes(id) || /질문|논쟁/.test(role)) return 'clarification';
+  if (['reason', 'ki_reason', 'purpose'].includes(id) || /이유|목적|근거/.test(role)) return 'ground';
+  if (/서신|히브리서/.test(genre)) return 'explanation';
+  return 'extension';
+}
+
+function makeBalancedRanges(verses) {
+  if (!verses.length) return [];
+  const count = Math.min(6, Math.max(2, Math.ceil(verses.length / 7)));
+  const size = Math.ceil(verses.length / count);
+  const ranges = [];
+  for (let i = 0; i < verses.length; i += size) {
+    const slice = verses.slice(i, i + size);
+    ranges.push({ startVerse: slice[0].verse, endVerse: slice[slice.length - 1].verse, verses: slice.map((v) => v.verse) });
+  }
+  return ranges;
+}
+
+function buildAutomaticMap(bookId, chapter, { bookKo = bookId, chapterData, genre = '', agenda = '' } = {}) {
+  const krv = Array.isArray(chapterData?.krv) ? chapterData.krv : [];
+  if (!krv.length) return null;
+
+  const analyzed = chapterData?.analyzed || {};
+  let paragraphs = Array.isArray(chapterData?.paragraphs) ? chapterData.paragraphs.filter((p) => p?.verses?.length) : [];
+  if (paragraphs.length < 2) paragraphs = makeBalancedRanges(krv);
+  if (paragraphs.length > 8) paragraphs = paragraphs.slice(0, 7).concat([{ startVerse: paragraphs[7].startVerse, endVerse: paragraphs[paragraphs.length - 1].endVerse, verses: paragraphs.slice(7).flatMap((p) => p.verses || []) }]);
+
+  const verseText = Object.fromEntries(krv.map((v) => [v.verse, v.text]));
+  const nodes = paragraphs.map((p, index) => {
+    const from = Number(p.startVerse ?? p.verses?.[0]);
+    const to = Number(p.endVerse ?? p.verses?.[p.verses.length - 1] ?? from);
+    const discourse = analyzed[from]?.discourse || p.openRule || null;
+    const title = discourse?.role || truncate(verseText[from], 22) || `단락 ${index + 1}`;
+    return { id: `${bookId}-${chapter}-auto-n${index + 1}`, from, to, title, excerpt: truncate(verseText[from], 54), discourse };
+  });
+
+  const relations = nodes.slice(1).map((target, index) => {
+    const source = nodes[index];
+    const discourse = target.discourse;
+    const type = relationTypeFor(discourse, genre);
+    const signal = discourse
+      ? [discourse.gr, discourse.tr ? `(${discourse.tr})` : '', discourse.role].filter(Boolean).join(' · ')
+      : '명시적 담화 표지가 확인되지 않은 단락 진행';
+    return {
+      id: `${bookId}-${chapter}-auto-r${index + 1}`,
+      source: source.id,
+      target: target.id,
+      type,
+      signal,
+      evidence: `${bookKo} ${chapter}:${source.from}${source.to !== source.from ? `-${source.to}` : ''}에서 ${chapter}:${target.from}${target.to !== target.from ? `-${target.to}` : ''}로 이어지는 단락 경계와 ${discourse ? `“${discourse.role}” 담화 신호` : '본문 순서'}를 기준으로 관계를 제안합니다.`,
+      meaning: agenda ? `이 관계는 ${bookKo} ${chapter}장의 의제인 “${agenda}” 안에서 앞 단락이 뒤 단락으로 어떻게 진행되는지 파악하기 위한 구조적 안내입니다.` : `이 관계는 ${bookKo} ${chapter}장의 앞뒤 단락이 어떻게 이어지는지 파악하기 위한 구조적 안내입니다.`,
+      caution: '자동 구조 지도입니다. 관계 유형은 본문·단락·담화 신호를 바탕으로 한 탐색용 제안이며, 정밀 주해나 최종 해석을 대신하지 않습니다. 원문·문맥·관주·비평장치와 함께 확인하세요.',
+    };
+  });
+
+  if (!nodes.length || !relations.length) return null;
+  return {
+    id: `${bookId}-${chapter}-auto`,
+    title: `${bookKo} ${chapter}장 구조 지도`,
+    summary: agenda || '본문 단락과 담화 신호를 따라 장 전체의 흐름을 탐색합니다.',
+    method: '본문 단락 → 원어/담화 신호(가능한 경우) → 장르별 관계 추정 → 구조 지도',
+    precision: 'auto',
+    nodes,
+    relations,
+  };
+}
+
+export function getArgumentMap(bookId, chapter, options = {}) {
+  return ARGUMENT_MAPS?.[bookId]?.[chapter] || buildAutomaticMap(bookId, chapter, options);
 }
