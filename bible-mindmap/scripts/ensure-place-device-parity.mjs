@@ -6,18 +6,69 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const target = path.resolve(__dirname, '../src/components/Sidebar.jsx');
 let source = fs.readFileSync(target, 'utf8');
 
-const MARKER = 'PLACE_DEVICE_PARITY_V1';
-if (source.includes(MARKER)) {
-  console.log('✓ 장소 모바일·태블릿 parity 이미 적용됨');
-  process.exit(0);
+const DESKTOP_MARKER = 'PLACE_DESKTOP_DB_V2';
+const MOBILE_MARKER = 'PLACE_DEVICE_PARITY_V2';
+
+// 데스크톱 상세 카드도 full DB 필드를 읽도록 확장한다.
+if (!source.includes(DESKTOP_MARKER)) {
+  const oldDetail = `                  <div style={detailRow}><b>이름</b> {d.name}</div>
+                  {d.region && <div style={detailRow}><b>성경 지역</b> {d.region}</div>}
+                  {d.lat != null && <div style={detailRow}><b>좌표</b> {d.lat}°N {d.lon}°E</div>}
+                  {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
+                  {d.locationBasis && (
+                    <div style={{
+                      margin: '5px 0', padding: '6px 8px', borderRadius: 6,
+                      background: d.certainty === 'disputed' ? '#fff7ed' : '#f0fdf4',
+                      color: d.certainty === 'disputed' ? '#9a3412' : '#166534', fontSize: 10,
+                    }}>
+                      <b>위치 검증:</b> {d.certainty === 'confirmed' ? '확정적' : d.certainty === 'probable' ? '유력' : '논쟁 중'}
+                      <div style={{ marginTop: 2 }}>{d.locationBasis}</div>
+                    </div>
+                  )}
+                  <BibleEvidence detail={d} />`;
+
+  const newDetail = `                  {/* ${DESKTOP_MARKER}: full biblical places DB metadata */}
+                  <div style={detailRow}><b>이름</b> {d.name}</div>
+                  {d.nameEn && d.nameEn !== d.name && <div style={detailRow}><b>영문</b> {d.nameEn}</div>}
+                  {d.isHomonym && (
+                    <div style={{ margin:'5px 0', padding:'7px 8px', borderRadius:7, background:'#fff7ed', color:'#9a3412', fontSize:10.5, fontWeight:700 }}>
+                      ⚠️ 동명이소{d.duplicateIndex ? ' #' + d.duplicateIndex : ''} · 동일 이름의 다른 장소와 구분
+                    </div>
+                  )}
+                  {d.aliases?.length > 0 && <div style={detailRow}><b>이명</b> {d.aliases.slice(0,6).join(' · ')}{d.aliases.length > 6 ? ' 외' : ''}</div>}
+                  {d.region && <div style={detailRow}><b>등장 권</b> {d.region}</div>}
+                  {d.firstRef && <div style={detailRow}><b>첫 참조</b> {d.firstRef}</div>}
+                  {d.occurrenceCount > 0 && <div style={detailRow}><b>참조 수</b> {d.occurrenceCount}</div>}
+                  {d.lat != null && <div style={detailRow}><b>대표 좌표</b> {d.lat}°N {d.lon}°E</div>}
+                  {d.lat == null && <div style={{ ...detailRow, color:'#92400e' }}><b>좌표</b> 미확정 · 본문 지명은 DB에 보존</div>}
+                  {d.samePlaceAs?.length > 0 && <div style={detailRow}><b>동일 장소명</b> {d.samePlaceAs.map(x => x.nameEn || x.id).join(' · ')}</div>}
+                  {d.description && <div style={{ ...detailRow, color:'#6b7280' }}>{d.description}</div>}
+                  {d.locationBasis && (
+                    <div style={{
+                      margin:'5px 0', padding:'7px 8px', borderRadius:7,
+                      background:d.certainty === 'disputed' ? '#fff7ed' : '#f0fdf4',
+                      color:d.certainty === 'disputed' ? '#9a3412' : '#166534', fontSize:10.5,
+                    }}>
+                      <b>위치 검증:</b> {d.certainty === 'confirmed' ? '확정적' : d.certainty === 'probable' ? '유력' : '미확정/논쟁 가능'}
+                      <div style={{ marginTop:2 }}>{d.locationBasis}</div>
+                    </div>
+                  )}
+                  <BibleEvidence detail={d} />`;
+
+  if (!source.includes(oldDetail)) {
+    throw new Error('Sidebar 데스크톱 장소 상세 카드 지점을 찾지 못했습니다. parity 스크립트 갱신 필요');
+  }
+  source = source.replace(oldDetail, newDetail);
 }
 
-const anchor = '          {/* 노트 탭 */}';
-if (!source.includes(anchor)) {
-  throw new Error('Sidebar 모바일 삽입 지점을 찾지 못했습니다. PLACE_DEVICE_PARITY 패치 갱신 필요');
-}
+// compact 레이아웃(휴대폰 + 태블릿 + 좁은 뷰포트)에 장소 DB 진입/검색/일괄 배치를 추가한다.
+if (!source.includes(MOBILE_MARKER)) {
+  const anchor = '          {/* 노트 탭 */}';
+  if (!source.includes(anchor)) {
+    throw new Error('Sidebar 모바일 삽입 지점을 찾지 못했습니다. parity 스크립트 갱신 필요');
+  }
 
-const block = `          {/* ${MARKER}: PC 장소 DB 기능을 모바일·태블릿 compact UI에도 동일 제공 */}
+  const block = `          {/* ${MOBILE_MARKER}: PC 장소 DB 기능을 모바일·태블릿 compact UI에도 동일 제공 */}
           <div style={{ padding: '0 16px 10px' }}>
             <div style={{
               padding: '10px 12px', borderRadius: 10,
@@ -122,7 +173,8 @@ const block = `          {/* ${MARKER}: PC 장소 DB 기능을 모바일·태블
           </div>
 
 `;
+  source = source.replace(anchor, block + anchor);
+}
 
-source = source.replace(anchor, block + anchor);
 fs.writeFileSync(target, source);
-console.log('✓ 모바일·태블릿 장소 DB parity 적용');
+console.log('✓ 장소 DB PC·모바일·태블릿 parity 적용');
