@@ -3,6 +3,7 @@ import useMobile from '../hooks/useMobile';
 import { OT_BOOKS, NT_BOOKS } from '../data/bibleBooks';
 import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/contextRegistry';
 import CrossrefPopup from './CrossrefPopup';
+import { hasCrossRef, loadCrossRefIndex, isCrossRefIndexLoaded } from '../api/crossrefApi';
 import VersePreviewPopup from './VersePreviewPopup';
 import VariantPopup from './VariantPopup';
 import PassageAnnotationPin from './PassageAnnotationPin';
@@ -506,6 +507,17 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     loadBookVariants(BOOK.lexId).then(() => {
       setVariantLoadTick(t => t + 1);
     });
+  }, [BOOK.lexId]);
+
+  // ── 관주(crossref) 참조 유무 인덱스 로드 ──────────────────────────────
+  // 참조 본문이 실제 존재하는 절에만 🔗 아이콘을 노출하기 위해 책 단위로 인덱스를 로드한다.
+  const [crossrefLoadTick, setCrossrefLoadTick] = useState(0);
+  useEffect(() => {
+    if (!BOOK.lexId) return;
+    if (isCrossRefIndexLoaded(BOOK.lexId)) { setCrossrefLoadTick(t => t + 1); return; }
+    loadCrossRefIndex(BOOK.lexId)
+      .then(() => setCrossrefLoadTick(t => t + 1))
+      .catch(() => {});
   }, [BOOK.lexId]);
 
   // ── 활성 책 전체 로드 (배치 · 스트리밍 · 자동 재시도) ─────────────────
@@ -2227,7 +2239,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                   compact
                                 />
                               )}
-                              {/* 관주 (crossref) 아이콘 · 클릭 시 팝업 */}
+                              {/* 관주 (crossref) 아이콘 · 참조 본문이 실제 존재하는 절에만 노출 */}
+                              {crossrefLoadTick >= 0 && hasCrossRef(BOOK.lexId, ch, verse) && (
                               <button
                                 onClick={(e) => {
                                   e.stopPropagation();
@@ -2250,6 +2263,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
                                 onMouseLeave={(e) => { e.currentTarget.style.opacity = '.55' }}
                               >🔗</button>
+                              )}
                               {/* 비평장치 아이콘 · 등록된 절에만 노출 */}
                               {hasVariant(BOOK.lexId, ch, verse, apparatusMode) && (
                                 <button

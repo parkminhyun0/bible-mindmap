@@ -26,6 +26,37 @@ function fetchBookCrossRefs(bookId) {
   return promise;
 }
 
+// ── 참조 유무 동기 판정 인덱스 ────────────────────────────────────────
+// 아이콘 렌더 시점에 '이 절에 참조 본문이 실제로 존재하는가'를 동기로 확인하기 위해
+// 책별로 참조가 걸린 source 절('ch:verse') Set을 구축한다. (fetchBookCrossRefs 캐시 재사용)
+const _indexByBook = new Map(); // bookId → Set('ch:verse')
+const _indexLoaded = new Set(); // 인덱스 구축 완료 bookId
+
+export function isCrossRefIndexLoaded(bookId) {
+  return _indexLoaded.has(bookId);
+}
+
+// 동기 판정: 인덱스 미로드 또는 참조 없음이면 false → 아이콘 숨김
+export function hasCrossRef(bookId, chapter, verse) {
+  const set = _indexByBook.get(bookId);
+  return set ? set.has(`${chapter}:${verse}`) : false;
+}
+
+export async function loadCrossRefIndex(bookId) {
+  if (_indexLoaded.has(bookId)) return;
+  const data = await fetchBookCrossRefs(bookId);
+  const set = new Set();
+  for (const r of data) {
+    const ch = r?.from?.ch;
+    const vs = r?.from?.vs;
+    const ve = r?.from?.ve;
+    if (ch == null || vs == null || ve == null) continue;
+    for (let v = vs; v <= ve; v += 1) set.add(`${ch}:${v}`);
+  }
+  _indexByBook.set(bookId, set);
+  _indexLoaded.add(bookId);
+}
+
 /**
  * 구절의 교차 참조 목록 반환 (votes 높은 순, 상위 limit개)
  * @param {string} bookId  - 'John', 'Gen', ...
