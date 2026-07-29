@@ -303,6 +303,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [macroLayout, setMacroLayout] = useState({ height: 0, sections: [], pivots: [], arcs: [] });
   const [hoveredArc, setHoveredArc] = useState(null);
   const [hoveredPivot, setHoveredPivot] = useState(null);
+  const [mobileArcVisible, setMobileArcVisible] = useState(false);
+  const [selectedMobileArc, setSelectedMobileArc] = useState(null);
   // arc hover 시 마우스 y 좌표 추적 → pill이 마우스 근처에 뜸 (어느 지점 hover해도 즉시 정보)
   const [arcMouseY, setArcMouseY] = useState(null);
   const dragging  = useRef(false);
@@ -315,6 +317,13 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const touchStart = useRef({ x: 0, y: 0, t: 0 });
   const dragStart = useRef({ mx:0,my:0,px:0,py:0 });
   const resizeStart = useRef({ mx:0,my:0,w:0,h:0 });
+
+  useEffect(() => {
+    setSelectedMobileArc(null);
+    if (MACRO_STRUCTURE.arcs.length === 0 && MACRO_STRUCTURE.pivots.length === 0) {
+      setMobileArcVisible(false);
+    }
+  }, [activeBookId, activeRef.ch, MACRO_STRUCTURE]);
 
   const onHeaderMouseDown = useCallback((e) => {
     if (isMobile || e.button !== 0) return;
@@ -658,13 +667,71 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
   // ── 거시구조 레이아웃 측정 ────────────────────────────────────────────
   useEffect(() => {
-    if (isMobile || !chReady || !contentRef.current) return;
+    if (!chReady || !contentRef.current) return;
+    if (isMobile && !mobileArcVisible) {
+      setMacroLayout({ height: 0, sections: [], pivots: [], arcs: [] });
+      return;
+    }
     let raf = 0;
     const measure = () => {
       const content = contentRef.current;
       if (!content) return;
       const contentTop = content.offsetTop; // scrollRef 기준
       const totalHeight = content.offsetHeight;
+
+      if (isMobile) {
+        const chapterRows = [...content.querySelectorAll(`[data-ch="${activeRef.ch}"][data-verse]`)];
+        if (chapterRows.length === 0) {
+          setMacroLayout({ height: 0, mobileTop: 0, sections: [], pivots: [], arcs: [] });
+          return;
+        }
+
+        const mobileTop = Math.max(0, chapterRows[0].offsetTop - 10);
+        const lastRow = chapterRows[chapterRows.length - 1];
+        const mobileBottom = lastRow.offsetTop + lastRow.offsetHeight + 10;
+        const height = Math.max(48, mobileBottom - mobileTop);
+        const pivotDefinitions = Object.fromEntries(MACRO_STRUCTURE.pivots.map((pivot) => [pivot.id, pivot]));
+        const pivots = MACRO_STRUCTURE.pivots
+          .filter((pivot) => pivot.ch === activeRef.ch)
+          .map((pivot) => {
+            const element = content.querySelector(`[data-ch="${pivot.ch}"][data-verse="${pivot.verse}"]`);
+            if (!element) return null;
+            return {
+              ...pivot,
+              y: element.offsetTop + element.offsetHeight / 2 - mobileTop,
+            };
+          })
+          .filter(Boolean);
+        const pivotById = Object.fromEntries(pivots.map((pivot) => [pivot.id, pivot]));
+        const arcs = MACRO_STRUCTURE.arcs
+          .map((arc) => {
+            const from = pivotById[arc.from];
+            const to = pivotById[arc.to];
+            if (from && to) return { ...arc, y1: from.y, y2: to.y, external: false };
+
+            const visible = from || to;
+            if (!visible) return null;
+            const hiddenDefinition = pivotDefinitions[from ? arc.to : arc.from];
+            if (!hiddenDefinition) return null;
+            return {
+              ...arc,
+              y1: visible.y,
+              y2: hiddenDefinition.ch < activeRef.ch ? 8 : height - 8,
+              external: true,
+              externalDirection: hiddenDefinition.ch < activeRef.ch ? 'previous' : 'next',
+            };
+          })
+          .filter(Boolean);
+
+        setMacroLayout({
+          height,
+          mobileTop,
+          sections: [],
+          pivots,
+          arcs,
+        });
+        return;
+      }
 
       // 각 pivot 의 y 좌표 + 절 행의 top/bottom (tooltip이 행 밖에 배치되도록)
       const pivots = MACRO_STRUCTURE.pivots.map(p => {
@@ -712,7 +779,15 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     });
     ro.observe(contentRef.current);
     return () => { cancelAnimationFrame(raf); ro.disconnect(); };
-  }, [isMobile, chReady, chapters, fontSizes, MACRO_STRUCTURE]);
+  }, [
+    isMobile,
+    mobileArcVisible,
+    activeRef.ch,
+    chReady,
+    chapters,
+    fontSizes,
+    MACRO_STRUCTURE,
+  ]);
 
   const scrollTo = useCallback((ch, verse) => {
     // IO 잠금 시작 — 스크롤 정착 후 해제
@@ -917,6 +992,25 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           <div style={{ display:'flex',alignItems:'center',gap:2,flexShrink:0 }}>
             {isMobile && (
               <>
+                <button
+                  type="button"
+                  aria-pressed={mobileArcVisible}
+                  onClick={() => {
+                    setMobileArcVisible((visible) => !visible);
+                    setSelectedMobileArc(null);
+                  }}
+                  disabled={MACRO_STRUCTURE.arcs.length === 0 && MACRO_STRUCTURE.pivots.length === 0}
+                  title={mobileArcVisible ? 'Arc 숨기기' : 'Arc 보기'}
+                  style={{
+                    background: mobileArcVisible ? 'rgba(37,99,235,.13)' : 'transparent',
+                    border: mobileArcVisible ? '1px solid rgba(37,99,235,.4)' : '1px solid transparent',
+                    color: mobileArcVisible ? '#1d4ed8' : '#64748b',
+                    fontSize:10, fontWeight:900, letterSpacing:'.04em',
+                    cursor:'pointer', padding:'0 8px', borderRadius:8,
+                    minWidth:44, minHeight:40,
+                    opacity: MACRO_STRUCTURE.arcs.length === 0 && MACRO_STRUCTURE.pivots.length === 0 ? .35 : 1,
+                  }}
+                >ARC</button>
                 <button
                   onClick={() => setShowHebRef(v => !v)}
                   title={showOrigRef ? `${origLangFull} 원문 절 번호 숨기기` : `${origLangFull} 원문 절 번호 병기`}
@@ -1431,6 +1525,144 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             {/* 본문 콘텐츠 컬럼 + 좌측 거시구조 거터 (플렉스 행) */}
             {chReady && (
               <div style={{ display:'flex', alignItems:'stretch', position:'relative' }}>
+
+                {/* ── 모바일 Arc 레일: 현재 장만 측정하고 탭으로 연결 탐색 ── */}
+                {isMobile && mobileArcVisible && (
+                  <div
+                    aria-label={`${activeRef.ch}장 Arc 구조`}
+                    style={{
+                      width:58,
+                      flexShrink:0,
+                      position:'relative',
+                      borderRight:'1px solid rgba(37,99,235,.1)',
+                      background:'linear-gradient(90deg, rgba(239,246,255,.88), rgba(255,255,255,.2))',
+                    }}
+                  >
+                    {macroLayout.height > 0 && (
+                      <svg
+                        width={58}
+                        height={macroLayout.height}
+                        style={{
+                          position:'absolute',
+                          top:macroLayout.mobileTop || 0,
+                          left:0,
+                          display:'block',
+                          overflow:'visible',
+                          touchAction:'manipulation',
+                        }}
+                      >
+                        {macroLayout.pivots.length > 1 && (
+                          <line
+                            x1={49}
+                            y1={macroLayout.pivots[0].y}
+                            x2={49}
+                            y2={macroLayout.pivots[macroLayout.pivots.length - 1].y}
+                            stroke="rgba(37,99,235,.22)"
+                            strokeWidth={1}
+                            strokeDasharray="3 5"
+                          />
+                        )}
+
+                        {macroLayout.arcs.map((arc) => {
+                          const distance = Math.abs(arc.y2 - arc.y1);
+                          const bend = Math.min(38, 14 + distance * .035);
+                          const controlX = 49 - bend;
+                          const path = `M 49 ${arc.y1} C ${controlX} ${arc.y1}, ${controlX} ${arc.y2}, 49 ${arc.y2}`;
+                          const selected = selectedMobileArc === arc.id;
+                          return (
+                            <g key={arc.id}>
+                              <path
+                                d={path}
+                                fill="none"
+                                stroke={arc.color}
+                                strokeWidth={selected ? 3 : 1.8}
+                                opacity={selected ? .95 : .58}
+                                strokeLinecap="round"
+                              />
+                              <path
+                                d={path}
+                                fill="none"
+                                stroke="transparent"
+                                strokeWidth={20}
+                                role="button"
+                                tabIndex={0}
+                                aria-label={`${arc.label} Arc`}
+                                onClick={(event) => {
+                                  event.stopPropagation();
+                                  setSelectedMobileArc((current) => current === arc.id ? null : arc.id);
+                                }}
+                                onKeyDown={(event) => {
+                                  if (event.key !== 'Enter' && event.key !== ' ') return;
+                                  event.preventDefault();
+                                  setSelectedMobileArc((current) => current === arc.id ? null : arc.id);
+                                }}
+                                style={{ cursor:'pointer' }}
+                              />
+                              {arc.external && (
+                                <path
+                                  d={arc.externalDirection === 'previous'
+                                    ? `M 45 ${arc.y2 + 5} L 49 ${arc.y2} L 53 ${arc.y2 + 5}`
+                                    : `M 45 ${arc.y2 - 5} L 49 ${arc.y2} L 53 ${arc.y2 - 5}`}
+                                  fill="none"
+                                  stroke={arc.color}
+                                  strokeWidth={2}
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  opacity={selected ? 1 : .72}
+                                  pointerEvents="none"
+                                />
+                              )}
+                            </g>
+                          );
+                        })}
+
+                        {macroLayout.pivots.map((pivot) => {
+                          const active = pivot.ch === activeRef.ch && pivot.verse === activeRef.verse;
+                          return (
+                            <g
+                              key={pivot.id}
+                              role="button"
+                              tabIndex={0}
+                              aria-label={`${pivot.ch}장 ${pivot.verse}절 ${pivot.label}`}
+                              onClick={(event) => {
+                                event.stopPropagation();
+                                scrollTo(pivot.ch, pivot.verse);
+                              }}
+                              onKeyDown={(event) => {
+                                if (event.key !== 'Enter' && event.key !== ' ') return;
+                                event.preventDefault();
+                                scrollTo(pivot.ch, pivot.verse);
+                              }}
+                              style={{ cursor:'pointer' }}
+                            >
+                              {active && <circle cx={49} cy={pivot.y} r={10} fill={pivot.color} opacity={.16} />}
+                              <circle
+                                cx={49}
+                                cy={pivot.y}
+                                r={active ? 6 : 5}
+                                fill="#fff"
+                                stroke={pivot.color}
+                                strokeWidth={active ? 2.8 : 2.2}
+                              />
+                              <circle cx={49} cy={pivot.y} r={2} fill={pivot.color} />
+                              <text
+                                x={43}
+                                y={pivot.y + 3}
+                                textAnchor="end"
+                                fontSize={8}
+                                fontWeight={800}
+                                fill={active ? pivot.color : '#64748b'}
+                                pointerEvents="none"
+                              >
+                                {pivot.verse}
+                              </text>
+                            </g>
+                          );
+                        })}
+                      </svg>
+                    )}
+                  </div>
+                )}
 
                 {/* ── 좌측 거시구조 거터 (데스크톱 전용, 116px) ── */}
                 {!isMobile && (
@@ -2567,6 +2799,84 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             </div>
           </div>
         )}
+
+        {/* ── 모바일 Arc 탭 정보 카드 ── */}
+        {isMobile && mobileArcVisible && selectedMobileArc && (() => {
+          const arc = macroLayout.arcs.find((item) => item.id === selectedMobileArc)
+            || MACRO_STRUCTURE.arcs.find((item) => item.id === selectedMobileArc);
+          if (!arc) return null;
+          const from = MACRO_STRUCTURE.pivots.find((pivot) => pivot.id === arc.from);
+          const to = MACRO_STRUCTURE.pivots.find((pivot) => pivot.id === arc.to);
+          if (!from || !to) return null;
+          return (
+            <section
+              role="status"
+              aria-live="polite"
+              style={{
+                position:'absolute',
+                left:'calc(env(safe-area-inset-left, 0px) + 12px)',
+                right:'calc(env(safe-area-inset-right, 0px) + 12px)',
+                bottom:'calc(env(safe-area-inset-bottom, 0px) + 72px)',
+                zIndex:9,
+                padding:'12px',
+                border:`1px solid ${arc.color}66`,
+                borderRadius:16,
+                background:'rgba(255,255,255,.97)',
+                boxShadow:'0 12px 34px rgba(15,23,42,.22)',
+                backdropFilter:'blur(14px)',
+                WebkitBackdropFilter:'blur(14px)',
+              }}
+            >
+              <div style={{ display:'flex', alignItems:'flex-start', gap:8 }}>
+                <span style={{ width:10, height:10, marginTop:5, borderRadius:99, background:arc.color, flexShrink:0 }} />
+                <div style={{ minWidth:0, flex:1 }}>
+                  <div style={{ color:'#0f172a', fontSize:13, fontWeight:900, lineHeight:1.35 }}>
+                    {arc.label || '본문 논리 연결'}
+                  </div>
+                  <div style={{ marginTop:3, color:'#64748b', fontSize:11, lineHeight:1.4 }}>
+                    Arc를 다시 누르거나 아래 구절을 선택해 이동하세요.
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedMobileArc(null)}
+                  aria-label="Arc 정보 닫기"
+                  style={{
+                    width:40, height:40, margin:-5, border:0, borderRadius:10,
+                    background:'#f1f5f9', color:'#64748b', fontSize:18,
+                  }}
+                >×</button>
+              </div>
+              <div style={{ display:'grid', gridTemplateColumns:'1fr auto 1fr', alignItems:'stretch', gap:7, marginTop:10 }}>
+                <button
+                  type="button"
+                  onClick={() => scrollTo(from.ch, from.verse)}
+                  style={{
+                    minHeight:46, padding:'7px 8px', border:`1px solid ${from.color}55`,
+                    borderRadius:11, background:`${from.color}12`, color:'#334155',
+                    fontSize:11, fontWeight:800, lineHeight:1.35,
+                  }}
+                >
+                  <strong style={{ display:'block', color:from.color, fontSize:13 }}>{from.ch}:{from.verse}</strong>
+                  {from.label}
+                </button>
+                <span aria-hidden="true" style={{ alignSelf:'center', color:arc.color, fontSize:18, fontWeight:900 }}>↔</span>
+                <button
+                  type="button"
+                  onClick={() => scrollTo(to.ch, to.verse)}
+                  style={{
+                    minHeight:46, padding:'7px 8px', border:`1px solid ${to.color}55`,
+                    borderRadius:11, background:`${to.color}12`, color:'#334155',
+                    fontSize:11, fontWeight:800, lineHeight:1.35,
+                  }}
+                >
+                  <strong style={{ display:'block', color:to.color, fontSize:13 }}>{to.ch}:{to.verse}</strong>
+                  {to.label}
+                </button>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* ── 모바일 바텀 네비 ── */}
         {isMobile && chReady && (() => {
