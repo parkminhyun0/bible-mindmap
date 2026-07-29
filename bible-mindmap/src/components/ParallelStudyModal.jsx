@@ -545,7 +545,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   const content = isMobile ? (
     <div
       style={{
-        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1200,
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1250,
         background: 'rgba(15,23,42,.55)',
         WebkitBackdropFilter: 'blur(6px)', backdropFilter: 'blur(6px)',
         display: 'flex', alignItems: 'stretch', justifyContent: 'center',
@@ -558,7 +558,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   ) : (
     <div
       style={{
-        position: 'fixed', left: pos.x, top: pos.y, zIndex: 1200,
+        position: 'fixed', left: pos.x, top: pos.y, zIndex: 1250,
         fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
       }}
     >

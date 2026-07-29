@@ -2,8 +2,12 @@ import { lazy, Suspense, useState } from 'react';
 
 const ParallelStudyModal = lazy(() => import('./ParallelStudyModal'));
 
-export default function ParallelStudyLauncher({ variant = 'inline' }) {
+export default function ParallelStudyLauncher({ variant = 'inline', onBeforeOpen }) {
   const [open, setOpen] = useState(false);
+  const handleOpen = () => {
+    if (onBeforeOpen) onBeforeOpen();
+    setOpen(true);
+  };
 
   const isRail = variant === 'rail';
 
@@ -54,7 +58,7 @@ export default function ParallelStudyLauncher({ variant = 'inline' }) {
         data-research-tool="parallel-study-global"
         aria-label="병렬 본문 연구 열기"
         title="공관복음 · 구약↔신약 · 인용·반향 본문을 나란히 비교"
-        onClick={() => setOpen(true)}
+        onClick={handleOpen}
         style={buttonStyle}
       >
         <span aria-hidden="true" style={{ fontSize: isRail ? 14 : 15, lineHeight: 1 }}>⇄</span>

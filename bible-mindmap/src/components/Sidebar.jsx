@@ -269,7 +269,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               📖 문맥 성경
             </button>
             <div style={{ marginTop: 6 }}>
-              <ParallelStudyLauncher />
+              <ParallelStudyLauncher onBeforeOpen={onMobileClose} />
             </div>
           </div>
 
