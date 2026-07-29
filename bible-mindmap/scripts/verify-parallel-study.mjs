@@ -86,20 +86,39 @@ if (canCompareOriginalLanguages('Gen', 'Exod', isOT) !== true) {
 
 const modalPath = path.resolve(__dirname, '../src/components/ParallelStudyModal.jsx');
 const relatedPath = path.resolve(__dirname, '../src/components/RelatedPassagePopup.jsx');
+const launcherPath = path.resolve(__dirname, '../src/components/ParallelStudyLauncher.jsx');
+const mainPath = path.resolve(__dirname, '../src/main.jsx');
 const modalSource = fs.readFileSync(modalPath, 'utf8');
 const relatedSource = fs.readFileSync(relatedPath, 'utf8');
+const launcherSource = fs.readFileSync(launcherPath, 'utf8');
+const mainSource = fs.readFileSync(mainPath, 'utf8');
 
 for (const marker of ['data-parallel-study', '공통·추가·생략·어순', '히브리어 OT ↔ 헬라어 NT']) {
   if (!modalSource.includes(marker)) fail(`ParallelStudyModal 필수 안전/UX 마커 누락: ${marker}`);
 }
 if (!relatedSource.includes("import ParallelStudyModal from './ParallelStudyModal'")) {
-  fail('RelatedPassagePopup → ParallelStudyModal import 연결 누락');
+  fail('RelatedPassagePopup → ParallelStudyModal 보조 진입 연결 누락');
 }
 if (!relatedSource.includes('⇄ 병렬 연구')) {
-  fail('RelatedPassagePopup 병렬 연구 진입 버튼 누락');
+  fail('RelatedPassagePopup 병렬 연구 보조 진입 버튼 누락');
+}
+if (!launcherSource.includes('data-research-tool="parallel-study-global"')) {
+  fail('독립 병렬연구 물리 버튼 마커 누락');
+}
+if (!launcherSource.includes('minHeight: 44') || !launcherSource.includes("touchAction: 'manipulation'")) {
+  fail('독립 병렬연구 버튼 모바일 터치 접근성 기준 누락');
+}
+if (!launcherSource.includes("lazy(() => import('./ParallelStudyModal'))")) {
+  fail('독립 병렬연구 버튼 → ParallelStudyModal 연결 누락');
+}
+if (!mainSource.includes("import ParallelStudyLauncher from './components/ParallelStudyLauncher.jsx'")) {
+  fail('main.jsx 독립 병렬연구 버튼 import 누락');
+}
+if (!mainSource.includes('<ParallelStudyLauncher />')) {
+  fail('main.jsx 독립 병렬연구 버튼 mount 누락');
 }
 
-console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · relation kinds ${Object.keys(PARALLEL_KIND).length}`);
+console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · relation kinds ${Object.keys(PARALLEL_KIND).length} · independent launcher OK`);
 
 if (issues.length) {
   console.error('✗ 병렬 본문 연구 검증 실패');
@@ -107,4 +126,4 @@ if (issues.length) {
   process.exit(1);
 }
 
-console.log('✓ 병렬 본문 연구 데이터/비교 엔진/UI 진입 검증 통과');
+console.log('✓ 병렬 본문 연구 데이터/비교 엔진/독립 UI 진입 검증 통과');
