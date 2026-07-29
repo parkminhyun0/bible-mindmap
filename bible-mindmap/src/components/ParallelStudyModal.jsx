@@ -433,7 +433,13 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
           >×</button>
         </header>
 
-        <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: isMobile ? '12px 12px calc(env(safe-area-inset-bottom,0px) + 24px)' : '14px 16px 20px' }}>
+        <div style={{
+          flex: 1, minHeight: 0, overflowY: 'auto',
+          overscrollBehavior: 'contain',
+          WebkitOverflowScrolling: 'touch',
+          touchAction: 'pan-y',
+          padding: isMobile ? '12px 12px calc(env(safe-area-inset-bottom,0px) + 24px)' : '14px 16px 20px',
+        }}>
           <GuidedCourseCarousel
             activeCourseId={activeCourse?.id || null}
             onSelectCourse={handleSelectCourse}

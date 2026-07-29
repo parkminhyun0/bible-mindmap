@@ -149,7 +149,8 @@ export function ContextBibleScaffoldingBar({
   onSelectCourse, onExitCourse, onStepClick, onSelectLens,
   onReopenOnboarding,
 }) {
-  const [expanded, setExpanded] = useState(true);
+  // 모바일에선 기본 접힘 — 본문 스크롤 영역 확보. 데스크톱은 기본 펼침.
+  const [expanded, setExpanded] = useState(!isMobile);
   const selectedLens = useMemo(() => findLens(selectedLensId, CONTEXT_STUDY_LENSES), [selectedLensId]);
   const recommendedLensIds = activeCourse?.recommendedLensIds || [];
 
@@ -159,6 +160,11 @@ export function ContextBibleScaffoldingBar({
       background: 'linear-gradient(180deg,#fffbeb,rgba(255,251,235,0))',
       borderBottom: '1px solid rgba(217,119,6,.15)',
       flexShrink: 0,
+      // 확장 시에도 스캐폴딩 자체 최대 높이를 제한하고 내부 스크롤로 처리
+      maxHeight: expanded ? (isMobile ? '45vh' : '55vh') : 'none',
+      overflow: 'hidden',
+      display: 'flex',
+      flexDirection: 'column',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
         <button
@@ -195,7 +201,18 @@ export function ContextBibleScaffoldingBar({
       </div>
 
       {expanded && (
-        <div style={{ marginTop: 6 }}>
+        <div
+          style={{
+            marginTop: 6,
+            flex: 1,
+            minHeight: 0,
+            overflowY: 'auto',
+            overscrollBehavior: 'contain',
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
+            paddingRight: 2,
+          }}
+        >
           <GuidedCourseCarousel
             activeCourseId={activeCourse?.id || null}
             onSelectCourse={onSelectCourse}

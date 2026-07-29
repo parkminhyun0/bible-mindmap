@@ -256,14 +256,15 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           {/* 문맥 성경 (모바일) */}
           <div style={{ padding: '0 16px 8px' }}>
             <button
-              onClick={() => setShowContextBible(true)}
+              onClick={() => { onMobileClose?.(); setShowContextBible(true); }}
               style={{
-                width: '100%', padding: '10px 12px',
+                width: '100%', padding: '10px 12px', minHeight: 44,
                 background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
                 border: '1px solid rgba(217,119,6,.35)',
                 borderRadius: 8, cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
                 color: '#d97706', fontSize: 13, fontWeight: 700,
+                touchAction: 'manipulation',
               }}
             >
               📖 문맥 성경
