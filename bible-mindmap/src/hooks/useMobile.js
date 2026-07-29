@@ -9,10 +9,12 @@ import { useState, useEffect } from 'react';
 function checkMobile(breakpoint) {
   if (typeof window === 'undefined') return false;
   try {
-    if (window.innerWidth < breakpoint) return true;
+    const viewportWidth = window.visualViewport?.width || window.innerWidth;
+    const viewportHeight = window.visualViewport?.height || window.innerHeight;
+    if (viewportWidth < breakpoint) return true;
     const mq = window.matchMedia && window.matchMedia('(pointer: coarse)');
-    if (mq && mq.matches && window.innerHeight < 550) return true;
-  } catch (_) { /* iOS Safari 초기 mount 시 방어 */ }
+    if (mq && mq.matches && viewportHeight < 550) return true;
+  } catch { /* iOS Safari 초기 mount 시 방어 */ }
   return false;
 }
 
@@ -21,11 +23,14 @@ export default function useMobile(breakpoint = 768) {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const handler = () => setIsMobile(checkMobile(breakpoint));
+    handler();
     window.addEventListener('resize', handler, { passive: true });
     window.addEventListener('orientationchange', handler, { passive: true });
+    window.visualViewport?.addEventListener('resize', handler, { passive: true });
     return () => {
       window.removeEventListener('resize', handler);
       window.removeEventListener('orientationchange', handler);
+      window.visualViewport?.removeEventListener('resize', handler);
     };
   }, [breakpoint]);
   return isMobile;

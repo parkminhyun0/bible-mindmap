@@ -4,7 +4,9 @@ html, body {
   width: 100%;
   /* iOS Safari 주소창 표시/숨김에 따라 100% 가 재계산되며 root 가 0 이 되는
      white-screen 방지. 100vh 최소 보장 + 지원 시 100dvh 로 정확한 뷰포트 사용 */
+  height: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
   overflow: hidden;
 }
@@ -12,11 +14,209 @@ html, body {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 100%;
   min-height: 100vh;
+  min-height: 100svh;
   min-height: 100dvh;
-  /* height: 100% 대신 min-height 사용 → 초기 렌더링 시점에 0 되는 문제 방지 */
   display: flex;
   flex-direction: column;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow: hidden;
+}
+
+.app-canvas-shell {
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app-canvas-shell > .react-flow {
+  width: 100%;
+  height: 100%;
+}
+
+.mobile-empty-state {
+  display: none;
+}
+
+.deferred-feature-loading {
+  position: fixed;
+  inset: auto 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
+  z-index: 3000;
+  padding: 12px 16px;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
+  color: #1d4ed8;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.app-error-screen,
+.boot-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 24px;
+  background: linear-gradient(145deg, #eff6ff, #fff7ed);
+  font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.app-error-card,
+.boot-fallback__card {
+  width: min(100%, 440px);
+  padding: 28px 24px;
+  border: 1px solid #dbeafe;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
+  color: #334155;
+  text-align: center;
+}
+
+.app-error-icon,
+.boot-fallback__icon {
+  margin-bottom: 10px;
+  font-size: 38px;
+}
+
+.app-error-card h1,
+.boot-fallback__card h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.app-error-card p,
+.boot-fallback__card p {
+  margin: 0 0 18px;
+  line-height: 1.65;
+  font-size: 14px;
+}
+
+.app-error-card button,
+.boot-fallback__card button {
+  min-height: 44px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.app-error-card details {
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.app-error-card code {
+  display: block;
+  margin-top: 8px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 767px), (pointer: coarse) and (max-height: 550px) {
+  .app-top-toolbar {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 4px) !important;
+    padding-left: calc(env(safe-area-inset-left, 0px) + 10px) !important;
+    padding-right: calc(env(safe-area-inset-right, 0px) + 10px) !important;
+  }
+
+  .mobile-bottom-sheet {
+    max-height: 75vh;
+    max-height: 75svh;
+    max-height: 75dvh;
+  }
+
+  .mobile-bottom-sheet--large {
+    max-height: 80vh;
+    max-height: 80svh;
+    max-height: 80dvh;
+  }
+
+  .mobile-editor-sheet {
+    max-height: 55vh;
+    max-height: 55svh;
+    max-height: 55dvh;
+  }
+
+  .mobile-empty-state {
+    position: absolute;
+    inset: calc(env(safe-area-inset-top, 0px) + 60px) 20px auto;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 28px 20px;
+    border: 1px solid rgba(59, 130, 246, 0.22);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 12px 36px rgba(15, 23, 42, 0.12);
+    text-align: center;
+    pointer-events: auto;
+  }
+
+  .mobile-empty-state__icon {
+    margin-bottom: 8px;
+    font-size: 34px;
+  }
+
+  .mobile-empty-state h1 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 22px;
+  }
+
+  .mobile-empty-state p {
+    max-width: 280px;
+    margin: 0;
+    color: #64748b;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+
+  .mobile-empty-state__actions {
+    display: grid;
+    width: 100%;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .mobile-empty-state__actions button {
+    min-height: 48px;
+    border: 0;
+    border-radius: 10px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 800;
+  }
+
+  .mobile-empty-state__actions button + button {
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #334155;
+  }
 }
 
 /* ─── 애니메이션 성능 유틸리티 (Round C · 2) ─── */

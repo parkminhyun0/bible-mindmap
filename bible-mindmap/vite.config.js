@@ -44,12 +44,44 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // App shell precache — 배포 시점 fingerprint 된 파일들
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,woff,woff2}'],
+        // HTML은 precache하지 않는다. 이전 HTML이 삭제된 번들 해시를 가리켜
+        // 모바일에서 흰 화면이 되는 것을 막고, 탐색 요청은 NetworkFirst로 처리한다.
+        globPatterns: [
+          'assets/index-*.js',
+          'assets/index-*.css',
+          'assets/rolldown-runtime-*.js',
+          'registerSW.js',
+          'favicon.{svg,png,ico}',
+          'favicon-*.png',
+        ],
         // 큰 lex 데이터 파일도 precache 대상에 넣지 말 것 (초기 다운로드 무겁게)
         // → runtimeCaching 으로 사용 시점에 CacheFirst
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3MB (index bundle 대응)
+        cleanupOutdatedCaches: true,
+        skipWaiting: true,
+        clientsClaim: true,
+        navigationPreload: true,
         runtimeCaching: [
+          {
+            urlPattern: /\/bible-mindmap\/app\/(?:index\.html)?(?:\?.*)?$/,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'bm-app-html-v2',
+              networkTimeoutSeconds: 4,
+              expiration: { maxEntries: 3, maxAgeSeconds: 60 * 60 * 24 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+          {
+            // 매뉴얼·문맥성경·원어검색 등 지연 로드 기능은 처음 사용할 때만 저장한다.
+            urlPattern: /\/bible-mindmap\/app\/assets\/.+\.js$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'bm-feature-chunks-v1',
+              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
           {
             // 원어 lex 데이터 (히/헬 66권) — 거의 정적. CacheFirst.
             urlPattern: /\/bible-mindmap\/app\/data\/lex\/.+\.json$/,
@@ -97,10 +129,8 @@ export default defineConfig({
             },
           },
         ],
-        // navigate 요청 (SPA 라우팅) — 오프라인일 때 index.html 로 fallback
-        navigateFallback: '/bible-mindmap/app/index.html',
-        // Cross-origin (bolls.life 등) 요청은 navigate fallback 대상 아님
-        navigateFallbackDenylist: [/^\/bible-mindmap\/app\/data\//, /^https?:\/\//],
+        // 오래된 precache app-shell 대신 위 NetworkFirst 탐색 캐시를 사용한다.
+        navigateFallback: null,
       },
     }),
   ],

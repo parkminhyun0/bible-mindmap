@@ -1,13 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
-import ManualModal from './ManualModal';
-import WordSearchModal from './WordSearchModal';
-import ContextBibleModal from './ContextBibleModal';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
 import { getBibleTags } from '../data/bibleReferences';
 import { detectInputMode } from '../utils/wordSearch';
+
+const ManualModal = lazy(() => import('./ManualModal'));
+const WordSearchModal = lazy(() => import('./WordSearchModal'));
+const ContextBibleModal = lazy(() => import('./ContextBibleModal'));
 
 export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
   const isMobile = useMobile();
@@ -171,6 +172,26 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
     });
   };
 
+  const deferredOverlays = (
+    <Suspense fallback={<div className="deferred-feature-loading">연구 도구를 불러오는 중…</div>}>
+      {showManual && <ManualModal onClose={() => setShowManual(false)} />}
+      {showContextBible && (
+        <ContextBibleModal
+          initialRef={contextBibleInitialRef}
+          onClose={() => setShowContextBible(false)}
+        />
+      )}
+      {showWordSearch && pendingSearch && (
+        <WordSearchModal
+          key={wordSearchKey}
+          initialQuery={pendingSearch.q}
+          initialMode={pendingSearch.m}
+          onClose={() => setShowWordSearch(false)}
+        />
+      )}
+    </Suspense>
+  );
+
   // ─── 모바일: 드로어 래퍼 ───
   if (isMobile) {
     if (!mobileOpen) return null;
@@ -184,11 +205,10 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           }}
         />
         {/* 드로어 */}
-        <div className="momentum-scroll" style={{
+        <div className="momentum-scroll mobile-bottom-sheet mobile-bottom-sheet--large" style={{
           position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
           background: '#f8fafc', borderRadius: '16px 16px 0 0',
           boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-          maxHeight: '80dvh',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
           display: 'flex', flexDirection: 'column',
@@ -336,21 +356,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             </div>
           )}
         </div>
-        {showManual && <ManualModal onClose={() => setShowManual(false)} />}
-        {showContextBible && (
-          <ContextBibleModal
-            initialRef={contextBibleInitialRef}
-            onClose={() => setShowContextBible(false)}
-          />
-        )}
-        {showWordSearch && pendingSearch && (
-          <WordSearchModal
-            key={wordSearchKey}
-            initialQuery={pendingSearch.q}
-            initialMode={pendingSearch.m}
-            onClose={() => setShowWordSearch(false)}
-          />
-        )}
+        {deferredOverlays}
       </>
     );
   }
@@ -450,21 +456,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           </div>
         </div>
 
-        {showManual && <ManualModal onClose={() => setShowManual(false)} />}
-        {showWordSearch && pendingSearch && (
-          <WordSearchModal
-            key={wordSearchKey}
-            initialQuery={pendingSearch.q}
-            initialMode={pendingSearch.m}
-            onClose={() => setShowWordSearch(false)}
-          />
-        )}
-        {showContextBible && (
-          <ContextBibleModal
-            initialRef={contextBibleInitialRef}
-            onClose={() => setShowContextBible(false)}
-          />
-        )}
+        {deferredOverlays}
       </>
     );
   }
@@ -853,21 +845,7 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       </div>
     </div>
 
-    {showManual && <ManualModal onClose={() => setShowManual(false)} />}
-    {showWordSearch && pendingSearch && (
-      <WordSearchModal
-        key={wordSearchKey}
-        initialQuery={pendingSearch.q}
-        initialMode={pendingSearch.m}
-        onClose={() => setShowWordSearch(false)}
-      />
-    )}
-    {showContextBible && (
-      <ContextBibleModal
-        initialRef={contextBibleInitialRef}
-        onClose={() => setShowContextBible(false)}
-      />
-    )}
+    {deferredOverlays}
     </>
   );
 }
