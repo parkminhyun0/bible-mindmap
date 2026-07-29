@@ -2,12 +2,13 @@ import { lazy, Suspense, useState } from 'react';
 
 const ParallelStudyModal = lazy(() => import('./ParallelStudyModal'));
 
-export default function ParallelStudyLauncher({ variant = 'inline', onBeforeOpen }) {
+export default function ParallelStudyLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => {
-    if (onBeforeOpen) onBeforeOpen();
-    setOpen(true);
-  };
+  // ⚠️ 모바일에서 이 버튼은 시트를 닫으면 안 됨 — App.jsx가 시트 상태로 Sidebar
+  // 마운트를 제어하므로 시트를 닫으면 이 런처(및 open 상태)가 통째로 언마운트되어
+  // 모달이 열리자마자 사라진다. 모달은 portal + zIndex 1250으로 시트 위에 겹쳐 띄운다.
+  // [[mobile-modal-unmount-rule]]
+  const handleOpen = () => setOpen(true);
 
   const isRail = variant === 'rail';
 

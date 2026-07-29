@@ -253,10 +253,14 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             </div>
           </div>
 
-          {/* 문맥 성경 (모바일) */}
+          {/* 문맥 성경 (모바일)
+              ⚠️ 모달 열기 버튼은 절대 onMobileClose를 호출하면 안 됨.
+              App.jsx가 (!isMobile || mobileSidebarOpen) 조건으로 Sidebar를 마운트하므로,
+              시트를 닫으면 Sidebar 전체가 언마운트되어 이 안의 모달 상태·렌더가 파괴됨.
+              모달은 시트 위에 겹쳐서 뜨도록 두고 시트는 열린 채로 유지한다. [[mobile-modal-unmount-rule]] */}
           <div style={{ padding: '0 16px 8px' }}>
             <button
-              onClick={() => { onMobileClose?.(); setShowContextBible(true); }}
+              onClick={() => setShowContextBible(true)}
               style={{
                 width: '100%', padding: '10px 12px', minHeight: 44,
                 background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
@@ -270,7 +274,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               📖 문맥 성경
             </button>
             <div style={{ marginTop: 6 }}>
-              <ParallelStudyLauncher onBeforeOpen={onMobileClose} />
+              <ParallelStudyLauncher />
             </div>
           </div>
 
