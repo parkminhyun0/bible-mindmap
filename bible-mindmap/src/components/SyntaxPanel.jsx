@@ -844,11 +844,18 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
 
       {/* ── 내용 ── */}
       {!minimized && !showForm && (
-        <div style={{
+        <div
+          className={isMobile ? 'momentum-scroll' : undefined}
+          style={{
           flex: isMobile ? 1 : undefined,
+          minHeight: isMobile ? 0 : undefined,
           height: isMobile ? undefined : size.h,
           display: 'flex', flexDirection: 'column',
-          overflow: 'hidden',
+          overflowX: 'hidden',
+          overflowY: isMobile ? 'auto' : 'hidden',
+          WebkitOverflowScrolling: isMobile ? 'touch' : undefined,
+          overscrollBehaviorY: isMobile ? 'contain' : undefined,
+          touchAction: isMobile ? 'pan-y' : undefined,
           borderRadius: isMobile ? 0 : '0 0 12px 12px',
         }}>
 
@@ -919,11 +926,14 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
           )}
 
           {!loading && verses && (
-            <div className={isMobile ? 'momentum-scroll' : undefined}
-              style={{ flex: 1, overflowY: 'auto',
+            <div className={!isMobile ? 'momentum-scroll' : undefined}
+              style={{
+                flex: isMobile ? '0 0 auto' : 1,
+                minHeight: 0,
+                overflowY: isMobile ? 'visible' : 'auto',
                 padding: viewMode === 'tree' ? (isMobile ? '10px 12px calc(env(safe-area-inset-bottom, 0px) + 24px)' : '14px 14px 24px') : '0',
-                WebkitOverflowScrolling: 'touch',
-                overscrollBehavior: 'contain',
+                WebkitOverflowScrolling: isMobile ? undefined : 'touch',
+                overscrollBehavior: isMobile ? undefined : 'contain',
                 paddingBottom: isMobile && viewMode !== 'tree' ? 'calc(env(safe-area-inset-bottom, 0px) + 12px)' : undefined,
               }}>
               {viewMode === 'tree' ? (

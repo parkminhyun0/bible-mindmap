@@ -32,6 +32,24 @@ export default function ArgumentMapPanel({
   }, [bookId, chapter]);
 
   useEffect(() => {
+    const openFromVerseMarker = (event) => {
+      const detail = event?.detail || {};
+      if (detail.bookId !== bookId || Number(detail.chapter) !== Number(chapter)) return;
+      const verse = Number(detail.verse);
+      const relation = map?.relations?.find((rel) => {
+        const source = map.nodes.find((node) => node.id === rel.source);
+        const target = map.nodes.find((node) => node.id === rel.target);
+        return [source, target].some((node) => node && verse >= node.from && verse <= node.to);
+      });
+      setFilter('all');
+      if (relation) setSelectedRelation(relation.id);
+      if (isMobile) setMobileOpen(true);
+    };
+    window.addEventListener('argument-map-open', openFromVerseMarker);
+    return () => window.removeEventListener('argument-map-open', openFromVerseMarker);
+  }, [bookId, chapter, isMobile, map]);
+
+  useEffect(() => {
     if (!isMobile || !mobileOpen) return undefined;
 
     const body = document.body;

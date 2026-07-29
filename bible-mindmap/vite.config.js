@@ -1,12 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
-import { fileURLToPath } from 'node:url'
-
-// ContextBibleModal의 과거 상대 import가 남아 있어도 번들 단계에서는 반드시
-// 66권 통합 레지스트리를 사용한다. contextRegistry 내부의 './bookContext' import는
-// 이 exact alias와 일치하지 않으므로 전문 21권 원본을 안전하게 재사용한다.
-const contextRegistryPath = fileURLToPath(new URL('./src/data/contextRegistry.js', import.meta.url))
 
 // build 시 BUILD_ID 주입 · index.html 의 __BM_BUILD_ID__ 를 매 배포 timestamp 로 치환
 // 목적: 클라이언트가 이 값을 localStorage 저장분과 비교 → 새 배포 감지 시 강제 재로드 (모바일 캐시 방어)
@@ -21,12 +15,6 @@ const stampBuildId = () => ({
 export default defineConfig({
   base: '/bible-mindmap/app/',
   build: { outDir: 'dist/app' },
-  resolve: {
-    alias: [
-      // 현재 ContextBibleModal의 legacy import를 빌드/개발 모두에서 66권 레지스트리로 강제한다.
-      { find: '../data/bookContext', replacement: contextRegistryPath },
-    ],
-  },
   plugins: [
     react(),
     stampBuildId(),
