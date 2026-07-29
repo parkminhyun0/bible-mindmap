@@ -1,4 +1,5 @@
 name: Apply mobile apparatus parity patch
+# Registered on main; this update triggers the verified one-shot patch.
 
 on:
   push:
