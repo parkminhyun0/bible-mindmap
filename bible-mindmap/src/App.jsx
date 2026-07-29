@@ -365,6 +365,33 @@ export default function App() {
     [setNodes, record],
   );
 
+  // 여러 노드를 한 번에 캔버스에 격자 배치로 추가 (지명 일괄 배치 등)
+  const handleAddNodes = useCallback(
+    (items) => {
+      if (!Array.isArray(items) || items.length === 0) return;
+      record();
+      const originX = 260;
+      const originY = 160;
+      const stepX = 240;
+      const stepY = 150;
+      const perRow = Math.max(3, Math.ceil(Math.sqrt(items.length)));
+      setNodes((nds) => {
+        const created = items.map(({ type, data }, i) => ({
+          id: `${type}-${++idCounter.current}`,
+          type,
+          ...(CANVAS_NODE_TYPES.has(type) ? { dragHandle: '.canvas-node-drag-handle' } : {}),
+          position: {
+            x: originX + (i % perRow) * stepX,
+            y: originY + Math.floor(i / perRow) * stepY,
+          },
+          data,
+        }));
+        return [...nds, ...created];
+      });
+    },
+    [setNodes, record],
+  );
+
   const handleNodeClick = useCallback((_, node) => {
     setSelectedNodeId(node.id);
     setSelectedEdgeId(null);
@@ -784,6 +811,7 @@ export default function App() {
         <Suspense fallback={<div className="deferred-feature-loading">입력 도구를 불러오는 중…</div>}>
           <Sidebar
             onAddNode={handleAddNode}
+            onAddNodes={handleAddNodes}
             mobileOpen={mobileSidebarOpen}
             onMobileClose={() => setMobileSidebarOpen(false)}
             contextBibleInitialRef={contextBibleInitialRef}

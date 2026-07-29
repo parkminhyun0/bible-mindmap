@@ -3,14 +3,14 @@ import BibleSearch from './BibleSearch';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson, searchBiblicalPlace } from '../api/wikidataApi';
 import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
-import { getBibleTags } from '../data/bibleReferences';
+import { getBibleTags, getPlacesByReference } from '../data/bibleReferences';
 import { detectInputMode } from '../utils/wordSearch';
 
 const ManualModal = lazy(() => import('./ManualModal'));
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const ContextBibleModal = lazy(() => import('./ContextBibleModal'));
 
-export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
+export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
   const isMobile = useMobile();
   const [tab, setTab] = useState('verse');
   const [showManual, setShowManual] = useState(false);
@@ -45,6 +45,8 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
   const [bgResults, setBgResults] = useState([]);
   const [bgSelected, setBgSelected] = useState(null); // 선택된 후보 QID
   const [bgDetail, setBgDetail] = useState(null);    // 상세 데이터
+  const [bulkQuery, setBulkQuery] = useState('');    // 지명 일괄 추가 (본문·지역·키워드)
+  const [bulkMsg, setBulkMsg] = useState('');
   const [bgLoading, setBgLoading] = useState(false);
   const [bgError, setBgError] = useState('');
   const [bgTestament, setBgTestament] = useState('all');
@@ -170,6 +172,27 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
       type: 'verse',
       data: { reference: ref, text: txt, color: c, ...structuredExtra },
     });
+  };
+
+  // 여러 장소 결과를 캔버스에 한 번에 배치 (격자 자동 배치)
+  const addPlaceNodes = (places) => {
+    if (!onAddNodes || !places?.length) return 0;
+    onAddNodes(places.map((p) => ({
+      type: 'place',
+      data: { ...p, bibleTags: p.bibleTags || getBibleTags(p.wikidataId) },
+    })));
+    return places.length;
+  };
+
+  const handleAddAllResults = () => {
+    const n = addPlaceNodes(bgResults);
+    setBulkMsg(n ? `${n}곳을 캔버스에 추가했습니다.` : '');
+  };
+
+  const handleBulkAddByReference = () => {
+    const places = getPlacesByReference(bulkQuery, bgTestament);
+    const n = addPlaceNodes(places);
+    setBulkMsg(n ? `‘${bulkQuery}’ 관련 ${n}곳을 캔버스에 추가했습니다.` : `‘${bulkQuery}’에 해당하는 지명이 없습니다.`);
   };
 
   const deferredOverlays = (
@@ -707,6 +730,41 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
             <button onClick={handleAdd} disabled={!bgDetail} style={{ ...btnStyle, background: '#d97706', opacity: bgDetail ? 1 : 0.4 }}>
               + 장소 추가
             </button>
+
+            {bgResults.length > 1 && (
+              <button
+                onClick={handleAddAllResults}
+                style={{ ...btnStyle, background: '#0f766e', marginTop: 6 }}
+                title="현재 검색 결과의 모든 장소를 캔버스에 한 번에 배치"
+              >
+                🗺️ 검색 결과 {bgResults.length}곳 모두 캔버스에 추가
+              </button>
+            )}
+
+            {/* 본문·지역 기준 지명 일괄 배치 */}
+            <div style={{ marginTop: 10, paddingTop: 10, borderTop: '1px dashed #e2e8f0' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: '#475569', marginBottom: 4 }}>
+                지명 일괄 배치 (본문·지역)
+              </div>
+              <input
+                value={bulkQuery}
+                onChange={(e) => setBulkQuery(e.target.value)}
+                onKeyDown={(e) => { if (e.key === 'Enter' && bulkQuery.trim()) handleBulkAddByReference(); }}
+                placeholder="예: 여호수아, 사도행전, 블레셋, 갈릴리"
+                style={inputStyle}
+              />
+              <button
+                onClick={handleBulkAddByReference}
+                disabled={!bulkQuery.trim()}
+                style={{ ...btnStyle, background: '#0369a1', marginTop: 6, opacity: bulkQuery.trim() ? 1 : 0.4 }}
+                title="책 이름·지역·키워드에 해당하는 모든 지명을 캔버스에 배치"
+              >
+                📍 ‘{bulkQuery || '…'}’ 지명 모두 캔버스에 추가
+              </button>
+              {bulkMsg && (
+                <div style={{ fontSize: 10, color: '#0f766e', marginTop: 5 }}>{bulkMsg}</div>
+              )}
+            </div>
           </div>
         )}
 

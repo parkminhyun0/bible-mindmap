@@ -271,10 +271,76 @@ export const BIBLICAL_PLACE_PROFILES = {
   'place:sardis': { canonicalName: '사데', aliases: ['Sardis'], testament: 'nt', region: '아시아 서부', lat: 38.4885, lon: 28.0400, certainty: 'confirmed', description: '살았으나 죽은 이름뿐인 교회의 도시', bibleTags: ['요한계시록 3:1-6'], locationBasis: '사르디스 유적·회당' },
   'place:philadelphia-asia': { canonicalName: '빌라델비아', aliases: ['Philadelphia'], testament: 'nt', region: '아시아 서부', lat: 38.3500, lon: 28.5200, certainty: 'confirmed', description: '적은 능력으로도 말씀을 지킨 교회의 도시', bibleTags: ['요한계시록 3:7-13'], locationBasis: '알라셰히르 연속 거주지' },
   'place:laodicea': { canonicalName: '라오디게아', aliases: ['Laodicea'], testament: 'nt', region: '아시아 서부(리쿠스 계곡)', lat: 37.8360, lon: 29.1080, certainty: 'confirmed', description: '차지도 뜨겁지도 않다고 책망받은 부유한 도시', bibleTags: ['요한계시록 3:14-22', '골로새서 4:16'], locationBasis: '라오디케이아 유적' },
+
+  // ── 블레셋 5대 도시 ──────────────────────────────────────────────────────────
+  'place:gaza': { canonicalName: '가사', aliases: ['Gaza', 'Azzah'], testament: 'ot', region: '블레셋 해안 평야', lat: 31.5200, lon: 34.4500, certainty: 'confirmed', description: '블레셋 5대 도시 중 최남단, 삼손 최후의 무대', bibleTags: ['사사기 16:21-30', '아모스 1:6-7'], locationBasis: '가자 연속 거주지' },
+  'place:ashkelon': { canonicalName: '아스글론', aliases: ['Ashkelon', 'Ascalon'], testament: 'ot', region: '블레셋 해안 평야', lat: 31.6658, lon: 34.5500, certainty: 'confirmed', description: '블레셋 5대 도시의 하나인 항구 도시', bibleTags: ['사사기 14:19', '사무엘하 1:20'], locationBasis: '아슈켈론 발굴' },
+  'place:ashdod': { canonicalName: '아스돗', aliases: ['Ashdod', '아소도', 'Azotus'], testament: 'both', region: '블레셋 해안 평야', lat: 31.8000, lon: 34.6500, certainty: 'confirmed', description: '언약궤가 옮겨진 블레셋 도시, 신약의 아소도', bibleTags: ['사무엘상 5:1-7', '사도행전 8:40'], locationBasis: '텔 아스돗 발굴' },
+  'place:ekron': { canonicalName: '에그론', aliases: ['Ekron'], testament: 'ot', region: '블레셋 평야', lat: 31.7800, lon: 34.8517, certainty: 'probable', description: '언약궤가 마지막으로 머문 블레셋 도시', bibleTags: ['사무엘상 5:10', '사무엘상 6'], locationBasis: '텔 미크네에서 에크론 비문 출토' },
+  'place:gath': { canonicalName: '가드', aliases: ['Gath'], testament: 'ot', region: '블레셋 평야', lat: 31.6997, lon: 34.8478, certainty: 'probable', description: '골리앗의 고향이자 다윗이 피신한 블레셋 도시', bibleTags: ['사무엘상 17:4', '사무엘상 21:10-15', '사무엘상 27'], locationBasis: '텔 에스사피가 유력 후보' },
+
+  // ── 유다·다윗 도피 관련 ─────────────────────────────────────────────────────
+  'place:gezer': { canonicalName: '게셀', aliases: ['Gezer'], testament: 'ot', region: '유다 평지', lat: 31.8597, lon: 34.9186, certainty: 'confirmed', description: '솔로몬이 재건한 요새 성읍', bibleTags: ['여호수아 10:33', '열왕기상 9:15-17'], locationBasis: '텔 게제르 발굴·게제르 경계비' },
+  'place:adullam': { canonicalName: '아둘람', aliases: ['Adullam'], testament: 'ot', region: '유다 평지', lat: 31.6500, lon: 34.9800, certainty: 'probable', description: '다윗이 도피하여 무리를 모은 굴', bibleTags: ['사무엘상 22:1-2', '사무엘하 23:13'], locationBasis: '키르베트 에시셰이크 마드쿠르 인근' },
+  'place:en-gedi': { canonicalName: '엔게디', aliases: ['En-gedi', 'En Gedi'], testament: 'ot', region: '유다 광야(사해 서안)', lat: 31.4614, lon: 35.3925, certainty: 'confirmed', description: '다윗이 사울을 살려준 사해 서편 오아시스', bibleTags: ['사무엘상 24', '아가 1:14'], locationBasis: '엔게디 오아시스·나할 다윗' },
+  'place:ziklag': { canonicalName: '시글락', aliases: ['Ziklag'], testament: 'ot', region: '네게브', lat: 31.4000, lon: 34.7000, certainty: 'disputed', description: '아기스가 다윗에게 준 성읍', bibleTags: ['사무엘상 27:6', '사무엘상 30'], locationBasis: '텔 세라·키르베트 아지룩 등 후보 논쟁' },
+  'place:nob': { canonicalName: '놉', aliases: ['Nob'], testament: 'ot', region: '예루살렘 북편', lat: 31.7950, lon: 35.2400, certainty: 'disputed', description: '제사장들의 성읍, 다윗이 진설병을 받은 곳', bibleTags: ['사무엘상 21:1-9', '사무엘상 22:9-19'], locationBasis: '예루살렘 북쪽 성읍으로 위치 논쟁' },
+  'place:gibeah': { canonicalName: '기브아', aliases: ['Gibeah', '사울의 기브아'], testament: 'ot', region: '베냐민', lat: 31.8236, lon: 35.2320, certainty: 'probable', description: '사울의 고향이자 왕정 초기 수도', bibleTags: ['사사기 19-20', '사무엘상 10:26', '사무엘상 11:4'], locationBasis: '텔 엘풀이 유력 후보' },
+  'place:keilah': { canonicalName: '그일라', aliases: ['Keilah'], testament: 'ot', region: '유다 평지', lat: 31.6167, lon: 34.9900, certainty: 'probable', description: '다윗이 블레셋에게서 구원한 성읍', bibleTags: ['사무엘상 23:1-13'], locationBasis: '키르베트 킬라 비정' },
+  'place:aphek': { canonicalName: '아벡', aliases: ['Aphek', 'Antipatris(후대)'], testament: 'ot', region: '샤론 평야', lat: 32.1042, lon: 34.9333, certainty: 'confirmed', description: '언약궤를 빼앗긴 블레셋 전투의 진지', bibleTags: ['사무엘상 4:1', '사무엘상 29:1'], locationBasis: '텔 아펙(안티파트리스) 발굴' },
+
+  // ── 요단 동편·북부 ──────────────────────────────────────────────────────────
+  'place:dothan': { canonicalName: '도단', aliases: ['Dothan'], testament: 'ot', region: '에브라임 북부', lat: 32.4100, lon: 35.2400, certainty: 'confirmed', description: '요셉이 팔리고 엘리사가 아람 군대를 본 곳', bibleTags: ['창세기 37:17', '열왕기하 6:13-23'], locationBasis: '텔 도탄 발굴' },
+  'place:beth-shan': { canonicalName: '벧산', aliases: ['Beth-shean', 'Scythopolis', '벧스안'], testament: 'both', region: '이스르엘·요단 합류부', lat: 32.5000, lon: 35.5000, certainty: 'confirmed', description: '사울의 시신이 걸린 성읍, 신약 데가볼리의 스구도볼리', bibleTags: ['사무엘상 31:10-12', '여호수아 17:11'], locationBasis: '텔 벧산·스키토폴리스 유적' },
+  'place:zarephath': { canonicalName: '사르밧', aliases: ['Zarephath', 'Sarepta'], testament: 'both', region: '시돈 영역 해안', lat: 33.2700, lon: 35.2900, certainty: 'confirmed', description: '엘리야와 과부의 기적, 예수의 언급', bibleTags: ['열왕기상 17:8-24', '누가복음 4:26'], locationBasis: '사라판드(레바논) 유적' },
+  'place:jabbok': { canonicalName: '얍복강', aliases: ['Jabbok'], testament: 'ot', region: '요단 동편', lat: 32.0300, lon: 35.6200, certainty: 'confirmed', description: '야곱이 씨름한 강', bibleTags: ['창세기 32:22-30'], locationBasis: '나흐르 에즈자르카(요단 동편 지류)' },
+  'place:mahanaim': { canonicalName: '마하나임', aliases: ['Mahanaim'], testament: 'ot', region: '요단 동편 길르앗', lat: 32.2000, lon: 35.7000, certainty: 'disputed', description: '야곱이 천사를 만나고 다윗이 압살롬 반란 때 피신한 곳', bibleTags: ['창세기 32:1-2', '사무엘하 17:24-27'], locationBasis: '요단 동편 후보지 논쟁' },
+  'place:succoth-jordan': { canonicalName: '숙곳', aliases: ['Succoth'], testament: 'ot', region: '요단 동편', lat: 32.2000, lon: 35.6300, certainty: 'probable', description: '야곱이 장막을 친 곳, 기드온이 벌한 성읍', bibleTags: ['창세기 33:17', '사사기 8:5-16'], locationBasis: '텔 데이르 알라 비정' },
+  'place:penuel': { canonicalName: '브니엘', aliases: ['Peniel', 'Penuel'], testament: 'ot', region: '요단 동편', lat: 32.1800, lon: 35.6800, certainty: 'disputed', description: '야곱이 하나님의 얼굴을 본 곳', bibleTags: ['창세기 32:30-31', '사사기 8:8-9'], locationBasis: '얍복 상류 후보지 논쟁' },
+
+  // ── 광야·남방·에돔·이집트 ───────────────────────────────────────────────────
+  'place:zoar': { canonicalName: '소알', aliases: ['Zoar', 'Bela'], testament: 'ot', region: '사해 남동부', lat: 31.0300, lon: 35.5000, certainty: 'disputed', description: '롯이 피신한 작은 성읍', bibleTags: ['창세기 19:20-23'], locationBasis: '사해 남부 후보지 논쟁' },
+  'place:midian': { canonicalName: '미디안', aliases: ['Midian'], testament: 'ot', region: '북서 아라비아', lat: 28.5000, lon: 35.5000, certainty: 'probable', description: '모세가 도피하여 이드로를 만난 땅', bibleTags: ['출애굽기 2:15-22', '출애굽기 3:1'], locationBasis: '아카바만 동편 미디안 지역' },
+  'place:bozrah-edom': { canonicalName: '보스라', qualifiedName: '에돔 보스라', aliases: ['Bozrah'], testament: 'ot', region: '에돔', lat: 30.7350, lon: 35.6000, certainty: 'probable', description: '에돔의 중심 성읍, 심판 예언의 대상', bibleTags: ['이사야 34:6', '이사야 63:1', '아모스 1:12'], locationBasis: '부세이라(요르단) 비정' },
+  'place:ezion-geber': { canonicalName: '에시온게벨', aliases: ['Ezion-geber', 'Elath', '엘랏'], testament: 'ot', region: '아카바만 북안', lat: 29.5500, lon: 34.9800, certainty: 'probable', description: '솔로몬의 무역 선단 항구', bibleTags: ['열왕기상 9:26', '민수기 33:35'], locationBasis: '텔 엘켈레이페·아카바 인근' },
+  'place:pithom-rameses': { canonicalName: '비돔·라암셋', aliases: ['Pithom', 'Rameses', 'Raamses'], testament: 'ot', region: '이집트 나일 삼각주 동부', lat: 30.8000, lon: 31.8300, certainty: 'probable', description: '이스라엘이 강제 노역으로 지은 국고성', bibleTags: ['출애굽기 1:11', '출애굽기 12:37'], locationBasis: '텔 엘마스쿠타·콴티르(피람세스) 비정' },
+
+  // ── 메소포타미아·아람 ───────────────────────────────────────────────────────
+  'place:carchemish': { canonicalName: '갈그미스', aliases: ['Carchemish'], testament: 'ot', region: '유프라테스 상류', lat: 36.8300, lon: 38.0200, certainty: 'confirmed', description: '느부갓네살이 이집트를 격파한 전투지', bibleTags: ['예레미야 46:2', '역대하 35:20'], locationBasis: '카르케미시(제르가모시) 유적' },
+  'place:riblah': { canonicalName: '리블라', aliases: ['Riblah'], testament: 'ot', region: '오론테스 강변(하맛 지역)', lat: 34.4600, lon: 36.5500, certainty: 'probable', description: '느부갓네살이 유다 왕들을 심판한 지휘 본부', bibleTags: ['열왕기하 25:6', '열왕기하 25:20-21'], locationBasis: '리블레(시리아) 비정' },
+  'place:paddan-aram': { canonicalName: '밧단아람', aliases: ['Paddan-aram', '아람나하라임'], testament: 'ot', region: '상부 메소포타미아', lat: 36.8600, lon: 39.0300, certainty: 'probable', description: '나홀의 성과 야곱이 아내를 맞은 지역', bibleTags: ['창세기 28:2-5', '창세기 29'], locationBasis: '하란 일대 아람 지역' },
+
+  // ── NT 사도행전 여정(추가) ──────────────────────────────────────────────────
+  'place:joppa': { canonicalName: '욥바', aliases: ['Joppa', 'Jaffa', '야파'], testament: 'both', region: '지중해 연안', lat: 32.0540, lon: 34.7520, certainty: 'confirmed', description: '요나의 출항지, 베드로의 환상과 다비다 소생', bibleTags: ['요나 1:3', '사도행전 9:36-43', '사도행전 10'], locationBasis: '야파(텔아비브) 옛 항구' },
+  'place:lydda': { canonicalName: '룻다', aliases: ['Lydda', 'Lod', '롯'], testament: 'nt', region: '샤론 평야', lat: 31.9515, lon: 34.8953, certainty: 'confirmed', description: '베드로가 애니아를 고친 성읍', bibleTags: ['사도행전 9:32-35'], locationBasis: '로드(리다) 연속 거주지' },
+  'place:perga': { canonicalName: '버가', aliases: ['Perga'], testament: 'nt', region: '밤빌리아', lat: 36.9614, lon: 30.8536, certainty: 'confirmed', description: '바울 1차 여행 중 마가 요한이 떠난 도시', bibleTags: ['사도행전 13:13-14', '사도행전 14:25'], locationBasis: '페르게 유적' },
+  'place:attalia': { canonicalName: '앗달리아', aliases: ['Attalia', 'Antalya'], testament: 'nt', region: '밤빌리아 해안', lat: 36.8841, lon: 30.7056, certainty: 'confirmed', description: '바울 1차 여행의 귀환 항구', bibleTags: ['사도행전 14:25-26'], locationBasis: '안탈리아 항구' },
+  'place:myra': { canonicalName: '무라', aliases: ['Myra'], testament: 'nt', region: '루기아 해안', lat: 36.2589, lon: 29.9850, certainty: 'confirmed', description: '바울이 로마행 알렉산드리아 배로 갈아탄 항구', bibleTags: ['사도행전 27:5-6'], locationBasis: '데므레(무라) 유적' },
+  'place:fair-havens': { canonicalName: '미항', aliases: ['Fair Havens', '아름다운 항구', '라새아'], testament: 'nt', region: '그레데(크레타) 남안', lat: 34.9000, lon: 24.9200, certainty: 'probable', description: '바울의 로마 항해 중 정박한 그레데의 항구', bibleTags: ['사도행전 27:8-13'], locationBasis: '크레타 남부 칼로이 리메네스 비정' },
+  'place:puteoli': { canonicalName: '보디올', aliases: ['Puteoli', 'Pozzuoli'], testament: 'nt', region: '이탈리아 캄파니아', lat: 40.8230, lon: 14.1210, certainty: 'confirmed', description: '바울이 로마로 가는 길에 형제들을 만난 항구', bibleTags: ['사도행전 28:13-14'], locationBasis: '포추올리 고대 항구' },
+  'place:colossae': { canonicalName: '골로새', aliases: ['Colossae'], testament: 'nt', region: '아시아 서부(리쿠스 계곡)', lat: 37.7900, lon: 29.2600, certainty: 'confirmed', description: '골로새서 수신 교회의 도시', bibleTags: ['골로새서 1:2'], locationBasis: '리쿠스 계곡 골로새 텔' },
+  'place:hierapolis': { canonicalName: '히에라볼리', aliases: ['Hierapolis'], testament: 'nt', region: '아시아 서부(리쿠스 계곡)', lat: 37.9247, lon: 29.1250, certainty: 'confirmed', description: '골로새·라오디게아와 함께 언급된 도시', bibleTags: ['골로새서 4:13'], locationBasis: '파묵칼레 히에라폴리스 유적' },
 };
 
 function normalizePlaceName(value) {
   return String(value || '').trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+}
+
+function toPlaceResult(id, place) {
+  return {
+    id,
+    wikidataId: id,
+    label: place.qualifiedName || place.canonicalName,
+    name: place.qualifiedName || place.canonicalName,
+    canonicalName: place.canonicalName,
+    ...place,
+    source: '성경 본문 + 프로젝트 성경 지명 식별 자료',
+    verified: true,
+  };
+}
+
+function matchesTestamentFilter(place, testament) {
+  return testament === 'all' || place.testament === 'both' || place.testament === testament;
 }
 
 export function searchStaticBiblicalPlaces(query, testament = 'all') {
@@ -286,17 +352,32 @@ export function searchStaticBiblicalPlaces(query, testament = 'all') {
       || normalizePlaceName(place.qualifiedName).includes(normalized)
       || place.aliases.some((alias) => normalizePlaceName(alias).includes(normalized))
     ))
-    .filter(([, place]) => testament === 'all' || place.testament === 'both' || place.testament === testament)
-    .map(([id, place]) => ({
-      id,
-      wikidataId: id,
-      label: place.qualifiedName || place.canonicalName,
-      name: place.qualifiedName || place.canonicalName,
-      canonicalName: place.canonicalName,
-      ...place,
-      source: '성경 본문 + 프로젝트 성경 지명 식별 자료',
-      verified: true,
-    }));
+    .filter(([, place]) => matchesTestamentFilter(place, testament))
+    .map(([id, place]) => toPlaceResult(id, place));
+}
+
+// 일괄 배치용: 이름 또는 성경 본문(책 이름) 기준으로 지명을 모아 반환한다.
+// 예) '여호수아' → 여호수아에 등장하는 모든 지명, '블레셋'·'갈릴리' 등 지역/별칭도 매칭.
+export function getPlacesByReference(query, testament = 'all') {
+  const normalized = normalizePlaceName(query);
+  if (!normalized) return [];
+  return Object.entries(BIBLICAL_PLACE_PROFILES)
+    .filter(([, place]) => (
+      normalizePlaceName(place.canonicalName).includes(normalized)
+      || normalizePlaceName(place.qualifiedName).includes(normalized)
+      || normalizePlaceName(place.region).includes(normalized)
+      || place.aliases.some((alias) => normalizePlaceName(alias).includes(normalized))
+      || (place.bibleTags || []).some((tag) => normalizePlaceName(tag).includes(normalized))
+    ))
+    .filter(([, place]) => matchesTestamentFilter(place, testament))
+    .map(([id, place]) => toPlaceResult(id, place));
+}
+
+// 전체 지명(선택적 구약/신약 필터) — 일괄 추가/맵 렌더용.
+export function getAllBiblicalPlaces(testament = 'all') {
+  return Object.entries(BIBLICAL_PLACE_PROFILES)
+    .filter(([, place]) => matchesTestamentFilter(place, testament))
+    .map(([id, place]) => toPlaceResult(id, place));
 }
 
 /**
