@@ -38,9 +38,10 @@ export const PARALLEL_KIND = {
   crossref: { label: '관주 연관', tone: 'crossref' },
 };
 
-// v1 curated pericope registry. These are passage-alignment seeds, not claims
-// about literary dependence. Editorial/theological observations are explicitly
-// curated and are never produced by the automatic diff engine.
+// v1 curated Synoptic pericope registry (Matthew/Mark/Luke only).
+// Passage alignment is not itself a claim about literary dependence.
+// Editorial/theological observations are curated and never produced by
+// the deterministic word-diff engine.
 export const SYNOPTIC_PARALLELS = [
   {
     id: 'john-baptist-ministry',
@@ -118,13 +119,11 @@ export const SYNOPTIC_PARALLELS = [
       ref('Matt', 14, 13, 21),
       ref('Mark', 6, 30, 44),
       ref('Luke', 9, 10, 17),
-      ref('John', 6, 1, 15),
     ],
     emphasis: {
       Matt: '광야로 물러남과 무리를 불쌍히 여기심 속에서 제자들이 먹이는 일에 참여한다.',
       Mark: '목자 없는 양 같은 무리와 푸른 잔디의 무리 조직을 자세히 묘사한다.',
       Luke: '하나님 나라를 말하고 병자를 고치신 뒤 식사 사건으로 이어 간다.',
-      John: '유월절 표지와 빌립·안드레의 대화를 더해 떡 표적 담화의 서론으로 기능한다.',
     },
   },
   {
@@ -143,7 +142,6 @@ export const SYNOPTIC_PARALLELS = [
       ref('Matt', 21, 1, 11),
       ref('Mark', 11, 1, 11),
       ref('Luke', 19, 28, 40),
-      ref('John', 12, 12, 19),
     ],
   },
   {
