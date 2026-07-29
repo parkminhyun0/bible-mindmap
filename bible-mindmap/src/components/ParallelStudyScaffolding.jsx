@@ -3,6 +3,7 @@ import { RESEARCH_LENSES } from '../data/researchLenses';
 import { GUIDED_STUDIES } from '../data/guidedStudies';
 import { PARALLEL_ONBOARDING } from '../data/onboardingScript';
 import { RESEARCH_GLOSSARY } from '../data/researchGlossary';
+import { RESEARCH_GLOSSARY_CONTEXT } from '../data/researchGlossaryContext';
 import { SYNOPTIC_PROMPT_CARDS } from '../data/synopticPromptCards';
 import { CITATION_PROMPT_CARDS } from '../data/citationPromptCards';
 import { CITATIONS } from '../data/citations';
@@ -24,8 +25,8 @@ const CITATION_TYPE_LABEL = {
 
 const GLOSSARY_INDEX = (() => {
   const idx = new Map();
-  for (const g of RESEARCH_GLOSSARY) {
-    idx.set(g.term, g);
+  for (const g of [...RESEARCH_GLOSSARY, ...RESEARCH_GLOSSARY_CONTEXT]) {
+    if (!idx.has(g.term)) idx.set(g.term, g);
     if (g.alsoKnownAs) {
       for (const alt of g.alsoKnownAs.split('·').map((s) => s.trim())) {
         if (alt && !idx.has(alt)) idx.set(alt, g);
@@ -41,12 +42,12 @@ const GLOSSARY_REGEX = (() => {
   return new RegExp(`(${escaped.join('|')})`, 'g');
 })();
 
-export function findGuidedStudy(id) {
-  return GUIDED_STUDIES.find((s) => s.id === id) || null;
+export function findGuidedStudy(id, list = GUIDED_STUDIES) {
+  return list.find((s) => s.id === id) || null;
 }
 
-export function findLens(id) {
-  return RESEARCH_LENSES.find((l) => l.id === id) || null;
+export function findLens(id, list = RESEARCH_LENSES) {
+  return list.find((l) => l.id === id) || null;
 }
 
 export function findCitationCardForAnchor(anchor) {
@@ -129,16 +130,17 @@ export function GlossaryText({ text, style }) {
   );
 }
 
-export function GuidedCourseCarousel({ activeCourseId, onSelectCourse, isMobile }) {
+export function GuidedCourseCarousel({ activeCourseId, onSelectCourse, isMobile, courses = GUIDED_STUDIES, marker = 'data-guided-courses', headerLabel = '가이드 학습 코스', headerNote = '· 25-50분 안내형 연구' }) {
+  const dataMarker = { [marker]: '' };
   return (
-    <section data-guided-courses style={{ marginBottom: 10 }}>
+    <section {...dataMarker} style={{ marginBottom: 10 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6 }}>
         <span style={{ fontSize: 14 }}>🎓</span>
-        <strong style={{ fontSize: 11, color: '#334155' }}>가이드 학습 코스</strong>
-        <span style={{ fontSize: 10, color: '#94a3b8' }}>· 25-50분 안내형 연구</span>
+        <strong style={{ fontSize: 11, color: '#334155' }}>{headerLabel}</strong>
+        <span style={{ fontSize: 10, color: '#94a3b8' }}>{headerNote}</span>
       </div>
       <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 6, scrollbarWidth: 'thin' }}>
-        {GUIDED_STUDIES.map((course) => {
+        {courses.map((course) => {
           const active = course.id === activeCourseId;
           const diff = DIFF_BADGE[course.difficulty];
           return (
@@ -233,16 +235,17 @@ export function ActiveCoursePanel({ course, currentStepIdx, onStepClick, onExit 
   );
 }
 
-export function LensPicker({ selectedLensId, onSelect, recommendedIds = [] }) {
+export function LensPicker({ selectedLensId, onSelect, recommendedIds = [], lenses = RESEARCH_LENSES, marker = 'data-research-lens-picker' }) {
+  const dataMarker = { [marker]: '' };
   return (
-    <section data-research-lens-picker style={{ marginBottom: 10 }}>
+    <section {...dataMarker} style={{ marginBottom: 10 }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
         <span style={{ fontSize: 13 }}>🔬</span>
         <strong style={{ fontSize: 11, color: '#334155' }}>연구 렌즈</strong>
         <span style={{ fontSize: 10, color: '#94a3b8' }}>· 무엇에 주목할지 선택</span>
       </div>
       <div style={{ display: 'flex', gap: 5, overflowX: 'auto', paddingBottom: 4 }}>
-        {RESEARCH_LENSES.map((lens) => {
+        {lenses.map((lens) => {
           const active = lens.id === selectedLensId;
           const recommended = recommendedIds.includes(lens.id);
           return (
@@ -381,24 +384,23 @@ export function CitationCard({ anchor }) {
   );
 }
 
-const ONBOARDING_LS_KEY = `parallel-onboarding-v${PARALLEL_ONBOARDING.version}-dismissed`;
-
-export function useOnboarding() {
+export function useOnboarding(onboarding = PARALLEL_ONBOARDING, prefix = 'parallel') {
+  const lsKey = `${prefix}-onboarding-v${onboarding.version}-dismissed`;
   const [visible, setVisible] = useState(() => {
     if (typeof window === 'undefined') return false;
-    return !window.localStorage.getItem(ONBOARDING_LS_KEY);
+    return !window.localStorage.getItem(lsKey);
   });
   const dismiss = () => {
-    if (typeof window !== 'undefined') window.localStorage.setItem(ONBOARDING_LS_KEY, '1');
+    if (typeof window !== 'undefined') window.localStorage.setItem(lsKey, '1');
     setVisible(false);
   };
   return { visible, dismiss };
 }
 
-export function OnboardingOverlay({ onDone }) {
+export function OnboardingOverlay({ onDone, onboarding = PARALLEL_ONBOARDING, marker = 'data-parallel-onboarding' }) {
   const [idx, setIdx] = useState(0);
   const [targetRect, setTargetRect] = useState(null);
-  const step = PARALLEL_ONBOARDING.steps[idx];
+  const step = onboarding.steps[idx];
 
   useEffect(() => {
     const el = document.querySelector(step.targetSelector);
@@ -409,13 +411,14 @@ export function OnboardingOverlay({ onDone }) {
   }, [step.targetSelector]);
 
   const next = () => {
-    if (idx + 1 >= PARALLEL_ONBOARDING.steps.length) onDone();
+    if (idx + 1 >= onboarding.steps.length) onDone();
     else setIdx(idx + 1);
   };
 
+  const dataMarker = { [marker]: '' };
   return (
     <div
-      data-parallel-onboarding
+      {...dataMarker}
       style={{
         position: 'fixed', inset: 0, zIndex: 3300,
         background: 'rgba(15,23,42,.55)',
@@ -439,7 +442,7 @@ export function OnboardingOverlay({ onDone }) {
           boxShadow: '0 24px 60px rgba(15,23,42,.4)',
         }}>
         <div style={{ fontSize: 10, color: '#94a3b8', marginBottom: 6 }}>
-          {idx + 1} / {PARALLEL_ONBOARDING.steps.length}
+          {idx + 1} / {onboarding.steps.length}
         </div>
         <strong style={{ display: 'block', fontSize: 15, color: '#0f172a', marginBottom: 6 }}>{step.title}</strong>
         <div style={{ fontSize: 12, color: '#334155', lineHeight: 1.6, marginBottom: 12 }}>
@@ -458,7 +461,7 @@ export function OnboardingOverlay({ onDone }) {
           >{step.cta}</button>
         </div>
         <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #e2e8f0' }}>
-          {PARALLEL_ONBOARDING.emptyStateHints.map((h, i) => (
+          {(onboarding.emptyStateHints || []).map((h, i) => (
             <div key={i} style={{ fontSize: 10, color: '#94a3b8', lineHeight: 1.5 }}>💡 {h}</div>
           ))}
         </div>

@@ -12,6 +12,11 @@ import useResearchAnnotations from '../research/useResearchAnnotations';
 import { getArcExplanation } from '../utils/arcExplanation';
 import ArgumentMapPanel from './ArgumentMapPanel';
 import ArgumentMapMarker from './ArgumentMapMarker';
+import {
+  ContextBibleScaffoldingBar,
+  ContextOnboardingOverlay,
+  useContextOnboarding,
+} from './ContextBibleScaffolding';
 
 // 책 id → 한글 약어
 const KO_ABBR_BY_ID = {
@@ -230,6 +235,12 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   const [threadData, setThreadData]       = useState([]);
   const [threadLoading, setThreadLoading] = useState(false);
   const [metaOpen, setMetaOpen]           = useState(true);
+
+  // ── 학습 스캐폴딩 상태 ──────────────────────────────────────────────
+  const [activeCourse, setActiveCourse] = useState(null);
+  const [currentStepIdx, setCurrentStepIdx] = useState(0);
+  const [selectedLensId, setSelectedLensId] = useState(null);
+  const contextOnboarding = useContextOnboarding();
 
   // ── 팝업 창 상태 (데스크톱 전용) ──────────────────────────────────────
   const [minimized, setMinimized] = useState(false);
@@ -852,6 +863,36 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     }, 600);
   }, []);
 
+  // ── 학습 스캐폴딩 핸들러 ──────────────────────────────────────────
+  const handleSelectContextCourse = useCallback((course) => {
+    if (!course) {
+      setActiveCourse(null);
+      setCurrentStepIdx(0);
+      return;
+    }
+    setActiveCourse(course);
+    setCurrentStepIdx(0);
+    if (course.book && course.book !== activeBookId) {
+      setActiveBookId(course.book);
+    }
+    if (course.recommendedLensIds?.[0]) setSelectedLensId(course.recommendedLensIds[0]);
+    const firstCh = course.chapterRange?.[0] || 1;
+    const firstVerse = course.focusVerses?.[0]
+      ? (typeof course.focusVerses[0] === 'string'
+          ? Number(String(course.focusVerses[0]).split(':')[1]) || 1
+          : Number(course.focusVerses[0]) || 1)
+      : 1;
+    setTimeout(() => scrollTo(firstCh, firstVerse), 60);
+  }, [activeBookId, scrollTo]);
+
+  const handleContextStepClick = useCallback((idx, step) => {
+    setCurrentStepIdx(idx);
+    if (step?.targetVerse) {
+      const ch = activeCourse?.chapterRange?.[0] || activeRef.ch;
+      scrollTo(ch, step.targetVerse);
+    }
+  }, [activeCourse, activeRef.ch, scrollTo]);
+
   // ── 방향키 절 이동 (chapters 미로드여도 폴백으로 동작) ─────────────────
   const moveVerse = useCallback((delta) => {
     const { ch, verse } = activeRef;
@@ -1352,6 +1393,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         {/* ── 성경 66권 · 정경/장르 대분류 + 책 칩 — 모바일·데스크톱 공통 ── */}
         <div
           ref={chipRowRef}
+          data-context-book-index
           aria-label="성경 책 선택 · 장르별 분류"
           style={{
             padding: isMobile ? '8px 12px 4px' : '10px 20px 6px',
@@ -1442,6 +1484,22 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             })}
           </div>
         </div>
+
+        {/* ── 학습 스캐폴딩 (가이드 코스 · 렌즈 · 활성 장 카드) ── */}
+        {isSupported && (
+          <ContextBibleScaffoldingBar
+            isMobile={isMobile}
+            activeBookId={activeBookId}
+            activeRef={activeRef}
+            activeCourse={activeCourse}
+            currentStepIdx={currentStepIdx}
+            selectedLensId={selectedLensId}
+            onSelectCourse={handleSelectContextCourse}
+            onExitCourse={() => { setActiveCourse(null); setCurrentStepIdx(0); }}
+            onStepClick={handleContextStepClick}
+            onSelectLens={setSelectedLensId}
+          />
+        )}
 
         {/* ── 장 네비게이션 (데스크톱, 흐름 아래, Rom 전용) ── */}
         {isSupported && !isMobile && chReady && (
@@ -3248,6 +3306,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         {crossrefNode}
         {variantNode}
         {previewNodes}
+        {contextOnboarding.visible && (
+          <ContextOnboardingOverlay onDone={contextOnboarding.dismiss} />
+        )}
       </div>
     );
   }
@@ -3264,6 +3325,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
       {crossrefNode}
       {variantNode}
       {previewNodes}
+      {contextOnboarding.visible && (
+        <ContextOnboardingOverlay onDone={contextOnboarding.dismiss} />
+      )}
     </div>
   );
 }
