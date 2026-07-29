@@ -1,12 +1,11 @@
-import { ALL_BOOKS } from './bibleBooks';
-import { BOOK_CONTEXTS as SPECIALIZED_BOOK_CONTEXTS, GNT_DISCOURSE_RULES } from './bookContext';
-import { buildExpandedContext } from './expandedContextEngine';
-import { EXPANDED_OT1 } from './expandedProfilesOT1';
-import { EXPANDED_OT2 } from './expandedProfilesOT2';
-import { EXPANDED_NT } from './expandedProfilesNT';
+import { ALL_BOOKS } from './bibleBooks.js';
+import { BOOK_CONTEXTS as SPECIALIZED_BOOK_CONTEXTS, GNT_DISCOURSE_RULES } from './bookContext.js';
+import { buildExpandedContext } from './expandedContextEngine.js';
+import { EXPANDED_OT1 } from './expandedProfilesOT1.js';
+import { EXPANDED_OT2 } from './expandedProfilesOT2.js';
+import { EXPANDED_NT } from './expandedProfilesNT.js';
 
 const EXPANDED_BOOK_PROFILES = { ...EXPANDED_OT1, ...EXPANDED_OT2, ...EXPANDED_NT };
-
 const FALLBACK_OT_RULES = [];
 
 function normalizeArcSet(context) {
