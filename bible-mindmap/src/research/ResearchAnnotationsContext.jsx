@@ -7,7 +7,7 @@ import {
   removeResearchAnnotation,
   saveResearchAnnotation,
 } from '../storage/researchRepository';
-import ResearchAnnotationsContext from './researchAnnotationsContext';
+import ResearchAnnotationsContext from './researchAnnotationsStore';
 
 const DEFAULT_PROJECT_ID = 'personal-bible-research';
 

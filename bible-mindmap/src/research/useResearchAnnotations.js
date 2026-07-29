@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ResearchAnnotationsContext from './researchAnnotationsContext';
+import ResearchAnnotationsContext from './researchAnnotationsStore';
 
 export default function useResearchAnnotations() {
   const value = useContext(ResearchAnnotationsContext);
