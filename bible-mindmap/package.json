@@ -5,13 +5,13 @@
   "type": "module",
   "homepage": "https://parkminhyun0.github.io/bible-mindmap",
   "scripts": {
-    "predev": "node scripts/ensure-mobile-apparatus-parity.mjs && node scripts/ensure-mobile-syntax-scroll.mjs && node scripts/ensure-mobile-syntax-unified-scroll.mjs && node scripts/ensure-manual-20260729.mjs && node scripts/ensure-manual-all-bible-contexts.mjs && node scripts/use-stable-context-registry.mjs && node scripts/ensure-context-genre-arc-ui.mjs && node scripts/ensure-mobile-arc-continuity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/ensure-argument-map-v1.mjs && node scripts/ensure-argument-map-markers.mjs",
+    "predev": "node scripts/ensure-mobile-apparatus-parity.mjs && node scripts/ensure-mobile-syntax-scroll.mjs && node scripts/ensure-mobile-syntax-unified-scroll.mjs && node scripts/ensure-manual-20260729.mjs && node scripts/ensure-manual-all-bible-contexts.mjs && node scripts/ensure-context-genre-arc-ui.mjs && node scripts/ensure-mobile-arc-continuity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/ensure-argument-map-v1.mjs && node scripts/ensure-argument-map-markers.mjs",
     "dev": "vite",
     "build": "vite build",
     "build:lexicon": "node scripts/build-lexicon.mjs",
     "lint": "oxlint",
     "preview": "vite preview",
-    "prebuild": "node scripts/ensure-mobile-apparatus-parity.mjs && node scripts/ensure-mobile-syntax-scroll.mjs && node scripts/ensure-mobile-syntax-unified-scroll.mjs && node scripts/ensure-manual-20260729.mjs && node scripts/ensure-manual-all-bible-contexts.mjs && node scripts/use-stable-context-registry.mjs && node scripts/ensure-context-genre-arc-ui.mjs && node scripts/ensure-mobile-arc-continuity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/ensure-argument-map-v1.mjs && node scripts/ensure-argument-map-markers.mjs && node -e \"const fs=require('fs');const p='public/data/strongs-def/gnt/0.json';if(!fs.existsSync(p)){console.log('▶ lexicon 데이터 없음 — build-lexicon 실행');require('child_process').execSync('npm run build:lexicon',{stdio:'inherit'});}\"",
+    "prebuild": "node scripts/ensure-mobile-apparatus-parity.mjs && node scripts/ensure-mobile-syntax-scroll.mjs && node scripts/ensure-mobile-syntax-unified-scroll.mjs && node scripts/ensure-manual-20260729.mjs && node scripts/ensure-manual-all-bible-contexts.mjs && node scripts/ensure-context-genre-arc-ui.mjs && node scripts/ensure-mobile-arc-continuity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/ensure-argument-map-v1.mjs && node scripts/ensure-argument-map-markers.mjs && node -e \"const fs=require('fs');const p='public/data/strongs-def/gnt/0.json';if(!fs.existsSync(p)){console.log('▶ lexicon 데이터 없음 — build-lexicon 실행');require('child_process').execSync('npm run build:lexicon',{stdio:'inherit'});}\"",
     "predeploy": "npm run build && cp -r landing/. dist/",
     "deploy": "gh-pages -d dist --dotfiles"
   },
