@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import useMobile from '../hooks/useMobile';
+import { BUILD_COMMIT, buildTimeLabel } from '../buildInfo';
 
 const SECTIONS = [
   {
@@ -1122,6 +1123,19 @@ export default function ManualModal({ onClose }) {
         <span style={{ fontSize: 16 }}>📘</span>
         <span style={{ flex: 1, fontWeight: 700, fontSize: 14, color: '#fff' }}>
           성경 마인드맵 — 사용자 매뉴얼
+        </span>
+        {/* 현재 빌드 배지 — 배포 반영 확인 장치 (매 방문 시 최신 빌드 식별) */}
+        <span
+          onMouseDown={(e) => e.stopPropagation()}
+          title={`현재 빌드 · commit ${BUILD_COMMIT} · ${buildTimeLabel()}`}
+          style={{
+            fontSize: 10, fontFamily: "'SFMono-Regular', ui-monospace, monospace",
+            color: '#93c5fd', background: 'rgba(255,255,255,0.08)',
+            border: '1px solid rgba(147,197,253,0.35)', borderRadius: 5,
+            padding: '2px 6px', whiteSpace: 'nowrap',
+          }}
+        >
+          build {BUILD_COMMIT}
         </span>
         <button
           onMouseDown={(e) => e.stopPropagation()}

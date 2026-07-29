@@ -1,6 +1,42 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
+import { execSync } from 'node:child_process'
+import { writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
+// ── 캐시 세대 단일 소스 (bump 시 이 두 값만 수정) ─────────────────────────
+const HTML_CACHE = 'bm-app-html-v4'
+const CHUNK_CACHE = 'bm-feature-chunks-v3'
+
+// ── 빌드 provenance (배포 반영 확인 장치) ────────────────────────────────
+// 매 빌드마다 git commit SHA + 빌드 시각을 앱과 version.json에 심는다.
+// 앱 [사용법]의 '현재 빌드' 배지 + scripts/verify-deploy.mjs 로 "라이브가 최신인가"를 확인.
+function resolveCommit() {
+  try {
+    return execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+      .toString().trim()
+  } catch {
+    return (process.env.GITHUB_SHA || 'dev').slice(0, 7)
+  }
+}
+const BUILD_COMMIT = resolveCommit()
+const BUILD_TIME = new Date().toISOString()
+
+// dist 루트에 version.json 방출 → 라이브 배포 반영 검증용 엔드포인트
+const emitVersionJson = () => ({
+  name: 'emit-version-json',
+  writeBundle(options) {
+    const dir = options.dir || 'dist/app'
+    const payload = {
+      commit: BUILD_COMMIT,
+      buildTime: BUILD_TIME,
+      htmlCache: HTML_CACHE,
+      chunkCache: CHUNK_CACHE,
+    }
+    try { writeFileSync(resolve(dir, 'version.json'), JSON.stringify(payload, null, 2)) } catch { /* noop */ }
+  },
+})
 
 // build 시 BUILD_ID 주입 · index.html 의 __BM_BUILD_ID__ 를 매 배포 timestamp 로 치환
 // 목적: 클라이언트가 이 값을 localStorage 저장분과 비교 → 새 배포 감지 시 강제 재로드 (모바일 캐시 방어)
@@ -15,9 +51,14 @@ const stampBuildId = () => ({
 export default defineConfig({
   base: '/bible-mindmap/app/',
   build: { outDir: 'dist/app' },
+  define: {
+    __BM_BUILD_COMMIT__: JSON.stringify(BUILD_COMMIT),
+    __BM_BUILD_TIME__: JSON.stringify(BUILD_TIME),
+  },
   plugins: [
     react(),
     stampBuildId(),
+    emitVersionJson(),
     VitePWA({
       // 자동 업데이트: 새 SW 배포 시 다음 방문에 활성화
       registerType: 'autoUpdate',
@@ -66,7 +107,7 @@ export default defineConfig({
             urlPattern: /\/bible-mindmap\/app\/(?:index\.html)?(?:\?.*)?$/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'bm-app-html-v4',
+              cacheName: HTML_CACHE,
               networkTimeoutSeconds: 4,
               expiration: { maxEntries: 3, maxAgeSeconds: 60 * 60 * 24 },
               cacheableResponse: { statuses: [200] },
@@ -79,7 +120,7 @@ export default defineConfig({
             urlPattern: /\/bible-mindmap\/app\/assets\/.+\.js$/,
             handler: 'StaleWhileRevalidate',
             options: {
-              cacheName: 'bm-feature-chunks-v3',
+              cacheName: CHUNK_CACHE,
               expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 7 },
               cacheableResponse: { statuses: [200] },
             },
