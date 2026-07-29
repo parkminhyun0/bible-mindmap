@@ -9,6 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const issues = [];
 const books = new Map(ALL_BOOKS.map((book) => [book.id, book]));
 const setIds = new Set();
+const SYNOPTIC_BOOKS = new Set(['Matt', 'Mark', 'Luke']);
 
 const fail = (message) => issues.push(message);
 
@@ -17,15 +18,18 @@ for (const set of SYNOPTIC_PARALLELS) {
   setIds.add(set.id);
 
   if (!set.title) fail(`${set.id}: title 누락`);
-  if (!Array.isArray(set.passages) || set.passages.length < 3) {
-    fail(`${set.id}: 공관 평행단락은 최소 3본문 필요`);
+  if (!Array.isArray(set.passages) || set.passages.length !== 3) {
+    fail(`${set.id}: 공관 평행단락은 마태·마가·누가 3본문이어야 함`);
     continue;
   }
 
   const localRefs = new Set();
+  const localBooks = new Set();
   for (const passage of set.passages) {
     const book = books.get(passage.book);
     if (!book) fail(`${set.id}: 알 수 없는 book id ${passage.book}`);
+    if (!SYNOPTIC_BOOKS.has(passage.book)) fail(`${set.id}: 공관 레지스트리에 비공관복음 포함 ${passage.book}`);
+    localBooks.add(passage.book);
     if (!Number.isInteger(passage.chapter) || passage.chapter < 1) fail(`${set.id}: chapter 오류`);
     if (book && passage.chapter > book.chapters) fail(`${set.id}: ${passage.book} ${passage.chapter}장은 책 범위를 초과`);
     if (!Number.isInteger(passage.verseStart) || passage.verseStart < 1) fail(`${set.id}: verseStart 오류`);
@@ -34,6 +38,10 @@ for (const set of SYNOPTIC_PARALLELS) {
     const key = `${passage.book}:${passage.chapter}:${passage.verseStart}-${passage.verseEnd}`;
     if (localRefs.has(key)) fail(`${set.id}: 동일 본문 중복 ${key}`);
     localRefs.add(key);
+  }
+
+  for (const bookId of SYNOPTIC_BOOKS) {
+    if (!localBooks.has(bookId)) fail(`${set.id}: 공관복음 ${bookId} 본문 누락`);
   }
 
   for (const bookId of Object.keys(set.emphasis || {})) {
