@@ -79,6 +79,7 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
   useEffect(() => { setDragOffset({ x: 0, y: 0 }); }, [entry?.s]);
 
   const onDragStart = (e) => {
+    if (isMobile) return;
     if (e.button !== 0) return;
     e.preventDefault();
     dragState.current = { startMouseX: e.clientX, startMouseY: e.clientY, startX: dragOffset.x, startY: dragOffset.y };
@@ -150,7 +151,7 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
             padding: '12px 14px', background: isHebrew ? '#fef3c7' : '#dbeafe',
             borderBottom: '1px solid #e2e8f0',
             display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8,
-            cursor: 'grab',
+            cursor: isMobile ? 'default' : 'grab',
             userSelect: 'none',
           }}
         >
@@ -173,7 +174,11 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           <button
             onClick={onClose}
             onMouseDown={(e) => e.stopPropagation()}
-            style={{ background: 'none', border: 'none', fontSize: 18, cursor: 'pointer', color: '#64748b', padding: 0, lineHeight: 1, flexShrink: 0 }}
+            style={{
+              background: 'none', border: 'none', fontSize: isMobile ? 22 : 18,
+              cursor: 'pointer', color: '#64748b', padding: 0, lineHeight: 1,
+              flexShrink: 0, minWidth: isMobile ? 44 : undefined, minHeight: isMobile ? 44 : undefined,
+            }}
             title="닫기 (Esc)"
           >✕</button>
         </div>

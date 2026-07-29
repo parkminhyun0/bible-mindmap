@@ -45,7 +45,21 @@ function isEditorUsable(editor) {
   return !!editor && !editor.isDestroyed;
 }
 
-export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNode, onDeleteNode, onUndo, onRedo, canUndo, canRedo, onAddContemporary, onAddCrossRef }) {
+export default function NodeEditor({
+  isMobile = false,
+  mobileVisible = true,
+  mobileExpandRequest = 0,
+  onMobileClose,
+  selectedNode,
+  onUpdateNode,
+  onDeleteNode,
+  onUndo,
+  onRedo,
+  canUndo,
+  canRedo,
+  onAddContemporary,
+  onAddCrossRef,
+}) {
   const [editData, setEditData] = useState(null);
   const [, setTick] = useState(0);
   const [tagInput, setTagInput] = useState('');
@@ -55,6 +69,7 @@ export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNod
   const [placePersonError, setPlacePersonError] = useState('');
   const [crossRefs, setCrossRefs] = useState(null); // null | 'loading' | []
   const [crossRefError, setCrossRefError] = useState('');
+  const [mobileExpanded, setMobileExpanded] = useState(false);
   const [toolbarFontSize, setToolbarFontSize] = useState(() => {
     const stored = Number(safeLocalStorage.getItem(TOOLBAR_FONT_STORAGE_KEY));
     return Number.isFinite(stored) && stored >= 11 && stored <= 18 ? stored : 13;
@@ -299,15 +314,17 @@ export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNod
   };
   const disabledOpacity = disabled ? 0.4 : 1;
 
-  // 모바일: 노드 선택 시 편집 시트의 primary 입력을 자동 포커스해서 소프트 키보드 오픈
   const mobileInputRef = useRef(null);
+
   useEffect(() => {
-    if (!isMobile || !selectedNode?.id) return;
-    const t = setTimeout(() => {
-      mobileInputRef.current?.focus();
-    }, 120);
-    return () => clearTimeout(t);
+    if (!isMobile) return;
+    setMobileExpanded(false);
   }, [isMobile, selectedNode?.id]);
+
+  useEffect(() => {
+    if (!isMobile || !selectedNode?.id || mobileExpandRequest < 1) return;
+    setMobileExpanded(true);
+  }, [isMobile, mobileExpandRequest, selectedNode?.id]);
 
   const handleDeleteSelected = () => {
     if (!selectedNode?.id) return;
@@ -338,19 +355,19 @@ export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNod
           </div>
         </div>
 
-        {/* 하단 편집 시트: 노드 선택 시만 표시 */}
-        {hasNode && (
+        {/* 하단 편집 시트: 선택 직후에는 미리보기, 편집을 누르면 확장 */}
+        {hasNode && mobileVisible && (
           <div
-            className="momentum-scroll mobile-bottom-sheet mobile-editor-sheet"
+            className={`momentum-scroll mobile-editor-sheet ${mobileExpanded ? 'is-expanded' : 'is-peek'}`}
             onPointerDown={(e) => e.stopPropagation()}
             style={{
-              position: 'fixed', left: 0, right: 0, bottom: 0,
+              position: 'fixed', left: 0, right: 0,
               zIndex: 1050,
               background: '#fff',
               borderRadius: '16px 16px 0 0',
               boxShadow: '0 -4px 20px rgba(0,0,0,0.18)',
-              padding: '12px calc(env(safe-area-inset-right, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + 20px) calc(env(safe-area-inset-left, 0px) + 16px)',
-              display: 'flex', flexDirection: 'column', gap: 10,
+              padding: '8px calc(env(safe-area-inset-right, 0px) + 16px) 12px calc(env(safe-area-inset-left, 0px) + 16px)',
+              display: 'flex', flexDirection: 'column', gap: 8,
               overflowY: 'auto',
               WebkitOverflowScrolling: 'touch',
               overscrollBehavior: 'contain',
@@ -361,6 +378,29 @@ export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNod
               <div style={{ width: 36, height: 4, borderRadius: 2, background: '#cbd5e1' }} />
             </div>
 
+            <div className="mobile-editor-sheet__header">
+              <button
+                type="button"
+                className="mobile-editor-sheet__summary"
+                onClick={() => setMobileExpanded((expanded) => !expanded)}
+                aria-expanded={mobileExpanded}
+              >
+                <span aria-hidden="true">{nodeType === 'verse' ? '📖' : nodeType === 'note' ? '📝' : nodeType === 'topic' ? '🏷️' : nodeType === 'person' ? '👤' : nodeType === 'place' ? '📍' : nodeType === 'period' ? '🕰️' : '📖'}</span>
+                <span>
+                  <strong>{editData?.reference || editData?.title || editData?.name || '선택한 노드'}</strong>
+                  <small>{mobileExpanded ? '편집 도구를 접습니다' : '눌러서 바로 편집합니다'}</small>
+                </span>
+              </button>
+              <button
+                type="button"
+                className="mobile-editor-sheet__close"
+                onClick={onMobileClose}
+                aria-label="선택 해제"
+              >✕</button>
+            </div>
+
+            {mobileExpanded && (
+              <div className="mobile-editor-sheet__body">
             {/* 참조/제목 입력 + 삭제 버튼 */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{ fontSize: 16 }}>{nodeType === 'verse' ? '📖' : nodeType === 'note' ? '📝' : nodeType === 'topic' ? '🏷️' : nodeType === 'person' ? '👤' : nodeType === 'place' ? '📍' : nodeType === 'period' ? '🕰️' : '📖'}</span>
@@ -494,6 +534,8 @@ export default function NodeEditor({ isMobile = false, selectedNode, onUpdateNod
               <span style={{ fontSize: 12, fontWeight: 600, color: '#475569', minWidth: 32, textAlign: 'center' }}>{fontSize}px</span>
               <button onClick={() => update({ fontSize: Math.min(50, fontSize + 1) })} style={iconBtnStyle}>A+</button>
             </div>
+              </div>
+            )}
           </div>
         )}
       </>

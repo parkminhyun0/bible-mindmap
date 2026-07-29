@@ -34,7 +34,7 @@ export default function CrossrefPopup({
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800
   const width = isMobile ? vw : 360
-  const maxHeight = isMobile ? Math.round(vh * 0.7) : Math.min(480, vh - 40)
+  const maxHeight = isMobile ? Math.round(vh * 0.82) : Math.min(480, vh - 40)
   const margin = 12
   const initLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin))
   const initTop  = isMobile ? (vh - maxHeight) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 10, vh - maxHeight - margin))

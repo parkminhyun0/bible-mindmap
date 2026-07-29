@@ -21,6 +21,7 @@ import PeriodNode from './components/PeriodNode';
 import ArcingNode from './components/ArcingNode';
 import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdge';
 import NodeEditor from './components/NodeEditor';
+import MobileWorkspaceDock from './components/MobileWorkspaceDock';
 import CitationSuggest from './components/CitationSuggest';
 import useHistory from './hooks/useHistory';
 import { useDeviceProfile } from './hooks/useMobile';
@@ -233,6 +234,7 @@ export default function App() {
   const [openedDoc, setOpenedDoc] = useState(null);
   const [showEdgeOptions, setShowEdgeOptions] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [mobileEditRequest, setMobileEditRequest] = useState(0);
   const [arcingPanels, setArcingPanels] = useState([]); // 다중 절 구조 분석 창
   const arcingIdRef = useRef(0);
   const [syntaxPanels, setSyntaxPanels] = useState([]); // 다중 구문 분석 창
@@ -400,6 +402,29 @@ export default function App() {
   const handlePaneClick = useCallback(() => {
     setSelectedNodeId(null);
     setSelectedEdgeId(null);
+  }, []);
+
+  const openMobileAdd = useCallback(() => {
+    setSavePanelOpen(false);
+    setMobileSidebarOpen(true);
+  }, []);
+
+  const openMobileSave = useCallback(() => {
+    setMobileSidebarOpen(false);
+    setSavePanelOpen(true);
+  }, []);
+
+  const openMobileEditor = useCallback(() => {
+    if (!selectedNodeId) return;
+    setMobileSidebarOpen(false);
+    setSavePanelOpen(false);
+    setMobileEditRequest((request) => request + 1);
+  }, [selectedNodeId]);
+
+  const fitMobileCanvas = useCallback(() => {
+    setMobileSidebarOpen(false);
+    setSavePanelOpen(false);
+    reactFlowRef.current?.fitView({ padding: 0.18, duration: 260 });
   }, []);
 
   const handleUpdateNode = useCallback(
@@ -773,6 +798,9 @@ export default function App() {
       <div className="app-canvas-shell" style={{ flex: 1, position: 'relative' }}>
         <NodeEditor
           isMobile={isMobile}
+          mobileVisible={!mobileSidebarOpen && !savePanelOpen}
+          mobileExpandRequest={mobileEditRequest}
+          onMobileClose={() => setSelectedNodeId(null)}
           selectedNode={selectedNode}
           onUpdateNode={handleUpdateNode}
           onDeleteNode={handleDeleteNode}
@@ -1094,10 +1122,10 @@ export default function App() {
             <h1>성경 마인드맵</h1>
             <p>구절·인물·장소·시대를 추가해 개인 연구 보드를 시작하세요.</p>
             <div className="mobile-empty-state__actions">
-              <button type="button" onClick={() => setMobileSidebarOpen(true)}>
+              <button type="button" onClick={openMobileAdd}>
                 📖 구절·자료 추가
               </button>
-              <button type="button" onClick={() => setSavePanelOpen(true)}>
+              <button type="button" onClick={openMobileSave}>
                 💾 저장소 열기
               </button>
             </div>
@@ -1154,64 +1182,22 @@ export default function App() {
         </Suspense>
       )}
 
-      {/* 모바일 좌우 고정 탭 */}
-      {isMobile && (
-        <>
-          {/* 왼쪽 탭 — 구절 추가 사이드바 */}
-          <button
-            aria-label="구절과 연구 자료 추가"
-            onPointerDown={(e) => { e.stopPropagation(); }}
-            onClick={() => setMobileSidebarOpen(true)}
-            style={{
-              position: 'fixed', left: 0, top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 1000,
-              width: 40, height: 80,
-              background: '#3b82f6', color: '#fff',
-              border: 'none', borderRadius: '0 12px 12px 0',
-              cursor: 'pointer', fontSize: 20,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '3px 0 10px rgba(0,0,0,0.25)',
-              touchAction: 'auto',
-              padding: 0,
-            }}
-            title="구절 추가"
-          >📖</button>
-
-          {/* 오른쪽 탭 — 저장소 */}
-          <button
-            aria-label="개인 저장소 열기"
-            onPointerDown={(e) => { e.stopPropagation(); }}
-            onClick={() => setSavePanelOpen((v) => !v)}
-            style={{
-              position: 'fixed', right: 0, top: '50%',
-              transform: 'translateY(-50%)',
-              zIndex: 1000,
-              width: 40, height: 80,
-              background: '#1e293b', color: '#fff',
-              border: 'none', borderRadius: '12px 0 0 12px',
-              cursor: 'pointer', fontSize: 20,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '-3px 0 10px rgba(0,0,0,0.25)',
-              touchAction: 'auto',
-              padding: 0,
-            }}
-            title="저장소"
-          >💾</button>
-        </>
+      {isMobile && !mobileSidebarOpen && !savePanelOpen && (
+        <MobileWorkspaceDock
+          activeSurface={selectedNodeId ? 'edit' : null}
+          hasSelection={!!selectedNodeId}
+          onAdd={openMobileAdd}
+          onEdit={openMobileEditor}
+          onFit={fitMobileCanvas}
+          onSave={openMobileSave}
+        />
       )}
 
       {/* 모바일 저장소 패널 (모달) */}
       {isMobile && savePanelOpen && (
-        <>
-          <div
-            onClick={() => setSavePanelOpen(false)}
-            style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 1100 }}
-          />
-          <div className="momentum-scroll mobile-bottom-sheet mobile-save-sheet" style={{
-            position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
-            background: '#fff', borderRadius: '16px 16px 0 0',
-            boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
+        <section className="momentum-scroll h-screen-safe mobile-workspace-sheet mobile-save-sheet" style={{
+            position: 'fixed', inset: 0, zIndex: 1201,
+            background: '#fff',
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
@@ -1221,10 +1207,14 @@ export default function App() {
             willChange: 'transform',
             transform: 'translateZ(0)',
           }}>
-            <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>
-              <div style={{ width: 40, height: 4, borderRadius: 2, background: '#cbd5e1' }} />
+            <div className="mobile-workspace-sheet__header">
+              <div>
+                <strong>개인 저장소</strong>
+                <span>저장·복원·백업을 한 화면에서 관리하세요</span>
+              </div>
+              <button type="button" onClick={() => setSavePanelOpen(false)} aria-label="저장소 닫기">✕</button>
             </div>
-            <div style={{ padding: '0 4px 4px' }}>
+            <div className="mobile-workspace-sheet__body">
               <Suspense fallback={<div className="deferred-feature-loading">저장소를 불러오는 중…</div>}>
                 <SavePanel
                   nodes={nodes}
@@ -1237,8 +1227,7 @@ export default function App() {
                 />
               </Suspense>
             </div>
-          </div>
-        </>
+          </section>
       )}
     </div>
     </CanvasContext.Provider>

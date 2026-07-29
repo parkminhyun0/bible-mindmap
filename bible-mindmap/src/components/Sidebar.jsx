@@ -196,19 +196,9 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
   if (isMobile) {
     if (!mobileOpen) return null;
     return (
-      <>
-        {/* 배경 오버레이 */}
-        <div
-          onClick={onMobileClose}
-          style={{
-            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 1100,
-          }}
-        />
-        {/* 드로어 */}
-        <div className="momentum-scroll mobile-bottom-sheet mobile-bottom-sheet--large" style={{
-          position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
-          background: '#f8fafc', borderRadius: '16px 16px 0 0',
-          boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
+      <section className="momentum-scroll h-screen-safe mobile-workspace-sheet mobile-add-sheet" style={{
+          position: 'fixed', inset: 0, zIndex: 1201,
+          background: '#f8fafc',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
           display: 'flex', flexDirection: 'column',
@@ -218,15 +208,14 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
           willChange: 'transform',
           transform: 'translateZ(0)',
         }}>
-          {/* 드로어 핸들 */}
-          <div style={{ display: 'flex', justifyContent: 'center', padding: '10px 0 4px' }}>
-            <div style={{ width: 40, height: 4, borderRadius: 2, background: '#cbd5e1' }} />
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 16px 8px' }}>
-            <h2 style={{ fontSize: 15, fontWeight: 700, color: '#1e293b', margin: 0 }}>✝️ 성경 마인드맵</h2>
+          <div className="mobile-workspace-sheet__header">
+            <div>
+              <strong>자료 추가</strong>
+              <span>구절·노트·주제·배경을 선택하세요</span>
+            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
-              <button onClick={onMobileClose} style={{ background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: '#64748b' }}>✕</button>
+              <button onClick={onMobileClose} aria-label="자료 추가 닫기">✕</button>
             </div>
           </div>
 
@@ -355,9 +344,8 @@ export default function Sidebar({ onAddNode, mobileOpen, onMobileClose, onOpenSy
               )}
             </div>
           )}
-        </div>
         {deferredOverlays}
-      </>
+      </section>
     );
   }
 

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useResearchAnnotations from '../research/useResearchAnnotations';
+import useMobile from '../hooks/useMobile';
 
 const TYPE_OPTIONS = [
   { id: 'note', icon: '📌', label: '개인 메모', color: '#2563eb' },
@@ -47,6 +48,7 @@ export default function PassageAnnotationPin({
   label = '개인 주석',
   prominent = false,
 }) {
+  const isMobile = useMobile();
   const {
     annotationsForPassage,
     createAnnotation,
@@ -139,23 +141,37 @@ export default function PassageAnnotationPin({
   };
 
   const panel = open && position && createPortal(
+    <>
+    {isMobile && (
+      <div
+        className="mobile-annotation-backdrop"
+        aria-hidden="true"
+        onClick={() => { setOpen(false); resetEditor(); }}
+      />
+    )}
     <div
       ref={panelRef}
       role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      className={isMobile ? 'mobile-annotation-dialog' : undefined}
       aria-label={`${referenceLabel} 개인 주석`}
       onPointerDown={(event) => event.stopPropagation()}
       onClick={(event) => event.stopPropagation()}
       style={{
         position: 'fixed',
-        left: position.left,
-        top: position.top,
+        left: isMobile ? 0 : position.left,
+        right: isMobile ? 0 : undefined,
+        top: isMobile ? 'auto' : position.top,
+        bottom: isMobile ? 0 : undefined,
         zIndex: 5000,
-        width: position.width,
-        maxHeight: 'min(520px, calc(100vh - 24px))',
+        width: isMobile ? '100%' : position.width,
+        maxHeight: isMobile ? '88dvh' : 'min(520px, calc(100vh - 24px))',
         overflow: 'auto',
-        padding: 12,
+        padding: isMobile
+          ? '14px 16px calc(env(safe-area-inset-bottom, 0px) + 18px)'
+          : 12,
         border: '1px solid #bfdbfe',
-        borderRadius: 14,
+        borderRadius: isMobile ? '20px 20px 0 0' : 14,
         background: '#fff',
         boxShadow: '0 18px 52px rgba(15,23,42,.28)',
         color: '#1e293b',
@@ -163,12 +179,12 @@ export default function PassageAnnotationPin({
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-        <strong style={{ flex: 1, fontSize: 13 }}>📌 {referenceLabel} 개인 주석</strong>
+        <strong style={{ flex: 1, fontSize: isMobile ? 16 : 13 }}>📌 {referenceLabel} 개인 주석</strong>
         <button
           type="button"
           onClick={() => { setOpen(false); resetEditor(); }}
           aria-label="주석 닫기"
-          style={{ border: 'none', background: '#f1f5f9', borderRadius: 7, width: 26, height: 26, cursor: 'pointer' }}
+          style={{ border: 'none', background: '#f1f5f9', borderRadius: 9, width: isMobile ? 44 : 26, height: isMobile ? 44 : 26, cursor: 'pointer' }}
         >×</button>
       </div>
 
@@ -190,7 +206,8 @@ export default function PassageAnnotationPin({
             onClick={() => setType(option.id)}
             title={option.label}
             style={{
-              padding: '4px 7px', borderRadius: 7, cursor: 'pointer', fontSize: 11,
+              padding: isMobile ? '8px 10px' : '4px 7px', borderRadius: 7, cursor: 'pointer', fontSize: isMobile ? 13 : 11,
+              minHeight: isMobile ? 42 : undefined,
               border: `1px solid ${type === option.id ? option.color : '#e2e8f0'}`,
               background: type === option.id ? `${option.color}14` : '#fff',
               color: type === option.id ? option.color : '#64748b',
@@ -207,16 +224,17 @@ export default function PassageAnnotationPin({
         onChange={(event) => setContent(event.target.value)}
         placeholder="묵상, 해석, 질문, 설교 아이디어를 기록하세요."
         rows={4}
-        autoFocus
+        autoFocus={!isMobile}
         style={{
           width: '100%', boxSizing: 'border-box', resize: 'vertical',
           padding: 9, border: '1px solid #cbd5e1', borderRadius: 8,
-          font: 'inherit', fontSize: 12, lineHeight: 1.55,
+          font: 'inherit', fontSize: isMobile ? 16 : 12, lineHeight: 1.55,
+          minHeight: isMobile ? 120 : undefined,
         }}
       />
       <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 6, marginTop: 7 }}>
         {editingId && (
-          <button type="button" onClick={resetEditor} style={{ padding: '5px 9px' }}>취소</button>
+          <button type="button" onClick={resetEditor} style={{ padding: '5px 9px', minHeight: isMobile ? 44 : undefined }}>취소</button>
         )}
         <button
           type="button"
@@ -224,6 +242,7 @@ export default function PassageAnnotationPin({
           onClick={save}
           style={{
             padding: '6px 12px', border: 'none', borderRadius: 7,
+            minHeight: isMobile ? 48 : undefined,
             background: '#2563eb', color: '#fff', fontWeight: 800,
             cursor: saving ? 'wait' : 'pointer', opacity: saving ? .6 : 1,
           }}
@@ -283,7 +302,8 @@ export default function PassageAnnotationPin({
           })}
         </div>
       )}
-    </div>,
+    </div>
+    </>,
     document.body,
   );
 
@@ -302,7 +322,8 @@ export default function PassageAnnotationPin({
         aria-label={`${referenceLabel} 개인 주석 ${annotations.length ? `${annotations.length}개` : '추가'}`}
         style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 2,
-          minWidth: compact ? 24 : 30, height: prominent ? 28 : (compact ? 24 : 26),
+          minWidth: isMobile ? 44 : (compact ? 24 : 30),
+          height: isMobile ? 44 : (prominent ? 28 : (compact ? 24 : 26)),
           padding: compact ? '0 5px' : '0 9px',
           border: prominent
             ? '1px solid #f59e0b'
