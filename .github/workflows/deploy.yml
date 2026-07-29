@@ -53,6 +53,9 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Guard — 빌드가 tracked 소스를 변형하지 않았는지 확인 (안티패턴 방지)
+        run: node scripts/guard-no-source-mutation.mjs
+
       - name: Copy landing pages to dist root
         run: |
           cp -r landing/. dist/
