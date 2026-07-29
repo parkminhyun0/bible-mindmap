@@ -1,3 +1,5 @@
+import { safeLocalStorage } from '../utils/safeStorage';
+
 export const STORAGE_SCHEMA_VERSION = 2;
 export const STORAGE_DB_NAME = 'bible-mindmap-workspace';
 export const STORAGE_DB_VERSION = 1;
@@ -16,10 +18,10 @@ function createId(prefix) {
 }
 
 export function getWorkspaceId() {
-  let id = localStorage.getItem(WORKSPACE_ID_KEY);
+  let id = safeLocalStorage.getItem(WORKSPACE_ID_KEY);
   if (!id) {
     id = createId(DEFAULT_WORKSPACE_ID);
-    localStorage.setItem(WORKSPACE_ID_KEY, id);
+    safeLocalStorage.setItem(WORKSPACE_ID_KEY, id);
   }
   return id;
 }
@@ -167,7 +169,7 @@ export async function migrateLegacyStorage() {
     ['repository-tree', LEGACY_TREE_KEY],
   ]) {
     try {
-      const raw = localStorage.getItem(key);
+      const raw = safeLocalStorage.getItem(key);
       if (!raw) continue;
       await persistWorkspaceRecord(kind, JSON.parse(raw), {
         source: 'legacy-localstorage',
@@ -208,8 +210,8 @@ export async function buildWorkspaceBackup() {
     records: records.filter((record) => record.workspaceId === workspaceId),
     revisions: revisions.filter((revision) => revision.workspaceId === workspaceId),
     legacy: {
-      currentCanvas: localStorage.getItem(LEGACY_CURRENT_KEY),
-      repositoryTree: localStorage.getItem(LEGACY_TREE_KEY),
+      currentCanvas: safeLocalStorage.getItem(LEGACY_CURRENT_KEY),
+      repositoryTree: safeLocalStorage.getItem(LEGACY_TREE_KEY),
     },
   };
 }
@@ -242,14 +244,14 @@ export async function restoreWorkspaceBackup(backup) {
   const currentRecord = backup.records.find((record) => record.kind === 'current-canvas');
   const treeRecord = backup.records.find((record) => record.kind === 'repository-tree');
   if (currentRecord?.data) {
-    localStorage.setItem(LEGACY_CURRENT_KEY, JSON.stringify(currentRecord.data));
+    safeLocalStorage.setItem(LEGACY_CURRENT_KEY, JSON.stringify(currentRecord.data));
   } else if (backup.legacy?.currentCanvas) {
-    localStorage.setItem(LEGACY_CURRENT_KEY, backup.legacy.currentCanvas);
+    safeLocalStorage.setItem(LEGACY_CURRENT_KEY, backup.legacy.currentCanvas);
   }
   if (treeRecord?.data) {
-    localStorage.setItem(LEGACY_TREE_KEY, JSON.stringify(treeRecord.data));
+    safeLocalStorage.setItem(LEGACY_TREE_KEY, JSON.stringify(treeRecord.data));
   } else if (backup.legacy?.repositoryTree) {
-    localStorage.setItem(LEGACY_TREE_KEY, backup.legacy.repositoryTree);
+    safeLocalStorage.setItem(LEGACY_TREE_KEY, backup.legacy.repositoryTree);
   }
   if (
     typeof window !== 'undefined'

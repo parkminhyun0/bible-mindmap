@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import useMobile from '../hooks/useMobile';
 import { searchContemporaries, searchPersonsAtPlace } from '../api/wikidataApi';
 import { fetchCrossRefs } from '../api/crossrefApi';
@@ -9,7 +9,9 @@ import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import TextAlign from '@tiptap/extension-text-align';
 import { SyncMark } from '../utils/SyncMark';
-import ParallelView from './ParallelView';
+import { safeLocalStorage } from '../utils/safeStorage';
+
+const ParallelView = lazy(() => import('./ParallelView'));
 
 const COLORS = [
   { value: '#3b82f6', label: '파랑' },
@@ -51,13 +53,13 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
   const [crossRefs, setCrossRefs] = useState(null); // null | 'loading' | []
   const [crossRefError, setCrossRefError] = useState('');
   const [toolbarFontSize, setToolbarFontSize] = useState(() => {
-    const stored = Number(window.localStorage.getItem(TOOLBAR_FONT_STORAGE_KEY));
+    const stored = Number(safeLocalStorage.getItem(TOOLBAR_FONT_STORAGE_KEY));
     return Number.isFinite(stored) && stored >= 11 && stored <= 18 ? stored : 13;
   });
 
   useEffect(() => {
     document.documentElement.style.setProperty('--app-toolbar-font-size', `${toolbarFontSize}px`);
-    window.localStorage.setItem(TOOLBAR_FONT_STORAGE_KEY, String(toolbarFontSize));
+    safeLocalStorage.setItem(TOOLBAR_FONT_STORAGE_KEY, String(toolbarFontSize));
   }, [toolbarFontSize]);
 
   // 방금 로컬 편집으로 저장한 (nodeId, tab, html) — 이 값이 data로 되돌아오면 setContent 스킵
@@ -318,7 +320,7 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
         {/* 하단 편집 시트: 노드 선택 시만 표시 */}
         {hasNode && (
           <div
-            className="momentum-scroll"
+            className="momentum-scroll mobile-bottom-sheet mobile-editor-sheet"
             onPointerDown={(e) => e.stopPropagation()}
             style={{
               position: 'fixed', left: 0, right: 0, bottom: 0,
@@ -328,7 +330,6 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
               boxShadow: '0 -4px 20px rgba(0,0,0,0.18)',
               padding: '12px calc(env(safe-area-inset-right, 0px) + 16px) calc(env(safe-area-inset-bottom, 0px) + 20px) calc(env(safe-area-inset-left, 0px) + 16px)',
               display: 'flex', flexDirection: 'column', gap: 10,
-              maxHeight: '55dvh',
               overflowY: 'auto',
               WebkitOverflowScrolling: 'touch',
               overscrollBehavior: 'contain',
@@ -753,11 +754,13 @@ export default function NodeEditor({ selectedNode, onUpdateNode, onDeleteNode, o
 
       {/* 병렬 뷰 모달 */}
       {parallelOpen && selectedNode && editData?.bookId && (
-        <ParallelView
-          node={selectedNode}
-          onSave={handleParallelSave}
-          onClose={() => setParallelOpen(false)}
-        />
+        <Suspense fallback={<div className="deferred-feature-loading">병렬 보기를 불러오는 중…</div>}>
+          <ParallelView
+            node={selectedNode}
+            onSave={handleParallelSave}
+            onClose={() => setParallelOpen(false)}
+          />
+        </Suspense>
       )}
       {/* Editor area — verse/note/topic: TipTap 리치 에디터 / person/place/period: 메모 textarea */}
       {(!hasNode || nodeType === 'verse' || nodeType === 'note' || nodeType === 'topic') && (

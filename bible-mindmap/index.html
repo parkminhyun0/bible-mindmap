@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <!-- index.html 캐시 방지 (모바일 사파리·크롬이 오래된 번들 해시 참조하는 문제 해결)
@@ -48,6 +48,14 @@
     </style>
   </head>
   <body>
+    <div id="boot-fallback" class="boot-fallback" role="status" aria-live="polite">
+      <div class="boot-fallback__card">
+        <div class="boot-fallback__icon" aria-hidden="true">📖</div>
+        <h1>성경 마인드맵을 여는 중입니다</h1>
+        <p>모바일 환경에서는 첫 실행에 잠시 시간이 걸릴 수 있습니다.</p>
+        <button type="button" onclick="location.reload()">화면이 멈추면 다시 불러오기</button>
+      </div>
+    </div>
     <div id="root"></div>
     <!-- 캐시 이중 방어 (모바일 white screen 근본 해결)
          BUILD_ID 는 매 배포마다 vite 가 자동 치환 (vite.config.js stampBuildId plugin)
@@ -55,32 +63,40 @@
     <script>
       (function bustStaleCache() {
         var BUILD_ID = '__BM_BUILD_ID__';
-        var STORED = localStorage.getItem('__bm_build_id');
-        if (!location.search.includes('_v=') && STORED && STORED !== BUILD_ID) {
+        var STORED = null;
+        try {
+          STORED = localStorage.getItem('__bm_build_id');
+          if (location.search.indexOf('_v=') === -1 && STORED && STORED !== BUILD_ID) {
+            localStorage.setItem('__bm_build_id', BUILD_ID);
+            var url = new URL(location.href);
+            url.searchParams.set('_v', Date.now());
+            location.replace(url.toString());
+            return;
+          }
           localStorage.setItem('__bm_build_id', BUILD_ID);
-          var url = new URL(location.href);
-          url.searchParams.set('_v', Date.now());
-          location.replace(url.toString());
-          return;
+        } catch (storageError) {
+          // iOS 개인정보 보호 모드처럼 Web Storage가 차단돼도 앱 부팅은 계속한다.
         }
-        localStorage.setItem('__bm_build_id', BUILD_ID);
       })();
 
       // 스크립트 로드 실패 · 런타임 에러 감지 시 자동 재로드 (백업 방어)
       (function selfHealCache() {
-        var reloaded = sessionStorage.getItem('__bm_cache_reload');
+        var reloaded = null;
+        try { reloaded = sessionStorage.getItem('__bm_cache_reload'); } catch (storageError) {}
         window.addEventListener('error', function(e) {
           var isBundle = e.target && (e.target.tagName === 'SCRIPT' || e.target.tagName === 'LINK');
           var isRefErr = e.error && /is not defined|Cannot read propert/.test(e.error.message || '');
           if ((isBundle || isRefErr) && !reloaded) {
-            sessionStorage.setItem('__bm_cache_reload', '1');
+            try { sessionStorage.setItem('__bm_cache_reload', '1'); } catch (storageError) {}
             var url = new URL(location.href);
             url.searchParams.set('_v', Date.now());
             location.replace(url.toString());
           }
         }, true);
         window.addEventListener('load', function() {
-          setTimeout(function() { sessionStorage.removeItem('__bm_cache_reload'); }, 3000);
+          setTimeout(function() {
+            try { sessionStorage.removeItem('__bm_cache_reload'); } catch (storageError) {}
+          }, 3000);
         });
       })();
     </script>

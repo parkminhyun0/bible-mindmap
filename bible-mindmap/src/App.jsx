@@ -1,4 +1,4 @@
-import { useCallback, useState, useRef, useMemo, useEffect } from 'react';
+import { lazy, Suspense, useCallback, useState, useRef, useMemo, useEffect } from 'react';
 import { applyDagreLayout, applyRadialLayout } from './utils/autoLayout';
 import {
   ReactFlow,
@@ -20,14 +20,8 @@ import PlaceNode from './components/PlaceNode';
 import PeriodNode from './components/PeriodNode';
 import ArcingNode from './components/ArcingNode';
 import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdge';
-import Sidebar from './components/Sidebar';
 import NodeEditor from './components/NodeEditor';
-import SavePanel from './components/SavePanel';
-import DocPanel from './components/DocPanel';
-import ArcingPanel from './components/ArcingPanel';
-import SyntaxPanel from './components/SyntaxPanel';
 import CitationSuggest from './components/CitationSuggest';
-import RelatedPassagePopup from './components/RelatedPassagePopup';
 import useHistory from './hooks/useHistory';
 import useMobile from './hooks/useMobile';
 import { fetchAllTranslations } from './api/bibleApi';
@@ -41,6 +35,14 @@ import {
   persistCurrentCanvas,
 } from './storage/storageCore';
 import { ResearchAnnotationsProvider } from './research/ResearchAnnotationsContext';
+import { safeLocalStorage } from './utils/safeStorage';
+
+const Sidebar = lazy(() => import('./components/Sidebar'));
+const SavePanel = lazy(() => import('./components/SavePanel'));
+const DocPanel = lazy(() => import('./components/DocPanel'));
+const ArcingPanel = lazy(() => import('./components/ArcingPanel'));
+const SyntaxPanel = lazy(() => import('./components/SyntaxPanel'));
+const RelatedPassagePopup = lazy(() => import('./components/RelatedPassagePopup'));
 
 const STORAGE_KEY = 'bible-mindmap-v1';
 const CANVAS_NODE_TYPES = new Set(['verse', 'note', 'topic', 'person', 'place', 'period', 'arcing']);
@@ -76,7 +78,7 @@ function normalizeLoadedNodes(nodes) {
 
 function loadFromStorage() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
+    const raw = safeLocalStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
     const parsed = JSON.parse(raw);
     if (parsed?.nodes) parsed.nodes = normalizeLoadedNodes(parsed.nodes);
@@ -89,7 +91,7 @@ function loadFromStorage() {
 function saveToStorage(nodes, edges) {
   const data = { nodes, edges };
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    safeLocalStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch {
     // 저장 실패 시 무시
   }
@@ -498,7 +500,7 @@ export default function App() {
     setEdges([]);
     setSelectedNodeId(null);
     setSelectedEdgeId(null);
-    localStorage.removeItem(STORAGE_KEY);
+    safeLocalStorage.removeItem(STORAGE_KEY);
   }, [setNodes, setEdges, record]);
 
   const createCitationEdge = useCallback((sourceId, targetId, note, edgeTypeName = 'citation') => {
@@ -728,22 +730,24 @@ export default function App() {
         setArcingPanels(prev => [...prev, { id, passage: passage || null }]);
       },
     }}>
-    <div style={{ display: 'flex',
-      height: '100dvh',
-      minHeight: '100dvh',
+    <div className="app-shell" style={{ display: 'flex',
       fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
-      <Sidebar
-        onAddNode={handleAddNode}
-        mobileOpen={mobileSidebarOpen}
-        onMobileClose={() => setMobileSidebarOpen(false)}
-        contextBibleInitialRef={contextBibleInitialRef}
-        onOpenSyntax={(p) => {
-          const id = ++syntaxIdRef.current;
-          setSyntaxPanels(prev => [...prev, { id, passage: p }]);
-        }}
-      />
+      {(!isMobile || mobileSidebarOpen) && (
+        <Suspense fallback={<div className="deferred-feature-loading">입력 도구를 불러오는 중…</div>}>
+          <Sidebar
+            onAddNode={handleAddNode}
+            mobileOpen={mobileSidebarOpen}
+            onMobileClose={() => setMobileSidebarOpen(false)}
+            contextBibleInitialRef={contextBibleInitialRef}
+            onOpenSyntax={(p) => {
+              const id = ++syntaxIdRef.current;
+              setSyntaxPanels(prev => [...prev, { id, passage: p }]);
+            }}
+          />
+        </Suspense>
+      )}
 
-      <div style={{ flex: 1, position: 'relative' }}>
+      <div className="app-canvas-shell" style={{ flex: 1, position: 'relative' }}>
         <NodeEditor
           selectedNode={selectedNode}
           onUpdateNode={handleUpdateNode}
@@ -1059,10 +1063,26 @@ export default function App() {
             </div>
           </Panel>
         </ReactFlow>
+
+        {isMobile && nodes.length === 0 && (
+          <section className="mobile-empty-state" aria-label="새 성경 마인드맵 시작">
+            <div className="mobile-empty-state__icon" aria-hidden="true">✝️</div>
+            <h1>성경 마인드맵</h1>
+            <p>구절·인물·장소·시대를 추가해 개인 연구 보드를 시작하세요.</p>
+            <div className="mobile-empty-state__actions">
+              <button type="button" onClick={() => setMobileSidebarOpen(true)}>
+                📖 구절·자료 추가
+              </button>
+              <button type="button" onClick={() => setSavePanelOpen(true)}>
+                💾 저장소 열기
+              </button>
+            </div>
+          </section>
+        )}
       </div>
 
       {!isMobile && (
-        <>
+        <Suspense fallback={<div className="deferred-feature-loading">저장 도구를 불러오는 중…</div>}>
           <DocPanel
             open={docPanelOpen}
             onToggle={() => setDocPanelOpen((v) => !v)}
@@ -1079,31 +1099,35 @@ export default function App() {
             docSaveKey={docSaveKey}
             onOpenDoc={(item) => { setOpenedDoc({ ...item }); setDocPanelOpen(true); }}
           />
-        </>
+        </Suspense>
       )}
 
       {arcingPanels.map((panel, idx) => (
-        <ArcingPanel
-          key={panel.id}
-          passage={panel.passage}
-          panelIndex={idx}
-          onClose={() => setArcingPanels(prev => prev.filter(p => p.id !== panel.id))}
-        />
+        <Suspense key={panel.id} fallback={<div className="deferred-feature-loading">본문 흐름 분석을 불러오는 중…</div>}>
+          <ArcingPanel
+            passage={panel.passage}
+            panelIndex={idx}
+            onClose={() => setArcingPanels(prev => prev.filter(p => p.id !== panel.id))}
+          />
+        </Suspense>
       ))}
       {syntaxPanels.map((panel, idx) => (
-        <SyntaxPanel
-          key={panel.id}
-          passage={panel.passage}
-          panelIndex={idx}
-          onClose={() => setSyntaxPanels(prev => prev.filter(p => p.id !== panel.id))}
-        />
+        <Suspense key={panel.id} fallback={<div className="deferred-feature-loading">구문 분석을 불러오는 중…</div>}>
+          <SyntaxPanel
+            passage={panel.passage}
+            panelIndex={idx}
+            onClose={() => setSyntaxPanels(prev => prev.filter(p => p.id !== panel.id))}
+          />
+        </Suspense>
       ))}
       {backgroundBibleRef && (
-        <RelatedPassagePopup
-          key={`${backgroundBibleRef.bookId}-${backgroundBibleRef.ch}-${backgroundBibleRef.verse}`}
-          initialRef={backgroundBibleRef}
-          onClose={() => setBackgroundBibleRef(null)}
-        />
+        <Suspense fallback={<div className="deferred-feature-loading">관련 본문을 불러오는 중…</div>}>
+          <RelatedPassagePopup
+            key={`${backgroundBibleRef.bookId}-${backgroundBibleRef.ch}-${backgroundBibleRef.verse}`}
+            initialRef={backgroundBibleRef}
+            onClose={() => setBackgroundBibleRef(null)}
+          />
+        </Suspense>
       )}
 
       {/* 모바일 좌우 고정 탭 */}
@@ -1111,6 +1135,7 @@ export default function App() {
         <>
           {/* 왼쪽 탭 — 구절 추가 사이드바 */}
           <button
+            aria-label="구절과 연구 자료 추가"
             onPointerDown={(e) => { e.stopPropagation(); }}
             onClick={() => setMobileSidebarOpen(true)}
             style={{
@@ -1131,6 +1156,7 @@ export default function App() {
 
           {/* 오른쪽 탭 — 저장소 */}
           <button
+            aria-label="개인 저장소 열기"
             onPointerDown={(e) => { e.stopPropagation(); }}
             onClick={() => setSavePanelOpen((v) => !v)}
             style={{
@@ -1158,11 +1184,10 @@ export default function App() {
             onClick={() => setSavePanelOpen(false)}
             style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', zIndex: 1100 }}
           />
-          <div className="momentum-scroll" style={{
+          <div className="momentum-scroll mobile-bottom-sheet mobile-save-sheet" style={{
             position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1101,
             background: '#fff', borderRadius: '16px 16px 0 0',
             boxShadow: '0 -4px 24px rgba(0,0,0,0.18)',
-            maxHeight: '75dvh',
             overflowY: 'auto',
             WebkitOverflowScrolling: 'touch',
             overscrollBehavior: 'contain',
@@ -1176,15 +1201,17 @@ export default function App() {
               <div style={{ width: 40, height: 4, borderRadius: 2, background: '#cbd5e1' }} />
             </div>
             <div style={{ padding: '0 4px 4px' }}>
-              <SavePanel
-                nodes={nodes}
-                edges={edges}
-                onLoad={(d) => { handleLoad(d); setSavePanelOpen(false); }}
-                onNewMap={() => { handleNewMap(); setSavePanelOpen(false); }}
-                open={true}
-                onToggle={() => setSavePanelOpen(false)}
-                mobileInline
-              />
+              <Suspense fallback={<div className="deferred-feature-loading">저장소를 불러오는 중…</div>}>
+                <SavePanel
+                  nodes={nodes}
+                  edges={edges}
+                  onLoad={(d) => { handleLoad(d); setSavePanelOpen(false); }}
+                  onNewMap={() => { handleNewMap(); setSavePanelOpen(false); }}
+                  open={true}
+                  onToggle={() => setSavePanelOpen(false)}
+                  mobileInline
+                />
+              </Suspense>
             </div>
           </div>
         </>

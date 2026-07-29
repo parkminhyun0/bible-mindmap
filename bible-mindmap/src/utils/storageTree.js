@@ -1,5 +1,6 @@
 // 저장소 트리 공용 유틸 — SavePanel과 DocPanel이 함께 사용
 import { persistRepositoryTree } from '../storage/storageCore';
+import { safeLocalStorage } from './safeStorage';
 
 export const STORAGE_KEY = 'bible-mindmap-saves';
 
@@ -25,14 +26,14 @@ export function ensureDocRoot(tree) {
 
 export function loadTree() {
   let tree;
-  try { tree = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultTree(); }
+  try { tree = JSON.parse(safeLocalStorage.getItem(STORAGE_KEY)) || defaultTree(); }
   catch { tree = defaultTree(); }
   ensureDocRoot(tree);
   return tree;
 }
 
 export function saveTree(tree) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
+  safeLocalStorage.setItem(STORAGE_KEY, JSON.stringify(tree));
   persistRepositoryTree(tree, { reason: 'repository-save' }).catch(() => {});
 }
 

@@ -11,6 +11,7 @@ import {
   STORAGE_SCHEMA_VERSION,
   validateWorkspaceBackup,
 } from '../storage/storageCore';
+import { safeLocalStorage } from '../utils/safeStorage';
 import {
   listResearchAnnotations,
   RESEARCH_ANNOTATIONS_CHANGED,
@@ -31,19 +32,19 @@ function useAppVisitorCount() {
 
     // 오늘 방문: 하루 1회 플래그 (새로고침 무관)
     let todayData = null;
-    try { todayData = JSON.parse(localStorage.getItem(TODAY_LS)); } catch (e) {}
+    try { todayData = JSON.parse(safeLocalStorage.getItem(TODAY_LS)); } catch (e) {}
     if (!todayData || todayData.date !== today) {
-      try { localStorage.setItem(TODAY_LS, JSON.stringify({ date: today })); } catch (e) {}
+      safeLocalStorage.setItem(TODAY_LS, JSON.stringify({ date: today }));
     }
     setTodayCount(1);
 
     // 전체 누적: 캐시 즉시 표시
     let cache = null;
-    try { cache = JSON.parse(localStorage.getItem(TOTAL_CACHE)); } catch (e) {}
+    try { cache = JSON.parse(safeLocalStorage.getItem(TOTAL_CACHE)); } catch (e) {}
     if (cache && cache.count != null) setTotalCount(cache.count);
 
     // 이미 카운트된 디바이스 → API 호출 없음
-    if (localStorage.getItem(COUNTED_KEY) === '1') return;
+    if (safeLocalStorage.getItem(COUNTED_KEY) === '1') return;
 
     // 첫 방문: /up 호출 후 플래그 저장
     fetch(`https://api.counterapi.dev/v1/${APP_NS}/visits/up`)
@@ -53,8 +54,8 @@ function useAppVisitorCount() {
         if (n != null) {
           setTotalCount(n);
           try {
-            localStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
-            localStorage.setItem(COUNTED_KEY, '1');
+            safeLocalStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
+            safeLocalStorage.setItem(COUNTED_KEY, '1');
           } catch (e) {}
         }
       })
@@ -350,7 +351,13 @@ const SEED_FILES = [
 // 시드 파일을 포함한 초기 트리 로드 — 시드 로직은 SavePanel 전용
 function loadTree() {
   const tree = loadTreeCore();
-  const seeded = JSON.parse(localStorage.getItem(SEED_KEY) || '[]');
+  let seeded = [];
+  try {
+    const storedSeedIds = JSON.parse(safeLocalStorage.getItem(SEED_KEY) || '[]');
+    seeded = Array.isArray(storedSeedIds) ? storedSeedIds : [];
+  } catch {
+    seeded = [];
+  }
   let mutated = false;
   for (const file of SEED_FILES) {
     if (!seeded.includes(file.id)) {
@@ -361,7 +368,7 @@ function loadTree() {
     }
   }
   if (mutated) {
-    localStorage.setItem(SEED_KEY, JSON.stringify(seeded));
+    safeLocalStorage.setItem(SEED_KEY, JSON.stringify(seeded));
     saveTree(tree);
   }
   return tree;
@@ -495,7 +502,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   // ─── 옵시디언 자동 저장 ───
   const [obsidianDir, setObsidianDir] = useState(null);
   const [obsidianDirName, setObsidianDirName] = useState(
-    localStorage.getItem(OBSIDIAN_DIR_KEY) || ''
+    safeLocalStorage.getItem(OBSIDIAN_DIR_KEY) || ''
   );
   const [obsidianStatus, setObsidianStatus] = useState('');
   const [obsidianAutoSync, setObsidianAutoSync] = useState(true);
@@ -610,7 +617,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       setObsidianDir(mindmapDir);
       const fullName = `${dirHandle.name}/bible-mindmap`;
       setObsidianDirName(fullName);
-      localStorage.setItem(OBSIDIAN_DIR_KEY, fullName);
+      safeLocalStorage.setItem(OBSIDIAN_DIR_KEY, fullName);
 
       // 즉시 동기화
       await syncToObsidian(mindmapDir, tree, nodes, edges);
@@ -660,7 +667,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
   const handleDisconnectObsidian = () => {
     setObsidianDir(null);
     setObsidianDirName('');
-    localStorage.removeItem(OBSIDIAN_DIR_KEY);
+    safeLocalStorage.removeItem(OBSIDIAN_DIR_KEY);
     setObsidianStatus('');
   };
 
