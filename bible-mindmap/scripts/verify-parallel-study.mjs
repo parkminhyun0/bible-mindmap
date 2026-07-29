@@ -78,7 +78,7 @@ const relatedPath = path.resolve(__dirname, '../src/components/RelatedPassagePop
 const modalSource = fs.readFileSync(modalPath, 'utf8');
 const relatedSource = fs.readFileSync(relatedPath, 'utf8');
 
-for (const marker of ['data-parallel-study', '공통·추가·생략·어순', 'OT ↔ NT']) {
+for (const marker of ['data-parallel-study', '공통·추가·생략·어순', '히브리어 OT ↔ 헬라어 NT']) {
   if (!modalSource.includes(marker)) fail(`ParallelStudyModal 필수 안전/UX 마커 누락: ${marker}`);
 }
 if (!relatedSource.includes("import ParallelStudyModal from './ParallelStudyModal'")) {
