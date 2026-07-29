@@ -78,19 +78,21 @@ export default defineConfig({
             urlPattern: /\/bible-mindmap\/app\/(?:index\.html)?(?:\?.*)?$/,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'bm-app-html-v2',
+              cacheName: 'bm-app-html-v3',
               networkTimeoutSeconds: 4,
               expiration: { maxEntries: 3, maxAgeSeconds: 60 * 60 * 24 },
               cacheableResponse: { statuses: [200] },
             },
           },
           {
-            // 매뉴얼·문맥성경·원어검색 등 지연 로드 기능은 처음 사용할 때만 저장한다.
+            // 문맥성경·논증지도·매뉴얼 등 실행 코드의 최신성을 우선한다.
+            // 이전 CacheFirst(v1)는 오래된 지연 로드 청크가 남아 새 기능 반영을 가릴 수 있었다.
+            // SWR은 캐시를 즉시 사용할 수 있으면서도 매 요청마다 새 청크를 백그라운드 갱신한다.
             urlPattern: /\/bible-mindmap\/app\/assets\/.+\.js$/,
-            handler: 'CacheFirst',
+            handler: 'StaleWhileRevalidate',
             options: {
-              cacheName: 'bm-feature-chunks-v1',
-              expiration: { maxEntries: 30, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheName: 'bm-feature-chunks-v2',
+              expiration: { maxEntries: 40, maxAgeSeconds: 60 * 60 * 24 * 7 },
               cacheableResponse: { statuses: [200] },
             },
           },
@@ -126,13 +128,13 @@ export default defineConfig({
           },
           {
             // Google Fonts CSS
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*$/i,
             handler: 'StaleWhileRevalidate',
             options: { cacheName: 'bm-google-fonts-css-v1' },
           },
           {
             // Google Fonts 실제 파일 (gstatic)
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*$/i,
             handler: 'CacheFirst',
             options: {
               cacheName: 'bm-google-fonts-files-v1',
