@@ -1,0 +1,5610 @@
+[
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 1,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"Χριστοῦ Ἰησοῦ\"",
+    "summary": "Χριστοῦ Ἰησοῦ (Treg, NA28) · Ἰησοῦ Χριστοῦ (WH, RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστοῦ Ἰησοῦ": "Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἰησοῦ Χριστοῦ": "Westcott-Hort (WH), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "Χριστοῦ Ἰησοῦ",
+      "NA28 (네슬-알란트)": "Χριστοῦ Ἰησοῦ",
+      "Westcott-Hort (WH)": "Ἰησοῦ Χριστοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἰησοῦ Χριστοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"περὶ\" vs \"ὑπὲρ\"",
+    "summary": "περὶ (WH, Treg, NA28) · ὑπὲρ (RP)",
+    "witnesses": {
+      "variants": {
+        "περὶ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑπὲρ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "περὶ",
+      "Treg (트레겔레스)": "περὶ",
+      "NA28 (네슬-알란트)": "περὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὑπὲρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 16,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"εὐαγγέλιον\" 뒤 추가 삽입",
+    "summary": "εὐαγγέλιον (WH, Treg, NA28) · + τοῦ χριστοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "εὐαγγέλιον (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "εὐαγγέλιον + τοῦ χριστοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εὐαγγέλιον",
+      "Treg (트레겔레스)": "εὐαγγέλιον",
+      "NA28 (네슬-알란트)": "εὐαγγέλιον",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ χριστοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 19,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"θεὸς γὰρ\"",
+    "summary": "θεὸς γὰρ (WH, Treg, NA28) · γὰρ θεὸς (RP)",
+    "witnesses": {
+      "variants": {
+        "θεὸς γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γὰρ θεὸς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "θεὸς γὰρ",
+      "Treg (트레겔레스)": "θεὸς γὰρ",
+      "NA28 (네슬-알란트)": "θεὸς γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ θεὸς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 24,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Διὸ\" 뒤 추가 삽입",
+    "summary": "Διὸ (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "Διὸ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Διὸ + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Διὸ",
+      "Treg (트레겔레스)": "Διὸ",
+      "NA28 (네슬-알란트)": "Διὸ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 24,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"αὐτοῖς\" vs \"ἑαυτοῖς\"",
+    "summary": "αὐτοῖς (WH, Treg, NA28) · ἑαυτοῖς (RP)",
+    "witnesses": {
+      "variants": {
+        "αὐτοῖς": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἑαυτοῖς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "αὐτοῖς",
+      "Treg (트레겔레스)": "αὐτοῖς",
+      "NA28 (네슬-알란트)": "αὐτοῖς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἑαυτοῖς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 27,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἑαυτοῖς\" vs \"αὑτοῖς\"",
+    "summary": "ἑαυτοῖς (Treg, NA28, RP) · αὑτοῖς (WH)",
+    "witnesses": {
+      "variants": {
+        "ἑαυτοῖς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "αὑτοῖς": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἑαυτοῖς",
+      "NA28 (네슬-알란트)": "ἑαυτοῖς",
+      "RP (비잔틴)": "ἑαυτοῖς",
+      "Westcott-Hort (WH)": "αὑτοῖς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 29,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀδικίᾳ\" 뒤 추가 삽입",
+    "summary": "ἀδικίᾳ (WH, Treg, NA28) · + πορνείᾳ (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀδικίᾳ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀδικίᾳ + πορνείᾳ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀδικίᾳ",
+      "Treg (트레겔레스)": "ἀδικίᾳ",
+      "NA28 (네슬-알란트)": "ἀδικίᾳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "πορνείᾳ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 1,
+    "verse": 31,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀστόργους\" 뒤 추가 삽입",
+    "summary": "ἀστόργους (WH, Treg, NA28) · + ἀσπόνδους (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀστόργους (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀστόργους + ἀσπόνδους": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀστόργους",
+      "Treg (트레겔레스)": "ἀστόργους",
+      "NA28 (네슬-알란트)": "ἀστόργους",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀσπόνδους"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 5,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀποκαλύψεως\" 뒤 추가 삽입",
+    "summary": "ἀποκαλύψεως (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀποκαλύψεως (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀποκαλύψεως + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀποκαλύψεως",
+      "Treg (트레겔레스)": "ἀποκαλύψεως",
+      "NA28 (네슬-알란트)": "ἀποκαλύψεως",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 8,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀπειθοῦσι\" 뒤 추가 삽입",
+    "summary": "ἀπειθοῦσι (WH, Treg, NA28) · + μὲν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀπειθοῦσι (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀπειθοῦσι + μὲν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀπειθοῦσι",
+      "Treg (트레겔레스)": "ἀπειθοῦσι",
+      "NA28 (네슬-알란트)": "ἀπειθοῦσι",
+      "Robinson-Pierpont 비잔틴 (RP)": "μὲν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὀργὴ καὶ θυμός\" vs \"θυμὸς καὶ ὀργή\"",
+    "summary": "ὀργὴ καὶ θυμός (WH, Treg, NA28) · θυμὸς καὶ ὀργή (RP)",
+    "witnesses": {
+      "variants": {
+        "ὀργὴ καὶ θυμός": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "θυμὸς καὶ ὀργή": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὀργὴ καὶ θυμός",
+      "Treg (트레겔레스)": "ὀργὴ καὶ θυμός",
+      "NA28 (네슬-알란트)": "ὀργὴ καὶ θυμός",
+      "Robinson-Pierpont 비잔틴 (RP)": "θυμὸς καὶ ὀργή"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"⸀νόμου\" vs \"τοῦ νόμου\"",
+    "summary": "⸀νόμου (WH, Treg, NA28) · τοῦ νόμου (RP)",
+    "witnesses": {
+      "variants": {
+        "⸀νόμου": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τοῦ νόμου": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "⸀νόμου",
+      "Treg (트레겔레스)": "⸀νόμου",
+      "NA28 (네슬-알란트)": "⸀νόμου",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ νόμου"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 13,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τῷ\" 누락 (일부 사본)",
+    "summary": "τῷ (WH, NA28, RP) · – (Treg)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Tregelles (Treg)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τῷ",
+      "NA28 (네슬-알란트)": "τῷ",
+      "RP (비잔틴)": "τῷ",
+      "Tregelles (Treg)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"⸁νόμου\" vs \"τοῦ νόμου\"",
+    "summary": "⸁νόμου (WH, Treg, NA28) · τοῦ νόμου (RP)",
+    "witnesses": {
+      "variants": {
+        "⸁νόμου": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τοῦ νόμου": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "⸁νόμου",
+      "Treg (트레겔레스)": "⸁νόμου",
+      "NA28 (네슬-알란트)": "⸁νόμου",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ νόμου"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ποιῶσιν\" vs \"ποιῇ\"",
+    "summary": "ποιῶσιν (WH, Treg, NA28) · ποιῇ (RP)",
+    "witnesses": {
+      "variants": {
+        "ποιῶσιν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ποιῇ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ποιῶσιν",
+      "Treg (트레겔레스)": "ποιῶσιν",
+      "NA28 (네슬-알란트)": "ποιῶσιν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ποιῇ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 16,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἡμέρᾳ ὅτε\" vs \"ᾗ ἡμέρᾳ\"",
+    "summary": "ἡμέρᾳ ὅτε (Treg, NA28, RP) · ᾗ ἡμέρᾳ (WH)",
+    "witnesses": {
+      "variants": {
+        "ἡμέρᾳ ὅτε": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ᾗ ἡμέρᾳ": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἡμέρᾳ ὅτε",
+      "NA28 (네슬-알란트)": "ἡμέρᾳ ὅτε",
+      "RP (비잔틴)": "ἡμέρᾳ ὅτε",
+      "Westcott-Hort (WH)": "ᾗ ἡμέρᾳ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 16,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"κρίνει\" vs \"κρινεῖ\"",
+    "summary": "κρίνει (WH, NA28) · κρινεῖ (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "κρίνει": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "κρινεῖ": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "κρίνει",
+      "NA28 (네슬-알란트)": "κρίνει",
+      "Tregelles (Treg)": "κρινεῖ",
+      "Robinson-Pierpont 비잔틴 (RP)": "κρινεῖ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 16,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Χριστοῦ Ἰησοῦ\" vs \"Ἰησοῦ Χριστοῦ NIV\"",
+    "summary": "Χριστοῦ Ἰησοῦ (WH, NA28) · Ἰησοῦ Χριστοῦ NIV (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστοῦ Ἰησοῦ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "Ἰησοῦ Χριστοῦ NIV": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστοῦ Ἰησοῦ",
+      "NA28 (네슬-알란트)": "Χριστοῦ Ἰησοῦ",
+      "Tregelles (Treg)": "Ἰησοῦ Χριστοῦ NIV",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἰησοῦ Χριστοῦ NIV"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 17,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Εἰ δὲ\" vs \"Ἴδε\"",
+    "summary": "Εἰ δὲ (WH, Treg, NA28) · Ἴδε (RP)",
+    "witnesses": {
+      "variants": {
+        "Εἰ δὲ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἴδε": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Εἰ δὲ",
+      "Treg (트레겔레스)": "Εἰ δὲ",
+      "NA28 (네슬-알란트)": "Εἰ δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἴδε"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 17,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"νόμῳ\" vs \"τῷ νόμῳ\"",
+    "summary": "νόμῳ (WH, Treg, NA28) · τῷ νόμῳ (RP)",
+    "witnesses": {
+      "variants": {
+        "νόμῳ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τῷ νόμῳ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "νόμῳ",
+      "Treg (트레겔레스)": "νόμῳ",
+      "NA28 (네슬-알란트)": "νόμῳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῷ νόμῳ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 2,
+    "verse": 26,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"οὐχ\" vs \"οὐχὶ\"",
+    "summary": "οὐχ (WH, Treg, NA28) · οὐχὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "οὐχ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὐχὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὐχ",
+      "Treg (트레겔레스)": "οὐχ",
+      "NA28 (네슬-알란트)": "οὐχ",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὐχὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 2,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"γὰρ\" 누락 (일부 사본)",
+    "summary": "γὰρ (WH, NA28, RP) · – (Treg)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Tregelles (Treg)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γὰρ",
+      "NA28 (네슬-알란트)": "γὰρ",
+      "RP (비잔틴)": "γὰρ",
+      "Tregelles (Treg)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καθὼς\" vs \"καθάπερ\"",
+    "summary": "καθὼς (NA28, RP) · καθάπερ (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "καθὼς": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "καθάπερ": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "καθὼς",
+      "RP (비잔틴)": "καθὼς",
+      "Westcott-Hort (WH)": "καθάπερ",
+      "Tregelles (Treg)": "καθάπερ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"νικήσεις\" vs \"νικήσῃς\"",
+    "summary": "νικήσεις (WH, NA28) · νικήσῃς (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "νικήσεις": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "νικήσῃς": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "νικήσεις",
+      "NA28 (네슬-알란트)": "νικήσεις",
+      "Tregelles (Treg)": "νικήσῃς",
+      "Robinson-Pierpont 비잔틴 (RP)": "νικήσῃς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 7,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"δὲ\" vs \"γὰρ\"",
+    "summary": "δὲ (WH, NA28) · γὰρ (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "δὲ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "γὰρ": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δὲ",
+      "NA28 (네슬-알란트)": "δὲ",
+      "Tregelles (Treg)": "γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 11,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"⸀ὁ\" 누락 (일부 사본)",
+    "summary": "⸀ὁ (Treg, NA28, RP) · – (WH)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "⸀ὁ",
+      "NA28 (네슬-알란트)": "⸀ὁ",
+      "RP (비잔틴)": "⸀ὁ",
+      "Westcott-Hort (WH)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 11,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"⸁ὁ\" 누락 (일부 사본)",
+    "summary": "⸁ὁ (Treg, NA28, RP) · – (WH)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "⸁ὁ",
+      "NA28 (네슬-알란트)": "⸁ὁ",
+      "RP (비잔틴)": "⸁ὁ",
+      "Westcott-Hort (WH)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 12,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἔστιν\" 뒤 추가 삽입",
+    "summary": "ἔστιν (WH, Treg, RP) · + ὁ (NA28)",
+    "witnesses": {
+      "variants": {
+        "ἔστιν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "ἔστιν + ὁ": "Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἔστιν",
+      "Treg (트레겔레스)": "ἔστιν",
+      "RP (비잔틴)": "ἔστιν",
+      "Nestle-Aland 28판 (NA28)": "ὁ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 22,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"πάντας\" vs \"καὶ ἐπὶ πάντας\"",
+    "summary": "πάντας (WH, Treg, NA28) · καὶ ἐπὶ πάντας (RP)",
+    "witnesses": {
+      "variants": {
+        "πάντας": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ ἐπὶ πάντας": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πάντας",
+      "Treg (트레겔레스)": "πάντας",
+      "NA28 (네슬-알란트)": "πάντας",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ἐπὶ πάντας"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 25,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"διὰ\" 뒤 추가 삽입",
+    "summary": "διὰ (WH, Treg) · + τῆς (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "διὰ (기본문)": "Westcott-Hort (WH), Tregelles (Treg)",
+        "διὰ + τῆς": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "διὰ",
+      "Treg (트레겔레스)": "διὰ",
+      "Nestle-Aland 28판 (NA28)": "τῆς",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῆς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 26,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τὴν\" 누락 (일부 사본)",
+    "summary": "τὴν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τὴν",
+      "Treg (트레겔레스)": "τὴν",
+      "NA28 (네슬-알란트)": "τὴν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 28,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"γὰρ\" vs \"οὖν\"",
+    "summary": "γὰρ (WH, Treg, NA28) · οὖν (RP)",
+    "witnesses": {
+      "variants": {
+        "γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὖν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γὰρ",
+      "Treg (트레겔레스)": "γὰρ",
+      "NA28 (네슬-알란트)": "γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὖν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 28,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"δικαιοῦσθαι πίστει\"",
+    "summary": "δικαιοῦσθαι πίστει (WH, Treg, NA28) · πίστει δικαιοῦσθαι (RP)",
+    "witnesses": {
+      "variants": {
+        "δικαιοῦσθαι πίστει": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πίστει δικαιοῦσθαι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δικαιοῦσθαι πίστει",
+      "Treg (트레겔레스)": "δικαιοῦσθαι πίστει",
+      "NA28 (네슬-알란트)": "δικαιοῦσθαι πίστει",
+      "Robinson-Pierpont 비잔틴 (RP)": "πίστει δικαιοῦσθαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 29,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"οὐχὶ\" 뒤 추가 삽입",
+    "summary": "οὐχὶ (WH, Treg, NA28) · + δὲ (RP)",
+    "witnesses": {
+      "variants": {
+        "οὐχὶ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὐχὶ + δὲ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὐχὶ",
+      "Treg (트레겔레스)": "οὐχὶ",
+      "NA28 (네슬-알란트)": "οὐχὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "δὲ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 30,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"εἴπερ\" vs \"ἐπείπερ\"",
+    "summary": "εἴπερ (WH, Treg, NA28) · ἐπείπερ (RP)",
+    "witnesses": {
+      "variants": {
+        "εἴπερ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐπείπερ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εἴπερ",
+      "Treg (트레겔레스)": "εἴπερ",
+      "NA28 (네슬-알란트)": "εἴπερ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπείπερ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 3,
+    "verse": 31,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἱστάνομεν\" vs \"ἱστῶμεν\"",
+    "summary": "ἱστάνομεν (WH, Treg, NA28) · ἱστῶμεν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἱστάνομεν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἱστῶμεν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἱστάνομεν",
+      "Treg (트레겔레스)": "ἱστάνομεν",
+      "NA28 (네슬-알란트)": "ἱστάνομεν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἱστῶμεν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 1,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"εὑρηκέναι\" 누락 (일부 사본)",
+    "summary": "εὑρηκέναι (Treg, NA28) · – (WH, RP)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "εὑρηκέναι",
+      "NA28 (네슬-알란트)": "εὑρηκέναι",
+      "Westcott-Hort (WH)": "(누락)",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 1,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"προπάτορα\" vs \"πατέρα\"",
+    "summary": "προπάτορα (WH, Treg, NA28) · πατέρα (RP)",
+    "witnesses": {
+      "variants": {
+        "προπάτορα": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πατέρα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "προπάτορα",
+      "Treg (트레겔레스)": "προπάτορα",
+      "NA28 (네슬-알란트)": "προπάτορα",
+      "Robinson-Pierpont 비잔틴 (RP)": "πατέρα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 1,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἡμῶν\" 뒤 추가 삽입",
+    "summary": "ἡμῶν (WH, Treg, NA28) · + εὑρηκέναι (RP)",
+    "witnesses": {
+      "variants": {
+        "ἡμῶν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἡμῶν + εὑρηκέναι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἡμῶν",
+      "Treg (트레겔레스)": "ἡμῶν",
+      "NA28 (네슬-알란트)": "ἡμῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "εὑρηκέναι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 2,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"πρὸς\" 뒤 추가 삽입",
+    "summary": "πρὸς (WH, Treg, NA28) · + τὸν (RP)",
+    "witnesses": {
+      "variants": {
+        "πρὸς (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πρὸς + τὸν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πρὸς",
+      "Treg (트레겔레스)": "πρὸς",
+      "NA28 (네슬-알란트)": "πρὸς",
+      "Robinson-Pierpont 비잔틴 (RP)": "τὸν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"οὗ\" vs \"ᾧ\"",
+    "summary": "οὗ (WH, Treg, NA28) · ᾧ (RP)",
+    "witnesses": {
+      "variants": {
+        "οὗ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ᾧ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὗ",
+      "Treg (트레겔레스)": "οὗ",
+      "NA28 (네슬-알란트)": "οὗ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ᾧ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 9,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"γάρ\" 뒤 추가 삽입",
+    "summary": "γάρ (WH, Treg, NA28) · + ὅτι (RP)",
+    "witnesses": {
+      "variants": {
+        "γάρ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γάρ + ὅτι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γάρ",
+      "Treg (트레겔레스)": "γάρ",
+      "NA28 (네슬-알란트)": "γάρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὅτι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 11,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"λογισθῆναι NIV\" 뒤 추가 삽입",
+    "summary": "λογισθῆναι NIV (WH, Treg) · + καὶ (RP, NA28)",
+    "witnesses": {
+      "variants": {
+        "λογισθῆναι NIV (기본문)": "Westcott-Hort (WH), Tregelles (Treg)",
+        "λογισθῆναι NIV + καὶ": "Robinson-Pierpont 비잔틴 (RP), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "λογισθῆναι NIV",
+      "Treg (트레겔레스)": "λογισθῆναι NIV",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ",
+      "Nestle-Aland 28판 (NA28)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 12,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐν ἀκροβυστίᾳ πίστεως\" vs \"πίστεως τῆς ἐν τῇ ἀκροβυστίᾳ\"",
+    "summary": "ἐν ἀκροβυστίᾳ πίστεως (WH, Treg, NA28) · πίστεως τῆς ἐν τῇ ἀκροβυστίᾳ (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐν ἀκροβυστίᾳ πίστεως": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πίστεως τῆς ἐν τῇ ἀκροβυστίᾳ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐν ἀκροβυστίᾳ πίστεως",
+      "Treg (트레겔레스)": "ἐν ἀκροβυστίᾳ πίστεως",
+      "NA28 (네슬-알란트)": "ἐν ἀκροβυστίᾳ πίστεως",
+      "Robinson-Pierpont 비잔틴 (RP)": "πίστεως τῆς ἐν τῇ ἀκροβυστίᾳ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 13,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"εἶναι\" 뒤 추가 삽입",
+    "summary": "εἶναι (WH, Treg, NA28) · + τοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "εἶναι (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "εἶναι + τοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εἶναι",
+      "Treg (트레겔레스)": "εἶναι",
+      "NA28 (네슬-알란트)": "εἶναι",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"δὲ\" vs \"γὰρ\"",
+    "summary": "δὲ (WH, Treg, NA28) · γὰρ (RP)",
+    "witnesses": {
+      "variants": {
+        "δὲ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γὰρ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δὲ",
+      "Treg (트레겔레스)": "δὲ",
+      "NA28 (네슬-알란트)": "δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 19,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"πίστει\" 뒤 추가 삽입",
+    "summary": "πίστει (WH, Treg, NA28) · + οὐ (RP)",
+    "witnesses": {
+      "variants": {
+        "πίστει (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πίστει + οὐ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πίστει",
+      "Treg (트레겔레스)": "πίστει",
+      "NA28 (네슬-알란트)": "πίστει",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὐ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 19,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"σῶμα Holmes WHmarg\" 뒤 추가 삽입",
+    "summary": "σῶμα Holmes WHmarg (—) · + ἤδη (WH, Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "σῶμα Holmes WHmarg (기본문)": "—",
+        "σῶμα Holmes WHmarg + ἤδη": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "ἤδη",
+      "Tregelles (Treg)": "ἤδη",
+      "Nestle-Aland 28판 (NA28)": "ἤδη",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἤδη"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 4,
+    "verse": 22,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"διὸ Holmes WHmarg\" 뒤 추가 삽입",
+    "summary": "διὸ Holmes WHmarg (—) · + καὶ (WH, Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "διὸ Holmes WHmarg (기본문)": "—",
+        "διὸ Holmes WHmarg + καὶ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "καὶ",
+      "Tregelles (Treg)": "καὶ",
+      "Nestle-Aland 28판 (NA28)": "καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 5,
+    "verse": 1,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἔχομεν\" vs \"ἔχωμεν\"",
+    "summary": "ἔχομεν (NA28, RP) · ἔχωμεν (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "ἔχομεν": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἔχωμεν": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "ἔχομεν",
+      "RP (비잔틴)": "ἔχομεν",
+      "Westcott-Hort (WH)": "ἔχωμεν",
+      "Tregelles (Treg)": "ἔχωμεν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 5,
+    "verse": 3,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καυχώμεθα\" vs \"καυχώμενοι\"",
+    "summary": "καυχώμεθα (WH, NA28, RP) · καυχώμενοι (Treg)",
+    "witnesses": {
+      "variants": {
+        "καυχώμεθα": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "καυχώμενοι": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "καυχώμεθα",
+      "NA28 (네슬-알란트)": "καυχώμεθα",
+      "RP (비잔틴)": "καυχώμεθα",
+      "Tregelles (Treg)": "καυχώμενοι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 5,
+    "verse": 6,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἔτι γὰρ\" vs \"Εἴ γε\"",
+    "summary": "Ἔτι γὰρ (Treg, NA28, RP) · Εἴ γε (WH)",
+    "witnesses": {
+      "variants": {
+        "Ἔτι γὰρ": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "Εἴ γε": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "Ἔτι γὰρ",
+      "NA28 (네슬-알란트)": "Ἔτι γὰρ",
+      "RP (비잔틴)": "Ἔτι γὰρ",
+      "Westcott-Hort (WH)": "Εἴ γε"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 5,
+    "verse": 6,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"ἔτι\" 누락 (일부 사본)",
+    "summary": "ἔτι (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἔτι",
+      "Treg (트레겔레스)": "ἔτι",
+      "NA28 (네슬-알란트)": "ἔτι",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 1,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐπιμένωμεν\" vs \"Ἐπιμένομεν\"",
+    "summary": "ἐπιμένωμεν (WH, Treg, NA28) · Ἐπιμένομεν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐπιμένωμεν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἐπιμένομεν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐπιμένωμεν",
+      "Treg (트레겔레스)": "ἐπιμένωμεν",
+      "NA28 (네슬-알란트)": "ἐπιμένωμεν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἐπιμένομεν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 11,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"εἶναι νεκροὺς μὲν\"",
+    "summary": "εἶναι νεκροὺς μὲν (WH, Treg, NA28) · νεκροὺς μὲν εἶναι (RP) · νεκροὺς μὲν NIV (—)",
+    "witnesses": {
+      "variants": {
+        "εἶναι νεκροὺς μὲν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "νεκροὺς μὲν εἶναι": "Robinson-Pierpont 비잔틴 (RP)",
+        "νεκροὺς μὲν NIV": ""
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εἶναι νεκροὺς μὲν",
+      "Treg (트레겔레스)": "εἶναι νεκροὺς μὲν",
+      "NA28 (네슬-알란트)": "εἶναι νεκροὺς μὲν",
+      "Robinson-Pierpont 비잔틴 (RP)": "νεκροὺς μὲν εἶναι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 11,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Ἰησοῦ\" 뒤 추가 삽입",
+    "summary": "Ἰησοῦ (WH, Treg, NA28) · + τῷ κυρίῳ ἡμῶν (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἰησοῦ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἰησοῦ + τῷ κυρίῳ ἡμῶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἰησοῦ",
+      "Treg (트레겔레스)": "Ἰησοῦ",
+      "NA28 (네슬-알란트)": "Ἰησοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῷ κυρίῳ ἡμῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 12,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ὑπακούειν\" 뒤 추가 삽입",
+    "summary": "ὑπακούειν (WH, Treg, NA28) · + αὐτῇ ἐν (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑπακούειν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑπακούειν + αὐτῇ ἐν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑπακούειν",
+      "Treg (트레겔레스)": "ὑπακούειν",
+      "NA28 (네슬-알란트)": "ὑπακούειν",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτῇ ἐν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὡσεὶ\" vs \"ὡς\"",
+    "summary": "ὡσεὶ (WH, Treg, NA28) · ὡς (RP)",
+    "witnesses": {
+      "variants": {
+        "ὡσεὶ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὡς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὡσεὶ",
+      "Treg (트레겔레스)": "ὡσεὶ",
+      "NA28 (네슬-알란트)": "ὡσεὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὡς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 6,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἁμαρτήσωμεν\" vs \"Ἁμαρτήσομεν\"",
+    "summary": "ἁμαρτήσωμεν (WH, Treg, NA28) · Ἁμαρτήσομεν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἁμαρτήσωμεν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἁμαρτήσομεν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἁμαρτήσωμεν",
+      "Treg (트레겔레스)": "ἁμαρτήσωμεν",
+      "NA28 (네슬-알란트)": "ἁμαρτήσωμεν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἁμαρτήσομεν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐγένετο\" vs \"γέγονεν\"",
+    "summary": "ἐγένετο (WH, Treg, NA28) · γέγονεν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐγένετο": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γέγονεν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐγένετο",
+      "Treg (트레겔레스)": "ἐγένετο",
+      "NA28 (네슬-알란트)": "ἐγένετο",
+      "Robinson-Pierpont 비잔틴 (RP)": "γέγονεν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"σάρκινός\" vs \"σαρκικός\"",
+    "summary": "σάρκινός (WH, Treg, NA28) · σαρκικός (RP)",
+    "witnesses": {
+      "variants": {
+        "σάρκινός": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "σαρκικός": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "σάρκινός",
+      "Treg (트레겔레스)": "σάρκινός",
+      "NA28 (네슬-알란트)": "σάρκινός",
+      "Robinson-Pierpont 비잔틴 (RP)": "σαρκικός"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 17,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"οἰκοῦσα\" vs \"ἐνοικοῦσα\"",
+    "summary": "οἰκοῦσα (Treg, NA28, RP) · ἐνοικοῦσα (WH)",
+    "witnesses": {
+      "variants": {
+        "οἰκοῦσα": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἐνοικοῦσα": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "οἰκοῦσα",
+      "NA28 (네슬-알란트)": "οἰκοῦσα",
+      "RP (비잔틴)": "οἰκοῦσα",
+      "Westcott-Hort (WH)": "ἐνοικοῦσα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 18,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"οὔ\" 뒤 추가 삽입",
+    "summary": "οὔ (WH, Treg, NA28) · + οὐχ εὑρίσκω (RP)",
+    "witnesses": {
+      "variants": {
+        "οὔ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὔ + οὐχ εὑρίσκω": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὔ",
+      "Treg (트레겔레스)": "οὔ",
+      "NA28 (네슬-알란트)": "οὔ",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὐχ εὑρίσκω"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 20,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"θέλω\" 뒤 추가 삽입",
+    "summary": "θέλω (WH, Treg) · + ἐγώ (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "θέλω (기본문)": "Westcott-Hort (WH), Tregelles (Treg)",
+        "θέλω + ἐγώ": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "θέλω",
+      "Treg (트레겔레스)": "θέλω",
+      "Nestle-Aland 28판 (NA28)": "ἐγώ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐγώ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 23,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"ἐν\" 누락 (일부 사본)",
+    "summary": "ἐν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐν",
+      "Treg (트레겔레스)": "ἐν",
+      "NA28 (네슬-알란트)": "ἐν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 7,
+    "verse": 25,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"χάρις\" vs \"χάρις δὲ\"",
+    "summary": "χάρις (Treg) · χάρις δὲ (WH, NA28) · εὐχαριστῶ (RP)",
+    "witnesses": {
+      "variants": {
+        "χάρις": "Tregelles (Treg)",
+        "χάρις δὲ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "εὐχαριστῶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "χάρις",
+      "Westcott-Hort (WH)": "χάρις δὲ",
+      "Nestle-Aland 28판 (NA28)": "χάρις δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "εὐχαριστῶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 1,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Ἰησοῦ\" 뒤 추가 삽입",
+    "summary": "Ἰησοῦ (WH, Treg, NA28) · + μὴ κατὰ σάρκα περιπατοῦσιν ἀλλὰ κατὰ πνεῦμα (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἰησοῦ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἰησοῦ + μὴ κατὰ σάρκα περιπατοῦσιν ἀλλὰ κατὰ πνεῦμα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἰησοῦ",
+      "Treg (트레겔레스)": "Ἰησοῦ",
+      "NA28 (네슬-알란트)": "Ἰησοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "μὴ κατὰ σάρκα περιπατοῦσιν ἀλλὰ κατὰ πνεῦμα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 2,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"σε\" vs \"με NIV\"",
+    "summary": "σε (WH, NA28) · με NIV (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "σε": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "με NIV": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "σε",
+      "NA28 (네슬-알란트)": "σε",
+      "Tregelles (Treg)": "με NIV",
+      "Robinson-Pierpont 비잔틴 (RP)": "με NIV"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 11,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τὸν\" 누락 (일부 사본)",
+    "summary": "τὸν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τὸν",
+      "Treg (트레겔레스)": "τὸν",
+      "NA28 (네슬-알란트)": "τὸν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐκ νεκρῶν Χριστὸν Ἰησοῦν\" vs \"χριστὸν ἐκ νεκρῶν\"",
+    "summary": "ἐκ νεκρῶν Χριστὸν Ἰησοῦν (WH) · χριστὸν ἐκ νεκρῶν (Treg, NA28) · τὸν χριστὸν ἐκ νεκρῶν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐκ νεκρῶν Χριστὸν Ἰησοῦν": "Westcott-Hort (WH)",
+        "χριστὸν ἐκ νεκρῶν": "Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τὸν χριστὸν ἐκ νεκρῶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐκ νεκρῶν Χριστὸν Ἰησοῦν",
+      "Tregelles (Treg)": "χριστὸν ἐκ νεκρῶν",
+      "Nestle-Aland 28판 (NA28)": "χριστὸν ἐκ νεκρῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "τὸν χριστὸν ἐκ νεκρῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τὸ ἐνοικοῦν αὐτοῦ πνεῦμα\" vs \"τοῦ ἐνοικοῦντος αὐτοῦ πνεύματο…\"",
+    "summary": "τὸ ἐνοικοῦν αὐτοῦ πνεῦμα (Treg, RP) · τοῦ ἐνοικοῦντος αὐτοῦ πνεύματος (WH, NA28)",
+    "witnesses": {
+      "variants": {
+        "τὸ ἐνοικοῦν αὐτοῦ πνεῦμα": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "τοῦ ἐνοικοῦντος αὐτοῦ πνεύματος": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "τὸ ἐνοικοῦν αὐτοῦ πνεῦμα",
+      "RP (비잔틴)": "τὸ ἐνοικοῦν αὐτοῦ πνεῦμα",
+      "Westcott-Hort (WH)": "τοῦ ἐνοικοῦντος αὐτοῦ πνεύματος",
+      "Nestle-Aland 28판 (NA28)": "τοῦ ἐνοικοῦντος αὐτοῦ πνεύματος"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"υἱοί εἰσιν θεοῦ\" vs \"υἱοὶ θεοῦ εἰσιν\"",
+    "summary": "υἱοί εἰσιν θεοῦ (Treg) · υἱοὶ θεοῦ εἰσιν (WH, NA28) · εἰσιν υἱοὶ θεοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "υἱοί εἰσιν θεοῦ": "Tregelles (Treg)",
+        "υἱοὶ θεοῦ εἰσιν": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "εἰσιν υἱοὶ θεοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "υἱοί εἰσιν θεοῦ",
+      "Westcott-Hort (WH)": "υἱοὶ θεοῦ εἰσιν",
+      "Nestle-Aland 28판 (NA28)": "υἱοὶ θεοῦ εἰσιν",
+      "Robinson-Pierpont 비잔틴 (RP)": "εἰσιν υἱοὶ θεοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 20,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐφʼ\" vs \"ἐπʼ\"",
+    "summary": "ἐφʼ (WH, NA28) · ἐπʼ (RP, Treg)",
+    "witnesses": {
+      "variants": {
+        "ἐφʼ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "ἐπʼ": "Robinson-Pierpont 비잔틴 (RP), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐφʼ",
+      "NA28 (네슬-알란트)": "ἐφʼ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπʼ",
+      "Tregelles (Treg)": "ἐπʼ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 23,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καὶ αὐτοὶ\" vs \"– NIV\"",
+    "summary": "καὶ αὐτοὶ (WH, Treg, RP, NA28) · – NIV (—)",
+    "witnesses": {
+      "variants": {
+        "καὶ αὐτοὶ": "Westcott-Hort (WH), Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP), Nestle-Aland 28판 (NA28)",
+        "– NIV": ""
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "καὶ αὐτοὶ",
+      "Treg (트레겔레스)": "καὶ αὐτοὶ",
+      "NA28 (네슬-알란트)": "καὶ αὐτοὶ",
+      "RP (비잔틴)": "καὶ αὐτοὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 23,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἡμεῖς καὶ\"",
+    "summary": "ἡμεῖς καὶ (WH, Treg, NA28) · καὶ ἡμεῖς (RP)",
+    "witnesses": {
+      "variants": {
+        "ἡμεῖς καὶ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ ἡμεῖς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἡμεῖς καὶ",
+      "Treg (트레겔레스)": "ἡμεῖς καὶ",
+      "NA28 (네슬-알란트)": "ἡμεῖς καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ἡμεῖς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 24,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"τίς\" 뒤 추가 삽입",
+    "summary": "τίς (WH, NA28) · + τί (Treg) · + τί καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "τίς (기본문)": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "τίς + τί": "Tregelles (Treg)",
+        "τίς + τί καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τίς",
+      "NA28 (네슬-알란트)": "τίς",
+      "Tregelles (Treg)": "τί",
+      "Robinson-Pierpont 비잔틴 (RP)": "τί καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 26,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τῇ ἀσθενείᾳ\" vs \"ταῖς ἀσθενείαις\"",
+    "summary": "τῇ ἀσθενείᾳ (WH, Treg, NA28) · ταῖς ἀσθενείαις (RP)",
+    "witnesses": {
+      "variants": {
+        "τῇ ἀσθενείᾳ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ταῖς ἀσθενείαις": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τῇ ἀσθενείᾳ",
+      "Treg (트레겔레스)": "τῇ ἀσθενείᾳ",
+      "NA28 (네슬-알란트)": "τῇ ἀσθενείᾳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ταῖς ἀσθενείαις"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 26,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"προσευξώμεθα\" vs \"προσευξόμεθα\"",
+    "summary": "προσευξώμεθα (WH, Treg, NA28) · προσευξόμεθα (RP)",
+    "witnesses": {
+      "variants": {
+        "προσευξώμεθα": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "προσευξόμεθα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "προσευξώμεθα",
+      "Treg (트레겔레스)": "προσευξώμεθα",
+      "NA28 (네슬-알란트)": "προσευξώμεθα",
+      "Robinson-Pierpont 비잔틴 (RP)": "προσευξόμεθα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 26,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ὑπερεντυγχάνει\" 뒤 추가 삽입",
+    "summary": "ὑπερεντυγχάνει (WH, Treg, NA28) · + ὑπὲρ ἡμῶν (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑπερεντυγχάνει (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑπερεντυγχάνει + ὑπὲρ ἡμῶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑπερεντυγχάνει",
+      "Treg (트레겔레스)": "ὑπερεντυγχάνει",
+      "NA28 (네슬-알란트)": "ὑπερεντυγχάνει",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὑπὲρ ἡμῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 28,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"συνεργεῖ\" 뒤 추가 삽입",
+    "summary": "συνεργεῖ (Treg, NA28, RP) · + ὁ θεὸς (WH)",
+    "witnesses": {
+      "variants": {
+        "συνεργεῖ (기본문)": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "συνεργεῖ + ὁ θεὸς": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "συνεργεῖ",
+      "NA28 (네슬-알란트)": "συνεργεῖ",
+      "RP (비잔틴)": "συνεργεῖ",
+      "Westcott-Hort (WH)": "ὁ θεὸς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 34,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"κατακρινῶν\" vs \"κατακρίνων\"",
+    "summary": "κατακρινῶν (WH, NA28) · κατακρίνων (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "κατακρινῶν": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "κατακρίνων": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "κατακρινῶν",
+      "NA28 (네슬-알란트)": "κατακρινῶν",
+      "Tregelles (Treg)": "κατακρίνων",
+      "Robinson-Pierpont 비잔틴 (RP)": "κατακρίνων"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 34,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Χριστὸς\" 뒤 추가 삽입",
+    "summary": "Χριστὸς (Treg, RP) · + Ἰησοῦς (WH, NA28)",
+    "witnesses": {
+      "variants": {
+        "Χριστὸς (기본문)": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "Χριστὸς + Ἰησοῦς": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "Χριστὸς",
+      "RP (비잔틴)": "Χριστὸς",
+      "Westcott-Hort (WH)": "Ἰησοῦς",
+      "Nestle-Aland 28판 (NA28)": "Ἰησοῦς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 34,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"δὲ\" 뒤 추가 삽입",
+    "summary": "δὲ (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "δὲ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δὲ + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δὲ",
+      "Treg (트레겔레스)": "δὲ",
+      "NA28 (네슬-알란트)": "δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 34,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἐγερθείς\" 뒤 추가 삽입",
+    "summary": "ἐγερθείς (Treg, NA28, RP) · + ἐκ νεκρῶν (WH)",
+    "witnesses": {
+      "variants": {
+        "ἐγερθείς (기본문)": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἐγερθείς + ἐκ νεκρῶν": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἐγερθείς",
+      "NA28 (네슬-알란트)": "ἐγερθείς",
+      "RP (비잔틴)": "ἐγερθείς",
+      "Westcott-Hort (WH)": "ἐκ νεκρῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 34,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"καί\" 누락 (일부 사본)",
+    "summary": "καί (Treg, NA28, RP) · – (WH)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "καί",
+      "NA28 (네슬-알란트)": "καί",
+      "RP (비잔틴)": "καί",
+      "Westcott-Hort (WH)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 8,
+    "verse": 38,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἐνεστῶτα οὔτε μέλλοντα οὔτε δυ…\"",
+    "summary": "ἐνεστῶτα οὔτε μέλλοντα οὔτε δυνάμεις (WH, Treg, NA28) · δυνάμεις οὔτε ἐνεστῶτα οὔτε μέλλοντα (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐνεστῶτα οὔτε μέλλοντα οὔτε δυνάμεις": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δυνάμεις οὔτε ἐνεστῶτα οὔτε μέλλοντα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐνεστῶτα οὔτε μέλλοντα οὔτε δυνάμεις",
+      "Treg (트레겔레스)": "ἐνεστῶτα οὔτε μέλλοντα οὔτε δυνάμεις",
+      "NA28 (네슬-알란트)": "ἐνεστῶτα οὔτε μέλλοντα οὔτε δυνάμεις",
+      "Robinson-Pierpont 비잔틴 (RP)": "δυνάμεις οὔτε ἐνεστῶτα οὔτε μέλλοντα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 3,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἀνάθεμα εἶναι αὐτὸς ἐγὼ\"",
+    "summary": "ἀνάθεμα εἶναι αὐτὸς ἐγὼ (WH, Treg, NA28) · αὐτὸς ἐγὼ ἀνάθεμα εἶναι (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀνάθεμα εἶναι αὐτὸς ἐγὼ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "αὐτὸς ἐγὼ ἀνάθεμα εἶναι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀνάθεμα εἶναι αὐτὸς ἐγὼ",
+      "Treg (트레겔레스)": "ἀνάθεμα εἶναι αὐτὸς ἐγὼ",
+      "NA28 (네슬-알란트)": "ἀνάθεμα εἶναι αὐτὸς ἐγὼ",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτὸς ἐγὼ ἀνάθεμα εἶναι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"φαῦλον\" vs \"κακόν\"",
+    "summary": "φαῦλον (WH, Treg, NA28) · κακόν (RP)",
+    "witnesses": {
+      "variants": {
+        "φαῦλον": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "κακόν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "φαῦλον",
+      "Treg (트레겔레스)": "φαῦλον",
+      "NA28 (네슬-알란트)": "φαῦλον",
+      "Robinson-Pierpont 비잔틴 (RP)": "κακόν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καθὼς\" vs \"καθάπερ\"",
+    "summary": "καθὼς (Treg, NA28, RP) · καθάπερ (WH)",
+    "witnesses": {
+      "variants": {
+        "καθὼς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "καθάπερ": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "καθὼς",
+      "NA28 (네슬-알란트)": "καθὼς",
+      "RP (비잔틴)": "καθὼς",
+      "Westcott-Hort (WH)": "καθάπερ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 15,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"Μωϋσεῖ γὰρ\"",
+    "summary": "Μωϋσεῖ γὰρ (WH, Treg, NA28) · γὰρ Μωϋσεῖ (RP)",
+    "witnesses": {
+      "variants": {
+        "Μωϋσεῖ γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γὰρ Μωϋσεῖ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Μωϋσεῖ γὰρ",
+      "Treg (트레겔레스)": "Μωϋσεῖ γὰρ",
+      "NA28 (네슬-알란트)": "Μωϋσεῖ γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ Μωϋσεῖ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 19,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"μοι οὖν\"",
+    "summary": "μοι οὖν (WH, Treg, NA28) · οὖν μοι (RP)",
+    "witnesses": {
+      "variants": {
+        "μοι οὖν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὖν μοι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "μοι οὖν",
+      "Treg (트레겔레스)": "μοι οὖν",
+      "NA28 (네슬-알란트)": "μοι οὖν",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὖν μοι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 19,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"οὖν\" 누락 (일부 사본)",
+    "summary": "οὖν (NA28) · – (WH, Treg, RP)",
+    "witnesses": {
+      "include": [
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "οὖν",
+      "Westcott-Hort (WH)": "(누락)",
+      "Tregelles (Treg)": "(누락)",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 20,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὦ ἄνθρωπε μενοῦνγε\" vs \"Μενοῦνγε ὦ ἄνθρωπε\"",
+    "summary": "ὦ ἄνθρωπε μενοῦνγε (WH, Treg, NA28) · Μενοῦνγε ὦ ἄνθρωπε (RP)",
+    "witnesses": {
+      "variants": {
+        "ὦ ἄνθρωπε μενοῦνγε": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Μενοῦνγε ὦ ἄνθρωπε": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὦ ἄνθρωπε μενοῦνγε",
+      "Treg (트레겔레스)": "ὦ ἄνθρωπε μενοῦνγε",
+      "NA28 (네슬-알란트)": "ὦ ἄνθρωπε μενοῦνγε",
+      "Robinson-Pierpont 비잔틴 (RP)": "Μενοῦνγε ὦ ἄνθρωπε"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 23,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"καὶ\" 누락 (일부 사본)",
+    "summary": "καὶ (Treg, NA28, RP) · – (WH)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "καὶ",
+      "NA28 (네슬-알란트)": "καὶ",
+      "RP (비잔틴)": "καὶ",
+      "Westcott-Hort (WH)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 26,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"αὐτοῖς\" 누락 (일부 사본)",
+    "summary": "αὐτοῖς (WH, NA28, RP) · – (Treg)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Tregelles (Treg)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "αὐτοῖς",
+      "NA28 (네슬-알란트)": "αὐτοῖς",
+      "RP (비잔틴)": "αὐτοῖς",
+      "Tregelles (Treg)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 27,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὑπόλειμμα\" vs \"κατάλειμμα\"",
+    "summary": "ὑπόλειμμα (WH, Treg, NA28) · κατάλειμμα (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑπόλειμμα": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "κατάλειμμα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑπόλειμμα",
+      "Treg (트레겔레스)": "ὑπόλειμμα",
+      "NA28 (네슬-알란트)": "ὑπόλειμμα",
+      "Robinson-Pierpont 비잔틴 (RP)": "κατάλειμμα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 28,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"συντέμνων\" 뒤 추가 삽입",
+    "summary": "συντέμνων (WH, Treg, NA28) · + ἐν δικαιοσύνῃ ὅτι λόγον συντετμημένον (RP)",
+    "witnesses": {
+      "variants": {
+        "συντέμνων (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "συντέμνων + ἐν δικαιοσύνῃ ὅτι λόγον συντετμημένον": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "συντέμνων",
+      "Treg (트레겔레스)": "συντέμνων",
+      "NA28 (네슬-알란트)": "συντέμνων",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐν δικαιοσύνῃ ὅτι λόγον συντετμημένον"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 31,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"νόμον\" 뒤 추가 삽입",
+    "summary": "νόμον (WH, Treg, NA28) · + δικαιοσύνης (RP)",
+    "witnesses": {
+      "variants": {
+        "νόμον (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "νόμον + δικαιοσύνης": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "νόμον",
+      "Treg (트레겔레스)": "νόμον",
+      "NA28 (네슬-알란트)": "νόμον",
+      "Robinson-Pierpont 비잔틴 (RP)": "δικαιοσύνης"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 32,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἔργων\" 뒤 추가 삽입",
+    "summary": "ἔργων (WH, Treg, NA28) · + νόμου (RP)",
+    "witnesses": {
+      "variants": {
+        "ἔργων (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἔργων + νόμου": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἔργων",
+      "Treg (트레겔레스)": "ἔργων",
+      "NA28 (네슬-알란트)": "ἔργων",
+      "Robinson-Pierpont 비잔틴 (RP)": "νόμου"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 32,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"προσέκοψαν\" 뒤 추가 삽입",
+    "summary": "προσέκοψαν (WH, Treg, NA28) · + γὰρ (RP)",
+    "witnesses": {
+      "variants": {
+        "προσέκοψαν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "προσέκοψαν + γὰρ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "προσέκοψαν",
+      "Treg (트레겔레스)": "προσέκοψαν",
+      "NA28 (네슬-알란트)": "προσέκοψαν",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 9,
+    "verse": 33,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"καὶ\" 뒤 추가 삽입",
+    "summary": "καὶ (WH, Treg, NA28) · + πᾶς (RP)",
+    "witnesses": {
+      "variants": {
+        "καὶ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ + πᾶς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "καὶ",
+      "Treg (트레겔레스)": "καὶ",
+      "NA28 (네슬-알란트)": "καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "πᾶς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 1,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"δέησις\" 뒤 추가 삽입",
+    "summary": "δέησις (WH, Treg, NA28) · + ἡ (RP)",
+    "witnesses": {
+      "variants": {
+        "δέησις (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δέησις + ἡ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δέησις",
+      "Treg (트레겔레스)": "δέησις",
+      "NA28 (네슬-알란트)": "δέησις",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἡ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 1,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"αὐτῶν\" vs \"τοῦ Ἰσραήλ ἐστιν\"",
+    "summary": "αὐτῶν (WH, Treg, NA28) · τοῦ Ἰσραήλ ἐστιν (RP)",
+    "witnesses": {
+      "variants": {
+        "αὐτῶν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τοῦ Ἰσραήλ ἐστιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "αὐτῶν",
+      "Treg (트레겔레스)": "αὐτῶν",
+      "NA28 (네슬-알란트)": "αὐτῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ Ἰσραήλ ἐστιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 3,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἰδίαν\" 뒤 추가 삽입",
+    "summary": "ἰδίαν (WH, Treg) · + δικαιοσύνην (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ἰδίαν (기본문)": "Westcott-Hort (WH), Tregelles (Treg)",
+        "ἰδίαν + δικαιοσύνην": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἰδίαν",
+      "Treg (트레겔레스)": "ἰδίαν",
+      "Nestle-Aland 28판 (NA28)": "δικαιοσύνην",
+      "Robinson-Pierpont 비잔틴 (RP)": "δικαιοσύνην"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 5,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ὅτι τὴν … νόμου\"",
+    "summary": "ὅτι τὴν … νόμου (WH) · τὴν … νόμου ὅτι (Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ὅτι τὴν … νόμου": "Westcott-Hort (WH)",
+        "τὴν … νόμου ὅτι": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὅτι τὴν … νόμου",
+      "Tregelles (Treg)": "τὴν … νόμου ὅτι",
+      "Nestle-Aland 28판 (NA28)": "τὴν … νόμου ὅτι",
+      "Robinson-Pierpont 비잔틴 (RP)": "τὴν … νόμου ὅτι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 5,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τοῦ\" 누락 (일부 사본)",
+    "summary": "τοῦ (NA28, RP) · – (WH, Treg)",
+    "witnesses": {
+      "include": [
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)"
+      ]
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "τοῦ",
+      "RP (비잔틴)": "τοῦ",
+      "Westcott-Hort (WH)": "(누락)",
+      "Tregelles (Treg)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 5,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ποιήσας\" 뒤 추가 삽입",
+    "summary": "ποιήσας (WH) · + αὐτὰ (Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ποιήσας (기본문)": "Westcott-Hort (WH)",
+        "ποιήσας + αὐτὰ": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ποιήσας",
+      "Tregelles (Treg)": "αὐτὰ",
+      "Nestle-Aland 28판 (NA28)": "αὐτὰ",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτὰ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 5,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"αὐτῇ\" vs \"αὐτοῖς\"",
+    "summary": "αὐτῇ (WH, Treg) · αὐτοῖς (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "αὐτῇ": "Westcott-Hort (WH), Tregelles (Treg)",
+        "αὐτοῖς": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "αὐτῇ",
+      "Treg (트레겔레스)": "αὐτῇ",
+      "Nestle-Aland 28판 (NA28)": "αὐτοῖς",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτοῖς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 9,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ὁμολογήσῃς\" 뒤 추가 삽입",
+    "summary": "ὁμολογήσῃς (Treg, NA28, RP) · + τὸ ῥῆμα (WH)",
+    "witnesses": {
+      "variants": {
+        "ὁμολογήσῃς (기본문)": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ὁμολογήσῃς + τὸ ῥῆμα": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ὁμολογήσῃς",
+      "NA28 (네슬-알란트)": "ὁμολογήσῃς",
+      "RP (비잔틴)": "ὁμολογήσῃς",
+      "Westcott-Hort (WH)": "τὸ ῥῆμα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 9,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"σου\" 뒤 추가 삽입",
+    "summary": "σου (Treg, NA28, RP) · + ὅτι (WH)",
+    "witnesses": {
+      "variants": {
+        "σου (기본문)": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "σου + ὅτι": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "σου",
+      "NA28 (네슬-알란트)": "σου",
+      "RP (비잔틴)": "σου",
+      "Westcott-Hort (WH)": "ὅτι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐπικαλέσωνται\" vs \"ἐπικαλέσονται\"",
+    "summary": "ἐπικαλέσωνται (WH, Treg, NA28) · ἐπικαλέσονται (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐπικαλέσωνται": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐπικαλέσονται": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐπικαλέσωνται",
+      "Treg (트레겔레스)": "ἐπικαλέσωνται",
+      "NA28 (네슬-알란트)": "ἐπικαλέσωνται",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπικαλέσονται"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"πιστεύσωσιν\" vs \"πιστεύσουσιν\"",
+    "summary": "πιστεύσωσιν (WH, Treg, NA28) · πιστεύσουσιν (RP)",
+    "witnesses": {
+      "variants": {
+        "πιστεύσωσιν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "πιστεύσουσιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πιστεύσωσιν",
+      "Treg (트레겔레스)": "πιστεύσωσιν",
+      "NA28 (네슬-알란트)": "πιστεύσωσιν",
+      "Robinson-Pierpont 비잔틴 (RP)": "πιστεύσουσιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἀκούσωσιν\" vs \"ἀκούσουσιν\"",
+    "summary": "ἀκούσωσιν (WH, Treg, NA28) · ἀκούσουσιν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀκούσωσιν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀκούσουσιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀκούσωσιν",
+      "Treg (트레겔레스)": "ἀκούσωσιν",
+      "NA28 (네슬-알란트)": "ἀκούσωσιν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀκούσουσιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"κηρύξωσιν\" vs \"κηρύξουσιν\"",
+    "summary": "κηρύξωσιν (WH, Treg, NA28) · κηρύξουσιν (RP)",
+    "witnesses": {
+      "variants": {
+        "κηρύξωσιν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "κηρύξουσιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "κηρύξωσιν",
+      "Treg (트레겔레스)": "κηρύξωσιν",
+      "NA28 (네슬-알란트)": "κηρύξωσιν",
+      "Robinson-Pierpont 비잔틴 (RP)": "κηρύξουσιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καθὼς\" vs \"καθάπερ\"",
+    "summary": "καθὼς (Treg, NA28, RP) · καθάπερ (WH)",
+    "witnesses": {
+      "variants": {
+        "καθὼς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "καθάπερ": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "καθὼς",
+      "NA28 (네슬-알란트)": "καθὼς",
+      "RP (비잔틴)": "καθὼς",
+      "Westcott-Hort (WH)": "καθάπερ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 15,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"εὐαγγελιζομένων\" 뒤 추가 삽입",
+    "summary": "εὐαγγελιζομένων (WH, Treg, NA28) · + εἰρήνην τῶν εὐαγγελιζομένων (RP)",
+    "witnesses": {
+      "variants": {
+        "εὐαγγελιζομένων (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "εὐαγγελιζομένων + εἰρήνην τῶν εὐαγγελιζομένων": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εὐαγγελιζομένων",
+      "Treg (트레겔레스)": "εὐαγγελιζομένων",
+      "NA28 (네슬-알란트)": "εὐαγγελιζομένων",
+      "Robinson-Pierpont 비잔틴 (RP)": "εἰρήνην τῶν εὐαγγελιζομένων"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 15,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τὰ\" 누락 (일부 사본)",
+    "summary": "τὰ (NA28, RP) · – (WH, Treg)",
+    "witnesses": {
+      "include": [
+        "Nestle-Aland 28판 (NA28)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)"
+      ]
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "τὰ",
+      "RP (비잔틴)": "τὰ",
+      "Westcott-Hort (WH)": "(누락)",
+      "Tregelles (Treg)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 17,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Χριστοῦ\" vs \"θεοῦ\"",
+    "summary": "Χριστοῦ (WH, Treg, NA28) · θεοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστοῦ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "θεοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστοῦ",
+      "Treg (트레겔레스)": "Χριστοῦ",
+      "NA28 (네슬-알란트)": "Χριστοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "θεοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 19,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"Ἰσραὴλ οὐκ ἔγνω\"",
+    "summary": "Ἰσραὴλ οὐκ ἔγνω (WH, Treg, NA28) · οὐκ ἔγνω Ἰσραὴλ (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἰσραὴλ οὐκ ἔγνω": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὐκ ἔγνω Ἰσραὴλ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἰσραὴλ οὐκ ἔγνω",
+      "Treg (트레겔레스)": "Ἰσραὴλ οὐκ ἔγνω",
+      "NA28 (네슬-알란트)": "Ἰσραὴλ οὐκ ἔγνω",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὐκ ἔγνω Ἰσραὴλ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 20,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"ἐν\" 누락 (일부 사본)",
+    "summary": "ἐν (Treg, NA28) · – (WH, RP)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἐν",
+      "NA28 (네슬-알란트)": "ἐν",
+      "Westcott-Hort (WH)": "(누락)",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 10,
+    "verse": 20,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἐγενόμην\" 뒤 추가 삽입",
+    "summary": "ἐγενόμην (WH, NA28, RP) · + ἐν (Treg)",
+    "witnesses": {
+      "variants": {
+        "ἐγενόμην (기본문)": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἐγενόμην + ἐν": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐγενόμην",
+      "NA28 (네슬-알란트)": "ἐγενόμην",
+      "RP (비잔틴)": "ἐγενόμην",
+      "Tregelles (Treg)": "ἐν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 2,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Ἰσραήλ\" 뒤 추가 삽입",
+    "summary": "Ἰσραήλ (WH, Treg, NA28) · + λέγων (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἰσραήλ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἰσραήλ + λέγων": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἰσραήλ",
+      "Treg (트레겔레스)": "Ἰσραήλ",
+      "NA28 (네슬-알란트)": "Ἰσραήλ",
+      "Robinson-Pierpont 비잔틴 (RP)": "λέγων"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 3,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τὰ\" vs \"καὶ τὰ\"",
+    "summary": "τὰ (WH, Treg, NA28) · καὶ τὰ (RP)",
+    "witnesses": {
+      "variants": {
+        "τὰ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ τὰ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τὰ",
+      "Treg (트레겔레스)": "τὰ",
+      "NA28 (네슬-알란트)": "τὰ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ τὰ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 6,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"χάρις\" 뒤 추가 삽입",
+    "summary": "χάρις (WH, Treg, NA28) · + Εἰ δὲ ἐξ ἔργων οὐκέτι ἐστὶν χάρις ἐπεὶ τὸ ἔργον οὐκέτι ἐστὶν ἔργον (RP)",
+    "witnesses": {
+      "variants": {
+        "χάρις (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "χάρις + Εἰ δὲ ἐξ ἔργων οὐκέτι ἐστὶν χάρις ἐπεὶ τὸ ἔργον οὐκέτι ἐστὶν ἔργον": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "χάρις",
+      "Treg (트레겔레스)": "χάρις",
+      "NA28 (네슬-알란트)": "χάρις",
+      "Robinson-Pierpont 비잔틴 (RP)": "Εἰ δὲ ἐξ ἔργων οὐκέτι ἐστὶν χάρις ἐπεὶ τὸ ἔργον οὐκέτι ἐστὶν ἔργον"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"καθὼς\" vs \"καθάπερ\"",
+    "summary": "καθὼς (NA28, RP) · καθάπερ (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "καθὼς": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "καθάπερ": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "καθὼς",
+      "RP (비잔틴)": "καθὼς",
+      "Westcott-Hort (WH)": "καθάπερ",
+      "Tregelles (Treg)": "καθάπερ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 13,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"δὲ\" vs \"γὰρ\"",
+    "summary": "δὲ (WH, Treg, NA28) · γὰρ (RP)",
+    "witnesses": {
+      "variants": {
+        "δὲ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γὰρ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δὲ",
+      "Treg (트레겔레스)": "δὲ",
+      "NA28 (네슬-알란트)": "δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "γὰρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 13,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"οὖν\" 누락 (일부 사본)",
+    "summary": "οὖν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὖν",
+      "Treg (트레겔레스)": "οὖν",
+      "NA28 (네슬-알란트)": "οὖν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 17,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ῥίζης\" 뒤 추가 삽입",
+    "summary": "ῥίζης (WH, NA28) · + καὶ (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "ῥίζης (기본문)": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "ῥίζης + καὶ": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ῥίζης",
+      "NA28 (네슬-알란트)": "ῥίζης",
+      "Tregelles (Treg)": "καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 20,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὑψηλὰ φρόνει\" vs \"ὑψηλοφρόνει\"",
+    "summary": "ὑψηλὰ φρόνει (WH, Treg, NA28) · ὑψηλοφρόνει (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑψηλὰ φρόνει": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑψηλοφρόνει": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑψηλὰ φρόνει",
+      "Treg (트레겔레스)": "ὑψηλὰ φρόνει",
+      "NA28 (네슬-알란트)": "ὑψηλὰ φρόνει",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὑψηλοφρόνει"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 21,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"οὐδὲ NIV\" vs \"μήπως οὐδέ\"",
+    "summary": "οὐδὲ NIV (WH, Treg) · μήπως οὐδέ (RP, NA28)",
+    "witnesses": {
+      "variants": {
+        "οὐδὲ NIV": "Westcott-Hort (WH), Tregelles (Treg)",
+        "μήπως οὐδέ": "Robinson-Pierpont 비잔틴 (RP), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὐδὲ NIV",
+      "Treg (트레겔레스)": "οὐδὲ NIV",
+      "Robinson-Pierpont 비잔틴 (RP)": "μήπως οὐδέ",
+      "Nestle-Aland 28판 (NA28)": "μήπως οὐδέ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 22,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἀποτομία\" vs \"ἀποτομίαν\"",
+    "summary": "ἀποτομία (WH, Treg, NA28) · ἀποτομίαν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀποτομία": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀποτομίαν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀποτομία",
+      "Treg (트레겔레스)": "ἀποτομία",
+      "NA28 (네슬-알란트)": "ἀποτομία",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀποτομίαν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 22,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"χρηστότης θεοῦ\" vs \"χρηστότητα\"",
+    "summary": "χρηστότης θεοῦ (WH, Treg, NA28) · χρηστότητα (RP)",
+    "witnesses": {
+      "variants": {
+        "χρηστότης θεοῦ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "χρηστότητα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "χρηστότης θεοῦ",
+      "Treg (트레겔레스)": "χρηστότης θεοῦ",
+      "NA28 (네슬-알란트)": "χρηστότης θεοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "χρηστότητα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 22,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐπιμένῃς\" vs \"ἐπιμείνῃς\"",
+    "summary": "ἐπιμένῃς (WH, Treg, NA28) · ἐπιμείνῃς (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐπιμένῃς": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐπιμείνῃς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐπιμένῃς",
+      "Treg (트레겔레스)": "ἐπιμένῃς",
+      "NA28 (네슬-알란트)": "ἐπιμένῃς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπιμείνῃς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 23,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐπιμένωσι\" vs \"ἐπιμείνωσιν\"",
+    "summary": "ἐπιμένωσι (WH, Treg, NA28) · ἐπιμείνωσιν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐπιμένωσι": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐπιμείνωσιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐπιμένωσι",
+      "Treg (트레겔레스)": "ἐπιμένωσι",
+      "NA28 (네슬-알란트)": "ἐπιμένωσι",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπιμείνωσιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 23,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἐστιν ὁ θεὸς\"",
+    "summary": "ἐστιν ὁ θεὸς (WH, Treg, NA28) · ὁ θεὸς ἐστιν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐστιν ὁ θεὸς": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὁ θεὸς ἐστιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐστιν ὁ θεὸς",
+      "Treg (트레겔레스)": "ἐστιν ὁ θεὸς",
+      "NA28 (네슬-알란트)": "ἐστιν ὁ θεὸς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὁ θεὸς ἐστιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 25,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἦτε Holmes\" 뒤 추가 삽입",
+    "summary": "ἦτε Holmes (—) · + ἐν (WH, Treg) · + παρʼ (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ἦτε Holmes (기본문)": "—",
+        "ἦτε Holmes + ἐν": "Westcott-Hort (WH), Tregelles (Treg)",
+        "ἦτε Holmes + παρʼ": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "ἐν",
+      "Tregelles (Treg)": "ἐν",
+      "Nestle-Aland 28판 (NA28)": "παρʼ",
+      "Robinson-Pierpont 비잔틴 (RP)": "παρʼ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 26,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ῥυόμενος\" 뒤 추가 삽입",
+    "summary": "ῥυόμενος (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "ῥυόμενος (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ῥυόμενος + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ῥυόμενος",
+      "Treg (트레겔레스)": "ῥυόμενος",
+      "NA28 (네슬-알란트)": "ῥυόμενος",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 30,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"γὰρ\" 뒤 추가 삽입",
+    "summary": "γὰρ (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "γὰρ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γὰρ + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γὰρ",
+      "Treg (트레겔레스)": "γὰρ",
+      "NA28 (네슬-알란트)": "γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 11,
+    "verse": 31,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"νῦν\" 누락 (일부 사본)",
+    "summary": "νῦν (WH, NA28) · – (Treg, RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Tregelles (Treg)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "νῦν",
+      "NA28 (네슬-알란트)": "νῦν",
+      "Tregelles (Treg)": "(누락)",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 1,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"εὐάρεστον τῷ θεῷ\"",
+    "summary": "εὐάρεστον τῷ θεῷ (Treg, NA28, RP) · τῷ θεῷ εὐάρεστον (WH)",
+    "witnesses": {
+      "variants": {
+        "εὐάρεστον τῷ θεῷ": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "τῷ θεῷ εὐάρεστον": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "εὐάρεστον τῷ θεῷ",
+      "NA28 (네슬-알란트)": "εὐάρεστον τῷ θεῷ",
+      "RP (비잔틴)": "εὐάρεστον τῷ θεῷ",
+      "Westcott-Hort (WH)": "τῷ θεῷ εὐάρεστον"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 2,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"συσχηματίζεσθε\" vs \"συσχηματίζεσθαι\"",
+    "summary": "συσχηματίζεσθε (WH, Treg, NA28) · συσχηματίζεσθαι (RP)",
+    "witnesses": {
+      "variants": {
+        "συσχηματίζεσθε": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "συσχηματίζεσθαι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "συσχηματίζεσθε",
+      "Treg (트레겔레스)": "συσχηματίζεσθε",
+      "NA28 (네슬-알란트)": "συσχηματίζεσθε",
+      "Robinson-Pierpont 비잔틴 (RP)": "συσχηματίζεσθαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 2,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"μεταμορφοῦσθε\" vs \"μεταμορφοῦσθαι\"",
+    "summary": "μεταμορφοῦσθε (WH, Treg, NA28) · μεταμορφοῦσθαι (RP)",
+    "witnesses": {
+      "variants": {
+        "μεταμορφοῦσθε": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "μεταμορφοῦσθαι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "μεταμορφοῦσθε",
+      "Treg (트레겔레스)": "μεταμορφοῦσθε",
+      "NA28 (네슬-알란트)": "μεταμορφοῦσθε",
+      "Robinson-Pierpont 비잔틴 (RP)": "μεταμορφοῦσθαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 2,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"νοός\" 뒤 추가 삽입",
+    "summary": "νοός (WH, Treg, NA28) · + ὑμῶν (RP)",
+    "witnesses": {
+      "variants": {
+        "νοός (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "νοός + ὑμῶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "νοός",
+      "Treg (트레겔레스)": "νοός",
+      "NA28 (네슬-알란트)": "νοός",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὑμῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 4,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"πολλὰ μέλη\"",
+    "summary": "πολλὰ μέλη (WH, Treg, NA28) · μέλη πολλὰ (RP)",
+    "witnesses": {
+      "variants": {
+        "πολλὰ μέλη": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "μέλη πολλὰ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πολλὰ μέλη",
+      "Treg (트레겔레스)": "πολλὰ μέλη",
+      "NA28 (네슬-알란트)": "πολλὰ μέλη",
+      "Robinson-Pierpont 비잔틴 (RP)": "μέλη πολλὰ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 5,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τὸ\" vs \"ὁ\"",
+    "summary": "τὸ (WH, Treg, NA28) · ὁ (RP)",
+    "witnesses": {
+      "variants": {
+        "τὸ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὁ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τὸ",
+      "Treg (트레겔레스)": "τὸ",
+      "NA28 (네슬-알란트)": "τὸ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὁ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 14,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"διώκοντας\" 뒤 추가 삽입",
+    "summary": "διώκοντας (WH) · + ὑμᾶς (Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "διώκοντας (기본문)": "Westcott-Hort (WH)",
+        "διώκοντας + ὑμᾶς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "διώκοντας",
+      "Tregelles (Treg)": "ὑμᾶς",
+      "Nestle-Aland 28판 (NA28)": "ὑμᾶς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ὑμᾶς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 15,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"χαιρόντων\" 뒤 추가 삽입",
+    "summary": "χαιρόντων (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "χαιρόντων (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "χαιρόντων + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "χαιρόντων",
+      "Treg (트레겔레스)": "χαιρόντων",
+      "NA28 (네슬-알란트)": "χαιρόντων",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 12,
+    "verse": 20,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἀλλὰ ἐὰν\" vs \"Ἐὰν οὖν\"",
+    "summary": "ἀλλὰ ἐὰν (WH, Treg, NA28) · Ἐὰν οὖν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀλλὰ ἐὰν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἐὰν οὖν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀλλὰ ἐὰν",
+      "Treg (트레겔레스)": "ἀλλὰ ἐὰν",
+      "NA28 (네슬-알란트)": "ἀλλὰ ἐὰν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἐὰν οὖν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 1,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"οὖσαι\" 뒤 추가 삽입",
+    "summary": "οὖσαι (WH, Treg, NA28) · + ἐξουσίαι (RP)",
+    "witnesses": {
+      "variants": {
+        "οὖσαι (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "οὖσαι + ἐξουσίαι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "οὖσαι",
+      "Treg (트레겔레스)": "οὖσαι",
+      "NA28 (네슬-알란트)": "οὖσαι",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐξουσίαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 1,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ὑπὸ\" 뒤 추가 삽입",
+    "summary": "ὑπὸ (WH, Treg, NA28) · + τοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑπὸ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑπὸ + τοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑπὸ",
+      "Treg (트레겔레스)": "ὑπὸ",
+      "NA28 (네슬-알란트)": "ὑπὸ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 3,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τῷ ἀγαθῷ ἔργῳ\" vs \"τῶν ἀγαθῶν ἔργων\"",
+    "summary": "τῷ ἀγαθῷ ἔργῳ (WH, Treg, NA28) · τῶν ἀγαθῶν ἔργων (RP)",
+    "witnesses": {
+      "variants": {
+        "τῷ ἀγαθῷ ἔργῳ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τῶν ἀγαθῶν ἔργων": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τῷ ἀγαθῷ ἔργῳ",
+      "Treg (트레겔레스)": "τῷ ἀγαθῷ ἔργῳ",
+      "NA28 (네슬-알란트)": "τῷ ἀγαθῷ ἔργῳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῶν ἀγαθῶν ἔργων"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 3,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τῷ κακῷ\" vs \"τῶν κακῶν\"",
+    "summary": "τῷ κακῷ (WH, Treg, NA28) · τῶν κακῶν (RP)",
+    "witnesses": {
+      "variants": {
+        "τῷ κακῷ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τῶν κακῶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τῷ κακῷ",
+      "Treg (트레겔레스)": "τῷ κακῷ",
+      "NA28 (네슬-알란트)": "τῷ κακῷ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῶν κακῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 7,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀπόδοτε\" 뒤 추가 삽입",
+    "summary": "ἀπόδοτε (WH, Treg, NA28) · + οὖν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀπόδοτε (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀπόδοτε + οὖν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀπόδοτε",
+      "Treg (트레겔레스)": "ἀπόδοτε",
+      "NA28 (네슬-알란트)": "ἀπόδοτε",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὖν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 8,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἀλλήλους ἀγαπᾶν\"",
+    "summary": "ἀλλήλους ἀγαπᾶν (WH, Treg, NA28) · ἀγαπᾶν ἀλλήλους (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀλλήλους ἀγαπᾶν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀγαπᾶν ἀλλήλους": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀλλήλους ἀγαπᾶν",
+      "Treg (트레겔레스)": "ἀλλήλους ἀγαπᾶν",
+      "NA28 (네슬-알란트)": "ἀλλήλους ἀγαπᾶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀγαπᾶν ἀλλήλους"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 9,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"τῷ λόγῳ τούτῳ\"",
+    "summary": "τῷ λόγῳ τούτῳ (WH, Treg, NA28) · τούτῳ τῷ λόγῳ (RP)",
+    "witnesses": {
+      "variants": {
+        "τῷ λόγῳ τούτῳ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τούτῳ τῷ λόγῳ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τῷ λόγῳ τούτῳ",
+      "Treg (트레겔레스)": "τῷ λόγῳ τούτῳ",
+      "NA28 (네슬-알란트)": "τῷ λόγῳ τούτῳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τούτῳ τῷ λόγῳ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 9,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐν τῷ\" vs \"– NIV\"",
+    "summary": "ἐν τῷ (WH, Treg, RP, NA28) · – NIV (—)",
+    "witnesses": {
+      "variants": {
+        "ἐν τῷ": "Westcott-Hort (WH), Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP), Nestle-Aland 28판 (NA28)",
+        "– NIV": ""
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐν τῷ",
+      "Treg (트레겔레스)": "ἐν τῷ",
+      "NA28 (네슬-알란트)": "ἐν τῷ",
+      "RP (비잔틴)": "ἐν τῷ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἤδη ὑμᾶς\" vs \"ἤδη ἡμᾶς\"",
+    "summary": "ἤδη ὑμᾶς (WH, NA28) · ἤδη ἡμᾶς (Treg) · ἡμᾶς ἤδη (RP)",
+    "witnesses": {
+      "variants": {
+        "ἤδη ὑμᾶς": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "ἤδη ἡμᾶς": "Tregelles (Treg)",
+        "ἡμᾶς ἤδη": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἤδη ὑμᾶς",
+      "NA28 (네슬-알란트)": "ἤδη ὑμᾶς",
+      "Tregelles (Treg)": "ἤδη ἡμᾶς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἡμᾶς ἤδη"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 12,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἀποβαλώμεθα Holmes\" vs \"ἀποθώμεθα\"",
+    "summary": "ἀποβαλώμεθα Holmes (—) · ἀποθώμεθα (WH, Treg, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ἀποβαλώμεθα Holmes": "",
+        "ἀποθώμεθα": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "ἀποθώμεθα",
+      "Tregelles (Treg)": "ἀποθώμεθα",
+      "Nestle-Aland 28판 (NA28)": "ἀποθώμεθα",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀποθώμεθα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 13,
+    "verse": 12,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐνδυσώμεθα δὲ\" vs \"καὶ ἐνδυσώμεθα\"",
+    "summary": "ἐνδυσώμεθα δὲ (WH, Treg, NA28) · καὶ ἐνδυσώμεθα (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐνδυσώμεθα δὲ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ ἐνδυσώμεθα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐνδυσώμεθα δὲ",
+      "Treg (트레겔레스)": "ἐνδυσώμεθα δὲ",
+      "NA28 (네슬-알란트)": "ἐνδυσώμεθα δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ἐνδυσώμεθα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 3,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὁ δὲ\" vs \"καὶ ὁ\"",
+    "summary": "ὁ δὲ (WH, Treg, NA28) · καὶ ὁ (RP)",
+    "witnesses": {
+      "variants": {
+        "ὁ δὲ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ ὁ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὁ δὲ",
+      "Treg (트레겔레스)": "ὁ δὲ",
+      "NA28 (네슬-알란트)": "ὁ δὲ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ὁ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"δυνατεῖ γὰρ\" vs \"δυνατὸς γάρ ἐστιν\"",
+    "summary": "δυνατεῖ γὰρ (WH, Treg, NA28) · δυνατὸς γάρ ἐστιν (RP)",
+    "witnesses": {
+      "variants": {
+        "δυνατεῖ γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δυνατὸς γάρ ἐστιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "δυνατεῖ γὰρ",
+      "Treg (트레겔레스)": "δυνατεῖ γὰρ",
+      "NA28 (네슬-알란트)": "δυνατεῖ γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "δυνατὸς γάρ ἐστιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"κύριος\" vs \"θεὸς\"",
+    "summary": "κύριος (WH, Treg, NA28) · θεὸς (RP)",
+    "witnesses": {
+      "variants": {
+        "κύριος": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "θεὸς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "κύριος",
+      "Treg (트레겔레스)": "κύριος",
+      "NA28 (네슬-알란트)": "κύριος",
+      "Robinson-Pierpont 비잔틴 (RP)": "θεὸς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 5,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"μὲν NIV\" 뒤 추가 삽입",
+    "summary": "μὲν NIV (Treg, RP) · + γάρ (WH, NA28)",
+    "witnesses": {
+      "variants": {
+        "μὲν NIV (기본문)": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "μὲν NIV + γάρ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "μὲν NIV",
+      "RP (비잔틴)": "μὲν NIV",
+      "Westcott-Hort (WH)": "γάρ",
+      "Nestle-Aland 28판 (NA28)": "γάρ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 6,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"φρονεῖ\" 뒤 추가 삽입",
+    "summary": "φρονεῖ (WH, Treg, NA28) · + καὶ ὁ μὴ φρονῶν τὴν ἡμέραν κυρίῳ οὐ φρονεῖ (RP)",
+    "witnesses": {
+      "variants": {
+        "φρονεῖ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "φρονεῖ + καὶ ὁ μὴ φρονῶν τὴν ἡμέραν κυρίῳ οὐ φρονεῖ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "φρονεῖ",
+      "Treg (트레겔레스)": "φρονεῖ",
+      "NA28 (네슬-알란트)": "φρονεῖ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ὁ μὴ φρονῶν τὴν ἡμέραν κυρίῳ οὐ φρονεῖ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 9,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Χριστὸς\" 뒤 추가 삽입",
+    "summary": "Χριστὸς (WH, Treg, NA28) · + καὶ (RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστὸς (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Χριστὸς + καὶ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστὸς",
+      "Treg (트레겔레스)": "Χριστὸς",
+      "NA28 (네슬-알란트)": "Χριστὸς",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 9,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἀπέθανεν\" 뒤 추가 삽입",
+    "summary": "ἀπέθανεν (WH, Treg, NA28) · + καὶ ἀνέστη (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀπέθανεν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἀπέθανεν + καὶ ἀνέστη": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀπέθανεν",
+      "Treg (트레겔레스)": "ἀπέθανεν",
+      "NA28 (네슬-알란트)": "ἀπέθανεν",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ ἀνέστη"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 10,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"θεοῦ\" vs \"χριστοῦ\"",
+    "summary": "θεοῦ (WH, Treg, NA28) · χριστοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "θεοῦ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "χριστοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "θεοῦ",
+      "Treg (트레겔레스)": "θεοῦ",
+      "NA28 (네슬-알란트)": "θεοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "χριστοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 11,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"πᾶσα γλῶσσα ἐξομολογήσεται\"",
+    "summary": "πᾶσα γλῶσσα ἐξομολογήσεται (WH, NA28, RP) · ἐξομολογήσεται πᾶσα γλῶσσα (Treg)",
+    "witnesses": {
+      "variants": {
+        "πᾶσα γλῶσσα ἐξομολογήσεται": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἐξομολογήσεται πᾶσα γλῶσσα": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πᾶσα γλῶσσα ἐξομολογήσεται",
+      "NA28 (네슬-알란트)": "πᾶσα γλῶσσα ἐξομολογήσεται",
+      "RP (비잔틴)": "πᾶσα γλῶσσα ἐξομολογήσεται",
+      "Tregelles (Treg)": "ἐξομολογήσεται πᾶσα γλῶσσα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 12,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἄρα\" 뒤 추가 삽입",
+    "summary": "ἄρα (Treg) · + οὖν (WH, NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ἄρα (기본문)": "Tregelles (Treg)",
+        "ἄρα + οὖν": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἄρα",
+      "Westcott-Hort (WH)": "οὖν",
+      "Nestle-Aland 28판 (NA28)": "οὖν",
+      "Robinson-Pierpont 비잔틴 (RP)": "οὖν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 12,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"δώσει Holmes WHmarg\" 뒤 추가 삽입",
+    "summary": "δώσει Holmes WHmarg (—) · + τῷ θεῷ (WH, NA28, RP) · ἀποδώσει τῷ θεῷ (Treg)",
+    "witnesses": {
+      "variants": {
+        "δώσει Holmes WHmarg (기본문)": "—",
+        "δώσει Holmes WHmarg + τῷ θεῷ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "τῷ θεῷ",
+      "Nestle-Aland 28판 (NA28)": "τῷ θεῷ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῷ θεῷ",
+      "Tregelles (Treg)": "ἀποδώσει τῷ θεῷ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἑαυτοῦ\" vs \"αὐτοῦ\"",
+    "summary": "ἑαυτοῦ (WH, NA28) · αὐτοῦ (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "ἑαυτοῦ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "αὐτοῦ": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἑαυτοῦ",
+      "NA28 (네슬-알란트)": "ἑαυτοῦ",
+      "Tregelles (Treg)": "αὐτοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"γὰρ\" vs \"δὲ\"",
+    "summary": "γὰρ (WH, Treg, NA28) · δὲ (RP)",
+    "witnesses": {
+      "variants": {
+        "γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δὲ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γὰρ",
+      "Treg (트레겔레스)": "γὰρ",
+      "NA28 (네슬-알란트)": "γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "δὲ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 18,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τούτῳ\" vs \"τούτοις\"",
+    "summary": "τούτῳ (WH, Treg, NA28) · τούτοις (RP)",
+    "witnesses": {
+      "variants": {
+        "τούτῳ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τούτοις": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τούτῳ",
+      "Treg (트레겔레스)": "τούτῳ",
+      "NA28 (네슬-알란트)": "τούτῳ",
+      "Robinson-Pierpont 비잔틴 (RP)": "τούτοις"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 21,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"ἢ σκανδαλίζεται ἢ ἀσθενεῖ\" 누락 (일부 사본)",
+    "summary": "ἢ σκανδαλίζεται ἢ ἀσθενεῖ (Treg, RP) · – (WH, NA28)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ἢ σκανδαλίζεται ἢ ἀσθενεῖ",
+      "RP (비잔틴)": "ἢ σκανδαλίζεται ἢ ἀσθενεῖ",
+      "Westcott-Hort (WH)": "(누락)",
+      "Nestle-Aland 28판 (NA28)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 22,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"ἣν\" 누락 (일부 사본)",
+    "summary": "ἣν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἣν",
+      "Treg (트레겔레스)": "ἣν",
+      "NA28 (네슬-알란트)": "ἣν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 14,
+    "verse": 23,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἐστίν\" 뒤 추가 삽입",
+    "summary": "ἐστίν (WH, Treg, NA28) · + 24 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 25 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 26 μόνῳ σοφῷ θεῷ, διὰ Ἰησοῦ χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν. (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐστίν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐστίν + 24 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 25 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 26 μόνῳ σοφῷ θεῷ, διὰ Ἰησοῦ χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν.": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐστίν",
+      "Treg (트레겔레스)": "ἐστίν",
+      "NA28 (네슬-알란트)": "ἐστίν",
+      "Robinson-Pierpont 비잔틴 (RP)": "24 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 25 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 26 μόνῳ σοφῷ θεῷ, διὰ Ἰησοῦ χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν."
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"εἰς\" vs \"πάντα εἰς\"",
+    "summary": "εἰς (Treg, NA28, RP) · πάντα εἰς (WH)",
+    "witnesses": {
+      "variants": {
+        "εἰς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "πάντα εἰς": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "εἰς",
+      "NA28 (네슬-알란트)": "εἰς",
+      "RP (비잔틴)": "εἰς",
+      "Westcott-Hort (WH)": "πάντα εἰς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 4,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐγράφη\" vs \"προεγράφη\"",
+    "summary": "ἐγράφη (WH, Treg, NA28) · προεγράφη (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐγράφη": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "προεγράφη": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐγράφη",
+      "Treg (트레겔레스)": "ἐγράφη",
+      "NA28 (네슬-알란트)": "ἐγράφη",
+      "Robinson-Pierpont 비잔틴 (RP)": "προεγράφη"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 5,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"Χριστὸν Ἰησοῦν\"",
+    "summary": "Χριστὸν Ἰησοῦν (WH, NA28, RP) · Ἰησοῦν Χριστὸν (Treg)",
+    "witnesses": {
+      "variants": {
+        "Χριστὸν Ἰησοῦν": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "Ἰησοῦν Χριστὸν": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστὸν Ἰησοῦν",
+      "NA28 (네슬-알란트)": "Χριστὸν Ἰησοῦν",
+      "RP (비잔틴)": "Χριστὸν Ἰησοῦν",
+      "Tregelles (Treg)": "Ἰησοῦν Χριστὸν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 7,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὑμᾶς\" vs \"ἡμᾶς\"",
+    "summary": "ὑμᾶς (Treg, NA28, RP) · ἡμᾶς (WH)",
+    "witnesses": {
+      "variants": {
+        "ὑμᾶς": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἡμᾶς": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "ὑμᾶς",
+      "NA28 (네슬-알란트)": "ὑμᾶς",
+      "RP (비잔틴)": "ὑμᾶς",
+      "Westcott-Hort (WH)": "ἡμᾶς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 7,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τοῦ\" 누락 (일부 사본)",
+    "summary": "τοῦ (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τοῦ",
+      "Treg (트레겔레스)": "τοῦ",
+      "NA28 (네슬-알란트)": "τοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"γὰρ\" vs \"δέ\"",
+    "summary": "γὰρ (WH, Treg, NA28) · δέ (RP)",
+    "witnesses": {
+      "variants": {
+        "γὰρ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "δέ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γὰρ",
+      "Treg (트레겔레스)": "γὰρ",
+      "NA28 (네슬-알란트)": "γὰρ",
+      "Robinson-Pierpont 비잔틴 (RP)": "δέ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 8,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Χριστὸν\" 뒤 추가 삽입",
+    "summary": "Χριστὸν (WH, Treg, NA28) · + Ἰησοῦν (RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστὸν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Χριστὸν + Ἰησοῦν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστὸν",
+      "Treg (트레겔레스)": "Χριστὸν",
+      "NA28 (네슬-알란트)": "Χριστὸν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἰησοῦν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"γεγενῆσθαι\" vs \"γένεσθαι\"",
+    "summary": "γεγενῆσθαι (WH, NA28, RP) · γένεσθαι (Treg)",
+    "witnesses": {
+      "variants": {
+        "γεγενῆσθαι": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "γένεσθαι": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γεγενῆσθαι",
+      "NA28 (네슬-알란트)": "γεγενῆσθαι",
+      "RP (비잔틴)": "γεγενῆσθαι",
+      "Tregelles (Treg)": "γένεσθαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 11,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"πάντα τὰ ἔθνη τὸν κύριον\"",
+    "summary": "πάντα τὰ ἔθνη τὸν κύριον (WH, Treg, NA28) · τὸν κύριον πάντα τὰ ἔθνη (RP)",
+    "witnesses": {
+      "variants": {
+        "πάντα τὰ ἔθνη τὸν κύριον": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τὸν κύριον πάντα τὰ ἔθνη": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πάντα τὰ ἔθνη τὸν κύριον",
+      "Treg (트레겔레스)": "πάντα τὰ ἔθνη τὸν κύριον",
+      "NA28 (네슬-알란트)": "πάντα τὰ ἔθνη τὸν κύριον",
+      "Robinson-Pierpont 비잔틴 (RP)": "τὸν κύριον πάντα τὰ ἔθνη"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐπαινεσάτωσαν\" vs \"ἐπαινέσατε\"",
+    "summary": "ἐπαινεσάτωσαν (WH, Treg, NA28) · ἐπαινέσατε (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐπαινεσάτωσαν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐπαινέσατε": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐπαινεσάτωσαν",
+      "Treg (트레겔레스)": "ἐπαινεσάτωσαν",
+      "NA28 (네슬-알란트)": "ἐπαινεσάτωσαν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐπαινέσατε"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 14,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"πάσης\" 뒤 추가 삽입",
+    "summary": "πάσης (Treg, RP) · + τῆς (WH, NA28)",
+    "witnesses": {
+      "variants": {
+        "πάσης (기본문)": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "πάσης + τῆς": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "πάσης",
+      "RP (비잔틴)": "πάσης",
+      "Westcott-Hort (WH)": "τῆς",
+      "Nestle-Aland 28판 (NA28)": "τῆς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἀλλήλους\" vs \"ἄλλους\"",
+    "summary": "ἀλλήλους (WH, Treg, NA28) · ἄλλους (RP)",
+    "witnesses": {
+      "variants": {
+        "ἀλλήλους": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἄλλους": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἀλλήλους",
+      "Treg (트레겔레스)": "ἀλλήλους",
+      "NA28 (네슬-알란트)": "ἀλλήλους",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἄλλους"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"τολμηρότερον\" vs \"τολμηροτέρως\"",
+    "summary": "τολμηρότερον (NA28, RP) · τολμηροτέρως (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "τολμηρότερον": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "τολμηροτέρως": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "τολμηρότερον",
+      "RP (비잔틴)": "τολμηρότερον",
+      "Westcott-Hort (WH)": "τολμηροτέρως",
+      "Tregelles (Treg)": "τολμηροτέρως"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 15,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ὑμῖν\" 뒤 추가 삽입",
+    "summary": "ὑμῖν (WH, Treg, NA28) · + ἀδελφοί (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑμῖν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ὑμῖν + ἀδελφοί": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑμῖν",
+      "Treg (트레겔레스)": "ὑμῖν",
+      "NA28 (네슬-알란트)": "ὑμῖν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἀδελφοί"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 15,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὑπὸ\" vs \"ἀπὸ\"",
+    "summary": "ὑπὸ (NA28, RP) · ἀπὸ (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "ὑπὸ": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "ἀπὸ": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "ὑπὸ",
+      "RP (비잔틴)": "ὑπὸ",
+      "Westcott-Hort (WH)": "ἀπὸ",
+      "Tregelles (Treg)": "ἀπὸ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 16,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"Χριστοῦ Ἰησοῦ\"",
+    "summary": "Χριστοῦ Ἰησοῦ (WH, Treg, NA28) · Ἰησοῦ Χριστοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "Χριστοῦ Ἰησοῦ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἰησοῦ Χριστοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Χριστοῦ Ἰησοῦ",
+      "Treg (트레겔레스)": "Χριστοῦ Ἰησοῦ",
+      "NA28 (네슬-알란트)": "Χριστοῦ Ἰησοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἰησοῦ Χριστοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 17,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"τὴν\" 누락 (일부 사본)",
+    "summary": "τὴν (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τὴν",
+      "Treg (트레겔레스)": "τὴν",
+      "NA28 (네슬-알란트)": "τὴν",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 18,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"τι λαλεῖν\"",
+    "summary": "τι λαλεῖν (WH, Treg, NA28) · λαλεῖν τι (RP)",
+    "witnesses": {
+      "variants": {
+        "τι λαλεῖν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "λαλεῖν τι": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τι λαλεῖν",
+      "Treg (트레겔레스)": "τι λαλεῖν",
+      "NA28 (네슬-알란트)": "τι λαλεῖν",
+      "Robinson-Pierpont 비잔틴 (RP)": "λαλεῖν τι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 19,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"πνεύματος NIV\" 뒤 추가 삽입",
+    "summary": "πνεύματος NIV (—) · + ἁγίου (WH, Treg) · + θεοῦ (RP, NA28)",
+    "witnesses": {
+      "variants": {
+        "πνεύματος NIV (기본문)": "—",
+        "πνεύματος NIV + ἁγίου": "Westcott-Hort (WH), Tregelles (Treg)",
+        "πνεύματος NIV + θεοῦ": "Robinson-Pierpont 비잔틴 (RP), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "Westcott-Hort (WH)": "ἁγίου",
+      "Tregelles (Treg)": "ἁγίου",
+      "Robinson-Pierpont 비잔틴 (RP)": "θεοῦ",
+      "Nestle-Aland 28판 (NA28)": "θεοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 20,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"φιλοτιμούμενον\" vs \"φιλοτιμοῦμαι\"",
+    "summary": "φιλοτιμούμενον (WH, NA28, RP) · φιλοτιμοῦμαι (Treg)",
+    "witnesses": {
+      "variants": {
+        "φιλοτιμούμενον": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "φιλοτιμοῦμαι": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "φιλοτιμούμενον",
+      "NA28 (네슬-알란트)": "φιλοτιμούμενον",
+      "RP (비잔틴)": "φιλοτιμούμενον",
+      "Tregelles (Treg)": "φιλοτιμοῦμαι"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 21,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Οἷς … αὐτοῦ ὄψονται\" vs \"Ὄψονται οἷς … αὐτοῦ\"",
+    "summary": "Οἷς … αὐτοῦ ὄψονται (Treg, NA28, RP) · Ὄψονται οἷς … αὐτοῦ (WH)",
+    "witnesses": {
+      "variants": {
+        "Οἷς … αὐτοῦ ὄψονται": "Tregelles (Treg), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "Ὄψονται οἷς … αὐτοῦ": "Westcott-Hort (WH)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "Οἷς … αὐτοῦ ὄψονται",
+      "NA28 (네슬-알란트)": "Οἷς … αὐτοῦ ὄψονται",
+      "RP (비잔틴)": "Οἷς … αὐτοῦ ὄψονται",
+      "Westcott-Hort (WH)": "Ὄψονται οἷς … αὐτοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 23,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἱκανῶν\" vs \"πολλῶν\"",
+    "summary": "ἱκανῶν (WH, Treg) · πολλῶν (NA28, RP)",
+    "witnesses": {
+      "variants": {
+        "ἱκανῶν": "Westcott-Hort (WH), Tregelles (Treg)",
+        "πολλῶν": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἱκανῶν",
+      "Treg (트레겔레스)": "ἱκανῶν",
+      "Nestle-Aland 28판 (NA28)": "πολλῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "πολλῶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 24,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἂν\" vs \"ἐὰν\"",
+    "summary": "ἂν (WH, Treg, NA28) · ἐὰν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἂν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐὰν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἂν",
+      "Treg (트레겔레스)": "ἂν",
+      "NA28 (네슬-알란트)": "ἂν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐὰν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 24,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"Σπανίαν\" 뒤 추가 삽입",
+    "summary": "Σπανίαν (WH, Treg, NA28) · + ἐλεύσομαι πρὸς ὑμᾶς (RP)",
+    "witnesses": {
+      "variants": {
+        "Σπανίαν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Σπανίαν + ἐλεύσομαι πρὸς ὑμᾶς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Σπανίαν",
+      "Treg (트레겔레스)": "Σπανίαν",
+      "NA28 (네슬-알란트)": "Σπανίαν",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐλεύσομαι πρὸς ὑμᾶς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 27,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"εἰσὶν αὐτῶν\"",
+    "summary": "εἰσὶν αὐτῶν (WH, Treg, NA28) · αὐτῶν εἰσὶν (RP)",
+    "witnesses": {
+      "variants": {
+        "εἰσὶν αὐτῶν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "αὐτῶν εἰσὶν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εἰσὶν αὐτῶν",
+      "Treg (트레겔레스)": "εἰσὶν αὐτῶν",
+      "NA28 (네슬-알란트)": "εἰσὶν αὐτῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτῶν εἰσὶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 28,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"εἰς\" 뒤 추가 삽입",
+    "summary": "εἰς (WH, Treg, NA28) · + τὴν (RP)",
+    "witnesses": {
+      "variants": {
+        "εἰς (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "εἰς + τὴν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εἰς",
+      "Treg (트레겔레스)": "εἰς",
+      "NA28 (네슬-알란트)": "εἰς",
+      "Robinson-Pierpont 비잔틴 (RP)": "τὴν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 29,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"εὐλογίας\" 뒤 추가 삽입",
+    "summary": "εὐλογίας (WH, Treg, NA28) · + τοῦ εὐαγγελίου τοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "εὐλογίας (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "εὐλογίας + τοῦ εὐαγγελίου τοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "εὐλογίας",
+      "Treg (트레겔레스)": "εὐλογίας",
+      "NA28 (네슬-알란트)": "εὐλογίας",
+      "Robinson-Pierpont 비잔틴 (RP)": "τοῦ εὐαγγελίου τοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 31,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"καὶ\" 뒤 추가 삽입",
+    "summary": "καὶ (WH, Treg, NA28) · + ἵνα (RP)",
+    "witnesses": {
+      "variants": {
+        "καὶ (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "καὶ + ἵνα": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "καὶ",
+      "Treg (트레겔레스)": "καὶ",
+      "NA28 (네슬-알란트)": "καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἵνα"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 31,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"τοῖς ἁγίοις γένηται\"",
+    "summary": "τοῖς ἁγίοις γένηται (WH, Treg, NA28) · γένηται τοῖς ἁγίοις (RP)",
+    "witnesses": {
+      "variants": {
+        "τοῖς ἁγίοις γένηται": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γένηται τοῖς ἁγίοις": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "τοῖς ἁγίοις γένηται",
+      "Treg (트레겔레스)": "τοῖς ἁγίοις γένηται",
+      "NA28 (네슬-알란트)": "τοῖς ἁγίοις γένηται",
+      "Robinson-Pierpont 비잔틴 (RP)": "γένηται τοῖς ἁγίοις"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 32,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐλθὼν\" vs \"ἔλθω\"",
+    "summary": "ἐλθὼν (WH, NA28) · ἔλθω (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "ἐλθὼν": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "ἔλθω": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐλθὼν",
+      "NA28 (네슬-알란트)": "ἐλθὼν",
+      "Tregelles (Treg)": "ἔλθω",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἔλθω"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 15,
+    "verse": 32,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"θεοῦ\" 뒤 추가 삽입",
+    "summary": "θεοῦ (WH, NA28) · + καὶ (Treg, RP)",
+    "witnesses": {
+      "variants": {
+        "θεοῦ (기본문)": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28)",
+        "θεοῦ + καὶ": "Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "θεοῦ",
+      "NA28 (네슬-알란트)": "θεοῦ",
+      "Tregelles (Treg)": "καὶ",
+      "Robinson-Pierpont 비잔틴 (RP)": "καὶ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 1,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"καὶ\" 누락 (일부 사본)",
+    "summary": "καὶ (WH, NA28) · – (Treg, RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Tregelles (Treg)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "καὶ",
+      "NA28 (네슬-알란트)": "καὶ",
+      "Tregelles (Treg)": "(누락)",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 2,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"αὐτὴν προσδέξησθε\"",
+    "summary": "αὐτὴν προσδέξησθε (NA28, RP) · προσδέξησθε αὐτὴν (WH, Treg)",
+    "witnesses": {
+      "variants": {
+        "αὐτὴν προσδέξησθε": "Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "προσδέξησθε αὐτὴν": "Westcott-Hort (WH), Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "NA28 (네슬-알란트)": "αὐτὴν προσδέξησθε",
+      "RP (비잔틴)": "αὐτὴν προσδέξησθε",
+      "Westcott-Hort (WH)": "προσδέξησθε αὐτὴν",
+      "Tregelles (Treg)": "προσδέξησθε αὐτὴν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 2,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ἐμοῦ αὐτοῦ\"",
+    "summary": "ἐμοῦ αὐτοῦ (WH, Treg, NA28) · αὐτοῦ ἐμοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐμοῦ αὐτοῦ": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "αὐτοῦ ἐμοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐμοῦ αὐτοῦ",
+      "Treg (트레겔레스)": "ἐμοῦ αὐτοῦ",
+      "NA28 (네슬-알란트)": "ἐμοῦ αὐτοῦ",
+      "Robinson-Pierpont 비잔틴 (RP)": "αὐτοῦ ἐμοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 5,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἀσίας\" vs \"Ἀχαΐας\"",
+    "summary": "Ἀσίας (WH, Treg, NA28) · Ἀχαΐας (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἀσίας": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἀχαΐας": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἀσίας",
+      "Treg (트레겔레스)": "Ἀσίας",
+      "NA28 (네슬-알란트)": "Ἀσίας",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἀχαΐας"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 6,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Μαριάμ\" vs \"Μαρίαν\"",
+    "summary": "Μαριάμ (RP) · Μαρίαν (WH, Treg, NA28)",
+    "witnesses": {
+      "variants": {
+        "Μαριάμ": "Robinson-Pierpont 비잔틴 (RP)",
+        "Μαρίαν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "RP (비잔틴)": "Μαριάμ",
+      "Westcott-Hort (WH)": "Μαρίαν",
+      "Tregelles (Treg)": "Μαρίαν",
+      "Nestle-Aland 28판 (NA28)": "Μαρίαν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 6,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ὑμᾶς\" vs \"ἡμᾶς\"",
+    "summary": "ὑμᾶς (WH, Treg, NA28) · ἡμᾶς (RP)",
+    "witnesses": {
+      "variants": {
+        "ὑμᾶς": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἡμᾶς": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὑμᾶς",
+      "Treg (트레겔레스)": "ὑμᾶς",
+      "NA28 (네슬-알란트)": "ὑμᾶς",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἡμᾶς"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 7,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἰουνίαν\" vs \"Ἰουνιᾶν\"",
+    "summary": "Ἰουνίαν (WH, Treg, RP) · Ἰουνιᾶν (NA28)",
+    "witnesses": {
+      "variants": {
+        "Ἰουνίαν": "Westcott-Hort (WH), Tregelles (Treg), Robinson-Pierpont 비잔틴 (RP)",
+        "Ἰουνιᾶν": "Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἰουνίαν",
+      "Treg (트레겔레스)": "Ἰουνίαν",
+      "RP (비잔틴)": "Ἰουνίαν",
+      "Nestle-Aland 28판 (NA28)": "Ἰουνιᾶν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 7,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"γέγοναν\" vs \"γεγόνασιν\"",
+    "summary": "γέγοναν (WH, Treg, NA28) · γεγόνασιν (RP)",
+    "witnesses": {
+      "variants": {
+        "γέγοναν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "γεγόνασιν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "γέγοναν",
+      "Treg (트레겔레스)": "γέγοναν",
+      "NA28 (네슬-알란트)": "γέγοναν",
+      "Robinson-Pierpont 비잔틴 (RP)": "γεγόνασιν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 8,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἀμπλιᾶτον\" vs \"Ἀμπλίαν\"",
+    "summary": "Ἀμπλιᾶτον (WH, NA28, Treg) · Ἀμπλίαν (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἀμπλιᾶτον": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Tregelles (Treg)",
+        "Ἀμπλίαν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἀμπλιᾶτον",
+      "Treg (트레겔레스)": "Ἀμπλιᾶτον",
+      "NA28 (네슬-알란트)": "Ἀμπλιᾶτον",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἀμπλίαν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 11,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"συγγενῆ\" vs \"συγγενῆν\"",
+    "summary": "συγγενῆ (WH, NA28, RP) · συγγενῆν (Treg)",
+    "witnesses": {
+      "variants": {
+        "συγγενῆ": "Westcott-Hort (WH), Nestle-Aland 28판 (NA28), Robinson-Pierpont 비잔틴 (RP)",
+        "συγγενῆν": "Tregelles (Treg)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "συγγενῆ",
+      "NA28 (네슬-알란트)": "συγγενῆ",
+      "RP (비잔틴)": "συγγενῆ",
+      "Tregelles (Treg)": "συγγενῆν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 14,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἑρμῆν Πατροβᾶν Ἑρμᾶν\" vs \"Ἑρμᾶν Πατρόβαν Ἑρμῆν\"",
+    "summary": "Ἑρμῆν Πατροβᾶν Ἑρμᾶν (WH, Treg, NA28) · Ἑρμᾶν Πατρόβαν Ἑρμῆν (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἑρμῆν Πατροβᾶν Ἑρμᾶν": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἑρμᾶν Πατρόβαν Ἑρμῆν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἑρμῆν Πατροβᾶν Ἑρμᾶν",
+      "Treg (트레겔레스)": "Ἑρμῆν Πατροβᾶν Ἑρμᾶν",
+      "NA28 (네슬-알란트)": "Ἑρμῆν Πατροβᾶν Ἑρμᾶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἑρμᾶν Πατρόβαν Ἑρμῆν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 16,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"πᾶσαι\" 누락 (일부 사본)",
+    "summary": "πᾶσαι (WH, Treg, NA28) · – (RP)",
+    "witnesses": {
+      "include": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ],
+      "omit": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ]
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "πᾶσαι",
+      "Treg (트레겔레스)": "πᾶσαι",
+      "NA28 (네슬-알란트)": "πᾶσαι",
+      "Robinson-Pierpont 비잔틴 (RP)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 17,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐκκλίνετε\" vs \"ἐκκλίνατε\"",
+    "summary": "ἐκκλίνετε (WH, Treg, NA28) · ἐκκλίνατε (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐκκλίνετε": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἐκκλίνατε": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐκκλίνετε",
+      "Treg (트레겔레스)": "ἐκκλίνετε",
+      "NA28 (네슬-알란트)": "ἐκκλίνετε",
+      "Robinson-Pierpont 비잔틴 (RP)": "ἐκκλίνατε"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 18,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"ἡμῶν\" 뒤 추가 삽입",
+    "summary": "ἡμῶν (WH, Treg, NA28) · + Ἰησοῦ (RP)",
+    "witnesses": {
+      "variants": {
+        "ἡμῶν (기본문)": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "ἡμῶν + Ἰησοῦ": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἡμῶν",
+      "Treg (트레겔레스)": "ἡμῶν",
+      "NA28 (네슬-알란트)": "ἡμῶν",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἰησοῦ"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 19,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"ἐφʼ ὑμῖν οὖν χαίρω\" vs \"Χαίρω οὖν τὸ ἐφʼ ὑμῖν\"",
+    "summary": "ἐφʼ ὑμῖν οὖν χαίρω (WH, Treg, NA28) · Χαίρω οὖν τὸ ἐφʼ ὑμῖν (RP)",
+    "witnesses": {
+      "variants": {
+        "ἐφʼ ὑμῖν οὖν χαίρω": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Χαίρω οὖν τὸ ἐφʼ ὑμῖν": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ἐφʼ ὑμῖν οὖν χαίρω",
+      "Treg (트레겔레스)": "ἐφʼ ὑμῖν οὖν χαίρω",
+      "NA28 (네슬-알란트)": "ἐφʼ ὑμῖν οὖν χαίρω",
+      "Robinson-Pierpont 비잔틴 (RP)": "Χαίρω οὖν τὸ ἐφʼ ὑμῖν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 19,
+    "type": "addition",
+    "source": "sblgnt",
+    "title": "\"σοφοὺς\" 뒤 추가 삽입",
+    "summary": "σοφοὺς (Treg, NA28) · + μὲν (WH, RP)",
+    "witnesses": {
+      "variants": {
+        "σοφοὺς (기본문)": "Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "σοφοὺς + μὲν": "Westcott-Hort (WH), Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "Treg (트레겔레스)": "σοφοὺς",
+      "NA28 (네슬-알란트)": "σοφοὺς",
+      "Westcott-Hort (WH)": "μὲν",
+      "Robinson-Pierpont 비잔틴 (RP)": "μὲν"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 20,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"Χριστοῦ\" 누락 (일부 사본)",
+    "summary": "Χριστοῦ (Treg, RP) · – (WH, NA28)",
+    "witnesses": {
+      "include": [
+        "Tregelles (Treg)",
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Nestle-Aland 28판 (NA28)"
+      ]
+    },
+    "translations": {
+      "Treg (트레겔레스)": "Χριστοῦ",
+      "RP (비잔틴)": "Χριστοῦ",
+      "Westcott-Hort (WH)": "(누락)",
+      "Nestle-Aland 28판 (NA28)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 21,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἀσπάζεται\" vs \"Ἀσπάζονται\"",
+    "summary": "Ἀσπάζεται (WH, Treg, NA28) · Ἀσπάζονται (RP)",
+    "witnesses": {
+      "variants": {
+        "Ἀσπάζεται": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "Ἀσπάζονται": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "Ἀσπάζεται",
+      "Treg (트레겔레스)": "Ἀσπάζεται",
+      "NA28 (네슬-알란트)": "Ἀσπάζεται",
+      "Robinson-Pierpont 비잔틴 (RP)": "Ἀσπάζονται"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 23,
+    "type": "order",
+    "source": "sblgnt",
+    "title": "어순 차이: \"ὅλης τῆς ἐκκλησίας\"",
+    "summary": "ὅλης τῆς ἐκκλησίας (WH, Treg, NA28) · τῆς ἐκκλησίας ὅλης (RP)",
+    "witnesses": {
+      "variants": {
+        "ὅλης τῆς ἐκκλησίας": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)",
+        "τῆς ἐκκλησίας ὅλης": "Robinson-Pierpont 비잔틴 (RP)"
+      }
+    },
+    "translations": {
+      "WH (웨스트코트-호르트)": "ὅλης τῆς ἐκκλησίας",
+      "Treg (트레겔레스)": "ὅλης τῆς ἐκκλησίας",
+      "NA28 (네슬-알란트)": "ὅλης τῆς ἐκκλησίας",
+      "Robinson-Pierpont 비잔틴 (RP)": "τῆς ἐκκλησίας ὅλης"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 24,
+    "type": "omission",
+    "source": "sblgnt",
+    "title": "\"Ἡ χάρις … ὑμῶν\" 누락 (일부 사본)",
+    "summary": "Ἡ χάρις … ὑμῶν (RP) · – (WH, Treg, NA28)",
+    "witnesses": {
+      "include": [
+        "Robinson-Pierpont 비잔틴 (RP)"
+      ],
+      "omit": [
+        "Westcott-Hort (WH)",
+        "Tregelles (Treg)",
+        "Nestle-Aland 28판 (NA28)"
+      ]
+    },
+    "translations": {
+      "RP (비잔틴)": "Ἡ χάρις … ὑμῶν",
+      "Westcott-Hort (WH)": "(누락)",
+      "Tregelles (Treg)": "(누락)",
+      "Nestle-Aland 28판 (NA28)": "(누락)"
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  },
+  {
+    "bookId": "Rom",
+    "chapter": 16,
+    "verse": 24,
+    "type": "substitution",
+    "source": "sblgnt",
+    "title": "\"Ἀμήν\" vs \"25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξα…\"",
+    "summary": "Ἀμήν (RP) · 25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 26 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 27 μόνῳ σοφῷ θεῷ διὰ Ἰησοῦ Χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν. (WH, Treg, NA28)",
+    "witnesses": {
+      "variants": {
+        "Ἀμήν": "Robinson-Pierpont 비잔틴 (RP)",
+        "25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 26 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 27 μόνῳ σοφῷ θεῷ διὰ Ἰησοῦ Χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν.": "Westcott-Hort (WH), Tregelles (Treg), Nestle-Aland 28판 (NA28)"
+      }
+    },
+    "translations": {
+      "RP (비잔틴)": "Ἀμήν",
+      "Westcott-Hort (WH)": "25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 26 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 27 μόνῳ σοφῷ θεῷ διὰ Ἰησοῦ Χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν.",
+      "Tregelles (Treg)": "25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 26 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 27 μόνῳ σοφῷ θεῷ διὰ Ἰησοῦ Χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν.",
+      "Nestle-Aland 28판 (NA28)": "25 Τῷ δὲ δυναμένῳ ὑμᾶς στηρίξαι κατὰ τὸ εὐαγγέλιόν μου καὶ τὸ κήρυγμα Ἰησοῦ Χριστοῦ, κατὰ ἀποκάλυψιν μυστηρίου χρόνοις αἰωνίοις σεσιγημένου, 26 φανερωθέντος δὲ νῦν διά τε γραφῶν προφητικῶν κατʼ ἐπιταγὴν τοῦ αἰωνίου θεοῦ εἰς ὑπακοὴν πίστεως εἰς πάντα τὰ ἔθνη γνωρισθέντος, 27 μόνῳ σοφῷ θεῷ διὰ Ἰησοῦ Χριστοῦ ᾧ ἡ δόξα εἰς τοὺς αἰῶνας· ἀμήν."
+    },
+    "refs": [
+      "SBLGNT Apparatus (Faithlife/SBLGNT, CC BY 4.0)"
+    ]
+  }
+]
