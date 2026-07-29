@@ -15,18 +15,24 @@ if (!source.includes(importLine)) {
   changed = true;
 }
 
-const renderBlock = `            {rightMode === 'verse' && (\n              <ArgumentMapPanel\n                bookId={BOOK.lexId}\n                bookKo={BOOK.ko}\n                chapter={activeRef.ch}\n                activeVerse={activeRef.verse}\n                onNavigate={scrollTo}\n                isMobile={isMobile}\n              />\n            )}\n\n`;
+const renderBlock = `            {rightMode === 'verse' && (\n              <ArgumentMapPanel\n                bookId={BOOK.lexId}\n                bookKo={BOOK.ko}\n                chapter={activeRef.ch}\n                activeVerse={activeRef.verse}\n                onNavigate={scrollTo}\n                isMobile={isMobile}\n                chapterData={activeCh}\n                genre={BOOK_META.genre}\n                agenda={BOOK_META.chapterAgenda?.[activeRef.ch] || ''}\n              />\n            )}\n\n`;
 
 if (!source.includes('<ArgumentMapPanel')) {
   const renderAnchor = "            {rightMode === 'thread' && (";
   if (!source.includes(renderAnchor)) throw new Error('[argument-map] render anchor not found; refusing unsafe patch');
   source = source.replace(renderAnchor, `${renderBlock}${renderAnchor}`);
   changed = true;
+} else if (!source.includes('chapterData={activeCh}')) {
+  source = source.replace(
+    '                isMobile={isMobile}\n              />',
+    "                isMobile={isMobile}\n                chapterData={activeCh}\n                genre={BOOK_META.genre}\n                agenda={BOOK_META.chapterAgenda?.[activeRef.ch] || ''}\n              />",
+  );
+  changed = true;
 }
 
 if (changed) {
   fs.writeFileSync(target, source);
-  console.log('✓ Romans 3 argument map v1 integrated into ContextBibleModal');
+  console.log('✓ all-Bible argument map engine integrated into ContextBibleModal');
 } else {
-  console.log('✓ Romans 3 argument map v1 already integrated');
+  console.log('✓ all-Bible argument map engine already integrated');
 }
