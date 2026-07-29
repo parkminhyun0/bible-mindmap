@@ -84,26 +84,26 @@ if (!source.includes(MOBILE_MARKER)) {
                 <div style={{ fontSize:11, color:'#64748b', marginTop:2 }}>인물 · 장소 · 시대를 PC와 동일한 데이터로 탐색합니다.</div>
               </div>
 
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:6, marginBottom:8 }}>
+              <div data-testid="mobile-background-tabs" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:6, marginBottom:8 }}>
                 {[
                   ['person','👤','인물','#059669'],
                   ['place','📍','장소','#d97706'],
                   ['period','🕰','시대','#6d28d9'],
                 ].map(([key,icon,label,activeColor]) => (
-                  <button key={key} type="button" onClick={() => setTab(tab === key ? 'verse' : key)} aria-pressed={tab === key} style={{ minHeight:42, padding:'8px 6px', borderRadius:8, cursor:'pointer', fontWeight:800, fontSize:12, border:'1px solid #e2e8f0', background:tab === key ? activeColor : '#f8fafc', color:tab === key ? '#fff' : '#475569' }}>{icon} {label}</button>
+                  <button key={key} type="button" data-background-tab={key} onClick={() => setTab(tab === key ? 'verse' : key)} aria-pressed={tab === key} style={{ minHeight:44, padding:'8px 6px', borderRadius:8, cursor:'pointer', fontWeight:800, fontSize:12, border:'1px solid #e2e8f0', background:tab === key ? activeColor : '#f8fafc', color:tab === key ? '#fff' : '#475569', touchAction:'manipulation' }}>{icon} {label}</button>
                 ))}
               </div>
 
               {['person','place','period'].includes(tab) && (
                 <div style={{ display:'flex', gap:5, marginBottom:8 }}>
                   {[['all','전체'],['ot','구약'],['nt','신약']].map(([key,label]) => (
-                    <button key={key} type="button" onClick={() => setBgTestament(key)} style={{ flex:1, minHeight:38, borderRadius:8, cursor:'pointer', fontSize:12, fontWeight:700, border:'1px solid #e2e8f0', background:bgTestament === key ? '#334155' : '#f8fafc', color:bgTestament === key ? '#fff' : '#64748b' }}>{label}</button>
+                    <button key={key} type="button" onClick={() => setBgTestament(key)} style={{ flex:1, minHeight:40, borderRadius:8, cursor:'pointer', fontSize:12, fontWeight:700, border:'1px solid #e2e8f0', background:bgTestament === key ? '#334155' : '#f8fafc', color:bgTestament === key ? '#fff' : '#64748b', touchAction:'manipulation' }}>{label}</button>
                   ))}
                 </div>
               )}
 
               {tab === 'person' && (
-                <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+                <div data-background-panel="person" style={{ display:'flex', flexDirection:'column', gap:8 }}>
                   <WikidataSearchUI query={bgQuery} setQuery={setBgQuery} results={bgResults} selected={bgSelected} onSelect={setBgSelected} detail={bgDetail} loading={bgLoading} error={bgError} placeholder="인물 이름 (예: 다윗, 모세, 바울)" renderDetail={(d) => (
                     <>
                       <div style={detailRow}><b>이름</b> {d.name}</div>
@@ -119,7 +119,7 @@ if (!source.includes(MOBILE_MARKER)) {
               )}
 
               {tab === 'place' && (
-                <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+                <div data-background-panel="place" style={{ display:'flex', flexDirection:'column', gap:8 }}>
                   <WikidataSearchUI query={bgQuery} setQuery={setBgQuery} results={bgResults} selected={bgSelected} onSelect={setBgSelected} detail={bgDetail} loading={bgLoading} error={bgError} placeholder="장소·이명·본문 참조 검색 (예: 베다니, 여호수아)" renderDetail={(d) => (
                     <>
                       <div style={detailRow}><b>이름</b> {d.name}</div>
@@ -149,7 +149,7 @@ if (!source.includes(MOBILE_MARKER)) {
               {tab === 'period' && (() => {
                 const visiblePeriods = BIBLICAL_PERIODS.filter((period) => bgTestament === 'all' || period.testament === 'both' || period.testament === bgTestament);
                 const p = visiblePeriods.find((period) => period.id === selectedPeriodId) || visiblePeriods[0];
-                return <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
+                return <div data-background-panel="period" style={{ display:'flex', flexDirection:'column', gap:8 }}>
                   <select value={p?.id || ''} onChange={(e) => setSelectedPeriodId(e.target.value)} style={{ ...inputStyle, minHeight:44 }}>{visiblePeriods.map((period) => <option key={period.id} value={period.id}>{period.name} · {period.range}</option>)}</select>
                   {p && <div style={{ padding:'9px 10px', borderRadius:8, background:'#faf5ff', border:'1px solid #e9d5ff', fontSize:11, color:'#581c87', lineHeight:1.55 }}><div><b>시대</b> {p.name}</div><div><b>범위</b> {p.range}</div>{p.events?.length > 0 && <div style={{ marginTop:5 }}><b>핵심 사건</b><div>{p.events.slice(0,6).join(' · ')}</div></div>}{p.certainty && <div style={{ marginTop:5 }}><b>연대 성격</b> {p.certainty}</div>}</div>}
                   <button onClick={() => { handleAdd(); onMobileClose(); }} disabled={!p} style={{ ...btnStyle, minHeight:44, background:'#6d28d9', opacity:p ? 1 : .4 }}>+ 선택 시대 추가</button>
@@ -162,5 +162,25 @@ if (!source.includes(MOBILE_MARKER)) {
   source = source.replace(anchor, block + anchor);
 }
 
+// 배경 parity는 빌드 성공 조건이다. 장소만 보이는 반쪽 상태를 성공 배포로 인정하지 않는다.
+const REQUIRED_TOKENS = [
+  MOBILE_MARKER,
+  'data-testid="mobile-background-tabs"',
+  'data-background-tab={key}',
+  "['person','👤','인물','#059669']",
+  "['place','📍','장소','#d97706']",
+  "['period','🕰','시대','#6d28d9']",
+  'data-background-panel="person"',
+  'data-background-panel="place"',
+  'data-background-panel="period"',
+];
+for (const token of REQUIRED_TOKENS) {
+  if (!source.includes(token)) throw new Error(`BACKGROUND_DEVICE_PARITY 검증 실패: ${token}`);
+}
+
 fs.writeFileSync(target, source);
-console.log('✓ 배경 연구 인물·장소·시대 PC·모바일·태블릿 parity 적용');
+const written = fs.readFileSync(target, 'utf8');
+for (const token of REQUIRED_TOKENS) {
+  if (!written.includes(token)) throw new Error(`Sidebar 기록 후 parity 검증 실패: ${token}`);
+}
+console.log('✓ 배경 연구 인물·장소·시대 PC·모바일·태블릿 parity 적용 및 검증 완료');
