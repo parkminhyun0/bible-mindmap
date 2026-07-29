@@ -1,5 +1,6 @@
 function stripHtml(value) {
   return String(value || '')
+    .replace(/<span[^>]*>\s*\d+\s*<\/span>/gi, ' ')
     .replace(/<[^>]*>/g, ' ')
     .replace(/&nbsp;/g, ' ')
     .replace(/&amp;/g, '&')
