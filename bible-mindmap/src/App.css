@@ -30,7 +30,7 @@ body {
 .app-top-toolbar input,
 .app-top-toolbar select,
 .app-top-toolbar textarea {
-  font-size: var(--app-toolbar-font-size, 13px) !important;
+  font-size: 13px !important;
 }
 
 .app-top-toolbar button,
