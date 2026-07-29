@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { fetchAllTranslations } from '../api/bibleApi';
 import { getBook, isOT } from '../data/bibleBooks';
@@ -193,11 +193,77 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   const [loading, setLoading] = useState(true);
   const [activeMobileKey, setActiveMobileKey] = useState(parallelRefKey(firstRef));
 
+  // ── 기본 팝업 창(ContextBibleModal) 속성 계승: 드래그 + 리사이즈 + z:1200 ──
+  const [pos, setPos] = useState(() => {
+    if (typeof window === 'undefined') return { x: 40, y: 40 };
+    const w = Math.min(1220, window.innerWidth - 40);
+    return { x: Math.max(20, (window.innerWidth - w) / 2), y: 48 };
+  });
+  const [size, setSize] = useState(() => {
+    if (typeof window === 'undefined') return { w: 1220, h: 720 };
+    return {
+      w: Math.min(1220, window.innerWidth - 40),
+      h: Math.min(720, window.innerHeight - 96),
+    };
+  });
+  const dragging = useRef(false);
+  const resizing = useRef(false);
+  const dragStart = useRef({ mx: 0, my: 0, px: 0, py: 0 });
+  const resizeStart = useRef({ mx: 0, my: 0, w: 0, h: 0 });
+
+  const onHeaderMouseDown = useCallback((e) => {
+    if (isMobile || e.button !== 0) return;
+    if (e.target.closest('button, input')) return;
+    dragging.current = true;
+    dragStart.current = { mx: e.clientX, my: e.clientY, px: pos.x, py: pos.y };
+    e.preventDefault();
+  }, [isMobile, pos]);
+
+  const onResizeMouseDown = useCallback((e) => {
+    if (isMobile || e.button !== 0) return;
+    resizing.current = true;
+    resizeStart.current = { mx: e.clientX, my: e.clientY, w: size.w, h: size.h };
+    e.preventDefault();
+    e.stopPropagation();
+  }, [isMobile, size]);
+
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = previousOverflow; };
-  }, []);
+    if (isMobile) return;
+    const onMove = (e) => {
+      if (dragging.current) {
+        const dx = e.clientX - dragStart.current.mx;
+        const dy = e.clientY - dragStart.current.my;
+        setPos({
+          x: Math.max(0, Math.min(window.innerWidth - 200, dragStart.current.px + dx)),
+          y: Math.max(0, Math.min(window.innerHeight - 60, dragStart.current.py + dy)),
+        });
+      }
+      if (resizing.current) {
+        const dw = e.clientX - resizeStart.current.mx;
+        const dh = e.clientY - resizeStart.current.my;
+        setSize({
+          w: Math.max(560, Math.min(window.innerWidth - 40, resizeStart.current.w + dw)),
+          h: Math.max(320, Math.min(window.innerHeight - 40, resizeStart.current.h + dh)),
+        });
+      }
+    };
+    const onUp = () => {
+      dragging.current = false;
+      resizing.current = false;
+    };
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+    };
+  }, [isMobile]);
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
 
   useEffect(() => {
     let cancelled = false;
@@ -267,38 +333,55 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     setActiveMobileKey(key);
   };
 
-  const content = (
+  const modalInner = (
     <div
       role="dialog"
       aria-modal="true"
       aria-label="병렬 본문 연구"
       data-parallel-study
+      className={isMobile ? 'h-screen-safe' : undefined}
       style={{
-        position: 'fixed', inset: 0, zIndex: 3200,
-        background: isMobile ? '#f8fafc' : 'rgba(15,23,42,.46)',
-        display: 'flex', alignItems: isMobile ? 'stretch' : 'center', justifyContent: 'center',
-        padding: isMobile ? 0 : 18,
+        background: '#f8fafc',
+        borderRadius: isMobile ? 0 : 12,
+        border: isMobile ? 'none' : '1px solid rgba(15,23,42,.1)',
+        width: isMobile ? '100%' : size.w,
+        maxWidth: isMobile ? '100%' : 'none',
+        height: isMobile ? undefined : size.h,
+        display: 'flex', flexDirection: 'column',
+        overflow: 'hidden',
+        boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
+        position: 'relative',
+        userSelect: dragging.current ? 'none' : 'auto',
       }}
+      onClick={(e) => e.stopPropagation()}
     >
-      <div style={{
-        width: '100%', maxWidth: isMobile ? 'none' : 1220,
-        height: isMobile ? '100dvh' : 'min(90vh, 880px)',
-        background: '#f8fafc', borderRadius: isMobile ? 0 : 16,
-        overflow: 'hidden', display: 'flex', flexDirection: 'column',
-        border: isMobile ? 'none' : '1px solid #cbd5e1',
-        boxShadow: isMobile ? 'none' : '0 24px 70px rgba(15,23,42,.32)',
-      }}>
-        <header style={{
-          padding: isMobile ? 'calc(env(safe-area-inset-top,0px) + 9px) 12px 9px' : '10px 14px',
-          display: 'flex', alignItems: 'center', gap: 8,
-          background: '#fff', borderBottom: '1px solid #e2e8f0', flexShrink: 0,
-        }}>
+        <header
+          onMouseDown={onHeaderMouseDown}
+          style={{
+            padding: isMobile
+              ? 'calc(env(safe-area-inset-top,0px) + 10px) calc(env(safe-area-inset-right,0px) + 14px) 10px calc(env(safe-area-inset-left,0px) + 14px)'
+              : '9px 12px 9px 16px',
+            display: 'flex', alignItems: 'center', gap: 10,
+            background: isMobile ? '#ffffff' : 'linear-gradient(135deg,#0f766e,#115e59)',
+            color: isMobile ? '#172554' : '#ecfeff',
+            borderBottom: isMobile ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,.15)',
+            borderRadius: isMobile ? 0 : '12px 12px 0 0',
+            cursor: isMobile ? 'default' : 'grab',
+            userSelect: 'none',
+            flexShrink: 0,
+          }}
+        >
           <span style={{ fontSize: 18 }}>⇄</span>
           <div style={{ flex: 1, minWidth: 0 }}>
-            <strong style={{ display: 'block', color: '#172554', fontSize: 14 }}>병렬 본문 연구</strong>
-            <span style={{ display: 'block', color: '#64748b', fontSize: 10.5, marginTop: 1 }}>공관복음 · 구약↔신약 · 인용·반향 · 관주 비교</span>
+            <strong style={{ display: 'block', fontSize: 14 }}>병렬 본문 연구</strong>
+            <span style={{ display: 'block', fontSize: 10.5, marginTop: 1, opacity: isMobile ? 1 : .85, color: isMobile ? '#64748b' : '#ecfeff' }}>공관복음 · 구약↔신약 · 인용·반향 · 관주 비교</span>
           </div>
-          <button type="button" onClick={onClose} aria-label="병렬 본문 연구 닫기" style={{ width: 44, height: 44, border: 'none', borderRadius: 9, background: '#f1f5f9', color: '#334155', fontSize: 20, cursor: 'pointer' }}>×</button>
+          <button type="button" onClick={onClose} aria-label="병렬 본문 연구 닫기"
+            style={{ width: 44, height: 44, border: 'none', borderRadius: 9,
+              background: isMobile ? '#f1f5f9' : 'rgba(255,255,255,.15)',
+              color: isMobile ? '#334155' : '#fff',
+              fontSize: 20, cursor: 'pointer', flexShrink: 0 }}
+          >×</button>
         </header>
 
         <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: isMobile ? '12px 12px calc(env(safe-area-inset-bottom,0px) + 24px)' : '14px 16px 20px' }}>
@@ -366,7 +449,43 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
             자동 비교는 문자열 정렬 보조 도구입니다. <b>공통·추가·생략·어순 표시는 해석 결론이 아니며</b>, 원문 형태론·구문·본문비평과 curated 관계 메모를 함께 확인해야 합니다. `curated` 표시는 사람이 작성한 관찰이고, OpenBible 관주는 별도의 연관 추천입니다.
           </div>
         </div>
-      </div>
+
+        {!isMobile && (
+          <div
+            onMouseDown={onResizeMouseDown}
+            title="크기 조절"
+            style={{
+              position: 'absolute', right: 0, bottom: 0,
+              width: 18, height: 18, cursor: 'se-resize',
+              borderRadius: '0 0 12px 0',
+              background: 'linear-gradient(135deg, transparent 45%, #cbd5e1 45%, #94a3b8 100%)',
+              zIndex: 20,
+            }}
+          />
+        )}
+    </div>
+  );
+
+  const content = isMobile ? (
+    <div
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1200,
+        background: 'rgba(15,23,42,.55)',
+        WebkitBackdropFilter: 'blur(6px)', backdropFilter: 'blur(6px)',
+        display: 'flex', alignItems: 'stretch', justifyContent: 'center',
+      }}
+      onClick={onClose}
+    >
+      {modalInner}
+    </div>
+  ) : (
+    <div
+      style={{
+        position: 'fixed', left: pos.x, top: pos.y, zIndex: 1200,
+        fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
+      }}
+    >
+      {modalInner}
     </div>
   );
 
