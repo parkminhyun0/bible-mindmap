@@ -56,6 +56,45 @@ const OT_TERMS = {
   H0559:{ko:'말씀·말하다',color:'#0369a1'}, H7307:{ko:'영·바람',color:'#0891b2'},
 };
 
+const ARC_MODELS = {
+  narrative: [
+    { type:'서사 진행', criterion:'앞 사건이 다음 사건의 배경·갈등·전환을 형성하는지 따라갑니다.', meaning:'주요 사건과 선택이 다음 장면의 조건을 만들며 서사의 방향을 전진시킵니다.' },
+    { type:'전환·결과', criterion:'갈등이나 하나님의 개입 이후 사건의 방향과 결과가 어떻게 달라지는지 비교합니다.', meaning:'전환점 전후를 함께 읽어 인간의 선택과 하나님의 섭리가 만들어 내는 결과를 확인합니다.' },
+    { type:'약속·성취', criterion:'앞선 약속·명령·기대가 뒤 사건에서 성취·부분 성취·새 단계로 이어지는지 확인합니다.', meaning:'서사의 진행 속에서 하나님의 말씀과 약속이 역사적으로 어떻게 구체화되는지 보여줍니다.' },
+  ],
+  law: [
+    { type:'명령·근거', criterion:'규례와 명령이 하나님의 구원 행위·성품·언약에 어떤 근거를 두는지 연결합니다.', meaning:'율법은 고립된 규정이 아니라 구원받은 언약 공동체의 삶을 형성하는 구조로 읽습니다.' },
+    { type:'규례·결과', criterion:'명령과 순종·불순종의 결과, 정결·부정 또는 공동체 질서의 관계를 비교합니다.', meaning:'규례의 목적과 공동체적 결과를 함께 보아 율법의 기능을 구조적으로 이해합니다.' },
+  ],
+  wisdom: [
+    { type:'시적 평행', criterion:'반복·대응·점층·대조되는 표현과 이미지가 서로를 해석하는지 살핍니다.', meaning:'평행과 반복은 시적 강조점을 드러내며 한 행을 다른 행과 함께 읽게 합니다.' },
+    { type:'대조·성찰', criterion:'지혜와 어리석음, 의인과 악인, 탄식과 신뢰처럼 서로 다른 상태를 비교합니다.', meaning:'대조 구조는 본문이 제시하는 삶의 두 길과 신앙적 판단 기준을 선명하게 합니다.' },
+    { type:'탄식→신뢰', criterion:'질문·탄식·혼란이 신뢰·찬양·지혜의 결론으로 이동하는 흐름을 확인합니다.', meaning:'감정의 변화 자체보다 하나님을 향한 시선과 신앙적 결론이 어떻게 형성되는지 보여줍니다.' },
+  ],
+  prophetic: [
+    { type:'고발→심판', criterion:'언약 위반에 대한 고발이 어떤 심판 선언으로 이어지는지 추적합니다.', meaning:'심판은 임의적 사건이 아니라 언약적 책임과 죄에 대한 응답이라는 구조를 보여줍니다.' },
+    { type:'심판→회복', criterion:'심판 신탁 이후 남은 자·새 언약·시온 회복·구원 약속이 어떻게 이어지는지 확인합니다.', meaning:'예언서의 심판과 소망을 분리하지 않고 하나님의 거룩과 언약적 신실하심 안에서 함께 읽게 합니다.' },
+    { type:'예언 진행', criterion:'반복되는 신탁과 환상이 주제를 확장·심화하며 다음 단락으로 이어지는지 살핍니다.', meaning:'개별 신탁을 책 전체의 메시지와 연결해 심판과 구원의 발전을 볼 수 있습니다.' },
+  ],
+  gospel: [
+    { type:'정체 계시', criterion:'말씀·표적·고백·사건을 통해 예수의 정체가 점진적으로 드러나는 흐름을 연결합니다.', meaning:'각 장면은 예수의 정체와 사역 목적을 서로 비추며 복음서 전체 기독론을 형성합니다.' },
+    { type:'표적→가르침', criterion:'행동·표적과 이어지는 가르침 또는 제자들의 반응을 함께 비교합니다.', meaning:'행동과 말씀을 분리하지 않고 하나님 나라와 제자도의 의미를 통합해 읽게 합니다.' },
+    { type:'수난·성취', criterion:'예고·갈등·예루살렘 진행이 십자가와 부활에서 어떻게 성취되는지 확인합니다.', meaning:'복음서의 사건들이 수난과 부활을 향해 수렴하는 구속사적 중심을 보여줍니다.' },
+  ],
+  epistle: [
+    { type:'논증 진행', criterion:'앞선 주장과 다음 주장 사이의 근거·설명·결론 관계를 따라갑니다.', meaning:'서신의 문장을 고립시키지 않고 저자의 논증 순서 속에서 읽도록 돕습니다.' },
+    { type:'근거→결론', criterion:'신학적 명제와 그 근거 또는 요약 결론이 어떻게 연결되는지 확인합니다.', meaning:'교리적 주장의 이유와 결론을 함께 보아 논증의 무게중심을 파악합니다.' },
+    { type:'교리→적용', criterion:'복음·교리 설명이 공동체 윤리와 실천 권면으로 어떻게 전환되는지 살핍니다.', meaning:'신학과 삶을 분리하지 않고 저자가 의도한 적용의 방향을 확인하게 합니다.' },
+  ],
+  apocalyptic: [
+    { type:'환상 진행', criterion:'연속되는 환상 장면이 심판·구원·예배의 주제를 어떻게 확장하는지 연결합니다.', meaning:'상징을 개별적으로 떼지 않고 환상 전체의 진행과 반복 패턴 속에서 읽게 합니다.' },
+    { type:'갈등→승리', criterion:'악의 세력과 성도의 증언, 하나님의 심판과 승리 선언이 어떻게 대응하는지 확인합니다.', meaning:'현재의 갈등을 하나님의 최종 통치와 어린양의 승리라는 결말에서 해석합니다.' },
+    { type:'예배→완성', criterion:'보좌·예배 장면과 새 창조·왕권 완성 장면의 대응을 살핍니다.', meaning:'묵시의 중심을 공포가 아니라 하나님의 주권·예배·새 창조의 완성에서 보도록 돕습니다.' },
+  ],
+};
+
+const ARC_CAUTION = '이 Arc는 해당 권의 거시 문맥을 설명하기 위한 구조적·해석적 제안입니다. 새로운 교리의 단독 근거로 사용하지 말고 연결된 두 본문과 앞뒤 문맥을 함께 확인해야 합니다.';
+
 function family(genre='') {
   if (genre.includes('묵시')) return 'apocalyptic';
   if (genre.includes('복음서')) return 'gospel';
@@ -84,14 +123,55 @@ function pivots(profile) {
   return profile.pivots.map(([ch,verse,label],i)=>({ id:`p${i+1}`, ch, verse, color:colors[i%colors.length], label }));
 }
 
-function arcs(points) {
+function arcFromModel({ id, from, to, color, label, model, book, profile, whole=false }) {
+  return {
+    id,
+    from:from.id,
+    to:to.id,
+    color,
+    label,
+    type: whole ? '권 전체 구조' : model.type,
+    method:'역사·문법적 문맥 → 문학적 구조 → 정경적·구속사적 종합',
+    criterion: whole
+      ? `${book.ko}의 시작과 마지막 핵심 Pivot을 연결해 권 전체 주제와 구조적 진행을 확인합니다.`
+      : model.criterion,
+    evidence:`${book.ko} ${from.ch}:${from.verse} “${from.label}”과 ${book.ko} ${to.ch}:${to.verse} “${to.label}”을 1차 본문 근거로 비교합니다.`,
+    meaning: whole
+      ? `${book.ko}의 중심 주제 “${profile.theme}”가 책의 시작에서 결말까지 어떻게 전개되는지 보여주는 거시 Arc입니다.`
+      : `${model.meaning} ${book.ko}의 중심 주제 “${profile.theme}” 안에서 이 연결의 위치를 확인합니다.`,
+    caution:ARC_CAUTION,
+  };
+}
+
+function arcs(points, genreFamily, book, profile) {
   if (points.length<2) return [];
+  const models=ARC_MODELS[genreFamily]||ARC_MODELS.narrative;
   const result=[];
   for (let i=0;i<points.length-1;i++) {
-    result.push({ id:`a${i+1}`, from:points[i].id, to:points[i+1].id, color:points[i+1].color, label:`${points[i].label} → ${points[i+1].label}` });
+    const model=models[i%models.length];
+    result.push(arcFromModel({
+      id:`a${i+1}`,
+      from:points[i],
+      to:points[i+1],
+      color:points[i+1].color,
+      label:`${points[i].label} → ${points[i+1].label} · ${model.type}`,
+      model,
+      book,
+      profile,
+    }));
   }
   if (points.length>2) {
-    result.push({ id:`a${result.length+1}`, from:points[0].id, to:points.at(-1).id, color:'#94a3b8', label:`${points[0].label} → ${points.at(-1).label} (권 전체 흐름)` });
+    result.push(arcFromModel({
+      id:`a${result.length+1}`,
+      from:points[0],
+      to:points.at(-1),
+      color:'#94a3b8',
+      label:`${points[0].label} → ${points.at(-1).label} · 권 전체 흐름`,
+      model:models[0],
+      book,
+      profile,
+      whole:true,
+    }));
   }
   return result;
 }
@@ -130,9 +210,9 @@ export function buildExpandedContext(book,index,profile,baseRules=[]) {
       themeNote:profile.themeNote||'권 전체 구조와 반복 모티프를 요약한 핵심 주제',
       chapterAgenda:agenda(book,profile),
     },
-    macro:{ sections:sectionData, pivots:pointData, arcs:arcs(pointData) },
+    macro:{ sections:sectionData, pivots:pointData, arcs:arcs(pointData,genreFamily,book,profile) },
     disputedRanges:profile.disputedRanges||[],
     contextTier:'structured',
-    contextStatus:{ source:'book-profile', genreFamily, isSpecialized:false, hasManualPivots:pointData.length>0, hasMacro:sectionData.length>0 },
+    contextStatus:{ source:'book-profile', genreFamily, isSpecialized:false, hasManualPivots:pointData.length>0, hasMacro:sectionData.length>0, hasArcSemantics:true },
   };
 }
