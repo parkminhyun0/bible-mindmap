@@ -1,4 +1,4 @@
-import { ALL_BOOKS } from '../data/bibleBooks';
+import { ALL_BOOKS } from '../data/bibleBooks.js';
 
 const BASE = import.meta.env?.BASE_URL || '/'; // /bible-mindmap/app/ in Vite; safe fallback for read-only Node verifiers
 const _cache = new Map();
