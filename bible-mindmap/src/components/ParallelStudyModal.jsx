@@ -16,6 +16,17 @@ import {
   parallelRefKey,
 } from '../data/parallelStudy';
 import useMobile from '../hooks/useMobile';
+import {
+  GuidedCourseCarousel,
+  ActiveCoursePanel,
+  LensPicker,
+  LensDetailPanel,
+  SynopticCard,
+  CitationCard,
+  OnboardingOverlay,
+  useOnboarding,
+  findLens,
+} from './ParallelStudyScaffolding';
 
 const TRANSLATION_TABS = [
   { id: 'krv', label: '개역한글' },
@@ -192,6 +203,34 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   const [texts, setTexts] = useState({});
   const [loading, setLoading] = useState(true);
   const [activeMobileKey, setActiveMobileKey] = useState(parallelRefKey(firstRef));
+
+  // ── 학습 스캐폴딩 상태 ──
+  const [activeCourse, setActiveCourse] = useState(null);
+  const [currentStepIdx, setCurrentStepIdx] = useState(0);
+  const [selectedLensId, setSelectedLensId] = useState(null);
+  const onboarding = useOnboarding();
+
+  const selectedLens = useMemo(() => findLens(selectedLensId), [selectedLensId]);
+  const recommendedLensIds = activeCourse?.recommendedLensIds || [];
+
+  const handleSelectCourse = (course) => {
+    if (!course) {
+      setActiveCourse(null);
+      setCurrentStepIdx(0);
+      return;
+    }
+    setActiveCourse(course);
+    setCurrentStepIdx(0);
+    setAnchor(course.anchor);
+    setInput(refLabel(course.anchor));
+    if (course.recommendedLensIds?.[0]) setSelectedLensId(course.recommendedLensIds[0]);
+    const seeded = [
+      { ref: course.anchor, label: refLabel(course.anchor), relation: null },
+      ...course.autoSelectRefs.slice(0, 3).map((r) => ({ ref: r, label: refLabel(r), relation: null })),
+    ];
+    setSelected(seeded);
+    setActiveMobileKey(parallelRefKey(seeded[1]?.ref || course.anchor));
+  };
 
   // ── 기본 팝업 창(ContextBibleModal) 속성 계승: 드래그 + 리사이즈 + z:1200 ──
   const [pos, setPos] = useState(() => {
@@ -385,7 +424,20 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
         </header>
 
         <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: isMobile ? '12px 12px calc(env(safe-area-inset-bottom,0px) + 24px)' : '14px 16px 20px' }}>
-          <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(260px,.75fr) minmax(360px,1.25fr)', gap: 10, marginBottom: 12 }}>
+          <GuidedCourseCarousel
+            activeCourseId={activeCourse?.id || null}
+            onSelectCourse={handleSelectCourse}
+            isMobile={isMobile}
+          />
+          {activeCourse && (
+            <ActiveCoursePanel
+              course={activeCourse}
+              currentStepIdx={currentStepIdx}
+              onStepClick={setCurrentStepIdx}
+              onExit={() => { setActiveCourse(null); setCurrentStepIdx(0); }}
+            />
+          )}
+          <section style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'minmax(260px,.75fr) minmax(360px,1.25fr)', gap: 10, marginBottom: 12 }} data-parallel-suggestions>
             <div style={{ padding: 10, borderRadius: 10, background: '#fff', border: '1px solid #e2e8f0' }}>
               <label htmlFor="parallel-anchor" style={{ display: 'block', fontSize: 10.5, fontWeight: 800, color: '#475569', marginBottom: 5 }}>기준 본문</label>
               <div style={{ display: 'flex', gap: 6 }}>
@@ -409,6 +461,13 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
               )}
             </div>
           </section>
+
+          <LensPicker
+            selectedLensId={selectedLensId}
+            onSelect={setSelectedLensId}
+            recommendedIds={recommendedLensIds}
+          />
+          {selectedLens && <LensDetailPanel lens={selectedLens} />}
 
           <section style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 10 }}>
             {TRANSLATION_TABS.map((tab) => <button key={tab.id} type="button" onClick={() => setTranslationId(tab.id)} style={{ minHeight: 36, padding: '6px 11px', border: 'none', borderRadius: 8, cursor: 'pointer', background: translationId === tab.id ? '#334155' : '#e2e8f0', color: translationId === tab.id ? '#fff' : '#475569', fontWeight: translationId === tab.id ? 800 : 600, fontSize: 11 }}>{tab.label}</button>)}
@@ -445,6 +504,9 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
             </section>
           )}
 
+          <SynopticCard setId={setInfo?.id} />
+          <CitationCard anchor={anchor} />
+
           <div style={{ marginTop: 12, padding: '8px 10px', borderRadius: 8, background: '#fff', border: '1px solid #e2e8f0', color: '#64748b', fontSize: 10.5, lineHeight: 1.55 }}>
             자동 비교는 문자열 정렬 보조 도구입니다. <b>공통·추가·생략·어순 표시는 해석 결론이 아니며</b>, 원문 형태론·구문·본문비평과 curated 관계 메모를 함께 확인해야 합니다. `curated` 표시는 사람이 작성한 관찰이고, OpenBible 관주는 별도의 연관 추천입니다.
           </div>
@@ -466,6 +528,10 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     </div>
   );
 
+  const onboardingNode = onboarding.visible ? (
+    <OnboardingOverlay onDone={onboarding.dismiss} />
+  ) : null;
+
   const content = isMobile ? (
     <div
       style={{
@@ -477,6 +543,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
       onClick={onClose}
     >
       {modalInner}
+      {onboardingNode}
     </div>
   ) : (
     <div
@@ -486,6 +553,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
       }}
     >
       {modalInner}
+      {onboardingNode}
     </div>
   );
 

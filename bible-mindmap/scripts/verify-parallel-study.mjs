@@ -3,7 +3,14 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ALL_BOOKS, isOT } from '../src/data/bibleBooks.js';
 import { PARALLEL_KIND, SYNOPTIC_PARALLELS } from '../src/data/parallelStudy.js';
+import { CITATIONS } from '../src/data/citations.js';
 import { canCompareOriginalLanguages, compareParallelTexts } from '../src/utils/parallelDiff.js';
+import { RESEARCH_LENSES } from '../src/data/researchLenses.js';
+import { GUIDED_STUDIES } from '../src/data/guidedStudies.js';
+import { PARALLEL_ONBOARDING } from '../src/data/onboardingScript.js';
+import { RESEARCH_GLOSSARY } from '../src/data/researchGlossary.js';
+import { SYNOPTIC_PROMPT_CARDS } from '../src/data/synopticPromptCards.js';
+import { CITATION_PROMPT_CARDS } from '../src/data/citationPromptCards.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const issues = [];
@@ -122,7 +129,89 @@ if (!sidebarSource.includes('<ParallelStudyLauncher variant="rail" />')) {
   fail('Sidebar 태블릿 rail용 rail variant 마운트 누락');
 }
 
-console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · relation kinds ${Object.keys(PARALLEL_KIND).length} · independent launcher OK`);
+// ── 학습 스캐폴딩 데이터 스키마 검증 ───────────────────────────────────────
+const lensIds = new Set(RESEARCH_LENSES.map((l) => l.id));
+if (RESEARCH_LENSES.length !== 8) fail(`researchLenses: 8개 필요, ${RESEARCH_LENSES.length}개`);
+for (const lens of RESEARCH_LENSES) {
+  for (const key of ['id', 'label', 'icon', 'tone', 'oneLiner', 'scholarTerm', 'goodFor', 'difficulty', 'prompts', 'workflow', 'watchOut']) {
+    if (!(key in lens)) fail(`researchLenses ${lens.id || '?'}: ${key} 누락`);
+  }
+  if (!Array.isArray(lens.prompts) || lens.prompts.length < 3) fail(`researchLenses ${lens.id}: prompts 3개 이상 필요`);
+  if (!Array.isArray(lens.workflow) || lens.workflow.length < 3) fail(`researchLenses ${lens.id}: workflow 3단계 이상 필요`);
+  if (!['beginner','intermediate','advanced'].includes(lens.difficulty)) fail(`researchLenses ${lens.id}: difficulty 값 오류`);
+}
+
+if (GUIDED_STUDIES.length < 12) fail(`guidedStudies: 12개 이상 필요, ${GUIDED_STUDIES.length}개`);
+const bookIds = new Set(ALL_BOOKS.map((b) => b.id));
+for (const course of GUIDED_STUDIES) {
+  for (const key of ['id', 'title', 'subtitle', 'difficulty', 'estimatedMinutes', 'anchor', 'autoSelectRefs', 'recommendedLensIds', 'learningGoals', 'steps', 'keyTakeaway']) {
+    if (!(key in course)) fail(`guidedStudies ${course.id || '?'}: ${key} 누락`);
+  }
+  if (!bookIds.has(course.anchor?.book)) fail(`guidedStudies ${course.id}: anchor.book "${course.anchor?.book}" 미등록`);
+  for (const r of course.autoSelectRefs || []) {
+    if (!bookIds.has(r.book)) fail(`guidedStudies ${course.id}: autoSelectRefs book "${r.book}" 미등록`);
+  }
+  for (const lid of course.recommendedLensIds || []) {
+    if (!lensIds.has(lid)) fail(`guidedStudies ${course.id}: 미등록 렌즈 참조 ${lid}`);
+  }
+  if (!Array.isArray(course.steps) || course.steps.length < 3) fail(`guidedStudies ${course.id}: steps 3단계 이상 필요`);
+}
+
+if (!PARALLEL_ONBOARDING.version || !Array.isArray(PARALLEL_ONBOARDING.steps) || PARALLEL_ONBOARDING.steps.length !== 3) {
+  fail('onboardingScript: version + 3단계 steps 필요');
+}
+for (const s of PARALLEL_ONBOARDING.steps) {
+  for (const key of ['id', 'targetSelector', 'title', 'body', 'cta']) {
+    if (!(key in s)) fail(`onboardingScript ${s.id || '?'}: ${key} 누락`);
+  }
+}
+
+if (RESEARCH_GLOSSARY.length < 30) fail(`researchGlossary: 30항 이상 필요, ${RESEARCH_GLOSSARY.length}항`);
+const glossaryIds = new Set();
+for (const g of RESEARCH_GLOSSARY) {
+  if (glossaryIds.has(g.id)) fail(`researchGlossary: id 중복 ${g.id}`);
+  glossaryIds.add(g.id);
+  for (const key of ['id', 'term', 'shortDef', 'difficulty']) {
+    if (!(key in g)) fail(`researchGlossary ${g.id || '?'}: ${key} 누락`);
+  }
+}
+
+const synIds = new Set(SYNOPTIC_PARALLELS.map((s) => s.id));
+for (const id of synIds) {
+  if (!(id in SYNOPTIC_PROMPT_CARDS)) fail(`synopticPromptCards: ${id} 카드 누락`);
+}
+for (const cardId of Object.keys(SYNOPTIC_PROMPT_CARDS)) {
+  if (!synIds.has(cardId)) fail(`synopticPromptCards: 미등록 세트 참조 ${cardId}`);
+  const card = SYNOPTIC_PROMPT_CARDS[cardId];
+  if (!Array.isArray(card.researchQuestions) || card.researchQuestions.length < 3) fail(`synopticPromptCards ${cardId}: researchQuestions 3개 이상 필요`);
+  if (!Array.isArray(card.expectedFindings) || card.expectedFindings.length < 3) fail(`synopticPromptCards ${cardId}: expectedFindings 3개 이상 필요`);
+}
+
+const citIds = new Set(CITATIONS.map((c) => c.id));
+for (const id of citIds) {
+  if (!(id in CITATION_PROMPT_CARDS)) fail(`citationPromptCards: ${id} 카드 누락`);
+}
+for (const cardId of Object.keys(CITATION_PROMPT_CARDS)) {
+  if (!citIds.has(cardId)) fail(`citationPromptCards: 미등록 인용 참조 ${cardId}`);
+  const card = CITATION_PROMPT_CARDS[cardId];
+  for (const key of ['citationType', 'observeThis', 'theologicalPayoff']) {
+    if (!(key in card)) fail(`citationPromptCards ${cardId}: ${key} 누락`);
+  }
+}
+
+// ── UI 통합 마커 검증 ───────────────────────────────────────────────────
+const scaffoldingPath = path.resolve(__dirname, '../src/components/ParallelStudyScaffolding.jsx');
+const scaffoldingSource = fs.readFileSync(scaffoldingPath, 'utf8');
+for (const marker of ['data-guided-courses', 'data-research-lens-picker', 'data-parallel-onboarding', 'data-glossary-term']) {
+  if (!scaffoldingSource.includes(marker)) fail(`ParallelStudyScaffolding 필수 마커 누락: ${marker}`);
+}
+for (const helper of ['GuidedCourseCarousel', 'ActiveCoursePanel', 'LensPicker', 'LensDetailPanel', 'SynopticCard', 'CitationCard', 'OnboardingOverlay', 'GlossaryText']) {
+  if (!scaffoldingSource.includes(`export function ${helper}`) && !scaffoldingSource.includes(`export const ${helper}`)) fail(`ParallelStudyScaffolding export 누락: ${helper}`);
+  if (!modalSource.includes(helper) && helper !== 'GlossaryText' && helper !== 'LensDetailPanel' && helper !== 'ActiveCoursePanel') fail(`ParallelStudyModal이 ${helper}를 사용하지 않음`);
+}
+if (!modalSource.includes('data-parallel-suggestions')) fail('ParallelStudyModal: data-parallel-suggestions 마커 누락 (온보딩 selector 대상)');
+
+console.log(`병렬 본문 연구 verifier · curated sets ${SYNOPTIC_PARALLELS.length} · lenses ${RESEARCH_LENSES.length} · courses ${GUIDED_STUDIES.length} · glossary ${RESEARCH_GLOSSARY.length} · syn cards ${Object.keys(SYNOPTIC_PROMPT_CARDS).length} · cit cards ${Object.keys(CITATION_PROMPT_CARDS).length}`);
 
 if (issues.length) {
   console.error('✗ 병렬 본문 연구 검증 실패');
