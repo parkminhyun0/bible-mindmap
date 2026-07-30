@@ -1580,7 +1580,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
         {/* ── 바디 (Rom 전용 · 다른 책은 placeholder) ── */}
         {isSupported && (
-        <div style={{ display:'flex',flex:1,overflow:'hidden',position:'relative' }}>
+        <div style={{ display:'flex',flex:1,minHeight:0,overflow:'hidden',position:'relative' }}>
 
           {/* 좌: 전체 본문 (연속 스크롤 + 좌측 거시구조 거터) */}
           <div ref={scrollRef}
@@ -1599,7 +1599,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 else if (dx < 0 && activeRef.ch < maxCh) scrollTo(activeRef.ch + 1, 1);
               }
             } : undefined}
-            style={{ flex:1,minWidth:0,overflowY:'auto',
+            style={{ flex:1,minWidth:0,minHeight:0,overflowY:'auto',
               padding: isMobile?'8px 10px':0,
               position:'relative',
               WebkitOverflowScrolling:'touch',
@@ -2439,6 +2439,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               width: isMobile ? '100%' : Math.max(160, Math.min(rightPanelWidth, size.w - 240)),
               minWidth: isMobile ? undefined : 160,
               flexShrink: 0,
+              minHeight: isMobile ? undefined : 0,
               overflowY: isMobile ? (sheetSnap === 'full' ? 'auto' : 'hidden') : 'auto',
               padding: isMobile ? '0 16px' : '14px 16px',
               background: '#ffffff',
