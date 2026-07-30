@@ -15,6 +15,7 @@ import ArgumentMapMarker from './ArgumentMapMarker';
 import {
   ContextBibleScaffoldingBar,
   ContextOnboardingOverlay,
+  ContextChapterCard,
   useContextOnboarding,
 } from './ContextBibleScaffolding';
 
@@ -2501,6 +2502,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               </div>
             )}
             <div style={{ padding: isMobile ? '4px 0 calc(env(safe-area-inset-bottom, 0px) + 20px)' : 0 }}>
+
+            {/* ────── 현재 장 관찰 카드 (상단 스트립에서 이동 · 본문 옆 표시) ────── */}
+            <div style={{ marginBottom: 14 }}>
+              <ContextChapterCard bookId={activeBookId} ch={activeRef.ch} />
+            </div>
 
             {/* ────── 책 배경 메타 패널 (verse 모드에서만) ────── */}
             {rightMode === 'verse' && (

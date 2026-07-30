@@ -240,7 +240,7 @@ export function ContextBibleScaffoldingBar({
             marker="data-context-lens-picker"
           />
           {selectedLens && <LensDetailPanel lens={selectedLens} />}
-          <ContextChapterCard bookId={activeBookId} ch={activeRef?.ch} />
+          {/* 관찰 카드는 오른쪽 분석 패널로 이동(ContextBibleModal) — 본문 세로 공간 확보 */}
         </div>
       )}
     </div>
