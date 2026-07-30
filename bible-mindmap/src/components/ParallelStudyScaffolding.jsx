@@ -3,6 +3,7 @@ import { RESEARCH_LENSES } from '../data/researchLenses';
 import { GUIDED_STUDIES } from '../data/guidedStudies';
 import { PARALLEL_ONBOARDING } from '../data/onboardingScript';
 import { RESEARCH_GLOSSARY } from '../data/researchGlossary';
+import { RESEARCH_GLOSSARY_EXT } from '../data/researchGlossaryExt';
 import { RESEARCH_GLOSSARY_CONTEXT } from '../data/researchGlossaryContext';
 import { SYNOPTIC_PROMPT_CARDS } from '../data/synopticPromptCards';
 import { CITATION_PROMPT_CARDS } from '../data/citationPromptCards';
@@ -25,7 +26,7 @@ const CITATION_TYPE_LABEL = {
 
 const GLOSSARY_INDEX = (() => {
   const idx = new Map();
-  for (const g of [...RESEARCH_GLOSSARY, ...RESEARCH_GLOSSARY_CONTEXT]) {
+  for (const g of [...RESEARCH_GLOSSARY, ...RESEARCH_GLOSSARY_EXT, ...RESEARCH_GLOSSARY_CONTEXT]) {
     if (!idx.has(g.term)) idx.set(g.term, g);
     if (g.alsoKnownAs) {
       for (const alt of g.alsoKnownAs.split('·').map((s) => s.trim())) {
