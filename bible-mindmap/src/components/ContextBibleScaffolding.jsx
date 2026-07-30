@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   GuidedCourseCarousel,
   LensPicker,
@@ -18,6 +19,123 @@ const DIFF_BADGE = {
   intermediate: { label: '중급', bg: '#fef3c7', color: '#92400e' },
   advanced: { label: '고급', bg: '#fee2e2', color: '#991b1b' },
 };
+
+const CARD_FONT_MIN = 9;
+const CARD_FONT_MAX = 24;
+const CARD_FONT_DEFAULT = 12;
+
+function resolveContextFontHost() {
+  if (typeof document === 'undefined') return { host: null, compact: false };
+  const dialog = Array.from(document.querySelectorAll('[role="dialog"]'))
+    .find((node) => (node.getAttribute('aria-label') || '').startsWith('문맥 성경'));
+  if (!dialog) return { host: null, compact: false };
+
+  // 데스크톱: 기존 [배경] 스테퍼의 부모가 전체 폰트 패널이다.
+  // 그 패널 끝에 portal 하면 [배경] 오른쪽에 동일한 형식으로 배치된다.
+  const bgIncrease = dialog.querySelector('button[title="배경 크게"]');
+  const desktopHost = bgIncrease?.parentElement?.parentElement?.parentElement || null;
+  if (desktopHost) return { host: desktopHost, compact: false };
+
+  // 모바일: legendOpen 시 나타나는 Aa 가로 스크롤 스트립을 찾는다.
+  const mobileAa = Array.from(dialog.querySelectorAll('span')).find((node) => {
+    if (node.textContent?.trim() !== 'Aa') return false;
+    const row = node.parentElement;
+    return !!row?.querySelector('button');
+  });
+  return { host: mobileAa?.parentElement || null, compact: true };
+}
+
+function useContextFontHost() {
+  const [target, setTarget] = useState({ host: null, compact: false });
+
+  useEffect(() => {
+    if (typeof document === 'undefined' || typeof MutationObserver === 'undefined') return undefined;
+    let raf = 0;
+    const sync = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const next = resolveContextFontHost();
+        setTarget((prev) => (
+          prev.host === next.host && prev.compact === next.compact ? prev : next
+        ));
+      });
+    };
+
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => {
+      cancelAnimationFrame(raf);
+      observer.disconnect();
+    };
+  }, []);
+
+  return target;
+}
+
+function ContextCardFontControl({ value, onBump, compact }) {
+  if (compact) {
+    return (
+      <div data-context-card-font-control style={{
+        display: 'flex', alignItems: 'center', gap: 2,
+        background: 'rgba(255,255,255,.7)',
+        border: '1px solid rgba(212,153,79,.3)',
+        borderRadius: 8, padding: '2px 4px', flexShrink: 0,
+      }}>
+        <span style={{ fontSize: 10, fontWeight: 700, color: '#8A6027', padding: '0 4px' }}>관찰카드</span>
+        <button type="button" onClick={() => onBump(-1)} title="관찰카드 작게" aria-label="관찰카드 글자 작게"
+          style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#8A6027',
+            fontSize: 14, fontWeight: 800, cursor: 'pointer', borderRadius: 6, touchAction: 'manipulation' }}>−</button>
+        <span style={{ fontSize: 11, fontWeight: 800, color: '#4A3210', minWidth: 16, textAlign: 'center',
+          fontVariantNumeric: 'tabular-nums' }}>{value}</span>
+        <button type="button" onClick={() => onBump(1)} title="관찰카드 크게" aria-label="관찰카드 글자 크게"
+          style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#8A6027',
+            fontSize: 14, fontWeight: 800, cursor: 'pointer', borderRadius: 6, touchAction: 'manipulation' }}>+</button>
+      </div>
+    );
+  }
+
+  const stepButton = {
+    width: 24, height: 24, border: 'none', background: 'transparent', color: '#8A6027',
+    fontSize: 14, fontWeight: 600, lineHeight: 1, cursor: 'pointer', padding: 0,
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+    transition: 'background .12s, color .12s',
+    fontFamily: '-apple-system, BlinkMacSystemFont, sans-serif',
+  };
+  const hoverOn = (event) => {
+    event.currentTarget.style.background = 'rgba(212,153,79,.22)';
+    event.currentTarget.style.color = '#4A3210';
+  };
+  const hoverOff = (event) => {
+    event.currentTarget.style.background = 'transparent';
+    event.currentTarget.style.color = '#8A6027';
+  };
+
+  return (
+    <div data-context-card-font-control style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+      <span style={{
+        fontSize: 10.5, fontWeight: 700, color: '#8A6027', letterSpacing: '.01em',
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif",
+      }}>관찰카드</span>
+      <div style={{
+        display: 'inline-flex', alignItems: 'stretch', background: 'rgba(212,153,79,.09)',
+        border: '1px solid rgba(212,153,79,.32)', borderRadius: 7, overflow: 'hidden', height: 24,
+      }}>
+        <button type="button" onClick={() => onBump(-1)} onMouseEnter={hoverOn} onMouseLeave={hoverOff}
+          title="관찰카드 작게" aria-label="관찰카드 글자 작게" style={stepButton}>−</button>
+        <span style={{
+          fontSize: 11.5, fontWeight: 700, color: '#4A3210', minWidth: 22, padding: '0 4px',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontVariantNumeric: 'tabular-nums',
+          fontFamily: "'SF Mono', 'JetBrains Mono', 'Menlo', ui-monospace, monospace",
+          borderLeft: '1px solid rgba(212,153,79,.32)', borderRight: '1px solid rgba(212,153,79,.32)',
+          background: 'rgba(255,251,243,.85)',
+        }}>{value}</span>
+        <button type="button" onClick={() => onBump(1)} onMouseEnter={hoverOn} onMouseLeave={hoverOff}
+          title="관찰카드 크게" aria-label="관찰카드 글자 크게" style={stepButton}>+</button>
+      </div>
+    </div>
+  );
+}
 
 export function useContextOnboarding() {
   return useOnboarding(CONTEXT_ONBOARDING, 'context-bible');
@@ -94,52 +212,70 @@ function ContextActiveCoursePanel({ course, currentStepIdx, onStepClick, onExit 
 }
 
 export function ContextChapterCard({ bookId, ch }) {
+  const [fontSize, setFontSize] = useState(CARD_FONT_DEFAULT);
+  const { host: fontHost, compact } = useContextFontHost();
+  const bumpCardFont = (delta) => {
+    setFontSize((prev) => Math.max(CARD_FONT_MIN, Math.min(CARD_FONT_MAX, prev + delta)));
+  };
+  const fontControl = fontHost
+    ? createPortal(<ContextCardFontControl value={fontSize} onBump={bumpCardFont} compact={compact} />, fontHost)
+    : null;
+
   const key = `${bookId}:${ch}`;
   const card = CONTEXT_CHAPTER_CARDS[key];
-  if (!card) return null;
+  const titleSize = Math.min(CARD_FONT_MAX + 1, fontSize + 1);
+  const badgeSize = Math.max(9, fontSize - 2);
+  const sectionSize = Math.max(10, fontSize - 1);
+  const detailSize = Math.max(10, fontSize - 0.5);
+
   return (
-    <section data-context-chapter-card style={{
-      padding: 10, borderRadius: 10, marginBottom: 8,
-      background: '#f0f9ff', border: '1px solid #7dd3fc',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, flexWrap: 'wrap' }}>
-        <span style={{ fontSize: 16 }}>{card.coverEmoji}</span>
-        <strong style={{ fontSize: 11.5, color: '#075985' }}>{bookId} {ch}장 관찰 카드</strong>
-        <span style={{ padding: '2px 6px', borderRadius: 4, fontSize: 9, fontWeight: 700,
-          background: '#0284c7', color: '#fff' }}>{card.genre}</span>
-      </div>
-      <div style={{ fontSize: 10, fontWeight: 800, color: '#075985', marginBottom: 3 }}>이 장에서 관찰할 것</div>
-      <ol style={{ margin: 0, paddingLeft: 15, fontSize: 10.5, color: '#0c4a6e', lineHeight: 1.5 }}>
-        {card.observeThis.map((o, i) => <li key={i}><GlossaryText text={o} /></li>)}
-      </ol>
-      {card.discourseMarkers?.length > 0 && (
-        <>
-          <div style={{ fontSize: 10, fontWeight: 800, color: '#075985', marginTop: 7, marginBottom: 3 }}>담화 마커 신호</div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            {card.discourseMarkers.map((m, i) => (
-              <div key={i} style={{
-                padding: '4px 7px', borderRadius: 5, fontSize: 10, lineHeight: 1.4,
-                background: '#e0f2fe', color: '#075985',
-              }}>
-                <b>{m.marker}</b> — {m.role} <span style={{ opacity: .7 }}>· {m.example}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
-      <div style={{ fontSize: 10, fontWeight: 800, color: '#075985', marginTop: 7, marginBottom: 3 }}>신학적 함의</div>
-      <ol style={{ margin: 0, paddingLeft: 15, fontSize: 10.5, color: '#0c4a6e', lineHeight: 1.5 }}>
-        {card.theologicalImplications.map((t, i) => <li key={i}><GlossaryText text={t} /></li>)}
-      </ol>
-      {card.nextChapterPreview && (
-        <div style={{
-          marginTop: 7, padding: '5px 8px', borderRadius: 5,
-          background: '#bae6fd', color: '#075985', fontSize: 10, lineHeight: 1.5,
+    <>
+      {fontControl}
+      {card && (
+        <section data-context-chapter-card style={{
+          padding: 10, borderRadius: 10, marginBottom: 8,
+          background: '#f0f9ff', border: '1px solid #7dd3fc',
         }}>
-          → 다음 · <GlossaryText text={card.nextChapterPreview} style={{ color: '#075985' }} />
-        </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 6, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: Math.max(17, fontSize + 5) }}>{card.coverEmoji}</span>
+            <strong style={{ fontSize: titleSize, color: '#075985', lineHeight: 1.35 }}>{bookId} {ch}장 관찰 카드</strong>
+            <span style={{ padding: '2px 6px', borderRadius: 4, fontSize: badgeSize, fontWeight: 700,
+              background: '#0284c7', color: '#fff' }}>{card.genre}</span>
+          </div>
+          <div style={{ fontSize: sectionSize, fontWeight: 800, color: '#075985', marginBottom: 4 }}>이 장에서 관찰할 것</div>
+          <ol style={{ margin: 0, paddingLeft: 18, fontSize, color: '#0c4a6e', lineHeight: 1.58 }}>
+            {card.observeThis.map((o, i) => <li key={i}><GlossaryText text={o} /></li>)}
+          </ol>
+          {card.discourseMarkers?.length > 0 && (
+            <>
+              <div style={{ fontSize: sectionSize, fontWeight: 800, color: '#075985', marginTop: 8, marginBottom: 4 }}>담화 마커 신호</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                {card.discourseMarkers.map((m, i) => (
+                  <div key={i} style={{
+                    padding: '5px 8px', borderRadius: 5, fontSize: detailSize, lineHeight: 1.5,
+                    background: '#e0f2fe', color: '#075985',
+                  }}>
+                    <b>{m.marker}</b> — {m.role} <span style={{ opacity: .7 }}>· {m.example}</span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+          <div style={{ fontSize: sectionSize, fontWeight: 800, color: '#075985', marginTop: 8, marginBottom: 4 }}>신학적 함의</div>
+          <ol style={{ margin: 0, paddingLeft: 18, fontSize, color: '#0c4a6e', lineHeight: 1.58 }}>
+            {card.theologicalImplications.map((t, i) => <li key={i}><GlossaryText text={t} /></li>)}
+          </ol>
+          {card.nextChapterPreview && (
+            <div style={{
+              marginTop: 8, padding: '6px 9px', borderRadius: 5,
+              background: '#bae6fd', color: '#075985', fontSize: detailSize, lineHeight: 1.55,
+            }}>
+              → 다음 · <GlossaryText text={card.nextChapterPreview} style={{ color: '#075985' }} />
+            </div>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 }
 
