@@ -78,7 +78,15 @@ function useContextFontHost() {
   return target;
 }
 
-function ContextCardFontControl({ value, onBump, compact }) {
+// 문맥 성경 폰트 패널(host)에 추가로 스테퍼를 붙일 때 재사용 (관찰카드·구조지도 등).
+// eslint-disable-next-line react-refresh/only-export-components
+export { useContextFontHost };
+// eslint-disable-next-line react-refresh/only-export-components
+export function ContextExtraFontControl({ label, value, onBump, compact }) {
+  return <ContextCardFontControl value={value} onBump={onBump} compact={compact} label={label} />;
+}
+
+function ContextCardFontControl({ value, onBump, compact, label = '관찰카드' }) {
   if (compact) {
     return (
       <div data-context-card-font-control style={{
@@ -87,13 +95,13 @@ function ContextCardFontControl({ value, onBump, compact }) {
         border: '1px solid rgba(212,153,79,.3)',
         borderRadius: 8, padding: '2px 4px', flexShrink: 0,
       }}>
-        <span style={{ fontSize: 10, fontWeight: 700, color: '#8A6027', padding: '0 4px' }}>관찰카드</span>
-        <button type="button" onClick={() => onBump(-1)} title="관찰카드 작게" aria-label="관찰카드 글자 작게"
+        <span style={{ fontSize: 10, fontWeight: 700, color: '#8A6027', padding: '0 4px' }}>{label}</span>
+        <button type="button" onClick={() => onBump(-1)} title={`${label} 작게`} aria-label={`${label} 글자 작게`}
           style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#8A6027',
             fontSize: 14, fontWeight: 800, cursor: 'pointer', borderRadius: 6, touchAction: 'manipulation' }}>−</button>
         <span style={{ fontSize: 11, fontWeight: 800, color: '#4A3210', minWidth: 16, textAlign: 'center',
           fontVariantNumeric: 'tabular-nums' }}>{value}</span>
-        <button type="button" onClick={() => onBump(1)} title="관찰카드 크게" aria-label="관찰카드 글자 크게"
+        <button type="button" onClick={() => onBump(1)} title={`${label} 크게`} aria-label={`${label} 글자 크게`}
           style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#8A6027',
             fontSize: 14, fontWeight: 800, cursor: 'pointer', borderRadius: 6, touchAction: 'manipulation' }}>+</button>
       </div>
@@ -121,13 +129,13 @@ function ContextCardFontControl({ value, onBump, compact }) {
       <span style={{
         fontSize: 10.5, fontWeight: 700, color: '#8A6027', letterSpacing: '.01em',
         fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Pretendard', sans-serif",
-      }}>관찰카드</span>
+      }}>{label}</span>
       <div style={{
         display: 'inline-flex', alignItems: 'stretch', background: 'rgba(212,153,79,.09)',
         border: '1px solid rgba(212,153,79,.32)', borderRadius: 7, overflow: 'hidden', height: 24,
       }}>
         <button type="button" onClick={() => onBump(-1)} onMouseEnter={hoverOn} onMouseLeave={hoverOff}
-          title="관찰카드 작게" aria-label="관찰카드 글자 작게" style={stepButton}>−</button>
+          title={`${label} 작게`} aria-label={`${label} 글자 작게`} style={stepButton}>−</button>
         <span style={{
           fontSize: 11.5, fontWeight: 700, color: '#4A3210', minWidth: 22, padding: '0 4px',
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontVariantNumeric: 'tabular-nums',
@@ -136,7 +144,7 @@ function ContextCardFontControl({ value, onBump, compact }) {
           background: 'rgba(255,251,243,.85)',
         }}>{value}</span>
         <button type="button" onClick={() => onBump(1)} onMouseEnter={hoverOn} onMouseLeave={hoverOff}
-          title="관찰카드 크게" aria-label="관찰카드 글자 크게" style={stepButton}>+</button>
+          title={`${label} 크게`} aria-label={`${label} 글자 크게`} style={stepButton}>+</button>
       </div>
     </div>
   );
