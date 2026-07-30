@@ -177,6 +177,7 @@ export default function ParallelView({ node, onSave, onClose }) {
 
   // ── Lexicon (원어 어형 데이터) ─────────────────────────────────────
   const [lexEntries, setLexEntries] = useState([]);   // STEPBible 단어 배열 (해당 절)
+  const [lxxLexEntries, setLxxLexEntries] = useState([]); // LXX(칠십인역) 단어 배열 (사전 연동)
   const [lexError, setLexError] = useState(null);
   const [popup, setPopup] = useState(null);           // { entry, anchor }
 
@@ -204,37 +205,39 @@ export default function ParallelView({ node, onSave, onClose }) {
     return () => { cancelled = true; };
   }, [node.data.bookId, node.data.chapter, node.data.verseStart, node.data.verseEnd]);
 
-  // 원어 chip 텍스트 → STEPBible entry 매칭 (동일 normalize 키)
-  const lexByChip = useMemo(() => {
-    const tokens = tokensByTab.original || [];
-    if (!lexEntries.length) return new Map();
-    // 각 lex entry의 정규화 키 → entry 배열 (동일 단어가 여러 번 나올 수 있음)
+  // LXX 열이 있을 때(구약) LXX 단어별 사전 데이터 로드
+  useEffect(() => {
+    const { bookId, chapter, verseStart, verseEnd } = node.data;
+    if (!bookId || !isOT(bookId)) { setLxxLexEntries([]); return; }
+    let cancelled = false;
+    loadVerseLexicon(bookId, chapter, verseStart, verseEnd, 'lxx')
+      .then((entries) => { if (!cancelled) setLxxLexEntries(entries || []); })
+      .catch(() => { if (!cancelled) setLxxLexEntries([]); });
+    return () => { cancelled = true; };
+  }, [node.data.bookId, node.data.chapter, node.data.verseStart, node.data.verseEnd]);
+
+  // chip 텍스트 → lex entry 매칭 (동일 normalize 키 · 원어/LXX 공용)
+  const buildLexByChip = (tokens, entries) => {
+    if (!entries.length) return new Map();
     const idx = new Map();
-    for (const e of lexEntries) {
+    for (const e of entries) {
       const key = normalizeOriginal(e.w);
       if (!key) continue;
       if (!idx.has(key)) idx.set(key, []);
       idx.get(key).push(e);
     }
-    // chip index → lex entry (같은 키가 여러 번이면 순서대로 소진)
     const result = new Map();
     const consumed = new Map();
-    tokens.forEach((t, i) => {
+    (tokens || []).forEach((t, i) => {
       if (t.space) return;
-      // 직접 매칭 시도
       let matchKey = normalizeOriginal(t.text);
       if (!matchKey) return;
       let bucket = idx.get(matchKey);
-      // 직접 매칭 실패 → WLC 마카프(U+05BE)로 연결된 단어쌍이면 분리 후 재시도
-      // 예: כִּי־טֹוב → ['כִּי', 'טֹוב'] 각각 매칭 시도
+      // WLC 마카프(U+05BE)로 연결된 히브리어 단어쌍이면 분리 후 재시도
       if (!bucket && t.text.includes('־')) {
         for (const part of t.text.split('־')) {
           const partKey = normalizeOriginal(part);
-          if (partKey && idx.has(partKey)) {
-            matchKey = partKey;
-            bucket = idx.get(partKey);
-            break;
-          }
+          if (partKey && idx.has(partKey)) { matchKey = partKey; bucket = idx.get(partKey); break; }
         }
       }
       if (!bucket) return;
@@ -244,7 +247,9 @@ export default function ParallelView({ node, onSave, onClose }) {
       consumed.set(matchKey, nth + 1);
     });
     return result;
-  }, [lexEntries, tokensByTab]);
+  };
+  const lexByChip    = useMemo(() => buildLexByChip(tokensByTab.original, lexEntries), [lexEntries, tokensByTab]);
+  const lxxLexByChip = useMemo(() => buildLexByChip(tokensByTab.lxx, lxxLexEntries), [lxxLexEntries, tokensByTab]);
 
   // 부족한 역본 자동 로드
   const loadColumn = async (colId) => {
@@ -472,14 +477,16 @@ export default function ParallelView({ node, onSave, onClose }) {
                   if (t.space) return <span key={t.id} style={{ whiteSpace: 'pre' }}>{t.text}</span>;
                   const isSel = (selected[col.id] || []).includes(i);
                   const groupColor = t.syncId ? groupColorMap.get(t.syncId) : null;
-                  const lexEntry = col.id === 'original' ? lexByChip.get(i) : null;
+                  const lexEntry = col.id === 'original' ? lexByChip.get(i)
+                    : col.id === 'lxx' ? lxxLexByChip.get(i)
+                    : null;
                   const hasLex = !!lexEntry;
                   return (
                     <span
                       key={t.id}
                       onClick={(e) => {
-                        // Cmd/Ctrl+클릭: 원어 어형 팝업
-                        if (col.id === 'original' && hasLex && (e.metaKey || e.ctrlKey)) {
+                        // Cmd/Ctrl+클릭: 원어·LXX 어형 사전 팝업
+                        if ((col.id === 'original' || col.id === 'lxx') && hasLex && (e.metaKey || e.ctrlKey)) {
                           e.preventDefault();
                           const rect = e.currentTarget.getBoundingClientRect();
                           setPopup({ entry: lexEntry, anchor: { x: rect.left + rect.width / 2, y: rect.bottom } });
