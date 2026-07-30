@@ -25,13 +25,17 @@ function cacheSet(key, value) {
   }
 }
 
-export async function loadChapterLexicon(bookId, chapter) {
-  const lang = isOT(bookId) ? 'hot' : 'gnt';
+export async function loadChapterLexicon(bookId, chapter, langOverride) {
+  // langOverride='lxx' 이면 LXX(칠십인역) 단어 데이터를 로드 (구약 헬라어 · 사전 연동용)
+  const lang = langOverride || (isOT(bookId) ? 'hot' : 'gnt');
   const key = `${lang}/${bookId}/${chapter}`;
   const cached = cacheGet(key);
   if (cached) return cached;
 
-  const url = `${BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
+  // LXX 는 커밋된 tracked 경로(public/lxx-lex), 나머지(gnt/hot)는 CI 생성 public/data/lex
+  const url = lang === 'lxx'
+    ? `${BASE}lxx-lex/${bookId}/${chapter}.json`
+    : `${BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
   const promise = fetch(url).then((res) => {
     if (!res.ok) throw new Error(`lexicon fetch ${res.status}`);
     return res.json();
@@ -51,9 +55,9 @@ export async function loadChapterLexicon(bookId, chapter) {
  * @param {number} verseStart
  * @param {number} [verseEnd]  생략 시 verseStart 한 절만 로드
  */
-export async function loadVerseLexicon(bookId, chapter, verseStart, verseEnd) {
+export async function loadVerseLexicon(bookId, chapter, verseStart, verseEnd, langOverride) {
   try {
-    const ch = await loadChapterLexicon(bookId, chapter);
+    const ch = await loadChapterLexicon(bookId, chapter, langOverride);
     if (!ch) return null;
     const end = verseEnd ?? verseStart;
     const combined = [];

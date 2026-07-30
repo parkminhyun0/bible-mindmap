@@ -104,6 +104,32 @@ async function main() {
   }
   console.log(`✓  단어 ${(words.length - 1).toLocaleString()}개`);
 
+  // ── 1b. 단어별 사전 연동 데이터 (index 정렬, 1-indexed) ────────────────────
+  // 표제어(lemma)·Strong's(G번호)·SBL 음역 — 표시 단어와 완전히 같은 인덱스.
+  // 이 데이터로 LXX 단어를 헬라어 사전 팝업(Strong's 기반)에 연결한다.
+  const parseIndexed = (csv) => {
+    const arr = [''];
+    for (const line of csv.split('\n')) {
+      const t = line.replace(/\r$/, '');
+      if (!t.trim()) continue;
+      const parts = t.split('\t');
+      const idx = parseInt(parts[0], 10);
+      if (!idx) continue;
+      arr[idx] = parts.length >= 2 ? parts[parts.length - 1].trim() : '';
+    }
+    return arr;
+  };
+  process.stdout.write('1b/2 사전 연동 데이터(표제어·Strong·음역) 다운로드 중... ');
+  const [lexemeCsv, strongCsv, translitCsv] = await Promise.all([
+    fetchText(BASE_URL + '02_lexemes/OSSP_lexemes.csv'),
+    fetchText(BASE_URL + '07_StrongNumber/final_Strongs.csv'),
+    fetchText(BASE_URL + '04_SBL_transliteration/final_transliteration_SBL.csv'),
+  ]);
+  const lemmas   = parseIndexed(lexemeCsv);
+  const strongs  = parseIndexed(strongCsv);
+  const translit = parseIndexed(translitCsv);
+  console.log('✓');
+
   // ── 2. 절 색인 다운로드 ───────────────────────────────────────────────────
   process.stdout.write('2/2 절 색인 다운로드 중... ');
   const verseCsv = await fetchText(BASE_URL + '08_versification/001_verse_c_modified_KEEP.csv');
@@ -124,6 +150,7 @@ async function main() {
   // ── 3. 절 텍스트 추출 ────────────────────────────────────────────────────
   console.log('\n절 텍스트 추출 중...');
   const bookData = {}; // appId → { ch → { vs → text } }
+  const lexData  = {}; // appId → { ch → { vs → [ {w,tr,s,l}, ... ] } }  (사전 연동용)
 
   for (let i = 0; i < verseList.length; i++) {
     const { ref, start } = verseList[i];
@@ -156,6 +183,17 @@ async function main() {
     if (!bookData[appId]) bookData[appId] = {};
     if (!bookData[appId][ch]) bookData[appId][ch] = {};
     bookData[appId][ch][vs] = text;
+
+    // 단어별 사전 연동 엔트리 (원어 탭과 동일한 {w,tr,s,m,l,g} 스키마 · m/g 생략)
+    const lexWords = [];
+    for (let wi = start; wi <= end && wi < words.length; wi += 1) {
+      const w = words[wi];
+      if (!w) continue;
+      lexWords.push({ w, tr: translit[wi] || '', s: strongs[wi] || '', l: lemmas[wi] || '' });
+    }
+    if (!lexData[appId]) lexData[appId] = {};
+    if (!lexData[appId][ch]) lexData[appId][ch] = {};
+    lexData[appId][ch][vs] = lexWords;
   }
 
   // ── 4. 도서별 JSON 저장 ──────────────────────────────────────────────────
@@ -173,6 +211,27 @@ async function main() {
   const totalSize = fs.readdirSync(outDir)
     .reduce((s, f) => s + fs.statSync(path.join(outDir, f)).size, 0);
   console.log(`\n완료 → public/lxx/  (${(totalSize / 1024 / 1024).toFixed(1)} MB)`);
+
+  // ── 5. 사전 연동용 LXX lex 저장 (lxx-lex/{book}/{ch}.json) ────────────────
+  // public/data/* 는 .gitignore(CI 생성) 대상이고 parseLXX는 CI 체인에 없으므로,
+  // 커밋되는 tracked 경로 public/lxx-lex 에 저장한다(공개 실행 시 항상 존재).
+  const lexRoot = path.join(__dirname, '..', 'public', 'lxx-lex');
+  fs.mkdirSync(lexRoot, { recursive: true });
+  let lexBooks = 0, lexWithStrong = 0, lexTotal = 0;
+  for (const appId of Object.keys(lexData).sort()) {
+    const bookDir = path.join(lexRoot, appId);
+    fs.mkdirSync(bookDir, { recursive: true });
+    for (const ch of Object.keys(lexData[appId])) {
+      const chObj = lexData[appId][ch];
+      for (const vs of Object.keys(chObj)) {
+        for (const wd of chObj[vs]) { lexTotal += 1; if (wd.s) lexWithStrong += 1; }
+      }
+      fs.writeFileSync(path.join(bookDir, `${ch}.json`), JSON.stringify(chObj));
+    }
+    lexBooks += 1;
+  }
+  const cov = lexTotal ? (lexWithStrong / lexTotal * 100).toFixed(1) : '0';
+  console.log(`LXX lex → public/data/lex/lxx/  (${lexBooks}권 · 단어 ${lexTotal.toLocaleString()} · Strong 매칭 ${cov}%)`);
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

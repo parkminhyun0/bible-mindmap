@@ -371,9 +371,11 @@ export default function VerseNode({ id, data, selected }) {
   };
 
   useEffect(() => {
-    if (activeTab !== 'original' || !data.bookId) return;
+    // 원어(TAGNT/TAHOT) 또는 LXX(칠십인역) 탭에서 단어별 어형/사전 데이터를 로드한다.
+    if ((activeTab !== 'original' && activeTab !== 'lxx') || !data.bookId) return;
     let cancelled = false;
-    loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd)
+    const langOverride = activeTab === 'lxx' ? 'lxx' : undefined;
+    loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd, langOverride)
       .then((entries) => { if (!cancelled) setLexEntries(entries || []); })
       .catch(() => { if (!cancelled) setLexEntries([]); })
     return () => { cancelled = true; };
@@ -526,7 +528,7 @@ export default function VerseNode({ id, data, selected }) {
         </div>
       ) : isLoading ? (
         <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
-      ) : activeTab === 'original' && selected && lexEntries.length > 0 ? (
+      ) : (activeTab === 'original' || activeTab === 'lxx') && selected && lexEntries.length > 0 ? (
         <div
           onMouseUp={revealSelectionPin}
           style={{ color: '#1e293b', direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}
