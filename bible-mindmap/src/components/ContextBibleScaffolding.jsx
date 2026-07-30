@@ -159,9 +159,11 @@ export function ContextBibleScaffoldingBar({
       padding: isMobile ? '6px 12px 8px' : '6px 20px 8px',
       background: 'linear-gradient(180deg,#fffbeb,rgba(255,251,235,0))',
       borderBottom: '1px solid rgba(217,119,6,.15)',
-      flexShrink: 0,
-      // 확장 시에도 스캐폴딩 자체 최대 높이를 제한하고 내부 스크롤로 처리
-      maxHeight: expanded ? (isMobile ? '45vh' : '55vh') : 'none',
+      // 본문 영역(flex:1)이 0으로 눌리지 않도록 스트립이 양보(flexShrink:1)하고,
+      // 확장 시 최대 높이를 낮춰 본문이 항상 스크롤 가능한 공간을 확보한다.
+      flexShrink: 1,
+      minHeight: 0,
+      maxHeight: expanded ? (isMobile ? '40vh' : '42vh') : 'none',
       overflow: 'hidden',
       display: 'flex',
       flexDirection: 'column',
