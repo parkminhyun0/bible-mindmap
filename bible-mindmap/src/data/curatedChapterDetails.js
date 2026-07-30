@@ -1,5 +1,12 @@
 import { CURATED_OT_CORE } from './curatedChapterDetailsOTCore.js';
 import { CURATED_GEN } from './curatedChapterDetailsGen.js';
+import { CURATED_TORAH_HISTORY } from './curatedTorahHistory.js';
+import { CURATED_WISDOM } from './curatedWisdom.js';
+import { CURATED_MAJOR_PROPHETS } from './curatedMajorProphets.js';
+import { CURATED_MINOR_PROPHETS } from './curatedMinorProphets.js';
+import { CURATED_GOSPELS_ACTS } from './curatedGospelsActs.js';
+import { CURATED_PAUL } from './curatedPaul.js';
+import { CURATED_GENERAL_REV } from './curatedGeneralRev.js';
 
 // Curated chapter-level Context Bible details.
 // Each entry is intentionally book/chapter specific; do not replace with section-title cloning.
@@ -239,6 +246,13 @@ const CURATED_ESTH = {
 
 export const CURATED_CHAPTER_DETAILS = {
   ...CURATED_OT_CORE,
+  ...CURATED_TORAH_HISTORY,
+  ...CURATED_WISDOM,
+  ...CURATED_MAJOR_PROPHETS,
+  ...CURATED_MINOR_PROPHETS,
+  ...CURATED_GOSPELS_ACTS,
+  ...CURATED_PAUL,
+  ...CURATED_GENERAL_REV,
   Gen: CURATED_GEN,
   '1Sam': CURATED_1SAM,
   '2Sam': CURATED_2SAM,
