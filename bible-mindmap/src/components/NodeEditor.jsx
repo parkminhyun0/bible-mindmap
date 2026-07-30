@@ -1,6 +1,7 @@
 import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import { searchContemporaries, searchPersonsAtPlace } from '../api/wikidataApi';
 import { fetchCrossRefs } from '../api/crossrefApi';
+import { isOT } from '../data/bibleBooks';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
@@ -36,8 +37,12 @@ const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 
 const TRANSLATION_TABS = [
   { id: 'krv', label: '개역한글' },
   { id: 'web', label: 'WEB' },
+  { id: 'lxx', label: 'LXX', otOnly: true },
   { id: 'original', label: '원어' },
 ];
+// LXX(칠십인역)는 구약에만 노출. bookId 기준으로 탭 목록을 거른다.
+const tabsForBook = (bookId) =>
+  TRANSLATION_TABS.filter((t) => !t.otOnly || (bookId && isOT(bookId)));
 
 function isEditorUsable(editor) {
   return !!editor && !editor.isDestroyed;
@@ -113,7 +118,7 @@ export default function NodeEditor({
       setCrossRefError('');
     }
     const newData = { ...selectedNode.data };
-    const activeTab = TRANSLATION_TABS.some((tab) => tab.id === newData.activeTab)
+    const activeTab = tabsForBook(newData.bookId).some((tab) => tab.id === newData.activeTab)
       ? newData.activeTab
       : 'krv';
     newData.activeTab = activeTab;
@@ -434,7 +439,7 @@ export default function NodeEditor({
             {nodeType === 'verse' && editData?.bookId && (
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
                 <span style={{ fontSize: 10, color: '#94a3b8' }}>역본:</span>
-                {TRANSLATION_TABS.map((t) => {
+                {tabsForBook(editData?.bookId).map((t) => {
                   const isSel = (editData?.activeTab || 'krv') === t.id;
                   return (
                     <button key={t.id}
@@ -710,7 +715,7 @@ export default function NodeEditor({
       {hasNode && editData?.bookId && (
         <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
           <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>편집 역본:</span>
-          {TRANSLATION_TABS.map((t) => {
+          {tabsForBook(editData?.bookId).map((t) => {
             const isActiveTab = (editData?.activeTab || 'krv') === t.id;
             return (
               <button key={t.id}

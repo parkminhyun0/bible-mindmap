@@ -7,6 +7,7 @@ const LEX_BASE = import.meta.env?.BASE_URL || '/';
 export const TRANSLATIONS = [
   { id: 'krv',      label: '개역한글', lang: 'ko' },
   { id: 'web',      label: 'WEB',      lang: 'en' },
+  { id: 'lxx',      label: 'LXX',      lang: 'grc', otOnly: true },
   { id: 'original', label: '원어',      lang: 'multi' },
 ];
 
@@ -125,6 +126,42 @@ async function fetchOriginalGreek(bookId, chapter, verseStart, verseEnd) {
     .join(' ');
 }
 
+// ── 로컬 LXX (칠십인역 · Rahlfs 1935 · 퍼블릭 도메인) ──────────────────────
+// public/lxx/{bookId}.json ( { "장": { "절": "본문" } } ) 에서 구약 헬라어 본문을 읽는다.
+// 저작권: Rahlfs 1935판(A. Rahlfs 1935 사망 → life+70, 2006년 PD). 출처 eliranwong/LXX-Rahlfs-1935.
+// 구약(39권)만 존재. bolls 비의존.
+async function fetchLxxBook(bookId) {
+  const key = `lxx:${bookId}`;
+  const cached = cacheGet(key);
+  if (cached) return cached;
+
+  const promise = fetchJsonWithRetry(`${LEX_BASE}lxx/${bookId}.json`)
+    .catch((err) => {
+      _chapterCache.delete(key); // 실패 시 캐시 무효화하여 재시도 허용
+      throw err;
+    });
+  cacheSet(key, promise);
+  return promise;
+}
+
+async function fetchOriginalLxx(bookId, chapter, verseStart, verseEnd) {
+  const book = await fetchLxxBook(bookId);
+  const chap = book?.[String(chapter)];
+  if (!chap) throw new Error('해당 장 LXX 없음');
+
+  const parts = [];
+  for (let v = verseStart; v <= verseEnd; v += 1) {
+    const text = chap[String(v)];
+    if (typeof text === 'string' && text.trim()) parts.push({ verse: v, text: text.trim() });
+  }
+  if (!parts.length) throw new Error('해당 구절 없음');
+
+  if (parts.length === 1) return parts[0].text;
+  return parts
+    .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
+    .join(' ');
+}
+
 // ── bolls.life (KRV, WEB, WLC) ────────────────────────────────────────────
 // 절 번호를 인라인 <span>으로 삽입하여 여러 절을 이어 붙일 때도 구분되도록 함.
 // TipTap TextStyle 확장이 style 속성을 보존하므로 편집 후에도 유지됨.
@@ -166,6 +203,10 @@ export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translat
       return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'KRV');
     case 'web':
       return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'WEB');
+    case 'lxx':
+      // 칠십인역 — 구약(OT)에만 제공 (로컬 Rahlfs 1935, PD)
+      if (!isOT(bookId)) throw new Error('LXX(칠십인역)는 구약에만 제공됩니다');
+      return fetchOriginalLxx(bookId, chapter, verseStart, verseEnd);
     case 'original': {
       // 히브리어(구약): WLC — 퍼블릭 도메인, bolls.life 유지
       if (isOT(bookId)) {
@@ -184,10 +225,11 @@ export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd
   const safe = (id) =>
     fetchVerse(bookId, chapter, verseStart, verseEnd, id).catch(() => null);
 
-  const [krv, web, original] = await Promise.all([
+  const [krv, web, original, lxx] = await Promise.all([
     safe('krv'), safe('web'), safe('original'),
+    isOT(bookId) ? safe('lxx') : Promise.resolve(null),
   ]);
-  return { krv, web, original };
+  return { krv, web, original, lxx };
 }
 
 // 해당 장의 총 절 수를 반환 (KRV 기준, 캐시 재사용).

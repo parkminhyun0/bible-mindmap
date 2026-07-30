@@ -22,7 +22,13 @@ const TABS = [
   { id: 'web',      label: 'WEB' },
   { id: 'original', label: '원어' },
 ];
-const TRANSLATION_TAB_IDS = ['krv', 'web', 'original'];
+// 구약(OT)에서는 LXX(칠십인역) 탭을 원어 앞에 추가 노출한다.
+const TABS_OT = [
+  { id: 'krv',      label: '개역한글' },
+  { id: 'web',      label: 'WEB' },
+  { id: 'lxx',      label: 'LXX' },
+  { id: 'original', label: '원어' },
+];
 
 function collectTextNodes(root) {
   const nodes = [];
@@ -140,9 +146,13 @@ export default function VerseNode({ id, data, selected }) {
 
   const activeBadges = EDGE_BADGE_CONFIG.filter((cfg) => edgeCounts[cfg.type] > 0);
 
+  // 구약이면 LXX 탭 포함, 아니면 기본 3탭. translationTabIds는 프리로드·재시도용.
+  const tabs = data.bookId && isOT(data.bookId) ? TABS_OT : TABS;
+  const translationTabIds = tabs.map((t) => t.id);
+
   // data.activeTab을 단일 진실 출처로 사용 — NodeEditor와 양방향 동기화
   // 이전 저장 데이터가 제거된 탭을 가리키면 개역한글로 안전하게 되돌린다.
-  const activeTab = TABS.some((tab) => tab.id === data.activeTab) ? data.activeTab : 'krv';
+  const activeTab = tabs.some((tab) => tab.id === data.activeTab) ? data.activeTab : 'krv';
   const [tabLoading, setTabLoading] = useState({});
   const [tabErrors, setTabErrors]   = useState({});
   const retryingRef = useRef(new Set());
@@ -165,7 +175,7 @@ export default function VerseNode({ id, data, selected }) {
   // 탭 전환 시 요청을 취소하지 않으므로 빠르게 클릭해도 로딩 상태가 고착되지 않는다.
   useEffect(() => {
     if (!hasMulti) return;
-    const missing = TRANSLATION_TAB_IDS.filter(
+    const missing = translationTabIds.filter(
       (tabId) => typeof data.translations?.[tabId] !== 'string',
     );
     if (missing.length === 0) return;
@@ -224,7 +234,7 @@ export default function VerseNode({ id, data, selected }) {
   }, [data.bookId, data.chapter, data.verseStart, data.verseEnd, id]);
 
   const retryTranslation = (tabId) => {
-    if (!TRANSLATION_TAB_IDS.includes(tabId) || retryingRef.current.has(tabId)) return;
+    if (!translationTabIds.includes(tabId) || retryingRef.current.has(tabId)) return;
     retryingRef.current.add(tabId);
     setTabErrors((prev) => {
       const next = { ...prev };
@@ -472,7 +482,7 @@ export default function VerseNode({ id, data, selected }) {
       {/* Translation tabs */}
       {hasMulti && (
         <div style={{ display: 'flex', gap: 2, marginBottom: 8, flexWrap: 'wrap' }}>
-          {TABS.map((t) => (
+          {tabs.map((t) => (
             <button
               key={t.id}
               onClick={() => handleTabClick(t.id)}
