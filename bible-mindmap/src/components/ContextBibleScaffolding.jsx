@@ -20,9 +20,11 @@ const DIFF_BADGE = {
   advanced: { label: '고급', bg: '#fee2e2', color: '#991b1b' },
 };
 
-const CARD_FONT_MIN = 9;
+const CARD_FONT_MIN = 10;
 const CARD_FONT_MAX = 24;
-const CARD_FONT_DEFAULT = 12;
+// 사용자 피드백: 기본 12는 특히 모바일에서 너무 작음 → 모바일 14, 데스크톱 13.
+const CARD_FONT_DEFAULT_MOBILE = 14;
+const CARD_FONT_DEFAULT_DESKTOP = 13;
 
 function resolveContextFontHost() {
   if (typeof document === 'undefined') return { host: null, compact: false };
@@ -62,8 +64,11 @@ function useContextFontHost() {
     };
 
     sync();
+    // 문맥 성경 모달 하위만 관찰(전체 body 관찰은 오버헤드 큼).
+    const dialog = Array.from(document.querySelectorAll('[role="dialog"]'))
+      .find((n) => (n.getAttribute('aria-label') || '').startsWith('문맥 성경'));
     const observer = new MutationObserver(sync);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(dialog || document.body, { childList: true, subtree: true });
     return () => {
       cancelAnimationFrame(raf);
       observer.disconnect();
@@ -212,8 +217,9 @@ function ContextActiveCoursePanel({ course, currentStepIdx, onStepClick, onExit 
 }
 
 export function ContextChapterCard({ bookId, ch }) {
-  const [fontSize, setFontSize] = useState(CARD_FONT_DEFAULT);
   const { host: fontHost, compact } = useContextFontHost();
+  // compact=true 는 모바일 legend 스트립을 뜻하므로 그것으로 기본 크기를 정한다.
+  const [fontSize, setFontSize] = useState(compact ? CARD_FONT_DEFAULT_MOBILE : CARD_FONT_DEFAULT_DESKTOP);
   const bumpCardFont = (delta) => {
     setFontSize((prev) => Math.max(CARD_FONT_MIN, Math.min(CARD_FONT_MAX, prev + delta)));
   };

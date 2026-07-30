@@ -2462,43 +2462,20 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               } : { background: '#f8fafc' })
             }}>
             {isMobile && sheetSnap !== 'closed' && (
+              // 시트 상단 고정 핸들 바 — 항상 중앙, safe-area 반영, peek/full 토글 라벨 중앙 표시.
               <div
                 onClick={() => setSheetSnap(s => s === 'peek' ? 'full' : 'peek')}
-                style={{ display:'flex',flexDirection:'column',alignItems:'center',
-                  padding:'8px 0 4px',cursor:'pointer',userSelect:'none' }}>
-                <div style={{ width:38,height:5,borderRadius:99,background:'rgba(15,23,42,.18)' }} />
-                {sheetSnap === 'peek' && (() => {
-                  const d = activeAna.discourse;
-                  const qa = activeQaPairs[activeRef.verse];
-                  return (
-                    <div style={{ display:'flex',alignItems:'center',gap:8,marginTop:8,
-                      padding:'0 4px',width:'100%',justifyContent:'space-between' }}>
-                      <div style={{ display:'flex',alignItems:'center',gap:8,minWidth:0 }}>
-                        <span style={{ fontSize:12,fontWeight:800,color:'#b45309',flexShrink:0 }}>
-                          {activeRef.ch}:{activeRef.verse}
-                        </span>
-                        {d ? (
-                          <span style={{ display:'inline-flex',alignItems:'center',gap:4,
-                            padding:'3px 9px',borderRadius:99,
-                            background:d.bg,border:`1px solid ${d.color}55`,
-                            fontSize:11,fontWeight:800,color:d.color,flexShrink:0 }}>
-                            {d.icon} {d.role}
-                          </span>
-                        ) : (
-                          <span style={{ fontSize:11,color:'#64748b' }}>📝 진술</span>
-                        )}
-                        {qa && (
-                          <span style={{ fontSize:10,fontWeight:800,padding:'2px 6px',borderRadius:4,
-                            background: qa.type==='A' ? 'rgba(239,68,68,.15)' : 'rgba(245,158,11,.22)',
-                            color: qa.type==='A' ? '#dc2626' : '#b45309',flexShrink:0 }}>
-                            {qa.type==='QA'?'Q·A':qa.type}
-                          </span>
-                        )}
-                      </div>
-                      <span style={{ fontSize:10,color:'#94a3b8',flexShrink:0 }}>▲ 더보기</span>
-                    </div>
-                  );
-                })()}
+                style={{ position:'sticky', top:0, zIndex:2,
+                  background:'#ffffff',
+                  borderBottom: sheetSnap === 'full' ? '1px solid rgba(15,23,42,.06)' : 'none',
+                  display:'flex', flexDirection:'column', alignItems:'center',
+                  padding:'8px 0 6px', cursor:'pointer', userSelect:'none',
+                  touchAction:'manipulation' }}>
+                <div style={{ width:44, height:5, borderRadius:99, background:'rgba(15,23,42,.22)' }} />
+                <span style={{ marginTop:6, fontSize:11, fontWeight:700, color:'#64748b',
+                  letterSpacing:'.02em' }}>
+                  {sheetSnap === 'peek' ? '펼치기 ▲' : '접기 ▼'}
+                </span>
               </div>
             )}
             <div style={{ padding: isMobile ? '4px 0 calc(env(safe-area-inset-bottom, 0px) + 20px)' : 0 }}>
