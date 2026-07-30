@@ -1,4 +1,5 @@
 import { CURATED_OT_CORE } from './curatedChapterDetailsOTCore.js';
+import { CURATED_GEN } from './curatedChapterDetailsGen.js';
 
 // Curated chapter-level Context Bible details.
 // Each entry is intentionally book/chapter specific; do not replace with section-title cloning.
@@ -238,6 +239,7 @@ const CURATED_ESTH = {
 
 export const CURATED_CHAPTER_DETAILS = {
   ...CURATED_OT_CORE,
+  Gen: CURATED_GEN,
   '1Sam': CURATED_1SAM,
   '2Sam': CURATED_2SAM,
   '1Kgs': CURATED_1KGS,
