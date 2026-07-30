@@ -538,7 +538,7 @@ export default function VerseNode({ id, data, selected }) {
             💡 밑줄 단어 클릭 → 어형 분석
           </div>
         </div>
-      ) : activeTab !== 'original' ? (
+      ) : (activeTab !== 'original' && activeTab !== 'lxx') ? (
         <div
           ref={editableRef}
           className="rich-text-display nodrag nopan"
