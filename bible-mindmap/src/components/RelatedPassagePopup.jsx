@@ -7,7 +7,7 @@ import ParallelStudyModal from './ParallelStudyModal';
 
 const TABS = [
   { id: 'krv', label: '개역한글' },
-  { id: 'esv', label: 'ESV' },
+  { id: 'web', label: 'WEB' },
   { id: 'original', label: '원어' },
 ];
 
@@ -63,7 +63,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
       .then((result) => {
         if (cancelled) return;
         setTranslations(result);
-        if (!result.krv && !result.esv && !result.original) {
+        if (!result.krv && !result.web && !result.original) {
           setError('본문을 불러오지 못했습니다.');
         }
       })

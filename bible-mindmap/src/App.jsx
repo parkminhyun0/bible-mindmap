@@ -599,7 +599,7 @@ export default function App() {
         ? { x: sourceNode.position.x + 380, y: sourceNode.position.y + 80 }
         : { x: 400, y: 300 };
 
-      let translations = { krv: null, esv: null, original: null, lxx: null };
+      let translations = { krv: null, web: null, original: null, lxx: null };
       try {
         translations = await fetchAllTranslations(
           refData.bookId,
@@ -652,7 +652,7 @@ export default function App() {
       if (!target) return null;
 
       const reference = formatReference(source);
-      let translations = { krv: null, esv: null, original: null, lxx: null };
+      let translations = { krv: null, web: null, original: null, lxx: null };
       try {
         translations = await fetchAllTranslations(
           source.book,
@@ -714,7 +714,7 @@ export default function App() {
           });
         } else {
           const reference = formatReference(sugg.source);
-          let translations = { krv: null, esv: null, original: null, lxx: null };
+          let translations = { krv: null, web: null, original: null, lxx: null };
           try {
             translations = await fetchAllTranslations(
               sugg.source.book,

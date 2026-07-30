@@ -42,7 +42,7 @@ export async function findCrossrefsFor(refObj, topN = 8) {
 export function parseReference(refString) {
   if (!refString || typeof refString !== 'string') return null;
 
-  // 번역명 태그 제거: [개역한글], (ESV) 등
+  // 번역명 태그 제거: [개역한글], (WEB) 등
   const clean = refString.replace(/[[({][^\])}]*[\])}]/g, '').trim();
 
   // 형식: "<책명> <장>:<절시>" 또는 "<책명> <장>:<절시>-<절끝>"

@@ -2,7 +2,7 @@ import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import useMobile from '../hooks/useMobile';
 import {
   searchByOriginal, searchByEnglish, searchByKorean, detectInputMode,
-  fetchKRVVerses, fetchESVVerses, fetchOrigLangVerses, deriveOriginalFromKorean,
+  fetchKRVVerses, fetchWEBVerses, fetchOrigLangVerses, deriveOriginalFromKorean,
 } from '../utils/wordSearch';
 import { fetchStrongDefinition, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
@@ -513,7 +513,7 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
 
           <div style={{ display: 'grid', gridTemplateColumns: '7.5em 1fr', padding: '3px 10px', background: '#f1f5f9', borderBottom: '1px solid #e2e8f0', fontSize: fz - 4, fontWeight: 700, color: '#94a3b8', letterSpacing: 0.5 }}>
             <span>{isKoreanView ? '참조' : '참조 · 단어'}</span>
-            <span>{isKoreanView ? '한글 본문 (KRV)' : isEnglishView ? '영어 본문 (ESV)' : `원문 본문 (${isHeb ? 'WLC' : 'TAGNT'})`}</span>
+            <span>{isKoreanView ? '한글 본문 (KRV)' : isEnglishView ? '영어 본문 (WEB)' : `원문 본문 (${isHeb ? 'WLC' : 'TAGNT'})`}</span>
           </div>
 
           {filteredItems.map((r, i) => {
@@ -782,11 +782,11 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
 
         await Promise.all([
           fetchKRVVerses(primaryAcc, addTo('korean'), signal),
-          fetchESVVerses(primaryAcc, addTo('englishText'), signal),
+          fetchWEBVerses(primaryAcc, addTo('englishText'), signal),
           fetchOrigLangVerses(primaryAcc, addTo('origLangText'), signal),
         ]);
       } else {
-        // 한글 입력: KRV 절 검색 → 원어 단어 파생 → ESV/원어 절 본문 파생
+        // 한글 입력: KRV 절 검색 → 원어 단어 파생 → WEB/원어 절 본문 파생
         await searchByKorean(q, koScope, onPrimary, signal);
         if (signal.aborted || !primaryAcc.length) return;
 
@@ -803,7 +803,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
 
         if (!signal.aborted && derivedAcc.length) {
           await Promise.all([
-            fetchESVVerses(derivedAcc, addTo('englishText'), signal),
+            fetchWEBVerses(derivedAcc, addTo('englishText'), signal),
             fetchOrigLangVerses(derivedAcc, addTo('origLangText'), signal),
           ]);
         }

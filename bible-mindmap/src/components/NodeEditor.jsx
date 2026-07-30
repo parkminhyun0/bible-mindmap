@@ -35,7 +35,7 @@ const TEXT_COLORS = [
 const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 50];
 const TRANSLATION_TABS = [
   { id: 'krv', label: '개역한글' },
-  { id: 'esv', label: 'ESV' },
+  { id: 'web', label: 'WEB' },
   { id: 'original', label: '원어' },
 ];
 

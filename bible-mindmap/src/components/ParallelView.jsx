@@ -12,7 +12,7 @@ import LexiconPopup from './LexiconPopup';
 
 const COLUMNS = [
   { id: 'krv',      label: '개역한글', font: 'inherit' },
-  { id: 'esv',      label: 'ESV',      font: 'Georgia, serif' },
+  { id: 'web',      label: 'WEB',      font: 'Georgia, serif' },
   { id: 'original', label: '원어',      font: 'SBL BibLit, Cardo, serif' },
 ];
 
@@ -34,7 +34,7 @@ function newSyncId() {
 }
 
 const FONT_KEY = 'parallel-view-font-sizes-v2';
-const DEFAULT_FONT = { krv: 16, esv: 16, original: 20 };
+const DEFAULT_FONT = { krv: 16, web: 16, original: 20 };
 const FONT_MIN = 11;
 const FONT_MAX = 40;
 
@@ -44,7 +44,7 @@ function loadFontSizes() {
     if (stored && typeof stored === 'object') {
       return {
         krv:      clampFont(stored.krv ?? DEFAULT_FONT.krv),
-        esv:      clampFont(stored.esv ?? DEFAULT_FONT.esv),
+        web:      clampFont(stored.web ?? DEFAULT_FONT.web),
         original: clampFont(stored.original ?? DEFAULT_FONT.original),
       };
     }
@@ -164,11 +164,11 @@ export default function ParallelView({ node, onSave, onClose }) {
   });
 
   // 로딩/에러 상태
-  const [loading, setLoading] = useState({ krv: false, esv: false, original: false });
+  const [loading, setLoading] = useState({ krv: false, web: false, original: false });
   const [errors, setErrors] = useState({});
 
   // 열별로 현재 선택된 chip 인덱스 목록
-  const [selected, setSelected] = useState({ krv: [], esv: [], original: [] });
+  const [selected, setSelected] = useState({ krv: [], web: [], original: [] });
   const [message, setMessage] = useState('');
 
   // ── Lexicon (원어 어형 데이터) ─────────────────────────────────────
@@ -292,7 +292,7 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 특정 그룹 전체 선택/해제 (chip 클릭 시 같은 syncId 전체를 함께 선택하면 편리)
   const selectWholeGroup = (syncId) => {
     if (!syncId) return;
-    const next = { krv: [], esv: [], original: [] };
+    const next = { krv: [], web: [], original: [] };
     for (const col of COLUMNS) {
       (tokensByTab[col.id] || []).forEach((t, i) => {
         if (t.syncId === syncId) next[col.id].push(i);
@@ -303,7 +303,7 @@ export default function ParallelView({ node, onSave, onClose }) {
   };
 
   const clearSelection = () => {
-    setSelected({ krv: [], esv: [], original: [] });
+    setSelected({ krv: [], web: [], original: [] });
     setMessage('');
   };
 
@@ -338,7 +338,7 @@ export default function ParallelView({ node, onSave, onClose }) {
       return next;
     });
     setMessage(`✓ 그룹에 ${color} 적용됨. 다른 그룹을 만들려면 새 단어를 선택하세요.`);
-    setSelected({ krv: [], esv: [], original: [] });
+    setSelected({ krv: [], web: [], original: [] });
   };
 
   const clearGroup = () => {
@@ -353,7 +353,7 @@ export default function ParallelView({ node, onSave, onClose }) {
       }
       return next;
     });
-    setSelected({ krv: [], esv: [], original: [] });
+    setSelected({ krv: [], web: [], original: [] });
     setMessage('선택한 chip의 그룹 해제됨');
   };
 
@@ -519,7 +519,7 @@ export default function ParallelView({ node, onSave, onClose }) {
           <div style={{ fontSize: 12, color: '#475569', flex: 1 }}>
             {message || (
               selectedCount > 0
-                ? `선택됨: 개역한글 ${selected.krv.length} · ESV ${selected.esv.length} · 원어 ${selected.original.length}`
+                ? `선택됨: 개역한글 ${selected.krv.length} · WEB ${selected.web.length} · 원어 ${selected.original.length}`
                 : '💡 팁: 대응 단어 클릭 → 색상 선택으로 페어링 · Shift+클릭: 그룹 전체 선택 · Cmd/Ctrl+원어 단어 클릭: 어형 분석 카드'
             )}
           </div>

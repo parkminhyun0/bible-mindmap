@@ -1,7 +1,7 @@
 import { Mark, mergeAttributes } from '@tiptap/core';
 
 /**
- * SyncMark — 세 역본(개역한글/ESV/원어)의 대응 단어를 같은 syncId로 묶어
+ * SyncMark — 세 역본(개역한글/WEB/원어)의 대응 단어를 같은 syncId로 묶어
  * 한 곳에서 스타일을 바꾸면 나머지 두 역본에도 자동 반영되도록 하는 TipTap Mark.
  *
  * HTML: <span data-sync-id="sync-abc" style="font-weight:bold; color:#ef4444;">단어</span>

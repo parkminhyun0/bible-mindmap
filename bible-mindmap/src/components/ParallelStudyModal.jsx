@@ -30,7 +30,7 @@ import {
 
 const TRANSLATION_TABS = [
   { id: 'krv', label: '개역한글' },
-  { id: 'esv', label: 'ESV' },
+  { id: 'web', label: 'WEB' },
   { id: 'original', label: '원어' },
 ];
 
@@ -333,7 +333,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
           const result = await fetchAllTranslations(entry.ref.book, entry.ref.chapter, entry.ref.verseStart, entry.ref.verseEnd);
           return [key, result];
         } catch {
-          return [key, { krv: null, esv: null, original: null }];
+          return [key, { krv: null, web: null, original: null }];
         }
       }));
       if (!cancelled) setTexts(Object.fromEntries(pairs));

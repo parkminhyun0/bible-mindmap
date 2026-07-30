@@ -4,7 +4,7 @@
  *
  * - 원문/영어: lex JSON 로컬 파일 → 단어 단위 결과 (w, l, g, s, m)
  * - 한글: Bolls.life KRV API 병렬 스캔 → 절 단위 결과
- * - 절 본문 파생: KRV/ESV(Bolls.life) 및 원어(lex JSON 재구성)
+ * - 절 본문 파생: KRV/WEB(Bolls.life) 및 원어(lex JSON 재구성)
  */
 
 import { ALL_BOOKS, OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
@@ -309,10 +309,10 @@ export const fetchKRVVerses = (wordResults, onResult, signal) =>
   fetchBollsVerses('KRV', wordResults, onResult, signal);
 
 /**
- * 원문/영어 단어 결과 → ESV 영어 본문 파생.
+ * 원문/영어 단어 결과 → WEB 영어 본문 파생.
  */
-export const fetchESVVerses = (wordResults, onResult, signal) =>
-  fetchBollsVerses('ESV', wordResults, onResult, signal);
+export const fetchWEBVerses = (wordResults, onResult, signal) =>
+  fetchBollsVerses('WEB', wordResults, onResult, signal);
 
 /**
  * 원문 단어 결과 → 렉시콘 JSON에서 히브리어/헬라어 절 본문 재구성.

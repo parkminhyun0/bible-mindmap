@@ -19,10 +19,10 @@ const EDGE_BADGE_CONFIG = [
 
 const TABS = [
   { id: 'krv',      label: '개역한글' },
-  { id: 'esv',      label: 'ESV' },
+  { id: 'web',      label: 'WEB' },
   { id: 'original', label: '원어' },
 ];
-const TRANSLATION_TAB_IDS = ['krv', 'esv', 'original'];
+const TRANSLATION_TAB_IDS = ['krv', 'web', 'original'];
 
 function collectTextNodes(root) {
   const nodes = [];
@@ -532,7 +532,7 @@ export default function VerseNode({ id, data, selected }) {
           className="rich-text-display nodrag nopan"
           contentEditable
           suppressContentEditableWarning
-          spellCheck={activeTab === 'esv'}
+          spellCheck={activeTab === 'web'}
           onFocus={() => {
             stripAnnotationMarkup(editableRef.current);
             setSelectionPin(null);

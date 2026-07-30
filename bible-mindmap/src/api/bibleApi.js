@@ -6,7 +6,7 @@ const LEX_BASE = import.meta.env?.BASE_URL || '/';
 // Translation definitions used by BibleSearch and VerseNode
 export const TRANSLATIONS = [
   { id: 'krv',      label: '개역한글', lang: 'ko' },
-  { id: 'esv',      label: 'ESV',      lang: 'en' },
+  { id: 'web',      label: 'WEB',      lang: 'en' },
   { id: 'original', label: '원어',      lang: 'multi' },
 ];
 
@@ -125,7 +125,7 @@ async function fetchOriginalGreek(bookId, chapter, verseStart, verseEnd) {
     .join(' ');
 }
 
-// ── bolls.life (KRV, ESV, WLC) ────────────────────────────────────────────
+// ── bolls.life (KRV, WEB, WLC) ────────────────────────────────────────────
 // 절 번호를 인라인 <span>으로 삽입하여 여러 절을 이어 붙일 때도 구분되도록 함.
 // TipTap TextStyle 확장이 style 속성을 보존하므로 편집 후에도 유지됨.
 const VERSE_NUM_STYLE = 'font-weight:700;color:#94a3b8;font-size:0.78em;margin-right:3px;vertical-align:0.28em;';
@@ -152,8 +152,8 @@ async function fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, transla
 }
 
 // ── fetchVerse ────────────────────────────────────────────────────────────
-// Supports new IDs (krv/esv/original) and legacy IDs (korean/wlc/greek).
-const LEGACY_ID_MAP = { korean: 'krv', wlc: 'original', greek: 'original' };
+// Supports new IDs (krv/web/original) and legacy IDs (korean/wlc/greek).
+const LEGACY_ID_MAP = { korean: 'krv', wlc: 'original', greek: 'original', esv: 'web' };
 
 export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translationId) {
   const book = ALL_BOOKS.find((b) => b.id === bookId);
@@ -164,8 +164,8 @@ export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translat
   switch (id) {
     case 'krv':
       return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'KRV');
-    case 'esv':
-      return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'ESV');
+    case 'web':
+      return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'WEB');
     case 'original': {
       // 히브리어(구약): WLC — 퍼블릭 도메인, bolls.life 유지
       if (isOT(bookId)) {
@@ -179,15 +179,15 @@ export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translat
   }
 }
 
-// Fetch all 3 translations in parallel. Returns { krv, esv, original } — null for failures.
+// Fetch all 3 translations in parallel. Returns { krv, web, original } — null for failures.
 export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd) {
   const safe = (id) =>
     fetchVerse(bookId, chapter, verseStart, verseEnd, id).catch(() => null);
 
-  const [krv, esv, original] = await Promise.all([
-    safe('krv'), safe('esv'), safe('original'),
+  const [krv, web, original] = await Promise.all([
+    safe('krv'), safe('web'), safe('original'),
   ]);
-  return { krv, esv, original };
+  return { krv, web, original };
 }
 
 // 해당 장의 총 절 수를 반환 (KRV 기준, 캐시 재사용).
