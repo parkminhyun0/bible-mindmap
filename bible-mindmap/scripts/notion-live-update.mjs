@@ -21,13 +21,35 @@ if (!TOKEN) {
   process.exit(0);
 }
 
+import { execSync } from 'node:child_process';
+
 const sha = (process.env.DEPLOY_SHA || process.env.GITHUB_SHA || '').slice(0, 7) || 'unknown';
 const runUrl = process.env.DEPLOY_RUN_URL || '';
 const when = process.env.DEPLOY_TIME || new Date().toISOString();
 
+// 방금 배포된 작업 내용(커밋 메시지)과 최근 이력을 함께 기록해, 자비스·GPT가
+// 대시보드만 보고도 "무엇이 최신인지"를 즉시 파악할 수 있게 한다.
+// (checkout fetch-depth: 0 필요 — 얕은 체크아웃이면 last-5가 짧아질 뿐 실패하지 않음.)
+function git(cmd, fallback = '') {
+  try {
+    return execSync(`git ${cmd}`, { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  } catch {
+    return fallback;
+  }
+}
+
+const headSubject = git('log -1 --pretty=%s', '(커밋 메시지 조회 실패)').slice(0, 200);
+const recent = git('log -5 --pretty=format:"%h %s"')
+  .split('\n')
+  .filter(Boolean)
+  .map((l) => `  • ${l}`.slice(0, 160))
+  .join('\n');
+
 const richText = [
-  { type: 'text', text: { content: 'CI 자동 배포 로그 (GitHub Actions가 매 배포 성공 시 자동 갱신)\n' }, annotations: { bold: true } },
+  { type: 'text', text: { content: '🤖 CI 자동 배포 로그 (GitHub Actions가 매 배포 성공 시 자동 갱신 · 사람이 편집하지 말 것)\n' }, annotations: { bold: true } },
   { type: 'text', text: { content: `라이브 커밋: ${sha} · verify:deploy ✓ · 배포 시각: ${when}\n` } },
+  { type: 'text', text: { content: `최신 작업: ${headSubject}\n`, }, annotations: { color: 'green' } },
+  { type: 'text', text: { content: `\n최근 이력(신→구):\n${recent || '  • (이력 없음)'}\n\n` } },
   { type: 'text', text: { content: runUrl ? `Actions run: ${runUrl}` : 'Actions run URL 미제공' } },
 ];
 

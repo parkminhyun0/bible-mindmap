@@ -127,6 +127,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # notion-live-update.mjs 의 git log -5(최근 이력)용
 
       - uses: actions/setup-node@v4
         with:
