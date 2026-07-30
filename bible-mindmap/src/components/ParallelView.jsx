@@ -13,6 +13,7 @@ import LexiconPopup from './LexiconPopup';
 const COLUMNS = [
   { id: 'krv',      label: '개역한글', font: 'inherit' },
   { id: 'web',      label: 'WEB',      font: 'Georgia, serif' },
+  { id: 'lxx',      label: 'LXX',      font: 'SBL BibLit, Cardo, serif', otOnly: true },
   { id: 'original', label: '원어',      font: 'SBL BibLit, Cardo, serif' },
 ];
 
@@ -34,7 +35,7 @@ function newSyncId() {
 }
 
 const FONT_KEY = 'parallel-view-font-sizes-v2';
-const DEFAULT_FONT = { krv: 16, web: 16, original: 20 };
+const DEFAULT_FONT = { krv: 16, web: 16, lxx: 20, original: 20 };
 const FONT_MIN = 11;
 const FONT_MAX = 40;
 
@@ -45,6 +46,7 @@ function loadFontSizes() {
       return {
         krv:      clampFont(stored.krv ?? DEFAULT_FONT.krv),
         web:      clampFont(stored.web ?? DEFAULT_FONT.web),
+        lxx:      clampFont(stored.lxx ?? DEFAULT_FONT.lxx),
         original: clampFont(stored.original ?? DEFAULT_FONT.original),
       };
     }
@@ -146,6 +148,8 @@ function isEmptyHtml(s) {
 
 export default function ParallelView({ node, onSave, onClose }) {
   const isMobile = useMobile();
+  // LXX(칠십인역)는 구약 절에만 열로 노출한다.
+  const columns = COLUMNS.filter((c) => !c.otOnly || (node.data.bookId && isOT(node.data.bookId)));
   // 모바일 오버라이드
   const mOverlay = isMobile ? { padding: 0 } : {};
   const mModal   = isMobile ? { maxWidth: '100%', width: '100%', maxHeight: 'none',
@@ -157,18 +161,18 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 각 열의 토큰 상태
   const [tokensByTab, setTokensByTab] = useState(() => {
     const init = {};
-    for (const col of COLUMNS) {
+    for (const col of columns) {
       init[col.id] = htmlToTokens(node.data.translations?.[col.id] || '');
     }
     return init;
   });
 
   // 로딩/에러 상태
-  const [loading, setLoading] = useState({ krv: false, web: false, original: false });
+  const [loading, setLoading] = useState(Object.fromEntries(columns.map((c) => [c.id, false])));
   const [errors, setErrors] = useState({});
 
   // 열별로 현재 선택된 chip 인덱스 목록
-  const [selected, setSelected] = useState({ krv: [], web: [], original: [] });
+  const [selected, setSelected] = useState(Object.fromEntries(columns.map((c) => [c.id, []])));
   const [message, setMessage] = useState('');
 
   // ── Lexicon (원어 어형 데이터) ─────────────────────────────────────
@@ -259,7 +263,7 @@ export default function ParallelView({ node, onSave, onClose }) {
   };
 
   useEffect(() => {
-    for (const col of COLUMNS) {
+    for (const col of columns) {
       const cur = node.data.translations?.[col.id];
       if (isEmptyHtml(cur)) loadColumn(col.id);
     }
@@ -269,7 +273,7 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 기존 그룹의 대표 색상 조회 (syncId → color)
   const groupColorMap = useMemo(() => {
     const m = new Map();
-    for (const col of COLUMNS) {
+    for (const col of columns) {
       for (const t of tokensByTab[col.id] || []) {
         if (t.syncId && !m.has(t.syncId)) {
           const match = (t.styleStr || '').match(/color:\s*([^;]+)/i);
@@ -292,8 +296,8 @@ export default function ParallelView({ node, onSave, onClose }) {
   // 특정 그룹 전체 선택/해제 (chip 클릭 시 같은 syncId 전체를 함께 선택하면 편리)
   const selectWholeGroup = (syncId) => {
     if (!syncId) return;
-    const next = { krv: [], web: [], original: [] };
-    for (const col of COLUMNS) {
+    const next = Object.fromEntries(columns.map((c) => [c.id, []]));
+    for (const col of columns) {
       (tokensByTab[col.id] || []).forEach((t, i) => {
         if (t.syncId === syncId) next[col.id].push(i);
       });
@@ -303,13 +307,13 @@ export default function ParallelView({ node, onSave, onClose }) {
   };
 
   const clearSelection = () => {
-    setSelected({ krv: [], web: [], original: [] });
+    setSelected(Object.fromEntries(columns.map((c) => [c.id, []])));
     setMessage('');
   };
 
   const applyColor = (color) => {
     // 세 열 모두에 선택이 있어야 페어링 생성
-    const cols = COLUMNS.map((c) => c.id);
+    const cols = columns.map((c) => c.id);
     const hasAny = cols.some((id) => selected[id].length > 0);
     if (!hasAny) {
       setMessage('먼저 각 열에서 대응 단어를 클릭해 주세요.');
@@ -338,12 +342,12 @@ export default function ParallelView({ node, onSave, onClose }) {
       return next;
     });
     setMessage(`✓ 그룹에 ${color} 적용됨. 다른 그룹을 만들려면 새 단어를 선택하세요.`);
-    setSelected({ krv: [], web: [], original: [] });
+    setSelected(Object.fromEntries(columns.map((c) => [c.id, []])));
   };
 
   const clearGroup = () => {
     // 선택된 chip에서 syncId 및 styleStr 제거
-    const cols = COLUMNS.map((c) => c.id);
+    const cols = columns.map((c) => c.id);
     setTokensByTab((prev) => {
       const next = { ...prev };
       for (const id of cols) {
@@ -353,13 +357,13 @@ export default function ParallelView({ node, onSave, onClose }) {
       }
       return next;
     });
-    setSelected({ krv: [], web: [], original: [] });
+    setSelected(Object.fromEntries(columns.map((c) => [c.id, []])));
     setMessage('선택한 chip의 그룹 해제됨');
   };
 
   const handleSave = () => {
     const updated = {};
-    for (const col of COLUMNS) {
+    for (const col of columns) {
       const tokens = tokensByTab[col.id] || [];
       if (tokens.length === 0) continue; // 빈 열은 저장 스킵 (기존 데이터 덮어쓰기 방지)
       updated[col.id] = tokensToHtml(tokens);
@@ -374,7 +378,7 @@ export default function ParallelView({ node, onSave, onClose }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose]);
 
-  const selectedCount = COLUMNS.reduce((sum, c) => sum + (selected[c.id]?.length || 0), 0);
+  const selectedCount = columns.reduce((sum, c) => sum + (selected[c.id]?.length || 0), 0);
 
   return (
     <div style={{ ...overlayStyle, ...mOverlay }} onClick={onClose}
@@ -404,7 +408,7 @@ export default function ParallelView({ node, onSave, onClose }) {
           style={{ ...columnsWrapStyle, ...mCols,
             overflow: isMobile ? 'auto' : 'hidden',
             WebkitOverflowScrolling: 'touch' }}>
-          {COLUMNS.map((col) => (
+          {columns.map((col) => (
             <div key={col.id} style={columnStyle}>
               <div style={{ ...columnHeaderStyle, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 6 }}>
                 <span style={{ flexShrink: 0 }}>
