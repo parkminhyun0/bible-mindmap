@@ -513,7 +513,7 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
 
           <div style={{ display: 'grid', gridTemplateColumns: '7.5em 1fr', padding: '3px 10px', background: '#f1f5f9', borderBottom: '1px solid #e2e8f0', fontSize: fz - 4, fontWeight: 700, color: '#94a3b8', letterSpacing: 0.5 }}>
             <span>{isKoreanView ? '참조' : '참조 · 단어'}</span>
-            <span>{isKoreanView ? '한글 본문 (KRV)' : isEnglishView ? '영어 본문 (ESV)' : `원문 본문 (${isHeb ? 'WLC' : 'NA28'})`}</span>
+            <span>{isKoreanView ? '한글 본문 (KRV)' : isEnglishView ? '영어 본문 (ESV)' : `원문 본문 (${isHeb ? 'WLC' : 'TAGNT'})`}</span>
           </div>
 
           {filteredItems.map((r, i) => {
