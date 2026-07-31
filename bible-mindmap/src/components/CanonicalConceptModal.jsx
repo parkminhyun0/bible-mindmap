@@ -10,7 +10,8 @@ import LexiconPopup from './LexiconPopup';
  * 정경 추적 · 핵심 개념 카드 (파일럿 6개).
  * 하나의 개념이 창세기→요한계시록으로 계시·성취되는 흐름을 4개 탭으로 제시:
  *   📜 정경 흐름 · 🗺️ 용례 지도 · 🔤 원문 분석 · ✝️ 신학 해설
- * 데스크톱: 헤더 드래그 이동 · 우하단 리사이즈 · 축소(헤더만) · 글자크기 3단.
+ * 데스크톱: 헤더 드래그 이동 · 우하단 리사이즈 · 축소(헤더만).
+ * 글자 크기: 창 안 [타이틀][분류텍스트][본문] 단위별 −/+ 스테퍼 (문맥 성경과 동일, 최대 50pt).
  * 모바일: 하단 시트.
  * 데이터: src/data/canonicalConcepts.js (CANONICAL_CONCEPTS)
  */
@@ -35,9 +36,8 @@ const CONNECTIONS = {
   E: { ko: '예표적 암시', desc: '원형·그림자 수준의 예표', color: '#6b7280' },
 };
 
-// 글자 크기 단계 (본문 배율)
-const FONT_STEPS = [0.9, 1, 1.15, 1.3];
-const FONT_LABELS = { 0.9: '작게', 1: '보통', 1.15: '크게', 1.3: '아주 크게' };
+const FONT_MIN = 9;
+const FONT_MAX = 50;
 
 function parseRef(ref) {
   const [bookId, ch, v] = String(ref).split(':');
@@ -51,13 +51,23 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const [active, setActive] = useState(initialConcept && CANONICAL_CONCEPTS[initialConcept] ? initialConcept : keys[0]);
   const [tab, setTab] = useState('arc'); // arc | map | lex | note
   const [lexEntry, setLexEntry] = useState(null);
-
-  // ── 축소 / 글자 크기 ──────────────────────────────────────────────
   const [minimized, setMinimized] = useState(false);
-  const [fontIdx, setFontIdx] = useState(1); // FONT_STEPS 인덱스
-  const scale = FONT_STEPS[fontIdx];
-  const fs = useCallback((px) => Math.round(px * scale * 10) / 10, [scale]);
-  const cycleFont = () => setFontIdx((i) => (i + 1) % FONT_STEPS.length);
+
+  // ── 글자 크기 (단위별) ────────────────────────────────────────────
+  const [fontSizes, setFontSizes] = useState({
+    title: 20,     // 타이틀: 개념명(한/히/헬)·원어 단어
+    category: 12,  // 분류텍스트: 단계명·언약/등급 배지·섹션 헤더·칩
+    body: 14,      // 본문: 요약·신학 해설·설명·구절 참조
+  });
+  const bumpFont = useCallback((key, delta) => {
+    setFontSizes((prev) => ({
+      ...prev,
+      [key]: Math.max(FONT_MIN, Math.min(FONT_MAX, prev[key] + delta)),
+    }));
+  }, []);
+  const T = fontSizes.title;
+  const C = fontSizes.category;
+  const B = fontSizes.body;
 
   // ── 위치 / 크기 (데스크톱) ────────────────────────────────────────
   const [pos, setPos] = useState(() => {
@@ -147,7 +157,6 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
     { key: 'note', label: '✝️ 신학 해설' },
   ];
 
-  // 컨테이너 위치/크기 스타일 — 데스크톱은 pos/size, 모바일은 하단 시트
   const containerStyle = isMobile
     ? {
         left: 0, bottom: 0, top: 'auto', transform: 'none',
@@ -166,7 +175,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
     background: 'rgba(255,255,255,.14)', border: 'none', color: '#f1f5f9',
     height: 30, minWidth: isMobile ? 38 : 30, minHeight: isMobile ? 38 : 30,
     padding: '0 8px', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: 700,
-    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 4,
+    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
   };
 
   return createPortal(
@@ -224,14 +233,6 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
             <button
-              onClick={cycleFont}
-              style={iconBtn}
-              aria-label="글자 크기 변경"
-              title={`글자 크기: ${FONT_LABELS[scale]} (눌러서 변경)`}
-            >
-              <span style={{ fontSize: 11 }}>가</span><span style={{ fontSize: 15 }}>가</span>
-            </button>
-            <button
               onClick={() => setMinimized((m) => !m)}
               style={iconBtn}
               aria-label={minimized ? '펼치기' : '축소'}
@@ -248,6 +249,36 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
 
         {!minimized && (
           <>
+            {/* 글자 크기 스테퍼 — [타이틀][분류텍스트][본문] 단위별 (문맥 성경 동일) */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              padding: '6px 12px', borderBottom: '1px solid #e2e8f0',
+              background: 'rgba(30,41,59,.04)', flexShrink: 0,
+              overflowX: 'auto', WebkitOverflowScrolling: 'touch',
+            }}>
+              <span style={{ fontSize: 11, fontWeight: 800, color: '#475569', letterSpacing: '.02em', flexShrink: 0 }}>Aa</span>
+              {[
+                { key: 'title',    label: '타이틀' },
+                { key: 'category', label: '분류텍스트' },
+                { key: 'body',     label: '본문' },
+              ].map((g) => (
+                <div key={g.key} style={{
+                  display: 'flex', alignItems: 'center', gap: 2,
+                  background: '#fff', border: '1px solid #cbd5e1',
+                  borderRadius: 8, padding: '2px 4px', flexShrink: 0,
+                }}>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: '#475569', padding: '0 4px' }}>{g.label}</span>
+                  <button onClick={() => bumpFont(g.key, -1)}
+                    aria-label={`${g.label} 글자 작게`}
+                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#334155', fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 6 }}>−</button>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: '#1e293b', minWidth: 22, textAlign: 'center' }}>{fontSizes[g.key]}</span>
+                  <button onClick={() => bumpFont(g.key, 1)}
+                    aria-label={`${g.label} 글자 크게`}
+                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#334155', fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 6 }}>+</button>
+                </div>
+              ))}
+            </div>
+
             {/* 개념 선택 칩 */}
             <div style={{
               display: 'flex', gap: 6, padding: '10px 14px', flexWrap: 'wrap',
@@ -273,12 +304,12 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               })}
             </div>
 
-            {/* 개념 요약 */}
+            {/* 개념 요약 (타이틀) */}
             <div style={{ padding: '12px 16px 8px', borderBottom: '1px solid #f1f5f9', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: fs(20), fontWeight: 800, color: '#1e293b' }}>{concept.labelKo}</span>
-                <span style={{ fontSize: fs(15), color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
-                <span style={{ fontSize: fs(15), color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
+                <span style={{ fontSize: T, fontWeight: 800, color: '#1e293b' }}>{concept.labelKo}</span>
+                <span style={{ fontSize: Math.round(T * 0.75), color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
+                <span style={{ fontSize: Math.round(T * 0.75), color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
               </div>
             </div>
 
@@ -319,12 +350,12 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                         </div>
                         <div style={{ paddingBottom: last ? 0 : 16, flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
-                            <span style={{ fontSize: fs(12), fontWeight: 800, color: '#1e293b' }}>{s.stage}</span>
+                            <span style={{ fontSize: C, fontWeight: 800, color: '#1e293b' }}>{s.stage}</span>
                             <button
                               onClick={() => addRef(s.ref)}
                               title={onAddVerse ? '이 구절을 캔버스에 추가' : undefined}
                               style={{
-                                fontSize: fs(11), fontFamily: 'monospace', fontWeight: 700,
+                                fontSize: B, fontFamily: 'monospace', fontWeight: 700,
                                 color: onAddVerse ? '#2563eb' : '#64748b',
                                 background: onAddVerse ? '#eff6ff' : '#f1f5f9',
                                 border: onAddVerse ? '1px solid #bfdbfe' : '1px solid transparent',
@@ -332,10 +363,10 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                               }}
                             >{book?.ko || bookId} {chapter}:{verse}{onAddVerse ? ' +' : ''}</button>
                           </div>
-                          <div style={{ fontSize: fs(12.5), color: '#334155', lineHeight: 1.55, marginBottom: 5 }}>{s.summary}</div>
+                          <div style={{ fontSize: B, color: '#334155', lineHeight: 1.55, marginBottom: 5 }}>{s.summary}</div>
                           <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: fs(10), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: '#fff', background: cov.color }}>{cov.ko}</span>
-                            <span title={con.desc} style={{ fontSize: fs(10), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: con.color, background: '#f1f5f9', border: `1px solid ${con.color}33` }}>{s.connectionType}급 · {con.ko}</span>
+                            <span style={{ fontSize: Math.max(9, C - 2), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: '#fff', background: cov.color }}>{cov.ko}</span>
+                            <span title={con.desc} style={{ fontSize: Math.max(9, C - 2), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: con.color, background: '#f1f5f9', border: `1px solid ${con.color}33` }}>{s.connectionType}급 · {con.ko}</span>
                           </div>
                         </div>
                       </div>
@@ -346,7 +377,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
 
               {tab === 'map' && (
                 <div style={{ padding: '14px 16px' }}>
-                  <div style={{ fontSize: fs(11), color: '#64748b', marginBottom: 10 }}>
+                  <div style={{ fontSize: B, color: '#64748b', marginBottom: 10 }}>
                     개념이 등장하는 본문을 언약 구조에 따라 배치했습니다. 구절을 눌러 캔버스에 추가하세요.
                   </div>
                   {Object.keys(COVENANTS).filter((cv) => concept.canonicalArc.some((s) => s.covenantLink === cv)).map((cv) => {
@@ -356,7 +387,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                       <div key={cv} style={{ marginBottom: 12 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
                           <span style={{ width: 9, height: 9, borderRadius: '50%', background: cov.color }} />
-                          <span style={{ fontSize: fs(11), fontWeight: 800, color: '#334155' }}>{cov.ko}</span>
+                          <span style={{ fontSize: C, fontWeight: 800, color: '#334155' }}>{cov.ko}</span>
                         </div>
                         <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', paddingLeft: 15 }}>
                           {items.map((s, i) => {
@@ -368,7 +399,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                                 onClick={() => addRef(s.ref)}
                                 title={s.summary}
                                 style={{
-                                  fontSize: fs(11), fontFamily: 'monospace', fontWeight: 700,
+                                  fontSize: B, fontFamily: 'monospace', fontWeight: 700,
                                   color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
                                   borderRadius: 6, padding: '4px 8px', cursor: onAddVerse ? 'pointer' : 'default',
                                 }}
@@ -387,16 +418,16 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                     <LexRow
                       lang="히브리어" flag="🟠" strong={concept.strong?.he}
-                      label={concept.labelHe} isHebrew fs={fs}
+                      label={concept.labelHe} isHebrew T={T} C={C}
                       onOpen={() => setLexEntry({ s: concept.strong?.he, w: concept.labelHe?.split(' ')[0], tr: concept.labelHe, l: concept.labelHe?.split(' ')[0] })}
                     />
                     <LexRow
                       lang="헬라어" flag="🔵" strong={concept.strong?.gr}
-                      label={concept.labelGr} fs={fs}
+                      label={concept.labelGr} T={T} C={C}
                       onOpen={() => setLexEntry({ s: concept.strong?.gr, w: concept.labelGr?.split(' ')[0], tr: concept.labelGr, l: concept.labelGr?.split(' ')[0] })}
                     />
                   </div>
-                  <div style={{ marginTop: 12, fontSize: fs(11), color: '#94a3b8' }}>
+                  <div style={{ marginTop: 12, fontSize: B, color: '#94a3b8' }}>
                     단어를 누르면 원어 사전 카드(정의·용례)가 열립니다.
                   </div>
                 </div>
@@ -405,25 +436,25 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               {tab === 'note' && (
                 <div style={{ padding: '14px 16px' }}>
                   <div style={{
-                    fontSize: fs(13), color: '#1e293b', lineHeight: 1.7,
+                    fontSize: B, color: '#1e293b', lineHeight: 1.7,
                     background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 10, padding: '12px 14px',
                   }}>
                     {concept.theologicalNote}
                   </div>
                   {concept.reformedAnchors?.length > 0 && (
                     <div style={{ marginTop: 12 }}>
-                      <div style={{ fontSize: fs(10), fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>개혁주의 신학 앵커</div>
+                      <div style={{ fontSize: Math.max(9, C - 2), fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>개혁주의 신학 앵커</div>
                       <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
                         {concept.reformedAnchors.map((a, i) => (
-                          <span key={i} style={{ fontSize: fs(11), fontWeight: 700, padding: '3px 9px', borderRadius: 999, color: '#065f46', background: '#d1fae5', border: '1px solid #6ee7b7' }}>{a}</span>
+                          <span key={i} style={{ fontSize: C, fontWeight: 700, padding: '3px 9px', borderRadius: 999, color: '#065f46', background: '#d1fae5', border: '1px solid #6ee7b7' }}>{a}</span>
                         ))}
                       </div>
                     </div>
                   )}
                   <div style={{ marginTop: 16 }}>
-                    <div style={{ fontSize: fs(10), fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>연결 등급 (근거 강도)</div>
+                    <div style={{ fontSize: Math.max(9, C - 2), fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>연결 등급 (근거 강도)</div>
                     {Object.entries(CONNECTIONS).map(([k, v]) => (
-                      <div key={k} style={{ display: 'flex', gap: 8, fontSize: fs(11), marginBottom: 3, alignItems: 'baseline' }}>
+                      <div key={k} style={{ display: 'flex', gap: 8, fontSize: B, marginBottom: 3, alignItems: 'baseline' }}>
                         <span style={{ fontWeight: 800, color: v.color, minWidth: 14 }}>{k}</span>
                         <span style={{ fontWeight: 700, color: '#334155', minWidth: 66 }}>{v.ko}</span>
                         <span style={{ color: '#64748b' }}>{v.desc}</span>
@@ -473,7 +504,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   );
 }
 
-function LexRow({ lang, flag, strong, label, isHebrew, onOpen, fs }) {
+function LexRow({ lang, flag, strong, label, isHebrew, onOpen, T, C }) {
   if (!strong) return null;
   return (
     <div style={{
@@ -483,11 +514,11 @@ function LexRow({ lang, flag, strong, label, isHebrew, onOpen, fs }) {
     }}>
       <span style={{ fontSize: 16 }}>{flag}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
-        <div style={{ fontSize: fs(10), fontWeight: 800, color: '#94a3b8', letterSpacing: 0.5 }}>{lang}</div>
+        <div style={{ fontSize: Math.max(9, C - 2), fontWeight: 800, color: '#94a3b8', letterSpacing: 0.5 }}>{lang}</div>
         <button
           onClick={onOpen}
           style={{
-            fontSize: fs(17), fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer',
+            fontSize: Math.round(T * 0.85), fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer',
             color: isHebrew ? '#92400e' : '#1d4ed8', padding: 0, textAlign: 'left',
             fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif',
           }}
@@ -495,7 +526,7 @@ function LexRow({ lang, flag, strong, label, isHebrew, onOpen, fs }) {
         >{label}</button>
       </div>
       <span style={{
-        fontSize: fs(11), fontFamily: 'monospace', fontWeight: 700, color: '#475569',
+        fontSize: C, fontFamily: 'monospace', fontWeight: 700, color: '#475569',
         background: '#f1f5f9', borderRadius: 4, padding: '2px 6px',
       }}>{strong}</span>
     </div>
