@@ -263,21 +263,17 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             <button
               onClick={() => setShowContextBible(true)}
               style={{
-                width: '100%', padding: '10px 12px', minHeight: 44,
-                background: 'linear-gradient(135deg, rgba(217,119,6,.15), rgba(251,191,36,.1))',
-                border: '1px solid rgba(217,119,6,.35)',
-                borderRadius: 8, cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-                color: '#d97706', fontSize: 13, fontWeight: 700,
-                touchAction: 'manipulation',
+                ...MENU_BTN_BASE,
+                background: 'linear-gradient(135deg,#78350f,#b45309)',
+                boxShadow: '0 2px 8px rgba(180,83,9,.35)',
               }}
             >
               📖 문맥 성경
             </button>
-            <div style={{ marginTop: 6 }}>
+            <div style={{ marginTop: MENU_BTN_GAP }}>
               <ParallelStudyLauncher />
             </div>
-            <div style={{ marginTop: 6 }}>
+            <div style={{ marginTop: MENU_BTN_GAP }}>
               <CanonicalConceptLauncher />
             </div>
           </div>
@@ -680,35 +676,20 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
         <button
           onClick={() => setShowContextBible(true)}
           style={{
-            width: '100%', padding: '9px 12px',
-            background: '#593E2E',
-            border: '1px solid #3d2a20',
-            borderRadius: 8, cursor: 'pointer',
-            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-            color: '#EAD7C1', fontSize: 12, fontWeight: 700,
-            letterSpacing: '.02em',
-            transition: 'background .18s, color .18s, border-color .18s, box-shadow .18s',
-            boxShadow: '0 1px 3px rgba(89,62,46,.25)',
+            ...MENU_BTN_BASE,
+            background: 'linear-gradient(135deg,#78350f,#b45309)',
+            boxShadow: '0 2px 8px rgba(180,83,9,.35)',
+            transition: 'filter .18s, box-shadow .18s',
           }}
-          onMouseOver={e => {
-            e.currentTarget.style.background = '#BF9B7A';
-            e.currentTarget.style.color = '#33131D';
-            e.currentTarget.style.borderColor = '#9c7d5f';
-            e.currentTarget.style.boxShadow = '0 2px 6px rgba(191,155,122,.4)';
-          }}
-          onMouseOut={e => {
-            e.currentTarget.style.background = '#593E2E';
-            e.currentTarget.style.color = '#EAD7C1';
-            e.currentTarget.style.borderColor = '#3d2a20';
-            e.currentTarget.style.boxShadow = '0 1px 3px rgba(89,62,46,.25)';
-          }}
+          onMouseOver={e => { e.currentTarget.style.filter = 'brightness(1.08)'; }}
+          onMouseOut={e => { e.currentTarget.style.filter = 'none'; }}
         >
           📖 문맥 성경
         </button>
-        <div style={{ marginTop: 8 }}>
+        <div style={{ marginTop: MENU_BTN_GAP }}>
           <ParallelStudyLauncher />
         </div>
-        <div style={{ marginTop: 8 }}>
+        <div style={{ marginTop: MENU_BTN_GAP }}>
           <CanonicalConceptLauncher />
         </div>
       </div>
@@ -1052,6 +1033,17 @@ const manualBtnStyle = {
   cursor: 'pointer', flexShrink: 0, whiteSpace: 'nowrap',
   boxShadow: '0 2px 8px rgba(37,99,235,0.35)',
 };
+
+// 메뉴얼 버튼과 동일한 그라데이션 감성의 사이드바 메뉴 버튼 (크기·텍스트·간격 통일)
+export const MENU_BTN_BASE = {
+  width: '100%', minHeight: 44, padding: '10px 12px',
+  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
+  border: 'none', borderRadius: 8, color: '#fff',
+  fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
+  fontSize: 13, fontWeight: 700, letterSpacing: '.02em',
+  cursor: 'pointer', touchAction: 'manipulation', whiteSpace: 'nowrap',
+};
+export const MENU_BTN_GAP = 8; // 버튼 간 세로 간격
 
 // 접힘 상태 rail 의 아이콘 버튼
 function railIconBtn(bg, color, active) {

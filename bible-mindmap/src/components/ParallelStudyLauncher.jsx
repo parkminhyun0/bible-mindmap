@@ -34,22 +34,23 @@ export default function ParallelStudyLauncher({ variant = 'inline' }) {
     : {
         width: '100%',
         minHeight: 44,
-        padding: '9px 12px',
+        padding: '10px 12px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         gap: 7,
-        border: '1px solid #134e4a',
+        border: 'none',
         borderRadius: 8,
         background: 'linear-gradient(135deg,#0f766e,#115e59)',
-        color: '#ecfeff',
+        color: '#fff',
         fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
-        fontSize: 12,
+        fontSize: 13,
         fontWeight: 700,
         letterSpacing: '.02em',
-        boxShadow: '0 1px 3px rgba(15,118,110,.28)',
+        boxShadow: '0 2px 8px rgba(15,118,110,.35)',
         cursor: 'pointer',
         touchAction: 'manipulation',
+        whiteSpace: 'nowrap',
       };
 
   return (

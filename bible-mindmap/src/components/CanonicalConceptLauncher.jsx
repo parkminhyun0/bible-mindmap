@@ -23,14 +23,14 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
         touchAction: 'manipulation',
       }
     : {
-        width: '100%', minHeight: 44, padding: '9px 12px',
+        width: '100%', minHeight: 44, padding: '10px 12px',
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
-        border: '1px solid #334155', borderRadius: 8,
+        border: 'none', borderRadius: 8,
         background: 'linear-gradient(135deg,#1e293b,#334155)',
-        color: '#e2e8f0', fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
-        fontSize: 12, fontWeight: 700, letterSpacing: '.02em',
-        boxShadow: '0 1px 3px rgba(30,41,59,.28)', cursor: 'pointer',
-        touchAction: 'manipulation',
+        color: '#fff', fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
+        fontSize: 13, fontWeight: 700, letterSpacing: '.02em',
+        boxShadow: '0 2px 8px rgba(30,41,59,.35)', cursor: 'pointer',
+        touchAction: 'manipulation', whiteSpace: 'nowrap',
       };
 
   return (
