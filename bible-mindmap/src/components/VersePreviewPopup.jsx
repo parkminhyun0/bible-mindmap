@@ -77,7 +77,7 @@ function VerseLabel({ n, chapter, first, accent }) {
 export default function VersePreviewPopup({
   id, bookId, chapter, verseStart, verseEnd, reference,
   initialX = 100, initialY = 100, zIndex = 3000,
-  onClose, onFocus,
+  onClose, onFocus, onAddToBoard,
 }) {
   const isMobile = useMobile()
   const [text, setText] = useState(null)
@@ -223,6 +223,32 @@ export default function VersePreviewPopup({
         )}
         {text && renderVerses(text, chapter, verseStart, cat.color)}
       </div>
+
+      {/* 보드(캔버스)로 내보내기 — 눈에 띄는 레드 버튼 (onAddToBoard 있을 때만) */}
+      {onAddToBoard && (
+        <div style={{
+          padding: isMobile
+            ? '8px 14px calc(env(safe-area-inset-bottom, 0px) + 10px)'
+            : '8px 12px 10px',
+          borderTop: `1px solid ${cat.color}22`, background: '#fff', flexShrink: 0,
+        }}>
+          <button
+            onClick={(e) => { e.stopPropagation(); onAddToBoard() }}
+            title="이 본문을 보드(캔버스)에 노드로 추가"
+            style={{
+              width: '100%', minHeight: isMobile ? 46 : 40,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+              background: 'linear-gradient(135deg,#ef4444,#b91c1c)',
+              color: '#fff', border: 'none', borderRadius: 9,
+              fontSize: 14, fontWeight: 800, letterSpacing: '.02em',
+              cursor: 'pointer', boxShadow: '0 3px 10px rgba(220,38,38,.45)',
+              touchAction: 'manipulation',
+            }}
+          >
+            <span aria-hidden="true">🧷</span> 보드에 추가
+          </button>
+        </div>
+      )}
     </div>,
     document.body
   )

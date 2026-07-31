@@ -52,7 +52,9 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const [active, setActive] = useState(initialConcept && CANONICAL_CONCEPTS[initialConcept] ? initialConcept : keys[0]);
   const [tab, setTab] = useState('arc'); // arc | map | lex | note
   const [lexEntry, setLexEntry] = useState(null);
-  const [versePopup, setVersePopup] = useState(null); // { bookId, chapter, verseStart, verseEnd, reference }
+  const [versePopups, setVersePopups] = useState([]); // 여러 개 동시 오픈: [{ key, bookId, chapter, verseStart, verseEnd, reference, z }]
+  const popupSeq = useRef(0);
+  const topZ = useRef(1270);
   const [minimized, setMinimized] = useState(false);
 
   // ── 글자 크기 (단위별) ────────────────────────────────────────────
@@ -132,10 +134,21 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   }, [isMobile]);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') { if (lexEntry) setLexEntry(null); else onClose(); } };
+    const onKey = (e) => {
+      if (e.key !== 'Escape') return;
+      if (versePopups.length) {
+        // 가장 위(z 최대) 팝업부터 닫기
+        setVersePopups((prev) => {
+          if (!prev.length) return prev;
+          const top = prev.reduce((a, b) => (b.z > a.z ? b : a));
+          return prev.filter((p) => p.key !== top.key);
+        });
+      } else if (lexEntry) setLexEntry(null);
+      else onClose();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onClose, lexEntry]);
+  }, [onClose, lexEntry, versePopups.length]);
 
   const concept = CANONICAL_CONCEPTS[active];
 
@@ -149,14 +162,25 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
     }, null);
   };
 
-  // 용례지도: 구절을 구절 성경 팝업(VersePreviewPopup)으로 미리보기
+  // 용례지도: 구절을 구절 성경 팝업(VersePreviewPopup)으로 미리보기 — 여러 개 동시 오픈
   const openVerse = (ref) => {
     const { bookId, chapter, verse } = parseRef(ref);
     const book = getBook(bookId);
-    setVersePopup({
-      bookId, chapter, verseStart: verse, verseEnd: verse,
+    const key = ++popupSeq.current;
+    const z = ++topZ.current;
+    const n = versePopups.length;
+    setVersePopups((prev) => [...prev, {
+      key, z, bookId, chapter, verseStart: verse, verseEnd: verse,
       reference: `${book?.ko || bookId} ${chapter}:${verse}`,
-    });
+      // 겹치지 않게 계단식 배치
+      x: Math.max(20, Math.min(vw - 400, vw / 2 - 180 + (n % 6) * 28)),
+      y: Math.max(20, Math.min(vh - 340, vh / 2 - 150 + (n % 6) * 26)),
+    }]);
+  };
+  const closeVerse = (key) => setVersePopups((prev) => prev.filter((p) => p.key !== key));
+  const focusVerse = (key) => {
+    const z = ++topZ.current;
+    setVersePopups((prev) => prev.map((p) => (p.key === key ? { ...p, z } : p)));
   };
 
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
@@ -512,20 +536,23 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
         />
       )}
 
-      {versePopup && (
+      {versePopups.map((p) => (
         <VersePreviewPopup
-          id="canon-verse-preview"
-          bookId={versePopup.bookId}
-          chapter={versePopup.chapter}
-          verseStart={versePopup.verseStart}
-          verseEnd={versePopup.verseEnd}
-          reference={versePopup.reference}
-          initialX={Math.max(20, vw / 2 - 180)}
-          initialY={Math.max(20, vh / 2 - 120)}
-          zIndex={1270}
-          onClose={() => setVersePopup(null)}
+          key={p.key}
+          id={`canon-verse-${p.key}`}
+          bookId={p.bookId}
+          chapter={p.chapter}
+          verseStart={p.verseStart}
+          verseEnd={p.verseEnd}
+          reference={p.reference}
+          initialX={p.x}
+          initialY={p.y}
+          zIndex={p.z}
+          onClose={() => closeVerse(p.key)}
+          onFocus={() => focusVerse(p.key)}
+          onAddToBoard={onAddVerse ? () => addRef(`${p.bookId}:${p.chapter}:${p.verseStart}`) : undefined}
         />
-      )}
+      ))}
     </>,
     document.body
   );
