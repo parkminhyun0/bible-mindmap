@@ -388,16 +388,14 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
                             <span style={{ fontSize: C, fontWeight: 800, color: '#1e293b' }}>{s.stage}</span>
                             <button
-                              onClick={() => addRef(s.ref)}
-                              title={onAddVerse ? '이 구절을 캔버스에 추가' : undefined}
+                              onClick={() => openVerse(s.ref)}
+                              title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
                               style={{
                                 fontSize: B, fontFamily: 'monospace', fontWeight: 700,
-                                color: onAddVerse ? '#2563eb' : '#64748b',
-                                background: onAddVerse ? '#eff6ff' : '#f1f5f9',
-                                border: onAddVerse ? '1px solid #bfdbfe' : '1px solid transparent',
-                                borderRadius: 4, padding: '1px 6px', cursor: onAddVerse ? 'pointer' : 'default',
+                                color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                                borderRadius: 4, padding: '1px 6px', cursor: 'pointer',
                               }}
-                            >{book?.ko || bookId} {chapter}:{verse}{onAddVerse ? ' +' : ''}</button>
+                            >{book?.ko || bookId} {chapter}:{verse}</button>
                           </div>
                           <div style={{ fontSize: B, color: '#334155', lineHeight: 1.55, marginBottom: 5 }}>{s.summary}</div>
                           <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
