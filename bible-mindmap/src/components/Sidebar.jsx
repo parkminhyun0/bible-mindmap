@@ -11,6 +11,7 @@ const ManualModal = lazy(() => import('./ManualModal'));
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const ContextBibleModal = lazy(() => import('./ContextBibleModal'));
 import ParallelStudyLauncher from './ParallelStudyLauncher';
+import CanonicalConceptLauncher from './CanonicalConceptLauncher';
 
 export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClose, onOpenSyntax, contextBibleInitialRef }) {
   const isMobile = useMobile();
@@ -276,6 +277,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             <div style={{ marginTop: 6 }}>
               <ParallelStudyLauncher />
             </div>
+            <div style={{ marginTop: 6 }}>
+              <CanonicalConceptLauncher />
+            </div>
           </div>
 
           {/* 원어 다언어 검색 (모바일) */}
@@ -516,6 +520,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               }}
             >📖</button>
             <ParallelStudyLauncher variant="rail" />
+            <CanonicalConceptLauncher variant="rail" />
           </div>
 
           {/* 노드 타입 rail — 아이콘 + 미니 라벨 */}
@@ -702,6 +707,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
         </button>
         <div style={{ marginTop: 8 }}>
           <ParallelStudyLauncher />
+        </div>
+        <div style={{ marginTop: 8 }}>
+          <CanonicalConceptLauncher />
         </div>
       </div>
 

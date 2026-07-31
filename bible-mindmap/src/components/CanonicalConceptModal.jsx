@@ -1,0 +1,393 @@
+import { useEffect, useMemo, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { CANONICAL_CONCEPTS } from '../data/canonicalConcepts';
+import { getBook } from '../data/bibleBooks';
+import { useCanvas } from '../context/CanvasContext';
+import useMobile from '../hooks/useMobile';
+import LexiconPopup from './LexiconPopup';
+
+/**
+ * 정경 추적 · 핵심 개념 카드 (파일럿 6개).
+ * 하나의 개념이 창세기→요한계시록으로 계시·성취되는 흐름을 4개 탭으로 제시:
+ *   📜 정경 흐름 · 🗺️ 용례 지도 · 🔤 원문 분석 · ✝️ 신학 해설
+ * 데이터: src/data/canonicalConcepts.js (CANONICAL_CONCEPTS)
+ */
+
+// 언약 라벨/색상
+const COVENANTS = {
+  adamic:    { ko: '아담 언약', color: '#78716c' },
+  noahic:    { ko: '노아 언약', color: '#0891b2' },
+  abrahamic: { ko: '아브라함 언약', color: '#7c3aed' },
+  mosaic:    { ko: '모세(시내) 언약', color: '#d97706' },
+  davidic:   { ko: '다윗 언약', color: '#2563eb' },
+  new:       { ko: '새 언약', color: '#dc2626' },
+  none:      { ko: '—', color: '#94a3b8' },
+};
+
+// 연결 등급(근거 강도) A~E
+const CONNECTIONS = {
+  A: { ko: '직접 인용', desc: '신약이 이 본문을 명시적으로 인용', color: '#dc2626' },
+  B: { ko: '명시적 성취', desc: '본문이 성취·모형 관계를 직접 진술', color: '#ea580c' },
+  C: { ko: '언약적 발전', desc: '언약 구조를 따라 주제가 전진', color: '#d97706' },
+  D: { ko: '주제적 반향', desc: '동일 주제·모티프의 재등장', color: '#059669' },
+  E: { ko: '예표적 암시', desc: '원형·그림자 수준의 예표', color: '#6b7280' },
+};
+
+function parseRef(ref) {
+  // "Gen:3:15" → { bookId:'Gen', chapter:3, verse:15 }
+  const [bookId, ch, v] = String(ref).split(':');
+  return { bookId, chapter: Number(ch), verse: Number(v) };
+}
+
+export default function CanonicalConceptModal({ initialConcept = null, onClose }) {
+  const isMobile = useMobile();
+  const { onAddVerse } = useCanvas() || {};
+  const keys = useMemo(() => Object.keys(CANONICAL_CONCEPTS), []);
+  const [active, setActive] = useState(initialConcept && CANONICAL_CONCEPTS[initialConcept] ? initialConcept : keys[0]);
+  const [tab, setTab] = useState('arc'); // arc | map | lex | note
+  const [lexEntry, setLexEntry] = useState(null); // LexiconPopup용
+
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === 'Escape') { if (lexEntry) setLexEntry(null); else onClose(); } };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose, lexEntry]);
+
+  const concept = CANONICAL_CONCEPTS[active];
+
+  const addRef = (ref) => {
+    if (!onAddVerse) return;
+    const { bookId, chapter, verse } = parseRef(ref);
+    const book = getBook(bookId);
+    onAddVerse({
+      bookId, chapter, verseStart: verse, verseEnd: verse,
+      reference: `${book?.ko || bookId} ${chapter}:${verse}`,
+    }, null);
+  };
+
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
+
+  const TABS = [
+    { key: 'arc', label: '📜 정경 흐름' },
+    { key: 'map', label: '🗺️ 용례 지도' },
+    { key: 'lex', label: '🔤 원문 분석' },
+    { key: 'note', label: '✝️ 신학 해설' },
+  ];
+
+  return createPortal(
+    <>
+      <div
+        onClick={onClose}
+        style={{ position: 'fixed', inset: 0, background: 'rgba(15,23,42,.45)', zIndex: 1249 }}
+      />
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={`정경 추적 · ${concept.labelKo}`}
+        className={isMobile ? 'momentum-scroll' : undefined}
+        style={{
+          position: 'fixed',
+          zIndex: 1250,
+          left: isMobile ? 0 : '50%',
+          top: isMobile ? 'auto' : '50%',
+          bottom: isMobile ? 0 : 'auto',
+          transform: isMobile ? 'none' : 'translate(-50%, -50%)',
+          width: isMobile ? vw : Math.min(720, vw - 40),
+          maxHeight: isMobile ? '90dvh' : Math.min(760, vh - 40),
+          background: '#fff',
+          borderRadius: isMobile ? '16px 16px 0 0' : 14,
+          boxShadow: '0 24px 64px rgba(15,23,42,.35)',
+          border: isMobile ? 'none' : '1px solid #e2e8f0',
+          overflow: 'hidden',
+          display: 'flex', flexDirection: 'column',
+          fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
+          paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
+        }}
+      >
+        {/* 헤더 */}
+        <div style={{
+          padding: '14px 16px',
+          background: 'linear-gradient(135deg,#1e293b,#334155)',
+          color: '#f1f5f9',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span aria-hidden="true" style={{ fontSize: 18 }}>🧭</span>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 800 }}>정경 추적 · 핵심 개념</div>
+              <div style={{ fontSize: 11, color: '#cbd5e1' }}>창세기 → 요한계시록 계시·성취 흐름</div>
+            </div>
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="닫기"
+            title="닫기 (Esc)"
+            style={{
+              background: 'rgba(255,255,255,.12)', border: 'none', color: '#f1f5f9',
+              width: 32, height: 32, borderRadius: 8, cursor: 'pointer', fontSize: 16,
+              minWidth: isMobile ? 40 : 32, minHeight: isMobile ? 40 : 32,
+            }}
+          >✕</button>
+        </div>
+
+        {/* 개념 선택 칩 */}
+        <div style={{
+          display: 'flex', gap: 6, padding: '10px 14px', flexWrap: 'wrap',
+          borderBottom: '1px solid #e2e8f0', background: '#f8fafc',
+        }}>
+          {keys.map((k) => {
+            const c = CANONICAL_CONCEPTS[k];
+            const on = k === active;
+            return (
+              <button
+                key={k}
+                onClick={() => { setActive(k); setTab('arc'); }}
+                style={{
+                  padding: '6px 11px', borderRadius: 999, cursor: 'pointer',
+                  fontSize: 12, fontWeight: 700,
+                  border: on ? '1px solid #1e293b' : '1px solid #cbd5e1',
+                  background: on ? '#1e293b' : '#fff',
+                  color: on ? '#fff' : '#475569',
+                  minHeight: isMobile ? 40 : undefined,
+                }}
+              >{c.labelKo}</button>
+            );
+          })}
+        </div>
+
+        {/* 개념 요약 */}
+        <div style={{ padding: '12px 16px 8px', borderBottom: '1px solid #f1f5f9' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
+            <span style={{ fontSize: 20, fontWeight: 800, color: '#1e293b' }}>{concept.labelKo}</span>
+            <span style={{ fontSize: 15, color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
+            <span style={{ fontSize: 15, color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
+          </div>
+        </div>
+
+        {/* 탭 바 */}
+        <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0', background: '#f8fafc' }}>
+          {TABS.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => setTab(key)}
+              style={{
+                flex: 1, padding: '9px 0', border: 'none', fontSize: 11.5, fontWeight: 700,
+                cursor: 'pointer',
+                background: tab === key ? '#fff' : 'transparent',
+                color: tab === key ? '#1e293b' : '#64748b',
+                borderBottom: tab === key ? '2px solid #1e293b' : '2px solid transparent',
+                minHeight: isMobile ? 44 : undefined,
+              }}
+            >{label}</button>
+          ))}
+        </div>
+
+        {/* 콘텐츠 */}
+        <div style={{ overflowY: 'auto', flex: 1, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
+
+          {tab === 'arc' && (
+            <div style={{ padding: '14px 16px' }}>
+              {concept.canonicalArc.map((s, i) => {
+                const { bookId, chapter, verse } = parseRef(s.ref);
+                const book = getBook(bookId);
+                const cov = COVENANTS[s.covenantLink] || COVENANTS.none;
+                const con = CONNECTIONS[s.connectionType] || {};
+                const last = i === concept.canonicalArc.length - 1;
+                return (
+                  <div key={i} style={{ display: 'flex', gap: 10 }}>
+                    {/* 타임라인 레일 */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
+                      <div style={{
+                        width: 11, height: 11, borderRadius: '50%',
+                        background: cov.color, marginTop: 4, flexShrink: 0,
+                      }} />
+                      {!last && <div style={{ width: 2, flex: 1, background: '#e2e8f0', minHeight: 24 }} />}
+                    </div>
+                    {/* 내용 */}
+                    <div style={{ paddingBottom: last ? 0 : 16, flex: 1, minWidth: 0 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
+                        <span style={{ fontSize: 12, fontWeight: 800, color: '#1e293b' }}>{s.stage}</span>
+                        <button
+                          onClick={() => addRef(s.ref)}
+                          title={onAddVerse ? '이 구절을 캔버스에 추가' : undefined}
+                          style={{
+                            fontSize: 11, fontFamily: 'monospace', fontWeight: 700,
+                            color: onAddVerse ? '#2563eb' : '#64748b',
+                            background: onAddVerse ? '#eff6ff' : '#f1f5f9',
+                            border: onAddVerse ? '1px solid #bfdbfe' : '1px solid transparent',
+                            borderRadius: 4, padding: '1px 6px', cursor: onAddVerse ? 'pointer' : 'default',
+                          }}
+                        >{book?.ko || bookId} {chapter}:{verse}{onAddVerse ? ' +' : ''}</button>
+                      </div>
+                      <div style={{ fontSize: 12.5, color: '#334155', lineHeight: 1.55, marginBottom: 5 }}>{s.summary}</div>
+                      <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
+                        <span style={{
+                          fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 4,
+                          color: '#fff', background: cov.color,
+                        }}>{cov.ko}</span>
+                        <span title={con.desc} style={{
+                          fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 4,
+                          color: con.color, background: '#f1f5f9', border: `1px solid ${con.color}33`,
+                        }}>{s.connectionType}급 · {con.ko}</span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {tab === 'map' && (
+            <div style={{ padding: '14px 16px' }}>
+              <div style={{ fontSize: 11, color: '#64748b', marginBottom: 10 }}>
+                개념이 등장하는 본문을 언약 구조에 따라 배치했습니다. 구절을 눌러 캔버스에 추가하세요.
+              </div>
+              {Object.keys(COVENANTS).filter((cv) =>
+                concept.canonicalArc.some((s) => s.covenantLink === cv)
+              ).map((cv) => {
+                const cov = COVENANTS[cv];
+                const items = concept.canonicalArc.filter((s) => s.covenantLink === cv);
+                return (
+                  <div key={cv} style={{ marginBottom: 12 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 5 }}>
+                      <span style={{ width: 9, height: 9, borderRadius: '50%', background: cov.color }} />
+                      <span style={{ fontSize: 11, fontWeight: 800, color: '#334155' }}>{cov.ko}</span>
+                    </div>
+                    <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', paddingLeft: 15 }}>
+                      {items.map((s, i) => {
+                        const { bookId, chapter, verse } = parseRef(s.ref);
+                        const book = getBook(bookId);
+                        return (
+                          <button
+                            key={i}
+                            onClick={() => addRef(s.ref)}
+                            title={s.summary}
+                            style={{
+                              fontSize: 11, fontFamily: 'monospace', fontWeight: 700,
+                              color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                              borderRadius: 6, padding: '4px 8px', cursor: onAddVerse ? 'pointer' : 'default',
+                            }}
+                          >{book?.ko || bookId} {chapter}:{verse}</button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
+          {tab === 'lex' && (
+            <div style={{ padding: '14px 16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <LexRow
+                  lang="히브리어" flag="🟠" strong={concept.strong?.he}
+                  label={concept.labelHe} isHebrew
+                  onOpen={() => setLexEntry({ s: concept.strong?.he, w: concept.labelHe?.split(' ')[0], tr: concept.labelHe, l: concept.labelHe?.split(' ')[0] })}
+                />
+                <LexRow
+                  lang="헬라어" flag="🔵" strong={concept.strong?.gr}
+                  label={concept.labelGr}
+                  onOpen={() => setLexEntry({ s: concept.strong?.gr, w: concept.labelGr?.split(' ')[0], tr: concept.labelGr, l: concept.labelGr?.split(' ')[0] })}
+                />
+              </div>
+              <div style={{ marginTop: 12, fontSize: 11, color: '#94a3b8' }}>
+                단어를 누르면 원어 사전 카드(정의·용례)가 열립니다.
+              </div>
+            </div>
+          )}
+
+          {tab === 'note' && (
+            <div style={{ padding: '14px 16px' }}>
+              <div style={{
+                fontSize: 13, color: '#1e293b', lineHeight: 1.7,
+                background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 10,
+                padding: '12px 14px',
+              }}>
+                {concept.theologicalNote}
+              </div>
+              {concept.reformedAnchors?.length > 0 && (
+                <div style={{ marginTop: 12 }}>
+                  <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>
+                    개혁주의 신학 앵커
+                  </div>
+                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                    {concept.reformedAnchors.map((a, i) => (
+                      <span key={i} style={{
+                        fontSize: 11, fontWeight: 700, padding: '3px 9px', borderRadius: 999,
+                        color: '#065f46', background: '#d1fae5', border: '1px solid #6ee7b7',
+                      }}>{a}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {/* 연결 등급 범례 */}
+              <div style={{ marginTop: 16 }}>
+                <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: 1, marginBottom: 6 }}>
+                  연결 등급 (근거 강도)
+                </div>
+                {Object.entries(CONNECTIONS).map(([k, v]) => (
+                  <div key={k} style={{ display: 'flex', gap: 8, fontSize: 11, marginBottom: 3, alignItems: 'baseline' }}>
+                    <span style={{ fontWeight: 800, color: v.color, minWidth: 14 }}>{k}</span>
+                    <span style={{ fontWeight: 700, color: '#334155', minWidth: 66 }}>{v.ko}</span>
+                    <span style={{ color: '#64748b' }}>{v.desc}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
+
+        {/* 출처 */}
+        <div style={{
+          padding: '6px 14px', borderTop: '1px solid #e2e8f0',
+          fontSize: 9, color: '#94a3b8', background: '#f8fafc',
+        }}>
+          해석 기준: 장로교 개혁주의(언약신학·구속사) · 본문 전문 미복제, 참조·요약·해설만 제공
+        </div>
+      </div>
+
+      {lexEntry?.s && (
+        <LexiconPopup
+          entry={lexEntry}
+          anchor={{ x: vw / 2, y: vh / 2 }}
+          bookId={null}
+          onClose={() => setLexEntry(null)}
+          zIndex={1260}
+        />
+      )}
+    </>,
+    document.body
+  );
+}
+
+function LexRow({ lang, flag, strong, label, isHebrew, onOpen }) {
+  if (!strong) return null;
+  return (
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 10,
+      padding: '10px 12px', borderRadius: 10,
+      border: '1px solid #e2e8f0', background: '#fff',
+    }}>
+      <span style={{ fontSize: 16 }}>{flag}</span>
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: 0.5 }}>{lang}</div>
+        <button
+          onClick={onOpen}
+          style={{
+            fontSize: 17, fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer',
+            color: isHebrew ? '#92400e' : '#1d4ed8', padding: 0, textAlign: 'left',
+            fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif',
+          }}
+          title="원어 사전 열기"
+        >{label}</button>
+      </div>
+      <span style={{
+        fontSize: 11, fontFamily: 'monospace', fontWeight: 700, color: '#475569',
+        background: '#f1f5f9', borderRadius: 4, padding: '2px 6px',
+      }}>{strong}</span>
+    </div>
+  );
+}
