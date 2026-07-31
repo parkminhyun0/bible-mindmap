@@ -5,6 +5,7 @@ import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import LexiconPopup from './LexiconPopup';
+import VersePreviewPopup from './VersePreviewPopup';
 
 /**
  * 정경 추적 · 핵심 개념 카드 (파일럿 6개).
@@ -51,6 +52,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const [active, setActive] = useState(initialConcept && CANONICAL_CONCEPTS[initialConcept] ? initialConcept : keys[0]);
   const [tab, setTab] = useState('arc'); // arc | map | lex | note
   const [lexEntry, setLexEntry] = useState(null);
+  const [versePopup, setVersePopup] = useState(null); // { bookId, chapter, verseStart, verseEnd, reference }
   const [minimized, setMinimized] = useState(false);
 
   // ── 글자 크기 (단위별) ────────────────────────────────────────────
@@ -145,6 +147,16 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
       bookId, chapter, verseStart: verse, verseEnd: verse,
       reference: `${book?.ko || bookId} ${chapter}:${verse}`,
     }, null);
+  };
+
+  // 용례지도: 구절을 구절 성경 팝업(VersePreviewPopup)으로 미리보기
+  const openVerse = (ref) => {
+    const { bookId, chapter, verse } = parseRef(ref);
+    const book = getBook(bookId);
+    setVersePopup({
+      bookId, chapter, verseStart: verse, verseEnd: verse,
+      reference: `${book?.ko || bookId} ${chapter}:${verse}`,
+    });
   };
 
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
@@ -378,7 +390,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               {tab === 'map' && (
                 <div style={{ padding: '14px 16px' }}>
                   <div style={{ fontSize: B, color: '#64748b', marginBottom: 10 }}>
-                    개념이 등장하는 본문을 언약 구조에 따라 배치했습니다. 구절을 눌러 캔버스에 추가하세요.
+                    개념이 등장하는 본문을 언약 구조에 따라 배치했습니다. 구절을 누르면 본문 팝업이 열립니다.
                   </div>
                   {Object.keys(COVENANTS).filter((cv) => concept.canonicalArc.some((s) => s.covenantLink === cv)).map((cv) => {
                     const cov = COVENANTS[cv];
@@ -396,12 +408,12 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                             return (
                               <button
                                 key={i}
-                                onClick={() => addRef(s.ref)}
-                                title={s.summary}
+                                onClick={() => openVerse(s.ref)}
+                                title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
                                 style={{
                                   fontSize: B, fontFamily: 'monospace', fontWeight: 700,
                                   color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
-                                  borderRadius: 6, padding: '4px 8px', cursor: onAddVerse ? 'pointer' : 'default',
+                                  borderRadius: 6, padding: '4px 8px', cursor: 'pointer',
                                 }}
                               >{book?.ko || bookId} {chapter}:{verse}</button>
                             );
@@ -497,6 +509,21 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
           bookId={null}
           onClose={() => setLexEntry(null)}
           zIndex={1260}
+        />
+      )}
+
+      {versePopup && (
+        <VersePreviewPopup
+          id="canon-verse-preview"
+          bookId={versePopup.bookId}
+          chapter={versePopup.chapter}
+          verseStart={versePopup.verseStart}
+          verseEnd={versePopup.verseEnd}
+          reference={versePopup.reference}
+          initialX={Math.max(20, vw / 2 - 180)}
+          initialY={Math.max(20, vh / 2 - 120)}
+          zIndex={1270}
+          onClose={() => setVersePopup(null)}
         />
       )}
     </>,
