@@ -320,7 +320,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                   key={key}
                   onClick={() => setTab(key)}
                   style={{
-                    flex: 1, padding: '9px 0', border: 'none', fontSize: 11.5, fontWeight: 700,
+                    flex: 1, padding: '9px 0', border: 'none', fontSize: C, fontWeight: 700,
                     cursor: 'pointer',
                     background: tab === key ? '#fff' : 'transparent',
                     color: tab === key ? '#1e293b' : '#64748b',
