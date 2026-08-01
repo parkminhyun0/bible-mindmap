@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { CANONICAL_CONCEPTS } from '../data/canonicalConcepts';
+import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts';
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
@@ -37,6 +37,9 @@ const CONNECTIONS = {
   E: { ko: '예표적 암시', desc: '원형·그림자 수준의 예표', color: '#6b7280' },
 };
 
+// 정경 타임라인(심화) — 언약 시대 순서. 각 개념의 arc가 어느 언약 시대에 활동하는지 교차 색인한다.
+const COVENANT_ORDER = ['adamic', 'noahic', 'abrahamic', 'mosaic', 'davidic', 'new'];
+
 const FONT_MIN = 9;
 const FONT_MAX = 50;
 
@@ -51,6 +54,31 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const keys = useMemo(() => Object.keys(CANONICAL_CONCEPTS), []);
   const [active, setActive] = useState(initialConcept && CANONICAL_CONCEPTS[initialConcept] ? initialConcept : keys[0]);
   const [tab, setTab] = useState('arc'); // arc | map | lex | note
+  // 탐색: 개념이 늘어도 무너지지 않게 브라우즈(인덱스) ↔ 상세 2단 구조.
+  const [browse, setBrowse] = useState(!initialConcept); // 진입 시 개념 지정 없으면 인덱스부터
+  const [browseMode, setBrowseMode] = useState('theme'); // theme | timeline
+  const [query, setQuery] = useState('');
+
+  // 테마(카테고리)별 그룹 — 등장하는 카테고리만, order순
+  const groups = useMemo(() => {
+    const byCat = {};
+    for (const k of keys) {
+      const cat = CANONICAL_CONCEPTS[k].category || 'redemption';
+      (byCat[cat] ||= []).push(k);
+    }
+    return Object.keys(byCat)
+      .sort((a, b) => (CONCEPT_CATEGORIES[a]?.order || 99) - (CONCEPT_CATEGORIES[b]?.order || 99))
+      .map((cat) => ({ cat, meta: CONCEPT_CATEGORIES[cat] || {}, items: byCat[cat] }));
+  }, [keys]);
+
+  // 검색 필터 (한/히/헬 라벨 + 테마명)
+  const matchQuery = useCallback((k) => {
+    const q = query.trim().toLowerCase();
+    if (!q) return true;
+    const c = CANONICAL_CONCEPTS[k];
+    const hay = [c.labelKo, c.labelHe, c.labelGr, CONCEPT_CATEGORIES[c.category]?.ko].join(' ').toLowerCase();
+    return hay.includes(q);
+  }, [query]);
   const [lexEntry, setLexEntry] = useState(null);
   const [versePopups, setVersePopups] = useState([]); // 여러 개 동시 오픈: [{ key, bookId, chapter, verseStart, verseEnd, reference, z }]
   const popupSeq = useRef(0);
@@ -315,37 +343,159 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               ))}
             </div>
 
-            {/* 개념 선택 칩 */}
+            {/* 네비게이션: 검색 + 전체목록/타임라인 토글 */}
             <div style={{
-              display: 'flex', gap: 6, padding: '10px 14px', flexWrap: 'wrap',
-              borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0,
+              display: 'flex', gap: 6, alignItems: 'center', padding: '8px 14px',
+              borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0, flexWrap: 'wrap',
             }}>
-              {keys.map((k) => {
-                const c = CANONICAL_CONCEPTS[k];
-                const on = k === active;
-                return (
-                  <button
-                    key={k}
-                    onClick={() => { setActive(k); setTab('arc'); }}
-                    style={{
-                      padding: '6px 11px', borderRadius: 999, cursor: 'pointer',
-                      fontSize: 12, fontWeight: 700,
-                      border: on ? '1px solid #1e293b' : '1px solid #cbd5e1',
-                      background: on ? '#1e293b' : '#fff',
-                      color: on ? '#fff' : '#475569',
-                      minHeight: isMobile ? 40 : undefined,
-                    }}
-                  >{c.labelKo}</button>
-                );
-              })}
+              {!browse && (
+                <button
+                  onClick={() => { setBrowse(true); setQuery(''); }}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 4,
+                    padding: '6px 10px', borderRadius: 8, cursor: 'pointer',
+                    fontSize: 12, fontWeight: 800, color: '#1e293b',
+                    background: '#fff', border: '1px solid #cbd5e1', minHeight: isMobile ? 38 : undefined,
+                  }}
+                  title="전체 개념 목록"
+                >← 전체 개념</button>
+              )}
+              <div style={{ position: 'relative', flex: 1, minWidth: 140 }}>
+                <span style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', fontSize: 12, color: '#94a3b8' }}>🔍</span>
+                <input
+                  value={query}
+                  onChange={(e) => { setQuery(e.target.value); if (!browse) setBrowse(true); }}
+                  placeholder="개념 검색 (목자·어린양·성전…)"
+                  style={{
+                    width: '100%', boxSizing: 'border-box', padding: '7px 10px 7px 28px',
+                    borderRadius: 8, border: '1px solid #cbd5e1', fontSize: 12, color: '#1e293b',
+                    background: '#fff', outline: 'none', minHeight: isMobile ? 38 : undefined,
+                  }}
+                />
+              </div>
+              {browse && (
+                <div style={{ display: 'flex', border: '1px solid #cbd5e1', borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
+                  {[{ k: 'theme', t: '테마별' }, { k: 'timeline', t: '🗺️ 타임라인' }].map(({ k, t }) => (
+                    <button
+                      key={k}
+                      onClick={() => setBrowseMode(k)}
+                      style={{
+                        padding: '6px 10px', border: 'none', cursor: 'pointer',
+                        fontSize: 11, fontWeight: 800,
+                        background: browseMode === k ? '#1e293b' : '#fff',
+                        color: browseMode === k ? '#fff' : '#64748b',
+                        minHeight: isMobile ? 38 : undefined,
+                      }}
+                    >{t}</button>
+                  ))}
+                </div>
+              )}
             </div>
 
+            {/* 브라우즈(인덱스): 테마별 그리드 / 정경 타임라인 */}
+            {browse && (
+              <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain', padding: '12px 14px' }}>
+                {browseMode === 'theme' && groups.map(({ cat, meta, items }) => {
+                  const shown = items.filter(matchQuery);
+                  if (!shown.length) return null;
+                  return (
+                    <div key={cat} style={{ marginBottom: 16 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                        <span style={{ fontSize: 15 }}>{meta.emoji}</span>
+                        <span style={{ fontSize: C, fontWeight: 800, color: meta.color || '#334155' }}>{meta.ko}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', background: '#f1f5f9', borderRadius: 999, padding: '1px 7px' }}>{shown.length}</span>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 8 }}>
+                        {shown.map((k) => {
+                          const c = CANONICAL_CONCEPTS[k];
+                          return (
+                            <button
+                              key={k}
+                              onClick={() => { setActive(k); setTab('arc'); setBrowse(false); }}
+                              style={{
+                                display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left',
+                                padding: '10px 11px', borderRadius: 10, cursor: 'pointer',
+                                border: '1px solid #e2e8f0', background: '#fff',
+                                borderLeft: `3px solid ${meta.color || '#cbd5e1'}`,
+                                minHeight: isMobile ? 52 : undefined,
+                              }}
+                            >
+                              <span style={{ fontSize: 20, flexShrink: 0 }}>{c.emoji}</span>
+                              <span style={{ minWidth: 0 }}>
+                                <span style={{ display: 'block', fontSize: B, fontWeight: 800, color: '#1e293b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.labelKo}</span>
+                                <span style={{ display: 'block', fontSize: Math.max(9, B - 3), color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.canonicalArc.length}단계 · {c.labelHe?.split(' ')[0]}</span>
+                              </span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {browseMode === 'theme' && groups.every(({ items }) => !items.filter(matchQuery).length) && (
+                  <div style={{ fontSize: B, color: '#94a3b8', textAlign: 'center', padding: '24px 0' }}>‘{query}’에 해당하는 개념이 없습니다.</div>
+                )}
+
+                {browseMode === 'timeline' && (
+                  <div>
+                    <div style={{ fontSize: Math.max(10, B - 2), color: '#64748b', marginBottom: 12, lineHeight: 1.5 }}>
+                      각 언약 시대에 <b>활동하는 개념</b>을 교차 색인했습니다. 개념을 누르면 그 개념의 정경 흐름이 열립니다. 여러 개념이 <b>새 언약</b>에서 그리스도께로 수렴하는 흐름을 확인해 보세요.
+                    </div>
+                    {COVENANT_ORDER.map((cv) => {
+                      const cov = COVENANTS[cv];
+                      const hits = keys
+                        .filter(matchQuery)
+                        .filter((k) => CANONICAL_CONCEPTS[k].canonicalArc.some((s) => s.covenantLink === cv));
+                      if (!hits.length) return null;
+                      return (
+                        <div key={cv} style={{ display: 'flex', gap: 10, marginBottom: 4 }}>
+                          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 12 }}>
+                            <span style={{ width: 12, height: 12, borderRadius: '50%', background: cov.color, marginTop: 4 }} />
+                            {cv !== 'new' && <span style={{ width: 2, flex: 1, background: '#e2e8f0', minHeight: 20 }} />}
+                          </div>
+                          <div style={{ paddingBottom: 14, flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: C, fontWeight: 800, color: cov.color, marginBottom: 6 }}>{cov.ko}</div>
+                            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                              {hits.map((k) => {
+                                const c = CANONICAL_CONCEPTS[k];
+                                return (
+                                  <button
+                                    key={k}
+                                    onClick={() => { setActive(k); setTab('arc'); setBrowse(false); }}
+                                    style={{
+                                      display: 'inline-flex', alignItems: 'center', gap: 5,
+                                      padding: '5px 10px', borderRadius: 999, cursor: 'pointer',
+                                      fontSize: Math.max(11, B - 2), fontWeight: 700,
+                                      border: '1px solid #e2e8f0', background: '#fff', color: '#334155',
+                                      minHeight: isMobile ? 36 : undefined,
+                                    }}
+                                  ><span style={{ fontSize: 14 }}>{c.emoji}</span>{c.labelKo}</button>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {!browse && (<>
             {/* 개념 요약 (타이틀) */}
             <div style={{ padding: '12px 16px 8px', borderBottom: '1px solid #f1f5f9', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: T, fontWeight: 800, color: '#1e293b' }}>{concept.labelKo}</span>
+                <span style={{ fontSize: T, fontWeight: 800, color: '#1e293b' }}>{concept.emoji} {concept.labelKo}</span>
                 <span style={{ fontSize: Math.round(T * 0.75), color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
                 <span style={{ fontSize: Math.round(T * 0.75), color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
+                {CONCEPT_CATEGORIES[concept.category] && (
+                  <span style={{
+                    fontSize: Math.max(9, C - 2), fontWeight: 800, padding: '2px 8px', borderRadius: 999,
+                    color: '#fff', background: CONCEPT_CATEGORIES[concept.category].color,
+                  }}>{CONCEPT_CATEGORIES[concept.category].emoji} {CONCEPT_CATEGORIES[concept.category].ko}</span>
+                )}
               </div>
             </div>
 
@@ -499,6 +649,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               )}
 
             </div>
+            </>)}
 
             {/* 출처 */}
             <div style={{

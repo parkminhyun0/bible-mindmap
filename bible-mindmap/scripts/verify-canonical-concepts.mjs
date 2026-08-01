@@ -8,8 +8,10 @@
 //  - 개념 간 summary 첫 30자 고유성(템플릿 복제 차단)
 // 하나라도 위반하면 fail(exit 1).
 
-import { CANONICAL_CONCEPTS } from '../src/data/canonicalConcepts.js';
+import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../src/data/canonicalConcepts.js';
 import { ALL_BOOKS, getBook } from '../src/data/bibleBooks.js';
+
+const CATEGORIES = new Set(Object.keys(CONCEPT_CATEGORIES));
 
 const COVENANTS = new Set(['adamic', 'noahic', 'abrahamic', 'mosaic', 'davidic', 'new', 'none']);
 const CONNECTIONS = new Set(['A', 'B', 'C', 'D', 'E']);
@@ -53,6 +55,9 @@ for (const [key, c] of Object.entries(CANONICAL_CONCEPTS)) {
   const w = `개념 '${key}'`;
 
   if (key !== key.toLowerCase()) errors.push(`${w}: 키는 소문자 슬러그여야 함`);
+  if (!isStr(c.emoji)) errors.push(`${w}: emoji 누락 (개념 대표 이모지)`);
+  if (!isStr(c.category)) errors.push(`${w}: category 누락`);
+  else if (!CATEGORIES.has(c.category)) errors.push(`${w}: 알 수 없는 category "${c.category}" (허용: ${[...CATEGORIES].join('/')})`);
   if (!isStr(c.labelKo)) errors.push(`${w}: labelKo 누락`);
   if (!isStr(c.labelHe)) errors.push(`${w}: labelHe 누락`);
   if (!isStr(c.labelGr)) errors.push(`${w}: labelGr 누락`);

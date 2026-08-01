@@ -8,6 +8,8 @@ const S = (stage, ref, summary, covenantLink, connectionType) => ({
 
 export const CANONICAL_CONCEPTS_T1 = {
   kingdom: {
+    emoji: '👑',
+    category: 'kingship',
     labelKo: '왕국 / 나라',
     labelHe: 'מַלְכוּת (말쿠트)',
     labelGr: 'βασιλεία (바실레이아)',
@@ -25,6 +27,8 @@ export const CANONICAL_CONCEPTS_T1 = {
   },
 
   exodus: {
+    emoji: '🌊',
+    category: 'redemption',
     labelKo: '출애굽 / 구속',
     labelHe: 'יָצָא (야차)',
     labelGr: 'ἔξοδος (엑소도스)',
@@ -42,6 +46,8 @@ export const CANONICAL_CONCEPTS_T1 = {
   },
 
   priest: {
+    emoji: '🕯️',
+    category: 'presence',
     labelKo: '제사장직',
     labelHe: 'כֹּהֵן (코헨)',
     labelGr: 'ἱερεύς (히에류스)',
@@ -59,6 +65,8 @@ export const CANONICAL_CONCEPTS_T1 = {
   },
 
   lamb: {
+    emoji: '🐑',
+    category: 'redemption',
     labelKo: '어린양',
     labelHe: 'שֶׂה (세)',
     labelGr: 'ἀμνός (암노스)',
@@ -76,6 +84,8 @@ export const CANONICAL_CONCEPTS_T1 = {
   },
 
   king: {
+    emoji: '🤴',
+    category: 'kingship',
     labelKo: '왕 / 메시아',
     labelHe: 'מָשִׁיחַ (마시아흐)',
     labelGr: 'Χριστός (크리스토스)',
@@ -93,6 +103,8 @@ export const CANONICAL_CONCEPTS_T1 = {
   },
 
   shepherd: {
+    emoji: '🐏',
+    category: 'kingship',
     labelKo: '목자',
     labelHe: 'רָעָה (라아)',
     labelGr: 'ποιμήν (포이멘)',

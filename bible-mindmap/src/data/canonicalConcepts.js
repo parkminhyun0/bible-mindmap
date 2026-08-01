@@ -4,6 +4,17 @@
 // Tier 1 확장 6개(kingdom·exodus·priest·lamb·king·shepherd)는 canonicalConceptsT1.js에서 병합된다.
 import { CANONICAL_CONCEPTS_T1 } from './canonicalConceptsT1.js';
 
+// 개념 분류(테마 클러스터) — 개념 수가 늘어도 탐색이 무너지지 않도록 6축으로 묶는다.
+// 각 개념은 category(키) + emoji(대표 이모지)를 가진다. verifier가 category enum·emoji를 강제한다.
+export const CONCEPT_CATEGORIES = {
+  redemption: { ko: '구속·언약', emoji: '🩸', color: '#dc2626', order: 1 },
+  kingship:   { ko: '왕권·나라', emoji: '👑', color: '#2563eb', order: 2 },
+  presence:   { ko: '성전·임재', emoji: '🏛️', color: '#7c3aed', order: 3 },
+  creation:   { ko: '창조·인간', emoji: '🌱', color: '#059669', order: 4 },
+  revelation: { ko: '계시·지혜', emoji: '🔥', color: '#d97706', order: 5 },
+  conflict:   { ko: '대적·심판', emoji: '⚔️', color: '#475569', order: 6 },
+};
+
 const S = (stage, ref, summary, covenantLink, connectionType) => ({
   stage,
   ref,
@@ -14,6 +25,8 @@ const S = (stage, ref, summary, covenantLink, connectionType) => ({
 
 export const CANONICAL_CONCEPTS = {
   seed: {
+    emoji: '🌱',
+    category: 'redemption',
     labelKo: '씨 / 후손',
     labelHe: 'זֶרַע (제라)',
     labelGr: 'σπέρμα (스페르마)',
@@ -31,6 +44,8 @@ export const CANONICAL_CONCEPTS = {
   },
 
   temple: {
+    emoji: '🏛️',
+    category: 'presence',
     labelKo: '성전',
     labelHe: 'הֵיכָל (헤칼)',
     labelGr: 'ναός (나오스)',
@@ -49,6 +64,8 @@ export const CANONICAL_CONCEPTS = {
   },
 
   covenant: {
+    emoji: '🤝',
+    category: 'redemption',
     labelKo: '언약',
     labelHe: 'בְּרִית (베리트)',
     labelGr: 'διαθήκη (디아테케)',
@@ -67,6 +84,8 @@ export const CANONICAL_CONCEPTS = {
   },
 
   blood: {
+    emoji: '🩸',
+    category: 'redemption',
     labelKo: '피',
     labelHe: 'דָּם (담)',
     labelGr: 'αἷμα (하이마)',
@@ -85,6 +104,8 @@ export const CANONICAL_CONCEPTS = {
   },
 
   rest: {
+    emoji: '🕊️',
+    category: 'presence',
     labelKo: '안식',
     labelHe: 'מְנוּחָה (메누하)',
     labelGr: 'κατάπαυσις (카타파우시스)',
@@ -103,6 +124,8 @@ export const CANONICAL_CONCEPTS = {
   },
 
   glory: {
+    emoji: '✨',
+    category: 'presence',
     labelKo: '영광',
     labelHe: 'כָּבוֹד (카보드)',
     labelGr: 'δόξα (독사)',
