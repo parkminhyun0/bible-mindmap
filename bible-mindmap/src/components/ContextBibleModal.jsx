@@ -999,6 +999,25 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     }));
   }, [activeCh, activeRef.verse]);
 
+  // 모바일/태블릿: 모달이 열린 동안 뒤 페이지(런처·다른 책 목록) 스크롤·러버밴드 잠금.
+  // 관찰 카드/시트를 드래그할 때 배경이 딸려 올라와 노출되던 문제를 제거한다.
+  useEffect(() => {
+    if (!isMobile) return undefined;
+    const body = document.body;
+    const html = document.documentElement;
+    const prevBodyOverflow = body.style.overflow;
+    const prevHtmlOverflow = html.style.overflow;
+    const prevBodyOverscroll = body.style.overscrollBehavior;
+    body.style.overflow = 'hidden';
+    html.style.overflow = 'hidden';
+    body.style.overscrollBehavior = 'none';
+    return () => {
+      body.style.overflow = prevBodyOverflow;
+      html.style.overflow = prevHtmlOverflow;
+      body.style.overscrollBehavior = prevBodyOverscroll;
+    };
+  }, [isMobile]);
+
   // 데스크톱 폰트 사이즈 별칭 (모바일은 원본 크기 유지)
   const A = fontSizes.analysis;
 
@@ -2445,11 +2464,12 @@ export default function ContextBibleModal({ onClose, initialRef }) {
               padding: isMobile ? '0 16px' : '14px 16px',
               background: '#ffffff',
               WebkitOverflowScrolling:'touch',
-              overscrollBehavior:'contain',
+              overscrollBehavior: isMobile ? 'none' : 'contain',
               ...(isMobile ? {
                 position: 'absolute',
                 left: 0, right: 0, bottom: 0,
-                height: sheetSnap === 'full' ? '85%' : sheetSnap === 'peek' ? 132 : 0,
+                // peek: 핸들(펼치기 버튼)만 노출 · 관찰 카드 상단이 새어 보이지 않도록 완전히 숨김
+                height: sheetSnap === 'full' ? '85%' : sheetSnap === 'peek' ? 46 : 0,
                 borderTop: '1px solid rgba(15,23,42,.08)',
                 borderRadius: '18px 18px 0 0',
                 boxShadow: '0 -8px 32px rgba(15,23,42,.18)',
