@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📖 BibleAtlas — MVP Prototype</title>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <script src="https://unpkg.com/@turf/turf@7/turf.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; font-family: -apple-system, "Noto Sans KR", sans-serif; }
+
+    #app { display: grid; grid-template-columns: 280px 1fr; height: 100vh; }
+
+    /* 사이드바 */
+    #sidebar {
+      background: #0f172a; color: #e2e8f0;
+      display: flex; flex-direction: column;
+      border-right: 1px solid #1e293b;
+    }
+    #sidebar header {
+      padding: 16px 18px; border-bottom: 1px solid #1e293b;
+      background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+    }
+    #sidebar header h1 { margin: 0; font-size: 15px; letter-spacing: -0.02em; }
+    #sidebar header p  { margin: 4px 0 0; font-size: 11px; color: #cbd5e1; opacity: 0.85; }
+
+    #eras {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 12px; border-bottom: 1px solid #1e293b;
+    }
+    .era-btn {
+      padding: 5px 10px; font-size: 11px; font-weight: 600;
+      background: #1e293b; color: #cbd5e1;
+      border: 1px solid #334155; border-radius: 999px;
+      cursor: pointer; transition: all .15s;
+    }
+    .era-btn:hover { background: #334155; }
+    .era-btn.active { background: #3b82f6; color: #fff; border-color: #60a5fa; }
+
+    #place-list {
+      flex: 1; overflow-y: auto; padding: 6px 0;
+    }
+    .place-row {
+      padding: 8px 16px; cursor: pointer;
+      font-size: 12px; border-left: 3px solid transparent;
+      transition: background .12s, border-color .12s;
+    }
+    .place-row:hover { background: #1e293b; }
+    .place-row.active {
+      background: rgba(59,130,246,0.15);
+      border-left-color: #3b82f6;
+    }
+    .place-row .ko { font-weight: 700; color: #f1f5f9; }
+    .place-row .en { color: #94a3b8; font-size: 10px; margin-top: 2px; }
+    .place-row .refs { color: #64748b; font-size: 10px; margin-top: 3px; }
+
+    /* 여정 섹션 */
+    #journeys {
+      padding: 10px 12px; border-top: 1px solid #1e293b;
+      background: #0b1220;
+    }
+    #journeys .section-title {
+      font-size: 10px; font-weight: 700; color: #94a3b8;
+      letter-spacing: 0.15em; margin-bottom: 8px;
+    }
+    .journey-btn {
+      display: block; width: 100%; text-align: left;
+      padding: 8px 10px; margin-bottom: 4px;
+      background: #1e293b; color: #e2e8f0;
+      border: 1px solid #334155; border-radius: 6px;
+      cursor: pointer; font-family: inherit;
+      transition: all .15s;
+    }
+    .journey-btn:hover { background: #334155; border-color: #475569; }
+    .journey-btn.active { background: #7c3aed; border-color: #a78bfa; }
+    .journey-btn .name { font-size: 12px; font-weight: 700; }
+    .journey-btn .sub  { font-size: 10px; color: #94a3b8; margin-top: 2px; }
+    .journey-btn.active .sub { color: #ddd6fe; }
+
+    #journey-controls {
+      display: none; gap: 4px; margin-top: 6px;
+    }
+    #journey-controls.visible { display: flex; }
+    #journey-controls button {
+      flex: 1; padding: 5px 0; font-size: 11px; font-weight: 700;
+      background: #334155; color: #f1f5f9;
+      border: none; border-radius: 4px; cursor: pointer;
+      font-family: inherit;
+    }
+    #journey-controls button:hover { background: #475569; }
+
+    #footer {
+      padding: 10px 14px; font-size: 10px; color: #64748b;
+      border-top: 1px solid #1e293b; text-align: center;
+    }
+
+    /* 지도 */
+    #map { width: 100%; height: 100%; }
+
+    /* 팝업 커스터마이징 */
+    .maplibregl-popup-content {
+      padding: 14px 16px; border-radius: 10px;
+      font-family: inherit; max-width: 300px;
+    }
+    .popup-title {
+      font-size: 14px; font-weight: 800; color: #0f172a;
+      margin-bottom: 2px;
+    }
+    .popup-sub {
+      font-size: 10px; color: #64748b; margin-bottom: 8px;
+      letter-spacing: 0.03em;
+    }
+    .popup-desc {
+      font-size: 12px; color: #334155; line-height: 1.5; margin-bottom: 8px;
+    }
+    .popup-refs {
+      display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;
+    }
+    .popup-refs .ref {
+      font-size: 10px; padding: 2px 6px; border-radius: 4px;
+      background: #eff6ff; color: #1e40af; font-weight: 600;
+    }
+
+    /* 3D 토글 */
+    #controls {
+      position: absolute; top: 12px; right: 12px; z-index: 10;
+      display: flex; gap: 6px;
+    }
+    #controls button {
+      padding: 7px 12px; font-size: 11px; font-weight: 700;
+      background: rgba(15,23,42,0.92); color: #fff;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 6px;
+      cursor: pointer; backdrop-filter: blur(6px);
+    }
+    #controls button:hover { background: rgba(30,58,138,0.95); }
+    #controls button.active { background: #2563eb; }
+
+    /* 데스크톱만 (모바일 미대응 MVP) */
+    @media (max-width: 720px) {
+      #app { grid-template-columns: 1fr; grid-template-rows: 40vh 1fr; }
+      #sidebar { border-right: none; border-bottom: 1px solid #1e293b; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <header>
+      <h1>📖 BibleAtlas</h1>
+      <p>성경을 지도 위에서 시간 축으로 걷다 — MVP Prototype</p>
+    </header>
+    <div id="eras"></div>
+    <div id="place-list"></div>
+    <div id="journeys">
+      <div class="section-title">✧ 여정 트레이싱</div>
+      <div id="journey-list"></div>
+      <div id="journey-controls">
+        <button id="jc-pause">⏸ 일시정지</button>
+        <button id="jc-stop">■ 정지</button>
+      </div>
+    </div>
+    <div id="footer">데이터 · OpenBible.info · Wikipedia · 좌표 자체 큐레이션</div>
+  </aside>
+  <div style="position:relative;">
+    <div id="controls">
+      <button id="btn-crescent" class="active">🌾 비옥한 초승달</button>
+      <button id="btn-3d">🏔️ 3D 지형</button>
+      <button id="btn-reset">🌍 전체 보기</button>
+    </div>
+    <div id="map"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script>
+// ── 성경 주요 지명 데이터 (MVP 큐레이션) ─────────────────────────────
+const PLACES = [
+  // 족장기 / 오경
+  { id: 'ur',       ko: '우르',       en: 'Ur',         coord: [46.1030, 30.9625], era: ['patriarch'], desc: '아브라함의 고향 (갈대아 우르)', refs: ['창 11:31'] },
+  { id: 'haran',    ko: '하란',       en: 'Haran',      coord: [39.0333, 36.8622], era: ['patriarch'], desc: '아브라함이 우르에서 이주해 머문 도시', refs: ['창 11:31','창 12:4'] },
+  { id: 'shechem',  ko: '세겜',       en: 'Shechem',    coord: [35.2811, 32.2137], era: ['patriarch','kingdom'], desc: '아브라함의 첫 제단, 야곱의 우물', refs: ['창 12:6','요 4:5'] },
+  { id: 'hebron',   ko: '헤브론',     en: 'Hebron',     coord: [35.0998, 31.5326], era: ['patriarch','kingdom'], desc: '족장 매장지 막벨라 굴, 다윗의 첫 왕도', refs: ['창 23:19','삼하 2:11'] },
+  { id: 'beersheba',ko: '브엘세바',   en: 'Beersheba',  coord: [34.7913, 31.2530], era: ['patriarch'], desc: '아브라함·이삭의 우물, 남방 경계', refs: ['창 21:31'] },
+  { id: 'bethel',   ko: '벧엘',       en: 'Bethel',     coord: [35.2213, 31.9299], era: ['patriarch','kingdom'], desc: '야곱의 사닥다리 환상', refs: ['창 28:19'] },
+
+  // 출애굽
+  { id: 'ramses',   ko: '라암셋',     en: 'Rameses',    coord: [31.8000, 30.9500], era: ['exodus'], desc: '출애굽 출발지', refs: ['출 12:37'] },
+  { id: 'sinai',    ko: '시내산',     en: 'Mt. Sinai',  coord: [33.9752, 28.5392], era: ['exodus'], desc: '십계명 수여 (전통 위치)', refs: ['출 19:20'] },
+  { id: 'kadesh',   ko: '가데스바네아', en: 'Kadesh',   coord: [34.4166, 30.6725], era: ['exodus'], desc: '광야 40년 주요 근거지', refs: ['민 20:1'] },
+
+  // 왕정
+  { id: 'jerusalem',ko: '예루살렘',   en: 'Jerusalem',  coord: [35.2137, 31.7683], era: ['kingdom','nt'], desc: '다윗 성, 성전, 예수의 십자가와 부활', refs: ['삼하 5:6','왕상 6','마 21:1','행 2'] },
+  { id: 'bethlehem',ko: '베들레헴',   en: 'Bethlehem',  coord: [35.2024, 31.7054], era: ['kingdom','nt'], desc: '다윗과 예수 그리스도의 탄생지', refs: ['삼상 16:1','미 5:2','눅 2:4'] },
+  { id: 'samaria',  ko: '사마리아',   en: 'Samaria',    coord: [35.1861, 32.2765], era: ['kingdom'], desc: '북왕국 이스라엘의 수도 (오므리 왕조)', refs: ['왕상 16:24'] },
+  { id: 'jericho',  ko: '여리고',     en: 'Jericho',    coord: [35.4444, 31.8611], era: ['exodus','kingdom','nt'], desc: '가나안 정복의 첫 성, 삭개오의 도시', refs: ['수 6','눅 19:1'] },
+  { id: 'megiddo',  ko: '므깃도',     en: 'Megiddo',    coord: [35.1841, 32.5847], era: ['kingdom'], desc: '전략 요충지, 아마겟돈의 어원', refs: ['왕하 23:29','계 16:16'] },
+
+  // 신약
+  { id: 'nazareth', ko: '나사렛',     en: 'Nazareth',   coord: [35.2978, 32.7021], era: ['nt'], desc: '예수의 성장지', refs: ['눅 2:39','마 2:23'] },
+  { id: 'capernaum',ko: '가버나움',   en: 'Capernaum',  coord: [35.5750, 32.8811], era: ['nt'], desc: '예수의 갈릴리 사역 본거지', refs: ['마 4:13'] },
+  { id: 'caesarea', ko: '가이사랴',   en: 'Caesarea',   coord: [34.8934, 32.5001], era: ['nt'], desc: '로마 총독부, 바울의 재판', refs: ['행 10','행 25'] },
+  { id: 'damascus', ko: '다메섹',     en: 'Damascus',   coord: [36.2765, 33.5138], era: ['kingdom','nt'], desc: '바울의 회심', refs: ['행 9:3'] },
+  { id: 'antioch',  ko: '안디옥',     en: 'Antioch',    coord: [36.1580, 36.2020], era: ['nt'], desc: '"그리스도인"이 처음 불린 곳, 바울 선교의 거점', refs: ['행 11:26'] },
+
+  // 바울 전도 여정
+  { id: 'ephesus',  ko: '에베소',     en: 'Ephesus',    coord: [27.3419, 37.9410], era: ['nt'], desc: '아시아 최대 도시, 바울 3년 사역', refs: ['행 19'] },
+  { id: 'corinth',  ko: '고린도',     en: 'Corinth',    coord: [22.8790, 37.9060], era: ['nt'], desc: '바울 1년 6개월 사역, 두 편의 서신', refs: ['행 18:11'] },
+  { id: 'athens',   ko: '아테네',     en: 'Athens',     coord: [23.7275, 37.9838], era: ['nt'], desc: '아레오바고 설교', refs: ['행 17:22'] },
+  { id: 'philippi', ko: '빌립보',     en: 'Philippi',   coord: [24.2870, 41.0132], era: ['nt'], desc: '유럽 첫 교회', refs: ['행 16:12'] },
+  { id: 'rome',     ko: '로마',       en: 'Rome',       coord: [12.4964, 41.9028], era: ['nt'], desc: '바울의 마지막 여정, 로마서 수신', refs: ['행 28:16','롬 1:7'] },
+  { id: 'alexandria', ko: '알렉산드리아', en: 'Alexandria', coord: [29.9187, 31.2001], era: ['patriarch','nt'], desc: '아볼로의 출신지, 셉투아진트의 산실', refs: ['행 18:24'] },
+
+  // 포로기
+  { id: 'babylon',  ko: '바벨론',     en: 'Babylon',    coord: [44.4275, 32.5423], era: ['exile'], desc: '유다 포로기의 땅', refs: ['왕하 25','단 1:1'] },
+  { id: 'susa',     ko: '수산',       en: 'Susa',       coord: [48.2492, 32.1892], era: ['exile'], desc: '에스더 이야기의 무대', refs: ['에 1:2','느 1:1'] },
+];
+
+// ── 여정 트레이싱 데이터 ─────────────────────────────────────────────
+// path: 지도에 그릴 waypoint 배열 (경유지 포함, 순서대로 곡선 연결)
+//   stop=true : 성경 명시 지점 → 팝업 자동 등장
+//   stop=false: 학술적으로 재구성된 경유 waypoint (팝업 없음, 경로만 지나감)
+//
+// 아브라함 여정은 다음 학술 자료 기반:
+//   · Beitzel, "The New Moody Atlas of the Bible" (2009)
+//   · Rainey & Notley, "The Sacred Bridge" (2006)
+//   · Kitchen, "On the Reliability of the Old Testament" (2003)
+//   · Aharoni, "The Land of the Bible" (1979)
+// 우르는 남방설(Tell el-Muqayyar, 이라크 남부) — 학계 다수설·행 7:2 지지
+// 이동 경로는 유프라테스 강을 거슬러 올라가는 '비옥한 초승달'을 따름
+// (남방 아라비아 사막 직행은 지리적으로 불가능)
+const JOURNEYS = [
+  {
+    id: 'abraham',
+    name: '아브라함의 이주',
+    sub: '우르 → 하란 → 가나안 (BC ~2000, 중기청동기 II)',
+    color: '#f59e0b',
+    // 총 4단계: (1) 우르→하란 [유프라테스 강 상류] (2) 하란→세겜 [카르케미시·다마스쿠스] (3) 세겜→헤브론 [벧엘·이집트 왕복] (4) 노년 이동
+    path: [
+      // ── 1. 우르 → 하란 (유프라테스 강을 거슬러 올라가는 반원, 창 11:31) ──
+      { name: '우르 (Ur)',            coord: [46.1030, 30.9625], stop: true,  refs: ['창 11:28','창 11:31','행 7:2','느 9:7'], desc: '갈대아 우르. 데라·아브람·나홀·롯의 고향. Tell el-Muqayyar(우르 지구라트) 발굴지. 수메르 문명의 중심.' },
+      { name: '에리두 인근 (Eridu)',   coord: [45.9976, 30.8158], stop: false },
+      { name: '우룩 (Uruk / Erech)',   coord: [45.6300, 31.3220], stop: false, refs: ['창 10:10'], desc: '창 10:10 에렉' },
+      { name: '니푸르 (Nippur)',       coord: [45.2333, 32.1264], stop: false, desc: '수메르 종교 중심지, 엔릴 신전' },
+      { name: '바벨론 (Babylon)',      coord: [44.4204, 32.5422], stop: false, refs: ['창 10:10','창 11:9'], desc: '바벨탑 전승지' },
+      { name: '시파르 (Sippar)',       coord: [44.2547, 33.0567], stop: false },
+      { name: '마리 (Mari, Tell Hariri)', coord: [40.8903, 34.5497], stop: false, desc: '유프라테스 중류, 초기청동기 왕궁 도시국가' },
+      { name: '투트툴 (Tuttul, Tell Bi\'a)', coord: [39.0233, 35.9500], stop: false, desc: '유프라테스·발리크 강 합류점 — 하란 방향 분기' },
+      { name: '하란 (Haran)',          coord: [39.0333, 36.8622], stop: true,  refs: ['창 11:31-32','창 12:4-5','행 7:2-4'], desc: '데라 사망지. 아브람이 75세에 하나님의 부르심을 받고 하란을 떠남. 발리크 강 상류.' },
+
+      // ── 2. 하란 → 세겜 (창 12:5-6, 카르케미시에서 유프라테스 도하 후 남하) ──
+      { name: '카르케미시 (Carchemish)', coord: [38.0125, 36.8286], stop: false, desc: '유프라테스 도하 지점, 히타이트-미탄니 접경' },
+      { name: '알레포 (Aleppo / Halab)', coord: [37.1610, 36.2021], stop: false, desc: '고대 이래 상업 요충' },
+      { name: '에블라 (Ebla, Tell Mardikh)', coord: [36.7981, 35.7975], stop: false, desc: '초기청동기 최대 왕국 중 하나 (에블라 문서)' },
+      { name: '하맛 (Hamath)',         coord: [36.7530, 35.1330], stop: false, refs: ['창 10:18','민 13:21'], desc: '오론테스 강변' },
+      { name: '가데스 (Kadesh on Orontes)', coord: [36.5170, 34.5675], stop: false },
+      { name: '다메섹 (Damascus)',     coord: [36.3010, 33.5138], stop: false, refs: ['창 14:15','창 15:2'], desc: '창 14:15 아브람이 조카 롯을 구하러 추격한 북방 한계. 종 엘리에셀의 출신지.' },
+      { name: '단 (Dan, Tell el-Qadi)', coord: [35.6500, 33.2500], stop: false, refs: ['창 14:14'], desc: '북방 관문' },
+      { name: '하솔 (Hazor, Tel Hazor)', coord: [35.5687, 33.0170], stop: false, desc: '가나안 최대 성읍' },
+      { name: '도단 (Dothan)',         coord: [35.2400, 32.4200], stop: false, refs: ['창 37:17'], desc: '평야 통과 남하' },
+      { name: '세겜 (Shechem, Tell Balata)', coord: [35.2811, 32.2137], stop: true, refs: ['창 12:6-7'], desc: '가나안 진입 첫 목적지. 모레 상수리나무 앞에서 여호와의 첫 현현 · 첫 제단.' },
+
+      // ── 3. 세겜 → 벧엘 → 이집트 → 헤브론 (창 12:8-13:18) ──
+      { name: '벧엘 (Bethel)',         coord: [35.2213, 31.9299], stop: true, refs: ['창 12:8','창 13:3-4'], desc: '벧엘 동쪽·아이 서쪽에서 제단을 쌓음. 이집트에서 돌아와 다시 이곳으로.' },
+      { name: '예루살렘 (Salem 인근)', coord: [35.2137, 31.7683], stop: false, refs: ['창 14:18-20','창 22:2'], desc: '살렘의 왕 멜기세덱과의 만남 · 모리아산 이삭 번제 (전승)' },
+      { name: '헤브론 (Hebron / Mamre)', coord: [35.0998, 31.5326], stop: true, refs: ['창 13:18','창 23:19','창 25:9'], desc: '마므레 상수리나무에 정착. 사라와 아브라함 매장지 막벨라 굴.' },
+      { name: '브엘세바 (Beersheba)',  coord: [34.7913, 31.2530], stop: true, refs: ['창 21:31-33','창 22:19'], desc: '남방 경계. 아비멜렉과의 언약, 이삭 번제 후 이곳으로 돌아옴.' },
+      { name: '술 광야 통과',           coord: [34.0000, 30.6000], stop: false, refs: ['창 20:1'], desc: '가데스와 술 사이 남방' },
+      { name: '이집트 나일 델타',       coord: [31.3000, 30.5000], stop: true, refs: ['창 12:10-20'], desc: '가나안 대기근으로 잠시 이주. 바로에게 사래를 누이라 함.' },
+
+      // ── 4. 헤브론 복귀 (창 13:18) — 여정의 최종 정착점 ──
+      { name: '네게브 통과 (남방)',     coord: [34.6000, 30.9000], stop: false, refs: ['창 13:1'], desc: '이집트에서 남방을 거쳐 벧엘로 북상' },
+      { name: '헤브론 (최종 정착)',    coord: [35.0998, 31.5326], stop: false, desc: '마므레 상수리나무 아래 최종 정착 (창 13:18)' },
+    ],
+  },
+  {
+    id: 'exodus', name: '출애굽 여정', sub: '라암셋 → 시내산 → 가데스 → 여리고',
+    color: '#dc2626',
+    path: [
+      { name: '라암셋', coord: [31.8000, 30.9500], stop: true, refs: ['출 12:37'], desc: '출애굽 출발지' },
+      { name: '시내산', coord: [33.9752, 28.5392], stop: true, refs: ['출 19:20'], desc: '십계명 수여 (전통 위치)' },
+      { name: '가데스바네아', coord: [34.4166, 30.6725], stop: true, refs: ['민 20:1'], desc: '광야 40년 주요 근거지' },
+      { name: '여리고', coord: [35.4444, 31.8611], stop: true, refs: ['수 6'], desc: '가나안 정복의 첫 성' },
+    ],
+  },
+  {
+    id: 'paul-macedonia', name: '바울 2차 전도', sub: '안디옥 → 빌립보 → 아테네 → 고린도',
+    color: '#3b82f6',
+    path: [
+      { name: '안디옥', coord: [36.1580, 36.2020], stop: true, refs: ['행 15:36'], desc: '2차 전도 여행 출발' },
+      { name: '에베소', coord: [27.3419, 37.9410], stop: true, refs: ['행 18:19'], desc: '아시아 관문' },
+      { name: '빌립보', coord: [24.2870, 41.0132], stop: true, refs: ['행 16:12'], desc: '유럽 첫 교회' },
+      { name: '아테네', coord: [23.7275, 37.9838], stop: true, refs: ['행 17:22'], desc: '아레오바고 설교' },
+      { name: '고린도', coord: [22.8790, 37.9060], stop: true, refs: ['행 18:11'], desc: '1년 6개월 사역' },
+      { name: '예루살렘', coord: [35.2137, 31.7683], stop: true, refs: ['행 18:22'], desc: '여정 마무리' },
+    ],
+  },
+  {
+    id: 'paul-rome', name: '바울의 로마 여정', sub: '가이사랴 → 로마 (죄수의 항해)',
+    color: '#10b981',
+    path: [
+      { name: '가이사랴', coord: [34.8934, 32.5001], stop: true, refs: ['행 27:1'], desc: '로마 이송 출항' },
+      { name: '아테네 앞바다', coord: [23.7275, 37.9838], stop: false },
+      { name: '로마', coord: [12.4964, 41.9028], stop: true, refs: ['행 28:16'], desc: '가택 연금 하 복음 전파' },
+    ],
+  },
+];
+
+// ── 시대 필터 ────────────────────────────────────────────────────────
+const ERAS = [
+  { id: 'all',      label: '전체' },
+  { id: 'patriarch',label: '족장기' },
+  { id: 'exodus',   label: '출애굽' },
+  { id: 'kingdom',  label: '왕정' },
+  { id: 'exile',    label: '포로기' },
+  { id: 'nt',       label: '신약' },
+];
+
+let currentEra = 'all';
+let selectedId = null;
+
+// ── 지도 초기화 ──────────────────────────────────────────────────────
+const map = new maplibregl.Map({
+  container: 'map',
+  style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+  center: [35.2, 31.8],  // 이스라엘 중심
+  zoom: 6,
+  pitch: 0,
+});
+map.addControl(new maplibregl.NavigationControl(), 'top-left');
+
+let markers = [];
+let currentPopup = null;
+
+function renderMarkers() {
+  markers.forEach(m => m.remove());
+  markers = [];
+  const filtered = currentEra === 'all'
+    ? PLACES
+    : PLACES.filter(p => p.era.includes(currentEra));
+
+  filtered.forEach(p => {
+    const el = document.createElement('div');
+    const active = p.id === selectedId;
+    el.style.cssText = `
+      width: ${active ? 18 : 14}px; height: ${active ? 18 : 14}px;
+      border-radius: 50%; cursor: pointer;
+      background: ${active ? '#dc2626' : '#2563eb'};
+      border: 2px solid #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+      transition: all .15s;
+    `;
+    el.onmouseenter = () => (el.style.transform = 'scale(1.35)');
+    el.onmouseleave = () => (el.style.transform = 'scale(1)');
+    el.onclick = () => openPlace(p);
+
+    const m = new maplibregl.Marker({ element: el }).setLngLat(p.coord).addTo(map);
+    markers.push(m);
+  });
+}
+
+function openPlace(p) {
+  selectedId = p.id;
+  renderMarkers();
+  renderList();
+
+  if (currentPopup) currentPopup.remove();
+  const refsHtml = p.refs.map(r => `<span class="ref">${r}</span>`).join('');
+  currentPopup = new maplibregl.Popup({ offset: 15, maxWidth: '320px' })
+    .setLngLat(p.coord)
+    .setHTML(`
+      <div class="popup-title">${p.ko}</div>
+      <div class="popup-sub">${p.en}  ·  ${p.coord[1].toFixed(3)}°N, ${p.coord[0].toFixed(3)}°E</div>
+      <div class="popup-desc">${p.desc}</div>
+      <div class="popup-refs">${refsHtml}</div>
+    `)
+    .addTo(map);
+
+  map.flyTo({ center: p.coord, zoom: 9, speed: 1.2 });
+}
+
+// ── UI 렌더링 ────────────────────────────────────────────────────────
+function renderEras() {
+  const el = document.getElementById('eras');
+  el.innerHTML = ERAS.map(e =>
+    `<button class="era-btn ${e.id === currentEra ? 'active' : ''}" data-era="${e.id}">${e.label}</button>`
+  ).join('');
+  el.querySelectorAll('.era-btn').forEach(btn => {
+    btn.onclick = () => { currentEra = btn.dataset.era; selectedId = null; renderEras(); renderList(); renderMarkers(); };
+  });
+}
+
+function renderList() {
+  const el = document.getElementById('place-list');
+  const filtered = currentEra === 'all'
+    ? PLACES
+    : PLACES.filter(p => p.era.includes(currentEra));
+  el.innerHTML = filtered.map(p =>
+    `<div class="place-row ${p.id === selectedId ? 'active' : ''}" data-id="${p.id}">
+       <div class="ko">${p.ko}</div>
+       <div class="en">${p.en}</div>
+       <div class="refs">${p.refs.slice(0,2).join(', ')}${p.refs.length > 2 ? ' 외' : ''}</div>
+     </div>`
+  ).join('');
+  el.querySelectorAll('.place-row').forEach(row => {
+    row.onclick = () => {
+      const p = PLACES.find(x => x.id === row.dataset.id);
+      if (p) openPlace(p);
+    };
+  });
+}
+
+// ── 3D 지형 토글 ─────────────────────────────────────────────────────
+let is3D = false;
+document.getElementById('btn-3d').onclick = (e) => {
+  is3D = !is3D;
+  e.target.classList.toggle('active', is3D);
+  if (is3D) {
+    if (!map.getSource('terrain')) {
+      map.addSource('terrain', {
+        type: 'raster-dem',
+        tiles: ['https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png'],
+        tileSize: 256, encoding: 'terrarium', maxzoom: 15,
+      });
+    }
+    map.setTerrain({ source: 'terrain', exaggeration: 1.5 });
+    map.easeTo({ pitch: 60, bearing: 20, duration: 800 });
+  } else {
+    map.setTerrain(null);
+    map.easeTo({ pitch: 0, bearing: 0, duration: 800 });
+  }
+};
+
+document.getElementById('btn-reset').onclick = () => {
+  stopJourney();
+  map.flyTo({ center: [35.2, 31.8], zoom: 6, pitch: 0, bearing: 0 });
+};
+
+// ── 여정 트레이싱 ────────────────────────────────────────────────────
+let activeJourneyId = null;
+let dashAnimId = null;
+let flyTimeouts = [];
+let isPaused = false;
+
+const JOURNEY_SRC = 'journey-line-src';
+const JOURNEY_LAYER_DRAWN = 'journey-drawn';   // 완성된 실선 (뒷쪽)
+const JOURNEY_LAYER_DASH  = 'journey-dash';    // 흐르는 점선 (앞쪽)
+
+function ensureJourneyLayers() {
+  if (map.getSource(JOURNEY_SRC)) return;
+  map.addSource(JOURNEY_SRC, { type: 'geojson', data: { type: 'FeatureCollection', features: [] } });
+  map.addLayer({
+    id: JOURNEY_LAYER_DRAWN, type: 'line', source: JOURNEY_SRC,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: {
+      'line-color': ['get', 'color'],
+      'line-width': 3,
+      'line-opacity': 0.35,
+    },
+  });
+  map.addLayer({
+    id: JOURNEY_LAYER_DASH, type: 'line', source: JOURNEY_SRC,
+    layout: { 'line-cap': 'round', 'line-join': 'round' },
+    paint: {
+      'line-color': ['get', 'color'],
+      'line-width': 4,
+      'line-dasharray': [0, 4, 3],
+    },
+  });
+}
+
+function playJourney(journey) {
+  stopJourney();
+  activeJourneyId = journey.id;
+  isPaused = false;
+
+  // path 배열의 모든 waypoint 좌표
+  const allCoords = journey.path.map(p => p.coord);
+  if (allCoords.length < 2) return;
+
+  // turf.bezierSpline 으로 부드러운 곡선 생성 (자연스러운 이동 경로)
+  const rawLine = turf.lineString(allCoords);
+  const smoothed = turf.bezierSpline(rawLine, { resolution: 12000, sharpness: 0.75 });
+  const smoothCoords = smoothed.geometry.coordinates;
+
+  ensureJourneyLayers();
+  map.getSource(JOURNEY_SRC).setData({
+    type: 'FeatureCollection',
+    features: [{
+      type: 'Feature',
+      properties: { color: journey.color },
+      geometry: { type: 'LineString', coordinates: smoothCoords },
+    }],
+  });
+
+  // 점선이 흘러가는 애니메이션 (dash-array 오프셋 반복)
+  const dashPatterns = [
+    [0, 4, 3], [1, 4, 2], [2, 4, 1], [3, 4, 0],
+    [0, 1, 3, 3], [0, 2, 3, 2], [0, 3, 3, 1],
+  ];
+  let step = 0;
+  const animateDash = () => {
+    if (!map.getLayer(JOURNEY_LAYER_DASH)) return;
+    map.setPaintProperty(JOURNEY_LAYER_DASH, 'line-dasharray', dashPatterns[step % dashPatterns.length]);
+    step++;
+    dashAnimId = setTimeout(animateDash, 120);
+  };
+  animateDash();
+
+  renderJourneyList();
+  document.getElementById('journey-controls').classList.add('visible');
+
+  // 전체 경로를 한눈에 볼 수 있도록 fit
+  const bounds = allCoords.reduce(
+    (b, c) => b.extend(c),
+    new maplibregl.LngLatBounds(allCoords[0], allCoords[0]),
+  );
+  map.fitBounds(bounds, { padding: 80, duration: 1400, maxZoom: 7 });
+
+  // 성경 명시 stop 만 순차 방문 (경유 waypoint 는 지나감)
+  const stops = journey.path.filter(p => p.stop);
+  const perStopMs = 3800;
+  stops.forEach((p, i) => {
+    const t = setTimeout(() => {
+      if (isPaused || activeJourneyId !== journey.id) return;
+      map.flyTo({ center: p.coord, zoom: 8, speed: 0.7, curve: 1.4 });
+      if (currentPopup) currentPopup.remove();
+      const refsHtml = (p.refs || []).map(r => `<span class="ref">${r}</span>`).join('');
+      currentPopup = new maplibregl.Popup({ offset: 15, maxWidth: '340px', closeButton: false })
+        .setLngLat(p.coord)
+        .setHTML(`
+          <div class="popup-title">${i + 1}. ${p.name}</div>
+          <div class="popup-sub">${journey.name}  ·  성경 지점 ${i + 1}/${stops.length}</div>
+          <div class="popup-desc">${p.desc || ''}</div>
+          <div class="popup-refs">${refsHtml}</div>
+        `)
+        .addTo(map);
+    }, 2500 + i * perStopMs);
+    flyTimeouts.push(t);
+  });
+
+  // 마지막에 전체 여정 다시 보기
+  const finalT = setTimeout(() => {
+    if (activeJourneyId !== journey.id) return;
+    map.fitBounds(bounds, { padding: 80, duration: 1800, maxZoom: 7 });
+  }, 2500 + stops.length * perStopMs + 800);
+  flyTimeouts.push(finalT);
+}
+
+function stopJourney() {
+  activeJourneyId = null;
+  isPaused = false;
+  if (dashAnimId) { clearTimeout(dashAnimId); dashAnimId = null; }
+  flyTimeouts.forEach(t => clearTimeout(t));
+  flyTimeouts = [];
+  if (map.getSource(JOURNEY_SRC)) {
+    map.getSource(JOURNEY_SRC).setData({ type: 'FeatureCollection', features: [] });
+  }
+  document.getElementById('journey-controls').classList.remove('visible');
+  renderJourneyList();
+}
+
+function pauseJourney() {
+  isPaused = !isPaused;
+  document.getElementById('jc-pause').textContent = isPaused ? '▶ 이어서' : '⏸ 일시정지';
+  if (isPaused) {
+    flyTimeouts.forEach(t => clearTimeout(t));
+    flyTimeouts = [];
+    if (dashAnimId) { clearTimeout(dashAnimId); dashAnimId = null; }
+  } else {
+    // 재개는 단순화를 위해 처음부터 재생 (MVP)
+    const j = JOURNEYS.find(x => x.id === activeJourneyId);
+    if (j) playJourney(j);
+  }
+}
+
+function renderJourneyList() {
+  const el = document.getElementById('journey-list');
+  el.innerHTML = JOURNEYS.map(j =>
+    `<button class="journey-btn ${j.id === activeJourneyId ? 'active' : ''}" data-id="${j.id}">
+       <div class="name">${j.id === activeJourneyId ? '▶ ' : ''}${j.name}</div>
+       <div class="sub">${j.sub}</div>
+     </button>`
+  ).join('');
+  el.querySelectorAll('.journey-btn').forEach(btn => {
+    btn.onclick = () => {
+      const j = JOURNEYS.find(x => x.id === btn.dataset.id);
+      if (activeJourneyId === j.id) stopJourney();
+      else playJourney(j);
+    };
+  });
+}
+
+document.getElementById('jc-pause').onclick = pauseJourney;
+document.getElementById('jc-stop').onclick  = stopJourney;
+
+// ── 비옥한 초승달 지대 (Fertile Crescent) 오버레이 ────────────────────
+// 학계 표준: 이집트 나일 델타 → 팔레스타인 → 시리아·레바논 → 유프라테스·티그리스 강 유역 → 페르시아만
+// 반원 형태로 아라비아·시리아 사막을 감쌈. Breasted, Rainey 등 학술 지도 참조.
+const FERTILE_CRESCENT_GEOJSON = {
+  type: 'FeatureCollection',
+  features: [{
+    type: 'Feature',
+    properties: { name: 'Fertile Crescent' },
+    geometry: {
+      // 두 개의 좁은 회랑이 아나톨리아 남부에서 만나는 초승달 형태.
+      // 참조: Rainey & Notley *Sacred Bridge*, Kramer *History Begins at Sumer*,
+      //       National Geographic FC 지도, ETOPO1 지형 데이터.
+      // 좌표는 [경도, 위도].
+      type: 'Polygon',
+      coordinates: [[
+        // ═══ 외곽 (바다·산맥 쪽) — 나일 델타 → 지중해 해안 → 아나톨리아 남부 → 자그로스 서기슭 → 페르시아만 ═══
+
+        // ── 나일 델타 (좁은 삼각형) ──
+        [30.10, 31.15],  // 알렉산드리아
+        [30.95, 31.45],  // 델타 북서
+        [31.60, 31.55],  // 로제타 하구
+        [31.85, 31.45],  // 다미에타 하구
+        [32.30, 31.25],  // 포트사이드
+
+        // ── 시나이 북부 해안 회랑 (지중해 연안 좁게) ──
+        [32.55, 31.05],  // 수에즈 지협 북
+        [33.15, 31.10],  // 시나이 북부 해안
+        [33.80, 31.20],  // 엘 아리시
+        [34.28, 31.35],  // 라파
+
+        // ── 가나안·필리스티아·페니키아 해안 ──
+        [34.47, 31.50],  // 가자
+        [34.55, 31.78],  // 아스글론·아스돗
+        [34.75, 32.08],  // 텔아비브·욥바
+        [34.90, 32.55],  // 하데라
+        [35.00, 32.83],  // 하이파
+        [35.10, 33.10],  // 아코
+        [35.20, 33.27],  // 티레
+        [35.38, 33.56],  // 시돈
+        [35.51, 33.89],  // 베이루트
+        [35.65, 34.12],  // 비블로스
+        [35.75, 34.31],  // 트리폴리 (레바논)
+
+        // ── 시리아 해안 ──
+        [35.88, 34.70],  // 타르투스
+        [35.90, 35.10],  // 자블레
+        [35.78, 35.52],  // 라타키아
+        [35.92, 35.92],  // 알수아이디예 (오론테스 하구)
+
+        // ── 하타이·아나톨리아 남부 (초승달 정점) ──
+        [36.16, 36.20],  // 안디옥
+        [36.50, 36.55],  // 알렉산드레타(이스켄데룬)
+        [36.95, 36.80],  // 아만우스 산맥 통과
+        [37.35, 37.05],  // 가지안텝
+        [37.80, 37.05],  // 비레지크 (유프라테스 도하)
+        [38.30, 37.16],  // 샨르우르파
+        [38.80, 37.30],  // 아디야만
+        [39.60, 37.55],  // 유프라테스 상류
+        [40.20, 37.75],  // 디야르바키르 남쪽 언덕
+
+        // ── 상부 메소포타미아 (Jazira) ──
+        [41.20, 37.30],  // 마르딘·투르 압딘
+        [42.10, 37.10],  // 지지레
+        [42.80, 36.75],  // 상부 티그리스
+        [43.15, 36.35],  // 니느웨 (모술)
+
+        // ── 자그로스 서쪽 기슭 (앗시리아 심장부) ──
+        [44.02, 36.19],  // 아르빌 (아르바일라)
+        [44.40, 35.47],  // 키르쿠크
+        [45.43, 35.56],  // 술라이마니야
+        [45.80, 35.00],  // 자그로스 서기슭
+        [46.10, 34.20],  // 켄드러르(케르만샤 서쪽)
+        [46.80, 33.50],  // 만달리 지역
+        [47.30, 32.80],  // 데즈풀 방면
+        [48.25, 32.19],  // 수산 (엘람)
+        [48.65, 31.30],  // 아흐바즈
+        [48.90, 30.35],  // 아바단·샤트알아랍
+        [48.65, 30.05],  // 페르시아만 하구
+
+        // ═══ 내곽 (사막 쪽) — 페르시아만 → 시리아 사막 북연 → 요단·시나이 → 이집트 나일 계곡 ═══
+
+        // ── 페르시아만 서안·수메르 남단 ──
+        [47.55, 30.20],
+        [46.30, 30.85],  // 우르 남쪽 (Tell el-Muqayyar)
+        [45.40, 31.35],  // 라가시 서쪽
+        [44.42, 32.30],  // 바벨론 서쪽 (유프라테스만 좁게)
+
+        // ── 유프라테스 강 서안 (사막 접경) ──
+        [43.70, 32.90],  // 팔루자 서쪽
+        [43.10, 33.60],  // 안바르
+        [42.30, 34.00],  // 히트
+        [41.30, 34.30],  // 라마디 상류
+        [40.90, 34.45],  // 마리 (유프라테스 강가만 좁게)
+        [40.15, 34.75],  // 데이르에조르 남
+        [39.30, 35.15],  // 락까 남
+        [38.20, 35.35],  // 자바르 → 초승달 정점 아래
+
+        // ── 아나톨리아 정점 바로 아래에서 서쪽으로 꺾어 서시리아·레바논 안쪽으로 ──
+        [37.10, 35.55],  // 알레포 남 (에블라 인근)
+        [36.75, 35.13],  // 하맛 (오론테스)
+        [36.52, 34.57],  // 카데시 온 오론테스
+        [36.30, 33.51],  // 다마스쿠스
+        [36.10, 32.60],  // 바산 남
+        [35.85, 32.05],  // 요단 강 동안·암몬 (랍바)
+        [35.75, 31.30],  // 사해 동 (모압)
+        [35.35, 30.75],  // 페트라 (에돔)
+        [34.95, 30.30],  // 네게브 남부
+        [34.55, 29.60],  // 아카바만 북단
+
+        // ── 시나이 북부 회랑 · 이집트 나일 회랑 (좁게) ──
+        [33.70, 30.10],  // 시나이 중북
+        [32.60, 30.20],  // 수에즈 만 북
+        [32.00, 30.05],  // 이집트 동부 사막 경계
+        [31.25, 30.05],  // 카이로 (나일 델타 남단)
+        [30.85, 29.30],  // 파이윰 (나일 계곡 좁은 남단)
+        [30.60, 30.20],  // 나일 델타 서남
+        [30.05, 30.75],  // 알렉산드리아 남서
+        [30.10, 31.15],  // 시작점 복귀
+      ]],
+    },
+  }],
+};
+
+let crescentVisible = true;
+function ensureCrescentLayer() {
+  if (map.getSource('fertile-crescent')) return;
+  map.addSource('fertile-crescent', { type: 'geojson', data: FERTILE_CRESCENT_GEOJSON });
+
+  // 하단에 배치 — 도로/지명 위에 뜨지 않도록. 지형/베이스 위에만.
+  const firstSymbolId = (() => {
+    const layers = map.getStyle().layers || [];
+    const first = layers.find(l => l.type === 'symbol');
+    return first?.id;
+  })();
+
+  map.addLayer({
+    id: 'fertile-crescent-fill',
+    type: 'fill',
+    source: 'fertile-crescent',
+    paint: {
+      'fill-color': '#4d7c0f',
+      'fill-opacity': 0.28,
+    },
+  }, firstSymbolId);
+
+  map.addLayer({
+    id: 'fertile-crescent-outline',
+    type: 'line',
+    source: 'fertile-crescent',
+    paint: {
+      'line-color': '#365314',
+      'line-width': 1.4,
+      'line-opacity': 0.75,
+    },
+  }, firstSymbolId);
+
+  // 라벨 (중앙에 표기)
+  map.addSource('fertile-crescent-label', {
+    type: 'geojson',
+    data: {
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          geometry: { type: 'Point', coordinates: [39.5, 36.4] },
+          properties: { title: 'FERTILE CRESCENT', sub: '비옥한 초승달 지대' },
+        },
+      ],
+    },
+  });
+  map.addLayer({
+    id: 'fertile-crescent-label',
+    type: 'symbol',
+    source: 'fertile-crescent-label',
+    layout: {
+      'text-field': ['format',
+        ['get', 'title'], { 'font-scale': 1.0 },
+        '\n', {},
+        ['get', 'sub'],   { 'font-scale': 0.72 },
+      ],
+      'text-size': 13,
+      'text-letter-spacing': 0.15,
+      'text-anchor': 'center',
+      'text-allow-overlap': false,
+    },
+    paint: {
+      'text-color': '#365314',
+      'text-halo-color': '#f7fee7',
+      'text-halo-width': 1.5,
+      'text-opacity': 0.85,
+    },
+  });
+}
+
+function setCrescentVisible(v) {
+  crescentVisible = v;
+  const visibility = v ? 'visible' : 'none';
+  ['fertile-crescent-fill', 'fertile-crescent-outline', 'fertile-crescent-label'].forEach(id => {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
+  });
+  document.getElementById('btn-crescent').classList.toggle('active', v);
+}
+
+document.getElementById('btn-crescent').onclick = () => setCrescentVisible(!crescentVisible);
+
+// ── 초기 렌더 ────────────────────────────────────────────────────────
+map.on('load', () => {
+  ensureCrescentLayer();
+  renderEras();
+  renderList();
+  renderMarkers();
+  renderJourneyList();
+});
+</script>
+</body>
+</html>

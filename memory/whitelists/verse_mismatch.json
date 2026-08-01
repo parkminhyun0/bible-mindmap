@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "description": "개역한글(KRV)과 원문(MT/GNT) 간 알려진 chapter/verse 넘버링 mismatch. validate-book-ctx 및 STEPBible 파서가 참조.",
+    "convention": "primary = 개역한글 (앱 표시 기준) · source = 원문 (STEPBible lex 기준)",
+    "generated": "2026-07-25",
+    "source": "STEPBible-Data + NET Bible notes + BHS/BHQ apparatus 대조"
+  },
+  "chapter_boundary_shifts": {
+    "Gen": {
+      "note": "창세기 32장 경계: 히브리 MT 32:1~33 = 개역한글 31:55~32:32",
+      "shifts": [
+        { "primary": "31:55", "source": "32:1" },
+        { "primary": "32:1",  "source": "32:2" },
+        { "primary": "32:32", "source": "32:33" }
+      ]
+    },
+    "Mal": {
+      "note": "말라기 4장 경계: 히브리 MT 3:19~24 = 개역한글 4:1~6",
+      "shifts": [
+        { "primary": "4:1", "source": "3:19" },
+        { "primary": "4:2", "source": "3:20" },
+        { "primary": "4:3", "source": "3:21" },
+        { "primary": "4:4", "source": "3:22" },
+        { "primary": "4:5", "source": "3:23" },
+        { "primary": "4:6", "source": "3:24" }
+      ]
+    },
+    "Joel": {
+      "note": "요엘 히브리 MT 3장은 개역 2:28~32 · MT 4장은 개역 3장",
+      "shifts": [
+        { "primary": "2:28", "source": "3:1" },
+        { "primary": "2:32", "source": "3:5" },
+        { "primary": "3:1",  "source": "4:1" },
+        { "primary": "3:21", "source": "4:21" }
+      ]
+    }
+  },
+  "psalm_superscription_offset": {
+    "note": "시편 다수: 히브리 MT는 표제를 절 1로 카운트 · 개역한글은 표제 제외. 표제 있는 시편은 offset -1 or -2.",
+    "convention": "primary(KRV) 절 N = source(MT) 절 N+1 (표제 1줄) 또는 N+2 (표제 2줄)",
+    "examples": [
+      { "psalm": 3,  "offset": 1, "reason": "다윗의 시" },
+      { "psalm": 4,  "offset": 1, "reason": "다윗의 시 · 인도자를 따라" },
+      { "psalm": 18, "offset": 1, "reason": "다윗의 노래" },
+      { "psalm": 51, "offset": 2, "reason": "다윗의 시 · 밧세바 사건" },
+      { "psalm": 60, "offset": 2, "reason": "다윗의 믹담" }
+    ],
+    "no_superscription": [1, 2, 10, 33, 43, 71, 91, 93, 94, 95, 96, 97, 99, 104, 105, 106, 107, 111, 112, 113, 114, 115, 116, 117, 118, 119, 135, 136, 137, 146, 147, 148, 149, 150]
+  },
+  "disputed_verses_late_addition": {
+    "note": "일부 사본에만 존재하는 절. 개역한글에는 포함되지만 원문 비평 apparatus에서 논쟁.",
+    "verses": [
+      { "book": "Matt", "ref": "6:13",  "issue": "주기도문 송영 (다수 사본 · ℵ B D 부재)" },
+      { "book": "Matt", "ref": "17:21", "issue": "금식 기도 절 (일부 사본만)" },
+      { "book": "Matt", "ref": "18:11", "issue": "잃은 자 구원 (일부 사본 삽입)" },
+      { "book": "Matt", "ref": "23:14", "issue": "과부 가옥 (일부 사본 삽입)" },
+      { "book": "Mark", "ref": "16:9-20", "issue": "긴 결말 (ℵ B 부재 · 대부분 사본 포함)" },
+      { "book": "Luke", "ref": "17:36", "issue": "밭에 두 사람 (일부 사본만)" },
+      { "book": "Luke", "ref": "22:43-44", "issue": "겟세마네 피땀 (사본 논쟁 심함)" },
+      { "book": "Luke", "ref": "23:34a", "issue": "저들의 죄를 사하여 주옵소서 (일부 사본만)" },
+      { "book": "John", "ref": "5:4",   "issue": "천사 물 동함 (일부 사본만)" },
+      { "book": "John", "ref": "7:53-8:11", "issue": "간음한 여인 (Pericope Adulterae · 위치 다양)" },
+      { "book": "Acts", "ref": "8:37",  "issue": "내시 신앙고백 (일부 사본만)" },
+      { "book": "Acts", "ref": "15:34", "issue": "실라 안디옥 잔류 (일부 사본만)" },
+      { "book": "Acts", "ref": "24:6b-8a", "issue": "천부장 언급 (사본 논쟁)" },
+      { "book": "Acts", "ref": "28:29", "issue": "유대인 격론 (일부 사본만)" },
+      { "book": "Rom",  "ref": "16:24", "issue": "은혜 축도 반복 (사본별 위치 다름)" },
+      { "book": "Rom",  "ref": "16:25-27", "issue": "송영 위치 (사본별 · 14장 말미 · 15장 말미 · 16장 말미)" }
+    ]
+  },
+  "ruth_ketiv_qere": {
+    "note": "룻 4:5 Ketiv(기록된 자음) vs Qere(읽는 방식) — 1인칭/2인칭 논쟁",
+    "ref": "Ruth 4:5",
+    "ketiv": "קניתי (내가 샀다 · 1인칭)",
+    "qere":  "קנית (네가 샀다 · 2인칭)",
+    "impact": "화자와 소유권 주체 해석 갈림"
+  },
+  "chapter_verse_upper_bounds_note": {
+    "reference": "정확한 chapter/verse 상한은 verse_counts.json 참조",
+    "validation": "validate-book-ctx.mjs가 verse_counts.json 대조 후 chapter_boundary_shifts 예외 허용"
+  }
+}

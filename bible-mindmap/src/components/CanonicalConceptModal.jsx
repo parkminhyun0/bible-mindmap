@@ -679,10 +679,19 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               {tab === 'note' && (
                 <div style={{ padding: '14px 16px' }}>
                   <div style={{
-                    fontSize: B, color: '#1e293b', lineHeight: 1.7,
-                    background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 10, padding: '12px 14px',
+                    color: UI.ink, lineHeight: 1.78,
+                    background: UI.surface, border: `1px solid ${UI.line}`, borderRadius: 12,
+                    padding: '14px 16px', position: 'relative',
+                    boxShadow: '0 1px 2px rgba(24,22,45,.03)',
                   }}>
-                    {concept.theologicalNote}
+                    <span style={{ position: 'absolute', left: 0, top: 12, bottom: 12, width: 3, borderRadius: 3, background: `linear-gradient(${UI.gold}, ${UI.goldSoft})` }} />
+                    {String(concept.theologicalNote).split(/\n{2,}/).map((para, i, arr) => (
+                      <p key={i} style={{
+                        fontSize: B, margin: 0, marginBottom: i === arr.length - 1 ? 0 : 12,
+                        color: i === 0 ? UI.ink : UI.inkSoft,
+                        textAlign: 'justify', wordBreak: 'keep-all',
+                      }}>{para}</p>
+                    ))}
                   </div>
                   {concept.reformedAnchors?.length > 0 && (
                     <div style={{ marginTop: 12 }}>
