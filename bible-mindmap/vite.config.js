@@ -6,8 +6,8 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 // ── 캐시 세대 단일 소스 (bump 시 이 두 값만 수정) ─────────────────────────
-const HTML_CACHE = 'bm-app-html-v7'
-const CHUNK_CACHE = 'bm-feature-chunks-v6'
+const HTML_CACHE = 'bm-app-html-v8'
+const CHUNK_CACHE = 'bm-feature-chunks-v7'
 
 // ── 빌드 provenance (배포 반영 확인 장치) ────────────────────────────────
 // 매 빌드마다 git commit SHA + 빌드 시각을 앱과 version.json에 심는다.

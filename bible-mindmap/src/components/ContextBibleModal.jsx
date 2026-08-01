@@ -1033,7 +1033,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           border: isMobile ? 'none' : '1px solid rgba(15,23,42,.1)',
           width: isMobile ? '100%' : size.w,
           maxWidth: isMobile ? '100%' : 'none',
-          height: isMobile ? undefined : (minimized ? 'auto' : size.h),
+          // 모바일: 래퍼(fixed inset:0) 전체를 채워 하단 틈 제거 → 뒤 시트(성경 각권 목록) 누출 차단.
+          // h-screen-safe(100dvh) 클램프를 인라인으로 덮어써 lvh>dvh 간격을 없앤다.
+          height: isMobile ? '100%' : (minimized ? 'auto' : size.h),
+          maxHeight: isMobile ? '100%' : undefined,
+          minHeight: isMobile ? 0 : undefined,
           display:'flex',flexDirection:'column',
           overflow:'hidden',
           boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
@@ -3301,8 +3305,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     return (
       <div
         style={{ position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:1200,
-          background:'rgba(15,23,42,.55)',
-          WebkitBackdropFilter:'blur(6px)', backdropFilter:'blur(6px)',
+          // 풀스크린 모달이므로 딤 대신 불투명 흰색 — dvh/lvh 편차로 하단에 틈이 생겨도
+          // 뒤 시트(성경 각권 목록)가 비치지 않도록 완전히 가린다.
+          background:'#ffffff',
           display:'flex',alignItems:'stretch',justifyContent:'center' }}
         onClick={onClose}
       >
