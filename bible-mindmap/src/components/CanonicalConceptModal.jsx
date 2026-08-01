@@ -43,6 +43,23 @@ const COVENANT_ORDER = ['adamic', 'noahic', 'abrahamic', 'mosaic', 'davidic', 'n
 const FONT_MIN = 9;
 const FONT_MAX = 50;
 
+// ── 디자인 토큰 ────────────────────────────────────────────────────
+// 에디토리얼 · 페이퍼/잉크 · 골드 액센트. 기본 슬레이트 룩 탈피.
+const UI = {
+  paper:    '#faf8f4',        // 본문 배경 (따뜻한 아이보리)
+  surface:  '#ffffff',        // 카드 표면
+  ink:      '#16151f',        // 잉크 (거의 블랙, 살짝 웜)
+  inkSoft:  '#4b4a58',        // 보조 텍스트
+  inkMuted: '#8f8d9c',        // 흐린 텍스트
+  line:     '#eceae4',        // 경계선
+  lineSoft: '#f4f2ec',        // 옅은 경계선
+  gold:     '#c19a5b',        // 골드 액센트
+  goldSoft: '#efe6d4',        // 골드 배경
+  headerBg: 'linear-gradient(135deg,#1a1830 0%,#221f3d 52%,#2c2748 100%)', // 딥 잉크-인디고
+  radius:   16,
+  shadow:   '0 30px 80px -24px rgba(24,22,45,.45), 0 2px 8px rgba(24,22,45,.06)',
+};
+
 function parseRef(ref) {
   const [bookId, ch, v] = String(ref).split(':');
   return { bookId, chapter: Number(ch), verse: Number(v) };
@@ -225,21 +242,22 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
     ? {
         left: 0, bottom: 0, top: 'auto', transform: 'none',
         width: vw, maxHeight: minimized ? undefined : '90dvh',
-        borderRadius: '16px 16px 0 0',
+        borderRadius: '20px 20px 0 0',
       }
     : {
         left: pos.x, top: pos.y, bottom: 'auto', transform: 'none',
         width: size.w,
         height: minimized ? undefined : size.h,
         maxHeight: minimized ? undefined : size.h,
-        borderRadius: 14,
+        borderRadius: UI.radius,
       };
 
   const iconBtn = {
-    background: 'rgba(255,255,255,.14)', border: 'none', color: '#f1f5f9',
+    background: 'rgba(255,255,255,.10)', border: '1px solid rgba(255,255,255,.14)', color: '#efece4',
     height: 30, minWidth: isMobile ? 38 : 30, minHeight: isMobile ? 38 : 30,
-    padding: '0 8px', borderRadius: 8, cursor: 'pointer', fontSize: 13, fontWeight: 700,
+    padding: '0 8px', borderRadius: 9, cursor: 'pointer', fontSize: 13, fontWeight: 700,
     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+    transition: 'background .15s',
   };
 
   return createPortal(
@@ -262,9 +280,9 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
           position: 'fixed',
           zIndex: 1250,
           ...containerStyle,
-          background: '#fff',
-          boxShadow: '0 24px 64px rgba(15,23,42,.35)',
-          border: isMobile ? 'none' : '1px solid #e2e8f0',
+          background: UI.paper,
+          boxShadow: UI.shadow,
+          border: isMobile ? 'none' : `1px solid ${UI.line}`,
           overflow: 'hidden',
           display: 'flex', flexDirection: 'column',
           fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
@@ -276,22 +294,36 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
         <div
           onMouseDown={onHeaderMouseDown}
           style={{
-            padding: '12px 14px',
-            background: 'linear-gradient(135deg,#1e293b,#334155)',
-            color: '#f1f5f9',
+            position: 'relative',
+            padding: '14px 16px',
+            background: UI.headerBg,
+            color: '#f4f1ea',
             display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8,
             cursor: isMobile ? 'default' : (dragging.current ? 'grabbing' : 'grab'),
             userSelect: 'none', flexShrink: 0,
+            boxShadow: `inset 0 -1px 0 rgba(193,154,91,.35)`,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, minWidth: 0 }}>
-            <span aria-hidden="true" style={{ fontSize: 18 }}>🧭</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 11, minWidth: 0 }}>
+            <span
+              aria-hidden="true"
+              style={{
+                fontSize: 17, display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                width: 34, height: 34, borderRadius: 10, flexShrink: 0,
+                background: 'rgba(193,154,91,.16)', border: '1px solid rgba(193,154,91,.35)',
+              }}
+            >🧭</span>
             <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: 15, fontWeight: 800, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                정경 추적 · 핵심 개념
+              <div style={{
+                fontSize: 15, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                letterSpacing: '-.01em',
+              }}>
+                정경 추적 <span style={{ color: UI.gold, fontWeight: 600 }}>·</span> 핵심 개념
               </div>
               {!minimized && (
-                <div style={{ fontSize: 11, color: '#cbd5e1' }}>창세기 → 요한계시록 계시·성취 흐름</div>
+                <div style={{ fontSize: 10.5, color: 'rgba(244,241,234,.6)', letterSpacing: '.03em', marginTop: 1 }}>
+                  창세기 → 요한계시록 계시·성취 흐름
+                </div>
               )}
             </div>
           </div>
@@ -316,11 +348,11 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
             {/* 글자 크기 스테퍼 — [타이틀][분류텍스트][본문] 단위별 (문맥 성경 동일) */}
             <div style={{
               display: 'flex', alignItems: 'center', gap: 6,
-              padding: '6px 12px', borderBottom: '1px solid #e2e8f0',
-              background: 'rgba(30,41,59,.04)', flexShrink: 0,
+              padding: '7px 14px', borderBottom: `1px solid ${UI.line}`,
+              background: UI.surface, flexShrink: 0,
               overflowX: 'auto', WebkitOverflowScrolling: 'touch',
             }}>
-              <span style={{ fontSize: 11, fontWeight: 800, color: '#475569', letterSpacing: '.02em', flexShrink: 0 }}>Aa</span>
+              <span style={{ fontSize: 11, fontWeight: 800, color: UI.gold, letterSpacing: '.04em', flexShrink: 0, fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>Aa</span>
               {[
                 { key: 'title',    label: '타이틀' },
                 { key: 'category', label: '분류텍스트' },
@@ -328,63 +360,66 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               ].map((g) => (
                 <div key={g.key} style={{
                   display: 'flex', alignItems: 'center', gap: 2,
-                  background: '#fff', border: '1px solid #cbd5e1',
-                  borderRadius: 8, padding: '2px 4px', flexShrink: 0,
+                  background: UI.paper, border: `1px solid ${UI.line}`,
+                  borderRadius: 10, padding: '2px 4px', flexShrink: 0,
                 }}>
-                  <span style={{ fontSize: 10, fontWeight: 700, color: '#475569', padding: '0 4px' }}>{g.label}</span>
+                  <span style={{ fontSize: 10, fontWeight: 700, color: UI.inkSoft, padding: '0 4px' }}>{g.label}</span>
                   <button onClick={() => bumpFont(g.key, -1)}
                     aria-label={`${g.label} 글자 작게`}
-                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#334155', fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 6 }}>−</button>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: '#1e293b', minWidth: 22, textAlign: 'center' }}>{fontSizes[g.key]}</span>
+                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: UI.ink, fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 7 }}>−</button>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: UI.ink, minWidth: 22, textAlign: 'center' }}>{fontSizes[g.key]}</span>
                   <button onClick={() => bumpFont(g.key, 1)}
                     aria-label={`${g.label} 글자 크게`}
-                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: '#334155', fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 6 }}>+</button>
+                    style={{ minWidth: 28, minHeight: 28, background: 'transparent', border: 'none', color: UI.ink, fontSize: 15, fontWeight: 800, cursor: 'pointer', borderRadius: 7 }}>+</button>
                 </div>
               ))}
             </div>
 
             {/* 네비게이션: 검색 + 전체목록/타임라인 토글 */}
             <div style={{
-              display: 'flex', gap: 6, alignItems: 'center', padding: '8px 14px',
-              borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0, flexWrap: 'wrap',
+              display: 'flex', gap: 6, alignItems: 'center', padding: '9px 14px',
+              borderBottom: `1px solid ${UI.line}`, background: UI.paper, flexShrink: 0, flexWrap: 'wrap',
             }}>
               {!browse && (
                 <button
                   onClick={() => { setBrowse(true); setQuery(''); }}
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: 4,
-                    padding: '6px 10px', borderRadius: 8, cursor: 'pointer',
-                    fontSize: 12, fontWeight: 800, color: '#1e293b',
-                    background: '#fff', border: '1px solid #cbd5e1', minHeight: isMobile ? 38 : undefined,
+                    padding: '7px 12px', borderRadius: 999, cursor: 'pointer',
+                    fontSize: 12, fontWeight: 700, color: UI.ink,
+                    background: UI.surface, border: `1px solid ${UI.line}`, minHeight: isMobile ? 38 : undefined,
                   }}
                   title="전체 개념 목록"
                 >← 전체 개념</button>
               )}
               <div style={{ position: 'relative', flex: 1, minWidth: 140 }}>
-                <span style={{ position: 'absolute', left: 9, top: '50%', transform: 'translateY(-50%)', fontSize: 12, color: '#94a3b8' }}>🔍</span>
+                <span style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', fontSize: 12, color: UI.inkMuted }}>🔍</span>
                 <input
                   value={query}
                   onChange={(e) => { setQuery(e.target.value); if (!browse) setBrowse(true); }}
                   placeholder="개념 검색 (목자·어린양·성전…)"
+                  onFocus={(e) => { e.target.style.borderColor = UI.gold; e.target.style.boxShadow = `0 0 0 3px ${UI.goldSoft}`; }}
+                  onBlur={(e) => { e.target.style.borderColor = UI.line; e.target.style.boxShadow = 'none'; }}
                   style={{
-                    width: '100%', boxSizing: 'border-box', padding: '7px 10px 7px 28px',
-                    borderRadius: 8, border: '1px solid #cbd5e1', fontSize: 12, color: '#1e293b',
-                    background: '#fff', outline: 'none', minHeight: isMobile ? 38 : undefined,
+                    width: '100%', boxSizing: 'border-box', padding: '9px 12px 9px 32px',
+                    borderRadius: 999, border: `1px solid ${UI.line}`, fontSize: 12.5, color: UI.ink,
+                    background: UI.surface, outline: 'none', minHeight: isMobile ? 38 : undefined,
+                    transition: 'border-color .15s, box-shadow .15s',
                   }}
                 />
               </div>
               {browse && (
-                <div style={{ display: 'flex', border: '1px solid #cbd5e1', borderRadius: 8, overflow: 'hidden', flexShrink: 0 }}>
+                <div style={{ display: 'flex', background: UI.surface, border: `1px solid ${UI.line}`, borderRadius: 999, padding: 3, gap: 2, flexShrink: 0 }}>
                   {[{ k: 'theme', t: '테마별' }, { k: 'timeline', t: '🗺️ 타임라인' }].map(({ k, t }) => (
                     <button
                       key={k}
                       onClick={() => setBrowseMode(k)}
                       style={{
-                        padding: '6px 10px', border: 'none', cursor: 'pointer',
-                        fontSize: 11, fontWeight: 800,
-                        background: browseMode === k ? '#1e293b' : '#fff',
-                        color: browseMode === k ? '#fff' : '#64748b',
-                        minHeight: isMobile ? 38 : undefined,
+                        padding: '6px 12px', border: 'none', cursor: 'pointer', borderRadius: 999,
+                        fontSize: 11, fontWeight: 700, transition: 'all .15s',
+                        background: browseMode === k ? UI.ink : 'transparent',
+                        color: browseMode === k ? '#f4f1ea' : UI.inkMuted,
+                        minHeight: isMobile ? 34 : undefined,
                       }}
                     >{t}</button>
                   ))}
@@ -399,31 +434,54 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                   const shown = items.filter(matchQuery);
                   if (!shown.length) return null;
                   return (
-                    <div key={cat} style={{ marginBottom: 16 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
-                        <span style={{ fontSize: 15 }}>{meta.emoji}</span>
-                        <span style={{ fontSize: C, fontWeight: 800, color: meta.color || '#334155' }}>{meta.ko}</span>
-                        <span style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', background: '#f1f5f9', borderRadius: 999, padding: '1px 7px' }}>{shown.length}</span>
+                    <div key={cat} style={{ marginBottom: 20 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                        <span style={{
+                          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                          width: 22, height: 22, borderRadius: 7, fontSize: 12, flexShrink: 0,
+                          background: `${meta.color || '#334155'}14`,
+                        }}>{meta.emoji}</span>
+                        <span style={{ fontSize: C, fontWeight: 800, color: meta.color || '#334155', letterSpacing: '-.01em' }}>{meta.ko}</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: UI.inkMuted, background: UI.surface, border: `1px solid ${UI.line}`, borderRadius: 999, padding: '1px 8px' }}>{shown.length}</span>
+                        <span style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${UI.line}, transparent)` }} />
                       </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 8 }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(3, 1fr)', gap: 9 }}>
                         {shown.map((k) => {
                           const c = CANONICAL_CONCEPTS[k];
+                          const accent = meta.color || '#94a3b8';
                           return (
                             <button
                               key={k}
                               onClick={() => { setActive(k); setTab('arc'); setBrowse(false); }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.borderColor = accent;
+                                e.currentTarget.style.boxShadow = `0 8px 20px -8px ${accent}55`;
+                                e.currentTarget.style.transform = 'translateY(-1px)';
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.borderColor = UI.line;
+                                e.currentTarget.style.boxShadow = '0 1px 2px rgba(24,22,45,.03)';
+                                e.currentTarget.style.transform = 'none';
+                              }}
                               style={{
-                                display: 'flex', alignItems: 'center', gap: 8, textAlign: 'left',
-                                padding: '10px 11px', borderRadius: 10, cursor: 'pointer',
-                                border: '1px solid #e2e8f0', background: '#fff',
-                                borderLeft: `3px solid ${meta.color || '#cbd5e1'}`,
-                                minHeight: isMobile ? 52 : undefined,
+                                display: 'flex', alignItems: 'center', gap: 10, textAlign: 'left',
+                                padding: '11px 12px', borderRadius: 13, cursor: 'pointer',
+                                border: `1px solid ${UI.line}`, background: UI.surface,
+                                boxShadow: '0 1px 2px rgba(24,22,45,.03)',
+                                transition: 'border-color .16s, box-shadow .16s, transform .16s',
+                                minHeight: isMobile ? 54 : undefined,
                               }}
                             >
-                              <span style={{ fontSize: 20, flexShrink: 0 }}>{c.emoji}</span>
+                              <span style={{
+                                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                                width: 38, height: 38, borderRadius: 11, flexShrink: 0, fontSize: 20,
+                                background: `${accent}12`, border: `1px solid ${accent}22`,
+                              }}>{c.emoji}</span>
                               <span style={{ minWidth: 0 }}>
-                                <span style={{ display: 'block', fontSize: B, fontWeight: 800, color: '#1e293b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.labelKo}</span>
-                                <span style={{ display: 'block', fontSize: Math.max(9, B - 3), color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.canonicalArc.length}단계 · {c.labelHe?.split(' ')[0]}</span>
+                                <span style={{ display: 'block', fontSize: B, fontWeight: 800, color: UI.ink, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', letterSpacing: '-.01em' }}>{c.labelKo}</span>
+                                <span style={{ display: 'block', fontSize: Math.max(9, B - 3), color: UI.inkMuted, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginTop: 1 }}>
+                                  <span style={{ color: accent, fontWeight: 700 }}>{c.canonicalArc.length}단계</span> · {c.labelHe?.split(' ')[0]}
+                                </span>
                               </span>
                             </button>
                           );
@@ -467,7 +525,8 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                                       display: 'inline-flex', alignItems: 'center', gap: 5,
                                       padding: '5px 10px', borderRadius: 999, cursor: 'pointer',
                                       fontSize: Math.max(11, B - 2), fontWeight: 700,
-                                      border: '1px solid #e2e8f0', background: '#fff', color: '#334155',
+                                      border: `1px solid ${UI.line}`, background: UI.surface, color: UI.ink,
+                                      boxShadow: '0 1px 2px rgba(24,22,45,.03)',
                                       minHeight: isMobile ? 36 : undefined,
                                     }}
                                   ><span style={{ fontSize: 14 }}>{c.emoji}</span>{c.labelKo}</button>
@@ -485,9 +544,9 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
 
             {!browse && (<>
             {/* 개념 요약 (타이틀) */}
-            <div style={{ padding: '12px 16px 8px', borderBottom: '1px solid #f1f5f9', flexShrink: 0 }}>
+            <div style={{ padding: '14px 18px 10px', borderBottom: `1px solid ${UI.line}`, background: UI.surface, flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: T, fontWeight: 800, color: '#1e293b' }}>{concept.emoji} {concept.labelKo}</span>
+                <span style={{ fontSize: T, fontWeight: 800, color: UI.ink, letterSpacing: '-.015em' }}>{concept.emoji} {concept.labelKo}</span>
                 <span style={{ fontSize: Math.round(T * 0.75), color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
                 <span style={{ fontSize: Math.round(T * 0.75), color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
                 {CONCEPT_CATEGORIES[concept.category] && (
@@ -500,17 +559,17 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
             </div>
 
             {/* 탭 바 */}
-            <div style={{ display: 'flex', borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0 }}>
+            <div style={{ display: 'flex', borderBottom: `1px solid ${UI.line}`, background: UI.surface, flexShrink: 0, padding: '0 6px' }}>
               {TABS.map(({ key, label }) => (
                 <button
                   key={key}
                   onClick={() => setTab(key)}
                   style={{
-                    flex: 1, padding: '9px 0', border: 'none', fontSize: C, fontWeight: 700,
-                    cursor: 'pointer',
-                    background: tab === key ? '#fff' : 'transparent',
-                    color: tab === key ? '#1e293b' : '#64748b',
-                    borderBottom: tab === key ? '2px solid #1e293b' : '2px solid transparent',
+                    flex: 1, padding: '11px 0', border: 'none', fontSize: C, fontWeight: 700,
+                    cursor: 'pointer', background: 'transparent',
+                    color: tab === key ? UI.ink : UI.inkMuted,
+                    borderBottom: tab === key ? `2px solid ${UI.gold}` : '2px solid transparent',
+                    transition: 'color .15s',
                     minHeight: isMobile ? 44 : undefined,
                   }}
                 >{label}</button>
@@ -653,9 +712,11 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
 
             {/* 출처 */}
             <div style={{
-              padding: '6px 14px', borderTop: '1px solid #e2e8f0',
-              fontSize: 9, color: '#94a3b8', background: '#f8fafc', flexShrink: 0,
+              padding: '7px 16px', borderTop: `1px solid ${UI.line}`,
+              fontSize: 9, color: UI.inkMuted, background: UI.surface, flexShrink: 0,
+              display: 'flex', alignItems: 'center', gap: 6,
             }}>
+              <span style={{ width: 5, height: 5, borderRadius: '50%', background: UI.gold, flexShrink: 0 }} />
               해석 기준: 장로교 개혁주의(언약신학·구속사) · 본문 전문 미복제, 참조·요약·해설만 제공
             </div>
 
