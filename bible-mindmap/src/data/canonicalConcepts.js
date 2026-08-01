@@ -2,7 +2,9 @@
 // 성경 핵심 개념이 창세기→요한계시록으로 계시·발전·성취되는 흐름을 원어 lemma와 함께 구조화한다.
 // 성경 본문 전문은 복제하지 않고 참조·요약·해설만 제공한다.
 // Tier 1 확장 6개(kingdom·exodus·priest·lamb·king·shepherd)는 canonicalConceptsT1.js에서 병합된다.
+// Tier 2 확장 6개(image·land·word·light·serpent·judgment)는 canonicalConceptsT2.js에서 병합된다.
 import { CANONICAL_CONCEPTS_T1 } from './canonicalConceptsT1.js';
+import { CANONICAL_CONCEPTS_T2 } from './canonicalConceptsT2.js';
 
 // 개념 분류(테마 클러스터) — 개념 수가 늘어도 탐색이 무너지지 않도록 6축으로 묶는다.
 // 각 개념은 category(키) + emoji(대표 이모지)를 가진다. verifier가 category enum·emoji를 강제한다.
@@ -161,4 +163,5 @@ export const CANONICAL_CONCEPTS = {
     reformedAnchors: ['하나님의 자기계시', '그리스도의 신성', '새 창조'],
   },
   ...CANONICAL_CONCEPTS_T1,
+  ...CANONICAL_CONCEPTS_T2,
 };
