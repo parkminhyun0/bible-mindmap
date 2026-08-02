@@ -639,6 +639,7 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         h: typeof window !== 'undefined' ? window.innerHeight : 667 }
     : { w: 860, h: 580 });
   const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
 
   // 모바일 orientation/resize 자동 대응
   useEffect(() => {
@@ -755,6 +756,7 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
         border: isMobile ? 'none' : '1px solid #6ee7b7',
         fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
         display: 'flex', flexDirection: 'column',
+        ...(!isMobile && maximized ? { left: 10, top: 10, right: 10, bottom: 10, width: 'auto', height: 'auto', borderRadius: 16 } : {}),
       }}>
 
       {/* ── 타이틀바 ── */}
@@ -825,6 +827,10 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
           <button onMouseDown={e => e.stopPropagation()} onClick={() => setMinimized(v => !v)} style={hdrBtn}>
             {minimized ? '▲' : '▼'}
           </button>
+        )}
+        {!isMobile && (
+          <button onMouseDown={e => e.stopPropagation()} onClick={() => { setMaximized(v => !v); setMinimized(false); }}
+            title={maximized ? '창 모드' : '전체화면'} style={hdrBtn}>{maximized ? '❐' : '⛶'}</button>
         )}
 
         {/* 닫기 */}

@@ -211,6 +211,7 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
         h: typeof window !== 'undefined' ? window.innerHeight : 667 }
     : { w: 760, h: 580 });
   const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
 
   // 모바일 orientation/resize 자동 대응
   useEffect(() => {
@@ -362,6 +363,7 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
         fontFamily: '-apple-system, "Noto Sans KR", sans-serif',
         display: 'flex', flexDirection: 'column',
         userSelect: dragging.current ? 'none' : 'auto',
+        ...(!isMobile && maximized ? { left: 10, top: 10, right: 10, bottom: 10, width: 'auto', height: 'auto', borderRadius: 16 } : {}),
       }}>
 
       {/* ── 타이틀바 (모바일: 정적·safe-area · 데스크톱: 드래그 핸들) ── */}
@@ -466,6 +468,16 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
         >
           {minimized ? '▲' : '▼'}
         </button>
+
+        {/* 전체화면 */}
+        {!isMobile && (
+          <button
+            onMouseDown={e => e.stopPropagation()}
+            onClick={() => { setMaximized(v => !v); setMinimized(false); }}
+            title={maximized ? '창 모드' : '전체화면'}
+            style={iconBtn}
+          >{maximized ? '❐' : '⛶'}</button>
+        )}
 
         {/* 닫기 */}
         <button

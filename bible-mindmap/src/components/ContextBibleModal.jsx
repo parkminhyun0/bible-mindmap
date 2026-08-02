@@ -245,6 +245,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
   // ── 팝업 창 상태 (데스크톱 전용) ──────────────────────────────────────
   const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
+  // 데스크톱 전체화면: modalInner를 뷰포트에 고정(뒤 래퍼 pos 무시)
+  const MAXIMIZED_STYLE = { position: 'fixed', left: 10, top: 10, right: 10, bottom: 10, width: 'auto', height: 'auto', maxWidth: 'none', maxHeight: 'none', borderRadius: 16 };
   const [showOrigRef, setShowHebRef] = useState(false); // 히브리 절 번호 병기 토글
   // 개별 폰트 사이즈 (본문 / 부가 / 레전드 / 흐름 / 분석 / 배경) — 9~24 범위
   const [fontSizes, setFontSizes] = useState({
@@ -1042,7 +1045,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           overflow:'hidden',
           boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
           position:'relative',
-          userSelect: dragging.current ? 'none' : 'auto' }}
+          userSelect: dragging.current ? 'none' : 'auto',
+          ...(!isMobile && maximized ? MAXIMIZED_STYLE : {}) }}
         onClick={e => e.stopPropagation()}
       >
         {/* ── 헤더 (데스크톱: 드래그 핸들) ── */}
@@ -1165,6 +1169,14 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 onClick={() => setMinimized(v => !v)}
                 title={minimized ? '펼치기' : '최소화'}
                 style={popupIconBtn}>{minimized ? '▲' : '▼'}</button>
+            )}
+            {!isMobile && (
+              <button
+                onMouseDown={e => e.stopPropagation()}
+                onClick={() => { setMaximized(v => !v); setMinimized(false); }}
+                title={maximized ? '창 모드' : '전체화면'}
+                aria-label={maximized ? '창 모드' : '전체화면'}
+                style={popupIconBtn}>{maximized ? '❐' : '⛶'}</button>
             )}
             <button
               onMouseDown={e => e.stopPropagation()}

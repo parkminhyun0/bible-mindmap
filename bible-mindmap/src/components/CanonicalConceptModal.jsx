@@ -102,6 +102,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const popupSeq = useRef(0);
   const topZ = useRef(1270);
   const [minimized, setMinimized] = useState(false);
+  const [maximized, setMaximized] = useState(false);
 
   // ── 글자 크기 (단위별) ────────────────────────────────────────────
   const [fontSizes, setFontSizes] = useState({
@@ -245,13 +246,18 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
         width: vw, maxHeight: minimized ? undefined : '90dvh',
         borderRadius: '20px 20px 0 0',
       }
-    : {
-        left: pos.x, top: pos.y, bottom: 'auto', transform: 'none',
-        width: size.w,
-        height: minimized ? undefined : size.h,
-        maxHeight: minimized ? undefined : size.h,
-        borderRadius: UI.radius,
-      };
+    : (maximized
+      ? {
+          left: 10, top: 10, right: 10, bottom: 10, transform: 'none',
+          width: 'auto', height: 'auto', maxHeight: 'none', borderRadius: 16,
+        }
+      : {
+          left: pos.x, top: pos.y, bottom: 'auto', transform: 'none',
+          width: size.w,
+          height: minimized ? undefined : size.h,
+          maxHeight: minimized ? undefined : size.h,
+          borderRadius: UI.radius,
+        });
 
   const iconBtn = {
     background: 'rgba(255,255,255,.10)', border: '1px solid rgba(255,255,255,.14)', color: '#efece4',
@@ -335,6 +341,12 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
               aria-label={minimized ? '펼치기' : '축소'}
               title={minimized ? '펼치기' : '축소'}
             >{minimized ? '▢' : '—'}</button>
+            <button
+              onClick={() => { setMaximized((m) => !m); setMinimized(false); }}
+              style={iconBtn}
+              aria-label={maximized ? '창 모드' : '전체화면'}
+              title={maximized ? '창 모드' : '전체화면'}
+            >{maximized ? '❐' : '⛶'}</button>
             <button
               onClick={onClose}
               style={iconBtn}

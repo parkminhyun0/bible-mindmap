@@ -233,6 +233,8 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   };
 
   // ── 기본 팝업 창(ContextBibleModal) 속성 계승: 드래그 + 리사이즈 + z:1200 ──
+  const [maximized, setMaximized] = useState(false);
+  const MAXIMIZED_STYLE = { position: 'fixed', left: 10, top: 10, right: 10, bottom: 10, width: 'auto', height: 'auto', maxWidth: 'none', maxHeight: 'none', borderRadius: 16 };
   const [pos, setPos] = useState(() => {
     if (typeof window === 'undefined') return { x: 40, y: 40 };
     const w = Math.min(1220, window.innerWidth - 40);
@@ -391,6 +393,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
         boxShadow: isMobile ? 'none' : '0 20px 60px rgba(15,23,42,.28), 0 4px 16px rgba(15,23,42,.14)',
         position: 'relative',
         userSelect: dragging.current ? 'none' : 'auto',
+        ...(!isMobile && maximized ? MAXIMIZED_STYLE : {}),
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -426,6 +429,14 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
               fontSize: 11, fontWeight: 700, cursor: 'pointer', flexShrink: 0,
               display: 'inline-flex', alignItems: 'center', gap: 4 }}
           >🎓 <span>안내</span></button>
+          {!isMobile && (
+            <button type="button" onClick={() => setMaximized(v => !v)}
+              aria-label={maximized ? '창 모드' : '전체화면'} title={maximized ? '창 모드' : '전체화면'}
+              style={{ width: 40, height: 40, border: 'none', borderRadius: 9,
+                background: 'rgba(255,255,255,.15)', color: '#fff',
+                fontSize: 16, cursor: 'pointer', flexShrink: 0 }}
+            >{maximized ? '❐' : '⛶'}</button>
+          )}
           <button type="button" onClick={onClose} aria-label="병렬 본문 연구 닫기"
             style={{ width: 44, height: 44, border: 'none', borderRadius: 9,
               background: isMobile ? '#f1f5f9' : 'rgba(255,255,255,.15)',
