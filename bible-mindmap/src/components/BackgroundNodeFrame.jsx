@@ -30,8 +30,13 @@ export default function BackgroundNodeFrame({
   };
 
   return (
-    <div style={{
-      background: '#fff',
+    <div
+      className="at-canvas-node"
+      data-selected={selected ? 'true' : 'false'}
+      style={{
+      '--at-node-accent': accent,
+      '--at-node-header': headerBackground,
+      background: 'var(--at-canvas-card, #fff)',
       border: `1.5px solid ${selected ? accent : '#cbd5e1'}`,
       borderRadius: 12,
       width: '100%',
@@ -52,7 +57,7 @@ export default function BackgroundNodeFrame({
       />
 
       <div
-        className="canvas-node-drag-handle background-node-drag-handle"
+        className="canvas-node-drag-handle background-node-drag-handle at-canvas-node__header"
         style={{
           minHeight: 34,
           padding: '6px 8px 6px 11px',
@@ -80,7 +85,7 @@ export default function BackgroundNodeFrame({
         <span style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>
         <button
           type="button"
-          className="nodrag nopan"
+          className="nodrag nopan at-canvas-node__close"
           onClick={handleClose}
           aria-label={`${title} 카드 닫기`}
           title="카드 삭제"
@@ -104,7 +109,7 @@ export default function BackgroundNodeFrame({
       </div>
 
       <div
-        className="nodrag nopan"
+        className="nodrag nopan at-canvas-node__body"
         style={{
           padding: '10px 14px 12px',
           userSelect: 'text',
@@ -116,10 +121,10 @@ export default function BackgroundNodeFrame({
         {children}
       </div>
 
-      <Handle type="target" position={Position.Top} style={{ background: accent }} />
-      <Handle type="source" position={Position.Bottom} style={{ background: accent }} />
-      <Handle type="target" position={Position.Left} style={{ background: accent }} />
-      <Handle type="source" position={Position.Right} style={{ background: accent }} />
+      <Handle className="at-canvas-node__handle" type="target" position={Position.Top} style={{ background: accent }} />
+      <Handle className="at-canvas-node__handle" type="source" position={Position.Bottom} style={{ background: accent }} />
+      <Handle className="at-canvas-node__handle" type="target" position={Position.Left} style={{ background: accent }} />
+      <Handle className="at-canvas-node__handle" type="source" position={Position.Right} style={{ background: accent }} />
     </div>
   );
 }
