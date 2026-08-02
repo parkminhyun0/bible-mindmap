@@ -113,9 +113,13 @@ export default function CustomEdge(props) {
   }, [id, setEdges]);
 
   return (
-    <g>
+    <g
+      className={`at-canvas-edge at-canvas-edge--${edgeType}${selected ? ' is-selected' : ''}`}
+      style={{ '--at-edge-color': config.color }}
+    >
       {/* 넓은 히트 영역 */}
       <path
+        className="at-canvas-edge__hit"
         d={edgePath}
         fill="none"
         stroke="transparent"
@@ -125,11 +129,12 @@ export default function CustomEdge(props) {
 
       {/* 선택 하이라이트 */}
       {selected && (
-        <path d={edgePath} fill="none" stroke={config.color} strokeWidth={thickness + 8} opacity={0.12} />
+        <path className="at-canvas-edge__selection" d={edgePath} fill="none" stroke={config.color} strokeWidth={thickness + 8} opacity={0.12} />
       )}
 
       {/* 메인 엣지 */}
       <path
+        className="at-canvas-edge__path"
         d={edgePath}
         fill="none"
         stroke={config.color}
@@ -173,7 +178,7 @@ export default function CustomEdge(props) {
             zIndex: 1000,
             boxShadow: '0 1px 3px rgba(15, 23, 42, 0.15)',
           }}
-          className="nodrag nopan"
+          className="nodrag nopan at-canvas-edge__label"
           title={data?.note || ''}
         >
           {label || config.label}
@@ -232,7 +237,7 @@ function AnchorPoint({ index, x, y, color, anchors, updateAnchors }) {
       <circle
         cx={x} cy={y}
         r={dragging ? 8 : 7}
-        fill="white"
+        fill="var(--at-canvas-card, white)"
         stroke={color}
         strokeWidth={2.5}
         style={{

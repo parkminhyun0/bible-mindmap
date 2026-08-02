@@ -866,6 +866,7 @@ export default function App() {
         <EdgeMarkerDefs />
 
         <ReactFlow
+          className="at-canvas"
           nodes={nodes}
           edges={edges}
           onNodesChange={handleNodesChange}
@@ -883,12 +884,13 @@ export default function App() {
           maxZoom={4}
           multiSelectionKeyCode="Shift"
           deleteKeyCode={['Backspace', 'Delete']}
-          style={{ background: '#f1f5f9' }}
+          style={{ background: 'var(--at-canvas-bg)' }}
         >
-          <Background color="#cbd5e1" gap={20} size={1} />
-          <Controls />
+          <Background color="var(--at-canvas-grid)" gap={22} size={1.2} />
+          <Controls className="at-canvas-controls" />
           {!isMobile && (
             <MiniMap
+              className="at-canvas-minimap"
               nodeColor={(n) => {
                 if (n.type === 'verse') return n.data.color || '#3b82f6';
                 if (n.type === 'note') return '#ca8a04';
@@ -900,12 +902,12 @@ export default function App() {
               }}
               pannable
               zoomable
-              style={{ border: '1px solid #e2e8f0' }}
+              style={{ border: '0.5px solid var(--at-separator)', background: 'var(--at-glass-thick)' }}
             />
           )}
 
-          <Panel position="bottom-center" style={isMobile ? { display: 'none' } : {}}>
-            <div style={panelContainerStyle}>
+          <Panel className="at-canvas-tools" position="bottom-center" style={isMobile ? { display: 'none' } : {}}>
+            <div className="at-canvas-tools__surface" style={panelContainerStyle}>
               {/* Row 0: 자동 정렬 */}
               <div style={{ ...panelRowStyle, borderBottom: '1px solid #f1f5f9', paddingBottom: 6, marginBottom: 2 }}>
                 <span style={{ fontWeight: 700, color: '#475569', fontSize: 11, flexShrink: 0, marginRight: 4 }}>정렬</span>
