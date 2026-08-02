@@ -7,6 +7,8 @@ import { CANONICAL_CONCEPTS_T1 } from './canonicalConceptsT1.js';
 import { CANONICAL_CONCEPTS_T2 } from './canonicalConceptsT2.js';
 // Tier 3 확장 6개(bride·mountain·wisdom·name·tree_of_life·wilderness)는 canonicalConceptsT3.js에서 병합된다.
 import { CANONICAL_CONCEPTS_T3 } from './canonicalConceptsT3.js';
+// Tier 4 확장 6개(lion·vine·breath·cup·babylon·sea)는 canonicalConceptsT4.js에서 병합된다.
+import { CANONICAL_CONCEPTS_T4 } from './canonicalConceptsT4.js';
 
 // 개념 분류(테마 클러스터) — 개념 수가 늘어도 탐색이 무너지지 않도록 6축으로 묶는다.
 // 각 개념은 category(키) + emoji(대표 이모지)를 가진다. verifier가 category enum·emoji를 강제한다.
@@ -167,4 +169,5 @@ export const CANONICAL_CONCEPTS = {
   ...CANONICAL_CONCEPTS_T1,
   ...CANONICAL_CONCEPTS_T2,
   ...CANONICAL_CONCEPTS_T3,
+  ...CANONICAL_CONCEPTS_T4,
 };
