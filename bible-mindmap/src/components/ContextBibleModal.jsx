@@ -1027,7 +1027,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         role="dialog"
         aria-modal="true"
         aria-label={`문맥 성경 · ${BOOK.ko || ''}`}
-        className={isMobile ? 'h-screen-safe' : undefined}
+        className={`at-modal at-modal--context${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
         style={{ background:'#ffffff',
           borderRadius: isMobile ? 0 : 12,
           border: isMobile ? 'none' : '1px solid rgba(15,23,42,.1)',
@@ -1048,6 +1048,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
         {/* ── 헤더 (데스크톱: 드래그 핸들) ── */}
         <div
           onMouseDown={onHeaderMouseDown}
+          className="at-modal__titlebar"
           style={{ display:'flex',alignItems:'center',justifyContent:'space-between',
             padding: isMobile
               ? 'calc(env(safe-area-inset-top, 0px) + 10px) calc(env(safe-area-inset-right, 0px) + 14px) 10px calc(env(safe-area-inset-left, 0px) + 14px)'
@@ -1608,6 +1609,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
           {/* 좌: 전체 본문 (연속 스크롤 + 좌측 거시구조 거터) */}
           <div ref={scrollRef}
+            className="at-modal__content"
             onTouchStart={isMobile ? (e) => {
               const t = e.touches[0];
               touchStart.current = { x: t.clientX, y: t.clientY, t: Date.now() };
@@ -3304,6 +3306,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   if (isMobile) {
     return (
       <div
+        className="at-modal-backdrop"
         style={{ position:'fixed',top:0,left:0,right:0,bottom:0,zIndex:1200,
           // 풀스크린 모달이므로 딤 대신 불투명 흰색 — dvh/lvh 편차로 하단에 틈이 생겨도
           // 뒤 시트(성경 각권 목록)가 비치지 않도록 완전히 가린다.
@@ -3526,3 +3529,4 @@ const stepValue = {
   borderRight: '1px solid rgba(212,153,79,.32)',
   background: 'rgba(255,251,243,.85)',
 };
+
