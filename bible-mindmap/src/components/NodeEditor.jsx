@@ -20,7 +20,7 @@ const COLORS = [
   { value: '#8b5cf6', label: '보라' },
   { value: '#0ea5e9', label: '하늘' },
   { value: '#f97316', label: '오렌지' },
-  { value: '#64748b', label: '회색' },
+  { value: 'var(--at-label-2)', label: '회색' },
 ];
 
 const TEXT_COLORS = [
@@ -30,7 +30,7 @@ const TEXT_COLORS = [
   { value: '#10b981', label: '초록' },
   { value: '#f59e0b', label: '주황' },
   { value: '#8b5cf6', label: '보라' },
-  { value: '#64748b', label: '회색' },
+  { value: 'var(--at-label-2)', label: '회색' },
 ];
 
 const FONT_SIZES = [11, 12, 13, 14, 15, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 50];
@@ -381,10 +381,10 @@ export default function NodeEditor({
             {hasNode && (
               <>
                 <div style={{ width: 1, height: 20, background: '#e2e8f0', margin: '0 2px' }} />
-                <span style={{ fontSize: 12, fontWeight: 600, color: '#475569', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--at-label-2)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {nodeType === 'verse' ? '📖' : nodeType === 'note' ? '📝' : nodeType === 'topic' ? '🏷️' : nodeType === 'person' ? '👤' : nodeType === 'place' ? '📍' : nodeType === 'period' ? '🕰️' : '📖'} {editData?.reference || editData?.title || editData?.name || ''}
                 </span>
-                <span style={{ fontSize: 11, color: '#94a3b8' }}>아래 시트에서 편집</span>
+                <span style={{ fontSize: 11, color: 'var(--at-label-3)' }}>아래 시트에서 편집</span>
               </>
             )}
           </div>
@@ -398,7 +398,7 @@ export default function NodeEditor({
             style={{
               position: 'fixed', left: 0, right: 0,
               zIndex: 1050,
-              background: '#fff',
+              background: 'var(--at-surface)',
               borderRadius: '16px 16px 0 0',
               boxShadow: '0 -4px 20px rgba(0,0,0,0.18)',
               padding: '8px calc(env(safe-area-inset-right, 0px) + 16px) 12px calc(env(safe-area-inset-left, 0px) + 16px)',
@@ -481,14 +481,14 @@ export default function NodeEditor({
             {/* 역본 탭 선택 (verse + bookId 노드만) */}
             {nodeType === 'verse' && editData?.bookId && (
               <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' }}>
-                <span style={{ fontSize: 10, color: '#94a3b8' }}>역본:</span>
+                <span style={{ fontSize: 10, color: 'var(--at-label-3)' }}>역본:</span>
                 {tabsForBook(editData?.bookId).map((t) => {
                   const isSel = (editData?.activeTab || 'krv') === t.id;
                   return (
                     <button key={t.id}
                       onPointerDown={(e) => e.stopPropagation()}
                       onClick={() => update({ activeTab: t.id })}
-                      style={{ padding: '2px 8px', fontSize: 11, border: 'none', borderRadius: 4, cursor: 'pointer', background: isSel ? '#3b82f6' : '#f1f5f9', color: isSel ? '#fff' : '#64748b' }}>
+                      style={{ padding: '2px 8px', fontSize: 11, border: 'none', borderRadius: 4, cursor: 'pointer', background: isSel ? '#3b82f6' : 'var(--at-surface-3)', color: isSel ? '#fff' : 'var(--at-label-2)' }}>
                       {t.label}
                     </button>
                   );
@@ -517,7 +517,7 @@ export default function NodeEditor({
             {/* 테두리 색상 (verse) */}
             {nodeType === 'verse' && (
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: 11, color: '#94a3b8', flexShrink: 0 }}>테두리색</span>
+                <span style={{ fontSize: 11, color: 'var(--at-label-3)', flexShrink: 0 }}>테두리색</span>
                 {COLORS.map((c) => (
                   <button
                     key={c.value}
@@ -536,7 +536,7 @@ export default function NodeEditor({
             {/* 인물/장소/시대 — 모바일 메모 창 */}
             {(nodeType === 'person' || nodeType === 'place' || nodeType === 'period') && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>✏️ 메모 / 추가 데이터</span>
+                <span style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 600 }}>✏️ 메모 / 추가 데이터</span>
                 <textarea
                   value={editData?.notes || ''}
                   onChange={(e) => update({ notes: e.target.value })}
@@ -710,7 +710,7 @@ export default function NodeEditor({
 
         {/* Text color */}
         <div style={sectionStyle}>
-          <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>글자색</span>
+          <span style={{ fontSize: 10, color: 'var(--at-label-3)', flexShrink: 0 }}>글자색</span>
           {TEXT_COLORS.map((c) => (
             <button
               key={c.value}
@@ -735,7 +735,7 @@ export default function NodeEditor({
         {/* Node border color (verse) */}
         {(!hasNode || nodeType === 'verse') && (
           <div style={sectionStyle}>
-            <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>테두리</span>
+            <span style={{ fontSize: 10, color: 'var(--at-label-3)', flexShrink: 0 }}>테두리</span>
             {COLORS.map((c) => (
               <button
                 key={c.value}
@@ -756,15 +756,15 @@ export default function NodeEditor({
       {/* Row 2: 역본 탭 + 병렬 뷰 트리거 */}
       {hasNode && editData?.bookId && (
         <div style={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
-          <span style={{ fontSize: 10, color: '#94a3b8', flexShrink: 0 }}>편집 역본:</span>
+          <span style={{ fontSize: 10, color: 'var(--at-label-3)', flexShrink: 0 }}>편집 역본:</span>
           {tabsForBook(editData?.bookId).map((t) => {
             const isActiveTab = (editData?.activeTab || 'krv') === t.id;
             return (
               <button key={t.id}
                 style={{
                   padding: '3px 7px', fontSize: 11, border: 'none', borderRadius: 4, cursor: 'pointer',
-                  background: isActiveTab ? '#3b82f6' : '#f1f5f9',
-                  color: isActiveTab ? '#fff' : '#64748b',
+                  background: isActiveTab ? '#3b82f6' : 'var(--at-surface-3)',
+                  color: isActiveTab ? '#fff' : 'var(--at-label-2)',
                 }}
                 onClick={() => update({ activeTab: t.id })}>
                 {t.label}
@@ -781,7 +781,7 @@ export default function NodeEditor({
             style={{
               padding: '3px 10px', fontSize: 11, fontWeight: 600, border: 'none', borderRadius: 4,
               background: canPair ? '#8b5cf6' : '#e2e8f0',
-              color: canPair ? '#fff' : '#94a3b8',
+              color: canPair ? '#fff' : 'var(--at-label-3)',
               cursor: canPair ? 'pointer' : 'default',
             }}
           >
@@ -799,8 +799,8 @@ export default function NodeEditor({
             title="이 구절과 연결된 교차 참조 구절 목록"
             style={{
               padding: '3px 10px', fontSize: 11, fontWeight: 600, border: 'none', borderRadius: 4,
-              background: crossRefs !== null ? '#f1f5f9' : (canPair ? '#ecfdf5' : '#e2e8f0'),
-              color: crossRefs !== null ? '#64748b' : (canPair ? '#065f46' : '#94a3b8'),
+              background: crossRefs !== null ? 'var(--at-surface-3)' : (canPair ? '#ecfdf5' : '#e2e8f0'),
+              color: crossRefs !== null ? 'var(--at-label-2)' : (canPair ? '#065f46' : 'var(--at-label-3)'),
               cursor: canPair ? 'pointer' : 'default',
               borderLeft: canPair && crossRefs === null ? '2px solid #10b981' : 'none',
             }}
@@ -814,7 +814,7 @@ export default function NodeEditor({
       {hasNode && nodeType === 'verse' && editData?.bookId && (
         <>
           {crossRefs === 'loading' && (
-            <div style={{ fontSize: 11, color: '#64748b', padding: '4px 8px' }}>🔍 교차 참조 검색 중…</div>
+            <div style={{ fontSize: 11, color: 'var(--at-label-2)', padding: '4px 8px' }}>🔍 교차 참조 검색 중…</div>
           )}
           {crossRefError && (
             <div style={{ fontSize: 11, color: '#ef4444', padding: '2px 4px' }}>{crossRefError}</div>
@@ -831,7 +831,7 @@ export default function NodeEditor({
                 }}>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <span style={{ fontSize: 11, fontWeight: 700, color: '#065f46' }}>📖 {ref.reference}</span>
-                    <span style={{ fontSize: 9, color: '#6b7280', marginLeft: 6 }}>투표 {ref.votes}</span>
+                    <span style={{ fontSize: 9, color: 'var(--at-label-2)', marginLeft: 6 }}>투표 {ref.votes}</span>
                   </div>
                   <button
                     onClick={() => onAddCrossRef && onAddCrossRef(ref, selectedNode?.id)}
@@ -865,7 +865,7 @@ export default function NodeEditor({
           className="node-editor-tiptap"
         >
           {disabled && (
-            <div style={{ color: '#94a3b8', fontSize: 12, padding: '2px 0', userSelect: 'none' }}>
+            <div style={{ color: 'var(--at-label-3)', fontSize: 12, padding: '2px 0', userSelect: 'none' }}>
               노드를 클릭하면 여기서 본문을 편집할 수 있습니다
             </div>
           )}
@@ -881,7 +881,7 @@ export default function NodeEditor({
 
           {/* 메모 */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-            <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>✏️ 메모</span>
+            <span style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 600 }}>✏️ 메모</span>
             <textarea
               value={editData?.notes || ''}
               onChange={(e) => update({ notes: e.target.value })}
@@ -901,7 +901,7 @@ export default function NodeEditor({
 
           {/* 성경 본문 태그 */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600 }}>📖 관련 성경 본문 태그</span>
+            <span style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 600 }}>📖 관련 성경 본문 태그</span>
             {/* 기존 태그 */}
             {(editData?.bibleTags || []).length > 0 && (
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
@@ -917,7 +917,7 @@ export default function NodeEditor({
                     📖 {tag}
                     <button
                       onClick={() => removeTag(i)}
-                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: 10, color: '#9ca3af', lineHeight: 1 }}
+                      style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, fontSize: 10, color: 'var(--at-label-3)', lineHeight: 1 }}
                     >×</button>
                   </span>
                 ))}
@@ -953,8 +953,8 @@ export default function NodeEditor({
                   }}
                   style={{
                     padding: '4px 10px', fontSize: 11, fontWeight: 700,
-                    background: placePersons !== null ? '#f1f5f9' : '#fffbeb',
-                    color: placePersons !== null ? '#64748b' : '#b45309',
+                    background: placePersons !== null ? 'var(--at-surface-3)' : '#fffbeb',
+                    color: placePersons !== null ? 'var(--at-label-2)' : '#b45309',
                     border: `1.5px solid ${placePersons !== null ? '#cbd5e1' : '#fcd34d'}`,
                     borderRadius: 6, cursor: 'pointer',
                   }}
@@ -967,7 +967,7 @@ export default function NodeEditor({
               </div>
 
               {placePersons === 'loading' && (
-                <div style={{ fontSize: 11, color: '#64748b', padding: '4px 8px' }}>🔍 검색 중…</div>
+                <div style={{ fontSize: 11, color: 'var(--at-label-2)', padding: '4px 8px' }}>🔍 검색 중…</div>
               )}
               {placePersonError && (
                 <div style={{ fontSize: 11, color: '#ef4444', padding: '2px 4px' }}>{placePersonError}</div>
@@ -987,7 +987,7 @@ export default function NodeEditor({
                           👤 {p.name}
                         </div>
                         {(p.birthDate || p.deathDate) && (
-                          <div style={{ fontSize: 9, color: '#6b7280' }}>
+                          <div style={{ fontSize: 9, color: 'var(--at-label-2)' }}>
                             {p.birthDate && p.deathDate ? `${p.birthDate} – ${p.deathDate}` : p.birthDate || p.deathDate}
                           </div>
                         )}
@@ -1018,8 +1018,8 @@ export default function NodeEditor({
                   }}
                   style={{
                     padding: '4px 10px', fontSize: 11, fontWeight: 700,
-                    background: contemporaries !== null ? '#f1f5f9' : '#eff6ff',
-                    color: contemporaries !== null ? '#64748b' : '#1d4ed8',
+                    background: contemporaries !== null ? 'var(--at-surface-3)' : '#eff6ff',
+                    color: contemporaries !== null ? 'var(--at-label-2)' : '#1d4ed8',
                     border: `1.5px solid ${contemporaries !== null ? '#cbd5e1' : '#bfdbfe'}`,
                     borderRadius: 6, cursor: 'pointer',
                   }}
@@ -1027,7 +1027,7 @@ export default function NodeEditor({
                   👥 동시대 인물
                 </button>
                 {editData?.birthYear != null && (
-                  <span style={{ fontSize: 10, color: '#94a3b8' }}>
+                  <span style={{ fontSize: 10, color: 'var(--at-label-3)' }}>
                     기준: {editData.birthYear < 0 ? `BC ${Math.abs(editData.birthYear)}` : `AD ${editData.birthYear}`} ±150년
                   </span>
                 )}
@@ -1038,14 +1038,14 @@ export default function NodeEditor({
 
               {/* 결과 패널 */}
               {contemporaries === 'loading' && (
-                <div style={{ fontSize: 11, color: '#64748b', padding: '4px 8px' }}>🔍 검색 중…</div>
+                <div style={{ fontSize: 11, color: 'var(--at-label-2)', padding: '4px 8px' }}>🔍 검색 중…</div>
               )}
               {contError && (
                 <div style={{ fontSize: 11, color: '#ef4444', padding: '2px 4px' }}>{contError}</div>
               )}
               {Array.isArray(contemporaries) && contemporaries.length > 0 && (
                 <div style={{
-                  border: '1px solid #bfdbfe', borderRadius: 6, background: '#f8fafc',
+                  border: '1px solid #bfdbfe', borderRadius: 6, background: 'var(--at-surface-2)',
                   maxHeight: 200, overflowY: 'auto',
                 }}>
                   {['biblical', 'historical'].map((category) => {
@@ -1058,21 +1058,21 @@ export default function NodeEditor({
                           padding: '5px 8px', fontSize: 10, fontWeight: 800,
                           color: isBiblical ? '#065f46' : '#92400e',
                           background: isBiblical ? '#ecfdf5' : '#fffbeb',
-                          borderBottom: '1px solid #e2e8f0',
+                          borderBottom: '1px solid var(--at-separator)',
                         }}>
                           {isBiblical ? '📖 성경 본문 동시대 인물' : '🏛️ 역사 인물 · 연대 추정'}
                         </div>
                         {group.map((p) => (
                           <div key={p.id} style={{
                             display: 'flex', alignItems: 'center', gap: 6,
-                            padding: '5px 8px', borderBottom: '1px solid #e2e8f0',
+                            padding: '5px 8px', borderBottom: '1px solid var(--at-separator)',
                           }}>
                             <div style={{ flex: 1, minWidth: 0 }}>
                               <div style={{ fontSize: 11, fontWeight: 700, color: isBiblical ? '#065f46' : '#92400e', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                                 👤 {p.name}
                               </div>
                               {(p.birthDate || p.deathDate) && (
-                                <div style={{ fontSize: 9, color: '#6b7280' }}>
+                                <div style={{ fontSize: 9, color: 'var(--at-label-2)' }}>
                                   {p.birthDate && p.deathDate ? `${p.birthDate} – ${p.deathDate}` : p.birthDate || p.deathDate}
                                 </div>
                               )}
@@ -1151,44 +1151,45 @@ const barStyle = {
   display: 'flex',
   flexDirection: 'column',
   gap: 4,
-  background: '#ffffff',
-  borderBottom: '1px solid #e2e8f0',
+  background: 'var(--at-surface)',
+  borderBottom: '1px solid var(--at-separator)',
   padding: '6px 12px',
   boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
 };
 
 const rowStyle = { display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' };
 const sectionStyle = { display: 'flex', alignItems: 'center', gap: 3 };
-const labelStyle = { fontSize: 14, color: '#475569', flexShrink: 0 };
+const labelStyle = { fontSize: 14, color: 'var(--at-label-2)', flexShrink: 0 };
 
 const fieldStyle = {
-  padding: '4px 8px', fontSize: 12, border: '1px solid #cbd5e1',
+  padding: '4px 8px', fontSize: 12, border: '1px solid var(--at-separator-hard)',
   borderRadius: 4, outline: 'none', fontFamily: 'inherit', boxSizing: 'border-box',
 };
 const selectStyle = {
-  padding: '4px 4px', fontSize: 12, border: '1px solid #cbd5e1',
+  padding: '4px 4px', fontSize: 12, border: '1px solid var(--at-separator-hard)',
   borderRadius: 4, outline: 'none', fontFamily: 'inherit', cursor: 'pointer',
 };
 const iconBtnStyle = {
   padding: '3px 6px', fontSize: 11, fontWeight: 700,
-  background: '#f1f5f9', color: '#475569',
-  border: '1px solid #e2e8f0', borderRadius: 4, cursor: 'pointer',
+  background: 'var(--at-surface-3)', color: 'var(--at-label-2)',
+  border: '1px solid var(--at-separator)', borderRadius: 4, cursor: 'pointer',
 };
 const fmtBtnStyle = {
   width: 26, height: 26, display: 'flex', alignItems: 'center', justifyContent: 'center',
-  fontSize: 13, border: '1px solid #e2e8f0', borderRadius: 4, cursor: 'pointer',
-  padding: 0, background: '#f1f5f9', color: '#475569',
+  fontSize: 13, border: '1px solid var(--at-separator)', borderRadius: 4, cursor: 'pointer',
+  padding: 0, background: 'var(--at-surface-3)', color: 'var(--at-label-2)',
 };
 const dividerStyle = { width: 1, height: 24, background: '#e2e8f0', flexShrink: 0 };
 
 const editorWrapStyle = {
-  border: '1px solid #cbd5e1',
-  borderRadius: 4,
-  padding: '4px 8px',
+  border: '1px solid var(--at-separator-hard)',
+  borderRadius: 8,
+  padding: '5px 9px',
   fontSize: 13,
   lineHeight: 1.6,
   minHeight: 32,
   maxHeight: 100,
   overflowY: 'auto',
-  background: '#fff',
+  background: 'var(--at-surface)',
+  color: 'var(--at-label)',
 };
