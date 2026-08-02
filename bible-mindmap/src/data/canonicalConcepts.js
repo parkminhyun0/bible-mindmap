@@ -21,6 +21,8 @@ import { CANONICAL_CONCEPTS_T8 } from './canonicalConceptsT8.js';
 import { CANONICAL_CONCEPTS_T9 } from './canonicalConceptsT9.js';
 // Tier 10 확장 6개(root·scepter·seal·dream·peace·sword)는 canonicalConceptsT10.js에서 병합된다.
 import { CANONICAL_CONCEPTS_T10 } from './canonicalConceptsT10.js';
+// Tier 11 확장 6개(fountain·luminary·veil·adoption·gate·leaven) — 개념 확장 최종 배치.
+import { CANONICAL_CONCEPTS_T11 } from './canonicalConceptsT11.js';
 
 // 개념 분류(테마 클러스터) — 개념 수가 늘어도 탐색이 무너지지 않도록 6축으로 묶는다.
 // 각 개념은 category(키) + emoji(대표 이모지)를 가진다. verifier가 category enum·emoji를 강제한다.
@@ -188,4 +190,5 @@ export const CANONICAL_CONCEPTS = {
   ...CANONICAL_CONCEPTS_T8,
   ...CANONICAL_CONCEPTS_T9,
   ...CANONICAL_CONCEPTS_T10,
+  ...CANONICAL_CONCEPTS_T11,
 };
