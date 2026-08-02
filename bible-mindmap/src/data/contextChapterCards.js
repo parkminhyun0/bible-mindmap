@@ -21,6 +21,7 @@ import { CONTEXT_CHAPTER_CARDS_MATT } from './contextChapterCardsMatt.js';
 import { CONTEXT_CHAPTER_CARDS_LUKE } from './contextChapterCardsLuke.js';
 import { CONTEXT_CHAPTER_CARDS_JOHN } from './contextChapterCardsJohn.js';
 import { CONTEXT_CHAPTER_CARDS_ACTS } from './contextChapterCardsActs.js';
+import { CONTEXT_CHAPTER_CARDS_ROMANS } from './contextChapterCardsRomans.js';
 
 export const CONTEXT_CHAPTER_CARDS = {
   ...CONTEXT_CHAPTER_CARDS_EXT,
@@ -45,6 +46,7 @@ export const CONTEXT_CHAPTER_CARDS = {
   ...CONTEXT_CHAPTER_CARDS_LUKE,
   ...CONTEXT_CHAPTER_CARDS_JOHN,
   ...CONTEXT_CHAPTER_CARDS_ACTS,
+  ...CONTEXT_CHAPTER_CARDS_ROMANS,
   'Gen:1': {
     coverEmoji: '🌌', genre: '서사 · 창조',
     observeThis: ['좌측 담화 마커와 우측 담화 카드에서 선포·실행·평가 신호를 확인하고 Arc로 여섯 날의 진행을 본다.', '신학 핵심어 칩을 클릭해 하나님·창조 관련 항목의 장 분포와 권 전체 종단 추적을 확인한다.', '26절과 31절을 Arc·장 의제에서 비교해 인간 창조와 최종 평가가 반복 리듬의 절정으로 기능하는지 본다.'],
@@ -143,20 +145,7 @@ export const CONTEXT_CHAPTER_CARDS = {
     theologicalImplications: ['탄식은 하나님께 직접 호소하며 과거 신실하심을 기억하는 기도의 한 형식이다.', '개인의 구원 기대는 공동체와 열방의 찬양으로 확대되어 시편의 결말을 형성한다.', '신약의 수난 연결은 시편 전체의 탄식→찬양 구조를 함께 볼 때 더 풍성하게 이해된다.'],
     nextChapterPreview: '시 23편 · 고난의 호소 뒤 목자와 잔치 이미지로 신뢰의 고백이 이어진다.',
   },
-  'Rom:1': {
-    coverEmoji: '📣', genre: '서신 · 복음 주제와 죄 진단',
-    observeThis: ['좌측 담화 마커와 우측 담화 카드에서 γάρ 신호를 확인해 16→17→18절의 논리 연결을 추적한다.', '복음·구원·의·믿음·진노 관련 핵심어 칩을 클릭해 로마서 전체의 재등장을 종단 추적한다.', '좌측 Arc에서 서두→주제 문장→인간 죄 진단의 큰 전환을 확인한다.'],
-    discourseMarkers: [{ marker: 'γάρ (가르)', role: '이유·논증 연결', example: '1:16-18 중심' }, { marker: 'διό (디오)', role: '결과 전환', example: '1:24' }, { marker: 'καθώς (카도스)', role: '근거·대응 연결', example: '인용·설명 구간' }],
-    theologicalImplications: ['복음은 하나님의 구원 능력과 의의 계시라는 로마서의 중심 주제를 제시한다.', '진노 단락은 이후 칭의 논증이 답할 인간 문제를 설정한다.', '우상숭배와 삶의 왜곡의 연결은 예배 대상과 인간 행위가 분리되지 않음을 보여 준다.'],
-    nextChapterPreview: '롬 2장 · 죄 진단이 심판·양심·율법 문제를 통해 모든 사람의 책임으로 확대된다.',
-  },
-  'Rom:8': {
-    coverEmoji: '🕊️', genre: '서신 · 성령·소망·확신',
-    observeThis: ['성령 관련 핵심어 칩과 우측 종단 추적을 확인하고 좌측 Arc에서 장의 주요 전환을 본다.', '18-27절의 피조물·신자·성령의 탄식을 구조적으로 나누고 우측 담화 카드로 논리 연결을 확인한다.', '31-39절의 질문 연쇄를 장르·수사 렌즈로 읽어 1절의 출발과 결말 확신을 연결한다.'],
-    discourseMarkers: [{ marker: 'ἄρα νῦν (아라 뉜)', role: '결론·새 단락 개시', example: '8:1' }, { marker: 'γάρ (가르)', role: '근거 제시', example: '8장 논증 반복' }, { marker: 'οὖν (운)', role: '결론·권면 전환', example: '8:12 등' }],
-    theologicalImplications: ['성령은 신자의 신분·삶·기도·부활 소망을 하나의 구원 논증 안에서 연결한다.', '고난은 제거되지 않지만 창조의 회복과 중보·섭리 안에서 소망의 문맥을 얻는다.', '장 말미의 확신은 앞선 구원 논증을 요약하는 수사적 절정이다.'],
-    nextChapterPreview: '롬 9장 · 개인 확신에서 이스라엘과 하나님의 약속·긍휼 문제로 논증 범위가 확장된다.',
-  },
+  // Rom:1·Rom:8 초기 샘플은 관찰카드 배치6f(로마서 16장 전권)로 대체됨 → CONTEXT_CHAPTER_CARDS_ROMANS 참조.
   'Heb:1': {
     coverEmoji: '👑', genre: '서신·설교적 논증 · 아들과 인용 사슬',
     observeThis: ['1-4절을 활성화해 우측 담화·핵심어 분석을 확인하고 Arc로 서문→인용 사슬→천사 대조의 흐름을 본다.', '5절 이후 관주 🔗를 열어 시편·사무엘하 연결과 왕권·아들됨·창조 주제를 표시한다.', '우측 담화 카드에서 근거 연결과 누적 전개를 확인해 인용들이 하나의 논증을 이루는지 본다.'],
