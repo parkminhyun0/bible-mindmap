@@ -1,0 +1,243 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Apple chrome · Phase 2b
+   상단 툴바와 좌·우 작업 패널의 공용 시각 레이어.
+   기능 컴포넌트의 상태와 모바일 모달 생명주기는 변경하지 않는다.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 상단 편집 툴바 ─────────────────────────────────────────────── */
+.app-top-toolbar {
+  top: 10px !important;
+  right: 12px !important;
+  left: 12px !important;
+  gap: 6px !important;
+  padding: 7px 10px !important;
+  border: 0.5px solid var(--at-separator) !important;
+  border-radius: 18px !important;
+  background: var(--at-glass-thick) !important;
+  color: var(--at-label) !important;
+  box-shadow: var(--at-shadow-md) !important;
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+}
+
+.app-top-toolbar input,
+.app-top-toolbar select,
+.app-top-toolbar textarea {
+  border-color: var(--at-separator) !important;
+  border-radius: 9px !important;
+  background: var(--at-surface) !important;
+  color: var(--at-label) !important;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.16);
+}
+
+.app-top-toolbar button {
+  min-height: 28px;
+  border-color: var(--at-separator) !important;
+  border-radius: 9px !important;
+  transition: transform .16s var(--at-ease), filter .16s var(--at-ease), background .16s var(--at-ease) !important;
+}
+
+.app-top-toolbar button:not(:disabled):hover { filter: brightness(1.035); }
+.app-top-toolbar button:not(:disabled):active { transform: scale(0.94); }
+
+/* ── 좌측 입력 패널 ─────────────────────────────────────────────── */
+.at-sidebar-panel,
+.at-sidebar-rail {
+  position: relative;
+  z-index: 30;
+  border-color: var(--at-separator) !important;
+  background: var(--at-surface) !important;
+  color: var(--at-label);
+  box-shadow: 8px 0 28px -24px rgba(0, 0, 0, 0.5);
+}
+
+.at-sidebar-rail > div:first-child {
+  border-color: var(--at-separator) !important;
+  background: transparent !important;
+}
+
+.at-sidebar-panel {
+  width: 308px !important;
+  overflow: hidden;
+}
+
+.at-sidebar-titlebar {
+  min-height: 48px;
+  padding: 10px 12px !important;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.18) !important;
+  background: linear-gradient(135deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
+}
+
+.at-sidebar-titlebar h2 { color: var(--at-on-navy) !important; }
+
+.at-sidebar-titlebar button {
+  min-height: 30px;
+  border: 0.5px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.14) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.at-sidebar-panel input,
+.at-sidebar-panel select,
+.at-sidebar-panel textarea {
+  border-color: var(--at-separator) !important;
+  border-radius: 10px !important;
+  background: var(--at-surface) !important;
+  color: var(--at-label) !important;
+}
+
+.at-sidebar-panel button { border-radius: 10px !important; }
+
+.at-sidebar-rail {
+  width: 60px !important;
+  background: var(--at-glass-thick) !important;
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+}
+
+.at-sidebar-rail button {
+  border-radius: 12px !important;
+  transition: transform .16s var(--at-ease), filter .16s var(--at-ease) !important;
+}
+
+.at-sidebar-rail button:active { transform: scale(0.93); }
+
+/* ── 우측 문서·저장 패널 ──────────────────────────────────────── */
+.at-side-panel {
+  position: relative;
+  z-index: 30;
+  border-color: var(--at-separator) !important;
+  background: var(--at-surface) !important;
+  color: var(--at-label);
+  box-shadow: -8px 0 28px -24px rgba(0, 0, 0, 0.5);
+}
+
+.at-doc-panel { width: min(400px, 34vw) !important; }
+.at-save-panel:not(.is-mobile-inline) { width: min(300px, 28vw) !important; }
+
+.at-side-panel__header {
+  min-height: 50px;
+  border-bottom: 0.5px solid var(--at-separator) !important;
+  background: var(--at-glass-thick) !important;
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+}
+
+.at-side-panel__header > span:first-child { color: var(--at-label) !important; }
+
+.at-side-panel__hero {
+  padding: 12px 14px 0 !important;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(135deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
+}
+
+.at-side-panel input,
+.at-side-panel select,
+.at-side-panel textarea {
+  border-color: var(--at-separator) !important;
+  border-radius: 10px !important;
+  background: var(--at-surface) !important;
+  color: var(--at-label) !important;
+}
+
+.at-side-panel button { border-radius: 10px !important; }
+
+.at-panel-trigger {
+  position: relative;
+  z-index: 31;
+  width: 34px !important;
+  border: 0.5px solid var(--at-separator) !important;
+  background: var(--at-glass-thick) !important;
+  color: var(--at-accent-text) !important;
+  box-shadow: -6px 0 22px -20px rgba(0, 0, 0, 0.65);
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+  transition: background .16s var(--at-ease), color .16s var(--at-ease) !important;
+}
+
+.at-panel-trigger[aria-expanded='true'] {
+  background: linear-gradient(180deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
+  color: #fff !important;
+}
+
+.at-panel-trigger:hover {
+  background: var(--at-accent-soft) !important;
+  color: var(--at-accent-text) !important;
+}
+
+.at-panel-trigger > span { color: inherit !important; }
+
+/* ── 모바일 크롬 ───────────────────────────────────────────────── */
+@media (max-width: 767px), (pointer: coarse) and (max-width: 1024px) {
+  .app-top-toolbar {
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    padding-top: calc(env(safe-area-inset-top, 0px) + 6px) !important;
+    border-width: 0 0 0.5px !important;
+    border-radius: 0 !important;
+    box-shadow: var(--at-shadow-xs) !important;
+  }
+
+  .mobile-workspace-dock {
+    border: 0.5px solid var(--at-separator) !important;
+    background: var(--at-glass-thick) !important;
+    box-shadow: var(--at-shadow-lg) !important;
+    -webkit-backdrop-filter: var(--at-glass-blur);
+    backdrop-filter: var(--at-glass-blur);
+  }
+
+  .mobile-workspace-dock__item { color: var(--at-label-2) !important; }
+  .mobile-workspace-dock__item.is-active {
+    background: var(--at-accent-soft) !important;
+    color: var(--at-accent-text) !important;
+  }
+
+  .mobile-workspace-sheet,
+  .mobile-editor-sheet,
+  .mobile-save-sheet,
+  .mobile-add-sheet {
+    border-color: var(--at-separator) !important;
+    background: var(--at-surface) !important;
+    color: var(--at-label) !important;
+  }
+
+  .mobile-workspace-sheet__header {
+    border-bottom: 0.5px solid var(--at-separator) !important;
+    background: var(--at-glass-thick) !important;
+    -webkit-backdrop-filter: var(--at-glass-blur);
+    backdrop-filter: var(--at-glass-blur);
+  }
+
+  .mobile-workspace-sheet__header strong { color: var(--at-label) !important; }
+  .mobile-workspace-sheet__header span { color: var(--at-label-2) !important; }
+  .mobile-workspace-sheet__header button {
+    border-radius: 999px !important;
+    background: var(--at-fill) !important;
+    color: var(--at-label) !important;
+  }
+
+  .mobile-editor-sheet {
+    border: 0.5px solid var(--at-separator) !important;
+    border-bottom: 0 !important;
+    border-radius: 22px 22px 0 0 !important;
+    box-shadow: var(--at-shadow-xl) !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .app-top-toolbar,
+  .at-sidebar-rail,
+  .at-side-panel__header,
+  .at-panel-trigger,
+  .mobile-workspace-dock,
+  .mobile-workspace-sheet__header {
+    background: var(--at-surface) !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}

@@ -648,8 +648,12 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   return (
     <>
       {/* 세로 탭 트리거 버튼 — 남/보라 톤 */}
-      <div
+      <button
+        type="button"
+        className="at-panel-trigger at-panel-trigger--doc"
         onClick={onToggle}
+        aria-expanded={open}
+        aria-label={open ? '문서 작성 창 닫기' : '문서 작성 창 열기'}
         title={open ? '문서 작성 창 닫기' : '문서 작성 창 열기'}
         style={{
           width: 30,
@@ -676,11 +680,11 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
         }}>
           ✍️ 문서 작성
         </span>
-      </div>
+      </button>
 
       {/* 패널 본문 */}
       {open && (
-        <div style={{
+        <div className="at-side-panel at-doc-panel" style={{
           width: 400,
           background: '#fff',
           borderLeft: '1px solid #e2e8f0',
@@ -690,7 +694,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
           overflow: 'hidden',
         }}>
           {/* 패널 헤더 & 탭 */}
-          <div style={{
+          <div className="at-side-panel__hero" style={{
             padding: '10px 12px 0',
             background: 'linear-gradient(135deg, #1e3a8a, #0f172a)',
           }}>
