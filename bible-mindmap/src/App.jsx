@@ -118,6 +118,8 @@ const LAYOUT_OPTIONS = [
 ];
 
 const layoutBtnStyle = {
+  whiteSpace: 'nowrap',
+  flexShrink: 0,
   display: 'flex',
   alignItems: 'center',
   padding: '4px 10px',
@@ -162,6 +164,10 @@ const edgeBtnStyle = {
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
+  whiteSpace: 'nowrap',   // 2글자 라벨이 세로로 줄바꿈되지 않도록
+  flexShrink: 0,
+  lineHeight: 1,
   transition: `background ${AT.motion.fast}, transform ${AT.motion.fast}`,
 };
 
@@ -180,6 +186,8 @@ const optLabelStyle = {
 };
 
 const optBtnStyle = {
+  whiteSpace: 'nowrap',
+  flexShrink: 0,
   padding: '4px 9px',
   fontSize: 11,
   fontWeight: 600,
@@ -190,6 +198,8 @@ const optBtnStyle = {
 };
 
 const anchorBtnStyle = {
+  whiteSpace: 'nowrap',
+  flexShrink: 0,
   padding: '5px 11px',
   fontSize: 11,
   fontWeight: 600,

@@ -229,7 +229,8 @@
 
 /* 우측 상단 전환 버튼과 편집 툴바가 겹치지 않도록 공간을 확보한다. */
 .app-top-toolbar {
-  right: 226px !important;
+  /* 상단 편집 툴바를 보드(캔버스) 폭만큼 확장 */
+  right: 12px !important;
 }
 
 

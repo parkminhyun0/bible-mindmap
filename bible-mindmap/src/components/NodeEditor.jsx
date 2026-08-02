@@ -481,7 +481,7 @@ export default function NodeEditor({
                     title={c.label}
                     onClick={() => update({ color: c.value })}
                     style={{
-                      width: 22, height: 22, borderRadius: '50%',
+                      width: 22, height: 22, minHeight: 22, borderRadius: '50%',
                       border: editData?.color === c.value ? '3px solid #1e293b' : '1.5px solid #d1d5db',
                       background: c.value, cursor: 'pointer', padding: 0,
                     }}
@@ -680,7 +680,7 @@ export default function NodeEditor({
                 else runEditorCommand((instance) => instance.chain().focus().setColor(c.value).run());
               }}
               style={{
-                width: 16, height: 16, borderRadius: '50%',
+                width: 16, height: 16, minHeight: 16, borderRadius: '50%',
                 border: isActive('textStyle', { color: c.value }) ? '2px solid #1e293b' : '1.5px solid #d1d5db',
                 background: c.value, cursor: disabled ? 'default' : 'pointer', padding: 0, flexShrink: 0,
               }}
@@ -701,7 +701,7 @@ export default function NodeEditor({
                 onClick={() => update({ color: c.value })}
                 disabled={disabled}
                 style={{
-                  width: 16, height: 16, borderRadius: '50%',
+                  width: 16, height: 16, minHeight: 16, borderRadius: '50%',
                   border: editData?.color === c.value ? '3px solid #1e293b' : '1.5px solid #d1d5db',
                   background: c.value, cursor: disabled ? 'default' : 'pointer', padding: 0, flexShrink: 0,
                 }}

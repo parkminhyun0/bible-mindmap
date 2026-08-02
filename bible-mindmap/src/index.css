@@ -734,10 +734,10 @@ body { background: var(--at-bg); }
     --at-surface-2: #2c2c2e;
     --at-surface-3: #3a3a3c;
     --at-label: #f5f5f7;
-    --at-label-2: rgba(235,235,245,0.62);
-    --at-label-3: #8d8d93;
+    --at-label-2: rgba(235,235,245,0.75);
+    --at-label-3: #a6a6ae;
     --at-label-4: #48484a;
-    --at-separator: rgba(84,84,88,0.42);
+    --at-separator: rgba(120,120,130,0.42);
     --at-separator-hard: rgba(84,84,88,0.65);
     --at-fill: rgba(120,120,128,0.24);
     --at-fill-2: rgba(120,120,128,0.36);
@@ -763,8 +763,8 @@ body { background: var(--at-bg); }
 /* 수동 다크 토글(향후 설정용) */
 html[data-theme='dark'] {
   --at-bg: #000000; --at-surface: #1c1c1e; --at-surface-2: #2c2c2e; --at-surface-3: #3a3a3c;
-  --at-label: #f5f5f7; --at-label-2: rgba(235,235,245,0.62); --at-label-3: #8d8d93; --at-label-4: #48484a;
-  --at-separator: rgba(84,84,88,0.42); --at-separator-hard: rgba(84,84,88,0.65);
+  --at-label: #f5f5f7; --at-label-2: rgba(235,235,245,0.75); --at-label-3: #a6a6ae; --at-label-4: #48484a;
+  --at-separator: rgba(120,120,130,0.42); --at-separator-hard: rgba(84,84,88,0.65);
   --at-fill: rgba(120,120,128,0.24); --at-fill-2: rgba(120,120,128,0.36);
   --at-accent: #0a84ff; --at-accent-deep: #409cff; --at-accent-soft: rgba(10,132,255,0.18); --at-accent-text: #4aa3ff;
   --at-navy-top: #17203a; --at-navy-bottom: #05070f; --at-on-navy: #dbe6ff;
