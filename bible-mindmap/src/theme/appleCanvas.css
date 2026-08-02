@@ -85,6 +85,81 @@ html[data-theme='dark'] .app-canvas-shell {
   cursor: grabbing !important;
 }
 
+/* 성경 본문 카드는 장시간 읽고 조작하는 핵심 표면이므로 헤더와 동작부를 크게 유지한다. */
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__header {
+  min-height: 62px !important;
+  padding: 10px 12px 10px 14px !important;
+  gap: 10px !important;
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__icon {
+  width: 36px !important;
+  height: 36px !important;
+  border-radius: 11px !important;
+  font-size: 23px;
+  flex: 0 0 36px;
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__title {
+  min-width: max-content;
+  color: color-mix(in srgb, var(--at-node-accent) 58%, #111827) !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  line-height: 1.15;
+  letter-spacing: -0.035em !important;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__header-actions {
+  flex: 0 0 auto;
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__header-actions button {
+  min-width: 110px !important;
+  height: 40px !important;
+  padding: 0 14px !important;
+  border: 1px solid color-mix(in srgb, var(--at-node-accent) 48%, #8e8e93) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: color-mix(in srgb, var(--at-node-accent) 48%, #111827) !important;
+  font-size: 16px !important;
+  font-weight: 750 !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.14), inset 0 1px rgba(255, 255, 255, 0.9) !important;
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__move {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 11px;
+  border: 1px solid rgba(60, 60, 67, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.72);
+  color: #3a3a3c;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1;
+  opacity: 1 !important;
+  white-space: nowrap;
+  word-break: keep-all;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.10);
+}
+
+.at-canvas-node[data-node-kind='verse'] .at-canvas-node__close {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px;
+  border: 1px solid rgba(60, 60, 67, 0.20) !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: #3a3a3c !important;
+  font-size: 24px !important;
+  font-weight: 500;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+}
+
 .at-canvas-node__header > span:first-child {
   display: grid;
   width: 25px;
