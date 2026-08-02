@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useState, useRef, useMemo, useEffect } from 'react';
 import { applyDagreLayout, applyRadialLayout } from './utils/autoLayout';
+import { AT } from './theme/appleTheme';
 import {
   ReactFlow,
   Background,
@@ -132,10 +133,15 @@ const panelContainerStyle = {
   display: 'flex',
   flexDirection: 'column',
   gap: 6,
-  background: '#fff',
-  padding: '8px 14px',
-  borderRadius: 10,
-  boxShadow: '0 2px 12px rgba(0,0,0,0.12)',
+  // Apple: 유리 크롬(반투명+블러) · 라운드 · 소프트 섀도우
+  background: AT.material.glassThick,
+  WebkitBackdropFilter: AT.material.blur,
+  backdropFilter: AT.material.blur,
+  padding: '9px 14px',
+  borderRadius: AT.radius.xl,
+  border: `0.5px solid ${AT.color.separator}`,
+  boxShadow: AT.shadow.lg,
+  color: AT.color.label,
   marginBottom: 8,
   maxWidth: 620,
 };
@@ -147,13 +153,15 @@ const panelRowStyle = {
 };
 
 const edgeBtnStyle = {
-  padding: '4px 10px',
+  padding: '5px 12px',
   fontSize: 12,
+  fontWeight: 600,
   border: 'none',
-  borderRadius: 6,
+  borderRadius: AT.radius.pill,
   cursor: 'pointer',
   display: 'flex',
   alignItems: 'center',
+  transition: `background ${AT.motion.fast}, transform ${AT.motion.fast}`,
 };
 
 const optGroupStyle = {
@@ -164,26 +172,30 @@ const optGroupStyle = {
 
 const optLabelStyle = {
   fontSize: 10,
-  color: '#94a3b8',
+  color: AT.color.label3,
   fontWeight: 600,
   marginRight: 2,
   flexShrink: 0,
 };
 
 const optBtnStyle = {
-  padding: '3px 7px',
-  fontSize: 11,
-  border: 'none',
-  borderRadius: 4,
-  cursor: 'pointer',
-};
-
-const anchorBtnStyle = {
-  padding: '4px 10px',
+  padding: '4px 9px',
   fontSize: 11,
   fontWeight: 600,
   border: 'none',
-  borderRadius: 5,
+  borderRadius: AT.radius.pill,
+  cursor: 'pointer',
+  transition: `background ${AT.motion.fast}, transform ${AT.motion.fast}`,
+};
+
+const anchorBtnStyle = {
+  padding: '5px 11px',
+  fontSize: 11,
+  fontWeight: 600,
+  border: 'none',
+  borderRadius: AT.radius.pill,
+  cursor: 'pointer',
+  transition: `background ${AT.motion.fast}, transform ${AT.motion.fast}`,
 };
 
 const EDGE_TYPE_OPTIONS = [

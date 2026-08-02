@@ -94,14 +94,16 @@ html, body {
   inset: auto 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
   z-index: 3000;
   padding: 12px 16px;
-  border: 1px solid #bfdbfe;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.15);
-  color: #1d4ed8;
+  border: 0.5px solid var(--at-separator);
+  border-radius: 14px;
+  background: var(--at-glass-thick);
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+  box-shadow: var(--at-shadow-lg);
+  color: var(--at-accent-text);
   text-align: center;
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .app-error-screen,
@@ -594,3 +596,183 @@ button:focus:not(:focus-visible),
 .wsm-usage-row { transition: background 0.1s; cursor: pointer; }
 .wsm-usage-row:hover { background: #eff6ff !important; }
 .wsm-usage-row:hover .wsm-word { color: #1d4ed8 !important; }
+
+/* ══════════════════════════════════════════════════════════════════
+   Apple 디자인 파운데이션 (2025 · Liquid Glass 감성) · 전역 레이어
+   토큰 소스: src/theme/appleTheme.js
+   ────────────────────────────────────────────────────────────────── */
+:root {
+  --at-bg: #f2f2f7;
+  --at-surface: #ffffff;
+  --at-surface-2: #f7f7fb;
+  --at-label: #1c1c1e;
+  --at-label-2: rgba(60,60,67,0.6);
+  --at-label-3: #8e8e93;
+  --at-separator: rgba(60,60,67,0.16);
+  --at-separator-hard: rgba(60,60,67,0.29);
+  --at-fill: rgba(120,120,128,0.12);
+  --at-fill-2: rgba(120,120,128,0.20);
+  --at-accent: #0a84ff;
+  --at-accent-deep: #0060df;
+  --at-accent-soft: #eaf3ff;
+  --at-navy-top: #1e3a8a;
+  --at-navy-bottom: #0f172a;
+  --at-radius-md: 12px;
+  --at-radius-lg: 16px;
+  --at-glass: rgba(255,255,255,0.72);
+  --at-glass-blur: saturate(180%) blur(20px);
+  --at-shadow-md: 0 6px 20px -4px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.05);
+  --at-shadow-lg: 0 16px 40px -8px rgba(0,0,0,0.20), 0 4px 12px rgba(0,0,0,0.08);
+  --at-ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* 전역: 시스템 폰트 스무딩 + 탭 하이라이트 제거 (Apple 감성) */
+html { -webkit-text-size-adjust: 100%; }
+* { -webkit-tap-highlight-color: transparent; }
+button, input, select, textarea { font-family: inherit; }
+
+/* 앱 배경을 Apple 시스템 그레이로 (단, 캔버스 등 자체 배경 지정 영역은 유지) */
+body { background: var(--at-bg); }
+
+/* 선택 텍스트 색: 시스템 블루 틴트 */
+::selection { background: rgba(10,132,255,0.22); }
+
+/* 포커스 링: 접근성 유지 + Apple 스타일 (마우스 클릭 시엔 숨김) */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3.5px rgba(10,132,255,0.30);
+  border-radius: 8px;
+}
+
+/* Apple 오버레이 스크롤바 (얇고 둥근 반투명) — 데스크톱 */
+@media (pointer: fine) {
+  * { scrollbar-width: thin; scrollbar-color: rgba(120,120,128,0.4) transparent; }
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(120,120,128,0.38);
+    border-radius: 999px;
+    border: 2.5px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(120,120,128,0.6); background-clip: content-box; }
+  ::-webkit-scrollbar-corner { background: transparent; }
+}
+
+/* ── 통일 컨트롤 유틸 클래스 (버튼·메뉴 통일용) ───────────────── */
+.at-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  height: 34px; padding: 0 14px; border: none; border-radius: 999px; cursor: pointer;
+  font-size: 13.5px; font-weight: 600; color: var(--at-label); background: var(--at-fill);
+  transition: background .16s var(--at-ease), transform .16s var(--at-ease), box-shadow .16s var(--at-ease);
+  user-select: none;
+}
+.at-btn:hover { background: var(--at-fill-2); }
+.at-btn:active { transform: scale(0.96); }
+.at-btn--primary { color: #fff; background: var(--at-accent); box-shadow: 0 1px 2px rgba(10,132,255,.35); font-weight: 700; }
+.at-btn--primary:hover { background: var(--at-accent-deep); }
+.at-btn--ghost { background: transparent; color: var(--at-accent-deep); }
+.at-btn--ghost:hover { background: var(--at-accent-soft); }
+
+.at-card {
+  background: var(--at-surface); border-radius: var(--at-radius-lg);
+  border: 0.5px solid var(--at-separator); box-shadow: var(--at-shadow-md);
+}
+.at-glass {
+  background: var(--at-glass);
+  -webkit-backdrop-filter: var(--at-glass-blur); backdrop-filter: var(--at-glass-blur);
+}
+
+/* 모션 감소 선호 사용자: 트랜지션/애니메이션 억제 (기존 규칙과 병립) */
+@media (prefers-reduced-motion: reduce) {
+  .at-btn, .at-glass { transition: none !important; }
+}
+
+/* ── Apple 파운데이션: 전체 변수 정의(라이트) + 다크 모드 ─────────
+   테마 컬러는 여기서만 값 지정. 컴포넌트는 var(--at-*) 참조 → 자동 반영.
+   시스템 연동(prefers-color-scheme) + 수동 토글(html[data-theme]) 병행. */
+:root, html[data-theme='light'] {
+  --at-bg: #f2f2f7;
+  --at-surface: #ffffff;
+  --at-surface-2: #f7f7fb;
+  --at-surface-3: #eff0f4;
+  --at-label: #1c1c1e;
+  --at-label-2: rgba(60,60,67,0.62);
+  --at-label-3: #8e8e93;
+  --at-label-4: #c7c7cc;
+  --at-separator: rgba(60,60,67,0.16);
+  --at-separator-hard: rgba(60,60,67,0.29);
+  --at-fill: rgba(120,120,128,0.12);
+  --at-fill-2: rgba(120,120,128,0.20);
+  --at-accent: #0a84ff;
+  --at-accent-deep: #0060df;
+  --at-accent-soft: #eaf3ff;
+  --at-accent-text: #0060df;
+  --at-navy-top: #1e3a8a;
+  --at-navy-bottom: #0f172a;
+  --at-on-navy: #eaf1ff;
+  --at-red: #ff3b30; --at-orange: #ff9f0a; --at-green: #34c759;
+  --at-yellow: #ffcc00; --at-teal: #30b0c7; --at-purple: #af52de;
+  --at-glass: rgba(255,255,255,0.72);
+  --at-glass-thin: rgba(255,255,255,0.55);
+  --at-glass-thick: rgba(255,255,255,0.85);
+  --at-glass-blur: saturate(180%) blur(20px);
+  --at-scrim: rgba(0,0,0,0.28);
+  --at-shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --at-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --at-shadow-md: 0 6px 20px -4px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.05);
+  --at-shadow-lg: 0 16px 40px -8px rgba(0,0,0,0.20), 0 4px 12px rgba(0,0,0,0.08);
+  --at-shadow-xl: 0 30px 70px -20px rgba(0,0,0,0.35), 0 8px 20px rgba(0,0,0,0.10);
+  color-scheme: light;
+}
+
+/* 다크: 시스템 연동 (사용자가 수동 라이트 지정 시 제외) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --at-bg: #000000;
+    --at-surface: #1c1c1e;
+    --at-surface-2: #2c2c2e;
+    --at-surface-3: #3a3a3c;
+    --at-label: #f5f5f7;
+    --at-label-2: rgba(235,235,245,0.62);
+    --at-label-3: #8d8d93;
+    --at-label-4: #48484a;
+    --at-separator: rgba(84,84,88,0.42);
+    --at-separator-hard: rgba(84,84,88,0.65);
+    --at-fill: rgba(120,120,128,0.24);
+    --at-fill-2: rgba(120,120,128,0.36);
+    --at-accent: #0a84ff;
+    --at-accent-deep: #409cff;
+    --at-accent-soft: rgba(10,132,255,0.18);
+    --at-accent-text: #4aa3ff;
+    --at-navy-top: #17203a;
+    --at-navy-bottom: #05070f;
+    --at-on-navy: #dbe6ff;
+    --at-glass: rgba(30,30,32,0.68);
+    --at-glass-thin: rgba(30,30,32,0.5);
+    --at-glass-thick: rgba(30,30,32,0.82);
+    --at-scrim: rgba(0,0,0,0.5);
+    --at-shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
+    --at-shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+    --at-shadow-md: 0 6px 20px -4px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4);
+    --at-shadow-lg: 0 16px 40px -8px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.45);
+    --at-shadow-xl: 0 30px 70px -20px rgba(0,0,0,0.7), 0 8px 20px rgba(0,0,0,0.5);
+    color-scheme: dark;
+  }
+}
+/* 수동 다크 토글(향후 설정용) */
+html[data-theme='dark'] {
+  --at-bg: #000000; --at-surface: #1c1c1e; --at-surface-2: #2c2c2e; --at-surface-3: #3a3a3c;
+  --at-label: #f5f5f7; --at-label-2: rgba(235,235,245,0.62); --at-label-3: #8d8d93; --at-label-4: #48484a;
+  --at-separator: rgba(84,84,88,0.42); --at-separator-hard: rgba(84,84,88,0.65);
+  --at-fill: rgba(120,120,128,0.24); --at-fill-2: rgba(120,120,128,0.36);
+  --at-accent: #0a84ff; --at-accent-deep: #409cff; --at-accent-soft: rgba(10,132,255,0.18); --at-accent-text: #4aa3ff;
+  --at-navy-top: #17203a; --at-navy-bottom: #05070f; --at-on-navy: #dbe6ff;
+  --at-glass: rgba(30,30,32,0.68); --at-glass-thin: rgba(30,30,32,0.5); --at-glass-thick: rgba(30,30,32,0.82);
+  --at-scrim: rgba(0,0,0,0.5);
+  --at-shadow-xs: 0 1px 2px rgba(0,0,0,0.3); --at-shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+  --at-shadow-md: 0 6px 20px -4px rgba(0,0,0,0.55), 0 2px 6px rgba(0,0,0,0.4);
+  --at-shadow-lg: 0 16px 40px -8px rgba(0,0,0,0.6), 0 4px 12px rgba(0,0,0,0.45);
+  --at-shadow-xl: 0 30px 70px -20px rgba(0,0,0,0.7), 0 8px 20px rgba(0,0,0,0.5);
+  color-scheme: dark;
+}

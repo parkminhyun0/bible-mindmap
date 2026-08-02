@@ -5,7 +5,12 @@
 }
 
 body {
-  font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Apple 디자인: SF 우선 폰트 스택 (Apple 기기=SF, 그 외 Pretendard) */
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Pretendard', 'Noto Sans KR', system-ui, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  letter-spacing: -0.01em;
 }
 
 /* TipTap editor in toolbar */
