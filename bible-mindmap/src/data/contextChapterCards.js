@@ -25,6 +25,7 @@ import { CONTEXT_CHAPTER_CARDS_ROMANS } from './contextChapterCardsRomans.js';
 import { CONTEXT_CHAPTER_CARDS_1COR } from './contextChapterCardsCorinthians1.js';
 import { CONTEXT_CHAPTER_CARDS_2COR } from './contextChapterCardsCorinthians2.js';
 import { CONTEXT_CHAPTER_CARDS_GAL } from './contextChapterCardsGalatians.js';
+import { CONTEXT_CHAPTER_CARDS_EPH } from './contextChapterCardsEphesians.js';
 
 export const CONTEXT_CHAPTER_CARDS = {
   ...CONTEXT_CHAPTER_CARDS_EXT,
@@ -53,6 +54,7 @@ export const CONTEXT_CHAPTER_CARDS = {
   ...CONTEXT_CHAPTER_CARDS_1COR,
   ...CONTEXT_CHAPTER_CARDS_2COR,
   ...CONTEXT_CHAPTER_CARDS_GAL,
+  ...CONTEXT_CHAPTER_CARDS_EPH,
   'Gen:1': {
     coverEmoji: '🌌', genre: '서사 · 창조',
     observeThis: ['좌측 담화 마커와 우측 담화 카드에서 선포·실행·평가 신호를 확인하고 Arc로 여섯 날의 진행을 본다.', '신학 핵심어 칩을 클릭해 하나님·창조 관련 항목의 장 분포와 권 전체 종단 추적을 확인한다.', '26절과 31절을 Arc·장 의제에서 비교해 인간 창조와 최종 평가가 반복 리듬의 절정으로 기능하는지 본다.'],
