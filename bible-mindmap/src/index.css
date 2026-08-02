@@ -776,3 +776,125 @@ html[data-theme='dark'] {
   --at-shadow-xl: 0 30px 70px -20px rgba(0,0,0,0.7), 0 8px 20px rgba(0,0,0,0.5);
   color-scheme: dark;
 }
+
+
+/* ══════════════════════════════════════════════════════════════════
+   Apple UI Phase 3a · 공통 팝업/모달 크롬
+   기능·포털·드래그·리사이즈 로직은 유지하고 시각 표면만 통일한다.
+   ────────────────────────────────────────────────────────────────── */
+.at-modal {
+  color: var(--at-label);
+  background: var(--at-surface) !important;
+  border: 0.5px solid var(--at-separator) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--at-shadow-xl) !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display',
+    'Pretendard', 'Noto Sans KR', system-ui, sans-serif !important;
+  isolation: isolate;
+  animation: at-modal-enter .28s var(--at-ease) both;
+}
+
+.at-modal__titlebar {
+  min-height: 54px;
+  padding-block: 9px !important;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--at-navy-top) 92%, var(--at-accent)),
+      var(--at-navy-bottom)) !important;
+  color: var(--at-on-navy) !important;
+  border-bottom: 0.5px solid rgba(255,255,255,0.16) !important;
+  border-radius: 20px 20px 0 0 !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10);
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+}
+
+.at-modal__titlebar button {
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 999px !important;
+  transition: background .16s var(--at-ease), transform .16s var(--at-ease),
+    box-shadow .16s var(--at-ease);
+}
+
+.at-modal__titlebar button:hover {
+  background: rgba(255,255,255,0.22) !important;
+}
+
+.at-modal__titlebar button:active {
+  transform: scale(.94);
+}
+
+.at-modal__nav,
+.at-modal__controls {
+  background: var(--at-surface-2) !important;
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal__content {
+  background: var(--at-surface) !important;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.at-modal-backdrop {
+  background: var(--at-scrim) !important;
+  -webkit-backdrop-filter: saturate(125%) blur(10px);
+  backdrop-filter: saturate(125%) blur(10px);
+}
+
+.at-modal--mobile {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  animation-name: at-modal-mobile-enter;
+}
+
+.at-modal--mobile .at-modal__titlebar {
+  min-height: 56px;
+  border-radius: 0 !important;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 8px) !important;
+}
+
+.at-modal--mobile .at-modal__titlebar button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@keyframes at-modal-enter {
+  from { opacity: 0; transform: translateY(8px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes at-modal-mobile-enter {
+  from { opacity: .88; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 767px) {
+  .at-modal__nav {
+    scrollbar-width: none;
+  }
+  .at-modal__nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .at-modal,
+  .at-modal__titlebar button {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .at-modal__titlebar,
+  .at-modal-backdrop {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .at-modal__titlebar {
+    background: linear-gradient(135deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
+  }
+}
+
