@@ -664,6 +664,13 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                         <span style={{ fontSize: 10, fontWeight: 700, color: UI.inkMuted, background: UI.surface, border: `1px solid ${UI.line}`, borderRadius: 999, padding: '1px 8px' }}>{CANONICAL_USAGE_MAP[active].length}</span>
                         <span style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${UI.line}, transparent)` }} />
                       </div>
+                      <div style={{
+                        fontSize: Math.max(10, B - 2), color: UI.inkSoft, lineHeight: 1.6,
+                        background: UI.goldSoft, border: `1px solid ${UI.line}`, borderRadius: 8,
+                        padding: '8px 10px', marginBottom: 10,
+                      }}>
+                        위 <b>정경 흐름</b>이 이 개념의 <b>대표 골격</b>(언약 단계별 결정적 본문)이라면, 여기 <b>정경 전체 용례</b>는 그 골격을 넘어 개념이 <b>성경 곳곳에서 어떻게 반복·변주되는지</b>를 넓게 펼친 <b>심화 지도</b>입니다. 각 절을 누르면 본문이 열립니다 — 창세기부터 요한계시록까지 한 개념의 <b>정경적 궤적</b>을 폭넓게 추적해 보세요. <span style={{ color: UI.inkMuted }}>(용례는 점진적으로 계속 확장됩니다.)</span>
+                      </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                         {CANONICAL_USAGE_MAP[active].map((u, i) => {
                           const { bookId, chapter, verse } = parseRef(u.ref);
