@@ -66,6 +66,8 @@ export default function NodeEditor({
   const [editData, setEditData] = useState(null);
   const [, setTick] = useState(0);
   const [tagInput, setTagInput] = useState('');
+  // 구절 노드 크기 조절 대상 영역 (기본: 제목·본문 모두)
+  const [sizeTargets, setSizeTargets] = useState({ title: true, body: true });
   const [contemporaries, setContemporaries] = useState(null); // null | 'loading' | []
   const [contError, setContError] = useState('');
   const [placePersons, setPlacePersons] = useState(null); // null | 'loading' | []
@@ -169,6 +171,10 @@ export default function NodeEditor({
   const nodeType = selectedNode?.type || 'verse';
   const fontSize = editData?.fontSize || 13;
   const disabled = !hasNode;
+  // 구절 노드: 영역별(제목/본문) 크기 · 체크한 영역만 A-/A+ 적용
+  const isVerse = nodeType === 'verse';
+  const fsTitle = editData?.fontSizeTitle ?? (fontSize + 1);
+  const fsBody = editData?.fontSizeBody ?? fontSize;
 
   const update = (patch) => {
     if (!hasNode) return;
@@ -176,6 +182,43 @@ export default function NodeEditor({
     setEditData(next);
     onUpdateNode(selectedNode.id, next);
   };
+
+  const clampFs = (n) => Math.max(9, Math.min(50, n));
+  // 크기 조절: 구절이면 체크된 영역별, 그 외 노드는 단일 fontSize
+  const bumpSize = (delta) => {
+    if (!isVerse) { update({ fontSize: clampFs(fontSize + delta) }); return; }
+    const t = sizeTargets.title, b = sizeTargets.body;
+    const patch = {};
+    if (t || (!t && !b)) patch.fontSizeTitle = clampFs(fsTitle + delta);
+    if (b || (!t && !b)) patch.fontSizeBody = clampFs(fsBody + delta);
+    update(patch);
+  };
+
+  // 크기 조절 컨트롤 (구절: 영역 체크박스 포함) — 모바일·데스크톱 툴바 공용
+  const sizeControl = (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
+      <span style={{ fontSize: 10, color: 'var(--at-label-3)', flexShrink: 0 }}>크기</span>
+      {isVerse && (
+        <span style={{ display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+          {[['title','제목'],['body','본문']].map(([k, l]) => (
+            <label key={k} title={`${l} 크기 조절 대상`}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 3, fontSize: 10.5,
+                color: 'var(--at-label-2)', cursor: 'pointer', userSelect: 'none' }}>
+              <input type="checkbox" checked={sizeTargets[k]}
+                onChange={(e) => setSizeTargets((s) => ({ ...s, [k]: e.target.checked }))}
+                style={{ accentColor: '#0a84ff', width: 13, height: 13, minHeight: 13, margin: 0 }} />
+              {l}
+            </label>
+          ))}
+        </span>
+      )}
+      <button onClick={() => bumpSize(-1)} style={iconBtnStyle} title="축소" disabled={disabled}>A-</button>
+      <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--at-label-2)', minWidth: isVerse ? 56 : 32, textAlign: 'center' }}>
+        {isVerse ? `제 ${fsTitle} · 본 ${fsBody}` : `${fontSize}px`}
+      </span>
+      <button onClick={() => bumpSize(1)} style={iconBtnStyle} title="확대" disabled={disabled}>A+</button>
+    </div>
+  );
 
   const runEditorCommand = (command) => {
     if (!isEditorUsable(editor)) return false;
@@ -519,13 +562,8 @@ export default function NodeEditor({
               </div>
             )}
 
-            {/* 글자 크기 */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontSize: 11, color: '#94a3b8' }}>크기</span>
-              <button onClick={() => update({ fontSize: Math.max(9, fontSize - 1) })} style={iconBtnStyle}>A-</button>
-              <span style={{ fontSize: 12, fontWeight: 600, color: '#475569', minWidth: 32, textAlign: 'center' }}>{fontSize}px</span>
-              <button onClick={() => update({ fontSize: Math.min(50, fontSize + 1) })} style={iconBtnStyle}>A+</button>
-            </div>
+            {/* 글자 크기 (구절: 영역별 체크박스) */}
+            {sizeControl}
               </div>
             )}
           </div>
@@ -597,20 +635,24 @@ export default function NodeEditor({
 
         <div style={{ ...dividerStyle, opacity: disabledOpacity }} />
 
-        {/* Font size */}
+        {/* Font size — 구절: 영역별 체크박스 · 그 외: 셀렉트+스테퍼 */}
         <div style={{ ...sectionStyle, opacity: disabledOpacity }}>
-          <select
-            value={fontSize}
-            onChange={(e) => update({ fontSize: +e.target.value })}
-            style={{ ...selectStyle, width: 58 }}
-            disabled={disabled}
-          >
-            {FONT_SIZES.map((s) => (
-              <option key={s} value={s}>{s}px</option>
-            ))}
-          </select>
-          <button onClick={() => update({ fontSize: Math.max(9, fontSize - 1) })} style={iconBtnStyle} title="축소" disabled={disabled}>A-</button>
-          <button onClick={() => update({ fontSize: Math.min(50, fontSize + 1) })} style={iconBtnStyle} title="확대" disabled={disabled}>A+</button>
+          {isVerse ? sizeControl : (
+            <>
+              <select
+                value={fontSize}
+                onChange={(e) => update({ fontSize: +e.target.value })}
+                style={{ ...selectStyle, width: 58 }}
+                disabled={disabled}
+              >
+                {FONT_SIZES.map((s) => (
+                  <option key={s} value={s}>{s}px</option>
+                ))}
+              </select>
+              <button onClick={() => update({ fontSize: Math.max(9, fontSize - 1) })} style={iconBtnStyle} title="축소" disabled={disabled}>A-</button>
+              <button onClick={() => update({ fontSize: Math.min(50, fontSize + 1) })} style={iconBtnStyle} title="확대" disabled={disabled}>A+</button>
+            </>
+          )}
         </div>
 
         <div style={{ ...dividerStyle, opacity: disabledOpacity }} />

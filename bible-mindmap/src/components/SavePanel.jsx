@@ -986,13 +986,15 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     >
       {/* Header */}
       <div className="at-side-panel__header" style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
-        borderBottom: '1px solid var(--at-separator)', display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: 'var(--at-label)', flex: 1 }}>📂 저장소</span>
+        borderBottom: '1px solid var(--at-separator)', display: 'flex', alignItems: 'center', gap: 8 }}>
+        {/* 닫기(접기) — 우상단 테마 토글과 겹치지 않도록 헤더 왼쪽에 배치 */}
         <button onClick={onToggle}
           style={mobileInline
             ? { ...iconBtnTop, minWidth: 44, minHeight: 44, fontSize: 18 }
-            : iconBtnTop}
-          title="패널 닫기">✕</button>
+            : { ...iconBtnTop, flexShrink: 0 }}
+          aria-label="저장소 패널 접기"
+          title="저장소 패널 접기 (닫기)">✕</button>
+        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: 'var(--at-label)', flex: 1 }}>📂 저장소</span>
       </div>
 
       {/* Actions: new map, save, folder */}
@@ -1046,7 +1048,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
               {obsidianDirName ? (
                 <>
                   <div style={{
-                    fontSize: 10, color: '#b45309', background: '#fef3c7',
+                    fontSize: 10, color: 'var(--at-accent-text)', background: 'var(--at-accent-soft)',
                     padding: '4px 8px', borderRadius: 6, lineHeight: 1.4,
                   }}>
                     ⚠️ 새로고침으로 연결 해제됨
@@ -1129,10 +1131,10 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           </button>
         </div>
         <div style={{ display: 'flex', gap: 4 }}>
-          <button onClick={handleExportAll} style={{ ...fileBtn, background: '#fef3c7', color: '#92400e' }} title="저장소 전체를 JSON 파일로 백업">
+          <button onClick={handleExportAll} style={{ ...fileBtn, background: 'var(--at-accent-soft)', color: 'var(--at-accent-text)' }} title="저장소 전체를 JSON 파일로 백업">
             🗄️ 저장소 백업
           </button>
-          <button onClick={() => importAllRef.current?.click()} style={{ ...fileBtn, background: '#fef3c7', color: '#92400e' }} title="백업 파일로 저장소 복원">
+          <button onClick={() => importAllRef.current?.click()} style={{ ...fileBtn, background: 'var(--at-accent-soft)', color: 'var(--at-accent-text)' }} title="백업 파일로 저장소 복원">
             🗄️ 저장소 복원
           </button>
         </div>
@@ -1145,7 +1147,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         </button>
         <button
           onClick={() => importWorkspaceV2Ref.current?.click()}
-          style={{ ...fileBtn, background: '#e0e7ff', color: '#3730a3', width: '100%' }}
+          style={{ ...fileBtn, background: 'var(--at-accent-soft)', color: 'var(--at-accent-text)', width: '100%' }}
           title="복원 전 안전 백업을 자동 생성한 뒤 V2 작업공간을 복원"
         >
           ♻️ 개인 작업공간 V2 안전 복원
@@ -1453,18 +1455,18 @@ const iconBtnTop = {
 
 const newMapBtn = {
   padding: '8px 0', fontSize: 13, fontWeight: 700,
-  background: '#10b981', color: '#fff', border: 'none', borderRadius: 6, cursor: 'pointer',
+  background: 'var(--at-accent)', color: '#fff', border: 'none', borderRadius: 10, cursor: 'pointer',
   width: '100%',
 };
 
 const actionBtn = {
   flex: 1, padding: '6px 0', fontSize: 12, fontWeight: 600,
-  background: '#3b82f6', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer',
+  background: 'var(--at-accent)', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer',
 };
 
 const fileBtn = {
   flex: 1, padding: '5px 4px', fontSize: 11, fontWeight: 600,
-  background: '#e0f2fe', color: '#0369a1', border: 'none', borderRadius: 4, cursor: 'pointer',
+  background: 'var(--at-accent-soft)', color: 'var(--at-accent-text)', border: 'none', borderRadius: 8, cursor: 'pointer',
   textAlign: 'center',
 };
 

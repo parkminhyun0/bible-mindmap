@@ -583,9 +583,14 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     <>
     <div className="at-sidebar-panel" style={containerStyle}>
       {/* ═══ 섹션 1: 타이틀 ═══ */}
-      <div className="at-sidebar-titlebar" style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
+      <div className="at-sidebar-titlebar" style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6 }}>
+        <h2 style={{ ...titleStyle, flex: 1, minWidth: 0 }}>✝️ 성경 마인드맵</h2>
         <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
+        {/* 좌측 패널 전체 접기 (레일로) */}
+        <button onClick={() => setContentOpen(false)} title="왼쪽 패널 접기" aria-label="왼쪽 패널 접기"
+          style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            width: 30, height: 30, borderRadius: 9, border: '1px solid rgba(255,255,255,.22)',
+            background: 'rgba(255,255,255,.12)', color: '#fff', fontSize: 14, cursor: 'pointer' }}>◀</button>
       </div>
 
       {/* ═══ 섹션 1b: 원어 검색 바 ═══ */}

@@ -130,6 +130,9 @@ export default function VerseNode({ id, data, selected }) {
   const allEdges = useEdges();
   const borderColor = data.color || '#3b82f6';
   const fontSize = data.fontSize || 13;
+  // 영역별 텍스트 크기 (편집 툴바 체크박스로 개별 조절) — 미지정 시 fontSize 기준 fallback
+  const titleSize = data.fontSizeTitle ?? (fontSize + 1);
+  const bodySize = data.fontSizeBody ?? fontSize;
 
   const hasMulti = !!data.bookId;
 
@@ -429,7 +432,7 @@ export default function VerseNode({ id, data, selected }) {
       <div
         style={{
           fontWeight: 700,
-          fontSize: fontSize + 1,
+          fontSize: titleSize,
           color: borderColor,
           marginBottom: activeBadges.length > 0 ? 4 : 6,
           borderBottom: activeBadges.length > 0 ? 'none' : `1px solid ${borderColor}30`,
@@ -579,6 +582,7 @@ export default function VerseNode({ id, data, selected }) {
             onMouseUp={revealSelectionPin}
             style={{
               color: displayText.startsWith('(') ? '#94a3b8' : '#1e293b',
+              fontSize: bodySize,
               direction: isRTL ? 'rtl' : 'ltr',
               fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
             }}
