@@ -1,4 +1,5 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
 import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
@@ -38,6 +39,40 @@ const FONT_KEY = 'parallel-view-font-sizes-v2';
 const DEFAULT_FONT = { krv: 16, web: 16, lxx: 20, original: 20 };
 const FONT_MIN = 11;
 const FONT_MAX = 40;
+const VIEWPORT_MARGIN = 16;
+const DESKTOP_MIN_WIDTH = 640;
+const DESKTOP_MIN_HEIGHT = 460;
+const DESKTOP_DEFAULT_WIDTH = 1100;
+const DESKTOP_DEFAULT_HEIGHT = 760;
+
+function clampDesktopBounds(bounds, viewportWidth = window.innerWidth, viewportHeight = window.innerHeight) {
+  const availableWidth = Math.max(1, viewportWidth - VIEWPORT_MARGIN * 2);
+  const availableHeight = Math.max(1, viewportHeight - VIEWPORT_MARGIN * 2);
+  const minWidth = Math.min(DESKTOP_MIN_WIDTH, availableWidth);
+  const minHeight = Math.min(DESKTOP_MIN_HEIGHT, availableHeight);
+  const width = Math.min(Math.max(bounds.width, minWidth), availableWidth);
+  const height = Math.min(Math.max(bounds.height, minHeight), availableHeight);
+  const maxX = Math.max(VIEWPORT_MARGIN, viewportWidth - VIEWPORT_MARGIN - width);
+  const maxY = Math.max(VIEWPORT_MARGIN, viewportHeight - VIEWPORT_MARGIN - height);
+
+  return {
+    x: Math.min(Math.max(bounds.x, VIEWPORT_MARGIN), maxX),
+    y: Math.min(Math.max(bounds.y, VIEWPORT_MARGIN), maxY),
+    width,
+    height,
+  };
+}
+
+function initialDesktopBounds() {
+  const width = Math.min(DESKTOP_DEFAULT_WIDTH, Math.max(1, window.innerWidth - VIEWPORT_MARGIN * 2));
+  const height = Math.min(DESKTOP_DEFAULT_HEIGHT, Math.max(1, window.innerHeight - VIEWPORT_MARGIN * 2));
+  return clampDesktopBounds({
+    x: (window.innerWidth - width) / 2,
+    y: (window.innerHeight - height) / 2,
+    width,
+    height,
+  });
+}
 
 function loadFontSizes() {
   try {
@@ -148,8 +183,13 @@ function isEmptyHtml(s) {
 
 export default function ParallelView({ node, onSave, onClose }) {
   const isMobile = useMobile();
+  const [desktopBounds, setDesktopBounds] = useState(initialDesktopBounds);
+  const pointerActionRef = useRef(null);
   // LXX(칠십인역)는 구약 절에만 열로 노출한다.
-  const columns = COLUMNS.filter((c) => !c.otOnly || (node.data.bookId && isOT(node.data.bookId)));
+  const columns = useMemo(
+    () => COLUMNS.filter((c) => !c.otOnly || (node.data.bookId && isOT(node.data.bookId))),
+    [node.data.bookId],
+  );
   // 모바일 오버라이드
   const mOverlay = isMobile ? { padding: 0 } : {};
   const mModal   = isMobile ? { maxWidth: '100%', width: '100%', maxHeight: 'none',
@@ -158,6 +198,43 @@ export default function ParallelView({ node, onSave, onClose }) {
   const mCols    = isMobile ? { gridTemplateColumns: '1fr', gap: 8, padding: 10 } : {};
   const mToolbar = isMobile ? { flexWrap: 'wrap', gap: 8, padding: '10px 14px' } : {};
   const mFooter  = isMobile ? { padding: '12px 14px calc(env(safe-area-inset-bottom, 0px) + 12px)' } : {};
+
+  useEffect(() => {
+    if (isMobile) return undefined;
+    const keepInsideViewport = () => setDesktopBounds((current) => clampDesktopBounds(current));
+    window.addEventListener('resize', keepInsideViewport);
+    return () => window.removeEventListener('resize', keepInsideViewport);
+  }, [isMobile]);
+
+  const beginPointerAction = (event, type) => {
+    if (isMobile || event.button !== 0) return;
+    if (type === 'move' && event.target.closest('button')) return;
+    event.preventDefault();
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    pointerActionRef.current = {
+      type,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      bounds: desktopBounds,
+    };
+  };
+
+  const continuePointerAction = (event) => {
+    const action = pointerActionRef.current;
+    if (!action || action.pointerId !== event.pointerId) return;
+    const dx = event.clientX - action.startX;
+    const dy = event.clientY - action.startY;
+    setDesktopBounds(clampDesktopBounds(action.type === 'move'
+      ? { ...action.bounds, x: action.bounds.x + dx, y: action.bounds.y + dy }
+      : { ...action.bounds, width: action.bounds.width + dx, height: action.bounds.height + dy }));
+  };
+
+  const endPointerAction = (event) => {
+    if (pointerActionRef.current?.pointerId !== event.pointerId) return;
+    pointerActionRef.current = null;
+    event.currentTarget.releasePointerCapture?.(event.pointerId);
+  };
   // 각 열의 토큰 상태
   const [tokensByTab, setTokensByTab] = useState(() => {
     const init = {};
@@ -287,7 +364,7 @@ export default function ParallelView({ node, onSave, onClose }) {
       }
     }
     return m;
-  }, [tokensByTab]);
+  }, [columns, tokensByTab]);
 
   const toggleToken = (tabId, index) => {
     setMessage('');
@@ -385,7 +462,7 @@ export default function ParallelView({ node, onSave, onClose }) {
 
   const selectedCount = columns.reduce((sum, c) => sum + (selected[c.id]?.length || 0), 0);
 
-  return (
+  const content = (
     <div style={{ ...overlayStyle, ...mOverlay }} onClick={onClose}
       role="presentation">
       <div
@@ -393,9 +470,27 @@ export default function ParallelView({ node, onSave, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`단어 페어링 · ${node?.data?.reference || ''}`}
-        style={{ ...modalStyle, ...mModal }} onClick={(e) => e.stopPropagation()}>
+        style={{
+          ...modalStyle,
+          ...(isMobile ? mModal : {
+            position: 'absolute',
+            left: desktopBounds.x,
+            top: desktopBounds.y,
+            width: desktopBounds.width,
+            height: desktopBounds.height,
+            maxWidth: 'none',
+            maxHeight: 'none',
+          }),
+        }} onClick={(e) => e.stopPropagation()}>
         {/* 헤더 */}
-        <div style={{ ...headerStyle, ...mHeader }}>
+        <div
+          style={{ ...headerStyle, ...mHeader, ...(isMobile ? {} : draggableHeaderStyle) }}
+          title={isMobile ? undefined : '끌어서 창 이동'}
+          onPointerDown={(event) => beginPointerAction(event, 'move')}
+          onPointerMove={continuePointerAction}
+          onPointerUp={endPointerAction}
+          onPointerCancel={endPointerAction}
+        >
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ fontWeight: 700, fontSize: 15, color: '#1e293b' }}>
               🔤 단어 페어링 — {node.data.reference}
@@ -566,6 +661,20 @@ export default function ParallelView({ node, onSave, onClose }) {
           <button onClick={onClose} style={{ ...cancelBtnStyle, ...(isMobile ? { minHeight: 44, padding: '12px 20px', fontSize: 14 } : {}) }}>닫기</button>
           <button onClick={handleSave} style={{ ...saveBtnStyle, ...(isMobile ? { minHeight: 44, padding: '12px 20px', fontSize: 14 } : {}) }}>💾 저장 후 닫기</button>
         </div>
+
+        {!isMobile && (
+          <div
+            role="separator"
+            aria-label="단어 페어링 창 크기 조절"
+            aria-orientation="horizontal"
+            title="끌어서 창 크기 조절"
+            style={resizeHandleStyle}
+            onPointerDown={(event) => beginPointerAction(event, 'resize')}
+            onPointerMove={continuePointerAction}
+            onPointerUp={endPointerAction}
+            onPointerCancel={endPointerAction}
+          />
+        )}
       </div>
 
       {popup && (
@@ -578,6 +687,8 @@ export default function ParallelView({ node, onSave, onClose }) {
       )}
     </div>
   );
+
+  return createPortal(content, document.body);
 }
 
 // ── styles ────────────────────────────────────────────────────────────────
@@ -585,7 +696,7 @@ const overlayStyle = {
   position: 'fixed', inset: 0, zIndex: 2000,
   background: 'rgba(15,23,42,0.5)',
   display: 'flex', alignItems: 'center', justifyContent: 'center',
-  padding: 20,
+  padding: 0,
 };
 const modalStyle = {
   background: '#fff',
@@ -598,6 +709,11 @@ const modalStyle = {
 const headerStyle = {
   display: 'flex', justifyContent: 'space-between', alignItems: 'center',
   padding: '14px 20px', borderBottom: '1px solid #e2e8f0',
+};
+const draggableHeaderStyle = {
+  cursor: 'move',
+  userSelect: 'none',
+  touchAction: 'none',
 };
 const closeBtnStyle = {
   background: 'none', border: 'none', fontSize: 20, cursor: 'pointer', color: '#64748b',
@@ -662,4 +778,15 @@ const saveBtnStyle = {
   padding: '8px 18px', fontSize: 13, fontWeight: 700,
   border: 'none', borderRadius: 6,
   background: '#3b82f6', color: '#fff', cursor: 'pointer',
+};
+const resizeHandleStyle = {
+  position: 'absolute',
+  right: 3,
+  bottom: 3,
+  width: 22,
+  height: 22,
+  cursor: 'nwse-resize',
+  touchAction: 'none',
+  borderRadius: '0 0 9px 0',
+  background: 'linear-gradient(135deg, transparent 45%, #94a3b8 46%, #94a3b8 54%, transparent 55%, transparent 65%, #64748b 66%, #64748b 74%, transparent 75%)',
 };
