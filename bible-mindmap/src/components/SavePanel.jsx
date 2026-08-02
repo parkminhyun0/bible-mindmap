@@ -17,6 +17,7 @@ import {
   RESEARCH_ANNOTATIONS_CHANGED,
 } from '../storage/researchRepository';
 import { getBook } from '../data/bibleBooks';
+import ThemeToggle from './ThemeToggle';
 
 const APP_NS       = 'parkminhyun0-bible-mindmap';
 const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
@@ -985,16 +986,18 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       }}
     >
       {/* Header */}
-      <div className="at-side-panel__header" style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
-        borderBottom: '1px solid var(--at-separator)', display: 'flex', alignItems: 'center', gap: 8 }}>
-        {/* 닫기(접기) — 우상단 테마 토글과 겹치지 않도록 헤더 왼쪽에 배치 */}
-        <button onClick={onToggle}
-          style={mobileInline
-            ? { ...iconBtnTop, minWidth: 44, minHeight: 44, fontSize: 18 }
-            : { ...iconBtnTop, flexShrink: 0 }}
-          aria-label="저장소 패널 접기"
-          title="저장소 패널 접기 (닫기)">✕</button>
-        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: 'var(--at-label)', flex: 1 }}>📂 저장소</span>
+      <div className="at-side-panel__header at-save-panel__header" style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
+        borderBottom: '1px solid var(--at-separator)' }}>
+        <div className="at-save-panel__title-row">
+          <button onClick={onToggle}
+            style={mobileInline
+              ? { ...iconBtnTop, minWidth: 44, minHeight: 44, fontSize: 18 }
+              : { ...iconBtnTop, flexShrink: 0 }}
+            aria-label="저장소 패널 접기"
+            title="저장소 패널 접기 (닫기)">✕</button>
+          <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: 'var(--at-label)', flex: 1 }}>📂 저장소</span>
+        </div>
+        <ThemeToggle />
       </div>
 
       {/* Actions: new map, save, folder */}
