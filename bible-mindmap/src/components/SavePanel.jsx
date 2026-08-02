@@ -941,8 +941,12 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
 
   if (!open) {
     return (
-      <div
+      <button
+        type="button"
+        className="at-panel-trigger at-panel-trigger--save"
         onClick={onToggle}
+        aria-expanded="false"
+        aria-label="저장소 열기"
         title="저장소 열기"
         style={{
           width: 30,
@@ -964,12 +968,13 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, #d1fae5, #ecfdf5)')}
       >
         ◀ 📂 저장소 열기
-      </div>
+      </button>
     );
   }
 
   return (
     <div
+      className={`at-side-panel at-save-panel${mobileInline ? ' is-mobile-inline' : ''}`}
       style={{
         width: mobileInline ? '100%' : 280,
         background: '#f8fafc',
@@ -980,7 +985,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       }}
     >
       {/* Header */}
-      <div style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
+      <div className="at-side-panel__header" style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
         borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6 }}>
         <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: '#1e293b', flex: 1 }}>📂 저장소</span>
         <button onClick={onToggle}
