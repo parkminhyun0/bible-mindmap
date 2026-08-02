@@ -24,7 +24,7 @@ const COVENANTS = {
   noahic:    { ko: '노아 언약', color: '#0891b2' },
   abrahamic: { ko: '아브라함 언약', color: '#7c3aed' },
   mosaic:    { ko: '모세(시내) 언약', color: '#d97706' },
-  davidic:   { ko: '다윗 언약', color: '#2563eb' },
+  davidic:   { ko: '다윗 언약', color: 'var(--at-accent-text)' },
   new:       { ko: '새 언약', color: '#dc2626' },
   none:      { ko: '—', color: '#94a3b8' },
 };
@@ -46,19 +46,20 @@ const FONT_MAX = 50;
 
 // ── 디자인 토큰 ────────────────────────────────────────────────────
 // 에디토리얼 · 페이퍼/잉크 · 골드 액센트. 기본 슬레이트 룩 탈피.
+// ★ 라이트/다크 자동: 값은 전역 --at-* 토큰을 가리킨다. 골드 액센트·네이비 헤더는 시그니처로 유지.
 const UI = {
-  paper:    '#faf8f4',        // 본문 배경 (따뜻한 아이보리)
-  surface:  '#ffffff',        // 카드 표면
-  ink:      '#16151f',        // 잉크 (거의 블랙, 살짝 웜)
-  inkSoft:  '#4b4a58',        // 보조 텍스트
-  inkMuted: '#8f8d9c',        // 흐린 텍스트
-  line:     '#eceae4',        // 경계선
-  lineSoft: '#f4f2ec',        // 옅은 경계선
-  gold:     '#c19a5b',        // 골드 액센트
-  goldSoft: '#efe6d4',        // 골드 배경
-  headerBg: 'linear-gradient(135deg,#1a1830 0%,#221f3d 52%,#2c2748 100%)', // 딥 잉크-인디고
+  paper:    'var(--at-bg)',            // 본문 배경
+  surface:  'var(--at-surface)',       // 카드 표면
+  ink:      'var(--at-label)',         // 잉크(본문 텍스트)
+  inkSoft:  'var(--at-label-2)',       // 보조 텍스트
+  inkMuted: 'var(--at-label-3)',       // 흐린 텍스트
+  line:     'var(--at-separator)',     // 경계선
+  lineSoft: 'var(--at-surface-3)',     // 옅은 경계선
+  gold:     '#c19a5b',                 // 골드 액센트 (시그니처)
+  goldSoft: 'rgba(193,154,91,0.16)',   // 골드 배경 (반투명 · 라이트/다크 모두)
+  headerBg: 'linear-gradient(135deg,#1a1830 0%,#221f3d 52%,#2c2748 100%)', // 딥 잉크-인디고 (시그니처)
   radius:   16,
-  shadow:   '0 30px 80px -24px rgba(24,22,45,.45), 0 2px 8px rgba(24,22,45,.06)',
+  shadow:   'var(--at-shadow-xl)',
 };
 
 function parseRef(ref) {
@@ -430,8 +431,8 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                       style={{
                         padding: '6px 12px', border: 'none', cursor: 'pointer', borderRadius: 999,
                         fontSize: 11, fontWeight: 700, transition: 'all .15s',
-                        background: browseMode === k ? UI.ink : 'transparent',
-                        color: browseMode === k ? '#f4f1ea' : UI.inkMuted,
+                        background: browseMode === k ? 'var(--at-accent)' : 'transparent',
+                        color: browseMode === k ? '#fff' : UI.inkMuted,
                         minHeight: isMobile ? 34 : undefined,
                       }}
                     >{t}</button>
@@ -523,7 +524,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                         <div key={cv} style={{ display: 'flex', gap: 10, marginBottom: 4 }}>
                           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0, width: 12 }}>
                             <span style={{ width: 12, height: 12, borderRadius: '50%', background: cov.color, marginTop: 4 }} />
-                            {cv !== 'new' && <span style={{ width: 2, flex: 1, background: '#e2e8f0', minHeight: 20 }} />}
+                            {cv !== 'new' && <span style={{ width: 2, flex: 1, background: 'var(--at-separator)', minHeight: 20 }} />}
                           </div>
                           <div style={{ paddingBottom: 14, flex: 1, minWidth: 0 }}>
                             <div style={{ fontSize: C, fontWeight: 800, color: cov.color, marginBottom: 6 }}>{cov.ko}</div>
@@ -604,7 +605,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                       <div key={i} style={{ display: 'flex', gap: 10 }}>
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flexShrink: 0 }}>
                           <div style={{ width: 11, height: 11, borderRadius: '50%', background: cov.color, marginTop: 4, flexShrink: 0 }} />
-                          {!last && <div style={{ width: 2, flex: 1, background: '#e2e8f0', minHeight: 24 }} />}
+                          {!last && <div style={{ width: 2, flex: 1, background: 'var(--at-separator)', minHeight: 24 }} />}
                         </div>
                         <div style={{ paddingBottom: last ? 0 : 16, flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginBottom: 3 }}>
@@ -614,7 +615,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                               title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
                               style={{
                                 fontSize: B, fontFamily: 'monospace', fontWeight: 700,
-                                color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                                color: 'var(--at-accent-text)', background: 'var(--at-accent-soft)', border: '1px solid var(--at-separator)',
                                 borderRadius: 4, padding: '1px 6px', cursor: 'pointer',
                               }}
                             >{book?.ko || bookId} {chapter}:{verse}</button>
@@ -622,7 +623,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                           <div style={{ fontSize: B, color: '#334155', lineHeight: 1.55, marginBottom: 5 }}>{s.summary}</div>
                           <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
                             <span style={{ fontSize: Math.max(9, C - 2), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: '#fff', background: cov.color }}>{cov.ko}</span>
-                            <span title={con.desc} style={{ fontSize: Math.max(9, C - 2), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: con.color, background: '#f1f5f9', border: `1px solid ${con.color}33` }}>{s.connectionType}급 · {con.ko}</span>
+                            <span title={con.desc} style={{ fontSize: Math.max(9, C - 2), fontWeight: 700, padding: '1px 6px', borderRadius: 4, color: con.color, background: 'var(--at-surface-3)', border: `1px solid ${con.color}33` }}>{s.connectionType}급 · {con.ko}</span>
                           </div>
                         </div>
                       </div>
@@ -656,7 +657,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                                 title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
                                 style={{
                                   fontSize: B, fontFamily: 'monospace', fontWeight: 700,
-                                  color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                                  color: 'var(--at-accent-text)', background: 'var(--at-accent-soft)', border: '1px solid var(--at-separator)',
                                   borderRadius: 6, padding: '4px 8px', cursor: 'pointer',
                                 }}
                               >{book?.ko || bookId} {chapter}:{verse}</button>
@@ -694,7 +695,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                                 title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
                                 style={{
                                   flexShrink: 0, fontSize: Math.max(10, B - 1), fontFamily: 'monospace', fontWeight: 700,
-                                  color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                                  color: 'var(--at-accent-text)', background: 'var(--at-accent-soft)', border: '1px solid var(--at-separator)',
                                   borderRadius: 6, padding: '3px 7px', cursor: 'pointer', minWidth: 74, textAlign: 'left',
                                 }}
                               >{book?.ko || bookId} {chapter}:{verse}</button>
@@ -835,7 +836,7 @@ function LexRow({ lang, flag, strong, label, isHebrew, onOpen, T, C }) {
     <div style={{
       display: 'flex', alignItems: 'center', gap: 10,
       padding: '10px 12px', borderRadius: 10,
-      border: '1px solid #e2e8f0', background: '#fff',
+      border: '1px solid var(--at-separator)', background: 'var(--at-surface)',
     }}>
       <span style={{ fontSize: 16 }}>{flag}</span>
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -852,7 +853,7 @@ function LexRow({ lang, flag, strong, label, isHebrew, onOpen, T, C }) {
       </div>
       <span style={{
         fontSize: C, fontFamily: 'monospace', fontWeight: 700, color: '#475569',
-        background: '#f1f5f9', borderRadius: 4, padding: '2px 6px',
+        background: 'var(--at-surface-3)', borderRadius: 4, padding: '2px 6px',
       }}>{strong}</span>
     </div>
   );
