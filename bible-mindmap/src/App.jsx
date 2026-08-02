@@ -22,6 +22,7 @@ import PeriodNode from './components/PeriodNode';
 import ArcingNode from './components/ArcingNode';
 import CustomEdge, { EdgeMarkerDefs, EDGE_CONFIGS } from './components/CustomEdge';
 import NodeEditor from './components/NodeEditor';
+import ThemeToggle from './components/ThemeToggle';
 import MobileWorkspaceDock from './components/MobileWorkspaceDock';
 import CitationSuggest from './components/CitationSuggest';
 import useHistory from './hooks/useHistory';
@@ -819,6 +820,7 @@ export default function App() {
       data-orientation={deviceProfile.orientation}
       style={{ display: 'flex',
       fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
+      <ThemeToggle />
       {(!isMobile || mobileSidebarOpen) && (
         <Suspense fallback={<div className="deferred-feature-loading">입력 도구를 불러오는 중…</div>}>
           <Sidebar
