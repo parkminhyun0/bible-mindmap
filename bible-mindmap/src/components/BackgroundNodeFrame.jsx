@@ -16,6 +16,7 @@ export default function BackgroundNodeFrame({
   icon,
   accent,
   headerBackground,
+  nodeKind = 'default',
   minWidth = 160,
   minHeight = 50,
   headerActions = null,
@@ -33,6 +34,7 @@ export default function BackgroundNodeFrame({
     <div
       className="at-canvas-node"
       data-selected={selected ? 'true' : 'false'}
+      data-node-kind={nodeKind}
       style={{
       '--at-node-accent': accent,
       '--at-node-header': headerBackground,
@@ -73,16 +75,16 @@ export default function BackgroundNodeFrame({
         }}
         title="상단바를 드래그해 이동"
       >
-        <span aria-hidden="true">{icon}</span>
-        <span style={{ flex: 1, fontSize: 11, fontWeight: 800, letterSpacing: '0.02em' }}>
+        <span className="at-canvas-node__icon" aria-hidden="true">{icon}</span>
+        <span className="at-canvas-node__title" style={{ flex: 1, fontSize: 11, fontWeight: 800, letterSpacing: '0.02em' }}>
           {title}
         </span>
         {headerActions && (
-          <div className="nodrag nopan" style={{ display: 'flex', alignItems: 'center' }}>
+          <div className="nodrag nopan at-canvas-node__header-actions" style={{ display: 'flex', alignItems: 'center' }}>
             {headerActions}
           </div>
         )}
-        <span style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>
+        <span className="at-canvas-node__move" style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>
         <button
           type="button"
           className="nodrag nopan at-canvas-node__close"
