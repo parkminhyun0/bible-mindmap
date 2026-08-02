@@ -172,10 +172,84 @@
 .at-panel-trigger > span { color: inherit !important; }
 
 /* ── 모바일 크롬 ───────────────────────────────────────────────── */
+
+
+/* ── 화이트/다크 모드 전환 ─────────────────────────────────────── */
+.at-theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 12px;
+  z-index: 45;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 206px;
+  min-height: 38px;
+  padding: 3px;
+  border: 0.5px solid var(--at-separator);
+  border-radius: 13px;
+  background: var(--at-glass-thick);
+  color: var(--at-label-2);
+  box-shadow: var(--at-shadow-md);
+  -webkit-backdrop-filter: var(--at-glass-blur);
+  backdrop-filter: var(--at-glass-blur);
+  cursor: pointer;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.at-theme-toggle__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+  min-height: 30px;
+  padding: 0 7px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    color .16s var(--at-ease),
+    background .16s var(--at-ease),
+    box-shadow .16s var(--at-ease),
+    transform .16s var(--at-ease);
+}
+
+.at-theme-toggle__option.is-active {
+  background: var(--at-surface);
+  color: var(--at-label);
+  box-shadow: var(--at-shadow-xs);
+}
+
+.at-theme-toggle:active .at-theme-toggle__option.is-active {
+  transform: scale(0.97);
+}
+
+/* 우측 상단 전환 버튼과 편집 툴바가 겹치지 않도록 공간을 확보한다. */
+.app-top-toolbar {
+  right: 226px !important;
+}
+
+
 @media (max-width: 767px), (pointer: coarse) and (max-width: 1024px) {
+  .at-theme-toggle {
+    top: calc(env(safe-area-inset-top, 0px) + 6px);
+    right: 8px;
+    width: 184px;
+    min-height: 36px;
+  }
+
+  .at-theme-toggle__option {
+    min-height: 28px;
+    padding-inline: 5px;
+    font-size: 10px;
+  }
+
   .app-top-toolbar {
     top: 0 !important;
-    right: 0 !important;
+    right: 200px !important;
     left: 0 !important;
     padding-top: calc(env(safe-area-inset-top, 0px) + 6px) !important;
     border-width: 0 0 0.5px !important;
@@ -230,6 +304,7 @@
 }
 
 @media (prefers-reduced-transparency: reduce) {
+  .at-theme-toggle,
   .app-top-toolbar,
   .at-sidebar-rail,
   .at-side-panel__header,
