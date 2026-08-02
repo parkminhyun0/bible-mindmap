@@ -414,7 +414,8 @@ export default function VerseNode({ id, data, selected }) {
       icon="📖"
       accent={borderColor}
       headerBackground={isOT(data.bookId) ? '#fef3c7' : '#dbeafe'}
-      minWidth={240}
+      nodeKind="verse"
+      minWidth={430}
       minHeight={60}
       headerActions={hasMulti ? (
         <PassageAnnotationPin
@@ -486,21 +487,43 @@ export default function VerseNode({ id, data, selected }) {
 
       {/* Translation tabs */}
       {hasMulti && (
-        <div style={{ display: 'flex', gap: 2, marginBottom: 8, flexWrap: 'wrap' }}>
+        <div
+          role="tablist"
+          aria-label="성경 역본 선택"
+          style={{ display: 'flex', gap: 8, marginBottom: 12, flexWrap: 'wrap', alignItems: 'center' }}
+        >
           {tabs.map((t) => (
             <button
+              type="button"
               key={t.id}
+              role="tab"
+              aria-selected={activeTab === t.id}
               onClick={() => handleTabClick(t.id)}
               style={{
-                padding: '2px 8px',
-                fontSize: 10,
-                fontWeight: activeTab === t.id ? 700 : 400,
-                border: 'none',
-                borderRadius: 4,
+                minWidth: t.id === 'krv' ? 116 : 82,
+                minHeight: 44,
+                padding: '9px 16px',
+                fontSize: 20,
+                lineHeight: 1.15,
+                fontWeight: activeTab === t.id ? 750 : 650,
+                letterSpacing: '-0.02em',
+                border: activeTab === t.id
+                  ? '1px solid #0071e3'
+                  : '1px solid rgba(60, 60, 67, 0.24)',
+                borderRadius: 12,
                 cursor: 'pointer',
-                background: activeTab === t.id ? borderColor : '#f1f5f9',
-                color: activeTab === t.id ? '#fff' : '#64748b',
+                background: activeTab === t.id ? '#007aff' : '#f2f2f7',
+                color: activeTab === t.id ? '#fff' : '#1d1d1f',
+                boxShadow: activeTab === t.id
+                  ? '0 3px 10px rgba(0, 122, 255, 0.28), inset 0 1px rgba(255,255,255,0.24)'
+                  : '0 1px 3px rgba(0, 0, 0, 0.10), inset 0 1px rgba(255,255,255,0.86)',
                 opacity: tabErrors[t.id] ? 0.5 : 1,
+                whiteSpace: 'nowrap',
+                writingMode: 'horizontal-tb',
+                wordBreak: 'keep-all',
+                flexShrink: 0,
+                fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Pretendard", "Noto Sans KR", sans-serif',
+                transition: 'background-color .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease',
               }}
             >
               {t.label}
