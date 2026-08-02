@@ -483,7 +483,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
 
     return (
       <>
-        <div style={{
+        <div className="at-sidebar-rail" style={{
           width: 56,
           display: 'flex',
           flexDirection: 'column',
@@ -581,9 +581,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
   // ─── 열린 상태 ───
   return (
     <>
-    <div style={containerStyle}>
+    <div className="at-sidebar-panel" style={containerStyle}>
       {/* ═══ 섹션 1: 타이틀 ═══ */}
-      <div style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="at-sidebar-titlebar" style={{ ...titleBarStyle, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <h2 style={titleStyle}>✝️ 성경 마인드맵</h2>
         <button onClick={() => setShowManual(true)} title="사용자 매뉴얼" style={manualBtnStyle}>📘 매뉴얼</button>
       </div>
