@@ -929,7 +929,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
       role="dialog"
       aria-modal={isMobile ? 'true' : 'false'}
       aria-label="원어 성경 다언어 검색"
-      className={isMobile ? 'h-screen-safe' : undefined}
+      className={`at-modal at-modal--word-search${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
       style={{
         position: 'fixed',
         left: isMobile ? 0 : pos.x,
@@ -945,7 +945,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
         display: 'flex', flexDirection: 'column',
       }}>
       {/* Titlebar */}
-      <div onMouseDown={isMobile ? undefined : onHeaderMouseDown} style={{
+      <div className="at-modal__titlebar" onMouseDown={isMobile ? undefined : onHeaderMouseDown} style={{
         display: 'flex', alignItems: 'center', gap: 8,
         padding: isMobile
           ? 'calc(env(safe-area-inset-top, 0px) + 10px) calc(env(safe-area-inset-right, 0px) + 14px) 10px calc(env(safe-area-inset-left, 0px) + 14px)'
@@ -975,7 +975,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
           overflow: 'hidden',
           borderRadius: isMobile ? 0 : '0 0 12px 12px' }}>
           {/* Search controls */}
-          <div style={{ padding: isMobile ? '10px 14px 10px' : '10px 14px 8px',
+          <div className="at-modal__controls" style={{ padding: isMobile ? '10px 14px 10px' : '10px 14px 8px',
             borderBottom: '1px solid #e2e8f0', background: '#f8fafc', flexShrink: 0 }}>
             <div className={isMobile ? 'momentum-scroll' : undefined}
               style={{ display: 'flex', gap: 4, marginBottom: 8,
@@ -1071,7 +1071,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
           )}
 
           {/* Results area */}
-          <div className={isMobile ? 'momentum-scroll' : undefined}
+          <div className={`${isMobile ? 'momentum-scroll ' : ''}at-modal__content`}
             style={{ flex: 1, overflowY: 'auto',
               WebkitOverflowScrolling: 'touch',
               overscrollBehavior: 'contain',
@@ -1161,3 +1161,4 @@ const miniBtn = {
   fontSize: 10, padding: '3px 8px', border: '1px solid #cbd5e1',
   borderRadius: 4, background: '#fff', cursor: 'pointer', color: '#475569', whiteSpace: 'nowrap',
 };
+
