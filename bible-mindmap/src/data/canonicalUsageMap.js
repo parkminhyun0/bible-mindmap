@@ -1,3 +1,6 @@
+// 배치1(파일럿6+Tier1) + 배치2(Tier2+Tier3)를 병합. 이후 배치도 여기서 spread 연결.
+import { CANONICAL_USAGE_MAP_T2 } from './canonicalUsageMapT2.js';
+
 export const CANONICAL_USAGE_MAP = {
   seed: [
     { ref: 'Gen:4:25', note: '셋을 다른 씨로 주셔 경건한 계보를 보존하심' },
@@ -119,4 +122,5 @@ export const CANONICAL_USAGE_MAP = {
     { ref: 'Heb:13:20', note: '부활하신 예수가 양들의 큰 목자로 선포됨' },
     { ref: '1Pet:5:4', note: '목자장이 나타날 때 충성된 목자들이 상을 받음' },
   ],
+  ...CANONICAL_USAGE_MAP_T2,
 };
