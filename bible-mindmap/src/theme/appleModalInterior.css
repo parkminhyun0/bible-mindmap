@@ -1,0 +1,305 @@
+/* ========================================================================
+   Apple UI Phase 3b · Modal interior system
+
+   Scope: ManualModal, ContextBibleModal, ParallelStudyModal, WordSearchModal
+   The modal shell, positioning, portal lifecycle, z-index and mobile scrolling
+   stay owned by the components. This layer only normalizes interior surfaces.
+   ======================================================================== */
+
+.at-modal {
+  --at-modal-control-height: 38px;
+  --at-modal-control-radius: 10px;
+  --at-modal-card-radius: 14px;
+  --at-modal-section-gap: 12px;
+  --at-modal-muted-border: 0.5px solid var(--at-separator);
+}
+
+.at-modal__content {
+  color: var(--at-label) !important;
+}
+
+.at-modal__content input,
+.at-modal__content select,
+.at-modal__content textarea,
+.at-modal__controls input,
+.at-modal__controls select,
+.at-modal__controls textarea {
+  min-height: var(--at-modal-control-height);
+  box-sizing: border-box;
+  color: var(--at-label) !important;
+  background: var(--at-surface) !important;
+  border: 0.5px solid var(--at-separator-hard) !important;
+  border-radius: var(--at-modal-control-radius) !important;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.025), var(--at-shadow-xs);
+  transition: border-color .16s var(--at-ease), box-shadow .16s var(--at-ease),
+    background .16s var(--at-ease);
+}
+
+.at-modal__content input::placeholder,
+.at-modal__content textarea::placeholder,
+.at-modal__controls input::placeholder,
+.at-modal__controls textarea::placeholder {
+  color: var(--at-label-3) !important;
+  opacity: 1;
+}
+
+.at-modal__content input:focus,
+.at-modal__content select:focus,
+.at-modal__content textarea:focus,
+.at-modal__controls input:focus,
+.at-modal__controls select:focus,
+.at-modal__controls textarea:focus {
+  border-color: var(--at-accent) !important;
+  box-shadow: 0 0 0 3.5px rgba(10, 132, 255, 0.22) !important;
+  outline: none;
+}
+
+.at-modal__content button,
+.at-modal__controls button,
+.at-modal__nav button {
+  font-family: inherit;
+  transition: color .16s var(--at-ease), background .16s var(--at-ease),
+    border-color .16s var(--at-ease), box-shadow .16s var(--at-ease),
+    transform .16s var(--at-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.at-modal__content button:not(:disabled):active,
+.at-modal__controls button:not(:disabled):active,
+.at-modal__nav button:not(:disabled):active {
+  transform: scale(.97);
+}
+
+.at-modal__content button:disabled,
+.at-modal__controls button:disabled,
+.at-modal__nav button:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Navigation and segmented controls */
+.at-modal__nav {
+  color: var(--at-label-2) !important;
+}
+
+.at-modal__nav button[aria-current='page'],
+.at-modal__nav button[aria-selected='true'],
+.at-modal__nav button[aria-pressed='true'] {
+  color: var(--at-accent-text) !important;
+  background: var(--at-accent-soft) !important;
+  border-color: color-mix(in srgb, var(--at-accent) 48%, transparent) !important;
+  font-weight: 700 !important;
+}
+
+/* Manual */
+.at-modal--manual .at-modal__content {
+  background: var(--at-surface) !important;
+}
+
+.at-modal--manual .at-modal__content h3 {
+  color: var(--at-label) !important;
+  letter-spacing: -.015em;
+}
+
+.at-modal--manual .at-modal__content p,
+.at-modal--manual .at-modal__content li,
+.at-modal--manual .at-modal__content figcaption {
+  color: var(--at-label-2) !important;
+}
+
+.at-modal--manual .at-modal__content table {
+  overflow: hidden;
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border: var(--at-modal-muted-border);
+  border-radius: 12px;
+  background: var(--at-surface) !important;
+}
+
+.at-modal--manual .at-modal__content th {
+  color: var(--at-label) !important;
+  background: var(--at-surface-2) !important;
+  font-weight: 700 !important;
+}
+
+.at-modal--manual .at-modal__content td {
+  color: var(--at-label-2) !important;
+  background: var(--at-surface) !important;
+}
+
+.at-modal--manual .at-modal__content th,
+.at-modal--manual .at-modal__content td {
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal--manual .at-modal__content img {
+  border-color: var(--at-separator) !important;
+  border-radius: var(--at-modal-card-radius) !important;
+  box-shadow: var(--at-shadow-sm);
+}
+
+/* Search and language research */
+.at-modal--word-search .at-modal__controls {
+  background: var(--at-surface-2) !important;
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal--word-search .at-modal__controls > div:first-child {
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--at-fill) !important;
+}
+
+.at-modal--word-search .at-modal__controls > div:first-child > button {
+  border-radius: 9px !important;
+}
+
+.at-modal--word-search .at-modal__content > div,
+.at-modal--word-search .at-modal__content > section {
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal--word-search .wsm-usage-row {
+  color: var(--at-label) !important;
+  background: var(--at-surface) !important;
+  border-bottom-color: var(--at-separator) !important;
+}
+
+.at-modal--word-search .wsm-usage-row:hover {
+  background: var(--at-accent-soft) !important;
+}
+
+.at-modal--word-search .lex-def,
+.at-modal--word-search .lex-def p,
+.at-modal--word-search .lex-def li,
+.at-modal--word-search .lex-def b {
+  color: var(--at-label) !important;
+}
+
+.at-modal--word-search .lex-def .lex-etym,
+.at-modal--word-search .lex-def .lex-kjv {
+  color: var(--at-label-2) !important;
+  background: var(--at-surface-2) !important;
+  border-color: var(--at-separator-hard) !important;
+}
+
+/* Parallel study */
+.at-modal--parallel .at-modal__content {
+  color: var(--at-label) !important;
+  background: var(--at-bg) !important;
+}
+
+.at-modal--parallel .at-modal__content section,
+.at-modal--parallel .at-modal__content article,
+.at-modal--parallel .at-modal__content [data-parallel-suggestions] > div {
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal--parallel .at-modal__content [data-parallel-suggestions] > div {
+  background: var(--at-surface) !important;
+  border-radius: var(--at-modal-card-radius) !important;
+  box-shadow: var(--at-shadow-xs);
+}
+
+.at-modal--parallel .at-modal__content label,
+.at-modal--parallel .at-modal__content strong {
+  color: var(--at-label) !important;
+}
+
+.at-modal--parallel .at-modal__content button {
+  border-radius: 10px !important;
+}
+
+/* Context Bible: preserve semantic Arc/genre colours, normalize neutral chrome. */
+.at-modal--context .at-modal__controls,
+.at-modal--context .at-modal__nav {
+  background: var(--at-surface-2) !important;
+  border-color: var(--at-separator) !important;
+}
+
+.at-modal--context .at-modal__content {
+  background: var(--at-surface) !important;
+}
+
+.at-modal--context .at-modal__content input,
+.at-modal--context .at-modal__content select {
+  color: var(--at-label) !important;
+  background: var(--at-surface) !important;
+}
+
+.at-modal--context .at-modal__content button {
+  border-radius: 10px !important;
+}
+
+/* Unified empty/loading state without changing component lifecycle. */
+.at-modal__empty,
+.at-modal__loading {
+  min-height: 180px;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-sizing: border-box;
+  color: var(--at-label-3) !important;
+  text-align: center;
+}
+
+.at-modal__empty-icon,
+.at-modal__loading-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  color: var(--at-accent-text);
+  background: var(--at-accent-soft);
+  font-size: 22px;
+  box-shadow: inset 0 0 0 .5px var(--at-separator);
+}
+
+@media (max-width: 767px) {
+  .at-modal {
+    --at-modal-control-height: 44px;
+    --at-modal-card-radius: 16px;
+  }
+
+  .at-modal__content button,
+  .at-modal__controls button,
+  .at-modal__nav button {
+    min-height: 44px;
+  }
+
+  .at-modal--manual .at-modal__content,
+  .at-modal--parallel .at-modal__content,
+  .at-modal--word-search .at-modal__content {
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .at-modal__content button,
+  .at-modal__controls button,
+  .at-modal__nav button,
+  .at-modal__content input,
+  .at-modal__content select,
+  .at-modal__content textarea,
+  .at-modal__controls input,
+  .at-modal__controls select,
+  .at-modal__controls textarea {
+    transition: none !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .at-modal__content input,
+  .at-modal__content select,
+  .at-modal__content textarea,
+  .at-modal__controls input,
+  .at-modal__controls select,
+  .at-modal__controls textarea,
+  .at-modal--manual .at-modal__content table,
+  .at-modal--parallel .at-modal__content [data-parallel-suggestions] > div {
+    border-width: 1px !important;
+  }
+}
