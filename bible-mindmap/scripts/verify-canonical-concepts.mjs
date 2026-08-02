@@ -9,6 +9,7 @@
 // 하나라도 위반하면 fail(exit 1).
 
 import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../src/data/canonicalConcepts.js';
+import { CANONICAL_USAGE_MAP } from '../src/data/canonicalUsageMap.js';
 import { ALL_BOOKS, getBook } from '../src/data/bibleBooks.js';
 
 const CATEGORIES = new Set(Object.keys(CONCEPT_CATEGORIES));
@@ -97,7 +98,21 @@ for (const [key, c] of Object.entries(CANONICAL_CONCEPTS)) {
   });
 }
 
-console.log(`정경 추적 개념 verifier · 개념 ${conceptCount} · arc 단계 ${arcCount} · 오류 ${errors.length} · 경고 ${warns.length}`);
+// ── 용례지도(canonicalUsageMap) 심화 데이터 검증 (선택 파일 · 있으면 게이팅) ──
+let usageCount = 0;
+for (const [key, arr] of Object.entries(CANONICAL_USAGE_MAP || {})) {
+  const uw = `usageMap.${key}`;
+  if (!CANONICAL_CONCEPTS[key]) errors.push(`${uw}: 존재하지 않는 개념 키`);
+  if (!Array.isArray(arr)) { errors.push(`${uw}: 배열 아님`); continue; }
+  if (arr.length < 6 || arr.length > 10) warns.push(`${uw}: 용례 ${arr.length}개 (권장 6~10)`);
+  arr.forEach((u, i) => {
+    usageCount += 1;
+    if (!isStr(u?.note)) errors.push(`${uw}[${i}]: note 누락`);
+    checkRef(u?.ref, `${uw}[${i}]`);
+  });
+}
+
+console.log(`정경 추적 개념 verifier · 개념 ${conceptCount} · arc 단계 ${arcCount} · 용례 ${usageCount} · 오류 ${errors.length} · 경고 ${warns.length}`);
 if (warns.length) {
   console.log(`⚠ 경고 ${warns.length}건:`);
   warns.slice(0, 20).forEach((x) => console.log('   - ' + x));

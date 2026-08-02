@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts';
+import { CANONICAL_USAGE_MAP } from '../data/canonicalUsageMap';
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
@@ -653,6 +654,38 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
                       </div>
                     );
                   })}
+
+                  {/* 정경 전체 용례 지도 (심화 · canonicalUsageMap) — arc 너머 핵심 용례 */}
+                  {Array.isArray(CANONICAL_USAGE_MAP?.[active]) && CANONICAL_USAGE_MAP[active].length > 0 && (
+                    <div style={{ marginTop: 6, paddingTop: 12, borderTop: `1px solid ${UI.line}` }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+                        <span style={{ fontSize: 13 }}>🗺️</span>
+                        <span style={{ fontSize: C, fontWeight: 800, color: UI.ink }}>정경 전체 용례</span>
+                        <span style={{ fontSize: 10, fontWeight: 700, color: UI.inkMuted, background: UI.surface, border: `1px solid ${UI.line}`, borderRadius: 999, padding: '1px 8px' }}>{CANONICAL_USAGE_MAP[active].length}</span>
+                        <span style={{ flex: 1, height: 1, background: `linear-gradient(90deg, ${UI.line}, transparent)` }} />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                        {CANONICAL_USAGE_MAP[active].map((u, i) => {
+                          const { bookId, chapter, verse } = parseRef(u.ref);
+                          const book = getBook(bookId);
+                          return (
+                            <div key={i} style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                              <button
+                                onClick={() => openVerse(u.ref)}
+                                title={`${book?.ko || bookId} ${chapter}:${verse} 본문 보기`}
+                                style={{
+                                  flexShrink: 0, fontSize: Math.max(10, B - 1), fontFamily: 'monospace', fontWeight: 700,
+                                  color: '#2563eb', background: '#eff6ff', border: '1px solid #bfdbfe',
+                                  borderRadius: 6, padding: '3px 7px', cursor: 'pointer', minWidth: 74, textAlign: 'left',
+                                }}
+                              >{book?.ko || bookId} {chapter}:{verse}</button>
+                              <span style={{ fontSize: B, color: UI.inkSoft, lineHeight: 1.5 }}>{u.note}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
