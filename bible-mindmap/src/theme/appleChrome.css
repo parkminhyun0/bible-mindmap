@@ -127,6 +127,30 @@
   backdrop-filter: var(--at-glass-blur);
 }
 
+.at-save-panel__header {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.at-save-panel__title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+}
+
+.at-save-panel__header .at-theme-toggle {
+  position: relative;
+  inset: auto;
+  z-index: 1;
+  width: 100%;
+  flex: 0 0 auto;
+  box-shadow: var(--at-shadow-xs);
+}
+
 .at-side-panel__header > span:first-child { color: var(--at-label) !important; }
 
 .at-side-panel__hero {

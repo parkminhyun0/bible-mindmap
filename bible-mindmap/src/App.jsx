@@ -830,7 +830,7 @@ export default function App() {
       data-orientation={deviceProfile.orientation}
       style={{ display: 'flex',
       fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif" }}>
-      <ThemeToggle />
+      {!savePanelOpen && <ThemeToggle />}
       {(!isMobile || mobileSidebarOpen) && (
         <Suspense fallback={<div className="deferred-feature-loading">입력 도구를 불러오는 중…</div>}>
           <Sidebar
