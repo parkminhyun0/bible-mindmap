@@ -184,8 +184,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
             style={{
               ...chipStyle,
               ...mChip,
-              background: translation === t.id ? '#6366f1' : '#e2e8f0',
-              color: translation === t.id ? '#fff' : '#475569',
+              background: translation === t.id ? '#6366f1' : 'var(--at-separator)',
+              color: translation === t.id ? '#fff' : 'var(--at-label-2)',
               fontWeight: translation === t.id ? 700 : 400,
             }}
           >
@@ -201,8 +201,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           style={{
             ...tabStyle,
             ...mTab,
-            background: testament === 'ot' ? '#f59e0b' : '#e2e8f0',
-            color: testament === 'ot' ? '#fff' : '#64748b',
+            background: testament === 'ot' ? '#f59e0b' : 'var(--at-separator)',
+            color: testament === 'ot' ? '#fff' : 'var(--at-label-2)',
           }}
         >
           구약 (39)
@@ -212,8 +212,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           style={{
             ...tabStyle,
             ...mTab,
-            background: testament === 'nt' ? '#3b82f6' : '#e2e8f0',
-            color: testament === 'nt' ? '#fff' : '#64748b',
+            background: testament === 'nt' ? '#3b82f6' : 'var(--at-separator)',
+            color: testament === 'nt' ? '#fff' : 'var(--at-label-2)',
           }}
         >
           신약 (27)
@@ -238,7 +238,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
             style={{
               background: 'none',
               border: 'none',
-              color: '#94a3b8',
+              color: 'var(--at-label-3)',
               cursor: 'pointer',
               fontSize: 11,
               padding: 0,
@@ -271,8 +271,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                 ...bookBtnStyle,
                 ...mBook,
                 background:
-                  selectedBook?.id === book.id ? '#6366f1' : '#fff',
-                color: selectedBook?.id === book.id ? '#fff' : '#334155',
+                  selectedBook?.id === book.id ? '#6366f1' : 'var(--at-surface)',
+                color: selectedBook?.id === book.id ? '#fff' : 'var(--at-label)',
               }}
             >
               {book.ko}
@@ -284,7 +284,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {/* Step 2: Chapter selection */}
       {step === STEPS.CHAPTER && selectedBook && (
         <>
-          <div style={{ fontSize: isMobile ? 13 : 12, color: '#64748b', fontWeight: 600 }}>
+          <div style={{ fontSize: isMobile ? 13 : 12, color: 'var(--at-label-2)', fontWeight: 600 }}>
             장 선택 ({selectedBook.chapters}장)
           </div>
           <div
@@ -307,8 +307,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                   style={{
                     ...numBtnStyle,
                     ...mNum,
-                    background: selectedChapter === ch ? '#6366f1' : '#fff',
-                    color: selectedChapter === ch ? '#fff' : '#334155',
+                    background: selectedChapter === ch ? '#6366f1' : 'var(--at-surface)',
+                    color: selectedChapter === ch ? '#fff' : 'var(--at-label)',
                   }}
                 >
                   {ch}
@@ -326,15 +326,15 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
       {step === STEPS.VERSE && (
         <>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 12, color: '#64748b', fontWeight: 600 }}>절 범위</span>
+            <span style={{ fontSize: 12, color: 'var(--at-label-2)', fontWeight: 600 }}>절 범위</span>
             {verseCountLoading && (
-              <span style={{ fontSize: 10, color: '#94a3b8' }}>절 수 조회 중…</span>
+              <span style={{ fontSize: 10, color: 'var(--at-label-3)' }}>절 수 조회 중…</span>
             )}
             {maxVerses && !verseCountLoading && (
               <span style={{
                 fontSize: 11, fontWeight: 700,
-                background: '#eff6ff', color: '#1d4ed8',
-                border: '1px solid #bfdbfe', borderRadius: 99,
+                background: 'var(--at-accent-soft)', color: '#1d4ed8',
+                border: '1px solid var(--at-separator)', borderRadius: 99,
                 padding: '1px 8px',
               }}>
                 총 {maxVerses}절
@@ -356,7 +356,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               }}
               style={{ ...numInputStyle, ...mInput, width: isMobile ? 72 : 56 }}
             />
-            <span style={{ color: '#94a3b8', fontSize: 13 }}>~</span>
+            <span style={{ color: 'var(--at-label-3)', fontSize: 13 }}>~</span>
             <input
               type="number"
               inputMode="numeric"
@@ -367,7 +367,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               onChange={(e) => setVerseEnd(Math.max(verseStart, Math.min(+e.target.value, maxVerses ?? Infinity)))}
               style={{ ...numInputStyle, ...mInput, width: isMobile ? 72 : 56 }}
             />
-            <span style={{ fontSize: 12, color: '#94a3b8' }}>절</span>
+            <span style={{ fontSize: 12, color: 'var(--at-label-3)' }}>절</span>
             {maxVerses && (
               <button
                 onClick={() => { setVerseEnd(maxVerses); }}
@@ -375,8 +375,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
                 style={{
                   fontSize: isMobile ? 12 : 10,
                   padding: isMobile ? '6px 10px' : '3px 7px',
-                  border: '1px solid #bfdbfe',
-                  borderRadius: 4, background: '#eff6ff', color: '#1d4ed8',
+                  border: '1px solid var(--at-separator)',
+                  borderRadius: 4, background: 'var(--at-accent-soft)', color: '#1d4ed8',
                   cursor: 'pointer', whiteSpace: 'nowrap', fontWeight: 600,
                   minHeight: isMobile ? 40 : undefined,
                 }}
@@ -417,8 +417,8 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
           <div
             className="momentum-scroll"
             style={{
-              background: '#fff',
-              border: '1px solid #e2e8f0',
+              background: 'var(--at-surface)',
+              border: '1px solid var(--at-separator)',
               borderRadius: 8,
               padding: isMobile ? 14 : 10,
               fontSize: isMobile ? 15 : 13,
@@ -426,7 +426,7 @@ export default function BibleSearch({ onSelect, onAddArcing, onOpenSyntax }) {
               maxHeight: isMobile ? 240 : 160,
               overflowY: 'auto',
               overscrollBehavior: 'contain',
-              color: '#1e293b',
+              color: 'var(--at-label)',
               whiteSpace: 'pre-wrap',
             }}
             // 본문 preview는 절 번호가 <span> 태그로 감싸진 HTML · dangerouslySetInnerHTML 로 렌더
@@ -504,7 +504,7 @@ const tabStyle = {
 const bookBtnStyle = {
   padding: '5px 2px',
   fontSize: 11,
-  border: '1px solid #e2e8f0',
+  border: '1px solid var(--at-separator)',
   borderRadius: 4,
   cursor: 'pointer',
   textAlign: 'center',
@@ -514,7 +514,7 @@ const bookBtnStyle = {
 const numBtnStyle = {
   padding: '5px 0',
   fontSize: 12,
-  border: '1px solid #e2e8f0',
+  border: '1px solid var(--at-separator)',
   borderRadius: 4,
   cursor: 'pointer',
   textAlign: 'center',
@@ -523,7 +523,7 @@ const numBtnStyle = {
 const numInputStyle = {
   padding: '6px 8px',
   fontSize: 13,
-  border: '1px solid #cbd5e1',
+  border: '1px solid var(--at-separator-hard)',
   borderRadius: 6,
   outline: 'none',
   textAlign: 'center',
@@ -556,7 +556,7 @@ const backBtnStyle = {
   padding: '4px 0',
   fontSize: 12,
   background: 'none',
-  color: '#94a3b8',
+  color: 'var(--at-label-3)',
   border: 'none',
   cursor: 'pointer',
   textAlign: 'left',

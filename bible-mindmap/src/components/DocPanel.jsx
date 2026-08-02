@@ -144,8 +144,8 @@ function ToolbarBtn({ label, title, onClick }) {
       title={title}
       style={{
         padding: '3px 7px', fontSize: 11, fontWeight: 700,
-        background: '#f1f5f9', border: '1px solid #e2e8f0',
-        borderRadius: 5, cursor: 'pointer', color: '#374151',
+        background: 'var(--at-surface-3)', border: '1px solid var(--at-separator)',
+        borderRadius: 5, cursor: 'pointer', color: 'var(--at-label-2)',
         lineHeight: 1.2, flexShrink: 0,
       }}
     >{label}</button>
@@ -161,7 +161,7 @@ const TEXT_COLORS = [
   { name: '파랑',  hex: '#2563eb' },
   { name: '남색',  hex: '#1e3a8a' },
   { name: '보라',  hex: '#7c3aed' },
-  { name: '회색',  hex: '#6b7280' },
+  { name: '회색',  hex: 'var(--at-label-2)' },
 ];
 
 function ColorBtn({ hex, name, onClick }) {
@@ -171,7 +171,7 @@ function ColorBtn({ hex, name, onClick }) {
       title={`글자색: ${name}`}
       style={{
         width: 18, height: 18, padding: 0,
-        background: hex, border: '1px solid #cbd5e1',
+        background: hex, border: '1px solid var(--at-separator-hard)',
         borderRadius: 4, cursor: 'pointer', flexShrink: 0,
       }}
     />
@@ -204,20 +204,20 @@ function MdToolbar({ areaRef, setter }) {
   const ins = (b, a) => insertMarkdown(areaRef, setter, b, a);
   const inl = (p)    => insertLine(areaRef, setter, p);
   return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, padding: '5px 8px', background: '#f8fafc', borderBottom: '1px solid #e2e8f0', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, padding: '5px 8px', background: 'var(--at-surface-2)', borderBottom: '1px solid var(--at-separator)', alignItems: 'center' }}>
       <ToolbarBtn label="H1" title="제목 1" onClick={() => inl('# ')} />
       <ToolbarBtn label="H2" title="제목 2" onClick={() => inl('## ')} />
       <ToolbarBtn label="H3" title="제목 3" onClick={() => inl('### ')} />
-      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
+      <span style={{ width: 1, background: 'var(--at-separator)', margin: '0 2px', alignSelf: 'stretch' }} />
       <ToolbarBtn label="B"  title="굵게 (**bold**)"    onClick={() => ins('**', '**')} />
       <ToolbarBtn label="I"  title="이탤릭 (*italic*)"  onClick={() => ins('*', '*')} />
       <ToolbarBtn label="~~" title="취소선"             onClick={() => ins('~~', '~~')} />
-      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
+      <span style={{ width: 1, background: 'var(--at-separator)', margin: '0 2px', alignSelf: 'stretch' }} />
       {TEXT_COLORS.map((c) => (
         <ColorBtn key={c.hex} hex={c.hex} name={c.name} onClick={() => wrapColor(areaRef, setter, c.hex)} />
       ))}
       <ToolbarBtn label="↺" title="글자색 제거" onClick={() => clearColor(areaRef, setter)} />
-      <span style={{ width: 1, background: '#e2e8f0', margin: '0 2px', alignSelf: 'stretch' }} />
+      <span style={{ width: 1, background: 'var(--at-separator)', margin: '0 2px', alignSelf: 'stretch' }} />
       <ToolbarBtn label="—"  title="구분선"     onClick={() => insertLine(areaRef, setter, '---\n')} />
       <ToolbarBtn label="• " title="글머리 기호" onClick={() => inl('- ')} />
       <ToolbarBtn label="1." title="번호 목록"   onClick={() => inl('1. ')} />
@@ -259,7 +259,7 @@ function SermonSection({ label, data, onFieldChange, color }) {
           width: '100%', minHeight: 90, padding: '8px 10px',
           border: 'none', resize: 'vertical', fontSize: 12,
           lineHeight: 1.7, fontFamily: 'inherit', outline: 'none',
-          boxSizing: 'border-box', color: '#1e293b',
+          boxSizing: 'border-box', color: 'var(--at-label)',
         }}
       />
     </div>
@@ -331,7 +331,7 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
       {/* 헤더 메타 */}
-      <div style={{ padding: '10px 12px', borderBottom: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: 6 }}>
+      <div style={{ padding: '10px 12px', borderBottom: '1px solid var(--at-separator)', display: 'flex', flexDirection: 'column', gap: 6 }}>
         <input
           placeholder="설교 제목"
           value={docTitle}
@@ -348,11 +348,11 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
         {/* 자동 추출 태그 (성경 본문 기반) */}
         {autoTags.length > 0 && (
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'center' }}>
-            <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 600, marginRight: 2 }}>자동:</span>
+            <span style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 600, marginRight: 2 }}>자동:</span>
             {autoTags.map((t) => (
               <span key={t} style={{
                 fontSize: 10, padding: '2px 7px', borderRadius: 10,
-                background: '#dbeafe', color: '#1e40af', fontWeight: 600,
+                background: 'var(--at-separator)', color: '#1e40af', fontWeight: 600,
               }}>#{t}</span>
             ))}
           </div>
@@ -361,8 +361,8 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
         {/* 수동 주제 태그 */}
         <div style={{
           display: 'flex', flexWrap: 'wrap', gap: 4, alignItems: 'center',
-          padding: '4px 6px', border: '1px solid #e2e8f0', borderRadius: 7,
-          background: '#fff', minHeight: 26,
+          padding: '4px 6px', border: '1px solid var(--at-separator)', borderRadius: 7,
+          background: 'var(--at-surface)', minHeight: 26,
         }}>
           {tags.map((t) => (
             <span key={t} style={{
@@ -403,9 +403,9 @@ function SermonTab({ structure, setStructure, docTitle, setDocTitle, scripture, 
               onClick={() => handleStructure(v)}
               style={{
                 flex: 1, padding: '5px 0', fontSize: 11, fontWeight: 600,
-                border: '1px solid #e2e8f0', borderRadius: 6, cursor: 'pointer',
-                background: structure === v ? '#1e3a8a' : '#f8fafc',
-                color: structure === v ? '#fff' : '#64748b',
+                border: '1px solid var(--at-separator)', borderRadius: 6, cursor: 'pointer',
+                background: structure === v ? '#1e3a8a' : 'var(--at-surface-2)',
+                color: structure === v ? '#fff' : 'var(--at-label-2)',
               }}
             >{label}</button>
           ))}
@@ -449,7 +449,7 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onExportMd, onExpo
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
-      <div style={{ padding: '10px 12px', borderBottom: '1px solid #e2e8f0' }}>
+      <div style={{ padding: '10px 12px', borderBottom: '1px solid var(--at-separator)' }}>
         <input
           placeholder="문서 제목 (선택)"
           value={docTitle}
@@ -468,7 +468,7 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onExportMd, onExpo
         style={{
           flex: 1, minHeight: 0, padding: '12px 14px', border: 'none', resize: 'none',
           fontSize: 13, lineHeight: 1.8, fontFamily: "'D2Coding', 'Fira Code', monospace",
-          outline: 'none', color: '#1e293b', background: '#fafafa',
+          outline: 'none', color: 'var(--at-label)', background: '#fafafa',
         }}
       />
 
@@ -485,8 +485,8 @@ function SketchTab({ text, setText, docTitle, setSketchTitle, onExportMd, onExpo
 function ExportBar({ onMd, onDocx, exporting }) {
   return (
     <div style={{
-      padding: '8px 12px', borderTop: '1px solid #e2e8f0',
-      background: '#f8fafc', display: 'flex', gap: 6,
+      padding: '8px 12px', borderTop: '1px solid var(--at-separator)',
+      background: 'var(--at-surface-2)', display: 'flex', gap: 6,
     }}>
       <button onClick={onMd} style={exportBtnStyle('#10b981')}>
         ⬇ Markdown (.md)
@@ -506,8 +506,8 @@ const exportBtnStyle = (color) => ({
 
 const metaInputStyle = {
   width: '100%', padding: '6px 10px', fontSize: 12,
-  border: '1px solid #e2e8f0', borderRadius: 7, outline: 'none',
-  background: '#fff', boxSizing: 'border-box',
+  border: '1px solid var(--at-separator)', borderRadius: 7, outline: 'none',
+  background: 'var(--at-surface)', boxSizing: 'border-box',
 };
 
 // ── DocPanel 메인 ────────────────────────────────────────────────────────
@@ -686,8 +686,8 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
       {open && (
         <div className="at-side-panel at-doc-panel" style={{
           width: 400,
-          background: '#fff',
-          borderLeft: '1px solid #e2e8f0',
+          background: 'var(--at-surface)',
+          borderLeft: '1px solid var(--at-separator)',
           display: 'flex',
           flexDirection: 'column',
           flexShrink: 0,
@@ -702,7 +702,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
               <span style={{ color: '#fff', fontSize: 13, fontWeight: 800 }}>✍️ 문서 작성</span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 {currentDocId && (
-                  <span style={{ fontSize: 10, color: '#93c5fd', background: 'rgba(59,130,246,0.2)', padding: '2px 6px', borderRadius: 4 }}>
+                  <span style={{ fontSize: 10, color: 'var(--at-separator)', background: 'rgba(59,130,246,0.2)', padding: '2px 6px', borderRadius: 4 }}>
                     저장됨
                   </span>
                 )}
@@ -711,7 +711,7 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
                   title="새 문서 작성"
                   style={{
                     padding: '5px 8px', fontSize: 11, fontWeight: 700,
-                    background: 'rgba(255,255,255,0.12)', color: '#e2e8f0',
+                    background: 'rgba(255,255,255,0.12)', color: 'var(--at-separator)',
                     border: '1px solid rgba(255,255,255,0.2)',
                     borderRadius: 14, cursor: 'pointer', whiteSpace: 'nowrap',
                   }}

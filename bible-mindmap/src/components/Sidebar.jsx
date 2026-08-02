@@ -233,7 +233,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     return (
       <section className="momentum-scroll h-screen-safe mobile-workspace-sheet mobile-add-sheet" style={{
           position: 'fixed', inset: 0, zIndex: 1201,
-          background: '#f8fafc',
+          background: 'var(--at-surface-2)',
           overflowY: 'auto',
           overscrollBehavior: 'contain',
           display: 'flex', flexDirection: 'column',
@@ -282,9 +282,9 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           <div style={{ padding: '0 16px 10px' }}>
             <div style={{
               padding: '10px 12px', borderRadius: 10,
-              background: '#ffffff', border: '1px solid #e2e8f0',
+              background: 'var(--at-surface)', border: '1px solid var(--at-separator)',
             }}>
-              <div style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8',
+              <div style={{ fontSize: 10, fontWeight: 800, color: 'var(--at-label-3)',
                 letterSpacing: 1, marginBottom: 6 }}>원어 다언어 검색</div>
               <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
                 {[['original','원문'],['english','영어'],['korean','한글']].map(([k,l]) => (
@@ -294,8 +294,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                       cursor: 'pointer', fontWeight: searchMode === k ? 700 : 500,
                       background: searchMode === k
                         ? (k === 'original' ? '#1d4ed8' : k === 'english' ? '#059669' : '#d97706')
-                        : '#e2e8f0',
-                      color: searchMode === k ? '#fff' : '#64748b',
+                        : 'var(--at-separator)',
+                      color: searchMode === k ? '#fff' : 'var(--at-label-2)',
                       minHeight: 34,
                     }}>{l}</button>
                 ))}
@@ -316,7 +316,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   placeholder="원어·영어·한글 검색..."
                   style={{
                     flex: 1, padding: '9px 10px', borderRadius: 8,
-                    border: '1px solid #cbd5e1', fontSize: 13, outline: 'none',
+                    border: '1px solid var(--at-separator-hard)', fontSize: 13, outline: 'none',
                     fontFamily: searchMode === 'original'
                       ? '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif'
                       : 'inherit',
@@ -340,18 +340,18 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             {TABS.map((t) => (
               <button key={t.key} onClick={() => setTab(t.key)} style={{
                 flex: 1, padding: '7px 0', fontSize: 12, border: 'none', borderRadius: 6, cursor: 'pointer',
-                background: tab === t.key ? '#3b82f6' : '#e2e8f0',
-                color: tab === t.key ? '#fff' : '#64748b', fontWeight: tab === t.key ? 700 : 400,
+                background: tab === t.key ? '#3b82f6' : 'var(--at-separator)',
+                color: tab === t.key ? '#fff' : 'var(--at-label-2)', fontWeight: tab === t.key ? 700 : 400,
               }}>{t.icon} {t.label}</button>
             ))}
           </div>
 
           {/* BACKGROUND_DEVICE_PARITY_V2: PC 배경 도구 인물·장소·시대를 모바일·태블릿 compact UI에도 동일 제공 */}
           <div style={{ padding: '0 16px 10px' }}>
-            <div style={{ padding:'10px 12px', borderRadius:10, background:'#fff', border:'1px solid #dbeafe', boxShadow:['person','place','period'].includes(tab) ? '0 2px 10px rgba(30,64,175,.10)' : 'none' }}>
+            <div style={{ padding:'10px 12px', borderRadius:10, background:'var(--at-surface)', border:'1px solid var(--at-separator)', boxShadow:['person','place','period'].includes(tab) ? '0 2px 10px rgba(30,64,175,.10)' : 'none' }}>
               <div style={{ marginBottom:8 }}>
-                <div style={{ fontSize:10, fontWeight:800, color:'#475569', letterSpacing:1 }}>배경 연구</div>
-                <div style={{ fontSize:11, color:'#64748b', marginTop:2 }}>인물 · 장소 · 시대를 PC와 동일한 데이터로 탐색합니다.</div>
+                <div style={{ fontSize:10, fontWeight:800, color:'var(--at-label-2)', letterSpacing:1 }}>배경 연구</div>
+                <div style={{ fontSize:11, color:'var(--at-label-2)', marginTop:2 }}>인물 · 장소 · 시대를 PC와 동일한 데이터로 탐색합니다.</div>
               </div>
 
               <div data-testid="mobile-background-tabs" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:6, marginBottom:8 }}>
@@ -360,14 +360,14 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   ['place','📍','장소','#d97706'],
                   ['period','🕰','시대','#6d28d9'],
                 ].map(([key,icon,label,activeColor]) => (
-                  <button key={key} type="button" data-background-tab={key} onClick={() => setTab(tab === key ? 'verse' : key)} aria-pressed={tab === key} style={{ minHeight:44, padding:'8px 6px', borderRadius:8, cursor:'pointer', fontWeight:800, fontSize:12, border:'1px solid #e2e8f0', background:tab === key ? activeColor : '#f8fafc', color:tab === key ? '#fff' : '#475569', touchAction:'manipulation' }}>{icon} {label}</button>
+                  <button key={key} type="button" data-background-tab={key} onClick={() => setTab(tab === key ? 'verse' : key)} aria-pressed={tab === key} style={{ minHeight:44, padding:'8px 6px', borderRadius:8, cursor:'pointer', fontWeight:800, fontSize:12, border:'1px solid var(--at-separator)', background:tab === key ? activeColor : 'var(--at-surface-2)', color:tab === key ? '#fff' : 'var(--at-label-2)', touchAction:'manipulation' }}>{icon} {label}</button>
                 ))}
               </div>
 
               {['person','place','period'].includes(tab) && (
                 <div style={{ display:'flex', gap:5, marginBottom:8 }}>
                   {[['all','전체'],['ot','구약'],['nt','신약']].map(([key,label]) => (
-                    <button key={key} type="button" onClick={() => setBgTestament(key)} style={{ flex:1, minHeight:40, borderRadius:8, cursor:'pointer', fontSize:12, fontWeight:700, border:'1px solid #e2e8f0', background:bgTestament === key ? '#334155' : '#f8fafc', color:bgTestament === key ? '#fff' : '#64748b', touchAction:'manipulation' }}>{label}</button>
+                    <button key={key} type="button" onClick={() => setBgTestament(key)} style={{ flex:1, minHeight:40, borderRadius:8, cursor:'pointer', fontSize:12, fontWeight:700, border:'1px solid var(--at-separator)', background:bgTestament === key ? 'var(--at-accent)' : 'var(--at-surface-2)', color:bgTestament === key ? '#fff' : 'var(--at-label-2)', touchAction:'manipulation' }}>{label}</button>
                   ))}
                 </div>
               )}
@@ -380,7 +380,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                       {d.category === 'historical' && <div style={{ ...detailRow, color:'#92400e', fontWeight:700 }}>🏛️ 역사 인물 · 성경 본문 직접 등장 인물 아님</div>}
                       {d.nameChangeNote && <div style={{ margin:'5px 0', padding:'7px 8px', borderRadius:7, background:'#eef2ff', color:'#3730a3', fontSize:10.5 }}><b>이름 변경:</b> {d.matchedName && d.matchedName !== d.name ? d.matchedName + ' → ' + d.name : d.nameChangeNote}{d.nameChangeReference && <div style={{ marginTop:2 }}>{d.nameChangeReference}</div>}</div>}
                       {d.originalName && <div style={{ margin:'5px 0', padding:'7px 8px', borderRadius:7, background:d.testament === 'nt' ? '#f5f3ff' : '#fffbeb', color:d.testament === 'nt' ? '#5b21b6' : '#92400e', fontSize:10.5 }}><div><b>{d.originalLanguage || '원어'}:</b> <span dir={d.testament === 'ot' ? 'rtl' : 'ltr'}>{d.originalName}</span></div>{d.transliteration && <div><b>음역:</b> {d.transliteration}</div>}{d.nameMeaning && <div><b>뜻:</b> {d.nameMeaning}</div>}</div>}
-                      {d.description && <div style={{ ...detailRow, color:'#6b7280' }}>{d.description}</div>}
+                      {d.description && <div style={{ ...detailRow, color:'var(--at-label-2)' }}>{d.description}</div>}
                       <BibleEvidence detail={d} />
                     </>
                   )} />
@@ -409,7 +409,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   <button onClick={() => { handleAdd(); onMobileClose(); }} disabled={!bgDetail} style={{ ...btnStyle, minHeight:44, background:'#d97706', opacity:bgDetail ? 1 : .4 }}>+ 선택 장소 추가</button>
                   {bgResults.length > 1 && <button onClick={() => { handleAddAllResults(); onMobileClose(); }} style={{ ...btnStyle, minHeight:44, background:'#0f766e' }}>🗺️ 검색 결과 {bgResults.length}곳 모두 추가</button>}
                   <div style={{ paddingTop:9, marginTop:2, borderTop:'1px dashed #e2e8f0' }}>
-                    <div style={{ fontSize:11, fontWeight:800, color:'#475569', marginBottom:5 }}>본문·지역 지명 일괄 배치</div>
+                    <div style={{ fontSize:11, fontWeight:800, color:'var(--at-label-2)', marginBottom:5 }}>본문·지역 지명 일괄 배치</div>
                     <div style={{ display:'flex', gap:6 }}>
                       <input value={bulkQuery} onChange={(e) => setBulkQuery(e.target.value)} onKeyDown={(e) => { if (e.key === 'Enter' && bulkQuery.trim()) handleBulkAddByReference(); }} placeholder="여호수아 · 사도행전 · 갈릴리" style={{ ...inputStyle, minHeight:42, flex:1, minWidth:0 }} />
                       <button onClick={handleBulkAddByReference} disabled={!bulkQuery.trim()} style={{ minWidth:58, minHeight:42, border:'none', borderRadius:8, cursor:'pointer', background:'#0369a1', color:'#fff', fontWeight:800, opacity:bulkQuery.trim() ? 1 : .4 }}>추가</button>
@@ -453,8 +453,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           {tab === 'verse' && (
             <div style={{ padding: '0 16px 16px' }}>
               <div style={{ display: 'flex', gap: 4, marginBottom: 10 }}>
-                <button onClick={() => setVerseMode('search')} style={{ ...modeTabStyle, background: verseMode === 'search' ? '#6366f1' : '#e2e8f0', color: verseMode === 'search' ? '#fff' : '#64748b' }}>🔍 검색</button>
-                <button onClick={() => setVerseMode('manual')} style={{ ...modeTabStyle, background: verseMode === 'manual' ? '#6366f1' : '#e2e8f0', color: verseMode === 'manual' ? '#fff' : '#64748b' }}>✏️ 직접입력</button>
+                <button onClick={() => setVerseMode('search')} style={{ ...modeTabStyle, background: verseMode === 'search' ? '#6366f1' : 'var(--at-separator)', color: verseMode === 'search' ? '#fff' : 'var(--at-label-2)' }}>🔍 검색</button>
+                <button onClick={() => setVerseMode('manual')} style={{ ...modeTabStyle, background: verseMode === 'manual' ? '#6366f1' : 'var(--at-separator)', color: verseMode === 'manual' ? '#fff' : 'var(--at-label-2)' }}>✏️ 직접입력</button>
               </div>
               {verseMode === 'search' ? (
                 <BibleSearch
@@ -487,13 +487,13 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           width: 56,
           display: 'flex',
           flexDirection: 'column',
-          borderRight: '1px solid #bfdbfe',
+          borderRight: '1px solid var(--at-separator)',
           background: 'linear-gradient(180deg, #eff6ff, #f0f9ff)',
           flexShrink: 0,
         }}>
           {/* 상단: 로고 + 매뉴얼 아이콘 */}
           <div style={{
-            padding: '10px 0', borderBottom: '1px solid #dbeafe',
+            padding: '10px 0', borderBottom: '1px solid var(--at-separator)',
             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
             background: 'linear-gradient(180deg, #ffffff, #f0f9ff)',
           }}>
@@ -534,8 +534,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   style={{
                     width: 48, padding: '5px 0',
                     display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1,
-                    background: active ? '#dbeafe' : 'transparent',
-                    color: active ? '#1e40af' : '#475569',
+                    background: active ? 'var(--at-separator)' : 'transparent',
+                    color: active ? '#1e40af' : 'var(--at-label-2)',
                     border: active ? '1px solid rgba(59,130,246,0.4)' : '1px solid transparent',
                     borderRadius: 7, cursor: 'pointer',
                     transition: 'background .15s, border-color .15s',
@@ -558,7 +558,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               cursor: 'pointer',
               background: 'linear-gradient(180deg, transparent, rgba(37,99,235,0.08))',
               transition: 'background 0.2s',
-              borderTop: '1px solid #dbeafe',
+              borderTop: '1px solid var(--at-separator)',
             }}
             onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(37,99,235,0.12)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = 'linear-gradient(180deg, transparent, rgba(37,99,235,0.08))')}
@@ -589,7 +589,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       </div>
 
       {/* ═══ 섹션 1b: 원어 검색 바 ═══ */}
-      <div style={{ padding: '8px 12px', borderBottom: '1px solid #f1f5f9', background: '#f8fafc' }}>
+      <div style={{ padding: '8px 12px', borderBottom: '1px solid var(--at-separator)', background: 'var(--at-surface-2)' }}>
         {/* 모드 토글 */}
         <div style={{ display: 'flex', gap: 3, marginBottom: 6 }}>
           {[['original','원문'],['english','영어'],['korean','한글']].map(([k,l]) => (
@@ -599,8 +599,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 cursor: 'pointer', fontWeight: searchMode === k ? 700 : 400,
                 background: searchMode === k
                   ? (k === 'original' ? '#1d4ed8' : k === 'english' ? '#059669' : '#d97706')
-                  : '#e2e8f0',
-                color: searchMode === k ? '#fff' : '#64748b',
+                  : 'var(--at-separator)',
+                color: searchMode === k ? '#fff' : 'var(--at-label-2)',
               }}>{l}</button>
           ))}
         </div>
@@ -617,7 +617,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             placeholder="원어·영어·한글 검색..."
             style={{
               flex: 1, padding: '6px 8px', borderRadius: 6,
-              border: '1px solid #cbd5e1', fontSize: 11.5, outline: 'none',
+              border: '1px solid var(--at-separator-hard)', fontSize: 11.5, outline: 'none',
               fontFamily: searchMode === 'original'
                 ? '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif'
                 : 'inherit',
@@ -635,7 +635,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
 
       {/* ═══ 섹션 2: 본문 탭 (구절/노트/주제) ═══ */}
       <div style={tabBarStyle}>
-        <div style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', marginBottom: 2, letterSpacing: 1 }}>본문</div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--at-label-3)', marginBottom: 2, letterSpacing: 1 }}>본문</div>
         <div style={{ display: 'flex', gap: 4, width: '100%' }}>
           {TABS.map((t) => (
             <button
@@ -644,8 +644,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               style={{
                 ...tabBtnStyle,
                 flex: 1,
-                background: tab === t.key ? '#3b82f6' : '#e2e8f0',
-                color: tab === t.key ? '#fff' : '#64748b',
+                background: tab === t.key ? '#3b82f6' : 'var(--at-separator)',
+                color: tab === t.key ? '#fff' : 'var(--at-label-2)',
                 fontWeight: tab === t.key ? 700 : 400,
               }}
             >
@@ -672,7 +672,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       </div>
 
       {/* ═══ 섹션 2c: 문맥 성경 버튼 ═══ */}
-      <div style={{ ...tabBarStyle, borderTop: '1px solid #f1f5f9', paddingTop: 10 }}>
+      <div style={{ ...tabBarStyle, borderTop: '1px solid var(--at-separator)', paddingTop: 10 }}>
         <button
           onClick={() => setShowContextBible(true)}
           style={{
@@ -695,8 +695,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       </div>
 
       {/* ═══ 섹션 2b: 배경 탭 (인물/장소/시대) ═══ */}
-      <div style={{ ...tabBarStyle, borderTop: '1px solid #f1f5f9' }}>
-        <div style={{ fontSize: 10, fontWeight: 700, color: '#94a3b8', marginBottom: 2, letterSpacing: 1 }}>배경</div>
+      <div style={{ ...tabBarStyle, borderTop: '1px solid var(--at-separator)' }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--at-label-3)', marginBottom: 2, letterSpacing: 1 }}>배경</div>
         <div style={{ display: 'flex', gap: 4, width: '100%' }}>
           {[
             { key: 'all', label: '전체' },
@@ -708,8 +708,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               onClick={() => setBgTestament(item.key)}
               style={{
                 ...testamentBtnStyle,
-                background: bgTestament === item.key ? '#334155' : '#f1f5f9',
-                color: bgTestament === item.key ? '#fff' : '#64748b',
+                background: bgTestament === item.key ? 'var(--at-accent)' : 'var(--at-surface-3)',
+                color: bgTestament === item.key ? '#fff' : 'var(--at-label-2)',
               }}
             >
               {item.label}
@@ -726,8 +726,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 flex: 1,
                 background: tab === t.key
                   ? (t.key === 'person' ? '#059669' : t.key === 'place' ? '#d97706' : '#6d28d9')
-                  : '#e2e8f0',
-                color: tab === t.key ? '#fff' : '#64748b',
+                  : 'var(--at-separator)',
+                color: tab === t.key ? '#fff' : 'var(--at-label-2)',
                 fontWeight: tab === t.key ? 700 : 400,
               }}
             >
@@ -780,7 +780,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                     )}
                   {d.birthDate && <div style={detailRow}><b>출생</b> {d.birthDate}</div>}
                   {d.deathDate && <div style={detailRow}><b>사망</b> {d.deathDate}</div>}
-                  {d.description && <div style={{ ...detailRow, color: '#6b7280' }}>{d.description}</div>}
+                  {d.description && <div style={{ ...detailRow, color: 'var(--at-label-2)' }}>{d.description}</div>}
                   <BibleEvidence detail={d} />
                 </>
               )}
@@ -821,7 +821,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   {d.lat != null && <div style={detailRow}><b>대표 좌표</b> {d.lat}°N {d.lon}°E</div>}
                   {d.lat == null && <div style={{ ...detailRow, color:'#92400e' }}><b>좌표</b> 미확정 · 본문 지명은 DB에 보존</div>}
                   {d.samePlaceAs?.length > 0 && <div style={detailRow}><b>동일 장소명</b> {d.samePlaceAs.map(x => x.nameEn || x.id).join(' · ')}</div>}
-                  {d.description && <div style={{ ...detailRow, color:'#6b7280' }}>{d.description}</div>}
+                  {d.description && <div style={{ ...detailRow, color:'var(--at-label-2)' }}>{d.description}</div>}
                   {d.locationBasis && (
                     <div style={{
                       margin:'5px 0', padding:'7px 8px', borderRadius:7,
@@ -852,7 +852,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
 
             {/* 본문·지역 기준 지명 일괄 배치 */}
             <div style={{ marginTop: 10, paddingTop: 10, borderTop: '1px dashed #e2e8f0' }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#475569', marginBottom: 4 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--at-label-2)', marginBottom: 4 }}>
                 지명 일괄 배치 (본문·지역)
               </div>
               <input
@@ -896,7 +896,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
               return p ? (
                 <div style={{ fontSize: 11, color: '#4338ca', lineHeight: 1.6, padding: '4px 0' }}>
                   {p.events.map((ev, i) => <div key={i}>• {ev}</div>)}
-                  <div style={{ marginTop: 5, fontSize: 10, fontWeight: 700, color: '#334155' }}>
+                  <div style={{ marginTop: 5, fontSize: 10, fontWeight: 700, color: 'var(--at-label)' }}>
                     ✓ 근거 본문
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, marginTop: 3 }}>
@@ -923,7 +923,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       <div style={contentAreaStyle}>
         {/* 접기 버튼 */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, color: '#475569' }}>
+          <span style={{ fontSize: 11, fontWeight: 600, color: 'var(--at-label-2)' }}>
             {tab === 'verse' ? '📖 구절 입력' : tab === 'note' ? '📝 노트' : tab === 'topic' ? '🏷️ 주제'
               : tab === 'person' ? '👤 인물' : tab === 'place' ? '📍 장소' : '🕰️ 시대'}
           </span>
@@ -931,7 +931,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             onClick={() => setContentOpen(false)}
             style={{
               background: 'none', border: 'none', cursor: 'pointer',
-              fontSize: 11, color: '#94a3b8', padding: '2px 4px',
+              fontSize: 11, color: 'var(--at-label-3)', padding: '2px 4px',
             }}
             title="패널 접기"
           >
@@ -946,8 +946,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 onClick={() => setVerseMode('search')}
                 style={{
                   ...modeTabStyle,
-                  background: verseMode === 'search' ? '#6366f1' : '#e2e8f0',
-                  color: verseMode === 'search' ? '#fff' : '#64748b',
+                  background: verseMode === 'search' ? '#6366f1' : 'var(--at-separator)',
+                  color: verseMode === 'search' ? '#fff' : 'var(--at-label-2)',
                 }}
               >
                 🔍 검색
@@ -956,8 +956,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 onClick={() => setVerseMode('manual')}
                 style={{
                   ...modeTabStyle,
-                  background: verseMode === 'manual' ? '#6366f1' : '#e2e8f0',
-                  color: verseMode === 'manual' ? '#fff' : '#64748b',
+                  background: verseMode === 'manual' ? '#6366f1' : 'var(--at-separator)',
+                  color: verseMode === 'manual' ? '#fff' : 'var(--at-label-2)',
                 }}
               >
                 ✏️ 직접입력
@@ -986,13 +986,13 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           <div><span style={{ color: '#3b82f6' }}>———</span> 평행</div>
           <div><span style={{ color: '#a78bfa' }}>· · ·</span> 주제</div>
           <div><span style={{ color: '#eab308' }}>- - -</span> 반향</div>
-          <div><span style={{ color: '#1e293b' }}>———</span> 관계</div>
+          <div><span style={{ color: 'var(--at-label)' }}>———</span> 관계</div>
         </div>
 
         {/* Attribution */}
         <div style={attributionStyle}>
           원어 데이터:{' '}
-          <a href="https://github.com/STEPBible/STEPBible-Data" target="_blank" rel="noreferrer" style={{ color: '#64748b' }}>
+          <a href="https://github.com/STEPBible/STEPBible-Data" target="_blank" rel="noreferrer" style={{ color: 'var(--at-label-2)' }}>
             STEPBible.data
           </a>{' '}
           (CC BY 4.0)
@@ -1021,8 +1021,8 @@ const containerStyle = {
   width: 300,
   display: 'flex',
   flexDirection: 'column',
-  borderRight: '1px solid #e2e8f0',
-  background: '#f8fafc',
+  borderRight: '1px solid var(--at-separator)',
+  background: 'var(--at-surface-2)',
 };
 
 const manualBtnStyle = {
@@ -1060,22 +1060,22 @@ function railIconBtn(bg, color, active) {
 // 섹션 1: 타이틀
 const titleBarStyle = {
   padding: '12px 16px',
-  borderBottom: '1px solid #e2e8f0',
-  background: '#fff',
+  borderBottom: '1px solid var(--at-separator)',
+  background: 'var(--at-surface)',
 };
 
 const titleStyle = {
   fontSize: 16,
   fontWeight: 700,
-  color: '#1e293b',
+  color: 'var(--at-label)',
   margin: 0,
 };
 
 // 섹션 2: 탭 영역
 const tabBarStyle = {
   padding: '10px 16px',
-  borderBottom: '1px solid #e2e8f0',
-  background: '#fff',
+  borderBottom: '1px solid var(--at-separator)',
+  background: 'var(--at-surface)',
   display: 'flex',
   flexDirection: 'column',
   gap: 8,
@@ -1120,7 +1120,7 @@ const inputStyle = {
   width: '100%',
   padding: '8px 10px',
   fontSize: 13,
-  border: '1px solid #cbd5e1',
+  border: '1px solid var(--at-separator-hard)',
   borderRadius: 6,
   outline: 'none',
   fontFamily: 'inherit',
@@ -1151,23 +1151,23 @@ const modeTabStyle = {
 const legendStyle = {
   marginTop: 'auto',
   paddingTop: 12,
-  borderTop: '1px solid #e2e8f0',
+  borderTop: '1px solid var(--at-separator)',
   fontSize: 12,
-  color: '#64748b',
+  color: 'var(--at-label-2)',
   lineHeight: 1.8,
 };
 
 const attributionStyle = {
   marginTop: 8,
   paddingTop: 8,
-  borderTop: '1px solid #e2e8f0',
+  borderTop: '1px solid var(--at-separator)',
   fontSize: 10,
-  color: '#94a3b8',
+  color: 'var(--at-label-3)',
   lineHeight: 1.5,
 };
 
 const detailRow = {
-  fontSize: 11, color: '#374151', marginBottom: 2,
+  fontSize: 11, color: 'var(--at-label-2)', marginBottom: 2,
 };
 
 // Wikidata 검색 + 후보 선택 + 상세 프리뷰 UI
@@ -1182,7 +1182,7 @@ function WikidataSearchUI({ query, setQuery, results, selected, onSelect, detail
           style={inputStyle}
         />
         {loading && (
-          <span style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)', fontSize: 11, color: '#94a3b8' }}>
+          <span style={{ position: 'absolute', right: 8, top: '50%', transform: 'translateY(-50%)', fontSize: 11, color: 'var(--at-label-3)' }}>
             검색 중…
           </span>
         )}
@@ -1206,18 +1206,18 @@ function WikidataSearchUI({ query, setQuery, results, selected, onSelect, detail
 
       {detail && (
         <div style={{
-          background: '#f8fafc', border: '1px solid #e2e8f0',
+          background: 'var(--at-surface-2)', border: '1px solid var(--at-separator)',
           borderRadius: 6, padding: '8px 10px', fontSize: 11,
         }}>
           {renderDetail(detail)}
-          <div style={{ fontSize: 9, color: '#9ca3af', marginTop: 4 }}>
+          <div style={{ fontSize: 9, color: 'var(--at-label-3)', marginTop: 4 }}>
             출처: {detail.source || '성경 본문 검증'} · {detail.wikidataId}
           </div>
         </div>
       )}
 
       {query && !loading && results.length === 0 && !error && (
-        <div style={{ fontSize: 11, color: '#94a3b8' }}>결과 없음 — 다른 이름으로 검색해 보세요</div>
+        <div style={{ fontSize: 11, color: 'var(--at-label-3)' }}>결과 없음 — 다른 이름으로 검색해 보세요</div>
       )}
     </div>
   );
@@ -1232,17 +1232,17 @@ function BibleEvidence({ detail }) {
 
   return (
     <div style={{
-      marginTop: 6, paddingTop: 6, borderTop: '1px solid #e2e8f0',
+      marginTop: 6, paddingTop: 6, borderTop: '1px solid var(--at-separator)',
       display: 'flex', flexDirection: 'column', gap: 4,
     }}>
-      <div style={{ fontSize: 10, fontWeight: 700, color: '#334155' }}>
+      <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--at-label)' }}>
         ✓ 성경 본문 확인 · {testamentLabel}
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
         {tags.map((tag) => (
           <span key={tag} style={{
             padding: '2px 6px', borderRadius: 8, fontSize: 9,
-            background: '#eff6ff', color: '#1d4ed8', border: '1px solid #bfdbfe',
+            background: 'var(--at-accent-soft)', color: '#1d4ed8', border: '1px solid var(--at-separator)',
           }}>
             {tag}
           </span>

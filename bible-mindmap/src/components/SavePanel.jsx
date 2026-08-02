@@ -278,11 +278,11 @@ const SEED_FILES = [
           data: { title: '📌 구문 탭 사용법', text: '각 절 노드 클릭 → "구문" 탭 선택\n원어 문법 구조가 색상으로 표시됩니다.\n\n동사(보라) — 이야기의 주동사\n접속사(회색) — 절 연결\n\n히브리어는 격 표시가 없으므로\n주어·목적어는 문맥으로 판단합니다.' } },
 
         // ── 장면 1: 1-7절 (x=50) ──
-        { id: 'rt1-v1',  type: 'verse', position: { x: 50, y: 200  }, data: { reference: '룻기 1:1',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 1,  verseEnd: 1,  translations: {}, activeTab: 'krv' } },
-        { id: 'rt1-v2',  type: 'verse', position: { x: 50, y: 360  }, data: { reference: '룻기 1:2',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 2,  verseEnd: 2,  translations: {}, activeTab: 'krv' } },
-        { id: 'rt1-v3',  type: 'verse', position: { x: 50, y: 520  }, data: { reference: '룻기 1:3',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 3,  verseEnd: 3,  translations: {}, activeTab: 'krv' } },
-        { id: 'rt1-v4',  type: 'verse', position: { x: 50, y: 680  }, data: { reference: '룻기 1:4',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 4,  verseEnd: 4,  translations: {}, activeTab: 'krv' } },
-        { id: 'rt1-v5',  type: 'verse', position: { x: 50, y: 840  }, data: { reference: '룻기 1:5',  text: '', color: '#94a3b8', bookId: 'Ruth', chapter: 1, verseStart: 5,  verseEnd: 5,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v1',  type: 'verse', position: { x: 50, y: 200  }, data: { reference: '룻기 1:1',  text: '', color: 'var(--at-label-3)', bookId: 'Ruth', chapter: 1, verseStart: 1,  verseEnd: 1,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v2',  type: 'verse', position: { x: 50, y: 360  }, data: { reference: '룻기 1:2',  text: '', color: 'var(--at-label-3)', bookId: 'Ruth', chapter: 1, verseStart: 2,  verseEnd: 2,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v3',  type: 'verse', position: { x: 50, y: 520  }, data: { reference: '룻기 1:3',  text: '', color: 'var(--at-label-3)', bookId: 'Ruth', chapter: 1, verseStart: 3,  verseEnd: 3,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v4',  type: 'verse', position: { x: 50, y: 680  }, data: { reference: '룻기 1:4',  text: '', color: 'var(--at-label-3)', bookId: 'Ruth', chapter: 1, verseStart: 4,  verseEnd: 4,  translations: {}, activeTab: 'krv' } },
+        { id: 'rt1-v5',  type: 'verse', position: { x: 50, y: 840  }, data: { reference: '룻기 1:5',  text: '', color: 'var(--at-label-3)', bookId: 'Ruth', chapter: 1, verseStart: 5,  verseEnd: 5,  translations: {}, activeTab: 'krv' } },
         { id: 'rt1-v6',  type: 'verse', position: { x: 50, y: 1000 }, data: { reference: '룻기 1:6',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 6,  verseEnd: 6,  translations: {}, activeTab: 'krv' } },
         { id: 'rt1-v7',  type: 'verse', position: { x: 50, y: 1160 }, data: { reference: '룻기 1:7',  text: '', color: '#0ea5e9', bookId: 'Ruth', chapter: 1, verseStart: 7,  verseEnd: 7,  translations: {}, activeTab: 'krv' } },
 
@@ -977,8 +977,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       className={`at-side-panel at-save-panel${mobileInline ? ' is-mobile-inline' : ''}`}
       style={{
         width: mobileInline ? '100%' : 280,
-        background: '#f8fafc',
-        borderLeft: mobileInline ? 'none' : '1px solid #e2e8f0',
+        background: 'var(--at-surface-2)',
+        borderLeft: mobileInline ? 'none' : '1px solid var(--at-separator)',
         display: 'flex',
         flexDirection: 'column',
         fontSize: mobileInline ? 14 : 12,
@@ -986,8 +986,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
     >
       {/* Header */}
       <div className="at-side-panel__header" style={{ padding: mobileInline ? '12px 14px' : '10px 12px',
-        borderBottom: '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6 }}>
-        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: '#1e293b', flex: 1 }}>📂 저장소</span>
+        borderBottom: '1px solid var(--at-separator)', display: 'flex', alignItems: 'center', gap: 6 }}>
+        <span style={{ fontWeight: 700, fontSize: mobileInline ? 16 : 14, color: 'var(--at-label)', flex: 1 }}>📂 저장소</span>
         <button onClick={onToggle}
           style={mobileInline
             ? { ...iconBtnTop, minWidth: 44, minHeight: 44, fontSize: 18 }
@@ -998,7 +998,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       {/* Actions: new map, save, folder */}
       <div style={{ padding: mobileInline ? '10px 14px' : '8px 12px',
         display: 'flex', flexDirection: 'column', gap: mobileInline ? 6 : 4,
-        borderBottom: '1px solid #e2e8f0' }}>
+        borderBottom: '1px solid var(--at-separator)' }}>
         <button
           onClick={() => {
             if (nodes.length === 0 || confirm('현재 작업을 초기화하고 새 마인드맵을 시작하시겠습니까?\n저장하지 않은 작업은 사라집니다.')) {
@@ -1016,13 +1016,13 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
             style={mobileInline ? { ...actionBtn, minHeight: 44, fontSize: 14, padding: '12px' } : actionBtn}>💾 저장</button>
           <button onClick={handleNewFolder}
             style={{ ...actionBtn, ...(mobileInline ? { minHeight: 44, fontSize: 14, padding: '12px' } : {}),
-              background: '#e2e8f0', color: '#475569' }}>📁 새 폴더</button>
+              background: 'var(--at-separator)', color: 'var(--at-label-2)' }}>📁 새 폴더</button>
         </div>
       </div>
 
       {/* 옵시디언 자동 저장 섹션 */}
       {hasFileSystemAccess && (
-        <div style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', display: 'flex', flexDirection: 'column', gap: 5 }}>
+        <div style={{ padding: '8px 12px', borderBottom: '1px solid var(--at-separator)', display: 'flex', flexDirection: 'column', gap: 5 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
             <span style={{ fontSize: 11, fontWeight: 700, color: '#7c3aed' }}>📋 옵시디언 자동 저장</span>
             {obsidianDir && (
@@ -1068,12 +1068,12 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
             </>
           ) : (
             <>
-              <div style={{ fontSize: 10, color: '#6b7280', lineHeight: 1.4 }}>
+              <div style={{ fontSize: 10, color: 'var(--at-label-2)', lineHeight: 1.4 }}>
                 📁 {obsidianDirName}
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                <label style={{ fontSize: 10, color: '#6b7280', display: 'flex', alignItems: 'center', gap: 3, cursor: 'pointer' }}>
+                <label style={{ fontSize: 10, color: 'var(--at-label-2)', display: 'flex', alignItems: 'center', gap: 3, cursor: 'pointer' }}>
                   <input
                     type="checkbox"
                     checked={obsidianAutoSync}
@@ -1118,8 +1118,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       )}
 
       {/* Actions: export & import */}
-      <div style={{ padding: '8px 12px', display: 'flex', flexDirection: 'column', gap: 4, borderBottom: '1px solid #e2e8f0' }}>
-        <div style={{ fontSize: 11, fontWeight: 600, color: '#64748b', marginBottom: 2 }}>파일 내보내기 / 가져오기</div>
+      <div style={{ padding: '8px 12px', display: 'flex', flexDirection: 'column', gap: 4, borderBottom: '1px solid var(--at-separator)' }}>
+        <div style={{ fontSize: 11, fontWeight: 600, color: 'var(--at-label-2)', marginBottom: 2 }}>파일 내보내기 / 가져오기</div>
         <div style={{ display: 'flex', gap: 4 }}>
           <button onClick={handleExportCurrent} style={fileBtn} title="현재 캔버스를 JSON 파일로 다운로드">
             📥 현재 맵 내보내기
@@ -1138,7 +1138,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
         </div>
         <button
           onClick={handleExportWorkspaceV2}
-          style={{ ...fileBtn, background: '#dbeafe', color: '#1d4ed8', width: '100%' }}
+          style={{ ...fileBtn, background: 'var(--at-separator)', color: '#1d4ed8', width: '100%' }}
           title="현재 캔버스·저장소·변경 이력과 레거시 호환 자료를 함께 백업"
         >
           🛡️ 개인 작업공간 V2 안전 백업
@@ -1156,7 +1156,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       </div>
 
       {/* 태그·이름 검색 */}
-      <div style={{ padding: '6px 10px', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0', background: '#fff' }}>
+      <div style={{ padding: '6px 10px', borderTop: '1px solid var(--at-separator)', borderBottom: '1px solid var(--at-separator)', background: 'var(--at-surface)' }}>
         <div style={{ position: 'relative' }}>
           <input
             placeholder="🔍 태그 또는 이름 검색 (예: #사랑, 요한복음, 구원)"
@@ -1164,8 +1164,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: '100%', padding: '5px 26px 5px 8px', fontSize: 11,
-              border: '1px solid #e2e8f0', borderRadius: 6, outline: 'none',
-              background: '#f8fafc', boxSizing: 'border-box',
+              border: '1px solid var(--at-separator)', borderRadius: 6, outline: 'none',
+              background: 'var(--at-surface-2)', boxSizing: 'border-box',
             }}
           />
           {searchQuery && (
@@ -1175,7 +1175,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
               style={{
                 position: 'absolute', right: 4, top: '50%', transform: 'translateY(-50%)',
                 padding: 0, width: 20, height: 20, lineHeight: 1,
-                fontSize: 14, color: '#94a3b8',
+                fontSize: 14, color: 'var(--at-label-3)',
                 background: 'transparent', border: 'none', cursor: 'pointer',
               }}
             >×</button>
@@ -1212,8 +1212,8 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
       {/* 방문자 수 + 이메일 */}
       <div style={{
         padding: '10px 12px',
-        borderTop: '1px solid #e2e8f0',
-        background: '#f8fafc',
+        borderTop: '1px solid var(--at-separator)',
+        background: 'var(--at-surface-2)',
         display: 'flex',
         flexDirection: 'column',
         gap: 7,
@@ -1225,7 +1225,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           padding: '10px 12px',
           boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
         }}>
-          <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
+          <div style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
             👥 앱 방문자
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -1233,14 +1233,14 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
               <div style={{ fontSize: 22, fontWeight: 800, color: '#10b981', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
                 {todayCount != null ? todayCount.toLocaleString() : '–'}
               </div>
-              <div style={{ fontSize: 9, color: '#64748b', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
+              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
             </div>
             <div style={{ width: 1, height: 34, background: 'rgba(255,255,255,.12)', flexShrink: 0 }} />
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
                 {totalCount != null ? (typeof totalCount === 'number' ? totalCount.toLocaleString() : totalCount) : '–'}
               </div>
-              <div style={{ fontSize: 9, color: '#64748b', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
+              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
             </div>
           </div>
         </div>
@@ -1322,7 +1322,7 @@ function TreeNode({
 
   const handleDragEnd = () => { onDragCancel(); };
 
-  let rowBg = isSelected ? '#dbeafe' : 'transparent';
+  let rowBg = isSelected ? 'var(--at-separator)' : 'transparent';
   let borderIndicator = 'none';
   if (isDropTarget && dragId && dragId !== item.id) {
     if (dropPosition === 'inside') {
@@ -1379,10 +1379,10 @@ function TreeNode({
             onKeyDown={(e) => { if (e.key === 'Enter') onCommitRename(); if (e.key === 'Escape') onCommitRename(); }}
             autoFocus
             onClick={(e) => e.stopPropagation()}
-            style={{ flex: 1, fontSize: 12, padding: '1px 4px', border: '1px solid #93c5fd', borderRadius: 3, outline: 'none' }}
+            style={{ flex: 1, fontSize: 12, padding: '1px 4px', border: '1px solid var(--at-separator)', borderRadius: 3, outline: 'none' }}
           />
         ) : (
-          <span style={{ flex: 1, color: '#334155', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+          <span style={{ flex: 1, color: 'var(--at-label)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {item.name}
           </span>
         )}
@@ -1436,7 +1436,7 @@ function TreeNode({
           style={{
             padding: '4px 8px',
             paddingLeft: 24 + depth * 16,
-            color: '#94a3b8', fontSize: 11,
+            color: 'var(--at-label-3)', fontSize: 11,
             background: isDropTarget && dropPosition === 'inside' ? '#ede9fe' : 'transparent',
           }}
         >
@@ -1448,7 +1448,7 @@ function TreeNode({
 }
 
 const iconBtnTop = {
-  background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: '#94a3b8', padding: '2px',
+  background: 'none', border: 'none', cursor: 'pointer', fontSize: 14, color: 'var(--at-label-3)', padding: '2px',
 };
 
 const newMapBtn = {
@@ -1475,7 +1475,7 @@ const obsidianBtn = {
 
 const obsidianSmBtn = {
   flex: 1, padding: '4px 2px', fontSize: 10, fontWeight: 600,
-  background: '#f3f4f6', color: '#374151', border: 'none', borderRadius: 4, cursor: 'pointer',
+  background: '#f3f4f6', color: 'var(--at-label-2)', border: 'none', borderRadius: 4, cursor: 'pointer',
   textAlign: 'center',
 };
 
@@ -1519,8 +1519,8 @@ function EmailContact({ address }) {
   const optionStyle = {
     display: 'flex', alignItems: 'center', gap: 6,
     padding: '6px 8px', fontSize: 11, textAlign: 'left',
-    background: '#fff', border: 'none', borderRadius: 5,
-    cursor: 'pointer', color: '#334155', width: '100%',
+    background: 'var(--at-surface)', border: 'none', borderRadius: 5,
+    cursor: 'pointer', color: 'var(--at-label)', width: '100%',
     textDecoration: 'none',
   };
 
@@ -1531,22 +1531,22 @@ function EmailContact({ address }) {
         style={{
           display: 'flex', alignItems: 'center', gap: 6,
           padding: '7px 10px', width: '100%',
-          background: open ? '#e0f2fe' : '#f1f5f9',
-          borderRadius: 8, color: '#475569', fontSize: 11,
-          border: '1px solid #e2e8f0', cursor: 'pointer', textAlign: 'left',
+          background: open ? '#e0f2fe' : 'var(--at-surface-3)',
+          borderRadius: 8, color: 'var(--at-label-2)', fontSize: 11,
+          border: '1px solid var(--at-separator)', cursor: 'pointer', textAlign: 'left',
         }}
         title="문의 · 기능 제안 (메일 앱 · Gmail · 주소 복사)"
       >
         <span>✉️</span>
         <span style={{ fontWeight: 600 }}>문의 · 기능 제안</span>
-        <span style={{ fontSize: 10, color: '#94a3b8', marginLeft: 'auto', wordBreak: 'break-all' }}>{address}</span>
+        <span style={{ fontSize: 10, color: 'var(--at-label-3)', marginLeft: 'auto', wordBreak: 'break-all' }}>{address}</span>
       </button>
 
       {open && (
         <div style={{
           position: 'absolute', right: 0, bottom: 'calc(100% + 6px)',
           minWidth: 200, padding: 6,
-          background: '#fff', border: '1px solid #e2e8f0',
+          background: 'var(--at-surface)', border: '1px solid var(--at-separator)',
           borderRadius: 8, boxShadow: '0 8px 20px rgba(0,0,0,0.12)',
           display: 'flex', flexDirection: 'column', gap: 2,
           zIndex: 100,
@@ -1555,7 +1555,7 @@ function EmailContact({ address }) {
             href={mailto}
             onClick={() => setOpen(false)}
             style={optionStyle}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--at-surface-3)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
           >
             <span>📧</span>
@@ -1567,7 +1567,7 @@ function EmailContact({ address }) {
             rel="noreferrer"
             onClick={() => setOpen(false)}
             style={optionStyle}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--at-surface-3)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
           >
             <span>🌐</span>
@@ -1576,7 +1576,7 @@ function EmailContact({ address }) {
           <button
             onClick={handleCopy}
             style={optionStyle}
-            onMouseEnter={(e) => (e.currentTarget.style.background = '#f1f5f9')}
+            onMouseEnter={(e) => (e.currentTarget.style.background = 'var(--at-surface-3)')}
             onMouseLeave={(e) => (e.currentTarget.style.background = '#fff')}
           >
             <span>{copied ? '✅' : '📋'}</span>
