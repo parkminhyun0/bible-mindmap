@@ -378,7 +378,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
       aria-modal="true"
       aria-label="병렬 본문 연구"
       data-parallel-study
-      className={isMobile ? 'h-screen-safe' : undefined}
+      className={`at-modal at-modal--parallel${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
       style={{
         background: '#f8fafc',
         borderRadius: isMobile ? 0 : 12,
@@ -396,6 +396,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     >
         <header
           onMouseDown={onHeaderMouseDown}
+          className="at-modal__titlebar"
           style={{
             padding: isMobile
               ? 'calc(env(safe-area-inset-top,0px) + 10px) calc(env(safe-area-inset-right,0px) + 14px) 10px calc(env(safe-area-inset-left,0px) + 14px)'
@@ -433,7 +434,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
           >×</button>
         </header>
 
-        <div style={{
+        <div className="at-modal__content" style={{
           flex: 1, minHeight: 0, overflowY: 'auto',
           overscrollBehavior: 'contain',
           WebkitOverflowScrolling: 'touch',
@@ -550,6 +551,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
 
   const content = isMobile ? (
     <div
+      className="at-modal-backdrop"
       style={{
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1250,
         background: 'rgba(15,23,42,.55)',
@@ -575,3 +577,4 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
 
   return createPortal(content, document.body);
 }
+

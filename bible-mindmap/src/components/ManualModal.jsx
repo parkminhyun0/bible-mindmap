@@ -1263,6 +1263,7 @@ export default function ManualModal({ onClose }) {
       role="dialog"
       aria-modal={isMobile ? 'true' : 'false'}
       aria-label="사용자 매뉴얼"
+      className={`at-modal at-modal--manual${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
       style={{
         position: 'fixed',
         left: pos.x,
@@ -1282,6 +1283,7 @@ export default function ManualModal({ onClose }) {
       {/* ── 타이틀바 ── */}
       <div
         onMouseDown={onHeaderMouseDown}
+        className="at-modal__titlebar"
         style={{
           display: 'flex', alignItems: 'center', gap: 8,
           padding: '10px 14px',
@@ -1334,7 +1336,7 @@ export default function ManualModal({ onClose }) {
           borderRadius: isMobile ? 0 : '0 0 12px 12px' }}>
 
           {/* 사이드 네비 (모바일: 상단 가로 스크롤) */}
-          <div className="momentum-scroll" style={{
+          <div className="momentum-scroll at-modal__nav" style={{
             width: isMobile ? '100%' : 156,
             height: isMobile ? 'auto' : undefined,
             flexShrink: 0,
@@ -1378,7 +1380,7 @@ export default function ManualModal({ onClose }) {
           </div>
 
           {/* 콘텐츠 */}
-          <div className="momentum-scroll" style={{
+          <div className="momentum-scroll at-modal__content" style={{
             flex: 1, overflowY: 'auto',
             padding: isMobile ? '14px 16px calc(env(safe-area-inset-bottom, 0px) + 20px)' : '16px 18px',
             overscrollBehavior: 'contain',
@@ -1427,3 +1429,4 @@ const iconBtnStyle = {
   display: 'flex', alignItems: 'center', justifyContent: 'center',
   flexShrink: 0,
 };
+
