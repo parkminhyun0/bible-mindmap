@@ -15,8 +15,8 @@
 | A1 | 핵심 기능 브라우저 E2E | 저장·복원·노드·팝업·모달 smoke 통과 | 완료 · PR #85 |
 | A2 | 성경·원어·정경·curated 데이터 | 장절·Strong·출처·참조·중복 하드 게이트 통과 | 완료 · PR #86 |
 | A3 | 모바일·접근성 | 주요 viewport, 키보드, 포커스, 스크롤 계약 통과 | 완료 · PR #87 |
-| A4 | 검색·NVIDIA 품질 | Hybrid·차원·모델·오탐·출처 평가 통과 | 진행 중 |
-| A5 | 보안·배포·라이브 | Secret 경계, dependency audit, production build, Pages smoke 통과 | 대기 |
+| A4 | 검색·NVIDIA 품질 | Hybrid·차원·모델·오탐·출처 평가 통과 | 코드·mock 완료 · PR #89 · 실제 확장 실측 대기 |
+| A5 | 보안·배포·라이브 | Secret 경계, dependency audit, production build, Pages smoke 통과 | 진행 중 |
 | A6 | 잔여 문제 정리 | P0/P1 0건, 낮은 위험 항목 문서화 | 대기 |
 
 ## 최초 확인 문제와 처리 상태
@@ -28,21 +28,23 @@
 5. browser smoke job의 lexicon 생성 누락 — **A1 수정 완료**, 테스트 서버와 실제 브라우저 검증 성공.
 6. 성경 registry·curated·관찰카드·정경 usage 역방향 검증 공백 — **A2 수정 완료**, 66권·1,189장 교차 검증.
 7. 사용자 매뉴얼의 초기 포커스·Tab 순환·Escape·모바일 스크롤 잠금·포커스 복귀 공백 — **A3 수정 완료**, 전체 Chromium smoke 11개 통과.
-8. NVIDIA PoC가 4문서·4직접질의만 사용해 1.00 점수가 과도하게 쉬우며 오탐을 측정하지 않음 — **A4 처리 중**.
-9. `npm ci` 결과 고위험 취약점 1건 — **A5 보안 감사 대상**.
-10. GitHub Actions의 Node 20 action-runtime 경고 — **A5 CI 현대화 대상**.
+8. NVIDIA PoC가 4문서·4직접질의만 사용해 1.00 점수가 과도하게 쉬우며 오탐을 측정하지 않음 — **A4 코드·mock 수정 완료**, 실제 확장 bake-off 대기.
+9. `npm ci` 결과 고위험 취약점 1건 — **A5 production/full 분리 감사 중**.
+10. GitHub Actions의 Node 20 action-runtime 경고 — **A5 Node 24 기반 Actions로 교체 중**.
+11. 배포 workflow에 A0에서 제거한 Tiptap 임시 설치 우회가 잔존 — **A5 제거 중**.
+12. 라이브 검증이 version.json 커밋만 비교하고 HTML·JS·CSS 실체를 확인하지 않음 — **A5 보강 중**.
 
-## A4 검색·NVIDIA 품질 감사 범위
+## A5 보안·배포 감사 범위
 
-- 승인 정경 평가 corpus를 4문서에서 12문서, 질의를 4개에서 16개로 확장
-- 직접 키워드·의미 바꿔쓰기·두 주제 연결(multi-hop) 질의를 별도 segment로 평가
-- 각 질의에 헷갈리기 쉬운 hard-negative 문서를 지정하고 상위 3개 오탐률 측정
-- 키워드 기준선·NVIDIA 벡터 단독·Hybrid 결과를 분리해 Embedding의 실제 의미 검색 기여 확인
-- Recall@3·MRR·nDCG@3·실패율·p95와 함께 hard-negative rate 하드 게이트 적용
-- 모든 평가 문서에 3개 이상 성경 출처와 `approvedForPoc` 메타데이터 요구
-- 평가 revision·문서 ID·질의 수·오탐 수가 2048/384 보고서 사이에서 다르면 비교 차단
-- 384차원은 Recall·순위·실패율뿐 아니라 오탐률도 2048보다 나빠지지 않을 때만 추천
-- 기존 DB와 production 인덱스는 자동 변경하지 않으며 실제 endpoint 확장 실측은 수동 workflow에서만 실행
+- PR에서 production(`--omit=dev`)과 full npm audit를 분리 실행하고 JSON artifact 30일 보존
+- production high/critical은 PR과 Pages 배포를 모두 하드 실패
+- full audit의 개발 도구 취약점은 패키지·전이 경로·fix 가능 여부를 근거로 수정
+- checkout v6·setup-node v6·upload-artifact v7·download-artifact v8·github-script v9로 Node 24 action runtime 정렬
+- 배포 workflow의 Tiptap 런타임 보충 설치 삭제, 순수 lockfile과 dependency integrity 사용
+- workflow security verifier로 오래된 Action 버전·`pull_request_target`·runtime lock repair·자동 NVIDIA 실행 차단
+- Pages 검증을 commit 일치뿐 아니라 landing/app HTML·module JS·CSS 자산의 상태·콘텐츠 유형·크기로 확장
+- deployment build에서 전체 Chromium smoke 11개와 production security audit를 재실행
+- 배포 성공 후 실제 Pages run과 live asset 검증이 통과해야 A5 완료
 
 ## 운영 원칙
 
