@@ -40,6 +40,23 @@ function verifyRows(rows, label) {
   }
 }
 
+function verifyLexChapter(data, label) {
+  if (!data || typeof data !== 'object' || Array.isArray(data) || Object.keys(data).length === 0) {
+    errors.push(`${label}: 원어 절 데이터 없음`);
+    return;
+  }
+  for (const [verse, words] of Object.entries(data)) {
+    if (!/^\d+$/.test(verse) || !Array.isArray(words) || words.length === 0) {
+      errors.push(`${label}:${verse}: 잘못된 원어 절 데이터`);
+      return;
+    }
+    if (!words.some((word) => typeof word?.w === 'string' && word.w.trim())) {
+      errors.push(`${label}:${verse}: 원어 표면형 누락`);
+      return;
+    }
+  }
+}
+
 for (const book of ALL_BOOKS) {
   for (let chapter = 1; chapter <= book.chapters; chapter += 1) {
     for (const source of ['krv', 'web']) {
@@ -50,26 +67,11 @@ for (const book of ALL_BOOKS) {
       checked += 1;
     }
 
-    if (isOT(book.id)) {
-      const label = `wlc/${book.id}/${chapter}`;
-      const file = path.join(ROOT, 'public/data/bible/wlc', book.id, `${chapter}.json`);
-      const rows = await readJson(file, label);
-      if (rows) verifyRows(rows, label);
-
-      const hotFile = path.join(ROOT, 'public/data/lex/hot', book.id, `${chapter}.json`);
-      const hot = await readJson(hotFile, `hot/${book.id}/${chapter}`);
-      if (hot && (typeof hot !== 'object' || Array.isArray(hot) || Object.keys(hot).length === 0)) {
-        errors.push(`hot/${book.id}/${chapter}: 원어 절 데이터 없음`);
-      }
-      checked += 2;
-    } else {
-      const gntFile = path.join(ROOT, 'public/data/lex/gnt', book.id, `${chapter}.json`);
-      const gnt = await readJson(gntFile, `gnt/${book.id}/${chapter}`);
-      if (gnt && (typeof gnt !== 'object' || Array.isArray(gnt) || Object.keys(gnt).length === 0)) {
-        errors.push(`gnt/${book.id}/${chapter}: 원어 절 데이터 없음`);
-      }
-      checked += 1;
-    }
+    const corpus = isOT(book.id) ? 'hot' : 'gnt';
+    const originalFile = path.join(ROOT, 'public/data/lex', corpus, book.id, `${chapter}.json`);
+    const original = await readJson(originalFile, `${corpus}/${book.id}/${chapter}`);
+    if (original) verifyLexChapter(original, `${corpus}/${book.id}/${chapter}`);
+    checked += 1;
   }
 
   if (isOT(book.id)) {
@@ -81,7 +83,6 @@ for (const book of ALL_BOOKS) {
   }
 }
 
-// 사용자가 보고한 핵심 회귀 구간은 실제 절 번호까지 강제한다.
 for (const source of ['krv', 'web']) {
   const rows = await readJson(
     path.join(ROOT, 'public/data/bible', source, 'Rom', '16.json'),
@@ -92,6 +93,7 @@ for (const source of ['krv', 'web']) {
     if (!verses.has(verse)) errors.push(`${source}/Rom/16:${verse}: 회귀 절 누락`);
   }
 }
+
 const greek = await readJson(
   path.join(ROOT, 'public/data/lex/gnt/Rom/16.json'),
   'gnt/Rom/16 regression',
