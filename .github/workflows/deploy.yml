@@ -52,6 +52,35 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # 현재 lockfile에는 일부 Tiptap 런타임 패키지 엔트리가 누락될 수 있다.
+      # PR 검증과 동일한 보정으로 @tiptap/pm 버전에 맞춰 런타임을 정렬한다.
+      - name: Align missing Tiptap runtime packages
+        run: |
+          TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/pm/package.json').version")
+          MISSING=0
+          for pkg in \
+            @tiptap/react \
+            @tiptap/starter-kit \
+            @tiptap/extension-color \
+            @tiptap/extension-text-align \
+            @tiptap/extension-text-style \
+            @tiptap/extension-underline; do
+            if ! node -e "require.resolve('$pkg')" >/dev/null 2>&1; then
+              MISSING=1
+              break
+            fi
+          done
+          if [ "$MISSING" -eq 1 ]; then
+            echo "Tiptap lock entries incomplete; aligning runtime packages to ${TIPTAP_VERSION}"
+            npm install --no-save --package-lock=false --legacy-peer-deps \
+              "@tiptap/react@${TIPTAP_VERSION}" \
+              "@tiptap/starter-kit@${TIPTAP_VERSION}" \
+              "@tiptap/extension-color@${TIPTAP_VERSION}" \
+              "@tiptap/extension-text-align@${TIPTAP_VERSION}" \
+              "@tiptap/extension-text-style@${TIPTAP_VERSION}" \
+              "@tiptap/extension-underline@${TIPTAP_VERSION}"
+          fi
+
       # Playwright의 webServer는 `npm run dev`를 실행하며 predev 전수 검증을 거친다.
       # 따라서 P0/P1보다 먼저 원어 corpus를 생성해야 테스트 서버가 정상 기동한다.
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
