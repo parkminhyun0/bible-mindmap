@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "run": {
+    "id": 30842224158,
+    "url": "https://github.com/parkminhyun0/bible-mindmap/actions/runs/30842224158",
+    "workflow": "NVIDIA Embedding Dimension Bake-off",
+    "headBranch": "main",
+    "headSha": "0c550ae60d0e4351601f011fccf354384c682faa",
+    "generatedAt": "2026-08-03T18:39:53.669Z"
+  },
+  "model": "nvidia/llama-nemotron-embed-1b-v2",
+  "corpus": {
+    "revision": "canonical-audit-v2",
+    "documents": 12,
+    "sourceRefs": 36,
+    "cases": 16,
+    "hardNegatives": 16,
+    "queryTypes": ["direct", "semantic", "multi-hop"]
+  },
+  "artifacts": [
+    {
+      "id": 8867240876,
+      "name": "nvidia-embedding-2048d-30842224158",
+      "digest": "sha256:3796a0a6aaa1204b776a9523c6177582a2be459568dadff842a91585ece49b5d",
+      "sizeBytes": 1181
+    },
+    {
+      "id": 8867242428,
+      "name": "nvidia-embedding-384d-30842224158",
+      "digest": "sha256:6a19b234ffb17d87d86c86459db39a07ac093080d4111daa2d56b67e5cdfb0b0",
+      "sizeBytes": 1141
+    },
+    {
+      "id": 8867251955,
+      "name": "nvidia-embedding-dimension-comparison-30842224158",
+      "digest": "sha256:deb1bebc4e754b58c64e9ab38cdfc6cd74102ac1a5ac03af91d3870bf4ebc566",
+      "sizeBytes": 919
+    }
+  ],
+  "results": {
+    "384": {
+      "recallAt3": 0.96875,
+      "mrr": 1,
+      "ndcgAt3": 0.9758216995478411,
+      "hardNegativeRate": 0.375,
+      "failureRate": 0,
+      "localRetrievalP95Ms": 1.099332000000004,
+      "totalTokens": 1029,
+      "bytesPerVector": 1536,
+      "corpusVectorBytes": 18432,
+      "multiHopRecallAt3": 0.8333333333333334,
+      "multiHopHardNegativeRate": 0.3333333333333333,
+      "gatePassed": true
+    },
+    "2048": {
+      "recallAt3": 1,
+      "mrr": 1,
+      "ndcgAt3": 0.9949825493217617,
+      "hardNegativeRate": 0.1875,
+      "failureRate": 0,
+      "localRetrievalP95Ms": 0.9981780000000526,
+      "totalTokens": 1029,
+      "bytesPerVector": 8192,
+      "corpusVectorBytes": 98304,
+      "multiHopRecallAt3": 1,
+      "multiHopHardNegativeRate": 0,
+      "gatePassed": true
+    }
+  },
+  "comparison": {
+    "qualityMaintainedAt384": false,
+    "recallDelta384Minus2048": -0.03125,
+    "ndcgDelta384Minus2048": -0.019160849774,
+    "hardNegativeRateDelta384Minus2048": 0.1875,
+    "storageReductionAt384Percent": 81.25
+  },
+  "decision": {
+    "selectedDimensions": 2048,
+    "status": "retain-full",
+    "reason": "384 dimensions passed the minimum gate but regressed recall, ranking quality, multi-hop retrieval, and hard-negative control compared with 2048 dimensions.",
+    "reviewStatus": "approved-as-default-evaluation-policy",
+    "reviewedAt": "2026-08-04",
+    "requiresProductionApproval": true,
+    "productionIndexChanged": false,
+    "existingDbModified": false
+  },
+  "notes": {
+    "latencyScope": "local retrieval and ranking after embeddings were produced; this is not end-to-end NVIDIA network latency",
+    "artifactRetention": "GitHub artifacts expire after 30 days; this evidence file preserves the audited metrics and digests"
+  }
+}
