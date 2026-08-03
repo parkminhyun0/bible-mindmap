@@ -54,12 +54,31 @@ function lockDocumentScroll() {
   };
 }
 
+function resolveDialog(dialogRef, dialogSelector) {
+  if (dialogRef?.current) return dialogRef.current;
+  if (!dialogSelector) return null;
+  const matches = Array.from(document.querySelectorAll(dialogSelector));
+  return matches.at(-1) || null;
+}
+
 /**
  * Shared accessibility lifecycle for the app's modal research windows.
  * Keeps rendering/portal ownership in each feature while centralizing focus,
  * Escape, focus restoration and nested-safe mobile scroll locking.
+ *
+ * `dialogSelector` is a migration bridge for legacy portal dialogs that cannot
+ * safely accept a ref yet. New dialogs should continue to prefer `dialogRef`.
+ * `manageEscape=false` preserves a legacy dialog's own nested Escape policy
+ * while still applying focus, Tab, restoration and scroll-lock behavior.
  */
-export default function useModalDialog({ dialogRef, onClose, lockScroll = false }) {
+export default function useModalDialog({
+  dialogRef,
+  dialogSelector,
+  onClose,
+  lockScroll = false,
+  active = true,
+  manageEscape = true,
+}) {
   const onCloseRef = useRef(onClose);
 
   useEffect(() => {
@@ -67,72 +86,95 @@ export default function useModalDialog({ dialogRef, onClose, lockScroll = false 
   }, [onClose]);
 
   useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return undefined;
+    if (!active) return undefined;
 
-    const opener = document.activeElement instanceof HTMLElement
-      ? document.activeElement
-      : null;
-    const token = Symbol('modal-dialog');
-    dialogStack.push(token);
-    const releaseScroll = lockScroll ? lockDocumentScroll() : () => {};
+    let cleanupLifecycle = () => {};
+    let resolveFrame = 0;
 
-    const focusFrame = window.requestAnimationFrame(() => {
-      if (dialogStack.at(-1) === token && dialog.isConnected) {
-        dialog.focus({ preventScroll: true });
+    const attach = () => {
+      const dialog = resolveDialog(dialogRef, dialogSelector);
+      if (!dialog) {
+        resolveFrame = window.requestAnimationFrame(attach);
+        return;
       }
-    });
 
-    const onKeyDown = (event) => {
-      if (dialogStack.at(-1) !== token || event.defaultPrevented) return;
-
-      const active = document.activeElement;
-      const activeDialog = active instanceof Element
-        ? active.closest('[role="dialog"]')
+      const opener = document.activeElement instanceof HTMLElement
+        ? document.activeElement
         : null;
-      // A nested dialog owns its own keyboard lifecycle while focus is inside it.
-      if (activeDialog && activeDialog !== dialog && !dialog.contains(activeDialog)) return;
+      const token = Symbol('modal-dialog');
+      const previousTabIndex = dialog.getAttribute('tabindex');
+      if (!dialog.hasAttribute('tabindex')) dialog.setAttribute('tabindex', '-1');
 
-      if (event.key === 'Escape') {
-        event.preventDefault();
-        event.stopPropagation();
-        onCloseRef.current?.();
-        return;
-      }
+      dialogStack.push(token);
+      const releaseScroll = lockScroll ? lockDocumentScroll() : () => {};
 
-      if (event.key !== 'Tab') return;
-      const focusable = focusableElements(dialog);
-      if (focusable.length === 0) {
-        event.preventDefault();
-        dialog.focus({ preventScroll: true });
-        return;
-      }
+      const focusFrame = window.requestAnimationFrame(() => {
+        if (dialogStack.at(-1) === token && dialog.isConnected) {
+          dialog.focus({ preventScroll: true });
+        }
+      });
 
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (!dialog.contains(active) || active === dialog) {
-        event.preventDefault();
-        (event.shiftKey ? last : first).focus();
-      } else if (event.shiftKey && active === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && active === last) {
-        event.preventDefault();
-        first.focus();
-      }
+      const onKeyDown = (event) => {
+        if (dialogStack.at(-1) !== token || event.defaultPrevented) return;
+
+        const activeElement = document.activeElement;
+        const activeDialog = activeElement instanceof Element
+          ? activeElement.closest('[role="dialog"]')
+          : null;
+        // A nested dialog owns its own keyboard lifecycle while focus is inside it.
+        if (activeDialog && activeDialog !== dialog && !dialog.contains(activeDialog)) return;
+
+        if (event.key === 'Escape') {
+          if (!manageEscape) return;
+          event.preventDefault();
+          event.stopPropagation();
+          onCloseRef.current?.();
+          return;
+        }
+
+        if (event.key !== 'Tab') return;
+        const focusable = focusableElements(dialog);
+        if (focusable.length === 0) {
+          event.preventDefault();
+          dialog.focus({ preventScroll: true });
+          return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!dialog.contains(activeElement) || activeElement === dialog) {
+          event.preventDefault();
+          (event.shiftKey ? last : first).focus();
+        } else if (event.shiftKey && activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      };
+
+      document.addEventListener('keydown', onKeyDown, true);
+      cleanupLifecycle = () => {
+        const wasTopmost = dialogStack.at(-1) === token;
+        const index = dialogStack.lastIndexOf(token);
+        if (index >= 0) dialogStack.splice(index, 1);
+        document.removeEventListener('keydown', onKeyDown, true);
+        window.cancelAnimationFrame(focusFrame);
+        releaseScroll();
+        if (previousTabIndex === null) dialog.removeAttribute('tabindex');
+        else dialog.setAttribute('tabindex', previousTabIndex);
+        if (wasTopmost && opener?.isConnected) {
+          window.requestAnimationFrame(() => opener.focus({ preventScroll: true }));
+        }
+      };
     };
 
-    document.addEventListener('keydown', onKeyDown, true);
+    attach();
+
     return () => {
-      const wasTopmost = dialogStack.at(-1) === token;
-      const index = dialogStack.lastIndexOf(token);
-      if (index >= 0) dialogStack.splice(index, 1);
-      document.removeEventListener('keydown', onKeyDown, true);
-      window.cancelAnimationFrame(focusFrame);
-      releaseScroll();
-      if (wasTopmost && opener?.isConnected) {
-        window.requestAnimationFrame(() => opener.focus({ preventScroll: true }));
-      }
+      window.cancelAnimationFrame(resolveFrame);
+      cleanupLifecycle();
     };
-  }, [dialogRef, lockScroll]);
+  }, [active, dialogRef, dialogSelector, lockScroll, manageEscape]);
 }
