@@ -16,6 +16,7 @@ import {
   parallelRefKey,
 } from '../data/parallelStudy';
 import useMobile from '../hooks/useMobile';
+import useModalDialog from '../hooks/useModalDialog';
 import {
   GuidedCourseCarousel,
   ActiveCoursePanel,
@@ -249,6 +250,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   });
   const dragging = useRef(false);
   const resizing = useRef(false);
+  const dialogRef = useRef(null);
   const dragStart = useRef({ mx: 0, my: 0, px: 0, py: 0 });
   const resizeStart = useRef({ mx: 0, my: 0, w: 0, h: 0 });
 
@@ -300,11 +302,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     };
   }, [isMobile]);
 
-  useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+  useModalDialog({ dialogRef, onClose, lockScroll: isMobile });
 
   useEffect(() => {
     let cancelled = false;
@@ -376,9 +374,11 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
 
   const modalInner = (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label="병렬 본문 연구"
+      tabIndex={-1}
       data-parallel-study
       className={`at-modal at-modal--parallel${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
       style={{
@@ -564,6 +564,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     <div
       className="at-modal-backdrop"
       style={{
+        // Mirrors --at-layer-modal-portal; numeric literal is enforced by verify-mobile-safety.
         position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 1250,
         background: 'rgba(15,23,42,.55)',
         WebkitBackdropFilter: 'blur(6px)', backdropFilter: 'blur(6px)',
@@ -577,6 +578,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   ) : (
     <div
       style={{
+        // Mirrors --at-layer-modal-portal; numeric literal is enforced by verify-mobile-safety.
         position: 'fixed', left: pos.x, top: pos.y, zIndex: 1250,
         fontFamily: "'Pretendard','Noto Sans KR',sans-serif",
       }}
@@ -588,4 +590,3 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
 
   return createPortal(content, document.body);
 }
-

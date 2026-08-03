@@ -293,6 +293,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           <div style={{ padding: '0 16px 8px' }}>
             <button
               onClick={() => setShowContextBible(true)}
+              aria-haspopup="dialog"
+              aria-expanded={showContextBible}
               style={{
                 ...MENU_BTN_BASE,
                 background: 'linear-gradient(135deg,#78350f,#b45309)',
@@ -543,6 +545,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             <button
               onClick={() => setShowContextBible(true)}
               title="문맥 성경"
+              aria-haspopup="dialog"
+              aria-expanded={showContextBible}
               style={{
                 ...railIconBtn('linear-gradient(135deg,#d97706,#f59e0b)', '#fff'),
                 width: 36, height: 28, fontSize: 13,
@@ -714,6 +718,8 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       <div style={{ ...tabBarStyle, borderTop: '1px solid var(--at-separator)', paddingTop: 10 }}>
         <button
           onClick={() => setShowContextBible(true)}
+          aria-haspopup="dialog"
+          aria-expanded={showContextBible}
           style={{
             ...MENU_BTN_BASE,
             background: 'linear-gradient(135deg,#78350f,#b45309)',

@@ -39,6 +39,9 @@ jobs:
       - name: Run P0 browser regression baseline
         run: npm run test:p0
 
+      - name: Run P1 modal accessibility regression
+        run: npm run test:p1:modal
+
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
