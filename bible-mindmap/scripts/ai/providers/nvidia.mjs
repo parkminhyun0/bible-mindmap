@@ -4,20 +4,25 @@
 const DEFAULT_BASE_URL = 'https://integrate.api.nvidia.com/v1';
 const DEFAULT_TIMEOUT_MS = 30_000;
 
-export function loadNvidiaConfig(env = process.env) {
+export function loadNvidiaTransportConfig(env = process.env) {
   const apiKey = env.NVIDIA_API_KEY?.trim();
-  const model = env.NVIDIA_MODEL_ID?.trim();
   const baseUrl = (env.NVIDIA_BASE_URL || DEFAULT_BASE_URL).replace(/\/$/, '');
   const timeoutMs = Number(env.NVIDIA_TIMEOUT_MS || DEFAULT_TIMEOUT_MS);
 
   if (!apiKey) throw new Error('NVIDIA_API_KEY is required in the server environment');
-  if (!model) throw new Error('NVIDIA_MODEL_ID is required in the server environment');
   if (!Number.isFinite(timeoutMs) || timeoutMs < 1_000 || timeoutMs > 120_000) {
     throw new Error('NVIDIA_TIMEOUT_MS must be between 1000 and 120000');
   }
   if (!baseUrl.startsWith('https://')) throw new Error('NVIDIA_BASE_URL must use HTTPS');
 
-  return { apiKey, model, baseUrl, timeoutMs };
+  return { apiKey, baseUrl, timeoutMs };
+}
+
+export function loadNvidiaConfig(env = process.env) {
+  const transport = loadNvidiaTransportConfig(env);
+  const model = env.NVIDIA_MODEL_ID?.trim();
+  if (!model) throw new Error('NVIDIA_MODEL_ID is required in the server environment');
+  return { ...transport, model };
 }
 
 export async function createNvidiaChatCompletion({
