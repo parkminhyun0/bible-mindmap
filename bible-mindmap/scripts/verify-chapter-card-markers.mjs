@@ -15,6 +15,12 @@ const errors = [];
 const warnings = [];
 const nonEmpty = (value) => typeof value === 'string' && value.trim().length > 0;
 
+// 사도행전은 28:31의 '막힘없이'로 의도적인 열린 결말을 맺는다.
+// 다음 장/책 예고를 인위적으로 붙이지 않고 종결 카드로 유지한다.
+const TERMINAL_PREVIEW_EXCEPTIONS = new Map([
+  ['Acts:28', 'Acts ends openly with the unhindered proclamation of the kingdom'],
+]);
+
 // 히브리: 니쿠드·칸틸레이션(U+0591–U+05C7) 제거 → 자음만. 헬라: NFD 후 결합기호 제거.
 const stripHeb = (s) => s.normalize('NFD').replace(/[֑-ׇ]/g, '').replace(/[^א-ת]/g, '');
 const stripGrk = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^Ͱ-Ͽ]/g, '').toLowerCase();
@@ -79,7 +85,11 @@ for (const [key, card] of Object.entries(CONTEXT_CHAPTER_CARDS)) {
     || card.theologicalImplications.some((item) => !nonEmpty(item))) {
     errors.push(`${key}: theologicalImplications는 유효한 문장 2개 이상이어야 함`);
   }
-  if (!nonEmpty(card.nextChapterPreview)) errors.push(`${key}: nextChapterPreview 누락`);
+  if (!nonEmpty(card.nextChapterPreview)) {
+    const terminalReason = TERMINAL_PREVIEW_EXCEPTIONS.get(key);
+    if (terminalReason) warnings.push(`${key}: 의도적 종결 카드 (${terminalReason})`);
+    else errors.push(`${key}: nextChapterPreview 누락`);
+  }
   if (!Array.isArray(card.discourseMarkers) || card.discourseMarkers.length < 1) {
     errors.push(`${key}: discourseMarkers 누락`);
     continue;
