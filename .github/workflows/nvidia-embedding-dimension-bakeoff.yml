@@ -32,10 +32,10 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
@@ -55,6 +55,7 @@ jobs:
       - name: Verify model policy and PoC safety
         run: |
           npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-retrieval-audit
           npm run verify:nvidia-embedding-poc
           npm run verify:nvidia-embedding-dimension-bakeoff
 
@@ -62,7 +63,7 @@ jobs:
         run: npm run poc:nvidia-embedding:execute -- --output="$REPORT_PATH"
 
       - name: Upload dimension report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nvidia-embedding-${{ matrix.dimensions }}d-${{ github.run_id }}
           path: bible-mindmap/${{ env.REPORT_PATH }}
@@ -80,28 +81,28 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
 
       - name: Download dimension reports
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: nvidia-embedding-*d-${{ github.run_id }}
           path: bible-mindmap/reports/nvidia-embedding-dimension-bakeoff/input
           merge-multiple: true
 
-      - name: Compare quality, latency, and storage
+      - name: Compare quality, latency, false positives, and storage
         run: >-
           node scripts/ai/poc/compare-nvidia-embedding-dimensions.mjs
           --input-dir=reports/nvidia-embedding-dimension-bakeoff/input
           --output=reports/nvidia-embedding-dimension-bakeoff/comparison-${{ github.run_id }}.json
 
       - name: Upload comparison report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: nvidia-embedding-dimension-comparison-${{ github.run_id }}
           path: bible-mindmap/reports/nvidia-embedding-dimension-bakeoff/comparison-${{ github.run_id }}.json
