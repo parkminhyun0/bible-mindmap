@@ -1,19 +1,4 @@
-import { Handle, Position, NodeResizer, useReactFlow } from '@xyflow/react';
-
-const resizerHandle = {
-  width: 12,
-  height: 12,
-  borderRadius: 4,
-  border: '2px solid #fff',
-  background: '#64748b',
-  boxShadow: '0 1px 5px rgba(15,23,42,0.38)',
-  zIndex: 30,
-};
-const resizerLine = {
-  borderColor: '#64748b',
-  borderWidth: 1.5,
-  zIndex: 29,
-};
+import { Handle, Position, NodeResizeControl, useReactFlow } from '@xyflow/react';
 
 export default function BackgroundNodeFrame({
   id,
@@ -29,6 +14,8 @@ export default function BackgroundNodeFrame({
   children,
 }) {
   const { deleteElements } = useReactFlow();
+  const resizeMinWidth = Math.max(minWidth, nodeKind === 'verse' ? 430 : 280);
+  const resizeMinHeight = Math.max(minHeight, nodeKind === 'verse' ? 220 : 140);
 
   const handleClose = (event) => {
     event.preventDefault();
@@ -38,16 +25,37 @@ export default function BackgroundNodeFrame({
 
   return (
     <>
-      <NodeResizer
-        className="nodrag nopan at-background-node-resizer"
-        color={accent}
-        isVisible={selected}
-        minWidth={minWidth}
-        minHeight={minHeight}
-        keepAspectRatio={false}
-        handleStyle={{ ...resizerHandle, background: accent }}
-        lineStyle={{ ...resizerLine, borderColor: accent }}
-      />
+      {selected && (
+        <NodeResizeControl
+          className="nodrag nopan at-context-node-resize-control"
+          position="bottom-right"
+          color={accent}
+          minWidth={resizeMinWidth}
+          minHeight={resizeMinHeight}
+          maxWidth={1200}
+          maxHeight={900}
+          keepAspectRatio={false}
+          style={{
+            width: 20,
+            height: 20,
+            right: -3,
+            bottom: -3,
+            border: '2px solid #fff',
+            borderRadius: '7px 0 7px 0',
+            background: `linear-gradient(135deg, transparent 42%, ${accent} 43%, ${accent} 100%)`,
+            boxShadow: '0 2px 7px rgba(15,23,42,0.34)',
+            zIndex: 35,
+            cursor: 'se-resize',
+            touchAction: 'none',
+          }}
+        >
+          <span
+            aria-hidden="true"
+            title="우측 하단을 드래그해 창 크기 조절"
+            style={{ position: 'absolute', inset: 0 }}
+          />
+        </NodeResizeControl>
+      )}
 
       <div
         className="at-canvas-node"
@@ -99,14 +107,6 @@ export default function BackgroundNodeFrame({
               {headerActions}
             </div>
           )}
-          {selected && (
-            <span
-              className="nodrag nopan at-canvas-node__resize-hint"
-              title="카드 가장자리 또는 모서리를 드래그해 크기 조절"
-            >
-              ↘ 크기
-            </span>
-          )}
           <span className="at-canvas-node__move" style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>
           <button
             type="button"
@@ -143,6 +143,9 @@ export default function BackgroundNodeFrame({
             flex: '1 1 auto',
             minHeight: 0,
             overflow: 'auto',
+            scrollbarGutter: 'stable',
+            scrollbarWidth: 'thin',
+            wordBreak: 'break-word',
             overscrollBehavior: 'contain',
             WebkitOverflowScrolling: 'touch',
           }}
