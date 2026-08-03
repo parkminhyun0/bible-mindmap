@@ -1,228 +1,200 @@
 import { ALL_BOOKS, isOT } from '../data/bibleBooks';
 
-const LEX_BASE = import.meta.env?.BASE_URL || '/';
-
-export const TRANSLATIONS = [
-  { id: 'krv',      label: '개역한글', lang: 'ko' },
-  { id: 'web',      label: 'WEB',      lang: 'en' },
-  { id: 'lxx',      label: 'LXX',      lang: 'grc', otOnly: true },
-  { id: 'original', label: '원어',      lang: 'multi' },
-];
-
-const BOLLS_BOOK_MAP = Object.fromEntries(
-  ALL_BOOKS.map((b, i) => [b.id, i + 1])
-);
-
-const _chapterCache = new Map();
-const CACHE_MAX = 60;
+const BASE = import.meta.env?.BASE_URL || '/';
+const BOLLS_BOOK_MAP = Object.fromEntries(ALL_BOOKS.map((book, index) => [book.id, index + 1]));
+const VERSE_NUM_STYLE = 'font-weight:700;color:#94a3b8;font-size:0.78em;margin-right:3px;vertical-align:0.28em;';
+const CACHE_MAX = 160;
 const FETCH_TIMEOUT_MS = 10000;
 const FETCH_RETRIES = 2;
+const cache = new Map();
+
+export const TRANSLATIONS = [
+  { id: 'krv', label: '개역한글', lang: 'ko' },
+  { id: 'web', label: 'WEB', lang: 'en' },
+  { id: 'lxx', label: 'LXX', lang: 'grc', otOnly: true },
+  { id: 'original', label: '원어', lang: 'multi' },
+];
 
 function cacheGet(key) {
-  const hit = _chapterCache.get(key);
-  if (hit) {
-    _chapterCache.delete(key);
-    _chapterCache.set(key, hit);
+  const value = cache.get(key);
+  if (value) {
+    cache.delete(key);
+    cache.set(key, value);
   }
-  return hit;
+  return value;
 }
 
 function cacheSet(key, value) {
-  _chapterCache.set(key, value);
-  if (_chapterCache.size > CACHE_MAX) {
-    const firstKey = _chapterCache.keys().next().value;
-    _chapterCache.delete(firstKey);
-  }
+  cache.set(key, value);
+  if (cache.size > CACHE_MAX) cache.delete(cache.keys().next().value);
 }
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function fetchJsonWithRetry(url) {
+async function fetchJsonWithRetry(url, { noStore = false } = {}) {
   let lastError;
-
   for (let attempt = 0; attempt <= FETCH_RETRIES; attempt += 1) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-
     try {
-      const res = await fetch(url, { signal: controller.signal, cache: 'no-store' });
-      if (!res.ok) {
-        const error = new Error(`${new URL(url, window.location.origin).host} ${res.status}`);
-        error.retryable = res.status === 429 || res.status >= 500;
+      const response = await fetch(url, {
+        signal: controller.signal,
+        ...(noStore ? { cache: 'no-store' } : {}),
+      });
+      if (!response.ok) {
+        const error = new Error(`본문 데이터 ${response.status}`);
+        error.retryable = response.status === 429 || response.status >= 500;
         throw error;
       }
-      return await res.json();
+      return await response.json();
     } catch (error) {
-      lastError = error.name === 'AbortError'
+      lastError = error?.name === 'AbortError'
         ? new Error('성경 본문 요청 시간이 초과되었습니다.')
         : error;
-
-      const retryable = error.name === 'AbortError' || error.retryable || error instanceof TypeError;
+      const retryable = error?.name === 'AbortError' || error?.retryable || error instanceof TypeError;
       if (!retryable || attempt === FETCH_RETRIES) break;
       await sleep(300 * (attempt + 1));
     } finally {
       clearTimeout(timeoutId);
     }
   }
-
   throw lastError;
 }
 
-async function fetchChapter(translationCode, bookNum, chapter) {
-  const key = `${translationCode}:${bookNum}:${chapter}`;
+function chapterPromise(key, loader) {
   const cached = cacheGet(key);
   if (cached) return cached;
-
-  const promise = fetchJsonWithRetry(
-    `https://bolls.life/get-text/${translationCode}/${bookNum}/${chapter}/`,
-  ).catch((err) => {
-    _chapterCache.delete(key);
-    throw err;
+  const promise = loader().catch((error) => {
+    cache.delete(key);
+    throw error;
   });
   cacheSet(key, promise);
   return promise;
 }
 
-async function fetchGreekChapterFromLex(bookId, chapter) {
-  const key = `lex:gnt:${bookId}:${chapter}`;
-  const cached = cacheGet(key);
-  if (cached) return cached;
-
-  const promise = fetchJsonWithRetry(`${LEX_BASE}data/lex/gnt/${bookId}/${chapter}.json`)
-    .catch((err) => {
-      _chapterCache.delete(key);
-      throw err;
-    });
-  cacheSet(key, promise);
-  return promise;
+function normalizeRows(raw) {
+  if (!Array.isArray(raw)) return [];
+  return raw
+    .map((row) => ({
+      verse: Number(row.verse),
+      text: String(row.text || '').replace(/<[^>]*>/g, '').trim(),
+    }))
+    .filter((row) => Number.isInteger(row.verse) && row.verse > 0 && row.text);
 }
 
-async function fetchOriginalGreek(bookId, chapter, verseStart, verseEnd) {
-  const data = await fetchGreekChapterFromLex(bookId, chapter);
-  const parts = [];
-  for (let v = verseStart; v <= verseEnd; v += 1) {
-    const words = data?.[String(v)];
-    if (!Array.isArray(words) || !words.length) continue;
-    parts.push({ verse: v, text: words.map((w) => w.w).join(' ').trim() });
-  }
-  if (!parts.length) throw new Error('해당 구절 없음');
-
-  if (parts.length === 1) return parts[0].text;
-  return parts
+function formatRows(rows, verseStart, verseEnd) {
+  const selected = rows.filter((row) => row.verse >= verseStart && row.verse <= verseEnd);
+  if (!selected.length) throw new Error('해당 구절 없음');
+  if (selected.length === 1) return selected[0].text;
+  return selected
     .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
     .join(' ');
 }
 
-async function fetchLxxBook(bookId) {
-  const key = `lxx:${bookId}`;
-  const cached = cacheGet(key);
-  if (cached) return cached;
-
-  const promise = fetchJsonWithRetry(`${LEX_BASE}lxx/${bookId}.json`)
-    .catch((err) => {
-      _chapterCache.delete(key);
-      throw err;
-    });
-  cacheSet(key, promise);
-  return promise;
+async function fetchLocalBibleChapter(sourceId, bookId, chapter) {
+  return chapterPromise(`local:${sourceId}:${bookId}:${chapter}`, async () => {
+    const raw = await fetchJsonWithRetry(`${BASE}data/bible/${sourceId}/${bookId}/${chapter}.json`);
+    const rows = normalizeRows(raw);
+    if (!rows.length) throw new Error('로컬 본문 데이터 없음');
+    return rows;
+  });
 }
 
-async function fetchOriginalLxx(bookId, chapter, verseStart, verseEnd) {
-  const book = await fetchLxxBook(bookId);
-  const chap = book?.[String(chapter)];
-  if (!chap) throw new Error('해당 장 LXX 없음');
-
-  const parts = [];
-  for (let v = verseStart; v <= verseEnd; v += 1) {
-    const text = chap[String(v)];
-    if (typeof text === 'string' && text.trim()) parts.push({ verse: v, text: text.trim() });
-  }
-  if (!parts.length) throw new Error('해당 구절 없음');
-
-  if (parts.length === 1) return parts[0].text;
-  return parts
-    .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
-    .join(' ');
-}
-
-const VERSE_NUM_STYLE = 'font-weight:700;color:#94a3b8;font-size:0.78em;margin-right:3px;vertical-align:0.28em;';
-
-async function fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, translationCode) {
+async function fetchBollsChapter(code, bookId, chapter) {
   const bookNum = BOLLS_BOOK_MAP[bookId];
   if (!bookNum) throw new Error('Unknown book');
-  const verses = await fetchChapter(translationCode, bookNum, chapter);
-  const filtered = verses.filter((v) => v.verse >= verseStart && v.verse <= verseEnd);
-  if (!filtered.length) throw new Error('해당 구절 없음');
+  return chapterPromise(`bolls:${code}:${bookId}:${chapter}`, async () => {
+    const raw = await fetchJsonWithRetry(
+      `https://bolls.life/get-text/${code}/${bookNum}/${chapter}/`,
+      { noStore: true },
+    );
+    const rows = normalizeRows(raw);
+    if (!rows.length) throw new Error('외부 본문 데이터 없음');
+    return rows;
+  });
+}
 
-  const cleaned = filtered.map((v) => ({
-    verse: v.verse,
-    text: v.text.replace(/<[^>]*>/g, '').trim(),
+async function fetchLocalThenRemote(sourceId, code, bookId, chapter, verseStart, verseEnd) {
+  try {
+    return formatRows(await fetchLocalBibleChapter(sourceId, bookId, chapter), verseStart, verseEnd);
+  } catch {
+    return formatRows(await fetchBollsChapter(code, bookId, chapter), verseStart, verseEnd);
+  }
+}
+
+async function fetchGreekChapter(bookId, chapter) {
+  return chapterPromise(`gnt:${bookId}:${chapter}`, () =>
+    fetchJsonWithRetry(`${BASE}data/lex/gnt/${bookId}/${chapter}.json`));
+}
+
+async function fetchGreek(bookId, chapter, verseStart, verseEnd) {
+  const data = await fetchGreekChapter(bookId, chapter);
+  const rows = [];
+  for (let verse = verseStart; verse <= verseEnd; verse += 1) {
+    const words = data?.[String(verse)];
+    if (Array.isArray(words) && words.length) {
+      rows.push({ verse, text: words.map((word) => word.w).filter(Boolean).join(' ').trim() });
+    }
+  }
+  return formatRows(rows, verseStart, verseEnd);
+}
+
+async function fetchLxx(bookId, chapter, verseStart, verseEnd) {
+  const book = await chapterPromise(`lxx:${bookId}`, () =>
+    fetchJsonWithRetry(`${BASE}lxx/${bookId}.json`));
+  const chapterData = book?.[String(chapter)];
+  if (!chapterData) throw new Error('해당 장 LXX 없음');
+  const rows = Object.entries(chapterData).map(([verse, text]) => ({
+    verse: Number(verse),
+    text: String(text || '').trim(),
   }));
-
-  if (cleaned.length === 1) return cleaned[0].text;
-  return cleaned
-    .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
-    .join(' ');
+  return formatRows(rows, verseStart, verseEnd);
 }
 
 function bibleApiReference(book, chapter, verseStart, verseEnd) {
-  const rawName = book?.en || book?.nameEn || book?.name || book?.id;
   const range = verseStart === verseEnd ? `${verseStart}` : `${verseStart}-${verseEnd}`;
-  return `${rawName} ${chapter}:${range}`.replace(/\s+/g, '+');
+  return `${book.en} ${chapter}:${range}`.replace(/\s+/g, '+');
 }
 
-async function fetchWebFallback(book, chapter, verseStart, verseEnd) {
-  const reference = bibleApiReference(book, chapter, verseStart, verseEnd);
+async function fetchWebEmergency(book, chapter, verseStart, verseEnd) {
   const data = await fetchJsonWithRetry(
-    `https://bible-api.com/${reference}?translation=web`,
+    `https://bible-api.com/${bibleApiReference(book, chapter, verseStart, verseEnd)}?translation=web`,
+    { noStore: true },
   );
-  const verses = Array.isArray(data?.verses) ? data.verses : [];
-  if (!verses.length) {
-    const text = typeof data?.text === 'string' ? data.text.trim() : '';
-    if (!text) throw new Error('WEB 보조 본문 없음');
-    return text;
-  }
-
-  const cleaned = verses.map((v) => ({
-    verse: Number(v.verse),
-    text: String(v.text || '').trim(),
-  })).filter((v) => v.text);
-  if (!cleaned.length) throw new Error('WEB 보조 본문 없음');
-  if (cleaned.length === 1) return cleaned[0].text;
-  return cleaned
-    .map(({ verse, text }) => `<span style="${VERSE_NUM_STYLE}">${verse}</span>${text}`)
-    .join(' ');
+  const rows = normalizeRows(data?.verses || []);
+  if (rows.length) return formatRows(rows, verseStart, verseEnd);
+  const text = String(data?.text || '').trim();
+  if (!text) throw new Error('WEB 보조 본문 없음');
+  return text;
 }
 
 const LEGACY_ID_MAP = { korean: 'krv', wlc: 'original', greek: 'original', esv: 'web' };
 
 export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translationId) {
-  const book = ALL_BOOKS.find((b) => b.id === bookId);
+  const book = ALL_BOOKS.find((item) => item.id === bookId);
   if (!book) throw new Error('Book not found');
-
   const id = LEGACY_ID_MAP[translationId] ?? translationId;
 
-  switch (id) {
-    case 'krv':
-      return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'KRV');
-    case 'web':
-      try {
-        return await fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'WEB');
-      } catch {
-        return fetchWebFallback(book, chapter, verseStart, verseEnd);
-      }
-    case 'lxx':
-      if (!isOT(bookId)) throw new Error('LXX(칠십인역)는 구약에만 제공됩니다');
-      return fetchOriginalLxx(bookId, chapter, verseStart, verseEnd);
-    case 'original': {
-      if (isOT(bookId)) {
-        return fetchFromBollsLife(bookId, chapter, verseStart, verseEnd, 'WLC');
-      }
-      return fetchOriginalGreek(bookId, chapter, verseStart, verseEnd);
-    }
-    default:
-      throw new Error(`지원되지 않는 번역본: ${translationId}`);
+  if (id === 'krv') {
+    return fetchLocalThenRemote('krv', 'KRV', bookId, chapter, verseStart, verseEnd);
   }
+  if (id === 'web') {
+    try {
+      return await fetchLocalThenRemote('web', 'WEB', bookId, chapter, verseStart, verseEnd);
+    } catch {
+      return fetchWebEmergency(book, chapter, verseStart, verseEnd);
+    }
+  }
+  if (id === 'lxx') {
+    if (!isOT(bookId)) throw new Error('LXX는 구약에만 제공됩니다.');
+    return fetchLxx(bookId, chapter, verseStart, verseEnd);
+  }
+  if (id === 'original') {
+    return isOT(bookId)
+      ? fetchLocalThenRemote('wlc', 'WLC', bookId, chapter, verseStart, verseEnd)
+      : fetchGreek(bookId, chapter, verseStart, verseEnd);
+  }
+  throw new Error(`지원되지 않는 번역본: ${translationId}`);
 }
 
 export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd) {
@@ -233,18 +205,21 @@ export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd
       return null;
     }
   };
-
   const [krv, web, original, lxx] = await Promise.all([
-    safe('krv'), safe('web'), safe('original'),
+    safe('krv'),
+    safe('web'),
+    safe('original'),
     isOT(bookId) ? safe('lxx') : Promise.resolve(null),
   ]);
   return { krv, web, original, lxx };
 }
 
 export async function fetchVerseCount(bookId, chapter) {
-  const bookNum = BOLLS_BOOK_MAP[bookId];
-  if (!bookNum) return null;
-  const verses = await fetchChapter('KRV', bookNum, chapter);
-  if (!Array.isArray(verses) || !verses.length) return null;
-  return verses[verses.length - 1].verse;
+  try {
+    const rows = await fetchLocalBibleChapter('krv', bookId, chapter);
+    return rows.at(-1)?.verse ?? null;
+  } catch {
+    const rows = await fetchBollsChapter('KRV', bookId, chapter);
+    return rows.at(-1)?.verse ?? null;
+  }
 }
