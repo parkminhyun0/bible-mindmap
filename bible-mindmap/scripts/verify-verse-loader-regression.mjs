@@ -72,7 +72,8 @@ check(apiSource.includes('aliasesForRange'), 'WEB 장절 alias가 bibleApi에 �
 check(apiSource.includes('chapterCache'), '장 단위 캐시가 제거되어 빠른 재전환 계약이 깨졌습니다.');
 check(apiSource.includes('cachedPromise'), '동일 장 중복 요청을 합치는 Promise 캐시가 없습니다.');
 check(apiSource.includes('Promise.all'), '개역한글·WEB·원어 병렬 프리로드가 제거되었습니다.');
-check(!apiSource.includes("cache: 'no-store'"), '모든 본문 요청에 no-store가 다시 적용되어 캐시가 무효화되었습니다.');
+check(apiSource.includes('{ noStore = false }'), '본문 요청의 기본 캐시 사용 계약이 제거되었습니다.');
+check(apiSource.includes("...(noStore ? { cache: 'no-store' } : {})"), '선택적 no-store 처리 방식이 변경되었습니다.');
 
 if (failures.length) {
   console.error(`✗ 구절 로더 회귀 검증 실패 (${failures.length}건)`);
