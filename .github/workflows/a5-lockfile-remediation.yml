@@ -1,0 +1,38 @@
+name: A5 one-time lockfile remediation
+
+on:
+  push:
+    branches:
+      - chatgpt/a5-security-deploy-audit
+    paths:
+      - .github/workflows/a5-lockfile-remediation.yml
+
+permissions:
+  contents: write
+
+jobs:
+  remediate-lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: chatgpt/a5-security-deploy-audit
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Apply npm audit lockfile-only fixes
+        working-directory: bible-mindmap
+        run: npm audit fix --package-lock-only
+      - name: Commit generated lockfile
+        run: |
+          if git diff --quiet -- bible-mindmap/package-lock.json; then
+            echo "No lockfile change required"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bible-mindmap/package-lock.json
+          git commit -m "fix(security): refresh vulnerable development lock entries"
+          git push origin HEAD:chatgpt/a5-security-deploy-audit
