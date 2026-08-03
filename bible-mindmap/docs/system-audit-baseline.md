@@ -28,19 +28,21 @@
 5. browser smoke job의 lexicon 생성 누락 — **A1 수정 완료**, 테스트 서버와 실제 브라우저 검증 성공.
 6. 성경 registry·curated·관찰카드·정경 usage 역방향 검증 공백 — **A2 수정 완료**, 66권·1,189장 교차 검증.
 7. 사용자 매뉴얼의 초기 포커스·Tab 순환·Escape·모바일 스크롤 잠금·포커스 복귀 공백 — **A3 수정 완료**, 전체 Chromium smoke 11개 통과.
-8. `npm ci` 결과 고위험 취약점 1건 — **A5 보안 감사 대상**.
-9. GitHub Actions의 Node 20 action-runtime 경고 — **A5 CI 현대화 대상**.
+8. NVIDIA PoC가 4문서·4직접질의만 사용해 1.00 점수가 과도하게 쉬우며 오탐을 측정하지 않음 — **A4 처리 중**.
+9. `npm ci` 결과 고위험 취약점 1건 — **A5 보안 감사 대상**.
+10. GitHub Actions의 Node 20 action-runtime 경고 — **A5 CI 현대화 대상**.
 
-## A3 모바일·접근성 완료 증거
+## A4 검색·NVIDIA 품질 감사 범위
 
-- 사용자 매뉴얼 데스크톱 초기 포커스와 Tab/Shift+Tab 순환
-- Escape 닫기와 실제 실행 버튼 포커스 복귀
-- 모바일 body·html overflow/overscroll 잠금과 원상 복구
-- 자료 추가 시트를 언마운트하지 않고 매뉴얼을 상위 레이어로 유지
-- 390×844 viewport 안에 전체 매뉴얼 유지
-- 기존 드래그·리사이즈·최소화·가로 내비게이션·본문 내부 스크롤 보존
-- 문맥 성경·병렬 연구·매뉴얼을 포함한 Chromium smoke 11개 통과
-- 오래된 PR #70은 최신 main 기반 PR #87로 대체 종료
+- 승인 정경 평가 corpus를 4문서에서 12문서, 질의를 4개에서 16개로 확장
+- 직접 키워드·의미 바꿔쓰기·두 주제 연결(multi-hop) 질의를 별도 segment로 평가
+- 각 질의에 헷갈리기 쉬운 hard-negative 문서를 지정하고 상위 3개 오탐률 측정
+- 키워드 기준선·NVIDIA 벡터 단독·Hybrid 결과를 분리해 Embedding의 실제 의미 검색 기여 확인
+- Recall@3·MRR·nDCG@3·실패율·p95와 함께 hard-negative rate 하드 게이트 적용
+- 모든 평가 문서에 3개 이상 성경 출처와 `approvedForPoc` 메타데이터 요구
+- 평가 revision·문서 ID·질의 수·오탐 수가 2048/384 보고서 사이에서 다르면 비교 차단
+- 384차원은 Recall·순위·실패율뿐 아니라 오탐률도 2048보다 나빠지지 않을 때만 추천
+- 기존 DB와 production 인덱스는 자동 변경하지 않으며 실제 endpoint 확장 실측은 수동 workflow에서만 실행
 
 ## 운영 원칙
 
