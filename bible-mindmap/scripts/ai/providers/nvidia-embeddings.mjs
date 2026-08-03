@@ -1,4 +1,4 @@
-import { loadNvidiaConfig } from './nvidia.mjs';
+import { loadNvidiaTransportConfig } from './nvidia.mjs';
 import { normalizeEmbeddingResult, validateEmbeddingInput } from '../retrieval/embedding-contract.mjs';
 
 export async function createNvidiaEmbeddings({
@@ -10,7 +10,7 @@ export async function createNvidiaEmbeddings({
 }) {
   if (typeof fetchImpl !== 'function') throw new Error('fetch is unavailable');
   const input = validateEmbeddingInput({ texts, task });
-  const config = loadNvidiaConfig(env);
+  const config = loadNvidiaTransportConfig(env);
   const model = env.NVIDIA_EMBEDDING_MODEL_ID?.trim();
   if (!model) throw new Error('NVIDIA_EMBEDDING_MODEL_ID is required in the server environment');
 
@@ -29,6 +29,7 @@ export async function createNvidiaEmbeddings({
         input: input.texts,
         input_type: input.task === 'query' ? 'query' : 'passage',
         encoding_format: 'float',
+        truncate: 'NONE',
       }),
       signal: controller.signal,
     });
@@ -46,7 +47,7 @@ export async function createNvidiaEmbeddings({
     }
 
     const vectors = Array.isArray(body?.data)
-      ? body.data.sort((a, b) => (a.index ?? 0) - (b.index ?? 0)).map((item) => item.embedding)
+      ? [...body.data].sort((a, b) => (a.index ?? 0) - (b.index ?? 0)).map((item) => item.embedding)
       : null;
     if (!vectors || vectors.length !== input.texts.length) {
       throw new Error('NVIDIA embedding response count did not match input count');
