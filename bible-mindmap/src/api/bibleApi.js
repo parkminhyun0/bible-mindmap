@@ -122,18 +122,19 @@ async function fetchLocalThenRemote(sourceId, code, bookId, chapter, verseStart,
   }
 }
 
-async function fetchGreekChapter(bookId, chapter) {
-  return chapterPromise(`gnt:${bookId}:${chapter}`, () =>
-    fetchJsonWithRetry(`${BASE}data/lex/gnt/${bookId}/${chapter}.json`));
+async function fetchOriginalChapter(corpus, bookId, chapter) {
+  return chapterPromise(`${corpus}:${bookId}:${chapter}`, () =>
+    fetchJsonWithRetry(`${BASE}data/lex/${corpus}/${bookId}/${chapter}.json`));
 }
 
-async function fetchGreek(bookId, chapter, verseStart, verseEnd) {
-  const data = await fetchGreekChapter(bookId, chapter);
+async function fetchOriginalFromLex(corpus, bookId, chapter, verseStart, verseEnd) {
+  const data = await fetchOriginalChapter(corpus, bookId, chapter);
   const rows = [];
   for (let verse = verseStart; verse <= verseEnd; verse += 1) {
     const words = data?.[String(verse)];
     if (Array.isArray(words) && words.length) {
-      rows.push({ verse, text: words.map((word) => word.w).filter(Boolean).join(' ').trim() });
+      const text = words.map((word) => word.w).filter(Boolean).join(' ').trim();
+      if (text) rows.push({ verse, text });
     }
   }
   return formatRows(rows, verseStart, verseEnd);
@@ -190,9 +191,7 @@ export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translat
     return fetchLxx(bookId, chapter, verseStart, verseEnd);
   }
   if (id === 'original') {
-    return isOT(bookId)
-      ? fetchLocalThenRemote('wlc', 'WLC', bookId, chapter, verseStart, verseEnd)
-      : fetchGreek(bookId, chapter, verseStart, verseEnd);
+    return fetchOriginalFromLex(isOT(bookId) ? 'hot' : 'gnt', bookId, chapter, verseStart, verseEnd);
   }
   throw new Error(`지원되지 않는 번역본: ${translationId}`);
 }
