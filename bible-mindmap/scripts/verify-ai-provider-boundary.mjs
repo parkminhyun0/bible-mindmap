@@ -43,6 +43,15 @@ else {
   }
 }
 
+const rerankerPath = path.join(root, 'scripts/ai/providers/nvidia-reranker.mjs');
+if (!fs.existsSync(rerankerPath)) errors.push('scripts/ai/providers/nvidia-reranker.mjs 누락');
+else {
+  const reranker = fs.readFileSync(rerankerPath, 'utf8');
+  for (const required of ['loadNvidiaTransportConfig', 'NVIDIA_RERANKER_MODEL_ID', 'AbortController', 'authorization']) {
+    if (!reranker.includes(required)) errors.push(`nvidia reranker 필수 서버 경계 누락: ${required}`);
+  }
+}
+
 if (process.argv.includes('--self-test')) {
   const fixture = 'const key = import.meta.env.VITE_NVIDIA_API_KEY;';
   if (!fixture.includes('VITE_NVIDIA')) errors.push('self-test fixture failed');
@@ -55,4 +64,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`✓ AI provider 경계 통과 · 클라이언트 파일 ${sourceFiles.length}개 검사 · 비밀키/직접 endpoint 없음`);
+console.log(`✓ AI provider 경계 통과 · 클라이언트 파일 ${sourceFiles.length}개 검사 · 비밀키/직접 endpoint 없음 · reranker 서버 전용`);
