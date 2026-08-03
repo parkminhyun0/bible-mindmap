@@ -34,6 +34,12 @@ jobs:
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
 
+      - name: Build local KRV WEB WLC corpus
+        run: node scripts/build-local-bible-texts.mjs
+
+      - name: Verify 66-book translation corpus
+        run: node scripts/verify-translation-corpus.mjs
+
       - name: Verify curated chapter hard gates
         run: node scripts/verify-curated-chapters.mjs
 
