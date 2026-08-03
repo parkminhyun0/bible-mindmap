@@ -45,6 +45,12 @@ jobs:
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
+      - name: Build local KRV WEB WLC corpus
+        run: node scripts/build-local-bible-texts.mjs
+
+      - name: Verify all 66-book translation files and Romans 16 regression
+        run: node scripts/verify-translation-corpus.mjs
+
       - name: Build complete OT/NT biblical places database
         run: npm run build:places
 
@@ -137,14 +143,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # notion-live-update.mjs 의 git log -5(최근 이력)용
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # NOTION_API_TOKEN 시크릿이 설정된 경우에만 노션 자동 로그를 갱신한다.
-      # 시크릿이 없으면 스크립트가 조용히 skip 하므로 이 잡이 배포를 실패시키지 않는다.
       - name: Update Notion CI 자동 배포 로그
         working-directory: bible-mindmap
         env:
