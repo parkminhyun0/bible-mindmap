@@ -14,6 +14,7 @@ export default function BackgroundNodeFrame({
   children,
 }) {
   const { deleteElements } = useReactFlow();
+  const resizeMinWidth = Math.max(minWidth, nodeKind === 'verse' ? 430 : 280);
   const resizeMinHeight = Math.max(minHeight, nodeKind === 'verse' ? 220 : 140);
 
   const handleClose = (event) => {
@@ -29,7 +30,7 @@ export default function BackgroundNodeFrame({
           className="nodrag nopan at-context-node-resize-control"
           position="bottom-right"
           color={accent}
-          minWidth={minWidth}
+          minWidth={resizeMinWidth}
           minHeight={resizeMinHeight}
           maxWidth={1200}
           maxHeight={900}
