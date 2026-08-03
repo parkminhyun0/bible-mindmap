@@ -69,6 +69,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build Strong and lexicon definitions
+        run: npm run build:lexicon
+
       - name: Install Chromium only
         run: npx playwright install chromium
 
