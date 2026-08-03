@@ -181,12 +181,16 @@ test.describe('모바일 모달 계약', () => {
       htmlOverscroll: 'none',
     });
 
-    const bounds = await dialog.boundingBox();
-    expect(bounds).not.toBeNull();
-    expect(bounds.x).toBeGreaterThanOrEqual(-SUBPIXEL_TOLERANCE);
-    expect(bounds.y).toBeGreaterThanOrEqual(-SUBPIXEL_TOLERANCE);
-    expect(bounds.x + bounds.width).toBeLessThanOrEqual(390 + SUBPIXEL_TOLERANCE);
-    expect(bounds.y + bounds.height).toBeLessThanOrEqual(844 + SUBPIXEL_TOLERANCE);
+    // The shell has a short translateY entrance animation. Assert the final
+    // layout boundary rather than sampling an intermediate animation frame.
+    await expect.poll(async () => {
+      const bounds = await dialog.boundingBox();
+      return Boolean(bounds
+        && bounds.x >= -SUBPIXEL_TOLERANCE
+        && bounds.y >= -SUBPIXEL_TOLERANCE
+        && bounds.x + bounds.width <= 390 + SUBPIXEL_TOLERANCE
+        && bounds.y + bounds.height <= 844 + SUBPIXEL_TOLERANCE);
+    }).toBe(true);
     await assertFocusCycle(page, dialog);
 
     await page.keyboard.press('Escape');
