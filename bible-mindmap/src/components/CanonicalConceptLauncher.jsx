@@ -1,4 +1,6 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useCallback, useState } from 'react';
+import useMobile from '../hooks/useMobile';
+import useModalDialog from '../hooks/useModalDialog';
 
 const CanonicalConceptModal = lazy(() => import('./CanonicalConceptModal'));
 
@@ -10,7 +12,19 @@ const CanonicalConceptModal = lazy(() => import('./CanonicalConceptModal'));
  */
 export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
+  const isMobile = useMobile();
   const isRail = variant === 'rail';
+  const closeModal = useCallback(() => setOpen(false), []);
+
+  // CanonicalConceptModal is a large legacy portal. During the staged P1
+  // migration, attach the shared lifecycle through its stable dialog label
+  // without touching research/data rendering or nested popup state.
+  useModalDialog({
+    dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
+    onClose: closeModal,
+    lockScroll: isMobile,
+    active: open,
+  });
 
   const buttonStyle = isRail
     ? {
@@ -39,6 +53,8 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
         type="button"
         data-research-tool="canonical-concept-global"
         aria-label="정경 추적 핵심 개념 열기"
+        aria-haspopup="dialog"
+        aria-expanded={open}
         title="핵심 개념이 창세기→요한계시록으로 계시·성취되는 흐름"
         onClick={() => setOpen(true)}
         style={buttonStyle}
@@ -49,7 +65,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
       {open && (
         <Suspense fallback={<div className="deferred-feature-loading">정경 추적 개념을 불러오는 중…</div>}>
-          <CanonicalConceptModal onClose={() => setOpen(false)} />
+          <CanonicalConceptModal onClose={closeModal} />
         </Suspense>
       )}
     </>
