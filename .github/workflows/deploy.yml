@@ -33,6 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install Chromium for P0 regression tests
+        run: npx playwright install --with-deps chromium
+
+      - name: Run P0 browser regression baseline
+        run: npm run test:p0
+
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
