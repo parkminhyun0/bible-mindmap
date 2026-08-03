@@ -2,7 +2,7 @@ import { lazy, Suspense, useState, useEffect, useRef } from 'react';
 import BibleSearch from './BibleSearch';
 import useMobile from '../hooks/useMobile';
 import { searchBiblicalPerson } from '../api/wikidataApi';
-import { BIBLICAL_PERIODS } from '../data/biblicalPeriods';
+import { BIBLICAL_PERIOD_GROUPS, BIBLICAL_PERIODS } from '../data/biblicalPeriods';
 import { getBibleTags } from '../data/bibleReferences';
 import { searchPlacesCombined, getPlacesByReferenceCombined, loadPlacesIndex } from '../data/placesIndex';
 import { detectInputMode } from '../utils/wordSearch';
@@ -55,20 +55,51 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
   const [bgTestament, setBgTestament] = useState('all');
   const debounceRef = useRef(null);
 
-  // period 상태
+  // 시대 3단계 분류 상태: 대분류(구약·신약) → 중분류(역사 구간) → 소분류(개별 시대)
+  const [selectedPeriodGroupId, setSelectedPeriodGroupId] = useState(BIBLICAL_PERIOD_GROUPS[0].id);
   const [selectedPeriodId, setSelectedPeriodId] = useState(BIBLICAL_PERIODS[0].id);
 
   useEffect(() => {
     if (tab !== 'period') return;
+    const visibleGroups = BIBLICAL_PERIOD_GROUPS.filter(
+      (group) => bgTestament === 'all'
+        || group.testament === 'both'
+        || group.testament === bgTestament,
+    );
+    const selectedPeriod = BIBLICAL_PERIODS.find((period) => period.id === selectedPeriodId);
+    const periodGroupIsVisible = visibleGroups.some((group) => group.id === selectedPeriod?.group);
+    const nextGroupId = visibleGroups.some((group) => group.id === selectedPeriodGroupId)
+      ? selectedPeriodGroupId
+      : periodGroupIsVisible
+        ? selectedPeriod.group
+        : visibleGroups[0]?.id;
+
+    if (nextGroupId && nextGroupId !== selectedPeriodGroupId) {
+      setSelectedPeriodGroupId(nextGroupId);
+      return;
+    }
+
     const visiblePeriods = BIBLICAL_PERIODS.filter(
-      (period) => bgTestament === 'all'
-        || period.testament === 'both'
-        || period.testament === bgTestament,
+      (period) => period.group === nextGroupId
+        && (bgTestament === 'all'
+          || period.testament === 'both'
+          || period.testament === bgTestament),
     );
     if (!visiblePeriods.some((period) => period.id === selectedPeriodId)) {
       setSelectedPeriodId(visiblePeriods[0]?.id || BIBLICAL_PERIODS[0].id);
     }
-  }, [bgTestament, selectedPeriodId, tab]);
+  }, [bgTestament, selectedPeriodGroupId, selectedPeriodId, tab]);
+
+  const handlePeriodGroupChange = (groupId) => {
+    setSelectedPeriodGroupId(groupId);
+    const firstPeriod = BIBLICAL_PERIODS.find(
+      (period) => period.group === groupId
+        && (bgTestament === 'all'
+          || period.testament === 'both'
+          || period.testament === bgTestament),
+    );
+    if (firstPeriod) setSelectedPeriodId(firstPeriod.id);
+  };
 
   // 탭 전환 시 배경 노드 상태 초기화
   useEffect(() => {
@@ -419,15 +450,17 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 </div>
               )}
 
-              {tab === 'period' && (() => {
-                const visiblePeriods = BIBLICAL_PERIODS.filter((period) => bgTestament === 'all' || period.testament === 'both' || period.testament === bgTestament);
-                const p = visiblePeriods.find((period) => period.id === selectedPeriodId) || visiblePeriods[0];
-                return <div data-background-panel="period" style={{ display:'flex', flexDirection:'column', gap:8 }}>
-                  <select value={p?.id || ''} onChange={(e) => setSelectedPeriodId(e.target.value)} style={{ ...inputStyle, minHeight:44 }}>{visiblePeriods.map((period) => <option key={period.id} value={period.id}>{period.name} · {period.range}</option>)}</select>
-                  {p && <div style={{ padding:'9px 10px', borderRadius:8, background:'#faf5ff', border:'1px solid #e9d5ff', fontSize:11, color:'#581c87', lineHeight:1.55 }}><div><b>시대</b> {p.name}</div><div><b>범위</b> {p.range}</div>{p.events?.length > 0 && <div style={{ marginTop:5 }}><b>핵심 사건</b><div>{p.events.slice(0,6).join(' · ')}</div></div>}{p.certainty && <div style={{ marginTop:5 }}><b>연대 성격</b> {p.certainty}</div>}</div>}
-                  <button onClick={() => { handleAdd(); onMobileClose(); }} disabled={!p} style={{ ...btnStyle, minHeight:44, background:'#6d28d9', opacity:p ? 1 : .4 }}>+ 선택 시대 추가</button>
-                </div>;
-              })()}
+              {tab === 'period' && (
+                <PeriodHierarchySelector
+                  testament={bgTestament}
+                  onTestamentChange={setBgTestament}
+                  groupId={selectedPeriodGroupId}
+                  onGroupChange={handlePeriodGroupChange}
+                  periodId={selectedPeriodId}
+                  onPeriodChange={setSelectedPeriodId}
+                  compact
+                />
+              )}
             </div>
           </div>
 
@@ -882,45 +915,16 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           </div>
         )}
 
-        {/* 시대 선택 */}
+        {/* 시대 선택: 대분류 → 중분류 → 소분류 */}
         {tab === 'period' && (
-          <div style={tabInputArea}>
-            <select
-              value={selectedPeriodId}
-              onChange={(e) => setSelectedPeriodId(e.target.value)}
-              style={inputStyle}
-            >
-              {BIBLICAL_PERIODS
-                .filter((p) => bgTestament === 'all' || p.testament === 'both' || p.testament === bgTestament)
-                .map((p) => (
-                <option key={p.id} value={p.id}>{p.icon} {p.name} — {p.range}</option>
-              ))}
-            </select>
-            {(() => {
-              const p = BIBLICAL_PERIODS.find((p) => p.id === selectedPeriodId);
-              return p ? (
-                <div style={{ fontSize: 11, color: '#4338ca', lineHeight: 1.6, padding: '4px 0' }}>
-                  {p.events.map((ev, i) => <div key={i}>• {ev}</div>)}
-                  <div style={{ marginTop: 5, fontSize: 10, fontWeight: 700, color: 'var(--at-label)' }}>
-                    ✓ 근거 본문
-                  </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, marginTop: 3 }}>
-                    {(p.bibleTags || []).map((tag) => (
-                      <span key={tag} style={{
-                        padding: '2px 6px', borderRadius: 8, fontSize: 9,
-                        background: '#eef2ff', color: '#4338ca', border: '1px solid #c7d2fe',
-                      }}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ) : null;
-            })()}
-            <button onClick={handleAdd} style={{ ...btnStyle, background: '#6d28d9' }}>
-              + 시대 추가
-            </button>
-          </div>
+          <PeriodHierarchySelector
+            testament={bgTestament}
+            onTestamentChange={setBgTestament}
+            groupId={selectedPeriodGroupId}
+            onGroupChange={handlePeriodGroupChange}
+            periodId={selectedPeriodId}
+            onPeriodChange={setSelectedPeriodId}
+          />
         )}
       </div>
 
@@ -1009,6 +1013,186 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     </>
   );
 }
+
+
+function PeriodHierarchySelector({
+  testament,
+  onTestamentChange,
+  groupId,
+  onGroupChange,
+  periodId,
+  onPeriodChange,
+  compact = false,
+}) {
+  const visibleGroups = BIBLICAL_PERIOD_GROUPS.filter(
+    (group) => testament === 'all'
+      || group.testament === 'both'
+      || group.testament === testament,
+  );
+  const activeGroup = visibleGroups.find((group) => group.id === groupId) || visibleGroups[0];
+  const visiblePeriods = BIBLICAL_PERIODS.filter(
+    (period) => period.group === activeGroup?.id
+      && (testament === 'all'
+        || period.testament === 'both'
+        || period.testament === testament),
+  );
+  const activePeriod = visiblePeriods.find((period) => period.id === periodId) || visiblePeriods[0];
+  const certaintyLabel = {
+    confirmed: '역사 확인',
+    estimated: '연대 추정',
+    debated: '연대 논쟁',
+  };
+
+  return (
+    <div data-background-panel="period" style={{
+      display: 'flex', flexDirection: 'column', gap: compact ? 8 : 9,
+      padding: compact ? 0 : '4px 0',
+    }}>
+      <div style={periodStepHeaderStyle}>
+        <span style={periodStepNumberStyle}>1</span>
+        <span><b>대분류</b> · 성경 구분</span>
+      </div>
+      <div role="group" aria-label="시대 대분류" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 5 }}>
+        {[
+          ['all', '전체'],
+          ['ot', '구약'],
+          ['nt', '신약'],
+        ].map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            onClick={() => onTestamentChange(key)}
+            aria-pressed={testament === key}
+            style={{
+              minHeight: 40, padding: '7px 4px', borderRadius: 8,
+              border: '1px solid var(--at-separator)', cursor: 'pointer',
+              background: testament === key ? '#6d28d9' : 'var(--at-surface-2)',
+              color: testament === key ? '#fff' : 'var(--at-label-2)',
+              fontSize: 12, fontWeight: 750, touchAction: 'manipulation',
+            }}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
+      <div style={periodStepHeaderStyle}>
+        <span style={periodStepNumberStyle}>2</span>
+        <span><b>중분류</b> · 주요 역사 구간</span>
+      </div>
+      <div role="group" aria-label="시대 중분류" style={{
+        display: 'grid', gridTemplateColumns: compact ? '1fr' : '1fr',
+        gap: 5, maxHeight: compact ? '30vh' : 224, overflowY: 'auto',
+        overscrollBehavior: 'contain', WebkitOverflowScrolling: 'touch',
+        paddingRight: 2,
+      }}>
+        {visibleGroups.map((group) => (
+          <button
+            key={group.id}
+            type="button"
+            onClick={() => onGroupChange(group.id)}
+            aria-pressed={activeGroup?.id === group.id}
+            style={{
+              display: 'flex', alignItems: 'center', gap: 7,
+              width: '100%', minHeight: 42, padding: '8px 10px',
+              borderRadius: 8, border: '1px solid',
+              borderColor: activeGroup?.id === group.id ? '#8b5cf6' : 'var(--at-separator)',
+              background: activeGroup?.id === group.id ? '#f3e8ff' : 'var(--at-surface-2)',
+              color: activeGroup?.id === group.id ? '#581c87' : 'var(--at-label-2)',
+              cursor: 'pointer', textAlign: 'left', fontSize: 11.5,
+              fontWeight: activeGroup?.id === group.id ? 800 : 650,
+              touchAction: 'manipulation',
+            }}
+          >
+            <span aria-hidden="true" style={{ fontSize: 16 }}>{group.icon}</span>
+            <span>{group.label}</span>
+          </button>
+        ))}
+      </div>
+
+      <div style={periodStepHeaderStyle}>
+        <span style={periodStepNumberStyle}>3</span>
+        <span><b>소분류</b> · 세부 시대</span>
+      </div>
+      <select
+        aria-label="세부 시대 선택"
+        value={activePeriod?.id || ''}
+        onChange={(event) => onPeriodChange(event.target.value)}
+        style={{ ...inputStyle, minHeight: 44, fontWeight: 700 }}
+      >
+        {visiblePeriods.map((period) => (
+          <option key={period.id} value={period.id}>
+            {period.icon} {period.name} — {period.range}
+          </option>
+        ))}
+      </select>
+
+      {activePeriod && (
+        <div style={{
+          padding: '10px 11px', borderRadius: 9,
+          background: '#faf5ff', border: '1px solid #e9d5ff',
+          fontSize: 11, color: '#581c87', lineHeight: 1.55,
+          userSelect: 'text',
+        }}>
+          <div style={{ fontWeight: 850, marginBottom: 3 }}>
+            {activePeriod.icon} {activePeriod.name}
+          </div>
+          <div><b>연대</b> · {activePeriod.range}</div>
+          {activePeriod.summary && <div style={{ marginTop: 5 }}>{activePeriod.summary}</div>}
+          {activePeriod.events?.length > 0 && (
+            <div style={{ marginTop: 6 }}>
+              <b>핵심 사건</b>
+              <div>{activePeriod.events.slice(0, 6).join(' · ')}</div>
+            </div>
+          )}
+          <div style={{ marginTop: 6 }}>
+            <b>연대 성격</b> · {certaintyLabel[activePeriod.certainty] || activePeriod.certainty}
+          </div>
+          {activePeriod.bibleTags?.length > 0 && (
+            <div style={{ marginTop: 6 }}>
+              <b>근거 본문</b>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 3, marginTop: 3 }}>
+                {activePeriod.bibleTags.map((tag) => (
+                  <span key={tag} style={{
+                    padding: '2px 6px', borderRadius: 8, fontSize: 9,
+                    background: '#eef2ff', color: '#4338ca',
+                    border: '1px solid #c7d2fe',
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={() => {
+          if (!activePeriod) return;
+          onPeriodChange(activePeriod.id);
+        }}
+        disabled={!activePeriod}
+        aria-label={activePeriod ? `${activePeriod.name} 선택 완료` : '선택 가능한 시대 없음'}
+        style={{ display: 'none' }}
+      />
+    </div>
+  );
+}
+
+const periodStepHeaderStyle = {
+  display: 'flex', alignItems: 'center', gap: 6,
+  marginTop: 1, color: 'var(--at-label-2)',
+  fontSize: 10.5, letterSpacing: '.01em',
+};
+
+const periodStepNumberStyle = {
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+  width: 20, height: 20, borderRadius: 999,
+  background: '#6d28d9', color: '#fff',
+  fontSize: 10, fontWeight: 850, flexShrink: 0,
+};
 
 const TABS = [
   { key: 'verse',  label: '구절', icon: '📖' },
