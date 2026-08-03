@@ -1,0 +1,109 @@
+name: NVIDIA Embedding Dimension Bake-off
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nvidia-embedding-dimension-bakeoff
+  cancel-in-progress: false
+
+jobs:
+  evaluate:
+    name: Evaluate ${{ matrix.dimensions }} dimensions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        dimensions: [2048, 384]
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NVIDIA_BASE_URL: https://integrate.api.nvidia.com/v1
+      NVIDIA_TIMEOUT_MS: "120000"
+      NVIDIA_EMBEDDING_MODEL_ID: nvidia/llama-nemotron-embed-1b-v2
+      NVIDIA_EMBEDDING_DIMENSIONS: ${{ matrix.dimensions }}
+      REPORT_PATH: reports/nvidia-embedding-dimension-bakeoff/run-${{ github.run_id }}-${{ matrix.dimensions }}.json
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+
+      - name: Verify NVIDIA secret
+        shell: bash
+        run: |
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "::error::Repository secret NVIDIA_API_KEY is not configured. Add it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify model policy and PoC safety
+        run: |
+          npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-embedding-poc
+          npm run verify:nvidia-embedding-dimension-bakeoff
+
+      - name: Execute limited NVIDIA Embedding PoC
+        run: npm run poc:nvidia-embedding:execute -- --output="$REPORT_PATH"
+
+      - name: Upload dimension report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nvidia-embedding-${{ matrix.dimensions }}d-${{ github.run_id }}
+          path: bible-mindmap/${{ env.REPORT_PATH }}
+          if-no-files-found: error
+          retention-days: 30
+
+  compare:
+    name: Compare 2048 vs 384
+    needs: evaluate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: bible-mindmap
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download dimension reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: nvidia-embedding-*d-${{ github.run_id }}
+          path: bible-mindmap/reports/nvidia-embedding-dimension-bakeoff/input
+          merge-multiple: true
+
+      - name: Compare quality, latency, and storage
+        run: >-
+          node scripts/ai/poc/compare-nvidia-embedding-dimensions.mjs
+          --input-dir=reports/nvidia-embedding-dimension-bakeoff/input
+          --output=reports/nvidia-embedding-dimension-bakeoff/comparison-${{ github.run_id }}.json
+
+      - name: Upload comparison report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nvidia-embedding-dimension-comparison-${{ github.run_id }}
+          path: bible-mindmap/reports/nvidia-embedding-dimension-bakeoff/comparison-${{ github.run_id }}.json
+          if-no-files-found: error
+          retention-days: 30
