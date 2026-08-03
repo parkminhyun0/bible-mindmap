@@ -1,5 +1,6 @@
 import { createNvidiaEmbeddings } from './ai/providers/nvidia-embeddings.mjs';
 import { describeNvidiaEmbeddingPoc, runNvidiaEmbeddingPoc } from './ai/poc/nvidia-embedding-poc.mjs';
+import { DEFAULT_NVIDIA_EMBEDDING_MODEL_ID } from './ai/poc/nvidia-embedding-model-policy.mjs';
 
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
@@ -23,20 +24,26 @@ const embed = (input) => createNvidiaEmbeddings({ ...input, env, fetchImpl });
 let clock = 0;
 const report = await runNvidiaEmbeddingPoc({ embed, env, now: () => { clock += 2; return clock; } });
 const dryRun = describeNvidiaEmbeddingPoc(env);
+const defaultDryRun = describeNvidiaEmbeddingPoc({});
 
 assert(requests.length === 2, 'PoC must use one document batch and one query batch');
 assert(requests[0]?.url === 'https://example.test/v1/embeddings', 'PoC must call only the configured embeddings endpoint');
 assert(requests[0]?.body?.input_type === 'passage', 'document embeddings must use passage input_type');
 assert(requests[1]?.body?.input_type === 'query', 'query embeddings must use query input_type');
+assert(requests.every((request) => request.body.modality === 'text'), 'PoC must identify all inputs as text');
 assert(requests.every((request) => request.body.encoding_format === 'float'), 'PoC must request float embeddings');
 assert(requests.every((request) => request.body.truncate === 'NONE'), 'PoC must reject silent truncation');
 assert(requests.every((request) => request.authorization === 'Bearer test-key'), 'PoC must use server bearer authentication');
+assert(requests.every((request) => !('dimensions' in request.body)), 'latest candidate must use its server default dimensions');
 assert(!('NVIDIA_MODEL_ID' in env), 'embedding PoC must not require a chat model id');
+assert(report.schemaVersion === 2, 'PoC report must use the model-policy-aware schema');
 assert(report.embedding.model === env.NVIDIA_EMBEDDING_MODEL_ID && report.embedding.dimension === 8, 'report must preserve model and dimension');
+assert(report.embedding.modelTier === 'latest-candidate' && report.embedding.supportsKorean === null, 'report must preserve model policy metadata');
 assert(report.corpus.count === 4 && report.corpus.sourceRefs === 12, 'PoC corpus size and sources must be explicit');
 assert(report.candidate.recallAtK === 1 && report.candidate.mrr === 1 && report.candidate.ndcgAtK === 1, 'mock PoC retrieval metrics must equal 1');
 assert(report.gate.passed === true && report.existingDbModified === false, 'PoC must pass quality gate without DB mutation');
 assert(dryRun.requiresExplicitExecute === true && dryRun.writesExistingDb === false, 'dry-run must be safe by default');
+assert(defaultDryRun.model === DEFAULT_NVIDIA_EMBEDDING_MODEL_ID && defaultDryRun.supportsKorean === true, 'dry-run default must select the approved Korean model');
 assert(!JSON.stringify(report).includes('test-key'), 'PoC report must never contain the API key');
 
 if (errors.length) { console.error(`✗ NVIDIA Embedding PoC verifier failed (${errors.length})`); errors.forEach((error) => console.error(`  - ${error}`)); process.exit(1); }
