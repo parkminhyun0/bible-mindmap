@@ -10,6 +10,7 @@ html, body {
   min-height: 100dvh;
   overflow: hidden;
 }
+
 #root {
   margin: 0;
   padding: 0;
@@ -718,6 +719,13 @@ body { background: var(--at-bg); }
   --at-glass-thick: rgba(255,255,255,0.85);
   --at-glass-blur: saturate(180%) blur(20px);
   --at-scrim: rgba(0,0,0,0.28);
+  /* Overlay layer contract: keep feature windows out of one-off z-index races. */
+  --at-layer-modal-inline: 1200;
+  --at-layer-mobile-sheet: 1201;
+  --at-layer-modal-portal: 1250;
+  --at-layer-dialog-nested: 2000;
+  --at-layer-toast: 3000;
+  --at-layer-critical: 99999;
   --at-shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
   --at-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
   --at-shadow-md: 0 6px 20px -4px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.05);
@@ -897,4 +905,3 @@ html[data-theme='dark'] {
     background: linear-gradient(135deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
   }
 }
-

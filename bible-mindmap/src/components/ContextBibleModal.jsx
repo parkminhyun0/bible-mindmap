@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import useMobile from '../hooks/useMobile';
+import useModalDialog from '../hooks/useModalDialog';
 import { OT_BOOKS, NT_BOOKS } from '../data/bibleBooks';
 import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/contextRegistry';
 import CrossrefPopup from './CrossrefPopup';
@@ -245,6 +246,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
   // ── 팝업 창 상태 (데스크톱 전용) ──────────────────────────────────────
   const [minimized, setMinimized] = useState(false);
+  const dialogRef = useRef(null);
   const [maximized, setMaximized] = useState(false);
   // 데스크톱 전체화면: modalInner를 뷰포트에 고정(뒤 래퍼 pos 무시)
   const MAXIMIZED_STYLE = { position: 'fixed', left: 10, top: 10, right: 10, bottom: 10, width: 'auto', height: 'auto', maxWidth: 'none', maxHeight: 'none', borderRadius: 16 };
@@ -950,7 +952,6 @@ export default function ContextBibleModal({ onClose, initialRef }) {
 
   useEffect(() => {
     const h = e => {
-      if (e.key === 'Escape') { onClose(); return; }
       const t = e.target;
       if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
       if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
@@ -963,7 +964,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
-  }, [onClose, moveVerse, moveChapter, isMobile]);
+  }, [moveVerse, moveChapter, isMobile]);
 
   // ── 핵심어 종단 추적 ─────────────────────────────────────────────────────
   const startThread = useCallback((strongs) => {
@@ -1002,24 +1003,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     }));
   }, [activeCh, activeRef.verse]);
 
-  // 모바일/태블릿: 모달이 열린 동안 뒤 페이지(런처·다른 책 목록) 스크롤·러버밴드 잠금.
-  // 관찰 카드/시트를 드래그할 때 배경이 딸려 올라와 노출되던 문제를 제거한다.
-  useEffect(() => {
-    if (!isMobile) return undefined;
-    const body = document.body;
-    const html = document.documentElement;
-    const prevBodyOverflow = body.style.overflow;
-    const prevHtmlOverflow = html.style.overflow;
-    const prevBodyOverscroll = body.style.overscrollBehavior;
-    body.style.overflow = 'hidden';
-    html.style.overflow = 'hidden';
-    body.style.overscrollBehavior = 'none';
-    return () => {
-      body.style.overflow = prevBodyOverflow;
-      html.style.overflow = prevHtmlOverflow;
-      body.style.overscrollBehavior = prevBodyOverscroll;
-    };
-  }, [isMobile]);
+  useModalDialog({ dialogRef, onClose, lockScroll: isMobile });
 
   // 데스크톱 폰트 사이즈 별칭 (모바일은 원본 크기 유지)
   const A = fontSizes.analysis;
@@ -1027,9 +1011,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   // ── 렌더 ──────────────────────────────────────────────────────────────
   const modalInner = (
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-label={`문맥 성경 · ${BOOK.ko || ''}`}
+        tabIndex={-1}
         className={`at-modal at-modal--context${isMobile ? ' at-modal--mobile h-screen-safe' : ''}`}
         style={{ background:'#ffffff',
           borderRadius: isMobile ? 0 : 12,
@@ -3541,4 +3527,3 @@ const stepValue = {
   borderRight: '1px solid rgba(212,153,79,.32)',
   background: 'rgba(255,251,243,.85)',
 };
-

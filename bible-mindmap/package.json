@@ -12,6 +12,7 @@
     "lint": "oxlint",
     "test:p0": "playwright test tests/p0-regression.spec.js --project=chromium",
     "test:p0:headed": "playwright test tests/p0-regression.spec.js --project=chromium --headed",
+    "test:p1:modal": "playwright test tests/p1-modal-accessibility.spec.js --project=chromium",
     "preview": "vite preview",
     "prebuild": "node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/audit-context-v2.mjs && node scripts/verify-biblical-periods.mjs && node scripts/verify-parallel-study.mjs && node scripts/verify-context-scaffolding.mjs && node scripts/verify-curated-chapters.mjs && node scripts/verify-doctrinal-safety.mjs && node scripts/verify-mobile-safety.mjs && node -e \"const fs=require('fs');const p='public/data/strongs-def/gnt/0.json';if(!fs.existsSync(p)){console.log('▶ lexicon 데이터 없음 — build-lexicon 실행');require('child_process').execSync('npm run build:lexicon',{stdio:'inherit'});}\" && node scripts/verify-chapter-card-markers.mjs && node scripts/verify-canonical-concepts.mjs",
     "predeploy": "npm run build:places && npm run build && cp -r landing/. dist/",
