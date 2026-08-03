@@ -11,6 +11,8 @@ const ROOT = path.resolve(__dirname, '..');
 const REPO_ROOT = path.resolve(ROOT, '..');
 const REGISTER_PATH = path.join(ROOT, 'docs', 'system-audit-residual-risks.json');
 const HUMAN_DOC_PATH = path.join(ROOT, 'docs', 'system-audit-residual-risks.md');
+const NVIDIA_EVIDENCE_PATH = path.join(ROOT, 'docs', 'evidence', 'nvidia-embedding-dimension-bakeoff-30842224158.json');
+const NVIDIA_DECISION_PATH = path.join(ROOT, 'docs', 'nvidia-embedding-dimension-decision.md');
 const errors = [];
 const fail = (message) => errors.push(message);
 const nonEmpty = (value) => typeof value === 'string' && value.trim().length > 0;
@@ -49,7 +51,7 @@ if (register.baseline?.openP1 !== 0) fail(`open P1 must be 0, found ${register.b
 
 const allowedSeverities = new Set(['P0', 'P1', 'P2', 'P3']);
 const allowedStatuses = new Set([
-  'pending-validation',
+  'resolved-validation',
   'planned-expansion',
   'monitored',
   'accepted-exception',
@@ -69,7 +71,9 @@ for (const risk of register.risks || []) {
   seenIds.add(risk.id);
   if (!allowedSeverities.has(risk.severity)) fail(`${risk.id}: invalid severity ${risk.severity}`);
   if (!allowedStatuses.has(risk.status)) fail(`${risk.id}: invalid status ${risk.status}`);
-  if (risk.severity === 'P0' || risk.severity === 'P1') fail(`${risk.id}: active ${risk.severity} risk is forbidden at A6 closure`);
+  if ((risk.severity === 'P0' || risk.severity === 'P1') && risk.status !== 'resolved-validation') {
+    fail(`${risk.id}: active ${risk.severity} risk is forbidden at audit closure`);
+  }
   if (!nonEmpty(risk.category)) fail(`${risk.id}: category is required`);
   if (!nonEmpty(risk.title)) fail(`${risk.id}: title is required`);
   if (!nonEmpty(risk.rationale)) fail(`${risk.id}: rationale is required`);
@@ -80,6 +84,14 @@ for (const risk of register.risks || []) {
 }
 for (const id of requiredIds) if (!seenIds.has(id)) fail(`required residual risk missing: ${id}`);
 for (const id of seenIds) if (!requiredIds.has(id)) fail(`unreviewed residual risk id: ${id}`);
+
+const nvidiaRisk = (register.risks || []).find((risk) => risk.id === 'A6-R001');
+if (nvidiaRisk?.status !== 'resolved-validation') fail('A6-R001 must be resolved-validation after the real endpoint bake-off');
+if (nvidiaRisk?.resolution?.runId !== 30842224158) fail('A6-R001 run ID must remain 30842224158');
+if (nvidiaRisk?.resolution?.selectedDimensions !== 2048) fail('A6-R001 must retain 2048 dimensions');
+if (nvidiaRisk?.resolution?.qualityMaintainedAt384 !== false) fail('A6-R001 must record that 384 quality was not maintained');
+if (nvidiaRisk?.resolution?.productionIndexChanged !== false) fail('A6-R001 must not change the production index');
+if (nvidiaRisk?.resolution?.existingDbModified !== false) fail('A6-R001 must not modify the existing DB');
 
 const conceptCount = Object.keys(CANONICAL_CONCEPTS).length;
 const usageCount = Object.keys(CANONICAL_USAGE_MAP || {}).length;
@@ -152,6 +164,38 @@ const comparisonSource = readText('scripts/ai/poc/compare-nvidia-embedding-dimen
 if (!comparisonSource.includes('requiresHumanApproval: true')) fail('NVIDIA recommendation must require human approval');
 if (!comparisonSource.includes('changesProductionIndex: false')) fail('NVIDIA comparison must not change the production index');
 
+if (!fs.existsSync(NVIDIA_EVIDENCE_PATH)) {
+  fail('NVIDIA dimension bake-off evidence is missing');
+} else {
+  try {
+    const evidence = JSON.parse(fs.readFileSync(NVIDIA_EVIDENCE_PATH, 'utf8'));
+    if (evidence.run?.id !== 30842224158) fail('NVIDIA evidence run ID changed');
+    if (evidence.run?.headSha !== '0c550ae60d0e4351601f011fccf354384c682faa') fail('NVIDIA evidence head SHA changed');
+    if (evidence.corpus?.documents !== 12 || evidence.corpus?.cases !== 16 || evidence.corpus?.hardNegatives !== 16) {
+      fail('NVIDIA evidence evaluation coverage changed');
+    }
+    if (evidence.results?.['2048']?.recallAt3 !== 1) fail('NVIDIA 2048 Recall@3 evidence changed');
+    if (evidence.results?.['384']?.recallAt3 !== 0.96875) fail('NVIDIA 384 Recall@3 evidence changed');
+    if (evidence.results?.['2048']?.hardNegativeRate !== 0.1875) fail('NVIDIA 2048 hard-negative evidence changed');
+    if (evidence.results?.['384']?.hardNegativeRate !== 0.375) fail('NVIDIA 384 hard-negative evidence changed');
+    if (evidence.comparison?.qualityMaintainedAt384 !== false) fail('NVIDIA evidence must reject 384 quality maintenance');
+    if (evidence.decision?.selectedDimensions !== 2048) fail('NVIDIA evidence must select 2048');
+    if (evidence.decision?.productionIndexChanged !== false) fail('NVIDIA evidence must not change production index');
+    if (evidence.decision?.existingDbModified !== false) fail('NVIDIA evidence must not modify existing DB');
+  } catch (error) {
+    fail(`NVIDIA dimension evidence parse failed: ${error.message}`);
+  }
+}
+
+if (!fs.existsSync(NVIDIA_DECISION_PATH)) fail('NVIDIA dimension decision document is missing');
+else {
+  const decisionDoc = fs.readFileSync(NVIDIA_DECISION_PATH, 'utf8');
+  if (!decisionDoc.includes('2048차원 유지')) fail('NVIDIA decision document must retain 2048 dimensions');
+  if (!decisionDoc.includes('운영 검색 인덱스와 기존 성경 DB는 자동 변경하지 않는다')) {
+    fail('NVIDIA decision document must preserve the production boundary');
+  }
+}
+
 if (!fs.existsSync(HUMAN_DOC_PATH)) {
   fail('human-readable residual risk document is missing');
 } else {
@@ -159,6 +203,7 @@ if (!fs.existsSync(HUMAN_DOC_PATH)) {
   for (const id of requiredIds) if (!humanDoc.includes(id)) fail(`human-readable document missing ${id}`);
   if (!humanDoc.includes('미해결 **P0: 0건**')) fail('human-readable P0 closure statement is missing');
   if (!humanDoc.includes('미해결 **P1: 0건**')) fail('human-readable P1 closure statement is missing');
+  if (!humanDoc.includes('활성 잔여 항목은 P2 2건, P3 4건')) fail('human-readable active risk counts are stale');
 }
 
 if (errors.length) {
@@ -167,9 +212,10 @@ if (errors.length) {
   process.exit(1);
 }
 
-const p2 = (register.risks || []).filter((risk) => risk.severity === 'P2').length;
-const p3 = (register.risks || []).filter((risk) => risk.severity === 'P3').length;
+const activeRisks = (register.risks || []).filter((risk) => risk.status !== 'resolved-validation');
+const p2 = activeRisks.filter((risk) => risk.severity === 'P2').length;
+const p3 = activeRisks.filter((risk) => risk.severity === 'P3').length;
 console.log(
-  `✓ A6 residual risks verified · open P0 0 · open P1 0 · P2 ${p2} · P3 ${p3} · `
-  + `canonical usage ${usageCount}/${conceptCount} · chapter markers ${observations.chapterCardMarkerMissing}/${observations.chapterCardMarkerChecked}`,
+  `✓ A6 residual risks verified · open P0 0 · open P1 0 · active P2 ${p2} · active P3 ${p3} · `
+  + `NVIDIA 2048 selected · canonical usage ${usageCount}/${conceptCount} · chapter markers ${observations.chapterCardMarkerMissing}/${observations.chapterCardMarkerChecked}`,
 );
