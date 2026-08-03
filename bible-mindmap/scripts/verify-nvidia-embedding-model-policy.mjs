@@ -53,7 +53,7 @@ if (fs.existsSync(workflowPath)) {
   assert(/^\s*workflow_dispatch:/m.test(workflow), 'PoC workflow must require workflow_dispatch');
   assert(!/^\s*(push|pull_request|schedule):/m.test(workflow), 'PoC workflow must not run automatically');
   assert(workflow.includes('secrets.NVIDIA_API_KEY'), 'PoC workflow must read NVIDIA_API_KEY from GitHub Actions secrets');
-  assert(workflow.includes('actions/upload-artifact@v4'), 'PoC workflow must preserve the JSON report as an artifact');
+  assert(workflow.includes('actions/upload-artifact@v7'), 'PoC workflow must preserve the JSON report with the approved artifact action');
   assert(workflow.includes('poc:nvidia-embedding:execute'), 'PoC workflow must explicitly execute the limited runner');
   assert(workflow.includes('contents: read'), 'PoC workflow permissions must remain read-only');
   for (const id of ids) assert(workflow.includes(id), `PoC workflow model choices must include ${id}`);

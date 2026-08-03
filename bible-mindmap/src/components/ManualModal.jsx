@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
 import { BUILD_COMMIT, buildTimeLabel } from '../buildInfo';
 
@@ -1257,7 +1258,7 @@ export default function ManualModal({ onClose }) {
 
   const activeData = SECTIONS.find((s) => s.id === activeSection);
 
-  return (
+  return createPortal((
     <div
       ref={modalRef}
       role="dialog"
@@ -1417,7 +1418,7 @@ export default function ManualModal({ onClose }) {
         />
       )}
     </div>
-  );
+  ), document.body);
 }
 
 const iconBtnStyle = {

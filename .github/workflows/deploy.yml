@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish deployment pending status
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             await github.rest.repos.createCommitStatus({
@@ -41,9 +41,9 @@ jobs:
       run:
         working-directory: bible-mindmap
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
@@ -52,50 +52,45 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 현재 lockfile에는 일부 Tiptap 런타임 패키지 엔트리가 누락될 수 있다.
-      # PR 검증과 동일한 보정으로 @tiptap/pm 버전에 맞춰 런타임을 정렬한다.
-      - name: Align missing Tiptap runtime packages
+      - name: Verify dependency integrity
+        run: npm run verify:dependency-integrity
+
+      - name: Block production high and critical vulnerabilities
+        shell: bash
         run: |
-          TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/pm/package.json').version")
-          MISSING=0
-          for pkg in \
-            @tiptap/react \
-            @tiptap/starter-kit \
-            @tiptap/extension-color \
-            @tiptap/extension-text-align \
-            @tiptap/extension-text-style \
-            @tiptap/extension-underline; do
-            if ! node -e "require.resolve('$pkg')" >/dev/null 2>&1; then
-              MISSING=1
-              break
-            fi
-          done
-          if [ "$MISSING" -eq 1 ]; then
-            echo "Tiptap lock entries incomplete; aligning runtime packages to ${TIPTAP_VERSION}"
-            npm install --no-save --package-lock=false --legacy-peer-deps \
-              "@tiptap/react@${TIPTAP_VERSION}" \
-              "@tiptap/starter-kit@${TIPTAP_VERSION}" \
-              "@tiptap/extension-color@${TIPTAP_VERSION}" \
-              "@tiptap/extension-text-align@${TIPTAP_VERSION}" \
-              "@tiptap/extension-text-style@${TIPTAP_VERSION}" \
-              "@tiptap/extension-underline@${TIPTAP_VERSION}"
+          mkdir -p reports/security
+          set +e
+          npm audit --omit=dev --json > reports/security/npm-audit-production.json
+          audit_exit=$?
+          set -e
+          if [ "$audit_exit" -gt 1 ]; then
+            echo "::error::npm audit service failed (${audit_exit})"
+            exit 2
           fi
+          node scripts/summarize-npm-audit.mjs \
+            --input=reports/security/npm-audit-production.json \
+            --label=production-deploy \
+            --fail-on=high
+
+      - name: Upload production audit evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-audit-production-${{ github.run_id }}-${{ github.run_attempt }}
+          path: bible-mindmap/reports/security/npm-audit-production.json
+          if-no-files-found: error
+          retention-days: 30
 
       # Playwright의 webServer는 `npm run dev`를 실행하며 predev 전수 검증을 거친다.
-      # 따라서 P0/P1보다 먼저 원어 corpus를 생성해야 테스트 서버가 정상 기동한다.
+      # 따라서 브라우저 회귀 검사보다 먼저 원어 corpus를 생성해야 테스트 서버가 정상 기동한다.
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
-      # GitHub Ubuntu 러너에 필요한 시스템 라이브러리는 기본 포함돼 있다.
-      # --with-deps의 apt 재설치 정체를 피하고 테스트용 브라우저만 설치한다.
-      - name: Install Chromium for P0 regression tests
+      - name: Install Chromium for browser regression tests
         run: npx playwright install chromium
 
-      - name: Run P0 browser regression baseline
-        run: npm run test:p0
-
-      - name: Run P1 modal accessibility regression
-        run: npm run test:p1:modal
+      - name: Run desktop, mobile, tablet, and modal smoke tests
+        run: npm run test:smoke
 
       - name: Build complete OT/NT biblical places database
         run: npm run build:places
@@ -142,9 +137,9 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
 
@@ -165,7 +160,7 @@ jobs:
 
       - name: Publish verify:deploy commit status
         if: always()
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const state = '${{ job.status }}' === 'success' ? 'success' : 'failure';
@@ -188,7 +183,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Publish final pipeline status
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           script: |
             const build = '${{ needs.build.result }}';
@@ -214,11 +209,11 @@ jobs:
     if: success()
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
 

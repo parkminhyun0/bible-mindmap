@@ -10,6 +10,8 @@ const FOCUSABLE = [
   '[contenteditable="true"]',
 ].join(',');
 
+const SUBPIXEL_TOLERANCE = 0.5;
+
 async function dismissResearchOnboarding(page) {
   await page.addInitScript(() => {
     window.localStorage.setItem('context-bible-onboarding-v1-dismissed', '1');
@@ -179,12 +181,16 @@ test.describe('모바일 모달 계약', () => {
       htmlOverscroll: 'none',
     });
 
-    const bounds = await dialog.boundingBox();
-    expect(bounds).not.toBeNull();
-    expect(bounds.x).toBeGreaterThanOrEqual(0);
-    expect(bounds.y).toBeGreaterThanOrEqual(0);
-    expect(bounds.width).toBeLessThanOrEqual(390);
-    expect(bounds.height).toBeLessThanOrEqual(844);
+    // The shell has a short translateY entrance animation. Assert the final
+    // layout boundary rather than sampling an intermediate animation frame.
+    await expect.poll(async () => {
+      const bounds = await dialog.boundingBox();
+      return Boolean(bounds
+        && bounds.x >= -SUBPIXEL_TOLERANCE
+        && bounds.y >= -SUBPIXEL_TOLERANCE
+        && bounds.x + bounds.width <= 390 + SUBPIXEL_TOLERANCE
+        && bounds.y + bounds.height <= 844 + SUBPIXEL_TOLERANCE);
+    }).toBe(true);
     await assertFocusCycle(page, dialog);
 
     await page.keyboard.press('Escape');
