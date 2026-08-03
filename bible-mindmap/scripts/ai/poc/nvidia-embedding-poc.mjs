@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { createNvidiaEmbeddings } from '../providers/nvidia-embeddings.mjs';
 import { buildHybridIndex, searchHybridIndex, validateSearchDocuments } from '../retrieval/hybrid-search.mjs';
 import { assertRetrievalQuality, evaluateRetriever, validateEvaluationCases } from '../retrieval/retrieval-evaluation.mjs';
+import { resolveNvidiaEmbeddingModelPolicy } from './nvidia-embedding-model-policy.mjs';
 
 export const POC_DOCUMENTS = Object.freeze([
   { id: 'canonical.seed', title: '아브라함의 씨와 약속', text: '아브라함에게 주신 언약의 약속과 후손은 그리스도 안에서 성취된다.', sourceRefs: ['Gen 12:1-3', 'Gen 17:7', 'Gal 3:16'], metadata: { type: 'canonical-concept', approvedForPoc: true } },
@@ -19,15 +20,37 @@ export const POC_CASES = Object.freeze([
   { id: 'exodus', query: '유월절과 새 출애굽의 구속', relevantIds: ['canonical.exodus'] },
 ].map(Object.freeze));
 
+function getModelPolicy(env) {
+  return resolveNvidiaEmbeddingModelPolicy({
+    modelId: env.NVIDIA_EMBEDDING_MODEL_ID,
+    dimensions: env.NVIDIA_EMBEDDING_DIMENSIONS,
+  });
+}
+
 export function describeNvidiaEmbeddingPoc(env = process.env) {
   const documents = validateSearchDocuments(POC_DOCUMENTS);
   const cases = validateEvaluationCases(POC_CASES);
-  return Object.freeze({ mode: 'dry-run', provider: 'nvidia', model: env.NVIDIA_EMBEDDING_MODEL_ID?.trim() || null, endpoint: `${(env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '')}/embeddings`, documentCount: documents.length, queryCount: cases.length, documentIds: documents.map((item) => item.id), writesExistingDb: false, requiresExplicitExecute: true });
+  const policy = getModelPolicy(env);
+  return Object.freeze({
+    mode: 'dry-run',
+    provider: 'nvidia',
+    model: policy.id,
+    modelTier: policy.tier,
+    supportsKorean: policy.supportsKorean,
+    requestedDimensions: policy.requestedDimensions,
+    endpoint: `${(env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '')}/embeddings`,
+    documentCount: documents.length,
+    queryCount: cases.length,
+    documentIds: documents.map((item) => item.id),
+    writesExistingDb: false,
+    requiresExplicitExecute: true,
+  });
 }
 
 export async function runNvidiaEmbeddingPoc({ embed = createNvidiaEmbeddings, env = process.env, now } = {}) {
   const documents = validateSearchDocuments(POC_DOCUMENTS);
   const cases = validateEvaluationCases(POC_CASES);
+  const policy = getModelPolicy(env);
   const documentEmbedding = await embed({ texts: documents.map((item) => `${item.title}\n${item.text}`), task: 'document', env });
   const queryEmbedding = await embed({ texts: cases.map((item) => item.query), task: 'query', env });
   if (documentEmbedding.provider !== queryEmbedding.provider || documentEmbedding.model !== queryEmbedding.model || documentEmbedding.dimension !== queryEmbedding.dimension) throw new Error('document and query embedding identity mismatch');
@@ -38,7 +61,27 @@ export async function runNvidiaEmbeddingPoc({ embed = createNvidiaEmbeddings, en
   const baseline = await evaluateRetriever({ name: 'keyword-baseline', cases, retrieve: retrieve(0), k: 3, ...options });
   const candidate = await evaluateRetriever({ name: 'nvidia-hybrid', cases, retrieve: retrieve(1), k: 3, ...options });
   const gate = assertRetrievalQuality({ baseline, candidate, thresholds: { minRecallAtK: 0.75, minMrr: 0.75, minNdcgAtK: 0.75, maxFailureRate: 0, maxP95LatencyMs: 5_000, allowedRegression: 0 } });
-  return Object.freeze({ schemaVersion: 1, embedding: { provider: documentEmbedding.provider, model: documentEmbedding.model, dimension: documentEmbedding.dimension, documentRequestId: documentEmbedding.requestId || null, queryRequestId: queryEmbedding.requestId || null, documentUsage: documentEmbedding.usage || null, queryUsage: queryEmbedding.usage || null }, corpus: { count: documents.length, ids: documents.map((item) => item.id), sourceRefs: documents.reduce((sum, item) => sum + item.sourceRefs.length, 0) }, baseline: { recallAtK: baseline.recallAtK, mrr: baseline.mrr, ndcgAtK: baseline.ndcgAtK, failureRate: baseline.failureRate, latencyMs: baseline.latencyMs }, candidate: { recallAtK: candidate.recallAtK, mrr: candidate.mrr, ndcgAtK: candidate.ndcgAtK, failureRate: candidate.failureRate, latencyMs: candidate.latencyMs }, gate, existingDbModified: false, generatedAt: new Date().toISOString() });
+  return Object.freeze({
+    schemaVersion: 2,
+    embedding: {
+      provider: documentEmbedding.provider,
+      model: documentEmbedding.model,
+      modelTier: policy.tier,
+      supportsKorean: policy.supportsKorean,
+      requestedDimensions: policy.requestedDimensions,
+      dimension: documentEmbedding.dimension,
+      documentRequestId: documentEmbedding.requestId || null,
+      queryRequestId: queryEmbedding.requestId || null,
+      documentUsage: documentEmbedding.usage || null,
+      queryUsage: queryEmbedding.usage || null,
+    },
+    corpus: { count: documents.length, ids: documents.map((item) => item.id), sourceRefs: documents.reduce((sum, item) => sum + item.sourceRefs.length, 0) },
+    baseline: { recallAtK: baseline.recallAtK, mrr: baseline.mrr, ndcgAtK: baseline.ndcgAtK, failureRate: baseline.failureRate, latencyMs: baseline.latencyMs },
+    candidate: { recallAtK: candidate.recallAtK, mrr: candidate.mrr, ndcgAtK: candidate.ndcgAtK, failureRate: candidate.failureRate, latencyMs: candidate.latencyMs },
+    gate,
+    existingDbModified: false,
+    generatedAt: new Date().toISOString(),
+  });
 }
 
 async function main() {
@@ -46,7 +89,12 @@ async function main() {
   const outputArg = process.argv.find((arg) => arg.startsWith('--output='));
   const value = execute ? await runNvidiaEmbeddingPoc() : describeNvidiaEmbeddingPoc();
   const json = `${JSON.stringify(value, null, 2)}\n`;
-  if (outputArg) { const outputPath = path.resolve(outputArg.slice(9)); fs.mkdirSync(path.dirname(outputPath), { recursive: true }); fs.writeFileSync(outputPath, json, 'utf8'); console.log(`✓ NVIDIA Embedding PoC report written: ${outputPath}`); } else process.stdout.write(json);
+  if (outputArg) {
+    const outputPath = path.resolve(outputArg.slice(9));
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    fs.writeFileSync(outputPath, json, 'utf8');
+    console.log(`✓ NVIDIA Embedding PoC report written: ${outputPath}`);
+  } else process.stdout.write(json);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch((error) => { console.error(`✗ NVIDIA Embedding PoC failed: ${error.message}`); process.exit(1); });
