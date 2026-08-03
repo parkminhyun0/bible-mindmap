@@ -45,15 +45,11 @@ function verifyLexChapter(data, label) {
     errors.push(`${label}: 원어 절 데이터 없음`);
     return;
   }
-
-  // _hebRefs 같은 키는 히브리어/개역 장절 대응을 보존하는 메타데이터다.
-  // 실제 원어 본문은 숫자 절 키만 검사한다.
   const verseEntries = Object.entries(data).filter(([verse]) => /^\d+$/.test(verse));
   if (verseEntries.length === 0) {
     errors.push(`${label}: 숫자 절 데이터 없음`);
     return;
   }
-
   for (const [verse, words] of verseEntries) {
     if (!Array.isArray(words) || words.length === 0) {
       errors.push(`${label}:${verse}: 잘못된 원어 절 데이터`);
@@ -92,12 +88,14 @@ for (const book of ALL_BOOKS) {
   }
 }
 
+const rom16Rows = {};
 for (const source of ['krv', 'web']) {
   const rows = await readJson(
     path.join(ROOT, 'public/data/bible', source, 'Rom', '16.json'),
     `${source}/Rom/16 regression`,
   );
-  const verses = new Set(Array.isArray(rows) ? rows.map((row) => Number(row.verse)) : []);
+  rom16Rows[source] = Array.isArray(rows) ? rows : [];
+  const verses = new Set(rom16Rows[source].map((row) => Number(row.verse)));
   for (const verse of [25, 26, 27]) {
     if (!verses.has(verse)) errors.push(`${source}/Rom/16:${verse}: 회귀 절 누락`);
   }
@@ -114,6 +112,25 @@ for (const verse of [25, 26, 27]) {
 }
 
 if (errors.length) {
+  const tailRows = (rows) => rows.slice(-8).map((row) => `${row.verse}=${String(row.text).slice(0, 90)}`);
+  const greekSummary = async (chapter) => {
+    const data = await readJson(
+      path.join(ROOT, 'public/data/lex/gnt/Rom', `${chapter}.json`),
+      `gnt/Rom/${chapter} diagnostic`,
+    );
+    return Object.entries(data || {})
+      .filter(([verse]) => /^\d+$/.test(verse))
+      .slice(-8)
+      .map(([verse, words]) => `${verse}=${Array.isArray(words) ? words.map((word) => word.w).filter(Boolean).join(' ').slice(0, 100) : ''}`);
+  };
+
+  console.error('--- Romans versification diagnostics ---');
+  console.error(`KRV Rom16 tail: ${tailRows(rom16Rows.krv).join(' | ')}`);
+  console.error(`WEB Rom16 tail: ${tailRows(rom16Rows.web).join(' | ')}`);
+  console.error(`GNT Rom14 tail: ${(await greekSummary(14)).join(' | ')}`);
+  console.error(`GNT Rom16 tail: ${(await greekSummary(16)).join(' | ')}`);
+  console.error('--- end diagnostics ---');
+
   console.error(`✗ translation corpus 검증 실패 (${errors.length}건 / ${checked}개 검사)`);
   errors.slice(0, 100).forEach((error) => console.error(`  - ${error}`));
   if (errors.length > 100) console.error(`  ... 외 ${errors.length - 100}건`);
