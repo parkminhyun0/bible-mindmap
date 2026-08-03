@@ -20,11 +20,8 @@ export function tokenizeSearchText(value) {
 }
 
 export function validateSearchDocuments(documents) {
-  if (!Array.isArray(documents) || documents.length === 0) {
-    throw new TypeError('documents must be a non-empty array');
-  }
+  if (!Array.isArray(documents) || documents.length === 0) throw new TypeError('documents must be a non-empty array');
   if (documents.length > MAX_DOCUMENTS) throw new RangeError(`documents may contain at most ${MAX_DOCUMENTS} items`);
-
   const ids = new Set();
   return documents.map((document, index) => {
     if (!document || typeof document !== 'object') throw new TypeError(`documents[${index}] must be an object`);
@@ -38,9 +35,7 @@ export function validateSearchDocuments(documents) {
       throw new TypeError(`documents[${index}].sourceRefs must be a non-empty array`);
     }
     const sourceRefs = document.sourceRefs.map((ref, refIndex) => {
-      if (typeof ref !== 'string' || !ref.trim()) {
-        throw new TypeError(`documents[${index}].sourceRefs[${refIndex}] must be non-empty`);
-      }
+      if (typeof ref !== 'string' || !ref.trim()) throw new TypeError(`documents[${index}].sourceRefs[${refIndex}] must be non-empty`);
       return ref.trim();
     });
     return Object.freeze({
@@ -92,9 +87,10 @@ function keywordScore(query, document) {
 }
 
 function rankItems(items, scoreOf) {
+  const itemId = (item) => item?.document?.id || item?.id || '';
   return items
     .map((item) => ({ item, score: scoreOf(item) }))
-    .sort((left, right) => right.score - left.score || left.item.id.localeCompare(right.item.id))
+    .sort((left, right) => right.score - left.score || itemId(left.item).localeCompare(itemId(right.item)))
     .map((entry, index) => ({ ...entry, rank: index + 1 }));
 }
 
@@ -123,7 +119,10 @@ export function buildHybridIndex({ documents, embeddingResult }) {
     dimension: embeddings.dimension,
     count: normalizedDocuments.length,
     createdAt: new Date().toISOString(),
-    entries: Object.freeze(normalizedDocuments.map((document, index) => Object.freeze({ document, vector: Object.freeze([...embeddings.vectors[index]]) }))),
+    entries: Object.freeze(normalizedDocuments.map((document, index) => Object.freeze({
+      document,
+      vector: Object.freeze([...embeddings.vectors[index]]),
+    }))),
   });
 }
 
@@ -134,24 +133,30 @@ export async function createHybridIndex({ documents, embed }) {
   let identity = null;
   for (let offset = 0; offset < normalizedDocuments.length; offset += EMBEDDING_BATCH_SIZE) {
     const batch = normalizedDocuments.slice(offset, offset + EMBEDDING_BATCH_SIZE);
-    const result = validateEmbeddingResult(await embed({ texts: batch.map((item) => item.text), task: 'document' }), 'document', batch.length);
-    const nextIdentity = `${result.provider}:${result.model}:${result.dimension}`;
-    if (identity && identity !== nextIdentity) throw new TypeError('embedding provider, model, and dimension must remain stable across batches');
-    identity = nextIdentity;
+    const result = validateEmbeddingResult(
+      await embed({ texts: batch.map((item) => item.text), task: 'document' }),
+      'document',
+      batch.length,
+    );
+    if (identity && (
+      identity.provider !== result.provider
+      || identity.model !== result.model
+      || identity.dimension !== result.dimension
+    )) {
+      throw new TypeError('embedding provider, model, and dimension must remain stable across batches');
+    }
+    identity ||= { provider: result.provider, model: result.model, dimension: result.dimension };
     vectors.push(...result.vectors);
   }
-  const [provider, model, dimensionText] = identity.split(':');
   return buildHybridIndex({
     documents: normalizedDocuments,
-    embeddingResult: { provider, model, dimension: Number(dimensionText), task: 'document', vectors },
+    embeddingResult: { ...identity, task: 'document', vectors },
   });
 }
 
 export function searchHybridIndex({ query, index, queryEmbedding, topK = 20, rrfK = 60, keywordWeight = 1, vectorWeight = 1 }) {
   if (typeof query !== 'string' || !query.trim()) throw new TypeError('query must be non-empty');
-  if (!index || index.version !== 1 || !Array.isArray(index.entries) || index.entries.length === 0) {
-    throw new TypeError('index is invalid');
-  }
+  if (!index || index.version !== 1 || !Array.isArray(index.entries) || index.entries.length === 0) throw new TypeError('index is invalid');
   if (!Number.isInteger(topK) || topK < 1 || topK > 100) throw new RangeError('topK must be between 1 and 100');
   if (!Number.isFinite(rrfK) || rrfK < 1) throw new RangeError('rrfK must be at least 1');
   if (!Number.isFinite(keywordWeight) || keywordWeight < 0 || !Number.isFinite(vectorWeight) || vectorWeight < 0) {
@@ -173,7 +178,6 @@ export function searchHybridIndex({ query, index, queryEmbedding, topK = 20, rrf
     .map((entry) => {
       const keyword = keywordById.get(entry.document.id);
       const vector = vectorById.get(entry.document.id);
-      const hybrid = keywordWeight / (rrfK + keyword.rank) + vectorWeight / (rrfK + vector.rank);
       return {
         id: entry.document.id,
         title: entry.document.title,
@@ -181,7 +185,7 @@ export function searchHybridIndex({ query, index, queryEmbedding, topK = 20, rrf
         sourceRefs: entry.document.sourceRefs,
         metadata: entry.document.metadata,
         score: Object.freeze({
-          hybrid,
+          hybrid: keywordWeight / (rrfK + keyword.rank) + vectorWeight / (rrfK + vector.rank),
           keyword: keyword.score,
           vector: vector.score,
           keywordRank: keyword.rank,
