@@ -12,6 +12,11 @@ dist
 dist-ssr
 *.local
 
+# Local/server secrets
+.env
+.env.*
+!.env.example
+
 # Generated lexicon data (built by scripts/build-lexicon.mjs during CI)
 public/data/*
 # 지명 자동 색인은 커밋 대상 (build:places로 재생성 · CI 네트워크 비의존)
