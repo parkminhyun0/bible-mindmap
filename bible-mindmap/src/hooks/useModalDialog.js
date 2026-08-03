@@ -68,6 +68,8 @@ function resolveDialog(dialogRef, dialogSelector) {
  *
  * `dialogSelector` is a migration bridge for legacy portal dialogs that cannot
  * safely accept a ref yet. New dialogs should continue to prefer `dialogRef`.
+ * `manageEscape=false` preserves a legacy dialog's own nested Escape policy
+ * while still applying focus, Tab, restoration and scroll-lock behavior.
  */
 export default function useModalDialog({
   dialogRef,
@@ -75,6 +77,7 @@ export default function useModalDialog({
   onClose,
   lockScroll = false,
   active = true,
+  manageEscape = true,
 }) {
   const onCloseRef = useRef(onClose);
 
@@ -85,7 +88,6 @@ export default function useModalDialog({
   useEffect(() => {
     if (!active) return undefined;
 
-    let cancelled = false;
     let cleanupLifecycle = () => {};
     let resolveFrame = 0;
 
@@ -123,6 +125,7 @@ export default function useModalDialog({
         if (activeDialog && activeDialog !== dialog && !dialog.contains(activeDialog)) return;
 
         if (event.key === 'Escape') {
+          if (!manageEscape) return;
           event.preventDefault();
           event.stopPropagation();
           onCloseRef.current?.();
@@ -170,9 +173,8 @@ export default function useModalDialog({
     attach();
 
     return () => {
-      cancelled = true;
-      if (cancelled) window.cancelAnimationFrame(resolveFrame);
+      window.cancelAnimationFrame(resolveFrame);
       cleanupLifecycle();
     };
-  }, [active, dialogRef, dialogSelector, lockScroll]);
+  }, [active, dialogRef, dialogSelector, lockScroll, manageEscape]);
 }
