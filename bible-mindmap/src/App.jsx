@@ -500,8 +500,9 @@ export default function App() {
   const handleNodesChange = useCallback(
     (changes) => {
       const hasMoved = changes.some((c) => c.type === 'position' && c.dragging === false);
+      const hasResized = changes.some((c) => c.type === 'dimensions' && c.resizing === false);
       const hasRemoved = changes.some((c) => c.type === 'remove');
-      if (hasMoved || hasRemoved) record();
+      if (hasMoved || hasResized || hasRemoved) record();
       onNodesChange(changes);
     },
     [onNodesChange, record],
