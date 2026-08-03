@@ -29,7 +29,12 @@ jobs:
           cache-dependency-path: bible-mindmap/package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          if ! node -e "require.resolve('@tiptap/react')"; then
+            echo "@tiptap/react lock entry missing; installing pinned runtime dependency"
+            npm install --no-save --package-lock=false @tiptap/react@3.28.0
+          fi
 
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
