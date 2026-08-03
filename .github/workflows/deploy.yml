@@ -1,6 +1,5 @@
 name: Deploy to GitHub Pages
 
-# Manual deployment trigger: 2026-08-03 20:46 KST
 on:
   push:
     branches: [main]
@@ -17,7 +16,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  status-start:
+    name: pages-deploy-status-start
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish deployment pending status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'pending',
+              context: 'pages-deploy-pipeline',
+              description: 'GitHub Pages build and live verification are running',
+              target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            });
+
   build:
+    needs: status-start
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -130,6 +148,33 @@ jobs:
               target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
             });
 
+  status-final:
+    name: pages-deploy-status-final
+    if: always()
+    needs: [build, deploy, verify]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish final pipeline status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const build = '${{ needs.build.result }}';
+            const deploy = '${{ needs.deploy.result }}';
+            const verify = '${{ needs.verify.result }}';
+            const state = verify === 'success' ? 'success' : 'failure';
+            const description = state === 'success'
+              ? 'Build, Pages deployment, and live SHA verification succeeded'
+              : `Deployment failed: build=${build}, deploy=${deploy}, verify=${verify}`;
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state,
+              context: 'pages-deploy-pipeline',
+              description: description.slice(0, 140),
+              target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            });
+
   notion:
     name: notion-live-update
     needs: verify
@@ -138,14 +183,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # notion-live-update.mjs 의 git log -5(최근 이력)용
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # NOTION_API_TOKEN 시크릿이 설정된 경우에만 노션 자동 로그를 갱신한다.
-      # 시크릿이 없으면 스크립트가 조용히 skip 하므로 이 잡이 배포를 실패시키지 않는다.
       - name: Update Notion CI 자동 배포 로그
         working-directory: bible-mindmap
         env:
