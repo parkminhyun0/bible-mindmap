@@ -227,11 +227,50 @@ html[data-theme='dark'] .app-canvas-shell {
 
 /* React Flow 선택 외곽선은 공통 카드가 담당한다. */
 .at-canvas .react-flow__node {
+  overflow: visible !important;
   border-radius: 16px;
 }
 
 .at-canvas .react-flow__node.selected {
   z-index: 12 !important;
+}
+
+/* ── 공통 노드 크기 조절 ────────────────────────────────────────
+   NodeResizer를 카드 바깥 React Flow 레이어에 두어 overflow에 잘리지 않게 한다. */
+.at-background-node-resizer.react-flow__resize-control {
+  z-index: 30 !important;
+  pointer-events: auto !important;
+  touch-action: none;
+}
+
+.at-background-node-resizer.react-flow__resize-control.handle {
+  width: 12px !important;
+  height: 12px !important;
+  border: 2px solid #fff !important;
+  border-radius: 4px !important;
+  background: var(--at-node-accent, #64748b) !important;
+  box-shadow: 0 1px 5px rgba(15, 23, 42, 0.38);
+}
+
+.at-background-node-resizer.react-flow__resize-control.line {
+  border-color: var(--at-node-accent, #64748b) !important;
+  border-width: 1.5px !important;
+}
+
+.at-canvas-node__resize-hint {
+  display: inline-flex;
+  align-items: center;
+  min-height: 25px;
+  padding: 0 7px;
+  border: 1px solid color-mix(in srgb, var(--at-node-accent) 34%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--at-node-accent) 8%, white);
+  color: var(--at-node-accent);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
 }
 
 /* ── 연결선: 의미색 보존 + 선택·라벨 계층 정돈 ───────────────── */
@@ -376,6 +415,23 @@ html[data-theme='dark'] .app-canvas-shell {
   .at-canvas-node__handle.react-flow__handle {
     width: 13px !important;
     height: 13px !important;
+  }
+
+  .at-background-node-resizer.react-flow__resize-control.handle {
+    width: 22px !important;
+    height: 22px !important;
+    border-width: 3px !important;
+    border-radius: 7px !important;
+  }
+
+  .at-background-node-resizer.react-flow__resize-control.line {
+    border-width: 3px !important;
+  }
+
+  .at-canvas-node__resize-hint {
+    min-height: 30px;
+    padding-inline: 8px;
+    font-size: 11px;
   }
 
   .at-canvas-controls.react-flow__controls {
