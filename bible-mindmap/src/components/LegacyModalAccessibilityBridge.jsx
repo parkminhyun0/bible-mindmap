@@ -24,10 +24,17 @@ export default function LegacyModalAccessibilityBridge() {
   useEffect(() => {
     let cleanupActiveDialog = () => {};
 
+    const deactivate = () => {
+      const cleanup = cleanupActiveDialog;
+      cleanupActiveDialog = () => {};
+      cleanup();
+    };
+
     const attachManual = () => {
       const dialog = document.querySelector('[role="dialog"][aria-label="사용자 매뉴얼"]');
       if (!(dialog instanceof HTMLElement) || dialog.dataset.modalBridgeAttached === 'true') return;
 
+      deactivate();
       dialog.dataset.modalBridgeAttached = 'true';
       const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       const previousTabIndex = dialog.getAttribute('tabindex');
@@ -115,7 +122,7 @@ export default function LegacyModalAccessibilityBridge() {
     const observer = new MutationObserver(() => {
       const dialog = document.querySelector('[role="dialog"][aria-label="사용자 매뉴얼"]');
       if (dialog) attachManual();
-      else cleanupActiveDialog();
+      else deactivate();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
@@ -123,7 +130,7 @@ export default function LegacyModalAccessibilityBridge() {
 
     return () => {
       observer.disconnect();
-      cleanupActiveDialog();
+      deactivate();
     };
   }, []);
 
