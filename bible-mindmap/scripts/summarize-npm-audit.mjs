@@ -28,8 +28,18 @@ try {
   process.exit(2);
 }
 
-const counts = report.metadata?.vulnerabilities || {};
-const vulnerabilities = Object.entries(report.vulnerabilities || {})
+if (report?.error) {
+  const message = report.error.summary || report.error.detail || report.error.code || JSON.stringify(report.error);
+  console.error(`✗ ${label}: npm audit service error (${message})`);
+  process.exit(2);
+}
+if (!report?.metadata?.vulnerabilities || typeof report.vulnerabilities !== 'object') {
+  console.error(`✗ ${label}: malformed npm audit report`);
+  process.exit(2);
+}
+
+const counts = report.metadata.vulnerabilities;
+const vulnerabilities = Object.entries(report.vulnerabilities)
   .map(([name, detail]) => ({
     name,
     severity: detail?.severity || 'unknown',
