@@ -1,5 +1,6 @@
 name: Deploy to GitHub Pages
 
+# Manual deployment trigger: 2026-08-03 20:46 KST
 on:
   push:
     branches: [main]
