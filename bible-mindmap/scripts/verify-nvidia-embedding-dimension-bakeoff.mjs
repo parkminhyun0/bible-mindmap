@@ -109,7 +109,7 @@ if (fs.existsSync(workflowPath)) {
   assert(!/^\s*(push|pull_request|schedule):/m.test(workflow), 'dimension bake-off must never call NVIDIA automatically');
   assert(workflow.includes('dimensions: [2048, 384]'), 'dimension bake-off must evaluate both 2048 and 384');
   assert(workflow.includes('secrets.NVIDIA_API_KEY'), 'dimension bake-off must use the GitHub Actions secret');
-  assert(workflow.includes('actions/download-artifact@v4'), 'dimension bake-off must download both reports for comparison');
+  assert(workflow.includes('actions/download-artifact@v8'), 'dimension bake-off must download both reports with the approved artifact action');
   assert(workflow.includes('compare-nvidia-embedding-dimensions.mjs'), 'dimension bake-off must generate an automatic comparison report');
   assert(workflow.includes('contents: read'), 'dimension bake-off permissions must remain read-only');
 }
