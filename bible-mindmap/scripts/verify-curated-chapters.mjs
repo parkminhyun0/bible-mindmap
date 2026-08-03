@@ -16,6 +16,7 @@ const warn = (message) => warns.push(message);
 
 const argBooks = process.argv.slice(2).filter(Boolean);
 const bookMeta = new Map(ALL_BOOKS.map((book) => [book.id, book]));
+const allBookIds = new Set(ALL_BOOKS.map((book) => book.id));
 
 // STEPBible TAGNT의 로마서 16장은 24절로 인덱싱되지만,
 // KRV 등 앱 기준 역본에는 최종 송영이 25~27절로 존재한다.
@@ -84,7 +85,16 @@ function loadLexMaxVerses(bookId) {
   return map;
 }
 
-const targets = argBooks.length ? argBooks : Object.keys(CURATED_CHAPTER_DETAILS);
+for (const book of ALL_BOOKS) {
+  if (!Object.hasOwn(CURATED_CHAPTER_DETAILS, book.id)) {
+    fail(`${book.id}: curated registry에서 책 전체 누락`);
+  }
+}
+for (const bookId of Object.keys(CURATED_CHAPTER_DETAILS)) {
+  if (!allBookIds.has(bookId)) fail(`${bookId}: curated registry에 알 수 없는 책`);
+}
+
+const targets = argBooks.length ? argBooks : ALL_BOOKS.map((book) => book.id);
 
 for (const bookId of targets) {
   const detail = CURATED_CHAPTER_DETAILS[bookId];
@@ -177,4 +187,4 @@ if (issues.length) {
   for (const issue of issues) console.error(`  - ${issue}`);
   process.exit(1);
 }
-console.log('✓ 장별 curated 본문 정합성 통과 (완전성·lex 필수·절범위·구조·내용)');
+console.log('✓ 장별 curated 본문 정합성 통과 (66권 registry·완전성·lex 필수·절범위·구조·내용)');
