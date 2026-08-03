@@ -395,7 +395,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                 ))}
               </div>
 
-              {['person','place','period'].includes(tab) && (
+              {['person','place'].includes(tab) && (
                 <div style={{ display:'flex', gap:5, marginBottom:8 }}>
                   {[['all','전체'],['ot','구약'],['nt','신약']].map(([key,label]) => (
                     <button key={key} type="button" onClick={() => setBgTestament(key)} style={{ flex:1, minHeight:40, borderRadius:8, cursor:'pointer', fontSize:12, fontWeight:700, border:'1px solid var(--at-separator)', background:bgTestament === key ? 'var(--at-accent)' : 'var(--at-surface-2)', color:bgTestament === key ? '#fff' : 'var(--at-label-2)', touchAction:'manipulation' }}>{label}</button>
@@ -458,6 +458,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
                   onGroupChange={handlePeriodGroupChange}
                   periodId={selectedPeriodId}
                   onPeriodChange={setSelectedPeriodId}
+                  onAdd={() => { handleAdd(); onMobileClose(); }}
                   compact
                 />
               )}
@@ -735,25 +736,27 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
       {/* ═══ 섹션 2b: 배경 탭 (인물/장소/시대) ═══ */}
       <div style={{ ...tabBarStyle, borderTop: '1px solid var(--at-separator)' }}>
         <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--at-label-3)', marginBottom: 2, letterSpacing: 1 }}>배경</div>
-        <div style={{ display: 'flex', gap: 4, width: '100%' }}>
-          {[
-            { key: 'all', label: '전체' },
-            { key: 'ot', label: '구약' },
-            { key: 'nt', label: '신약' },
-          ].map((item) => (
-            <button
-              key={item.key}
-              onClick={() => setBgTestament(item.key)}
-              style={{
-                ...testamentBtnStyle,
-                background: bgTestament === item.key ? 'var(--at-accent)' : 'var(--at-surface-3)',
-                color: bgTestament === item.key ? '#fff' : 'var(--at-label-2)',
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
+        {tab !== 'period' && (
+          <div style={{ display: 'flex', gap: 4, width: '100%' }}>
+            {[
+              { key: 'all', label: '전체' },
+              { key: 'ot', label: '구약' },
+              { key: 'nt', label: '신약' },
+            ].map((item) => (
+              <button
+                key={item.key}
+                onClick={() => setBgTestament(item.key)}
+                style={{
+                  ...testamentBtnStyle,
+                  background: bgTestament === item.key ? 'var(--at-accent)' : 'var(--at-surface-3)',
+                  color: bgTestament === item.key ? '#fff' : 'var(--at-label-2)',
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
         <div style={{ display: 'flex', gap: 4, width: '100%' }}>
           {BG_TABS.map((t) => (
             <button
@@ -924,6 +927,7 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
             onGroupChange={handlePeriodGroupChange}
             periodId={selectedPeriodId}
             onPeriodChange={setSelectedPeriodId}
+            onAdd={handleAdd}
           />
         )}
       </div>
@@ -1022,6 +1026,7 @@ function PeriodHierarchySelector({
   onGroupChange,
   periodId,
   onPeriodChange,
+  onAdd,
   compact = false,
 }) {
   const visibleGroups = BIBLICAL_PERIOD_GROUPS.filter(
@@ -1169,14 +1174,16 @@ function PeriodHierarchySelector({
 
       <button
         type="button"
-        onClick={() => {
-          if (!activePeriod) return;
-          onPeriodChange(activePeriod.id);
-        }}
+        onClick={onAdd}
         disabled={!activePeriod}
-        aria-label={activePeriod ? `${activePeriod.name} 선택 완료` : '선택 가능한 시대 없음'}
-        style={{ display: 'none' }}
-      />
+        style={{
+          ...btnStyle, minHeight: 44,
+          background: '#6d28d9',
+          opacity: activePeriod ? 1 : 0.4,
+        }}
+      >
+        + 선택 시대 추가
+      </button>
     </div>
   );
 }
