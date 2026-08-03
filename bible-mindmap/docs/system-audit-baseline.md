@@ -18,7 +18,7 @@ A6 잔여 위험 기준 커밋: `a4ff2dec1009f9979201e865de79e35655b05011`
 | A3 | 모바일·접근성 | 주요 viewport, 키보드, 포커스, 스크롤 계약 통과 | 완료 · PR #87 |
 | A4 | 검색·NVIDIA 품질 | Hybrid·차원·모델·오탐·출처 평가 통과 | 코드·mock 완료 · PR #89 · 실제 확장 실측 대기 |
 | A5 | 보안·배포·라이브 | Secret 경계, dependency audit, production build, Pages smoke 통과 | 완료 · PR #90 · main `a4ff2dec` |
-| A6 | 잔여 문제 정리 | P0/P1 0건, 낮은 위험 항목 문서화 | 진행 중 · 잔여 위험 등록부·CI 게이트 구현 |
+| A6 | 잔여 문제 정리 | P0/P1 0건, 낮은 위험 항목 문서화 | 완료 · PR #91 |
 
 ## 최초 확인 문제와 처리 상태
 
@@ -36,7 +36,7 @@ A6 잔여 위험 기준 커밋: `a4ff2dec1009f9979201e865de79e35655b05011`
 12. 라이브 검증이 version.json 커밋만 비교하고 HTML·JS·CSS 실체를 확인하지 않음 — **A5 보강 완료**.
 13. 모바일 사용자 매뉴얼이 변형된 하단 시트 내부에서 viewport 경계를 초과함 — **A5 수정 완료**, `document.body` 포털과 최종 애니메이션 경계 검증 적용.
 14. 최신 구현으로 대체된 오래된 관찰카드 PR #37이 열린 상태로 잔존 — **A6 종료 완료**, 대체 근거를 남기고 미병합 종료.
-15. 낮은 위험 경고가 로그에만 존재해 개선·악화 시 추적되지 않음 — **A6 진행 중**, 기계 판독 등록부와 CI 하드 게이트 추가.
+15. 낮은 위험 경고가 로그에만 존재해 개선·악화 시 추적되지 않음 — **A6 수정 완료**, 기계 판독 등록부와 CI 하드 게이트 추가.
 
 ## A5 보안·배포 감사 완료 근거
 
@@ -49,7 +49,7 @@ A6 잔여 위험 기준 커밋: `a4ff2dec1009f9979201e865de79e35655b05011`
 - deployment build에서 전체 Chromium smoke 11개와 production security audit 재실행
 - Pages run `30839522394`의 build·deploy·live verification·최종 pipeline 상태 성공
 
-## A6 잔여 문제 정리 범위
+## A6 잔여 문제 정리 완료 근거
 
 - 열린 issue 0건·열린 PR 0건을 확인하고, 대체된 PR #37 종료 근거 보존
 - 저장소의 P0/P1/TODO/FIXME 표식 부재 확인
@@ -57,6 +57,7 @@ A6 잔여 위험 기준 커밋: `a4ff2dec1009f9979201e865de79e35655b05011`
 - `docs/system-audit-residual-risks.md`에 P0/P1 0건과 P2/P3 후속 조건 설명
 - `verify-system-audit-residual-risks.mjs`가 실제 registry·원어 marker 출력·명시적 성경 예외·NVIDIA 수동 실행 경계를 대조
 - 등록 수치가 개선되거나 악화돼도 근거 문서와 함께 검토하지 않으면 CI 실패
+- PR #91 최초 검증 run `30840607215`에서 security-audit·전체 build·A6 verifier·Chromium smoke 11개 성공
 - A4 실제 NVIDIA endpoint bake-off는 P2 수동 검증 대기로 유지하며 운영 DB를 변경하지 않음
 
 ## 운영 원칙
