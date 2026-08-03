@@ -46,12 +46,33 @@ const fallbackGreek = [{ verse: 25, text: 'fallback 25' }, { verse: 26, text: 'f
 const mergedGreek = mergeVerseRows(primaryGreek, fallbackGreek);
 check(assertVerseCoverage(mergedGreek, 23, 27, 'GNT').length === 5, '원어 보조 공급원 병합 후 23-27절이 완성되지 않았습니다.');
 
-// 런타임 로더가 정규화 계층과 NTGT 보조 경로를 실제로 사용해야 한다.
+// 구약·신약 경계 표본에서 절 범위 완전성 규칙이 동일하게 작동해야 한다.
+const canonicalSamples = [
+  { label: '창세기 1:1-3', start: 1, end: 3, rows: [1, 2, 3] },
+  { label: '시편 119:174-176', start: 174, end: 176, rows: [174, 175, 176] },
+  { label: '말라기 4:4-6', start: 4, end: 6, rows: [4, 5, 6] },
+  { label: '마태복음 1:23-25', start: 23, end: 25, rows: [23, 24, 25] },
+  { label: '사도행전 28:29-31', start: 29, end: 31, rows: [29, 30, 31] },
+  { label: '요한계시록 22:19-21', start: 19, end: 21, rows: [19, 20, 21] },
+];
+for (const sample of canonicalSamples) {
+  const rows = sample.rows.map((verse) => ({ verse, text: `${sample.label} ${verse}` }));
+  check(
+    assertVerseCoverage(rows, sample.start, sample.end, sample.label).length === sample.rows.length,
+    `${sample.label} 정경 범위 검증에 실패했습니다.`,
+  );
+}
+
+// 런타임 로더가 정규화·보조 공급원·장 단위 캐시·병렬 프리로드를 실제로 사용해야 한다.
 const apiSource = await readFile(path.join(root, 'src/api/bibleApi.js'), 'utf8');
 check(apiSource.includes("from './verseNormalization'"), 'bibleApi가 verseNormalization을 사용하지 않습니다.');
 check(apiSource.includes("'NTGT'"), 'TAGNT 누락 절을 보완할 NTGT 경로가 없습니다.');
 check(apiSource.includes('assertVerseCoverage'), '요청 범위 완전성 검사가 bibleApi에 연결되지 않았습니다.');
 check(apiSource.includes('aliasesForRange'), 'WEB 장절 alias가 bibleApi에 연결되지 않았습니다.');
+check(apiSource.includes('chapterCache'), '장 단위 캐시가 제거되어 빠른 재전환 계약이 깨졌습니다.');
+check(apiSource.includes('cachedPromise'), '동일 장 중복 요청을 합치는 Promise 캐시가 없습니다.');
+check(apiSource.includes('Promise.all'), '개역한글·WEB·원어 병렬 프리로드가 제거되었습니다.');
+check(!apiSource.includes("cache: 'no-store'"), '모든 본문 요청에 no-store가 다시 적용되어 캐시가 무효화되었습니다.');
 
 if (failures.length) {
   console.error(`✗ 구절 로더 회귀 검증 실패 (${failures.length}건)`);
@@ -59,4 +80,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('✓ 구절 로더 회귀 검증 통과 — WEB 롬16:25-27, 원어 부분 응답, 보조 공급원 병합');
+console.log('✓ 구절 로더 회귀 검증 통과 — 구약·신약 경계 표본, WEB 롬16:25-27, 원어 보완, 캐시·병렬 전환 계약');
