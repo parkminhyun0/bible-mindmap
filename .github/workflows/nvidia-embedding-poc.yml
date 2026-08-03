@@ -1,0 +1,83 @@
+name: NVIDIA Embedding PoC
+
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Approved NVIDIA embedding model
+        required: true
+        type: choice
+        default: nvidia/llama-nemotron-embed-1b-v2
+        options:
+          - nvidia/llama-nemotron-embed-1b-v2
+          - nvidia/nemotron-3-embed-1b
+          - nvidia/nv-embedqa-e5-v5
+      dimensions:
+        description: Requested dynamic embedding dimension
+        required: true
+        type: choice
+        default: auto
+        options:
+          - auto
+          - "2048"
+          - "384"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nvidia-embedding-poc
+  cancel-in-progress: false
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NVIDIA_BASE_URL: https://integrate.api.nvidia.com/v1
+      NVIDIA_TIMEOUT_MS: "120000"
+      NVIDIA_EMBEDDING_MODEL_ID: ${{ inputs.model }}
+      NVIDIA_EMBEDDING_DIMENSIONS: ${{ inputs.dimensions == 'auto' && '' || inputs.dimensions }}
+      REPORT_PATH: reports/nvidia-embedding-poc/run-${{ github.run_id }}-${{ github.run_attempt }}.json
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+
+      - name: Verify NVIDIA secret
+        shell: bash
+        run: |
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "::error::Repository secret NVIDIA_API_KEY is not configured. Add it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify model policy and PoC safety
+        run: |
+          npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-embedding-poc
+
+      - name: Execute limited NVIDIA Embedding PoC
+        run: npm run poc:nvidia-embedding:execute -- --output="$REPORT_PATH"
+
+      - name: Upload evaluation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nvidia-embedding-poc-${{ github.run_id }}-${{ github.run_attempt }}
+          path: bible-mindmap/${{ env.REPORT_PATH }}
+          if-no-files-found: error
+          retention-days: 30
