@@ -22,8 +22,11 @@ function normalizeReport(report, source = 'report') {
   if (embedding.requestedDimensions !== dimension) throw new Error(`${source} requested and actual dimensions must match`);
   if (typeof embedding.model !== 'string' || !embedding.model) throw new Error(`${source} model is required`);
   if (!Array.isArray(corpus.ids) || corpus.ids.length !== corpus.count) throw new Error(`${source} corpus IDs must match corpus count`);
+  if (typeof corpus.revision !== 'string' || !corpus.revision) throw new Error(`${source} corpus revision is required`);
+  if (!Number.isInteger(corpus.caseCount) || corpus.caseCount < 1) throw new Error(`${source} corpus caseCount is required`);
   if (report.gate?.passed !== true || report.existingDbModified !== false) throw new Error(`${source} must pass the quality gate without DB mutation`);
   for (const key of QUALITY_KEYS) assertFiniteNumber(candidate[key], `${source} candidate.${key}`);
+  assertFiniteNumber(candidate.hardNegativeRate, `${source} candidate.hardNegativeRate`);
   assertFiniteNumber(candidate.failureRate, `${source} candidate.failureRate`);
   assertFiniteNumber(candidate.latencyMs?.p95, `${source} candidate.latencyMs.p95`);
   return Object.freeze({ ...report, embedding: { ...embedding, dimension }, source });
@@ -42,13 +45,21 @@ export function compareNvidiaEmbeddingDimensions(reports, { generatedAt = new Da
   const compact = byDimension.get(384);
   const full = byDimension.get(2048);
   if (compact.embedding.model !== full.embedding.model) throw new Error('dimension reports must use the same model');
-  if (compact.corpus.count !== full.corpus.count || JSON.stringify(compact.corpus.ids) !== JSON.stringify(full.corpus.ids)) {
-    throw new Error('dimension reports must use the same corpus revision');
+  if (
+    compact.corpus.revision !== full.corpus.revision
+    || compact.corpus.count !== full.corpus.count
+    || compact.corpus.caseCount !== full.corpus.caseCount
+    || compact.corpus.hardNegativeCount !== full.corpus.hardNegativeCount
+    || JSON.stringify(compact.corpus.ids) !== JSON.stringify(full.corpus.ids)
+  ) {
+    throw new Error('dimension reports must use the same corpus and evaluation revision');
   }
 
   const qualityDelta = Object.fromEntries(QUALITY_KEYS.map((key) => [key, metricDelta(compact, full, key)]));
+  qualityDelta.hardNegativeRate = metricDelta(compact, full, 'hardNegativeRate');
   qualityDelta.failureRate = metricDelta(compact, full, 'failureRate');
   const qualityMaintained = QUALITY_KEYS.every((key) => qualityDelta[key] >= -EPSILON)
+    && qualityDelta.hardNegativeRate <= EPSILON
     && qualityDelta.failureRate <= EPSILON;
 
   const bytesPerVector = Object.freeze({
@@ -63,12 +74,16 @@ export function compareNvidiaEmbeddingDimensions(reports, { generatedAt = new Da
   const selectedDimensions = qualityMaintained ? 384 : 2048;
 
   return Object.freeze({
-    schemaVersion: 1,
+    schemaVersion: 2,
     model: compact.embedding.model,
     corpus: {
+      revision: compact.corpus.revision,
       count: compact.corpus.count,
       ids: [...compact.corpus.ids],
       sourceRefs: compact.corpus.sourceRefs,
+      caseCount: compact.corpus.caseCount,
+      hardNegativeCount: compact.corpus.hardNegativeCount,
+      queryTypes: compact.corpus.queryTypes,
     },
     results: REQUIRED_DIMENSIONS.map((dimension) => {
       const report = byDimension.get(dimension);
@@ -77,6 +92,7 @@ export function compareNvidiaEmbeddingDimensions(reports, { generatedAt = new Da
         recallAtK: report.candidate.recallAtK,
         mrr: report.candidate.mrr,
         ndcgAtK: report.candidate.ndcgAtK,
+        hardNegativeRate: report.candidate.hardNegativeRate,
         failureRate: report.candidate.failureRate,
         p95LatencyMs: report.candidate.latencyMs.p95,
         totalTokens: (report.embedding.documentUsage?.total_tokens || 0) + (report.embedding.queryUsage?.total_tokens || 0),
@@ -97,8 +113,8 @@ export function compareNvidiaEmbeddingDimensions(reports, { generatedAt = new Da
       selectedDimensions,
       status: qualityMaintained ? 'prefer-compact' : 'retain-full',
       reason: qualityMaintained
-        ? '384 dimensions preserved retrieval quality while reducing float32 vector storage by 81.25%.'
-        : '384 dimensions regressed retrieval quality; retain 2048 dimensions.',
+        ? '384 dimensions preserved recall, ranking quality, failure rate, and hard-negative rate while reducing float32 vector storage by 81.25%.'
+        : '384 dimensions regressed retrieval quality or false-positive control; retain 2048 dimensions.',
       requiresHumanApproval: true,
       changesProductionIndex: false,
     },
