@@ -97,7 +97,7 @@
       "rationale": "npm 설치 시 개발 도구의 전이 의존성에서 deprecation 안내가 출력되지만 production/full npm audit high·critical은 0건이다.",
       "evidence": [
         "package-lock.json",
-        ".github/workflows/pr-checks.yml:security-audit"
+        ".github/workflows/validate-pr.yml:security-audit"
       ],
       "guard": "production과 full npm audit high·critical 0건 하드 게이트 및 lockfile-only 변경 원칙"
     },
