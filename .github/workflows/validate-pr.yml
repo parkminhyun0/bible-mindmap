@@ -32,8 +32,9 @@ jobs:
         run: |
           npm ci
           if ! node -e "require.resolve('@tiptap/react')"; then
-            echo "@tiptap/react lock entry missing; installing pinned runtime dependency"
-            npm install --no-save --package-lock=false @tiptap/react@3.28.0
+            TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/core/package.json').version")
+            echo "@tiptap/react lock entry missing; installing matching ${TIPTAP_VERSION} runtime dependency"
+            npm install --no-save --package-lock=false "@tiptap/react@${TIPTAP_VERSION}"
           fi
 
       - name: Build Strong and lexicon definitions
