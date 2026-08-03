@@ -71,6 +71,22 @@ test('문맥 성경은 포커스를 가두고 Escape 뒤 실행 버튼으로 복
   await expect(opener).toHaveAttribute('aria-expanded', 'false');
 });
 
+test('사용자 매뉴얼은 데스크톱에서 포커스 순환·Escape·실행 버튼 복귀를 보장한다', async ({ page }) => {
+  await page.goto('./');
+
+  const opener = page.getByTitle('사용자 매뉴얼').first();
+  await opener.click();
+  const dialog = page.getByRole('dialog', { name: '사용자 매뉴얼' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toBeFocused();
+  await expect(dialog).toHaveAttribute('data-modal-bridge-attached', 'true');
+  await assertFocusCycle(page, dialog);
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(opener).toBeFocused();
+});
+
 test('병렬 연구 포털은 공통 레이어와 동일한 포커스 생명주기를 사용한다', async ({ page }) => {
   await dismissResearchOnboarding(page);
   await page.goto('./');
@@ -137,6 +153,55 @@ test.describe('모바일 모달 계약', () => {
     await expect(sheet).toBeVisible();
     await expect(opener).toBeFocused();
     await expect.poll(() => page.evaluate(() => document.body.style.overscrollBehavior)).toBe('');
+  });
+
+  test('사용자 매뉴얼이 모바일 시트를 보존하고 body·html 스크롤 상태를 복원한다', async ({ page }) => {
+    await page.goto('./');
+    await page.getByRole('button', { name: '추가', exact: true }).click();
+
+    const sheet = page.locator('.mobile-add-sheet');
+    const opener = sheet.getByTitle('사용자 매뉴얼');
+    await opener.click();
+    const dialog = page.getByRole('dialog', { name: '사용자 매뉴얼' });
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toBeFocused();
+    await expect(dialog).toHaveAttribute('aria-modal', 'true');
+    await expect(sheet).toHaveCount(1);
+    await expect.poll(() => page.evaluate(() => ({
+      bodyOverflow: document.body.style.overflow,
+      bodyOverscroll: document.body.style.overscrollBehavior,
+      htmlOverflow: document.documentElement.style.overflow,
+      htmlOverscroll: document.documentElement.style.overscrollBehavior,
+    }))).toEqual({
+      bodyOverflow: 'hidden',
+      bodyOverscroll: 'none',
+      htmlOverflow: 'hidden',
+      htmlOverscroll: 'none',
+    });
+
+    const bounds = await dialog.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds.x).toBeGreaterThanOrEqual(0);
+    expect(bounds.y).toBeGreaterThanOrEqual(0);
+    expect(bounds.width).toBeLessThanOrEqual(390);
+    expect(bounds.height).toBeLessThanOrEqual(844);
+    await assertFocusCycle(page, dialog);
+
+    await page.keyboard.press('Escape');
+    await expect(dialog).toHaveCount(0);
+    await expect(sheet).toBeVisible();
+    await expect(opener).toBeFocused();
+    await expect.poll(() => page.evaluate(() => ({
+      bodyOverflow: document.body.style.overflow,
+      bodyOverscroll: document.body.style.overscrollBehavior,
+      htmlOverflow: document.documentElement.style.overflow,
+      htmlOverscroll: document.documentElement.style.overscrollBehavior,
+    }))).toEqual({
+      bodyOverflow: '',
+      bodyOverscroll: '',
+      htmlOverflow: '',
+      htmlOverscroll: '',
+    });
   });
 });
 
