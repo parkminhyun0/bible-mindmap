@@ -5,26 +5,53 @@ import { createNvidiaEmbeddings } from '../providers/nvidia-embeddings.mjs';
 import { buildHybridIndex, searchHybridIndex, validateSearchDocuments } from '../retrieval/hybrid-search.mjs';
 import { assertRetrievalQuality, evaluateRetriever, validateEvaluationCases } from '../retrieval/retrieval-evaluation.mjs';
 import { resolveNvidiaEmbeddingModelPolicy } from './nvidia-embedding-model-policy.mjs';
+import {
+  NVIDIA_POC_EVALUATION_REVISION,
+  POC_CASES,
+  POC_DOCUMENTS,
+} from './nvidia-embedding-evaluation-fixture.mjs';
 
-export const POC_DOCUMENTS = Object.freeze([
-  { id: 'canonical.seed', title: '아브라함의 씨와 약속', text: '아브라함에게 주신 언약의 약속과 후손은 그리스도 안에서 성취된다.', sourceRefs: ['Gen 12:1-3', 'Gen 17:7', 'Gal 3:16'], metadata: { type: 'canonical-concept', approvedForPoc: true } },
-  { id: 'canonical.king', title: '다윗 언약과 메시아 왕권', text: '다윗의 보좌와 영원한 왕의 통치는 예수 그리스도의 왕권으로 완성된다.', sourceRefs: ['2Sam 7:12-16', 'Ps 2:6-12', 'Luke 1:32-33'], metadata: { type: 'canonical-concept', approvedForPoc: true } },
-  { id: 'canonical.temple', title: '성막과 성전에서 새 창조의 임재로', text: '성막과 성전에 거하신 하나님의 임재가 그리스도와 교회와 새 예루살렘에서 완성된다.', sourceRefs: ['Exod 40:34-38', 'John 1:14', 'Rev 21:22-23'], metadata: { type: 'canonical-concept', approvedForPoc: true } },
-  { id: 'canonical.exodus', title: '출애굽과 구속', text: '유월절과 바다를 통한 구원이 그리스도의 구속과 새 출애굽으로 발전한다.', sourceRefs: ['Exod 12:1-32', 'Luke 9:31', '1Cor 5:7'], metadata: { type: 'canonical-concept', approvedForPoc: true } },
-].map(Object.freeze));
+export { NVIDIA_POC_EVALUATION_REVISION, POC_CASES, POC_DOCUMENTS };
 
-export const POC_CASES = Object.freeze([
-  { id: 'seed', query: '아브라함의 약속과 후손이 그리스도에게 이어지는 흐름', relevantIds: ['canonical.seed'] },
-  { id: 'king', query: '다윗의 보좌와 영원한 메시아 왕', relevantIds: ['canonical.king'] },
-  { id: 'temple', query: '성막 성전 교회 새 예루살렘 하나님의 임재', relevantIds: ['canonical.temple'] },
-  { id: 'exodus', query: '유월절과 새 출애굽의 구속', relevantIds: ['canonical.exodus'] },
-].map(Object.freeze));
+const K = 3;
 
 function getModelPolicy(env) {
   return resolveNvidiaEmbeddingModelPolicy({
     modelId: env.NVIDIA_EMBEDDING_MODEL_ID,
     dimensions: env.NVIDIA_EMBEDDING_DIMENSIONS,
   });
+}
+
+function summarizeEvaluation(report) {
+  return Object.freeze({
+    recallAtK: report.recallAtK,
+    mrr: report.mrr,
+    ndcgAtK: report.ndcgAtK,
+    hardNegativeRate: report.hardNegativeRate,
+    failureRate: report.failureRate,
+    latencyMs: report.latencyMs,
+    segments: report.segments,
+  });
+}
+
+function assertSegmentQuality(report) {
+  const requirements = {
+    direct: { minRecall: 0.8, minMrr: 0.75 },
+    semantic: { minRecall: 0.75, minMrr: 0.65 },
+    'multi-hop': { minRecall: 2 / 3, minMrr: 0.6 },
+  };
+  const errors = [];
+  for (const [queryType, config] of Object.entries(requirements)) {
+    const segment = report.segments?.[queryType];
+    if (!segment) {
+      errors.push(`missing ${queryType} evaluation segment`);
+      continue;
+    }
+    if (segment.recallAtK < config.minRecall) errors.push(`${queryType} Recall@${K} ${segment.recallAtK.toFixed(4)} < ${config.minRecall}`);
+    if (segment.mrr < config.minMrr) errors.push(`${queryType} MRR ${segment.mrr.toFixed(4)} < ${config.minMrr}`);
+  }
+  if (errors.length) throw new Error(`retrieval segment gate failed (${errors.length}): ${errors.join('; ')}`);
+  return Object.freeze({ passed: true, requirements: Object.freeze(requirements) });
 }
 
 export function describeNvidiaEmbeddingPoc(env = process.env) {
@@ -39,8 +66,11 @@ export function describeNvidiaEmbeddingPoc(env = process.env) {
     supportsKorean: policy.supportsKorean,
     requestedDimensions: policy.requestedDimensions,
     endpoint: `${(env.NVIDIA_BASE_URL || 'https://integrate.api.nvidia.com/v1').replace(/\/$/, '')}/embeddings`,
+    evaluationRevision: NVIDIA_POC_EVALUATION_REVISION,
     documentCount: documents.length,
     queryCount: cases.length,
+    hardNegativeCount: cases.reduce((sum, item) => sum + item.hardNegativeIds.length, 0),
+    queryTypes: [...new Set(cases.map((item) => item.metadata.queryType))],
     documentIds: documents.map((item) => item.id),
     writesExistingDb: false,
     requiresExplicitExecute: true,
@@ -53,16 +83,71 @@ export async function runNvidiaEmbeddingPoc({ embed = createNvidiaEmbeddings, en
   const policy = getModelPolicy(env);
   const documentEmbedding = await embed({ texts: documents.map((item) => `${item.title}\n${item.text}`), task: 'document', env });
   const queryEmbedding = await embed({ texts: cases.map((item) => item.query), task: 'query', env });
-  if (documentEmbedding.provider !== queryEmbedding.provider || documentEmbedding.model !== queryEmbedding.model || documentEmbedding.dimension !== queryEmbedding.dimension) throw new Error('document and query embedding identity mismatch');
+  if (documentEmbedding.provider !== queryEmbedding.provider || documentEmbedding.model !== queryEmbedding.model || documentEmbedding.dimension !== queryEmbedding.dimension) {
+    throw new Error('document and query embedding identity mismatch');
+  }
+
   const index = buildHybridIndex({ documents, embeddingResult: documentEmbedding });
-  const queryByCase = new Map(cases.map((item, position) => [item.id, { provider: queryEmbedding.provider, model: queryEmbedding.model, task: 'query', dimension: queryEmbedding.dimension, vectors: [queryEmbedding.vectors[position]] }]));
-  const retrieve = (vectorWeight) => async ({ query, topK, caseId }) => searchHybridIndex({ query, index, queryEmbedding: queryByCase.get(caseId), topK, keywordWeight: 1, vectorWeight });
+  const queryByCase = new Map(cases.map((item, position) => [item.id, {
+    provider: queryEmbedding.provider,
+    model: queryEmbedding.model,
+    task: 'query',
+    dimension: queryEmbedding.dimension,
+    vectors: [queryEmbedding.vectors[position]],
+  }]));
+  const retrieve = ({ keywordWeight, vectorWeight }) => async ({ query, topK, caseId }) => searchHybridIndex({
+    query,
+    index,
+    queryEmbedding: queryByCase.get(caseId),
+    topK,
+    keywordWeight,
+    vectorWeight,
+  });
   const options = now ? { now } : {};
-  const baseline = await evaluateRetriever({ name: 'keyword-baseline', cases, retrieve: retrieve(0), k: 3, ...options });
-  const candidate = await evaluateRetriever({ name: 'nvidia-hybrid', cases, retrieve: retrieve(1), k: 3, ...options });
-  const gate = assertRetrievalQuality({ baseline, candidate, thresholds: { minRecallAtK: 0.75, minMrr: 0.75, minNdcgAtK: 0.75, maxFailureRate: 0, maxP95LatencyMs: 5_000, allowedRegression: 0 } });
+  const baseline = await evaluateRetriever({
+    name: 'keyword-baseline',
+    cases,
+    retrieve: retrieve({ keywordWeight: 1, vectorWeight: 0 }),
+    k: K,
+    ...options,
+  });
+  const vectorOnly = await evaluateRetriever({
+    name: 'nvidia-vector-only',
+    cases,
+    retrieve: retrieve({ keywordWeight: 0, vectorWeight: 1 }),
+    k: K,
+    ...options,
+  });
+  const candidate = await evaluateRetriever({
+    name: 'nvidia-hybrid',
+    cases,
+    retrieve: retrieve({ keywordWeight: 1, vectorWeight: 2 }),
+    k: K,
+    ...options,
+  });
+  const gate = assertRetrievalQuality({
+    baseline,
+    candidate,
+    thresholds: {
+      minRecallAtK: 0.75,
+      minMrr: 0.7,
+      minNdcgAtK: 0.75,
+      maxHardNegativeRate: 0.5,
+      maxFailureRate: 0,
+      maxP95LatencyMs: 5_000,
+      allowedRegression: 0.125,
+    },
+  });
+  const segmentGate = assertSegmentQuality(candidate);
+  const vectorSemanticRecall = vectorOnly.segments?.semantic?.recallAtK ?? 0;
+  if (vectorSemanticRecall < 0.6) {
+    throw new Error(`vector-only semantic Recall@${K} ${vectorSemanticRecall.toFixed(4)} < 0.6`);
+  }
+
   return Object.freeze({
-    schemaVersion: 2,
+    schemaVersion: 3,
+    evaluationRevision: NVIDIA_POC_EVALUATION_REVISION,
+    retrievalConfig: Object.freeze({ topK: K, rrfK: 60, keywordWeight: 1, vectorWeight: 2 }),
     embedding: {
       provider: documentEmbedding.provider,
       model: documentEmbedding.model,
@@ -75,10 +160,19 @@ export async function runNvidiaEmbeddingPoc({ embed = createNvidiaEmbeddings, en
       documentUsage: documentEmbedding.usage || null,
       queryUsage: queryEmbedding.usage || null,
     },
-    corpus: { count: documents.length, ids: documents.map((item) => item.id), sourceRefs: documents.reduce((sum, item) => sum + item.sourceRefs.length, 0) },
-    baseline: { recallAtK: baseline.recallAtK, mrr: baseline.mrr, ndcgAtK: baseline.ndcgAtK, failureRate: baseline.failureRate, latencyMs: baseline.latencyMs },
-    candidate: { recallAtK: candidate.recallAtK, mrr: candidate.mrr, ndcgAtK: candidate.ndcgAtK, failureRate: candidate.failureRate, latencyMs: candidate.latencyMs },
-    gate,
+    corpus: {
+      revision: NVIDIA_POC_EVALUATION_REVISION,
+      count: documents.length,
+      ids: documents.map((item) => item.id),
+      sourceRefs: documents.reduce((sum, item) => sum + item.sourceRefs.length, 0),
+      caseCount: cases.length,
+      hardNegativeCount: cases.reduce((sum, item) => sum + item.hardNegativeIds.length, 0),
+      queryTypes: [...new Set(cases.map((item) => item.metadata.queryType))],
+    },
+    baseline: summarizeEvaluation(baseline),
+    vectorOnly: summarizeEvaluation(vectorOnly),
+    candidate: summarizeEvaluation(candidate),
+    gate: Object.freeze({ ...gate, segmentGate, vectorSemanticRecallAtK: vectorSemanticRecall }),
     existingDbModified: false,
     generatedAt: new Date().toISOString(),
   });
@@ -97,4 +191,9 @@ async function main() {
   } else process.stdout.write(json);
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) main().catch((error) => { console.error(`✗ NVIDIA Embedding PoC failed: ${error.message}`); process.exit(1); });
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  main().catch((error) => {
+    console.error(`✗ NVIDIA Embedding PoC failed: ${error.message}`);
+    process.exit(1);
+  });
+}
