@@ -32,9 +32,9 @@ jobs:
         run: |
           npm ci
           if ! node -e "require.resolve('@tiptap/react')"; then
-            TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/core/package.json').version")
+            TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/pm/package.json').version")
             echo "@tiptap/react lock entry missing; installing matching ${TIPTAP_VERSION} runtime dependency"
-            npm install --no-save --package-lock=false "@tiptap/react@${TIPTAP_VERSION}"
+            npm install --no-save --package-lock=false --legacy-peer-deps "@tiptap/react@${TIPTAP_VERSION}"
           fi
 
       - name: Build Strong and lexicon definitions
