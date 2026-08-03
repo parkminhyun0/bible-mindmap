@@ -7,17 +7,18 @@ import { ALL_BOOKS, isOT } from '../src/data/bibleBooks.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const OUT = path.join(ROOT, 'public/data/bible');
-const CONCURRENCY = Number(process.env.BIBLE_BUILD_CONCURRENCY || 8);
-const RETRIES = 3;
-const TIMEOUT_MS = 15000;
+const RETRIES = 4;
+const TIMEOUT_MS = 120000;
 
+// Bolls는 전체 성경 수집에 장 단위 API를 사용하지 말고 정적 번역본 파일을
+// 내려받으라고 명시한다. 역본별 1회 다운로드로 429와 부분 생성 문제를 막는다.
 const SOURCES = [
   { id: 'krv', code: 'KRV', books: ALL_BOOKS },
   { id: 'web', code: 'WEB', books: ALL_BOOKS },
-  { id: 'wlc', code: 'WLC', books: ALL_BOOKS.filter((b) => isOT(b.id)) },
+  { id: 'wlc', code: 'WLC', books: ALL_BOOKS.filter((book) => isOT(book.id)) },
 ];
 
-const bookNumber = new Map(ALL_BOOKS.map((book, index) => [book.id, index + 1]));
+const bookByNumber = new Map(ALL_BOOKS.map((book, index) => [index + 1, book]));
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function fetchJson(url) {
@@ -26,12 +27,28 @@ async function fetchJson(url) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
-      const response = await fetch(url, { signal: controller.signal });
-      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
-      return await response.json();
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { Accept: 'application/json', 'User-Agent': 'bible-mindmap-build/2.0' },
+      });
+      if (!response.ok) {
+        const error = new Error(`${response.status} ${response.statusText}`);
+        error.retryAfter = Number(response.headers.get('retry-after')) || 0;
+        throw error;
+      }
+      const payload = await response.json();
+      if (!Array.isArray(payload) || payload.length === 0) {
+        throw new Error('empty translation payload');
+      }
+      return payload;
     } catch (error) {
       lastError = error;
-      if (attempt + 1 < RETRIES) await sleep(500 * (attempt + 1));
+      if (attempt + 1 < RETRIES) {
+        const waitMs = error.retryAfter > 0
+          ? error.retryAfter * 1000
+          : 1500 * (2 ** attempt);
+        await sleep(waitMs);
+      }
     } finally {
       clearTimeout(timer);
     }
@@ -39,60 +56,83 @@ async function fetchJson(url) {
   throw lastError;
 }
 
-function normalizeChapter(raw, label) {
-  if (!Array.isArray(raw) || raw.length === 0) throw new Error(`${label}: empty chapter`);
-  const rows = raw
-    .map((row) => ({ verse: Number(row.verse), text: String(row.text || '').replace(/<[^>]*>/g, '').trim() }))
-    .filter((row) => Number.isInteger(row.verse) && row.verse > 0 && row.text);
-  if (!rows.length) throw new Error(`${label}: no valid verses`);
-  const seen = new Set();
-  for (const row of rows) {
-    if (seen.has(row.verse)) throw new Error(`${label}: duplicate verse ${row.verse}`);
-    seen.add(row.verse);
+function cleanText(value) {
+  return String(value || '')
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function groupTranslation(rawRows, source) {
+  const allowedBooks = new Set(source.books.map((book) => book.id));
+  const chapters = new Map();
+
+  for (const raw of rawRows) {
+    const bookNumber = Number(raw.book);
+    const chapter = Number(raw.chapter);
+    const verse = Number(raw.verse);
+    const book = bookByNumber.get(bookNumber);
+    const text = cleanText(raw.text);
+
+    if (!book || !allowedBooks.has(book.id)) continue;
+    if (!Number.isInteger(chapter) || chapter < 1 || chapter > book.chapters) continue;
+    if (!Number.isInteger(verse) || verse < 1 || !text) continue;
+
+    const key = `${book.id}:${chapter}`;
+    if (!chapters.has(key)) chapters.set(key, new Map());
+    const verses = chapters.get(key);
+    if (verses.has(verse)) throw new Error(`${source.id}/${book.id}/${chapter}: duplicate verse ${verse}`);
+    verses.set(verse, text);
   }
-  return rows;
+
+  return chapters;
 }
 
-async function writeChapter(source, book, chapter) {
-  const num = bookNumber.get(book.id);
-  const label = `${source.id}/${book.id}/${chapter}`;
-  const url = `https://bolls.life/get-text/${source.code}/${num}/${chapter}/`;
-  const rows = normalizeChapter(await fetchJson(url), label);
-  const dir = path.join(OUT, source.id, book.id);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(path.join(dir, `${chapter}.json`), `${JSON.stringify(rows)}\n`);
-  return { source: source.id, bookId: book.id, chapter, verses: rows.length };
-}
+async function writeSource(source) {
+  const url = `https://bolls.life/static/translations/${source.code}.json`;
+  console.log(`  ↓ ${source.id}: ${url}`);
+  const payload = await fetchJson(url);
+  const grouped = groupTranslation(payload, source);
+  let chapterCount = 0;
+  let verseCount = 0;
 
-async function runPool(tasks, worker) {
-  const queue = [...tasks];
-  const results = [];
-  const workers = Array.from({ length: Math.min(CONCURRENCY, queue.length) }, async () => {
-    while (queue.length) {
-      const item = queue.shift();
-      results.push(await worker(item));
+  for (const book of source.books) {
+    for (let chapter = 1; chapter <= book.chapters; chapter += 1) {
+      const key = `${book.id}:${chapter}`;
+      const verseMap = grouped.get(key);
+      if (!verseMap?.size) throw new Error(`${source.id}/${book.id}/${chapter}: missing chapter`);
+
+      const rows = [...verseMap.entries()]
+        .sort(([a], [b]) => a - b)
+        .map(([verse, text]) => ({ verse, text }));
+
+      const dir = path.join(OUT, source.id, book.id);
+      await fs.mkdir(dir, { recursive: true });
+      await fs.writeFile(path.join(dir, `${chapter}.json`), `${JSON.stringify(rows)}\n`);
+      chapterCount += 1;
+      verseCount += rows.length;
     }
-  });
-  await Promise.all(workers);
-  return results;
+  }
+
+  console.log(`  ✓ ${source.id}: ${chapterCount}장 · ${verseCount}절`);
+  return { chapterCount, verseCount };
 }
 
 await fs.rm(OUT, { recursive: true, force: true });
-const tasks = [];
+await fs.mkdir(OUT, { recursive: true });
+console.log(`▶ local Bible corpus bulk build: ${SOURCES.length} translations`);
+
+const sourceResults = {};
+// 공급자 부담과 메모리 피크를 줄이기 위해 번역본은 순차 다운로드한다.
 for (const source of SOURCES) {
-  for (const book of source.books) {
-    for (let chapter = 1; chapter <= book.chapters; chapter += 1) {
-      tasks.push({ source, book, chapter });
-    }
-  }
+  sourceResults[source.id] = await writeSource(source);
 }
 
-console.log(`▶ local Bible corpus build: ${tasks.length} chapters · concurrency ${CONCURRENCY}`);
-const results = await runPool(tasks, ({ source, book, chapter }) => writeChapter(source, book, chapter));
 const manifest = {
+  schemaVersion: 2,
   generatedAt: new Date().toISOString(),
-  chapterCount: results.length,
-  sources: Object.fromEntries(SOURCES.map((source) => [source.id, results.filter((r) => r.source === source.id).length])),
+  provider: 'bolls-static-translation-json',
+  sources: sourceResults,
 };
 await fs.writeFile(path.join(OUT, 'manifest.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(`✓ local Bible corpus complete: ${results.length} chapters`);
+console.log(`✓ local Bible corpus complete: ${Object.values(sourceResults).reduce((sum, item) => sum + item.chapterCount, 0)} chapters`);
