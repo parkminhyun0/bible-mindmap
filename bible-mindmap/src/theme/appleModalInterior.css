@@ -264,6 +264,24 @@
     --at-modal-card-radius: 16px;
   }
 
+  .at-modal--mobile {
+    height: 100dvh;
+    max-height: 100dvh;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .at-modal--mobile > .at-modal__titlebar {
+    flex: 0 0 auto;
+    border-radius: 0 !important;
+  }
+
+  .at-modal--mobile > .at-modal__titlebar + div {
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 1 1 auto;
+  }
+
   .at-modal__content button,
   .at-modal__controls button,
   .at-modal__nav button {
