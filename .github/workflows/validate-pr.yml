@@ -13,6 +13,60 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: bible-mindmap
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+
+      - name: Generate production and full npm audit reports
+        shell: bash
+        run: |
+          mkdir -p reports/security
+          set +e
+          npm audit --omit=dev --json > reports/security/npm-audit-production.json
+          production_exit=$?
+          npm audit --json > reports/security/npm-audit-full.json
+          full_exit=$?
+          set -e
+          if [ "$production_exit" -gt 1 ] || [ "$full_exit" -gt 1 ]; then
+            echo "::error::npm audit service failed (production=${production_exit}, full=${full_exit})"
+            exit 2
+          fi
+
+      - name: Block production high and critical vulnerabilities
+        run: >-
+          node scripts/summarize-npm-audit.mjs
+          --input=reports/security/npm-audit-production.json
+          --label=production
+          --fail-on=high
+
+      - name: Summarize full dependency audit
+        run: >-
+          node scripts/summarize-npm-audit.mjs
+          --input=reports/security/npm-audit-full.json
+          --label=full
+          --fail-on=none
+
+      - name: Upload npm audit evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-audit-${{ github.run_id }}-${{ github.run_attempt }}
+          path: bible-mindmap/reports/security/*.json
+          if-no-files-found: error
+          retention-days: 30
+
   verify-and-build:
     runs-on: ubuntu-latest
     defaults:
@@ -20,9 +74,9 @@ jobs:
         working-directory: bible-mindmap
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
@@ -61,9 +115,9 @@ jobs:
         working-directory: bible-mindmap
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           cache: npm
@@ -83,7 +137,7 @@ jobs:
 
       - name: Upload Playwright failure evidence
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: playwright-smoke-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
