@@ -1,7 +1,6 @@
 function assertFiniteNumber(value, name) {
   if (!Number.isFinite(value)) throw new TypeError(`${name} must be a finite number`);
 }
-}
 
 function percentile(values, fraction) {
   if (!values.length) return 0;
@@ -106,11 +105,7 @@ export async function evaluateRetriever({ name, cases, retrieve, k = 10, now = (
   });
 }
 
-export function assertRetrievalQuality({
-  candidate,
-  baseline = null,
-  thresholds = {},
-}) {
+export function assertRetrievalQuality({ candidate, baseline = null, thresholds = {} }) {
   if (!candidate || typeof candidate !== 'object') throw new TypeError('candidate report is required');
   const config = {
     minRecallAtK: thresholds.minRecallAtK ?? 0.8,
