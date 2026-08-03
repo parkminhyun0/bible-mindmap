@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ALL_BOOKS } from '../src/data/bibleBooks.js';
+import { ALL_BOOKS, isOT } from '../src/data/bibleBooks.js';
 import { CURATED_CHAPTER_DETAILS } from '../src/data/curatedChapterDetails.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -25,7 +25,7 @@ const bookMeta = new Map(ALL_BOOKS.map((b) => [b.id, b]));
 
 function loadLexMaxVerses(bookId) {
   const meta = bookMeta.get(bookId);
-  const corpus = meta?.lexCorpus || (meta?.testament === 'NT' ? 'gnt' : 'hot');
+  const corpus = meta?.lexCorpus || (isOT(bookId) ? 'hot' : 'gnt');
   const dir = path.resolve(__dirname, `../public/data/lex/${corpus}/${bookId}`);
 
   if (!fs.existsSync(dir)) {
