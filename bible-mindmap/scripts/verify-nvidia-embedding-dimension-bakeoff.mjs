@@ -1,29 +1,44 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { compareNvidiaEmbeddingDimensions } from './ai/poc/compare-nvidia-embedding-dimensions.mjs';
+import { NVIDIA_POC_EVALUATION_REVISION, POC_DOCUMENTS, POC_CASES } from './ai/poc/nvidia-embedding-evaluation-fixture.mjs';
 
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
 
-const makeReport = ({ dimension, recallAtK = 1, mrr = 1, ndcgAtK = 1, failureRate = 0, p95 = 1 }) => ({
-  schemaVersion: 2,
+const makeReport = ({
+  dimension,
+  recallAtK = 1,
+  mrr = 1,
+  ndcgAtK = 1,
+  hardNegativeRate = 0,
+  failureRate = 0,
+  p95 = 1,
+} = {}) => ({
+  schemaVersion: 3,
+  evaluationRevision: NVIDIA_POC_EVALUATION_REVISION,
   embedding: {
     provider: 'nvidia',
     model: 'nvidia/llama-nemotron-embed-1b-v2',
     requestedDimensions: dimension,
     dimension,
-    documentUsage: { total_tokens: 167 },
-    queryUsage: { total_tokens: 72 },
+    documentUsage: { total_tokens: 300 },
+    queryUsage: { total_tokens: 180 },
   },
   corpus: {
-    count: 4,
-    ids: ['canonical.seed', 'canonical.king', 'canonical.temple', 'canonical.exodus'],
-    sourceRefs: 12,
+    revision: NVIDIA_POC_EVALUATION_REVISION,
+    count: POC_DOCUMENTS.length,
+    ids: POC_DOCUMENTS.map((item) => item.id),
+    sourceRefs: POC_DOCUMENTS.reduce((sum, item) => sum + item.sourceRefs.length, 0),
+    caseCount: POC_CASES.length,
+    hardNegativeCount: POC_CASES.reduce((sum, item) => sum + item.hardNegativeIds.length, 0),
+    queryTypes: [...new Set(POC_CASES.map((item) => item.metadata.queryType))],
   },
   candidate: {
     recallAtK,
     mrr,
     ndcgAtK,
+    hardNegativeRate,
     failureRate,
     latencyMs: { p95 },
   },
@@ -36,20 +51,28 @@ const equalQuality = compareNvidiaEmbeddingDimensions([
   makeReport({ dimension: 384, p95: 1.5 }),
 ], { generatedAt: '2026-08-03T00:00:00.000Z' });
 
+assert(equalQuality.schemaVersion === 2, 'comparison must use hard-negative-aware schema');
 assert(equalQuality.recommendation.selectedDimensions === 384, 'equal retrieval quality must prefer 384 dimensions');
 assert(equalQuality.recommendation.requiresHumanApproval === true, 'dimension recommendation must require human approval');
 assert(equalQuality.recommendation.changesProductionIndex === false, 'comparison must not mutate the production index');
 assert(equalQuality.comparison.storageReductionPercent === 81.25, '384 dimensions must record 81.25% float32 storage reduction');
 assert(equalQuality.results.find((item) => item.dimensions === 384)?.bytesPerVector === 1536, '384 vector byte estimate must use float32');
 assert(equalQuality.results.find((item) => item.dimensions === 2048)?.bytesPerVector === 8192, '2048 vector byte estimate must use float32');
-assert(equalQuality.results.every((item) => item.totalTokens === 239), 'token usage must be preserved per run');
+assert(equalQuality.results.every((item) => item.totalTokens === 480), 'token usage must be preserved per run');
+assert(equalQuality.corpus.caseCount === 16 && equalQuality.corpus.hardNegativeCount === 16, 'comparison must preserve expanded evaluation identity');
 
-const regressed = compareNvidiaEmbeddingDimensions([
+const recallRegressed = compareNvidiaEmbeddingDimensions([
   makeReport({ dimension: 2048 }),
   makeReport({ dimension: 384, recallAtK: 0.75 }),
 ]);
-assert(regressed.recommendation.selectedDimensions === 2048, 'quality regression must retain 2048 dimensions');
-assert(regressed.recommendation.status === 'retain-full', 'quality regression status must be retain-full');
+assert(recallRegressed.recommendation.selectedDimensions === 2048, 'recall regression must retain 2048 dimensions');
+
+const falsePositiveRegressed = compareNvidiaEmbeddingDimensions([
+  makeReport({ dimension: 2048, hardNegativeRate: 0.1 }),
+  makeReport({ dimension: 384, hardNegativeRate: 0.2 }),
+]);
+assert(falsePositiveRegressed.recommendation.selectedDimensions === 2048, 'hard-negative regression must retain 2048 dimensions');
+assert(falsePositiveRegressed.comparison.compactMinusFull.hardNegativeRate === 0.1, 'hard-negative delta must be reported');
 
 try {
   compareNvidiaEmbeddingDimensions([
@@ -57,6 +80,16 @@ try {
     { ...makeReport({ dimension: 384 }), embedding: { ...makeReport({ dimension: 384 }).embedding, model: 'nvidia/other-model' } },
   ]);
   errors.push('mismatched models must be rejected');
+} catch {
+  // Expected.
+}
+
+try {
+  compareNvidiaEmbeddingDimensions([
+    makeReport({ dimension: 2048 }),
+    { ...makeReport({ dimension: 384 }), corpus: { ...makeReport({ dimension: 384 }).corpus, revision: 'other-revision' } },
+  ]);
+  errors.push('mismatched evaluation revisions must be rejected');
 } catch {
   // Expected.
 }
@@ -87,4 +120,7 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`✓ NVIDIA embedding dimension bake-off verified · selected ${equalQuality.recommendation.selectedDimensions} · storage reduction ${equalQuality.comparison.storageReductionPercent}%`);
+console.log(
+  `✓ NVIDIA embedding dimension bake-off verified · docs ${POC_DOCUMENTS.length} · cases ${POC_CASES.length} · `
+  + `selected ${equalQuality.recommendation.selectedDimensions} · storage reduction ${equalQuality.comparison.storageReductionPercent}% · hard-negative regression blocked`,
+);
