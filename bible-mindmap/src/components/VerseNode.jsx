@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { useReactFlow, useEdges } from '@xyflow/react';
-import { fetchAllTranslations, fetchVerse } from '../api/bibleApi';
+import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
 import { loadVerseLexicon } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
@@ -159,6 +159,7 @@ export default function VerseNode({ id, data, selected }) {
   const [tabLoading, setTabLoading] = useState({});
   const [tabErrors, setTabErrors]   = useState({});
   const retryingRef = useRef(new Set());
+  const preloadGenerationRef = useRef(0);
   const mountedRef = useRef(true);
 
   useEffect(() => {
@@ -174,15 +175,19 @@ export default function VerseNode({ id, data, selected }) {
     );
   };
 
-  // 노드가 열리면 누락된 세 역본을 한 번에 미리 로드한다.
-  // 탭 전환 시 요청을 취소하지 않으므로 빠르게 클릭해도 로딩 상태가 고착되지 않는다.
+  // 누락 역본은 동시에 요청하되, 각 역본이 도착하는 즉시 독립적으로 저장한다.
+  // 느린 WEB 응답이 이미 준비된 개역한글·원어 탭의 표시를 막지 않도록 한다.
   useEffect(() => {
     if (!hasMulti) return;
     const missing = translationTabIds.filter(
       (tabId) => typeof data.translations?.[tabId] !== 'string',
     );
     if (missing.length === 0) return;
+
+    const generation = preloadGenerationRef.current + 1;
+    preloadGenerationRef.current = generation;
     let cancelled = false;
+
     setTabLoading((prev) => ({
       ...prev,
       ...Object.fromEntries(missing.map((tabId) => [tabId, true])),
@@ -193,46 +198,42 @@ export default function VerseNode({ id, data, selected }) {
       return next;
     });
 
-    fetchAllTranslations(data.bookId, data.chapter, data.verseStart, data.verseEnd)
-      .then((translations) => {
-        if (cancelled) return;
-        setNodes((nds) =>
-          nds.map((n) =>
-            n.id === id
-              ? {
-                  ...n,
-                  data: {
-                    ...n.data,
-                    ...(typeof translations.krv === 'string' ? { text: translations.krv } : {}),
-                    translations: {
-                      ...n.data.translations,
-                      ...Object.fromEntries(
-                        Object.entries(translations).filter(([, text]) => typeof text === 'string'),
-                      ),
+    missing.forEach((tabId) => {
+      fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, tabId)
+        .then((text) => {
+          if (cancelled || !mountedRef.current || preloadGenerationRef.current !== generation) return;
+          setNodes((nds) =>
+            nds.map((n) =>
+              n.id === id
+                ? {
+                    ...n,
+                    data: {
+                      ...n.data,
+                      ...(tabId === 'krv' ? { text } : {}),
+                      translations: { ...n.data.translations, [tabId]: text },
                     },
-                  },
-                }
-              : n,
-          ),
-        );
-        setTabErrors((prev) => ({
-          ...prev,
-          ...Object.fromEntries(
-            missing
-              .filter((tabId) => typeof translations[tabId] !== 'string')
-              .map((tabId) => [tabId, '본문을 불러오지 못했습니다.']),
-          ),
-        }));
-      })
-      .finally(() => {
-        if (!cancelled) {
-          setTabLoading((prev) => ({
+                  }
+                : n,
+            ),
+          );
+        })
+        .catch((error) => {
+          if (cancelled || !mountedRef.current || preloadGenerationRef.current !== generation) return;
+          setTabErrors((prev) => ({
             ...prev,
-            ...Object.fromEntries(missing.map((tabId) => [tabId, false])),
+            [tabId]: error.message || '본문을 불러오지 못했습니다.',
           }));
-        }
-      });
-    return () => { cancelled = true; };
+        })
+        .finally(() => {
+          if (cancelled || !mountedRef.current || preloadGenerationRef.current !== generation) return;
+          setTabLoading((prev) => ({ ...prev, [tabId]: false }));
+        });
+    });
+
+    return () => {
+      cancelled = true;
+      preloadGenerationRef.current += 1;
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.bookId, data.chapter, data.verseStart, data.verseEnd, id]);
 
@@ -380,7 +381,7 @@ export default function VerseNode({ id, data, selected }) {
     const langOverride = activeTab === 'lxx' ? 'lxx' : undefined;
     loadVerseLexicon(data.bookId, data.chapter, data.verseStart, data.verseEnd, langOverride)
       .then((entries) => { if (!cancelled) setLexEntries(entries || []); })
-      .catch(() => { if (!cancelled) setLexEntries([]); })
+      .catch(() => { if (!cancelled) setLexEntries([]); });
     return () => { cancelled = true; };
   }, [activeTab, data.bookId, data.chapter, data.verseStart, data.verseEnd]);
 

@@ -63,7 +63,7 @@ for (const sample of canonicalSamples) {
   );
 }
 
-// 런타임 로더가 정규화·보조 공급원·장 단위 캐시·병렬 프리로드를 실제로 사용해야 한다.
+// 런타임 로더가 정규화·보조 공급원·장 단위 캐시를 실제로 사용해야 한다.
 const apiSource = await readFile(path.join(root, 'src/api/bibleApi.js'), 'utf8');
 check(apiSource.includes("from './verseNormalization'"), 'bibleApi가 verseNormalization을 사용하지 않습니다.');
 check(apiSource.includes("'NTGT'"), 'TAGNT 누락 절을 보완할 NTGT 경로가 없습니다.');
@@ -71,9 +71,17 @@ check(apiSource.includes('assertVerseCoverage'), '요청 범위 완전성 검사
 check(apiSource.includes('aliasesForRange'), 'WEB 장절 alias가 bibleApi에 연결되지 않았습니다.');
 check(apiSource.includes('chapterCache'), '장 단위 캐시가 제거되어 빠른 재전환 계약이 깨졌습니다.');
 check(apiSource.includes('cachedPromise'), '동일 장 중복 요청을 합치는 Promise 캐시가 없습니다.');
-check(apiSource.includes('Promise.all'), '개역한글·WEB·원어 병렬 프리로드가 제거되었습니다.');
 check(apiSource.includes('{ noStore = false }'), '본문 요청의 기본 캐시 사용 계약이 제거되었습니다.');
 check(apiSource.includes("...(noStore ? { cache: 'no-store' } : {})"), '선택적 no-store 처리 방식이 변경되었습니다.');
+
+// UI는 가장 느린 역본을 기다리지 않고 탭별 요청을 독립적으로 완료해야 한다.
+const verseNodeSource = await readFile(path.join(root, 'src/components/VerseNode.jsx'), 'utf8');
+check(!verseNodeSource.includes('fetchAllTranslations'), 'VerseNode가 전체 역본 Promise 완료를 기다려 탭 전환을 지연합니다.');
+check(verseNodeSource.includes('missing.forEach((tabId) =>'), '누락 역본별 독립 프리로드가 연결되지 않았습니다.');
+check(verseNodeSource.includes('fetchVerse(data.bookId, data.chapter, data.verseStart, data.verseEnd, tabId)'), '각 탭의 본문을 독립적으로 요청하지 않습니다.');
+check(verseNodeSource.includes('translations: { ...n.data.translations, [tabId]: text }'), '도착한 역본을 즉시 탭 캐시에 저장하지 않습니다.');
+check(verseNodeSource.includes('preloadGenerationRef'), '이전 구절 요청이 현재 탭을 덮어쓰는 것을 막는 세대 가드가 없습니다.');
+check(verseNodeSource.includes('setTabLoading((prev) => ({ ...prev, [tabId]: false }))'), '역본별 로딩 상태가 독립적으로 종료되지 않습니다.');
 
 if (failures.length) {
   console.error(`✗ 구절 로더 회귀 검증 실패 (${failures.length}건)`);
@@ -81,4 +89,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('✓ 구절 로더 회귀 검증 통과 — 구약·신약 경계 표본, WEB 롬16:25-27, 원어 보완, 캐시·병렬 전환 계약');
+console.log('✓ 구절 로더 회귀 검증 통과 — 정경 완전성, WEB 롬16:25-27, 원어 보완, 장 캐시, 탭별 즉시 전환');
