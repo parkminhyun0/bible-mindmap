@@ -16,14 +16,15 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const isRail = variant === 'rail';
   const closeModal = useCallback(() => setOpen(false), []);
 
-  // CanonicalConceptModal is a large legacy portal. During the staged P1
-  // migration, attach the shared lifecycle through its stable dialog label
-  // without touching research/data rendering or nested popup state.
+  // CanonicalConceptModal keeps ownership of Escape so its nested sequence
+  // remains VersePreviewPopup -> LexiconPopup -> parent modal. The shared hook
+  // still owns initial focus, Tab containment, focus restoration and scroll lock.
   useModalDialog({
     dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
     onClose: closeModal,
     lockScroll: isMobile,
     active: open,
+    manageEscape: false,
   });
 
   const buttonStyle = isRail
