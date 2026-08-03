@@ -57,8 +57,10 @@ jobs:
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
+      # GitHub Ubuntu 러너에 필요한 시스템 라이브러리는 기본 포함돼 있다.
+      # --with-deps의 apt 재설치 정체를 피하고 테스트용 브라우저만 설치한다.
       - name: Install Chromium for P0 regression tests
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install chromium
 
       - name: Run P0 browser regression baseline
         run: npm run test:p0
