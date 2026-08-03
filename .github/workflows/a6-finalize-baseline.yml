@@ -1,0 +1,53 @@
+name: A6 one-time baseline finalization
+
+on:
+  push:
+    branches:
+      - chatgpt/a6-residual-risk-closure
+    paths:
+      - .github/workflows/a6-finalize-baseline.yml
+
+permissions:
+  contents: write
+
+jobs:
+  finalize-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: chatgpt/a6-residual-risk-closure
+      - name: Mark A6 complete in the audit baseline
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('bible-mindmap/docs/system-audit-baseline.md')
+          text = path.read_text()
+          replacements = {
+              '| A6 | 잔여 문제 정리 | P0/P1 0건, 낮은 위험 항목 문서화 | 진행 중 · 잔여 위험 등록부·CI 게이트 구현 |':
+              '| A6 | 잔여 문제 정리 | P0/P1 0건, 낮은 위험 항목 문서화 | 완료 · PR #91 |',
+              '15. 낮은 위험 경고가 로그에만 존재해 개선·악화 시 추적되지 않음 — **A6 진행 중**, 기계 판독 등록부와 CI 하드 게이트 추가.':
+              '15. 낮은 위험 경고가 로그에만 존재해 개선·악화 시 추적되지 않음 — **A6 수정 완료**, 기계 판독 등록부와 CI 하드 게이트 추가.',
+              '## A6 잔여 문제 정리 범위':
+              '## A6 잔여 문제 정리 완료 근거',
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'baseline anchor not found: {old}')
+              text = text.replace(old, new, 1)
+          evidence = '- PR #91 최초 검증 run `30840607215`에서 security-audit·전체 build·A6 verifier·Chromium smoke 11개 성공\n'
+          anchor = '- A4 실제 NVIDIA endpoint bake-off는 P2 수동 검증 대기로 유지하며 운영 DB를 변경하지 않음\n'
+          if evidence not in text:
+              if anchor not in text:
+                  raise SystemExit('A6 evidence anchor not found')
+              text = text.replace(anchor, evidence + anchor, 1)
+          path.write_text(text)
+          PY
+      - name: Commit finalized baseline
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bible-mindmap/docs/system-audit-baseline.md
+          git commit -m "docs: mark A6 residual risk closure complete"
+          git push origin HEAD:chatgpt/a6-residual-risk-closure
