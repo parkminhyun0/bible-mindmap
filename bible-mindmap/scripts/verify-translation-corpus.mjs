@@ -41,12 +41,21 @@ function verifyRows(rows, label) {
 }
 
 function verifyLexChapter(data, label) {
-  if (!data || typeof data !== 'object' || Array.isArray(data) || Object.keys(data).length === 0) {
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
     errors.push(`${label}: 원어 절 데이터 없음`);
     return;
   }
-  for (const [verse, words] of Object.entries(data)) {
-    if (!/^\d+$/.test(verse) || !Array.isArray(words) || words.length === 0) {
+
+  // _hebRefs 같은 키는 히브리어/개역 장절 대응을 보존하는 메타데이터다.
+  // 실제 원어 본문은 숫자 절 키만 검사한다.
+  const verseEntries = Object.entries(data).filter(([verse]) => /^\d+$/.test(verse));
+  if (verseEntries.length === 0) {
+    errors.push(`${label}: 숫자 절 데이터 없음`);
+    return;
+  }
+
+  for (const [verse, words] of verseEntries) {
+    if (!Array.isArray(words) || words.length === 0) {
       errors.push(`${label}:${verse}: 잘못된 원어 절 데이터`);
       return;
     }
