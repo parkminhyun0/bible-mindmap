@@ -265,8 +265,11 @@
   }
 
   .at-modal--mobile {
-    height: 100dvh;
-    max-height: 100dvh;
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
     box-sizing: border-box;
     overflow: hidden;
   }
