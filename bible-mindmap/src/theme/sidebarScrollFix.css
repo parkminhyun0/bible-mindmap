@@ -1,0 +1,112 @@
+/* ========================================================================
+   Sidebar scroll recovery
+
+   인물·장소·시대의 긴 검색 결과가 좌측 패널 상단 섹션에서 확장될 때
+   기존 overflow:hidden 때문에 잘리는 문제를 복구한다.
+   데이터·검색·노드 추가 로직은 변경하지 않는다.
+   ======================================================================== */
+
+.at-sidebar-panel {
+  height: 100vh !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--at-label-3) 62%, transparent) transparent;
+}
+
+/* 패널 전체가 하나의 스크롤 흐름을 담당하도록 각 직접 자식을 보존한다. */
+.at-sidebar-panel > * {
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+/* Sidebar의 마지막 직접 div는 검색·입력 콘텐츠 영역이다.
+   기존 내부 스크롤을 풀어 배경 결과와 한 흐름으로 이동시킨다. */
+.at-sidebar-panel > div:last-of-type {
+  flex: 0 0 auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+}
+
+/* 긴 결과를 읽는 중에도 패널 닫기와 매뉴얼에 접근할 수 있게 한다. */
+.at-sidebar-titlebar {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+}
+
+.at-sidebar-panel::-webkit-scrollbar {
+  width: 10px;
+}
+
+.at-sidebar-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.at-sidebar-panel::-webkit-scrollbar-thumb {
+  min-height: 48px;
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--at-label-3) 64%, transparent);
+  background-clip: padding-box;
+}
+
+.at-sidebar-panel::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--at-label-2) 76%, transparent);
+  background-clip: padding-box;
+}
+
+/* 모바일 자료 추가 시트 역시 결과 길이와 무관하게 한 손가락으로 이동한다. */
+.mobile-add-sheet {
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scrollbar-gutter: stable;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px) !important;
+}
+
+.mobile-add-sheet [data-background-panel] {
+  min-height: 0;
+  overflow: visible;
+}
+
+@media (max-width: 767px), (pointer: coarse) and (max-width: 1024px) {
+  .at-sidebar-panel {
+    width: min(100vw, 420px) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 20px);
+  }
+
+  .at-sidebar-panel::-webkit-scrollbar,
+  .mobile-add-sheet::-webkit-scrollbar {
+    width: 7px;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .at-sidebar-panel::-webkit-scrollbar-thumb {
+    background: var(--at-label-3);
+    background-clip: padding-box;
+  }
+}
+
+@media (prefers-contrast: more) {
+  .at-sidebar-panel {
+    scrollbar-color: var(--at-label) var(--at-surface-2);
+  }
+
+  .at-sidebar-panel::-webkit-scrollbar-thumb {
+    border-width: 2px;
+    background: var(--at-label);
+    background-clip: padding-box;
+  }
+}
