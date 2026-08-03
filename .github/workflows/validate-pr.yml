@@ -29,32 +29,10 @@ jobs:
           cache-dependency-path: bible-mindmap/package-lock.json
 
       - name: Install dependencies
-        run: |
-          npm ci
-          TIPTAP_VERSION=$(node -p "require('./node_modules/@tiptap/pm/package.json').version")
-          MISSING=0
-          for pkg in \
-            @tiptap/react \
-            @tiptap/starter-kit \
-            @tiptap/extension-color \
-            @tiptap/extension-text-align \
-            @tiptap/extension-text-style \
-            @tiptap/extension-underline; do
-            if ! node -e "require.resolve('$pkg')" >/dev/null 2>&1; then
-              MISSING=1
-              break
-            fi
-          done
-          if [ "$MISSING" -eq 1 ]; then
-            echo "Tiptap lock entries incomplete; aligning runtime packages to ${TIPTAP_VERSION}"
-            npm install --no-save --package-lock=false --legacy-peer-deps \
-              "@tiptap/react@${TIPTAP_VERSION}" \
-              "@tiptap/starter-kit@${TIPTAP_VERSION}" \
-              "@tiptap/extension-color@${TIPTAP_VERSION}" \
-              "@tiptap/extension-text-align@${TIPTAP_VERSION}" \
-              "@tiptap/extension-text-style@${TIPTAP_VERSION}" \
-              "@tiptap/extension-underline@${TIPTAP_VERSION}"
-          fi
+        run: npm ci
+
+      - name: Verify dependency integrity
+        run: npm run verify:dependency-integrity
 
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
