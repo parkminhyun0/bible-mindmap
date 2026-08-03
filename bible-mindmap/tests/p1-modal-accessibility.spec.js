@@ -10,6 +10,8 @@ const FOCUSABLE = [
   '[contenteditable="true"]',
 ].join(',');
 
+const SUBPIXEL_TOLERANCE = 0.5;
+
 async function dismissResearchOnboarding(page) {
   await page.addInitScript(() => {
     window.localStorage.setItem('context-bible-onboarding-v1-dismissed', '1');
@@ -181,10 +183,10 @@ test.describe('모바일 모달 계약', () => {
 
     const bounds = await dialog.boundingBox();
     expect(bounds).not.toBeNull();
-    expect(bounds.x).toBeGreaterThanOrEqual(0);
-    expect(bounds.y).toBeGreaterThanOrEqual(0);
-    expect(bounds.width).toBeLessThanOrEqual(390);
-    expect(bounds.height).toBeLessThanOrEqual(844);
+    expect(bounds.x).toBeGreaterThanOrEqual(-SUBPIXEL_TOLERANCE);
+    expect(bounds.y).toBeGreaterThanOrEqual(-SUBPIXEL_TOLERANCE);
+    expect(bounds.x + bounds.width).toBeLessThanOrEqual(390 + SUBPIXEL_TOLERANCE);
+    expect(bounds.y + bounds.height).toBeLessThanOrEqual(844 + SUBPIXEL_TOLERANCE);
     await assertFocusCycle(page, dialog);
 
     await page.keyboard.press('Escape');
