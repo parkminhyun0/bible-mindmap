@@ -7,6 +7,10 @@ export const NVIDIA_EMBEDDING_MODEL_POLICIES = Object.freeze([
     outputDimensions: Object.freeze([2048, 384]),
     requestDimensions: Object.freeze([2048, 384]),
     defaultRequestDimensions: 2048,
+    recommendedDimensions: 2048,
+    dimensionDecisionStatus: 'retain-full',
+    dimensionDecisionRunId: 30842224158,
+    dimensionDecisionEvidence: 'docs/evidence/nvidia-embedding-dimension-bakeoff-30842224158.json',
     source: 'https://build.nvidia.com/nvidia/llama-nemotron-embed-1b-v2/modelcard',
   }),
   Object.freeze({
@@ -17,6 +21,10 @@ export const NVIDIA_EMBEDDING_MODEL_POLICIES = Object.freeze([
     outputDimensions: Object.freeze([]),
     requestDimensions: Object.freeze([]),
     defaultRequestDimensions: null,
+    recommendedDimensions: null,
+    dimensionDecisionStatus: 'not-evaluated',
+    dimensionDecisionRunId: null,
+    dimensionDecisionEvidence: null,
     source: 'https://build.nvidia.com/models?q=nemotron',
   }),
   Object.freeze({
@@ -27,6 +35,10 @@ export const NVIDIA_EMBEDDING_MODEL_POLICIES = Object.freeze([
     outputDimensions: Object.freeze([1024]),
     requestDimensions: Object.freeze([]),
     defaultRequestDimensions: null,
+    recommendedDimensions: null,
+    dimensionDecisionStatus: 'not-evaluated',
+    dimensionDecisionRunId: null,
+    dimensionDecisionEvidence: null,
     source: 'https://build.nvidia.com/nvidia/nv-embedqa-e5-v5/modelcard',
   }),
 ]);
