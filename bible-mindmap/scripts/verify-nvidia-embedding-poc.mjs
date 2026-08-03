@@ -1,24 +1,54 @@
 import { createNvidiaEmbeddings } from './ai/providers/nvidia-embeddings.mjs';
-import { describeNvidiaEmbeddingPoc, runNvidiaEmbeddingPoc } from './ai/poc/nvidia-embedding-poc.mjs';
+import {
+  describeNvidiaEmbeddingPoc,
+  NVIDIA_POC_EVALUATION_REVISION,
+  runNvidiaEmbeddingPoc,
+} from './ai/poc/nvidia-embedding-poc.mjs';
 import { DEFAULT_NVIDIA_EMBEDDING_MODEL_ID } from './ai/poc/nvidia-embedding-model-policy.mjs';
 
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
-const env = { NVIDIA_API_KEY: 'test-key', NVIDIA_BASE_URL: 'https://example.test/v1', NVIDIA_TIMEOUT_MS: '3000', NVIDIA_EMBEDDING_MODEL_ID: 'nvidia/nemotron-3-embed-1b' };
+const env = {
+  NVIDIA_API_KEY: 'test-key',
+  NVIDIA_BASE_URL: 'https://example.test/v1',
+  NVIDIA_TIMEOUT_MS: '3000',
+  NVIDIA_EMBEDDING_MODEL_ID: 'nvidia/nemotron-3-embed-1b',
+};
 const requests = [];
+const semanticPatterns = [
+  [/아브라함|씨 약속|가문.*민족|후손/, 0],
+  [/다윗|보좌|메시아 왕권|영원한 왕/, 1],
+  [/성막|성전|장막|하나님의 임재|도성을 비추/, 2],
+  [/출애굽|유월절|노예의 집|바다를 지나|십자가의 해방/, 3],
+  [/새 언약|돌판|마음에 기록|죄 사함|죄를 씻고/, 4],
+  [/제사|속죄|대제사장|어린양|단번/, 5],
+  [/창조|아담|새 하늘|새 땅/, 6],
+  [/포로|바벨론|남은 자|귀환/, 7],
+  [/지혜|태초.*말씀|로고스/, 8],
+  [/성령|새 영|생기|오순절|마른 뼈/, 9],
+  [/부활|죽은 자|첫 열매/, 10],
+  [/율법의 행위|믿음으로|의롭다|의의 열매/, 11],
+];
 const vectorFor = (text) => {
-  const vector = Array(8).fill(0);
-  if (/아브라함|후손|약속/.test(text)) vector[0] = 1;
-  else if (/다윗|왕|보좌/.test(text)) vector[1] = 1;
-  else if (/성막|성전|임재|예루살렘/.test(text)) vector[2] = 1;
-  else if (/유월절|출애굽|구속/.test(text)) vector[3] = 1;
-  else vector[7] = 1;
+  const vector = Array(12).fill(0);
+  semanticPatterns.forEach(([pattern, index]) => {
+    if (pattern.test(text)) vector[index] = 1;
+  });
+  if (!vector.some(Boolean)) vector[11] = 0.25;
   return vector;
 };
 const fetchImpl = async (url, options) => {
   const body = JSON.parse(options.body);
   requests.push({ url, body, authorization: options.headers.authorization });
-  return { ok: true, status: 200, text: async () => JSON.stringify({ id: `mock-${requests.length}`, data: body.input.map((text, index) => ({ index, embedding: vectorFor(text) })), usage: { prompt_tokens: body.input.length, total_tokens: body.input.length } }) };
+  return {
+    ok: true,
+    status: 200,
+    text: async () => JSON.stringify({
+      id: `mock-${requests.length}`,
+      data: body.input.map((text, index) => ({ index, embedding: vectorFor(text) })),
+      usage: { prompt_tokens: body.input.length, total_tokens: body.input.length },
+    }),
+  };
 };
 const embed = (input) => createNvidiaEmbeddings({ ...input, env, fetchImpl });
 let clock = 0;
@@ -36,15 +66,30 @@ assert(requests.every((request) => request.body.truncate === 'NONE'), 'PoC must 
 assert(requests.every((request) => request.authorization === 'Bearer test-key'), 'PoC must use server bearer authentication');
 assert(requests.every((request) => !('dimensions' in request.body)), 'latest candidate must use its server default dimensions');
 assert(!('NVIDIA_MODEL_ID' in env), 'embedding PoC must not require a chat model id');
-assert(report.schemaVersion === 2, 'PoC report must use the model-policy-aware schema');
-assert(report.embedding.model === env.NVIDIA_EMBEDDING_MODEL_ID && report.embedding.dimension === 8, 'report must preserve model and dimension');
+assert(report.schemaVersion === 3, 'PoC report must use the expanded quality-audit schema');
+assert(report.evaluationRevision === NVIDIA_POC_EVALUATION_REVISION, 'report must preserve evaluation revision');
+assert(report.embedding.model === env.NVIDIA_EMBEDDING_MODEL_ID && report.embedding.dimension === 12, 'report must preserve model and dimension');
 assert(report.embedding.modelTier === 'latest-candidate' && report.embedding.supportsKorean === null, 'report must preserve model policy metadata');
-assert(report.corpus.count === 4 && report.corpus.sourceRefs === 12, 'PoC corpus size and sources must be explicit');
-assert(report.candidate.recallAtK === 1 && report.candidate.mrr === 1 && report.candidate.ndcgAtK === 1, 'mock PoC retrieval metrics must equal 1');
-assert(report.gate.passed === true && report.existingDbModified === false, 'PoC must pass quality gate without DB mutation');
+assert(report.corpus.count === 12 && report.corpus.sourceRefs === 36, 'PoC corpus size and sources must be explicit');
+assert(report.corpus.caseCount === 16 && report.corpus.hardNegativeCount === 16, 'expanded cases and hard negatives must be explicit');
+assert(report.corpus.queryTypes.join(',') === 'direct,semantic,multi-hop', 'all query types must be recorded');
+assert(report.vectorOnly.segments.semantic.recallAtK >= 0.6, 'vector-only retrieval must prove semantic contribution');
+assert(report.candidate.recallAtK >= 0.75 && report.candidate.mrr >= 0.7 && report.candidate.ndcgAtK >= 0.75, 'expanded mock retrieval must pass quality floors');
+assert(report.candidate.hardNegativeRate <= 0.5, 'expanded mock retrieval must control hard-negative errors');
+assert(report.gate.passed === true && report.gate.segmentGate.passed === true, 'PoC must pass global and segment gates');
+assert(report.existingDbModified === false, 'PoC must not mutate the existing DB');
+assert(dryRun.documentCount === 12 && dryRun.queryCount === 16 && dryRun.hardNegativeCount === 16, 'dry-run must expose expanded audit size');
 assert(dryRun.requiresExplicitExecute === true && dryRun.writesExistingDb === false, 'dry-run must be safe by default');
 assert(defaultDryRun.model === DEFAULT_NVIDIA_EMBEDDING_MODEL_ID && defaultDryRun.supportsKorean === true, 'dry-run default must select the approved Korean model');
 assert(!JSON.stringify(report).includes('test-key'), 'PoC report must never contain the API key');
 
-if (errors.length) { console.error(`✗ NVIDIA Embedding PoC verifier failed (${errors.length})`); errors.forEach((error) => console.error(`  - ${error}`)); process.exit(1); }
-console.log(`✓ NVIDIA Embedding PoC verified · requests ${requests.length} · model ${report.embedding.model} · Recall@3 ${report.candidate.recallAtK.toFixed(2)} · DB mutation none`);
+if (errors.length) {
+  console.error(`✗ NVIDIA Embedding PoC verifier failed (${errors.length})`);
+  errors.forEach((error) => console.error(`  - ${error}`));
+  process.exit(1);
+}
+console.log(
+  `✓ NVIDIA Embedding PoC verified · docs ${report.corpus.count} · cases ${report.corpus.caseCount} · `
+  + `semantic vector Recall@3 ${report.vectorOnly.segments.semantic.recallAtK.toFixed(2)} · `
+  + `hybrid Recall@3 ${report.candidate.recallAtK.toFixed(2)} · hard negative ${(report.candidate.hardNegativeRate * 100).toFixed(1)}%`,
+);
