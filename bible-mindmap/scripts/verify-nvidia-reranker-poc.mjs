@@ -12,6 +12,7 @@ const assert = (condition, message) => { if (!condition) errors.push(message); }
 const env = {
   NVIDIA_API_KEY: 'unit-test-placeholder',
   NVIDIA_BASE_URL: 'https://example.test/v1',
+  NVIDIA_RERANKER_URL: 'https://example.test/v1/ranking',
   NVIDIA_TIMEOUT_MS: '3000',
   NVIDIA_EMBEDDING_MODEL_ID: DEFAULT_NVIDIA_EMBEDDING_MODEL_ID,
   NVIDIA_EMBEDDING_DIMENSIONS: '2048',
