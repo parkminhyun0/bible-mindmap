@@ -21,29 +21,24 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const isMobile = useMobile();
   const isRail = variant === 'rail';
   const shadowDebounceRef = useRef(null);
+
   const closeModal = useCallback(() => {
+    clearTimeout(shadowDebounceRef.current);
     setOpen(false);
     setComparisonQuery('');
   }, []);
 
-  // 기존 승인형 shadow bridge는 보존한다. runtime bootstrap이 없는 일반 세션에서는 요청하지 않는다.
-  useEffect(() => {
-    if (!open) return undefined;
-    const onInput = (event) => {
-      if (!isCanonicalConceptSearchInput(event.target)) return;
-      const query = event.target.value;
-      setComparisonQuery(query);
-      clearTimeout(shadowDebounceRef.current);
-      shadowDebounceRef.current = setTimeout(() => {
-        runCanonicalConceptShadowBridge({ query }).catch(() => {});
-      }, 450);
-    };
-    document.addEventListener('input', onInput, true);
-    return () => {
-      document.removeEventListener('input', onInput, true);
-      clearTimeout(shadowDebounceRef.current);
-    };
-  }, [open]);
+  const handleSearchInput = useCallback((event) => {
+    if (!isCanonicalConceptSearchInput(event.target)) return;
+    const query = event.target.value;
+    setComparisonQuery(query);
+    clearTimeout(shadowDebounceRef.current);
+    shadowDebounceRef.current = setTimeout(() => {
+      runCanonicalConceptShadowBridge({ query }).catch(() => {});
+    }, 450);
+  }, []);
+
+  useEffect(() => () => clearTimeout(shadowDebounceRef.current), []);
 
   useModalDialog({
     dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
@@ -92,9 +87,11 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
       {open && (
         <>
-          <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
-            <CanonicalConceptStaticSearchEntry onClose={closeModal} />
-          </Suspense>
+          <div onInput={handleSearchInput} onCompositionEnd={handleSearchInput}>
+            <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
+              <CanonicalConceptStaticSearchEntry onClose={closeModal} />
+            </Suspense>
+          </div>
           <CanonicalSemanticComparisonPanel query={comparisonQuery} />
         </>
       )}
