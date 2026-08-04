@@ -4,7 +4,7 @@ const ALLOWED_ORIGINS = new Set([
 
 const NVIDIA_ENDPOINT = 'https://integrate.api.nvidia.com/v1/embeddings';
 const NVIDIA_MODEL = 'nvidia/llama-nemotron-embed-1b-v2';
-const MAX_CANDIDATES = 12;
+const MAX_CANDIDATES = 72;
 const MAX_TEXT_LENGTH = 1800;
 
 function corsHeaders(origin) {
