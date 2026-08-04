@@ -34,7 +34,7 @@ jobs:
               sha: context.sha,
               state: 'pending',
               context: 'canonical-live-ui',
-              description: 'Waiting for Pages deployment and live UI verification',
+              description: 'Waiting for Pages deployment and all-72 live UI verification',
               target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
             });
       - name: Checkout
@@ -63,7 +63,7 @@ jobs:
           exit 1
       - name: Install Chromium
         run: npx playwright install chromium --with-deps
-      - name: Verify Tier6-Tier11 on live Pages
+      - name: Verify all 72 canonical concepts on live Pages
         run: npx playwright test tests/canonical-usage-map.spec.js --config=playwright.live.config.js --project=chromium
       - name: Upload live UI evidence
         if: failure()
@@ -87,7 +87,7 @@ jobs:
               state,
               context: 'canonical-live-ui',
               description: state === 'success'
-                ? 'Live Pages Tier6-Tier11 desktop/mobile UI verified'
+                ? 'Live Pages all 72 canonical concepts verified'
                 : 'Live Pages canonical usage UI verification failed',
               target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
             });
