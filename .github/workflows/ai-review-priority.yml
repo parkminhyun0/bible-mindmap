@@ -1,0 +1,25 @@
+name: AI Review Priority Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/data/aiReviewPriority.js'
+      - 'bible-mindmap/scripts/verify-ai-review-priority.mjs'
+      - '.github/workflows/ai-review-priority.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-priority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify human review priority scoring
+        working-directory: bible-mindmap
+        run: node scripts/verify-ai-review-priority.mjs
