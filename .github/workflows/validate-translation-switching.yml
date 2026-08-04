@@ -1,0 +1,26 @@
+name: Validate Translation Switching
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/api/bibleApi.js'
+      - 'bible-mindmap/src/components/VerseNode.jsx'
+      - 'bible-mindmap/scripts/verify-translation-switching-stability.mjs'
+      - '.github/workflows/validate-translation-switching.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-translation-switching:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Verify translation switching stability contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-translation-switching-stability.mjs
