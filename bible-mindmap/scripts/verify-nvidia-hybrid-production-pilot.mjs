@@ -1,3 +1,4 @@
+import './verify-canonical-concept-shadow-bridge.mjs';
 import {
   hashPilotValue,
   resolveHybridProductionPilot,
