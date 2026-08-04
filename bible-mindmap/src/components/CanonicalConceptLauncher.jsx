@@ -3,6 +3,7 @@ import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
 import { isCanonicalConceptSearchInput } from '../search/canonicalConceptShadowBridge';
 import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
+import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
@@ -17,6 +18,7 @@ const COMPARISON_DEBOUNCE_MS = 300;
  */
 export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
+  const [suggestionQuery, setSuggestionQuery] = useState('');
   const [comparisonQuery, setComparisonQuery] = useState('');
   const isMobile = useMobile();
   const isRail = variant === 'rail';
@@ -25,6 +27,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const closeModal = useCallback(() => {
     clearTimeout(comparisonDebounceRef.current);
     setOpen(false);
+    setSuggestionQuery('');
     setComparisonQuery('');
   }, []);
 
@@ -35,16 +38,21 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     }, COMPARISON_DEBOUNCE_MS);
   }, []);
 
+  const commitSearchValue = useCallback((query) => {
+    setSuggestionQuery(query);
+    scheduleComparison(query);
+  }, [scheduleComparison]);
+
   const handleSearchInput = useCallback((event) => {
     if (!isCanonicalConceptSearchInput(event.target)) return;
     if (event.nativeEvent?.isComposing) return;
-    scheduleComparison(event.target.value);
-  }, [scheduleComparison]);
+    commitSearchValue(event.target.value);
+  }, [commitSearchValue]);
 
   const handleCompositionEnd = useCallback((event) => {
     if (!isCanonicalConceptSearchInput(event.target)) return;
-    scheduleComparison(event.target.value);
-  }, [scheduleComparison]);
+    commitSearchValue(event.target.value);
+  }, [commitSearchValue]);
 
   useEffect(() => () => clearTimeout(comparisonDebounceRef.current), []);
 
@@ -101,6 +109,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
             </Suspense>
           </div>
           <CanonicalSemanticComparisonPanel query={comparisonQuery} />
+          <CanonicalConceptSuggestionPanel query={suggestionQuery} />
         </>
       )}
     </>
