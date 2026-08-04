@@ -4,13 +4,9 @@ import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcept
 import { searchCanonicalConceptsStatic } from '../search/canonicalConceptStaticSearch.js';
 
 const WORKER_COMPARE_URL = 'https://bible-mindmap-nvidia-search.skyhyangsu63.workers.dev/compare';
+const INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
 const INITIAL_STATE = Object.freeze({
-  status: 'idle',
-  latencyMs: null,
-  dimensions: null,
-  model: '',
-  candidates: [],
-  error: '',
+  status: 'idle', latencyMs: null, dimensions: null, model: '', candidates: [], error: '',
 });
 const comparisonCache = new Map();
 
@@ -23,11 +19,8 @@ function conceptToPassage(id, concept) {
   const category = CONCEPT_CATEGORIES[concept.category]?.ko || concept.category || '';
   const anchors = Array.isArray(concept.reformedAnchors) ? concept.reformedAnchors.join(', ') : '';
   const arcs = Array.isArray(concept.canonicalArc)
-    ? concept.canonicalArc
-      .map((arc) => `${arc.stage}: ${arc.summary}`)
-      .join(' ')
+    ? concept.canonicalArc.map((arc) => `${arc.stage}: ${arc.summary}`).join(' ')
     : '';
-
   return [
     `정경 개념: ${concept.labelKo || id}`,
     category ? `분류: ${category}` : '',
@@ -46,8 +39,7 @@ const ALL_CONCEPT_CANDIDATES = Object.freeze(
 );
 
 function formatScore(score) {
-  if (!Number.isFinite(score)) return '-';
-  return `${Math.round(score * 100)}%`;
+  return Number.isFinite(score) ? `${Math.round(score * 100)}%` : '-';
 }
 
 function readableError(reason, status) {
@@ -63,6 +55,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
   const [state, setState] = useState(INITIAL_STATE);
   const [mountNode, setMountNode] = useState(null);
   const abortRef = useRef(null);
+  const hostRef = useRef(null);
   const normalizedQuery = String(query || '').trim();
   const keywordIds = useMemo(
     () => (normalizedQuery ? searchCanonicalConceptsStatic(normalizedQuery, { limit: 8 }) : []),
@@ -72,17 +65,39 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
   const overlap = overlapCount(keywordIds, semanticIds);
 
   useEffect(() => {
-    const input = document.querySelector('input[aria-label="정경 개념 의미 검색"]');
-    if (!input?.parentElement) return undefined;
-    const host = document.createElement('div');
-    host.dataset.semanticComparisonInline = 'true';
-    host.style.marginTop = '10px';
-    input.insertAdjacentElement('afterend', host);
-    setMountNode(host);
+    let observer;
+    let disposed = false;
+
+    const attach = () => {
+      if (disposed || hostRef.current?.isConnected) return true;
+      const input = document.querySelector(INPUT_SELECTOR);
+      if (!input?.parentElement) return false;
+
+      const existing = input.parentElement.querySelector('[data-semantic-comparison-inline="true"]');
+      const host = existing || document.createElement('div');
+      host.dataset.semanticComparisonInline = 'true';
+      host.style.marginTop = '10px';
+      if (!existing) input.insertAdjacentElement('afterend', host);
+      hostRef.current = host;
+      setMountNode(host);
+      return true;
+    };
+
+    if (!attach()) {
+      observer = new MutationObserver(() => {
+        if (attach()) observer?.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+
     return () => {
+      disposed = true;
+      observer?.disconnect();
       abortRef.current?.abort();
+      const host = hostRef.current;
+      hostRef.current = null;
       setMountNode(null);
-      host.remove();
+      host?.remove();
     };
   }, []);
 
@@ -110,14 +125,9 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
       const response = await fetch(WORKER_COMPARE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          query: targetQuery,
-          candidates: ALL_CONCEPT_CANDIDATES,
-          limit: 8,
-        }),
+        body: JSON.stringify({ query: targetQuery, candidates: ALL_CONCEPT_CANDIDATES, limit: 8 }),
         signal: controller.signal,
       });
-
       const payload = await response.json().catch(() => ({}));
       if (!response.ok || payload?.ok !== true || payload?.provider !== 'NVIDIA') {
         throw Object.assign(new Error(payload?.reason || 'worker-request-failed'), {
@@ -125,7 +135,6 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
           status: payload?.status || response.status,
         });
       }
-
       const nextState = {
         status: 'success',
         latencyMs: Number(payload.latencyMs) || null,
@@ -151,10 +160,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
       runComparison('');
       return undefined;
     }
-
-    const timer = window.setTimeout(() => {
-      runComparison(normalizedQuery);
-    }, 600);
+    const timer = window.setTimeout(() => runComparison(normalizedQuery), 600);
     return () => window.clearTimeout(timer);
   }, [normalizedQuery, runComparison]);
 
@@ -221,11 +227,9 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
               </div>
             ))}
           </div>
-
           <div style={{ marginTop: 7, fontSize: 9.5, color: 'var(--at-label-3)' }}>
             모델: {state.model || 'NVIDIA embedding'}{state.dimensions ? ` · ${state.dimensions}차원` : ''}
           </div>
-
           <div style={{ marginTop: 8, display: 'grid', gap: 5 }}>
             {state.candidates.map((candidate, index) => {
               const concept = CANONICAL_CONCEPTS[candidate.id];
@@ -237,8 +241,10 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
                   type="button"
                   onClick={() => onSelect?.(candidate.id)}
                   style={{
-                    minHeight: 44, padding: '8px 10px', display: 'grid', gridTemplateColumns: '22px minmax(0,1fr) auto', gap: 8,
-                    alignItems: 'center', textAlign: 'left', border: '1px solid var(--at-separator)', borderRadius: 9,
+                    minHeight: 44, padding: '8px 10px', display: 'grid',
+                    gridTemplateColumns: '22px minmax(0,1fr) auto', gap: 8,
+                    alignItems: 'center', textAlign: 'left',
+                    border: '1px solid var(--at-separator)', borderRadius: 9,
                     background: 'var(--at-surface)', color: 'var(--at-label)', cursor: 'pointer',
                   }}
                 >
