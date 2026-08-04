@@ -1,6 +1,10 @@
-import { lazy, Suspense, useCallback, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
+import {
+  isCanonicalConceptSearchInput,
+  runCanonicalConceptShadowBridge,
+} from '../search/canonicalConceptShadowBridge';
 
 const CanonicalConceptModal = lazy(() => import('./CanonicalConceptModal'));
 
@@ -14,7 +18,28 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
   const isMobile = useMobile();
   const isRail = variant === 'rail';
+  const shadowDebounceRef = useRef(null);
   const closeModal = useCallback(() => setOpen(false), []);
+
+  // P1-2d-b: 서버가 승인한 관리자 shadow 세션이 있을 때만 검색을 병행한다.
+  // GitHub Pages에는 runtime bootstrap이 없으므로 요청 자체가 발생하지 않는다.
+  // shadow 결과는 화면에 노출하지 않고 기존 keyword 필터가 계속 단일 사용자 결과다.
+  useEffect(() => {
+    if (!open) return undefined;
+    const onInput = (event) => {
+      if (!isCanonicalConceptSearchInput(event.target)) return;
+      clearTimeout(shadowDebounceRef.current);
+      const query = event.target.value;
+      shadowDebounceRef.current = setTimeout(() => {
+        runCanonicalConceptShadowBridge({ query }).catch(() => {});
+      }, 450);
+    };
+    document.addEventListener('input', onInput, true);
+    return () => {
+      document.removeEventListener('input', onInput, true);
+      clearTimeout(shadowDebounceRef.current);
+    };
+  }, [open]);
 
   // CanonicalConceptModal keeps ownership of Escape so its nested sequence
   // remains VersePreviewPopup -> LexiconPopup -> parent modal. The shared hook
