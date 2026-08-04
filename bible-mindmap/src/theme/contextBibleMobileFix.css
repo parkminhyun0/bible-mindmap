@@ -1,0 +1,11 @@
+/* 문맥성경 모바일 상단 제어 영역 높이 보정
+   공통 Apple 모달 규칙이 titlebar 바로 다음 div를 본문으로 오인해
+   flex: 1을 적용하면서 비평/범례 바가 남은 높이를 차지하던 문제를 막는다. */
+@media (max-width: 767px) {
+  .at-modal--mobile.at-modal--context > .at-modal__titlebar + div {
+    flex: 0 0 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-top: 0 !important;
+  }
+}
