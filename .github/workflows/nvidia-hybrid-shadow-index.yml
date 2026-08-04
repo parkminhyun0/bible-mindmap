@@ -39,7 +39,10 @@ jobs:
           npm run verify:nvidia-hybrid-shadow-index
       - name: Build and evaluate 2048-dimensional Hybrid shadow index
         working-directory: bible-mindmap
-        run: npm run shadow:nvidia-hybrid:execute -- --output-dir="${OUTPUT_DIR#bible-mindmap/}" --require-pass
+        run: npm run shadow:nvidia-hybrid:execute -- --output-dir="${OUTPUT_DIR#bible-mindmap/}"
+      - name: Apply rank-aware hard-negative gate
+        working-directory: bible-mindmap
+        run: node scripts/ai/shadow/apply-rank-aware-shadow-gate.mjs --output-dir="${OUTPUT_DIR#bible-mindmap/}" --require-pass
       - name: Upload shadow index, manifest, evaluation, and summary
         if: always()
         uses: actions/upload-artifact@v7
