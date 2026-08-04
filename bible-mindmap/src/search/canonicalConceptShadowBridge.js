@@ -1,4 +1,4 @@
-import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts';
+import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts.js';
 
 export const CANONICAL_SHADOW_EVENT = 'bible-mindmap:canonical-shadow-telemetry';
 const SEARCH_PLACEHOLDER = '개념 검색';
