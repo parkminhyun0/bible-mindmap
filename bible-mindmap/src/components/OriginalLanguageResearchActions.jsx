@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
+import { parseReference } from '../utils/citationDetector';
 
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const SyntaxPanel = lazy(() => import('./SyntaxPanel'));
@@ -24,20 +25,45 @@ const FALLBACK_STYLE = {
   fontWeight: 700,
 };
 
+function resolvePassageFromAnchor(anchor) {
+  if (typeof document === 'undefined' || !anchor) return null;
+  const x = Number(anchor.x);
+  const y = Number(anchor.y) - 6;
+  if (!Number.isFinite(x) || !Number.isFinite(y)) return null;
+
+  const elements = document.elementsFromPoint(x, Math.max(0, y));
+  for (const element of elements) {
+    const root = element.closest?.('[data-annotation-root]');
+    if (!root) continue;
+    const headerText = root.firstElementChild?.textContent?.replace(/^\s*📖\s*/, '').trim();
+    const parsed = headerText ? parseReference(headerText) : null;
+    if (!parsed) continue;
+    return {
+      bookId: parsed.book,
+      chapter: parsed.chapter,
+      verseStart: parsed.verseStart,
+      verseEnd: parsed.verseEnd || parsed.verseStart,
+    };
+  }
+  return null;
+}
+
 export default function OriginalLanguageResearchActions({
   entry,
+  anchor,
   passage,
   isHebrew,
   onActiveChange,
 }) {
   const isMobile = useMobile();
   const [step, setStep] = useState(null);
+  const [sourcePassage] = useState(() => passage || resolvePassageFromAnchor(anchor));
   const returnFocusRef = useRef(null);
 
   const hasPassage = Boolean(
-    passage?.bookId
-      && Number(passage?.chapter)
-      && Number(passage?.verseStart),
+    sourcePassage?.bookId
+      && Number(sourcePassage?.chapter)
+      && Number(sourcePassage?.verseStart),
   );
   const query = entry?.l || entry?.w || entry?.s || '';
 
@@ -81,6 +107,7 @@ export default function OriginalLanguageResearchActions({
       <section
         aria-label="원어 단어 연구 이어가기"
         data-original-language-research-actions
+        data-origin-passage={`${sourcePassage.bookId}-${sourcePassage.chapter}-${sourcePassage.verseStart}-${sourcePassage.verseEnd}`}
         style={{
           padding: '9px 12px',
           borderTop: '1px solid #e2e8f0',
@@ -141,13 +168,13 @@ export default function OriginalLanguageResearchActions({
 
       {step === 'syntax' && (
         <Suspense fallback={loading}>
-          <SyntaxPanel passage={passage} onClose={closeStep} panelIndex={0} />
+          <SyntaxPanel passage={sourcePassage} onClose={closeStep} panelIndex={0} />
         </Suspense>
       )}
 
       {step === 'parallel' && (
         <Suspense fallback={loading}>
-          <ParallelStudyModal initialRef={passage} onClose={closeStep} />
+          <ParallelStudyModal initialRef={sourcePassage} onClose={closeStep} />
         </Suspense>
       )}
     </>
