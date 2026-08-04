@@ -1,6 +1,9 @@
 import { loadNvidiaTransportConfig } from './nvidia.mjs';
 import { normalizeRerankerResult } from '../retrieval/reranker-contract.mjs';
-import { resolveNvidiaRerankerModelPolicy } from '../poc/nvidia-reranker-model-policy.mjs';
+import {
+  resolveNvidiaRerankerEndpoint,
+  resolveNvidiaRerankerModelPolicy,
+} from '../poc/nvidia-reranker-model-policy.mjs';
 
 function validateRequest({ query, passages }, maxPassages) {
   if (typeof query !== 'string' || !query.trim()) throw new TypeError('reranker query must be non-empty');
@@ -27,11 +30,12 @@ export async function createNvidiaReranking({
   if (typeof fetchImpl !== 'function') throw new Error('fetch is unavailable');
   const transport = loadNvidiaTransportConfig(env);
   const policy = resolveNvidiaRerankerModelPolicy({ modelId: env.NVIDIA_RERANKER_MODEL_ID });
+  const endpoint = resolveNvidiaRerankerEndpoint({ modelId: policy.id, env });
   const input = validateRequest({ query, passages }, policy.maxPassagesPerRequest);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), transport.timeoutMs);
   try {
-    const response = await fetchImpl(`${transport.baseUrl}${policy.endpoint}`, {
+    const response = await fetchImpl(endpoint, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
