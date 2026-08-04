@@ -12,6 +12,7 @@ import {
 import { createNvidiaReranking } from './ai/providers/nvidia-reranker.mjs';
 import {
   DEFAULT_NVIDIA_RERANKER_MODEL_ID,
+  resolveNvidiaRerankerEndpoint,
   resolveNvidiaRerankerModelPolicy,
 } from './ai/poc/nvidia-reranker-model-policy.mjs';
 
@@ -103,8 +104,16 @@ try {
 }
 
 const policy = resolveNvidiaRerankerModelPolicy();
+const hostedEndpoint = 'https://ai.api.nvidia.com/v1/retrieval/nvidia/llama-nemotron-rerank-1b-v2/reranking';
 assert(policy.id === DEFAULT_NVIDIA_RERANKER_MODEL_ID, 'default reranker model mismatch');
-assert(policy.endpoint === '/ranking', 'reranker endpoint must be /ranking');
+assert(policy.hostedEndpoint === hostedEndpoint, 'hosted Build API reranker endpoint mismatch');
+assert(policy.selfHostedEndpoint === '/ranking', 'self-hosted NIM endpoint must remain /ranking');
+assert(resolveNvidiaRerankerEndpoint({ env: {} }) === hostedEndpoint, 'hosted endpoint must be the safe default');
+assert(
+  resolveNvidiaRerankerEndpoint({ env: { NVIDIA_RERANKER_URL: 'https://example.invalid/v1/ranking/' } })
+    === 'https://example.invalid/v1/ranking',
+  'explicit self-hosted endpoint override mismatch',
+);
 assert(policy.truncate === 'NONE', 'verified corpus reranking must fail rather than silently truncate');
 assert(policy.maxPassagesPerRequest === RERANKER_CONTRACT_LIMITS.maxCandidates, 'provider and contract passage limits must match');
 
@@ -117,6 +126,7 @@ const providerResult = await createNvidiaReranking({
   env: {
     NVIDIA_API_KEY: 'unit-test-placeholder',
     NVIDIA_BASE_URL: 'https://example.invalid/v1',
+    NVIDIA_RERANKER_URL: 'https://example.invalid/v1/ranking',
     NVIDIA_RERANKER_MODEL_ID: DEFAULT_NVIDIA_RERANKER_MODEL_ID,
     NVIDIA_TIMEOUT_MS: '30000',
   },
@@ -133,7 +143,7 @@ const providerResult = await createNvidiaReranking({
     };
   },
 });
-assert(capturedUrl === 'https://example.invalid/v1/ranking', 'provider must call the ranking endpoint');
+assert(capturedUrl === 'https://example.invalid/v1/ranking', 'provider must use the dedicated reranker URL');
 assert(capturedBody?.model === DEFAULT_NVIDIA_RERANKER_MODEL_ID, 'provider request model mismatch');
 assert(capturedBody?.query?.text === '성전과 임재', 'provider request query shape mismatch');
 assert(capturedBody?.passages?.length === 2, 'provider request passage count mismatch');
@@ -148,5 +158,6 @@ if (errors.length) {
 
 console.log(
   `✓ NVIDIA reranker contract verified · model ${DEFAULT_NVIDIA_RERANKER_MODEL_ID} · `
-  + `shortlist ${RERANKER_CONTRACT_LIMITS.maxCandidates} · production dimension ${PRODUCTION_INDEX_CONTRACT.dimension} · no activation`,
+  + `hosted endpoint isolated · shortlist ${RERANKER_CONTRACT_LIMITS.maxCandidates} · `
+  + `production dimension ${PRODUCTION_INDEX_CONTRACT.dimension} · no activation`,
 );
