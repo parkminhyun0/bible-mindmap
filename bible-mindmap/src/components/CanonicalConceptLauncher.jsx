@@ -5,6 +5,7 @@ import {
   isCanonicalConceptSearchInput,
   runCanonicalConceptShadowBridge,
 } from '../search/canonicalConceptShadowBridge';
+import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 
@@ -16,20 +17,23 @@ const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptS
  */
 export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
+  const [comparisonQuery, setComparisonQuery] = useState('');
   const isMobile = useMobile();
   const isRail = variant === 'rail';
   const shadowDebounceRef = useRef(null);
-  const closeModal = useCallback(() => setOpen(false), []);
+  const closeModal = useCallback(() => {
+    setOpen(false);
+    setComparisonQuery('');
+  }, []);
 
-  // 선택 기능으로 보존된 P1-2d-b 서버 shadow bridge.
-  // GitHub Pages에는 runtime bootstrap이 없으므로 요청 자체가 발생하지 않는다.
-  // 일반 사용자 검색은 CanonicalConceptStaticSearchEntry의 정적 로컬 검색만 사용한다.
+  // 기존 승인형 shadow bridge는 보존한다. runtime bootstrap이 없는 일반 세션에서는 요청하지 않는다.
   useEffect(() => {
     if (!open) return undefined;
     const onInput = (event) => {
       if (!isCanonicalConceptSearchInput(event.target)) return;
-      clearTimeout(shadowDebounceRef.current);
       const query = event.target.value;
+      setComparisonQuery(query);
+      clearTimeout(shadowDebounceRef.current);
       shadowDebounceRef.current = setTimeout(() => {
         runCanonicalConceptShadowBridge({ query }).catch(() => {});
       }, 450);
@@ -87,9 +91,12 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       </button>
 
       {open && (
-        <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
-          <CanonicalConceptStaticSearchEntry onClose={closeModal} />
-        </Suspense>
+        <>
+          <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
+            <CanonicalConceptStaticSearchEntry onClose={closeModal} />
+          </Suspense>
+          <CanonicalSemanticComparisonPanel query={comparisonQuery} />
+        </>
       )}
     </>
   );
