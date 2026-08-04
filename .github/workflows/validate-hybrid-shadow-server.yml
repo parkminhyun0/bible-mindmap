@@ -1,0 +1,26 @@
+name: Validate Hybrid Shadow Server
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/server/hybrid-shadow/**'
+      - 'bible-mindmap/scripts/verify-nvidia-hybrid-shadow-server.mjs'
+      - 'bible-mindmap/docs/nvidia-hybrid-shadow-server.md'
+      - '.github/workflows/validate-hybrid-shadow-server.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-shadow-server:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+      - name: Verify server authentication, limits, kill switch, Secret boundary, and telemetry
+        working-directory: bible-mindmap
+        run: node scripts/verify-nvidia-hybrid-shadow-server.mjs
