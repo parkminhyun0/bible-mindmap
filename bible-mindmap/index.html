@@ -37,14 +37,32 @@
 
       /* 모바일 반응형 유틸리티 (전역) */
       html, body { overscroll-behavior-y: none; }
-      /* iOS Safari 15+ dvh 지원, 미지원은 vh fallback */
       .h-screen-safe { height: 100vh; height: 100dvh; }
-      /* iOS 관성 스크롤 (전 스크롤 컨테이너 공용 클래스) */
       .momentum-scroll { -webkit-overflow-scrolling: touch; }
-      /* 최소 탭 타깃 (Apple HIG 44px 권장, 최소 40px 보장) */
       @media (max-width: 767px) {
         .tap-target { min-width: 40px; min-height: 40px; }
       }
+
+      /* 앱 타이틀 옆 랜딩 복귀 버튼 */
+      .bm-home-link {
+        width: 30px;
+        height: 30px;
+        flex: 0 0 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9px;
+        border: 1px solid rgba(255,255,255,.22);
+        background: rgba(255,255,255,.14);
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 1;
+        box-shadow: 0 2px 8px rgba(15,23,42,.14);
+        transition: background .18s ease, transform .18s ease;
+      }
+      .bm-home-link:hover { background: rgba(255,255,255,.24); transform: translateY(-1px); }
+      .bm-home-link:focus-visible { outline: 2px solid #bfdbfe; outline-offset: 2px; }
     </style>
   </head>
   <body>
@@ -57,9 +75,6 @@
       </div>
     </div>
     <div id="root"></div>
-    <!-- 캐시 이중 방어 (모바일 white screen 근본 해결)
-         BUILD_ID 는 매 배포마다 vite 가 자동 치환 (vite.config.js stampBuildId plugin)
-         브라우저에 저장된 값과 다르면 새 배포 감지 → 강제 재요청 -->
     <script>
       (function bustStaleCache() {
         var BUILD_ID = '__BM_BUILD_ID__';
@@ -74,12 +89,9 @@
             return;
           }
           localStorage.setItem('__bm_build_id', BUILD_ID);
-        } catch (storageError) {
-          // iOS 개인정보 보호 모드처럼 Web Storage가 차단돼도 앱 부팅은 계속한다.
-        }
+        } catch (storageError) {}
       })();
 
-      // 스크립트 로드 실패 · 런타임 에러 감지 시 자동 재로드 (백업 방어)
       (function selfHealCache() {
         var reloaded = null;
         try { reloaded = sessionStorage.getItem('__bm_cache_reload'); } catch (storageError) {}
@@ -98,6 +110,34 @@
             try { sessionStorage.removeItem('__bm_cache_reload'); } catch (storageError) {}
           }, 3000);
         });
+      })();
+
+      (function installLandingHomeButton() {
+        function landingUrl() {
+          var path = location.pathname;
+          var marker = '/app/';
+          var index = path.indexOf(marker);
+          return index >= 0 ? path.slice(0, index + 1) : '/';
+        }
+        function attach() {
+          var title = document.querySelector('.at-sidebar-titlebar h2');
+          if (!title || title.parentElement.querySelector('.bm-home-link')) return false;
+          var link = document.createElement('a');
+          link.className = 'bm-home-link';
+          link.href = landingUrl();
+          link.title = '랜딩페이지로 돌아가기';
+          link.setAttribute('aria-label', '홈 · 랜딩페이지로 돌아가기');
+          link.textContent = '⌂';
+          title.insertAdjacentElement('afterend', link);
+          return true;
+        }
+        if (!attach()) {
+          var observer = new MutationObserver(function() {
+            if (attach()) observer.disconnect();
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+          setTimeout(function() { observer.disconnect(); }, 15000);
+        }
       })();
     </script>
     <script type="module" src="/src/main.jsx"></script>
