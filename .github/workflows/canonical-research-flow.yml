@@ -1,0 +1,30 @@
+name: Validate canonical research flow
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/components/CanonicalConceptStaticSearchEntry.jsx'
+      - 'bible-mindmap/src/components/ResearchFlowBackButton.jsx'
+      - 'bible-mindmap/tests/canonical-research-flow.spec.js'
+      - '.github/workflows/canonical-research-flow.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-research-flow:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - run: npm ci
+      - run: npm run build:lexicon
+      - run: npx playwright install chromium --with-deps
+      - run: npx playwright test tests/canonical-research-flow.spec.js --project=chromium

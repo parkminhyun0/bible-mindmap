@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts.js';
 import { searchCanonicalConceptsStatic } from '../search/canonicalConceptStaticSearch.js';
 import useMobile from '../hooks/useMobile.js';
+import ResearchFlowBackButton from './ResearchFlowBackButton.jsx';
 
 const CanonicalConceptModal = lazy(() => import('./CanonicalConceptModal.jsx'));
 
@@ -98,6 +99,11 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
   const [fontSizes, setFontSizes] = useState({ title: 18, category: 12, body: 13 });
   const results = useMemo(() => searchCanonicalConceptsStatic(query, { limit: 12 }), [query]);
 
+  const returnToSearch = () => {
+    setSelected(null);
+    setShowBrowser(false);
+  };
+
   const bumpFont = (key, delta) => {
     const limits = key === 'title' ? [15, 25] : key === 'category' ? [10, 18] : [11, 20];
     setFontSizes((current) => ({
@@ -146,10 +152,28 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
   };
 
   if (selected || showBrowser) {
+    const selectedLabel = selected ? CANONICAL_CONCEPTS[selected]?.labelKo : '전체 개념';
     return (
-      <Suspense fallback={<div className="deferred-feature-loading">정경 추적 개념을 불러오는 중…</div>}>
-        <CanonicalConceptModal initialConcept={selected} onClose={onClose} />
-      </Suspense>
+      <>
+        <Suspense fallback={<div className="deferred-feature-loading">정경 추적 개념을 불러오는 중…</div>}>
+          <CanonicalConceptModal initialConcept={selected} onClose={returnToSearch} />
+        </Suspense>
+        {createPortal(
+          <ResearchFlowBackButton
+            onBack={returnToSearch}
+            label="정경 추적 검색으로 돌아가기"
+            compact={isMobile}
+            style={{
+              position: 'fixed',
+              zIndex: 1295,
+              left: isMobile ? 12 : 20,
+              top: isMobile ? 'calc(env(safe-area-inset-top, 0px) + 12px)' : 18,
+            }}
+          />,
+          document.body,
+        )}
+        <span className="sr-only" aria-live="polite">{selectedLabel} 상세 화면</span>
+      </>
     );
   }
 

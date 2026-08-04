@@ -111,10 +111,10 @@ test.describe('모바일 정경 용례지도', () => {
 
     const sheet = page.locator('.mobile-add-sheet');
     await expect(sheet).toBeVisible();
+    const searchDialog = await openCanonicalSearch(page, sheet);
 
     for (const key of MOBILE_REPRESENTATIVES) {
       const testCase = conceptCase(key);
-      const searchDialog = await openCanonicalSearch(page, sheet);
       const dialog = await openConcept(page, searchDialog, testCase);
 
       await assertUsageMap(page, dialog, testCase);
@@ -124,7 +124,11 @@ test.describe('모바일 정경 용례지도', () => {
 
       await page.keyboard.press('Escape');
       await expect(dialog).toHaveCount(0);
-      await expect(sheet).toBeVisible();
+      await expect(searchDialog).toBeVisible();
     }
+
+    await searchDialog.getByRole('button', { name: '닫기' }).click();
+    await expect(searchDialog).toHaveCount(0);
+    await expect(sheet).toBeVisible();
   });
 });
