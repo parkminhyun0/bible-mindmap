@@ -1,0 +1,81 @@
+name: Temporary Rank-Aware Shadow Patch
+
+on:
+  push:
+    branches:
+      - chatgpt/p1-2c-rank-aware-hard-negatives
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: chatgpt/p1-2c-rank-aware-hard-negatives
+      - name: Apply rank-aware hard-negative policy
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('bible-mindmap/scripts/ai/shadow/nvidia-hybrid-shadow-index.mjs')
+          text = path.read_text()
+          marker = "function evaluateShadowGate({ baseline, candidate }) {\n"
+          helper = """function rankAwareHardNegativeRate(report) {
+            const rows = Array.isArray(report?.rows) ? report.rows : [];
+            if (!rows.length) return 0;
+            const violations = rows.filter((row) => {
+              const resultIds = Array.isArray(row.resultIds) ? row.resultIds : [];
+              const relevantRanks = (row.relevantIds || []).map((id) => resultIds.indexOf(id));
+              const hardNegativeRanks = (row.hardNegativeIds || [])
+                .map((id) => resultIds.indexOf(id))
+                .filter((rank) => rank >= 0);
+              if (!hardNegativeRanks.length) return false;
+              if (relevantRanks.some((rank) => rank < 0)) return true;
+              return Math.min(...hardNegativeRanks) < Math.max(...relevantRanks);
+            }).length;
+            return violations / rows.length;
+          }
+
+"""
+          if helper not in text:
+              text = text.replace(marker, helper + marker)
+          old = """  const errors = [];
+            const minimums = Object.freeze({"""
+          new = """  const errors = [];
+            const baselineRankAwareHardNegativeRate = rankAwareHardNegativeRate(baseline);
+            const candidateRankAwareHardNegativeRate = rankAwareHardNegativeRate(candidate);
+            const minimums = Object.freeze({"""
+          text = text.replace(old, new)
+          text = text.replace(
+              "if (candidate.hardNegativeRate > minimums.maxHardNegativeRate) errors.push(`hard-negative rate above ${minimums.maxHardNegativeRate}`);",
+              "if (candidateRankAwareHardNegativeRate > minimums.maxHardNegativeRate) errors.push(`rank-aware hard-negative rate above ${minimums.maxHardNegativeRate}`);",
+          )
+          text = text.replace(
+              "if (candidate.hardNegativeRate > baseline.hardNegativeRate + 0.125) errors.push('Hybrid hard-negative rate regressed beyond allowance');",
+              "if (candidateRankAwareHardNegativeRate > baselineRankAwareHardNegativeRate + 0.125) errors.push('Hybrid rank-aware hard-negative rate regressed beyond allowance');",
+          )
+          return_marker = """    segmentMinimums,
+              vectorContribution,"""
+          return_replacement = """    segmentMinimums,
+              hardNegativePolicy: 'rank-aware-outrank-or-replacement',
+              rawHardNegativeRate: Object.freeze({
+                baseline: baseline.hardNegativeRate,
+                candidate: candidate.hardNegativeRate,
+              }),
+              rankAwareHardNegativeRate: Object.freeze({
+                baseline: baselineRankAwareHardNegativeRate,
+                candidate: candidateRankAwareHardNegativeRate,
+              }),
+              vectorContribution,"""
+          text = text.replace(return_marker, return_replacement)
+          path.write_text(text)
+          PY
+          rm .github/workflows/tmp-rank-aware-shadow-patch.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add bible-mindmap/scripts/ai/shadow/nvidia-hybrid-shadow-index.mjs .github/workflows/tmp-rank-aware-shadow-patch.yml
+          git commit -m "fix(search): use rank-aware shadow hard-negative gate"
+          git push origin HEAD:chatgpt/p1-2c-rank-aware-hard-negatives
