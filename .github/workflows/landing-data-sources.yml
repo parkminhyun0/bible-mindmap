@@ -1,0 +1,27 @@
+name: Validate landing data sources
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/landing/partials/data-sources.html'
+      - 'bible-mindmap/scripts/inject-landing-data-sources.mjs'
+      - 'bible-mindmap/scripts/verify-landing-data-sources.mjs'
+      - 'bible-mindmap/vercel.json'
+      - '.github/workflows/deploy.yml'
+      - '.github/workflows/landing-data-sources.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-landing-data-sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify source attribution output
+        working-directory: bible-mindmap
+        run: node scripts/verify-landing-data-sources.mjs
