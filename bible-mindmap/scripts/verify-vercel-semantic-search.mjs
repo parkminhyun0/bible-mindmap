@@ -26,6 +26,6 @@ assert.ok(!source.includes('VITE_NVIDIA'), 'NVIDIA credential must never use a b
 assert.ok(!source.includes('process.env.NEXT_PUBLIC'), 'NVIDIA credential must never use a public environment variable');
 assert.ok(source.includes("req.method === 'GET'"), 'health/config inspection route is required');
 assert.ok(source.includes("req.method !== 'POST'"), 'search route must reject unsupported methods');
-assert.ok(source.includes('vector.length !== 2048'), 'approved embedding dimension must be enforced');
+assert.ok(/\b\w+Vector\.length\s*!==\s*2048\b/.test(source), 'approved embedding dimension must be enforced');
 
 console.log('✓ Vercel Hobby semantic search server boundary verified');
