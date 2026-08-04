@@ -14,8 +14,8 @@
   },
   "observations": {
     "canonicalConceptCount": 72,
-    "canonicalUsageMapCount": 36,
-    "canonicalUsagePendingCount": 36,
+    "canonicalUsageMapCount": 72,
+    "canonicalUsagePendingCount": 0,
     "chapterCardCount": 1106,
     "chapterCardMarkerChecked": 2304,
     "chapterCardMarkerMissing": 39,
@@ -58,16 +58,17 @@
     {
       "id": "A6-R002",
       "severity": "P2",
-      "status": "planned-expansion",
+      "status": "monitored",
       "category": "canonical-data",
-      "title": "정경 개념 용례지도 36개 확장 대기",
-      "rationale": "정경 개념 72개 중 36개가 상세 usage map을 보유한다. 미등록 참조와 잘못된 개념 키는 하드 실패하며, 남은 36개는 계획적 콘텐츠 확장 범위다.",
+      "title": "정경 개념 용례지도 72개 완전성·라이브 검증 대기",
+      "rationale": "정경 개념 72개 모두 상세 usage map을 보유하며 총 513개 용례가 등록됐다. 개념·usage 양방향 완전성, Strong, 실제 절 범위, note 길이와 내부 중복 검증은 자동화했으며 main 병합 이후 UI·모바일·라이브 배포 확인을 남긴다.",
       "evidence": [
         "src/data/canonicalConcepts.js",
         "src/data/canonicalUsageMap.js",
-        "scripts/verify-data-registry-integrity.mjs"
+        "scripts/verify-canonical-usage-completeness.mjs",
+        ".github/workflows/canonical-usage-completeness.yml"
       ],
-      "guard": "개념·usage 역방향 registry 검사와 Strong·절 범위 verifier 유지"
+      "guard": "72개 개념·72개 usage key·개념당 6~10용례를 하드 게이트로 유지하고 main 병합 뒤 Pages와 실제 UI를 확인"
     },
     {
       "id": "A6-R003",

@@ -1,0 +1,52 @@
+name: Canonical usage completeness
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/data/canonicalConcepts*.js'
+      - 'bible-mindmap/src/data/canonicalUsageMap*.js'
+      - 'bible-mindmap/scripts/verify-canonical-usage-completeness.mjs'
+      - 'bible-mindmap/scripts/verify-canonical-usage-summary.mjs'
+      - 'bible-mindmap/package.json'
+      - '.github/workflows/canonical-usage-completeness.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'bible-mindmap/src/data/canonicalConcepts*.js'
+      - 'bible-mindmap/src/data/canonicalUsageMap*.js'
+      - 'bible-mindmap/scripts/verify-canonical-usage-completeness.mjs'
+      - 'bible-mindmap/scripts/verify-canonical-usage-summary.mjs'
+      - 'bible-mindmap/package.json'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Strong and lexicon definitions
+        run: npm run build:lexicon
+      - name: Verify canonical concepts and references
+        run: node scripts/verify-canonical-concepts.mjs
+      - name: Self-test completeness failures
+        run: node scripts/verify-canonical-usage-completeness.mjs --self-test
+      - name: Verify concept and usage-map completeness
+        run: node scripts/verify-canonical-usage-completeness.mjs
+      - name: Print canonical usage summary
+        run: node scripts/verify-canonical-usage-summary.mjs
+      - name: Build application
+        run: npm run build

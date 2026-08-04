@@ -1,6 +1,12 @@
-// 배치1(파일럿6+Tier1) + 배치2(Tier2+Tier3) + 배치3(Tier4+Tier5)를 병합.
+// 배치1~9: 파일럿6 + Tier1~Tier11의 72개 정경 개념 용례지도를 병합한다.
 import { CANONICAL_USAGE_MAP_T2 } from './canonicalUsageMapT2.js';
 import { CANONICAL_USAGE_MAP_T3 } from './canonicalUsageMapT3.js';
+import { CANONICAL_USAGE_MAP_T4 } from './canonicalUsageMapT4.js';
+import { CANONICAL_USAGE_MAP_T5 } from './canonicalUsageMapT5.js';
+import { CANONICAL_USAGE_MAP_T6 } from './canonicalUsageMapT6.js';
+import { CANONICAL_USAGE_MAP_T7 } from './canonicalUsageMapT7.js';
+import { CANONICAL_USAGE_MAP_T8 } from './canonicalUsageMapT8.js';
+import { CANONICAL_USAGE_MAP_T9 } from './canonicalUsageMapT9.js';
 
 export const CANONICAL_USAGE_MAP = {
   seed: [
@@ -125,4 +131,10 @@ export const CANONICAL_USAGE_MAP = {
   ],
   ...CANONICAL_USAGE_MAP_T2,
   ...CANONICAL_USAGE_MAP_T3,
+  ...CANONICAL_USAGE_MAP_T4,
+  ...CANONICAL_USAGE_MAP_T5,
+  ...CANONICAL_USAGE_MAP_T6,
+  ...CANONICAL_USAGE_MAP_T7,
+  ...CANONICAL_USAGE_MAP_T8,
+  ...CANONICAL_USAGE_MAP_T9,
 };
