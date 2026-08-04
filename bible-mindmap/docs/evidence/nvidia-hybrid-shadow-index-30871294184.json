@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "stage": "P1-2c",
+  "status": "passed-shadow-validation",
+  "runId": 30871294184,
+  "runAttempt": 1,
+  "headSha": "cae1bf9eef86cb02f9b82d6d842d1b3077e4a8e1",
+  "artifact": {
+    "id": 8877965932,
+    "name": "nvidia-hybrid-shadow-index-30871294184-1",
+    "digest": "sha256:087170fe6a6938bbcec299294eab6432e8e79b6514ee4bc28930bd1dc0f8b00d",
+    "expiresAt": "2026-09-03T02:16:56Z"
+  },
+  "model": "nvidia/llama-nemotron-embed-1b-v2",
+  "dimension": 2048,
+  "corpus": {
+    "revision": "canonical-concepts-72-v1",
+    "documentCount": 72,
+    "sourceRefCount": 415,
+    "documentIdsSha256": "16f96800a876797b97ae9362ce10739038397523724681120e9328c9fa0396bd",
+    "documentContentSha256": "4e1ee1edf1329ff3e19c8ac096593bee5a717e97b5615b3128ba3723ac0c1de9",
+    "vectorDataSha256": "748c3b30e076f404edee3bd69901984e29f9541fdc20097f18f4e7c7bb22fda2",
+    "vectorEncoding": "float32",
+    "vectorBytesEstimate": 589824
+  },
+  "evaluation": {
+    "revision": "canonical-shadow-eval-v1",
+    "queryCount": 24,
+    "hardNegativeCount": 24,
+    "topK": 5,
+    "baseline": {
+      "recallAt5": 0.9583333333333334,
+      "mrr": 0.9375,
+      "ndcgAt5": 0.9199494494943677,
+      "failureRate": 0,
+      "p95LocalLatencyMs": 18.454917999999907
+    },
+    "hybrid": {
+      "recallAt5": 0.9791666666666666,
+      "mrr": 1,
+      "ndcgAt5": 0.9720751702666618,
+      "failureRate": 0,
+      "p95LocalLatencyMs": 16.003299999999854,
+      "directRecallAt5": 1,
+      "semanticRecallAt5": 1,
+      "multiHopRecallAt5": 0.9375
+    },
+    "hardNegativePolicy": "rank-aware-outrank-or-replacement",
+    "rawHardNegativeRate": {
+      "baseline": 0.08333333333333333,
+      "hybrid": 0.25
+    },
+    "rankAwareHardNegativeRate": {
+      "baseline": 0,
+      "hybrid": 0
+    },
+    "knownMisses": [
+      {
+        "caseId": "royal-priest-multihop",
+        "missingRelevantId": "canonical.king"
+      }
+    ],
+    "gatePassed": true,
+    "gateErrors": []
+  },
+  "usage": {
+    "documentPromptTokens": 40703,
+    "queryPromptTokens": 610,
+    "totalTokens": 41313,
+    "documentEmbeddingRequests": 6,
+    "queryEmbeddingRequests": 2
+  },
+  "decision": {
+    "pipeline": "nvidia-hybrid-2048",
+    "productionPilotEligible": true,
+    "productionActivated": false,
+    "shadowOnly": true,
+    "liveSearchConnected": false,
+    "requiresHumanApproval": true,
+    "nextStage": "P1-2d-controlled-production-pilot"
+  }
+}
