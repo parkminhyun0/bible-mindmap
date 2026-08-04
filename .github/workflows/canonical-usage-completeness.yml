@@ -7,6 +7,7 @@ on:
       - 'bible-mindmap/src/data/canonicalUsageMap*.js'
       - 'bible-mindmap/scripts/verify-canonical-usage-completeness.mjs'
       - 'bible-mindmap/scripts/verify-canonical-usage-summary.mjs'
+      - 'bible-mindmap/package.json'
       - '.github/workflows/canonical-usage-completeness.yml'
   push:
     branches: [main]
@@ -15,6 +16,7 @@ on:
       - 'bible-mindmap/src/data/canonicalUsageMap*.js'
       - 'bible-mindmap/scripts/verify-canonical-usage-completeness.mjs'
       - 'bible-mindmap/scripts/verify-canonical-usage-summary.mjs'
+      - 'bible-mindmap/package.json'
 
 permissions:
   contents: read
@@ -40,6 +42,8 @@ jobs:
         run: npm run build:lexicon
       - name: Verify canonical concepts and references
         run: node scripts/verify-canonical-concepts.mjs
+      - name: Self-test completeness failures
+        run: node scripts/verify-canonical-usage-completeness.mjs --self-test
       - name: Verify concept and usage-map completeness
         run: node scripts/verify-canonical-usage-completeness.mjs
       - name: Print canonical usage summary
