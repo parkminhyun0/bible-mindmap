@@ -1,52 +1,73 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { CANONICAL_CONCEPTS } from '../data/canonicalConcepts.js';
+import { CANONICAL_CONCEPTS, CONCEPT_CATEGORIES } from '../data/canonicalConcepts.js';
 import { searchCanonicalConceptsStatic } from '../search/canonicalConceptStaticSearch.js';
-import { getCanonicalConceptSuggestions } from '../search/canonicalConceptSuggestions.js';
 
-const INITIAL_STATE = Object.freeze({ status: 'idle', latencyMs: null, candidates: [], error: '' });
+const WORKER_COMPARE_URL = 'https://bible-mindmap-nvidia-search.skyhyangsu63.workers.dev/compare';
+const INITIAL_STATE = Object.freeze({
+  status: 'idle',
+  latencyMs: null,
+  dimensions: null,
+  model: '',
+  candidates: [],
+  error: '',
+});
+const comparisonCache = new Map();
 
 function overlapCount(keywordIds, candidateIds) {
   const baseline = new Set(keywordIds);
   return candidateIds.filter((id) => baseline.has(id)).length;
 }
 
-function buildExpandedCandidates(query, limit = 8) {
-  const startedAt = performance.now();
-  const suggestions = getCanonicalConceptSuggestions(query, { limit: 6 });
-  const expandedQueries = [query, ...suggestions.map((item) => item.searchText)];
-  const scores = new Map();
+function conceptToPassage(id, concept) {
+  const category = CONCEPT_CATEGORIES[concept.category]?.ko || concept.category || '';
+  const anchors = Array.isArray(concept.reformedAnchors) ? concept.reformedAnchors.join(', ') : '';
+  const arcs = Array.isArray(concept.canonicalArc)
+    ? concept.canonicalArc
+      .map((arc) => `${arc.stage}: ${arc.summary}`)
+      .join(' ')
+    : '';
 
-  expandedQueries.forEach((expandedQuery, queryIndex) => {
-    searchCanonicalConceptsStatic(expandedQuery, { limit: 12 }).forEach((id, resultIndex) => {
-      const queryWeight = queryIndex === 0 ? 18 : 12;
-      const rankWeight = Math.max(1, 12 - resultIndex);
-      scores.set(id, (scores.get(id) || 0) + queryWeight + rankWeight);
-    });
-  });
+  return [
+    `정경 개념: ${concept.labelKo || id}`,
+    category ? `분류: ${category}` : '',
+    concept.labelHe ? `히브리어: ${concept.labelHe}` : '',
+    concept.labelGr ? `헬라어: ${concept.labelGr}` : '',
+    anchors ? `개혁주의 기준: ${anchors}` : '',
+    arcs ? `정경 발전: ${arcs}` : '',
+  ].filter(Boolean).join('\n');
+}
 
-  const candidates = [...scores.entries()]
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-    .slice(0, limit)
-    .map(([id, score]) => ({ id, score }));
+const ALL_CONCEPT_CANDIDATES = Object.freeze(
+  Object.entries(CANONICAL_CONCEPTS).map(([id, concept]) => Object.freeze({
+    id,
+    text: conceptToPassage(id, concept),
+  })),
+);
 
-  return {
-    status: 'success',
-    latencyMs: Math.max(1, Math.round(performance.now() - startedAt)),
-    candidates,
-    error: '',
-  };
+function formatScore(score) {
+  if (!Number.isFinite(score)) return '-';
+  return `${Math.round(score * 100)}%`;
+}
+
+function readableError(reason, status) {
+  if (reason === 'origin-not-allowed') return '현재 사이트 주소가 Worker 허용 목록에 없습니다.';
+  if (reason === 'missing-nvidia-api-key') return 'Worker의 NVIDIA API 키가 등록되지 않았습니다.';
+  if (reason === 'nvidia-request-failed') return `NVIDIA 요청이 실패했습니다${status ? ` (${status})` : ''}.`;
+  if (reason === 'invalid-nvidia-response') return 'NVIDIA 응답 형식을 확인하지 못했습니다.';
+  if (reason === 'missing-candidates') return '비교할 정경 개념 데이터가 없습니다.';
+  return 'NVIDIA 의미 비교를 실행하지 못했습니다.';
 }
 
 export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
   const [state, setState] = useState(INITIAL_STATE);
   const [mountNode, setMountNode] = useState(null);
+  const abortRef = useRef(null);
   const normalizedQuery = String(query || '').trim();
-  const keywordResults = useMemo(
+  const keywordIds = useMemo(
     () => (normalizedQuery ? searchCanonicalConceptsStatic(normalizedQuery, { limit: 8 }) : []),
     [normalizedQuery],
   );
-  const keywordIds = keywordResults.map((result) => result.id);
   const semanticIds = state.candidates.map((candidate) => candidate.id);
   const overlap = overlapCount(keywordIds, semanticIds);
 
@@ -59,37 +80,89 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
     input.insertAdjacentElement('afterend', host);
     setMountNode(host);
     return () => {
+      abortRef.current?.abort();
       setMountNode(null);
       host.remove();
     };
   }, []);
 
-  const runComparison = useCallback((requestedQuery) => {
+  const runComparison = useCallback(async (requestedQuery) => {
     const targetQuery = String(requestedQuery || '').trim();
     if (targetQuery.length < 2) {
+      abortRef.current?.abort();
       setState(INITIAL_STATE);
       return;
     }
 
+    const cacheKey = targetQuery.normalize('NFKC').toLowerCase();
+    const cached = comparisonCache.get(cacheKey);
+    if (cached) {
+      setState(cached);
+      return;
+    }
+
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
     setState({ ...INITIAL_STATE, status: 'loading' });
-    window.requestAnimationFrame(() => {
-      try {
-        setState(buildExpandedCandidates(targetQuery));
-      } catch (error) {
-        setState({ ...INITIAL_STATE, status: 'error', error: error?.message || 'static-semantic-search-failed' });
+
+    try {
+      const response = await fetch(WORKER_COMPARE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: targetQuery,
+          candidates: ALL_CONCEPT_CANDIDATES,
+          limit: 8,
+        }),
+        signal: controller.signal,
+      });
+
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok || payload?.ok !== true || payload?.provider !== 'NVIDIA') {
+        throw Object.assign(new Error(payload?.reason || 'worker-request-failed'), {
+          reason: payload?.reason,
+          status: payload?.status || response.status,
+        });
       }
-    });
+
+      const nextState = {
+        status: 'success',
+        latencyMs: Number(payload.latencyMs) || null,
+        dimensions: Number(payload.dimensions) || null,
+        model: String(payload.model || ''),
+        candidates: Array.isArray(payload.candidates) ? payload.candidates : [],
+        error: '',
+      };
+      comparisonCache.set(cacheKey, nextState);
+      setState(nextState);
+    } catch (error) {
+      if (error?.name === 'AbortError') return;
+      setState({
+        ...INITIAL_STATE,
+        status: 'error',
+        error: readableError(error?.reason || error?.message, error?.status),
+      });
+    }
   }, []);
 
   useEffect(() => {
-    runComparison(normalizedQuery);
+    if (normalizedQuery.length < 2) {
+      runComparison('');
+      return undefined;
+    }
+
+    const timer = window.setTimeout(() => {
+      runComparison(normalizedQuery);
+    }, 600);
+    return () => window.clearTimeout(timer);
   }, [normalizedQuery, runComparison]);
 
   if (!mountNode || normalizedQuery.length < 2) return null;
 
   return createPortal(
     <section
-      aria-label="정적 의미 확장 비교"
+      aria-label="NVIDIA 의미 검색 비교"
       style={{
         width: '100%', boxSizing: 'border-box', padding: 12,
         border: '1px solid var(--at-separator)', borderRadius: 12,
@@ -98,9 +171,9 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
         <div style={{ minWidth: 0 }}>
-          <div style={{ fontSize: 13, fontWeight: 900 }}>🧭 의미 확장 비교</div>
+          <div style={{ fontSize: 13, fontWeight: 900 }}>🟢 NVIDIA 의미 검색 비교</div>
           <div style={{ marginTop: 2, fontSize: 10.5, color: 'var(--at-label-3)' }}>
-            GitHub Pages에서 검증된 제안어와 정경 개념 색인을 조합해 자동 비교합니다.
+            Cloudflare Worker가 NVIDIA 임베딩으로 전체 정경 개념의 의미 유사도를 비교합니다.
           </div>
         </div>
         <button
@@ -124,26 +197,35 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
 
       {state.status === 'loading' && (
         <div role="status" aria-live="polite" style={{ marginTop: 8, fontSize: 11, color: 'var(--at-accent-text)' }}>
-          의미 후보를 비교하고 있습니다…
+          NVIDIA가 검색어와 정경 개념을 비교하고 있습니다…
         </div>
       )}
 
       {state.status === 'error' && (
         <div role="alert" style={{ marginTop: 8, fontSize: 11, color: 'var(--at-danger,#dc2626)' }}>
-          의미 검색을 실행하지 못했습니다: {state.error}
+          {state.error} 기존 키워드 검색은 계속 사용할 수 있습니다.
         </div>
       )}
 
       {state.status === 'success' && (
         <>
           <div style={{ marginTop: 9, display: 'grid', gridTemplateColumns: 'repeat(3,minmax(0,1fr))', gap: 6 }}>
-            {[['키워드', keywordIds.length], ['확장 후보', semanticIds.length], ['겹침', `${overlap} · ${state.latencyMs}ms`]].map(([label, value]) => (
+            {[
+              ['키워드', keywordIds.length],
+              ['NVIDIA 후보', semanticIds.length],
+              ['겹침', `${overlap} · ${state.latencyMs ?? '-'}ms`],
+            ].map(([label, value]) => (
               <div key={label} style={{ padding: 7, borderRadius: 9, background: 'var(--at-surface)', textAlign: 'center' }}>
                 <div style={{ fontSize: 13, fontWeight: 900 }}>{value}</div>
                 <div style={{ fontSize: 9.5, color: 'var(--at-label-3)' }}>{label}</div>
               </div>
             ))}
           </div>
+
+          <div style={{ marginTop: 7, fontSize: 9.5, color: 'var(--at-label-3)' }}>
+            모델: {state.model || 'NVIDIA embedding'}{state.dimensions ? ` · ${state.dimensions}차원` : ''}
+          </div>
+
           <div style={{ marginTop: 8, display: 'grid', gap: 5 }}>
             {state.candidates.map((candidate, index) => {
               const concept = CANONICAL_CONCEPTS[candidate.id];
@@ -161,9 +243,16 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
                   }}
                 >
                   <span style={{ fontSize: 10, fontWeight: 900, color: 'var(--at-label-3)' }}>{index + 1}</span>
-                  <span style={{ minWidth: 0, fontSize: 11.5, fontWeight: 900, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{concept.labelKo}</span>
+                  <span style={{ minWidth: 0 }}>
+                    <span style={{ display: 'block', fontSize: 11.5, fontWeight: 900, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {concept.labelKo}
+                    </span>
+                    <span style={{ display: 'block', marginTop: 2, fontSize: 9.5, color: 'var(--at-label-3)' }}>
+                      의미 유사도 {formatScore(candidate.score)}
+                    </span>
+                  </span>
                   <span style={{ fontSize: 9.5, fontWeight: 800, whiteSpace: 'nowrap', color: inKeyword ? 'var(--at-success,#059669)' : 'var(--at-accent-text)' }}>
-                    {inKeyword ? '겹침' : '확장 후보'}
+                    {inKeyword ? '키워드 겹침' : 'NVIDIA 확장'}
                   </span>
                 </button>
               );
