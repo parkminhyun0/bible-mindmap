@@ -23,13 +23,20 @@ export default function CanonicalConceptSuggestionPanel({ query }) {
   );
 
   useEffect(() => {
-    let observer;
     let disposed = false;
 
     const attach = () => {
-      if (disposed || hostRef.current?.isConnected) return true;
+      if (disposed) return;
+      if (hostRef.current?.isConnected) return;
+
       const input = document.querySelector(INPUT_SELECTOR);
-      if (!input?.parentElement) return false;
+      if (!input?.parentElement) {
+        if (hostRef.current) {
+          hostRef.current = null;
+          setMountNode(null);
+        }
+        return;
+      }
 
       const existing = input.parentElement.querySelector('[data-canonical-suggestion-inline="true"]');
       const host = existing || document.createElement('div');
@@ -38,19 +45,15 @@ export default function CanonicalConceptSuggestionPanel({ query }) {
       if (!existing) input.insertAdjacentElement('afterend', host);
       hostRef.current = host;
       setMountNode(host);
-      return true;
     };
 
-    if (!attach()) {
-      observer = new MutationObserver(() => {
-        if (attach()) observer?.disconnect();
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-    }
+    attach();
+    const observer = new MutationObserver(attach);
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       disposed = true;
-      observer?.disconnect();
+      observer.disconnect();
       const host = hostRef.current;
       hostRef.current = null;
       setMountNode(null);
