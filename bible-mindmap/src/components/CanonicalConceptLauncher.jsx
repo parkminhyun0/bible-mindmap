@@ -1,13 +1,14 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
-import {
-  isCanonicalConceptSearchInput,
-  runCanonicalConceptShadowBridge,
-} from '../search/canonicalConceptShadowBridge';
+import { isCanonicalConceptSearchInput } from '../search/canonicalConceptShadowBridge';
 import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
+import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
+const COMPARISON_DEBOUNCE_MS = 300;
+
+// 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
 
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
@@ -17,6 +18,7 @@ const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptS
  */
 export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [open, setOpen] = useState(false);
+  const [suggestionQuery, setSuggestionQuery] = useState('');
   const [comparisonQuery, setComparisonQuery] = useState('');
   const isMobile = useMobile();
   const isRail = variant === 'rail';
@@ -25,6 +27,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const closeModal = useCallback(() => {
     clearTimeout(comparisonDebounceRef.current);
     setOpen(false);
+    setSuggestionQuery('');
     setComparisonQuery('');
   }, []);
 
@@ -32,20 +35,24 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     clearTimeout(comparisonDebounceRef.current);
     comparisonDebounceRef.current = setTimeout(() => {
       setComparisonQuery(query);
-      runCanonicalConceptShadowBridge({ query }).catch(() => {});
-    }, 700);
+    }, COMPARISON_DEBOUNCE_MS);
   }, []);
+
+  const commitSearchValue = useCallback((query) => {
+    setSuggestionQuery(query);
+    scheduleComparison(query);
+  }, [scheduleComparison]);
 
   const handleSearchInput = useCallback((event) => {
     if (!isCanonicalConceptSearchInput(event.target)) return;
     if (event.nativeEvent?.isComposing) return;
-    scheduleComparison(event.target.value);
-  }, [scheduleComparison]);
+    commitSearchValue(event.target.value);
+  }, [commitSearchValue]);
 
   const handleCompositionEnd = useCallback((event) => {
     if (!isCanonicalConceptSearchInput(event.target)) return;
-    scheduleComparison(event.target.value);
-  }, [scheduleComparison]);
+    commitSearchValue(event.target.value);
+  }, [commitSearchValue]);
 
   useEffect(() => () => clearTimeout(comparisonDebounceRef.current), []);
 
@@ -102,6 +109,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
             </Suspense>
           </div>
           <CanonicalSemanticComparisonPanel query={comparisonQuery} />
+          <CanonicalConceptSuggestionPanel query={suggestionQuery} />
         </>
       )}
     </>
