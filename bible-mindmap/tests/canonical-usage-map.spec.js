@@ -30,7 +30,7 @@ async function openConcept(page, searchDialog, { query, label }) {
 
 async function assertUsageMap(page, dialog, note) {
   await dialog.getByRole('button', { name: /용례 지도/ }).click();
-  await expect(dialog.getByText('정경 전체 용례', { exact: true })).toBeVisible();
+  await expect(dialog.locator('span').filter({ hasText: /^정경 전체 용례$/ })).toBeVisible();
   await expect(dialog.getByText(note, { exact: true })).toBeVisible();
   await expect(dialog.getByText(/용례는 점진적으로 계속 확장됩니다/)).toBeVisible();
   await expect(page.locator('[role="dialog"][aria-label^="정경 추적 ·"]')).toHaveCount(1);
@@ -68,8 +68,7 @@ test.describe('모바일 정경 용례지도', () => {
     await assertUsageMap(page, dialog, representative.note);
     await expect(sheet).toHaveCount(1);
     await expect(dialog).toHaveCSS('overflow', 'hidden');
-    const scrollRegion = dialog.locator('.momentum-scroll').or(dialog.locator('div[style*="overflow-y: auto"]')).first();
-    await expect(scrollRegion).toBeVisible();
+    await expect(dialog.locator('div[style*="overflow-y: auto"]').first()).toBeVisible();
 
     await page.keyboard.press('Escape');
     await expect(dialog).toHaveCount(0);
