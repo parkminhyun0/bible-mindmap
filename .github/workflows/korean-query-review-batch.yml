@@ -1,0 +1,45 @@
+name: Korean Query Review Batch Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/ai-evaluation/korean-query-review-batch-*.json'
+      - 'bible-mindmap/data/ai-evaluation/korean-query-approvals.json'
+      - 'bible-mindmap/scripts/ai/evaluation/build-korean-query-review-batch.mjs'
+      - 'bible-mindmap/scripts/ai/evaluation/korean-query-candidates.mjs'
+      - 'bible-mindmap/scripts/verify-korean-query-review-batch.mjs'
+      - '.github/workflows/korean-query-review-batch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-review-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Verify balanced human review batch
+        working-directory: bible-mindmap
+        run: node scripts/verify-korean-query-review-batch.mjs
+
+      - name: Generate review packet
+        working-directory: bible-mindmap
+        run: |
+          rm -rf review-output
+          node scripts/ai/evaluation/build-korean-query-review-batch.mjs --output-dir=review-output
+
+      - name: Upload review packet
+        uses: actions/upload-artifact@v7
+        with:
+          name: korean-query-review-batch-001
+          path: bible-mindmap/review-output/
+          retention-days: 30
