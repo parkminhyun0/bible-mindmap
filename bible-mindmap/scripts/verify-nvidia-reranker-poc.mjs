@@ -32,7 +32,26 @@ const topics = [
   [/부활|죽은 자|첫 열매/, 10],
   [/율법의 행위|믿음으로|의롭다|의의 열매/, 11],
 ];
+const hardNegativeTopicRules = [
+  [/씨 약속이 그리스도/, 6],
+  [/한 사람의 가문/, 1],
+  [/다윗의 보좌/, 0],
+  [/구름이 장막/, 1],
+  [/노예의 집/, 7],
+  [/돌판이 아니라/, 1],
+  [/반복 제사가 아니라/, 8],
+  [/첫 아담의 실패/, 0],
+  [/바벨론 포로/, 3],
+  [/태초부터 하나님/, 1],
+  [/마른 뼈/, 10],
+  [/죽은 자 가운데서/, 6],
+  [/율법의 행위가 아니라/, 4],
+  [/영원한 왕이 동시에/, 2],
+  [/새 언약에서 죄를 씻고/, 11],
+  [/창조의 회복/, 7],
+];
 const topicSet = (text) => new Set(topics.filter(([pattern]) => pattern.test(text)).map(([, index]) => index));
+const hardNegativeTopicFor = (query) => hardNegativeTopicRules.find(([pattern]) => pattern.test(query))?.[1] ?? null;
 const vectorFor = (text) => {
   const vector = Array(2048).fill(0);
   for (const topic of topicSet(text)) vector[topic] = 1;
@@ -59,10 +78,12 @@ const rerankerFetch = async (url, options) => {
   const body = JSON.parse(options.body);
   rerankerRequests.push({ url, body, authorization: options.headers.authorization });
   const queryTopics = topicSet(body.query.text);
+  const hardNegativeTopic = hardNegativeTopicFor(body.query.text);
   const rankings = body.passages.map((passage, index) => {
     const passageTopics = topicSet(passage.text);
     const overlap = [...queryTopics].filter((topic) => passageTopics.has(topic)).length;
-    return { index, logit: overlap * 10 - index * 0.001 };
+    const hardNegativePenalty = hardNegativeTopic != null && passageTopics.has(hardNegativeTopic) ? 20 : 0;
+    return { index, logit: overlap * 10 - hardNegativePenalty - index * 0.001 };
   });
   return {
     ok: true,
