@@ -6,25 +6,26 @@ import { writeFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 // ── 배포 환경별 앱 기준 경로 ─────────────────────────────────────────────
-// GitHub Pages는 저장소 하위 경로, Vercel은 배포 도메인 루트에서 앱을 제공한다.
+// 두 환경 모두 루트에는 랜딩페이지를 두고, 앱은 /app/에서 제공한다.
+// GitHub Pages만 저장소 하위 경로가 앞에 붙는다.
 const IS_VERCEL = process.env.VERCEL === '1'
-const APP_BASE = IS_VERCEL ? '/' : '/bible-mindmap/app/'
+const APP_BASE = IS_VERCEL ? '/app/' : '/bible-mindmap/app/'
 const HTML_URL_PATTERN = IS_VERCEL
-  ? /^https?:\/\/[^/]+\/(?:index\.html)?(?:\?.*)?$/
+  ? /\/app\/(?:index\.html)?(?:\?.*)?$/
   : /\/bible-mindmap\/app\/(?:index\.html)?(?:\?.*)?$/
 const CHUNK_URL_PATTERN = IS_VERCEL
-  ? /\/assets\/.+\.js$/
+  ? /\/app\/assets\/.+\.js$/
   : /\/bible-mindmap\/app\/assets\/.+\.js$/
 const LEX_URL_PATTERN = IS_VERCEL
-  ? /\/data\/lex\/.+\.json$/
+  ? /\/app\/data\/lex\/.+\.json$/
   : /\/bible-mindmap\/app\/data\/lex\/.+\.json$/
 const STRONGS_URL_PATTERN = IS_VERCEL
-  ? /\/data\/strongs.*\.json$/
+  ? /\/app\/data\/strongs.*\.json$/
   : /\/bible-mindmap\/app\/data\/strongs.*\.json$/
 
 // ── 캐시 세대 단일 소스 (bump 시 이 두 값만 수정) ─────────────────────────
-const HTML_CACHE = 'bm-app-html-v27'
-const CHUNK_CACHE = 'bm-feature-chunks-v26'
+const HTML_CACHE = 'bm-app-html-v28'
+const CHUNK_CACHE = 'bm-feature-chunks-v27'
 
 // ── 빌드 provenance (배포 반영 확인 장치) ────────────────────────────────
 // 매 빌드마다 git commit SHA + 빌드 시각을 앱과 version.json에 심는다.
