@@ -1,0 +1,25 @@
+name: Validate Korean Morphology
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/utils/morphologyKorean.js'
+      - 'bible-mindmap/scripts/verify-korean-morphology.mjs'
+      - '.github/workflows/korean-morphology.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify representative Hebrew and Greek forms
+        working-directory: bible-mindmap
+        run: node scripts/verify-korean-morphology.mjs
