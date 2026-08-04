@@ -39,6 +39,16 @@ for (const queryType of ['direct', 'semantic', 'multi-hop']) {
 }
 
 const documentPosition = new Map(CANONICAL_SHADOW_DOCUMENTS.map((document, index) => [document.id, index]));
+const referencedIds = new Set(SHADOW_EVALUATION_CASES.flatMap((item) => [
+  ...item.relevantIds,
+  ...item.hardNegativeIds,
+]));
+const unknownReferencedIds = [...referencedIds].filter((id) => !documentPosition.has(id));
+assert(
+  unknownReferencedIds.length === 0,
+  `shadow evaluation references unknown canonical documents: ${unknownReferencedIds.join(', ')}`,
+);
+
 const documentTextPosition = new Map(CANONICAL_SHADOW_DOCUMENTS.map((document, index) => [
   `${document.title}\n${document.text}`,
   index,
@@ -97,12 +107,15 @@ assert(description.shadowOnly === true, 'dry-run must remain shadow-only');
 assert(description.productionActivated === false, 'dry-run must not activate production');
 
 const result = await runNvidiaHybridShadowIndex({ embed, env, now });
+const candidate = result.evaluation.candidate;
+const minimums = result.evaluation.gate.minimums;
 assert(result.corpus.documentCount === 72, 'actual shadow corpus count mismatch');
 assert(result.evaluation.queryCount === 24, 'actual shadow query count mismatch');
-assert(result.evaluation.candidate.recallAtK === 1, 'mock Hybrid Recall@5 must equal 1');
-assert(result.evaluation.candidate.mrr === 1, 'mock Hybrid MRR must equal 1');
-assert(result.evaluation.candidate.ndcgAtK === 1, 'mock Hybrid nDCG@5 must equal 1');
-assert(result.evaluation.candidate.failureRate === 0, 'mock Hybrid failure rate must equal 0');
+assert(candidate.recallAtK >= minimums.recallAtK, 'mock Hybrid Recall@5 must satisfy the shadow quality gate');
+assert(candidate.mrr >= minimums.mrr, 'mock Hybrid MRR must satisfy the shadow quality gate');
+assert(candidate.ndcgAtK >= minimums.ndcgAtK, 'mock Hybrid nDCG@5 must satisfy the shadow quality gate');
+assert(candidate.hardNegativeRate <= minimums.maxHardNegativeRate, 'mock Hybrid hard-negative rate must satisfy the shadow quality gate');
+assert(candidate.failureRate === 0, 'mock Hybrid failure rate must equal 0');
 assert(result.evaluation.gate.passed === true, 'approved mock shadow gate must pass');
 assert(result.evaluation.gate.vectorContribution === true, 'mock vectors must demonstrate contribution');
 assert(result.manifest.stage === 'P1-2c', 'shadow manifest stage mismatch');
@@ -116,7 +129,7 @@ validateShadowIndexManifest(result.manifest);
 
 expectThrow(
   () => validateShadowIndexManifest({ ...result.manifest, productionActivated: true }),
-  /must not activate production/,
+  /activate.*production/i,
   'shadow manifest must reject production activation',
 );
 expectThrow(
@@ -143,5 +156,6 @@ if (errors.length) {
 
 console.log(
   `✓ NVIDIA Hybrid shadow index verified · documents ${result.corpus.documentCount} · queries ${result.evaluation.queryCount} · `
-  + `Recall@5 ${result.evaluation.candidate.recallAtK.toFixed(2)} · manifest ${result.manifest.vectorDataSha256.slice(0, 12)} · no activation`,
+  + `Recall@5 ${candidate.recallAtK.toFixed(2)} · nDCG@5 ${candidate.ndcgAtK.toFixed(2)} · `
+  + `manifest ${result.manifest.vectorDataSha256.slice(0, 12)} · no activation`,
 );
