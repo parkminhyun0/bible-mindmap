@@ -1,13 +1,11 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
-import {
-  isCanonicalConceptSearchInput,
-  runCanonicalConceptShadowBridge,
-} from '../search/canonicalConceptShadowBridge';
+import { isCanonicalConceptSearchInput } from '../search/canonicalConceptShadowBridge';
 import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
+const COMPARISON_DEBOUNCE_MS = 300;
 
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
@@ -32,8 +30,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     clearTimeout(comparisonDebounceRef.current);
     comparisonDebounceRef.current = setTimeout(() => {
       setComparisonQuery(query);
-      runCanonicalConceptShadowBridge({ query }).catch(() => {});
-    }, 700);
+    }, COMPARISON_DEBOUNCE_MS);
   }, []);
 
   const handleSearchInput = useCallback((event) => {
