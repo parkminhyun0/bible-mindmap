@@ -9,13 +9,22 @@ import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
 const SEARCH_INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
+const SEARCH_VALUE_POLL_MS = 100;
+const DETAIL_OPEN_TIMEOUT_MS = 1800;
 
 function setCanonicalSearchValue(value) {
   const input = document.querySelector(SEARCH_INPUT_SELECTOR);
   if (!(input instanceof HTMLInputElement)) return false;
+
   const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
   setter?.call(input, value);
-  input.dispatchEvent(new Event('input', { bubbles: true }));
+
+  input.dispatchEvent(new InputEvent('input', {
+    bubbles: true,
+    inputType: 'insertText',
+    data: value,
+  }));
+  input.dispatchEvent(new Event('change', { bubbles: true }));
   input.focus({ preventScroll: true });
   input.setSelectionRange(value.length, value.length);
   return true;
@@ -36,9 +45,11 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const isMobile = useMobile();
   const isRail = variant === 'rail';
   const comparisonDebounceRef = useRef(null);
+  const lastObservedValueRef = useRef('');
 
   const closeModal = useCallback(() => {
     clearTimeout(comparisonDebounceRef.current);
+    lastObservedValueRef.current = '';
     setOpen(false);
     setSuggestionQuery('');
     setComparisonQuery('');
@@ -53,6 +64,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
   const commitSearchValue = useCallback((query) => {
     const value = String(query || '');
+    lastObservedValueRef.current = value;
     setSuggestionQuery(value);
     scheduleComparison(value);
   }, [scheduleComparison]);
@@ -65,45 +77,77 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     setCanonicalSearchValue(searchText);
     commitSearchValue(searchText);
 
-    const openResult = () => {
-      const label = `${concept.labelKo} 정경 여정 상세 열기`;
+    const detailLabel = `${concept.labelKo} 정경 여정 상세 열기`;
+    const findAndOpen = () => {
       const button = [...document.querySelectorAll('button[aria-label$="정경 여정 상세 열기"]')]
-        .find((candidate) => candidate.getAttribute('aria-label') === label);
-      if (button instanceof HTMLButtonElement) {
-        button.focus({ preventScroll: true });
-        button.click();
-        return true;
-      }
-      return false;
+        .find((candidate) => candidate.getAttribute('aria-label') === detailLabel);
+
+      if (!(button instanceof HTMLButtonElement)) return false;
+      button.scrollIntoView({ block: 'nearest' });
+      button.focus({ preventScroll: true });
+      button.click();
+      return true;
     };
 
-    requestAnimationFrame(() => {
-      if (openResult()) return;
-      requestAnimationFrame(openResult);
+    if (findAndOpen()) return;
+
+    const startedAt = Date.now();
+    const observer = new MutationObserver(() => {
+      if (findAndOpen() || Date.now() - startedAt >= DETAIL_OPEN_TIMEOUT_MS) {
+        observer.disconnect();
+      }
     });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    const retryTimer = window.setInterval(() => {
+      if (findAndOpen() || Date.now() - startedAt >= DETAIL_OPEN_TIMEOUT_MS) {
+        window.clearInterval(retryTimer);
+        observer.disconnect();
+      }
+    }, 80);
   }, [commitSearchValue]);
 
   useEffect(() => {
     if (!open) return undefined;
 
+    const readAndCommit = (target) => {
+      if (!isCanonicalConceptSearchInput(target)) return;
+      const value = String(target.value || '');
+      if (value === lastObservedValueRef.current) return;
+      commitSearchValue(value);
+    };
+
     const handleInput = (event) => {
-      if (!isCanonicalConceptSearchInput(event.target) || event.isComposing) return;
-      commitSearchValue(event.target.value);
+      if (event.isComposing) return;
+      readAndCommit(event.target);
     };
 
     const handleCompositionEnd = (event) => {
-      if (!isCanonicalConceptSearchInput(event.target)) return;
-      commitSearchValue(event.target.value);
+      readAndCommit(event.target);
     };
 
-    // 검색창은 document.body에 portal로 렌더링되므로 DOM 단계에서 직접 수신한다.
-    // capture를 사용하지 않아 검색 입력·포커스 흐름에는 개입하지 않는다.
+    const handleKeyUp = (event) => {
+      if (event.isComposing) return;
+      queueMicrotask(() => readAndCommit(event.target));
+    };
+
     document.addEventListener('input', handleInput);
+    document.addEventListener('change', handleInput);
     document.addEventListener('compositionend', handleCompositionEnd);
+    document.addEventListener('keyup', handleKeyUp);
+
+    const pollTimer = window.setInterval(() => {
+      const input = document.querySelector(SEARCH_INPUT_SELECTOR);
+      if (input instanceof HTMLInputElement) readAndCommit(input);
+    }, SEARCH_VALUE_POLL_MS);
 
     return () => {
       document.removeEventListener('input', handleInput);
+      document.removeEventListener('change', handleInput);
       document.removeEventListener('compositionend', handleCompositionEnd);
+      document.removeEventListener('keyup', handleKeyUp);
+      window.clearInterval(pollTimer);
       clearTimeout(comparisonDebounceRef.current);
     };
   }, [open, commitSearchValue]);
