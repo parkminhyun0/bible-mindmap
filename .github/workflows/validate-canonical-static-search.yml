@@ -1,0 +1,25 @@
+name: Validate Canonical Static Search
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/search/canonicalConceptStaticSearch.js'
+      - 'bible-mindmap/scripts/verify-canonical-static-search.mjs'
+      - '.github/workflows/validate-canonical-static-search.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-static-search:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Verify server-free canonical static search
+        working-directory: bible-mindmap
+        run: node scripts/verify-canonical-static-search.mjs
