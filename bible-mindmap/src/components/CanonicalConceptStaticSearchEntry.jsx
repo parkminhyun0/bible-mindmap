@@ -10,9 +10,10 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
   const isMobile = useMobile();
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState(null);
+  const [showBrowser, setShowBrowser] = useState(false);
   const results = useMemo(() => searchCanonicalConceptsStatic(query, { limit: 12 }), [query]);
 
-  if (selected) {
+  if (selected || showBrowser) {
     return (
       <Suspense fallback={<div className="deferred-feature-loading">정경 추적 개념을 불러오는 중…</div>}>
         <CanonicalConceptModal initialConcept={selected} onClose={onClose} />
@@ -105,14 +106,15 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
 
         <button
           type="button"
-          onClick={() => setSelected(Object.keys(CANONICAL_CONCEPTS)[0])}
+          onClick={() => setShowBrowser(true)}
+          aria-label="전체 정경 추적 개념 브라우저 열기"
           style={{
             width: '100%', minHeight: 46, marginTop: 14, border: '1px solid var(--at-separator)',
             borderRadius: 12, background: 'var(--at-surface-2)', color: 'var(--at-label)',
             fontWeight: 700, cursor: 'pointer',
           }}
         >
-          전체 정경 추적 상세 화면 열기
+          전체 정경 추적 개념 둘러보기
         </button>
       </div>
     </div>
