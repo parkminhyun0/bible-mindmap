@@ -4,6 +4,7 @@ import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDe
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
+import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 
 /**
  * 원어 단어 어형 분석 카드.
@@ -11,16 +12,18 @@ import useMobile from '../hooks/useMobile';
  *   entry     = { w, tr, s, m, l, g }  (word / transliteration / strong / morph / lemma / gloss)
  *   anchor    = { x, y }               팝업이 등장할 화면 좌표
  *   bookId    = string                  현재 구절의 책 ID (용례 검색 범위)
+ *   passage   = { bookId, chapter, verseStart, verseEnd } 원래 연구 위치
  *   onClose
  *   onAddVerse(ref)                     용례에서 "+ 추가" 클릭 시 호출
  */
-export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex }) {
+export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
   const isMobile = useMobile();
   const [tab, setTab] = useState('def'); // 'def' | 'usage'
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
+  const [researchActive, setResearchActive] = useState(false);
 
   const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
   const [usageLoading, setUsageLoading] = useState(false);
@@ -63,13 +66,16 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
     setTab('def');
     setUsages(null);
     setUsageError('');
+    setResearchActive(false);
   }, [entry?.s]);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e) => {
+      if (e.key === 'Escape' && !researchActive) onClose();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+  }, [onClose, researchActive]);
 
   // ── 드래그 ──────────────────────────────────────────────────────────────
   const dragState = useRef(null); // { startMouseX, startMouseY, startLeft, startTop }
@@ -79,7 +85,7 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
   useEffect(() => { setDragOffset({ x: 0, y: 0 }); }, [entry?.s]);
 
   const onDragStart = (e) => {
-    if (isMobile) return;
+    if (isMobile || researchActive) return;
     if (e.button !== 0) return;
     e.preventDefault();
     dragState.current = { startMouseX: e.clientX, startMouseY: e.clientY, startX: dragOffset.x, startY: dragOffset.y };
@@ -114,22 +120,26 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
   const baseTop  = isMobile ? (vh - maxHeight) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - maxHeight - margin));
   const left = isMobile ? 0 : baseLeft + dragOffset.x;
   const top  = isMobile ? baseTop : baseTop + dragOffset.y;
+  // 하위 연구 창은 기존 z-index를 보존하므로, 열려 있는 동안 사전만 한 단계 아래로 내린다.
+  const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
 
   return createPortal(
     <>
       {isMobile && (
-        <div onClick={onClose} style={{ position:'fixed',inset:0,
-          background:'rgba(15,23,42,.4)',zIndex:(zIndex ?? 2501) - 1 }} />
+        <div onClick={researchActive ? undefined : onClose} style={{ position:'fixed',inset:0,
+          background:'rgba(15,23,42,.4)',zIndex:resolvedZIndex - 1,
+          pointerEvents: researchActive ? 'none' : 'auto' }} />
       )}
       <div
         role="dialog"
         aria-modal={isMobile ? 'true' : 'false'}
         aria-label={`원어 사전 · ${entry.w || entry.tr || entry.s || ''}`}
+        aria-hidden={researchActive ? 'true' : undefined}
         className={isMobile ? 'momentum-scroll' : undefined}
         style={{
           position: 'fixed',
           left, top, width, maxHeight,
-          zIndex: zIndex ?? 2501,
+          zIndex: resolvedZIndex,
           background: '#fff',
           borderRadius: isMobile ? '16px 16px 0 0' : 10,
           boxShadow: isMobile ? '0 -8px 32px rgba(15,23,42,.24)' : '0 12px 40px rgba(0,0,0,0.25)',
@@ -138,9 +148,12 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
           display: 'flex', flexDirection: 'column',
           paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
+          pointerEvents: researchActive ? 'none' : 'auto',
+          opacity: researchActive ? 0.72 : 1,
           // GPU 합성 힌트 (등장 트랜지션 부드럽게)
           willChange: 'transform, opacity',
           transform: 'translateZ(0)',
+          transition: 'opacity .16s ease',
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -351,6 +364,13 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           )}
 
         </div>
+
+        <OriginalLanguageResearchActions
+          entry={entry}
+          passage={passage}
+          isHebrew={isHebrew}
+          onActiveChange={setResearchActive}
+        />
 
         {/* footer */}
         <div style={{
