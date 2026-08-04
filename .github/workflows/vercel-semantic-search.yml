@@ -1,0 +1,26 @@
+name: Validate Vercel Semantic Search Boundary
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/api/semantic-search.js'
+      - 'bible-mindmap/scripts/verify-vercel-semantic-search.mjs'
+      - 'bible-mindmap/vercel.json'
+      - '.github/workflows/vercel-semantic-search.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify server-only NVIDIA boundary
+        working-directory: bible-mindmap
+        run: node scripts/verify-vercel-semantic-search.mjs
