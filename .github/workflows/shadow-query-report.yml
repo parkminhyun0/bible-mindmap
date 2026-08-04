@@ -1,0 +1,26 @@
+name: NVIDIA Shadow Query Report Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/ai/shadow/build-shadow-query-report.mjs'
+      - 'bible-mindmap/scripts/verify-shadow-query-report.mjs'
+      - '.github/workflows/nvidia-hybrid-shadow-index.yml'
+      - '.github/workflows/shadow-query-report.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-shadow-query-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify per-query shadow comparison and safety boundary
+        working-directory: bible-mindmap
+        run: node scripts/verify-shadow-query-report.mjs
