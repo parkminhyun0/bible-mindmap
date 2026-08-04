@@ -15,13 +15,12 @@ function loadOffset() {
 function referenceForNode(node) {
   if (!node?.data) return '';
   if (node.data.reference) return node.data.reference;
-  const source = {
+  return formatReference({
     bookId: node.data.bookId,
     chapter: node.data.chapter,
     verseStart: node.data.verseStart,
     verseEnd: node.data.verseEnd,
-  };
-  return formatReference(source);
+  });
 }
 
 export default function CitationSuggest({
@@ -40,7 +39,7 @@ export default function CitationSuggest({
   const [errorMsg, setErrorMsg] = useState('');
   const [offset, setOffset] = useState(loadOffset);
   const [panelTop, setPanelTop] = useState(96);
-  const [mobileDismissed, setMobileDismissed] = useState(false);
+  const [mobileSheetOpen, setMobileSheetOpen] = useState(false);
   const [selectedKeys, setSelectedKeys] = useState(() => new Set());
   const [showAdditional, setShowAdditional] = useState(false);
   const dragStartRef = useRef(null);
@@ -56,12 +55,11 @@ export default function CitationSuggest({
     const baseLeft = containerRect.width - 16 - panelRect.width;
     const minX = 8 - baseLeft;
     const maxX = containerRect.width - 8 - panelRect.width - baseLeft;
-    const minY = 0;
     const maxY = containerRect.height - 8 - panelRect.height - panelTop;
 
     return {
       x: Math.min(Math.max(next.x, minX), Math.max(minX, maxX)),
-      y: Math.min(Math.max(next.y, minY), Math.max(minY, maxY)),
+      y: Math.min(Math.max(next.y, 0), Math.max(0, maxY)),
     };
   };
 
@@ -133,7 +131,7 @@ export default function CitationSuggest({
   }, [isMobile, panelTop, collapsed, suggestions.length]);
 
   useEffect(() => {
-    setMobileDismissed(false);
+    setMobileSheetOpen(false);
     setSelectedKeys(new Set());
     setShowAdditional(false);
   }, [selectedNode?.id]);
@@ -162,7 +160,6 @@ export default function CitationSuggest({
   }, [selectedNode?.id, nodes, edges]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!selectedNode || selectedNode.type !== 'verse') return null;
-  if (isMobile && mobileDismissed) return null;
 
   const pending = suggestions.filter((item) => !item.alreadyConnected);
   const manualSuggestions = suggestions.filter((item) => !item.isCrossref);
@@ -194,6 +191,7 @@ export default function CitationSuggest({
     setErrorMsg('');
     try {
       await onAddAll(pending, selectedNode.id);
+      if (isMobile) setMobileSheetOpen(false);
     } catch (error) {
       setErrorMsg(error.message || '일괄 추가 실패');
     } finally {
@@ -208,7 +206,7 @@ export default function CitationSuggest({
     try {
       await onAddAll(selectedPending, selectedNode.id);
       setSelectedKeys(new Set());
-      setMobileDismissed(true);
+      setMobileSheetOpen(false);
     } catch (error) {
       setErrorMsg(error.message || '선택 항목 추가 실패');
     } finally {
@@ -227,79 +225,75 @@ export default function CitationSuggest({
   };
 
   if (isMobile) {
+    if (!mobileSheetOpen) {
+      if (!loadingSuggestions && suggestions.length === 0) return null;
+      return (
+        <button
+          type="button"
+          aria-label="교차 참조 열기"
+          onClick={() => setMobileSheetOpen(true)}
+          style={mobileLauncherStyle}
+          onPointerDown={stopPropagation}
+        >
+          <span>🔗</span>
+          <span>{loadingSuggestions ? '교차 참조 불러오는 중' : `교차 참조 ${suggestions.length}`}</span>
+          <span style={{ opacity: 0.65 }}>⌃</span>
+        </button>
+      );
+    }
+
     return (
-      <section
-        ref={panelRef}
-        role="dialog"
-        aria-modal="true"
-        aria-label="교차 참조 추가"
-        style={mobileOverlayStyle}
-        onPointerDown={stopPropagation}
-        onTouchStart={stopPropagation}
-      >
-        <header style={mobileHeaderStyle}>
-          <button
-            type="button"
-            aria-label="교차 참조 닫기"
-            onClick={() => setMobileDismissed(true)}
-            style={mobileBackButtonStyle}
-          >
-            ‹
-          </button>
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={mobileTitleStyle}>교차 참조 추가</div>
-            <div style={mobileReferenceStyle}>{referenceForNode(selectedNode)}</div>
+      <>
+        <button
+          type="button"
+          aria-label="교차 참조 닫기"
+          onClick={() => setMobileSheetOpen(false)}
+          style={mobileScrimStyle}
+        />
+        <section
+          ref={panelRef}
+          role="dialog"
+          aria-modal="false"
+          aria-label="교차 참조 추가"
+          style={mobileSheetStyle}
+          onPointerDown={stopPropagation}
+          onTouchStart={stopPropagation}
+        >
+          <div style={mobileHandleWrapStyle}>
+            <div style={mobileHandleStyle} />
           </div>
-          <button
-            type="button"
-            onClick={handleSelected}
-            disabled={selectedPending.length === 0 || loadingKey === '__selected__'}
-            style={{
-              ...mobileDoneButtonStyle,
-              opacity: selectedPending.length === 0 ? 0.4 : 1,
-            }}
-          >
-            {loadingKey === '__selected__' ? '추가 중' : '완료'}
-          </button>
-        </header>
+          <header style={mobileHeaderStyle}>
+            <div style={{ minWidth: 0, flex: 1 }}>
+              <div style={mobileTitleStyle}>교차 참조 추가</div>
+              <div style={mobileReferenceStyle}>{referenceForNode(selectedNode)}</div>
+            </div>
+            <button
+              type="button"
+              aria-label="교차 참조 닫기"
+              onClick={() => setMobileSheetOpen(false)}
+              style={mobileCloseButtonStyle}
+            >
+              ×
+            </button>
+          </header>
 
-        <div style={mobileSummaryStyle}>
-          <strong>선택 {selectedPending.length}개</strong>
-          <span>항목 전체를 눌러 선택하세요.</span>
-        </div>
+          <div style={mobileSummaryStyle}>
+            <strong>선택 {selectedPending.length}개</strong>
+            <span>본문 편집 화면은 그대로 유지됩니다.</span>
+          </div>
 
-        <main style={mobileBodyStyle}>
-          {loadingSuggestions ? (
-            <div style={mobileEmptyStyle}>교차 참조를 불러오는 중…</div>
-          ) : suggestions.length === 0 ? (
-            <div style={mobileEmptyStyle}>추가할 교차 참조가 없습니다.</div>
-          ) : (
-            <>
-              {firstNote && <div style={mobileNoteStyle}>💡 {firstNote}</div>}
+          <main style={mobileBodyStyle}>
+            {loadingSuggestions ? (
+              <div style={mobileEmptyStyle}>교차 참조를 불러오는 중…</div>
+            ) : suggestions.length === 0 ? (
+              <div style={mobileEmptyStyle}>추가할 교차 참조가 없습니다.</div>
+            ) : (
+              <>
+                {firstNote && <div style={mobileNoteStyle}>💡 {firstNote}</div>}
 
-              <section style={mobileSectionStyle}>
-                <div style={mobileSectionTitleStyle}>핵심 참조 {manualSuggestions.length}개</div>
-                {manualSuggestions.map((suggestion) => (
-                  <MobileSelectItem
-                    key={suggestion.key}
-                    suggestion={suggestion}
-                    selected={selectedKeys.has(suggestion.key)}
-                    onToggle={() => toggleSelected(suggestion)}
-                  />
-                ))}
-              </section>
-
-              {crossrefSuggestions.length > 0 && (
                 <section style={mobileSectionStyle}>
-                  <button
-                    type="button"
-                    onClick={() => setShowAdditional((value) => !value)}
-                    style={mobileDisclosureStyle}
-                  >
-                    <span>추가 참조 {crossrefSuggestions.length}개</span>
-                    <span>{showAdditional ? '⌃' : '⌄'}</span>
-                  </button>
-                  {showAdditional && crossrefSuggestions.map((suggestion) => (
+                  <div style={mobileSectionTitleStyle}>핵심 참조 {manualSuggestions.length}개</div>
+                  {manualSuggestions.map((suggestion) => (
                     <MobileSelectItem
                       key={suggestion.key}
                       suggestion={suggestion}
@@ -308,44 +302,65 @@ export default function CitationSuggest({
                     />
                   ))}
                 </section>
-              )}
 
-              {errorMsg && <div style={errorStyle}>⚠️ {errorMsg}</div>}
-            </>
-          )}
-        </main>
+                {crossrefSuggestions.length > 0 && (
+                  <section style={mobileSectionStyle}>
+                    <button
+                      type="button"
+                      onClick={() => setShowAdditional((value) => !value)}
+                      style={mobileDisclosureStyle}
+                    >
+                      <span>추가 참조 {crossrefSuggestions.length}개</span>
+                      <span>{showAdditional ? '⌃' : '⌄'}</span>
+                    </button>
+                    {showAdditional && crossrefSuggestions.map((suggestion) => (
+                      <MobileSelectItem
+                        key={suggestion.key}
+                        suggestion={suggestion}
+                        selected={selectedKeys.has(suggestion.key)}
+                        onToggle={() => toggleSelected(suggestion)}
+                      />
+                    ))}
+                  </section>
+                )}
 
-        <footer style={mobileFooterStyle}>
-          <div style={mobileSelectionPreviewStyle}>
-            {selectedPending.length > 0
-              ? `${formatReference(selectedPending[0].source)}${selectedPending.length > 1 ? ` 외 ${selectedPending.length - 1}개` : ''}`
-              : '선택한 구절이 없습니다.'}
-          </div>
-          <button
-            type="button"
-            onClick={handleSelected}
-            disabled={selectedPending.length === 0 || loadingKey === '__selected__'}
-            style={{
-              ...mobilePrimaryButtonStyle,
-              opacity: selectedPending.length === 0 ? 0.45 : 1,
-            }}
-          >
-            {loadingKey === '__selected__'
-              ? '추가하고 연결하는 중…'
-              : `선택한 ${selectedPending.length}개 추가하고 연결`}
-          </button>
-          {pending.length > 1 && (
+                {errorMsg && <div style={errorStyle}>⚠️ {errorMsg}</div>}
+              </>
+            )}
+          </main>
+
+          <footer style={mobileFooterStyle}>
+            <div style={mobileSelectionPreviewStyle}>
+              {selectedPending.length > 0
+                ? `${formatReference(selectedPending[0].source)}${selectedPending.length > 1 ? ` 외 ${selectedPending.length - 1}개` : ''}`
+                : '필요한 참조만 선택하세요.'}
+            </div>
             <button
               type="button"
-              onClick={handleAll}
-              disabled={loadingKey === '__all__'}
-              style={mobileSecondaryButtonStyle}
+              onClick={handleSelected}
+              disabled={selectedPending.length === 0 || loadingKey === '__selected__'}
+              style={{
+                ...mobilePrimaryButtonStyle,
+                opacity: selectedPending.length === 0 ? 0.45 : 1,
+              }}
             >
-              {loadingKey === '__all__' ? '전체 추가 중…' : `전체 ${pending.length}개 추가`}
+              {loadingKey === '__selected__'
+                ? '추가하고 연결하는 중…'
+                : `선택한 ${selectedPending.length}개 추가하고 연결`}
             </button>
-          )}
-        </footer>
-      </section>
+            {pending.length > 1 && (
+              <button
+                type="button"
+                onClick={handleAll}
+                disabled={loadingKey === '__all__'}
+                style={mobileSecondaryButtonStyle}
+              >
+                {loadingKey === '__all__' ? '전체 추가 중…' : `전체 ${pending.length}개 추가`}
+              </button>
+            )}
+          </footer>
+        </section>
+      </>
     );
   }
 
@@ -402,11 +417,7 @@ export default function CitationSuggest({
             {crossrefSuggestions.map((suggestion) => renderDesktopItem(suggestion, loadingKey, handleOne))}
           </div>
           {pending.length > 1 && (
-            <button
-              onClick={handleAll}
-              disabled={loadingKey === '__all__'}
-              style={allButtonStyle}
-            >
+            <button onClick={handleAll} disabled={loadingKey === '__all__'} style={allButtonStyle}>
               {loadingKey === '__all__' ? '추가 중…' : `✚ 모두 추가하고 자동 연결 (${pending.length}건)`}
             </button>
           )}
@@ -436,7 +447,7 @@ function MobileSelectItem({ suggestion, selected, onToggle }) {
         background: selected ? '#2563eb' : '#fff',
         color: selected ? '#fff' : '#94a3b8',
       }}>
-        {isDone ? '✓' : selected ? '✓' : ''}
+        {isDone || selected ? '✓' : ''}
       </span>
       <span style={{ minWidth: 0, flex: 1, textAlign: 'left' }}>
         <span style={mobileItemTitleStyle}>
@@ -521,41 +532,73 @@ const partBadgeStyle = { fontSize: 10, color: '#6366f1', background: '#eef2ff', 
 const votesBadgeStyle = { fontSize: 10, color: '#0ea5e9', background: '#e0f2fe', padding: '1px 6px', borderRadius: 8, fontWeight: 600 };
 const errorStyle = { fontSize: 11, color: '#ef4444', background: '#fef2f2', padding: '6px 8px', borderRadius: 6, lineHeight: 1.4 };
 
-const mobileOverlayStyle = {
+const mobileLauncherStyle = {
+  position: 'fixed',
+  right: 12,
+  top: 'calc(env(safe-area-inset-top, 0px) + 94px)',
+  zIndex: 1500,
+  minHeight: 42,
+  display: 'flex',
+  alignItems: 'center',
+  gap: 7,
+  padding: '8px 12px',
+  border: '1px solid rgba(99,102,241,0.24)',
+  borderRadius: 999,
+  background: 'rgba(255,255,255,0.96)',
+  color: '#4338ca',
+  boxShadow: '0 8px 22px rgba(15,23,42,0.14)',
+  backdropFilter: 'blur(18px)',
+  WebkitBackdropFilter: 'blur(18px)',
+  fontSize: 12,
+  fontWeight: 800,
+};
+const mobileScrimStyle = {
   position: 'fixed',
   inset: 0,
-  zIndex: 3200,
+  zIndex: 3090,
+  border: 'none',
+  background: 'rgba(15,23,42,0.28)',
+};
+const mobileSheetStyle = {
+  position: 'fixed',
+  left: 0,
+  right: 0,
+  bottom: 0,
+  zIndex: 3100,
+  height: 'min(78dvh, 720px)',
   display: 'flex',
   flexDirection: 'column',
+  overflow: 'hidden',
+  borderRadius: '24px 24px 0 0',
   background: '#f6f8fc',
+  boxShadow: '0 -18px 52px rgba(15,23,42,0.22)',
   fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
-  overscrollBehavior: 'contain',
 };
+const mobileHandleWrapStyle = { padding: '8px 0 2px', display: 'grid', placeItems: 'center', background: '#fff' };
+const mobileHandleStyle = { width: 42, height: 5, borderRadius: 999, background: '#cbd5e1' };
 const mobileHeaderStyle = {
   display: 'flex',
   alignItems: 'center',
   gap: 10,
-  padding: 'calc(env(safe-area-inset-top, 0px) + 10px) 14px 12px',
-  background: 'rgba(255,255,255,0.96)',
+  padding: '8px 14px 12px',
+  background: '#fff',
   borderBottom: '1px solid #e2e8f0',
-  boxShadow: '0 2px 10px rgba(15,23,42,0.05)',
 };
-const mobileBackButtonStyle = { width: 42, height: 42, border: 'none', borderRadius: 12, background: '#f1f5f9', color: '#334155', fontSize: 30, lineHeight: 1, cursor: 'pointer' };
+const mobileCloseButtonStyle = { width: 40, height: 40, border: 'none', borderRadius: 12, background: '#f1f5f9', color: '#475569', fontSize: 24 };
 const mobileTitleStyle = { fontSize: 17, fontWeight: 800, color: '#0f172a' };
 const mobileReferenceStyle = { fontSize: 12, color: '#64748b', marginTop: 2, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' };
-const mobileDoneButtonStyle = { minWidth: 58, height: 40, border: 'none', borderRadius: 11, background: '#2563eb', color: '#fff', fontSize: 14, fontWeight: 800 };
-const mobileSummaryStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, padding: '10px 16px', background: '#fff', borderBottom: '1px solid #e2e8f0', color: '#475569', fontSize: 12 };
-const mobileBodyStyle = { flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch', padding: '14px 14px 180px' };
+const mobileSummaryStyle = { display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10, padding: '9px 16px', background: '#fff', borderBottom: '1px solid #e2e8f0', color: '#475569', fontSize: 11 };
+const mobileBodyStyle = { flex: 1, overflowY: 'auto', WebkitOverflowScrolling: 'touch', padding: '12px 14px 14px' };
 const mobileEmptyStyle = { padding: '48px 18px', textAlign: 'center', color: '#94a3b8', fontSize: 14 };
 const mobileNoteStyle = { marginBottom: 12, padding: '10px 12px', borderRadius: 12, background: '#eef2ff', color: '#4f46e5', fontSize: 12, lineHeight: 1.5 };
 const mobileSectionStyle = { display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 16 };
 const mobileSectionTitleStyle = { padding: '0 2px', fontSize: 12, fontWeight: 800, color: '#64748b' };
 const mobileDisclosureStyle = { display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', padding: '12px 13px', border: '1px solid #dbe3ef', borderRadius: 12, background: '#fff', color: '#475569', fontSize: 13, fontWeight: 800 };
-const mobileItemStyle = { width: '100%', minHeight: 74, display: 'flex', alignItems: 'center', gap: 12, padding: '12px', border: '1.5px solid', borderRadius: 14, boxShadow: '0 1px 3px rgba(15,23,42,0.04)' };
+const mobileItemStyle = { width: '100%', minHeight: 68, display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', border: '1.5px solid', borderRadius: 14, boxShadow: '0 1px 3px rgba(15,23,42,0.04)' };
 const mobileCheckStyle = { width: 26, height: 26, flexShrink: 0, display: 'grid', placeItems: 'center', border: '1.5px solid #cbd5e1', borderRadius: 8, fontSize: 15, fontWeight: 900 };
 const mobileItemTitleStyle = { display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6, color: '#1e293b', fontSize: 14, fontWeight: 800 };
 const mobileItemStatusStyle = { display: 'block', marginTop: 5, color: '#94a3b8', fontSize: 11, fontWeight: 600 };
-const mobileFooterStyle = { position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 1, padding: '10px 14px calc(env(safe-area-inset-bottom, 0px) + 12px)', background: 'rgba(255,255,255,0.97)', borderTop: '1px solid #e2e8f0', boxShadow: '0 -8px 24px rgba(15,23,42,0.08)' };
+const mobileFooterStyle = { padding: '10px 14px calc(env(safe-area-inset-bottom, 0px) + 10px)', background: 'rgba(255,255,255,0.98)', borderTop: '1px solid #e2e8f0', boxShadow: '0 -8px 24px rgba(15,23,42,0.08)' };
 const mobileSelectionPreviewStyle = { minHeight: 18, marginBottom: 7, color: '#64748b', fontSize: 11, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' };
-const mobilePrimaryButtonStyle = { width: '100%', minHeight: 48, border: 'none', borderRadius: 14, background: '#10b981', color: '#fff', fontSize: 15, fontWeight: 900 };
-const mobileSecondaryButtonStyle = { width: '100%', minHeight: 34, marginTop: 5, border: 'none', background: 'transparent', color: '#64748b', fontSize: 12, fontWeight: 700 };
+const mobilePrimaryButtonStyle = { width: '100%', minHeight: 46, border: 'none', borderRadius: 14, background: '#10b981', color: '#fff', fontSize: 15, fontWeight: 900 };
+const mobileSecondaryButtonStyle = { width: '100%', minHeight: 32, marginTop: 4, border: 'none', background: 'transparent', color: '#64748b', fontSize: 12, fontWeight: 700 };
