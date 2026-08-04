@@ -5,5 +5,11 @@
   "buildCommand": "npm run build:lexicon && npm run build && cp -R landing/. dist/ && node scripts/inject-landing-data-sources.mjs && node scripts/inject-landing-visitor-status.mjs",
   "outputDirectory": "dist",
   "cleanUrls": true,
-  "trailingSlash": true
+  "trailingSlash": true,
+  "functions": {
+    "api/semantic-search.js": {
+      "maxDuration": 10,
+      "memory": 1024
+    }
+  }
 }
