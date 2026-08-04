@@ -63,7 +63,7 @@ for (const sample of canonicalSamples) {
   );
 }
 
-// 런타임 로더가 정규화·보조 공급원·장 단위 캐시를 실제로 사용해야 한다.
+// 런타임 로더가 정규화·보조 공급원·장/최종 결과 캐시를 실제로 사용해야 한다.
 const apiSource = await readFile(path.join(root, 'src/api/bibleApi.js'), 'utf8');
 check(apiSource.includes("from './verseNormalization'"), 'bibleApi가 verseNormalization을 사용하지 않습니다.');
 check(apiSource.includes("'NTGT'"), 'TAGNT 누락 절을 보완할 NTGT 경로가 없습니다.');
@@ -71,8 +71,11 @@ check(apiSource.includes('assertVerseCoverage'), '요청 범위 완전성 검사
 check(apiSource.includes('aliasesForRange'), 'WEB 장절 alias가 bibleApi에 연결되지 않았습니다.');
 check(apiSource.includes('chapterCache'), '장 단위 캐시가 제거되어 빠른 재전환 계약이 깨졌습니다.');
 check(apiSource.includes('cachedPromise'), '동일 장 중복 요청을 합치는 Promise 캐시가 없습니다.');
-check(apiSource.includes('{ noStore = false }'), '본문 요청의 기본 캐시 사용 계약이 제거되었습니다.');
+check(/\{\s*noStore\s*=\s*false(?:\s*,|\s*})/.test(apiSource), '본문 요청의 기본 캐시 사용 계약이 제거되었습니다.');
 check(apiSource.includes("...(noStore ? { cache: 'no-store' } : {})"), '선택적 no-store 처리 방식이 변경되었습니다.');
+check(apiSource.includes('verseResultCache'), '동일 구절·역본 최종 결과 캐시가 없습니다.');
+check(apiSource.includes('REMOTE_FETCH_CONCURRENCY'), '외부 본문 요청 동시성 제한이 없습니다.');
+check(apiSource.includes('fetchBibleApiRows'), 'WEB 보조 공급자 경로가 없습니다.');
 
 // UI는 가장 느린 역본을 기다리지 않고 탭별 요청을 독립적으로 완료해야 한다.
 const verseNodeSource = await readFile(path.join(root, 'src/components/VerseNode.jsx'), 'utf8');
@@ -89,4 +92,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('✓ 구절 로더 회귀 검증 통과 — 정경 완전성, WEB 롬16:25-27, 원어 보완, 장 캐시, 탭별 즉시 전환');
+console.log('✓ 구절 로더 회귀 검증 통과 — 정경 완전성, WEB fallback, 원어 보완, 장/결과 캐시, 요청 큐, 탭별 즉시 전환');
