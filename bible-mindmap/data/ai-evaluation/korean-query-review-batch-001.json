@@ -11,14 +11,14 @@
     "covenant-direct.question",
     "priest-direct.pastoral",
     "shepherd-direct.short-search",
-    "light-direct.question",
-    "rock-water-semantic.pastoral",
-    "incense-semantic.short-search",
+    "light-direct.short-search",
+    "rock-water-semantic.question",
+    "incense-semantic.pastoral",
     "firstfruits-semantic.question",
     "wings-semantic.pastoral",
     "royal-priest-multihop.short-search",
-    "lamb-blood-multihop.question",
-    "word-light-multihop.pastoral",
-    "seed-serpent-multihop.short-search"
+    "lamb-blood-multihop.short-search",
+    "word-light-multihop.question",
+    "seed-serpent-multihop.pastoral"
   ]
 }
