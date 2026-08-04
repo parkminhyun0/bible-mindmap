@@ -9,6 +9,7 @@ import App from './App.jsx'
 import AppErrorBoundary from './components/AppErrorBoundary.jsx'
 import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilityBridge.jsx'
 import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
+import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -25,6 +26,7 @@ function applyInitialTheme() {
 
 applyInitialTheme()
 installVisitorCounterRepair()
+installCrossReferenceToolbarBridge()
 
 const root = document.getElementById('root')
 
