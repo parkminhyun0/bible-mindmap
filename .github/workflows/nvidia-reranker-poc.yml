@@ -1,0 +1,52 @@
+name: NVIDIA Reranker PoC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NVIDIA_EMBEDDING_MODEL_ID: nvidia/llama-nemotron-embed-1b-v2
+      NVIDIA_EMBEDDING_DIMENSIONS: '2048'
+      NVIDIA_RERANKER_MODEL_ID: nvidia/llama-nemotron-rerank-1b-v2
+      REPORT_PATH: bible-mindmap/reports/nvidia-reranker-poc/run-${{ github.run_id }}-${{ github.run_attempt }}.json
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Verify NVIDIA secret
+        run: |
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "::error::Repository secret NVIDIA_API_KEY is missing"
+            exit 1
+          fi
+      - name: Install dependencies
+        working-directory: bible-mindmap
+        run: npm ci
+      - name: Verify provider, embedding, reranker, and safety contracts
+        working-directory: bible-mindmap
+        run: |
+          npm run verify:ai-provider-boundary
+          npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-reranker-contract
+          npm run verify:nvidia-reranker-poc
+      - name: Execute Hybrid vs Hybrid plus Reranker evaluation
+        working-directory: bible-mindmap
+        run: npm run poc:nvidia-reranker:execute -- --output="${REPORT_PATH#bible-mindmap/}" --require-pass
+      - name: Upload Reranker evaluation report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: nvidia-reranker-poc-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.REPORT_PATH }}
+          if-no-files-found: warn
+          retention-days: 30
