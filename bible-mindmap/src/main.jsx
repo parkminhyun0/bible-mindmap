@@ -8,6 +8,7 @@ import './theme/appleModalInterior.css'
 import App from './App.jsx'
 import AppErrorBoundary from './components/AppErrorBoundary.jsx'
 import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilityBridge.jsx'
+import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -23,6 +24,7 @@ function applyInitialTheme() {
 }
 
 applyInitialTheme()
+installVisitorCounterRepair()
 
 const root = document.getElementById('root')
 
