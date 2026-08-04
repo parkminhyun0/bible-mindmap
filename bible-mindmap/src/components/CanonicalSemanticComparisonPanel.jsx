@@ -53,15 +53,23 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
     <section
       aria-label="NVIDIA 의미 검색 비교"
       style={{
-        position: 'fixed', right: 18, bottom: 18, zIndex: 1288,
-        width: 'min(420px, calc(100vw - 24px))', maxHeight: 'min(62vh, 620px)', overflow: 'auto',
+        position: 'fixed',
+        left: '50%',
+        bottom: 'max(24px, env(safe-area-inset-bottom, 0px))',
+        transform: 'translateX(-50%)',
+        zIndex: 1288,
+        width: 'min(700px, calc(100vw - 32px))',
+        maxHeight: 'min(46vh, 520px)',
+        overflow: 'auto',
+        overscrollBehavior: 'contain',
         border: '1px solid var(--at-separator)', borderRadius: 16,
         background: 'var(--at-bg)', color: 'var(--at-label)', boxShadow: 'var(--at-shadow-xl)',
         padding: 14,
+        boxSizing: 'border-box',
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-        <div>
+        <div style={{ minWidth: 0 }}>
           <div style={{ fontSize: 14, fontWeight: 900 }}>🧪 NVIDIA 의미 검색 비교</div>
           <div style={{ marginTop: 3, fontSize: 11, color: 'var(--at-label-3)', lineHeight: 1.4 }}>
             현재 결과는 바꾸지 않고 후보만 비교합니다.
@@ -72,9 +80,10 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
           onClick={runComparison}
           disabled={state.status === 'loading'}
           style={{
-            minHeight: 44, padding: '0 13px', border: 0, borderRadius: 10,
+            minWidth: 92, minHeight: 44, padding: '0 13px', border: 0, borderRadius: 10,
             background: 'var(--at-accent)', color: '#fff', fontWeight: 800,
             cursor: state.status === 'loading' ? 'wait' : 'pointer', opacity: state.status === 'loading' ? 0.7 : 1,
+            flexShrink: 0,
           }}
         >
           {state.status === 'loading' ? '비교 중…' : '비교 실행'}
@@ -83,7 +92,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
 
       <div style={{ marginTop: 12, padding: 10, borderRadius: 12, background: 'var(--at-surface-2)' }}>
         <div style={{ fontSize: 11, fontWeight: 800, color: 'var(--at-label-3)' }}>검색어</div>
-        <div style={{ marginTop: 3, fontSize: 13, fontWeight: 800 }}>{normalizedQuery}</div>
+        <div style={{ marginTop: 3, fontSize: 13, fontWeight: 800, overflowWrap: 'anywhere' }}>{normalizedQuery}</div>
       </div>
 
       {state.status === 'error' && (
@@ -120,7 +129,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
                   type="button"
                   onClick={() => onSelect?.(candidate.id)}
                   style={{
-                    minHeight: 44, padding: '9px 10px', display: 'grid', gridTemplateColumns: '24px 1fr auto', gap: 8,
+                    minHeight: 44, padding: '9px 10px', display: 'grid', gridTemplateColumns: '24px minmax(0,1fr) auto', gap: 8,
                     alignItems: 'center', textAlign: 'left', border: '1px solid var(--at-separator)', borderRadius: 10,
                     background: 'var(--at-surface)', color: 'var(--at-label)', cursor: 'pointer',
                   }}
@@ -130,7 +139,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
                     <span style={{ display: 'block', fontSize: 12, fontWeight: 900, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{concept.labelKo}</span>
                     <span style={{ display: 'block', marginTop: 2, fontSize: 10, color: 'var(--at-label-3)' }}>{candidate.score.toFixed(4)}</span>
                   </span>
-                  <span style={{ fontSize: 10, fontWeight: 800, color: inKeyword ? 'var(--at-success,#059669)' : 'var(--at-accent-text)' }}>
+                  <span style={{ fontSize: 10, fontWeight: 800, color: inKeyword ? 'var(--at-success,#059669)' : 'var(--at-accent-text)', whiteSpace: 'nowrap' }}>
                     {inKeyword ? '겹침' : '새 후보'}
                   </span>
                 </button>
