@@ -7,6 +7,8 @@ import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
 
+// 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
+
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
  * ⚠️ 모바일 시트를 닫지 않는다 — App.jsx가 시트 상태로 Sidebar 마운트를 제어하므로
