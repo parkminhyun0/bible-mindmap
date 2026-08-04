@@ -17,10 +17,16 @@ try {
   await fs.copyFile(path.join(root, 'landing/index.html'), path.join(tempDist, 'index.html'));
   await fs.cp(path.join(root, 'landing/partials'), path.join(tempRoot, 'landing/partials'), { recursive: true });
   await fs.mkdir(path.join(tempRoot, 'scripts'), { recursive: true });
-  await fs.copyFile(
-    path.join(root, 'scripts/inject-landing-data-sources.mjs'),
-    path.join(tempRoot, 'scripts/inject-landing-data-sources.mjs'),
-  );
+  await Promise.all([
+    fs.copyFile(
+      path.join(root, 'scripts/inject-landing-data-sources.mjs'),
+      path.join(tempRoot, 'scripts/inject-landing-data-sources.mjs'),
+    ),
+    fs.copyFile(
+      path.join(root, 'scripts/inject-landing-visitor-status.mjs'),
+      path.join(tempRoot, 'scripts/inject-landing-visitor-status.mjs'),
+    ),
+  ]);
 
   const result = spawnSync(process.execPath, ['scripts/inject-landing-data-sources.mjs'], {
     cwd: tempRoot,
