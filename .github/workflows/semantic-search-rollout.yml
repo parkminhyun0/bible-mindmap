@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies
         working-directory: bible-mindmap
         run: npm ci
+      - name: Build lexicon data required by production verification
+        working-directory: bible-mindmap
+        run: npm run build:lexicon
       - name: Verify provider boundary and rollout policy
         working-directory: bible-mindmap
         run: |
