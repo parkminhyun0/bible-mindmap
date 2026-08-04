@@ -23,17 +23,27 @@ const BOLLS_BOOK_MAP = Object.fromEntries(
 );
 const VERSE_NUM_STYLE = 'font-weight:700;color:#94a3b8;font-size:0.78em;margin-right:3px;vertical-align:0.28em;';
 const CACHE_MAX = 160;
-const FETCH_TIMEOUT_MS = 10000;
-const FETCH_RETRIES = 2;
+const RESULT_CACHE_MAX = 480;
+const FETCH_TIMEOUT_MS = 6500;
+const FETCH_RETRIES = 1;
+const REMOTE_FETCH_CONCURRENCY = 4;
 const chapterCache = new Map();
+const verseResultCache = new Map();
+const remoteQueue = [];
+let remoteActive = 0;
+let remoteQueueSequence = 0;
 
-function cacheGet(key) {
-  const hit = chapterCache.get(key);
-  if (hit) {
-    chapterCache.delete(key);
-    chapterCache.set(key, hit);
+function touchCache(cache, key) {
+  const hit = cache.get(key);
+  if (hit !== undefined) {
+    cache.delete(key);
+    cache.set(key, hit);
   }
   return hit;
+}
+
+function cacheGet(key) {
+  return touchCache(chapterCache, key);
 }
 
 function cacheSet(key, value) {
@@ -43,38 +53,84 @@ function cacheSet(key, value) {
   }
 }
 
+function resultCacheGet(key) {
+  return touchCache(verseResultCache, key);
+}
+
+function resultCacheSet(key, value) {
+  verseResultCache.set(key, value);
+  if (verseResultCache.size > RESULT_CACHE_MAX) {
+    verseResultCache.delete(verseResultCache.keys().next().value);
+  }
+}
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function fetchJsonWithRetry(url, { noStore = false } = {}) {
-  let lastError;
-  for (let attempt = 0; attempt <= FETCH_RETRIES; attempt += 1) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-    try {
-      const response = await fetch(url, {
-        signal: controller.signal,
-        ...(noStore ? { cache: 'no-store' } : {}),
-      });
-      if (!response.ok) {
-        const origin = globalThis.location?.origin || 'https://local.invalid';
-        const host = new URL(url, origin).host;
-        const error = new Error(`${host || '본문 데이터'} ${response.status}`);
-        error.retryable = response.status === 429 || response.status >= 500;
-        throw error;
-      }
-      return await response.json();
-    } catch (error) {
-      lastError = error?.name === 'AbortError'
-        ? new Error('성경 본문 요청 시간이 초과되었습니다.')
-        : error;
-      const retryable = error?.name === 'AbortError' || error?.retryable || error instanceof TypeError;
-      if (!retryable || attempt === FETCH_RETRIES) break;
-      await sleep(300 * (attempt + 1));
-    } finally {
-      clearTimeout(timeoutId);
-    }
+function isRemoteUrl(url) {
+  try {
+    const origin = globalThis.location?.origin || 'https://local.invalid';
+    return new URL(url, origin).origin !== origin;
+  } catch {
+    return /^https?:\/\//i.test(String(url));
   }
-  throw lastError;
+}
+
+function pumpRemoteQueue() {
+  while (remoteActive < REMOTE_FETCH_CONCURRENCY && remoteQueue.length) {
+    remoteQueue.sort((a, b) => b.priority - a.priority || a.sequence - b.sequence);
+    const item = remoteQueue.shift();
+    remoteActive += 1;
+    Promise.resolve()
+      .then(item.task)
+      .then(item.resolve, item.reject)
+      .finally(() => {
+        remoteActive -= 1;
+        pumpRemoteQueue();
+      });
+  }
+}
+
+function scheduleFetch(task, priority = 0) {
+  return new Promise((resolve, reject) => {
+    remoteQueue.push({ task, priority, resolve, reject, sequence: remoteQueueSequence += 1 });
+    pumpRemoteQueue();
+  });
+}
+
+async function fetchJsonWithRetry(url, { noStore = false, priority = 0 } = {}) {
+  const execute = async () => {
+    let lastError;
+    for (let attempt = 0; attempt <= FETCH_RETRIES; attempt += 1) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+      try {
+        const response = await fetch(url, {
+          signal: controller.signal,
+          ...(noStore ? { cache: 'no-store' } : {}),
+        });
+        if (!response.ok) {
+          const origin = globalThis.location?.origin || 'https://local.invalid';
+          const host = new URL(url, origin).host;
+          const error = new Error(`${host || '본문 데이터'} ${response.status}`);
+          error.retryable = response.status === 429 || response.status >= 500;
+          throw error;
+        }
+        return await response.json();
+      } catch (error) {
+        lastError = error?.name === 'AbortError'
+          ? new Error('성경 본문 요청 시간이 초과되었습니다.')
+          : error;
+        const retryable = error?.name === 'AbortError' || error?.retryable || error instanceof TypeError;
+        if (!retryable || attempt === FETCH_RETRIES) break;
+        await sleep(180 * (attempt + 1));
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+    throw lastError;
+  };
+
+  return isRemoteUrl(url) ? scheduleFetch(execute, priority) : execute();
 }
 
 function cachedPromise(key, loader) {
@@ -88,12 +144,31 @@ function cachedPromise(key, loader) {
   return promise;
 }
 
+function cachedVerseResult(key, loader) {
+  const cached = resultCacheGet(key);
+  if (cached) return cached;
+  const promise = loader().catch((error) => {
+    verseResultCache.delete(key);
+    throw error;
+  });
+  resultCacheSet(key, promise);
+  return promise;
+}
+
+function bollsPriority(translationCode) {
+  if (translationCode === 'KRV') return 100;
+  if (translationCode === 'WLC' || translationCode === 'NTGT') return 85;
+  if (translationCode === 'WEB') return 65;
+  return 50;
+}
+
 async function fetchBollsChapterRows(translationCode, bookId, chapter) {
   const bookNumber = BOLLS_BOOK_MAP[bookId];
   if (!bookNumber) throw new Error(`알 수 없는 성경 책: ${bookId}`);
   return cachedPromise(`bolls:${translationCode}:${bookId}:${chapter}`, async () => {
     const raw = await fetchJsonWithRetry(
       `https://bolls.life/get-text/${translationCode}/${bookNumber}/${chapter}/`,
+      { priority: bollsPriority(translationCode) },
     );
     const rows = normalizeVerseRows(raw);
     if (!rows.length) throw new Error(`${translationCode} ${bookId} ${chapter}장 본문 없음`);
@@ -145,21 +220,32 @@ async function fetchBibleApiRows(book, chapter, verseStart, verseEnd) {
   const reference = bibleApiReference(book, chapter, verseStart, verseEnd);
   const data = await fetchJsonWithRetry(
     `https://bible-api.com/${reference}?translation=web`,
+    { priority: 60 },
   );
   return normalizeVerseRows(data?.verses || []);
 }
 
 async function fetchWebRows(book, chapter, verseStart, verseEnd) {
-  let rows = await fetchBollsChapterRows('WEB', book.id, chapter);
+  let rows = [];
+
+  try {
+    rows = await fetchBollsChapterRows('WEB', book.id, chapter);
+  } catch {
+    rows = await fetchBibleApiRows(book, chapter, verseStart, verseEnd);
+  }
 
   // WEB 자체 장절 체계와 앱의 개역한글 기준 참조가 다른 구간을 정규화한다.
   for (const alias of aliasesForRange(book.id, chapter, verseStart, verseEnd)) {
-    const sourceRows = await fetchBollsChapterRows(
-      'WEB',
-      alias.source.bookId,
-      alias.source.chapter,
-    );
-    rows = mergeVerseRows(rows, remapAliasRows(sourceRows, alias));
+    try {
+      const sourceRows = await fetchBollsChapterRows(
+        'WEB',
+        alias.source.bookId,
+        alias.source.chapter,
+      );
+      rows = mergeVerseRows(rows, remapAliasRows(sourceRows, alias));
+    } catch {
+      // alias 공급자가 실패해도 아래 보조 공급자와 범위 검증으로 복구한다.
+    }
   }
 
   // 공급자별 데이터 누락이 남아 있을 때만 두 번째 WEB 공급자를 사용한다.
@@ -206,29 +292,32 @@ export async function fetchVerse(bookId, chapter, verseStart, verseEnd, translat
   const book = ALL_BOOKS.find((item) => item.id === bookId);
   if (!book) throw new Error('Book not found');
   const id = LEGACY_ID_MAP[translationId] ?? translationId;
+  const resultKey = `${id}:${bookId}:${chapter}:${verseStart}:${verseEnd}`;
 
-  if (id === 'krv') {
-    const rows = await fetchBollsChapterRows('KRV', bookId, chapter);
-    return formatRows(rows, verseStart, verseEnd, '개역한글');
-  }
+  return cachedVerseResult(resultKey, async () => {
+    if (id === 'krv') {
+      const rows = await fetchBollsChapterRows('KRV', bookId, chapter);
+      return formatRows(rows, verseStart, verseEnd, '개역한글');
+    }
 
-  if (id === 'web') {
-    const rows = await fetchWebRows(book, chapter, verseStart, verseEnd);
-    return formatRows(rows, verseStart, verseEnd, 'WEB');
-  }
+    if (id === 'web') {
+      const rows = await fetchWebRows(book, chapter, verseStart, verseEnd);
+      return formatRows(rows, verseStart, verseEnd, 'WEB');
+    }
 
-  if (id === 'lxx') {
-    if (!isOT(bookId)) throw new Error('LXX(칠십인역)는 구약에만 제공됩니다.');
-    const rows = await fetchLxxRows(bookId, chapter);
-    return formatRows(rows, verseStart, verseEnd, 'LXX');
-  }
+    if (id === 'lxx') {
+      if (!isOT(bookId)) throw new Error('LXX(칠십인역)는 구약에만 제공됩니다.');
+      const rows = await fetchLxxRows(bookId, chapter);
+      return formatRows(rows, verseStart, verseEnd, 'LXX');
+    }
 
-  if (id === 'original') {
-    const rows = await fetchOriginalRows(bookId, chapter, verseStart, verseEnd);
-    return formatRows(rows, verseStart, verseEnd, isOT(bookId) ? '히브리어' : '헬라어');
-  }
+    if (id === 'original') {
+      const rows = await fetchOriginalRows(bookId, chapter, verseStart, verseEnd);
+      return formatRows(rows, verseStart, verseEnd, isOT(bookId) ? '히브리어' : '헬라어');
+    }
 
-  throw new Error(`지원되지 않는 번역본: ${translationId}`);
+    throw new Error(`지원되지 않는 번역본: ${translationId}`);
+  });
 }
 
 export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd) {
@@ -252,4 +341,16 @@ export async function fetchAllTranslations(bookId, chapter, verseStart, verseEnd
 export async function fetchVerseCount(bookId, chapter) {
   const rows = await fetchBollsChapterRows('KRV', bookId, chapter);
   return selectVerseRows(rows, 1, Number.MAX_SAFE_INTEGER).at(-1)?.verse ?? null;
+}
+
+export function getVerseLoaderDiagnostics() {
+  return Object.freeze({
+    chapterCacheSize: chapterCache.size,
+    resultCacheSize: verseResultCache.size,
+    remoteActive,
+    remoteQueued: remoteQueue.length,
+    remoteConcurrency: REMOTE_FETCH_CONCURRENCY,
+    timeoutMs: FETCH_TIMEOUT_MS,
+    retries: FETCH_RETRIES,
+  });
 }
