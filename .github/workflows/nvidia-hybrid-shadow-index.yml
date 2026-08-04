@@ -1,0 +1,50 @@
+name: NVIDIA Hybrid Shadow Index
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-shadow-index:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+      NVIDIA_EMBEDDING_MODEL_ID: nvidia/llama-nemotron-embed-1b-v2
+      NVIDIA_EMBEDDING_DIMENSIONS: '2048'
+      OUTPUT_DIR: bible-mindmap/reports/nvidia-hybrid-shadow-index/run-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Verify NVIDIA secret
+        run: |
+          if [ -z "$NVIDIA_API_KEY" ]; then
+            echo "::error::Repository secret NVIDIA_API_KEY is missing"
+            exit 1
+          fi
+      - name: Install dependencies
+        working-directory: bible-mindmap
+        run: npm ci
+      - name: Verify provider, 2048 policy, shadow corpus, and safety contracts
+        working-directory: bible-mindmap
+        run: |
+          npm run verify:ai-provider-boundary
+          npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-hybrid-shadow-index
+      - name: Build and evaluate 2048-dimensional Hybrid shadow index
+        working-directory: bible-mindmap
+        run: npm run shadow:nvidia-hybrid:execute -- --output-dir="${OUTPUT_DIR#bible-mindmap/}" --require-pass
+      - name: Upload shadow index, manifest, evaluation, and summary
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: nvidia-hybrid-shadow-index-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ env.OUTPUT_DIR }}
+          if-no-files-found: warn
+          retention-days: 30
