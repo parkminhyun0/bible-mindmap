@@ -9,6 +9,7 @@ const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptS
 const COMPARISON_DEBOUNCE_MS = 300;
 
 // 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
+// Pages deploy marker: 2026-08-05T02:24+09:00 — PR #151 portal query propagation release.
 
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
