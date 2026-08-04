@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  statuses: write
 
 concurrency:
   group: canonical-live-ui-${{ github.ref }}
@@ -23,6 +24,19 @@ jobs:
       run:
         working-directory: bible-mindmap
     steps:
+      - name: Publish live UI pending status
+        uses: actions/github-script@v9
+        with:
+          script: |
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'pending',
+              context: 'canonical-live-ui',
+              description: 'Waiting for Pages deployment and live UI verification',
+              target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            });
       - name: Checkout
         uses: actions/checkout@v6
       - name: Setup Node
@@ -60,3 +74,20 @@ jobs:
             bible-mindmap/playwright-report
             bible-mindmap/test-results
           if-no-files-found: ignore
+      - name: Publish final live UI status
+        if: always()
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const state = '${{ job.status }}' === 'success' ? 'success' : 'failure';
+            await github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state,
+              context: 'canonical-live-ui',
+              description: state === 'success'
+                ? 'Live Pages Tier6-Tier11 desktop/mobile UI verified'
+                : 'Live Pages canonical usage UI verification failed',
+              target_url: `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+            });
