@@ -28,27 +28,34 @@ try {
   const output = await fs.readFile(path.join(tempRoot, 'dist/index.html'), 'utf8');
   for (const required of [
     'id="landing-visitor-status"',
+    'id="landing-visitor-today"',
+    'id="landing-visitor-total"',
     '접속자 현황',
     '투데이',
     '총 합계',
     'env(safe-area-inset-bottom)',
-    'hits.seeyoufarm.com',
+    'api.counterapi.dev/v1',
+    "timeZone: 'Asia/Seoul'",
   ]) {
     assert.ok(output.includes(required), `landing visitor output missing: ${required}`);
   }
+  assert.ok(!output.includes('hits.seeyoufarm.com'), 'landing visitor UI must not depend on an external image badge');
 
   const mobileDock = await fs.readFile(path.join(root, 'src/components/MobileWorkspaceDock.jsx'), 'utf8');
   for (const required of [
     '앱 접속자 현황',
-    '투데이 / 총 합계',
-    'VISITOR_BADGE_URL',
+    '투데이',
+    '총 합계',
+    'useMobileVisitorCounts',
+    'api.counterapi.dev/v1',
     "pointerEvents: 'none'",
     "pointerEvents: 'auto'",
   ]) {
     assert.ok(mobileDock.includes(required), `mobile visitor UI missing: ${required}`);
   }
+  assert.ok(!mobileDock.includes('hits.seeyoufarm.com'), 'mobile visitor UI must not depend on an external image badge');
 
-  console.log('✓ landing and mobile app visitor status are present and responsive');
+  console.log('✓ landing and mobile app visitor status render live numeric counters without image badges');
 } finally {
   await fs.rm(tempRoot, { recursive: true, force: true });
 }
