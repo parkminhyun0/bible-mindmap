@@ -29,13 +29,13 @@ test('상세 화면 닫기는 전체 기능을 종료하지 않고 검색으로 
   await expect(searchDialog).toBeVisible();
 
   const input = searchDialog.getByRole('textbox', { name: '정경 개념 의미 검색' });
-  await input.fill('씨');
-  await searchDialog.getByRole('button', { name: '씨 정경 여정 상세 열기', exact: true }).click();
+  await input.fill('언약');
+  await searchDialog.getByRole('button', { name: '언약 정경 여정 상세 열기', exact: true }).click();
 
-  const detailDialog = page.getByRole('dialog', { name: '정경 추적 · 씨' });
+  const detailDialog = page.getByRole('dialog', { name: '정경 추적 · 언약' });
   await expect(detailDialog).toBeVisible();
   await detailDialog.getByRole('button', { name: '닫기' }).click();
 
   await expect(searchDialog).toBeVisible();
-  await expect(input).toHaveValue('씨');
+  await expect(input).toHaveValue('언약');
 });
