@@ -1,5 +1,6 @@
-// 배치1(파일럿6+Tier1) + 배치2(Tier2+Tier3)를 병합. 이후 배치도 여기서 spread 연결.
+// 배치1(파일럿6+Tier1) + 배치2(Tier2+Tier3) + 배치3(Tier4+Tier5)를 병합.
 import { CANONICAL_USAGE_MAP_T2 } from './canonicalUsageMapT2.js';
+import { CANONICAL_USAGE_MAP_T3 } from './canonicalUsageMapT3.js';
 
 export const CANONICAL_USAGE_MAP = {
   seed: [
@@ -123,4 +124,5 @@ export const CANONICAL_USAGE_MAP = {
     { ref: '1Pet:5:4', note: '목자장이 나타날 때 충성된 목자들이 상을 받음' },
   ],
   ...CANONICAL_USAGE_MAP_T2,
+  ...CANONICAL_USAGE_MAP_T3,
 };

@@ -14,8 +14,8 @@
   },
   "observations": {
     "canonicalConceptCount": 72,
-    "canonicalUsageMapCount": 24,
-    "canonicalUsagePendingCount": 48,
+    "canonicalUsageMapCount": 36,
+    "canonicalUsagePendingCount": 36,
     "chapterCardCount": 1106,
     "chapterCardMarkerChecked": 2304,
     "chapterCardMarkerMissing": 39,
@@ -60,8 +60,8 @@
       "severity": "P2",
       "status": "planned-expansion",
       "category": "canonical-data",
-      "title": "정경 개념 용례지도 48개 확장 대기",
-      "rationale": "정경 개념 72개 중 24개만 상세 usage map을 보유한다. 미등록 참조와 잘못된 개념 키는 하드 실패하며, 남은 48개는 계획적 콘텐츠 확장 범위다.",
+      "title": "정경 개념 용례지도 36개 확장 대기",
+      "rationale": "정경 개념 72개 중 36개가 상세 usage map을 보유한다. 미등록 참조와 잘못된 개념 키는 하드 실패하며, 남은 36개는 계획적 콘텐츠 확장 범위다.",
       "evidence": [
         "src/data/canonicalConcepts.js",
         "src/data/canonicalUsageMap.js",
