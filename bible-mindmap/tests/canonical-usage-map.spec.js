@@ -124,6 +124,9 @@ test.describe('모바일 정경 용례지도', () => {
 
       await page.keyboard.press('Escape');
       await expect(dialog).toHaveCount(0);
+      await expect(searchDialog).toBeVisible();
+      await searchDialog.getByRole('button', { name: '닫기' }).click();
+      await expect(searchDialog).toHaveCount(0);
       await expect(sheet).toBeVisible();
     }
   });
