@@ -1,0 +1,116 @@
+name: Safe auto merge
+
+on:
+  workflow_run:
+    workflows: ["Validate pull request"]
+    types: [completed]
+
+permissions:
+  actions: read
+  checks: read
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  merge:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge eligible validated PR
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const sourceRun = context.payload.workflow_run;
+            const prs = sourceRun.pull_requests || [];
+            if (prs.length !== 1) {
+              core.info(`Expected one associated PR, found ${prs.length}; stopping.`);
+              return;
+            }
+
+            const prNumber = prs[0].number;
+            const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+
+            if (pr.state !== 'open' || pr.draft) {
+              core.info('PR is not an open, ready-for-review PR.');
+              return;
+            }
+            if (pr.user.login !== owner || !pr.head.ref.startsWith('chatgpt/')) {
+              core.info('PR is outside the trusted owner/chatgpt branch boundary.');
+              return;
+            }
+            if (pr.head.repo.full_name !== `${owner}/${repo}`) {
+              core.info('Fork PRs are never auto-merged.');
+              return;
+            }
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner, repo, pull_number: prNumber, per_page: 100,
+            });
+            const sensitive = [
+              /^\.github\/workflows\//,
+              /^bible-mindmap\/api\//,
+              /^bible-mindmap\/src\/data\//,
+              /^bible-mindmap\/scripts\/data\//,
+              /(^|\/)migrations?\//,
+              /(^|\/)schema(s)?\//,
+              /package-lock\.json$/,
+              /vercel\.json$/,
+            ];
+            const sensitiveFiles = files
+              .map((file) => file.filename)
+              .filter((filename) => sensitive.some((rule) => rule.test(filename)));
+            const labels = new Set(pr.labels.map((label) => label.name));
+            if (sensitiveFiles.length && !labels.has('auto-merge-approved')) {
+              core.warning(`Sensitive files require the auto-merge-approved label: ${sensitiveFiles.join(', ')}`);
+              return;
+            }
+
+            // Wait for every pull_request-triggered Actions run on the exact head SHA.
+            const deadline = Date.now() + 30 * 60 * 1000;
+            while (Date.now() < deadline) {
+              const runs = await github.paginate(github.rest.actions.listWorkflowRunsForRepo, {
+                owner, repo, head_sha: pr.head.sha, event: 'pull_request', per_page: 100,
+              });
+              const relevant = runs.filter((run) => run.id !== context.runId);
+              const pending = relevant.filter((run) => !['completed'].includes(run.status));
+              if (pending.length) {
+                core.info(`Waiting for ${pending.length} workflow run(s).`);
+                await new Promise((resolve) => setTimeout(resolve, 20000));
+                continue;
+              }
+              const failed = relevant.filter((run) => !['success', 'skipped', 'neutral'].includes(run.conclusion));
+              if (failed.length) {
+                core.setFailed(`Required workflow failed: ${failed.map((run) => run.name).join(', ')}`);
+                return;
+              }
+              break;
+            }
+
+            const { data: reviews } = await github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber });
+            if (reviews.some((review) => review.state === 'CHANGES_REQUESTED')) {
+              core.warning('Changes are requested; auto-merge stopped.');
+              return;
+            }
+
+            const refreshed = (await github.rest.pulls.get({ owner, repo, pull_number: prNumber })).data;
+            if (refreshed.mergeable === false || ['dirty', 'blocked', 'behind'].includes(refreshed.mergeable_state)) {
+              core.warning(`PR is not safely mergeable: ${refreshed.mergeable_state}`);
+              return;
+            }
+
+            const result = await github.rest.pulls.merge({
+              owner,
+              repo,
+              pull_number: prNumber,
+              merge_method: 'squash',
+              sha: refreshed.head.sha,
+              commit_title: refreshed.title,
+            });
+            if (!result.data.merged) {
+              core.setFailed(result.data.message || 'GitHub did not merge the PR.');
+              return;
+            }
+            core.notice(`PR #${prNumber} auto-merged as ${result.data.sha}.`);
