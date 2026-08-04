@@ -32,10 +32,6 @@ const MOBILE_REPRESENTATIVES = [
   'adoption',
 ];
 
-function escapeRegExp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
 function conceptCase(key) {
   const concept = CANONICAL_CONCEPTS[key];
   const usages = CANONICAL_USAGE_MAP[key];
@@ -63,9 +59,10 @@ async function openCanonicalSearch(page, scope = page) {
 async function openConcept(page, searchDialog, { query, label }) {
   const input = searchDialog.getByRole('textbox', { name: '정경 개념 의미 검색' });
   await input.fill(query);
-  const result = searchDialog
-    .getByRole('button', { name: new RegExp(escapeRegExp(label)) })
-    .first();
+  const result = searchDialog.getByRole('button', {
+    name: `${label} 정경 여정 상세 열기`,
+    exact: true,
+  });
   await expect(result).toBeVisible();
   await result.click();
   const dialog = page.getByRole('dialog', { name: `정경 추적 · ${label}` });
