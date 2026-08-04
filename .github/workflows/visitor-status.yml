@@ -1,0 +1,28 @@
+name: Validate visitor status
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/components/MobileWorkspaceDock.jsx'
+      - 'bible-mindmap/landing/partials/visitor-status.html'
+      - 'bible-mindmap/scripts/inject-landing-visitor-status.mjs'
+      - 'bible-mindmap/scripts/inject-landing-data-sources.mjs'
+      - 'bible-mindmap/scripts/verify-visitor-status.mjs'
+      - 'bible-mindmap/vercel.json'
+      - '.github/workflows/visitor-status.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visitor-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Verify landing and mobile app visitor status
+        working-directory: bible-mindmap
+        run: node scripts/verify-visitor-status.mjs
