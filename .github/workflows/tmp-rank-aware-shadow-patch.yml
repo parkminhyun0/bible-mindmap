@@ -1,9 +1,9 @@
 name: Temporary Rank-Aware Shadow Patch
 
 on:
-  push:
+  pull_request:
     branches:
-      - chatgpt/p1-2c-rank-aware-hard-negatives
+      - main
 
 permissions:
   contents: write
@@ -42,13 +42,10 @@ jobs:
 """
           if helper not in text:
               text = text.replace(marker, helper + marker)
-          old = """  const errors = [];
-            const minimums = Object.freeze({"""
-          new = """  const errors = [];
-            const baselineRankAwareHardNegativeRate = rankAwareHardNegativeRate(baseline);
-            const candidateRankAwareHardNegativeRate = rankAwareHardNegativeRate(candidate);
-            const minimums = Object.freeze({"""
-          text = text.replace(old, new)
+          text = text.replace(
+              "  const errors = [];\n  const minimums = Object.freeze({",
+              "  const errors = [];\n  const baselineRankAwareHardNegativeRate = rankAwareHardNegativeRate(baseline);\n  const candidateRankAwareHardNegativeRate = rankAwareHardNegativeRate(candidate);\n  const minimums = Object.freeze({",
+          )
           text = text.replace(
               "if (candidate.hardNegativeRate > minimums.maxHardNegativeRate) errors.push(`hard-negative rate above ${minimums.maxHardNegativeRate}`);",
               "if (candidateRankAwareHardNegativeRate > minimums.maxHardNegativeRate) errors.push(`rank-aware hard-negative rate above ${minimums.maxHardNegativeRate}`);",
@@ -57,20 +54,10 @@ jobs:
               "if (candidate.hardNegativeRate > baseline.hardNegativeRate + 0.125) errors.push('Hybrid hard-negative rate regressed beyond allowance');",
               "if (candidateRankAwareHardNegativeRate > baselineRankAwareHardNegativeRate + 0.125) errors.push('Hybrid rank-aware hard-negative rate regressed beyond allowance');",
           )
-          return_marker = """    segmentMinimums,
-              vectorContribution,"""
-          return_replacement = """    segmentMinimums,
-              hardNegativePolicy: 'rank-aware-outrank-or-replacement',
-              rawHardNegativeRate: Object.freeze({
-                baseline: baseline.hardNegativeRate,
-                candidate: candidate.hardNegativeRate,
-              }),
-              rankAwareHardNegativeRate: Object.freeze({
-                baseline: baselineRankAwareHardNegativeRate,
-                candidate: candidateRankAwareHardNegativeRate,
-              }),
-              vectorContribution,"""
-          text = text.replace(return_marker, return_replacement)
+          text = text.replace(
+              "    segmentMinimums,\n    vectorContribution,",
+              "    segmentMinimums,\n    hardNegativePolicy: 'rank-aware-outrank-or-replacement',\n    rawHardNegativeRate: Object.freeze({ baseline: baseline.hardNegativeRate, candidate: candidate.hardNegativeRate }),\n    rankAwareHardNegativeRate: Object.freeze({ baseline: baselineRankAwareHardNegativeRate, candidate: candidateRankAwareHardNegativeRate }),\n    vectorContribution,",
+          )
           path.write_text(text)
           PY
           rm .github/workflows/tmp-rank-aware-shadow-patch.yml
