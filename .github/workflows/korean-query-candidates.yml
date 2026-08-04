@@ -1,0 +1,39 @@
+name: Korean Evaluation Query Candidate Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/ai/evaluation/korean-query-candidates.mjs'
+      - 'bible-mindmap/scripts/verify-korean-query-candidates.mjs'
+      - '.github/workflows/korean-query-candidates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-candidates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Install dependencies
+        working-directory: bible-mindmap
+        run: npm ci
+      - name: Verify Korean query candidates and safety boundary
+        working-directory: bible-mindmap
+        run: node scripts/verify-korean-query-candidates.mjs
+      - name: Generate review artifacts
+        working-directory: bible-mindmap
+        run: node scripts/ai/evaluation/korean-query-candidates.mjs --output-dir=reports/korean-query-candidates
+      - name: Upload human review queue
+        uses: actions/upload-artifact@v7
+        with:
+          name: korean-query-candidates-${{ github.run_id }}-${{ github.run_attempt }}
+          path: bible-mindmap/reports/korean-query-candidates
+          retention-days: 30
