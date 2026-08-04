@@ -1,0 +1,120 @@
+name: Safe automatic merge
+
+on:
+  pull_request_target:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  statuses: read
+
+concurrency:
+  group: safe-automerge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  merge:
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login == 'parkminhyun0' &&
+      startsWith(github.event.pull_request.head.ref, 'chatgpt/') &&
+      contains(github.event.pull_request.body || '', '<!-- safe-automerge -->')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for all validation gates and merge
+        uses: actions/github-script@v9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const number = context.payload.pull_request.number;
+            const allowedConclusions = new Set(['success', 'neutral', 'skipped']);
+            const ignoredStatuses = new Set(['Vercel']);
+            const requiredChecks = new Set(['security-audit', 'verify-and-build', 'browser-smoke']);
+            let stablePasses = 0;
+
+            for (let attempt = 1; attempt <= 40; attempt += 1) {
+              const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+              if (pr.state !== 'open') {
+                core.info(`PR #${number} is no longer open.`);
+                return;
+              }
+              if (pr.draft || pr.base.ref !== 'main' || pr.user.login !== 'parkminhyun0') {
+                core.setFailed('PR no longer satisfies the safe auto-merge identity gate.');
+                return;
+              }
+              if (!pr.head.ref.startsWith('chatgpt/') || !String(pr.body || '').includes('<!-- safe-automerge -->')) {
+                core.setFailed('Safe auto-merge marker or branch contract is missing.');
+                return;
+              }
+
+              const sha = pr.head.sha;
+              const checkRuns = await github.paginate(github.rest.checks.listForRef, {
+                owner,
+                repo,
+                ref: sha,
+                per_page: 100,
+              });
+              const statusResponse = await github.rest.repos.getCombinedStatusForRef({ owner, repo, ref: sha });
+              const statuses = statusResponse.data.statuses.filter((status) => !ignoredStatuses.has(status.context));
+
+              const checkNames = new Set(checkRuns.map((run) => run.name));
+              const requiredPresent = [...requiredChecks].every((name) => checkNames.has(name));
+              const pendingChecks = checkRuns.filter((run) => run.status !== 'completed');
+              const failedChecks = checkRuns.filter(
+                (run) => run.status === 'completed' && !allowedConclusions.has(run.conclusion),
+              );
+              const pendingStatuses = statuses.filter((status) => status.state === 'pending');
+              const failedStatuses = statuses.filter((status) => ['failure', 'error'].includes(status.state));
+
+              core.info(
+                `Attempt ${attempt}/40: requiredPresent=${requiredPresent}, pendingChecks=${pendingChecks.length}, ` +
+                `failedChecks=${failedChecks.length}, pendingStatuses=${pendingStatuses.length}, failedStatuses=${failedStatuses.length}`,
+              );
+
+              if (failedChecks.length || failedStatuses.length) {
+                core.setFailed(
+                  `Validation failed: checks=${failedChecks.map((run) => run.name).join(', ') || 'none'}; ` +
+                  `statuses=${failedStatuses.map((status) => status.context).join(', ') || 'none'}`,
+                );
+                return;
+              }
+
+              if (requiredPresent && pendingChecks.length === 0 && pendingStatuses.length === 0) {
+                stablePasses += 1;
+                if (stablePasses >= 3) {
+                  const latest = await github.rest.pulls.get({ owner, repo, pull_number: number });
+                  if (latest.data.head.sha !== sha) {
+                    stablePasses = 0;
+                    await new Promise((resolve) => setTimeout(resolve, 30000));
+                    continue;
+                  }
+
+                  const merge = await github.rest.pulls.merge({
+                    owner,
+                    repo,
+                    pull_number: number,
+                    merge_method: 'squash',
+                    sha,
+                    commit_title: `${latest.data.title} (#${number})`,
+                    commit_message: 'Automatically merged after all safe validation gates passed.',
+                  });
+                  if (!merge.data.merged) {
+                    core.setFailed(`GitHub refused the merge: ${merge.data.message}`);
+                    return;
+                  }
+                  core.info(`Merged PR #${number} as ${merge.data.sha}`);
+                  return;
+                }
+              } else {
+                stablePasses = 0;
+              }
+
+              await new Promise((resolve) => setTimeout(resolve, 30000));
+            }
+
+            core.setFailed('Timed out waiting for safe validation gates.');
