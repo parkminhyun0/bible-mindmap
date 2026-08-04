@@ -40,7 +40,7 @@ jobs:
         run: npm run build:lexicon
       - name: Install Chromium
         run: npx playwright install chromium --with-deps
-      - name: Run Tier6-Tier11 canonical usage UI regression
+      - name: Run all 72 canonical concept UI regressions
         run: npx playwright test tests/canonical-usage-map.spec.js --project=chromium
       - name: Upload Playwright evidence
         if: failure()
