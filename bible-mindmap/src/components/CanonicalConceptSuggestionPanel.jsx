@@ -1,9 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { getCanonicalConceptSuggestions } from '../search/canonicalConceptSuggestions.js';
 
+const INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
+
 function applySuggestion(searchText) {
-  const input = document.querySelector('input[aria-label="정경 개념 의미 검색"]');
+  const input = document.querySelector(INPUT_SELECTOR);
   if (!(input instanceof HTMLInputElement)) return;
   const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
   setter?.call(input, searchText);
@@ -14,22 +16,45 @@ function applySuggestion(searchText) {
 
 export default function CanonicalConceptSuggestionPanel({ query }) {
   const [mountNode, setMountNode] = useState(null);
+  const hostRef = useRef(null);
   const suggestions = useMemo(
     () => getCanonicalConceptSuggestions(query, { limit: 6 }),
     [query],
   );
 
   useEffect(() => {
-    const input = document.querySelector('input[aria-label="정경 개념 의미 검색"]');
-    if (!input?.parentElement) return undefined;
-    const host = document.createElement('div');
-    host.dataset.canonicalSuggestionInline = 'true';
-    host.style.marginTop = '8px';
-    input.insertAdjacentElement('afterend', host);
-    setMountNode(host);
+    let observer;
+    let disposed = false;
+
+    const attach = () => {
+      if (disposed || hostRef.current?.isConnected) return true;
+      const input = document.querySelector(INPUT_SELECTOR);
+      if (!input?.parentElement) return false;
+
+      const existing = input.parentElement.querySelector('[data-canonical-suggestion-inline="true"]');
+      const host = existing || document.createElement('div');
+      host.dataset.canonicalSuggestionInline = 'true';
+      host.style.marginTop = '8px';
+      if (!existing) input.insertAdjacentElement('afterend', host);
+      hostRef.current = host;
+      setMountNode(host);
+      return true;
+    };
+
+    if (!attach()) {
+      observer = new MutationObserver(() => {
+        if (attach()) observer?.disconnect();
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+
     return () => {
+      disposed = true;
+      observer?.disconnect();
+      const host = hostRef.current;
+      hostRef.current = null;
       setMountNode(null);
-      host.remove();
+      host?.remove();
     };
   }, []);
 
