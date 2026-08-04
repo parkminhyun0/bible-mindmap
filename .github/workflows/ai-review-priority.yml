@@ -5,6 +5,8 @@ on:
     paths:
       - 'bible-mindmap/src/data/aiReviewPriority.js'
       - 'bible-mindmap/scripts/verify-ai-review-priority.mjs'
+      - 'bible-mindmap/scripts/build-ai-review-queue.mjs'
+      - 'bible-mindmap/data/ai-candidates/**'
       - '.github/workflows/ai-review-priority.yml'
   workflow_dispatch:
 
@@ -23,3 +25,16 @@ jobs:
       - name: Verify human review priority scoring
         working-directory: bible-mindmap
         run: node scripts/verify-ai-review-priority.mjs
+      - name: Verify review queue generator
+        working-directory: bible-mindmap
+        run: node scripts/build-ai-review-queue.mjs --self-test
+      - name: Build current review queue
+        working-directory: bible-mindmap
+        run: node scripts/build-ai-review-queue.mjs
+      - name: Upload human review queue
+        uses: actions/upload-artifact@v6
+        with:
+          name: ai-human-review-queue
+          path: bible-mindmap/artifacts/ai-review-queue/
+          if-no-files-found: error
+          retention-days: 14
