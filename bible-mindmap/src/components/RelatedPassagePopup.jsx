@@ -11,11 +11,98 @@ const TABS = [
   { id: 'original', label: '원어' },
 ];
 
-function clampPosition(position, width = 620, height = 360) {
+const VIEWPORT_MARGIN = 16;
+const ANCHOR_GAP = 14;
+const DESKTOP_WIDTH = 620;
+const DESKTOP_HEIGHT = 520;
+
+function clampPosition(position, width = DESKTOP_WIDTH, height = DESKTOP_HEIGHT) {
+  const safeWidth = Math.min(width, window.innerWidth - VIEWPORT_MARGIN * 2);
+  const safeHeight = Math.min(height, window.innerHeight - VIEWPORT_MARGIN * 2);
   return {
-    x: Math.max(12, Math.min(position.x, window.innerWidth - Math.min(width, window.innerWidth - 24))),
-    y: Math.max(12, Math.min(position.y, window.innerHeight - Math.min(height, window.innerHeight - 24))),
+    x: Math.max(VIEWPORT_MARGIN, Math.min(position.x, window.innerWidth - safeWidth - VIEWPORT_MARGIN)),
+    y: Math.max(VIEWPORT_MARGIN, Math.min(position.y, window.innerHeight - safeHeight - VIEWPORT_MARGIN)),
   };
+}
+
+function overlaps(a, b) {
+  return !(
+    a.right <= b.left
+    || a.left >= b.right
+    || a.bottom <= b.top
+    || a.top >= b.bottom
+  );
+}
+
+function findSelectedCanvasRect() {
+  const selected = document.querySelector('.react-flow__node.selected, .react-flow__node[aria-selected="true"]');
+  return selected?.getBoundingClientRect?.() || null;
+}
+
+function anchoredPosition(anchorRect, width = DESKTOP_WIDTH, height = DESKTOP_HEIGHT) {
+  if (!anchorRect) {
+    return clampPosition({ x: Math.max(24, window.innerWidth / 2 - width / 2), y: 84 }, width, height);
+  }
+
+  const candidates = [
+    {
+      side: 'right',
+      x: anchorRect.right + ANCHOR_GAP,
+      y: anchorRect.top,
+    },
+    {
+      side: 'left',
+      x: anchorRect.left - width - ANCHOR_GAP,
+      y: anchorRect.top,
+    },
+    {
+      side: 'bottom',
+      x: anchorRect.left,
+      y: anchorRect.bottom + ANCHOR_GAP,
+    },
+    {
+      side: 'top',
+      x: anchorRect.left,
+      y: anchorRect.top - height - ANCHOR_GAP,
+    },
+  ];
+
+  const fitsViewport = (candidate) => (
+    candidate.x >= VIEWPORT_MARGIN
+    && candidate.y >= VIEWPORT_MARGIN
+    && candidate.x + width <= window.innerWidth - VIEWPORT_MARGIN
+    && candidate.y + height <= window.innerHeight - VIEWPORT_MARGIN
+  );
+
+  const nonOverlapping = candidates.find((candidate) => {
+    if (!fitsViewport(candidate)) return false;
+    const popupRect = {
+      left: candidate.x,
+      top: candidate.y,
+      right: candidate.x + width,
+      bottom: candidate.y + height,
+    };
+    return !overlaps(popupRect, anchorRect);
+  });
+
+  if (nonOverlapping) return nonOverlapping;
+
+  const fallback = candidates
+    .map((candidate) => {
+      const clamped = clampPosition(candidate, width, height);
+      const popupRect = {
+        left: clamped.x,
+        top: clamped.y,
+        right: clamped.x + width,
+        bottom: clamped.y + height,
+      };
+      const overlapWidth = Math.max(0, Math.min(popupRect.right, anchorRect.right) - Math.max(popupRect.left, anchorRect.left));
+      const overlapHeight = Math.max(0, Math.min(popupRect.bottom, anchorRect.bottom) - Math.max(popupRect.top, anchorRect.top));
+      return { ...clamped, side: candidate.side, overlapArea: overlapWidth * overlapHeight };
+    })
+    .sort((a, b) => a.overlapArea - b.overlapArea)[0];
+
+  return fallback || clampPosition({ x: 24, y: 84 }, width, height);
 }
 
 export default function RelatedPassagePopup({ initialRef, onClose }) {
@@ -30,10 +117,12 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
   const [error, setError] = useState('');
   const [showParallelStudy, setShowParallelStudy] = useState(false);
   const [position, setPosition] = useState(() =>
-    clampPosition({ x: Math.max(24, window.innerWidth / 2 - 310), y: 84 }),
+    anchoredPosition(findSelectedCanvasRect()),
   );
+  const [manuallyPositioned, setManuallyPositioned] = useState(false);
   const dragRef = useRef(null);
   const contentRef = useRef(null);
+  const popupRef = useRef(null);
 
   const isSingleChapterSelection = firstChapter === lastChapter;
   const range = useMemo(() => {
@@ -78,13 +167,34 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
   }, [chapter, initialRef.bookId, range]);
 
   useEffect(() => {
+    if (isMobile || manuallyPositioned) return undefined;
+
+    const placeBesideSelection = () => {
+      const popupRect = popupRef.current?.getBoundingClientRect?.();
+      setPosition(anchoredPosition(
+        findSelectedCanvasRect(),
+        popupRect?.width || DESKTOP_WIDTH,
+        popupRect?.height || DESKTOP_HEIGHT,
+      ));
+    };
+
+    const frame = requestAnimationFrame(placeBesideSelection);
+    window.addEventListener('resize', placeBesideSelection);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('resize', placeBesideSelection);
+    };
+  }, [isMobile, initialRef, manuallyPositioned]);
+
+  useEffect(() => {
     if (isMobile) return undefined;
     const move = (event) => {
       if (!dragRef.current) return;
+      const popupRect = popupRef.current?.getBoundingClientRect?.();
       setPosition(clampPosition({
         x: event.clientX - dragRef.current.offsetX,
         y: event.clientY - dragRef.current.offsetY,
-      }));
+      }, popupRect?.width || DESKTOP_WIDTH, popupRect?.height || DESKTOP_HEIGHT));
     };
     const end = () => { dragRef.current = null; };
     window.addEventListener('pointermove', move);
@@ -112,41 +222,52 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
   return (
     <>
       <div
+        ref={popupRef}
         role="dialog"
         aria-modal={isMobile ? 'true' : 'false'}
         aria-label={`${initialRef.reference || referenceLabel} 본문`}
-        className={isMobile ? 'h-screen-safe mobile-reader-dialog' : undefined}
+        className={isMobile ? 'mobile-reader-dialog mobile-related-passage-sheet' : undefined}
         style={{
           position: 'fixed',
           left: isMobile ? 0 : position.x,
-          top: isMobile ? 0 : position.y,
+          top: isMobile ? 'auto' : position.y,
           right: isMobile ? 0 : undefined,
           bottom: isMobile ? 0 : undefined,
           zIndex: 2400,
-          width: isMobile ? '100%' : 'min(620px, calc(100vw - 24px))',
-          maxHeight: isMobile ? '100dvh' : 'min(72vh, 680px)',
+          width: isMobile ? '100%' : 'min(620px, calc(100vw - 32px))',
+          height: isMobile ? 'min(52dvh, 560px)' : undefined,
+          maxHeight: isMobile ? 'calc(100dvh - 72px)' : 'min(72vh, 680px)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          border: isMobile ? 'none' : '1.5px solid #2563eb',
-          borderRadius: isMobile ? 0 : 14,
+          border: isMobile ? '1px solid #bfdbfe' : '1.5px solid #2563eb',
+          borderBottom: isMobile ? 'none' : undefined,
+          borderRadius: isMobile ? '20px 20px 0 0' : 14,
           background: '#fff',
-          boxShadow: '0 18px 52px rgba(15,23,42,0.28)',
+          boxShadow: isMobile
+            ? '0 -16px 44px rgba(15,23,42,0.24)'
+            : '0 18px 52px rgba(15,23,42,0.28)',
           fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
         }}
       >
+        {isMobile && (
+          <div aria-hidden="true" style={{ display: 'flex', justifyContent: 'center', paddingTop: 8, background: '#dbeafe' }}>
+            <span style={{ width: 40, height: 4, borderRadius: 999, background: '#93c5fd' }} />
+          </div>
+        )}
         <div
           onPointerDown={(event) => {
             if (isMobile) return;
             if (event.button !== 0) return;
             const rect = event.currentTarget.parentElement.getBoundingClientRect();
             dragRef.current = { offsetX: event.clientX - rect.left, offsetY: event.clientY - rect.top };
+            setManuallyPositioned(true);
             event.currentTarget.setPointerCapture?.(event.pointerId);
           }}
           style={{
-            minHeight: isMobile ? 56 : 42,
+            minHeight: isMobile ? 52 : 42,
             padding: isMobile
-              ? 'calc(env(safe-area-inset-top, 0px) + 8px) 10px 8px 14px'
+              ? '6px 10px 8px 14px'
               : '7px 8px 7px 13px',
             display: 'flex',
             alignItems: 'center',
@@ -161,7 +282,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
         >
           <span>📖</span>
           <span style={{ flex: 1, fontSize: 12, fontWeight: 800 }}>
-            관련 성경 본문 · {initialRef.reference || referenceLabel}
+            교차 참조 · {initialRef.reference || referenceLabel}
           </span>
           {!isMobile && <span style={{ fontSize: 10, opacity: 0.62 }}>⋮⋮ 이동</span>}
           <button
@@ -170,7 +291,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
             onClick={onClose}
             aria-label="본문 팝업 닫기"
             style={{
-              width: isMobile ? 44 : 26, height: isMobile ? 44 : 26, padding: 0, display: 'grid', placeItems: 'center',
+              width: isMobile ? 40 : 26, height: isMobile ? 40 : 26, padding: 0, display: 'grid', placeItems: 'center',
               border: 'none', borderRadius: 7, background: 'rgba(255,255,255,0.8)',
               color: '#1d4ed8', cursor: 'pointer', fontSize: 18,
             }}
@@ -179,7 +300,7 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
           </button>
         </div>
 
-        <div style={{ padding: isMobile ? '12px 14px 0' : '10px 14px 0', background: '#fff' }}>
+        <div style={{ padding: isMobile ? '10px 14px 0' : '10px 14px 0', background: '#fff' }}>
           {!isSingleChapterSelection && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 9 }}>
               <button type="button" disabled={chapter <= firstChapter} onClick={() => setChapter((value) => value - 1)}>← 이전 장</button>
@@ -213,8 +334,8 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
               disabled={!resolvedVerseEnd}
               title="이 본문을 기준으로 공관복음·구약↔신약·인용·반향 본문을 비교"
               style={{
-                minHeight: isMobile ? 38 : 28,
-                padding: isMobile ? '6px 10px' : '4px 9px',
+                minHeight: isMobile ? 36 : 28,
+                padding: isMobile ? '5px 10px' : '4px 9px',
                 border: '1px solid #c4b5fd', borderRadius: 6,
                 background: '#f5f3ff', color: '#6d28d9', cursor: resolvedVerseEnd ? 'pointer' : 'default',
                 fontWeight: 800, fontSize: 11, opacity: resolvedVerseEnd ? 1 : .45,
@@ -243,13 +364,13 @@ export default function RelatedPassagePopup({ initialRef, onClose }) {
           data-annotation-root
           style={{
             padding: isMobile
-              ? '15px 17px calc(env(safe-area-inset-bottom, 0px) + 24px)'
+              ? '14px 17px calc(env(safe-area-inset-bottom, 0px) + 18px)'
               : '13px 16px 18px',
             flex: 1,
             overflow: 'auto',
             color: '#1e293b',
-            fontSize: isMobile ? 16 : 14,
-            lineHeight: isMobile ? 1.9 : 1.8,
+            fontSize: isMobile ? 15 : 14,
+            lineHeight: isMobile ? 1.85 : 1.8,
             userSelect: 'text',
             cursor: 'text',
             direction: activeTab === 'original' && isOT(initialRef.bookId) ? 'rtl' : 'ltr',
