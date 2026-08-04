@@ -39,22 +39,35 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   }, []);
 
   const commitSearchValue = useCallback((query) => {
-    setSuggestionQuery(query);
-    scheduleComparison(query);
+    const value = String(query || '');
+    setSuggestionQuery(value);
+    scheduleComparison(value);
   }, [scheduleComparison]);
 
-  const handleSearchInput = useCallback((event) => {
-    if (!isCanonicalConceptSearchInput(event.target)) return;
-    if (event.nativeEvent?.isComposing) return;
-    commitSearchValue(event.target.value);
-  }, [commitSearchValue]);
+  useEffect(() => {
+    if (!open) return undefined;
 
-  const handleCompositionEnd = useCallback((event) => {
-    if (!isCanonicalConceptSearchInput(event.target)) return;
-    commitSearchValue(event.target.value);
-  }, [commitSearchValue]);
+    const handleInput = (event) => {
+      if (!isCanonicalConceptSearchInput(event.target) || event.isComposing) return;
+      commitSearchValue(event.target.value);
+    };
 
-  useEffect(() => () => clearTimeout(comparisonDebounceRef.current), []);
+    const handleCompositionEnd = (event) => {
+      if (!isCanonicalConceptSearchInput(event.target)) return;
+      commitSearchValue(event.target.value);
+    };
+
+    // 검색창은 document.body에 portal로 렌더링되므로 DOM 단계에서 직접 수신한다.
+    // capture를 사용하지 않아 검색 입력·포커스 흐름에는 개입하지 않는다.
+    document.addEventListener('input', handleInput);
+    document.addEventListener('compositionend', handleCompositionEnd);
+
+    return () => {
+      document.removeEventListener('input', handleInput);
+      document.removeEventListener('compositionend', handleCompositionEnd);
+      clearTimeout(comparisonDebounceRef.current);
+    };
+  }, [open, commitSearchValue]);
 
   useModalDialog({
     dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
@@ -103,11 +116,9 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
       {open && (
         <>
-          <div onInput={handleSearchInput} onCompositionEnd={handleCompositionEnd}>
-            <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
-              <CanonicalConceptStaticSearchEntry onClose={closeModal} />
-            </Suspense>
-          </div>
+          <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
+            <CanonicalConceptStaticSearchEntry onClose={closeModal} />
+          </Suspense>
           <CanonicalSemanticComparisonPanel query={comparisonQuery} />
           <CanonicalConceptSuggestionPanel query={suggestionQuery} />
         </>
