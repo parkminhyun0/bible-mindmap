@@ -116,6 +116,8 @@ jobs:
       - name: Copy landing pages to dist root
         run: |
           cp -r landing/. dist/
+          node scripts/inject-landing-data-sources.mjs
+          grep -q 'id="data-sources"' dist/index.html
           touch dist/.nojekyll
 
       - uses: actions/upload-pages-artifact@v3
