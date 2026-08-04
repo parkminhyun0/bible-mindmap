@@ -1,5 +1,6 @@
 import { expect, test } from 'playwright/test';
 
+// 공통 연구 흐름 계약: 상세 종료는 전체 도구 종료가 아니라 직전 검색 단계 복귀를 우선한다.
 test('정경 추적 상세에서 검색 상태를 유지한 채 돌아간다', async ({ page }) => {
   await page.goto('./');
 
