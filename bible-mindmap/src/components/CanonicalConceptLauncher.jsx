@@ -6,7 +6,7 @@ import {
   runCanonicalConceptShadowBridge,
 } from '../search/canonicalConceptShadowBridge';
 
-const CanonicalConceptModal = lazy(() => import('./CanonicalConceptModal'));
+const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
@@ -21,9 +21,9 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const shadowDebounceRef = useRef(null);
   const closeModal = useCallback(() => setOpen(false), []);
 
-  // P1-2d-b: 서버가 승인한 관리자 shadow 세션이 있을 때만 검색을 병행한다.
+  // 선택 기능으로 보존된 P1-2d-b 서버 shadow bridge.
   // GitHub Pages에는 runtime bootstrap이 없으므로 요청 자체가 발생하지 않는다.
-  // shadow 결과는 화면에 노출하지 않고 기존 keyword 필터가 계속 단일 사용자 결과다.
+  // 일반 사용자 검색은 CanonicalConceptStaticSearchEntry의 정적 로컬 검색만 사용한다.
   useEffect(() => {
     if (!open) return undefined;
     const onInput = (event) => {
@@ -41,9 +41,6 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     };
   }, [open]);
 
-  // CanonicalConceptModal keeps ownership of Escape so its nested sequence
-  // remains VersePreviewPopup -> LexiconPopup -> parent modal. The shared hook
-  // still owns initial focus, Tab containment, focus restoration and scroll lock.
   useModalDialog({
     dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
     onClose: closeModal,
@@ -90,8 +87,8 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       </button>
 
       {open && (
-        <Suspense fallback={<div className="deferred-feature-loading">정경 추적 개념을 불러오는 중…</div>}>
-          <CanonicalConceptModal onClose={closeModal} />
+        <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
+          <CanonicalConceptStaticSearchEntry onClose={closeModal} />
         </Suspense>
       )}
     </>
