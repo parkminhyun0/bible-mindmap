@@ -7,6 +7,8 @@ export const NVIDIA_RERANKER_MODEL_POLICIES = Object.freeze([
     selfHostedEndpoint: '/ranking',
     maxPassagesPerRequest: 50,
     truncate: 'NONE',
+    evaluationAllowed: true,
+    productionEligible: false,
     source: 'https://build.nvidia.com/explore/retrieval',
     apiReference: 'https://docs.nvidia.com/nim/nemo-retriever/text-reranking/latest/use-the-api-openai.html',
     hostedApiReference: 'https://docs.nvidia.com/nemo/retriever/26.5.0/reference/retriever-cli-quickstart/',
@@ -14,6 +16,17 @@ export const NVIDIA_RERANKER_MODEL_POLICIES = Object.freeze([
 ]);
 
 export const DEFAULT_NVIDIA_RERANKER_MODEL_ID = 'nvidia/llama-nemotron-rerank-1b-v2';
+
+export const NVIDIA_RERANKER_EVALUATION_DECISION = Object.freeze({
+  runId: 30865836689,
+  status: 'hold-production',
+  selectedPipeline: 'nvidia-hybrid-2048',
+  evaluatedModel: DEFAULT_NVIDIA_RERANKER_MODEL_ID,
+  evidencePath: 'docs/evidence/nvidia-reranker-poc-30865836689.json',
+  productionRerankerActivated: false,
+  requiresFutureReevaluationForActivation: true,
+  reason: 'The real hosted reranker regressed recall, nDCG, hard-negative control, multi-hop retrieval, and latency versus the audited 2048-dimensional Hybrid baseline.',
+});
 
 export function resolveNvidiaRerankerModelPolicy({ modelId } = {}) {
   const normalizedModelId = (modelId || DEFAULT_NVIDIA_RERANKER_MODEL_ID).trim();

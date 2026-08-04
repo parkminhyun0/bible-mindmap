@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs';
 import { buildHybridIndex } from './ai/retrieval/hybrid-search.mjs';
 import {
   createProductionIndexManifest,
@@ -12,12 +13,14 @@ import {
 import { createNvidiaReranking } from './ai/providers/nvidia-reranker.mjs';
 import {
   DEFAULT_NVIDIA_RERANKER_MODEL_ID,
+  NVIDIA_RERANKER_EVALUATION_DECISION,
   resolveNvidiaRerankerEndpoint,
   resolveNvidiaRerankerModelPolicy,
 } from './ai/poc/nvidia-reranker-model-policy.mjs';
 
 const errors = [];
 const assert = (condition, message) => { if (!condition) errors.push(message); };
+const approximatelyEqual = (left, right, tolerance = 1e-12) => Math.abs(left - right) <= tolerance;
 
 const candidates = [
   {
@@ -108,6 +111,8 @@ const hostedEndpoint = 'https://ai.api.nvidia.com/v1/retrieval/nvidia/llama-nemo
 assert(policy.id === DEFAULT_NVIDIA_RERANKER_MODEL_ID, 'default reranker model mismatch');
 assert(policy.hostedEndpoint === hostedEndpoint, 'hosted Build API reranker endpoint mismatch');
 assert(policy.selfHostedEndpoint === '/ranking', 'self-hosted NIM endpoint must remain /ranking');
+assert(policy.evaluationAllowed === true, 'reranker must remain available for controlled evaluation');
+assert(policy.productionEligible === false, 'real evaluation must keep reranker ineligible for production');
 assert(resolveNvidiaRerankerEndpoint({ env: {} }) === hostedEndpoint, 'hosted endpoint must be the safe default');
 assert(
   resolveNvidiaRerankerEndpoint({ env: { NVIDIA_RERANKER_URL: 'https://example.invalid/v1/ranking/' } })
@@ -116,6 +121,40 @@ assert(
 );
 assert(policy.truncate === 'NONE', 'verified corpus reranking must fail rather than silently truncate');
 assert(policy.maxPassagesPerRequest === RERANKER_CONTRACT_LIMITS.maxCandidates, 'provider and contract passage limits must match');
+
+const evidence = JSON.parse(readFileSync(
+  new URL('../docs/evidence/nvidia-reranker-poc-30865836689.json', import.meta.url),
+  'utf8',
+));
+assert(evidence.schemaVersion === 1 && evidence.stage === 'P1-2b', 'reranker evidence identity mismatch');
+assert(evidence.run?.id === NVIDIA_RERANKER_EVALUATION_DECISION.runId, 'reranker decision run mismatch');
+assert(evidence.run?.headSha === '85fd373265bb175f32db07e1b74d3b83f4aec490', 'reranker evidence head SHA mismatch');
+assert(evidence.artifact?.id === 8876054507, 'reranker evidence artifact ID mismatch');
+assert(
+  evidence.artifact?.digest === 'sha256:a80450fc6c7d22aa8d1095458a5158d638c0e0006a8282a644dbba9b1f6105e9',
+  'reranker evidence artifact digest mismatch',
+);
+assert(evidence.corpus?.documents === 12 && evidence.corpus?.cases === 16, 'reranker evidence corpus mismatch');
+assert(evidence.usage?.rerankerRequests === 16, 'reranker evidence request count mismatch');
+assert(approximatelyEqual(evidence.baseline?.recallAt3, 1), 'Hybrid baseline Recall@3 mismatch');
+assert(approximatelyEqual(evidence.baseline?.ndcgAt3, 0.9949825493217617), 'Hybrid baseline nDCG@3 mismatch');
+assert(approximatelyEqual(evidence.baseline?.hardNegativeRate, 0.1875), 'Hybrid baseline hard-negative mismatch');
+assert(approximatelyEqual(evidence.candidate?.recallAt3, 0.96875), 'reranker Recall@3 mismatch');
+assert(approximatelyEqual(evidence.candidate?.ndcgAt3, 0.9758216995478411), 'reranker nDCG@3 mismatch');
+assert(approximatelyEqual(evidence.candidate?.hardNegativeRate, 0.25), 'reranker hard-negative mismatch');
+assert(approximatelyEqual(evidence.candidate?.segments?.multiHop?.recallAt3, 0.8333333333333334), 'reranker multi-hop Recall@3 mismatch');
+assert(evidence.candidate?.failureRate === 0, 'hosted reranker request failures must remain zero in the decision evidence');
+assert(evidence.comparison?.endpointAndResponseSucceeded === true, 'reranker decision requires a valid hosted response');
+assert(evidence.comparison?.qualityGatePassed === false, 'reranker quality gate must remain failed');
+assert(evidence.candidate?.recallAt3 < evidence.baseline?.recallAt3, 'decision evidence must preserve Recall regression');
+assert(evidence.candidate?.ndcgAt3 < evidence.baseline?.ndcgAt3, 'decision evidence must preserve nDCG regression');
+assert(evidence.candidate?.hardNegativeRate > evidence.baseline?.hardNegativeRate, 'decision evidence must preserve hard-negative regression');
+assert(evidence.candidate?.p95LatencyMs > evidence.baseline?.p95LatencyMs, 'decision evidence must preserve latency regression');
+assert(NVIDIA_RERANKER_EVALUATION_DECISION.status === 'hold-production', 'reranker decision must remain hold-production');
+assert(NVIDIA_RERANKER_EVALUATION_DECISION.selectedPipeline === 'nvidia-hybrid-2048', 'Hybrid-only must remain the selected pipeline');
+assert(NVIDIA_RERANKER_EVALUATION_DECISION.productionRerankerActivated === false, 'reranker must not be activated in production');
+assert(evidence.decision?.productionRerankerActivated === false, 'evidence must record no production activation');
+assert(evidence.decision?.productionIndexChanged === false && evidence.decision?.existingDbModified === false, 'evaluation must not mutate production data');
 
 let capturedUrl = '';
 let capturedBody = null;
@@ -158,6 +197,6 @@ if (errors.length) {
 
 console.log(
   `✓ NVIDIA reranker contract verified · model ${DEFAULT_NVIDIA_RERANKER_MODEL_ID} · `
-  + `hosted endpoint isolated · shortlist ${RERANKER_CONTRACT_LIMITS.maxCandidates} · `
-  + `production dimension ${PRODUCTION_INDEX_CONTRACT.dimension} · no activation`,
+  + `run ${NVIDIA_RERANKER_EVALUATION_DECISION.runId} · ${NVIDIA_RERANKER_EVALUATION_DECISION.status} · `
+  + `selected ${NVIDIA_RERANKER_EVALUATION_DECISION.selectedPipeline} · no production activation`,
 );

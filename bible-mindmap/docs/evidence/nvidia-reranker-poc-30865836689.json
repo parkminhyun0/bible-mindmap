@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "stage": "P1-2b",
+  "run": {
+    "id": 30865836689,
+    "url": "https://github.com/parkminhyun0/bible-mindmap/actions/runs/30865836689",
+    "workflow": "NVIDIA Reranker PoC",
+    "headBranch": "main",
+    "headSha": "85fd373265bb175f32db07e1b74d3b83f4aec490",
+    "generatedAt": "2026-08-04T00:31:47.379Z"
+  },
+  "models": {
+    "embedding": "nvidia/llama-nemotron-embed-1b-v2",
+    "embeddingDimensions": 2048,
+    "reranker": "nvidia/llama-nemotron-rerank-1b-v2"
+  },
+  "corpus": {
+    "revision": "canonical-audit-v2",
+    "documents": 12,
+    "sourceRefs": 36,
+    "cases": 16,
+    "hardNegatives": 16,
+    "queryTypes": ["direct", "semantic", "multi-hop"]
+  },
+  "artifact": {
+    "id": 8876054507,
+    "name": "nvidia-reranker-poc-30865836689-1",
+    "digest": "sha256:a80450fc6c7d22aa8d1095458a5158d638c0e0006a8282a644dbba9b1f6105e9",
+    "sizeBytes": 3625,
+    "expiresAt": "2026-09-03T00:31:47Z"
+  },
+  "usage": {
+    "embeddingTokens": 1029,
+    "rerankerTokens": 14788,
+    "combinedTokens": 15817,
+    "rerankerRequests": 16,
+    "rerankerCandidateCountPerRequest": 12
+  },
+  "baseline": {
+    "pipeline": "nvidia-hybrid-2048",
+    "recallAt3": 1,
+    "mrr": 1,
+    "ndcgAt3": 0.9949825493217617,
+    "hardNegativeRate": 0.1875,
+    "failureRate": 0,
+    "meanLatencyMs": 2.5309808125000046,
+    "p95LatencyMs": 15.847778000000062,
+    "segments": {
+      "direct": {"recallAt3": 1, "mrr": 1, "ndcgAt3": 1, "hardNegativeRate": 0.2},
+      "semantic": {"recallAt3": 1, "mrr": 1, "ndcgAt3": 1, "hardNegativeRate": 0.25},
+      "multiHop": {"recallAt3": 1, "mrr": 1, "ndcgAt3": 0.9732402630493958, "hardNegativeRate": 0}
+    }
+  },
+  "candidate": {
+    "pipeline": "nvidia-hybrid-2048-plus-reranker",
+    "recallAt3": 0.96875,
+    "mrr": 1,
+    "ndcgAt3": 0.9758216995478411,
+    "hardNegativeRate": 0.25,
+    "failureRate": 0,
+    "meanLatencyMs": 214.73523362500006,
+    "p95LatencyMs": 277.9859529999999,
+    "segments": {
+      "direct": {"recallAt3": 1, "mrr": 1, "ndcgAt3": 1, "hardNegativeRate": 0.4},
+      "semantic": {"recallAt3": 1, "mrr": 1, "ndcgAt3": 1, "hardNegativeRate": 0.25},
+      "multiHop": {"recallAt3": 0.8333333333333334, "mrr": 1, "ndcgAt3": 0.8710490642551528, "hardNegativeRate": 0}
+    }
+  },
+  "comparison": {
+    "recallDelta": -0.03125,
+    "mrrDelta": 0,
+    "ndcgDelta": -0.0191608497739206,
+    "hardNegativeRateDelta": 0.0625,
+    "multiHopRecallDelta": -0.16666666666666663,
+    "p95LatencyIncreaseMs": 262.13817499999984,
+    "p95LatencyMultiplier": 17.54095881241786,
+    "qualityGatePassed": false,
+    "endpointAndResponseSucceeded": true
+  },
+  "decision": {
+    "selectedPipeline": "nvidia-hybrid-2048",
+    "rerankerStatus": "hold-production",
+    "reason": "The hosted reranker completed without request failures but regressed overall recall, nDCG, hard-negative control, multi-hop retrieval, and latency compared with the audited 2048-dimensional Hybrid baseline.",
+    "reviewStatus": "approved-as-non-adoption-evaluation-policy",
+    "reviewedAt": "2026-08-04",
+    "requiresFutureReevaluationForActivation": true,
+    "productionRerankerActivated": false,
+    "productionIndexChanged": false,
+    "existingDbModified": false
+  },
+  "notes": {
+    "baselineLatencyScope": "Hybrid retrieval and local ranking after embeddings were produced.",
+    "candidateLatencyScope": "Hybrid retrieval plus one hosted reranker request per evaluation case.",
+    "artifactRetention": "GitHub artifact expires after 30 days; this evidence file preserves the audited metrics and digest."
+  }
+}
