@@ -1,0 +1,40 @@
+name: Korean Query Approval Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/ai-evaluation/korean-query-approvals.json'
+      - 'bible-mindmap/scripts/ai/evaluation/korean-query-candidates.mjs'
+      - 'bible-mindmap/scripts/ai/evaluation/promote-approved-korean-queries.mjs'
+      - 'bible-mindmap/scripts/verify-korean-query-approval-gate.mjs'
+      - '.github/workflows/korean-query-approval-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-approval-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Verify approval promotion rules
+        run: node scripts/verify-korean-query-approval-gate.mjs
+      - name: Build approved Shadow-only fixture
+        run: |
+          node scripts/ai/evaluation/promote-approved-korean-queries.mjs \
+            --manifest=data/ai-evaluation/korean-query-approvals.json \
+            --output-dir=.artifacts/korean-query-approval
+      - name: Upload approval evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: korean-query-approval-evidence
+          path: bible-mindmap/.artifacts/korean-query-approval
+          retention-days: 30
