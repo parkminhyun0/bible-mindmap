@@ -27,15 +27,17 @@ jobs:
         working-directory: bible-mindmap
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 20
           cache: npm
           cache-dependency-path: bible-mindmap/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - name: Build Strong and lexicon definitions
+        run: npm run build:lexicon
       - name: Verify canonical concepts and references
         run: node scripts/verify-canonical-concepts.mjs
       - name: Verify concept and usage-map completeness
