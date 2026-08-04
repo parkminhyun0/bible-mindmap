@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "batchId": "korean-query-review-batch-001",
+  "createdOn": "2026-08-04",
+  "selectionPolicy": "balanced-query-type-and-style-v1",
+  "reviewStatus": "pending-human-review",
+  "requiresHumanDecision": true,
+  "autoApprove": false,
+  "productionSearchConnected": false,
+  "candidateIds": [
+    "covenant-direct.question",
+    "priest-direct.pastoral",
+    "shepherd-direct.short-search",
+    "light-direct.question",
+    "rock-water-semantic.pastoral",
+    "incense-semantic.short-search",
+    "firstfruits-semantic.question",
+    "wings-semantic.pastoral",
+    "royal-priest-multihop.short-search",
+    "lamb-blood-multihop.question",
+    "word-light-multihop.pastoral",
+    "seed-serpent-multihop.short-search"
+  ]
+}
