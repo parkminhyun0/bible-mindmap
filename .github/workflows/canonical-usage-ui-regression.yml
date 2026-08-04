@@ -1,0 +1,53 @@
+name: Canonical usage UI regression
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/tests/canonical-usage-map.spec.js'
+      - 'bible-mindmap/src/components/CanonicalConcept*.jsx'
+      - 'bible-mindmap/src/data/canonicalConcepts*.js'
+      - 'bible-mindmap/src/data/canonicalUsageMap*.js'
+      - '.github/workflows/canonical-usage-ui-regression.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'bible-mindmap/tests/canonical-usage-map.spec.js'
+      - 'bible-mindmap/src/components/CanonicalConcept*.jsx'
+      - 'bible-mindmap/src/data/canonicalConcepts*.js'
+      - 'bible-mindmap/src/data/canonicalUsageMap*.js'
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-usage-ui:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Strong and lexicon definitions
+        run: npm run build:lexicon
+      - name: Install Chromium
+        run: npx playwright install chromium --with-deps
+      - name: Run Tier6-Tier11 canonical usage UI regression
+        run: npx playwright test tests/canonical-usage-map.spec.js --project=chromium
+      - name: Upload Playwright evidence
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: canonical-usage-ui-failure
+          path: |
+            bible-mindmap/playwright-report
+            bible-mindmap/test-results
+          if-no-files-found: ignore
