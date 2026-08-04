@@ -12,6 +12,7 @@ const requiredFiles = [
   'nvidia-embedding-poc.yml',
   'nvidia-embedding-dimension-bakeoff.yml',
   'nvidia-reranker-poc.yml',
+  'nvidia-hybrid-shadow-index.yml',
 ];
 
 const workflowEntries = fs.existsSync(WORKFLOW_DIR)
@@ -54,7 +55,13 @@ if (!deploy.includes('npm run verify:dependency-integrity')) errors.push('deploy
 if (!deploy.includes('npm run test:smoke')) errors.push('deploy.yml must run the unified browser smoke suite');
 if (!deploy.includes('npm run verify:deploy')) errors.push('deploy.yml must verify the live deployment');
 
-for (const name of ['nvidia-embedding-poc.yml', 'nvidia-embedding-dimension-bakeoff.yml', 'nvidia-reranker-poc.yml']) {
+const nvidiaWorkflows = [
+  'nvidia-embedding-poc.yml',
+  'nvidia-embedding-dimension-bakeoff.yml',
+  'nvidia-reranker-poc.yml',
+  'nvidia-hybrid-shadow-index.yml',
+];
+for (const name of nvidiaWorkflows) {
   const source = fs.readFileSync(path.join(WORKFLOW_DIR, name), 'utf8');
   if (!/^\s*workflow_dispatch:/m.test(source)) errors.push(`${name}: NVIDIA execution must remain manual`);
   if (/^\s*(push|pull_request|schedule):/m.test(source)) errors.push(`${name}: NVIDIA execution must not run automatically`);
@@ -67,6 +74,13 @@ if (!reranker.includes('NVIDIA_EMBEDDING_DIMENSIONS: \'2048\'')) errors.push('re
 if (!reranker.includes('nvidia/llama-nemotron-rerank-1b-v2')) errors.push('reranker PoC approved model is missing');
 if (!reranker.includes('--require-pass')) errors.push('reranker PoC must enforce its quality gate after report generation');
 if (!reranker.includes('if: always()')) errors.push('reranker PoC must preserve its report even when the quality gate fails');
+
+const shadow = fs.readFileSync(path.join(WORKFLOW_DIR, 'nvidia-hybrid-shadow-index.yml'), 'utf8');
+if (!shadow.includes('NVIDIA_EMBEDDING_DIMENSIONS: \'2048\'')) errors.push('shadow index must use the audited 2048 dimensions');
+if (!shadow.includes('verify:nvidia-hybrid-shadow-index')) errors.push('shadow index workflow must verify its contract before execution');
+if (!shadow.includes('--require-pass')) errors.push('shadow index workflow must enforce its quality gate');
+if (!shadow.includes('if: always()')) errors.push('shadow index workflow must preserve artifacts after a failed gate');
+if (!shadow.includes('reports/nvidia-hybrid-shadow-index')) errors.push('shadow index workflow must keep artifacts outside live app assets');
 
 if (warnings.length) {
   console.warn(`⚠ workflow security warnings (${warnings.length})`);
