@@ -27,7 +27,7 @@ export const SHADOW_EVALUATION_CASES = Object.freeze([
   freezeCase({ id: 'lampstand-semantic', query: '기름을 공급받아 성소와 세상 가운데 지속적으로 빛을 비추는 등대', relevantIds: ['canonical.lampstand'], hardNegativeIds: ['canonical.light'], metadata: { queryType: 'semantic' } }),
 
   freezeCase({ id: 'royal-priest-multihop', query: '영원한 왕이면서 동시에 백성을 위해 중보하는 제사장으로 나타나는 흐름', relevantIds: ['canonical.king', 'canonical.priest'], hardNegativeIds: ['canonical.throne'], metadata: { queryType: 'multi-hop' } }),
-  freezeCase({ id: 'lamb-sacrifice-multihop', query: '유월절 어린양과 속죄 제사가 단번에 드려진 희생으로 성취되는 흐름', relevantIds: ['canonical.lamb', 'canonical.sacrifice'], hardNegativeIds: ['canonical.firstborn'], metadata: { queryType: 'multi-hop' } }),
+  freezeCase({ id: 'lamb-blood-multihop', query: '유월절 어린양의 피가 심판을 넘어가게 하고 새 언약의 속죄로 성취되는 흐름', relevantIds: ['canonical.lamb', 'canonical.blood'], hardNegativeIds: ['canonical.firstborn'], metadata: { queryType: 'multi-hop' } }),
   freezeCase({ id: 'word-light-multihop', query: '태초의 말씀이 생명과 빛으로 어둠 속에 비추는 계시의 흐름', relevantIds: ['canonical.word', 'canonical.light'], hardNegativeIds: ['canonical.luminary'], metadata: { queryType: 'multi-hop' } }),
   freezeCase({ id: 'seed-serpent-multihop', query: '여자의 후손이 뱀의 머리를 상하게 하며 오래된 원수를 이기는 약속', relevantIds: ['canonical.seed', 'canonical.serpent'], hardNegativeIds: ['canonical.thorns'], metadata: { queryType: 'multi-hop' } }),
   freezeCase({ id: 'river-tree-multihop', query: '성전에서 흐르는 생명수가 마지막 도성의 생명나무를 살리는 장면', relevantIds: ['canonical.river', 'canonical.tree_of_life'], hardNegativeIds: ['canonical.fountain'], metadata: { queryType: 'multi-hop' } }),
