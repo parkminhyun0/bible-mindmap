@@ -20,25 +20,34 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   const [comparisonQuery, setComparisonQuery] = useState('');
   const isMobile = useMobile();
   const isRail = variant === 'rail';
-  const shadowDebounceRef = useRef(null);
+  const comparisonDebounceRef = useRef(null);
 
   const closeModal = useCallback(() => {
-    clearTimeout(shadowDebounceRef.current);
+    clearTimeout(comparisonDebounceRef.current);
     setOpen(false);
     setComparisonQuery('');
   }, []);
 
-  const handleSearchInput = useCallback((event) => {
-    if (!isCanonicalConceptSearchInput(event.target)) return;
-    const query = event.target.value;
-    setComparisonQuery(query);
-    clearTimeout(shadowDebounceRef.current);
-    shadowDebounceRef.current = setTimeout(() => {
+  const scheduleComparison = useCallback((query) => {
+    clearTimeout(comparisonDebounceRef.current);
+    comparisonDebounceRef.current = setTimeout(() => {
+      setComparisonQuery(query);
       runCanonicalConceptShadowBridge({ query }).catch(() => {});
-    }, 450);
+    }, 700);
   }, []);
 
-  useEffect(() => () => clearTimeout(shadowDebounceRef.current), []);
+  const handleSearchInput = useCallback((event) => {
+    if (!isCanonicalConceptSearchInput(event.target)) return;
+    if (event.nativeEvent?.isComposing) return;
+    scheduleComparison(event.target.value);
+  }, [scheduleComparison]);
+
+  const handleCompositionEnd = useCallback((event) => {
+    if (!isCanonicalConceptSearchInput(event.target)) return;
+    scheduleComparison(event.target.value);
+  }, [scheduleComparison]);
+
+  useEffect(() => () => clearTimeout(comparisonDebounceRef.current), []);
 
   useModalDialog({
     dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
@@ -87,7 +96,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
       {open && (
         <>
-          <div onInput={handleSearchInput} onCompositionEnd={handleSearchInput}>
+          <div onInput={handleSearchInput} onCompositionEnd={handleCompositionEnd}>
             <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
               <CanonicalConceptStaticSearchEntry onClose={closeModal} />
             </Suspense>
