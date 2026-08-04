@@ -4,6 +4,7 @@ import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDe
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
+import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 
 /**
  * 원어 단어 어형 분석 카드.
@@ -11,22 +12,23 @@ import useMobile from '../hooks/useMobile';
  *   entry     = { w, tr, s, m, l, g }  (word / transliteration / strong / morph / lemma / gloss)
  *   anchor    = { x, y }               팝업이 등장할 화면 좌표
  *   bookId    = string                  현재 구절의 책 ID (용례 검색 범위)
+ *   passage   = { bookId, chapter, verseStart, verseEnd } 원래 연구 위치
  *   onClose
  *   onAddVerse(ref)                     용례에서 "+ 추가" 클릭 시 호출
  */
-export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex }) {
+export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
   const isMobile = useMobile();
   const [tab, setTab] = useState('def'); // 'def' | 'usage'
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
+  const [researchActive, setResearchActive] = useState(false);
 
   const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
   const [usageLoading, setUsageLoading] = useState(false);
   const [usageError, setUsageError] = useState('');
 
-  // 사전 정의 로드
   useEffect(() => {
     if (!entry?.s) return;
     let cancelled = false;
@@ -40,7 +42,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
     return () => { cancelled = true; };
   }, [entry?.s]);
 
-  // 탭 전환 시 용례 로드
   useEffect(() => {
     if (tab !== 'usage' || usages !== null) return;
     if (!entry?.s || !bookId) { setUsages([]); return; }
@@ -58,28 +59,28 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
     return () => { cancelled = true; };
   }, [tab, entry?.s, bookId, usages]);
 
-  // entry 바뀌면 탭/용례 리셋
   useEffect(() => {
     setTab('def');
     setUsages(null);
     setUsageError('');
+    setResearchActive(false);
   }, [entry?.s]);
 
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e) => {
+      if (e.key === 'Escape' && !researchActive) onClose();
+    };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [onClose]);
+  }, [onClose, researchActive]);
 
-  // ── 드래그 ──────────────────────────────────────────────────────────────
-  const dragState = useRef(null); // { startMouseX, startMouseY, startLeft, startTop }
+  const dragState = useRef(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
-  // entry 바뀌면 드래그 위치 리셋
   useEffect(() => { setDragOffset({ x: 0, y: 0 }); }, [entry?.s]);
 
   const onDragStart = (e) => {
-    if (isMobile) return;
+    if (isMobile || researchActive) return;
     if (e.button !== 0) return;
     e.preventDefault();
     dragState.current = { startMouseX: e.clientX, startMouseY: e.clientY, startX: dragOffset.x, startY: dragOffset.y };
@@ -102,9 +103,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
 
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
-
-  // 데스크톱: 단어 바로 아래 앵커 · 뷰포트 클램프 · 드래그 오프셋
-  // 모바일: 하단 시트 스타일 (전체 폭, 화면 하단 부착, 최대 85dvh)
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
   const width = isMobile ? vw : 380;
@@ -114,22 +112,25 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
   const baseTop  = isMobile ? (vh - maxHeight) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - maxHeight - margin));
   const left = isMobile ? 0 : baseLeft + dragOffset.x;
   const top  = isMobile ? baseTop : baseTop + dragOffset.y;
+  const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
 
   return createPortal(
     <>
       {isMobile && (
-        <div onClick={onClose} style={{ position:'fixed',inset:0,
-          background:'rgba(15,23,42,.4)',zIndex:(zIndex ?? 2501) - 1 }} />
+        <div onClick={researchActive ? undefined : onClose} style={{ position:'fixed',inset:0,
+          background:'rgba(15,23,42,.4)',zIndex:resolvedZIndex - 1,
+          pointerEvents: researchActive ? 'none' : 'auto' }} />
       )}
       <div
         role="dialog"
         aria-modal={isMobile ? 'true' : 'false'}
         aria-label={`원어 사전 · ${entry.w || entry.tr || entry.s || ''}`}
+        aria-hidden={researchActive ? 'true' : undefined}
         className={isMobile ? 'momentum-scroll' : undefined}
         style={{
           position: 'fixed',
           left, top, width, maxHeight,
-          zIndex: zIndex ?? 2501,
+          zIndex: resolvedZIndex,
           background: '#fff',
           borderRadius: isMobile ? '16px 16px 0 0' : 10,
           boxShadow: isMobile ? '0 -8px 32px rgba(15,23,42,.24)' : '0 12px 40px rgba(0,0,0,0.25)',
@@ -138,13 +139,14 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
           display: 'flex', flexDirection: 'column',
           paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
-          // GPU 합성 힌트 (등장 트랜지션 부드럽게)
+          pointerEvents: researchActive ? 'none' : 'auto',
+          opacity: researchActive ? 0.72 : 1,
           willChange: 'transform, opacity',
           transform: 'translateZ(0)',
+          transition: 'opacity .16s ease',
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* 헤더 (드래그 핸들) */}
         <div
           onMouseDown={onDragStart}
           style={{
@@ -183,7 +185,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           >✕</button>
         </div>
 
-        {/* 메타 정보 */}
         <div style={{ padding: '10px 14px', borderBottom: '1px solid #f1f5f9', fontSize: 12 }}>
           {entry.s && (
             <MetaRow label="Strong's">
@@ -218,7 +219,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           )}
         </div>
 
-        {/* 탭 바 */}
         <div style={{
           display: 'flex', borderBottom: '1px solid #e2e8f0',
           background: '#f8fafc',
@@ -243,13 +243,9 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
           ))}
         </div>
 
-        {/* 콘텐츠 영역 */}
         <div style={{ overflowY: 'auto', flex: 1 }}>
-
-          {/* 사전 정의 탭 */}
           {tab === 'def' && (
             <div style={{ padding: '10px 14px' }}>
-              {/* 출처 배지 */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                 <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
                   {isHebrew ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
@@ -257,22 +253,16 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
                 {definition?.source && (
                   <span style={{
                     fontSize: 9, borderRadius: 3, padding: '1px 5px', fontWeight: 600,
-                    color:      definition.source === 'bdbt'  ? '#92400e' :
-                                definition.source === 'local' ? '#065f46' : '#1e40af',
-                    background: definition.source === 'bdbt'  ? '#fef3c7' :
-                                definition.source === 'local' ? '#d1fae5' : '#dbeafe',
+                    color: definition.source === 'bdbt' ? '#92400e' : definition.source === 'local' ? '#065f46' : '#1e40af',
+                    background: definition.source === 'bdbt' ? '#fef3c7' : definition.source === 'local' ? '#d1fae5' : '#dbeafe',
                   }}>
                     {definition.source === 'bdbt' ? 'BDB' : definition.source === 'local' ? "Strong's" : 'BibleHub'}
                   </span>
                 )}
               </div>
 
-              {defLoading && (
-                <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>
-              )}
-              {defError && (
-                <div style={{ color: '#ef4444', fontSize: 12 }}>⚠️ {defError}</div>
-              )}
+              {defLoading && <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>}
+              {defError && <div style={{ color: '#ef4444', fontSize: 12 }}>⚠️ {defError}</div>}
               {!defLoading && !defError && !definition && (
                 <div style={{ fontSize: 12, color: '#94a3b8' }}>
                   정의를 찾을 수 없습니다.{' '}
@@ -291,7 +281,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
                     className="lex-def"
                     dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.definition || '', isHebrew) }}
                   />
-                  {/* 항상 BibleHub 원문 링크 제공 */}
                   {entry.s && (
                     <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
                       <a
@@ -308,7 +297,6 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
             </div>
           )}
 
-          {/* 용례 탭 */}
           {tab === 'usage' && (
             <div style={{ padding: 0 }}>
               {!bookId && (
@@ -316,12 +304,8 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
                   구절 노드를 선택하면 해당 책에서의 용례를 볼 수 있습니다.
                 </div>
               )}
-              {usageLoading && (
-                <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>🔍 용례 검색 중…</div>
-              )}
-              {usageError && (
-                <div style={{ padding: '8px 14px', color: '#ef4444', fontSize: 12 }}>⚠️ {usageError}</div>
-              )}
+              {usageLoading && <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>🔍 용례 검색 중…</div>}
+              {usageError && <div style={{ padding: '8px 14px', color: '#ef4444', fontSize: 12 }}>⚠️ {usageError}</div>}
               {!usageLoading && Array.isArray(usages) && usages.length === 0 && !usageError && (
                 <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>
                   이 책에서 용례를 찾지 못했습니다.
@@ -349,10 +333,16 @@ export default function LexiconPopup({ entry, anchor, bookId, onClose, zIndex })
               )}
             </div>
           )}
-
         </div>
 
-        {/* footer */}
+        <OriginalLanguageResearchActions
+          entry={entry}
+          anchor={anchor}
+          passage={passage}
+          isHebrew={isHebrew}
+          onActiveChange={setResearchActive}
+        />
+
         <div style={{
           padding: '6px 14px', borderTop: '1px solid #e2e8f0',
           fontSize: 9, color: '#94a3b8', background: '#f8fafc',
@@ -383,7 +373,6 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
       borderBottom: '1px solid #f1f5f9',
       fontSize: 11,
     }}>
-      {/* 책명 + 장절 — 클릭 시 캔버스 추가 */}
       <span
         onClick={onAdd || undefined}
         title={onAdd ? `${koName} ${entry.ch}:${entry.v} 캔버스에 추가` : undefined}
@@ -399,7 +388,6 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
       >
         {koName} {entry.ch}:{entry.v}
       </span>
-      {/* 원문 단어 */}
       <span style={{
         flex: 1, minWidth: 0,
         fontFamily: isHebrew ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
@@ -408,7 +396,6 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
       }}>
         {entry.w}
       </span>
-      {/* 형태소 */}
       {entry.m && (
         <span style={{
           fontSize: 9, color: '#94a3b8', fontFamily: 'monospace',
@@ -418,7 +405,6 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
           {entry.m}
         </span>
       )}
-      {/* + 추가 버튼 */}
       {onAdd && (
         <button
           onClick={onAdd}
