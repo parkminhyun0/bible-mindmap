@@ -3,6 +3,12 @@ import { CANONICAL_CONCEPTS } from '../src/data/canonicalConcepts.js';
 import { CANONICAL_USAGE_MAP } from '../src/data/canonicalUsageMap.js';
 
 const TIERS = {
+  Pilot: ['seed', 'temple', 'covenant', 'blood', 'rest', 'glory'],
+  Tier1: ['kingdom', 'exodus', 'priest', 'lamb', 'king', 'shepherd'],
+  Tier2: ['image', 'land', 'word', 'light', 'serpent', 'judgment'],
+  Tier3: ['bride', 'mountain', 'wisdom', 'name', 'tree_of_life', 'wilderness'],
+  Tier4: ['lion', 'vine', 'breath', 'cup', 'babylon', 'sea'],
+  Tier5: ['fire', 'scroll', 'garment', 'bread', 'rock', 'dust'],
   Tier6: ['throne', 'mercy_seat', 'harvest', 'darkness', 'star', 'firstfruits'],
   Tier7: ['anointing', 'horn', 'firstborn', 'rain', 'incense', 'witness'],
   Tier8: ['cloud', 'trumpet', 'salt', 'redeemer', 'yoke', 'crown'],
@@ -12,6 +18,12 @@ const TIERS = {
 };
 
 const MOBILE_REPRESENTATIVES = [
+  'seed',
+  'kingdom',
+  'image',
+  'bride',
+  'lion',
+  'fire',
   'throne',
   'anointing',
   'cloud',
@@ -95,8 +107,8 @@ test.describe('모바일 정경 용례지도', () => {
     isMobile: true,
   });
 
-  test('Tier6~Tier11 대표 개념은 자료 추가 시트와 세로 스크롤 흐름을 보존한다', async ({ page }) => {
-    test.setTimeout(120_000);
+  test('Pilot~Tier11 대표 개념은 자료 추가 시트와 세로 스크롤 흐름을 보존한다', async ({ page }) => {
+    test.setTimeout(180_000);
     await page.goto('./');
     await page.getByRole('button', { name: '추가', exact: true }).click();
 
