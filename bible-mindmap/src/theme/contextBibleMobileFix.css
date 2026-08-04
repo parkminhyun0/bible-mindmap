@@ -11,6 +11,27 @@
     margin-top: 0 !important;
   }
 
+  /* 학습 스캐폴딩은 접힌 상태에서도 44px 탭 영역과 바깥 여백을 온전히 유지한다.
+     컴포넌트의 flexShrink:1 때문에 작은 화면에서 제목과 안내 버튼이 잘리던 문제를 방지한다. */
+  .at-modal--mobile.at-modal--context > div:has(button[data-context-onboarding-reopen]) {
+    flex: 0 0 auto !important;
+    min-height: 58px !important;
+    max-height: 40vh !important;
+    overflow: hidden !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .at-modal--mobile.at-modal--context > div:has(button[data-context-onboarding-reopen]) > div:first-child {
+    flex: 0 0 auto !important;
+    min-height: 44px !important;
+    align-items: center !important;
+  }
+
+  .at-modal--mobile.at-modal--context > div:has(button[data-context-onboarding-reopen]) > div:first-child > button {
+    min-height: 44px !important;
+  }
+
   /* 실제 본문 스크롤 래퍼만 남은 화면 높이를 차지한다. */
   .at-modal--mobile.at-modal--context > div:has(> .at-modal__content) {
     flex: 1 1 auto !important;
