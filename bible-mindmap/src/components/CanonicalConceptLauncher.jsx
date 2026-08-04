@@ -1,15 +1,27 @@
 import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
+import { CANONICAL_CONCEPTS } from '../data/canonicalConcepts.js';
 import { isCanonicalConceptSearchInput } from '../search/canonicalConceptShadowBridge';
 import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
 import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
+const SEARCH_INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
+
+function setCanonicalSearchValue(value) {
+  const input = document.querySelector(SEARCH_INPUT_SELECTOR);
+  if (!(input instanceof HTMLInputElement)) return false;
+  const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+  setter?.call(input, value);
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+  input.focus({ preventScroll: true });
+  input.setSelectionRange(value.length, value.length);
+  return true;
+}
 
 // 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
-// Pages deploy marker: 2026-08-05T02:24+09:00 — PR #151 portal query propagation release.
 
 /**
  * 정경 추적 · 핵심 개념 모달 런처.
@@ -44,6 +56,32 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     setSuggestionQuery(value);
     scheduleComparison(value);
   }, [scheduleComparison]);
+
+  const openCanonicalConcept = useCallback((conceptId) => {
+    const concept = CANONICAL_CONCEPTS[conceptId];
+    if (!concept?.labelKo) return;
+
+    const searchText = concept.labelKo;
+    setCanonicalSearchValue(searchText);
+    commitSearchValue(searchText);
+
+    const openResult = () => {
+      const label = `${concept.labelKo} 정경 여정 상세 열기`;
+      const button = [...document.querySelectorAll('button[aria-label$="정경 여정 상세 열기"]')]
+        .find((candidate) => candidate.getAttribute('aria-label') === label);
+      if (button instanceof HTMLButtonElement) {
+        button.focus({ preventScroll: true });
+        button.click();
+        return true;
+      }
+      return false;
+    };
+
+    requestAnimationFrame(() => {
+      if (openResult()) return;
+      requestAnimationFrame(openResult);
+    });
+  }, [commitSearchValue]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -120,7 +158,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
           <Suspense fallback={<div className="deferred-feature-loading">정경 추적 검색을 불러오는 중…</div>}>
             <CanonicalConceptStaticSearchEntry onClose={closeModal} />
           </Suspense>
-          <CanonicalSemanticComparisonPanel query={comparisonQuery} />
+          <CanonicalSemanticComparisonPanel query={comparisonQuery} onSelect={openCanonicalConcept} />
           <CanonicalConceptSuggestionPanel query={suggestionQuery} />
         </>
       )}
