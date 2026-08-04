@@ -1,0 +1,34 @@
+name: Temporary P1-2d verifier patch
+
+on:
+  push:
+    branches:
+      - chatgpt/p1-2d-production-pilot
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: chatgpt/p1-2d-production-pilot
+      - name: Integrate P1-2d verifier
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('bible-mindmap/scripts/verify-nvidia-hybrid-shadow-index.mjs')
+          text = path.read_text()
+          line = "import './verify-nvidia-hybrid-production-pilot.mjs';\n"
+          if not text.startswith(line):
+              path.write_text(line + text)
+          PY
+          rm .github/workflows/tmp-p1-2d-patch.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add bible-mindmap/scripts/verify-nvidia-hybrid-shadow-index.mjs .github/workflows/tmp-p1-2d-patch.yml
+          git commit -m "test(search): enforce P1-2d pilot safety in build gate"
+          git push origin HEAD:chatgpt/p1-2d-production-pilot
