@@ -122,7 +122,7 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <div>
             <div style={{ fontSize: 18, fontWeight: 800 }}>🧭 정경 추적 검색</div>
-            <div style={{ marginTop: 4, fontSize: 12, opacity: 0.78 }}>개념을 선택하기 전에 창세기부터 성취까지의 흐름을 미리 확인합니다.</div>
+            <div style={{ marginTop: 4, fontSize: 12, opacity: 0.78 }}>서버·AI 호출 없이 브라우저에서 검색합니다. 각 카드에서 정경 여정을 미리 확인할 수 있습니다.</div>
           </div>
           <button type="button" onClick={onClose} aria-label="닫기" style={{ minWidth: 44, minHeight: 44, border: 0, borderRadius: 10, background: 'rgba(255,255,255,.12)', color: '#fff', fontSize: 20, cursor: 'pointer' }}>×</button>
         </div>
