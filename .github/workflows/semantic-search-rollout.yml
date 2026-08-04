@@ -1,0 +1,37 @@
+name: Semantic Search Rollout Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/config/semanticSearchRollout.js'
+      - 'bible-mindmap/scripts/verify-semantic-search-rollout.mjs'
+      - '.github/workflows/semantic-search-rollout.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-rollout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+      - name: Install dependencies
+        working-directory: bible-mindmap
+        run: npm ci
+      - name: Verify provider boundary and rollout policy
+        working-directory: bible-mindmap
+        run: |
+          npm run verify:ai-provider-boundary
+          npm run verify:nvidia-embedding-model-policy
+          npm run verify:nvidia-hybrid-shadow-index
+          node scripts/verify-semantic-search-rollout.mjs
+      - name: Production build
+        working-directory: bible-mindmap
+        run: npm run build
