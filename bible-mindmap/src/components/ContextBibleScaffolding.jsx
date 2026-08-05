@@ -318,27 +318,28 @@ export function ContextBibleScaffoldingBar({
       display: 'flex',
       flexDirection: 'column',
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '2px 2px' }}>
+        {/* 라벨은 평범한 텍스트, 토글은 오른쪽의 작은 칩 버튼으로 분리 */}
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+          <span style={{ fontSize: 11, fontWeight: 800, color: '#92400e', whiteSpace: 'nowrap' }}>🎓 학습 스캐폴딩</span>
+          <span style={{ fontSize: 9, color: '#a16207', fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            {activeCourse ? `· 진행 중: ${activeCourse.title}` : '· 코스·렌즈·관찰 카드'}
+          </span>
+        </div>
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          aria-label={expanded ? '학습 스캐폴딩 접기' : '학습 스캐폴딩 펼치기'}
           style={{
-            flex: 1, display: 'flex', alignItems: 'center', gap: 6,
-            padding: expanded ? '5px 8px' : '7px 10px',
-            border: expanded ? 'none' : '1px solid #b91c1c',
-            background: expanded ? 'transparent' : '#dc2626',
-            cursor: 'pointer', fontSize: 11, fontWeight: 800,
-            color: expanded ? '#92400e' : '#ffffff',
-            borderRadius: 6, textAlign: 'left',
-            boxShadow: expanded ? 'none' : '0 1px 3px rgba(220,38,38,.35)',
+            flexShrink: 0, display: 'inline-flex', alignItems: 'center', gap: 3,
+            padding: '3px 9px', borderRadius: 999,
+            border: `1px solid ${expanded ? '#d1d5db' : '#dc2626'}`,
+            background: expanded ? '#f9fafb' : '#fef2f2',
+            color: expanded ? '#6b7280' : '#dc2626',
+            fontSize: 10.5, fontWeight: 700, cursor: 'pointer', lineHeight: 1.4,
           }}
-        >
-          <span>🎓 학습 스캐폴딩</span>
-          <span style={{ fontSize: 9, color: expanded ? '#a16207' : 'rgba(255,255,255,.85)', fontWeight: 600 }}>
-            {activeCourse ? `· 진행 중: ${activeCourse.title}` : '· 코스·렌즈·관찰 카드'}
-          </span>
-          <span style={{ marginLeft: 'auto', fontSize: expanded ? 10 : 11.5, fontWeight: expanded ? 500 : 800, color: expanded ? '#a16207' : '#ffffff' }}>{expanded ? '접기 ▲' : '펼치기 ▼'}</span>
-        </button>
+        >{expanded ? '접기 ▲' : '펼치기 ▼'}</button>
         {onReopenOnboarding && (
           <button
             type="button"
