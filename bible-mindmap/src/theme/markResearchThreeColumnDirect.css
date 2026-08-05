@@ -1,0 +1,145 @@
+@media (min-width: 901px) {
+  .mark-research-layout-test[data-mark-three-column-ready="true"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    grid-template-columns: none !important;
+  }
+
+  .mark-research-layout-test > .mark-direct-body-pane {
+    order: 1 !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 320px !important;
+    min-height: 0 !important;
+    overflow: auto !important;
+  }
+
+  .mark-research-layout-test > .mark-direct-first-divider {
+    order: 2 !important;
+    display: block !important;
+    width: 6px !important;
+    min-width: 6px !important;
+    flex: 0 0 6px !important;
+    cursor: col-resize !important;
+    touch-action: none !important;
+    background: linear-gradient(90deg, transparent, rgba(15,23,42,.12), transparent) !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .mark-research-layout-test > .mark-direct-observation-pane {
+    order: 3 !important;
+    min-width: 260px !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    position: relative !important;
+    inset: auto !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .mark-research-layout-test > .mark-research-second-divider {
+    order: 4 !important;
+    display: block !important;
+    width: 6px !important;
+    min-width: 6px !important;
+    flex: 0 0 6px !important;
+    cursor: col-resize !important;
+    touch-action: none !important;
+    background: linear-gradient(90deg, transparent, rgba(15,23,42,.12), transparent) !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+
+  .mark-research-layout-test > .mark-direct-first-divider:hover,
+  .mark-research-layout-test > .mark-research-second-divider:hover,
+  .mark-research-layout-test > .mark-direct-first-divider:focus-visible,
+  .mark-research-layout-test > .mark-research-second-divider:focus-visible {
+    background: #93c5fd !important;
+    outline: none !important;
+  }
+
+  .mark-research-layout-test > .mark-direct-research-pane {
+    order: 5 !important;
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    min-width: 280px !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: hidden !important;
+    border-radius: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+    z-index: 2 !important;
+  }
+
+  .mark-direct-research-pane .mark-research-close {
+    display: none !important;
+  }
+
+  #mark-research-reopen-test {
+    display: none !important;
+  }
+}
+
+[data-scaffolding-compact-shell="true"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 2px 2px 6px;
+  color: #92400e;
+}
+
+[data-scaffolding-compact-shell="true"] .scaffolding-compact-copy {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  overflow: hidden;
+}
+
+[data-scaffolding-compact-shell="true"] .scaffolding-compact-copy strong {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: #92400e;
+  white-space: nowrap;
+}
+
+[data-scaffolding-compact-shell="true"] .scaffolding-compact-copy span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #a16207;
+}
+
+[data-scaffolding-compact-shell="true"] .scaffolding-compact-toggle {
+  margin-left: auto;
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 4px 9px;
+  border: 1px solid #fbbf24;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #92400e;
+  font-size: 10.5px;
+  font-weight: 800;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 1px 2px rgba(146,64,14,.08);
+}
