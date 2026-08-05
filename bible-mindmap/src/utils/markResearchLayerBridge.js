@@ -91,6 +91,7 @@ function renderPanel(panel, chapter, modal) {
 
   panel.querySelector('.mark-research-source')?.addEventListener('click', () => sourceDialog(chapter, chapterData));
   panel.querySelector('.mark-research-close')?.addEventListener('click', () => {
+    if (!window.matchMedia('(max-width: 900px)').matches) return;
     modal.dataset.markResearchDismissed = 'true';
     detach(modal);
     ensureReopenButton(modal);
@@ -105,37 +106,50 @@ function renderPanel(panel, chapter, modal) {
   });
 }
 
-function installResize(layout, left, panel, right) {
-  if (layout.querySelector('.mark-research-divider')) return;
+function installResize(layout, left, panel, observation) {
+  if (!observation || layout.querySelector('.mark-research-divider')) return;
   left.classList.add('mark-research-left');
-  right?.classList.add('mark-research-right');
-  const makeDivider = (side) => {
+  observation.classList.add('mark-research-observation');
+
+  const makeDivider = (kind) => {
     const divider = document.createElement('div');
-    divider.className = 'mark-research-divider';
+    divider.className = `mark-research-divider mark-research-divider--${kind}`;
     divider.setAttribute('role', 'separator');
     divider.setAttribute('aria-orientation', 'vertical');
+    divider.tabIndex = 0;
     divider.addEventListener('pointerdown', (event) => {
+      if (window.matchMedia('(max-width: 900px)').matches) return;
       event.preventDefault();
       divider.setPointerCapture(event.pointerId);
       const rect = layout.getBoundingClientRect();
       const move = (e) => {
-        const x = Math.max(320, Math.min(rect.width - 320, e.clientX - rect.left));
-        if (side === 'left') layout.style.setProperty('--mark-left', `${x}px`);
-        else layout.style.setProperty('--mark-mid', `${Math.max(280, e.clientX - panel.getBoundingClientRect().left)}px`);
+        if (kind === 'body') {
+          const maxLeft = Math.max(360, rect.width - 640);
+          const leftWidth = Math.max(320, Math.min(maxLeft, e.clientX - rect.left));
+          layout.style.setProperty('--mark-left', `${leftWidth}px`);
+        } else {
+          const observationRect = observation.getBoundingClientRect();
+          const maxObservation = Math.max(320, rect.right - e.clientX - 300 + observationRect.width);
+          const observationWidth = Math.max(280, Math.min(maxObservation, e.clientX - observationRect.left));
+          layout.style.setProperty('--mark-observation', `${observationWidth}px`);
+        }
       };
       const up = () => {
         divider.removeEventListener('pointermove', move);
         divider.removeEventListener('pointerup', up);
+        divider.removeEventListener('pointercancel', up);
       };
       divider.addEventListener('pointermove', move);
       divider.addEventListener('pointerup', up);
+      divider.addEventListener('pointercancel', up);
     });
     return divider;
   };
-  const first = makeDivider('left');
-  const second = makeDivider('right');
-  layout.insertBefore(first, panel);
-  if (right) layout.insertBefore(second, right);
+
+  const bodyDivider = makeDivider('body');
+  const researchDivider = makeDivider('research');
+  layout.insertBefore(bodyDivider, observation);
+  layout.insertBefore(researchDivider, panel);
 }
 
 function ensureReopenButton(modal) {
@@ -164,15 +178,19 @@ function attach(modal) {
   layout.querySelector(`#${REOPEN_ID}`)?.remove();
   let panel = layout.querySelector(`#${PANEL_ID}`);
   if (!panel) {
+    const observation = [...layout.children].find((node) =>
+      node !== left && !node.classList.contains('mark-research-divider'),
+    );
+    if (!observation) return false;
+
     panel = document.createElement('section');
     panel.id = PANEL_ID;
     panel.className = 'mark-research-panel';
     panel.setAttribute('role', 'region');
     panel.setAttribute('aria-label', '본문 구조 연구');
-    const right = [...layout.children].find((node) => node !== left && !node.classList.contains('mark-research-divider'));
-    layout.insertBefore(panel, right || null);
+    layout.appendChild(panel);
     layout.classList.add(STYLE_CLASS);
-    installResize(layout, left, panel, right);
+    installResize(layout, left, panel, observation);
   }
   const chapter = activeChapter(modal);
   if (panel.dataset.chapter !== String(chapter)) {
@@ -188,7 +206,7 @@ function detach(modal) {
   panel?.remove();
   layout?.querySelectorAll('.mark-research-divider').forEach((node) => node.remove());
   layout?.classList.remove(STYLE_CLASS);
-  layout?.querySelectorAll('.mark-research-left,.mark-research-right').forEach((node) => node.classList.remove('mark-research-left', 'mark-research-right'));
+  layout?.querySelectorAll('.mark-research-left,.mark-research-observation').forEach((node) => node.classList.remove('mark-research-left', 'mark-research-observation'));
 }
 
 export function installMarkResearchLayerBridge() {
