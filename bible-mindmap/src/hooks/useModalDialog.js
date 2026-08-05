@@ -26,9 +26,22 @@ function focusableElements(dialog) {
   return Array.from(dialog.querySelectorAll(DIALOG_FOCUSABLE)).filter(isVisible);
 }
 
+function findHorizontalScroller(target, dialog) {
+  let node = target;
+  while (node && node !== dialog) {
+    if (node instanceof HTMLElement && node.scrollWidth > node.clientWidth + 1) {
+      const style = window.getComputedStyle(node);
+      if (/(auto|scroll|overlay)/.test(style.overflowX)) return node;
+    }
+    node = node.parentElement;
+  }
+  return null;
+}
+
 function lockDocumentScroll(dialog) {
   const body = document.body;
   const html = document.documentElement;
+
   if (scrollLockCount === 0) {
     const scrollX = window.scrollX;
     const scrollY = window.scrollY;
@@ -37,41 +50,90 @@ function lockDocumentScroll(dialog) {
 
     while (current && current !== body && current !== html) {
       const style = window.getComputedStyle(current);
-      const scrollable = /(auto|scroll|overlay)/.test(`${style.overflow} ${style.overflowY} ${style.overflowX}`)
-        || current.scrollHeight > current.clientHeight
-        || current.scrollWidth > current.clientWidth;
-      if (scrollable) {
+      const verticalScrollable = /(auto|scroll|overlay)/.test(`${style.overflow} ${style.overflowY}`)
+        || current.scrollHeight > current.clientHeight;
+
+      if (verticalScrollable) {
         ancestors.push({
           element: current,
           overflow: current.style.overflow,
-          overflowX: current.style.overflowX,
           overflowY: current.style.overflowY,
-          overscrollBehavior: current.style.overscrollBehavior,
+          overscrollBehaviorY: current.style.overscrollBehaviorY,
           scrollTop: current.scrollTop,
-          scrollLeft: current.scrollLeft,
         });
-        current.style.overflow = 'hidden';
-        current.style.overflowX = 'hidden';
         current.style.overflowY = 'hidden';
-        current.style.overscrollBehavior = 'none';
+        current.style.overscrollBehaviorY = 'none';
       }
       current = current.parentElement;
     }
 
+    const backdrop = dialog?.closest('.at-modal-backdrop');
+    const backdropSnapshot = backdrop ? {
+      element: backdrop,
+      position: backdrop.style.position,
+      inset: backdrop.style.inset,
+      top: backdrop.style.top,
+      left: backdrop.style.left,
+      right: backdrop.style.right,
+      bottom: backdrop.style.bottom,
+      width: backdrop.style.width,
+      height: backdrop.style.height,
+      minHeight: backdrop.style.minHeight,
+      maxHeight: backdrop.style.maxHeight,
+      overflow: backdrop.style.overflow,
+      transform: backdrop.style.transform,
+    } : null;
+
+    const syncViewport = () => {
+      if (!backdrop) return;
+      const viewport = window.visualViewport;
+      backdrop.style.position = 'fixed';
+      backdrop.style.inset = 'auto';
+      backdrop.style.left = `${viewport?.offsetLeft || 0}px`;
+      backdrop.style.top = `${viewport?.offsetTop || 0}px`;
+      backdrop.style.right = 'auto';
+      backdrop.style.bottom = 'auto';
+      backdrop.style.width = `${viewport?.width || window.innerWidth}px`;
+      backdrop.style.height = `${viewport?.height || window.innerHeight}px`;
+      backdrop.style.minHeight = backdrop.style.height;
+      backdrop.style.maxHeight = backdrop.style.height;
+      backdrop.style.overflow = 'hidden';
+      backdrop.style.transform = 'none';
+    };
+    syncViewport();
+
+    let touchStartX = 0;
     let touchStartY = 0;
+
     const onTouchStart = (event) => {
+      touchStartX = event.touches?.[0]?.clientX ?? 0;
       touchStartY = event.touches?.[0]?.clientY ?? 0;
     };
+
     const onTouchMove = (event) => {
       const target = event.target instanceof Element ? event.target : null;
-      const scrollArea = target?.closest('.at-modal__content, [data-modal-scroll-region="true"]');
-      if (!scrollArea || !dialog?.contains(scrollArea)) {
+      if (!target || !dialog?.contains(target)) {
         event.preventDefault();
         return;
       }
 
+      const currentX = event.touches?.[0]?.clientX ?? touchStartX;
       const currentY = event.touches?.[0]?.clientY ?? touchStartY;
+      const deltaX = currentX - touchStartX;
       const deltaY = currentY - touchStartY;
+
+      // 성경 권 칩처럼 가로 스크롤 가능한 영역은 좌우 제스처를 그대로 허용한다.
+      const horizontalScroller = findHorizontalScroller(target, dialog);
+      if (horizontalScroller && Math.abs(deltaX) > Math.abs(deltaY)) return;
+
+      const scrollArea = target.closest('.at-modal__content, [data-modal-scroll-region="true"]');
+      if (!scrollArea || !dialog.contains(scrollArea)) {
+        event.preventDefault();
+        return;
+      }
+
+      // 세로 본문 스크롤은 허용하되, 맨 위·맨 아래에서 배경으로 전달되는 것만 차단한다.
+      if (Math.abs(deltaY) <= Math.abs(deltaX)) return;
       const atTop = scrollArea.scrollTop <= 0;
       const atBottom = Math.ceil(scrollArea.scrollTop + scrollArea.clientHeight) >= scrollArea.scrollHeight;
       const pullingDownPastTop = deltaY > 0 && atTop;
@@ -92,6 +154,8 @@ function lockDocumentScroll(dialog) {
       scrollX,
       scrollY,
       ancestors,
+      backdropSnapshot,
+      syncViewport,
       onTouchStart,
       onTouchMove,
     };
@@ -108,7 +172,10 @@ function lockDocumentScroll(dialog) {
 
     document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
     document.addEventListener('touchmove', onTouchMove, { passive: false, capture: true });
+    window.visualViewport?.addEventListener('resize', syncViewport);
+    window.visualViewport?.addEventListener('scroll', syncViewport);
   }
+
   scrollLockCount += 1;
 
   return () => {
@@ -117,15 +184,32 @@ function lockDocumentScroll(dialog) {
 
     document.removeEventListener('touchstart', scrollSnapshot.onTouchStart, true);
     document.removeEventListener('touchmove', scrollSnapshot.onTouchMove, true);
+    window.visualViewport?.removeEventListener('resize', scrollSnapshot.syncViewport);
+    window.visualViewport?.removeEventListener('scroll', scrollSnapshot.syncViewport);
 
     for (const snapshot of scrollSnapshot.ancestors) {
       const { element } = snapshot;
       element.style.overflow = snapshot.overflow;
-      element.style.overflowX = snapshot.overflowX;
       element.style.overflowY = snapshot.overflowY;
-      element.style.overscrollBehavior = snapshot.overscrollBehavior;
+      element.style.overscrollBehaviorY = snapshot.overscrollBehaviorY;
       element.scrollTop = snapshot.scrollTop;
-      element.scrollLeft = snapshot.scrollLeft;
+    }
+
+    if (scrollSnapshot.backdropSnapshot) {
+      const snapshot = scrollSnapshot.backdropSnapshot;
+      const { element } = snapshot;
+      element.style.position = snapshot.position;
+      element.style.inset = snapshot.inset;
+      element.style.top = snapshot.top;
+      element.style.left = snapshot.left;
+      element.style.right = snapshot.right;
+      element.style.bottom = snapshot.bottom;
+      element.style.width = snapshot.width;
+      element.style.height = snapshot.height;
+      element.style.minHeight = snapshot.minHeight;
+      element.style.maxHeight = snapshot.maxHeight;
+      element.style.overflow = snapshot.overflow;
+      element.style.transform = snapshot.transform;
     }
 
     body.style.overflow = scrollSnapshot.bodyOverflow;
@@ -153,11 +237,6 @@ function resolveDialog(dialogRef, dialogSelector) {
  * Shared accessibility lifecycle for the app's modal research windows.
  * Keeps rendering/portal ownership in each feature while centralizing focus,
  * Escape, focus restoration and nested-safe mobile scroll locking.
- *
- * `dialogSelector` is a migration bridge for legacy portal dialogs that cannot
- * safely accept a ref yet. New dialogs should continue to prefer `dialogRef`.
- * `manageEscape=false` preserves a legacy dialog's own nested Escape policy
- * while still applying focus, Tab, restoration and scroll-lock behavior.
  */
 export default function useModalDialog({
   dialogRef,
