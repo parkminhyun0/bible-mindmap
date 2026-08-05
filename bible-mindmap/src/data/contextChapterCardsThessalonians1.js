@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_2THESS } from './contextChapterCardsThessalonians2.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_1THESS = {
+  ...CONTEXT_CHAPTER_CARDS_2THESS,
   '1Thess:1': C('🔥', '서신 · 복음으로 세워진 모범 공동체', [
     '1-5절에서 감사의 근거가 믿음의 역사·사랑의 수고·소망의 인내로 어떻게 요약되는지 살펴보세요.',
     '5-8절에서 복음이 말뿐 아니라 능력·성령·확신으로 임한 것과 성도들이 본받는 자에서 본이 된 과정을 관찰하세요.',
