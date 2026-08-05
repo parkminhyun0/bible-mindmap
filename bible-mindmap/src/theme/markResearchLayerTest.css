@@ -1,16 +1,20 @@
 /* Hidden GitHub Pages test: enable only with ?markResearchPreview=1; normal public sessions keep the existing layout. */
 .mark-research-layout-test{
-  --mark-left:minmax(360px,1.2fr);
-  --mark-observation:minmax(300px,.9fr);
-  --mark-research:minmax(320px,.95fr);
+  --mark-left:44%;
+  --mark-observation:28%;
   display:grid!important;
-  grid-template-columns:var(--mark-left) 8px var(--mark-observation) 8px var(--mark-research)!important;
+  grid-template-columns:minmax(300px,var(--mark-left)) 8px minmax(260px,var(--mark-observation)) 8px minmax(280px,1fr)!important;
   align-items:stretch!important;
   min-width:0!important;
   min-height:0!important;
   overflow:hidden!important;
 }
-.mark-research-left,.mark-research-observation,.mark-research-panel{min-width:0!important;min-height:0!important;overflow:hidden}
+.mark-research-left{grid-column:1!important;grid-row:1!important}
+.mark-research-divider--body-observation{grid-column:2!important;grid-row:1!important}
+.mark-research-right{grid-column:3!important;grid-row:1!important}
+.mark-research-divider--observation-research{grid-column:4!important;grid-row:1!important}
+.mark-research-panel{grid-column:5!important;grid-row:1!important}
+.mark-research-left,.mark-research-right,.mark-research-panel{min-width:0!important;min-height:0!important;overflow:hidden}
 .mark-research-divider{position:relative!important;display:block!important;min-width:8px;cursor:col-resize;background:#d8dee8;touch-action:none;z-index:4}
 .mark-research-divider:after{content:"";position:absolute;inset:0 -5px}
 .mark-research-divider:hover,.mark-research-divider:focus-visible{background:#93c5fd;outline:none}
@@ -51,15 +55,15 @@
 #mark-research-reopen-test{display:none!important}
 @media (min-width:901px) and (max-width:1180px){
   .mark-research-layout-test{
-    --mark-left:minmax(280px,1.1fr);
-    --mark-observation:minmax(240px,.85fr);
-    --mark-research:minmax(260px,.9fr);
-    grid-template-columns:var(--mark-left) 6px var(--mark-observation) 6px var(--mark-research)!important;
+    --mark-left:40%;
+    --mark-observation:29%;
+    grid-template-columns:minmax(280px,var(--mark-left)) 6px minmax(240px,var(--mark-observation)) 6px minmax(260px,1fr)!important;
   }
   .mark-research-divider{min-width:6px}
 }
 @media(max-width:900px){
   .mark-research-layout-test{display:flex!important;overflow:hidden!important}
+  .mark-research-left,.mark-research-right,.mark-research-panel,.mark-research-divider{grid-column:auto!important;grid-row:auto!important}
   .mark-research-divider{display:none!important}
   .mark-research-panel{display:flex!important;position:fixed;left:8px;right:8px;top:auto;bottom:max(8px,env(safe-area-inset-bottom));width:auto;height:min(48dvh,460px);z-index:1400;border:1px solid #cbd5e1;border-radius:18px;box-shadow:0 -10px 32px rgba(15,23,42,.18);padding-bottom:max(8px,env(safe-area-inset-bottom));background:#f6f8fc;touch-action:pan-y}
   .mark-research-panel:before{content:"";width:42px;height:5px;border-radius:999px;background:#cbd5e1;margin:8px auto 0;flex:0 0 auto}
