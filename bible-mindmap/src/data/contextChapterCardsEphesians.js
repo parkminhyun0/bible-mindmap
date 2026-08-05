@@ -1,8 +1,11 @@
+import { CONTEXT_CHAPTER_CARDS_PHIL } from './contextChapterCardsPhilippians.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview,
 });
 
 export const CONTEXT_CHAPTER_CARDS_EPH = {
+  ...CONTEXT_CHAPTER_CARDS_PHIL,
   'Eph:1': C('⚡', '서신 · 그리스도 안의 택하심과 기업', [
     '3-14절의 반복되는 “그리스도 안에서” 구조를 따라 선택·구속·기업의 흐름을 살펴보세요.',
     '15-23절에서 바울의 감사와 지혜·계시를 구하는 기도가 어떻게 이어지는지 확인하세요.',
