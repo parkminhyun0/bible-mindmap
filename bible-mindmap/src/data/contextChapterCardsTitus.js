@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_PHLM } from './contextChapterCardsPhilemon.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_TITUS = {
+  ...CONTEXT_CHAPTER_CARDS_PHLM,
   'Titus:1': C('🧭', '서신 · 장로의 자격과 바른 교훈으로 세우는 교회', [
     '1-4절에서 하나님의 종·사도·택하신 자들의 믿음·경건에 속한 진리·영생의 소망이 바울의 사명으로 어떻게 연결되는지 살펴보세요.',
     '5-9절에서 장로의 가정·성품·청지기적 책임·미쁜 말씀을 굳게 잡음·바른 교훈과 거스르는 자를 책망함을 하나의 자격 구조로 보세요.',
