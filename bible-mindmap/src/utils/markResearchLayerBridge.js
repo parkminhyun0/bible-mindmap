@@ -106,50 +106,50 @@ function renderPanel(panel, chapter, modal) {
   });
 }
 
-function installResize(layout, left, panel, observation) {
-  if (!observation || layout.querySelector('.mark-research-divider')) return;
-  left.classList.add('mark-research-left');
-  observation.classList.add('mark-research-observation');
+// layout(본문 컨테이너)의 실제 자식을 위치 기반으로 판별한다.
+// 데스크톱: [본문(.at-modal__content) | React 스플리터 | 분석·관찰 패널]
+// 모바일:   [본문 | (오버레이?) | 분석 패널] · 스플리터 없음
+// GPT가 겪은 버그: "left가 아닌 첫 자식"을 관찰패널로 봤으나 그것은 React 스플리터였다.
+function findPanes(layout, left) {
+  const kids = [...layout.children].filter((node) =>
+    node.id !== PANEL_ID && !node.classList.contains('mark-research-second-divider'),
+  );
+  const last = kids[kids.length - 1];
+  const observation = last && last !== left ? last : null;
+  const splitter = kids.find((node) => node !== left && node !== observation) || null;
+  return { observation, splitter };
+}
 
-  const makeDivider = (kind) => {
-    const divider = document.createElement('div');
-    divider.className = `mark-research-divider mark-research-divider--${kind}`;
-    divider.setAttribute('role', 'separator');
-    divider.setAttribute('aria-orientation', 'vertical');
-    divider.tabIndex = 0;
-    divider.addEventListener('pointerdown', (event) => {
-      if (window.matchMedia('(max-width: 900px)').matches) return;
-      event.preventDefault();
-      divider.setPointerCapture(event.pointerId);
-      const rect = layout.getBoundingClientRect();
-      const move = (e) => {
-        if (kind === 'body') {
-          const maxLeft = Math.max(360, rect.width - 640);
-          const leftWidth = Math.max(320, Math.min(maxLeft, e.clientX - rect.left));
-          layout.style.setProperty('--mark-left', `${leftWidth}px`);
-        } else {
-          const observationRect = observation.getBoundingClientRect();
-          const maxObservation = Math.max(320, rect.right - e.clientX - 300 + observationRect.width);
-          const observationWidth = Math.max(280, Math.min(maxObservation, e.clientX - observationRect.left));
-          layout.style.setProperty('--mark-observation', `${observationWidth}px`);
-        }
-      };
-      const up = () => {
-        divider.removeEventListener('pointermove', move);
-        divider.removeEventListener('pointerup', up);
-        divider.removeEventListener('pointercancel', up);
-      };
-      divider.addEventListener('pointermove', move);
-      divider.addEventListener('pointerup', up);
-      divider.addEventListener('pointercancel', up);
-    });
-    return divider;
-  };
-
-  const bodyDivider = makeDivider('body');
-  const researchDivider = makeDivider('research');
-  layout.insertBefore(bodyDivider, observation);
-  layout.insertBefore(researchDivider, panel);
+// 관찰 ↔ 연구 사이 크기 조절 막대. 연구 패널 폭만 조절하므로 React 상태와 충돌하지 않는다.
+function installResize(layout, panel) {
+  if (layout.querySelector('.mark-research-second-divider')) return;
+  const divider = document.createElement('div');
+  divider.className = 'mark-research-second-divider';
+  divider.setAttribute('role', 'separator');
+  divider.setAttribute('aria-orientation', 'vertical');
+  divider.tabIndex = 0;
+  divider.style.display = 'none'; // 데스크톱 CSS(!important)가 block으로 노출, 모바일은 숨김
+  divider.addEventListener('pointerdown', (event) => {
+    if (window.matchMedia('(max-width: 900px)').matches) return;
+    event.preventDefault();
+    divider.setPointerCapture(event.pointerId);
+    const startX = event.clientX;
+    const startW = panel.getBoundingClientRect().width;
+    const move = (e) => {
+      const w = Math.max(280, Math.min(680, startW + (startX - e.clientX)));
+      panel.style.flex = `0 0 ${w}px`;
+    };
+    const up = () => {
+      try { divider.releasePointerCapture(event.pointerId); } catch { /* noop */ }
+      divider.removeEventListener('pointermove', move);
+      divider.removeEventListener('pointerup', up);
+      divider.removeEventListener('pointercancel', up);
+    };
+    divider.addEventListener('pointermove', move);
+    divider.addEventListener('pointerup', up);
+    divider.addEventListener('pointercancel', up);
+  });
+  layout.insertBefore(divider, panel);
 }
 
 function ensureReopenButton(modal) {
@@ -178,19 +178,24 @@ function attach(modal) {
   layout.querySelector(`#${REOPEN_ID}`)?.remove();
   let panel = layout.querySelector(`#${PANEL_ID}`);
   if (!panel) {
-    const observation = [...layout.children].find((node) =>
-      node !== left && !node.classList.contains('mark-research-divider'),
-    );
+    const { observation, splitter } = findPanes(layout, left);
     if (!observation) return false;
+
+    // GPT의 markResearchThreeColumnDirect.css(order 1~5)가 요구하는 hook을 실제 요소에 부여
+    left.classList.add('mark-direct-body-pane');                 // order 1
+    splitter?.classList.add('mark-direct-first-divider');        // order 2 (기존 React 스플리터 재활용)
+    observation.classList.add('mark-direct-observation-pane');   // order 3
 
     panel = document.createElement('section');
     panel.id = PANEL_ID;
-    panel.className = 'mark-research-panel';
+    panel.className = 'mark-research-panel mark-direct-research-pane'; // order 5 · 데스크톱 in-flow, 모바일 시트 유지
     panel.setAttribute('role', 'region');
     panel.setAttribute('aria-label', '본문 구조 연구');
+    panel.style.flex = '0 0 360px';
     layout.appendChild(panel);
     layout.classList.add(STYLE_CLASS);
-    installResize(layout, left, panel, observation);
+    layout.setAttribute('data-mark-three-column-ready', 'true');
+    installResize(layout, panel);                                // second-divider · order 4
   }
   const chapter = activeChapter(modal);
   if (panel.dataset.chapter !== String(chapter)) {
@@ -204,9 +209,11 @@ function detach(modal) {
   const panel = modal.querySelector(`#${PANEL_ID}`);
   const layout = panel?.parentElement;
   panel?.remove();
-  layout?.querySelectorAll('.mark-research-divider').forEach((node) => node.remove());
+  layout?.querySelectorAll('.mark-research-second-divider').forEach((node) => node.remove());
   layout?.classList.remove(STYLE_CLASS);
-  layout?.querySelectorAll('.mark-research-left,.mark-research-observation').forEach((node) => node.classList.remove('mark-research-left', 'mark-research-observation'));
+  layout?.removeAttribute('data-mark-three-column-ready');
+  layout?.querySelectorAll('.mark-direct-body-pane,.mark-direct-first-divider,.mark-direct-observation-pane')
+    .forEach((node) => node.classList.remove('mark-direct-body-pane', 'mark-direct-first-divider', 'mark-direct-observation-pane'));
 }
 
 export function installMarkResearchLayerBridge() {
