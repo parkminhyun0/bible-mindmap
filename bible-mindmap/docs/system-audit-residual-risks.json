@@ -16,8 +16,8 @@
     "canonicalConceptCount": 72,
     "canonicalUsageMapCount": 72,
     "canonicalUsagePendingCount": 0,
-    "chapterCardCount": 1122,
-    "chapterCardMarkerChecked": 2352,
+    "chapterCardCount": 1128,
+    "chapterCardMarkerChecked": 2370,
     "chapterCardMarkerMissing": 40,
     "chapterCardMarkerMissingRatePercent": 1.7
   },
@@ -76,7 +76,7 @@
       "status": "monitored",
       "category": "original-language-data",
       "title": "관찰카드 원어 마커 40건 표기·정규화 검토",
-      "rationale": "2,352개 마커 중 40개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
+      "rationale": "2,370개 마커 중 40개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
       "evidence": [
         "scripts/verify-chapter-card-markers.mjs",
         "public/data/lex"
