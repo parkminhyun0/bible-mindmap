@@ -26,8 +26,10 @@ import { CONTEXT_CHAPTER_CARDS_1COR } from './contextChapterCardsCorinthians1.js
 import { CONTEXT_CHAPTER_CARDS_2COR } from './contextChapterCardsCorinthians2.js';
 import { CONTEXT_CHAPTER_CARDS_GAL } from './contextChapterCardsGalatians.js';
 import { CONTEXT_CHAPTER_CARDS_EPH } from './contextChapterCardsEphesians.js';
+import { CONTEXT_CHAPTER_CARDS_GENERAL_REV } from './contextChapterCardsGeneralRev.js';
 
 export const CONTEXT_CHAPTER_CARDS = {
+  ...CONTEXT_CHAPTER_CARDS_GENERAL_REV,
   ...CONTEXT_CHAPTER_CARDS_EXT,
   ...CONTEXT_CHAPTER_CARDS_LEV,
   ...CONTEXT_CHAPTER_CARDS_NUM_DEUT,
@@ -272,19 +274,5 @@ export const CONTEXT_CHAPTER_CARDS = {
     discourseMarkers: [{ marker: 'הוֹי (호이)', role: '초청의 외침', example: '55:1' }, { marker: 'שִׁמְעוּ (쉬메우)', role: '들으라는 초청', example: '55:2·3' }, { marker: 'כִּי (키)', role: '이유·설명 전환', example: '55:8·10' }],
     theologicalImplications: ['하나님의 구원 초청은 자격보다 듣고 나아오는 응답을 강조한다.', '말씀의 효과성은 하나님의 목적이 헛되이 끝나지 않는다는 회복 약속의 확실성을 뒷받침한다.', '기쁨의 귀환과 창조 세계의 반응은 포로 회복을 더 넓은 창조적 소망으로 확장한다.'],
     nextChapterPreview: '사 56장 · 회복 약속 뒤 공동체의 정의·안식일·이방인 포용 문제가 새롭게 부각된다.',
-  },
-  'Rev:4': {
-    coverEmoji: '🌈', genre: '묵시 · 하늘 보좌 예배',
-    observeThis: ['장르·수사 렌즈와 Arc로 땅의 교회 메시지에서 하늘 보좌 환상으로 시점이 이동하는 지점을 본다.', '보좌·거룩·창조 관련 핵심어와 우측 분석을 확인하고 관주 🔗로 이사야 6장·에스겔 1장 배경을 검토한다.', '상징을 일대일 암호표로 만들기보다 반복되는 시선·음성·예배 행동이 장면 중심을 어디에 두는지 관찰한다.'],
-    discourseMarkers: [{ marker: 'μετὰ ταῦτα (메타 타우타)', role: '환상 장면 전환', example: '4:1' }, { marker: 'καὶ ἰδού (카이 이두)', role: '새 시각 요소 주목', example: '4:1-2' }, { marker: 'ἅγιος (하기오스)', role: '거룩 찬양 핵심어', example: '4:8' }],
-    theologicalImplications: ['보좌가 장면의 중심을 차지해 정치·역사적 현실 위에 하나님의 통치를 먼저 보게 한다.', '창조주 찬양은 하나님이 존재와 생명의 근원이심을 예배의 이유로 제시한다.', '하늘 예배의 질서는 5장에서 어린양의 승리와 두루마리 문제를 이해하는 무대가 된다.'],
-    nextChapterPreview: '계 5장 · 봉인된 두루마리와 어린양의 등장으로 보좌 예배가 구속의 승리와 연결된다.',
-  },
-  'Rev:5': {
-    coverEmoji: '🐑', genre: '묵시 · 두루마리와 어린양',
-    observeThis: ['Arc로 두루마리 위기→사자에 대한 기대→어린양의 등장→새 노래→우주적 찬양의 확대를 본다.', '사자·어린양·승리·합당함 관련 표현과 우측 분석을 확인해 이미지 역전을 관찰한다.', '관주 🔗로 창 49장·사 53장·시편 왕권 본문을 확인하되 연결 강도를 직접 인용과 주제 배경으로 구분한다.'],
-    discourseMarkers: [{ marker: 'καὶ εἶδον (카이 에이돈)', role: '새 환상 요소 도입', example: '5:1' }, { marker: 'καὶ ἰδού (카이 이두)', role: '기대와 반전 주목', example: '5:5-6' }, { marker: 'ὅτι (호티)', role: '찬양 이유 제시', example: '5:9·12' }],
-    theologicalImplications: ['승리는 힘의 이미지가 죽임당했으나 서 있는 어린양의 모습으로 재정의되는 역설을 가진다.', '두루마리를 열 자격은 어린양의 죽음과 구속 행위에 연결되어 역사 주권과 구원을 결합한다.', '찬양의 동심원 확장은 보좌에 앉으신 이와 어린양을 향한 우주적 예배로 장면을 절정에 이르게 한다.'],
-    nextChapterPreview: '계 6장 · 어린양이 두루마리의 인을 열기 시작하며 하늘의 결정이 땅의 심판·역사 장면으로 전개된다.',
   },
 };
