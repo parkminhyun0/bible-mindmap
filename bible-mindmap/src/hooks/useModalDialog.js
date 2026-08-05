@@ -26,15 +26,60 @@ function focusableElements(dialog) {
   return Array.from(dialog.querySelectorAll(DIALOG_FOCUSABLE)).filter(isVisible);
 }
 
-function lockDocumentScroll() {
+function lockDocumentScroll(dialog) {
   const body = document.body;
   const html = document.documentElement;
   if (scrollLockCount === 0) {
-    const scrollX = window.scrollX || window.pageXOffset || 0;
-    const scrollY = window.scrollY || window.pageYOffset || 0;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const ancestors = [];
+    let current = dialog?.parentElement || null;
+
+    while (current && current !== body && current !== html) {
+      const style = window.getComputedStyle(current);
+      const scrollable = /(auto|scroll|overlay)/.test(`${style.overflow} ${style.overflowY} ${style.overflowX}`)
+        || current.scrollHeight > current.clientHeight
+        || current.scrollWidth > current.clientWidth;
+      if (scrollable) {
+        ancestors.push({
+          element: current,
+          overflow: current.style.overflow,
+          overflowX: current.style.overflowX,
+          overflowY: current.style.overflowY,
+          overscrollBehavior: current.style.overscrollBehavior,
+          scrollTop: current.scrollTop,
+          scrollLeft: current.scrollLeft,
+        });
+        current.style.overflow = 'hidden';
+        current.style.overflowX = 'hidden';
+        current.style.overflowY = 'hidden';
+        current.style.overscrollBehavior = 'none';
+      }
+      current = current.parentElement;
+    }
+
+    let touchStartY = 0;
+    const onTouchStart = (event) => {
+      touchStartY = event.touches?.[0]?.clientY ?? 0;
+    };
+    const onTouchMove = (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+      const scrollArea = target?.closest('.at-modal__content, [data-modal-scroll-region="true"]');
+      if (!scrollArea || !dialog?.contains(scrollArea)) {
+        event.preventDefault();
+        return;
+      }
+
+      const currentY = event.touches?.[0]?.clientY ?? touchStartY;
+      const deltaY = currentY - touchStartY;
+      const atTop = scrollArea.scrollTop <= 0;
+      const atBottom = Math.ceil(scrollArea.scrollTop + scrollArea.clientHeight) >= scrollArea.scrollHeight;
+      const pullingDownPastTop = deltaY > 0 && atTop;
+      const pushingUpPastBottom = deltaY < 0 && atBottom;
+      if (pullingDownPastTop || pushingUpPastBottom) event.preventDefault();
+    };
+
     scrollSnapshot = {
-      scrollX,
-      scrollY,
       bodyOverflow: body.style.overflow,
       bodyOverscroll: body.style.overscrollBehavior,
       bodyPosition: body.style.position,
@@ -44,8 +89,13 @@ function lockDocumentScroll() {
       bodyWidth: body.style.width,
       htmlOverflow: html.style.overflow,
       htmlOverscroll: html.style.overscrollBehavior,
-      htmlHeight: html.style.height,
+      scrollX,
+      scrollY,
+      ancestors,
+      onTouchStart,
+      onTouchMove,
     };
+
     body.style.overflow = 'hidden';
     body.style.overscrollBehavior = 'none';
     body.style.position = 'fixed';
@@ -55,26 +105,40 @@ function lockDocumentScroll() {
     body.style.width = '100%';
     html.style.overflow = 'hidden';
     html.style.overscrollBehavior = 'none';
-    html.style.height = '100%';
+
+    document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
+    document.addEventListener('touchmove', onTouchMove, { passive: false, capture: true });
   }
   scrollLockCount += 1;
 
   return () => {
     scrollLockCount = Math.max(0, scrollLockCount - 1);
     if (scrollLockCount !== 0 || !scrollSnapshot) return;
-    const snapshot = scrollSnapshot;
-    body.style.overflow = snapshot.bodyOverflow;
-    body.style.overscrollBehavior = snapshot.bodyOverscroll;
-    body.style.position = snapshot.bodyPosition;
-    body.style.top = snapshot.bodyTop;
-    body.style.left = snapshot.bodyLeft;
-    body.style.right = snapshot.bodyRight;
-    body.style.width = snapshot.bodyWidth;
-    html.style.overflow = snapshot.htmlOverflow;
-    html.style.overscrollBehavior = snapshot.htmlOverscroll;
-    html.style.height = snapshot.htmlHeight;
+
+    document.removeEventListener('touchstart', scrollSnapshot.onTouchStart, true);
+    document.removeEventListener('touchmove', scrollSnapshot.onTouchMove, true);
+
+    for (const snapshot of scrollSnapshot.ancestors) {
+      const { element } = snapshot;
+      element.style.overflow = snapshot.overflow;
+      element.style.overflowX = snapshot.overflowX;
+      element.style.overflowY = snapshot.overflowY;
+      element.style.overscrollBehavior = snapshot.overscrollBehavior;
+      element.scrollTop = snapshot.scrollTop;
+      element.scrollLeft = snapshot.scrollLeft;
+    }
+
+    body.style.overflow = scrollSnapshot.bodyOverflow;
+    body.style.overscrollBehavior = scrollSnapshot.bodyOverscroll;
+    body.style.position = scrollSnapshot.bodyPosition;
+    body.style.top = scrollSnapshot.bodyTop;
+    body.style.left = scrollSnapshot.bodyLeft;
+    body.style.right = scrollSnapshot.bodyRight;
+    body.style.width = scrollSnapshot.bodyWidth;
+    html.style.overflow = scrollSnapshot.htmlOverflow;
+    html.style.overscrollBehavior = scrollSnapshot.htmlOverscroll;
+    window.scrollTo(scrollSnapshot.scrollX, scrollSnapshot.scrollY);
     scrollSnapshot = null;
-    window.scrollTo(snapshot.scrollX, snapshot.scrollY);
   };
 }
 
@@ -130,7 +194,7 @@ export default function useModalDialog({
       if (!dialog.hasAttribute('tabindex')) dialog.setAttribute('tabindex', '-1');
 
       dialogStack.push(token);
-      const releaseScroll = lockScroll ? lockDocumentScroll() : () => {};
+      const releaseScroll = lockScroll ? lockDocumentScroll(dialog) : () => {};
 
       const focusFrame = window.requestAnimationFrame(() => {
         if (dialogStack.at(-1) === token && dialog.isConnected) {
