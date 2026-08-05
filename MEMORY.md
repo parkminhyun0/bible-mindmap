@@ -1,10 +1,10 @@
-- 🔄 **[세션 재개 · 최우선 로드](memory/SESSION_STATE.md)** — 새 세션이면 반드시 먼저 읽기 (< 300 토큰). 현재 작업·다음 스텝·미커밋 상태·주의사항. 매 작업 단위 종료 시 업데이트 의무.
-- [문맥 성경 프로젝트](memory/project_context_bible.md) — 66권 확장 아키텍처, 7/66 완성(창·출·룻·롬·막·마·눅), 비평장치(Apparatus) SBLGNT 자동로드 확립, 핵심 규칙 (이미지 경로·CMS·배포 순서)
-- [문맥 성경 자비스 자동화 라우팅 시스템](memory/bible_agent_routing.md) — 새 성경 등록 시 반드시 참조. 라우팅·5-Layer 검증·할루시네이션 3중 방어·저작권·승인 지점·인프라 파일 구조
-- [Long-running scripts: no wait loops, heartbeat required](memory/feedback_long_running_scripts.md) — start+report only; polling is user's job across turns
-- [GitHub 푸시 정책](memory/feedback_github_push_policy.md) — 로컬 먼저, 푸시 전 반드시 확인 요청
-- [파이프라인 큐사인](memory/feedback_queue_cuesigns.md) — "픽업"=GPT 착수, "작업"=자비스 착수(구 "작업 큐 진행" 대체)
-- [성경 릴리스 워크플로우](memory/bible_release_workflow.md) — 작업 완료 시 표준: 로컬→커밋→푸시→배포검증→노션, **마지막에 대시보드 LIVE 현황 갱신**
-- [배포 메커니즘](memory/bible_deploy_mechanism.md) — 실제 배포=Actions 워크플로우(gh-pages 푸시 아님) · CI 의존성 함정 · verify:deploy 확인
-- [Notion 페이지·블록 맵](memory/bible_notion_map.md) — 페이지 id + 대시보드 LIVE 블록 id(자동 갱신 대상) + Notion 쓰기 팁
-- [Reminder Discord channel](memory/reminder-discord-channel.md) — 공인중개사 D-day/학습 알림은 discord 세션 1523271359281496147 경유 게시, 시험일 2026.10.31
+- 🔄 **[현재 작업 재개 · 최우선](memory/SESSION_STATE.md)** — 현재 작업 하나·즉시 다음 단계·차단만 읽는다. 2KB 이내 유지.
+- ⚡ **[최신 시스템 동기화 · 과거 기억보다 우선](memory/SYSTEM_DELTA.md)** — GitHub main·열린 PR·CI·Pages·Notion 구조와 최근 개선을 대조한 뒤 7줄 브리핑하고 작업을 시작한다.
+- [문맥 성경 프로젝트](memory/project_context_bible.md) — 장기 아키텍처와 설계 이력. 현재 구현 수치와 완료 범위는 고정 문구를 믿지 말고 SYSTEM_DELTA·GitHub verifier·Notion 대시보드에서 재확인한다.
+- [문맥 성경 자비스 자동화 라우팅 시스템](memory/bible_agent_routing.md) — 새 성경 등록과 연구 기능 작업 시 라우팅·검증·할루시네이션 방어·저작권·승인 지점을 참조한다.
+- [GitHub 푸시 정책](memory/feedback_github_push_policy.md) — 기존 변경 보존, 별도 브랜치, 검증 후 PR·병합을 기본으로 한다.
+- [파이프라인 큐사인](memory/feedback_queue_cuesigns.md) — "픽업"=GPT 착수, "작업"=자비스 착수. 실제 상태는 파이프라인 DB와 GitHub를 대조한다.
+- [성경 릴리스 워크플로우](memory/bible_release_workflow.md) — 구현→검증→PR/CI→main→Pages/Live SHA→Notion→대시보드 순서. 사용자 확인 전 최대 95%.
+- [배포 메커니즘](memory/bible_deploy_mechanism.md) — 공식 공개 경로는 GitHub Pages이며, Cloudflare Worker가 NVIDIA Build API의 비밀키 경계를 담당한다. Vercel은 공식 완료 판정에서 제외한다.
+- [Notion 페이지·블록 맵](memory/bible_notion_map.md) — 과거 ID 지도. 현재 핵심 진입 페이지와 최신 구조는 SYSTEM_DELTA의 Notion 포인터를 우선한다.
+- 장기 기억은 목적·원칙·결정만 보존한다. SHA·진행률·권수·활성 PR 같은 변동값은 MEMORY에 고정하지 않고 매 세션 실제 시스템에서 확인한다.
