@@ -48,7 +48,7 @@ function sourceDialog(chapter, chapterData) {
   dialog.showModal();
 }
 
-function renderPanel(panel, chapter) {
+function renderPanel(panel, chapter, modal) {
   const chapterData = MARK_CONTEXT?.contextV2?.chapters?.[chapter];
   const agenda = chapterData?.agenda || MARK_CONTEXT?.meta?.chapterAgenda?.[chapter] || '장별 연구 의제가 아직 등록되지 않았습니다.';
   const anchors = chapterData?.structureNodes || [];
@@ -58,7 +58,10 @@ function renderPanel(panel, chapter) {
   panel.innerHTML = `
     <header class="mark-research-header">
       <div><strong>본문 구조</strong><span>Pericope Intelligence · 마가복음 ${chapter}장</span></div>
-      <button type="button" class="mark-research-source">근거·출처</button>
+      <div class="mark-research-actions">
+        <button type="button" class="mark-research-source">근거·출처</button>
+        <button type="button" class="mark-research-close" aria-label="본문 구조 닫기">×</button>
+      </div>
     </header>
     <div class="mark-research-notice">실제 앱 통합 테스트 · 마가복음에만 활성화 · 외부 학술 출처는 아직 미연결</div>
     <div class="mark-research-scroll">
@@ -86,6 +89,10 @@ function renderPanel(panel, chapter) {
     </div>`;
 
   panel.querySelector('.mark-research-source')?.addEventListener('click', () => sourceDialog(chapter, chapterData));
+  panel.querySelector('.mark-research-close')?.addEventListener('click', () => {
+    modal.dataset.markResearchDismissed = 'true';
+    detach(modal);
+  });
   panel.querySelectorAll('.mark-research-anchor').forEach((button) => {
     button.addEventListener('click', () => {
       const verse = button.dataset.verse;
@@ -132,7 +139,7 @@ function installResize(layout, left, panel, right) {
 function attach(modal) {
   const left = modal.querySelector('.at-modal__content');
   const layout = left?.parentElement;
-  if (!left || !layout || !isMarkActive(modal)) return false;
+  if (!left || !layout || !isMarkActive(modal) || modal.dataset.markResearchDismissed === 'true') return false;
   let panel = layout.querySelector(`#${PANEL_ID}`);
   if (!panel) {
     panel = document.createElement('section');
@@ -146,7 +153,7 @@ function attach(modal) {
   const chapter = activeChapter(modal);
   if (panel.dataset.chapter !== String(chapter)) {
     panel.dataset.chapter = String(chapter);
-    renderPanel(panel, chapter);
+    renderPanel(panel, chapter, modal);
   }
   return true;
 }
@@ -165,8 +172,12 @@ export function installMarkResearchLayerBridge() {
   window.__markResearchLayerBridgeInstalled = true;
   const reconcile = () => {
     document.querySelectorAll('.at-modal--context').forEach((modal) => {
-      if (!isMarkActive(modal)) detach(modal);
-      else attach(modal);
+      if (!isMarkActive(modal)) {
+        delete modal.dataset.markResearchDismissed;
+        detach(modal);
+      } else {
+        attach(modal);
+      }
     });
   };
   const observer = new MutationObserver(() => window.requestAnimationFrame(reconcile));
