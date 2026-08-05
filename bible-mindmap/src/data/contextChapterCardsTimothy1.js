@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_2TIM } from './contextChapterCardsTimothy2.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_1TIM = {
+  ...CONTEXT_CHAPTER_CARDS_2TIM,
   '1Tim:1': C('📜', '서신 · 바른 교훈과 은혜로 맡겨진 복음', [
     '1-7절에서 다른 교훈·신화·끝없는 족보와 하나님의 경륜, 청결한 마음과 선한 양심과 거짓 없는 믿음에서 나오는 사랑을 대조하세요.',
     '8-11절에서 율법의 선한 사용과 불법한 자를 향한 기능, 복되신 하나님의 영광의 복음이 어떻게 연결되는지 살펴보세요.',
