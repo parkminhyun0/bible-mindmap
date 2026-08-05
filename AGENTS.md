@@ -1,38 +1,30 @@
-# AGENTS.md · Token-lite workspace rules
+# AGENTS.md · Token-lite rules
 
 ## Startup
-Use runtime-provided context; never reread files already included.
+Use runtime context; never reread included files.
 
-Default **FAST resume**:
+**FAST (default)**
 1. Read only `memory/RESUME.json`.
-2. Check only current `main` SHA and the target PR/status named there.
-3. Start the next safe action. Startup report: max 4 short lines.
+2. Check current `main` SHA and the named PR/task status only.
+3. Report at most 4 short lines, then act.
 
-Do **DEEP sync** only when one trigger is true:
-- user requests latest/full synchronization;
-- checkpoint is older than 12 hours;
-- current `main` differs from `main_seen`;
-- target PR/task changed, closed, failed, conflicted, or is unknown;
-- requested work may collide with another active change.
+**DEEP** only when requested, checkpoint age >12h, `main` changed, named work changed/closed/failed/conflicted/unknown, or the new request may collide. Order: local `git status` → GitHub main/target PR/CI/Pages → one relevant Notion record → `SESSION_STATE.md` → `SYSTEM_DELTA.md`. Never fetch full dashboards when one page/property is enough.
 
-DEEP order: local `git status` → GitHub main/target PR/CI/Pages → relevant Notion record → `memory/SESSION_STATE.md` → `memory/SYSTEM_DELTA.md`. Never fetch full Notion dashboards when one task/page or property is enough.
+Normal added resume context: ≤600 tokens. Do not load daily logs, long project memory, diffs, workflow logs, or full Notion pages without a DEEP trigger.
 
-Resume budget: extra startup context should normally stay under **600 tokens**. Do not load daily logs, long-term project files, PR diffs, workflow logs, or full Notion pages unless required by a trigger.
-
-## Truth and work
-Truth order: local changes → GitHub/CI/Pages → Notion → checkpoint → long-term memory.
+## Work
+Truth: local → GitHub/CI/Pages → Notion → checkpoint → long memory.
 Preserve existing work; use a separate branch; make the smallest safe change.
-Standard finish: verify → PR/CI → main → Pages/Live SHA → Notion/dashboard. User-visible confirmation is required for 100%.
+Finish: verify → PR/CI → main → Pages/Live SHA → Notion/dashboard. User screen confirmation is required for 100%.
 
 ## Memory
-- `memory/RESUME.json`: machine checkpoint; keep under 600 UTF-8 bytes.
-- `memory/SESSION_STATE.md`: human task detail; deep-load only; keep under 1 KB.
-- `memory/SYSTEM_DELTA.md`: architecture/change reference; deep-load only.
-- `MEMORY.md`: tiny index only; no volatile SHA, counts, or active-PR history.
-Update the checkpoint after task switch, merge, deployment verdict, or blocker change.
+- `RESUME.json`: default checkpoint, <600 UTF-8 bytes.
+- `SESSION_STATE.md`: deep-only task detail, <1 KB.
+- `SYSTEM_DELTA.md`: deep-only architecture/change reference.
+- `MEMORY.md`: tiny index; no volatile status.
+Update `RESUME.json` after task switch, merge, deployment verdict, or blocker change.
 
 ## Safety
-Never expose secrets or private data. Ask before destructive actions, public communications, paid services, scheduler/config changes, or sensitive production changes. Preserve/merge existing configuration by default. In shared/group contexts, do not load private memory.
+Keep secrets/private data private. Ask before destructive, public, paid, scheduler/config, or sensitive production actions. Preserve existing configuration. Never load private memory in shared chats.
 
-## Heartbeat
-Keep `HEARTBEAT.md` empty unless a concrete periodic task exists. Avoid polling loops and repetitive status narration.
+Keep `HEARTBEAT.md` empty without a concrete periodic task. Avoid polling loops and repetitive status narration.
