@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_1TIM } from './contextChapterCardsTimothy1.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_2THESS = {
+  ...CONTEXT_CHAPTER_CARDS_1TIM,
   '2Thess:1': C('⚖️', '서신 · 환난 가운데 자라는 믿음과 공의로운 심판', [
     '1-4절에서 믿음의 성장·사랑의 풍성함·박해 중 인내가 감사와 자랑의 근거로 어떻게 연결되는지 살펴보세요.',
     '5-10절에서 현재의 환난과 장차 나타날 하나님의 공의로운 심판, 성도에게 주실 안식이 어떤 대조 구조를 이루는지 관찰하세요.',
