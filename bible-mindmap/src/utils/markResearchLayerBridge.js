@@ -27,17 +27,17 @@ function sourceDialog(chapter, chapterData) {
   dialog.className = 'mark-research-source-dialog';
   dialog.innerHTML = `
     <form method="dialog">
-      <header><strong>근거·출처 · 마가복음 ${chapter}장</strong><button value="close" aria-label="닫기">×</button></header>
+      <header><strong>구조 형성 기준 · 마가복음 ${chapter}장</strong><button value="close" aria-label="닫기">×</button></header>
       <section>
-        <h4>현재 연결된 원본</h4>
+        <h4>내부 분석 기준</h4>
         <p><b>프로젝트 큐레이션:</b> <code>CURATED_GOSPELS_ACTS.Mark.${chapter}</code></p>
         <p><b>Context V2:</b> 장별 의제, 구조 앵커, 핵심 본문을 저장소 데이터에서 직접 읽습니다.</p>
         <p><b>본문 근거:</b> ${chapterData?.keyVerses?.map((item) => `막 ${chapter}:${item.verse} · ${item.label}`).join('<br>') || '핵심 본문 미등록'}</p>
       </section>
       <section>
-        <h4>검증 상태</h4>
-        <p>현재 단계는 <b>프로젝트 자체 큐레이션 기반 테스트</b>입니다. 외부 학술 자료와 개혁주의 주석의 판본·쪽수·단락 경계 비교는 아직 연결하지 않았습니다.</p>
-        <p>따라서 이 구조는 확정 학계 합의가 아니라 <b>사람 검토가 필요한 내부 연구 구조</b>로 표시합니다.</p>
+        <h4>검증 안내</h4>
+        <p>이 구조는 원어 구조, ARC 구조, 문맥 분석과 프로젝트 내부 큐레이션을 토대로 형성한 참고용 자료입니다.</p>
+        <p>성경 해석의 최종 기준이 아니며, 사용자는 본문·원어·주석·신학 자료를 함께 비교하여 직접 교차 검증해야 합니다.</p>
       </section>
       <section>
         <h4>운영 통합 전 필수</h4>
@@ -58,14 +58,14 @@ function renderPanel(panel, chapter, modal) {
 
   panel.innerHTML = `
     <header class="mark-research-header">
-      <div><strong>본문 구조</strong><span>Pericope Intelligence · 마가복음 ${chapter}장</span></div>
+      <div><strong>본문 구조 연구</strong><span>Pericope Intelligence · 마가복음 ${chapter}장</span></div>
       <div class="mark-research-actions">
-        <button type="button" class="mark-research-source">근거·출처</button>
-        <button type="button" class="mark-research-close" aria-label="본문 구조 닫기">×</button>
+        <button type="button" class="mark-research-source">구조 형성 기준</button>
+        <button type="button" class="mark-research-close" aria-label="본문 구조 연구 닫기">×</button>
       </div>
     </header>
-    <div class="mark-research-notice">실제 앱 통합 테스트 · 마가복음에만 활성화 · 외부 학술 출처는 아직 미연결</div>
-    <div class="mark-research-scroll">
+    <div class="mark-research-notice">원어 구조·ARC 구조·문맥 분석·내부 큐레이션 기반 참고용 자료 · 사용자 교차 검증 필요</div>
+    <div class="mark-research-scroll" data-modal-scroll-region="true">
       <article class="mark-research-card">
         <div class="mark-research-badges">${badge('프로젝트 분석', 'blue')}${badge(quality, 'green')}${badge('AI 자동확정 아님', 'gray')}</div>
         <h3>장별 연구 의제</h3>
@@ -84,7 +84,7 @@ function renderPanel(panel, chapter, modal) {
       </article>
       <article class="mark-research-card mark-research-card--warning">
         <div class="mark-research-badges">${badge('외부 자료 비교 대기', 'red')}${badge('공개 전 검증 필수', 'gray')}</div>
-        <h3>학술 출처와 대안 구조</h3>
+        <h3>학술 자료와 대안 구조</h3>
         <p>현재는 저장소 내부 큐레이션만 연결했습니다. 학자별 단락 구분·담화 분석·개혁주의 석의 차이는 판본과 페이지를 확인한 뒤 주요안·대안·채택 이유로 추가해야 합니다.</p>
       </article>
     </div>`;
@@ -146,9 +146,9 @@ function ensureReopenButton(modal) {
   const button = document.createElement('button');
   button.id = REOPEN_ID;
   button.type = 'button';
-  button.textContent = '본문 구조 다시 열기';
-  button.setAttribute('aria-label', '마가복음 본문 구조 다시 열기');
-  button.style.cssText = 'position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:41;min-width:148px;min-height:44px;padding:10px 14px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:900;box-shadow:0 8px 24px rgba(15,23,42,.18);cursor:pointer;';
+  button.textContent = '본문 구조 연구 다시 열기';
+  button.setAttribute('aria-label', '마가복음 본문 구조 연구 다시 열기');
+  button.style.cssText = 'position:fixed;right:max(12px,env(safe-area-inset-right));bottom:calc(96px + env(safe-area-inset-bottom));z-index:41;min-width:148px;min-height:44px;padding:10px 14px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:900;box-shadow:0 8px 24px rgba(15,23,42,.18);cursor:pointer;';
   button.addEventListener('click', () => {
     delete modal.dataset.markResearchDismissed;
     button.remove();
@@ -167,6 +167,8 @@ function attach(modal) {
     panel = document.createElement('section');
     panel.id = PANEL_ID;
     panel.className = 'mark-research-panel';
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-label', '본문 구조 연구');
     const right = [...layout.children].find((node) => node !== left && !node.classList.contains('mark-research-divider'));
     layout.insertBefore(panel, right || null);
     layout.classList.add(STYLE_CLASS);
