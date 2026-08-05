@@ -41,14 +41,14 @@ async function fetchPullRequest({ apiBase, repository, number, token, fixture })
     return pullRequest;
   }
 
-  const response = await fetch(`${apiBase}/repos/${repository}/pulls/${number}`, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      Authorization: `Bearer ${token}`,
-      'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'bible-mindmap-resume-verifier',
-    },
-  });
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'User-Agent': 'bible-mindmap-resume-verifier',
+  };
+  if (token) headers.Authorization = `Bearer ${token}`;
+
+  const response = await fetch(`${apiBase}/repos/${repository}/pulls/${number}`, { headers });
 
   if (!response.ok) {
     const body = await response.text();
@@ -136,13 +136,11 @@ async function main() {
 
   const uniqueNumbers = [...new Set(references.map(({ number }) => number))];
   const token = process.env.GITHUB_TOKEN || '';
-  if (uniqueNumbers.length > 0 && !token && !fixture) {
-    const message = `PR 원격 상태 검증을 건너뜁니다: GITHUB_TOKEN 없음 (${uniqueNumbers.map((number) => `#${number}`).join(', ')})`;
-    if (requireRemote) fail(message);
-    else console.warn(`⚠ ${message}`);
+  if (uniqueNumbers.length > 0 && !token && !fixture && !requireRemote) {
+    console.warn(`⚠ PR 원격 상태 검증을 건너뜁니다: GITHUB_TOKEN 없음 (${uniqueNumbers.map((number) => `#${number}`).join(', ')})`);
   }
 
-  if (uniqueNumbers.length > 0 && (token || fixture)) {
+  if (uniqueNumbers.length > 0 && (token || fixture || requireRemote)) {
     const apiBase = (process.env.CHECKPOINT_GITHUB_API_BASE || 'https://api.github.com').replace(/\/$/, '');
 
     for (const number of uniqueNumbers) {
