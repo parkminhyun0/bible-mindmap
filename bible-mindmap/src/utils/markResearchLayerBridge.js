@@ -1,6 +1,7 @@
 import { BOOK_CONTEXTS } from '../data/contextRegistry.js';
 
 const PANEL_ID = 'mark-research-layer-test';
+const REOPEN_ID = 'mark-research-reopen-test';
 const STYLE_CLASS = 'mark-research-layout-test';
 const MARK_CONTEXT = BOOK_CONTEXTS.Mark;
 
@@ -92,6 +93,7 @@ function renderPanel(panel, chapter, modal) {
   panel.querySelector('.mark-research-close')?.addEventListener('click', () => {
     modal.dataset.markResearchDismissed = 'true';
     detach(modal);
+    ensureReopenButton(modal);
   });
   panel.querySelectorAll('.mark-research-anchor').forEach((button) => {
     button.addEventListener('click', () => {
@@ -136,10 +138,30 @@ function installResize(layout, left, panel, right) {
   if (right) layout.insertBefore(second, right);
 }
 
+function ensureReopenButton(modal) {
+  const left = modal.querySelector('.at-modal__content');
+  const layout = left?.parentElement;
+  if (!left || !layout || !isMarkActive(modal) || layout.querySelector(`#${REOPEN_ID}`)) return;
+
+  const button = document.createElement('button');
+  button.id = REOPEN_ID;
+  button.type = 'button';
+  button.textContent = '본문 구조 다시 열기';
+  button.setAttribute('aria-label', '마가복음 본문 구조 다시 열기');
+  button.style.cssText = 'position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:41;min-width:148px;min-height:44px;padding:10px 14px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:900;box-shadow:0 8px 24px rgba(15,23,42,.18);cursor:pointer;';
+  button.addEventListener('click', () => {
+    delete modal.dataset.markResearchDismissed;
+    button.remove();
+    attach(modal);
+  });
+  layout.appendChild(button);
+}
+
 function attach(modal) {
   const left = modal.querySelector('.at-modal__content');
   const layout = left?.parentElement;
   if (!left || !layout || !isMarkActive(modal) || modal.dataset.markResearchDismissed === 'true') return false;
+  layout.querySelector(`#${REOPEN_ID}`)?.remove();
   let panel = layout.querySelector(`#${PANEL_ID}`);
   if (!panel) {
     panel = document.createElement('section');
@@ -174,7 +196,10 @@ export function installMarkResearchLayerBridge() {
     document.querySelectorAll('.at-modal--context').forEach((modal) => {
       if (!isMarkActive(modal)) {
         delete modal.dataset.markResearchDismissed;
+        modal.querySelector(`#${REOPEN_ID}`)?.remove();
         detach(modal);
+      } else if (modal.dataset.markResearchDismissed === 'true') {
+        ensureReopenButton(modal);
       } else {
         attach(modal);
       }
