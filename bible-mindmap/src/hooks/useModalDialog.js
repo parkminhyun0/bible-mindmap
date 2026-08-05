@@ -30,27 +30,51 @@ function lockDocumentScroll() {
   const body = document.body;
   const html = document.documentElement;
   if (scrollLockCount === 0) {
+    const scrollX = window.scrollX || window.pageXOffset || 0;
+    const scrollY = window.scrollY || window.pageYOffset || 0;
     scrollSnapshot = {
+      scrollX,
+      scrollY,
       bodyOverflow: body.style.overflow,
       bodyOverscroll: body.style.overscrollBehavior,
+      bodyPosition: body.style.position,
+      bodyTop: body.style.top,
+      bodyLeft: body.style.left,
+      bodyRight: body.style.right,
+      bodyWidth: body.style.width,
       htmlOverflow: html.style.overflow,
       htmlOverscroll: html.style.overscrollBehavior,
+      htmlHeight: html.style.height,
     };
     body.style.overflow = 'hidden';
     body.style.overscrollBehavior = 'none';
+    body.style.position = 'fixed';
+    body.style.top = `-${scrollY}px`;
+    body.style.left = `-${scrollX}px`;
+    body.style.right = '0';
+    body.style.width = '100%';
     html.style.overflow = 'hidden';
     html.style.overscrollBehavior = 'none';
+    html.style.height = '100%';
   }
   scrollLockCount += 1;
 
   return () => {
     scrollLockCount = Math.max(0, scrollLockCount - 1);
     if (scrollLockCount !== 0 || !scrollSnapshot) return;
-    body.style.overflow = scrollSnapshot.bodyOverflow;
-    body.style.overscrollBehavior = scrollSnapshot.bodyOverscroll;
-    html.style.overflow = scrollSnapshot.htmlOverflow;
-    html.style.overscrollBehavior = scrollSnapshot.htmlOverscroll;
+    const snapshot = scrollSnapshot;
+    body.style.overflow = snapshot.bodyOverflow;
+    body.style.overscrollBehavior = snapshot.bodyOverscroll;
+    body.style.position = snapshot.bodyPosition;
+    body.style.top = snapshot.bodyTop;
+    body.style.left = snapshot.bodyLeft;
+    body.style.right = snapshot.bodyRight;
+    body.style.width = snapshot.bodyWidth;
+    html.style.overflow = snapshot.htmlOverflow;
+    html.style.overscrollBehavior = snapshot.htmlOverscroll;
+    html.style.height = snapshot.htmlHeight;
     scrollSnapshot = null;
+    window.scrollTo(snapshot.scrollX, snapshot.scrollY);
   };
 }
 
@@ -121,7 +145,6 @@ export default function useModalDialog({
         const activeDialog = activeElement instanceof Element
           ? activeElement.closest('[role="dialog"]')
           : null;
-        // A nested dialog owns its own keyboard lifecycle while focus is inside it.
         if (activeDialog && activeDialog !== dialog && !dialog.contains(activeDialog)) return;
 
         if (event.key === 'Escape') {
