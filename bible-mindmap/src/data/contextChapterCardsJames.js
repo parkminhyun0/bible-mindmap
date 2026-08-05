@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_HEB } from './contextChapterCardsHebrews.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_JAS = {
+  ...CONTEXT_CHAPTER_CARDS_HEB,
   'Jas:1': C('🌱', '서신 · 시험 속 인내와 말씀을 행하는 믿음', [
     '2-8절에서 여러 시험·인내·온전함·지혜를 구함·의심하지 않음이 어떻게 연결되는지 살펴보세요.',
     '9-18절에서 낮은 형제와 부한 자·시험과 유혹·욕심과 죄와 사망·위로부터 오는 좋은 선물과 말씀으로 낳으심을 대조하세요.',
