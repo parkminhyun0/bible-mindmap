@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "stage": "A6",
-  "auditedAt": "2026-08-04",
+  "auditedAt": "2026-08-05",
   "baseline": {
     "mainCommit": "0c550ae60d0e4351601f011fccf354384c682faa",
     "openIssues": 0,
@@ -16,8 +16,8 @@
     "canonicalConceptCount": 72,
     "canonicalUsageMapCount": 72,
     "canonicalUsagePendingCount": 0,
-    "chapterCardCount": 1106,
-    "chapterCardMarkerChecked": 2304,
+    "chapterCardCount": 1110,
+    "chapterCardMarkerChecked": 2316,
     "chapterCardMarkerMissing": 39,
     "chapterCardMarkerMissingRatePercent": 1.7
   },
@@ -76,7 +76,7 @@
       "status": "monitored",
       "category": "original-language-data",
       "title": "관찰카드 원어 마커 39건 표기·정규화 검토",
-      "rationale": "2,304개 마커 중 39개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
+      "rationale": "2,316개 마커 중 39개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
       "evidence": [
         "scripts/verify-chapter-card-markers.mjs",
         "public/data/lex"
