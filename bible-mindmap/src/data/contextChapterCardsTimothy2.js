@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_TITUS } from './contextChapterCardsTitus.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_2TIM = {
+  ...CONTEXT_CHAPTER_CARDS_TITUS,
   '2Tim:1': C('🔥', '서신 · 복음의 맡은 것을 지키는 담대한 증언', [
     '1-7절에서 조상의 신앙·디모데의 거짓 없는 믿음·은사의 불일 듯함·두려움이 아닌 능력과 사랑과 절제의 영이 어떻게 연결되는지 보세요.',
     '8-14절에서 복음을 부끄러워하지 않음·고난에 참여함·은혜로 주신 구원·그리스도의 나타나심·아름다운 것을 성령으로 지킴의 흐름을 살펴보세요.',
