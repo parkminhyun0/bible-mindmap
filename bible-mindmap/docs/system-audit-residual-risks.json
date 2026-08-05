@@ -16,9 +16,9 @@
     "canonicalConceptCount": 72,
     "canonicalUsageMapCount": 72,
     "canonicalUsagePendingCount": 0,
-    "chapterCardCount": 1114,
-    "chapterCardMarkerChecked": 2328,
-    "chapterCardMarkerMissing": 39,
+    "chapterCardCount": 1119,
+    "chapterCardMarkerChecked": 2343,
+    "chapterCardMarkerMissing": 40,
     "chapterCardMarkerMissingRatePercent": 1.7
   },
   "risks": [
@@ -75,8 +75,8 @@
       "severity": "P2",
       "status": "monitored",
       "category": "original-language-data",
-      "title": "관찰카드 원어 마커 39건 표기·정규화 검토",
-      "rationale": "2,328개 마커 중 39개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
+      "title": "관찰카드 원어 마커 40건 표기·정규화 검토",
+      "rationale": "2,343개 마커 중 40개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
       "evidence": [
         "scripts/verify-chapter-card-markers.mjs",
         "public/data/lex"
@@ -130,7 +130,7 @@
       "rationale": "production build와 기능 검증은 통과하지만 일부 초기 bundle이 권장 크기를 초과해 향후 lazy loading·manualChunks 검토가 필요하다.",
       "evidence": [
         "vite.config.js",
-        "Pages deploy build log 30839522394"
+        ".github/workflows/deploy.yml"
       ],
       "guard": "production build·11개 Chromium smoke·Pages live asset 검증을 유지하고 기능을 축소하지 않는 범위에서 최적화"
     }
