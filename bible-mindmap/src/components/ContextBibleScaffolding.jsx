@@ -299,8 +299,8 @@ export function ContextBibleScaffoldingBar({
   onSelectCourse, onExitCourse, onStepClick, onSelectLens,
   onReopenOnboarding,
 }) {
-  // 모바일에선 기본 접힘 — 본문 스크롤 영역 확보. 데스크톱은 기본 펼침.
-  const [expanded, setExpanded] = useState(!isMobile);
+  // 기본 접힘 — 본문 스크롤 영역 확보. 사용자가 '펼치기'로 선택적으로 연다.
+  const [expanded, setExpanded] = useState(false);
   const selectedLens = useMemo(() => findLens(selectedLensId, CONTEXT_STUDY_LENSES), [selectedLensId]);
   const recommendedLensIds = activeCourse?.recommendedLensIds || [];
 
@@ -324,16 +324,20 @@ export function ContextBibleScaffoldingBar({
           onClick={() => setExpanded((v) => !v)}
           style={{
             flex: 1, display: 'flex', alignItems: 'center', gap: 6,
-            padding: '5px 8px', border: 'none', background: 'transparent',
-            cursor: 'pointer', fontSize: 11, fontWeight: 700, color: '#92400e',
+            padding: expanded ? '5px 8px' : '7px 10px',
+            border: expanded ? 'none' : '1px solid #b91c1c',
+            background: expanded ? 'transparent' : '#dc2626',
+            cursor: 'pointer', fontSize: 11, fontWeight: 800,
+            color: expanded ? '#92400e' : '#ffffff',
             borderRadius: 6, textAlign: 'left',
+            boxShadow: expanded ? 'none' : '0 1px 3px rgba(220,38,38,.35)',
           }}
         >
           <span>🎓 학습 스캐폴딩</span>
-          <span style={{ fontSize: 9, color: '#a16207', fontWeight: 600 }}>
+          <span style={{ fontSize: 9, color: expanded ? '#a16207' : 'rgba(255,255,255,.85)', fontWeight: 600 }}>
             {activeCourse ? `· 진행 중: ${activeCourse.title}` : '· 코스·렌즈·관찰 카드'}
           </span>
-          <span style={{ marginLeft: 'auto', fontSize: 10, color: '#a16207' }}>{expanded ? '접기 ▲' : '펼치기 ▼'}</span>
+          <span style={{ marginLeft: 'auto', fontSize: expanded ? 10 : 11.5, fontWeight: expanded ? 500 : 800, color: expanded ? '#a16207' : '#ffffff' }}>{expanded ? '접기 ▲' : '펼치기 ▼'}</span>
         </button>
         {onReopenOnboarding && (
           <button
