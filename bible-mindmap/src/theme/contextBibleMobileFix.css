@@ -2,6 +2,16 @@
    공통 Apple 모달 규칙이 titlebar 바로 다음 div를 본문으로 오인해
    flex: 1을 적용하면서 비평/범례 바가 남은 높이를 차지하던 문제를 막는다. */
 @media (max-width: 767px) {
+  .at-modal--mobile.at-modal--context {
+    width: 100% !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    max-height: 100dvh !important;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+    transform: none !important;
+  }
+
   /* 제목바 바로 아래 비평·범례 제어 바는 콘텐츠 높이만 사용한다. */
   .at-modal--mobile.at-modal--context > .at-modal__titlebar + div {
     flex: 0 0 auto !important;
@@ -36,11 +46,23 @@
     box-sizing: border-box !important;
   }
 
-  /* 실제 본문 스크롤 래퍼만 남은 화면 높이를 차지한다. */
+  /* 외부 레이아웃은 고정하고 실제 성경 본문만 세로 스크롤한다. */
   .at-modal--mobile.at-modal--context > div:has(> .at-modal__content) {
     flex: 1 1 auto !important;
     height: auto !important;
     min-height: 0 !important;
     overflow: hidden !important;
+    overscroll-behavior: none !important;
+  }
+
+  .at-modal--mobile.at-modal--context .at-modal__content {
+    min-height: 0 !important;
+    max-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: none !important;
+    overscroll-behavior-y: contain !important;
+    touch-action: pan-y !important;
   }
 }
