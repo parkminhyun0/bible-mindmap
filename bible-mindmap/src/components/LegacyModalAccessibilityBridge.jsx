@@ -11,6 +11,7 @@ const FOCUSABLE = [
 ].join(',');
 
 const MANUAL_DIALOG_SELECTOR = '[role="dialog"][aria-label="사용자 매뉴얼"]';
+const MOBILE_CONTEXT_SELECTOR = '.at-modal--mobile.at-modal--context';
 
 function visibleFocusable(dialog) {
   return Array.from(dialog.querySelectorAll(FOCUSABLE)).filter((element) => {
@@ -22,16 +23,80 @@ function visibleFocusable(dialog) {
   });
 }
 
+function collectOuterScrollSnapshots(dialog) {
+  const snapshots = [];
+  let current = dialog.parentElement;
+  while (current && current !== document.body && current !== document.documentElement) {
+    snapshots.push({
+      element: current,
+      scrollTop: current.scrollTop,
+      scrollLeft: current.scrollLeft,
+    });
+    current = current.parentElement;
+  }
+  return snapshots;
+}
+
 export default function LegacyModalAccessibilityBridge() {
   useEffect(() => {
     let activeDialog = null;
     let cleanupActiveDialog = () => {};
+    const contextCleanups = new Map();
 
     const deactivate = () => {
       const cleanup = cleanupActiveDialog;
       cleanupActiveDialog = () => {};
       activeDialog = null;
       cleanup();
+    };
+
+    const attachContextStabilizers = () => {
+      const liveDialogs = new Set(document.querySelectorAll(MOBILE_CONTEXT_SELECTOR));
+
+      for (const [dialog, cleanup] of contextCleanups) {
+        if (!liveDialogs.has(dialog) || !dialog.isConnected) {
+          cleanup();
+          contextCleanups.delete(dialog);
+        }
+      }
+
+      liveDialogs.forEach((dialog) => {
+        if (!(dialog instanceof HTMLElement) || contextCleanups.has(dialog)) return;
+
+        const windowX = window.scrollX;
+        const windowY = window.scrollY;
+        const outerSnapshots = collectOuterScrollSnapshots(dialog);
+        let firstFrame = 0;
+        let secondFrame = 0;
+
+        const restoreOuterPosition = () => {
+          window.scrollTo(windowX, windowY);
+          outerSnapshots.forEach(({ element, scrollTop, scrollLeft }) => {
+            if (!element.isConnected) return;
+            element.scrollTop = scrollTop;
+            element.scrollLeft = scrollLeft;
+          });
+        };
+
+        const onClick = (event) => {
+          const target = event.target instanceof Element ? event.target : null;
+          if (!target?.closest('button')) return;
+
+          window.cancelAnimationFrame(firstFrame);
+          window.cancelAnimationFrame(secondFrame);
+          firstFrame = window.requestAnimationFrame(() => {
+            restoreOuterPosition();
+            secondFrame = window.requestAnimationFrame(restoreOuterPosition);
+          });
+        };
+
+        dialog.addEventListener('click', onClick, true);
+        contextCleanups.set(dialog, () => {
+          dialog.removeEventListener('click', onClick, true);
+          window.cancelAnimationFrame(firstFrame);
+          window.cancelAnimationFrame(secondFrame);
+        });
+      });
     };
 
     const attachManual = () => {
@@ -136,14 +201,18 @@ export default function LegacyModalAccessibilityBridge() {
       const dialog = document.querySelector(MANUAL_DIALOG_SELECTOR);
       if (dialog) attachManual();
       else if (activeDialog) deactivate();
+      attachContextStabilizers();
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
     attachManual();
+    attachContextStabilizers();
 
     return () => {
       observer.disconnect();
       deactivate();
+      contextCleanups.forEach((cleanup) => cleanup());
+      contextCleanups.clear();
     };
   }, []);
 
