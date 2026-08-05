@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_COL } from './contextChapterCardsColossians.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_PHIL = {
+  ...CONTEXT_CHAPTER_CARDS_COL,
   'Phil:1': C('⛓️', '서신 · 복음의 진보와 합당한 삶', [
     '1-11절에서 감사·교제·기도가 어떻게 연결되는지 확인하고, 특히 “복음에 참여함”이 관계의 중심어로 기능하는지 살펴보세요.',
     '12-26절에서 투옥과 대적이 복음의 진보로 재해석되는 논리를 따라가며 삶과 죽음에 대한 바울의 그리스도 중심적 기준을 관찰하세요.',
