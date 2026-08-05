@@ -16,8 +16,8 @@
     "canonicalConceptCount": 72,
     "canonicalUsageMapCount": 72,
     "canonicalUsagePendingCount": 0,
-    "chapterCardCount": 1128,
-    "chapterCardMarkerChecked": 2370,
+    "chapterCardCount": 1132,
+    "chapterCardMarkerChecked": 2382,
     "chapterCardMarkerMissing": 40,
     "chapterCardMarkerMissingRatePercent": 1.7
   },
@@ -39,18 +39,9 @@
         "runId": 30842224158,
         "selectedDimensions": 2048,
         "qualityMaintainedAt384": false,
-        "recallAt3": {
-          "2048": 1,
-          "384": 0.96875
-        },
-        "ndcgAt3": {
-          "2048": 0.9949825493217617,
-          "384": 0.9758216995478411
-        },
-        "hardNegativeRate": {
-          "2048": 0.1875,
-          "384": 0.375
-        },
+        "recallAt3": { "2048": 1, "384": 0.96875 },
+        "ndcgAt3": { "2048": 0.9949825493217617, "384": 0.9758216995478411 },
+        "hardNegativeRate": { "2048": 0.1875, "384": 0.375 },
         "productionIndexChanged": false,
         "existingDbModified": false
       }
@@ -76,11 +67,8 @@
       "status": "monitored",
       "category": "original-language-data",
       "title": "관찰카드 원어 마커 40건 표기·정규화 검토",
-      "rationale": "2,370개 마커 중 40개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
-      "evidence": [
-        "scripts/verify-chapter-card-markers.mjs",
-        "public/data/lex"
-      ],
+      "rationale": "2,382개 마커 중 40개(1.7%)가 장별 lex 표면형과 직접 일치하지 않는다. 현재 lex 부재 장은 0개이며, 대부분 철자·굴절·분절·versification 차이 검토 대상이다.",
+      "evidence": ["scripts/verify-chapter-card-markers.mjs", "public/data/lex"],
       "guard": "현재 수치 고정, 미일치율 2% 초과 차단, 책·장·스키마·lex 부재는 즉시 실패"
     },
     {
@@ -90,9 +78,7 @@
       "category": "biblical-structure",
       "title": "사도행전 28장 의도적 종결 카드",
       "rationale": "사도행전 28:31의 열린 결말을 보존하기 위해 nextChapterPreview를 인위적으로 생성하지 않는다.",
-      "evidence": [
-        "scripts/verify-chapter-card-markers.mjs:TERMINAL_PREVIEW_EXCEPTIONS"
-      ],
+      "evidence": ["scripts/verify-chapter-card-markers.mjs:TERMINAL_PREVIEW_EXCEPTIONS"],
       "guard": "Acts:28 한 건만 이유가 명시된 예외로 허용하고 다른 누락은 실패"
     },
     {
@@ -102,10 +88,7 @@
       "category": "versification",
       "title": "로마서 16장 최종 송영 절 번호 차이",
       "rationale": "STEPBible TAGNT는 24절까지 인덱싱하지만 KRV 등 앱 기준 역본은 최종 송영을 25~27절로 제공한다.",
-      "evidence": [
-        "scripts/verify-curated-chapters.mjs:VERSE_MAX_OVERRIDES",
-        "scripts/verify-canonical-concepts.mjs"
-      ],
+      "evidence": ["scripts/verify-curated-chapters.mjs:VERSE_MAX_OVERRIDES", "scripts/verify-canonical-concepts.mjs"],
       "guard": "Rom:16만 최대 27절로 명시 허용하고 실제 curated·정경 참조 범위는 계속 검증"
     },
     {
@@ -115,10 +98,7 @@
       "category": "development-tooling",
       "title": "glob 11.x deprecation 경고",
       "rationale": "npm 설치 시 개발 도구의 전이 의존성에서 deprecation 안내가 출력되지만 production/full npm audit high·critical은 0건이다.",
-      "evidence": [
-        "package-lock.json",
-        ".github/workflows/validate-pr.yml:security-audit"
-      ],
+      "evidence": ["package-lock.json", ".github/workflows/validate-pr.yml:security-audit"],
       "guard": "production과 full npm audit high·critical 0건 하드 게이트 및 lockfile-only 변경 원칙"
     },
     {
@@ -128,10 +108,7 @@
       "category": "frontend-performance",
       "title": "Vite 대형 chunk 경고",
       "rationale": "production build와 기능 검증은 통과하지만 일부 초기 bundle이 권장 크기를 초과해 향후 lazy loading·manualChunks 검토가 필요하다.",
-      "evidence": [
-        "vite.config.js",
-        ".github/workflows/deploy.yml"
-      ],
+      "evidence": ["vite.config.js", ".github/workflows/deploy.yml"],
       "guard": "production build·11개 Chromium smoke·Pages live asset 검증을 유지하고 기능을 축소하지 않는 범위에서 최적화"
     }
   ]
