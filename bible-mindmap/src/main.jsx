@@ -6,13 +6,16 @@ import './theme/sidebarScrollFix.css'
 import './theme/appleCanvas.css'
 import './theme/appleModalInterior.css'
 import './theme/contextBibleMobileFix.css'
+import './theme/markResearchLayerTest.css'
 import App from './App.jsx'
 import AppErrorBoundary from './components/AppErrorBoundary.jsx'
 import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilityBridge.jsx'
 import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
+import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
+const MARK_RESEARCH_PREVIEW_ENABLED = new URLSearchParams(window.location.search).get('markResearchPreview') === '1'
 
 function applyInitialTheme() {
   let theme = 'light'
@@ -28,6 +31,7 @@ function applyInitialTheme() {
 applyInitialTheme()
 installVisitorCounterRepair()
 installCrossReferenceToolbarBridge()
+if (MARK_RESEARCH_PREVIEW_ENABLED) installMarkResearchLayerBridge()
 
 const root = document.getElementById('root')
 
