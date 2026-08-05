@@ -15,6 +15,7 @@ import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolba
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
+const MARK_RESEARCH_PREVIEW_ENABLED = new URLSearchParams(window.location.search).get('markResearchPreview') === '1'
 
 function applyInitialTheme() {
   let theme = 'light'
@@ -30,7 +31,7 @@ function applyInitialTheme() {
 applyInitialTheme()
 installVisitorCounterRepair()
 installCrossReferenceToolbarBridge()
-installMarkResearchLayerBridge()
+if (MARK_RESEARCH_PREVIEW_ENABLED) installMarkResearchLayerBridge()
 
 const root = document.getElementById('root')
 
