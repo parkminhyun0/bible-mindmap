@@ -9,17 +9,19 @@ metadata:
 
 ## 마지막 동기화
 - 시각: 2026-08-05 KST
-- 기준 main: `34ae12c8bc5913b5a78c608a205848acd95ff13d`
-- 배포: `pages-deploy-pipeline`·`pages-verify-deploy` 성공
+- 컨텍스트 프로토콜: PR #170 병합 완료
+- 기준 병합: `02a427b40e93fc384dc8f69bf74f9592e4947665`
+- 실제 최신 `main`과 Pages 상태는 새 세션 시작 시 반드시 다시 조회한다.
 
 ## 지금 진행 중
-자비스가 과거 기억보다 최신 GitHub·CI·Pages·Notion 변화를 우선하도록 `memory/SYSTEM_DELTA.md` 기반 빠른 동기화 프로토콜을 도입 중이다.
+PR #169 히브리서 1–13장 관찰 카드의 A6 감사 집계 불일치를 바로잡아 CI·병합·Pages·Notion까지 완료하는 작업이다.
 
 ## 즉시 다음 단계
-1. `memory/SYSTEM_DELTA.md`와 `MEMORY.md` 포인터 변경을 검토한다.
-2. 전용 PR의 CI를 확인하고 병합한다.
-3. 병합 후 Notion 대시보드·세션 재개 프로토콜·최근 수정 사항에 SHA와 사용법을 기록한다.
-4. 이후 원래 활성 작업인 PR #169의 A6 집계 불일치를 수정한다.
+1. PR #169 변경 파일에서 A6 감사 등록값을 찾는다.
+2. `chapterCardCount`를 실제 `1153`, `chapterCardMarkerChecked`를 실제 `2445`로 정정한다.
+3. 전용 verifier·전체 build·브라우저 smoke를 재실행한다.
+4. 성공 시 병합하고 GitHub Pages·Live SHA를 확인한다.
+5. Notion 최근 수정 사항·대시보드·관찰 카드 현황을 실제 결과로 갱신한다.
 
 ## 현재 활성·차단
 - PR #169 히브리서 1–13장: CI 실패.
@@ -37,4 +39,4 @@ metadata:
 - 완료: 자동 검증·배포 95%, 박 목사님 화면 확인 후 100%.
 
 ## 재개 행동
-`SYSTEM_DELTA.md`를 읽고 `git status` → 최신 main → 열린 PR → CI/Pages → Notion 핵심 페이지 순으로 실제 상태를 대조한 뒤 7줄 브리핑 후 요청 작업을 시작한다.
+먼저 `SYSTEM_DELTA.md`를 읽고 `git status` → 최신 main → 열린 PR → CI/Pages → Notion 핵심 페이지 순으로 실제 상태를 대조한다. 7줄 브리핑 후 사용자가 요청한 작업의 첫 단계부터 바로 실행한다.
