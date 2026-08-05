@@ -49,6 +49,41 @@ function sourceDialog(chapter, chapterData) {
   dialog.showModal();
 }
 
+// 마가복음 전체 구조(고정) — macro.sections/pivots/arcs와 meta.theme를 그대로 표출한다.
+function macroCard(chapter) {
+  const cv2 = MARK_CONTEXT?.contextV2 || {};
+  const macro = cv2.macro || {};
+  const meta = cv2.meta || {};
+  const sections = macro.sections || [];
+  const pivots = macro.pivots || [];
+  const arcs = macro.arcs || [];
+  if (!sections.length && !arcs.length) return '';
+
+  const pv = Object.fromEntries(pivots.map((p) => [p.id, p]));
+  const bar = sections.map((s) => {
+    const active = chapter >= s.fromCh && chapter <= s.toCh;
+    return `<div class="mark-macro-seg${active ? ' is-active' : ''}" style="--seg:${s.color}">
+      <b>${s.fromCh}–${s.toCh}장</b><span>${s.label}</span></div>`;
+  }).join('');
+
+  const keyArcs = arcs.filter((a) => a.label).slice(0, 5).map((a) => {
+    const f = pv[a.from]?.label || a.from;
+    const t = pv[a.to]?.label || a.to;
+    return `<li class="mark-macro-arc" style="--arc:${a.color || '#7c3aed'}"><b>${a.label}</b><span>${f} ↔ ${t}</span></li>`;
+  }).join('');
+
+  const theme = [meta.theme, meta.themeNote].filter(Boolean).join(' · ');
+
+  return `
+    <article class="mark-research-card mark-macro-card">
+      <div class="mark-research-badges">${badge('전체 구조 · 고정', 'purple')}${badge('마가복음', 'blue')}${badge(`현재 ${chapter}장`, 'green')}</div>
+      <h3>🗂 마가복음 전체 구조</h3>
+      ${theme ? `<p class="mark-macro-theme">${theme}</p>` : ''}
+      <div class="mark-macro-bar">${bar}</div>
+      ${keyArcs ? `<div class="mark-macro-arcs-title">핵심 전환축 (Inclusio·구속사 연결)</div><ul class="mark-macro-arcs">${keyArcs}</ul>` : ''}
+    </article>`;
+}
+
 function renderPanel(panel, chapter, modal) {
   const chapterData = MARK_CONTEXT?.contextV2?.chapters?.[chapter];
   const agenda = chapterData?.agenda || MARK_CONTEXT?.meta?.chapterAgenda?.[chapter] || '장별 연구 의제가 아직 등록되지 않았습니다.';
@@ -66,6 +101,7 @@ function renderPanel(panel, chapter, modal) {
     </header>
     <div class="mark-research-notice">원어 구조·ARC 구조·문맥 분석·내부 큐레이션 기반 참고용 자료 · 사용자 교차 검증 필요</div>
     <div class="mark-research-scroll" data-modal-scroll-region="true">
+      ${macroCard(chapter)}
       <article class="mark-research-card">
         <div class="mark-research-badges">${badge('프로젝트 분석', 'blue')}${badge(quality, 'green')}${badge('AI 자동확정 아님', 'gray')}</div>
         <h3>장별 연구 의제</h3>

@@ -75,3 +75,19 @@
   .mark-research-source-dialog{max-height:86dvh;overflow:auto}
   #mark-research-reopen-test{position:fixed!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;top:auto!important;right:max(12px,env(safe-area-inset-right))!important;bottom:calc(96px + env(safe-area-inset-bottom))!important;z-index:2147483647!important}
 }
+
+/* ── 마가복음 전체 구조 (고정 카드) ── */
+.mark-macro-card{border-color:#ddd6fe;background:linear-gradient(180deg,#faf5ff,#fff)}
+.mark-macro-theme{margin:2px 0 9px;font-size:10.5px;font-weight:800;color:#6d28d9;line-height:1.5}
+.mark-macro-bar{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.mark-macro-seg{display:flex;align-items:baseline;gap:7px;padding:6px 8px;border-radius:8px;border:1px solid #eee;border-left:4px solid var(--seg);background:#fff}
+.mark-macro-seg b{flex:0 0 auto;font-size:10px;font-weight:900;color:var(--seg)}
+.mark-macro-seg span{font-size:10px;font-weight:700;color:#475569;line-height:1.4}
+.mark-macro-seg.is-active{background:color-mix(in srgb,var(--seg) 12%,#fff);border-color:var(--seg);box-shadow:0 1px 6px color-mix(in srgb,var(--seg) 22%,transparent)}
+.mark-macro-seg.is-active b{font-size:10.5px}
+.mark-macro-seg.is-active span{color:#1e293b;font-weight:800}
+.mark-macro-arcs-title{font-size:9.5px;font-weight:900;color:#7c3aed;margin:2px 0 5px;letter-spacing:.2px}
+.mark-macro-arcs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.mark-macro-arc{padding:6px 8px;border-radius:8px;background:#fbfaff;border:1px solid #ede9fe;border-left:3px solid var(--arc)}
+.mark-macro-arc b{display:block;font-size:10px;font-weight:800;color:#4c1d95;line-height:1.4}
+.mark-macro-arc span{display:block;margin-top:2px;font-size:9px;font-weight:600;color:#8b7fb8;line-height:1.4}
