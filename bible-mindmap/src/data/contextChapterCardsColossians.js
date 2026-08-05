@@ -1,3 +1,5 @@
+import { CONTEXT_CHAPTER_CARDS_1THESS } from './contextChapterCardsThessalonians1.js';
+
 const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplications, nextChapterPreview) => ({
   coverEmoji,
   genre,
@@ -8,6 +10,7 @@ const C = (coverEmoji, genre, observeThis, discourseMarkers, theologicalImplicat
 });
 
 export const CONTEXT_CHAPTER_CARDS_COL = {
+  ...CONTEXT_CHAPTER_CARDS_1THESS,
   'Col:1': C('👑', '서신 · 그리스도의 탁월성과 복음의 열매', [
     '1-14절에서 감사·기도·복음의 열매·성도의 기업이 어떻게 연결되는지 살펴보세요.',
     '15-20절에서 “그는”으로 이어지는 진술들을 따라 창조·교회·화목 안에서 그리스도의 우선성과 충만을 관찰하세요.',
