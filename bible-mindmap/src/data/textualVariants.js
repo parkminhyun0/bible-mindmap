@@ -365,9 +365,7 @@ const OSHB_BOOKS = new Set([
 // 자동 로드 대상 통합 (SBLGNT + OSHB)
 const AUTO_LOAD_BOOKS = new Set([...SBLGNT_BOOKS, ...OSHB_BOOKS])
 
-const BASE_URL = (() => {
-  try { return import.meta.env.BASE_URL || '/' } catch { return '/' }
-})()
+import { DATA_BASE } from '../config/dataBase.js';
 
 function _registerVariants(list) {
   for (const v of list) {
@@ -405,7 +403,7 @@ export function loadBookVariants(bookId) {
     return Promise.resolve()
   }
 
-  const promise = fetch(`${BASE_URL}data/variants/${bookId}.json`)
+  const promise = fetch(`${DATA_BASE}data/variants/${bookId}.json`)
     .then(r => {
       if (!r.ok) throw new Error(`variants/${bookId}.json HTTP ${r.status}`)
       return r.json()

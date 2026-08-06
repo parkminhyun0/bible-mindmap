@@ -107,6 +107,18 @@ jobs:
       - name: Build LXX-MT variants (39권 OT 셉투아긴트 vs 마소라 구조 자동 대조)
         run: node scripts/parse-lxx-mt.mjs
 
+      # 대용량 정적 데이터(lex·strongs·strongs-def·variants·places DB)는 data-dist 브랜치에
+      # 발행되어 jsDelivr CDN 으로 서빙된다. 앱 빌드에 그 CDN 베이스를 주입한다.
+      - name: Resolve data-dist CDN base
+        run: |
+          DATA_SHA="$(git ls-remote origin data-dist | cut -f1)"
+          if [ -z "$DATA_SHA" ]; then
+            echo "::error::data-dist 브랜치를 찾을 수 없음 — 데이터 발행(publish-data) 필요"
+            exit 1
+          fi
+          echo "VITE_DATA_BASE_URL=https://cdn.jsdelivr.net/gh/${{ github.repository }}@${DATA_SHA}/" >> "$GITHUB_ENV"
+          echo "data-dist SHA: ${DATA_SHA}"
+
       - name: Build app
         run: npm run build
 
@@ -119,6 +131,14 @@ jobs:
           node scripts/inject-landing-data-sources.mjs
           grep -q 'id="data-sources"' dist/index.html
           touch dist/.nojekyll
+
+      # CDN 으로 오프로드한 대용량 데이터를 Pages 아티팩트에서 제외해 경량화한다.
+      # (앱은 jsDelivr 에서 fetch. places.json fallback·context 등 소용량은 유지)
+      - name: Offload large data to CDN (trim Pages artifact)
+        run: |
+          rm -rf dist/app/data/lex dist/app/data/strongs dist/app/data/strongs-def dist/app/data/variants
+          rm -f dist/app/data/biblical-places-db.json
+          echo "trimmed dist size:"; du -sh dist
 
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -134,7 +154,8 @@ jobs:
       - uses: actions/deploy-pages@v4
         id: deployment
         with:
-          timeout: 1800000
+          # deploy-pages@v4 최대 허용치(10분). 이전의 1800000은 자동 캡되어 무효였음.
+          timeout: 600000
           error_count: 20
 
   verify:

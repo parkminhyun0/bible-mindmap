@@ -1,0 +1,74 @@
+name: Publish data-dist (CDN offload)
+
+# 대용량 정적 성경 데이터(lex·strongs·strongs-def·variants·places DB)를 생성해
+# data-dist 브랜치로 발행한다. 이 브랜치는 jsDelivr CDN 으로 서빙되어 GitHub Pages
+# 아티팩트에서 분리된다. (deploy.yml 이 이 브랜치의 최신 SHA 를 앱에 주입)
+#
+# 트리거: 데이터 생성 로직/소스가 바뀔 때만. 수동 실행도 가능.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'bible-mindmap/scripts/build-lexicon.mjs'
+      - 'bible-mindmap/scripts/build-places.mjs'
+      - 'bible-mindmap/scripts/parse-*.mjs'
+      - 'bible-mindmap/scripts/data/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-data-dist
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: bible-mindmap
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: bible-mindmap/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build lexicon data (STEPBible TAGNT + TAHOT)
+        run: node scripts/build-lexicon.mjs
+
+      - name: Build complete OT/NT biblical places database
+        run: npm run build:places
+
+      - name: Build SBLGNT apparatus variants
+        run: node scripts/parse-sblgnt.mjs
+
+      - name: Build OSHB Ketiv/Qere variants
+        run: node scripts/parse-oshb.mjs
+
+      - name: Build SP-MT variants
+        run: node scripts/parse-sp-mt.mjs
+
+      - name: Build LXX-MT variants
+        run: node scripts/parse-lxx-mt.mjs
+
+      - name: Publish generated data to data-dist branch
+        run: |
+          STAGE="$(mktemp -d)"
+          mkdir -p "$STAGE/data"
+          cp -R public/data/. "$STAGE/data/"
+          printf '# bible-mindmap · data-dist\n\nCI-generated static data served via jsDelivr. Do not edit by hand.\n' > "$STAGE/README.md"
+          cd "$STAGE"
+          git init -q
+          git checkout -q -b data-dist
+          git -c user.email="actions@github.com" -c user.name="github-actions[bot]" add -A
+          git -c user.email="actions@github.com" -c user.name="github-actions[bot]" commit -q -m "data-dist: publish static bible data ($(date -u +%Y-%m-%dT%H:%M:%SZ))"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" data-dist
+          echo "published data-dist: $(git rev-parse HEAD)"
