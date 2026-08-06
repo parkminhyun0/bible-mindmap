@@ -76,7 +76,7 @@ sourceFiles.forEach((absolutePath) => {
   if (observerCount) observerInventory.push({ path: relativePath, count: observerCount });
 
   source.split('\n').forEach((line, index) => {
-    const match = line.match(/\b(window|document)\.addEventListener\(\s*['"](scroll|touchmove|resize|pointermove)['"]/u);
+    const match = line.match(/\b(window(?:\.visualViewport\?)?|document)\.addEventListener\(\s*['"](scroll|touchmove|resize|pointermove)['"]/u);
     if (!match) return;
     highFrequencyGlobalListeners.push({
       path: relativePath,
@@ -97,6 +97,8 @@ const performanceSources = {
   canonicalSuggestion: read('../src/components/CanonicalConceptSuggestionPanel.jsx'),
   canonicalSemantic: read('../src/components/CanonicalSemanticComparisonPanel.jsx'),
   canonicalLauncher: read('../src/components/CanonicalConceptLauncher.jsx'),
+  contextScaffolding: read('../src/components/ContextBibleScaffolding.jsx'),
+  modalDialog: read('../src/hooks/useModalDialog.js'),
 };
 
 if (/characterData\s*:\s*true/u.test(performanceSources.threeColumn)) {
@@ -112,6 +114,9 @@ if (!performanceSources.threeColumn.includes('activeObserver.disconnect()')
 if (!performanceSources.threeColumn.includes('passive: true')
   || !performanceSources.threeColumn.includes('moveFrame')) {
   fail('markResearchThreeColumnRepair: pointermove 프레임 코얼레싱/passive 계약 누락');
+}
+if (!performanceSources.threeColumn.includes("layout.dataset.markThreeColumnReady === 'true'")) {
+  fail('markResearchThreeColumnRepair: 완성된 3열 DOM 멱등 가드 누락');
 }
 
 if (/observer\.observe\(document\.body/u.test(performanceSources.layerBridge)) {
@@ -132,6 +137,10 @@ if (!performanceSources.crossReference.includes('nearestSharedContainer')
   || !performanceSources.crossReference.includes('activeObserver.disconnect()')
   || !performanceSources.crossReference.includes('if (frame) return')) {
   fail('crossReferenceToolbarBridge: 공통 컨테이너 scoped observer/프레임 코얼레싱 계약 누락');
+}
+if (!performanceSources.crossReference.includes('setAttributeIfChanged')
+  || !performanceSources.crossReference.includes('button.textContent !== nextLabel')) {
+  fail('crossReferenceToolbarBridge: observer 자기발화 방지 멱등 가드 누락');
 }
 
 if (!performanceSources.legacyModal.includes('mutationContainsTrackedDialog')
@@ -160,6 +169,20 @@ for (const [label, source] of [
 if (!performanceSources.canonicalLauncher.includes('observer.disconnect()')) {
   fail('CanonicalConceptLauncher: 일회형 상세 열기 observer self-disconnect 계약 누락');
 }
+if (!performanceSources.contextScaffolding.includes('observer.disconnect()')
+  || !performanceSources.contextScaffolding.includes('dialog || document.body')) {
+  fail('ContextBibleScaffolding: dialog 우선 scoped observer·cleanup 계약 누락');
+}
+
+if (!performanceSources.modalDialog.includes('scheduleViewportSync')
+  || !performanceSources.modalDialog.includes('if (viewportFrame) return')
+  || !performanceSources.modalDialog.includes('activeScrollArea')
+  || !performanceSources.modalDialog.includes("visualViewport?.addEventListener('scroll', scheduleViewportSync, { passive: true })")) {
+  fail('useModalDialog: visualViewport 프레임 코얼레싱·터치 대상 캐시·passive viewport listener 계약 누락');
+}
+if (!performanceSources.modalDialog.includes("document.addEventListener('touchmove', onTouchMove, { passive: false")) {
+  fail('useModalDialog: 배경 스크롤 차단용 의도적 non-passive touchmove 계약 누락');
+}
 
 console.log('모바일 안전 verifier · Sidebar 언마운트 · zIndex · 스크롤 · 런타임 성능 점검');
 console.log(`[mobile-performance-audit] sourceFiles=${sourceFiles.length} mutationObserverFiles=${observerInventory.length} mutationObservers=${observerInventory.reduce((sum, item) => sum + item.count, 0)}`);
@@ -170,9 +193,11 @@ console.log(`[mobile-performance-audit] globalHighFrequencyListeners=${highFrequ
 highFrequencyGlobalListeners.forEach((item) => {
   console.log(`[mobile-performance-audit:listener] ${item.path}:${item.line} ${item.target}.${item.event} passiveOnLine=${item.passiveOnLine}`);
 });
-console.log('[mobile-performance-audit:classification] persistent-scoped=markResearchThreeColumnRepair,markResearchLayerBridge,crossReferenceToolbarBridge,LegacyModalAccessibilityBridge');
+console.log('[mobile-performance-audit:classification] persistent-scoped=markResearchThreeColumnRepair,markResearchLayerBridge,crossReferenceToolbarBridge,LegacyModalAccessibilityBridge,ContextBibleScaffolding');
 console.log('[mobile-performance-audit:classification] bounded=visitorCounterRepair,CanonicalConceptLauncher');
 console.log('[mobile-performance-audit:classification] coalesced-existing=CanonicalConceptSuggestionPanel,CanonicalSemanticComparisonPanel');
+console.log('[mobile-performance-audit:classification] touchmove-nonpassive-intentional=useModalDialog(background-scroll-lock)');
+console.log('[mobile-performance-audit:classification] viewport-coalesced=useModalDialog.visualViewport');
 
 if (issues.length) {
   console.error('✗ 모바일 안전 검증 실패');
