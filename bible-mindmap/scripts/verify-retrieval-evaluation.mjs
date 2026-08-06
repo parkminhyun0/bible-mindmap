@@ -70,20 +70,33 @@ async function main() {
     clock += 2;
     return clock;
   };
-  const retrieve = (vectorWeight) => async ({ query, topK, caseId }) => searchHybridIndex({
+  const candidateMinVectorScore = 0.25;
+  const retrieve = ({ vectorWeight, minVectorScore = -1 }) => async ({ query, topK, caseId }) => searchHybridIndex({
     query,
     index,
     queryEmbedding: queryEmbedding(caseId),
     topK,
     keywordWeight: 1,
     vectorWeight,
+  }).filter((result) => result.score.vector >= minVectorScore);
+
+  const baseline = await evaluateRetriever({
+    name: 'keyword-baseline',
+    cases,
+    retrieve: retrieve({ vectorWeight: 0 }),
+    k: config.k,
+    now,
+  });
+  const candidate = await evaluateRetriever({
+    name: 'hybrid-rrf-confidence-floor',
+    cases,
+    retrieve: retrieve({ vectorWeight: 1, minVectorScore: candidateMinVectorScore }),
+    k: config.k,
+    now,
   });
 
-  const baseline = await evaluateRetriever({ name: 'keyword-baseline', cases, retrieve: retrieve(0), k: config.k, now });
-  const candidate = await evaluateRetriever({ name: 'hybrid-rrf', cases, retrieve: retrieve(1), k: config.k, now });
-
   console.log(
-    `[retrieval-report] cases=${candidate.caseCount} types=${queryTypes.size} hardNegativeCoverage=${hardNegativeCoverage.toFixed(4)} Recall@${config.k}=${candidate.recallAtK.toFixed(4)} MRR=${candidate.mrr.toFixed(4)} nDCG@${config.k}=${candidate.ndcgAtK.toFixed(4)} hardNegativeRate=${candidate.hardNegativeRate.toFixed(4)} failureRate=${candidate.failureRate.toFixed(4)} p95LatencyMs=${candidate.latencyMs.p95.toFixed(2)}`,
+    `[retrieval-report] profile=${candidate.name} minVectorScore=${candidateMinVectorScore.toFixed(2)} cases=${candidate.caseCount} types=${queryTypes.size} hardNegativeCoverage=${hardNegativeCoverage.toFixed(4)} Recall@${config.k}=${candidate.recallAtK.toFixed(4)} MRR=${candidate.mrr.toFixed(4)} nDCG@${config.k}=${candidate.ndcgAtK.toFixed(4)} hardNegativeRate=${candidate.hardNegativeRate.toFixed(4)} failureRate=${candidate.failureRate.toFixed(4)} p95LatencyMs=${candidate.latencyMs.p95.toFixed(2)}`,
   );
   Object.entries(candidate.segments).forEach(([queryType, segment]) => {
     console.log(
@@ -116,6 +129,7 @@ async function main() {
   assert(Object.keys(candidate.segments).length === queryTypes.size, 'all query types must be reported as segments');
   assert(candidate.rows.every((row) => row.hits.length === row.relevantIds.length), 'each case must retrieve every relevant document within top K');
   assert(candidate.rows.every((row) => row.hardNegativeHits.length === 0), 'approved candidate must not return hard negatives in top K');
+  assert(candidate.rows.every((row) => row.resultIds.length === row.relevantIds.length), 'confidence floor must remove low-confidence filler results');
 
   const multiRelevant = scoreRanking(['a', 'x', 'b'], ['a', 'b'], 3);
   assert(multiRelevant.recall === 1, 'multi-relevant Recall@K must count all relevant documents');
