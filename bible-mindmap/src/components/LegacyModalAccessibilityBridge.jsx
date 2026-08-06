@@ -12,6 +12,7 @@ const FOCUSABLE = [
 
 const MANUAL_DIALOG_SELECTOR = '[role="dialog"][aria-label="사용자 매뉴얼"]';
 const MOBILE_CONTEXT_SELECTOR = '.at-modal--mobile.at-modal--context';
+const DIALOG_SELECTOR = `${MANUAL_DIALOG_SELECTOR},${MOBILE_CONTEXT_SELECTOR}`;
 
 function visibleFocusable(dialog) {
   return Array.from(dialog.querySelectorAll(FOCUSABLE)).filter((element) => {
@@ -35,6 +36,13 @@ function collectOuterScrollSnapshots(dialog) {
     current = current.parentElement;
   }
   return snapshots;
+}
+
+function mutationContainsTrackedDialog(records) {
+  return records.some((record) => [...record.addedNodes, ...record.removedNodes].some((node) => (
+    node instanceof Element
+    && (node.matches(DIALOG_SELECTOR) || node.querySelector(DIALOG_SELECTOR))
+  )));
 }
 
 export default function LegacyModalAccessibilityBridge() {
@@ -197,19 +205,43 @@ export default function LegacyModalAccessibilityBridge() {
       };
     };
 
-    const observer = new MutationObserver(() => {
+    const reconcile = () => {
       const dialog = document.querySelector(MANUAL_DIALOG_SELECTOR);
       if (dialog) attachManual();
       else if (activeDialog) deactivate();
       attachContextStabilizers();
-    });
+    };
 
-    observer.observe(document.body, { childList: true, subtree: true });
-    attachManual();
-    attachContextStabilizers();
+    const observationRoot = document.getElementById('root') || document.body;
+    let frame = 0;
+    const schedule = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = 0;
+        reconcile();
+      });
+    };
+
+    const observer = new MutationObserver((records) => {
+      if (mutationContainsTrackedDialog(records)) schedule();
+    });
+    observer.observe(observationRoot, { childList: true, subtree: true });
+
+    // ManualModal은 document.body 직계 자식으로 portal 된다. body subtree 전체를
+    // 관찰하지 않고 직계 portal mount/unmount만 감지해 포커스 생명주기를 연결한다.
+    const portalObserver = observationRoot === document.body
+      ? null
+      : new MutationObserver((records) => {
+          if (mutationContainsTrackedDialog(records)) schedule();
+        });
+    portalObserver?.observe(document.body, { childList: true });
+
+    reconcile();
 
     return () => {
       observer.disconnect();
+      portalObserver?.disconnect();
+      if (frame) window.cancelAnimationFrame(frame);
       deactivate();
       contextCleanups.forEach((cleanup) => cleanup());
       contextCleanups.clear();

@@ -49,7 +49,6 @@ function sourceDialog(chapter, chapterData) {
   dialog.showModal();
 }
 
-// 마가복음 전체 구조(고정) — macro.sections/pivots/arcs와 meta.theme를 그대로 표출한다.
 function macroCard(chapter) {
   const cv2 = MARK_CONTEXT?.contextV2 || {};
   const macro = cv2.macro || {};
@@ -142,10 +141,6 @@ function renderPanel(panel, chapter, modal) {
   });
 }
 
-// layout(본문 컨테이너)의 실제 자식을 위치 기반으로 판별한다.
-// 데스크톱: [본문(.at-modal__content) | React 스플리터 | 분석·관찰 패널]
-// 모바일:   [본문 | (오버레이?) | 분석 패널] · 스플리터 없음
-// GPT가 겪은 버그: "left가 아닌 첫 자식"을 관찰패널로 봤으나 그것은 React 스플리터였다.
 function findPanes(layout, left) {
   const kids = [...layout.children].filter((node) =>
     node.id !== PANEL_ID && !node.classList.contains('mark-research-second-divider'),
@@ -156,7 +151,6 @@ function findPanes(layout, left) {
   return { observation, splitter };
 }
 
-// 관찰 ↔ 연구 사이 크기 조절 막대. 연구 패널 폭만 조절하므로 React 상태와 충돌하지 않는다.
 function installResize(layout, panel) {
   if (layout.querySelector('.mark-research-second-divider')) return;
   const divider = document.createElement('div');
@@ -164,26 +158,36 @@ function installResize(layout, panel) {
   divider.setAttribute('role', 'separator');
   divider.setAttribute('aria-orientation', 'vertical');
   divider.tabIndex = 0;
-  divider.style.display = 'none'; // 데스크톱 CSS(!important)가 block으로 노출, 모바일은 숨김
+  divider.style.display = 'none';
   divider.addEventListener('pointerdown', (event) => {
     if (window.matchMedia('(max-width: 900px)').matches) return;
     event.preventDefault();
     divider.setPointerCapture(event.pointerId);
     const startX = event.clientX;
     const startW = panel.getBoundingClientRect().width;
-    const move = (e) => {
-      const w = Math.max(280, Math.min(680, startW + (startX - e.clientX)));
-      panel.style.flex = `0 0 ${w}px`;
+    let moveFrame = 0;
+    let latestClientX = startX;
+
+    const applyMove = () => {
+      moveFrame = 0;
+      const width = Math.max(280, Math.min(680, startW + (startX - latestClientX)));
+      panel.style.flex = `0 0 ${width}px`;
+    };
+    const move = (moveEvent) => {
+      latestClientX = moveEvent.clientX;
+      if (moveFrame) return;
+      moveFrame = window.requestAnimationFrame(applyMove);
     };
     const up = () => {
+      if (moveFrame) window.cancelAnimationFrame(moveFrame);
       try { divider.releasePointerCapture(event.pointerId); } catch { /* noop */ }
       divider.removeEventListener('pointermove', move);
       divider.removeEventListener('pointerup', up);
       divider.removeEventListener('pointercancel', up);
     };
-    divider.addEventListener('pointermove', move);
-    divider.addEventListener('pointerup', up);
-    divider.addEventListener('pointercancel', up);
+    divider.addEventListener('pointermove', move, { passive: true });
+    divider.addEventListener('pointerup', up, { passive: true });
+    divider.addEventListener('pointercancel', up, { passive: true });
   });
   layout.insertBefore(divider, panel);
 }
@@ -217,21 +221,20 @@ function attach(modal) {
     const { observation, splitter } = findPanes(layout, left);
     if (!observation) return false;
 
-    // GPT의 markResearchThreeColumnDirect.css(order 1~5)가 요구하는 hook을 실제 요소에 부여
-    left.classList.add('mark-direct-body-pane');                 // order 1
-    splitter?.classList.add('mark-direct-first-divider');        // order 2 (기존 React 스플리터 재활용)
-    observation.classList.add('mark-direct-observation-pane');   // order 3
+    left.classList.add('mark-direct-body-pane');
+    splitter?.classList.add('mark-direct-first-divider');
+    observation.classList.add('mark-direct-observation-pane');
 
     panel = document.createElement('section');
     panel.id = PANEL_ID;
-    panel.className = 'mark-research-panel mark-direct-research-pane'; // order 5 · 데스크톱 in-flow, 모바일 시트 유지
+    panel.className = 'mark-research-panel mark-direct-research-pane';
     panel.setAttribute('role', 'region');
     panel.setAttribute('aria-label', '본문 구조 연구');
     panel.style.flex = '0 0 360px';
     layout.appendChild(panel);
     layout.classList.add(STYLE_CLASS);
     layout.setAttribute('data-mark-three-column-ready', 'true');
-    installResize(layout, panel);                                // second-divider · order 4
+    installResize(layout, panel);
   }
   const chapter = activeChapter(modal);
   if (panel.dataset.chapter !== String(chapter)) {
@@ -252,10 +255,35 @@ function detach(modal) {
     .forEach((node) => node.classList.remove('mark-direct-body-pane', 'mark-direct-first-divider', 'mark-direct-observation-pane'));
 }
 
+function mutationContainsContextModal(records) {
+  return records.some((record) => [...record.addedNodes, ...record.removedNodes].some((node) => (
+    node instanceof Element
+    && (node.matches('.at-modal--context') || node.querySelector('.at-modal--context'))
+  )));
+}
+
 export function installMarkResearchLayerBridge() {
   if (typeof window === 'undefined' || window.__markResearchLayerBridgeInstalled) return;
   window.__markResearchLayerBridgeInstalled = true;
+
+  const observationRoot = document.getElementById('root') || document.body;
+  let frame = 0;
+  const activeObserver = new MutationObserver(() => schedule());
+
+  const refreshActiveTargets = () => {
+    activeObserver.disconnect();
+    document.querySelectorAll('.at-modal--context').forEach((modal) => {
+      activeObserver.observe(modal, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['data-book-active'],
+      });
+    });
+  };
+
   const reconcile = () => {
+    frame = 0;
     document.querySelectorAll('.at-modal--context').forEach((modal) => {
       if (!isMarkActive(modal)) {
         delete modal.dataset.markResearchDismissed;
@@ -267,8 +295,17 @@ export function installMarkResearchLayerBridge() {
         attach(modal);
       }
     });
+    refreshActiveTargets();
   };
-  const observer = new MutationObserver(() => window.requestAnimationFrame(reconcile));
-  observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-book-active'] });
-  window.requestAnimationFrame(reconcile);
+
+  function schedule() {
+    if (frame) return;
+    frame = window.requestAnimationFrame(reconcile);
+  }
+
+  const lifecycleObserver = new MutationObserver((records) => {
+    if (mutationContainsContextModal(records)) schedule();
+  });
+  lifecycleObserver.observe(observationRoot, { childList: true, subtree: true });
+  schedule();
 }
