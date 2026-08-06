@@ -130,18 +130,27 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       commitSearchValue(value);
     };
 
+    const scheduleRead = (target) => {
+      // React의 controlled input onChange가 먼저 query 상태를 반영하도록
+      // launcher의 비교 패널 상태 갱신은 현재 native event 이후로 미룬다.
+      queueMicrotask(() => {
+        if (target !== inputNode || !target?.isConnected) return;
+        readAndCommit(target);
+      });
+    };
+
     const handleInput = (event) => {
       if (event.isComposing) return;
-      readAndCommit(event.target);
+      scheduleRead(event.target);
     };
 
     const handleCompositionEnd = (event) => {
-      readAndCommit(event.target);
+      scheduleRead(event.target);
     };
 
     const handleKeyUp = (event) => {
       if (event.isComposing) return;
-      queueMicrotask(() => readAndCommit(event.target));
+      scheduleRead(event.target);
     };
 
     const detachInput = () => {
@@ -161,7 +170,7 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       inputNode.addEventListener('change', handleInput);
       inputNode.addEventListener('compositionend', handleCompositionEnd);
       inputNode.addEventListener('keyup', handleKeyUp);
-      readAndCommit(inputNode);
+      scheduleRead(inputNode);
       return true;
     };
 
