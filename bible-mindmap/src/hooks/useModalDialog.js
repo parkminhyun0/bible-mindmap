@@ -142,7 +142,9 @@ function lockDocumentScroll(dialog) {
       // (이 가드가 없으면 모달 오버스크롤 차단 로직이 두 손가락 확대까지 취소함)
       if (event.touches && event.touches.length > 1) return;
       const target = event.target instanceof Element ? event.target : null;
-      if (!target || !dialog?.contains(target)) {
+      // 검색↔상세 전환 등으로 dialog 요소가 바뀌어도 견고하도록, 캡처된(stale) dialog 대신
+      // '열린 모달(role=dialog) 안인지'로 판정한다. 모달 밖 터치만 배경 스크롤 누수를 차단.
+      if (!target || !target.closest('[role="dialog"]')) {
         event.preventDefault();
         return;
       }
@@ -156,8 +158,10 @@ function lockDocumentScroll(dialog) {
       // 성경 권 칩처럼 가로 스크롤 가능한 영역은 좌우 제스처를 그대로 허용한다.
       if (activeHorizontalScroller && Math.abs(deltaX) > Math.abs(deltaY)) return;
 
+      // 표식된 스크롤 영역(.at-modal__content / [data-modal-scroll-region]) 안이면 세로 스크롤 허용.
+      // 표식은 target.closest로 동적 판정되므로 dialog 요소가 바뀌어도 정확하다.
       const scrollArea = activeScrollArea;
-      if (!scrollArea || !dialog.contains(scrollArea)) {
+      if (!scrollArea) {
         event.preventDefault();
         return;
       }
