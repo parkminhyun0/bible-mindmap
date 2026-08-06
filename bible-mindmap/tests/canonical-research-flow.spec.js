@@ -82,7 +82,11 @@ test.describe('iPhone 정경 추적 visual viewport 계약', () => {
     await page.goto('./');
     await expect(page.locator('html')).toHaveAttribute('data-device', 'mobile');
 
-    await page.getByRole('button', { name: '정경 추적 핵심 개념 열기' }).last().click();
+    await page.getByRole('button', { name: '추가', exact: true }).click();
+    const addSheet = page.locator('.mobile-add-sheet');
+    await expect(addSheet).toBeVisible();
+    await addSheet.getByRole('button', { name: '정경 추적 핵심 개념 열기' }).click();
+
     const searchDialog = page.getByRole('dialog', { name: '정경 추적 · 정적 의미 검색' });
     await expect(searchDialog).toBeVisible();
     await expectDialogInsideVisualViewport(searchDialog);
