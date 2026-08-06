@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "language": "ko",
+  "description": "성경 연구 사용자의 실제 표현·모호한 질문·유사 개념 오답을 포함한 의미 검색 품질 평가 코퍼스",
+  "qualityGate": {
+    "k": 3,
+    "minCaseCount": 12,
+    "minQueryTypeCount": 4,
+    "minHardNegativeCoverage": 0.75,
+    "minRecallAtK": 0.9,
+    "minMrr": 0.85,
+    "minNdcgAtK": 0.88,
+    "maxHardNegativeRate": 0.1,
+    "maxFailureRate": 0,
+    "maxP95LatencyMs": 20,
+    "allowedRegression": 0
+  },
+  "documents": [
+    {"id":"canonical.seed","title":"씨 언약과 그리스도","text":"아브라함의 후손 약속이 그리스도 안에서 성취되고 언약 백성에게 이어진다.","sourceRefs":["Gen 12:1-3","Gen 17:7","Gal 3:16"]},
+    {"id":"canonical.king","title":"다윗 언약과 메시아 왕권","text":"다윗의 보좌와 영원한 왕의 통치는 예수 그리스도의 왕권으로 완성된다.","sourceRefs":["2Sam 7:12-16","Ps 2:6-12","Luke 1:32-33"]},
+    {"id":"canonical.temple","title":"성막·성전과 하나님의 임재","text":"성막과 성전의 임재가 그리스도와 교회와 새 예루살렘에서 완성된다.","sourceRefs":["Exod 40:34-38","John 1:14","Rev 21:22-23"]},
+    {"id":"canonical.exodus","title":"출애굽과 구속","text":"유월절과 바다를 통한 구원이 그리스도의 구속과 새 출애굽으로 발전한다.","sourceRefs":["Exod 12:1-32","Luke 9:31","1Cor 5:7"]},
+    {"id":"canonical.covenant","title":"언약의 통일성과 발전","text":"창조와 구속의 역사에서 은혜 언약이 약속과 성취의 구조로 발전한다.","sourceRefs":["Gen 3:15","Jer 31:31-34","Heb 8:6-13"]},
+    {"id":"canonical.rest","title":"안식과 완성","text":"창조의 안식과 가나안의 쉼이 그리스도 안의 구원과 종말의 안식으로 완성된다.","sourceRefs":["Gen 2:2-3","Heb 4:1-11","Rev 14:13"]},
+    {"id":"canonical.blood","title":"피와 속죄","text":"제사의 피와 유월절 피가 그리스도의 단번 속죄와 새 언약의 피를 예표한다.","sourceRefs":["Lev 17:11","Matt 26:28","Heb 9:11-14"]},
+    {"id":"canonical.glory","title":"영광과 임재","text":"하나님의 영광이 성막과 성전에 나타나고 그리스도와 새 창조에서 충만히 드러난다.","sourceRefs":["Exod 40:34","John 1:14","Rev 21:23"]}
+  ],
+  "vectors": {
+    "canonical.seed":[1,0,0,0,0,0,0,0],
+    "canonical.king":[0,1,0,0,0,0,0,0],
+    "canonical.temple":[0,0,1,0,0,0,0,0],
+    "canonical.exodus":[0,0,0,1,0,0,0,0],
+    "canonical.covenant":[0,0,0,0,1,0,0,0],
+    "canonical.rest":[0,0,0,0,0,1,0,0],
+    "canonical.blood":[0,0,0,0,0,0,1,0],
+    "canonical.glory":[0,0,0,0,0,0,0,1]
+  },
+  "cases": [
+    {"id":"seed-explicit","query":"아브라함의 씨 약속이 예수님에게 어떻게 이어져?","relevantIds":["canonical.seed"],"hardNegativeIds":["canonical.covenant","canonical.king"],"metadata":{"queryType":"explicit"}},
+    {"id":"seed-natural","query":"후손 한 사람을 통해 모든 민족이 복 받는 흐름","relevantIds":["canonical.seed"],"hardNegativeIds":["canonical.king"],"metadata":{"queryType":"natural"}},
+    {"id":"king-explicit","query":"다윗의 보좌와 영원한 메시아 왕","relevantIds":["canonical.king"],"hardNegativeIds":["canonical.seed"],"metadata":{"queryType":"explicit"}},
+    {"id":"king-ambiguous","query":"끝나지 않는 왕국 약속은 어디서 완성돼?","relevantIds":["canonical.king"],"hardNegativeIds":["canonical.covenant"],"metadata":{"queryType":"ambiguous"}},
+    {"id":"temple-natural","query":"하나님이 백성 가운데 거하시는 장소가 어떻게 바뀌나","relevantIds":["canonical.temple"],"hardNegativeIds":["canonical.glory"],"metadata":{"queryType":"natural"}},
+    {"id":"glory-hard-negative","query":"성막을 채운 영광이 새 예루살렘 빛으로 이어지는 흐름","relevantIds":["canonical.glory"],"hardNegativeIds":["canonical.temple"],"metadata":{"queryType":"hard-negative"}},
+    {"id":"exodus-natural","query":"유월절 어린양과 예수님의 구원이 연결되는 이유","relevantIds":["canonical.exodus","canonical.blood"],"hardNegativeIds":["canonical.covenant"],"metadata":{"queryType":"natural"}},
+    {"id":"blood-explicit","query":"제사의 피와 새 언약의 피를 함께 보고 싶어","relevantIds":["canonical.blood"],"hardNegativeIds":["canonical.exodus","canonical.covenant"],"metadata":{"queryType":"explicit"}},
+    {"id":"covenant-ambiguous","query":"성경 전체의 약속과 성취 구조를 한 번에 추적해줘","relevantIds":["canonical.covenant"],"hardNegativeIds":["canonical.seed","canonical.king"],"metadata":{"queryType":"ambiguous"}},
+    {"id":"rest-natural","query":"가나안의 쉼이 히브리서 안식과 무슨 관계야?","relevantIds":["canonical.rest"],"hardNegativeIds":["canonical.exodus"],"metadata":{"queryType":"natural"}},
+    {"id":"temple-hard-negative","query":"성전 건물이 아니라 그리스도와 교회가 하나님의 처소라는 흐름","relevantIds":["canonical.temple"],"hardNegativeIds":["canonical.glory"],"metadata":{"queryType":"hard-negative"}},
+    {"id":"rest-ambiguous","query":"창조 때 시작된 쉼이 마지막에는 어떻게 완성되나","relevantIds":["canonical.rest"],"hardNegativeIds":["canonical.glory"],"metadata":{"queryType":"ambiguous"}}
+  ]
+}
