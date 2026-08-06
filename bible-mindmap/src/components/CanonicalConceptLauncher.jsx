@@ -30,16 +30,6 @@ function setCanonicalSearchValue(value) {
   return true;
 }
 
-function mutationTouchesCanonicalSearch(mutations) {
-  return mutations.some((mutation) => [...mutation.addedNodes, ...mutation.removedNodes].some((node) => {
-    if (!(node instanceof Element)) return false;
-    return node.matches?.(SEARCH_DIALOG_SELECTOR)
-      || node.matches?.(SEARCH_INPUT_SELECTOR)
-      || Boolean(node.querySelector?.(SEARCH_DIALOG_SELECTOR))
-      || Boolean(node.querySelector?.(SEARCH_INPUT_SELECTOR));
-  }));
-}
-
 // 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
 
 /**
@@ -118,11 +108,6 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
   useEffect(() => {
     if (!open) return undefined;
 
-    let inputNode = null;
-    let observedDialog = null;
-    let dialogObserver = null;
-    let portalFrame = 0;
-
     const readAndCommit = (target) => {
       if (!isCanonicalConceptSearchInput(target)) return;
       const value = String(target.value || '');
@@ -131,95 +116,45 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     };
 
     const scheduleRead = (target) => {
-      // React의 controlled input onChange가 먼저 query 상태를 반영하도록
-      // launcher의 비교 패널 상태 갱신은 현재 native event 이후로 미룬다.
+      // React portal의 delegated onChange가 먼저 controlled input 상태를
+      // 갱신하도록 launcher 비교 상태는 native event dispatch 뒤에 반영한다.
       queueMicrotask(() => {
-        if (target !== inputNode || !target?.isConnected) return;
+        if (!target?.isConnected) return;
         readAndCommit(target);
       });
     };
 
     const handleInput = (event) => {
-      if (event.isComposing) return;
+      if (event.isComposing || !isCanonicalConceptSearchInput(event.target)) return;
       scheduleRead(event.target);
     };
 
     const handleCompositionEnd = (event) => {
+      if (!isCanonicalConceptSearchInput(event.target)) return;
       scheduleRead(event.target);
     };
 
     const handleKeyUp = (event) => {
-      if (event.isComposing) return;
+      if (event.isComposing || !isCanonicalConceptSearchInput(event.target)) return;
       scheduleRead(event.target);
     };
 
-    const detachInput = () => {
-      if (!(inputNode instanceof HTMLInputElement)) return;
-      inputNode.removeEventListener('input', handleInput);
-      inputNode.removeEventListener('change', handleInput);
-      inputNode.removeEventListener('compositionend', handleCompositionEnd);
-      inputNode.removeEventListener('keyup', handleKeyUp);
-      inputNode = null;
-    };
+    // React portal은 input 이벤트를 portal container에서 위임 처리한다.
+    // document bubble 단계에서 정확한 search input target만 필터링하면
+    // React controlled state가 먼저 반영되고, 노드 교체에도 재부착이 필요 없다.
+    document.addEventListener('input', handleInput);
+    document.addEventListener('change', handleInput);
+    document.addEventListener('compositionend', handleCompositionEnd);
+    document.addEventListener('keyup', handleKeyUp);
 
-    const attachInput = (candidate) => {
-      if (!(candidate instanceof HTMLInputElement) || candidate === inputNode) return false;
-      detachInput();
-      inputNode = candidate;
-      inputNode.addEventListener('input', handleInput);
-      inputNode.addEventListener('change', handleInput);
-      inputNode.addEventListener('compositionend', handleCompositionEnd);
-      inputNode.addEventListener('keyup', handleKeyUp);
-      scheduleRead(inputNode);
-      return true;
-    };
-
-    const watchDialog = (dialogRoot) => {
-      if (!(dialogRoot instanceof HTMLElement)) return false;
-      if (dialogRoot !== observedDialog) {
-        dialogObserver?.disconnect();
-        observedDialog = dialogRoot;
-        dialogObserver = new MutationObserver(() => {
-          attachInput(observedDialog?.querySelector(SEARCH_INPUT_SELECTOR));
-        });
-        dialogObserver.observe(dialogRoot, { childList: true, subtree: true });
-      }
-      attachInput(dialogRoot.querySelector(SEARCH_INPUT_SELECTOR));
-      return true;
-    };
-
-    const syncPortal = () => {
-      portalFrame = 0;
-      const dialogRoot = document.querySelector(SEARCH_DIALOG_SELECTOR);
-      if (!(dialogRoot instanceof HTMLElement)) {
-        if (observedDialog && !observedDialog.isConnected) {
-          dialogObserver?.disconnect();
-          dialogObserver = null;
-          observedDialog = null;
-          detachInput();
-        }
-        return;
-      }
-      if (dialogRoot === observedDialog && inputNode?.isConnected) return;
-      watchDialog(dialogRoot);
-    };
-
-    const schedulePortalSync = (mutations) => {
-      if (portalFrame || !mutationTouchesCanonicalSearch(mutations)) return;
-      portalFrame = window.requestAnimationFrame(syncPortal);
-    };
-
-    syncPortal();
-    // 검색→상세→검색 왕복 때 portal과 input 노드가 교체된다. 폴링 대신
-    // 관련 노드가 추가/제거된 mutation만 프레임당 한 번 확인해 재부착한다.
-    const portalObserver = new MutationObserver(schedulePortalSync);
-    portalObserver.observe(document.body, { childList: true, subtree: true });
+    const input = document.querySelector(SEARCH_INPUT_SELECTOR);
+    if (input instanceof HTMLInputElement) scheduleRead(input);
 
     return () => {
-      portalObserver.disconnect();
-      dialogObserver?.disconnect();
-      if (portalFrame) window.cancelAnimationFrame(portalFrame);
-      detachInput();
+      document.removeEventListener('input', handleInput);
+      document.removeEventListener('change', handleInput);
+      document.removeEventListener('compositionend', handleCompositionEnd);
+      document.removeEventListener('keyup', handleKeyUp);
       clearTimeout(comparisonDebounceRef.current);
     };
   }, [open, commitSearchValue]);
