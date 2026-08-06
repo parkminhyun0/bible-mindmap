@@ -186,6 +186,8 @@ export function installMarkResearchThreeColumnRepair() {
   const sync = () => {
     window.cancelAnimationFrame(raf);
     raf = window.requestAnimationFrame(() => {
+      // 모바일 성능: 관련 뷰(문맥 모달·마가 3열 레이아웃)가 없으면 전역 DOM 작업을 건너뛴다.
+      if (!document.querySelector('.at-modal--context, .mark-research-layout-test')) return;
       compactScaffoldingToggle();
       document.querySelectorAll('.mark-research-layout-test').forEach(prepareThreeColumnLayout);
     });
@@ -193,7 +195,9 @@ export function installMarkResearchThreeColumnRepair() {
 
   installDividerCapture();
   const observer = new MutationObserver(sync);
-  observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+  // characterData 관찰은 모든 텍스트 변경마다 발화해 모바일에서 메인 스레드를 과도하게 점유하므로 제외.
+  // 구조 변경(childList)만으로 문맥 모달·3열 레이아웃 등장을 감지하면 충분하다.
+  observer.observe(document.body, { childList: true, subtree: true });
   window.addEventListener('resize', sync, { passive: true });
   sync();
 }
