@@ -138,6 +138,9 @@ function lockDocumentScroll(dialog) {
     };
 
     const onTouchMove = (event) => {
+      // 핀치줌 등 멀티터치 제스처는 preventDefault하지 않고 브라우저에 위임한다.
+      // (이 가드가 없으면 모달 오버스크롤 차단 로직이 두 손가락 확대까지 취소함)
+      if (event.touches && event.touches.length > 1) return;
       const target = event.target instanceof Element ? event.target : null;
       if (!target || !dialog?.contains(target)) {
         event.preventDefault();

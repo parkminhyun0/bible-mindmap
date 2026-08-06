@@ -179,7 +179,7 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
 
   const panelStyle = isMobile
     ? {
-        inset: 'auto 0 0 0', width: '100%', maxHeight: '86dvh',
+        inset: 'auto 0 0 0', width: '100%', height: '86dvh', maxHeight: '86dvh',
         borderRadius: '18px 18px 0 0', paddingBottom: 'env(safe-area-inset-bottom, 0px)',
       }
     : maximized

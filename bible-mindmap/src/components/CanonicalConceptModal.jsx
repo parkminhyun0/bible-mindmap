@@ -244,7 +244,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
   const containerStyle = isMobile
     ? {
         left: 0, bottom: 0, top: 'auto', transform: 'none',
-        width: vw, maxHeight: minimized ? undefined : '90dvh',
+        width: '100%', maxHeight: minimized ? undefined : '90dvh',
         borderRadius: '20px 20px 0 0',
       }
     : (maximized
