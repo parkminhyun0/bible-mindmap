@@ -5,6 +5,7 @@ import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
+import { KOREAN_GLOSS } from '../data/koreanGloss';
 
 /**
  * 원어 단어 어형 분석 카드.
@@ -210,6 +211,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             <MetaRow label="형태소">
               <span style={{ color: '#475569' }}>{morphHuman}</span>
               <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
+            </MetaRow>
+          )}
+          {entry.s && KOREAN_GLOSS[entry.s] && (
+            <MetaRow label="한글 뜻">
+              <span style={{ color: '#1e293b', fontWeight: 600 }}>{KOREAN_GLOSS[entry.s].glossKo}</span>
             </MetaRow>
           )}
           {entry.g && (
