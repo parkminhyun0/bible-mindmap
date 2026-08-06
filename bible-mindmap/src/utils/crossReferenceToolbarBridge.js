@@ -23,12 +23,17 @@ function labelFor(launcher) {
   return match ? `🔗 교차 참조 ${match[1]}` : '🔗 교차 참조';
 }
 
+function setAttributeIfChanged(element, name, value) {
+  if (element.getAttribute(name) !== value) element.setAttribute(name, value);
+}
+
 function styleToolbarButton(button, launcher) {
   const expanded = launcher.getAttribute('aria-expanded') === 'true';
-  button.textContent = labelFor(launcher);
-  button.setAttribute('aria-controls', 'cross-reference-assist-panel');
-  button.setAttribute('aria-expanded', String(expanded));
-  button.setAttribute('title', '교차 참조 패널 열기·닫기');
+  const nextLabel = labelFor(launcher);
+  if (button.textContent !== nextLabel) button.textContent = nextLabel;
+  setAttributeIfChanged(button, 'aria-controls', 'cross-reference-assist-panel');
+  setAttributeIfChanged(button, 'aria-expanded', String(expanded));
+  setAttributeIfChanged(button, 'title', '교차 참조 패널 열기·닫기');
   button.style.background = expanded ? '#2563eb' : '#ecfdf5';
   button.style.color = expanded ? '#fff' : '#065f46';
   button.style.borderLeft = expanded ? 'none' : '2px solid #10b981';
@@ -53,7 +58,7 @@ function connectToolbarChip(observationRoot) {
   }
 
   launcher.style.setProperty('display', 'none', 'important');
-  launcher.setAttribute('aria-hidden', 'true');
+  setAttributeIfChanged(launcher, 'aria-hidden', 'true');
 
   let connectedButton = toolbarButton;
   if (toolbarButton.getAttribute(BRIDGE_MARK) !== 'true') {
