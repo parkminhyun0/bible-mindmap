@@ -11,21 +11,18 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const issues = [];
-const fail = (m) => issues.push(m);
-const read = (rel) => fs.readFileSync(path.resolve(__dirname, rel), 'utf8');
+const fail = (message) => issues.push(message);
+const read = (relativePath) => fs.readFileSync(path.resolve(__dirname, relativePath), 'utf8');
 
 const appSource = read('../src/App.jsx');
 const sidebarSource = read('../src/components/Sidebar.jsx');
 const launcherSource = read('../src/components/ParallelStudyLauncher.jsx');
 const parallelModalSource = read('../src/components/ParallelStudyModal.jsx');
 
-// 1) App.jsx가 여전히 조건부로 Sidebar를 마운트하는지 확인(규칙의 전제).
-//    전제가 바뀌면(항상 마운트) 이 규칙 자체를 재검토해야 하므로 경고.
 if (!appSource.includes('mobileSidebarOpen') || !/\(\s*!isMobile\s*\|\|\s*mobileSidebarOpen\s*\)/.test(appSource)) {
   fail('App.jsx의 Sidebar 조건부 마운트 패턴(!isMobile || mobileSidebarOpen)이 감지되지 않음 — 모바일 모달 규칙 전제 재확인 필요');
 }
 
-// 2) 모바일 "문맥 성경" 버튼 블록이 onMobileClose를 호출하지 않아야 함.
 const ctxIdx = sidebarSource.indexOf('문맥 성경 (모바일)');
 if (ctxIdx === -1) {
   fail('Sidebar: 모바일 문맥 성경 블록 주석을 찾지 못함(구조 변경 시 이 verifier 갱신 필요)');
@@ -39,33 +36,148 @@ if (ctxIdx === -1) {
   }
 }
 
-// 3) ParallelStudyLauncher는 onBeforeOpen prop을 받지 않아야 함(위험 패턴 봉인).
 if (/onBeforeOpen/.test(launcherSource)) {
   fail('ParallelStudyLauncher: onBeforeOpen prop 잔존 — 모바일 시트 닫기 유도 위험. 제거할 것.');
 }
 
-// 4) ParallelStudyModal의 루트 오버레이(position:fixed 컨테이너)는 모바일 시트(zIndex 1201)
-//    위에 뜨도록 zIndex >= 1250 이어야 함. 내부 요소(리사이즈 핸들 등)의 낮은 z는 무관하므로
-//    "position: 'fixed' ... zIndex: N" 형태의 루트 컨테이너만 검사한다.
-const rootOverlayZ = [...parallelModalSource.matchAll(/position:\s*'fixed'[^}]*?zIndex:\s*(\d+)/g)].map((m) => Number(m[1]));
+const rootOverlayZ = [...parallelModalSource.matchAll(/position:\s*'fixed'[^}]*?zIndex:\s*(\d+)/g)].map((match) => Number(match[1]));
 if (rootOverlayZ.length < 2) {
   fail(`ParallelStudyModal: 루트 fixed 오버레이(모바일 백드롭 + 데스크톱 컨테이너 2개)를 찾지 못함. 감지 ${rootOverlayZ.length}개`);
 }
-if (rootOverlayZ.some((z) => z <= 1201)) {
+if (rootOverlayZ.some((zIndex) => zIndex <= 1201)) {
   fail(`ParallelStudyModal: 루트 오버레이 zIndex가 모바일 시트(1201) 이하 → 시트 뒤에 가려짐. 현재값 ${rootOverlayZ.join(',')}`);
 }
 
-// 5) 두 모달 스크롤 컨테이너에 iOS momentum / overscroll 방어가 있어야 함.
-if (!parallelModalSource.includes('overscrollBehavior') || !parallelModalSource.includes("WebkitOverflowScrolling")) {
+if (!parallelModalSource.includes('overscrollBehavior') || !parallelModalSource.includes('WebkitOverflowScrolling')) {
   fail('ParallelStudyModal: 본문 스크롤에 overscrollBehavior/WebkitOverflowScrolling 방어 누락');
 }
 
-console.log('모바일 안전 verifier · Sidebar 언마운트 안티패턴 · zIndex 계층 · 스크롤 방어 점검');
+function walkSourceFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const absolutePath = path.join(directory, entry.name);
+    if (entry.isDirectory()) return walkSourceFiles(absolutePath);
+    return /\.(?:[cm]?[jt]sx?)$/u.test(entry.name) ? [absolutePath] : [];
+  });
+}
+
+function relativeSourcePath(absolutePath) {
+  return path.relative(path.resolve(__dirname, '../src'), absolutePath).replaceAll(path.sep, '/');
+}
+
+const srcRoot = path.resolve(__dirname, '../src');
+const sourceFiles = walkSourceFiles(srcRoot);
+const observerInventory = [];
+const highFrequencyGlobalListeners = [];
+
+sourceFiles.forEach((absolutePath) => {
+  const source = fs.readFileSync(absolutePath, 'utf8');
+  const relativePath = relativeSourcePath(absolutePath);
+  const observerCount = [...source.matchAll(/new\s+MutationObserver\s*\(/gu)].length;
+  if (observerCount) observerInventory.push({ path: relativePath, count: observerCount });
+
+  source.split('\n').forEach((line, index) => {
+    const match = line.match(/\b(window|document)\.addEventListener\(\s*['"](scroll|touchmove|resize|pointermove)['"]/u);
+    if (!match) return;
+    highFrequencyGlobalListeners.push({
+      path: relativePath,
+      line: index + 1,
+      target: match[1],
+      event: match[2],
+      passiveOnLine: /passive\s*:\s*true/u.test(line),
+    });
+  });
+});
+
+const performanceSources = {
+  threeColumn: read('../src/utils/markResearchThreeColumnRepair.js'),
+  layerBridge: read('../src/utils/markResearchLayerBridge.js'),
+  crossReference: read('../src/utils/crossReferenceToolbarBridge.js'),
+  legacyModal: read('../src/components/LegacyModalAccessibilityBridge.jsx'),
+  visitorCounter: read('../src/utils/visitorCounterRepair.js'),
+  canonicalSuggestion: read('../src/components/CanonicalConceptSuggestionPanel.jsx'),
+  canonicalSemantic: read('../src/components/CanonicalSemanticComparisonPanel.jsx'),
+  canonicalLauncher: read('../src/components/CanonicalConceptLauncher.jsx'),
+};
+
+if (/characterData\s*:\s*true/u.test(performanceSources.threeColumn)) {
+  fail('markResearchThreeColumnRepair: characterData 상시 관찰 금지');
+}
+if (/observer\.observe\(document\.body/u.test(performanceSources.threeColumn)) {
+  fail('markResearchThreeColumnRepair: document.body 직접 전역 관찰 금지');
+}
+if (!performanceSources.threeColumn.includes('activeObserver.disconnect()')
+  || !performanceSources.threeColumn.includes('if (frame) return')) {
+  fail('markResearchThreeColumnRepair: 활성 뷰 scoped observer + 프레임 코얼레싱 계약 누락');
+}
+if (!performanceSources.threeColumn.includes('passive: true')
+  || !performanceSources.threeColumn.includes('moveFrame')) {
+  fail('markResearchThreeColumnRepair: pointermove 프레임 코얼레싱/passive 계약 누락');
+}
+
+if (/observer\.observe\(document\.body/u.test(performanceSources.layerBridge)) {
+  fail('markResearchLayerBridge: document.body 직접 전역 관찰 금지');
+}
+if (!performanceSources.layerBridge.includes('activeObserver.disconnect()')
+  || !performanceSources.layerBridge.includes('if (frame) return')) {
+  fail('markResearchLayerBridge: 활성 모달 scoped observer + 프레임 코얼레싱 계약 누락');
+}
+if (!performanceSources.layerBridge.includes('moveFrame')) {
+  fail('markResearchLayerBridge: resize pointermove 프레임 코얼레싱 누락');
+}
+
+if (/observer\.observe\(document\.body/u.test(performanceSources.crossReference)) {
+  fail('crossReferenceToolbarBridge: document.body 직접 전역 관찰 금지');
+}
+if (!performanceSources.crossReference.includes('nearestSharedContainer')
+  || !performanceSources.crossReference.includes('activeObserver.disconnect()')
+  || !performanceSources.crossReference.includes('if (frame) return')) {
+  fail('crossReferenceToolbarBridge: 공통 컨테이너 scoped observer/프레임 코얼레싱 계약 누락');
+}
+
+if (!performanceSources.legacyModal.includes('mutationContainsTrackedDialog')
+  || !performanceSources.legacyModal.includes('if (frame) return')
+  || /observer\.observe\(document\.body/u.test(performanceSources.legacyModal)) {
+  fail('LegacyModalAccessibilityBridge: 관련 모달 mutation 필터/rAF/root scope 계약 누락');
+}
+
+if (/observer\.observe\(document\.documentElement/u.test(performanceSources.visitorCounter)
+  || /document\.querySelectorAll\(\s*['"]\*['"]\s*\)/u.test(performanceSources.visitorCounter)
+  || !performanceSources.visitorCounter.includes('pendingRoots')
+  || !performanceSources.visitorCounter.includes('stop();')) {
+  fail('visitorCounterRepair: 전역 DOM 반복 스캔 또는 성공 후 즉시 disconnect 계약 누락');
+}
+
+for (const [label, source] of [
+  ['CanonicalConceptSuggestionPanel', performanceSources.canonicalSuggestion],
+  ['CanonicalSemanticComparisonPanel', performanceSources.canonicalSemantic],
+]) {
+  if (!source.includes('if (disposed || scheduled) return')
+    || !source.includes('hostRef.current?.isConnected')) {
+    fail(`${label}: #178/#180 프레임 코얼레싱·연결 호스트 단축 반환 회귀`);
+  }
+}
+
+if (!performanceSources.canonicalLauncher.includes('observer.disconnect()')) {
+  fail('CanonicalConceptLauncher: 일회형 상세 열기 observer self-disconnect 계약 누락');
+}
+
+console.log('모바일 안전 verifier · Sidebar 언마운트 · zIndex · 스크롤 · 런타임 성능 점검');
+console.log(`[mobile-performance-audit] sourceFiles=${sourceFiles.length} mutationObserverFiles=${observerInventory.length} mutationObservers=${observerInventory.reduce((sum, item) => sum + item.count, 0)}`);
+observerInventory.forEach((item) => {
+  console.log(`[mobile-performance-audit:observer] ${item.path} count=${item.count}`);
+});
+console.log(`[mobile-performance-audit] globalHighFrequencyListeners=${highFrequencyGlobalListeners.length}`);
+highFrequencyGlobalListeners.forEach((item) => {
+  console.log(`[mobile-performance-audit:listener] ${item.path}:${item.line} ${item.target}.${item.event} passiveOnLine=${item.passiveOnLine}`);
+});
+console.log('[mobile-performance-audit:classification] persistent-scoped=markResearchThreeColumnRepair,markResearchLayerBridge,crossReferenceToolbarBridge,LegacyModalAccessibilityBridge');
+console.log('[mobile-performance-audit:classification] bounded=visitorCounterRepair,CanonicalConceptLauncher');
+console.log('[mobile-performance-audit:classification] coalesced-existing=CanonicalConceptSuggestionPanel,CanonicalSemanticComparisonPanel');
 
 if (issues.length) {
   console.error('✗ 모바일 안전 검증 실패');
-  for (const i of issues) console.error(`  - ${i}`);
+  for (const issue of issues) console.error(`  - ${issue}`);
   process.exit(1);
 }
 
-console.log('✓ 모바일 안전 규칙 통과 (모달 언마운트 방지 · zIndex 계층 · 스크롤 방어)');
+console.log('✓ 모바일 안전·성능 규칙 통과 (전역 옵저버 축소 · 프레임 코얼레싱 · 비활성 정리 · 기존 모달 안전)');
