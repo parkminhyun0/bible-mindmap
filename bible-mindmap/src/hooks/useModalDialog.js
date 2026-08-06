@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { syncMobileModalFrameGeometry } from '../components/MobileModalFrame.jsx';
 
 const DIALOG_FOCUSABLE = [
   'a[href]',
@@ -36,10 +37,6 @@ function findHorizontalScroller(target, dialog) {
     node = node.parentElement;
   }
   return null;
-}
-
-function setStyleIfChanged(element, property, value) {
-  if (element.style[property] !== value) element.style[property] = value;
 }
 
 function lockDocumentScroll(dialog) {
@@ -81,32 +78,23 @@ function lockDocumentScroll(dialog) {
       right: backdrop.style.right,
       bottom: backdrop.style.bottom,
       width: backdrop.style.width,
+      maxWidth: backdrop.style.maxWidth,
       height: backdrop.style.height,
       minHeight: backdrop.style.minHeight,
       maxHeight: backdrop.style.maxHeight,
       overflow: backdrop.style.overflow,
       transform: backdrop.style.transform,
+      mobileModalFrame: backdrop.dataset.mobileModalFrame,
     } : null;
 
     let viewportFrame = 0;
     const applyViewport = () => {
       viewportFrame = 0;
       if (!backdrop) return;
-      const viewport = window.visualViewport;
-      const width = `${viewport?.width || window.innerWidth}px`;
-      const height = `${viewport?.height || window.innerHeight}px`;
-      setStyleIfChanged(backdrop, 'position', 'fixed');
-      setStyleIfChanged(backdrop, 'inset', 'auto');
-      setStyleIfChanged(backdrop, 'left', `${viewport?.offsetLeft || 0}px`);
-      setStyleIfChanged(backdrop, 'top', `${viewport?.offsetTop || 0}px`);
-      setStyleIfChanged(backdrop, 'right', 'auto');
-      setStyleIfChanged(backdrop, 'bottom', 'auto');
-      setStyleIfChanged(backdrop, 'width', width);
-      setStyleIfChanged(backdrop, 'height', height);
-      setStyleIfChanged(backdrop, 'minHeight', height);
-      setStyleIfChanged(backdrop, 'maxHeight', height);
-      setStyleIfChanged(backdrop, 'overflow', 'hidden');
-      setStyleIfChanged(backdrop, 'transform', 'none');
+      // Shared frame keeps width percentage-based and ignores visualViewport
+      // geometry while pinch zoom is active. Only scale=1 keyboard/browser UI
+      // height and offsets are synchronized.
+      syncMobileModalFrameGeometry(backdrop, window.visualViewport);
     };
     const scheduleViewportSync = () => {
       if (viewportFrame) return;
@@ -241,11 +229,14 @@ function lockDocumentScroll(dialog) {
       element.style.right = snapshot.right;
       element.style.bottom = snapshot.bottom;
       element.style.width = snapshot.width;
+      element.style.maxWidth = snapshot.maxWidth;
       element.style.height = snapshot.height;
       element.style.minHeight = snapshot.minHeight;
       element.style.maxHeight = snapshot.maxHeight;
       element.style.overflow = snapshot.overflow;
       element.style.transform = snapshot.transform;
+      if (snapshot.mobileModalFrame === undefined) delete element.dataset.mobileModalFrame;
+      else element.dataset.mobileModalFrame = snapshot.mobileModalFrame;
     }
 
     body.style.overflow = scrollSnapshot.bodyOverflow;

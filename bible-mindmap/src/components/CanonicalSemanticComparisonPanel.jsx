@@ -192,7 +192,7 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
         background: 'var(--at-surface-2)', color: 'var(--at-label)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10 }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 10, minWidth: 0 }}>
         <div style={{ minWidth: 0 }}>
           <div style={{ fontSize: 13, fontWeight: 900 }}>🟢 NVIDIA 의미 검색 비교</div>
           <div style={{ marginTop: 2, fontSize: 10.5, color: 'var(--at-label-3)' }}>
@@ -204,10 +204,11 @@ export default function CanonicalSemanticComparisonPanel({ query, onSelect }) {
           onClick={() => runComparison(normalizedQuery)}
           disabled={state.status === 'loading'}
           style={{
-            minWidth: 96, minHeight: 44, padding: '0 13px', border: 0, borderRadius: 10,
+            minWidth: 72, minHeight: 44, padding: '0 10px', border: 0, borderRadius: 10,
             background: 'var(--at-accent)', color: '#fff', fontWeight: 800,
             cursor: state.status === 'loading' ? 'wait' : 'pointer',
-            opacity: state.status === 'loading' ? 0.7 : 1, flexShrink: 0,
+            opacity: state.status === 'loading' ? 0.7 : 1, flex: '0 1 auto',
+            whiteSpace: 'nowrap',
           }}
         >
           {state.status === 'loading' ? '비교 중…' : '다시 비교'}

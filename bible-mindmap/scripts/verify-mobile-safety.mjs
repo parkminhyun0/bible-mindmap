@@ -15,6 +15,7 @@ const fail = (message) => issues.push(message);
 const read = (relativePath) => fs.readFileSync(path.resolve(__dirname, relativePath), 'utf8');
 
 const appSource = read('../src/App.jsx');
+const appCssSource = read('../src/App.css');
 const sidebarSource = read('../src/components/Sidebar.jsx');
 const launcherSource = read('../src/components/ParallelStudyLauncher.jsx');
 const parallelModalSource = read('../src/components/ParallelStudyModal.jsx');
@@ -98,6 +99,7 @@ const performanceSources = {
   canonicalSemantic: read('../src/components/CanonicalSemanticComparisonPanel.jsx'),
   canonicalLauncher: read('../src/components/CanonicalConceptLauncher.jsx'),
   contextScaffolding: read('../src/components/ContextBibleScaffolding.jsx'),
+  mobileFrame: read('../src/components/MobileModalFrame.jsx'),
   modalDialog: read('../src/hooks/useModalDialog.js'),
 };
 
@@ -183,6 +185,30 @@ if (!performanceSources.modalDialog.includes('scheduleViewportSync')
 if (!performanceSources.modalDialog.includes("document.addEventListener('touchmove', onTouchMove, { passive: false")) {
   fail('useModalDialog: 배경 스크롤 차단용 의도적 non-passive touchmove 계약 누락');
 }
+if (!/if\s*\(event\.touches\s*&&\s*event\.touches\.length\s*>\s*1\)\s*return;/u.test(performanceSources.modalDialog)) {
+  fail('useModalDialog: touchmove 멀티터치 조기 반환(touches.length > 1 return) 게이트 누락');
+}
+if (!performanceSources.modalDialog.includes('syncMobileModalFrameGeometry(backdrop, window.visualViewport)')
+  || /viewport\?\.width\s*\|\|\s*window\.innerWidth/u.test(performanceSources.modalDialog)) {
+  fail('useModalDialog: 공통 MobileModalFrame geometry 연결 또는 핀치 중 visualViewport 폭 재계산 금지 계약 위반');
+}
+
+if (!performanceSources.mobileFrame.includes("element.style.width = '100%'")
+  || !performanceSources.mobileFrame.includes('PINCH_SCALE_EPSILON')
+  || !performanceSources.mobileFrame.includes("data-mobile-modal-frame=\"true\"")
+  || /window\.innerWidth/u.test(performanceSources.mobileFrame)) {
+  fail('MobileModalFrame: percentage 폭·핀치 scale 가드·공통 표식·window.innerWidth 금지 계약 누락');
+}
+
+if (!appCssSource.includes(":has(> button:nth-child(4):last-child)")
+  || !appCssSource.includes('overflow-x: auto !important')
+  || !appCssSource.includes('min-width: 0 !important')) {
+  fail('CanonicalConceptModal: 상세 탭 min-width:0 + 좁은 화면 가로 스크롤 fallback 누락');
+}
+if (!performanceSources.canonicalSemantic.includes('minWidth: 72')
+  || performanceSources.canonicalSemantic.includes('minWidth: 96')) {
+  fail('CanonicalSemanticComparisonPanel: NVIDIA 다시 비교 버튼 최소폭 완화 계약 누락');
+}
 
 console.log('모바일 안전 verifier · Sidebar 언마운트 · zIndex · 스크롤 · 런타임 성능 점검');
 console.log(`[mobile-performance-audit] sourceFiles=${sourceFiles.length} mutationObserverFiles=${observerInventory.length} mutationObservers=${observerInventory.reduce((sum, item) => sum + item.count, 0)}`);
@@ -197,7 +223,8 @@ console.log('[mobile-performance-audit:classification] persistent-scoped=markRes
 console.log('[mobile-performance-audit:classification] bounded=visitorCounterRepair,CanonicalConceptLauncher');
 console.log('[mobile-performance-audit:classification] coalesced-existing=CanonicalConceptSuggestionPanel,CanonicalSemanticComparisonPanel');
 console.log('[mobile-performance-audit:classification] touchmove-nonpassive-intentional=useModalDialog(background-scroll-lock)');
-console.log('[mobile-performance-audit:classification] viewport-coalesced=useModalDialog.visualViewport');
+console.log('[mobile-performance-audit:classification] viewport-coalesced=useModalDialog+MobileModalFrame(scale=1,height-only,width=100%)');
+console.log('[mobile-performance-audit:classification] canonical-tabs=horizontal-scroll-fallback');
 
 if (issues.length) {
   console.error('✗ 모바일 안전 검증 실패');
@@ -205,4 +232,4 @@ if (issues.length) {
   process.exit(1);
 }
 
-console.log('✓ 모바일 안전·성능 규칙 통과 (전역 옵저버 축소 · 프레임 코얼레싱 · 비활성 정리 · 기존 모달 안전)');
+console.log('✓ 모바일 안전·성능 규칙 통과 (멀티터치·공통 프레임·탭 fallback·전역 옵저버 축소·프레임 코얼레싱)');

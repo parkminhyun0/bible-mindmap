@@ -65,6 +65,26 @@ body {
   text-decoration: line-through;
 }
 
+/* Canonical detail tabs: four direct tab buttons must not squeeze below their
+   readable width on narrow mobile screens. :has() targets the dedicated
+   four-button row without changing header/navigation button groups. */
+@media (max-width: 640px) {
+  [role='dialog'][aria-label^='정경 추적 ·'] > div:has(> button:nth-child(4):last-child) {
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  [role='dialog'][aria-label^='정경 추적 ·'] > div:has(> button:nth-child(4):last-child) > button {
+    flex: 0 0 auto !important;
+    min-width: 0 !important;
+    padding-inline: 12px !important;
+    white-space: nowrap;
+  }
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }
