@@ -225,12 +225,22 @@ export default function LegacyModalAccessibilityBridge() {
     const observer = new MutationObserver((records) => {
       if (mutationContainsTrackedDialog(records)) schedule();
     });
-
     observer.observe(observationRoot, { childList: true, subtree: true });
+
+    // ManualModal은 document.body 직계 자식으로 portal 된다. body subtree 전체를
+    // 관찰하지 않고 직계 portal mount/unmount만 감지해 포커스 생명주기를 연결한다.
+    const portalObserver = observationRoot === document.body
+      ? null
+      : new MutationObserver((records) => {
+          if (mutationContainsTrackedDialog(records)) schedule();
+        });
+    portalObserver?.observe(document.body, { childList: true });
+
     reconcile();
 
     return () => {
       observer.disconnect();
+      portalObserver?.disconnect();
       if (frame) window.cancelAnimationFrame(frame);
       deactivate();
       contextCleanups.forEach((cleanup) => cleanup());
