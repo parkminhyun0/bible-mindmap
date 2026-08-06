@@ -232,6 +232,8 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
   const resizing    = useRef(false);
   const dragStart   = useRef({ mx: 0, my: 0, px: 0, py: 0 });
   const resizeStart = useRef({ mx: 0, my: 0, w: 0, h: 0 });
+  const moveFrame   = useRef(null);
+  const pendingMove = useRef(null);
 
   const onHeaderMouseDown = useCallback((e) => {
     if (e.button !== 0 || e.target.closest('button')) return;
@@ -248,28 +250,54 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
   }, [size]);
 
   useEffect(() => {
-    const onMove = (e) => {
+    const applyMove = () => {
+      moveFrame.current = null;
+      const point = pendingMove.current;
+      if (!point) return;
+
       if (dragging.current) {
-        const dx = e.clientX - dragStart.current.mx;
-        const dy = e.clientY - dragStart.current.my;
+        const dx = point.clientX - dragStart.current.mx;
+        const dy = point.clientY - dragStart.current.my;
         setPos({
           x: Math.max(0, Math.min(window.innerWidth  - 200, dragStart.current.px + dx)),
           y: Math.max(0, Math.min(window.innerHeight -  60, dragStart.current.py + dy)),
         });
       }
       if (resizing.current) {
-        const dw = e.clientX - resizeStart.current.mx;
-        const dh = e.clientY - resizeStart.current.my;
+        const dw = point.clientX - resizeStart.current.mx;
+        const dh = point.clientY - resizeStart.current.my;
         setSize({
           w: Math.max(480, Math.min(window.innerWidth  - 40, resizeStart.current.w + dw)),
           h: Math.max(200, Math.min(window.innerHeight - 80, resizeStart.current.h + dh)),
         });
       }
     };
-    const onUp = () => { dragging.current = false; resizing.current = false; };
+
+    const onMove = (e) => {
+      if (!dragging.current && !resizing.current) return;
+      pendingMove.current = { clientX: e.clientX, clientY: e.clientY };
+      if (moveFrame.current === null) {
+        moveFrame.current = window.requestAnimationFrame(applyMove);
+      }
+    };
+
+    const onUp = () => {
+      dragging.current = false;
+      resizing.current = false;
+      pendingMove.current = null;
+      if (moveFrame.current !== null) {
+        window.cancelAnimationFrame(moveFrame.current);
+        moveFrame.current = null;
+      }
+    };
+
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseup',  onUp);
-    return () => { document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); };
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      if (moveFrame.current !== null) window.cancelAnimationFrame(moveFrame.current);
+    };
   }, []);
 
   // ── 분석 상태 ────────────────────────────────────────────────────────────

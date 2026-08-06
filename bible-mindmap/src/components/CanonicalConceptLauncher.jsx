@@ -9,7 +9,7 @@ import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
 const SEARCH_INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
-const SEARCH_VALUE_POLL_MS = 100;
+const SEARCH_DIALOG_SELECTOR = '[role="dialog"][aria-label="정경 추적 · 정적 의미 검색"]';
 const DETAIL_OPEN_TIMEOUT_MS = 1800;
 
 function setCanonicalSearchValue(value) {
@@ -78,8 +78,11 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     commitSearchValue(searchText);
 
     const detailLabel = `${concept.labelKo} 정경 여정 상세 열기`;
+    const dialogRoot = document.querySelector(SEARCH_DIALOG_SELECTOR);
+    if (!(dialogRoot instanceof HTMLElement)) return;
+
     const findAndOpen = () => {
-      const button = [...document.querySelectorAll('button[aria-label$="정경 여정 상세 열기"]')]
+      const button = [...dialogRoot.querySelectorAll('button[aria-label$="정경 여정 상세 열기"]')]
         .find((candidate) => candidate.getAttribute('aria-label') === detailLabel);
 
       if (!(button instanceof HTMLButtonElement)) return false;
@@ -98,14 +101,8 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       }
     });
 
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    const retryTimer = window.setInterval(() => {
-      if (findAndOpen() || Date.now() - startedAt >= DETAIL_OPEN_TIMEOUT_MS) {
-        window.clearInterval(retryTimer);
-        observer.disconnect();
-      }
-    }, 80);
+    observer.observe(dialogRoot, { childList: true, subtree: true });
+    window.setTimeout(() => observer.disconnect(), DETAIL_OPEN_TIMEOUT_MS);
   }, [commitSearchValue]);
 
   useEffect(() => {
@@ -118,42 +115,52 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
       commitSearchValue(value);
     };
 
+    const scheduleRead = (target) => {
+      // React portal의 delegated onChange가 먼저 controlled input 상태를
+      // 갱신하도록 launcher 비교 상태는 native event dispatch 뒤에 반영한다.
+      queueMicrotask(() => {
+        if (!target?.isConnected) return;
+        readAndCommit(target);
+      });
+    };
+
     const handleInput = (event) => {
-      if (event.isComposing) return;
-      readAndCommit(event.target);
+      if (event.isComposing || !isCanonicalConceptSearchInput(event.target)) return;
+      scheduleRead(event.target);
     };
 
     const handleCompositionEnd = (event) => {
-      readAndCommit(event.target);
+      if (!isCanonicalConceptSearchInput(event.target)) return;
+      scheduleRead(event.target);
     };
 
     const handleKeyUp = (event) => {
-      if (event.isComposing) return;
-      queueMicrotask(() => readAndCommit(event.target));
+      if (event.isComposing || !isCanonicalConceptSearchInput(event.target)) return;
+      scheduleRead(event.target);
     };
 
+    // React portal은 input 이벤트를 portal container에서 위임 처리한다.
+    // document bubble 단계에서 정확한 search input target만 필터링하면
+    // React controlled state가 먼저 반영되고, 노드 교체에도 재부착이 필요 없다.
     document.addEventListener('input', handleInput);
     document.addEventListener('change', handleInput);
     document.addEventListener('compositionend', handleCompositionEnd);
     document.addEventListener('keyup', handleKeyUp);
 
-    const pollTimer = window.setInterval(() => {
-      const input = document.querySelector(SEARCH_INPUT_SELECTOR);
-      if (input instanceof HTMLInputElement) readAndCommit(input);
-    }, SEARCH_VALUE_POLL_MS);
+    const input = document.querySelector(SEARCH_INPUT_SELECTOR);
+    if (input instanceof HTMLInputElement) scheduleRead(input);
 
     return () => {
       document.removeEventListener('input', handleInput);
       document.removeEventListener('change', handleInput);
       document.removeEventListener('compositionend', handleCompositionEnd);
       document.removeEventListener('keyup', handleKeyUp);
-      window.clearInterval(pollTimer);
       clearTimeout(comparisonDebounceRef.current);
     };
   }, [open, commitSearchValue]);
 
   useModalDialog({
-    dialogSelector: '[role="dialog"][aria-label^="정경 추적 ·"]',
+    dialogSelector: SEARCH_DIALOG_SELECTOR,
     onClose: closeModal,
     lockScroll: isMobile,
     active: open,
