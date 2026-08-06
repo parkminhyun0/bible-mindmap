@@ -264,7 +264,7 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
             ))}
           </div>
 
-          <div style={{ padding: 16, overflow: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
+          <div data-modal-scroll-region="true" style={{ padding: 16, overflow: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
             <input
               autoFocus value={query} onChange={(event) => setQuery(event.target.value)}
               placeholder="개념 검색 · 예: 왕적 제사장, 성전 임재, H2233"

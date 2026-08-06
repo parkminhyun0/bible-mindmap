@@ -443,7 +443,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
 
             {/* 브라우즈(인덱스): 테마별 그리드 / 정경 타임라인 */}
             {browse && (
-              <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain', padding: '12px 14px' }}>
+              <div data-modal-scroll-region="true" style={{ overflowY: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain', padding: '12px 14px' }}>
                 {browseMode === 'theme' && groups.map(({ cat, meta, items }) => {
                   const shown = items.filter(matchQuery);
                   if (!shown.length) return null;
@@ -591,7 +591,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
             </div>
 
             {/* 콘텐츠 */}
-            <div style={{ overflowY: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
+            <div data-modal-scroll-region="true" style={{ overflowY: 'auto', flex: 1, minHeight: 0, WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain' }}>
 
               {tab === 'arc' && (
                 <div style={{ padding: '14px 16px' }}>
