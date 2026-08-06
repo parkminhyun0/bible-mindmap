@@ -52,17 +52,25 @@ export default function CrossrefPopup({
   }, [isMobile, pos])
   useEffect(() => {
     if (isMobile) return
-    const onMove = (e) => {
-      if (!dragging.current) return
-      const dx = e.clientX - dragStart.current.mx
-      const dy = e.clientY - dragStart.current.my
+    let frame = 0
+    let pt = null
+    const apply = () => {
+      frame = 0
+      if (!pt || !dragging.current) return
+      const dx = pt.clientX - dragStart.current.mx
+      const dy = pt.clientY - dragStart.current.my
       const w = window.innerWidth, h = window.innerHeight
       setPos({
         x: Math.max(0, Math.min(w - 200, dragStart.current.px + dx)),
         y: Math.max(0, Math.min(h - 80, dragStart.current.py + dy)),
       })
     }
-    const onUp = () => { dragging.current = false }
+    const onMove = (e) => {
+      if (!dragging.current) return
+      pt = { clientX: e.clientX, clientY: e.clientY }
+      if (!frame) frame = window.requestAnimationFrame(apply)
+    }
+    const onUp = () => { dragging.current = false; if (frame) window.cancelAnimationFrame(frame); frame = 0 }
     document.addEventListener('mousemove', onMove)
     document.addEventListener('mouseup', onUp)
     return () => {
