@@ -1,3 +1,4 @@
+// T1 38명 + T2 44명 = 통합 82명 레지스트리
 import { BIBLICAL_PEOPLE_T1 } from './biblicalPeople.js';
 import { BIBLICAL_PEOPLE_T2 } from './biblicalPeopleT2.js';
 
