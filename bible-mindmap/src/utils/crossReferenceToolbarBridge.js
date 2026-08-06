@@ -34,13 +34,22 @@ function styleToolbarButton(button, launcher) {
   button.style.borderLeft = expanded ? 'none' : '2px solid #10b981';
 }
 
-function connectToolbarChip() {
+function nearestSharedContainer(left, right, fallback) {
+  let current = left;
+  while (current && current !== document.body) {
+    if (current.contains(right)) return current;
+    current = current.parentElement;
+  }
+  return fallback;
+}
+
+function connectToolbarChip(observationRoot) {
   const toolbarButton = findToolbarButton();
   const launcher = findDrawerLauncher();
 
   if (!toolbarButton || !launcher) {
     launcher?.style.removeProperty('display');
-    return;
+    return null;
   }
 
   launcher.style.setProperty('display', 'none', 'important');
@@ -52,34 +61,68 @@ function connectToolbarChip() {
     connectedButton.setAttribute(BRIDGE_MARK, 'true');
     connectedButton.addEventListener('click', () => {
       launcher.click();
-      window.requestAnimationFrame(connectToolbarChip);
+      window.requestAnimationFrame(() => connectToolbarChip(observationRoot));
     });
     toolbarButton.replaceWith(connectedButton);
   }
 
   styleToolbarButton(connectedButton, launcher);
+  return nearestSharedContainer(connectedButton, launcher, observationRoot);
+}
+
+function mutationContainsBridgeTarget(records) {
+  return records.some((record) => [...record.addedNodes, ...record.removedNodes].some((node) => (
+    node instanceof Element
+    && (
+      node.matches(TOOLBAR_SELECTOR)
+      || node.matches(DRAWER_LAUNCHER_SELECTOR)
+      || node.querySelector(TOOLBAR_SELECTOR)
+      || node.querySelector(DRAWER_LAUNCHER_SELECTOR)
+    )
+  )));
 }
 
 export function installCrossReferenceToolbarBridge() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return () => {};
 
+  const observationRoot = document.getElementById('root') || document.body;
   let frame = 0;
-  const schedule = () => {
-    window.cancelAnimationFrame(frame);
-    frame = window.requestAnimationFrame(connectToolbarChip);
+  let activeTarget = null;
+  const activeObserver = new MutationObserver(() => schedule());
+
+  const observeActiveTarget = (target) => {
+    if (target === activeTarget) return;
+    activeObserver.disconnect();
+    activeTarget = target;
+    if (!target) return;
+    activeObserver.observe(target, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['aria-expanded'],
+    });
   };
 
-  const observer = new MutationObserver(schedule);
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true,
-    attributes: true,
-    attributeFilter: ['aria-expanded'],
+  const reconcile = () => {
+    frame = 0;
+    observeActiveTarget(connectToolbarChip(observationRoot));
+  };
+
+  function schedule() {
+    if (frame) return;
+    frame = window.requestAnimationFrame(reconcile);
+  }
+
+  const lifecycleObserver = new MutationObserver((records) => {
+    if (mutationContainsBridgeTarget(records)) schedule();
   });
+  lifecycleObserver.observe(observationRoot, { childList: true, subtree: true });
   schedule();
 
   return () => {
-    observer.disconnect();
-    window.cancelAnimationFrame(frame);
+    lifecycleObserver.disconnect();
+    activeObserver.disconnect();
+    activeTarget = null;
+    if (frame) window.cancelAnimationFrame(frame);
   };
 }
