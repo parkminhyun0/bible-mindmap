@@ -1,0 +1,56 @@
+/*
+ * iPhone Safari/Chrome 정경 추적 패널 안전 영역.
+ *
+ * 두 패널은 document.body portal + position:fixed 구조다. iOS에서 layout
+ * viewport(window.innerWidth)와 visual viewport가 달라질 때 fixed sheet가
+ * 보이는 화면보다 넓거나 옆으로 밀리지 않도록 실제 visual viewport 좌표를 쓴다.
+ */
+@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+  [role='dialog'][aria-label^='정경 추적 ·'] {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: none !important;
+    overflow-x: clip !important;
+    overscroll-behavior-x: none;
+    touch-action: pan-x pan-y pinch-zoom;
+  }
+
+  /* flex/grid 자식의 기본 min-width:auto가 sheet 폭을 밀어내지 않게 한다. */
+  [role='dialog'][aria-label^='정경 추적 ·'] div,
+  [role='dialog'][aria-label^='정경 추적 ·'] header,
+  [role='dialog'][aria-label^='정경 추적 ·'] section,
+  [role='dialog'][aria-label^='정경 추적 ·'] button {
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  /* 개념 상세: window.innerWidth 고정 픽셀 폭을 visual viewport로 덮는다. */
+  [role='dialog'][aria-label^='정경 추적 ·']:not([aria-label='정경 추적 · 정적 의미 검색']) {
+    left: calc(var(--app-visual-viewport-left, 0px) + env(safe-area-inset-left, 0px)) !important;
+    right: auto !important;
+    top: var(--canonical-concept-sheet-top, 16dvh) !important;
+    bottom: auto !important;
+    width: calc(
+      var(--app-visual-viewport-width, 100dvw)
+      - env(safe-area-inset-left, 0px)
+      - env(safe-area-inset-right, 0px)
+    ) !important;
+    height: var(--canonical-concept-sheet-height, min(84dvh, 720px)) !important;
+    max-height: calc(var(--app-visual-viewport-height, 100dvh) - 8px) !important;
+  }
+
+  /* 정적 검색: 높이를 명시해 내부 overflow:auto의 스크롤 범위를 안정화한다. */
+  [role='dialog'][aria-label='정경 추적 · 정적 의미 검색'] {
+    left: calc(var(--app-visual-viewport-left, 0px) + env(safe-area-inset-left, 0px)) !important;
+    right: auto !important;
+    top: var(--canonical-search-sheet-top, 14dvh) !important;
+    bottom: auto !important;
+    width: calc(
+      var(--app-visual-viewport-width, 100dvw)
+      - env(safe-area-inset-left, 0px)
+      - env(safe-area-inset-right, 0px)
+    ) !important;
+    height: var(--canonical-search-sheet-height, 86dvh) !important;
+    max-height: calc(var(--app-visual-viewport-height, 100dvh) - 8px) !important;
+  }
+}
