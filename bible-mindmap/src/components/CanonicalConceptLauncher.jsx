@@ -9,7 +9,7 @@ import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
 const SEARCH_INPUT_SELECTOR = 'input[aria-label="정경 개념 의미 검색"]';
-const SEARCH_DIALOG_SELECTOR = '[role="dialog"][aria-label^="정경 추적 ·"]';
+const SEARCH_DIALOG_SELECTOR = '[role="dialog"][aria-label="정경 추적 · 정적 의미 검색"]';
 const DETAIL_OPEN_TIMEOUT_MS = 1800;
 
 function setCanonicalSearchValue(value) {
@@ -28,6 +28,16 @@ function setCanonicalSearchValue(value) {
   input.focus({ preventScroll: true });
   input.setSelectionRange(value.length, value.length);
   return true;
+}
+
+function mutationTouchesCanonicalSearch(mutations) {
+  return mutations.some((mutation) => [...mutation.addedNodes, ...mutation.removedNodes].some((node) => {
+    if (!(node instanceof Element)) return false;
+    return node.matches?.(SEARCH_DIALOG_SELECTOR)
+      || node.matches?.(SEARCH_INPUT_SELECTOR)
+      || Boolean(node.querySelector?.(SEARCH_DIALOG_SELECTOR))
+      || Boolean(node.querySelector?.(SEARCH_INPUT_SELECTOR));
+  }));
 }
 
 // 일반 사용자 검색은 기존 정적 로컬 검색만 사용한다. NVIDIA 후보는 별도 비교 영역에만 표시한다.
@@ -109,8 +119,9 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
     if (!open) return undefined;
 
     let inputNode = null;
+    let observedDialog = null;
     let dialogObserver = null;
-    let portalObserver = null;
+    let portalFrame = 0;
 
     const readAndCommit = (target) => {
       if (!isCanonicalConceptSearchInput(target)) return;
@@ -156,32 +167,49 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
 
     const watchDialog = (dialogRoot) => {
       if (!(dialogRoot instanceof HTMLElement)) return false;
-      if (attachInput(dialogRoot.querySelector(SEARCH_INPUT_SELECTOR))) return true;
-
-      dialogObserver?.disconnect();
-      dialogObserver = new MutationObserver(() => {
-        attachInput(dialogRoot.querySelector(SEARCH_INPUT_SELECTOR));
-      });
-      dialogObserver.observe(dialogRoot, { childList: true, subtree: true });
+      if (dialogRoot !== observedDialog) {
+        dialogObserver?.disconnect();
+        observedDialog = dialogRoot;
+        dialogObserver = new MutationObserver(() => {
+          attachInput(observedDialog?.querySelector(SEARCH_INPUT_SELECTOR));
+        });
+        dialogObserver.observe(dialogRoot, { childList: true, subtree: true });
+      }
+      attachInput(dialogRoot.querySelector(SEARCH_INPUT_SELECTOR));
       return true;
     };
 
-    const existingDialog = document.querySelector(SEARCH_DIALOG_SELECTOR);
-    if (!watchDialog(existingDialog)) {
-      // lazy/portal 마운트 구간에서만 document.body를 짧게 관찰하고,
-      // 실제 dialog가 확인되는 즉시 scoped observer로 전환한다.
-      portalObserver = new MutationObserver(() => {
-        const dialogRoot = document.querySelector(SEARCH_DIALOG_SELECTOR);
-        if (!watchDialog(dialogRoot)) return;
-        portalObserver?.disconnect();
-        portalObserver = null;
-      });
-      portalObserver.observe(document.body, { childList: true, subtree: true });
-    }
+    const syncPortal = () => {
+      portalFrame = 0;
+      const dialogRoot = document.querySelector(SEARCH_DIALOG_SELECTOR);
+      if (!(dialogRoot instanceof HTMLElement)) {
+        if (observedDialog && !observedDialog.isConnected) {
+          dialogObserver?.disconnect();
+          dialogObserver = null;
+          observedDialog = null;
+          detachInput();
+        }
+        return;
+      }
+      if (dialogRoot === observedDialog && inputNode?.isConnected) return;
+      watchDialog(dialogRoot);
+    };
+
+    const schedulePortalSync = (mutations) => {
+      if (portalFrame || !mutationTouchesCanonicalSearch(mutations)) return;
+      portalFrame = window.requestAnimationFrame(syncPortal);
+    };
+
+    syncPortal();
+    // 검색→상세→검색 왕복 때 portal과 input 노드가 교체된다. 폴링 대신
+    // 관련 노드가 추가/제거된 mutation만 프레임당 한 번 확인해 재부착한다.
+    const portalObserver = new MutationObserver(schedulePortalSync);
+    portalObserver.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      portalObserver?.disconnect();
+      portalObserver.disconnect();
       dialogObserver?.disconnect();
+      if (portalFrame) window.cancelAnimationFrame(portalFrame);
       detachInput();
       clearTimeout(comparisonDebounceRef.current);
     };
