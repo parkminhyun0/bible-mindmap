@@ -146,58 +146,90 @@ function installDividerCapture() {
     divider.setPointerCapture?.(event.pointerId);
 
     const firstDivider = divider.classList.contains('mark-direct-first-divider');
-    const onMove = (moveEvent) => {
-      const layoutRect = layout.getBoundingClientRect();
-      const researchWidth = research.getBoundingClientRect().width;
-      const dividerSpace = 12;
+    const layoutRect = layout.getBoundingClientRect();
+    const dividerSpace = 12;
+    const researchWidth = research.getBoundingClientRect().width;
+    const observationWidth = observation.getBoundingClientRect().width;
+    const observationRight = layoutRect.right - researchWidth - dividerSpace;
+    const maxObservation = Math.max(260, layoutRect.width - researchWidth - 320 - dividerSpace);
+    const maxResearch = Math.max(280, layoutRect.width - observationWidth - 320 - dividerSpace);
+    let moveFrame = 0;
+    let latestClientX = event.clientX;
 
+    const applyMove = () => {
+      moveFrame = 0;
       if (firstDivider) {
-        const observationRight = layoutRect.right - researchWidth - dividerSpace;
-        const maxObservation = Math.max(260, layoutRect.width - researchWidth - 320 - dividerSpace);
-        const width = clamp(observationRight - moveEvent.clientX, 260, maxObservation);
+        const width = clamp(observationRight - latestClientX, 260, maxObservation);
         observation.dataset.markColumnWidth = String(Math.round(width));
         observation.style.setProperty('width', `${width}px`, 'important');
         observation.style.setProperty('flex', `0 0 ${width}px`, 'important');
       } else {
-        const maxResearch = Math.max(280, layoutRect.width - observation.getBoundingClientRect().width - 320 - dividerSpace);
-        const width = clamp(layoutRect.right - moveEvent.clientX, 280, maxResearch);
+        const width = clamp(layoutRect.right - latestClientX, 280, maxResearch);
         research.dataset.markColumnWidth = String(Math.round(width));
         research.style.setProperty('width', `${width}px`, 'important');
         research.style.setProperty('flex', `0 0 ${width}px`, 'important');
       }
     };
+
+    const onMove = (moveEvent) => {
+      latestClientX = moveEvent.clientX;
+      if (moveFrame) return;
+      moveFrame = window.requestAnimationFrame(applyMove);
+    };
     const onUp = () => {
+      if (moveFrame) window.cancelAnimationFrame(moveFrame);
       window.removeEventListener('pointermove', onMove, true);
       window.removeEventListener('pointerup', onUp, true);
       window.removeEventListener('pointercancel', onUp, true);
     };
 
-    window.addEventListener('pointermove', onMove, true);
-    window.addEventListener('pointerup', onUp, true);
-    window.addEventListener('pointercancel', onUp, true);
+    window.addEventListener('pointermove', onMove, { capture: true, passive: true });
+    window.addEventListener('pointerup', onUp, { capture: true, passive: true });
+    window.addEventListener('pointercancel', onUp, { capture: true, passive: true });
   }, true);
+}
+
+function mutationContainsContextModal(records) {
+  return records.some((record) => [...record.addedNodes, ...record.removedNodes].some((node) => (
+    node instanceof Element
+    && (node.matches('.at-modal--context') || node.querySelector('.at-modal--context'))
+  )));
 }
 
 export function installMarkResearchThreeColumnRepair() {
   if (typeof window === 'undefined' || window.__markResearchThreeColumnRepairInstalled) return;
   window.__markResearchThreeColumnRepairInstalled = true;
 
-  let raf = 0;
-  const sync = () => {
-    window.cancelAnimationFrame(raf);
-    raf = window.requestAnimationFrame(() => {
-      // 모바일 성능: 관련 뷰(문맥 모달·마가 3열 레이아웃)가 없으면 전역 DOM 작업을 건너뛴다.
-      if (!document.querySelector('.at-modal--context, .mark-research-layout-test')) return;
-      compactScaffoldingToggle();
-      document.querySelectorAll('.mark-research-layout-test').forEach(prepareThreeColumnLayout);
+  const observationRoot = document.getElementById('root') || document.body;
+  const activeObserver = new MutationObserver(() => schedule());
+  let frame = 0;
+
+  const refreshActiveTargets = () => {
+    activeObserver.disconnect();
+    document.querySelectorAll('.at-modal--context').forEach((modal) => {
+      activeObserver.observe(modal, { childList: true, subtree: true });
     });
   };
 
+  const reconcile = () => {
+    frame = 0;
+    document.querySelectorAll('.at-modal--context').forEach((modal) => {
+      compactScaffoldingToggle(modal);
+      modal.querySelectorAll('.mark-research-layout-test').forEach(prepareThreeColumnLayout);
+    });
+    refreshActiveTargets();
+  };
+
+  function schedule() {
+    if (frame) return;
+    frame = window.requestAnimationFrame(reconcile);
+  }
+
   installDividerCapture();
-  const observer = new MutationObserver(sync);
-  // characterData 관찰은 모든 텍스트 변경마다 발화해 모바일에서 메인 스레드를 과도하게 점유하므로 제외.
-  // 구조 변경(childList)만으로 문맥 모달·3열 레이아웃 등장을 감지하면 충분하다.
-  observer.observe(document.body, { childList: true, subtree: true });
-  window.addEventListener('resize', sync, { passive: true });
-  sync();
+  const lifecycleObserver = new MutationObserver((records) => {
+    if (mutationContainsContextModal(records)) schedule();
+  });
+  lifecycleObserver.observe(observationRoot, { childList: true, subtree: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  schedule();
 }
