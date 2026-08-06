@@ -38,6 +38,10 @@ function findHorizontalScroller(target, dialog) {
   return null;
 }
 
+function setStyleIfChanged(element, property, value) {
+  if (element.style[property] !== value) element.style[property] = value;
+}
+
 function lockDocumentScroll(dialog) {
   const body = document.body;
   const html = document.documentElement;
@@ -84,30 +88,53 @@ function lockDocumentScroll(dialog) {
       transform: backdrop.style.transform,
     } : null;
 
-    const syncViewport = () => {
+    let viewportFrame = 0;
+    const applyViewport = () => {
+      viewportFrame = 0;
       if (!backdrop) return;
       const viewport = window.visualViewport;
-      backdrop.style.position = 'fixed';
-      backdrop.style.inset = 'auto';
-      backdrop.style.left = `${viewport?.offsetLeft || 0}px`;
-      backdrop.style.top = `${viewport?.offsetTop || 0}px`;
-      backdrop.style.right = 'auto';
-      backdrop.style.bottom = 'auto';
-      backdrop.style.width = `${viewport?.width || window.innerWidth}px`;
-      backdrop.style.height = `${viewport?.height || window.innerHeight}px`;
-      backdrop.style.minHeight = backdrop.style.height;
-      backdrop.style.maxHeight = backdrop.style.height;
-      backdrop.style.overflow = 'hidden';
-      backdrop.style.transform = 'none';
+      const width = `${viewport?.width || window.innerWidth}px`;
+      const height = `${viewport?.height || window.innerHeight}px`;
+      setStyleIfChanged(backdrop, 'position', 'fixed');
+      setStyleIfChanged(backdrop, 'inset', 'auto');
+      setStyleIfChanged(backdrop, 'left', `${viewport?.offsetLeft || 0}px`);
+      setStyleIfChanged(backdrop, 'top', `${viewport?.offsetTop || 0}px`);
+      setStyleIfChanged(backdrop, 'right', 'auto');
+      setStyleIfChanged(backdrop, 'bottom', 'auto');
+      setStyleIfChanged(backdrop, 'width', width);
+      setStyleIfChanged(backdrop, 'height', height);
+      setStyleIfChanged(backdrop, 'minHeight', height);
+      setStyleIfChanged(backdrop, 'maxHeight', height);
+      setStyleIfChanged(backdrop, 'overflow', 'hidden');
+      setStyleIfChanged(backdrop, 'transform', 'none');
     };
-    syncViewport();
+    const scheduleViewportSync = () => {
+      if (viewportFrame) return;
+      viewportFrame = window.requestAnimationFrame(applyViewport);
+    };
+    const cancelViewportSync = () => {
+      if (viewportFrame) window.cancelAnimationFrame(viewportFrame);
+      viewportFrame = 0;
+    };
+    applyViewport();
 
     let touchStartX = 0;
     let touchStartY = 0;
+    let activeTouchTarget = null;
+    let activeHorizontalScroller = null;
+    let activeScrollArea = null;
+
+    const cacheTouchTargets = (target) => {
+      activeTouchTarget = target;
+      activeHorizontalScroller = target ? findHorizontalScroller(target, dialog) : null;
+      activeScrollArea = target?.closest('.at-modal__content, [data-modal-scroll-region="true"]') || null;
+    };
 
     const onTouchStart = (event) => {
       touchStartX = event.touches?.[0]?.clientX ?? 0;
       touchStartY = event.touches?.[0]?.clientY ?? 0;
+      const target = event.target instanceof Element ? event.target : null;
+      cacheTouchTargets(target);
     };
 
     const onTouchMove = (event) => {
@@ -116,6 +143,7 @@ function lockDocumentScroll(dialog) {
         event.preventDefault();
         return;
       }
+      if (target !== activeTouchTarget) cacheTouchTargets(target);
 
       const currentX = event.touches?.[0]?.clientX ?? touchStartX;
       const currentY = event.touches?.[0]?.clientY ?? touchStartY;
@@ -123,10 +151,9 @@ function lockDocumentScroll(dialog) {
       const deltaY = currentY - touchStartY;
 
       // 성경 권 칩처럼 가로 스크롤 가능한 영역은 좌우 제스처를 그대로 허용한다.
-      const horizontalScroller = findHorizontalScroller(target, dialog);
-      if (horizontalScroller && Math.abs(deltaX) > Math.abs(deltaY)) return;
+      if (activeHorizontalScroller && Math.abs(deltaX) > Math.abs(deltaY)) return;
 
-      const scrollArea = target.closest('.at-modal__content, [data-modal-scroll-region="true"]');
+      const scrollArea = activeScrollArea;
       if (!scrollArea || !dialog.contains(scrollArea)) {
         event.preventDefault();
         return;
@@ -155,7 +182,8 @@ function lockDocumentScroll(dialog) {
       scrollY,
       ancestors,
       backdropSnapshot,
-      syncViewport,
+      scheduleViewportSync,
+      cancelViewportSync,
       onTouchStart,
       onTouchMove,
     };
@@ -172,8 +200,8 @@ function lockDocumentScroll(dialog) {
 
     document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
     document.addEventListener('touchmove', onTouchMove, { passive: false, capture: true });
-    window.visualViewport?.addEventListener('resize', syncViewport);
-    window.visualViewport?.addEventListener('scroll', syncViewport);
+    window.visualViewport?.addEventListener('resize', scheduleViewportSync, { passive: true });
+    window.visualViewport?.addEventListener('scroll', scheduleViewportSync, { passive: true });
   }
 
   scrollLockCount += 1;
@@ -184,8 +212,9 @@ function lockDocumentScroll(dialog) {
 
     document.removeEventListener('touchstart', scrollSnapshot.onTouchStart, true);
     document.removeEventListener('touchmove', scrollSnapshot.onTouchMove, true);
-    window.visualViewport?.removeEventListener('resize', scrollSnapshot.syncViewport);
-    window.visualViewport?.removeEventListener('scroll', scrollSnapshot.syncViewport);
+    window.visualViewport?.removeEventListener('resize', scrollSnapshot.scheduleViewportSync);
+    window.visualViewport?.removeEventListener('scroll', scrollSnapshot.scheduleViewportSync);
+    scrollSnapshot.cancelViewportSync();
 
     for (const snapshot of scrollSnapshot.ancestors) {
       const { element } = snapshot;
