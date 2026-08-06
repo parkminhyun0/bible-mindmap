@@ -41,14 +41,18 @@ function compactScaffoldingToggle(root = document) {
     const toggle = shell.querySelector('.scaffolding-compact-toggle');
     const note = shell.querySelector('.scaffolding-compact-copy span');
     if (toggle instanceof HTMLButtonElement) {
-      toggle.textContent = isExpanded ? '접기 ▲' : '펼치기 ▼';
-      toggle.setAttribute('aria-expanded', String(isExpanded));
+      const nextLabel = isExpanded ? '접기 ▲' : '펼치기 ▼';
+      if (toggle.textContent !== nextLabel) toggle.textContent = nextLabel;
+      if (toggle.getAttribute('aria-expanded') !== String(isExpanded)) {
+        toggle.setAttribute('aria-expanded', String(isExpanded));
+      }
     }
     if (note instanceof HTMLElement) {
       const progress = [...sourceButton.querySelectorAll('span')]
         .map((span) => span.textContent?.trim())
         .find((text) => text?.startsWith('· 진행 중:'));
-      note.textContent = progress ? progress.replace(/^·\s*/, '') : '코스·렌즈·관찰 카드';
+      const nextNote = progress ? progress.replace(/^·\s*/, '') : '코스·렌즈·관찰 카드';
+      if (note.textContent !== nextNote) note.textContent = nextNote;
     }
   });
 }
@@ -92,6 +96,15 @@ function prepareThreeColumnLayout(layout) {
 
   const observation = findObservationPane(layout, research, leftSource);
   if (!(observation instanceof HTMLElement)) return;
+
+  const existingSecondDivider = layout.querySelector(':scope > .mark-research-second-divider');
+  if (
+    layout.dataset.markThreeColumnReady === 'true'
+    && leftSource.classList.contains('mark-direct-body-pane')
+    && observation.classList.contains('mark-direct-observation-pane')
+    && research.classList.contains('mark-direct-research-pane')
+    && existingSecondDivider instanceof HTMLElement
+  ) return;
 
   const children = [...layout.children];
   const leftIndex = children.indexOf(leftSource);
