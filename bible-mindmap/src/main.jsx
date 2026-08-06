@@ -6,6 +6,7 @@ import './theme/sidebarScrollFix.css'
 import './theme/appleCanvas.css'
 import './theme/appleModalInterior.css'
 import './theme/contextBibleMobileFix.css'
+import './theme/canonicalMobileViewportFix.css'
 import './theme/markResearchLayerTest.css'
 import './theme/markResearchThreeColumnDirect.css'
 import App from './App.jsx'
@@ -15,6 +16,7 @@ import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
+import { installVisualViewportCssVars } from './utils/visualViewportCssVars.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 const MARK_RESEARCH_PREVIEW_ENABLED = new URLSearchParams(window.location.search).get('markResearchPreview') === '1'
@@ -31,6 +33,7 @@ function applyInitialTheme() {
 }
 
 applyInitialTheme()
+installVisualViewportCssVars()
 installVisitorCounterRepair()
 installCrossReferenceToolbarBridge()
 if (MARK_RESEARCH_PREVIEW_ENABLED) {
