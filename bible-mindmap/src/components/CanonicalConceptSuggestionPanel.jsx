@@ -24,6 +24,7 @@ export default function CanonicalConceptSuggestionPanel({ query }) {
 
   useEffect(() => {
     let disposed = false;
+    let scheduled = 0;
 
     const attach = () => {
       if (disposed) return;
@@ -47,13 +48,26 @@ export default function CanonicalConceptSuggestionPanel({ query }) {
       setMountNode(host);
     };
 
+    // 모바일 성능: document.body 전체 subtree 변경마다 attach가 동기 실행되면
+    // 매칭이 많은 검색어('왕' 등) 입력 시 메인 스레드가 막혀 화면이 멈춘다.
+    // 이미 호스트가 연결돼 있으면 즉시 반환하고, 그 외에는 프레임당 1회로 코얼레싱한다.
+    const scheduleAttach = () => {
+      if (disposed || scheduled) return;
+      if (hostRef.current?.isConnected) return;
+      scheduled = requestAnimationFrame(() => {
+        scheduled = 0;
+        attach();
+      });
+    };
+
     attach();
-    const observer = new MutationObserver(attach);
+    const observer = new MutationObserver(scheduleAttach);
     observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       disposed = true;
       observer.disconnect();
+      if (scheduled) cancelAnimationFrame(scheduled);
       const host = hostRef.current;
       hostRef.current = null;
       setMountNode(null);
