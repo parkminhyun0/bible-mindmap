@@ -116,15 +116,24 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
     if (isMobile || maximized || event.button !== 0 || event.target.closest('button')) return;
     event.preventDefault();
     const origin = { clientX: event.clientX, clientY: event.clientY, ...position };
-    const onMove = (moveEvent) => {
+    let frame = 0;
+    let pt = null;
+    const apply = () => {
+      frame = 0;
+      if (!pt) return;
       const viewportWidth = window.innerWidth;
       const viewportHeight = window.innerHeight;
       setPosition({
-        x: clamp(origin.x + moveEvent.clientX - origin.clientX, 8, Math.max(8, viewportWidth - size.width - 8)),
-        y: clamp(origin.y + moveEvent.clientY - origin.clientY, 8, Math.max(8, viewportHeight - (minimized ? 64 : size.height) - 8)),
+        x: clamp(origin.x + pt.clientX - origin.clientX, 8, Math.max(8, viewportWidth - size.width - 8)),
+        y: clamp(origin.y + pt.clientY - origin.clientY, 8, Math.max(8, viewportHeight - (minimized ? 64 : size.height) - 8)),
       });
     };
+    const onMove = (moveEvent) => {
+      pt = { clientX: moveEvent.clientX, clientY: moveEvent.clientY };
+      if (!frame) frame = window.requestAnimationFrame(apply);
+    };
     const onUp = () => {
+      if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
     };
@@ -137,13 +146,22 @@ export default function CanonicalConceptStaticSearchEntry({ onClose }) {
     event.preventDefault();
     event.stopPropagation();
     const origin = { clientX: event.clientX, clientY: event.clientY, ...size };
-    const onMove = (moveEvent) => {
+    let frame = 0;
+    let pt = null;
+    const apply = () => {
+      frame = 0;
+      if (!pt) return;
       setSize({
-        width: clamp(origin.width + moveEvent.clientX - origin.clientX, 440, Math.max(440, window.innerWidth - position.x - 8)),
-        height: clamp(origin.height + moveEvent.clientY - origin.clientY, 380, Math.max(380, window.innerHeight - position.y - 8)),
+        width: clamp(origin.width + pt.clientX - origin.clientX, 440, Math.max(440, window.innerWidth - position.x - 8)),
+        height: clamp(origin.height + pt.clientY - origin.clientY, 380, Math.max(380, window.innerHeight - position.y - 8)),
       });
     };
+    const onMove = (moveEvent) => {
+      pt = { clientX: moveEvent.clientX, clientY: moveEvent.clientY };
+      if (!frame) frame = window.requestAnimationFrame(apply);
+    };
     const onUp = () => {
+      if (frame) window.cancelAnimationFrame(frame);
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
     };
