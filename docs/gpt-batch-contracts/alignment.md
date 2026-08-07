@@ -61,20 +61,36 @@
 | < 0.75 | 필수 검수(`status: review`) — Gemini + 자비스 필수 |
 | 신학 민감어 (하나님/성령/그리스도/메시아 등) | confidence 무관 자비스 개혁주의 검수 |
 
+## 원어 소스 접근 (중요 · A안 CDN 오프로드)
+
+대용량 원어 데이터(lex·strongs·variants)는 **`data-dist` 브랜치**에 발행되어 jsDelivr CDN으로 서빙된다. **main 에는 존재하지 않음.** ([[bible-deploy-mechanism]] 참조)
+
+| 접근 방법 | 경로 |
+|---|---|
+| **data-dist 브랜치 파일** | `data/lex/hot/<Book>/<chapter>.json` (prefix 없음) |
+| **jsDelivr 직접 fetch (권장)** | `https://cdn.jsdelivr.net/gh/parkminhyun0/bible-mindmap@<data-dist-SHA>/data/lex/hot/<Book>/<chapter>.json` |
+| **Statically 미러 (폴백)** | `https://cdn.statically.io/gh/parkminhyun0/bible-mindmap/<SHA>/data/lex/hot/<Book>/<chapter>.json` |
+| **GitHub raw (폴백)** | `https://raw.githubusercontent.com/parkminhyun0/bible-mindmap/<SHA>/data/lex/hot/<Book>/<chapter>.json` |
+
+발주 시 반드시 **현재 data-dist SHA** 를 카드에 명시. `sourceVersions.lexicon` 에도 같은 SHA 기록.
+
 ## GPT 배치 발주 예시 (파일럿)
 
 ```
 [정렬 파일럿 A] Genesis 1장 · KRV 정렬
-- 대상: public/data/alignment/krv/genesis/1.json
+- 대상: public/data/alignment/krv/genesis/1.json (정렬 산출물은 main 에 커밋)
 - 범위: 31절 전체 원어 토큰
 - 계약: docs/gpt-batch-contracts/alignment.md
-- 툴:
-  1. lex 데이터(hot/Gen/1.json)에서 각 토큰의 s(Strong), w(surface) 읽기
-  2. computeTokenChecksum(w) 로 checksum 생성
-  3. KRV 본문에서 sensible 매칭 위치를 spans 로 기록
-  4. 애매하면 relation:"uncertain" + 낮은 confidence
-- 절대: 사전에 없는 뜻 임의 생성 금지, 억지 매칭 금지
-- 산출: PR → scripts/verify-translation-alignment.mjs 통과 필수
+- 원어 소스 (data-dist SHA <카드 발주 시점 SHA>):
+    https://cdn.jsdelivr.net/gh/parkminhyun0/bible-mindmap@<SHA>/data/lex/hot/Gen/1.json
+- 절차:
+  1. 위 URL 에서 hot/Gen/1.json fetch (미러 폴백 3단)
+  2. 각 토큰의 s(Strong), w(surface) 읽기
+  3. computeTokenChecksum(w) 로 checksum 생성 (src/data/translationAlignmentContract.js)
+  4. KRV 본문(bolls.life/get-text/KRV/1/<chapter>/)에서 spans 기록
+  5. 애매하면 relation:"uncertain" + confidence < 0.75
+- 절대: 사전에 없는 뜻 임의 생성 금지, 억지 매칭 금지, tokenChecksum 누락 금지
+- 산출: PR → scripts/verify-gpt-batch.mjs 통과 필수 → 자비스 검수 → 머지
 ```
 
 ## 금지사항
