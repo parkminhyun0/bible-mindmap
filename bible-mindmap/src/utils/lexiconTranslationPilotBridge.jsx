@@ -22,10 +22,14 @@ function findDefinitionToolbar(dialog) {
 }
 
 function styleToggleButton(button, open) {
+  const mobile = window.innerWidth < 768;
+  const styleState = `${open ? 'open' : 'closed'}:${mobile ? 'mobile' : 'desktop'}`;
+  if (button.dataset.lexiconTranslationStyleState === styleState) return;
+
   Object.assign(button.style, {
     marginLeft: 'auto',
-    minHeight: window.innerWidth < 768 ? '36px' : '30px',
-    padding: window.innerWidth < 768 ? '7px 10px' : '5px 9px',
+    minHeight: mobile ? '36px' : '30px',
+    padding: mobile ? '7px 10px' : '5px 9px',
     borderRadius: '8px',
     border: '1px solid #f59e0b',
     background: open ? '#f59e0b' : '#fffbeb',
@@ -36,10 +40,10 @@ function styleToggleButton(button, open) {
     whiteSpace: 'nowrap',
     fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
   });
-  button.textContent = open
-    ? '🇰🇷 번역 닫기'
-    : `🇰🇷 한글 번역 ${window.innerWidth < 768 ? '›' : '→'}`;
+  const nextText = open ? '🇰🇷 번역 닫기' : `🇰🇷 한글 번역 ${mobile ? '›' : '→'}`;
+  if (button.textContent !== nextText) button.textContent = nextText;
   button.setAttribute('aria-expanded', open ? 'true' : 'false');
+  button.dataset.lexiconTranslationStyleState = styleState;
 }
 
 function readPopupRect(dialog) {
@@ -61,8 +65,8 @@ export function installLexiconTranslationPilotBridge() {
   let scheduled = false;
 
   const setMobileDialogHidden = (state, hidden) => {
-    if (window.innerWidth >= 768) return;
-    if (hidden) {
+    const shouldHide = hidden && window.innerWidth < 768;
+    if (shouldHide) {
       if (!state.mobileSnapshot) {
         state.mobileSnapshot = {
           ariaHidden: state.dialog.getAttribute('aria-hidden'),
@@ -71,7 +75,10 @@ export function installLexiconTranslationPilotBridge() {
       }
       state.dialog.setAttribute('aria-hidden', 'true');
       state.dialog.style.pointerEvents = 'none';
-    } else if (state.mobileSnapshot) {
+      return;
+    }
+
+    if (state.mobileSnapshot) {
       if (state.mobileSnapshot.ariaHidden == null) state.dialog.removeAttribute('aria-hidden');
       else state.dialog.setAttribute('aria-hidden', state.mobileSnapshot.ariaHidden);
       state.dialog.style.pointerEvents = state.mobileSnapshot.pointerEvents;
@@ -138,6 +145,7 @@ export function installLexiconTranslationPilotBridge() {
         translation,
         open: false,
         mobileSnapshot: null,
+        rendered: false,
       };
       button.addEventListener('click', (event) => {
         event.preventDefault();
@@ -148,9 +156,15 @@ export function installLexiconTranslationPilotBridge() {
       states.set(dialog, state);
     }
 
-    if (state.toolbar !== toolbar) state.toolbar = toolbar;
-    if (!toolbar.contains(state.button)) toolbar.appendChild(state.button);
-    renderState(state);
+    const toolbarChanged = state.toolbar !== toolbar;
+    if (toolbarChanged) state.toolbar = toolbar;
+    const buttonMissing = !toolbar.contains(state.button);
+    if (buttonMissing) toolbar.appendChild(state.button);
+    styleToggleButton(state.button, state.open);
+    if (!state.rendered || toolbarChanged || buttonMissing) {
+      state.rendered = true;
+      renderState(state);
+    }
   };
 
   const sync = () => {
@@ -173,13 +187,24 @@ export function installLexiconTranslationPilotBridge() {
     childList: true,
     subtree: true,
     attributes: true,
-    attributeFilter: ['style', 'aria-label'],
+    attributeFilter: ['aria-label'],
   });
 
+  let geometryFrame = 0;
+  const refreshOpenGeometry = () => {
+    if (geometryFrame) return;
+    geometryFrame = window.requestAnimationFrame(() => {
+      geometryFrame = 0;
+      for (const state of states.values()) {
+        if (state.open) renderState(state);
+      }
+    });
+  };
   const onResize = () => {
     for (const state of states.values()) renderState(state);
   };
   window.addEventListener('resize', onResize);
+  window.addEventListener('mousemove', refreshOpenGeometry);
 
   const onEscape = (event) => {
     if (event.key !== 'Escape') return;
@@ -197,7 +222,9 @@ export function installLexiconTranslationPilotBridge() {
   return () => {
     observer.disconnect();
     window.removeEventListener('resize', onResize);
+    window.removeEventListener('mousemove', refreshOpenGeometry);
     window.removeEventListener('keydown', onEscape, true);
+    if (geometryFrame) window.cancelAnimationFrame(geometryFrame);
     for (const dialog of [...states.keys()]) destroyState(dialog);
   };
 }
