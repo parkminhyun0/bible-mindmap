@@ -23,9 +23,9 @@ metadata:
 
 ## 데이터 릴리스 절차 (A안 · 대용량 데이터 변경 시) · 확정 2026-08-07
 코드가 아니라 **대용량 정적 데이터(lex·strongs·variants·places DB 등)를 바꿀 때**는 위 앱 릴리스와 별개로 아래를 따른다. 배경·구조는 [[bible-deploy-mechanism]] "데이터 전달 표준 = A안".
-1. **데이터 갱신 후 새 버전 tag 발행**: 기존 `data-v1`을 덮지 말고 `data-v2`처럼 **새 불변 tag**로 발행(jsDelivr 영구 캐싱 특성상 tag 재사용 금지 — 스테일 방지).
-2. **빌드 env 갱신**: `VITE_DATA_BASE_URL`을 새 tag로 지정해 앱 재빌드·배포. 필요 시 `VITE_DATA_BASE_URL_MIRROR`도 동일 tag로.
-3. **미러 확인**: 1차(jsDelivr) 외 Statically·GitHub raw가 새 tag를 서빙하는지 확인(폴백 유효성). 미러는 자동 유도되므로 tag만 맞으면 됨.
+1. **`data-dist` 브랜치에 발행**: 갱신된 대용량 데이터를 data-dist 브랜치로 publish(발행 스크립트/`publish-data`). 새 커밋 SHA가 생기며, 이 SHA가 곧 불변 CDN 참조가 된다(브랜치를 덮어도 이전 SHA는 jsDelivr에 영구 캐싱되어 안전).
+2. **앱 재빌드·배포 (SHA 자동 주입)**: `main`에 배포가 돌면 `deploy.yml`이 `git ls-remote origin data-dist`로 **최신 data-dist SHA를 자동 resolve해 `VITE_DATA_BASE_URL`에 주입**한다. 수동 tag 발행이나 env 편집 불필요.
+3. **미러 확인**: 1차(jsDelivr) 외 Statically·GitHub raw가 해당 SHA를 서빙하는지 확인(폴백 유효성). 미러는 동일 SHA로 자동 유도된다.
 4. **라이브 검증**: 앱에서 데이터 로딩 정상 + 1차 차단 상황 폴백 동작 확인. 이후 대시보드 LIVE 갱신(6번).
 
-**핵심:** 데이터는 tag로 버전 관리, 앱은 env로 tag를 가리킨다. tag 재사용 금지, 폴백은 항상 다른 CDN 미러(동일출처 폴백은 최종 안전망일 뿐 Pages 재적재 금지 — 59MB 문제 재발).
+**핵심:** 데이터 버전 관리는 **data-dist 브랜치 커밋 SHA**로 하고, 앱은 빌드 시 그 SHA를 자동으로 가리킨다(수동 tag/env 갱신 없음). 커밋 SHA는 불변이라 스테일 없음. 폴백은 항상 다른 CDN 미러(동일출처 폴백은 최종 안전망일 뿐 Pages 재적재 금지 — 59MB 문제 재발).
