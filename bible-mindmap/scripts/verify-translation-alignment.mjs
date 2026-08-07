@@ -13,6 +13,8 @@ import {
   ALIGNMENT_SCHEMA_VERSION,
   createTokenId,
   validateAlignmentRecord,
+  computeTokenChecksum,
+  verifyTokenChecksum,
 } from '../src/data/translationAlignmentContract.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -41,6 +43,7 @@ function runRegressionCases() {
   assert.deepEqual(findEnglishSpans('the creator spoke', ['create']), [], 'derivational words must not be treated as inflections');
 
   const explicitText = '하나님께서 말씀하셨다';
+  const hebrewToken = 'אֱלֹהִים';
   const explicitRecord = {
     schemaVersion: ALIGNMENT_SCHEMA_VERSION,
     tokenId: 'genesis.1.1.hot.3',
@@ -48,6 +51,7 @@ function runRegressionCases() {
     relation: 'direct',
     status: 'verified',
     confidence: 1,
+    tokenChecksum: computeTokenChecksum(hebrewToken),
     targets: { korean: { text: explicitText, spans: [{ start: 0, end: 5 }] } },
     sourceVersions: { dictionary: 'test', krv: 'test' },
   };
@@ -57,6 +61,18 @@ function runRegressionCases() {
     ['하나님께서']
   );
   assert.equal(createTokenId({ bookId: 'Genesis', chapter: 1, verse: 1, language: 'HOT', index: 3 }), 'genesis.1.1.hot.3');
+
+  // 판본 안정성: 니쿳/악센트 차이는 무시(같은 checksum), 자모 변경은 감지(다른 checksum)
+  assert.equal(computeTokenChecksum('אֱלֹהִים'), computeTokenChecksum('אלהים'), 'checksum must ignore niqqud/accents');
+  assert.notEqual(computeTokenChecksum('אלהים'), computeTokenChecksum('אלוהים'), 'checksum must catch consonant changes');
+  assert.ok(verifyTokenChecksum(explicitRecord, 'אלהים').ok, 'verifyTokenChecksum accepts identical stripped form');
+  assert.equal(verifyTokenChecksum(explicitRecord, 'אלוהים').ok, false, 'verifyTokenChecksum rejects mismatched surface');
+
+  // checksum 필드 없으면 record 검증 실패해야 함
+  const missingChecksum = { ...explicitRecord };
+  delete missingChecksum.tokenChecksum;
+  const missingErrors = validateAlignmentRecord(missingChecksum);
+  assert.ok(missingErrors.some(e => e.includes('tokenChecksum')), 'validateAlignmentRecord must require tokenChecksum');
 }
 
 function walkJsonFiles(dir) {
@@ -88,4 +104,4 @@ function validateCommittedAlignments() {
 
 runRegressionCases();
 const recordCount = validateCommittedAlignments();
-console.log(`✓ translation alignment verifier passed · regression=18 · committedRecords=${recordCount}`);
+console.log(`✓ translation alignment verifier passed · regression=23 · committedRecords=${recordCount}`);
