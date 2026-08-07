@@ -1230,7 +1230,7 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           padding: '10px 12px',
           boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
         }}>
-          <div style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
+          <div style={{ fontSize: 10, color: '#ffffff', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
             👥 앱 방문자
           </div>
           <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -1238,14 +1238,14 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
               <div style={{ fontSize: 22, fontWeight: 800, color: '#10b981', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
                 {todayCount != null ? todayCount.toLocaleString() : '–'}
               </div>
-              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
+              <div style={{ fontSize: 9, color: '#ffffff', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
             </div>
             <div style={{ width: 1, height: 34, background: 'rgba(255,255,255,.12)', flexShrink: 0 }} />
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
                 {totalCount != null ? (typeof totalCount === 'number' ? totalCount.toLocaleString() : totalCount) : '–'}
               </div>
-              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
+              <div style={{ fontSize: 9, color: '#ffffff', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
             </div>
           </div>
         </div>
