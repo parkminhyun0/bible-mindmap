@@ -16,6 +16,7 @@ import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
+import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -35,6 +36,7 @@ installVisitorCounterRepair()
 installCrossReferenceToolbarBridge()
 installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()
+installLexiconTranslationPilotBridge()
 
 const root = document.getElementById('root')
 
