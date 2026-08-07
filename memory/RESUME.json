@@ -1,1 +1,1 @@
-{"v":1,"updated":"2026-08-08T01:04+09:00","repo":"parkminhyun0/bible-mindmap","task":"H776 BDB 한글 번역 슬라이드 배포 후 사용자 화면 검수 대기","check":"CI·전체 빌드·브라우저 스모크·GitHub Pages 배포 성공 및 라이브 반영 확인","next":"라이브 앱에서 H776 사전의 한글 번역 버튼과 반응형 슬라이드 동작을 사용자와 확인","block":"none","deep":["memory/SESSION_STATE.md"]}
+{"v":1,"updated":"2026-08-08T01:19+09:00","repo":"parkminhyun0/bible-mindmap","task":"H776 한글 번역 계층표시를 BDB식 번호 체계로 수정·배포","check":"화면 표기를 점식 ID 대신 깊이별 숫자·영문자 교대 마커로 변경하고 검증 계약 추가","next":"CI 통과 후 병합·GitHub Pages 배포·Live SHA 확인","block":"none","deep":["memory/SESSION_STATE.md"]}
