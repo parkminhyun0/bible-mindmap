@@ -1,13 +1,35 @@
 import { useMemo } from 'react';
 
+function toBdbLetter(index) {
+  let current = Number(index);
+  if (!Number.isInteger(current) || current < 1) return '';
+
+  let label = '';
+  while (current > 0) {
+    current -= 1;
+    label = String.fromCharCode(97 + (current % 26)) + label;
+    current = Math.floor(current / 26);
+  }
+  return label;
+}
+
+export function formatBdbOutlineMarker(nodeId, depth = 0) {
+  const segments = String(nodeId ?? '').split('.');
+  const index = Number.parseInt(segments[segments.length - 1], 10);
+  if (!Number.isInteger(index) || index < 1) return String(nodeId ?? '');
+
+  const marker = depth % 2 === 0 ? String(index) : toBdbLetter(index);
+  return `${marker}.`;
+}
+
 function DefinitionNode({ node, depth = 0 }) {
   return (
     <div style={{ marginTop: depth === 0 ? 0 : 6 }}>
       <div style={{
         display: 'grid',
-        gridTemplateColumns: '3.6em minmax(0, 1fr)',
-        gap: 7,
-        paddingLeft: depth * 10,
+        gridTemplateColumns: '2.4em minmax(0, 1fr)',
+        gap: 6,
+        paddingLeft: depth * 16,
         alignItems: 'start',
       }}>
         <span style={{
@@ -16,8 +38,10 @@ function DefinitionNode({ node, depth = 0 }) {
           fontSize: depth === 0 ? 12 : 11,
           fontWeight: 700,
           lineHeight: 1.65,
+          textAlign: 'left',
+          fontVariantNumeric: 'tabular-nums',
         }}>
-          {node.id}
+          {formatBdbOutlineMarker(node.id, depth)}
         </span>
         <span style={{
           color: '#1e293b',

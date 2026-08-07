@@ -39,6 +39,21 @@ assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length, 'definiti
 assert.ok(nodes.every((node) => typeof node.text === 'string' && node.text.trim()), 'every node needs Korean text');
 assert.ok(Math.max(...nodes.map((node) => node.depth)) >= 3, 'nested BDB hierarchy must be preserved');
 
+const drawerPath = path.join(ROOT, 'src', 'components', 'LexiconTranslationDrawer.jsx');
+const drawerSource = fs.readFileSync(drawerPath, 'utf8');
+for (const contract of [
+  'formatBdbOutlineMarker(node.id, depth)',
+  'depth % 2 === 0',
+  'String.fromCharCode(97 + (current % 26))',
+  'paddingLeft: depth * 16',
+]) {
+  assert.ok(drawerSource.includes(contract), `BDB outline marker contract missing: ${contract}`);
+}
+assert.ok(
+  !drawerSource.includes('          {node.id}\n'),
+  'raw dotted node ids must not be rendered as visible outline markers',
+);
+
 const bridgePath = path.join(ROOT, 'src', 'utils', 'lexiconTranslationPilotBridge.jsx');
 const bridgeSource = fs.readFileSync(bridgePath, 'utf8');
 for (const contract of [
@@ -54,4 +69,4 @@ const mainPath = path.join(ROOT, 'src', 'main.jsx');
 const mainSource = fs.readFileSync(mainPath, 'utf8');
 assert.ok(mainSource.includes('installLexiconTranslationPilotBridge()'), 'main bootstrap is missing pilot bridge');
 
-console.log(`✓ lexicon translation pilot verifier passed · entries=1 · nodes=${nodes.length} · strong=H776`);
+console.log(`✓ lexicon translation pilot verifier passed · entries=1 · nodes=${nodes.length} · strong=H776 · outline=BDB`);
