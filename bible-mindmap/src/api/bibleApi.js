@@ -9,7 +9,7 @@ import {
   selectVerseRows,
 } from './verseNormalization';
 
-import { DATA_BASE } from '../config/dataBase.js';
+import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 
 const BASE = import.meta.env?.BASE_URL || '/';
 
@@ -106,7 +106,7 @@ async function fetchJsonWithRetry(url, { noStore = false, priority = 0 } = {}) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
       try {
-        const response = await fetch(url, {
+        const response = await resilientFetch(url, {
           signal: controller.signal,
           ...(noStore ? { cache: 'no-store' } : {}),
         });

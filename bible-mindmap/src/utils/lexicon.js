@@ -4,7 +4,7 @@
  */
 
 import { isOT } from '../data/bibleBooks';
-import { DATA_BASE } from '../config/dataBase.js';
+import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 
 const BASE = import.meta.env.BASE_URL; // ex: "/bible-mindmap/"
 
@@ -37,7 +37,7 @@ export async function loadChapterLexicon(bookId, chapter, langOverride) {
   const url = lang === 'lxx'
     ? `${BASE}lxx-lex/${bookId}/${chapter}.json`
     : `${DATA_BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
-  const promise = fetch(url).then((res) => {
+  const promise = resilientFetch(url).then((res) => {
     if (!res.ok) throw new Error(`lexicon fetch ${res.status}`);
     return res.json();
   }).catch((err) => {
@@ -91,7 +91,7 @@ export async function fetchStrongConcordance(strongId, bookId) {
     bookData = await _strongsBookCache.get(cacheKey);
   } else {
     const url = `${DATA_BASE}data/strongs/${lang}/${bookId}.json`;
-    const promise = fetch(url).then((r) => {
+    const promise = resilientFetch(url).then((r) => {
       if (!r.ok) throw new Error(`strongs ${r.status}`);
       return r.json();
     }).catch(() => ({}));
@@ -117,7 +117,7 @@ async function loadStrongsChunk(lang, ci) {
   const key = `${lang}-${ci}`;
   if (!_chunkDefCache.has(key)) {
     const url = `${DATA_BASE}data/strongs-def/${lang}/${ci}.json`;
-    const p = fetch(url)
+    const p = resilientFetch(url)
       .then(r => r.ok ? r.json() : {})
       .catch(() => ({}));
     _chunkDefCache.set(key, p);
