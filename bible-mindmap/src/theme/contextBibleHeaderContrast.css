@@ -1,0 +1,10 @@
+/* 문맥 성경 모바일 상단 헤더: 네이비 배경 위 텍스트·아이콘 대비 보정 */
+.at-modal--context.at-modal--mobile .at-modal__titlebar > div:first-child button span,
+.at-modal--context.at-modal--mobile .at-modal__titlebar > div:first-child > span,
+.at-modal--context.at-modal--mobile .at-modal__titlebar > div:last-child button {
+  color: #ffffff !important;
+}
+
+.at-modal--context.at-modal--mobile .at-modal__titlebar > div:last-child button[disabled] {
+  opacity: 0.72 !important;
+}
