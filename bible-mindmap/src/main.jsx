@@ -18,6 +18,7 @@ import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
 import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
 import { installWordSearchAlignmentPilotBridge } from './utils/wordSearchAlignmentPilotBridge.jsx'
+import { installWordSearchFullscreenBridge } from './utils/wordSearchFullscreenBridge.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -39,6 +40,7 @@ installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()
 installLexiconTranslationPilotBridge()
 installWordSearchAlignmentPilotBridge()
+installWordSearchFullscreenBridge()
 
 const root = document.getElementById('root')
 
