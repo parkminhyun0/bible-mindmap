@@ -1,0 +1,2412 @@
+{
+  "generatedFrom": "public/data/lex (STEPBible, CC BY 4.0)",
+  "note": "빈도·형태소는 코퍼스 근거. glossKo 값은 이 표로 생성하지 않음(권위 사전 게이트 별도).",
+  "totals": {
+    "strongCount": 13937,
+    "tokenFiles": 1190,
+    "existingGloss": 144
+  },
+  "top": 300,
+  "candidates": [
+    {
+      "strong": "H3068",
+      "count": 6536,
+      "content": true,
+      "lemma": "יהוה",
+      "glossEn": "against/ Yahweh",
+      "inGloss": false
+    },
+    {
+      "strong": "H3605",
+      "count": 5421,
+      "content": true,
+      "lemma": "כֹּל",
+      "glossEn": "all",
+      "inGloss": false
+    },
+    {
+      "strong": "H559",
+      "count": 5310,
+      "content": true,
+      "lemma": "אָמַר",
+      "glossEn": "and/ he said",
+      "inGloss": false
+    },
+    {
+      "strong": "H1961",
+      "count": 3566,
+      "content": true,
+      "lemma": "הָיָה",
+      "glossEn": "to/ be",
+      "inGloss": false
+    },
+    {
+      "strong": "H6213",
+      "count": 2629,
+      "content": true,
+      "lemma": "עָשָׂה",
+      "glossEn": "they had done",
+      "inGloss": false
+    },
+    {
+      "strong": "H430",
+      "count": 2604,
+      "content": true,
+      "lemma": "אֱלֹהִים",
+      "glossEn": "gods/ their",
+      "inGloss": false
+    },
+    {
+      "strong": "H935",
+      "count": 2575,
+      "content": true,
+      "lemma": "בּוֹא",
+      "glossEn": "they should come",
+      "inGloss": false
+    },
+    {
+      "strong": "H4428",
+      "count": 2526,
+      "content": true,
+      "lemma": "מֶ֫לֶךְ",
+      "glossEn": "were the/ kings",
+      "inGloss": false
+    },
+    {
+      "strong": "H3478",
+      "count": 2510,
+      "content": true,
+      "lemma": "יִשְׂרָאֵל",
+      "glossEn": "and/ Israel",
+      "inGloss": false
+    },
+    {
+      "strong": "G1510",
+      "count": 2408,
+      "content": true,
+      "lemma": "εἰμί",
+      "glossEn": "to be",
+      "inGloss": false
+    },
+    {
+      "strong": "H3117",
+      "count": 2309,
+      "content": true,
+      "lemma": "יוֹם",
+      "glossEn": "in/ days/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H6440",
+      "count": 2127,
+      "content": true,
+      "lemma": "פָּנֶה",
+      "glossEn": "to/ before",
+      "inGloss": false
+    },
+    {
+      "strong": "H1004",
+      "count": 2050,
+      "content": true,
+      "lemma": "בַּ֫יִת",
+      "glossEn": "household/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H5414",
+      "count": 2013,
+      "content": true,
+      "lemma": "נָתַן",
+      "glossEn": "and/ he appointed/ them",
+      "inGloss": false
+    },
+    {
+      "strong": "H5971",
+      "count": 1876,
+      "content": true,
+      "lemma": "עַם",
+      "glossEn": "the/ people",
+      "inGloss": false
+    },
+    {
+      "strong": "H376",
+      "count": 1663,
+      "content": true,
+      "lemma": "אִישׁ",
+      "glossEn": "the man of",
+      "inGloss": false
+    },
+    {
+      "strong": "H3027",
+      "count": 1620,
+      "content": true,
+      "lemma": "יָד",
+      "glossEn": "by/ the hand of",
+      "inGloss": false
+    },
+    {
+      "strong": "H1980",
+      "count": 1551,
+      "content": true,
+      "lemma": "הָלַךְ",
+      "glossEn": "and/ he went",
+      "inGloss": false
+    },
+    {
+      "strong": "G3004",
+      "count": 1357,
+      "content": true,
+      "lemma": "λέγω",
+      "glossEn": "to speak",
+      "inGloss": false
+    },
+    {
+      "strong": "G2316",
+      "count": 1343,
+      "content": true,
+      "lemma": "θεός",
+      "glossEn": "God",
+      "inGloss": false
+    },
+    {
+      "strong": "H7200",
+      "count": 1300,
+      "content": true,
+      "lemma": "רָאָה",
+      "glossEn": "and/ he saw",
+      "inGloss": false
+    },
+    {
+      "strong": "H1",
+      "count": 1213,
+      "content": true,
+      "lemma": "אָב",
+      "glossEn": "ancestors/ our",
+      "inGloss": false
+    },
+    {
+      "strong": "H8085",
+      "count": 1160,
+      "content": true,
+      "lemma": "שָׁמַע",
+      "glossEn": "and/ they heard",
+      "inGloss": false
+    },
+    {
+      "strong": "H1696",
+      "count": 1143,
+      "content": true,
+      "lemma": "דָבַר",
+      "glossEn": "did I speak",
+      "inGloss": false
+    },
+    {
+      "strong": "H5892",
+      "count": 1090,
+      "content": true,
+      "lemma": "עִיר",
+      "glossEn": "city/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H3427",
+      "count": 1081,
+      "content": true,
+      "lemma": "יָשַׁב",
+      "glossEn": "and/ they dwelt",
+      "inGloss": false
+    },
+    {
+      "strong": "H1732",
+      "count": 1075,
+      "content": true,
+      "lemma": "דָּוִד",
+      "glossEn": "to/ David",
+      "inGloss": false
+    },
+    {
+      "strong": "H7725",
+      "count": 1060,
+      "content": true,
+      "lemma": "שׁוּב",
+      "glossEn": "and/ you will return",
+      "inGloss": false
+    },
+    {
+      "strong": "G2424",
+      "count": 988,
+      "content": true,
+      "lemma": "Ἰησοῦς",
+      "glossEn": "Jesus/Joshua",
+      "inGloss": false
+    },
+    {
+      "strong": "H259",
+      "count": 971,
+      "content": true,
+      "lemma": "אֶחָד",
+      "glossEn": "the/ one",
+      "inGloss": false
+    },
+    {
+      "strong": "H3947",
+      "count": 967,
+      "content": true,
+      "lemma": "לָקַח",
+      "glossEn": "and/ he took",
+      "inGloss": false
+    },
+    {
+      "strong": "G2036",
+      "count": 956,
+      "content": true,
+      "lemma": "ἔπω",
+      "glossEn": "to say",
+      "inGloss": false
+    },
+    {
+      "strong": "H3045",
+      "count": 946,
+      "content": true,
+      "lemma": "יָדַע",
+      "glossEn": "those who knew",
+      "inGloss": false
+    },
+    {
+      "strong": "H5927",
+      "count": 892,
+      "content": true,
+      "lemma": "עָלָה",
+      "glossEn": "and/ he went up",
+      "inGloss": false
+    },
+    {
+      "strong": "H5869",
+      "count": 887,
+      "content": true,
+      "lemma": "עַ֫יִן",
+      "glossEn": "in/ the eyes of",
+      "inGloss": false
+    },
+    {
+      "strong": "H8141",
+      "count": 877,
+      "content": true,
+      "lemma": "שָׁנָה",
+      "glossEn": "years",
+      "inGloss": false
+    },
+    {
+      "strong": "H7971",
+      "count": 848,
+      "content": true,
+      "lemma": "שָׁלַח",
+      "glossEn": "and/ they sent",
+      "inGloss": false
+    },
+    {
+      "strong": "H4191",
+      "count": 840,
+      "content": true,
+      "lemma": "מוּת",
+      "glossEn": "and/ he died",
+      "inGloss": false
+    },
+    {
+      "strong": "H3063",
+      "count": 826,
+      "content": true,
+      "lemma": "יְהוּדָה",
+      "glossEn": "and/ Judah",
+      "inGloss": false
+    },
+    {
+      "strong": "H398",
+      "count": 810,
+      "content": true,
+      "lemma": "אָכַל",
+      "glossEn": "eating",
+      "inGloss": false
+    },
+    {
+      "strong": "H5650",
+      "count": 801,
+      "content": true,
+      "lemma": "עֶ֫בֶד",
+      "glossEn": "servant/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H369",
+      "count": 789,
+      "content": true,
+      "lemma": "אַ֫יִן",
+      "glossEn": "there not",
+      "inGloss": false
+    },
+    {
+      "strong": "H802",
+      "count": 781,
+      "content": true,
+      "lemma": "אִשָּׁה",
+      "glossEn": "wife/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H8147",
+      "count": 769,
+      "content": true,
+      "lemma": "שְׁנַ֫יִם",
+      "glossEn": "two",
+      "inGloss": false
+    },
+    {
+      "strong": "H4872",
+      "count": 766,
+      "content": true,
+      "lemma": "מֹשֶׁה",
+      "glossEn": "Moses",
+      "inGloss": false
+    },
+    {
+      "strong": "H5315",
+      "count": 754,
+      "content": true,
+      "lemma": "נֶ֫פֶשׁ",
+      "glossEn": "by/ lives/ their",
+      "inGloss": false
+    },
+    {
+      "strong": "G2962",
+      "count": 753,
+      "content": true,
+      "lemma": "κύριος",
+      "glossEn": "lord",
+      "inGloss": false
+    },
+    {
+      "strong": "H7121",
+      "count": 734,
+      "content": true,
+      "lemma": "קָרָא",
+      "glossEn": "people called",
+      "inGloss": false
+    },
+    {
+      "strong": "G2192",
+      "count": 716,
+      "content": true,
+      "lemma": "ἔχω",
+      "glossEn": "to have/be",
+      "inGloss": false
+    },
+    {
+      "strong": "H310",
+      "count": 716,
+      "content": true,
+      "lemma": "אַחַר",
+      "glossEn": "after",
+      "inGloss": false
+    },
+    {
+      "strong": "H1870",
+      "count": 708,
+      "content": true,
+      "lemma": "דֶּ֫רֶךְ",
+      "glossEn": "to/ way/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "G1096",
+      "count": 677,
+      "content": true,
+      "lemma": "γίνομαι",
+      "glossEn": "to be",
+      "inGloss": false
+    },
+    {
+      "strong": "H7451",
+      "count": 663,
+      "content": true,
+      "lemma": "רַע",
+      "glossEn": "evil",
+      "inGloss": false
+    },
+    {
+      "strong": "H5375",
+      "count": 656,
+      "content": true,
+      "lemma": "נָשָׂא",
+      "glossEn": "the bearer of",
+      "inGloss": false
+    },
+    {
+      "strong": "H3389",
+      "count": 648,
+      "content": true,
+      "lemma": "יְרוּשָׁלִַ֫ם, יְרוּשְׁלֵם",
+      "glossEn": "Jerusalem",
+      "inGloss": false
+    },
+    {
+      "strong": "G2064",
+      "count": 642,
+      "content": true,
+      "lemma": "ἔρχομαι",
+      "glossEn": "to come/go",
+      "inGloss": false
+    },
+    {
+      "strong": "H4714",
+      "count": 642,
+      "content": true,
+      "lemma": "מִצְרַ֫יִם",
+      "glossEn": "and/ Mizraim",
+      "inGloss": false
+    },
+    {
+      "strong": "H251",
+      "count": 630,
+      "content": true,
+      "lemma": "אָח",
+      "glossEn": "brother/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H6965",
+      "count": 628,
+      "content": true,
+      "lemma": "קוּם",
+      "glossEn": "and/ they arose",
+      "inGloss": false
+    },
+    {
+      "strong": "H7218",
+      "count": 602,
+      "content": true,
+      "lemma": "רֹאשׁ",
+      "glossEn": "head/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H3820",
+      "count": 595,
+      "content": true,
+      "lemma": "לֵב",
+      "glossEn": "a heart",
+      "inGloss": false
+    },
+    {
+      "strong": "H1323",
+      "count": 589,
+      "content": true,
+      "lemma": "בַּת",
+      "glossEn": "the daughter of",
+      "inGloss": false
+    },
+    {
+      "strong": "H7760",
+      "count": 585,
+      "content": true,
+      "lemma": "שׂוּם",
+      "glossEn": "and/ they put",
+      "inGloss": false
+    },
+    {
+      "strong": "H4325",
+      "count": 582,
+      "content": true,
+      "lemma": "מַי",
+      "glossEn": "water",
+      "inGloss": false
+    },
+    {
+      "strong": "H3967",
+      "count": 581,
+      "content": true,
+      "lemma": "מֵאָה",
+      "glossEn": "hundreds",
+      "inGloss": false
+    },
+    {
+      "strong": "G4160",
+      "count": 579,
+      "content": true,
+      "lemma": "ποιέω",
+      "glossEn": "to do/make",
+      "inGloss": false
+    },
+    {
+      "strong": "H1471",
+      "count": 568,
+      "content": true,
+      "lemma": "גּוֹי",
+      "glossEn": "the/ nations",
+      "inGloss": false
+    },
+    {
+      "strong": "H582",
+      "count": 567,
+      "content": true,
+      "lemma": "אֱנוֹשׁ",
+      "glossEn": "the/ men",
+      "inGloss": false
+    },
+    {
+      "strong": "G444",
+      "count": 559,
+      "content": true,
+      "lemma": "ἄνθρωπος",
+      "glossEn": "a human",
+      "inGloss": false
+    },
+    {
+      "strong": "H5674",
+      "count": 557,
+      "content": true,
+      "lemma": "עָבַר",
+      "glossEn": "they passed over",
+      "inGloss": false
+    },
+    {
+      "strong": "H120",
+      "count": 551,
+      "content": true,
+      "lemma": "אָדָם",
+      "glossEn": "the/ humankind",
+      "inGloss": false
+    },
+    {
+      "strong": "H2896",
+      "count": 539,
+      "content": true,
+      "lemma": "טוֹב",
+      "glossEn": "good",
+      "inGloss": false
+    },
+    {
+      "strong": "H1419",
+      "count": 526,
+      "content": true,
+      "lemma": "גַּל",
+      "glossEn": "great",
+      "inGloss": false
+    },
+    {
+      "strong": "H5975",
+      "count": 521,
+      "content": true,
+      "lemma": "עָמַד",
+      "glossEn": "to/ appoint",
+      "inGloss": false
+    },
+    {
+      "strong": "H6963",
+      "count": 507,
+      "content": true,
+      "lemma": "קוֹל",
+      "glossEn": "the sound of",
+      "inGloss": false
+    },
+    {
+      "strong": "H505",
+      "count": 506,
+      "content": true,
+      "lemma": "אֶ֫לֶף",
+      "glossEn": "to/ a thousand",
+      "inGloss": false
+    },
+    {
+      "strong": "H8478",
+      "count": 505,
+      "content": true,
+      "lemma": "תַּחַת",
+      "glossEn": "in place of/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "H5221",
+      "count": 500,
+      "content": true,
+      "lemma": "נָכָה",
+      "glossEn": "who/ struck down",
+      "inGloss": false
+    },
+    {
+      "strong": "H6310",
+      "count": 498,
+      "content": true,
+      "lemma": "פֶּה",
+      "glossEn": "according to/ the mouth of",
+      "inGloss": false
+    },
+    {
+      "strong": "H2416",
+      "count": 498,
+      "content": true,
+      "lemma": "חַי",
+      "glossEn": "by the life",
+      "inGloss": false
+    },
+    {
+      "strong": "H3205",
+      "count": 496,
+      "content": true,
+      "lemma": "יָלַד",
+      "glossEn": "he fathered",
+      "inGloss": false
+    },
+    {
+      "strong": "H6680",
+      "count": 494,
+      "content": true,
+      "lemma": "צָוָה",
+      "glossEn": "he had commanded/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "H5750",
+      "count": 491,
+      "content": true,
+      "lemma": "עוֹד",
+      "glossEn": "still",
+      "inGloss": false
+    },
+    {
+      "strong": "H6635",
+      "count": 484,
+      "content": true,
+      "lemma": "צָבָא",
+      "glossEn": "of hosts",
+      "inGloss": false
+    },
+    {
+      "strong": "H6944",
+      "count": 471,
+      "content": true,
+      "lemma": "קֹ֫דֶשׁ",
+      "glossEn": "holiness/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H8104",
+      "count": 469,
+      "content": true,
+      "lemma": "שָׁמַר",
+      "glossEn": "he kept",
+      "inGloss": false
+    },
+    {
+      "strong": "H4672",
+      "count": 455,
+      "content": true,
+      "lemma": "מָצָא",
+      "glossEn": "and/ they found/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "H7227",
+      "count": 455,
+      "content": true,
+      "lemma": "רַב",
+      "glossEn": "great of",
+      "inGloss": false
+    },
+    {
+      "strong": "H136",
+      "count": 440,
+      "content": true,
+      "lemma": "אֲדֹנָי",
+      "glossEn": "the Lord",
+      "inGloss": false
+    },
+    {
+      "strong": "H5769",
+      "count": 439,
+      "content": true,
+      "lemma": "עוֹלָם",
+      "glossEn": "perpetuity",
+      "inGloss": false
+    },
+    {
+      "strong": "G191",
+      "count": 435,
+      "content": true,
+      "lemma": "ἀκούω",
+      "glossEn": "to hear",
+      "inGloss": false
+    },
+    {
+      "strong": "H5307",
+      "count": 435,
+      "content": true,
+      "lemma": "נָפַל",
+      "glossEn": "and/ they fell",
+      "inGloss": false
+    },
+    {
+      "strong": "H7969",
+      "count": 432,
+      "content": true,
+      "lemma": "שָׁלֹשׁ",
+      "glossEn": "and/ three of",
+      "inGloss": false
+    },
+    {
+      "strong": "H8064",
+      "count": 422,
+      "content": true,
+      "lemma": "שָׁמַיִם",
+      "glossEn": "the heavens",
+      "inGloss": false
+    },
+    {
+      "strong": "H8269",
+      "count": 421,
+      "content": true,
+      "lemma": "שַׂר",
+      "glossEn": "and/ into/ a commander",
+      "inGloss": false
+    },
+    {
+      "strong": "G3962",
+      "count": 419,
+      "content": true,
+      "lemma": "πατήρ",
+      "glossEn": "father",
+      "inGloss": false
+    },
+    {
+      "strong": "H8432",
+      "count": 418,
+      "content": true,
+      "lemma": "תָּ֫וֶךְ",
+      "glossEn": "in/ the middle of",
+      "inGloss": false
+    },
+    {
+      "strong": "G1325",
+      "count": 416,
+      "content": true,
+      "lemma": "δίδωμι",
+      "glossEn": "to give",
+      "inGloss": false
+    },
+    {
+      "strong": "H7586",
+      "count": 407,
+      "content": true,
+      "lemma": "שָׁאוּל",
+      "glossEn": "Shaul",
+      "inGloss": false
+    },
+    {
+      "strong": "H996",
+      "count": 407,
+      "content": true,
+      "lemma": "בַּ֫יִן",
+      "glossEn": "between",
+      "inGloss": false
+    },
+    {
+      "strong": "H3701",
+      "count": 404,
+      "content": true,
+      "lemma": "כֶּ֫סֶף",
+      "glossEn": "and/ silver",
+      "inGloss": false
+    },
+    {
+      "strong": "H4725",
+      "count": 402,
+      "content": true,
+      "lemma": "מָקוֹם",
+      "glossEn": "to the/ place",
+      "inGloss": false
+    },
+    {
+      "strong": "H4196",
+      "count": 401,
+      "content": true,
+      "lemma": "מִזְבֵּחַ",
+      "glossEn": "the altar of",
+      "inGloss": false
+    },
+    {
+      "strong": "H7651",
+      "count": 395,
+      "content": true,
+      "lemma": "שֶׁ֫בַע",
+      "glossEn": "seven",
+      "inGloss": false
+    },
+    {
+      "strong": "G2250",
+      "count": 392,
+      "content": true,
+      "lemma": "ἡμέρα",
+      "glossEn": "day",
+      "inGloss": false
+    },
+    {
+      "strong": "H2091",
+      "count": 390,
+      "content": true,
+      "lemma": "זָהָב",
+      "glossEn": "the/ gold",
+      "inGloss": false
+    },
+    {
+      "strong": "G5207",
+      "count": 382,
+      "content": true,
+      "lemma": "υἱός",
+      "glossEn": "son",
+      "inGloss": false
+    },
+    {
+      "strong": "H3381",
+      "count": 382,
+      "content": true,
+      "lemma": "יָרַד",
+      "glossEn": "and/ they went down",
+      "inGloss": false
+    },
+    {
+      "strong": "G1492",
+      "count": 381,
+      "content": true,
+      "lemma": "εἴδω",
+      "glossEn": "to perceive",
+      "inGloss": false
+    },
+    {
+      "strong": "H1129",
+      "count": 376,
+      "content": true,
+      "lemma": "בָּנָה",
+      "glossEn": "and/ he built",
+      "inGloss": false
+    },
+    {
+      "strong": "H5002",
+      "count": 376,
+      "content": true,
+      "lemma": "נְאֻם",
+      "glossEn": "the utterance of",
+      "inGloss": false
+    },
+    {
+      "strong": "H5046",
+      "count": 371,
+      "content": true,
+      "lemma": "נָגַד",
+      "glossEn": "and/ I have told",
+      "inGloss": false
+    },
+    {
+      "strong": "H3290",
+      "count": 350,
+      "content": true,
+      "lemma": "יַעֲקֹב",
+      "glossEn": "Jacob",
+      "inGloss": false
+    },
+    {
+      "strong": "G80",
+      "count": 348,
+      "content": true,
+      "lemma": "ἀδελφός",
+      "glossEn": "brother",
+      "inGloss": false
+    },
+    {
+      "strong": "H4427",
+      "count": 348,
+      "content": true,
+      "lemma": "מָלַךְ",
+      "glossEn": "they reigned",
+      "inGloss": false
+    },
+    {
+      "strong": "H175",
+      "count": 347,
+      "content": true,
+      "lemma": "אַהֲרֹן",
+      "glossEn": "of/ Aaron",
+      "inGloss": false
+    },
+    {
+      "strong": "H168",
+      "count": 345,
+      "content": true,
+      "lemma": "אֹ֫הֶל",
+      "glossEn": "a tent",
+      "inGloss": false
+    },
+    {
+      "strong": "H2568",
+      "count": 343,
+      "content": true,
+      "lemma": "חָמֵשׁ",
+      "glossEn": "five",
+      "inGloss": false
+    },
+    {
+      "strong": "H6240",
+      "count": 339,
+      "content": true,
+      "lemma": "עָשָׂר",
+      "glossEn": "ten",
+      "inGloss": false
+    },
+    {
+      "strong": "H5439",
+      "count": 338,
+      "content": true,
+      "lemma": "סָבִיב",
+      "glossEn": "all around",
+      "inGloss": false
+    },
+    {
+      "strong": "H7704",
+      "count": 334,
+      "content": true,
+      "lemma": "שָׂדֶה",
+      "glossEn": "in/ the region of",
+      "inGloss": false
+    },
+    {
+      "strong": "H113",
+      "count": 333,
+      "content": true,
+      "lemma": "אָדוֹן",
+      "glossEn": "lords/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H6030",
+      "count": 332,
+      "content": true,
+      "lemma": "עָנָה",
+      "glossEn": "and/ he answered",
+      "inGloss": false
+    },
+    {
+      "strong": "H1288",
+      "count": 330,
+      "content": true,
+      "lemma": "בָּרַךְ",
+      "glossEn": "and/ he blessed",
+      "inGloss": false
+    },
+    {
+      "strong": "H3627",
+      "count": 325,
+      "content": true,
+      "lemma": "כְּלִי",
+      "glossEn": "weapons/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H4421",
+      "count": 322,
+      "content": true,
+      "lemma": "מִלְחָמָה",
+      "glossEn": "the/ battle",
+      "inGloss": false
+    },
+    {
+      "strong": "H702",
+      "count": 318,
+      "content": true,
+      "lemma": "אַרְבַּע",
+      "glossEn": "four",
+      "inGloss": false
+    },
+    {
+      "strong": "H3372",
+      "count": 315,
+      "content": true,
+      "lemma": "יָרֵא",
+      "glossEn": "he was afraid",
+      "inGloss": false
+    },
+    {
+      "strong": "H6242",
+      "count": 315,
+      "content": true,
+      "lemma": "עֶשְׂרִים",
+      "glossEn": "twenty",
+      "inGloss": false
+    },
+    {
+      "strong": "H5030",
+      "count": 315,
+      "content": true,
+      "lemma": "נָבִיא",
+      "glossEn": "and/ to/ prophets/ my",
+      "inGloss": false
+    },
+    {
+      "strong": "H3069",
+      "count": 306,
+      "content": true,
+      "lemma": "יְהֹוִה",
+      "glossEn": "Yahweh",
+      "inGloss": false
+    },
+    {
+      "strong": "H4940",
+      "count": 303,
+      "content": true,
+      "lemma": "מִשְׁפָּחָה",
+      "glossEn": "O clans of",
+      "inGloss": false
+    },
+    {
+      "strong": "H6485",
+      "count": 303,
+      "content": true,
+      "lemma": "פָּקַד",
+      "glossEn": "he enrolled",
+      "inGloss": false
+    },
+    {
+      "strong": "H3966",
+      "count": 300,
+      "content": true,
+      "lemma": "מְאֹד",
+      "glossEn": "exceedingly",
+      "inGloss": false
+    },
+    {
+      "strong": "H5493",
+      "count": 300,
+      "content": true,
+      "lemma": "סוּר",
+      "glossEn": "he turned aside",
+      "inGloss": false
+    },
+    {
+      "strong": "G2980",
+      "count": 298,
+      "content": true,
+      "lemma": "λαλέω",
+      "glossEn": "to speak",
+      "inGloss": false
+    },
+    {
+      "strong": "H6256",
+      "count": 297,
+      "content": true,
+      "lemma": "עֵת",
+      "glossEn": "to/ a time of",
+      "inGloss": false
+    },
+    {
+      "strong": "H2403",
+      "count": 295,
+      "content": true,
+      "lemma": "חַטָּאת",
+      "glossEn": "into/ sin",
+      "inGloss": false
+    },
+    {
+      "strong": "H8010",
+      "count": 293,
+      "content": true,
+      "lemma": "שְׁלֹמֹה",
+      "glossEn": "and/ Solomon",
+      "inGloss": false
+    },
+    {
+      "strong": "H2388",
+      "count": 291,
+      "content": true,
+      "lemma": "חָזַק",
+      "glossEn": "who/ held strongly",
+      "inGloss": false
+    },
+    {
+      "strong": "H3881",
+      "count": 291,
+      "content": true,
+      "lemma": "לֵוִי",
+      "glossEn": "and/ the/ Levites",
+      "inGloss": false
+    },
+    {
+      "strong": "H6430",
+      "count": 288,
+      "content": true,
+      "lemma": "פְּלִשְׁתִּי",
+      "glossEn": "the Philistines",
+      "inGloss": false
+    },
+    {
+      "strong": "H3772",
+      "count": 288,
+      "content": true,
+      "lemma": "כָּרַת",
+      "glossEn": "and/ he made",
+      "inGloss": false
+    },
+    {
+      "strong": "H5647",
+      "count": 288,
+      "content": true,
+      "lemma": "עָבַד",
+      "glossEn": "and/ they served/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "H5930",
+      "count": 287,
+      "content": true,
+      "lemma": "עֹלָה",
+      "glossEn": "burnt offerings",
+      "inGloss": false
+    },
+    {
+      "strong": "G6063",
+      "count": 285,
+      "content": true,
+      "lemma": "εἴδω",
+      "glossEn": "to perceive",
+      "inGloss": false
+    },
+    {
+      "strong": "H2320",
+      "count": 285,
+      "content": true,
+      "lemma": "חֹ֫דֶשׁ",
+      "glossEn": "in the/ month",
+      "inGloss": false
+    },
+    {
+      "strong": "H341",
+      "count": 283,
+      "content": true,
+      "lemma": "אֹיֵב",
+      "glossEn": "enemies/ my",
+      "inGloss": false
+    },
+    {
+      "strong": "H2421",
+      "count": 282,
+      "content": true,
+      "lemma": "חָיָה",
+      "glossEn": "he restored",
+      "inGloss": false
+    },
+    {
+      "strong": "G3772",
+      "count": 281,
+      "content": true,
+      "lemma": "οὐρανός",
+      "glossEn": "heaven",
+      "inGloss": false
+    },
+    {
+      "strong": "H7126",
+      "count": 280,
+      "content": true,
+      "lemma": "קָרַב",
+      "glossEn": "and/ they brought near",
+      "inGloss": false
+    },
+    {
+      "strong": "H639",
+      "count": 276,
+      "content": true,
+      "lemma": "אַף",
+      "glossEn": "the anger of",
+      "inGloss": false
+    },
+    {
+      "strong": "H6629",
+      "count": 274,
+      "content": true,
+      "lemma": "צֹאן",
+      "glossEn": "and/ sheep",
+      "inGloss": false
+    },
+    {
+      "strong": "H6547",
+      "count": 274,
+      "content": true,
+      "lemma": "פַּרְעֹה",
+      "glossEn": "Pharaoh",
+      "inGloss": false
+    },
+    {
+      "strong": "H68",
+      "count": 273,
+      "content": true,
+      "lemma": "אֶ֫בֶן",
+      "glossEn": "with the/ stones",
+      "inGloss": false
+    },
+    {
+      "strong": "H1320",
+      "count": 270,
+      "content": true,
+      "lemma": "בָּשָׂר",
+      "glossEn": "and/ flesh/ your",
+      "inGloss": false
+    },
+    {
+      "strong": "G3101",
+      "count": 269,
+      "content": true,
+      "lemma": "μαθητής",
+      "glossEn": "disciple",
+      "inGloss": false
+    },
+    {
+      "strong": "G2983",
+      "count": 265,
+      "content": true,
+      "lemma": "λαμβάνω",
+      "glossEn": "to take",
+      "inGloss": false
+    },
+    {
+      "strong": "H7563",
+      "count": 263,
+      "content": true,
+      "lemma": "רָשָׁע",
+      "glossEn": "a guilty person",
+      "inGloss": false
+    },
+    {
+      "strong": "G1093",
+      "count": 255,
+      "content": true,
+      "lemma": "γῆ",
+      "glossEn": "earth",
+      "inGloss": false
+    },
+    {
+      "strong": "H3824",
+      "count": 252,
+      "content": true,
+      "lemma": "לֵבָב",
+      "glossEn": "a heart",
+      "inGloss": false
+    },
+    {
+      "strong": "H4294",
+      "count": 252,
+      "content": true,
+      "lemma": "מַטֶּה",
+      "glossEn": "the tribe of",
+      "inGloss": false
+    },
+    {
+      "strong": "H4390",
+      "count": 250,
+      "content": true,
+      "lemma": "מָלֵא",
+      "glossEn": "was overflowing",
+      "inGloss": false
+    },
+    {
+      "strong": "G611",
+      "count": 247,
+      "content": true,
+      "lemma": "ἀποκρίνω",
+      "glossEn": "to answer",
+      "inGloss": false
+    },
+    {
+      "strong": "H520",
+      "count": 247,
+      "content": true,
+      "lemma": "אַמָּה",
+      "glossEn": "by the/ cubit",
+      "inGloss": false
+    },
+    {
+      "strong": "H2617",
+      "count": 247,
+      "content": true,
+      "lemma": "חֶ֫סֶד",
+      "glossEn": "covenant loyalty/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H2428",
+      "count": 246,
+      "content": true,
+      "lemma": "חַ֫יִל",
+      "glossEn": "strength",
+      "inGloss": false
+    },
+    {
+      "strong": "G4100",
+      "count": 245,
+      "content": true,
+      "lemma": "πιστεύω",
+      "glossEn": "to trust (in)",
+      "inGloss": false
+    },
+    {
+      "strong": "H7272",
+      "count": 245,
+      "content": true,
+      "lemma": "רֶ֫גֶל",
+      "glossEn": "feet/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "G4102",
+      "count": 242,
+      "content": true,
+      "lemma": "πίστις",
+      "glossEn": "faith",
+      "inGloss": false
+    },
+    {
+      "strong": "H1366",
+      "count": 241,
+      "content": true,
+      "lemma": "גְּבוּל",
+      "glossEn": "the territory of",
+      "inGloss": false
+    },
+    {
+      "strong": "H410",
+      "count": 241,
+      "content": true,
+      "lemma": "אֵל",
+      "glossEn": "is a God of",
+      "inGloss": false
+    },
+    {
+      "strong": "H5288",
+      "count": 239,
+      "content": true,
+      "lemma": "נַ֫עַר",
+      "glossEn": "a young man",
+      "inGloss": false
+    },
+    {
+      "strong": "H2398",
+      "count": 238,
+      "content": true,
+      "lemma": "חָטָא",
+      "glossEn": "I have sinned",
+      "inGloss": false
+    },
+    {
+      "strong": "H4639",
+      "count": 236,
+      "content": true,
+      "lemma": "מַעֲשֶׂה",
+      "glossEn": "and/ the work of",
+      "inGloss": false
+    },
+    {
+      "strong": "H3915",
+      "count": 233,
+      "content": true,
+      "lemma": "לַ֫יְלָה",
+      "glossEn": "in the/ night",
+      "inGloss": false
+    },
+    {
+      "strong": "H5771",
+      "count": 233,
+      "content": true,
+      "lemma": "עָוֺן",
+      "glossEn": "the guilt of",
+      "inGloss": false
+    },
+    {
+      "strong": "H2142",
+      "count": 232,
+      "content": true,
+      "lemma": "זָכַר",
+      "glossEn": "and/ to/ make remembrance",
+      "inGloss": false
+    },
+    {
+      "strong": "H3423",
+      "count": 231,
+      "content": true,
+      "lemma": "יָרַשׁ",
+      "glossEn": "you may possess",
+      "inGloss": false
+    },
+    {
+      "strong": "H7235",
+      "count": 227,
+      "content": true,
+      "lemma": "רָבָה",
+      "glossEn": "much",
+      "inGloss": false
+    },
+    {
+      "strong": "H7130",
+      "count": 227,
+      "content": true,
+      "lemma": "קֶ֫רֶב",
+      "glossEn": "inward parts/ his",
+      "inGloss": false
+    },
+    {
+      "strong": "H1245",
+      "count": 225,
+      "content": true,
+      "lemma": "בָּקַשׁ",
+      "glossEn": "to/ seek",
+      "inGloss": false
+    },
+    {
+      "strong": "H127",
+      "count": 225,
+      "content": true,
+      "lemma": "אֲדָמָה",
+      "glossEn": "the/ ground",
+      "inGloss": false
+    },
+    {
+      "strong": "H3789",
+      "count": 224,
+      "content": true,
+      "lemma": "כָּתַב",
+      "glossEn": "the/ thing written",
+      "inGloss": false
+    },
+    {
+      "strong": "H5159",
+      "count": 223,
+      "content": true,
+      "lemma": "נַחֲלָה",
+      "glossEn": "inheritance/ your",
+      "inGloss": false
+    },
+    {
+      "strong": "H4150",
+      "count": 223,
+      "content": true,
+      "lemma": "מוֹעֵד",
+      "glossEn": "and/ for the/ appointed feasts",
+      "inGloss": false
+    },
+    {
+      "strong": "G1097",
+      "count": 222,
+      "content": true,
+      "lemma": "γινώσκω",
+      "glossEn": "to know",
+      "inGloss": false
+    },
+    {
+      "strong": "G1135",
+      "count": 221,
+      "content": true,
+      "lemma": "γυνή",
+      "glossEn": "woman",
+      "inGloss": false
+    },
+    {
+      "strong": "G1831",
+      "count": 220,
+      "content": true,
+      "lemma": "ἐξέρχομαι",
+      "glossEn": "to go out",
+      "inGloss": false
+    },
+    {
+      "strong": "H517",
+      "count": 220,
+      "content": true,
+      "lemma": "אֵם",
+      "glossEn": "was the mother of",
+      "inGloss": false
+    },
+    {
+      "strong": "H8451",
+      "count": 219,
+      "content": true,
+      "lemma": "תּוֹרָה",
+      "glossEn": "in/ the law of",
+      "inGloss": false
+    },
+    {
+      "strong": "H8354",
+      "count": 218,
+      "content": true,
+      "lemma": "שָׁתָה",
+      "glossEn": "to/ drink/ them",
+      "inGloss": false
+    },
+    {
+      "strong": "H3091",
+      "count": 218,
+      "content": true,
+      "lemma": "יְהוֹשׁוּעַ",
+      "glossEn": "Joshua",
+      "inGloss": false
+    },
+    {
+      "strong": "G435",
+      "count": 217,
+      "content": true,
+      "lemma": "ἀνήρ",
+      "glossEn": "man",
+      "inGloss": false
+    },
+    {
+      "strong": "H3559",
+      "count": 217,
+      "content": true,
+      "lemma": "כּוּן",
+      "glossEn": "they had prepared",
+      "inGloss": false
+    },
+    {
+      "strong": "H8337",
+      "count": 216,
+      "content": true,
+      "lemma": "שֵׁשׁ",
+      "glossEn": "six",
+      "inGloss": false
+    },
+    {
+      "strong": "H5800",
+      "count": 215,
+      "content": true,
+      "lemma": "עָזַב",
+      "glossEn": "and/ they abandoned",
+      "inGloss": false
+    },
+    {
+      "strong": "H4264",
+      "count": 215,
+      "content": true,
+      "lemma": "מַחֲנֶה",
+      "glossEn": "and/ the camp of",
+      "inGloss": false
+    },
+    {
+      "strong": "H5186",
+      "count": 214,
+      "content": true,
+      "lemma": "נָטָה",
+      "glossEn": "and/ he turned aside/ it",
+      "inGloss": false
+    },
+    {
+      "strong": "H4397",
+      "count": 214,
+      "content": true,
+      "lemma": "מַלְאָךְ",
+      "glossEn": "messengers",
+      "inGloss": false
+    },
+    {
+      "strong": "H1242",
+      "count": 214,
+      "content": true,
+      "lemma": "בֹּ֫קֶר",
+      "glossEn": "to the/ morning",
+      "inGloss": false
+    },
+    {
+      "strong": "H5337",
+      "count": 213,
+      "content": true,
+      "lemma": "נָצַל",
+      "glossEn": "and/ they defended/ it",
+      "inGloss": false
+    },
+    {
+      "strong": "H3130",
+      "count": 213,
+      "content": true,
+      "lemma": "יוֹסֵף",
+      "glossEn": "Joseph",
+      "inGloss": false
+    },
+    {
+      "strong": "H3254",
+      "count": 212,
+      "content": true,
+      "lemma": "יָסַף",
+      "glossEn": "and/ they repeated",
+      "inGloss": false
+    },
+    {
+      "strong": "H7901",
+      "count": 212,
+      "content": true,
+      "lemma": "שָׁכַב",
+      "glossEn": "and/ she will lie",
+      "inGloss": false
+    },
+    {
+      "strong": "G2309",
+      "count": 211,
+      "content": true,
+      "lemma": "θέλω",
+      "glossEn": "to will/desire",
+      "inGloss": false
+    },
+    {
+      "strong": "H4503",
+      "count": 211,
+      "content": true,
+      "lemma": "מִנְחָה",
+      "glossEn": "an offering",
+      "inGloss": false
+    },
+    {
+      "strong": "H157",
+      "count": 211,
+      "content": true,
+      "lemma": "אָהֵב",
+      "glossEn": "because/ loves",
+      "inGloss": false
+    },
+    {
+      "strong": "G1410",
+      "count": 208,
+      "content": true,
+      "lemma": "δύναμαι",
+      "glossEn": "be able",
+      "inGloss": false
+    },
+    {
+      "strong": "H3615",
+      "count": 208,
+      "content": true,
+      "lemma": "כָּלָה",
+      "glossEn": "and/ he finished",
+      "inGloss": false
+    },
+    {
+      "strong": "H3467",
+      "count": 206,
+      "content": true,
+      "lemma": "יָשַׁע",
+      "glossEn": "and/ he delivered",
+      "inGloss": false
+    },
+    {
+      "strong": "H6662",
+      "count": 206,
+      "content": true,
+      "lemma": "צַדִּיק",
+      "glossEn": "righteous",
+      "inGloss": false
+    },
+    {
+      "strong": "G1125",
+      "count": 205,
+      "content": true,
+      "lemma": "γράφω",
+      "glossEn": "to write",
+      "inGloss": false
+    },
+    {
+      "strong": "H8199",
+      "count": 204,
+      "content": true,
+      "lemma": "שָׁפַט",
+      "glossEn": "to/ judge",
+      "inGloss": false
+    },
+    {
+      "strong": "H727",
+      "count": 202,
+      "content": true,
+      "lemma": "אֲרוֹן",
+      "glossEn": "the ark of",
+      "inGloss": false
+    },
+    {
+      "strong": "H622",
+      "count": 201,
+      "content": true,
+      "lemma": "אָסַף",
+      "glossEn": "they were gathered",
+      "inGloss": false
+    },
+    {
+      "strong": "H905",
+      "count": 200,
+      "content": true,
+      "lemma": "בַּד",
+      "glossEn": "to/ alone/ them",
+      "inGloss": false
+    },
+    {
+      "strong": "G3551",
+      "count": 198,
+      "content": true,
+      "lemma": "νόμος",
+      "glossEn": "law",
+      "inGloss": false
+    },
+    {
+      "strong": "G2453",
+      "count": 195,
+      "content": true,
+      "lemma": "Ἰουδαῖος",
+      "glossEn": "Jewish",
+      "inGloss": false
+    },
+    {
+      "strong": "G1525",
+      "count": 194,
+      "content": true,
+      "lemma": "εἰσέρχομαι",
+      "glossEn": "to enter",
+      "inGloss": false
+    },
+    {
+      "strong": "H3201",
+      "count": 194,
+      "content": true,
+      "lemma": "יָכֹל",
+      "glossEn": "he was able",
+      "inGloss": false
+    },
+    {
+      "strong": "H3709",
+      "count": 193,
+      "content": true,
+      "lemma": "כַּף",
+      "glossEn": "in/ hands/ my",
+      "inGloss": false
+    },
+    {
+      "strong": "H8081",
+      "count": 193,
+      "content": true,
+      "lemma": "שֶׁ֫מֶן",
+      "glossEn": "and/ oil",
+      "inGloss": false
+    },
+    {
+      "strong": "H2691",
+      "count": 191,
+      "content": true,
+      "lemma": "חָצֵר",
+      "glossEn": "the/ courts",
+      "inGloss": false
+    },
+    {
+      "strong": "H7311",
+      "count": 190,
+      "content": true,
+      "lemma": "רוּם",
+      "glossEn": "to/ raise",
+      "inGloss": false
+    },
+    {
+      "strong": "H929",
+      "count": 190,
+      "content": true,
+      "lemma": "בְּהֵמָה",
+      "glossEn": "any of/ the/ livestock",
+      "inGloss": false
+    },
+    {
+      "strong": "H7453",
+      "count": 188,
+      "content": true,
+      "lemma": "רֵעַ",
+      "glossEn": "was the friend of",
+      "inGloss": false
+    },
+    {
+      "strong": "G2889",
+      "count": 187,
+      "content": true,
+      "lemma": "κόσμος",
+      "glossEn": "world",
+      "inGloss": false
+    },
+    {
+      "strong": "H352",
+      "count": 187,
+      "content": true,
+      "lemma": "אַ֫יִל",
+      "glossEn": "rams",
+      "inGloss": false
+    },
+    {
+      "strong": "H241",
+      "count": 187,
+      "content": true,
+      "lemma": "אֹ֫זֶן",
+      "glossEn": "with/ ears/ our",
+      "inGloss": false
+    },
+    {
+      "strong": "H1540",
+      "count": 186,
+      "content": true,
+      "lemma": "גָּלָה",
+      "glossEn": "you have uncovered",
+      "inGloss": false
+    },
+    {
+      "strong": "H5612",
+      "count": 186,
+      "content": true,
+      "lemma": "סֵ֫פֶר",
+      "glossEn": "the scroll of",
+      "inGloss": false
+    },
+    {
+      "strong": "H7650",
+      "count": 186,
+      "content": true,
+      "lemma": "שָׁבַע",
+      "glossEn": "did you swear an oath",
+      "inGloss": false
+    },
+    {
+      "strong": "G32",
+      "count": 184,
+      "content": true,
+      "lemma": "ἄγγελος",
+      "glossEn": "angel",
+      "inGloss": false
+    },
+    {
+      "strong": "H6",
+      "count": 184,
+      "content": true,
+      "lemma": "אָבַד",
+      "glossEn": "and/ they were lost",
+      "inGloss": false
+    },
+    {
+      "strong": "H1241",
+      "count": 183,
+      "content": true,
+      "lemma": "בָּקָר",
+      "glossEn": "and/ on the/ oxen",
+      "inGloss": false
+    },
+    {
+      "strong": "H3383",
+      "count": 182,
+      "content": true,
+      "lemma": "יַרְדֵּן",
+      "glossEn": "the/ Jordan",
+      "inGloss": false
+    },
+    {
+      "strong": "H4687",
+      "count": 182,
+      "content": true,
+      "lemma": "מִצְוָה",
+      "glossEn": "commandments/ my",
+      "inGloss": false
+    },
+    {
+      "strong": "H4124",
+      "count": 181,
+      "content": true,
+      "lemma": "מוֹאָב",
+      "glossEn": "Moab",
+      "inGloss": false
+    },
+    {
+      "strong": "G5495",
+      "count": 180,
+      "content": true,
+      "lemma": "χείρ",
+      "glossEn": "hand",
+      "inGloss": false
+    },
+    {
+      "strong": "H669",
+      "count": 180,
+      "content": true,
+      "lemma": "אֶפְרַ֫יִם",
+      "glossEn": "Ephraim",
+      "inGloss": false
+    },
+    {
+      "strong": "H4430",
+      "count": 180,
+      "content": true,
+      "lemma": "מֶ֫לֶךְ",
+      "glossEn": "king/ O",
+      "inGloss": false
+    },
+    {
+      "strong": "H2205",
+      "count": 178,
+      "content": true,
+      "lemma": "זָקֵן",
+      "glossEn": "the elders of",
+      "inGloss": false
+    },
+    {
+      "strong": "G2147",
+      "count": 177,
+      "content": true,
+      "lemma": "εὑρίσκω",
+      "glossEn": "to find/meet",
+      "inGloss": false
+    },
+    {
+      "strong": "H3898",
+      "count": 177,
+      "content": true,
+      "lemma": "לָחַם",
+      "glossEn": "they fought",
+      "inGloss": false
+    },
+    {
+      "strong": "G2041",
+      "count": 176,
+      "content": true,
+      "lemma": "ἔργον",
+      "glossEn": "work",
+      "inGloss": false
+    },
+    {
+      "strong": "G3793",
+      "count": 176,
+      "content": true,
+      "lemma": "ὄχλος",
+      "glossEn": "crowd",
+      "inGloss": false
+    },
+    {
+      "strong": "H6235",
+      "count": 176,
+      "content": true,
+      "lemma": "עֶשֶׂר",
+      "glossEn": "ten",
+      "inGloss": false
+    },
+    {
+      "strong": "H8193",
+      "count": 176,
+      "content": true,
+      "lemma": "שָׂפָה",
+      "glossEn": "the shore of",
+      "inGloss": false
+    },
+    {
+      "strong": "H85",
+      "count": 175,
+      "content": true,
+      "lemma": "אַבְרָהָם",
+      "glossEn": "is Abraham",
+      "inGloss": false
+    },
+    {
+      "strong": "G266",
+      "count": 174,
+      "content": true,
+      "lemma": "ἁμαρτία",
+      "glossEn": "sin",
+      "inGloss": false
+    },
+    {
+      "strong": "H7970",
+      "count": 173,
+      "content": true,
+      "lemma": "שְׁלֹשִׁים",
+      "glossEn": "the/ thirty",
+      "inGloss": false
+    },
+    {
+      "strong": "H6942",
+      "count": 172,
+      "content": true,
+      "lemma": "קָדַשׁ",
+      "glossEn": "consecrate yourselves",
+      "inGloss": false
+    },
+    {
+      "strong": "H7812",
+      "count": 172,
+      "content": true,
+      "lemma": "שָׁחָה",
+      "glossEn": "bow down",
+      "inGloss": false
+    },
+    {
+      "strong": "H7592",
+      "count": 171,
+      "content": true,
+      "lemma": "שָׁאַל",
+      "glossEn": "to/ consult",
+      "inGloss": false
+    },
+    {
+      "strong": "H977",
+      "count": 171,
+      "content": true,
+      "lemma": "בָּחַר",
+      "glossEn": "he had chosen",
+      "inGloss": false
+    },
+    {
+      "strong": "H995",
+      "count": 170,
+      "content": true,
+      "lemma": "בִּין",
+      "glossEn": "was a teacher",
+      "inGloss": false
+    },
+    {
+      "strong": "H1755",
+      "count": 169,
+      "content": true,
+      "lemma": "דּוֹר",
+      "glossEn": "generations",
+      "inGloss": false
+    },
+    {
+      "strong": "H2026",
+      "count": 167,
+      "content": true,
+      "lemma": "הָרַג",
+      "glossEn": "and/ he killed/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "H4399",
+      "count": 167,
+      "content": true,
+      "lemma": "מְלָאכָה",
+      "glossEn": "work",
+      "inGloss": false
+    },
+    {
+      "strong": "H1144",
+      "count": 166,
+      "content": true,
+      "lemma": "בִּנְיָמִין",
+      "glossEn": "Benjamin",
+      "inGloss": false
+    },
+    {
+      "strong": "H312",
+      "count": 166,
+      "content": true,
+      "lemma": "אַחֵר",
+      "glossEn": "another",
+      "inGloss": false
+    },
+    {
+      "strong": "G4172",
+      "count": 165,
+      "content": true,
+      "lemma": "πόλις",
+      "glossEn": "city",
+      "inGloss": false
+    },
+    {
+      "strong": "H1984",
+      "count": 165,
+      "content": true,
+      "lemma": "הָלַל",
+      "glossEn": "and/ to/ praise",
+      "inGloss": false
+    },
+    {
+      "strong": "G3972",
+      "count": 164,
+      "content": true,
+      "lemma": "Παῦλος",
+      "glossEn": "Paul",
+      "inGloss": false
+    },
+    {
+      "strong": "G1484",
+      "count": 164,
+      "content": true,
+      "lemma": "ἔθνος",
+      "glossEn": "Gentile nation",
+      "inGloss": false
+    },
+    {
+      "strong": "H1875",
+      "count": 164,
+      "content": true,
+      "lemma": "דָּרַשׁ",
+      "glossEn": "to/ consult",
+      "inGloss": false
+    },
+    {
+      "strong": "H6607",
+      "count": 164,
+      "content": true,
+      "lemma": "פֶּ֫תַח",
+      "glossEn": "the entrance of",
+      "inGloss": false
+    },
+    {
+      "strong": "H2351",
+      "count": 164,
+      "content": true,
+      "lemma": "חוּץ",
+      "glossEn": "and/ streets",
+      "inGloss": false
+    },
+    {
+      "strong": "H2572",
+      "count": 163,
+      "content": true,
+      "lemma": "חֲמִשִּׁים",
+      "glossEn": "fifty",
+      "inGloss": false
+    },
+    {
+      "strong": "H1368",
+      "count": 162,
+      "content": true,
+      "lemma": "גִּבּוֹר",
+      "glossEn": "a mighty man",
+      "inGloss": false
+    },
+    {
+      "strong": "H2077",
+      "count": 162,
+      "content": true,
+      "lemma": "זֶ֫בַח",
+      "glossEn": "sacrifices",
+      "inGloss": false
+    },
+    {
+      "strong": "H2930",
+      "count": 162,
+      "content": true,
+      "lemma": "טָמֵא",
+      "glossEn": "and/ they made unclean",
+      "inGloss": false
+    },
+    {
+      "strong": "G2588",
+      "count": 161,
+      "content": true,
+      "lemma": "καρδία",
+      "glossEn": "heart",
+      "inGloss": false
+    },
+    {
+      "strong": "H5437",
+      "count": 161,
+      "content": true,
+      "lemma": "סָבַב",
+      "glossEn": "and/ he turned over",
+      "inGloss": false
+    },
+    {
+      "strong": "G4074",
+      "count": 159,
+      "content": true,
+      "lemma": "Πέτρος",
+      "glossEn": "Peter",
+      "inGloss": false
+    },
+    {
+      "strong": "H5127",
+      "count": 159,
+      "content": true,
+      "lemma": "נוּס",
+      "glossEn": "and/ he fled",
+      "inGloss": false
+    },
+    {
+      "strong": "H5608",
+      "count": 159,
+      "content": true,
+      "lemma": "סָפַר",
+      "glossEn": "recount",
+      "inGloss": false
+    },
+    {
+      "strong": "H6726",
+      "count": 157,
+      "content": true,
+      "lemma": "צִיּוֹן",
+      "glossEn": "Zion",
+      "inGloss": false
+    },
+    {
+      "strong": "H6666",
+      "count": 157,
+      "content": true,
+      "lemma": "צְדָקָה",
+      "glossEn": "and/ righteousness",
+      "inGloss": false
+    },
+    {
+      "strong": "G5485",
+      "count": 155,
+      "content": true,
+      "lemma": "χάρις",
+      "glossEn": "grace",
+      "inGloss": false
+    },
+    {
+      "strong": "G2476",
+      "count": 155,
+      "content": true,
+      "lemma": "ἵστημι",
+      "glossEn": "to stand",
+      "inGloss": false
+    },
+    {
+      "strong": "H8055",
+      "count": 155,
+      "content": true,
+      "lemma": "שָׂמַח",
+      "glossEn": "let it rejoice",
+      "inGloss": false
+    },
+    {
+      "strong": "H4194",
+      "count": 155,
+      "content": true,
+      "lemma": "מָ֫וֶת",
+      "glossEn": "the death of",
+      "inGloss": false
+    },
+    {
+      "strong": "G4198",
+      "count": 153,
+      "content": true,
+      "lemma": "πορεύω",
+      "glossEn": "to travel",
+      "inGloss": false
+    },
+    {
+      "strong": "H6828",
+      "count": 153,
+      "content": true,
+      "lemma": "צָפוֹן",
+      "glossEn": "north/ -ward",
+      "inGloss": false
+    },
+    {
+      "strong": "H3680",
+      "count": 152,
+      "content": true,
+      "lemma": "כָּסָה",
+      "glossEn": "covered",
+      "inGloss": false
+    },
+    {
+      "strong": "G4561",
+      "count": 151,
+      "content": true,
+      "lemma": "σάρξ",
+      "glossEn": "flesh",
+      "inGloss": false
+    },
+    {
+      "strong": "H804",
+      "count": 151,
+      "content": true,
+      "lemma": "אַשּׁוּר",
+      "glossEn": "and/ Asshur",
+      "inGloss": false
+    },
+    {
+      "strong": "H5048",
+      "count": 151,
+      "content": true,
+      "lemma": "נֶ֫גֶד",
+      "glossEn": "to/ before/ them",
+      "inGloss": false
+    },
+    {
+      "strong": "H5060",
+      "count": 150,
+      "content": true,
+      "lemma": "נָגַע",
+      "glossEn": "you touch",
+      "inGloss": false
+    },
+    {
+      "strong": "G4396",
+      "count": 149,
+      "content": true,
+      "lemma": "προφήτης",
+      "glossEn": "prophet",
+      "inGloss": false
+    },
+    {
+      "strong": "H7230",
+      "count": 149,
+      "content": true,
+      "lemma": "רֹב",
+      "glossEn": "to/ abundance",
+      "inGloss": false
+    },
+    {
+      "strong": "H5712",
+      "count": 149,
+      "content": true,
+      "lemma": "עֵדָה",
+      "glossEn": "the/ congregation",
+      "inGloss": false
+    },
+    {
+      "strong": "G2564",
+      "count": 147,
+      "content": true,
+      "lemma": "καλέω",
+      "glossEn": "to call",
+      "inGloss": false
+    },
+    {
+      "strong": "H3414",
+      "count": 147,
+      "content": true,
+      "lemma": "יִרְמְיָ֫הוּ",
+      "glossEn": "and/ Jeremiah",
+      "inGloss": false
+    },
+    {
+      "strong": "H7665",
+      "count": 147,
+      "content": true,
+      "lemma": "שָׁבַר",
+      "glossEn": "and/ it has mauled/ him",
+      "inGloss": false
+    },
+    {
+      "strong": "G863",
+      "count": 146,
+      "content": true,
+      "lemma": "ἀφίημι",
+      "glossEn": "to release",
+      "inGloss": false
+    },
+    {
+      "strong": "H4519",
+      "count": 146,
+      "content": true,
+      "lemma": "מְנַשֶּׁה",
+      "glossEn": "and/ some of/ Manasseh",
+      "inGloss": false
+    },
+    {
+      "strong": "H7843",
+      "count": 146,
+      "content": true,
+      "lemma": "שָׁחַת",
+      "glossEn": "and/ he destroyed",
+      "inGloss": false
+    }
+  ]
+}
