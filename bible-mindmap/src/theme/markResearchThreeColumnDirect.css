@@ -169,3 +169,75 @@
     overflow-y: auto !important;
   }
 }
+
+/* 모바일에서는 주입 패널을 부모 폭 안의 독립 세로 스크롤 시트로 격리한다. */
+@media (max-width: 900px) {
+  .mark-research-layout-test[data-mark-three-column-ready="true"] {
+    min-width: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .mark-research-layout-test[data-mark-three-column-ready="true"] > .mark-direct-research-pane {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    overflow: hidden !important;
+    overscroll-behavior: contain !important;
+    touch-action: pan-y !important;
+    z-index: 7 !important;
+  }
+
+  .mark-direct-research-pane > .mark-research-header,
+  .mark-direct-research-pane > .mark-research-notice,
+  .mark-direct-research-pane > .mark-research-scroll,
+  .mark-direct-research-pane .mark-research-card,
+  .mark-direct-research-pane .mark-research-actions {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .mark-direct-research-pane > .mark-research-scroll {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-y: contain !important;
+    touch-action: pan-y !important;
+  }
+
+  .mark-direct-research-pane .mark-research-header,
+  .mark-direct-research-pane .mark-research-actions {
+    flex-wrap: wrap !important;
+  }
+
+  .mark-direct-research-pane button,
+  .mark-direct-research-pane p,
+  .mark-direct-research-pane span,
+  .mark-direct-research-pane dd,
+  .mark-direct-research-pane li {
+    overflow-wrap: anywhere !important;
+    word-break: keep-all;
+  }
+
+  #mark-research-reopen-test {
+    right: max(12px, env(safe-area-inset-right)) !important;
+    left: max(12px, env(safe-area-inset-left)) !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px - env(safe-area-inset-left) - env(safe-area-inset-right)) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    white-space: normal !important;
+  }
+}
