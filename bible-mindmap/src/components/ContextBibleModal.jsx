@@ -2465,6 +2465,10 @@ export default function ContextBibleModal({ onClose, initialRef }) {
             // 동적 스크롤러 탐지 · 이 표식은 의도 문서화 + 조기 판정용 이중 안전장치).
             data-modal-scroll-region="true"
             style={{
+              // [가로 넘침 수정] content-box 로 계산되면 width:100% + padding 32px 가
+              // 부모 폭 밖으로 튀어나가 오른쪽이 잘린다(모바일 실측 시트 W=부모+32px).
+              // border-box 로 강제해 width:100% 안에 padding 이 포함되게 한다.
+              boxSizing: 'border-box',
               width: isMobile ? '100%' : Math.max(160, Math.min(rightPanelWidth, size.w - 240)),
               minWidth: isMobile ? undefined : 160,
               flexShrink: 0,
