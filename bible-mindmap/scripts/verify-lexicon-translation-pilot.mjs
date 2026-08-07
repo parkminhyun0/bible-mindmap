@@ -39,15 +39,19 @@ assert.equal(new Set(nodes.map((node) => node.id)).size, nodes.length, 'definiti
 assert.ok(nodes.every((node) => typeof node.text === 'string' && node.text.trim()), 'every node needs Korean text');
 assert.ok(Math.max(...nodes.map((node) => node.depth)) >= 3, 'nested BDB hierarchy must be preserved');
 
-const popupPath = path.join(ROOT, 'src', 'components', 'LexiconPopup.jsx');
-const popupSource = fs.readFileSync(popupPath, 'utf8');
+const bridgePath = path.join(ROOT, 'src', 'utils', 'lexiconTranslationPilotBridge.jsx');
+const bridgeSource = fs.readFileSync(bridgePath, 'utf8');
 for (const contract of [
   'getLexiconTranslation',
   'LexiconTranslationDrawer',
   'data-lexicon-translation-toggle',
-  'translationOpen',
+  'installLexiconTranslationPilotBridge',
 ]) {
-  assert.ok(popupSource.includes(contract), `LexiconPopup integration missing: ${contract}`);
+  assert.ok(bridgeSource.includes(contract), `translation bridge missing: ${contract}`);
 }
+
+const mainPath = path.join(ROOT, 'src', 'main.jsx');
+const mainSource = fs.readFileSync(mainPath, 'utf8');
+assert.ok(mainSource.includes('installLexiconTranslationPilotBridge()'), 'main bootstrap is missing pilot bridge');
 
 console.log(`✓ lexicon translation pilot verifier passed · entries=1 · nodes=${nodes.length} · strong=H776`);
