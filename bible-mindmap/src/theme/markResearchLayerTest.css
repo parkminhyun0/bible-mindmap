@@ -54,27 +54,30 @@
 .mark-research-source-dialog p{font-size:11px;line-height:1.65;color:#475569}
 #mark-research-reopen-test{display:none!important}
 @media (min-width:901px) and (max-width:1180px){
-  .mark-research-layout-test{
+  :root[data-layout="desktop"] .mark-research-layout-test{
     --mark-left:40%;
     --mark-observation:29%;
     grid-template-columns:minmax(280px,var(--mark-left)) 6px minmax(240px,var(--mark-observation)) 6px minmax(260px,1fr)!important;
   }
-  .mark-research-divider{min-width:6px}
+  :root[data-layout="desktop"] .mark-research-divider{min-width:6px}
 }
-@media(max-width:900px){
-  .mark-research-layout-test{display:flex!important;overflow:hidden!important}
-  .mark-research-left,.mark-research-right,.mark-research-panel,.mark-research-divider{grid-column:auto!important;grid-row:auto!important}
-  .mark-research-divider{display:none!important}
-  .mark-research-panel{display:flex!important;position:fixed;left:8px;right:8px;top:auto;bottom:max(8px,env(safe-area-inset-bottom));width:auto;height:min(48dvh,460px);z-index:1400;border:1px solid #cbd5e1;border-radius:18px;box-shadow:0 -10px 32px rgba(15,23,42,.18);padding-bottom:max(8px,env(safe-area-inset-bottom));background:#f6f8fc;touch-action:pan-y}
-  .mark-research-panel:before{content:"";width:42px;height:5px;border-radius:999px;background:#cbd5e1;margin:8px auto 0;flex:0 0 auto}
-  .mark-research-header{padding-top:8px}
-  .mark-research-scroll{flex:1 1 auto;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
-  .mark-research-source{min-height:44px;padding-inline:10px}
-  .mark-research-close{display:inline-grid;width:44px;height:44px}
-  .mark-research-anchor{min-height:44px}
-  .mark-research-source-dialog{max-height:86dvh;overflow:auto}
-  #mark-research-reopen-test{position:fixed!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;top:auto!important;right:max(12px,env(safe-area-inset-right))!important;bottom:calc(96px + env(safe-area-inset-bottom))!important;z-index:2147483647!important}
-}
+/* [PR#207 재설계] 모바일 판정을 900px 미디어쿼리에서 html[data-layout="mobile"]
+   (useMobile 이 기록 · 768px + 기기 판정)로 통일. iPad·iPhone 가로에서 React 모바일 UI 와
+   데스크톱 3열 CSS 가 충돌하던 문제 제거. 패널은 modal 직속 오버레이 시트로 렌더된다. */
+:root[data-layout="mobile"] .mark-research-layout-test{display:flex!important;overflow:hidden!important}
+:root[data-layout="mobile"] .mark-research-left,:root[data-layout="mobile"] .mark-research-right,:root[data-layout="mobile"] .mark-research-panel,:root[data-layout="mobile"] .mark-research-divider{grid-column:auto!important;grid-row:auto!important}
+:root[data-layout="mobile"] .mark-research-divider{display:none!important}
+:root[data-layout="mobile"] .mark-research-panel{display:flex!important;position:fixed;left:8px;right:8px;top:auto;bottom:max(8px,env(safe-area-inset-bottom));width:auto;max-width:calc(100vw - 16px);height:min(60dvh,520px);z-index:1400;border:1px solid #cbd5e1;border-radius:18px;box-shadow:0 -10px 32px rgba(15,23,42,.18);padding-bottom:max(8px,env(safe-area-inset-bottom));background:#f6f8fc;touch-action:pan-y;overflow:hidden}
+:root[data-layout="mobile"] .mark-research-panel:before{content:"";width:42px;height:5px;border-radius:999px;background:#cbd5e1;margin:8px auto 0;flex:0 0 auto}
+:root[data-layout="mobile"] .mark-research-header{padding-top:8px}
+:root[data-layout="mobile"] .mark-research-scroll{flex:1 1 auto;padding-bottom:calc(18px + env(safe-area-inset-bottom))}
+:root[data-layout="mobile"] .mark-research-source{min-height:44px;padding-inline:10px}
+:root[data-layout="mobile"] .mark-research-close{display:inline-grid;width:44px;height:44px}
+:root[data-layout="mobile"] .mark-research-anchor{min-height:44px}
+:root[data-layout="mobile"] .mark-research-source-dialog{max-height:86dvh;overflow:auto}
+/* 런처(다시 열기) 버튼: z-index 2147483647 은 사전·미리보기 팝업까지 가리는 과도한 값 →
+   시트(1400) 바로 아래 1399 로 정상화. 사전 팝업(2501)·미리보기(3000+) 아래에 위치. */
+:root[data-layout="mobile"] #mark-research-reopen-test{position:fixed!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;top:auto!important;right:max(12px,env(safe-area-inset-right))!important;bottom:calc(96px + env(safe-area-inset-bottom))!important;z-index:1399!important}
 
 /* ── 마가복음 전체 구조 (고정 카드) ── */
 .mark-macro-card{border-color:#ddd6fe;background:linear-gradient(180deg,#faf5ff,#fff)}

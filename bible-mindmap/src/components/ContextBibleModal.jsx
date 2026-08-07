@@ -2459,11 +2459,18 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           )}
           <div
             onClick={e => isMobile && e.stopPropagation()}
+            // [스크롤 먹통 수정] useModalDialog 의 터치 잠금 허용 목록 표식.
+            // 이 표식이 없어 시트 내부 터치가 document 레벨에서 preventDefault 되어
+            // full 상태에서도 원핑거 세로 스크롤이 죽었다(근본 수정은 useModalDialog 의
+            // 동적 스크롤러 탐지 · 이 표식은 의도 문서화 + 조기 판정용 이중 안전장치).
+            data-modal-scroll-region="true"
             style={{
               width: isMobile ? '100%' : Math.max(160, Math.min(rightPanelWidth, size.w - 240)),
               minWidth: isMobile ? undefined : 160,
               flexShrink: 0,
               minHeight: isMobile ? undefined : 0,
+              // pan-y: 브라우저 차원에서도 세로 스크롤 의도를 명시(iOS 관성 스크롤 안정화)
+              touchAction: isMobile ? 'pan-y' : undefined,
               overflowY: isMobile ? (sheetSnap === 'full' ? 'auto' : 'hidden') : 'auto',
               padding: isMobile ? '0 16px' : '14px 16px',
               background: '#ffffff',

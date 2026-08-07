@@ -194,7 +194,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           {entry.s && (
             <MetaRow label="Strong's">
               <a
-                href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                 target="_blank"
                 rel="noreferrer"
                 style={{ color: '#3b82f6', fontFamily: 'monospace', fontWeight: 600, textDecoration: 'none' }}
@@ -253,7 +253,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           ))}
         </div>
 
-        <div style={{ overflowY: 'auto', flex: 1 }}>
+        {/* [스크롤 먹통 수정] useModalDialog 화이트리스트 표식 + minHeight:0(iOS flex 자식 수축 보장) + 관성 스크롤 */}
+        <div
+          data-modal-scroll-region="true"
+          style={{ overflowY: 'auto', flex: 1, minHeight: 0,
+            WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain',
+            touchAction: 'pan-y' }}>
           {tab === 'def' && (
             <div style={{ padding: '10px 14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
@@ -278,7 +283,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   정의를 찾을 수 없습니다.{' '}
                   {entry.s && (
                     <a
-                      href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                      href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                       target="_blank" rel="noreferrer"
                       style={{ color: '#3b82f6', textDecoration: 'none' }}
                     >BibleHub에서 보기 ↗</a>
@@ -294,7 +299,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   {entry.s && (
                     <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
                       <a
-                        href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                        href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                         target="_blank" rel="noreferrer"
                         style={{ color: '#94a3b8', fontSize: 10, textDecoration: 'none' }}
                       >
