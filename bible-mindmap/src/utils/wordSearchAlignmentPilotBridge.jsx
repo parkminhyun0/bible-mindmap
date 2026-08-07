@@ -4,32 +4,32 @@ import WordSearchAlignmentPilot from '../components/WordSearchAlignmentPilot.jsx
 const DIALOG_SELECTOR = '[role="dialog"][aria-label="원어 성경 다언어 검색"]';
 const HOST_ATTR = 'data-word-search-alignment-pilot-root';
 const TARGET_REFERENCE = '창세기 1:1';
-const TARGET_LEMMA = 'אֱלֹהִים';
-const TARGET_STRONG_RE = /\bH0*430\b/i;
+const TARGET_STRONG_RE = /H0*430/i;
+
+function isUsageRow(node, dialog) {
+  if (!(node instanceof HTMLElement) || node === dialog) return false;
+  const style = window.getComputedStyle(node);
+  if (style.display !== 'grid' || style.gridTemplateColumns === 'none') return false;
+  if (!style.borderLeftStyle || style.borderLeftStyle === 'none') return false;
+  const text = node.textContent || '';
+  return text.includes(TARGET_REFERENCE);
+}
 
 function findUsageRow(dialog) {
   if (!TARGET_STRONG_RE.test(dialog.textContent || '')) return null;
 
-  const reference = [...dialog.querySelectorAll('span')].find((node) => {
-    if (node.textContent?.trim() !== TARGET_REFERENCE) return false;
-    let row = node.parentElement;
+  const references = [...dialog.querySelectorAll('span')].filter(
+    (node) => node.textContent?.trim() === TARGET_REFERENCE,
+  );
+
+  for (const reference of references) {
+    let row = reference.parentElement;
     while (row && row !== dialog) {
-      const style = window.getComputedStyle(row);
-      if (style.display === 'grid' && style.gridTemplateColumns !== 'none' && (row.textContent || '').includes(TARGET_LEMMA)) {
-        return true;
-      }
+      if (isUsageRow(row, dialog)) return row;
       row = row.parentElement;
     }
-    return false;
-  });
-
-  if (!reference) return null;
-  let row = reference.parentElement;
-  while (row && row !== dialog) {
-    const style = window.getComputedStyle(row);
-    if (style.display === 'grid' && style.gridTemplateColumns !== 'none' && (row.textContent || '').includes(TARGET_LEMMA)) return row;
-    row = row.parentElement;
   }
+
   return null;
 }
 
@@ -66,6 +66,7 @@ export function installWordSearchAlignmentPilotBridge() {
       Object.assign(host.style, {
         gridColumn: '2',
         minWidth: '0',
+        alignSelf: 'stretch',
       });
       row.appendChild(host);
       state = { host, root: createRoot(host) };
