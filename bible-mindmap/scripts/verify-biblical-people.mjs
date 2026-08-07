@@ -1,8 +1,14 @@
 import { BIBLICAL_PEOPLE_T1 } from '../src/data/biblicalPeople.js';
+import { BIBLICAL_PEOPLE_T2 } from '../src/data/biblicalPeopleT2.js';
+import {
+  BIBLICAL_PEOPLE,
+  BIBLICAL_PEOPLE_BY_ID,
+  BIBLICAL_PEOPLE_TIERS,
+} from '../src/data/biblicalPeopleRegistry.js';
 import { BIBLICAL_PERIODS } from '../src/data/biblicalPeriods.js';
 import { BIBLICAL_PLACE_PROFILES } from '../src/data/bibleReferences.js';
 
-const EXPECTED_IDS = [
+const EXPECTED_T1_IDS = [
   'adam', 'noah', 'abraham', 'sarah', 'isaac', 'jacob', 'joseph', 'moses',
   'aaron', 'joshua', 'deborah', 'gideon', 'samson', 'ruth', 'samuel', 'saul',
   'david', 'solomon', 'elijah', 'elisha', 'hezekiah', 'isaiah', 'josiah',
@@ -10,24 +16,54 @@ const EXPECTED_IDS = [
   'john-baptist', 'jesus', 'peter', 'john-apostle', 'stephen', 'paul', 'barnabas',
   'timothy',
 ];
-const REQUIRED_FIELDS = ['id','name','aliases','testament','periodId','placeIds','bibleRefs','role','summary','certainty','relatedPeople'];
-const TESTAMENTS = new Set(['ot','nt']);
-const CERTAINTIES = new Set(['confirmed','estimated','debated']);
+const EXPECTED_T2_IDS = [
+  'enoch', 'shem', 'lot', 'hagar', 'ishmael', 'esau', 'leah', 'judah',
+  'benjamin', 'miriam', 'caleb', 'rahab', 'barak', 'naomi', 'boaz', 'eli',
+  'hannah', 'jonathan', 'abigail', 'nathan-prophet', 'bathsheba', 'absalom',
+  'rehoboam', 'jeroboam-i', 'ahab', 'jezebel', 'amos', 'hosea',
+  'joseph-husband-mary', 'elizabeth', 'zechariah-priest', 'mary-magdalene',
+  'martha', 'lazarus-bethany', 'andrew', 'james-zebedee', 'matthew-apostle',
+  'thomas', 'philip-apostle', 'nicodemus', 'joseph-arimathea',
+  'james-brother-jesus', 'philip-evangelist', 'cornelius',
+];
+const REQUIRED_FIELDS = [
+  'id', 'name', 'aliases', 'testament', 'periodId', 'placeIds', 'bibleRefs',
+  'role', 'summary', 'certainty', 'relatedPeople',
+];
+const TESTAMENTS = new Set(['ot', 'nt']);
+const CERTAINTIES = new Set(['confirmed', 'estimated', 'debated']);
 const periodIds = new Set(BIBLICAL_PERIODS.map((period) => period.id));
 const placeIds = new Set(Object.keys(BIBLICAL_PLACE_PROFILES));
-const peopleIds = new Set(BIBLICAL_PEOPLE_T1.map((person) => person.id));
+const peopleIds = new Set(BIBLICAL_PEOPLE.map((person) => person.id));
 const issues = [];
 const fail = (message) => issues.push(message);
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 const refPattern = /^[가-힣A-Za-z0-9·:–—\-\s]+$/u;
 
-if (BIBLICAL_PEOPLE_T1.length !== 38) fail(`T1 인물 수는 정확히 38명이어야 합니다: ${BIBLICAL_PEOPLE_T1.length}`);
-if (peopleIds.size !== BIBLICAL_PEOPLE_T1.length) fail('중복 인물 ID가 있습니다.');
-if (JSON.stringify(BIBLICAL_PEOPLE_T1.map((person) => person.id)) !== JSON.stringify(EXPECTED_IDS)) {
-  fail('Notion 카드에 고정된 T1 38명 로스터 또는 순서와 다릅니다.');
+function verifyRoster(label, people, expectedIds) {
+  if (people.length !== expectedIds.length) {
+    fail(`${label} 인물 수 불일치: expected=${expectedIds.length} actual=${people.length}`);
+  }
+  if (JSON.stringify(people.map((person) => person.id)) !== JSON.stringify(expectedIds)) {
+    fail(`${label} 승인 로스터 또는 순서와 다릅니다.`);
+  }
 }
 
-for (const person of BIBLICAL_PEOPLE_T1) {
+verifyRoster('T1', BIBLICAL_PEOPLE_T1, EXPECTED_T1_IDS);
+verifyRoster('T2', BIBLICAL_PEOPLE_T2, EXPECTED_T2_IDS);
+
+if (BIBLICAL_PEOPLE.length !== 82) fail(`통합 인물 수는 82명이어야 합니다: ${BIBLICAL_PEOPLE.length}`);
+if (peopleIds.size !== BIBLICAL_PEOPLE.length) fail('T1과 T2 사이에 중복 인물 ID가 있습니다.');
+if (Object.keys(BIBLICAL_PEOPLE_BY_ID).length !== BIBLICAL_PEOPLE.length) {
+  fail('BIBLICAL_PEOPLE_BY_ID 통합 색인 수가 전체 인물 수와 다릅니다.');
+}
+if (BIBLICAL_PEOPLE_TIERS.length !== 2
+  || BIBLICAL_PEOPLE_TIERS[0]?.count !== 38
+  || BIBLICAL_PEOPLE_TIERS[1]?.count !== 44) {
+  fail('T1/T2 티어 레지스트리 수량 계약이 잘못되었습니다.');
+}
+
+for (const person of BIBLICAL_PEOPLE) {
   for (const field of REQUIRED_FIELDS) {
     if (!(field in person)) fail(`${person.id}: 필수 필드 ${field} 누락`);
   }
@@ -70,15 +106,20 @@ for (const person of BIBLICAL_PEOPLE_T1) {
   }
 }
 
-const jesus = BIBLICAL_PEOPLE_T1.find((person) => person.id === 'jesus');
+const jesus = BIBLICAL_PEOPLE_BY_ID.jesus;
 if (!jesus || !jesus.role.includes('그리스도') || !jesus.role.includes('주') || !jesus.summary.includes('성자 하나님')) {
-  fail('예수 인물의 장로교 개혁주의 신학 게이트(그리스도·주·성자 하나님)가 누락되었습니다.');
+  fail('예수 인물의 장로교 개혁주의 신학 게이트가 누락되었습니다.');
+}
+const cornelius = BIBLICAL_PEOPLE_BY_ID.cornelius;
+if (!cornelius || !cornelius.summary.includes('성령')) {
+  fail('고넬료 인물의 성령 강림 서술 게이트가 누락되었습니다.');
 }
 
-console.log(`성경 인물 T1 verifier · people=${BIBLICAL_PEOPLE_T1.length} periods=${periodIds.size} curatedPlaces=${placeIds.size}`);
+console.log(`성경 인물 verifier · T1=${BIBLICAL_PEOPLE_T1.length} T2=${BIBLICAL_PEOPLE_T2.length} total=${BIBLICAL_PEOPLE.length}`);
+console.log(`periods=${periodIds.size} curatedPlaces=${placeIds.size}`);
 if (issues.length) {
-  console.error('✗ 성경 인물 T1 검증 실패');
+  console.error('✗ 성경 인물 T1~T2 검증 실패');
   for (const issue of issues) console.error(`  - ${issue}`);
   process.exit(1);
 }
-console.log('✓ T1 38명 · 고정 스키마 · 시대/장소/관련인물 · 신학 게이트 통과');
+console.log('✓ T1 38명 + T2 44명 · 통합 82명 계약 통과');
