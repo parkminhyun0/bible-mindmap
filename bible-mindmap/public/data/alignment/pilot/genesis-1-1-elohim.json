@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "0.1.0-pilot",
+  "tokenId": "GEN.1.1.hot.2",
+  "bookId": "genesis",
+  "chapter": 1,
+  "verse": 1,
+  "strong": "H430",
+  "lemma": "אֱלֹהִים",
+  "language": "hebrew",
+  "morph": "HNcmpa",
+  "dictionary": {
+    "translit": "elohim",
+    "translitKo": "엘로힘",
+    "pos": "noun",
+    "glossKo": ["하나님", "신", "신들"],
+    "glossEn": ["God", "god", "gods"],
+    "review": {
+      "status": "review-required",
+      "reason": "신학 중요어이므로 정렬 신뢰도와 무관하게 사람 검수를 유지"
+    }
+  },
+  "alignment": {
+    "relation": "direct",
+    "status": "verified-pilot",
+    "confidence": 0.98,
+    "original": {
+      "translation": "HOT",
+      "text": "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ׃",
+      "span": { "start": 19, "end": 27, "text": "אֱלֹהִים" }
+    },
+    "web": {
+      "translation": "WEB",
+      "text": "In the beginning, God created the heavens and the earth.",
+      "span": { "start": 18, "end": 21, "text": "God" }
+    },
+    "krv": {
+      "translation": "KRV",
+      "text": "태초에 하나님이 천지를 창조하시니라",
+      "span": {
+        "start": 4,
+        "end": 8,
+        "text": "하나님이",
+        "lexeme": "하나님",
+        "particle": "이"
+      }
+    }
+  },
+  "sourceVersions": {
+    "dictionary": "pilot-2026-08-08.1",
+    "lexicon": "current-main",
+    "hot": "pilot-snapshot",
+    "web": "pilot-snapshot",
+    "krv": "pilot-snapshot",
+    "alignment": "pilot-2026-08-08.1"
+  }
+}

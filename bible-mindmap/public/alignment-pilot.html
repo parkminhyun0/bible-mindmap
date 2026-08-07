@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>원어 번역 정렬 파일럿 · 창세기 1:1 엘로힘</title>
+  <style>
+    :root { color-scheme: light dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #f5f7fb; color: #172033; }
+    main { max-width: 920px; margin: 0 auto; padding: 24px 16px 48px; }
+    h1 { font-size: clamp(24px, 5vw, 38px); margin: 0 0 8px; }
+    .lead { color: #5b6474; line-height: 1.7; margin-bottom: 24px; }
+    .status { display: inline-flex; gap: 8px; align-items: center; background: #fff3cd; border: 1px solid #f1d883; border-radius: 999px; padding: 7px 12px; font-weight: 700; font-size: 14px; }
+    .grid { display: grid; gap: 14px; margin-top: 20px; }
+    .card { background: white; border: 1px solid #dce2ec; border-radius: 18px; padding: 18px; box-shadow: 0 8px 24px rgba(30, 41, 59, .06); }
+    .label { display: flex; justify-content: space-between; gap: 12px; color: #697386; font-size: 13px; font-weight: 700; margin-bottom: 12px; }
+    .verse { font-size: clamp(20px, 4vw, 30px); line-height: 1.8; word-break: keep-all; }
+    .rtl { direction: rtl; text-align: right; font-family: "Times New Roman", serif; }
+    mark { background: #dbeafe; color: #123f91; border: 2px solid #60a5fa; border-radius: 7px; padding: 1px 3px; font-weight: 800; }
+    .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-top: 18px; }
+    .meta div { background: #eef2f8; border-radius: 12px; padding: 12px; }
+    .meta strong { display: block; font-size: 12px; color: #6b7280; margin-bottom: 5px; }
+    .notice { margin-top: 20px; padding: 16px; background: #f3e8ff; border: 1px solid #d8b4fe; border-radius: 15px; line-height: 1.65; }
+    .error { color: #b91c1c; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #0f172a; color: #e5e7eb; }
+      .card { background: #172033; border-color: #334155; }
+      .lead, .label { color: #aab3c2; }
+      .meta div { background: #202b3f; }
+      .notice { background: #2e1d43; border-color: #6b3fa0; }
+      mark { background: #17396e; color: #bfdbfe; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="status">테스트 파일럿 · 데이터 1건</span>
+    <h1>창세기 1:1 · אֱלֹהִים</h1>
+    <p class="lead">하나의 <code>tokenId</code>가 히브리어 원문, WEB, 개역한글의 실제 문자 범위를 연결하는 모습을 눈으로 확인하는 최소 테스트입니다.</p>
+    <section id="content" class="grid" aria-live="polite">데이터를 불러오는 중입니다.</section>
+  </main>
+  <script>
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch]));
+    const renderSpan = (item) => {
+      const { text, span } = item;
+      const before = text.slice(0, span.start);
+      const matched = text.slice(span.start, span.end);
+      const after = text.slice(span.end);
+      const mismatch = matched !== span.text;
+      return `${escapeHtml(before)}<mark title="${mismatch ? '저장된 span과 본문이 일치하지 않습니다' : '동일 tokenId의 정렬 span'}">${escapeHtml(matched)}</mark>${escapeHtml(after)}`;
+    };
+    const card = (label, item, rtl = false) => `
+      <article class="card">
+        <div class="label"><span>${label}</span><span>span ${item.span.start}–${item.span.end}</span></div>
+        <div class="verse ${rtl ? 'rtl' : ''}">${renderSpan(item)}</div>
+      </article>`;
+
+    fetch('./data/alignment/pilot/genesis-1-1-elohim.json')
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        const a = data.alignment;
+        document.querySelector('#content').innerHTML = `
+          ${card('히브리어 원문 · HOT', a.original, true)}
+          ${card('영문 · WEB', a.web)}
+          ${card('한글 · 개역한글', a.krv)}
+          <section class="card">
+            <div class="label"><span>통합 사전 정보</span><span>${escapeHtml(data.strong)}</span></div>
+            <div class="meta">
+              <div><strong>tokenId</strong>${escapeHtml(data.tokenId)}</div>
+              <div><strong>lemma</strong>${escapeHtml(data.lemma)}</div>
+              <div><strong>한글 음역</strong>${escapeHtml(data.dictionary.translitKo)}</div>
+              <div><strong>한국어 기본형 + 조사</strong>${escapeHtml(a.krv.span.lexeme)} + ${escapeHtml(a.krv.span.particle)}</div>
+              <div><strong>정렬 관계</strong>${escapeHtml(a.relation)}</div>
+              <div><strong>신뢰도</strong>${Math.round(a.confidence * 100)}%</div>
+            </div>
+          </section>
+          <aside class="notice">
+            <strong>검수 정책:</strong> ${escapeHtml(data.dictionary.review.reason)}<br />
+            이 페이지는 한 토큰의 종단 구조를 확인하기 위한 파일럿이며, 전체 창세기 1:1–5 정렬 완료를 의미하지 않습니다.
+          </aside>`;
+      })
+      .catch(error => {
+        document.querySelector('#content').innerHTML = `<p class="error">파일럿 데이터를 불러오지 못했습니다: ${escapeHtml(error.message)}</p>`;
+      });
+  </script>
+</body>
+</html>
