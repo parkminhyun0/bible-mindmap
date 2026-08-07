@@ -104,6 +104,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
+  // lex 데이터의 Strong 은 0 패딩(예: "H0776")인데 KOREAN_GLOSS 키는 비패딩("H776").
+  // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
+  const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
+  const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
   const width = isMobile ? vw : 380;
@@ -213,9 +217,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
             </MetaRow>
           )}
-          {entry.s && KOREAN_GLOSS[entry.s] && (
+          {koreanGloss && (
             <MetaRow label="한글 뜻">
-              <span style={{ color: '#1e293b', fontWeight: 600 }}>{KOREAN_GLOSS[entry.s].glossKo}</span>
+              <span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span>
             </MetaRow>
           )}
           {entry.g && (
