@@ -2,11 +2,10 @@
 // GPT 배치 통합 검증기 · 자비스 최종 검수 진입 게이트.
 //
 // [철학] 자비스는 값을 만들지 않고 검증만. GPT 가 계약(docs/gpt-batch-contracts/)
-// 대로 낸 배치를 3개 트랙 verifier 로 병렬 실행해 하나라도 실패하면 exit 1.
+// 대로 낸 배치를 트랙별 verifier 로 실행해 하나라도 실패하면 exit 1.
 // prebuild·CI 에 연결되어 계약 위반 배치는 main 진입 불가.
 //
 // 실행:  node scripts/verify-gpt-batch.mjs
-// CI에서는 이 스크립트만 호출하면 3개가 다 검증됨.
 import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,9 +14,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 
 const TRACKS = [
-  { key: 'gloss',      script: 'verify-korean-gloss.mjs',        contract: 'docs/gpt-batch-contracts/gloss.md' },
-  { key: 'people',     script: 'verify-biblical-people.mjs',     contract: 'docs/gpt-batch-contracts/people.md' },
-  { key: 'alignment',  script: 'verify-translation-alignment.mjs', contract: 'docs/gpt-batch-contracts/alignment.md' },
+  { key: 'gloss', script: 'verify-korean-gloss.mjs' },
+  { key: 'genesis', script: 'verify-korean-strong-genesis.mjs' },
+  { key: 'people', script: 'verify-biblical-people.mjs' },
+  { key: 'alignment', script: 'verify-translation-alignment.mjs' },
 ];
 
 function runTrack({ key, script }) {
@@ -52,4 +52,4 @@ if (failed.length) {
   process.exit(1);
 }
 
-console.log('\n✓ 3트랙 전부 통과 · 자비스 최종 검수 준비 완료');
+console.log(`\n✓ ${TRACKS.length}트랙 전부 통과 · 자비스 최종 검수 준비 완료`);
