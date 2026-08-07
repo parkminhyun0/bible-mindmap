@@ -1,4 +1,8 @@
 import { BOOK_CONTEXTS } from '../data/contextRegistry.js';
+// [PR#207 재설계] 900px matchMedia 대신 React(useMobile)와 동일한 레이아웃 판정을 공유한다.
+// iPad(768~1024)·iPhone 가로(>900)에서 React=모바일 UI + 브릿지=데스크톱 3열이 충돌하며
+// 시트가 360px 고정 컬럼으로 강제 전환되고 가로 넘침이 발생하던 근본 원인 제거.
+import { isMobileLayout } from './layoutMode.js';
 
 const PANEL_ID = 'mark-research-layer-test';
 const REOPEN_ID = 'mark-research-reopen-test';
@@ -126,7 +130,8 @@ function renderPanel(panel, chapter, modal) {
 
   panel.querySelector('.mark-research-source')?.addEventListener('click', () => sourceDialog(chapter, chapterData));
   panel.querySelector('.mark-research-close')?.addEventListener('click', () => {
-    if (!window.matchMedia('(max-width: 900px)').matches) return;
+    // 모바일 전용 닫기(데스크톱은 CSS 로 닫기 버튼 숨김) — 판정 기준을 React 와 통일.
+    if (!isMobileLayout()) return;
     modal.dataset.markResearchDismissed = 'true';
     detach(modal);
     ensureReopenButton(modal);
@@ -134,9 +139,15 @@ function renderPanel(panel, chapter, modal) {
   panel.querySelectorAll('.mark-research-anchor').forEach((button) => {
     button.addEventListener('click', () => {
       const verse = button.dataset.verse;
-      const target = panel.parentElement?.querySelector(`[data-ch="${chapter}"][data-verse="${verse}"]`);
+      const target = modal.querySelector(`[data-ch="${chapter}"][data-verse="${verse}"]`);
       target?.scrollIntoView({ behavior: 'smooth', block: 'center' });
       target?.click();
+      // 모바일: 앵커 이동 시 시트를 닫아 본문이 가려지지 않게 한다(런처로 복귀).
+      if (isMobileLayout()) {
+        modal.dataset.markResearchDismissed = 'true';
+        detach(modal);
+        ensureReopenButton(modal);
+      }
     });
   });
 }
@@ -160,7 +171,7 @@ function installResize(layout, panel) {
   divider.tabIndex = 0;
   divider.style.display = 'none';
   divider.addEventListener('pointerdown', (event) => {
-    if (window.matchMedia('(max-width: 900px)').matches) return;
+    if (isMobileLayout()) return;
     event.preventDefault();
     divider.setPointerCapture(event.pointerId);
     const startX = event.clientX;
@@ -193,38 +204,68 @@ function installResize(layout, panel) {
 }
 
 function ensureReopenButton(modal) {
-  // 모바일은 3열 미제공이므로 재열기 버튼도 표시하지 않는다(가로 잘림 회귀 방지).
-  if (typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) return;
-  const left = modal.querySelector('.at-modal__content');
-  const layout = left?.parentElement;
-  if (!left || !layout || !isMarkActive(modal) || layout.querySelector(`#${REOPEN_ID}`)) return;
+  // [재설계] layout 이 아니라 modal 에 직접 부착 — 모바일에서 3열 layout 재편에
+  // 의존하지 않고 항상 안전하게 표시된다. position:fixed 이므로 부착 위치와 무관하게
+  // 뷰포트 우하단(safe-area 반영)에 고정된다.
+  if (!isMarkActive(modal) || modal.querySelector(`#${REOPEN_ID}`)) return;
 
   const button = document.createElement('button');
   button.id = REOPEN_ID;
   button.type = 'button';
   button.textContent = '본문 구조 연구 다시 열기';
   button.setAttribute('aria-label', '마가복음 본문 구조 연구 다시 열기');
-  button.style.cssText = 'position:fixed;right:max(12px,env(safe-area-inset-right));bottom:calc(96px + env(safe-area-inset-bottom));z-index:41;min-width:148px;min-height:44px;padding:10px 14px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:900;box-shadow:0 8px 24px rgba(15,23,42,.18);cursor:pointer;';
+  button.style.cssText = 'position:fixed;right:max(12px,env(safe-area-inset-right));bottom:calc(96px + env(safe-area-inset-bottom));z-index:1399;min-width:148px;min-height:44px;padding:10px 14px;border:1px solid #bfdbfe;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-size:13px;font-weight:900;box-shadow:0 8px 24px rgba(15,23,42,.18);cursor:pointer;touch-action:manipulation;';
   button.addEventListener('click', () => {
     delete modal.dataset.markResearchDismissed;
     button.remove();
     attach(modal);
   });
-  layout.appendChild(button);
+  modal.appendChild(button);
 }
 
 function attach(modal) {
-  // 모바일(≤900px)은 3열 DOM 재편/연구 패널 주입을 하지 않는다.
-  // repair.js 는 max-width:900px 에서 early-return 하지만 이 attach 는 뷰포트 가드가
-  // 없어 모바일에서도 .mark-direct-observation-pane/.mark-research-layout-test 클래스와
-  // 연구 패널을 붙여왔다. 관련 CSS 는 @media(min-width:901px) 전용이라 클래스만 붙고
-  // 스타일 미적용 → 관찰카드 하단시트가 갇혀 원핑거 세로 스크롤이 죽고 콘텐츠가 가로로
-  // 넘치는 회귀 발생. 데스크톱 3열은 유지, 모바일은 순수 문맥성경 흐름 유지.
-  if (typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) return false;
   const left = modal.querySelector('.at-modal__content');
   const layout = left?.parentElement;
   if (!left || !layout || !isMarkActive(modal) || modal.dataset.markResearchDismissed === 'true') return false;
+
+  // ── 모바일/태블릿: 3열 DOM 재편 전면 금지 · 오버레이(시트) 모드 ──
+  // [PR#207 재설계] PR#207 은 attach 자체를 꺼서 기능이 사라졌다.
+  // 여기서는 기능을 켠 채로 UI 만 바꾼다: 형제 패널 클래스 부여·divider·
+  // data-mark-three-column-ready 없이 panel 을 modal 에 직접 붙이고,
+  // CSS(:root[data-layout="mobile"])가 하단 시트로 렌더한다.
+  // 첫 진입 기본값은 '접힘'(런처 버튼만 표시) — 시트가 관찰카드 하단시트를
+  // 자동으로 덮어버리는 UX 문제를 방지하고 사용자가 원할 때만 연다.
+  if (isMobileLayout()) {
+    let panel = modal.querySelector(`#${PANEL_ID}`);
+    if (!panel) {
+      if (modal.dataset.markResearchMobileSeen !== 'true') {
+        modal.dataset.markResearchMobileSeen = 'true';
+        modal.dataset.markResearchDismissed = 'true';
+        ensureReopenButton(modal);
+        return false;
+      }
+      modal.querySelector(`#${REOPEN_ID}`)?.remove();
+      panel = document.createElement('section');
+      panel.id = PANEL_ID;
+      panel.className = 'mark-research-panel';
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-label', '본문 구조 연구');
+      modal.appendChild(panel);
+    }
+    const chapter = activeChapter(modal);
+    if (panel.dataset.chapter !== String(chapter)) {
+      panel.dataset.chapter = String(chapter);
+      renderPanel(panel, chapter, modal);
+    }
+    return true;
+  }
+
+  // ── 데스크톱: 기존 3열 로직 그대로 (회귀 없음) ──
+  // 단, 뷰포트 폭이 3열 최소폭(약 1000px) 미만인 데스크톱 창에서는 부착을 보류해
+  // 과거 '데스크톱 UI + 모바일 CSS 시트'가 뒤섞이던 768~900px 구간 오작동을 제거한다.
+  if (window.innerWidth < 901) return false;
   layout.querySelector(`#${REOPEN_ID}`)?.remove();
+  modal.querySelector(`#${REOPEN_ID}`)?.remove();
   let panel = layout.querySelector(`#${PANEL_ID}`);
   if (!panel) {
     const { observation, splitter } = findPanes(layout, left);
@@ -254,13 +295,14 @@ function attach(modal) {
 }
 
 function detach(modal) {
-  const panel = modal.querySelector(`#${PANEL_ID}`);
-  const layout = panel?.parentElement;
-  panel?.remove();
-  layout?.querySelectorAll('.mark-research-second-divider').forEach((node) => node.remove());
-  layout?.classList.remove(STYLE_CLASS);
-  layout?.removeAttribute('data-mark-three-column-ready');
-  layout?.querySelectorAll('.mark-direct-body-pane,.mark-direct-first-divider,.mark-direct-observation-pane')
+  // 모바일에서 panel 은 modal 직속, 데스크톱에서는 layout 직속 — 양쪽 모두 정리한다.
+  modal.querySelector(`#${PANEL_ID}`)?.remove();
+  modal.querySelectorAll('.mark-research-second-divider').forEach((node) => node.remove());
+  modal.querySelectorAll(`.${STYLE_CLASS}`).forEach((layout) => {
+    layout.classList.remove(STYLE_CLASS);
+    layout.removeAttribute('data-mark-three-column-ready');
+  });
+  modal.querySelectorAll('.mark-direct-body-pane,.mark-direct-first-divider,.mark-direct-observation-pane')
     .forEach((node) => node.classList.remove('mark-direct-body-pane', 'mark-direct-first-divider', 'mark-direct-observation-pane'));
 }
 
@@ -296,6 +338,7 @@ export function installMarkResearchLayerBridge() {
     document.querySelectorAll('.at-modal--context').forEach((modal) => {
       if (!isMarkActive(modal)) {
         delete modal.dataset.markResearchDismissed;
+        delete modal.dataset.markResearchMobileSeen;
         modal.querySelector(`#${REOPEN_ID}`)?.remove();
         detach(modal);
       } else if (modal.dataset.markResearchDismissed === 'true') {

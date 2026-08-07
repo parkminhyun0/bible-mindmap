@@ -1,3 +1,8 @@
+// [PR#207 재설계] 판정 기준을 React(useMobile)와 통일 — iPad(768~1024)·iPhone 가로(>900)에서
+// React=모바일 시트 UI 인데 이 repair 가 데스크톱 3열 DOM 재편을 실행해
+// 시트가 360px 고정 컬럼으로 강제 전환되며 가로 넘침이 발생하던 근본 원인 제거.
+import { isMobileLayout } from './layoutMode.js';
+
 function clamp(value, min, max) {
   return Math.min(max, Math.max(min, value));
 }
@@ -87,7 +92,7 @@ function ensureSecondDivider(layout, research) {
 }
 
 function prepareThreeColumnLayout(layout) {
-  if (!(layout instanceof HTMLElement) || window.matchMedia('(max-width: 900px)').matches) return;
+  if (!(layout instanceof HTMLElement) || isMobileLayout() || window.innerWidth < 901) return;
 
   const research = layout.querySelector(':scope > .mark-research-panel');
   const leftSource = layout.querySelector(':scope > .at-modal__content')
@@ -148,7 +153,7 @@ function installDividerCapture() {
       : null;
     const layout = divider?.closest('.mark-research-layout-test');
     if (!(divider instanceof HTMLElement) || !(layout instanceof HTMLElement)
-      || window.matchMedia('(max-width: 900px)').matches) return;
+      || isMobileLayout() || window.innerWidth < 901) return;
 
     const observation = layout.querySelector(':scope > .mark-direct-observation-pane');
     const research = layout.querySelector(':scope > .mark-direct-research-pane');
