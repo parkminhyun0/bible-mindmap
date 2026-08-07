@@ -85,6 +85,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Measure Genesis Korean Strong integration
+        run: node scripts/verify-korean-strong-genesis.mjs
+
       - name: Verify dependency integrity
         run: npm run verify:dependency-integrity
 
