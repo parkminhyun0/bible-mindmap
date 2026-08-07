@@ -1,0 +1,102 @@
+// Genesis 1 Korean Strong expansion · batch 01
+// Scope: Genesis 1:1–2 entries missing from the existing 144-entry pilot.
+// Existing files are intentionally not modified. Integration is handled separately.
+
+export const KOREAN_GLOSS_GENESIS_1_BATCH_01 = {
+  H7225: {
+    lemma: 'רֵאשִׁית',
+    translit: 'rēʾšît',
+    translitKo: '레쉬트',
+    glossKo: '처음, 시작, 첫째',
+    note: '창 1:1에서는 시간적 시작을 가리킨다. 문맥에 따라 첫 열매·으뜸의 뜻도 가능하다.',
+    review: false,
+  },
+  H1254: {
+    lemma: 'בָּרָא',
+    translit: 'bārāʾ',
+    translitKo: '바라',
+    glossKo: '창조하다, 지어 내다',
+    note: '창조 행위를 나타내며 창 1:1의 주어는 하나님이다. 무(無)로부터의 창조 여부는 단어 하나보다 본문 전체 문맥으로 판단한다.',
+    review: true,
+  },
+  H430: {
+    lemma: 'אֱלֹהִים',
+    translit: 'ʾĕlōhîm',
+    translitKo: '엘로힘',
+    glossKo: '하나님, 신들',
+    note: '창 1장에서는 단수 동사와 결합해 이스라엘의 하나님을 가리킨다. 신학 민감어이므로 자동승인하지 않는다.',
+    review: true,
+  },
+  H853: {
+    lemma: 'אֵת',
+    translit: 'ʾēt',
+    translitKo: '에트',
+    glossKo: '직접목적격 표지',
+    note: '번역되지 않는 문법 표지이다. KRV 본문에서 독립 어휘 스팬을 만들지 말고 정렬 검수 대상으로 유지한다.',
+    review: true,
+  },
+  H8064: {
+    lemma: 'שָׁמַיִם',
+    translit: 'šāmayim',
+    translitKo: '샤마임',
+    glossKo: '하늘, 궁창 위의 하늘들',
+    note: '창 1:1에서는 땅과 짝을 이루어 창조 세계 전체를 나타내는 표현의 일부이다.',
+    review: false,
+  },
+  H1961: {
+    lemma: 'הָיָה',
+    translit: 'hāyâ',
+    translitKo: '하야',
+    glossKo: '있다, 되다, 발생하다',
+    note: '상태·존재·변화를 폭넓게 나타낸다. 창 1:2에서는 땅의 상태를 서술한다.',
+    review: true,
+  },
+  H8414: {
+    lemma: 'תֹּהוּ',
+    translit: 'tōhû',
+    translitKo: '토후',
+    glossKo: '혼돈, 황무함, 형태 없음',
+    note: '창 1:2에서는 아직 질서와 기능이 갖추어지지 않은 상태를 묘사한다.',
+    review: true,
+  },
+  H922: {
+    lemma: 'בֹּהוּ',
+    translit: 'bōhû',
+    translitKo: '보후',
+    glossKo: '공허, 비어 있음',
+    note: '성경에서 드물게 쓰이며 창 1:2에서는 토후와 결합해 혼돈하고 공허한 상태를 나타낸다.',
+    review: true,
+  },
+  H5921: {
+    lemma: 'עַל',
+    translit: 'ʿal',
+    translitKo: '알',
+    glossKo: '위에, 위로, 대하여',
+    note: '문맥에 따라 공간·방향·관계 의미가 달라지는 전치사이므로 자동 정렬 시 문맥 검수가 필요하다.',
+    review: true,
+  },
+  H6440: {
+    lemma: 'פָּנִים',
+    translit: 'pānîm',
+    translitKo: '파님',
+    glossKo: '얼굴, 표면, 앞',
+    note: '창 1:2에서는 물의 표면을 뜻한다. 복수형 형태이지만 문맥상 단수적 의미로 자주 사용된다.',
+    review: true,
+  },
+  H8415: {
+    lemma: 'תְּהוֹם',
+    translit: 'tĕhôm',
+    translitKo: '테홈',
+    glossKo: '깊음, 심연, 깊은 물',
+    note: '창 1:2에서는 원시 바다의 깊음을 가리킨다. 주변 고대 근동 자료와의 비교가 본문 자체의 창조주-피조물 구분을 약화시키지 않도록 주의한다.',
+    review: true,
+  },
+};
+
+export const KOREAN_GLOSS_GENESIS_1_BATCH_01_META = {
+  batchId: 'genesis-1-01',
+  entryCount: 11,
+  sourceRange: 'Genesis 1:1–2',
+  existingGlossVersion: '2026-08-07.1',
+  status: 'candidate',
+};
