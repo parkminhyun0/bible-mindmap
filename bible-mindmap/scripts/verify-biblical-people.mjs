@@ -1,5 +1,6 @@
 import { BIBLICAL_PEOPLE_T1 } from '../src/data/biblicalPeople.js';
 import { BIBLICAL_PEOPLE_T2 } from '../src/data/biblicalPeopleT2.js';
+import { BIBLICAL_PEOPLE_T3 } from '../src/data/biblicalPeopleT3.js';
 import {
   BIBLICAL_PEOPLE,
   BIBLICAL_PEOPLE_BY_ID,
@@ -26,6 +27,16 @@ const EXPECTED_T2_IDS = [
   'thomas', 'philip-apostle', 'nicodemus', 'joseph-arimathea',
   'james-brother-jesus', 'philip-evangelist', 'cornelius',
 ];
+const EXPECTED_T3_IDS = [
+  'methuselah', 'lamech-noah-father', 'melchizedek', 'rebekah', 'rachel',
+  'laban', 'reuben', 'levi', 'ephraim', 'manasseh-joseph-son', 'jethro',
+  'bezalel', 'korah', 'balaam', 'phinehas-aaron-grandson', 'achan', 'othniel',
+  'ehud', 'jephthah', 'jael', 'elimelech', 'obed', 'ichabod', 'nabal', 'joab',
+  'mephibosheth', 'uriah-hittite', 'gad-prophet', 'abishag', 'adonijah',
+  'zadok-priest', 'ahijah-shilonite', 'asa', 'jehoshaphat', 'jehu-king',
+  'joash-judah', 'uzziah', 'micah-prophet', 'nahum', 'habakkuk', 'haggai',
+  'zechariah-prophet', 'mordecai', 'zerubbabel',
+];
 const REQUIRED_FIELDS = [
   'id', 'name', 'aliases', 'testament', 'periodId', 'placeIds', 'bibleRefs',
   'role', 'summary', 'certainty', 'relatedPeople',
@@ -51,16 +62,18 @@ function verifyRoster(label, people, expectedIds) {
 
 verifyRoster('T1', BIBLICAL_PEOPLE_T1, EXPECTED_T1_IDS);
 verifyRoster('T2', BIBLICAL_PEOPLE_T2, EXPECTED_T2_IDS);
+verifyRoster('T3', BIBLICAL_PEOPLE_T3, EXPECTED_T3_IDS);
 
-if (BIBLICAL_PEOPLE.length !== 82) fail(`통합 인물 수는 82명이어야 합니다: ${BIBLICAL_PEOPLE.length}`);
-if (peopleIds.size !== BIBLICAL_PEOPLE.length) fail('T1과 T2 사이에 중복 인물 ID가 있습니다.');
+if (BIBLICAL_PEOPLE.length !== 126) fail(`통합 인물 수는 126명이어야 합니다: ${BIBLICAL_PEOPLE.length}`);
+if (peopleIds.size !== BIBLICAL_PEOPLE.length) fail('T1~T3 사이에 중복 인물 ID가 있습니다.');
 if (Object.keys(BIBLICAL_PEOPLE_BY_ID).length !== BIBLICAL_PEOPLE.length) {
   fail('BIBLICAL_PEOPLE_BY_ID 통합 색인 수가 전체 인물 수와 다릅니다.');
 }
-if (BIBLICAL_PEOPLE_TIERS.length !== 2
+if (BIBLICAL_PEOPLE_TIERS.length !== 3
   || BIBLICAL_PEOPLE_TIERS[0]?.count !== 38
-  || BIBLICAL_PEOPLE_TIERS[1]?.count !== 44) {
-  fail('T1/T2 티어 레지스트리 수량 계약이 잘못되었습니다.');
+  || BIBLICAL_PEOPLE_TIERS[1]?.count !== 44
+  || BIBLICAL_PEOPLE_TIERS[2]?.count !== 44) {
+  fail('T1/T2/T3 티어 레지스트리 수량 계약이 잘못되었습니다.');
 }
 
 for (const person of BIBLICAL_PEOPLE) {
@@ -115,11 +128,11 @@ if (!cornelius || !cornelius.summary.includes('성령')) {
   fail('고넬료 인물의 성령 강림 서술 게이트가 누락되었습니다.');
 }
 
-console.log(`성경 인물 verifier · T1=${BIBLICAL_PEOPLE_T1.length} T2=${BIBLICAL_PEOPLE_T2.length} total=${BIBLICAL_PEOPLE.length}`);
+console.log(`성경 인물 verifier · T1=${BIBLICAL_PEOPLE_T1.length} T2=${BIBLICAL_PEOPLE_T2.length} T3=${BIBLICAL_PEOPLE_T3.length} total=${BIBLICAL_PEOPLE.length}`);
 console.log(`periods=${periodIds.size} curatedPlaces=${placeIds.size}`);
 if (issues.length) {
-  console.error('✗ 성경 인물 T1~T2 검증 실패');
+  console.error('✗ 성경 인물 T1~T3 검증 실패');
   for (const issue of issues) console.error(`  - ${issue}`);
   process.exit(1);
 }
-console.log('✓ T1 38명 + T2 44명 · 통합 82명 계약 통과');
+console.log('✓ T1 38명 + T2 44명 + T3 44명 · 통합 126명 계약 통과');
