@@ -2473,9 +2473,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 position: 'absolute',
                 left: 0, right: 0, bottom: 0,
                 // peek: 핸들(펼치기 버튼)만 노출 · 관찰 카드 상단이 새어 보이지 않도록 완전히 숨김
-                // full 높이는 dvh(동적 뷰포트)로 고정 — 퍼센트 높이는 iOS Safari에서 부모 높이가
-                // 불안정할 때 스크롤 뷰포트를 못 만들어 overflow:auto 스크롤이 죽는다.
-                height: sheetSnap === 'full' ? '85dvh' : sheetSnap === 'peek' ? 46 : 0,
+                // full 높이는 컨테이너(부모 flex 행)를 꽉 채운다. dvh/퍼센트가 부모보다 크면
+                // 부모 overflow:hidden 에 상단이 잘려 내용이 화면 밖으로 넘치고 스크롤 뷰포트가
+                // 깨진다. 100%로 컨테이너에 정확히 맞춰 잘림 없이 overflow:auto 스크롤을 보장.
+                height: sheetSnap === 'full' ? '100%' : sheetSnap === 'peek' ? 46 : 0,
+                minHeight: 0,
                 borderTop: '1px solid rgba(15,23,42,.08)',
                 borderRadius: '18px 18px 0 0',
                 boxShadow: '0 -8px 32px rgba(15,23,42,.18)',
