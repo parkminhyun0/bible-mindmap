@@ -363,6 +363,10 @@ export function ContextBibleScaffoldingBar({
             marginTop: 6,
             flex: 1,
             minHeight: 0,
+            // iOS Safari 는 max-height 부모 안의 flex:1 자식에 확정 높이를 주지 않아
+            // overflow:auto 스크롤이 죽는다. 스크롤 영역에 직접 확정 maxHeight(vh)를 주어
+            // 어떤 뷰포트에서도 안정적으로 스크롤되게 한다.
+            maxHeight: isMobile ? '34vh' : '36vh',
             overflowY: 'auto',
             overscrollBehavior: 'contain',
             WebkitOverflowScrolling: 'touch',
