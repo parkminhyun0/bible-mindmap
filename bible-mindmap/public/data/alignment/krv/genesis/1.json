@@ -1,0 +1,1138 @@
+{
+  "schemaVersion": "1.0.0",
+  "book": "genesis",
+  "chapter": 1,
+  "translation": "krv",
+  "sourceVersions": {
+    "dictionary": "2026-08-07.1",
+    "lexicon": "6fd9ad8",
+    "krv": "bolls-krv-2026.08"
+  },
+  "range": {
+    "fromVerse": 1,
+    "toVerse": 5,
+    "note": "파일럿 · 창1:1~5"
+  },
+  "records": [
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.0",
+      "strong": "H7225",
+      "tokenChecksum": "afe8f533",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H7225) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.1",
+      "strong": "H1254",
+      "tokenChecksum": "ff7ff644",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1254) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.2",
+      "strong": "H430",
+      "tokenChecksum": "454e0125",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.3",
+      "strong": "H853",
+      "tokenChecksum": "b9646c7f",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H853) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.4",
+      "strong": "H8064",
+      "tokenChecksum": "a4818071",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H8064) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.5",
+      "strong": "H853",
+      "tokenChecksum": "1d72c737",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H853) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.1.hot.6",
+      "strong": "H776",
+      "tokenChecksum": "7e7fccc5",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.35,
+      "targets": {
+        "korean": {
+          "text": "태초에 하나님이 천지를 창조하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에서 후보 발견 실패 — 의역·생략 가능"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.0",
+      "strong": "H776",
+      "tokenChecksum": "956f7a53",
+      "relation": "direct",
+      "status": "auto",
+      "confidence": 0.98,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": [
+            {
+              "start": 0,
+              "end": 2
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.1",
+      "strong": "H1961",
+      "tokenChecksum": "8bc63048",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1961) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.2",
+      "strong": "H8414",
+      "tokenChecksum": "4e604efa",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H8414) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.3",
+      "strong": "H922",
+      "tokenChecksum": "943fa88f",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H922) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.4",
+      "strong": "H2822",
+      "tokenChecksum": "d96f660d",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.35,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에서 후보 발견 실패 — 의역·생략 가능"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.5",
+      "strong": "H5921",
+      "tokenChecksum": "8f3a3b25",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H5921) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.6",
+      "strong": "H6440",
+      "tokenChecksum": "89a0c190",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H6440) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.7",
+      "strong": "H8415",
+      "tokenChecksum": "88964e65",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H8415) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.8",
+      "strong": "H7307",
+      "tokenChecksum": "7a65d1ab",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.35,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에서 후보 발견 실패 — 의역·생략 가능"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.9",
+      "strong": "H430",
+      "tokenChecksum": "454e0125",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.10",
+      "strong": "H7363",
+      "tokenChecksum": "c22c94ce",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H7363) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.11",
+      "strong": "H5921",
+      "tokenChecksum": "8f3a3b25",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H5921) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.12",
+      "strong": "H6440",
+      "tokenChecksum": "89a0c190",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H6440) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.2.hot.13",
+      "strong": "H4325",
+      "tokenChecksum": "f6169f0c",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "땅이 혼돈하고 공허하며 흑암이 깊음 위에 있고 하나님의 신은 수면에 운행하시니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H4325) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.0",
+      "strong": "H559",
+      "tokenChecksum": "b2902972",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H559) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.1",
+      "strong": "H430",
+      "tokenChecksum": "454e0125",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.2",
+      "strong": "H1961",
+      "tokenChecksum": "1e246cdb",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1961) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.3",
+      "strong": "H216",
+      "tokenChecksum": "4e0131b2",
+      "relation": "direct",
+      "status": "review",
+      "confidence": 0.7,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": [
+            {
+              "start": 10,
+              "end": 12
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에 후보 2 회 등장 — 위치 확인 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.4",
+      "strong": "H1961",
+      "tokenChecksum": "9b35d9fd",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1961) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.3.hot.5",
+      "strong": "H216",
+      "tokenChecksum": "b9e199aa",
+      "relation": "direct",
+      "status": "review",
+      "confidence": 0.7,
+      "targets": {
+        "korean": {
+          "text": "하나님이 가라사대 빛이 있으라 하시매 빛이 있었고",
+          "spans": [
+            {
+              "start": 10,
+              "end": 12
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에 후보 2 회 등장 — 위치 확인 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.0",
+      "strong": "H7200",
+      "tokenChecksum": "8d7b1844",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H7200) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.1",
+      "strong": "H430",
+      "tokenChecksum": "454e0125",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.2",
+      "strong": "H853",
+      "tokenChecksum": "fc163b19",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H853) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.3",
+      "strong": "H216",
+      "tokenChecksum": "f401c719",
+      "relation": "direct",
+      "status": "review",
+      "confidence": 0.7,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": [
+            {
+              "start": 2,
+              "end": 4
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에 후보 2 회 등장 — 위치 확인 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.4",
+      "strong": "H3588",
+      "tokenChecksum": "77efc8df",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H3588) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.5",
+      "strong": "H2895",
+      "tokenChecksum": "c7e878e5",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H2895) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.6",
+      "strong": "H914",
+      "tokenChecksum": "f5c86630",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H914) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.7",
+      "strong": "H430",
+      "tokenChecksum": "454e0125",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.8",
+      "strong": "H996",
+      "tokenChecksum": "f6b43b20",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H996) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.9",
+      "strong": "H216",
+      "tokenChecksum": "f401c719",
+      "relation": "direct",
+      "status": "review",
+      "confidence": 0.7,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": [
+            {
+              "start": 2,
+              "end": 4
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에 후보 2 회 등장 — 위치 확인 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.10",
+      "strong": "H996",
+      "tokenChecksum": "de6b75b8",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H996) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.4.hot.11",
+      "strong": "H2822",
+      "tokenChecksum": "7383b836",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.35,
+      "targets": {
+        "korean": {
+          "text": "그 빛이 하나님의 보시기에 좋았더라 하나님이 빛과 어두움을 나누사",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에서 후보 발견 실패 — 의역·생략 가능"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.0",
+      "strong": "H7121",
+      "tokenChecksum": "6d22d281",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H7121) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.1",
+      "strong": "H430",
+      "tokenChecksum": "92cc517b",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H430) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.2",
+      "strong": "H216",
+      "tokenChecksum": "d2817151",
+      "relation": "direct",
+      "status": "auto",
+      "confidence": 0.98,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": [
+            {
+              "start": 0,
+              "end": 2
+            }
+          ]
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.3",
+      "strong": "H3117",
+      "tokenChecksum": "26284b0a",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H3117) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.4",
+      "strong": "H2822",
+      "tokenChecksum": "0718d2ee",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.35,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "KRV 본문에서 후보 발견 실패 — 의역·생략 가능"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.5",
+      "strong": "H7121",
+      "tokenChecksum": "efa6398e",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H7121) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.6",
+      "strong": "H3915",
+      "tokenChecksum": "f4357f2e",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H3915) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.7",
+      "strong": "H1961",
+      "tokenChecksum": "9b35d9fd",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1961) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.8",
+      "strong": "H6153",
+      "tokenChecksum": "09c3c3d2",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H6153) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.9",
+      "strong": "H1961",
+      "tokenChecksum": "9b35d9fd",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1961) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.10",
+      "strong": "H1242",
+      "tokenChecksum": "c1a09bcb",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H1242) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.11",
+      "strong": "H3117",
+      "tokenChecksum": "26284b0a",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H3117) — 사전 확장 필요"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "tokenId": "genesis.1.5.hot.12",
+      "strong": "H259",
+      "tokenChecksum": "08a9e83b",
+      "relation": "uncertain",
+      "status": "review",
+      "confidence": 0.4,
+      "targets": {
+        "korean": {
+          "text": "빛을 낮이라 칭하시고 어두움을 밤이라 칭하시니라 저녁이 되며 아침이 되니 이는 첫째 날이니라",
+          "spans": []
+        }
+      },
+      "sourceVersions": {
+        "dictionary": "2026-08-07.1",
+        "lexicon": "6fd9ad8",
+        "krv": "bolls-krv-2026.08"
+      },
+      "notes": "koreanGloss 미등록(H259) — 사전 확장 필요"
+    }
+  ]
+}
