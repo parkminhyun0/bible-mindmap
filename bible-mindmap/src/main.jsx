@@ -17,6 +17,7 @@ import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolba
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
 import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
+import { installWordSearchAlignmentPilotBridge } from './utils/wordSearchAlignmentPilotBridge.jsx'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -37,6 +38,7 @@ installCrossReferenceToolbarBridge()
 installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()
 installLexiconTranslationPilotBridge()
+installWordSearchAlignmentPilotBridge()
 
 const root = document.getElementById('root')
 
