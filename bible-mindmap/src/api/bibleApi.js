@@ -9,6 +9,8 @@ import {
   selectVerseRows,
 } from './verseNormalization';
 
+import { DATA_BASE } from '../config/dataBase.js';
+
 const BASE = import.meta.env?.BASE_URL || '/';
 
 export const TRANSLATIONS = [
@@ -178,7 +180,7 @@ async function fetchBollsChapterRows(translationCode, bookId, chapter) {
 
 async function fetchLexChapter(corpus, bookId, chapter) {
   return cachedPromise(`lex:${corpus}:${bookId}:${chapter}`, () =>
-    fetchJsonWithRetry(`${BASE}data/lex/${corpus}/${bookId}/${chapter}.json`));
+    fetchJsonWithRetry(`${DATA_BASE}data/lex/${corpus}/${bookId}/${chapter}.json`));
 }
 
 async function fetchLexRows(corpus, bookId, chapter) {

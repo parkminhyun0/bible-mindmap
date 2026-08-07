@@ -4,6 +4,7 @@
  */
 
 import { isOT } from '../data/bibleBooks';
+import { DATA_BASE } from '../config/dataBase.js';
 
 const BASE = import.meta.env.BASE_URL; // ex: "/bible-mindmap/"
 
@@ -35,7 +36,7 @@ export async function loadChapterLexicon(bookId, chapter, langOverride) {
   // LXX 는 커밋된 tracked 경로(public/lxx-lex), 나머지(gnt/hot)는 CI 생성 public/data/lex
   const url = lang === 'lxx'
     ? `${BASE}lxx-lex/${bookId}/${chapter}.json`
-    : `${BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
+    : `${DATA_BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
   const promise = fetch(url).then((res) => {
     if (!res.ok) throw new Error(`lexicon fetch ${res.status}`);
     return res.json();
@@ -89,7 +90,7 @@ export async function fetchStrongConcordance(strongId, bookId) {
   if (_strongsBookCache.has(cacheKey)) {
     bookData = await _strongsBookCache.get(cacheKey);
   } else {
-    const url = `${BASE}data/strongs/${lang}/${bookId}.json`;
+    const url = `${DATA_BASE}data/strongs/${lang}/${bookId}.json`;
     const promise = fetch(url).then((r) => {
       if (!r.ok) throw new Error(`strongs ${r.status}`);
       return r.json();
@@ -115,7 +116,7 @@ function strongsChunkIdx(strongNum) {
 async function loadStrongsChunk(lang, ci) {
   const key = `${lang}-${ci}`;
   if (!_chunkDefCache.has(key)) {
-    const url = `${BASE}data/strongs-def/${lang}/${ci}.json`;
+    const url = `${DATA_BASE}data/strongs-def/${lang}/${ci}.json`;
     const p = fetch(url)
       .then(r => r.ok ? r.json() : {})
       .catch(() => ({}));

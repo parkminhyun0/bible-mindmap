@@ -8,8 +8,7 @@
  */
 
 import { ALL_BOOKS, OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
-
-const BASE = import.meta.env.BASE_URL;
+import { DATA_BASE } from '../config/dataBase.js';
 const CONCURRENCY = 10;         // 로컬 lex JSON
 const BOLLS_CONCURRENCY = 4;    // 원격 Bolls.life — 부하 완화 (rate-limit 회피)
 
@@ -27,7 +26,7 @@ const BOLLS_BOOK_MAP = Object.fromEntries(ALL_BOOKS.map((b, i) => [b.id, i + 1])
 let _manifest = null;
 async function getManifest() {
   if (_manifest) return _manifest;
-  const res = await fetch(`${BASE}data/lex/manifest.json`);
+  const res = await fetch(`${DATA_BASE}data/lex/manifest.json`);
   _manifest = await res.json();
   return _manifest;
 }
@@ -40,7 +39,7 @@ async function fetchChapterLex(bookId, chapter, signal) {
   if (cached) return cached;
 
   const lang = isOT(bookId) ? 'hot' : 'gnt';
-  const url = `${BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
+  const url = `${DATA_BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
   const promise = fetch(url, { signal })
     .then(res => (res.ok ? res.json() : null))
     .catch(() => null);
