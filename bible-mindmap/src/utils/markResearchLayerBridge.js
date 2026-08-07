@@ -193,6 +193,8 @@ function installResize(layout, panel) {
 }
 
 function ensureReopenButton(modal) {
+  // 모바일은 3열 미제공이므로 재열기 버튼도 표시하지 않는다(가로 잘림 회귀 방지).
+  if (typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) return;
   const left = modal.querySelector('.at-modal__content');
   const layout = left?.parentElement;
   if (!left || !layout || !isMarkActive(modal) || layout.querySelector(`#${REOPEN_ID}`)) return;
@@ -212,6 +214,13 @@ function ensureReopenButton(modal) {
 }
 
 function attach(modal) {
+  // 모바일(≤900px)은 3열 DOM 재편/연구 패널 주입을 하지 않는다.
+  // repair.js 는 max-width:900px 에서 early-return 하지만 이 attach 는 뷰포트 가드가
+  // 없어 모바일에서도 .mark-direct-observation-pane/.mark-research-layout-test 클래스와
+  // 연구 패널을 붙여왔다. 관련 CSS 는 @media(min-width:901px) 전용이라 클래스만 붙고
+  // 스타일 미적용 → 관찰카드 하단시트가 갇혀 원핑거 세로 스크롤이 죽고 콘텐츠가 가로로
+  // 넘치는 회귀 발생. 데스크톱 3열은 유지, 모바일은 순수 문맥성경 흐름 유지.
+  if (typeof window !== 'undefined' && window.matchMedia?.('(max-width: 900px)').matches) return false;
   const left = modal.querySelector('.at-modal__content');
   const layout = left?.parentElement;
   if (!left || !layout || !isMarkActive(modal) || modal.dataset.markResearchDismissed === 'true') return false;
