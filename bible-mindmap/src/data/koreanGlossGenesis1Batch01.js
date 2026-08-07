@@ -91,11 +91,27 @@ export const KOREAN_GLOSS_GENESIS_1_BATCH_01 = {
     note: '창 1:2에서는 원시 바다의 깊음을 가리킨다. 주변 고대 근동 자료와의 비교가 본문 자체의 창조주-피조물 구분을 약화시키지 않도록 주의한다.',
     review: true,
   },
+  H7363: {
+    lemma: 'רָחַף',
+    translit: 'rāḥap',
+    translitKo: '라하프',
+    glossKo: '운행하다, 떨며 움직이다, 날개 치다',
+    note: '창 1:2에서는 하나님의 영이 수면 위에 능동적으로 운행하는 모습을 나타낸다. 동사의 뉘앙스는 문맥 검수를 유지한다.',
+    review: true,
+  },
+  H4325: {
+    lemma: 'מַיִם',
+    translit: 'mayim',
+    translitKo: '마임',
+    glossKo: '물, 물들',
+    note: '형태상 복수형이며 창 1:2에서는 수면을 이루는 물을 가리킨다.',
+    review: false,
+  },
 };
 
 export const KOREAN_GLOSS_GENESIS_1_BATCH_01_META = {
   batchId: 'genesis-1-01',
-  entryCount: 11,
+  entryCount: 13,
   sourceRange: 'Genesis 1:1–2',
   existingGlossVersion: '2026-08-07.1',
   status: 'candidate',
