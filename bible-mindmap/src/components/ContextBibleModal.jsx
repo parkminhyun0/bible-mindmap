@@ -9,7 +9,7 @@ import VersePreviewPopup from './VersePreviewPopup';
 import VariantPopup from './VariantPopup';
 import PassageAnnotationPin from './PassageAnnotationPin';
 import { hasVariant, loadBookVariants, isVariantLoaded } from '../data/textualVariants';
-import { DATA_BASE } from '../config/dataBase.js';
+import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 import useResearchAnnotations from '../research/useResearchAnnotations';
 import { getArcExplanation } from '../utils/arcExplanation';
 import ArgumentMapPanel from './ArgumentMapPanel';
@@ -443,7 +443,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     // lex 파일이 404 등으로 누락된 경우 → 빈 객체로 fallback (KRV 만으로 표시)
     // 이렇게 하면 데이터셋 결함으로 전체 로드가 실패하지 않음
     const lexPromise = lexId
-      ? fetch(`${DATA_BASE}data/lex/${lexCorpus}/${lexId}/${ch}.json`)
+      ? resilientFetch(`${DATA_BASE}data/lex/${lexCorpus}/${lexId}/${ch}.json`)
           .then(r => {
             if (!r.ok) {
               console.warn(`[문맥 성경] lex 누락: ${lexCorpus}/${lexId}/${ch}.json (HTTP ${r.status}) — KRV 만으로 표시`);
