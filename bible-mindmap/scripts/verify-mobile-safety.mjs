@@ -94,7 +94,6 @@ const performanceSources = {
   layerBridge: read('../src/utils/markResearchLayerBridge.js'),
   crossReference: read('../src/utils/crossReferenceToolbarBridge.js'),
   legacyModal: read('../src/components/LegacyModalAccessibilityBridge.jsx'),
-  visitorCounter: read('../src/utils/visitorCounterRepair.js'),
   canonicalSuggestion: read('../src/components/CanonicalConceptSuggestionPanel.jsx'),
   canonicalSemantic: read('../src/components/CanonicalSemanticComparisonPanel.jsx'),
   canonicalLauncher: read('../src/components/CanonicalConceptLauncher.jsx'),
@@ -149,13 +148,6 @@ if (!performanceSources.legacyModal.includes('mutationContainsTrackedDialog')
   || !performanceSources.legacyModal.includes('if (frame) return')
   || /observer\.observe\(document\.body/u.test(performanceSources.legacyModal)) {
   fail('LegacyModalAccessibilityBridge: 관련 모달 mutation 필터/rAF/root scope 계약 누락');
-}
-
-if (/observer\.observe\(document\.documentElement/u.test(performanceSources.visitorCounter)
-  || /document\.querySelectorAll\(\s*['"]\*['"]\s*\)/u.test(performanceSources.visitorCounter)
-  || !performanceSources.visitorCounter.includes('pendingRoots')
-  || !performanceSources.visitorCounter.includes('stop();')) {
-  fail('visitorCounterRepair: 전역 DOM 반복 스캔 또는 성공 후 즉시 disconnect 계약 누락');
 }
 
 for (const [label, source] of [
@@ -220,7 +212,7 @@ highFrequencyGlobalListeners.forEach((item) => {
   console.log(`[mobile-performance-audit:listener] ${item.path}:${item.line} ${item.target}.${item.event} passiveOnLine=${item.passiveOnLine}`);
 });
 console.log('[mobile-performance-audit:classification] persistent-scoped=markResearchThreeColumnRepair,markResearchLayerBridge,crossReferenceToolbarBridge,LegacyModalAccessibilityBridge,ContextBibleScaffolding');
-console.log('[mobile-performance-audit:classification] bounded=visitorCounterRepair,CanonicalConceptLauncher');
+console.log('[mobile-performance-audit:classification] bounded=CanonicalConceptLauncher');
 console.log('[mobile-performance-audit:classification] coalesced-existing=CanonicalConceptSuggestionPanel,CanonicalSemanticComparisonPanel');
 console.log('[mobile-performance-audit:classification] touchmove-nonpassive-intentional=useModalDialog(background-scroll-lock)');
 console.log('[mobile-performance-audit:classification] viewport-coalesced=useModalDialog+MobileModalFrame(scale=1,height-only,width=100%)');
