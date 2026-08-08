@@ -47,18 +47,18 @@ export default function MobileWorkspaceDock({
           color: '#e2e8f0',
         }}
       >
-        <div style={{ fontSize: 9.5, color: '#94a3b8', fontWeight: 700, marginBottom: 7, letterSpacing: '.04em' }}>
+        <div style={{ fontSize: 9.5, color: '#ffffff', fontWeight: 700, marginBottom: 7, letterSpacing: '.04em' }}>
           👥 접속자 현황
         </div>
         <div role="status" aria-live="polite" style={{ display: 'grid', gridTemplateColumns: '1fr 1px 1fr', alignItems: 'center', gap: 6 }}>
           <div style={{ textAlign: 'center' }}>
             <strong style={{ display: 'block', fontSize: 17, lineHeight: 1, color: '#6ee7b7', fontVariantNumeric: 'tabular-nums' }}>{format(counts.today)}</strong>
-            <span style={{ display: 'block', marginTop: 5, fontSize: 8.5, color: '#94a3b8' }}>투데이</span>
+            <span style={{ display: 'block', marginTop: 5, fontSize: 8.5, color: '#ffffff' }}>투데이</span>
           </div>
           <span aria-hidden="true" style={{ width: 1, height: 26, background: 'rgba(255,255,255,.13)' }} />
           <div style={{ textAlign: 'center' }}>
             <strong style={{ display: 'block', fontSize: 17, lineHeight: 1, color: '#93c5fd', fontVariantNumeric: 'tabular-nums' }}>{format(counts.total)}</strong>
-            <span style={{ display: 'block', marginTop: 5, fontSize: 8.5, color: '#94a3b8' }}>총 합계</span>
+            <span style={{ display: 'block', marginTop: 5, fontSize: 8.5, color: '#ffffff' }}>총 합계</span>
           </div>
         </div>
       </aside>
