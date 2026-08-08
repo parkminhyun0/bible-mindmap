@@ -6,6 +6,10 @@ import {
 } from '../utils/wordSearch';
 import { fetchStrongDefinition, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
+// [정렬 파일럿] 창1:1 H430(엘로힘) 정식 정렬 span 렌더링에 사용.
+// GPT 지시 · findKoreanWord() 문자열 추정 대신 검증된 tokenId + span 을 직접 렌더.
+// 향후 alignment 파일 다수화 시 이 정적 import 는 loadVerseAlignment(...) 로 승격.
+import elohimPilotAlignment from '../../public/data/alignment/pilot/genesis-1-1-elohim.json';
 
 const HEB_FONT = '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif';
 const GRK_FONT = '"SBL BibLit","Gentium Plus","Palatino Linotype",serif';
@@ -115,6 +119,60 @@ function groupByLemma(wordResults) {
     map.get(key).items.push(r);
   }
   return [...map.values()].sort((a, b) => b.items.length - a.items.length);
+}
+
+// [정렬 파일럿] Strong 정규화: H0430 → H430 등.
+function normalizeStrongForAlignment(s) {
+  const m = String(s || '').trim().toUpperCase().match(/^([GH])0*(\d+)$/);
+  return m ? `${m[1]}${Number(m[2])}` : String(s || '');
+}
+
+// [정렬 파일럿] 창1:1 H430(엘로힘) 등 확정 파일럿 정렬 조회.
+// 향후 여러 파일 지원 시 loadVerseAlignment(...) 로 승격.
+function findPilotKrvAlignment({ strong, bookId, chapter, verse }) {
+  const s = normalizeStrongForAlignment(strong);
+  const pilot = elohimPilotAlignment;
+  if (!pilot?.alignment?.krv?.span) return null;
+  if (normalizeStrongForAlignment(pilot.strong) !== s) return null;
+  if (String(pilot.bookId || '').toLowerCase() !== 'genesis') return null;
+  // 저장소 데이터는 bookId='Gen' 사용. 파일럿은 'genesis' 사용 → 두 표기 모두 허용.
+  const bId = String(bookId || '').toLowerCase();
+  if (bId !== 'gen' && bId !== 'genesis') return null;
+  if (Number(pilot.chapter) !== Number(chapter)) return null;
+  if (Number(pilot.verse) !== Number(verse)) return null;
+  return {
+    tokenId: pilot.tokenId,
+    status: pilot.alignment.status || 'verified-pilot',
+    krv: pilot.alignment.krv,
+  };
+}
+
+// [정렬 파일럿] 저장된 start/end span 을 정확히 렌더.
+// 검증 실패(범위 벗어남/텍스트 불일치)면 하이라이트 없이 원문만 표시.
+function AlignedSpanText({ text, alignment, color, fallback = '(본문 없음)' }) {
+  if (!text) return <span style={{ color: '#94a3b8' }}>{fallback}</span>;
+  const span = alignment?.krv?.span;
+  const spanText = span?.text;
+  const start = span?.start;
+  const end = span?.end;
+  const valid = Number.isInteger(start) && Number.isInteger(end)
+    && start >= 0 && end > start && end <= text.length
+    && text.slice(start, end) === spanText;
+  if (!valid) return <span style={{ color: '#374151' }}>{text}</span>;
+  return (
+    <span style={{ color: '#374151' }}>
+      {text.slice(0, start)}
+      <mark
+        data-token-id={alignment.tokenId}
+        data-alignment-status={alignment.status}
+        style={{
+          background: `${color}33`, color, fontWeight: 700,
+          borderRadius: 2, padding: '0 1px',
+        }}
+      >{text.slice(start, end)}</mark>
+      {text.slice(end)}
+    </span>
+  );
 }
 
 function HighlightText({ text, query }) {
@@ -558,10 +616,30 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
                     </span>
                   )}
                 </div>
-                <span style={{ fontSize: fz, lineHeight: 1.65 }}>
-                  <ColorHighlightText text={verseText} query={hlWord} color={fc}
-                    dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
-                    caseSensitive={!isKoreanView && !isEnglishView} />
+                <span
+                  data-usage-reference={`${r.bookId}.${r.chapter}.${r.verse}`}
+                  data-strong={normalizeStrongForAlignment(r.word?.s)}
+                  style={{ fontSize: fz, lineHeight: 1.65 }}
+                >
+                  {(() => {
+                    // [정렬 파일럿] 창1:1 H430 은 검증된 정렬 span 으로 정식 렌더.
+                    // findKoreanWord() 의 부분 문자열('하나') 추정을 사용하지 않는다.
+                    if (isKoreanView) {
+                      const pilot = findPilotKrvAlignment({
+                        strong: r.word?.s, bookId: r.bookId, chapter: r.chapter, verse: r.verse,
+                      });
+                      if (pilot) {
+                        return (
+                          <AlignedSpanText text={verseText} alignment={pilot} color={fc} fallback={fallbackMsg} />
+                        );
+                      }
+                    }
+                    return (
+                      <ColorHighlightText text={verseText} query={hlWord} color={fc}
+                        dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
+                        caseSensitive={!isKoreanView && !isEnglishView} />
+                    );
+                  })()}
                 </span>
               </div>
             );
