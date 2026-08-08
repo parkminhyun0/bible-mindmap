@@ -104,6 +104,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
+  // lex 데이터의 Strong 은 0 패딩(예: "H0776")인데 KOREAN_GLOSS 키는 비패딩("H776").
+  // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
+  const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
+  const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
   const width = isMobile ? vw : 380;
@@ -190,7 +194,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           {entry.s && (
             <MetaRow label="Strong's">
               <a
-                href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                 target="_blank"
                 rel="noreferrer"
                 style={{ color: '#3b82f6', fontFamily: 'monospace', fontWeight: 600, textDecoration: 'none' }}
@@ -213,9 +217,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
             </MetaRow>
           )}
-          {entry.s && KOREAN_GLOSS[entry.s] && (
+          {koreanGloss && (
             <MetaRow label="한글 뜻">
-              <span style={{ color: '#1e293b', fontWeight: 600 }}>{KOREAN_GLOSS[entry.s].glossKo}</span>
+              <span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span>
             </MetaRow>
           )}
           {entry.g && (
@@ -249,7 +253,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           ))}
         </div>
 
-        <div style={{ overflowY: 'auto', flex: 1 }}>
+        {/* [스크롤 먹통 수정] useModalDialog 화이트리스트 표식 + minHeight:0(iOS flex 자식 수축 보장) + 관성 스크롤 */}
+        <div
+          data-modal-scroll-region="true"
+          style={{ overflowY: 'auto', flex: 1, minHeight: 0,
+            WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain',
+            touchAction: 'pan-y' }}>
           {tab === 'def' && (
             <div style={{ padding: '10px 14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
@@ -274,7 +283,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   정의를 찾을 수 없습니다.{' '}
                   {entry.s && (
                     <a
-                      href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                      href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                       target="_blank" rel="noreferrer"
                       style={{ color: '#3b82f6', textDecoration: 'none' }}
                     >BibleHub에서 보기 ↗</a>
@@ -290,7 +299,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   {entry.s && (
                     <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
                       <a
-                        href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^[GH]/, '')}.htm`}
+                        href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
                         target="_blank" rel="noreferrer"
                         style={{ color: '#94a3b8', fontSize: 10, textDecoration: 'none' }}
                       >

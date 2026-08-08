@@ -6,6 +6,7 @@ import './theme/sidebarScrollFix.css'
 import './theme/appleCanvas.css'
 import './theme/appleModalInterior.css'
 import './theme/contextBibleMobileFix.css'
+import './theme/contextBibleHeaderContrast.css'
 import './theme/markResearchLayerTest.css'
 import './theme/markResearchThreeColumnDirect.css'
 import App from './App.jsx'
@@ -14,6 +15,9 @@ import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilit
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
+import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
+import { installWordSearchAlignmentPilotBridge } from './utils/wordSearchAlignmentPilotBridge.jsx'
+import { installWordSearchFullscreenBridge } from './utils/wordSearchFullscreenBridge.js'
 
 const THEME_STORAGE_KEY = 'bible-mindmap-theme'
 
@@ -32,6 +36,9 @@ applyInitialTheme()
 installCrossReferenceToolbarBridge()
 installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()
+installLexiconTranslationPilotBridge()
+installWordSearchAlignmentPilotBridge()
+installWordSearchFullscreenBridge()
 
 const root = document.getElementById('root')
 

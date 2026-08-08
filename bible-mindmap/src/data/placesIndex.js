@@ -5,7 +5,7 @@
 //
 // 원칙: curated를 우선하되, 동명이소/이명/좌표 미확정 지명을 숨기지 않는다.
 import { ALL_BOOKS } from './bibleBooks.js';
-import { DATA_BASE } from '../config/dataBase.js';
+import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 import {
   searchStaticBiblicalPlaces,
   getPlacesByReference as getCuratedByReference,
@@ -120,7 +120,7 @@ function toResult(p) {
 }
 
 async function fetchJson(url) {
-  const response = await fetch(url, { cache: 'no-cache' });
+  const response = await resilientFetch(url, { cache: 'no-cache' });
   if (!response.ok) throw new Error(`${url} ${response.status}`);
   return response.json();
 }

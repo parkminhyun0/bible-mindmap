@@ -21,6 +21,9 @@ dist-ssr
 public/data/*
 # 지명 자동 색인은 커밋 대상 (build:places로 재생성 · CI 네트워크 비의존)
 !public/data/places.json
+# 정렬 데이터는 자비스 배치 산출물 · main 커밋 대상 (CDN 오프로드 아님, resolver 소비)
+!public/data/alignment/
+!public/data/alignment/**
 # SBLGNT / OSHB XML 다운로드 캐시 (CI에서 재다운로드 · 로컬 반복 실행 가속)
 .sblgnt-cache/
 .oshb-cache/

@@ -39,6 +39,28 @@ function findHorizontalScroller(target, dialog) {
   return null;
 }
 
+// 터치 지점에서 가장 가까운 '실제 세로 스크롤 가능한' 조상을 동적으로 찾는다.
+// [근본 수정 · 관찰카드 하단시트 스크롤 먹통]
+// 기존에는 .at-modal__content / [data-modal-scroll-region] 표식이 붙은 영역만
+// 세로 스크롤을 허용하고 나머지는 전부 preventDefault 했다.
+// 문맥성경의 모바일 하단시트(관찰카드)·학습 스캐폴딩 확장 영역·원어 사전 팝업·
+// 관주/비평/ARC 해설 팝업은 표식이 없어 iOS에서 원핑거 스크롤이 전면 차단됐다
+// (PR#204~#206 이 높이만 바꿔서 실패한 이유).
+// 표식 유무와 무관하게 computed style 로 스크롤러를 판정해 허용하고,
+// 스크롤러가 전혀 없을 때만 배경 스크롤 누수를 차단한다.
+function findVerticalScroller(target, boundary) {
+  let node = target;
+  while (node && node !== boundary?.parentElement) {
+    if (node instanceof HTMLElement && node.scrollHeight > node.clientHeight + 1) {
+      const style = window.getComputedStyle(node);
+      if (/(auto|scroll|overlay)/.test(`${style.overflow} ${style.overflowY}`)) return node;
+    }
+    if (node === boundary) break;
+    node = node.parentElement;
+  }
+  return null;
+}
+
 function lockDocumentScroll(dialog) {
   const body = document.body;
   const html = document.documentElement;
@@ -115,7 +137,14 @@ function lockDocumentScroll(dialog) {
     const cacheTouchTargets = (target) => {
       activeTouchTarget = target;
       activeHorizontalScroller = target ? findHorizontalScroller(target, dialog) : null;
-      activeScrollArea = target?.closest('.at-modal__content, [data-modal-scroll-region="true"]') || null;
+      // 1순위: 명시 표식 영역(의도 문서화 + 조기 판정) · 2순위: 동적 스크롤러 탐지.
+      // 동적 탐지의 경계는 '현재 열린 dialog'가 아니라 터치 지점의 dialog 로 잡아
+      // 중첩 팝업(사전·관주·ARC 해설 등 role=dialog 중첩)에서도 정확히 동작한다.
+      const touchDialog = target?.closest('[role="dialog"]') || dialog;
+      const marked = target?.closest('.at-modal__content, [data-modal-scroll-region="true"]') || null;
+      activeScrollArea = (marked && marked.scrollHeight > marked.clientHeight + 1 ? marked : null)
+        || findVerticalScroller(target, touchDialog)
+        || marked;
     };
 
     const onTouchStart = (event) => {

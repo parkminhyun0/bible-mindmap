@@ -359,6 +359,9 @@ export function ContextBibleScaffoldingBar({
 
       {expanded && (
         <div
+          // [스크롤 먹통 수정] 하단시트와 동일 계열 — 표식 부재로 모바일에서
+          // 확장 영역 세로 스크롤이 차단되던 문제의 이중 안전장치.
+          data-modal-scroll-region="true"
           style={{
             marginTop: 6,
             flex: 1,

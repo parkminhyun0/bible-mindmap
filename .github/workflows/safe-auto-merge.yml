@@ -6,7 +6,7 @@ on:
     types: [completed]
 
 permissions:
-  actions: read
+  actions: write
   checks: read
   contents: write
   pull-requests: write
@@ -114,3 +114,13 @@ jobs:
               return;
             }
             core.notice(`PR #${prNumber} auto-merged as ${result.data.sha}.`);
+
+            // A merge created with GITHUB_TOKEN does not start push-triggered workflows.
+            // workflow_dispatch is explicitly allowed to create a new workflow run.
+            await github.rest.actions.createWorkflowDispatch({
+              owner,
+              repo,
+              workflow_id: 'deploy.yml',
+              ref: 'main',
+            });
+            core.notice(`Deploy to GitHub Pages dispatched for ${result.data.sha}.`);

@@ -26,6 +26,34 @@ const FALLBACK_STYLE = {
   fontWeight: 700,
 };
 
+/**
+ * 형태소 분리 기호와 절 문장부호가 섞인 표면형에서 실제 검색할 원어만 추린다.
+ * 예: הָ/אָֽרֶץ\\׃ → אָרֶץ
+ * 사전형(entry.l)을 우선하되 같은 오염이 있으면 가장 긴 원어 조각을 선택한다.
+ */
+export function normalizeOriginalLanguageQuery(value) {
+  if (!value) return '';
+
+  const candidates = String(value)
+    .normalize('NFC')
+    .split(/[\\/]+/)
+    .map((segment) => segment
+      // 히브리어 맛소라 악센트(캔틸레이션)는 검색어에서 제거한다.
+      .replace(/[\u0591-\u05AF]/g, '')
+      // 히브리어·헬라어 문자와 결합 부호만 남긴다.
+      .replace(/[^\p{Script=Hebrew}\p{Script=Greek}\p{Mark}]/gu, '')
+      .trim())
+    .filter((segment) => /[\p{Script=Hebrew}\p{Script=Greek}]/u.test(segment));
+
+  if (!candidates.length) return '';
+
+  return candidates.reduce((longest, candidate) => {
+    const longestLetters = longest.match(/[\p{Script=Hebrew}\p{Script=Greek}]/gu)?.length || 0;
+    const candidateLetters = candidate.match(/[\p{Script=Hebrew}\p{Script=Greek}]/gu)?.length || 0;
+    return candidateLetters > longestLetters ? candidate : longest;
+  }, candidates[0]);
+}
+
 function resolvePassageFromAnchor(anchor) {
   if (typeof document === 'undefined' || !anchor) return null;
   const x = Number(anchor.x);
@@ -66,7 +94,10 @@ export default function OriginalLanguageResearchActions({
       && Number(sourcePassage?.chapter)
       && Number(sourcePassage?.verseStart),
   );
-  const query = entry?.l || entry?.w || entry?.s || '';
+  const query = normalizeOriginalLanguageQuery(entry?.l)
+    || normalizeOriginalLanguageQuery(entry?.w)
+    || entry?.s
+    || '';
 
   useEffect(() => () => onActiveChange?.(false), [onActiveChange]);
 

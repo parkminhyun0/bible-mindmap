@@ -1,5 +1,9 @@
+/* [PR#207 재설계] 데스크톱 3열 규칙은 '진짜 데스크톱 레이아웃'에서만 적용한다.
+   기존 @media(min-width:901px) 만으로는 iPad(768~1024)·iPhone 가로(>900)에서
+   React 모바일 UI 위에 3열 규칙이 덮여 시트가 360px 컬럼으로 강제되고
+   가로 넘침이 발생했다 → html[data-layout="desktop"] 조건을 병행한다. */
 @media (min-width: 901px) {
-  .mark-research-layout-test[data-mark-three-column-ready="true"] {
+  :root[data-layout="desktop"] .mark-research-layout-test[data-mark-three-column-ready="true"] {
     display: flex !important;
     flex-direction: row !important;
     align-items: stretch !important;
@@ -9,7 +13,7 @@
     grid-template-columns: none !important;
   }
 
-  .mark-research-layout-test > .mark-direct-body-pane {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-body-pane {
     order: 1 !important;
     flex: 1 1 auto !important;
     width: auto !important;
@@ -18,7 +22,7 @@
     overflow: auto !important;
   }
 
-  .mark-research-layout-test > .mark-direct-first-divider {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-first-divider {
     order: 2 !important;
     display: block !important;
     width: 6px !important;
@@ -31,7 +35,7 @@
     z-index: 5 !important;
   }
 
-  .mark-research-layout-test > .mark-direct-observation-pane {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-observation-pane {
     order: 3 !important;
     min-width: 260px !important;
     min-height: 0 !important;
@@ -43,7 +47,7 @@
     box-shadow: none !important;
   }
 
-  .mark-research-layout-test > .mark-research-second-divider {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-research-second-divider {
     order: 4 !important;
     display: block !important;
     width: 6px !important;
@@ -56,15 +60,15 @@
     z-index: 5 !important;
   }
 
-  .mark-research-layout-test > .mark-direct-first-divider:hover,
-  .mark-research-layout-test > .mark-research-second-divider:hover,
-  .mark-research-layout-test > .mark-direct-first-divider:focus-visible,
-  .mark-research-layout-test > .mark-research-second-divider:focus-visible {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-first-divider:hover,
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-research-second-divider:hover,
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-first-divider:focus-visible,
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-research-second-divider:focus-visible {
     background: #93c5fd !important;
     outline: none !important;
   }
 
-  .mark-research-layout-test > .mark-direct-research-pane {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-research-pane {
     order: 5 !important;
     position: relative !important;
     inset: auto !important;
@@ -83,11 +87,11 @@
     z-index: 2 !important;
   }
 
-  .mark-direct-research-pane .mark-research-close {
+  :root[data-layout="desktop"] .mark-direct-research-pane .mark-research-close {
     display: none !important;
   }
 
-  #mark-research-reopen-test {
+  :root[data-layout="desktop"] #mark-research-reopen-test {
     display: none !important;
   }
 }
@@ -146,7 +150,7 @@
 
 /* ── 연구 패널 내부 스크롤 보장 (grid/flex 혼재로 높이가 안 잡히는 문제 강제 해결) ── */
 @media (min-width: 901px) {
-  .mark-research-layout-test[data-mark-three-column-ready="true"] > .mark-direct-research-pane {
+  :root[data-layout="desktop"] .mark-research-layout-test[data-mark-three-column-ready="true"] > .mark-direct-research-pane {
     align-self: stretch !important;
     height: auto !important;
     max-height: 100% !important;
@@ -155,14 +159,14 @@
     flex-direction: column !important;
     overflow: hidden !important;
   }
-  .mark-direct-research-pane > .mark-research-scroll {
+  :root[data-layout="desktop"] .mark-direct-research-pane > .mark-research-scroll {
     flex: 1 1 auto !important;
     min-height: 0 !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
   }
   /* 관찰 패널도 동일하게 내부 스크롤 보장 */
-  .mark-research-layout-test[data-mark-three-column-ready="true"] > .mark-direct-observation-pane {
+  :root[data-layout="desktop"] .mark-research-layout-test[data-mark-three-column-ready="true"] > .mark-direct-observation-pane {
     align-self: stretch !important;
     max-height: 100% !important;
     min-height: 0 !important;

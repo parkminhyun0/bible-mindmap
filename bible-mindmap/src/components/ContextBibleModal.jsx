@@ -9,7 +9,7 @@ import VersePreviewPopup from './VersePreviewPopup';
 import VariantPopup from './VariantPopup';
 import PassageAnnotationPin from './PassageAnnotationPin';
 import { hasVariant, loadBookVariants, isVariantLoaded } from '../data/textualVariants';
-import { DATA_BASE } from '../config/dataBase.js';
+import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 import useResearchAnnotations from '../research/useResearchAnnotations';
 import { getArcExplanation } from '../utils/arcExplanation';
 import ArgumentMapPanel from './ArgumentMapPanel';
@@ -443,7 +443,7 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     // lex 파일이 404 등으로 누락된 경우 → 빈 객체로 fallback (KRV 만으로 표시)
     // 이렇게 하면 데이터셋 결함으로 전체 로드가 실패하지 않음
     const lexPromise = lexId
-      ? fetch(`${DATA_BASE}data/lex/${lexCorpus}/${lexId}/${ch}.json`)
+      ? resilientFetch(`${DATA_BASE}data/lex/${lexCorpus}/${lexId}/${ch}.json`)
           .then(r => {
             if (!r.ok) {
               console.warn(`[문맥 성경] lex 누락: ${lexCorpus}/${lexId}/${ch}.json (HTTP ${r.status}) — KRV 만으로 표시`);
@@ -2459,11 +2459,22 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           )}
           <div
             onClick={e => isMobile && e.stopPropagation()}
+            // [스크롤 먹통 수정] useModalDialog 의 터치 잠금 허용 목록 표식.
+            // 이 표식이 없어 시트 내부 터치가 document 레벨에서 preventDefault 되어
+            // full 상태에서도 원핑거 세로 스크롤이 죽었다(근본 수정은 useModalDialog 의
+            // 동적 스크롤러 탐지 · 이 표식은 의도 문서화 + 조기 판정용 이중 안전장치).
+            data-modal-scroll-region="true"
             style={{
+              // [가로 넘침 수정] content-box 로 계산되면 width:100% + padding 32px 가
+              // 부모 폭 밖으로 튀어나가 오른쪽이 잘린다(모바일 실측 시트 W=부모+32px).
+              // border-box 로 강제해 width:100% 안에 padding 이 포함되게 한다.
+              boxSizing: 'border-box',
               width: isMobile ? '100%' : Math.max(160, Math.min(rightPanelWidth, size.w - 240)),
               minWidth: isMobile ? undefined : 160,
               flexShrink: 0,
               minHeight: isMobile ? undefined : 0,
+              // pan-y: 브라우저 차원에서도 세로 스크롤 의도를 명시(iOS 관성 스크롤 안정화)
+              touchAction: isMobile ? 'pan-y' : undefined,
               overflowY: isMobile ? (sheetSnap === 'full' ? 'auto' : 'hidden') : 'auto',
               padding: isMobile ? '0 16px' : '14px 16px',
               background: '#ffffff',
@@ -2473,7 +2484,11 @@ export default function ContextBibleModal({ onClose, initialRef }) {
                 position: 'absolute',
                 left: 0, right: 0, bottom: 0,
                 // peek: 핸들(펼치기 버튼)만 노출 · 관찰 카드 상단이 새어 보이지 않도록 완전히 숨김
-                height: sheetSnap === 'full' ? '85%' : sheetSnap === 'peek' ? 46 : 0,
+                // full 높이는 컨테이너(부모 flex 행)를 꽉 채운다. dvh/퍼센트가 부모보다 크면
+                // 부모 overflow:hidden 에 상단이 잘려 내용이 화면 밖으로 넘치고 스크롤 뷰포트가
+                // 깨진다. 100%로 컨테이너에 정확히 맞춰 잘림 없이 overflow:auto 스크롤을 보장.
+                height: sheetSnap === 'full' ? '100%' : sheetSnap === 'peek' ? 46 : 0,
+                minHeight: 0,
                 borderTop: '1px solid rgba(15,23,42,.08)',
                 borderRadius: '18px 18px 0 0',
                 boxShadow: '0 -8px 32px rgba(15,23,42,.18)',

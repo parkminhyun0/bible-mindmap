@@ -40,6 +40,7 @@ gh run list --repo parkminhyun0/bible-mindmap --limit 15
 ## 3. 시스템 구조 기준선 · 2026-08-05
 - 방향: **Bible Research OS** — 구절 참조 → 문맥 성경 → 정경 추적 → 원어 연구 → 개인 연구 저장의 왕복 흐름.
 - 공식 배포: **GitHub Pages → Cloudflare Worker → NVIDIA Build API**. Vercel은 공식 완료 판정에서 제외한다.
+- **데이터 전달 표준(A안) · 2026-08-07 확정**: 앱 셸은 Pages, **대용량 정적 데이터는 `data-dist` 브랜치 발행 → jsDelivr `@<SHA>` CDN 오프로드**. `deploy.yml`이 data-dist 최신 SHA를 자동 resolve해 `VITE_DATA_BASE_URL` 주입(수동 tag/env 없음). 1차 실패 시 **Statically→GitHub raw→앱 동일출처 2차 미러 런타임 폴백**(`src/config/dataBase.js`의 `resilientFetch`/`fetchData`). 불변성은 커밋 SHA로 보장. 상세: [[bible-deploy-mechanism]] · [[bible-release-workflow]].
 - 자동화: 일반 `chatgpt/*` PR은 전체 Actions·리뷰·충돌 게이트 통과 후 병합한다. 워크플로·Worker·API·Secret·성경/정경 데이터·스키마·lockfile은 승인 게이트를 유지한다.
 - Notion: 통합 대시보드, 운영 관제 센터, 기능·연구 센터, QA 센터, 개발 작업 DB, 기능 포트폴리오, 릴리스·통합·회귀·사용자 확인 기록으로 분리 운영한다.
 - 완료 게이트: 구현·병합·Pages·Live SHA 성공은 최대 95%. 박 목사님의 실제 화면 확인 후 100%.
