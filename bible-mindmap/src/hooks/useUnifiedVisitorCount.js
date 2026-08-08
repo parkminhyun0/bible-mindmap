@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-const API_URL = import.meta.env.VITE_VISITOR_API_URL || '';
-
+const WORKSPACE = 'parkminhyun0-bible-mindmap';
+const TOTAL_NAME = 'visits';
 const TOTAL_FLAG = 'bmm-visitor-total-counted-v3';
 const TOTAL_CACHE = 'bmm-visitor-total-cache-v3';
 
@@ -17,20 +17,22 @@ const seoulDate = () =>
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
   }).format(new Date());
 
-const requestCount = async (scope, increment) => {
-  if (!API_URL) throw new Error('visitor api url not configured');
-  const url = `${API_URL}?scope=${scope}&action=${increment ? 'up' : 'get'}`;
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`visitor ${response.status}`);
-  const data = await response.json();
-  if (typeof data.count !== 'number') throw new Error('visitor count missing');
-  return data.count;
+const endpoint = (name, increment) =>
+  `https://api.counterapi.dev/v2/${WORKSPACE}/${name}${increment ? '/up' : ''}`;
+
+const requestCount = async (name, increment) => {
+  const response = await fetch(endpoint(name, increment), { cache: 'no-store' });
+  if (!response.ok) throw new Error(`counter ${response.status}`);
+  const payload = await response.json();
+  const value = payload?.data?.up_count ?? payload?.data?.count ?? payload?.count;
+  if (typeof value !== 'number') throw new Error('counter value missing');
+  return value;
 };
 
-const loadEntry = async ({ scope, flag, cache }) => {
+const loadEntry = async ({ name, flag, cache }) => {
   const alreadyCounted = readCache(flag) === '1';
   try {
-    const value = await requestCount(scope, !alreadyCounted);
+    const value = await requestCount(name, !alreadyCounted);
     writeCache(cache, value);
     if (!alreadyCounted) writeCache(flag, '1');
     return value;
@@ -59,8 +61,8 @@ export function useUnifiedVisitorCount() {
     let cancelled = false;
     const date = seoulDate();
     const entries = [
-      { field: 'today', scope: 'today', flag: `bmm-visitor-today-counted-${date}`, cache: `bmm-visitor-today-cache-${date}` },
-      { field: 'total', scope: 'total', flag: TOTAL_FLAG, cache: TOTAL_CACHE },
+      { field: 'today', name: `visits-${date}`, flag: `bmm-visitor-today-counted-${date}`, cache: `bmm-visitor-today-cache-${date}` },
+      { field: 'total', name: TOTAL_NAME, flag: TOTAL_FLAG, cache: TOTAL_CACHE },
     ];
 
     Promise.all(entries.map(async (entry) => [entry.field, await loadEntry(entry)]))
