@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
-const REQUIRED_MARKERS = [
+const REQUIRED_MARKERS_STATIC = [
   'id="landing-visitor-status"',
   'id="landing-visitor-today"',
   'id="landing-visitor-total"',
@@ -18,13 +18,17 @@ const REQUIRED_MARKERS = [
   '투데이',
   '총 합계',
   'env(safe-area-inset-bottom)',
+  // hybrid: both providers must be referenced.
   'api.counterapi.dev/v2',
-  "timeZone: 'Asia/Seoul'",
   'parkminhyun0-bible-mindmap',
+  // primary URL slot (may resolve to empty string, but the primary code branch must exist).
+  'primaryUrl',
+  "timeZone: 'Asia/Seoul'",
   'bmm-visitor-total-counted-v3',
   'bmm-visitor-today-counted-',
 ];
 
+// Legacy/dead-service markers that must never appear in shipped code.
 const FORBIDDEN_MARKERS = [
   'hits.seeyoufarm.com',
   'api.counterapi.dev/v1',
@@ -32,11 +36,7 @@ const FORBIDDEN_MARKERS = [
   'Redis.fromEnv',
   'UPSTASH_REDIS_REST',
   'bible-mindmap.vercel.app',
-  '__VISITOR_API_URL__',
-  'VITE_VISITOR_API_URL',
-  'workers.dev',
-  'wrangler',
-  'VISITOR_KV',
+  '__VISITOR_API_URL__',  // unreplaced placeholder in final output
   'bmm-counted-v1',
   'bmm-total-v2',
   'bmm-today-v2',
@@ -46,7 +46,7 @@ const FORBIDDEN_MARKERS = [
   'bmm-landing-today',
 ];
 
-async function assertMarkersPresent(source, label, required = REQUIRED_MARKERS) {
+async function assertMarkersPresent(source, label, required) {
   for (const marker of required) {
     assert.ok(source.includes(marker), `${label} missing marker: ${marker}`);
   }
@@ -58,39 +58,65 @@ async function assertMarkersAbsent(source, label, forbidden = FORBIDDEN_MARKERS)
   }
 }
 
-// 1) Partial + injector: temp-dir round-trip against both landing and guide targets.
-const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'visitor-status-'));
-try {
-  await fs.mkdir(path.join(tempRoot, 'dist'), { recursive: true });
-  await fs.mkdir(path.join(tempRoot, 'landing/partials'), { recursive: true });
-  await fs.mkdir(path.join(tempRoot, 'scripts'), { recursive: true });
-  await fs.copyFile(path.join(root, 'landing/index.html'), path.join(tempRoot, 'dist/index.html'));
-  await fs.copyFile(path.join(root, 'landing/guide.html'), path.join(tempRoot, 'dist/guide.html'));
-  await fs.copyFile(path.join(root, 'landing/partials/visitor-status.html'), path.join(tempRoot, 'landing/partials/visitor-status.html'));
-  await fs.copyFile(path.join(root, 'scripts/inject-landing-visitor-status.mjs'), path.join(tempRoot, 'scripts/inject-landing-visitor-status.mjs'));
+// 0) Partial itself keeps the placeholder (source of truth for injector).
+const rawPartial = await fs.readFile(path.join(root, 'landing/partials/visitor-status.html'), 'utf8');
+assert.ok(rawPartial.includes('__VISITOR_API_URL__'), 'landing partial must keep __VISITOR_API_URL__ placeholder');
+assert.ok(rawPartial.includes('primaryRequest') && rawPartial.includes('secondaryRequest'),
+  'landing partial must implement primaryRequest + secondaryRequest fallback chain');
 
-  const run = spawnSync(process.execPath, ['scripts/inject-landing-visitor-status.mjs'], {
-    cwd: tempRoot,
-    encoding: 'utf8',
-  });
-  assert.equal(run.status, 0, run.stderr || run.stdout);
+// 1) Partial + injector: temp-dir round-trip in TWO configurations.
+async function runInjectorInTemp(envOverrides) {
+  const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'visitor-status-'));
+  try {
+    await fs.mkdir(path.join(tempRoot, 'dist'), { recursive: true });
+    await fs.mkdir(path.join(tempRoot, 'landing/partials'), { recursive: true });
+    await fs.mkdir(path.join(tempRoot, 'scripts'), { recursive: true });
+    await fs.copyFile(path.join(root, 'landing/index.html'), path.join(tempRoot, 'dist/index.html'));
+    await fs.copyFile(path.join(root, 'landing/guide.html'), path.join(tempRoot, 'dist/guide.html'));
+    await fs.copyFile(path.join(root, 'landing/partials/visitor-status.html'), path.join(tempRoot, 'landing/partials/visitor-status.html'));
+    await fs.copyFile(path.join(root, 'scripts/inject-landing-visitor-status.mjs'), path.join(tempRoot, 'scripts/inject-landing-visitor-status.mjs'));
 
-  const landingOut = await fs.readFile(path.join(tempRoot, 'dist/index.html'), 'utf8');
-  await assertMarkersPresent(landingOut, 'landing dist/index.html (temp)');
-  await assertMarkersAbsent(landingOut, 'landing dist/index.html (temp)');
-
-  const guideOut = await fs.readFile(path.join(tempRoot, 'dist/guide.html'), 'utf8');
-  await assertMarkersPresent(guideOut, 'guide dist/guide.html (temp)');
-  await assertMarkersAbsent(guideOut, 'guide dist/guide.html (temp)');
-} finally {
-  await fs.rm(tempRoot, { recursive: true, force: true });
+    const env = { ...process.env, ...envOverrides };
+    if (envOverrides.__unset) {
+      for (const key of envOverrides.__unset) delete env[key];
+    }
+    const run = spawnSync(process.execPath, ['scripts/inject-landing-visitor-status.mjs'], {
+      cwd: tempRoot, encoding: 'utf8', env,
+    });
+    assert.equal(run.status, 0, `injector failed:\nSTDOUT:${run.stdout}\nSTDERR:${run.stderr}`);
+    return {
+      landing: await fs.readFile(path.join(tempRoot, 'dist/index.html'), 'utf8'),
+      guide: await fs.readFile(path.join(tempRoot, 'dist/guide.html'), 'utf8'),
+      stdout: run.stdout,
+    };
+  } finally {
+    await fs.rm(tempRoot, { recursive: true, force: true });
+  }
 }
 
-// 2) Real dist/ output (only checked when dist/ exists — predeploy calls this after inject).
+// 1a) Configuration A: primary URL set → fallback chain baked in.
+const FIXTURE_URL = 'https://visitor-test.example.workers.dev';
+const withUrl = await runInjectorInTemp({ VITE_VISITOR_API_URL: FIXTURE_URL });
+await assertMarkersPresent(withUrl.landing, 'landing (with primary URL)', [...REQUIRED_MARKERS_STATIC, FIXTURE_URL]);
+await assertMarkersAbsent(withUrl.landing, 'landing (with primary URL)');
+await assertMarkersPresent(withUrl.guide, 'guide (with primary URL)', [...REQUIRED_MARKERS_STATIC, FIXTURE_URL]);
+await assertMarkersAbsent(withUrl.guide, 'guide (with primary URL)');
+assert.match(withUrl.stdout, /primary backend \(Cloudflare\)/, 'injector must log primary backend when URL is set');
+
+// 1b) Configuration B: primary URL empty → CounterAPI v2 becomes sole source, no crash.
+const withoutUrl = await runInjectorInTemp({ __unset: ['VITE_VISITOR_API_URL'] });
+await assertMarkersPresent(withoutUrl.landing, 'landing (secondary only)', REQUIRED_MARKERS_STATIC);
+await assertMarkersAbsent(withoutUrl.landing, 'landing (secondary only)');
+await assertMarkersPresent(withoutUrl.guide, 'guide (secondary only)', REQUIRED_MARKERS_STATIC);
+await assertMarkersAbsent(withoutUrl.guide, 'guide (secondary only)');
+assert.match(withoutUrl.stdout, /primary backend not configured/, 'injector must log when primary URL is empty');
+assert.match(withoutUrl.stdout, /sole source/, 'injector must clarify CounterAPI v2 is sole source when empty');
+
+// 2) Real dist/ output — only checked when dist/ exists (populated by predeploy).
 for (const [rel, label] of [['dist/index.html', 'real dist/index.html'], ['dist/guide.html', 'real dist/guide.html']]) {
   try {
     const html = await fs.readFile(path.join(root, rel), 'utf8');
-    await assertMarkersPresent(html, label);
+    await assertMarkersPresent(html, label, REQUIRED_MARKERS_STATIC);
     await assertMarkersAbsent(html, label);
   } catch (error) {
     if (error.code !== 'ENOENT') throw error;
@@ -98,9 +124,12 @@ for (const [rel, label] of [['dist/index.html', 'real dist/index.html'], ['dist/
   }
 }
 
-// 3) React app: unified hook + consumers.
+// 3) React app: unified hook must implement the same fallback chain.
 const hookSource = await fs.readFile(path.join(root, 'src/hooks/useUnifiedVisitorCount.js'), 'utf8');
 for (const required of [
+  'import.meta.env.VITE_VISITOR_API_URL',
+  'primaryRequest',
+  'secondaryRequest',
   'api.counterapi.dev/v2',
   'parkminhyun0-bible-mindmap',
   'bmm-visitor-total-counted-v3',
@@ -134,8 +163,8 @@ for (const forbidden of ['useMobileVisitorCounts', 'app-visits', ...FORBIDDEN_MA
   assert.ok(!mobileDock.includes(forbidden), `MobileWorkspaceDock must not contain legacy: ${forbidden}`);
 }
 
-// 4) Legacy artifacts (Cloudflare Worker + Vercel Function + repair util) must not resurrect.
-for (const legacy of ['src/utils/visitorCounterRepair.js', 'api/visitor.mjs', 'workers/visitor.js', 'workers/wrangler.toml']) {
+// 4) Legacy artifacts must not resurrect.
+for (const legacy of ['src/utils/visitorCounterRepair.js', 'api/visitor.mjs']) {
   try {
     await fs.access(path.join(root, legacy));
     throw new Error(`legacy ${legacy} still present — must be removed`);
@@ -147,7 +176,33 @@ for (const legacy of ['src/utils/visitorCounterRepair.js', 'api/visitor.mjs', 'w
 const mainJsx = await fs.readFile(path.join(root, 'src/main.jsx'), 'utf8');
 assert.ok(!mainJsx.includes('visitorCounterRepair'), 'main.jsx must not import visitorCounterRepair');
 
-// 5) Predeploy pipeline must chain inject + verify.
+// 5) Cloudflare Worker (primary backend) contract.
+const workerSource = await fs.readFile(path.join(root, 'workers/visitor.js'), 'utf8');
+for (const required of [
+  'env.VISITOR_KV',
+  "timeZone: 'Asia/Seoul'",
+  'access-control-allow-origin',
+  'parkminhyun0.github.io',
+  '.workers.dev',
+  "scope === 'today'",
+  "action === 'up'",
+  'expirationTtl',
+  'kv.put',
+  'kv.get',
+]) {
+  assert.ok(workerSource.includes(required), `workers/visitor.js missing: ${required}`);
+}
+for (const forbidden of ['counterapi.dev', 'nvapi-', '@upstash/redis', 'UPSTASH_REDIS', 'YOUR_API_KEY']) {
+  assert.ok(!workerSource.includes(forbidden), `workers/visitor.js must not contain: ${forbidden}`);
+}
+
+// 6) wrangler.toml contract.
+const wranglerToml = await fs.readFile(path.join(root, 'workers/wrangler.toml'), 'utf8');
+for (const required of ['name = "bible-mindmap-visitor"', 'main = "visitor.js"', 'binding = "VISITOR_KV"']) {
+  assert.ok(wranglerToml.includes(required), `wrangler.toml missing: ${required}`);
+}
+
+// 7) Predeploy pipeline must chain inject + verify.
 const pkg = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
 const predeploy = pkg.scripts?.predeploy ?? '';
 assert.ok(predeploy.includes('inject:visitor-status'), 'package.json predeploy must run inject:visitor-status');
@@ -158,10 +213,11 @@ assert.ok(
 );
 assert.ok(!pkg.dependencies?.['@upstash/redis'], 'package.json must not depend on @upstash/redis');
 
-// 6) Env docs must not carry over dead backend keys.
+// 8) Env docs must document optional primary URL.
 const envExample = await fs.readFile(path.join(root, '.env.example'), 'utf8');
-for (const forbidden of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'VITE_VISITOR_API_URL']) {
+assert.ok(envExample.includes('VITE_VISITOR_API_URL'), '.env.example must document VITE_VISITOR_API_URL');
+for (const forbidden of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN']) {
   assert.ok(!envExample.includes(forbidden), `.env.example must not mention removed backend key ${forbidden}`);
 }
 
-console.log('✓ unified visitor status backed by CounterAPI v2 public workspace: partial, injector, hook, SavePanel, MobileDock, predeploy, env docs all in sync');
+console.log('✓ hybrid visitor status: primary Cloudflare Worker + KV (optional) with CounterAPI v2 fallback — partial, injector, hook, SavePanel, MobileDock, Worker, wrangler.toml, predeploy, env docs all in sync');

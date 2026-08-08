@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 
-const WORKSPACE = 'parkminhyun0-bible-mindmap';
-const TOTAL_NAME = 'visits';
+// Primary backend: self-hosted Cloudflare Worker (empty string = skip → secondary directly).
+const PRIMARY_URL = import.meta.env.VITE_VISITOR_API_URL || '';
+// Secondary backend: CounterAPI v2 public workspace (always-on safety net).
+const SECONDARY_WORKSPACE = 'parkminhyun0-bible-mindmap';
+
 const TOTAL_FLAG = 'bmm-visitor-total-counted-v3';
 const TOTAL_CACHE = 'bmm-visitor-total-cache-v3';
 
@@ -17,11 +20,23 @@ const seoulDate = () =>
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
   }).format(new Date());
 
-const endpoint = (name, increment) =>
-  `https://api.counterapi.dev/v2/${WORKSPACE}/${name}${increment ? '/up' : ''}`;
+const primaryRequest = async (scope, increment) => {
+  if (!PRIMARY_URL) return null;
+  try {
+    const url = `${PRIMARY_URL}?scope=${scope}&action=${increment ? 'up' : 'get'}`;
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) return null;
+    const data = await response.json();
+    return typeof data.count === 'number' ? data.count : null;
+  } catch {
+    return null;
+  }
+};
 
-const requestCount = async (name, increment) => {
-  const response = await fetch(endpoint(name, increment), { cache: 'no-store' });
+const secondaryRequest = async (scope, increment, date) => {
+  const name = scope === 'today' ? `visits-${date}` : 'visits';
+  const url = `https://api.counterapi.dev/v2/${SECONDARY_WORKSPACE}/${name}${increment ? '/up' : ''}`;
+  const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) throw new Error(`counter ${response.status}`);
   const payload = await response.json();
   const value = payload?.data?.up_count ?? payload?.data?.count ?? payload?.count;
@@ -29,10 +44,16 @@ const requestCount = async (name, increment) => {
   return value;
 };
 
-const loadEntry = async ({ name, flag, cache }) => {
+const requestCount = async (scope, increment, date) => {
+  const primary = await primaryRequest(scope, increment);
+  if (primary != null) return primary;
+  return await secondaryRequest(scope, increment, date);
+};
+
+const loadEntry = async ({ scope, flag, cache, date }) => {
   const alreadyCounted = readCache(flag) === '1';
   try {
-    const value = await requestCount(name, !alreadyCounted);
+    const value = await requestCount(scope, !alreadyCounted, date);
     writeCache(cache, value);
     if (!alreadyCounted) writeCache(flag, '1');
     return value;
@@ -61,8 +82,8 @@ export function useUnifiedVisitorCount() {
     let cancelled = false;
     const date = seoulDate();
     const entries = [
-      { field: 'today', name: `visits-${date}`, flag: `bmm-visitor-today-counted-${date}`, cache: `bmm-visitor-today-cache-${date}` },
-      { field: 'total', name: TOTAL_NAME, flag: TOTAL_FLAG, cache: TOTAL_CACHE },
+      { field: 'today', scope: 'today', flag: `bmm-visitor-today-counted-${date}`, cache: `bmm-visitor-today-cache-${date}`, date },
+      { field: 'total', scope: 'total', flag: TOTAL_FLAG, cache: TOTAL_CACHE, date },
     ];
 
     Promise.all(entries.map(async (entry) => [entry.field, await loadEntry(entry)]))

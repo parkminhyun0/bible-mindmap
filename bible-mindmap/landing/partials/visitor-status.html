@@ -15,12 +15,14 @@
 </aside>
 <script>
 (() => {
-  const workspace = 'parkminhyun0-bible-mindmap';
-  const totalName = 'visits';
+  // Primary backend: self-hosted Cloudflare Worker (empty string skips).
+  const primaryUrl = '__VISITOR_API_URL__';
+  // Secondary backend: CounterAPI v2 public workspace (always-on safety net).
+  const secondaryWorkspace = 'parkminhyun0-bible-mindmap';
+
   const date = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
   }).format(new Date());
-  const todayName = `visits-${date}`;
   const totalFlag = 'bmm-visitor-total-counted-v3';
   const todayFlag = `bmm-visitor-today-counted-${date}`;
   const totalCache = 'bmm-visitor-total-cache-v3';
@@ -32,22 +34,40 @@
   const writeCache = (key, value) => {
     try { localStorage.setItem(key, String(value)); } catch {}
   };
-  const endpoint = (name, increment) =>
-    `https://api.counterapi.dev/v2/${workspace}/${name}${increment ? '/up' : ''}`;
-  const requestCount = async (name, increment) => {
-    const response = await fetch(endpoint(name, increment), { cache: 'no-store' });
+
+  const primaryRequest = async (scope, increment) => {
+    if (!primaryUrl) return null;
+    try {
+      const url = `${primaryUrl}?scope=${scope}&action=${increment ? 'up' : 'get'}`;
+      const response = await fetch(url, { cache: 'no-store' });
+      if (!response.ok) return null;
+      const data = await response.json();
+      return typeof data.count === 'number' ? data.count : null;
+    } catch {
+      return null;
+    }
+  };
+  const secondaryRequest = async (scope, increment) => {
+    const name = scope === 'today' ? `visits-${date}` : 'visits';
+    const url = `https://api.counterapi.dev/v2/${secondaryWorkspace}/${name}${increment ? '/up' : ''}`;
+    const response = await fetch(url, { cache: 'no-store' });
     if (!response.ok) throw new Error(`counter ${response.status}`);
     const payload = await response.json();
     const value = payload?.data?.up_count ?? payload?.data?.count ?? payload?.count;
     if (typeof value !== 'number') throw new Error('counter value missing');
     return value;
   };
-  const load = async ({ name, flag, cache, target }) => {
+  const requestCount = async (scope, increment) => {
+    const primary = await primaryRequest(scope, increment);
+    if (primary != null) return primary;
+    return await secondaryRequest(scope, increment);
+  };
+  const load = async ({ scope, flag, cache, target }) => {
     const element = document.getElementById(target);
     if (!element) return false;
     const alreadyCounted = readCache(flag) === '1';
     try {
-      const value = await requestCount(name, !alreadyCounted);
+      const value = await requestCount(scope, !alreadyCounted);
       element.textContent = Number.isFinite(value) ? value.toLocaleString('ko-KR') : String(value);
       writeCache(cache, value);
       if (!alreadyCounted) writeCache(flag, '1');
@@ -65,8 +85,8 @@
   };
 
   Promise.all([
-    load({ name: todayName, flag: todayFlag, cache: todayCache, target: 'landing-visitor-today' }),
-    load({ name: totalName, flag: totalFlag, cache: totalCache, target: 'landing-visitor-total' }),
+    load({ scope: 'today', flag: todayFlag, cache: todayCache, target: 'landing-visitor-today' }),
+    load({ scope: 'total', flag: totalFlag, cache: totalCache, target: 'landing-visitor-total' }),
   ]).then((results) => {
     const error = document.getElementById('landing-visitor-error');
     if (error) error.hidden = results.some(Boolean);
