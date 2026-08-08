@@ -20,11 +20,13 @@ const REQUIRED_MARKERS_STATIC = [
   'env(safe-area-inset-bottom)',
   // hybrid: both providers must be referenced.
   'api.counterapi.dev/v2',
-  'parkminhyun0-bible-mindmap',
+  'bible-maps-team-4958',
+  "secondaryCounter = 'visits'",
+  "secondaryCounter}/up",
+  "secondaryCounter}/stats",
   // primary URL slot (may resolve to empty string, but the primary code branch must exist).
   'primaryUrl',
   "timeZone: 'Asia/Seoul'",
-  'bmm-visitor-total-counted-v3',
   'bmm-visitor-today-counted-',
 ];
 
@@ -61,8 +63,8 @@ async function assertMarkersAbsent(source, label, forbidden = FORBIDDEN_MARKERS)
 // 0) Partial itself keeps the placeholder (source of truth for injector).
 const rawPartial = await fs.readFile(path.join(root, 'landing/partials/visitor-status.html'), 'utf8');
 assert.ok(rawPartial.includes('__VISITOR_API_URL__'), 'landing partial must keep __VISITOR_API_URL__ placeholder');
-assert.ok(rawPartial.includes('primaryRequest') && rawPartial.includes('secondaryRequest'),
-  'landing partial must implement primaryRequest + secondaryRequest fallback chain');
+assert.ok(rawPartial.includes('primaryFetch') && rawPartial.includes('secondaryStats'),
+  'landing partial must implement primaryFetch + secondaryStats fallback chain');
 
 // 1) Partial + injector: temp-dir round-trip in TWO configurations.
 async function runInjectorInTemp(envOverrides) {
@@ -128,11 +130,14 @@ for (const [rel, label] of [['dist/index.html', 'real dist/index.html'], ['dist/
 const hookSource = await fs.readFile(path.join(root, 'src/hooks/useUnifiedVisitorCount.js'), 'utf8');
 for (const required of [
   'import.meta.env.VITE_VISITOR_API_URL',
-  'primaryRequest',
-  'secondaryRequest',
+  'primaryFetch',
+  'secondaryUp',
+  'secondaryStats',
   'api.counterapi.dev/v2',
-  'parkminhyun0-bible-mindmap',
-  'bmm-visitor-total-counted-v3',
+  'bible-maps-team-4958',
+  "SECONDARY_COUNTER = 'visits'",
+  "SECONDARY_COUNTER}/up",
+  "SECONDARY_COUNTER}/stats",
   'bmm-visitor-today-counted-',
   "timeZone: 'Asia/Seoul'",
   "cache: 'no-store'",
