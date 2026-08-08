@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 
-const REQUIRED_MARKERS = [
+const REQUIRED_MARKERS_STATIC = [
   'id="landing-visitor-status"',
   'id="landing-visitor-today"',
   'id="landing-visitor-total"',
@@ -18,7 +18,6 @@ const REQUIRED_MARKERS = [
   '투데이',
   '총 합계',
   'env(safe-area-inset-bottom)',
-  '/api/visitor',
   "timeZone: 'Asia/Seoul'",
   'bmm-visitor-total-counted-v3',
   'bmm-visitor-today-counted-',
@@ -28,6 +27,11 @@ const FORBIDDEN_MARKERS = [
   'hits.seeyoufarm.com',
   'api.counterapi.dev',
   'counterapi.dev',
+  '@upstash/redis',
+  'Redis.fromEnv',
+  'UPSTASH_REDIS_REST',
+  'bible-mindmap.vercel.app',
+  '__VISITOR_API_URL__',
   'bmm-counted-v1',
   'bmm-total-v2',
   'bmm-today-v2',
@@ -37,7 +41,7 @@ const FORBIDDEN_MARKERS = [
   'bmm-landing-today',
 ];
 
-async function assertMarkersPresent(source, label, required = REQUIRED_MARKERS) {
+async function assertMarkersPresent(source, label, required) {
   for (const marker of required) {
     assert.ok(source.includes(marker), `${label} missing marker: ${marker}`);
   }
@@ -49,7 +53,12 @@ async function assertMarkersAbsent(source, label, forbidden = FORBIDDEN_MARKERS)
   }
 }
 
+// 0) Partial itself must still contain the placeholder (source of truth).
+const rawPartial = await fs.readFile(path.join(root, 'landing/partials/visitor-status.html'), 'utf8');
+assert.ok(rawPartial.includes('__VISITOR_API_URL__'), 'landing partial must keep __VISITOR_API_URL__ placeholder');
+
 // 1) Partial + injector: temp-dir round-trip against both landing and guide targets.
+const FIXTURE_URL = 'https://visitor-test.example.workers.dev';
 const tempRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'visitor-status-'));
 try {
   await fs.mkdir(path.join(tempRoot, 'dist'), { recursive: true });
@@ -63,45 +72,51 @@ try {
   const run = spawnSync(process.execPath, ['scripts/inject-landing-visitor-status.mjs'], {
     cwd: tempRoot,
     encoding: 'utf8',
+    env: { ...process.env, VITE_VISITOR_API_URL: FIXTURE_URL },
   });
   assert.equal(run.status, 0, run.stderr || run.stdout);
 
   const landingOut = await fs.readFile(path.join(tempRoot, 'dist/index.html'), 'utf8');
-  await assertMarkersPresent(landingOut, 'landing dist/index.html (temp)');
+  await assertMarkersPresent(landingOut, 'landing dist/index.html (temp)', [...REQUIRED_MARKERS_STATIC, FIXTURE_URL]);
   await assertMarkersAbsent(landingOut, 'landing dist/index.html (temp)');
 
   const guideOut = await fs.readFile(path.join(tempRoot, 'dist/guide.html'), 'utf8');
-  await assertMarkersPresent(guideOut, 'guide dist/guide.html (temp)');
+  await assertMarkersPresent(guideOut, 'guide dist/guide.html (temp)', [...REQUIRED_MARKERS_STATIC, FIXTURE_URL]);
   await assertMarkersAbsent(guideOut, 'guide dist/guide.html (temp)');
+
+  // Missing env → injector must fail loudly.
+  const noEnv = { ...process.env };
+  delete noEnv.VITE_VISITOR_API_URL;
+  const runNoEnv = spawnSync(process.execPath, ['scripts/inject-landing-visitor-status.mjs'], {
+    cwd: tempRoot,
+    encoding: 'utf8',
+    env: noEnv,
+  });
+  assert.notEqual(runNoEnv.status, 0, 'injector must fail when VITE_VISITOR_API_URL is not set');
+  assert.match(runNoEnv.stderr + runNoEnv.stdout, /VITE_VISITOR_API_URL/, 'injector must explain the missing env var');
 } finally {
   await fs.rm(tempRoot, { recursive: true, force: true });
 }
 
-// 2) Real dist/ output (only checked when dist/ exists — predeploy calls this after inject).
+// 2) Real dist/ output — only checked when dist/ exists (populated by predeploy).
 const realLanding = path.join(root, 'dist/index.html');
 const realGuide = path.join(root, 'dist/guide.html');
-try {
-  const landingHtml = await fs.readFile(realLanding, 'utf8');
-  await assertMarkersPresent(landingHtml, 'real dist/index.html');
-  await assertMarkersAbsent(landingHtml, 'real dist/index.html');
-} catch (error) {
-  if (error.code !== 'ENOENT') throw error;
-  console.log('· real dist/index.html not present yet — skipped (run predeploy to populate)');
-}
-try {
-  const guideHtml = await fs.readFile(realGuide, 'utf8');
-  await assertMarkersPresent(guideHtml, 'real dist/guide.html');
-  await assertMarkersAbsent(guideHtml, 'real dist/guide.html');
-} catch (error) {
-  if (error.code !== 'ENOENT') throw error;
-  console.log('· real dist/guide.html not present yet — skipped (run predeploy to populate)');
+for (const [file, label] of [[realLanding, 'real dist/index.html'], [realGuide, 'real dist/guide.html']]) {
+  try {
+    const html = await fs.readFile(file, 'utf8');
+    await assertMarkersPresent(html, label, REQUIRED_MARKERS_STATIC);
+    await assertMarkersAbsent(html, label);
+    assert.ok(!html.includes('__VISITOR_API_URL__'), `${label} still has unreplaced placeholder`);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+    console.log(`· ${label} not present yet — skipped (run predeploy to populate)`);
+  }
 }
 
-// 3) React app: unified hook + consumers must call the new /api/visitor endpoint.
+// 3) React app: unified hook + consumers must call VITE_VISITOR_API_URL only.
 const hookSource = await fs.readFile(path.join(root, 'src/hooks/useUnifiedVisitorCount.js'), 'utf8');
 for (const required of [
-  '/api/visitor',
-  'VITE_VISITOR_API_URL',
+  'import.meta.env.VITE_VISITOR_API_URL',
   'bmm-visitor-total-counted-v3',
   'bmm-visitor-today-counted-',
   "timeZone: 'Asia/Seoul'",
@@ -122,7 +137,7 @@ for (const required of [
 ]) {
   assert.ok(savePanel.includes(required), `SavePanel missing: ${required}`);
 }
-for (const forbidden of ['useAppVisitorCount', 'api.counterapi.dev', ...FORBIDDEN_MARKERS]) {
+for (const forbidden of ['useAppVisitorCount', ...FORBIDDEN_MARKERS]) {
   assert.ok(!savePanel.includes(forbidden), `SavePanel must not contain legacy: ${forbidden}`);
 }
 
@@ -137,43 +152,50 @@ for (const required of [
 ]) {
   assert.ok(mobileDock.includes(required), `MobileWorkspaceDock missing: ${required}`);
 }
-for (const forbidden of ['useMobileVisitorCounts', 'app-visits', 'api.counterapi.dev', ...FORBIDDEN_MARKERS]) {
+for (const forbidden of ['useMobileVisitorCounts', 'app-visits', ...FORBIDDEN_MARKERS]) {
   assert.ok(!mobileDock.includes(forbidden), `MobileWorkspaceDock must not contain legacy: ${forbidden}`);
 }
 
-// 4) Legacy repair util must not resurrect.
-try {
-  await fs.access(path.join(root, 'src/utils/visitorCounterRepair.js'));
-  throw new Error('legacy src/utils/visitorCounterRepair.js still present — must be removed');
-} catch (error) {
-  if (error.code !== 'ENOENT') throw error;
+// 4) Legacy repair util + Vercel function must not resurrect.
+for (const legacy of ['src/utils/visitorCounterRepair.js', 'api/visitor.mjs']) {
+  try {
+    await fs.access(path.join(root, legacy));
+    throw new Error(`legacy ${legacy} still present — must be removed`);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
 }
 
 const mainJsx = await fs.readFile(path.join(root, 'src/main.jsx'), 'utf8');
 assert.ok(!mainJsx.includes('visitorCounterRepair'), 'main.jsx must not import visitorCounterRepair');
 
-// 5) Backend function contract: api/visitor.mjs uses Upstash Redis via env, CORS, KST date, scope/action guards.
-const apiSource = await fs.readFile(path.join(root, 'api/visitor.mjs'), 'utf8');
+// 5) Cloudflare Worker: workers/visitor.js contract.
+const workerSource = await fs.readFile(path.join(root, 'workers/visitor.js'), 'utf8');
 for (const required of [
-  "from '@upstash/redis'",
-  'Redis.fromEnv()',
+  'env.VISITOR_KV',
   "timeZone: 'Asia/Seoul'",
   'access-control-allow-origin',
   'parkminhyun0.github.io',
-  '.vercel.app',
+  '.workers.dev',
   "scope === 'today'",
   "action === 'up'",
-  'redis.incr',
-  'redis.expire',
+  'expirationTtl',
+  'kv.put',
+  'kv.get',
 ]) {
-  assert.ok(apiSource.includes(required), `api/visitor.mjs missing: ${required}`);
+  assert.ok(workerSource.includes(required), `workers/visitor.js missing: ${required}`);
 }
-// The API must NOT hardcode secrets or reference counterapi.dev.
-for (const forbidden of ['counterapi.dev', 'YOUR_API_KEY', 'nvapi-']) {
-  assert.ok(!apiSource.includes(forbidden), `api/visitor.mjs must not contain: ${forbidden}`);
+for (const forbidden of ['counterapi.dev', 'nvapi-', '@upstash/redis', 'UPSTASH_REDIS', 'YOUR_API_KEY']) {
+  assert.ok(!workerSource.includes(forbidden), `workers/visitor.js must not contain: ${forbidden}`);
 }
 
-// 6) Predeploy pipeline must chain inject + verify.
+// 6) wrangler.toml contract.
+const wranglerToml = await fs.readFile(path.join(root, 'workers/wrangler.toml'), 'utf8');
+for (const required of ['name = "bible-mindmap-visitor"', 'main = "visitor.js"', 'binding = "VISITOR_KV"']) {
+  assert.ok(wranglerToml.includes(required), `wrangler.toml missing: ${required}`);
+}
+
+// 7) Predeploy pipeline must chain inject + verify.
 const pkg = JSON.parse(await fs.readFile(path.join(root, 'package.json'), 'utf8'));
 const predeploy = pkg.scripts?.predeploy ?? '';
 assert.ok(predeploy.includes('inject:visitor-status'), 'package.json predeploy must run inject:visitor-status');
@@ -182,12 +204,13 @@ assert.ok(
   predeploy.indexOf('cp -r landing/') < predeploy.indexOf('inject:visitor-status'),
   'inject:visitor-status must run after cp -r landing/ (otherwise landing/index.html overwrites the injection)',
 );
-assert.ok(pkg.dependencies?.['@upstash/redis'], 'package.json must depend on @upstash/redis');
+assert.ok(!pkg.dependencies?.['@upstash/redis'], 'package.json must not depend on @upstash/redis (Vercel path removed)');
 
-// 7) Env docs mention required vars.
+// 8) Env docs mention required var only (no Upstash leftovers).
 const envExample = await fs.readFile(path.join(root, '.env.example'), 'utf8');
-for (const key of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN', 'VITE_VISITOR_API_URL']) {
-  assert.ok(envExample.includes(key), `.env.example missing required key: ${key}`);
+assert.ok(envExample.includes('VITE_VISITOR_API_URL'), '.env.example missing VITE_VISITOR_API_URL');
+for (const forbidden of ['UPSTASH_REDIS_REST_URL', 'UPSTASH_REDIS_REST_TOKEN']) {
+  assert.ok(!envExample.includes(forbidden), `.env.example must not mention Vercel-era key ${forbidden}`);
 }
 
-console.log('✓ unified visitor status backed by /api/visitor + Upstash Redis: partial, injector, React hook, SavePanel, MobileDock, API function, predeploy, env docs all in sync');
+console.log('✓ unified visitor status backed by Cloudflare Worker + KV: partial, injector, hook, SavePanel, MobileDock, Worker, wrangler.toml, predeploy, env docs all in sync');

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const API_URL = import.meta.env.VITE_VISITOR_API_URL || 'https://bible-mindmap.vercel.app/api/visitor';
+const API_URL = import.meta.env.VITE_VISITOR_API_URL || '';
 
 const TOTAL_FLAG = 'bmm-visitor-total-counted-v3';
 const TOTAL_CACHE = 'bmm-visitor-total-cache-v3';
@@ -18,6 +18,7 @@ const seoulDate = () =>
   }).format(new Date());
 
 const requestCount = async (scope, increment) => {
+  if (!API_URL) throw new Error('visitor api url not configured');
   const url = `${API_URL}?scope=${scope}&action=${increment ? 'up' : 'get'}`;
   const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) throw new Error(`visitor ${response.status}`);

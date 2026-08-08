@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(__dirname, '..');
 const partialPath = path.join(root, 'landing/partials/visitor-status.html');
 const marker = 'id="landing-visitor-status"';
+const URL_PLACEHOLDER = '__VISITOR_API_URL__';
 
 const TARGETS = [
   { file: 'dist/index.html', label: 'landing' },
@@ -18,6 +19,50 @@ const styles = `
 <style data-landing-visitor-status-styles>
 #landing-visitor-status{position:fixed;right:18px;bottom:18px;z-index:210;width:176px;padding:11px 13px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(15,23,42,.94);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 10px 34px rgba(0,0,0,.38);color:#e2e8f0}#landing-visitor-status .landing-visitor-status__title{font-size:10px;font-weight:800;letter-spacing:.06em;color:#94a3b8;margin-bottom:9px}#landing-visitor-status .landing-visitor-status__metrics{display:grid;grid-template-columns:1fr 1px 1fr;align-items:center;gap:8px}#landing-visitor-status .landing-visitor-status__metric{text-align:center;min-width:0}#landing-visitor-status .landing-visitor-status__metric strong{display:block;font-size:20px;line-height:1;font-weight:800;font-variant-numeric:tabular-nums;color:#6ee7b7;overflow:hidden;text-overflow:ellipsis}#landing-visitor-status .landing-visitor-status__metric:last-child strong{color:#93c5fd}#landing-visitor-status .landing-visitor-status__metric span{display:block;margin-top:5px;font-size:9px;color:#94a3b8;white-space:nowrap}#landing-visitor-status .landing-visitor-status__divider{width:1px;height:30px;background:rgba(255,255,255,.13)}#landing-visitor-status .landing-visitor-status__error{margin-top:7px;font-size:9px;line-height:1.35;color:#fca5a5;text-align:center}@media(max-width:560px){#landing-visitor-status{right:10px;bottom:calc(10px + env(safe-area-inset-bottom));width:146px;padding:9px 10px;border-radius:11px}#landing-visitor-status .landing-visitor-status__title{font-size:9.5px;margin-bottom:7px}#landing-visitor-status .landing-visitor-status__metrics{gap:6px}#landing-visitor-status .landing-visitor-status__metric strong{font-size:17px}#landing-visitor-status .landing-visitor-status__metric span{font-size:8.5px}#landing-visitor-status .landing-visitor-status__divider{height:26px}}@media(prefers-reduced-motion:reduce){#landing-visitor-status{scroll-behavior:auto}}
 </style>`;
+
+async function loadDotenv() {
+  try {
+    const raw = await fs.readFile(path.join(root, '.env'), 'utf8');
+    const map = new Map();
+    for (const line of raw.split(/\r?\n/)) {
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*(.*)$/i);
+      if (!match) continue;
+      const key = match[1];
+      let value = match[2].trim();
+      if ((value.startsWith('"') && value.endsWith('"')) || (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      map.set(key, value);
+    }
+    return map;
+  } catch (error) {
+    if (error.code === 'ENOENT') return new Map();
+    throw error;
+  }
+}
+
+async function resolveApiUrl() {
+  if (process.env.VITE_VISITOR_API_URL) return process.env.VITE_VISITOR_API_URL.trim();
+  const env = await loadDotenv();
+  const value = env.get('VITE_VISITOR_API_URL');
+  return value ? value.trim() : '';
+}
+
+function assertUrl(apiUrl) {
+  if (!apiUrl) {
+    throw new Error(
+      'VITE_VISITOR_API_URL is not set. Deploy the Cloudflare Worker (workers/README.md), '
+      + 'then add VITE_VISITOR_API_URL=https://<worker>.workers.dev to bible-mindmap/.env.'
+    );
+  }
+  let parsed;
+  try { parsed = new URL(apiUrl); } catch {
+    throw new Error(`VITE_VISITOR_API_URL is not a valid URL: ${apiUrl}`);
+  }
+  if (parsed.protocol !== 'https:') {
+    throw new Error(`VITE_VISITOR_API_URL must be https:// (got ${parsed.protocol})`);
+  }
+}
 
 async function injectInto(targetRelPath, partial, label) {
   const targetPath = path.join(root, targetRelPath);
@@ -49,7 +94,15 @@ async function injectInto(targetRelPath, partial, label) {
 }
 
 async function main() {
-  const partial = await fs.readFile(partialPath, 'utf8');
+  const apiUrl = await resolveApiUrl();
+  assertUrl(apiUrl);
+
+  const rawPartial = await fs.readFile(partialPath, 'utf8');
+  if (!rawPartial.includes(URL_PLACEHOLDER)) {
+    throw new Error(`partial ${partialPath} is missing placeholder ${URL_PLACEHOLDER}`);
+  }
+  const partial = rawPartial.replaceAll(URL_PLACEHOLDER, apiUrl);
+
   const results = await Promise.all(
     TARGETS.map((t) => injectInto(t.file, partial, t.label)),
   );
@@ -60,6 +113,6 @@ async function main() {
 }
 
 main().catch((error) => {
-  console.error(error);
+  console.error(error.message || error);
   process.exitCode = 1;
 });
