@@ -11,7 +11,6 @@ import './theme/markResearchThreeColumnDirect.css'
 import App from './App.jsx'
 import AppErrorBoundary from './components/AppErrorBoundary.jsx'
 import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilityBridge.jsx'
-import { installVisitorCounterRepair } from './utils/visitorCounterRepair.js'
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
@@ -30,7 +29,6 @@ function applyInitialTheme() {
 }
 
 applyInitialTheme()
-installVisitorCounterRepair()
 installCrossReferenceToolbarBridge()
 installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()

@@ -1,4 +1,4 @@
-<aside id="landing-visitor-status" aria-label="랜딩페이지 접속자 현황">
+<aside id="landing-visitor-status" aria-label="접속자 현황">
   <div class="landing-visitor-status__title">👥 접속자 현황</div>
   <div class="landing-visitor-status__metrics" role="status" aria-live="polite">
     <div class="landing-visitor-status__metric">
@@ -15,16 +15,14 @@
 </aside>
 <script>
 (() => {
-  const namespace = 'parkminhyun0-bible-mindmap';
-  const totalName = 'visits';
+  const apiUrl = 'https://bible-mindmap.vercel.app/api/visitor';
   const date = new Intl.DateTimeFormat('en-CA', {
     timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
   }).format(new Date());
-  const todayName = `visits-${date}`;
-  const totalFlag = 'bmm-landing-total-counted-v2';
-  const todayFlag = `bmm-landing-today-counted-${date}`;
-  const totalCache = 'bmm-landing-total-cache-v2';
-  const todayCache = `bmm-landing-today-cache-${date}`;
+  const totalFlag = 'bmm-visitor-total-counted-v3';
+  const todayFlag = `bmm-visitor-today-counted-${date}`;
+  const totalCache = 'bmm-visitor-total-cache-v3';
+  const todayCache = `bmm-visitor-today-cache-${date}`;
 
   const readCache = (key) => {
     try { return localStorage.getItem(key); } catch { return null; }
@@ -32,22 +30,20 @@
   const writeCache = (key, value) => {
     try { localStorage.setItem(key, String(value)); } catch {}
   };
-  const endpoint = (name, increment) =>
-    `https://api.counterapi.dev/v1/${namespace}/${name}${increment ? '/up' : '/'}`;
-  const requestCount = async (name, increment) => {
-    const response = await fetch(endpoint(name, increment), { cache: 'no-store' });
-    if (!response.ok) throw new Error(`counter ${response.status}`);
+  const requestCount = async (scope, increment) => {
+    const url = `${apiUrl}?scope=${scope}&action=${increment ? 'up' : 'get'}`;
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`visitor ${response.status}`);
     const data = await response.json();
-    const value = data.count ?? data.value;
-    if (value == null) throw new Error('counter value missing');
-    return Number(value);
+    if (typeof data.count !== 'number') throw new Error('visitor count missing');
+    return data.count;
   };
-  const load = async ({ name, flag, cache, target }) => {
+  const load = async ({ scope, flag, cache, target }) => {
     const element = document.getElementById(target);
     if (!element) return false;
     const alreadyCounted = readCache(flag) === '1';
     try {
-      const value = await requestCount(name, !alreadyCounted);
+      const value = await requestCount(scope, !alreadyCounted);
       element.textContent = Number.isFinite(value) ? value.toLocaleString('ko-KR') : String(value);
       writeCache(cache, value);
       if (!alreadyCounted) writeCache(flag, '1');
@@ -65,8 +61,8 @@
   };
 
   Promise.all([
-    load({ name: todayName, flag: todayFlag, cache: todayCache, target: 'landing-visitor-today' }),
-    load({ name: totalName, flag: totalFlag, cache: totalCache, target: 'landing-visitor-total' }),
+    load({ scope: 'today', flag: todayFlag, cache: todayCache, target: 'landing-visitor-today' }),
+    load({ scope: 'total', flag: totalFlag, cache: totalCache, target: 'landing-visitor-total' }),
   ]).then((results) => {
     const error = document.getElementById('landing-visitor-error');
     if (error) error.hidden = results.some(Boolean);

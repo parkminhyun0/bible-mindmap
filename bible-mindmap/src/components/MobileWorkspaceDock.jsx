@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useUnifiedVisitorCount } from '../hooks/useUnifiedVisitorCount';
 
 const ITEMS = [
   { id: 'add', icon: '＋', label: '추가' },
@@ -6,58 +6,6 @@ const ITEMS = [
   { id: 'fit', icon: '⌗', label: '전체보기' },
   { id: 'save', icon: '▣', label: '저장' },
 ];
-
-const COUNTER_NAMESPACE = 'parkminhyun0-bible-mindmap';
-
-function useMobileVisitorCounts() {
-  const [counts, setCounts] = useState({ today: null, total: null });
-
-  useEffect(() => {
-    let cancelled = false;
-    const date = new Intl.DateTimeFormat('en-CA', {
-      timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-    }).format(new Date());
-    const entries = [
-      { field: 'today', name: `app-visits-${date}`, flag: `bmm-app-today-counted-${date}`, cache: `bmm-app-today-cache-${date}` },
-      { field: 'total', name: 'app-visits', flag: 'bmm-app-total-counted-v2', cache: 'bmm-app-total-cache-v2' },
-    ];
-
-    const read = (key) => {
-      try { return localStorage.getItem(key); } catch { return null; }
-    };
-    const write = (key, value) => {
-      try { localStorage.setItem(key, String(value)); } catch {}
-    };
-    const request = async (entry, increment) => {
-      const suffix = increment ? '/up' : '/';
-      const response = await fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${entry.name}${suffix}`, { cache: 'no-store' });
-      if (!response.ok) throw new Error(`counter ${response.status}`);
-      const data = await response.json();
-      const value = data.count ?? data.value;
-      if (value == null) throw new Error('counter value missing');
-      return Number(value);
-    };
-
-    Promise.all(entries.map(async (entry) => {
-      const counted = read(entry.flag) === '1';
-      try {
-        const value = await request(entry, !counted);
-        write(entry.cache, value);
-        if (!counted) write(entry.flag, '1');
-        return [entry.field, value];
-      } catch {
-        const cached = read(entry.cache);
-        return [entry.field, cached == null ? null : Number(cached)];
-      }
-    })).then((pairs) => {
-      if (!cancelled) setCounts(Object.fromEntries(pairs));
-    });
-
-    return () => { cancelled = true; };
-  }, []);
-
-  return counts;
-}
 
 export default function MobileWorkspaceDock({
   activeSurface,
@@ -68,7 +16,7 @@ export default function MobileWorkspaceDock({
   onSave,
 }) {
   const handlers = { add: onAdd, edit: onEdit, fit: onFit, save: onSave };
-  const counts = useMobileVisitorCounts();
+  const counts = useUnifiedVisitorCount();
   const format = (value) => Number.isFinite(value) ? value.toLocaleString('ko-KR') : '–';
 
   return (

@@ -18,53 +18,7 @@ import {
 } from '../storage/researchRepository';
 import { getBook } from '../data/bibleBooks';
 import ThemeToggle from './ThemeToggle';
-
-const APP_NS       = 'parkminhyun0-bible-mindmap';
-const COUNTED_KEY  = 'bmm-counted-v1';   // 영구: 이 디바이스에서 카운터 증가 완료 여부
-const TODAY_LS     = 'bmm-today-v2';     // 일별: 오늘 방문 여부
-const TOTAL_CACHE  = 'bmm-total-v2';     // 총 카운트 표시용 캐시
-
-function useAppVisitorCount() {
-  const [todayCount, setTodayCount] = useState(1);
-  const [totalCount, setTotalCount] = useState(null);
-
-  useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
-
-    // 오늘 방문: 하루 1회 플래그 (새로고침 무관)
-    let todayData = null;
-    try { todayData = JSON.parse(safeLocalStorage.getItem(TODAY_LS)); } catch (e) {}
-    if (!todayData || todayData.date !== today) {
-      safeLocalStorage.setItem(TODAY_LS, JSON.stringify({ date: today }));
-    }
-    setTodayCount(1);
-
-    // 전체 누적: 캐시 즉시 표시
-    let cache = null;
-    try { cache = JSON.parse(safeLocalStorage.getItem(TOTAL_CACHE)); } catch (e) {}
-    if (cache && cache.count != null) setTotalCount(cache.count);
-
-    // 이미 카운트된 디바이스 → API 호출 없음
-    if (safeLocalStorage.getItem(COUNTED_KEY) === '1') return;
-
-    // 첫 방문: /up 호출 후 플래그 저장
-    fetch(`https://api.counterapi.dev/v1/${APP_NS}/visits/up`)
-      .then((r) => r.json())
-      .then((d) => {
-        const n = d.count ?? d.value;
-        if (n != null) {
-          setTotalCount(n);
-          try {
-            safeLocalStorage.setItem(TOTAL_CACHE, JSON.stringify({ count: n }));
-            safeLocalStorage.setItem(COUNTED_KEY, '1');
-          } catch (e) {}
-        }
-      })
-      .catch(() => { if (!cache) setTotalCount('?'); });
-  }, []);
-
-  return { todayCount, totalCount };
-}
+import { useUnifiedVisitorCount } from '../hooks/useUnifiedVisitorCount';
 
 
 const OBSIDIAN_DIR_KEY = 'bible-mindmap-obsidian-dir';
@@ -490,7 +444,7 @@ async function readFromDirectory(dirHandle, filename) {
 }
 
 export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onToggle, mobileInline, docSaveKey, onOpenDoc }) {
-  const { todayCount, totalCount } = useAppVisitorCount();
+  const { today: todayCount, total: totalCount } = useUnifiedVisitorCount();
   const [tree, setTree] = useState(loadTree);
   const [selectedId, setSelectedId] = useState(null);
   const [renaming, setRenaming] = useState(null);
@@ -1230,22 +1184,22 @@ export default function SavePanel({ nodes, edges, onLoad, onNewMap, open, onTogg
           padding: '10px 12px',
           boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
         }}>
-          <div style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 700, letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: 10 }}>
-            👥 앱 방문자
+          <div style={{ fontSize: 10, color: 'var(--at-label-3)', fontWeight: 700, letterSpacing: '.07em', marginBottom: 10 }}>
+            👥 접속자 현황
           </div>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div role="status" aria-live="polite" style={{ display: 'flex', alignItems: 'center' }}>
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#10b981', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
-                {todayCount != null ? todayCount.toLocaleString() : '–'}
+                {Number.isFinite(todayCount) ? todayCount.toLocaleString('ko-KR') : '–'}
               </div>
-              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>오늘 방문</div>
+              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>투데이</div>
             </div>
             <div style={{ width: 1, height: 34, background: 'rgba(255,255,255,.12)', flexShrink: 0 }} />
             <div style={{ flex: 1, textAlign: 'center' }}>
               <div style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', lineHeight: 1, fontVariantNumeric: 'tabular-nums' }}>
-                {totalCount != null ? (typeof totalCount === 'number' ? totalCount.toLocaleString() : totalCount) : '–'}
+                {Number.isFinite(totalCount) ? totalCount.toLocaleString('ko-KR') : '–'}
               </div>
-              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>전체 누적</div>
+              <div style={{ fontSize: 9, color: 'var(--at-label-2)', marginTop: 4, letterSpacing: '.04em' }}>총 합계</div>
             </div>
           </div>
         </div>
