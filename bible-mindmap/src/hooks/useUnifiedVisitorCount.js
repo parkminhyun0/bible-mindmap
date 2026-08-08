@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 const PRIMARY_URL = import.meta.env.VITE_VISITOR_API_URL || '';
 // Secondary backend: CounterAPI v2 public workspace (counter must be pre-created in dashboard).
 const SECONDARY_WORKSPACE = 'bible-maps-team-4958';
-const SECONDARY_COUNTER = 'visits';
+const SECONDARY_COUNTER = 'first-counter-4958';
 
 const TOTAL_CACHE = 'bmm-visitor-total-cache-v3';
 

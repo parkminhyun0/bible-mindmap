@@ -21,7 +21,7 @@ const REQUIRED_MARKERS_STATIC = [
   // hybrid: both providers must be referenced.
   'api.counterapi.dev/v2',
   'bible-maps-team-4958',
-  "secondaryCounter = 'visits'",
+  "secondaryCounter = 'first-counter-4958'",
   "secondaryCounter}/up",
   "secondaryCounter}/stats",
   // primary URL slot (may resolve to empty string, but the primary code branch must exist).
@@ -135,7 +135,7 @@ for (const required of [
   'secondaryStats',
   'api.counterapi.dev/v2',
   'bible-maps-team-4958',
-  "SECONDARY_COUNTER = 'visits'",
+  "SECONDARY_COUNTER = 'first-counter-4958'",
   "SECONDARY_COUNTER}/up",
   "SECONDARY_COUNTER}/stats",
   'bmm-visitor-today-counted-',
