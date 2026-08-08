@@ -1,0 +1,105 @@
+<aside id="landing-visitor-status" aria-label="접속자 현황">
+  <div class="landing-visitor-status__title">👥 접속자 현황</div>
+  <div class="landing-visitor-status__metrics" role="status" aria-live="polite">
+    <div class="landing-visitor-status__metric">
+      <strong id="landing-visitor-today">–</strong>
+      <span>투데이</span>
+    </div>
+    <span class="landing-visitor-status__divider" aria-hidden="true"></span>
+    <div class="landing-visitor-status__metric">
+      <strong id="landing-visitor-total">–</strong>
+      <span>총 합계</span>
+    </div>
+  </div>
+  <div id="landing-visitor-error" class="landing-visitor-status__error" hidden>접속자 수를 불러오지 못했습니다.</div>
+</aside>
+<script>
+(() => {
+  // Primary backend: self-hosted Cloudflare Worker (empty string = secondary only).
+  const primaryUrl = '__VISITOR_API_URL__';
+  // Secondary backend: CounterAPI v2 public workspace (counter must be pre-created in dashboard).
+  const secondaryWorkspace = 'bible-maps-team-4958';
+  const secondaryCounter = 'first-counter-4958';
+
+  const date = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+  const todayFlag = `bmm-visitor-today-counted-${date}`;
+  const todayCache = `bmm-visitor-today-cache-${date}`;
+  const totalCache = 'bmm-visitor-total-cache-v3';
+  const elToday = document.getElementById('landing-visitor-today');
+  const elTotal = document.getElementById('landing-visitor-total');
+  const elError = document.getElementById('landing-visitor-error');
+
+  const readCache = (key) => {
+    try { return localStorage.getItem(key); } catch { return null; }
+  };
+  const writeCache = (key, value) => {
+    try { localStorage.setItem(key, String(value)); } catch {}
+  };
+  const format = (value) => Number.isFinite(value) ? value.toLocaleString('ko-KR') : String(value);
+  const render = (el, value) => {
+    if (!el) return;
+    if (value != null && Number.isFinite(Number(value))) el.textContent = format(Number(value));
+  };
+
+  const primaryFetch = async (scope, action) => {
+    if (!primaryUrl) return null;
+    try {
+      const r = await fetch(`${primaryUrl}?scope=${scope}&action=${action}`, { cache: 'no-store' });
+      if (!r.ok) return null;
+      const d = await r.json();
+      return typeof d.count === 'number' ? d.count : null;
+    } catch { return null; }
+  };
+  const secondaryUp = async () => {
+    try {
+      await fetch(`https://api.counterapi.dev/v2/${secondaryWorkspace}/${secondaryCounter}/up`, { cache: 'no-store' });
+    } catch {}
+  };
+  const secondaryStats = async () => {
+    try {
+      const r = await fetch(`https://api.counterapi.dev/v2/${secondaryWorkspace}/${secondaryCounter}/stats`, { cache: 'no-store' });
+      if (!r.ok) return { today: null, total: null };
+      const d = await r.json();
+      return {
+        today: d?.data?.stats?.today?.up ?? null,
+        total: d?.data?.up_count ?? null,
+      };
+    } catch { return { today: null, total: null }; }
+  };
+
+  (async () => {
+    // Show cached values immediately.
+    render(elToday, readCache(todayCache));
+    render(elTotal, readCache(totalCache));
+
+    const alreadyCounted = readCache(todayFlag) === '1';
+    const action = alreadyCounted ? 'get' : 'up';
+
+    // Primary reads (Cloudflare) in parallel for today + total.
+    const [pToday, pTotal] = await Promise.all([
+      primaryFetch('today', action),
+      primaryFetch('total', action),
+    ]);
+
+    // Secondary: /up once per KST day (fire-and-forget), then read /stats as fallback.
+    if (!alreadyCounted) await secondaryUp();
+    let today = pToday;
+    let total = pTotal;
+    if (today == null || total == null) {
+      const sec = await secondaryStats();
+      if (today == null) today = sec.today;
+      if (total == null) total = sec.total;
+    }
+
+    // Render + cache what we got.
+    if (today != null) { render(elToday, today); writeCache(todayCache, today); }
+    if (total != null) { render(elTotal, total); writeCache(totalCache, total); }
+    if (!alreadyCounted && (today != null || total != null)) writeCache(todayFlag, '1');
+
+    const success = today != null || total != null || readCache(totalCache) != null;
+    if (elError) elError.hidden = success;
+  })();
+})();
+</script>
