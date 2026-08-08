@@ -5,23 +5,21 @@ const DIALOG_SELECTOR = '[role="dialog"][aria-label="원어 성경 다언어 검
 const HOST_ATTR = 'data-word-search-alignment-pilot-root';
 const TARGET_REFERENCE = '창세기 1:1';
 const TARGET_STRONG_RE = /H0*430/i;
-const TARGET_KRV_TEXT = '태초에 하나님이 천지를 창조하시니라';
-const TARGET_KRV_SPAN = '하나님이';
-const KRV_FIXED_ATTR = 'data-krv-alignment-span-fixed';
+const KRV_HEADER = '한글 본문 (KRV)';
+const KRV_FIXED_ATTR = 'data-krv-h430-full-word';
+const KRV_WORD_RE = /하나님[가-힣]*/g;
 
 function isUsageRow(node, dialog) {
   if (!(node instanceof HTMLElement) || node === dialog) return false;
   const style = window.getComputedStyle(node);
   if (style.display !== 'grid' || style.gridTemplateColumns === 'none') return false;
   if (!style.borderLeftStyle || style.borderLeftStyle === 'none') return false;
-  const text = node.textContent || '';
-  return text.includes(TARGET_REFERENCE);
+  return /[가-힣]+\s+\d+:\d+/.test(node.textContent || '');
 }
 
-function findUsageRows(dialog) {
-  if (!TARGET_STRONG_RE.test(dialog.textContent || '')) return [];
+function findPilotRow(dialog) {
+  if (!TARGET_STRONG_RE.test(dialog.textContent || '')) return null;
 
-  const rows = [];
   const references = [...dialog.querySelectorAll('span')].filter(
     (node) => node.textContent?.trim() === TARGET_REFERENCE,
   );
@@ -29,15 +27,12 @@ function findUsageRows(dialog) {
   for (const reference of references) {
     let row = reference.parentElement;
     while (row && row !== dialog) {
-      if (isUsageRow(row, dialog)) {
-        if (!rows.includes(row)) rows.push(row);
-        break;
-      }
+      if (isUsageRow(row, dialog)) return row;
       row = row.parentElement;
     }
   }
 
-  return rows;
+  return null;
 }
 
 function resolveRowColor(row) {
@@ -45,84 +40,113 @@ function resolveRowColor(row) {
   return border && border !== 'rgba(0, 0, 0, 0)' ? border : '#2a78d6';
 }
 
-function fixKoreanSpan(row) {
-  const verseNode = [...row.querySelectorAll('span')].find(
-    (node) => node.textContent?.trim() === TARGET_KRV_TEXT,
-  );
-  if (!verseNode || verseNode.getAttribute(KRV_FIXED_ATTR) === 'true') return;
+function replaceWithFullKoreanWords(verseNode, color) {
+  const text = verseNode.textContent || '';
+  const matches = [...text.matchAll(KRV_WORD_RE)];
+  if (!matches.length) return false;
 
-  const start = TARGET_KRV_TEXT.indexOf(TARGET_KRV_SPAN);
-  if (start < 0) return;
+  const signature = matches.map((match) => `${match.index}:${match[0]}`).join('|');
+  if (verseNode.getAttribute(KRV_FIXED_ATTR) === signature) return false;
 
-  const color = resolveRowColor(row);
-  const before = document.createTextNode(TARGET_KRV_TEXT.slice(0, start));
-  const mark = document.createElement('mark');
-  mark.textContent = TARGET_KRV_SPAN;
-  Object.assign(mark.style, {
-    background: `${color}33`,
-    color,
-    fontWeight: '700',
-    borderRadius: '2px',
-    padding: '0 1px',
-  });
-  const after = document.createTextNode(TARGET_KRV_TEXT.slice(start + TARGET_KRV_SPAN.length));
+  const fragment = document.createDocumentFragment();
+  let cursor = 0;
 
-  verseNode.replaceChildren(before, mark, after);
-  verseNode.setAttribute(KRV_FIXED_ATTR, 'true');
+  for (const match of matches) {
+    const start = match.index ?? 0;
+    if (start > cursor) fragment.append(document.createTextNode(text.slice(cursor, start)));
+
+    const mark = document.createElement('mark');
+    mark.textContent = match[0];
+    mark.setAttribute('data-krv-h430-aligned-word', 'true');
+    Object.assign(mark.style, {
+      background: `${color}33`,
+      color,
+      fontWeight: '700',
+      borderRadius: '2px',
+      padding: '0 1px',
+    });
+    fragment.append(mark);
+    cursor = start + match[0].length;
+  }
+
+  if (cursor < text.length) fragment.append(document.createTextNode(text.slice(cursor)));
+  verseNode.replaceChildren(fragment);
+  verseNode.setAttribute(KRV_FIXED_ATTR, signature);
+  return true;
+}
+
+function fixVisibleKoreanRows(dialog) {
+  if (!TARGET_STRONG_RE.test(dialog.textContent || '')) return;
+  if (!(dialog.textContent || '').includes(KRV_HEADER)) return;
+
+  const candidates = [...dialog.querySelectorAll('div')].filter((node) => isUsageRow(node, dialog));
+  for (const row of candidates) {
+    const verseNode = [...row.children].find((child) => {
+      if (!(child instanceof HTMLElement) || child.tagName !== 'SPAN') return false;
+      const text = child.textContent || '';
+      return text.includes('하나님') && !child.closest(`[${HOST_ATTR}]`);
+    });
+    if (!verseNode) continue;
+    replaceWithFullKoreanWords(verseNode, resolveRowColor(row));
+  }
 }
 
 export function installWordSearchAlignmentPilotBridge() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return () => {};
 
-  const states = new Map();
+  let state = null;
   let scheduled = false;
+  let applying = false;
 
-  const destroy = (row) => {
-    const state = states.get(row);
+  const destroy = () => {
     if (!state) return;
     state.root.unmount();
     state.host.remove();
-    states.delete(row);
+    state = null;
   };
 
-  const ensure = (dialog) => {
-    const rows = findUsageRows(dialog);
-    const activeRows = new Set(rows);
-
-    for (const existingRow of [...states.keys()]) {
-      if (!existingRow.isConnected || !activeRows.has(existingRow)) destroy(existingRow);
+  const ensurePilot = (dialog) => {
+    const row = findPilotRow(dialog);
+    if (!row || !row.isConnected) {
+      destroy();
+      return;
     }
 
-    for (const row of rows) {
-      if (!row.isConnected) continue;
-      fixKoreanSpan(row);
+    if (state && state.row !== row) destroy();
 
-      let state = states.get(row);
-      if (!state) {
-        const host = document.createElement('div');
-        host.setAttribute(HOST_ATTR, 'H430');
-        Object.assign(host.style, {
-          gridColumn: '2',
-          minWidth: '0',
-          alignSelf: 'stretch',
-        });
-        row.appendChild(host);
-        state = { host, root: createRoot(host) };
-        states.set(row, state);
-      } else if (!row.contains(state.host)) {
-        row.appendChild(state.host);
-      }
-
-      state.root.render(<WordSearchAlignmentPilot color={resolveRowColor(row)} />);
+    if (!state) {
+      const host = document.createElement('div');
+      host.setAttribute(HOST_ATTR, 'H430');
+      Object.assign(host.style, {
+        gridColumn: '2',
+        minWidth: '0',
+        alignSelf: 'stretch',
+      });
+      row.appendChild(host);
+      state = { row, host, root: createRoot(host) };
+    } else if (!row.contains(state.host)) {
+      row.appendChild(state.host);
     }
+
+    state.root.render(<WordSearchAlignmentPilot color={resolveRowColor(row)} />);
   };
 
   const sync = () => {
     scheduled = false;
-    const dialogs = [...document.querySelectorAll(DIALOG_SELECTOR)];
-    for (const dialog of dialogs) ensure(dialog);
-    if (!dialogs.length) {
-      for (const row of [...states.keys()]) destroy(row);
+    if (applying) return;
+    applying = true;
+    try {
+      const dialogs = [...document.querySelectorAll(DIALOG_SELECTOR)];
+      if (!dialogs.length) {
+        destroy();
+        return;
+      }
+      for (const dialog of dialogs) {
+        fixVisibleKoreanRows(dialog);
+        ensurePilot(dialog);
+      }
+    } finally {
+      applying = false;
     }
   };
 
@@ -140,6 +164,6 @@ export function installWordSearchAlignmentPilotBridge() {
   return () => {
     observer.disconnect();
     window.removeEventListener('resize', schedule);
-    for (const row of [...states.keys()]) destroy(row);
+    destroy();
   };
 }
