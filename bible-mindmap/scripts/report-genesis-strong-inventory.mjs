@@ -52,7 +52,7 @@ function readAttribute(attributes, name) {
 }
 
 function normalizeStrong(raw) {
-  const match = String(raw || '').trim().match(/^H?0*(\d{1,5})(?:\s+[a-z]|[a-z])?$/i)
+  const match = String(raw || '').trim().match(/^H?0*(\d{1,5})(?:\s*[a-z])?\+?$/i)
   if (!match) return null
   const number = Number.parseInt(match[1], 10)
   return Number.isFinite(number) && number > 0 ? `H${number}` : null
@@ -64,8 +64,7 @@ function compareStrong(left, right) {
 
 function extractStrongIds(lemma) {
   const ids = new Set()
-  const normalizedLemma = String(lemma || '').replace(/\s+([a-z])(?=\/|$)/gi, '$1')
-  for (const segment of normalizedLemma.split(/[\s/,;|]+/)) {
+  for (const segment of String(lemma || '').split(/[\s/,;|]+/)) {
     const strong = normalizeStrong(segment)
     if (strong) ids.add(strong)
   }
@@ -95,6 +94,7 @@ export function buildGenesisInventory(xml, dictionaries = {}) {
   const verses = new Set()
   const stats = new Map()
   const nonStrongLemma = []
+  const compoundStrongLemma = []
   const malformedLemma = []
   const wordsWithoutLemma = []
   const multiStrongWords = []
@@ -133,6 +133,9 @@ export function buildGenesisInventory(xml, dictionaries = {}) {
         if (/\d/.test(lemma)) malformedLemma.push(diagnostic)
         else nonStrongLemma.push(diagnostic)
         continue
+      }
+      if (lemma.includes('+')) {
+        compoundStrongLemma.push({ reference, tokenId, lemma, strongIds, surface })
       }
       if (strongIds.length > 1) {
         multiStrongWords.push({ reference, tokenId, lemma, strongIds, surface })
@@ -197,6 +200,7 @@ export function buildGenesisInventory(xml, dictionaries = {}) {
     coverage,
     diagnostics: {
       nonStrongLemma,
+      compoundStrongLemma,
       malformedLemma,
       wordsWithoutLemma,
       multiStrongWords,
@@ -243,6 +247,7 @@ function formatSummary(inventory, inputPath) {
     `  covered active total: ${inventory.coverage.activeTotal}`,
     `  new translations required: ${inventory.coverage.missing}`,
     `  valid non-Strong lemma tokens: ${inventory.diagnostics.nonStrongLemma.length}`,
+    `  compound Strong plus markers: ${inventory.diagnostics.compoundStrongLemma.length}`,
     `  malformed numeric lemma values: ${inventory.diagnostics.malformedLemma.length}`,
     `  words without lemma: ${inventory.diagnostics.wordsWithoutLemma.length}`,
     `  multi-Strong words: ${inventory.diagnostics.multiStrongWords.length}`,
@@ -261,6 +266,7 @@ function runSelfTest() {
       <w lemma="0430" id="w4">אֱלֹהִים</w>
       <w lemma="l" id="w5">לּוֹ</w>
       <w lemma="12??" id="w6">?</w>
+      <w lemma="l/1008+" id="w7">לְ/בֵית</w>
     </verse></chapter>
   </osis>`
   const inventory = buildGenesisInventory(fixture, {
@@ -269,13 +275,14 @@ function runSelfTest() {
   })
   assert.equal(inventory.chaptersFound.length, 2)
   assert.equal(inventory.verseCount, 2)
-  assert.equal(inventory.wordCount, 6)
-  assert.equal(inventory.uniqueStrongCount, 4)
+  assert.equal(inventory.wordCount, 7)
+  assert.equal(inventory.uniqueStrongCount, 5)
   assert.equal(inventory.coverage.base, 1)
   assert.equal(inventory.coverage.activeExtension, 1)
-  assert.equal(inventory.coverage.missing, 2)
+  assert.equal(inventory.coverage.missing, 3)
   assert.equal(inventory.entries.find((entry) => entry.strong === 'H430')?.occurrences, 2)
   assert.equal(inventory.diagnostics.nonStrongLemma.length, 1)
+  assert.equal(inventory.diagnostics.compoundStrongLemma.length, 1)
   assert.equal(inventory.diagnostics.malformedLemma.length, 1)
   assert.equal(inventory.diagnostics.multiStrongWords.length, 1)
   console.log('✓ Genesis Strong inventory self-test passed')
