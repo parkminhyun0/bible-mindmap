@@ -51,25 +51,10 @@ jobs:
           `
           source = source.slice(0, helperStart) + normalizedHelper + source.slice(helperEnd)
 
-          const oldRender = `{(() => {
-                    // [정렬 파일럿] 창1:1 H430 은 검증된 정렬 span 으로 정식 렌더.
-                    // findKoreanWord() 의 부분 문자열('하나') 추정을 사용하지 않는다.
-                    if (isKoreanView) {
-                      const pilot = findPilotKrvAlignment({
-                        strong: r.word?.s, bookId: r.bookId, chapter: r.chapter, verse: r.verse,
-                      });
-                      if (pilot) {
-                        return (
-                          <AlignedSpanText text={verseText} alignment={pilot} color={fc} fallback={fallbackMsg} />
-                        );
-                      }
-                    }
-                    return (
-                      <ColorHighlightText text={verseText} query={hlWord} color={fc}
-                        dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
-                        caseSensitive={!isKoreanView && !isEnglishView} />
-                    );
-                  })()}`
+          const usageAnchor = source.indexOf('data-usage-reference=')
+          const renderStart = source.indexOf('{(() => {', usageAnchor)
+          const renderEnd = source.indexOf('\n                </span>', renderStart)
+          if (usageAnchor < 0 || renderStart < 0 || renderEnd < 0) throw new Error('WordSearch render structure not found')
           const newRender = `<AlignmentAwareVerseText
                     enabled={isKoreanView}
                     row={r}
@@ -82,8 +67,7 @@ jobs:
                         caseSensitive={!isKoreanView && !isEnglishView} />
                     )}
                   />`
-          if (!source.includes(oldRender)) throw new Error('WordSearch render anchor not found')
-          source = source.replace(oldRender, newRender)
+          source = source.slice(0, renderStart) + newRender + source.slice(renderEnd)
 
           if (source.includes('genesis-1-1-elohim.json')) throw new Error('static pilot import remains')
           if (source.includes('findPilotKrvAlignment')) throw new Error('pilot lookup remains')
