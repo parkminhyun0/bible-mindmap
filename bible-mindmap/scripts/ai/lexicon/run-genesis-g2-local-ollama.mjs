@@ -4,18 +4,22 @@ import assert from 'node:assert/strict'
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import {
+  CONTRACT_VERSION,
   OUTPUT_SCHEMA,
+  PROMPT_VERSION,
   createJobEnvelope,
   createProviderRequest,
   createStoredCandidate,
   parseJsonCandidate,
 } from './genesis-g2-translation-contract.mjs'
 
-export const ZERO_COST_LOCAL_RUNNER_VERSION = '2026.08.09-zc.1'
+export const ZERO_COST_LOCAL_RUNNER_VERSION = '2026.08.09-zc.2'
 const DEFAULT_SOURCE = 'reports/genesis-g2-bdb-source-packets.json'
 const DEFAULT_CANARY = 'reports/genesis-g2-canary-set.json'
 const DEFAULT_OUTPUT_ROOT = 'reports/genesis-g2-zero-cost-execution'
 const DEFAULT_BASE_URL = 'http://127.0.0.1:11434/api'
+const DEFAULT_NUM_CTX = 8192
+const DEFAULT_TEMPERATURE = 0
 
 const SLOT_CONFIG = Object.freeze({
   a: Object.freeze({ slot: 'A', compatibilityProvider: 'nvidia' }),
@@ -33,6 +37,8 @@ function parseArgs(argv) {
     baseUrl: DEFAULT_BASE_URL,
     strong: null,
     timeoutMs: 10 * 60_000,
+    numCtx: DEFAULT_NUM_CTX,
+    temperature: DEFAULT_TEMPERATURE,
     selfTest: false,
   }
   for (const arg of argv) {
@@ -46,6 +52,8 @@ function parseArgs(argv) {
     else if (arg.startsWith('--base-url=')) args.baseUrl = arg.slice('--base-url='.length)
     else if (arg.startsWith('--strong=')) args.strong = arg.slice('--strong='.length).toUpperCase()
     else if (arg.startsWith('--timeout-ms=')) args.timeoutMs = Number(arg.slice('--timeout-ms='.length))
+    else if (arg.startsWith('--num-ctx=')) args.numCtx = Number(arg.slice('--num-ctx='.length))
+    else if (arg.startsWith('--temperature=')) args.temperature = Number(arg.slice('--temperature='.length))
     else throw new Error(`unknown argument: ${arg}`)
   }
   return args
@@ -68,6 +76,8 @@ function validateArgs(args) {
   if (!args.model?.trim()) throw new Error('--model=<installed-local-model> is required')
   if (args.strong && !/^H[1-9]\d*$/.test(args.strong)) throw new Error('--strong must be a normalized Hebrew Strong id')
   if (!Number.isInteger(args.timeoutMs) || args.timeoutMs < 10_000 || args.timeoutMs > 60 * 60_000) throw new Error('--timeout-ms must be 10000..3600000')
+  if (!Number.isInteger(args.numCtx) || args.numCtx < 4096 || args.numCtx > 131072) throw new Error('--num-ctx must be 4096..131072')
+  if (!Number.isFinite(args.temperature) || args.temperature < 0 || args.temperature > 1) throw new Error('--temperature must be 0..1')
   validateLocalBaseUrl(args.baseUrl)
 }
 
@@ -89,7 +99,7 @@ function toMessages(envelope) {
   }))
 }
 
-async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, fetchImpl = fetch }) {
+async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, numCtx, temperature, fetchImpl = fetch }) {
   const started = Date.now()
   const controller = new AbortController()
   const timer = setTimeout(() => controller.abort(), timeoutMs)
@@ -102,7 +112,7 @@ async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, fetchImpl 
         messages: toMessages(envelope),
         stream: false,
         format: OUTPUT_SCHEMA,
-        options: { temperature: 0.1 },
+        options: { temperature, num_ctx: numCtx },
       }),
       signal: controller.signal,
     })
@@ -134,6 +144,15 @@ function selectedPackets(sourceSet, canarySet, strong) {
   return packets
 }
 
+function candidateReusable(existing, envelope, args) {
+  return existing?.sourceFingerprint === envelope.sourceFingerprint
+    && existing?.status === 'candidate'
+    && existing?.contractVersion === CONTRACT_VERSION
+    && existing?.promptVersion === PROMPT_VERSION
+    && existing?.provenance?.generationSettings?.numCtx === args.numCtx
+    && existing?.provenance?.generationSettings?.temperature === args.temperature
+}
+
 export async function runLocalOllama(args, env = process.env, fetchImpl = fetch) {
   validateArgs(args)
   if (args.execute && (env.NVIDIA_API_KEY || env.OPENAI_API_KEY || env.OLLAMA_API_KEY)) {
@@ -147,12 +166,15 @@ export async function runLocalOllama(args, env = process.env, fetchImpl = fetch)
   const summary = {
     schemaVersion: 1,
     runnerVersion: ZERO_COST_LOCAL_RUNNER_VERSION,
+    contractVersion: CONTRACT_VERSION,
+    promptVersion: PROMPT_VERSION,
     mode: args.execute ? 'local-execute' : 'dry-run',
     slot: config.slot,
     compatibilityProvider: config.compatibilityProvider,
     actualExecutionBackend: 'ollama-local',
     model: args.model,
     localBaseUrl: validateLocalBaseUrl(args.baseUrl),
+    generationSettings: { temperature: args.temperature, numCtx: args.numCtx, timeoutMs: args.timeoutMs },
     requested: packets.length,
     envelopesWritten: 0,
     candidatesWritten: 0,
@@ -173,6 +195,7 @@ export async function runLocalOllama(args, env = process.env, fetchImpl = fetch)
         actualExecutionBackend: 'ollama-local',
         externalPaidApiAllowed: false,
         localBaseUrl: summary.localBaseUrl,
+        generationSettings: summary.generationSettings,
       },
     }
     writeJsonAtomic(resolve(root, 'envelopes', config.compatibilityProvider, `${packet.strong}.json`), envelopeWithProvenance)
@@ -182,7 +205,7 @@ export async function runLocalOllama(args, env = process.env, fetchImpl = fetch)
     const outputPath = resolve(root, 'candidates', config.compatibilityProvider, `${packet.strong}.json`)
     if (existsSync(outputPath)) {
       const existing = readJson(outputPath)
-      if (existing.sourceFingerprint === envelope.sourceFingerprint && existing.status === 'candidate') {
+      if (candidateReusable(existing, envelope, args)) {
         summary.skippedExisting += 1
         continue
       }
@@ -194,6 +217,8 @@ export async function runLocalOllama(args, env = process.env, fetchImpl = fetch)
         model: args.model,
         baseUrl: args.baseUrl,
         timeoutMs: args.timeoutMs,
+        numCtx: args.numCtx,
+        temperature: args.temperature,
         fetchImpl,
       })
       const payload = parseJsonCandidate(providerResult.content)
@@ -206,6 +231,7 @@ export async function runLocalOllama(args, env = process.env, fetchImpl = fetch)
         actualExecutionBackend: 'ollama-local',
         localModel: args.model,
         localBaseUrl: summary.localBaseUrl,
+        generationSettings: { temperature: args.temperature, numCtx: args.numCtx },
         externalPaidApiUsed: false,
         monetaryCostExpected: false,
         apiKeyUsed: false,
@@ -227,6 +253,9 @@ async function runSelfTest() {
   assert.equal(validateLocalBaseUrl('http://localhost:11434/api/'), 'http://localhost:11434/api')
   assert.throws(() => validateLocalBaseUrl('https://ollama.com/api'), /local http/)
   assert.throws(() => validateLocalBaseUrl('http://example.com:11434/api'), /non-local/)
+  assert.equal(parseArgs(['--slot=a', '--model=test']).numCtx, 8192)
+  assert.equal(parseArgs(['--slot=a', '--model=test']).temperature, 0)
+  assert.equal(parseArgs(['--slot=a', '--model=test', '--num-ctx=16384']).numCtx, 16384)
 
   const envelope = {
     provider: 'nvidia',
@@ -241,7 +270,7 @@ async function runSelfTest() {
   const messages = toMessages(envelope)
   assert.ok(messages.length >= 2)
   assert.ok(messages.every((message) => typeof message.content === 'string'))
-  console.log('✓ Genesis G2 local Ollama runner self-test 통과')
+  console.log('✓ Genesis G2 local Ollama runner self-test 통과 · temperature=0 · num_ctx=8192')
 }
 
 const args = parseArgs(process.argv.slice(2))
