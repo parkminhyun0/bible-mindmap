@@ -1,0 +1,53 @@
+name: TASK-34-A Alignment Loader
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/utils/alignmentLoaderCore.js'
+      - 'bible-mindmap/src/utils/alignmentLoader.js'
+      - 'bible-mindmap/src/components/AlignmentAwareVerseText.jsx'
+      - 'bible-mindmap/src/components/WordSearchModal.jsx'
+      - 'bible-mindmap/public/data/alignment/manifest.json'
+      - 'bible-mindmap/public/data/alignment/pilot/genesis-1-1-elohim.json'
+      - 'bible-mindmap/scripts/verify-alignment-loader.mjs'
+      - '.github/workflows/task-34-a-alignment-loader.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  alignment-loader-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Verify deterministic loader gates
+        working-directory: bible-mindmap
+        run: node scripts/verify-alignment-loader.mjs
+
+      - name: Verify WordSearch uses the generic React loader
+        run: |
+          file='bible-mindmap/src/components/WordSearchModal.jsx'
+          grep -q "AlignmentAwareVerseText" "$file"
+          ! grep -q "genesis-1-1-elohim.json" "$file"
+          ! grep -q "findPilotKrvAlignment" "$file"
+
+      - name: Publish summary
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## TASK-34-A · 범용 alignment loader
+          - 장·절·tokenId 기반 loader: **검증**
+          - tokenChecksum mismatch 차단: **검증**
+          - sourceVersions stale 차단: **검증**
+          - 파일·레코드 부재 fallback: **검증**
+          - H430 정적 JSON import 제거: **검증**
+          - 실제 원어·KRV·WEB·사용자 데이터 변경: **없음**
+          EOF
