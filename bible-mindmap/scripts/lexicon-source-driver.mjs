@@ -17,8 +17,10 @@ export const DRIVER_BLOCKERS = Object.freeze({
   DERIVATIVE_PERMISSION_REQUIRED: 'DERIVATIVE_PERMISSION_REQUIRED',
   DRIVER_POLICY_INVALID: 'DRIVER_POLICY_INVALID',
   FULL_TEXT_STORAGE_REQUIRED: 'FULL_TEXT_STORAGE_REQUIRED',
+  INPUT_FINGERPRINT_MISMATCH: 'INPUT_FINGERPRINT_MISMATCH',
   LEGACY_FINGERPRINT_MUST_BE_NULL: 'LEGACY_FINGERPRINT_MUST_BE_NULL',
   LEGACY_POLICY_REQUIRED: 'LEGACY_POLICY_REQUIRED',
+  PARSER_ID_MISMATCH: 'PARSER_ID_MISMATCH',
   REGRESSION_EXECUTION_DISABLED: 'REGRESSION_EXECUTION_DISABLED',
   REGRESSION_ONLY_REQUIRED: 'REGRESSION_ONLY_REQUIRED',
   SOURCE_AUTO_PROCESSING_REQUIRED: 'SOURCE_AUTO_PROCESSING_REQUIRED',
@@ -87,6 +89,12 @@ export function preflightLexiconSourceDriver(input, {
 } = {}) {
   const blockers = [];
   if (!validatePolicy(policy)) blockers.push(DRIVER_BLOCKERS.DRIVER_POLICY_INVALID);
+  if (input?.parser?.id !== 'bdb-deterministic-tree-parser') {
+    blockers.push(DRIVER_BLOCKERS.PARSER_ID_MISMATCH);
+  }
+  if (!input || typeof input !== 'object' || input.inputFingerprint !== fingerprint(input, 'inputFingerprint')) {
+    blockers.push(DRIVER_BLOCKERS.INPUT_FINGERPRINT_MISMATCH);
+  }
 
   const source = findSource(registry, input?.source?.sourceId);
   if (!source) blockers.push(DRIVER_BLOCKERS.UNREGISTERED_SOURCE);
