@@ -1,0 +1,53 @@
+name: Genesis G2 Zero Cost Verify
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/genesis-g2-zero-cost.yml'
+      - 'bible-mindmap/scripts/build-genesis-g2-zero-cost-bundle.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-local-ollama.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-zero-cost-policy.mjs'
+      - 'bible-mindmap/docs/genesis-g2-zero-cost-runbook.md'
+      - 'bible-mindmap/package.json'
+      - 'memory/RESUME.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-zero-cost-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Verify offline bundle builder
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g2-zero-cost-bundle.mjs --self-test
+
+      - name: Verify local-only Ollama boundary
+        working-directory: bible-mindmap
+        run: node scripts/ai/lexicon/run-genesis-g2-local-ollama.mjs --self-test
+
+      - name: Verify zero-cost policy
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g2-zero-cost-policy.mjs
+
+      - name: Publish summary
+        run: |
+          {
+            echo '## 창세기 G2 · 무과금 경로 검증'
+            echo '- 외부 유료 API 호출: **0**'
+            echo '- GitHub Secret 사용: **0**'
+            echo '- 외부 cloud model 사용: **차단**'
+            echo '- 허용 실행 주소: **localhost / 127.0.0.1:11434**'
+            echo '- 번역 후보 자동 서비스 반영: **차단**'
+            echo '- 사람 문맥 검토·신학 감사: **필수**'
+          } >> "$GITHUB_STEP_SUMMARY"
