@@ -1,0 +1,116 @@
+name: Genesis G2 BDB Source Packets
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
+      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/genesis-g2-bdb-source-packets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-packets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild Genesis inventory
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Rebuild and verify G1 manifest
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-translation-manifest.mjs
+          node scripts/verify-genesis-translation-contract.mjs --strict
+
+      - name: Rebuild and verify G2 calibration batch
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-g2-calibration-batch.mjs
+          node scripts/verify-genesis-g2-calibration-batch.mjs --strict
+
+      - name: Source packet materializer self-test
+        working-directory: bible-mindmap
+        run: node scripts/materialize-genesis-g2-bdb-packets.mjs --self-test
+
+      - name: Source packet verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g2-bdb-packets.mjs --self-test
+
+      - name: Materialize pinned BDB source packets
+        working-directory: bible-mindmap
+        run: node scripts/materialize-genesis-g2-bdb-packets.mjs
+
+      - name: Verify 100 BDB source packets
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g2-bdb-packets.mjs --strict
+
+      - name: Publish G2-1 summary
+        if: always()
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const path = 'reports/genesis-g2-bdb-source-packets.json'
+          const lines = ['## 창세기 G2-1 · BDB 원문 계층 source packet']
+          if (!fs.existsSync(path)) {
+            lines.push('', '- 결과 파일: **미생성**', '- materializer 또는 원천 다운로드 단계 확인 필요')
+          } else {
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'))
+            lines.push(
+              '',
+              `- 원천 버전: \`${data.source.versionRef}\``,
+              `- 요청 Strong: **${data.counts.requested}개**`,
+              `- 준비 완료: **${data.counts.ready}개**`,
+              `- 차단: **${data.counts.blocked}개**`,
+              `- LexicalIndex 연결: **${data.counts.lexicalMappings}개**`,
+              `- BDB 엔트리: **${data.counts.bdbEntries}개**`,
+              `- 계층형 source node: **${data.counts.sourceNodes}개**`,
+              '- 번역 시작: **아니오**',
+              '- 서비스 데이터 쓰기: **차단**',
+              '- 다음: NVIDIA·GPT 독립 실행 prompt envelope 및 candidate writer',
+            )
+            const blocked = data.packets.filter((packet) => packet.sourcePacketStatus === 'blocked')
+            if (blocked.length) {
+              lines.push('', '### 차단 Strong')
+              for (const packet of blocked.slice(0, 30)) {
+                lines.push(`- ${packet.strong}: missing=${packet.sourceCoverage.missingBdbIds.join(',') || 'mapping/entry 없음'}`)
+              }
+            }
+          }
+          const summary = lines.join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
+
+      - name: Upload G2-1 evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-g2-bdb-source-packets
+          path: |
+            bible-mindmap/reports/genesis-strong-inventory.json
+            bible-mindmap/reports/genesis-lexicon-translation-manifest.json
+            bible-mindmap/reports/genesis-g2-calibration-batch.json
+            bible-mindmap/reports/genesis-g2-bdb-source-packets.json
+          if-no-files-found: warn
+          retention-days: 14
