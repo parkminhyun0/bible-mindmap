@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/StrongIdentity.schema.json",
+  "title": "Bible Mind Map Strong Identity",
+  "description": "Strong/Extended Strong, language, lemma, transliteration and part-of-speech identity contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "identityId",
+    "sourceForms",
+    "canonicalStrong",
+    "baseStrong",
+    "disambiguationSuffix",
+    "namespace",
+    "testament",
+    "language",
+    "lemma",
+    "lemmaNormalized",
+    "transliteration",
+    "partOfSpeech",
+    "sourceRefs",
+    "identityFingerprint"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "identityId": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+    "sourceForms": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[HGhg]0*[0-9]+[A-Za-z]?$" }
+    },
+    "canonicalStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+    "baseStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*$" },
+    "disambiguationSuffix": {
+      "anyOf": [
+        { "type": "string", "pattern": "^[a-z]$" },
+        { "type": "null" }
+      ]
+    },
+    "namespace": { "enum": ["strong", "extended-strong"] },
+    "testament": { "enum": ["old-testament", "new-testament"] },
+    "language": { "enum": ["hebrew", "aramaic", "greek"] },
+    "lemma": { "type": "string", "minLength": 1 },
+    "lemmaNormalized": { "type": "string", "minLength": 1 },
+    "transliteration": { "$ref": "#/$defs/transliteration" },
+    "partOfSpeech": { "$ref": "#/$defs/partOfSpeech" },
+    "sourceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/sourceRef" }
+    },
+    "identityFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "transliteration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scientific", "korean"],
+      "properties": {
+        "scientific": { "type": "string", "minLength": 1 },
+        "korean": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "partOfSpeech": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "labelEn", "labelKo"],
+      "properties": {
+        "code": { "type": "string", "minLength": 1 },
+        "labelEn": { "type": "string", "minLength": 1 },
+        "labelKo": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "locator"],
+      "properties": {
+        "sourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "locator": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
