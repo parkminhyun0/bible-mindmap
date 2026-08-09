@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P1_IN_PROGRESS",
-  "activePhase": "P1_SOURCE_REGISTRY_SCHEMA",
+  "activePhase": "P1_STRONG_IDENTITY_EVIDENCE_SCHEMA",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -17,14 +17,18 @@
     "public-first-system-installed",
     "source-registry-schema-v1",
     "existing-source-registry-migration-v1",
-    "license-gate-verifier-v1"
+    "license-gate-verifier-v1",
+    "stepbible-source-commits-pinned",
+    "canonical-source-fingerprint-v1",
+    "stepbible-tbesh-tagnt-tahot-ready",
+    "unfoldingword-bdb-license-version-restricted"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "pin approved source versions and content fingerprints, resolve blocked repository licenses, then implement Strong Identity and Evidence Packet v2 schemas",
+  "nextAction": "implement StrongIdentity and EvidencePacket v2 schemas with H776 regression fixture; keep new full-BDB translation blocked until an explicitly licensed primary source is ready",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
