@@ -1,0 +1,56 @@
+name: Genesis Strong Inventory
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/genesis-strong-inventory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Parser self-test
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --self-test
+
+      - name: Build strict Genesis inventory
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Print report summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const report = JSON.parse(fs.readFileSync('reports/genesis-strong-inventory.json', 'utf8'))
+          console.log(JSON.stringify({
+            chapters: `${report.chaptersFound.length}/${report.expectedChapters}`,
+            verses: report.verseCount,
+            words: report.wordCount,
+            strongAssignments: report.strongAssignmentCount,
+            uniqueStrong: report.uniqueStrongCount,
+            coverage: report.coverage,
+            diagnostics: {
+              nonStrongLemma: report.diagnostics.nonStrongLemma.length,
+              malformedLemma: report.diagnostics.malformedLemma.length,
+              wordsWithoutLemma: report.diagnostics.wordsWithoutLemma.length,
+              multiStrongWords: report.diagnostics.multiStrongWords.length,
+            },
+          }, null, 2))
+          NODE
