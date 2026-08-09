@@ -22,7 +22,6 @@ const all = [runtime, runbook].join('\n')
 for (const forbidden of [
   'api.openai.com',
   'integrate.api.nvidia.com',
-  'https://ollama.com/api',
   'secrets.NVIDIA_API_KEY',
   'secrets.OPENAI_API_KEY',
   'secrets.OLLAMA_API_KEY',
@@ -48,6 +47,7 @@ for (const required of [
 for (const required of [
   "new Set(['127.0.0.1', 'localhost', '[::1]'])",
   "url.protocol !== 'http:'",
+  "assert.throws(() => validateLocalBaseUrl('https://ollama.com/api')",
   "actualExecutionBackend: 'ollama-local'",
   'externalPaidApiUsed: false',
   'monetaryCostExpected: false',
