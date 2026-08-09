@@ -3,7 +3,10 @@
 import assert from 'node:assert/strict'
 import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import {
+  LUKE_G2_PROMPT_VERSION,
+  LUKE_G2_TRANSLATION_CONTRACT_VERSION,
   OUTPUT_SCHEMA,
   createJobEnvelope,
   createModelRequest,
@@ -11,18 +14,20 @@ import {
   parseJsonCandidate,
 } from './luke-g2-translation-contract.mjs'
 
-export const LUKE_G2_LOCAL_RUNNER_VERSION = '2026.08.09-luke-zc.1'
+export const LUKE_G2_LOCAL_RUNNER_VERSION = '2026.08.09-luke-zc.2'
 const DEFAULT_SOURCE = 'data/lexicon/luke-g2-canary-preparation.json'
 const DEFAULT_GATE = 'data/lexicon/luke-g2-execution-gate.json'
 const DEFAULT_OUTPUT_ROOT = 'reports/luke-g2-zero-cost-execution'
 const DEFAULT_BASE_URL = 'http://127.0.0.1:11434/api'
+const DEFAULT_NUM_CTX = 8192
+const DEFAULT_TEMPERATURE = 0
 
 const SLOT_CONFIG = Object.freeze({
   a: Object.freeze({ slot: 'A', directory: 'slot-a' }),
   b: Object.freeze({ slot: 'B', directory: 'slot-b' }),
 })
 
-function parseArgs(argv) {
+export function parseLukeG2LocalArgs(argv) {
   const args = {
     slot: null,
     model: null,
@@ -33,6 +38,8 @@ function parseArgs(argv) {
     baseUrl: DEFAULT_BASE_URL,
     strong: null,
     timeoutMs: 10 * 60_000,
+    numCtx: DEFAULT_NUM_CTX,
+    temperature: DEFAULT_TEMPERATURE,
     confirmation: null,
     killSwitch: 'on',
     selfTest: false,
@@ -48,6 +55,8 @@ function parseArgs(argv) {
     else if (arg.startsWith('--base-url=')) args.baseUrl = arg.slice('--base-url='.length)
     else if (arg.startsWith('--strong=')) args.strong = arg.slice('--strong='.length).toUpperCase()
     else if (arg.startsWith('--timeout-ms=')) args.timeoutMs = Number(arg.slice('--timeout-ms='.length))
+    else if (arg.startsWith('--num-ctx=')) args.numCtx = Number(arg.slice('--num-ctx='.length))
+    else if (arg.startsWith('--temperature=')) args.temperature = Number(arg.slice('--temperature='.length))
     else if (arg.startsWith('--confirmation=')) args.confirmation = arg.slice('--confirmation='.length)
     else if (arg.startsWith('--kill-switch=')) args.killSwitch = arg.slice('--kill-switch='.length).toLowerCase()
     else throw new Error(`unknown argument: ${arg}`)
@@ -72,6 +81,8 @@ function validateArgs(args) {
   if (!args.model?.trim()) throw new Error('--model=<installed-local-model> is required')
   if (args.strong && !/^G[1-9]\d*$/u.test(args.strong)) throw new Error('--strong must be a normalized Greek Strong id')
   if (!Number.isInteger(args.timeoutMs) || args.timeoutMs < 10_000 || args.timeoutMs > 60 * 60_000) throw new Error('--timeout-ms must be 10000..3600000')
+  if (!Number.isInteger(args.numCtx) || args.numCtx < 4096 || args.numCtx > 131072) throw new Error('--num-ctx must be 4096..131072')
+  if (!Number.isFinite(args.temperature) || args.temperature < 0 || args.temperature > 1) throw new Error('--temperature must be 0..1')
   if (!['on', 'off'].includes(args.killSwitch)) throw new Error('--kill-switch=on|off is required')
   validateLocalBaseUrl(args.baseUrl)
 }
@@ -103,7 +114,7 @@ function selectedPackets(preparation, strong) {
   return packets
 }
 
-async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, fetchImpl = fetch }) {
+async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, numCtx, temperature, fetchImpl = fetch }) {
   const request = createModelRequest(envelope)
   const started = Date.now()
   const controller = new AbortController()
@@ -117,7 +128,7 @@ async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, fetchImpl 
         messages: request.messages,
         stream: false,
         format: OUTPUT_SCHEMA,
-        options: { temperature: 0.1 },
+        options: { temperature, num_ctx: numCtx },
       }),
       signal: controller.signal,
     })
@@ -140,6 +151,16 @@ async function callLocalOllama({ envelope, model, baseUrl, timeoutMs, fetchImpl 
   }
 }
 
+function candidateReusable(existing, envelope, args) {
+  return existing?.sourceFingerprint === envelope.sourceFingerprint
+    && existing?.status === 'candidate'
+    && existing?.contractVersion === LUKE_G2_TRANSLATION_CONTRACT_VERSION
+    && existing?.promptVersion === LUKE_G2_PROMPT_VERSION
+    && existing?.provenance?.localModel === args.model
+    && existing?.provenance?.generationSettings?.numCtx === args.numCtx
+    && existing?.provenance?.generationSettings?.temperature === args.temperature
+}
+
 export async function runLukeG2LocalOllama(args, env = process.env, fetchImpl = fetch) {
   validateArgs(args)
   const gate = readJson(args.gate)
@@ -154,11 +175,14 @@ export async function runLukeG2LocalOllama(args, env = process.env, fetchImpl = 
   const summary = {
     schemaVersion: 1,
     runnerVersion: LUKE_G2_LOCAL_RUNNER_VERSION,
+    contractVersion: LUKE_G2_TRANSLATION_CONTRACT_VERSION,
+    promptVersion: LUKE_G2_PROMPT_VERSION,
     mode: args.execute ? 'local-execute' : 'dry-run',
     comparisonSlot: config.slot,
     actualExecutionBackend: 'ollama-local',
     model: args.model,
     localBaseUrl: validateLocalBaseUrl(args.baseUrl),
+    generationSettings: { temperature: args.temperature, numCtx: args.numCtx, timeoutMs: args.timeoutMs },
     requested: packets.length,
     envelopesWritten: 0,
     candidatesWritten: 0,
@@ -178,6 +202,7 @@ export async function runLukeG2LocalOllama(args, env = process.env, fetchImpl = 
         actualExecutionBackend: 'ollama-local',
         localBaseUrl: summary.localBaseUrl,
         externalPaidApiAllowed: false,
+        generationSettings: summary.generationSettings,
       },
     })
     summary.envelopesWritten += 1
@@ -186,14 +211,22 @@ export async function runLukeG2LocalOllama(args, env = process.env, fetchImpl = 
     const outputPath = resolve(root, 'candidates', config.directory, `${packet.strong}.json`)
     if (existsSync(outputPath)) {
       const existing = readJson(outputPath)
-      if (existing.sourceFingerprint === envelope.sourceFingerprint && existing.status === 'candidate') {
+      if (candidateReusable(existing, envelope, args)) {
         summary.skippedExisting += 1
         continue
       }
     }
 
     try {
-      const modelResult = await callLocalOllama({ envelope, model: args.model, baseUrl: args.baseUrl, timeoutMs: args.timeoutMs, fetchImpl })
+      const modelResult = await callLocalOllama({
+        envelope,
+        model: args.model,
+        baseUrl: args.baseUrl,
+        timeoutMs: args.timeoutMs,
+        numCtx: args.numCtx,
+        temperature: args.temperature,
+        fetchImpl,
+      })
       const candidate = parseJsonCandidate(modelResult.content)
       const stored = createStoredCandidate({ envelope, modelResult, candidate, generatedAt: new Date().toISOString() })
       stored.provenance = {
@@ -201,6 +234,7 @@ export async function runLukeG2LocalOllama(args, env = process.env, fetchImpl = 
         actualExecutionBackend: 'ollama-local',
         localModel: args.model,
         localBaseUrl: summary.localBaseUrl,
+        generationSettings: { temperature: args.temperature, numCtx: args.numCtx },
         externalPaidApiUsed: false,
         monetaryCostExpected: false,
         apiKeyUsed: false,
@@ -222,19 +256,25 @@ async function runSelfTest() {
   assert.equal(validateLocalBaseUrl('http://localhost:11434/api/'), 'http://localhost:11434/api')
   assert.throws(() => validateLocalBaseUrl('https://ollama.com/api'), /local http/u)
   assert.throws(() => validateLocalBaseUrl('http://example.com:11434/api'), /non-local/u)
+  assert.equal(parseLukeG2LocalArgs(['--slot=a', '--model=test']).numCtx, 8192)
+  assert.equal(parseLukeG2LocalArgs(['--slot=a', '--model=test']).temperature, 0)
+  assert.equal(parseLukeG2LocalArgs(['--slot=a', '--model=test', '--num-ctx=16384']).numCtx, 16384)
   const gate = {
     gateId: 'luke-g2-canary-execute-v1', confirmationRequired: 'RUN-LUKE-G2-CANARY', executionAllowed: false,
     modes: { localTwoModel: { enabled: false } }, safety: { candidateOnly: true, productionWriteAllowed: false, humanReviewRequired: true, automaticApprovalAllowed: false },
   }
   assert.doesNotThrow(() => assertExecutionGate(gate, { execute: false }))
   assert.throws(() => assertExecutionGate(gate, { execute: true, confirmation: 'RUN-LUKE-G2-CANARY', killSwitch: 'off' }), /disabled/u)
-  console.log('✓ Luke G2 local Ollama runner self-test passed')
+  console.log('✓ Luke G2 local Ollama runner self-test passed · temperature=0 · num_ctx=8192')
 }
 
-const args = parseArgs(process.argv.slice(2))
-if (args.selfTest) await runSelfTest()
-else {
-  const summary = await runLukeG2LocalOllama(args)
-  console.log(`✓ Luke G2 local slot ${summary.comparisonSlot} · mode=${summary.mode} · candidates=${summary.candidatesWritten} · failed=${summary.failed}`)
-  if (args.execute && summary.failed > 0) process.exitCode = 2
+const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href
+if (isDirectRun) {
+  const args = parseLukeG2LocalArgs(process.argv.slice(2))
+  if (args.selfTest) await runSelfTest()
+  else {
+    const summary = await runLukeG2LocalOllama(args)
+    console.log(`✓ Luke G2 local slot ${summary.comparisonSlot} · mode=${summary.mode} · candidates=${summary.candidatesWritten} · failed=${summary.failed}`)
+    if (args.execute && summary.failed > 0) process.exitCode = 2
+  }
 }

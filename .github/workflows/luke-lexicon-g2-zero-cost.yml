@@ -3,13 +3,16 @@ name: Luke Lexicon G2 Zero-Cost Harness
 on:
   push:
     branches:
-      - chatgpt/luke-g2-zero-cost-local-harness
+      - 'chatgpt/luke-g2-*'
     paths:
       - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
       - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
       - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
       - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/import-luke-g2-zero-cost-manual.mjs'
       - 'bible-mindmap/scripts/build-luke-g2-zero-cost-bundle.mjs'
+      - 'bible-mindmap/scripts/build-luke-g2-human-review-bundle.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-local-results.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-zero-cost-policy.mjs'
       - 'bible-mindmap/docs/luke-g2-zero-cost-runbook.md'
@@ -20,7 +23,10 @@ on:
       - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
       - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
       - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/import-luke-g2-zero-cost-manual.mjs'
       - 'bible-mindmap/scripts/build-luke-g2-zero-cost-bundle.mjs'
+      - 'bible-mindmap/scripts/build-luke-g2-human-review-bundle.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-local-results.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-zero-cost-policy.mjs'
       - 'bible-mindmap/docs/luke-g2-zero-cost-runbook.md'
@@ -51,8 +57,12 @@ jobs:
         working-directory: bible-mindmap
         run: |
           node scripts/build-luke-g2-zero-cost-bundle.mjs --self-test
+          node scripts/ai/lexicon/luke-g2-translation-contract.mjs --self-test
           node scripts/ai/lexicon/run-luke-g2-local-ollama.mjs --self-test
+          node scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs --self-test
+          node scripts/ai/lexicon/import-luke-g2-zero-cost-manual.mjs --self-test
           node scripts/verify-luke-g2-local-results.mjs --self-test
+          node scripts/build-luke-g2-human-review-bundle.mjs --self-test
 
       - name: Verify zero-cost policy
         working-directory: bible-mindmap
@@ -75,3 +85,16 @@ jobs:
           if (manifest.execution.apiKeysRequired !== false) throw new Error('API keys must not be required')
           console.log('✓ Luke G2 bundle: 10 Strong · 70 contexts · 20 templates · execution blocked')
           NODE
+
+      - name: Summary
+        run: |
+          {
+            echo '## Luke G2 zero-cost quality hardening'
+            echo '- 실제 모델 실행: **0**'
+            echo '- 기본 안정값: **temperature=0 · num_ctx=8192**'
+            echo '- 한글 음역·외국어 혼입·confidence·필수 risk flag: **검증**'
+            echo '- Ollama 설치 모델·서로 다른 digest preflight: **검증**'
+            echo '- 수동 독립 JSON importer: **검증**'
+            echo '- source/context 포함 사람 검토 bundle: **검증**'
+            echo '- 서비스 사전 쓰기·자동 승인: **차단**'
+          } >> "$GITHUB_STEP_SUMMARY"
