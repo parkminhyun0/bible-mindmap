@@ -1,0 +1,121 @@
+name: Genesis G2 Provider Preflight
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: '사전점검 승인 문자열: CHECK-GENESIS-G2-PROVIDERS'
+        required: true
+        type: string
+      provider:
+        description: '점검 provider'
+        required: true
+        default: both
+        type: choice
+        options:
+          - both
+          - nvidia
+          - openai
+      kill_switch:
+        description: '점검하려면 명시적으로 off 선택'
+        required: true
+        default: on
+        type: choice
+        options:
+          - on
+          - off
+      nvidia_model_id:
+        description: 'NVIDIA model ID'
+        required: false
+        type: string
+      openai_model_id:
+        description: 'OpenAI model ID'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  GENESIS_G2_PROVIDER_PREFLIGHT_ENABLED: '1'
+  LEXICON_TRANSLATION_KILL_SWITCH: ${{ inputs.kill_switch == 'off' && '0' || '1' }}
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Confirm explicit preflight approval
+        env:
+          CONFIRMATION: ${{ inputs.confirmation }}
+          PROVIDER: ${{ inputs.provider }}
+          KILL_SWITCH: ${{ inputs.kill_switch }}
+          NVIDIA_MODEL_INPUT: ${{ inputs.nvidia_model_id }}
+          OPENAI_MODEL_INPUT: ${{ inputs.openai_model_id }}
+          NVIDIA_API_KEY_PRESENT: ${{ secrets.NVIDIA_API_KEY != '' }}
+          OPENAI_API_KEY_PRESENT: ${{ secrets.OPENAI_API_KEY != '' }}
+        run: |
+          test "$CONFIRMATION" = 'CHECK-GENESIS-G2-PROVIDERS' || { echo '사전점검 승인 문자열 불일치'; exit 1; }
+          test "$KILL_SWITCH" = 'off' || { echo 'kill switch가 켜져 있음'; exit 1; }
+          if [ "$PROVIDER" = 'nvidia' ] || [ "$PROVIDER" = 'both' ]; then
+            test -n "$NVIDIA_MODEL_INPUT" || { echo 'NVIDIA model ID 누락'; exit 1; }
+            test "$NVIDIA_API_KEY_PRESENT" = 'true' || { echo 'NVIDIA_API_KEY secret 누락'; exit 1; }
+          fi
+          if [ "$PROVIDER" = 'openai' ] || [ "$PROVIDER" = 'both' ]; then
+            test -n "$OPENAI_MODEL_INPUT" || { echo 'OpenAI model ID 누락'; exit 1; }
+            test "$OPENAI_API_KEY_PRESENT" = 'true' || { echo 'OPENAI_API_KEY secret 누락'; exit 1; }
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Run minimal provider connectivity checks
+        working-directory: bible-mindmap
+        env:
+          PROVIDER: ${{ inputs.provider }}
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NVIDIA_MODEL_ID: ${{ inputs.nvidia_model_id }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL_ID: ${{ inputs.openai_model_id }}
+        run: |
+          node scripts/ai/lexicon/preflight-genesis-g2-providers.mjs \
+            --provider="$PROVIDER" \
+            --execute \
+            --output=reports/genesis-g2-provider-preflight.json
+
+      - name: Publish preflight summary
+        if: always()
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const path = 'reports/genesis-g2-provider-preflight.json'
+          const lines = ['## 창세기 G2 · Provider Preflight']
+          if (!fs.existsSync(path)) lines.push('- 보고서: **미생성**')
+          else {
+            const report = JSON.parse(fs.readFileSync(path, 'utf8'))
+            lines.push(`- 상태: **${report.status}**`)
+            lines.push(`- 통과: **${report.counts.passed}/${report.counts.requested}**`)
+            for (const result of report.results) {
+              lines.push(`- ${result.provider}: **${result.status}**${result.model ? ` · model \`${result.model}\`` : ''}${result.latencyMs ? ` · ${result.latencyMs}ms` : ''}${result.error ? ` · ${result.error}` : ''}`)
+            }
+          }
+          lines.push('- 번역 후보 생성: **없음**')
+          lines.push('- canary 자동 시작: **금지**')
+          lines.push('- 서비스 쓰기·최종 승인: **차단**')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
+          NODE
+
+      - name: Upload preflight evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-g2-provider-preflight
+          path: bible-mindmap/reports/genesis-g2-provider-preflight.json
+          if-no-files-found: warn
+          retention-days: 14

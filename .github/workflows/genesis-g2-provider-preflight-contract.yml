@@ -1,0 +1,54 @@
+name: Genesis G2 Provider Preflight Contract
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/ai/lexicon/preflight-genesis-g2-providers.mjs'
+      - 'bible-mindmap/scripts/ai/providers/nvidia.mjs'
+      - 'bible-mindmap/scripts/ai/providers/openai.mjs'
+      - '.github/workflows/genesis-g2-provider-preflight.yml'
+      - '.github/workflows/genesis-g2-provider-preflight-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  provider-preflight-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Offline provider preflight self-test
+        working-directory: bible-mindmap
+        run: node scripts/ai/lexicon/preflight-genesis-g2-providers.mjs --self-test
+
+      - name: Verify manual-only and safety boundary
+        run: |
+          file='.github/workflows/genesis-g2-provider-preflight.yml'
+          grep -q '^  workflow_dispatch:' "$file"
+          ! grep -q '^  push:' "$file"
+          ! grep -q '^  pull_request:' "$file"
+          grep -q "CHECK-GENESIS-G2-PROVIDERS" "$file"
+          grep -q "GENESIS_G2_PROVIDER_PREFLIGHT_ENABLED" "$file"
+          grep -q "LEXICON_TRANSLATION_KILL_SWITCH" "$file"
+          grep -q "translationCandidateCreated: false" bible-mindmap/scripts/ai/lexicon/preflight-genesis-g2-providers.mjs
+          grep -q "canaryExecutionAutomaticallyStarted: false" bible-mindmap/scripts/ai/lexicon/preflight-genesis-g2-providers.mjs
+          ! grep -q 'run-genesis-g2-blind-translation' "$file"
+
+      - name: Publish contract summary
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## 창세기 G2 · Provider Preflight 계약
+          - NVIDIA·OpenAI 키·model ID·최소 응답 형식 점검: **준비**
+          - 실제 번역 전 인증·모델 접근·timeout 확인: **준비**
+          - 번역 후보 생성·canary 자동 시작: **금지**
+          - API 키 로그·브라우저 노출: **금지**
+          EOF
