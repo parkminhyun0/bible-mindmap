@@ -300,6 +300,10 @@ function runSelfTests(registry) {
   const approved = missingHash.sources.find((source) => source.license.status === 'approved');
   approved.workflow.status = 'approved-ready';
   approved.workflow.autoProcessingAllowed = true;
+  approved.provenance.fileCount = null;
+  approved.provenance.totalBytes = null;
+  approved.provenance.contentHash = null;
+  approved.provenance.retrievedAt = null;
   assert.ok(validateRegistry(missingHash).errors.some((message) => message.includes('contentHash')));
 
   const invalidCount = cloneRegistry(registry);
@@ -351,7 +355,9 @@ for (const sourceId of ['stepbible-tbesh', 'stepbible-tagnt', 'stepbible-tahot']
   const source = expectSource(registry, sourceId);
   assert.equal(source.license.expression, 'CC-BY-4.0');
   assert.equal(source.provenance.version, 'b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39');
-  assert.ok(['approved-pending-fingerprint', 'approved-ready'].includes(source.workflow.status));
+  assert.equal(source.workflow.status, 'approved-ready');
+  assert.equal(source.workflow.autoProcessingAllowed, true);
+  assert.match(source.provenance.contentHash, SHA256_PATTERN);
 }
 
 const enhancedBdb = expectSource(registry, 'unfoldingword-bdb-enhanced');
