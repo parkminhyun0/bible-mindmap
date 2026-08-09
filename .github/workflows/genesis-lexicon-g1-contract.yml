@@ -1,0 +1,70 @@
+name: Genesis Lexicon G1 Contract
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/schemas/lexicon-translation-payload.schema.json'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/genesis-lexicon-g1-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Build Genesis inventory
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Manifest builder self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-translation-manifest.mjs --self-test
+
+      - name: Contract verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-translation-contract.mjs --self-test
+
+      - name: Build deterministic G1 manifest
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-translation-manifest.mjs
+
+      - name: Verify schema and manifest
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-translation-contract.mjs --strict
+
+      - name: Publish G1 summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const manifest = JSON.parse(fs.readFileSync('reports/genesis-lexicon-translation-manifest.json', 'utf8'))
+          const summary = [
+            '## 창세기 G1 · 번역 계약 및 배치 manifest',
+            '',
+            `- Contract: \`${manifest.contractVersion}\``,
+            `- 고유 Strong: **${manifest.counts.uniqueStrong.toLocaleString()}**`,
+            `- 기존 번역 재사용: **${manifest.counts.reuseExisting.toLocaleString()}**`,
+            `- 신규 번역 큐: **${manifest.counts.translationRequired.toLocaleString()}**`,
+            `- Strong 출현 할당: **${manifest.counts.strongAssignments.toLocaleString()}**`,
+            '- 서비스 데이터 직접 쓰기: **차단** (`productionWriteAllowed=false`)',
+            '- R3·R4 사람 승인 Gate: **유지**',
+          ].join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
