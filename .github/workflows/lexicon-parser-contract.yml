@@ -5,13 +5,18 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/schemas/BdbParserInput.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/BdbParserOutput.schema.json'
+      - 'bible-mindmap/data/lexicon/schemas/SourceDriverReport.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.parser-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json'
+      - 'bible-mindmap/data/lexicon/source-driver-policy.json'
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
       - 'bible-mindmap/scripts/build-h776-parser-adapter.mjs'
+      - 'bible-mindmap/scripts/lexicon-source-adapters.mjs'
+      - 'bible-mindmap/scripts/lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-parser-contract.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-source-driver.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-parser-contract.yml'
@@ -21,13 +26,18 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/schemas/BdbParserInput.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/BdbParserOutput.schema.json'
+      - 'bible-mindmap/data/lexicon/schemas/SourceDriverReport.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.parser-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json'
+      - 'bible-mindmap/data/lexicon/source-driver-policy.json'
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
       - 'bible-mindmap/scripts/build-h776-parser-adapter.mjs'
+      - 'bible-mindmap/scripts/lexicon-source-adapters.mjs'
+      - 'bible-mindmap/scripts/lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-parser-contract.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-source-driver.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-parser-contract.yml'
@@ -56,10 +66,16 @@ jobs:
       - name: Verify deterministic parser contract and H776 adapter
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-parser-contract.mjs --write=reports/lexicon-parser/GEN-1-1-H776.parser-output.v1.json
+      - name: Verify source-neutral driver and fail-closed routing
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-lexicon-source-driver.mjs \
+            --write-report=reports/lexicon-parser/GEN-1-1-H776.source-driver-report.v1.json \
+            --write-output=reports/lexicon-parser/GEN-1-1-H776.source-driver-output.v1.json
       - name: Upload deterministic parser evidence
         uses: actions/upload-artifact@v7
         with:
           name: lexicon-parser-contract-H776
-          path: bible-mindmap/reports/lexicon-parser/GEN-1-1-H776.parser-output.v1.json
+          path: bible-mindmap/reports/lexicon-parser/
           if-no-files-found: error
           retention-days: 30
