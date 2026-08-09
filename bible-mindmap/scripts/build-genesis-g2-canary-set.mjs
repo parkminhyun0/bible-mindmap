@@ -2,6 +2,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
+import { pathToFileURL } from 'node:url'
 import { sourceFingerprint } from './ai/lexicon/genesis-g2-translation-contract.mjs'
 
 const DEFAULT_SOURCE = 'reports/genesis-g2-bdb-source-packets.json'
@@ -52,9 +53,7 @@ function parseArgs(argv) {
 }
 
 export function buildCanarySet(sourceSet) {
-  if (sourceSet?.packetSetId !== 'genesis-g2-calibration-bdb-source-packets-v1') {
-    throw new Error('unexpected Genesis G2 source packet set')
-  }
+  if (sourceSet?.packetSetId !== 'genesis-g2-calibration-bdb-source-packets-v1') throw new Error('unexpected Genesis G2 source packet set')
   const byStrong = new Map(sourceSet.packets.map((packet) => [packet.strong, packet]))
   const items = GENESIS_G2_CANARY_SPECS.map((spec, index) => {
     const packet = byStrong.get(spec.strong)
@@ -98,14 +97,18 @@ export function buildCanarySet(sourceSet) {
   }
 }
 
-const args = parseArgs(process.argv.slice(2))
-const sourceSet = JSON.parse(readFileSync(resolve(args.source), 'utf8'))
-const result = buildCanarySet(sourceSet)
-if (args.printStrongs) {
-  console.log(result.items.map((item) => item.strong).join(' '))
-} else {
+async function main(argv = process.argv.slice(2)) {
+  const args = parseArgs(argv)
+  const sourceSet = JSON.parse(readFileSync(resolve(args.source), 'utf8'))
+  const result = buildCanarySet(sourceSet)
+  if (args.printStrongs) {
+    console.log(result.items.map((item) => item.strong).join(' '))
+    return
+  }
   const output = resolve(args.output)
   mkdirSync(dirname(output), { recursive: true })
   writeFileSync(output, `${JSON.stringify(result, null, 2)}\n`, 'utf8')
   console.log(`✓ Genesis G2 canary set built · ${result.items.map((item) => item.strong).join(', ')} · nodes=${result.counts.sourceNodes}`)
 }
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) await main()
