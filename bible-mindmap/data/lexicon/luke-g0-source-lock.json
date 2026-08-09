@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "stage": "G0",
+  "generatedDate": "2026-08-09",
+  "sources": {
+    "tagnt": {
+      "repository": "STEPBible/STEPBible-Data",
+      "path": "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "ref": "master",
+      "blobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+      "license": "CC BY 4.0",
+      "role": "primary Strong, morphology, lemma, transliteration, and English gloss inventory"
+    },
+    "morphgnt": {
+      "repository": "morphgnt/sblgnt",
+      "path": "63-Lk-morphgnt.txt",
+      "ref": "master",
+      "blobSha": "474e65703c49ef3890fca4b24403434ab6df6457",
+      "license": "Morphology and lemmatization CC BY-SA 3.0; SBLGNT text subject to repository notice",
+      "role": "independent SBLGNT token and lemma cross-check"
+    },
+    "koreanGloss": {
+      "repository": "parkminhyun0/bible-mindmap",
+      "path": "bible-mindmap/src/data/koreanGlossActive.js",
+      "ref": "main",
+      "role": "existing Korean Strong reuse measurement"
+    }
+  }
+}

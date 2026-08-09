@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "stage": "G0",
+  "generatedDate": "2026-08-09",
+  "pass": true,
+  "summary": {
+    "chapters": 24,
+    "verses": 1149,
+    "tagntSblTokenCount": 19405,
+    "tagntUniqueStrongCount": 2031,
+    "tagntUniqueLemmaCount": 2033,
+    "morphgntTokenCount": 19446,
+    "morphgntVerseCount": 1149,
+    "morphgntUniqueLemmaCount": 2046,
+    "tokenCountDeltaTagntMinusMorphgnt": -41,
+    "lemmaOnlyTagntCount": 183,
+    "lemmaOnlyMorphgntCount": 196,
+    "existingKoreanStrongCount": 52,
+    "newTranslationStrongCount": 1979,
+    "strongReuseRatePercent": 2.56,
+    "existingKoreanTokenCoverageCount": 351,
+    "existingKoreanTokenCoveragePercent": 1.81
+  },
+  "queueCounts": {
+    "high": 47,
+    "medium": 200,
+    "low": 1732
+  },
+  "diagnostics": {
+    "duplicateTokenCount": 0,
+    "excludedNonSblRows": 714,
+    "malformedLukeRows": 22,
+    "missingStrongCount": 0,
+    "missingLemmaCount": 0
+  },
+  "nextGate": "G1 payload schema, deterministic batch manifest, risk/audit contract, and verifier."
+}
