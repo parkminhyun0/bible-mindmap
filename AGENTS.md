@@ -24,6 +24,20 @@ Finish: verify → PR/CI → main → Pages/Live SHA → Notion/dashboard. User 
 - `MEMORY.md`: tiny index; no volatile status.
 Update `RESUME.json` after task switch, deployment verdict, or blocker change.
 
+## Lexicon track · mandatory shared check-in
+The 66-book Korean original-language lexicon is one long-running track inside the wider Bible Mind Map project; it must not silently replace other project priorities.
+
+For any lexicon translation, Strong, Evidence Packet, dictionary drawer, book usage layer, or 66-book rollout task:
+1. Read `docs/lexicon-workflow/TRACK_STATE.json`.
+2. Read `docs/lexicon-workflow/LLM_CHECKIN.md` and only the relevant section of `MASTER_WORKFLOW.md`.
+3. Check latest `main`, the active lexicon PR/CI/Pages, the Notion top dashboard, the 66-book lexicon dashboard, and the target book/batch card.
+4. Reconcile conflicts as GitHub code/schema/state → CI/Pages → Notion → chat history.
+5. Keep one owner per file and one in-flight implementation PR for dependent work.
+
+Default architecture: public/licensed sources → deterministic parsing → Evidence Packet → GPT candidate → verifier → Claude audit → Gemini disputes only → Jarvis integration → human exception/approval Gate. Ollama A/B, Mac model preflight, full-corpus Gemini retranslation, model majority vote, and pre-approval production writes are not default paths.
+
+Autonomous work may proceed through deterministic parsing, evidence/verifier/audit bundle generation, and GitHub-to-Notion status synchronization. Stop for unknown licenses, R3/R4 final wording, changes to approved meanings, unresolved conflicts, approval-registry promotion, production release, or live-screen confirmation.
+
 ## Safety
 Keep secrets/private data private. Ask before destructive, public, paid, scheduler/config, or sensitive production actions. Preserve existing configuration. Never load private memory in shared chats.
 
