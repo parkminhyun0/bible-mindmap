@@ -97,6 +97,6 @@ const pilot = normalizeAlignmentPayload({
 });
 assert.equal(pilot.records[0].schemaVersion, '1.0.0');
 assert.equal(pilot.records[0].status, 'verified');
-assert.equal(pilot.records[0].tokenId, 'gen.1.1.hot.2');
+assert.equal(pilot.records[0].tokenId, 'genesis.1.1.hot.2');
 
-console.log('✓ alignment loader verifier passed · ready/stale/checksum/missing/review/pilot');
+console.log('✓ alignment loader verifier passed · ready/stale/checksum/missing/review/pilot/alias');
