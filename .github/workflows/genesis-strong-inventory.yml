@@ -1,0 +1,123 @@
+name: Genesis Strong Inventory
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/genesis-strong-inventory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Parser self-test
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --self-test
+
+      - name: Build strict Genesis inventory
+        id: inventory
+        continue-on-error: true
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Publish report summary
+        if: always() && hashFiles('bible-mindmap/reports/genesis-strong-inventory.json') != ''
+        working-directory: bible-mindmap
+        env:
+          INVENTORY_OUTCOME: ${{ steps.inventory.outcome }}
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const report = JSON.parse(fs.readFileSync('reports/genesis-strong-inventory.json', 'utf8'))
+          const outcome = process.env.INVENTORY_OUTCOME || 'unknown'
+          const malformedSamples = [...new Map(
+            report.diagnostics.malformedLemma.map((item) => [item.lemma, item]),
+          ).values()].slice(0, 20)
+          const summary = {
+            outcome,
+            chapters: `${report.chaptersFound.length}/${report.expectedChapters}`,
+            missingChapters: report.missingChapters,
+            verses: report.verseCount,
+            words: report.wordCount,
+            strongAssignments: report.strongAssignmentCount,
+            uniqueStrong: report.uniqueStrongCount,
+            coverage: report.coverage,
+            diagnostics: {
+              nonStrongLemma: report.diagnostics.nonStrongLemma.length,
+              malformedLemma: report.diagnostics.malformedLemma.length,
+              malformedSamples,
+              wordsWithoutLemma: report.diagnostics.wordsWithoutLemma.length,
+              multiStrongWords: report.diagnostics.multiStrongWords.length,
+              baseDictionaryCollisions: report.diagnostics.dictionaryKeyCollisions.base.length,
+              activeDictionaryCollisions: report.diagnostics.dictionaryKeyCollisions.active.length,
+            },
+          }
+          console.log(JSON.stringify(summary, null, 2))
+
+          const sampleLines = malformedSamples.length
+            ? malformedSamples.map((item) => `- \`${item.lemma}\` · ${item.reference} · ${item.surface || '(표면형 없음)'}`)
+            : ['- 없음']
+          const markdown = [
+            '<!-- genesis-strong-inventory -->',
+            '## 창세기 G0 · Strong 전수 인벤토리',
+            '',
+            `- 엄격 검증: **${outcome}**`,
+            `- 장: **${summary.chapters}**${summary.missingChapters.length ? ` · 누락 ${summary.missingChapters.join(', ')}` : ''}`,
+            `- 절: **${summary.verses.toLocaleString()}**`,
+            `- OSHB 단어 토큰: **${summary.words.toLocaleString()}**`,
+            `- Strong 출현 할당: **${summary.strongAssignments.toLocaleString()}**`,
+            `- 고유 Strong: **${summary.uniqueStrong.toLocaleString()}**`,
+            `- 기존 기본 사전 보유: **${summary.coverage.base.toLocaleString()}**`,
+            `- 활성 확장 사전 보유: **${summary.coverage.activeExtension.toLocaleString()}**`,
+            `- 활성 사전 총 보유: **${summary.coverage.activeTotal.toLocaleString()}**`,
+            `- 신규 번역 필요: **${summary.coverage.missing.toLocaleString()}**`,
+            '',
+            '### 진단',
+            '',
+            `- 정상 비-Strong lemma: ${summary.diagnostics.nonStrongLemma.toLocaleString()}`,
+            `- 숫자 포함 파싱 실패 lemma: ${summary.diagnostics.malformedLemma.toLocaleString()}`,
+            `- lemma 없는 단어: ${summary.diagnostics.wordsWithoutLemma.toLocaleString()}`,
+            `- 복합 Strong 단어: ${summary.diagnostics.multiStrongWords.toLocaleString()}`,
+            `- 기본/활성 사전 키 충돌: ${summary.diagnostics.baseDictionaryCollisions}/${summary.diagnostics.activeDictionaryCollisions}`,
+            '',
+            '<details><summary>숫자 포함 파싱 실패 lemma 표본</summary>',
+            '',
+            ...sampleLines,
+            '',
+            '</details>',
+            '',
+            `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
+          ].join('\n')
+          fs.writeFileSync('reports/genesis-strong-inventory-summary.md', `${markdown}\n`)
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${markdown}\n`)
+          NODE
+
+      - name: Update pull request inventory comment
+        if: always() && github.event_name == 'pull_request' && hashFiles('bible-mindmap/reports/genesis-strong-inventory-summary.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: gh pr comment "$PR_NUMBER" --edit-last --create-if-none --body-file bible-mindmap/reports/genesis-strong-inventory-summary.md
+
+      - name: Enforce strict result
+        if: steps.inventory.outcome != 'success'
+        run: |
+          echo 'Genesis Strong inventory strict validation failed. See the generated summary above.'
+          exit 1
