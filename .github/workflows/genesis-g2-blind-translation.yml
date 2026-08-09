@@ -1,0 +1,109 @@
+name: Genesis G2 Blind Translation Contract
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
+      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/scripts/ai/providers/nvidia.mjs'
+      - 'bible-mindmap/scripts/ai/providers/openai.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/**'
+      - 'bible-mindmap/scripts/verify-genesis-g2-blind-translation.mjs'
+      - 'bible-mindmap/scripts/verify-ai-provider-boundary.mjs'
+      - '.github/workflows/genesis-g2-blind-translation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  blind-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild Genesis inventory and G1 manifest
+        working-directory: bible-mindmap
+        run: |
+          node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+          node scripts/build-genesis-translation-manifest.mjs
+          node scripts/verify-genesis-translation-contract.mjs --strict
+
+      - name: Rebuild G2 calibration batch
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-g2-calibration-batch.mjs
+          node scripts/verify-genesis-g2-calibration-batch.mjs --strict
+
+      - name: Materialize and verify pinned BDB packets
+        working-directory: bible-mindmap
+        run: |
+          node scripts/materialize-genesis-g2-bdb-packets.mjs
+          node scripts/verify-genesis-g2-bdb-packets.mjs --strict
+
+      - name: Generate NVIDIA blind dry-run envelopes
+        working-directory: bible-mindmap
+        run: node scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs --provider=nvidia
+
+      - name: Generate OpenAI blind dry-run envelopes
+        working-directory: bible-mindmap
+        run: node scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs --provider=openai
+
+      - name: Verify blind contract and provider boundary
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-genesis-g2-blind-translation.mjs
+          node scripts/verify-ai-provider-boundary.mjs
+
+      - name: Publish G2-2 summary
+        if: always()
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const base = 'reports/genesis-g2-blind-translation/summaries'
+          const lines = ['## 창세기 G2-2 · NVIDIA·GPT 블라인드 실행 계약']
+          for (const provider of ['nvidia', 'openai']) {
+            const path = `${base}/${provider}-dry-run.json`
+            if (!fs.existsSync(path)) {
+              lines.push(`- ${provider}: **dry-run 결과 없음**`)
+              continue
+            }
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'))
+            lines.push(`- ${provider}: envelope **${data.envelopesWritten}/${data.requested}**, API 호출 **0**, 서비스 쓰기 **차단**`)
+          }
+          lines.push(
+            '- 두 provider는 동일 sourceFingerprint를 사용하지만 서로 다른 jobId·출력 디렉터리를 사용합니다.',
+            '- 실제 실행은 GENESIS_G2_TRANSLATION_EXECUTION_ENABLED=1과 provider 비밀키가 모두 있어야 합니다.',
+            '- LEXICON_TRANSLATION_KILL_SWITCH=1이면 실행을 즉시 차단합니다.',
+            '- 다음: 별도 승인된 비밀 환경에서 5개 canary → 100개 교정 배치 순으로 실제 후보 생성',
+          )
+          const summary = lines.join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
+
+      - name: Upload G2-2 evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-g2-blind-translation-contract
+          path: |
+            bible-mindmap/reports/genesis-g2-bdb-source-packets.json
+            bible-mindmap/reports/genesis-g2-blind-translation/envelopes/
+            bible-mindmap/reports/genesis-g2-blind-translation/summaries/
+          if-no-files-found: warn
+          retention-days: 14
