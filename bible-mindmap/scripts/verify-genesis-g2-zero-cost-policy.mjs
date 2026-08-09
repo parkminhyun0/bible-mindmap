@@ -7,23 +7,29 @@ import { resolve } from 'node:path'
 const FILES = {
   workflow: '.github/workflows/genesis-g2-zero-cost.yml',
   builder: 'bible-mindmap/scripts/build-genesis-g2-zero-cost-bundle.mjs',
+  reviewBundle: 'bible-mindmap/scripts/build-genesis-g2-human-review-bundle.mjs',
+  contract: 'bible-mindmap/scripts/ai/lexicon/genesis-g2-translation-contract.mjs',
   runner: 'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-local-ollama.mjs',
   pipeline: 'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-zero-cost-pipeline.mjs',
   manualImporter: 'bible-mindmap/scripts/ai/lexicon/import-genesis-g2-zero-cost-manual.mjs',
   runbook: 'bible-mindmap/docs/genesis-g2-zero-cost-runbook.md',
   oneCommand: 'bible-mindmap/docs/genesis-g2-zero-cost-one-command.md',
+  hardening: 'bible-mindmap/docs/genesis-g2-human-review-hardening.md',
 }
 
 const read = (path) => readFileSync(resolve('..', path), 'utf8')
 const workflow = read(FILES.workflow)
 const builder = read(FILES.builder)
+const reviewBundle = read(FILES.reviewBundle)
+const contract = read(FILES.contract)
 const runner = read(FILES.runner)
 const pipeline = read(FILES.pipeline)
 const manualImporter = read(FILES.manualImporter)
 const runbook = read(FILES.runbook)
 const oneCommand = read(FILES.oneCommand)
-const runtime = [workflow, builder, runner, pipeline, manualImporter].join('\n')
-const all = [runtime, runbook, oneCommand].join('\n')
+const hardening = read(FILES.hardening)
+const runtime = [workflow, builder, reviewBundle, contract, runner, pipeline, manualImporter].join('\n')
+const all = [runtime, runbook, oneCommand, hardening].join('\n')
 
 for (const forbidden of [
   'api.openai.com',
@@ -63,9 +69,39 @@ for (const required of [
   "actualExecutionBackend: 'ollama-local'",
   'externalPaidApiUsed: false',
   'monetaryCostExpected: false',
+  'DEFAULT_NUM_CTX = 8192',
+  'DEFAULT_TEMPERATURE = 0',
+  'generationSettings',
 ]) {
   assert.ok(runner.includes(required), `local runner boundary missing: ${required}`)
-  assert.ok(pipeline.includes(required) || required === "actualExecutionBackend: 'ollama-local'", `pipeline boundary missing: ${required}`)
+  if (!["actualExecutionBackend: 'ollama-local'", 'DEFAULT_NUM_CTX = 8192', 'DEFAULT_TEMPERATURE = 0', 'generationSettings'].includes(required)) {
+    assert.ok(pipeline.includes(required), `pipeline boundary missing: ${required}`)
+  }
+}
+
+for (const required of [
+  'transliterationKo must be a Korean Hangul pronunciation',
+  'must contain Hangul',
+  'contains Chinese Han characters',
+  'confidence calibration invalid: every node is 1.0',
+  'required riskFlag missing',
+  "H430: Object.freeze(['theological-sensitive'])",
+  "H776: Object.freeze(['polysemy'])",
+  "H7307: Object.freeze(['polysemy', 'theological-sensitive'])",
+]) {
+  assert.ok(contract.includes(required), `candidate quality gate missing: ${required}`)
+}
+
+for (const required of [
+  'reports/genesis-g2-bdb-source-packets.json',
+  'reports/genesis-g2-canary-set.json',
+  'reports/genesis-g3-usage-context-packets.json',
+  'sourceIncluded: true',
+  'canaryIncluded: true',
+  'humanReviewRequired: true',
+  'finalApprovalAllowed: false',
+]) {
+  assert.ok(reviewBundle.includes(required), `human review bundle contract missing: ${required}`)
 }
 
 for (const required of [
@@ -99,6 +135,9 @@ assert.ok(runbook.includes('기존 NVIDIA·OpenAI 실행 경로는 선택형 보
 assert.ok(runbook.includes('api.openai.com'), 'runbook must name the blocked OpenAI endpoint family')
 assert.ok(oneCommand.includes('RUN-GENESIS-G2-ZERO-COST-CANARY'), 'one-command guide must state explicit local execution confirmation')
 assert.ok(oneCommand.includes('수동 JSON'), 'one-command guide must document the no-model manual route')
+assert.ok(hardening.includes('build-genesis-g2-human-review-bundle.mjs'), 'hardening guide must document the complete human review bundle')
+assert.ok(hardening.includes('temperature=0'), 'hardening guide must record the stable temperature')
+assert.ok(hardening.includes('num_ctx=8192'), 'hardening guide must record the stable context window')
 assert.ok(builder.includes("defaultMode: 'local-only'"), 'bundle default mode must be local-only')
 
-console.log('✓ Genesis G2 zero-cost policy verifier 통과 · runtime-files=5 · paid/cloud-api=blocked · secrets=0 · artifact=0 · local/manual=verified')
+console.log('✓ Genesis G2 zero-cost policy verifier 통과 · runtime-files=7 · paid/cloud-api=blocked · secrets=0 · artifact=0 · language/review-gates=verified')
