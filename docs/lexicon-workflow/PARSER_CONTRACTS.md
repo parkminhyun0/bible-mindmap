@@ -2,7 +2,7 @@
 
 ## 목적
 
-P2 첫 단위는 사전 구조를 LLM이 생성하지 못하도록 파서의 입력과 출력을 기계 계약으로 고정한다. 이 단계는 신규 번역을 만들지 않으며, `GEN-1-1-H776`의 기존 승인 구조를 `legacy-golden-adapter`로 변환해 26개 노드·순서·부모 관계가 무손실인지 확인한다.
+P2는 사전 구조를 LLM이 생성하지 못하도록 파서의 입력과 출력을 기계 계약으로 고정한다. 신규 번역을 만들지 않으며, `GEN-1-1-H776`의 기존 승인 구조를 `legacy-golden-adapter`로 변환해 26개 노드·순서·부모 관계가 무손실인지 확인한다.
 
 ## 입력 계약
 
@@ -20,7 +20,7 @@ parser identity/version/mode
 
 ### source-parse
 
-신규 후보 생성에 사용하려면 다음을 모두 만족해야 한다.
+실제 source tree 파싱에는 다음을 모두 요구한다.
 
 - Source Registry `approved-ready`
 - `autoProcessingAllowed=true`
@@ -28,7 +28,8 @@ parser identity/version/mode
 - source fingerprint 일치
 - `emitSourceText=true`
 - `allowTranslationSnapshot=false`
-- 제한 출처 0개
+- full text 저장과 파생물 권한 허용
+- 등록된 source adapter 존재
 
 ### legacy-golden-adapter
 
@@ -72,25 +73,66 @@ sourceLocator
 
 동일 입력은 항상 동일한 canonical SHA-256 출력을 만들어야 한다.
 
+## Source-neutral driver
+
+`lexicon-source-driver.mjs`는 출처 파일 형식이나 특정 Strong을 직접 알지 않는다. 출처별 구현은 `lexicon-source-adapters.mjs`에서 adapter로 등록하며, driver core는 다음 정보만으로 라우팅한다.
+
+```text
+Parser Input fingerprint
++ Source Registry workflow/license/fingerprint
++ source-driver-policy.json
++ registered adapter metadata
+→ preflight report
+→ allowed adapter execution 또는 fail-closed
+```
+
+현재 등록된 운영 adapter는 `h776-legacy-golden-v1` 하나이며 회귀 전용이다. driver core에는 H776 또는 Open Scriptures source ID가 존재하지 않으며 CLI 입력 경로도 반드시 명시해야 한다.
+
+`source-driver-policy.json`은 현재 다음을 고정한다.
+
+- `candidateGenerationEnabled=false`
+- 회귀 adapter 실행만 허용
+- source-parse는 `approved-ready`, 자동 처리 허용, 라이선스 승인, source fingerprint, full-text 저장·파생 권한, 등록 adapter를 모두 요구
+- 승인된 축약 사전 TBESH도 full-definition adapter가 없으면 `ADAPTER_NOT_REGISTERED`로 차단
+
+`SourceDriverReport.schema.json`은 preflight·execute 결과를 다음과 같이 기록한다.
+
+- 선택 route: `legacy-adapter | source-parser | blocked`
+- 선택 adapter ID
+- Registry·license·fingerprint snapshot
+- 실행 허용 여부
+- candidate generation 허용 여부
+- blocker code 목록
+- parser output fingerprint 연결
+- canonical report fingerprint
+
 ## 자동 검증
 
-`verify-lexicon-parser-contract.mjs`와 `Lexicon Parser Contract` CI는 다음을 차단한다.
+`verify-lexicon-parser-contract.mjs`, `verify-lexicon-source-driver.mjs`, `Lexicon Parser Contract` CI는 다음을 차단한다.
 
 - 차단 출처의 candidate-generation 사용
 - parser mode·usage policy·source fingerprint 불일치
+- parser ID 또는 input fingerprint 변조
+- 등록되지 않았거나 복수로 매칭되는 adapter
+- 승인됐지만 full-definition adapter가 없는 TBESH를 BDB 대체물로 사용
 - 계층·순서·부모·깊이 변경
 - H776 26개 노드 또는 번역 snapshot 변경
 - legacy adapter가 source text를 읽었다고 주장
-- 동일 입력의 비결정적 출력
-- input/output fingerprint 불일치
+- 동일 입력의 비결정적 preflight·출력
+- input/output/report fingerprint 불일치
+
+CI는 H776 driver report와 parser output을 artifact로 보존한다. 합성 approved-ready source와 주입 adapter는 인터페이스 검증에만 사용하며 저장소 출처나 번역 데이터로 등록하지 않는다.
 
 ## 현재 제한과 다음 단계
 
-이 계약은 full BDB 신규 번역을 허용하지 않는다. 명시적 라이선스가 있는 full BDB primary source가 `approved-ready`가 되기 전까지 H776 adapter는 회귀 전용이다.
+이 계약과 driver는 full BDB 신규 번역을 허용하지 않는다. 명시적 라이선스가 있는 full-definition primary source가 `approved-ready`가 되기 전까지 `candidateGenerationEnabled=false`를 유지한다.
 
-다음 P2 단위는 다음 중 하나다.
+다음 P2 단위는 다음 순서다.
 
-1. 사용 가능한 full BDB primary source의 명시적 권리 확보와 Source Registry 승격
-2. source-neutral parser driver 인터페이스를 구현하고, 승인된 축약 자료(TBESH)는 Strong·축약 의미 대조에만 사용
+1. full-definition BDB 계열 primary source의 라이선스·판본·파생물·저장·LLM 입력 권한을 결정
+2. 승인 가능한 출처가 있으면 Source Registry에 고정 commit·canonical fingerprint를 등록
+3. 해당 형식의 source adapter를 별도 파일로 구현
+4. 실제 H776 source tree를 regression-only로 파싱해 legacy 26개 노드와 차이표 생성
+5. 사람 Gate 전에는 candidate generation과 운영 쓰기를 계속 차단
 
 어느 경우에도 기존 H776 한국어 번역을 새 원문 파싱 결과로 가장하지 않는다.
