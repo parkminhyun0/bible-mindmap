@@ -6,8 +6,15 @@ import {
   verifyTokenChecksum,
 } from '../data/translationAlignmentContract.js';
 
+const TOKEN_BOOK_ALIASES = Object.freeze({
+  gen: 'genesis',
+});
+
 export function normalizeAlignmentTokenId(value) {
-  return String(value || '').trim().toLowerCase();
+  const parts = String(value || '').trim().toLowerCase().split('.');
+  if (!parts[0]) return '';
+  parts[0] = TOKEN_BOOK_ALIASES[parts[0]] || parts[0];
+  return parts.join('.');
 }
 
 function spanFromPilot(value) {
