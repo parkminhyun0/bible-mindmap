@@ -1,0 +1,66 @@
+name: Genesis G4 Theology Audit Contract
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/build-genesis-g4-theology-audit.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g4-theology-audit.mjs'
+      - '.github/workflows/genesis-g4-theology-audit-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  theology-audit-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Builder self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g4-theology-audit.mjs --self-test
+
+      - name: Verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g4-theology-audit.mjs --self-test
+
+      - name: Verify authority and approval boundaries
+        run: |
+          builder='bible-mindmap/scripts/build-genesis-g4-theology-audit.mjs'
+          verifier='bible-mindmap/scripts/verify-genesis-g4-theology-audit.mjs'
+          grep -q 'scripture-original-context' "$builder"
+          grep -q 'reformed-confessional-guardrail' "$builder"
+          grep -q 'model-output-advisory-only' "$builder"
+          grep -q 'WCF 1.9' "$builder"
+          grep -q 'Belgic 7' "$builder"
+          grep -q 'Heidelberg 53' "$builder"
+          grep -q "H430.*R4\|forcedRisk: 'R4'" "$builder"
+          grep -q "H7307" "$builder"
+          grep -q 'pending-human-audit' "$builder"
+          grep -q 'automaticTheologyApprovalAllowed: false' "$builder"
+          grep -q 'productionWriteAllowed: false' "$builder"
+          grep -q 'finalApprovalAllowed: false' "$builder"
+          grep -q 'H430 must be R4' "$verifier"
+          grep -q 'H7307 must be R4' "$verifier"
+
+      - name: Publish contract summary
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## 창세기 G4-0 · 개혁주의 신학 감사 계약
+          - 최상위 권위: **성경 원문·문법·문맥**
+          - 성경의 유비·점진적 계시: **보조 해석 원리**
+          - 웨스트민스터 1차·벨직/하이델베르크/도르트 교차점: **교리 안전선**
+          - BDB 의미 계층: **사전 구조 보존**
+          - AI 결과: **검토 보조 자료**
+          - H430·H7307: **R4 집중 신학 검토**
+          - 자동 신학 승인·서비스 쓰기·최종 승인: **금지**
+          - 실제 후보 감사: **후보 생성 후 수행**
+          EOF
