@@ -4,19 +4,20 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-const FILES = [
-  '.github/workflows/genesis-g2-zero-cost.yml',
-  'bible-mindmap/scripts/build-genesis-g2-zero-cost-bundle.mjs',
-  'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-local-ollama.mjs',
-  'bible-mindmap/docs/genesis-g2-zero-cost-runbook.md',
-]
+const FILES = {
+  workflow: '.github/workflows/genesis-g2-zero-cost.yml',
+  builder: 'bible-mindmap/scripts/build-genesis-g2-zero-cost-bundle.mjs',
+  runner: 'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-local-ollama.mjs',
+  runbook: 'bible-mindmap/docs/genesis-g2-zero-cost-runbook.md',
+}
 
 const read = (path) => readFileSync(resolve('..', path), 'utf8')
-const workflow = read(FILES[0])
-const builder = read(FILES[1])
-const runner = read(FILES[2])
-const runbook = read(FILES[3])
-const combined = [workflow, builder, runner, runbook].join('\n')
+const workflow = read(FILES.workflow)
+const builder = read(FILES.builder)
+const runner = read(FILES.runner)
+const runbook = read(FILES.runbook)
+const runtime = [workflow, builder, runner].join('\n')
+const all = [runtime, runbook].join('\n')
 
 for (const forbidden of [
   'api.openai.com',
@@ -26,7 +27,7 @@ for (const forbidden of [
   'secrets.OPENAI_API_KEY',
   'secrets.OLLAMA_API_KEY',
 ]) {
-  assert.ok(!combined.includes(forbidden), `zero-cost path contains forbidden external paid dependency: ${forbidden}`)
+  assert.ok(!runtime.includes(forbidden), `zero-cost runtime contains forbidden external paid dependency: ${forbidden}`)
 }
 
 assert.ok(workflow.includes('runs-on: ubuntu-latest'), 'zero-cost verification must use a standard public-repository runner')
@@ -41,7 +42,7 @@ for (const required of [
   'apiKeysRequired: false',
   'productionWriteAllowed: false',
 ]) {
-  assert.ok(combined.includes(required), `zero-cost contract missing: ${required}`)
+  assert.ok(all.includes(required), `zero-cost contract missing: ${required}`)
 }
 
 for (const required of [
@@ -56,6 +57,7 @@ for (const required of [
 
 assert.ok(runbook.includes('외부 유료 API 호출: 0'), 'runbook must state zero paid API calls')
 assert.ok(runbook.includes('기존 NVIDIA·OpenAI 실행 경로는 선택형 보관'), 'runbook must separate optional paid path')
+assert.ok(runbook.includes('api.openai.com'), 'runbook must name the blocked OpenAI endpoint family')
 assert.ok(builder.includes("defaultMode: 'local-only'"), 'bundle default mode must be local-only')
 
-console.log(`✓ Genesis G2 zero-cost policy verifier 통과 · files=${FILES.length} · paid-api=blocked · secrets=0 · artifact=0`)
+console.log(`✓ Genesis G2 zero-cost policy verifier 통과 · runtime-files=3 · paid-api=blocked · secrets=0 · artifact=0`)
