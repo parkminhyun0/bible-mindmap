@@ -5,8 +5,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   getLexiconTranslation,
+  isLexiconTranslationDisplayable,
+  LEXICON_TRANSLATION_BLOCKED_STATUSES,
+  LEXICON_TRANSLATION_DISPLAY_STATUSES,
   LEXICON_TRANSLATION_PILOT,
   normalizeLexiconTranslationStrong,
+  resolveLexiconTranslationDisplayState,
+  validateLexiconTranslationDisplayRecord,
 } from '../src/data/lexiconTranslationPilot.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +37,34 @@ assert.equal(translation.reviewStatus, 'pilot-reviewed');
 assert.ok(translation.originKo);
 assert.equal(translation.twot.entry, '167');
 assert.equal(translation.partOfSpeechKo, '여성 명사');
+assert.equal(validateLexiconTranslationDisplayRecord(translation, 'H0776').valid, true);
+assert.equal(isLexiconTranslationDisplayable(translation, 'H776'), true);
+assert.equal(resolveLexiconTranslationDisplayState('H0776').status, 'ready');
+assert.equal(resolveLexiconTranslationDisplayState('H0776').displayAllowed, true);
+
+const candidateFixture = {
+  ...translation,
+  strong: 'H430',
+  lemma: 'אֱלֹהִים',
+  translitKo: '엘로힘',
+  reviewStatus: 'blind-candidate',
+};
+for (const status of LEXICON_TRANSLATION_BLOCKED_STATUSES) {
+  const record = { ...candidateFixture, reviewStatus: status };
+  const state = resolveLexiconTranslationDisplayState('H430', { H430: record });
+  assert.equal(state.status, 'pending-review', `${status} must remain pending`);
+  assert.equal(state.displayAllowed, false, `${status} must not display`);
+  assert.equal(state.translation, null, `${status} must not return candidate payload`);
+  assert.equal(isLexiconTranslationDisplayable(record, 'H430'), false);
+}
+for (const status of LEXICON_TRANSLATION_DISPLAY_STATUSES) {
+  const record = { ...candidateFixture, reviewStatus: status };
+  assert.equal(isLexiconTranslationDisplayable(record, 'H430'), true, `${status} must display`);
+  assert.equal(resolveLexiconTranslationDisplayState('H430', { H430: record }).status, 'ready');
+}
+const invalidFixture = { ...candidateFixture, reviewStatus: 'human-reviewed', definition: [{ id: '1', text: '' }] };
+assert.equal(resolveLexiconTranslationDisplayState('H430', { H430: invalidFixture }).status, 'blocked-invalid');
+assert.equal(resolveLexiconTranslationDisplayState('H9999').messageKo, '번역 데이터 준비 중');
 
 const nodes = collectNodes(translation.definition);
 assert.equal(nodes.length, 26);
@@ -69,4 +102,4 @@ const mainPath = path.join(ROOT, 'src', 'main.jsx');
 const mainSource = fs.readFileSync(mainPath, 'utf8');
 assert.ok(mainSource.includes('installLexiconTranslationPilotBridge()'), 'main bootstrap is missing pilot bridge');
 
-console.log(`✓ lexicon translation pilot verifier passed · entries=1 · nodes=${nodes.length} · strong=H776 · outline=BDB`);
+console.log(`✓ lexicon translation display gate passed · displayStatuses=${LEXICON_TRANSLATION_DISPLAY_STATUSES.length} · blockedStatuses=${LEXICON_TRANSLATION_BLOCKED_STATUSES.length} · entries=1 · nodes=${nodes.length}`);
