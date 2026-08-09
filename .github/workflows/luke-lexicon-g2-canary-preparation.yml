@@ -9,6 +9,7 @@ on:
       - 'bible-mindmap/data/lexicon/luke-g0-source-lock.json'
       - 'bible-mindmap/data/lexicon/luke-g1-manifest.json'
       - 'bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs'
+      - 'bible-mindmap/scripts/materialize-luke-g2-canary-preparation.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-canary-preparation.mjs'
       - '.github/workflows/luke-lexicon-g2-canary-preparation.yml'
       - 'memory/RESUME.json'
@@ -22,6 +23,7 @@ on:
       - 'bible-mindmap/data/lexicon/luke-g2-report.json'
       - 'bible-mindmap/docs/luke-g2-canary-preparation.md'
       - 'bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs'
+      - 'bible-mindmap/scripts/materialize-luke-g2-canary-preparation.mjs'
       - 'bible-mindmap/scripts/verify-luke-g2-canary-preparation.mjs'
       - '.github/workflows/luke-lexicon-g2-canary-preparation.yml'
       - 'memory/RESUME.json'
@@ -57,9 +59,9 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/verify-luke-g2-canary-preparation.mjs --self-test
 
-      - name: Build pinned source and context packets
+      - name: Materialize pinned source and context packets
         working-directory: bible-mindmap
-        run: node scripts/build-luke-g2-canary-preparation.mjs
+        run: node scripts/materialize-luke-g2-canary-preparation.mjs
 
       - name: Verify selection, source, context and execution Gate
         working-directory: bible-mindmap
