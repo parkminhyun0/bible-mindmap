@@ -1,0 +1,77 @@
+name: Luke Lexicon G2 Zero-Cost Harness
+
+on:
+  push:
+    branches:
+      - chatgpt/luke-g2-zero-cost-local-harness
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
+      - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
+      - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs'
+      - 'bible-mindmap/scripts/build-luke-g2-zero-cost-bundle.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-local-results.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-zero-cost-policy.mjs'
+      - 'bible-mindmap/docs/luke-g2-zero-cost-runbook.md'
+      - '.github/workflows/luke-lexicon-g2-zero-cost.yml'
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
+      - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
+      - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
+      - 'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs'
+      - 'bible-mindmap/scripts/build-luke-g2-zero-cost-bundle.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-local-results.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-zero-cost-policy.mjs'
+      - 'bible-mindmap/docs/luke-g2-zero-cost-runbook.md'
+      - '.github/workflows/luke-lexicon-g2-zero-cost.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luke-g2-zero-cost-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-offline-harness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Contract and runner self-tests
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-luke-g2-zero-cost-bundle.mjs --self-test
+          node scripts/ai/lexicon/run-luke-g2-local-ollama.mjs --self-test
+          node scripts/verify-luke-g2-local-results.mjs --self-test
+
+      - name: Verify zero-cost policy
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-g2-zero-cost-policy.mjs
+
+      - name: Build deterministic bundle from committed preparation
+        working-directory: bible-mindmap
+        run: node scripts/build-luke-g2-zero-cost-bundle.mjs --output=/tmp/luke-g2-zero-cost-bundle
+
+      - name: Assert bundle remains blocked
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const manifest = JSON.parse(fs.readFileSync('/tmp/luke-g2-zero-cost-bundle/bundle-manifest.json', 'utf8'))
+          if (manifest.counts.strongs !== 10) throw new Error(`strongs=${manifest.counts.strongs}`)
+          if (manifest.counts.contexts !== 70) throw new Error(`contexts=${manifest.counts.contexts}`)
+          if (manifest.counts.manualTemplates !== 20) throw new Error(`templates=${manifest.counts.manualTemplates}`)
+          if (manifest.execution.executionAllowed !== false) throw new Error('execution must remain blocked')
+          if (manifest.execution.externalPaidApiAllowed !== false) throw new Error('paid API must remain blocked')
+          if (manifest.execution.apiKeysRequired !== false) throw new Error('API keys must not be required')
+          console.log('✓ Luke G2 bundle: 10 Strong · 70 contexts · 20 templates · execution blocked')
+          NODE
