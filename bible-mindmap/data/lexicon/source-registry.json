@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "policyVersion": "2026.08.09-g2.0",
+  "project": "bible-mindmap-lexicon-ko",
+  "governance": {
+    "theologicalFramework": "reformed-westminster-primary",
+    "sourceTextPrecedence": [
+      "openscriptures-hebrewlexicon-bdb",
+      "unfoldingword-bdb-enhanced",
+      "stepbible-tbesh",
+      "openscriptures-strongs"
+    ],
+    "unknownLicenseBlocksAiInput": true,
+    "unknownLicenseBlocksRedistribution": true
+  },
+  "sources": [
+    {
+      "id": "openscriptures-hebrewlexicon-bdb",
+      "title": "Open Scriptures Hebrew Lexicon · Brown-Driver-Briggs",
+      "role": "primary-source",
+      "scope": "OT Hebrew and Aramaic full BDB hierarchy",
+      "sourceUrl": "https://github.com/openscriptures/HebrewLexicon",
+      "files": [
+        "BrownDriverBriggs.xml",
+        "LexicalIndex.xml",
+        "BDBPartsOfSpeech.xml",
+        "AugIndex.xml"
+      ],
+      "licenseStatus": "verified-public-or-permitted",
+      "license": "CC BY 4.0 for repository files; underlying BDB and Strong text public domain",
+      "allowedUses": [
+        "download",
+        "parse",
+        "ai-input",
+        "derived-translation",
+        "redistribute-derived-data"
+      ],
+      "attribution": "Open Scriptures Hebrew Bible Project",
+      "verbatimStorage": "allowed-with-attribution",
+      "notes": "LexicalIndex bridges Strong, BDB and TWOT identifiers. BrownDriverBriggs.xml is the primary definition hierarchy source."
+    },
+    {
+      "id": "unfoldingword-bdb-enhanced",
+      "title": "unfoldingWord Hebrew and Aramaic Lexicon · Enhanced BDB",
+      "role": "secondary-sense-boundary-qa",
+      "scope": "OT Hebrew and Aramaic sense, stem and subsense boundaries",
+      "sourceUrl": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced",
+      "files": [],
+      "licenseStatus": "verified-public-or-permitted",
+      "license": "Base BDB public domain; unfoldingWord enhancements CC BY 4.0",
+      "allowedUses": [
+        "download",
+        "parse",
+        "ai-input",
+        "internal-validation",
+        "derived-translation"
+      ],
+      "attribution": "unfoldingWord",
+      "verbatimStorage": "allowed-with-attribution",
+      "notes": "Used to cross-check sense boundaries, not to override the primary BDB hierarchy automatically."
+    },
+    {
+      "id": "stepbible-tbesh",
+      "title": "STEPBible TBESH · Translators Brief lexicon of Extended Strongs for Hebrew",
+      "role": "secondary-abridged-control",
+      "scope": "OT Hebrew abridged BDB and extended Strong mapping",
+      "sourceUrl": "https://github.com/STEPBible/STEPBible-Data",
+      "files": [],
+      "licenseStatus": "verified-public-or-permitted",
+      "license": "CC BY 4.0",
+      "allowedUses": [
+        "download",
+        "parse",
+        "ai-input",
+        "internal-validation",
+        "derived-translation"
+      ],
+      "attribution": "STEPBible.org",
+      "verbatimStorage": "allowed-with-attribution",
+      "notes": "Abridged control only. It must not replace full BDB nodes."
+    },
+    {
+      "id": "openscriptures-strongs",
+      "title": "Open Scriptures Strong's dictionaries",
+      "role": "fallback-brief-definition",
+      "scope": "Brief Hebrew and Greek Strong definitions",
+      "sourceUrl": "https://github.com/openscriptures/strongs",
+      "files": [],
+      "licenseStatus": "verified-public-or-permitted",
+      "license": "Public domain source text",
+      "allowedUses": [
+        "download",
+        "parse",
+        "ai-input",
+        "derived-translation",
+        "redistribute-derived-data"
+      ],
+      "attribution": "Open Scriptures",
+      "verbatimStorage": "allowed",
+      "notes": "Fallback and identity aid only; not a substitute for full BDB hierarchy."
+    },
+    {
+      "id": "korean-ot-nt-dictionary",
+      "title": "한국어 구약·신약사전 대조군",
+      "role": "internal-validation",
+      "scope": "Korean theological and biblical terminology control corpus",
+      "sourceUrl": null,
+      "files": [],
+      "licenseStatus": "unknown",
+      "license": "unresolved",
+      "allowedUses": [],
+      "attribution": null,
+      "verbatimStorage": "blocked",
+      "notes": "Exact edition and permission must be registered before AI input, storage, quotation or redistribution. Until then it cannot unlock final approval."
+    }
+  ]
+}
