@@ -5,6 +5,7 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'bible-mindmap/scripts/compute-lexicon-source-fingerprints.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-source-registry.yml'
@@ -14,6 +15,7 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'bible-mindmap/scripts/compute-lexicon-source-fingerprints.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-source-registry.yml'
@@ -37,3 +39,26 @@ jobs:
       - name: Verify Source Registry license and reproducibility gate
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-source-registry.mjs
+      - name: Fingerprint algorithm self-test
+        working-directory: bible-mindmap
+        run: node scripts/compute-lexicon-source-fingerprints.mjs --self-test
+
+  fingerprint:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Compute and verify pinned source fingerprints
+        working-directory: bible-mindmap
+        run: node scripts/compute-lexicon-source-fingerprints.mjs --write=reports/lexicon-source-fingerprints.json
+      - name: Upload fingerprint evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: lexicon-source-fingerprints
+          path: bible-mindmap/reports/lexicon-source-fingerprints.json
+          if-no-files-found: error
+          retention-days: 30
