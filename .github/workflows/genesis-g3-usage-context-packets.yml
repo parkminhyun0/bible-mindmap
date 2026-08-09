@@ -1,0 +1,112 @@
+name: Genesis G3 Usage Context Packets
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
+      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
+      - 'bible-mindmap/scripts/build-genesis-g3-usage-context-packets.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g3-usage-context-packets.mjs'
+      - '.github/workflows/genesis-g3-usage-context-packets.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  usage-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild Genesis inventory and G1 manifest
+        working-directory: bible-mindmap
+        run: |
+          node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+          node scripts/build-genesis-translation-manifest.mjs
+          node scripts/verify-genesis-translation-contract.mjs --strict
+
+      - name: Rebuild G2 calibration batch and BDB packets
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-g2-calibration-batch.mjs
+          node scripts/verify-genesis-g2-calibration-batch.mjs --strict
+          node scripts/materialize-genesis-g2-bdb-packets.mjs
+          node scripts/verify-genesis-g2-bdb-packets.mjs --strict
+
+      - name: Builder self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g3-usage-context-packets.mjs --self-test
+
+      - name: Verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g3-usage-context-packets.mjs --self-test
+
+      - name: Build actual Genesis usage context packets
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g3-usage-context-packets.mjs
+
+      - name: Strictly verify 100 usage context packets
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g3-usage-context-packets.mjs --strict
+
+      - name: Publish G3-0 summary
+        if: always()
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const path = 'reports/genesis-g3-usage-context-packets.json'
+          const lines = ['## 창세기 G3-0 · 실제 용례·문맥 패킷']
+          if (!fs.existsSync(path)) {
+            lines.push('- 결과 파일: **미생성**')
+          } else {
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'))
+            const top = [...data.packets]
+              .sort((a, b) => b.totalOccurrences - a.totalOccurrences)
+              .slice(0, 10)
+            lines.push(
+              `- 대상 Strong: **${data.counts.requested}개**`,
+              `- 준비 완료: **${data.counts.ready}개**`,
+              `- 차단: **${data.counts.blocked}개**`,
+              `- 창세기 출현 증거: **${data.counts.occurrences.toLocaleString()}건**`,
+              `- 대표 문맥 표본: **${data.counts.sampledContexts.toLocaleString()}건**`,
+              `- 포함 장: **${data.counts.chapters}/50장**`,
+              `- 문맥 window: 좌우 **${data.source.windowRadius} token**`,
+              '- 번역 후보 포함: **아니오**',
+              '- 서비스 데이터 쓰기·최종 승인: **차단**',
+              '',
+              '### 출현 빈도 상위 10개',
+              ...top.map((item) => `- ${item.strong}: ${item.totalOccurrences.toLocaleString()}회 · ${item.chapters.length}장`),
+            )
+          }
+          const summary = lines.join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
+
+      - name: Upload G3-0 evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-g3-usage-context-packets
+          path: |
+            bible-mindmap/reports/genesis-strong-inventory.json
+            bible-mindmap/reports/genesis-g2-calibration-batch.json
+            bible-mindmap/reports/genesis-g2-bdb-source-packets.json
+            bible-mindmap/reports/genesis-g3-usage-context-packets.json
+          if-no-files-found: warn
+          retention-days: 14
