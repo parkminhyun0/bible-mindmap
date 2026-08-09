@@ -1,1 +1,308 @@
-{"$schema":"./schemas/SourceRegistry.schema.json","schemaVersion":1,"registryId":"lexicon-source-registry","policyVersion":"1.0","project":"bible-mindmap-lexicon-ko","governance":{"theologicalFramework":"reformed-westminster-primary","sourceTextPrecedence":["unfoldingword-bdb-enhanced","stepbible-tbesh"],"unknownLicenseBlocksAiInput":true,"unknownLicenseBlocksRedistribution":true},"sources":[{"sourceId":"openscriptures-hebrewlexicon-bdb","title":"Open Scriptures Hebrew Lexicon · Brown-Driver-Briggs","role":"candidate-primary-source-after-license-resolution","scope":"OT Hebrew and Aramaic full BDB hierarchy with Strong and TWOT links","sourceTypes":["lexicon","metadata"],"canon":"old-testament","languages":["hebrew","aramaic","english"],"license":{"status":"unknown","expression":"unresolved-repository-license","licenseUrl":null,"attributionRequired":false,"attributionText":null,"changeNoticeRequired":false,"derivativeAllowed":false,"redistributionAllowed":false,"externalLlmInputAllowed":false,"fullTextStorageAllowed":false},"provenance":{"officialUrl":"https://github.com/openscriptures/HebrewLexicon","repositoryUrl":"https://github.com/openscriptures/HebrewLexicon","datasetPaths":["BrownDriverBriggs.xml","LexicalIndex.xml","BDBPartsOfSpeech.xml","AugIndex.xml"],"versionStrategy":"git-commit","version":"21c9add13bc727d3a951361778e97e3ff7afd1ce","contentHash":null,"retrievedAt":null},"workflow":{"status":"blocked","autoProcessingAllowed":false,"existingUse":"planned","notes":"기초 BDB 본문은 퍼블릭 도메인이지만 저장소 수정·편집물의 명시적 라이선스를 확인하기 전에는 AI 입력·저장·재배포에 사용하지 않는다."}},{"sourceId":"unfoldingword-bdb-enhanced","title":"unfoldingWord Hebrew and Aramaic Lexicon · Enhanced BDB","role":"primary-sense-boundary-and-structure-source","scope":"OT Hebrew and Aramaic BDB sense, stem and subsense boundaries","sourceTypes":["lexicon","metadata"],"canon":"old-testament","languages":["hebrew","aramaic","english"],"license":{"status":"approved","expression":"Public-Domain + CC-BY-4.0","licenseUrl":"https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced","attributionRequired":true,"attributionText":"unfoldingWord/Brown-Driver-Briggs-Enhanced","changeNoticeRequired":true,"derivativeAllowed":true,"redistributionAllowed":true,"externalLlmInputAllowed":true,"fullTextStorageAllowed":true},"provenance":{"officialUrl":"https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced","repositoryUrl":"https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced","datasetPaths":["Entries/","json_output/","bdbToStrongsMapping.csv"],"versionStrategy":"git-commit","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"approved-pending-fingerprint","autoProcessingAllowed":false,"existingUse":"planned","notes":"의미 경계와 계층의 주 구조 자료 후보다. 고정 commit과 대상 파일 SHA-256을 기록한 뒤 새 Evidence Packet에 사용한다."}},{"sourceId":"stepbible-tbesh","title":"STEPBible TBESH · Translators Brief Lexicon of Extended Strongs for Hebrew","role":"secondary-abridged-control","scope":"OT Hebrew abridged BDB and Extended Strong mapping","sourceTypes":["lexicon","metadata"],"canon":"old-testament","languages":["hebrew","aramaic","english"],"license":{"status":"approved","expression":"CC-BY-4.0","licenseUrl":"https://github.com/STEPBible/STEPBible-Data","attributionRequired":true,"attributionText":"STEP Bible (www.STEPBible.org)","changeNoticeRequired":true,"derivativeAllowed":true,"redistributionAllowed":true,"externalLlmInputAllowed":true,"fullTextStorageAllowed":true},"provenance":{"officialUrl":"https://github.com/STEPBible/STEPBible-Data","repositoryUrl":"https://github.com/STEPBible/STEPBible-Data","datasetPaths":["Lexicons/TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"],"versionStrategy":"git-commit","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"approved-pending-fingerprint","autoProcessingAllowed":false,"existingUse":"planned","notes":"축약 대조와 Extended Strong 정렬에 사용한다. full BDB 계층을 대체하지 않는다."}},{"sourceId":"openscriptures-strongs","title":"Open Scriptures Strong's Dictionaries","role":"fallback-brief-definition-after-license-resolution","scope":"Brief Hebrew and Greek Strong definitions","sourceTypes":["lexicon","metadata"],"canon":"both","languages":["hebrew","greek","english"],"license":{"status":"unknown","expression":"unresolved-repository-license","licenseUrl":null,"attributionRequired":false,"attributionText":null,"changeNoticeRequired":false,"derivativeAllowed":false,"redistributionAllowed":false,"externalLlmInputAllowed":false,"fullTextStorageAllowed":false},"provenance":{"officialUrl":"https://github.com/openscriptures/strongs","repositoryUrl":"https://github.com/openscriptures/strongs","datasetPaths":["hebrew/","greek/","strongs-dictionary.xhtml"],"versionStrategy":"git-commit","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"blocked","autoProcessingAllowed":false,"existingUse":"planned","notes":"Strong 원전의 퍼블릭 도메인 여부와 별개로 저장소 편집물의 명시적 라이선스를 확인하기 전에는 자동 입력에 사용하지 않는다."}},{"sourceId":"korean-ot-nt-dictionary","title":"한국어 구약·신약사전 대조군","role":"internal-validation-placeholder","scope":"Korean theological and biblical terminology control corpus","sourceTypes":["lexicon","translation"],"canon":"both","languages":["korean"],"license":{"status":"unknown","expression":"unresolved","licenseUrl":null,"attributionRequired":false,"attributionText":null,"changeNoticeRequired":false,"derivativeAllowed":false,"redistributionAllowed":false,"externalLlmInputAllowed":false,"fullTextStorageAllowed":false},"provenance":{"officialUrl":null,"repositoryUrl":null,"datasetPaths":[],"versionStrategy":"unresolved","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"blocked","autoProcessingAllowed":false,"existingUse":"none","notes":"정확한 판본·출처·권한을 등록하기 전에는 AI 입력, 저장, 인용, 재배포 및 최종 승인 해제에 사용할 수 없다."}},{"sourceId":"stepbible-tagnt","title":"Translators Amalgamated Greek New Testament","role":"nt-original-text-morphology-and-alignment","scope":"Greek NT text, morphology, Extended Strong and context-sensitive alignment","sourceTypes":["original-text","morphology","alignment"],"canon":"new-testament","languages":["greek","english"],"license":{"status":"approved","expression":"CC-BY-4.0","licenseUrl":"https://github.com/STEPBible/STEPBible-Data","attributionRequired":true,"attributionText":"STEP Bible (www.STEPBible.org)","changeNoticeRequired":true,"derivativeAllowed":true,"redistributionAllowed":true,"externalLlmInputAllowed":true,"fullTextStorageAllowed":true},"provenance":{"officialUrl":"https://github.com/STEPBible/STEPBible-Data","repositoryUrl":"https://github.com/STEPBible/STEPBible-Data","datasetPaths":["Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt","Translators Amalgamated OT+NT/TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt"],"versionStrategy":"git-commit","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"approved-pending-fingerprint","autoProcessingAllowed":false,"existingUse":"legacy-build","notes":"현재 build-lexicon 경로에서 사용 중이다. 새 Evidence Packet 입력은 원본 commit과 파일 SHA-256을 고정한 뒤 허용한다."}},{"sourceId":"stepbible-tahot","title":"Translators Amalgamated Hebrew Old Testament","role":"ot-original-text-morphology-and-alignment","scope":"Hebrew and Aramaic OT text, morphology, Extended Strong and alignment","sourceTypes":["original-text","morphology","alignment"],"canon":"old-testament","languages":["hebrew","aramaic","english"],"license":{"status":"approved","expression":"CC-BY-4.0","licenseUrl":"https://github.com/STEPBible/STEPBible-Data","attributionRequired":true,"attributionText":"STEP Bible (www.STEPBible.org)","changeNoticeRequired":true,"derivativeAllowed":true,"redistributionAllowed":true,"externalLlmInputAllowed":true,"fullTextStorageAllowed":true},"provenance":{"officialUrl":"https://github.com/STEPBible/STEPBible-Data","repositoryUrl":"https://github.com/STEPBible/STEPBible-Data","datasetPaths":["Translators Amalgamated OT+NT/TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt","Translators Amalgamated OT+NT/TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt","Translators Amalgamated OT+NT/TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt","Translators Amalgamated OT+NT/TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt"],"versionStrategy":"git-commit","version":null,"contentHash":null,"retrievedAt":null},"workflow":{"status":"approved-pending-fingerprint","autoProcessingAllowed":false,"existingUse":"legacy-build","notes":"히브리어와 아람어를 명시적으로 구분한다. 새 Evidence Packet 입력은 원본 commit과 파일 SHA-256을 고정한 뒤 허용한다."}}]}
+{
+  "$schema": "./schemas/SourceRegistry.schema.json",
+  "schemaVersion": 1,
+  "registryId": "lexicon-source-registry",
+  "policyVersion": "1.1",
+  "project": "bible-mindmap-lexicon-ko",
+  "governance": {
+    "theologicalFramework": "reformed-westminster-primary",
+    "sourceTextPrecedence": [
+      "stepbible-tbesh"
+    ],
+    "unknownLicenseBlocksAiInput": true,
+    "unknownLicenseBlocksRedistribution": true
+  },
+  "sources": [
+    {
+      "sourceId": "openscriptures-hebrewlexicon-bdb",
+      "title": "Open Scriptures Hebrew Lexicon · Brown-Driver-Briggs",
+      "role": "candidate-primary-source-after-license-resolution",
+      "scope": "OT Hebrew and Aramaic full BDB hierarchy with Strong and TWOT links",
+      "sourceTypes": ["lexicon", "metadata"],
+      "canon": "old-testament",
+      "languages": ["hebrew", "aramaic", "english"],
+      "license": {
+        "status": "unknown",
+        "expression": "unresolved-repository-license",
+        "licenseUrl": null,
+        "attributionRequired": false,
+        "attributionText": null,
+        "changeNoticeRequired": false,
+        "derivativeAllowed": false,
+        "redistributionAllowed": false,
+        "externalLlmInputAllowed": false,
+        "fullTextStorageAllowed": false
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/openscriptures/HebrewLexicon",
+        "repositoryUrl": "https://github.com/openscriptures/HebrewLexicon",
+        "datasetPaths": [
+          "BrownDriverBriggs.xml",
+          "LexicalIndex.xml",
+          "BDBPartsOfSpeech.xml",
+          "AugIndex.xml"
+        ],
+        "versionStrategy": "git-commit",
+        "version": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+        "fingerprintMethod": "unresolved",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "blocked",
+        "autoProcessingAllowed": false,
+        "existingUse": "planned",
+        "notes": "기초 BDB 본문은 퍼블릭 도메인이지만 저장소 수정·편집물의 명시적 라이선스를 확인하기 전에는 AI 입력·저장·재배포에 사용하지 않는다."
+      }
+    },
+    {
+      "sourceId": "unfoldingword-bdb-enhanced",
+      "title": "unfoldingWord Hebrew and Aramaic Lexicon · Enhanced BDB",
+      "role": "internal-sense-boundary-license-review",
+      "scope": "OT Hebrew and Aramaic BDB sense, stem and subsense boundaries",
+      "sourceTypes": ["lexicon", "metadata"],
+      "canon": "old-testament",
+      "languages": ["hebrew", "aramaic", "english"],
+      "license": {
+        "status": "internal-review-only",
+        "expression": "Public-Domain base + CC-BY (version unspecified)",
+        "licenseUrl": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced/blob/5a7a632d6923641c4a71dbf23df719711e3d2041/README.md#license",
+        "attributionRequired": true,
+        "attributionText": "unfoldingWord/Brown-Driver-Briggs-Enhanced · repository link required",
+        "changeNoticeRequired": true,
+        "derivativeAllowed": false,
+        "redistributionAllowed": false,
+        "externalLlmInputAllowed": false,
+        "fullTextStorageAllowed": false
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced",
+        "repositoryUrl": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced",
+        "datasetPaths": [
+          "Entries/",
+          "bdbToStrongsMapping.csv"
+        ],
+        "versionStrategy": "git-commit",
+        "version": "5a7a632d6923641c4a71dbf23df719711e3d2041",
+        "fingerprintMethod": "sha256-path-content-manifest-v1",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "internal-review-only",
+        "autoProcessingAllowed": false,
+        "existingUse": "planned",
+        "notes": "README는 CC BY를 명시하지만 구체 버전을 지정하지 않는다. 정확한 라이선스 버전 또는 별도 허가가 확인되기 전에는 외부 LLM 입력·파생 번역·재배포에 사용하지 않는다."
+      }
+    },
+    {
+      "sourceId": "stepbible-tbesh",
+      "title": "STEPBible TBESH · Translators Brief Lexicon of Extended Strongs for Hebrew",
+      "role": "secondary-abridged-control",
+      "scope": "OT Hebrew abridged BDB and Extended Strong mapping",
+      "sourceTypes": ["lexicon", "metadata"],
+      "canon": "old-testament",
+      "languages": ["hebrew", "aramaic", "english"],
+      "license": {
+        "status": "approved",
+        "expression": "CC-BY-4.0",
+        "licenseUrl": "https://github.com/STEPBible/STEPBible-Data/blob/b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39/README.md",
+        "attributionRequired": true,
+        "attributionText": "STEP Bible (www.STEPBible.org)",
+        "changeNoticeRequired": true,
+        "derivativeAllowed": true,
+        "redistributionAllowed": true,
+        "externalLlmInputAllowed": true,
+        "fullTextStorageAllowed": true
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "repositoryUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "datasetPaths": [
+          "Lexicons/TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt"
+        ],
+        "versionStrategy": "git-commit",
+        "version": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+        "fingerprintMethod": "sha256-path-content-manifest-v1",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "approved-pending-fingerprint",
+        "autoProcessingAllowed": false,
+        "existingUse": "planned",
+        "notes": "축약 대조와 Extended Strong 정렬에 사용한다. full BDB 계층을 대체하지 않으며 canonical manifest SHA-256 확인 후 자동 입력을 허용한다."
+      }
+    },
+    {
+      "sourceId": "openscriptures-strongs",
+      "title": "Open Scriptures Strong's Dictionaries",
+      "role": "fallback-brief-definition-after-license-resolution",
+      "scope": "Brief Hebrew and Greek Strong definitions",
+      "sourceTypes": ["lexicon", "metadata"],
+      "canon": "both",
+      "languages": ["hebrew", "greek", "english"],
+      "license": {
+        "status": "unknown",
+        "expression": "unresolved-repository-license",
+        "licenseUrl": null,
+        "attributionRequired": false,
+        "attributionText": null,
+        "changeNoticeRequired": false,
+        "derivativeAllowed": false,
+        "redistributionAllowed": false,
+        "externalLlmInputAllowed": false,
+        "fullTextStorageAllowed": false
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/openscriptures/strongs",
+        "repositoryUrl": "https://github.com/openscriptures/strongs",
+        "datasetPaths": ["hebrew/", "greek/", "strongs-dictionary.xhtml"],
+        "versionStrategy": "git-commit",
+        "version": null,
+        "fingerprintMethod": "unresolved",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "blocked",
+        "autoProcessingAllowed": false,
+        "existingUse": "planned",
+        "notes": "Strong 원전의 퍼블릭 도메인 여부와 별개로 저장소 편집물의 명시적 라이선스를 확인하기 전에는 자동 입력에 사용하지 않는다."
+      }
+    },
+    {
+      "sourceId": "korean-ot-nt-dictionary",
+      "title": "한국어 구약·신약사전 대조군",
+      "role": "internal-validation-placeholder",
+      "scope": "Korean theological and biblical terminology control corpus",
+      "sourceTypes": ["lexicon", "translation"],
+      "canon": "both",
+      "languages": ["korean"],
+      "license": {
+        "status": "unknown",
+        "expression": "unresolved",
+        "licenseUrl": null,
+        "attributionRequired": false,
+        "attributionText": null,
+        "changeNoticeRequired": false,
+        "derivativeAllowed": false,
+        "redistributionAllowed": false,
+        "externalLlmInputAllowed": false,
+        "fullTextStorageAllowed": false
+      },
+      "provenance": {
+        "officialUrl": null,
+        "repositoryUrl": null,
+        "datasetPaths": [],
+        "versionStrategy": "unresolved",
+        "version": null,
+        "fingerprintMethod": "unresolved",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "blocked",
+        "autoProcessingAllowed": false,
+        "existingUse": "none",
+        "notes": "정확한 판본·출처·권한을 등록하기 전에는 AI 입력, 저장, 인용, 재배포 및 최종 승인 해제에 사용할 수 없다."
+      }
+    },
+    {
+      "sourceId": "stepbible-tagnt",
+      "title": "Translators Amalgamated Greek New Testament",
+      "role": "nt-original-text-morphology-and-alignment",
+      "scope": "Greek NT text, morphology, Extended Strong and context-sensitive alignment",
+      "sourceTypes": ["original-text", "morphology", "alignment"],
+      "canon": "new-testament",
+      "languages": ["greek", "english"],
+      "license": {
+        "status": "approved",
+        "expression": "CC-BY-4.0",
+        "licenseUrl": "https://github.com/STEPBible/STEPBible-Data/blob/b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39/README.md",
+        "attributionRequired": true,
+        "attributionText": "STEP Bible (www.STEPBible.org)",
+        "changeNoticeRequired": true,
+        "derivativeAllowed": true,
+        "redistributionAllowed": true,
+        "externalLlmInputAllowed": true,
+        "fullTextStorageAllowed": true
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "repositoryUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "datasetPaths": [
+          "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+          "Translators Amalgamated OT+NT/TAGNT Act-Rev - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt"
+        ],
+        "versionStrategy": "git-commit",
+        "version": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+        "fingerprintMethod": "sha256-path-content-manifest-v1",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "approved-pending-fingerprint",
+        "autoProcessingAllowed": false,
+        "existingUse": "legacy-build",
+        "notes": "현재 build-lexicon 경로에서 사용 중이다. 새 Evidence Packet 입력은 고정 commit의 canonical manifest SHA-256을 확인한 뒤 허용한다."
+      }
+    },
+    {
+      "sourceId": "stepbible-tahot",
+      "title": "Translators Amalgamated Hebrew Old Testament",
+      "role": "ot-original-text-morphology-and-alignment",
+      "scope": "Hebrew and Aramaic OT text, morphology, Extended Strong and alignment",
+      "sourceTypes": ["original-text", "morphology", "alignment"],
+      "canon": "old-testament",
+      "languages": ["hebrew", "aramaic", "english"],
+      "license": {
+        "status": "approved",
+        "expression": "CC-BY-4.0",
+        "licenseUrl": "https://github.com/STEPBible/STEPBible-Data/blob/b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39/README.md",
+        "attributionRequired": true,
+        "attributionText": "STEP Bible (www.STEPBible.org)",
+        "changeNoticeRequired": true,
+        "derivativeAllowed": true,
+        "redistributionAllowed": true,
+        "externalLlmInputAllowed": true,
+        "fullTextStorageAllowed": true
+      },
+      "provenance": {
+        "officialUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "repositoryUrl": "https://github.com/STEPBible/STEPBible-Data",
+        "datasetPaths": [
+          "Translators Amalgamated OT+NT/TAHOT Gen-Deu - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "Translators Amalgamated OT+NT/TAHOT Jos-Est - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "Translators Amalgamated OT+NT/TAHOT Job-Sng - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt",
+          "Translators Amalgamated OT+NT/TAHOT Isa-Mal - Translators Amalgamated Hebrew OT - STEPBible.org CC BY.txt"
+        ],
+        "versionStrategy": "git-commit",
+        "version": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+        "fingerprintMethod": "sha256-path-content-manifest-v1",
+        "fileCount": null,
+        "totalBytes": null,
+        "contentHash": null,
+        "retrievedAt": null
+      },
+      "workflow": {
+        "status": "approved-pending-fingerprint",
+        "autoProcessingAllowed": false,
+        "existingUse": "legacy-build",
+        "notes": "히브리어와 아람어를 명시적으로 구분한다. 새 Evidence Packet 입력은 고정 commit의 canonical manifest SHA-256을 확인한 뒤 허용한다."
+      }
+    }
+  ]
+}
