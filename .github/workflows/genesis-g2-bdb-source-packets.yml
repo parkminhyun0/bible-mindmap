@@ -104,7 +104,7 @@ jobs:
 
       - name: Upload G2-1 evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: genesis-g2-bdb-source-packets
           path: |
