@@ -1,0 +1,54 @@
+name: Genesis G5 Translation Display Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
+      - 'bible-mindmap/src/utils/lexiconTranslationPilotBridge.jsx'
+      - 'bible-mindmap/src/components/LexiconTranslationDrawer.jsx'
+      - 'bible-mindmap/scripts/verify-lexicon-translation-pilot.mjs'
+      - '.github/workflows/genesis-g5-translation-display-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  translation-display-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Verify translation display gate
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-translation-pilot.mjs
+
+      - name: Verify no candidate status can enter popup loader
+        run: |
+          file='bible-mindmap/src/data/lexiconTranslationPilot.js'
+          grep -q 'LEXICON_TRANSLATION_DISPLAY_STATUSES' "$file"
+          grep -q 'LEXICON_TRANSLATION_BLOCKED_STATUSES' "$file"
+          grep -q "status: 'pending-review'" "$file"
+          grep -q "messageKo: '번역 데이터 준비 중'" "$file"
+          grep -q 'displayAllowed: false' "$file"
+          grep -q 'validateLexiconTranslationDisplayRecord' "$file"
+          grep -q 'resolveLexiconTranslationDisplayState' "$file"
+
+      - name: Publish gate summary
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## 창세기 G5-0 · 사전 팝업 번역 표시 Gate
+          - H776 파일럿 검수 데이터: **표시 허용**
+          - 사람 검토·최종 승인 데이터: **표시 허용**
+          - AI 초벌·블라인드 후보·자동검증·문맥/신학 검수 대기: **표시 차단**
+          - 스키마·Strong·정의 노드 오류 데이터: **표시 차단**
+          - 데이터 없음: **번역 데이터 준비 중**
+          - 공통 직접 React 통합: **후속 G5 단계**
+          EOF
