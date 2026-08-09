@@ -13,6 +13,7 @@ on:
       - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
       - 'bible-mindmap/scripts/build-genesis-g2-canary-set.mjs'
       - 'bible-mindmap/scripts/verify-genesis-g2-canary-set.mjs'
+      - 'bible-mindmap/scripts/evaluate-genesis-g2-canary-results.mjs'
       - 'bible-mindmap/scripts/ai/providers/nvidia.mjs'
       - 'bible-mindmap/scripts/ai/providers/openai.mjs'
       - 'bible-mindmap/scripts/ai/lexicon/**'
@@ -62,6 +63,7 @@ jobs:
         run: |
           node scripts/build-genesis-g2-canary-set.mjs
           node scripts/verify-genesis-g2-canary-set.mjs
+          node scripts/evaluate-genesis-g2-canary-results.mjs --self-test
 
       - name: Generate NVIDIA blind dry-run envelopes
         working-directory: bible-mindmap
@@ -100,6 +102,7 @@ jobs:
             lines.push('', '### G2-3 canary Gate')
             lines.push(`- Strong: **${canary.items.map((item) => item.strong).join(', ')}**`)
             lines.push(`- source nodes: **${canary.counts.sourceNodes}개**`)
+            lines.push('- 평가 계약: **self-test 통과** · 실제 후보 생성 후 쌍대 비교')
             lines.push('- 자동 API 실행: **금지** · workflow_dispatch 명시 승인만 허용')
           }
           lines.push(
