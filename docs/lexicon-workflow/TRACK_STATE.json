@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "trackId": "lexicon-ko-66",
+  "trackName": "성경 66권 원어 한글사전",
+  "projectRole": "one-track-within-bible-mindmap",
+  "state": "SYSTEM_PR_OPEN",
+  "activePhase": "P0_PUBLIC_FIRST_SYSTEM",
+  "executionMode": "semi-automatic",
+  "sourceOfTruth": "github",
+  "controlDashboard": "notion",
+  "activePr": 261,
+  "goldenReference": {
+    "id": "GEN-1-1-H776",
+    "strong": "H776",
+    "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
+  },
+  "currentMainAtDesign": "bcaa7a531d316c8d66365cda67b14e5c8a509e4c",
+  "nextAction": "review and merge PR 261, then implement PR1 Source Registry and JSON schemas",
+  "autonomousAllowed": [
+    "read_and_reconcile_state",
+    "verify_source_license_registration",
+    "deterministic_parse",
+    "build_evidence_packets",
+    "run_schema_and_semantic_verifiers",
+    "build_candidate_audit_and_dispute_bundles",
+    "sync_notion_from_github_evidence"
+  ],
+  "humanGates": [
+    "unknown_or_prohibited_license",
+    "R3_or_R4_final_wording",
+    "change_existing_approved_meaning",
+    "unresolved_source_or_model_conflict",
+    "approval_registry_promotion",
+    "production_release",
+    "live_screen_confirmation"
+  ],
+  "deprecatedDefaultPaths": [
+    "ollama_local_ab_translation",
+    "mac_model_preflight_as_start_gate",
+    "gemini_full_corpus_retranslation",
+    "model_majority_vote",
+    "automatic_production_write_before_approval"
+  ],
+  "notion": {
+    "topDashboardId": "3a10b963-e600-801e-9ba8-f449df24685b",
+    "trackDashboardId": "3b70b963-e600-8138-bf8b-d130de9015fe",
+    "masterWorkflowId": "3b70b963-e600-8184-ae16-c0ebd68b9cd2",
+    "llmInstructionId": "3b20b963-e600-811e-9630-c9dffb7958b6"
+  }
+}
