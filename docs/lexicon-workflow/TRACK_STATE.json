@@ -3,8 +3,8 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "P1_IN_PROGRESS",
-  "activePhase": "P1_STRONG_IDENTITY_EVIDENCE_SCHEMA",
+  "state": "P2_READY",
+  "activePhase": "P2_DETERMINISTIC_BDB_PARSER",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -21,14 +21,18 @@
     "stepbible-source-commits-pinned",
     "canonical-source-fingerprint-v1",
     "stepbible-tbesh-tagnt-tahot-ready",
-    "unfoldingword-bdb-license-version-restricted"
+    "unfoldingword-bdb-license-version-restricted",
+    "strong-identity-schema-v1",
+    "evidence-packet-schema-v2",
+    "h776-evidence-golden-fixture-v2",
+    "lexicon-evidence-contract-ci-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "implement StrongIdentity and EvidencePacket v2 schemas with H776 regression fixture; keep new full-BDB translation blocked until an explicitly licensed primary source is ready",
+  "nextAction": "implement the deterministic BDB parser input/output contract and H776 adapter without generating new translations; keep full-BDB candidate generation blocked until an explicitly licensed primary source is approved-ready",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
