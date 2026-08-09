@@ -3,18 +3,19 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "SYSTEM_INSTALL_IN_PROGRESS",
+  "state": "SYSTEM_PR_OPEN",
   "activePhase": "P0_PUBLIC_FIRST_SYSTEM",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
+  "activePr": 261,
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
   "currentMainAtDesign": "bcaa7a531d316c8d66365cda67b14e5c8a509e4c",
-  "nextAction": "merge system contract, then implement PR1 Source Registry and JSON schemas",
+  "nextAction": "review and merge PR 261, then implement PR1 Source Registry and JSON schemas",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
