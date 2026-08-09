@@ -1,0 +1,86 @@
+name: Genesis G2 Calibration Batch
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
+      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/genesis-g2-calibration-batch.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  calibration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild Genesis inventory
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Rebuild G1 deterministic manifest
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-translation-manifest.mjs
+          node scripts/verify-genesis-translation-contract.mjs --strict
+
+      - name: Calibration builder self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g2-calibration-batch.mjs --self-test
+
+      - name: Calibration verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g2-calibration-batch.mjs --self-test
+
+      - name: Build 100-item calibration batch
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-g2-calibration-batch.mjs
+
+      - name: Verify source Gate and deterministic selection
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-g2-calibration-batch.mjs --strict
+
+      - name: Publish G2-0 summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const batch = JSON.parse(fs.readFileSync('reports/genesis-g2-calibration-batch.json', 'utf8'))
+          const lines = [
+            '## 창세기 G2-0 · 100개 교정 배치·출처 Gate',
+            '',
+            `- 선정: **${batch.counts.selected}개**`,
+            `- 핵심 신학·문맥: **${batch.counts.categories['core-theology-context']}개**`,
+            `- 기존 번역 대조군: **${batch.counts.categories['existing-control']}개**`,
+            `- 고빈도 신규: **${batch.counts.categories['high-frequency-missing']}개**`,
+            `- 중빈도 신규: **${batch.counts.categories['medium-frequency-missing']}개**`,
+            `- 저빈도 신규: **${batch.counts.categories['low-frequency-missing']}개**`,
+            `- 전체 기존 번역 포함: **${batch.counts.existingControls}개**`,
+            `- 실제 신규 번역 필요: **${batch.counts.translationRequired}개**`,
+            `- Open Scriptures BDB primary Gate: **${batch.sourceGate.primarySourceReady ? '통과' : '차단'}**`,
+            `- 한국어 구약·신약사전 권리 Gate: **${batch.sourceGate.koreanControlReady ? '통과' : '미확정'}**`,
+            `- 번역 후보 생성 허용: **${batch.sourceGate.translationCandidateAllowed}**`,
+            `- 최종 승인 허용: **${batch.sourceGate.finalApprovalAllowed}**`,
+            '- 서비스 데이터 직접 쓰기: **차단**',
+            '- 다음: BrownDriverBriggs.xml + LexicalIndex.xml materializer 및 Strong별 source packet 생성',
+          ]
+          const summary = lines.join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
