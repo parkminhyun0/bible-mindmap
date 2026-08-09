@@ -9,15 +9,15 @@
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
   "installedBy": {
-    "pr": 261,
-    "mergeCommit": "cfebd1c5f69be2aaf0d8414008aba4593481f7a2"
+    "contractPr": 261,
+    "contractMergeCommit": "cfebd1c5f69be2aaf0d8414008aba4593481f7a2",
+    "stateFinalizationPr": 262
   },
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "currentMain": "cfebd1c5f69be2aaf0d8414008aba4593481f7a2",
   "nextAction": "implement Source Registry, Strong Identity, Evidence Packet v2, Translation Record, Book Usage Layer, Approval Registry, and Batch Status schemas",
   "autonomousAllowed": [
     "read_and_reconcile_state",
