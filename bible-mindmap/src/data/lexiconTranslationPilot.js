@@ -4,6 +4,23 @@
 
 export const LEXICON_TRANSLATION_PILOT_VERSION = '2026.08.08-pilot.1';
 
+export const LEXICON_TRANSLATION_DISPLAY_STATUSES = Object.freeze([
+  'pilot-reviewed',
+  'human-reviewed',
+  'final-approved',
+]);
+
+export const LEXICON_TRANSLATION_BLOCKED_STATUSES = Object.freeze([
+  'ai-draft',
+  'blind-candidate',
+  'dual-model-generated',
+  'automatic-validation-passed',
+  'context-review-pending',
+  'theology-audit-pending',
+  'rework-required',
+  'blocked',
+]);
+
 export const LEXICON_TRANSLATION_PILOT = Object.freeze({
   H776: Object.freeze({
     strong: 'H776',
@@ -94,7 +111,84 @@ export function normalizeLexiconTranslationStrong(value) {
   return match ? `${match[1]}${Number(match[2])}` : raw;
 }
 
+function collectDefinitionNodes(nodes, acc = []) {
+  for (const node of nodes || []) {
+    acc.push(node);
+    collectDefinitionNodes(node.children, acc);
+  }
+  return acc;
+}
+
+export function validateLexiconTranslationDisplayRecord(record, expectedStrong) {
+  const errors = [];
+  if (!record || typeof record !== 'object' || Array.isArray(record)) return { valid: false, errors: ['translation record missing'] };
+  const normalizedExpected = normalizeLexiconTranslationStrong(expectedStrong || record.strong);
+  const normalizedRecord = normalizeLexiconTranslationStrong(record.strong);
+  if (!/^([GH])[1-9]\d*$/.test(normalizedRecord)) errors.push('normalized Strong id invalid');
+  if (normalizedExpected && normalizedRecord !== normalizedExpected) errors.push('translation Strong id mismatch');
+  if (!record.source || !record.sourceVersion || !record.translationVersion) errors.push('source/version metadata missing');
+  if (!record.reviewStatus) errors.push('reviewStatus missing');
+  if (!record.lemma || !record.translitKo) errors.push('lemma/transliteration missing');
+  if (!Array.isArray(record.definition) || record.definition.length === 0) errors.push('definition tree missing');
+  const nodes = collectDefinitionNodes(record.definition);
+  if (!nodes.length) errors.push('definition nodes missing');
+  const ids = nodes.map((node) => String(node.id || '').trim());
+  if (ids.some((id) => !id)) errors.push('definition node id missing');
+  if (new Set(ids).size !== ids.length) errors.push('definition node ids must be unique');
+  if (nodes.some((node) => typeof node.text !== 'string' || !node.text.trim())) errors.push('definition node Korean text missing');
+  if (!record.noticeKo) errors.push('translation notice missing');
+  return { valid: errors.length === 0, errors };
+}
+
+export function isLexiconTranslationDisplayable(record, expectedStrong) {
+  const validation = validateLexiconTranslationDisplayRecord(record, expectedStrong);
+  return validation.valid && LEXICON_TRANSLATION_DISPLAY_STATUSES.includes(record.reviewStatus);
+}
+
+export function resolveLexiconTranslationDisplayState(value, registry = LEXICON_TRANSLATION_PILOT) {
+  const strong = normalizeLexiconTranslationStrong(value);
+  const record = registry?.[strong] || null;
+  if (!record) {
+    return Object.freeze({
+      strong,
+      status: 'missing',
+      translation: null,
+      messageKo: '번역 데이터 준비 중',
+      displayAllowed: false,
+      errors: [],
+    });
+  }
+  const validation = validateLexiconTranslationDisplayRecord(record, strong);
+  if (!validation.valid) {
+    return Object.freeze({
+      strong,
+      status: 'blocked-invalid',
+      translation: null,
+      messageKo: '번역 데이터 검증 필요',
+      displayAllowed: false,
+      errors: validation.errors,
+    });
+  }
+  if (!LEXICON_TRANSLATION_DISPLAY_STATUSES.includes(record.reviewStatus)) {
+    return Object.freeze({
+      strong,
+      status: 'pending-review',
+      translation: null,
+      messageKo: '번역 데이터 검수 중',
+      displayAllowed: false,
+      errors: [],
+    });
+  }
+  return Object.freeze({
+    strong,
+    status: 'ready',
+    translation: record,
+    messageKo: '',
+    displayAllowed: true,
+    errors: [],
+  });
+}
+
 export function getLexiconTranslation(value) {
-  const key = normalizeLexiconTranslationStrong(value);
-  return LEXICON_TRANSLATION_PILOT[key] || null;
+  return resolveLexiconTranslationDisplayState(value).translation;
 }
