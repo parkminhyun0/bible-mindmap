@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P2_IN_PROGRESS",
-  "activePhase": "P2_PARSER_CONTRACT_H776_ADAPTER",
+  "activePhase": "P2_SOURCE_NEUTRAL_DRIVER",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -28,14 +28,18 @@
     "lexicon-evidence-contract-ci-v1",
     "bdb-parser-input-output-schema-v1",
     "h776-legacy-parser-adapter-v1",
-    "lexicon-parser-contract-ci-v1"
+    "lexicon-parser-contract-ci-v1",
+    "source-driver-policy-v1",
+    "source-driver-report-schema-v1",
+    "source-neutral-parser-driver-v1",
+    "source-driver-fail-closed-ci-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "resolve or approve a reusable full-BDB primary source, or implement the source-neutral parser driver without candidate generation; then compare an actual H776 source tree with the legacy adapter",
+  "nextAction": "resolve the license and exact version of a reusable full-definition BDB primary source; if approved-ready, register its pinned fingerprint and implement a dedicated source adapter for regression-only H776 tree comparison while candidate generation remains disabled",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
