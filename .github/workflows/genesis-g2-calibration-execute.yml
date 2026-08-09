@@ -1,0 +1,165 @@
+name: Genesis G2 Calibration 100 Execute
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirmation:
+        description: '실행 승인 문자열: RUN-GENESIS-G2-CALIBRATION-100'
+        required: true
+        type: string
+      kill_switch:
+        description: '실행하려면 명시적으로 off 선택'
+        required: true
+        default: on
+        type: choice
+        options: [on, off]
+      nvidia_model_id:
+        description: 'NVIDIA model ID'
+        required: true
+        type: string
+      openai_model_id:
+        description: 'OpenAI model ID'
+        required: true
+        type: string
+      evaluation_path:
+        description: '검토 완료 canary 평가 증거 경로'
+        required: true
+        default: 'evidence/genesis-g2/canary-evaluation.json'
+        type: string
+      approval_path:
+        description: '사람 승인 증거 경로'
+        required: true
+        default: 'evidence/genesis-g2/calibration-100-approval.json'
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  GENESIS_G2_TRANSLATION_EXECUTION_ENABLED: '1'
+  LEXICON_TRANSLATION_KILL_SWITCH: ${{ inputs.kill_switch == 'off' && '0' || '1' }}
+
+jobs:
+  calibration-100:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Confirm explicit promotion approval and provider readiness
+        env:
+          CONFIRMATION: ${{ inputs.confirmation }}
+          KILL_SWITCH: ${{ inputs.kill_switch }}
+          NVIDIA_MODEL_INPUT: ${{ inputs.nvidia_model_id }}
+          OPENAI_MODEL_INPUT: ${{ inputs.openai_model_id }}
+          NVIDIA_API_KEY_PRESENT: ${{ secrets.NVIDIA_API_KEY != '' }}
+          OPENAI_API_KEY_PRESENT: ${{ secrets.OPENAI_API_KEY != '' }}
+        run: |
+          test "$CONFIRMATION" = 'RUN-GENESIS-G2-CALIBRATION-100' || { echo '승인 문자열 불일치'; exit 1; }
+          test "$KILL_SWITCH" = 'off' || { echo 'kill switch가 켜져 있음'; exit 1; }
+          test -n "$NVIDIA_MODEL_INPUT" || { echo 'NVIDIA model ID 누락'; exit 1; }
+          test -n "$OPENAI_MODEL_INPUT" || { echo 'OpenAI model ID 누락'; exit 1; }
+          test "$NVIDIA_API_KEY_PRESENT" = 'true' || { echo 'NVIDIA_API_KEY secret 누락'; exit 1; }
+          test "$OPENAI_API_KEY_PRESENT" = 'true' || { echo 'OPENAI_API_KEY secret 누락'; exit 1; }
+
+      - name: Checkout approved main evidence
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Verify committed human promotion evidence
+        working-directory: bible-mindmap
+        env:
+          EVALUATION_PATH: ${{ inputs.evaluation_path }}
+          APPROVAL_PATH: ${{ inputs.approval_path }}
+        run: |
+          case "$EVALUATION_PATH" in evidence/genesis-g2/*.json) ;; *) echo 'evaluation_path 허용 범위 밖'; exit 1 ;; esac
+          case "$APPROVAL_PATH" in evidence/genesis-g2/*.json) ;; *) echo 'approval_path 허용 범위 밖'; exit 1 ;; esac
+          test -f "$EVALUATION_PATH" || { echo "평가 증거 없음: $EVALUATION_PATH"; exit 1; }
+          test -f "$APPROVAL_PATH" || { echo "승인 증거 없음: $APPROVAL_PATH"; exit 1; }
+          node scripts/verify-genesis-g2-calibration-promotion.mjs \
+            --strict \
+            --evaluation="$EVALUATION_PATH" \
+            --approval="$APPROVAL_PATH" \
+            --output=reports/genesis-g2-calibration-promotion-verification.json
+
+      - name: Rebuild pinned Genesis calibration source packets
+        working-directory: bible-mindmap
+        run: |
+          node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+          node scripts/build-genesis-translation-manifest.mjs
+          node scripts/verify-genesis-translation-contract.mjs --strict
+          node scripts/build-genesis-g2-calibration-batch.mjs
+          node scripts/verify-genesis-g2-calibration-batch.mjs --strict
+          node scripts/materialize-genesis-g2-bdb-packets.mjs
+          node scripts/verify-genesis-g2-bdb-packets.mjs --strict
+
+      - name: Execute NVIDIA blind calibration candidates
+        working-directory: bible-mindmap
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+          NVIDIA_MODEL_ID: ${{ inputs.nvidia_model_id }}
+        run: |
+          node scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs \
+            --provider=nvidia \
+            --execute \
+            --retry-failed \
+            --max-attempts=3 \
+            --delay-ms=1200 \
+            --output-root=reports/genesis-g2-calibration-execution
+
+      - name: Execute OpenAI blind calibration candidates
+        working-directory: bible-mindmap
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL_ID: ${{ inputs.openai_model_id }}
+        run: |
+          node scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs \
+            --provider=openai \
+            --execute \
+            --retry-failed \
+            --max-attempts=3 \
+            --delay-ms=1200 \
+            --output-root=reports/genesis-g2-calibration-execution
+
+      - name: Verify 100 by 2 blind candidates
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-genesis-g2-calibration-candidates.mjs \
+            --strict \
+            --output-root=reports/genesis-g2-calibration-execution
+
+      - name: Publish calibration summary
+        if: always()
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const base = 'reports/genesis-g2-calibration-execution/summaries'
+          const lines = ['## 창세기 G2 · 100개 교정 배치 이중 번역']
+          for (const provider of ['nvidia', 'openai']) {
+            const path = `${base}/${provider}-execute.json`
+            if (!fs.existsSync(path)) { lines.push(`- ${provider}: 결과 없음`); continue }
+            const data = JSON.parse(fs.readFileSync(path, 'utf8'))
+            lines.push(`- ${provider}: 후보 **${data.candidatesWritten}**, 기존 성공 건너뜀 **${data.skippedSuccess}**, 실패 **${data.failed}**`)
+          }
+          lines.push('- 사람 승인 증거: **필수 검증**')
+          lines.push('- 서비스 데이터 쓰기·최종 승인: **차단**')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
+          NODE
+
+      - name: Upload calibration evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-g2-calibration-100-execution
+          path: |
+            bible-mindmap/reports/genesis-g2-calibration-promotion-verification.json
+            bible-mindmap/reports/genesis-g2-calibration-batch.json
+            bible-mindmap/reports/genesis-g2-bdb-source-packets.json
+            bible-mindmap/reports/genesis-g2-calibration-execution/candidates/
+            bible-mindmap/reports/genesis-g2-calibration-execution/ledgers/
+            bible-mindmap/reports/genesis-g2-calibration-execution/summaries/
+          if-no-files-found: warn
+          retention-days: 14
