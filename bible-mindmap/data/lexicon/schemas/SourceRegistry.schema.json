@@ -1,0 +1,270 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/SourceRegistry.schema.json",
+  "title": "Bible Mind Map Lexicon Source Registry",
+  "description": "Public-First 원어 사전 파이프라인에 사용할 원문·형태론·사전 출처의 라이선스와 재현성 계약.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "registryId",
+    "policyVersion",
+    "sources"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "registryId": {
+      "const": "lexicon-source-registry"
+    },
+    "policyVersion": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "title",
+        "sourceTypes",
+        "canon",
+        "languages",
+        "license",
+        "provenance",
+        "workflow"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceTypes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "original-text",
+              "morphology",
+              "lexicon",
+              "alignment",
+              "translation",
+              "metadata",
+              "scan"
+            ]
+          }
+        },
+        "canon": {
+          "enum": [
+            "old-testament",
+            "new-testament",
+            "both"
+          ]
+        },
+        "languages": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "hebrew",
+              "aramaic",
+              "greek",
+              "english",
+              "korean"
+            ]
+          }
+        },
+        "license": {
+          "$ref": "#/$defs/license"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "workflow": {
+          "$ref": "#/$defs/workflow"
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "expression",
+        "licenseUrl",
+        "attributionRequired",
+        "attributionText",
+        "derivativeAllowed",
+        "redistributionAllowed",
+        "externalLlmInputAllowed",
+        "fullTextStorageAllowed"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "approved",
+            "internal-review-only",
+            "metadata-only",
+            "unknown",
+            "prohibited"
+          ]
+        },
+        "expression": {
+          "type": "string",
+          "minLength": 1
+        },
+        "licenseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "attributionRequired": {
+          "type": "boolean"
+        },
+        "attributionText": {
+          "type": "string"
+        },
+        "derivativeAllowed": {
+          "type": "boolean"
+        },
+        "redistributionAllowed": {
+          "type": "boolean"
+        },
+        "externalLlmInputAllowed": {
+          "type": "boolean"
+        },
+        "fullTextStorageAllowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "officialUrl",
+        "repositoryUrl",
+        "datasetPaths",
+        "versionStrategy",
+        "version",
+        "contentHash",
+        "retrievedAt"
+      ],
+      "properties": {
+        "officialUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "repositoryUrl": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "datasetPaths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "versionStrategy": {
+          "enum": [
+            "git-commit",
+            "release",
+            "publication-edition",
+            "manual-pilot"
+          ]
+        },
+        "version": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contentHash": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^sha256:[a-f0-9]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "retrievedAt": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "autoProcessingAllowed",
+        "existingUse",
+        "notes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "approved-ready",
+            "approved-pending-fingerprint",
+            "internal-review-only",
+            "blocked"
+          ]
+        },
+        "autoProcessingAllowed": {
+          "type": "boolean"
+        },
+        "existingUse": {
+          "enum": [
+            "none",
+            "legacy-build",
+            "golden-reference"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
