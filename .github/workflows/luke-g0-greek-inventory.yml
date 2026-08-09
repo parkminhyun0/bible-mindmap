@@ -1,0 +1,104 @@
+name: Luke G0 Greek Inventory
+
+on:
+  push:
+    branches:
+      - chatgpt/luke-g0-greek-inventory
+    paths:
+      - 'bible-mindmap/scripts/report-luke-greek-inventory.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g0-inventory.mjs'
+      - 'bible-mindmap/data/lexicon/luke-g0-source-lock.json'
+      - 'bible-mindmap/src/data/koreanGloss*.js'
+      - '.github/workflows/luke-g0-greek-inventory.yml'
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/report-luke-greek-inventory.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g0-inventory.mjs'
+      - 'bible-mindmap/data/lexicon/luke-g0-*.json'
+      - 'bible-mindmap/docs/luke-g0-inventory.md'
+      - '.github/workflows/luke-g0-greek-inventory.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: luke-g0-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Download pinned public sources
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mkdir -p bible-mindmap/.cache/luke-g0
+          curl -LfsS --retry 3 \
+            -H 'Accept: application/vnd.github.raw+json' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            'https://api.github.com/repos/STEPBible/STEPBible-Data/git/blobs/705c1bc1cf752e013efcef99b8d9a3b7853bf843' \
+            -o bible-mindmap/.cache/luke-g0/tagnt-mat-jhn.txt
+          curl -LfsS --retry 3 \
+            -H 'Accept: application/vnd.github.raw+json' \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            'https://api.github.com/repos/morphgnt/sblgnt/git/blobs/474e65703c49ef3890fca4b24403434ab6df6457' \
+            -o bible-mindmap/.cache/luke-g0/63-Lk-morphgnt.txt
+
+      - name: Generate Luke G0 inventory
+        working-directory: bible-mindmap
+        run: |
+          node scripts/report-luke-greek-inventory.mjs \
+            --tagnt .cache/luke-g0/tagnt-mat-jhn.txt \
+            --morphgnt .cache/luke-g0/63-Lk-morphgnt.txt
+
+      - name: Verify deterministic G0 gates
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-g0-inventory.mjs
+
+      - name: Commit generated evidence to branch
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            bible-mindmap/data/lexicon/luke-g0-inventory.json \
+            bible-mindmap/data/lexicon/luke-g0-report.json \
+            bible-mindmap/docs/luke-g0-inventory.md
+          if git diff --cached --quiet; then
+            echo 'Generated evidence is already current.'
+          else
+            git commit -m 'data(luke): record G0 Greek inventory evidence'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Publish summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const report = require('./data/lexicon/luke-g0-report.json');
+          const s = report.summary;
+          console.log('## 누가복음 G0 · 헬라어 Strong 전수 인벤토리');
+          console.log(`- 판정: **${report.pass ? 'PASS' : 'FAIL'}**`);
+          console.log(`- 범위: **${s.chapters}장 · ${s.verses}절**`);
+          console.log(`- TAGNT SBL 토큰: **${s.tagntSblTokenCount.toLocaleString()}**`);
+          console.log(`- 고유 Strong: **${s.tagntUniqueStrongCount.toLocaleString()}**`);
+          console.log(`- 기존 한글 사전 재사용: **${s.existingKoreanStrongCount}**`);
+          console.log(`- 신규 번역 큐: **${s.newTranslationStrongCount.toLocaleString()}**`);
+          console.log(`- 본문 토큰 자동 커버율: **${s.existingKoreanTokenCoveragePercent}%**`);
+          console.log('- 실제 provider API 호출·서비스 쓰기: **없음**');
+          NODE
