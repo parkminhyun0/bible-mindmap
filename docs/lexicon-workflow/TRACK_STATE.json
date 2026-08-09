@@ -3,7 +3,7 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "SYSTEM_INSTALLED",
+  "state": "P1_IN_PROGRESS",
   "activePhase": "P1_SOURCE_REGISTRY_SCHEMA",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
@@ -13,12 +13,18 @@
     "contractMergeCommit": "cfebd1c5f69be2aaf0d8414008aba4593481f7a2",
     "stateFinalizationPr": 262
   },
+  "completedMilestones": [
+    "public-first-system-installed",
+    "source-registry-schema-v1",
+    "existing-source-registry-migration-v1",
+    "license-gate-verifier-v1"
+  ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "implement Source Registry, Strong Identity, Evidence Packet v2, Translation Record, Book Usage Layer, Approval Registry, and Batch Status schemas",
+  "nextAction": "pin approved source versions and content fingerprints, resolve blocked repository licenses, then implement Strong Identity and Evidence Packet v2 schemas",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
