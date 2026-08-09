@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/EvidencePacket.schema.json",
+  "title": "Bible Mind Map Lexicon Evidence Packet v2",
+  "description": "Deterministic source identity, sense nodes, context, license and golden-regression evidence contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packetId",
+    "packetType",
+    "processingMode",
+    "status",
+    "sourceRegistryPolicyVersion",
+    "identity",
+    "sourceInputs",
+    "senseNodes",
+    "normalizedSenseClusters",
+    "representativeContexts",
+    "licenseSummary",
+    "goldenRegression",
+    "packetFingerprint"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 2 },
+    "packetId": { "type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$" },
+    "packetType": { "enum": ["generation", "golden-reference"] },
+    "processingMode": { "enum": ["candidate-generation", "regression-only"] },
+    "status": { "enum": ["source-ready", "blocked-license", "golden-reference-fixture"] },
+    "sourceRegistryPolicyVersion": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+    "identity": { "$ref": "./StrongIdentity.schema.json" },
+    "sourceInputs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceInput" } },
+    "senseNodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/senseNode" } },
+    "normalizedSenseClusters": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/senseCluster" } },
+    "representativeContexts": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/context" } },
+    "licenseSummary": { "$ref": "#/$defs/licenseSummary" },
+    "goldenRegression": {
+      "anyOf": [
+        { "$ref": "#/$defs/goldenRegression" },
+        { "type": "null" }
+      ]
+    },
+    "packetFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "sourceInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "registryWorkflowStatus", "usagePolicy", "sourceFingerprint", "locators"],
+      "properties": {
+        "sourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "registryWorkflowStatus": {
+          "enum": ["approved-ready", "approved-pending-fingerprint", "internal-review-only", "metadata-only", "blocked"]
+        },
+        "usagePolicy": { "enum": ["automatic-evidence", "legacy-regression-only"] },
+        "sourceFingerprint": {
+          "anyOf": [
+            { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+            { "type": "null" }
+          ]
+        },
+        "locators": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "nodeSourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "locator"],
+      "properties": {
+        "sourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "locator": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "senseNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "parentId", "depth", "order", "sourceText", "translationKo", "provenanceStatus", "sourceRefs"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" },
+        "parentId": {
+          "anyOf": [
+            { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" },
+            { "type": "null" }
+          ]
+        },
+        "depth": { "type": "integer", "minimum": 0 },
+        "order": { "type": "integer", "minimum": 1 },
+        "sourceText": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "translationKo": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "provenanceStatus": { "enum": ["parsed-source", "legacy-approved-snapshot"] },
+        "sourceRefs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/nodeSourceRef" } }
+      }
+    },
+    "senseCluster": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clusterId", "labelKo", "memberNodeIds"],
+      "properties": {
+        "clusterId": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?-S[1-9][0-9]*$" },
+        "labelKo": { "type": "string", "minLength": 1 },
+        "memberNodeIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "surface", "lemma", "recommendedGlossKo", "sourceIds"],
+      "properties": {
+        "reference": { "type": "string", "pattern": "^[A-Z0-9]{3}\\.\\d+\\.\\d+$" },
+        "surface": { "type": "string", "minLength": 1 },
+        "lemma": { "type": "string", "minLength": 1 },
+        "recommendedGlossKo": { "type": "string", "minLength": 1 },
+        "sourceIds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+        }
+      }
+    },
+    "licenseSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allAutomaticInputsApproved", "newGenerationAllowed", "approvedSources", "restrictedSources", "notes"],
+      "properties": {
+        "allAutomaticInputsApproved": { "type": "boolean" },
+        "newGenerationAllowed": { "type": "boolean" },
+        "approvedSources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+        },
+        "restrictedSources": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+        },
+        "notes": { "type": "string", "minLength": 1 }
+      }
+    },
+    "goldenRegression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "referenceCase",
+        "existingMergeCommit",
+        "expectedNodeCount",
+        "expectedMaxDepth",
+        "expectedDisplayStatus",
+        "expectedStrongForms",
+        "expectedTwotEntry",
+        "expectedOriginKo",
+        "expectedUiContracts"
+      ],
+      "properties": {
+        "referenceCase": { "const": "GEN-1-1-H776" },
+        "existingMergeCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "expectedNodeCount": { "const": 26 },
+        "expectedMaxDepth": { "const": 3 },
+        "expectedDisplayStatus": { "const": "pilot-reviewed" },
+        "expectedStrongForms": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[HGhg]0*[0-9]+[A-Za-z]?$" }
+        },
+        "expectedTwotEntry": { "const": "167" },
+        "expectedOriginKo": { "type": "string", "minLength": 1 },
+        "expectedUiContracts": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
