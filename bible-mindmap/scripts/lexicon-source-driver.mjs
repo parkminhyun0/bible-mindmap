@@ -6,7 +6,6 @@ import { fingerprint } from './build-h776-parser-adapter.mjs';
 import { DEFAULT_SOURCE_ADAPTERS } from './lexicon-source-adapters.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DEFAULT_INPUT = 'data/lexicon/fixtures/GEN-1-1-H776.parser-input.v1.json';
 const DEFAULT_REGISTRY = 'data/lexicon/source-registry.json';
 const DEFAULT_POLICY = 'data/lexicon/source-driver-policy.json';
 
@@ -213,7 +212,9 @@ function writeJson(relativePath, value) {
 }
 
 function runCli() {
-  const input = readJson(parseArg('--input=') || DEFAULT_INPUT);
+  const inputPath = parseArg('--input=');
+  if (!inputPath) throw new Error('lexicon source driver requires --input=<parser-input.json>');
+  const input = readJson(inputPath);
   const operation = parseArg('--operation=') || 'preflight';
   const result = runLexiconSourceDriver(input, { operation });
   const reportTarget = parseArg('--write-report=');
