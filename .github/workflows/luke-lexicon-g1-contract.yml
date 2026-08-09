@@ -1,0 +1,98 @@
+name: Luke Lexicon G1 Contract
+
+on:
+  push:
+    branches:
+      - chatgpt/luke-g1-translation-contract
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g0-inventory.json'
+      - 'bible-mindmap/schemas/lexicon-translation-payload.schema.json'
+      - 'bible-mindmap/scripts/build-luke-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-luke-translation-contract.mjs'
+      - '.github/workflows/luke-lexicon-g1-contract.yml'
+      - 'memory/RESUME.json'
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g0-inventory.json'
+      - 'bible-mindmap/data/lexicon/luke-g1-manifest.json'
+      - 'bible-mindmap/data/lexicon/luke-g1-report.json'
+      - 'bible-mindmap/docs/luke-g1-contract.md'
+      - 'bible-mindmap/schemas/lexicon-translation-payload.schema.json'
+      - 'bible-mindmap/scripts/build-luke-translation-manifest.mjs'
+      - 'bible-mindmap/scripts/verify-luke-translation-contract.mjs'
+      - '.github/workflows/luke-lexicon-g1-contract.yml'
+      - 'memory/RESUME.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: luke-g1-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Manifest builder self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-luke-translation-manifest.mjs --self-test
+
+      - name: Contract verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-translation-contract.mjs --self-test
+
+      - name: Build deterministic G1 manifest
+        working-directory: bible-mindmap
+        run: node scripts/build-luke-translation-manifest.mjs --batch-size=100
+
+      - name: Verify payload, manifest, audit and reprocessing contracts
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-translation-contract.mjs --strict
+
+      - name: Commit generated evidence to branch
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            bible-mindmap/data/lexicon/luke-g1-manifest.json \
+            bible-mindmap/data/lexicon/luke-g1-report.json \
+            bible-mindmap/docs/luke-g1-contract.md
+          if git diff --cached --quiet; then
+            echo 'Generated Luke G1 evidence is already current.'
+          else
+            git commit -m 'data(luke): record G1 translation contract evidence'
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Publish G1 summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE' >> "$GITHUB_STEP_SUMMARY"
+          const fs = require('node:fs')
+          const report = JSON.parse(fs.readFileSync('data/lexicon/luke-g1-report.json', 'utf8'))
+          const s = report.summary
+          console.log('## 누가복음 G1 · 번역 계약과 결정적 배치 manifest')
+          console.log(`- 판정: **${report.pass ? 'PASS' : 'FAIL'}**`)
+          console.log(`- 고유 Greek Strong: **${s.uniqueStrong.toLocaleString()}**`)
+          console.log(`- 기존 한글 재사용: **${s.reuseExisting.toLocaleString()}**`)
+          console.log(`- 신규 번역 큐: **${s.translationRequired.toLocaleString()}**`)
+          console.log(`- 배치: **${s.batchCount}개 · 최대 ${s.batchSize}개**`)
+          console.log(`- high / medium / low: **${s.priorityCounts.high} / ${s.priorityCounts.medium} / ${s.priorityCounts.low}**`)
+          console.log('- 실제 provider API 호출: **0건**')
+          console.log('- 서비스 사전 쓰기: **0건**')
+          NODE
