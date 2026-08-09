@@ -1,19 +1,8 @@
 name: Genesis G2 BDB Source Packets
 
+# Historical G2 contract. Public-First P1 uses Source Registry v1 and later Evidence Packet v2.
+# Keep manual dispatch for evidence reproduction only.
 on:
-  pull_request:
-    paths:
-      - '.oshb-cache/Gen.xml'
-      - 'bible-mindmap/data/lexicon/source-registry.json'
-      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
-      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
-      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
-      - 'bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
-      - 'bible-mindmap/src/data/koreanGloss*.js'
-      - '.github/workflows/genesis-g2-bdb-source-packets.yml'
   workflow_dispatch:
 
 permissions:

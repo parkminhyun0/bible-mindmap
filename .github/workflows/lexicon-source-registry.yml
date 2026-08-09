@@ -1,0 +1,39 @@
+name: Lexicon Source Registry Gate
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'docs/lexicon-workflow/**'
+      - 'memory/RESUME.json'
+      - '.github/workflows/lexicon-source-registry.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'docs/lexicon-workflow/**'
+      - 'memory/RESUME.json'
+      - '.github/workflows/lexicon-source-registry.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: lexicon-source-registry-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Verify Source Registry license and reproducibility gate
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-source-registry.mjs

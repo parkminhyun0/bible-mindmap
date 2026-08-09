@@ -1,26 +1,8 @@
 name: Genesis G2 Blind Translation Contract
 
+# Historical NVIDIA/OpenAI blind-translation contract.
+# Public-First P1 no longer auto-runs this path; keep manual dispatch for evidence reproduction only.
 on:
-  pull_request:
-    paths:
-      - 'bible-mindmap/data/lexicon/source-registry.json'
-      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
-      - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
-      - 'bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs'
-      - 'bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs'
-      - 'bible-mindmap/scripts/build-genesis-g2-canary-set.mjs'
-      - 'bible-mindmap/scripts/verify-genesis-g2-canary-set.mjs'
-      - 'bible-mindmap/scripts/evaluate-genesis-g2-canary-results.mjs'
-      - 'bible-mindmap/scripts/ai/providers/nvidia.mjs'
-      - 'bible-mindmap/scripts/ai/providers/openai.mjs'
-      - 'bible-mindmap/scripts/ai/lexicon/**'
-      - 'bible-mindmap/scripts/verify-genesis-g2-blind-translation.mjs'
-      - 'bible-mindmap/scripts/verify-ai-provider-boundary.mjs'
-      - '.github/workflows/genesis-g2-blind-translation.yml'
-      - '.github/workflows/genesis-g2-canary-execute.yml'
   workflow_dispatch:
 
 permissions:
