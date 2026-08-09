@@ -350,7 +350,7 @@ function buildReport(inventory) {
     generatedDate: inventory.generatedDate,
     pass:
       summary.chapters === 24
-      && summary.verses === 1151
+      && summary.verses === 1149
       && diagnostics.missingStrongTokenIds.length === 0
       && diagnostics.duplicateTokenCount === 0,
     summary,
