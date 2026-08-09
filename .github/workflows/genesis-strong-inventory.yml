@@ -47,6 +47,9 @@ jobs:
           const fs = require('node:fs')
           const report = JSON.parse(fs.readFileSync('reports/genesis-strong-inventory.json', 'utf8'))
           const outcome = process.env.INVENTORY_OUTCOME || 'unknown'
+          const malformedSamples = [...new Map(
+            report.diagnostics.malformedLemma.map((item) => [item.lemma, item]),
+          ).values()].slice(0, 20)
           const summary = {
             outcome,
             chapters: `${report.chaptersFound.length}/${report.expectedChapters}`,
@@ -59,6 +62,7 @@ jobs:
             diagnostics: {
               nonStrongLemma: report.diagnostics.nonStrongLemma.length,
               malformedLemma: report.diagnostics.malformedLemma.length,
+              malformedSamples,
               wordsWithoutLemma: report.diagnostics.wordsWithoutLemma.length,
               multiStrongWords: report.diagnostics.multiStrongWords.length,
               baseDictionaryCollisions: report.diagnostics.dictionaryKeyCollisions.base.length,
@@ -67,6 +71,9 @@ jobs:
           }
           console.log(JSON.stringify(summary, null, 2))
 
+          const sampleLines = malformedSamples.length
+            ? malformedSamples.map((item) => `- \`${item.lemma}\` · ${item.reference} · ${item.surface || '(표면형 없음)'}`)
+            : ['- 없음']
           const markdown = [
             '<!-- genesis-strong-inventory -->',
             '## 창세기 G0 · Strong 전수 인벤토리',
@@ -89,6 +96,12 @@ jobs:
             `- lemma 없는 단어: ${summary.diagnostics.wordsWithoutLemma.toLocaleString()}`,
             `- 복합 Strong 단어: ${summary.diagnostics.multiStrongWords.toLocaleString()}`,
             `- 기본/활성 사전 키 충돌: ${summary.diagnostics.baseDictionaryCollisions}/${summary.diagnostics.activeDictionaryCollisions}`,
+            '',
+            '<details><summary>숫자 포함 파싱 실패 lemma 표본</summary>',
+            '',
+            ...sampleLines,
+            '',
+            '</details>',
             '',
             `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
           ].join('\n')
