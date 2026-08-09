@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "stage": "G2-preparation",
+  "generatedDate": "2026-08-09",
+  "pass": true,
+  "summary": {
+    "selected": 10,
+    "ready": 10,
+    "blocked": 0,
+    "reuseControls": 3,
+    "newTranslations": 7,
+    "representativeContexts": 70,
+    "posFamilies": [
+      "A",
+      "N",
+      "V"
+    ],
+    "frequencyBands": [
+      "high",
+      "low",
+      "medium"
+    ]
+  },
+  "selected": [
+    {
+      "order": 1,
+      "slotId": "theology-god",
+      "strong": "G2316",
+      "lemma": "θεός",
+      "tokenCount": 122,
+      "frequencyBand": "high",
+      "routing": "translate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 2,
+      "slotId": "theology-kingdom",
+      "strong": "G932",
+      "lemma": "βασιλεία",
+      "tokenCount": 45,
+      "frequencyBand": "medium",
+      "routing": "control-retranslate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 3,
+      "slotId": "theology-salvation-verb",
+      "strong": "G4982",
+      "lemma": "σῴζω",
+      "tokenCount": 17,
+      "frequencyBand": "medium",
+      "routing": "translate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 4,
+      "slotId": "theology-repentance",
+      "strong": "G3341",
+      "lemma": "μετάνοια",
+      "tokenCount": 5,
+      "frequencyBand": "low",
+      "routing": "translate",
+      "contexts": 5,
+      "status": "ready"
+    },
+    {
+      "order": 5,
+      "slotId": "polysemy-spirit",
+      "strong": "G4151",
+      "lemma": "πνεῦμα",
+      "tokenCount": 36,
+      "frequencyBand": "medium",
+      "routing": "control-retranslate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 6,
+      "slotId": "high-frequency-verb",
+      "strong": "G3004",
+      "lemma": "λέγω",
+      "tokenCount": 217,
+      "frequencyBand": "high",
+      "routing": "translate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 7,
+      "slotId": "adjective-control",
+      "strong": "G1342",
+      "lemma": "δίκαιος",
+      "tokenCount": 11,
+      "frequencyBand": "medium",
+      "routing": "translate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 8,
+      "slotId": "proper-name-control",
+      "strong": "G3137",
+      "lemma": "Μαρία",
+      "tokenCount": 17,
+      "frequencyBand": "medium",
+      "routing": "translate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 9,
+      "slotId": "existing-reuse-control",
+      "strong": "G3686",
+      "lemma": "ὄνομα",
+      "tokenCount": 34,
+      "frequencyBand": "medium",
+      "routing": "control-retranslate",
+      "contexts": 8,
+      "status": "ready"
+    },
+    {
+      "order": 10,
+      "slotId": "low-frequency-control",
+      "strong": "G2",
+      "lemma": "Ἀαρών",
+      "tokenCount": 1,
+      "frequencyBand": "low",
+      "routing": "translate",
+      "contexts": 1,
+      "status": "ready"
+    }
+  ],
+  "executionEvidence": {
+    "providerCalls": 0,
+    "localModelCalls": 0,
+    "manualCandidateImports": 0,
+    "productionWrites": 0,
+    "approvalState": "not-approved"
+  },
+  "nextGate": "Explicit model/mode/cost/kill-switch approval before any Luke G2 candidate generation."
+}
