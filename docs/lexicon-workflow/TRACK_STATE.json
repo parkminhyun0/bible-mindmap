@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P2_IN_PROGRESS",
-  "activePhase": "P2_H776_SOURCE_TREE_RECONCILIATION",
+  "activePhase": "P2_H776_EVIDENCE_REGENERATION",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -37,7 +37,9 @@
     "openscriptures-bdb-license-approved-v1",
     "openscriptures-bdb-canonical-fingerprint-v1",
     "openscriptures-bdb-deterministic-adapter-v1",
-    "h776-openscriptures-source-tree-diff-v1"
+    "h776-openscriptures-source-tree-diff-v1",
+    "source-golden-reconciliation-schema-v1",
+    "h776-source-golden-reconciliation-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -53,13 +55,25 @@
     "actualMaxDepth": 2,
     "goldenNodeCount": 26,
     "goldenMaxDepth": 3,
-    "goldenOnlyNodeIds": ["1.2.8", "1.5.1", "1.5.1.1"],
+    "exactMappingCount": 22,
+    "subtreeMapping": {
+      "sourceNodeId": "1.5",
+      "goldenNodeIds": ["1.5", "1.5.1", "1.5.1.1"]
+    },
+    "legacyRetained": {
+      "goldenNodeId": "1.2.8",
+      "primarySourceSupport": false,
+      "evidencePolicy": "legacy-approved-snapshot-only"
+    },
     "reviewRequiredObservations": ["SOURCE_TEXT_TRIAL_TERRITORY"],
+    "allSourceNodesAccounted": true,
+    "allGoldenNodesAccounted": true,
+    "evidenceRegenerationAllowed": true,
     "candidateGenerationAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "goldenMeaningMutationAllowed": false
   },
-  "nextAction": "freeze a reviewed source-to-Golden reconciliation map for the 23 pinned OpenScriptures source nodes versus the 26-node H776 Golden Reference; preserve the approved Korean tree and keep candidate generation disabled",
+  "nextAction": "regenerate an H776 Evidence Packet v2 artifact from the pinned OpenScriptures source output plus the reviewed 23-to-26 reconciliation map; preserve all 26 approved Korean Golden translations, mark 1.2.8 as legacy-only evidence, carry the 1.2.3 trial-territory anomaly explicitly, and keep candidate generation disabled",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
