@@ -16,8 +16,8 @@ const h776 = read('data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json');
 
 // Phase gate SSOT is TRACK_STATE.json. Caller must not decide.
 const PHASE_GATE = readPhaseGate();
-assert.equal(PHASE_GATE.candidateGenerationAllowed, false,
-  'P4 gate: candidateGenerationAllowed must be false until human-approved TRACK_STATE flip');
+assert.equal(PHASE_GATE.candidateGenerationAllowed, true,
+  'P5 candidate phase requires reviewed TRACK_STATE currentPhaseGate=true');
 
 function withIdentityFingerprint(identity) {
   const value = structuredClone(identity);
@@ -94,10 +94,10 @@ function buildArbitraryStrongContractProbe() {
     }],
     licenseSummary: {
       allAutomaticInputsApproved: true,
-      newGenerationAllowed: false,
+      newGenerationAllowed: true,
       approvedSources: [source.sourceId],
       restrictedSources: [],
-      notes: 'P3 in-memory arbitrary Strong contract probe only; candidate generation remains disabled.',
+      notes: 'P5 in-memory candidate-phase contract probe only; no candidate artifact is written.',
     },
     regeneration: null,
     goldenRegression: null,
@@ -107,13 +107,13 @@ function buildArbitraryStrongContractProbe() {
 
 const h776Result = verifyLexiconEvidencePacket(h776, registry);
 assert.equal(h776Result.canonicalStrong, 'H776');
-assert.equal(h776Result.candidateGenerationAllowed, false);
+assert.equal(h776Result.candidateGenerationAllowed, false, 'H776 golden reference must remain regression-only');
 assert.equal(h776Result.legacyOnlyCount, 1);
 
 const arbitrary = buildArbitraryStrongContractProbe();
 const arbitraryResult = verifyLexiconEvidencePacket(arbitrary, registry);
 assert.equal(arbitraryResult.canonicalStrong, 'H1254');
-assert.equal(arbitraryResult.candidateGenerationAllowed, false);
+assert.equal(arbitraryResult.candidateGenerationAllowed, true);
 assert.equal(arbitraryResult.legacyOnlyCount, 0);
 
 const identityDrift = structuredClone(arbitrary);
@@ -131,10 +131,10 @@ undeclaredProvenance.senseNodes[0].sourceRefs = [{ sourceId: 'openscriptures-str
 undeclaredProvenance.packetFingerprint = fingerprintWithout(undeclaredProvenance, 'packetFingerprint');
 assert.throws(() => verifyLexiconEvidencePacket(undeclaredProvenance, registry), /undeclared sourceRef/);
 
-const generationEscape = structuredClone(arbitrary);
-generationEscape.licenseSummary.newGenerationAllowed = true;
-generationEscape.packetFingerprint = fingerprintWithout(generationEscape, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(generationEscape, registry), /current phase \+ license gate/);
+const generationLockMismatch = structuredClone(arbitrary);
+generationLockMismatch.licenseSummary.newGenerationAllowed = false;
+generationLockMismatch.packetFingerprint = fingerprintWithout(generationLockMismatch, 'packetFingerprint');
+assert.throws(() => verifyLexiconEvidencePacket(generationLockMismatch, registry), /current phase \+ license gate/);
 
 const legacyInGeneration = structuredClone(arbitrary);
 legacyInGeneration.senseNodes[0] = {
@@ -152,13 +152,12 @@ const packetFingerprintDrift = structuredClone(h776);
 packetFingerprintDrift.packetFingerprint = `sha256:${'f'.repeat(64)}`;
 assert.throws(() => verifyLexiconEvidencePacket(packetFingerprintDrift, registry), /packetFingerprint drift/);
 
-// P3.5 M2 regression: caller MUST NOT be able to bypass the phase gate.
-// Passing candidateGenerationAllowed=true while TRACK_STATE says false must fail closed.
+// P3.5 M2 regression remains: caller cannot turn the reviewed phase gate off or on.
 assert.throws(
-  () => verifyLexiconEvidencePacket(h776, registry, { candidateGenerationAllowed: true }),
+  () => verifyLexiconEvidencePacket(arbitrary, registry, { candidateGenerationAllowed: false }),
   /disagrees with TRACK_STATE/,
 );
 
 console.log(
-  `✓ generic lexicon evidence verifier passed · H776 regression=${h776Result.senseCount} nodes · arbitrary Strong probe=${arbitraryResult.canonicalStrong} · candidateGenerationAllowed=${PHASE_GATE.candidateGenerationAllowed} (SSOT: TRACK_STATE)`,
+  `✓ generic lexicon evidence verifier passed · H776 regression=${h776Result.senseCount} nodes · arbitrary Strong probe=${arbitraryResult.canonicalStrong} · candidateGenerationAllowed=${PHASE_GATE.candidateGenerationAllowed} (SSOT: TRACK_STATE currentPhaseGate)`,
 );
