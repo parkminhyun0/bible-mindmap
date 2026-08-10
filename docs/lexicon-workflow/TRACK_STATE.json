@@ -50,7 +50,11 @@
     "p3-5-independent-contract-audit-v1",
     "p3-5-defensive-ci-path-glob-v1",
     "p4-verifier-reads-phase-gate-from-track-state-v1",
-    "p4-caller-candidate-generation-bypass-blocked-v1"
+    "p4-caller-candidate-generation-bypass-blocked-v1",
+    "p4-approval-registry-schema-v1",
+    "p4-lexicon-manifest-schema-v1",
+    "p4-lexicon-shard-schema-v1",
+    "p4-approval-registry-verifier-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -155,7 +159,7 @@
     "qualityGateWeakening": false,
     "translationCandidatesGeneratedInAudit": 0
   },
-  "nextAction": "P4 next: (1) DONE in this PR — verifier now reads candidateGenerationAllowed from TRACK_STATE.p3_5_independentAudit and rejects caller-provided overrides; (2) STILL PENDING — enable main branch protection with required Lexicon Evidence Contract status check before adding any Approval Registry write path (human-only, GitHub Settings); (3) STANDING — require a separate p{N}_5_independent_audit block before flipping activePhase in any future transition; next infrastructure work is Approval Registry schema + shard/manifest contracts, still no candidate generation or Approval Registry writes",
+  "nextAction": "P4.5 독립 감사 대기 (Claude), 통과 시 Approval Registry 첫 엔트리 등재",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
