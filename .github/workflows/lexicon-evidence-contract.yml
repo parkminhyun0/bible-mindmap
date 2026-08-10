@@ -80,7 +80,7 @@ jobs:
       - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-approval-registry.mjs
-      - name: Verify P4/P5 read-only public delivery, loader and React popup contract
+      - name: Verify P4 read-only public delivery, loader and React popup contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs
       - name: Verify H776 Golden regression provenance
