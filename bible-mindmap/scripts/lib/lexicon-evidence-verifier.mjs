@@ -1,9 +1,33 @@
 import assert from 'node:assert/strict';
 import crypto from 'node:crypto';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const SHA256_PATTERN = /^sha256:[a-f0-9]{64}$/;
 const STRONG_PATTERN = /^([HG])([1-9][0-9]*)([a-z]?)$/;
 const NODE_ID_PATTERN = /^[1-9][0-9]*(?:\.[1-9][0-9]*)*$/;
+
+const HERE = path.dirname(fileURLToPath(import.meta.url));
+const DEFAULT_TRACK_STATE_PATH = path.resolve(HERE, '../../../docs/lexicon-workflow/TRACK_STATE.json');
+const PHASE_GATE_KEYS = ['candidateGenerationAllowed', 'approvalRegistryPromotionAllowed', 'serviceUiWriteAllowed'];
+
+export function readPhaseGate(trackStatePath = DEFAULT_TRACK_STATE_PATH) {
+  let raw;
+  try {
+    raw = JSON.parse(fs.readFileSync(trackStatePath, 'utf8'));
+  } catch (error) {
+    throw new Error(`phase gate read failed at ${trackStatePath} (fail-closed): ${error.message}`);
+  }
+  const source = raw?.p3_5_independentAudit;
+  assert.ok(source && typeof source === 'object', 'TRACK_STATE.json must expose p3_5_independentAudit as phase-gate SSOT');
+  const gate = {};
+  for (const key of PHASE_GATE_KEYS) {
+    assert.equal(typeof source[key], 'boolean', `TRACK_STATE p3_5_independentAudit.${key} must be boolean`);
+    gate[key] = source[key];
+  }
+  return Object.freeze(gate);
+}
 
 export function canonicalize(value) {
   if (Array.isArray(value)) return value.map(canonicalize);
@@ -171,7 +195,18 @@ function verifySenseTree(packet, inputIds) {
 }
 
 export function verifyLexiconEvidencePacket(packet, registry, options = {}) {
-  const { candidateGenerationAllowed = false } = options;
+  // Phase gate SSOT is TRACK_STATE.json, not the caller (M2 from P3.5 audit).
+  // Tests can point at a fixture TRACK_STATE via options.trackStatePath, but
+  // the value itself is never caller-provided; the file is authoritative.
+  // A caller passing candidateGenerationAllowed that disagrees fails closed.
+  const phaseGate = readPhaseGate(options.trackStatePath);
+  const candidateGenerationAllowed = phaseGate.candidateGenerationAllowed;
+  if (options.candidateGenerationAllowed !== undefined
+      && options.candidateGenerationAllowed !== candidateGenerationAllowed) {
+    throw new Error(
+      `caller-provided candidateGenerationAllowed=${options.candidateGenerationAllowed} disagrees with TRACK_STATE=${candidateGenerationAllowed}`,
+    );
+  }
   assert.ok(packet && typeof packet === 'object' && !Array.isArray(packet), 'Evidence Packet must be an object');
   assert.equal(packet.schemaVersion, 2, 'Evidence Packet schemaVersion must be 2');
   nonEmpty(packet.packetId, 'packetId');
