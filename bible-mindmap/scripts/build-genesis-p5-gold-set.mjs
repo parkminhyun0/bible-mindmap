@@ -6,7 +6,8 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const MODULE_PATH = fileURLToPath(import.meta.url)
+const __dirname = dirname(MODULE_PATH)
 const APP_ROOT = resolve(__dirname, '..')
 
 const DEFAULT_INVENTORY = resolve(APP_ROOT, 'reports/genesis-strong-inventory.json')
@@ -238,4 +239,4 @@ function main() {
   console.log(`  candidate generation: ${result.governance.candidateGenerationAllowed}`)
 }
 
-main()
+if (process.argv[1] && resolve(process.argv[1]) === MODULE_PATH) main()
