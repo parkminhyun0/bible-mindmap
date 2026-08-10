@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 1,
+  "resultId": "genesis-p5-claude-audit-results-v1",
+  "book": "GEN",
+  "auditRunAt": "2026-08-10T13:05:00+09:00",
+  "auditorRole": "claude-independent-auditor",
+  "auditorModel": "claude-cli/claude-opus-4-7",
+  "bundleSource": {
+    "artifactName": "genesis-p5-gpt-candidate-evidence",
+    "workflowRun": "https://github.com/parkminhyun0/bible-mindmap/actions/runs/31389500038",
+    "bundleFingerprint": "sha256:1c8039a85cbad496c0c8a92d6e248b24efe64e43f29639365c04f5afa4fcc3d2",
+    "candidateManifestFingerprint": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+    "goldenControlExcluded": "H776"
+  },
+  "governance": {
+    "auditOnly": true,
+    "sourceMutated": false,
+    "candidateMutated": false,
+    "approvalRegistryWritten": false,
+    "serviceUiWritten": false,
+    "productionWritten": false,
+    "existingApprovedMeaningMutated": false
+  },
+  "summary": {
+    "candidateUnits": 27,
+    "nodePairs": 150,
+    "verdictCounts": { "PASS": 25, "REVISE": 2, "DISPUTE": 0 },
+    "byTier": {
+      "R1": { "count": 10, "PASS": 9,  "REVISE": 1, "DISPUTE": 0 },
+      "R2": { "count": 7,  "PASS": 7,  "REVISE": 0, "DISPUTE": 0 },
+      "R3": { "count": 5,  "PASS": 4,  "REVISE": 1, "DISPUTE": 0 },
+      "R4": { "count": 5,  "PASS": 5,  "REVISE": 0, "DISPUTE": 0 }
+    },
+    "nextGates": {
+      "GEMINI_DISPUTE_REVIEW": ["H430", "H1254a", "H3117", "H7307", "H46"],
+      "HUMAN_FINAL_WORDING":   ["H120", "H6030b", "H7650", "H28", "H39"],
+      "REVISE_BEFORE_ADVANCE": ["H4325", "H46"]
+    }
+  },
+  "audits": [
+    {
+      "auditId": "AUDIT-GEN-P5-H430-H430-GPT-v1",
+      "strong": "H430",
+      "lemma": "אֱלֹהִים",
+      "tier": "R3",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 네 개 상위 sense(수적 복수, 강의적 복수, הָאֱלֹהִים, אֱלֹהִים=God)를 모두 포괄. 각 하위 gloss가 BDB 원문 어휘와 일치.",
+        "senseBoundary":  "PASS — 수적 복수와 강의적 복수를 정확히 분리, 하위 sense a/b/c/d 경계 유지.",
+        "koreanNaturalness": "PASS — '통치자·재판관', '신적·초인간적 존재', '신 또는 여신' 등 표현 자연스러움.",
+        "theologicalOverreach": "PASS — 삼위일체, 언약 신학 등 사전 범위를 넘는 확장 없음. '참 하나님(the true God)'은 BDB 원문 gloss 직역.",
+        "etymologyCertainty": "PASS — 어원 주장 없음.",
+        "riskRouting": "PASS — R3(polysemy + theological-sensitive) 적절. Gemini dispute review 필요."
+      },
+      "evidence": [
+        "root pair 원문 4개 sense 그룹 → KO 4개 그룹 1:1 대응",
+        "1.1.1 rulers/judges as divine representatives at sacred places → '성소에서 신적 대표자로 서거나 신적 위엄과 능력을 반영하는 통치자들·재판관들'",
+        "1.3 הָאֱלֹהִים the (true) God → 'הָאֱלֹהִים: 참 하나님' (관사 유지)"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H8064-H8064-GPT-v1",
+      "strong": "H8064",
+      "lemma": "שָׁמַיִם",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — visible heavens / abode of God / personified 세 sense 모두 반영. 엘리야 예시 유지.",
+        "senseBoundary":  "PASS — sense[1] 물리적 하늘, sense[2] 신적 거처, sense[3] 의인화 구분 유지.",
+        "koreanNaturalness": "PASS — '보이는 하늘', '하나님의 거처', '의인화된 하늘' 자연스러움.",
+        "theologicalOverreach": "PASS — '하나님의 거처'는 BDB gloss 직역, 확장 없음.",
+        "etymologyCertainty": "PASS — 어원 주장 없음.",
+        "riskRouting": "PASS — R2(source-text-noisy) 적절. 1.1.2 'phrases' 파편은 KO에서 '이 의미와 관련된 여러 표현들'로 정직하게 노이즈 처리."
+      },
+      "evidence": [
+        "1.1.2 sourceText='phrases' → KO는 확대 해석 대신 '표현들'로 최소 렌더링, source-text-noisy 플래그 유지"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H1254-H1254a-GPT-v1",
+      "strong": "H1254a",
+      "lemma": "בָּרָא",
+      "tier": "R3",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — Qal(shape/fashion/create), Niph(be created + birth of something new astonishing), Piel(cut down/cut out) 모두 반영.",
+        "senseBoundary":  "PASS — Qal 창조 어간과 Piel '베어내다' 어간을 명확히 분리(polysemy 처리 핵심).",
+        "koreanNaturalness": "PASS — '빚다·형성하다·창조하다', '베어 쓰러뜨리다·베어내다' 자연스러움.",
+        "theologicalOverreach": "PASS — creatio ex nihilo 등 창조 신학 삽입 없음. notes에 '창조 신학을 사전 뜻에 덧붙이지 않는다'는 자기 억제 명시.",
+        "etymologyCertainty": "PASS — 어원 주장 없음.",
+        "riskRouting": "PASS — R3 적절. Gemini에서 특히 Qal↔Piel 이의어 처리 재확인 권장."
+      },
+      "evidence": [
+        "notes: '창조 신학을 사전 뜻에 덧붙이지 않는다' → 자기 규율",
+        "1.3 Piel senses 별도 sub-tree로 분리 → Qal 창조 의미와 오염 없음"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H216-H216-GPT-v1",
+      "strong": "H216",
+      "lemma": "אוֹר",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 11개 sense 모두 매핑.",
+        "senseBoundary":  "PASS — 자연광 / 아침빛 / 천체광 / 일광 / 번개 / 등불 / 생명 / 번영 / 교훈 / 얼굴 / 야훼 순차 분리.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — sense[11] 'Yahweh' 노이즈 조각은 '야훼와 관련된 빛의 용례'로 서술만 하고 신학 확장 없음.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2 적절."
+      },
+      "evidence": [
+        "1.11 sourceText='Yahweh' 파편 → 신학 확장 없이 '관련된 용례'로 최소 처리"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H2822-H2822-GPT-v1",
+      "strong": "H2822",
+      "lemma": "חֹשֶׁךְ",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 물리적 어둠·은닉처·비유(고난/공포/애통/혼란/무지/악·죄/불분명함) 모두 반영.",
+        "senseBoundary":  "PASS — sense[1] 물리 / sense[2] 은닉처 / sense[3] 비유 및 하위 7개 sub-sense 분리.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — 1.3.6 '악, 죄'는 BDB 원문 metaphorical gloss 직역, 죄론 확장 없음.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2(polysemy) 적절. theological-sensitive 플래그 추가는 선택적이나 필수 아님."
+      },
+      "evidence": [
+        "1.3.6 = evil, sin → '악, 죄.' (BDB gloss 직역)"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H3117-H3117-GPT-v1",
+      "strong": "H3117",
+      "lemma": "יוֹם",
+      "tier": "R3",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 낮/시간 단위/여호와의 날/생애의 날들/때/관용 표현 모두 반영.",
+        "senseBoundary":  "PASS — 7개 상위 sense 분리 유지.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — 창세기 창조 문맥의 '날' 길이 논쟁을 사전 정의로 확정하지 않음(notes 명시).",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R3 적절. Gemini에서 '여호와의 날' 심판/축복 어감 대칭 재확인 권장."
+      },
+      "evidence": [
+        "notes: '창세기 창조 문맥의 시간론을 사전 정의만으로 확정하지 않는다' → 창조론 논쟁 회피 명시"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H4325-H4325-GPT-v1",
+      "strong": "H4325",
+      "lemma": "מַי",
+      "tier": "R1",
+      "verdict": "REVISE",
+      "checks": {
+        "sourceFidelity": "PASS — 'only pl. מַ֫יִם waters, water' 반영.",
+        "senseBoundary":  "PASS — 단일 sense.",
+        "koreanNaturalness": "PARTIAL — '물들' 복수 표현이 한국어 관습상 어색하나 '복수형 명사'라는 문법 주석이 이를 보완.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절.",
+        "identityConsistency": "REVISE — identity.transliterationScientific='may'(단수 유령형)와 transliterationKo='마임'(실사용 복수형) 불일치. 둘 중 하나로 정렬 필요."
+      },
+      "evidence": [
+        "identity.lemma='מַי', transliterationScientific='may' vs transliterationKo='마임' → 표기 체계 불일치",
+        "권장: 둘 다 실사용 복수형 기준으로 통일 (예: lemma='מַ֫יִם', translitScientific='mayim', translitKo='마임')"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H7307-H7307-GPT-v1",
+      "strong": "H7307",
+      "lemma": "רוּחַ",
+      "tier": "R3",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 9개 sense (숨/바람/영-기질/살아있는 존재의 영/감정 자리/정신 활동의 자리/의지/도덕적 성품/하나님의 영) 모두 반영. BDB 사용 빈도 (33t/117t/76t/94t) 정보 손실 없이 대응.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — '루아흐' 음역, '숨·바람·영' 3항 유지.",
+        "theologicalOverreach": "PASS — 'spirit of God'을 '하나님의 영'으로 직역, 성령론(삼위일체 3위) 확장 없음.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R3 적절. Gemini에서 '영/기운/생기' 어감 재확인 권장."
+      },
+      "evidence": [
+        "1.9 spirit of God (94 t.) → '하나님의 영' (신약 성령론 삽입 없음)"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H120-H120-GPT-v1",
+      "strong": "H120",
+      "lemma": "אָדָם",
+      "tier": "R4",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 일반명사(a man/coll. mankind) + 고유명사(첫 사람 아담) + 지명(요단 골짜기 성읍) 모두 반영.",
+        "senseBoundary":  "PASS — 세 사용역 분리 명확.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — 아담 신학·원죄론 확장 없음.",
+        "etymologyCertainty": "PASS — 지명 어원 '(as built ?)'를 '이름의 유래를 「건축되다」와 연결하는 설명은 불확실하다'로 명시적으로 불확정 처리.",
+        "riskRouting": "PASS — R4 적절. 사람 최종 문안 게이트 필요."
+      },
+      "evidence": [
+        "1.4 place name Adam: '(as built ?)' → KO는 '불확실하다'로 어원 확정 회피"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H853-H853-GPT-v1",
+      "strong": "H853",
+      "lemma": "אֵת",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 'mark of the accusative, prefixed as a rule only to nouns that are definite' 완전 반영.",
+        "senseBoundary":  "PASS — 문법 표지 단일 기능.",
+        "koreanNaturalness": "PASS — '직접목적격을 표시하는 표지' 자연스러움.",
+        "theologicalOverreach": "PASS — 문법 소사에 어휘 의미 부여 없음(notes로 자기 억제).",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": ["notes: '자체 어휘 의미를 과도하게 부여하지 않는다' → 명시적 자기 규율"]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H559-H559-GPT-v1",
+      "strong": "H559",
+      "lemma": "אָמַר",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — Qal(say/think/promise/command) + Niph(be told) + Hiph(avow/avouch) + Hithp(boast) 모두 반영.",
+        "senseBoundary":  "PASS — 어간별 sub-sense 유지.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H413-H413-GPT-v1",
+      "strong": "H413",
+      "lemma": "אֶל",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 9개 기능(motion to, into, direction, hostile, addition, metaphorical concerning, standard, presence at, prefixed to other preps) 모두 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — '~에게/~로/~안으로/~을 향하여/~에 맞서/~에 관하여/~에 따라/~곁에' 다양 표현 자연스러움.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H834-H834a-GPT-v1",
+      "strong": "H834a",
+      "lemma": "אֲשֶׁר",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS.",
+        "senseBoundary":  "PASS — 관계 표지 단일 기능.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H834-H834b-GPT-v1",
+      "strong": "H834b",
+      "lemma": "בַאֲשֶׁר",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — in that which / adv where / conj inasmuch as / on account of whom 모두 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H834-H834c-GPT-v1",
+      "strong": "H834c",
+      "lemma": "מֵאֲשֶׁר",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — from that which / adv from where / conj since 모두 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H834-H834d-GPT-v1",
+      "strong": "H834d",
+      "lemma": "כַּאֲשֶׁר",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 방식/비교, 원인, 시간 세 sense 모두 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H3605-H3605-GPT-v1",
+      "strong": "H3605",
+      "lemma": "כֹּל",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 속격 with '전체/어떤/모든' + 무관사 절대 용법 + הַכֹּל 정관사 용법(문맥 한정 / 넓은 의미 모두) 반영.",
+        "senseBoundary":  "PASS — 3층 sub-sense 유지.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H1242-H1242-GPT-v1",
+      "strong": "H1242",
+      "lemma": "בֹּקֶר",
+      "tier": "R2",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 시점으로서의 '아침' + '다음 날' 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R2(source-text-noisy) 적절. sense[1] BDB 원문 괄호 미종결을 KO에서 '불완전하게 분절되어 있다'로 정직 명시."
+      },
+      "evidence": [
+        "1.1 sourceText 괄호 미종결 → KO는 노이즈를 은폐하지 않고 명시"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H2005-H2005-GPT-v1",
+      "strong": "H2005",
+      "lemma": "הֵן",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 지시부사/감탄사 '보라', 산문에서의 주의 환기 기능 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — '보라, 자' 감탄 표현 자연스러움.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS — הִנֵּה와의 어원 관련성은 원문 표기(v. הִנֵּה)만 그대로 두고 확정하지 않음.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H3206-H3206-GPT-v1",
+      "strong": "H3206",
+      "lemma": "יֶלֶד",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — child/son/boy/youth 네 gloss 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — '아이, 아들, 소년, 젊은이'.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H6030-H6030b-GPT-v1",
+      "strong": "H6030b",
+      "lemma": "עָנָה",
+      "tier": "R4",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — Qal(응답/상황 대응/증언/피고 답변) + Niph(응답받다) + Hiph(BDB 자체가 wholly dub. 표시) 모두 반영.",
+        "senseBoundary":  "PASS — 하위 sense 계층 유지.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS — Hiph의 '전적으로 불확실하다'는 BDB 표시를 KO에서 명시적으로 옮김.",
+        "riskRouting": "PASS — R4 적절. 사람 최종 문안 게이트에서 특히 'money meets all demands'(전 10:19) 관용구 처리 재검토 권장."
+      },
+      "evidence": [
+        "1.3 Hiph 'wholly dub.' → KO 'BDB가 전적으로 불확실하다고 표시한 용법'",
+        "1.1.2.2 'money meets all demands' → KO '돈이 모든 요구에 응한다' 관용 처리"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H7650-H7650-GPT-v1",
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "tier": "R4",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — Qal 수동분사(맹세한 사람들) + Niph(맹세하다) + Hiph(맹세하게 하다, 주어=사람; adjure) 모두 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS — BDB의 '일곱으로 자신을 묶다' 어원 제안을 '추정'으로 명시.",
+        "riskRouting": "PASS — R4 적절."
+      },
+      "evidence": [
+        "notes: '일곱과 결부시켜 자신을 묶다라는 어원 설명은 추정이므로 확정하지 않는다'"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H28-H28-GPT-v1",
+      "strong": "H28",
+      "lemma": "אֲבִידָע",
+      "tier": "R4",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 미디안의 아들 아비다, 이름 뜻 '나의 아버지가 알게 되었다' 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS — 이름 뜻을 '설명이 제안되며'로 확정하지 않음.",
+        "riskRouting": "PASS — R4 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H39-H39-GPT-v1",
+      "strong": "H39",
+      "lemma": "אֲבִימָאֵל",
+      "tier": "R4",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 욕단의 아들, '아버지는 엘이다' 이름 뜻, 남아라비아 이름 비교 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — '욕단'은 개역개정 통용 표기와 일치.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS — 이름 뜻·비교언어학적 견해를 '견해가 있으며'로 상대화.",
+        "riskRouting": "PASS — R4 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H46-H46-GPT-v1",
+      "strong": "H46",
+      "lemma": "אָבִיר",
+      "tier": "R3",
+      "verdict": "REVISE",
+      "checks": {
+        "sourceFidelity": "REVISE — BDB 원문 'adj. strong; alw. = subst. the Strong, old name of God (poet.)'의 'alw.'(항상) 어감이 KO에서 '명사적으로는'으로 완화되어 '언제나 명사적으로 쓰인다'는 배타적 사용역 정보가 유실됨.",
+        "senseBoundary":  "PASS — 형용사 원형과 실사용 명사적 하나님 호칭 구분.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — '옛 호칭' 서술적, 신학 확장 없음.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R3(theological-sensitive) 적절. Gemini에서 H46(אָבִיר, sheva)과 H47(אַבִּיר, patach) 형태소 구분 재확인 권장."
+      },
+      "evidence": [
+        "BDB 'alw. = subst.' vs KO '명사적으로는' → '항상/언제나' 절대성 소실",
+        "권장 수정: '명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다.'"
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H56-H56-GPT-v1",
+      "strong": "H56",
+      "lemma": "אָבַל",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — Qal(mourn/lament) + Hithp(mourn, mostly prose) + Hiph(cause to mourn) 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H57-H57-GPT-v1",
+      "strong": "H57",
+      "lemma": "אָבֵל",
+      "tier": "R1",
+      "verdict": "PASS",
+      "checks": {
+        "sourceFidelity": "PASS — 형용사 mourning + 명사적 mourner 반영.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 적절."
+      },
+      "evidence": []
+    }
+  ]
+}
