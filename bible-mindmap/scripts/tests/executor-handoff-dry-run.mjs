@@ -8,23 +8,37 @@ import { clone, decideHandoff, validateHandoffState } from '../lib/executor-hand
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(dir, '../../..');
 const contract = JSON.parse(await readFile(path.join(root, 'bible-mindmap/data/lexicon/v4/executor-handoff-contract.json'), 'utf8'));
-const state = JSON.parse(await readFile(path.join(root, 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'), 'utf8'));
+const liveState = JSON.parse(await readFile(path.join(root, 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'), 'utf8'));
 
-assert.deepEqual(validateHandoffState(state, contract), []);
+// The live state may legitimately be COMPLETE. Decision fixtures must not depend
+// on the current operational phase, so build an explicit valid ACTIVE fixture.
+assert.deepEqual(validateHandoffState(liveState, contract), []);
+const activeState = clone(liveState);
+activeState.status = 'ACTIVE';
+activeState.currentExecutor = 'GPT';
+activeState.previousExecutor = 'JARVIS';
+activeState.completedSteps = contract.stepOrder.slice(0, 6);
+activeState.nextStep = contract.stepOrder[6];
+activeState.nextAction = 'fixture: continue at the next incomplete step';
+activeState.activePR = 301;
+activeState.activeBranch = 'fixture/executor-handoff';
+activeState.handoffReason = 'fixture-active-state';
+activeState.externalAudit = { required: false, status: 'NOT_REQUIRED', provider: null, artifact: null };
+assert.deepEqual(validateHandoffState(activeState, contract), []);
 
 const baseRuntime = {
   retrievalOk: true,
   currentExecutor: 'GPT',
-  currentHeadSHA: state.headSHA,
+  currentHeadSHA: activeState.headSHA,
   headRelation: 'equal',
   prOpen: true,
-  openPrCountForBranch: state.activePR > 0 ? 1 : 0,
-  candidateFingerprint: state.candidateFingerprint,
+  openPrCountForBranch: 1,
+  candidateFingerprint: activeState.candidateFingerprint,
 };
 
 const fixtures = [];
 function run(name, mutateState, mutateRuntime, expected) {
-  const s = clone(state);
+  const s = clone(activeState);
   const r = clone(baseRuntime);
   mutateState?.(s);
   mutateRuntime?.(r);
@@ -44,7 +58,19 @@ run('candidate fingerprint drift fails closed', null, r => { r.candidateFingerpr
 run('external audit missing blocks substitution', s => { s.externalAudit.required = true; s.externalAudit.status = 'REQUIRED'; }, null, 'EXTERNAL_AUDIT_REQUIRED');
 run('closed active PR fails closed', s => { s.activePR = 300; }, r => { r.prOpen = false; r.openPrCountForBranch = 0; }, 'FAIL_CLOSED');
 
-const bad = clone(state);
+const completeRuntime = {
+  retrievalOk: true,
+  currentExecutor: 'NONE',
+  currentHeadSHA: liveState.headSHA,
+  headRelation: 'equal',
+  prOpen: false,
+  openPrCountForBranch: 0,
+  candidateFingerprint: liveState.candidateFingerprint,
+};
+assert.equal(decideHandoff(liveState, completeRuntime).verdict, 'COMPLETE', 'live COMPLETE state must remain COMPLETE');
+fixtures.push(['complete state is terminal', 'COMPLETE']);
+
+const bad = clone(activeState);
 bad.completedSteps = ['state-reconcile', 'handoff-contract'];
 assert.ok(validateHandoffState(bad, contract).some(e => e.includes('contiguous prefix')));
 
