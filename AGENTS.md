@@ -17,6 +17,23 @@ Truth: local → GitHub/CI/Pages → Notion → checkpoint → long memory.
 Preserve existing work; use a separate branch; make the smallest safe change.
 Finish: verify → PR/CI → main → Pages/Live SHA → Notion/dashboard. User screen confirmation is required for 100%.
 
+## Deployment lanes
+Default outside the Korean lexicon track is **automatic delivery after safety checks**.
+
+### Lane A — Korean original-language lexicon · strict approval flow
+For Strong/BDB translation, Evidence Packet, Korean candidate wording, audit/dispute bundles, Approval Registry promotion, approved-meaning changes, book/66-book rollout, or lexicon production release:
+- Keep the existing `docs/lexicon-workflow/*` workflow unchanged.
+- Keep human approval, independent review, verifier gates, promotion gates, and production-release approval.
+- Do not auto-promote or auto-release lexicon meaning/content changes.
+
+### Lane B — ordinary maintenance · auto-deploy
+For low-risk UI/UX, layout/style/responsive changes, ordinary bug fixes, and small feature changes that preserve existing data/schema/security contracts:
+- Implement → PR → required CI/regression → merge → GitHub Pages → `verify:deploy`/Live SHA → relevant Notion sync automatically.
+- Do not stop for a separate user `승인` command when all required checks pass.
+- A lexicon Draft/PR may coexist with a maintenance PR when file scope and data contracts do not overlap; the lexicon track's one-owner/one-dependent-implementation-PR rule still applies inside the lexicon lane.
+
+Escalate Lane B to explicit approval if the change touches biblical/original-language meaning data, schema or migration, destructive deletion, secrets/permissions/security, paid infrastructure, bulk data mutation, or a material product decision. If classification is ambiguous, treat it as approval-required.
+
 ## Memory
 - `RESUME.json`: default checkpoint, <600 UTF-8 bytes; never store its own `main` SHA.
 - `SESSION_STATE.md`: deep-only task detail, <1 KB.
