@@ -41,8 +41,7 @@
         "identityConsistency": "PASS — transliterationScientific(mayim) ↔ transliterationKo(마임) 실사용 복수형 기준으로 정합. 헤드워드 lemma 'מַי'는 BDB 사전 표제어 관례 그대로 유지."
       },
       "residualNotes": [
-        "candidateFingerprint 및 shardFingerprint는 파이프라인 verifier가 재계산해야 함(본 PR 범위 밖).",
-        "manifest.json의 counts/hash 재검증 필요."
+        "candidateFingerprint / shardFingerprint / manifest bundleFingerprint 이 PR에서 재계산 완료(fingerprintReconciliation 참조)."
       ]
     },
     {
@@ -75,7 +74,7 @@
         "riskRouting": "PASS — R3(theological-sensitive) 유지, 다음 Gemini dispute review 진입 준비 완료."
       },
       "residualNotes": [
-        "candidateFingerprint 및 shardFingerprint는 파이프라인 verifier가 재계산해야 함(본 PR 범위 밖).",
+        "candidateFingerprint / shardFingerprint / manifest bundleFingerprint 이 PR에서 재계산 완료(fingerprintReconciliation 참조).",
         "H46(אָבִיר, sheva)과 H47(אַבִּיר, patach) 형태소 구분은 Gemini dispute review에서 재확인 권장."
       ]
     }
@@ -99,5 +98,69 @@
     "approvalRegistryWriteProhibited": true,
     "serviceUiWriteProhibited": true,
     "productionWriteProhibited": true
+  },
+  "fingerprintReconciliation": {
+    "reconciledAt": "2026-08-10T14:15:00+09:00",
+    "algorithm": "verify-genesis-p5-gpt-candidates.mjs:8-9 stable()+sha256 (key-sorted canonical JSON, sha256 hex)",
+    "algorithmSpec": "stable(v) = Array→'['+v.map(stable).join(',')+']' ; Object→'{'+sortedKeys.map(k => JSON.stringify(k)+':'+stable(v[k])).join(',')+'}' ; primitive→JSON.stringify(v). Then 'sha256:'+sha256hex(stable(obj))",
+    "governance": {
+      "verifierWeakened": false,
+      "gateRelaxed": false,
+      "additionalWordingMutation": false,
+      "approvalRegistryWritten": false,
+      "serviceUiWritten": false,
+      "productionWritten": false
+    },
+    "recomputed": {
+      "H4325_candidateFingerprint": {
+        "before": "sha256:e9188fb61d71a39ec7a8ac0e1c21733a60e5d756ba280caa97d5482231283e25",
+        "after":  "sha256:f4ba0a153754cc811c4283783686f1dade2a105c162e8acab7e1ce0e2cd2199f",
+        "expectedCheckPrefixMatch": "sha256:f4ba0a15",
+        "expectedCheckSuffixMatch": "2199f",
+        "checkOk": true
+      },
+      "H46_candidateFingerprint": {
+        "before": "sha256:0b6a861b584055253adeb27c9fa5460d9f8c4397d61ff8c4520b93ba0812354e",
+        "after":  "sha256:0daf06ea55f8b46b98c89f4e0e1bd77d5cb2eaeb2a14d23c5b12741b8d15de6e",
+        "expectedCheckPrefixMatch": "sha256:0daf06ea",
+        "expectedCheckSuffixMatch": "5de6e",
+        "checkOk": true
+      },
+      "core_theology_context_shardFingerprint": {
+        "before": "sha256:39e78f1f5149ec5cc055aeb2d6d50428198626fe784bc8af2c1a3626601d4bdf",
+        "after":  "sha256:31b9b1223c11c7ef9259795de0fbd399238155253f1d9a344a0fb5e48befe531"
+      },
+      "low_frequency_general_shardFingerprint": {
+        "before": "sha256:99a8f815e42de767696ae1fa5aa7c5ec3b4082c9b492e032a2da0611cb8ab8db",
+        "after":  "sha256:53056b01d8d13613331c4ef52b7a95fac01addb1f6723b526505190d4e8b4109"
+      },
+      "high_frequency_general_shardFingerprint": {
+        "before": "sha256:7d6a639e9e0301361860ca28ac37badbd8da44756493ca46684fe9e9cce12610",
+        "after":  "sha256:7d6a639e9e0301361860ca28ac37badbd8da44756493ca46684fe9e9cce12610",
+        "note": "unchanged — no candidate content in this shard was mutated"
+      },
+      "medium_frequency_general_shardFingerprint": {
+        "before": "sha256:b96ae658597ec177e58a6ac618dcc79b79fd6c6a119dde6023d452cf8676abd9",
+        "after":  "sha256:b96ae658597ec177e58a6ac618dcc79b79fd6c6a119dde6023d452cf8676abd9",
+        "note": "unchanged — no candidate content in this shard was mutated"
+      },
+      "manifest_bundleFingerprint": {
+        "before": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+        "after":  "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261"
+      }
+    },
+    "ciEvidenceLocal": [
+      { "script": "scripts/verify-genesis-p5-gpt-candidates.mjs",  "verdict": "PASS", "line": "✓ Genesis P5 GPT candidates · bases=24 · units=27 · nodes=150 · R3=5 · R4=5 · H776 excluded · Registry writes=0" },
+      { "script": "scripts/verify-genesis-p5-candidate-inputs.mjs", "verdict": "PASS", "line": "✓ Genesis P5 GPT candidate source inputs · bases=24 · units=27 · nodes=150 · H776 excluded" },
+      { "script": "scripts/verify-genesis-p5-claude-audit-bundle.mjs", "verdict": "PASS", "line": "✓ Claude audit bundle verified · 27 units · 150 source/candidate pairs" }
+    ],
+    "remoteCiCheckRequired": [
+      "contract (Genesis Lexicon G1 Contract)",
+      "verify-and-build (Validate pull request)",
+      "security-audit (Validate pull request)",
+      "browser-smoke (Validate pull request)",
+      "verify-resume-checkpoint",
+      "Vercel Preview"
+    ]
   }
 }
