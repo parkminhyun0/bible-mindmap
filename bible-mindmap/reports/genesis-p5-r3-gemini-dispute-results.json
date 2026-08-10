@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "resultId": "genesis-p5-r3-gemini-dispute-results-v1",
+  "book": "GEN",
+  "reviewerRole": "gemini-independent-dispute-reviewer",
+  "reviewOwner": "human-driven Gemini run (parkminhyun0)",
+  "reviewCompletedAt": "2026-08-11T00:55:00+09:00",
+  "recordedBy": "jarvis (claude-cli/claude-opus-4-7)",
+  "recordingNote": "Gemini 최종 판정(사람 실행) 결과를 자비스가 evidence 파일로 pin. 자비스는 Gemini CLI를 직접 호출하지 않는다.",
+  "targetBaseline": {
+    "mainSha": "f51c8c14daf8845fd9a86fdce9f7be0d455c93d0",
+    "mainShaPreserved": true,
+    "claudeEvidencePR": 296,
+    "claudeRevisePR": 297,
+    "prepareEvidencePR": 298,
+    "manifestBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261"
+  },
+  "package": {
+    "prompt": "bible-mindmap/reports/genesis-p5-r3-gemini-dispute-prompt.md",
+    "input":  "bible-mindmap/reports/genesis-p5-r3-gemini-input.json",
+    "referenceClaudeEvidence": "bible-mindmap/reports/genesis-p5-claude-audit-results.json",
+    "referenceClaudeRecheck":  "bible-mindmap/reports/genesis-p5-claude-audit-recheck-h4325-h46.json"
+  },
+  "checkAxes": [
+    "source-fidelity",
+    "sense-boundary",
+    "theological-overreach",
+    "morphology-strong-separation",
+    "uncertainty-expression"
+  ],
+  "verdictSet": ["PASS", "REVISE", "DISPUTE"],
+  "summary": {
+    "targetUnits": 5,
+    "pairs": 41,
+    "verdictCounts": { "PASS": 5, "REVISE": 0, "DISPUTE": 0 },
+    "interimRetractions": 2,
+    "finalConsensus": "Gemini(final) ↔ Claude(post-REVISE) : 5-of-5 AGREE"
+  },
+  "verdicts": [
+    {
+      "strong": "H430",
+      "lemma": "אֱלֹהִים",
+      "translitKo": "엘로힘",
+      "tier": "R3",
+      "verdict": "PASS",
+      "claudeVerdict": "PASS",
+      "disputeWithClaude": "AGREE",
+      "checks": {
+        "sourceFidelity":             "PASS — 4개 상위 sense(수적 복수, 강의적 복수, הָאֱלֹהִים, אֱלֹהִים=God) 모두 KO 대응, sub-sense 라벨 손실 없음.",
+        "senseBoundary":              "PASS — 수적/강의적 복수 계층 유지, 하위 sense a/b/c/d 분리 유지.",
+        "theologicalOverreach":       "PASS — 삼위일체·언약신학 확장 없음. '참 하나님(the true God)'은 BDB gloss 직역.",
+        "morphologyStrongSeparation": "PASS — 단수 אֱלוֹהַּ 등과 혼동 없이 복수 형태에 국한.",
+        "uncertaintyExpression":      "PASS — BDB 원문에 유보 표시가 없으므로 특별 반영 대상 없음."
+      },
+      "evidenceQuotes": [
+        "'성소에서 신적 대표자로 서거나 신적 위엄과 능력을 반영하는 통치자들·재판관들'",
+        "'הָאֱלֹהִים: 참 하나님'"
+      ]
+    },
+    {
+      "strong": "H1254a",
+      "lemma": "בָּרָא",
+      "translitKo": "바라",
+      "tier": "R3",
+      "verdict": "PASS",
+      "claudeVerdict": "PASS",
+      "disputeWithClaude": "AGREE",
+      "interimVerdictHistory": [
+        {
+          "at": "gemini-interim (pre data-load)",
+          "verdict": "DISPUTE",
+          "reason": "실제 데이터 부재 상태의 추정 기반 오판. 후보가 'creatio ex nihilo' 창조 신학을 삽입했을 가능성을 가정.",
+          "retractedAt": "2026-08-11T00:55:00+09:00",
+          "retractionReason": "실제 후보 데이터 확인 결과, notes에 '창조 신학을 사전 뜻에 덧붙이지 않는다' 자기 규율이 명시되어 있고 Qal 창조 sense와 Piel '베어내다' sense가 별도 sub-tree로 명확히 분리되어 있어 애초 근거가 소멸."
+        }
+      ],
+      "checks": {
+        "sourceFidelity":             "PASS — Qal(shape/fashion/create) + Niph(be created + reference to birth of something new, astonishing) + Piel(cut down/cut out) 모두 반영.",
+        "senseBoundary":              "PASS — Qal 창조와 Piel '베어내다' 이의어를 별도 sub-tree로 분리, 오염 없음.",
+        "theologicalOverreach":       "PASS — creatio ex nihilo 등 창조 신학 삽입 없음. identity.notesKo에 '창조 신학을 사전 뜻에 덧붙이지 않는다' 자기 규율 명시.",
+        "morphologyStrongSeparation": "PASS — H1254a(bārāʾ 창조/베어내다) 계열과 다른 어근 분리 유지, 사전 표제어 원형 존중.",
+        "uncertaintyExpression":      "PASS — BDB 원문에 명시적 유보 없음, 추가 유보 표현 불필요."
+      },
+      "evidenceQuotes": [
+        "notes: '창조 신학을 사전 뜻에 덧붙이지 않는다'",
+        "'피엘형: 베어 쓰러뜨리다, 베어내다' (Qal 창조 sense와 별도 sub-tree)"
+      ]
+    },
+    {
+      "strong": "H3117",
+      "lemma": "יוֹם",
+      "translitKo": "욤",
+      "tier": "R3",
+      "verdict": "PASS",
+      "claudeVerdict": "PASS",
+      "disputeWithClaude": "AGREE",
+      "checks": {
+        "sourceFidelity":             "PASS — 7개 상위 sense(낮/시간 단위/여호와의 날/생애의 날들/날들/때/관용 표현) 모두 반영.",
+        "senseBoundary":              "PASS — 세속적 '날'과 신학적 '여호와의 날' sense 분리 명확.",
+        "theologicalOverreach":       "PASS — 창조 문맥의 '날' 길이(24시간 vs 시대) 논쟁을 사전 정의로 확정 회피, notes에 명시.",
+        "morphologyStrongSeparation": "PASS — יוֹם י׳(day of Yahweh) 관용구를 별도 sense로 분리, 일반 '날'과 혼동 없음.",
+        "uncertaintyExpression":      "PASS — '주로 그가 심판하러 오시는 때를 가리키며, 의인에게 복을 수반하는 경우가 많다'로 BDB의 chiefly/often 어감 보존."
+      },
+      "evidenceQuotes": [
+        "notes: '창세기 창조 문맥의 시간론을 사전 정의만으로 확정하지 않는다'",
+        "'יוֹם י׳, 여호와의 날: 주로 그가 심판하러 오시는 때…의인에게 복을 수반하는 경우가 많다'"
+      ]
+    },
+    {
+      "strong": "H7307",
+      "lemma": "רוּחַ",
+      "translitKo": "루아흐",
+      "tier": "R3",
+      "verdict": "PASS",
+      "claudeVerdict": "PASS",
+      "disputeWithClaude": "AGREE",
+      "interimVerdictHistory": [
+        {
+          "at": "gemini-interim (pre data-load)",
+          "verdict": "REVISE",
+          "reason": "실제 데이터 부재 상태의 추정 기반 오판. 'spirit of God (94 t.)'을 신약 성령론(제3위격)으로 확장하는 가능성 및 '숨/바람/영' 3항 primary gloss가 문맥 모호성을 초래할 수 있다고 가정.",
+          "retractedAt": "2026-08-11T00:55:00+09:00",
+          "retractionReason": "실제 후보 데이터 확인 결과, 'spirit of God'을 '하나님의 영'으로 직역만 하고 성령론 확장이 전혀 없으며, 9개 sense가 BDB 빈도(33t/117t/76t/94t)에 정합적으로 계층화되어 primary gloss의 다의성이 오히려 문맥적 정확성을 보장. 애초 근거 소멸."
+        }
+      ],
+      "checks": {
+        "sourceFidelity":             "PASS — 9개 sense(숨/바람/영-기질/살아있는 존재의 영/감정 자리/정신 활동/의지/도덕적 성품/하나님의 영) 모두 반영, 빈도 표시(33t·117t·76t·94t) 정보 손실 없음.",
+        "senseBoundary":              "PASS — 물리적(숨/바람)·심리적(기질/감정/의지)·도덕적·신학적(하나님의 영) sense 층위 유지.",
+        "theologicalOverreach":       "PASS — 'spirit of God' → '하나님의 영' 직역, 성령론(제3위격 인격성) 확장 없음.",
+        "morphologyStrongSeparation": "PASS — 여성·남성 성 겸용을 'less oft. m.' BDB 표시 그대로 옮김.",
+        "uncertaintyExpression":      "PASS — 'occasionally (and late)', 'rarely of the will' 등 BDB 사용 빈도·시대 제약을 KO에 '때때로, 특히 후기 용법', '드물게'로 보존."
+      },
+      "evidenceQuotes": [
+        "'하나님의 영' (성령론 삽입 없음)",
+        "'때때로, 특히 후기 용법에서 정신 활동의 자리 또는 기관'",
+        "'드물게 의지와 관련된 영'"
+      ]
+    },
+    {
+      "strong": "H46",
+      "lemma": "אָבִיר",
+      "translitKo": "아비르",
+      "tier": "R3",
+      "verdict": "PASS",
+      "claudeVerdict": "PASS",
+      "disputeWithClaude": "AGREE",
+      "note": "REVISE 반영본 (PR #297 병합) 기준",
+      "checks": {
+        "sourceFidelity":             "PASS — BDB 'alw. = subst.'의 절대성이 KO '명사적으로 언제나 쓰이며'에 반영, '(poet.)' 어감이 '시적 문맥'으로 대응.",
+        "senseBoundary":              "PASS — 형용사 원형('강한')과 명사적 하나님 호칭 두 층위 분리 유지.",
+        "theologicalOverreach":       "PASS — '옛 호칭' 서술적 표현, 하나님의 속성론 확장 없음.",
+        "morphologyStrongSeparation": "PASS — H46 אָבִיר(sheva; 신 호칭)와 H47 אַבִּיר(patach; 세속적 '강한/용맹한')의 형태·의미 구분 유지. identity.lemma 및 벡터화 표기 정합.",
+        "uncertaintyExpression":      "PASS — '(poet.)'의 문체 제약이 '시적 문맥에서'로 명시적으로 보존."
+      },
+      "evidenceQuotes": [
+        "'형용사 '강한'에서 명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다.'"
+      ]
+    }
+  ],
+  "governance": {
+    "auditOnly": true,
+    "candidateWritten": false,
+    "candidateMutated": false,
+    "fingerprintMutated": false,
+    "approvalRegistryWritten": false,
+    "serviceUiWritten": false,
+    "productionWritten": false,
+    "verifierRelaxed": false,
+    "gateBypassed": false,
+    "existingApprovedMeaningMutated": false
+  },
+  "consensusOutcome": {
+    "gptClaudeGeminiAllPass": ["H430", "H1254a", "H3117", "H7307", "H46"],
+    "readyForHumanPromotionReview": true,
+    "note": "3-model consensus 도달. Approval Registry 승격은 별도 사람 검토 큐에서 진행."
+  },
+  "downstream": {
+    "r3Next": "R3 5건 사람 promotion review 큐로 이동. Approval Registry write는 별도 PR에서만.",
+    "r4HumanFinalWordingHold": [
+      "H120 (אָדָם)",
+      "H6030b (עָנָה)",
+      "H7650 (שָׁבַע)",
+      "H28 (אֲבִידָע)",
+      "H39 (אֲבִימָאֵל)"
+    ],
+    "r4Note": "R4 5건은 이 결과와 무관하게 사람 final-wording Gate 대기 상태 유지 (자동 승인 금지).",
+    "prohibitions": [
+      "candidate 파일 수정 금지",
+      "candidate/shard/bundle fingerprint 수정 금지",
+      "Approval Registry write 금지",
+      "Service UI / production write 금지",
+      "verifier / Gate 완화 금지"
+    ]
+  }
+}
