@@ -82,6 +82,6 @@ assert.match(popupSource, /Approval Registry · 승인 의미 \{senses\.length\}
 assert.doesNotMatch(popupSource, /LEXICON_TRANSLATION_PILOT/, 'LexiconPopup must not read the legacy H776 pilot snapshot after native Registry integration');
 assert.doesNotMatch(popupSource, /method\s*:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/, 'LexiconPopup must not introduce a Registry write transport');
 
-console.log('✓ P4/P5 read-only Approval Registry delivery + LexiconPopup integration PASS');
+console.log('✓ P4 read-only Approval Registry delivery + LexiconPopup React integration PASS');
 console.log('  H0776→H776 · approved senses 26/26 · one lazy shard · unapproved Strong fail-closed');
 console.log('  loader transport: same-origin GET-only · React UI: approved data read-only integration enabled');
