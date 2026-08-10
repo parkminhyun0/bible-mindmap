@@ -75,7 +75,8 @@
     "p4-rich-drawer-approval-registry-ssot-v1",
     "p4-live-screen-confirmed-v1",
     "p5-genesis-gold-25-selection-contract-v1",
-    "p5-genesis-gold-25-evidence-readiness-live-v1"
+    "p5-genesis-gold-25-evidence-readiness-live-v1",
+    "p5-genesis-gpt-candidate-bundle-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -299,20 +300,31 @@
     "independentReviewRequired": true
   },
   "p5GenesisCandidateGeneration": {
-    "status": "ENABLED_ON_MAIN_AFTER_REVIEWED_MERGE",
-    "transitionOnly": true,
+    "status": "CANDIDATES_GENERATED_AWAITING_CLAUDE_AUDIT",
+    "transitionOnly": false,
     "evidenceReadinessRequired": true,
     "evidenceReadinessSatisfied": true,
     "candidateGenerationAllowed": true,
-    "translationStarted": false,
-    "translationCandidatesGenerated": 0,
+    "translationStarted": true,
+    "translationCandidatesGenerated": 27,
+    "candidateBaseItems": 24,
+    "sourceUnitCount": 27,
+    "translatedSourceNodeCount": 150,
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "candidateManifestPath": "bible-mindmap/data/lexicon/candidates/genesis-p5/manifest.json",
+    "candidateManifestFingerprint": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+    "candidatePr": 293,
+    "riskTiers": { "R0": 0, "R1": 10, "R2": 7, "R3": 5, "R4": 5 },
+    "h776RetranslationTarget": false,
+    "independentAuditRequired": true,
+    "finalApprovalAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "serviceUiWriteAllowed": false,
     "productionWriteAllowed": false,
     "existingApprovedMeaningMutationAllowed": false,
     "phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge": true
   },
-  "nextAction": "candidate-generation phase Gate 독립 review → merge/Pages → Gold 25의 27 candidate units 생성 시작; Registry/UI/production write 금지",
+  "nextAction": "PR #293 전체 CI → Claude 독립 audit; R3 5건은 Gemini dispute review, R4 5건은 human final wording Gate; Approval Registry/UI/production write 금지",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
