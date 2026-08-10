@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "resultId": "genesis-p5-r3-gemini-dispute-status-v1",
+  "book": "GEN",
+  "targetBaseline": {
+    "mainSha": "f51c8c14daf8845fd9a86fdce9f7be0d455c93d0",
+    "claudeEvidencePR": 296,
+    "claudeRevisePR": 297,
+    "manifestBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261"
+  },
+  "status": "PENDING_GEMINI_RUN",
+  "statusUpdatedAt": "2026-08-11T00:30:00+09:00",
+  "runOwner": "human (parkminhyun0) — 자비스는 Gemini CLI 직접 호출 금지",
+  "packageForGemini": {
+    "prompt": "bible-mindmap/reports/genesis-p5-r3-gemini-dispute-prompt.md",
+    "input":  "bible-mindmap/reports/genesis-p5-r3-gemini-input.json",
+    "referenceClaudeEvidence": "bible-mindmap/reports/genesis-p5-claude-audit-results.json",
+    "referenceClaudeRecheck":  "bible-mindmap/reports/genesis-p5-claude-audit-recheck-h4325-h46.json"
+  },
+  "targetUnits": [
+    { "strong": "H430",   "lemma": "אֱלֹהִים", "translitKo": "엘로힘",     "pairs": 13, "claudeVerdict": "PASS" },
+    { "strong": "H1254a", "lemma": "בָּרָא",   "translitKo": "바라",       "pairs": 9,  "claudeVerdict": "PASS" },
+    { "strong": "H3117",  "lemma": "יוֹם",     "translitKo": "욤",         "pairs": 8,  "claudeVerdict": "PASS" },
+    { "strong": "H7307",  "lemma": "רוּחַ",   "translitKo": "루아흐",     "pairs": 10, "claudeVerdict": "PASS" },
+    { "strong": "H46",    "lemma": "אָבִיר",  "translitKo": "아비르",     "pairs": 1,  "claudeVerdict": "PASS", "note": "REVISE 반영본 (PR #297)" }
+  ],
+  "checkAxes": [
+    "source-fidelity",
+    "sense-boundary",
+    "theological-overreach",
+    "morphology-strong-separation",
+    "uncertainty-expression"
+  ],
+  "verdictSet": ["PASS", "REVISE", "DISPUTE"],
+  "governance": {
+    "auditOnly": true,
+    "candidateWriteAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "verifierRelaxationAllowed": false,
+    "gateBypassAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false
+  },
+  "downstreamAfterGemini": {
+    "onAllPass": "R3 5건 사람 검토 큐로 이동, Approval Registry 승격 검토는 그 뒤",
+    "onAnyRevise": "REVISE 대상 별도 수정 PR (fingerprint chain 재계산 필수), Gemini 재검증",
+    "onAnyDispute": "Claude ↔ Gemini 상충 지점 사람 최종 판단으로 이동",
+    "r4HumanFinalWordingHold": [
+      "H120 (אָדָם)",
+      "H6030b (עָנָה)",
+      "H7650 (שָׁבַע)",
+      "H28 (אֲבִידָע)",
+      "H39 (אֲבִימָאֵל)"
+    ],
+    "r4Note": "R4 5건은 이 R3 dispute review와 무관하게 사람 final-wording Gate 대기 상태 유지 (자동 승인 금지)."
+  },
+  "runInstructions": [
+    "1. bible-mindmap/reports/genesis-p5-r3-gemini-dispute-prompt.md 내용을 Gemini에 붙여넣기.",
+    "2. bible-mindmap/reports/genesis-p5-r3-gemini-input.json 도 함께 첨부(또는 프롬프트 뒤에 이어붙이기).",
+    "3. Gemini가 반환한 순수 JSON을 저장.",
+    "4. 결과를 자비스에 전달하면 자비스가 genesis-p5-r3-gemini-dispute-results.json 로 저장·PR 처리."
+  ]
+}

@@ -1,0 +1,442 @@
+[
+  {
+    "strong": "H430",
+    "lemma": "אֱלֹהִים",
+    "lemmaNormalized": "אֱלֹהִים",
+    "transliterationScientific": "ʾĕlōhîm",
+    "transliterationKo": "엘로힘",
+    "partOfSpeech": "N",
+    "primaryGlossKo": "하나님, 신들",
+    "notesKo": "복수 형태가 수적 복수와 강의적 복수 양쪽에 쓰이므로 문맥별 판별이 필요하다. 하나님을 가리키는 용례와 다른 신적 존재·신들을 가리키는 용례를 구분한다.",
+    "riskTier": "R3",
+    "riskFlags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "pairs": [
+      {
+        "nodeId": "1",
+        "sourceText": "אֱלֹהִים 2570 n.m.pl . pl . in number. rulers , judges , either as divine representatives at sacred places or as reflecting divine majesty and power divine ones , superhuman beings including God and angels angels gods pl. intensive god or goddess godlike one works of God, or things belongng to him God הָאֱלֹהִים the (true) God אֱלֹהִים = God base",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad",
+        "translationKo": "אֱלֹהִים, 남성 명사 복수형. 수적으로 복수일 때는 통치자·재판관, 신적·초인간적 존재, 천사, 신들을 가리키며, 강의적 복수에서는 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 그리고 하나님을 가리킨다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "polysemy",
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.1",
+        "sourceText": "pl . in number. rulers , judges , either as divine representatives at sacred places or as reflecting divine majesty and power divine ones , superhuman beings including God and angels angels gods",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[1]",
+        "translationKo": "수적으로 복수인 용법: 통치자·재판관, 신적·초인간적 존재, 천사, 신들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.1.1",
+        "sourceText": "rulers , judges , either as divine representatives at sacred places or as reflecting divine majesty and power",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[1]/sense[a]",
+        "translationKo": "성소에서 신적 대표자로 서거나 신적 위엄과 능력을 반영하는 통치자들·재판관들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.1.2",
+        "sourceText": "divine ones , superhuman beings including God and angels",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[1]/sense[b]",
+        "translationKo": "하나님과 천사를 포함한 신적 존재들, 초인간적 존재들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.1.3",
+        "sourceText": "angels",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[1]/sense[c]",
+        "translationKo": "천사들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.1.4",
+        "sourceText": "gods",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[1]/sense[d]",
+        "translationKo": "신들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2",
+        "sourceText": "pl. intensive god or goddess godlike one works of God, or things belongng to him God",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[2]",
+        "translationKo": "강의적 복수 용법: 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 하나님.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.1",
+        "sourceText": "god or goddess",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[2]/sense[a]",
+        "translationKo": "신 또는 여신.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.2",
+        "sourceText": "godlike one",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[2]/sense[b]",
+        "translationKo": "신과 같은 존재.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.3",
+        "sourceText": "works of God, or things belongng to him",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[2]/sense[c]",
+        "translationKo": "하나님의 행위 또는 하나님께 속한 것들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.4",
+        "sourceText": "God",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[2]/sense[d]",
+        "translationKo": "하나님.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.3",
+        "sourceText": "הָאֱלֹהִים the (true) God",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[3]",
+        "translationKo": "הָאֱלֹהִים: 참 하나님.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.4",
+        "sourceText": "אֱלֹהִים = God",
+        "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad/sense[4]",
+        "translationKo": "אֱלֹהִים: 하나님.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      }
+    ]
+  },
+  {
+    "strong": "H1254a",
+    "lemma": "בָּרָא",
+    "lemmaNormalized": "בָּרָא",
+    "transliterationScientific": "bārāʾ",
+    "transliterationKo": "바라",
+    "partOfSpeech": "V",
+    "primaryGlossKo": "창조하다, 빚다",
+    "notesKo": "칼형의 창조·형성 의미와 니팔형의 수동, 피엘형의 베어내다 의미를 구분한다. 창조 신학을 사전 뜻에 덧붙이지 않는다.",
+    "riskTier": "R3",
+    "riskFlags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "pairs": [
+      {
+        "nodeId": "1",
+        "sourceText": "בָּרָא 53 vb . shape , create Qal Pf .— shape , fashion , create Niph .— Pass . be created with reference to birth of something new, astonishing Pi . cut down cut out base",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa",
+        "translationKo": "בָּרָא, 동사: 빚다, 만들다, 창조하다. 칼형에서는 빚다·형성하다·창조하다, 니팔형에서는 수동으로 창조되다와 새롭고 놀라운 것의 생겨남, 피엘형에서는 베어 쓰러뜨리다·베어내다를 뜻한다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "polysemy",
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.1",
+        "sourceText": "Qal Pf .— shape , fashion , create",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[1]",
+        "translationKo": "칼형: 빚다, 형성하다, 창조하다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.2",
+        "sourceText": "Niph .— Pass . be created with reference to birth of something new, astonishing",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[2]",
+        "translationKo": "니팔형: 수동으로 창조되다. 새롭고 놀라운 것이 생겨나는 것과 관련된다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.2.1",
+        "sourceText": "be created",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[2]/sense[1]",
+        "translationKo": "창조되다.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.2",
+        "sourceText": "with reference to birth",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[2]/sense[2]",
+        "translationKo": "생겨남 또는 출생과 관련하여.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2.3",
+        "sourceText": "of something new, astonishing",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[2]/sense[3]",
+        "translationKo": "새롭고 놀라운 어떤 것이 생겨나는 것.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.3",
+        "sourceText": "Pi . cut down cut out",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[3]",
+        "translationKo": "피엘형: 베어 쓰러뜨리다, 베어내다.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.3.1",
+        "sourceText": "cut down",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[3]/sense[1]",
+        "translationKo": "베어 쓰러뜨리다.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.3.2",
+        "sourceText": "cut out",
+        "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa/sense[3]/sense[2]",
+        "translationKo": "베어내다.",
+        "confidence": 0.89,
+        "riskFlags": []
+      }
+    ]
+  },
+  {
+    "strong": "H3117",
+    "lemma": "יוֹם",
+    "lemmaNormalized": "יוֹם",
+    "transliterationScientific": "yôm",
+    "transliterationKo": "욤",
+    "partOfSpeech": "N",
+    "primaryGlossKo": "날, 하루, 때",
+    "notesKo": "낮과 밤의 대조, 시간 단위, 생애의 날들, 때, 여호와의 날 등 문맥별 의미를 구분한다. 창세기 창조 문맥의 시간론을 사전 정의만으로 확정하지 않는다.",
+    "riskTier": "R3",
+    "riskFlags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "pairs": [
+      {
+        "nodeId": "1",
+        "sourceText": "יוֹם 2285 n.m . day day , opp. night Day as division of time יוֹם י׳ day of Yahweh , chiefly as time of his coming in judgment, involving often blessedness for righteous Pl. days of anyone Days יוֹם = time Phrases base",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa",
+        "translationKo": "יוֹם, 남성 명사: 날. 밤과 대조되는 낮, 시간의 구분으로서의 날, 여호와의 날, 사람의 생애를 이루는 날들, 날들, 때, 여러 관용 표현에 쓰인다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "polysemy",
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.1",
+        "sourceText": "day , opp. night",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[1]",
+        "translationKo": "밤과 대조되는 낮, 날.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2",
+        "sourceText": "Day as division of time",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[2]",
+        "translationKo": "시간을 나누는 단위로서의 날.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.3",
+        "sourceText": "יוֹם י׳ day of Yahweh , chiefly as time of his coming in judgment, involving often blessedness for righteous",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[3]",
+        "translationKo": "יוֹם י׳, 여호와의 날: 주로 그가 심판하러 오시는 때를 가리키며, 의인에게 복을 수반하는 경우가 많다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.4",
+        "sourceText": "Pl. days of anyone",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[4]",
+        "translationKo": "어떤 사람의 날들, 곧 그 사람에게 속한 생애의 날들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.5",
+        "sourceText": "Days",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[5]",
+        "translationKo": "날들.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.6",
+        "sourceText": "יוֹם = time",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[6]",
+        "translationKo": "יוֹם이 ‘때’를 뜻하는 용법.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.7",
+        "sourceText": "Phrases",
+        "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa/sense[7]",
+        "translationKo": "여러 관용 표현.",
+        "confidence": 0.89,
+        "riskFlags": []
+      }
+    ]
+  },
+  {
+    "strong": "H7307",
+    "lemma": "רוּחַ",
+    "lemmaNormalized": "רוּחַ",
+    "transliterationScientific": "rûaḥ",
+    "transliterationKo": "루아흐",
+    "partOfSpeech": "N",
+    "primaryGlossKo": "숨, 바람, 영",
+    "notesKo": "숨·바람·생명의 영·정서와 성향·도덕적 성품·하나님의 영을 문맥별로 구분한다.",
+    "riskTier": "R3",
+    "riskFlags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "pairs": [
+      {
+        "nodeId": "1",
+        "sourceText": "רוּחַ 378 n.f . (less oft. m .) breath , wind , spirit breath of mouth or nostrils (33 t.) wind (117 t.) spirit , as that which breathes quickly in animation or agitation = temper , disposition (76 t.) spirit of the living, breathing being spirit as seat of emotion occasionally (and late) = seat or organ of mental acts rarely of the will רוּחַ esp. of moral character spirit of God (94 t.) base",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab",
+        "translationKo": "רוּחַ, 주로 여성 명사: 숨, 바람, 영. 입이나 콧구멍의 숨, 바람, 생동하거나 격동하는 존재의 영과 기질·성향, 살아 숨 쉬는 존재의 영, 감정의 자리, 정신 활동의 자리, 의지, 도덕적 성품, 하나님의 영을 가리킨다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "polysemy",
+          "theological-sensitive"
+        ]
+      },
+      {
+        "nodeId": "1.1",
+        "sourceText": "breath of mouth or nostrils (33 t.)",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[1]",
+        "translationKo": "입이나 콧구멍에서 나오는 숨.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.2",
+        "sourceText": "wind (117 t.)",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[2]",
+        "translationKo": "바람.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.3",
+        "sourceText": "spirit , as that which breathes quickly in animation or agitation = temper , disposition (76 t.)",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[3]",
+        "translationKo": "생동하거나 격동하여 빠르게 숨 쉬는 것과 관련된 영; 기질, 성향.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.4",
+        "sourceText": "spirit of the living, breathing being",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[4]",
+        "translationKo": "살아 숨 쉬는 존재의 영.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.5",
+        "sourceText": "spirit as seat of emotion",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[5]",
+        "translationKo": "감정의 자리로서의 영.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.6",
+        "sourceText": "occasionally (and late) = seat or organ of mental acts",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[6]",
+        "translationKo": "때때로, 특히 후기 용법에서 정신 활동의 자리 또는 기관.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.7",
+        "sourceText": "rarely of the will",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[7]",
+        "translationKo": "드물게 의지와 관련된 영.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.8",
+        "sourceText": "רוּחַ esp. of moral character",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[8]",
+        "translationKo": "רוּחַ가 특히 도덕적 성품을 가리키는 용법.",
+        "confidence": 0.89,
+        "riskFlags": []
+      },
+      {
+        "nodeId": "1.9",
+        "sourceText": "spirit of God (94 t.)",
+        "sourceLocator": "BrownDriverBriggs.xml:t.bk.ab/sense[9]",
+        "translationKo": "하나님의 영.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      }
+    ]
+  },
+  {
+    "strong": "H46",
+    "lemma": "אָבִיר",
+    "lemmaNormalized": "אָבִיר",
+    "transliterationScientific": "ʾābîr",
+    "transliterationKo": "아비르",
+    "partOfSpeech": "A",
+    "primaryGlossKo": "강한 자",
+    "notesKo": "형용사 ‘강한’에서 명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다.",
+    "riskTier": "R3",
+    "riskFlags": [
+      "theological-sensitive"
+    ],
+    "pairs": [
+      {
+        "nodeId": "1",
+        "sourceText": "[ אָבִיר ] adj . strong ; alw. = subst. the Strong , old name of God (poet.) base",
+        "sourceLocator": "BrownDriverBriggs.xml:a.aq.ae",
+        "translationKo": "אָבִיר, 형용사: 강한. 명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다.",
+        "confidence": 0.86,
+        "riskFlags": [
+          "theological-sensitive"
+        ]
+      }
+    ]
+  }
+]
