@@ -36,12 +36,32 @@ function verifyStdoutOnlyBuilders() {
 function verifyPhaseLocks() {
   const phaseGate = readPhaseGate(TRACK_STATE_PATH);
   assert.equal(phaseGate.candidateGenerationAllowed, false, 'candidate generation must remain disabled');
-  assert.equal(phaseGate.approvalRegistryPromotionAllowed, true, 'first Approval Registry entry requires audited promotion gate');
+  assert.equal(phaseGate.approvalRegistryPromotionAllowed, true, 'audited Approval Registry promotion prerequisite must remain present');
   assert.equal(phaseGate.serviceUiWriteAllowed, false, 'service/UI write must remain disabled');
+
   const trackState = readJson(TRACK_STATE_PATH);
-  assert.equal(trackState.state, 'P3_COMPLETE');
-  assert.equal(trackState.activePhase, 'P4_REGISTRY_SHARD_REACT_INTEGRATION');
+  const phaseKey = `${trackState.state}/${trackState.activePhase}`;
+  const supportedPhases = new Set([
+    'P3_COMPLETE/P4_REGISTRY_SHARD_REACT_INTEGRATION',
+    'P4_COMPLETE/P5_GENESIS_GOLD_SELECTION',
+  ]);
+  assert.ok(supportedPhases.has(phaseKey), `unsupported lexicon phase for protected Registry contract: ${phaseKey}`);
   assert.equal(trackState.p4_5_independentAudit?.verdict, 'PASS_WITH_MANDATORY_PRE_FIRST_ENTRY_STEPS');
+
+  if (trackState.activePhase === 'P5_GENESIS_GOLD_SELECTION') {
+    assert.equal(trackState.p4Completion?.status, 'complete', 'P5 selection requires completed P4');
+    assert.equal(trackState.p4Completion?.approvedSenseCount, 26, 'P5 selection must preserve H776 26/26');
+    assert.equal(trackState.p4Completion?.liveShaVerified, true, 'P5 selection requires verified live SHA');
+    assert.equal(trackState.p4Completion?.userScreenConfirmed, true, 'P5 selection requires user live-screen confirmation');
+    const p5 = trackState.p5GenesisGoldSelection;
+    assert.equal(p5?.targetSize, 25, 'P5 Gold target must remain 25');
+    assert.equal(p5?.selectionOnly, true, 'P5 first contract must remain selection-only');
+    for (const gate of ['candidateGenerationAllowed','approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) {
+      assert.equal(p5?.[gate], false, `P5 selection gate must remain false: ${gate}`);
+    }
+    assert.equal(p5?.phaseTransitionEffectiveOnlyAfterIndependentReview, true, 'P5 transition must require independent review');
+  }
+
   for (const required of ['ollama_local_ab_translation','mac_model_preflight_as_start_gate','gemini_full_corpus_retranslation','model_majority_vote','automatic_production_write_before_approval']) {
     assert.ok(new Set(trackState.deprecatedDefaultPaths || []).has(required), `deprecatedDefaultPaths lock missing: ${required}`);
   }
@@ -83,6 +103,6 @@ verifySchemaSurface('LexiconShard.schema.json', ['schemaVersion','shardId','scop
 const trackState = verifyPhaseLocks();
 verifyStdoutOnlyBuilders();
 verifyFirstH776Entry(trackState);
-console.log('✓ P4 first Approval Registry entry contract PASS');
-console.log('  approved entries: 1 (H776) · manifest entries: 1 · shards: 1');
-console.log('  candidate generation: disabled · Approval promotion: enabled · service/UI write: disabled');
+console.log('✓ protected Approval Registry contract PASS');
+console.log(`  phase: ${trackState.state}/${trackState.activePhase} · approved entries: 1 (H776) · manifest entries: 1 · shards: 1`);
+console.log('  candidate generation: disabled · audited promotion prerequisite: present · service/UI write: disabled');
