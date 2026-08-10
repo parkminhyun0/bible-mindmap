@@ -74,7 +74,7 @@ jobs:
         run: node scripts/verify-golden-audit-sample-contract.mjs
 
   auto-merge-decision-dry-run:
-    name: v4 auto-merge decision dry-run (12 fixtures)
+    name: v4 auto-merge decision dry-run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6

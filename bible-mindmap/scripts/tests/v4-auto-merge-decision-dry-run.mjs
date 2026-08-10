@@ -1,167 +1,242 @@
 #!/usr/bin/env node
 // Contract dry-run for lexicon-v4-auto-merge workflow decision logic.
-// Simulates PR + review contexts and validates the workflow would either
-// auto-merge OR fail-close as expected.
-//
-// This is a self-contained inlining of the JS from lexicon-v4-auto-merge.yml
-// script step, so unit-tests can run without spinning up GitHub Actions.
+// Imports the SAME decision function used by .github/workflows/lexicon-v4-auto-merge.yml
+// so this file is authoritative regression coverage for the workflow behavior.
 import assert from 'node:assert/strict'
+import {
+  decideAutoMerge, diffApprovalRegistries, isLexiconScope,
+  V4_REVIEWER, V4_LABEL, HIGH_RISK_LABEL, V4_REQUIRED_CHECKS,
+} from '../lib/v4-auto-merge-decision.mjs'
 
-// ── Inlined decision function (mirrors lexicon-v4-auto-merge.yml)
-function decideAutoMerge({ pr, review, reviews, filenames, workflowRuns, reviewThreads }) {
-  const V4_REVIEWER = 'bible-mindmap-review'
-  const V4_LABEL = 'lexicon-v4-auto-merge-eligible'
-  const HIGH_RISK_LABEL = 'existing-approved-meaning-change'
-  const labels = new Set(pr.labels.map((l) => l.name))
-  const reasons = []
-  const info = []
+// ── Helpers
+const HEAD = 'sha-current-head'
+const OLD_HEAD = 'sha-earlier-head'
+const successCheck = () => ({ status: 'completed', conclusion: 'success' })
+const pendingCheck = () => ({ status: 'in_progress', conclusion: null })
+const failedCheck = () => ({ status: 'completed', conclusion: 'failure' })
 
-  if (review.user.login !== V4_REVIEWER) return { verdict: 'DECLINE', reason: `reviewer=${review.user.login} (only ${V4_REVIEWER})` }
-  if (pr.state !== 'open' || pr.draft) return { verdict: 'DECLINE', reason: 'PR not open/ready' }
-  if (pr.head.repo.full_name !== `${pr.base.repo.full_name}`) return { verdict: 'FAIL_CLOSED', reason: 'fork PR' }
-
-  if (review.commit_id !== pr.head.sha) {
-    return { verdict: 'FAIL_CLOSED', reason: `review commit ${review.commit_id} != head ${pr.head.sha}` }
+function baselineFixture(overrides = {}) {
+  const checks = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checks.set(name, successCheck())
+  return {
+    pr: {
+      state: 'open', draft: false,
+      head: { sha: HEAD, repo: { full_name: 'parkminhyun0/bible-mindmap' } },
+      base: { sha: 'sha-base', repo: { full_name: 'parkminhyun0/bible-mindmap' } },
+      labels: [{ name: V4_LABEL }],
+    },
+    currentHeadSha: HEAD,
+    filenames: ['docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md'],
+    reviewsAll: [{ user: { login: V4_REVIEWER }, state: 'APPROVED', commit_id: HEAD, submitted_at: '2026-08-11T02:00:00Z' }],
+    reviewThreadsUnresolved: 0,
+    requiredCheckStatuses: checks,
+    registryDiff: null,
+    mergeableState: 'clean',
+    retrievalErrors: [],
+    ...overrides,
   }
-
-  const lexiconOnly = filenames.every((f) =>
-    f.startsWith('bible-mindmap/data/lexicon/') ||
-    f.startsWith('bible-mindmap/reports/') ||
-    f.startsWith('docs/lexicon-workflow/') ||
-    f.startsWith('bible-mindmap/scripts/verify-lexicon-') ||
-    f.startsWith('bible-mindmap/scripts/verify-golden-audit-') ||
-    f.startsWith('bible-mindmap/scripts/tests/v4-') ||
-    f === 'memory/RESUME.json' ||
-    f.startsWith('.github/workflows/lexicon-v4-')
-  )
-  if (!labels.has(V4_LABEL) && !lexiconOnly) return { verdict: 'DECLINE', reason: `PR outside lexicon scope, no ${V4_LABEL} label; files: ${filenames.filter(f => !lexiconOnly).slice(0,3)}` }
-
-  const touchesRegistry = filenames.some((f) => f === 'bible-mindmap/data/lexicon/approval-registry.json')
-  if (touchesRegistry && !labels.has(HIGH_RISK_LABEL)) return { verdict: 'FAIL_CLOSED', reason: `touches approval-registry.json without ${HIGH_RISK_LABEL} label` }
-
-  if (reviews.some((r) => r.state === 'CHANGES_REQUESTED')) return { verdict: 'FAIL_CLOSED', reason: 'CHANGES_REQUESTED present' }
-
-  const unresolved = reviewThreads.filter((t) => !t.isResolved && !t.isOutdated)
-  if (unresolved.length > 0) return { verdict: 'FAIL_CLOSED', reason: `unresolved review threads: ${unresolved.length}` }
-
-  const pending = workflowRuns.filter((r) => r.status !== 'completed')
-  if (pending.length > 0) return { verdict: 'WAIT', reason: `${pending.length} workflow pending` }
-
-  const failed = workflowRuns.filter((r) => !['success', 'skipped', 'neutral'].includes(r.conclusion))
-  if (failed.length > 0) return { verdict: 'FAIL_CLOSED', reason: `failed workflows: ${failed.map((r) => r.name).join(', ')}` }
-
-  if (pr.mergeable === false || ['dirty', 'blocked', 'behind'].includes(pr.mergeable_state)) {
-    return { verdict: 'FAIL_CLOSED', reason: `not safely mergeable: ${pr.mergeable_state}` }
-  }
-
-  return { verdict: 'AUTO_MERGE', reason: 'all v4 gates passed' }
 }
 
-// ── Fixture: this PR (Automation Foundation), reviewed by bible-mindmap-review
-const foundationPrFixture = {
-  pr: {
-    state: 'open', draft: false, mergeable: true, mergeable_state: 'clean',
-    head: { sha: 'sha-foundation', repo: { full_name: 'parkminhyun0/bible-mindmap' } },
-    base: { repo: { full_name: 'parkminhyun0/bible-mindmap' } },
-    labels: [],
+// Synthetic registries for diff fixtures
+const baseRegistryH776 = {
+  entries: [{
+    identity: { canonicalStrong: 'H776', identityFingerprint: 'sha256:h776-id' },
+    evidencePacketFingerprint: 'sha256:h776-ep',
+    approvedSenseTree: [
+      { id: '1', parentId: null, depth: 0, order: 1, translationKo: '땅, 대지' },
+      { id: '1.1', parentId: '1', depth: 1, order: 2, translationKo: '지구·땅' },
+    ],
+  }],
+}
+const headRegistryNewH430 = {
+  entries: [
+    baseRegistryH776.entries[0],
+    { identity: { canonicalStrong: 'H430', identityFingerprint: 'sha256:h430-id' },
+      evidencePacketFingerprint: 'sha256:h430-ep',
+      approvedSenseTree: [{ id: '1', parentId: null, depth: 0, order: 1, translationKo: '하나님, 신들' }] },
+  ],
+}
+const headRegistryMutatedH776 = {
+  entries: [{
+    identity: { canonicalStrong: 'H776', identityFingerprint: 'sha256:h776-id' },
+    evidencePacketFingerprint: 'sha256:h776-ep',
+    approvedSenseTree: [
+      { id: '1', parentId: null, depth: 0, order: 1, translationKo: '다른 뜻' },  // MUTATED
+      { id: '1.1', parentId: '1', depth: 1, order: 2, translationKo: '지구·땅' },
+    ],
+  }],
+}
+const headRegistryDeletedSense = {
+  entries: [{
+    identity: { canonicalStrong: 'H776', identityFingerprint: 'sha256:h776-id' },
+    evidencePacketFingerprint: 'sha256:h776-ep',
+    approvedSenseTree: [
+      { id: '1', parentId: null, depth: 0, order: 1, translationKo: '땅, 대지' },
+      // 1.1 REMOVED (sense count reduction)
+    ],
+  }],
+}
+const headRegistryDriftFingerprint = {
+  entries: [{
+    identity: { canonicalStrong: 'H776', identityFingerprint: 'sha256:DIFFERENT-id' },  // DRIFT
+    evidencePacketFingerprint: 'sha256:h776-ep',
+    approvedSenseTree: baseRegistryH776.entries[0].approvedSenseTree,
+  }],
+}
+
+// Sanity: diffApprovalRegistries returns expected shapes
+const dNew = diffApprovalRegistries(baseRegistryH776, headRegistryNewH430)
+assert.deepEqual(dNew.additions, [{ strong: 'H430' }])
+assert.deepEqual(dNew.mutations, [])
+assert.deepEqual(dNew.deletions, [])
+const dMut = diffApprovalRegistries(baseRegistryH776, headRegistryMutatedH776)
+assert.deepEqual(dMut.mutations[0].strong, 'H776')
+const dDel = diffApprovalRegistries(baseRegistryH776, headRegistryDeletedSense)
+assert.equal(dDel.mutations[0].kind, 'sense-count-reduction')
+const dDrift = diffApprovalRegistries(baseRegistryH776, headRegistryDriftFingerprint)
+assert.equal(dDrift.drifts[0].kind, 'identity-fingerprint-drift')
+
+// ── FIXTURES (18 total)
+const results = []
+function run(name, fixture, expected) {
+  const v = decideAutoMerge(fixture)
+  results.push({ name, verdict: v.verdict, reason: v.reason, expected })
+  assert.equal(v.verdict, expected, `${name}: expected ${expected}, got ${v.verdict} · ${v.reason}`)
+  return v
+}
+
+// 1. Foundation PR baseline — should AUTO_MERGE
+run('01 foundation PR baseline', baselineFixture(), 'AUTO_MERGE')
+
+// 2. Wrong reviewer → WAIT (no v4 review present)
+run('02 wrong reviewer', baselineFixture({
+  reviewsAll: [{ user: { login: 'someone-else' }, state: 'APPROVED', commit_id: HEAD, submitted_at: '2026-08-11T02:00:00Z' }],
+}), 'WAIT')
+
+// 3. SHA drift on APPROVED → WAIT (approval on old commit)
+run('03 review SHA drift', baselineFixture({
+  reviewsAll: [{ user: { login: V4_REVIEWER }, state: 'APPROVED', commit_id: OLD_HEAD, submitted_at: '2026-08-11T02:00:00Z' }],
+}), 'WAIT')
+
+// 4. Registry NEW entry only (H430 added, H776 unchanged) → AUTO_MERGE
+run('04 registry new entry only', baselineFixture({
+  filenames: ['bible-mindmap/data/lexicon/approval-registry.json', 'bible-mindmap/reports/x.json'],
+  registryDiff: diffApprovalRegistries(baseRegistryH776, headRegistryNewH430),
+}), 'AUTO_MERGE')
+
+// 5. Existing sense MUTATION → HUMAN_EXCEPTION_REQUIRED (FAIL_CLOSED)
+run('05 existing sense mutation', baselineFixture({
+  filenames: ['bible-mindmap/data/lexicon/approval-registry.json'],
+  registryDiff: diffApprovalRegistries(baseRegistryH776, headRegistryMutatedH776),
+}), 'FAIL_CLOSED')
+
+// 6. Existing sense DELETION → FAIL_CLOSED
+run('06 existing sense deletion', baselineFixture({
+  filenames: ['bible-mindmap/data/lexicon/approval-registry.json'],
+  registryDiff: diffApprovalRegistries(baseRegistryH776, headRegistryDeletedSense),
+}), 'FAIL_CLOSED')
+
+// 7. Existing identity fingerprint DRIFT → FAIL_CLOSED
+run('07 existing fingerprint drift', baselineFixture({
+  filenames: ['bible-mindmap/data/lexicon/approval-registry.json'],
+  registryDiff: diffApprovalRegistries(baseRegistryH776, headRegistryDriftFingerprint),
+}), 'FAIL_CLOSED')
+
+// 8. HIGH_RISK_LABEL + actual mutation → still FAIL_CLOSED (label never authorizes)
+run('08 high-risk label + actual mutation', baselineFixture({
+  pr: { ...baselineFixture().pr, labels: [{ name: V4_LABEL }, { name: HIGH_RISK_LABEL }] },
+  filenames: ['bible-mindmap/data/lexicon/approval-registry.json'],
+  registryDiff: diffApprovalRegistries(baseRegistryH776, headRegistryMutatedH776),
+}), 'FAIL_CLOSED')
+
+// 9. Unresolved thread → FAIL_CLOSED
+run('09 unresolved thread', baselineFixture({ reviewThreadsUnresolved: 2 }), 'FAIL_CLOSED')
+
+// 10. CHANGES_REQUESTED from another user → FAIL_CLOSED
+run('10 CHANGES_REQUESTED present', baselineFixture({
+  reviewsAll: [
+    { user: { login: V4_REVIEWER }, state: 'APPROVED', commit_id: HEAD, submitted_at: '2026-08-11T02:00:00Z' },
+    { user: { login: 'other-reviewer' }, state: 'CHANGES_REQUESTED', commit_id: HEAD, submitted_at: '2026-08-11T02:05:00Z' },
+  ],
+}), 'FAIL_CLOSED')
+
+// 11. Required check FAILED → FAIL_CLOSED
+{
+  const checks = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checks.set(name, successCheck())
+  checks.set('verify-and-build', failedCheck())
+  run('11 required check failed', baselineFixture({ requiredCheckStatuses: checks }), 'FAIL_CLOSED')
+}
+
+// 12. Required check MISSING → WAIT
+{
+  const checks = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checks.set(name, successCheck())
+  checks.delete('fingerprint')
+  run('12 required check missing', baselineFixture({ requiredCheckStatuses: checks }), 'WAIT')
+}
+
+// 13. Required check PENDING → WAIT
+{
+  const checks = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checks.set(name, successCheck())
+  checks.set('v4 golden audit sample contract', pendingCheck())
+  run('13 required check pending', baselineFixture({ requiredCheckStatuses: checks }), 'WAIT')
+}
+
+// 14. Draft PR → DECLINE
+run('14 draft PR', baselineFixture({ pr: { ...baselineFixture().pr, draft: true } }), 'DECLINE')
+
+// 15. Non-lexicon files + label present → FAIL_CLOSED (label alone insufficient)
+run('15 non-lexicon + label alone', baselineFixture({
+  filenames: ['bible-mindmap/src/components/SomeUI.jsx'],
+}), 'FAIL_CLOSED')
+
+// 16. Lexicon-only files + NO label → DECLINE (label AND scope required)
+run('16 lexicon-only + no label', baselineFixture({
+  pr: { ...baselineFixture().pr, labels: [] },
+}), 'DECLINE')
+
+// 17. Fork PR → FAIL_CLOSED
+run('17 fork PR', baselineFixture({
+  pr: { ...baselineFixture().pr,
+    head: { sha: HEAD, repo: { full_name: 'fork/bible-mindmap' } },
+    base: { sha: 'sha-base', repo: { full_name: 'parkminhyun0/bible-mindmap' } },
   },
-  review: { user: { login: 'bible-mindmap-review' }, commit_id: 'sha-foundation', state: 'approved' },
-  reviews: [{ state: 'APPROVED' }],
-  reviewThreads: [],
-  workflowRuns: [
-    { name: 'Lexicon v4 Foundation / foundation-contract', status: 'completed', conclusion: 'success' },
-    { name: 'Lexicon v4 Foundation / consensus-gate', status: 'completed', conclusion: 'success' },
-    { name: 'Lexicon v4 Foundation / universal-regression', status: 'completed', conclusion: 'success' },
-    { name: 'Lexicon v4 Foundation / golden-audit-contract', status: 'completed', conclusion: 'success' },
-    { name: 'Validate pull request / verify-and-build', status: 'completed', conclusion: 'success' },
-    { name: 'Validate pull request / security-audit', status: 'completed', conclusion: 'success' },
-  ],
-  filenames: [
-    'docs/lexicon-workflow/TRACK_STATE.json',
-    'docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md',
-    'bible-mindmap/data/lexicon/v4/tier-gate-matrix.json',
-    'bible-mindmap/data/lexicon/v4/human-exception-triggers.json',
-    'bible-mindmap/data/lexicon/v4/golden-audit-contract.json',
-    'bible-mindmap/data/lexicon/v4/registry-snapshot.json',
-    'bible-mindmap/scripts/verify-lexicon-v4-foundation-contract.mjs',
-    'bible-mindmap/scripts/verify-lexicon-v4-consensus-gate.mjs',
-    'bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs',
-    'bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs',
-    '.github/workflows/lexicon-v4-foundation.yml',
-    '.github/workflows/lexicon-v4-auto-merge.yml',
-    'memory/RESUME.json',
-    'bible-mindmap/scripts/tests/v4-auto-merge-decision-dry-run.mjs',
-  ],
+}), 'FAIL_CLOSED')
+
+// 18. TWO-STAGE: exact-head APPROVED + CI pending → WAIT, then CI complete → AUTO_MERGE
+{
+  const checksStageA = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checksStageA.set(name, successCheck())
+  checksStageA.set('v4 auto-merge decision dry-run', pendingCheck())  // one pending
+  run('18A two-stage: APPROVED + CI pending', baselineFixture({ requiredCheckStatuses: checksStageA }), 'WAIT')
+
+  // Stage B: same head SHA, same APPROVED review (NOT re-submitted), CI now complete
+  const checksStageB = new Map()
+  for (const name of V4_REQUIRED_CHECKS) checksStageB.set(name, successCheck())
+  run('18B two-stage: same APPROVED reused + CI complete', baselineFixture({ requiredCheckStatuses: checksStageB }), 'AUTO_MERGE')
 }
 
-// Case 1: Foundation PR itself — should AUTO_MERGE (all gates pass)
-const c1 = decideAutoMerge(foundationPrFixture)
-assert.equal(c1.verdict, 'AUTO_MERGE', `foundation PR must auto-merge; got ${c1.verdict}: ${c1.reason}`)
+// ── Additional retrieval-error safety
+run('19 retrieval error → FAIL_CLOSED', baselineFixture({ retrievalErrors: ['getRegistryContent 404 at base'] }), 'FAIL_CLOSED')
 
-// Case 2: Reviewer identity wrong
-const c2 = decideAutoMerge({ ...foundationPrFixture, review: { ...foundationPrFixture.review, user: { login: 'other-user' } } })
-assert.equal(c2.verdict, 'DECLINE', 'wrong reviewer must DECLINE')
+// ── Additional review-thread state null → FAIL_CLOSED (never silently continue)
+run('20 review-thread state unknown → FAIL_CLOSED', baselineFixture({ reviewThreadsUnresolved: null }), 'FAIL_CLOSED')
 
-// Case 3: Review SHA drift
-const c3 = decideAutoMerge({ ...foundationPrFixture, review: { ...foundationPrFixture.review, commit_id: 'sha-different' } })
-assert.equal(c3.verdict, 'FAIL_CLOSED', 'SHA drift must FAIL_CLOSED')
+// ── Adversarial: reviewer approved OLD head, later CHANGES_REQUESTED on new head → FAIL_CLOSED
+run('21 reviewer approved old head + later CR on new head', baselineFixture({
+  reviewsAll: [
+    { user: { login: V4_REVIEWER }, state: 'APPROVED', commit_id: OLD_HEAD, submitted_at: '2026-08-11T02:00:00Z' },
+    { user: { login: V4_REVIEWER }, state: 'CHANGES_REQUESTED', commit_id: HEAD, submitted_at: '2026-08-11T02:10:00Z' },
+  ],
+}), 'FAIL_CLOSED')
 
-// Case 4: Touches approval-registry.json without high-risk label
-const c4 = decideAutoMerge({
-  ...foundationPrFixture,
-  filenames: [...foundationPrFixture.filenames, 'bible-mindmap/data/lexicon/approval-registry.json'],
-})
-assert.equal(c4.verdict, 'FAIL_CLOSED', 'registry touch without high-risk label must FAIL_CLOSED')
-assert.ok(c4.reason.includes('existing-approved-meaning-change'), 'reason must reference required label')
+// ── Adversarial: mergeable_state = dirty → WAIT
+run('22 mergeable_state dirty', baselineFixture({ mergeableState: 'dirty' }), 'WAIT')
 
-// Case 5: Touches registry WITH high-risk label
-const c5 = decideAutoMerge({
-  ...foundationPrFixture,
-  pr: { ...foundationPrFixture.pr, labels: [{ name: 'existing-approved-meaning-change' }] },
-  filenames: [...foundationPrFixture.filenames, 'bible-mindmap/data/lexicon/approval-registry.json'],
-})
-assert.equal(c5.verdict, 'AUTO_MERGE', 'registry touch with high-risk label must AUTO_MERGE')
-
-// Case 6: Unresolved review thread
-const c6 = decideAutoMerge({ ...foundationPrFixture, reviewThreads: [{ isResolved: false, isOutdated: false }] })
-assert.equal(c6.verdict, 'FAIL_CLOSED', 'unresolved thread must FAIL_CLOSED')
-
-// Case 7: CHANGES_REQUESTED from another reviewer
-const c7 = decideAutoMerge({ ...foundationPrFixture, reviews: [{ state: 'APPROVED' }, { state: 'CHANGES_REQUESTED' }] })
-assert.equal(c7.verdict, 'FAIL_CLOSED', 'CHANGES_REQUESTED must FAIL_CLOSED')
-
-// Case 8: One workflow failed
-const c8 = decideAutoMerge({
-  ...foundationPrFixture,
-  workflowRuns: [...foundationPrFixture.workflowRuns.slice(0, -1), { name: 'browser-smoke', status: 'completed', conclusion: 'failure' }],
-})
-assert.equal(c8.verdict, 'FAIL_CLOSED', 'failed workflow must FAIL_CLOSED')
-
-// Case 9: Workflow still pending
-const c9 = decideAutoMerge({
-  ...foundationPrFixture,
-  workflowRuns: [...foundationPrFixture.workflowRuns.slice(0, -1), { name: 'browser-smoke', status: 'in_progress', conclusion: null }],
-})
-assert.equal(c9.verdict, 'WAIT', 'pending workflow must WAIT (not fail)')
-
-// Case 10: PR outside lexicon scope, no label
-const c10 = decideAutoMerge({
-  ...foundationPrFixture,
-  filenames: ['bible-mindmap/src/components/SomeUI.jsx'],
-})
-assert.equal(c10.verdict, 'DECLINE', 'non-lexicon PR without eligibility label must DECLINE')
-
-// Case 11: PR outside lexicon scope WITH label
-const c11 = decideAutoMerge({
-  ...foundationPrFixture,
-  pr: { ...foundationPrFixture.pr, labels: [{ name: 'lexicon-v4-auto-merge-eligible' }] },
-  filenames: ['bible-mindmap/src/components/SomeUI.jsx'],
-})
-assert.equal(c11.verdict, 'AUTO_MERGE', 'non-lexicon PR WITH label must AUTO_MERGE')
-
-// Case 12: Draft PR
-const c12 = decideAutoMerge({ ...foundationPrFixture, pr: { ...foundationPrFixture.pr, draft: true } })
-assert.equal(c12.verdict, 'DECLINE', 'draft PR must DECLINE')
-
-console.log(`✓ v4 auto-merge decision dry-run · 12 fixtures · AUTO_MERGE·DECLINE·FAIL_CLOSED·WAIT all correct`)
-console.log(`  foundation PR under review → verdict = ${c1.verdict}`)
+// ── Summary
+const grouped = results.reduce((m, r) => { m[r.verdict] = (m[r.verdict] || 0) + 1; return m }, {})
+console.log(`✓ v4 auto-merge decision dry-run · ${results.length} fixtures · ${JSON.stringify(grouped)}`)
+console.log(`  fixture 01 (foundation PR) → ${results[0].verdict}`)
+console.log(`  fixture 18A (APPROVED + CI pending) → WAIT · 18B (same APPROVED reused + CI complete) → AUTO_MERGE`)
