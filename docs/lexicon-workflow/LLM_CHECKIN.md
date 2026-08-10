@@ -1,81 +1,93 @@
 # 원어 한글사전 트랙 · LLM 공통 체크인 계약
 
-이 문서는 GPT, 자비스(Claude-OpenClaw), Claude, Gemini 및 다른 LLM이 원어 한글사전 작업을 시작하거나 재개할 때 사용하는 최소 체크리스트다.
+GPT, 자비스(Claude/OpenClaw), Claude, Gemini 및 다른 LLM이 원어 한글사전 작업을 시작·재개·인계할 때 사용하는 최소 계약이다. 정책 SSOT는 `v4-EVIDENCE_FIRST_AUTONOMOUS.md`다.
 
-## 1. 시작 전 읽기
+## 1. 시작/재개 순서
 
-- [ ] `AGENTS.md`
-- [ ] `memory/RESUME.json`
-- [ ] `docs/lexicon-workflow/TRACK_STATE.json`
-- [ ] `docs/lexicon-workflow/MASTER_WORKFLOW.md`
-- [ ] 최신 `main` SHA와 관련 열린 PR
-- [ ] 관련 CI·Pages 상태
-- [ ] Notion 최상위 대시보드
-- [ ] Notion 66권 원어 한글사전 관제 대시보드
-- [ ] Notion Public-First LLM 공통 운영 시스템
-- [ ] 대상 책·배치·Strong 카드 1건
+1. `AGENTS.md`
+2. `memory/RESUME.json`
+3. 최신 GitHub `main` + 관련 open PR + current head + diff + required CI/Pages
+4. `docs/lexicon-workflow/TRACK_STATE.json`
+5. `docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md`
+6. `docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json` (handoff/장기 작업 시 필수)
+7. 필요한 경우에만 관련 Notion 관제/책·배치 카드
+
+대화 메모보다 GitHub 실제 상태를 우선한다.
 
 ## 2. 체크인 보고 형식
 
 ```text
 TRACK: lexicon-ko-66
 MAIN: <full SHA>
-NOTION: synced | stale | conflict
-STATE: <TRACK_STATE.state>
-TARGET: <book/batch/Strong>
-OWNER: jarvis | gpt | claude | gemini | human
+PR: <number|none> @ <current head SHA>
+STATE: <TRACK_STATE state/phase>
+HANDOFF: <status> · <currentExecutor> · next=<nextStep>
+TARGET: <book/batch/Strong/automation>
 NEXT: <one executable action>
 BLOCK: none | <exact blocker>
 ```
 
-## 3. 충돌 해결
+## 3. 충돌/중복 방지
 
-- GitHub 스키마·코드·상태와 Notion이 다르면 GitHub를 기준으로 한다.
-- Notion은 사실을 수정해서 동기화하며 과거 Evidence는 삭제하지 않는다.
-- 같은 파일을 두 LLM이 동시에 수정하지 않는다.
-- 진행 중 PR이 있으면 새 PR을 만들기 전에 범위 충돌을 검사한다.
-- 모델 답변만으로 상태를 `approved` 또는 `released`로 바꾸지 않는다.
+- GitHub code/schema/state > CI/Pages > Notion > chat history.
+- 같은 active task/branch에 open PR이 이미 있으면 새 PR을 만들지 않는다.
+- executor가 바뀌어도 같은 branch/PR/Evidence baseline을 유지한다.
+- `completedSteps`는 재실행하지 않고 `nextStep`부터 이어간다.
+- current head·diff·CI는 인계 때마다 GitHub에서 새로 조회한다.
+- retrieval 실패, duplicate PR, head divergence, fingerprint drift는 fail-closed.
 
-## 4. 자동 진행 가능 범위
+## 4. Evidence-First v4 진행 범위
 
-다음은 상태와 계약이 명확하면 사용자에게 매 단계 묻지 않고 진행할 수 있다.
+정상 항목은 v4 AND-gate를 모두 만족하면 사용자에게 매 단계 묻지 않고 진행할 수 있다.
 
-- 공개 출처와 라이선스 등록 상태 검사
-- 결정론적 파서 실행
-- Evidence Packet 생성
-- JSON Schema·Strong·node·fingerprint verifier
-- 후보·감사·쟁점 번들 생성
-- 저위험 항목을 `reviewed`까지 이동
-- GitHub 결과에 따른 Notion 상태 동기화
+- 공개/허용 출처와 license/fingerprint 검사
+- 결정론적 parser와 Evidence Packet 생성
+- schema/Strong/node/fingerprint/corpus/regression verifier
+- GPT candidate, Claude independent audit, 필요한 Gemini R3/dispute audit
+- tier routing, consensus gate, Golden Audit sampling
+- 기존 approved snapshot 불변이 증명된 신규 Registry entry promotion
+- exact-head independent GitHub review 후 reviewer-scoped auto-merge/deploy
+- GitHub 결과에 따른 state/Notion 동기화
 
-## 5. 반드시 멈출 Gate
+## 5. Human Exception / External Audit Gate
 
-- 라이선스가 `unknown` 또는 `prohibited`
-- R3·R4의 최종 대표 표현
-- 기존 `approved` 의미의 추가·삭제·변경
-- 사전·문맥·모델 간 미해결 충돌
-- 운영 Approval Registry 승격
-- Production·Pages 배포
-- 사용자 화면 100% 판정
+사람에게 올리는 예외:
+- license unknown/prohibited
+- 기존 approved 의미/sense/source/fingerprint 변경
+- 추가 연구 후에도 해소되지 않는 evidence 충돌
+- theology policy 변경
+- security/cost/permission
+- Golden Audit halt/regression
 
-## 6. 역할별 출력
+R4는 먼저 `EXTENDED_RESEARCH_REQUIRED`. 필요한 Claude/Gemini 등 외부 감사 결과가 없으면 `EXTERNAL_AUDIT_REQUIRED`로 멈추며 다른 모델이 대체 판정을 만들지 않는다.
+
+## 6. Executor handoff
+
+상태 SSOT: `EXECUTOR_HANDOFF_STATE.json` + `executor-handoff-contract.json`.
+
+- 상태: `ACTIVE | EXECUTOR_HANDOFF_READY | EXTERNAL_AUDIT_REQUIRED | BLOCKED | COMPLETE`
+- 사용량/세션/도구 한계가 예상되면 가능한 안전 지점에서 checkpoint commit/push 후 `EXECUTOR_HANDOFF_READY`로 전환한다.
+- GPT↔Jarvis 모두 동일 규칙으로 인계 가능하다.
+- `headSHA`는 checkpoint 직전 마지막 검증 head이며 현재 head로 가정하지 않는다. 인계자는 반드시 GitHub current head를 재조회한다.
+- 자동 agent 호출은 repo 계약 밖이다. 외부 scheduler/agent trigger가 없으면 state는 인계 준비까지만 자동 판정할 수 있다.
+
+## 7. 역할
 
 ### GPT
-
-`candidate.json`, 근거·risk·미확인 질문, 사람 검토용 차이표를 만든다.
+Evidence/candidate 생성, source fidelity/corpus self-check, 코드·state 작업을 수행하며 현재 EXECUTOR일 때 GitHub SSOT에서 직접 재개한다.
 
 ### Claude
-
-`audit.json`에 누락·과병합·범위 오류·문맥 오류를 `confirmed/probable/unresolved`로 기록한다.
+독립 blind audit. GPT 결론을 그대로 승인하는 역할이 아니다.
 
 ### Gemini
-
-`dispute-review.json`에 전달된 충돌 항목만 판정하고 Evidence를 명시한다.
+R3/쟁점 검토에 필요한 실제 pinned Evidence만 판정한다. 데이터 없이 추정하지 않는다.
 
 ### 자비스
+통합·검증·CI/PR/Pages와 checkpoint를 수행하며 현재 EXECUTOR일 때 같은 GitHub SSOT에서 직접 재개한다.
 
-상태 복원, parser/verifier, 파일 통합, PR·CI·Pages, Notion 동기화를 담당한다.
+### 사용자
+정상 Strong 개별 검토자가 아니라 정책·권한·미해결 고위험 예외의 governance owner다.
 
-## 7. 프로젝트 균형
+## 8. 프로젝트 균형
 
-이 트랙은 `<성경 마인드맵>` 전체의 한 부분이다. 최상위 대시보드에서 다른 기능·데이터·검색·디자인·운영 트랙의 우선순위를 확인하고, 원어 사전 트랙 때문에 전체 프로젝트의 긴급 버그·배포 차단·보안 작업을 방치하지 않는다.
+이 트랙은 `<성경 마인드맵>` 전체의 한 부분이다. 원어 사전 때문에 긴급 버그·보안·배포 차단 등 전체 프로젝트 우선순위를 방치하지 않는다.
