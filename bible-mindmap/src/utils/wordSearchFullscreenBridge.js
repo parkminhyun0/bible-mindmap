@@ -1,5 +1,6 @@
 const DIALOG_SELECTOR = '[role="dialog"][aria-label="원어 성경 다언어 검색"]';
 const BUTTON_ATTR = 'data-word-search-fullscreen-toggle';
+const SPACER_ATTR = 'data-word-search-toolbar-spacer';
 const MOBILE_TITLE = '원어 검색';
 const DESKTOP_TITLE = '원어 성경 다언어 검색';
 
@@ -11,13 +12,21 @@ function findCloseButton(titlebar) {
   return [...titlebar.querySelectorAll('button')].find((button) => button.textContent?.trim() === '✕') || null;
 }
 
+function findToolbarStart(titlebar) {
+  return [...titlebar.children].find((node) => {
+    if (node.tagName !== 'DIV') return false;
+    const labels = [...node.querySelectorAll('button')].map((button) => button.textContent?.trim());
+    return labels.includes('A−') && labels.includes('A+');
+  }) || null;
+}
+
 function findResizeHandle(dialog) {
   return [...dialog.querySelectorAll('div')].find((node) => window.getComputedStyle(node).cursor === 'se-resize') || null;
 }
 
 function styleMobileTitlebar(titlebar, mobile) {
   if (!titlebar) return;
-  const directSpans = [...titlebar.children].filter((node) => node.tagName === 'SPAN');
+  const directSpans = [...titlebar.children].filter((node) => node.tagName === 'SPAN' && !node.hasAttribute(SPACER_ATTR));
   const title = directSpans[1] || null;
   const status = directSpans[2] || null;
 
@@ -66,6 +75,17 @@ function styleMobileTitlebar(titlebar, mobile) {
     title.style.removeProperty('line-height');
   }
   if (status) status.style.removeProperty('display');
+}
+
+function styleToolbarSpacer(spacer, mobile) {
+  if (!spacer) return;
+  Object.assign(spacer.style, {
+    display: mobile ? 'none' : 'block',
+    flex: mobile ? '0 0 0' : '1 1 auto',
+    minWidth: mobile ? '0' : '12px',
+    height: '1px',
+    pointerEvents: 'none',
+  });
 }
 
 function styleButton(button, fullscreen, mobile) {
@@ -140,6 +160,7 @@ export function installWordSearchFullscreenBridge() {
     }
     if (state.fullscreen) setFullscreenStyles(state);
     styleMobileTitlebar(state.titlebar, mobile);
+    styleToolbarSpacer(state.spacer, mobile);
     styleButton(state.button, state.fullscreen, mobile);
   };
 
@@ -149,6 +170,7 @@ export function installWordSearchFullscreenBridge() {
     if (state.fullscreen) restoreStyles(state);
     styleMobileTitlebar(state.titlebar, false);
     state.titlebar?.removeEventListener('mousedown', state.blockDrag, true);
+    state.spacer.remove();
     state.button.remove();
     states.delete(dialog);
   };
@@ -156,6 +178,7 @@ export function installWordSearchFullscreenBridge() {
   const ensure = (dialog) => {
     const titlebar = findTitlebar(dialog);
     const closeButton = titlebar && findCloseButton(titlebar);
+    const toolbarStart = titlebar && findToolbarStart(titlebar);
     if (!titlebar || !closeButton || !dialog.isConnected) {
       destroy(dialog);
       return;
@@ -167,12 +190,17 @@ export function installWordSearchFullscreenBridge() {
       button.type = 'button';
       button.setAttribute(BUTTON_ATTR, 'true');
 
+      const spacer = document.createElement('span');
+      spacer.setAttribute(SPACER_ATTR, 'true');
+      spacer.setAttribute('aria-hidden', 'true');
+
       state = {
         dialog,
         titlebar,
         content: titlebar.nextElementSibling,
         resizeHandle: findResizeHandle(dialog),
         button,
+        spacer,
         fullscreen: false,
         snapshot: null,
         blockDrag: null,
@@ -214,6 +242,9 @@ export function installWordSearchFullscreenBridge() {
       state.titlebar?.removeEventListener('mousedown', state.blockDrag, true);
       state.titlebar = titlebar;
       state.titlebar.addEventListener('mousedown', state.blockDrag, true);
+    }
+    if (toolbarStart && (!titlebar.contains(state.spacer) || state.spacer.nextElementSibling !== toolbarStart)) {
+      titlebar.insertBefore(state.spacer, toolbarStart);
     }
     if (!titlebar.contains(state.button) || state.button.nextElementSibling !== closeButton) {
       titlebar.insertBefore(state.button, closeButton);
