@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import { getBook } from '../data/bibleBooks';
-import { lexiconApprovalLoader } from '../data/lexiconApprovalLoader';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
@@ -25,9 +24,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
-  const [approvedEntry, setApprovedEntry] = useState(null);
-  const [approvedLoading, setApprovedLoading] = useState(false);
-  const [approvedError, setApprovedError] = useState('');
   const [researchActive, setResearchActive] = useState(false);
 
   const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
@@ -44,26 +40,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
       .then((d) => { if (!cancelled) setDefinition(d); })
       .catch((e) => { if (!cancelled) setDefError(e.message || '조회 실패'); })
       .finally(() => { if (!cancelled) setDefLoading(false); });
-    return () => { cancelled = true; };
-  }, [entry?.s]);
-
-  useEffect(() => {
-    if (!entry?.s) {
-      setApprovedEntry(null);
-      setApprovedError('');
-      setApprovedLoading(false);
-      return;
-    }
-    let cancelled = false;
-    setApprovedEntry(null);
-    setApprovedError('');
-    setApprovedLoading(true);
-    lexiconApprovalLoader.loadApprovedEntry(entry.s)
-      .then((approved) => { if (!cancelled) setApprovedEntry(approved); })
-      .catch((e) => {
-        if (!cancelled) setApprovedError(e.message || '승인 한글 사전 조회 실패');
-      })
-      .finally(() => { if (!cancelled) setApprovedLoading(false); });
     return () => { cancelled = true; };
   }, [entry?.s]);
 
@@ -128,13 +104,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
-  // 기존 짧은 검색용 gloss는 미승인 Strong의 fallback으로 유지한다.
-  // 승인 Registry 엔트리가 있으면 승인된 최상위 의미를 우선 표시한다.
+  // lex 데이터의 Strong 은 0 패딩(예: "H0776")인데 KOREAN_GLOSS 키는 비패딩("H776").
+  // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
   const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
   const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
-  const approvedPrimaryGloss = approvedEntry?.approvedSenseTree
-    ?.find((sense) => sense.depth === 0)?.translationKo || null;
-  const displayGloss = approvedPrimaryGloss || koreanGloss?.glossKo || null;
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
   const width = isMobile ? vw : 380;
@@ -244,14 +217,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
             </MetaRow>
           )}
-          {displayGloss && (
-            <MetaRow label={approvedPrimaryGloss ? '승인 한글 뜻' : '한글 뜻'}>
-              <span style={{ color: '#1e293b', fontWeight: 600 }}>{displayGloss}</span>
-            </MetaRow>
-          )}
-          {approvedEntry?.identity?.transliteration?.korean && (
-            <MetaRow label="한글 음역">
-              <span style={{ color: '#475569', fontWeight: 600 }}>{approvedEntry.identity.transliteration.korean}</span>
+          {koreanGloss && (
+            <MetaRow label="한글 뜻">
+              <span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span>
             </MetaRow>
           )}
           {entry.g && (
@@ -293,21 +261,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             touchAction: 'pan-y' }}>
           {tab === 'def' && (
             <div style={{ padding: '10px 14px' }}>
-              {approvedLoading && (
-                <div style={{ color: '#64748b', fontSize: 11, marginBottom: 8 }}>
-                  승인 한글 사전 확인 중…
-                </div>
-              )}
-              {approvedEntry && <ApprovedLexiconSensePanel approvedEntry={approvedEntry} />}
-              {approvedError && (
-                <div role="status" style={{
-                  marginBottom: 8, padding: '7px 9px', borderRadius: 6,
-                  background: '#fff7ed', color: '#9a3412', fontSize: 10, lineHeight: 1.5,
-                }}>
-                  승인 한글 사전을 불러오지 못해 기존 사전 정의를 표시합니다.
-                </div>
-              )}
-
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
                 <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
                   {isHebrew ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
@@ -409,77 +362,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           padding: '6px 14px', borderTop: '1px solid #e2e8f0',
           fontSize: 9, color: '#94a3b8', background: '#f8fafc',
         }}>
-          승인 한글사전: Approval Registry · 원문/용례: STEPBible.data (CC BY 4.0) · 보조 사전: Bolls.life / BibleHub
+          데이터: STEPBible.data (CC BY 4.0) · 사전: Bolls.life / BibleHub
         </div>
       </div>
     </>,
     document.body
-  );
-}
-
-function ApprovedLexiconSensePanel({ approvedEntry }) {
-  const senses = [...(approvedEntry.approvedSenseTree || [])].sort((a, b) => a.order - b.order);
-  const reviewerType = approvedEntry.reviewer?.reviewerType === 'human' ? '사람 검토 완료' : '승인 완료';
-  return (
-    <section
-      data-testid="approved-lexicon-sense-panel"
-      aria-label="승인된 한글 사전 정의"
-      style={{
-        marginBottom: 12,
-        padding: '10px 10px 8px',
-        border: '1px solid #bbf7d0',
-        borderRadius: 8,
-        background: '#f0fdf4',
-      }}
-    >
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, marginBottom: 8 }}>
-        <div>
-          <div style={{ fontSize: 11, fontWeight: 800, color: '#166534' }}>승인된 한글 사전</div>
-          <div style={{ fontSize: 9, color: '#64748b', marginTop: 2 }}>
-            {approvedEntry.identity?.canonicalStrong} · {approvedEntry.identity?.transliteration?.korean || approvedEntry.identity?.transliteration?.scientific}
-          </div>
-        </div>
-        <span style={{
-          flexShrink: 0, fontSize: 9, fontWeight: 700, color: '#166534',
-          background: '#dcfce7', borderRadius: 999, padding: '3px 7px',
-        }}>
-          ✓ {reviewerType}
-        </span>
-      </div>
-      <div style={{ display: 'grid', gap: 4 }}>
-        {senses.map((sense) => (
-          <div
-            key={sense.id}
-            data-sense-id={sense.id}
-            style={{
-              marginLeft: Math.min(sense.depth || 0, 4) * 13,
-              paddingLeft: sense.depth ? 7 : 0,
-              borderLeft: sense.depth ? '1px solid #d1fae5' : 'none',
-              lineHeight: 1.45,
-              color: '#1e293b',
-              fontSize: sense.depth === 0 ? 12 : 11,
-              fontWeight: sense.depth === 0 ? 700 : 500,
-            }}
-          >
-            <span style={{ color: '#94a3b8', fontFamily: 'monospace', fontSize: 9, marginRight: 6 }}>
-              {sense.id}
-            </span>
-            {sense.translationKo}
-            {sense.evidenceSupport !== 'direct' && (
-              <span style={{
-                marginLeft: 5, fontSize: 8, color: sense.evidenceSupport === 'legacy-only' ? '#9a3412' : '#6b7280',
-                fontWeight: 600,
-              }}>
-                {sense.evidenceSupport === 'legacy-only' ? '기존 승인 보존' : '결합 근거'}
-              </span>
-            )}
-          </div>
-        ))}
-      </div>
-      <div style={{ marginTop: 8, paddingTop: 6, borderTop: '1px solid #dcfce7', fontSize: 9, color: '#64748b' }}>
-        Approval Registry · 승인 의미 {senses.length}개 · 읽기 전용
-      </div>
-    </section>
   );
 }
 
