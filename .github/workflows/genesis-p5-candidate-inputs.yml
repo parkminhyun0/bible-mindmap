@@ -7,6 +7,8 @@ on:
       - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-gpt-candidates.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-claude-audit-bundle.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-claude-audit-bundle.mjs'
       - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
       - 'bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json'
       - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
@@ -24,6 +26,8 @@ on:
       - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-gpt-candidates.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-claude-audit-bundle.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-claude-audit-bundle.mjs'
       - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
       - 'bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json'
       - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
@@ -91,6 +95,14 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/verify-genesis-p5-gpt-candidates.mjs
 
+      - name: Build Claude independent-audit handoff bundle
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-claude-audit-bundle.mjs
+
+      - name: Verify Claude handoff pairs and write locks
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-claude-audit-bundle.mjs
+
       - name: Publish candidate summary
         working-directory: bible-mindmap
         run: |
@@ -98,12 +110,14 @@ jobs:
           const fs = require('node:fs')
           const input = JSON.parse(fs.readFileSync('reports/genesis-p5-candidate-inputs.json', 'utf8'))
           const manifest = JSON.parse(fs.readFileSync('data/lexicon/candidates/genesis-p5/manifest.json', 'utf8'))
+          const audit = JSON.parse(fs.readFileSync('reports/genesis-p5-claude-audit-bundle.json', 'utf8'))
           const lines = [
             '## P5 · Genesis GPT candidate contract',
             '',
             `- candidate bases: **${manifest.counts.candidateBaseItems}/24**`,
             `- candidate source units: **${manifest.counts.candidateUnits}/27**`,
             `- translated source nodes: **${manifest.counts.translatedSourceNodes}/${input.counts.sourceNodes}**`,
+            `- Claude audit source↔candidate pairs: **${audit.counts.nodePairs}/150**`,
             `- risk tiers: **R1 ${manifest.counts.riskTiers.R1} · R2 ${manifest.counts.riskTiers.R2} · R3 ${manifest.counts.riskTiers.R3} · R4 ${manifest.counts.riskTiers.R4}**`,
             '- H776: **excluded from retranslation; Approval Registry 26/26 preserved**',
             '- R3: **Claude full audit → Gemini dispute review**',
@@ -115,12 +129,13 @@ jobs:
           console.log(summary)
           NODE
 
-      - name: Upload GPT source and candidate evidence
+      - name: Upload GPT source, candidate, and Claude-audit evidence
         uses: actions/upload-artifact@v7
         with:
           name: genesis-p5-gpt-candidate-evidence
           path: |
             bible-mindmap/reports/genesis-p5-candidate-inputs.json
+            bible-mindmap/reports/genesis-p5-claude-audit-bundle.json
             bible-mindmap/data/lexicon/candidates/genesis-p5/
             bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json
           if-no-files-found: error
