@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P2_IN_PROGRESS",
-  "activePhase": "P2_OPENSCRIPTURES_BDB_ADAPTER",
+  "activePhase": "P2_H776_SOURCE_TREE_RECONCILIATION",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -35,14 +35,31 @@
     "source-driver-fail-closed-ci-v1",
     "unfoldingword-bdb-license-review-v1",
     "openscriptures-bdb-license-approved-v1",
-    "openscriptures-bdb-canonical-fingerprint-v1"
+    "openscriptures-bdb-canonical-fingerprint-v1",
+    "openscriptures-bdb-deterministic-adapter-v1",
+    "h776-openscriptures-source-tree-diff-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "build a dedicated deterministic OpenScriptures HebrewLexicon adapter for BrownDriverBriggs.xml and LexicalIndex.xml, then produce an H776 actual-source tree difference report against the 26-node Golden Reference; candidate generation remains disabled",
+  "sourceTreeReconciliation": {
+    "sourceId": "openscriptures-hebrewlexicon-bdb",
+    "lexicalIndexEntryId": "bep",
+    "bdbEntryId": "a.fx.aa",
+    "twot": "167",
+    "actualNodeCount": 23,
+    "actualMaxDepth": 2,
+    "goldenNodeCount": 26,
+    "goldenMaxDepth": 3,
+    "goldenOnlyNodeIds": ["1.2.8", "1.5.1", "1.5.1.1"],
+    "reviewRequiredObservations": ["SOURCE_TEXT_TRIAL_TERRITORY"],
+    "candidateGenerationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "goldenMeaningMutationAllowed": false
+  },
+  "nextAction": "freeze a reviewed source-to-Golden reconciliation map for the 23 pinned OpenScriptures source nodes versus the 26-node H776 Golden Reference; preserve the approved Korean tree and keep candidate generation disabled",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
