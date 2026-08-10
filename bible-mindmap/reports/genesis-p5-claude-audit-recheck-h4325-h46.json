@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "resultId": "genesis-p5-claude-audit-recheck-h4325-h46-v1",
+  "book": "GEN",
+  "recheckRunAt": "2026-08-10T13:35:00+09:00",
+  "auditorRole": "claude-independent-auditor",
+  "auditorModel": "claude-cli/claude-opus-4-7",
+  "parentEvidence": "bible-mindmap/reports/genesis-p5-claude-audit-results.json",
+  "parentEvidencePR": "https://github.com/parkminhyun0/bible-mindmap/pull/296",
+  "scope": "REVISE 2건 재검증(H4325, H46). 다른 25건은 재검증 대상 아님, 기존 판정 유지.",
+  "governance": {
+    "auditOnly": true,
+    "candidateMutatedInThisRevisePR": true,
+    "candidateMutationScope": ["GEN-P5-H4325-H4325-GPT-v1.identity.transliterationScientific", "GEN-P5-H46-H46-GPT-v1.identity.notesKo", "GEN-P5-H46-H46-GPT-v1.nodes[0].textKo"],
+    "approvalRegistryWritten": false,
+    "serviceUiWritten": false,
+    "productionWritten": false,
+    "existingApprovedMeaningMutated": false
+  },
+  "rechecks": [
+    {
+      "auditId": "AUDIT-GEN-P5-H4325-H4325-GPT-v1",
+      "strong": "H4325",
+      "lemma": "מַי",
+      "tier": "R1",
+      "previousVerdict": "REVISE",
+      "newVerdict": "PASS",
+      "appliedChange": {
+        "field": "identity.transliterationScientific",
+        "before": "may",
+        "after": "mayim",
+        "koPreserved": "마임"
+      },
+      "checks": {
+        "sourceFidelity": "PASS.",
+        "senseBoundary":  "PASS.",
+        "koreanNaturalness": "PASS — 한글 표기 '마임' 유지.",
+        "theologicalOverreach": "PASS.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R1 유지.",
+        "identityConsistency": "PASS — transliterationScientific(mayim) ↔ transliterationKo(마임) 실사용 복수형 기준으로 정합. 헤드워드 lemma 'מַי'는 BDB 사전 표제어 관례 그대로 유지."
+      },
+      "residualNotes": [
+        "candidateFingerprint / shardFingerprint / manifest bundleFingerprint 이 PR에서 재계산 완료(fingerprintReconciliation 참조)."
+      ]
+    },
+    {
+      "auditId": "AUDIT-GEN-P5-H46-H46-GPT-v1",
+      "strong": "H46",
+      "lemma": "אָבִיר",
+      "tier": "R3",
+      "previousVerdict": "REVISE",
+      "newVerdict": "PASS",
+      "appliedChange": {
+        "fields": [
+          {
+            "field": "identity.notesKo",
+            "before": "형용사 '강한'에서 명사적으로 '강한 자'를 가리키며, 시적 문맥에서 하나님을 부르는 옛 호칭으로 쓰인다.",
+            "after":  "형용사 '강한'에서 명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다."
+          },
+          {
+            "field": "nodes[0].textKo",
+            "before": "אָבִיר, 형용사: 강한. 명사적으로는 '강한 자'를 뜻하며, 시적 문맥에서 하나님을 가리키는 옛 호칭으로 쓰인다.",
+            "after":  "אָבִיר, 형용사: 강한. 명사적으로 언제나 쓰이며, 시적 문맥에서 하나님을 가리키는 옛 호칭이다."
+          }
+        ]
+      },
+      "checks": {
+        "sourceFidelity": "PASS — BDB 'alw. = subst.'의 '언제나 명사적으로 쓰인다'는 절대성이 '명사적으로 언제나 쓰이며'로 명확히 반영됨.",
+        "senseBoundary":  "PASS — 형용사 원형과 명사적 하나님 호칭 구분 유지.",
+        "koreanNaturalness": "PASS.",
+        "theologicalOverreach": "PASS — '옛 호칭' 서술적 표현, 신학 확장 없음.",
+        "etymologyCertainty": "PASS.",
+        "riskRouting": "PASS — R3(theological-sensitive) 유지, 다음 Gemini dispute review 진입 준비 완료."
+      },
+      "residualNotes": [
+        "candidateFingerprint / shardFingerprint / manifest bundleFingerprint 이 PR에서 재계산 완료(fingerprintReconciliation 참조).",
+        "H46(אָבִיר, sheva)과 H47(אַבִּיר, patach) 형태소 구분은 Gemini dispute review에서 재확인 권장."
+      ]
+    }
+  ],
+  "downstreamRouting": {
+    "R3_gemini_dispute_review_queue": [
+      { "strong": "H430",   "lemma": "אֱלֹהִים", "reason": "polysemy + theological-sensitive; Claude PASS 후 Gemini 재확인" },
+      { "strong": "H1254a", "lemma": "בָּרָא",   "reason": "polysemy(Qal 창조 vs Piel 베어냄); Gemini 재확인" },
+      { "strong": "H3117",  "lemma": "יוֹם",     "reason": "polysemy + '여호와의 날' 신학적 함의; Gemini 재확인" },
+      { "strong": "H7307",  "lemma": "רוּחַ",   "reason": "polysemy(숨/바람/영/하나님의 영); Gemini 재확인" },
+      { "strong": "H46",    "lemma": "אָבִיר",  "reason": "REVISE 반영 후 이 PR에서 재통과; Gemini dispute review 준비 완료" }
+    ],
+    "R4_human_final_wording_gate_hold": [
+      { "strong": "H120",   "lemma": "אָדָם",      "reason": "일반명사·고유명·지명 다층 + uncertain-etymology; 사람 문안 확정 대기" },
+      { "strong": "H6030b", "lemma": "עָנָה",       "reason": "polysemy + Hiph 'wholly dub.'; 사람 최종 문안 대기" },
+      { "strong": "H7650",  "lemma": "שָׁבַע",     "reason": "uncertain-etymology(‘일곱으로 자신을 묶다’ 추정); 사람 대기" },
+      { "strong": "H28",    "lemma": "אֲבִידָע",   "reason": "proper-name + uncertain-etymology; 사람 대기" },
+      { "strong": "H39",    "lemma": "אֲבִימָאֵל", "reason": "proper-name + uncertain-etymology; 사람 대기" }
+    ],
+    "autoApprovalProhibited": true,
+    "approvalRegistryWriteProhibited": true,
+    "serviceUiWriteProhibited": true,
+    "productionWriteProhibited": true
+  },
+  "fingerprintReconciliation": {
+    "reconciledAt": "2026-08-10T14:15:00+09:00",
+    "algorithm": "verify-genesis-p5-gpt-candidates.mjs:8-9 stable()+sha256 (key-sorted canonical JSON, sha256 hex)",
+    "algorithmSpec": "stable(v) = Array→'['+v.map(stable).join(',')+']' ; Object→'{'+sortedKeys.map(k => JSON.stringify(k)+':'+stable(v[k])).join(',')+'}' ; primitive→JSON.stringify(v). Then 'sha256:'+sha256hex(stable(obj))",
+    "governance": {
+      "verifierWeakened": false,
+      "gateRelaxed": false,
+      "additionalWordingMutation": false,
+      "approvalRegistryWritten": false,
+      "serviceUiWritten": false,
+      "productionWritten": false
+    },
+    "recomputed": {
+      "H4325_candidateFingerprint": {
+        "before": "sha256:e9188fb61d71a39ec7a8ac0e1c21733a60e5d756ba280caa97d5482231283e25",
+        "after":  "sha256:f4ba0a153754cc811c4283783686f1dade2a105c162e8acab7e1ce0e2cd2199f",
+        "expectedCheckPrefixMatch": "sha256:f4ba0a15",
+        "expectedCheckSuffixMatch": "2199f",
+        "checkOk": true
+      },
+      "H46_candidateFingerprint": {
+        "before": "sha256:0b6a861b584055253adeb27c9fa5460d9f8c4397d61ff8c4520b93ba0812354e",
+        "after":  "sha256:0daf06ea55f8b46b98c89f4e0e1bd77d5cb2eaeb2a14d23c5b12741b8d15de6e",
+        "expectedCheckPrefixMatch": "sha256:0daf06ea",
+        "expectedCheckSuffixMatch": "5de6e",
+        "checkOk": true
+      },
+      "core_theology_context_shardFingerprint": {
+        "before": "sha256:39e78f1f5149ec5cc055aeb2d6d50428198626fe784bc8af2c1a3626601d4bdf",
+        "after":  "sha256:31b9b1223c11c7ef9259795de0fbd399238155253f1d9a344a0fb5e48befe531"
+      },
+      "low_frequency_general_shardFingerprint": {
+        "before": "sha256:99a8f815e42de767696ae1fa5aa7c5ec3b4082c9b492e032a2da0611cb8ab8db",
+        "after":  "sha256:53056b01d8d13613331c4ef52b7a95fac01addb1f6723b526505190d4e8b4109"
+      },
+      "high_frequency_general_shardFingerprint": {
+        "before": "sha256:7d6a639e9e0301361860ca28ac37badbd8da44756493ca46684fe9e9cce12610",
+        "after":  "sha256:7d6a639e9e0301361860ca28ac37badbd8da44756493ca46684fe9e9cce12610",
+        "note": "unchanged — no candidate content in this shard was mutated"
+      },
+      "medium_frequency_general_shardFingerprint": {
+        "before": "sha256:b96ae658597ec177e58a6ac618dcc79b79fd6c6a119dde6023d452cf8676abd9",
+        "after":  "sha256:b96ae658597ec177e58a6ac618dcc79b79fd6c6a119dde6023d452cf8676abd9",
+        "note": "unchanged — no candidate content in this shard was mutated"
+      },
+      "manifest_bundleFingerprint": {
+        "before": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+        "after":  "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261"
+      }
+    },
+    "ciEvidenceLocal": [
+      { "script": "scripts/verify-genesis-p5-gpt-candidates.mjs",  "verdict": "PASS", "line": "✓ Genesis P5 GPT candidates · bases=24 · units=27 · nodes=150 · R3=5 · R4=5 · H776 excluded · Registry writes=0" },
+      { "script": "scripts/verify-genesis-p5-candidate-inputs.mjs", "verdict": "PASS", "line": "✓ Genesis P5 GPT candidate source inputs · bases=24 · units=27 · nodes=150 · H776 excluded" },
+      { "script": "scripts/verify-genesis-p5-claude-audit-bundle.mjs", "verdict": "PASS", "line": "✓ Claude audit bundle verified · 27 units · 150 source/candidate pairs" }
+    ],
+    "remoteCiCheckRequired": [
+      "contract (Genesis Lexicon G1 Contract)",
+      "verify-and-build (Validate pull request)",
+      "security-audit (Validate pull request)",
+      "browser-smoke (Validate pull request)",
+      "verify-resume-checkpoint",
+      "Vercel Preview"
+    ]
+  }
+}
