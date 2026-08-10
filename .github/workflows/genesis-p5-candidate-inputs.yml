@@ -1,0 +1,115 @@
+name: Genesis P5 GPT Candidate Inputs
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/genesis-p5-candidate-inputs.yml'
+      - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/data/lexicon/source-driver-policy.json'
+      - 'bible-mindmap/data/lexicon/approval-registry.json'
+      - 'docs/lexicon-workflow/**'
+      - 'memory/RESUME.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/genesis-p5-candidate-inputs.yml'
+      - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/data/lexicon/source-driver-policy.json'
+      - 'bible-mindmap/data/lexicon/approval-registry.json'
+      - 'docs/lexicon-workflow/**'
+      - 'memory/RESUME.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-p5-gpt-candidate-inputs-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-gpt-inputs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild Genesis Gold 25
+        working-directory: bible-mindmap
+        run: |
+          node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+          node scripts/build-genesis-p5-gold-set.mjs
+          node scripts/verify-genesis-p5-gold-set.mjs --strict
+
+      - name: Fetch pinned BDB and TAHOT sources
+        working-directory: bible-mindmap
+        run: |
+          set -euo pipefail
+          mkdir -p .cache/lexicon/openscriptures .cache/lexicon/stepbible
+          BDB_BASE='https://raw.githubusercontent.com/openscriptures/HebrewLexicon/21c9add13bc727d3a951361778e97e3ff7afd1ce'
+          curl --fail --silent --show-error --location "$BDB_BASE/BrownDriverBriggs.xml" --output .cache/lexicon/openscriptures/BrownDriverBriggs.xml
+          curl --fail --silent --show-error --location "$BDB_BASE/LexicalIndex.xml" --output .cache/lexicon/openscriptures/LexicalIndex.xml
+          TAHOT_URL='https://raw.githubusercontent.com/STEPBible/STEPBible-Data/b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39/Translators%20Amalgamated%20OT%2BNT/TAHOT%20Gen-Deu%20-%20Translators%20Amalgamated%20Hebrew%20OT%20-%20STEPBible.org%20CC%20BY.txt'
+          curl --fail --silent --show-error --location "$TAHOT_URL" --output .cache/lexicon/stepbible/TAHOT-Gen-Deu.txt
+
+      - name: Reconfirm P5 Evidence readiness
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-p5-evidence-readiness.mjs
+          node scripts/verify-genesis-p5-evidence-readiness.mjs --strict
+
+      - name: Materialize exact GPT candidate source inputs
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-candidate-inputs.mjs
+
+      - name: Verify source-node preservation and closed write Gates
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-candidate-inputs.mjs
+
+      - name: Publish source input summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const bundle = JSON.parse(fs.readFileSync('reports/genesis-p5-candidate-inputs.json', 'utf8'))
+          const lines = [
+            '## P5 · Genesis GPT candidate input bundle',
+            '',
+            `- candidate bases: **${bundle.counts.candidateBaseItems}/24**`,
+            `- source units: **${bundle.counts.candidateUnits}/27**`,
+            `- source nodes: **${bundle.counts.sourceNodes}**`,
+            `- Extended Strong base items: **${bundle.counts.extendedBaseItems}/3**`,
+            '- H776: **excluded from candidate generation**',
+            '- GPT translation: **not started in this artifact step**',
+            '- Approval Registry/UI/production writes: **false**',
+          ]
+          const summary = lines.join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
+
+      - name: Upload GPT candidate source input evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-p5-gpt-candidate-inputs
+          path: bible-mindmap/reports/genesis-p5-candidate-inputs.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Guard tracked source integrity
+        run: git diff --exit-code
