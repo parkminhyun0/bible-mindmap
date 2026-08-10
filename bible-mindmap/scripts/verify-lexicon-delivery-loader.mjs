@@ -85,9 +85,10 @@ assert.match(popupSource, /KOREAN_GLOSS/, 'LexiconPopup must retain the compact 
 assert.match(bridgeSource, /lexiconApprovalLoader\.loadApprovedEntry\(strong\)/, 'translation drawer bridge must resolve approved data by Strong');
 assert.match(bridgeSource, /normalizeLexiconStrong/, 'translation drawer bridge must normalize padded Strong ids');
 assert.match(bridgeSource, /getLexiconTranslation\(strong\)/, 'legacy BDB pilot may be used only as optional drawer enrichment');
-assert.ok(
-  bridgeSource.indexOf('lexiconApprovalLoader.loadApprovedEntry(strong)') < bridgeSource.indexOf('getLexiconTranslation(strong)'),
-  'approved Registry lookup must gate optional legacy enrichment',
+assert.match(
+  bridgeSource,
+  /lexiconApprovalLoader\.loadApprovedEntry\(strong\)[\s\S]*createState\(dialog, currentToolbar, strong, approvedEntry\)/,
+  'approved Registry result must gate drawer creation and optional enrichment',
 );
 assert.doesNotMatch(bridgeSource, /method\s*:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/, 'translation drawer bridge must not introduce a Registry write transport');
 
