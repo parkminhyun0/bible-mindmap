@@ -9,6 +9,7 @@ on:
       - 'bible-mindmap/data/lexicon/schemas/SourceGoldenReconciliation.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/SourceDriverReport.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
+      - 'bible-mindmap/data/lexicon/schemas/EvidencePacket.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.parser-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.openscriptures-source-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json'
@@ -17,10 +18,13 @@ on:
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
       - 'bible-mindmap/scripts/build-h776-parser-adapter.mjs'
+      - 'bible-mindmap/scripts/build-h776-evidence-packet-v2.mjs'
       - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
       - 'bible-mindmap/scripts/lexicon-source-adapters.mjs'
       - 'bible-mindmap/scripts/lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-h776-source-golden-reconciliation.mjs'
+      - 'bible-mindmap/scripts/verify-h776-evidence-regeneration.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-evidence-contracts.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-parser-contract.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-openscriptures-bdb-adapter.mjs'
@@ -37,6 +41,7 @@ on:
       - 'bible-mindmap/data/lexicon/schemas/SourceGoldenReconciliation.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/SourceDriverReport.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
+      - 'bible-mindmap/data/lexicon/schemas/EvidencePacket.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.parser-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.openscriptures-source-input.v1.json'
       - 'bible-mindmap/data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json'
@@ -45,10 +50,13 @@ on:
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
       - 'bible-mindmap/scripts/build-h776-parser-adapter.mjs'
+      - 'bible-mindmap/scripts/build-h776-evidence-packet-v2.mjs'
       - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
       - 'bible-mindmap/scripts/lexicon-source-adapters.mjs'
       - 'bible-mindmap/scripts/lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-h776-source-golden-reconciliation.mjs'
+      - 'bible-mindmap/scripts/verify-h776-evidence-regeneration.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-evidence-contracts.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-parser-contract.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-source-driver.mjs'
       - 'bible-mindmap/scripts/verify-openscriptures-bdb-adapter.mjs'
@@ -112,6 +120,12 @@ jobs:
             --bdb=.cache/lexicon/openscriptures/BrownDriverBriggs.xml \
             --index=.cache/lexicon/openscriptures/LexicalIndex.xml \
             --write-report=reports/lexicon-parser/GEN-1-1-H776.source-golden-reconciliation-verify.v1.json
+      - name: Verify H776 Evidence Packet v2 deterministic regeneration
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-h776-evidence-regeneration.mjs \
+            --source-output=reports/lexicon-parser/GEN-1-1-H776.openscriptures-source-output.v1.json \
+            --write-report=reports/lexicon-parser/GEN-1-1-H776.evidence-regeneration-verify.v1.json
       - name: Upload deterministic parser evidence
         uses: actions/upload-artifact@v7
         with:
