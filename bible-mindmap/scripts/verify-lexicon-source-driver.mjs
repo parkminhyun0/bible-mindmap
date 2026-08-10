@@ -106,16 +106,18 @@ function selfTest() {
   assert.equal(openBdb.workflow.status, 'approved-ready');
   const sourceParse = makeSourceParseInput(openBdb);
   const sourceParseReport = preflightLexiconSourceDriver(sourceParse).report;
-  assert.equal(sourceParseReport.route, 'blocked');
-  assert.deepEqual(sourceParseReport.decision.blockerCodes, [DRIVER_BLOCKERS.ADAPTER_NOT_REGISTERED]);
+  assert.equal(sourceParseReport.route, 'source-parser');
+  assert.equal(sourceParseReport.selectedAdapterId, 'openscriptures-bdb-xml-v1');
+  assert.equal(sourceParseReport.decision.executionAllowed, true);
+  assert.equal(sourceParseReport.decision.candidateGenerationAllowed, false);
+  assert.deepEqual(sourceParseReport.decision.blockerCodes, []);
 
   const blockedCandidate = makeSourceParseInput(openBdb, 'candidate-generation');
   const blockedCandidateReport = preflightLexiconSourceDriver(blockedCandidate).report;
   assert.equal(blockedCandidateReport.route, 'blocked');
+  assert.equal(blockedCandidateReport.selectedAdapterId, 'openscriptures-bdb-xml-v1');
   assert.equal(blockedCandidateReport.decision.candidateGenerationAllowed, false);
-  assert.ok(blockedCandidateReport.decision.blockerCodes.includes(DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED));
-  assert.ok(blockedCandidateReport.decision.blockerCodes.includes(DRIVER_BLOCKERS.ADAPTER_NOT_REGISTERED));
-  assert.equal(blockedCandidateReport.decision.blockerCodes.includes(DRIVER_BLOCKERS.SOURCE_WORKFLOW_NOT_READY), false);
+  assert.deepEqual(blockedCandidateReport.decision.blockerCodes, [DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED]);
 
   const syntheticHash = `sha256:${'1'.repeat(64)}`;
   const syntheticSource = {
@@ -188,4 +190,4 @@ const reportTarget = parseArg('--write-report=');
 const outputTarget = parseArg('--write-output=');
 if (reportTarget) writeJson(reportTarget, result.report);
 if (outputTarget) writeJson(outputTarget, result.output);
-console.log(`✓ lexicon source driver passed · route=${result.report.route} · adapter=${result.report.selectedAdapterId} · nodes=${result.output.summary.nodeCount} · approvedFullBdbAdapterPending=true · candidateGenerationAllowed=false`);
+console.log(`✓ lexicon source driver passed · route=${result.report.route} · adapter=${result.report.selectedAdapterId} · nodes=${result.output.summary.nodeCount} · approvedFullBdbAdapterRegistered=true · candidateGenerationAllowed=false`);
