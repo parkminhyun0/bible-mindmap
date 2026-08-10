@@ -1,11 +1,11 @@
 name: Validate Korean Morphology
 
 on:
+  # `verify` is a required branch-protection check. Keep it present on every PR;
+  # path-filtering this workflow leaves unrelated PRs permanently "expected" and
+  # blocks merge without providing any additional quality signal.
   pull_request:
-    paths:
-      - 'bible-mindmap/src/utils/morphologyKorean.js'
-      - 'bible-mindmap/scripts/verify-korean-morphology.mjs'
-      - '.github/workflows/korean-morphology.yml'
+    branches: [main]
   workflow_dispatch:
 
 permissions:
