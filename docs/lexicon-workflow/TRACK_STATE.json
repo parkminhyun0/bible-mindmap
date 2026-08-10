@@ -46,7 +46,9 @@
     "generic-strong-evidence-verifier-v1",
     "generic-source-license-fingerprint-gate-v1",
     "arbitrary-strong-contract-probe-h1254-v1",
-    "h776-generic-plus-specialized-regression-ci-v1"
+    "h776-generic-plus-specialized-regression-ci-v1",
+    "p3-5-independent-contract-audit-v1",
+    "p3-5-defensive-ci-path-glob-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -116,7 +118,42 @@
     "serviceUiWriteAllowed": false,
     "qualityGateWeakening": false
   },
-  "nextAction": "P4: define the Approval Registry, manifest/shard contract and lazy React loader using only verified Evidence Packets; keep promotion, service/UI writes and approved meaning changes behind explicit human gates",
+  "p3_5_independentAudit": {
+    "version": 1,
+    "auditor": "claude-openclaw",
+    "baselineMain": "75936df360d11b042c6209266299055f412f313e",
+    "baselinePr": 275,
+    "reportPath": "docs/lexicon-workflow/P3_5_AUDIT.md",
+    "verdict": "PASS_WITH_MANDATORY_P4_FIRST_STEPS",
+    "critical": 0,
+    "high": 0,
+    "medium": [
+      "ci-path-scope-gap-for-p4-files-hardened-in-this-pr",
+      "verifier-trusts-caller-candidateGenerationAllowed-fix-in-p4-first-pr",
+      "main-branch-protection-not-enabled-enable-before-approval-registry-writes",
+      "phase-transition-self-promoted-in-same-pr-require-separate-audit-block-next-time"
+    ],
+    "low": [
+      "context-reference-regex-accepts-any-3-alnum-code",
+      "sense-node-strong-membership-only-enforced-via-cluster-prefix-and-identity-lemma"
+    ],
+    "attackProbesConfirmed": [
+      "identity-swap-to-H1254-blocked-by-cluster-prefix",
+      "forged-H9999-golden-blocked-by-cluster-prefix",
+      "self-declared-newGenerationAllowed-blocked-by-recomputed-license-gate",
+      "caller-candidateGenerationAllowed-true-NOT-blocked-caller-policy-trusted"
+    ],
+    "hardeningInThisPr": [
+      "extend-lexicon-evidence-contract-workflow-path-globs"
+    ],
+    "candidateGenerationAllowed": false,
+    "approvalRegistryPromotionAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "goldenMeaningMutationAllowed": false,
+    "qualityGateWeakening": false,
+    "translationCandidatesGeneratedInAudit": 0
+  },
+  "nextAction": "P4 first PR must: (1) refactor generic verifier to read candidateGenerationAllowed from TRACK_STATE instead of trusting the caller; (2) enable main branch protection with required Lexicon Evidence Contract status check before adding any Approval Registry write path; (3) require a separate p{N}_5_independent_audit block before flipping activePhase in any future transition",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
@@ -134,7 +171,8 @@
     "unresolved_source_or_model_conflict",
     "approval_registry_promotion",
     "production_release",
-    "live_screen_confirmation"
+    "live_screen_confirmation",
+    "phase_transition_without_independent_audit_block"
   ],
   "deprecatedDefaultPaths": [
     "ollama_local_ab_translation",

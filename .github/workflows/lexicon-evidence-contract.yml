@@ -3,6 +3,7 @@ name: Lexicon Evidence Contract
 on:
   pull_request:
     paths:
+      # P3 named surfaces (kept for signal visibility)
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/EvidencePacket.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/**'
@@ -16,10 +17,20 @@ on:
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
+      # P3.5 defensive globs: any future lexicon data, schema, verifier lib,
+      # verify/build script, or data module must retrigger the contract.
+      # Approval Registry, manifest, shards, and React loaders in P4 land here.
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/data/lexicon/schemas/**'
+      - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
+      - 'bible-mindmap/scripts/build-lexicon-**.mjs'
+      - 'bible-mindmap/src/data/lexicon**.js'
   push:
     branches:
       - main
     paths:
+      # P3 named surfaces (kept for signal visibility)
       - 'bible-mindmap/data/lexicon/schemas/StrongIdentity.schema.json'
       - 'bible-mindmap/data/lexicon/schemas/EvidencePacket.schema.json'
       - 'bible-mindmap/data/lexicon/fixtures/**'
@@ -33,6 +44,13 @@ on:
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
+      # P3.5 defensive globs (mirror pull_request block).
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/data/lexicon/schemas/**'
+      - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
+      - 'bible-mindmap/scripts/build-lexicon-**.mjs'
+      - 'bible-mindmap/src/data/lexicon**.js'
 
 permissions:
   contents: read
