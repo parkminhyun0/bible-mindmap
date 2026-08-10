@@ -8,9 +8,14 @@
     "claudeRevisePR": 297,
     "manifestBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261"
   },
-  "status": "PENDING_GEMINI_RUN",
-  "statusUpdatedAt": "2026-08-11T00:30:00+09:00",
+  "status": "COMPLETE",
+  "statusUpdatedAt": "2026-08-11T00:55:00+09:00",
   "runOwner": "human (parkminhyun0) — 자비스는 Gemini CLI 직접 호출 금지",
+  "results": {
+    "path": "bible-mindmap/reports/genesis-p5-r3-gemini-dispute-results.json",
+    "verdictCounts": { "PASS": 5, "REVISE": 0, "DISPUTE": 0 },
+    "consensus": "3-model (GPT · Claude · Gemini) all PASS on 5/5 units"
+  },
   "packageForGemini": {
     "prompt": "bible-mindmap/reports/genesis-p5-r3-gemini-dispute-prompt.md",
     "input":  "bible-mindmap/reports/genesis-p5-r3-gemini-input.json",
@@ -18,11 +23,11 @@
     "referenceClaudeRecheck":  "bible-mindmap/reports/genesis-p5-claude-audit-recheck-h4325-h46.json"
   },
   "targetUnits": [
-    { "strong": "H430",   "lemma": "אֱלֹהִים", "translitKo": "엘로힘",     "pairs": 13, "claudeVerdict": "PASS" },
-    { "strong": "H1254a", "lemma": "בָּרָא",   "translitKo": "바라",       "pairs": 9,  "claudeVerdict": "PASS" },
-    { "strong": "H3117",  "lemma": "יוֹם",     "translitKo": "욤",         "pairs": 8,  "claudeVerdict": "PASS" },
-    { "strong": "H7307",  "lemma": "רוּחַ",   "translitKo": "루아흐",     "pairs": 10, "claudeVerdict": "PASS" },
-    { "strong": "H46",    "lemma": "אָבִיר",  "translitKo": "아비르",     "pairs": 1,  "claudeVerdict": "PASS", "note": "REVISE 반영본 (PR #297)" }
+    { "strong": "H430",   "lemma": "אֱלֹהִים", "translitKo": "엘로힘",     "pairs": 13, "claudeVerdict": "PASS", "geminiVerdict": "PASS" },
+    { "strong": "H1254a", "lemma": "בָּרָא",   "translitKo": "바라",       "pairs": 9,  "claudeVerdict": "PASS", "geminiVerdict": "PASS", "geminiInterimRetracted": "DISPUTE" },
+    { "strong": "H3117",  "lemma": "יוֹם",     "translitKo": "욤",         "pairs": 8,  "claudeVerdict": "PASS", "geminiVerdict": "PASS" },
+    { "strong": "H7307",  "lemma": "רוּחַ",   "translitKo": "루아흐",     "pairs": 10, "claudeVerdict": "PASS", "geminiVerdict": "PASS", "geminiInterimRetracted": "REVISE" },
+    { "strong": "H46",    "lemma": "אָבִיר",  "translitKo": "아비르",     "pairs": 1,  "claudeVerdict": "PASS", "geminiVerdict": "PASS", "note": "REVISE 반영본 (PR #297)" }
   ],
   "checkAxes": [
     "source-fidelity",
@@ -60,5 +65,17 @@
     "2. bible-mindmap/reports/genesis-p5-r3-gemini-input.json 도 함께 첨부(또는 프롬프트 뒤에 이어붙이기).",
     "3. Gemini가 반환한 순수 JSON을 저장.",
     "4. 결과를 자비스에 전달하면 자비스가 genesis-p5-r3-gemini-dispute-results.json 로 저장·PR 처리."
+  ],
+  "runLog": [
+    {
+      "at": "2026-08-11T00:55:00+09:00",
+      "actor": "human (parkminhyun0)",
+      "action": "Gemini 실제 데이터 기반 재감사 완료",
+      "outcome": "PASS 5 / REVISE 0 / DISPUTE 0",
+      "interimRetractions": [
+        { "strong": "H1254a", "from": "DISPUTE", "to": "PASS", "reason": "실제 데이터 부재 상태의 추정 기반 오판 → 실제 데이터 확인 후 철회" },
+        { "strong": "H7307",  "from": "REVISE",  "to": "PASS", "reason": "실제 데이터 부재 상태의 추정 기반 오판 → 실제 데이터 확인 후 철회" }
+      ]
+    }
   ]
 }
