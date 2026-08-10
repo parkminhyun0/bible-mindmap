@@ -1,4 +1,5 @@
 import { buildH776ParserAdapter } from './build-h776-parser-adapter.mjs';
+import { createOpenScripturesBdbAdapter } from './build-openscriptures-bdb-adapter.mjs';
 
 export const DEFAULT_SOURCE_ADAPTERS = Object.freeze([
   Object.freeze({
@@ -13,4 +14,5 @@ export const DEFAULT_SOURCE_ADAPTERS = Object.freeze([
       return buildH776ParserAdapter(input);
     },
   }),
+  createOpenScripturesBdbAdapter(),
 ]);
