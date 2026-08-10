@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import { fingerprintWithout, normalizeStrong } from './lib/lexicon-evidence-verifier.mjs';
+import {
+  fingerprintWithout,
+  normalizeStrong,
+  readPhaseGate,
+} from './lib/lexicon-evidence-verifier.mjs';
 import { buildLexiconApprovalRegistry } from './build-lexicon-approval-registry.mjs';
 
 const STRONG_PATTERN = /^([HG])([1-9][0-9]*)([a-z]?)$/;
@@ -31,6 +35,14 @@ export function resolveShardDescriptor(strongValue, language) {
 export function buildLexiconShards(registry = buildLexiconApprovalRegistry()) {
   assert.equal(registry?.schemaVersion, 1, 'Approval Registry schemaVersion must be 1');
   assert.ok(Array.isArray(registry.entries), 'Approval Registry entries must be an array');
+  const phaseGate = readPhaseGate();
+  if (!phaseGate.approvalRegistryPromotionAllowed) {
+    assert.equal(
+      registry.entries.length,
+      0,
+      'Approval Registry entries must remain empty while promotion is disabled',
+    );
+  }
 
   const groups = new Map();
   for (const entry of registry.entries) {
