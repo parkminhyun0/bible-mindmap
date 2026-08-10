@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/SourceLicenseReview.schema.json",
+  "schemaVersion": 1,
+  "reviewId": "openscriptures-hebrewlexicon-bdb-license-review-v1",
+  "sourceId": "openscriptures-hebrewlexicon-bdb",
+  "reviewedAt": "2026-08-10T09:20:00+09:00",
+  "reviewStatus": "approved",
+  "automationDecision": "approved-ready",
+  "candidateGenerationAllowed": false,
+  "dataset": {
+    "repositoryUrl": "https://github.com/openscriptures/HebrewLexicon",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "paths": [
+      "BrownDriverBriggs.xml",
+      "LexicalIndex.xml",
+      "BDBPartsOfSpeech.xml",
+      "AugIndex.xml"
+    ],
+    "coverage": "Full Brown-Driver-Briggs Hebrew and Aramaic XML, Strong and TWOT bridge index, part-of-speech map, and augmented Strong mapping.",
+    "upstreamLineage": [
+      "https://github.com/openscriptures/HebrewLexicon"
+    ]
+  },
+  "evidence": [
+    {
+      "evidenceId": "repository-readme-cc-by-4",
+      "authority": "dataset-owner",
+      "url": "https://github.com/openscriptures/HebrewLexicon/blob/21c9add13bc727d3a951361778e97e3ff7afd1ce/readme.md",
+      "claim": "The repository files are released under Creative Commons Attribution 4.0 International; the Brown-Driver-Briggs and Strong dictionary texts remain public domain; attribution should credit the Open Scriptures Hebrew Bible Project.",
+      "directlyApplies": true,
+      "exactLicenseExpression": "CC-BY-4.0",
+      "limitation": "TWOT numbers are identifiers for reference only and the repository states that TWOT text is not transcribed."
+    },
+    {
+      "evidenceId": "pinned-repository-layout",
+      "authority": "dataset-owner",
+      "url": "https://github.com/openscriptures/HebrewLexicon/tree/21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "claim": "The pinned repository contains BrownDriverBriggs.xml, LexicalIndex.xml, BDBPartsOfSpeech.xml, and AugIndex.xml as the reviewed dataset paths.",
+      "directlyApplies": true,
+      "exactLicenseExpression": "CC-BY-4.0",
+      "limitation": "The lexicon is described as a work in progress, so completeness and structural fidelity require deterministic validation."
+    },
+    {
+      "evidenceId": "public-domain-bdb-scan-control",
+      "authority": "secondary-analysis",
+      "url": "https://commons.wikimedia.org/wiki/File:A_Hebrew_and_English_Lexicon_(Brown-Driver-Briggs).djvu",
+      "claim": "A complete scan of the 1906 Brown-Driver-Briggs Hebrew and Aramaic lexicon is marked public domain and can serve as a visual source-control reference.",
+      "directlyApplies": false,
+      "exactLicenseExpression": "Public-Domain",
+      "limitation": "The scan is not the machine-readable source and must not replace repository-level provenance or deterministic XML validation."
+    }
+  ],
+  "rights": {
+    "readMetadata": true,
+    "internalLicenseReview": true,
+    "storeFullText": true,
+    "externalLlmInput": true,
+    "createTranslationDerivatives": true,
+    "redistributeDerivedData": true
+  },
+  "unresolvedQuestions": [
+    "How completely does the current BrownDriverBriggs.xml reproduce every printed BDB sense and scripture reference?",
+    "How should incomplete or placeholder source nodes be represented without inventing missing source text?",
+    "How many H776 source nodes map losslessly to the existing 26-node Golden Reference hierarchy?"
+  ],
+  "promotionRequirements": [
+    "Compute and pin the canonical path-content fingerprint for all reviewed dataset paths.",
+    "Validate that all four files exist at the pinned commit and are free of symbolic-link or path traversal risk.",
+    "Build a dedicated deterministic OpenScriptures adapter without model-based structural inference.",
+    "Produce an H776 actual-source tree difference report before candidate generation is enabled."
+  ],
+  "verdict": "promote-approved"
+}

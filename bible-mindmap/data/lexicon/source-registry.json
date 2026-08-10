@@ -2,11 +2,12 @@
   "$schema": "./schemas/SourceRegistry.schema.json",
   "schemaVersion": 1,
   "registryId": "lexicon-source-registry",
-  "policyVersion": "1.1",
+  "policyVersion": "1.2",
   "project": "bible-mindmap-lexicon-ko",
   "governance": {
     "theologicalFramework": "reformed-westminster-primary",
     "sourceTextPrecedence": [
+      "openscriptures-hebrewlexicon-bdb",
       "stepbible-tbesh"
     ],
     "unknownLicenseBlocksAiInput": true,
@@ -16,22 +17,22 @@
     {
       "sourceId": "openscriptures-hebrewlexicon-bdb",
       "title": "Open Scriptures Hebrew Lexicon · Brown-Driver-Briggs",
-      "role": "candidate-primary-source-after-license-resolution",
+      "role": "primary-full-definition-source",
       "scope": "OT Hebrew and Aramaic full BDB hierarchy with Strong and TWOT links",
       "sourceTypes": ["lexicon", "metadata"],
       "canon": "old-testament",
       "languages": ["hebrew", "aramaic", "english"],
       "license": {
-        "status": "unknown",
-        "expression": "unresolved-repository-license",
-        "licenseUrl": null,
-        "attributionRequired": false,
-        "attributionText": null,
-        "changeNoticeRequired": false,
-        "derivativeAllowed": false,
-        "redistributionAllowed": false,
-        "externalLlmInputAllowed": false,
-        "fullTextStorageAllowed": false
+        "status": "approved",
+        "expression": "CC-BY-4.0",
+        "licenseUrl": "https://github.com/openscriptures/HebrewLexicon/blob/21c9add13bc727d3a951361778e97e3ff7afd1ce/readme.md",
+        "attributionRequired": true,
+        "attributionText": "Open Scriptures Hebrew Bible Project",
+        "changeNoticeRequired": true,
+        "derivativeAllowed": true,
+        "redistributionAllowed": true,
+        "externalLlmInputAllowed": true,
+        "fullTextStorageAllowed": true
       },
       "provenance": {
         "officialUrl": "https://github.com/openscriptures/HebrewLexicon",
@@ -44,17 +45,17 @@
         ],
         "versionStrategy": "git-commit",
         "version": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
-        "fingerprintMethod": "unresolved",
-        "fileCount": null,
-        "totalBytes": null,
-        "contentHash": null,
-        "retrievedAt": null
+        "fingerprintMethod": "sha256-path-content-manifest-v1",
+        "fileCount": 4,
+        "totalBytes": 4916650,
+        "contentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+        "retrievedAt": "2026-08-10T00:33:47Z"
       },
       "workflow": {
-        "status": "blocked",
-        "autoProcessingAllowed": false,
+        "status": "approved-ready",
+        "autoProcessingAllowed": true,
         "existingUse": "planned",
-        "notes": "기초 BDB 본문은 퍼블릭 도메인이지만 저장소 수정·편집물의 명시적 라이선스를 확인하기 전에는 AI 입력·저장·재배포에 사용하지 않는다."
+        "notes": "저장소 readme.md가 전체 파일을 CC BY 4.0으로 공개하고 BDB·Strong 본문은 public domain임을 직접 명시한다. 고정 commit과 canonical fingerprint가 확인됐다. 전용 deterministic adapter와 H776 source-tree diff 전에는 candidate generation을 활성화하지 않는다."
       }
     },
     {

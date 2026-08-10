@@ -63,10 +63,7 @@ function selectAdapter(input, adapters) {
     .filter((adapter) => adapter?.sourceIds?.includes(input?.source?.sourceId))
     .filter((adapter) => typeof adapter.supports !== 'function' || adapter.supports(input))
     .sort((a, b) => a.adapterId.localeCompare(b.adapterId));
-  return {
-    adapter: matches.length === 1 ? matches[0] : null,
-    matchCount: matches.length,
-  };
+  return { adapter: matches.length === 1 ? matches[0] : null, matchCount: matches.length };
 }
 
 function sourceSnapshot(input, source) {
@@ -88,16 +85,18 @@ export function preflightLexiconSourceDriver(input, {
 } = {}) {
   const blockers = [];
   if (!validatePolicy(policy)) blockers.push(DRIVER_BLOCKERS.DRIVER_POLICY_INVALID);
-  if (input?.parser?.id !== 'bdb-deterministic-tree-parser') {
-    blockers.push(DRIVER_BLOCKERS.PARSER_ID_MISMATCH);
-  }
+  if (input?.parser?.id !== 'bdb-deterministic-tree-parser') blockers.push(DRIVER_BLOCKERS.PARSER_ID_MISMATCH);
   if (!input || typeof input !== 'object' || input.inputFingerprint !== fingerprint(input, 'inputFingerprint')) {
     blockers.push(DRIVER_BLOCKERS.INPUT_FINGERPRINT_MISMATCH);
   }
 
   const source = findSource(registry, input?.source?.sourceId);
   if (!source) blockers.push(DRIVER_BLOCKERS.UNREGISTERED_SOURCE);
-  if (source && source.workflow.status !== input?.source?.registryWorkflowStatus) {
+  const parserMode = input?.parser?.mode;
+  const isLegacyRegression = parserMode === 'legacy-golden-adapter'
+    && input?.processingMode === 'regression-only'
+    && input?.source?.usagePolicy === 'legacy-regression-only';
+  if (source && !isLegacyRegression && source.workflow.status !== input?.source?.registryWorkflowStatus) {
     blockers.push(DRIVER_BLOCKERS.SOURCE_STATUS_MISMATCH);
   }
 
@@ -105,49 +104,23 @@ export function preflightLexiconSourceDriver(input, {
   if (selection.matchCount === 0) blockers.push(DRIVER_BLOCKERS.ADAPTER_NOT_REGISTERED);
   if (selection.matchCount > 1) blockers.push(DRIVER_BLOCKERS.ADAPTER_AMBIGUOUS);
 
-  const parserMode = input?.parser?.mode;
   if (parserMode === 'legacy-golden-adapter') {
-    if (input?.processingMode !== 'regression-only') {
-      blockers.push(DRIVER_BLOCKERS.REGRESSION_ONLY_REQUIRED);
-    }
-    if (input?.source?.usagePolicy !== 'legacy-regression-only') {
-      blockers.push(DRIVER_BLOCKERS.LEGACY_POLICY_REQUIRED);
-    }
-    if (input?.source?.sourceFingerprint !== null) {
-      blockers.push(DRIVER_BLOCKERS.LEGACY_FINGERPRINT_MUST_BE_NULL);
-    }
-    if (policy?.allowRegressionExecution !== true) {
-      blockers.push(DRIVER_BLOCKERS.REGRESSION_EXECUTION_DISABLED);
-    }
+    if (input?.processingMode !== 'regression-only') blockers.push(DRIVER_BLOCKERS.REGRESSION_ONLY_REQUIRED);
+    if (input?.source?.usagePolicy !== 'legacy-regression-only') blockers.push(DRIVER_BLOCKERS.LEGACY_POLICY_REQUIRED);
+    if (input?.source?.sourceFingerprint !== null) blockers.push(DRIVER_BLOCKERS.LEGACY_FINGERPRINT_MUST_BE_NULL);
+    if (policy?.allowRegressionExecution !== true) blockers.push(DRIVER_BLOCKERS.REGRESSION_EXECUTION_DISABLED);
   } else if (parserMode === 'source-parse') {
-    if (input?.source?.usagePolicy !== 'automatic-evidence') {
-      blockers.push(DRIVER_BLOCKERS.SOURCE_PARSE_POLICY_REQUIRED);
-    }
-    if (policy?.requireApprovedReadyForSourceParse !== false && source?.workflow?.status !== 'approved-ready') {
-      blockers.push(DRIVER_BLOCKERS.SOURCE_WORKFLOW_NOT_READY);
-    }
-    if (source?.workflow?.autoProcessingAllowed !== true) {
-      blockers.push(DRIVER_BLOCKERS.SOURCE_AUTO_PROCESSING_REQUIRED);
-    }
-    if (source?.license?.status !== 'approved') {
-      blockers.push(DRIVER_BLOCKERS.SOURCE_LICENSE_NOT_APPROVED);
-    }
+    if (input?.source?.usagePolicy !== 'automatic-evidence') blockers.push(DRIVER_BLOCKERS.SOURCE_PARSE_POLICY_REQUIRED);
+    if (policy?.requireApprovedReadyForSourceParse !== false && source?.workflow?.status !== 'approved-ready') blockers.push(DRIVER_BLOCKERS.SOURCE_WORKFLOW_NOT_READY);
+    if (source?.workflow?.autoProcessingAllowed !== true) blockers.push(DRIVER_BLOCKERS.SOURCE_AUTO_PROCESSING_REQUIRED);
+    if (source?.license?.status !== 'approved') blockers.push(DRIVER_BLOCKERS.SOURCE_LICENSE_NOT_APPROVED);
     if (policy?.requireSourceFingerprintForSourceParse !== false) {
-      if (!input?.source?.sourceFingerprint) {
-        blockers.push(DRIVER_BLOCKERS.SOURCE_FINGERPRINT_REQUIRED);
-      } else if (input.source.sourceFingerprint !== source?.provenance?.contentHash) {
-        blockers.push(DRIVER_BLOCKERS.SOURCE_FINGERPRINT_MISMATCH);
-      }
+      if (!input?.source?.sourceFingerprint) blockers.push(DRIVER_BLOCKERS.SOURCE_FINGERPRINT_REQUIRED);
+      else if (input.source.sourceFingerprint !== source?.provenance?.contentHash) blockers.push(DRIVER_BLOCKERS.SOURCE_FINGERPRINT_MISMATCH);
     }
-    if (policy?.requireFullTextStorageForSourceParse !== false && source?.license?.fullTextStorageAllowed !== true) {
-      blockers.push(DRIVER_BLOCKERS.FULL_TEXT_STORAGE_REQUIRED);
-    }
-    if (policy?.requireDerivativePermissionForSourceParse !== false && source?.license?.derivativeAllowed !== true) {
-      blockers.push(DRIVER_BLOCKERS.DERIVATIVE_PERMISSION_REQUIRED);
-    }
-    if (input?.processingMode === 'candidate-generation' && policy?.candidateGenerationEnabled !== true) {
-      blockers.push(DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED);
-    }
+    if (policy?.requireFullTextStorageForSourceParse !== false && source?.license?.fullTextStorageAllowed !== true) blockers.push(DRIVER_BLOCKERS.FULL_TEXT_STORAGE_REQUIRED);
+    if (policy?.requireDerivativePermissionForSourceParse !== false && source?.license?.derivativeAllowed !== true) blockers.push(DRIVER_BLOCKERS.DERIVATIVE_PERMISSION_REQUIRED);
+    if (input?.processingMode === 'candidate-generation' && policy?.candidateGenerationEnabled !== true) blockers.push(DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED);
   } else {
     blockers.push(DRIVER_BLOCKERS.UNSUPPORTED_PARSER_MODE);
   }
@@ -160,7 +133,6 @@ export function preflightLexiconSourceDriver(input, {
   const route = executionAllowed
     ? (parserMode === 'legacy-golden-adapter' ? 'legacy-adapter' : 'source-parser')
     : 'blocked';
-
   const report = {
     schemaVersion: 1,
     reportId: `${input.requestId}-SOURCE-DRIVER`,
@@ -190,9 +162,7 @@ export function preflightLexiconSourceDriver(input, {
 export function runLexiconSourceDriver(input, options = {}) {
   const operation = options.operation || 'execute';
   const preflight = preflightLexiconSourceDriver(input, { ...options, operation });
-  if (operation !== 'execute' || !preflight.report.decision.executionAllowed) {
-    return { report: preflight.report, output: null };
-  }
+  if (operation !== 'execute' || !preflight.report.decision.executionAllowed) return { report: preflight.report, output: null };
   const output = preflight.adapter.execute(input);
   const report = structuredClone(preflight.report);
   report.parserOutputFingerprint = output.outputFingerprint;
@@ -204,13 +174,11 @@ function parseArg(prefix) {
   const arg = process.argv.find((value) => value.startsWith(prefix));
   return arg ? arg.slice(prefix.length) : null;
 }
-
 function writeJson(relativePath, value) {
   const target = path.resolve(ROOT, relativePath);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, `${JSON.stringify(value, null, 2)}\n`);
 }
-
 function runCli() {
   const inputPath = parseArg('--input=');
   if (!inputPath) throw new Error('lexicon source driver requires --input=<parser-input.json>');
@@ -225,6 +193,4 @@ function runCli() {
   if (operation === 'execute' && !result.report.decision.executionAllowed) process.exitCode = 2;
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  runCli();
-}
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) runCli();
