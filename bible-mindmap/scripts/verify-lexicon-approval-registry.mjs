@@ -49,19 +49,23 @@ function verifyStdoutOnlyBuilders() {
     'build-lexicon-shards.mjs',
   ]) {
     const result = spawnSync(process.execPath, [path.join(HERE, script), '--out'], { encoding: 'utf8' });
-    assert.notEqual(result.status, 0, `${script}: --out must fail closed before P4.5 audit`);
+    assert.notEqual(result.status, 0, `${script}: --out must fail closed before production registry writes are introduced`);
   }
 }
 
 function verifyPhaseAndDeprecatedLocks() {
   const phaseGate = readPhaseGate(TRACK_STATE_PATH);
   assert.equal(phaseGate.candidateGenerationAllowed, false, 'candidate generation must remain disabled');
-  assert.equal(phaseGate.approvalRegistryPromotionAllowed, false, 'Approval Registry promotion must remain disabled');
+  assert.equal(typeof phaseGate.approvalRegistryPromotionAllowed, 'boolean', 'Approval Registry promotion gate must be boolean');
   assert.equal(phaseGate.serviceUiWriteAllowed, false, 'service/UI write must remain disabled');
 
   const trackState = readJson(TRACK_STATE_PATH);
   assert.equal(trackState.state, 'P3_COMPLETE', 'P4 infrastructure must not self-promote track state');
   assert.equal(trackState.activePhase, 'P4_REGISTRY_SHARD_REACT_INTEGRATION', 'activePhase drift');
+  if (phaseGate.approvalRegistryPromotionAllowed) {
+    assert.equal(trackState.p4_5_independentAudit?.verdict, 'PASS_WITH_MANDATORY_PRE_FIRST_ENTRY_STEPS', 'promotion requires completed P4.5 independent audit');
+    assert.equal(trackState.p4_5_independentAudit?.firstApprovalRegistryEntryWritten, false, 'promotion gate transition must precede the first Approval Registry entry');
+  }
   const deprecated = new Set(trackState.deprecatedDefaultPaths || []);
   for (const required of [
     'ollama_local_ab_translation',
@@ -72,31 +76,34 @@ function verifyPhaseAndDeprecatedLocks() {
   ]) {
     assert.ok(deprecated.has(required), `deprecatedDefaultPaths lock missing: ${required}`);
   }
+  return phaseGate;
 }
 
-function verifyEmptyInfrastructure() {
+function verifyEmptyInfrastructure(phaseGate) {
   assert.throws(
     () => buildLexiconApprovalRegistry([{}]),
-    /must remain empty until P4\.5 independent audit passes/,
-    'non-empty Approval Registry must fail closed before P4.5',
+    /first entry requires a dedicated post-promotion PR/,
+    'non-empty Approval Registry must remain blocked until the dedicated first-entry PR',
   );
 
   const forgedRegistry = { schemaVersion: 1, entries: [{}] };
-  assert.throws(
-    () => buildLexiconManifest(forgedRegistry),
-    /must remain empty while promotion is disabled/,
-    'manifest builder must independently reject non-empty registry while promotion is disabled',
-  );
-  assert.throws(
-    () => buildLexiconShards(forgedRegistry),
-    /must remain empty while promotion is disabled/,
-    'shard builder must independently reject non-empty registry while promotion is disabled',
-  );
+  if (!phaseGate.approvalRegistryPromotionAllowed) {
+    assert.throws(
+      () => buildLexiconManifest(forgedRegistry),
+      /must remain empty while promotion is disabled/,
+      'manifest builder must independently reject non-empty registry while promotion is disabled',
+    );
+    assert.throws(
+      () => buildLexiconShards(forgedRegistry),
+      /must remain empty while promotion is disabled/,
+      'shard builder must independently reject non-empty registry while promotion is disabled',
+    );
+  }
 
   const registryA = buildLexiconApprovalRegistry();
   const registryB = buildLexiconApprovalRegistry();
   assert.deepEqual(registryA, registryB, 'Approval Registry builder must be deterministic');
-  assert.deepEqual(registryA.entries, [], 'Approval Registry initial entries must be empty');
+  assert.deepEqual(registryA.entries, [], 'Approval Registry entries must remain empty before the first-entry PR');
   assert.match(registryA.registryFingerprint, SHA256_PATTERN, 'registryFingerprint must be sha256');
   assert.equal(registryA.registryFingerprint, fingerprintWithout(registryA, 'registryFingerprint'), 'registryFingerprint drift');
 
@@ -125,11 +132,11 @@ function verifyEmptyInfrastructure() {
 verifySchemaSurface('ApprovalRegistry.schema.json', ['schemaVersion', 'entries', 'registryFingerprint']);
 verifySchemaSurface('LexiconManifest.schema.json', ['schemaVersion', 'count', 'entries', 'manifestFingerprint']);
 verifySchemaSurface('LexiconShard.schema.json', ['schemaVersion', 'shardId', 'scope', 'count', 'entries', 'shardFingerprint']);
-verifyPhaseAndDeprecatedLocks();
+const phaseGate = verifyPhaseAndDeprecatedLocks();
 verifyNoProductionWriteSurface();
 verifyStdoutOnlyBuilders();
-verifyEmptyInfrastructure();
+verifyEmptyInfrastructure(phaseGate);
 
 console.log('✓ P4 Approval Registry / manifest / shard infrastructure contract PASS');
 console.log('  approval entries: 0 · manifest entries: 0 · shards: 0');
-console.log('  candidate generation: disabled · Approval promotion: disabled · service/UI write: disabled');
+console.log(`  candidate generation: disabled · Approval promotion: ${phaseGate.approvalRegistryPromotionAllowed ? 'enabled-readiness-only' : 'disabled'} · service/UI write: disabled`);
