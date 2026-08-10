@@ -18,7 +18,7 @@ on:
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
       # Defensive globs: lexicon data/schema/verifier/build/public delivery and
-      # the React-native approved dictionary surface must retrigger this contract.
+      # all approved dictionary UI surfaces must retrigger this contract.
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/data/lexicon/schemas/**'
       - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
@@ -26,6 +26,8 @@ on:
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
       - 'bible-mindmap/src/components/LexiconPopup.jsx'
+      - 'bible-mindmap/src/components/LexiconTranslationDrawer.jsx'
+      - 'bible-mindmap/src/utils/lexiconTranslationPilotBridge.jsx'
       - 'bible-mindmap/public/lexicon/ko/**'
   push:
     branches:
@@ -53,6 +55,8 @@ on:
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
       - 'bible-mindmap/src/components/LexiconPopup.jsx'
+      - 'bible-mindmap/src/components/LexiconTranslationDrawer.jsx'
+      - 'bible-mindmap/src/utils/lexiconTranslationPilotBridge.jsx'
       - 'bible-mindmap/public/lexicon/ko/**'
 
 permissions:
@@ -80,7 +84,7 @@ jobs:
       - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-approval-registry.mjs
-      - name: Verify P4 read-only public delivery, loader and React popup contract
+      - name: Verify P4 read-only delivery, loader and rich drawer SSOT contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs
       - name: Verify H776 Golden regression provenance
