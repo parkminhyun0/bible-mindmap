@@ -46,16 +46,16 @@
         "versionStrategy": "git-commit",
         "version": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
         "fingerprintMethod": "sha256-path-content-manifest-v1",
-        "fileCount": null,
-        "totalBytes": null,
-        "contentHash": null,
-        "retrievedAt": null
+        "fileCount": 4,
+        "totalBytes": 4916650,
+        "contentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+        "retrievedAt": "2026-08-10T00:33:47Z"
       },
       "workflow": {
-        "status": "approved-pending-fingerprint",
-        "autoProcessingAllowed": false,
+        "status": "approved-ready",
+        "autoProcessingAllowed": true,
         "existingUse": "planned",
-        "notes": "저장소 readme.md가 전체 파일을 CC BY 4.0으로 공개하고 BDB·Strong 본문은 public domain임을 직접 명시한다. canonical fingerprint와 전용 adapter·H776 source-tree diff 전에는 candidate generation을 활성화하지 않는다."
+        "notes": "저장소 readme.md가 전체 파일을 CC BY 4.0으로 공개하고 BDB·Strong 본문은 public domain임을 직접 명시한다. 고정 commit과 canonical fingerprint가 확인됐다. 전용 deterministic adapter와 H776 source-tree diff 전에는 candidate generation을 활성화하지 않는다."
       }
     },
     {
