@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P2_IN_PROGRESS",
-  "activePhase": "P2_BDB_LICENSE_REVIEW",
+  "activePhase": "P2_OPENSCRIPTURES_BDB_ADAPTER",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -33,14 +33,16 @@
     "source-driver-report-schema-v1",
     "source-neutral-parser-driver-v1",
     "source-driver-fail-closed-ci-v1",
-    "unfoldingword-bdb-license-review-v1"
+    "unfoldingword-bdb-license-review-v1",
+    "openscriptures-bdb-license-approved-v1",
+    "openscriptures-bdb-canonical-fingerprint-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
     "strong": "H776",
     "mergeCommit": "7ec135fe540442a0e88c8c46fd954ccf6bb2cc23"
   },
-  "nextAction": "obtain a direct maintainer or licensor statement that ties an exact license and storage, model-processing, translation-derivative and redistribution rights to the pinned unfoldingWord BDB Enhanced repository files, or identify an independently digitized full-definition public-domain source with equivalent explicit rights; do not fingerprint, adapt or generate candidates before resolution",
+  "nextAction": "build a dedicated deterministic OpenScriptures HebrewLexicon adapter for BrownDriverBriggs.xml and LexicalIndex.xml, then produce an H776 actual-source tree difference report against the 26-node Golden Reference; candidate generation remains disabled",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
