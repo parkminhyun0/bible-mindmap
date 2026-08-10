@@ -60,14 +60,16 @@ jobs:
           node scripts/build-genesis-p5-gold-set.mjs
           node scripts/verify-genesis-p5-gold-set.mjs --strict
 
-      - name: Fetch pinned OpenScriptures BDB source files
+      - name: Fetch pinned OpenScriptures BDB and STEPBible TAHOT sources
         working-directory: bible-mindmap
         run: |
           set -euo pipefail
-          mkdir -p .cache/lexicon/openscriptures
-          BASE='https://raw.githubusercontent.com/openscriptures/HebrewLexicon/21c9add13bc727d3a951361778e97e3ff7afd1ce'
-          curl --fail --silent --show-error --location "$BASE/BrownDriverBriggs.xml" --output .cache/lexicon/openscriptures/BrownDriverBriggs.xml
-          curl --fail --silent --show-error --location "$BASE/LexicalIndex.xml" --output .cache/lexicon/openscriptures/LexicalIndex.xml
+          mkdir -p .cache/lexicon/openscriptures .cache/lexicon/stepbible
+          BDB_BASE='https://raw.githubusercontent.com/openscriptures/HebrewLexicon/21c9add13bc727d3a951361778e97e3ff7afd1ce'
+          curl --fail --silent --show-error --location "$BDB_BASE/BrownDriverBriggs.xml" --output .cache/lexicon/openscriptures/BrownDriverBriggs.xml
+          curl --fail --silent --show-error --location "$BDB_BASE/LexicalIndex.xml" --output .cache/lexicon/openscriptures/LexicalIndex.xml
+          TAHOT_URL='https://raw.githubusercontent.com/STEPBible/STEPBible-Data/b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39/Translators%20Amalgamated%20OT%2BNT/TAHOT%20Gen-Deu%20-%20Translators%20Amalgamated%20Hebrew%20OT%20-%20STEPBible.org%20CC%20BY.txt'
+          curl --fail --silent --show-error --location "$TAHOT_URL" --output .cache/lexicon/stepbible/TAHOT-Gen-Deu.txt
 
       - name: Build Gold 25 source evidence readiness
         working-directory: bible-mindmap
@@ -82,16 +84,21 @@ jobs:
           const lines = [
             '## P5 · 창세기 Gold 25 Evidence readiness',
             '',
-            `- source tree ready: **${report.counts.ready}/${report.counts.selected}**`,
-            `- candidate targets ready: **${report.counts.candidateTargetsReady}/${report.counts.candidateTargets}**`,
+            `- base Gold ready: **${report.counts.ready}/${report.counts.selected}**`,
+            `- candidate base targets ready: **${report.counts.candidateTargetsReady}/${report.counts.candidateTargets}**`,
+            `- source units: **${report.counts.sourceUnits}** · candidate units: **${report.counts.candidateUnits}**`,
+            `- Extended Strong resolved base items: **${report.counts.extendedResolvedItems}**`,
             `- H776 regression: **${report.h776Regression.approvedSenseCount}/26** · retranslation=false`,
-            `- source nodes: **${report.counts.sourceNodes}**`,
+            `- BDB source nodes: **${report.counts.sourceNodes}**`,
             `- candidate generation eligible: **${report.governance.candidateGenerationEligible}**`,
             `- candidate generation allowed: **${report.governance.candidateGenerationAllowed}**`,
             '- Registry/UI/production write: **false**',
             '',
+            '### Extended Strong resolution',
+            ...report.extendedStrongResolution.map((item) => `- ${item.baseStrong} → ${item.resolvedStrongs.join(', ')} · TAHOT=${item.tahotStrongs.join(', ')} · occurrences=${item.occurrenceCount}`),
+            '',
             '### Gold 25 source readiness',
-            ...report.items.map((item) => `- ${item.strong} · ${item.group} · ${item.readinessStatus} · nodes=${item.sourceTree?.nodeCount || 0} · ${item.lexicalIdentity?.lemma || 'unresolved'}${item.blocker ? ` · ${item.blocker}` : ''}`),
+            ...report.items.map((item) => `- ${item.strong} · ${item.group} · ${item.readinessStatus} · units=${item.sourceUnits.length} · nodes=${item.sourceTree?.nodeCount || 0}${item.blocker ? ` · ${item.blocker}` : ''}`),
           ]
           const summary = lines.join('\n')
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
