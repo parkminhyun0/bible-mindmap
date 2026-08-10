@@ -4,10 +4,24 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P4_COMPLETE",
-  "activePhase": "P5_GENESIS_EVIDENCE_READINESS",
+  "activePhase": "P5_GENESIS_CANDIDATE_GENERATION",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
+  "currentPhaseGate": {
+    "schemaVersion": 1,
+    "phase": "P5_GENESIS_CANDIDATE_GENERATION",
+    "candidateGenerationAllowed": true,
+    "approvalRegistryPromotionAllowed": true,
+    "serviceUiWriteAllowed": false,
+    "sourceDriverPolicyRequired": true,
+    "evidenceReadinessPr": 290,
+    "evidenceReadinessMergeCommit": "10857e266a596320f2131c0694d8e01c6d488eff",
+    "evidenceReadinessContractRun": 31382686593,
+    "evidenceReadinessDeployRun": 590,
+    "independentReviewRequired": true,
+    "effectiveOnlyAfterIndependentReviewAndMerge": true
+  },
   "installedBy": {
     "contractPr": 261,
     "contractMergeCommit": "cfebd1c5f69be2aaf0d8414008aba4593481f7a2",
@@ -60,7 +74,8 @@
     "p4-readonly-public-delivery-loader-v1",
     "p4-rich-drawer-approval-registry-ssot-v1",
     "p4-live-screen-confirmed-v1",
-    "p5-genesis-gold-25-selection-contract-v1"
+    "p5-genesis-gold-25-selection-contract-v1",
+    "p5-genesis-gold-25-evidence-readiness-live-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -253,9 +268,15 @@
     "phaseTransitionEffectiveOnlyAfterIndependentReview": true
   },
   "p5GenesisEvidenceReadiness": {
-    "status": "VERIFIED_AWAITING_INDEPENDENT_REVIEW",
+    "status": "LIVE",
     "pr": 290,
-    "contractRunId": 31381606752,
+    "contractRunId": 31382686593,
+    "mergeCommit": "10857e266a596320f2131c0694d8e01c6d488eff",
+    "liveDeployRun": 590,
+    "liveShaVerified": true,
+    "independentReviewApproved": true,
+    "independentReviewApprovedBy": "bible-mindmap-review",
+    "independentReviewApprovedAt": "2026-08-10T11:13:40Z",
     "goldBaseReady": "25/25",
     "candidateBaseReady": "24/24",
     "sourceUnitCount": 28,
@@ -277,7 +298,21 @@
     "existingApprovedMeaningMutationAllowed": false,
     "independentReviewRequired": true
   },
-  "nextAction": "PR #290 전체 CI + 독립 review → merge/Pages; candidate generation 허용은 별도 phase-transition PR에서만 검토",
+  "p5GenesisCandidateGeneration": {
+    "status": "ENABLED_ON_MAIN_AFTER_REVIEWED_MERGE",
+    "transitionOnly": true,
+    "evidenceReadinessRequired": true,
+    "evidenceReadinessSatisfied": true,
+    "candidateGenerationAllowed": true,
+    "translationStarted": false,
+    "translationCandidatesGenerated": 0,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge": true
+  },
+  "nextAction": "candidate-generation phase Gate 독립 review → merge/Pages → Gold 25의 27 candidate units 생성 시작; Registry/UI/production write 금지",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
