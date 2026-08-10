@@ -5,6 +5,7 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-source-license-review.mjs'
       - 'bible-mindmap/scripts/compute-lexicon-source-fingerprints.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
@@ -15,6 +16,7 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-source-registry.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-source-license-review.mjs'
       - 'bible-mindmap/scripts/compute-lexicon-source-fingerprints.mjs'
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
@@ -39,9 +41,21 @@ jobs:
       - name: Verify Source Registry license and reproducibility gate
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-source-registry.mjs
+      - name: Verify full-definition BDB license review remains fail-closed
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-source-license-review.mjs --write=reports/unfoldingword-bdb-enhanced-license-review.json
       - name: Fingerprint algorithm self-test
         working-directory: bible-mindmap
         run: node scripts/compute-lexicon-source-fingerprints.mjs --self-test
+      - name: Upload BDB license review evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: lexicon-bdb-license-review
+          path: |
+            bible-mindmap/data/lexicon/source-reviews/unfoldingword-bdb-enhanced.license-review.v1.json
+            bible-mindmap/reports/unfoldingword-bdb-enhanced-license-review.json
+          if-no-files-found: error
+          retention-days: 30
 
   fingerprint:
     needs: verify
