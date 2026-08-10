@@ -18,14 +18,14 @@ on:
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
       # P3.5 defensive globs: any future lexicon data, schema, verifier lib,
-      # verify/build script, or data module must retrigger the contract.
-      # Approval Registry, manifest, shards, and React loaders in P4 land here.
+      # verify/build script, data module, or public P4 delivery must retrigger.
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/data/lexicon/schemas/**'
       - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
+      - 'bible-mindmap/public/lexicon/ko/**'
   push:
     branches:
       - main
@@ -51,6 +51,7 @@ on:
       - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
+      - 'bible-mindmap/public/lexicon/ko/**'
 
 permissions:
   contents: read
@@ -77,6 +78,9 @@ jobs:
       - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-approval-registry.mjs
+      - name: Verify P4 read-only public delivery and loader contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-delivery-loader.mjs
       - name: Verify H776 Golden regression provenance
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-evidence-contracts.mjs
