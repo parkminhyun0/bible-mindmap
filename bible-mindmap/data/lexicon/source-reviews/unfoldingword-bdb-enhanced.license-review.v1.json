@@ -1,0 +1,72 @@
+{
+  "$schema": "../schemas/SourceLicenseReview.schema.json",
+  "schemaVersion": 1,
+  "reviewId": "unfoldingword-bdb-enhanced-license-review-v1",
+  "sourceId": "unfoldingword-bdb-enhanced",
+  "reviewedAt": "2026-08-10T09:02:00+09:00",
+  "reviewStatus": "clarification-required",
+  "automationDecision": "blocked",
+  "candidateGenerationAllowed": false,
+  "dataset": {
+    "repositoryUrl": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced",
+    "commit": "5a7a632d6923641c4a71dbf23df719711e3d2041",
+    "paths": ["Entries/", "bdbToStrongsMapping.csv"],
+    "coverage": "Unabridged Hebrew and Aramaic BDB entries with enhanced sense, stem and subsense boundaries.",
+    "upstreamLineage": [
+      "https://github.com/eliranwong/unabridged-BDB-Hebrew-lexicon",
+      "https://github.com/openscriptures/HebrewLexicon"
+    ]
+  },
+  "evidence": [
+    {
+      "evidenceId": "dataset-readme-license",
+      "authority": "dataset-owner",
+      "url": "https://github.com/unfoldingWord/Brown-Driver-Briggs-Enhanced/blob/5a7a632d6923641c4a71dbf23df719711e3d2041/README.md#license",
+      "claim": "The BDB base is public domain and repository changes and additions are released under CC BY with repository-link attribution.",
+      "directlyApplies": true,
+      "exactLicenseExpression": null,
+      "limitation": "No Creative Commons version or standalone LICENSE file is provided for the pinned dataset."
+    },
+    {
+      "evidenceId": "official-uhal-license-policy",
+      "authority": "organization-policy",
+      "url": "https://unfoldingword.org/for-translators/content/",
+      "claim": "The official content page lists UHAL under CC BY-SA 4.0.",
+      "directlyApplies": false,
+      "exactLicenseExpression": "CC-BY-SA-4.0",
+      "limitation": "No direct statement ties that listing to this repository, pinned commit, or reviewed files."
+    },
+    {
+      "evidenceId": "upstream-eliranwong-readme",
+      "authority": "upstream-dataset",
+      "url": "https://github.com/eliranwong/unabridged-BDB-Hebrew-lexicon/blob/master/README.md",
+      "claim": "The upstream README calls the BDB document public domain and describes formatting and corrected references.",
+      "directlyApplies": false,
+      "exactLicenseExpression": null,
+      "limitation": "It does not expressly license all formatting, corrections, and named supplementary inputs."
+    }
+  ],
+  "rights": {
+    "readMetadata": true,
+    "internalLicenseReview": true,
+    "storeFullText": false,
+    "externalLlmInput": false,
+    "createTranslationDerivatives": false,
+    "redistributeDerivedData": false
+  },
+  "unresolvedQuestions": [
+    "Which exact Creative Commons version governs changes and additions in the pinned commit?",
+    "Does the official UHAL CC BY-SA 4.0 declaration directly apply to the reviewed repository and files?",
+    "Are all upstream formatting and corrections cleared for storage, translation derivatives, and redistribution?",
+    "What attribution and modification notice is required?",
+    "May the pinned source text be used by hosted model-processing services?"
+  ],
+  "promotionRequirements": [
+    "Obtain a direct maintainer or licensor statement tied to the repository and pinned commit.",
+    "Record an exact license identifier and stable license URL.",
+    "Confirm storage, model-processing, derivative translation, and redistribution rights.",
+    "Record attribution, modification notice, and any share-alike obligations.",
+    "Pin a canonical fingerprint only after the rights statement is resolved."
+  ],
+  "verdict": "retain-internal-review-only"
+}

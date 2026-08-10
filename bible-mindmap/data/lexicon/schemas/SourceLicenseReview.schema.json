@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/SourceLicenseReview.schema.json",
+  "title": "Bible Mind Map Lexicon Source License Review",
+  "description": "원어 사전 출처의 직접 라이선스 증거, 간접 정책, 데이터 계보와 자동 처리 가능 여부를 분리해 기록하는 검토 계약.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reviewId",
+    "sourceId",
+    "reviewedAt",
+    "reviewStatus",
+    "automationDecision",
+    "candidateGenerationAllowed",
+    "dataset",
+    "evidence",
+    "rights",
+    "unresolvedQuestions",
+    "promotionRequirements",
+    "verdict"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "reviewId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "sourceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "reviewedAt": { "type": "string", "format": "date-time" },
+    "reviewStatus": {
+      "enum": ["approved", "clarification-required", "rejected"]
+    },
+    "automationDecision": {
+      "enum": ["approved-ready", "blocked"]
+    },
+    "candidateGenerationAllowed": { "type": "boolean" },
+    "dataset": { "$ref": "#/$defs/dataset" },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/evidence" }
+    },
+    "rights": { "$ref": "#/$defs/rights" },
+    "unresolvedQuestions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "promotionRequirements": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "verdict": {
+      "enum": ["promote-approved", "retain-internal-review-only", "block-prohibited"]
+    }
+  },
+  "$defs": {
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repositoryUrl", "commit", "paths", "coverage", "upstreamLineage"],
+      "properties": {
+        "repositoryUrl": { "type": "string", "format": "uri" },
+        "commit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "coverage": { "type": "string", "minLength": 1 },
+        "upstreamLineage": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceId",
+        "authority",
+        "url",
+        "claim",
+        "directlyApplies",
+        "exactLicenseExpression",
+        "limitation"
+      ],
+      "properties": {
+        "evidenceId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "authority": {
+          "enum": ["dataset-owner", "organization-policy", "upstream-dataset", "secondary-analysis"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "claim": { "type": "string", "minLength": 1 },
+        "directlyApplies": { "type": "boolean" },
+        "exactLicenseExpression": {
+          "anyOf": [
+            { "type": "string", "minLength": 1 },
+            { "type": "null" }
+          ]
+        },
+        "limitation": { "type": "string", "minLength": 1 }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "readMetadata",
+        "internalLicenseReview",
+        "storeFullText",
+        "externalLlmInput",
+        "createTranslationDerivatives",
+        "redistributeDerivedData"
+      ],
+      "properties": {
+        "readMetadata": { "type": "boolean" },
+        "internalLicenseReview": { "type": "boolean" },
+        "storeFullText": { "type": "boolean" },
+        "externalLlmInput": { "type": "boolean" },
+        "createTranslationDerivatives": { "type": "boolean" },
+        "redistributeDerivedData": { "type": "boolean" }
+      }
+    }
+  }
+}
