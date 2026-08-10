@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { fingerprint } from './build-h776-parser-adapter.mjs';
@@ -82,8 +83,21 @@ function buildSyntheticOutput(parserInput) {
   return output;
 }
 
+function writePhaseFixture(candidateGenerationAllowed) {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'lexicon-phase-gate-'));
+  const target = path.join(dir, 'TRACK_STATE.json');
+  fs.writeFileSync(target, `${JSON.stringify({
+    currentPhaseGate: {
+      candidateGenerationAllowed,
+      approvalRegistryPromotionAllowed: true,
+      serviceUiWriteAllowed: false,
+    },
+  }, null, 2)}\n`, 'utf8');
+  return { dir, target };
+}
+
 function selfTest() {
-  assert.equal(policy.candidateGenerationEnabled, false, 'candidate generation must remain disabled');
+  assert.equal(policy.candidateGenerationEnabled, true, 'P5 candidate policy must be armed');
   assert.equal(policy.allowRegressionExecution, true, 'regression execution must remain enabled');
   assert.equal(driverSource.includes("sourceId === 'H776'"), false, 'driver core must remain Strong-neutral');
 
@@ -112,12 +126,31 @@ function selfTest() {
   assert.equal(sourceParseReport.decision.candidateGenerationAllowed, false);
   assert.deepEqual(sourceParseReport.decision.blockerCodes, []);
 
-  const blockedCandidate = makeSourceParseInput(openBdb, 'candidate-generation');
-  const blockedCandidateReport = preflightLexiconSourceDriver(blockedCandidate).report;
-  assert.equal(blockedCandidateReport.route, 'blocked');
-  assert.equal(blockedCandidateReport.selectedAdapterId, 'openscriptures-bdb-xml-v1');
-  assert.equal(blockedCandidateReport.decision.candidateGenerationAllowed, false);
-  assert.deepEqual(blockedCandidateReport.decision.blockerCodes, [DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED]);
+  const candidateInput = makeSourceParseInput(openBdb, 'candidate-generation');
+  const candidateReport = preflightLexiconSourceDriver(candidateInput).report;
+  assert.equal(candidateReport.route, 'source-parser');
+  assert.equal(candidateReport.selectedAdapterId, 'openscriptures-bdb-xml-v1');
+  assert.equal(candidateReport.decision.executionAllowed, true);
+  assert.equal(candidateReport.decision.candidateGenerationAllowed, true);
+  assert.deepEqual(candidateReport.decision.blockerCodes, []);
+
+  // Dual-lock regression 1: policy=false must block even while TRACK_STATE phase=true.
+  const disabledPolicy = { ...policy, candidateGenerationEnabled: false };
+  const policyBlocked = preflightLexiconSourceDriver(candidateInput, { policy: disabledPolicy }).report;
+  assert.equal(policyBlocked.route, 'blocked');
+  assert.equal(policyBlocked.decision.candidateGenerationAllowed, false);
+  assert.deepEqual(policyBlocked.decision.blockerCodes, [DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED]);
+
+  // Dual-lock regression 2: TRACK_STATE phase=false must block even while policy=true.
+  const phaseFixture = writePhaseFixture(false);
+  try {
+    const phaseBlocked = preflightLexiconSourceDriver(candidateInput, { trackStatePath: phaseFixture.target }).report;
+    assert.equal(phaseBlocked.route, 'blocked');
+    assert.equal(phaseBlocked.decision.candidateGenerationAllowed, false);
+    assert.deepEqual(phaseBlocked.decision.blockerCodes, [DRIVER_BLOCKERS.PHASE_GATE_DISABLED]);
+  } finally {
+    fs.rmSync(phaseFixture.dir, { recursive: true, force: true });
+  }
 
   const syntheticHash = `sha256:${'1'.repeat(64)}`;
   const syntheticSource = {
@@ -146,8 +179,10 @@ function selfTest() {
   const syntheticCandidateRun = runLexiconSourceDriver(syntheticCandidate, {
     registry: { sources: [syntheticSource] }, policy, adapters: [syntheticAdapter], operation: 'execute',
   });
-  assert.equal(syntheticCandidateRun.output, null);
-  assert.deepEqual(syntheticCandidateRun.report.decision.blockerCodes, [DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED]);
+  assert.ok(syntheticCandidateRun.output, 'dual-gated candidate execution should reach the adapter');
+  assert.equal(syntheticCandidateRun.report.route, 'source-parser');
+  assert.equal(syntheticCandidateRun.report.decision.candidateGenerationAllowed, true);
+  assert.deepEqual(syntheticCandidateRun.report.decision.blockerCodes, []);
 }
 
 const result = runLexiconSourceDriver(input, { operation: 'execute' });
@@ -190,4 +225,4 @@ const reportTarget = parseArg('--write-report=');
 const outputTarget = parseArg('--write-output=');
 if (reportTarget) writeJson(reportTarget, result.report);
 if (outputTarget) writeJson(outputTarget, result.output);
-console.log(`✓ lexicon source driver passed · route=${result.report.route} · adapter=${result.report.selectedAdapterId} · nodes=${result.output.summary.nodeCount} · approvedFullBdbAdapterRegistered=true · candidateGenerationAllowed=false`);
+console.log(`✓ lexicon source driver passed · route=${result.report.route} · adapter=${result.report.selectedAdapterId} · nodes=${result.output.summary.nodeCount} · approvedFullBdbAdapterRegistered=true · candidateGenerationDualGate=true`);
