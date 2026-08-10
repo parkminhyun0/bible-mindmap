@@ -4,7 +4,7 @@
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
   "state": "P4_COMPLETE",
-  "activePhase": "P5_GENESIS_GOLD_SELECTION",
+  "activePhase": "P5_GENESIS_EVIDENCE_READINESS",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -59,7 +59,8 @@
     "p4-first-approval-registry-entry-h776-v1",
     "p4-readonly-public-delivery-loader-v1",
     "p4-rich-drawer-approval-registry-ssot-v1",
-    "p4-live-screen-confirmed-v1"
+    "p4-live-screen-confirmed-v1",
+    "p5-genesis-gold-25-selection-contract-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -229,6 +230,7 @@
   },
   "p5GenesisGoldSelection": {
     "setId": "genesis-p5-gold-25-v1",
+    "status": "LIVE",
     "targetSize": 25,
     "selectionOnly": true,
     "goldenControl": "H776",
@@ -239,6 +241,10 @@
       "medium-frequency-general",
       "low-frequency-general"
     ],
+    "selectionContractPr": 288,
+    "selectionMergeCommit": "9e28d238917a4dbd4bc1f6819a20a58f3108b99c",
+    "liveDeployRun": 589,
+    "liveShaVerified": true,
     "candidateGenerationAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "serviceUiWriteAllowed": false,
@@ -246,7 +252,32 @@
     "existingApprovedMeaningMutationAllowed": false,
     "phaseTransitionEffectiveOnlyAfterIndependentReview": true
   },
-  "nextAction": "P5 Genesis Gold 25 결정론 선정 계약 CI → 독립 review 후 merge; 후보 생성 Gate는 별도 전환",
+  "p5GenesisEvidenceReadiness": {
+    "status": "VERIFIED_AWAITING_INDEPENDENT_REVIEW",
+    "pr": 290,
+    "contractRunId": 31381606752,
+    "goldBaseReady": "25/25",
+    "candidateBaseReady": "24/24",
+    "sourceUnitCount": 28,
+    "candidateUnitCount": 27,
+    "bdbSourceNodeCount": 173,
+    "extendedStrongResolution": {
+      "H1254": ["H1254a"],
+      "H834": ["H834a", "H834b", "H834c", "H834d"],
+      "H6030": ["H6030b"]
+    },
+    "h776ApprovedSenseCount": 26,
+    "h776RetranslationTarget": false,
+    "sourceReadinessOnly": true,
+    "candidateGenerationEligible": true,
+    "candidateGenerationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "independentReviewRequired": true
+  },
+  "nextAction": "PR #290 전체 CI + 독립 review → merge/Pages; candidate generation 허용은 별도 phase-transition PR에서만 검토",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
