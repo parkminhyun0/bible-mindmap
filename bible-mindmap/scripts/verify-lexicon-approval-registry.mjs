@@ -38,18 +38,39 @@ function verifyClosedWriteGates(record, label) {
     assert.equal(record?.[gate], false, `${label} gate must remain false: ${gate}`);
   }
 }
+function verifyReadinessFacts(readiness, expectedStatus) {
+  assert.equal(readiness?.status, expectedStatus, `P5 readiness status must be ${expectedStatus}`);
+  assert.equal(readiness?.goldBaseReady, '25/25', 'P5 readiness must cover all Gold base items');
+  assert.equal(readiness?.candidateBaseReady, '24/24', 'P5 readiness must cover all non-golden base targets');
+  assert.equal(readiness?.sourceUnitCount, 28, 'P5 readiness source unit count drift');
+  assert.equal(readiness?.candidateUnitCount, 27, 'P5 candidate unit count drift');
+  assert.equal(readiness?.bdbSourceNodeCount, 173, 'P5 readiness BDB source-node count drift');
+  assert.equal(readiness?.h776ApprovedSenseCount, 26, 'P5 readiness must preserve H776 26/26');
+  assert.equal(readiness?.h776RetranslationTarget, false, 'H776 must not become a retranslation target');
+  assert.equal(readiness?.sourceReadinessOnly, true, 'P5 readiness must remain source-readiness-only');
+  assert.equal(readiness?.candidateGenerationEligible, true, 'P5 readiness must establish candidate eligibility');
+  verifyClosedWriteGates(readiness, 'P5 readiness');
+  assert.equal(readiness?.independentReviewRequired, true, 'P5 readiness must require independent review');
+  assert.deepEqual(readiness?.extendedStrongResolution, {
+    H1254: ['H1254a'],
+    H834: ['H834a', 'H834b', 'H834c', 'H834d'],
+    H6030: ['H6030b'],
+  }, 'P5 Extended Strong resolution drift');
+}
 function verifyPhaseLocks() {
+  const trackState = readJson(TRACK_STATE_PATH);
+  const candidatePhase = trackState.activePhase === 'P5_GENESIS_CANDIDATE_GENERATION';
   const phaseGate = readPhaseGate(TRACK_STATE_PATH);
-  assert.equal(phaseGate.candidateGenerationAllowed, false, 'candidate generation must remain disabled');
+  assert.equal(phaseGate.candidateGenerationAllowed, candidatePhase, 'candidate generation phase gate must match active phase');
   assert.equal(phaseGate.approvalRegistryPromotionAllowed, true, 'audited Approval Registry promotion prerequisite must remain present');
   assert.equal(phaseGate.serviceUiWriteAllowed, false, 'service/UI write must remain disabled');
 
-  const trackState = readJson(TRACK_STATE_PATH);
   const phaseKey = `${trackState.state}/${trackState.activePhase}`;
   const supportedPhases = new Set([
     'P3_COMPLETE/P4_REGISTRY_SHARD_REACT_INTEGRATION',
     'P4_COMPLETE/P5_GENESIS_GOLD_SELECTION',
     'P4_COMPLETE/P5_GENESIS_EVIDENCE_READINESS',
+    'P4_COMPLETE/P5_GENESIS_CANDIDATE_GENERATION',
   ]);
   assert.ok(supportedPhases.has(phaseKey), `unsupported lexicon phase for protected Registry contract: ${phaseKey}`);
   assert.equal(trackState.p4_5_independentAudit?.verdict, 'PASS_WITH_MANDATORY_PRE_FIRST_ENTRY_STEPS');
@@ -68,24 +89,34 @@ function verifyPhaseLocks() {
   }
 
   if (trackState.activePhase === 'P5_GENESIS_EVIDENCE_READINESS') {
+    verifyReadinessFacts(trackState.p5GenesisEvidenceReadiness, 'VERIFIED_AWAITING_INDEPENDENT_REVIEW');
+  }
+
+  if (candidatePhase) {
     const readiness = trackState.p5GenesisEvidenceReadiness;
-    assert.equal(readiness?.status, 'VERIFIED_AWAITING_INDEPENDENT_REVIEW', 'P5 readiness must remain review-gated');
-    assert.equal(readiness?.goldBaseReady, '25/25', 'P5 readiness must cover all Gold base items');
-    assert.equal(readiness?.candidateBaseReady, '24/24', 'P5 readiness must cover all non-golden base targets');
-    assert.equal(readiness?.sourceUnitCount, 28, 'P5 readiness source unit count drift');
-    assert.equal(readiness?.candidateUnitCount, 27, 'P5 candidate unit count drift');
-    assert.equal(readiness?.bdbSourceNodeCount, 173, 'P5 readiness BDB source-node count drift');
-    assert.equal(readiness?.h776ApprovedSenseCount, 26, 'P5 readiness must preserve H776 26/26');
-    assert.equal(readiness?.h776RetranslationTarget, false, 'H776 must not become a retranslation target');
-    assert.equal(readiness?.sourceReadinessOnly, true, 'P5 readiness must remain source-readiness-only');
-    assert.equal(readiness?.candidateGenerationEligible, true, 'P5 readiness may establish eligibility only');
-    verifyClosedWriteGates(readiness, 'P5 readiness');
-    assert.equal(readiness?.independentReviewRequired, true, 'P5 readiness must require independent review');
-    assert.deepEqual(readiness?.extendedStrongResolution, {
-      H1254: ['H1254a'],
-      H834: ['H834a', 'H834b', 'H834c', 'H834d'],
-      H6030: ['H6030b'],
-    }, 'P5 Extended Strong resolution drift');
+    verifyReadinessFacts(readiness, 'LIVE');
+    assert.equal(readiness?.pr, 290, 'candidate phase requires reviewed readiness PR #290');
+    assert.equal(readiness?.contractRunId, 31382686593, 'candidate phase requires successful main readiness contract');
+    assert.equal(readiness?.mergeCommit, '10857e266a596320f2131c0694d8e01c6d488eff', 'readiness merge SHA drift');
+    assert.equal(readiness?.liveDeployRun, 590, 'candidate phase requires Pages #590');
+    assert.equal(readiness?.liveShaVerified, true, 'candidate phase requires verified readiness Live SHA');
+    assert.equal(readiness?.independentReviewApproved, true, 'candidate phase requires independent readiness approval');
+    assert.equal(readiness?.independentReviewApprovedBy, 'bible-mindmap-review');
+
+    const candidate = trackState.p5GenesisCandidateGeneration;
+    assert.equal(candidate?.status, 'ENABLED_ON_MAIN_AFTER_REVIEWED_MERGE');
+    assert.equal(candidate?.transitionOnly, true, 'phase PR must remain transition-only');
+    assert.equal(candidate?.evidenceReadinessRequired, true);
+    assert.equal(candidate?.evidenceReadinessSatisfied, true);
+    assert.equal(candidate?.candidateGenerationAllowed, true, 'candidate phase must explicitly allow candidate generation');
+    assert.equal(candidate?.translationStarted, false, 'phase transition PR must not generate translations');
+    assert.equal(candidate?.translationCandidatesGenerated, 0, 'phase transition PR must contain zero candidates');
+    for (const gate of ['approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) {
+      assert.equal(candidate?.[gate], false, `candidate phase must keep write gate false: ${gate}`);
+    }
+    assert.equal(candidate?.phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge, true, 'candidate phase must require independent review + merge');
+    assert.equal(trackState.currentPhaseGate?.sourceDriverPolicyRequired, true, 'candidate phase requires source-driver dual lock');
+    assert.equal(trackState.currentPhaseGate?.effectiveOnlyAfterIndependentReviewAndMerge, true, 'current phase gate must not self-promote before merge');
   }
 
   for (const required of ['ollama_local_ab_translation','mac_model_preflight_as_start_gate','gemini_full_corpus_retranslation','model_majority_vote','automatic_production_write_before_approval']) {
@@ -131,4 +162,4 @@ verifyStdoutOnlyBuilders();
 verifyFirstH776Entry(trackState);
 console.log('✓ protected Approval Registry contract PASS');
 console.log(`  phase: ${trackState.state}/${trackState.activePhase} · approved entries: 1 (H776) · manifest entries: 1 · shards: 1`);
-console.log('  candidate generation: disabled · audited promotion prerequisite: present · service/UI write: disabled');
+console.log(`  candidate generation: ${readPhaseGate(TRACK_STATE_PATH).candidateGenerationAllowed ? 'dual-gated enabled' : 'disabled'} · Approval Registry/UI/production writes: protected`);

@@ -19,11 +19,13 @@ export function readPhaseGate(trackStatePath = DEFAULT_TRACK_STATE_PATH) {
   } catch (error) {
     throw new Error(`phase gate read failed at ${trackStatePath} (fail-closed): ${error.message}`);
   }
-  const source = raw?.p3_5_independentAudit;
-  assert.ok(source && typeof source === 'object', 'TRACK_STATE.json must expose p3_5_independentAudit as phase-gate SSOT');
+  // currentPhaseGate is the mutable execution SSOT. p3_5_independentAudit is
+  // retained only as a backward-compatible fallback for older checkpoints.
+  const source = raw?.currentPhaseGate ?? raw?.p3_5_independentAudit;
+  assert.ok(source && typeof source === 'object', 'TRACK_STATE.json must expose currentPhaseGate (or legacy p3_5_independentAudit) as phase-gate SSOT');
   const gate = {};
   for (const key of PHASE_GATE_KEYS) {
-    assert.equal(typeof source[key], 'boolean', `TRACK_STATE p3_5_independentAudit.${key} must be boolean`);
+    assert.equal(typeof source[key], 'boolean', `TRACK_STATE phase gate ${key} must be boolean`);
     gate[key] = source[key];
   }
   return Object.freeze(gate);
@@ -232,7 +234,7 @@ export function verifyLexiconEvidencePacket(packet, registry, options = {}) {
     assert.ok(source, `unregistered source input ${input.sourceId}`);
     assert.equal(input.registryWorkflowStatus, source.workflow?.status, `${input.sourceId}: registry workflow status drift`);
     uniqueStrings(input.locators, `${input.sourceId}.locators`);
-    assert.ok(input.locators.length > 0, `${input.sourceId}: locators must not be empty`);
+    assert.ok(input.locators.length > 0, `${input.sourceId}.locators must not be empty`);
 
     if (input.usagePolicy === 'automatic-evidence') {
       const ready = automaticSourceReady(source);
