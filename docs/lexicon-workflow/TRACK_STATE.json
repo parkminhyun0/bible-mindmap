@@ -54,7 +54,8 @@
     "p4-approval-registry-schema-v1",
     "p4-lexicon-manifest-schema-v1",
     "p4-lexicon-shard-schema-v1",
-    "p4-approval-registry-verifier-v1"
+    "p4-approval-registry-verifier-v1",
+    "p4-5-independent-infrastructure-audit-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -159,7 +160,51 @@
     "qualityGateWeakening": false,
     "translationCandidatesGeneratedInAudit": 0
   },
-  "nextAction": "P4.5 독립 감사 대기 (Claude), 통과 시 Approval Registry 첫 엔트리 등재",
+  "p4_5_independentAudit": {
+    "version": 1,
+    "auditor": "claude-openclaw",
+    "baselineMain": "0c0b680264ed5e118fa10a8a8fb24c9f6ae469a6",
+    "baselinePr": 278,
+    "reportPath": "docs/lexicon-workflow/P4_5_AUDIT.md",
+    "verdict": "PASS_WITH_MANDATORY_PRE_FIRST_ENTRY_STEPS",
+    "critical": 0,
+    "high": [
+      "main-branch-protection-required-checks-missing-lexicon-evidence-contract"
+    ],
+    "medium": [
+      "manifest-and-shard-builders-do-not-independently-enforce-empty-invariant",
+      "main-branch-protection-requires-zero-reviews-and-does-not-enforce-admins"
+    ],
+    "low": [
+      "argv-out-guard-misses-single-token-out-equals-path-form",
+      "verifier-stdout-only-probe-covers-only-out-flag"
+    ],
+    "attackProbesConfirmed": [
+      "approval-manifest-shard-builders-fail-closed-on-space-separated-out",
+      "approval-builder-fails-closed-on-non-empty-entries",
+      "no-writeFile-createWriteStream-openSync-in-any-p4-script",
+      "no-production-registry-manifest-shard-path-created",
+      "caller-candidateGenerationAllowed-true-blocked-by-track-state-ssot",
+      "phase-gate-read-failure-fails-closed",
+      "deterministic-registry-fingerprint-across-runs",
+      "manifest-and-shard-builders-accept-fake-non-empty-registry-in-memory-only",
+      "branch-protection-required-status-checks-audited-via-github-api"
+    ],
+    "hardeningInThisPr": [],
+    "candidateGenerationAllowed": false,
+    "approvalRegistryPromotionAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "goldenMeaningMutationAllowed": false,
+    "qualityGateWeakening": false,
+    "translationCandidatesGeneratedInAudit": 0,
+    "firstApprovalRegistryEntryWritten": false,
+    "preFirstEntryConditions": [
+      "add-verify-lexicon-evidence-contract-to-required-status-checks-on-main",
+      "require-approving-reviews-at-least-one-and-enforce-admins-on-main",
+      "mirror-empty-entries-invariant-in-manifest-and-shard-builders"
+    ]
+  },
+  "nextAction": "브랜치 보호 조정(H1·M2, 사람) → M1 방어심층 봉인(코드) → approvalRegistryPromotionAllowed=true 별도 PR → 첫 Approval Registry 엔트리",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
