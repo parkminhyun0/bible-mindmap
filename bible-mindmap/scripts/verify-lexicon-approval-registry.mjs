@@ -81,6 +81,18 @@ function verifyEmptyInfrastructure() {
     'non-empty Approval Registry must fail closed before P4.5',
   );
 
+  const forgedRegistry = { schemaVersion: 1, entries: [{}] };
+  assert.throws(
+    () => buildLexiconManifest(forgedRegistry),
+    /must remain empty while promotion is disabled/,
+    'manifest builder must independently reject non-empty registry while promotion is disabled',
+  );
+  assert.throws(
+    () => buildLexiconShards(forgedRegistry),
+    /must remain empty while promotion is disabled/,
+    'shard builder must independently reject non-empty registry while promotion is disabled',
+  );
+
   const registryA = buildLexiconApprovalRegistry();
   const registryB = buildLexiconApprovalRegistry();
   assert.deepEqual(registryA, registryB, 'Approval Registry builder must be deterministic');

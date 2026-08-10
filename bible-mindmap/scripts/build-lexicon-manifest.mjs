@@ -1,11 +1,24 @@
 import assert from 'node:assert/strict';
-import { fingerprintWithout, normalizeStrong, sha256Canonical } from './lib/lexicon-evidence-verifier.mjs';
+import {
+  fingerprintWithout,
+  normalizeStrong,
+  readPhaseGate,
+  sha256Canonical,
+} from './lib/lexicon-evidence-verifier.mjs';
 import { buildLexiconApprovalRegistry } from './build-lexicon-approval-registry.mjs';
 import { resolveShardDescriptor } from './build-lexicon-shards.mjs';
 
 export function buildLexiconManifest(registry = buildLexiconApprovalRegistry()) {
   assert.equal(registry?.schemaVersion, 1, 'Approval Registry schemaVersion must be 1');
   assert.ok(Array.isArray(registry.entries), 'Approval Registry entries must be an array');
+  const phaseGate = readPhaseGate();
+  if (!phaseGate.approvalRegistryPromotionAllowed) {
+    assert.equal(
+      registry.entries.length,
+      0,
+      'Approval Registry entries must remain empty while promotion is disabled',
+    );
+  }
 
   const entries = registry.entries
     .map((entry) => {
