@@ -14,13 +14,13 @@
     "handoff-dry-run"
   ],
   "nextStep": "independent-review",
-  "nextAction": "Open one failover PR, bind activePR/current head, run remote CI, then request exact-head independent review.",
+  "nextAction": "Run remote CI on PR #300; if green request bible-mindmap-review exact-head review.",
   "baseSHA": "f07a847317a052148c08de316cea922dc90e61cf",
-  "headSHA": "f07a847317a052148c08de316cea922dc90e61cf",
+  "headSHA": "9d35ef42e47bd6b3ea936c6b742c8d82b9a80229",
   "candidateFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
-  "activePR": 0,
+  "activePR": 300,
   "activeBranch": "gpt/lexicon-v4-executor-failover",
-  "checkpointedAt": "2026-08-11T07:58:00+09:00",
+  "checkpointedAt": "2026-08-11T07:49:00+09:00",
   "handoffReason": "planned GPT continuation after v4 automation foundation merge",
   "externalAudit": {
     "required": false,
