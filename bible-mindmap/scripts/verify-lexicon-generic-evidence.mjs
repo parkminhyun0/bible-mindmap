@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
   fingerprintWithout,
+  readPhaseGate,
   verifyLexiconEvidencePacket,
 } from './lib/lexicon-evidence-verifier.mjs';
 
@@ -12,7 +13,11 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath) => JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), 'utf8'));
 const registry = read('data/lexicon/source-registry.json');
 const h776 = read('data/lexicon/fixtures/GEN-1-1-H776.evidence-packet.v2.json');
-const CURRENT_PHASE = Object.freeze({ candidateGenerationAllowed: false });
+
+// Phase gate SSOT is TRACK_STATE.json. Caller must not decide.
+const PHASE_GATE = readPhaseGate();
+assert.equal(PHASE_GATE.candidateGenerationAllowed, false,
+  'P4 gate: candidateGenerationAllowed must be false until human-approved TRACK_STATE flip');
 
 function withIdentityFingerprint(identity) {
   const value = structuredClone(identity);
@@ -100,13 +105,13 @@ function buildArbitraryStrongContractProbe() {
   });
 }
 
-const h776Result = verifyLexiconEvidencePacket(h776, registry, CURRENT_PHASE);
+const h776Result = verifyLexiconEvidencePacket(h776, registry);
 assert.equal(h776Result.canonicalStrong, 'H776');
 assert.equal(h776Result.candidateGenerationAllowed, false);
 assert.equal(h776Result.legacyOnlyCount, 1);
 
 const arbitrary = buildArbitraryStrongContractProbe();
-const arbitraryResult = verifyLexiconEvidencePacket(arbitrary, registry, CURRENT_PHASE);
+const arbitraryResult = verifyLexiconEvidencePacket(arbitrary, registry);
 assert.equal(arbitraryResult.canonicalStrong, 'H1254');
 assert.equal(arbitraryResult.candidateGenerationAllowed, false);
 assert.equal(arbitraryResult.legacyOnlyCount, 0);
@@ -114,22 +119,22 @@ assert.equal(arbitraryResult.legacyOnlyCount, 0);
 const identityDrift = structuredClone(arbitrary);
 identityDrift.identity.lemma = 'שָׁנָה';
 identityDrift.packetFingerprint = fingerprintWithout(identityDrift, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(identityDrift, registry, CURRENT_PHASE), /lemmaNormalized|identityFingerprint/);
+assert.throws(() => verifyLexiconEvidencePacket(identityDrift, registry), /lemmaNormalized|identityFingerprint/);
 
 const fingerprintDrift = structuredClone(h776);
 fingerprintDrift.sourceInputs[0].sourceFingerprint = `sha256:${'0'.repeat(64)}`;
 fingerprintDrift.packetFingerprint = fingerprintWithout(fingerprintDrift, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(fingerprintDrift, registry, CURRENT_PHASE), /source fingerprint drift/);
+assert.throws(() => verifyLexiconEvidencePacket(fingerprintDrift, registry), /source fingerprint drift/);
 
 const undeclaredProvenance = structuredClone(h776);
 undeclaredProvenance.senseNodes[0].sourceRefs = [{ sourceId: 'openscriptures-strongs', locator: 'fabricated' }];
 undeclaredProvenance.packetFingerprint = fingerprintWithout(undeclaredProvenance, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(undeclaredProvenance, registry, CURRENT_PHASE), /undeclared sourceRef/);
+assert.throws(() => verifyLexiconEvidencePacket(undeclaredProvenance, registry), /undeclared sourceRef/);
 
 const generationEscape = structuredClone(arbitrary);
 generationEscape.licenseSummary.newGenerationAllowed = true;
 generationEscape.packetFingerprint = fingerprintWithout(generationEscape, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(generationEscape, registry, CURRENT_PHASE), /current phase \+ license gate/);
+assert.throws(() => verifyLexiconEvidencePacket(generationEscape, registry), /current phase \+ license gate/);
 
 const legacyInGeneration = structuredClone(arbitrary);
 legacyInGeneration.senseNodes[0] = {
@@ -141,12 +146,19 @@ legacyInGeneration.senseNodes[0] = {
   sourceRefs: [],
 };
 legacyInGeneration.packetFingerprint = fingerprintWithout(legacyInGeneration, 'packetFingerprint');
-assert.throws(() => verifyLexiconEvidencePacket(legacyInGeneration, registry, CURRENT_PHASE), /legacy-only is regression-only/);
+assert.throws(() => verifyLexiconEvidencePacket(legacyInGeneration, registry), /legacy-only is regression-only/);
 
 const packetFingerprintDrift = structuredClone(h776);
 packetFingerprintDrift.packetFingerprint = `sha256:${'f'.repeat(64)}`;
-assert.throws(() => verifyLexiconEvidencePacket(packetFingerprintDrift, registry, CURRENT_PHASE), /packetFingerprint drift/);
+assert.throws(() => verifyLexiconEvidencePacket(packetFingerprintDrift, registry), /packetFingerprint drift/);
+
+// P3.5 M2 regression: caller MUST NOT be able to bypass the phase gate.
+// Passing candidateGenerationAllowed=true while TRACK_STATE says false must fail closed.
+assert.throws(
+  () => verifyLexiconEvidencePacket(h776, registry, { candidateGenerationAllowed: true }),
+  /disagrees with TRACK_STATE/,
+);
 
 console.log(
-  `✓ generic lexicon evidence verifier passed · H776 regression=${h776Result.senseCount} nodes · arbitrary Strong probe=${arbitraryResult.canonicalStrong} · candidateGenerationAllowed=false`,
+  `✓ generic lexicon evidence verifier passed · H776 regression=${h776Result.senseCount} nodes · arbitrary Strong probe=${arbitraryResult.canonicalStrong} · candidateGenerationAllowed=${PHASE_GATE.candidateGenerationAllowed} (SSOT: TRACK_STATE)`,
 );

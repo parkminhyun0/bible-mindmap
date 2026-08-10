@@ -48,7 +48,9 @@
     "arbitrary-strong-contract-probe-h1254-v1",
     "h776-generic-plus-specialized-regression-ci-v1",
     "p3-5-independent-contract-audit-v1",
-    "p3-5-defensive-ci-path-glob-v1"
+    "p3-5-defensive-ci-path-glob-v1",
+    "p4-verifier-reads-phase-gate-from-track-state-v1",
+    "p4-caller-candidate-generation-bypass-blocked-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -153,7 +155,7 @@
     "qualityGateWeakening": false,
     "translationCandidatesGeneratedInAudit": 0
   },
-  "nextAction": "P4 first PR must: (1) refactor generic verifier to read candidateGenerationAllowed from TRACK_STATE instead of trusting the caller; (2) enable main branch protection with required Lexicon Evidence Contract status check before adding any Approval Registry write path; (3) require a separate p{N}_5_independent_audit block before flipping activePhase in any future transition",
+  "nextAction": "P4 next: (1) DONE in this PR — verifier now reads candidateGenerationAllowed from TRACK_STATE.p3_5_independentAudit and rejects caller-provided overrides; (2) STILL PENDING — enable main branch protection with required Lexicon Evidence Contract status check before adding any Approval Registry write path (human-only, GitHub Settings); (3) STANDING — require a separate p{N}_5_independent_audit block before flipping activePhase in any future transition; next infrastructure work is Approval Registry schema + shard/manifest contracts, still no candidate generation or Approval Registry writes",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
