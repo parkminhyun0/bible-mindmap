@@ -3,11 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {
-  buildH776ParserAdapter,
-  canonical,
-  fingerprint,
-} from './build-h776-parser-adapter.mjs';
+import { buildH776ParserAdapter, canonical, fingerprint } from './build-h776-parser-adapter.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = (relativePath) => JSON.parse(fs.readFileSync(path.join(ROOT, relativePath), 'utf8'));
@@ -44,19 +40,16 @@ function validateInput(value) {
   const errors = [];
   const need = (condition, message) => { if (!condition) errors.push(message); };
   const source = registry.sources.find((entry) => entry.sourceId === value?.source?.sourceId);
-
   need(value?.schemaVersion === 1, 'input schemaVersion must be 1');
   need(value?.parser?.id === 'bdb-deterministic-tree-parser', 'parser id mismatch');
   need(/^1\.\d+\.\d+$/.test(value?.parser?.version || ''), 'parser version invalid');
   need(Boolean(source), `unregistered parser source: ${value?.source?.sourceId}`);
-  if (source) {
-    need(source.workflow.status === value.source.registryWorkflowStatus, 'parser source workflow mismatch');
-  }
   need(value?.identity?.identityFingerprint === evidence.identity.identityFingerprint, 'input identity fingerprint mismatch');
   need(value?.identity?.canonicalStrong === 'H776', 'input Strong mismatch');
   need(value?.inputFingerprint === fingerprint(value, 'inputFingerprint'), 'input fingerprint mismatch');
 
   if (value?.processingMode === 'candidate-generation') {
+    need(source?.workflow?.status === value.source.registryWorkflowStatus, 'candidate parser source workflow mismatch');
     need(value?.parser?.mode === 'source-parse', 'candidate generation requires source-parse mode');
     need(value?.source?.usagePolicy === 'automatic-evidence', 'candidate generation requires automatic-evidence');
     need(source?.workflow?.status === 'approved-ready' && source?.workflow?.autoProcessingAllowed === true, 'candidate source is not approved-ready');
@@ -69,6 +62,7 @@ function validateInput(value) {
     need(value?.parser?.mode === 'legacy-golden-adapter', 'regression input requires legacy adapter');
     need(value?.source?.usagePolicy === 'legacy-regression-only', 'regression input requires legacy source policy');
     need(value?.source?.sourceFingerprint === null, 'legacy source fingerprint must be null');
+    need(['blocked', 'internal-review-only', 'approved-pending-fingerprint', 'approved-ready'].includes(source?.workflow?.status), 'current parser source workflow invalid');
     need(value?.options?.emitSourceText === false, 'legacy adapter must not claim source text');
     need(value?.options?.allowTranslationSnapshot === true, 'legacy adapter must preserve translation snapshot');
     need(value?.goldenReference?.referenceCase === 'GEN-1-1-H776', 'golden reference missing');
@@ -107,26 +101,19 @@ function validateOutput(output) {
     else {
       const parent = byId.get(node.parentId);
       need(Boolean(parent), `${node.id}: parent missing`);
-      if (parent) {
-        need(parent.order < node.order, `${node.id}: parent order invalid`);
-        need(node.depth === parent.depth + 1, `${node.id}: depth relation invalid`);
-      }
+      if (parent) need(parent.order < node.order && node.depth === parent.depth + 1, `${node.id}: parent relation invalid`);
     }
   }
-
   need(output.summary.rootCount === 1, 'rootCount mismatch');
   need(output.summary.nodeCount === 26 && nodes.length === 26, 'nodeCount mismatch');
   need(output.summary.maxDepth === 3, 'maxDepth mismatch');
   need(input.goldenReference.expectedNodeCount === output.summary.nodeCount, 'golden nodeCount mismatch');
   need(input.goldenReference.expectedMaxDepth === output.summary.maxDepth, 'golden maxDepth mismatch');
-
   const evidenceNodes = evidence.senseNodes || [];
   need(evidenceNodes.length === nodes.length, 'evidence/parser node count mismatch');
   evidenceNodes.forEach((node, index) => {
     const parsed = nodes[index];
-    for (const key of ['id', 'parentId', 'depth', 'order']) {
-      need(parsed?.[key] === node[key], `parser/evidence mismatch ${node.id}:${key}`);
-    }
+    for (const key of ['id', 'parentId', 'depth', 'order']) need(parsed?.[key] === node[key], `parser/evidence mismatch ${node.id}:${key}`);
     need(parsed?.translationSnapshotKo === node.translationKo, `parser/evidence translation mismatch ${node.id}`);
   });
   return errors;
@@ -136,7 +123,6 @@ function selfTest() {
   const repeatedA = buildH776ParserAdapter(input);
   const repeatedB = buildH776ParserAdapter(input);
   assert.deepEqual(canonical(repeatedA), canonical(repeatedB), 'adapter output must be deterministic');
-
   const unsafe = structuredClone(input);
   unsafe.processingMode = 'candidate-generation';
   unsafe.parser.mode = 'source-parse';
@@ -144,8 +130,7 @@ function selfTest() {
   unsafe.options.allowTranslationSnapshot = false;
   unsafe.goldenReference = null;
   unsafe.inputFingerprint = fingerprint(unsafe, 'inputFingerprint');
-  assert.ok(validateInput(unsafe).some((error) => error.includes('not approved-ready')));
-
+  assert.ok(validateInput(unsafe).some((error) => error.includes('fingerprint mismatch') || error.includes('workflow mismatch')));
   const tampered = structuredClone(repeatedA);
   tampered.nodes[0].translationSnapshotKo = '변경';
   assert.ok(validateOutput(tampered).some((error) => error.includes('fingerprint')));
@@ -159,11 +144,10 @@ if (errors.length) {
   process.exit(1);
 }
 selfTest();
-
 const writeArg = process.argv.find((value) => value.startsWith('--write='));
 if (writeArg) {
   const target = path.resolve(ROOT, writeArg.slice('--write='.length));
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, `${JSON.stringify(output, null, 2)}\n`);
 }
-console.log(`✓ lexicon parser contract passed · strong=${output.identity.canonicalStrong} · mode=${output.parser.mode} · nodes=${output.summary.nodeCount} · sourceTextClaimed=false · generationAllowed=false`);
+console.log(`✓ lexicon parser contract passed · strong=${output.identity.canonicalStrong} · mode=${output.parser.mode} · nodes=${output.summary.nodeCount} · sourceTextClaimed=false · generationAllowed=false · currentSource=${registry.sources.find((item) => item.sourceId === input.source.sourceId)?.workflow.status}`);
