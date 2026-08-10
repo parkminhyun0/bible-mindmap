@@ -17,14 +17,15 @@ on:
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
-      # P3.5 defensive globs: any future lexicon data, schema, verifier lib,
-      # verify/build script, data module, or public P4 delivery must retrigger.
+      # Defensive globs: lexicon data/schema/verifier/build/public delivery and
+      # the React-native approved dictionary surface must retrigger this contract.
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/data/lexicon/schemas/**'
       - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
+      - 'bible-mindmap/src/components/LexiconPopup.jsx'
       - 'bible-mindmap/public/lexicon/ko/**'
   push:
     branches:
@@ -44,13 +45,14 @@ on:
       - 'docs/lexicon-workflow/**'
       - 'memory/RESUME.json'
       - '.github/workflows/lexicon-evidence-contract.yml'
-      # P3.5 defensive globs (mirror pull_request block).
+      # Defensive globs (mirror pull_request block).
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/data/lexicon/schemas/**'
       - 'bible-mindmap/scripts/lib/lexicon-**.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-**.mjs'
       - 'bible-mindmap/scripts/build-lexicon-**.mjs'
       - 'bible-mindmap/src/data/lexicon**.js'
+      - 'bible-mindmap/src/components/LexiconPopup.jsx'
       - 'bible-mindmap/public/lexicon/ko/**'
 
 permissions:
@@ -78,7 +80,7 @@ jobs:
       - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-approval-registry.mjs
-      - name: Verify P4 read-only public delivery and loader contract
+      - name: Verify P4/P5 read-only public delivery, loader and React popup contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs
       - name: Verify H776 Golden regression provenance
