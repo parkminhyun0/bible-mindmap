@@ -1,4 +1,4 @@
-name: Genesis P5 GPT Candidate Inputs
+name: Genesis P5 GPT Candidate Contract
 
 on:
   pull_request:
@@ -6,6 +6,9 @@ on:
       - '.github/workflows/genesis-p5-candidate-inputs.yml'
       - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-gpt-candidates.mjs'
+      - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
+      - 'bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json'
       - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
       - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
       - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
@@ -20,6 +23,9 @@ on:
       - '.github/workflows/genesis-p5-candidate-inputs.yml'
       - 'bible-mindmap/scripts/build-genesis-p5-candidate-inputs.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-candidate-inputs.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-gpt-candidates.mjs'
+      - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
+      - 'bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json'
       - 'bible-mindmap/scripts/build-genesis-p5-evidence-readiness.mjs'
       - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
       - 'bible-mindmap/scripts/build-openscriptures-bdb-adapter.mjs'
@@ -33,11 +39,11 @@ permissions:
   contents: read
 
 concurrency:
-  group: genesis-p5-gpt-candidate-inputs-${{ github.ref }}
+  group: genesis-p5-gpt-candidate-contract-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  materialize-gpt-inputs:
+  verify-gpt-candidates:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -81,21 +87,27 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/verify-genesis-p5-candidate-inputs.mjs
 
-      - name: Publish source input summary
+      - name: Verify 27 GPT Korean candidates against source inputs
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-gpt-candidates.mjs
+
+      - name: Publish candidate summary
         working-directory: bible-mindmap
         run: |
           node - <<'NODE'
           const fs = require('node:fs')
-          const bundle = JSON.parse(fs.readFileSync('reports/genesis-p5-candidate-inputs.json', 'utf8'))
+          const input = JSON.parse(fs.readFileSync('reports/genesis-p5-candidate-inputs.json', 'utf8'))
+          const manifest = JSON.parse(fs.readFileSync('data/lexicon/candidates/genesis-p5/manifest.json', 'utf8'))
           const lines = [
-            '## P5 · Genesis GPT candidate input bundle',
+            '## P5 · Genesis GPT candidate contract',
             '',
-            `- candidate bases: **${bundle.counts.candidateBaseItems}/24**`,
-            `- source units: **${bundle.counts.candidateUnits}/27**`,
-            `- source nodes: **${bundle.counts.sourceNodes}**`,
-            `- Extended Strong base items: **${bundle.counts.extendedBaseItems}/3**`,
-            '- H776: **excluded from candidate generation**',
-            '- GPT translation: **not started in this artifact step**',
+            `- candidate bases: **${manifest.counts.candidateBaseItems}/24**`,
+            `- candidate source units: **${manifest.counts.candidateUnits}/27**`,
+            `- translated source nodes: **${manifest.counts.translatedSourceNodes}/${input.counts.sourceNodes}**`,
+            `- risk tiers: **R1 ${manifest.counts.riskTiers.R1} · R2 ${manifest.counts.riskTiers.R2} · R3 ${manifest.counts.riskTiers.R3} · R4 ${manifest.counts.riskTiers.R4}**`,
+            '- H776: **excluded from retranslation; Approval Registry 26/26 preserved**',
+            '- R3: **Claude full audit → Gemini dispute review**',
+            '- R4: **Claude full audit → human final wording Gate**',
             '- Approval Registry/UI/production writes: **false**',
           ]
           const summary = lines.join('\n')
@@ -103,11 +115,14 @@ jobs:
           console.log(summary)
           NODE
 
-      - name: Upload GPT candidate source input evidence
+      - name: Upload GPT source and candidate evidence
         uses: actions/upload-artifact@v7
         with:
-          name: genesis-p5-gpt-candidate-inputs
-          path: bible-mindmap/reports/genesis-p5-candidate-inputs.json
+          name: genesis-p5-gpt-candidate-evidence
+          path: |
+            bible-mindmap/reports/genesis-p5-candidate-inputs.json
+            bible-mindmap/data/lexicon/candidates/genesis-p5/
+            bible-mindmap/data/lexicon/schemas/TranslationRecord.schema.json
           if-no-files-found: error
           retention-days: 30
 

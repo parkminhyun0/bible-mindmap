@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/TranslationRecord.schema.json",
+  "title": "Bible Mind Map Lexicon Translation Candidate Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "candidateId",
+    "book",
+    "baseStrong",
+    "sourceStrong",
+    "language",
+    "status",
+    "sourceBundleFingerprint",
+    "parserOutputFingerprint",
+    "sourceNodeCount",
+    "identity",
+    "risk",
+    "nodes",
+    "generator",
+    "governance",
+    "candidateFingerprint"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "candidateId": { "type": "string", "minLength": 1 },
+    "book": { "type": "string", "pattern": "^[A-Z0-9]{3}$" },
+    "baseStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*$" },
+    "sourceStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+    "language": { "enum": ["hebrew", "aramaic", "greek"] },
+    "status": { "enum": ["candidate", "verified", "audited", "reviewed", "approved", "released"] },
+    "sourceBundleFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "parserOutputFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "sourceNodeCount": { "type": "integer", "minimum": 1 },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lemma", "lemmaNormalized", "transliterationScientific", "transliterationKo", "partOfSpeech", "primaryGlossKo", "notesKo"],
+      "properties": {
+        "lemma": { "type": "string", "minLength": 1 },
+        "lemmaNormalized": { "type": "string", "minLength": 1 },
+        "transliterationScientific": { "type": ["string", "null"] },
+        "transliterationKo": { "type": "string", "minLength": 1 },
+        "partOfSpeech": { "type": ["string", "null"] },
+        "primaryGlossKo": { "type": "string", "minLength": 1 },
+        "notesKo": { "type": "string" }
+      }
+    },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tier", "flags", "nextGate"],
+      "properties": {
+        "tier": { "enum": ["R0", "R1", "R2", "R3", "R4"] },
+        "flags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "enum": ["polysemy", "theological-sensitive", "proper-name", "uncertain-etymology", "source-text-noisy"] }
+        },
+        "nextGate": { "enum": ["CLAUDE_BATCH_AUDIT", "CLAUDE_FULL_AUDIT", "CLAUDE_FULL_AUDIT_THEN_GEMINI", "CLAUDE_FULL_AUDIT_THEN_HUMAN"] }
+      }
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sourceNodeId", "textKo", "confidence", "riskFlags"],
+        "properties": {
+          "sourceNodeId": { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" },
+          "textKo": { "type": "string", "minLength": 1 },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "riskFlags": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "enum": ["polysemy", "theological-sensitive", "proper-name", "uncertain-etymology", "source-text-noisy"] }
+          }
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "model", "sourceOnly", "otherModelOutputUsed"],
+      "properties": {
+        "role": { "const": "gpt-primary-candidate" },
+        "model": { "type": "string", "minLength": 1 },
+        "sourceOnly": { "const": true },
+        "otherModelOutputUsed": { "const": false }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidateOnly", "finalApprovalAllowed", "approvalRegistryWriteAllowed", "serviceUiWriteAllowed", "productionWriteAllowed", "existingApprovedMeaningMutationAllowed"],
+      "properties": {
+        "candidateOnly": { "const": true },
+        "finalApprovalAllowed": { "const": false },
+        "approvalRegistryWriteAllowed": { "const": false },
+        "serviceUiWriteAllowed": { "const": false },
+        "productionWriteAllowed": { "const": false },
+        "existingApprovedMeaningMutationAllowed": { "const": false }
+      }
+    },
+    "candidateFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}
