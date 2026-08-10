@@ -55,7 +55,8 @@
     "p4-lexicon-manifest-schema-v1",
     "p4-lexicon-shard-schema-v1",
     "p4-approval-registry-verifier-v1",
-    "p4-5-independent-infrastructure-audit-v1"
+    "p4-5-independent-infrastructure-audit-v1",
+    "p4-first-approval-registry-entry-h776-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -197,14 +198,20 @@
     "goldenMeaningMutationAllowed": false,
     "qualityGateWeakening": false,
     "translationCandidatesGeneratedInAudit": 0,
-    "firstApprovalRegistryEntryWritten": false,
+    "firstApprovalRegistryEntryWritten": true,
+    "firstApprovalRegistryEntry": {
+      "strong": "H776",
+      "pr": 283,
+      "mergeCommit": "b00ba363a4673df31a4f0a0c7e3d1e51d7bde42b",
+      "approvedSenseCount": 26
+    },
     "preFirstEntryConditions": [
       "add-verify-lexicon-evidence-contract-to-required-status-checks-on-main",
       "require-approving-reviews-at-least-one-and-enforce-admins-on-main",
       "mirror-empty-entries-invariant-in-manifest-and-shard-builders"
     ]
   },
-  "nextAction": "브랜치 보호 조정(H1·M2, 사람) → M1 방어심층 봉인(코드) → approvalRegistryPromotionAllowed=true 별도 PR → 첫 Approval Registry 엔트리",
+  "nextAction": "P4 read-only Approval Registry delivery/loader 계약 구현 → 검증 후 LexiconPopup read-only 통합",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
