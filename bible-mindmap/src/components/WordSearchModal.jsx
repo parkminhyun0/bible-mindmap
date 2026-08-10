@@ -7,6 +7,7 @@ import {
 import { fetchStrongDefinition, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
 import LexiconPopup from './LexiconPopup';
 import AlignmentAwareVerseText from './AlignmentAwareVerseText';
+import ApprovedKoreanLexiconPane from './ApprovedKoreanLexiconPane';
 
 const HEB_FONT = '"Ezra SIL","SBL BibLit","Noto Serif Hebrew",serif';
 const GRK_FONT = '"SBL BibLit","Gentium Plus","Palatino Linotype",serif';
@@ -28,6 +29,7 @@ const accentColor = (s) => isHebStrong(s) ? '#b45309' : '#1d4ed8';
 const accentBg    = (s) => isHebStrong(s) ? '#fef3c7' : '#dbeafe';
 const accentBorder= (s) => isHebStrong(s) ? '#fcd34d' : '#93c5fd';
 const cleanForm   = (w) => w?.replace(/\//g, '') || '';
+const morphKeyOf = (r) => r?.word?.m || cleanForm(r?.word?.w) || '?';
 
 // Find the most common pure-Korean substring (2-4 chars) shared across multiple verse texts
 function findKoreanWord(texts) {
@@ -262,12 +264,13 @@ function DragHandle({ onMouseDown, active, borderColor }) {
   );
 }
 
-function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searchedQuery }) {
+function DictionaryPanel({
+  strong, isHeb, fs, items, viewMode, verseMap, searchedQuery,
+  filterBook, setFilterBook, filterForm, setFilterForm, formStats, morphLabels,
+}) {
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
   const [def, setDef] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [filterBook, setFilterBook] = useState(null);
-  const [filterForm, setFilterForm] = useState(null);
   const [lexPopup, setLexPopup] = useState(null);
   const [colW, setColW] = useState({ dict: null, usage: null, donut: 185 });
   const [dragActive, setDragActive] = useState(false);
@@ -287,7 +290,7 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
   const font = origFont(strong);
   const dir = origDir(strong);
 
-  useEffect(() => { setFilterBook(null); setFilterForm(null); setLexPopup(null); }, [strong]);
+  useEffect(() => { setLexPopup(null); }, [strong]);
 
   useEffect(() => {
     if (!strong) { setLoading(false); return; }
@@ -344,10 +347,8 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
   };
 
   const allItems = items || [];
-  const morphKeyOf = (r) => r.word.m || cleanForm(r.word.w) || '?';
 
-  // Book filter applies to both chip counts (formStats) and displayed rows (filteredItems)
-  // so the numbers stay in sync when a book is selected on the donut.
+  // Book and word-form filters are owned by LemmaGroup so the form controls can live in the wide lemma header.
   const bookScoped = useMemo(
     () => (filterBook ? allItems.filter(r => r.bookKo === filterBook) : allItems),
     [allItems, filterBook]
@@ -357,34 +358,6 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
     () => (filterForm ? bookScoped.filter(r => morphKeyOf(r) === filterForm) : bookScoped),
     [bookScoped, filterForm]
   );
-
-  // Precompute morphKey → {color, count} — group by morphology code, not raw word form
-  // This collapses cantillation/accent variants of the same grammatical form into one entry.
-  const formStats = useMemo(() => {
-    const counts = new Map();
-    for (const r of bookScoped) {
-      const key = morphKeyOf(r);
-      counts.set(key, (counts.get(key) || 0) + 1);
-    }
-    const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-    return new Map(sorted.map(([key, count], i) => [key, { color: CAT_COLORS[i % CAT_COLORS.length], count }]));
-  }, [bookScoped]);
-
-  // Precompute morphKey → Korean grammatical label (for legend chips) — uses all items so labels stay stable across book filters
-  const morphLabels = useMemo(() => {
-    const m = new Map();
-    for (const r of allItems) {
-      const key = morphKeyOf(r);
-      if (m.has(key)) continue;
-      m.set(key, r.word.m ? humanizeMorph(r.word.m) : cleanForm(r.word.w) || key);
-    }
-    return m;
-  }, [allItems]);
-
-  // Book filter can remove the currently-selected form — clear it so chip count matches rows.
-  useEffect(() => {
-    if (filterForm && !formStats.has(filterForm)) setFilterForm(null);
-  }, [filterForm, formStats]);
 
   // Precompute morphKey → most common Korean word (Korean tab only)
   const formHighlightWords = useMemo(() => {
@@ -409,10 +382,10 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
 
   const col1Style = isMobile
     ? { width: '100%', flexShrink: 0, flexGrow: 0 }
-    : (colW.dict != null ? { width: colW.dict, flexShrink: 0, flexGrow: 0 } : { flex: '1.2', minWidth: COL_MIN });
+    : (colW.dict != null ? { width: colW.dict, flexShrink: 0, flexGrow: 0 } : { flex: '1.65', minWidth: COL_MIN });
   const col2Style = isMobile
     ? { width: '100%', flexShrink: 0, flexGrow: 0 }
-    : (colW.usage != null ? { width: colW.usage, flexShrink: 0, flexGrow: 0 } : { flex: '1', minWidth: COL_MIN });
+    : (colW.usage != null ? { width: colW.usage, flexShrink: 0, flexGrow: 0 } : { flex: '1.15', minWidth: COL_MIN });
   const col3Style = isMobile
     ? { width: '100%', flexShrink: 0, flexGrow: 0 }
     : { width: colW.donut ?? 185, flexShrink: 0, flexGrow: 0 };
@@ -424,6 +397,7 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
           {isEnglishView ? 'ENGLISH LEXICON' : isHeb ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
         </span>
         {def && <span style={{ fontSize: fz - 3, borderRadius: 3, padding: '1px 6px', fontWeight: 700, background: srcColor.bg, color: srcColor.text }}>{srcLabel}</span>}
+        <span style={{ fontSize: fz - 3, color: '#92400e', fontWeight: 800 }}>+ 한글 승인 사전</span>
         {strong && (
           <a href={`https://biblehub.com/${isHeb ? 'hebrew' : 'greek'}/${strong.replace(/^[GH]/, '')}.htm`}
             target="_blank" rel="noreferrer"
@@ -439,25 +413,46 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
         height: isMobile ? 'auto' : 460,
         overflow: 'hidden',
       }}>
-        {/* Col 1: Dictionary */}
+        {/* Col 1: English source dictionary + approved Korean split layer */}
         <div ref={col1Ref} className={isMobile ? 'momentum-scroll' : undefined}
-          style={{ ...col1Style, overflowY: 'auto', padding: '12px 14px', boxSizing: 'border-box',
-            maxHeight: isMobile ? 260 : undefined,
+          style={{ ...col1Style, overflow: 'hidden', padding: 0, boxSizing: 'border-box',
+            maxHeight: isMobile ? 560 : undefined,
             borderBottom: isMobile ? '1px solid rgba(15,23,42,.08)' : undefined,
             WebkitOverflowScrolling: 'touch' }}>
-          {loading && <div style={{ color: '#94a3b8', fontSize: fz - 1 }}>사전 조회 중…</div>}
-          {!loading && !def && (
-            <div style={{ fontSize: fz - 1, color: '#94a3b8' }}>
-              정의를 찾을 수 없습니다.{' '}
-              {strong && <a href={`https://biblehub.com/${isHeb ? 'hebrew' : 'greek'}/${strong.replace(/^[GH]/, '')}.htm`} target="_blank" rel="noreferrer" style={{ color: '#3b82f6' }}>BibleHub ↗</a>}
-            </div>
-          )}
-          {def && (
-            <div className="lex-def"
-              style={{ fontSize: fz, lineHeight: 1.8, color: '#374151', width: '100%', boxSizing: 'border-box' }}
-              dangerouslySetInnerHTML={{ __html: linkifyDefinition(def.definition || '', isHeb) }}
-            />
-          )}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'minmax(0,1fr) minmax(0,1fr)',
+            height: isMobile ? 'auto' : '100%', minHeight: 0,
+          }}>
+            <section style={{
+              minWidth: 0, minHeight: 0, overflowY: 'auto', padding: '12px 14px', boxSizing: 'border-box',
+              borderRight: isMobile ? 'none' : '1px solid #fde68a',
+              borderBottom: isMobile ? '1px solid #fde68a' : 'none', background: '#fffaf0',
+              WebkitOverflowScrolling: 'touch',
+            }}>
+              <div style={{
+                color: '#64748b', fontSize: Math.max(9, fz - 3), fontWeight: 800,
+                letterSpacing: 0.4, paddingBottom: 8, marginBottom: 9, borderBottom: '1px solid #f1f5f9',
+              }}>
+                영문 원사전 · {srcLabel}
+              </div>
+              {loading && <div style={{ color: '#94a3b8', fontSize: fz - 1 }}>사전 조회 중…</div>}
+              {!loading && !def && (
+                <div style={{ fontSize: fz - 1, color: '#94a3b8' }}>
+                  정의를 찾을 수 없습니다.{' '}
+                  {strong && <a href={`https://biblehub.com/${isHeb ? 'hebrew' : 'greek'}/${strong.replace(/^[GH]/, '')}.htm`} target="_blank" rel="noreferrer" style={{ color: '#3b82f6' }}>BibleHub ↗</a>}
+                </div>
+              )}
+              {def && (
+                <div className="lex-def"
+                  style={{ fontSize: fz, lineHeight: 1.8, color: '#374151', width: '100%', boxSizing: 'border-box' }}
+                  dangerouslySetInnerHTML={{ __html: linkifyDefinition(def.definition || '', isHeb) }}
+                />
+              )}
+            </section>
+
+            <ApprovedKoreanLexiconPane strong={strong} fs={fz} />
+          </div>
         </div>
 
         {!isMobile && (
@@ -486,36 +481,6 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
               </span>
             )}
           </div>
-
-          {/* Form legend — all tabs, Korean grammatical labels */}
-          {formStats && formStats.size > 1 && (
-            <div style={{ display: 'flex', gap: 4, padding: '5px 10px', background: '#fafafa', borderBottom: `1px solid ${ab}`, flexWrap: 'wrap', alignItems: 'center' }}>
-              <span style={{ fontSize: fz - 4, color: '#94a3b8', fontWeight: 700, flexShrink: 0 }}>단어형:</span>
-              {[...formStats.entries()].slice(0, 20).map(([form, { color, count }]) => {
-                const label = morphLabels?.get(form) || form;
-                const isSelected = filterForm === form;
-                return (
-                  <span key={form}
-                    onClick={() => setFilterForm(isSelected ? null : form)}
-                    title={isSelected ? '필터 해제' : '이 형태만 보기'}
-                    style={{
-                      background: isSelected ? color : color + '18',
-                      border: `1px solid ${isSelected ? color : color + '66'}`,
-                      color: isSelected ? '#fff' : color,
-                      borderRadius: 99, padding: '2px 8px', fontSize: fz - 4, fontWeight: 700,
-                      whiteSpace: 'nowrap', cursor: 'pointer',
-                      boxShadow: isSelected ? `0 1px 4px ${color}55` : 'none',
-                      transition: 'all 0.15s',
-                    }}>
-                    {label} <span style={{ fontFamily: 'monospace', fontWeight: 500, color: isSelected ? 'rgba(255,255,255,0.85)' : undefined }}>{count}</span>
-                  </span>
-                );
-              })}
-              {formStats.size > 20 && (
-                <span style={{ fontSize: fz - 4, color: '#94a3b8' }}>+{formStats.size - 20}</span>
-              )}
-            </div>
-          )}
 
           <div style={{ display: 'grid', gridTemplateColumns: '7.5em 1fr', padding: '3px 10px', background: '#f1f5f9', borderBottom: '1px solid #e2e8f0', fontSize: fz - 4, fontWeight: 700, color: '#94a3b8', letterSpacing: 0.5 }}>
             <span>{isKoreanView ? '참조' : '참조 · 단어'}</span>
@@ -570,17 +535,17 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
                   style={{ fontSize: fz, lineHeight: 1.65 }}
                 >
                   <AlignmentAwareVerseText
-          enabled={isKoreanView}
-          row={r}
-          rows={allItems}
-          text={verseText}
-          color={fc}
-          fallbackNode={(
-            <ColorHighlightText text={verseText} query={hlWord} color={fc}
-              dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
-              caseSensitive={!isKoreanView && !isEnglishView} />
-          )}
-        />
+                    enabled={isKoreanView}
+                    row={r}
+                    rows={allItems}
+                    text={verseText}
+                    color={fc}
+                    fallbackNode={(
+                      <ColorHighlightText text={verseText} query={hlWord} color={fc}
+                        dir={textDir} fontFamily={textFont} fallback={fallbackMsg}
+                        caseSensitive={!isKoreanView && !isEnglishView} />
+                    )}
+                  />
                 </span>
               </div>
             );
@@ -612,58 +577,224 @@ function DictionaryPanel({ strong, isHeb, fs, items, viewMode, verseMap, searche
   );
 }
 
-function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap, searchedQuery }) {
+function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap, searchedQuery, isMobile }) {
   const fz = fs || FS_DEF;
   const ac = accentColor(group.strong);
   const abg = accentBg(group.strong);
   const ab = accentBorder(group.strong);
   const font = origFont(group.strong);
   const isEnglishView = viewMode === 'english';
+  const [filterBook, setFilterBook] = useState(null);
+  const [filterForm, setFilterForm] = useState(null);
+  const [showAllForms, setShowAllForms] = useState(false);
+
+  const allItems = group.items || [];
+  const bookScoped = useMemo(
+    () => (filterBook ? allItems.filter(r => r.bookKo === filterBook) : allItems),
+    [allItems, filterBook],
+  );
+
+  const formStats = useMemo(() => {
+    const counts = new Map();
+    for (const r of bookScoped) {
+      const key = morphKeyOf(r);
+      counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+    return new Map(sorted.map(([key, count], i) => [key, { color: CAT_COLORS[i % CAT_COLORS.length], count }]));
+  }, [bookScoped]);
+
+  const morphLabels = useMemo(() => {
+    const labels = new Map();
+    for (const r of allItems) {
+      const key = morphKeyOf(r);
+      if (labels.has(key)) continue;
+      labels.set(key, r.word.m ? humanizeMorph(r.word.m) : cleanForm(r.word.w) || key);
+    }
+    return labels;
+  }, [allItems]);
+
+  useEffect(() => {
+    if (filterForm && !formStats.has(filterForm)) setFilterForm(null);
+  }, [filterForm, formStats]);
+
+  useEffect(() => {
+    setFilterBook(null);
+    setFilterForm(null);
+    setShowAllForms(false);
+  }, [group.strong]);
+
+  const formEntries = [...formStats.entries()];
+  const previewCount = isMobile ? 6 : 10;
+  const visibleForms = showAllForms ? formEntries : formEntries.slice(0, previewCount);
+  const hiddenFormCount = Math.max(0, formEntries.length - visibleForms.length);
+  const showFormPanel = showDict && formEntries.length > 1;
 
   return (
     <div style={{ borderBottom: `2px solid ${ab}`, marginBottom: 2 }}>
       <div style={{ background: `linear-gradient(to right, ${abg}, #f8fafc)`, borderLeft: `4px solid ${ac}` }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px 6px', flexWrap: 'wrap' }}>
-          {isEnglishView ? (
-            <>
-              <span style={{ fontSize: fz + 6, fontWeight: 800, color: '#1e293b' }}>{group.gloss || group.lemma}</span>
-              <span style={{ fontSize: fz + 2, fontFamily: font, direction: origDir(group.strong), color: ac, fontWeight: 600, opacity: 0.75 }}>{group.lemma}</span>
-            </>
-          ) : (
-            <>
-              <span style={{ fontSize: fz + 8, fontFamily: font, direction: origDir(group.strong), color: ac, fontWeight: 700, lineHeight: 1.3 }}>{group.lemma}</span>
-              {group.tr && <span style={{ fontSize: fz - 1, color: '#64748b', fontStyle: 'italic' }}>{group.tr}</span>}
-            </>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: showFormPanel && !isMobile ? 'minmax(230px, 300px) minmax(0, 1fr)' : '1fr',
+          gap: showFormPanel ? 12 : 0,
+          padding: '10px 14px', alignItems: 'stretch',
+        }}>
+          <div style={{ minWidth: 0 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+              {isEnglishView ? (
+                <>
+                  <span style={{ fontSize: fz + 6, fontWeight: 800, color: '#1e293b' }}>{group.gloss || group.lemma}</span>
+                  <span style={{ fontSize: fz + 2, fontFamily: font, direction: origDir(group.strong), color: ac, fontWeight: 600, opacity: 0.75 }}>{group.lemma}</span>
+                </>
+              ) : (
+                <>
+                  <span style={{ fontSize: fz + 8, fontFamily: font, direction: origDir(group.strong), color: ac, fontWeight: 700, lineHeight: 1.3 }}>{group.lemma}</span>
+                  {group.tr && <span style={{ fontSize: fz - 1, color: '#64748b', fontStyle: 'italic' }}>{group.tr}</span>}
+                </>
+              )}
+              {group.strong && (
+                <span style={{ fontSize: fz - 2, background: abg, color: ac, border: `1px solid ${ab}`, borderRadius: 4, padding: '2px 7px', fontWeight: 800, fontFamily: 'monospace' }}>
+                  {group.strong}
+                </span>
+              )}
+              <span style={{ marginLeft: 'auto', fontSize: fz - 1, fontWeight: 700, color: ac, background: abg, border: `1px solid ${ab}`, borderRadius: 99, padding: '2px 10px' }}>
+                {group.items.length}회
+              </span>
+            </div>
+
+            <div style={{ paddingTop: 6, paddingBottom: 8, fontSize: fz, color: '#374151' }}>
+              {isEnglishView
+                ? group.tr && <span style={{ fontWeight: 500 }}>{group.tr}</span>
+                : group.gloss && <>
+                    <span style={{ color: '#94a3b8', fontSize: fz - 2, fontWeight: 700, marginRight: 6 }}>기본뜻</span>
+                    <span style={{ fontWeight: 500 }}>{group.gloss}</span>
+                  </>
+              }
+            </div>
+
+            <button onClick={onToggleDict} style={{
+              minHeight: isMobile ? 44 : 32,
+              fontSize: fz - 2, padding: isMobile ? '8px 12px' : '4px 10px', borderRadius: 7,
+              cursor: 'pointer', fontWeight: 700,
+              background: showDict ? ac : '#fff', color: showDict ? '#fff' : ac, border: `1px solid ${ac}`,
+            }}>
+              📖 {showDict ? '사전·용례 닫기' : '사전·용례 보기'}
+            </button>
+          </div>
+
+          {showFormPanel && (
+            <section
+              aria-label={`${group.strong} 용례 단어형 필터`}
+              data-word-search-form-filter={group.strong}
+              style={{
+                minWidth: 0, padding: isMobile ? '10px 0 0' : '10px 12px',
+                marginTop: isMobile ? 10 : 0,
+                borderTop: isMobile ? `1px solid ${ab}` : 'none',
+                border: isMobile ? undefined : `1px solid ${ab}`,
+                borderRadius: isMobile ? 0 : 10,
+                background: 'rgba(255,255,255,.76)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 7, flexWrap: 'wrap', marginBottom: 8 }}>
+                <strong style={{ color: ac, fontSize: Math.max(10, fz - 1) }}>용례 단어형</strong>
+                <span style={{ color: '#94a3b8', fontSize: Math.max(9, fz - 3) }}>
+                  선택하면 아래 용례만 필터링됩니다{filterBook ? ` · ${filterBook} 기준` : ''}
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => setFilterForm(null)}
+                  aria-pressed={!filterForm}
+                  style={{
+                    minHeight: isMobile ? 44 : 32, padding: isMobile ? '8px 12px' : '5px 10px',
+                    borderRadius: 999, border: `1px solid ${!filterForm ? ac : '#cbd5e1'}`,
+                    background: !filterForm ? ac : '#fff', color: !filterForm ? '#fff' : '#475569',
+                    fontSize: Math.max(9, fz - 3), fontWeight: 800, cursor: 'pointer', whiteSpace: 'nowrap',
+                  }}
+                >
+                  전체 <span style={{ fontFamily: 'monospace', fontWeight: 600 }}>{bookScoped.length}</span>
+                </button>
+
+                {visibleForms.map(([form, { color, count }]) => {
+                  const label = morphLabels?.get(form) || form;
+                  const isSelected = filterForm === form;
+                  return (
+                    <button
+                      type="button"
+                      key={form}
+                      onClick={() => setFilterForm(isSelected ? null : form)}
+                      aria-pressed={isSelected}
+                      title={isSelected ? '필터 해제' : '이 형태만 보기'}
+                      style={{
+                        minHeight: isMobile ? 44 : 32,
+                        background: isSelected ? color : color + '18',
+                        border: `1px solid ${isSelected ? color : color + '66'}`,
+                        color: isSelected ? '#fff' : color,
+                        borderRadius: 999, padding: isMobile ? '8px 12px' : '5px 10px',
+                        fontSize: Math.max(9, fz - 3), fontWeight: 700,
+                        cursor: 'pointer', lineHeight: 1.25, textAlign: 'left',
+                        boxShadow: isSelected ? `0 1px 4px ${color}55` : 'none', transition: 'all 0.15s',
+                      }}
+                    >
+                      {label}{' '}
+                      <span style={{ fontFamily: 'monospace', fontWeight: 600, color: isSelected ? 'rgba(255,255,255,.88)' : undefined }}>
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+
+                {hiddenFormCount > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllForms(true)}
+                    style={{
+                      minHeight: isMobile ? 44 : 32, padding: isMobile ? '8px 12px' : '5px 10px',
+                      borderRadius: 999, border: '1px solid #cbd5e1', background: '#fff', color: '#64748b',
+                      fontSize: Math.max(9, fz - 3), fontWeight: 800, cursor: 'pointer',
+                    }}
+                  >
+                    +{hiddenFormCount} 더 보기
+                  </button>
+                )}
+
+                {showAllForms && formEntries.length > previewCount && (
+                  <button
+                    type="button"
+                    onClick={() => setShowAllForms(false)}
+                    style={{
+                      minHeight: isMobile ? 44 : 32, padding: isMobile ? '8px 12px' : '5px 10px',
+                      borderRadius: 999, border: '1px solid #cbd5e1', background: '#fff', color: '#64748b',
+                      fontSize: Math.max(9, fz - 3), fontWeight: 800, cursor: 'pointer',
+                    }}
+                  >
+                    접기
+                  </button>
+                )}
+              </div>
+            </section>
           )}
-          {group.strong && (
-            <span style={{ fontSize: fz - 2, background: abg, color: ac, border: `1px solid ${ab}`, borderRadius: 4, padding: '2px 7px', fontWeight: 800, fontFamily: 'monospace' }}>
-              {group.strong}
-            </span>
-          )}
-          <span style={{ marginLeft: 'auto', fontSize: fz - 1, fontWeight: 700, color: ac, background: abg, border: `1px solid ${ab}`, borderRadius: 99, padding: '2px 10px' }}>
-            {group.items.length}회
-          </span>
-        </div>
-        <div style={{ padding: '0 14px 8px', fontSize: fz, color: '#374151' }}>
-          {isEnglishView
-            ? group.tr && <span style={{ fontWeight: 500 }}>{group.tr}</span>
-            : group.gloss && <>
-                <span style={{ color: '#94a3b8', fontSize: fz - 2, fontWeight: 700, marginRight: 6 }}>기본뜻</span>
-                <span style={{ fontWeight: 500 }}>{group.gloss}</span>
-              </>
-          }
-        </div>
-        <div style={{ padding: '0 14px 10px' }}>
-          <button onClick={onToggleDict} style={{
-            fontSize: fz - 2, padding: '4px 10px', borderRadius: 5, cursor: 'pointer', fontWeight: 600,
-            background: showDict ? ac : '#fff', color: showDict ? '#fff' : ac, border: `1px solid ${ac}`,
-          }}>
-            📖 {showDict ? '사전·용례 닫기' : '사전·용례 보기'}
-          </button>
         </div>
       </div>
+
       {showDict && (
-        <DictionaryPanel strong={group.strong} isHeb={group.isHeb} fs={fs} items={group.items} viewMode={viewMode} verseMap={verseMap} searchedQuery={searchedQuery} />
+        <DictionaryPanel
+          strong={group.strong}
+          isHeb={group.isHeb}
+          fs={fs}
+          items={group.items}
+          viewMode={viewMode}
+          verseMap={verseMap}
+          searchedQuery={searchedQuery}
+          filterBook={filterBook}
+          setFilterBook={setFilterBook}
+          filterForm={filterForm}
+          setFilterForm={setFilterForm}
+          formStats={formStats}
+          morphLabels={morphLabels}
+        />
       )}
     </div>
   );
@@ -1138,6 +1269,7 @@ export default function WordSearchModal({ initialQuery = '', initialMode = 'orig
                     fs={fs} viewMode={displayMode}
                     verseMap={displayMode === 'korean' ? koreanMap : displayMode === 'english' ? englishMap : origLangMap}
                     searchedQuery={searchedQuery}
+                    isMobile={isMobile}
                   />
                 ))}
               </>
@@ -1180,4 +1312,3 @@ const miniBtn = {
   fontSize: 10, padding: '3px 8px', border: '1px solid #cbd5e1',
   borderRadius: 4, background: '#fff', cursor: 'pointer', color: '#475569', whiteSpace: 'nowrap',
 };
-
