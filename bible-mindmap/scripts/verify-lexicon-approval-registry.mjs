@@ -38,6 +38,12 @@ function verifyClosedWriteGates(record, label) {
     assert.equal(record?.[gate], false, `${label} gate must remain false: ${gate}`);
   }
 }
+function verifyCandidateWriteLocks(candidate) {
+  for (const gate of ['approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) {
+    assert.equal(candidate?.[gate], false, `candidate phase must keep write gate false: ${gate}`);
+  }
+  assert.equal(candidate?.finalApprovalAllowed ?? false, false, 'candidate phase cannot self-approve final wording');
+}
 function verifyReadinessFacts(readiness, expectedStatus) {
   assert.equal(readiness?.status, expectedStatus, `P5 readiness status must be ${expectedStatus}`);
   assert.equal(readiness?.goldBaseReady, '25/25', 'P5 readiness must cover all Gold base items');
@@ -104,17 +110,32 @@ function verifyPhaseLocks() {
     assert.equal(readiness?.independentReviewApprovedBy, 'bible-mindmap-review');
 
     const candidate = trackState.p5GenesisCandidateGeneration;
-    assert.equal(candidate?.status, 'ENABLED_ON_MAIN_AFTER_REVIEWED_MERGE');
-    assert.equal(candidate?.transitionOnly, true, 'phase PR must remain transition-only');
     assert.equal(candidate?.evidenceReadinessRequired, true);
     assert.equal(candidate?.evidenceReadinessSatisfied, true);
     assert.equal(candidate?.candidateGenerationAllowed, true, 'candidate phase must explicitly allow candidate generation');
-    assert.equal(candidate?.translationStarted, false, 'phase transition PR must not generate translations');
-    assert.equal(candidate?.translationCandidatesGenerated, 0, 'phase transition PR must contain zero candidates');
-    for (const gate of ['approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) {
-      assert.equal(candidate?.[gate], false, `candidate phase must keep write gate false: ${gate}`);
-    }
     assert.equal(candidate?.phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge, true, 'candidate phase must require independent review + merge');
+    verifyCandidateWriteLocks(candidate);
+
+    if (candidate?.status === 'ENABLED_ON_MAIN_AFTER_REVIEWED_MERGE') {
+      assert.equal(candidate?.transitionOnly, true, 'phase transition checkpoint must remain transition-only');
+      assert.equal(candidate?.translationStarted, false, 'phase transition checkpoint must not generate translations');
+      assert.equal(candidate?.translationCandidatesGenerated, 0, 'phase transition checkpoint must contain zero candidates');
+    } else {
+      assert.equal(candidate?.status, 'CANDIDATES_GENERATED_AWAITING_CLAUDE_AUDIT', 'unsupported candidate-generation checkpoint');
+      assert.equal(candidate?.transitionOnly, false, 'generated candidate checkpoint must no longer be transition-only');
+      assert.equal(candidate?.translationStarted, true, 'generated candidate checkpoint must record translation start');
+      assert.equal(candidate?.translationCandidatesGenerated, 27, 'generated candidate checkpoint must contain exactly 27 source-unit candidates');
+      assert.equal(candidate?.candidateBaseItems, 24, 'generated candidate checkpoint must cover 24 base Strong targets');
+      assert.equal(candidate?.sourceUnitCount, 27, 'generated candidate checkpoint source-unit count drift');
+      assert.equal(candidate?.translatedSourceNodeCount, 150, 'generated candidate checkpoint translated source-node count drift');
+      assert.match(candidate?.sourceInputBundleFingerprint || '', SHA256_PATTERN, 'candidate source bundle fingerprint missing');
+      assert.equal(candidate?.candidateManifestPath, 'bible-mindmap/data/lexicon/candidates/genesis-p5/manifest.json');
+      assert.match(candidate?.candidateManifestFingerprint || '', SHA256_PATTERN, 'candidate manifest fingerprint missing');
+      assert.equal(candidate?.candidatePr, 293, 'candidate bundle must remain anchored to PR #293');
+      assert.deepEqual(candidate?.riskTiers, { R0: 0, R1: 10, R2: 7, R3: 5, R4: 5 }, 'candidate risk-tier counts drift');
+      assert.equal(candidate?.h776RetranslationTarget, false, 'H776 must remain excluded from candidate generation');
+      assert.equal(candidate?.independentAuditRequired, true, 'generated candidates must require independent audit');
+    }
     assert.equal(trackState.currentPhaseGate?.sourceDriverPolicyRequired, true, 'candidate phase requires source-driver dual lock');
     assert.equal(trackState.currentPhaseGate?.effectiveOnlyAfterIndependentReviewAndMerge, true, 'current phase gate must not self-promote before merge');
   }
