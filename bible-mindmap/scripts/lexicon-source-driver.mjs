@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { fingerprint } from './build-h776-parser-adapter.mjs';
+import { readPhaseGate } from './lib/lexicon-evidence-verifier.mjs';
 import { DEFAULT_SOURCE_ADAPTERS } from './lexicon-source-adapters.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -20,6 +21,7 @@ export const DRIVER_BLOCKERS = Object.freeze({
   LEGACY_FINGERPRINT_MUST_BE_NULL: 'LEGACY_FINGERPRINT_MUST_BE_NULL',
   LEGACY_POLICY_REQUIRED: 'LEGACY_POLICY_REQUIRED',
   PARSER_ID_MISMATCH: 'PARSER_ID_MISMATCH',
+  PHASE_GATE_DISABLED: 'PHASE_GATE_DISABLED',
   REGRESSION_EXECUTION_DISABLED: 'REGRESSION_EXECUTION_DISABLED',
   REGRESSION_ONLY_REQUIRED: 'REGRESSION_ONLY_REQUIRED',
   SOURCE_AUTO_PROCESSING_REQUIRED: 'SOURCE_AUTO_PROCESSING_REQUIRED',
@@ -82,8 +84,10 @@ export function preflightLexiconSourceDriver(input, {
   policy = readJson(DEFAULT_POLICY),
   adapters = DEFAULT_SOURCE_ADAPTERS,
   operation = 'preflight',
+  trackStatePath,
 } = {}) {
   const blockers = [];
+  const phaseGate = readPhaseGate(trackStatePath);
   if (!validatePolicy(policy)) blockers.push(DRIVER_BLOCKERS.DRIVER_POLICY_INVALID);
   if (input?.parser?.id !== 'bdb-deterministic-tree-parser') blockers.push(DRIVER_BLOCKERS.PARSER_ID_MISMATCH);
   if (!input || typeof input !== 'object' || input.inputFingerprint !== fingerprint(input, 'inputFingerprint')) {
@@ -120,16 +124,21 @@ export function preflightLexiconSourceDriver(input, {
     }
     if (policy?.requireFullTextStorageForSourceParse !== false && source?.license?.fullTextStorageAllowed !== true) blockers.push(DRIVER_BLOCKERS.FULL_TEXT_STORAGE_REQUIRED);
     if (policy?.requireDerivativePermissionForSourceParse !== false && source?.license?.derivativeAllowed !== true) blockers.push(DRIVER_BLOCKERS.DERIVATIVE_PERMISSION_REQUIRED);
-    if (input?.processingMode === 'candidate-generation' && policy?.candidateGenerationEnabled !== true) blockers.push(DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED);
+    if (input?.processingMode === 'candidate-generation') {
+      if (policy?.candidateGenerationEnabled !== true) blockers.push(DRIVER_BLOCKERS.CANDIDATE_GENERATION_DISABLED);
+      if (phaseGate.candidateGenerationAllowed !== true) blockers.push(DRIVER_BLOCKERS.PHASE_GATE_DISABLED);
+    }
   } else {
     blockers.push(DRIVER_BLOCKERS.UNSUPPORTED_PARSER_MODE);
   }
 
   const blockerCodes = uniqueSorted(blockers);
   const executionAllowed = blockerCodes.length === 0;
+  const dualCandidateGateEnabled = policy?.candidateGenerationEnabled === true
+    && phaseGate.candidateGenerationAllowed === true;
   const candidateGenerationAllowed = executionAllowed
     && input?.processingMode === 'candidate-generation'
-    && policy?.candidateGenerationEnabled === true;
+    && dualCandidateGateEnabled;
   const route = executionAllowed
     ? (parserMode === 'legacy-golden-adapter' ? 'legacy-adapter' : 'source-parser')
     : 'blocked';
@@ -149,7 +158,7 @@ export function preflightLexiconSourceDriver(input, {
     decision: {
       executionAllowed,
       candidateGenerationAllowed,
-      candidateGenerationPolicy: policy?.candidateGenerationEnabled === true ? 'license-gated' : 'disabled',
+      candidateGenerationPolicy: dualCandidateGateEnabled ? 'license-gated' : 'disabled',
       blockerCodes,
     },
     parserOutputFingerprint: null,
