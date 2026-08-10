@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import LexiconTranslationDrawer from '../components/LexiconTranslationDrawer.jsx';
+import { lexiconApprovalLoader, normalizeLexiconStrong } from '../data/lexiconApprovalLoader.js';
 import { getLexiconTranslation } from '../data/lexiconTranslationPilot.js';
 
 const PILOT_SELECTOR = '[role="dialog"][aria-label^="원어 사전"]';
@@ -7,17 +8,25 @@ const BUTTON_ATTR = 'data-lexicon-translation-toggle';
 const DRAWER_ROOT_ATTR = 'data-lexicon-translation-pilot-root';
 
 function detectStrong(dialog) {
-  const strongLink = [...dialog.querySelectorAll('a')].find((link) => {
+  for (const link of dialog.querySelectorAll('a')) {
     const text = link.textContent || '';
-    return /\bH0*776\b/i.test(text) || /\/hebrew\/776\.htm/i.test(link.getAttribute('href') || '');
-  });
-  return strongLink ? 'H776' : null;
+    const textMatch = text.match(/\b([HG])0*(\d+)([A-Za-z]?)\b/i);
+    if (textMatch) return normalizeLexiconStrong(`${textMatch[1]}${textMatch[2]}${textMatch[3] || ''}`);
+
+    const href = link.getAttribute('href') || '';
+    const hrefMatch = href.match(/\/(hebrew|greek)\/(\d+)([A-Za-z]?)\.htm/i);
+    if (hrefMatch) {
+      return normalizeLexiconStrong(`${hrefMatch[1].toLowerCase() === 'hebrew' ? 'H' : 'G'}${hrefMatch[2]}${hrefMatch[3] || ''}`);
+    }
+  }
+  return null;
 }
 
 function findDefinitionToolbar(dialog) {
-  const label = [...dialog.querySelectorAll('span')].find(
-    (node) => node.textContent?.trim() === 'HEBREW LEXICON'
-  );
+  const label = [...dialog.querySelectorAll('span')].find((node) => {
+    const text = node.textContent?.trim();
+    return text === 'HEBREW LEXICON' || text === 'GREEK LEXICON';
+  });
   return label?.parentElement || null;
 }
 
@@ -28,8 +37,8 @@ function styleToggleButton(button, open) {
 
   Object.assign(button.style, {
     marginLeft: 'auto',
-    minHeight: mobile ? '36px' : '30px',
-    padding: mobile ? '7px 10px' : '5px 9px',
+    minHeight: mobile ? '44px' : '34px',
+    padding: mobile ? '8px 11px' : '6px 10px',
     borderRadius: '8px',
     border: '1px solid #f59e0b',
     background: open ? '#f59e0b' : '#fffbeb',
@@ -40,7 +49,7 @@ function styleToggleButton(button, open) {
     whiteSpace: 'nowrap',
     fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
   });
-  const nextText = open ? '🇰🇷 번역 닫기' : `🇰🇷 한글 번역 ${mobile ? '›' : '→'}`;
+  const nextText = open ? '📚 사전 닫기' : `📚 한글 사전 ${mobile ? '›' : '→'}`;
   if (button.textContent !== nextText) button.textContent = nextText;
   button.setAttribute('aria-expanded', open ? 'true' : 'false');
   button.dataset.lexiconTranslationStyleState = styleState;
@@ -62,6 +71,8 @@ export function installLexiconTranslationPilotBridge() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return () => {};
 
   const states = new Map();
+  const pending = new Map();
+  const unavailable = new Map();
   let scheduled = false;
 
   const setMobileDialogHidden = (state, hidden) => {
@@ -93,7 +104,8 @@ export function installLexiconTranslationPilotBridge() {
     state.root.render(
       <LexiconTranslationDrawer
         open={state.open}
-        translation={state.translation}
+        approvedEntry={state.approvedEntry}
+        enrichment={state.enrichment}
         isMobile={isMobile}
         popupRect={readPopupRect(state.dialog)}
         onClose={() => {
@@ -115,45 +127,79 @@ export function installLexiconTranslationPilotBridge() {
     states.delete(dialog);
   };
 
+  const createState = (dialog, toolbar, strong, approvedEntry) => {
+    if (!dialog.isConnected || !toolbar.isConnected) return null;
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute(BUTTON_ATTR, strong);
+    button.setAttribute('aria-controls', `lexicon-translation-drawer-${strong}`);
+    button.title = '사람 승인된 한글 사전 전체 정의와 BDB 보조정보를 엽니다';
+
+    const host = document.createElement('div');
+    host.setAttribute(DRAWER_ROOT_ATTR, strong);
+    document.body.appendChild(host);
+
+    const state = {
+      strong,
+      dialog,
+      toolbar,
+      button,
+      host,
+      root: createRoot(host),
+      approvedEntry,
+      enrichment: getLexiconTranslation(strong),
+      open: false,
+      mobileSnapshot: null,
+      rendered: false,
+    };
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      state.open = !state.open;
+      renderState(state);
+    });
+    states.set(dialog, state);
+    return state;
+  };
+
   const ensureState = (dialog) => {
     const strong = detectStrong(dialog);
-    const translation = getLexiconTranslation(strong);
     const toolbar = findDefinitionToolbar(dialog);
-    if (!translation || !toolbar || !dialog.isConnected) {
+    if (!strong || !toolbar || !dialog.isConnected) {
       destroyState(dialog);
       return;
     }
 
     let state = states.get(dialog);
+    if (state && state.strong !== strong) {
+      destroyState(dialog);
+      state = null;
+    }
+
     if (!state) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.setAttribute(BUTTON_ATTR, translation.strong);
-      button.setAttribute('aria-controls', `lexicon-translation-drawer-${translation.strong}`);
-      button.title = 'BDB 영어 원문 옆에 한국어 번역을 엽니다';
-
-      const host = document.createElement('div');
-      host.setAttribute(DRAWER_ROOT_ATTR, translation.strong);
-      document.body.appendChild(host);
-
-      state = {
-        dialog,
-        toolbar,
-        button,
-        host,
-        root: createRoot(host),
-        translation,
-        open: false,
-        mobileSnapshot: null,
-        rendered: false,
-      };
-      button.addEventListener('click', (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        state.open = !state.open;
-        renderState(state);
-      });
-      states.set(dialog, state);
+      if (unavailable.get(dialog) === strong || pending.has(dialog)) return;
+      const load = lexiconApprovalLoader.loadApprovedEntry(strong)
+        .then((approvedEntry) => {
+          if (!approvedEntry) {
+            unavailable.set(dialog, strong);
+            return;
+          }
+          unavailable.delete(dialog);
+          const currentStrong = detectStrong(dialog);
+          const currentToolbar = findDefinitionToolbar(dialog);
+          if (currentStrong !== strong || !currentToolbar || !dialog.isConnected) return;
+          const created = createState(dialog, currentToolbar, strong, approvedEntry);
+          if (created) renderState(created);
+        })
+        .catch(() => {
+          unavailable.set(dialog, strong);
+        })
+        .finally(() => {
+          pending.delete(dialog);
+        });
+      pending.set(dialog, load);
+      return;
     }
 
     const toolbarChanged = state.toolbar !== toolbar;
@@ -226,5 +272,7 @@ export function installLexiconTranslationPilotBridge() {
     window.removeEventListener('keydown', onEscape, true);
     if (geometryFrame) window.cancelAnimationFrame(geometryFrame);
     for (const dialog of [...states.keys()]) destroyState(dialog);
+    pending.clear();
+    unavailable.clear();
   };
 }
