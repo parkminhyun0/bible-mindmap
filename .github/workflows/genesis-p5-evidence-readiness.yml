@@ -73,11 +73,7 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/build-genesis-p5-evidence-readiness.mjs
 
-      - name: Verify Evidence readiness and closed write Gates
-        working-directory: bible-mindmap
-        run: node scripts/verify-genesis-p5-evidence-readiness.mjs --strict
-
-      - name: Publish P5 readiness summary
+      - name: Publish P5 readiness diagnostics
         working-directory: bible-mindmap
         run: |
           node - <<'NODE'
@@ -95,12 +91,16 @@ jobs:
             '- Registry/UI/production write: **false**',
             '',
             '### Gold 25 source readiness',
-            ...report.items.map((item) => `- ${item.strong} · ${item.group} · ${item.readinessStatus} · nodes=${item.sourceTree?.nodeCount || 0} · ${item.lexicalIdentity?.lemma || 'unresolved'}`),
+            ...report.items.map((item) => `- ${item.strong} · ${item.group} · ${item.readinessStatus} · nodes=${item.sourceTree?.nodeCount || 0} · ${item.lexicalIdentity?.lemma || 'unresolved'}${item.blocker ? ` · ${item.blocker}` : ''}`),
           ]
           const summary = lines.join('\n')
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
           console.log(summary)
           NODE
+
+      - name: Verify Evidence readiness and closed write Gates
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-evidence-readiness.mjs --strict
 
       - name: Guard tracked source integrity
         run: git diff --exit-code
