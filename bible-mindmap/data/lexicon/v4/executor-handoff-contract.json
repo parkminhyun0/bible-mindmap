@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "contractId": "lexicon-v4-executor-handoff-v1",
+  "trackId": "lexicon-ko-66",
+  "purpose": "executor-neutral recovery across GPT and Jarvis/OpenClaw without duplicate PRs or gate bypass",
+  "statePath": "docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json",
+  "resumePath": "memory/RESUME.json",
+  "trackStatePath": "docs/lexicon-workflow/TRACK_STATE.json",
+  "allowedExecutors": ["GPT", "JARVIS", "NONE"],
+  "allowedStatuses": [
+    "ACTIVE",
+    "EXECUTOR_HANDOFF_READY",
+    "EXTERNAL_AUDIT_REQUIRED",
+    "BLOCKED",
+    "COMPLETE"
+  ],
+  "externalAuditStatuses": ["NOT_REQUIRED", "REQUIRED", "SATISFIED"],
+  "requiredStateFields": [
+    "schemaVersion",
+    "trackId",
+    "phase",
+    "status",
+    "currentExecutor",
+    "previousExecutor",
+    "completedSteps",
+    "nextStep",
+    "nextAction",
+    "baseSHA",
+    "headSHA",
+    "candidateFingerprint",
+    "activePR",
+    "activeBranch",
+    "checkpointedAt",
+    "handoffReason",
+    "externalAudit"
+  ],
+  "stepOrder": [
+    "state-reconcile",
+    "branch-created",
+    "handoff-contract",
+    "handoff-verifier",
+    "handoff-ci",
+    "handoff-dry-run",
+    "independent-review",
+    "merge",
+    "deploy-verify",
+    "state-sync"
+  ],
+  "ssotReadOrder": [
+    "github-main",
+    "github-active-pr",
+    "github-current-head",
+    "github-diff",
+    "github-required-ci",
+    "docs/lexicon-workflow/TRACK_STATE.json",
+    "memory/RESUME.json",
+    "docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json"
+  ],
+  "headSHASemantics": "last verified PR head or branch head before the checkpoint commit; every resuming executor MUST re-resolve the current head from GitHub and must never trust this value as current without verification",
+  "rules": {
+    "noDuplicatePR": true,
+    "reuseActiveBranch": true,
+    "skipCompletedSteps": true,
+    "freshGithubHeadRequiredOnResume": true,
+    "freshDiffRequiredOnResume": true,
+    "requiredCIMustBeRechecked": true,
+    "evidenceFingerprintMustRemainStableAcrossExecutorChange": true,
+    "qualityGatesMayNotBeWeakened": true,
+    "existingApprovedMeaningMutationAllowed": false,
+    "missingRequiredExternalAudit": "EXTERNAL_AUDIT_REQUIRED",
+    "retrievalFailure": "BLOCKED_FAIL_CLOSED"
+  },
+  "handoffReadyReasons": [
+    "usage-limit",
+    "session-ended",
+    "tool-unavailable",
+    "manual-executor-switch",
+    "stale-checkpoint-watch"
+  ],
+  "maxCheckpointAgeHours": 12,
+  "notes": [
+    "The contract makes handoff deterministic and recoverable; it does not pretend GitHub can directly detect a vendor quota without a checkpoint/heartbeat signal.",
+    "Automatic GPT invocation requires a separate scheduler/agent trigger; repository state remains the execution SSOT."
+  ]
+}

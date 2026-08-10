@@ -1,0 +1,48 @@
+name: Lexicon Executor Handoff Contract
+
+on:
+  pull_request:
+    paths:
+      - 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'
+      - 'docs/lexicon-workflow/LLM_CHECKIN.md'
+      - 'memory/RESUME.json'
+      - 'AGENTS.md'
+      - 'bible-mindmap/data/lexicon/v4/executor-handoff-contract.json'
+      - 'bible-mindmap/scripts/lib/executor-handoff.mjs'
+      - 'bible-mindmap/scripts/verify-executor-handoff-contract.mjs'
+      - 'bible-mindmap/scripts/tests/executor-handoff-dry-run.mjs'
+      - '.github/workflows/lexicon-executor-handoff.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'
+      - 'bible-mindmap/data/lexicon/v4/executor-handoff-contract.json'
+      - 'bible-mindmap/scripts/lib/executor-handoff.mjs'
+      - 'bible-mindmap/scripts/verify-executor-handoff-contract.mjs'
+      - 'bible-mindmap/scripts/tests/executor-handoff-dry-run.mjs'
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  contract:
+    name: executor handoff contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-executor-handoff-contract.mjs --self-test
+      - name: handoff decision dry-run
+        working-directory: bible-mindmap
+        run: node scripts/tests/executor-handoff-dry-run.mjs
+      - name: live PR/state consistency
+        working-directory: bible-mindmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HANDOFF_REQUIRE_REMOTE: '1'
+        run: node scripts/verify-executor-handoff-contract.mjs
