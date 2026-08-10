@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "contractId": "lexicon-v4-golden-audit-contract-v1",
+  "policyDoc": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md",
+  "purpose": "자동 승격이 시스템 품질을 훼손하지 않는지 상시 감시. 승격된 batch에서 무작위 sample을 blind 재검증.",
+  "sampling": {
+    "perBookMinPercent": 3,
+    "perBookMaxPercent": 5,
+    "perBatchMinPerFiveHundred": 20,
+    "selectionSeedRule": "sha256(batchId + mergeCommit + '/golden-audit')",
+    "selectionAlgorithm": "seeded-shuffle-take"
+  },
+  "blindingRules": {
+    "originalVerdictHidden": true,
+    "originalReviewerHidden": true,
+    "candidateOnlyPresented": true,
+    "sourcePacketPresented": true,
+    "modelReReviewers": ["GPT", "Claude"],
+    "humanReReviewerRequired": false,
+    "humanReReviewerOptional": true
+  },
+  "thresholds": {
+    "perBookDiscrepancyRatePercentHalt": 5,
+    "perBatchDiscrepancyRatePercentHalt": 10,
+    "haltAction": "auto-halt-batch-promotion",
+    "haltLabel": "golden-audit-halt",
+    "haltUnblockRoute": "human-golden-audit-review"
+  },
+  "triggerSchedule": {
+    "runsOn": "batch-merge",
+    "additionalRun": "weekly rolling audit of last 100 promoted entries",
+    "notifyOnStart": true,
+    "notifyOnDiscrepancy": true
+  },
+  "output": {
+    "resultsPath": "bible-mindmap/reports/golden-audit-<batchId>.json",
+    "resultsFields": [
+      "batchId", "mergeCommit", "sampleStrongs", "originalVerdicts (revealed after re-review)",
+      "reReviewVerdicts", "discrepancies", "discrepancyRate", "haltTriggered", "recommendedActions"
+    ]
+  },
+  "governance": {
+    "auditOnly": true,
+    "contractMutationRequiresPolicyChangeReview": true,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false
+  },
+  "stateInitial": {
+    "installedByPr": null,
+    "installedByMergeCommit": null,
+    "firstAuditScheduledAt": null,
+    "totalAuditsRun": 0,
+    "totalDiscrepanciesFound": 0,
+    "totalHaltsTriggered": 0
+  }
+}

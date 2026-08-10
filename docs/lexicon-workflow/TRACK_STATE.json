@@ -95,14 +95,20 @@
     "exactMappingCount": 22,
     "subtreeMapping": {
       "sourceNodeId": "1.5",
-      "goldenNodeIds": ["1.5", "1.5.1", "1.5.1.1"]
+      "goldenNodeIds": [
+        "1.5",
+        "1.5.1",
+        "1.5.1.1"
+      ]
     },
     "legacyRetained": {
       "goldenNodeId": "1.2.8",
       "primarySourceSupport": false,
       "evidencePolicy": "legacy-approved-snapshot-only"
     },
-    "reviewRequiredObservations": ["SOURCE_TEXT_TRIAL_TERRITORY"],
+    "reviewRequiredObservations": [
+      "SOURCE_TEXT_TRIAL_TERRITORY"
+    ],
     "allSourceNodesAccounted": true,
     "allGoldenNodesAccounted": true,
     "evidenceRegenerationAllowed": true,
@@ -118,7 +124,11 @@
     "sourceOutputFingerprint": "sha256:44b3a3d7201c3d4dcbf4a6934137bacff0c70bbdf557978b86354a92d6a0323d",
     "reconciliationFingerprint": "sha256:0c832fea21c03e418f85d0f5c55ae8e7fa8429f24ee330f1dabca24731716b66",
     "koreanSnapshotFingerprint": "sha256:245963e2505bb1d73b9ac48b8bfb3ed14a1fd8bcb0fb74cd2501e289099e335a",
-    "evidenceSupportCounts": { "direct": 22, "combined": 3, "legacyOnly": 1 },
+    "evidenceSupportCounts": {
+      "direct": 22,
+      "combined": 3,
+      "legacyOnly": 1
+    },
     "approvedKoreanPreserved": "26/26",
     "candidateGenerationAllowed": false,
     "approvalRegistryWriteAllowed": false,
@@ -129,7 +139,10 @@
     "version": 1,
     "pr": 275,
     "contractRunId": 31351911899,
-    "validatedStrong": ["H776", "H1254"],
+    "validatedStrong": [
+      "H776",
+      "H1254"
+    ],
     "h1254Mode": "in-memory-contract-probe-only",
     "checks": [
       "strong-identity-normalization-and-fingerprint",
@@ -284,9 +297,18 @@
     "candidateUnitCount": 27,
     "bdbSourceNodeCount": 173,
     "extendedStrongResolution": {
-      "H1254": ["H1254a"],
-      "H834": ["H834a", "H834b", "H834c", "H834d"],
-      "H6030": ["H6030b"]
+      "H1254": [
+        "H1254a"
+      ],
+      "H834": [
+        "H834a",
+        "H834b",
+        "H834c",
+        "H834d"
+      ],
+      "H6030": [
+        "H6030b"
+      ]
     },
     "h776ApprovedSenseCount": 26,
     "h776RetranslationTarget": false,
@@ -312,9 +334,15 @@
     "translatedSourceNodeCount": 150,
     "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
     "candidateManifestPath": "bible-mindmap/data/lexicon/candidates/genesis-p5/manifest.json",
-    "candidateManifestFingerprint": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+    "candidateManifestFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
     "candidatePr": 293,
-    "riskTiers": { "R0": 0, "R1": 10, "R2": 7, "R3": 5, "R4": 5 },
+    "riskTiers": {
+      "R0": 0,
+      "R1": 10,
+      "R2": 7,
+      "R3": 5,
+      "R4": 5
+    },
     "h776RetranslationTarget": false,
     "independentAuditRequired": true,
     "finalApprovalAllowed": false,
@@ -322,9 +350,65 @@
     "serviceUiWriteAllowed": false,
     "productionWriteAllowed": false,
     "existingApprovedMeaningMutationAllowed": false,
-    "phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge": true
+    "phaseTransitionEffectiveOnlyAfterIndependentReviewAndMerge": true,
+    "candidateManifestFingerprintPreviouslyKnown": "sha256:c29131d2747899fc0093dc678d349da3bbae0887d8f8b570821cea73e0d8fbd1",
+    "candidateManifestFingerprintReconciledBy": {
+      "pr": 297,
+      "mergeCommit": "f51c8c14daf8845fd9a86fdce9f7be0d455c93d0"
+    },
+    "auditChain": {
+      "claudeIndependentAudit": {
+        "pr": 296,
+        "status": "COMPLETE",
+        "verdictCounts": {
+          "PASS": 25,
+          "REVISE": 2,
+          "DISPUTE": 0
+        },
+        "evidencePath": "bible-mindmap/reports/genesis-p5-claude-audit-results.json"
+      },
+      "reviseApplication": {
+        "pr": 297,
+        "status": "COMPLETE",
+        "revisedStrongs": [
+          "H4325",
+          "H46"
+        ],
+        "recheckPath": "bible-mindmap/reports/genesis-p5-claude-audit-recheck-h4325-h46.json"
+      },
+      "geminiDisputeReview": {
+        "pr": 298,
+        "status": "COMPLETE",
+        "verdictCounts": {
+          "PASS": 5,
+          "REVISE": 0,
+          "DISPUTE": 0
+        },
+        "resultsPath": "bible-mindmap/reports/genesis-p5-r3-gemini-dispute-results.json",
+        "interimRetractions": [
+          "H1254a: DISPUTE → PASS",
+          "H7307: REVISE → PASS"
+        ]
+      },
+      "threeModelConsensusPass": [
+        "H430",
+        "H1254a",
+        "H3117",
+        "H7307",
+        "H46"
+      ],
+      "r4HumanFinalWordingPending": [
+        "H120",
+        "H6030b",
+        "H7650",
+        "H28",
+        "H39"
+      ]
+    },
+    "postAuditStatus": "R3_CONSENSUS_COMPLETE_R4_HUMAN_WORDING_PENDING",
+    "postAuditStatusNote": "Progress marker for v4 pipeline. Original .status preserved for backward-compatible verify-lexicon-approval-registry.mjs checkpoint assertion."
   },
-  "nextAction": "PR #293 전체 CI → Claude 독립 audit; R3 5건은 Gemini dispute review, R4 5건은 human final wording Gate; Approval Registry/UI/production write 금지",
+  "nextAction": "v4 Automation Foundation PR CI 통과·독립 reviewer APPROVE 후 v4 auto-merge 계약 검증. R3 5건 승격은 별도 PR, R4 5건은 EXTENDED_RESEARCH_REQUIRED 큐로 이동.",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
@@ -357,5 +441,58 @@
     "trackDashboardId": "3b70b963-e600-8138-bf8b-d130de9015fe",
     "masterWorkflowId": "3b70b963-e600-8184-ae16-c0ebd68b9cd2",
     "llmInstructionId": "3b20b963-e600-811e-9630-c9dffb7958b6"
+  },
+  "automationFoundationV4": {
+    "schemaVersion": 1,
+    "policyDoc": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md",
+    "status": "FOUNDATION_INSTALLING",
+    "installedByPr": null,
+    "installedByMergeCommit": null,
+    "automationReadiness": {
+      "tierRouter": "INSTALLING",
+      "multiModelConsensusGate": "INSTALLING",
+      "universalRegistryRegression": "INSTALLING",
+      "goldenAuditSampleContract": "INSTALLING",
+      "reviewerScopedAutoMerge": "INSTALLING",
+      "humanExceptionRouting": "INSTALLING"
+    },
+    "config": {
+      "tierGateMatrix": "bible-mindmap/data/lexicon/v4/tier-gate-matrix.json",
+      "humanExceptionTriggers": "bible-mindmap/data/lexicon/v4/human-exception-triggers.json",
+      "goldenAuditContract": "bible-mindmap/data/lexicon/v4/golden-audit-contract.json"
+    },
+    "verifiers": {
+      "consensusGate": "bible-mindmap/scripts/verify-lexicon-v4-consensus-gate.mjs",
+      "universalRegression": "bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs",
+      "goldenAuditContract": "bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs",
+      "foundationContract": "bible-mindmap/scripts/verify-lexicon-v4-foundation-contract.mjs"
+    },
+    "ci": {
+      "foundationWorkflow": ".github/workflows/lexicon-v4-foundation.yml",
+      "autoMergeWorkflow": ".github/workflows/lexicon-v4-auto-merge.yml"
+    },
+    "autoApprovalEligibility": {
+      "r0_r1": "auto-eligible when tier-gate-matrix AND is satisfied",
+      "r2": "auto-eligible when + corpus + theology gate PASS",
+      "r3": "auto-eligible when 3-of-3 GPT·Claude·Gemini PASS + all AND-gates PASS + unresolved=0",
+      "r4": "never auto-eligible; routed to EXTENDED_RESEARCH_REQUIRED before human"
+    },
+    "failClosedConditions": [
+      "candidateFingerprint drift",
+      "shardFingerprint drift",
+      "bundleFingerprint drift",
+      "sourceInputBundleFingerprint drift",
+      "model consensus not 3-of-3",
+      "unresolved review threads > 0",
+      "reviewer review not APPROVED at exact head SHA",
+      "existing approved meaning mutation detected",
+      "H776 sense tree byte drift",
+      "license unknown or prohibited",
+      "golden audit sample discrepancy above threshold",
+      "any AND-gate below FAIL",
+      "CI required check fail"
+    ],
+    "currentMergeableWithoutHumanApproval": false,
+    "currentMergeableReason": "v4 foundation not yet installed; existing safe-auto-merge continues to require chatgpt/ branch prefix"
   }
 }

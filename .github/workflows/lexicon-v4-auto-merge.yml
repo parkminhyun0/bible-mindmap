@@ -1,0 +1,208 @@
+name: Lexicon v4 Auto Merge
+
+# Evidence-First Autonomous Lexicon v4 reviewer-scoped auto-merge.
+#
+# Corrected retry path (defect 1):
+#   Triggered on pull_request_review · check_suite · workflow_run so that:
+#     APPROVED at exact head SHA + CI still pending  → WAIT
+#     Same head + CI later completes                 → workflow re-evaluates
+#     existing exact-head APPROVED review            → AUTO_MERGE (no new human review)
+#
+# Corrected scope gate (defect 3):
+#   Requires v4 label AND lexicon-only path scope (both). Label alone never
+#   authorizes non-lexicon auto-merge.
+#
+# Corrected registry gate (defect 2):
+#   Compares base↔head registries. NEW entry addition is allowed. Any
+#   mutation/deletion/reduction/sense-tree drift/fingerprint drift of an
+#   EXISTING approved entry ⇒ HUMAN_EXCEPTION_REQUIRED (never auto).
+#   `existing-approved-meaning-change` label is a routing marker, NOT
+#   an auto-merge authorization.
+#
+# Corrected review state (defect 4):
+#   Resolves current head SHA from API, ignores approvals on older heads,
+#   uses latest review per user; CHANGES_REQUESTED at latest state blocks.
+#   Retrieval failures fail-closed.
+#
+# Corrected required-CI (defect 5):
+#   Explicit V4_REQUIRED_CHECKS set. Missing check ⇒ WAIT, pending ⇒ WAIT,
+#   failed ⇒ FAIL_CLOSED. Never silently accepts because no v4 check present.
+#
+# On AUTO_MERGE: squash merge at current head SHA + dispatch deploy.yml.
+
+on:
+  pull_request_review:
+    types: [submitted]
+  check_suite:
+    types: [completed]
+  workflow_run:
+    workflows:
+      - Lexicon v4 Foundation
+      - Validate pull request
+      - Genesis Lexicon G1 Contract
+      - Verify RESUME checkpoint
+    types: [completed]
+
+permissions:
+  actions: write
+  checks: read
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  v4-auto-merge:
+    name: v4 reviewer-scoped auto-merge
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout head (for shared decision module)
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+
+      - name: Resolve candidate PR numbers from event
+        id: prs
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const event = context.eventName;
+            let prNumbers = [];
+            if (event === 'pull_request_review') {
+              if (context.payload.review?.state === 'approved') prNumbers = [context.payload.pull_request.number];
+            } else if (event === 'check_suite') {
+              prNumbers = (context.payload.check_suite.pull_requests || []).map((p) => p.number);
+            } else if (event === 'workflow_run') {
+              prNumbers = (context.payload.workflow_run.pull_requests || []).map((p) => p.number);
+            }
+            core.info(`event=${event} → candidate PRs = ${JSON.stringify(prNumbers)}`);
+            core.setOutput('pr_numbers', JSON.stringify(prNumbers));
+
+      - name: Evaluate v4 auto-merge for each candidate PR
+        if: steps.prs.outputs.pr_numbers != '[]'
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const path = require('path');
+            const { pathToFileURL } = require('url');
+            const decisionModuleUrl = pathToFileURL(
+              path.resolve(process.env.GITHUB_WORKSPACE, 'bible-mindmap/scripts/lib/v4-auto-merge-decision.mjs')
+            ).href;
+            const { decideAutoMerge, diffApprovalRegistries, V4_REQUIRED_CHECKS, V4_REVIEWER } = await import(decisionModuleUrl);
+
+            const prNumbers = JSON.parse('${{ steps.prs.outputs.pr_numbers }}');
+            const owner = context.repo.owner;
+            const repo  = context.repo.repo;
+
+            for (const prNumber of prNumbers) {
+              core.startGroup(`PR #${prNumber}`);
+              try {
+                const retrievalErrors = [];
+
+                // 1. Fresh PR object (never trust stale event payload)
+                const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+                const currentHeadSha = pr.head.sha;
+                core.info(`current head SHA = ${currentHeadSha}`);
+
+                // 2. Files changed
+                const files = await github.paginate(github.rest.pulls.listFiles, {
+                  owner, repo, pull_number: prNumber, per_page: 100,
+                });
+                const filenames = files.map((f) => f.filename);
+
+                // 3. Reviews (all, chronological)
+                const { data: reviewsAll } = await github.rest.pulls.listReviews({ owner, repo, pull_number: prNumber, per_page: 100 });
+
+                // 4. Review threads (unresolved count)
+                let reviewThreadsUnresolved = null;
+                try {
+                  const q = await github.graphql(
+                    `query($owner:String!,$repo:String!,$number:Int!){repository(owner:$owner,name:$repo){pullRequest(number:$number){reviewThreads(first:100){nodes{isResolved isOutdated}}}}}`,
+                    { owner, repo, number: prNumber }
+                  );
+                  const nodes = q.repository.pullRequest.reviewThreads.nodes;
+                  reviewThreadsUnresolved = nodes.filter((t) => !t.isResolved && !t.isOutdated).length;
+                } catch (e) {
+                  retrievalErrors.push(`graphql review threads: ${e.message}`);
+                }
+
+                // 5. Required check statuses (Map<name, {status, conclusion}>)
+                const checkRuns = await github.paginate(github.rest.checks.listForRef, {
+                  owner, repo, ref: currentHeadSha, per_page: 100,
+                });
+                const requiredCheckStatuses = new Map();
+                for (const cr of checkRuns) {
+                  if (V4_REQUIRED_CHECKS.has(cr.name)) {
+                    // Keep the latest per name
+                    const prev = requiredCheckStatuses.get(cr.name);
+                    if (!prev || (cr.started_at || '') > (prev.started_at || '')) {
+                      requiredCheckStatuses.set(cr.name, { status: cr.status, conclusion: cr.conclusion, started_at: cr.started_at });
+                    }
+                  }
+                }
+
+                // 6. Registry diff (base vs head)
+                let registryDiff = null;
+                try {
+                  const registryPath = 'bible-mindmap/data/lexicon/approval-registry.json';
+                  const registryTouched = filenames.includes(registryPath);
+                  if (registryTouched) {
+                    const readRegistryAt = async (ref) => {
+                      const { data } = await github.rest.repos.getContent({ owner, repo, path: registryPath, ref });
+                      const buf = Buffer.from(data.content, data.encoding || 'base64');
+                      return JSON.parse(buf.toString('utf8'));
+                    };
+                    const baseRegistry = await readRegistryAt(pr.base.sha);
+                    const headRegistry = await readRegistryAt(currentHeadSha);
+                    registryDiff = diffApprovalRegistries(baseRegistry, headRegistry);
+                    core.info(`registry diff: additions=${registryDiff.additions.length} mutations=${registryDiff.mutations.length} deletions=${registryDiff.deletions.length} drifts=${registryDiff.drifts.length}`);
+                  }
+                } catch (e) {
+                  retrievalErrors.push(`registry diff: ${e.message}`);
+                }
+
+                // 7. Decision
+                const decision = decideAutoMerge({
+                  pr,
+                  currentHeadSha,
+                  filenames,
+                  reviewsAll,
+                  reviewThreadsUnresolved,
+                  requiredCheckStatuses,
+                  registryDiff,
+                  mergeableState: pr.mergeable_state,
+                  retrievalErrors,
+                });
+                core.info(`decision = ${decision.verdict} · ${decision.reason}`);
+
+                if (decision.verdict === 'AUTO_MERGE') {
+                  // Refresh once more to catch head drift between decision and merge
+                  const { data: fresh } = await github.rest.pulls.get({ owner, repo, pull_number: prNumber });
+                  if (fresh.head.sha !== currentHeadSha) {
+                    core.setFailed(`Head drifted between decision and merge: ${fresh.head.sha} != ${currentHeadSha}; fail-closed.`);
+                    continue;
+                  }
+                  const result = await github.rest.pulls.merge({
+                    owner, repo, pull_number: prNumber,
+                    merge_method: 'squash', sha: fresh.head.sha, commit_title: fresh.title,
+                  });
+                  if (!result.data.merged) {
+                    core.setFailed(result.data.message || 'GitHub declined to merge.');
+                    continue;
+                  }
+                  core.notice(`v4 auto-merged PR #${prNumber} at ${result.data.sha}`);
+                  await github.rest.actions.createWorkflowDispatch({ owner, repo, workflow_id: 'deploy.yml', ref: 'main' });
+                  core.notice(`deploy.yml dispatched for ${result.data.sha}`);
+                } else if (decision.verdict === 'FAIL_CLOSED') {
+                  core.setFailed(`v4 auto-merge FAIL_CLOSED · ${decision.reason}`);
+                } else if (decision.verdict === 'WAIT') {
+                  core.notice(`v4 auto-merge WAIT · ${decision.reason} · will re-evaluate on next check_suite / workflow_run event`);
+                } else {
+                  core.info(`v4 auto-merge DECLINE · ${decision.reason}`);
+                }
+              } finally {
+                core.endGroup();
+              }
+            }

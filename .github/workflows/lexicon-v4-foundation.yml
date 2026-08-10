@@ -1,0 +1,86 @@
+name: Lexicon v4 Foundation
+
+on:
+  pull_request:
+    paths:
+      - 'docs/lexicon-workflow/**'
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/scripts/verify-lexicon-v4-*.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs'
+      - 'bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs'
+      - '.github/workflows/lexicon-v4-*.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md'
+      - 'bible-mindmap/data/lexicon/v4/**'
+      - 'bible-mindmap/scripts/verify-lexicon-v4-*.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs'
+      - 'bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  foundation-contract:
+    name: v4 foundation contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: verify-lexicon-v4-foundation-contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-v4-foundation-contract.mjs
+
+  consensus-gate:
+    name: v4 consensus gate self-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: verify-lexicon-v4-consensus-gate --self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-v4-consensus-gate.mjs --self-test
+
+  universal-regression:
+    name: v4 universal registry regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: verify-lexicon-registry-universal-regression --self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-registry-universal-regression.mjs --self-test
+      - name: verify against live registry
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-registry-universal-regression.mjs
+
+  golden-audit-contract:
+    name: v4 golden audit sample contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: verify-golden-audit-sample-contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-golden-audit-sample-contract.mjs
+
+  auto-merge-decision-dry-run:
+    name: v4 auto-merge decision dry-run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: v4-auto-merge-decision-dry-run
+        working-directory: bible-mindmap
+        run: node scripts/tests/v4-auto-merge-decision-dry-run.mjs
