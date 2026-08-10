@@ -23,8 +23,7 @@
         "approvedSenseTree",
         "reviewer",
         "approvedAt",
-        "evidencePacketFingerprint",
-        "entryFingerprint"
+        "evidencePacketFingerprint"
       ],
       "properties": {
         "identity": { "$ref": "StrongIdentity.schema.json" },
@@ -35,8 +34,7 @@
         },
         "reviewer": { "$ref": "#/$defs/reviewer" },
         "approvedAt": { "type": "string", "format": "date-time" },
-        "evidencePacketFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
-        "entryFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        "evidencePacketFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
       }
     },
     "approvedSenseNode": {
