@@ -1,0 +1,166 @@
+name: Lexicon v4 Auto Merge
+
+# Evidence-First Autonomous Lexicon v4 auto-merge.
+# Complements safe-auto-merge with STRICTER conditions for lexicon-scoped PRs:
+#   - Requires explicit APPROVED review from `bible-mindmap-review` on the
+#     EXACT current head SHA (drift = fail-closed).
+#   - Requires zero unresolved review threads.
+#   - Requires PR label `lexicon-v4-auto-merge-eligible` OR PR touches
+#     ONLY lexicon-scoped paths.
+#   - Fail-closes when the PR touches
+#     `bible-mindmap/data/lexicon/approval-registry.json` without the
+#     `existing-approved-meaning-change` label.
+#   - Fail-closes if any required v4 check has not concluded SUCCESS.
+# After merge: dispatches deploy.yml (matches safe-auto-merge behavior).
+
+on:
+  pull_request_review:
+    types: [submitted]
+  check_suite:
+    types: [completed]
+
+permissions:
+  actions: write
+  checks: read
+  contents: write
+  pull-requests: write
+  statuses: read
+
+jobs:
+  v4-auto-merge:
+    if: github.event_name == 'pull_request_review' && github.event.review.state == 'approved'
+    runs-on: ubuntu-latest
+    steps:
+      - name: v4 reviewer-scoped auto-merge
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const review = context.payload.review;
+            const pr = context.payload.pull_request;
+
+            const V4_REVIEWER = 'bible-mindmap-review';
+            const V4_LABEL = 'lexicon-v4-auto-merge-eligible';
+            const HIGH_RISK_LABEL = 'existing-approved-meaning-change';
+
+            // ── Gate 0: reviewer identity
+            if (review.user.login !== V4_REVIEWER) {
+              core.info(`Review by ${review.user.login}; v4 auto-merge only listens to ${V4_REVIEWER}.`);
+              return;
+            }
+
+            // ── Gate 1: PR baseline
+            if (pr.state !== 'open' || pr.draft) {
+              core.info('PR not open/ready.');
+              return;
+            }
+            if (pr.head.repo.full_name !== `${owner}/${repo}`) {
+              core.setFailed('Fork PRs are never auto-merged.');
+              return;
+            }
+
+            // ── Gate 2: review SHA drift (fail-closed)
+            if (review.commit_id !== pr.head.sha) {
+              core.setFailed(`Review commit ${review.commit_id} != PR head ${pr.head.sha}; v4 requires exact-SHA approval.`);
+              return;
+            }
+
+            // ── Gate 3: label OR lexicon-only path scope
+            const labels = new Set(pr.labels.map((l) => l.name));
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner, repo, pull_number: pr.number, per_page: 100,
+            });
+            const filenames = files.map((f) => f.filename);
+            const lexiconOnly = filenames.every((f) =>
+              f.startsWith('bible-mindmap/data/lexicon/') ||
+              f.startsWith('bible-mindmap/reports/') ||
+              f.startsWith('docs/lexicon-workflow/') ||
+              f.startsWith('bible-mindmap/scripts/verify-lexicon-') ||
+              f.startsWith('bible-mindmap/scripts/verify-golden-audit-') ||
+              f.startsWith('bible-mindmap/scripts/tests/v4-') ||
+              f === 'memory/RESUME.json' ||
+              f.startsWith('.github/workflows/lexicon-v4-')
+            );
+            if (!labels.has(V4_LABEL) && !lexiconOnly) {
+              core.info(`PR outside lexicon scope and no ${V4_LABEL} label; declining v4 auto-merge.`);
+              return;
+            }
+
+            // ── Gate 4: high-risk lexicon touch requires HIGH_RISK_LABEL
+            const touchesRegistry = filenames.some((f) => f === 'bible-mindmap/data/lexicon/approval-registry.json');
+            if (touchesRegistry && !labels.has(HIGH_RISK_LABEL)) {
+              core.setFailed(`PR touches approval-registry.json without ${HIGH_RISK_LABEL} label; fail-closed per v4 §3.`);
+              return;
+            }
+
+            // ── Gate 5: no other CHANGES_REQUESTED, no unresolved threads
+            const { data: reviews } = await github.rest.pulls.listReviews({ owner, repo, pull_number: pr.number });
+            if (reviews.some((r) => r.state === 'CHANGES_REQUESTED')) {
+              core.setFailed('Some reviewer requested changes; fail-closed.');
+              return;
+            }
+            const threads = await github.graphql(
+              `query($owner: String!, $repo: String!, $number: Int!) {
+                repository(owner: $owner, name: $repo) {
+                  pullRequest(number: $number) {
+                    reviewThreads(first: 100) {
+                      nodes { isResolved isOutdated }
+                    }
+                  }
+                }
+              }`,
+              { owner, repo, number: pr.number }
+            ).catch((e) => { core.warning(`GraphQL review threads fetch failed: ${e.message}`); return null; });
+            if (threads) {
+              const unresolved = threads.repository.pullRequest.reviewThreads.nodes.filter((t) => !t.isResolved && !t.isOutdated);
+              if (unresolved.length > 0) {
+                core.setFailed(`Unresolved review threads: ${unresolved.length}; fail-closed per v4 §4.`);
+                return;
+              }
+            }
+
+            // ── Gate 6: all required workflows on head SHA must be SUCCESS
+            const runs = await github.paginate(github.rest.actions.listWorkflowRunsForRepo, {
+              owner, repo, head_sha: pr.head.sha, event: 'pull_request', per_page: 100,
+            });
+            const pending = runs.filter((r) => r.status !== 'completed');
+            if (pending.length > 0) {
+              core.info(`${pending.length} workflow run(s) still pending; will retrigger on next check_suite event.`);
+              return;
+            }
+            const failed = runs.filter((r) => !['success', 'skipped', 'neutral'].includes(r.conclusion));
+            if (failed.length > 0) {
+              core.setFailed(`Failed workflows on head SHA: ${failed.map((r) => r.name).join(', ')}; fail-closed.`);
+              return;
+            }
+
+            // ── Gate 7: mergeable
+            const refreshed = (await github.rest.pulls.get({ owner, repo, pull_number: pr.number })).data;
+            if (refreshed.mergeable === false || ['dirty', 'blocked', 'behind'].includes(refreshed.mergeable_state)) {
+              core.setFailed(`PR not safely mergeable: ${refreshed.mergeable_state}`);
+              return;
+            }
+            if (refreshed.head.sha !== pr.head.sha) {
+              core.setFailed(`Head SHA drifted after review: ${refreshed.head.sha} != ${pr.head.sha}; fail-closed.`);
+              return;
+            }
+
+            // ── All gates passed: merge
+            const mergeResult = await github.rest.pulls.merge({
+              owner, repo, pull_number: pr.number,
+              merge_method: 'squash',
+              sha: refreshed.head.sha,
+              commit_title: refreshed.title,
+            });
+            if (!mergeResult.data.merged) {
+              core.setFailed(mergeResult.data.message || 'GitHub declined to merge.');
+              return;
+            }
+            core.notice(`v4 auto-merged PR #${pr.number} at ${mergeResult.data.sha}.`);
+
+            // ── Post-merge: dispatch deploy
+            await github.rest.actions.createWorkflowDispatch({
+              owner, repo, workflow_id: 'deploy.yml', ref: 'main',
+            });
+            core.notice(`deploy.yml dispatched for ${mergeResult.data.sha}.`);

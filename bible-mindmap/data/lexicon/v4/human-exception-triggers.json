@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "triggersId": "lexicon-v4-human-exception-triggers-v1",
+  "policyDoc": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md",
+  "principle": "사람에게 올릴 것만 열거. 여기 없는 조건은 사람 개입 대상 아님(자동/EXTENDED_RESEARCH 경유).",
+  "triggers": [
+    {
+      "id": "license-unknown-or-prohibited",
+      "description": "새 소스의 라이선스 미확인 또는 금지 라이선스 감지",
+      "detectors": ["verify-lexicon-source-license", "SOURCE_REGISTRY status=unknown"],
+      "route": "human-license-review",
+      "failClosed": true
+    },
+    {
+      "id": "existing-approved-meaning-change",
+      "description": "이미 승격된 Strong entry의 sense translationKo/tree 구조 변경 시도",
+      "detectors": ["verify-lexicon-registry-universal-regression"],
+      "route": "human-high-risk-gate",
+      "labelRequired": "existing-approved-meaning-change",
+      "failClosed": true
+    },
+    {
+      "id": "unresolvable-source-model-conflict",
+      "description": "3 모델 최종 판정 상충 유지 또는 evidence 파일 간 결정적 충돌",
+      "detectors": ["verify-lexicon-v4-consensus-gate — consensus-3-of-3 FAIL after retries"],
+      "route": "human-theology-review",
+      "failClosed": true
+    },
+    {
+      "id": "theology-policy-change",
+      "description": "개혁주의 신학 정책(WCF/대소요리/신조) 개정 요청",
+      "detectors": ["docs/lexicon-workflow/THEOLOGY_POLICY.md diff"],
+      "route": "human-theology-policy-review",
+      "failClosed": true
+    },
+    {
+      "id": "security-cost-permission",
+      "description": "secret/token 노출, cost quota 초과, 외부 API 인증 변경",
+      "detectors": ["verify-workflow-security", "verify-dependency-integrity", "cost quota alert"],
+      "route": "human-security-review",
+      "failClosed": true
+    },
+    {
+      "id": "golden-audit-regression",
+      "description": "Golden Audit sample 불일치율 임계 초과",
+      "detectors": ["verify-golden-audit-sample-contract discrepancyRate > threshold"],
+      "route": "human-golden-audit-review",
+      "labelRequired": "golden-audit-halt",
+      "failClosed": true
+    }
+  ],
+  "notEscalatedToHumanByDefault": [
+    "R4 uncertain-etymology (경유: EXTENDED_RESEARCH_REQUIRED)",
+    "R3 3-of-3 PASS (경유: auto-eligible)",
+    "R0-R2 gate PASS (경유: auto-eligible)",
+    "single-model interim revision when final=PASS",
+    "candidate wording refinement within AND-gate"
+  ],
+  "governance": {
+    "auditOnly": true,
+    "triggerListMutationRequiresPolicyChangeReview": true
+  }
+}
