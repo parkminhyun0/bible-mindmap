@@ -8,6 +8,8 @@ on:
       - 'bible-mindmap/data/lexicon/fixtures/**'
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
+      - 'bible-mindmap/scripts/lib/lexicon-evidence-verifier.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-generic-evidence.mjs'
       - 'bible-mindmap/scripts/build-h776-evidence-packet-v2.mjs'
       - 'bible-mindmap/scripts/verify-h776-evidence-regeneration.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-evidence-contracts.mjs'
@@ -23,6 +25,8 @@ on:
       - 'bible-mindmap/data/lexicon/fixtures/**'
       - 'bible-mindmap/data/lexicon/source-registry.json'
       - 'bible-mindmap/src/data/lexiconTranslationPilot.js'
+      - 'bible-mindmap/scripts/lib/lexicon-evidence-verifier.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-generic-evidence.mjs'
       - 'bible-mindmap/scripts/build-h776-evidence-packet-v2.mjs'
       - 'bible-mindmap/scripts/verify-h776-evidence-regeneration.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-evidence-contracts.mjs'
@@ -49,6 +53,9 @@ jobs:
       - name: Verify Source Registry prerequisite
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-source-registry.mjs
-      - name: Verify Strong identity, Evidence Packet v2 and H776 Golden provenance
+      - name: Verify generic Strong evidence, license, provenance and fingerprint contracts
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-generic-evidence.mjs
+      - name: Verify H776 Golden regression provenance
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-evidence-contracts.mjs
