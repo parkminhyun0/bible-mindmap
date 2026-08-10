@@ -11,6 +11,7 @@ const DATA = path.join(ROOT, 'data/lexicon');
 const PUBLIC = path.join(ROOT, 'public/lexicon/ko');
 const POPUP_PATH = path.join(ROOT, 'src/components/LexiconPopup.jsx');
 const DRAWER_PATH = path.join(ROOT, 'src/components/LexiconTranslationDrawer.jsx');
+const WORD_SEARCH_KO_PATH = path.join(ROOT, 'src/components/ApprovedKoreanLexiconPane.jsx');
 const BRIDGE_PATH = path.join(ROOT, 'src/utils/lexiconTranslationPilotBridge.jsx');
 
 function readJson(filePath) { return JSON.parse(fs.readFileSync(filePath, 'utf8')); }
@@ -76,6 +77,7 @@ assert.equal(requests.length, requestCount, 'unapproved Strong must not trigger 
 
 const popupSource = fs.readFileSync(POPUP_PATH, 'utf8');
 const drawerSource = fs.readFileSync(DRAWER_PATH, 'utf8');
+const wordSearchKoSource = fs.readFileSync(WORD_SEARCH_KO_PATH, 'utf8');
 const bridgeSource = fs.readFileSync(BRIDGE_PATH, 'utf8');
 
 assert.doesNotMatch(popupSource, /lexiconApprovalLoader/, 'LexiconPopup must not own the detailed approved dictionary loader');
@@ -102,7 +104,23 @@ assert.match(drawerSource, /evidenceCounts\['legacy-only'\]/, 'drawer must discl
 assert.doesNotMatch(drawerSource, /enrichment\?\.definition|enrichment\.definition/, 'legacy pilot definition must not replace approved Registry translations');
 assert.doesNotMatch(drawerSource, /method\s*:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/, 'drawer must remain read-only');
 
+assert.match(wordSearchKoSource, /lexiconApprovalLoader\.loadApprovedEntry\(strong\)/, 'word search Korean pane must load the same approved Registry entry');
+assert.match(wordSearchKoSource, /getLexiconTranslation\(strong\)/, 'word search Korean pane must load the same BDB enrichment as the popup drawer');
+assert.match(wordSearchKoSource, /BDB 한글 사전 · 승인본/, 'word search Korean pane must mirror the popup drawer title');
+assert.match(wordSearchKoSource, /✓ 사람 검토 완료/, 'word search Korean pane must mirror the popup drawer review badge');
+assert.match(wordSearchKoSource, /enrichment\?\.originKo/, 'word search Korean pane must mirror BDB origin enrichment');
+assert.match(wordSearchKoSource, /enrichment\?\.twot\?\.entry/, 'word search Korean pane must mirror TWOT enrichment');
+assert.match(wordSearchKoSource, /evidenceCounts\.direct/, 'word search Korean pane must mirror direct evidence counts');
+assert.match(wordSearchKoSource, /evidenceCounts\['legacy-only'\]/, 'word search Korean pane must mirror legacy-only evidence disclosure');
+assert.match(wordSearchKoSource, /Approval Registry · 승인 의미 \{senseCount\}개 · 읽기 전용/, 'word search Korean pane must mirror the read-only footer');
+assert.match(wordSearchKoSource, /data-modal-scroll-region="true"/, 'word search Korean pane must explicitly expose a modal scroll region');
+assert.match(wordSearchKoSource, /WebkitOverflowScrolling: 'touch'/, 'word search Korean pane must retain momentum scrolling');
+assert.match(wordSearchKoSource, /overscrollBehavior: 'contain'/, 'word search Korean pane must contain scroll chaining at panel boundaries');
+assert.match(wordSearchKoSource, /touchAction: 'pan-y'/, 'word search Korean pane must allow one-finger vertical scrolling');
+assert.doesNotMatch(wordSearchKoSource, /method\s*:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/, 'word search Korean pane must remain read-only');
+
 console.log('✓ P4 Approval Registry delivery + rich translation drawer SSOT PASS');
 console.log('  H0776→H776 · approved senses 26/26 · one lazy shard · unapproved Strong fail-closed');
 console.log('  detailed Korean definition: Approval Registry only · BDB origin/TWOT: optional enrichment');
-console.log('  LexiconPopup: compact summary · LexiconTranslationDrawer: rich approved dictionary');
+console.log('  LexiconPopup: compact summary · LexiconTranslationDrawer + WordSearch: rich approved dictionary');
+console.log('  WordSearch Korean pane: popup-drawer parity · explicit momentum modal scroll region');
