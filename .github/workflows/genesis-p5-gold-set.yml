@@ -1,0 +1,96 @@
+name: Genesis P5 Gold Set Contract
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/data/lexicon/approval-registry.json'
+      - 'docs/lexicon-workflow/TRACK_STATE.json'
+      - 'memory/RESUME.json'
+      - '.github/workflows/genesis-p5-gold-set.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
+      - 'bible-mindmap/scripts/build-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-gold-set.mjs'
+      - 'bible-mindmap/data/lexicon/approval-registry.json'
+      - 'docs/lexicon-workflow/TRACK_STATE.json'
+      - 'memory/RESUME.json'
+      - '.github/workflows/genesis-p5-gold-set.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-p5-gold-set-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-gold-selection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Genesis inventory parser self-test
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --self-test
+
+      - name: P5 Gold selector self-test
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-gold-set.mjs --self-test
+
+      - name: P5 Gold verifier self-test
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-gold-set.mjs --self-test
+
+      - name: Rebuild Genesis Strong inventory
+        working-directory: bible-mindmap
+        run: node scripts/report-genesis-strong-inventory.mjs --strict --write=reports/genesis-strong-inventory.json
+
+      - name: Build deterministic Genesis Gold 25 selection
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-gold-set.mjs
+
+      - name: Verify Genesis Gold 25 selection and P4 golden regression
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-gold-set.mjs --strict
+
+      - name: Guard selection-only contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const gold = JSON.parse(fs.readFileSync('reports/genesis-p5-gold-set.json', 'utf8'))
+          const gates = gold.governance
+          if (gold.counts.selected !== 25) throw new Error(`expected 25 selected, got ${gold.counts.selected}`)
+          if (gold.sourceEvidence.h776ApprovedSenseCount !== 26) throw new Error('H776 26/26 regression failed')
+          for (const key of ['candidateGenerationAllowed','approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) {
+            if (gates[key] !== false) throw new Error(`${key} must remain false`)
+          }
+          const groups = Object.entries(gold.counts.groups).map(([key, value]) => `${key}=${value}`).join(' · ')
+          const summary = [
+            '## P5 · 창세기 Gold 25 선정 계약',
+            '',
+            `- 선정: **${gold.counts.selected}/25**`,
+            `- 그룹: ${groups}`,
+            `- H776 회귀: **${gold.sourceEvidence.h776ApprovedSenseCount}/26**`,
+            `- candidate generation: **${gates.candidateGenerationAllowed}**`,
+            `- Registry/UI/production write: **false**`,
+            '- 단계 전환: 독립 reviewer 승인 후에만 유효',
+          ].join('\n')
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`)
+          console.log(summary)
+          NODE
+
+      - name: Guard tracked source integrity
+        run: git diff --exit-code

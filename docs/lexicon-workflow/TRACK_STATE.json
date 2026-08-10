@@ -3,8 +3,8 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "P3_COMPLETE",
-  "activePhase": "P4_REGISTRY_SHARD_REACT_INTEGRATION",
+  "state": "P4_COMPLETE",
+  "activePhase": "P5_GENESIS_GOLD_SELECTION",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -56,7 +56,10 @@
     "p4-lexicon-shard-schema-v1",
     "p4-approval-registry-verifier-v1",
     "p4-5-independent-infrastructure-audit-v1",
-    "p4-first-approval-registry-entry-h776-v1"
+    "p4-first-approval-registry-entry-h776-v1",
+    "p4-readonly-public-delivery-loader-v1",
+    "p4-rich-drawer-approval-registry-ssot-v1",
+    "p4-live-screen-confirmed-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -174,7 +177,7 @@
     ],
     "medium": [
       "manifest-and-shard-builders-do-not-independently-enforce-empty-invariant",
-      "main-branch-protection-requires-zero-reviews-and-does-not-enforce-admins"
+      "main-branch-protection-requires-zero-reviews-and-does-not-enforce-admins-on-main"
     ],
     "low": [
       "argv-out-guard-misses-single-token-out-equals-path-form",
@@ -211,7 +214,39 @@
       "mirror-empty-entries-invariant-in-manifest-and-shard-builders"
     ]
   },
-  "nextAction": "P4 read-only Approval Registry delivery/loader 계약 구현 → 검증 후 LexiconPopup read-only 통합",
+  "p4Completion": {
+    "status": "complete",
+    "registryEntryStrong": "H776",
+    "approvedSenseCount": 26,
+    "loaderPr": 285,
+    "reactPr": 286,
+    "drawerSsotPr": 287,
+    "liveDeployRun": 588,
+    "liveMainSha": "6b82f8d670675351d0605c53e60340a23a1e257b",
+    "liveShaVerified": true,
+    "userScreenConfirmed": true,
+    "userScreenConfirmedAt": "2026-08-10T19:21:00+09:00"
+  },
+  "p5GenesisGoldSelection": {
+    "setId": "genesis-p5-gold-25-v1",
+    "targetSize": 25,
+    "selectionOnly": true,
+    "goldenControl": "H776",
+    "representativeGroups": [
+      "golden-control",
+      "core-theology-context",
+      "high-frequency-general",
+      "medium-frequency-general",
+      "low-frequency-general"
+    ],
+    "candidateGenerationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "phaseTransitionEffectiveOnlyAfterIndependentReview": true
+  },
+  "nextAction": "P5 Genesis Gold 25 결정론 선정 계약 CI → 독립 review 후 merge; 후보 생성 Gate는 별도 전환",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
