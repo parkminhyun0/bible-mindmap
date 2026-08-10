@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { fingerprintWithout, normalizeStrong } from './lib/lexicon-evidence-verifier.mjs';
+import { fingerprintWithout, normalizeStrong, sha256Canonical } from './lib/lexicon-evidence-verifier.mjs';
 import { buildLexiconApprovalRegistry } from './build-lexicon-approval-registry.mjs';
 import { resolveShardDescriptor } from './build-lexicon-shards.mjs';
 
@@ -15,7 +15,7 @@ export function buildLexiconManifest(registry = buildLexiconApprovalRegistry()) 
         strong,
         language: entry.identity.language,
         shardPath: descriptor.shardPath,
-        entryFingerprint: entry.entryFingerprint,
+        entryFingerprint: sha256Canonical(entry),
       };
     })
     .sort((a, b) => a.strong.localeCompare(b.strong, 'en'));
