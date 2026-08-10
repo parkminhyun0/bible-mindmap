@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "policyVersion": "1.0",
+  "policyVersion": "1.1",
   "driverId": "lexicon-source-driver",
-  "driverVersion": "1.0.0",
-  "candidateGenerationEnabled": false,
+  "driverVersion": "1.1.0",
+  "candidateGenerationEnabled": true,
   "allowRegressionExecution": true,
   "requireRegisteredAdapter": true,
   "requireApprovedReadyForSourceParse": true,
   "requireSourceFingerprintForSourceParse": true,
   "requireFullTextStorageForSourceParse": true,
   "requireDerivativePermissionForSourceParse": true,
-  "notes": "P2 source-neutral driver policy. H776 legacy regression may execute, but candidate generation remains disabled until an explicitly licensed full-definition primary source and adapter are approved."
+  "notes": "P5 candidate generation policy. Candidate execution requires BOTH this policy flag and TRACK_STATE currentPhaseGate.candidateGenerationAllowed, plus approved source/license/fingerprint checks. Approval Registry, service/UI and production writes remain separately gated."
 }
