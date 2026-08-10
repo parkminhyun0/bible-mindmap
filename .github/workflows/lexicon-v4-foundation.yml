@@ -26,10 +26,10 @@ jobs:
     name: v4 foundation contract
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "24"
       - name: verify-lexicon-v4-foundation-contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-foundation-contract.mjs
@@ -38,10 +38,10 @@ jobs:
     name: v4 consensus gate self-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "24"
       - name: verify-lexicon-v4-consensus-gate --self-test
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-consensus-gate.mjs --self-test
@@ -50,10 +50,10 @@ jobs:
     name: v4 universal registry regression
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "24"
       - name: verify-lexicon-registry-universal-regression --self-test
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-registry-universal-regression.mjs --self-test
@@ -65,10 +65,10 @@ jobs:
     name: v4 golden audit sample contract
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "24"
       - name: verify-golden-audit-sample-contract
         working-directory: bible-mindmap
         run: node scripts/verify-golden-audit-sample-contract.mjs
@@ -77,10 +77,10 @@ jobs:
     name: v4 auto-merge decision dry-run (12 fixtures)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: "24"
       - name: v4-auto-merge-decision-dry-run
         working-directory: bible-mindmap
         run: node scripts/tests/v4-auto-merge-decision-dry-run.mjs
