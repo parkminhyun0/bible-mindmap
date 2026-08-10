@@ -154,7 +154,7 @@
       "extend-lexicon-evidence-contract-workflow-path-globs"
     ],
     "candidateGenerationAllowed": false,
-    "approvalRegistryPromotionAllowed": false,
+    "approvalRegistryPromotionAllowed": true,
     "serviceUiWriteAllowed": false,
     "goldenMeaningMutationAllowed": false,
     "qualityGateWeakening": false,
