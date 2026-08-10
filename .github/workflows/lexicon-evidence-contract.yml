@@ -74,6 +74,9 @@ jobs:
       - name: Verify generic Strong evidence, license, provenance and fingerprint contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-generic-evidence.mjs
+      - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-approval-registry.mjs
       - name: Verify H776 Golden regression provenance
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-evidence-contracts.mjs

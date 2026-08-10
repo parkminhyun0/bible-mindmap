@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/LexiconManifest.schema.json",
+  "title": "Bible Mind Map Lexicon Manifest",
+  "description": "Index of approved Strong entries and their shard locations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "count", "entries", "manifestFingerprint"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "count": { "type": "integer", "minimum": 0 },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/manifestEntry" }
+    },
+    "manifestFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "manifestEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["strong", "language", "shardPath", "entryFingerprint"],
+      "properties": {
+        "strong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+        "language": { "enum": ["hebrew", "aramaic", "greek"] },
+        "shardPath": { "type": "string", "pattern": "^shards/[A-Za-z0-9._/-]+\\.json$" },
+        "entryFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+      }
+    }
+  }
+}

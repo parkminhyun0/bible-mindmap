@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/LexiconShard.schema.json",
+  "title": "Bible Mind Map Lexicon Shard",
+  "description": "Lazy-loading unit containing only approved Strong entries for one deterministic scope.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "shardId", "scope", "count", "entries", "shardFingerprint"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "shardId": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "scope": { "$ref": "#/$defs/scope" },
+    "count": { "type": "integer", "minimum": 0 },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "ApprovalRegistry.schema.json#/$defs/approvedEntry" }
+    },
+    "shardFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "scope": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "book", "startStrong", "endStrong"],
+          "properties": {
+            "kind": { "const": "book-strong-range" },
+            "book": { "type": "string", "pattern": "^[A-Z0-9]{3,5}$" },
+            "startStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+            "endStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "language", "startStrong", "endStrong"],
+          "properties": {
+            "kind": { "const": "language-strong-range" },
+            "language": { "enum": ["hebrew", "aramaic", "greek"] },
+            "startStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" },
+            "endStrong": { "type": "string", "pattern": "^[HG][1-9][0-9]*[a-z]?$" }
+          }
+        }
+      ]
+    }
+  }
+}
