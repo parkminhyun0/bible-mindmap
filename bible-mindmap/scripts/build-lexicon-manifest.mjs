@@ -1,18 +1,23 @@
 import assert from 'node:assert/strict';
 import { fingerprintWithout, normalizeStrong } from './lib/lexicon-evidence-verifier.mjs';
 import { buildLexiconApprovalRegistry } from './build-lexicon-approval-registry.mjs';
+import { resolveShardDescriptor } from './build-lexicon-shards.mjs';
 
 export function buildLexiconManifest(registry = buildLexiconApprovalRegistry()) {
   assert.equal(registry?.schemaVersion, 1, 'Approval Registry schemaVersion must be 1');
   assert.ok(Array.isArray(registry.entries), 'Approval Registry entries must be an array');
 
   const entries = registry.entries
-    .map((entry) => ({
-      strong: normalizeStrong(entry.identity.canonicalStrong),
-      language: entry.identity.language,
-      shardPath: entry.shardPath,
-      entryFingerprint: entry.entryFingerprint,
-    }))
+    .map((entry) => {
+      const strong = normalizeStrong(entry.identity.canonicalStrong);
+      const descriptor = resolveShardDescriptor(strong, entry.identity.language);
+      return {
+        strong,
+        language: entry.identity.language,
+        shardPath: descriptor.shardPath,
+        entryFingerprint: entry.entryFingerprint,
+      };
+    })
     .sort((a, b) => a.strong.localeCompare(b.strong, 'en'));
 
   const manifest = {
