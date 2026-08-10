@@ -3,8 +3,8 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "P2_COMPLETE",
-  "activePhase": "P3_GENERIC_VERIFIER_REGRESSION_CI",
+  "state": "P3_COMPLETE",
+  "activePhase": "P4_REGISTRY_SHARD_REACT_INTEGRATION",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -42,7 +42,11 @@
     "h776-source-golden-reconciliation-v1",
     "h776-evidence-packet-v2-regenerated",
     "h776-korean-golden-byte-regression-v1",
-    "h776-evidence-regeneration-ci-v1"
+    "h776-evidence-regeneration-ci-v1",
+    "generic-strong-evidence-verifier-v1",
+    "generic-source-license-fingerprint-gate-v1",
+    "arbitrary-strong-contract-probe-h1254-v1",
+    "h776-generic-plus-specialized-regression-ci-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -91,7 +95,28 @@
     "serviceUiWriteAllowed": false,
     "goldenMeaningMutationAllowed": false
   },
-  "nextAction": "P3: generalize the H776 evidence and license checks into reusable verifier/CI contracts for arbitrary Strong entries; keep H776 as the regression fixture and do not enable candidate generation or Approval Registry promotion yet",
+  "genericEvidenceVerification": {
+    "version": 1,
+    "pr": 275,
+    "contractRunId": 31351911899,
+    "validatedStrong": ["H776", "H1254"],
+    "h1254Mode": "in-memory-contract-probe-only",
+    "checks": [
+      "strong-identity-normalization-and-fingerprint",
+      "source-registry-workflow-and-license",
+      "source-content-fingerprint",
+      "sense-provenance-tree",
+      "cluster-and-context-source-declarations",
+      "packet-fingerprint",
+      "candidate-generation-phase-gate",
+      "h776-specialized-golden-regression"
+    ],
+    "candidateGenerationAllowed": false,
+    "approvalRegistryPromotionAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "qualityGateWeakening": false
+  },
+  "nextAction": "P4: define the Approval Registry, manifest/shard contract and lazy React loader using only verified Evidence Packets; keep promotion, service/UI writes and approved meaning changes behind explicit human gates",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
