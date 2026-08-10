@@ -58,7 +58,7 @@ function validateReconciliation(output, sourceMapping) {
   ];
 
   need(reconciliation.reconciliationFingerprint === fingerprint(reconciliation, 'reconciliationFingerprint'), 'reconciliation fingerprint mismatch');
-  need(evidence.packetFingerprint === fingerprint(evidence, 'packetFingerprint'), 'Golden evidence packet fingerprint mismatch');
+  need(evidence.packetFingerprint === fingerprint(evidence, 'packetFingerprint'), 'regenerated Evidence Packet fingerprint mismatch');
   need(reconciliation.status === 'reviewed-structural', 'reconciliation status mismatch');
   need(reconciliation.processingMode === 'regression-only', 'reconciliation processing mode mismatch');
 
@@ -72,7 +72,7 @@ function validateReconciliation(output, sourceMapping) {
 
   need(reconciliation.golden.referenceCase === evidence.goldenRegression.referenceCase, 'reconciliation Golden reference mismatch');
   need(reconciliation.golden.packetId === evidence.packetId, 'reconciliation Golden packetId mismatch');
-  need(reconciliation.golden.packetFingerprint === evidence.packetFingerprint, 'reconciliation Golden packet fingerprint mismatch');
+  need(reconciliation.golden.packetFingerprint === evidence.regeneration?.baselineGoldenPacketFingerprint, 'reconciliation Golden baseline fingerprint mismatch');
   need(reconciliation.golden.nodeCount === evidence.senseNodes.length, 'reconciliation Golden nodeCount mismatch');
   need(reconciliation.golden.maxDepth === evidence.goldenRegression.expectedMaxDepth, 'reconciliation Golden maxDepth mismatch');
 
@@ -146,7 +146,8 @@ const report = {
   reconciliationId: reconciliation.reconciliationId,
   reconciliationFingerprint: reconciliation.reconciliationFingerprint,
   sourceOutputFingerprint: output.outputFingerprint,
-  goldenPacketFingerprint: evidence.packetFingerprint,
+  baselineGoldenPacketFingerprint: reconciliation.golden.packetFingerprint,
+  regeneratedPacketFingerprint: evidence.packetFingerprint,
   sourceNodeCount: output.summary.nodeCount,
   goldenNodeCount: evidence.senseNodes.length,
   exactMappingCount: reconciliation.sourceMappings.filter((entry) => entry.relation === 'exact-id').length,
@@ -159,4 +160,4 @@ const report = {
 report.reportFingerprint = fingerprint(report, 'reportFingerprint');
 const reportTarget = parseArg('--write-report=');
 if (reportTarget) writeJson(reportTarget, report);
-console.log(`✓ H776 source-to-Golden reconciliation passed · source=23 · Golden=26 · exact=22 · subtree=1 · legacyRetained=1 · evidenceRegenerationAllowed=true · candidateGenerationAllowed=false`);
+console.log(`✓ H776 source-to-Golden reconciliation passed · source=23 · Golden=26 · exact=22 · subtree=1 · legacyRetained=1 · baselinePreserved=true · evidenceRegenerationAllowed=true · candidateGenerationAllowed=false`);

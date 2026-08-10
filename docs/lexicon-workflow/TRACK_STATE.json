@@ -3,8 +3,8 @@
   "trackId": "lexicon-ko-66",
   "trackName": "성경 66권 원어 한글사전",
   "projectRole": "one-track-within-bible-mindmap",
-  "state": "P2_IN_PROGRESS",
-  "activePhase": "P2_H776_EVIDENCE_REGENERATION",
+  "state": "P2_COMPLETE",
+  "activePhase": "P3_GENERIC_VERIFIER_REGRESSION_CI",
   "executionMode": "semi-automatic",
   "sourceOfTruth": "github",
   "controlDashboard": "notion",
@@ -39,7 +39,10 @@
     "openscriptures-bdb-deterministic-adapter-v1",
     "h776-openscriptures-source-tree-diff-v1",
     "source-golden-reconciliation-schema-v1",
-    "h776-source-golden-reconciliation-v1"
+    "h776-source-golden-reconciliation-v1",
+    "h776-evidence-packet-v2-regenerated",
+    "h776-korean-golden-byte-regression-v1",
+    "h776-evidence-regeneration-ci-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -73,7 +76,22 @@
     "approvalRegistryWriteAllowed": false,
     "goldenMeaningMutationAllowed": false
   },
-  "nextAction": "regenerate an H776 Evidence Packet v2 artifact from the pinned OpenScriptures source output plus the reviewed 23-to-26 reconciliation map; preserve all 26 approved Korean Golden translations, mark 1.2.8 as legacy-only evidence, carry the 1.2.3 trial-territory anomaly explicitly, and keep candidate generation disabled",
+  "evidencePacketRegeneration": {
+    "packetId": "GEN-1-1-H776",
+    "schemaVersion": 2,
+    "baselineGoldenPacketFingerprint": "sha256:4ac67c63c1498f84b0ffc9c716ea98091cd0ccd8d11ac5e00aecff34ebd56ddf",
+    "regeneratedPacketFingerprint": "sha256:c5cd82d53189800016ea9ff38a0b1777f1a69b0d079ed05ed1fb518ac9a12367",
+    "sourceOutputFingerprint": "sha256:44b3a3d7201c3d4dcbf4a6934137bacff0c70bbdf557978b86354a92d6a0323d",
+    "reconciliationFingerprint": "sha256:0c832fea21c03e418f85d0f5c55ae8e7fa8429f24ee330f1dabca24731716b66",
+    "koreanSnapshotFingerprint": "sha256:245963e2505bb1d73b9ac48b8bfb3ed14a1fd8bcb0fb74cd2501e289099e335a",
+    "evidenceSupportCounts": { "direct": 22, "combined": 3, "legacyOnly": 1 },
+    "approvedKoreanPreserved": "26/26",
+    "candidateGenerationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "goldenMeaningMutationAllowed": false
+  },
+  "nextAction": "P3: generalize the H776 evidence and license checks into reusable verifier/CI contracts for arbitrary Strong entries; keep H776 as the regression fixture and do not enable candidate generation or Approval Registry promotion yet",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
