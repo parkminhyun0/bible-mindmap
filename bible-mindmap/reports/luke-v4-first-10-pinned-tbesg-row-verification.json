@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "reportId": "luke-v4-first-10-pinned-tbesg-row-verification-v1",
+  "book": "Luke",
+  "status": "PINNED_TBESG_TARGET_ROWS_VERIFIED",
+  "baseline": {
+    "researchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+    "stepBibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tbesgBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "candidateArtifact": "reports/luke-v4-first-10-candidate-prep.json",
+    "sourceLockArtifact": "reports/luke-v4-greek-source-lock.json"
+  },
+  "verificationMethod": {
+    "kind": "exact-pinned-source-row-lookup",
+    "description": "Fetched the pinned TBESG source at the locked STEPBible commit and verified all ten target eStrong identities against exact source rows. This is source-row verification only and is not represented as a successful execution of the deterministic adapter.",
+    "adapterExecutionClaimed": false,
+    "byteLengthAndBlobRecheckByAdapterStillRequired": true
+  },
+  "targets": [
+    {"strong":"G2316","sourceExtendedStrong":"G2316 =","lemma":"θεός","transliteration":"theos","morph":"G:N-M/F","gloss":"God","boundary":"deity/god vs the one true God must remain context-sensitive"},
+    {"strong":"G0932","sourceExtendedStrong":"G0932 =","lemma":"βασιλεία","transliteration":"basileia","morph":"G:N-F","gloss":"kingdom","boundary":"sovereignty/royal power, concrete kingdom, and Messianic/kingdom-of-God senses must not be flattened"},
+    {"strong":"G4982","sourceExtendedStrong":"G4982 =","lemma":"σῴζω","transliteration":"sōzō","morph":"G:V","gloss":"to save","boundary":"rescue from peril, healing/restoration, and spiritual salvation require contextual separation"},
+    {"strong":"G3341","sourceExtendedStrong":"G3341 =","lemma":"μετάνοια","transliteration":"metanoia","morph":"G:N-F","gloss":"repentance","boundary":"change-of-mind lexical history and repentance-from-sin NT use both preserved"},
+    {"strong":"G4151","sourceExtendedStrong":["G4151G","G4151H"],"lemma":"πνεῦμα","transliteration":"pneuma","morph":"G:N-N","gloss":["spirit/breath: spirit","spirit/breath: breath"],"boundary":"Extended Strong subidentity must be preserved; wind/breath, human spirit/disposition, incorporeal spirit, and Holy Spirit senses require context"},
+    {"strong":"G3004","sourceExtendedStrong":["G3004G","G3004H"],"lemma":"λέγω","transliteration":"legō","morph":"G:V","gloss":["to say","to say: call"],"boundary":"say/speak/declare/mean/call-name uses must not be collapsed; Extended Strong meaning row preserved"},
+    {"strong":"G1342","sourceExtendedStrong":"G1342 =","lemma":"δίκαιος","transliteration":"dikaios","morph":"G:A","gloss":"just","boundary":"broad righteous/conforming-to-divine-standard and narrower just/rendering-due senses both preserved"},
+    {"strong":"G3137","sourceExtendedStrong":["G3137G","G3137H","G3137I","G3137J","G3137K","G3137L","G3137M"],"lemma":"Μαρία","transliteration":"Maria","morph":"N:N-F-P","gloss":"Mary","boundary":"person disambiguation is mandatory; source distinguishes multiple Mary identities under disambiguated Strong values"},
+    {"strong":"G3686","sourceExtendedStrong":"G3686 =","lemma":"ὄνομα","transliteration":"onoma","morph":"G:N-N","gloss":"name","boundary":"literal name, authority/character represented by the name, cause/ground, and person-count senses preserved"},
+    {"strong":"G0002","sourceExtendedStrong":"G0002 = the Greek of","unifiedStrong":"H0175","lemma":"Ἀαρών","transliteration":"Aarōn","morph":"N:N-M-P","gloss":"Aaron","boundary":"Greek-of Hebrew-name provenance H0175 must be preserved; zero-padding alias G2 is formatting-only"}
+  ],
+  "checks": {
+    "requested": 10,
+    "verified": 10,
+    "missing": 0,
+    "identityNormalization": "PASS_WITH_SOURCE_SUBIDENTITIES_PRESERVED",
+    "highRiskTargets": ["G2316","G3004","G4151","G3137"]
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "RUN_LOCKED_DETERMINISTIC_ADAPTER_THEN_CROSSCHECK_LUKE_CONTEXT_AND_TFLSJ_SENSE_BOUNDARIES_AND_PREPARE_INDEPENDENT_AUDITS"
+}
