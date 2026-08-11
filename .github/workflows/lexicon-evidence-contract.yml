@@ -84,6 +84,9 @@ jobs:
       - name: Verify P4 Approval Registry, manifest and shard infrastructure contracts
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-approval-registry.mjs
+      - name: Verify v4 Approval Registry reviewer provenance contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-v4-approval-provenance.mjs
       - name: Verify P4 read-only delivery, loader and rich drawer SSOT contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs
