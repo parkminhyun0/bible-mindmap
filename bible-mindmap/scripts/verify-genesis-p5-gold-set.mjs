@@ -35,14 +35,9 @@ function parseArgs(argv) {
   return args
 }
 
-function readJson(path) {
-  return JSON.parse(readFileSync(path, 'utf8'))
-}
-
+function readJson(path) { return JSON.parse(readFileSync(path, 'utf8')) }
 function assertNoGeneratedKoreanCandidate(item) {
-  for (const forbidden of ['translationKo', 'glossKo', 'definitionKo', 'candidateKo', 'approvedSenseTree']) {
-    assert.equal(Object.hasOwn(item, forbidden), false, `${item.strong} selection item must not contain ${forbidden}`)
-  }
+  for (const forbidden of ['translationKo', 'glossKo', 'definitionKo', 'candidateKo', 'approvedSenseTree']) assert.equal(Object.hasOwn(item, forbidden), false, `${item.strong} selection item must not contain ${forbidden}`)
 }
 
 function verifyGold(gold, inventory, registry) {
@@ -56,14 +51,12 @@ function verifyGold(gold, inventory, registry) {
   assert.equal(gold.items.length, GOLD_SIZE)
   assert.equal(new Set(gold.items.map((item) => item.strong)).size, GOLD_SIZE, 'Strong IDs must be unique')
   assert.deepEqual(gold.counts.groups, GROUP_QUOTAS)
-
   const first = gold.items[0]
   assert.equal(first.strong, GOLDEN_CONTROL)
   assert.equal(first.group, 'golden-control')
   assert.equal(gold.sourceEvidence.h776ApprovedSenseCount, 26)
   assert.match(gold.sourceEvidence.h776EvidencePacketFingerprint, /^sha256:[0-9a-f]{64}$/)
   assert.match(gold.setFingerprint, /^sha256:[0-9a-f]{64}$/)
-
   const coreSet = new Set(CORE_STRONGS)
   for (const item of gold.items) {
     assert.match(item.strong, /^H[1-9]\d*$/)
@@ -76,18 +69,9 @@ function verifyGold(gold, inventory, registry) {
     if (item.group === 'medium-frequency-general') assert.ok(item.occurrences >= 5 && item.occurrences <= 19, `${item.strong} must satisfy medium-frequency threshold`)
     if (item.group === 'low-frequency-general') assert.ok(item.occurrences <= 4, `${item.strong} must satisfy low-frequency threshold`)
   }
-
   assert.equal(gold.selectionPolicy.deterministic, true)
   assert.equal(gold.governance.selectionOnly, true)
-  for (const gate of [
-    'candidateGenerationAllowed',
-    'approvalRegistryWriteAllowed',
-    'serviceUiWriteAllowed',
-    'productionWriteAllowed',
-    'existingApprovedMeaningMutationAllowed',
-  ]) {
-    assert.equal(gold.governance[gate], false, `${gate} must remain false in P5 selection contract`)
-  }
+  for (const gate of ['candidateGenerationAllowed','approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed']) assert.equal(gold.governance[gate], false, `${gate} must remain false in P5 selection contract`)
   assert.equal(gold.governance.phaseTransitionEffectiveOnlyAfterIndependentReview, true)
   return rebuilt
 }
@@ -102,23 +86,14 @@ function selfTest() {
   ]
   const inventory = { schemaVersion: 1, entries: [...core, ...general] }
   const registry = {
+    schemaVersion: 1,
     registryFingerprint: 'sha256:self-test',
-    entries: [{
-      identity: { canonicalStrong: GOLDEN_CONTROL },
-      approvedSenseTree: Array.from({ length: 26 }, (_, index) => ({ id: `${index + 1}`, translationKo: 'fixture' })),
-      evidencePacketFingerprint: `sha256:${'a'.repeat(64)}`,
-    }],
+    entries: [{ identity: { canonicalStrong: GOLDEN_CONTROL }, approvedSenseTree: Array.from({ length: 26 }, (_, index) => ({ id: `${index + 1}`, translationKo: 'fixture' })), evidencePacketFingerprint: `sha256:${'a'.repeat(64)}` }],
   }
   const gold = buildGenesisP5GoldSet(inventory, registry)
   verifyGold(gold, inventory, registry)
-  assert.throws(
-    () => buildGenesisP5GoldSet(inventory, { ...registry, entries: [{ ...registry.entries[0], approvedSenseTree: registry.entries[0].approvedSenseTree.slice(0, 25) }] }),
-    /26 approved senses/,
-  )
-  assert.throws(
-    () => buildGenesisP5GoldSet({ ...inventory, entries: inventory.entries.filter((entry) => entry.strong !== GOLDEN_CONTROL) }, registry),
-    /must exist in Genesis inventory/,
-  )
+  assert.throws(() => buildGenesisP5GoldSet(inventory, { ...registry, entries: [{ ...registry.entries[0], approvedSenseTree: registry.entries[0].approvedSenseTree.slice(0, 25) }] }), /26 approved senses/)
+  assert.throws(() => buildGenesisP5GoldSet({ ...inventory, entries: inventory.entries.filter((entry) => entry.strong !== GOLDEN_CONTROL) }, registry), /must exist in Genesis inventory/)
   console.log('✓ Genesis P5 Gold 25 verifier self-test passed')
 }
 
@@ -132,9 +107,7 @@ function main() {
   console.log('✓ Genesis P5 Gold 25 contract PASS')
   console.log('  H776=26/26 · 25 unique Strong · theology + high/medium/low frequency coverage')
   console.log('  selection-only · candidate generation=false · Registry/UI/production write=false')
-  if (args.strict && inventory.missingChapters?.length) {
-    throw new Error(`strict: Genesis inventory missing chapters: ${inventory.missingChapters.join(', ')}`)
-  }
+  if (args.strict && inventory.missingChapters?.length) throw new Error(`strict: Genesis inventory missing chapters: ${inventory.missingChapters.join(', ')}`)
 }
 
 main()
