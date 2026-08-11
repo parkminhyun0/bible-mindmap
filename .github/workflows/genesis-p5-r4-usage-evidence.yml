@@ -7,7 +7,7 @@ on:
       - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
       - 'bible-mindmap/data/lexicon/v4/genesis-p5-r4-extended-research-queue.json'
       - 'bible-mindmap/reports/genesis-p5-r4-extended-evidence-intake.json'
-      - 'bible-mindmap/reports/genesis-p5-r4-pinned-corpus-usage.json'
+      - 'bible-mindmap/reports/genesis-p5-r4-pinned-corpus-usage-manifest.json'
       - 'bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs'
       - 'bible-mindmap/scripts/verify-genesis-p5-r4-usage-evidence.mjs'
       - '.github/workflows/genesis-p5-r4-usage-evidence.yml'
@@ -33,7 +33,7 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/build-genesis-p5-r4-usage-evidence.mjs
 
-      - name: Verify exact baseline and read-only governance
+      - name: Verify exact baseline, manifest, and read-only governance
         working-directory: bible-mindmap
         run: node scripts/verify-genesis-p5-r4-usage-evidence.mjs
 
@@ -65,7 +65,7 @@ jobs:
           fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
           NODE
 
-      - name: Upload R4 usage evidence
+      - name: Upload full R4 usage evidence
         uses: actions/upload-artifact@v7
         with:
           name: genesis-p5-r4-pinned-corpus-usage
