@@ -36,7 +36,7 @@ jobs:
           DEPLOY_RUN_URL: ${{ github.event.workflow_run.html_url || format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
         run: node scripts/notion-live-update.mjs
 
-      - name: Open or refresh Notion sync DLQ issue
+      - name: Open or append Notion sync DLQ issue
         if: steps.notion_sync.outcome == 'failure'
         uses: actions/github-script@v9
         env:
@@ -49,9 +49,8 @@ jobs:
             const sha = process.env.DEPLOY_SHA;
             const short = sha.slice(0, 7);
             const title = `NOTION_SYNC_FAILED · ${short}`;
-            const body = [
-              'Notion synchronization failed after a successful GitHub Pages deployment.',
-              '',
+            const record = [
+              `- time: ${new Date().toISOString()}`,
               `- deployed SHA: ${sha}`,
               `- deploy run: ${process.env.DEPLOY_RUN_URL || '(workflow_dispatch)'}`,
               `- reconcile run: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
@@ -61,19 +60,45 @@ jobs:
             const issues = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
             const existing = issues.find((i) => i.title === title);
             if (existing) {
-              await github.rest.issues.update({ owner, repo, issue_number: existing.number, body });
-              core.warning(`refreshed DLQ issue #${existing.number}`);
+              await github.rest.issues.createComment({ owner, repo, issue_number: existing.number, body: record });
+              core.warning(`appended DLQ evidence to #${existing.number}`);
             } else {
+              const body = ['Notion synchronization failed after a successful GitHub Pages deployment.', '', record].join('\n');
               const created = await github.rest.issues.create({ owner, repo, title, body });
               core.warning(`created DLQ issue #${created.data.number}`);
             }
+
+      - name: Close resolved Notion sync DLQ issue for this SHA
+        if: steps.notion_sync.outcome == 'success'
+        uses: actions/github-script@v9
+        env:
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const sha = process.env.DEPLOY_SHA;
+            const title = `NOTION_SYNC_FAILED · ${sha.slice(0, 7)}`;
+            const issues = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
+            const existing = issues.find((i) => i.title === title);
+            if (!existing) {
+              core.info('no open DLQ issue for this SHA');
+              return;
+            }
+            await github.rest.issues.createComment({
+              owner, repo, issue_number: existing.number,
+              body: `Recovered at ${new Date().toISOString()}: strict Notion reconciliation PASS for ${sha}. Closing DLQ entry.`,
+            });
+            await github.rest.issues.update({ owner, repo, issue_number: existing.number, state: 'closed' });
+            core.notice(`closed recovered DLQ issue #${existing.number}`);
 
       - name: Publish reconciliation verdict
         if: always()
         run: |
           if [ "${{ steps.notion_sync.outcome }}" = "success" ]; then
             echo "### Notion sync: PASS" >> "$GITHUB_STEP_SUMMARY"
+            echo "Any open DLQ entry for this exact deployed SHA was closed." >> "$GITHUB_STEP_SUMMARY"
           else
             echo "### Notion sync: DLQ" >> "$GITHUB_STEP_SUMMARY"
-            echo "Pages deployment remains successful; reconciliation issue was opened/refreshed." >> "$GITHUB_STEP_SUMMARY"
+            echo "Pages deployment remains successful; reconciliation issue was opened or appended." >> "$GITHUB_STEP_SUMMARY"
           fi
