@@ -12,7 +12,15 @@ permissions:
 
 jobs:
   reconcile:
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    # Deploy 워크플로는 push branches:[main]에서만 트리거되므로
+    # workflow_run.head_sha는 실무상 main 커밋만 가리키지만, 명시적으로
+    # head_branch=main을 검증해 privileged 컨텍스트에서 fork 코드가
+    # 실행될 여지를 원천 차단한다 (CodeQL actions/untrusted-checkout).
+    if: >-
+      ${{ github.event_name == 'workflow_dispatch' ||
+         (github.event.workflow_run.conclusion == 'success' &&
+          github.event.workflow_run.head_branch == 'main' &&
+          github.event.workflow_run.head_repository.full_name == github.repository) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
