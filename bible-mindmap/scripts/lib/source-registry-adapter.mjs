@@ -9,11 +9,12 @@
 //   - parse is not inferred from unrelated permission booleans.
 //   - download/parse exist only as explicit, source-specific legacy capabilities below.
 //   - any non-approved or non-auto-processable v1.2 source projects zero allowedUses.
+//   - metadata-only has no legacy G2 equivalent, so it projects to unknown (non-authorizing).
 
 export const LICENSE_STATUS_MAP = Object.freeze({
   approved: 'verified-public-or-permitted',
   'internal-review-only': 'internal-validation-only',
-  'metadata-only': 'metadata-only',
+  'metadata-only': 'unknown',
   unknown: 'unknown',
   prohibited: 'prohibited',
 });
