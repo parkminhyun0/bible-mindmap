@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-02-selection-v1",
+  "book": "Genesis",
+  "status": "CANONICAL_INVENTORY_BATCH_SELECTED",
+  "source": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "file": "genesis-strong-inventory.json",
+    "reportedSource": "OSHB Gen.xml",
+    "inventoryUniqueStrong": 1772,
+    "verseCount": 1533,
+    "wordCount": 20629,
+    "strongAssignmentCount": 20159
+  },
+  "selectionPolicy": {
+    "excludeBatch01": true,
+    "excludeR4": true,
+    "excludeApprovedControlH776": true,
+    "preferHighOccurrenceLexicallySubstantiveTargets": true,
+    "note": "This is research-batch selection only. It does not assert source-sense completion or approval. High-frequency grammatical particles were intentionally deprioritized so the next batch exercises divine-name, kinship, human-reference and common verbal semantic boundaries."
+  },
+  "targets": [
+    {"strong":"H430","occurrences":219,"firstReference":"Gen.1.1","sampleSurface":"אֱלֹהִ֑ים","coverage":"missing","riskHints":["divine-title","singular-plural-context","theological-overread"]},
+    {"strong":"H3068","occurrences":163,"firstReference":"Gen.2.4","sampleSurface":"יְהוָ֥ה","coverage":"missing","riskHints":["divine-name","tetragrammaton","translation-policy"]},
+    {"strong":"H1","occurrences":208,"firstReference":"Gen.2.24","sampleSurface":"אָבִ֖י/ו","coverage":"missing","riskHints":["kinship","figurative-fatherhood"]},
+    {"strong":"H1121","occurrences":365,"firstReference":"Gen.3.16","sampleSurface":"בָנִ֑ים","coverage":"missing","riskHints":["kinship","descendant-classification","construct-uses"]},
+    {"strong":"H1961","occurrences":316,"firstReference":"Gen.1.2","sampleSurface":"הָיְתָ֥ה","coverage":"missing","riskHints":["high-polysemy-verb","exist-become-happen","clause-function"]},
+    {"strong":"H376","occurrences":159,"firstReference":"Gen.2.23","sampleSurface":"מֵ/אִ֖ישׁ","coverage":"missing","riskHints":["man-husband-person","context-sensitive-role"]},
+    {"strong":"H802","occurrences":152,"firstReference":"Gen.2.22","sampleSurface":"לְ/אִשָּׁ֑ה","coverage":"missing","riskHints":["woman-wife","context-sensitive-role"]},
+    {"strong":"H559","occurrences":606,"firstReference":"Gen.1.3","sampleSurface":"וַ/יֹּ֥אמֶר","coverage":"missing","riskHints":["speech-verb","say-think-command-context"]},
+    {"strong":"H6213","occurrences":153,"firstReference":"Gen.1.7","sampleSurface":"וַ/יַּ֣עַשׂ","coverage":"missing","riskHints":["make-do-accomplish","broad-verb-sense"]},
+    {"strong":"H7200","occurrences":141,"firstReference":"Gen.1.4","sampleSurface":"וַ/יַּ֧רְא","coverage":"missing","riskHints":["see-perceive-consider","stem-context"]}
+  ],
+  "checks": {
+    "requested": 10,
+    "found": 10,
+    "totalOccurrences": 2482,
+    "batch01Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "sourceEvidenceStillRequired": true,
+    "actualGenesisContextExtractionStillRequired": true,
+    "fullBdbHierarchyCrosscheckStillRequired": true,
+    "independentAuditRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "PIN_PRIMARY_BDB_AND_TBESH_SOURCE_NODES_THEN_EXTRACT_REPRESENTATIVE_GENESIS_CONTEXTS"
+}
