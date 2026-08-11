@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "status": "RESEARCH_SOURCE_LOCK",
+  "generatedAt": "2026-08-11T12:42:00Z",
+  "stepBible": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "license": "CC BY 4.0",
+    "sources": [
+      {
+        "id": "stepbible-tbesg",
+        "role": "primary-brief-greek-lexicon",
+        "path": "Lexicons/TBESG - Translators Brief lexicon of Extended Strongs for Greek - STEPBible.org CC BY.txt",
+        "blobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+        "bytes": 4736912,
+        "coverage": "Extended Strong Greek; backward compatible with original Strong",
+        "provenance": "Abbott-Smith based; documented supplemental Middle Liddell/STEP entries"
+      },
+      {
+        "id": "stepbible-tflsj",
+        "role": "secondary-full-greek-lexicon-crosscheck",
+        "path": "Lexicons/TFLSJ  0-5624 - Translators Formatted full LSJ Bible lexicon - STEPBible.org CC BY.txt",
+        "blobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+        "bytes": 23831837,
+        "coverage": "Full LSJ formatted for Bible lexicon use"
+      }
+    ]
+  },
+  "existingApprovedTextSource": {
+    "id": "stepbible-tagnt",
+    "role": "Luke Greek original text, morphology, Strong occurrence alignment",
+    "status": "approved-ready"
+  },
+  "integrationRules": {
+    "sourceRegistryPromotionPending": true,
+    "deterministicParserRequired": true,
+    "rawSourceTextMustRemainUnmodified": true,
+    "candidateMaySummarizeButMustPreserveSenseBoundaries": true,
+    "theologyMustNotOverrideLexicalEvidence": true,
+    "approvalRegistryWrites": false,
+    "productionWrites": false
+  },
+  "next": [
+    "Add deterministic TBESG/TFLSJ adapter with pinned commit/blob verification",
+    "Cross-check higher-risk Luke first-10 senses against TFLSJ and Luke contexts",
+    "Run independent audit preparation before any promotion"
+  ]
+}
