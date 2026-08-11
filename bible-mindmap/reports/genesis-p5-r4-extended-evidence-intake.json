@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-extended-evidence-intake-v1",
+  "book": "GEN",
+  "status": "EVIDENCE_INTAKE_IN_PROGRESS",
+  "baseline": {
+    "mainSha": "2e3784d2db446cb97786231cd940ae7eac85f916",
+    "pagesRun": 608,
+    "liveShaVerified": true,
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c"
+  },
+  "policy": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md#6-r4-extended_research_required",
+  "governance": {
+    "evidenceCollectionOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "autoApprovalAllowed": false,
+    "humanFinalWordingAllowedAtThisStage": false
+  },
+  "items": [
+    {
+      "strong": "H120",
+      "lemma": "אָדָם",
+      "queueReasons": ["polysemy", "proper-name", "uncertain-etymology"],
+      "evidenceStatus": "PARTIAL",
+      "publicEvidence": [
+        {
+          "type": "scholarly-etymological-dictionary",
+          "source": "Klein Dictionary via Sefaria",
+          "url": "https://www.sefaria.org/Klein_Dictionary%2C_%D7%90%D6%B8%D7%93%D6%B8%D7%9D.1",
+          "supports": ["man", "mankind", "Adam proper name", "ground/adamah etymological relationship"]
+        },
+        {
+          "type": "public-bdb",
+          "source": "BDB via Sefaria",
+          "url": "https://www.sefaria.org/Genesis.2.25?lang2=en&with=Reference",
+          "supports": ["man/human-being lexical range", "biblical usage references"]
+        }
+      ],
+      "observations": [
+        "The lexical range man / mankind / Adam is independently supported beyond the pinned candidate source.",
+        "Etymological discussion must remain separated from the operational Korean gloss; public sources discuss both ground/adamah and broader Semitic comparisons."
+      ],
+      "unresolved": [
+        "Do not collapse common-noun and proper-name senses into one final wording.",
+        "Exact etymological wording remains research-only and must not be promoted as semantic certainty."
+      ],
+      "next": "extract exact Genesis usage clusters from the pinned corpus and re-audit against the unchanged candidate"
+    },
+    {
+      "strong": "H6030b",
+      "lemma": "עָנָה",
+      "queueReasons": ["polysemy", "source-text-noisy"],
+      "evidenceStatus": "PARTIAL",
+      "publicEvidence": [
+        {
+          "type": "public-lexicon",
+          "source": "BibleHub Hebrew 6030 (Strong/BDB presentation)",
+          "url": "https://biblehub.com/hebrew/6030.htm",
+          "supports": ["answer", "respond", "testify", "speak", "sing/shout semantic range"]
+        },
+        {
+          "type": "scholarly-etymological-dictionary",
+          "source": "Klein Dictionary via Sefaria",
+          "url": "https://www.sefaria.org/Klein_Dictionary%2C_%D7%A2%D7%A0%D7%94_%E1%B4%B5",
+          "supports": ["independent lexical comparison source for the ענה homograph set"]
+        }
+      ],
+      "observations": [
+        "Independent public evidence confirms that the root family is highly polysemous and that response/testimony/song senses must not be flattened.",
+        "The R4 source-text-noisy flag remains justified until H6030b is matched exactly to the pinned source-node segmentation."
+      ],
+      "unresolved": [
+        "Exact H6030b sub-entry boundaries versus neighboring ענה homographs require pinned-source node reconciliation.",
+        "Biblical usage evidence must be generated from the repository's pinned corpus rather than inferred from a generic Strong page."
+      ],
+      "next": "reconcile H6030b source nodes and extract corpus examples per surviving sense"
+    },
+    {
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "queueReasons": ["uncertain-etymology"],
+      "evidenceStatus": "PARTIAL",
+      "publicEvidence": [
+        {
+          "type": "scholarly-etymological-dictionary",
+          "source": "Klein Dictionary via Sefaria",
+          "url": "https://www.sefaria.org/Klein_Dictionary%2C_%D7%A9%D7%81%D7%91%D7%A2_%E1%B4%B5%E1%B4%B5",
+          "supports": ["swear/take an oath", "historical connection proposed with seven"]
+        },
+        {
+          "type": "public-bdb-strong",
+          "source": "StudyBible Strong/BDB",
+          "url": "https://studybible.info/strongs/H7650",
+          "supports": ["swear/adjure sense", "broad biblical occurrence list"]
+        }
+      ],
+      "observations": [
+        "The operational verbal meaning swear / take an oath is strongly supported.",
+        "The relationship to seven is attested as an etymological explanation, but it should remain etymology metadata rather than be inserted into the Korean semantic gloss as a certain meaning."
+      ],
+      "unresolved": [
+        "Determine whether the final entry should label the seven-connection as probable, traditional, or leave it out of the user-facing gloss."
+      ],
+      "next": "extract representative oath usages from the pinned Genesis corpus and run three-model etymology-certainty re-audit"
+    },
+    {
+      "strong": "H28",
+      "lemma": "אֲבִידָע",
+      "queueReasons": ["proper-name", "uncertain-etymology"],
+      "evidenceStatus": "PARTIAL",
+      "publicEvidence": [
+        {
+          "type": "public-bdb-strong",
+          "source": "BibleHub Hebrew 28",
+          "url": "https://biblehub.com/strongs/hebrew/28.htm",
+          "supports": ["proper name Abida", "Genesis 25:4", "1 Chronicles 1:33", "derivation from father + know"]
+        },
+        {
+          "type": "public-bdb-strong",
+          "source": "StudyBible Strong/BDB",
+          "url": "https://studybible.info/strongs/H28",
+          "supports": ["Abida proper-name identity", "two biblical occurrences", "father/knowledge semantic components"]
+        }
+      ],
+      "observations": [
+        "The identity and two biblical occurrences are stable across public sources.",
+        "English explanatory wording varies between father of knowledge, my father knows, and my father took knowledge; this is exactly the type of wording variance R4 is intended to preserve for further review."
+      ],
+      "unresolved": [
+        "Do not choose a single Korean name-etymology wording until the component grammar and comparative-name evidence are reconciled."
+      ],
+      "next": "compare the pinned candidate wording against the Hebrew name components and South-Arabian comparative evidence already cited by BDB"
+    },
+    {
+      "strong": "H39",
+      "lemma": "אֲבִימָאֵל",
+      "queueReasons": ["proper-name", "uncertain-etymology"],
+      "evidenceStatus": "CONFLICT_CONFIRMED",
+      "publicEvidence": [
+        {
+          "type": "public-bdb-strong",
+          "source": "BibleHub Hebrew 39",
+          "url": "https://biblehub.com/strongs/hebrew/39.htm",
+          "supports": ["Abimael proper-name identity", "Genesis 10:28", "1 Chronicles 1:22", "BDB: a father is El", "Strong: father of Mael / foreign second element"]
+        },
+        {
+          "type": "public-bdb",
+          "source": "StudyLight Hebrew 39",
+          "url": "https://www.studylight.org/lexicons/eng/hebrew/39.html",
+          "supports": ["BDB South-Arabic comparison", "two biblical occurrences", "publicly visible etymological disagreement"]
+        }
+      ],
+      "observations": [
+        "A genuine public-source etymological conflict is visible: the BDB line reads the name as a father is El, while Strong's explanation treats the second element as an otherwise unused/foreign Mael element.",
+        "The proper-name identity itself is stable, but the etymological gloss is not."
+      ],
+      "unresolved": [
+        "H39 must remain outside Approval Registry until comparative Semitic/name evidence resolves or explicitly preserves the etymological uncertainty.",
+        "No human final-wording ask yet; complete the extended evidence pass and three-model re-audit first."
+      ],
+      "next": "collect comparative South-Arabian name evidence from a publicly accessible scholarly source, then re-audit"
+    }
+  ],
+  "summary": {
+    "items": 5,
+    "partial": 4,
+    "conflictConfirmed": 1,
+    "readyForRegistry": 0,
+    "candidateMutations": 0,
+    "registryWrites": 0,
+    "meaningChanges": 0
+  },
+  "nextGate": "COMPLETE_PINNED_CORPUS_USAGE_EXTRACTION_THEN_THREE_MODEL_REAUDIT"
+}
