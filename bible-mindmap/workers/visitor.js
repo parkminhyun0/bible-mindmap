@@ -79,7 +79,8 @@ export default {
       }
       return json(200, { count, scope, date }, cors);
     } catch (error) {
-      return json(502, { error: 'upstream-failure', message: String(error?.message || error) }, cors);
+      console.error('visitor upstream failure:', error);
+      return json(502, { error: 'upstream-failure' }, cors);
     }
   },
 };

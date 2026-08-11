@@ -103,7 +103,7 @@ export function writeKoreanQueryReviewBatch(result, outputDir) {
     '',
     '| 순서 | 후보 ID | 유형 | 문체 | 질의 | 제안 정답 | hard-negative | 현재 상태 |',
     '|---:|---|---|---|---|---|---|---|',
-    ...result.items.map((item) => `| ${item.order} | ${item.candidateId} | ${item.queryType} | ${item.style} | ${item.query.replace(/\|/g, '\\|')} | ${item.proposedRelevantIds.join(', ')} | ${item.proposedHardNegativeIds.join(', ')} | ${item.reviewStatus} |`),
+    ...result.items.map((item) => `| ${item.order} | ${item.candidateId} | ${item.queryType} | ${item.style} | ${item.query.replace(/\\/g, '\\\\').replace(/\|/g, '\\|')} | ${item.proposedRelevantIds.join(', ')} | ${item.proposedHardNegativeIds.join(', ')} | ${item.reviewStatus} |`),
     '',
     '> 결정은 `korean-query-approvals.json`에 실제 검토자, UTC 검토 시각, 결정, 확정 라벨을 기록해야만 승인 게이트를 통과한다.',
     '',

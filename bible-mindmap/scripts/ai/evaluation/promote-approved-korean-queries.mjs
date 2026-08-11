@@ -88,7 +88,7 @@ export function writeApprovedKoreanFixture(result, outputDir) {
     '',
     '| ID | 질의 | 정답 라벨 | 검토자 | 검토 시각 |',
     '|---|---|---|---|---|',
-    ...result.cases.map((item) => `| ${item.id} | ${item.query.replace(/\|/g, '\\|')} | ${item.relevantIds.join(', ')} | ${item.metadata.reviewer} | ${item.metadata.reviewedAt} |`),
+    ...result.cases.map((item) => `| ${item.id} | ${item.query.replace(/\\/g, '\\\\').replace(/\|/g, '\\|')} | ${item.relevantIds.join(', ')} | ${item.metadata.reviewer} | ${item.metadata.reviewedAt} |`),
     '',
   ];
   fs.writeFileSync(path.join(outputDir, 'approved-korean-shadow-fixture.md'), `${lines.join('\n')}\n`, 'utf8');

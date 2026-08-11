@@ -12,6 +12,7 @@ import {
   validateWorkspaceBackup,
 } from '../storage/storageCore';
 import { safeLocalStorage } from '../utils/safeStorage';
+import { stripHtmlTags } from '../utils/safeHtmlStrip.js';
 import {
   listResearchAnnotations,
   RESEARCH_ANNOTATIONS_CHANGED,
@@ -357,7 +358,7 @@ function nodeToMarkdown(node) {
   const data = node.data || {};
   const heading = data.reference || data.title || data.name || node.type;
   const body = data.text || data.description || data.notes || '';
-  return `### ${heading}\n\n${String(body).replace(/<[^>]*>/g, '')}`;
+  return `### ${heading}\n\n${stripHtmlTags(body)}`;
 }
 
 function toObsidianCanvas(nodes, edges) {

@@ -8,6 +8,7 @@
  */
 
 import { ALL_BOOKS, OT_BOOKS, NT_BOOKS, isOT } from '../data/bibleBooks';
+import { stripHtmlTags } from './safeHtmlStrip.js';
 import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 const CONCURRENCY = 10;         // 로컬 lex JSON
 const BOLLS_CONCURRENCY = 4;    // 원격 Bolls.life — 부하 완화 (rate-limit 회피)
@@ -51,10 +52,9 @@ async function fetchChapterLex(bookId, chapter, signal) {
 
 // ── HTML 태그 제거 (Bolls.life KJV 등 <S>Strong's번호</S> 태그 포함 대응) ─
 const stripHtml = (str) => str
-  ? str.replace(/<S>[^<]*<\/S>/gi, '')
-       .replace(/<[^>]*>/g, '')
-       .replace(/\s+/g, ' ')
-       .trim()
+  ? stripHtmlTags(String(str).replace(/<S>[^<]*<\/S>/gi, ''))
+      .replace(/\s+/g, ' ')
+      .trim()
   : '';
 
 // ── Bolls.life 장 로드 — 캐시 + 백오프 3회 재시도 ────────────────────────

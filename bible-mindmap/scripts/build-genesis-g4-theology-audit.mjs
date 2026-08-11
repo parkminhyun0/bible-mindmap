@@ -11,7 +11,7 @@ const DEFAULT_CONTEXT_REVIEW = 'reports/genesis-g3-context-review/context-review
 const DEFAULT_OUTPUT_DIR = 'reports/genesis-g4-theology-audit'
 
 const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
-const escapeCell = (value) => String(value ?? '').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
+const escapeCell = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
 
 export const AUTHORITY_ORDER = Object.freeze([
   {

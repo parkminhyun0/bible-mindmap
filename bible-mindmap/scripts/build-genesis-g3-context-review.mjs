@@ -14,7 +14,7 @@ const DEFAULT_SOURCE = 'reports/genesis-g2-bdb-source-packets.json'
 const DEFAULT_OUTPUT_DIR = 'reports/genesis-g3-context-review'
 
 const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
-const escapeCell = (value) => String(value ?? '').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
+const escapeCell = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
 
 function parseArgs(argv) {
   const args = {

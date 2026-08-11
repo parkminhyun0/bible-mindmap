@@ -13,7 +13,7 @@ const PROVIDERS = ['nvidia', 'openai']
 const sha256 = (value) => `sha256:${createHash('sha256').update(value).digest('hex')}`
 const readJson = (path) => JSON.parse(readFileSync(resolve(path), 'utf8'))
 const candidatePath = (root, provider, strong) => resolve(root, 'candidates', provider, `${strong}.json`)
-const escapeCell = (value) => String(value ?? '').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
+const escapeCell = (value) => String(value ?? '').replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\r?\n/g, '<br>')
 
 function parseArgs(argv) {
   const args = { evaluation: DEFAULT_EVALUATION, root: DEFAULT_ROOT, outputDir: DEFAULT_OUTPUT_DIR, selfTest: false }
