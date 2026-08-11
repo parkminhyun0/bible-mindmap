@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-01-usage-inventory-evidence",
+  "book": "Genesis",
+  "status": "PINNED_USAGE_INVENTORY_EVIDENCE_MATERIALIZED",
+  "source": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "file": "genesis-strong-inventory.json",
+    "reportedSource": "OSHB Gen.xml",
+    "inventoryUniqueStrong": 1772,
+    "verseCount": 1533,
+    "wordCount": 20629,
+    "strongAssignmentCount": 20159
+  },
+  "targets": [
+    {"strong":"H127","occurrences":43,"chapters":[1,2,3,4,5,6,7,8,9,12,19,28,47],"firstReference":"Gen.1.25","sampleLemma":"d/127","sampleSurface":"הָֽ/אֲדָמָ֖ה","coverage":"missing"},
+    {"strong":"H1823","occurrences":3,"chapters":[1,5],"firstReference":"Gen.1.26","sampleLemma":"k/1823","sampleSurface":"כִּ/דְמוּתֵ֑/נוּ","coverage":"missing"},
+    {"strong":"H5315","occurrences":43,"chapters":[1,2,9,12,14,17,19,23,27,32,34,35,36,37,42,44,46,49],"firstReference":"Gen.1.20","sampleLemma":"5315","sampleSurface":"נֶ֣פֶשׁ","coverage":"missing"},
+    {"strong":"H2416","occurrences":66,"chapters":[1,2,3,6,7,8,9,18,23,25,26,27,37,42,43,45,46,47],"firstReference":"Gen.1.20","sampleLemma":"2416 a","sampleSurface":"חַיָּ֑ה","coverage":"missing"},
+    {"strong":"H2896","occurrences":41,"chapters":[1,2,3,6,15,16,18,19,20,24,25,26,27,29,30,31,40,41,44,49,50],"firstReference":"Gen.1.4","sampleLemma":"2896 a","sampleSurface":"ט֑וֹב","coverage":"missing"},
+    {"strong":"H7451","occurrences":36,"chapters":[2,3,6,8,13,19,24,26,28,31,37,38,39,40,41,44,47,48,50],"firstReference":"Gen.2.9","sampleLemma":"c/7451 b","sampleSurface":"וָ/רָֽע","coverage":"missing"},
+    {"strong":"H2617","occurrences":11,"chapters":[19,20,21,24,32,39,40,47],"firstReference":"Gen.19.19","sampleLemma":"2617 a","sampleSurface":"חַסְדְּ/ךָ֗","coverage":"missing"},
+    {"strong":"H6662","occurrences":10,"chapters":[6,7,18,20],"firstReference":"Gen.6.9","sampleLemma":"6662","sampleSurface":"צַדִּ֛יק","coverage":"missing"},
+    {"strong":"H6666","occurrences":3,"chapters":[15,18,30],"firstReference":"Gen.15.6","sampleLemma":"6666","sampleSurface":"צְדָקָֽה","coverage":"missing"},
+    {"strong":"H539","occurrences":3,"chapters":[15,42,45],"firstReference":"Gen.15.6","sampleLemma":"c/539","sampleSurface":"וְ/הֶאֱמִ֖ן","coverage":"missing"}
+  ],
+  "checks": {
+    "requested": 10,
+    "found": 10,
+    "totalOccurrences": 259,
+    "allCoverageMissing": true,
+    "r4Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "fullContextExtractionStillRequired": true,
+    "fullBdbHierarchyCrosscheckStillRequired": true,
+    "independentAuditRequired": true,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false
+  },
+  "nextGate": "EXTRACT_REPRESENTATIVE_GENESIS_CONTEXTS_AND_CROSSCHECK_FULL_BDB_HIERARCHY"
+}
