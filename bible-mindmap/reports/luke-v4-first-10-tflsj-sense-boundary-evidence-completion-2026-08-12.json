@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "2026-08-12",
+  "status": "PINNED_TFLSJ_SENSE_BOUNDARY_CONFIRMED_FOR_ALL_FIRST_10",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "researchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+  "baselineHead": "2780408184df8ec6c9e2786d3d32444a83f69b10",
+  "source": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "path": "Lexicons/TFLSJ  0-5624 - Translators Formatted full LSJ Bible lexicon - STEPBible.org CC BY.txt",
+    "blobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "license": "CC BY",
+    "note": "For proper names absent from LSJ, the pinned formatted source explicitly supplies Abbott-Smith material and marks LSJ absence."
+  },
+  "first10": [
+    "G2316",
+    "G0932",
+    "G4982",
+    "G3341",
+    "G4151",
+    "G3004",
+    "G1342",
+    "G3137",
+    "G3686",
+    "G0002"
+  ],
+  "previouslyConfirmed": {
+    "G2316": "Core deity/God-god-divine-being family retained; classical and metaphorical extensions are not auto-promoted without Luke context.",
+    "G0932": "Rule/dominion and kingdom/realm boundary retained; unrelated institutional/classical extensions require Luke context.",
+    "G4151": "Wind/breath, divine inspiration/Spirit, human spirit, and spiritual-being families retained where context supports them; medical, grammatical, rhetorical and other niche extensions are excluded without Luke evidence."
+  },
+  "completedThisUnit": {
+    "G3004": {
+      "lemma": "λέγω",
+      "boundary": "Luke candidate may use context-proven say/speak/tell/call/mean senses. Older gather/pick-up, count, choose and other niche classical senses are not auto-expanded without Luke token evidence."
+    },
+    "G4982": {
+      "lemma": "σῴζω",
+      "boundary": "Save/rescue/preserve is the core family; heal/recover and salvation-state senses are retained where Luke context proves them. Legal, technical, memory/maintenance and other broad classical extensions are excluded without context."
+    },
+    "G1342": {
+      "lemma": "δίκαιος",
+      "boundary": "Center on righteous/just/right according to Luke context. Broader civilized, balanced/equal, exact, fitting/normal/genuine and entitlement constructions require explicit Luke evidence."
+    },
+    "G3686": {
+      "lemma": "ὄνομα",
+      "boundary": "Center on name/designation and context-proven by-name/call-by-name uses. Fame, pretext, accountancy, technical phrase and grammatical noun senses are excluded unless Luke context proves them."
+    },
+    "G3341": {
+      "lemma": "μετάνοια",
+      "boundary": "Change of mind/heart, repentance and regret are source-supported. The rhetorical afterthought/correction sense is a separate specialist extension and is not part of the default Luke lexical candidate without contextual evidence."
+    },
+    "G3137": {
+      "lemma": "Μαρία / Μαριάμ",
+      "boundary": "Proper-name identity is Mary with both Maria/Mariam forms. The spelling itself does not identify which Mary is intended; person identity must remain in the context/entity layer rather than the lexical meaning. The pinned source marks LSJ as having no entry and supplies Abbott-Smith NT evidence."
+    },
+    "G0002": {
+      "lemma": "Ἀαρών",
+      "boundary": "Proper name Aaron, indeclinable. Genealogical or priestly relations belong to context/entity data rather than lexical headword expansion. The pinned source marks LSJ as having no entry and supplies Abbott-Smith NT evidence including Luke 1:5."
+    }
+  },
+  "cumulative": {
+    "checked": 10,
+    "total": 10,
+    "newHold": 0,
+    "actualLukeContextConfirmed": 10
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0,
+    "selfApproval": false
+  },
+  "nextGate": "FREEZE_EXACT_CANDIDATE_SOURCE_CONTEXT_FINGERPRINTS_THEN_PREPARE_INDEPENDENT_AUDIT"
+}
