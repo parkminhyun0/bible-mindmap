@@ -94,6 +94,9 @@ jobs:
       - name: Verify cross-registry data integrity
         run: npm run verify:data-registry
 
+      - name: Verify legacy source registry adapter policy
+        run: node scripts/tests/source-registry-adapter-policy.mjs
+
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
 
