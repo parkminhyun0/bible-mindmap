@@ -1,0 +1,185 @@
+name: Lexicon v4 Review Coordinator
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: Optional PR number to inspect
+        required: false
+  check_suite:
+    types: [completed]
+  workflow_run:
+    workflows:
+      - Lexicon v4 Foundation
+      - Validate pull request
+      - Verify RESUME checkpoint
+      - Genesis P5 Gold Set Contract
+      - Genesis P5 GPT Candidate Contract
+    types: [completed]
+  schedule:
+    - cron: '*/5 * * * *'
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: lexicon-v4-review-coordinator
+  cancel-in-progress: false
+
+jobs:
+  coordinate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Self-test derived state contract
+        working-directory: bible-mindmap
+        run: node scripts/derive-lexicon-runtime-state.mjs --self-test
+
+      - name: Coordinate exact-head independent review
+        uses: actions/github-script@v9
+        env:
+          EXPLICIT_PR: ${{ inputs.pr_number || '' }}
+          FALLBACK_REVIEWER: ${{ vars.LEXICON_FALLBACK_REVIEWER }}
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const PRIMARY = 'bible-mindmap-review';
+            const FALLBACK = (process.env.FALLBACK_REVIEWER || '').trim();
+            const LABEL = 'lexicon-v4-auto-merge-eligible';
+            const REQUIRED = new Set([
+              'v4 foundation contract',
+              'v4 consensus gate self-test',
+              'v4 universal registry regression',
+              'v4 golden audit sample contract',
+              'v4 auto-merge decision dry-run',
+              'verify-and-build',
+              'security-audit',
+              'verify-resume-checkpoint',
+              'fingerprint',
+              'verify-gpt-candidates',
+            ]);
+
+            const explicit = Number(process.env.EXPLICIT_PR || 0);
+            let prs = [];
+            if (explicit) {
+              const { data } = await github.rest.pulls.get({ owner, repo, pull_number: explicit });
+              prs = [data];
+            } else {
+              prs = await github.paginate(github.rest.pulls.list, { owner, repo, state: 'open', per_page: 100 });
+              prs = prs.filter((pr) => (pr.labels || []).some((l) => l.name === LABEL));
+            }
+
+            const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            async function latestReviews(prNumber) {
+              const reviews = await github.paginate(github.rest.pulls.listReviews, { owner, repo, pull_number: prNumber, per_page: 100 });
+              const latest = new Map();
+              for (const r of reviews) latest.set(r.user?.login, r);
+              return latest;
+            }
+            function approvedOnHead(latest, head) {
+              for (const login of [PRIMARY, FALLBACK].filter(Boolean)) {
+                const r = latest.get(login);
+                if (r?.state === 'APPROVED' && r?.commit_id === head) return login;
+              }
+              return null;
+            }
+            async function allRequiredGreen(head) {
+              const runs = await github.paginate(github.rest.checks.listForRef, { owner, repo, ref: head, per_page: 100 });
+              const latest = new Map();
+              for (const cr of runs) {
+                if (!REQUIRED.has(cr.name)) continue;
+                const prev = latest.get(cr.name);
+                if (!prev || (cr.started_at || '') > (prev.started_at || '')) latest.set(cr.name, cr);
+              }
+              for (const name of REQUIRED) {
+                const cr = latest.get(name);
+                if (!cr || cr.status !== 'completed' || !['success', 'neutral', 'skipped'].includes(cr.conclusion)) return false;
+              }
+              return true;
+            }
+            async function ensureIssue(prNumber, head, reason) {
+              const short = head.slice(0, 7);
+              const title = `LEXICON REVIEW FALLBACK · PR #${prNumber} · ${short}`;
+              const q = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
+              const existing = q.find((i) => i.title === title);
+              const body = [
+                'Machine-generated review fallback record.',
+                '',
+                `- PR: #${prNumber}`,
+                `- exact head: ${head}`,
+                `- reason: ${reason}`,
+                `- primary reviewer: ${PRIMARY}`,
+                `- fallback reviewer: ${FALLBACK || '(not configured)'}`,
+                '- Safety: no self-approval; no quality-gate bypass; exact-head approval still required.',
+              ].join('\n');
+              if (!existing) await github.rest.issues.create({ owner, repo, title, body });
+            }
+
+            for (const pr of prs) {
+              if (pr.state !== 'open' || pr.draft) continue;
+              const head = pr.head.sha;
+              if (!(await allRequiredGreen(head))) {
+                core.info(`#${pr.number}: required CI not all green yet`);
+                continue;
+              }
+              let latest = await latestReviews(pr.number);
+              let reviewer = approvedOnHead(latest, head);
+              if (reviewer) {
+                core.notice(`#${pr.number}: exact-head approval already present from ${reviewer}`);
+                continue;
+              }
+
+              core.notice(`#${pr.number}: all required CI green; starting 3-minute review SLA at ${head}`);
+              await sleep(180000);
+
+              const fresh = (await github.rest.pulls.get({ owner, repo, pull_number: pr.number })).data;
+              if (fresh.state !== 'open' || fresh.head.sha !== head) {
+                core.info(`#${pr.number}: head/state changed during SLA; stop and let new head re-evaluate`);
+                continue;
+              }
+              latest = await latestReviews(pr.number);
+              reviewer = approvedOnHead(latest, head);
+              if (reviewer) {
+                core.notice(`#${pr.number}: review arrived within SLA from ${reviewer}`);
+                continue;
+              }
+
+              try {
+                await github.rest.pulls.requestReviewers({ owner, repo, pull_number: pr.number, reviewers: [PRIMARY] });
+              } catch (e) {
+                core.warning(`primary re-request failed: ${e.message}`);
+              }
+
+              if (FALLBACK && FALLBACK !== PRIMARY) {
+                try {
+                  await github.rest.pulls.requestReviewers({ owner, repo, pull_number: pr.number, reviewers: [FALLBACK] });
+                  core.notice(`#${pr.number}: fallback reviewer ${FALLBACK} requested after 3 minutes`);
+                } catch (e) {
+                  core.warning(`fallback reviewer request failed: ${e.message}`);
+                }
+              }
+
+              try {
+                await github.rest.repos.createDispatchEvent({
+                  owner, repo,
+                  event_type: 'lexicon_review_fallback_required',
+                  client_payload: { pr_number: pr.number, head_sha: head, primary_reviewer: PRIMARY, fallback_reviewer: FALLBACK || null },
+                });
+              } catch (e) {
+                core.warning(`repository_dispatch fallback signal failed: ${e.message}`);
+              }
+
+              await ensureIssue(pr.number, head, FALLBACK ? 'primary review exceeded 3-minute SLA; fallback requested' : 'primary review exceeded 3-minute SLA; fallback reviewer not configured');
+              core.setFailed(`#${pr.number}: REVIEW_TIMEOUT at 3-minute SLA. Fallback path signalled; exact-head independent approval remains required.`);
+            }
