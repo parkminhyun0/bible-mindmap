@@ -53,7 +53,10 @@ async function fetchOrCache(bookId) {
 // XML에서 Hebrew 텍스트 정리 (모음·악센트·구두점 유지)
 function cleanHebrew(s) {
   if (!s) return ''
-  return s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+  let current = s
+  let previous
+  do { previous = current; current = current.replace(/<[^>]+>/g, '') } while (current !== previous)
+  return current.replace(/\s+/g, ' ').trim()
 }
 
 // OSHB Ketiv/Qere 파싱 (verse 단위)

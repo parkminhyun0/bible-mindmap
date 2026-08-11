@@ -49,7 +49,10 @@ for (const p of Object.values(BIBLICAL_PLACE_PROFILES || {})) {
 }
 
 function cleanText(value='') {
-  return String(value).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  let current = String(value);
+  let previous;
+  do { previous = current; current = current.replace(/<[^>]+>/g, ''); } while (current !== previous);
+  return current.replace(/\s+/g, ' ').trim();
 }
 
 function normalizeName(value='') {

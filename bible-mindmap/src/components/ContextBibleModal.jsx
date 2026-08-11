@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import useMobile from '../hooks/useMobile';
 import useModalDialog from '../hooks/useModalDialog';
+import { stripHtmlTags } from '../utils/safeHtmlStrip.js';
 import { OT_BOOKS, NT_BOOKS } from '../data/bibleBooks';
 import { BOOK_CONTEXTS, SUPPORTED_BOOK_IDS } from '../data/contextRegistry';
 import CrossrefPopup from './CrossrefPopup';
@@ -63,7 +64,7 @@ const EMPTY_MACRO_STRUCTURE = { sections: [], pivots: [], arcs: [] };
 const EMPTY_DISCOURSE_RULES = [];
 const EMPTY_THEO_TERMS = {};
 
-const strip = (s) => s ? s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : '';
+const strip = (s) => s ? stripHtmlTags(s).replace(/\s+/g, ' ').trim() : '';
 
 // ── 분석 함수 (규칙과 신학어를 파라미터로 받음 · 책마다 다름) ─────────────
 function analyzeVerse(words, discourseRules, theoTerms) {

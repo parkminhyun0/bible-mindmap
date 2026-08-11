@@ -1,6 +1,8 @@
 // 앱의 구절 선택 기준은 개역한글의 정경 장·절 번호다.
 // 역본별 장절 배치 차이는 이 계층에서만 정규화하고 UI에는 동일한 참조를 제공한다.
 
+import { stripHtmlTags } from '../utils/safeHtmlStrip.js';
+
 export const WEB_CANONICAL_ALIASES = Object.freeze([
   Object.freeze({
     target: Object.freeze({ bookId: 'Rom', chapter: 16, verseStart: 25, verseEnd: 27 }),
@@ -14,8 +16,7 @@ export function normalizeVerseRows(rawRows) {
   const byVerse = new Map();
   for (const raw of rawRows) {
     const verse = Number(raw?.verse);
-    const text = String(raw?.text ?? '')
-      .replace(/<[^>]*>/g, '')
+    const text = stripHtmlTags(raw?.text ?? '')
       .replace(/\s+/g, ' ')
       .trim();
     if (!Number.isInteger(verse) || verse < 1 || !text) continue;

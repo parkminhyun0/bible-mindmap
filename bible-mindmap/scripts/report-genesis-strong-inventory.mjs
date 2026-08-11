@@ -120,7 +120,10 @@ export function buildGenesisInventory(xml, dictionaries = {}) {
       const attributes = wordMatch[1]
       const lemma = readAttribute(attributes, 'lemma')
       const tokenId = readAttribute(attributes, 'id') || `${reference}#${wordIndex}`
-      const surface = wordMatch[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+      let surfaceRaw = wordMatch[2]
+      let surfacePrev
+      do { surfacePrev = surfaceRaw; surfaceRaw = surfaceRaw.replace(/<[^>]+>/g, '') } while (surfaceRaw !== surfacePrev)
+      const surface = surfaceRaw.replace(/\s+/g, ' ').trim()
 
       if (!lemma) {
         wordsWithoutLemma.push({ reference, tokenId, surface })

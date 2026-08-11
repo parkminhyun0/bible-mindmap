@@ -4,11 +4,12 @@ import { fetchVerse } from '../api/bibleApi'
 import { getCanonCategory } from '../utils/canon'
 import useMobile from '../hooks/useMobile'
 import PassageAnnotationPin from './PassageAnnotationPin'
+import { stripHtmlTags } from '../utils/safeHtmlStrip.js'
 
 // bolls.life 본문 텍스트 파싱 · 절 번호 span 을 우리 스타일로 재렌더
 // 규칙: 첫 절만 "장:절", 이후 같은 장은 "절"만 (crossref 는 항상 한 장 내라 장 변경 없음)
 function renderVerses(rawText, chapter, verseStart, accentColor) {
-  const stripTags = (s) => s.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim()
+  const stripTags = (s) => stripHtmlTags(s).replace(/\s+/g, ' ').trim()
 
   // bolls.life 다중 절 반환 시 <span ...>N</span> 형태로 절 번호 삽입됨
   // split 정규식으로 [pre, verseNum, text, verseNum, text, ...] 배열 생성

@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
 import { fetchVerse } from '../api/bibleApi';
 import { isOT } from '../data/bibleBooks';
+import { stripHtmlTags } from '../utils/safeHtmlStrip.js';
 import { loadVerseLexicon } from '../utils/lexicon';
 import { normalizeOriginal } from '../utils/normalizeOriginal';
 import LexiconPopup from './LexiconPopup';
@@ -177,7 +178,7 @@ function styleFromColor(color) {
 
 function isEmptyHtml(s) {
   if (!s) return true;
-  const stripped = String(s).replace(/<[^>]+>/g, '').trim();
+  const stripped = stripHtmlTags(s).trim();
   return stripped.length === 0;
 }
 

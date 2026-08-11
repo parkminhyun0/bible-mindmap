@@ -132,7 +132,7 @@ for (const required of [
 
 assert.ok(runbook.includes('외부 유료 API 호출: 0'), 'runbook must state zero paid API calls')
 assert.ok(runbook.includes('기존 NVIDIA·OpenAI 실행 경로는 선택형 보관'), 'runbook must separate optional paid path')
-assert.ok(runbook.includes('api.openai.com'), 'runbook must name the blocked OpenAI endpoint family')
+assert.ok(/\bapi\.openai\.com\b/.test(runbook), 'runbook must name the blocked OpenAI endpoint family')
 assert.ok(oneCommand.includes('RUN-GENESIS-G2-ZERO-COST-CANARY'), 'one-command guide must state explicit local execution confirmation')
 assert.ok(oneCommand.includes('수동 JSON'), 'one-command guide must document the no-model manual route')
 assert.ok(hardening.includes('build-genesis-g2-human-review-bundle.mjs'), 'hardening guide must document the complete human review bundle')

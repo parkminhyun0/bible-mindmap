@@ -1,11 +1,16 @@
 function stripHtml(value) {
-  return String(value || '')
-    .replace(/<span[^>]*>\s*\d+\s*<\/span>/gi, ' ')
-    .replace(/<[^>]*>/g, ' ')
+  let cleaned = String(value || '')
+    .replace(/<span[^>]*>\s*\d+\s*<\/span>/gi, ' ');
+  let prev;
+  do {
+    prev = cleaned;
+    cleaned = cleaned.replace(/<[^>]*>/g, ' ');
+  } while (cleaned !== prev);
+  return cleaned
     .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
     .replace(/&lt;/g, '<')
     .replace(/&gt;/g, '>')
+    .replace(/&amp;/g, '&')
     .replace(/\s+/g, ' ')
     .trim();
 }

@@ -88,7 +88,7 @@ export function writeKoreanEvaluationCandidates(result, outputDir) {
     '',
     '| 후보 ID | 문체 | 유형 | 질의 | 제안 정답 라벨 |',
     '|---|---|---|---|---|',
-    ...result.candidates.map((item) => `| ${item.id} | ${item.style} | ${item.queryType} | ${item.query.replace(/\|/g, '\\|')} | ${item.proposedRelevantIds.join(', ')} |`),
+    ...result.candidates.map((item) => `| ${item.id} | ${item.style} | ${item.queryType} | ${item.query.replace(/\\/g, '\\\\').replace(/\|/g, '\\|')} | ${item.proposedRelevantIds.join(', ')} |`),
     '',
     '> 정답 라벨은 자동 확정하지 않는다. 중복·자연스러움·신학적 적합성·hard-negative를 사람이 검토한 뒤 별도 승인한다.',
     '',
