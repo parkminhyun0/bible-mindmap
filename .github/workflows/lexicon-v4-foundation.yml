@@ -73,6 +73,18 @@ jobs:
         working-directory: bible-mindmap
         run: node scripts/verify-golden-audit-sample-contract.mjs
 
+  r4-extended-research-queue:
+    name: v4 R4 extended research queue
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+      - name: verify-lexicon-v4-r4-extended-research-queue
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-v4-r4-extended-research-queue.mjs
+
   auto-merge-decision-dry-run:
     name: v4 auto-merge decision dry-run
     runs-on: ubuntu-latest
