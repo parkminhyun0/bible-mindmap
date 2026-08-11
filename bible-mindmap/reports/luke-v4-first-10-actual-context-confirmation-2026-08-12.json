@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-first-10-actual-context-confirmation-2026-08-12",
+  "status": "ACTUAL_LUKE_CONTEXT_CONFIRMED_FOR_FIRST_TFLSJ_SUBSET",
+  "generatedAt": "2026-08-12T03:08:24+09:00",
+  "branchBaseline": "cb82152e6f98b69445c519e8f8b9f9c7761108a2",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "contextAsset": {
+    "path": "bible-mindmap/data/lexicon/luke-g2-canary-preparation.json",
+    "blobSha": "ad3c56dd33be6447da60c05f288a90cd5f69ab6b",
+    "representativeContextsTotal": 70,
+    "role": "pinned Luke token/context/morphology evidence inherited from validated G2 preparation"
+  },
+  "checked": [
+    {
+      "strong": "G2316",
+      "lemma": "θεός",
+      "candidateHead": "하나님; 신, 신적 존재",
+      "usage": {"tokenCount": 122, "verseCount": 114, "representativeContexts": 8},
+      "confirmedExamples": [
+        {"reference": "Luke 1:6", "form": "θεοῦ", "morphology": "N-GSM-T", "contextSignal": "ἐναντίον τοῦ θεοῦ", "tokenReferentDecision": "GOD"},
+        {"reference": "Luke 5:1", "form": "θεοῦ", "morphology": "N-GSM-T", "contextSignal": "τὸν λόγον τοῦ θεοῦ", "tokenReferentDecision": "GOD"},
+        {"reference": "Luke 24:53", "form": "θεόν", "morphology": "N-ASM-T", "contextSignal": "εὐλογοῦντες τὸν θεόν", "tokenReferentDecision": "GOD"}
+      ],
+      "decision": "KEEP_LEXEME_CORE_AND_CONFIRM_GOD_REFERENT_FOR_SAMPLED_LUKE_TOKENS",
+      "boundary": "Do not delete generic deity senses from the lexeme, but do not import classical ruler-title/metaphorical extensions into Luke without token evidence."
+    },
+    {
+      "strong": "G0932",
+      "lemma": "βασιλεία",
+      "candidateHead": "왕권·통치권; 왕국; 나라",
+      "usage": {"tokenCount": 45, "verseCount": 43, "representativeContexts": 8},
+      "confirmedExamples": [
+        {"reference": "Luke 1:33", "form": "βασιλείας", "morphology": "N-GSF", "contextSignal": "τῆς βασιλείας αὐτοῦ οὐκ ἔσται τέλος", "senseBoundary": "ROYAL_RULE_OR_KINGDOM"},
+        {"reference": "Luke 4:5", "form": "βασιλείας", "morphology": "N-APF", "contextSignal": "πάσας τὰς βασιλείας τῆς οἰκουμένης", "senseBoundary": "CONCRETE_KINGDOMS_REALMS"},
+        {"reference": "Luke 7:28", "form": "βασιλείᾳ", "morphology": "N-DSF", "contextSignal": "ἐν τῇ βασιλείᾳ τοῦ θεοῦ", "senseBoundary": "KINGDOM_OF_GOD_DOMAIN_RULE"}
+      ],
+      "decision": "KEEP_RULE_DOMINION_AND_KINGDOM_REALM_DISTINCTION",
+      "boundary": "The Luke samples require a non-flattened candidate; unrelated institutional/classical senses remain excluded unless Luke context supports them."
+    },
+    {
+      "strong": "G4151",
+      "lemma": "πνεῦμα",
+      "candidateHead": "영; 숨·호흡; 바람",
+      "usage": {"tokenCount": 36, "verseCount": 35, "representativeContexts": 8},
+      "confirmedExamples": [
+        {"reference": "Luke 1:15", "form": "πνεύματος", "morphology": "N-GSN", "contextSignal": "πνεύματος ἁγίου πλησθήσεται", "tokenReferentDecision": "HOLY_SPIRIT"},
+        {"reference": "Luke 3:16", "form": "πνεύματι", "morphology": "N-DSN", "contextSignal": "ἐν πνεύματι ἁγίῳ καὶ πυρί", "tokenReferentDecision": "HOLY_SPIRIT"}
+      ],
+      "decision": "KEEP_MULTI_SENSE_LEXEME_AND_DISAMBIGUATE_TOKEN_REFERENT_BY_CONTEXT",
+      "boundary": "Holy Spirit is context-confirmed in sampled tokens; breath/wind/human-spirit/spiritual-being senses remain legitimate lexical boundaries for other tokens and must not be collapsed."
+    }
+  ],
+  "batchAssessment": {
+    "first10Total": 10,
+    "actualContextConfirmedThisUnit": 3,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "newHold": 0,
+    "humanGateRaised": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "independentAuditStillRequired": true,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "CONTINUE_TFLSJ_BOUNDARY_CHECK_FOR_G3004_G4982_G1342_G3686_THEN_PREPARE_EXACT_FINGERPRINT_INDEPENDENT_AUDIT"
+}
