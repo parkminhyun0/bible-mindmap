@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "manifestId": "genesis-p5-r4-pinned-corpus-usage-manifest-v1",
+  "book": "GEN",
+  "status": "PINNED_CORPUS_USAGE_COMPLETE",
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c"
+  },
+  "source": {
+    "id": "openscriptures-hebrew-bible-genesis",
+    "file": ".oshb-cache/Gen.xml",
+    "digest": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+    "windowRadius": 4,
+    "sampleLimit": 12
+  },
+  "ciEvidence": {
+    "firstGeneratingRunId": 31458520466,
+    "artifactId": 9088916233,
+    "artifactName": "genesis-p5-r4-pinned-corpus-usage",
+    "artifactZipDigest": "sha256:d3b62ae1aaf443f4803aee4efa395dd516049e2888dcd733d2f151b027b7370e",
+    "generatedReportDigest": "sha256:87b06855a1cbadea61e1120e99b5635ba6b3334b3bb15330f9d24fdb67239282"
+  },
+  "governance": {
+    "evidenceCollectionOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "autoApprovalAllowed": false,
+    "humanFinalWordingAllowedAtThisStage": false
+  },
+  "counts": {
+    "items": 5,
+    "occurrences": 87,
+    "sampledContexts": 38
+  },
+  "items": [
+    {
+      "baseStrong": "H120",
+      "sourceStrong": "H120",
+      "corpusStrong": "H120",
+      "candidateFingerprint": "sha256:7521aaf5b0f2992a23601a3a357262ced753e0932c7e7657a7045977edd92125",
+      "occurrences": 47,
+      "chapters": [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 16],
+      "firstReference": "Gen.1.26",
+      "lastReference": "Gen.16.12",
+      "sampleCount": 12
+    },
+    {
+      "baseStrong": "H6030",
+      "sourceStrong": "H6030b",
+      "corpusStrong": "H6030",
+      "candidateFingerprint": "sha256:2f2014de76317122a4a605240ed5e2367c408d32583c0046a827af59707b5fbb",
+      "occurrences": 19,
+      "chapters": [18, 23, 24, 27, 30, 31, 34, 35, 40, 41, 42, 45],
+      "firstReference": "Gen.18.27",
+      "lastReference": "Gen.45.3",
+      "sampleCount": 12
+    },
+    {
+      "baseStrong": "H7650",
+      "sourceStrong": "H7650",
+      "corpusStrong": "H7650",
+      "candidateFingerprint": "sha256:c7ffb8646a26cd58e3ac239eb782faa171acb6ca7af215072fa97f13fd9013d2",
+      "occurrences": 19,
+      "chapters": [21, 22, 24, 25, 26, 31, 47, 50],
+      "firstReference": "Gen.21.23",
+      "lastReference": "Gen.50.25",
+      "sampleCount": 12
+    },
+    {
+      "baseStrong": "H28",
+      "sourceStrong": "H28",
+      "corpusStrong": "H28",
+      "candidateFingerprint": "sha256:0e14d5b1a36b874475ab4480012b4aaffc44e5af0a3f27d109ea799df58bd6a4",
+      "occurrences": 1,
+      "chapters": [25],
+      "firstReference": "Gen.25.4",
+      "lastReference": "Gen.25.4",
+      "sampleCount": 1
+    },
+    {
+      "baseStrong": "H39",
+      "sourceStrong": "H39",
+      "corpusStrong": "H39",
+      "candidateFingerprint": "sha256:27bf6bf5e378efa24f39481ade6875f63c86c2f04533d7f3e106934d343a543d",
+      "occurrences": 1,
+      "chapters": [10],
+      "firstReference": "Gen.10.28",
+      "lastReference": "Gen.10.28",
+      "sampleCount": 1
+    }
+  ],
+  "nextGate": "THREE_MODEL_REAUDIT_ON_EXACT_PINNED_BASELINE"
+}
