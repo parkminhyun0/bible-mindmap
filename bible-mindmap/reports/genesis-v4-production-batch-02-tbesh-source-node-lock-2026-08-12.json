@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12",
+  "status": "SECONDARY_SOURCE_NODES_PINNED_FULL_BDB_AND_CONTEXT_STILL_REQUIRED",
+  "generatedAt": "2026-08-12T03:08:24+09:00",
+  "branchBaseline": "b0b8af36bad47b5a068621cb61099399175c661a",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "source": {
+    "sourceId": "stepbible-tbesh",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "path": "Lexicons/TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt",
+    "registryContentHash": "sha256:da09f53ee1da7606b5d8a10cd2a263b3553df15b5fa0e36dda9c7707c6883988",
+    "role": "secondary abridged Strong/BDB-aligned source-node control",
+    "boundary": "TBESH source-node identity and abridged sense boundaries are evidence only; OpenScriptures full BDB remains primary and must be cross-checked before candidate generation."
+  },
+  "targets": [
+    {"strong":"H430","lemma":"אֱלֹהִים","transliteration":"e.lo.him","tbeshNode":"H0430G","tbeshGloss":"God","boundary":"God/gods grammatical and referential distinction; avoid deriving theology from grammatical number alone"},
+    {"strong":"H3068","lemma":"יְהֹוָה","transliteration":"ye.ho.vah","tbeshNode":"H3068G","tbeshGloss":"LORD","boundary":"divine proper-name identity vs reading/translation tradition must remain separate"},
+    {"strong":"H1","lemma":"אָב","transliteration":"av","tbeshNode":"H0001G","tbeshGloss":"father","boundary":"individual father, ancestor, head/founder, originator and figurative senses; do not import divine fatherhood where context does not require it"},
+    {"strong":"H1121","lemma":"בֵּן","transliteration":"ben","tbeshNode":"H1121A","tbeshGloss":"son: child","relatedNodes":["H1121G","H1121H","H1121I","H1121J","H1121K","H1121L"],"boundary":"child/son, descendant/people, young animal, type/member, heir, warrior and age constructions require context separation"},
+    {"strong":"H1961","lemma":"הָיָה","transliteration":"ha.yah","tbeshNode":"H1961","tbeshGloss":"to be","boundary":"be/exist, become, happen/come to pass, remain/situated/accompany and Niphal event/result senses; clause-level context required"},
+    {"strong":"H376","lemma":"אִישׁ","transliteration":"ish","tbeshNode":"H0376G","tbeshGloss":"man","relatedNodes":["H0376H","H0376I"],"boundary":"man/male, husband, person/human, servant, mankind, champion/great man, anyone/each"},
+    {"strong":"H802","lemma":"אִשָּׁה","transliteration":"ish.shah","tbeshNode":"H0802G","tbeshGloss":"woman","relatedNodes":["H0802H","H0802I"],"boundary":"woman vs wife/widow vs female/another constructions; token context required"},
+    {"strong":"H559","lemma":"אָמַר","transliteration":"a.mar","tbeshNode":"H0559","tbeshGloss":"to say","boundary":"say/speak/answer, inner speech/think, command/promise/intend and passive/called senses must track stem and syntax"},
+    {"strong":"H6213","lemma":"עָשָׂה","transliteration":"a.sah","tbeshNode":"H6213H","tbeshGloss":"to make","relatedNodes":["H6213A","H6213B","H6213I","H6213J"],"boundary":"make/do/perform/produce vs offering/institution/bring-about and separate press/squeeze homograph; morphology required"},
+    {"strong":"H7200","lemma":"רָאָה","transliteration":"ra.ah","tbeshNode":"H7200G","tbeshGloss":"to see: see","relatedNodes":["H7200H","H7200I","H7200J","H7200K","H7200L","H7200M","H7200N"],"boundary":"see/perceive/consider, appear/be seen, show, select/provide and idiomatic extensions require stem/context control"}
+  ],
+  "checks": {
+    "batchTargets": 10,
+    "tbeshNodesPinned": 10,
+    "batch01Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "primarySourceStillRequired": {
+    "sourceId": "openscriptures-hebrewlexicon-bdb",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "registryContentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+    "required": true
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "PIN_OPENSCRIPTURES_FULL_BDB_NODES_FOR_ALL_10_AND_EXTRACT_REPRESENTATIVE_GENESIS_CONTEXTS_WITH_MORPHOLOGY"
+}
