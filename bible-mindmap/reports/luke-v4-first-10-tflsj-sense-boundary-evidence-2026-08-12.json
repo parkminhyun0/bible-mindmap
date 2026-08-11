@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-first-10-tflsj-sense-boundary-evidence-2026-08-12",
+  "status": "EVIDENCE_ENRICHED_CONTEXT_CONFIRMATION_STILL_REQUIRED",
+  "generatedAt": "2026-08-12T01:12:00+09:00",
+  "branchBaseline": "fca672d7a75117214894d2a053cd0cd4641388e5",
+  "source": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "path": "Lexicons/TFLSJ  0-5624 - Translators Formatted full LSJ Bible lexicon - STEPBible.org CC BY.txt",
+    "blobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "role": "secondary full-lexicon cross-check for sense-boundary control"
+  },
+  "checked": [
+    {
+      "strong": "G2316",
+      "lemma": "θεός",
+      "candidateHead": "하나님; 신, 신적 존재",
+      "tflsjBoundarySummary": [
+        "TFLSJ preserves the core deity range: God/the Deity in singular and plural usage.",
+        "It also records classical/metaphorical extensions such as special divinities, ruler titles, abstract metaphor, goddess usage, and authority/judge in some LXX contexts."
+      ],
+      "boundaryDecision": "KEEP_CANDIDATE_CORE_AND_REQUIRE_LUKE_CONTEXT_FOR_REFERENT",
+      "excludedFromAutomaticCandidateExpansion": [
+        "classical ruler-title sense",
+        "abstract metaphorical deity sense",
+        "weather/astrological and other classical specializations"
+      ],
+      "reason": "The existing candidate correctly preserves the lexical distinction between the one God and generic deity without importing historically attested but Luke-unverified classical extensions."
+    },
+    {
+      "strong": "G0932",
+      "lemma": "βασιλεία",
+      "candidateHead": "왕권·통치권; 왕국; 나라",
+      "tflsjBoundarySummary": [
+        "TFLSJ explicitly attests kingdom/dominion as the core range.",
+        "It separately attests kingly office, being ruled by a king, reign/accession, and later concrete or institutional senses such as diadem/His Majesty."
+      ],
+      "boundaryDecision": "KEEP_RULE_DOMINION_AND_KINGDOM_DISTINCTION",
+      "excludedFromAutomaticCandidateExpansion": [
+        "diadem",
+        "Athenian archon office",
+        "His Majesty",
+        "accession-to-throne specialization unless Luke context requires it"
+      ],
+      "reason": "The candidate's separation of royal rule/dominion from kingdom/realm is directly supported; unrelated institutional/classical senses must not be imported into Luke without context evidence."
+    },
+    {
+      "strong": "G4151",
+      "lemma": "πνεῦμα",
+      "candidateHead": "영; 숨·호흡; 바람",
+      "tflsjBoundarySummary": [
+        "TFLSJ strongly confirms wind/air, breathed air/breath, breath of life, divine inspiration, Spirit of God, human spirit, and immaterial/spiritual being as distinct historical senses.",
+        "It also contains medical, grammatical, rhetorical, odour/exhalation, and flatulence senses that are outside the current Luke candidate core unless a Luke token proves otherwise."
+      ],
+      "boundaryDecision": "KEEP_MULTI_SENSE_CANDIDATE_AND_REQUIRE_TOKEN_LEVEL_LUKE_DISAMBIGUATION",
+      "excludedFromAutomaticCandidateExpansion": [
+        "medical respiration specializations",
+        "flatulence",
+        "grammatical breathing mark",
+        "rhetorical one-breath sentence",
+        "odour/exhalation"
+      ],
+      "reason": "The existing candidate is appropriately non-flattened. TFLSJ strengthens the need to distinguish Holy Spirit, human spirit, spiritual beings, and breath/wind by actual Luke context rather than forcing one theological gloss."
+    }
+  ],
+  "batchAssessment": {
+    "first10Total": 10,
+    "tflsjBoundaryCheckedThisUnit": 3,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "humanGateRaised": 0,
+    "newHold": 0
+  },
+  "governance": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "independentAuditStillRequired": true
+  },
+  "nextGate": "CROSS_CHECK_G2316_G0932_G4151_AGAINST_ACTUAL_LUKE_TOKEN_CONTEXT_AND_MORPHOLOGY_THEN_CONTINUE_TFLSJ_BOUNDARY_CHECK_FOR_G3004_G4982_G1342_G3686"
+}
