@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12",
+  "status": "PRIMARY_BDB_NODES_PINNED_CONTEXT_AND_MORPHOLOGY_STILL_REQUIRED",
+  "generatedAt": "2026-08-12T05:08:00+09:00",
+  "branchBaseline": "76a41fa74ebe0f55551c88cc59dbefc033401a1d",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "source": {
+    "sourceId": "openscriptures-hebrewlexicon-bdb",
+    "repository": "openscriptures/HebrewLexicon",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "path": "BrownDriverBriggs.xml",
+    "registryContentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+    "role": "primary full BDB lexical hierarchy",
+    "provenanceNote": "Exact pinned OpenScriptures XML was re-fetched before this report; entry anchors and sense boundaries were cross-checked against the OpenScriptures BDB XML structure. This report pins lexical boundaries only and does not authorize Korean candidate, Registry, or production mutation."
+  },
+  "targets": [
+    {
+      "strong": "H430",
+      "lemma": "אֱלֹהִים",
+      "bdbEntryId": "a.dl.ad",
+      "boundary": "Keep plural-in-number uses such as rulers/judges, divine beings and gods distinct from intensive/singular-referential uses for God; grammatical number alone must not be turned into a theological inference.",
+      "uncertainty": "Root/etymological relationship around אל/אלהים is not a safe basis for candidate expansion."
+    },
+    {
+      "strong": "H3068",
+      "lemma": "יְהֹוָה",
+      "bdbEntryId": "e.az.ae",
+      "boundary": "Primary lexical identity is the proper name of the God of Israel. Masoretic reading tradition and scholarly etymological proposals must remain provenance/context notes rather than replacing the proper-name identity.",
+      "uncertainty": "Do not convert a proposed derivation from הוה/היה into a settled lexical gloss."
+    },
+    {
+      "strong": "H1",
+      "lemma": "אָב",
+      "bdbEntryId": "a.ae.ab",
+      "boundary": "Distinguish individual father, head of household/clan, ancestor, originator/patron, figurative producer/protector, honorific and late ruler/chief uses. Divine-father reference is context-governed, not imported globally.",
+      "uncertainty": "The preceding root discussion a.ae.aa explicitly treats the proposed stem/explanation as doubtful; lexical candidate must not depend on that etymology."
+    },
+    {
+      "strong": "H1121",
+      "lemma": "בֵּן",
+      "bdbEntryId": "b.ca.aa",
+      "boundary": "Separate son/male child, children, youth, young animal, figurative/member-of-class constructions and age/quality relational uses at context level.",
+      "uncertainty": null
+    },
+    {
+      "strong": "H1961",
+      "lemma": "הָיָה",
+      "bdbEntryId": "e.bf.aa",
+      "boundary": "Preserve happen/come to pass, come into being/become, exist/be, remain/continue and construction-sensitive predicative senses; clause context is required before Korean sense selection.",
+      "uncertainty": null
+    },
+    {
+      "strong": "H376",
+      "lemma": "אִישׁ",
+      "bdbEntryId": "a.da.ab",
+      "boundary": "Lexical core is man/male-person; husband, person/individual and idiomatic extensions require actual Genesis context rather than a single flattened gloss.",
+      "uncertainty": "BDB's preceding root discussion a.da.aa marks the stem's existence/meaning and derivation as disputed; do not expose a speculative etymology as headword meaning."
+    },
+    {
+      "strong": "H802",
+      "lemma": "אִשָּׁה",
+      "bdbEntryId": "a.eq.ab",
+      "boundary": "Separate woman, wife, female-of-animals and distributive/reciprocal uses. Relationship status must come from syntax/context, not the lemma alone.",
+      "uncertainty": "Root linkage belongs to provenance and must not control the Korean headword."
+    },
+    {
+      "strong": "H559",
+      "lemma": "אָמַר",
+      "bdbEntryId": "a.ea.aa",
+      "boundary": "Track Qal say/utter, inner speech/think, promise and command separately from passive be-said/told and other stem-specific senses; morphology and syntax are mandatory for token-level classification.",
+      "uncertainty": null
+    },
+    {
+      "strong": "H6213",
+      "lemma": "עָשָׂה",
+      "bdbEntryId": "p.fy.aa",
+      "separateHomographEntryId": "p.fz.aa",
+      "boundary": "Primary root covers do/make and derived action/production/preparation/ordering ranges. Keep the separate press/squeeze homograph isolated and require morphology/context before sense assignment.",
+      "uncertainty": "Homograph separation is a hard boundary."
+    },
+    {
+      "strong": "H7200",
+      "lemma": "רָאָה",
+      "bdbEntryId": "t.ab.aa",
+      "boundary": "Separate see/perceive/mental observation from appear/be seen and causative show/cause-to-see senses by stem and context; idiomatic extensions must not replace the lexical core.",
+      "uncertainty": null
+    }
+  ],
+  "checks": {
+    "batchTargets": 10,
+    "primaryBdbEntriesPinned": 10,
+    "explicitHomographBoundaryPinned": 1,
+    "batch01Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "EXTRACT_REPRESENTATIVE_GENESIS_CONTEXTS_WITH_MORPHOLOGY_FOR_ALL_10_THEN_GENERATE_SOURCE_FAITHFUL_KOREAN_CANDIDATES_AND_PREPARE_INDEPENDENT_AUDIT"
+}
