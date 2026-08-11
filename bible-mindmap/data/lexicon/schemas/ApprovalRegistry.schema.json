@@ -2,17 +2,28 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://parkminhyun0.github.io/bible-mindmap/schemas/lexicon/ApprovalRegistry.schema.json",
   "title": "Bible Mind Map Lexicon Approval Registry",
-  "description": "Final human-approved Strong entries. P4 infrastructure only; an empty entries array is the only allowed initial state before P4.5 audit.",
+  "description": "Final approved Strong entries. Approval provenance is either legacy/human review or the pinned Evidence-First v4 policy AND-gate; existing entries remain immutable unless the high-risk mutation gate is satisfied.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "entries", "registryFingerprint"],
+  "required": [
+    "schemaVersion",
+    "entries",
+    "registryFingerprint"
+  ],
   "properties": {
-    "schemaVersion": { "const": 1 },
+    "schemaVersion": {
+      "const": 1
+    },
     "entries": {
       "type": "array",
-      "items": { "$ref": "#/$defs/approvedEntry" }
+      "items": {
+        "$ref": "#/$defs/approvedEntry"
+      }
     },
-    "registryFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+    "registryFingerprint": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
   },
   "$defs": {
     "approvedEntry": {
@@ -26,42 +37,95 @@
         "evidencePacketFingerprint"
       ],
       "properties": {
-        "identity": { "$ref": "StrongIdentity.schema.json" },
+        "identity": {
+          "$ref": "StrongIdentity.schema.json"
+        },
         "approvedSenseTree": {
           "type": "array",
           "minItems": 1,
-          "items": { "$ref": "#/$defs/approvedSenseNode" }
+          "items": {
+            "$ref": "#/$defs/approvedSenseNode"
+          }
         },
-        "reviewer": { "$ref": "#/$defs/reviewer" },
-        "approvedAt": { "type": "string", "format": "date-time" },
-        "evidencePacketFingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+        "reviewer": {
+          "$ref": "#/$defs/reviewer"
+        },
+        "approvedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "evidencePacketFingerprint": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
       }
     },
     "approvedSenseNode": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["id", "parentId", "depth", "order", "translationKo", "evidenceSupport"],
+      "required": [
+        "id",
+        "parentId",
+        "depth",
+        "order",
+        "translationKo",
+        "evidenceSupport"
+      ],
       "properties": {
-        "id": { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" },
+        "id": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$"
+        },
         "parentId": {
           "anyOf": [
-            { "type": "string", "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$" },
-            { "type": "null" }
+            {
+              "type": "string",
+              "pattern": "^[1-9][0-9]*(?:\\.[1-9][0-9]*)*$"
+            },
+            {
+              "type": "null"
+            }
           ]
         },
-        "depth": { "type": "integer", "minimum": 0 },
-        "order": { "type": "integer", "minimum": 1 },
-        "translationKo": { "type": "string", "minLength": 1 },
-        "evidenceSupport": { "enum": ["direct", "combined", "legacy-only"] }
+        "depth": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "translationKo": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidenceSupport": {
+          "enum": [
+            "direct",
+            "combined",
+            "legacy-only"
+          ]
+        }
       }
     },
     "reviewer": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["reviewerId", "reviewerType"],
+      "required": [
+        "reviewerId",
+        "reviewerType"
+      ],
       "properties": {
-        "reviewerId": { "type": "string", "minLength": 1 },
-        "reviewerType": { "enum": ["human"] }
+        "reviewerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewerType": {
+          "enum": [
+            "human",
+            "evidence-policy"
+          ]
+        }
       }
     }
   }
