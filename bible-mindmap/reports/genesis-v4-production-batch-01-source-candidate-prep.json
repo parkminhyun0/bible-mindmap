@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-01-source-candidate-prep",
+  "book": "Genesis",
+  "status": "SOURCE_CANDIDATE_PREPARED",
+  "source": {
+    "sourceId": "stepbible-tbesh",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "path": "Lexicons/TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt",
+    "license": "CC BY 4.0",
+    "role": "secondary-abridged-control; OpenScriptures full BDB remains primary hierarchy authority"
+  },
+  "baseline": {
+    "inventoryUniqueStrong": 1772,
+    "existingCovered": 78,
+    "newTranslationRequired": 1694,
+    "batchStrong": 10,
+    "batchGenesisOccurrences": 259,
+    "r4Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "fullBdbHierarchyCrosscheckRequired": true,
+    "genesisUsageContextCrosscheckRequired": true,
+    "independentAuditRequired": true
+  },
+  "items": [
+    {
+      "strong": "H127",
+      "lemma": "אֲדָמָה",
+      "sourceNodes": ["H0127G", "H0127H", "H0127I"],
+      "candidateHeadKo": "땅·토양; 땅의 표면; 토지·지역·나라",
+      "senseBoundaryKo": ["경작되는 땅/토양", "특정한 토지·땅 조각", "건축 재료로서의 흙", "지표면", "지역·영토·나라", "문맥상 넓은 거주 세계"],
+      "risk": "MEDIUM",
+      "note": "H776 에레츠와 의미 영역이 겹치므로 창세기 실제 문맥에서 토양/지표/영토 경계를 분리한다."
+    },
+    {
+      "strong": "H1823",
+      "lemma": "דְּמוּת",
+      "sourceNodes": ["H1823"],
+      "candidateHeadKo": "닮음; 형상·유사함; ~와 같은 모습",
+      "senseBoundaryKo": ["명사: 닮음·유사성·형상", "부사적 용법: ~와 같이/~의 모습으로"],
+      "risk": "MEDIUM",
+      "note": "창 1장의 하나님의 형상 교의를 사전 기본 뜻에 선행 삽입하지 않는다."
+    },
+    {
+      "strong": "H5315",
+      "lemma": "נֶפֶשׁ",
+      "sourceNodes": ["H5315G", "H5315H", "H5315I", "H5315J", "H5315K", "H5315L", "H5315M", "H5315N"],
+      "candidateHeadKo": "생명·생명체; 사람·자기 자신; 목숨; 욕구·감정",
+      "senseBoundaryKo": ["숨 쉬는 생명/생명체", "사람·개인·자기 자신", "목숨·생명", "욕구·식욕", "감정·열망", "문맥에 따른 목/숨통 관련 제한 용법"],
+      "risk": "HIGH",
+      "note": "항상 비물질적 '영혼'으로 평탄화하지 않고 사람/생명/생명체 용례를 실제 문맥에서 분리한다."
+    },
+    {
+      "strong": "H2416",
+      "lemmaFamily": ["חַי", "חַיָּה", "חַיִּים"],
+      "sourceNodes": ["H2416A", "H2416B", "H2416C", "H2416D", "H2416E"],
+      "candidateHeadKo": "살아 있는·생생한; 생물; 생명",
+      "senseBoundaryKo": ["형용사: 살아 있는·생기 있는", "식물의 푸름/물의 신선함 등 확장", "생물·동물", "생명", "친족/공동체로 분리된 Extended Strong 하위항목"],
+      "risk": "HIGH",
+      "note": "원 Strong 하나 아래 여러 lemma/품사 하위항목이 있어 Extended Strong source-node 보존이 필수다."
+    },
+    {
+      "strong": "H2896",
+      "lemmaFamily": ["טוֹב", "טוֹבָה"],
+      "sourceNodes": ["H2896A", "H2896B", "H2896C"],
+      "candidateHeadKo": "좋은·선한·기쁜; 좋은 것·유익; 복지·번영",
+      "senseBoundaryKo": ["형용사: 좋고 즐겁고 적절함", "윤리적으로 선하고 옳음", "명사: 좋은 것·유익·복", "복지·번영·행복"],
+      "risk": "MEDIUM",
+      "note": "창 1장의 '좋다'를 윤리적 선 하나로 축소하지 않고 감각적/기능적/윤리적 용법을 분리한다."
+    },
+    {
+      "strong": "H7451",
+      "lemmaFamily": ["רַע", "רָעָה"],
+      "sourceNodes": ["H7451A", "H7451B", "H7451C", "H7451H", "H7451I"],
+      "candidateHeadKo": "나쁜·해로운·악한; 재앙·고난·해악",
+      "senseBoundaryKo": ["질적으로 나쁘고 불쾌함", "해롭고 고통을 주는 것", "윤리적 악·악함", "명사적 재앙·고난·불행·해악"],
+      "risk": "HIGH",
+      "note": "윤리적 악과 재앙/고난의 의미를 문맥 없이 하나로 합치지 않는다."
+    },
+    {
+      "strong": "H2617",
+      "lemma": "חֶסֶד",
+      "sourceNodes": ["H2617A", "H2617B"],
+      "candidateHeadKo": "인애·친절·신실함; (별도 하위항목) 수치·치욕",
+      "senseBoundaryKo": ["선함·친절·인애", "신실함·충실함", "별도 homograph/하위항목의 수치·치욕"],
+      "risk": "HIGH",
+      "note": "언약적 의미는 실제 문맥과 신학 감사에서 다루고 사전 headword에 자동 과잉 삽입하지 않는다. H2617B를 H2617A와 혼합하지 않는다."
+    },
+    {
+      "strong": "H6662",
+      "lemma": "צַדִּיק",
+      "sourceNodes": ["H6662"],
+      "candidateHeadKo": "의로운·정당한·올바른",
+      "senseBoundaryKo": ["통치/판단에서 정당함", "송사에서 옳음", "행위·성품에서 의로움", "하나님께 인정·변호받는 문맥", "법적으로 올바르고 적법함"],
+      "risk": "MEDIUM",
+      "note": "후대의 칭의 교의 전체를 형용사의 모든 창세기 용례에 역투영하지 않는다."
+    },
+    {
+      "strong": "H6666",
+      "lemma": "צְדָקָה",
+      "sourceNodes": ["H6666"],
+      "candidateHeadKo": "의·공의·정의; 올바른 행위; 의로 인정됨·구원(문맥 한정)",
+      "senseBoundaryKo": ["통치와 법의 정의·공의", "성품/행위의 의로움", "사건·주장에서의 정당함", "의로운 행위", "문맥상 변호·구원과 연결되는 용법"],
+      "risk": "HIGH",
+      "note": "창 15:6 등 핵심 신학 문맥은 source fidelity와 실제 구문을 먼저 고정한 뒤 신학 감사를 별도로 수행한다."
+    },
+    {
+      "strong": "H539",
+      "lemma": "אָמַן",
+      "sourceNodes": ["H0539"],
+      "candidateHeadKo": "굳게 하다·지탱하다; 확고하다·신실하다; 믿다·신뢰하다",
+      "senseBoundaryKo": ["Qal: 지탱하다·붙들다·양육하다", "Niphal: 굳게 서다·확립되다·신실하다·확실하다", "Hiphil: 굳게 서다·신뢰하다·믿다"],
+      "risk": "HIGH",
+      "note": "어간별 의미 차이를 보존한다. '믿음'이라는 명사 개념으로 모든 형태를 평탄화하지 않는다."
+    }
+  ],
+  "batchVerdict": {
+    "sourceCandidatePrepared": 10,
+    "heldForMissingSource": 0,
+    "readyForUsageContextCrosscheck": 10,
+    "registryWrites": 0,
+    "productionWrites": 0
+  },
+  "nextGate": "GENESIS_USAGE_CONTEXT_AND_FULL_BDB_HIERARCHY_CROSSCHECK"
+}
