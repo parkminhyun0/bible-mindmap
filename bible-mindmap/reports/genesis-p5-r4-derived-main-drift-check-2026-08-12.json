@@ -5,35 +5,40 @@
   "status": "REVALIDATION_REQUIRED_BEFORE_EXTERNAL_VERDICT_INGEST",
   "baseline": {
     "previousDerivedMainSha": "69e07b3285ea8425f028257a31ed0749c2115b50",
-    "currentDerivedMainSha": "8f2f7a3324e2386ec73288982f82d04be30f8ffc",
+    "lastCheckedMainSha": "8f2f7a3324e2386ec73288982f82d04be30f8ffc",
+    "currentDerivedMainSha": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+    "researchHeadBeforeThisUpdate": "9d476d2f5192acbdc37f0c87d775fb10f0b40a67",
     "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
     "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c"
   },
   "derivedStateDiff": {
-    "aheadBy": 8,
-    "behindBy": 0,
-    "materialR4DataFileChanged": false,
-    "r4UsageEvidenceBuilderChanged": true,
-    "changedR4RelevantImplementation": [
-      "bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs"
-    ],
-    "otherLexiconPipelineImplementationChanges": [
-      "bible-mindmap/scripts/lib/source-registry-adapter.mjs",
-      "bible-mindmap/scripts/build-genesis-g2-calibration-batch.mjs",
-      "bible-mindmap/scripts/materialize-genesis-g2-bdb-packets.mjs",
-      "bible-mindmap/scripts/verify-genesis-g2-bdb-packets.mjs",
-      "bible-mindmap/scripts/verify-genesis-g2-calibration-batch.mjs",
-      "bible-mindmap/scripts/build-genesis-g3-usage-context-packets.mjs",
-      "bible-mindmap/scripts/build-genesis-g3-context-review.mjs",
-      "bible-mindmap/scripts/build-genesis-g4-theology-audit.mjs"
-    ]
+    "originalDriftWindow": {
+      "materialR4DataFileChanged": false,
+      "r4UsageEvidenceBuilderChanged": true,
+      "changedR4RelevantImplementation": [
+        "bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs"
+      ]
+    },
+    "latestMainAdvance": {
+      "base": "8f2f7a3324e2386ec73288982f82d04be30f8ffc",
+      "head": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+      "aheadBy": 1,
+      "changedFiles": [
+        ".github/workflows/validate-pr.yml",
+        "bible-mindmap/scripts/lib/source-registry-adapter.mjs",
+        "bible-mindmap/scripts/tests/source-registry-adapter-policy.mjs"
+      ],
+      "materialR4CandidateOrPinnedUsageDataChanged": false,
+      "r4UsageEvidenceBuilderChangedAgain": false,
+      "sourceRegistryCompatibilityPolicyChanged": true
+    }
   },
   "decision": {
     "candidateMutationAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "productionWriteAllowed": false,
     "externalVerdictIngestAllowedBeforeRevalidation": false,
-    "reason": "The pinned candidate/source data fingerprints are unchanged, but an implementation file used to materialize R4 usage evidence changed on main. Exact-baseline audit integrity therefore requires rerunning the deterministic R4 usage/evidence verifier chain on current main before accepting new Claude/Gemini verdicts."
+    "reason": "The pinned candidate/source fingerprints remain unchanged, but the earlier main drift changed the deterministic R4 usage-evidence builder. The newer main advance only hardens legacy Source Registry compatibility policy and does not remove that requirement. Exact-baseline audit integrity therefore still requires rerunning the deterministic R4 usage/evidence verifier chain against current main before accepting Claude/Gemini verdicts."
   },
-  "nextGate": "RERUN_R4_DETERMINISTIC_USAGE_EVIDENCE_AND_VERIFY_OUTPUT_FINGERPRINTS_ON_CURRENT_MAIN_THEN_RESUME_CLAUDE_GEMINI_EXACT_FINGERPRINT_INTAKE"
+  "nextGate": "RERUN_R4_DETERMINISTIC_USAGE_EVIDENCE_AND_VERIFY_OUTPUT_FINGERPRINTS_ON_CURRENT_MAIN_6DB2AC3_THEN_RESUME_CLAUDE_GEMINI_EXACT_FINGERPRINT_INTAKE"
 }
