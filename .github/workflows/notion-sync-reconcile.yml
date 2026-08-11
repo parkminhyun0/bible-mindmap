@@ -1,0 +1,79 @@
+name: Notion Sync Reconcile
+
+on:
+  workflow_run:
+    workflows: [Deploy to GitHub Pages]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  reconcile:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Strict Notion sync reconciliation
+        id: notion_sync
+        continue-on-error: true
+        working-directory: bible-mindmap
+        env:
+          NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
+          NOTION_CI_LOG_BLOCK: ${{ vars.NOTION_CI_LOG_BLOCK }}
+          NOTION_SYNC_STRICT: '1'
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          DEPLOY_RUN_URL: ${{ github.event.workflow_run.html_url || format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
+        run: node scripts/notion-live-update.mjs
+
+      - name: Open or refresh Notion sync DLQ issue
+        if: steps.notion_sync.outcome == 'failure'
+        uses: actions/github-script@v9
+        env:
+          DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+          DEPLOY_RUN_URL: ${{ github.event.workflow_run.html_url || '' }}
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const sha = process.env.DEPLOY_SHA;
+            const short = sha.slice(0, 7);
+            const title = `NOTION_SYNC_FAILED · ${short}`;
+            const body = [
+              'Notion synchronization failed after a successful GitHub Pages deployment.',
+              '',
+              `- deployed SHA: ${sha}`,
+              `- deploy run: ${process.env.DEPLOY_RUN_URL || '(workflow_dispatch)'}`,
+              `- reconcile run: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
+              '- deployment verdict remains SUCCESS; Notion synchronization is separately BLOCKED until reconciled.',
+              '- retry is idempotent and must not mutate approved lexicon meanings.',
+            ].join('\n');
+            const issues = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
+            const existing = issues.find((i) => i.title === title);
+            if (existing) {
+              await github.rest.issues.update({ owner, repo, issue_number: existing.number, body });
+              core.warning(`refreshed DLQ issue #${existing.number}`);
+            } else {
+              const created = await github.rest.issues.create({ owner, repo, title, body });
+              core.warning(`created DLQ issue #${created.data.number}`);
+            }
+
+      - name: Publish reconciliation verdict
+        if: always()
+        run: |
+          if [ "${{ steps.notion_sync.outcome }}" = "success" ]; then
+            echo "### Notion sync: PASS" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "### Notion sync: DLQ" >> "$GITHUB_STEP_SUMMARY"
+            echo "Pages deployment remains successful; reconciliation issue was opened/refreshed." >> "$GITHUB_STEP_SUMMARY"
+          fi
