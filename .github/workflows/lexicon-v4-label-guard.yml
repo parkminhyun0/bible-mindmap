@@ -1,25 +1,27 @@
 name: Lexicon v4 Label Guard
 
-# lexicon-v4-auto-merge-eligible 라벨이 붙는 순간 실제 diff 스코프를 검사해서
+# lexicon-v4-auto-merge-eligible 라벨이 PR에 붙는 순간 실제 diff 스코프를 검사해서
 # 렉시콘 밖 파일이 섞여 있으면 라벨을 즉시 제거하고 사유를 코멘트로 남긴다.
-# 이렇게 하면 auto-merge 워크플로가 FAIL_CLOSED로 실패-알림하는 노이즈를 사전에 차단한다.
+# issues:labeled는 PR 라벨 이벤트도 전달하며, workflow는 기본 브랜치의 신뢰된 코드만 checkout한다.
+# PR head 코드를 write token 권한으로 실행하지 않는다.
 
 on:
-  pull_request_target:
+  issues:
     types: [labeled]
 
 permissions:
   contents: read
-  pull-requests: write
+  issues: write
+  pull-requests: read
 
 jobs:
   guard:
-    if: github.event.label.name == 'lexicon-v4-auto-merge-eligible'
+    if: github.event.issue.pull_request && github.event.label.name == 'lexicon-v4-auto-merge-eligible'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.repository.default_branch }}
           fetch-depth: 1
 
       - name: Enforce lexicon-only scope
@@ -27,10 +29,11 @@ jobs:
         with:
           script: |
             const { V4_LABEL, isLexiconScope } = await import(`${process.env.GITHUB_WORKSPACE}/bible-mindmap/scripts/lib/v4-auto-merge-decision.mjs`)
+            const issueNumber = context.payload.issue.number
             const files = await github.paginate(github.rest.pulls.listFiles, {
               owner: context.repo.owner,
               repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
+              pull_number: issueNumber,
               per_page: 100,
             })
             const nonLexicon = files.map((f) => f.filename).filter((f) => !isLexiconScope(f))
@@ -43,13 +46,13 @@ jobs:
             await github.rest.issues.removeLabel({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
+              issue_number: issueNumber,
               name: V4_LABEL,
             })
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.payload.pull_request.number,
+              issue_number: issueNumber,
               body: [
                 `⚠️ \`${V4_LABEL}\` 라벨을 자동 제거했습니다.`,
                 '',
