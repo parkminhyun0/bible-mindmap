@@ -142,6 +142,7 @@ async function main() {
 
   if (uniqueNumbers.length > 0 && (token || fixture || requireRemote)) {
     const apiBase = (process.env.CHECKPOINT_GITHUB_API_BASE || 'https://api.github.com').replace(/\/$/, '');
+    const currentSha = process.env.GITHUB_SHA || '';
 
     for (const number of uniqueNumbers) {
       try {
@@ -153,6 +154,15 @@ async function main() {
           fixture,
         });
         const fields = references.filter((item) => item.number === number).map((item) => item.field).join(', ');
+        const isMergedIntoCurrent =
+          pullRequest.merged_at &&
+          pullRequest.merge_commit_sha &&
+          currentSha &&
+          pullRequest.merge_commit_sha === currentSha;
+        if (isMergedIntoCurrent) {
+          console.warn(`⚠ PR #${number}는 현재 커밋(${currentSha.slice(0, 7)})의 병합 커밋이므로 자기참조로 간주해 건너뜁니다. 다음 커밋에서 RESUME.json을 정리하세요.`);
+          continue;
+        }
         if (pullRequest.state !== 'open' || pullRequest.merged_at) {
           fail(`종료된 PR #${number}를 활성 필드(${fields})가 참조합니다: state=${pullRequest.state}, merged=${Boolean(pullRequest.merged_at)}`);
         }
