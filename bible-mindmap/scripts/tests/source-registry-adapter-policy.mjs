@@ -79,7 +79,7 @@ function v12Source(overrides = {}) {
   assert.deepEqual(normalized.allowedUses, [])
 }
 
-// metadata-only: 알려진 상태로 보존하되 content-processing permission은 0개다.
+// metadata-only: legacy G2에는 동등 상태가 없으므로 unknown으로 낮춰 fail closed.
 {
   const source = v12Source({
     sourceId: 'metadata-catalog',
@@ -87,7 +87,7 @@ function v12Source(overrides = {}) {
     workflow: { autoProcessingAllowed: false },
   })
   const normalized = normalizeSource(source)
-  assert.equal(normalized.licenseStatus, 'metadata-only')
+  assert.equal(normalized.licenseStatus, 'unknown')
   assert.deepEqual(normalized.allowedUses, [])
 }
 
@@ -132,6 +132,19 @@ function v12Source(overrides = {}) {
   assert.equal(deriveLegacyAllowedUses(source).includes('parse'), false)
 }
 
+// approved status만으로도 부족하다. workflow가 자동 처리를 허용하지 않으면 0개다.
+{
+  const source = v12Source({
+    sourceId: 'openscriptures-hebrewlexicon-bdb',
+    license: {
+      externalLlmInputAllowed: true,
+      derivativeAllowed: true,
+    },
+    workflow: { autoProcessingAllowed: false },
+  })
+  assert.deepEqual(deriveLegacyAllowedUses(source), [])
+}
+
 // Flat legacy fixtures remain identity-compatible; this adapter must not rewrite their policy.
 {
   const flat = {
@@ -149,7 +162,7 @@ function v12Source(overrides = {}) {
   })
 }
 
-// Registry wrapper keeps registry-level policy metadata intact.
+// Registry wrapper keeps registry-level policy metadata intact while metadata-only stays non-authorizing.
 {
   const registry = normalizeRegistry({
     schemaVersion: 1,
@@ -157,7 +170,8 @@ function v12Source(overrides = {}) {
     sources: [v12Source({ sourceId: 'metadata-catalog', license: { status: 'metadata-only' } })],
   })
   assert.equal(registry.policyVersion, '1.2')
-  assert.equal(registry.sources[0].licenseStatus, 'metadata-only')
+  assert.equal(registry.sources[0].licenseStatus, 'unknown')
+  assert.deepEqual(registry.sources[0].allowedUses, [])
 }
 
 console.log('✓ source registry legacy adapter policy hardening tests passed')
