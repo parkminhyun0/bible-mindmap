@@ -2,11 +2,16 @@
 // CI 자동 배포 로그 갱신 스크립트
 // 기본 배포 경로에서는 Notion 실패가 Pages 성공을 뒤집지 않는다.
 // 별도 reconcile workflow는 NOTION_SYNC_STRICT=1로 실행해 실패를 DLQ로 승격한다.
+//
+// 2026-08-09 대시보드 리뉴얼로 기존 CI 로그 콜아웃(3ac0b963-...6408)은 은퇴됐고,
+// Live SHA·배포 상태는 상단 카드에서 GPT가 수동 관제한다. 신규 CI 자동 갱신 대상
+// 블록이 아직 없으므로 NOTION_CI_LOG_BLOCK이 비어 있으면 즉시 PASS로 종료한다.
+// 되살릴 때는 vars.NOTION_CI_LOG_BLOCK에 대상 블록 id만 설정하면 자동 재활성된다.
 
 import { execSync } from 'node:child_process';
 
 const TOKEN = process.env.NOTION_API_TOKEN || '';
-const BLOCK_ID = process.env.NOTION_CI_LOG_BLOCK || '3ac0b963-e600-81da-85b4-ea15fee06408';
+const BLOCK_ID = process.env.NOTION_CI_LOG_BLOCK || '';
 const NOTION_VERSION = process.env.NOTION_API_VERSION || '2022-06-28';
 const STRICT = process.env.NOTION_SYNC_STRICT === '1';
 
@@ -14,6 +19,11 @@ function fail(message, code = 2) {
   console.error(message);
   if (STRICT) process.exit(code);
   console.warn('⚠️ Notion sync warning recorded; Pages deployment verdict remains independent.');
+  process.exit(0);
+}
+
+if (!BLOCK_ID) {
+  console.log('ℹ NOTION_CI_LOG_BLOCK 미설정 — CI Notion 로그 동기화 skip (2026-08-09 대시보드 리뉴얼로 은퇴).');
   process.exit(0);
 }
 
