@@ -1,0 +1,74 @@
+name: Genesis P5 R4 Pinned Corpus Usage
+
+on:
+  pull_request:
+    paths:
+      - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/data/lexicon/candidates/genesis-p5/**'
+      - 'bible-mindmap/data/lexicon/v4/genesis-p5-r4-extended-research-queue.json'
+      - 'bible-mindmap/reports/genesis-p5-r4-extended-evidence-intake.json'
+      - 'bible-mindmap/reports/genesis-p5-r4-pinned-corpus-usage.json'
+      - 'bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs'
+      - 'bible-mindmap/scripts/verify-genesis-p5-r4-usage-evidence.mjs'
+      - '.github/workflows/genesis-p5-r4-usage-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned-corpus-usage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Build exact R4 Genesis usage evidence
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-r4-usage-evidence.mjs
+
+      - name: Verify exact baseline and read-only governance
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-r4-usage-evidence.mjs
+
+      - name: Re-run R4 queue and universal Registry regression gates
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-lexicon-v4-r4-extended-research-queue.mjs
+          node scripts/verify-lexicon-registry-universal-regression.mjs
+
+      - name: Publish evidence summary
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const p = 'reports/genesis-p5-r4-pinned-corpus-usage.json'
+          const r = JSON.parse(fs.readFileSync(p, 'utf8'))
+          const lines = [
+            '## Genesis P5 R4 · pinned corpus usage',
+            `- items: **${r.counts.items}**`,
+            `- exact Genesis occurrences: **${r.counts.occurrences}**`,
+            `- sampled contexts: **${r.counts.sampledContexts}**`,
+            `- candidate bundle: \`${r.baseline.candidateBundleFingerprint}\``,
+            '- candidate mutations: **0**',
+            '- Approval Registry writes: **0**',
+            '- next gate: **3-model re-audit on exact pinned baseline**',
+            '',
+            ...r.items.map((i) => `- ${i.sourceStrong} → corpus ${i.corpusStrong}: ${i.totalOccurrences}회 · ${i.chapters.length}장`),
+          ]
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${lines.join('\n')}\n`)
+          NODE
+
+      - name: Upload R4 usage evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-p5-r4-pinned-corpus-usage
+          path: bible-mindmap/reports/genesis-p5-r4-pinned-corpus-usage.json
+          if-no-files-found: error
+          retention-days: 30
