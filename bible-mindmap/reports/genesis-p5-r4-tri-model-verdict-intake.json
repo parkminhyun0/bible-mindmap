@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-tri-model-verdict-intake-v1",
+  "book": "GEN",
+  "status": "AWAITING_CLAUDE_GEMINI",
+  "baseline": {
+    "mainSha": "fa915618f565ea492e0f47df38d0b5328d154781",
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "usageManifest": "reports/genesis-p5-r4-pinned-corpus-usage-manifest.json",
+    "extendedEvidence": "reports/genesis-p5-r4-extended-evidence-intake.json",
+    "h39ComparativeEvidence": "reports/genesis-p5-r4-h39-comparative-evidence-note.md"
+  },
+  "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+  "requiredAuditors": ["GPT", "Claude", "Gemini"],
+  "acceptedVerdicts": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"],
+  "normalization": {
+    "PASS_WITH_UNCERTAINTY_BOUNDARY": "PASS_WITH_BOUNDARY",
+    "PASS_WITH_ETYMology_METADATA_ONLY": "PASS_WITH_BOUNDARY",
+    "HOLD_FOR_SOURCE_NODE_RECONCILIATION": "HOLD",
+    "HOLD_FOR_NAME_ETYMOLOGY_WORDING": "HOLD",
+    "DISPUTE_CONFIRMED_HOLD": "DISPUTE"
+  },
+  "audits": {
+    "GPT": {
+      "state": "COMPLETE",
+      "source": "reports/genesis-p5-r4-gpt-reaudit-results.json"
+    },
+    "Claude": {
+      "state": "PENDING_EXTERNAL_VERDICT",
+      "prompt": "reports/genesis-p5-r4-claude-reaudit-prompt.md"
+    },
+    "Gemini": {
+      "state": "PENDING_EXTERNAL_VERDICT",
+      "prompt": "reports/genesis-p5-r4-gemini-reaudit-prompt.md"
+    }
+  },
+  "gate": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "autoApprovalAllowed": false,
+    "requireExactBaselineMatch": true,
+    "requireAllThreeAuditors": true,
+    "requireUnresolvedZeroForPromotion": true,
+    "r4HumanExceptionGatePreserved": true
+  },
+  "currentUnresolved": {
+    "H120": ["user-facing etymology wording boundary"],
+    "H6030b": ["exact pinned-source node segmentation/sub-entry identity"],
+    "H7650": ["seven-connection certainty wording"],
+    "H28": ["component grammar/comparative-name wording"],
+    "H39": ["comparative South-Arabian/name etymology conflict"]
+  },
+  "next": "ingest Claude and Gemini verdicts only when baseline fingerprints match exactly; then compute consensus/disagreement without mutating candidates or Registry"
+}
