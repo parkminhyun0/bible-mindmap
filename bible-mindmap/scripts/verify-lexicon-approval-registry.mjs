@@ -148,39 +148,52 @@ function verifyPhaseLocks() {
 function approvedProjection(node) {
   return { id: node.id, parentId: node.parentId, depth: node.depth, order: node.order, translationKo: node.translationKo, evidenceSupport: node.evidenceSupport };
 }
-function verifyFirstH776Entry(trackState) {
-  for (const target of [REGISTRY_PATH, MANIFEST_PATH, H776_SHARD_PATH]) assert.equal(fs.existsSync(target), true, `first approved-entry production file missing: ${path.relative(ROOT, target)}`);
+function verifyProtectedRegistry(trackState) {
+  for (const target of [REGISTRY_PATH, MANIFEST_PATH, H776_SHARD_PATH]) assert.equal(fs.existsSync(target), true, `approved-entry production file missing: ${path.relative(ROOT, target)}`);
   const registry = readJson(REGISTRY_PATH);
   const packet = readJson(H776_PACKET_PATH);
   assert.equal(registry.schemaVersion, 1);
-  assert.equal(registry.entries.length, 1, 'first protected write must contain exactly one approved entry');
+  assert.ok(registry.entries.length >= 1, 'protected registry must retain at least the H776 golden entry');
   assert.match(registry.registryFingerprint, SHA256_PATTERN);
   assert.equal(registry.registryFingerprint, fingerprintWithout(registry, 'registryFingerprint'), 'registryFingerprint drift');
-  const entry = registry.entries[0];
-  assert.equal(entry.identity.canonicalStrong, 'H776');
-  assert.deepEqual(entry.identity, packet.identity, 'H776 approved identity must match Evidence Packet identity');
-  assert.deepEqual(entry.approvedSenseTree, packet.senseNodes.map(approvedProjection), 'H776 Golden Korean meanings must remain 26/26 unchanged');
-  assert.equal(entry.reviewer?.reviewerType, 'human');
-  assert.equal(entry.reviewer?.reviewerId, 'parkminhyun0');
-  assert.equal(entry.approvedAt, '2026-08-07T15:59:47Z', 'approval timestamp must stay anchored to verified H776 golden merge');
-  assert.equal(entry.evidencePacketFingerprint, trackState.evidencePacketRegeneration.regeneratedPacketFingerprint, 'Evidence Packet fingerprint drift');
+
+  const h776Entries = registry.entries.filter((entry) => entry.identity?.canonicalStrong === 'H776');
+  assert.equal(h776Entries.length, 1, 'protected registry must contain exactly one H776 golden entry');
+  const h776 = h776Entries[0];
+  assert.deepEqual(h776.identity, packet.identity, 'H776 approved identity must match Evidence Packet identity');
+  assert.deepEqual(h776.approvedSenseTree, packet.senseNodes.map(approvedProjection), 'H776 Golden Korean meanings must remain 26/26 unchanged');
+  assert.equal(h776.reviewer?.reviewerType, 'human');
+  assert.equal(h776.reviewer?.reviewerId, 'parkminhyun0');
+  assert.equal(h776.approvedAt, '2026-08-07T15:59:47Z', 'approval timestamp must stay anchored to verified H776 golden merge');
+  assert.equal(h776.evidencePacketFingerprint, trackState.evidencePacketRegeneration.regeneratedPacketFingerprint, 'Evidence Packet fingerprint drift');
+
   assert.deepEqual(buildLexiconApprovalRegistry(registry.entries), registry, 'committed registry must equal deterministic builder output');
   const manifest = readJson(MANIFEST_PATH);
   assert.deepEqual(buildLexiconManifest(registry), manifest, 'committed manifest must equal deterministic builder output');
-  assert.equal(manifest.count, 1);
-  assert.equal(manifest.entries[0].strong, 'H776');
-  assert.equal(manifest.entries[0].shardPath, 'shards/hebrew-H701-H800.json');
+  assert.equal(manifest.count, registry.entries.length, 'manifest count must match approved registry entry count');
+  const h776ManifestEntry = manifest.entries.find((entry) => entry.strong === 'H776');
+  assert.ok(h776ManifestEntry, 'manifest must retain H776');
+  assert.equal(h776ManifestEntry.shardPath, 'shards/hebrew-H701-H800.json');
+
   const shards = buildLexiconShards(registry);
-  assert.equal(shards.length, 1);
-  assert.deepEqual(shards[0], readJson(H776_SHARD_PATH), 'committed H776 shard must equal deterministic builder output');
+  assert.ok(shards.length >= 1, 'approved registry must build at least one shard');
+  for (const shard of shards) {
+    const shardPath = path.join(ROOT, 'data/lexicon/shards', `${shard.shardId}.json`);
+    assert.equal(fs.existsSync(shardPath), true, `committed shard missing: ${path.relative(ROOT, shardPath)}`);
+    assert.deepEqual(shard, readJson(shardPath), `committed shard must equal deterministic builder output: ${shard.shardId}`);
+  }
+  const h776Shard = shards.find((shard) => shard.shardId === 'hebrew-H701-H800');
+  assert.ok(h776Shard, 'generated shards must retain H776 shard');
+  assert.deepEqual(h776Shard, readJson(H776_SHARD_PATH), 'committed H776 shard must equal deterministic builder output');
   assert.deepEqual(resolveShardDescriptor('H776', 'hebrew'), { shardId:'hebrew-H701-H800', shardPath:'shards/hebrew-H701-H800.json', scope:{kind:'language-strong-range',language:'hebrew',startStrong:'H701',endStrong:'H800'} });
+  return registry;
 }
 verifySchemaSurface('ApprovalRegistry.schema.json', ['schemaVersion','entries','registryFingerprint']);
 verifySchemaSurface('LexiconManifest.schema.json', ['schemaVersion','count','entries','manifestFingerprint']);
 verifySchemaSurface('LexiconShard.schema.json', ['schemaVersion','shardId','scope','count','entries','shardFingerprint']);
 const trackState = verifyPhaseLocks();
 verifyStdoutOnlyBuilders();
-verifyFirstH776Entry(trackState);
+const registry = verifyProtectedRegistry(trackState);
 console.log('✓ protected Approval Registry contract PASS');
-console.log(`  phase: ${trackState.state}/${trackState.activePhase} · approved entries: 1 (H776) · manifest entries: 1 · shards: 1`);
+console.log(`  phase: ${trackState.state}/${trackState.activePhase} · approved entries: ${registry.entries.length} · H776 golden: preserved 26/26`);
 console.log(`  candidate generation: ${readPhaseGate(TRACK_STATE_PATH).candidateGenerationAllowed ? 'dual-gated enabled' : 'disabled'} · Approval Registry/UI/production writes: protected`);
