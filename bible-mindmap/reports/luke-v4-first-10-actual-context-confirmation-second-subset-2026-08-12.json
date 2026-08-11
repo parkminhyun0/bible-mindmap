@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-first-10-actual-context-confirmation-second-subset-2026-08-12",
+  "status": "ACTUAL_LUKE_CONTEXT_CONFIRMED_FOR_SECOND_SUBSET",
+  "generatedAt": "2026-08-12T04:05:00+09:00",
+  "branchBaseline": "a6bb57eac4b9347e1ca7f3cc265c060abab0af3e",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "contextAsset": {
+    "path": "bible-mindmap/data/lexicon/luke-g2-canary-preparation.json",
+    "blobSha": "ad3c56dd33be6447da60c05f288a90cd5f69ab6b",
+    "representativeContextsTotal": 70,
+    "role": "pinned Luke token/context/morphology evidence inherited from validated G2 preparation"
+  },
+  "checked": [
+    {
+      "strong": "G3004",
+      "lemma": "λέγω",
+      "confirmedExamples": [
+        {"reference": "Luke 1:24", "form": "λέγουσα", "morphology": "V-PAP-NSF", "contextDecision": "SPEAK_SAY"},
+        {"reference": "Luke 5:8", "form": "λέγων", "morphology": "V-PAP-NSM", "contextDecision": "SPEAK_SAY"},
+        {"reference": "Luke 9:7", "form": "λέγεσθαι", "morphology": "V-PPN", "contextDecision": "BE_SAID_REPORTED"},
+        {"reference": "Luke 13:3", "form": "λέγω", "morphology": "V-PAI-1S", "contextDecision": "SAY_DECLARE"}
+      ],
+      "decision": "KEEP_CORE_SPEAK_SAY_RANGE_AND_PRESERVE_PASSIVE_REPORTING_USE",
+      "boundary": "Luke requires ordinary speech/saying and passive 'be said/reported' uses; do not inflate the candidate with unrelated classical technical senses without token evidence."
+    },
+    {
+      "strong": "G4982",
+      "lemma": "σῴζω",
+      "confirmedExamples": [
+        {"reference": "Luke 6:9", "form": "σῶσαι", "morphology": "V-AAN", "contextDecision": "SAVE_PRESERVE_LIFE"},
+        {"reference": "Luke 7:50", "form": "σέσωκέν", "morphology": "V-RAI-3S", "contextDecision": "SAVE_RESTORE_WITH_SALVIFIC_FORCE"},
+        {"reference": "Luke 9:24", "form": "σῶσαι", "morphology": "V-AAN", "contextDecision": "SAVE_LIFE_WITH_DISCIPLESHIP_PARADOX"},
+        {"reference": "Luke 17:19", "form": "σέσωκέν", "morphology": "V-RAI-3S", "contextDecision": "SAVE_MAKE_WELL_OVERLAP_REQUIRES_CONTEXT_BOUNDARY"}
+      ],
+      "decision": "KEEP_SAVE_PRESERVE_RESTORE_RANGE_WITH_TOKEN_LEVEL_SALVATION_HEALING_BOUNDARY",
+      "boundary": "Luke itself prevents flattening σῴζω to only forensic/spiritual salvation or only physical healing; token context must distinguish preserve life, make well/restore, and salvation-bearing uses."
+    },
+    {
+      "strong": "G1342",
+      "lemma": "δίκαιος",
+      "confirmedExamples": [
+        {"reference": "Luke 1:6", "form": "δίκαιοι", "morphology": "A-NPM", "contextDecision": "RIGHTEOUS_JUST_PERSONS"},
+        {"reference": "Luke 2:25", "form": "δίκαιος", "morphology": "A-NSM", "contextDecision": "RIGHTEOUS_JUST_CHARACTER"},
+        {"reference": "Luke 12:57", "form": "δίκαιον", "morphology": "A-ASN", "contextDecision": "WHAT_IS_RIGHT_JUST"},
+        {"reference": "Luke 14:14", "form": "δικαίων", "morphology": "A-GPM", "contextDecision": "THE_RIGHTEOUS_PERSONS"}
+      ],
+      "decision": "KEEP_RIGHTEOUS_JUST_AND_SUBSTANTIVAL_RIGHT_BOUNDARY",
+      "boundary": "Luke attests both character/person reference and neuter/substantival 'what is right'; theological glossing must not erase the ordinary ethical/judicial adjective range."
+    },
+    {
+      "strong": "G3686",
+      "lemma": "ὄνομα",
+      "confirmedExamples": [
+        {"reference": "Luke 1:5", "form": "ὀνόματι", "morphology": "N-DSN", "contextDecision": "PERSONAL_NAME_NAMING"},
+        {"reference": "Luke 5:27", "form": "ὀνόματι", "morphology": "N-DSN", "contextDecision": "PERSONAL_NAME_NAMING"},
+        {"reference": "Luke 8:30", "form": "ὄνομά", "morphology": "N-NSN", "contextDecision": "PERSONAL_NAME_IDENTITY"},
+        {"reference": "Luke 24:47", "form": "ὀνόματι", "morphology": "N-DSN", "contextDecision": "NAME_AS_IDENTITY_AUTHORITY_IDIOM"}
+      ],
+      "decision": "KEEP_LITERAL_NAME_AND_IDENTITY_AUTHORITY_IDIOM_DISTINCT",
+      "boundary": "Luke has ordinary personal-name uses and a contextually expanded 'in/upon his name' idiom; preserve the lexical core 'name' and record identity/authority force at the contextual sense layer rather than replacing the headword with a theological paraphrase."
+    }
+  ],
+  "batchAssessment": {
+    "first10Total": 10,
+    "actualContextConfirmedThisUnit": 4,
+    "actualContextConfirmedCumulativeWithPriorUnit": 7,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "newHold": 0,
+    "humanGateRaised": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "independentAuditStillRequired": true,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "CROSS_CHECK_G3004_G4982_G1342_G3686_AGAINST_PINNED_TFLSJ_BOUNDARIES_THEN_COMPLETE_CONTEXT_CONFIRMATION_FOR_REMAINING_G3341_G3137_G0002_AND_PREPARE_EXACT_FINGERPRINT_INDEPENDENT_AUDIT"
+}
