@@ -41,6 +41,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Reject manual dispatch on main
+        if: github.event_name == 'workflow_dispatch' && github.ref_name == 'main'
+        run: |
+          echo '::error::Manual Luke G2 preparation write workflow dispatch on main is forbidden. Use the dedicated work branch.'
+          exit 1
+
       - name: Checkout
         uses: actions/checkout@v6
         with:
