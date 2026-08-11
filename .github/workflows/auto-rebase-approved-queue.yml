@@ -1,0 +1,76 @@
+name: Auto Rebase Approved Queue
+
+# main이 갱신되면(PR 머지 등) APPROVED + BEHIND 상태로 남은 오래된 PR을
+# 한 건씩 자동 rebase 큐잉한다. 사람 승인 후에도 여러 PR이 겹치면
+# 매번 수동 리베이스가 필요하던 병목을 해소한다.
+#
+# 규칙:
+#   - APPROVED + BEHIND 인 PR 중 가장 오래된 1건만 rebase
+#   - CONFLICTING/DIRTY는 자동 rebase 대상 아님 (사람 개입 필요)
+#   - 병렬 rebase는 금지 (concurrency로 직렬화)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: auto-rebase-approved-queue
+  cancel-in-progress: false
+
+jobs:
+  rebase:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rebase oldest approved-and-behind PR
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const owner = context.repo.owner
+            const repo = context.repo.repo
+            const query = `
+              query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  pullRequests(states: OPEN, first: 50, orderBy: { field: CREATED_AT, direction: ASC }) {
+                    nodes {
+                      number
+                      title
+                      isDraft
+                      mergeStateStatus
+                      reviewDecision
+                      updatedAt
+                    }
+                  }
+                }
+              }
+            `
+            const data = await github.graphql(query, { owner, repo })
+            const candidates = data.repository.pullRequests.nodes.filter((pr) =>
+              !pr.isDraft &&
+              pr.reviewDecision === 'APPROVED' &&
+              pr.mergeStateStatus === 'BEHIND'
+            )
+            if (candidates.length === 0) {
+              core.info('APPROVED+BEHIND PR 없음 — 큐 빔')
+              return
+            }
+            const target = candidates[0]
+            core.info(`rebase 대상: #${target.number} (${target.title})`)
+            try {
+              await github.rest.pulls.updateBranch({ owner, repo, pull_number: target.number })
+              core.notice(`rebase 요청 전송: #${target.number}. CI 통과 후 자동 머지 가능.`)
+            } catch (error) {
+              if (error.status === 422) {
+                core.warning(`#${target.number} rebase 충돌 — 사람 개입 필요: ${error.message}`)
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: target.number,
+                  body: `⚠️ auto-rebase 큐가 충돌을 감지했습니다. 수동 rebase 후 다시 push해 주세요.`,
+                })
+              } else {
+                throw error
+              }
+            }
