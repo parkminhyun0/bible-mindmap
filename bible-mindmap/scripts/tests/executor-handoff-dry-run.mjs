@@ -10,8 +10,8 @@ const root = path.resolve(dir, '../../..');
 const contract = JSON.parse(await readFile(path.join(root, 'bible-mindmap/data/lexicon/v4/executor-handoff-contract.json'), 'utf8'));
 const liveState = JSON.parse(await readFile(path.join(root, 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'), 'utf8'));
 
-// The live state may legitimately be COMPLETE. Decision fixtures must not depend
-// on the current operational phase, so build an explicit valid ACTIVE fixture.
+// Live state may be COMPLETE, ACTIVE, or HANDOFF_READY during a real canary.
+// Decision fixtures must never depend on the current operational phase.
 assert.deepEqual(validateHandoffState(liveState, contract), []);
 const activeState = clone(liveState);
 activeState.status = 'ACTIVE';
@@ -58,16 +58,28 @@ run('candidate fingerprint drift fails closed', null, r => { r.candidateFingerpr
 run('external audit missing blocks substitution', s => { s.externalAudit.required = true; s.externalAudit.status = 'REQUIRED'; }, null, 'EXTERNAL_AUDIT_REQUIRED');
 run('closed active PR fails closed', s => { s.activePR = 300; }, r => { r.prOpen = false; r.openPrCountForBranch = 0; }, 'FAIL_CLOSED');
 
+const completeState = clone(activeState);
+completeState.status = 'COMPLETE';
+completeState.currentExecutor = 'NONE';
+completeState.previousExecutor = 'GPT';
+completeState.completedSteps = [...contract.stepOrder];
+completeState.nextStep = null;
+completeState.nextAction = 'fixture: no remaining handoff work';
+completeState.activePR = 0;
+completeState.activeBranch = 'none';
+completeState.handoffReason = 'fixture-complete-state';
+completeState.externalAudit = { required: false, status: 'NOT_REQUIRED', provider: null, artifact: null };
+assert.deepEqual(validateHandoffState(completeState, contract), []);
 const completeRuntime = {
   retrievalOk: true,
   currentExecutor: 'NONE',
-  currentHeadSHA: liveState.headSHA,
+  currentHeadSHA: completeState.headSHA,
   headRelation: 'equal',
   prOpen: false,
   openPrCountForBranch: 0,
-  candidateFingerprint: liveState.candidateFingerprint,
+  candidateFingerprint: completeState.candidateFingerprint,
 };
-assert.equal(decideHandoff(liveState, completeRuntime).verdict, 'COMPLETE', 'live COMPLETE state must remain COMPLETE');
+assert.equal(decideHandoff(completeState, completeRuntime).verdict, 'COMPLETE', 'explicit COMPLETE fixture must remain COMPLETE');
 fixtures.push(['complete state is terminal', 'COMPLETE']);
 
 const bad = clone(activeState);
