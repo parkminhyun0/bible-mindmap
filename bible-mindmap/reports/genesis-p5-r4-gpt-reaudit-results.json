@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-gpt-reaudit-results-v1",
+  "baseline": {
+    "mainSha": "fa915618f565ea492e0f47df38d0b5328d154781",
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c"
+  },
+  "auditor": "GPT",
+  "auditOnly": true,
+  "items": [
+    {
+      "strong":"H120",
+      "verdict":"PASS_WITH_UNCERTAINTY_BOUNDARY",
+      "reason":"Genesis usage supports human/man/mankind and Adam proper-name separation; etymological relation to adamah must remain metadata rather than semantic certainty.",
+      "unresolved":["final user-facing etymology wording must not collapse common-noun and proper-name senses"]
+    },
+    {
+      "strong":"H6030b",
+      "verdict":"HOLD_FOR_SOURCE_NODE_RECONCILIATION",
+      "reason":"The broad response/testimony/speech semantic family is supported, but the H6030b sub-entry boundary against neighboring anah homographs remains source-text-sensitive.",
+      "unresolved":["exact pinned-source node segmentation/sub-entry identity"]
+    },
+    {
+      "strong":"H7650",
+      "verdict":"PASS_WITH_ETYMology_METADATA_ONLY",
+      "reason":"The operational meaning swear/take an oath is stable; the proposed relationship with seven must remain explicitly uncertain etymology metadata.",
+      "unresolved":["whether user-facing note should say probable/traditional or omit the seven-connection"]
+    },
+    {
+      "strong":"H28",
+      "verdict":"HOLD_FOR_NAME_ETYMOLOGY_WORDING",
+      "reason":"Proper-name identity and occurrence are stable, but available English explanatory glosses diverge enough that one Korean etymological wording should not yet be selected.",
+      "unresolved":["component grammar/comparative-name wording"]
+    },
+    {
+      "strong":"H39",
+      "verdict":"DISPUTE_CONFIRMED_HOLD",
+      "reason":"Proper-name identity is stable but BDB-style and Strong-style etymological analyses conflict; promotion would overstate certainty.",
+      "unresolved":["comparative South-Arabian/name evidence needed before any final etymological gloss"]
+    }
+  ],
+  "summary": {
+    "passWithBoundary": 2,
+    "hold": 2,
+    "disputeConfirmedHold": 1,
+    "candidateMutations": 0,
+    "registryWrites": 0
+  },
+  "next": "run Claude and Gemini independently on the exact same pinned baseline; do not promote any R4 item until all unresolved exceptions are closed"
+}
