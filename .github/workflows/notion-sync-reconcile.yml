@@ -34,7 +34,12 @@ jobs:
           NOTION_SYNC_STRICT: '1'
           DEPLOY_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
           DEPLOY_RUN_URL: ${{ github.event.workflow_run.html_url || format('{0}/{1}/actions/runs/{2}', github.server_url, github.repository, github.run_id) }}
-        run: node scripts/notion-live-update.mjs
+        run: |
+          set +e
+          node scripts/notion-live-update.mjs 2>"$RUNNER_TEMP/notion-sync-stderr.txt"
+          status=$?
+          cat "$RUNNER_TEMP/notion-sync-stderr.txt" >&2
+          exit $status
 
       - name: Open or append Notion sync DLQ issue
         if: steps.notion_sync.outcome == 'failure'
@@ -44,11 +49,18 @@ jobs:
           DEPLOY_RUN_URL: ${{ github.event.workflow_run.html_url || '' }}
         with:
           script: |
+            const fs = require('fs');
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const sha = process.env.DEPLOY_SHA;
             const short = sha.slice(0, 7);
             const title = `NOTION_SYNC_FAILED · ${short}`;
+            let errorDetail = '';
+            try {
+              const stderrPath = `${process.env.RUNNER_TEMP}/notion-sync-stderr.txt`;
+              const raw = fs.readFileSync(stderrPath, 'utf8').trim();
+              if (raw) errorDetail = raw.slice(0, 1500);
+            } catch { /* stderr 파일이 없으면 상세 원인 없이 진행 */ }
             const record = [
               `- time: ${new Date().toISOString()}`,
               `- deployed SHA: ${sha}`,
@@ -56,7 +68,8 @@ jobs:
               `- reconcile run: ${context.serverUrl}/${owner}/${repo}/actions/runs/${context.runId}`,
               '- deployment verdict remains SUCCESS; Notion synchronization is separately BLOCKED until reconciled.',
               '- retry is idempotent and must not mutate approved lexicon meanings.',
-            ].join('\n');
+              errorDetail ? `\n<details><summary>error detail</summary>\n\n\`\`\`\n${errorDetail}\n\`\`\`\n</details>` : '',
+            ].filter(Boolean).join('\n');
             const issues = await github.paginate(github.rest.issues.listForRepo, { owner, repo, state: 'open', per_page: 100 });
             const existing = issues.find((i) => i.title === title);
             if (existing) {
