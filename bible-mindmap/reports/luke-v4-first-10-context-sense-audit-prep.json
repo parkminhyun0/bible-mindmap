@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reportId": "luke-v4-first-10-context-sense-audit-prep-v1",
+  "book": "Luke",
+  "status": "CONTEXT_SENSE_AUDIT_PREP_MATERIALIZED",
+  "baseline": {
+    "researchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+    "researchHeadBeforeThisReport": "160f4a3e01e70fdbe475f37a550cf77aa6e8cb0e",
+    "stepBibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tbesgBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "sourceRowVerification": "reports/luke-v4-first-10-pinned-tbesg-row-verification.json",
+    "g2Preparation": "data/lexicon/luke-g2-canary-preparation.json"
+  },
+  "existingG2Evidence": {
+    "selectedStrong": 10,
+    "ready": 10,
+    "blocked": 0,
+    "representativeContexts": 70,
+    "reuseControls": 3,
+    "newTranslations": 7,
+    "partOfSpeechFamilies": ["A", "N", "V"],
+    "frequencyBands": ["high", "medium", "low"],
+    "contextPacketFeatures": [
+      "actual Greek verse text",
+      "target token and lemma",
+      "Strong identity",
+      "morphology",
+      "local token window",
+      "MorphGNT cross-check"
+    ]
+  },
+  "auditFocus": [
+    {
+      "strong": "G2316",
+      "lemma": "θεός",
+      "risk": "theology-keyword/context-sensitive deity reference",
+      "boundary": "generic deity/god language and reference to the one true God must be context-sensitive; lexicon must not inject theology beyond lexical/context evidence",
+      "g2Evidence": {"tokenCount":122,"verseCount":114,"representativeContexts":8,"firstReference":"Luke 1:6"}
+    },
+    {
+      "strong": "G3004",
+      "lemma": "λέγω",
+      "risk": "high-frequency polysemous speech verb",
+      "boundary": "say/speak/declare/mean/call-name uses must not be flattened; Extended Strong meaning subrow remains provenance"
+    },
+    {
+      "strong": "G4151",
+      "lemma": "πνεῦμα",
+      "risk": "high-polysemy and theology-sensitive",
+      "boundary": "wind/breath, human spirit/disposition, incorporeal spirit, unclean spirit, and Holy Spirit references require contextual separation",
+      "verifiedRepresentativeRefs": ["Luke 1:15", "Luke 3:16", "Luke 6:18", "Luke 9:39"],
+      "sourceSubidentities": ["G4151G", "G4151H"]
+    },
+    {
+      "strong": "G3137",
+      "lemma": "Μαρία",
+      "risk": "proper-name person disambiguation",
+      "boundary": "distinct Mary identities must not be collapsed; source disambiguated Extended Strong identities remain authoritative provenance"
+    }
+  ],
+  "remainingTargets": ["G0932", "G4982", "G3341", "G1342", "G3686", "G0002"],
+  "verificationState": {
+    "pinnedTbesgTargetRowsVerified": true,
+    "committedLukeContextPacketsAvailable": true,
+    "lockedDeterministicAdapterExecuted": false,
+    "adapterByteLengthAndBlobRecheckStillRequired": true,
+    "tflsjSenseBoundaryCrosscheckComplete": false,
+    "independentAuditComplete": false
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "RUN_LOCKED_DETERMINISTIC_TBESG_ADAPTER_VERIFY_EXACT_BYTES_AND_BLOB_THEN_CROSSCHECK_70_LUKE_CONTEXTS_AGAINST_TFLSJ_SENSE_BOUNDARIES_AND_PREPARE_INDEPENDENT_AUDITS"
+}
