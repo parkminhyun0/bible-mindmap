@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "status": "CANDIDATE_PREPARATION_ONLY",
+  "generatedAt": "2026-08-11T12:40:00Z",
+  "governance": {
+    "approvalRegistryMutation": false,
+    "productionMutation": false,
+    "existingApprovedMeaningMutation": false,
+    "mainBoundPrCreated": false,
+    "simpleDictionaryDifferenceRequiresHumanApproval": false,
+    "nextGate": "DETERMINISTIC_SOURCE_ADAPTER_AND_INDEPENDENT_AUDIT"
+  },
+  "pinnedSources": {
+    "stepbibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tagnt": {
+      "sourceId": "stepbible-tagnt",
+      "purpose": "Luke original text, morphology, Strong alignment",
+      "registryStatus": "approved-ready"
+    },
+    "tbesg": {
+      "proposedSourceId": "stepbible-tbesg",
+      "path": "Lexicons/TBESG - Translators Brief lexicon of Extended Strongs for Greek - STEPBible.org CC BY.txt",
+      "blobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+      "bytes": 4736912,
+      "licenseObservedInPinnedFile": "CC BY 4.0",
+      "basis": "Abbott-Smith with documented supplementary Middle Liddell/STEP material",
+      "registryIntegrationStatus": "RESEARCH_LOCKED_NOT_YET_PROMOTED"
+    },
+    "tflsj": {
+      "path": "Lexicons/TFLSJ  0-5624 - Translators Formatted full LSJ Bible lexicon - STEPBible.org CC BY.txt",
+      "blobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+      "bytes": 23831837,
+      "use": "secondary full-lexicon cross-check for higher-risk sense boundaries",
+      "status": "PINNED_FOR_FOLLOWUP"
+    }
+  },
+  "baseline": {
+    "chapters": 24,
+    "verses": 1149,
+    "uniqueStrong": 2031,
+    "existingKoreanStrong": 52,
+    "newTranslationStrong": 1979,
+    "representativeStrong": 10,
+    "representativeContexts": 70
+  },
+  "candidates": [
+    {
+      "strong": "G2316",
+      "lemma": "θεός",
+      "transliteration": "theos",
+      "koreanTransliteration": "테오스",
+      "candidateHead": "하나님; 신, 신적 존재",
+      "senseBoundary": ["유일하신 하나님", "일반적 신/신적 존재"],
+      "lukeOccurrences": 122,
+      "risk": "HIGH",
+      "note": "문맥에 따라 하나님과 일반적 신 의미를 분리하며 하나의 신학적 gloss로 평탄화하지 않는다."
+    },
+    {
+      "strong": "G0932",
+      "lemma": "βασιλεία",
+      "transliteration": "basileia",
+      "koreanTransliteration": "바실레이아",
+      "candidateHead": "왕권·통치권; 왕국; 나라",
+      "senseBoundary": ["주권·왕적 통치·지배권", "왕국/통치 영역 또는 백성", "하나님의 나라·메시아적 통치(문맥 한정)"],
+      "lukeOccurrences": 45,
+      "risk": "MEDIUM",
+      "note": "‘나라’ 하나로 축약하지 않고 추상적 통치권과 구체적 왕국을 분리한다."
+    },
+    {
+      "strong": "G4982",
+      "lemma": "σῴζω",
+      "transliteration": "sōzō",
+      "koreanTransliteration": "소조",
+      "candidateHead": "구하다·구원하다; 건지다; 낫게 하다",
+      "senseBoundary": ["위험·해·고난에서 구함", "건강 회복/치유", "죄와 죽음에서의 구원"],
+      "lukeOccurrences": 17,
+      "risk": "MEDIUM",
+      "note": "모든 용례를 영적 구원으로 과잉 번역하지 않는다."
+    },
+    {
+      "strong": "G3341",
+      "lemma": "μετάνοια",
+      "transliteration": "metanoia",
+      "koreanTransliteration": "메타노이아",
+      "candidateHead": "회개; 마음·생각의 변화",
+      "senseBoundary": ["마음/생각의 변화", "죄에서 돌이키는 회개(신약 문맥)"],
+      "lukeOccurrences": 5,
+      "risk": "LOW",
+      "note": "어원적 ‘생각 변화’와 신약의 죄로부터의 회개 용법을 구분하되 분리시키지 않는다."
+    },
+    {
+      "strong": "G4151",
+      "lemma": "πνεῦμα",
+      "transliteration": "pneuma",
+      "koreanTransliteration": "프뉴마",
+      "candidateHead": "영; 숨·호흡; 바람",
+      "senseBoundary": ["바람/움직이는 공기", "숨/호흡", "생명의 원리·사람의 영", "성향/정신", "영적 존재", "성령(문맥 한정)"],
+      "lukeOccurrences": 36,
+      "risk": "MEDIUM",
+      "note": "성령·인간의 영·악한 영·숨/바람을 문맥과 형태론으로 분리한다."
+    },
+    {
+      "strong": "G3004",
+      "lemma": "λέγω",
+      "transliteration": "legō",
+      "koreanTransliteration": "레고",
+      "candidateHead": "말하다·이르다; 선언하다; 뜻하다; 부르다",
+      "senseBoundary": ["말하다/이르다", "선언·진술하다", "뜻하다", "이름을 부르다/칭하다"],
+      "lukeOccurrences": 217,
+      "risk": "HIGH",
+      "note": "고빈도 동사이므로 구문과 목적어에 따라 의미를 나누고 단일 gloss 강제 금지."
+    },
+    {
+      "strong": "G1342",
+      "lemma": "δίκαιος",
+      "transliteration": "dikaios",
+      "koreanTransliteration": "디카이오스",
+      "candidateHead": "의로운; 올바른; 공정한·정당한",
+      "senseBoundary": ["하나님의 옳음의 기준에 부합하는 의로움", "공정하고 정당함"],
+      "lukeOccurrences": 11,
+      "risk": "MEDIUM",
+      "note": "교의적 ‘칭의’ 개념을 형용사의 모든 용례에 역투영하지 않는다."
+    },
+    {
+      "strong": "G3137",
+      "lemma": "Μαρία",
+      "transliteration": "Maria",
+      "koreanTransliteration": "마리아",
+      "candidateHead": "마리아",
+      "senseBoundary": ["예수의 어머니 마리아", "막달라 마리아 등 동명이인"],
+      "lukeOccurrences": 17,
+      "risk": "MEDIUM",
+      "note": "고유명사 의미와 인물 식별을 분리하고 Luke context에서 동명이인을 disambiguation한다."
+    },
+    {
+      "strong": "G3686",
+      "lemma": "ὄνομα",
+      "transliteration": "onoma",
+      "koreanTransliteration": "오노마",
+      "candidateHead": "이름·명칭; 이름이 나타내는 권위·성품·명성",
+      "senseBoundary": ["이름/명칭", "이름이 함축하는 권위·성품·지위", "원인/근거(제한 용법)", "개인/사람(후기 헬라어 제한 용법)"],
+      "lukeOccurrences": 34,
+      "risk": "MEDIUM",
+      "note": "‘이름’의 신학적 함의를 사전적 기본 뜻과 구별하여 문맥에서만 확장한다."
+    },
+    {
+      "strong": "G0002",
+      "legacyStrong": "G2",
+      "lemma": "Ἀαρών",
+      "transliteration": "Aarōn",
+      "koreanTransliteration": "아론",
+      "candidateHead": "아론",
+      "senseBoundary": ["히브리어 H0175에 대응하는 인명"],
+      "lukeOccurrences": 1,
+      "risk": "LOW",
+      "note": "고유명사 본체만 확정 후보로 두고 검증되지 않은 이름 어원 설명은 추가하지 않는다."
+    }
+  ],
+  "batchVerdict": {
+    "candidatePrepared": 10,
+    "blocked": 0,
+    "readyForDeterministicAdapter": 10,
+    "requiresIndependentAuditBeforePromotion": 10,
+    "registryWrites": 0
+  }
+}
