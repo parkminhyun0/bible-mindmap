@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-exact-baseline-audit-prep-v2",
+  "book": "GEN",
+  "status": "EXACT_BASELINE_INDEPENDENT_AUDIT_PREP_READY",
+  "derivedState": {
+    "resolvedAt": "2026-08-11T21:12:00+09:00",
+    "mainSha": "69e07b3285ea8425f028257a31ed0749c2115b50",
+    "openDependentLexiconPr": null,
+    "pagesStatus": "built",
+    "latestReviewCoordinatorRunOnMain": {
+      "runId": 31489471055,
+      "conclusion": "success"
+    },
+    "liveShaVerdict": "PRESERVE_LAST_VERIFIED_VERDICT_NO_NEW_LEXICON_PRODUCTION_WRITE"
+  },
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+    "usageCounts": {"occurrences": 87, "sampledContexts": 38}
+  },
+  "governance": {
+    "researchEvidenceOnly": true,
+    "candidateMutationAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "selfApprovalAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "mainBoundDependentPrLimit": 1
+  },
+  "items": [
+    {
+      "strong": "H120",
+      "state": "BOUNDARY_PASS_AWAITING_INDEPENDENT_CONFIRMATION",
+      "resolved": ["man/humankind/Adam lexical-proper-name distinction must remain explicit"],
+      "boundary": ["etymology with adamah/ground remains metadata, not operational semantic certainty"],
+      "requestedIndependentVerdict": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"]
+    },
+    {
+      "strong": "H6030b",
+      "state": "SOURCE_NODE_RESOLVED_AWAITING_INDEPENDENT_SEMANTIC_AUDIT",
+      "resolved": [
+        "H6030 -> TAHOT H6030B -> OpenScriptures H6030b",
+        "BDB lexical entry p.dt.aa",
+        "13 ordered source nodes",
+        "19 Genesis occurrences"
+      ],
+      "boundary": [
+        "Qal/Niphal semantic branches must not be flattened",
+        "BDB Hiphil is explicitly wholly dubious and must remain uncertain"
+      ],
+      "requestedIndependentVerdict": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"]
+    },
+    {
+      "strong": "H7650",
+      "state": "BOUNDARY_PASS_AWAITING_INDEPENDENT_CONFIRMATION",
+      "resolved": ["operational verbal meaning swear/take an oath is strongly supported"],
+      "boundary": ["connection with seven is etymology metadata, not semantic gloss certainty"],
+      "requestedIndependentVerdict": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"]
+    },
+    {
+      "strong": "H28",
+      "state": "IDENTITY_STABLE_ETYMOLOGY_WORDING_BOUNDARY_NARROWED",
+      "resolved": [
+        "proper-name identity Abida/아비다",
+        "father + know component family",
+        "Strong father-of-knowledge wording must not override BDB-style personal-name analysis as certainty"
+      ],
+      "boundary": [
+        "exact Korean verbal formulation remains independently auditable",
+        "Sabaean comparative evidence certainty must not be overstated"
+      ],
+      "preferredResearchNote": "이름은 ‘나의 아버지 + 알다’와 관련된 것으로 풀이된다",
+      "requestedIndependentVerdict": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"]
+    },
+    {
+      "strong": "H39",
+      "state": "EVIDENCE_PREFERENCE_NARROWED_AWAITING_INDEPENDENT_VERDICT",
+      "resolved": [
+        "proper-name identity Abimael/아비마엘",
+        "BDB/ISBE explicitly support a South-Arabian father + deity-name formation",
+        "Strong father-of-Mael remains credible alternative provenance and is not erased"
+      ],
+      "evidencePreference": "BDB/ISBE father-is-El / my-father-is-God family",
+      "boundary": [
+        "no directly inspected exact primary inscription edition for the cited Abmi-Athtar comparison was recovered in this pass",
+        "therefore preference is research-level and etymological uncertainty must remain visible"
+      ],
+      "freshScholarlyContext": [
+        "https://www.persee.fr/doc/rjuiv_0484-8616_1884_num_9_17_6517",
+        "https://www.cambridge.org/core/journals/bulletin-of-the-school-of-oriental-and-african-studies/article/abs/on-some-problems-of-south-arabian-epigraphy-and-archaeology1/7F75ED81644441781D24C141CB769556",
+        "https://www.persee.fr/doc/bcai_0259-7373_1994_num_11_1_949_t1_0224_0000_1"
+      ],
+      "requestedIndependentVerdict": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"]
+    }
+  ],
+  "independentAuditContract": {
+    "actors": ["Claude", "Gemini"],
+    "mustUseExactCandidateFingerprint": true,
+    "mustUseExactSourceFingerprint": true,
+    "mustReturnPerItemVerdict": true,
+    "maySelfApprove": false,
+    "promotionAuthorizedByThisPacket": false
+  },
+  "nextGate": "INGEST_CLAUDE_GEMINI_EXACT_FINGERPRINT_VERDICTS_AND_AUTO_RESOLVE_EVIDENCE_PREFERRED_BOUNDARIES_WITHOUT_REGISTRY_MUTATION"
+}
