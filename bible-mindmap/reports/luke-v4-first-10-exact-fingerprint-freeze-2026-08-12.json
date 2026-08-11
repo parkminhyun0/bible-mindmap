@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-first-10-exact-fingerprint-freeze-2026-08-12",
+  "status": "EXACT_AUDIT_BASELINE_FROZEN_EXTERNAL_AUDIT_REQUIRED",
+  "generatedAt": "2026-08-12T07:06:45+09:00",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "researchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+  "baselineHead": "9e60feb7ff17d62332344a55f3807577ad77c301",
+  "pinned": {
+    "candidateArtifact": {
+      "path": "reports/luke-v4-first-10-candidate-prep.json",
+      "blobSha": "d71065e3a0746f6dc645fc50c1204be1f17240d8"
+    },
+    "sourceLockArtifact": {
+      "path": "reports/luke-v4-greek-source-lock.json",
+      "blobSha": "f63f8705a86acfe4339fd15afb99b0b62eefff7d"
+    },
+    "stepBibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tbesgBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "tflsjBlobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "lukeG2ContextAsset": {
+      "path": "bible-mindmap/data/lexicon/luke-g2-canary-preparation.json",
+      "blobSha": "ad3c56dd33be6447da60c05f288a90cd5f69ab6b",
+      "representativeContexts": 70
+    },
+    "contextCompletionArtifact": {
+      "path": "bible-mindmap/reports/luke-v4-first-10-actual-context-confirmation-third-subset-2026-08-12.json",
+      "blobSha": "7e109bcace601664e80e9470710af637c3d7cbd2"
+    },
+    "senseBoundaryCompletionArtifact": {
+      "path": "bible-mindmap/reports/luke-v4-first-10-tflsj-sense-boundary-evidence-completion-2026-08-12.json",
+      "blobSha": "8fa382f6d20c1317b0f0a341e72a9b2b5493b4ad"
+    }
+  },
+  "targets": ["G2316","G0932","G4982","G3341","G4151","G3004","G1342","G3137","G3686","G0002"],
+  "checks": {
+    "targetCount": 10,
+    "actualLukeContextConfirmed": 10,
+    "tflsjSenseBoundaryConfirmed": 10,
+    "representativeContextsAvailable": 70,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0,
+    "selfApproval": false
+  },
+  "auditContract": {
+    "samePinnedBaselineRequired": true,
+    "claudeVerdictRequired": true,
+    "geminiVerdictRequiredWhereRiskContractRequires": true,
+    "allowedVerdicts": ["PASS","REVISE","DISPUTE"],
+    "simpleWordingDifferenceIsHumanBlocker": false,
+    "unresolvedIsolation": "HOLD_OR_DISPUTE_WITH_BATCH_CONTINUATION"
+  },
+  "governance": {
+    "researchOnly": true,
+    "qualityGateWeakeningAllowed": false,
+    "mainBoundPrCreated": false
+  },
+  "nextGate": "DISPATCH_CLAUDE_SAME_BASELINE_AUDIT_AND_GEMINI_REQUIRED_RISK_OR_DISPUTE_REVIEW_WITHOUT_MUTATING_CANDIDATES"
+}
