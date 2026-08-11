@@ -5,6 +5,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { normalizeRegistry } from './lib/source-registry-adapter.mjs'
 
 const DEFAULT_BATCH_PATH = 'reports/genesis-g2-calibration-batch.json'
 const DEFAULT_REGISTRY_PATH = 'data/lexicon/source-registry.json'
@@ -430,7 +431,7 @@ async function main() {
   const args = parseArgs(process.argv.slice(2))
   if (args.selfTest) return runSelfTest()
   const batch = JSON.parse(readFileSync(resolve(process.cwd(), args.batch), 'utf8'))
-  const registry = JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8'))
+  const registry = normalizeRegistry(JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8')))
   const files = await downloadSourceFiles(registry, resolve(process.cwd(), args.cacheDir))
   const result = materializeGenesisBdbPackets({
     batch,

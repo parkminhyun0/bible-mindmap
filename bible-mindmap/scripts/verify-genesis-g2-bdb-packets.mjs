@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { materializeGenesisBdbPackets } from './materialize-genesis-g2-bdb-packets.mjs'
+import { normalizeRegistry } from './lib/source-registry-adapter.mjs'
 
 const DEFAULT_BATCH_PATH = 'reports/genesis-g2-calibration-batch.json'
 const DEFAULT_REGISTRY_PATH = 'data/lexicon/source-registry.json'
@@ -218,7 +219,7 @@ function main() {
   const args = parseArgs(process.argv.slice(2))
   if (args.selfTest) return runSelfTest()
   const batch = JSON.parse(readFileSync(resolve(process.cwd(), args.batch), 'utf8'))
-  const registry = JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8'))
+  const registry = normalizeRegistry(JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8')))
   const packets = JSON.parse(readFileSync(resolve(process.cwd(), args.packets), 'utf8'))
   const cacheDir = resolve(process.cwd(), args.cacheDir)
   const lexicalXml = readFileSync(resolve(cacheDir, 'LexicalIndex.xml'), 'utf8')

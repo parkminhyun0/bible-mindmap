@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { pathToFileURL } from 'node:url'
+import { normalizeRegistry } from './lib/source-registry-adapter.mjs'
 
 const DEFAULT_MANIFEST_PATH = 'reports/genesis-lexicon-translation-manifest.json'
 const DEFAULT_REGISTRY_PATH = 'data/lexicon/source-registry.json'
@@ -74,13 +75,14 @@ function selectCategory({ category, quota, preferred, all, selected }) {
   return chosen
 }
 
-export function buildGenesisCalibrationBatch(manifest, registry) {
+export function buildGenesisCalibrationBatch(manifest, registryInput) {
   if (manifest?.manifestId !== 'genesis-lexicon-ko-g1' || !Array.isArray(manifest.items)) {
     throw new Error('G1 Genesis manifest가 필요합니다.')
   }
-  if (registry?.schemaVersion !== 1 || !Array.isArray(registry.sources)) {
+  if (registryInput?.schemaVersion !== 1 || !Array.isArray(registryInput.sources)) {
     throw new Error('source registry schemaVersion=1이 필요합니다.')
   }
+  const registry = normalizeRegistry(registryInput)
 
   const all = [...manifest.items].sort(byStrong)
   const byId = new Map(all.map((item) => [item.strong, item]))
@@ -262,7 +264,7 @@ function main() {
   if (args.selfTest) return runSelfTest()
 
   const manifest = JSON.parse(readFileSync(resolve(process.cwd(), args.manifest), 'utf8'))
-  const registry = JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8'))
+  const registry = normalizeRegistry(JSON.parse(readFileSync(resolve(process.cwd(), args.registry), 'utf8')))
   const batch = buildGenesisCalibrationBatch(manifest, registry)
   const outputPath = resolve(process.cwd(), args.output)
   mkdirSync(dirname(outputPath), { recursive: true })
