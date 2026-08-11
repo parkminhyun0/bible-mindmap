@@ -1,22 +1,25 @@
 {
-  "schemaVersion": 1,
-  "reportId": "genesis-p5-r4-tri-model-verdict-intake-v1",
+  "schemaVersion": 2,
+  "reportId": "genesis-p5-r4-tri-model-verdict-intake-v2",
   "book": "GEN",
-  "status": "AWAITING_CLAUDE_GEMINI",
+  "status": "AWAITING_CLAUDE_GEMINI_EXACT_FINGERPRINT_VERDICTS",
   "baseline": {
-    "mainSha": "fa915618f565ea492e0f47df38d0b5328d154781",
+    "derivedMainShaAtRefresh": "69e07b3285ea8425f028257a31ed0749c2115b50",
     "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
     "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
     "usageManifest": "reports/genesis-p5-r4-pinned-corpus-usage-manifest.json",
     "extendedEvidence": "reports/genesis-p5-r4-extended-evidence-intake.json",
-    "h39ComparativeEvidence": "reports/genesis-p5-r4-h39-comparative-evidence-note.md"
+    "auditPrep": "reports/genesis-p5-r4-exact-baseline-audit-prep-v2.json",
+    "h6030bReconciliation": "reports/genesis-p5-r4-h6030b-source-node-reconciliation.md",
+    "h28Evidence": "reports/genesis-p5-r4-h28-name-etymology-evidence-note.md",
+    "h39Evidence": "reports/genesis-p5-r4-h39-comparative-evidence-followup.md"
   },
   "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
   "requiredAuditors": ["GPT", "Claude", "Gemini"],
   "acceptedVerdicts": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"],
   "normalization": {
     "PASS_WITH_UNCERTAINTY_BOUNDARY": "PASS_WITH_BOUNDARY",
-    "PASS_WITH_ETYMology_METADATA_ONLY": "PASS_WITH_BOUNDARY",
+    "PASS_WITH_ETYMOLOGY_METADATA_ONLY": "PASS_WITH_BOUNDARY",
     "HOLD_FOR_SOURCE_NODE_RECONCILIATION": "HOLD",
     "HOLD_FOR_NAME_ETYMOLOGY_WORDING": "HOLD",
     "DISPUTE_CONFIRMED_HOLD": "DISPUTE"
@@ -24,33 +27,43 @@
   "audits": {
     "GPT": {
       "state": "COMPLETE",
-      "source": "reports/genesis-p5-r4-gpt-reaudit-results.json"
+      "source": "reports/genesis-p5-r4-gpt-reaudit-results.json",
+      "followupEvidenceIncorporated": true
     },
     "Claude": {
       "state": "PENDING_EXTERNAL_VERDICT",
-      "prompt": "reports/genesis-p5-r4-claude-reaudit-prompt.md"
+      "prompt": "reports/genesis-p5-r4-claude-reaudit-prompt.md",
+      "mustReadAuditPrepV2": true
     },
     "Gemini": {
       "state": "PENDING_EXTERNAL_VERDICT",
-      "prompt": "reports/genesis-p5-r4-gemini-reaudit-prompt.md"
+      "prompt": "reports/genesis-p5-r4-gemini-reaudit-prompt.md",
+      "mustReadAuditPrepV2": true
     }
   },
   "gate": {
     "candidateMutationAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "productionWriteAllowed": false,
-    "autoApprovalAllowed": false,
+    "selfApprovalAllowed": false,
     "requireExactBaselineMatch": true,
     "requireAllThreeAuditors": true,
     "requireUnresolvedZeroForPromotion": true,
     "r4HumanExceptionGatePreserved": true
   },
-  "currentUnresolved": {
-    "H120": ["user-facing etymology wording boundary"],
-    "H6030b": ["exact pinned-source node segmentation/sub-entry identity"],
-    "H7650": ["seven-connection certainty wording"],
-    "H28": ["component grammar/comparative-name wording"],
-    "H39": ["comparative South-Arabian/name etymology conflict"]
+  "currentBoundaries": {
+    "H120": ["common-noun/proper-name separation", "etymology metadata must not become semantic certainty"],
+    "H6030b": ["source-node identity resolved", "Qal/Niphal must not be flattened", "Hiphil remains BDB wholly dubious"],
+    "H7650": ["swear/take-oath operational meaning stable", "seven-connection certainty remains etymology metadata"],
+    "H28": ["Abida identity and father+know family stable", "exact Korean verbal wording remains independently auditable"],
+    "H39": ["BDB/ISBE father-is-El family evidence-preferred", "Strong father-of-Mael retained in provenance", "primary epigraphic exact-inscription gap keeps uncertainty visible"]
   },
-  "next": "ingest Claude and Gemini verdicts only when baseline fingerprints match exactly; then compute consensus/disagreement without mutating candidates or Registry"
+  "autoResolutionPolicy": {
+    "sourceDifferenceAloneTriggersHumanGate": false,
+    "materialEvidencePreferenceMayAdvanceBoundaryVerdict": true,
+    "credibleAlternativeMustRemainInProvenance": true,
+    "humanEscalationOnlyAfterIndependentComparisonExhausted": true
+  },
+  "next": "ingest Claude and Gemini verdicts only when candidate/source fingerprints match exactly; compute consensus/disagreement automatically; do not mutate candidates, approved meanings, Registry, or production in this intake step"
 }
