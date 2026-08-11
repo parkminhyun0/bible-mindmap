@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-parallel-reaudit-plan-v1",
+  "book": "GEN",
+  "status": "PARALLEL_REAUDIT_PREPARED_AWAITING_EXTERNAL_VERDICTS",
+  "baseline": {
+    "mainSha": "fa915618f565ea492e0f47df38d0b5328d154781",
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "usageManifest": "reports/genesis-p5-r4-pinned-corpus-usage-manifest.json",
+    "usageCounts": {"items":5,"occurrences":87,"sampledContexts":38}
+  },
+  "targets": ["H120","H6030b","H7650","H28","H39"],
+  "lanes": [
+    {"id":"A","actor":"GPT","task":"same-baseline lexical/theological re-audit","state":"COMPLETE","result":"reports/genesis-p5-r4-gpt-reaudit-results.json"},
+    {"id":"B","actor":"Claude","task":"same-baseline independent re-audit package","state":"READY_TO_RUN","prompt":"reports/genesis-p5-r4-claude-reaudit-prompt.md"},
+    {"id":"C","actor":"Gemini","task":"same-baseline independent re-audit package","state":"READY_TO_RUN","prompt":"reports/genesis-p5-r4-gemini-reaudit-prompt.md"},
+    {"id":"D","actor":"evidence","task":"H39 comparative-name evidence extension","state":"EVIDENCE_EXTENDED_CONFLICT_REMAINS","result":"reports/genesis-p5-r4-h39-comparative-evidence-note.md"}
+  ],
+  "governance": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "autoApprovalAllowed": false,
+    "r4HumanExceptionGatePreserved": true,
+    "requiredVerdictForPromotion": "ALL_REQUIRED_GATES_RESOLVED"
+  },
+  "mergePolicy": "ONE_MAIN_BOUND_PR_FIFO; research/evidence lanes may run in parallel",
+  "collectionContract": "reports/genesis-p5-r4-tri-model-verdict-intake.json",
+  "nextGate": "INGEST_CLAUDE_GEMINI_VERDICTS_EXACT_BASELINE_THEN_RESOLVE_H6030B_H28_H39"
+}
