@@ -4,6 +4,8 @@ on:
   pull_request:
     paths:
       - '.oshb-cache/Gen.xml'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - 'bible-mindmap/data/lexicon/schemas/SourceRegistry.schema.json'
       - 'bible-mindmap/scripts/report-genesis-strong-inventory.mjs'
       - 'bible-mindmap/scripts/build-genesis-translation-manifest.mjs'
       - 'bible-mindmap/scripts/verify-genesis-translation-contract.mjs'
