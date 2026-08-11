@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "queueId": "genesis-p5-r4-extended-research-v1",
+  "book": "GEN",
+  "sourceCandidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+  "route": "EXTENDED_RESEARCH_REQUIRED",
+  "policy": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md#6-r4-extended_research_required",
+  "items": [
+    {
+      "strong": "H120",
+      "tier": "R4",
+      "status": "EXTENDED_RESEARCH_REQUIRED",
+      "reasons": ["polysemy", "proper-name", "uncertain-etymology"]
+    },
+    {
+      "strong": "H6030b",
+      "tier": "R4",
+      "status": "EXTENDED_RESEARCH_REQUIRED",
+      "reasons": ["polysemy", "source-text-noisy"]
+    },
+    {
+      "strong": "H7650",
+      "tier": "R4",
+      "status": "EXTENDED_RESEARCH_REQUIRED",
+      "reasons": ["uncertain-etymology"]
+    },
+    {
+      "strong": "H28",
+      "tier": "R4",
+      "status": "EXTENDED_RESEARCH_REQUIRED",
+      "reasons": ["proper-name", "uncertain-etymology"]
+    },
+    {
+      "strong": "H39",
+      "tier": "R4",
+      "status": "EXTENDED_RESEARCH_REQUIRED",
+      "reasons": ["proper-name", "uncertain-etymology"]
+    }
+  ],
+  "requiredEvidence": [
+    "additional-public-lexicon-evidence",
+    "biblical-usage-evidence",
+    "scholarly-evidence-when-publicly-accessible",
+    "three-model-reaudit-on-same-pinned-candidate-baseline"
+  ],
+  "governance": {
+    "autoApprovalAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "humanFinalWordingAskAllowedBeforeExtendedResearch": false
+  }
+}
