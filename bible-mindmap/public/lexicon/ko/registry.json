@@ -1,13 +1,1 @@
-{
-  "schemaVersion": 1,
-  "count": 1,
-  "entries": [
-    {
-      "strong": "H776",
-      "language": "hebrew",
-      "shardPath": "shards/hebrew-H701-H800.json",
-      "entryFingerprint": "sha256:7fc19f4cbcb2fa131595ddedf69d06b63cba67cd02540781448b1726454d2555"
-    }
-  ],
-  "manifestFingerprint": "sha256:ad66e2b79af679e17f20312fb7d4e25eb1784d7a7c6a1d1a0e203573c41c518f"
-}
+{"schemaVersion":1,"count":6,"entries":[{"strong":"H1254a","language":"hebrew","shardPath":"shards/hebrew-H1201-H1300.json","entryFingerprint":"sha256:29c407476442fbc4cfca4945e8d912b844007715c552566e0d15a4f21d4e7aa0"},{"strong":"H3117","language":"hebrew","shardPath":"shards/hebrew-H3101-H3200.json","entryFingerprint":"sha256:64b06f27eb5d971949e22d0d527b9845d6976b346afe549b13a697c5dc195b95"},{"strong":"H430","language":"hebrew","shardPath":"shards/hebrew-H401-H500.json","entryFingerprint":"sha256:4e0850ffec6400c7ee2d2fcbc3b8a8c1ee92a6cd3f9a23c4ebf91d1c017f2837"},{"strong":"H46","language":"hebrew","shardPath":"shards/hebrew-H1-H100.json","entryFingerprint":"sha256:3bf27101231a065889ed6c0c813c61496ca95615d35a83f24e1b9141aedee00c"},{"strong":"H7307","language":"hebrew","shardPath":"shards/hebrew-H7301-H7400.json","entryFingerprint":"sha256:47c782ebac8e628dc5d962e0466f6450963d862e85d05b45d117ece4e16b6c01"},{"strong":"H776","language":"hebrew","shardPath":"shards/hebrew-H701-H800.json","entryFingerprint":"sha256:7fc19f4cbcb2fa131595ddedf69d06b63cba67cd02540781448b1726454d2555"}],"manifestFingerprint":"sha256:652bec79627cbd61a290c79f54fa5549edfd031913bb0eda5dd9d1736ce2623f"}
