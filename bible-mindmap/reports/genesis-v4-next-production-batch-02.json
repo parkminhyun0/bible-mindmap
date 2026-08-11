@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-next-production-batch-02",
+  "book": "Genesis",
+  "status": "RESEARCH_BATCH_SELECTED_FROM_PINNED_INVENTORY",
+  "selectionEvidence": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "inventoryFile": "genesis-strong-inventory.json",
+    "inventorySource": "OSHB Gen.xml",
+    "inventoryUniqueStrong": 1772,
+    "existingCovered": 78,
+    "newTranslationRequired": 1694
+  },
+  "selectionRules": [
+    "Continue directly after batch-01 using the same deterministic Genesis calibration/inventory evidence rather than guessed Strong IDs.",
+    "Exclude all base/active-extension/existing-control items and the pinned R4 set H120/H6030b/H7650/H28/H39.",
+    "Prefer the next already-ranked missing core/high-frequency entries so production throughput increases while research risk remains explicit.",
+    "A high-risk divine-name entry may remain in the research batch but must be isolated by risk and may not block lower-risk siblings.",
+    "No Approval Registry, production, or existing-approved-meaning writes are allowed in this research-selection unit."
+  ],
+  "targets": [
+    {"orderInCalibration":25,"strong":"H3068","occurrences":163,"chapters":[2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,25,26,27,28,29,30,31,32,38,39,49],"firstReference":"Gen.2.4","sampleLemma":"3068","sampleSurface":"יְהוָ֥ה","coverage":"missing","risk":"HIGH","researchBoundary":"DIVINE_NAME_AND_READING_TRADITION; isolate exact Korean display/transliteration from lexical identity"},
+    {"orderInCalibration":36,"strong":"H413","occurrences":475,"chapters":[1,2,3,4,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.1.9","sampleLemma":"413","sampleSurface":"אֶל","coverage":"missing","risk":"MEDIUM","researchBoundary":"preposition polysemy and directional/contextual senses"},
+    {"orderInCalibration":37,"strong":"H834","occurrences":411,"chapters":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.1.7","sampleLemma":"834 a","sampleSurface":"אֲשֶׁר֙","coverage":"missing","risk":"MEDIUM","researchBoundary":"relative particle/conjunction plus prefixed combinations"},
+    {"orderInCalibration":38,"strong":"H3605","occurrences":342,"chapters":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,39,40,41,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.1.21","sampleLemma":"3605","sampleSurface":"כָּל","coverage":"missing","risk":"MEDIUM","researchBoundary":"all/every/whole distributive-vs-collective context"},
+    {"orderInCalibration":39,"strong":"H935","occurrences":217,"chapters":[2,4,6,7,8,10,11,12,13,14,15,16,18,19,20,22,23,24,25,26,27,28,29,30,31,32,33,34,35,37,38,39,40,41,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.2.19","sampleLemma":"c/935","sampleSurface":"וַ/יָּבֵא֙","coverage":"missing","risk":"MEDIUM","researchBoundary":"come/bring causative-stem separation by morphology"},
+    {"orderInCalibration":40,"strong":"H3808","occurrences":213,"chapters":[2,3,4,6,7,8,9,11,12,13,14,15,16,17,18,19,20,21,22,23,24,26,27,28,29,30,31,32,34,35,36,37,38,39,40,41,42,43,44,45,47,48,49],"firstReference":"Gen.2.5","sampleLemma":"3808","sampleSurface":"לֹ֨א","coverage":"missing","risk":"LOW","researchBoundary":"negative particle and clause-scope control"},
+    {"orderInCalibration":41,"strong":"H1","occurrences":208,"chapters":[2,4,9,10,11,12,15,17,19,20,22,24,26,27,28,29,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.2.24","sampleLemma":"1","sampleSurface":"אָבִ֖י/ו","coverage":"missing","risk":"MEDIUM","researchBoundary":"father/ancestor/head/originator senses; avoid importing theological fatherhood where context does not require it"},
+    {"orderInCalibration":42,"strong":"H1931","occurrences":182,"chapters":[2,3,4,6,7,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,47,48,49,50],"firstReference":"Gen.2.11","sampleLemma":"1931","sampleSurface":"ה֣וּא","coverage":"missing","risk":"LOW","researchBoundary":"third-person pronoun / demonstrative-emphatic context"},
+    {"orderInCalibration":43,"strong":"H3290","occurrences":180,"chapters":[25,27,28,29,30,31,32,33,34,35,36,37,42,45,46,47,48,49,50],"firstReference":"Gen.25.26","sampleLemma":"3290","sampleSurface":"יַעֲקֹ֑ב","coverage":"missing","risk":"MEDIUM","researchBoundary":"proper-name identity vs etymological explanation"},
+    {"orderInCalibration":44,"strong":"H251","occurrences":178,"chapters":[4,9,10,12,13,14,16,19,20,22,24,25,26,27,28,29,31,32,33,34,35,36,37,38,42,43,44,45,46,47,48,49,50],"firstReference":"Gen.4.2","sampleLemma":"251","sampleSurface":"אָחִ֖י/ו","coverage":"missing","risk":"MEDIUM","researchBoundary":"brother/kin/fellow extensions must be context-controlled"}
+  ],
+  "batchCounts": {
+    "selected": 10,
+    "totalGenesisOccurrences": 2569,
+    "currentR4Overlap": 0,
+    "batch01Overlap": 0,
+    "registryWrites": 0,
+    "productionWrites": 0
+  },
+  "sourceSpotChecks": {
+    "pinnedSource": "STEPBible TBESH @ b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "verifiedInThisUnit": [
+      {"strong":"H3068","sourceNode":"H3068G","lemma":"יְהֹוָה","sourceGloss":"LORD","boundary":"proper divine name; reading/display tradition must remain separate from lexical identity"},
+      {"strong":"H413","sourceNode":"H0413","lemma":"אֶל","sourceGloss":"to(wards)","boundary":"direction, relation, concern/reference, presence and other prepositional senses"},
+      {"strong":"H834","sourceNode":"H0834A","lemma":"אֲשֶׁר","sourceGloss":"which","boundary":"relative particle plus conjunctional and prefixed-combination functions"}
+    ],
+    "note": "TBESH is secondary abridged control; full BDB/OpenScriptures hierarchy and actual Genesis context remain required before candidate advancement."
+  },
+  "governance": {
+    "researchOnly": true,
+    "qualityGateWeakeningAllowed": false,
+    "candidateMutationAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "highRiskItemsMayBeIsolatedWithoutBlockingSiblings": true,
+    "fullBdbHierarchyCrosscheckRequired": true,
+    "genesisUsageContextCrosscheckRequired": true,
+    "independentAuditRequired": true
+  },
+  "nextGate": "MATERIALIZE_BATCH_02_PINNED_SOURCE_NODES_AND_REPRESENTATIVE_GENESIS_CONTEXTS_THEN_FULL_BDB_HIERARCHY_CROSSCHECK"
+}
