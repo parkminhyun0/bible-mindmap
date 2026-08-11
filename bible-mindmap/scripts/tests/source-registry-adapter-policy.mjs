@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import assert from 'node:assert/strict'
+import { readFileSync } from 'node:fs'
 import {
   deriveLegacyAllowedUses,
   normalizeRegistry,
@@ -172,6 +173,27 @@ function v12Source(overrides = {}) {
   assert.equal(registry.policyVersion, '1.2')
   assert.equal(registry.sources[0].licenseStatus, 'unknown')
   assert.deepEqual(registry.sources[0].allowedUses, [])
+}
+
+// Current SSOT registry regression: BDB behavior stays operational, while the real
+// internal-review-only source with a license URL remains non-authorizing.
+{
+  const currentRegistry = JSON.parse(readFileSync(
+    new URL('../../data/lexicon/source-registry.json', import.meta.url),
+    'utf8',
+  ))
+  const normalized = normalizeRegistry(currentRegistry)
+  const bdb = normalized.sources.find((source) => source.id === 'openscriptures-hebrewlexicon-bdb')
+  assert.ok(bdb, 'current registry must contain Open Scriptures BDB')
+  assert.equal(bdb.licenseStatus, 'verified-public-or-permitted')
+  for (const use of ['download', 'parse', 'ai-input', 'derived-translation']) {
+    assert.ok(bdb.allowedUses.includes(use), `current BDB must retain legacy ${use}`)
+  }
+
+  const internal = normalized.sources.find((source) => source.id === 'unfoldingword-bdb-enhanced')
+  assert.ok(internal?.attribution, 'internal-review-only source fixture must be present')
+  assert.equal(internal.licenseStatus, 'internal-validation-only')
+  assert.deepEqual(internal.allowedUses, [])
 }
 
 console.log('✓ source registry legacy adapter policy hardening tests passed')
