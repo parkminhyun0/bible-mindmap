@@ -41,6 +41,17 @@ function stableJson(value) {
 }
 const sha256 = (value) => `sha256:${createHash('sha256').update(stableJson(value)).digest('hex')}`
 
+function goldenApprovalRegistryFingerprint(approvalRegistry) {
+  assert.equal(approvalRegistry?.schemaVersion, 1, 'Approval Registry schemaVersion must remain 1')
+  assert.ok(Array.isArray(approvalRegistry.entries), 'Approval Registry entries are required')
+  const goldenEntries = approvalRegistry.entries.filter((entry) => entry.identity?.canonicalStrong === GOLDEN_CONTROL)
+  assert.equal(goldenEntries.length, 1, 'P5 candidate baseline requires exactly one H776 golden control')
+  // Candidate generation was independently audited against the H776-only Registry baseline.
+  // Later additive approvals must not rewrite that historical source-input fingerprint.
+  // Any H776 mutation still changes this fingerprint and therefore fails closed.
+  return sha256({ schemaVersion: 1, entries: goldenEntries })
+}
+
 function tahotVariants(variantMap) {
   return [...(variantMap?.values() || [])].sort((a, b) => a.tahotStrong.localeCompare(b.tahotStrong, 'en'))
 }
@@ -198,7 +209,7 @@ export function buildGenesisP5CandidateInputs({ gold, sourceRegistry, approvalRe
       openscriptures: { sourceId: OPENSCRIPTURES_BDB_SOURCE.sourceId, commit: OPENSCRIPTURES_BDB_SOURCE.commit, aggregateFingerprint: OPENSCRIPTURES_BDB_SOURCE.aggregateFingerprint },
       tahot: { sourceId: TAHOT_SOURCE.sourceId, commit: TAHOT_SOURCE.commit, aggregateFingerprint: TAHOT_SOURCE.aggregateFingerprint },
       goldSetFingerprint: gold.setFingerprint,
-      approvalRegistryFingerprint: approvalRegistry.registryFingerprint,
+      approvalRegistryFingerprint: goldenApprovalRegistryFingerprint(approvalRegistry),
     },
     counts: {
       goldBaseItems: 25,

@@ -87,6 +87,9 @@ jobs:
       - name: Verify v4 Approval Registry reviewer provenance contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-approval-provenance.mjs
+      - name: Verify Genesis P5 R3 promotion exact evidence projection
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-r3-registry-promotion.mjs
       - name: Verify P4 read-only delivery, loader and rich drawer SSOT contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs

@@ -1,17 +1,1 @@
-{
-  "schemaVersion": 1,
-  "snapshotOfRegistrySchemaVersion": 1,
-  "entries": [
-    {
-      "canonicalStrong": "H776",
-      "identityFingerprint": "sha256:8642385e14a3d37602b5c06e6bcb2a0a0960950341446a320ac22ffffd438166",
-      "evidencePacketFingerprint": "sha256:c5cd82d53189800016ea9ff38a0b1777f1a69b0d079ed05ed1fb518ac9a12367",
-      "approvedAt": "2026-08-07T15:59:47Z",
-      "senseCount": 26,
-      "senseTreeFingerprint": "sha256:9433963a3b533e389abce21bbe105c86246b004d508757ccc4b5b03e5d1fdd24"
-    }
-  ],
-  "intentionalMutations": [],
-  "bootstrappedAt": "2026-08-11T02:20:00+09:00",
-  "bootstrappedByPr": "feat/lexicon-v4-automation-foundation"
-}
+{"schemaVersion":1,"snapshotOfRegistrySchemaVersion":1,"entries":[{"canonicalStrong":"H1254a","identityFingerprint":"sha256:3a0c2f682d8c894e3b2ac15e844e1036933b0d792312baf38f61bec51e98c635","evidencePacketFingerprint":"sha256:43a91cd4c50101a46d2a4c7459198f63c46d789c3700ba6ce0276b520cae7f84","approvedAt":"2026-08-11T01:58:00Z","senseCount":9,"senseTreeFingerprint":"sha256:f329fd1a4bb0da450c5b12d45335c6dea3715b41f00572ce04bb3574e15fff27"},{"canonicalStrong":"H3117","identityFingerprint":"sha256:a94a0a567a744581828fcaca38f8e7e37c71f98d3dbeede19a5af5ebd9e7c8ac","evidencePacketFingerprint":"sha256:d9e507deef6c67856506ef06465e1adf85451b9d384515a65954f18f0a0f635e","approvedAt":"2026-08-11T01:58:00Z","senseCount":8,"senseTreeFingerprint":"sha256:ff5f2ef1c0fe811d60f89dc4fa98088827d6a036ccdfbf26bb08964a0a3df6b5"},{"canonicalStrong":"H430","identityFingerprint":"sha256:138208e4b4393d8d0492da9fdb73f284fbd516a0eaa3233a2bc3615e1d81abbc","evidencePacketFingerprint":"sha256:13121be18dd2b5e68bfabdaa38a89b3c755d07a9e948189a6ce4138b8cff374a","approvedAt":"2026-08-11T01:58:00Z","senseCount":13,"senseTreeFingerprint":"sha256:ba163c5ed238ad0041d6dd47cebe6fb98426c8b85ad787aadfbd16b110470d29"},{"canonicalStrong":"H46","identityFingerprint":"sha256:296e019d6689cd03c67d15a8b4147bbc9a4b4dfa3a72337864ef68d6b2386766","evidencePacketFingerprint":"sha256:d491dec1f3cea664fc3e45ba586326b5b22dc72bcace5923af52c84c7ab5803d","approvedAt":"2026-08-11T01:58:00Z","senseCount":1,"senseTreeFingerprint":"sha256:4bead9ffc31c6c0a17df707e05dfb6172ca0f7b73091b26b03371df7e11d9703"},{"canonicalStrong":"H7307","identityFingerprint":"sha256:d36555cf7c374ed1bbb6b5ec90cc3addb22a711563b9a0ee2547998230bde575","evidencePacketFingerprint":"sha256:628ce30b9609698003650811b9e6feb656f9e9d7e8a805ddc2a6a959b2083075","approvedAt":"2026-08-11T01:58:00Z","senseCount":10,"senseTreeFingerprint":"sha256:1feaa54de406adde7b4f841178be54e0fa320ce264af0800de588860e3df7467"},{"canonicalStrong":"H776","identityFingerprint":"sha256:8642385e14a3d37602b5c06e6bcb2a0a0960950341446a320ac22ffffd438166","evidencePacketFingerprint":"sha256:c5cd82d53189800016ea9ff38a0b1777f1a69b0d079ed05ed1fb518ac9a12367","approvedAt":"2026-08-07T15:59:47Z","senseCount":26,"senseTreeFingerprint":"sha256:9433963a3b533e389abce21bbe105c86246b004d508757ccc4b5b03e5d1fdd24"}],"intentionalMutations":[],"bootstrappedAt":"2026-08-11T02:20:00+09:00","bootstrappedByPr":"feat/lexicon-v4-automation-foundation","lastExtendedAt":"2026-08-11T10:58:00+09:00","lastExtendedBy":"genesis-p5-r3-evidence-policy-promotion"}

@@ -94,8 +94,11 @@ for(const strong of ['H430','H1254a','H3117','H7307','H46']){
   assert.equal(candidate.risk.tier,'R3',`${strong}: must remain R3`)
   assert.ok(candidate.risk.flags.includes('theological-sensitive'),`${strong}: theological-sensitive flag required`)
 }
-for(const strong of ['H120','H6030b','H7650','H28','H39']) assert.equal(candidates.find((item)=>item.sourceStrong===strong).risk.tier,'R4',`${strong}: must remain R4`)
-assert.equal(approval.entries.length,1,'candidate phase must not promote Approval Registry entries')
-assert.equal(approval.entries[0].identity.canonicalStrong,'H776')
-assert.equal(approval.entries[0].approvedSenseTree.length,26,'H776 Approval Registry must remain 26/26')
-console.log(`✓ Genesis P5 GPT candidates · bases=24 · units=27 · nodes=150 · R3=5 · R4=5 · H776 excluded · Registry writes=0`)
+const r4Strongs=['H120','H6030b','H7650','H28','H39']
+for(const strong of r4Strongs) assert.equal(candidates.find((item)=>item.sourceStrong===strong).risk.tier,'R4',`${strong}: must remain R4`)
+const h776=approval.entries.find((entry)=>entry?.identity?.canonicalStrong==='H776')
+assert.ok(h776,'H776 Approval Registry entry must remain present')
+assert.equal(h776.approvedSenseTree.length,26,'H776 Approval Registry must remain 26/26')
+const approvedStrongs=new Set(approval.entries.map((entry)=>entry?.identity?.canonicalStrong).filter(Boolean))
+for(const strong of r4Strongs) assert.equal(approvedStrongs.has(strong),false,`${strong}: R4 candidate must not be promoted by downstream Registry state`)
+console.log(`✓ Genesis P5 GPT candidates · bases=24 · units=27 · nodes=150 · R3=5 · R4=5 · H776 excluded · candidate write gates remain closed`)
