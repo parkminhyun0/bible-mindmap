@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 const DEFAULT_INPUT = resolve(process.cwd(), 'reports/genesis-p5-r4-pinned-corpus-usage.json')
+const DEFAULT_MANIFEST = resolve(process.cwd(), 'reports/genesis-p5-r4-pinned-corpus-usage-manifest.json')
 const SHA256 = /^sha256:[a-f0-9]{64}$/
 const CANDIDATE_BUNDLE_FP = 'sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261'
 const SOURCE_INPUT_BUNDLE_FP = 'sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c'
@@ -15,8 +17,9 @@ const EXPECTED = Object.freeze({
   H28: { baseStrong: 'H28', corpusStrong: 'H28', count: 1, fp: 'sha256:0e14d5b1a36b874475ab4480012b4aaffc44e5af0a3f27d109ea799df58bd6a4' },
   H39: { baseStrong: 'H39', corpusStrong: 'H39', count: 1, fp: 'sha256:27bf6bf5e378efa24f39481ade6875f63c86c2f04533d7f3e106934d343a543d' },
 })
+const digest = (raw) => `sha256:${createHash('sha256').update(raw).digest('hex')}`
 
-export function verifyGenesisP5R4UsageEvidence(report) {
+export function verifyGenesisP5R4UsageEvidence(report, manifest, rawReport) {
   assert.equal(report?.schemaVersion, 1)
   assert.equal(report?.reportId, 'genesis-p5-r4-pinned-corpus-usage-v1')
   assert.equal(report?.book, 'GEN')
@@ -28,9 +31,7 @@ export function verifyGenesisP5R4UsageEvidence(report) {
   assert.match(report?.source?.digest || '', SHA256)
   assert.equal(report?.source?.windowRadius, 4)
   assert.equal(report?.source?.sampleLimit, 12)
-  for (const key of ['candidateMutationAllowed','approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed','autoApprovalAllowed','humanFinalWordingAllowedAtThisStage']) {
-    assert.equal(report?.governance?.[key], false, `${key} must remain false`)
-  }
+  for (const key of ['candidateMutationAllowed','approvalRegistryWriteAllowed','serviceUiWriteAllowed','productionWriteAllowed','existingApprovedMeaningMutationAllowed','autoApprovalAllowed','humanFinalWordingAllowedAtThisStage']) assert.equal(report?.governance?.[key], false, `${key} must remain false`)
   assert.equal(report?.governance?.evidenceCollectionOnly, true)
   assert.ok(Array.isArray(report?.items) && report.items.length === 5)
   assert.deepEqual(new Set(report.items.map((item) => item.sourceStrong)), new Set(Object.keys(EXPECTED)))
@@ -51,15 +52,14 @@ export function verifyGenesisP5R4UsageEvidence(report) {
     assert.ok(Array.isArray(item.chapters) && item.chapters.length >= 1)
     assert.equal(item.firstReference, item.occurrences[0].reference)
     assert.equal(item.lastReference, item.occurrences.at(-1).reference)
-    if (item.sourceStrong === 'H6030b') assert.equal(item.mapping, 'extended-source-to-base-corpus')
-    else assert.equal(item.mapping, 'direct')
+    assert.equal(item.mapping, item.sourceStrong === 'H6030b' ? 'extended-source-to-base-corpus' : 'direct')
     for (const occurrence of item.occurrences) {
       assert.match(occurrence.reference || '', /^Gen\.\d+\.\d+$/)
       assert.equal(occurrence.corpusStrong, expected.corpusStrong)
-      assert.ok(String(occurrence.surface || '').trim(), `${item.sourceStrong}: surface missing`)
-      assert.ok(String(occurrence.lemma || '').trim(), `${item.sourceStrong}: lemma missing`)
-      assert.ok(String(occurrence.morph || '').trim(), `${item.sourceStrong}: morph missing`)
-      assert.ok(String(occurrence.verseText || '').trim(), `${item.sourceStrong}: verseText missing`)
+      assert.ok(String(occurrence.surface || '').trim())
+      assert.ok(String(occurrence.lemma || '').trim())
+      assert.ok(String(occurrence.morph || '').trim())
+      assert.ok(String(occurrence.verseText || '').trim())
       assert.ok(Array.isArray(occurrence.contextTokens) && occurrence.contextTokens.length > 0)
       assert.equal(occurrence.contextTokens.filter((token) => token.focus).length, 1)
     }
@@ -71,9 +71,37 @@ export function verifyGenesisP5R4UsageEvidence(report) {
   assert.equal(report?.counts?.occurrences, occurrenceTotal)
   assert.equal(report?.counts?.sampledContexts, sampleTotal)
   assert.equal(report?.nextGate, 'THREE_MODEL_REAUDIT_ON_EXACT_PINNED_BASELINE')
+
+  assert.equal(manifest?.schemaVersion, 1)
+  assert.equal(manifest?.manifestId, 'genesis-p5-r4-pinned-corpus-usage-manifest-v1')
+  assert.equal(manifest?.status, report.status)
+  assert.deepEqual(manifest?.baseline, report.baseline)
+  assert.equal(manifest?.source?.digest, report.source.digest)
+  assert.equal(manifest?.source?.windowRadius, report.source.windowRadius)
+  assert.equal(manifest?.source?.sampleLimit, report.source.sampleLimit)
+  assert.equal(manifest?.ciEvidence?.generatedReportDigest, digest(rawReport), 'generated report digest drift')
+  assert.equal(manifest?.counts?.items, report.counts.items)
+  assert.equal(manifest?.counts?.occurrences, report.counts.occurrences)
+  assert.equal(manifest?.counts?.sampledContexts, report.counts.sampledContexts)
+  const manifestByStrong = new Map(manifest.items.map((item) => [item.sourceStrong, item]))
+  for (const item of report.items) {
+    const pinned = manifestByStrong.get(item.sourceStrong)
+    assert.ok(pinned, `${item.sourceStrong}: manifest row missing`)
+    assert.equal(pinned.baseStrong, item.baseStrong)
+    assert.equal(pinned.corpusStrong, item.corpusStrong)
+    assert.equal(pinned.candidateFingerprint, item.candidateFingerprint)
+    assert.equal(pinned.occurrences, item.totalOccurrences)
+    assert.deepEqual(pinned.chapters, item.chapters)
+    assert.equal(pinned.firstReference, item.firstReference)
+    assert.equal(pinned.lastReference, item.lastReference)
+    assert.equal(pinned.sampleCount, item.sampleContexts.length)
+  }
+  assert.equal(manifest?.nextGate, report.nextGate)
   return { items: 5, occurrences: occurrenceTotal, samples: sampleTotal }
 }
 
 const input = process.argv.find((arg) => arg.startsWith('--input='))?.slice(8) || DEFAULT_INPUT
-const result = verifyGenesisP5R4UsageEvidence(JSON.parse(readFileSync(resolve(input), 'utf8')))
-console.log(`✓ Genesis P5 R4 usage evidence · items=${result.items} · occurrences=${result.occurrences} · samples=${result.samples} · Registry writes=0`)
+const manifestPath = process.argv.find((arg) => arg.startsWith('--manifest='))?.slice(11) || DEFAULT_MANIFEST
+const raw = readFileSync(resolve(input), 'utf8')
+const result = verifyGenesisP5R4UsageEvidence(JSON.parse(raw), JSON.parse(readFileSync(resolve(manifestPath), 'utf8')), raw)
+console.log(`✓ Genesis P5 R4 usage evidence + manifest · items=${result.items} · occurrences=${result.occurrences} · samples=${result.samples} · Registry writes=0`)
