@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "contractId": "lexicon-v4-executor-trigger-v1",
+  "trackId": "lexicon-ko-66",
+  "primaryExecutor": "GPT",
+  "supportExecutors": ["JARVIS"],
+  "handoffStatePath": "docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json",
+  "triggerIssuePrefix": "[AUTO_FAILOVER] GPT claim",
+  "pollIntervalMinutes": 60,
+  "supportedSignals": [
+    "usage-limit",
+    "session-ended",
+    "tool-unavailable",
+    "stale-checkpoint-watch"
+  ],
+  "rules": {
+    "gptIsPrimary": true,
+    "jarvisIsOptionalSupport": true,
+    "noDuplicatePR": true,
+    "reuseActiveBranch": true,
+    "skipCompletedSteps": true,
+    "freshGithubStateRequired": true,
+    "fingerprintMustRemainStable": true,
+    "requiredCIMustBeRechecked": true,
+    "externalAuditMayNotBeBypassed": true,
+    "webhookRequired": false,
+    "pollingTriggerAllowed": true
+  },
+  "emission": {
+    "channel": "github-issue",
+    "dedupeKey": "activePR+headSHA+signal",
+    "failClosedOnApiError": true
+  },
+  "claim": {
+    "targetExecutor": "GPT",
+    "mustReReadOrder": [
+      "github-main",
+      "github-active-pr",
+      "github-current-head",
+      "github-diff",
+      "github-required-ci",
+      "docs/lexicon-workflow/TRACK_STATE.json",
+      "memory/RESUME.json",
+      "docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json"
+    ],
+    "mustUseSamePR": true,
+    "mustUseSameBranch": true
+  },
+  "canary": {
+    "name": "jarvis-to-gpt-usage-limit",
+    "expectedTriggerVerdict": "EMIT_HANDOFF_READY",
+    "expectedClaimVerdict": "HANDOFF_ACCEPTED"
+  }
+}

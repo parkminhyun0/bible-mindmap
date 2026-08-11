@@ -18,14 +18,14 @@
     "state-sync"
   ],
   "nextStep": null,
-  "nextAction": "Repository handoff foundation complete. Next: implement/connect the external trigger layer and run automatic executor-invocation canary tests.",
+  "nextAction": "Repository handoff foundation and one-time AUTO_FAILOVER canary are complete. Finish PR #302 trigger-layer review/merge/deploy; future failovers use the installed trigger contract.",
   "baseSHA": "f07a847317a052148c08de316cea922dc90e61cf",
-  "headSHA": "0c5ea49cf9b12f98694b47fbc5cde9c2b8a6ca4a",
+  "headSHA": "f3d72e4639195c15d857fb15975840cb48ce90a2",
   "candidateFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
   "activePR": 0,
   "activeBranch": "none",
-  "checkpointedAt": "2026-08-11T08:52:00+09:00",
-  "handoffReason": "PR #300 merged at exact reviewed head; Pages #601 succeeded; repository-side executor handoff foundation is complete.",
+  "checkpointedAt": "2026-08-11T09:52:00+09:00",
+  "handoffReason": "Issue #303 AUTO_FAILOVER canary successfully claimed by GPT and closed; temporary handoff state restored to idle COMPLETE.",
   "externalAudit": {
     "required": false,
     "status": "NOT_REQUIRED",

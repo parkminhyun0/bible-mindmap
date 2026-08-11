@@ -1,0 +1,72 @@
+name: Lexicon Executor Trigger Layer
+
+on:
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/v4/executor-trigger-contract.json'
+      - 'bible-mindmap/scripts/lib/executor-trigger.mjs'
+      - 'bible-mindmap/scripts/verify-executor-trigger-contract.mjs'
+      - 'bible-mindmap/scripts/tests/executor-trigger-canary.mjs'
+      - 'bible-mindmap/scripts/emit-executor-trigger.mjs'
+      - '.github/workflows/lexicon-executor-trigger.yml'
+      - 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'
+  push:
+    branches: [main]
+    paths:
+      - 'bible-mindmap/data/lexicon/v4/executor-trigger-contract.json'
+      - 'bible-mindmap/scripts/lib/executor-trigger.mjs'
+      - 'bible-mindmap/scripts/verify-executor-trigger-contract.mjs'
+      - 'bible-mindmap/scripts/tests/executor-trigger-canary.mjs'
+      - 'bible-mindmap/scripts/emit-executor-trigger.mjs'
+      - '.github/workflows/lexicon-executor-trigger.yml'
+      - 'docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json'
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+    inputs:
+      signal:
+        description: 'Explicit executor failure signal'
+        required: false
+        type: choice
+        options:
+          - usage-limit
+          - session-ended
+          - tool-unavailable
+          - stale-checkpoint-watch
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: lexicon-executor-trigger
+  cancel-in-progress: false
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Verify GPT-primary trigger contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-executor-trigger-contract.mjs --self-test
+      - name: Run Jarvis-to-GPT canary
+        working-directory: bible-mindmap
+        run: node scripts/tests/executor-trigger-canary.mjs
+      - name: Dry-run trigger emission on PR
+        if: github.event_name == 'pull_request'
+        working-directory: bible-mindmap
+        env:
+          EXECUTOR_TRIGGER_DRY_RUN: '1'
+        run: node scripts/emit-executor-trigger.mjs
+      - name: Emit GPT claim request when actionable
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        working-directory: bible-mindmap
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          EXECUTOR_TRIGGER_SIGNAL: ${{ inputs.signal }}
+        run: node scripts/emit-executor-trigger.mjs
