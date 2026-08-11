@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "qualityBarId": "genesis-r4-h776-equivalent-v1",
+  "reference": {
+    "strong": "H776",
+    "lemma": "אֶרֶץ",
+    "principle": "Genesis R4 items must not be promoted at a lower evidence/provenance depth than the accepted H776 pilot standard. Parallelism may reduce wall-clock time only; it may not reduce review depth."
+  },
+  "requiredAxes": [
+    "strong-and-lemma-identity",
+    "source-node-and-homograph-separation",
+    "sense-boundary-explicitness",
+    "pinned-genesis-usage-evidence",
+    "morphology-vs-strong-separation",
+    "korean-gloss-source-fidelity",
+    "theological-overreach-check",
+    "proper-name-vs-etymology-separation-when-applicable",
+    "uncertainty-expression",
+    "independent-multi-model-audit",
+    "existing-approved-regression-zero",
+    "human-provenance-for-r4-exception-resolution"
+  ],
+  "promotionRule": {
+    "allRequiredAxesMustPass": true,
+    "missingEvidence": "HOLD",
+    "sourceConflict": "HOLD_OR_DISPUTE",
+    "candidateMutationBeforeResolution": false,
+    "approvalRegistryWriteBeforeResolution": false,
+    "qualityThresholdRelaxation": false
+  },
+  "targets": ["H120","H6030b","H7650","H28","H39"]
+}
