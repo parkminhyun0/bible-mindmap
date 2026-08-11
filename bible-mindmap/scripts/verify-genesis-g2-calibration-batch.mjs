@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
 import { buildGenesisCalibrationBatch } from './build-genesis-g2-calibration-batch.mjs'
+import { normalizeRegistry } from './lib/source-registry-adapter.mjs'
 
 const DEFAULT_MANIFEST_PATH = 'reports/genesis-lexicon-translation-manifest.json'
 const DEFAULT_REGISTRY_PATH = 'data/lexicon/source-registry.json'
@@ -88,9 +89,10 @@ function validateRegistry(registry, errors) {
   }
 }
 
-export function validateGenesisG2CalibrationBatch(manifest, registry, batch) {
+export function validateGenesisG2CalibrationBatch(manifest, registryInput, batch) {
   const errors = []
   const warnings = []
+  const registry = normalizeRegistry(registryInput)
   validateRegistry(registry, errors)
 
   if (batch?.schemaVersion !== 1) errors.push('batch schemaVersion=1 필요')
