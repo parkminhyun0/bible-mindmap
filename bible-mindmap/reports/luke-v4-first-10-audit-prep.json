@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "reportId": "luke-v4-first-10-audit-prep-v1",
+  "book": "Luke",
+  "status": "AUDIT_PREPARED_EXTERNAL_AUDIT_REQUIRED",
+  "baseline": {
+    "researchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+    "parentHeadSha": "19fb50661cc66f97fbfcc368580f232e80dbd17f",
+    "candidateArtifact": {
+      "path": "reports/luke-v4-first-10-candidate-prep.json",
+      "blobSha": "d71065e3a0746f6dc645fc50c1204be1f17240d8"
+    },
+    "sourceLockArtifact": {
+      "path": "reports/luke-v4-greek-source-lock.json",
+      "blobSha": "f63f8705a86acfe4339fd15afb99b0b62eefff7d"
+    },
+    "stepBibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tbesgBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "tflsjBlobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "lukeG2Report": {
+      "path": "data/lexicon/luke-g2-report.json",
+      "blobSha": "8f9a854062d3b588738c4c3e9531bb5ced3e4901",
+      "representativeContexts": 70
+    }
+  },
+  "identityNormalization": {
+    "rules": [
+      "Preserve the source Strong identity exactly and record formatting aliases separately.",
+      "Do not treat zero-padding alone as a distinct lexical identity.",
+      "Do not collapse Extended Strong sub-identities when the source distinguishes them."
+    ],
+    "aliases": [
+      {"candidateStrong":"G0932","canonicalLegacyStrong":"G932","lemma":"βασιλεία","status":"FORMAT_ALIAS_ONLY"},
+      {"candidateStrong":"G0002","canonicalLegacyStrong":"G2","lemma":"Ἀαρών","status":"FORMAT_ALIAS_ONLY"}
+    ]
+  },
+  "targets": [
+    {"strong":"G2316","lemma":"θεός","risk":"HIGH"},
+    {"strong":"G0932","lemma":"βασιλεία","risk":"MEDIUM"},
+    {"strong":"G4982","lemma":"σῴζω","risk":"MEDIUM"},
+    {"strong":"G3341","lemma":"μετάνοια","risk":"LOW"},
+    {"strong":"G4151","lemma":"πνεῦμα","risk":"MEDIUM"},
+    {"strong":"G3004","lemma":"λέγω","risk":"HIGH"},
+    {"strong":"G1342","lemma":"δίκαιος","risk":"MEDIUM"},
+    {"strong":"G3137","lemma":"Μαρία","risk":"MEDIUM"},
+    {"strong":"G3686","lemma":"ὄνομα","risk":"MEDIUM"},
+    {"strong":"G0002","lemma":"Ἀαρών","risk":"LOW"}
+  ],
+  "deterministicAdapterContract": {
+    "inputIntegrity": [
+      "STEPBible commit must equal the pinned commit.",
+      "TBESG and TFLSJ blob SHAs must equal the pinned blob SHAs.",
+      "Candidate and source-lock artifact blob SHAs must match this manifest."
+    ],
+    "requiredFields": ["sourceStrong","lemma","transliteration","morph","briefGloss","lexiconText","sourcePath","sourceBlobSha"],
+    "normalization": [
+      "Normalize Strong zero-padding only for lookup while preserving the source token.",
+      "Strip presentation markup without changing lexical text content.",
+      "Preserve sense numbering, usage labels, cross-references, and uncertainty markers.",
+      "TFLSJ is a secondary cross-check and must not silently replace TBESG provenance."
+    ],
+    "failClosedOn": ["missing-target","duplicate-identity","blob-drift","lemma-mismatch","source-parse-loss"]
+  },
+  "auditAxes": [
+    "source-fidelity",
+    "sense-boundary",
+    "korean-naturalness",
+    "theological-overreach",
+    "etymology-certainty",
+    "usage-context-fit",
+    "identity-normalization",
+    "risk-routing"
+  ],
+  "modelLanes": [
+    {"actor":"GPT","state":"CANDIDATE_PREP_COMPLETE","maySelfApprove":false},
+    {"actor":"Claude","state":"EXTERNAL_AUDIT_REQUIRED","mustUseSamePinnedBaseline":true},
+    {"actor":"Gemini","state":"EXTERNAL_AUDIT_REQUIRED","mustUseSamePinnedBaseline":true}
+  ],
+  "verdictContract": {
+    "allowedUnitVerdicts": ["PASS","REVISE","DISPUTE"],
+    "simpleDictionaryDifferenceIsHumanBlocker": false,
+    "evidencePreferredInterpretationMayAdvanceAutomatically": true,
+    "credibleAlternativesMustRemainInProvenance": true,
+    "unresolvedUnitIsolation": "HOLD_OR_DISPUTE_WITH_BATCH_CONTINUATION",
+    "promotionRequires": "all applicable v4 gates and independent audits resolved"
+  },
+  "governance": {
+    "auditOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "mainBoundPrCreated": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "RUN_DETERMINISTIC_SOURCE_ADAPTER_THEN_DISPATCH_CLAUDE_GEMINI_SAME_BASELINE_AUDITS"
+}
