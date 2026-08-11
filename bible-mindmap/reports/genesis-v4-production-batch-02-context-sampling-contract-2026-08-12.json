@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-context-sampling-contract-2026-08-12",
+  "status": "CONTEXT_SAMPLING_CONTRACT_PINNED_EXTRACTION_STILL_REQUIRED",
+  "generatedAt": "2026-08-12T07:06:45+09:00",
+  "derivedMain": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+  "baselineHead": "3f4ae799e88f2fabc4ef862d44a5374aa81d3263",
+  "sourceEvidence": {
+    "inventoryWorkflowRun": 31493398776,
+    "inventoryArtifactId": 9101939555,
+    "inventoryArtifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "inventoryReportedSource": "OSHB Gen.xml",
+    "openscripturesBdbCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "bdbRegistryContentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0"
+  },
+  "samplingRule": {
+    "minimumPerTarget": 3,
+    "mustIncludeFirstAttestedReference": true,
+    "mustCoverDistinctMorphologyOrSenseFamiliesWhenAttested": true,
+    "mustPreserveSurfaceAndStrongIdentity": true,
+    "mustRecordStemForVerbs": true,
+    "mustSeparateProperNameOrDivineNamePolicyFromLexicalIdentity": true,
+    "mustNotInferTheologyFromGrammarAlone": true
+  },
+  "targets": [
+    {"strong":"H430","lemma":"אֱלֹהִים","occurrences":219,"firstReference":"Gen.1.1","firstSurface":"אֱלֹהִ֑ים","requiredCoverage":["God singular-referential","gods/divine beings if Genesis-attested","grammatical-number boundary"]},
+    {"strong":"H3068","lemma":"יְהֹוָה","occurrences":163,"firstReference":"Gen.2.4","firstSurface":"יְהוָ֥ה","requiredCoverage":["proper-name identity","reading/translation policy kept separate","etymology uncertainty"]},
+    {"strong":"H1","lemma":"אָב","occurrences":208,"firstReference":"Gen.2.24","firstSurface":"אָבִ֖י/ו","requiredCoverage":["individual father","ancestor/clan-head if attested","figurative extension only when contextual"]},
+    {"strong":"H1121","lemma":"בֵּן","occurrences":365,"firstReference":"Gen.3.16","firstSurface":"בָנִ֑ים","requiredCoverage":["son/sons","descendant/member-of-class constructions","construct-state context"]},
+    {"strong":"H1961","lemma":"הָיָה","occurrences":316,"firstReference":"Gen.1.2","firstSurface":"הָיְתָ֥ה","requiredCoverage":["be/exist","become/come to be","happen/come to pass where attested"]},
+    {"strong":"H376","lemma":"אִישׁ","occurrences":159,"firstReference":"Gen.2.23","firstSurface":"מֵ/אִ֖ישׁ","requiredCoverage":["man/male person","husband where syntactically supported","person/individual extension"]},
+    {"strong":"H802","lemma":"אִשָּׁה","occurrences":152,"firstReference":"Gen.2.22","firstSurface":"לְ/אִשָּׁ֑ה","requiredCoverage":["woman","wife where relational syntax proves it","female-of-animals/distributive only if attested"]},
+    {"strong":"H559","lemma":"אָמַר","occurrences":606,"firstReference":"Gen.1.3","firstSurface":"וַ/יֹּ֥אמֶר","requiredCoverage":["Qal say/utter","inner speech/think if attested","command/promise distinctions by clause context"]},
+    {"strong":"H6213","lemma":"עָשָׂה","occurrences":153,"firstReference":"Gen.1.7","firstSurface":"וַ/יַּ֣עַשׂ","requiredCoverage":["do/make","prepare/produce/accomplish where attested","separate press/squeeze homograph"]},
+    {"strong":"H7200","lemma":"רָאָה","occurrences":141,"firstReference":"Gen.1.4","firstSurface":"וַ/יַּ֧רְא","requiredCoverage":["Qal see/perceive","Niphal appear/be seen if attested","Hiphil show/cause-to-see if attested"]}
+  ],
+  "checks": {
+    "targets": 10,
+    "totalOccurrences": 2482,
+    "primaryBdbEntriesPinned": 10,
+    "batch01Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "actualContextExtractionComplete": false,
+    "candidateGenerationAllowedBeforeContextExtraction": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "EXTRACT_AND_PIN_AT_LEAST_3_ACTUAL_GENESIS_CONTEXTS_PER_TARGET_WITH_MORPHOLOGY_THEN_GENERATE_SOURCE_FAITHFUL_KOREAN_CANDIDATES"
+}
