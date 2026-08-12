@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "lexicon-v4-luke-production-selection-v1",
+  "book": "LUK",
+  "batchId": "luke-v4-production-batch-03",
+  "generatedDate": "2026-08-13",
+  "generatedFrom": {
+    "githubMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+    "canonicalInventoryPath": "bible-mindmap/data/lexicon/luke-g0-inventory.json",
+    "inventoryBlobSha": "488a557b64029d3be218e5bbf526234eb173cc1f",
+    "tagntBlobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843"
+  },
+  "exclusions": {
+    "existingProductionBatch01": ["G0002", "G0932", "G1342", "G2316", "G3004", "G3137", "G3341", "G3686", "G4151", "G4982"],
+    "existingProductionBatch02": ["G0006", "G0007", "G0009", "G0011", "G0012", "G0015", "G0018", "G0020"]
+  },
+  "selectionPolicy": {
+    "sort": "Strong numeric suffix ascending",
+    "batchSize": 8,
+    "usageRule": "select the next canonical inventory entries with actual Luke tokenCount > 0 after prior batch exclusions",
+    "riskRule": "research-only; risk is assigned after pinned lexical-source, Luke context, morphology, and sense-boundary review"
+  },
+  "selected": [
+    {"strongId": "G0021", "lemma": "ἀγαλλιάω", "tokenCount": 2, "verseCount": 2, "firstRef": "Luke 1:47", "gloss": "to rejoice", "morphologies": ["V-AAI-3S", "V-ADI-3S"]},
+    {"strongId": "G0023", "lemma": "ἀγανακτέω", "tokenCount": 1, "verseCount": 1, "firstRef": "Luke 13:14", "gloss": "be indignant", "morphologies": ["V-PAP-NSM"]},
+    {"strongId": "G0025", "lemma": "ἀγαπάω", "tokenCount": 13, "verseCount": 9, "firstRef": "Luke 6:27", "gloss": "to love", "morphologies": ["V-AAI-3S", "V-FAI-2S", "V-FAI-3S", "V-PAI-2P", "V-PAI-3P", "V-PAI-3S", "V-PAM-2P", "V-PAP-APM"]},
+    {"strongId": "G0026", "lemma": "ἀγάπη", "tokenCount": 1, "verseCount": 1, "firstRef": "Luke 11:42", "gloss": "love", "morphologies": ["N-ASF"]},
+    {"strongId": "G0027", "lemma": "ἀγαπητός", "tokenCount": 2, "verseCount": 2, "firstRef": "Luke 3:22", "gloss": "beloved", "morphologies": ["A-ASM", "A-NSM"]},
+    {"strongId": "G0032", "lemma": "ἄγγελος", "tokenCount": 25, "verseCount": 25, "firstRef": "Luke 1:11", "gloss": "angel", "morphologies": ["N-APM", "N-ASM", "N-DPM", "N-DSM", "N-GPM", "N-GSM", "N-NPM", "N-NSM"]},
+    {"strongId": "G0034", "lemma": "ἀγέλη", "tokenCount": 2, "verseCount": 2, "firstRef": "Luke 8:32", "gloss": "herd", "morphologies": ["N-NSF"]},
+    {"strongId": "G0037", "lemma": "ἁγιάζω", "tokenCount": 1, "verseCount": 1, "firstRef": "Luke 11:2", "gloss": "to sanctify", "morphologies": ["V-APM-3S"]}
+  ],
+  "selectedStrongCount": 8,
+  "selectedExactLukeTokens": 47,
+  "nextGate": "PINNED_TBESG_TFLSJ_SOURCE_ROWS_PLUS_EXACT_LUKE_CONTEXT_SENSE_REVIEW",
+  "outputMode": "RESEARCH_ONLY",
+  "mutationPolicy": {
+    "existingApprovedMeaning": false,
+    "approvalRegistry": false,
+    "production": false
+  }
+}
