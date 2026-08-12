@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 2,
+  "freezeId": "genesis-v4-production-batch-03-public-research-v2-freeze",
+  "status": "EXACT_PUBLIC_RESEARCH_CANDIDATE_BASELINE_FROZEN_CURRENT_MAIN_INPUTS_VERIFIED",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "currentDerivedMain": "8123a3ada83a98911ac24b3cbaf20b8ae1f22859",
+  "historicalDerivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "candidatePath": "bible-mindmap/reports/genesis-v4-production-batch-03-public-research-refined-candidates-v2.json",
+  "publicResearchMatrixPath": "bible-mindmap/reports/genesis-v4-production-batch-03-gpt-public-research-first-evidence-matrix-2026-08-12.json",
+  "candidateFileFingerprint": "sha256:6f65969b3ba2e218a07a84ec874bc8e22f68bc46e8f374bc6688c1f198dcaaa8",
+  "publicResearchMatrixFingerprint": "sha256:4f5f77c21cb428111291f8db3f2e66f38f97c15331beb77761330e701643aa9f",
+  "evidenceContentFingerprint": "sha256:57d02277f995255b22da5c0decb73ad5555eecde22a4a6f5541c8c95c0609a03",
+  "historicalEvidenceSemanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
+  "sourceInputLocks": {
+    "selection": "sha256:e41cebea58d64ec9a1683622fcc3c1bb117eec4fba8b7734d6a0c03278d36ebd",
+    "tbeshSourceNodeLock": "sha256:8908fc9e1ce3e6a2e294b5485d1b394257d790a35e9d7bb16ba39f9fac09837a",
+    "sourceRegistry": "sha256:af3dcfb68b89e3208a17f22b33f7f661c4b5af13fd597f5bcd01affc313ea0d3",
+    "genesisContextSource": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+    "primarySourceFiles": [
+      {"filename":"LexicalIndex.xml","digest":"sha256:8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f"},
+      {"filename":"BrownDriverBriggs.xml","digest":"sha256:326f9ee98a86b05ade7b89db985d49cfc836143351df859d0fb54ccb9c07d4"},
+      {"filename":"BDBPartsOfSpeech.xml","digest":"sha256:156d1efd8add719dfa20f57f58fb2a9a21959f62d5a38ce8f1d41d889c052b91"}
+    ]
+  },
+  "counts": {
+    "targets": 10,
+    "totalGenesisOccurrences": 2529,
+    "sampledContexts": 30,
+    "bdbEntries": 13,
+    "sourceNodes": 75,
+    "headRevisionCount": 1,
+    "senseHierarchyRefinementCount": 4
+  },
+  "targets": [
+    {"strong":"H413","lemma":"אֶל","bdbEntryIds":["a.di.aa"],"contextControls":["Gen.1.9","Gen.3.16","Gen.4.7"],"morphologyControls":["HR","HC/R","HC/R/Sp2ms"],"risk":"HIGH","candidateHeadKo":"~에게·~로·~을 향하여; 문맥에 따라 ~에 맞서·~에 관하여","senseBoundaryCount":6,"publicResearchVerdict":"REFINE_SENSE_HIERARCHY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H834","lemma":"אֲשֶׁר","bdbEntryIds":["a.gk.aa","a.gk.ab","k.ab.ab","a.gk.ad"],"contextControls":["Gen.1.7","Gen.7.9","Gen.7.23"],"morphologyControls":["HTr","HR/Tr","HC/Tr"],"risk":"HIGH","candidateHeadKo":"관계·접속 표지: ~하는·~인·~것; 문맥에 따라 때·곳·이유·내용 관계","senseBoundaryCount":8,"publicResearchVerdict":"REFINE_HEAD_AND_SENSE_HIERARCHY","candidateHeadChangedByPublicResearch":true},
+    {"strong":"H3605","lemma":"כֹּל","bdbEntryIds":["k.bn.ab"],"contextControls":["Gen.1.21","Gen.1.26","Gen.2.1"],"morphologyControls":["HNcmsc","HC/R/Ncmsc","HC/Ncmsc"],"risk":"MEDIUM","candidateHeadKo":"모든·온·전체; 문맥에 따라 각각·어떤/무엇이든","senseBoundaryCount":4,"publicResearchVerdict":"PASS_WITH_BOUNDARY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H935","lemma":"בּוֹא","bdbEntryIds":["b.ap.aa"],"contextControls":["Gen.2.19","Gen.2.22","Gen.4.4"],"morphologyControls":["HC/Vhw3ms","HC/Vhw3ms/Sp3fs","HVhp3ms"],"risk":"HIGH","candidateHeadKo":"오다·들어오다; 히필: 데려오다·가져오다·오게 하다","senseBoundaryCount":6,"publicResearchVerdict":"REFINE_SENSE_HIERARCHY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H3808","lemma":"לֹא","bdbEntryIds":["l.ab.aa"],"contextControls":["Gen.2.5","Gen.2.25","Gen.4.7"],"morphologyControls":["HTn","HC/Tn","HTi/Tn"],"risk":"MEDIUM","candidateHeadKo":"아니다·…하지 않다; 부정 표지","senseBoundaryCount":3,"publicResearchVerdict":"PASS_WITH_BOUNDARY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H1931","lemma":"הוּא","bdbEntryIds":["e.aw.aa"],"contextControls":["Gen.2.11","Gen.2.12","Gen.3.12"],"morphologyControls":["HPp3ms","HTd/Pp3fs","HPp3fs"],"risk":"MEDIUM","candidateHeadKo":"그·그녀·그것; 3인칭 단수 대명사","senseBoundaryCount":6,"publicResearchVerdict":"REFINE_SENSE_HIERARCHY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H3290","lemma":"יַעֲקֹב","bdbEntryIds":["p.eu.aj"],"contextControls":["Gen.25.26","Gen.25.27","Gen.25.33"],"morphologyControls":["HNp","HC/Np","HR/Np"],"risk":"MEDIUM","candidateHeadKo":"야곱; 이삭과 리브가의 아들인 인명","senseBoundaryCount":3,"publicResearchVerdict":"PASS_WITH_ETYMOLOGY_BOUNDARY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H251","lemma":"אָח","bdbEntryIds":["a.ck.ab"],"contextControls":["Gen.4.2","Gen.4.9","Gen.4.9"],"morphologyControls":["HNcmsc/Sp3ms","HNcmsc/Sp2ms","HNcmsc/Sp1cs"],"risk":"MEDIUM","candidateHeadKo":"형제·남자 형제; 친족·동족(문맥별)","senseBoundaryCount":4,"publicResearchVerdict":"PASS_WITH_BOUNDARY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H3205","lemma":"יָלַד","bdbEntryIds":["j.bn.aa"],"contextControls":["Gen.3.16","Gen.4.1","Gen.4.2"],"morphologyControls":["HVqi2fs","HC/Vqw3fs","HR/Vqc"],"risk":"HIGH","candidateHeadKo":"낳다·출산하다·자식을 두다; 어간에 따라 태어나다·낳게 하다","senseBoundaryCount":5,"publicResearchVerdict":"PASS_WITH_BOUNDARY","candidateHeadChangedByPublicResearch":false},
+    {"strong":"H8141","lemma":"שָׁנָה","bdbEntryIds":["v.ek.ab"],"contextControls":["Gen.1.14","Gen.5.3","Gen.5.6"],"morphologyControls":["HC/Ncfpa","HNcfsa","HNcfpa"],"risk":"LOW","candidateHeadKo":"해·년(year)","senseBoundaryCount":3,"publicResearchVerdict":"PASS_WITH_BOUNDARY","candidateHeadChangedByPublicResearch":false}
+  ],
+  "governance": {
+    "researchOnly": true,
+    "publicResearchFirstRequired": true,
+    "blockingExternalModelVerdictRequired": false,
+    "optionalExternalCounterAuditAllowed": true,
+    "candidatePromotionAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "RUN_DETERMINISTIC_VERIFIER_AND_PREPARE_MAIN_BOUND_PROMOTION_ONLY_AFTER_CURRENT_MAIN_RECHECK_WITHOUT_EXTERNAL_MODEL_BLOCKING",
+  "auditBundleFingerprint": "sha256:7dc32d3fbdab69dd6838182b0e13c2a505b682ea2ccbe60b205ce6c4302bd6bf"
+}
