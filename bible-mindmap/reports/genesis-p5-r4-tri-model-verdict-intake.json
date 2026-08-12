@@ -1,45 +1,34 @@
 {
-  "schemaVersion": 2,
-  "reportId": "genesis-p5-r4-tri-model-verdict-intake-v2",
+  "schemaVersion": 3,
+  "reportId": "genesis-p5-r4-tri-model-verdict-intake-v3",
   "book": "GEN",
-  "status": "AWAITING_CLAUDE_GEMINI_EXACT_FINGERPRINT_VERDICTS",
+  "status": "CURRENT_MAIN_REVALIDATION_REQUIRED_BEFORE_EXTERNAL_VERDICT_INGEST",
   "baseline": {
-    "derivedMainShaAtRefresh": "69e07b3285ea8425f028257a31ed0749c2115b50",
+    "observedCurrentMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+    "lastDeterministicallyRevalidatedMain": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
     "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
     "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
     "usageManifest": "reports/genesis-p5-r4-pinned-corpus-usage-manifest.json",
     "extendedEvidence": "reports/genesis-p5-r4-extended-evidence-intake.json",
     "auditPrep": "reports/genesis-p5-r4-exact-baseline-audit-prep-v2.json",
-    "h6030bReconciliation": "reports/genesis-p5-r4-h6030b-source-node-reconciliation.md",
-    "h28Evidence": "reports/genesis-p5-r4-h28-name-etymology-evidence-note.md",
-    "h39Evidence": "reports/genesis-p5-r4-h39-comparative-evidence-followup.md"
+    "currentMainRevalidationRequired": "reports/genesis-p5-r4-current-main-revalidation-required-2026-08-12.json"
   },
   "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
   "requiredAuditors": ["GPT", "Claude", "Gemini"],
   "acceptedVerdicts": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"],
-  "normalization": {
-    "PASS_WITH_UNCERTAINTY_BOUNDARY": "PASS_WITH_BOUNDARY",
-    "PASS_WITH_ETYMOLOGY_METADATA_ONLY": "PASS_WITH_BOUNDARY",
-    "HOLD_FOR_SOURCE_NODE_RECONCILIATION": "HOLD",
-    "HOLD_FOR_NAME_ETYMOLOGY_WORDING": "HOLD",
-    "DISPUTE_CONFIRMED_HOLD": "DISPUTE"
-  },
   "audits": {
-    "GPT": {
-      "state": "COMPLETE",
-      "source": "reports/genesis-p5-r4-gpt-reaudit-results.json",
-      "followupEvidenceIncorporated": true
-    },
-    "Claude": {
-      "state": "PENDING_EXTERNAL_VERDICT",
-      "prompt": "reports/genesis-p5-r4-claude-reaudit-prompt.md",
-      "mustReadAuditPrepV2": true
-    },
-    "Gemini": {
-      "state": "PENDING_EXTERNAL_VERDICT",
-      "prompt": "reports/genesis-p5-r4-gemini-reaudit-prompt.md",
-      "mustReadAuditPrepV2": true
-    }
+    "GPT": {"state": "COMPLETE", "source": "reports/genesis-p5-r4-gpt-reaudit-results.json", "followupEvidenceIncorporated": true},
+    "Claude": {"state": "PENDING_EXTERNAL_VERDICT", "ingestPausedUntilCurrentMainRevalidation": true},
+    "Gemini": {"state": "PENDING_EXTERNAL_VERDICT", "ingestPausedUntilCurrentMainRevalidation": true}
+  },
+  "currentMainDriftGate": {
+    "mainAdvancedAfterLastDedicatedR4Revalidation": true,
+    "lexiconFoundationVerifierChanged": true,
+    "trackStateChanged": true,
+    "currentMainReviewCoordinatorSuccess": true,
+    "currentMainReviewCoordinatorRun": 31576196437,
+    "reviewCoordinatorSubstitutesForR4UsageEvidenceRevalidation": false,
+    "dedicatedR4RevalidationRequired": true
   },
   "gate": {
     "candidateMutationAllowed": false,
@@ -49,8 +38,10 @@
     "selfApprovalAllowed": false,
     "requireExactBaselineMatch": true,
     "requireAllThreeAuditors": true,
+    "requireCurrentMainDedicatedR4Revalidation": true,
     "requireUnresolvedZeroForPromotion": true,
-    "r4HumanExceptionGatePreserved": true
+    "r4HumanExceptionGatePreserved": true,
+    "qualityGateWeakeningAllowed": false
   },
   "currentBoundaries": {
     "H120": ["common-noun/proper-name separation", "etymology metadata must not become semantic certainty"],
@@ -59,11 +50,5 @@
     "H28": ["Abida identity and father+know family stable", "exact Korean verbal wording remains independently auditable"],
     "H39": ["BDB/ISBE father-is-El family evidence-preferred", "Strong father-of-Mael retained in provenance", "primary epigraphic exact-inscription gap keeps uncertainty visible"]
   },
-  "autoResolutionPolicy": {
-    "sourceDifferenceAloneTriggersHumanGate": false,
-    "materialEvidencePreferenceMayAdvanceBoundaryVerdict": true,
-    "credibleAlternativeMustRemainInProvenance": true,
-    "humanEscalationOnlyAfterIndependentComparisonExhausted": true
-  },
-  "next": "ingest Claude and Gemini verdicts only when candidate/source fingerprints match exactly; compute consensus/disagreement automatically; do not mutate candidates, approved meanings, Registry, or production in this intake step"
+  "next": "rerun the dedicated R4 87-occurrence/38-context usage-evidence and exact-baseline verifier chain on current main 9354587035437d9bcf103165ba3a12c5229353f2; only after PASS may exact-fingerprint Claude/Gemini verdicts be ingested"
 }
