@@ -90,6 +90,18 @@
   .mobile-add-sheet::-webkit-scrollbar {
     width: 7px;
   }
+
+  /* iOS/WebKit은 16px 미만 form control에 포커스할 때 페이지를 자동 확대한다.
+     전역 pinch zoom을 막지 않고, 모바일 자료 추가와 원어 검색 모달의 입력 계층만
+     16px 이상으로 고정해 검색 전·후 viewport scale을 보존한다. */
+  .mobile-add-sheet input,
+  .mobile-add-sheet textarea,
+  .mobile-add-sheet select,
+  .at-modal--word-search input,
+  .at-modal--word-search textarea,
+  .at-modal--word-search select {
+    font-size: max(16px, 1rem) !important;
+  }
 }
 
 @media (prefers-reduced-transparency: reduce) {

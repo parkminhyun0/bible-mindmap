@@ -31,7 +31,7 @@ test('병렬 연구 가이드 코스의 비교 본문이 비동기 추천으로 
   await expect(selectedLabels.filter({ hasText: /^누가복음 3:1-18$/ })).toBeVisible();
 });
 
-test.describe('모바일 문맥 성경 코스 이동', () => {
+test.describe('모바일 연구 도구 회귀', () => {
   test.use({
     viewport: { width: 390, height: 844 },
     hasTouch: true,
@@ -59,6 +59,28 @@ test.describe('모바일 문맥 성경 코스 이동', () => {
     const chapterPicker = revelationDialog.locator('.at-modal__titlebar button').first();
     await expect(chapterPicker).toContainText(/4:2/, { timeout: 15_000 });
   });
+
+  test('원어 다언어 검색의 입력과 결과 모달은 16px 이상을 유지한다', async ({ page }) => {
+    await dismissResearchOnboarding(page);
+    await page.goto('./');
+
+    await page.getByRole('button', { name: '추가', exact: true }).click();
+    const sheet = page.locator('.mobile-add-sheet');
+    const launcherInput = sheet.getByPlaceholder('원어·영어·한글 검색...');
+    await expect(launcherInput).toBeVisible();
+
+    const launcherFontSize = await launcherInput.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+    expect(launcherFontSize).toBeGreaterThanOrEqual(16);
+
+    await launcherInput.fill('그리스도');
+    await launcherInput.press('Enter');
+
+    const dialog = page.getByRole('dialog', { name: '원어 성경 다언어 검색' });
+    await expect(dialog).toBeVisible();
+    const resultInput = dialog.locator('input').first();
+    const resultFontSize = await resultInput.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+    expect(resultFontSize).toBeGreaterThanOrEqual(16);
+  });
 });
 
 test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유지된다', () => {
@@ -66,6 +88,7 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   const contextBible = readFileSync(new URL('../src/components/ContextBibleModal.jsx', import.meta.url), 'utf8');
   const annotationPin = readFileSync(new URL('../src/components/PassageAnnotationPin.jsx', import.meta.url), 'utf8');
   const wordSearch = readFileSync(new URL('../src/components/WordSearchModal.jsx', import.meta.url), 'utf8');
+  const sidebarCss = readFileSync(new URL('../src/theme/sidebarScrollFix.css', import.meta.url), 'utf8');
 
   expect(nodeEditor).not.toContain("import Underline from '@tiptap/extension-underline'");
   expect(nodeEditor).not.toContain('\n      Underline,\n');
@@ -79,4 +102,7 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   expect(annotationPin).toContain('annotation.anchor?.translationId');
 
   expect(wordSearch).toContain('}, [group.key]);');
+  expect(sidebarCss).toContain('.mobile-add-sheet input');
+  expect(sidebarCss).toContain('.at-modal--word-search input');
+  expect(sidebarCss).toContain('font-size: max(16px, 1rem) !important;');
 });
