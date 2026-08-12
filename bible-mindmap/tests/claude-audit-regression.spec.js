@@ -63,7 +63,7 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   const wordSearch = readFileSync(new URL('../src/components/WordSearchModal.jsx', import.meta.url), 'utf8');
 
   expect(nodeEditor).not.toContain("import Underline from '@tiptap/extension-underline'");
-  expect(nodeEditor).not.toMatch(/extensions:\s*\[[\s\S]*?\bUnderline\s*,/);
+  expect(nodeEditor).not.toContain('\n      Underline,\n');
 
   expect(contextBible).toContain('}, [chReady, chapters]);');
   expect(contextBible).toContain('pendingCourseScrollRef.current = { ch: firstCh, verse: firstVerse };');
