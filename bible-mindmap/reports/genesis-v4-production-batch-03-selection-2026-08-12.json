@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-03-selection-2026-08-12",
+  "book": "Genesis",
+  "status": "CANONICAL_INVENTORY_BATCH_SELECTED",
+  "derivedMain": "54938144514d111b6d5f1be9dafd3958837b1fa2",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "source": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "file": "genesis-strong-inventory.json",
+    "reportedSource": "OSHB Gen.xml",
+    "inventoryUniqueStrong": 1772,
+    "verseCount": 1533,
+    "wordCount": 20629,
+    "strongAssignmentCount": 20159
+  },
+  "selectionPolicy": {
+    "excludeBatch01": true,
+    "excludeBatch02": true,
+    "excludeR4": true,
+    "excludeApprovedControlH776": true,
+    "orderSource": "genesis-g2-calibration-batch.json high-frequency-missing order after exclusions",
+    "purpose": "Continue actual Genesis production while prior batches wait on independent audit; deliberately include high-frequency grammatical and lexical boundaries that must eventually be solved rather than padding with guessed IDs."
+  },
+  "targets": [
+    {"strong":"H413","occurrences":475,"firstReference":"Gen.1.9","sampleSurface":"אֶל","coverage":"missing","riskHints":["preposition","to-toward-against-context","grammatical-polysemy"]},
+    {"strong":"H834","occurrences":411,"firstReference":"Gen.1.7","sampleSurface":"אֲשֶׁר֙","coverage":"missing","riskHints":["relative-particle","clause-function","grammar-vs-gloss"]},
+    {"strong":"H3605","occurrences":342,"firstReference":"Gen.1.21","sampleSurface":"כָּל","coverage":"missing","riskHints":["all-every-whole","construct-context","quantifier-boundary"]},
+    {"strong":"H935","occurrences":217,"firstReference":"Gen.2.19","sampleSurface":"וַ/יָּבֵא֙","coverage":"missing","riskHints":["come-bring","stem-sensitive","motion-causative-boundary"]},
+    {"strong":"H3808","occurrences":213,"firstReference":"Gen.2.5","sampleSurface":"לֹ֨א","coverage":"missing","riskHints":["negation","scope","grammar-vs-lexical-gloss"]},
+    {"strong":"H1931","occurrences":182,"firstReference":"Gen.2.11","sampleSurface":"ה֣וּא","coverage":"missing","riskHints":["pronoun","he-she-it-context","copular-emphasis-use"]},
+    {"strong":"H3290","occurrences":180,"firstReference":"Gen.25.26","sampleSurface":"יַעֲקֹ֑ב","coverage":"missing","riskHints":["proper-name","Jacob-identity","name-etymology-separation"]},
+    {"strong":"H251","occurrences":178,"firstReference":"Gen.4.2","sampleSurface":"אָחִ֖י/ו","coverage":"missing","riskHints":["brother-kinship","figurative-relationship","suffix-morphology"]},
+    {"strong":"H3205","occurrences":170,"firstReference":"Gen.3.16","sampleSurface":"תֵּֽלְדִ֣י","coverage":"missing","riskHints":["bear-give-birth-beget","stem-gender-context","genealogy-use"]},
+    {"strong":"H8141","occurrences":161,"firstReference":"Gen.1.14","sampleSurface":"וְ/שָׁנִֽים","coverage":"missing","riskHints":["year","age-duration-context","number-construction"]}
+  ],
+  "checks": {
+    "requested": 10,
+    "found": 10,
+    "totalOccurrences": 2529,
+    "batch01Overlap": 0,
+    "batch02Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "sourceEvidenceStillRequired": true,
+    "actualGenesisContextExtractionStillRequired": true,
+    "fullBdbHierarchyCrosscheckStillRequired": true,
+    "independentAuditRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "PIN_TBESH_AND_FULL_BDB_SOURCE_NODES_THEN_EXTRACT_REPRESENTATIVE_GENESIS_CONTEXT_MORPHOLOGY"
+}
