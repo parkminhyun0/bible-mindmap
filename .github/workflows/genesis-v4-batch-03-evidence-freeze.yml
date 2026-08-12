@@ -1,0 +1,91 @@
+name: Genesis v4 Batch 03 Evidence Freeze
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-03
+    paths:
+      - 'bible-mindmap/scripts/freeze-genesis-v4-production-batch-03-evidence.mjs'
+      - '.github/workflows/genesis-v4-batch-03-evidence-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-03-evidence-freeze-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prove-deterministic-freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current derived main
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          echo "DERIVED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Materialize same evidence twice with distinct timestamps
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs --out=reports/genesis-v4-production-batch-03-evidence-run-a.json
+          sleep 1
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs --out=reports/genesis-v4-production-batch-03-evidence-run-b.json
+
+      - name: Freeze semantic evidence twice
+        working-directory: bible-mindmap
+        run: |
+          node scripts/freeze-genesis-v4-production-batch-03-evidence.mjs \
+            --in=reports/genesis-v4-production-batch-03-evidence-run-a.json \
+            --out=reports/genesis-v4-production-batch-03-evidence-freeze-a.json
+          node scripts/freeze-genesis-v4-production-batch-03-evidence.mjs \
+            --in=reports/genesis-v4-production-batch-03-evidence-run-b.json \
+            --out=reports/genesis-v4-production-batch-03-evidence-freeze-b.json
+
+      - name: Verify timestamp-independent exact semantic fingerprint
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const a = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-evidence-freeze-a.json', 'utf8'))
+          const b = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-evidence-freeze-b.json', 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+
+          if (a.sourceGeneratedAt === b.sourceGeneratedAt) fail(`expected distinct observation timestamps, both were ${a.sourceGeneratedAt}`)
+          if (a.semanticFingerprint !== b.semanticFingerprint) fail(`semantic fingerprint drift: ${a.semanticFingerprint} != ${b.semanticFingerprint}`)
+          if (a.derivedMain !== process.env.DERIVED_MAIN || b.derivedMain !== process.env.DERIVED_MAIN) fail('derived-main lock drift')
+          if (a.counts?.targets !== 10 || b.counts?.targets !== 10) fail('target count drift')
+          if (a.counts?.totalOccurrences !== 2529 || b.counts?.totalOccurrences !== 2529) fail('occurrence count drift')
+          if (a.counts?.targetsWithCompleteBdbCoverage !== 10 || b.counts?.targetsWithCompleteBdbCoverage !== 10) fail('BDB coverage drift')
+          if (a.governance?.candidatePromotionAllowed !== false || a.governance?.approvalRegistryWriteAllowed !== false || a.governance?.productionWriteAllowed !== false) fail('freeze governance boundary violated')
+          if (a.fingerprintMethod !== 'sha256-canonical-json-excluding-generatedAt-and-source-reportFingerprint-v1') fail(`unexpected fingerprint method: ${a.fingerprintMethod}`)
+
+          console.log(`timestamp A ${a.sourceGeneratedAt}`)
+          console.log(`timestamp B ${b.sourceGeneratedAt}`)
+          console.log(`stable semantic fingerprint ${a.semanticFingerprint}`)
+          console.log(`derived main ${a.derivedMain}`)
+          NODE
+
+      - name: Promote one identical freeze to canonical artifact filename
+        working-directory: bible-mindmap
+        run: cp reports/genesis-v4-production-batch-03-evidence-freeze-a.json reports/genesis-v4-production-batch-03-evidence-freeze.json
+
+      - name: Upload exact research evidence freeze
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-03-evidence-freeze
+          path: |
+            bible-mindmap/reports/genesis-v4-production-batch-03-evidence-run-a.json
+            bible-mindmap/reports/genesis-v4-production-batch-03-evidence-freeze.json
+          if-no-files-found: error
+          retention-days: 14
