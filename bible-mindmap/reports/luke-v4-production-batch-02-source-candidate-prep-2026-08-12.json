@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "testament": "NT",
+  "stage": "SOURCE_FAITHFUL_CANDIDATE_PREP",
+  "generatedDate": "2026-08-12",
+  "researchOnly": true,
+  "sourceLock": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "license": "CC BY 4.0",
+    "tbESG": {
+      "blobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+      "role": "primary brief Greek lexicon"
+    },
+    "tfLSJ": {
+      "blobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+      "role": "secondary full LSJ boundary cross-check"
+    }
+  },
+  "targets": [
+    {
+      "strong": "G0006",
+      "lemma": "Ἄβελ",
+      "transliteration": "Abel",
+      "morph": "N:N-M-P",
+      "tbESG": "Abel; Greek form mapped to Hebrew H1893; Luke 11:51 explicitly cited.",
+      "tfLSJBoundary": "No independent classical sense needed for the proper name; name identity is the operative boundary.",
+      "lukeUsage": {"count": 1, "firstRef": "Luke 11:51"},
+      "koreanCandidate": ["아벨"],
+      "candidateNote": "고유명사 정체성과 어원을 분리한다. 번역 후보는 성경의 관용 인명 표기만 제시한다.",
+      "risk": "LOW_PROPER_NAME_IDENTITY"
+    },
+    {
+      "strong": "G0007",
+      "lemma": "Ἀβιά",
+      "transliteration": "Abia",
+      "morph": "N:N-M-P",
+      "tbESG": "Abia/Abijah; Greek of Hebrew Abijah forms; Luke 1:5 identifies the priestly-course use.",
+      "tfLSJBoundary": "Proper-name entry is supplied from biblical lexicon tradition rather than an independent LSJ lexical sense.",
+      "lukeUsage": {"count": 1, "firstRef": "Luke 1:5"},
+      "koreanCandidate": ["아비야"],
+      "candidateNote": "누가복음에서는 개인의 일반 어휘 뜻이 아니라 제사장 반열명/고유명사 정체성을 우선한다.",
+      "risk": "MEDIUM_PROPER_NAME_OT_MAPPING"
+    },
+    {
+      "strong": "G0009",
+      "lemma": "Ἀβιληνή",
+      "transliteration": "Abilēnē",
+      "morph": "N:N-F-L",
+      "tbESG": "Abilene, a district in the Anti-Lebanon; Luke 3:1 explicitly cited.",
+      "tfLSJBoundary": "Biblical place-name identity is the operative boundary; no broader lexical sense is required.",
+      "lukeUsage": {"count": 1, "firstRef": "Luke 3:1"},
+      "koreanCandidate": ["아빌레네", "아빌레네 지방"],
+      "candidateNote": "지명 표기와 설명을 분리한다. 기본 표제어는 관용 지명, 설명은 안티레바논 지역이라는 provenance로 둔다.",
+      "risk": "LOW_PLACE_NAME_IDENTITY"
+    },
+    {
+      "strong": "G0011",
+      "lemma": "Ἀβραάμ",
+      "transliteration": "Abraam",
+      "morph": "N:N-M-P",
+      "tbESG": "Abraham; Greek form mapped to Hebrew H0085.",
+      "tfLSJBoundary": "Proper-name entry is biblical; identity must remain distinct from Hebrew etymology.",
+      "lukeUsage": {"count": 15, "verses": 14, "firstRef": "Luke 1:55"},
+      "koreanCandidate": ["아브라함"],
+      "candidateNote": "정경적 인명 정체성을 그대로 보존하고 어원 설명을 표제 의미와 합치지 않는다.",
+      "risk": "LOW_PROPER_NAME_IDENTITY"
+    },
+    {
+      "strong": "G0012",
+      "lemma": "ἄβυσσος",
+      "transliteration": "abussos",
+      "morph": "G:N-F",
+      "tbESG": "Primary senses: boundless/bottomless; as substantive, the abyss/deep; in Luke 8:31 the abode associated with demons.",
+      "tfLSJBoundary": "Confirms bottomless/unfathomed; the great deep; NT abyss/underworld, explicitly including Luke 8:31.",
+      "lukeUsage": {"count": 1, "firstRef": "Luke 8:31"},
+      "koreanCandidate": ["깊이를 헤아릴 수 없는 곳", "무저갱", "깊은 구렁"],
+      "candidateNote": "사전 전체 의미와 누가복음 8:31 문맥을 분리한다. 누가복음 문맥에서는 귀신들이 들어가기를 두려워하는 '무저갱/깊은 곳' 의미가 중심이나, 이를 후대의 체계적 지옥 개념과 자동 동일시하지 않는다.",
+      "risk": "HIGH_THEOLOGICAL_SENSE_BOUNDARY"
+    },
+    {
+      "strong": "G0015",
+      "lemma": "ἀγαθοποιέω",
+      "transliteration": "agathopoieō",
+      "morph": "G:V",
+      "tbESG": "To do good; in Luke 6:9, 6:33 and 6:35 includes doing good for another's benefit.",
+      "tfLSJBoundary": "Confirms do good; do good to someone; broader non-biblical senses such as make favourable are outside the Luke boundary.",
+      "lukeUsage": {"count": 4, "verses": 3, "firstRef": "Luke 6:9"},
+      "koreanCandidate": ["선을 행하다", "좋은 일을 하다", "남에게 선을 베풀다"],
+      "candidateNote": "누가복음 용례는 도덕적/대인적 선행 범위를 우선한다. 후대·비성경 점성술적 확장 의미는 누가복음 후보에 포함하지 않는다.",
+      "risk": "MEDIUM_VERBAL_SENSE_BOUNDARY"
+    },
+    {
+      "strong": "G0018",
+      "lemma": "ἀγαθός",
+      "transliteration": "agathos",
+      "morph": "G:A / G:ADV",
+      "tbESG": "Good in physical and moral senses, of persons, things, acts and conditions; Luke examples include good soil, good heart, good portion and goods/possessions.",
+      "tfLSJBoundary": "Full lexical evidence requires preserving broad 'good' semantic range rather than reducing it to a single moral gloss.",
+      "lukeUsage": {"count": 16, "verses": 13, "firstRef": "Luke 1:53"},
+      "koreanCandidate": ["좋은", "선한", "유익한", "좋은 것/재물"],
+      "candidateNote": "다의어. 형용사/명사적 쓰임과 문맥별 의미를 분리해야 하므로 단일 한국어 gloss로 평탄화하지 않는다.",
+      "risk": "HIGH_POLYSEMY_CONTEXT_REQUIRED"
+    },
+    {
+      "strong": "G0020",
+      "lemma": "ἀγαλλίασις",
+      "transliteration": "agalliasis",
+      "morph": "G:N-F",
+      "tbESG": "Exultation, exuberant joy; Luke 1:14 and 1:44 explicitly cited.",
+      "tfLSJBoundary": "Confirms strong/exuberant joy rather than generic neutral pleasure.",
+      "lukeUsage": {"count": 2, "verses": 2, "firstRef": "Luke 1:14"},
+      "koreanCandidate": ["크게 기뻐함", "환희", "넘치는 기쁨"],
+      "candidateNote": "일반적인 '기쁨'보다 강한 환희/크게 기뻐함의 뉘앙스를 보존한다.",
+      "risk": "MEDIUM_NUANCE_BOUNDARY"
+    }
+  ],
+  "checks": {
+    "selectedCount": 8,
+    "tbESGRowsObserved": 8,
+    "tfLSJBoundaryCrosscheckApplied": ["G0012", "G0015", "G0018", "G0020"],
+    "candidatePrepared": 8,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0,
+    "selfApproval": false
+  },
+  "nextGate": [
+    "Materialize exact pinned Luke context/morphology packets for all eight targets.",
+    "Run deterministic source/candidate boundary verifier.",
+    "Freeze exact fingerprints before independent GPT/Claude/Gemini audit dispatch.",
+    "Isolate HOLD/DISPUTE items without blocking unaffected targets."
+  ]
+}
