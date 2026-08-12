@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { hasLexicalBridge, normalizeBridgeStrong } from '../data/lexicalBridgePilot';
 
-const LexicalBridgeModal = lazy(() => import('./LexicalBridgeModal'));
+const LexicalBridgeModal = lazy(() => import('./LexicalBridgeModalV2'));
 
 export default function LexicalBridgeLauncher({
   strong = 'H5162',

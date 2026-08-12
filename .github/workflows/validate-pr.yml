@@ -115,7 +115,7 @@ jobs:
   browser-smoke:
     needs: verify-and-build
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     defaults:
       run:
         working-directory: bible-mindmap
@@ -135,11 +135,18 @@ jobs:
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
 
-      - name: Install Chromium only
-        run: npx playwright install chromium
+      - name: Install Chromium and WebKit
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Run desktop, mobile, tablet, and modal smoke tests
         run: npm run test:smoke
+
+      - name: Run iPhone WebKit lexical bridge smoke
+        run: >-
+          npx playwright test
+          tests/lexical-bridge-context-ui.spec.js
+          tests/lexical-bridge-webkit-landscape.spec.js
+          --project=webkit-iphone
 
       - name: Upload Playwright failure evidence
         if: failure()

@@ -18,7 +18,10 @@
   font-size: 13px;
 }
 
-@media (max-width: 767px) {
+/* useMobile()은 iPhone/터치 태블릿/compact viewport를 모두 mobile layout으로 분류한다.
+   CSS도 동일한 범위를 따라야 portrait(<=767px)뿐 아니라 iPhone landscape와
+   coarse-pointer tablet compact 폭에서도 mobile modal contract가 빠지지 않는다. */
+@media (max-width: 767px), (pointer: coarse) and (max-width: 1024px) {
   .at-modal--mobile.at-modal--context {
     width: 100% !important;
     height: 100dvh !important;
@@ -36,6 +39,24 @@
     min-height: 0 !important;
     max-height: none !important;
     margin-top: 0 !important;
+  }
+
+  /* 원어 브릿지는 제목바 바로 다음 div 자체가 '제어바'가 아니라 실제 본문 스크롤러다.
+     위 문맥성경 전용 sibling 규칙이 잘못 적용되면 flex:0 auto가 되어
+     clientHeight가 콘텐츠 전체 높이까지 늘고(scrollHeight === clientHeight) 모바일 스크롤이 사라진다.
+     원어 브릿지에만 더 구체적인 예외를 두어 남은 viewport를 차지하는 실제 스크롤 영역으로 복원한다. */
+  .at-modal--mobile.at-modal--context.at-modal--lexical-bridge
+    > .at-modal__titlebar + .at-modal__content[data-lexical-bridge-scroll='true'] {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: none !important;
+    overscroll-behavior-y: contain !important;
+    touch-action: pan-y !important;
   }
 
   /* 학습 스캐폴딩은 접힌 상태에서도 44px 탭 영역과 바깥 여백을 온전히 유지한다.

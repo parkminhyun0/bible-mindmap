@@ -7,7 +7,9 @@ async function dismissResearchOnboarding(page) {
   });
 }
 
-test('원어 브릿지는 문맥 성경 스타일 창과 3단 연구 흐름을 사용한다', async ({ page }) => {
+test('원어 브릿지는 문맥 성경과 같은 독립 데스크톱 창 계약을 사용한다', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop floating-window contract is covered by Chromium desktop');
+
   await dismissResearchOnboarding(page);
   await page.goto('./');
 
@@ -16,22 +18,39 @@ test('원어 브릿지는 문맥 성경 스타일 창과 3단 연구 흐름을 �
   await expect(dialog).toBeVisible();
   await expect(dialog).toHaveClass(/at-modal--context/);
   await expect(dialog.locator('.at-modal__titlebar')).toBeVisible();
-  await expect(dialog.getByText('PILOT 0.2')).toBeVisible();
-  await expect(dialog.getByText('현재 연구 질문')).toBeVisible();
-  await expect(dialog.getByText('한눈에 읽는 브릿지')).toBeVisible();
-  await expect(dialog.getByText('1').first()).toBeVisible();
+  await expect(dialog.getByText('PILOT 0.3')).toBeVisible();
+  await expect(dialog.getByText('이 화면은 무엇을 보는가?')).toBeVisible();
+  await expect(dialog.getByText('연구 흐름 · 1 → 2 → 3')).toBeVisible();
   await expect(dialog.getByText('MT 원문에서 시작')).toBeVisible();
-  await expect(dialog.getByText('A').first()).toBeVisible();
-  await expect(dialog.getByText('LXX 실제 번역')).toBeVisible();
   await expect(dialog.getByText('LXX가 이렇게 옮김')).toBeVisible();
-  await expect(dialog.getByText('B · C')).toBeVisible();
-  await expect(dialog.getByText('NT 어휘 연결')).toBeVisible();
   await expect(dialog.getByText('NT에서 관계를 추적')).toBeVisible();
   await expect(dialog.getByText('그래서 지금 무엇을 말할 수 있나?')).toBeVisible();
-  await expect(dialog.getByText('확인된 어휘 사실')).toBeVisible();
-  await expect(dialog.getByText('아직 확정하지 않음')).toBeVisible();
-  await expect(dialog.getByText('정경·신학 해석 후보')).toBeVisible();
-  await expect(dialog.locator('[data-lexical-bridge-resize="true"]')).toBeVisible();
+
+  const windowShell = page.locator('[data-lexical-bridge-window="true"]');
+  await expect(windowShell).toBeVisible();
+  await expect(page.locator('[data-lexical-bridge-backdrop="true"]')).toHaveCount(0);
+
+  const resize = dialog.locator('[data-lexical-bridge-resize="true"]');
+  await expect(resize).toBeVisible();
+  const before = await dialog.boundingBox();
+  const handle = await resize.boundingBox();
+  expect(before).not.toBeNull();
+  expect(handle).not.toBeNull();
+
+  await page.mouse.move(handle.x + handle.width / 2, handle.y + handle.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(handle.x - 260, handle.y - 220, { steps: 8 });
+  await page.mouse.up();
+
+  const after = await dialog.boundingBox();
+  expect(after).not.toBeNull();
+  expect(after.width).toBeLessThan(before.width);
+  expect(after.height).toBeLessThan(before.height);
+  expect(after.width).toBeGreaterThanOrEqual(560);
+  expect(after.height).toBeGreaterThanOrEqual(320);
+
+  await expect(dialog.getByText('MT 원문에서 시작')).toBeVisible();
+  await expect(dialog.getByText('NT에서 관계를 추적')).toBeVisible();
 });
 
 test.describe('모바일 원어 브릿지', () => {
@@ -41,7 +60,7 @@ test.describe('모바일 원어 브릿지', () => {
     isMobile: true,
   });
 
-  test('문맥 성경과 같은 모바일 풀스크린 셸에서 세로 흐름을 읽을 수 있다', async ({ page }) => {
+  test('문맥 성경 공통 프레임에서 WebKit finger-scroll 계약이 유지된다', async ({ page }) => {
     await dismissResearchOnboarding(page);
     await page.goto('./');
 
@@ -50,13 +69,79 @@ test.describe('모바일 원어 브릿지', () => {
     await sheet.getByRole('button', { name: '원어 브릿지 열기' }).click();
 
     const dialog = page.getByRole('dialog', { name: '원어 브릿지' });
+    const backdrop = page.locator('.at-modal-backdrop[data-lexical-bridge-backdrop="true"]');
+    const scrollRegion = dialog.locator('[data-lexical-bridge-scroll="true"]');
+
     await expect(dialog).toBeVisible();
+    await expect(backdrop).toBeVisible();
+    await expect(backdrop).toHaveAttribute('data-mobile-modal-frame', 'true');
     await expect(dialog).toHaveClass(/at-modal--context/);
     await expect(dialog.locator('.at-modal__titlebar')).toBeVisible();
+    await expect(dialog.getByText('PILOT 0.3')).toBeVisible();
     await expect(dialog.getByText('MT 원문에서 시작')).toBeVisible();
     await expect(dialog.getByText('LXX가 이렇게 옮김')).toBeVisible();
     await expect(dialog.getByText('NT에서 관계를 추적')).toBeVisible();
-    await expect(dialog.getByText('↓').first()).toBeVisible();
+
+    const scrollMetrics = await scrollRegion.evaluate((el) => {
+      const style = getComputedStyle(el);
+      return {
+        clientHeight: el.clientHeight,
+        scrollHeight: el.scrollHeight,
+        overflowY: style.overflowY,
+        touchAction: style.touchAction,
+      };
+    });
+    expect(scrollMetrics.scrollHeight).toBeGreaterThan(scrollMetrics.clientHeight);
+    expect(['auto', 'scroll']).toContain(scrollMetrics.overflowY);
+    expect(scrollMetrics.touchAction).toContain('pan-y');
+
+    const frameMetrics = await backdrop.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const vv = window.visualViewport;
+      return {
+        top: rect.top,
+        height: rect.height,
+        viewportTop: vv?.offsetTop || 0,
+        viewportHeight: vv?.height || window.innerHeight,
+      };
+    });
+    expect(Math.abs(frameMetrics.top - frameMetrics.viewportTop)).toBeLessThanOrEqual(2);
+    expect(Math.abs(frameMetrics.height - frameMetrics.viewportHeight)).toBeLessThanOrEqual(2);
+
+    const gestureGuard = await scrollRegion.evaluate((el) => {
+      const dispatchTouch = (type, clientY) => {
+        const event = new Event(type, { bubbles: true, cancelable: true });
+        Object.defineProperty(event, 'touches', {
+          configurable: true,
+          value: [{ clientX: 180, clientY }],
+        });
+        el.dispatchEvent(event);
+        return event.defaultPrevented;
+      };
+
+      el.scrollTop = 0;
+      dispatchTouch('touchstart', 500);
+      const upwardPrevented = dispatchTouch('touchmove', 400);
+
+      el.scrollTop = 0;
+      dispatchTouch('touchstart', 400);
+      const downwardAtTopPrevented = dispatchTouch('touchmove', 500);
+
+      return { upwardPrevented, downwardAtTopPrevented };
+    });
+
+    // 손가락을 위로 밀어 본문을 아래쪽으로 읽는 동작은 절대 막으면 안 된다.
+    expect(gestureGuard.upwardPrevented).toBe(false);
+    // 반대로 최상단에서 아래로 당길 때는 배경으로 스크롤이 새지 않도록 막혀야 한다.
+    expect(gestureGuard.downwardAtTopPrevented).toBe(true);
+
+    const moved = await scrollRegion.evaluate((el) => {
+      el.scrollTop = Math.min(320, Math.max(1, el.scrollHeight - el.clientHeight));
+      return el.scrollTop;
+    });
+    expect(moved).toBeGreaterThan(0);
+
+    await expect(dialog.getByText('정경·신학 해석 후보')).toBeVisible();
 
     const close = dialog.getByRole('button', { name: '원어 브릿지 닫기' });
     const box = await close.boundingBox();
