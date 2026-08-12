@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-current-main-revalidation-required-2026-08-12",
+  "status": "CURRENT_MAIN_REVALIDATION_REQUIRED_BEFORE_EXTERNAL_VERDICT_INGEST",
+  "observedCurrentMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "lastDeterministicallyRevalidatedMain": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "items": 5,
+    "occurrences": 87,
+    "sampledContexts": 38
+  },
+  "driftObservation": {
+    "mainAdvancedByCommits": 18,
+    "lexiconRelevantPathsChanged": [
+      "bible-mindmap/scripts/verify-lexicon-v4-foundation-contract.mjs",
+      "docs/lexicon-workflow/TRACK_STATE.json"
+    ],
+    "currentMainReviewCoordinatorRun": 31576196437,
+    "currentMainReviewCoordinatorConclusion": "success",
+    "dedicatedR4UsageEvidenceRevalidationObservedOnCurrentMain": false
+  },
+  "decision": {
+    "previous1982MainRevalidationEvidencePreserved": true,
+    "candidateFingerprintDriftObserved": false,
+    "sourceFingerprintDriftObserved": false,
+    "externalVerdictIngestAllowedNow": false,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "selfApprovalAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "reason": "The repository main advanced after the last dedicated R4 deterministic revalidation and changed the v4 foundation verifier/TRACK_STATE governance surface. Current-main review-coordinator success does not substitute for rebuilding and verifying the exact R4 87/38 usage/evidence chain. Fail closed until the dedicated R4 deterministic verifier is rerun on current main."
+  },
+  "nextGate": "RERUN_DEDICATED_R4_USAGE_EVIDENCE_AND_EXACT_BASELINE_VERIFIERS_ON_MAIN_93545870_THEN_ONLY_INGEST_CLAUDE_GEMINI_EXACT_FINGERPRINT_VERDICTS"
+}
