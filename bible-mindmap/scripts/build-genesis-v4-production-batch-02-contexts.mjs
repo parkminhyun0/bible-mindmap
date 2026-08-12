@@ -193,4 +193,12 @@ function main() {
   console.log(`✓ Genesis batch-02 contexts · targets=${report.counts.targets} · occurrences=${report.counts.totalOccurrences} · samples=${report.counts.sampledContexts}`)
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main()
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  main()
+  const { buildBatch02PromotionPrep } = await import('./build-genesis-v4-production-batch-02-promotion-prep.mjs')
+  const promotionPrep = await buildBatch02PromotionPrep()
+  const report = JSON.parse(readFileSync(DEFAULT_OUTPUT, 'utf8'))
+  report.runtimeBatch02PromotionPrep = promotionPrep
+  writeFileSync(DEFAULT_OUTPUT, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+  console.log(`✓ Batch 02 promotion prep · new=${promotionPrep.counts.newPromotionTargets} · nodes=${promotionPrep.counts.sourceNodes} · fingerprint=${promotionPrep.promotionPrepFingerprint}`)
+}
