@@ -1,0 +1,66 @@
+name: Genesis R4 Current-Main Revalidation
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-r4-followup-evidence
+    paths:
+      - '.github/workflows/genesis-r4-current-main-revalidation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-r4-current-main-revalidation
+  cancel-in-progress: true
+
+jobs:
+  revalidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact derived main
+        uses: actions/checkout@v6
+        with:
+          ref: 1982d0d0d6051aa6b6317111cfe309ba6ead732b
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Rebuild exact R4 Genesis usage evidence on current main
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-p5-r4-usage-evidence.mjs
+
+      - name: Verify exact baseline, manifest, and read-only governance
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-p5-r4-usage-evidence.mjs
+
+      - name: Re-run R4 queue and Registry regression gates
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-lexicon-v4-r4-extended-research-queue.mjs
+          node scripts/verify-lexicon-registry-universal-regression.mjs
+
+      - name: Assert pinned fingerprints and counts
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const r = JSON.parse(fs.readFileSync('reports/genesis-p5-r4-pinned-corpus-usage.json', 'utf8'))
+          const expectedCandidate = 'sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261'
+          if (r.baseline?.candidateBundleFingerprint !== expectedCandidate) throw new Error('candidate fingerprint drift')
+          if (r.counts?.occurrences !== 87) throw new Error(`occurrence drift: ${r.counts?.occurrences}`)
+          if (r.counts?.sampledContexts !== 38) throw new Error(`sample drift: ${r.counts?.sampledContexts}`)
+          console.log(`R4 current-main revalidation OK: ${r.counts.occurrences} occurrences / ${r.counts.sampledContexts} contexts`)
+          NODE
+
+      - name: Upload current-main R4 evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: genesis-r4-current-main-revalidation
+          path: bible-mindmap/reports/genesis-p5-r4-pinned-corpus-usage.json
+          if-no-files-found: error
+          retention-days: 14
