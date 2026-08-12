@@ -31,7 +31,7 @@
     "verify:nvidia-embedding-dimension-bakeoff": "node scripts/verify-nvidia-embedding-dimension-bakeoff.mjs",
     "verify:nvidia-reranker-contract": "node scripts/verify-nvidia-reranker-contract.mjs",
     "verify:nvidia-reranker-poc": "node scripts/verify-nvidia-reranker-poc.mjs",
-    "verify:nvidia-hybrid-shadow-index": "node scripts/ai/shadow/nvidia-hybrid-shadow-index.mjs",
+    "verify:nvidia-hybrid-shadow-index": "node scripts/verify-nvidia-hybrid-shadow-index.mjs",
     "poc:nvidia-embedding": "node scripts/ai/poc/nvidia-embedding-poc.mjs",
     "poc:nvidia-embedding:execute": "node scripts/ai/poc/nvidia-embedding-poc.mjs --execute",
     "poc:nvidia-embedding:compare-dimensions": "node scripts/ai/poc/compare-nvidia-embedding-dimensions.mjs",
