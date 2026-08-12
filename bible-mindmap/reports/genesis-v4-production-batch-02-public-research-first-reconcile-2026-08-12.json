@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-public-research-first-reconcile-2026-08-12",
+  "status": "PUBLIC_RESEARCH_FIRST_REVIEW_ACTIVE",
+  "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+  "researchHeadBeforeReconcile": "028b1edadfbc109b529e1e22b7bff6c112e7be11",
+  "targets": ["H430","H3068","H1","H1121","H1961","H376","H802","H559","H6213","H7200"],
+  "pinnedBaseline": {
+    "candidateArtifact": "reports/genesis-v4-production-batch-02-source-candidate-prep-2026-08-12.json",
+    "contextEvidence": "reports/genesis-v4-production-batch-02-contexts.json",
+    "tbeshSourceLock": "reports/genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12.json",
+    "bdbSourceLock": "reports/genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12.json",
+    "targets": 10,
+    "totalOccurrences": 2482,
+    "sampledContexts": 30,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "controlPolicy": {
+    "source": "Notion fixed control card: 📌 공통 기준·워크플로우 v2",
+    "policyDate": "2026-08-12",
+    "rule": "GPT public original-language/theological dictionary, academic DB, corpus, morphology and translation evidence review is the default next gate; Claude/Gemini are optional supplementary counter-audits and are not a blocking prerequisite for continued research production.",
+    "qualityFloor": "H776 quality contract unchanged",
+    "humanGate": "only irreconcilable equal-strength evidence conflict, material existing-approved-meaning change, license/security/permission/cost/policy exception"
+  },
+  "gate": {
+    "publicEvidenceSynthesisRequired": true,
+    "actualBookContextRequired": true,
+    "morphologyStrongSeparationRequired": true,
+    "senseBoundaryRequired": true,
+    "provenanceUncertaintyRequired": true,
+    "existingApprovedRegressionMustBeZero": true,
+    "claudeGeminiBlockingRequired": false,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "mainPromotionAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "riskIsolation": {
+    "H3068": "DIVINE_NAME_AND_READING_TRADITION remains isolated HIGH risk; exact Korean display/transliteration cannot be flattened into lexical identity.",
+    "batchContinuation": "Any unresolved item becomes HOLD/DISPUTE without blocking lower-risk siblings."
+  },
+  "nextGate": "COMPLETE_GPT_PUBLIC_EVIDENCE_SYNTHESIS_PER_TARGET_ON_PINNED_2482_OCCURRENCE_30_CONTEXT_BASELINE_THEN_COMPUTE_PASS_WITH_BOUNDARY_HOLD_DISPUTE_WITHOUT_PRODUCTION_MUTATION"
+}
