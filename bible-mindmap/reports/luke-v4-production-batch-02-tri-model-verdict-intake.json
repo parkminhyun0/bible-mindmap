@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "reportId": "luke-v4-production-batch-02-tri-model-verdict-intake-v1",
   "book": "LUK",
-  "status": "AWAITING_INDEPENDENT_GPT_CLAUDE_GEMINI",
+  "status": "AWAITING_CLAUDE_GEMINI_AFTER_GPT_PASS_WITH_BOUNDARY",
   "baseline": {
     "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
     "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
@@ -16,7 +16,7 @@
   "requiredAuditors": ["GPT", "Claude", "Gemini"],
   "acceptedVerdicts": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"],
   "audits": {
-    "GPT": {"state": "PENDING_INDEPENDENT_VERDICT"},
+    "GPT": {"state": "VERDICT_RECEIVED", "path": "reports/luke-v4-production-batch-02-gpt-independent-audit.json", "summary": {"PASS_WITH_BOUNDARY": 8, "HOLD": 0, "DISPUTE": 0}},
     "Claude": {"state": "PENDING_EXTERNAL_VERDICT"},
     "Gemini": {"state": "PENDING_EXTERNAL_VERDICT"}
   },
@@ -32,5 +32,5 @@
     "qualityGateWeakeningAllowed": false,
     "selfApprovalAllowed": false
   },
-  "next": "ingest only independent verdicts that repeat the exact candidate/evidence/audit fingerprints; compare per-target verdicts and isolate HOLD/DISPUTE without mutating production"
+  "next": "ingest exact-fingerprint Claude and Gemini verdicts; compare per-target verdicts and isolate HOLD/DISPUTE without mutating production"
 }
