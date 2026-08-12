@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-current-main-revalidation-pass-2026-08-12",
+  "status": "CURRENT_MAIN_DETERMINISTIC_REVALIDATION_PASS_EXTERNAL_AUDIT_INGEST_RESUMED",
+  "derivedMain": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+  "researchBranch": "chatgpt/genesis-r4-followup-evidence",
+  "workflow": {
+    "runId": 31562843432,
+    "headSha": "1ccc07b567d86cf9c3431b9d2adf3e331ad0d9fe",
+    "conclusion": "success",
+    "artifactId": 9128356690,
+    "artifactDigest": "sha256:49321445550d1fb16975da70b0e2d5e50245804e1af151e92cdc559e1db2f23a"
+  },
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "items": 5,
+    "occurrences": 87,
+    "sampledContexts": 38
+  },
+  "items": [
+    {"strong":"H120","corpusStrong":"H120","occurrences":47,"sampledContexts":12},
+    {"strong":"H6030b","corpusStrong":"H6030","occurrences":19,"sampledContexts":12},
+    {"strong":"H7650","corpusStrong":"H7650","occurrences":19,"sampledContexts":12},
+    {"strong":"H28","corpusStrong":"H28","occurrences":1,"sampledContexts":1},
+    {"strong":"H39","corpusStrong":"H39","occurrences":1,"sampledContexts":1}
+  ],
+  "checks": {
+    "usageEvidenceBuild": "PASS",
+    "exactBaselineVerifier": "PASS",
+    "r4QueueVerifier": "PASS",
+    "registryUniversalRegression": "PASS",
+    "candidateFingerprintDrift": false,
+    "sourceFingerprintDrift": false,
+    "usageCountDrift": false,
+    "contextSampleDrift": false,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "decision": {
+    "previousVerifierDriftHoldCleared": true,
+    "externalVerdictIngestAllowedOnExactFingerprint": true,
+    "selfApprovalAllowed": false,
+    "promotionAllowedBeforeIndependentVerdicts": false,
+    "reason": "The deterministic R4 usage/evidence chain was rebuilt and verified on current derived main with unchanged candidate/source fingerprints and unchanged 87/38 usage evidence. The drift-specific fail-closed hold is therefore cleared; independent Claude/Gemini verdict requirements remain unchanged."
+  },
+  "nextGate": "INGEST_CLAUDE_GEMINI_EXACT_FINGERPRINT_VERDICTS_AND_RESOLVE_H120_H6030B_H7650_H28_H39_WITHOUT_SELF_APPROVAL"
+}
