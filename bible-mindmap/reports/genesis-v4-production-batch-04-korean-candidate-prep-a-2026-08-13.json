@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "lexicon-v4-genesis-korean-candidate-prep/1.0",
+  "generatedAt": "2026-08-13T07:35:00+09:00",
+  "book": "Genesis",
+  "batch": "04",
+  "status": "KOREAN_CANDIDATE_PREP_RESEARCH_ONLY",
+  "derivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "sourceEvidence": {
+    "selection": "bible-mindmap/reports/genesis-v4-production-batch-04-selection-2026-08-13.json",
+    "sourceNodePass": "bible-mindmap/reports/genesis-v4-production-batch-04-source-node-pass-a-2026-08-13.json",
+    "primaryBdbCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "secondaryTbeshCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "policy": "Candidates stay inside pinned BDB/TBESH semantic boundaries. They are research candidates only and cannot be promoted before representative Genesis context/morphology and full BDB hierarchy crosscheck."
+  },
+  "candidates": [
+    {
+      "strong": "H3130",
+      "lemma": "יוֹסֵף",
+      "transliteration": "요세프",
+      "koreanCandidate": "요셉",
+      "senseBoundary": "창세기의 족장 요셉 고유명사. 이름의 어원 설명은 provenance/etymology로 분리하고 사전 표제 의미를 대체하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H5414",
+      "lemma": "נָתַן",
+      "transliteration": "나탄",
+      "koreanCandidate": "주다; 두다·놓다; 맡기다·넘기다; 허락하다; 문맥에 따라 주어지게 하다/건네다",
+      "senseBoundary": "기본 '주다'에서 출발하되 put/set, deliver, allow, pay, marriage/action idiom을 하나의 한국어 gloss로 평탄화하지 않는다. 어간·목적어·문맥별 분기가 필수다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H854",
+      "lemma": "אֵת",
+      "transliteration": "에트",
+      "koreanCandidate": "~와 함께; ~곁에; ~와 더불어",
+      "senseBoundary": "전치사 '함께/곁에' 계열. 동일 자음형의 목적격 표지 H853과 반드시 분리한다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H3947",
+      "lemma": "לָקַח",
+      "transliteration": "라카흐",
+      "koreanCandidate": "취하다; 가져가다·데려가다; 받다; 아내로 맞다; 문맥에 따라 사다/붙잡다",
+      "senseBoundary": "take의 넓은 의미망을 보존하고 사람·물건·배우자·거래 문맥을 구분한다. 정확한 한국어는 실제 창세기 문맥과 어간에 따라 선택한다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H85",
+      "lemma": "אַבְרָהָם",
+      "transliteration": "아브라함",
+      "koreanCandidate": "아브라함",
+      "senseBoundary": "고유명사 표제가 우선이다. '많은 무리의 아버지' 계열 설명은 창 17:5의 이름 설명/어원 provenance로 분리한다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H2009",
+      "lemma": "הִנֵּה",
+      "transliteration": "힌네",
+      "koreanCandidate": "보라; 보라, 여기; 자, 보라; 문맥에 따라 바로·이제",
+      "senseBoundary": "주의를 환기하는 제시·담화 표지. 감탄/발견/전환의 문맥 기능을 보존하되 그 담화 효과를 신학적 의미로 과잉 어휘화하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H1323",
+      "lemma": "בַּת",
+      "transliteration": "바트",
+      "koreanCandidate": "딸; 여자 후손; 젊은 여자; 문맥에 따라 ~의 딸/자손",
+      "senseBoundary": "일반 딸·여성 후손·확장적 '딸' 용법과 고유명사 Bath-Shua 계열을 분리한다. 문맥 없는 고유명사 병합 금지.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H1004",
+      "lemma": "בַּיִת / בֵּית",
+      "transliteration": "바이트 / 베트",
+      "koreanCandidate": "집; 집안·가문; 거처; 안쪽·내부; 문맥에 따라 건물/가정/가문",
+      "senseBoundary": "Strong H1004의 augmented lexical split을 보존한다. 창세기에서는 house/home/household와 '안쪽' 계열을 문맥으로 분기하며 'between' 계열 source identity를 무시하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H8033",
+      "lemma": "שָׁם",
+      "transliteration": "샴",
+      "koreanCandidate": "거기; 그곳에; 거기로; 거기서",
+      "senseBoundary": "장소 부사 there/thither/from-there 계열. 후대 복합 고유명사 node를 창세기 기본 표제로 취급하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H3027",
+      "lemma": "יָד",
+      "transliteration": "야드",
+      "koreanCandidate": "손; 손에 있는 힘·권세; 곁·편; 몫·부분; 문맥에 따라 지배/소유/수단",
+      "senseBoundary": "신체 '손'은 기본 가지일 뿐이며 힘·권세·편/부분·관용구를 실제 문맥으로 분리한다. 하나의 한국어 gloss로 전체 계층을 대표시키지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    }
+  ],
+  "verificationState": {
+    "strongLemmaIdentity": "PASS_FROM_PINNED_SOURCE_NODE_REPORT",
+    "sourceNodeBoundary": "10_OF_10_PASS_WITH_BOUNDARY",
+    "koreanSourceFidelity": "PREPARED_WITH_EXPLICIT_BOUNDARIES",
+    "theologicalOverreadGuard": "PRESERVED",
+    "representativeGenesisContext": "PENDING",
+    "genesisMorphologyRouting": "PENDING",
+    "fullBdbHierarchyCrosscheck": "PENDING"
+  },
+  "summary": {
+    "prepared": 10,
+    "genesisOccurrencesRepresented": 1256,
+    "hold": 0,
+    "dispute": 0,
+    "promotionEligible": 0
+  },
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextGate": "REPRESENTATIVE_GENESIS_CONTEXT_MORPHOLOGY_AND_FULL_BDB_HIERARCHY_CROSSCHECK"
+}
