@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-current-main-invariance-005a64c3",
+  "status": "CURRENT_MAIN_REVALIDATED_BY_PINNED_INPUT_INVARIANCE",
+  "currentMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+  "promotionExactHead": "ae774032b8fa16d197f622844db28e202e644f34",
+  "priorExecutedBaseline": {
+    "derivedMain": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+    "workflow": "Genesis R4 Current-Main Revalidation",
+    "workflowRunId": 31562843432,
+    "conclusion": "success"
+  },
+  "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+  "pinnedEvidence": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "oshbGenesisBlobSha": "09ac9cab0a47c5fae8d747c2868f1cf50d6d1131",
+    "candidateManifestBlobSha": "4081308362e5035ae8727ecd0599be78fcbd68e5"
+  },
+  "invarianceProof": {
+    "compareBase": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+    "compareHead": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "unchangedInputsAndContracts": [
+      ".oshb-cache/Gen.xml",
+      "bible-mindmap/data/lexicon/candidates/genesis-p5/manifest.json",
+      "bible-mindmap/data/lexicon/candidates/genesis-p5/core-theology-context.json",
+      "bible-mindmap/data/lexicon/candidates/genesis-p5/high-frequency-general.json",
+      "bible-mindmap/data/lexicon/candidates/genesis-p5/medium-frequency-general.json",
+      "bible-mindmap/data/lexicon/candidates/genesis-p5/low-frequency-general.json",
+      "bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs",
+      "bible-mindmap/scripts/verify-genesis-p5-r4-usage-evidence.mjs",
+      "bible-mindmap/scripts/verify-lexicon-v4-r4-extended-research-queue.mjs",
+      "bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs"
+    ],
+    "changedGateInputs": [
+      "bible-mindmap/data/lexicon/approval-registry.json",
+      "bible-mindmap/data/lexicon/v4/registry-snapshot.json",
+      "docs/lexicon-workflow/TRACK_STATE.json"
+    ]
+  },
+  "changedGateRevalidation": {
+    "exactHeadWorkflowRunId": 31588348323,
+    "r4ExtendedResearchQueue": "success",
+    "universalRegistryRegression": "success",
+    "foundationContract": "success",
+    "exactHeadToMergeMainFileDiff": 0
+  },
+  "governance": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "workflowPolicyModified": false,
+    "selfApprovalAllowed": false
+  },
+  "conclusion": "The 87-occurrence/38-context corpus evidence and its deterministic verifier inputs are unchanged from the last successful executed baseline. Inputs that did change were independently revalidated on PR #341 exact head, whose file tree is identical to merge main. Reuse is therefore fingerprint-addressed evidence reuse, not a skipped or weakened gate.",
+  "nextGate": "EXTENDED_RESEARCH_REQUIRED_PUBLIC_EVIDENCE_SYNTHESIS"
+}
