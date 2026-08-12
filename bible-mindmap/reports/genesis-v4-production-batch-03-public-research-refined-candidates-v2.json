@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 2,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-03-public-research-refined-candidates-v2",
+  "status": "PUBLIC_RESEARCH_REFINED_PROPOSAL_READY_FOR_EXACT_FREEZE",
+  "book": "Genesis",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "baselineDerivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "createdAgainstMain": "8123a3ada83a98911ac24b3cbaf20b8ae1f22859",
+  "evidence": {
+    "historicalSemanticFreezePath": "bible-mindmap/reports/genesis-v4-production-batch-03-evidence-freeze.json",
+    "historicalSemanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
+    "publicResearchMatrixPath": "bible-mindmap/reports/genesis-v4-production-batch-03-gpt-public-research-first-evidence-matrix-2026-08-12.json",
+    "tbeshCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "openscripturesBdbCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "oshbGenesisDigest": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+    "targets": 10,
+    "totalGenesisOccurrences": 2529,
+    "sampledContexts": 30,
+    "bdbEntries": 13,
+    "sourceNodes": 75
+  },
+  "mainCompatibility": {
+    "policy": "pinned lexical inputs are revalidated independently from unrelated main movement",
+    "observedDeltaBase": "9354587035437d9bcf103165ba3a12c5229353f2",
+    "observedDeltaHead": "8123a3ada83a98911ac24b3cbaf20b8ae1f22859",
+    "observedChangedFiles": 6,
+    "batch03ControlledPathOverlap": 0,
+    "note": "PR #339 changed Lexical Bridge UI/data/regression files only; current-main source-registry and pinned lexical inputs are rechecked by the v2 freeze workflow before promotion."
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateIsProposalOnly": true,
+    "publicResearchCrosscheckRequired": true,
+    "blockingExternalModelAuditRequired": false,
+    "optionalExternalCounterAuditAllowed": true,
+    "candidatePromotionAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "selfApproval": false,
+    "qualityGateWeakeningAllowed": false,
+    "theologicalOverreachForbidden": true
+  },
+  "items": [
+    {
+      "strong": "H413",
+      "lemma": "אֶל",
+      "transliteration": "엘",
+      "bdbEntryIds": ["a.di.aa"],
+      "tbeshNode": "H0413",
+      "candidateHeadKo": "~에게·~로·~을 향하여; 문맥에 따라 ~에 맞서·~에 관하여",
+      "senseBoundaryKo": [
+        "사람·장소·대상을 향한 이동이나 방향: ~에게, ~로, ~을 향하여",
+        "적대적 방향·대립 관계: ~에 맞서, ~을 대하여",
+        "주제·참조 관계: ~에 관하여, ~에 대하여",
+        "규범·기준 관계: ~에 따라, ~에 맞추어(해당 BDB 문맥에서만)",
+        "위치·현존 관계: ~곁에·~가운데 등은 해당 BDB/문맥 근거가 있을 때 제한적으로 분리",
+        "한국어 조사 번역의 다양성을 곧바로 독립 lexical sense로 증식시키지 않고 통사 관계와 문맥으로 판정"
+      ],
+      "contextControls": ["Gen.1.9", "Gen.3.16", "Gen.4.7"],
+      "morphologyControls": ["HR", "HC/R", "HC/R/Sp2ms"],
+      "risk": "HIGH",
+      "note": "방향·적대·참조·기준·위치의 BDB 계층을 보존하되 한국어 조사 하나하나를 별도 뜻으로 평탄화하지 않는다."
+    },
+    {
+      "strong": "H834",
+      "lemma": "אֲשֶׁר",
+      "transliteration": "아셰르",
+      "bdbEntryIds": ["a.gk.aa", "a.gk.ab", "k.ab.ab", "a.gk.ad"],
+      "tbeshNode": "H0834A",
+      "candidateHeadKo": "관계·접속 표지: ~하는·~인·~것; 문맥에 따라 때·곳·이유·내용 관계",
+      "senseBoundaryKo": [
+        "사람·사물·사태와 뒤 절을 연결하는 일반 관계 표지: ~하는, ~인, ~것, ~한 바",
+        "시간 관계: ~할 때, ~한 때 등은 실제 절 관계와 문맥으로 판정",
+        "장소·상황 관계: ~하는 곳/곳에서, ~한 상황 등은 선행사·절 구조로 판정",
+        "이유·근거 및 내용 접속 관계는 BDB가 허용하는 문맥에서만 분리하고 기본 관계 기능에서 무제한 확장하지 않음",
+        "בַאֲשֶׁר 결합은 '그 안에서/그 점에서/…때문에' 등 결합 전체의 통사 기능으로 분리",
+        "כַּאֲשֶׁר 결합은 '…한 대로/…처럼/…할 때' 등 결합 전체의 기능으로 분리",
+        "מֵאֲשֶׁר 결합은 '…로부터/…보다/…이므로' 등 전치사 결합의 기능으로 분리",
+        "결합형의 번역 결과를 기본 אֲשֶׁר의 독립 어휘 의미로 합치지 않음"
+      ],
+      "contextControls": ["Gen.1.7", "Gen.7.9", "Gen.7.23"],
+      "morphologyControls": ["HTr", "HR/Tr", "HC/Tr"],
+      "risk": "HIGH",
+      "note": "BDB의 '관계의 표지' 범위를 보존해 관계절에만 축소하지 않고, 시간·장소·이유·내용의 접속 기능과 전치사 결합형을 계층적으로 구분한다."
+    },
+    {
+      "strong": "H3605",
+      "lemma": "כֹּל",
+      "transliteration": "콜",
+      "bdbEntryIds": ["k.bn.ab"],
+      "tbeshNode": "H3605",
+      "candidateHeadKo": "모든·온·전체; 문맥에 따라 각각·어떤/무엇이든",
+      "senseBoundaryKo": [
+        "전체·전부: 온, 전체, 모든 것",
+        "구성원 전체를 분배적으로 가리킬 때: 모든, 각각의",
+        "부정·조건·관계 구문 등에서 문맥상 '어떤/무엇이든'으로 나타나는 용법",
+        "연계형·관사·한정 범위가 총체성의 범위를 결정하므로 단순 번역어만으로 새 sense를 만들지 않음"
+      ],
+      "contextControls": ["Gen.1.21", "Gen.1.26", "Gen.2.1"],
+      "morphologyControls": ["HNcmsc", "HC/R/Ncmsc", "HC/Ncmsc"],
+      "risk": "MEDIUM",
+      "note": "quantifier 범위와 연계 구문을 문맥으로 판정하며 '모든'에서 신학적 총체성을 직접 도출하지 않는다."
+    },
+    {
+      "strong": "H935",
+      "lemma": "בּוֹא",
+      "transliteration": "보",
+      "bdbEntryIds": ["b.ap.aa"],
+      "tbeshNode": "H0935",
+      "candidateHeadKo": "오다·들어오다; 히필: 데려오다·가져오다·오게 하다",
+      "senseBoundaryKo": [
+        "칼(Qal) 기본 이동: 오다·가다·도착하다",
+        "칼(Qal) 진입: 들어오다·들어가다; 방향·목적지와 함께 판정",
+        "칼(Qal)의 사건·상태 도래, 이르다/도달하다 등 확장 용법은 BDB가 지지하는 해당 구성과 문맥에 제한",
+        "히필(Hiphil): 오게 하다, 데려오다, 가져오다, 들여오다 등 사역 이동",
+        "호팔(Hophal): 데려와지다·가져와지다·들여와지다 등 사역 수동",
+        "이동 방향·목적어·어간을 형태론·통사 문맥으로 판정하며 사역·수동·비유적 확장을 기본 능동 의미에 섞지 않음"
+      ],
+      "contextControls": ["Gen.2.19", "Gen.2.22", "Gen.4.4"],
+      "morphologyControls": ["HC/Vhw3ms", "HC/Vhw3ms/Sp3fs", "HVhp3ms"],
+      "risk": "HIGH",
+      "note": "창세기 초기 표본이 히필 중심이어도 전체 lemma를 '가져오다'로 고정하지 않고 Qal/Hiphil/Hophal과 문맥 확장 계층을 보존한다."
+    },
+    {
+      "strong": "H3808",
+      "lemma": "לֹא",
+      "transliteration": "로",
+      "bdbEntryIds": ["l.ab.aa"],
+      "tbeshNode": "H3808",
+      "candidateHeadKo": "아니다·…하지 않다; 부정 표지",
+      "senseBoundaryKo": [
+        "문장·술어·구성 성분을 부정하는 기본 기능: 아니다, …하지 않다",
+        "접속사·의문 표지 등과 결합할 때 나타나는 한국어 표현 차이는 통사적 결합으로 처리",
+        "'없다/아무것도 아니다/…없이/결코' 같은 번역 결과를 근거 없이 독립 어휘 sense로 증식시키지 않음"
+      ],
+      "contextControls": ["Gen.2.5", "Gen.2.25", "Gen.4.7"],
+      "morphologyControls": ["HTn", "HC/Tn", "HTi/Tn"],
+      "risk": "MEDIUM",
+      "note": "부정의 범위(scope)는 문장 구조와 문맥으로 판정하며 명령·언약·도덕적 적용을 입자 자체의 lexical meaning으로 넣지 않는다."
+    },
+    {
+      "strong": "H1931",
+      "lemma": "הוּא",
+      "transliteration": "후",
+      "bdbEntryIds": ["e.aw.aa"],
+      "tbeshNode": "H1931",
+      "candidateHeadKo": "그·그녀·그것; 3인칭 단수 대명사",
+      "senseBoundaryKo": [
+        "남성 단수 지시 대상: 그",
+        "여성 단수 형태·문맥: 그녀",
+        "중성적 지시나 사물·사태를 받을 때: 그것/그것은",
+        "지시적 기능: 문맥에 따라 그 사람/그것, 바로 그 등으로 나타나는 용법",
+        "강조·주어 재개·초점 기능: 바로 그/그 자신 등은 담화·통사 기능과 문맥으로 판정",
+        "계사처럼 번역되는 경우는 문법 기능으로 보존하고 모든 '이다' 번역을 독립 lexical sense로 만들지 않음"
+      ],
+      "contextControls": ["Gen.2.11", "Gen.2.12", "Gen.3.12"],
+      "morphologyControls": ["HPp3ms", "HTd/Pp3fs", "HPp3fs"],
+      "risk": "MEDIUM",
+      "note": "성·지시 대상·지시/강조/재개·계사 기능을 BDB 계층과 문맥으로 분리한다."
+    },
+    {
+      "strong": "H3290",
+      "lemma": "יַעֲקֹב",
+      "transliteration": "야아코브",
+      "bdbEntryIds": ["p.eu.aj"],
+      "tbeshNode": "H3290",
+      "candidateHeadKo": "야곱; 이삭과 리브가의 아들인 인명",
+      "senseBoundaryKo": [
+        "고유명 '야곱'의 인물 정체성을 기본 headword로 유지",
+        "인물 야곱과 그의 후손·집단/이스라엘 지칭은 실제 문맥에서 구분",
+        "발꿈치·뒤따르다·빼앗다 등에 관한 이름 해석·어원 논의는 provenance/주석으로 분리하고 기본 뜻을 대체하지 않음"
+      ],
+      "contextControls": ["Gen.25.26", "Gen.25.27", "Gen.25.33"],
+      "morphologyControls": ["HNp", "HC/Np", "HR/Np"],
+      "risk": "MEDIUM",
+      "note": "고유명 정체성, 후손/집단 지칭, 서사적 어원·말놀이를 분리한다."
+    },
+    {
+      "strong": "H251",
+      "lemma": "אָח",
+      "transliteration": "아흐",
+      "bdbEntryIds": ["a.ck.ab"],
+      "tbeshNode": "H0251G",
+      "relatedTbeshNodes": ["H0251H", "H0251I"],
+      "candidateHeadKo": "형제·남자 형제; 친족·동족(문맥별)",
+      "senseBoundaryKo": [
+        "같은 부모 또는 가족 관계의 남자 형제",
+        "더 넓은 남자 친족·가까운 혈족",
+        "동족·공동체 구성원 또는 친밀·유사 관계의 확장 용법은 실제 문맥으로 제한",
+        "소유 접미사는 관계 참여자를 표시하는 형태론이며 새로운 lexical sense가 아님"
+      ],
+      "contextControls": ["Gen.4.2", "Gen.4.9", "Gen.4.9"],
+      "morphologyControls": ["HNcmsc/Sp3ms", "HNcmsc/Sp2ms", "HNcmsc/Sp1cs"],
+      "risk": "MEDIUM",
+      "note": "창 4:9의 서로 다른 소유 접미 형태가 어휘 의미가 아니라 관계·형태론 차이라는 점을 보존한다."
+    },
+    {
+      "strong": "H3205",
+      "lemma": "יָלַד",
+      "transliteration": "얄라드",
+      "bdbEntryIds": ["j.bn.aa"],
+      "tbeshNode": "H3205",
+      "candidateHeadKo": "낳다·출산하다·자식을 두다; 어간에 따라 태어나다·낳게 하다",
+      "senseBoundaryKo": [
+        "칼(Qal): 어머니가 낳다·출산하다, 아버지가 자식을 두다/낳다(beget) 등 주어·문맥별 용법",
+        "니팔(Niphal)·푸알(Pual) 등 수동 계열: 태어나다",
+        "피엘(Piel): 출산을 돕다·산파 역할을 하다 등 제한된 어간 용법",
+        "히필(Hiphil): 낳게 하다·자식을 낳다/두다 등 사역·계보 문맥",
+        "어간·성·주어 관계를 무시해 '낳다' 한 뜻으로 평탄화하지 않음"
+      ],
+      "contextControls": ["Gen.3.16", "Gen.4.1", "Gen.4.2"],
+      "morphologyControls": ["HVqi2fs", "HC/Vqw3fs", "HR/Vqc"],
+      "risk": "HIGH",
+      "note": "출산·계보·수동/사역 의미를 형태론과 문맥에 묶고 언약·불임·구속 주제를 lexical sense로 혼입하지 않는다."
+    },
+    {
+      "strong": "H8141",
+      "lemma": "שָׁנָה",
+      "transliteration": "샤나",
+      "bdbEntryIds": ["v.ek.ab"],
+      "tbeshNode": "H8141",
+      "candidateHeadKo": "해·년(year)",
+      "senseBoundaryKo": [
+        "시간 단위인 한 해·년",
+        "나이·기간·연수·매년으로 번역되는 경우는 수사·전치사·연계 구문의 문맥적 사용",
+        "단순 수량 결합이나 연대기·언약적 중요성을 별도의 어휘 의미로 확대하지 않음"
+      ],
+      "contextControls": ["Gen.1.14", "Gen.5.3", "Gen.5.6"],
+      "morphologyControls": ["HC/Ncfpa", "HNcfsa", "HNcfpa"],
+      "risk": "LOW",
+      "note": "기본 명사 의미는 '해/년'이며 나이·기간·연대기적 의미는 구성과 본문 수준에서 판정한다."
+    }
+  ],
+  "checks": {
+    "targetCount": 10,
+    "actualContextConfirmed": 10,
+    "minimumContextSamplesPerTarget": 3,
+    "totalGenesisOccurrences": 2529,
+    "bdbEntriesPinned": 13,
+    "bdbSourceNodesMaterialized": 75,
+    "tbeshSourceNodePinned": 10,
+    "publicResearchMatrixBound": true,
+    "headRevisionCount": 1,
+    "senseHierarchyRefinementCount": 4,
+    "hold": 0,
+    "dispute": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "nextGate": "REGENERATE_PINNED_EVIDENCE_AGAINST_CURRENT_MAIN_SOURCE_REGISTRY_VERIFY_INPUT_LOCKS_AND_FREEZE_PUBLIC_RESEARCH_V2_FINGERPRINT_WITHOUT_REGISTRY_OR_PRODUCTION_MUTATION"
+}
