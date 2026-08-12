@@ -15,6 +15,9 @@ export default function LexicalBridgeLauncher({
 
   useEffect(() => () => onOpenChange?.(false), [onOpenChange]);
 
+  // 원어 브릿지는 후속 재설계 전까지 production UI에서 비활성화한다.
+  // 개발/회귀 테스트 자산은 보존해 다음 작업 때 기존 연구 결과를 재사용한다.
+  if (import.meta.env.PROD) return null;
   if (!available) return null;
 
   const setModalOpen = (next) => {

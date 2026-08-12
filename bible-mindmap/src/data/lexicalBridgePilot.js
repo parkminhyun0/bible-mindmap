@@ -85,6 +85,9 @@ export function getLexicalBridgeByStrong(strong) {
 }
 
 export function hasLexicalBridge(strong) {
+  // 후속 재설계 전까지 production 원어 사전 팝업에서는 브릿지 진입점을 노출하지 않는다.
+  // 개발/회귀 환경에서는 기존 Pilot Evidence를 보존해 재작업 시 검증 자산으로 사용한다.
+  if (import.meta.env.PROD) return false;
   return Boolean(getLexicalBridgeByStrong(strong));
 }
 
