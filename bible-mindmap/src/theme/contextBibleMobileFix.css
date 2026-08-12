@@ -18,7 +18,10 @@
   font-size: 13px;
 }
 
-@media (max-width: 767px) {
+/* useMobile()은 iPhone/터치 태블릿/compact viewport를 모두 mobile layout으로 분류한다.
+   CSS도 동일한 범위를 따라야 portrait(<=767px)뿐 아니라 iPhone landscape와
+   coarse-pointer tablet compact 폭에서도 mobile modal contract가 빠지지 않는다. */
+@media (max-width: 767px), (pointer: coarse) and (max-width: 1024px) {
   .at-modal--mobile.at-modal--context {
     width: 100% !important;
     height: 100dvh !important;
