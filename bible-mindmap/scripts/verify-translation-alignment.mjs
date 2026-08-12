@@ -24,6 +24,42 @@ function selected(text, spans) {
   return spans.map(span => text.slice(span.start, span.end));
 }
 
+function normalizeRelativePath(value) {
+  return String(value || '').split(path.sep).join('/');
+}
+
+function validateLegacyPilotRecord(record) {
+  const errors = [];
+  if (!record || typeof record !== 'object' || Array.isArray(record)) return ['legacy pilot must be an object'];
+  if (typeof record.schemaVersion !== 'string' || !record.schemaVersion.endsWith('-pilot')) errors.push('legacy pilot schemaVersion must end with -pilot');
+  if (!record.tokenId || typeof record.tokenId !== 'string') errors.push('legacy pilot tokenId is required');
+  if (!record.strong || !/^[GH]\d+$/.test(String(record.strong).toUpperCase())) errors.push('legacy pilot strong must be a G/H Strong id');
+  if (!record.tokenChecksum || !/^[0-9a-f]{8}$/.test(record.tokenChecksum)) errors.push('legacy pilot tokenChecksum must be an 8-hex hash');
+  if (!record.alignment || typeof record.alignment !== 'object' || Array.isArray(record.alignment)) errors.push('legacy pilot alignment object is required');
+  return errors;
+}
+
+function classifyAlignmentPayload(relativePath, parsed) {
+  const rel = normalizeRelativePath(relativePath);
+  if (rel === 'manifest.json') return { kind: 'manifest', records: [] };
+
+  if (rel.startsWith('pilot/')) {
+    const errors = validateLegacyPilotRecord(parsed);
+    if (errors.length) throw new Error(`${rel}: ${errors.join('; ')}`);
+    return { kind: 'legacy-pilot', records: [] };
+  }
+
+  if (Array.isArray(parsed)) return { kind: 'records-array', records: parsed };
+  if (parsed && typeof parsed === 'object' && Array.isArray(parsed.records)) {
+    return { kind: 'records-envelope', records: parsed.records };
+  }
+  if (parsed && typeof parsed === 'object' && parsed.schemaVersion === ALIGNMENT_SCHEMA_VERSION && typeof parsed.tokenId === 'string') {
+    return { kind: 'single-record', records: [parsed] };
+  }
+
+  throw new Error(`${rel}: unsupported alignment JSON shape`);
+}
+
 function runRegressionCases() {
   const hebrew = 'בְּרֵאשִׁית בָּרָא אֱלֹהִים';
   assert.deepEqual(selected(hebrew, findOriginalSpans(hebrew, ['אלהים'])), ['אֱלֹהִים']);
@@ -73,6 +109,37 @@ function runRegressionCases() {
   delete missingChecksum.tokenChecksum;
   const missingErrors = validateAlignmentRecord(missingChecksum);
   assert.ok(missingErrors.some(e => e.includes('tokenChecksum')), 'validateAlignmentRecord must require tokenChecksum');
+
+  // status 없는 explicit alignment는 verified로 승격되어서는 안 됨
+  const missingStatus = { ...explicitRecord };
+  delete missingStatus.status;
+  const missingStatusResolved = resolveHighlightSpans({
+    text: explicitText,
+    language: 'korean',
+    entry: { s: 'H0430' },
+    userQuery: '하나님',
+    alignmentRecord: missingStatus,
+  });
+  assert.notEqual(missingStatusResolved.source, 'alignment-record', 'missing status must not consume explicit alignment as trusted');
+  assert.notEqual(missingStatusResolved.status, 'verified', 'missing status must never become verified');
+
+  // committed JSON shape는 명시적으로 분류하고 알 수 없는 shape는 fail-closed
+  assert.equal(classifyAlignmentPayload('krv/test.json', [explicitRecord]).records.length, 1);
+  assert.equal(classifyAlignmentPayload('krv/test.json', { records: [explicitRecord] }).records.length, 1);
+  assert.equal(classifyAlignmentPayload('krv/test.json', explicitRecord).records.length, 1);
+  assert.equal(classifyAlignmentPayload('manifest.json', { schemaVersion: 'manifest' }).kind, 'manifest');
+  assert.equal(classifyAlignmentPayload('pilot/test.json', {
+    schemaVersion: '0.1.0-pilot',
+    tokenId: 'genesis.1.1.hot.2',
+    strong: 'H430',
+    tokenChecksum: computeTokenChecksum(hebrewToken),
+    alignment: { status: 'verified-pilot' },
+  }).kind, 'legacy-pilot');
+  assert.throws(
+    () => classifyAlignmentPayload('krv/bad.json', { schemaVersion: 'unexpected', payload: [] }),
+    /unsupported alignment JSON shape/,
+    'unknown committed JSON shapes must fail closed',
+  );
 }
 
 function walkJsonFiles(dir) {
@@ -90,18 +157,32 @@ function validateCommittedAlignments() {
   const alignmentRoot = path.join(ROOT, 'public', 'data', 'alignment');
   const errors = [];
   let records = 0;
+  let legacyPilotFiles = 0;
+  let manifestFiles = 0;
+
   for (const file of walkJsonFiles(alignmentRoot)) {
-    const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
-    const list = Array.isArray(parsed) ? parsed : parsed.records || [];
-    list.forEach((record, index) => {
+    const relativeToAlignment = path.relative(alignmentRoot, file);
+    let classified;
+    try {
+      const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
+      classified = classifyAlignmentPayload(relativeToAlignment, parsed);
+    } catch (error) {
+      errors.push(`${path.relative(ROOT, file)}: ${error.message}`);
+      continue;
+    }
+
+    if (classified.kind === 'legacy-pilot') legacyPilotFiles += 1;
+    if (classified.kind === 'manifest') manifestFiles += 1;
+    classified.records.forEach((record, index) => {
       records += 1;
       validateAlignmentRecord(record).forEach(error => errors.push(`${path.relative(ROOT, file)}[${index}]: ${error}`));
     });
   }
+
   if (errors.length) throw new Error(`alignment data validation failed\n${errors.map(error => `- ${error}`).join('\n')}`);
-  return records;
+  return { records, legacyPilotFiles, manifestFiles };
 }
 
 runRegressionCases();
-const recordCount = validateCommittedAlignments();
-console.log(`✓ translation alignment verifier passed · regression=23 · committedRecords=${recordCount}`);
+const summary = validateCommittedAlignments();
+console.log(`✓ translation alignment verifier passed · regression=29 · committedRecords=${summary.records} · legacyPilotFiles=${summary.legacyPilotFiles} · manifestFiles=${summary.manifestFiles}`);
