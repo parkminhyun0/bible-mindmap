@@ -2,10 +2,12 @@
   "schemaVersion": 1,
   "auditId": "luke-v4-production-batch-02-gpt-independent-audit-v1",
   "auditor": "independent GPT session",
+  "derivedMain": "32596baf054a75cff8ff18d94d2c173203eb2626",
   "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
-  "contextMorphologyEvidenceFingerprint": "sha256:8fe12a7a967ab8ad96909deb5f5f847634cf4da55ee82a546dd81d6b77d1347b",
-  "auditBundleFingerprint": "sha256:fc6e82918c9632d501e4c4bf19b2ecff570d67bf24435e02ef510c8fb77d1179",
-  "verdictBasis": "Exact frozen candidate/context-morphology/audit baseline only; no candidate, Registry, approved meaning, or production mutation.",
+  "contextMorphologyEvidenceFingerprint": "sha256:1917d90b3b847c4ed9bb75769d8d176df85d710fc080fd20ca2f841cc33435e2",
+  "contextMorphologyEvidenceFileFingerprint": "sha256:4d61127b95f4dae52a810db6993cb1448d67682733a1bca5fe8b5b6777e85ed5",
+  "auditBundleFingerprint": "sha256:eed3fff2a43ac0ef4509b8007ca3791a7f8e96e5f44d5a9fda9bfe7fc2ddc7cc",
+  "verdictBasis": "Exact current-main frozen candidate/context-morphology/audit baseline only; candidate content remained unchanged, regenerated Luke token/context counts and sense boundaries remained compatible, and no candidate, Registry, approved meaning, or production mutation was performed.",
   "targets": [
     {"strong":"G0006","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"The candidate preserves the biblical proper-name identity '아벨' and keeps etymology separate from the headword.","unresolved":[],"userFacingOverstatementRisk":"NONE"},
     {"strong":"G0007","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"Luke 1:5 supports the priestly-course proper-name identity; Hebrew mapping remains provenance rather than an asserted Greek lexical sense.","unresolved":[],"userFacingOverstatementRisk":"LOW"},
@@ -17,5 +19,6 @@
     {"strong":"G0020","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"Luke 1:14 and 1:44 support strong/exuberant joy; the Korean candidates preserve intensity without introducing doctrinal expansion.","unresolved":[],"userFacingOverstatementRisk":"LOW"}
   ],
   "summary": {"passWithBoundary":8,"hold":0,"dispute":0,"candidateMutation":0,"approvalRegistryMutation":0,"productionMutation":0},
-  "next": "Wait for exact-fingerprint Claude and Gemini verdicts, then compare per target and isolate any HOLD/DISPUTE before any promotion decision."
+  "governance": {"researchOnly":true,"qualityGateWeakeningAllowed":false,"selfApprovalAllowed":false,"promotionAllowedByThisAudit":false},
+  "next": "Wait for exact-fingerprint Claude and Gemini verdicts on the refreshed current-main bundle, then compare per target and isolate any HOLD/DISPUTE before any promotion decision."
 }
