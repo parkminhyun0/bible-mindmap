@@ -1,9 +1,9 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "reportId": "genesis-v4-production-batch-03-tri-model-verdict-intake-v1",
   "book": "GEN",
-  "status": "AWAITING_CLAUDE_GEMINI_AFTER_GPT_PASS_WITH_BOUNDARY",
-  "baseline": {
+  "status": "SUPERSEDED_BY_GPT_PUBLIC_RESEARCH_FIRST_V2",
+  "legacyBaseline": {
     "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
     "candidateFileFingerprint": "sha256:8ca80ea7c77a51c5d3520716842e776b61b1645eaff45cb8216869d99ba2e768",
     "evidenceSemanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
@@ -14,24 +14,31 @@
     "candidateAuditFreeze": "reports/genesis-v4-production-batch-03-candidate-audit-freeze.json"
   },
   "targets": ["H413", "H834", "H3605", "H935", "H3808", "H1931", "H3290", "H251", "H3205", "H8141"],
-  "requiredAuditors": ["GPT", "Claude", "Gemini"],
-  "acceptedVerdicts": ["PASS_WITH_BOUNDARY", "HOLD", "DISPUTE"],
-  "audits": {
-    "GPT": {"state": "VERDICT_RECEIVED", "path": "reports/genesis-v4-production-batch-03-gpt-independent-audit.json", "summary": {"PASS_WITH_BOUNDARY": 10, "HOLD": 0, "DISPUTE": 0}},
-    "Claude": {"state": "PENDING_EXTERNAL_VERDICT"},
-    "Gemini": {"state": "PENDING_EXTERNAL_VERDICT"}
+  "legacyAudits": {
+    "GPT": {"state":"VERDICT_RECEIVED","path":"reports/genesis-v4-production-batch-03-gpt-independent-audit.json","summary":{"PASS_WITH_BOUNDARY":10,"HOLD":0,"DISPUTE":0}},
+    "Claude": {"state":"NOT_REQUIRED_BY_ACTIVE_POLICY"},
+    "Gemini": {"state":"NOT_REQUIRED_BY_ACTIVE_POLICY"}
   },
-  "gate": {
-    "candidateMutationAllowed": false,
+  "supersededBy": {
+    "policy": "GPT Public-Research-First",
+    "evidenceMatrix": "reports/genesis-v4-production-batch-03-gpt-public-research-first-evidence-matrix-2026-08-12.json",
+    "candidate": "reports/genesis-v4-production-batch-03-public-research-refined-candidates-v2.json",
+    "freeze": "reports/genesis-v4-production-batch-03-public-research-v2-freeze.json",
+    "currentDerivedMain": "8123a3ada83a98911ac24b3cbaf20b8ae1f22859",
+    "candidateFileFingerprint": "sha256:6f65969b3ba2e218a07a84ec874bc8e22f68bc46e8f374bc6688c1f198dcaaa8",
+    "publicResearchMatrixFingerprint": "sha256:4f5f77c21cb428111291f8db3f2e66f38f97c15331beb77761330e701643aa9f",
+    "evidenceContentFingerprint": "sha256:57d02277f995255b22da5c0decb73ad5555eecde22a4a6f5541c8c95c0609a03",
+    "auditBundleFingerprint": "sha256:7dc32d3fbdab69dd6838182b0e13c2a505b682ea2ccbe60b205ce6c4302bd6bf"
+  },
+  "activeGate": {
+    "publicResearchFirstRequired": true,
+    "blockingClaudeGeminiVerdictRequired": false,
+    "optionalExternalCounterAuditAllowed": true,
     "approvalRegistryWriteAllowed": false,
     "productionWriteAllowed": false,
     "existingApprovedMeaningMutationAllowed": false,
-    "autoApprovalAllowed": false,
-    "requireExactBaselineMatch": true,
-    "requireAllThreeAuditors": true,
-    "isolateHoldDisputeTargets": true,
     "qualityGateWeakeningAllowed": false,
     "selfApprovalAllowed": false
   },
-  "next": "ingest exact-fingerprint Claude and Gemini verdicts; compare per-target verdicts and isolate HOLD/DISPUTE without mutating production"
+  "next": "Use the Public-Research-First v2 freeze as the active Batch 03 checkpoint; recheck current main before preparing any main-bound promotion. Do not wait for Claude/Gemini."
 }
