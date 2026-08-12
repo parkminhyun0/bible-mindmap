@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "auditId": "luke-v4-production-batch-02-gpt-independent-audit-v1",
+  "auditor": "independent GPT session",
+  "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
+  "contextMorphologyEvidenceFingerprint": "sha256:8fe12a7a967ab8ad96909deb5f5f847634cf4da55ee82a546dd81d6b77d1347b",
+  "auditBundleFingerprint": "sha256:fc6e82918c9632d501e4c4bf19b2ecff570d67bf24435e02ef510c8fb77d1179",
+  "verdictBasis": "Exact frozen candidate/context-morphology/audit baseline only; no candidate, Registry, approved meaning, or production mutation.",
+  "targets": [
+    {"strong":"G0006","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"The candidate preserves the biblical proper-name identity '아벨' and keeps etymology separate from the headword.","unresolved":[],"userFacingOverstatementRisk":"NONE"},
+    {"strong":"G0007","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"Luke 1:5 supports the priestly-course proper-name identity; Hebrew mapping remains provenance rather than an asserted Greek lexical sense.","unresolved":[],"userFacingOverstatementRisk":"LOW"},
+    {"strong":"G0009","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"The candidate cleanly separates the conventional place name '아빌레네' from the explanatory regional description.","unresolved":[],"userFacingOverstatementRisk":"NONE"},
+    {"strong":"G0011","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"The candidate preserves canonical person identity across Luke's 15 tokens and does not merge Hebrew etymology into the Greek headword meaning.","unresolved":[],"userFacingOverstatementRisk":"NONE"},
+    {"strong":"G0012","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"Luke 8:31 supports abyss/deep language; the note explicitly prevents automatic identification with a later systematic concept of hell, preserving the theological sense boundary.","unresolved":[],"userFacingOverstatementRisk":"MEDIUM"},
+    {"strong":"G0015","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"All four Luke tokens fit 'do good/do good to another'; broader non-Luke meanings are excluded from the book-specific candidate boundary.","unresolved":[],"userFacingOverstatementRisk":"LOW"},
+    {"strong":"G0018","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"The 16 Luke tokens span adjectival and substantival uses, so retaining a broad good/beneficial/goods range is source-faithful and avoids flattening polysemy into one moral gloss.","unresolved":[],"userFacingOverstatementRisk":"MEDIUM"},
+    {"strong":"G0020","verdict":"PASS_WITH_BOUNDARY","candidateCanRemainUnchanged":true,"sourceFidelity":"PASS","morphologyContextFit":"PASS","theologicalOverreach":"NONE","conciseReason":"Luke 1:14 and 1:44 support strong/exuberant joy; the Korean candidates preserve intensity without introducing doctrinal expansion.","unresolved":[],"userFacingOverstatementRisk":"LOW"}
+  ],
+  "summary": {"passWithBoundary":8,"hold":0,"dispute":0,"candidateMutation":0,"approvalRegistryMutation":0,"productionMutation":0},
+  "next": "Wait for exact-fingerprint Claude and Gemini verdicts, then compare per target and isolate any HOLD/DISPUTE before any promotion decision."
+}
