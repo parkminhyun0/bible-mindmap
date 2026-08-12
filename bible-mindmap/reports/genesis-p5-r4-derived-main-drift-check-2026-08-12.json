@@ -5,9 +5,8 @@
   "status": "REVALIDATION_REQUIRED_BEFORE_EXTERNAL_VERDICT_INGEST",
   "baseline": {
     "previousDerivedMainSha": "69e07b3285ea8425f028257a31ed0749c2115b50",
-    "lastCheckedMainSha": "8f2f7a3324e2386ec73288982f82d04be30f8ffc",
-    "currentDerivedMainSha": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
-    "researchHeadBeforeThisUpdate": "9d476d2f5192acbdc37f0c87d775fb10f0b40a67",
+    "lastCheckedMainSha": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+    "currentDerivedMainSha": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
     "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
     "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c"
   },
@@ -19,18 +18,27 @@
         "bible-mindmap/scripts/build-genesis-p5-r4-usage-evidence.mjs"
       ]
     },
-    "latestMainAdvance": {
+    "sourceRegistryHardeningAdvance": {
       "base": "8f2f7a3324e2386ec73288982f82d04be30f8ffc",
       "head": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
-      "aheadBy": 1,
-      "changedFiles": [
-        ".github/workflows/validate-pr.yml",
-        "bible-mindmap/scripts/lib/source-registry-adapter.mjs",
-        "bible-mindmap/scripts/tests/source-registry-adapter-policy.mjs"
-      ],
       "materialR4CandidateOrPinnedUsageDataChanged": false,
       "r4UsageEvidenceBuilderChangedAgain": false,
       "sourceRegistryCompatibilityPolicyChanged": true
+    },
+    "latestMainAdvance": {
+      "base": "6db2ac3bdbbdf3a45f05ad09923cf7f41dca6646",
+      "head": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+      "aheadBy": 2,
+      "changedFiles": [
+        ".github/workflows/independent-review-router.yml",
+        "docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json",
+        "memory/RESUME.json",
+        "memory/SESSION_STATE.md",
+        "memory/SYSTEM_DELTA.md"
+      ],
+      "materialR4CandidateOrPinnedUsageDataChanged": false,
+      "r4UsageEvidenceBuilderChangedAgain": false,
+      "reviewRoutingOnlyRelevantChange": true
     }
   },
   "decision": {
@@ -38,7 +46,7 @@
     "approvalRegistryWriteAllowed": false,
     "productionWriteAllowed": false,
     "externalVerdictIngestAllowedBeforeRevalidation": false,
-    "reason": "The pinned candidate/source fingerprints remain unchanged, but the earlier main drift changed the deterministic R4 usage-evidence builder. The newer main advance only hardens legacy Source Registry compatibility policy and does not remove that requirement. Exact-baseline audit integrity therefore still requires rerunning the deterministic R4 usage/evidence verifier chain against current main before accepting Claude/Gemini verdicts."
+    "reason": "The pinned candidate/source fingerprints remain unchanged and the latest main advance only adds independent-review routing plus checkpoint reconciliation. However, the earlier main drift changed the deterministic R4 usage-evidence builder, so exact-baseline audit integrity still requires rerunning the deterministic R4 usage/evidence verifier chain on current main before accepting Claude/Gemini verdicts."
   },
-  "nextGate": "RERUN_R4_DETERMINISTIC_USAGE_EVIDENCE_AND_VERIFY_OUTPUT_FINGERPRINTS_ON_CURRENT_MAIN_6DB2AC3_THEN_RESUME_CLAUDE_GEMINI_EXACT_FINGERPRINT_INTAKE"
+  "nextGate": "RERUN_R4_DETERMINISTIC_USAGE_EVIDENCE_AND_VERIFY_OUTPUT_FINGERPRINTS_ON_CURRENT_MAIN_1982D0D0_THEN_RESUME_CLAUDE_GEMINI_EXACT_FINGERPRINT_INTAKE"
 }
