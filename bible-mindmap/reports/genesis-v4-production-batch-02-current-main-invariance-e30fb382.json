@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-current-main-invariance-e30fb382",
+  "status": "CURRENT_MAIN_REVALIDATED_BY_SCOPE_INVARIANCE",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+  "priorValidatedMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+  "currentMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "compareProof": {
+    "aheadBy": 1,
+    "changedFiles": [
+      ".github/workflows/validate-pr.yml",
+      "bible-mindmap/playwright.config.js",
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/components/LexicalBridgeModalV2.jsx",
+      "bible-mindmap/src/theme/contextBibleMobileFix.css",
+      "bible-mindmap/tests/lexical-bridge-context-ui.spec.js",
+      "bible-mindmap/tests/lexical-bridge-webkit-landscape.spec.js",
+      "memory/RESUME.json"
+    ],
+    "batch02CandidateOrEvidenceInputsChanged": false,
+    "bdbSourceNodeProjectionChanged": false,
+    "approvalRegistryOrApprovedMeaningChanged": false,
+    "promotionVerifierChanged": false,
+    "note": "The only main move is PR #342 lexical-bridge/mobile UI plus generic browser CI and RESUME cache. No Genesis Batch 02 candidate/evidence, BDB source-node projection, Approval Registry, approved meaning, or Batch 02 promotion verifier path changed."
+  },
+  "frozenResearch": {
+    "researchTargets": 10,
+    "existingApprovedControl": "H430",
+    "newPromotionTargets": 9,
+    "sourceNodes": 133,
+    "koreanSenseNodes": 133,
+    "newTargetGenesisOccurrences": 2263,
+    "hold": 0,
+    "dispute": 0,
+    "promotionPrepFingerprint": "sha256:0c86278a3aaff52d971e663ad4509bcb4845a4959086727fd53fd3edb0559341",
+    "sourceNodeSetFingerprint": "sha256:1bd258aaee2f2f70df564540ebfbd0acd610c3865e0282176dface27785b9799"
+  },
+  "governance": {
+    "researchOnly": true,
+    "approvalRegistryMutation": false,
+    "productionMutation": false,
+    "existingApprovedMeaningMutation": false,
+    "qualityGateWeakening": false,
+    "selfApproval": false,
+    "promotionAuthorizedByThisReport": false
+  },
+  "conclusion": "Batch 02 frozen research/promotion-prep evidence remains reusable on current main by exact scope invariance. Any main-bound additive Registry materialization still requires a fresh exact-head promotion branch/CI/review under the current delivery policy.",
+  "nextGate": "WAIT_FOR_MAIN_BOUND_FIFO_AND_CURRENT_DELIVERY_POLICY_BOOTSTRAP; WHEN CLEAR, MATERIALIZE_9_ADDITIVE_ENTRIES_ON_FRESH_CURRENT_MAIN_AND_RUN_EXACT_HEAD_GATES"
+}
