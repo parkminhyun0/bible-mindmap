@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "lexicon-v4-luke-candidate-verifier-audit-prep/1.0",
+  "generatedAt": "2026-08-13T07:07:34+09:00",
+  "status": "AUDIT_PREP_RESEARCH_ONLY",
+  "book": "Luke",
+  "batch": "03",
+  "candidatePrepCommit": "9e47455ce6d5b30d4ba954f231e349b759e05c00",
+  "candidatePrepPath": "bible-mindmap/reports/luke-v4-production-batch-03-candidate-prep-2026-08-13.json",
+  "targets": ["G0021","G0023","G0025","G0026","G0027","G0032","G0034","G0037"],
+  "deterministicChecks": [
+    {
+      "id": "strong-lemma-identity",
+      "result": "PASS",
+      "basis": "Pinned TBESG source lock plus Batch03 selection/public-source reports",
+      "requiredForAll": true
+    },
+    {
+      "id": "pinned-source-integrity",
+      "result": "PASS",
+      "basis": "STEPBible commit b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39; TBESG blob efe271a1dbb73fa01f8fa6e0f164c6687757a9ae; TFLSJ blob db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+      "requiredForAll": true
+    },
+    {
+      "id": "exact-luke-context",
+      "result": "PASS",
+      "basis": "Existing exact-context pass A and B reports on the same Batch03 branch",
+      "requiredForAll": true
+    },
+    {
+      "id": "context-morphology-classification",
+      "result": "PASS",
+      "basis": "Existing context-classification pass C report",
+      "requiredForAll": true
+    },
+    {
+      "id": "korean-source-fidelity",
+      "result": "PASS_WITH_BOUNDARY",
+      "basis": "Candidates stay within pinned source semantic ranges and explicitly preserve ambiguity instead of collapsing senses",
+      "requiredForAll": true
+    },
+    {
+      "id": "theological-overread",
+      "result": "PASS_WITH_BOUNDARY",
+      "basis": "Explicit guards prevent doctrinal concepts from being injected into lexical cores without context evidence",
+      "requiredForAll": true
+    },
+    {
+      "id": "existing-approved-regression",
+      "result": "PASS_NO_MUTATION",
+      "basis": "Research-only files; no Approval Registry, production, approved meaning, UI or main mutation",
+      "requiredForAll": true
+    }
+  ],
+  "highRiskSenseBoundaries": [
+    {
+      "strong": "G0032",
+      "risk": "Human messenger versus heavenly angel sense collapse",
+      "requiredAuditQuestion": "Does each Luke occurrence retain the context-governed messenger/angel distinction without forcing a supernatural reading?"
+    },
+    {
+      "strong": "G0037",
+      "risk": "Sanctify/consecrate versus regard-as-holy collapse",
+      "requiredAuditQuestion": "Does object, voice and context govern whether Korean should read 거룩하게 하다, 성별하다, or 거룩히 여기다?"
+    },
+    {
+      "strong": "G0025",
+      "risk": "Theological absolutization of agapao",
+      "requiredAuditQuestion": "Does the candidate avoid defining every occurrence as a uniquely divine category of love while preserving actual contextual force?"
+    },
+    {
+      "strong": "G0026",
+      "risk": "Theological absolutization of agape",
+      "requiredAuditQuestion": "Does the lexical core remain love/goodwill/affection rather than importing a full doctrinal definition?"
+    },
+    {
+      "strong": "G0027",
+      "risk": "Passive/adjectival versus vocative/substantival Korean wording",
+      "requiredAuditQuestion": "Is 사랑받는 versus 사랑하는 이 selected by syntax/context rather than one fixed gloss?"
+    }
+  ],
+  "auditPacket": {
+    "reviewers": ["GPT","Claude","Gemini"],
+    "selfApprovalForbidden": true,
+    "externalVerdictRequired": true,
+    "allowedVerdicts": ["PASS_WITH_BOUNDARY","HOLD","DISPUTE"],
+    "samePinnedSourceRequired": true,
+    "sameCandidatePrepCommitRequired": true,
+    "verdictStatus": {
+      "GPT": "PREPARED_NOT_SELF_APPROVED",
+      "Claude": "PENDING_EXTERNAL_VERDICT",
+      "Gemini": "PENDING_EXTERNAL_VERDICT"
+    }
+  },
+  "currentResult": {
+    "prepared": 8,
+    "deterministicBlocked": 0,
+    "hold": 0,
+    "dispute": 0,
+    "promotionEligible": 0,
+    "reason": "Independent external audit not yet ingested; research candidate prep only."
+  },
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextGate": "INGEST_INDEPENDENT_CLAUDE_GEMINI_VERDICTS_ON_EXACT_CANDIDATE_PREP_COMMIT"
+}
