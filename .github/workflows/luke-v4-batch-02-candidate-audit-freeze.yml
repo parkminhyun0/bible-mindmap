@@ -1,0 +1,90 @@
+name: Luke v4 Batch 02 Candidate Audit Freeze
+
+on:
+  push:
+    branches:
+      - chatgpt/luke-v4-production-batch-02
+    paths:
+      - 'bible-mindmap/scripts/build-luke-v4-production-batch-02-contexts.mjs'
+      - 'bible-mindmap/scripts/freeze-luke-v4-production-batch-02-candidate-audit.mjs'
+      - 'bible-mindmap/reports/luke-v4-production-batch-02-source-candidate-prep-2026-08-12.json'
+      - '.github/workflows/luke-v4-batch-02-candidate-audit-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luke-v4-batch-02-candidate-audit-freeze-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-and-freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current main SSOT inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin main
+          echo "DERIVED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+          git show origin/main:bible-mindmap/data/lexicon/source-registry.json > /tmp/source-registry.json
+          git show origin/main:bible-mindmap/data/lexicon/luke-g0-source-lock.json > /tmp/luke-g0-source-lock.json
+
+      - name: Regenerate exact TAGNT evidence on current main
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-luke-v4-production-batch-02-contexts.mjs \
+            --registry=/tmp/source-registry.json \
+            --source-lock=/tmp/luke-g0-source-lock.json
+
+      - name: Freeze candidate plus context morphology baseline
+        working-directory: bible-mindmap
+        run: node scripts/freeze-luke-v4-production-batch-02-candidate-audit.mjs
+
+      - name: Verify frozen audit contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const data = JSON.parse(fs.readFileSync('reports/luke-v4-production-batch-02-candidate-audit-freeze.json', 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+          const expected = ['G0006','G0007','G0009','G0011','G0012','G0015','G0018','G0020']
+          if (data.status !== 'EXACT_CANDIDATE_CONTEXT_AUDIT_BASELINE_FROZEN_INDEPENDENT_AUDIT_REQUIRED') fail(`unexpected status: ${data.status}`)
+          if (data.derivedMain !== process.env.DERIVED_MAIN) fail(`derived main drift: ${data.derivedMain}`)
+          if (data.counts?.targets !== 8 || data.counts?.exactTargetTokens !== 41 || data.counts?.exactContextPackets !== 41 || data.counts?.lukeSblTokensObserved !== 19405) fail(`count drift: ${JSON.stringify(data.counts)}`)
+          if (data.counts?.highRiskBoundaryTargets !== 4) fail('high-risk boundary count drift')
+          if (JSON.stringify((data.targets || []).map((item) => item.strong)) !== JSON.stringify(expected)) fail('target order/identity drift')
+          if (!/^sha256:[0-9a-f]{64}$/.test(data.candidateFileFingerprint || '')) fail('candidate fingerprint invalid')
+          if (!/^sha256:[0-9a-f]{64}$/.test(data.contextMorphologyEvidenceFingerprint || '')) fail('evidence fingerprint invalid')
+          if (!/^sha256:[0-9a-f]{64}$/.test(data.auditBundleFingerprint || '')) fail('audit bundle fingerprint invalid')
+          for (const item of data.targets || []) {
+            if (!Array.isArray(item.distinctMorphologies) || item.distinctMorphologies.length < 1) fail(`${item.strong}: morphology lock missing`)
+            if (!Array.isArray(item.exactTokenIds) || item.exactTokenIds.length !== item.exactTokenCount) fail(`${item.strong}: token lock mismatch`)
+            if (!Array.isArray(item.exactRefs) || item.exactRefs.length !== item.exactTokenCount) fail(`${item.strong}: reference lock mismatch`)
+          }
+          const g = data.governance || {}
+          if (g.researchOnly !== true || g.independentAuditRequired !== true || g.candidatePromotionAllowed !== false || g.approvalRegistryWriteAllowed !== false || g.productionWriteAllowed !== false || g.existingApprovedMeaningMutationAllowed !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false) fail('governance boundary violated')
+          console.log(`candidate fingerprint ${data.candidateFileFingerprint}`)
+          console.log(`evidence fingerprint ${data.contextMorphologyEvidenceFingerprint}`)
+          console.log(`audit bundle fingerprint ${data.auditBundleFingerprint}`)
+          NODE
+
+      - name: Upload Luke batch-02 exact audit baseline
+        uses: actions/upload-artifact@v4
+        with:
+          name: luke-v4-batch-02-candidate-audit-freeze
+          path: |
+            bible-mindmap/reports/luke-v4-production-batch-02-context-morphology-evidence.json
+            bible-mindmap/reports/luke-v4-production-batch-02-candidate-audit-freeze.json
+          if-no-files-found: error
+          retention-days: 14
