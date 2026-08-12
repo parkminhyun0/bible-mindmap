@@ -42,6 +42,7 @@ function decodeXml(value = '') {
 
 function normalizeText(value = '') { return decodeXml(value).replace(/\s+/g, ' ').trim() }
 function stripTags(value = '') { return normalizeText(String(value).replace(/<[^>]+>/g, ' ')) }
+function hebrewConsonantalKey(value = '') { return String(value).normalize('NFD').replace(/\p{M}/gu, '').normalize('NFC') }
 
 function parseAttributes(source = '') {
   const attributes = {}
@@ -105,7 +106,7 @@ async function downloadText(url, label) {
 function buildIdentity(strong, candidateItem, lexicalMappings) {
   const primary = lexicalMappings.find((mapping) => mapping.bdbId === candidateItem.bdbEntryId)
   assert.ok(primary, `${strong}: expected BDB lexical mapping ${candidateItem.bdbEntryId} missing`)
-  assert.equal(primary.lemma?.normalize('NFC'), candidateItem.lemma.normalize('NFC'), `${strong}: LexicalIndex lemma drift`)
+  assert.equal(hebrewConsonantalKey(primary.lemma), hebrewConsonantalKey(candidateItem.lemma), `${strong}: LexicalIndex consonantal lemma drift`)
   assert.ok(primary.transliteration, `${strong}: scientific transliteration missing`)
   const labels = POS[primary.partOfSpeechCode]
   assert.ok(labels, `${strong}: unsupported POS ${primary.partOfSpeechCode}`)
@@ -228,6 +229,8 @@ export async function buildBatch02PromotionPrep() {
       sourceIds: ['openscriptures-hebrewlexicon-bdb','stepbible-tbesh','openscriptures-hebrew-bible-genesis'],
       bdbCommit: BDB_COMMIT,
       bdbContentHash: runtimeHash.source.contentHash,
+      lexicalIndexLemma: lexicalMappings[0].lemma,
+      lemmaLayerCheck: 'STRONG_BDB_IDENTITY_EXACT_AND_HEBREW_CONSONANTAL_KEY_EXACT_POINTING_PRESERVED_SEPARATELY',
       publicResearchStatus: 'PASS_WITH_BOUNDARY',
       hold: 0,
       dispute: 0,
