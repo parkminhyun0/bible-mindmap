@@ -2,16 +2,19 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
 import { parseReference } from '../utils/citationDetector';
+import { hasLexicalBridge } from '../data/lexicalBridgePilot';
 import MorphologyKoreanCard from './MorphologyKoreanCard';
 
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const SyntaxPanel = lazy(() => import('./SyntaxPanel'));
 const ParallelStudyModal = lazy(() => import('./ParallelStudyModal'));
+const LexicalBridgeModal = lazy(() => import('./LexicalBridgeModal'));
 
 const STEP_LABELS = {
   concordance: '전체 성경 용례',
   syntax: '이 절 구문',
   parallel: '병렬 본문',
+  bridge: '원어 브릿지',
 };
 
 const FALLBACK_STYLE = {
@@ -98,6 +101,7 @@ export default function OriginalLanguageResearchActions({
     || normalizeOriginalLanguageQuery(entry?.w)
     || entry?.s
     || '';
+  const bridgeAvailable = hasLexicalBridge(entry?.s);
 
   useEffect(() => () => onActiveChange?.(false), [onActiveChange]);
 
@@ -154,7 +158,7 @@ export default function OriginalLanguageResearchActions({
           <div style={{ marginBottom: 6, fontSize: 10, fontWeight: 800, color: '#64748b' }}>
             이 단어로 연구 이어가기
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,minmax(0,1fr))', gap: 6 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${bridgeAvailable ? 4 : 3},minmax(0,1fr))`, gap: 6 }}>
             <button
               type="button"
               aria-haspopup="dialog"
@@ -182,6 +186,18 @@ export default function OriginalLanguageResearchActions({
             >
               ⇄ 병렬 본문
             </button>
+            {bridgeAvailable && (
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                data-original-research-action="bridge"
+                onClick={(event) => openStep('bridge', event)}
+                style={{ ...buttonStyle, borderColor: '#99f6e4', background: '#f0fdfa', color: '#0f766e', fontWeight: 850 }}
+                title="이 원어의 MT–LXX–NT 연결점 보기"
+              >
+                🧬 원어 브릿지
+              </button>
+            )}
           </div>
         </section>
       )}
@@ -214,6 +230,13 @@ export default function OriginalLanguageResearchActions({
         <Suspense fallback={loading}>
           <ParallelStudyModal initialRef={sourcePassage} onClose={closeStep} />
         </Suspense>
+      )}
+
+      {step === 'bridge' && createPortal(
+        <Suspense fallback={loading}>
+          <LexicalBridgeModal initialStrong={entry?.s} onClose={closeStep} />
+        </Suspense>,
+        document.body,
       )}
     </>
   );
