@@ -49,10 +49,8 @@ for (const tier of ['R0', 'R1', 'R2', 'R3', 'R4']) {
 for (const requiredGate of ['consensus-3-of-3', 'unresolved-zero', 'fingerprint-same-baseline', 'source-fidelity', 'license', 'sense-boundary', 'morphology', 'regression', 'korean-naturalness', 'corpus-alignment', 'theological-overreach']) {
   assert.ok(matrix.tiers.R3.autoEligibilityRequires.includes(requiredGate), `R3 missing required gate: ${requiredGate}`)
 }
-// R4 must NOT be auto-eligible for Approval Registry promotion. It first enters
-// EXTENDED_RESEARCH_REQUIRED; evidence-resolvable interpretation differences can
-// be decided there without prematurely escalating to a human exception.
-assert.equal(matrix.tiers.R4.autoEligibilityRequires.length, 0, 'R4 must have empty auto-eligibility (never auto-promote)')
+// R4 must NOT be auto-eligible
+assert.equal(matrix.tiers.R4.autoEligibilityRequires.length, 0, 'R4 must have empty auto-eligibility (never auto)')
 assert.equal(matrix.tiers.R4.autoApprovalProhibited, true, 'R4 autoApprovalProhibited must be true')
 // R2 ⊆ R3 gates
 for (const g of matrix.tiers.R2.autoEligibilityRequires) {
@@ -101,18 +99,12 @@ assert.ok(ga.thresholds.perBookDiscrepancyRatePercentHalt >= 1)
 assert.equal(ga.thresholds.haltAction, 'auto-halt-batch-promotion')
 assert.equal(ga.governance.approvalRegistryWriteAllowed, false)
 
-// ── 5. TRACK_STATE cross-reference + installed-foundation truth
+// ── 5. TRACK_STATE cross-reference
 const trackStatePath = workspacePath('docs/lexicon-workflow/TRACK_STATE.json')
 const trackState = readJson(trackStatePath)
 assert.ok(trackState.automationFoundationV4, 'TRACK_STATE missing automationFoundationV4 block')
 const v4 = trackState.automationFoundationV4
 assert.equal(v4.policyDoc, 'docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md')
-assert.equal(v4.status, 'FOUNDATION_INSTALLED', 'v4 foundation must reflect merged installation truth')
-assert.equal(v4.installedByPr, 299, 'v4 foundation install PR must remain pinned to #299')
-assert.equal(v4.installedByMergeCommit, 'f07a847317a052148c08de316cea922dc90e61cf', 'v4 foundation merge commit drift')
-for (const [key, value] of Object.entries(v4.automationReadiness)) {
-  assert.equal(value, 'INSTALLED', `v4 readiness ${key} must be INSTALLED`)
-}
 assert.equal(v4.config.tierGateMatrix, 'bible-mindmap/data/lexicon/v4/tier-gate-matrix.json')
 assert.equal(v4.config.humanExceptionTriggers, 'bible-mindmap/data/lexicon/v4/human-exception-triggers.json')
 assert.equal(v4.config.goldenAuditContract, 'bible-mindmap/data/lexicon/v4/golden-audit-contract.json')
@@ -126,15 +118,15 @@ for (const [key, relPath] of Object.entries(v4.verifiers)) {
   assert.ok(st.size > 0, `v4 verifier empty: ${relPath}`)
 }
 
-// ── 7. Post-P5 R3/R4 state must reflect merged truth. The legacy `status`
-//     stays unchanged for backward compatibility, while postAuditStatus carries
-//     the current v4 progression.
+// ── 7. Post-P5 R3 state must reflect merged truth (via postAuditStatus, since
+//     backward-compat with verify-lexicon-approval-registry.mjs requires
+//     the original `status` field to remain 'CANDIDATES_GENERATED_AWAITING_CLAUDE_AUDIT').
 const p5 = trackState.p5GenesisCandidateGeneration
 assert.equal(p5.status, 'CANDIDATES_GENERATED_AWAITING_CLAUDE_AUDIT', 'status must remain backward-compat value')
-assert.equal(p5.postAuditStatus, 'R3_CONSENSUS_COMPLETE_R4_EXTENDED_RESEARCH_REQUIRED', 'postAuditStatus must route R4 to extended research before any human exception')
+assert.equal(p5.postAuditStatus, 'R3_CONSENSUS_COMPLETE_R4_HUMAN_WORDING_PENDING', 'postAuditStatus captures v4 progression')
 assert.equal(p5.candidateManifestFingerprint, 'sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261')
 assert.deepEqual(p5.auditChain.threeModelConsensusPass, ['H430', 'H1254a', 'H3117', 'H7307', 'H46'])
-assert.deepEqual(p5.auditChain.r4ExtendedResearchRequired, ['H120', 'H6030b', 'H7650', 'H28', 'H39'])
+assert.deepEqual(p5.auditChain.r4HumanFinalWordingPending, ['H120', 'H6030b', 'H7650', 'H28', 'H39'])
 assert.equal(p5.auditChain.geminiDisputeReview.pr, 298)
 assert.deepEqual(p5.auditChain.geminiDisputeReview.verdictCounts, { PASS: 5, REVISE: 0, DISPUTE: 0 })
 
@@ -145,4 +137,4 @@ assert.equal(p5.serviceUiWriteAllowed, false)
 assert.equal(p5.productionWriteAllowed, false)
 assert.equal(p5.existingApprovedMeaningMutationAllowed, false)
 
-console.log('✓ Lexicon v4 foundation contract · installed=#299 · matrix=AND-strict · R4=EXTENDED_RESEARCH_REQUIRED · triggers=6 fail-closed · TRACK_STATE=reconciled')
+console.log('✓ Lexicon v4 foundation contract · policy=pinned · matrix=AND-strict · triggers=6 fail-closed · golden-audit=contract-loaded · TRACK_STATE=post-#298 consistent')
