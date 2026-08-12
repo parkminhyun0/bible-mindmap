@@ -102,6 +102,7 @@ export default function OriginalLanguageResearchActions({
     || entry?.s
     || '';
   const bridgeAvailable = hasLexicalBridge(entry?.s);
+  const researchActionCount = (hasPassage ? 3 : 0) + (bridgeAvailable ? 1 : 0);
 
   useEffect(() => () => onActiveChange?.(false), [onActiveChange]);
 
@@ -144,11 +145,11 @@ export default function OriginalLanguageResearchActions({
         <MorphologyKoreanCard code={entry.m} isHebrew={isHebrew} />
       </div>
 
-      {hasPassage && (
+      {researchActionCount > 0 && (
         <section
           aria-label="원어 단어 연구 이어가기"
           data-original-language-research-actions
-          data-origin-passage={`${sourcePassage.bookId}-${sourcePassage.chapter}-${sourcePassage.verseStart}-${sourcePassage.verseEnd}`}
+          data-origin-passage={hasPassage ? `${sourcePassage.bookId}-${sourcePassage.chapter}-${sourcePassage.verseStart}-${sourcePassage.verseEnd}` : undefined}
           style={{
             padding: '9px 12px',
             borderTop: '1px solid #e2e8f0',
@@ -158,34 +159,38 @@ export default function OriginalLanguageResearchActions({
           <div style={{ marginBottom: 6, fontSize: 10, fontWeight: 800, color: '#64748b' }}>
             이 단어로 연구 이어가기
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${bridgeAvailable ? 4 : 3},minmax(0,1fr))`, gap: 6 }}>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="concordance"
-              onClick={(event) => openStep('concordance', event)}
-              style={buttonStyle}
-            >
-              🔎 전체 성경 용례
-            </button>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="syntax"
-              onClick={(event) => openStep('syntax', event)}
-              style={buttonStyle}
-            >
-              🔤 이 절 구문
-            </button>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="parallel"
-              onClick={(event) => openStep('parallel', event)}
-              style={buttonStyle}
-            >
-              ⇄ 병렬 본문
-            </button>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${researchActionCount},minmax(0,1fr))`, gap: 6 }}>
+            {hasPassage && (
+              <>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="concordance"
+                  onClick={(event) => openStep('concordance', event)}
+                  style={buttonStyle}
+                >
+                  🔎 전체 성경 용례
+                </button>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="syntax"
+                  onClick={(event) => openStep('syntax', event)}
+                  style={buttonStyle}
+                >
+                  🔤 이 절 구문
+                </button>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="parallel"
+                  onClick={(event) => openStep('parallel', event)}
+                  style={buttonStyle}
+                >
+                  ⇄ 병렬 본문
+                </button>
+              </>
+            )}
             {bridgeAvailable && (
               <button
                 type="button"
