@@ -90,6 +90,9 @@ jobs:
       - name: Verify Genesis P5 R3 promotion exact evidence projection
         working-directory: bible-mindmap
         run: node scripts/verify-genesis-p5-r3-registry-promotion.mjs
+      - name: Verify Genesis Batch 03 additive Registry promotion exact projection
+        working-directory: bible-mindmap
+        run: node scripts/verify-genesis-v4-batch-03-registry-promotion.mjs
       - name: Verify P4 read-only delivery, loader and rich drawer SSOT contract
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-delivery-loader.mjs
