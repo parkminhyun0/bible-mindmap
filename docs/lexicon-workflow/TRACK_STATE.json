@@ -76,7 +76,8 @@
     "p4-live-screen-confirmed-v1",
     "p5-genesis-gold-25-selection-contract-v1",
     "p5-genesis-gold-25-evidence-readiness-live-v1",
-    "p5-genesis-gpt-candidate-bundle-v1"
+    "p5-genesis-gpt-candidate-bundle-v1",
+    "lexicon-v4-automation-foundation-installed-v1"
   ],
   "goldenReference": {
     "id": "GEN-1-1-H776",
@@ -397,7 +398,7 @@
         "H7307",
         "H46"
       ],
-      "r4HumanFinalWordingPending": [
+      "r4ExtendedResearchRequired": [
         "H120",
         "H6030b",
         "H7650",
@@ -405,10 +406,10 @@
         "H39"
       ]
     },
-    "postAuditStatus": "R3_CONSENSUS_COMPLETE_R4_HUMAN_WORDING_PENDING",
-    "postAuditStatusNote": "Progress marker for v4 pipeline. Original .status preserved for backward-compatible verify-lexicon-approval-registry.mjs checkpoint assertion."
+    "postAuditStatus": "R3_CONSENSUS_COMPLETE_R4_EXTENDED_RESEARCH_REQUIRED",
+    "postAuditStatusNote": "Current v4 governance marker. Original .status is retained only for backward-compatible approval-registry checkpoint assertions."
   },
-  "nextAction": "v4 Automation Foundation PR CI 통과·독립 reviewer APPROVE 후 v4 auto-merge 계약 검증. R3 5건 승격은 별도 PR, R4 5건은 EXTENDED_RESEARCH_REQUIRED 큐로 이동.",
+  "nextAction": "Genesis R4 5건은 current-main deterministic usage/evidence를 재검증한 뒤 EXTENDED_RESEARCH_REQUIRED lane에서 추가 조사한다. Luke independent audit은 pinned baseline으로 병렬 진행하며 dependent main PR은 FIFO 1개를 유지한다.",
   "autonomousAllowed": [
     "read_and_reconcile_state",
     "verify_source_license_registration",
@@ -421,12 +422,12 @@
   "humanGates": [
     "unknown_or_prohibited_license",
     "external_license_clarification_outreach",
-    "R3_or_R4_final_wording",
     "change_existing_approved_meaning",
-    "unresolved_source_or_model_conflict",
-    "approval_registry_promotion",
-    "production_release",
-    "live_screen_confirmation",
+    "unresolved_source_or_model_conflict_after_extended_research",
+    "theology_policy_change",
+    "security_cost_permission",
+    "golden_audit_regression",
+    "live_screen_confirmation_for_ui_visible_change",
     "phase_transition_without_independent_audit_block"
   ],
   "deprecatedDefaultPaths": [
@@ -445,16 +446,16 @@
   "automationFoundationV4": {
     "schemaVersion": 1,
     "policyDoc": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md",
-    "status": "FOUNDATION_INSTALLING",
-    "installedByPr": null,
-    "installedByMergeCommit": null,
+    "status": "INSTALLED",
+    "installedByPr": 299,
+    "installedByMergeCommit": "f07a847317a052148c08de316cea922dc90e61cf",
     "automationReadiness": {
-      "tierRouter": "INSTALLING",
-      "multiModelConsensusGate": "INSTALLING",
-      "universalRegistryRegression": "INSTALLING",
-      "goldenAuditSampleContract": "INSTALLING",
-      "reviewerScopedAutoMerge": "INSTALLING",
-      "humanExceptionRouting": "INSTALLING"
+      "tierRouter": "READY",
+      "multiModelConsensusGate": "READY",
+      "universalRegistryRegression": "READY",
+      "goldenAuditSampleContract": "READY",
+      "reviewerScopedAutoMerge": "READY",
+      "humanExceptionRouting": "READY"
     },
     "config": {
       "tierGateMatrix": "bible-mindmap/data/lexicon/v4/tier-gate-matrix.json",
@@ -493,6 +494,6 @@
       "CI required check fail"
     ],
     "currentMergeableWithoutHumanApproval": false,
-    "currentMergeableReason": "v4 foundation not yet installed; existing safe-auto-merge continues to require chatgpt/ branch prefix"
+    "currentMergeableReason": "v4 foundation is installed; current P5 bundle is not promotable as a whole because R4 5 items remain in EXTENDED_RESEARCH_REQUIRED and approval/production write flags remain false"
   }
 }
