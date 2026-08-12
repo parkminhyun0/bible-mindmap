@@ -1,0 +1,145 @@
+{
+  "schemaVersion": "lexicon-v4-genesis-production-source-node-pass-v1",
+  "generatedAt": "2026-08-13T05:21:00+09:00",
+  "book": "Genesis",
+  "batch": "04",
+  "derivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchOnly": true,
+  "sourcePolicy": {
+    "primary": {
+      "id": "openscriptures-hebrewlexicon-bdb",
+      "repository": "openscriptures/HebrewLexicon",
+      "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "lexicalIndexPath": "LexicalIndex.xml",
+      "lexicalIndexBlob": "d11eb2078532f3119c70822bd27a91b484d4727b",
+      "contentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+      "license": "CC-BY-4.0",
+      "role": "primary full BDB hierarchy / Strong-to-BDB node identity"
+    },
+    "secondary": {
+      "id": "stepbible-tbesh",
+      "repository": "STEPBible/STEPBible-Data",
+      "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+      "path": "Lexicons/TBESH - Translators Brief lexicon of Extended Strongs for Hebrew - STEPBible.org CC BY.txt",
+      "blob": "a64990a674d13245ae1e9ed426bc69197c2fbad5",
+      "contentHash": "sha256:da09f53ee1da7606b5d8a10cd2a263b3553df15b5fa0e36dda9c7707c6883988",
+      "license": "CC-BY-4.0",
+      "role": "secondary abridged source-node control only; never substitutes for full BDB hierarchy"
+    }
+  },
+  "targets": [
+    {
+      "strong": "H3130",
+      "lemma": "יוֹסֵף",
+      "genesisOccurrences": 156,
+      "firstGenesisRef": "Gen.30.24",
+      "bdb": {"lexicalIndexEntry": "eyg", "bdbNode": "j.bz.ab", "pos": "Np", "definition": "Joseph"},
+      "tbeshNodes": ["H3130G"],
+      "sourceBoundary": "Genesis patriarch Joseph is the H3130G person node. Keep the proper name as the lexical head; etymological wording belongs in provenance/etymology, not as a replacement head meaning.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H5414",
+      "lemma": "נָתַן",
+      "genesisOccurrences": 150,
+      "firstGenesisRef": "Gen.1.17",
+      "bdb": {"lexicalIndexEntry": "iow", "bdbNode": "n.gg.aa", "pos": "V", "definition": "give", "twot": "1443"},
+      "tbeshNodes": ["H5414G", "H5414H", "H5414I", "H5414J", "H5414K", "H5414L", "H5414M", "H5414N", "H5414O", "H5414P", "H5414Q"],
+      "sourceBoundary": "Do not flatten to one Korean gloss. Base give plus put/set, make, allow, throw/deliver, pay, marriage, action and idiomatic submeanings must be routed by actual Genesis morphology/context and full BDB hierarchy.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H854",
+      "lemma": "אֵת",
+      "genesisOccurrences": 142,
+      "firstGenesisRef": "Gen.4.1",
+      "bdb": {"lexicalIndexEntry": "bhs", "bdbNode": "a.gn.aa", "pos": "R", "definition": "with", "twot": "187"},
+      "tbeshNodes": ["H0854"],
+      "sourceBoundary": "Preposition 'with/near/together with'; must remain distinct from H0853 definite direct-object marker despite identical consonantal form.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H3947",
+      "lemma": "לָקַח",
+      "genesisOccurrences": 142,
+      "firstGenesisRef": "Gen.2.15",
+      "bdb": {"lexicalIndexEntry": "ggz", "bdbNode": "l.bx.aa", "pos": "V", "definition": "take", "twot": "1124"},
+      "tbeshNodes": ["H3947G", "H3947H", "H3947I", "H3947J", "H3947K", "H3947L"],
+      "sourceBoundary": "Preserve take/receive/marry/bring/buy and related stem/context distinctions; exact Korean wording waits for representative Genesis context and full BDB hierarchy pass.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H85",
+      "lemma": "אַבְרָהָם",
+      "genesisOccurrences": 133,
+      "firstGenesisRef": "Gen.17.5",
+      "bdb": {"lexicalIndexEntry": "adk", "bdbNode": "a.ae.aw", "pos": "Np", "definition": "Abraham", "twot": "4b"},
+      "tbeshNodes": ["H0085"],
+      "sourceBoundary": "Proper-name head is Abraham/아브라함. 'father/chief of a multitude' is etymological provenance and must not replace the proper-name head.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H2009",
+      "lemma": "הִנֵּה",
+      "genesisOccurrences": 118,
+      "firstGenesisRef": "Gen.1.29",
+      "bdb": {"lexicalIndexEntry": "dck", "bdbNode": "e.bz.ab", "pos": "Tm", "definition": "lo!", "twot": "510a"},
+      "tbeshNodes": ["H2009"],
+      "sourceBoundary": "Presentative/interjection 'behold/lo/see' with context-sensitive Korean rendering; do not over-lexicalize discourse force into theology.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H1323",
+      "lemma": "בַּת",
+      "genesisOccurrences": 110,
+      "firstGenesisRef": "Gen.5.4",
+      "bdb": {"lexicalIndexEntry": "cav", "bdbNode": "b.ca.at", "pos": "N", "definition": "daughter", "twot": "254b"},
+      "tbeshNodes": ["H1323G", "H1323H", "H1323I"],
+      "sourceBoundary": "Generic daughter/girl/female descendant and extended daughter-village/personification uses must remain separate from the Bath-Shua proper-name node H1323I; context decides subnode.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H1004",
+      "lemma": "בַּיִת / בֵּית",
+      "genesisOccurrences": 109,
+      "firstGenesisRef": "Gen.6.14",
+      "bdb": {"lexicalIndexEntries": ["boe", "bog"], "bdbNodes": ["b.bo.ad", "b.bp.aa"], "aug": ["a", "b"], "definitions": ["between", "house"]},
+      "tbeshNodes": ["H1004A", "H1004B", "H1004M", "H1004N", "H1004O", "H1004P", "H1004Q"],
+      "sourceBoundary": "Strong H1004 spans an augmented lexical split. Genesis sample מִ/בַּיִת is the house/home node, but batch processing must preserve aug-a/aug-b identity and house/home/household/container/inside branches rather than collapse them.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H8033",
+      "lemma": "שָׁם",
+      "genesisOccurrences": 101,
+      "firstGenesisRef": "Gen.2.8",
+      "bdb": {"lexicalIndexEntry": "myh", "bdbNode": "v.dv.aa", "pos": "D", "definition": "there", "twot": "2404"},
+      "tbeshNodes": ["H8033G", "H8033H"],
+      "sourceBoundary": "Adverb there/thither/from-there/then; H8033H is a later compound-name relation and is not the default Genesis lexical head.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "H3027",
+      "lemma": "יָד",
+      "genesisOccurrences": 95,
+      "firstGenesisRef": "Gen.3.22",
+      "bdb": {"lexicalIndexEntry": "eug", "bdbNode": "j.aq.aa", "pos": "N", "definition": "hand", "twot": "844"},
+      "tbeshNodes": ["H3027G", "H3027H", "H3027I", "H3027J", "H3027K", "H3027L", "H3027M", "H3027N", "H3027O", "H3027P", "H3027Q", "H3027R", "H3027S", "H3027T", "H3027U", "H3027V", "H3027W", "H3027X"],
+      "sourceBoundary": "Anatomical hand is only the base branch. Power/strength, side/portion and idiomatic/technical branches must be context-routed; no single Korean gloss may stand for the full hierarchy.",
+      "sourceNodeVerdict": "PASS_WITH_BOUNDARY"
+    }
+  ],
+  "summary": {
+    "targets": 10,
+    "genesisOccurrences": 1256,
+    "sourceNodePassWithBoundary": 10,
+    "hold": 0,
+    "dispute": 0,
+    "primaryBdbIdentityPinned": 10,
+    "secondaryTbeshIdentityPinned": 10,
+    "approvedMeaningMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "nextGate": "EXTRACT_REPRESENTATIVE_GENESIS_CONTEXT_AND_MORPHOLOGY_THEN_CROSSCHECK_FULL_BDB_SENSE_HIERARCHY_BEFORE_KOREAN_CANDIDATE_PROMOTION"
+}
