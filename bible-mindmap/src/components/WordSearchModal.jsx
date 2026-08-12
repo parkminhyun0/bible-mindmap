@@ -451,7 +451,7 @@ function DictionaryPanel({
               )}
             </section>
 
-            <ApprovedKoreanLexiconPane strong={strong} fs={fz} />
+            <ApprovedKoreanLexiconPane strong={strong} />
           </div>
         </div>
 
@@ -622,7 +622,7 @@ function LemmaGroup({ group, showDict, onToggleDict, fs, viewMode, verseMap, sea
     setFilterBook(null);
     setFilterForm(null);
     setShowAllForms(false);
-  }, [group.strong]);
+  }, [group.key]);
 
   const formEntries = [...formStats.entries()];
   const previewCount = isMobile ? 6 : 10;

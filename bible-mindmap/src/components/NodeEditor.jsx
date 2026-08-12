@@ -4,7 +4,6 @@ import { fetchCrossRefs } from '../api/crossrefApi';
 import { isOT } from '../data/bibleBooks';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import Underline from '@tiptap/extension-underline';
 import { TextStyle } from '@tiptap/extension-text-style';
 import { Color } from '@tiptap/extension-color';
 import TextAlign from '@tiptap/extension-text-align';
@@ -85,7 +84,6 @@ export default function NodeEditor({
     immediatelyRender: false,
     extensions: [
       StarterKit,
-      Underline,
       TextStyle,
       Color,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),

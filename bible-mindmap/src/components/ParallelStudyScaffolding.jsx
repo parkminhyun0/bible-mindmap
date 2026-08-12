@@ -213,7 +213,7 @@ export function ActiveCoursePanel({ course, currentStepIdx, onStepClick, onExit 
             <li key={i}>
               <button type="button" onClick={() => onStepClick(i)}
                 style={{
-                  width: '100%', textAlign: 'left', border: 'none', cursor: 'pointer',
+                  width: '100%', textAlign: 'left', cursor: 'pointer',
                   padding: '7px 9px', borderRadius: 7, fontSize: 11, lineHeight: 1.5,
                   background: active ? '#0f766e' : done ? '#ccfbf1' : '#fff',
                   color: active ? '#fff' : done ? '#0f766e' : '#334155',
@@ -295,7 +295,7 @@ export function LensDetailPanel({ lens }) {
         </div>
         <div>
           <div style={{ fontSize: 10, fontWeight: 800, color: lens.tone, marginBottom: 3 }}>단계별 워크플로우</div>
-          <ol style={{ margin: 0, paddingLeft: 16, fontSize: 10.5, color: '#334155', lineHeight: 1.55, listStyle: 'none', paddingLeft: 0 }}>
+          <ol style={{ margin: 0, fontSize: 10.5, color: '#334155', lineHeight: 1.55, listStyle: 'none', paddingLeft: 0 }}>
             {lens.workflow.map((w, i) => <li key={i}>{w}</li>)}
           </ol>
         </div>

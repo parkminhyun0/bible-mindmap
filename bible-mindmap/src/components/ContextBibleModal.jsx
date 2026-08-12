@@ -694,7 +694,8 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     scrollRef.current.querySelectorAll('[data-verse]').forEach(el => io.observe(el));
     obsRef.current = io;
     return () => io.disconnect();
-  }, [chReady]);
+    // chapters 의존성: 재시도(retryFailed)로 뒤늦게 추가된 장의 절 요소도 다시 관찰 대상에 포함
+  }, [chReady, chapters]);
 
   // ── initialRef 로 자동 스크롤 (챕터 로드 완료 후 한 번만) ─────────────
   useEffect(() => {
@@ -871,6 +872,9 @@ export default function ContextBibleModal({ onClose, initialRef }) {
   }, []);
 
   // ── 학습 스캐폴딩 핸들러 ──────────────────────────────────────────
+  // 다른 책의 코스 선택 시: 책 전환 → 챕터 리로드로 기존 DOM이 사라지므로
+  // 즉시 스크롤 대신 목표를 보관했다가 새 책 챕터 로드 완료 후 스크롤한다.
+  const pendingCourseScrollRef = useRef(null);
   const handleSelectContextCourse = useCallback((course) => {
     if (!course) {
       setActiveCourse(null);
@@ -879,9 +883,6 @@ export default function ContextBibleModal({ onClose, initialRef }) {
     }
     setActiveCourse(course);
     setCurrentStepIdx(0);
-    if (course.book && course.book !== activeBookId) {
-      setActiveBookId(course.book);
-    }
     if (course.recommendedLensIds?.[0]) setSelectedLensId(course.recommendedLensIds[0]);
     const firstCh = course.chapterRange?.[0] || 1;
     const firstVerse = course.focusVerses?.[0]
@@ -889,8 +890,21 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           ? Number(String(course.focusVerses[0]).split(':')[1]) || 1
           : Number(course.focusVerses[0]) || 1)
       : 1;
-    setTimeout(() => scrollTo(firstCh, firstVerse), 60);
+    if (course.book && course.book !== activeBookId) {
+      pendingCourseScrollRef.current = { ch: firstCh, verse: firstVerse };
+      setActiveBookId(course.book);
+    } else {
+      setTimeout(() => scrollTo(firstCh, firstVerse), 60);
+    }
   }, [activeBookId, scrollTo]);
+
+  // 책 전환 코스의 대기 스크롤 — 목표 챕터가 로드되면 1회 실행
+  useEffect(() => {
+    const pending = pendingCourseScrollRef.current;
+    if (!pending || !chReady || !chapters[pending.ch]) return;
+    pendingCourseScrollRef.current = null;
+    scrollTo(pending.ch, pending.verse);
+  }, [chReady, chapters, scrollTo]);
 
   const handleContextStepClick = useCallback((idx, step) => {
     setCurrentStepIdx(idx);
