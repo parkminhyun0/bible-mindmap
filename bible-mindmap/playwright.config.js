@@ -1,4 +1,4 @@
-import { defineConfig } from 'playwright/test';
+import { defineConfig, devices } from 'playwright/test';
 
 export default defineConfig({
   testDir: './tests',
@@ -23,6 +23,13 @@ export default defineConfig({
         launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH
           ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH }
           : undefined,
+      },
+    },
+    {
+      name: 'webkit-iphone',
+      use: {
+        ...devices['iPhone 13'],
+        browserName: 'webkit',
       },
     },
   ],
