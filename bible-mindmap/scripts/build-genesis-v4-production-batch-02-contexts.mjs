@@ -193,4 +193,12 @@ function main() {
   console.log(`✓ Genesis batch-02 contexts · targets=${report.counts.targets} · occurrences=${report.counts.totalOccurrences} · samples=${report.counts.sampledContexts}`)
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) main()
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
+  main()
+  const { buildBatch02BdbSourceHashLock } = await import('./build-genesis-v4-production-batch-02-bdb-source-hash-lock.mjs')
+  const hashLock = await buildBatch02BdbSourceHashLock()
+  const report = JSON.parse(readFileSync(DEFAULT_OUTPUT, 'utf8'))
+  report.runtimeBdbSourceHashLock = hashLock
+  writeFileSync(DEFAULT_OUTPUT, `${JSON.stringify(report, null, 2)}\n`, 'utf8')
+  console.log(`✓ Batch 02 BDB source-node hash lock diagnostic · nodes=${hashLock.counts.sourceNodes}/133 · fixtures=${hashLock.historicalFixtureValidation.status}`)
+}
