@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-current-main-invariance-005a64c3",
+  "status": "CURRENT_MAIN_REVALIDATED_BY_PINNED_EVIDENCE_INVARIANCE",
+  "currentMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+  "priorPublicResearchReconcileMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+  "targets": ["H430","H3068","H1","H1121","H1961","H376","H802","H559","H6213","H7200"],
+  "pinnedEvidence": {
+    "sourceCandidatePrep": "reports/genesis-v4-production-batch-02-source-candidate-prep-2026-08-12.json",
+    "contextEvidence": "reports/genesis-v4-production-batch-02-contexts.json",
+    "tbeshSourceLock": "reports/genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12.json",
+    "bdbSourceLock": "reports/genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12.json",
+    "tbeshCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "openscripturesBdbCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "oshbGenesisDigest": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+    "fullContextArtifactDigest": "sha256:4db7d2ca86e1a17763176bebb74d4a60631086212e376036925cdb517ee91702",
+    "totalGenesisOccurrences": 2482,
+    "sampledContexts": 30
+  },
+  "mainCompare": {
+    "base": "9354587035437d9bcf103165ba3a12c5229353f2",
+    "head": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "commits": 19,
+    "batch02PinnedCorpusOrSourceLockChanged": false,
+    "relevantChangesObserved": [
+      "Genesis Batch 03 Approval Registry/delivery outputs",
+      "Lexicon Evidence workflow step for Batch 03",
+      "Lexical Bridge UI and tests"
+    ]
+  },
+  "governance": {
+    "evidenceReuseIsFingerprintAddressed": true,
+    "requiredVerifierMayBeSkippedBecauseOfReuse": false,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "PUBLIC_RESEARCH_SYNTHESIS_ON_UNCHANGED_2482_OCCURRENCE_30_CONTEXT_BASELINE"
+}
