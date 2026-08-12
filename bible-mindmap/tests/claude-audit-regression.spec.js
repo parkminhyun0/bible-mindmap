@@ -49,6 +49,8 @@ test.describe('모바일 문맥 성경 코스 이동', () => {
     const initialDialog = page.getByRole('dialog', { name: /문맥 성경/ });
     await expect(initialDialog).toBeVisible();
 
+    // 가이드 코스는 학습 스캐폴딩을 펼친 뒤 노출된다.
+    await initialDialog.getByRole('button', { name: '학습 스캐폴딩 펼치기' }).click();
     await initialDialog.getByRole('button', { name: /요한계시록 4-5장 · 보좌와 어린양의 예배/ }).click();
     const revelationDialog = page.getByRole('dialog', { name: '문맥 성경 · 요한계시록' });
     await expect(revelationDialog).toBeVisible({ timeout: 15_000 });
