@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "testament": "NT",
+  "stage": "EVIDENCE_FIRST_RESEARCH_SELECTION",
+  "generatedDate": "2026-08-12",
+  "researchOnly": true,
+  "productionWriteAllowed": false,
+  "approvalRegistryWriteAllowed": false,
+  "existingApprovedMeaningMutationAllowed": false,
+  "baseResearchBranch": "chatgpt/luke-v4-first-10-candidate-prep",
+  "canonicalInventory": {
+    "path": "bible-mindmap/data/lexicon/luke-g0-inventory.json",
+    "blobSha": "488a557b64029d3be218e5bbf526234eb173cc1f",
+    "summary": {
+      "tagntSblTokenCount": 19405,
+      "tagntUniqueStrongCount": 2031,
+      "existingKoreanStrongCount": 52,
+      "newTranslationStrongCount": 1979
+    }
+  },
+  "selectionPolicy": {
+    "rule": "Take the earliest canonical Strong rows in ascending inventory order that are not in the established representative first-10 set and are marked existingKorean=false. Stop at a deliberately small low-risk bootstrap slice before expanding the batch.",
+    "excludedRepresentativeFirst10": [
+      "G0002",
+      "G0932",
+      "G1342",
+      "G2316",
+      "G3004",
+      "G3137",
+      "G3341",
+      "G3686",
+      "G4151",
+      "G4982"
+    ],
+    "whyEight": "The canonical inventory excerpt deterministically exposes the next eight unprocessed rows through G20. The batch is intentionally not padded with guessed IDs; later rows must be read from the pinned inventory before expansion."
+  },
+  "selected": [
+    {
+      "strong": "G0006",
+      "inventoryStrong": "G6",
+      "lemma": "Ἄβελ",
+      "transliteration": "Habel",
+      "inventoryGloss": "Abel",
+      "tokenCount": 1,
+      "verseCount": 1,
+      "firstRef": "Luke 11:51",
+      "existingKorean": false,
+      "riskNotes": ["proper-name identity", "Hebrew-name transliteration boundary"]
+    },
+    {
+      "strong": "G0007",
+      "inventoryStrong": "G7",
+      "lemma": "Ἀβιά",
+      "transliteration": "Abia",
+      "inventoryGloss": "Abijah",
+      "tokenCount": 1,
+      "verseCount": 1,
+      "firstRef": "Luke 1:5",
+      "existingKorean": false,
+      "riskNotes": ["proper-name identity", "OT priestly-course name mapping"]
+    },
+    {
+      "strong": "G0009",
+      "inventoryStrong": "G9",
+      "lemma": "Ἀβιληνή",
+      "transliteration": "Abilēnēs",
+      "inventoryGloss": "Abilene",
+      "tokenCount": 1,
+      "verseCount": 1,
+      "firstRef": "Luke 3:1",
+      "existingKorean": false,
+      "riskNotes": ["place-name identity", "Korean conventional spelling"]
+    },
+    {
+      "strong": "G0011",
+      "inventoryStrong": "G11",
+      "lemma": "Ἀβραάμ",
+      "transliteration": "Abraam",
+      "inventoryGloss": "Abraham",
+      "tokenCount": 15,
+      "verseCount": 14,
+      "firstRef": "Luke 1:55",
+      "existingKorean": false,
+      "riskNotes": ["proper-name identity", "canonical Korean Bible name must remain distinct from etymology"]
+    },
+    {
+      "strong": "G0012",
+      "inventoryStrong": "G12",
+      "lemma": "ἄβυσσος",
+      "transliteration": "abusson",
+      "inventoryGloss": "abyss",
+      "tokenCount": 1,
+      "verseCount": 1,
+      "firstRef": "Luke 8:31",
+      "existingKorean": false,
+      "riskNotes": ["theological-domain term", "context/sense boundary required"]
+    },
+    {
+      "strong": "G0015",
+      "inventoryStrong": "G15",
+      "lemma": "ἀγαθοποιέω",
+      "transliteration": "agathopoieō",
+      "inventoryGloss": "to do good",
+      "tokenCount": 4,
+      "verseCount": 3,
+      "firstRef": "Luke 6:9",
+      "existingKorean": false,
+      "riskNotes": ["verbal aspect/morphology", "do-good semantic boundary"]
+    },
+    {
+      "strong": "G0018",
+      "inventoryStrong": "G18",
+      "lemma": "ἀγαθός",
+      "transliteration": "agathos",
+      "inventoryGloss": "good-doer",
+      "tokenCount": 16,
+      "verseCount": 13,
+      "firstRef": "Luke 1:53",
+      "existingKorean": false,
+      "riskNotes": ["polysemy", "adjectival/substantival morphology", "inventory gloss requires dictionary cross-check"]
+    },
+    {
+      "strong": "G0020",
+      "inventoryStrong": "G20",
+      "lemma": "ἀγαλλίασις",
+      "transliteration": "agalliasis",
+      "inventoryGloss": "joy",
+      "tokenCount": 2,
+      "verseCount": 2,
+      "firstRef": "Luke 1:14",
+      "existingKorean": false,
+      "riskNotes": ["joy/exultation nuance", "Luke-context cross-check required"]
+    }
+  ],
+  "selectedCount": 8,
+  "selectedTokenCount": 41,
+  "nextGate": [
+    "Materialize the same pinned TBESG/TFLSJ lexical rows for all eight Strong IDs.",
+    "Collect exact Luke usage/context and morphology from the pinned canonical inventory/TAGNT assets.",
+    "Generate Korean candidates only after source-node and sense boundaries are established.",
+    "Run deterministic verifier and prepare genuinely independent GPT/Claude/Gemini audit packages on identical fingerprints.",
+    "Isolate HOLD/DISPUTE items without blocking the rest."
+  ],
+  "invariants": [
+    "No Approval Registry write.",
+    "No production write.",
+    "No existing approved meaning mutation.",
+    "No self-approval or substitution for independent external audit.",
+    "Do not infer unobserved Strong rows to fill a desired batch size."
+  ]
+}
