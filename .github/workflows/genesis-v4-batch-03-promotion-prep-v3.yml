@@ -1,0 +1,131 @@
+name: Genesis v4 Batch 03 Promotion Prep v3
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-03
+    paths:
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-bdb-source-node-korean-map-v3.json'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-public-research-v2-freeze.json'
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-03-promotion-prep-v3.mjs'
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-03-evidence.mjs'
+      - '.github/workflows/genesis-v4-batch-03-promotion-prep-v3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-03-promotion-prep-v3-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-promotion-prep-v3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current main control inputs
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          DERIVED_MAIN="$(git rev-parse origin/main)"
+          echo "DERIVED_MAIN=$DERIVED_MAIN" >> "$GITHUB_ENV"
+          git show origin/main:bible-mindmap/data/lexicon/source-registry.json > /tmp/current-main-source-registry.json
+          git show origin/main:bible-mindmap/data/lexicon/approval-registry.json > /tmp/current-main-approval-registry.json
+          git show origin/main:docs/lexicon-workflow/TRACK_STATE.json > /tmp/current-main-track-state.json
+          cp /tmp/current-main-source-registry.json bible-mindmap/data/lexicon/source-registry.json
+          echo "current main $DERIVED_MAIN"
+
+      - name: Regenerate pinned lexical evidence against current main
+        working-directory: bible-mindmap
+        run: >-
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs
+          --out=reports/genesis-v4-production-batch-03-evidence-current-v3.json
+
+      - name: Build research-only promotion prep v3
+        working-directory: bible-mindmap
+        run: >-
+          node scripts/build-genesis-v4-production-batch-03-promotion-prep-v3.mjs
+          --registry=/tmp/current-main-approval-registry.json
+          --track-state=/tmp/current-main-track-state.json
+          --out=reports/genesis-v4-production-batch-03-promotion-prep-v3.json
+
+      - name: Verify H776-parity source projection and evidence fingerprints
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const crypto = require('crypto')
+          const report = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-promotion-prep-v3.json', 'utf8'))
+          const freeze = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-public-research-v2-freeze.json', 'utf8'))
+          const fail = (m) => { throw new Error(m) }
+          const canonicalize = (v) => Array.isArray(v) ? v.map(canonicalize) : (v && typeof v === 'object') ? Object.fromEntries(Object.keys(v).sort().map(k => [k, canonicalize(v[k])])) : v
+          const sha = (v) => 'sha256:' + crypto.createHash('sha256').update(JSON.stringify(canonicalize(v))).digest('hex')
+          const without = (v, key) => { const c = structuredClone(v); delete c[key]; return sha(c) }
+          if (report.status !== 'RESEARCH_ONLY_PROMOTION_PREP_READY_75_OF_75_CURRENT_MAIN_REGISTRY_VERIFIED') fail(`status ${report.status}`)
+          if (report.currentDerivedMain !== process.env.DERIVED_MAIN) fail('current main drift')
+          if (report.counts?.targets !== 10 || report.counts?.newEntries !== 10 || report.counts?.existingTargetEntries !== 0) fail('new-entry count drift')
+          if (report.counts?.bdbSourceNodes !== 75 || report.counts?.proposedSenseNodes !== 75 || report.counts?.sourceNodeCoverage !== '75/75') fail('75/75 source projection required')
+          if (report.counts?.totalGenesisOccurrences !== 2529 || report.counts?.representativeContexts !== 30 || report.counts?.bdbEntries !== 13) fail('evidence counts drift')
+          if (report.h776Regression?.present !== true || report.h776Regression?.approvedSenseCount !== 26 || report.h776Regression?.reviewer?.reviewerType !== 'human') fail('H776 golden regression')
+          if (report.v2Freeze?.candidateFileFingerprint !== freeze.candidateFileFingerprint) fail('v2 candidate fingerprint drift')
+          if (report.v2Freeze?.publicResearchMatrixFingerprint !== freeze.publicResearchMatrixFingerprint) fail('public research matrix drift')
+          if (report.v2Freeze?.evidenceContentFingerprint !== freeze.evidenceContentFingerprint) fail('evidence content drift')
+          const required = new Set(['H413','H834','H3605','H935','H3808','H1931','H3290','H251','H3205','H8141'])
+          for (const entry of report.entries || []) {
+            required.delete(entry.strong)
+            if (entry.identity?.identityFingerprint !== without(entry.identity, 'identityFingerprint')) fail(`${entry.strong}: identity fingerprint drift`)
+            if (entry.evidence?.evidencePacketFingerprint !== without(entry.evidence, 'evidencePacketFingerprint')) fail(`${entry.strong}: evidence packet fingerprint drift`)
+            if (entry.evidence?.reviewer?.reviewerType !== 'evidence-policy' || entry.evidence?.reviewer?.reviewerId !== 'lexicon-v4-evidence-and-gate') fail(`${entry.strong}: reviewer provenance drift`)
+            if (entry.sourceNodeProjection?.length !== entry.approvedSenseTreeProposal?.length) fail(`${entry.strong}: source/sense count mismatch`)
+            const seen = new Set()
+            entry.approvedSenseTreeProposal.forEach((node, index) => {
+              if (!/^[1-9][0-9]*(?:\.[1-9][0-9]*)*$/.test(node.id || '')) fail(`${entry.strong}/${node.id}: invalid id`)
+              if (seen.has(node.id)) fail(`${entry.strong}/${node.id}: duplicate id`)
+              if (node.order !== index + 1 || node.depth !== node.id.split('.').length - 1 || !node.translationKo || node.evidenceSupport !== 'direct') fail(`${entry.strong}/${node.id}: sense node contract drift`)
+              if (node.parentId === null && node.depth !== 0) fail(`${entry.strong}/${node.id}: root depth`)
+              if (node.parentId !== null && !seen.has(node.parentId)) fail(`${entry.strong}/${node.id}: parent order`)
+              seen.add(node.id)
+            })
+            for (const value of Object.values(entry.evidence?.gates || {})) if (!String(value).startsWith('PASS')) fail(`${entry.strong}: non-PASS evidence gate ${value}`)
+            if (entry.promotionProvenance?.approvedAt !== null) fail(`${entry.strong}: approvedAt must remain unset in research prep`)
+          }
+          if (required.size) fail(`missing targets ${[...required].join(',')}`)
+          const g = report.governance || {}
+          if (g.researchOnly !== true || g.approvalRegistryMutationInThisPrep !== false || g.productionMutationInThisPrep !== false || g.existingApprovedMeaningMutationAllowed !== false || g.independentExactHeadReviewRequiredForPromotion !== true || g.mainBoundPromotionPrCreated !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false) fail('governance boundary violated')
+          if (report.reportFingerprint !== without(report, 'reportFingerprint')) fail('report fingerprint drift')
+          console.log(`validated promotion prep v3 · main=${report.currentDerivedMain}`)
+          console.log(`targets=10 · BDB/sense=${report.counts.sourceNodeCoverage} · H776=26/26`)
+          console.log(`report=${report.reportFingerprint}`)
+          NODE
+
+      - name: Prove deterministic promotion prep on second regeneration
+        working-directory: bible-mindmap
+        shell: bash
+        run: |
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs --out=reports/genesis-v4-production-batch-03-evidence-current-v3-rerun.json
+          node scripts/build-genesis-v4-production-batch-03-promotion-prep-v3.mjs \
+            --evidence=reports/genesis-v4-production-batch-03-evidence-current-v3-rerun.json \
+            --registry=/tmp/current-main-approval-registry.json \
+            --track-state=/tmp/current-main-track-state.json \
+            --out=reports/genesis-v4-production-batch-03-promotion-prep-v3-rerun.json
+          cmp reports/genesis-v4-production-batch-03-promotion-prep-v3.json reports/genesis-v4-production-batch-03-promotion-prep-v3-rerun.json
+          echo 'deterministic promotion prep v3 PASS'
+
+      - name: Upload promotion prep evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-03-promotion-prep-v3
+          path: |
+            bible-mindmap/reports/genesis-v4-production-batch-03-evidence-current-v3.json
+            bible-mindmap/reports/genesis-v4-production-batch-03-promotion-prep-v3.json
+          if-no-files-found: error
+          retention-days: 14
