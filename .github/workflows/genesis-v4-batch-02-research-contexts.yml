@@ -1,0 +1,63 @@
+name: Genesis v4 Batch 02 Research Contexts
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-02
+    paths:
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-02-contexts.mjs'
+      - '.oshb-cache/Gen.xml'
+      - '.github/workflows/genesis-v4-batch-02-research-contexts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-02-research-contexts-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-context-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Build deterministic Genesis Batch 02 context evidence
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-v4-production-batch-02-contexts.mjs
+
+      - name: Validate generated evidence contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const p = 'reports/genesis-v4-production-batch-02-contexts.json'
+          const data = JSON.parse(fs.readFileSync(p, 'utf8'))
+          if (data.items?.length !== 10) throw new Error(`expected 10 items, got ${data.items?.length}`)
+          for (const item of data.items) {
+            if (!item.strong || !item.lemma) throw new Error('missing strong/lemma')
+            if (!Array.isArray(item.sampleContexts) || item.sampleContexts.length < 3) {
+              throw new Error(`${item.strong}: insufficient sample contexts`)
+            }
+          }
+          if (data.governance?.candidateMutation !== 0 || data.governance?.approvalRegistryMutation !== 0 || data.governance?.productionMutation !== 0) {
+            throw new Error('research-only mutation boundary violated')
+          }
+          console.log(`validated ${data.items.length} targets`)
+          NODE
+
+      - name: Upload deterministic context evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-02-context-evidence
+          path: bible-mindmap/reports/genesis-v4-production-batch-02-contexts.json
+          if-no-files-found: error
+          retention-days: 14
