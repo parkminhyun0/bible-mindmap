@@ -203,4 +203,4 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
   console.log(`✓ Batch 02 promotion prep · new=${promotionPrep.counts.newPromotionTargets} · nodes=${promotionPrep.counts.sourceNodes} · fingerprint=${promotionPrep.promotionPrepFingerprint}`)
 }
 
-// one-shot rerun trigger after promotion-prep fingerprint serialization fix
+// one-shot rerun trigger after Hebrew pointing-layer provenance fix
