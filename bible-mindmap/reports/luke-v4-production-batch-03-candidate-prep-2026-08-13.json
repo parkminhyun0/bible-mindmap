@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "lexicon-v4-luke-candidate-prep/1.0",
+  "generatedAt": "2026-08-13T07:07:34+09:00",
+  "status": "CANDIDATE_PREP_RESEARCH_ONLY",
+  "book": "Luke",
+  "batch": "03",
+  "baseMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "targetStrong": [
+    "G0021",
+    "G0023",
+    "G0025",
+    "G0026",
+    "G0027",
+    "G0032",
+    "G0034",
+    "G0037"
+  ],
+  "sourceLock": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "TBESGBlob": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "TFLSJBlob": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "policy": "Pinned public source artifacts only; Korean candidates are research candidates, not approved meanings."
+  },
+  "evidenceRefs": [
+    "bible-mindmap/reports/luke-v4-production-batch-03-selection-2026-08-13.json",
+    "bible-mindmap/reports/luke-v4-production-batch-03-public-source-intake-2026-08-13.json",
+    "bible-mindmap/reports/luke-v4-production-batch-03-exact-context-pass-a-2026-08-13.json",
+    "bible-mindmap/reports/luke-v4-production-batch-03-exact-context-pass-b-2026-08-13.json",
+    "bible-mindmap/reports/luke-v4-production-batch-03-context-classification-pass-c-2026-08-13.json"
+  ],
+  "candidates": [
+    {
+      "strong": "G0021",
+      "lemma": "ἀγαλλιάω",
+      "transliteration": "agalliao",
+      "sourceGloss": "to greatly rejoice, exult; to rejoice exceedingly, be exceedingly glad",
+      "koreanCandidate": "크게 기뻐하다; 크게 즐거워하다; 기뻐 뛰다",
+      "senseBoundary": "강한 기쁨과 환희를 나타낸다. 모든 문맥을 물리적 '뛰다'로 고정하지 않으며, 문맥상 감정 표현이면 '크게 기뻐하다/즐거워하다'를 우선한다.",
+      "theologicalOverreadGuard": "구원론적 의미를 어휘 자체에 자동 주입하지 않는다."
+    },
+    {
+      "strong": "G0023",
+      "lemma": "ἀγανακτέω",
+      "transliteration": "aganakteo",
+      "sourceGloss": "to be indignant, displeased",
+      "koreanCandidate": "분개하다; 못마땅해하다; 불쾌해하다",
+      "senseBoundary": "정당한 의분인지 단순 불쾌감인지는 주체와 문맥이 결정한다. 어휘 자체를 도덕적으로 정당화하지 않는다.",
+      "theologicalOverreadGuard": "윤리적 평가를 gloss에 선반영하지 않는다."
+    },
+    {
+      "strong": "G0025",
+      "lemma": "ἀγαπάω",
+      "transliteration": "agapao",
+      "sourceGloss": "to love; to regard with affection or esteem",
+      "koreanCandidate": "사랑하다; 아끼다; 애정을 두다",
+      "senseBoundary": "대상과 통사 문맥에 따라 사랑·애정·가치 부여의 폭을 보존한다. '신적 사랑'을 모든 용례의 사전적 정의로 고정하지 않는다.",
+      "theologicalOverreadGuard": "아가페 계열을 무조건 독립적인 신적 사랑 범주로 절대화하지 않는다."
+    },
+    {
+      "strong": "G0026",
+      "lemma": "ἀγάπη",
+      "transliteration": "agape",
+      "sourceGloss": "love, benevolence, goodwill, esteem",
+      "koreanCandidate": "사랑; 호의; 애정",
+      "senseBoundary": "문맥에 따라 사랑·호의·애정의 폭을 유지한다. 신약 신학의 발전된 용법은 문맥 Evidence로 설명하되 기본 gloss 자체를 과잉 확장하지 않는다.",
+      "theologicalOverreadGuard": "교리적 정의를 lexical core와 분리한다."
+    },
+    {
+      "strong": "G0027",
+      "lemma": "ἀγαπητός",
+      "transliteration": "agapetos",
+      "sourceGloss": "beloved, dear, well-loved",
+      "koreanCandidate": "사랑받는; 사랑하는; 사랑하는 이",
+      "senseBoundary": "수동적 '사랑받는'과 호칭/명사적 '사랑하는 이'를 통사에 따라 구분한다.",
+      "theologicalOverreadGuard": "특정 기독론적 용례의 의미를 모든 용례에 확장하지 않는다."
+    },
+    {
+      "strong": "G0032",
+      "lemma": "ἄγγελος",
+      "transliteration": "angelos",
+      "sourceGloss": "messenger, angel",
+      "koreanCandidate": "사자; 전령; 천사",
+      "senseBoundary": "인간 사자/전령과 천상 존재 '천사'를 문맥으로 반드시 분리한다. 단일 '천사' gloss로 평탄화하지 않는다.",
+      "theologicalOverreadGuard": "초자연적 존재 여부는 어휘 형태만으로 결정하지 않고 문맥 지시 대상을 따른다."
+    },
+    {
+      "strong": "G0034",
+      "lemma": "ἀγέλη",
+      "transliteration": "agele",
+      "sourceGloss": "herd, drove",
+      "koreanCandidate": "떼; 가축 무리; 무리",
+      "senseBoundary": "동물 집단을 가리키는 집합명사 범위를 보존하고 사람 무리 의미로 일반화하지 않는다.",
+      "theologicalOverreadGuard": "비유 의미는 실제 문맥 Evidence가 있을 때만 부여한다."
+    },
+    {
+      "strong": "G0037",
+      "lemma": "ἁγιάζω",
+      "transliteration": "hagiazo",
+      "sourceGloss": "to make holy, sanctify; set apart/consecrate; treat or regard as holy",
+      "koreanCandidate": "거룩하게 하다; 성별하다; 거룩히 여기다",
+      "senseBoundary": "대상과 태에 따라 '거룩하게 하다/성별하다'와 '거룩히 여기다'를 분리한다. 하나님의 이름을 대상으로 하는 문맥은 '거룩히 여기다' 계열을 우선하며 사람의 성화 의미로 자동 치환하지 않는다.",
+      "theologicalOverreadGuard": "조직신학적 성화 개념과 모든 lexical occurrence를 동일시하지 않는다."
+    }
+  ],
+  "verificationState": {
+    "strongLemmaIdentity": "PASS_FROM_PINNED_SOURCE_AND_EXISTING_BATCH03_REPORTS",
+    "publicSourceIntake": "PASS_EXISTING_REPORT",
+    "exactLukeContext": "PASS_EXISTING_PASS_A_PASS_B",
+    "contextMorphologyClassification": "PASS_EXISTING_PASS_C",
+    "koreanSourceFidelity": "PREPARED_FOR_DETERMINISTIC_AND_INDEPENDENT_AUDIT",
+    "senseBoundary": "EXPLICITLY_PRESERVED",
+    "theologicalOverread": "GUARDS_ADDED",
+    "TFLSJExactSenseCrosscheck": "PENDING_INDEPENDENT_AUDIT_OR_NEXT_EVIDENCE_PASS"
+  },
+  "independentAuditStatus": "PENDING_EXTERNAL_AUDIT",
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextGate": "DETERMINISTIC_CANDIDATE_VERIFIER_PLUS_INDEPENDENT_AUDIT_PREP"
+}
