@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-03-exact-context-pass-a-2026-08-13",
+  "generatedDate": "2026-08-13",
+  "researchOnly": true,
+  "currentMainObserved": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchBranch": "chatgpt/luke-v4-production-batch-03",
+  "pinnedTagnt": {
+    "repository": "STEPBible/STEPBible-Data",
+    "blobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+    "license": "CC BY 4.0"
+  },
+  "purpose": "Advance the exact-Luke-context gate without flattening morphology into lexical sense. This pass verifies only targets whose complete Luke token set is small and directly recoverable from the pinned TAGNT source; the remaining five targets stay pending rather than being inferred.",
+  "verified": [
+    {
+      "strong": "G0021",
+      "lemma": "ἀγαλλιάω",
+      "expectedLukeTokens": 2,
+      "contexts": [
+        {"reference":"Luk.1.47","surface":"ἠγαλλίασεν","grammar":"V-AAI-3S","tagntEnglish":"rejoices","tagntDictionaryGloss":"to rejoice"},
+        {"reference":"Luk.10.21","surface":"ἠγαλλιάσατο","grammar":"V-ADI-3S","tagntEnglish":"He rejoiced","tagntDictionaryGloss":"to rejoice"}
+      ],
+      "contextBoundary": "Both Luke contexts express marked rejoicing. The public-source stronger exult/rejoice nuance may be retained as a boundary note, but the Korean head gloss should not require a physical 'jump' sense.",
+      "preferredKoreanBoundary": ["크게 기뻐하다", "기뻐하다", "환희하다"],
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "G0023",
+      "lemma": "ἀγανακτέω",
+      "expectedLukeTokens": 1,
+      "contexts": [
+        {"reference":"Luk.13.14","surface":"ἀγανακτῶν","grammar":"V-PAP-NSM","tagntEnglish":"indignant","tagntDictionaryGloss":"be indignant","contextNote":"The synagogue ruler is indignant because Jesus healed on the Sabbath."}
+      ],
+      "contextBoundary": "The exact Luke context directly supports indignation/strong displeasure; a weak generic 'dislike' gloss would underspecify the context.",
+      "preferredKoreanBoundary": ["분개하다", "몹시 못마땅해하다"],
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "G0037",
+      "lemma": "ἁγιάζω",
+      "expectedLukeTokens": 1,
+      "contexts": [
+        {"reference":"Luk.11.2","surface":"ἁγιασθήτω","grammar":"V-APM-3S","tagntEnglish":"should be hallowed","tagntDictionaryGloss":"to sanctify","objectContext":"τὸ ὄνομά σου — Your name"}
+      ],
+      "contextBoundary": "In Luke 11:2 the object is God's name and TAGNT translates the form as 'should be hallowed'. The Luke-specific user-facing sense should therefore prioritize '거룩하게 여기다/거룩히 받들다' rather than importing the full person/object sanctification range as the contextual gloss.",
+      "preferredKoreanBoundary": ["거룩하게 여기다", "거룩히 받들다"],
+      "broaderLexicalRangePreserved": ["거룩하게 하다", "성별하다"],
+      "verdict": "PASS_WITH_BOUNDARY"
+    }
+  ],
+  "pending": [
+    {"strong":"G0025","reason":"13 tokens / 9 verses require full exact-context extraction before love/esteem boundary is finalized"},
+    {"strong":"G0026","reason":"Luke 11:42 genitive phrase requires lexical-vs-theological boundary review"},
+    {"strong":"G0027","reason":"2 contexts require exact personal/title context confirmation"},
+    {"strong":"G0032","reason":"25 tokens require heavenly-angel versus human-messenger classification per token"},
+    {"strong":"G0034","reason":"2 Luke 8 herd contexts require exact token/context extraction"}
+  ],
+  "summary": {
+    "batchTargets": 8,
+    "verifiedThisPass": 3,
+    "passWithBoundary": 3,
+    "hold": 0,
+    "dispute": 0,
+    "pending": 5,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "nextGate": "EXTRACT_COMPLETE_EXACT_LUKE_CONTEXTS_FOR_G0025_G0026_G0027_G0032_G0034_THEN_CLOSE_BATCH_CONTEXT_BOUNDARY_REVIEW",
+  "promotionAllowedByThisReport": false
+}
