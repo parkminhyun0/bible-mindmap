@@ -214,6 +214,9 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
   const selectedLens = useMemo(() => findLens(selectedLensId), [selectedLensId]);
   const recommendedLensIds = activeCourse?.recommendedLensIds || [];
 
+  // 코스 선택 직후 [anchor] 효과의 자동 시드가 코스의 autoSelectRefs를
+  // 덮어쓰지 않도록, 코스가 지정한 anchor 키를 1회 한정으로 기억한다.
+  const courseSeededAnchorKeyRef = useRef(null);
   const handleSelectCourse = (course) => {
     if (!course) {
       setActiveCourse(null);
@@ -222,6 +225,7 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
     }
     setActiveCourse(course);
     setCurrentStepIdx(0);
+    courseSeededAnchorKeyRef.current = parallelRefKey(course.anchor);
     setAnchor(course.anchor);
     setInput(refLabel(course.anchor));
     if (course.recommendedLensIds?.[0]) setSelectedLensId(course.recommendedLensIds[0]);
@@ -312,6 +316,10 @@ export default function ParallelStudyModal({ initialRef, onClose }) {
         if (cancelled) return;
         setSetInfo(set);
         setSuggestions(nextSuggestions);
+        // 코스 선택이 시드한 anchor면 코스의 autoSelectRefs 선택을 유지 (플래그는 1회 소모)
+        const courseSeededKey = courseSeededAnchorKeyRef.current;
+        courseSeededAnchorKeyRef.current = null;
+        if (courseSeededKey === parallelRefKey(anchor)) return;
         const curated = nextSuggestions.filter((item) => item.kind !== 'crossref');
         const seeded = [
           { ref: anchor, label: refLabel(anchor), relation: null },

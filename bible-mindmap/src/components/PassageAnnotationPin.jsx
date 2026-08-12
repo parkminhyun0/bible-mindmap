@@ -113,6 +113,12 @@ export default function PassageAnnotationPin({
     try {
       if (editingId) {
         const current = annotations.find((item) => item.id === editingId);
+        if (!current) {
+          // 편집 도중 다른 핀/기기에서 삭제된 주석 — 저장 대신 편집 상태만 정리
+          setEditingId(null);
+          setSaving(false);
+          return;
+        }
         await updateAnnotation({
           ...current,
           type,
@@ -286,11 +292,11 @@ export default function PassageAnnotationPin({
                   </div>
                 )}
                 <div style={{ marginTop: 3, color: '#94a3b8', fontSize: 9 }}>
-                  {annotation.anchor.chapter}:{annotation.anchor.verseStart}
-                  {annotation.anchor.verseEnd !== annotation.anchor.verseStart
-                    ? `-${annotation.anchor.verseEnd}`
+                  {annotation.anchor?.chapter}:{annotation.anchor?.verseStart}
+                  {annotation.anchor?.verseEnd !== annotation.anchor?.verseStart
+                    ? `-${annotation.anchor?.verseEnd}`
                     : ''}
-                  {annotation.anchor.translationId ? ` · ${annotation.anchor.translationId}` : ''}
+                  {annotation.anchor?.translationId ? ` · ${annotation.anchor.translationId}` : ''}
                 </div>
                 {annotation.content && (
                   <div style={{ marginTop: 4, whiteSpace: 'pre-wrap', fontSize: 12, lineHeight: 1.5 }}>
