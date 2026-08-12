@@ -8,6 +8,9 @@ import BackgroundNodeFrame from './BackgroundNodeFrame';
 import PassageAnnotationPin from './PassageAnnotationPin';
 import useResearchAnnotations from '../research/useResearchAnnotations';
 
+// 렉시콘 팝업 id — 같은 밀리초 중복 방지용 단조 증가 시퀀스
+let _popupSeq = 0;
+
 const EDGE_BADGE_CONFIG = [
   { type: 'citation',  label: '인용',  color: '#ef4444', bg: '#fef2f2' },
   { type: 'echo',      label: '반향',  color: '#ca8a04', bg: '#fefce8' },
@@ -394,7 +397,7 @@ export default function VerseNode({ id, data, selected }) {
           onClick={(ev) => {
             ev.stopPropagation();
             const rect = ev.currentTarget.getBoundingClientRect();
-            setPopups(prev => [...prev, { id: Date.now(), entry: e, anchor: { x: rect.left + rect.width / 2, y: rect.bottom } }]);
+            setPopups(prev => [...prev, { id: ++_popupSeq, entry: e, anchor: { x: rect.left + rect.width / 2, y: rect.bottom } }]);
           }}
           className="nodrag"
           style={{ cursor: 'pointer', borderBottom: '1px dotted #8b5cf6' }}

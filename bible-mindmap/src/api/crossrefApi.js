@@ -66,15 +66,17 @@ export async function loadCrossRefIndex(bookId) {
  * @returns {Promise<Array<{bookId, chapter, verseStart, verseEnd, reference, votes}>>}
  */
 export async function fetchCrossRefs(bookId, chapter, verse, limit = 12) {
+  // 캐시에는 limit 미적용 전체 목록을 저장 — 호출자마다 limit이 달라도
+  // (CrossrefPopup 5 · NodeEditor 12 · parallelStudy 12+) 재사용 가능
   const key = `${bookId}:${chapter}:${verse}`;
-  if (_cache.has(key)) return _cache.get(key);
+  const cached = _cache.get(key);
+  if (cached) return cached.slice(0, limit);
 
   const data = await fetchBookCrossRefs(bookId);
 
   const results = data
-    .filter((r) => r.from.ch === chapter && r.from.vs <= verse && r.from.ve >= verse)
+    .filter((r) => r?.from && r.from.ch === chapter && r.from.vs <= verse && r.from.ve >= verse)
     .sort((a, b) => b.votes - a.votes)
-    .slice(0, limit)
     .map((r) => {
       const { book, ch, vs, ve } = r.to;
       const koName = KO_NAME[book] || book;
@@ -86,5 +88,5 @@ export async function fetchCrossRefs(bookId, chapter, verse, limit = 12) {
     });
 
   _cache.set(key, results);
-  return results;
+  return results.slice(0, limit);
 }

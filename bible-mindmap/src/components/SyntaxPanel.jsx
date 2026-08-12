@@ -9,6 +9,9 @@ import { isOT } from '../data/bibleBooks';
 import LexiconPopup from './LexiconPopup';
 import PassageAnnotationPin from './PassageAnnotationPin';
 
+// 렉시콘 팝업 id — 같은 밀리초 중복 방지용 단조 증가 시퀀스
+let _popupSeq = 0;
+
 // ── 트리 레이아웃 상수 ──────────────────────────────────────────────────────
 // LEAF_W·LEVEL_H 는 글자 크기에 따라 ParseTreeSVG 내부에서 동적으로 계산
 const NODE_R  = 18;
@@ -713,21 +716,27 @@ export default function SyntaxPanel({ passage: passageProp, onClose, panelIndex 
     return () => window.removeEventListener('keydown', h);
   }, [onClose]);
 
+  // 연속 분석 시 늦게 도착한 이전 요청이 최신 결과를 덮어쓰지 않도록 세대 토큰 사용
+  const analyzeGenRef = useRef(0);
   const analyze = useCallback(async (p) => {
+    const gen = ++analyzeGenRef.current;
     setPassage(p); setShowForm(false); setLoading(true); setError(null); setVerses(null);
     try {
-      setVerses(await loadSyntaxData(p.bookId, p.chapter, p.verseStart, p.verseEnd));
+      const verses = await loadSyntaxData(p.bookId, p.chapter, p.verseStart, p.verseEnd);
+      if (analyzeGenRef.current !== gen) return;
+      setVerses(verses);
     } catch (err) {
+      if (analyzeGenRef.current !== gen) return;
       setError(err.message || '분석 오류');
     } finally {
-      setLoading(false);
+      if (analyzeGenRef.current === gen) setLoading(false);
     }
   }, []);
 
   useEffect(() => { if (passageProp) analyze(passageProp); }, []); // eslint-disable-line
 
   const handleWordClick = useCallback((entry, anchor) => {
-    setPopups(prev => [...prev, { id: Date.now(), entry, anchor }]);
+    setPopups(prev => [...prev, { id: ++_popupSeq, entry, anchor }]);
   }, []);
 
   const isHebrew = !passage || isOT(passage.bookId);
