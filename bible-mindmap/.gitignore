@@ -38,3 +38,7 @@ public/data/*
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright artifacts
+test-results/
+playwright-report/
