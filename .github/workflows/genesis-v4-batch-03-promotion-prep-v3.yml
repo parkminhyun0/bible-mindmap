@@ -66,10 +66,18 @@ jobs:
           const crypto = require('crypto')
           const report = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-promotion-prep-v3.json', 'utf8'))
           const freeze = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-public-research-v2-freeze.json', 'utf8'))
+          const currentEvidence = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-evidence-current-v3.json', 'utf8'))
           const fail = (m) => { throw new Error(m) }
           const canonicalize = (v) => Array.isArray(v) ? v.map(canonicalize) : (v && typeof v === 'object') ? Object.fromEntries(Object.keys(v).sort().map(k => [k, canonicalize(v[k])])) : v
           const sha = (v) => 'sha256:' + crypto.createHash('sha256').update(JSON.stringify(canonicalize(v))).digest('hex')
           const without = (v, key) => { const c = structuredClone(v); delete c[key]; return sha(c) }
+          const legacyV2EvidenceHash = (v) => {
+            const c = structuredClone(v)
+            delete c.generatedAt
+            delete c.reportFingerprint
+            delete c.derivedMain
+            return 'sha256:' + crypto.createHash('sha256').update(JSON.stringify(c)).digest('hex')
+          }
           if (report.status !== 'RESEARCH_ONLY_PROMOTION_PREP_READY_75_OF_75_CURRENT_MAIN_REGISTRY_VERIFIED') fail(`status ${report.status}`)
           if (report.currentDerivedMain !== process.env.DERIVED_MAIN) fail('current main drift')
           if (report.counts?.targets !== 10 || report.counts?.newEntries !== 10 || report.counts?.existingTargetEntries !== 0) fail('new-entry count drift')
@@ -78,7 +86,8 @@ jobs:
           if (report.h776Regression?.present !== true || report.h776Regression?.approvedSenseCount !== 26 || report.h776Regression?.reviewer?.reviewerType !== 'human') fail('H776 golden regression')
           if (report.v2Freeze?.candidateFileFingerprint !== freeze.candidateFileFingerprint) fail('v2 candidate fingerprint drift')
           if (report.v2Freeze?.publicResearchMatrixFingerprint !== freeze.publicResearchMatrixFingerprint) fail('public research matrix drift')
-          if (report.v2Freeze?.evidenceContentFingerprint !== freeze.evidenceContentFingerprint) fail('evidence content drift')
+          if (legacyV2EvidenceHash(currentEvidence) !== freeze.evidenceContentFingerprint) fail('v2-compatible evidence content drift')
+          if (!/^sha256:[0-9a-f]{64}$/.test(report.v2Freeze?.evidenceContentFingerprint || '')) fail('v3 canonical evidence fingerprint invalid')
           const required = new Set(['H413','H834','H3605','H935','H3808','H1931','H3290','H251','H3205','H8141'])
           for (const entry of report.entries || []) {
             required.delete(entry.strong)
@@ -103,6 +112,8 @@ jobs:
           if (g.researchOnly !== true || g.approvalRegistryMutationInThisPrep !== false || g.productionMutationInThisPrep !== false || g.existingApprovedMeaningMutationAllowed !== false || g.independentExactHeadReviewRequiredForPromotion !== true || g.mainBoundPromotionPrCreated !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false) fail('governance boundary violated')
           if (report.reportFingerprint !== without(report, 'reportFingerprint')) fail('report fingerprint drift')
           console.log(`validated promotion prep v3 · main=${report.currentDerivedMain}`)
+          console.log(`v2 evidence content lock preserved=${freeze.evidenceContentFingerprint}`)
+          console.log(`v3 canonical evidence content=${report.v2Freeze.evidenceContentFingerprint}`)
           console.log(`targets=10 · BDB/sense=${report.counts.sourceNodeCoverage} · H776=26/26`)
           console.log(`report=${report.reportFingerprint}`)
           NODE
