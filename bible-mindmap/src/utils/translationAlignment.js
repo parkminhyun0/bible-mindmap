@@ -1,4 +1,4 @@
-import { normalizeStrongId, validateTextSpan } from '../data/translationAlignmentContract.js';
+import { ALIGNMENT_STATUSES, normalizeStrongId, validateTextSpan } from '../data/translationAlignmentContract.js';
 
 const ORIGINAL_MARK = /[\u0300-\u036f\u0591-\u05c7]/u;
 const HANGUL = /[가-힣]/u;
@@ -203,6 +203,7 @@ export function findKoreanSpans(text, candidates) {
 }
 
 function spansFromAlignmentRecord(alignmentRecord, language, text) {
+  if (!ALIGNMENT_STATUSES.includes(alignmentRecord?.status)) return [];
   const target = alignmentRecord?.targets?.[language];
   if (!target || !Array.isArray(target.spans)) return [];
   if (typeof target.text === 'string' && target.text !== text) return [];
@@ -221,7 +222,7 @@ export function resolveHighlightSpans({
 
   const exactSpans = spansFromAlignmentRecord(alignmentRecord, language, text);
   if (exactSpans.length) {
-    return { spans: exactSpans, status: alignmentRecord.status || 'verified', source: 'alignment-record', candidates: [] };
+    return { spans: exactSpans, status: alignmentRecord.status, source: 'alignment-record', candidates: [] };
   }
 
   if (language === 'original') {
