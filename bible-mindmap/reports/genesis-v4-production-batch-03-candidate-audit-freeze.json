@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "freezeId": "genesis-v4-production-batch-03-candidate-audit-freeze-v1",
+  "status": "EXACT_CANDIDATE_AUDIT_BASELINE_FROZEN_INDEPENDENT_AUDIT_REQUIRED",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "candidatePath": "bible-mindmap/reports/genesis-v4-production-batch-03-source-candidate-prep-2026-08-12.json",
+  "candidateFileFingerprint": "sha256:8ca80ea7c77a51c5d3520716842e776b61b1645eaff45cb8216869d99ba2e768",
+  "evidenceSemanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
+  "evidenceFreezeFileFingerprint": "sha256:cf40f5c966ff4fcd91da1cb69a5e9b6ad2d3fa0ff5e5eeb8820b44720f01f4b0",
+  "regeneratedEvidenceFileFingerprint": "sha256:482253d183afcb25c33db036a28631a18a3f69285d1d853137045448d3a3472e",
+  "sourceLocks": {
+    "tbeshCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "openscripturesBdbCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "oshbGenesisDigest": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449"
+  },
+  "counts": {"targets":10,"totalGenesisOccurrences":2529,"sampledContexts":30,"bdbEntries":13,"sourceNodes":75},
+  "targets": [
+    {"strong":"H413","lemma":"אֶל","bdbEntryIds":["a.di.aa"],"contextControls":["Gen.1.9","Gen.3.16","Gen.4.7"],"morphologyControls":["HR","HC/R","HC/R/Sp2ms"],"risk":"HIGH","candidateHeadKo":"~에게·~로·~을 향하여; 문맥에 따라 ~에 맞서·~에 관하여","senseBoundaryCount":4},
+    {"strong":"H834","lemma":"אֲשֶׁר","bdbEntryIds":["a.gk.aa","a.gk.ab","k.ab.ab","a.gk.ad"],"contextControls":["Gen.1.7","Gen.7.9","Gen.7.23"],"morphologyControls":["HTr","HR/Tr","HC/Tr"],"risk":"HIGH","candidateHeadKo":"~하는·~인; 관계절을 잇는 관계 표지","senseBoundaryCount":5},
+    {"strong":"H3605","lemma":"כֹּל","bdbEntryIds":["k.bn.ab"],"contextControls":["Gen.1.21","Gen.1.26","Gen.2.1"],"morphologyControls":["HNcmsc","HC/R/Ncmsc","HC/Ncmsc"],"risk":"MEDIUM","candidateHeadKo":"모든·온·전체; 문맥에 따라 각각·어떤/무엇이든","senseBoundaryCount":4},
+    {"strong":"H935","lemma":"בּוֹא","bdbEntryIds":["b.ap.aa"],"contextControls":["Gen.2.19","Gen.2.22","Gen.4.4"],"morphologyControls":["HC/Vhw3ms","HC/Vhw3ms/Sp3fs","HVhp3ms"],"risk":"HIGH","candidateHeadKo":"오다·들어오다; 히필: 데려오다·가져오다·오게 하다","senseBoundaryCount":4},
+    {"strong":"H3808","lemma":"לֹא","bdbEntryIds":["l.ab.aa"],"contextControls":["Gen.2.5","Gen.2.25","Gen.4.7"],"morphologyControls":["HTn","HC/Tn","HTi/Tn"],"risk":"MEDIUM","candidateHeadKo":"아니다·…하지 않다; 부정 표지","senseBoundaryCount":3},
+    {"strong":"H1931","lemma":"הוּא","bdbEntryIds":["e.aw.aa"],"contextControls":["Gen.2.11","Gen.2.12","Gen.3.12"],"morphologyControls":["HPp3ms","HTd/Pp3fs","HPp3fs"],"risk":"MEDIUM","candidateHeadKo":"그·그녀·그것; 3인칭 단수 대명사","senseBoundaryCount":4},
+    {"strong":"H3290","lemma":"יַעֲקֹב","bdbEntryIds":["p.eu.aj"],"contextControls":["Gen.25.26","Gen.25.27","Gen.25.33"],"morphologyControls":["HNp","HC/Np","HR/Np"],"risk":"MEDIUM","candidateHeadKo":"야곱; 이삭과 리브가의 아들인 인명","senseBoundaryCount":3},
+    {"strong":"H251","lemma":"אָח","bdbEntryIds":["a.ck.ab"],"contextControls":["Gen.4.2","Gen.4.9","Gen.4.9"],"morphologyControls":["HNcmsc/Sp3ms","HNcmsc/Sp2ms","HNcmsc/Sp1cs"],"risk":"MEDIUM","candidateHeadKo":"형제·남자 형제; 친족·동족(문맥별)","senseBoundaryCount":4},
+    {"strong":"H3205","lemma":"יָלַד","bdbEntryIds":["j.bn.aa"],"contextControls":["Gen.3.16","Gen.4.1","Gen.4.2"],"morphologyControls":["HVqi2fs","HC/Vqw3fs","HR/Vqc"],"risk":"HIGH","candidateHeadKo":"낳다·출산하다·자식을 두다; 어간에 따라 태어나다·낳게 하다","senseBoundaryCount":5},
+    {"strong":"H8141","lemma":"שָׁנָה","bdbEntryIds":["v.ek.ab"],"contextControls":["Gen.1.14","Gen.5.3","Gen.5.6"],"morphologyControls":["HC/Ncfpa","HNcfsa","HNcfpa"],"risk":"LOW","candidateHeadKo":"해·년(year)","senseBoundaryCount":3}
+  ],
+  "governance": {"researchOnly":true,"independentAuditRequired":true,"auditModelsExpected":["GPT","Claude","Gemini"],"candidatePromotionAllowed":false,"approvalRegistryWriteAllowed":false,"productionWriteAllowed":false,"existingApprovedMeaningMutationAllowed":false,"qualityGateWeakeningAllowed":false,"selfApprovalAllowed":false},
+  "nextGate": "INDEPENDENT_EXACT_FINGERPRINT_AUDIT_GPT_CLAUDE_GEMINI_THEN_COMPARE_VERDICTS_AND_ROUTE_BY_RISK_WITHOUT_PRODUCTION_WRITE",
+  "auditBundleFingerprint": "sha256:2149d4438d968b95ac269bad70a9e3044fa2443423578335adece8b948cb4bdf"
+}
