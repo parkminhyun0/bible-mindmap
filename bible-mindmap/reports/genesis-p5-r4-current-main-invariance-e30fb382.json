@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-current-main-invariance-e30fb382",
+  "status": "CURRENT_MAIN_REVALIDATED_BY_PINNED_INPUT_INVARIANCE",
+  "currentMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "priorValidatedMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+  "researchBranch": "chatgpt/genesis-r4-followup-evidence",
+  "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+  "pinnedEvidence": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "oshbGenesisBlobSha": "09ac9cab0a47c5fae8d747c2868f1cf50d6d1131",
+    "candidateManifestBlobSha": "4081308362e5035ae8727ecd0599be78fcbd68e5"
+  },
+  "compareProof": {
+    "base": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "head": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+    "aheadBy": 1,
+    "changedFiles": [
+      ".github/workflows/validate-pr.yml",
+      "bible-mindmap/playwright.config.js",
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/components/LexicalBridgeModalV2.jsx",
+      "bible-mindmap/src/theme/contextBibleMobileFix.css",
+      "bible-mindmap/tests/lexical-bridge-context-ui.spec.js",
+      "bible-mindmap/tests/lexical-bridge-webkit-landscape.spec.js",
+      "memory/RESUME.json"
+    ],
+    "r4PinnedCorpusCandidateInputsChanged": false,
+    "r4UsageBuilderOrVerifierChanged": false,
+    "approvalRegistryOrRegistrySnapshotChanged": false,
+    "r4TierMatrixChanged": false,
+    "meaningDataChangedByThisMainMove": false,
+    "note": "The sole main move after 005a64c3 is PR #342 lexical-bridge/mobile UI and generic browser-CI work. None of the R4 pinned corpus/candidate inputs, R4 deterministic usage/verifier contracts, Approval Registry/registry snapshot, or R4 tier policy files changed."
+  },
+  "researchState": {
+    "publicEvidenceSynthesisPreviouslyCompleted": true,
+    "publicEvidenceVerdict": "5/5 PASS_WITH_BOUNDARY; HOLD 0; DISPUTE 0",
+    "contentEvidenceGateClosed": true,
+    "remainingPolicyGate": "Repository R4 tier matrix still requires its configured independent/human-final-wording path; this report does not weaken or bypass that gate."
+  },
+  "governance": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false,
+    "promotionAllowedByThisReport": false
+  },
+  "conclusion": "The current-main move to e30fb382 does not invalidate the exact pinned R4 candidate/source/87-occurrence/38-context evidence. Reuse remains fingerprint-addressed and no quality gate is weakened.",
+  "nextGate": "PRESERVE_EXISTING_R4_TIER_MATRIX_AND_COMPLETE_CONFIGURED_INDEPENDENT_HUMAN_FINAL_WORDING_PATH_BEFORE_ANY_REGISTRY_PROMOTION"
+}
