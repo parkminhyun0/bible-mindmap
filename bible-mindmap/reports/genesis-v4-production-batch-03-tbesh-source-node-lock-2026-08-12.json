@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "track": "genesis-lexicon-v4",
   "reportId": "genesis-v4-production-batch-03-tbesh-source-node-lock-2026-08-12",
-  "status": "SECONDARY_SOURCE_NODES_PINNED_LEXICAL_LICENSE_GATE_CONTEXT_RESEARCH_CONTINUES",
+  "status": "SECONDARY_SOURCE_NODES_PINNED_PRIMARY_BDB_APPROVED_CONTEXT_AND_BDB_NODES_STILL_REQUIRED",
   "generatedAt": "2026-08-12T16:11:00+09:00",
-  "updatedAt": "2026-08-12T16:24:00+09:00",
+  "updatedAt": "2026-08-12T16:31:00+09:00",
   "branchBaseline": "9dc3ad568970ba9a52bb77e7ba1d10125e584e14",
   "derivedMain": "75a0ddc4c017e22ed1e96bc3442957875f4498f4",
   "source": {
@@ -15,7 +15,7 @@
     "registryContentHash": "sha256:da09f53ee1da7606b5d8a10cd2a263b3553df15b5fa0e36dda9c7707c6883988",
     "registryState": "approved-ready",
     "role": "secondary source-node and abridged boundary control",
-    "boundary": "TBESH source-node identity can be pinned under the current registry contract. Its own header says brief definitions are guidance and carries an Online Bible permission caution; therefore these gloss strings are retained only as source-boundary evidence and are not sufficient authority for new production Korean derivatives."
+    "boundary": "TBESH is secondary evidence and does not replace the full BDB hierarchy. Preserve its guidance/provenance boundaries while using the machine-approved full BDB source for primary hierarchy checks."
   },
   "targets": [
     {"strong":"H413","lemma":"אֶל","transliteration":"el","tbeshNode":"H0413","tbeshGloss":"to(wards)","boundary":"to/toward/into/against/concerning and other relation senses are syntax/context governed; do not flatten to one Korean preposition"},
@@ -29,28 +29,23 @@
     {"strong":"H3205","lemma":"יָלַד","transliteration":"ya.lad","tbeshNode":"H3205","tbeshGloss":"to beget","boundary":"bear/give birth/beget, be born, midwife/help-birth and causative/genealogical uses must track stem, gender and syntax"},
     {"strong":"H8141","lemma":"שָׁנָה","transliteration":"sha.neh","tbeshNode":"H8141","tbeshGloss":"year","boundary":"year, age, duration/lifetime and number constructions require context; numerical morphology must not be folded into the lemma meaning"}
   ],
-  "lexicalLicenseGate": {
-    "registryContract": "docs/lexicon-workflow/SOURCE_REGISTRY.md@75a0ddc4c017e22ed1e96bc3442957875f4498f4",
-    "openscripturesHebrewlexiconBdbState": "blocked",
-    "openscripturesReason": "Repository edit/derivative license is not explicitly approved in the current Source Registry; it must not be used as automatic external-LLM input or production derivative authority.",
-    "unfoldingwordBdbEnhancedState": "internal-review-only",
-    "unfoldingwordReason": "README states public-domain base BDB and CC BY enhancements, but the Registry currently records the enhancement license version as insufficiently specific for external LLM/derivative use.",
-    "safeWorkWhileHeld": [
-      "OSHB Genesis context and morphology extraction from approved CC BY 4.0 morphology data",
-      "Strong/lemma/source-node identity verification",
-      "TBESH node and boundary provenance preservation without treating brief definition text as production authority"
-    ],
-    "blockedWork": [
-      "new source-faithful Korean candidate generation that depends on unapproved full-BDB derivative text",
-      "Approval Registry promotion",
-      "production write",
-      "existing-approved meaning mutation"
-    ],
-    "resolutionRequired": "Approve an explicitly licensed full lexical source or explicitly authorize a compliant public-domain BDB extraction path and update Source Registry before candidate generation relies on it."
+  "primarySource": {
+    "sourceId": "openscriptures-hebrewlexicon-bdb",
+    "repository": "openscriptures/HebrewLexicon",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "registryContentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+    "machineRegistryPolicyVersion": "1.2",
+    "machineRegistryState": "approved-ready",
+    "licenseExpression": "CC-BY-4.0",
+    "externalLlmInputAllowed": true,
+    "derivativeAllowed": true,
+    "verification": "Pinned upstream readme explicitly states the files are released under Creative Commons Attribution 4.0 International and the BDB/Strong text remains public domain.",
+    "note": "The older prose docs/lexicon-workflow/SOURCE_REGISTRY.md v1.1 is stale on this point; machine-readable bible-mindmap/data/lexicon/source-registry.json policyVersion 1.2 and the pinned upstream readme are the operative current evidence."
   },
   "checks": {
     "batchTargets": 10,
     "tbeshNodesPinned": 10,
+    "primaryBdbLicenseApproved": true,
     "batch01Overlap": 0,
     "batch02Overlap": 0,
     "r4Overlap": 0,
@@ -62,7 +57,6 @@
   },
   "governance": {
     "researchOnly": true,
-    "contextMorphologyResearchAllowed": true,
     "candidateMutationAllowed": false,
     "approvalRegistryWriteAllowed": false,
     "productionWriteAllowed": false,
@@ -70,5 +64,5 @@
     "qualityGateWeakeningAllowed": false,
     "selfApprovalAllowed": false
   },
-  "nextGate": "CONTINUE_OSHB_CONTEXT_MORPHOLOGY_IN_PARALLEL_AND_RESOLVE_FULL_LEXICAL_SOURCE_LICENSE_BEFORE_KOREAN_CANDIDATE_DERIVATION"
+  "nextGate": "PIN_OPENSCRIPTURES_FULL_BDB_NODES_FOR_ALL_10_AND_EXTRACT_REPRESENTATIVE_GENESIS_CONTEXTS_WITH_MORPHOLOGY"
 }
