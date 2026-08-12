@@ -156,6 +156,9 @@ function buildHebrewStructure(chLex, verseTexts, chapter, verseStart, verseEnd) 
     const lastMain = findLastMainEntry(structure);
     if (lastMain) {
       lastMain.following = [...(lastMain.following || []), ...pendingPre];
+    } else {
+      // 범위 전체에 wayyiqtol이 없는 본문(시가서 등) — 절을 버리지 않고 선행절로 표시
+      structure.push({ main: null, preceding: [...pendingPre], following: [] });
     }
   }
 
@@ -211,7 +214,12 @@ function buildGreekStructure(chLex, verseTexts, chapter, verseStart, verseEnd) {
 
   if (pendingPre.length > 0) {
     const last = findLastMainEntry(structure);
-    if (last) last.following = [...(last.following || []), ...pendingPre];
+    if (last) {
+      last.following = [...(last.following || []), ...pendingPre];
+    } else {
+      // 범위 전체에 주동사(직설·명령·가정법)가 없는 본문 — 절을 버리지 않고 선행절로 표시
+      structure.push({ main: null, preceding: [...pendingPre], following: [] });
+    }
   }
 
   return structure;

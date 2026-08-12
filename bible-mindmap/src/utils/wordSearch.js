@@ -34,6 +34,10 @@ async function getManifest() {
 
 // ── 단일 장 lex JSON 로드 (원어/영어 검색용) ─────────────────────────────
 const _lexCache = new Map();
+const _CACHE_MAX = 240; // 전권 검색 시 무한 증식 방지 (LRU 대신 단순 선입선출)
+function _capCache(cache) {
+  while (cache.size > _CACHE_MAX) cache.delete(cache.keys().next().value);
+}
 async function fetchChapterLex(bookId, chapter, signal) {
   const key = `${bookId}:${chapter}`;
   const cached = _lexCache.get(key);
@@ -45,6 +49,7 @@ async function fetchChapterLex(bookId, chapter, signal) {
     .then(res => (res.ok ? res.json() : null))
     .catch(() => null);
   _lexCache.set(key, promise);
+  _capCache(_lexCache);
   const result = await promise;
   if (result === null) _lexCache.delete(key); // 실패 시 재시도 허용
   return result;
@@ -91,6 +96,7 @@ async function fetchBollsChapter(translation, bookId, chapter, signal) {
     return null;
   })();
   _bollsCache.set(key, promise);
+  _capCache(_bollsCache);
   const result = await promise;
   if (result === null) _bollsCache.delete(key);
   return result;

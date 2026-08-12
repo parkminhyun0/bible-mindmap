@@ -542,7 +542,8 @@ export default function DocPanel({ open, onToggle, loadedDoc, onDocSaved }) {
   // 저장된 문서 불러오기
   useEffect(() => {
     if (!loadedDoc) return;
-    const { data } = loadedDoc;
+    // 구버전/수동 편집 백업 복원 시 data가 없는 doc 노드 방어
+    const data = loadedDoc.data || {};
     setCurrentDocId(loadedDoc.id);
     if (data.docType === 'sermon') {
       setActiveTab('sermon');

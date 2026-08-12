@@ -94,8 +94,9 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   expect(nodeEditor).not.toContain('\n      Underline,\n');
 
   expect(contextBible).toContain('}, [chReady, chapters]);');
-  expect(contextBible).toContain('pendingCourseScrollRef.current = { ch: firstCh, verse: firstVerse };');
-  expect(contextBible).toContain('if (!pending || !chReady || !chapters[pending.ch]) return;');
+  // book 일치 가드 포함 버전 — 전환 직전 이전 책 chapters로 조기 소모되는 레이스 방지 계약
+  expect(contextBible).toContain('pendingCourseScrollRef.current = { book: course.book, ch: firstCh, verse: firstVerse };');
+  expect(contextBible).toContain('if (!pending || pending.book !== activeBookId || !chReady || !chapters[pending.ch]) return;');
 
   expect(annotationPin).toContain('if (!current) {');
   expect(annotationPin).toContain('annotation.anchor?.chapter');

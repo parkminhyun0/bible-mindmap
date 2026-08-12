@@ -114,12 +114,16 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
     if (tab !== 'person' && tab !== 'place') return;
     if (!bgQuery.trim()) { setBgResults([]); setBgSelected(null); setBgDetail(null); return; }
 
+    // 진행 중 요청 무효화 토큰 — 탭 전환·검색어 변경 후 도착한 이전 응답이
+    // 현재 탭 상태를 덮어쓰는 것을 방지 (인물 결과가 장소 탭에 꽂히는 버그)
+    let stale = false;
     clearTimeout(debounceRef.current);
     debounceRef.current = setTimeout(async () => {
       setBgLoading(true); setBgError(''); setBgResults([]); setBgDetail(null);
       try {
         const search = tab === 'person' ? searchBiblicalPerson : searchPlacesCombined;
         const results = await search(bgQuery, bgTestament);
+        if (stale) return;
         setBgResults(results);
         if (results.length > 0) {
           setBgSelected(results[0].id);
@@ -128,12 +132,12 @@ export default function Sidebar({ onAddNode, onAddNodes, mobileOpen, onMobileClo
           setBgSelected(null);
         }
       } catch {
-        setBgError('검색 오류 — 잠시 후 다시 시도해 주세요');
+        if (!stale) setBgError('검색 오류 — 잠시 후 다시 시도해 주세요');
       } finally {
-        setBgLoading(false);
+        if (!stale) setBgLoading(false);
       }
     }, 600);
-    return () => clearTimeout(debounceRef.current);
+    return () => { stale = true; clearTimeout(debounceRef.current); };
   }, [bgQuery, bgTestament, tab]);
 
   // 후보 선택 시 해당 결과 데이터로 즉시 교체 (추가 fetch 없음)

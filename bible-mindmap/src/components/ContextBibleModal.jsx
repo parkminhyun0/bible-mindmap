@@ -891,20 +891,21 @@ export default function ContextBibleModal({ onClose, initialRef }) {
           : Number(course.focusVerses[0]) || 1)
       : 1;
     if (course.book && course.book !== activeBookId) {
-      pendingCourseScrollRef.current = { ch: firstCh, verse: firstVerse };
+      pendingCourseScrollRef.current = { book: course.book, ch: firstCh, verse: firstVerse };
       setActiveBookId(course.book);
     } else {
       setTimeout(() => scrollTo(firstCh, firstVerse), 60);
     }
   }, [activeBookId, scrollTo]);
 
-  // 책 전환 코스의 대기 스크롤 — 목표 챕터가 로드되면 1회 실행
+  // 책 전환 코스의 대기 스크롤 — 목표 "책"이 활성화되고 목표 챕터가 로드되면 1회 실행
+  // (book 일치 확인 없이는 전환 직전 이전 책의 chapters로 조기 소모되는 레이스가 있음)
   useEffect(() => {
     const pending = pendingCourseScrollRef.current;
-    if (!pending || !chReady || !chapters[pending.ch]) return;
+    if (!pending || pending.book !== activeBookId || !chReady || !chapters[pending.ch]) return;
     pendingCourseScrollRef.current = null;
     scrollTo(pending.ch, pending.verse);
-  }, [chReady, chapters, scrollTo]);
+  }, [activeBookId, chReady, chapters, scrollTo]);
 
   const handleContextStepClick = useCallback((idx, step) => {
     setCurrentStepIdx(idx);

@@ -1213,7 +1213,7 @@ export default function ManualModal({ onClose }) {
 
   // ── 드래그 ──────────────────────────────────────────
   const onHeaderMouseDown = useCallback((e) => {
-    if (e.button !== 0) return;
+    if (e.button !== 0 || e.target.closest('button')) return;
     dragging.current = true;
     dragStart.current = { mx: e.clientX, my: e.clientY, px: pos.x, py: pos.y };
     e.preventDefault();

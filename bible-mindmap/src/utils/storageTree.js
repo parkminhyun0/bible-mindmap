@@ -28,6 +28,8 @@ export function loadTree() {
   let tree;
   try { tree = JSON.parse(safeLocalStorage.getItem(STORAGE_KEY)) || defaultTree(); }
   catch { tree = defaultTree(); }
+  // 손상되거나 외부에서 기록된 값(문자열·숫자 등)이면 트리로 취급하지 않음
+  if (typeof tree !== 'object' || Array.isArray(tree)) tree = defaultTree();
   ensureDocRoot(tree);
   return tree;
 }

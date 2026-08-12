@@ -239,7 +239,8 @@ const DASH_OPTIONS = [
 ];
 
 export default function App() {
-  const saved = loadFromStorage();
+  // 최초 마운트 1회만 localStorage 파싱 — 매 렌더(드래그 프레임 포함) 재파싱 방지
+  const [saved] = useState(loadFromStorage);
   const [nodes, setNodes, onNodesChange] = useNodesState(saved?.nodes ?? []);
   const [edges, setEdges, onEdgesChange] = useEdgesState(saved?.edges ?? []);
   const [edgeType, setEdgeType] = useState('citation');
@@ -1274,11 +1275,13 @@ export default function App() {
                 <SavePanel
                   nodes={nodes}
                   edges={edges}
-                  onLoad={(d) => { handleLoad(d); setSavePanelOpen(false); }}
+                  onLoad={(n, e) => { handleLoad(n, e); setSavePanelOpen(false); }}
                   onNewMap={() => { handleNewMap(); setSavePanelOpen(false); }}
                   open={true}
                   onToggle={() => setSavePanelOpen(false)}
                   mobileInline
+                  docSaveKey={docSaveKey}
+                  onOpenDoc={(item) => { setOpenedDoc({ ...item }); setDocPanelOpen(true); setSavePanelOpen(false); }}
                 />
               </Suspense>
             </div>
