@@ -42,16 +42,21 @@ jobs:
           const p = 'reports/genesis-v4-production-batch-02-contexts.json'
           const data = JSON.parse(fs.readFileSync(p, 'utf8'))
           if (data.items?.length !== 10) throw new Error(`expected 10 items, got ${data.items?.length}`)
+          if (data.counts?.totalOccurrences !== 2482) throw new Error(`occurrence total drift: ${data.counts?.totalOccurrences}`)
           for (const item of data.items) {
             if (!item.strong || !item.lemma) throw new Error('missing strong/lemma')
             if (!Array.isArray(item.sampleContexts) || item.sampleContexts.length < 3) {
               throw new Error(`${item.strong}: insufficient sample contexts`)
             }
           }
-          if (data.governance?.candidateMutation !== 0 || data.governance?.approvalRegistryMutation !== 0 || data.governance?.productionMutation !== 0) {
+          if (data.governance?.researchOnly !== true ||
+              data.governance?.candidateMutation !== false ||
+              data.governance?.approvalRegistryMutation !== false ||
+              data.governance?.productionMutation !== false ||
+              data.governance?.qualityGateWeakeningAllowed !== false) {
             throw new Error('research-only mutation boundary violated')
           }
-          console.log(`validated ${data.items.length} targets`)
+          console.log(`validated ${data.items.length} targets / ${data.counts.totalOccurrences} occurrences / ${data.counts.sampledContexts} samples`)
           NODE
 
       - name: Upload deterministic context evidence
