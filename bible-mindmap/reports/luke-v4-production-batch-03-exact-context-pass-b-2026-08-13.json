@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "lexicon-v4-luke-production-exact-context-pass-v1",
+  "generatedAt": "2026-08-13T05:21:00+09:00",
+  "book": "Luke",
+  "batch": "03",
+  "derivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchOnly": true,
+  "source": {
+    "id": "stepbible-tagnt",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "path": "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+    "blob": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+    "license": "CC-BY-4.0"
+  },
+  "priorVerified": [
+    {"strong":"G0021","lemma":"ἀγαλλιάω","verdict":"PASS_WITH_BOUNDARY"},
+    {"strong":"G0023","lemma":"ἀγανακτέω","verdict":"PASS_WITH_BOUNDARY"},
+    {"strong":"G0037","lemma":"ἁγιάζω","verdict":"PASS_WITH_BOUNDARY"}
+  ],
+  "newlyVerified": [
+    {
+      "strong": "G0026",
+      "lemma": "ἀγάπη",
+      "contextCount": 1,
+      "contexts": [
+        {
+          "ref": "Luk.11.42",
+          "form": "ἀγάπην",
+          "grammar": "N-ASF",
+          "tagntGloss": "love",
+          "phrase": "τὴν ἀγάπην τοῦ θεοῦ"
+        }
+      ],
+      "koreanBoundary": "사랑",
+      "boundaryNote": "‘하나님에 대한 사랑/하나님의 사랑’의 genitive 해석은 구문·문맥 수준에서 다루고, G0026 자체의 사전 의미를 확장하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "G0027",
+      "lemma": "ἀγαπητός",
+      "contextCount": 2,
+      "contexts": [
+        {
+          "ref": "Luk.3.22",
+          "form": "ἀγαπητός",
+          "grammar": "A-NSM",
+          "tagntGloss": "beloved",
+          "phrase": "ὁ υἱός μου ὁ ἀγαπητός"
+        },
+        {
+          "ref": "Luk.20.13",
+          "form": "ἀγαπητόν",
+          "grammar": "A-ASM",
+          "tagntGloss": "beloved",
+          "phrase": "υἱόν μου τὸν ἀγαπητόν"
+        }
+      ],
+      "koreanBoundary": "사랑받는; 사랑하는·귀한",
+      "contextPreferred": "사랑받는 / 사랑하는 아들",
+      "boundaryNote": "누가복음 두 용례 모두 ‘사랑하는/사랑받는 아들’ 문맥이다. 기독론적 지위나 선택 교리를 단어 정의 안에 추가하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "G0034",
+      "lemma": "ἀγέλη",
+      "contextCount": 2,
+      "contexts": [
+        {
+          "ref": "Luk.8.32",
+          "form": "ἀγέλη",
+          "grammar": "N-NSF",
+          "tagntGloss": "herd",
+          "phrase": "ἀγέλη χοίρων"
+        },
+        {
+          "ref": "Luk.8.33",
+          "form": "ἀγέλη",
+          "grammar": "N-NSF",
+          "tagntGloss": "herd",
+          "phrase": "ἡ ἀγέλη"
+        }
+      ],
+      "koreanBoundary": "떼; 가축 떼",
+      "contextPreferred": "돼지 떼",
+      "boundaryNote": "lexical head는 동물의 떼/가축 떼이고, ‘돼지’는 χοῖρος 및 누가복음 문맥이 공급한다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    }
+  ],
+  "pending": [
+    {
+      "strong": "G0025",
+      "lemma": "ἀγαπάω",
+      "reason": "13 exact tokens / 9 Luke verses require full context clustering before Korean sense consolidation"
+    },
+    {
+      "strong": "G0032",
+      "lemma": "ἄγγελος",
+      "reason": "25 exact tokens require angel-versus-human-messenger context classification before Korean sense consolidation"
+    }
+  ],
+  "summary": {
+    "targets": 8,
+    "verifiedPassWithBoundary": 6,
+    "pending": 2,
+    "hold": 0,
+    "dispute": 0,
+    "approvedMeaningMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "nextGate": "CLASSIFY_ALL_EXACT_LUKE_CONTEXTS_FOR_G0025_AND_G0032_THEN_CROSSCHECK_TBESG_TFLSJ_SENSE_BOUNDARIES_BEFORE_KOREAN_CANDIDATE_CONSOLIDATION"
+}
