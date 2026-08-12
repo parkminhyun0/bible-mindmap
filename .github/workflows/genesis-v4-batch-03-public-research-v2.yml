@@ -1,0 +1,102 @@
+name: Genesis v4 Batch 03 Public Research v2
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-03
+    paths:
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-public-research-refined-candidates-v2.json'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-gpt-public-research-first-evidence-matrix-2026-08-12.json'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-evidence-freeze.json'
+      - 'bible-mindmap/scripts/freeze-genesis-v4-production-batch-03-public-research-v2.mjs'
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-03-evidence.mjs'
+      - '.github/workflows/genesis-v4-batch-03-public-research-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-03-public-research-v2-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-public-research-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current main and load its Source Registry
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          DERIVED_MAIN="$(git rev-parse origin/main)"
+          echo "DERIVED_MAIN=$DERIVED_MAIN" >> "$GITHUB_ENV"
+          git show origin/main:bible-mindmap/data/lexicon/source-registry.json > /tmp/current-main-source-registry.json
+          cp /tmp/current-main-source-registry.json bible-mindmap/data/lexicon/source-registry.json
+          echo "current main $DERIVED_MAIN"
+
+      - name: Regenerate pinned lexical evidence against current-main registry
+        working-directory: bible-mindmap
+        run: >-
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs
+          --out=reports/genesis-v4-production-batch-03-evidence-current-v2.json
+
+      - name: Freeze Public-Research-First v2 candidate baseline
+        working-directory: bible-mindmap
+        run: node scripts/freeze-genesis-v4-production-batch-03-public-research-v2.mjs
+
+      - name: Verify v2 freeze contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const data = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-public-research-v2-freeze.json', 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+          if (data.status !== 'EXACT_PUBLIC_RESEARCH_CANDIDATE_BASELINE_FROZEN_CURRENT_MAIN_INPUTS_VERIFIED') fail(`unexpected status: ${data.status}`)
+          if (data.currentDerivedMain !== process.env.DERIVED_MAIN) fail(`current main drift: ${data.currentDerivedMain}`)
+          if (data.counts?.targets !== 10 || data.counts?.totalGenesisOccurrences !== 2529) fail('target/occurrence drift')
+          if (data.counts?.sampledContexts !== 30 || data.counts?.bdbEntries !== 13 || data.counts?.sourceNodes !== 75) fail('evidence count drift')
+          if (data.counts?.headRevisionCount !== 1 || data.counts?.senseHierarchyRefinementCount !== 4) fail('public-research refinement count drift')
+          for (const field of ['candidateFileFingerprint','publicResearchMatrixFingerprint','evidenceContentFingerprint','auditBundleFingerprint']) {
+            if (!/^sha256:[0-9a-f]{64}$/.test(data[field] || '')) fail(`${field} invalid`)
+          }
+          const h834 = (data.targets || []).find((item) => item.strong === 'H834')
+          if (!h834 || h834.candidateHeadChangedByPublicResearch !== true || !h834.candidateHeadKo.includes('관계·접속 표지')) fail('H834 public-research head refinement missing')
+          const refinements = new Set((data.targets || []).filter((item) => ['REFINE_SENSE_HIERARCHY','REFINE_HEAD_AND_SENSE_HIERARCHY'].includes(item.publicResearchVerdict)).map((item) => item.strong))
+          for (const strong of ['H413','H834','H935','H1931']) if (!refinements.has(strong)) fail(`${strong}: refinement verdict missing`)
+          const g = data.governance || {}
+          if (g.researchOnly !== true || g.publicResearchFirstRequired !== true || g.blockingExternalModelVerdictRequired !== false || g.candidatePromotionAllowed !== false || g.approvalRegistryWriteAllowed !== false || g.productionWriteAllowed !== false || g.existingApprovedMeaningMutationAllowed !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false) fail('governance boundary violated')
+          console.log(`validated Public-Research-First v2 · main=${data.currentDerivedMain}`)
+          console.log(`candidate=${data.candidateFileFingerprint}`)
+          console.log(`evidenceContent=${data.evidenceContentFingerprint}`)
+          console.log(`bundle=${data.auditBundleFingerprint}`)
+          NODE
+
+      - name: Prove content fingerprint determinism on second regeneration
+        working-directory: bible-mindmap
+        shell: bash
+        run: |
+          node scripts/build-genesis-v4-production-batch-03-evidence.mjs --out=reports/genesis-v4-production-batch-03-evidence-current-v2-rerun.json
+          node scripts/freeze-genesis-v4-production-batch-03-public-research-v2.mjs \
+            --evidence=reports/genesis-v4-production-batch-03-evidence-current-v2-rerun.json \
+            --out=reports/genesis-v4-production-batch-03-public-research-v2-freeze-rerun.json
+          cmp reports/genesis-v4-production-batch-03-public-research-v2-freeze.json reports/genesis-v4-production-batch-03-public-research-v2-freeze-rerun.json
+          echo 'deterministic v2 freeze PASS'
+
+      - name: Upload Public-Research-First v2 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-03-public-research-v2
+          path: |
+            bible-mindmap/reports/genesis-v4-production-batch-03-evidence-current-v2.json
+            bible-mindmap/reports/genesis-v4-production-batch-03-public-research-v2-freeze.json
+          if-no-files-found: error
+          retention-days: 14
