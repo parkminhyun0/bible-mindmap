@@ -35,7 +35,11 @@ for (const language of ['hebrew', 'aramaic', 'greek']) {
 for (const [relativePath, shard] of Object.entries(expected.shards)) {
   assert.deepEqual(readJson(path.join(PUBLIC, relativePath)), shard, `${relativePath} public shard drift`);
 }
-assert.equal(Object.keys(expected.shards).length, 6, 'Genesis R3 promotion must publish six approved lazy shards including H776');
+assert.equal(
+  Object.keys(expected.shards).length,
+  new Set(publicRegistry.entries.map((entry) => entry.shardPath)).size,
+  'public shard count must match unique approved Registry routes',
+);
 
 assert.equal(normalizeLexiconStrong('H0776'), 'H776');
 assert.equal(normalizeLexiconStrong('h00776'), 'H776');
@@ -109,6 +113,6 @@ assert.match(wordSearchKoSource, /overscrollBehavior: 'contain'/, 'word search o
 assert.match(wordSearchKoSource, /touchAction: 'pan-y'/, 'word search vertical touch scrolling required');
 
 console.log('✓ Approval Registry delivery + read-only loader contract PASS');
-console.log('  approved entries=6 · H776 human 26/26 preserved · R3 Evidence-policy entries lazy-delivered');
+console.log(`  approved entries=${approvalRegistry.entries.length} · H776 human 26/26 preserved · Evidence-policy entries lazy-delivered`);
 console.log('  H0776→H776 normalization · H430 one-shard lazy load · unapproved Strong fail-closed');
 console.log('  drawer + word search disclose human vs Evidence-policy approval provenance');
