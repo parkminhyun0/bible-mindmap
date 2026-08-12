@@ -7,7 +7,9 @@ async function dismissResearchOnboarding(page) {
   });
 }
 
-test('원어 브릿지는 문맥 성경과 같은 독립 데스크톱 창 계약을 사용한다', async ({ page }) => {
+test('원어 브릿지는 문맥 성경과 같은 독립 데스크톱 창 계약을 사용한다', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'chromium', 'desktop floating-window contract is covered by Chromium desktop');
+
   await dismissResearchOnboarding(page);
   await page.goto('./');
 
@@ -58,7 +60,7 @@ test.describe('모바일 원어 브릿지', () => {
     isMobile: true,
   });
 
-  test('문맥 성경 공통 프레임에서 실제 세로 스크롤이 동작한다', async ({ page }) => {
+  test('문맥 성경 공통 프레임에서 WebKit finger-scroll 계약이 유지된다', async ({ page }) => {
     await dismissResearchOnboarding(page);
     await page.goto('./');
 
@@ -92,6 +94,46 @@ test.describe('모바일 원어 브릿지', () => {
     expect(scrollMetrics.scrollHeight).toBeGreaterThan(scrollMetrics.clientHeight);
     expect(['auto', 'scroll']).toContain(scrollMetrics.overflowY);
     expect(scrollMetrics.touchAction).toContain('pan-y');
+
+    const frameMetrics = await backdrop.evaluate((el) => {
+      const rect = el.getBoundingClientRect();
+      const vv = window.visualViewport;
+      return {
+        top: rect.top,
+        height: rect.height,
+        viewportTop: vv?.offsetTop || 0,
+        viewportHeight: vv?.height || window.innerHeight,
+      };
+    });
+    expect(Math.abs(frameMetrics.top - frameMetrics.viewportTop)).toBeLessThanOrEqual(2);
+    expect(Math.abs(frameMetrics.height - frameMetrics.viewportHeight)).toBeLessThanOrEqual(2);
+
+    const gestureGuard = await scrollRegion.evaluate((el) => {
+      const dispatchTouch = (type, clientY) => {
+        const event = new Event(type, { bubbles: true, cancelable: true });
+        Object.defineProperty(event, 'touches', {
+          configurable: true,
+          value: [{ clientX: 180, clientY }],
+        });
+        el.dispatchEvent(event);
+        return event.defaultPrevented;
+      };
+
+      el.scrollTop = 0;
+      dispatchTouch('touchstart', 500);
+      const upwardPrevented = dispatchTouch('touchmove', 400);
+
+      el.scrollTop = 0;
+      dispatchTouch('touchstart', 400);
+      const downwardAtTopPrevented = dispatchTouch('touchmove', 500);
+
+      return { upwardPrevented, downwardAtTopPrevented };
+    });
+
+    // 손가락을 위로 밀어 본문을 아래쪽으로 읽는 동작은 절대 막으면 안 된다.
+    expect(gestureGuard.upwardPrevented).toBe(false);
+    // 반대로 최상단에서 아래로 당길 때는 배경으로 스크롤이 새지 않도록 막혀야 한다.
+    expect(gestureGuard.downwardAtTopPrevented).toBe(true);
 
     const moved = await scrollRegion.evaluate((el) => {
       el.scrollTop = Math.min(320, Math.max(1, el.scrollHeight - el.clientHeight));
