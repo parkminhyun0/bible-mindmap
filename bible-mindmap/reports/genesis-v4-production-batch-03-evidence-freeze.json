@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "freezeId": "genesis-v4-production-batch-03-evidence-freeze-v1",
+  "status": "EXACT_RESEARCH_EVIDENCE_FROZEN_CANDIDATE_PREP_ALLOWED",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "sourceReportId": "genesis-v4-production-batch-03-evidence-v1",
+  "sourceGeneratedAt": "2026-08-12T07:44:03.571Z",
+  "fingerprintMethod": "sha256-canonical-json-excluding-generatedAt-and-source-reportFingerprint-v1",
+  "semanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
+  "sourceInputFingerprints": {
+    "selection": "sha256:e41cebea58d64ec9a1683622fcc3c1bb117eec4fba8b7734d6a0c03278d36ebd",
+    "tbeshSourceNodeLock": "sha256:8908fc9e1ce3e6a2e294b5485d1b394257d790a35e9d7bb16ba39f9fac09837a",
+    "sourceRegistry": "sha256:af3dcfb68b89e3208a17f22b33f7f661c4b5af13fd597f5bcd01affc313ea0d3",
+    "genesisContextSource": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449",
+    "primarySourceFiles": [
+      {"filename":"LexicalIndex.xml","digest":"sha256:8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f"},
+      {"filename":"BrownDriverBriggs.xml","digest":"sha256:326f9ee98a86b05ade7b89db985d49cfcfc836143351df859d0fb54ccb9c07d4"},
+      {"filename":"BDBPartsOfSpeech.xml","digest":"sha256:156d1efd8add719dfa20f57f58fb2a9a21959f62d5a38ce8f1d41d889c052b91"}
+    ]
+  },
+  "counts": {"targets":10,"totalOccurrences":2529,"sampledContexts":30,"lexicalMappings":13,"bdbEntries":13,"sourceNodes":75,"targetsWithCompleteBdbCoverage":10},
+  "targetLocks": [
+    {"strong":"H413","expectedLemma":"אֶל","bdbEntryIds":["a.di.aa"],"sourceNodeCount":10,"totalOccurrences":475,"firstReference":"Gen.1.9","sampledContexts":3,"sampledMorphs":["HR","HC/R","HC/R/Sp2ms"]},
+    {"strong":"H834","expectedLemma":"אֲשֶׁר","bdbEntryIds":["a.gk.aa","a.gk.ab","k.ab.ab","a.gk.ad"],"sourceNodeCount":14,"totalOccurrences":411,"firstReference":"Gen.1.7","sampledContexts":3,"sampledMorphs":["HTr","HR/Tr","HC/Tr"]},
+    {"strong":"H3605","expectedLemma":"כֹּל","bdbEntryIds":["k.bn.ab"],"sourceNodeCount":7,"totalOccurrences":342,"firstReference":"Gen.1.21","sampledContexts":3,"sampledMorphs":["HNcmsc","HC/R/Ncmsc","HC/Ncmsc"]},
+    {"strong":"H935","expectedLemma":"בּוֹא","bdbEntryIds":["b.ap.aa"],"sourceNodeCount":13,"totalOccurrences":217,"firstReference":"Gen.2.19","sampledContexts":3,"sampledMorphs":["HC/Vhw3ms","HC/Vhw3ms/Sp3fs","HVhp3ms"]},
+    {"strong":"H3808","expectedLemma":"לֹא","bdbEntryIds":["l.ab.aa"],"sourceNodeCount":1,"totalOccurrences":213,"firstReference":"Gen.2.5","sampledContexts":3,"sampledMorphs":["HTn","HC/Tn","HTi/Tn"]},
+    {"strong":"H1931","expectedLemma":"הוּא","bdbEntryIds":["e.aw.aa"],"sourceNodeCount":8,"totalOccurrences":182,"firstReference":"Gen.2.11","sampledContexts":3,"sampledMorphs":["HPp3ms","HTd/Pp3fs","HPp3fs"]},
+    {"strong":"H3290","expectedLemma":"יַעֲקֹב","bdbEntryIds":["p.eu.aj"],"sourceNodeCount":3,"totalOccurrences":180,"firstReference":"Gen.25.26","sampledContexts":3,"sampledMorphs":["HNp","HC/Np","HR/Np"]},
+    {"strong":"H251","expectedLemma":"אָח","bdbEntryIds":["a.ck.ab"],"sourceNodeCount":5,"totalOccurrences":178,"firstReference":"Gen.4.2","sampledContexts":3,"sampledMorphs":["HNcmsc/Sp3ms","HNcmsc/Sp2ms","HNcmsc/Sp1cs"]},
+    {"strong":"H3205","expectedLemma":"יָלַד","bdbEntryIds":["j.bn.aa"],"sourceNodeCount":13,"totalOccurrences":170,"firstReference":"Gen.3.16","sampledContexts":3,"sampledMorphs":["HVqi2fs","HC/Vqw3fs","HR/Vqc"]},
+    {"strong":"H8141","expectedLemma":"שָׁנָה","bdbEntryIds":["v.ek.ab"],"sourceNodeCount":1,"totalOccurrences":161,"firstReference":"Gen.1.14","sampledContexts":3,"sampledMorphs":["HC/Ncfpa","HNcfsa","HNcfpa"]}
+  ],
+  "governance": {"researchOnly":true,"candidatePrepAllowed":true,"candidatePromotionAllowed":false,"approvalRegistryWriteAllowed":false,"productionWriteAllowed":false,"existingApprovedMeaningMutationAllowed":false,"qualityGateWeakeningAllowed":false,"selfApprovalAllowed":false,"independentAuditRequiredBeforePromotion":true},
+  "nextGate": "GENERATE_SOURCE_FAITHFUL_KOREAN_CANDIDATES_BOUND_TO_THIS_SEMANTIC_FINGERPRINT_THEN_FREEZE_CANDIDATE_AUDIT_BASELINE"
+}
