@@ -31,6 +31,29 @@ test('병렬 연구 가이드 코스의 비교 본문이 비동기 추천으로 
   await expect(selectedLabels.filter({ hasText: /^누가복음 3:1-18$/ })).toBeVisible();
 });
 
+test('원어 브릿지 Pilot 메뉴가 정경 추적 다음에 열리고 H5162 브릿지를 표시한다', async ({ page }) => {
+  await dismissResearchOnboarding(page);
+  await page.goto('./');
+
+  const canonical = page.getByRole('button', { name: '정경 추적 핵심 개념 열기' });
+  const bridge = page.getByRole('button', { name: '원어 브릿지 열기' });
+  await expect(canonical).toBeVisible();
+  await expect(bridge).toBeVisible();
+
+  const order = await page.locator('[data-research-tool="canonical-concept-global"], [data-research-tool="lexical-bridge-global"]')
+    .evaluateAll((nodes) => nodes.map((node) => node.dataset.researchTool));
+  expect(order).toEqual(['canonical-concept-global', 'lexical-bridge-global']);
+
+  await bridge.click();
+  const dialog = page.getByRole('dialog', { name: '원어 브릿지' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByRole('textbox', { name: '원어 브릿지 검색' })).toHaveValue('H5162');
+  await expect(dialog.getByText('נִחַמְתָּנִי')).toBeVisible();
+  await expect(dialog.getByText('παρεκάλεσάς με')).toBeVisible();
+  await expect(dialog.getByText('παράκλησις · παράκλητος')).toBeVisible();
+  await expect(dialog.getByText(/룻기 2:13이 성령을 직접 예언하거나 예표한다고 확정하지 않는다/)).toBeVisible();
+});
+
 test.describe('모바일 연구 도구 회귀', () => {
   test.use({
     viewport: { width: 390, height: 844 },
@@ -80,6 +103,24 @@ test.describe('모바일 연구 도구 회귀', () => {
     const resultInput = dialog.locator('input').first();
     const resultFontSize = await resultInput.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
     expect(resultFontSize).toBeGreaterThanOrEqual(16);
+  });
+
+  test('원어 브릿지 Pilot 메뉴는 모바일 자료 추가 시트에서 44px 터치 영역으로 열리고 스크롤 가능하다', async ({ page }) => {
+    await dismissResearchOnboarding(page);
+    await page.goto('./');
+
+    await page.getByRole('button', { name: '추가', exact: true }).click();
+    const sheet = page.locator('.mobile-add-sheet');
+    const bridge = sheet.getByRole('button', { name: '원어 브릿지 열기' });
+    await expect(bridge).toBeVisible();
+    const box = await bridge.boundingBox();
+    expect(box?.height || 0).toBeGreaterThanOrEqual(44);
+
+    await bridge.click();
+    const dialog = page.getByRole('dialog', { name: '원어 브릿지' });
+    await expect(dialog).toBeVisible();
+    await expect(dialog.locator('[data-modal-scroll-region="true"]')).toBeVisible();
+    await expect(dialog.getByRole('button', { name: '원어 브릿지 닫기' })).toBeVisible();
   });
 });
 
