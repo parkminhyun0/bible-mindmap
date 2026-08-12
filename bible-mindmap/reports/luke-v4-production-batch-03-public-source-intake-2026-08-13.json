@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-03-public-source-intake-2026-08-13",
+  "generatedDate": "2026-08-13",
+  "researchOnly": true,
+  "currentMainObserved": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchBranch": "chatgpt/luke-v4-production-batch-03",
+  "selectionCommit": "22317f94c7e2c0fd415d8b030e46ab3150b3785c",
+  "sourcePolicy": [
+    "Use public lexical sources as corroborating evidence, not as self-approving production data.",
+    "Preserve the pinned STEPBible/TBESG/TFLSJ source lock from the Luke v4 track as the canonical source family; public web-accessible mirrors are intake corroboration only.",
+    "Do not flatten classical/full-lexicon extensions into Luke-specific meanings without exact Luke context support.",
+    "Morphology and token counts constrain usage but are not independent lexical senses."
+  ],
+  "sources": [
+    {
+      "id": "STEP-G25",
+      "url": "https://www.stepbible.org/?q=strong%3DG0025",
+      "note": "STEP Bible public Strong view confirms agapao and Luke uses including Luke 6:27, 6:32 and 6:35."
+    },
+    {
+      "id": "BibleCrawler-G21",
+      "url": "https://biblecrawler.net/",
+      "note": "Public BibleCrawler lexical/morphology view gives G0021 agalliao: be delighted, have joy, exult, be glad, rejoice; full-lexicon note marks the stronger exult/rejoice boundary."
+    },
+    {
+      "id": "StudyBible-G23",
+      "url": "https://studybible.info/strongs/G23",
+      "note": "Public Strong/TBESG/Abbott-Smith aggregation gives aganakteo: be indignant, very displeased; explicitly cites Luke 13:14."
+    },
+    {
+      "id": "BibleCrawler-G25-G26-G27-G32",
+      "url": "https://biblecrawler.net/",
+      "note": "Public lexical views corroborate agapao=to love; agape=love/goodwill/esteem; agapetos=beloved/dear; angelos=messenger/angel with NT angel sense."
+    },
+    {
+      "id": "StudyBible-G34",
+      "url": "https://www.studybible.info/strongs/G34",
+      "note": "Public TBESG/Abbott-Smith aggregation gives agele=herd and explicitly cites Luke 8:32-33."
+    },
+    {
+      "id": "StudyBible-G37",
+      "url": "https://studybible.info/strongs/G37",
+      "note": "Public TBESG/Abbott-Smith aggregation gives hagiazo: make holy, consecrate, sanctify, set apart; the 'treat as holy' sense explicitly cites Luke 11:2."
+    }
+  ],
+  "targets": [
+    {
+      "strong": "G0021",
+      "lemma": "ἀγαλλιάω",
+      "selectedExactLukeTokens": 2,
+      "selectedVerseCount": 2,
+      "firstRef": "Luke 1:47",
+      "lexicalIntake": "Public lexical evidence supports rejoice/exult/be glad with stronger joy intensity than a neutral pleasure gloss.",
+      "provisionalKoreanBoundary": ["크게 기뻐하다", "기뻐 뛰다", "환희하다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0023",
+      "lemma": "ἀγανακτέω",
+      "selectedExactLukeTokens": 1,
+      "selectedVerseCount": 1,
+      "firstRef": "Luke 13:14",
+      "lexicalIntake": "Public TBESG/Abbott-Smith evidence explicitly ties Luke 13:14 to indignation/strong displeasure.",
+      "provisionalKoreanBoundary": ["분개하다", "몹시 못마땅해하다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0025",
+      "lemma": "ἀγαπάω",
+      "selectedExactLukeTokens": 13,
+      "selectedVerseCount": 9,
+      "firstRef": "Luke 6:27",
+      "lexicalIntake": "STEP and public lexica support love/esteem/goodwill across persons and things. Luke-specific context must prevent importing a simplistic agapao-vs-phileo theological dichotomy as a lexical rule.",
+      "provisionalKoreanBoundary": ["사랑하다", "소중히 여기다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0026",
+      "lemma": "ἀγάπη",
+      "selectedExactLukeTokens": 1,
+      "selectedVerseCount": 1,
+      "firstRef": "Luke 11:42",
+      "lexicalIntake": "Public Abbott-Smith evidence supports love/goodwill/esteem. Luke 11:42 requires context-specific review of 'the love of God' without turning lexical meaning into a full systematic-theology definition.",
+      "provisionalKoreanBoundary": ["사랑", "사랑하는 마음"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0027",
+      "lemma": "ἀγαπητός",
+      "selectedExactLukeTokens": 2,
+      "selectedVerseCount": 2,
+      "firstRef": "Luke 3:22",
+      "lexicalIntake": "Public full-lexicon evidence gives beloved/dear while preserving older classical extensions; Luke use should prioritize the personal 'beloved' sense.",
+      "provisionalKoreanBoundary": ["사랑받는", "사랑하는/사랑하는 이"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0032",
+      "lemma": "ἄγγελος",
+      "selectedExactLukeTokens": 25,
+      "selectedVerseCount": 25,
+      "firstRef": "Luke 1:11",
+      "lexicalIntake": "Public lexical evidence preserves the broader messenger/envoy sense and the biblical angel sense. Exact Luke contexts must decide whether each token is heavenly angel or human messenger rather than flattening all tokens to one gloss.",
+      "provisionalKoreanBoundary": ["천사", "사자/전령"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0034",
+      "lemma": "ἀγέλη",
+      "selectedExactLukeTokens": 2,
+      "selectedVerseCount": 2,
+      "firstRef": "Luke 8:32",
+      "lexicalIntake": "Public TBESG/Abbott-Smith evidence gives herd and explicitly cites Luke 8:32-33.",
+      "provisionalKoreanBoundary": ["떼", "짐승 떼", "무리"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    },
+    {
+      "strong": "G0037",
+      "lemma": "ἁγιάζω",
+      "selectedExactLukeTokens": 1,
+      "selectedVerseCount": 1,
+      "firstRef": "Luke 11:2",
+      "lexicalIntake": "Public TBESG/Abbott-Smith evidence distinguishes make/consecrate/sanctify from 'treat as holy'; Luke 11:2 is explicitly cited under the latter boundary, so hallow/regard as holy must be tested before importing broader sanctification senses.",
+      "provisionalKoreanBoundary": ["거룩하게 여기다", "거룩하게 하다", "성별하다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_REVIEW_PENDING"
+    }
+  ],
+  "summary": {
+    "targets": 8,
+    "selectedExactLukeTokens": 47,
+    "sourceIntakePass": 8,
+    "hold": 0,
+    "dispute": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "nextGate": "EXACT_LUKE_CONTEXT_PLUS_MORPHOLOGY_SENSE_BOUNDARY_REVIEW_FOR_ALL_8_THEN_GPT_INDEPENDENT_AUDIT",
+  "promotionAllowedByThisReport": false
+}
