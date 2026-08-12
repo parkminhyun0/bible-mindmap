@@ -1,0 +1,72 @@
+name: Independent Review Router
+
+on:
+  pull_request_target:
+    types: [opened, reopened, ready_for_review, synchronize]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: independent-review-router-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  request-review:
+    if: >-
+      github.event.pull_request.base.ref == 'main' &&
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.user.login != 'bible-mindmap-review'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Request independent write reviewer for current head
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const pr = context.payload.pull_request;
+            const reviewer = 'bible-mindmap-review';
+
+            const reviews = await github.paginate(github.rest.pulls.listReviews, {
+              owner,
+              repo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+
+            const exactHeadReview = reviews.find((review) =>
+              review.user?.login === reviewer &&
+              review.commit_id === pr.head.sha &&
+              ['APPROVED', 'CHANGES_REQUESTED', 'COMMENTED'].includes(review.state)
+            );
+
+            if (exactHeadReview) {
+              core.notice(`#${pr.number}: ${reviewer} already reviewed exact head ${pr.head.sha}`);
+              return;
+            }
+
+            const fresh = (await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pr.number,
+            })).data;
+
+            const alreadyRequested = (fresh.requested_reviewers || [])
+              .some((requested) => requested.login === reviewer);
+
+            if (alreadyRequested) {
+              core.notice(`#${pr.number}: ${reviewer} is already requested for head ${pr.head.sha}`);
+              return;
+            }
+
+            await github.rest.pulls.requestReviewers({
+              owner,
+              repo,
+              pull_number: pr.number,
+              reviewers: [reviewer],
+            });
+
+            core.notice(`#${pr.number}: requested ${reviewer} for exact head ${pr.head.sha}`);
