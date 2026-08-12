@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-03-gpt-public-research-first-evidence-matrix-2026-08-12",
+  "track": "genesis-lexicon-v4",
+  "book": "Genesis",
+  "status": "GPT_PUBLIC_RESEARCH_FIRST_PARALLEL_CROSSCHECK_COMPLETE_REFINEMENT_REQUIRED_BEFORE_PROMOTION",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-03",
+  "branchBaseline": "fab214204d40fccdfe4aa05cd910973ca941b728",
+  "derivedMainAtFrozenBaseline": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "frozenEvidenceSemanticFingerprint": "sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c",
+  "frozenCandidateFingerprint": "sha256:8ca80ea7c77a51c5d3520716842e776b61b1645eaff45cb8216869d99ba2e768",
+  "accessedAt": "2026-08-12",
+  "method": {
+    "name": "GPT Public-Research-First H776 parity crosscheck",
+    "order": [
+      "pinned Hebrew text and direct Genesis context",
+      "pinned OSHB morphology",
+      "OpenScriptures BDB-aligned source hierarchy",
+      "STEPBible TBESH/TAHOT public scholarly data",
+      "independent public Strong/BDB/concordance frontends",
+      "public theological/study-note resources as context-only controls",
+      "Korean candidate source-fidelity and theological-overreach filter"
+    ],
+    "rules": [
+      "Lexical meaning is not expanded from devotional or theological application.",
+      "Translation gloss diversity alone does not create a new lexical sense.",
+      "BDB/source hierarchy and morphology/context boundaries must remain inspectable, as in H776 erets.",
+      "Public theological resources may challenge or contextualize a candidate but cannot override stronger lexical/corpus evidence.",
+      "No Approval Registry, approved meaning, production, quality gate, license gate, or main mutation is allowed in this report."
+    ]
+  },
+  "sourceCatalog": [
+    {
+      "id": "OSHB_LEXICON",
+      "role": "primary-public-lexical-hierarchy",
+      "url": "https://openscriptures.github.io/HebrewLexicon/",
+      "license": "CC BY 4.0",
+      "use": "BDB-aligned lexical index, augmented Strong mapping, source hierarchy"
+    },
+    {
+      "id": "OSHB_TEXT_MORPH",
+      "role": "primary-public-text-morphology",
+      "url": "https://hb.openscriptures.org/HomeFiles/Oshb.html",
+      "license": "WLC text public domain; OSHB lemma/morphology CC BY 4.0",
+      "use": "direct text, lemma, morphology, verse structure"
+    },
+    {
+      "id": "STEPBIBLE_DATA",
+      "role": "primary-public-scholarly-crosscheck",
+      "url": "https://github.com/STEPBible/STEPBible-Data",
+      "license": "CC BY 4.0 for STEPBible-Data unless a dataset states otherwise",
+      "use": "TBESH abridged BDB, TAHOT semantic/morphological tagging, disambiguated Extended Strong"
+    },
+    {
+      "id": "BLUELETTER_BDB_STRONG",
+      "role": "independent-public-read-only-corroboration",
+      "urlPattern": "https://www.blueletterbible.org/lexicon/H{strongNumber}/wlc/",
+      "license": "read-only corroboration; no redistribution right assumed",
+      "use": "Strong outline, BDB display, WLC concordance, TWOT reference pointer"
+    },
+    {
+      "id": "BIBLEHUB_BDB_STRONG_CONCORDANCE",
+      "role": "independent-public-read-only-corroboration",
+      "urlPattern": "https://biblehub.com/hebrew/{strongNumber}.htm",
+      "license": "read-only corroboration; no redistribution right assumed",
+      "use": "Strong/NAS/BDB/Englishman's concordance comparison"
+    },
+    {
+      "id": "TYNDALE_OPEN_STUDY_NOTES",
+      "role": "secondary-theological-context-only",
+      "url": "https://www.stepbible.org/version.jsp?version=TNotes",
+      "license": "CC BY-SA 4.0",
+      "use": "theological/contextual challenge only; never lexical sense authority"
+    },
+    {
+      "id": "BIBLEHUB_TOPICAL_LEXICON",
+      "role": "tertiary-theological-context-only",
+      "urlPattern": "https://biblehub.com/hebrew/{strongNumber}.htm",
+      "license": "read-only corroboration; no redistribution right assumed",
+      "use": "theological application overreach check only; excluded from lexical-definition authority"
+    }
+  ],
+  "items": [
+    {
+      "strong": "H413",
+      "lemma": "אֶל",
+      "currentCandidateHeadKo": "~에게·~로·~을 향하여; 문맥에 따라 ~에 맞서·~에 관하여",
+      "publicEvidenceConvergence": [
+        "BDB/Strong converge on motion or direction toward as the core prepositional function.",
+        "Independent public outlines also preserve hostile direction, reference/concerning, rule/standard, and occasional positional/presence uses.",
+        "Genesis WLC examples confirm direction-to-person/place as a dominant concrete control."
+      ],
+      "verdict": "REFINE_SENSE_HIERARCHY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Preserve a visible BDB-derived sub-boundary for according-to/rule-standard use instead of hiding it in generic Korean particles.",
+        "Preserve occasional presence/near/among class where supported by the BDB node hierarchy, but do not promote each Korean particle to an independent lexical sense.",
+        "Keep hostile-direction and concerning/reference uses distinct from simple physical motion."
+      ],
+      "theologicalOverreach": "NONE",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H834",
+      "lemma": "אֲשֶׁר",
+      "currentCandidateHeadKo": "~하는·~인; 관계절을 잇는 관계 표지",
+      "publicEvidenceConvergence": [
+        "BDB defines a general particle/sign of relation, not merely an adjectival relative-clause marker.",
+        "Public BDB/Strong witnesses preserve who/which/that plus temporal, local, manner, causal and content-clause/conjunctional functions.",
+        "BDB explicitly notes temporal/local/causal relations and later conjunction-like use approximating ki; compound prepositional constructions still require separate construction-level handling."
+      ],
+      "verdict": "REFINE_HEAD_AND_SENSE_HIERARCHY",
+      "candidateHeadMayRemain": false,
+      "recommendedHeadKo": "관계·접속 표지: ~하는·~인·~것; 문맥에 따라 때·곳·이유·내용 관계",
+      "requiredBeforePromotion": [
+        "Do not reduce the lemma to a relative-clause-only gloss.",
+        "Retain relative, temporal/local, and conjunctional/content relations as bounded grammatical functions under one relational particle hierarchy.",
+        "Keep בַאֲשֶׁר, כַּאֲשֶׁר, מֵאֲשֶׁר and similar combinations as construction-level evidence rather than multiplying standalone lexical senses."
+      ],
+      "theologicalOverreach": "NONE",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H3605",
+      "lemma": "כֹּל",
+      "currentCandidateHeadKo": "모든·온·전체; 문맥에 따라 각각·어떤/무엇이든",
+      "publicEvidenceConvergence": [
+        "BDB/Strong converge on whole/all as the core, with all/every/any/each arising under scope and construction.",
+        "Public concordance evidence supports totality, distributive and indefinite renderings without requiring unrelated lexical senses."
+      ],
+      "verdict": "PASS_WITH_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Keep construct/article/syntactic scope attached to each usage note.",
+        "Do not infer a theological meaning of total sovereignty from the quantifier itself; that belongs to passage-level theology."
+      ],
+      "theologicalOverreach": "CONTROLLED",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H935",
+      "lemma": "בּוֹא",
+      "currentCandidateHeadKo": "오다·들어오다; 히필: 데려오다·가져오다·오게 하다",
+      "publicEvidenceConvergence": [
+        "BDB/Strong converge on Qal come/go/enter and Hiphil cause/bring, with Hophal passive brought/introduced.",
+        "Public BDB outlines preserve context-bounded extensions such as arrive, come upon, come to pass and attain, which should remain subordinate to stem and construction rather than flattened into the headword."
+      ],
+      "verdict": "REFINE_SENSE_HIERARCHY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Retain explicit Qal sub-boundaries for enter/arrive/come-go and context-bound event/attainment uses where BDB supports them.",
+        "Retain Hiphil causative and Hophal passive hierarchy separately.",
+        "Do not let the Hiphil-heavy early Genesis sample redefine the lemma globally."
+      ],
+      "theologicalOverreach": "NONE",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H3808",
+      "lemma": "לֹא",
+      "currentCandidateHeadKo": "아니다·…하지 않다; 부정 표지",
+      "publicEvidenceConvergence": [
+        "Public BDB/Strong sources converge on simple/absolute negation as the lexical-grammatical core.",
+        "Translations such as never, none, without and cannot are constructional/contextual outcomes and do not require independent lexical senses."
+      ],
+      "verdict": "PASS_WITH_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Keep negation scope in syntax/context, not in proliferated gloss senses.",
+        "Do not derive covenantal or moral theology from the particle itself."
+      ],
+      "theologicalOverreach": "CONTROLLED",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H1931",
+      "lemma": "הוּא",
+      "currentCandidateHeadKo": "그·그녀·그것; 3인칭 단수 대명사",
+      "publicEvidenceConvergence": [
+        "BDB/Strong converge on third-person singular he/she/it, with neuter reference.",
+        "Public lexical outlines also preserve emphatic/self, resumptive/subject-focus, demonstrative that/this, and occasional copular functions."
+      ],
+      "verdict": "REFINE_SENSE_HIERARCHY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Add explicit demonstrative and emphatic/resumptive functional boundaries to the inspectable hierarchy.",
+        "Keep copular renderings as grammatical function and do not treat every English/Korean copula as a standalone lexical meaning."
+      ],
+      "theologicalOverreach": "NONE",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H3290",
+      "lemma": "יַעֲקֹב",
+      "currentCandidateHeadKo": "야곱; 이삭과 리브가의 아들인 인명",
+      "publicEvidenceConvergence": [
+        "Public BDB/Strong sources agree that the headword is the proper name Jacob and, beyond personal reference, can denote his descendants/national Israel by context.",
+        "Heel/supplant etymological explanations belong to etymology/provenance and narrative wordplay, not the primary proper-name meaning."
+      ],
+      "verdict": "PASS_WITH_ETYMOLOGY_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Keep personal Jacob and collective/national Jacob context-distinct.",
+        "Keep heel/supplant wordplay in provenance/notes rather than replacing the headword gloss."
+      ],
+      "theologicalOverreach": "CONTROLLED",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H251",
+      "lemma": "אָח",
+      "currentCandidateHeadKo": "형제·남자 형제; 친족·동족(문맥별)",
+      "publicEvidenceConvergence": [
+        "BDB/Strong public sources converge on literal brother with wider kinship, countryman/community and affinity/resemblance extensions.",
+        "Possessive suffix variation is morphology and participant reference, not new lexical sense."
+      ],
+      "verdict": "PASS_WITH_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Preserve literal sibling, wider male kin, and community/affinity extensions as context-bounded layers.",
+        "Keep suffix-person distinctions outside the lexical sense inventory."
+      ],
+      "theologicalOverreach": "NONE",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H3205",
+      "lemma": "יָלַד",
+      "currentCandidateHeadKo": "낳다·출산하다·자식을 두다; 어간에 따라 태어나다·낳게 하다",
+      "publicEvidenceConvergence": [
+        "Public BDB/Strong sources converge on bear/bring forth, causative beget, passive born, midwife-related and lineage uses.",
+        "Genesis concordance controls show female birth and genealogical begetting, confirming the need to bind Korean rendering to stem, subject role and context."
+      ],
+      "verdict": "PASS_WITH_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Maintain Qal, passive stems, Piel midwife use and Hiphil/genealogical causative boundaries.",
+        "Do not convert covenant/barrenness/redemption themes from study notes into lexical senses of yalad."
+      ],
+      "theologicalOverreach": "CONTROLLED",
+      "confidence": "HIGH"
+    },
+    {
+      "strong": "H8141",
+      "lemma": "שָׁנָה",
+      "currentCandidateHeadKo": "해·년(year)",
+      "publicEvidenceConvergence": [
+        "BDB/Strong converge on year as the time-unit core.",
+        "Age, duration, annual and yearling-like renderings are governed by number, construction and context rather than unrelated lexical senses."
+      ],
+      "verdict": "PASS_WITH_BOUNDARY",
+      "candidateHeadMayRemain": true,
+      "requiredBeforePromotion": [
+        "Keep age/duration/annual expressions construction-bound.",
+        "Chronological or covenantal significance belongs to passage-level theology, not the lexical headword."
+      ],
+      "theologicalOverreach": "CONTROLLED",
+      "confidence": "HIGH"
+    }
+  ],
+  "summary": {
+    "targets": 10,
+    "passWithoutHeadChange": 9,
+    "headRevisionRequired": 1,
+    "senseHierarchyRefinementRequired": 4,
+    "hold": 0,
+    "dispute": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "approvedMeaningMutation": 0,
+    "blockingExternalClaudeGeminiVerdictRequired": false
+  },
+  "next": "Apply the four public-evidence refinements to the proposal-only candidate hierarchy, revise H834 head, regenerate a deterministic candidate fingerprint bound to the unchanged frozen evidence baseline, then run the existing verifier without Registry/production mutation."
+}
