@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-public-research-first-reconcile-2026-08-12",
+  "status": "CURRENT_MAIN_DEDICATED_REVALIDATION_STILL_REQUIRED_PUBLIC_RESEARCH_FIRST_AFTER_PASS",
+  "observedCurrentMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "researchBranch": "chatgpt/genesis-r4-followup-evidence",
+  "researchHeadBeforeReconcile": "849e76ef335901c3044c4e8428b3a1a1a8fc53a9",
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "targets": ["H120","H6030b","H7650","H28","H39"],
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "candidateFingerprintDriftObserved": false,
+    "sourceFingerprintDriftObserved": false
+  },
+  "preservedHardGate": {
+    "dedicatedCurrentMainR4RevalidationRequired": true,
+    "reason": "Main advanced after the last dedicated R4 deterministic revalidation and the v4 foundation verifier/TRACK_STATE governance surface changed. Current-main generic review success does not substitute for rebuilding/verifying the exact 87/38 R4 chain.",
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "controlPolicyReconcile": {
+    "source": "Notion fixed control card: 📌 공통 기준·워크플로우 v2",
+    "policyDate": "2026-08-12",
+    "afterDedicatedRevalidationPass": "GPT public original-language/theological dictionary, academic DB, actual usage, morphology, provenance and Korean translation evidence synthesis is the default decision path.",
+    "claudeGeminiBlockingRequired": false,
+    "claudeGeminiRole": "optional supplementary counter-audit when available; exact-fingerprint results may be retained as additional Evidence but are not a prerequisite for continued research production",
+    "humanGate": "only irreconcilable equal-strength evidence conflict, material existing-approved-meaning change, license/security/permission/cost/policy exception"
+  },
+  "currentBoundaries": {
+    "H120": ["common-noun/proper-name separation", "etymology metadata must not become semantic certainty"],
+    "H6030b": ["source-node identity reconciled", "semantic/uncertainty boundary still requires current-main dedicated revalidation"],
+    "H7650": ["oath/swear semantic boundary retained", "morphology and context must remain explicit"],
+    "H28": ["Abida identity and father+know family stable", "exact Korean verbal wording remains auditable"],
+    "H39": ["father-is-El family evidence-preferred", "Strong father-of-Mael retained in provenance", "primary epigraphic exact-inscription gap remains uncertainty"]
+  },
+  "nextGate": "RERUN_DEDICATED_R4_87_OCCURRENCE_38_CONTEXT_EXACT_BASELINE_VERIFIER_CHAIN_ON_MAIN_93545870; IF_PASS_CONTINUE_GPT_PUBLIC_EVIDENCE_SYNTHESIS_AND_AUTO_BOUNDARY_DECISION_WITH_CLAUDE_GEMINI_OPTIONAL"
+}
