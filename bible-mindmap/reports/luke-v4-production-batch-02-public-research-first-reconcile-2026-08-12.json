@@ -2,12 +2,15 @@
   "schemaVersion": 1,
   "track": "luke-lexicon-v4",
   "reportId": "luke-v4-production-batch-02-public-research-first-reconcile-2026-08-12",
-  "status": "GPT_PUBLIC_RESEARCH_REVIEW_ACTIVE_AFTER_INITIAL_AUDIT_PASS",
-  "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "status": "GPT_PUBLIC_RESEARCH_REVIEW_ACTIVE_CURRENT_MAIN_32596BAF",
+  "derivedMain": "32596baf054a75cff8ff18d94d2c173203eb2626",
   "researchBranch": "chatgpt/luke-v4-production-batch-02",
-  "researchHeadBeforeReconcile": "b03c5266ef266449a850633b13c83a72238488ac",
   "baseline": {
     "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
+    "contextMorphologyEvidenceFingerprint": "sha256:1917d90b3b847c4ed9bb75769d8d176df85d710fc080fd20ca2f841cc33435e2",
+    "contextMorphologyEvidenceFileFingerprint": "sha256:4d61127b95f4dae52a810db6993cb1448d67682733a1bca5fe8b5b6777e85ed5",
+    "auditBundleFingerprint": "sha256:eed3fff2a43ac0ef4509b8007ca3791a7f8e96e5f44d5a9fda9bfe7fc2ddc7cc",
+    "targets": ["G0006", "G0007", "G0009", "G0011", "G0012", "G0015", "G0018", "G0020"],
     "gptIndependentAudit": "reports/luke-v4-production-batch-02-gpt-independent-audit.json",
     "gptVerdictSummary": {"PASS_WITH_BOUNDARY": 8, "HOLD": 0, "DISPUTE": 0},
     "candidateMutation": 0,
@@ -37,6 +40,6 @@
     "qualityGateWeakeningAllowed": false,
     "selfApprovalAllowed": false
   },
-  "decision": "Preserve the exact-fingerprint GPT audit result as Evidence, continue per-target public-source synthesis, and use Claude/Gemini only as optional supplementary counter-audits when available. Do not promote or mutate production from this reconciliation step.",
+  "decision": "Preserve the exact-current-main GPT audit result as Evidence, continue per-target public-source synthesis, and use Claude/Gemini only as optional supplementary counter-audits when available. Do not promote or mutate production from this reconciliation step.",
   "nextGate": "COMPLETE_PUBLIC_EVIDENCE_SYNTHESIS_FOR_ALL_BATCH_02_TARGETS_THEN_COMPUTE_FINAL_RESEARCH_BOUNDARY_VERDICTS_AND_CONTINUE_NEXT_GREEK_BATCH_RESEARCH_IN_PARALLEL"
 }
