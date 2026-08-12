@@ -76,5 +76,5 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   expect(annotationPin).toContain('annotation.anchor?.chapter');
   expect(annotationPin).toContain('annotation.anchor?.translationId');
 
-  expect(wordSearch).toContain('}, [group.key]);
+  expect(wordSearch).toContain('}, [group.key]);');
 });
