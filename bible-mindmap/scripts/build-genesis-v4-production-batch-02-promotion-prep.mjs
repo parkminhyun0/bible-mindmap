@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -133,7 +134,7 @@ function buildNodeSetFingerprint(hashReport) {
   for (const target of hashReport.targets) {
     for (const node of target.sourceNodes) pairs.push({ strong: target.strong, sourceNodeKey: node.id, sourceHash: node.sourceHash })
   }
-  return sha256Canonical(pairs)
+  return `sha256:${createHash('sha256').update(JSON.stringify(pairs)).digest('hex')}`
 }
 
 export async function buildBatch02PromotionPrep() {
