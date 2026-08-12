@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-02-current-main-reconciliation-e30fb382",
+  "status": "RESEARCH_BRANCH_RECONCILED_TO_CURRENT_MAIN_BY_PINNED_SCOPE_INVARIANCE",
+  "researchBranch": "chatgpt/luke-v4-production-batch-02",
+  "currentMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "sourceLock": {
+    "stepBibleCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "tbESGBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "tfLSJBlobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "tagntGitBlobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843"
+  },
+  "frozenInputs": {
+    "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
+    "contextMorphologyEvidenceFingerprint": "sha256:1917d90b3b847c4ed9bb75769d8d176df85d710fc080fd20ca2f841cc33435e2",
+    "contextMorphologyEvidenceFileFingerprint": "sha256:4d61127b95f4dae52a810db6993cb1448d67682733a1bca5fe8b5b6777e85ed5",
+    "auditBundleFingerprint": "sha256:eed3fff2a43ac0ef4509b8007ca3791a7f8e96e5f44d5a9fda9bfe7fc2ddc7cc"
+  },
+  "researchVerdict": {
+    "targets": 8,
+    "exactLukeTokens": 41,
+    "passWithBoundary": 8,
+    "hold": 0,
+    "dispute": 0,
+    "gptIndependentAuditCompatible": "8/8"
+  },
+  "compareProof": {
+    "priorLexiconValidatedMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "currentMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+    "aheadBy": 1,
+    "changedFiles": [
+      ".github/workflows/validate-pr.yml",
+      "bible-mindmap/playwright.config.js",
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/components/LexicalBridgeModalV2.jsx",
+      "bible-mindmap/src/theme/contextBibleMobileFix.css",
+      "bible-mindmap/tests/lexical-bridge-context-ui.spec.js",
+      "bible-mindmap/tests/lexical-bridge-webkit-landscape.spec.js",
+      "memory/RESUME.json"
+    ],
+    "lukeBatch02CandidateEvidenceChanged": false,
+    "pinnedGreekSourcesChanged": false,
+    "approvalRegistryOrApprovedMeaningChanged": false,
+    "note": "The main move consists of lexical-bridge/mobile UI, browser CI, and RESUME cache only. It does not alter Luke Batch 02 candidate/evidence or pinned Greek lexical/corpus sources."
+  },
+  "governance": {
+    "researchOnly": true,
+    "approvalRegistryMutation": false,
+    "productionMutation": false,
+    "existingApprovedMeaningMutation": false,
+    "qualityGateWeakening": false,
+    "selfApproval": false,
+    "promotionAuthorizedByThisReport": false
+  },
+  "conclusion": "The eight-target Luke Batch 02 public-evidence synthesis remains valid and fingerprint-addressable on current main. A future promotion must materialize on a fresh current-main branch and run the then-current exact-head gates.",
+  "nextGate": "CONTINUE_NEXT_UNPROCESSED_GREEK_RESEARCH_BATCH_IN_PARALLEL; DEFER_MAIN_BOUND_PROMOTION_UNTIL_FIFO_AND_CURRENT_DELIVERY_POLICY_ALLOW"
+}
