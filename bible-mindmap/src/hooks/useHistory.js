@@ -5,7 +5,6 @@ const MAX = 50;
 export default function useHistory(nodes, edges, setNodes, setEdges) {
   const past = useRef([]);
   const future = useRef([]);
-  const skipRecord = useRef(false);
   const [historyState, setHistoryState] = useState({ canUndo: false, canRedo: false });
 
   const syncState = () => {
@@ -18,10 +17,6 @@ export default function useHistory(nodes, edges, setNodes, setEdges) {
   const snapshot = () => JSON.stringify({ nodes, edges });
 
   const record = useCallback(() => {
-    if (skipRecord.current) {
-      skipRecord.current = false;
-      return;
-    }
     past.current.push(snapshot());
     if (past.current.length > MAX) past.current.shift();
     future.current = [];
@@ -30,7 +25,6 @@ export default function useHistory(nodes, edges, setNodes, setEdges) {
 
   const restore = (json) => {
     const { nodes: n, edges: e } = JSON.parse(json);
-    skipRecord.current = true;
     setNodes(n);
     setEdges(e);
   };

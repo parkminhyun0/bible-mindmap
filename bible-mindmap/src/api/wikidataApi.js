@@ -89,6 +89,7 @@ function claimTimeYear(claims, pid) {
   const bc = val.time.startsWith('-');
   const abs = bc ? val.time.slice(1) : val.time;
   const year = parseInt(abs.split('-')[0], 10);
+  if (!year || isNaN(year)) return null; // 파싱 불가 시 NaN 전파 방지 (parseTime과 동일 가드)
   return bc ? -year : year;
 }
 
@@ -174,7 +175,12 @@ export async function searchBiblicalPerson(query, testament = 'all') {
     const itemTestament = category === 'biblical'
       ? classifyTestament(bibleTags)
       : historicalScopeFromYears(birthYear, deathYear);
-    if (!itemTestament || !matchesTestament(itemTestament, testament)) continue;
+    // 'all'이면 연대 미상/AD 100 이후(null scope)도 통과 — AD 500 이전 admission 게이트는 위에서 이미 적용됨
+    if (!testament || testament === 'all') {
+      // 통과
+    } else if (!itemTestament || !matchesTestament(itemTestament, testament)) {
+      continue;
+    }
     const nameInfo = category === 'biblical'
       ? (
         resolvedName.qid === qid
@@ -499,12 +505,16 @@ export async function searchContemporaries(
   }).filter((r) =>
     r.name
     && r.name !== r.wikidataId
-    && r.testament
-    && (r.category === 'historical' || matchesTestament(r.testament, testament))
+    // 'all'이면 연대 미상(null scope)도 통과 · 특정 testament 요청 시 카테고리 불문 동일 필터 적용
+    && (!testament || testament === 'all'
+      ? true
+      : (r.testament && matchesTestament(r.testament, testament)))
   );
 
+  // 같은 QID면 큐레이션(static) 항목이 SPARQL 행을 이기도록 뒤에 배치
+  // (이름 뜻·원어·음역·프로젝트 표준 한글 이름 보존)
   const deduped = [...new Map(
-    [...staticBiblical, ...results].map((item) => [item.wikidataId, item]),
+    [...results, ...staticBiblical].map((item) => [item.wikidataId, item]),
   ).values()];
   const biblical = deduped.filter((item) => item.category === 'biblical').slice(0, 10);
   const historical = deduped.filter((item) => item.category === 'historical').slice(0, 10);

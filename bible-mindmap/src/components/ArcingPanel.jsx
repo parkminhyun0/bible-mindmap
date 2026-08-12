@@ -320,14 +320,20 @@ export default function ArcingPanel({ passage: passageProp, onClose, panelIndex 
     return () => window.removeEventListener('keydown', h);
   }, [onClose]);
 
+  // 연속 분석 시 늦게 도착한 이전 요청이 최신 결과를 덮어쓰지 않도록 세대 토큰 사용
+  const analyzeGenRef = useRef(0);
   const analyze = useCallback(async (p) => {
+    const gen = ++analyzeGenRef.current;
     setPassage(p); setShowForm(false); setLoading(true); setError(null); setStructure(null); setExpandedKey(null);
     try {
-      setStructure(await buildArcingFromPassage(p.bookId, p.chapter, p.verseStart, p.verseEnd));
+      const structure = await buildArcingFromPassage(p.bookId, p.chapter, p.verseStart, p.verseEnd);
+      if (analyzeGenRef.current !== gen) return;
+      setStructure(structure);
     } catch (err) {
+      if (analyzeGenRef.current !== gen) return;
       setError(err.message || '분석 중 오류가 발생했습니다.');
     } finally {
-      setLoading(false);
+      if (analyzeGenRef.current === gen) setLoading(false);
     }
   }, []);
 
