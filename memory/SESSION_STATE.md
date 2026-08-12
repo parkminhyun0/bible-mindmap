@@ -4,17 +4,17 @@ autoload: false
 ---
 
 # Current task
-PR #169: fix Hebrews observation-card A6 audit counts.
+Do not pin an active PR here. Resolve volatile work from GitHub Derived State first.
 
-## Next
-1. `chapterCardCount`: 1154 → 1153
-2. `chapterCardMarkerChecked`: 2448 → 2445
-3. Run verifier, build, browser smoke.
-4. Merge, verify Pages/Live SHA, update Notion.
+At the 2026-08-12 system-maintenance checkpoint there was no open PR before the maintenance branch was created.
 
-## Known gates
-- PR #156: preview structure requires user approval.
-- PR #168: duplicate cleanup candidate.
-- PR #119: stale/conflict review required.
+## Deep resume
+1. Read current `main`, open PRs, exact heads, required CI/review, Pages/Live state.
+2. Read the one relevant Notion control record (`RUN_STATE` / `EXECUTOR`).
+3. Read `TRACK_STATE.json` only for lexicon phase/governance facts.
+4. Treat `RESUME.json` and this file as cache, never runtime authority.
 
-Use `memory/RESUME.json` for normal startup. Load this file only for deep sync.
+## Safety
+- Do not revive historical PR numbers merely because they appear in archived docs.
+- Do not create a duplicate branch/PR for an already-active task.
+- User screen confirmation is required before UI-visible work reaches 100%.

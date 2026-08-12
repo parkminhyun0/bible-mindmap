@@ -1,81 +1,47 @@
 ---
 name: system-delta
-description: ⚡ 과거 기억보다 먼저 확인하는 최신 시스템 변화·운영 구조·재개 기준
+description: 현재 런타임 상태가 아니라 시스템 구조·재개 우선순위만 기록하는 deep reference
 metadata:
   type: reference
 ---
 
-# ⚡ 최신 시스템 델타 · 자비스 빠른 동기화
+# 시스템 델타 · 안정 기준
 
-> 장기 기억 요약이 아니라, 새 세션에서 **현재 시스템이 과거 기억과 무엇이 달라졌는지** 빠르게 판정하는 변화량 지도다. 이 파일 안의 수치도 기준선일 뿐이며 실제 GitHub·CI·배포·Notion 조회가 항상 우선한다.
+> 이 파일은 활성 PR·SHA·CI 수치·다음 작업 번호를 저장하지 않는다. 변동 상태는 항상 GitHub Derived State와 관련 Notion control record에서 다시 읽는다.
 
 ## 1. 진실의 우선순위
-1. 현재 작업 디렉터리 `git status`와 로컬 미커밋 변경
-2. GitHub 최신 `main`, 열린 PR, CI, Pages Live SHA
-3. Notion 통합 대시보드·운영 관제·개발 작업·QA·최근 수정 사항
-4. `memory/SESSION_STATE.md`
-5. 이 파일과 장기 기억 파일
+1. GitHub 최신 `main`, 열린 PR, exact head, diff, required CI/review
+2. GitHub Pages 배포와 Live SHA
+3. 관련 Notion control/status record
+4. `docs/lexicon-workflow/TRACK_STATE.json` 같은 도메인 상태
+5. `memory/RESUME.json` / `SESSION_STATE.md` checkpoint cache
+6. 장기 기억과 과거 작업 로그
 
-기억과 실제 상태가 다르면 실제 GitHub·CI·배포·Notion 상태를 우선한다.
+충돌하면 위 순서가 항상 우선한다.
 
-## 2. 새 세션 필수 동기화
-```bash
-git status --short --branch
-git fetch origin main --prune
-git log --oneline origin/main -10
-gh pr list --repo parkminhyun0/bible-mindmap --state open --limit 20
-gh run list --repo parkminhyun0/bible-mindmap --limit 15
-```
+## 2. 재개 규칙
+- 기본 재개는 `AGENTS.md`의 FAST 규칙을 따른다.
+- DEEP 재개가 필요해도 전체 대시보드나 과거 일일 로그를 먼저 읽지 않는다.
+- 활성 작업은 GitHub에서 발견해야 하며, 이 파일의 과거 문구로 작업을 부활시키지 않는다.
+- 이미 열린 PR이 있으면 같은 작업의 새 브랜치/PR을 만들지 않는다.
 
-그다음 아래 Notion 페이지를 실제로 읽는다.
-- 통합 대시보드: `3a10b963-e600-801e-9ba8-f449df24685b`
-- Bible Research OS 방향 기준서: `3b20b963-e600-81eb-9f2d-dcc8fb35a3fd`
-- 자동화 운영 현황: `3b20b963-e600-8159-9a16-d52da9c55c5f`
-- 운영 관제 센터: `3b20b963-e600-81ca-9109-e88b14d13258`
-- 기능·연구 센터: `3b20b963-e600-8114-8287-fab70d3b5773`
-- QA·검증 센터: `3b20b963-e600-81ca-b5a6-fca7cff20096`
-- 최근 수정 사항: `3ab0b963-e600-81df-92af-e2ce186f7239`
-- GPT↔자비스 파이프라인 DB: `8c70b963-e600-8234-b736-01b7899554f1`
+## 3. 배포·운영 구조
+- 공개 완료 판정의 기준은 GitHub Pages + Live SHA다.
+- Vercel은 공식 완료 Gate가 아니라 참고/보조 경로다.
+- 대용량 정적 데이터는 `data-dist` 계열 배포 계약을 따르며 앱 셸과 분리한다.
+- 사용자 화면에 보이는 변경은 자동 검증·배포가 성공해도 사용자 직접 확인 전 100%로 올리지 않는다.
 
-## 3. 시스템 구조 기준선 · 2026-08-05
-- 방향: **Bible Research OS** — 구절 참조 → 문맥 성경 → 정경 추적 → 원어 연구 → 개인 연구 저장의 왕복 흐름.
-- 공식 배포: **GitHub Pages → Cloudflare Worker → NVIDIA Build API**. Vercel은 공식 완료 판정에서 제외한다.
-- **데이터 전달 표준(A안) · 2026-08-07 확정**: 앱 셸은 Pages, **대용량 정적 데이터는 `data-dist` 브랜치 발행 → jsDelivr `@<SHA>` CDN 오프로드**. `deploy.yml`이 data-dist 최신 SHA를 자동 resolve해 `VITE_DATA_BASE_URL` 주입(수동 tag/env 없음). 1차 실패 시 **Statically→GitHub raw→앱 동일출처 2차 미러 런타임 폴백**(`src/config/dataBase.js`의 `resilientFetch`/`fetchData`). 불변성은 커밋 SHA로 보장. 상세: [[bible-deploy-mechanism]] · [[bible-release-workflow]].
-- 자동화: 일반 `chatgpt/*` PR은 전체 Actions·리뷰·충돌 게이트 통과 후 병합한다. 워크플로·Worker·API·Secret·성경/정경 데이터·스키마·lockfile은 승인 게이트를 유지한다.
-- Notion: 통합 대시보드, 운영 관제 센터, 기능·연구 센터, QA 센터, 개발 작업 DB, 기능 포트폴리오, 릴리스·통합·회귀·사용자 확인 기록으로 분리 운영한다.
-- 완료 게이트: 구현·병합·Pages·Live SHA 성공은 최대 95%. 박 목사님의 실제 화면 확인 후 100%.
-- 문맥 성경: CI 기준 66/66권 curated, coarse 0, fallback 0, Arc 관계 1,262개.
-- 정경 추적: 72개 개념, 415 arc 단계, 513용례, 누락·고아 0.
-- 원어 연구: P2.1 왕복 연구와 P2.2 형태론 한국어 해설 엔진·UI 통합. 사용자 화면 확인 전 95% 유지.
-- 검색: 정경 검색 → 자동완성·NVIDIA 비교 → 결과 선택 → 정경 상세 → 검색 복귀 흐름 연결.
-- 교차 참조: 상단 편집창 칩을 단일 열기·닫기 진입점으로 사용.
-- 모바일: 문맥 성경 상단 공백·학습 바 잘림·iOS 문서 스크롤·책 칩 가로 스크롤·장 이동 후 외부 스크롤 문제를 연속 보정.
-- 자비스 최신화: PR #170에서 `MEMORY.md` → `SESSION_STATE.md` → `SYSTEM_DELTA.md` 2단계 재개 구조 도입.
+## 4. 자동화 구조
+- 일반 저위험 유지보수는 검증 후 자동 전달 가능한 Lane으로 운영한다.
+- 원어 한글사전은 Evidence-First Autonomous v4 정책과 fail-closed Gate를 따른다.
+- GitHub Derived State가 volatile runtime SSOT이며 `RESUME`/`TRACK_STATE`의 진행 문구가 실제 GitHub와 충돌하면 먼저 reconciliation한다.
+- 자동화 실행의 `SUCCESS`는 곧 작업 수행을 뜻하지 않는다. actionable work가 없으면 `NOOP`로 구분한다.
+- executor handoff는 동일 브랜치/PR과 fingerprint를 보존하고, 새 executor가 GitHub 상태를 다시 확인한 뒤 재개한다.
 
-## 4. 현재 알려진 작업·차단 기준선
-- PR #169: 히브리서 1–13장 관찰 카드. A6 감사 집계 불일치 수정이 다음 작업이다.
-  - 등록 `chapterCardCount=1154` / 실제 `1153`
-  - 등록 `chapterCardMarkerChecked=2448` / 실제 `2445`
-- PR #168: 데살로니가후서는 PR #162로 이미 병합되어 중복 정리 대상.
-- PR #156: 3분할 문맥 성경 Preview Draft. 사용자 구조 승인 전 운영 병합 금지.
-- PR #119: 오래된 부팅 fallback PR. 최신 main과 중복·충돌 재검토 전 병합 금지.
-- TASK-26: 정경 추적 2차 확장. 후보 생성 → 검증 → 사람 검토 → 진행 → 커밋 → 배포 → Notion → 대시보드. 한 번에 최대 6개.
+## 5. 프로젝트 구조
+`<성경 마인드맵>`은 Bible Research OS로서 본문을 출발점으로 문맥·정경·원어·인물·장소·시대·개인 연구를 연결한다. 원어 한글사전, 디자인, 검색/NVIDIA, 성경 데이터는 전체 프로젝트 안의 독립 트랙이며 어느 한 트랙도 전체 우선순위를 암묵적으로 대체하지 않는다.
 
-> 위 항목은 재개 기준선이다. 새 세션에서는 열린 PR과 CI를 다시 조회해 이미 해결됐거나 새로 생긴 변경을 먼저 반영한다.
-
-## 5. 다른 작업을 즉시 시작하기 전 7줄 판정
-1. 최신 main SHA와 마지막 변경
-2. 로컬 미커밋 여부
-3. 열린 PR과 차단 원인
-4. CI·Pages·Live SHA 상태
-5. 최근 Notion 구조·정책 변화
-6. 요청 작업과 충돌하는 활성 작업
-7. 지금 바로 실행할 첫 단계
-
-사용자가 이미 새 작업을 지시했다면 이 보고 뒤 추가 확인 질문 없이 안전한 첫 단계부터 실행한다.
-
-## 6. 업데이트 규칙
-- `SESSION_STATE.md`: 현재 작업 하나와 즉시 다음 행동만, 2KB 이내.
-- `SYSTEM_DELTA.md`: 최근 시스템 변화와 운영 기준만, 오래된 이력은 제거.
-- `MEMORY.md`: 장기 원칙과 포인터만. 숫자·SHA·활성 PR을 장기간 고정하지 않는다.
-- 완료 보고 직전, main 병합 후, 배포 판정 후, Notion 구조 변경 후 두 파일을 갱신한다.
+## 6. 이 파일의 업데이트 규칙
+- 장기적으로 유지할 구조가 바뀔 때만 수정한다.
+- 활성 PR, 현재 SHA, 오늘의 CI, 퍼센트, 일일 진행 내용은 기록하지 않는다.
+- 일일 작업 이력은 Notion `하루 작업 브리핑`으로 보낸다.
