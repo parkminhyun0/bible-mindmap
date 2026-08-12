@@ -5,6 +5,7 @@ import { CANONICAL_CONCEPTS } from '../data/canonicalConcepts.js';
 import { isCanonicalConceptSearchInput } from '../search/canonicalConceptShadowBridge';
 import CanonicalSemanticComparisonPanel from './CanonicalSemanticComparisonPanel';
 import CanonicalConceptSuggestionPanel from './CanonicalConceptSuggestionPanel';
+import LexicalBridgeLauncher from './LexicalBridgeLauncher';
 
 const CanonicalConceptStaticSearchEntry = lazy(() => import('./CanonicalConceptStaticSearchEntry'));
 const COMPARISON_DEBOUNCE_MS = 300;
@@ -203,6 +204,12 @@ export default function CanonicalConceptLauncher({ variant = 'inline' }) {
         <span aria-hidden="true" style={{ fontSize: isRail ? 14 : 15, lineHeight: 1 }}>🧭</span>
         {!isRail && <span>정경 추적</span>}
       </button>
+
+      {!isRail && (
+        <div style={{ marginTop: 8 }}>
+          <LexicalBridgeLauncher />
+        </div>
+      )}
 
       {open && (
         <>
