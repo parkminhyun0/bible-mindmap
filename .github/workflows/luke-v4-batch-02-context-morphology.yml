@@ -1,0 +1,107 @@
+name: Luke v4 Batch 02 Context Morphology
+
+on:
+  push:
+    branches:
+      - chatgpt/luke-v4-production-batch-02
+    paths:
+      - 'bible-mindmap/scripts/build-luke-v4-production-batch-02-contexts.mjs'
+      - 'bible-mindmap/reports/luke-v4-production-batch-02-selection-2026-08-12.json'
+      - 'bible-mindmap/reports/luke-v4-production-batch-02-source-candidate-prep-2026-08-12.json'
+      - 'bible-mindmap/reports/luke-v4-production-batch-02-context-materialization-contract-2026-08-12.json'
+      - '.github/workflows/luke-v4-batch-02-context-morphology.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: luke-v4-batch-02-context-morphology-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current main SSOT inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin main
+          echo "DERIVED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+          git show origin/main:bible-mindmap/data/lexicon/source-registry.json > /tmp/source-registry.json
+          git show origin/main:bible-mindmap/data/lexicon/luke-g0-source-lock.json > /tmp/luke-g0-source-lock.json
+
+      - name: Materialize all 41 exact Luke TAGNT target tokens and verse contexts
+        working-directory: bible-mindmap
+        run: |
+          node scripts/build-luke-v4-production-batch-02-contexts.mjs \
+            --registry=/tmp/source-registry.json \
+            --source-lock=/tmp/luke-g0-source-lock.json
+
+      - name: Verify exact source candidate boundary contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const crypto = require('crypto')
+          const p = 'reports/luke-v4-production-batch-02-context-morphology-evidence.json'
+          const data = JSON.parse(fs.readFileSync(p, 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+          const expected = ['G0006','G0007','G0009','G0011','G0012','G0015','G0018','G0020']
+
+          if (data.status !== 'EXACT_TAGNT_CONTEXT_MORPHOLOGY_MATERIALIZED_CANDIDATE_BOUNDARY_PASS_AUDIT_FREEZE_NEXT') fail(`unexpected status: ${data.status}`)
+          if (data.derivedMain !== process.env.DERIVED_MAIN) fail(`derived main drift: ${data.derivedMain}`)
+          if (data.counts?.targets !== 8 || data.counts?.exactTargetTokens !== 41 || data.counts?.exactContextPackets !== 41) fail(`count drift: ${JSON.stringify(data.counts)}`)
+          if (data.counts?.targetsWithCountMatch !== 8 || data.counts?.targetsWithMorphology !== 8) fail('target completeness drift')
+          if (data.counts?.lukeSblTokensObserved !== 19405) fail(`Luke SBL token inventory drift: ${data.counts?.lukeSblTokensObserved}`)
+          if (JSON.stringify((data.items || []).map((item) => item.strong)) !== JSON.stringify(expected)) fail('target identity/order drift')
+          if (data.tagntSource?.registryLicense !== 'CC-BY-4.0' || data.tagntSource?.registryStatus !== 'approved-ready' || data.tagntSource?.externalLlmInputAllowed !== true) fail('TAGNT source/license gate drift')
+          if (data.tagntSource?.gitBlobSha !== '705c1bc1cf752e013efcef99b8d9a3b7853bf843') fail(`TAGNT blob drift: ${data.tagntSource?.gitBlobSha}`)
+
+          for (const item of data.items || []) {
+            if (item.counts?.expectedTokens !== item.counts?.actualTokens) fail(`${item.strong}: count mismatch`)
+            if (!Array.isArray(item.counts?.distinctMorphologies) || item.counts.distinctMorphologies.length < 1) fail(`${item.strong}: missing morphology`)
+            if (!Array.isArray(item.exactOccurrences) || item.exactOccurrences.length !== item.counts.actualTokens) fail(`${item.strong}: occurrence packet mismatch`)
+            for (const occurrence of item.exactOccurrences) {
+              if (!occurrence.tokenId || !occurrence.ref || !occurrence.surface || !occurrence.lemma || !occurrence.morphology) fail(`${item.strong}: malformed token packet`)
+              if (!Array.isArray(occurrence.verseContext) || !occurrence.verseContext.some((token) => token.focus)) fail(`${item.strong}: focus token missing from verse context`)
+            }
+            if (!Array.isArray(item.koreanCandidate) || item.koreanCandidate.length < 1 || !item.candidateNote) fail(`${item.strong}: candidate boundary missing`)
+          }
+
+          for (const strong of ['G0012','G0015','G0018','G0020']) {
+            const item = data.items.find((entry) => entry.strong === strong)
+            if (!item?.tfLSJBoundary) fail(`${strong}: required TFLSJ boundary missing`)
+          }
+
+          const g = data.governance || {}
+          if (g.researchOnly !== true || g.candidateMutation !== false || g.candidatePromotionAllowed !== false || g.approvalRegistryMutation !== false || g.productionMutation !== false || g.existingApprovedMeaningMutation !== false || g.selfApprovalAllowed !== false || g.qualityGateWeakeningAllowed !== false || g.independentAuditRequiredBeforePromotion !== true) fail('research governance boundary violated')
+
+          const claimed = data.semanticFingerprint
+          const clone = structuredClone(data)
+          delete clone.semanticFingerprint
+          const actual = `sha256:${crypto.createHash('sha256').update(JSON.stringify(clone)).digest('hex')}`
+          if (claimed !== actual) fail(`semantic fingerprint mismatch: ${claimed} != ${actual}`)
+
+          console.log(`validated Luke batch-02 targets=${data.counts.targets} tokens=${data.counts.exactTargetTokens} contexts=${data.counts.exactContextPackets}`)
+          console.log(`semantic fingerprint ${data.semanticFingerprint}`)
+          console.log(`current main ${data.derivedMain}; stale contract snapshot ${data.staleContractDerivedMain}`)
+          NODE
+
+      - name: Upload exact Luke batch-02 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: luke-v4-batch-02-context-morphology-evidence
+          path: bible-mindmap/reports/luke-v4-production-batch-02-context-morphology-evidence.json
+          if-no-files-found: error
+          retention-days: 14
