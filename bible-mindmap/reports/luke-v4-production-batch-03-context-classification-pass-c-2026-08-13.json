@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "lexicon-v4-luke-production-context-classification-v1",
+  "generatedAt": "2026-08-13T06:10:00+09:00",
+  "book": "Luke",
+  "batch": "03",
+  "derivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchOnly": true,
+  "pinnedPrimaryContextSource": {
+    "id": "stepbible-tagnt",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "blob": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+    "license": "CC-BY-4.0"
+  },
+  "publicCrosschecks": [
+    {
+      "id": "biblehub-g32-englishmans-concordance",
+      "url": "https://biblehub.com/greek/strongs_32.htm",
+      "role": "cross-check Luke occurrence sequence and human-vs-celestial messenger contexts"
+    },
+    {
+      "id": "biblehub-g32-lexicon",
+      "url": "https://biblehub.com/greek/32.htm",
+      "role": "cross-check lexical boundary messenger / angel"
+    },
+    {
+      "id": "studybible-g25-concordance",
+      "url": "https://studybible.info/strongs/G25",
+      "role": "cross-check Luke G0025 verse/token distribution and base lexical gloss"
+    }
+  ],
+  "completed": [
+    {
+      "strong": "G0025",
+      "lemma": "ἀγαπάω",
+      "exactTokenCount": 13,
+      "verseCount": 9,
+      "verseDistribution": [
+        {"ref":"Luk.6.27","tokens":1},
+        {"ref":"Luk.6.32","tokens":4},
+        {"ref":"Luk.6.35","tokens":1},
+        {"ref":"Luk.7.5","tokens":1},
+        {"ref":"Luk.7.42","tokens":1},
+        {"ref":"Luk.7.47","tokens":2},
+        {"ref":"Luk.10.27","tokens":1},
+        {"ref":"Luk.11.43","tokens":1},
+        {"ref":"Luk.16.13","tokens":1}
+      ],
+      "contextClusters": [
+        {"cluster":"personal/social love","refs":["Luk.6.27","Luk.6.32","Luk.6.35","Luk.7.5","Luk.7.42","Luk.7.47"]},
+        {"cluster":"love directed to God","refs":["Luk.10.27"]},
+        {"cluster":"preference/attachment to honor or master","refs":["Luk.11.43","Luk.16.13"]}
+      ],
+      "koreanBoundary": "사랑하다; 아끼다·애정을 두다",
+      "boundaryNote": "목적어와 담화 문맥에 따라 사랑의 대상·양상이 달라지지만, 누가복음의 13 exact tokens는 별개의 신학적 사전 뜻으로 분절할 근거가 없다. 하나님 사랑, 원수 사랑, 명예/주인에 대한 애착은 문맥층에서 보존한다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    },
+    {
+      "strong": "G0032",
+      "lemma": "ἄγγελος",
+      "exactTokenCount": 25,
+      "humanMessengerTokens": 3,
+      "celestialAngelTokens": 22,
+      "humanMessengerRefs": ["Luk.7.24","Luk.7.27","Luk.9.52"],
+      "celestialAngelRefs": ["Luk.1.11","Luk.1.13","Luk.1.18","Luk.1.19","Luk.1.26","Luk.1.30","Luk.1.34","Luk.1.35","Luk.1.38","Luk.2.9","Luk.2.10","Luk.2.13","Luk.2.15","Luk.2.21","Luk.4.10","Luk.9.26","Luk.12.8","Luk.12.9","Luk.15.10","Luk.16.22","Luk.22.43","Luk.24.23"],
+      "koreanBoundary": "사자·전령; 천사",
+      "contextPreferred": {
+        "human": "사자·전령",
+        "celestial": "천사"
+      },
+      "boundaryNote": "ἄγγελος의 lexical head는 '보냄을 받은 사자/전령'이며 누가복음에서는 문맥이 사람 사자와 하늘 천사를 명확히 분기한다. Luk.7.27의 말라기 인용에서 요한을 가리키는 messenger는 사람/예언자 사자 범주로 유지하며, 천사론적 의미를 사전 정의에 역주입하지 않는다.",
+      "verdict": "PASS_WITH_BOUNDARY"
+    }
+  ],
+  "batchSummary": {
+    "targets": 8,
+    "passWithBoundary": 8,
+    "pending": 0,
+    "hold": 0,
+    "dispute": 0,
+    "exactLukeTokens": 47,
+    "approvedMeaningMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0
+  },
+  "nextGate": "CROSSCHECK_ALL_8_TARGETS_AGAINST_PINNED_TBESG_TFLSJ_SENSE_BOUNDARIES_AND_BUILD_KOREAN_CANDIDATE_PACKET_WITH_PROVENANCE_FINGERPRINT"
+}
