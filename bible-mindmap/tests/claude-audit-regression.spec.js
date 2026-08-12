@@ -42,7 +42,10 @@ test.describe('모바일 문맥 성경 코스 이동', () => {
     await dismissResearchOnboarding(page);
     await page.goto('./');
 
-    await page.getByRole('button', { name: /문맥 성경/ }).first().click();
+    // 모바일에서는 기존 P0 계약대로 자료 추가 시트를 통해 문맥 성경에 진입한다.
+    await page.getByRole('button', { name: '추가', exact: true }).click();
+    const sheet = page.locator('.mobile-add-sheet');
+    await sheet.getByRole('button', { name: /문맥 성경/ }).click();
     const initialDialog = page.getByRole('dialog', { name: /문맥 성경/ });
     await expect(initialDialog).toBeVisible();
 
@@ -73,5 +76,5 @@ test('전수조사에서 추가한 fail-closed 가드가 소스 계약으로 유
   expect(annotationPin).toContain('annotation.anchor?.chapter');
   expect(annotationPin).toContain('annotation.anchor?.translationId');
 
-  expect(wordSearch).toContain('}, [group.key]);');
+  expect(wordSearch).toContain('}, [group.key]);
 });
