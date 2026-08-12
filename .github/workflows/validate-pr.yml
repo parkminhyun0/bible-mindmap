@@ -142,7 +142,11 @@ jobs:
         run: npm run test:smoke
 
       - name: Run iPhone WebKit lexical bridge smoke
-        run: npx playwright test tests/lexical-bridge-context-ui.spec.js --project=webkit-iphone
+        run: >-
+          npx playwright test
+          tests/lexical-bridge-context-ui.spec.js
+          tests/lexical-bridge-webkit-landscape.spec.js
+          --project=webkit-iphone
 
       - name: Upload Playwright failure evidence
         if: failure()
