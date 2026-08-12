@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-exact-audit-freeze-2026-08-12",
+  "status": "EXACT_AUDIT_BASELINE_FROZEN_EXTERNAL_AUDIT_REQUIRED",
+  "derivedMain": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+  "pinned": {
+    "candidateArtifact": {
+      "path": "bible-mindmap/reports/genesis-v4-production-batch-02-source-candidate-prep-2026-08-12.json",
+      "blobSha": "872182b3c04b2215011b1d0d4855647667f2aa06"
+    },
+    "contextEvidence": {
+      "path": "bible-mindmap/reports/genesis-v4-production-batch-02-contexts.json",
+      "blobSha": "683652264e1d6e0e1232e77556c8db3b16d60567",
+      "fullArtifactDigest": "sha256:4db7d2ca86e1a17763176bebb74d4a60631086212e376036925cdb517ee91702",
+      "githubActionsRun": 31562568296,
+      "targets": 10,
+      "totalOccurrences": 2482,
+      "sampledContexts": 30
+    },
+    "tbeshSourceLock": {
+      "path": "bible-mindmap/reports/genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12.json",
+      "blobSha": "9532c74a7f74e1e91a7481bb9f3497fc2fe7d04d",
+      "sourceCommit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39"
+    },
+    "bdbSourceLock": {
+      "path": "bible-mindmap/reports/genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12.json",
+      "blobSha": "b0f1ccd62a8a2b5afdd57b0f86fd30eb4cc323f8",
+      "sourceCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce"
+    },
+    "oshbGenesisDigest": "sha256:0526e5c9a5fb4d907847645f954ed3d1268fa69decbd872056cedd2668d86449"
+  },
+  "targets": ["H430","H3068","H1","H1121","H1961","H376","H802","H559","H6213","H7200"],
+  "checks": {
+    "targetCount": 10,
+    "actualContextConfirmed": 10,
+    "bdbBoundaryPinned": 10,
+    "tbeshSourceNodePinned": 10,
+    "candidatePrepared": 10,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0,
+    "selfApproval": false
+  },
+  "auditContract": {
+    "samePinnedBaselineRequired": true,
+    "independentVerdictRequired": true,
+    "claudeVerdictRequired": true,
+    "geminiVerdictRequiredWhereRiskContractRequires": true,
+    "allowedVerdicts": ["PASS","REVISE","DISPUTE"],
+    "simpleWordingDifferenceIsHumanBlocker": false,
+    "unresolvedIsolation": "HOLD_OR_DISPUTE_WITH_BATCH_CONTINUATION"
+  },
+  "governance": {
+    "researchOnly": true,
+    "qualityGateWeakeningAllowed": false,
+    "mainBoundPrCreated": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false
+  },
+  "nextGate": "DISPATCH_SAME_BASELINE_INDEPENDENT_AUDIT_AND_INGEST_MACHINE_READABLE_VERDICTS_WITHOUT_MUTATING_CANDIDATES"
+}
