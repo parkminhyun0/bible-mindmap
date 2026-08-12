@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-02-public-research-first-reconcile-2026-08-12",
+  "status": "GPT_PUBLIC_RESEARCH_REVIEW_ACTIVE_AFTER_INITIAL_AUDIT_PASS",
+  "derivedMain": "9354587035437d9bcf103165ba3a12c5229353f2",
+  "researchBranch": "chatgpt/luke-v4-production-batch-02",
+  "researchHeadBeforeReconcile": "b03c5266ef266449a850633b13c83a72238488ac",
+  "baseline": {
+    "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
+    "gptIndependentAudit": "reports/luke-v4-production-batch-02-gpt-independent-audit.json",
+    "gptVerdictSummary": {"PASS_WITH_BOUNDARY": 8, "HOLD": 0, "DISPUTE": 0},
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "controlPolicy": {
+    "source": "Notion fixed control card: 📌 공통 기준·워크플로우 v2",
+    "policyDate": "2026-08-12",
+    "rule": "GPT public original-language/theological dictionary, academic DB, corpus, morphology and translation evidence review is the default next gate; Claude/Gemini are optional supplementary counter-audits and do not block continued research production.",
+    "qualityFloor": "H776 quality contract unchanged",
+    "humanGate": "only irreconcilable equal-strength evidence conflict, material existing-approved-meaning change, license/security/permission/cost/policy exception"
+  },
+  "gate": {
+    "publicEvidenceSynthesisRequired": true,
+    "actualLukeContextRequired": true,
+    "morphologyStrongSeparationRequired": true,
+    "senseBoundaryRequired": true,
+    "provenanceUncertaintyRequired": true,
+    "existingApprovedRegressionMustBeZero": true,
+    "claudeGeminiBlockingRequired": false,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "mainPromotionAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "decision": "Preserve the exact-fingerprint GPT audit result as Evidence, continue per-target public-source synthesis, and use Claude/Gemini only as optional supplementary counter-audits when available. Do not promote or mutate production from this reconciliation step.",
+  "nextGate": "COMPLETE_PUBLIC_EVIDENCE_SYNTHESIS_FOR_ALL_BATCH_02_TARGETS_THEN_COMPUTE_FINAL_RESEARCH_BOUNDARY_VERDICTS_AND_CONTINUE_NEXT_GREEK_BATCH_RESEARCH_IN_PARALLEL"
+}
