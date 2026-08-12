@@ -1,0 +1,80 @@
+name: Genesis v4 Batch 03 Candidate Audit Freeze
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-03
+    paths:
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-source-candidate-prep-2026-08-12.json'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-evidence-freeze.json'
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-03-evidence.mjs'
+      - 'bible-mindmap/scripts/freeze-genesis-v4-production-batch-03-candidate-audit.mjs'
+      - '.github/workflows/genesis-v4-batch-03-candidate-audit-freeze.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-03-candidate-audit-freeze-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-and-freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current derived main
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          echo "DERIVED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Regenerate exact evidence from pinned public sources
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-v4-production-batch-03-evidence.mjs
+
+      - name: Bind candidate proposal to exact regenerated evidence
+        working-directory: bible-mindmap
+        run: node scripts/freeze-genesis-v4-production-batch-03-candidate-audit.mjs
+
+      - name: Verify frozen baseline contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const data = JSON.parse(fs.readFileSync('reports/genesis-v4-production-batch-03-candidate-audit-freeze.json', 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+          if (data.status !== 'EXACT_CANDIDATE_AUDIT_BASELINE_FROZEN_INDEPENDENT_AUDIT_REQUIRED') fail(`unexpected status: ${data.status}`)
+          if (data.derivedMain !== process.env.DERIVED_MAIN) fail(`derived main drift: ${data.derivedMain}`)
+          if (data.counts?.targets !== 10) fail(`target count drift: ${data.counts?.targets}`)
+          if (data.counts?.totalGenesisOccurrences !== 2529) fail(`occurrence drift: ${data.counts?.totalGenesisOccurrences}`)
+          if (data.counts?.sampledContexts !== 30) fail(`sample drift: ${data.counts?.sampledContexts}`)
+          if (data.counts?.bdbEntries !== 13 || data.counts?.sourceNodes !== 75) fail('BDB/source-node count drift')
+          if (!/^sha256:[0-9a-f]{64}$/.test(data.candidateFileFingerprint || '')) fail('candidate fingerprint invalid')
+          if (data.evidenceSemanticFingerprint !== 'sha256:d88976313b5fcb8b4d4919b64ad818c233ba8a8b126bfd3fe2b873af5ac2181c') fail(`evidence semantic fingerprint drift: ${data.evidenceSemanticFingerprint}`)
+          if (!/^sha256:[0-9a-f]{64}$/.test(data.auditBundleFingerprint || '')) fail('audit bundle fingerprint invalid')
+          const g = data.governance || {}
+          if (g.researchOnly !== true || g.independentAuditRequired !== true || g.candidatePromotionAllowed !== false || g.approvalRegistryWriteAllowed !== false || g.productionWriteAllowed !== false || g.existingApprovedMeaningMutationAllowed !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false) fail('audit freeze governance boundary violated')
+          console.log(`candidate fingerprint ${data.candidateFileFingerprint}`)
+          console.log(`evidence semantic fingerprint ${data.evidenceSemanticFingerprint}`)
+          console.log(`audit bundle fingerprint ${data.auditBundleFingerprint}`)
+          NODE
+
+      - name: Upload candidate audit baseline
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-03-candidate-audit-freeze
+          path: |
+            bible-mindmap/reports/genesis-v4-production-batch-03-evidence.json
+            bible-mindmap/reports/genesis-v4-production-batch-03-candidate-audit-freeze.json
+          if-no-files-found: error
+          retention-days: 14
