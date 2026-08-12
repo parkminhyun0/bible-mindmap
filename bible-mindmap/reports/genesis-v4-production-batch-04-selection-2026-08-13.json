@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-04-selection-2026-08-13",
+  "book": "Genesis",
+  "status": "CANONICAL_INVENTORY_BATCH_SELECTED",
+  "derivedMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-04",
+  "source": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "inventoryFile": "genesis-strong-inventory.json",
+    "calibrationFile": "genesis-g2-calibration-batch.json",
+    "reportedSource": "OSHB Gen.xml",
+    "inventoryUniqueStrong": 1772,
+    "verseCount": 1533,
+    "wordCount": 20629,
+    "strongAssignmentCount": 20159
+  },
+  "selectionPolicy": {
+    "orderSource": "genesis-g2-calibration-batch.json high-frequency-missing order",
+    "excludeAlreadyApprovedOnCurrentMain": true,
+    "excludeBatch01": true,
+    "excludeBatch02": true,
+    "excludeBatch03": true,
+    "excludeR4": true,
+    "excludeApprovedControlH776": true,
+    "purpose": "Continue actual Genesis Strong research from the canonical measured inventory while earlier research/promotion lanes retain their own gates."
+  },
+  "targets": [
+    {"strong":"H3130","occurrences":156,"firstReference":"Gen.30.24","sampleLemma":"3130","sampleSurface":"יוֹסֵ֖ף","coverage":"missing"},
+    {"strong":"H5414","occurrences":150,"firstReference":"Gen.1.17","sampleLemma":"c/5414","sampleSurface":"וַ/יִּתֵּ֥ן","coverage":"missing"},
+    {"strong":"H854","occurrences":142,"firstReference":"Gen.4.1","sampleLemma":"854","sampleSurface":"אֶת","coverage":"missing"},
+    {"strong":"H3947","occurrences":142,"firstReference":"Gen.2.15","sampleLemma":"c/3947","sampleSurface":"וַ/יִּקַּ֛ח","coverage":"missing"},
+    {"strong":"H85","occurrences":133,"firstReference":"Gen.17.5","sampleLemma":"85","sampleSurface":"אַבְרָהָ֔ם","coverage":"missing"},
+    {"strong":"H2009","occurrences":118,"firstReference":"Gen.1.29","sampleLemma":"2009","sampleSurface":"הִנֵּה֩","coverage":"missing"},
+    {"strong":"H1323","occurrences":110,"firstReference":"Gen.5.4","sampleLemma":"c/1323","sampleSurface":"וּ/בָנֽוֹת","coverage":"missing"},
+    {"strong":"H1004","occurrences":109,"firstReference":"Gen.6.14","sampleLemma":"m/1004 b","sampleSurface":"מִ/בַּ֥יִת","coverage":"missing"},
+    {"strong":"H8033","occurrences":101,"firstReference":"Gen.2.8","sampleLemma":"8033","sampleSurface":"שָׁ֔ם","coverage":"missing"},
+    {"strong":"H3027","occurrences":95,"firstReference":"Gen.3.22","sampleLemma":"3027","sampleSurface":"יָד֗/וֹ","coverage":"missing"}
+  ],
+  "checks": {
+    "requested": 10,
+    "found": 10,
+    "totalOccurrences": 1256,
+    "approvedMainOverlap": 0,
+    "batch01Overlap": 0,
+    "batch02Overlap": 0,
+    "batch03Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "sourceEvidenceStillRequired": true,
+    "actualGenesisContextExtractionStillRequired": true,
+    "fullBdbHierarchyCrosscheckStillRequired": true,
+    "publicResearchFirstRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "PIN_PRIMARY_BDB_AND_TBESH_SOURCE_NODES_THEN_EXTRACT_REPRESENTATIVE_GENESIS_CONTEXT_MORPHOLOGY"
+}
