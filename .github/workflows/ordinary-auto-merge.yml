@@ -1,0 +1,184 @@
+name: Ordinary Auto Merge
+
+on:
+  workflow_run:
+    workflows:
+      - Validate pull request
+      - Verify RESUME checkpoint
+      - Lexicon Evidence Contract
+    types: [completed]
+  status:
+
+permissions:
+  actions: write
+  checks: read
+  contents: write
+  pull-requests: write
+  statuses: read
+
+concurrency:
+  group: ordinary-auto-merge-${{ github.event.workflow_run.id || github.event.sha || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  ordinary-auto-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout trusted main policy
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve ordinary PRs and merge only after all required gates
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const path = require('path');
+            const { pathToFileURL } = require('url');
+            const policyUrl = pathToFileURL(
+              path.resolve(process.env.GITHUB_WORKSPACE, 'bible-mindmap/scripts/lib/delivery-lane-policy.mjs')
+            ).href;
+            const { ORDINARY_AUTO_LANE, classifyDeliveryLane } = await import(policyUrl);
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const requiredContexts = new Set([
+              'security-audit',
+              'verify-and-build',
+              'verify',
+              'verify-resume-checkpoint',
+              'lexicon-human-approval',
+            ]);
+
+            let numbers = [];
+            if (context.eventName === 'workflow_run') {
+              numbers = (context.payload.workflow_run.pull_requests || []).map((pr) => pr.number);
+            } else if (context.eventName === 'status') {
+              const prs = await github.paginate(github.rest.repos.listPullRequestsAssociatedWithCommit, {
+                owner, repo, commit_sha: context.payload.sha, per_page: 100,
+              });
+              numbers = prs.map((pr) => pr.number);
+            }
+            numbers = [...new Set(numbers.filter(Boolean))];
+            core.info(`candidate PRs=${JSON.stringify(numbers)}`);
+
+            for (const number of numbers) {
+              core.startGroup(`PR #${number}`);
+              try {
+                const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+                if (pr.state !== 'open' || pr.draft || pr.base.ref !== 'main') {
+                  core.info('DECLINE: PR is closed/draft/non-main');
+                  continue;
+                }
+                if (pr.head.repo.full_name !== `${owner}/${repo}`) {
+                  core.info('DECLINE: fork PR');
+                  continue;
+                }
+                const labels = new Set((pr.labels || []).map((label) => label.name));
+                if (labels.has('manual-merge-required') || labels.has('no-auto-merge')) {
+                  core.info('DECLINE: manual merge escape-hatch label');
+                  continue;
+                }
+
+                const files = await github.paginate(github.rest.pulls.listFiles, {
+                  owner, repo, pull_number: number, per_page: 100,
+                });
+                const classification = classifyDeliveryLane(files.map((file) => file.filename));
+                if (classification.lane !== ORDINARY_AUTO_LANE) {
+                  core.info(`DECLINE: lane=${classification.lane} (${classification.sensitiveFiles.join(', ')})`);
+                  continue;
+                }
+
+                const checkRuns = await github.paginate(github.rest.checks.listForRef, {
+                  owner, repo, ref: pr.head.sha, per_page: 100,
+                });
+                const combined = await github.rest.repos.getCombinedStatusForRef({
+                  owner, repo, ref: pr.head.sha, per_page: 100,
+                });
+
+                const resolved = new Map();
+                for (const check of checkRuns) {
+                  if (!requiredContexts.has(check.name)) continue;
+                  const previous = resolved.get(check.name);
+                  if (!previous || (check.started_at || '') >= (previous.at || '')) {
+                    resolved.set(check.name, {
+                      state: check.status === 'completed' ? check.conclusion : 'pending',
+                      at: check.started_at || '',
+                    });
+                  }
+                }
+                for (const status of combined.data.statuses || []) {
+                  if (!requiredContexts.has(status.context)) continue;
+                  const previous = resolved.get(status.context);
+                  if (!previous || (status.updated_at || '') >= (previous.at || '')) {
+                    resolved.set(status.context, {
+                      state: status.state,
+                      at: status.updated_at || '',
+                    });
+                  }
+                }
+
+                let waitReason = null;
+                let failedReason = null;
+                for (const contextName of requiredContexts) {
+                  const state = resolved.get(contextName)?.state;
+                  if (!state) {
+                    waitReason = `missing required context ${contextName}`;
+                    break;
+                  }
+                  if (['queued', 'in_progress', 'pending'].includes(state)) {
+                    waitReason = `pending ${contextName}`;
+                    break;
+                  }
+                  if (!['success', 'neutral', 'skipped'].includes(state)) {
+                    failedReason = `failed ${contextName}=${state}`;
+                    break;
+                  }
+                }
+                if (failedReason) {
+                  core.setFailed(`FAIL_CLOSED #${number}: ${failedReason}`);
+                  continue;
+                }
+                if (waitReason) {
+                  core.notice(`WAIT #${number}: ${waitReason}`);
+                  continue;
+                }
+
+                const { data: fresh } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+                if (fresh.head.sha !== pr.head.sha) {
+                  core.notice(`WAIT #${number}: head drift`);
+                  continue;
+                }
+                if (!['clean', 'unstable'].includes(fresh.mergeable_state)) {
+                  core.notice(`WAIT #${number}: mergeable_state=${fresh.mergeable_state}`);
+                  continue;
+                }
+
+                const result = await github.rest.pulls.merge({
+                  owner,
+                  repo,
+                  pull_number: number,
+                  merge_method: 'squash',
+                  sha: fresh.head.sha,
+                  commit_title: fresh.title,
+                });
+                if (!result.data.merged) {
+                  core.setFailed(`GitHub declined ordinary merge #${number}: ${result.data.message || 'unknown'}`);
+                  continue;
+                }
+
+                core.notice(`ordinary-auto merged PR #${number} at ${result.data.sha}`);
+                await github.rest.actions.createWorkflowDispatch({
+                  owner, repo, workflow_id: 'deploy.yml', ref: 'main',
+                });
+                core.notice(`deploy.yml dispatched for ${result.data.sha}`);
+              } finally {
+                core.endGroup();
+              }
+            }

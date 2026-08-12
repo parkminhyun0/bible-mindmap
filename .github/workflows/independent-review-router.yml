@@ -1,73 +1,93 @@
 name: Independent Review Router
 
 on:
-  pull_request:
-    types: [opened, reopened, ready_for_review, synchronize]
+  workflow_run:
+    workflows:
+      - Validate pull request
+    types: [completed]
 
 permissions:
   contents: read
   pull-requests: write
 
 concurrency:
-  group: independent-review-router-${{ github.event.pull_request.number }}
+  group: independent-review-router-${{ github.event.workflow_run.id }}
   cancel-in-progress: true
 
 jobs:
   request-review:
-    if: >-
-      github.event.pull_request.base.ref == 'main' &&
-      github.event.pull_request.draft == false &&
-      github.event.pull_request.user.login != 'bible-mindmap-review' &&
-      github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Request independent write reviewer for current head
+      - name: Checkout trusted main policy
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Request reviewer only for approved lexicon data
         uses: actions/github-script@v9
         with:
           script: |
+            const path = require('path');
+            const { pathToFileURL } = require('url');
+            const policyUrl = pathToFileURL(
+              path.resolve(process.env.GITHUB_WORKSPACE, 'bible-mindmap/scripts/lib/delivery-lane-policy.mjs')
+            ).href;
+            const {
+              DEFAULT_LEXICON_REVIEWER,
+              LEXICON_APPROVAL_LANE,
+              classifyDeliveryLane,
+            } = await import(policyUrl);
+
             const owner = context.repo.owner;
             const repo = context.repo.repo;
-            const pr = context.payload.pull_request;
-            const reviewer = 'bible-mindmap-review';
+            const numbers = [...new Set(
+              (context.payload.workflow_run.pull_requests || []).map((pr) => pr.number).filter(Boolean)
+            )];
 
-            const reviews = await github.paginate(github.rest.pulls.listReviews, {
-              owner,
-              repo,
-              pull_number: pr.number,
-              per_page: 100,
-            });
+            for (const number of numbers) {
+              const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+              if (pr.state !== 'open' || pr.draft || pr.base.ref !== 'main') continue;
+              if (pr.user.login === DEFAULT_LEXICON_REVIEWER) continue;
+              if (pr.head.repo.full_name !== `${owner}/${repo}`) continue;
 
-            const exactHeadReview = reviews.find((review) =>
-              review.user?.login === reviewer &&
-              review.commit_id === pr.head.sha &&
-              ['APPROVED', 'CHANGES_REQUESTED', 'COMMENTED'].includes(review.state)
-            );
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                owner, repo, pull_number: number, per_page: 100,
+              });
+              const classification = classifyDeliveryLane(files.map((file) => file.filename));
+              if (classification.lane !== LEXICON_APPROVAL_LANE) {
+                core.notice(`#${number}: ordinary-auto lane; no independent reviewer requested`);
+                continue;
+              }
 
-            if (exactHeadReview) {
-              core.notice(`#${pr.number}: ${reviewer} already reviewed exact head ${pr.head.sha}`);
-              return;
+              const reviewer = DEFAULT_LEXICON_REVIEWER;
+              const reviews = await github.paginate(github.rest.pulls.listReviews, {
+                owner, repo, pull_number: number, per_page: 100,
+              });
+              const exactHeadReview = reviews.find((review) =>
+                review.user?.login === reviewer &&
+                review.commit_id === pr.head.sha &&
+                ['APPROVED', 'CHANGES_REQUESTED', 'COMMENTED'].includes(review.state)
+              );
+              if (exactHeadReview) {
+                core.notice(`#${number}: ${reviewer} already reviewed exact head ${pr.head.sha}`);
+                continue;
+              }
+
+              const alreadyRequested = (pr.requested_reviewers || [])
+                .some((requested) => requested.login === reviewer);
+              if (alreadyRequested) {
+                core.notice(`#${number}: ${reviewer} already requested`);
+                continue;
+              }
+
+              await github.rest.pulls.requestReviewers({
+                owner, repo, pull_number: number, reviewers: [reviewer],
+              });
+              core.notice(`#${number}: lexicon approval lane → requested ${reviewer}`);
             }
-
-            const fresh = (await github.rest.pulls.get({
-              owner,
-              repo,
-              pull_number: pr.number,
-            })).data;
-
-            const alreadyRequested = (fresh.requested_reviewers || [])
-              .some((requested) => requested.login === reviewer);
-
-            if (alreadyRequested) {
-              core.notice(`#${pr.number}: ${reviewer} is already requested for head ${pr.head.sha}`);
-              return;
-            }
-
-            await github.rest.pulls.requestReviewers({
-              owner,
-              repo,
-              pull_number: pr.number,
-              reviewers: [reviewer],
-            });
-
-            core.notice(`#${pr.number}: requested ${reviewer} for exact head ${pr.head.sha}`);
