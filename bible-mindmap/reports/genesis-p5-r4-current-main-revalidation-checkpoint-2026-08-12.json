@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-current-main-revalidation-checkpoint-2026-08-12",
+  "status": "CURRENT_MAIN_32596BAF_DEDICATED_R4_REVALIDATION_REQUIRED",
+  "derivedMain": "32596baf054a75cff8ff18d94d2c173203eb2626",
+  "researchBranch": "chatgpt/genesis-r4-followup-evidence",
+  "baseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "candidateFingerprintDriftObserved": false,
+    "sourceFingerprintDriftObserved": false
+  },
+  "currentBoundaries": {
+    "H120": ["common-noun/proper-name separation", "etymology metadata must not become semantic certainty"],
+    "H6030b": ["source-node identity reconciled", "semantic/uncertainty boundary requires dedicated current-main revalidation"],
+    "H7650": ["oath/swear semantic boundary retained", "morphology and context remain explicit"],
+    "H28": ["Abida identity and father+know family stable", "exact Korean verbal wording remains auditable"],
+    "H39": ["father-is-El family evidence-preferred", "Strong father-of-Mael retained in provenance", "primary epigraphic exact-inscription gap retained as uncertainty"]
+  },
+  "policy": {
+    "afterDedicatedRevalidationPass": "continue GPT Public-Research-First synthesis and automatic evidence-preferred boundary decision",
+    "claudeGeminiBlockingRequired": false,
+    "claudeGeminiRole": "optional supplementary counter-audit",
+    "humanGate": "only irreconcilable equal-strength evidence conflict, material approved-meaning change, or license/security/permission/cost/policy exception"
+  },
+  "governance": {
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "run the dedicated 87-occurrence / 38-context exact-baseline verifier chain against current main 32596baf054a75cff8ff18d94d2c173203eb2626; only after PASS continue public-evidence synthesis"
+}
