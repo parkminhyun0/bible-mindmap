@@ -1,0 +1,108 @@
+name: Genesis v4 Batch 03 Research Evidence
+
+on:
+  push:
+    branches:
+      - chatgpt/genesis-v4-production-batch-03
+    paths:
+      - 'bible-mindmap/scripts/build-genesis-v4-production-batch-03-evidence.mjs'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-selection-2026-08-12.json'
+      - 'bible-mindmap/reports/genesis-v4-production-batch-03-tbesh-source-node-lock-2026-08-12.json'
+      - 'bible-mindmap/data/lexicon/source-registry.json'
+      - '.oshb-cache/Gen.xml'
+      - '.github/workflows/genesis-v4-batch-03-research-evidence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genesis-v4-batch-03-research-evidence-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  materialize-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact research head
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Resolve current derived main
+        shell: bash
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          echo "DERIVED_MAIN=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+
+      - name: Materialize pinned BDB hierarchy and Genesis context morphology
+        working-directory: bible-mindmap
+        run: node scripts/build-genesis-v4-production-batch-03-evidence.mjs
+
+      - name: Verify deterministic research evidence contract
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('fs')
+          const crypto = require('crypto')
+          const p = 'reports/genesis-v4-production-batch-03-evidence.json'
+          const data = JSON.parse(fs.readFileSync(p, 'utf8'))
+          const fail = (message) => { throw new Error(message) }
+
+          if (data.status !== 'PRIMARY_BDB_AND_CONTEXT_MORPHOLOGY_MATERIALIZED_CANDIDATE_PREP_NEXT') fail(`unexpected status: ${data.status}`)
+          if (data.counts?.targets !== 10) fail(`expected 10 targets, got ${data.counts?.targets}`)
+          if (data.counts?.totalOccurrences !== 2529) fail(`occurrence total drift: ${data.counts?.totalOccurrences}`)
+          if (data.counts?.targetsWithCompleteBdbCoverage !== 10) fail(`incomplete BDB coverage: ${data.counts?.targetsWithCompleteBdbCoverage}`)
+          if (data.counts?.sampledContexts < 30) fail(`insufficient sampled contexts: ${data.counts?.sampledContexts}`)
+          if (data.counts?.bdbEntries < 10) fail(`insufficient BDB entries: ${data.counts?.bdbEntries}`)
+          if (data.counts?.sourceNodes < data.counts?.bdbEntries) fail('source-node count below BDB-entry count')
+          if (!data.derivedMain || !/^[0-9a-f]{40}$/.test(data.derivedMain)) fail(`derived main missing/invalid: ${data.derivedMain}`)
+
+          const expected = ['H413','H834','H3605','H935','H3808','H1931','H3290','H251','H3205','H8141']
+          const actual = (data.items || []).map((item) => item.strong)
+          if (JSON.stringify(actual) !== JSON.stringify(expected)) fail(`target order/identity drift: ${actual.join(',')}`)
+
+          for (const item of data.items || []) {
+            if (!item.expectedLemma) fail(`${item.strong}: expected lemma missing`)
+            if (!Array.isArray(item.lexicalMappings) || item.lexicalMappings.length < 1) fail(`${item.strong}: lexical mapping missing`)
+            if (!Array.isArray(item.bdbEntries) || item.bdbEntries.length < 1) fail(`${item.strong}: BDB entry missing`)
+            if (!Array.isArray(item.sourceNodes) || item.sourceNodes.length < 1) fail(`${item.strong}: BDB source nodes missing`)
+            if (item.sourceCoverage?.missingBdbIds?.length) fail(`${item.strong}: missing BDB ids ${item.sourceCoverage.missingBdbIds.join(',')}`)
+            if (!Array.isArray(item.contextEvidence?.sampleContexts) || item.contextEvidence.sampleContexts.length < 3) fail(`${item.strong}: representative context samples missing`)
+            for (const sample of item.contextEvidence.sampleContexts) {
+              if (!sample.reference || !sample.tokenId || !sample.surface) fail(`${item.strong}: malformed context sample`)
+              if (!Array.isArray(sample.contextTokens) || !sample.contextTokens.some((token) => token.focus)) fail(`${item.strong}: focus token missing in context window`)
+            }
+          }
+
+          if (data.primarySource?.licenseStatus !== 'approved' || data.primarySource?.licenseExpression !== 'CC-BY-4.0') fail('primary source license gate drift')
+          if (data.primarySource?.externalLlmInputAllowed !== true || data.primarySource?.derivativeAllowed !== true) fail('primary source permission gate drift')
+          if (data.inputs?.sourceRegistry?.policyVersion !== '1.2') fail('source registry policy drift')
+
+          const g = data.governance || {}
+          if (g.researchOnly !== true || g.candidateMutation !== false || g.approvalRegistryMutation !== false || g.productionMutation !== false || g.existingApprovedMeaningMutation !== false || g.qualityGateWeakeningAllowed !== false || g.selfApprovalAllowed !== false || g.independentAuditRequiredBeforePromotion !== true) {
+            fail('research-only governance boundary violated')
+          }
+
+          const claimed = data.reportFingerprint
+          const clone = structuredClone(data)
+          delete clone.reportFingerprint
+          const actualFingerprint = `sha256:${crypto.createHash('sha256').update(JSON.stringify(clone)).digest('hex')}`
+          if (claimed !== actualFingerprint) fail(`report fingerprint mismatch: ${claimed} != ${actualFingerprint}`)
+
+          console.log(`validated ${data.counts.targets} targets / ${data.counts.totalOccurrences} occurrences / ${data.counts.sampledContexts} contexts / ${data.counts.bdbEntries} BDB entries / ${data.counts.sourceNodes} source nodes`)
+          console.log(`derived main ${data.derivedMain}`)
+          console.log(`fingerprint ${data.reportFingerprint}`)
+          NODE
+
+      - name: Upload deterministic Batch 03 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: genesis-v4-batch-03-research-evidence
+          path: bible-mindmap/reports/genesis-v4-production-batch-03-evidence.json
+          if-no-files-found: error
+          retention-days: 14
