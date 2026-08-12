@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-02-public-research-synthesis-005a64c3",
+  "status": "PUBLIC_RESEARCH_SYNTHESIS_COMPLETE_PASS_WITH_BOUNDARY_10_OF_10",
+  "book": "Genesis",
+  "accessedAt": "2026-08-12",
+  "baseline": {
+    "currentMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "researchBranch": "chatgpt/genesis-v4-production-batch-02",
+    "currentMainInvarianceCommit": "416b28b95b9e6df4e45d8154f4e7df7f482083a5",
+    "sourceCandidatePrep": "reports/genesis-v4-production-batch-02-source-candidate-prep-2026-08-12.json",
+    "contextEvidence": "reports/genesis-v4-production-batch-02-contexts.json",
+    "tbeshSourceLock": "reports/genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12.json",
+    "bdbSourceLock": "reports/genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12.json",
+    "totalGenesisOccurrences": 2482,
+    "sampledContexts": 30
+  },
+  "policyApplied": {
+    "mode": "GPT_PUBLIC_RESEARCH_FIRST",
+    "qualityFloor": "H776_QUALITY_CONTRACT",
+    "externalModelVerdictBlocking": false,
+    "decisionRule": "Prefer stronger lexical/corpus evidence while preserving credible alternatives and uncertainty; only equal-strength unresolved conflict becomes HOLD/DISPUTE."
+  },
+  "sourceRegistry": [
+    {
+      "id": "openscriptures-bdb-pinned",
+      "title": "OpenScriptures HebrewLexicon BrownDriverBriggs.xml",
+      "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "role": "pinned primary BDB hierarchy and homograph boundary"
+    },
+    {
+      "id": "bdb-sefaria-public",
+      "title": "Brown-Driver-Briggs Hebrew and English Lexicon via Sefaria",
+      "edition": "Oxford 1906 digitization",
+      "license": "Public Domain",
+      "role": "public independent read-through/corroboration",
+      "urls": [
+        "https://www.sefaria.org/BDB%2C_%D7%90%D6%B1%D7%9C%D6%B9%D7%94%D6%B4%D7%99%D7%9D.1",
+        "https://www.sefaria.org/BDB%2C_%D7%99%D7%94%D7%95%D7%94.1",
+        "https://www.sefaria.org/BDB%2C_%D7%90%D6%B8%D7%91%C2%B2",
+        "https://www.sefaria.org/BDB%2C_%D7%91%D6%B5%D6%BC%D7%9F.1",
+        "https://www.sefaria.org/BDB%2C_%D7%94%D6%B8%D7%99%D6%B8%D7%94.1",
+        "https://www.sefaria.org/Genesis.38.2?with=Reference",
+        "https://www.sefaria.org/BDB%2C_%D7%90%D6%B4%D7%A9%D6%B8%D6%BC%D7%81%D7%94.1",
+        "https://www.sefaria.org/BDB%2C_%D7%90%D6%B8%D7%9E%D6%B7%D7%A8.1",
+        "https://www.sefaria.org/BDB%2C_%D7%A2%D6%B8%D7%A9%D6%B8%D7%82%D7%94.1",
+        "https://www.sefaria.org/BDB%2C_%D7%A8"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "strong": "H430",
+      "lemma": "אֱלֹהִים",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "하나님·신; 신들·신적 존재(문맥별)",
+      "evidence": [
+        "Public BDB preserves plural-in-number uses and singular/intensive referential uses instead of flattening the form into one referent.",
+        "Genesis corpus controls include God-referential and other context-sensitive uses; grammatical plurality alone cannot determine theology."
+      ],
+      "boundary": [
+        "keep God / gods / divine-being referents context-governed",
+        "do not infer Trinitarian or other doctrinal conclusions from grammatical number alone"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H3068",
+      "lemma": "יְהֹוָה",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "여호와; 이스라엘 하나님의 고유명",
+      "evidence": [
+        "Public BDB identifies the lemma as the proper name of the God of Israel.",
+        "BDB separately discusses Masoretic reading tradition and historical pronunciation/etymology proposals, supporting the candidate's identity-versus-reading separation."
+      ],
+      "boundary": [
+        "여호와 is retained as Korean Bible reading/display convention, not asserted as a settled reconstruction of the ancient pronunciation",
+        "הוה/היה derivation proposals remain provenance/etymology metadata rather than the primary lexical gloss"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H1",
+      "lemma": "אָב",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "아버지; 조상·시조; 우두머리·근원자(문맥별)",
+      "evidence": [
+        "Public BDB distinguishes individual father from ancestor, household/clan head and extended originator/protector uses.",
+        "The preceding root discussion itself marks proposed derivation as doubtful, matching the pinned uncertainty boundary."
+      ],
+      "boundary": [
+        "biological father must not be flattened with ancestor/originator uses",
+        "divine-father language is context-specific and not imported into every occurrence"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H1121",
+      "lemma": "בֵּן",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "아들·자녀; 자손; ~에 속한 자·구성원(문맥별)",
+      "evidence": [
+        "Public BDB confirms son/male child and broader descendant/member-of-class relational uses.",
+        "Genesis examples and morphology support separating kinship from age/quality/class constructions."
+      ],
+      "boundary": [
+        "do not treat every בן construction as direct biological sonship",
+        "young-animal and relational constructions require local syntax/context"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H1961",
+      "lemma": "הָיָה",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "있다·되다; 생기다·일어나다; 계속 있다",
+      "evidence": [
+        "Public BDB headline range is come-to-pass / become / be and its Genesis forms span state, becoming and event clauses.",
+        "Pinned Genesis contexts distinguish Gen 1:2 state description from Gen 1:3 jussive/event realization."
+      ],
+      "boundary": [
+        "Korean rendering must be clause-sensitive rather than one fixed gloss",
+        "tense/aspect/mood and predicative construction remain part of token-level classification"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H376",
+      "lemma": "אִישׁ",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "남자·사람; 남편(문맥별)",
+      "evidence": [
+        "Public BDB defines man/male person and derives husband from relational context.",
+        "Genesis usage confirms sexual distinction, individual/person, and husband readings depending on syntax."
+      ],
+      "boundary": [
+        "husband is contextual rather than an always-on lemma gloss",
+        "speculative root derivation remains outside the user-facing head meaning"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H802",
+      "lemma": "אִשָּׁה",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "여자; 아내(문맥별)",
+      "evidence": [
+        "Public BDB explicitly separates woman, wife, female-of-animals and distributive/reciprocal uses.",
+        "Genesis 2 and later contexts confirm that wife status is construction/context dependent."
+      ],
+      "boundary": [
+        "woman and wife senses must remain distinct",
+        "female-animal and distributive uses remain separate from human relationship senses"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H559",
+      "lemma": "אָמַר",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "말하다·이르다; 전하다; 생각하다·명하다(문맥별)",
+      "evidence": [
+        "Public BDB confirms Qal utter/say plus inner-speech, promise/command extensions and stem-specific passive/other uses.",
+        "Genesis contexts confirm direct speech and formulaic infinitive constructions that require syntactic separation."
+      ],
+      "boundary": [
+        "speech, inner speech/thought, promise and command are not one undifferentiated sense",
+        "לֵאמֹר and finite narrative forms must be classified morphologically"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H6213",
+      "lemma": "עָשָׂה",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "하다·만들다; 행하다·이루다·생산하다(문맥별)",
+      "evidence": [
+        "Public BDB confirms the broad do/make action family with extensive contextual extensions.",
+        "Pinned OpenScriptures BDB lock identifies a separate press/squeeze homograph entry, making homograph isolation a hard boundary."
+      ],
+      "boundary": [
+        "do/make/produce/prepare/execute extensions remain context-governed",
+        "the separate press/squeeze homograph must never be merged into the primary עשה sense tree"
+      ],
+      "candidateMutationRecommended": false
+    },
+    {
+      "strong": "H7200",
+      "lemma": "רָאָה",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "representativeMeaningKo": "보다·지각하다; 보이다·나타나다; 보여 주다(어간별)",
+      "evidence": [
+        "Public BDB preserves Qal see/perceive, Niphal appear/be-seen and causative show/cause-to-see distinctions.",
+        "Genesis 1:9 provides an explicit appear/be-visible control that must not be rendered as active see."
+      ],
+      "boundary": [
+        "stem and syntax control active see versus appear/be-seen versus causative show",
+        "idiomatic choose/provide/inspect extensions cannot replace the lexical core"
+      ],
+      "candidateMutationRecommended": false
+    }
+  ],
+  "summary": {
+    "targets": 10,
+    "passWithBoundary": 10,
+    "hold": 0,
+    "dispute": 0,
+    "candidateMutationsRecommended": 0,
+    "candidateMutationsPerformed": 0,
+    "approvalRegistryWrites": 0,
+    "productionWrites": 0,
+    "existingApprovedMeaningMutations": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "BUILD_EXACT_PROMOTION_PREP_FROM_UNCHANGED_BATCH02_CANDIDATE_AND_EVIDENCE_WITH_REGISTRY_COLLISION_AND_H776_REGRESSION_CHECKS_BEFORE_ANY_WRITE"
+}
