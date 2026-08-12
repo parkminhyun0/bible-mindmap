@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reportId": "luke-v4-first-10-derived-main-check-2026-08-12",
+  "book": "LUK",
+  "status": "RESEARCH_BRANCH_REVALIDATED_AUDIT_PREP_PRESERVED",
+  "currentDerivedMainSha": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+  "researchHeadBeforeCheck": "85415ab3fbe3ca13486d7f365dbc33d4fc9303b4",
+  "compare": {
+    "status": "diverged",
+    "aheadBy": 14,
+    "behindBy": 9,
+    "mergeBase": "147aca3889306bebe3756625edc0ad63ef81d37b"
+  },
+  "researchAssetsPresent": [
+    "reports/luke-v4-first-10-candidate-prep.json",
+    "reports/luke-v4-greek-source-lock.json",
+    "reports/luke-v4-first-10-pinned-tbesg-row-verification.json",
+    "reports/luke-v4-first-10-tflsj-sense-boundary-evidence-2026-08-12.json",
+    "reports/luke-v4-first-10-tflsj-sense-boundary-evidence-completion-2026-08-12.json",
+    "reports/luke-v4-first-10-actual-context-confirmation-2026-08-12.json",
+    "reports/luke-v4-first-10-actual-context-confirmation-second-subset-2026-08-12.json",
+    "reports/luke-v4-first-10-actual-context-confirmation-third-subset-2026-08-12.json",
+    "reports/luke-v4-first-10-exact-fingerprint-freeze-2026-08-12.json",
+    "reports/luke-v4-first-10-audit-prep.json"
+  ],
+  "targets": ["G2316","G0932","G4982","G3341","G4151","G3004","G1342","G3137","G3686","G0002"],
+  "gate": {
+    "exactFingerprintAuditRequired": true,
+    "independentAuditRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "mainPromotionAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "decision": "Preserve the completed first-10 source/context/sense-boundary audit-prep bundle on the research branch. Latest main adds independent-review routing and reconciles checkpoint state but does not itself authorize lexicon promotion. Do not open a promotion PR until exact-fingerprint independent audit and required verifier gates are satisfied.",
+  "nextGate": "RUN_OR_INGEST_INDEPENDENT_EXACT_FINGERPRINT_AUDIT_FOR_FIRST_10_THEN_COMPUTE_BOUNDARY_VERDICTS; CONTINUE_NEXT_GREEK_BATCH_RESEARCH_IN_PARALLEL"
+}
