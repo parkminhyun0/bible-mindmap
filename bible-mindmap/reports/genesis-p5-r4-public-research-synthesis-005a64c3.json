@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-p5-r4-public-research-synthesis-005a64c3",
+  "status": "PUBLIC_RESEARCH_SYNTHESIS_COMPLETE_PASS_WITH_BOUNDARY_5_OF_5",
+  "book": "GEN",
+  "accessedAt": "2026-08-12",
+  "baseline": {
+    "currentMain": "005a64c3534917aeb625ecc0128c5c80a603e6ee",
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "currentMainInvarianceEvidence": "reports/genesis-p5-r4-current-main-invariance-005a64c3.json"
+  },
+  "policyApplied": {
+    "mode": "GPT_PUBLIC_RESEARCH_FIRST",
+    "priority": [
+      "original-text-and-direct-context",
+      "morphology-and-actual-usage",
+      "public-original-language-lexicons",
+      "publicly-reviewable-scholarly-evidence",
+      "translation-usage",
+      "theological-overreach-filter"
+    ],
+    "externalModelVerdictBlocking": false,
+    "humanExceptionOnlyForUnresolvedEqualStrengthConflictOrPolicyRisk": true
+  },
+  "sources": [
+    {
+      "id": "bdb-sefaria",
+      "title": "Brown-Driver-Briggs Hebrew and English Lexicon",
+      "edition": "Oxford, 1906; Sefaria digitization",
+      "license": "Public Domain",
+      "use": "primary public lexical witness for sense hierarchy/boundary",
+      "urls": [
+        "https://www.sefaria.org/BDB%2C_%D7%A2%D7%A0%D7%94.1",
+        "https://www.sefaria.org/BDB%2C_%D7%A9%D7%81%D7%91%D7%A2.1"
+      ]
+    },
+    {
+      "id": "public-bdb-mirrors",
+      "title": "Public BDB/Strong presentations",
+      "license": "No reuse license asserted here",
+      "use": "read-only corroboration only; no proprietary editorial overlay copied",
+      "urls": [
+        "https://biblehub.com/hebrew/28.htm",
+        "https://biblehub.com/hebrew/39.htm",
+        "https://biblehub.com/bdb/39.htm",
+        "https://studybible.info/strongs/H7650"
+      ]
+    },
+    {
+      "id": "isbe-abimael",
+      "title": "International Standard Bible Encyclopedia — Abimael",
+      "license": "No reuse license asserted here",
+      "use": "read-only corroboration of South-Arabian name analysis",
+      "urls": [
+        "https://www.internationalstandardbible.com/A/abimael.html",
+        "https://www.studylight.org/encyclopedias/eng/isb/a/abimael.html"
+      ]
+    }
+  ],
+  "items": [
+    {
+      "strong": "H120",
+      "lemma": "אָדָם",
+      "candidateFingerprint": "sha256:7521aaf5b0f2992a23601a3a357262ced753e0932c7e7657a7045977edd92125",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "resolved": [
+        "common-noun man/human/humankind lexical range is stable",
+        "Adam proper-name use must remain distinct from the common-noun senses",
+        "Genesis usage supports both layers without requiring one flattened Korean gloss"
+      ],
+      "boundary": [
+        "relationship with ground/adamah is etymological metadata and must not be promoted as lexical-semantic certainty",
+        "article/proper-name context must control user-facing interpretation"
+      ],
+      "candidateMutationRecommended": false,
+      "registryPromotionAuthorized": false
+    },
+    {
+      "strong": "H6030b",
+      "lemma": "עָנָה",
+      "candidateFingerprint": "sha256:2f2014de76317122a4a605240ed5e2367c408d32583c0046a827af59707b5fbb",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "resolved": [
+        "H6030 -> TAHOT H6030B -> OpenScriptures H6030b / BDB p.dt.aa identity is pinned",
+        "19 Genesis occurrences and 13 ordered source nodes are stable",
+        "Qal response/testimony branches and Niphal answer/be-answered branch are independently supported"
+      ],
+      "boundary": [
+        "Qal and Niphal branches must never be flattened",
+        "BDB marks the proposed Hiphil material wholly dubious, so that branch must remain explicitly uncertain and non-headline"
+      ],
+      "candidateMutationRecommended": false,
+      "registryPromotionAuthorized": false
+    },
+    {
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "candidateFingerprint": "sha256:c7ffb8646a26cd58e3ac239eb782faa171acb6ca7af215072fa97f13fd9013d2",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "resolved": [
+        "operational verbal meaning swear/take an oath is stable",
+        "Niphal swear/take-an-oath and Hiphil cause-to-swear/adjure must remain distinct"
+      ],
+      "boundary": [
+        "BDB presents the connection with seven probabilistically; it is etymology metadata, not a semantic gloss",
+        "user-facing primary meaning should remain 맹세하다/서약하다 or 맹세하게 하다 according to stem/context"
+      ],
+      "candidateMutationRecommended": false,
+      "registryPromotionAuthorized": false
+    },
+    {
+      "strong": "H28",
+      "lemma": "אֲבִידָע",
+      "candidateFingerprint": "sha256:0e14d5b1a36b874475ab4480012b4aaffc44e5af0a3f27d109ea799df58bd6a4",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "resolved": [
+        "proper-name identity Abida/아비다 is stable",
+        "father + know component family is stable across public witnesses",
+        "public English explanations genuinely vary between my-father-took-knowledge, my-father-knows, and father-of-knowledge"
+      ],
+      "boundary": [
+        "do not force a single Korean verbal tense/aspect as historically certain",
+        "prefer a component-level note: 이름은 ‘나의 아버지 + 알다’와 관련된 것으로 풀이된다",
+        "retain BDB/Strong wording variants in provenance"
+      ],
+      "candidateMutationRecommended": true,
+      "recommendedRefinement": "Replace the current exact verbal etymology wording with the cautious component-level note above while keeping 아비다 as the primary user-facing proper-name label.",
+      "registryPromotionAuthorized": false
+    },
+    {
+      "strong": "H39",
+      "lemma": "אֲבִימָאֵל",
+      "candidateFingerprint": "sha256:27bf6bf5e378efa24f39481ade6875f63c86c2f04533d7f3e106934d343a543d",
+      "verdict": "PASS_WITH_BOUNDARY",
+      "resolved": [
+        "proper-name identity Abimael/아비마엘 is stable",
+        "BDB supplies a concrete South-Arabian father + deity-name comparison and supports the father-is-El family",
+        "ISBE independently preserves the my-father-is-God / God-is-father family",
+        "Strong father-of-Mael remains a real competing traditional derivation and must stay in provenance"
+      ],
+      "evidencePreference": "BDB/ISBE father-is-El / my-father-is-God family for a cautious etymology note",
+      "boundary": [
+        "no directly inspectable primary South-Arabian inscription edition was recovered in this public-search pass",
+        "therefore the preferred reading is not lexical-semantic certainty",
+        "Strong father-of-Mael must remain visible as alternative provenance",
+        "no covenantal, soteriological, or other theological inference may be drawn from the name"
+      ],
+      "candidateMutationRecommended": false,
+      "registryPromotionAuthorized": false
+    }
+  ],
+  "summary": {
+    "items": 5,
+    "passWithBoundary": 5,
+    "hold": 0,
+    "dispute": 0,
+    "candidateRefinementRecommended": ["H28"],
+    "candidateMutationsPerformed": 0,
+    "registryWrites": 0,
+    "productionWrites": 0,
+    "existingApprovedMeaningMutations": 0
+  },
+  "governance": {
+    "evidenceCollectionOnly": true,
+    "candidateMutationAllowedByThisReport": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "workflowPolicyModified": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "REFINE_H28_CANDIDATE_WORDING_ON_SAME_PINNED_FINGERPRINT_THEN_RUN_R4_EVIDENCE_AND_POLICY_GATES_WITHOUT_REGISTRY_WRITE"
+}
