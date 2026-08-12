@@ -2,16 +2,19 @@ import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import useMobile from '../hooks/useMobile';
 import { parseReference } from '../utils/citationDetector';
+import { hasLexicalBridge } from '../data/lexicalBridgePilot';
 import MorphologyKoreanCard from './MorphologyKoreanCard';
 
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const SyntaxPanel = lazy(() => import('./SyntaxPanel'));
 const ParallelStudyModal = lazy(() => import('./ParallelStudyModal'));
+const LexicalBridgeModal = lazy(() => import('./LexicalBridgeModal'));
 
 const STEP_LABELS = {
   concordance: '전체 성경 용례',
   syntax: '이 절 구문',
   parallel: '병렬 본문',
+  bridge: '원어 브릿지',
 };
 
 const FALLBACK_STYLE = {
@@ -98,6 +101,8 @@ export default function OriginalLanguageResearchActions({
     || normalizeOriginalLanguageQuery(entry?.w)
     || entry?.s
     || '';
+  const bridgeAvailable = hasLexicalBridge(entry?.s);
+  const researchActionCount = (hasPassage ? 3 : 0) + (bridgeAvailable ? 1 : 0);
 
   useEffect(() => () => onActiveChange?.(false), [onActiveChange]);
 
@@ -140,11 +145,11 @@ export default function OriginalLanguageResearchActions({
         <MorphologyKoreanCard code={entry.m} isHebrew={isHebrew} />
       </div>
 
-      {hasPassage && (
+      {researchActionCount > 0 && (
         <section
           aria-label="원어 단어 연구 이어가기"
           data-original-language-research-actions
-          data-origin-passage={`${sourcePassage.bookId}-${sourcePassage.chapter}-${sourcePassage.verseStart}-${sourcePassage.verseEnd}`}
+          data-origin-passage={hasPassage ? `${sourcePassage.bookId}-${sourcePassage.chapter}-${sourcePassage.verseStart}-${sourcePassage.verseEnd}` : undefined}
           style={{
             padding: '9px 12px',
             borderTop: '1px solid #e2e8f0',
@@ -154,34 +159,50 @@ export default function OriginalLanguageResearchActions({
           <div style={{ marginBottom: 6, fontSize: 10, fontWeight: 800, color: '#64748b' }}>
             이 단어로 연구 이어가기
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3,minmax(0,1fr))', gap: 6 }}>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="concordance"
-              onClick={(event) => openStep('concordance', event)}
-              style={buttonStyle}
-            >
-              🔎 전체 성경 용례
-            </button>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="syntax"
-              onClick={(event) => openStep('syntax', event)}
-              style={buttonStyle}
-            >
-              🔤 이 절 구문
-            </button>
-            <button
-              type="button"
-              aria-haspopup="dialog"
-              data-original-research-action="parallel"
-              onClick={(event) => openStep('parallel', event)}
-              style={buttonStyle}
-            >
-              ⇄ 병렬 본문
-            </button>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : `repeat(${researchActionCount},minmax(0,1fr))`, gap: 6 }}>
+            {hasPassage && (
+              <>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="concordance"
+                  onClick={(event) => openStep('concordance', event)}
+                  style={buttonStyle}
+                >
+                  🔎 전체 성경 용례
+                </button>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="syntax"
+                  onClick={(event) => openStep('syntax', event)}
+                  style={buttonStyle}
+                >
+                  🔤 이 절 구문
+                </button>
+                <button
+                  type="button"
+                  aria-haspopup="dialog"
+                  data-original-research-action="parallel"
+                  onClick={(event) => openStep('parallel', event)}
+                  style={buttonStyle}
+                >
+                  ⇄ 병렬 본문
+                </button>
+              </>
+            )}
+            {bridgeAvailable && (
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                data-original-research-action="bridge"
+                onClick={(event) => openStep('bridge', event)}
+                style={{ ...buttonStyle, borderColor: '#99f6e4', background: '#f0fdfa', color: '#0f766e', fontWeight: 850 }}
+                title="이 원어의 MT–LXX–NT 연결점 보기"
+              >
+                🧬 원어 브릿지
+              </button>
+            )}
           </div>
         </section>
       )}
@@ -214,6 +235,13 @@ export default function OriginalLanguageResearchActions({
         <Suspense fallback={loading}>
           <ParallelStudyModal initialRef={sourcePassage} onClose={closeStep} />
         </Suspense>
+      )}
+
+      {step === 'bridge' && createPortal(
+        <Suspense fallback={loading}>
+          <LexicalBridgeModal initialStrong={entry?.s} onClose={closeStep} />
+        </Suspense>,
+        document.body,
       )}
     </>
   );
