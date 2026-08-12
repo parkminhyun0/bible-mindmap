@@ -1,0 +1,69 @@
+{
+  "schemaVersion": "lexicon-v4-luke-public-research-verdict/1.0",
+  "generatedAt": "2026-08-13T07:35:00+09:00",
+  "book": "Luke",
+  "batch": "03",
+  "status": "PUBLIC_RESEARCH_CONTENT_GATE_CLOSED",
+  "baseMain": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "candidatePrepCommit": "9e47455ce6d5b30d4ba954f231e349b759e05c00",
+  "deterministicAuditPrepCommit": "0b53a1e48be90b7c13c5576e3ffc716019608af1",
+  "policyAlignment": {
+    "notionControlCard": "📌 공통 기준·워크플로우 v2",
+    "effectiveRuleDate": "2026-08-12",
+    "rule": "GPT Public-Research-First: Claude/Gemini may supplement but are not a blocking requirement for continued lexicon production when public lexical/corpus evidence closes the content gate.",
+    "staleFieldSuperseded": "Earlier report field externalVerdictRequired=true is treated as audit-prep metadata, not the current blocking gate. No quality threshold is weakened; the newer control rule changes reviewer dependency only."
+  },
+  "evidence": {
+    "pinnedGreekSources": {
+      "repository": "STEPBible/STEPBible-Data",
+      "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+      "TBESGBlob": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+      "TFLSJBlob": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb"
+    },
+    "existingReports": [
+      "luke-v4-production-batch-03-public-source-intake-2026-08-13.json",
+      "luke-v4-production-batch-03-exact-context-pass-a-2026-08-13.json",
+      "luke-v4-production-batch-03-exact-context-pass-b-2026-08-13.json",
+      "luke-v4-production-batch-03-context-classification-pass-c-2026-08-13.json",
+      "luke-v4-production-batch-03-candidate-prep-2026-08-13.json",
+      "luke-v4-production-batch-03-candidate-verifier-and-audit-prep-2026-08-13.json"
+    ]
+  },
+  "verdicts": [
+    {"strong":"G0021","lemma":"ἀγαλλιάω","verdict":"PASS_WITH_BOUNDARY","boundary":"강한 기쁨/환희. 물리적 '뛰다'를 모든 문맥에 강제하지 않음."},
+    {"strong":"G0023","lemma":"ἀγανακτέω","verdict":"PASS_WITH_BOUNDARY","boundary":"분개/불쾌. 정당한 의분 여부는 문맥이 결정."},
+    {"strong":"G0025","lemma":"ἀγαπάω","verdict":"PASS_WITH_BOUNDARY","boundary":"사랑/애정/가치 부여. 모든 용례를 독립적 '신적 사랑' 정의로 절대화하지 않음."},
+    {"strong":"G0026","lemma":"ἀγάπη","verdict":"PASS_WITH_BOUNDARY","boundary":"사랑/호의/애정. 발전된 신약 신학은 lexical core와 분리."},
+    {"strong":"G0027","lemma":"ἀγαπητός","verdict":"PASS_WITH_BOUNDARY","boundary":"사랑받는/사랑하는 이의 통사적 구분 유지."},
+    {"strong":"G0032","lemma":"ἄγγελος","verdict":"PASS_WITH_BOUNDARY","boundary":"인간 사자/전령과 천상 존재 천사를 실제 지시 대상/문맥으로 분리."},
+    {"strong":"G0034","lemma":"ἀγέλη","verdict":"PASS_WITH_BOUNDARY","boundary":"동물의 떼/무리 집합명사. 사람 무리로 일반화하지 않음."},
+    {"strong":"G0037","lemma":"ἁγιάζω","verdict":"PASS_WITH_BOUNDARY","boundary":"거룩하게 하다/성별하다/거룩히 여기다를 대상·태·문맥으로 분리; 조직신학적 성화와 자동 동일시하지 않음."}
+  ],
+  "checks": {
+    "strongLemmaIdentity": "PASS",
+    "pinnedSourceIntegrity": "PASS",
+    "exactLukeContext": "PASS",
+    "contextMorphologyClassification": "PASS",
+    "koreanSourceFidelity": "PASS_WITH_BOUNDARY",
+    "theologicalOverread": "PASS_WITH_BOUNDARY",
+    "existingApprovedRegression": "PASS_NO_MUTATION",
+    "hold": 0,
+    "dispute": 0
+  },
+  "result": {
+    "contentGateReady": 8,
+    "hold": 0,
+    "dispute": 0,
+    "externalClaudeGeminiBlocking": false,
+    "supplementaryExternalAuditAllowed": true,
+    "promotionAllowedByThisReport": false,
+    "promotionReason": "Research content gate is closed, but promotion must wait for the repository's current FIFO delivery/promotion lane and applicable exact-head promotion checks."
+  },
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextGate": "QUEUE_EXACT_HEAD_PROMOTION_REVALIDATION_WHEN_FIFO_LEXICON_PROMOTION_LANE_IS_AVAILABLE"
+}
