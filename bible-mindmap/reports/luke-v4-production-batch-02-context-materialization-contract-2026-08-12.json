@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-02-context-materialization-contract-2026-08-12",
+  "status": "TAGNT_CONTEXT_MORPHOLOGY_MATERIALIZATION_CONTRACT_PINNED",
+  "generatedAt": "2026-08-12T16:36:00+09:00",
+  "derivedMain": "75a0ddc4c017e22ed1e96bc3442957875f4498f4",
+  "researchBranch": "chatgpt/luke-v4-production-batch-02",
+  "candidateBaseline": "f99fb7ed93f15400a59a51c0cff79c7d4652f1e4",
+  "source": {
+    "sourceId": "stepbible-tagnt",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "registryPolicyVersion": "1.2",
+    "registryState": "approved-ready",
+    "license": "CC-BY-4.0",
+    "contentHash": "sha256:ba355279e97ad2984fdd3523cc7b2a3e35ff633a9b01e3d92c40b27a94a022a5",
+    "datasetPath": "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+    "role": "NT original text, morphology, Extended Strong and context-sensitive alignment"
+  },
+  "targets": [
+    {"strong":"G0006","expectedLukeCount":1,"anchorRefs":["Luke 11:51"],"required":"exact token surface + lemma + morphology + Extended Strong + verse reference"},
+    {"strong":"G0007","expectedLukeCount":1,"anchorRefs":["Luke 1:5"],"required":"exact token surface + lemma + morphology + Extended Strong + verse reference"},
+    {"strong":"G0009","expectedLukeCount":1,"anchorRefs":["Luke 3:1"],"required":"exact token surface + lemma + morphology + Extended Strong + verse reference"},
+    {"strong":"G0011","expectedLukeCount":15,"anchorRefs":["Luke 1:55"],"required":"representative contexts across distinct discourse uses; preserve proper-name identity"},
+    {"strong":"G0012","expectedLukeCount":1,"anchorRefs":["Luke 8:31"],"required":"exact token/morphology plus immediate clause context for theological sense boundary"},
+    {"strong":"G0015","expectedLukeCount":4,"anchorRefs":["Luke 6:9","Luke 6:33","Luke 6:35"],"required":"all Luke occurrences or deterministic representative set preserving verbal morphology"},
+    {"strong":"G0018","expectedLukeCount":16,"anchorRefs":["Luke 1:53"],"required":"representative contexts spanning adjective/substantival or adverbial uses where present"},
+    {"strong":"G0020","expectedLukeCount":2,"anchorRefs":["Luke 1:14","Luke 1:44"],"required":"all Luke occurrences with exact token and morphology"}
+  ],
+  "deterministicRules": {
+    "book": "Luke",
+    "targetStrongExactMatch": true,
+    "normalizeExtendedStrongWithoutCollapsingDistinctNodes": true,
+    "preserveSurface": true,
+    "preserveMorphology": true,
+    "preserveVerseReference": true,
+    "minimumContextsPerTarget": 1,
+    "preferAllOccurrencesWhenCountAtMost": 4,
+    "highFrequencySampling": "first + structurally distinct morphology/context + final, deterministic reference order",
+    "countMismatch": "HOLD",
+    "missingMorphology": "HOLD",
+    "sourceFingerprintMismatch": "HOLD"
+  },
+  "checks": {
+    "targetCount": 8,
+    "expectedLukeTokens": 41,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "selfApprovalAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "nextGate": "MATERIALIZE_EXACT_TAGNT_LUKE_CONTEXT_MORPHOLOGY_PACKET_THEN_RUN_DETERMINISTIC_SOURCE_CANDIDATE_BOUNDARY_VERIFIER_AND_FREEZE_FINGERPRINTS"
+}
