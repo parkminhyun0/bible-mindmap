@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-02-public-evidence-synthesis-2026-08-12",
+  "generatedDate": "2026-08-12",
+  "researchOnly": true,
+  "currentMainObservedAtSynthesis": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "researchBranch": "chatgpt/luke-v4-production-batch-02",
+  "sourceLock": {
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "license": "CC BY 4.0",
+    "tbESGBlobSha": "efe271a1dbb73fa01f8fa6e0f164c6687757a9ae",
+    "tfLSJBlobSha": "db44789a0b3523ad00ba2c93c6fe78ad3db1b4bb",
+    "tagntGitBlobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843"
+  },
+  "frozenInputs": {
+    "candidatePath": "bible-mindmap/reports/luke-v4-production-batch-02-source-candidate-prep-2026-08-12.json",
+    "candidateFileFingerprint": "sha256:1deb4ba1803d2e7b499890460df11039af577b577bb5923592ac3be10109f6bf",
+    "contextMorphologyEvidenceFingerprint": "sha256:1917d90b3b847c4ed9bb75769d8d176df85d710fc080fd20ca2f841cc33435e2",
+    "contextMorphologyEvidenceFileFingerprint": "sha256:4d61127b95f4dae52a810db6993cb1448d67682733a1bca5fe8b5b6777e85ed5",
+    "auditBundleFingerprint": "sha256:eed3fff2a43ac0ef4509b8007ca3791a7f8e96e5f44d5a9fda9bfe7fc2ddc7cc"
+  },
+  "method": [
+    "Preserve the pinned TBESG brief-lexicon row as the primary lexical source for each Strong target.",
+    "Use TFLSJ only to test or widen sense boundaries where the candidate report marks a classical/full-lexicon cross-check as material.",
+    "Use exact Luke TAGNT token counts, references and morphology as book-specific evidence; morphology is not treated as an independent Strong meaning.",
+    "Keep proper-name/place-name identity separate from Hebrew etymology and keep theological-domain terms inside the lexical/contextual boundary actually supported by Luke.",
+    "This synthesis is a research verdict only: it cannot approve itself, write Approval Registry/production, or authorize main promotion."
+  ],
+  "targets": [
+    {
+      "strong": "G0006",
+      "lemma": "Ἄβελ",
+      "exactLukeTokens": 1,
+      "exactRefs": ["Luke 11:51"],
+      "morphology": ["N-GSM-P"],
+      "evidenceSynthesis": "Pinned TBESG identifies the biblical proper name Abel and maps the Greek form to the Hebrew name; the sole Luke token is a genitive proper name in Luke 11:51. No independent common-noun sense is required.",
+      "koreanBoundary": ["아벨"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "고유명사 정체성만 표제 의미로 두고 히브리어 어원은 provenance로 분리한다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0007",
+      "lemma": "Ἀβιά",
+      "exactLukeTokens": 1,
+      "exactRefs": ["Luke 1:5"],
+      "morphology": ["N-GSM-P"],
+      "evidenceSynthesis": "Pinned TBESG identifies Abia/Abijah and the Luke 1:5 priestly-course use; the exact Luke token is a genitive proper-name form. Hebrew-name mapping explains identity but is not promoted into a separate Greek lexical sense.",
+      "koreanBoundary": ["아비야"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "누가복음의 제사장 반열명/고유명사 정체성을 우선하고 어원 설명은 분리한다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0009",
+      "lemma": "Ἀβιληνή",
+      "exactLukeTokens": 1,
+      "exactRefs": ["Luke 3:1"],
+      "morphology": ["N-GSF-L"],
+      "evidenceSynthesis": "Pinned TBESG identifies Abilene as a district and explicitly cites Luke 3:1; the exact Luke token is a locative place-name form. A regional description is explanatory provenance, not a second lexical headword meaning.",
+      "koreanBoundary": ["아빌레네", "아빌레네 지방"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "기본 지명 표기와 지역 설명을 분리한다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0011",
+      "lemma": "Ἀβραάμ",
+      "exactLukeTokens": 15,
+      "exactLukeVerses": 14,
+      "morphology": ["N-DSM-P", "N-ASM-P", "N-GSM-P", "N-VSM-P", "N-NSM-P"],
+      "evidenceSynthesis": "Pinned TBESG identifies Abraham and maps the Greek form to the Hebrew name. Fifteen exact Luke tokens across five proper-name case forms consistently preserve the person identity, so Hebrew etymology must not be flattened into the Greek headword meaning.",
+      "koreanBoundary": ["아브라함"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "정경적 인명 정체성을 보존하고 어원은 provenance로 분리한다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0012",
+      "lemma": "ἄβυσσος",
+      "exactLukeTokens": 1,
+      "exactRefs": ["Luke 8:31"],
+      "morphology": ["N-ASF"],
+      "evidenceSynthesis": "Pinned TBESG gives boundless/bottomless and substantival abyss/deep senses and explicitly situates Luke 8:31 in the demon-associated abode context. TFLSJ confirms bottomless/unfathomed, great-deep and NT abyss/underworld boundaries including Luke 8:31. The lexical evidence supports abyss/deep language but does not by itself authorize automatic equation with a later systematic concept of hell.",
+      "koreanBoundary": ["깊이를 헤아릴 수 없는 곳", "무저갱", "깊은 구렁"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "누가복음 8:31의 귀신들이 들어가기를 두려워하는 깊은 곳/무저갱 문맥을 보존하되 후대 체계신학 개념과 자동 동일시하지 않는다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0015",
+      "lemma": "ἀγαθοποιέω",
+      "exactLukeTokens": 4,
+      "exactLukeVerses": 3,
+      "exactRefs": ["Luke 6:9", "Luke 6:33", "Luke 6:35"],
+      "morphology": ["V-AAN", "V-PAS-2P", "V-PAP-APM", "V-PAM-2P"],
+      "evidenceSynthesis": "Pinned TBESG gives 'do good' and Luke 6:9, 6:33, 6:35 as the relevant book uses; TFLSJ confirms doing good/to someone while broader non-Luke extensions are unnecessary here. Four exact Luke verbal tokens fit the moral/interpersonal benefactive boundary.",
+      "koreanBoundary": ["선을 행하다", "좋은 일을 하다", "남에게 선을 베풀다"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "누가복음의 도덕적·대인적 선행 범위를 우선하고 비누가복음 확장 의미는 책별 후보에 넣지 않는다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0018",
+      "lemma": "ἀγαθός",
+      "exactLukeTokens": 16,
+      "exactLukeVerses": 13,
+      "morphology": ["A-GPN", "A-NSM", "A-GSM", "A-ASN", "A-ASF", "A-DSF", "A-APN", "N-APN", "A-VSM", "A-ASM"],
+      "evidenceSynthesis": "Pinned TBESG preserves a broad 'good' range for persons, things, acts and conditions, including Luke uses such as good soil, good heart, good portion and goods/possessions. TFLSJ boundary evidence supports keeping that broad range. Sixteen exact Luke tokens include adjectival and substantival morphologies, so a single moral gloss would erase observed polysemy.",
+      "koreanBoundary": ["좋은", "선한", "유익한", "좋은 것/재물"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "형용사·명사적 쓰임과 문맥별 의미를 보존하며 하나의 도덕적 gloss로 평탄화하지 않는다.",
+      "hold": false,
+      "dispute": false
+    },
+    {
+      "strong": "G0020",
+      "lemma": "ἀγαλλίασις",
+      "exactLukeTokens": 2,
+      "exactRefs": ["Luke 1:14", "Luke 1:44"],
+      "morphology": ["N-NSF", "N-DSF"],
+      "evidenceSynthesis": "Pinned TBESG gives exultation/exuberant joy and explicitly cites both Luke 1:14 and 1:44; TFLSJ confirms a stronger, exuberant-joy boundary rather than neutral pleasure. The two exact Luke noun forms are compatible with preserving that intensity.",
+      "koreanBoundary": ["크게 기뻐함", "환희", "넘치는 기쁨"],
+      "researchVerdict": "PASS_WITH_BOUNDARY",
+      "boundary": "일반적 기쁨보다 강한 환희/크게 기뻐함의 뉘앙스를 유지하되 교리적 확장은 추가하지 않는다.",
+      "hold": false,
+      "dispute": false
+    }
+  ],
+  "summary": {
+    "targets": 8,
+    "exactLukeTokens": 41,
+    "passWithBoundary": 8,
+    "hold": 0,
+    "dispute": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "crossAudit": {
+    "gptIndependentAuditPath": "bible-mindmap/reports/luke-v4-production-batch-02-gpt-independent-audit.json",
+    "gptVerdictCompatibility": "8/8 compatible with this public-evidence synthesis",
+    "claudeGemini": "OPTIONAL_SUPPLEMENTARY_COUNTER_AUDIT_NOT_REPLACED_OR_SELF_ASSERTED",
+    "selfApproval": false
+  },
+  "decision": "PUBLIC_EVIDENCE_SYNTHESIS_COMPLETE_RESEARCH_BOUNDARY_PASS_8_OF_8_NO_HOLD_NO_DISPUTE",
+  "promotionAllowedByThisReport": false,
+  "nextGate": "RECONCILE_THIS_RESEARCH_ONLY_BRANCH_TO_LATEST_MAIN_BEFORE_ANY_MAIN_BOUND_PROMOTION; CONTINUE_NEXT_UNPROCESSED_GREEK_BATCH_RESEARCH_IN_PARALLEL"
+}
