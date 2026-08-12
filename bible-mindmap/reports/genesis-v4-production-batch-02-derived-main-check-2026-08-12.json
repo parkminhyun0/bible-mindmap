@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-02-derived-main-check-2026-08-12",
+  "book": "GEN",
+  "status": "RESEARCH_BRANCH_REVALIDATED_NO_PROMOTION_AUTHORIZED",
+  "currentDerivedMainSha": "1982d0d0d6051aa6b6317111cfe309ba6ead732b",
+  "researchHeadBeforeCheck": "d6edd4378f9d84fd1a188554b7e08547bc42643c",
+  "compare": {
+    "status": "diverged",
+    "aheadBy": 5,
+    "behindBy": 3,
+    "mergeBase": "8f2f7a3324e2386ec73288982f82d04be30f8ffc"
+  },
+  "researchAssetsPresent": [
+    "reports/genesis-v4-production-batch-02-selection.json",
+    "reports/genesis-v4-production-batch-02-tbesh-source-node-lock-2026-08-12.json",
+    "reports/genesis-v4-production-batch-02-openscriptures-bdb-node-lock-2026-08-12.json",
+    "reports/genesis-v4-production-batch-02-context-sampling-contract-2026-08-12.json",
+    "scripts/build-genesis-v4-production-batch-02-contexts.mjs"
+  ],
+  "targets": ["H430","H3068","H1","H1121","H1961","H376","H802","H559","H6213","H7200"],
+  "gate": {
+    "contextExtractionRequired": true,
+    "morphologyRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "mainPromotionAllowed": false,
+    "qualityGateWeakeningAllowed": false
+  },
+  "decision": "Keep batch-02 on its research branch. Latest main contains review-router and checkpoint/state reconciliation changes, while the batch still lacks the generated representative-context artifact required by its pinned BDB boundary contract. Do not create a promotion PR yet.",
+  "nextGate": "EXECUTE_DETERMINISTIC_BATCH02_CONTEXT_EXTRACTOR_ON_PINNED_OSHB_GEN_XML_VERIFY_COUNTS_AND_MORPHOLOGY_THEN_GENERATE_KOREAN_CANDIDATES"
+}
