@@ -21,19 +21,12 @@ assert.equal(gate.adjudication?.perEntryUserSemanticApprovalRequired, false)
 assert.equal(gate.adjudication?.finalAdjudicator, 'gpt')
 assert.equal(gate.adjudication?.publicEvidenceRightsPassRequired, true)
 assert.equal(gate.adjudication?.unresolvedMustBeZeroForAutomaticSemanticPromotion, true)
-
 for (const text of [policy, master, checkin]) {
-  assert.ok(text.includes('GPT'))
-  assert.ok(text.includes('자비스'))
-  assert.ok(text.includes('Claude'))
-  assert.ok(text.includes('Gemini'))
+  for (const token of ['GPT', '자비스', 'Claude', 'Gemini']) assert.ok(text.includes(token), `missing fixed-four token: ${token}`)
 }
-assert.ok(policy.includes('추가 LLM'))
-assert.ok(policy.includes('로컬 호스팅 모델'))
-assert.ok(policy.includes('HOLD'))
-assert.ok(policy.includes('DISPUTE'))
+for (const token of ['추가 LLM', '로컬 호스팅 모델', 'HOLD', 'DISPUTE']) assert.ok(policy.includes(token), `policy token missing: ${token}`)
 
-const removedOperationalPaths = [
+const removed = [
   '.github/workflows/luke-lexicon-g2-zero-cost.yml',
   '.github/workflows/luke-lexicon-g2-canary-preparation.yml',
   '.github/workflows/genesis-g2-zero-cost.yml',
@@ -71,26 +64,16 @@ const removedOperationalPaths = [
   'bible-mindmap/scripts/build-genesis-g2-promotion-review.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-promotion.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-candidates.mjs',
-]
-for (const relative of removedOperationalPaths) {
-  assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `deprecated lexicon model-execution path reintroduced: ${relative}`)
-}
-
-const retiredTombstones = [
   'bible-mindmap/scripts/build-genesis-g3-context-review.mjs',
   'bible-mindmap/scripts/verify-genesis-g3-context-review.mjs',
 ]
-for (const relative of retiredTombstones) {
-  const text = read(relative)
-  assert.ok(text.includes('RETIRED'), `legacy helper must remain fail-closed: ${relative}`)
-  assert.ok(!/nvidia|openai|provider|human review/iu.test(text), `legacy semantic-review logic remains in tombstone: ${relative}`)
-}
+for (const relative of removed) assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `retired lexicon path reintroduced: ${relative}`)
 
 for (const scriptName of Object.keys(pkg.scripts || {})) {
-  assert.ok(!/genesis:g2:zero-cost|luke:g2:zero-cost|ollama|local-model/iu.test(scriptName), `deprecated local-model npm script reintroduced: ${scriptName}`)
+  assert.ok(!/genesis:g2:zero-cost|luke:g2:zero-cost|ollama|local-model/iu.test(scriptName), `retired npm entry reintroduced: ${scriptName}`)
 }
 for (const command of Object.values(pkg.scripts || {})) {
-  assert.ok(!/run-(?:genesis|luke)-g2-local-ollama|g2-zero-cost|run-genesis-g2-blind-translation|preflight-genesis-g2-providers/iu.test(String(command)), `deprecated lexicon model-execution command reintroduced: ${command}`)
+  assert.ok(!/run-(?:genesis|luke)-g2-local-ollama|g2-zero-cost|run-genesis-g2-blind-translation|preflight-genesis-g2-providers/iu.test(String(command)), `retired command reintroduced: ${command}`)
 }
 
-console.log('✓ lexicon fixed-four policy PASS · GPT/Jarvis/Claude/Gemini only · deprecated model-execution paths absent')
+console.log('✓ lexicon fixed-four policy PASS · GPT/Jarvis/Claude/Gemini only · retired execution paths absent')
