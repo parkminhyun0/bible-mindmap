@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-p5-r4-exact-baseline-audit-dispatch-24fd844b",
+  "book": "GEN",
+  "status": "READY_FOR_REQUIRED_EXTERNAL_AUDITS",
+  "currentMain": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "targets": ["H120", "H6030b", "H7650", "H28", "H39"],
+  "targetBaseline": {
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "occurrences": 87,
+    "sampledContexts": 38,
+    "currentMainInvarianceEvidence": "reports/genesis-p5-r4-current-main-invariance-24fd844b.json"
+  },
+  "requiredModelPath": [
+    {"auditor": "GPT", "state": "COMPLETE_ON_PINNED_CONTENT_EVIDENCE", "selfApprovalAllowed": false},
+    {"auditor": "Claude", "state": "READY_FOR_EXACT_BASELINE_EXTERNAL_AUDIT", "verdictRequired": true},
+    {"auditor": "Gemini", "state": "READY_FOR_EXACT_BASELINE_EXTERNAL_AUDIT", "verdictRequired": true}
+  ],
+  "evidenceClasses": {
+    "publicOriginalLanguageDictionary": "COMPLETE",
+    "scholarlyComparativeEvidence": "COMPLETE_WITH_BOUNDARIES",
+    "biblicalUsageContextMorphology": "COMPLETE",
+    "contentVerdict": "5/5 PASS_WITH_BOUNDARY; HOLD 0; DISPUTE 0"
+  },
+  "ingestRules": {
+    "requireExactCandidateFingerprint": true,
+    "requireExactSourceFingerprint": true,
+    "normalizeSimpleWordingOrEtymologyDifferencesToBoundaryWhenEvidenceResolvesThem": true,
+    "isolateTrueIrreconcilableConflictAsHoldOrDispute": true,
+    "neverSelfApprove": true
+  },
+  "governance": {
+    "autoApprovalProhibited": true,
+    "humanFinalWordingRequiredAfterAudits": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "gateWeakeningAllowed": false
+  },
+  "next": "INGEST_CLAUDE_AND_GEMINI_EXACT_BASELINE_VERDICTS_THEN_COMPUTE_COMPARISON_AND_ROUTE_R4_TO_HUMAN_FINAL_WORDING"
+}
