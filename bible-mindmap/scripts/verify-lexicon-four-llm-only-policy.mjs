@@ -71,11 +71,19 @@ const removedOperationalPaths = [
   'bible-mindmap/scripts/build-genesis-g2-promotion-review.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-promotion.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-candidates.mjs',
-  'bible-mindmap/scripts/build-genesis-g3-context-review.mjs',
-  'bible-mindmap/scripts/verify-genesis-g3-context-review.mjs',
 ]
 for (const relative of removedOperationalPaths) {
   assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `deprecated lexicon model-execution path reintroduced: ${relative}`)
+}
+
+const retiredTombstones = [
+  'bible-mindmap/scripts/build-genesis-g3-context-review.mjs',
+  'bible-mindmap/scripts/verify-genesis-g3-context-review.mjs',
+]
+for (const relative of retiredTombstones) {
+  const text = read(relative)
+  assert.ok(text.includes('RETIRED'), `legacy helper must remain fail-closed: ${relative}`)
+  assert.ok(!/nvidia|openai|provider|human review/iu.test(text), `legacy semantic-review logic remains in tombstone: ${relative}`)
 }
 
 for (const scriptName of Object.keys(pkg.scripts || {})) {
