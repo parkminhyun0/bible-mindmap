@@ -1,3 +1,5 @@
+import { fileURLToPath } from 'node:url'
+
 // Single source of truth for the Lexicon v4 Review Coordinator's required-check
 // set on a per-PR basis. UNIVERSAL_REQUIRED_CHECKS run on every lexicon-eligible
 // PR. SCOPE_SPECIFIC_REQUIRED_CHECKS attach an additional required check only
@@ -69,7 +71,7 @@ export function requiredCheckNamesForFiles(filePaths) {
   return required
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && process.argv[1] === fileURLToPath(import.meta.url)) {
   const assert = (cond, msg) => { if (!cond) { console.error('FAIL:', msg); process.exit(1) } }
   const luke = requiredCheckNamesForFiles([
     'bible-mindmap/data/lexicon/luke-g0-source-lock.json',
