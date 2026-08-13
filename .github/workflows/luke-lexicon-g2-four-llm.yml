@@ -1,0 +1,72 @@
+name: Lexicon Four-LLM Only Policy · Luke G2 Evidence Contract
+
+on:
+  push:
+    branches:
+      - 'chatgpt/lexicon-four-llm-*'
+      - 'chatgpt/luke-g2-*'
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
+      - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
+      - 'bible-mindmap/scripts/ai/lexicon/**'
+      - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/docs/*g2*'
+      - 'bible-mindmap/package.json'
+      - 'docs/lexicon-workflow/**'
+      - '.github/workflows/*g2*'
+      - '.github/workflows/luke-lexicon-g2-four-llm.yml'
+  pull_request:
+    paths:
+      - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
+      - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
+      - 'bible-mindmap/scripts/ai/lexicon/**'
+      - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/docs/*g2*'
+      - 'bible-mindmap/package.json'
+      - 'docs/lexicon-workflow/**'
+      - '.github/workflows/*g2*'
+      - '.github/workflows/luke-lexicon-g2-four-llm.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-four-llm-evidence-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Translation/evidence contract self-test
+        working-directory: bible-mindmap
+        run: node scripts/ai/lexicon/luke-g2-translation-contract.mjs --self-test
+      - name: Verify fixed-four policy and removed local paths
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-four-llm-only-policy.mjs
+      - name: Verify committed Luke source/context baseline
+        working-directory: bible-mindmap
+        run: |
+          node - <<'NODE'
+          const fs = require('node:fs')
+          const p = JSON.parse(fs.readFileSync('data/lexicon/luke-g2-canary-preparation.json', 'utf8'))
+          if (p.book?.id !== 'Luke') throw new Error('Luke source packet required')
+          if (!Array.isArray(p.packets) || p.packets.length !== 10) throw new Error(`packets=${p.packets?.length}`)
+          const contexts = p.packets.reduce((n, x) => n + (x.contexts?.length || 0), 0)
+          if (contexts !== 70) throw new Error(`contexts=${contexts}`)
+          if (p.packets.some(x => x.sourcePacketStatus !== 'ready')) throw new Error('all source packets must be ready')
+          console.log('✓ Luke source/context baseline · 10 Strong · 70 contexts')
+          NODE
+      - name: Summary
+        run: |
+          {
+            echo '## Lexicon fixed four-LLM/public-evidence contract'
+            echo '- allowed roles: GPT · Jarvis · Claude · Gemini only'
+            echo '- local-model execution infrastructure: absent and guarded'
+            echo '- per-Strong user semantic approval: not required'
+            echo '- final semantic adjudicator: GPT using Rights-PASS public Evidence'
+            echo '- unresolved semantic conflict: HOLD / DISPUTE'
+            echo '- protected Registry promotion: repository governance remains required'
+          } >> "$GITHUB_STEP_SUMMARY"
