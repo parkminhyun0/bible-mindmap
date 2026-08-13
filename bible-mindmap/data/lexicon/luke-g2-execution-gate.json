@@ -1,9 +1,11 @@
 {
-  "schemaVersion": 2,
-  "gateId": "luke-g2-four-llm-evidence-v2",
-  "contractVersion": "2026.08.13-luke-g2-four-llm.1",
-  "state": "evidence-automation-ready",
+  "schemaVersion": 3,
+  "gateId": "luke-g2-full-fidelity-evidence-v3",
+  "contractVersion": "2026.08.14-luke-g2-full-fidelity.1",
+  "state": "full-fidelity-evidence-intake",
   "maxItems": 10,
+  "qualityPolicy": "docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md",
+  "tierMatrix": "bible-mindmap/data/lexicon/full-fidelity/tier-gate-matrix-v2.json",
   "allowedActors": ["gpt", "jarvis", "claude", "gemini"],
   "actorIndependence": {
     "eachActorUsesSamePinnedSourceBaseline": true,
@@ -11,17 +13,23 @@
     "allFourResultsRequiredBeforeFinalAdjudication": true,
     "modelMajorityIsAuthority": false
   },
-  "evidenceAuthority": [
-    "pinned-original-language-source",
-    "book-context-and-morphology",
-    "rights-pass-public-greek-lexicon",
-    "rights-pass-public-theological-lexical-reference",
-    "four-actor-analysis"
-  ],
+  "fullFidelity": {
+    "required": true,
+    "rightsPassGreekLexiconRequired": true,
+    "sourceUnitToKoreanUnitExactMappingRequired": true,
+    "senseStructureRequired": true,
+    "qualifierCompletenessRequired": true,
+    "identityBoundaryRequired": true,
+    "morphologyBoundaryRequired": true,
+    "provenanceCompleteRequired": true,
+    "corpusAlignmentRequired": true,
+    "theologicalOverreachMustBeZero": true,
+    "unsupportedKoreanInformationMustBeZero": true,
+    "unresolvedMustBeZero": true
+  },
   "adjudication": {
     "finalAdjudicator": "gpt",
-    "mode": "public-evidence-first",
-    "publicEvidenceRightsPassRequired": true,
+    "mode": "license-safe-full-fidelity-public-evidence-first",
     "deterministicVerifierPassRequired": true,
     "unresolvedMustBeZeroForAutomaticSemanticPromotion": true,
     "unresolvedDisposition": "HOLD_OR_DISPUTE",
@@ -47,6 +55,7 @@
     "claudeResults": 0,
     "geminiResults": 0,
     "publicEvidenceCrossChecks": 0,
+    "fullFidelityReports": 0,
     "productionWrites": 0,
     "semanticState": "not-started"
   }
