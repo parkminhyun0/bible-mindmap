@@ -1,4 +1,4 @@
-name: Lexicon v4 Foundation
+name: Lexicon Full-Fidelity Foundation
 
 on:
   pull_request:
@@ -6,93 +6,92 @@ on:
       - 'docs/lexicon-workflow/**'
       - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-v4-*.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-four-llm-only-policy.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-four-llm-policy.mjs'
       - 'bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs'
       - 'bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs'
-      - '.github/workflows/lexicon-v4-*.yml'
+      - '.github/workflows/lexicon-v4-foundation.yml'
   push:
     branches: [main]
     paths:
-      - 'docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md'
-      - 'bible-mindmap/data/lexicon/v4/**'
+      - 'docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md'
+      - 'docs/lexicon-workflow/MASTER_WORKFLOW.md'
+      - 'docs/lexicon-workflow/LLM_CHECKIN.md'
+      - 'bible-mindmap/data/lexicon/**'
       - 'bible-mindmap/scripts/verify-lexicon-v4-*.mjs'
-      - 'bible-mindmap/scripts/verify-lexicon-registry-universal-regression.mjs'
-      - 'bible-mindmap/scripts/verify-golden-audit-sample-contract.mjs'
+      - 'bible-mindmap/scripts/verify-lexicon-four-llm-only-policy.mjs'
+      - 'bible-mindmap/scripts/verify-luke-g2-four-llm-policy.mjs'
 
 permissions:
   contents: read
 
 jobs:
   foundation-contract:
-    name: v4 foundation contract
+    name: full-fidelity foundation contract
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: verify-lexicon-v4-foundation-contract
+        with: { node-version: '24' }
+      - name: verify unified foundation
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-foundation-contract.mjs
 
-  consensus-gate:
-    name: v4 consensus gate self-test
+  semantic-and-gate:
+    name: full-fidelity semantic AND gate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: verify-lexicon-v4-consensus-gate --self-test
+        with: { node-version: '24' }
+      - name: verify Full-Fidelity AND gate
         working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-consensus-gate.mjs --self-test
+      - name: verify Fixed Four
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-four-llm-only-policy.mjs
+      - name: verify Luke Full-Fidelity contract
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-g2-four-llm-policy.mjs
 
   universal-regression:
-    name: v4 universal registry regression
+    name: universal registry regression
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: verify-lexicon-registry-universal-regression --self-test
-        working-directory: bible-mindmap
+        with: { node-version: '24' }
+      - working-directory: bible-mindmap
         run: node scripts/verify-lexicon-registry-universal-regression.mjs --self-test
-      - name: verify against live registry
-        working-directory: bible-mindmap
+      - working-directory: bible-mindmap
         run: node scripts/verify-lexicon-registry-universal-regression.mjs
 
   golden-audit-contract:
-    name: v4 golden audit sample contract
+    name: golden audit sample contract
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: verify-golden-audit-sample-contract
-        working-directory: bible-mindmap
+        with: { node-version: '24' }
+      - working-directory: bible-mindmap
         run: node scripts/verify-golden-audit-sample-contract.mjs
 
   r4-extended-research-queue:
-    name: v4 R4 extended research queue
+    name: R4 extended research queue
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: verify-lexicon-v4-r4-extended-research-queue
-        working-directory: bible-mindmap
+        with: { node-version: '24' }
+      - working-directory: bible-mindmap
         run: node scripts/verify-lexicon-v4-r4-extended-research-queue.mjs
 
   auto-merge-decision-dry-run:
-    name: v4 auto-merge decision dry-run
+    name: delivery decision dry-run
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
-        with:
-          node-version: "24"
-      - name: v4-auto-merge-decision-dry-run
-        working-directory: bible-mindmap
+        with: { node-version: '24' }
+      - working-directory: bible-mindmap
         run: node scripts/tests/v4-auto-merge-decision-dry-run.mjs
