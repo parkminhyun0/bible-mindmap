@@ -22,6 +22,14 @@ function detectStrong(dialog) {
   return null;
 }
 
+function detectLemma(dialog) {
+  const label = [...dialog.querySelectorAll('span')].find((node) => node.textContent?.trim() === '사전형');
+  if (!label?.parentElement) return null;
+  const value = [...label.parentElement.querySelectorAll('span')]
+    .find((node) => node !== label && node.textContent?.trim());
+  return value?.textContent?.trim() || null;
+}
+
 function findDefinitionToolbar(dialog) {
   const label = [...dialog.querySelectorAll('span')].find((node) => {
     const text = node.textContent?.trim();
@@ -127,28 +135,29 @@ export function installLexiconTranslationPilotBridge() {
     states.delete(dialog);
   };
 
-  const createState = (dialog, toolbar, strong, approvedEntry) => {
+  const createState = (dialog, toolbar, strong, lemma, approvedEntry) => {
     if (!dialog.isConnected || !toolbar.isConnected) return null;
 
     const button = document.createElement('button');
     button.type = 'button';
     button.setAttribute(BUTTON_ATTR, strong);
-    button.setAttribute('aria-controls', `lexicon-translation-drawer-${strong}`);
-    button.title = '사람 승인된 한글 사전 전체 정의와 BDB 보조정보를 엽니다';
+    button.setAttribute('aria-controls', `lexicon-translation-drawer-${approvedEntry.identity.canonicalStrong}`);
+    button.title = '승인된 한글 사전 전체 정의와 BDB 보조정보를 엽니다';
 
     const host = document.createElement('div');
-    host.setAttribute(DRAWER_ROOT_ATTR, strong);
+    host.setAttribute(DRAWER_ROOT_ATTR, approvedEntry.identity.canonicalStrong);
     document.body.appendChild(host);
 
     const state = {
       strong,
+      lemma,
       dialog,
       toolbar,
       button,
       host,
       root: createRoot(host),
       approvedEntry,
-      enrichment: getLexiconTranslation(strong),
+      enrichment: getLexiconTranslation(approvedEntry.identity.canonicalStrong) || getLexiconTranslation(strong),
       open: false,
       mobileSnapshot: null,
       rendered: false,
@@ -165,6 +174,7 @@ export function installLexiconTranslationPilotBridge() {
 
   const ensureState = (dialog) => {
     const strong = detectStrong(dialog);
+    const lemma = detectLemma(dialog);
     const toolbar = findDefinitionToolbar(dialog);
     if (!strong || !toolbar || !dialog.isConnected) {
       destroyState(dialog);
@@ -172,28 +182,30 @@ export function installLexiconTranslationPilotBridge() {
     }
 
     let state = states.get(dialog);
-    if (state && state.strong !== strong) {
+    if (state && (state.strong !== strong || state.lemma !== lemma)) {
       destroyState(dialog);
       state = null;
     }
 
+    const lookupKey = `${strong}|${lemma || ''}`;
     if (!state) {
-      if (unavailable.get(dialog) === strong || pending.has(dialog)) return;
-      const load = lexiconApprovalLoader.loadApprovedEntry(strong)
+      if (unavailable.get(dialog) === lookupKey || pending.has(dialog)) return;
+      const load = lexiconApprovalLoader.loadApprovedEntry(strong, { lemma })
         .then((approvedEntry) => {
           if (!approvedEntry) {
-            unavailable.set(dialog, strong);
+            unavailable.set(dialog, lookupKey);
             return;
           }
           unavailable.delete(dialog);
           const currentStrong = detectStrong(dialog);
+          const currentLemma = detectLemma(dialog);
           const currentToolbar = findDefinitionToolbar(dialog);
-          if (currentStrong !== strong || !currentToolbar || !dialog.isConnected) return;
-          const created = createState(dialog, currentToolbar, strong, approvedEntry);
+          if (currentStrong !== strong || currentLemma !== lemma || !currentToolbar || !dialog.isConnected) return;
+          const created = createState(dialog, currentToolbar, strong, lemma, approvedEntry);
           if (created) renderState(created);
         })
         .catch(() => {
-          unavailable.set(dialog, strong);
+          unavailable.set(dialog, lookupKey);
         })
         .finally(() => {
           pending.delete(dialog);
