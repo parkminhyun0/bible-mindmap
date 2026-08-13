@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "lexicon-v4-production-current-main-reconcile/1.0",
+  "generatedAt": "2026-08-13T09:11:00+09:00",
+  "book": "Genesis",
+  "batch": "04",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-04",
+  "researchHeadBeforeReconcile": "3ba0b2c083e2807df507536f9b78a6dd4d2d615a",
+  "currentMainSha": "385f83adbe1550b6c7449efd30de264aa99941c7",
+  "previousDerivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "mainDeltaFromPrevious": {
+    "sourcePr": 344,
+    "changedPaths": [
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/data/lexicalBridgePilot.js",
+      "memory/RESUME.json"
+    ],
+    "affectsBatchSelection": false,
+    "affectsPinnedBdbTbeshEvidence": false,
+    "affectsKoreanCandidates": false,
+    "affectsApprovalRegistry": false,
+    "affectsExistingApprovedMeaning": false
+  },
+  "batchState": {
+    "strongs": ["H3130", "H5414", "H854", "H3947", "H85", "H2009", "H1323", "H1004", "H8033", "H3027"],
+    "prepared": 10,
+    "genesisOccurrencesRepresented": 1256,
+    "hold": 0,
+    "dispute": 0,
+    "promotionEligible": 0,
+    "completedGates": [
+      "STRONG_LEMMA_IDENTITY",
+      "SOURCE_NODE_BOUNDARY",
+      "KOREAN_CANDIDATE_PREP_WITH_BOUNDARIES"
+    ],
+    "pendingGates": [
+      "REPRESENTATIVE_GENESIS_CONTEXT",
+      "GENESIS_MORPHOLOGY_ROUTING",
+      "FULL_BDB_HIERARCHY_CROSSCHECK"
+    ]
+  },
+  "verdict": "RESEARCH_STATE_INVARIANT_ON_CURRENT_MAIN",
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextAction": "Continue Batch 04 representative Genesis context/morphology and full BDB hierarchy crosscheck. Do not promote from candidate-prep solely because current main changed lexical-bridge entrypoints."
+}
