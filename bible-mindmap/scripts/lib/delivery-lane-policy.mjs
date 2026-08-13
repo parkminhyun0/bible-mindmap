@@ -6,6 +6,7 @@ export const DEFAULT_LEXICON_REVIEWER = 'bible-mindmap-review'
 const LEXICON_APPROVAL_EXACT_FILES = new Set([
   'bible-mindmap/data/lexicon/approval-registry.json',
   'docs/lexicon-workflow/TRACK_STATE.json',
+  'docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md',
   'docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md',
   'bible-mindmap/data/lexicon/v4/golden-audit-contract.json',
   'bible-mindmap/data/lexicon/v4/human-exception-triggers.json',
