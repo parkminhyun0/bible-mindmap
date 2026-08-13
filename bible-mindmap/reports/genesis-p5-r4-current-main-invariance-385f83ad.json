@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "lexicon-v4-r4-current-main-invariance/1.0",
+  "generatedAt": "2026-08-13T09:11:00+09:00",
+  "book": "Genesis",
+  "lane": "R4",
+  "derivedMainSha": "385f83adbe1550b6c7449efd30de264aa99941c7",
+  "previousValidatedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "mainDelta": {
+    "sourcePr": 344,
+    "changedPaths": [
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/data/lexicalBridgePilot.js",
+      "memory/RESUME.json"
+    ],
+    "touchesPinnedR4Candidate": false,
+    "touchesPinnedR4SourceEvidence": false,
+    "touchesPinnedR4UsageEvidence": false,
+    "touchesApprovalRegistry": false,
+    "touchesExistingApprovedMeaning": false
+  },
+  "pinnedBaseline": {
+    "strongs": ["H120", "H6030b", "H7650", "H28", "H39"],
+    "candidateBundleFingerprint": "sha256:a9ebdc22e34659332b84ced41118597feae70f18a742e8a5234968e902c9d261",
+    "sourceInputBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+    "usage": {
+      "occurrences": 87,
+      "sampledContexts": 38
+    }
+  },
+  "verdict": "INVARIANT_ON_CURRENT_MAIN",
+  "gateEffect": "NONE",
+  "mutations": {
+    "candidate": 0,
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextAction": "Preserve the exact pinned R4 baseline and continue the existing evidence/public-research finalization path; do not reopen already-resolved source-node questions merely because PR #344 changed lexical-bridge UI entrypoints."
+}
