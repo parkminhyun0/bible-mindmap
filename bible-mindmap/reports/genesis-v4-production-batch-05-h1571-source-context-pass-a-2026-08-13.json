@@ -54,8 +54,7 @@
       {"reference": "Gen.3.22", "surface": "גַּם", "morph": "HTa", "role": "additive/emphatic particle"},
       {"reference": "Gen.4.4", "surface": "גַּם", "morph": "HTa", "role": "corresponding/additive particle"},
       {"reference": "Gen.6.3", "surface": "גַּם", "morph": "HTa", "role": "context-conditioned emphatic/additive use"},
-      {"reference": "Gen.7.3", "surface": "גַּם", "morph": "HTa", "role": "additive particle"},
-      {"reference": "Gen.14.20", "surface": "וּבָרוּךְ ...", "morph": "HTa", "role": "H1571 occurrence retained in canonical count; exact token context remains verifier-owned"}
+      {"reference": "Gen.7.3", "surface": "גַּם", "morph": "HTa", "role": "additive particle"}
     ],
     "morphologyBoundary": "Observed H1571 tokens are tagged HTa in representative Genesis contexts. Deterministic full-context report/verifier has not yet been run for Batch05, so this pass does not close the deterministic morphology gate."
   },
