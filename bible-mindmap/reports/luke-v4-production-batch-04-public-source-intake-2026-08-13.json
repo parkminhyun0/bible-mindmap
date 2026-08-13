@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4",
+  "reportId": "luke-v4-production-batch-04-public-source-intake-2026-08-13",
+  "generatedDate": "2026-08-13",
+  "researchOnly": true,
+  "currentMainObserved": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "researchBranch": "chatgpt/luke-v4-production-batch-04",
+  "selectionCommit": "fe67f16e25726f0bced16ce27a72451710b9bcb9",
+  "sourcePolicy": [
+    "Use public lexical sources as corroborating evidence, not as self-approving production data.",
+    "Preserve the pinned STEPBible/TBESG/TFLSJ source lock from the Luke v4 track as the canonical source family; public web-accessible aggregations are intake corroboration only.",
+    "Do not flatten classical/full-lexicon extensions into Luke-specific meanings without exact Luke context support.",
+    "Morphology and token counts constrain usage but are not independent lexical senses.",
+    "This pass does not close the exact Luke morphology gate; exact token/morphology extraction remains required."
+  ],
+  "sources": [
+    {
+      "id": "StudyBible-G40",
+      "url": "https://studybible.info/strongs/G40",
+      "note": "Public TBESG/LSJ/Dodson aggregation gives hagios as holy/sacred/set apart and lists Luke uses beginning at Luke 1:15; person, thing and divine-reference uses must remain context-distinguished."
+    },
+    {
+      "id": "StudyBible-G43",
+      "url": "https://studybible.info/strongs/G43",
+      "note": "Public TBESG/LSJ/Dodson aggregation gives agkale as the bent arm/arm and explicitly identifies Luke 2:28 as its sole NT occurrence."
+    },
+    {
+      "id": "StudyBible-G50",
+      "url": "https://studybible.info/strongs/G50",
+      "note": "Public TBESG/LSJ/Dodson aggregation gives agnoeo as not know/be ignorant/not understand and explicitly cites Luke 9:45 under the not-understand sense."
+    },
+    {
+      "id": "StudyBible-G58",
+      "url": "https://studybible.info/strongs/G58",
+      "note": "Public TBESG/LSJ/Dodson aggregation gives agora as assembly/place of assembly/marketplace and explicitly cites Luke 7:32, 11:43 and 20:46 for the public-marketplace sense."
+    },
+    {
+      "id": "StudyBible-G59",
+      "url": "https://studybible.info/strongs/G59",
+      "note": "Public TBESG/LSJ/Dodson aggregation gives agorazo as buy/purchase, while broader metaphorical redeem senses occur elsewhere; Luke occurrences include ordinary purchase contexts such as Luke 9:13, 14:18-19, 17:28, 19:45 and 22:36."
+    },
+    {
+      "id": "StudyBible-G61",
+      "url": "https://studybible.info/strongs/G61",
+      "note": "Public TBESG/LSJ/Dodson aggregation distinguishes the act of catching from the concrete catch/haul and explicitly cites Luke 5:4 and 5:9."
+    },
+    {
+      "id": "StudyBible-G63",
+      "url": "https://studybible.info/strongs/G63",
+      "note": "Public LSJ/Dodson/TBESG aggregation gives agrauleo as live/stay outdoors or in the field, with Luke 2:8 as the sole NT occurrence."
+    },
+    {
+      "id": "StudyBible-G68",
+      "url": "https://studybible.info/strongs/G68",
+      "note": "Public TBESG/LSJ/Dodson aggregation distinguishes field, country/country places/farms, and a piece of land; Luke 8:34 and 9:12 are explicitly cited under country places/farms."
+    }
+  ],
+  "targets": [
+    {
+      "strong": "G0040",
+      "lemma": "ἅγιος",
+      "selectedExactLukeTokens": 20,
+      "firstRef": "Luke 1:15",
+      "lexicalIntake": "Public lexical evidence supports holy/sacred/set apart. Luke-specific contexts must distinguish Holy Spirit/divine reference, holy persons, and holy things instead of collapsing all tokens into one theological definition.",
+      "provisionalKoreanBoundary": ["거룩한", "성별된", "성스러운"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0043",
+      "lemma": "ἀγκάλη",
+      "selectedExactLukeTokens": 1,
+      "firstRef": "Luke 2:28",
+      "lexicalIntake": "The public lexical evidence is narrow and concrete: bent arm/arm, with Luke 2:28 the sole NT occurrence. No figurative sense is imported without evidence.",
+      "provisionalKoreanBoundary": ["팔", "두 팔/품"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0050",
+      "lemma": "ἀγνοέω",
+      "selectedExactLukeTokens": 1,
+      "firstRef": "Luke 9:45",
+      "lexicalIntake": "Public lexical evidence distinguishes not know/be ignorant from not understand; Luke 9:45 is explicitly tied to the latter. Willful ignorance is not promoted into the lexical head without contextual evidence.",
+      "provisionalKoreanBoundary": ["알지 못하다", "깨닫지 못하다", "이해하지 못하다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0058",
+      "lemma": "ἀγορά",
+      "selectedExactLukeTokens": 3,
+      "firstRef": "Luke 7:32",
+      "lexicalIntake": "Public lexical evidence preserves assembly/place-of-assembly history but Luke citations support the public square/marketplace sense. The candidate must not flatten every occurrence to commercial 'market' if the social/public-square function is primary.",
+      "provisionalKoreanBoundary": ["장터", "시장", "광장/공공장소"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0059",
+      "lemma": "ἀγοράζω",
+      "selectedExactLukeTokens": 5,
+      "firstRef": "Luke 9:13",
+      "lexicalIntake": "Public lexical evidence gives buy/purchase as the ordinary sense. Metaphorical redeem/purchase senses found elsewhere in the NT must not be injected into Luke tokens unless the exact Luke context supports them.",
+      "provisionalKoreanBoundary": ["사다", "구입하다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0061",
+      "lemma": "ἄγρα",
+      "selectedExactLukeTokens": 2,
+      "firstRef": "Luke 5:4",
+      "lexicalIntake": "Public TBESG evidence explicitly distinguishes the action of catching at Luke 5:4 from the concrete catch/haul at Luke 5:9; both senses must remain separate in Korean.",
+      "provisionalKoreanBoundary": ["잡기/고기잡이", "잡은 것", "어획/고기 떼"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0063",
+      "lemma": "ἀγραυλέω",
+      "selectedExactLukeTokens": 1,
+      "firstRef": "Luke 2:8",
+      "lexicalIntake": "Public lexical evidence is narrow: live/stay outdoors, especially in the field, even at night. Luke 2:8 should govern the Korean candidate rather than derivational speculation.",
+      "provisionalKoreanBoundary": ["들에서 지내다", "들에 머물다", "야외에서 밤을 지내다"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    },
+    {
+      "strong": "G0068",
+      "lemma": "ἀγρός",
+      "selectedExactLukeTokens": 9,
+      "firstRef": "Luke 8:34",
+      "lexicalIntake": "Public lexical evidence distinguishes field, country/country places/farms, and a piece of land. Exact Luke contexts must decide among cultivated field, rural country/farms, and owned land rather than forcing a single gloss.",
+      "provisionalKoreanBoundary": ["들/밭", "시골/들판", "토지/땅"],
+      "status": "SOURCE_INTAKE_PASS_CONTEXT_MORPHOLOGY_PENDING"
+    }
+  ],
+  "summary": {
+    "targets": 8,
+    "selectedExactLukeTokens": 42,
+    "sourceIntakePass": 8,
+    "hold": 0,
+    "dispute": 0,
+    "candidateMutation": 0,
+    "approvalRegistryMutation": 0,
+    "productionMutation": 0,
+    "existingApprovedMeaningMutation": 0
+  },
+  "nextGate": "PIN_CANONICAL_TBESG_TFLSJ_SOURCE_NODES_AND_EXTRACT_EXACT_LUKE_CONTEXT_MORPHOLOGY_FOR_ALL_8_THEN_CANDIDATE_PREP",
+  "promotionAllowedByThisReport": false
+}
