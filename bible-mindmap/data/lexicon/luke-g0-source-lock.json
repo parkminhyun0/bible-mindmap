@@ -3,7 +3,7 @@
   "book": "Luke",
   "stage": "G0",
   "generatedDate": "2026-08-09",
-  "rightsMetadataUpdatedAt": "2026-08-13T12:10:00Z",
+  "rightsMetadataUpdatedAt": "2026-08-13T14:55:00Z",
   "rightsPacketRef": "bible-mindmap/data/lexicon/luke-g0-rights-packet.json",
   "admittedSourceSet": {
     "candidateGenerationInput": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"],
@@ -21,7 +21,7 @@
       "redistributionSourceAllowed": false,
       "productionEvidenceSourceAllowed": false,
       "permittedUses": ["human reference cross-check only"],
-      "verifierEnforcement": "buildLukeG2Preparation (bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs) derives verse.text and localWindow from TAGNT tokens (parseTagntLuke) and consumes only MorphGNT morphology/lemmatization annotations (parseMorphgntLuke → morphgntCrossCheck), so SBLGNT text columns are not carried into candidate input, external LLM input, or downstream derivative payloads."
+      "verifierEnforcement": "The committed Luke source/context packet is provenance-locked to TAGNT-derived verse/local-window context plus MorphGNT annotation cross-checks. The active four-LLM contract consumes only those admitted packet fields; SBLGNT text is not an admitted model-input or derivative source."
     }
   },
   "sources": {
@@ -49,10 +49,7 @@
       "license": "Morphology and lemmatization CC BY-SA 3.0; SBLGNT text subject to repository notice",
       "role": "independent morphology and lemmatization cross-check (annotations only)",
       "sourceType": "digitized-annotation-dataset",
-      "componentAdmission": {
-        "morphgnt-annotations": "admitted",
-        "sblgnt-text": "excluded"
-      },
+      "componentAdmission": {"morphgnt-annotations": "admitted", "sblgnt-text": "excluded"},
       "rightsComponents": [
         {
           "componentId": "morphgnt-annotations",
@@ -92,14 +89,11 @@
       "ref": "main",
       "role": "existing Korean Strong reuse measurement",
       "sourceType": "project-owned-derivative",
-      "upstreamBasis": [
-        "tagnt (Strong identifier basis; CC BY 4.0)",
-        "prior human curation within parkminhyun0/bible-mindmap"
-      ],
+      "upstreamBasis": ["tagnt (Strong identifier basis; CC BY 4.0)", "prior human curation within parkminhyun0/bible-mindmap"],
       "attribution": "parkminhyun0/bible-mindmap contributors",
       "redistribution": "governed by project repository terms; downstream redistribution inherits upstream tagnt attribution obligation",
-      "derivativeTranslation": "internal derivative dataset; downstream release governed by project policy and upstream (tagnt) obligations",
-      "externalLLMInput": "internal use; downstream release governed by project policy and upstream (tagnt) obligations",
+      "derivativeTranslation": "internal derivative dataset; downstream release governed by project policy and upstream obligations",
+      "externalLLMInput": "internal use; downstream release governed by project policy and upstream obligations",
       "changeConditions": "internal versioning tracked via git history in the parkminhyun0/bible-mindmap repository",
       "verdict": "PROJECT-OWNED",
       "admissionStatus": "admitted"
