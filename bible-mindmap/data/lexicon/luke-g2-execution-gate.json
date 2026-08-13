@@ -1,8 +1,9 @@
 {
-  "schemaVersion": 2,
-  "gateId": "luke-g2-four-llm-evidence-v2",
-  "contractVersion": "2026.08.13-luke-g2-four-llm.1",
-  "state": "evidence-automation-ready",
+  "schemaVersion": 3,
+  "gateId": "luke-g2-license-safe-full-fidelity-v3",
+  "contractVersion": "2026.08.14-luke-g2-full-fidelity.1",
+  "policyDoc": "docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md",
+  "state": "full-fidelity-evidence-intake",
   "maxItems": 10,
   "allowedActors": ["gpt", "jarvis", "claude", "gemini"],
   "actorIndependence": {
@@ -11,13 +12,39 @@
     "allFourResultsRequiredBeforeFinalAdjudication": true,
     "modelMajorityIsAuthority": false
   },
-  "evidenceAuthority": [
-    "pinned-original-language-source",
-    "book-context-and-morphology",
-    "rights-pass-public-greek-lexicon",
-    "rights-pass-public-theological-lexical-reference",
-    "four-actor-analysis"
-  ],
+  "sourceAdmission": {
+    "bookTextAndMorphologyRightsPass": true,
+    "greekLexicalSenseTreeRightsPassRequired": true,
+    "greekLexicalSenseTreeRightsPass": false,
+    "thirdPartyWebDisplayCanonicalIngestAllowed": false,
+    "tagntOrMorphgntMaySubstituteForLexicalSenseTree": false
+  },
+  "fullFidelity": {
+    "sourceUnitCountRequired": true,
+    "koMappedUnitCountRequired": true,
+    "completeSourceToKoreanTraceabilityRequired": true,
+    "sourceAccountRequired": true,
+    "usageQualifierRequiredWhenPresent": true,
+    "representativeRefsRequiredWhenPresent": true,
+    "lukeRefsRequired": true,
+    "morphologyFormsRequiredWhenPresent": true,
+    "rightsBasisRequired": true,
+    "candidateFingerprintRequired": true,
+    "missingSourceInformationMustBeZero": true,
+    "improperlyMergedSourceInformationMustBeZero": true,
+    "extraUnsupportedKoInformationMustBeZero": true,
+    "structureMismatchMustBeZero": true,
+    "qualifierMismatchMustBeZero": true,
+    "identityBoundaryMismatchMustBeZero": true,
+    "morphologyBoundaryMismatchMustBeZero": true,
+    "provenanceMissingMustBeZero": true
+  },
+  "corpusVerification": {
+    "exactStrongLemmaAlignmentRequired": true,
+    "morphologyRequired": true,
+    "senseToContextFitRequired": true,
+    "bookUsageCoverageRequired": true
+  },
   "adjudication": {
     "finalAdjudicator": "gpt",
     "mode": "public-evidence-first",
@@ -25,7 +52,9 @@
     "deterministicVerifierPassRequired": true,
     "unresolvedMustBeZeroForAutomaticSemanticPromotion": true,
     "unresolvedDisposition": "HOLD_OR_DISPUTE",
-    "perEntryUserSemanticApprovalRequired": false
+    "perEntryUserSemanticApprovalRequired": false,
+    "threeOfThreeConsensusAuthorityAllowed": false,
+    "r4PerEntryHumanFinalWordingRequired": false
   },
   "executionPolicy": {
     "repositoryDoesNotInvokeModels": true,
@@ -47,6 +76,7 @@
     "claudeResults": 0,
     "geminiResults": 0,
     "publicEvidenceCrossChecks": 0,
+    "fullFidelityMappedStrong": 0,
     "productionWrites": 0,
     "semanticState": "not-started"
   }
