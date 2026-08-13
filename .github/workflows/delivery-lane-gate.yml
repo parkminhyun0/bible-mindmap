@@ -1,0 +1,132 @@
+name: Delivery Lane Gate
+
+on:
+  workflow_run:
+    workflows:
+      - Validate pull request
+      - Verify RESUME checkpoint
+      - Lexicon Evidence Contract
+    types: [completed]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  statuses: write
+
+concurrency:
+  group: delivery-lane-gate-${{ github.event.pull_request.number || github.event.workflow_run.id }}
+  cancel-in-progress: true
+
+jobs:
+  delivery-lane-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout trusted main policy
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Evaluate delivery lane and publish exact-head status
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const path = require('path');
+            const { pathToFileURL } = require('url');
+            const policyUrl = pathToFileURL(
+              path.resolve(process.env.GITHUB_WORKSPACE, 'bible-mindmap/scripts/lib/delivery-lane-policy.mjs')
+            ).href;
+            const {
+              LEXICON_APPROVAL_LANE,
+              SYSTEM_MANUAL_LANE,
+              classifyDeliveryLane,
+              exactHeadApprovedReviewCandidates,
+            } = await import(policyUrl);
+
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            let numbers = [];
+            if (context.eventName === 'pull_request_review') {
+              numbers = [context.payload.pull_request.number];
+            } else if (context.eventName === 'workflow_run') {
+              numbers = (context.payload.workflow_run.pull_requests || []).map((pr) => pr.number);
+            }
+            numbers = [...new Set(numbers.filter(Boolean))];
+            core.info(`candidate PRs=${JSON.stringify(numbers)}`);
+
+            for (const number of numbers) {
+              const { data: pr } = await github.rest.pulls.get({ owner, repo, pull_number: number });
+              const headSha = pr.head.sha;
+              if (pr.state !== 'open' || pr.base.ref !== 'main') continue;
+
+              if (pr.head.repo.full_name !== `${owner}/${repo}`) {
+                await github.rest.repos.createCommitStatus({
+                  owner, repo, sha: headSha,
+                  state: 'failure',
+                  context: 'lexicon-human-approval',
+                  description: 'fail-closed: fork PR is not auto-delivery eligible',
+                });
+                continue;
+              }
+
+              const files = await github.paginate(github.rest.pulls.listFiles, {
+                owner, repo, pull_number: number, per_page: 100,
+              });
+              const classification = classifyDeliveryLane(files.map((file) => file.filename));
+              core.info(`#${number} lane=${classification.lane}`);
+
+              if (classification.lane !== LEXICON_APPROVAL_LANE) {
+                await github.rest.repos.createCommitStatus({
+                  owner, repo, sha: headSha,
+                  state: 'success',
+                  context: 'lexicon-human-approval',
+                  description: classification.lane === SYSTEM_MANUAL_LANE
+                    ? 'system-manual: no lexicon reviewer required; auto-merge disabled'
+                    : 'ordinary-auto: no approved lexicon data touched',
+                });
+                continue;
+              }
+
+              const reviews = await github.paginate(github.rest.pulls.listReviews, {
+                owner, repo, pull_number: number, per_page: 100,
+              });
+              const candidates = exactHeadApprovedReviewCandidates({
+                reviews,
+                headSha,
+                authorLogin: pr.user.login,
+              });
+
+              let approvedBy = null;
+              for (const candidate of candidates) {
+                try {
+                  const permission = await github.rest.repos.getCollaboratorPermissionLevel({
+                    owner, repo, username: candidate.login,
+                  });
+                  if (['admin', 'maintain', 'write'].includes(permission.data.permission)) {
+                    approvedBy = candidate.login;
+                    break;
+                  }
+                } catch (error) {
+                  core.warning(`permission lookup failed for ${candidate.login}: ${error.message}`);
+                }
+              }
+
+              await github.rest.repos.createCommitStatus({
+                owner, repo, sha: headSha,
+                state: approvedBy ? 'success' : 'pending',
+                context: 'lexicon-human-approval',
+                description: approvedBy
+                  ? `approved lexicon data: ${approvedBy}`
+                  : 'approved lexicon data requires exact-head write-review',
+              });
+
+              if (approvedBy) core.notice(`#${number}: lexicon approval PASS by ${approvedBy}`);
+              else core.notice(`#${number}: lexicon approval WAIT`);
+            }

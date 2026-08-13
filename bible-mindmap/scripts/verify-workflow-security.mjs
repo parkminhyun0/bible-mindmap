@@ -1,5 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  LEXICON_APPROVAL_LANE,
+  ORDINARY_AUTO_LANE,
+  SYSTEM_MANUAL_LANE,
+  classifyDeliveryLane,
+} from './lib/delivery-lane-policy.mjs';
 
 const ROOT = path.resolve(process.cwd(), '..');
 const WORKFLOW_DIR = path.join(ROOT, '.github', 'workflows');
@@ -82,6 +88,36 @@ if (!shadow.includes('--require-pass')) errors.push('shadow index workflow must 
 if (!shadow.includes('if: always()')) errors.push('shadow index workflow must preserve artifacts after a failed gate');
 if (!shadow.includes('reports/nvidia-hybrid-shadow-index')) errors.push('shadow index workflow must keep artifacts outside live app assets');
 
+const ordinaryLane = classifyDeliveryLane([
+  'bible-mindmap/src/components/LexicalBridgeModalV2.jsx',
+  'bible-mindmap/src/theme/contextBibleMobileFix.css',
+]);
+if (ordinaryLane.lane !== ORDINARY_AUTO_LANE || ordinaryLane.sensitiveFiles.length !== 0) {
+  errors.push('delivery lane policy must keep ordinary UI/UX changes in ordinary-auto');
+}
+
+const approvalLane = classifyDeliveryLane([
+  'bible-mindmap/data/lexicon/approval-registry.json',
+]);
+if (approvalLane.lane !== LEXICON_APPROVAL_LANE) {
+  errors.push('delivery lane policy must protect Approval Registry with lexicon human approval');
+}
+
+const workflowPolicyLane = classifyDeliveryLane([
+  '.github/workflows/ordinary-auto-merge.yml',
+]);
+if (workflowPolicyLane.lane !== SYSTEM_MANUAL_LANE) {
+  errors.push('delivery lane trust-boundary workflow changes must be system-manual, not ordinary-auto or lexicon reviewer scope');
+}
+
+const mixedSensitiveLane = classifyDeliveryLane([
+  '.github/workflows/ordinary-auto-merge.yml',
+  'bible-mindmap/data/lexicon/approval-registry.json',
+]);
+if (mixedSensitiveLane.lane !== LEXICON_APPROVAL_LANE) {
+  errors.push('lexicon approval must take precedence when a PR mixes approved lexicon data with system policy');
+}
+
 if (warnings.length) {
   console.warn(`⚠ workflow security warnings (${warnings.length})`);
   warnings.forEach((message) => console.warn(`  - ${message}`));
@@ -91,4 +127,4 @@ if (errors.length) {
   errors.forEach((message) => console.error(`  - ${message}`));
   process.exit(1);
 }
-console.log(`✓ workflow security verified · workflows ${workflowEntries.length} · Node 24 actions · manual NVIDIA · production audit · live verification`);
+console.log(`✓ workflow security verified · workflows ${workflowEntries.length} · Node 24 actions · manual NVIDIA · three delivery lanes · production audit · live verification`);

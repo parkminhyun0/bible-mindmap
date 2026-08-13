@@ -5,14 +5,14 @@ GPT, 자비스(Claude/OpenClaw), Claude, Gemini 및 다른 LLM이 원어 한글�
 ## 1. 시작/재개 순서
 
 1. `AGENTS.md`
-2. `memory/RESUME.json`
-3. 최신 GitHub `main` + 관련 open PR + current head + diff + required CI/Pages
-4. `docs/lexicon-workflow/TRACK_STATE.json`
-5. `docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md`
+2. 최신 GitHub `main` + 관련 open PR + current exact head + diff + required CI/review/Pages 상태를 먼저 파생한다.
+3. `docs/lexicon-workflow/TRACK_STATE.json`
+4. `docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md`
+5. `memory/RESUME.json`은 checkpoint/cache로만 읽고, GitHub-derived state와 충돌하면 현재 active PR에서 정합화한다.
 6. `docs/lexicon-workflow/EXECUTOR_HANDOFF_STATE.json` (handoff/장기 작업 시 필수)
 7. 필요한 경우에만 관련 Notion 관제/책·배치 카드
 
-대화 메모보다 GitHub 실제 상태를 우선한다.
+우선순위는 `GitHub code/state → CI/Pages → Notion → TRACK_STATE/RESUME checkpoint → chat history`다. `RESUME.json`은 volatile runtime authority가 아니다.
 
 ## 2. 체크인 보고 형식
 
@@ -29,25 +29,26 @@ BLOCK: none | <exact blocker>
 
 ## 3. 충돌/중복 방지
 
-- GitHub code/schema/state > CI/Pages > Notion > chat history.
+- GitHub code/schema/state > CI/Pages > Notion > checkpoint/cache > chat history.
 - 같은 active task/branch에 open PR이 이미 있으면 새 PR을 만들지 않는다.
 - executor가 바뀌어도 같은 branch/PR/Evidence baseline을 유지한다.
 - `completedSteps`는 재실행하지 않고 `nextStep`부터 이어간다.
 - current head·diff·CI는 인계 때마다 GitHub에서 새로 조회한다.
+- `TRACK_STATE.json`이나 `RESUME.json`이 실제 Registry/main 상태보다 뒤처지면 새 의미 생성이나 promotion을 시작하기 전에 state reconciliation을 먼저 한다.
 - retrieval 실패, duplicate PR, head divergence, fingerprint drift는 fail-closed.
 
 ## 4. Evidence-First v4 진행 범위
 
-정상 항목은 v4 AND-gate를 모두 만족하면 사용자에게 매 단계 묻지 않고 진행할 수 있다.
+정상 항목의 research/Evidence/candidate 단계는 v4 AND-gate를 모두 만족하면 사용자에게 매 단계 묻지 않고 진행할 수 있다.
 
 - 공개/허용 출처와 license/fingerprint 검사
 - 결정론적 parser와 Evidence Packet 생성
 - schema/Strong/node/fingerprint/corpus/regression verifier
-- GPT candidate, Claude independent audit, 필요한 Gemini R3/dispute audit
+- GPT candidate, 독립 audit, 필요한 R3/dispute review
 - tier routing, consensus gate, Golden Audit sampling
-- 기존 approved snapshot 불변이 증명된 신규 Registry entry promotion
-- exact-head independent GitHub review 후 reviewer-scoped auto-merge/deploy
 - GitHub 결과에 따른 state/Notion 동기화
+
+승인 production surface는 별도다. Approval Registry, approved meaning, Golden/Gold Set, promotion verifier/approval policy, `TRACK_STATE.json` promotion gate 등 보호된 사전 승인 데이터를 건드리는 PR은 `lexicon-human-approval`로 분류하고 exact-head 비작성자 write/maintain/admin 승인을 요구한다. 일반 UI/UX·검색·원어 브릿지와 승인 데이터 비변경 research/Evidence 산출물은 `ordinary-auto`, delivery/security/workflow 신뢰경계는 `system-manual`이다.
 
 ## 5. Human Exception / External Audit Gate
 
@@ -58,8 +59,9 @@ BLOCK: none | <exact blocker>
 - theology policy 변경
 - security/cost/permission
 - Golden Audit halt/regression
+- 보호된 승인 production surface의 exact-head approval
 
-R4는 먼저 `EXTENDED_RESEARCH_REQUIRED`. 필요한 Claude/Gemini 등 외부 감사 결과가 없으면 `EXTERNAL_AUDIT_REQUIRED`로 멈추며 다른 모델이 대체 판정을 만들지 않는다.
+R4는 먼저 `EXTENDED_RESEARCH_REQUIRED`. 필요한 외부 독립 감사 결과가 실제로 요구되는데 없으면 `EXTERNAL_AUDIT_REQUIRED`로 멈추며 다른 모델이 대체 판정을 만들지 않는다.
 
 ## 6. Executor handoff
 
@@ -86,7 +88,7 @@ R3/쟁점 검토에 필요한 실제 pinned Evidence만 판정한다. 데이터 
 통합·검증·CI/PR/Pages와 checkpoint를 수행하며 현재 EXECUTOR일 때 같은 GitHub SSOT에서 직접 재개한다.
 
 ### 사용자
-정상 Strong 개별 검토자가 아니라 정책·권한·미해결 고위험 예외의 governance owner다.
+정상 Strong 개별 검토자가 아니라 정책·권한·보호된 승인 production surface·미해결 고위험 예외의 governance owner다.
 
 ## 8. 프로젝트 균형
 
