@@ -47,6 +47,25 @@ function MetadataCard({ label, children }) {
   return <div style={{ display: 'grid', gridTemplateColumns: '6.4em minmax(0, 1fr)', gap: 8, padding: '9px 0', borderTop: '1px solid #f1f5f9', alignItems: 'start' }}><span style={{ color: '#94a3b8', fontSize: 11, fontWeight: 700 }}>{label}</span><span style={{ color: '#334155', fontSize: 12, lineHeight: 1.65, minWidth: 0 }}>{children}</span></div>;
 }
 
+export const LICENSE_SAFE_PROVENANCE_ROWS = Object.freeze([
+  ['원 저작물', 'Brown–Driver–Briggs Hebrew and English Lexicon (1906) · Public Domain'],
+  ['디지털 데이터', 'Open Scriptures Hebrew Lexicon · BrownDriverBriggs.xml'],
+  ['Dataset', 'commit 21c9add13bc727d3a951361778e97e3ff7afd1ce'],
+  ['라이선스', 'CC BY 4.0 · 출처표기 및 변경 고지 적용'],
+  ['Attribution', 'Open Scriptures Hebrew Bible Project'],
+  ['한국어판', '성경 마인드맵이 원 lexical data를 한국어로 번역·구조화한 파생 데이터'],
+  ['사용 원칙', 'BibleHub 등 제3자 웹페이지는 canonical scraping source로 사용하지 않음'],
+]);
+
+export function LicenseSafeProvenanceCard() {
+  return <section data-license-safe-notice="openscriptures-bdb" aria-label="사전 출처 및 라이선스 정보" style={{ marginTop: 12, padding: '11px 12px', border: '1px solid #bae6fd', borderRadius: 10, background: '#f0f9ff', color: '#0f172a' }}>
+    <strong style={{ display: 'block', marginBottom: 6, color: '#075985', fontSize: 11, fontWeight: 700 }}>⚖️ 출처 · 라이선스 · 변경 고지</strong>
+    <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: '6.8em minmax(0, 1fr)', rowGap: 5, columnGap: 8 }}>
+      {LICENSE_SAFE_PROVENANCE_ROWS.map(([label, value]) => <div key={label} style={{ display: 'contents' }}><dt style={{ color: '#64748b', fontSize: 10, fontWeight: 700 }}>{label}</dt><dd style={{ margin: 0, color: '#334155', fontSize: 10, lineHeight: 1.55, overflowWrap: 'anywhere' }}>{value}</dd></div>)}
+    </dl>
+  </section>;
+}
+
 export default function LexiconTranslationDrawer({ open, approvedEntry, enrichment = null, isMobile, popupRect, onClose, zIndex = 2502 }) {
   const viewportWidth = popupRect?.viewportWidth || 1200;
   const popupLeft = popupRect?.left || 0;
@@ -83,7 +102,7 @@ export default function LexiconTranslationDrawer({ open, approvedEntry, enrichme
 
   return <>
     {isMobile && <button type="button" aria-label="한글 사전 닫기" onClick={onClose} tabIndex={open ? 0 : -1} style={{ position: 'fixed', inset: 0, zIndex: zIndex - 1, border: 'none', padding: 0, background: open ? 'rgba(15,23,42,.18)' : 'transparent', opacity: open ? 1 : 0, visibility: open ? 'visible' : 'hidden', pointerEvents: open ? 'auto' : 'none', transition: 'opacity .18s ease, visibility 0s linear .18s' }} />}
-    <aside id={`lexicon-translation-drawer-${strong}`} role="dialog" aria-modal={stacked ? 'true' : 'false'} aria-hidden={!open} aria-label={`${strong} 승인 한글 사전`} data-lexicon-translation-drawer={strong} data-approved-registry-strong={strong} style={{ position: 'fixed', left: geometry.left, top: geometry.top, width: geometry.width, height: geometry.height, maxHeight: geometry.height, zIndex, display: 'flex', flexDirection: 'column', background: '#fffdf5', border: '1px solid #fcd34d', borderRadius: stacked ? '16px 16px 0 0' : 12, boxShadow: stacked ? '0 -10px 36px rgba(15,23,42,.28)' : '0 16px 48px rgba(15,23,42,.24)', overflow: 'hidden', fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif", transform: open ? 'translateX(0)' : hiddenTransform, opacity: open ? 1 : 0, visibility: open ? 'visible' : 'hidden', pointerEvents: open ? 'auto' : 'none', transition: open ? 'transform .24s ease, opacity .18s ease' : 'transform .24s ease, opacity .18s ease, visibility 0s linear .24s', willChange: 'transform, opacity' }} onClick={(event) => event.stopPropagation()}>
+    <aside id={`lexicon-translation-drawer-${strong}`} role="dialog" aria-modal={stacked ? 'true' : 'false'} aria-hidden={!open} aria-label={`${strong} 승인 한글 사전`} data-lexicon-translation-drawer={strong} data-approved-registry-strong={strong} data-word-search-korean-lexicon={strong} style={{ position: 'fixed', left: geometry.left, top: geometry.top, width: geometry.width, height: geometry.height, maxHeight: geometry.height, zIndex, display: 'flex', flexDirection: 'column', background: '#fffdf5', border: '1px solid #fcd34d', borderRadius: stacked ? '16px 16px 0 0' : 12, boxShadow: stacked ? '0 -10px 36px rgba(15,23,42,.28)' : '0 16px 48px rgba(15,23,42,.24)', overflow: 'hidden', fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif", transform: open ? 'translateX(0)' : hiddenTransform, opacity: open ? 1 : 0, visibility: open ? 'visible' : 'hidden', pointerEvents: open ? 'auto' : 'none', transition: open ? 'transform .24s ease, opacity .18s ease' : 'transform .24s ease, opacity .18s ease, visibility 0s linear .24s', willChange: 'transform, opacity' }} onClick={(event) => event.stopPropagation()}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 9, padding: '11px 12px', background: '#fef3c7', borderBottom: '1px solid #fde68a' }}>
         {stacked && <button type="button" onClick={onClose} aria-label="원어 사전으로 돌아가기" style={{ width: 44, height: 44, border: 'none', borderRadius: 10, background: 'rgba(255,255,255,.72)', color: '#92400e', fontSize: 19, cursor: 'pointer', flexShrink: 0 }}>‹</button>}
         <div style={{ minWidth: 0, flex: 1 }}><div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}><strong style={{ color: '#92400e', fontSize: 14 }}>BDB 한글 사전 · 승인본</strong><span style={{ padding: '2px 6px', borderRadius: 99, background: '#f0fdf4', color: '#166534', border: '1px solid #bbf7d0', fontSize: 9, fontWeight: 800 }}>{approvalBadge}</span></div><div style={{ marginTop: 2, color: '#64748b', fontSize: 10 }}>{strong} · {identity.lemma} · {identity.transliteration?.korean || identity.transliteration?.scientific}</div></div>
@@ -95,6 +114,7 @@ export default function LexiconTranslationDrawer({ open, approvedEntry, enrichme
         <MetadataCard label="사전형">{identity.lemma}</MetadataCard><MetadataCard label="학술 음역">{identity.transliteration?.scientific}</MetadataCard><MetadataCard label="한글 음역">{identity.transliteration?.korean}</MetadataCard><MetadataCard label="품사">{identity.partOfSpeech?.labelKo}{identity.partOfSpeech?.code ? ` · ${identity.partOfSpeech.code}` : ''}</MetadataCard>
         {enrichment?.originKo && <MetadataCard label="어원 · BDB">{enrichment.originKo}</MetadataCard>}{enrichment?.twot?.entry && <MetadataCard label={enrichment.twot.sourceLabel || 'TWOT 항목'}><span style={{ fontFamily: 'monospace', fontWeight: 800 }}>{enrichment.twot.entry}</span></MetadataCard>}
         <MetadataCard label="근거 구성">직접 {evidenceCounts.direct} · 결합 {evidenceCounts.combined} · 기존승인 보존 {evidenceCounts['legacy-only']}</MetadataCard><MetadataCard label="원문 출처"><span style={{ whiteSpace: 'pre-line' }}>{sourceRefs}</span></MetadataCard>
+        <LicenseSafeProvenanceCard />
         <details style={{ marginTop: 8, borderTop: '1px solid #f1f5f9', paddingTop: 10 }}><summary style={{ cursor: 'pointer', color: '#64748b', fontSize: 11, fontWeight: 800 }}>검증·승인 정보</summary><div style={{ marginTop: 6 }}><MetadataCard label="승인 방식">{approvalDescription}</MetadataCard><MetadataCard label="승인자">{approvedEntry.reviewer?.reviewerId || approvedEntry.reviewer?.reviewerType}</MetadataCard><MetadataCard label="승인 시각">{approvedEntry.approvedAt}</MetadataCard><MetadataCard label="Evidence FP"><span style={{ fontFamily: 'monospace', fontSize: 10, wordBreak: 'break-all' }}>{approvedEntry.evidencePacketFingerprint}</span></MetadataCard>{enrichment?.sourceVersion && <MetadataCard label="BDB 보조버전">{enrichment.sourceVersion}</MetadataCard>}</div></details>
       </div>
       <div style={{ padding: '7px 12px', borderTop: '1px solid #fde68a', background: '#fffbeb', color: '#a16207', fontSize: 9, lineHeight: 1.5 }}>Approval Registry · 승인 의미 {senseCount}개 · 읽기 전용{enrichment?.source ? ` · 원사전 보조정보 ${enrichment.source}` : ''}</div>
