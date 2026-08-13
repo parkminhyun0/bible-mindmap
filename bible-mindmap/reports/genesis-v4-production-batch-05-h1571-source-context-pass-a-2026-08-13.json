@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-13T04:21:00Z",
+  "book": "Genesis",
+  "batch": "05",
+  "status": "PUBLIC_EVIDENCE_PASS_A_SOURCE_AND_CONTEXT_PINNED",
+  "researchOnly": true,
+  "mainObserved": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "target": {
+    "strong": "H1571",
+    "lemma": "גַּם",
+    "transliteration": "gam",
+    "genesisOccurrenceCount": 94,
+    "firstReference": "Gen.3.6",
+    "canonicalSelectionOrder": 60
+  },
+  "primaryLexicon": {
+    "source": "OpenScriptures HebrewLexicon / Brown-Driver-Briggs",
+    "repository": "openscriptures/HebrewLexicon",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "strongToBdbMapping": {
+      "strong": "1571",
+      "bdbNode": "g.cj.ab"
+    },
+    "partOfSpeech": "adverb/particle",
+    "senseBoundarySummary": [
+      "additive/correspondence: also, likewise, as well",
+      "emphatic/intensifying: even, indeed",
+      "context-conditioned negative/adversative or climactic functions must remain usage-level distinctions rather than be flattened into one Korean gloss"
+    ],
+    "candidatePolicy": "Korean lexical head is derived from public BDB hierarchy plus actual Genesis contexts; no theological meaning is injected into the lexical head."
+  },
+  "secondaryLexicon": {
+    "source": "STEPBible TBESH",
+    "repository": "STEPBible/STEPBible-Data",
+    "commit": "b86d26cdb1f51729e73b5b4eb7f7ccadc5dfba39",
+    "blob": "a64990a674d13245ae1e9ed426bc69197c2fbad5",
+    "entry": {
+      "eStrong": "H1571",
+      "hebrew": "גַּם",
+      "transliteration": "gam",
+      "morph": "H:Conj",
+      "gloss": "also"
+    },
+    "licenseBoundary": "TBESH is used as secondary identity/gloss guidance. Its Meaning field states Abridged-BDB/Online-Bible permission caveats, so Korean wording is not copied from that field; primary public BDB and book usage govern the candidate."
+  },
+  "bookUsage": {
+    "source": "OpenScriptures morphhb WLC Genesis",
+    "repository": "openscriptures/morphhb",
+    "file": "wlc/Gen.xml",
+    "verifiedCount": 94,
+    "representativeEvidence": [
+      {"reference": "Gen.3.6", "surface": "גַּם־", "morph": "HTa", "role": "first-attested additive/emphatic particle"},
+      {"reference": "Gen.3.22", "surface": "גַּם", "morph": "HTa", "role": "additive/emphatic particle"},
+      {"reference": "Gen.4.4", "surface": "גַּם", "morph": "HTa", "role": "corresponding/additive particle"},
+      {"reference": "Gen.6.3", "surface": "גַּם", "morph": "HTa", "role": "context-conditioned emphatic/additive use"},
+      {"reference": "Gen.7.3", "surface": "גַּם", "morph": "HTa", "role": "additive particle"},
+      {"reference": "Gen.14.20", "surface": "וּבָרוּךְ ...", "morph": "HTa", "role": "H1571 occurrence retained in canonical count; exact token context remains verifier-owned"}
+    ],
+    "morphologyBoundary": "Observed H1571 tokens are tagged HTa in representative Genesis contexts. Deterministic full-context report/verifier has not yet been run for Batch05, so this pass does not close the deterministic morphology gate."
+  },
+  "koreanCandidate": {
+    "head": "또한; 역시; …도",
+    "contextualExtensions": ["심지어", "참으로·실로"],
+    "confidence": "HIGH_WITH_CONTEXT_BOUNDARY",
+    "notes": "Negative/adversative/climactic renderings are preserved as context-conditioned alternatives rather than promoted to an undifferentiated head gloss."
+  },
+  "verdict": {
+    "sourceIdentity": "PASS_WITH_BOUNDARY",
+    "bookUsagePublicEvidence": "PASS_WITH_BOUNDARY",
+    "candidate": "PREPARED",
+    "hold": 0,
+    "dispute": 0,
+    "productionMutation": 0,
+    "approvalRegistryMutation": 0
+  },
+  "nextGate": "RUN_DETERMINISTIC_GENESIS_CONTEXT_MORPHOLOGY_VERIFIER_AND_FULL_BDB_HIERARCHY_CHECK_THEN_AUDIT_PREP"
+}
