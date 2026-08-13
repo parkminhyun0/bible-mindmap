@@ -5,10 +5,10 @@
 - 대표 10개 Greek Strong과 70개 문맥 준비 완료
 - 독립 슬롯 A/B 템플릿 20개 준비 완료
 - local-two-model 실행기·한 번 실행 파이프라인·수동 JSON importer 준비
-- 실제 후보 생성: 0건
+- 2026-08-13 Gate-open baseline에서 실제 후보 생성: 0건. **candidate count는 runtime state**이며 report/RESUME/Notion에서 관리하고 정책 invariant로 고정하지 않는다.
 - 외부 유료 API 호출: 0건
 - 서비스 사전 쓰기: 0건
-- 현재 `luke-g2-execution-gate.json`은 계속 차단 상태
+- 현재 `luke-g2-execution-gate.json`은 `executionAllowed=true` · `localTwoModel.enabled=true`로 실행 가능 상태이며, `killSwitchDefault=on`을 유지한다. 실제 실행은 매번 승인 문자열과 `--kill-switch=off`를 CLI에서 명시해야 한다.
 
 ## 창세기 G2에서 확인된 오류
 
@@ -56,7 +56,7 @@ num_ctx=8192
 --num-ctx=<4096..131072>
 ```
 
-## Gate를 열지 않고 가능한 사전점검
+## Gate 상태와 무관하게 가능한 사전점검
 
 박 목사님 Mac의 `bible-mindmap` 디렉터리에서 다음을 실행한다.
 
@@ -66,14 +66,14 @@ node scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs \
   --model-b=<설치모델B>
 ```
 
-이 명령은 실제 후보를 생성하지 않고 다음만 확인한다.
+`--execute`를 붙이지 않은 이 명령은 실제 후보를 생성하지 않고 다음만 확인한다.
 
 - Ollama `127.0.0.1:11434` 연결
 - `/api/tags` 설치 모델 탐색
 - 모델 A/B 설치 여부
 - 서로 다른 모델명과 서로 다른 digest
 - 대표 source/context packet 수
-- Gate 차단 상태
+- 현재 Gate 상태
 - 비용·서비스 쓰기·자동 승인 차단
 
 Ollama가 실행되지 않은 환경에서 명령 구조만 확인하려면:
@@ -85,12 +85,15 @@ node scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs \
   --model-b=<설치모델B>
 ```
 
-## 실제 실행을 위한 별도 승인 Gate
+## 실제 실행 Gate
 
-실제 로컬 모델 호출은 별도 Gate 활성화 커밋 이후에만 수행한다.
+현재 main에서는 Gate activation이 완료되어 다음 두 committed 조건이 활성 상태다.
 
 - `localTwoModel.enabled=true`
 - `executionAllowed=true`
+
+그러나 실제 로컬 모델 호출은 각 실행마다 다음 조건을 모두 명시해야 한다.
+
 - 승인 문자열 `RUN-LUKE-G2-CANARY`
 - kill switch `off`
 - 서로 다른 설치 모델 A/B
@@ -98,11 +101,9 @@ node scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs \
 - 사람 검토 필수 유지
 - production write 금지 유지
 
-Gate 활성화 없이 `--execute`를 붙이면 실행기는 실패해야 한다.
+위 committed Gate 조건 중 하나라도 다시 false가 되거나 승인 문자열/kill switch 조건이 빠지면 `--execute` 실행기는 실패해야 한다.
 
 ## 실제 한 번 실행 형태
-
-Gate 활성화 이후:
 
 ```bash
 node scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs \
