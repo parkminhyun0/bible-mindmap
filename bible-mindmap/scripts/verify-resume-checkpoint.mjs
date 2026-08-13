@@ -13,6 +13,10 @@ function fail(message) {
   process.exitCode = 1;
 }
 
+function warnCache(message) {
+  console.warn(`⚠ RESUME checkpoint cache: ${message}`);
+}
+
 function parsePositiveNumber(value, fallback) {
   const parsed = Number(value);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
@@ -65,7 +69,13 @@ async function main() {
   const maxBytes = parsePositiveNumber(process.env.RESUME_MAX_BYTES, DEFAULT_MAX_BYTES);
   const maxAgeHours = parsePositiveNumber(process.env.RESUME_MAX_AGE_HOURS, DEFAULT_MAX_AGE_HOURS);
   const requireRemote = process.env.CHECKPOINT_REQUIRE_REMOTE === '1';
+  const strictRuntime = process.env.CHECKPOINT_STRICT_RUNTIME === '1';
   const now = process.env.CHECKPOINT_NOW ? new Date(process.env.CHECKPOINT_NOW) : new Date();
+
+  const runtimeIssue = (message) => {
+    if (strictRuntime) fail(message);
+    else warnCache(message);
+  };
 
   let raw;
   try {
@@ -113,7 +123,7 @@ async function main() {
     if (ageMs < -10 * 60_000) {
       fail(`'updated'가 현재보다 ${Math.abs(ageHours).toFixed(1)}시간 미래입니다.`);
     } else if (ageHours > maxAgeHours) {
-      fail(`체크포인트가 ${ageHours.toFixed(1)}시간 경과해 ${maxAgeHours}시간 기준을 넘었습니다.`);
+      runtimeIssue(`체크포인트가 ${ageHours.toFixed(1)}시간 경과해 ${maxAgeHours}시간 기준을 넘었습니다.`);
     }
   }
 
@@ -160,20 +170,21 @@ async function main() {
           currentSha &&
           pullRequest.merge_commit_sha === currentSha;
         if (isMergedIntoCurrent) {
-          console.warn(`⚠ PR #${number}는 현재 커밋(${currentSha.slice(0, 7)})의 병합 커밋이므로 자기참조로 간주해 건너뜁니다. 다음 커밋에서 RESUME.json을 정리하세요.`);
+          warnCache(`PR #${number}는 현재 커밋(${currentSha.slice(0, 7)})의 병합 커밋입니다. checkpoint 소유 PR에서는 다음 수정 시 정리하세요.`);
           continue;
         }
         if (pullRequest.state !== 'open' || pullRequest.merged_at) {
-          fail(`종료된 PR #${number}를 활성 필드(${fields})가 참조합니다: state=${pullRequest.state}, merged=${Boolean(pullRequest.merged_at)}`);
+          runtimeIssue(`종료된 PR #${number}를 활성 필드(${fields})가 참조합니다: state=${pullRequest.state}, merged=${Boolean(pullRequest.merged_at)}`);
         }
       } catch (error) {
-        fail(error.message);
+        if (strictRuntime) fail(error.message);
+        else warnCache(`runtime 참조 확인 실패: ${error.message}`);
       }
     }
   }
 
   if (!process.exitCode) {
-    console.log(`✓ RESUME checkpoint 유효: ${byteLength}B, updated=${checkpoint.updated}, task=${checkpoint.task}`);
+    console.log(`✓ RESUME checkpoint 유효: ${byteLength}B, mode=${strictRuntime ? 'owned-strict' : 'inherited-cache'}, updated=${checkpoint.updated}, task=${checkpoint.task}`);
   }
 }
 

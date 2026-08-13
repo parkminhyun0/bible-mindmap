@@ -26,9 +26,37 @@ jobs:
         with:
           node-version: 20
 
-      - name: Validate checkpoint structure, freshness, and PR state
+      - name: Determine whether this PR owns RESUME runtime state
+        id: checkpoint-scope
+        uses: actions/github-script@v9
+        with:
+          script: |
+            if (context.eventName !== 'pull_request') {
+              core.setOutput('strict', '0');
+              core.notice('non-PR run: RESUME is a cache, so runtime freshness is advisory');
+              return;
+            }
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              per_page: 100,
+            });
+            const ownsResume = files.some((file) => file.filename === 'memory/RESUME.json');
+            core.setOutput('strict', ownsResume ? '1' : '0');
+            core.notice(ownsResume
+              ? 'current PR changes memory/RESUME.json → owned-strict runtime validation'
+              : 'current PR inherits memory/RESUME.json → cache-mode runtime validation');
+
+      - name: Verify inherited-cache versus owned-checkpoint contract
+        working-directory: bible-mindmap
+        run: node scripts/tests/resume-checkpoint-cache-policy.mjs
+
+      - name: Validate checkpoint structure and owned runtime state
         working-directory: bible-mindmap
         env:
           CHECKPOINT_REQUIRE_REMOTE: '1'
+          CHECKPOINT_STRICT_RUNTIME: ${{ steps.checkpoint-scope.outputs.strict }}
           RESUME_MAX_AGE_HOURS: '12'
         run: node scripts/verify-resume-checkpoint.mjs
