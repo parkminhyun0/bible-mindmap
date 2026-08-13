@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "track": "luke-lexicon-v4-production",
+  "reportId": "luke-v4-production-batch-03-current-main-invariance-24fd844b",
+  "status": "CONTENT_GATE_EVIDENCE_REUSABLE_ON_CURRENT_MAIN",
+  "currentMain": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "batchHeadBeforeThisReport": "e9694ed07843444b4cdbf0b8ceb75b69229f4df6",
+  "mergeBase": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "canonicalInventory": {
+    "path": "bible-mindmap/data/lexicon/luke-g0-inventory.json",
+    "blobSha": "488a557b64029d3be218e5bbf526234eb173cc1f"
+  },
+  "pinnedCorpus": {
+    "tagntBlobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843"
+  },
+  "targets": ["G0021", "G0023", "G0025", "G0026", "G0027", "G0032", "G0034", "G0037"],
+  "exactLukeTokens": 47,
+  "priorEvidence": {
+    "contentGate": "8/8 PASS_WITH_BOUNDARY",
+    "koreanCandidatePrep": "8/8",
+    "hold": 0,
+    "dispute": 0
+  },
+  "currentMainDriftAssessment": {
+    "canonicalLukeInventoryChanged": false,
+    "pinnedTagntChanged": false,
+    "batchResearchArtifactsChangedByMain": false,
+    "ApprovalRegistryOrApprovedMeaningChanged": false,
+    "tierGateMatrixChanged": false,
+    "note": "The e30fb382-to-24fd844b main move is delivery/review/resume plus lexical-bridge UI metadata and does not touch Luke Batch03 pinned evidence inputs."
+  },
+  "governance": {
+    "researchReuseAllowed": true,
+    "candidateMutationByThisReport": false,
+    "approvalRegistryWrite": false,
+    "productionWrite": false,
+    "gateWeakening": false,
+    "selfApproval": false
+  },
+  "next": "Keep Batch03 evidence fingerprint-addressed for its Tier-required promotion audit/review path while selecting and researching the next canonical unprocessed Luke Strong batch independently."
+}
