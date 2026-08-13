@@ -1,4 +1,4 @@
-name: Luke Lexicon G2 Four-LLM Evidence Contract
+name: Lexicon Four-LLM Only Policy · Luke G2 Evidence Contract
 
 on:
   push:
@@ -8,23 +8,23 @@ on:
     paths:
       - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
       - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
-      - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
-      - 'bible-mindmap/scripts/verify-luke-g2-four-llm-policy.mjs'
-      - 'bible-mindmap/docs/luke-g2-four-llm-evidence-runbook.md'
-      - 'docs/lexicon-workflow/FOUR_LLM_ONLY_POLICY.md'
-      - 'docs/lexicon-workflow/LLM_CHECKIN.md'
-      - 'docs/lexicon-workflow/MASTER_WORKFLOW.md'
+      - 'bible-mindmap/scripts/ai/lexicon/**'
+      - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/docs/*g2*'
+      - 'bible-mindmap/package.json'
+      - 'docs/lexicon-workflow/**'
+      - '.github/workflows/*g2*'
       - '.github/workflows/luke-lexicon-g2-four-llm.yml'
   pull_request:
     paths:
       - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
       - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
-      - 'bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs'
-      - 'bible-mindmap/scripts/verify-luke-g2-four-llm-policy.mjs'
-      - 'bible-mindmap/docs/luke-g2-four-llm-evidence-runbook.md'
-      - 'docs/lexicon-workflow/FOUR_LLM_ONLY_POLICY.md'
-      - 'docs/lexicon-workflow/LLM_CHECKIN.md'
-      - 'docs/lexicon-workflow/MASTER_WORKFLOW.md'
+      - 'bible-mindmap/scripts/ai/lexicon/**'
+      - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/docs/*g2*'
+      - 'bible-mindmap/package.json'
+      - 'docs/lexicon-workflow/**'
+      - '.github/workflows/*g2*'
       - '.github/workflows/luke-lexicon-g2-four-llm.yml'
   workflow_dispatch:
 
@@ -43,9 +43,9 @@ jobs:
       - name: Translation/evidence contract self-test
         working-directory: bible-mindmap
         run: node scripts/ai/lexicon/luke-g2-translation-contract.mjs --self-test
-      - name: Verify fixed four-LLM/public-evidence policy
+      - name: Verify fixed-four policy and removed local paths
         working-directory: bible-mindmap
-        run: node scripts/verify-luke-g2-four-llm-policy.mjs
+        run: node scripts/verify-lexicon-four-llm-only-policy.mjs
       - name: Verify committed Luke source/context baseline
         working-directory: bible-mindmap
         run: |
@@ -62,10 +62,11 @@ jobs:
       - name: Summary
         run: |
           {
-            echo '## Luke G2 fixed four-LLM/public-evidence contract'
-            echo '- allowed roles: **GPT · Jarvis · Claude · Gemini only**'
-            echo '- per-Strong user semantic approval: **not required**'
-            echo '- final semantic adjudicator: **GPT using Rights-PASS public Evidence**'
-            echo '- unresolved semantic conflict: **HOLD / DISPUTE**'
-            echo '- production write from candidate stage: **blocked**'
+            echo '## Lexicon fixed four-LLM/public-evidence contract'
+            echo '- allowed roles: GPT · Jarvis · Claude · Gemini only'
+            echo '- local-model execution infrastructure: absent and guarded'
+            echo '- per-Strong user semantic approval: not required'
+            echo '- final semantic adjudicator: GPT using Rights-PASS public Evidence'
+            echo '- unresolved semantic conflict: HOLD / DISPUTE'
+            echo '- protected Registry promotion: repository governance remains required'
           } >> "$GITHUB_STEP_SUMMARY"
