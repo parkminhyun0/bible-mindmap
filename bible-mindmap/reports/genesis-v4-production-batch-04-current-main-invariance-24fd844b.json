@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4-production",
+  "reportId": "genesis-v4-production-batch-04-current-main-invariance-24fd844b",
+  "status": "RESEARCH_BASELINE_REUSABLE_ON_CURRENT_MAIN",
+  "currentMain": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "batchBranchHeadBeforeThisReport": "9bec33e66f91fd7c2604a46d85bad11f7eaa6263",
+  "mergeBase": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "targets": ["H3130", "H5414", "H854", "H3947", "H85", "H2009", "H1323", "H1004", "H8033", "H3027"],
+  "bookOccurrences": 1256,
+  "priorEvidence": {
+    "sourceNodeIdentity": "10/10 PASS_WITH_BOUNDARY",
+    "koreanCandidatePrep": "10/10",
+    "hold": 0,
+    "dispute": 0
+  },
+  "currentMainDriftAssessment": {
+    "pinnedLexiconSourcesChanged": false,
+    "batchCandidateReportsChanged": false,
+    "GenesisCorpusInputsChanged": false,
+    "ApprovalRegistryOrApprovedMeaningChanged": false,
+    "tierGateMatrixChanged": false,
+    "relevantMainMove": "delivery/review/resume plus lexical-bridge UI metadata; no Batch04 evidence input path changed"
+  },
+  "governance": {
+    "researchReuseAllowed": true,
+    "candidateMutationByThisReport": false,
+    "approvalRegistryWrite": false,
+    "productionWrite": false,
+    "gateWeakening": false
+  },
+  "nextGate": "REPRESENTATIVE_GENESIS_CONTEXT_MORPHOLOGY_AND_FULL_BDB_SENSE_HIERARCHY_CROSSCHECK",
+  "note": "This checkpoint removes stale-main waiting only. It does not count the next content gate as passed and does not promote any meaning."
+}
