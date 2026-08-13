@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "lexicon-v4-production-current-main-reconcile/1.0",
+  "generatedAt": "2026-08-13T09:11:00+09:00",
+  "book": "Luke",
+  "batch": "03",
+  "researchBranch": "chatgpt/luke-v4-production-batch-03",
+  "researchHeadBeforeReconcile": "e9694ed07843444b4cdbf0b8ceb75b69229f4df6",
+  "currentMainSha": "385f83adbe1550b6c7449efd30de264aa99941c7",
+  "previousDerivedMainSha": "e30fb38296a3a4dd616a1ee6cb6a67cc352e28f9",
+  "mainDeltaFromPrevious": {
+    "sourcePr": 344,
+    "changedPaths": [
+      "bible-mindmap/src/components/LexicalBridgeLauncher.jsx",
+      "bible-mindmap/src/data/lexicalBridgePilot.js",
+      "memory/RESUME.json"
+    ],
+    "affectsBatchSelection": false,
+    "affectsPinnedGreekSources": false,
+    "affectsCandidateEvidence": false,
+    "affectsApprovalRegistry": false,
+    "affectsExistingApprovedMeaning": false
+  },
+  "batchState": {
+    "publicResearchGate": "CLOSED",
+    "exactContextPasses": ["A", "B"],
+    "contextClassificationPass": "C",
+    "candidateVerifierAndAuditPrep": "PRESENT",
+    "hold": 0,
+    "dispute": 0,
+    "promotionMutation": 0
+  },
+  "verdict": "RESEARCH_STATE_INVARIANT_ON_CURRENT_MAIN",
+  "mutations": {
+    "approvalRegistry": 0,
+    "production": 0,
+    "existingApprovedMeaning": 0,
+    "main": 0
+  },
+  "nextAction": "Keep Batch 03 research evidence reusable on the current main and continue the next unprocessed Luke Strong batch on a non-competing research branch; no promotion is implied by this reconciliation."
+}
