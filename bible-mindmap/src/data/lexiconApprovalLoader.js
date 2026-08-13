@@ -9,6 +9,18 @@ export function normalizeLexiconStrong(value) {
   return `${match[1].toUpperCase()}${Number(match[2])}${match[3].toLowerCase()}`;
 }
 
+function baseStrong(strong) {
+  return String(strong || '').replace(/[a-z]$/i, '');
+}
+
+function normalizeLemmaKey(value) {
+  return String(value ?? '')
+    .normalize('NFD')
+    .replace(/\p{M}+/gu, '')
+    .replace(/[^\p{L}]+/gu, '')
+    .toLowerCase();
+}
+
 function joinUrl(baseUrl, relativePath) {
   return `${String(baseUrl).replace(/\/+$/, '')}/${String(relativePath).replace(/^\/+/, '')}`;
 }
@@ -83,26 +95,41 @@ export function createLexiconApprovalLoader({ baseUrl = DEFAULT_BASE, fetchImpl 
     return shardPromises.get(shardPath);
   }
 
-  async function loadApprovedEntry(strongValue) {
-    const strong = normalizeLexiconStrong(strongValue);
-    if (!strong) return null;
+  async function loadApprovedEntry(strongValue, { lemma = null } = {}) {
+    const requestedStrong = normalizeLexiconStrong(strongValue);
+    if (!requestedStrong) return null;
 
     const registry = await loadRegistry();
-    const registryEntry = registry.entries.find((item) => item.strong === strong);
+    let registryEntry = registry.entries.find((item) => item.strong === requestedStrong);
+    let aliasLookup = false;
+
+    if (!registryEntry && !/[a-z]$/i.test(requestedStrong)) {
+      const candidates = registry.entries.filter((item) => baseStrong(item.strong) === requestedStrong && item.strong !== requestedStrong);
+      if (candidates.length !== 1 || !normalizeLemmaKey(lemma)) return null;
+      [registryEntry] = candidates;
+      aliasLookup = true;
+    }
     if (!registryEntry) return null;
 
+    const canonicalStrong = registryEntry.strong;
     const manifest = await loadLanguageManifest(registryEntry.language);
-    const manifestEntry = manifest.entries.find((item) => item.strong === strong);
-    contract(Boolean(manifestEntry), `approved ${strong} missing from ${registryEntry.language} manifest`);
-    contract(manifestEntry.language === registryEntry.language, `${strong} language mismatch`);
-    contract(manifestEntry.shardPath === registryEntry.shardPath, `${strong} shard routing mismatch`);
-    contract(manifestEntry.entryFingerprint === registryEntry.entryFingerprint, `${strong} entry fingerprint mismatch`);
+    const manifestEntry = manifest.entries.find((item) => item.strong === canonicalStrong);
+    contract(Boolean(manifestEntry), `approved ${canonicalStrong} missing from ${registryEntry.language} manifest`);
+    contract(manifestEntry.language === registryEntry.language, `${canonicalStrong} language mismatch`);
+    contract(manifestEntry.shardPath === registryEntry.shardPath, `${canonicalStrong} shard routing mismatch`);
+    contract(manifestEntry.entryFingerprint === registryEntry.entryFingerprint, `${canonicalStrong} entry fingerprint mismatch`);
 
     const shard = await loadShard(manifestEntry.shardPath);
-    const approvedEntry = shard.entries.find((item) => normalizeLexiconStrong(item?.identity?.canonicalStrong) === strong);
-    contract(Boolean(approvedEntry), `approved ${strong} missing from shard`);
-    contract(approvedEntry.identity.canonicalStrong === strong, `${strong} shard identity is not canonical`);
-    contract(approvedEntry.identity.language === manifestEntry.language, `${strong} shard language mismatch`);
+    const approvedEntry = shard.entries.find((item) => normalizeLexiconStrong(item?.identity?.canonicalStrong) === canonicalStrong);
+    contract(Boolean(approvedEntry), `approved ${canonicalStrong} missing from shard`);
+    contract(approvedEntry.identity.canonicalStrong === canonicalStrong, `${canonicalStrong} shard identity is not canonical`);
+    contract(approvedEntry.identity.language === manifestEntry.language, `${canonicalStrong} shard language mismatch`);
+
+    if (aliasLookup) {
+      const requestedLemmaKey = normalizeLemmaKey(lemma);
+      const approvedLemmaKey = normalizeLemmaKey(approvedEntry.identity.lemmaNormalized || approvedEntry.identity.lemma);
+      if (!requestedLemmaKey || requestedLemmaKey !== approvedLemmaKey) return null;
+    }
 
     return deepFreeze(structuredClone(approvedEntry));
   }
