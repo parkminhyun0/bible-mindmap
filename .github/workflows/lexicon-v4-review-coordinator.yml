@@ -42,6 +42,8 @@ jobs:
       - name: Self-test derived state contract
         working-directory: bible-mindmap
         run: node scripts/derive-lexicon-runtime-state.mjs --self-test
+      - name: Self-test lexicon required checks module
+        run: node bible-mindmap/scripts/lib/lexicon-review-required-checks.mjs
       - name: Coordinate exact-head independent review
         uses: actions/github-script@v9
         env:
@@ -49,6 +51,13 @@ jobs:
           FALLBACK_REVIEWER: ${{ vars.LEXICON_FALLBACK_REVIEWER }}
         with:
           script: |
+            const path = require('path');
+            const { pathToFileURL } = require('url');
+            const requiredChecksUrl = pathToFileURL(
+              path.resolve(process.env.GITHUB_WORKSPACE, 'bible-mindmap/scripts/lib/lexicon-review-required-checks.mjs')
+            ).href;
+            const { requiredCheckNamesForFiles } = await import(requiredChecksUrl);
+
             const owner = context.repo.owner;
             const repo = context.repo.repo;
             const PRIMARY = 'bible-mindmap-review';
@@ -56,7 +65,6 @@ jobs:
             const LABEL = 'lexicon-v4-auto-merge-eligible';
             const HEARTBEAT_MARKER = '[lexicon-review-heartbeat]';
             const HEARTBEAT_TTL_MS = 10 * 60 * 1000;
-            const REQUIRED = new Set(['v4 foundation contract','v4 consensus gate self-test','v4 universal registry regression','v4 golden audit sample contract','v4 auto-merge decision dry-run','verify-and-build','security-audit','verify-resume-checkpoint','fingerprint','verify-gpt-candidates']);
             const explicit = Number(process.env.EXPLICIT_PR || 0);
             let prs = [];
             if (explicit) prs = [(await github.rest.pulls.get({ owner, repo, pull_number: explicit })).data];
@@ -76,11 +84,17 @@ jobs:
               if(auditOnly) return false;
               return /Approval Registry.*(promot|승격|write|변경)|production write|existing approved meaning.*(change|변경)|human gate required|golden audit halt|license conflict/i.test(text);
             }
-            async function allRequiredGreen(head){const runs=await github.paginate(github.rest.checks.listForRef,{owner,repo,ref:head,per_page:100});const latest=new Map();for(const cr of runs){if(!REQUIRED.has(cr.name))continue;const prev=latest.get(cr.name);if(!prev||(cr.started_at||'')>(prev.started_at||''))latest.set(cr.name,cr);}for(const name of REQUIRED){const cr=latest.get(name);if(!cr||cr.status!=='completed'||!['success','neutral','skipped'].includes(cr.conclusion))return false;}return true;}
+            async function requiredChecksForPr(prNumber){
+              const files = await github.paginate(github.rest.pulls.listFiles, { owner, repo, pull_number: prNumber, per_page: 100 });
+              return { required: requiredCheckNamesForFiles(files.map((f) => f.filename)), files };
+            }
+            async function allRequiredGreen(head, required){const runs=await github.paginate(github.rest.checks.listForRef,{owner,repo,ref:head,per_page:100});const latest=new Map();for(const cr of runs){if(!required.has(cr.name))continue;const prev=latest.get(cr.name);if(!prev||(cr.started_at||'')>(prev.started_at||''))latest.set(cr.name,cr);}const missing=[];for(const name of required){const cr=latest.get(name);if(!cr||cr.status!=='completed'||!['success','neutral','skipped'].includes(cr.conclusion))missing.push(name);}return {ok:missing.length===0,missing};}
             async function ensureIssue(prNumber,head,reason){const short=head.slice(0,7);const title=`LEXICON REVIEW FALLBACK · PR #${prNumber} · ${short}`;const q=await github.paginate(github.rest.issues.listForRepo,{owner,repo,state:'open',per_page:100});const existing=q.find((i)=>i.title===title);const record=[`- time: ${new Date().toISOString()}`,`- exact head: ${head}`,`- reason: ${reason}`,`- primary reviewer: ${PRIMARY}`,`- fallback reviewer: ${FALLBACK||'(not configured)'}`,'- Safety: no self-approval; no quality-gate bypass; exact-head approval remains required.'].join('\n');if(existing){await github.rest.issues.createComment({owner,repo,issue_number:existing.number,body:record});return existing.number;}return (await github.rest.issues.create({owner,repo,title,body:['Machine-generated review fallback record.','',record].join('\n')})).data.number;}
             for(const pr of prs){
               if(pr.state!=='open'||pr.draft)continue; const head=pr.head.sha;
-              if(!(await allRequiredGreen(head))){core.info(`#${pr.number}: required CI not all green yet`);continue;}
+              const { required } = await requiredChecksForPr(pr.number);
+              const gate = await allRequiredGreen(head, required);
+              if(!gate.ok){core.info(`#${pr.number}: required CI not all green yet (missing: ${gate.missing.join(', ')})`);continue;}
               let latest=await latestReviews(pr.number); let reviewer=approvedOnHead(latest,head); if(reviewer){core.notice(`#${pr.number}: exact-head approval already present from ${reviewer}`);continue;}
               const earlyHeartbeat=await activeHeartbeat(pr.number,head); if(earlyHeartbeat){core.notice(`#${pr.number}: active review heartbeat from ${earlyHeartbeat.user.login}`);continue;}
               core.notice(`#${pr.number}: all required CI green and no heartbeat; starting 3-minute no-signal SLA at ${head}`); await sleep(180000);
