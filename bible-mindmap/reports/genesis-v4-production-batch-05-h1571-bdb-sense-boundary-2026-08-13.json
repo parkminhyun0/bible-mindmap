@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "track": "genesis-lexicon-v4",
+  "reportId": "genesis-v4-production-batch-05-h1571-bdb-sense-boundary-2026-08-13",
+  "generatedDate": "2026-08-13",
+  "researchOnly": true,
+  "target": {
+    "strong": "H1571",
+    "lemma": "גַּם",
+    "transliteration": "gam",
+    "genesisOccurrenceContract": 94
+  },
+  "pinnedPrimarySource": {
+    "repository": "openscriptures/HebrewLexicon",
+    "commit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "strongToBdbMapping": {
+      "file": "OldLexicon/BdbMesh.xml",
+      "strong": "01571",
+      "bdbNode": "g.cj.ab",
+      "verdict": "EXACT_MAPPING_CONFIRMED"
+    },
+    "bdbEntry": {
+      "file": "BrownDriverBriggs.xml",
+      "lemma": "גַּם",
+      "partOfSpeech": "adverb",
+      "sourceHeadBoundary": ["also", "moreover", "yea"],
+      "hierarchyObservation": "The pinned BDB entry is a compact discourse/additive adverb entry, not a deep independent sense tree. Contextual intensification must not be promoted into unsupported lexical senses."
+    }
+  },
+  "evidenceBoundary": {
+    "primaryKoreanHead": ["또", "또한", "역시"],
+    "contextualTranslationLayer": ["…도", "심지어"],
+    "doNotFlatten": [
+      "ordinary addition and contextual intensification into one mechanically fixed Korean gloss",
+      "discourse emphasis into a separate theological lexical meaning",
+      "etymology or collocation into doctrine"
+    ],
+    "collocationHandling": "גם־הוא / גם־היא and related combinations are resolved at token/context translation level; the collocation does not by itself create a new lexical head sense."
+  },
+  "verdict": "PASS_WITH_BOUNDARY",
+  "hold": 0,
+  "dispute": 0,
+  "deterministicFullContextMorphologyGateClosed": false,
+  "candidateConsolidationAllowed": false,
+  "approvalRegistryMutation": 0,
+  "existingApprovedMeaningMutation": 0,
+  "productionMutation": 0,
+  "nextGate": "RUN_DETERMINISTIC_ALL_94_GENESIS_CONTEXT_MORPHOLOGY_VERIFIER_THEN_CONSOLIDATE_SOURCE_FAITHFUL_KOREAN_CANDIDATE",
+  "notes": [
+    "This report closes only the pinned BDB identity/sense-boundary cross-check for H1571.",
+    "It does not claim the all-94 deterministic context/morphology verifier has run.",
+    "No production or approved-data promotion is authorized by this report."
+  ]
+}
