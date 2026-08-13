@@ -46,6 +46,17 @@ function findModuleScript(html) {
   return null;
 }
 
+function findModulePreloads(html) {
+  const hrefs = [];
+  for (const match of html.matchAll(/<link\b[^>]*>/gi)) {
+    const tag = match[0];
+    if (!/\brel=["']modulepreload["']/i.test(tag)) continue;
+    const href = /\bhref=["']([^"']+)["']/i.exec(tag)?.[1];
+    if (href) hrefs.push(href);
+  }
+  return hrefs;
+}
+
 function findStylesheet(html) {
   for (const match of html.matchAll(/<link\b[^>]*>/gi)) {
     const tag = match[0];
@@ -89,6 +100,22 @@ async function main() {
     }
     if (moduleAsset.value.length < 1_000) throw new Error(`module asset: suspiciously small (${moduleAsset.value.length} bytes)`);
     checks.push(`module ${moduleAsset.value.length} bytes`);
+
+    const preloadHrefs = findModulePreloads(app.value);
+    const preloadAssets = await Promise.all(preloadHrefs.map((href, index) =>
+      request(new URL(href, APP_URL), { label: `modulepreload[${index}] ${href}` })
+    ));
+    const bundleCorpus = [moduleAsset.value, ...preloadAssets.map((asset) => asset.value)].join('\n');
+    const provenanceMarkers = [
+      '⚖️ 출처 · 라이선스 · 변경 고지',
+      '21c9add13bc727d3a951361778e97e3ff7afd1ce',
+      'Open Scriptures Hebrew Lexicon',
+    ];
+    const missingProvenance = provenanceMarkers.filter((marker) => !bundleCorpus.includes(marker));
+    if (missingProvenance.length > 0) {
+      throw new Error(`shipped bundle missing License-Safe provenance markers (searched ${preloadAssets.length + 1} chunks): ${missingProvenance.join(' | ')}`);
+    }
+    checks.push(`bundle (${preloadAssets.length + 1} chunks) contains License-Safe provenance markers`);
 
     const stylesheetUrl = new URL(stylesheetHref, APP_URL);
     const stylesheet = await request(stylesheetUrl, { label: 'stylesheet asset' });
