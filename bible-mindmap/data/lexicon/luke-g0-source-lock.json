@@ -1,8 +1,29 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "book": "Luke",
   "stage": "G0",
   "generatedDate": "2026-08-09",
+  "rightsMetadataUpdatedAt": "2026-08-13T12:10:00Z",
+  "rightsPacketRef": "bible-mindmap/data/lexicon/luke-g0-rights-packet.json",
+  "admittedSourceSet": {
+    "candidateGenerationInput": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"],
+    "externalLLMInput": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"],
+    "derivativeSource": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"],
+    "redistributionSource": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"],
+    "productionEvidenceSource": ["tagnt", "morphgnt.rightsComponents[morphgnt-annotations]"]
+  },
+  "excludedFromAdmission": {
+    "morphgnt.rightsComponents[sblgnt-text]": {
+      "reason": "SBLGNT text component subject to SBLGNT EULA (SBL Press); Rights uncertainty = LICENSE_HOLD per current License-Safe Full-Fidelity policy §1.2. Excluded from admitted source set for Korean lexicon derivative generation.",
+      "candidateGenerationInputAllowed": false,
+      "externalLLMInputAllowed": false,
+      "derivativeSourceAllowed": false,
+      "redistributionSourceAllowed": false,
+      "productionEvidenceSourceAllowed": false,
+      "permittedUses": ["human reference cross-check only"],
+      "verifierEnforcement": "buildLukeG2Preparation (bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs) derives verse.text and localWindow from TAGNT tokens (parseTagntLuke) and consumes only MorphGNT morphology/lemmatization annotations (parseMorphgntLuke → morphgntCrossCheck), so SBLGNT text columns are not carried into candidate input, external LLM input, or downstream derivative payloads."
+    }
+  },
   "sources": {
     "tagnt": {
       "repository": "STEPBible/STEPBible-Data",
@@ -10,7 +31,15 @@
       "ref": "master",
       "blobSha": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
       "license": "CC BY 4.0",
-      "role": "primary Strong, morphology, lemma, transliteration, and English gloss inventory"
+      "role": "primary Strong, morphology, lemma, transliteration, English gloss inventory, and verse-text source for TAGNT-derived Greek context reconstruction",
+      "sourceType": "digitized-curated-dataset",
+      "attribution": "STEPBible.org — Tyndale House, Cambridge",
+      "redistribution": "allowed under CC BY 4.0 with attribution and change notice",
+      "derivativeTranslation": "allowed under CC BY 4.0 with attribution and change notice",
+      "externalLLMInput": "allowed under CC BY 4.0",
+      "changeConditions": "changes must be indicated; downstream must preserve attribution and change notice",
+      "verdict": "PASS",
+      "admissionStatus": "admitted"
     },
     "morphgnt": {
       "repository": "morphgnt/sblgnt",
@@ -18,13 +47,62 @@
       "ref": "master",
       "blobSha": "474e65703c49ef3890fca4b24403434ab6df6457",
       "license": "Morphology and lemmatization CC BY-SA 3.0; SBLGNT text subject to repository notice",
-      "role": "independent SBLGNT token and lemma cross-check"
+      "role": "independent morphology and lemmatization cross-check (annotations only)",
+      "sourceType": "digitized-annotation-dataset",
+      "componentAdmission": {
+        "morphgnt-annotations": "admitted",
+        "sblgnt-text": "excluded"
+      },
+      "rightsComponents": [
+        {
+          "componentId": "morphgnt-annotations",
+          "scope": "morphology and lemmatization annotation columns",
+          "license": "CC BY-SA 3.0",
+          "attribution": "James K. Tauber and MorphGNT contributors",
+          "redistribution": "allowed under CC BY-SA 3.0 with attribution",
+          "derivativeTranslation": "allowed with share-alike obligation on downstream annotations",
+          "externalLLMInput": "allowed under CC BY-SA 3.0",
+          "changeConditions": "downstream annotations must retain CC BY-SA 3.0 license and attribution",
+          "verdict": "PASS",
+          "admissionStatus": "admitted"
+        },
+        {
+          "componentId": "sblgnt-text",
+          "scope": "SBL Greek New Testament text columns",
+          "license": "SBLGNT EULA (Society of Biblical Literature / Michael W. Holmes, ed.); not CC BY-SA",
+          "attribution": "Society of Biblical Literature; Michael W. Holmes, ed.",
+          "redistribution": "restricted per SBLGNT EULA; excluded from admitted source set",
+          "derivativeTranslation": "excluded from admitted source set; requires SBL permission if ever re-admitted",
+          "externalLLMInput": "excluded from admitted source set",
+          "changeConditions": "no modification; excluded from admitted source set",
+          "verdict": "LICENSE_HOLD",
+          "admissionStatus": "excluded",
+          "excludedFromCandidateGenerationInput": true,
+          "excludedFromExternalLLMInput": true,
+          "excludedFromDerivativeSource": true,
+          "excludedFromRedistributionSource": true,
+          "excludedFromProductionEvidenceSource": true,
+          "permittedUses": ["human reference cross-check only"]
+        }
+      ]
     },
     "koreanGloss": {
       "repository": "parkminhyun0/bible-mindmap",
       "path": "bible-mindmap/src/data/koreanGlossActive.js",
       "ref": "main",
-      "role": "existing Korean Strong reuse measurement"
+      "role": "existing Korean Strong reuse measurement",
+      "sourceType": "project-owned-derivative",
+      "upstreamBasis": [
+        "tagnt (Strong identifier basis; CC BY 4.0)",
+        "prior human curation within parkminhyun0/bible-mindmap"
+      ],
+      "attribution": "parkminhyun0/bible-mindmap contributors",
+      "redistribution": "governed by project repository terms; downstream redistribution inherits upstream tagnt attribution obligation",
+      "derivativeTranslation": "internal derivative dataset; downstream release governed by project policy and upstream (tagnt) obligations",
+      "externalLLMInput": "internal use; downstream release governed by project policy and upstream (tagnt) obligations",
+      "changeConditions": "internal versioning tracked via git history in the parkminhyun0/bible-mindmap repository",
+      "verdict": "PROJECT-OWNED",
+      "admissionStatus": "admitted"
     }
   }
 }
