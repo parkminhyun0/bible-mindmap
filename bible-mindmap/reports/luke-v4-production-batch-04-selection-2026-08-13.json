@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "book": "Luke",
+  "batch": "04",
+  "status": "CANONICAL_SELECTION_PINNED",
+  "researchOnly": true,
+  "mainObserved": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "inventoryBlobSha": "488a557b64029d3be218e5bbf526234eb173cc1f",
+  "targets": [
+    {"strong":"G0040","tokenCount":20,"firstRef":"Luke 1:15"},
+    {"strong":"G0043","tokenCount":1,"firstRef":"Luke 2:28"},
+    {"strong":"G0050","tokenCount":1,"firstRef":"Luke 9:45"},
+    {"strong":"G0058","tokenCount":3,"firstRef":"Luke 7:32"},
+    {"strong":"G0059","tokenCount":5,"firstRef":"Luke 9:13"},
+    {"strong":"G0061","tokenCount":2,"firstRef":"Luke 5:4"},
+    {"strong":"G0063","tokenCount":1,"firstRef":"Luke 2:8"},
+    {"strong":"G0068","tokenCount":9,"firstRef":"Luke 8:34"}
+  ],
+  "totalExactLukeTokens": 42,
+  "selectionVerdict": "PASS",
+  "hold": 0,
+  "dispute": 0,
+  "productionMutation": 0,
+  "approvalRegistryMutation": 0,
+  "nextGate": "PIN_TBESG_TFLSJ_SOURCE_NODES_AND_EXTRACT_EXACT_LUKE_CONTEXT_MORPHOLOGY"
+}
