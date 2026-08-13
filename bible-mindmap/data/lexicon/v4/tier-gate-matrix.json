@@ -1,58 +1,61 @@
 {
-  "schemaVersion": 1,
-  "matrixId": "lexicon-v4-tier-gate-matrix-v1",
-  "policyDoc": "docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md",
-  "corePrinciple": "AND-gate. Missing evidence file = FAIL. Model consensus alone is never sufficient.",
+  "schemaVersion": 2,
+  "matrixId": "lexicon-license-safe-full-fidelity-66books-v2",
+  "policyDoc": "docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md",
+  "corePrinciple": "AND-gate. Rights-safe source fidelity and completeness outrank model consensus.",
+  "commonRequiredGates": [
+    "rights-license",
+    "source-fidelity",
+    "source-completeness",
+    "sense-boundary",
+    "qualifier-preservation",
+    "identity-boundary",
+    "morphology",
+    "corpus-alignment",
+    "korean-naturalness",
+    "theological-overreach",
+    "provenance",
+    "fingerprint-same-baseline",
+    "regression",
+    "fixed-four-independent-evidence",
+    "deterministic-comparison",
+    "gpt-public-evidence-adjudication",
+    "unresolved-zero"
+  ],
   "gates": {
-    "source-fidelity":       { "description": "BDB (또는 다른 소스) 원문 sense/gloss/라벨 손실 없이 반영",           "evidenceRequirement": "candidate.identity + candidate.nodes[*].textKo vs source packet nodes" },
-    "license":               { "description": "소스 라이선스가 registered 및 approved",                             "evidenceRequirement": "source-registry.json entry + license-review PASS" },
-    "sense-boundary":        { "description": "상위 sense와 하위 sub-sense 계층 유지",                                "evidenceRequirement": "sourceNodeId depth/parent/order 100% 일치" },
-    "morphology":            { "description": "이형태소·동철이의어(H46 vs H47, H1254a Qal vs Piel 등) 분리",         "evidenceRequirement": "morphology contract check" },
-    "regression":            { "description": "Universal Approval Registry regression 없음",                        "evidenceRequirement": "verify-lexicon-registry-universal-regression PASS" },
-    "korean-naturalness":    { "description": "한글 자연어 규범 준수(한자·라틴 문자 혼용 없음, Hangul 필수)",       "evidenceRequirement": "korean-gloss verifier PASS" },
-    "corpus-alignment":      { "description": "성경 내 실제 용례 alignment 확인(TAHOT/TAGNT 매칭)",                   "evidenceRequirement": "verify-translation-alignment PASS" },
-    "theological-overreach": { "description": "사전 정의 범위 초과 신학 확장 없음(삼위·성령·창조론 등)",             "evidenceRequirement": "verify-doctrinal-safety PASS" },
-    "consensus-3-of-3":      { "description": "GPT · Claude · Gemini 세 모델 모두 PASS 최종 판정",                    "evidenceRequirement": "3개 evidence file 모두 verdict=PASS 및 targetBaseline manifest fingerprint 일치" },
-    "unresolved-zero":       { "description": "PR review thread unresolved = 0, dispute-required = 0",                "evidenceRequirement": "GitHub API listReviewThreads + evidence dispute-required.json empty" },
-    "fingerprint-same-baseline": { "description": "consensus에 쓰인 candidateFingerprint = promotion 시점 값",       "evidenceRequirement": "candidate.candidateFingerprint === evidence.targetBaseline.candidateFingerprint" }
+    "rights-license": {"description":"exact work/dataset/version/license Rights PASS"},
+    "source-fidelity": {"description":"source meaning and labels preserved"},
+    "source-completeness": {"description":"sourceUnit to Korean mapping complete; no omission or improper merge"},
+    "sense-boundary": {"description":"sense/subsense parent depth order preserved"},
+    "qualifier-preservation": {"description":"usage restrictions and source qualifiers preserved"},
+    "identity-boundary": {"description":"Strong homograph and extended identity preserved"},
+    "morphology": {"description":"POS/stem/form boundaries preserved"},
+    "corpus-alignment": {"description":"book exact-token context and usage verified"},
+    "korean-naturalness": {"description":"Korean output contract passes"},
+    "theological-overreach": {"description":"no unsupported theology inserted into lexical meaning"},
+    "provenance": {"description":"source locator rights attribution and change notice complete"},
+    "fingerprint-same-baseline": {"description":"candidate/source/evidence exact baseline fingerprints match"},
+    "regression": {"description":"Golden and unrelated approved data unchanged"},
+    "fixed-four-independent-evidence": {"description":"required GPT Jarvis Claude Gemini independent evidence exists"},
+    "deterministic-comparison": {"description":"machine comparison passes without material gap"},
+    "gpt-public-evidence-adjudication": {"description":"GPT final decision follows source/public evidence authority"},
+    "unresolved-zero": {"description":"material unresolved evidence count is zero"}
   },
   "tiers": {
-    "R0": {
-      "autoEligibilityRequires": ["source-fidelity", "license", "sense-boundary", "morphology", "regression"],
-      "modelPasses": ["GPT_candidate"],
-      "pathLabel": "batch-fast-lane"
-    },
-    "R1": {
-      "autoEligibilityRequires": ["source-fidelity", "license", "sense-boundary", "morphology", "regression", "korean-naturalness"],
-      "modelPasses": ["GPT_candidate", "Claude_batch_audit"],
-      "pathLabel": "batch-fast-lane"
-    },
-    "R2": {
-      "autoEligibilityRequires": ["source-fidelity", "license", "sense-boundary", "morphology", "regression", "korean-naturalness", "corpus-alignment", "theological-overreach"],
-      "modelPasses": ["GPT_candidate", "Claude_full_audit"],
-      "pathLabel": "full-audit"
-    },
-    "R3": {
-      "autoEligibilityRequires": ["source-fidelity", "license", "sense-boundary", "morphology", "regression", "korean-naturalness", "corpus-alignment", "theological-overreach", "consensus-3-of-3", "unresolved-zero", "fingerprint-same-baseline"],
-      "modelPasses": ["GPT_candidate", "Claude_full_audit", "Gemini_dispute_review"],
-      "pathLabel": "full-audit-plus-gemini"
-    },
-    "R4": {
-      "autoEligibilityRequires": [],
-      "modelPasses": ["GPT_candidate", "Claude_full_audit", "Gemini_dispute_review", "Extended_research_public_dict", "Extended_research_scholarly", "Extended_research_biblical_usage"],
-      "pathLabel": "extended-research-then-human",
-      "autoApprovalProhibited": true,
-      "note": "R4 은 자동 승격 대상 아님. EXTENDED_RESEARCH_REQUIRED 큐 경유 후에도 human final wording gate 필수."
-    }
+    "R0": {"requiredGates":"COMMON","extraRequired":[],"pathLabel":"full-fidelity-standard"},
+    "R1": {"requiredGates":"COMMON","extraRequired":[],"pathLabel":"full-fidelity-standard"},
+    "R2": {"requiredGates":"COMMON","extraRequired":[],"pathLabel":"full-fidelity-standard"},
+    "R3": {"requiredGates":"COMMON","extraRequired":["public-lexical-theological-evidence"],"pathLabel":"full-fidelity-sensitive"},
+    "R4": {"requiredGates":"COMMON","extraRequired":["extended-public-research"],"pathLabel":"extended-public-research","perEntryHumanFinalWordingRequired":false,"semanticResolution":"GPT_ADJUDICATION_OR_HOLD_DISPUTE"}
   },
   "modelMajorityRuleProhibited": true,
-  "andEnforcementNote": "tiers[*].autoEligibilityRequires 는 순수 AND. 하나라도 미충족 시 tier 무관 fail-closed.",
+  "threeOfThreeConsensusAuthorityProhibited": true,
+  "perEntryUserSemanticApprovalRequired": false,
   "governance": {
-    "auditOnly": false,
-    "matrixMutationRequiresPolicyChangeReview": true,
     "approvalRegistryWriteAllowed": false,
     "serviceUiWriteAllowed": false,
     "productionWriteAllowed": false,
-    "verifierRelaxationAllowed": false
+    "verifierRelaxationAllowed": false,
+    "protectedApprovedDataRequiresRepositoryApproval": true
   }
 }
