@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "scope": "Genesis currently approved Hebrew lexicon entries",
+  "generatedAt": "2026-08-13T10:52:00Z",
+  "policy": "License-Safe Full-Fidelity",
+  "source": {
+    "sourceId": "openscriptures-hebrewlexicon-bdb",
+    "sourceWork": "Brown-Driver-Briggs Hebrew and English Lexicon",
+    "sourceEdition": "1906 public-domain original work",
+    "digitalDataset": "Open Scriptures Hebrew Lexicon",
+    "datasetPaths": [
+      "BrownDriverBriggs.xml",
+      "LexicalIndex.xml",
+      "BDBPartsOfSpeech.xml",
+      "AugIndex.xml"
+    ],
+    "datasetVersion": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "rightsBasis": "CC-BY-4.0 for repository dataset; BDB/Strong source text identified by dataset owner as public domain",
+    "attributionRequired": true,
+    "attributionText": "Open Scriptures Hebrew Bible Project",
+    "changeNoticeRequired": true,
+    "derivativeTranslationAllowed": true,
+    "redistributionAllowed": true,
+    "externalLlmInputAllowed": true,
+    "fullTextStorageAllowed": true,
+    "contentHash": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0"
+  },
+  "rightsVerdict": "PASS",
+  "rightsNote": "This C0 verdict is dataset-level rights admission only. It does not assert per-entry Full-Fidelity PASS and does not authorize silent mutation of approved meanings.",
+  "approvedEntries": [
+    "H46",
+    "H251",
+    "H413",
+    "H430",
+    "H776",
+    "H834",
+    "H935",
+    "H1254a",
+    "H1931",
+    "H3117",
+    "H3205",
+    "H3290",
+    "H3605",
+    "H3808",
+    "H7307",
+    "H8141"
+  ],
+  "entryCount": 16,
+  "next": {
+    "golden": "H776",
+    "reaudit": "All 15 non-H776 approved entries for source completeness/full-fidelity",
+    "priorityCorrection": ["H1254a", "H430", "H3117", "H7307", "H834", "H3605", "H3808"],
+    "protectedMutation": "lexicon-human-approval required before Approval Registry correction"
+  },
+  "excludedCanonicalSources": [
+    "BibleHub scraped lexicon content",
+    "NAS-derived copyrighted lexicon/concordance content without explicit compatible permission",
+    "HELPS Word-studies without explicit compatible permission",
+    "site-authored topical lexicon content without explicit compatible permission"
+  ]
+}

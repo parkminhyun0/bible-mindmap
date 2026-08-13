@@ -31,6 +31,20 @@
       .lex-etym { color: #64748b !important; font-size: 11px; }
       .lex-kjv { color: #64748b !important; font-size: 11px; border-top: 1px solid #f1f5f9; padding-top: 6px; margin-top: 6px; }
 
+      .lexicon-license-safe-notice {
+        margin-top: 12px;
+        padding: 11px 12px;
+        border: 1px solid #bae6fd;
+        border-radius: 10px;
+        background: #f0f9ff;
+        color: #0f172a;
+        font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", sans-serif;
+      }
+      .lexicon-license-safe-notice strong { display: block; margin-bottom: 6px; color: #075985; font-size: 11px; }
+      .lexicon-license-safe-notice dl { margin: 0; display: grid; grid-template-columns: 6.8em minmax(0,1fr); gap: 5px 8px; }
+      .lexicon-license-safe-notice dt { color: #64748b; font-size: 10px; font-weight: 700; }
+      .lexicon-license-safe-notice dd { margin: 0; color: #334155; font-size: 10px; line-height: 1.55; overflow-wrap: anywhere; }
+
       html, body { overscroll-behavior-y: none; }
       .h-screen-safe { height: 100vh; height: 100dvh; }
       .momentum-scroll { -webkit-overflow-scrolling: touch; }
@@ -244,6 +258,40 @@
           observer.observe(document.documentElement, { childList: true, subtree: true });
           setTimeout(function() { observer.disconnect(); }, 15000);
         }
+      })();
+
+      (function installLicenseSafeLexiconNotice() {
+        var DATASET_COMMIT = '21c9add13bc727d3a951361778e97e3ff7afd1ce';
+        function addNotice(pane) {
+          if (!pane || pane.querySelector('[data-license-safe-notice="openscriptures-bdb"]')) return;
+          var strong = pane.getAttribute('data-word-search-korean-lexicon') || '';
+          if (!/^H\d/i.test(strong)) return;
+          if (!pane.textContent.includes('BDB 한글 사전 · 승인본')) return;
+          var scroll = pane.querySelector('.momentum-scroll[data-modal-scroll-region="true"]');
+          if (!scroll) return;
+          var notice = document.createElement('section');
+          notice.className = 'lexicon-license-safe-notice';
+          notice.setAttribute('data-license-safe-notice', 'openscriptures-bdb');
+          notice.setAttribute('aria-label', '사전 출처 및 라이선스 정보');
+          notice.innerHTML = '<strong>⚖️ 출처 · 라이선스 · 변경 고지</strong>' +
+            '<dl>' +
+            '<dt>원 저작물</dt><dd>Brown–Driver–Briggs Hebrew and English Lexicon (1906) · Public Domain</dd>' +
+            '<dt>디지털 데이터</dt><dd>Open Scriptures Hebrew Lexicon · BrownDriverBriggs.xml</dd>' +
+            '<dt>Dataset</dt><dd>commit ' + DATASET_COMMIT + '</dd>' +
+            '<dt>라이선스</dt><dd>CC BY 4.0 · 출처표기 및 변경 고지 적용</dd>' +
+            '<dt>Attribution</dt><dd>Open Scriptures Hebrew Bible Project</dd>' +
+            '<dt>한국어판</dt><dd>성경 마인드맵이 원 lexical data를 한국어로 번역·구조화한 파생 데이터</dd>' +
+            '<dt>사용 원칙</dt><dd>BibleHub 등 제3자 웹페이지는 canonical scraping source로 사용하지 않음</dd>' +
+            '</dl>';
+          scroll.appendChild(notice);
+        }
+        function scan() {
+          document.querySelectorAll('[data-word-search-korean-lexicon]').forEach(addNotice);
+        }
+        var observer = new MutationObserver(scan);
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+        window.addEventListener('load', scan);
+        scan();
       })();
     </script>
     <script type="module" src="/src/main.jsx"></script>

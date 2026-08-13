@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-// Verifies that Evidence-First Autonomous Lexicon v4 foundation files exist,
-// parse, and cross-reference each other correctly.
-// This is a self-consistency contract for v4 policy/config/verifier surface.
+// Verifies that the current License-Safe Full-Fidelity lexicon policy and
+// the historical v4 foundation files remain self-consistent.
 import assert from 'node:assert/strict'
 import { readFileSync, existsSync, statSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
@@ -16,24 +15,27 @@ const readJson = (p) => JSON.parse(readFileSync(p, 'utf8'))
 const workspacePath = (p) => (process.env.TEST_ROOT ? resolve(process.env.TEST_ROOT, p) : resolve(WORKSPACE_ROOT, p))
 const bibleMindmapPath = (p) => (process.env.TEST_ROOT ? resolve(process.env.TEST_ROOT, p) : resolve(REPO_ROOT, p))
 
-// ── 1. Policy doc exists and pins the expected sections
+// ── 1. Current policy doc exists and pins the expected License-Safe sections
 const policyDocPath = workspacePath('docs/lexicon-workflow/v4-EVIDENCE_FIRST_AUTONOMOUS.md')
-assert.ok(existsSync(policyDocPath), `v4 policy doc missing: ${policyDocPath}`)
+assert.ok(existsSync(policyDocPath), `lexicon policy doc missing: ${policyDocPath}`)
 const policyText = readFileSync(policyDocPath, 'utf8')
 for (const section of [
-  '# Evidence-First Autonomous Lexicon v4',
+  '# License-Safe Full-Fidelity Lexicon Workflow — Current Policy SSOT',
   '## 0. Core principle',
-  '## 1. Tier Router',
-  '## 2. Multi-model Consensus Gate',
-  '## 3. Universal Approval Registry Regression Protection',
-  '## 4. Independent Reviewer → Auto-Approve → Auto-Merge',
-  '## 5. Human Exception Gate',
-  '## 6. R4 EXTENDED_RESEARCH_REQUIRED',
-  '## 7. Golden Audit Sample Contract',
-  '## 8. Fail-closed Rulebook',
+  '## 1. C0 Rights / License source-admission gate',
+  '## 2. Full-Fidelity source contract',
+  '## 3. Production workflow',
+  '## 7. Tier Router and audit gates',
+  '## 8. Protected approval data',
+  '## 9. GPT executor and Jarvis checkpoint verifier',
+  '## 10. App presentation and activation',
+  '## 13. Fail-closed rules',
 ]) {
-  assert.ok(policyText.includes(section), `v4 policy doc missing section: ${section}`)
+  assert.ok(policyText.includes(section), `lexicon policy doc missing section: ${section}`)
 }
+assert.ok(policyText.includes('C0 Rights/License PASS'), 'policy must require rights/license admission before source use')
+assert.ok(policyText.includes('LICENSE_HOLD'), 'policy must define fail-closed license hold')
+assert.ok(policyText.includes('BibleHub'), 'policy must explicitly prevent third-party page scraping as canonical source')
 
 // ── 2. Tier-Gate matrix loads and satisfies invariants
 const matrixPath = bibleMindmapPath('data/lexicon/v4/tier-gate-matrix.json')
@@ -93,7 +95,7 @@ assert.ok(ga.thresholds.perBookDiscrepancyRatePercentHalt >= 1)
 assert.equal(ga.thresholds.haltAction, 'auto-halt-batch-promotion')
 assert.equal(ga.governance.approvalRegistryWriteAllowed, false)
 
-// ── 5. TRACK_STATE cross-reference + installed foundation truth
+// ── 5. TRACK_STATE cross-reference + installed historical foundation truth
 const trackStatePath = workspacePath('docs/lexicon-workflow/TRACK_STATE.json')
 const trackState = readJson(trackStatePath)
 assert.ok(trackState.automationFoundationV4, 'TRACK_STATE missing automationFoundationV4 block')
@@ -103,11 +105,11 @@ assert.equal(v4.config.tierGateMatrix, 'bible-mindmap/data/lexicon/v4/tier-gate-
 assert.equal(v4.config.humanExceptionTriggers, 'bible-mindmap/data/lexicon/v4/human-exception-triggers.json')
 assert.equal(v4.config.goldenAuditContract, 'bible-mindmap/data/lexicon/v4/golden-audit-contract.json')
 assert.ok(Array.isArray(v4.failClosedConditions) && v4.failClosedConditions.length >= 10, 'v4 failClosedConditions incomplete')
-assert.equal(v4.status, 'INSTALLED', 'v4 foundation must reflect merged installation truth')
+assert.equal(v4.status, 'INSTALLED', 'historical v4 foundation installation truth must remain recorded')
 assert.equal(v4.installedByPr, 299)
 assert.equal(v4.installedByMergeCommit, 'f07a847317a052148c08de316cea922dc90e61cf')
 for (const [key, readiness] of Object.entries(v4.automationReadiness)) {
-  assert.equal(readiness, 'READY', `v4 automation readiness must be READY: ${key}`)
+  assert.equal(readiness, 'READY', `foundation automation readiness must be READY: ${key}`)
 }
 
 // ── 6. Verifier scripts referenced must all exist and be executable
@@ -118,9 +120,7 @@ for (const [key, relPath] of Object.entries(v4.verifiers)) {
   assert.ok(st.size > 0, `v4 verifier empty: ${relPath}`)
 }
 
-// ── 7. Post-P5 R3/R4 state must reflect current v4 governance.
-//     Original `status` remains for backward compatibility with the approval-registry checkpoint,
-//     but the current progression is expressed through postAuditStatus + R4 extended-research queue.
+// ── 7. Post-P5 R3/R4 historical state remains regression-protected.
 const p5 = trackState.p5GenesisCandidateGeneration
 assert.equal(p5.status, 'CANDIDATES_GENERATED_AWAITING_CLAUDE_AUDIT', 'status must remain backward-compat value')
 assert.equal(p5.postAuditStatus, 'R3_CONSENSUS_COMPLETE_R4_EXTENDED_RESEARCH_REQUIRED', 'postAuditStatus must reflect v4 R4 routing')
@@ -140,4 +140,4 @@ assert.equal(p5.existingApprovedMeaningMutationAllowed, false)
 assert.equal(trackState.humanGates.includes('R3_or_R4_final_wording'), false, 'blanket R3/R4 human wording gate is obsolete under v4')
 assert.ok(trackState.humanGates.includes('unresolved_source_or_model_conflict_after_extended_research'))
 
-console.log('✓ Lexicon v4 foundation contract · foundation=installed(#299) · policy=pinned · matrix=AND-strict · R4=EXTENDED_RESEARCH_REQUIRED · human-exceptions=fail-closed')
+console.log('✓ Lexicon foundation contract · policy=license-safe-full-fidelity · rights=C0 fail-closed · matrix=AND-strict · R4=never-auto · historical foundation=preserved')
