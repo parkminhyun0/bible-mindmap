@@ -37,6 +37,13 @@ const removedOperationalPaths = [
   '.github/workflows/luke-lexicon-g2-zero-cost.yml',
   '.github/workflows/luke-lexicon-g2-canary-preparation.yml',
   '.github/workflows/genesis-g2-zero-cost.yml',
+  '.github/workflows/genesis-g2-canary-execute.yml',
+  '.github/workflows/genesis-g2-calibration-execute.yml',
+  '.github/workflows/genesis-g2-provider-preflight.yml',
+  '.github/workflows/genesis-g2-provider-preflight-contract.yml',
+  '.github/workflows/genesis-g2-blind-translation.yml',
+  '.github/workflows/genesis-g2-promotion-review.yml',
+  '.github/workflows/genesis-g3-context-review.yml',
   'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs',
   'bible-mindmap/scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs',
   'bible-mindmap/scripts/ai/lexicon/import-luke-g2-zero-cost-manual.mjs',
@@ -56,16 +63,34 @@ const removedOperationalPaths = [
   'bible-mindmap/docs/genesis-g2-zero-cost-one-command.md',
   'bible-mindmap/docs/genesis-g2-human-review-hardening.md',
   'bible-mindmap/scripts/build-genesis-g2-human-review-bundle.mjs',
+  'bible-mindmap/scripts/ai/lexicon/preflight-genesis-g2-providers.mjs',
+  'bible-mindmap/scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs',
+  'bible-mindmap/scripts/verify-genesis-g2-blind-translation.mjs',
+  'bible-mindmap/scripts/evaluate-genesis-g2-canary-results.mjs',
+  'bible-mindmap/scripts/ai/lexicon/genesis-g2-canary-evaluation.mjs',
+  'bible-mindmap/scripts/build-genesis-g2-promotion-review.mjs',
+  'bible-mindmap/scripts/verify-genesis-g2-calibration-promotion.mjs',
+  'bible-mindmap/scripts/verify-genesis-g2-calibration-candidates.mjs',
 ]
 for (const relative of removedOperationalPaths) {
-  assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `deprecated local-model operational path reintroduced: ${relative}`)
+  assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `deprecated lexicon model-execution path reintroduced: ${relative}`)
+}
+
+const retiredTombstones = [
+  'bible-mindmap/scripts/build-genesis-g3-context-review.mjs',
+  'bible-mindmap/scripts/verify-genesis-g3-context-review.mjs',
+]
+for (const relative of retiredTombstones) {
+  const text = read(relative)
+  assert.ok(text.includes('RETIRED'), `legacy helper must remain fail-closed: ${relative}`)
+  assert.ok(!/nvidia|openai|provider|human review/iu.test(text), `legacy semantic-review logic remains in tombstone: ${relative}`)
 }
 
 for (const scriptName of Object.keys(pkg.scripts || {})) {
   assert.ok(!/genesis:g2:zero-cost|luke:g2:zero-cost|ollama|local-model/iu.test(scriptName), `deprecated local-model npm script reintroduced: ${scriptName}`)
 }
 for (const command of Object.values(pkg.scripts || {})) {
-  assert.ok(!/run-(?:genesis|luke)-g2-local-ollama|g2-zero-cost/iu.test(String(command)), `deprecated local-model command reintroduced: ${command}`)
+  assert.ok(!/run-(?:genesis|luke)-g2-local-ollama|g2-zero-cost|run-genesis-g2-blind-translation|preflight-genesis-g2-providers/iu.test(String(command)), `deprecated lexicon model-execution command reintroduced: ${command}`)
 }
 
-console.log('✓ lexicon fixed-four policy PASS · GPT/Jarvis/Claude/Gemini only · local-model operational paths absent')
+console.log('✓ lexicon fixed-four policy PASS · GPT/Jarvis/Claude/Gemini only · deprecated model-execution paths absent')
