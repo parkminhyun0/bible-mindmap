@@ -43,6 +43,7 @@ const removedOperationalPaths = [
   '.github/workflows/genesis-g2-provider-preflight-contract.yml',
   '.github/workflows/genesis-g2-blind-translation.yml',
   '.github/workflows/genesis-g2-promotion-review.yml',
+  '.github/workflows/genesis-g3-context-review.yml',
   'bible-mindmap/scripts/ai/lexicon/run-luke-g2-local-ollama.mjs',
   'bible-mindmap/scripts/ai/lexicon/run-luke-g2-zero-cost-pipeline.mjs',
   'bible-mindmap/scripts/ai/lexicon/import-luke-g2-zero-cost-manual.mjs',
@@ -70,6 +71,8 @@ const removedOperationalPaths = [
   'bible-mindmap/scripts/build-genesis-g2-promotion-review.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-promotion.mjs',
   'bible-mindmap/scripts/verify-genesis-g2-calibration-candidates.mjs',
+  'bible-mindmap/scripts/build-genesis-g3-context-review.mjs',
+  'bible-mindmap/scripts/verify-genesis-g3-context-review.mjs',
 ]
 for (const relative of removedOperationalPaths) {
   assert.equal(fs.existsSync(path.resolve(REPO_ROOT, relative)), false, `deprecated lexicon model-execution path reintroduced: ${relative}`)
