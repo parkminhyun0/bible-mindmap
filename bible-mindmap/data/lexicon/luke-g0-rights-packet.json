@@ -1,11 +1,31 @@
 {
   "schemaVersion": 1,
   "scope": "Luke Greek lexicon G0 pinned source rights admission",
-  "generatedAt": "2026-08-13T11:55:00Z",
+  "generatedAt": "2026-08-13T12:10:00Z",
   "policy": "License-Safe Full-Fidelity",
   "book": "Luke",
   "stage": "G0",
   "sourceLockRef": "bible-mindmap/data/lexicon/luke-g0-source-lock.json",
+  "admittedSourceSet": {
+    "candidateGenerationInput": ["tagnt", "morphgnt-annotations"],
+    "externalLLMInput": ["tagnt", "morphgnt-annotations"],
+    "derivativeSource": ["tagnt", "morphgnt-annotations"],
+    "redistributionSource": ["tagnt", "morphgnt-annotations"],
+    "productionEvidenceSource": ["tagnt", "morphgnt-annotations"]
+  },
+  "excludedFromAdmission": [
+    {
+      "sourceId": "sblgnt-text-luke",
+      "reason": "SBLGNT EULA (SBL Press / Michael W. Holmes) rights uncertainty; fail-closed as LICENSE_HOLD per policy §1.2",
+      "excludedFromCandidateGenerationInput": true,
+      "excludedFromExternalLLMInput": true,
+      "excludedFromDerivativeSource": true,
+      "excludedFromRedistributionSource": true,
+      "excludedFromProductionEvidenceSource": true,
+      "permittedUses": ["human reference cross-check only"],
+      "codeEvidence": "bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs (buildLukeG2Preparation) reconstructs verse.text and localWindow from TAGNT tokens (parseTagntLuke output) and consumes only MorphGNT morphology/lemmatization rows (parseMorphgntLuke → morphgntCrossCheck). SBLGNT text columns are not carried into candidate input, external LLM input, or downstream derivative payloads; bible-mindmap/scripts/ai/lexicon/luke-g2-translation-contract.mjs sourceFingerprint and OUTPUT_SCHEMA reference verse/localWindow/morphgntCrossCheck fields derived exclusively from admitted sources."
+    }
+  ],
   "sources": {
     "tagnt": {
       "sourceId": "stepbible-tagnt-greek-mat-jhn",
@@ -26,6 +46,7 @@
       "externalLlmInputAllowed": true,
       "fullTextStorageAllowed": true,
       "sourceType": "digitized-curated-dataset",
+      "admissionStatus": "admitted",
       "verdict": "PASS"
     },
     "morphgnt": {
@@ -34,11 +55,11 @@
       "sourceEdition": "MorphGNT annotations layer over SBLGNT",
       "digitalDataset": "morphgnt/sblgnt repository (annotations component)",
       "datasetPaths": [
-        "63-Lk-morphgnt.txt (annotations columns: morphology and lemmatization)"
+        "63-Lk-morphgnt.txt (annotations columns: morphology and lemmatization only)"
       ],
       "datasetVersion": "474e65703c49ef3890fca4b24403434ab6df6457",
-      "sourceLocator": "morphgnt/sblgnt@master:63-Lk-morphgnt.txt",
-      "rightsBasis": "CC BY-SA 3.0 for morphology and lemmatization annotation columns; separate from the SBLGNT text component of the same file",
+      "sourceLocator": "morphgnt/sblgnt@master:63-Lk-morphgnt.txt (annotations component only)",
+      "rightsBasis": "CC BY-SA 3.0 for morphology and lemmatization annotation columns; separate from the SBLGNT text component of the same file, which is excluded from admission",
       "attributionRequired": true,
       "attributionText": "James K. Tauber and MorphGNT contributors",
       "changeNoticeRequired": true,
@@ -49,6 +70,7 @@
       "sourceType": "digitized-annotation-dataset",
       "shareAlikeObligation": true,
       "shareAlikeObligationNote": "Downstream annotations derived from MorphGNT columns must be released under a compatible CC BY-SA 3.0 license",
+      "admissionStatus": "admitted",
       "verdict": "PASS"
     },
     "sblgnt": {
@@ -65,13 +87,20 @@
       "attributionRequired": true,
       "attributionText": "Society of Biblical Literature; Michael W. Holmes, ed.",
       "changeNoticeRequired": true,
-      "derivativeTranslationAllowed": null,
-      "redistributionAllowed": null,
-      "externalLlmInputAllowed": null,
-      "fullTextStorageAllowed": null,
+      "derivativeTranslationAllowed": false,
+      "redistributionAllowed": false,
+      "externalLlmInputAllowed": false,
+      "fullTextStorageAllowed": false,
       "sourceType": "digitized-published-edition",
-      "verdict": "NEEDS-METADATA",
-      "verdictNote": "SBLGNT text is a separately licensed edition subject to the SBLGNT EULA. Per the current License-Safe Full-Fidelity C0 rights admission policy (Section 1: 'Rights uncertainty = LICENSE_HOLD; do not substitute with a convenient unreviewed source'), boolean permissions for derivative translation, redistribution, external LLM input, and full-text storage cannot be asserted as PASS without an explicit EULA review confirming the specific permitted uses for a Korean lexicon derivative product. Fail-closed under NEEDS-METADATA pending EULA review."
+      "admissionStatus": "excluded",
+      "excludedFromCandidateGenerationInput": true,
+      "excludedFromExternalLLMInput": true,
+      "excludedFromDerivativeSource": true,
+      "excludedFromRedistributionSource": true,
+      "excludedFromProductionEvidenceSource": true,
+      "permittedUses": ["human reference cross-check only"],
+      "verdict": "LICENSE_HOLD",
+      "verdictNote": "SBLGNT text is a separately licensed edition subject to the SBLGNT EULA. Under License-Safe Full-Fidelity policy §1.2 (Rights uncertainty = LICENSE_HOLD; do not substitute with a convenient unreviewed source), rights for derivative translation, redistribution, external LLM input, and full-text storage are treated as fail-closed. Boolean fields set to false to reflect the exclusion decision — this is not an assertion of denied permission by SBL, but the admission-side decision that the source is not available for use in the admitted set until an explicit EULA review clears the specific permitted uses."
     },
     "koreanGloss": {
       "sourceId": "parkminhyun0-bible-mindmap-korean-gloss-active",
@@ -96,21 +125,23 @@
         "STEPBible/STEPBible-Data TAGNT (Strong identifier basis; CC BY 4.0; upstream attribution obligation inherited)",
         "prior human curation within parkminhyun0/bible-mindmap"
       ],
+      "admissionStatus": "admitted",
       "verdict": "PROJECT-OWNED",
       "verdictNote": "koreanGlossActive.js is a project-owned candidate and reuse dataset. Upstream attribution obligations from tagnt (CC BY 4.0) apply when the dataset is redistributed and must not be lost merely because the file is stored inside this repository. External-source-license rules do not apply to this project-owned file itself."
     }
   },
-  "overallVerdict": "NEEDS-METADATA",
-  "overallNote": "Overall Luke C0 verdict downgrades to NEEDS-METADATA because the SBLGNT text component of morphgnt/sblgnt is subject to a separate SBLGNT EULA and per-use permissions (derivative translation, redistribution, external LLM input, full-text storage) cannot be asserted as PASS without an explicit EULA review. TAGNT (STEPBible CC BY 4.0) and MorphGNT annotations (CC BY-SA 3.0 with share-alike obligation) independently PASS. koreanGlossActive.js is project-owned with inherited upstream attribution obligations. Do not proceed to Luke G2 candidate generation using SBLGNT text as an authoritative source until the EULA review resolves the flagged fields. TAGNT alone remains the primary Strong/lemma/transliteration inventory basis, and MorphGNT annotations may be used for cross-check under their CC BY-SA 3.0 obligations.",
-  "gapFromCurrentPolicy": [
-    "SBLGNT text component requires explicit EULA review for derivative translation permission scope in the Korean lexicon product",
-    "SBLGNT text component requires explicit EULA review for redistribution scope in the Korean lexicon product",
-    "SBLGNT text component requires explicit clarification on external LLM input permission",
-    "SBLGNT text component requires explicit clarification on full-text storage permission scope"
+  "overallVerdict": "PASS",
+  "overallNote": "Overall Luke C0 verdict is PASS on the admitted source set (TAGNT + MorphGNT annotations + koreanGloss project-owned). The SBLGNT text component is explicitly excluded from the admitted set and machine-readable exclusion flags are set for candidate generation input, external LLM input, derivative source, redistribution source, and production evidence source. The G2 preparation code path (buildLukeG2Preparation in bible-mindmap/scripts/build-luke-g2-canary-preparation.mjs) already derives verse.text and localWindow from TAGNT tokens (parseTagntLuke) and consumes only MorphGNT morphology/lemmatization rows (parseMorphgntLuke → morphgntCrossCheck), so no SBLGNT text is carried into candidate input or downstream derivative payloads. SBLGNT text is retained only as human reference cross-check. This exclusion decision does not gate G2 execution on SBL EULA review, but any future re-admission of SBLGNT text into the admitted set must pass an explicit EULA review and a new C0 Rights admission cycle.",
+  "gapFromCurrentPolicy": [],
+  "resolutionApplied": [
+    "SBLGNT text component moved from NEEDS-METADATA to LICENSE_HOLD per policy §1.2",
+    "SBLGNT text component excluded from admitted source set (candidate generation input, external LLM input, derivative source, redistribution source, production evidence source all set to false)",
+    "Overall Luke C0 verdict upgraded to PASS on the admitted set (TAGNT + MorphGNT annotations + koreanGloss project-owned)",
+    "Code-path evidence recorded: buildLukeG2Preparation uses TAGNT-derived verse.text and MorphGNT-only annotations for morphgntCrossCheck"
   ],
   "next": {
-    "sblgntReview": "Escalate SBLGNT EULA review to license reviewer or seek SBL permission where the intended Korean derivative use exceeds fair scholarly cross-check",
-    "otherSources": "TAGNT and MorphGNT annotation components may proceed with the CC BY 4.0 / CC BY-SA 3.0 obligations noted above",
-    "g2Execution": "Luke G2 execution Gate remains BLOCKED (executionAllowed=false, killSwitch=on, providerBoth/localTwoModel/manualIndependentJson all disabled). This Rights Metadata patch does not activate G2 execution."
+    "sblgntFutureReadmission": "Any future re-admission of SBLGNT text requires an explicit SBLGNT EULA review, a new C0 Rights admission cycle, and code-path verification that SBLGNT text would be carried into candidate/LLM input only under permitted uses",
+    "otherSources": "TAGNT and MorphGNT annotation components proceed with the CC BY 4.0 / CC BY-SA 3.0 obligations noted above",
+    "g2Execution": "Luke G2 execution Gate remains BLOCKED (executionAllowed=false, killSwitch=on, providerBoth/localTwoModel/manualIndependentJson all disabled). This Rights Metadata patch establishes C0 admission PASS but does not activate G2 execution."
   }
 }
