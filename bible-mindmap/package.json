@@ -19,6 +19,7 @@
     "verify:transliteration-policy": "node scripts/verify-transliteration-policy.mjs",
     "verify:ai-candidates": "node scripts/verify-ai-candidates.mjs",
     "verify:ai-provider-boundary": "node scripts/verify-ai-provider-boundary.mjs",
+    "verify:lexicon-full-fidelity-handoff": "node scripts/verify-lexicon-full-fidelity-handoff.mjs",
     "verify:embedding-contract": "node scripts/verify-embedding-contract.mjs",
     "verify:hybrid-search": "node scripts/verify-hybrid-search.mjs",
     "verify:retrieval-evaluation": "node scripts/verify-retrieval-evaluation.mjs",

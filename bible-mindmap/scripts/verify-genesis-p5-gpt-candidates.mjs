@@ -101,4 +101,14 @@ assert.ok(h776,'H776 Approval Registry entry must remain present')
 assert.equal(h776.approvedSenseTree.length,26,'H776 Approval Registry must remain 26/26')
 const approvedStrongs=new Set(approval.entries.map((entry)=>entry?.identity?.canonicalStrong).filter(Boolean))
 for(const strong of r4Strongs) assert.equal(approvedStrongs.has(strong),false,`${strong}: R4 candidate must not be promoted by downstream Registry state`)
+import { classifyCandidate, detectClaimedButIncomplete, runFullFidelityHandoffSelfTest } from './lib/lexicon-full-fidelity-handoff.mjs'
+runFullFidelityHandoffSelfTest({ assertFn: (ok, msg) => assert.ok(ok, msg) })
+const handoffTally={RESEARCH_IN_PROGRESS:0,CORRECTION_CANDIDATE_INCOMPLETE:0,HANDOFF_READY:0,VERIFIER_READY:0}
+for(const candidate of candidates){
+  const {classification}=classifyCandidate(candidate)
+  handoffTally[classification]=(handoffTally[classification]||0)+1
+  const claim=detectClaimedButIncomplete(candidate,classification)
+  assert.equal(claim,null,`${candidate.sourceStrong}: ${claim}`)
+}
 console.log(`✓ Genesis P5 GPT candidates · bases=24 · units=27 · nodes=150 · R3=5 · R4=5 · H776 excluded · candidate write gates remain closed`)
+console.log(`✓ Full-Fidelity handoff classifier: RESEARCH_IN_PROGRESS=${handoffTally.RESEARCH_IN_PROGRESS} CORRECTION_CANDIDATE_INCOMPLETE=${handoffTally.CORRECTION_CANDIDATE_INCOMPLETE} HANDOFF_READY=${handoffTally.HANDOFF_READY} VERIFIER_READY=${handoffTally.VERIFIER_READY}`)
