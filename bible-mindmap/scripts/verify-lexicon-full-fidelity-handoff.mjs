@@ -69,6 +69,8 @@ const report = {
 
 if (args.has('--json')) {
   console.log(JSON.stringify(report, null, 2))
+  if (claimViolations.length > 0) process.exit(1)
+  process.exit(0)
 } else {
   console.log(`Bundle: ${report.bundleId} (${report.totalCandidates} candidates, Golden control excluded=${report.goldenControlExcluded || '(none)'})`)
   console.log('Tally:')
