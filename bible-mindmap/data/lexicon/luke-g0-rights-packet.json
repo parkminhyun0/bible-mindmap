@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "scope": "Luke Greek lexicon G0 pinned source rights admission",
+  "generatedAt": "2026-08-13T11:55:00Z",
+  "policy": "License-Safe Full-Fidelity",
+  "book": "Luke",
+  "stage": "G0",
+  "sourceLockRef": "bible-mindmap/data/lexicon/luke-g0-source-lock.json",
+  "sources": {
+    "tagnt": {
+      "sourceId": "stepbible-tagnt-greek-mat-jhn",
+      "sourceWork": "Translators Amalgamated Greek New Testament (TAGNT)",
+      "sourceEdition": "STEPBible curated edition (Matthew–John)",
+      "digitalDataset": "STEPBible-Data repository",
+      "datasetPaths": [
+        "Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt"
+      ],
+      "datasetVersion": "705c1bc1cf752e013efcef99b8d9a3b7853bf843",
+      "sourceLocator": "STEPBible/STEPBible-Data@master:Translators Amalgamated OT+NT/TAGNT Mat-Jhn - Translators Amalgamated Greek NT - STEPBible.org CC-BY.txt",
+      "rightsBasis": "CC BY 4.0 for the STEPBible-Data repository dataset; filename annotation confirms CC-BY licensing for this dataset file",
+      "attributionRequired": true,
+      "attributionText": "STEPBible.org — Tyndale House, Cambridge",
+      "changeNoticeRequired": true,
+      "derivativeTranslationAllowed": true,
+      "redistributionAllowed": true,
+      "externalLlmInputAllowed": true,
+      "fullTextStorageAllowed": true,
+      "sourceType": "digitized-curated-dataset",
+      "verdict": "PASS"
+    },
+    "morphgnt": {
+      "sourceId": "morphgnt-luke-annotations",
+      "sourceWork": "MorphGNT Morphological Analysis of the SBL Greek New Testament",
+      "sourceEdition": "MorphGNT annotations layer over SBLGNT",
+      "digitalDataset": "morphgnt/sblgnt repository (annotations component)",
+      "datasetPaths": [
+        "63-Lk-morphgnt.txt (annotations columns: morphology and lemmatization)"
+      ],
+      "datasetVersion": "474e65703c49ef3890fca4b24403434ab6df6457",
+      "sourceLocator": "morphgnt/sblgnt@master:63-Lk-morphgnt.txt",
+      "rightsBasis": "CC BY-SA 3.0 for morphology and lemmatization annotation columns; separate from the SBLGNT text component of the same file",
+      "attributionRequired": true,
+      "attributionText": "James K. Tauber and MorphGNT contributors",
+      "changeNoticeRequired": true,
+      "derivativeTranslationAllowed": true,
+      "redistributionAllowed": true,
+      "externalLlmInputAllowed": true,
+      "fullTextStorageAllowed": true,
+      "sourceType": "digitized-annotation-dataset",
+      "shareAlikeObligation": true,
+      "shareAlikeObligationNote": "Downstream annotations derived from MorphGNT columns must be released under a compatible CC BY-SA 3.0 license",
+      "verdict": "PASS"
+    },
+    "sblgnt": {
+      "sourceId": "sblgnt-text-luke",
+      "sourceWork": "SBL Greek New Testament (SBLGNT), Michael W. Holmes ed.",
+      "sourceEdition": "SBLGNT text (2010 publication)",
+      "digitalDataset": "morphgnt/sblgnt repository (SBLGNT text component; distinct from MorphGNT annotations)",
+      "datasetPaths": [
+        "63-Lk-morphgnt.txt (Greek text columns)"
+      ],
+      "datasetVersion": "474e65703c49ef3890fca4b24403434ab6df6457",
+      "sourceLocator": "morphgnt/sblgnt@master:63-Lk-morphgnt.txt (SBLGNT text component; repository notice references separate SBLGNT license terms)",
+      "rightsBasis": "SBLGNT EULA — Society of Biblical Literature / SBL Press; not CC BY-SA. Repository notice explicitly separates the SBLGNT text license from the MorphGNT annotation license",
+      "attributionRequired": true,
+      "attributionText": "Society of Biblical Literature; Michael W. Holmes, ed.",
+      "changeNoticeRequired": true,
+      "derivativeTranslationAllowed": null,
+      "redistributionAllowed": null,
+      "externalLlmInputAllowed": null,
+      "fullTextStorageAllowed": null,
+      "sourceType": "digitized-published-edition",
+      "verdict": "NEEDS-METADATA",
+      "verdictNote": "SBLGNT text is a separately licensed edition subject to the SBLGNT EULA. Per the current License-Safe Full-Fidelity C0 rights admission policy (Section 1: 'Rights uncertainty = LICENSE_HOLD; do not substitute with a convenient unreviewed source'), boolean permissions for derivative translation, redistribution, external LLM input, and full-text storage cannot be asserted as PASS without an explicit EULA review confirming the specific permitted uses for a Korean lexicon derivative product. Fail-closed under NEEDS-METADATA pending EULA review."
+    },
+    "koreanGloss": {
+      "sourceId": "parkminhyun0-bible-mindmap-korean-gloss-active",
+      "sourceWork": "koreanGlossActive.js — project-owned Korean Strong reuse dataset",
+      "sourceEdition": "internal main branch snapshot",
+      "digitalDataset": "parkminhyun0/bible-mindmap repository",
+      "datasetPaths": [
+        "bible-mindmap/src/data/koreanGlossActive.js"
+      ],
+      "datasetVersion": "main",
+      "sourceLocator": "parkminhyun0/bible-mindmap@main:bible-mindmap/src/data/koreanGlossActive.js",
+      "rightsBasis": "project-owned derivative and candidate dataset (parkminhyun0/bible-mindmap); not an external lexical source",
+      "attributionRequired": true,
+      "attributionText": "parkminhyun0/bible-mindmap contributors",
+      "changeNoticeRequired": false,
+      "derivativeTranslationAllowed": true,
+      "redistributionAllowed": true,
+      "externalLlmInputAllowed": true,
+      "fullTextStorageAllowed": true,
+      "sourceType": "project-owned-derivative",
+      "upstreamBasis": [
+        "STEPBible/STEPBible-Data TAGNT (Strong identifier basis; CC BY 4.0; upstream attribution obligation inherited)",
+        "prior human curation within parkminhyun0/bible-mindmap"
+      ],
+      "verdict": "PROJECT-OWNED",
+      "verdictNote": "koreanGlossActive.js is a project-owned candidate and reuse dataset. Upstream attribution obligations from tagnt (CC BY 4.0) apply when the dataset is redistributed and must not be lost merely because the file is stored inside this repository. External-source-license rules do not apply to this project-owned file itself."
+    }
+  },
+  "overallVerdict": "NEEDS-METADATA",
+  "overallNote": "Overall Luke C0 verdict downgrades to NEEDS-METADATA because the SBLGNT text component of morphgnt/sblgnt is subject to a separate SBLGNT EULA and per-use permissions (derivative translation, redistribution, external LLM input, full-text storage) cannot be asserted as PASS without an explicit EULA review. TAGNT (STEPBible CC BY 4.0) and MorphGNT annotations (CC BY-SA 3.0 with share-alike obligation) independently PASS. koreanGlossActive.js is project-owned with inherited upstream attribution obligations. Do not proceed to Luke G2 candidate generation using SBLGNT text as an authoritative source until the EULA review resolves the flagged fields. TAGNT alone remains the primary Strong/lemma/transliteration inventory basis, and MorphGNT annotations may be used for cross-check under their CC BY-SA 3.0 obligations.",
+  "gapFromCurrentPolicy": [
+    "SBLGNT text component requires explicit EULA review for derivative translation permission scope in the Korean lexicon product",
+    "SBLGNT text component requires explicit EULA review for redistribution scope in the Korean lexicon product",
+    "SBLGNT text component requires explicit clarification on external LLM input permission",
+    "SBLGNT text component requires explicit clarification on full-text storage permission scope"
+  ],
+  "next": {
+    "sblgntReview": "Escalate SBLGNT EULA review to license reviewer or seek SBL permission where the intended Korean derivative use exceeds fair scholarly cross-check",
+    "otherSources": "TAGNT and MorphGNT annotation components may proceed with the CC BY 4.0 / CC BY-SA 3.0 obligations noted above",
+    "g2Execution": "Luke G2 execution Gate remains BLOCKED (executionAllowed=false, killSwitch=on, providerBoth/localTwoModel/manualIndependentJson all disabled). This Rights Metadata patch does not activate G2 execution."
+  }
+}
