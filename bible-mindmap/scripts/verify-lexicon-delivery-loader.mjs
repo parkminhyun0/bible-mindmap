@@ -83,10 +83,19 @@ assert.equal(h430.identity.canonicalStrong, 'H430');
 assert.equal(h430.approvedSenseTree.length, 13, 'H430 approved sense count drift');
 assert.equal(h430.reviewer.reviewerType, 'evidence-policy', 'R3 entry must expose Evidence policy provenance');
 assert.deepEqual(requests.slice(requestCount), ['shards/hebrew-H401-H500.json'], 'same-language R3 lookup must reuse registry/manifest and lazy-fetch one shard');
+
 const approvedRequestCount = requests.length;
-assert.equal(await loader.loadApprovedEntry('H1254'), null, 'unapproved base H1254 must fail closed; only H1254a is approved');
-assert.equal(await loader.loadApprovedEntry('G2316'), null, 'unapproved Greek Strong must fail closed');
-assert.equal(requests.length, approvedRequestCount, 'unapproved Strong must not trigger shard fetch');
+assert.equal(await loader.loadApprovedEntry('H1254'), null, 'base H1254 without lemma identity must fail closed');
+assert.equal(requests.length, approvedRequestCount, 'unqualified base Strong alias must not trigger shard fetch');
+const h1254a = await loader.loadApprovedEntry('H1254', { lemma: 'בָּרָא' });
+assert.equal(h1254a.identity.canonicalStrong, 'H1254a', 'base H1254 + matching lemma must resolve unique approved H1254a');
+assert.equal(h1254a.identity.lemmaNormalized, 'בָּרָא', 'resolved alias must preserve approved lemma identity');
+assert.deepEqual(requests.slice(approvedRequestCount), ['shards/hebrew-H1201-H1300.json'], 'safe H1254 alias must lazy-fetch only its approved shard');
+const aliasRequestCount = requests.length;
+assert.equal(await loader.loadApprovedEntry('H1254', { lemma: 'שָׁמַר' }), null, 'mismatched lemma must fail closed instead of attaching the wrong homograph');
+assert.equal(requests.length, aliasRequestCount, 'mismatched lemma should reuse cached route and remain read-only');
+assert.equal(await loader.loadApprovedEntry('G2316', { lemma: 'θεός' }), null, 'unapproved Greek Strong must fail closed');
+assert.equal(requests.length, aliasRequestCount, 'unapproved Strong must not trigger shard fetch');
 
 const popupSource = fs.readFileSync(POPUP_PATH, 'utf8');
 const drawerSource = fs.readFileSync(DRAWER_PATH, 'utf8');
@@ -94,7 +103,8 @@ const wordSearchKoSource = fs.readFileSync(WORD_SEARCH_KO_PATH, 'utf8');
 const bridgeSource = fs.readFileSync(BRIDGE_PATH, 'utf8');
 assert.doesNotMatch(popupSource, /lexiconApprovalLoader/, 'LexiconPopup must not own the detailed approved dictionary loader');
 assert.match(popupSource, /KOREAN_GLOSS/, 'LexiconPopup must retain compact Korean gloss summary');
-assert.match(bridgeSource, /lexiconApprovalLoader\.loadApprovedEntry\(strong\)/, 'drawer bridge must resolve approved data by Strong');
+assert.match(bridgeSource, /function detectLemma\(dialog\)/, 'drawer bridge must capture occurrence lemma identity for safe alias resolution');
+assert.match(bridgeSource, /lexiconApprovalLoader\.loadApprovedEntry\(strong, \{ lemma \}\)/, 'drawer bridge must resolve approved data by Strong + lemma identity');
 assert.match(bridgeSource, /normalizeLexiconStrong/, 'drawer bridge must normalize padded Strong ids');
 assert.doesNotMatch(bridgeSource, /method\s*:\s*['"](?:POST|PUT|PATCH|DELETE)['"]/, 'bridge must remain read-only');
 
@@ -114,5 +124,5 @@ assert.match(wordSearchKoSource, /touchAction: 'pan-y'/, 'word search vertical t
 
 console.log('✓ Approval Registry delivery + read-only loader contract PASS');
 console.log(`  approved entries=${approvalRegistry.entries.length} · H776 human 26/26 preserved · Evidence-policy entries lazy-delivered`);
-console.log('  H0776→H776 normalization · H430 one-shard lazy load · unapproved Strong fail-closed');
+console.log('  H0776→H776 normalization · H1254+lemma→H1254a safe alias · mismatched homograph fail-closed');
 console.log('  drawer + word search disclose human vs Evidence-policy approval provenance');
