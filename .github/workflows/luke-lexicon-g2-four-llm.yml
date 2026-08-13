@@ -5,11 +5,13 @@ on:
     branches:
       - 'chatgpt/lexicon-four-llm-*'
       - 'chatgpt/luke-g2-*'
+      - 'chatgpt/lexicon-remove-final-tombstones'
     paths:
       - 'bible-mindmap/data/lexicon/luke-g2-execution-gate.json'
       - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
       - 'bible-mindmap/scripts/ai/lexicon/**'
       - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/scripts/verify-lexicon-four-llm-only-policy.mjs'
       - 'bible-mindmap/docs/*g2*'
       - 'bible-mindmap/package.json'
       - 'docs/lexicon-workflow/**'
@@ -21,6 +23,7 @@ on:
       - 'bible-mindmap/data/lexicon/luke-g2-canary-preparation.json'
       - 'bible-mindmap/scripts/ai/lexicon/**'
       - 'bible-mindmap/scripts/*g2*'
+      - 'bible-mindmap/scripts/verify-lexicon-four-llm-only-policy.mjs'
       - 'bible-mindmap/docs/*g2*'
       - 'bible-mindmap/package.json'
       - 'docs/lexicon-workflow/**'
@@ -64,7 +67,7 @@ jobs:
           {
             echo '## Lexicon fixed four-LLM/public-evidence contract'
             echo '- allowed roles: GPT · Jarvis · Claude · Gemini only'
-            echo '- local-model execution infrastructure: absent and guarded'
+            echo '- deprecated lexicon model-execution infrastructure: absent and guarded'
             echo '- per-Strong user semantic approval: not required'
             echo '- final semantic adjudicator: GPT using Rights-PASS public Evidence'
             echo '- unresolved semantic conflict: HOLD / DISPUTE'
