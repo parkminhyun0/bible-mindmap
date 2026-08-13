@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "reportId": "genesis-v4-production-batch-05-selection-2026-08-13",
+  "book": "Genesis",
+  "status": "CANONICAL_INVENTORY_BATCH_SELECTED",
+  "derivedMain": "24fd844b9783892d77bdf969d5dfa1edd1f07d19",
+  "researchBranch": "chatgpt/genesis-v4-production-batch-05",
+  "source": {
+    "workflowRun": 31493398776,
+    "artifactId": 9101939555,
+    "artifactDigest": "sha256:70b364bccb58315fbe5acb4ec9b4e22d2100622a58321345d9785d796761d7e3",
+    "inventoryFile": "genesis-strong-inventory.json",
+    "calibrationFile": "genesis-g2-calibration-batch.json",
+    "inventoryUniqueStrong": 1772,
+    "verseCount": 1533,
+    "wordCount": 20629,
+    "strongAssignmentCount": 20159
+  },
+  "selectionPolicy": {
+    "orderSource": "genesis-g2-calibration-batch.json high-frequency-missing order",
+    "excludeAlreadyProcessedBatch01": true,
+    "excludeAlreadyProcessedBatch02": true,
+    "excludeAlreadyProcessedBatch03": true,
+    "excludeActiveBatch04": true,
+    "excludeR4": true,
+    "excludeApprovedControlH776": true,
+    "batchShape": "single-item tail batch because H1571 is the only remaining unprocessed high-frequency-missing calibration item after those exclusions",
+    "purpose": "Start the next Genesis research batch without waiting for Batch04 promotion or R4 external audits."
+  },
+  "targets": [
+    {
+      "strong": "H1571",
+      "occurrences": 94,
+      "chapters": [3,4,6,7,10,13,14,15,16,17,19,20,21,22,24,26,27,29,30,31,32,33,35,37,38,40,42,43,44,46,47,48,50],
+      "firstReference": "Gen.3.6",
+      "sampleLemma": "1571",
+      "sampleSurface": "גַּם",
+      "coverage": "missing",
+      "calibrationCategory": "high-frequency-missing",
+      "calibrationOrder": 60
+    }
+  ],
+  "checks": {
+    "requested": 1,
+    "found": 1,
+    "totalOccurrences": 94,
+    "knownBatch04Overlap": 0,
+    "r4Overlap": 0,
+    "approvedControlH776Overlap": 0
+  },
+  "governance": {
+    "researchOnly": true,
+    "sourceEvidenceRequired": true,
+    "actualGenesisContextMorphologyRequired": true,
+    "fullBdbHierarchyCrosscheckRequired": true,
+    "publicResearchFirstRequired": true,
+    "candidateMutationAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false,
+    "qualityGateWeakeningAllowed": false,
+    "selfApprovalAllowed": false
+  },
+  "nextGate": "PIN_H1571_PRIMARY_BDB_AND_TBESH_SOURCE_NODE_THEN_EXTRACT_ACTUAL_GENESIS_CONTEXT_MORPHOLOGY"
+}
