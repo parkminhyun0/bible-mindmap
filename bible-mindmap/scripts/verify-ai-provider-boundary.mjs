@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const repoRoot = path.resolve(root, '..');
 const srcDir = path.join(root, 'src');
 const errors = [];
 
@@ -35,6 +36,8 @@ for (const file of sourceFiles) {
 const gitignore = fs.readFileSync(path.join(root, '.gitignore'), 'utf8');
 if (!/^\.env(?:\.\*)?$/m.test(gitignore) && !/^\.env\*/m.test(gitignore)) errors.push('.gitignore: .env 계열 비밀 파일 제외 규칙이 없음');
 
+// Generic server-only provider adapters remain valid for non-lexicon features
+// such as search/embedding/reranking. They must never leak into the browser.
 const nvidiaProviderPath = path.join(root, 'scripts/ai/providers/nvidia.mjs');
 if (!fs.existsSync(nvidiaProviderPath)) errors.push('scripts/ai/providers/nvidia.mjs 누락');
 else {
@@ -53,16 +56,37 @@ else {
   }
 }
 
-const runnerPath = path.join(root, 'scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs');
-if (!fs.existsSync(runnerPath)) errors.push('Genesis G2 blind translation runner 누락');
+// Lexicon semantic generation no longer uses provider runners. Fixed-four policy
+// requires GPT/Jarvis/Claude/Gemini evidence roles and forbids legacy provider/local execution.
+const retiredLexiconPaths = [
+  'scripts/ai/lexicon/run-genesis-g2-blind-translation.mjs',
+  '../.github/workflows/genesis-g2-canary-execute.yml',
+  '../.github/workflows/genesis-g2-calibration-execute.yml',
+  '../.github/workflows/genesis-g2-provider-preflight.yml',
+  '../.github/workflows/genesis-g2-blind-translation.yml',
+];
+for (const relative of retiredLexiconPaths) {
+  const absolute = path.resolve(root, relative);
+  if (fs.existsSync(absolute)) errors.push(`원어사전 legacy provider 실행 경로가 다시 존재함: ${relative}`);
+}
+
+const fixedFourPolicyPath = path.join(repoRoot, 'docs/lexicon-workflow/FOUR_LLM_ONLY_POLICY.md');
+if (!fs.existsSync(fixedFourPolicyPath)) errors.push('FOUR_LLM_ONLY_POLICY.md 누락');
 else {
-  const runner = fs.readFileSync(runnerPath, 'utf8');
-  for (const required of ['GENESIS_G2_TRANSLATION_EXECUTION_ENABLED', 'LEXICON_TRANSLATION_KILL_SWITCH', 'productionWriteAllowed']) {
-    if (!runner.includes(required)) errors.push(`Genesis G2 실행 경계 누락: ${required}`);
+  const policy = fs.readFileSync(fixedFourPolicyPath, 'utf8');
+  for (const required of ['GPT', '자비스', 'Claude', 'Gemini', 'HOLD', 'DISPUTE']) {
+    if (!policy.includes(required)) errors.push(`fixed-four policy 필수 계약 누락: ${required}`);
   }
-  const contractPath = path.join(root, 'scripts/ai/lexicon/genesis-g2-translation-contract.mjs');
-  const contract = fs.existsSync(contractPath) ? fs.readFileSync(contractPath, 'utf8') : '';
-  if (!contract.includes('otherProviderOutputIncluded')) errors.push('Genesis G2 블라인드 격리 계약 누락: otherProviderOutputIncluded');
+}
+
+const lukeGatePath = path.join(root, 'data/lexicon/luke-g2-execution-gate.json');
+if (!fs.existsSync(lukeGatePath)) errors.push('Luke fixed-four Gate 누락');
+else {
+  const gate = JSON.parse(fs.readFileSync(lukeGatePath, 'utf8'));
+  if (JSON.stringify(gate.allowedActors) !== JSON.stringify(['gpt', 'jarvis', 'claude', 'gemini'])) errors.push('Luke fixed-four actor set 불일치');
+  if (gate.executionPolicy?.localModelExecutionAllowed !== false) errors.push('Luke localModelExecutionAllowed must be false');
+  if (gate.executionPolicy?.unlistedLlmAllowed !== false) errors.push('Luke unlistedLlmAllowed must be false');
+  if (gate.adjudication?.perEntryUserSemanticApprovalRequired !== false) errors.push('per-entry user semantic approval must be false');
 }
 
 const rerankerPath = path.join(root, 'scripts/ai/providers/nvidia-reranker.mjs');
@@ -86,4 +110,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`✓ AI provider 경계 통과 · 클라이언트 파일 ${sourceFiles.length}개 검사 · NVIDIA/OpenAI 비밀키·직접 endpoint 없음 · 서버 전용 실행 경계 확인`);
+console.log(`✓ AI provider 경계 통과 · 클라이언트 ${sourceFiles.length}개 비밀키/직접 endpoint 없음 · generic server adapters 보존 · lexicon legacy provider 실행 경로 부재 · fixed-four 정책 확인`);
