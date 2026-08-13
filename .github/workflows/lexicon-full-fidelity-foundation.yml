@@ -1,0 +1,29 @@
+name: Lexicon Full-Fidelity Foundation
+on:
+  pull_request:
+    paths:
+      - 'docs/lexicon-workflow/**'
+      - 'bible-mindmap/data/lexicon/**'
+      - 'bible-mindmap/scripts/**lexicon**'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  full-fidelity-contract:
+    name: full-fidelity contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: fixed-four policy
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-four-llm-only-policy.mjs
+      - name: Luke full-fidelity policy
+        working-directory: bible-mindmap
+        run: node scripts/verify-luke-g2-four-llm-policy.mjs
+      - name: registry regression
+        working-directory: bible-mindmap
+        run: node scripts/verify-lexicon-registry-universal-regression.mjs

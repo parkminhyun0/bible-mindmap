@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "luke-g2-full-fidelity-report-v1",
+  "type": "object",
+  "required": ["strong","lemma","rightsVerdict","sourceWork","digitalDataset","datasetVersion","rightsBasis","sourceLocator","sourceUnitCount","koMappedUnitCount","missingSourceInformation","improperlyMergedSourceInformation","extraUnsupportedKoInformation","structureMismatch","qualifierMismatch","identityBoundaryMismatch","morphologyBoundaryMismatch","provenanceMissing","corpusAlignmentMismatch","theologicalOverreach","unresolved","verdict"],
+  "properties": {
+    "strong": {"type":"string","pattern":"^G[1-9][0-9]*$"},
+    "lemma": {"type":"string","minLength":1},
+    "rightsVerdict": {"enum":["PASS","LICENSE_HOLD","SOURCE_GAP"]},
+    "sourceWork": {"type":"string","minLength":1},
+    "digitalDataset": {"type":"string","minLength":1},
+    "datasetVersion": {"type":"string","minLength":1},
+    "rightsBasis": {"type":"string","minLength":1},
+    "sourceLocator": {"type":"string","minLength":1},
+    "sourceUnitCount": {"type":"integer","minimum":1},
+    "koMappedUnitCount": {"type":"integer","minimum":0},
+    "missingSourceInformation": {"type":"array"},
+    "improperlyMergedSourceInformation": {"type":"array"},
+    "extraUnsupportedKoInformation": {"type":"array"},
+    "structureMismatch": {"type":"array"},
+    "qualifierMismatch": {"type":"array"},
+    "identityBoundaryMismatch": {"type":"array"},
+    "morphologyBoundaryMismatch": {"type":"array"},
+    "provenanceMissing": {"type":"array"},
+    "corpusAlignmentMismatch": {"type":"array"},
+    "theologicalOverreach": {"type":"array"},
+    "unresolved": {"type":"array"},
+    "verdict": {"enum":["PASS","HOLD","DISPUTE"]}
+  },
+  "additionalProperties": true
+}

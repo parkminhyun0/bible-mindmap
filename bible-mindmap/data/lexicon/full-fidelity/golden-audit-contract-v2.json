@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 2,
+  "contractId": "lexicon-full-fidelity-golden-audit-v2",
+  "policyDoc": "docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md",
+  "sampling": {"perBookMinPercent":3,"perBookMaxPercent":5,"perBatchMinPerFiveHundred":20,"selectionSeedRule":"sha256(batchId + mergeCommit + '/golden-audit')","selectionAlgorithm":"seeded-shuffle-take"},
+  "blindingRules": {"originalVerdictHidden":true,"originalReviewerHidden":true,"candidateOnlyPresented":true,"sourcePacketPresented":true,"requiredActors":["GPT","자비스","Claude","Gemini"]},
+  "thresholds": {"perBookDiscrepancyRatePercentHalt":5,"perBatchDiscrepancyRatePercentHalt":10,"haltAction":"auto-halt-batch-promotion"}
+}

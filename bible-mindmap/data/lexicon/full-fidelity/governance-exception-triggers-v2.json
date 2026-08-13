@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 2,
+  "triggersId": "lexicon-full-fidelity-governance-exceptions-v2",
+  "policyDoc": "docs/lexicon-workflow/LICENSE_SAFE_FULL_FIDELITY_66BOOKS.md",
+  "principle": "정상 Strong의 의미 판정은 자동 Evidence 절차로 처리한다. 개별 의미 충돌은 HOLD/DISPUTE로 격리한다.",
+  "triggers": [
+    {"id":"rights-license-policy-decision","failClosed":true},
+    {"id":"existing-approved-data-governance","failClosed":true},
+    {"id":"theology-translation-policy-change","failClosed":true},
+    {"id":"system-governance-change","failClosed":true},
+    {"id":"golden-audit-regression","failClosed":true},
+    {"id":"production-screen-confirmation","failClosed":true}
+  ],
+  "semanticConflictDisposition":"HOLD_OR_DISPUTE"
+}
