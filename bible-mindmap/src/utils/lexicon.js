@@ -5,6 +5,7 @@
 
 import { isOT } from '../data/bibleBooks';
 import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
+import { strongNumberForExternalLink } from './strongLink.js';
 
 const BASE = import.meta.env.BASE_URL; // ex: "/bible-mindmap/"
 
@@ -109,7 +110,7 @@ const _chunkDefCache = new Map(); // 'gnt-3' → Promise<{G3004:{d,e,k,l,t}}>
 const CHUNK_SZ = 1000;
 
 function strongsChunkIdx(strongNum) {
-  const n = parseInt(strongNum.replace(/^[GH]/, ''), 10);
+  const n = parseInt(strongNumberForExternalLink(strongNum), 10);
   return Math.floor((n - 1) / CHUNK_SZ);
 }
 
@@ -308,6 +309,12 @@ export function linkifyDefinition(html, isHebrew) {
       const num = code.replace(/[a-z]+$/i, '');
       return LINK(`https://biblehub.com/twot/${num}.htm`, m);
     })
-    .replace(/\bH(\d{3,5})\b/g, (m, n) => LINK(`https://biblehub.com/hebrew/${n}.htm`, m))
-    .replace(/\bG(\d{3,5})\b/g, (m, n) => LINK(`https://biblehub.com/greek/${n}.htm`, m));
+    .replace(/\bH(\d{1,5}[a-z]?)\b/g, (m) => {
+      const num = strongNumberForExternalLink(m);
+      return num ? LINK(`https://biblehub.com/hebrew/${num}.htm`, m) : m;
+    })
+    .replace(/\bG(\d{1,5}[a-z]?)\b/g, (m) => {
+      const num = strongNumberForExternalLink(m);
+      return num ? LINK(`https://biblehub.com/greek/${num}.htm`, m) : m;
+    });
 }

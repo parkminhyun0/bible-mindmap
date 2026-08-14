@@ -15,6 +15,7 @@
     "verify:residual-risks": "node scripts/verify-system-audit-residual-risks.mjs",
     "verify:canonical-usage": "node scripts/verify-canonical-usage-completeness.mjs",
     "verify:verse-loader": "node scripts/verify-verse-loader-regression.mjs",
+    "verify:strong-link": "node scripts/verify-strong-external-link-policy.mjs",
     "verify:people": "node scripts/verify-biblical-people.mjs",
     "verify:transliteration-policy": "node scripts/verify-transliteration-policy.mjs",
     "verify:ai-candidates": "node scripts/verify-ai-candidates.mjs",
