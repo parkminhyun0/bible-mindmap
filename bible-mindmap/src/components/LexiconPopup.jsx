@@ -209,6 +209,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
   const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
   const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
+  // Korean transliteration is metadata, not dictionary translation. Prefer an
+  // explicitly supplied token value, then reuse the existing reviewed baseline
+  // transliteration already carried by KOREAN_GLOSS (for example H776 → 에레츠).
+  // Never synthesize a transliteration when neither source provides one.
+  const koreanTranslit = entry.translitKo || koreanGloss?.translitKo || null;
   const width = isMobile ? vw : popupSize.width;
   const height = isMobile ? Math.round(vh * 0.85) : popupSize.height;
   const margin = POPUP_VIEWPORT_MARGIN;
@@ -276,9 +281,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             </div>
             <div style={{ marginTop: 4, fontSize: 12, color: '#cbd5e1', display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'baseline' }}>
               {entry.tr && <span style={{ fontStyle: 'italic' }}>{entry.tr}</span>}
-              {entry.tr && entry.translitKo && <span style={{ color: '#64748b' }}>·</span>}
-              {entry.translitKo && <span data-testid="popup-translit-ko">{entry.translitKo}</span>}
-              {(entry.tr || entry.translitKo) && entry.s && <span style={{ color: '#64748b' }}>·</span>}
+              {entry.tr && koreanTranslit && <span style={{ color: '#64748b' }}>·</span>}
+              {koreanTranslit && <span data-testid="popup-translit-ko">{koreanTranslit}</span>}
+              {(entry.tr || koreanTranslit) && entry.s && <span style={{ color: '#64748b' }}>·</span>}
               {entry.s && (
                 <a
                   href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
@@ -446,7 +451,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 18 }}>{entry.l || '—'}</span>
                 </MorphCard>
                 {entry.tr && <MorphCard label="학술 음역"><span style={{ fontStyle: 'italic' }}>{entry.tr}</span></MorphCard>}
-                {entry.translitKo && <MorphCard label="한글 음역">{entry.translitKo}</MorphCard>}
+                {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
                 <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
                 {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
                 {entry.g && <MorphCard label="기본뜻">{entry.g}</MorphCard>}
