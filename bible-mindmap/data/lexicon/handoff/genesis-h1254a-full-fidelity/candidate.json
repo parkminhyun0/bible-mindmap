@@ -1,0 +1,1155 @@
+{
+  "schemaVersion": 2,
+  "candidateId": "GEN-FF-H1254a-GPT-v1",
+  "book": "GEN",
+  "baseStrong": "H1254",
+  "sourceStrong": "H1254a",
+  "language": "hebrew",
+  "status": "candidate",
+  "supersedesCandidate": {
+    "candidateId": "GEN-P5-H1254-H1254a-GPT-v1",
+    "candidateFingerprint": "sha256:b99fc8722919cbf124b378ff2d5aeb926ba16a67d7c8b1f47059c0e475bb8b60",
+    "preservation": "historical-evidence-only"
+  },
+  "approvedBaseline": {
+    "approvedEvidenceFingerprint": "sha256:43a91cd4c50101a46d2a4c7459198f63c46d789c3700ba6ce0276b520cae7f84",
+    "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa",
+    "approvedNodeCount": 9,
+    "mutationAllowed": false
+  },
+  "sourceBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+  "sourceInputFingerprint": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+  "parserOutputFingerprint": "sha256:3d89787bcec7d1ab32e32d42a57adb44a05550308bc8e881f960d95122070ab9",
+  "identity": {
+    "lemma": "בָּרָא",
+    "lemmaNormalized": "בָּרָא",
+    "transliterationScientific": "bārāʾ",
+    "transliterationKo": "바라",
+    "partOfSpeech": "V",
+    "primaryGlossKo": "창조하다, 빚다",
+    "notesKo": "Qal의 창조·형성, Niphal의 수동적 창조/생성, Piel의 베어 쓰러뜨리다·베어내다를 분리한다. 창조 신학을 사전 의미에 추가하지 않는다."
+  },
+  "risk": {
+    "tier": "R3",
+    "flags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "nextGate": "JARVIS_C1_C6_INDEPENDENT_VERIFICATION"
+  },
+  "nodes": [
+    {
+      "sourceNodeId": "1",
+      "textKo": "בָּרָא, 동사: 빚다, 만들다, 창조하다. 칼형에서는 빚다·형성하다·창조하다, 니팔형에서는 수동으로 창조되다와 새롭고 놀라운 것의 생겨남, 피엘형에서는 베어 쓰러뜨리다·베어내다를 뜻한다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "polysemy",
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1",
+      "textKo": "칼형: 빚다, 형성하다, 창조하다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2",
+      "textKo": "니팔형: 수동으로 창조되다. 새롭고 놀라운 것이 생겨나는 것과 관련된다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2.1",
+      "textKo": "창조되다.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.2",
+      "textKo": "생겨남 또는 출생과 관련하여.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.3",
+      "textKo": "새롭고 놀라운 어떤 것이 생겨나는 것.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.3",
+      "textKo": "피엘형: 베어 쓰러뜨리다, 베어내다.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.3.1",
+      "textKo": "베어 쓰러뜨리다.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.3.2",
+      "textKo": "베어내다.",
+      "confidence": 0.89,
+      "riskFlags": []
+    }
+  ],
+  "sourceAccount": [
+    {
+      "accountId": "BDB-H1254a-QAL-FORMS",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-form-list",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Qal form inventory: perfect, imperfect, infinitive, imperative, participle, and suffixed forms.",
+      "sourceElements": {
+        "stem": "Qal",
+        "forms": [
+          {
+            "formClass": "Perfect",
+            "forms": [
+              "בָּרָא"
+            ],
+            "representativeRefs": [
+              "Gen 1:1"
+            ]
+          },
+          {
+            "formClass": "Imperfect",
+            "forms": [
+              "יִבְרָא",
+              "וַיִּבְרָא"
+            ],
+            "representativeRefs": [
+              "Gen 1:21",
+              "Gen 1:27",
+              "Num 16:30"
+            ]
+          },
+          {
+            "formClass": "InfinitiveConstruct",
+            "forms": [
+              "בְּרֹא"
+            ],
+            "representativeRefs": [
+              "Gen 5:1"
+            ]
+          },
+          {
+            "formClass": "Imperative",
+            "forms": [
+              "בְּרָא"
+            ],
+            "representativeRefs": [
+              "Ps 51:12"
+            ]
+          },
+          {
+            "formClass": "Participle",
+            "forms": [
+              "בּוֹרֵא"
+            ],
+            "representativeRefs": [
+              "Isa 42:5"
+            ]
+          },
+          {
+            "formClass": "Suffixed",
+            "forms": [
+              "בֹּרַאֲךָ",
+              "בּוֹרְאֶיךָ"
+            ],
+            "representativeRefs": [
+              "Isa 43:1",
+              "Eccl 12:1"
+            ]
+          }
+        ]
+      },
+      "relatedNodeIds": [
+        "1",
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-QAL-QUALIFIER",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-qualifier",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "always of divine activity",
+      "normalizedKo": "Qal 용법은 언제나 신적 활동을 나타내는 문맥에서 쓰인다는 BDB의 용법 제한.",
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-QAL-G1",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-usage-1",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Qal usage group 1: creation of cosmic, human, and creaturely objects.",
+      "usageGroup": 1,
+      "representativeRefs": [
+        "Gen 1:1",
+        "Gen 2:3",
+        "Isa 45:18",
+        "Gen 1:27",
+        "Gen 5:1",
+        "Gen 5:2",
+        "Gen 6:7",
+        "Deut 4:32",
+        "Ps 89:48",
+        "Isa 45:12",
+        "Isa 40:26",
+        "Isa 42:5",
+        "Isa 40:28",
+        "Ps 89:13",
+        "Amos 4:13",
+        "Gen 1:21"
+      ],
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-QAL-G2",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-usage-2",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Qal usage group 2: creating individual persons, Israel/Jacob, and related agents.",
+      "usageGroup": 2,
+      "representativeRefs": [
+        "Mal 2:10",
+        "Eccl 12:1",
+        "Isa 54:16",
+        "Isa 43:15",
+        "Isa 43:1",
+        "Isa 43:7"
+      ],
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-QAL-G3",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-usage-3",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Qal usage group 3: bringing about new conditions or circumstances.",
+      "usageGroup": 3,
+      "representativeRefs": [
+        "Isa 45:8",
+        "Isa 45:7",
+        "Isa 57:19",
+        "Jer 31:22",
+        "Num 16:30",
+        "Isa 4:5"
+      ],
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-QAL-G4",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-usage-4",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Qal usage group 4: transformation into a renewed or altered state.",
+      "usageGroup": 4,
+      "representativeRefs": [
+        "Ps 51:12",
+        "Isa 65:17",
+        "Isa 41:20",
+        "Isa 65:18"
+      ],
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-NIPH-FORMS",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Niphal-form-list",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Niphal form inventory: perfect, imperfect, infinitive with suffix, and participle.",
+      "sourceElements": {
+        "stem": "Niphal",
+        "forms": [
+          {
+            "formClass": "Perfect",
+            "forms": [
+              "נִבְרֵאתְ",
+              "נִבְרְאוּ"
+            ],
+            "representativeRefs": [
+              "Ezek 21:35",
+              "Exod 34:10"
+            ]
+          },
+          {
+            "formClass": "Imperfect",
+            "forms": [
+              "יִבָּרֵאוּן"
+            ],
+            "representativeRefs": [
+              "Ps 104:30"
+            ]
+          },
+          {
+            "formClass": "InfinitiveConstruct",
+            "forms": [
+              "הִבָּרַאֲךָ",
+              "הִבָּרְאָךְ",
+              "הִבָּרְאָם"
+            ],
+            "representativeRefs": [
+              "Ezek 28:13",
+              "Ezek 28:15",
+              "Gen 2:4",
+              "Gen 5:2"
+            ]
+          },
+          {
+            "formClass": "Participle",
+            "forms": [
+              "נִבְרָא"
+            ],
+            "representativeRefs": [
+              "Ps 102:19"
+            ]
+          }
+        ]
+      },
+      "relatedNodeIds": [
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-NIPH-1",
+      "sourceNodeId": "1.2.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Niphal-1",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "be created",
+      "representativeRefs": [
+        "Gen 2:4",
+        "Ps 104:30",
+        "Gen 5:2",
+        "Ps 148:5"
+      ],
+      "relatedNodeIds": [
+        "1.2.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-NIPH-2",
+      "sourceNodeId": "1.2.2",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Niphal-2",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Niphal usage with reference to birth or origin.",
+      "representativeRefs": [
+        "Ezek 21:35",
+        "Ezek 28:13",
+        "Ezek 28:15",
+        "Ps 102:19"
+      ],
+      "relatedNodeIds": [
+        "1.2.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-NIPH-3",
+      "sourceNodeId": "1.2.3",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Niphal-3",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Niphal usage for something new or astonishing.",
+      "representativeRefs": [
+        "Exod 34:10",
+        "Isa 48:6"
+      ],
+      "relatedNodeIds": [
+        "1.2.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-PIEL-FORMS",
+      "sourceNodeId": "1.3",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Piel-form-list",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Piel form inventory: perfect and infinitive absolute; no Genesis Piel occurrence is claimed.",
+      "sourceElements": {
+        "stem": "Piel",
+        "forms": [
+          {
+            "formClass": "Perfect",
+            "forms": [
+              "בֵּרֵאתָ",
+              "בֵּרֵאתוֹ"
+            ],
+            "representativeRefs": [
+              "Josh 17:15",
+              "Josh 17:18"
+            ]
+          },
+          {
+            "formClass": "InfinitiveAbsolute",
+            "forms": [
+              "בָּרֵא"
+            ],
+            "representativeRefs": [
+              "Ezek 21:24",
+              "Ezek 23:47"
+            ]
+          }
+        ],
+        "genesisOccurrence": false
+      },
+      "relatedNodeIds": [
+        "1.3",
+        "1.3.1",
+        "1.3.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-PIEL-1",
+      "sourceNodeId": "1.3.1",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Piel-1",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "cut down",
+      "representativeRefs": [
+        "Josh 17:15",
+        "Josh 17:18",
+        "Ezek 23:47"
+      ],
+      "relatedNodeIds": [
+        "1.3.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H1254a-PIEL-2",
+      "sourceNodeId": "1.3.2",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Piel-2",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "cut out",
+      "representativeRefs": [
+        "Ezek 21:24"
+      ],
+      "relatedNodeIds": [
+        "1.3.2"
+      ]
+    }
+  ],
+  "usageQualifier": [
+    {
+      "qualifier": "Qal은 BDB에서 신적 활동에 한정되는 용법으로 기술된다.",
+      "sourcePhrase": "always of divine activity",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-qualifier",
+      "appliesTo": [
+        "1.1",
+        "BDB-H1254a-QAL-G1",
+        "BDB-H1254a-QAL-G2",
+        "BDB-H1254a-QAL-G3",
+        "BDB-H1254a-QAL-G4"
+      ]
+    },
+    {
+      "qualifier": "Qal의 목적어는 창조·형성되는 대상이며 BDB의 네 usage group을 서로 합치지 않는다.",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Qal-usages",
+      "appliesTo": [
+        "1.1"
+      ]
+    },
+    {
+      "qualifier": "Piel의 베어내기 의미는 Qal의 창조 의미와 별도 의미 경계로 유지한다.",
+      "bdbLocator": "BrownDriverBriggs.xml:b.cw.aa#Piel",
+      "appliesTo": [
+        "1.3",
+        "1.3.1",
+        "1.3.2"
+      ]
+    }
+  ],
+  "representativeRefs": [
+    {
+      "ref": "Gen 1:1",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Gen 2:3",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Isa 45:18",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Gen 1:27",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Gen 5:1",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Gen 5:2",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Gen 6:7",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Deut 4:32",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ps 89:48",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 45:12",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 40:26",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 42:5",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 40:28",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ps 89:13",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Amos 4:13",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Gen 1:21",
+      "sourceAccountId": "BDB-H1254a-QAL-G1",
+      "stem": "Qal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Mal 2:10",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Eccl 12:1",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 54:16",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 43:15",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 43:1",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 43:7",
+      "sourceAccountId": "BDB-H1254a-QAL-G2",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 45:8",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 45:7",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 57:19",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Jer 31:22",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Num 16:30",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 4:5",
+      "sourceAccountId": "BDB-H1254a-QAL-G3",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ps 51:12",
+      "sourceAccountId": "BDB-H1254a-QAL-G4",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 65:17",
+      "sourceAccountId": "BDB-H1254a-QAL-G4",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 41:20",
+      "sourceAccountId": "BDB-H1254a-QAL-G4",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 65:18",
+      "sourceAccountId": "BDB-H1254a-QAL-G4",
+      "stem": "Qal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Gen 2:4",
+      "sourceAccountId": "BDB-H1254a-NIPH-1",
+      "stem": "Niphal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Ps 104:30",
+      "sourceAccountId": "BDB-H1254a-NIPH-1",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Gen 5:2",
+      "sourceAccountId": "BDB-H1254a-NIPH-1",
+      "stem": "Niphal",
+      "scope": "Genesis"
+    },
+    {
+      "ref": "Ps 148:5",
+      "sourceAccountId": "BDB-H1254a-NIPH-1",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ezek 21:35",
+      "sourceAccountId": "BDB-H1254a-NIPH-2",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ezek 28:13",
+      "sourceAccountId": "BDB-H1254a-NIPH-2",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ezek 28:15",
+      "sourceAccountId": "BDB-H1254a-NIPH-2",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ps 102:19",
+      "sourceAccountId": "BDB-H1254a-NIPH-2",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Exod 34:10",
+      "sourceAccountId": "BDB-H1254a-NIPH-3",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Isa 48:6",
+      "sourceAccountId": "BDB-H1254a-NIPH-3",
+      "stem": "Niphal",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Josh 17:15",
+      "sourceAccountId": "BDB-H1254a-PIEL-1",
+      "stem": "Piel",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Josh 17:18",
+      "sourceAccountId": "BDB-H1254a-PIEL-1",
+      "stem": "Piel",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ezek 23:47",
+      "sourceAccountId": "BDB-H1254a-PIEL-1",
+      "stem": "Piel",
+      "scope": "Canonical"
+    },
+    {
+      "ref": "Ezek 21:24",
+      "sourceAccountId": "BDB-H1254a-PIEL-2",
+      "stem": "Piel",
+      "scope": "Canonical"
+    }
+  ],
+  "genesisRefs": [
+    {
+      "ref": "Gen 1:1",
+      "tokenId": "01Nvk",
+      "form": "בָּרָא",
+      "morph": "HVqp3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 1:21",
+      "tokenId": "016kU",
+      "form": "וַ/יִּבְרָא",
+      "morph": "HC/Vqw3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 1:27",
+      "tokenId": "01jjy",
+      "form": "וַ/יִּבְרָא",
+      "morph": "HC/Vqw3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 1:27",
+      "tokenId": "01PUg",
+      "form": "בָּרָא",
+      "morph": "HVqp3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 1:27",
+      "tokenId": "01SAE",
+      "form": "בָּרָא",
+      "morph": "HVqp3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 2:3",
+      "tokenId": "013jG",
+      "form": "בָּרָא",
+      "morph": "HVqp3ms",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 2:4",
+      "tokenId": "016RX",
+      "form": "בְּ/הִבָּרְאָם",
+      "morph": "HR/VNc/Sp3mp",
+      "stem": "Niphal",
+      "sourceAccountId": "BDB-H1254a-NIPH-1"
+    },
+    {
+      "ref": "Gen 5:1",
+      "tokenId": "01pf7",
+      "form": "בְּרֹא",
+      "morph": "HVqc",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 5:2",
+      "tokenId": "015mW",
+      "form": "בְּרָאָם",
+      "morph": "HVqp3ms/Sp3mp",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    },
+    {
+      "ref": "Gen 5:2",
+      "tokenId": "01eKG",
+      "form": "הִבָּרְאָם",
+      "morph": "HVNc/Sp3mp",
+      "stem": "Niphal",
+      "sourceAccountId": "BDB-H1254a-NIPH-1"
+    },
+    {
+      "ref": "Gen 6:7",
+      "tokenId": "01e88",
+      "form": "בָּרָאתִי",
+      "morph": "HVqp1cs",
+      "stem": "Qal",
+      "sourceAccountId": "BDB-H1254a-QAL-G1"
+    }
+  ],
+  "morphologyForms": [
+    {
+      "stem": "Qal",
+      "formClass": "Perfect",
+      "forms": [
+        "בָּרָא",
+        "בְּרָאָם",
+        "בָּרָאתִי"
+      ],
+      "genesisEvidence": [
+        "Gen 1:1",
+        "Gen 1:27",
+        "Gen 2:3",
+        "Gen 5:2",
+        "Gen 6:7"
+      ],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Qal",
+      "formClass": "WawConsecutive/Imperfect",
+      "forms": [
+        "וַיִּבְרָא"
+      ],
+      "genesisEvidence": [
+        "Gen 1:21",
+        "Gen 1:27"
+      ],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Qal",
+      "formClass": "InfinitiveConstruct",
+      "forms": [
+        "בְּרֹא"
+      ],
+      "genesisEvidence": [
+        "Gen 5:1"
+      ],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Qal",
+      "formClass": "Imperative",
+      "forms": [
+        "בְּרָא"
+      ],
+      "canonicalEvidence": [
+        "Ps 51:12"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Qal",
+      "formClass": "Participle",
+      "forms": [
+        "בּוֹרֵא"
+      ],
+      "canonicalEvidence": [
+        "Isa 42:5"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Qal",
+      "formClass": "Suffixed",
+      "forms": [
+        "בֹּרַאֲךָ",
+        "בּוֹרְאֶיךָ"
+      ],
+      "canonicalEvidence": [
+        "Isa 43:1",
+        "Eccl 12:1"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "stem": "Niphal",
+      "formClass": "InfinitiveConstruct+Suffix",
+      "forms": [
+        "הִבָּרְאָם"
+      ],
+      "genesisEvidence": [
+        "Gen 2:4",
+        "Gen 5:2"
+      ],
+      "mapsToNodeIds": [
+        "1.2",
+        "1.2.1"
+      ]
+    },
+    {
+      "stem": "Niphal",
+      "formClass": "Perfect",
+      "forms": [
+        "נִבְרֵאתְ",
+        "נִבְרְאוּ"
+      ],
+      "canonicalEvidence": [
+        "Ezek 21:35",
+        "Exod 34:10"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.2.2",
+        "1.2.3"
+      ]
+    },
+    {
+      "stem": "Niphal",
+      "formClass": "Imperfect",
+      "forms": [
+        "יִבָּרֵאוּן"
+      ],
+      "canonicalEvidence": [
+        "Ps 104:30"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.2.1"
+      ]
+    },
+    {
+      "stem": "Niphal",
+      "formClass": "Participle",
+      "forms": [
+        "נִבְרָא"
+      ],
+      "canonicalEvidence": [
+        "Ps 102:19"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.2.2"
+      ]
+    },
+    {
+      "stem": "Piel",
+      "formClass": "Perfect",
+      "forms": [
+        "בֵּרֵאתָ",
+        "בֵּרֵאתוֹ"
+      ],
+      "canonicalEvidence": [
+        "Josh 17:15",
+        "Josh 17:18"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.3",
+        "1.3.1"
+      ]
+    },
+    {
+      "stem": "Piel",
+      "formClass": "InfinitiveAbsolute",
+      "forms": [
+        "בָּרֵא"
+      ],
+      "canonicalEvidence": [
+        "Ezek 21:24",
+        "Ezek 23:47"
+      ],
+      "genesisEvidence": [],
+      "mapsToNodeIds": [
+        "1.3",
+        "1.3.1",
+        "1.3.2"
+      ]
+    }
+  ],
+  "rightsBasis": {
+    "sourceWork": "Brown–Driver–Briggs Hebrew and English Lexicon",
+    "sourceEdition": "1906",
+    "sourceWorkRights": "Public Domain",
+    "digitalDataset": "Open Scriptures Hebrew Lexicon",
+    "datasetPath": "BrownDriverBriggs.xml",
+    "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "license": "CC BY 4.0",
+    "attribution": "Open Scriptures Hebrew Bible Project",
+    "derivativeUse": "Korean translation and structured derivative redistribution allowed with attribution/change notice",
+    "excludedCanonicalSources": [
+      "BibleHub scraped lexicon content",
+      "NAS-derived copyrighted lexicon/concordance content without compatible permission",
+      "HELPS Word-studies without compatible permission",
+      "site-authored topical lexicon content without compatible permission"
+    ]
+  },
+  "nodeTraceability": [
+    {
+      "nodeId": "1",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-QAL-FORMS",
+        "BDB-H1254a-QAL-QUALIFIER",
+        "BDB-H1254a-NIPH-FORMS",
+        "BDB-H1254a-PIEL-FORMS"
+      ]
+    },
+    {
+      "nodeId": "1.1",
+      "disposition": "UNCHANGED_WITH_METADATA_EXPANSION",
+      "sourceAccounts": [
+        "BDB-H1254a-QAL-FORMS",
+        "BDB-H1254a-QAL-QUALIFIER",
+        "BDB-H1254a-QAL-G1",
+        "BDB-H1254a-QAL-G2",
+        "BDB-H1254a-QAL-G3",
+        "BDB-H1254a-QAL-G4"
+      ]
+    },
+    {
+      "nodeId": "1.2",
+      "disposition": "UNCHANGED_WITH_METADATA_EXPANSION",
+      "sourceAccounts": [
+        "BDB-H1254a-NIPH-FORMS"
+      ]
+    },
+    {
+      "nodeId": "1.2.1",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-NIPH-1"
+      ]
+    },
+    {
+      "nodeId": "1.2.2",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-NIPH-2"
+      ]
+    },
+    {
+      "nodeId": "1.2.3",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-NIPH-3"
+      ]
+    },
+    {
+      "nodeId": "1.3",
+      "disposition": "UNCHANGED_WITH_METADATA_EXPANSION",
+      "sourceAccounts": [
+        "BDB-H1254a-PIEL-FORMS"
+      ]
+    },
+    {
+      "nodeId": "1.3.1",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-PIEL-1"
+      ]
+    },
+    {
+      "nodeId": "1.3.2",
+      "disposition": "UNCHANGED",
+      "sourceAccounts": [
+        "BDB-H1254a-PIEL-2"
+      ]
+    }
+  ],
+  "fullFidelityResolution": {
+    "sourceAccountComplete": true,
+    "qalFormListRepresented": true,
+    "divineActivityQualifierRepresented": true,
+    "fourQalUsageGroupsRepresented": true,
+    "representativeRefsComplete": true,
+    "genesisRefsComplete": true,
+    "morphologyFormsComplete": true,
+    "niphalPreserved": true,
+    "pielPreserved": true,
+    "rightsBasisSerialized": true,
+    "koreanSenseSourceTraceabilityComplete": true,
+    "unsupportedSemanticExpansionDetected": false,
+    "bdbQualifierLossDetected": false,
+    "gapResolvedForResearchHandoff": true,
+    "approvalClaimed": false
+  },
+  "generator": {
+    "role": "gpt-genesis-research",
+    "model": "GPT-5.6 Sol",
+    "sourceOnly": true,
+    "otherModelOutputUsed": false
+  },
+  "governance": {
+    "candidateOnly": true,
+    "finalApprovalAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false
+  },
+  "candidateFingerprint": "sha256:eeb90cc35d04b703e2f7102cc1d7bbf6fcf074f63f191b1ff8229ec88b07c625"
+}
