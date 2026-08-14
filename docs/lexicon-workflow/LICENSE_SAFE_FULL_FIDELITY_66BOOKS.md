@@ -5,7 +5,7 @@
 Genesis와 Luke는 콘텐츠·브랜치·PR을 분리하지만 검증 기준은 동일하다. 새 책도 이 규정을 상속한다.
 
 ## 권위와 AI
-의미 권위는 `원문 → 문맥/형태론/용례 → Rights-PASS 공개 원어사전 → Rights-PASS 공개 신학·어휘자료 → GPT·자비스·Claude·Gemini 독립 분석` 순서다. 모델 다수결은 권위가 아니다. 허용 AI는 네 역할뿐이며 제5 LLM·로컬/Ollama·임시 tie-breaker는 금지한다. 사용자는 정상 Strong 의미를 항목별로 고르지 않는다. 미해결은 `HOLD/DISPUTE`다.
+의미 권위는 `원문 → 문맥/형태론/용례 → Rights-PASS 공개 원어사전 → Rights-PASS 공개 신학·어휘자료 → GPT · 자비스 · Claude · Gemini 독립 분석` 순서다. 모델 다수결은 권위가 아니다. 허용 AI는 **GPT · 자비스 · Claude · Gemini** 네 역할뿐이며 제5 LLM·로컬/Ollama·임시 tie-breaker는 금지한다. 사용자는 정상 Strong 의미를 항목별로 고르지 않는다. 미해결은 `HOLD/DISPUTE`다.
 
 ## C0 Rights
 Lexical source 사용 전에 original work와 exact digital dataset을 별개로 심사하고 `sourceWork/sourceEdition/digitalDataset/datasetVersion/sourceLocator/rightsBasis/attribution/changeNotice/externalLlmInputAllowed/derivativeTranslationAllowed/fullTextStorageAllowed/redistributionAllowed/retrievedAt/contentFingerprint`를 고정한다. 불명확하면 `LICENSE_HOLD`. 제3자 웹 화면은 canonical ingest source가 아니다.
