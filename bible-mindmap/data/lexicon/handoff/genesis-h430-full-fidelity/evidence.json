@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "GEN-FF-H430-EVIDENCE-v1",
+  "book": "GEN",
+  "strong": "H430",
+  "lemma": "אֱלֹהִים",
+  "candidateId": "GEN-FF-H430-GPT-v1",
+  "candidateFingerprint": "sha256:38581e4194ec20447cfee4b584af4cbfb6e85dac9028a40f81aa7e5387d89c20",
+  "authoritativeSources": [
+    {
+      "sourceId": "openscriptures-hebrewlexicon-bdb",
+      "work": "Brown-Driver-Briggs Hebrew and English Lexicon",
+      "locator": "BrownDriverBriggs.xml:a.dl.ad",
+      "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "role": "canonical lexical ingest",
+      "rights": "BDB original public domain; Open Scriptures dataset CC BY 4.0"
+    },
+    {
+      "sourceId": "bdb-1906-print-text-crosscheck",
+      "work": "Brown-Driver-Briggs Hebrew and English Lexicon (1906)",
+      "locator": "אֱלֹהִים entry, page 43ff.",
+      "role": "public-domain print qualifier/reference cross-check",
+      "canonicalIngest": false
+    },
+    {
+      "sourceId": "openscriptures-morphhb-genesis",
+      "work": "Open Scriptures Hebrew Bible / morphology",
+      "locator": "wlc/Gen.xml",
+      "role": "Genesis token and morphology evidence",
+      "rights": "CC BY 4.0"
+    },
+    {
+      "sourceId": "genesis-license-safe-reaudit-2026-08-13",
+      "repositoryPath": "bible-mindmap/reports/genesis-license-safe-reaudit-2026-08-13.json",
+      "role": "rights admission",
+      "sourceInputFingerprint": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0"
+    },
+    {
+      "sourceId": "legacy-p5-candidate",
+      "repositoryPath": "bible-mindmap/data/lexicon/candidates/genesis-p5/core-theology-context.json",
+      "candidateId": "GEN-P5-H430-H430-GPT-v1",
+      "candidateFingerprint": "sha256:02664e787a8128b60111e81b254d01362cd4230e98cf9897de54d365accad89e",
+      "role": "protected Korean baseline"
+    }
+  ],
+  "lexicalCoverage": {
+    "sourceNodeCountIncludingSummaryRoot": 13,
+    "materialBdbChildNodesAccounted": 12,
+    "sourceAccountCount": 13,
+    "usageQualifierCount": 4,
+    "representativeRefRecordCount": 62,
+    "genesisTokenEvidenceCount": 12,
+    "morphologyFormCount": 5,
+    "senseGroups": [
+      {
+        "id": "1",
+        "label": "plural in number",
+        "children": [
+          "1a",
+          "1b",
+          "1c",
+          "1d"
+        ]
+      },
+      {
+        "id": "2",
+        "label": "plural intensive",
+        "children": [
+          "2a",
+          "2b",
+          "2c",
+          "2d"
+        ]
+      },
+      {
+        "id": "3",
+        "label": "הָאֱלֹהִים the (true) God"
+      },
+      {
+        "id": "4",
+        "label": "אֱלֹהִים = God"
+      }
+    ]
+  },
+  "genesisCorpusEvidence": {
+    "scope": "verified representative token evidence sufficient for merged H430 classifier and Jarvis review; not asserted here as exhaustive H430 Genesis concordance",
+    "records": [
+      {
+        "ref": "Gen 1:3",
+        "tokenId": "01JM7",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.0",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:4",
+        "tokenId": "01v6U",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.0.0",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:6",
+        "tokenId": "01hh7",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:9",
+        "tokenId": "01PzC",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1.1",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:16",
+        "tokenId": "01XyU",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:17",
+        "tokenId": "01cn3",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.0",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:18",
+        "tokenId": "016qf",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "0.0",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:20",
+        "tokenId": "01dAC",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.2",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:21",
+        "tokenId": "01kDm",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "0.0",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:24",
+        "tokenId": "014fv",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1.1",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:26",
+        "tokenId": "01azZ",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1",
+        "sourceAccountIds": [
+          "BDB-H430-4"
+        ]
+      },
+      {
+        "ref": "Gen 1:27",
+        "tokenId": "0179E",
+        "surface": "אֱלֹהִים",
+        "lemma": "430",
+        "morph": "HNcmpa",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H430-4",
+          "BDB-H430-1B"
+        ]
+      }
+    ],
+    "observedMorphCode": "HNcmpa",
+    "note": "Genesis 1 token evidence confirms the noun's plural absolute morphology. Article/construct/intensive categories are preserved from BDB lexical evidence and broader canonical references."
+  },
+  "integrity": {
+    "approvedRegistryMutation": false,
+    "approvedH430SnapshotMutation": false,
+    "approvedEvidenceFingerprintMutation": false,
+    "h776Mutation": false,
+    "productionWrite": false,
+    "approvalClaimed": false,
+    "legacyKoreanNodesChanged": false
+  },
+  "limitations": [
+    "This packet is a research candidate, not an approval or Registry promotion.",
+    "Genesis token records are representative verified corpus evidence, not an exhaustive concordance claim.",
+    "BDB print references/qualifiers are preserved as public-domain lexical cross-check evidence; canonical digital ingest remains the pinned Open Scriptures dataset."
+  ]
+}
