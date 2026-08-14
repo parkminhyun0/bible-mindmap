@@ -1,0 +1,1527 @@
+{
+  "schemaVersion": 2,
+  "candidateId": "GEN-FF-H3117-GPT-v1",
+  "book": "GEN",
+  "baseStrong": "H3117",
+  "sourceStrong": "H3117",
+  "language": "hebrew",
+  "status": "candidate",
+  "supersedesCandidate": {
+    "candidateId": "GEN-P5-H3117-H3117-GPT-v1",
+    "candidateFingerprint": "sha256:170972a3fc2c7f5bd70f470f0259a935b13a0c0eeaf81367f3a9fedb0876048e",
+    "preservation": "historical-evidence-only"
+  },
+  "approvedBaseline": {
+    "approvedEvidenceFingerprint": "sha256:d9e507deef6c67856506ef06465e1adf85451b9d384515a65954f18f0a0f635e",
+    "sourceLocator": "BrownDriverBriggs.xml:j.ay.aa",
+    "approvedNodeCount": 8,
+    "mutationAllowed": false
+  },
+  "sourceBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+  "sourceInputFingerprint": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+  "parserOutputFingerprint": "sha256:72f8c48ef3ae92c7c87d39674990a144162b91061fbeccb644f8c593f74b73cc",
+  "identity": {
+    "lemma": "יוֹם",
+    "lemmaNormalized": "יוֹם",
+    "transliterationScientific": "yôm",
+    "transliterationKo": "욤",
+    "partOfSpeech": "N",
+    "primaryGlossKo": "날, 하루, 때",
+    "notesKo": "낮과 밤의 대조, 시간 단위, 생애의 날들, 때, 여호와의 날 등 문맥별 의미를 구분한다. 창세기 창조 문맥의 시간론을 사전 정의만으로 확정하지 않는다."
+  },
+  "risk": {
+    "tier": "R3",
+    "flags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "nextGate": "JARVIS_C1_C6_INDEPENDENT_VERIFICATION"
+  },
+  "nodes": [
+    {
+      "sourceNodeId": "1",
+      "textKo": "יוֹם, 남성 명사: 날. 밤과 대조되는 낮, 시간의 구분으로서의 날, 여호와의 날, 사람의 생애를 이루는 날들, 날들, 때, 여러 관용 표현에 쓰인다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "polysemy",
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1",
+      "textKo": "밤과 대조되는 낮, 날.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2",
+      "textKo": "시간을 나누는 단위로서의 날.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.3",
+      "textKo": "יוֹם י׳, 여호와의 날: 주로 그가 심판하러 오시는 때를 가리키며, 의인에게 복을 수반하는 경우가 많다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.4",
+      "textKo": "어떤 사람의 날들, 곧 그 사람에게 속한 생애의 날들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.5",
+      "textKo": "날들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.6",
+      "textKo": "יוֹם이 ‘때’를 뜻하는 용법.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.7",
+      "textKo": "여러 관용 표현.",
+      "confidence": 0.89,
+      "riskFlags": []
+    }
+  ],
+  "sourceAccount": [
+    {
+      "accountId": "BDB-H3117-HEADER-FORMS",
+      "sourceNodeId": "1",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#header-form-inventory",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Masculine noun יוֹם 'day'; BDB print form inventory includes absolute and construct singular, suffixed singular, dual, plural, plural construct, and plural suffixed forms.",
+      "sourceElements": {
+        "partOfSpeech": "noun",
+        "gender": "masculine",
+        "forms": [
+          {
+            "formClass": "AbsoluteSingular",
+            "forms": [
+              "יוֹם"
+            ]
+          },
+          {
+            "formClass": "ConstructSingular",
+            "forms": [
+              "יוֹם"
+            ]
+          },
+          {
+            "formClass": "SuffixedSingular",
+            "forms": [
+              "יוֹמְךָ",
+              "יוֹמוֹ",
+              "יוֹמָם"
+            ]
+          },
+          {
+            "formClass": "Dual",
+            "forms": [
+              "יוֹמַיִם",
+              "יוֹמָיִם",
+              "יֹמַיִם",
+              "יֹמָיִם"
+            ]
+          },
+          {
+            "formClass": "AbsolutePlural",
+            "forms": [
+              "יָמִים",
+              "יָמִם",
+              "יָמִין"
+            ]
+          },
+          {
+            "formClass": "ConstructPlural",
+            "forms": [
+              "יְמֵי",
+              "יְמוֹת"
+            ]
+          },
+          {
+            "formClass": "SuffixedPlural",
+            "forms": [
+              "יָמַי",
+              "יָמָי",
+              "יָמֵינוּ"
+            ]
+          }
+        ]
+      },
+      "relatedNodeIds": [
+        "1"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S1",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-1",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "day, opp. night",
+      "representativeRefs": [
+        "Gen 1:5",
+        "Gen 1:14",
+        "Gen 1:16",
+        "Gen 1:18",
+        "Gen 7:4",
+        "Gen 8:22",
+        "Gen 18:1",
+        "Gen 29:7",
+        "Gen 31:39"
+      ],
+      "relatedNodeIds": [
+        "1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-2",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "Day as division of time",
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2A-WORKDAY",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2a-working-day",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "Working-day usage as a division of time.",
+      "representativeRefs": [
+        "Exod 20:9",
+        "Exod 20:10",
+        "Exod 16:26",
+        "Exod 23:12",
+        "Lev 23:3"
+      ],
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2B-JOURNEY",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2b-days-journey",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "A day or multiple days as a measure of journey.",
+      "representativeRefs": [
+        "Num 11:31",
+        "1 Kgs 19:4",
+        "Jonah 3:4",
+        "Gen 30:36",
+        "Gen 31:23"
+      ],
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2C-DURATION",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2c-duration",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "Days used to denote duration of acts or states.",
+      "representativeRefs": [
+        "Gen 7:4",
+        "Gen 7:10",
+        "Gen 7:17",
+        "Gen 7:24",
+        "Gen 8:3",
+        "Gen 8:6",
+        "Gen 8:10",
+        "Gen 8:12"
+      ],
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2d-evening-morning",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "Day defined by evening and morning in the Genesis creation sequence.",
+      "representativeRefs": [
+        "Gen 1:5",
+        "Gen 1:8",
+        "Gen 1:13",
+        "Gen 1:19",
+        "Gen 1:23",
+        "Gen 1:31",
+        "Gen 2:2",
+        "Gen 2:3",
+        "Exod 20:11"
+      ],
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2e-day-of-month",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "Day of a month specified by ordinal or date expression.",
+      "representativeRefs": [
+        "Gen 7:11",
+        "Gen 8:4",
+        "Gen 8:14",
+        "Exod 12:6",
+        "Exod 12:18"
+      ],
+      "relatedNodeIds": [
+        "1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BDB-1906:yom#2f-defined-by-clause",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "A particular day characterized by a substantive, infinitive, or clause.",
+      "representativeRefs": [
+        "Gen 35:3",
+        "Gen 40:20",
+        "Judg 13:7",
+        "Isa 22:5",
+        "Isa 58:5"
+      ],
+      "relatedNodeIds": [
+        "1.2",
+        "1.7"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S3-YHWH",
+      "sourceNodeId": "1.3",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-3",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "day of Yahweh, chiefly as time of his coming in judgment, involving often blessedness for righteous",
+      "representativeRefs": [
+        "Amos 5:18",
+        "Amos 5:20",
+        "Isa 2:12",
+        "Isa 13:6",
+        "Isa 13:9",
+        "Zeph 1:7",
+        "Zeph 1:14",
+        "Obad 1:15",
+        "Zech 14:1",
+        "Joel 1:15"
+      ],
+      "relatedNodeIds": [
+        "1.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S4-LIFETIME",
+      "sourceNodeId": "1.4",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-4",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Plural 'days' of a person, including life, age, lifetime, or the period of a person's activity.",
+      "representativeRefs": [
+        "Gen 5:4",
+        "Gen 5:8",
+        "Gen 5:11",
+        "Gen 6:3",
+        "Gen 9:29",
+        "Gen 11:32",
+        "Gen 25:7",
+        "Gen 47:8",
+        "Gen 47:9",
+        "Gen 47:29"
+      ],
+      "relatedNodeIds": [
+        "1.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "sourceNodeId": "1.4",
+      "bdbLocator": "BDB-1906:yom#4b-in-the-days-of",
+      "captureMode": "public-domain-print-crosscheck",
+      "capturedText": "The days of someone as the lifetime, reign, or period of activity in which an event occurred.",
+      "representativeRefs": [
+        "Gen 10:25",
+        "Gen 14:1",
+        "Judg 5:6",
+        "2 Sam 21:1",
+        "1 Kgs 16:34"
+      ],
+      "relatedNodeIds": [
+        "1.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S5-DAYS",
+      "sourceNodeId": "1.5",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-5",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Plural 'days' used for an indefinite, short, or long span of time.",
+      "representativeRefs": [
+        "Gen 4:3",
+        "Gen 21:34",
+        "Gen 24:55",
+        "Gen 26:8",
+        "Gen 27:44",
+        "Gen 37:34",
+        "Gen 38:12",
+        "Gen 40:4"
+      ],
+      "relatedNodeIds": [
+        "1.5"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S6-TIME",
+      "sourceNodeId": "1.6",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-6",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "יוֹם = time",
+      "representativeRefs": [
+        "Gen 25:24",
+        "Gen 30:14",
+        "Deut 24:15",
+        "Prov 25:13",
+        "Josh 3:15"
+      ],
+      "relatedNodeIds": [
+        "1.6"
+      ]
+    },
+    {
+      "accountId": "BDB-H3117-S7-PHRASES",
+      "sourceNodeId": "1.7",
+      "bdbLocator": "BrownDriverBriggs.xml:j.ay.aa#sense-7",
+      "captureMode": "normalized-source-account",
+      "capturedText": "Phrases with יוֹם, including today/tomorrow, one-day expressions, construct-before-verbal clauses, and repeated day-by-day expressions.",
+      "representativeRefs": [
+        "Gen 4:14",
+        "Gen 27:45",
+        "Gen 30:33",
+        "Gen 31:43",
+        "Gen 39:10",
+        "Exod 13:4",
+        "Exod 19:10",
+        "Ps 56:4",
+        "Ps 56:10"
+      ],
+      "relatedNodeIds": [
+        "1.7"
+      ]
+    }
+  ],
+  "usageQualifier": [
+    {
+      "qualifierId": "H3117-Q1",
+      "text": "יוֹם은 남성 명사이며, 단수·쌍수·복수와 연계형·접미형 등 다양한 형태가 BDB 표제에 제시된다.",
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS"
+      ]
+    },
+    {
+      "qualifierId": "H3117-Q2",
+      "text": "‘밤과 대조되는 낮’과 ‘시간 구분 단위로서의 날’을 서로 다른 BDB 의미 경계로 유지한다.",
+      "sourceAccountIds": [
+        "BDB-H3117-S1",
+        "BDB-H3117-S2"
+      ]
+    },
+    {
+      "qualifierId": "H3117-Q3",
+      "text": "יוֹם י׳ ‘여호와의 날’은 주로 심판을 위해 오시는 때를 가리키며, 의인에게 복을 수반하는 경우가 많다는 BDB 제한을 보존한다.",
+      "sourceAccountIds": [
+        "BDB-H3117-S3-YHWH"
+      ]
+    },
+    {
+      "qualifierId": "H3117-Q4",
+      "text": "복수 ‘날들’은 사람의 생애·나이·활동 기간을 나타낼 수 있으며, 일반적인 불특정 기간 용법과 구분한다.",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME",
+        "BDB-H3117-S5-DAYS"
+      ]
+    },
+    {
+      "qualifierId": "H3117-Q5",
+      "text": "창세기 1장의 ‘저녁과 아침으로 규정되는 날’은 BDB의 시간 구분 용례로 보존하되, 사전 데이터만으로 창조일의 신학적 길이를 확정하지 않는다.",
+      "sourceAccountIds": [
+        "BDB-H3117-S2D-EVENING-MORNING"
+      ]
+    }
+  ],
+  "representativeRefs": [
+    {
+      "ref": "Gen 1:5",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:14",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:16",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:18",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:4",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:22",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 18:1",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 29:7",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 31:39",
+      "sourceAccountId": "BDB-H3117-S1",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 20:9",
+      "sourceAccountId": "BDB-H3117-S2A-WORKDAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 20:10",
+      "sourceAccountId": "BDB-H3117-S2A-WORKDAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 16:26",
+      "sourceAccountId": "BDB-H3117-S2A-WORKDAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 23:12",
+      "sourceAccountId": "BDB-H3117-S2A-WORKDAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Lev 23:3",
+      "sourceAccountId": "BDB-H3117-S2A-WORKDAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Num 11:31",
+      "sourceAccountId": "BDB-H3117-S2B-JOURNEY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "1 Kgs 19:4",
+      "sourceAccountId": "BDB-H3117-S2B-JOURNEY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Jonah 3:4",
+      "sourceAccountId": "BDB-H3117-S2B-JOURNEY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 30:36",
+      "sourceAccountId": "BDB-H3117-S2B-JOURNEY",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 31:23",
+      "sourceAccountId": "BDB-H3117-S2B-JOURNEY",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:4",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:10",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:17",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:24",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:3",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:6",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:10",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:12",
+      "sourceAccountId": "BDB-H3117-S2C-DURATION",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:5",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:8",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:13",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:19",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:23",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 1:31",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 2:2",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 2:3",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 20:11",
+      "sourceAccountId": "BDB-H3117-S2D-EVENING-MORNING",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 7:11",
+      "sourceAccountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:4",
+      "sourceAccountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 8:14",
+      "sourceAccountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 12:6",
+      "sourceAccountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 12:18",
+      "sourceAccountId": "BDB-H3117-S2E-DAY-OF-MONTH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 35:3",
+      "sourceAccountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 40:20",
+      "sourceAccountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Judg 13:7",
+      "sourceAccountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Isa 22:5",
+      "sourceAccountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Isa 58:5",
+      "sourceAccountId": "BDB-H3117-S2F-DEFINED-DAY",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Amos 5:18",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Amos 5:20",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Isa 2:12",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Isa 13:6",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Isa 13:9",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Zeph 1:7",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Zeph 1:14",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Obad 1:15",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Zech 14:1",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Joel 1:15",
+      "sourceAccountId": "BDB-H3117-S3-YHWH",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 5:4",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 5:8",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 5:11",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 6:3",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 9:29",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 11:32",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 25:7",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 47:8",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 47:9",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 47:29",
+      "sourceAccountId": "BDB-H3117-S4-LIFETIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 10:25",
+      "sourceAccountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 14:1",
+      "sourceAccountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Judg 5:6",
+      "sourceAccountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "2 Sam 21:1",
+      "sourceAccountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "1 Kgs 16:34",
+      "sourceAccountId": "BDB-H3117-S4-HISTORICAL-DAYS",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 4:3",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 21:34",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 24:55",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 26:8",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 27:44",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 37:34",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 38:12",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 40:4",
+      "sourceAccountId": "BDB-H3117-S5-DAYS",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 25:24",
+      "sourceAccountId": "BDB-H3117-S6-TIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 30:14",
+      "sourceAccountId": "BDB-H3117-S6-TIME",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Deut 24:15",
+      "sourceAccountId": "BDB-H3117-S6-TIME",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Prov 25:13",
+      "sourceAccountId": "BDB-H3117-S6-TIME",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Josh 3:15",
+      "sourceAccountId": "BDB-H3117-S6-TIME",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 4:14",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 27:45",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 30:33",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 31:43",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Gen 39:10",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "Genesis",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 13:4",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Exod 19:10",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Ps 56:4",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    },
+    {
+      "ref": "Ps 56:10",
+      "sourceAccountId": "BDB-H3117-S7-PHRASES",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-public-domain-crosscheck"
+    }
+  ],
+  "genesisRefs": [
+    {
+      "ref": "Gen 1:5",
+      "tokenId": "01wrL",
+      "surface": "י֔וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "1.1",
+      "sourceAccountIds": [
+        "BDB-H3117-S1"
+      ]
+    },
+    {
+      "ref": "Gen 1:5",
+      "tokenId": "013TS",
+      "surface": "י֥וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S2D-EVENING-MORNING"
+      ]
+    },
+    {
+      "ref": "Gen 5:5",
+      "tokenId": "01Npb",
+      "surface": "יְמֵ֤י",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 8:3",
+      "tokenId": "01hjj",
+      "surface": "יֽוֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 8:4",
+      "tokenId": "01c3h",
+      "surface": "י֖וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "1.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2E-DAY-OF-MONTH"
+      ]
+    },
+    {
+      "ref": "Gen 8:6",
+      "tokenId": "0153W",
+      "surface": "י֑וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "1",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 39:10",
+      "tokenId": "01spw",
+      "surface": "י֑וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "1",
+      "sourceAccountIds": [
+        "BDB-H3117-S7-PHRASES"
+      ]
+    },
+    {
+      "ref": "Gen 40:12",
+      "tokenId": "01erx",
+      "surface": "יָמִ֖ים",
+      "lemma": "3117",
+      "morph": "HNcmpa",
+      "oshbSense": "0.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 40:13",
+      "tokenId": "01XDT",
+      "surface": "יָמִ֗ים",
+      "lemma": "3117",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1.1",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 40:18",
+      "tokenId": "01ias",
+      "surface": "יָמִ֖ים",
+      "lemma": "3117",
+      "morph": "HNcmpa",
+      "oshbSense": "0.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 40:19",
+      "tokenId": "01KAh",
+      "surface": "יָמִ֗ים",
+      "lemma": "3117",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1.1",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 40:20",
+      "tokenId": "01cey",
+      "surface": "בַּ/יּ֣וֹם",
+      "lemma": "b/3117",
+      "morph": "HRd/Ncmsa",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S2F-DEFINED-DAY"
+      ]
+    },
+    {
+      "ref": "Gen 40:20",
+      "tokenId": "01Rtu",
+      "surface": "י֚וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsc",
+      "oshbSense": "1.1.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2F-DEFINED-DAY"
+      ]
+    },
+    {
+      "ref": "Gen 47:8",
+      "tokenId": "01XUt",
+      "surface": "יְמֵ֖י",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": "0.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 47:9",
+      "tokenId": "01NoZ",
+      "surface": "יְמֵי֙",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": "1.1.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 47:9",
+      "tokenId": "01Gy8",
+      "surface": "יְמֵי֙",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": "0.2.0",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 47:9",
+      "tokenId": "01fcB",
+      "surface": "יְמֵי֙",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": "0.1.1",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 47:28",
+      "tokenId": "01buu",
+      "surface": "יְמֵֽי",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 47:29",
+      "tokenId": "01fQX",
+      "surface": "יְמֵֽי",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    },
+    {
+      "ref": "Gen 50:3",
+      "tokenId": "01mWy",
+      "surface": "י֔וֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "1.1",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 50:3",
+      "tokenId": "01R3p",
+      "surface": "יְמֵ֣י",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 50:3",
+      "tokenId": "01jYf",
+      "surface": "יֽוֹם",
+      "lemma": "3117",
+      "morph": "HNcmsa",
+      "oshbSense": "0",
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    },
+    {
+      "ref": "Gen 50:4",
+      "tokenId": "01MRK",
+      "surface": "יְמֵ֣י",
+      "lemma": "3117",
+      "morph": "HNcmpc",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H3117-S2C-DURATION"
+      ]
+    }
+  ],
+  "morphologyForms": [
+    {
+      "formClass": "AbsoluteSingular",
+      "stem": "nominal",
+      "form": "יוֹם",
+      "morphCode": "HNcmsa",
+      "descriptionKo": "남성 단수 절대형.",
+      "evidenceRefs": [
+        "Gen 1:5",
+        "Gen 8:3",
+        "Gen 8:4",
+        "Gen 8:6",
+        "Gen 50:3"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S1",
+        "BDB-H3117-S2"
+      ]
+    },
+    {
+      "formClass": "ConstructSingular",
+      "stem": "nominal",
+      "form": "יוֹם",
+      "morphCode": "HNcmsc",
+      "descriptionKo": "남성 단수 연계형. 뒤따르는 명사·부정사·절과 결합하여 ‘~의 날/때’를 이룬다.",
+      "evidenceRefs": [
+        "Gen 2:4",
+        "Gen 40:20"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S2F-DEFINED-DAY",
+        "BDB-H3117-S7-PHRASES"
+      ]
+    },
+    {
+      "formClass": "AbsolutePlural",
+      "stem": "nominal",
+      "form": "יָמִים",
+      "morphCode": "HNcmpa",
+      "descriptionKo": "남성 복수 절대형.",
+      "evidenceRefs": [
+        "Gen 40:12",
+        "Gen 40:13",
+        "Gen 40:18",
+        "Gen 40:19"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S5-DAYS"
+      ]
+    },
+    {
+      "formClass": "ConstructPlural",
+      "stem": "nominal",
+      "form": "יְמֵי",
+      "morphCode": "HNcmpc",
+      "descriptionKo": "남성 복수 연계형. 생애의 날들·어떤 시대의 날들 등의 구문에 쓰인다.",
+      "evidenceRefs": [
+        "Gen 5:5",
+        "Gen 47:8",
+        "Gen 47:9",
+        "Gen 47:28",
+        "Gen 47:29"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S4-LIFETIME",
+        "BDB-H3117-S4-HISTORICAL-DAYS"
+      ]
+    },
+    {
+      "formClass": "Dual",
+      "stem": "nominal",
+      "form": "יוֹמַיִם",
+      "descriptionKo": "쌍수형 ‘이틀’. BDB 표제 form-list에 별도 보존된다.",
+      "evidenceRefs": [
+        "Exod 21:21",
+        "Exod 16:29",
+        "Num 11:19",
+        "Num 9:22",
+        "Hos 6:2"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS"
+      ]
+    },
+    {
+      "formClass": "SuffixedSingular",
+      "stem": "nominal",
+      "form": "יוֹמְךָ / יוֹמוֹ / יוֹמָם",
+      "descriptionKo": "단수 접미형. ‘너의/그의/그들의 날’ 용법.",
+      "evidenceRefs": [
+        "Jer 50:31",
+        "Exod 5:13",
+        "Jer 50:27"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S7-PHRASES"
+      ]
+    },
+    {
+      "formClass": "SuffixedPlural",
+      "stem": "nominal",
+      "form": "יָמַי / יָמָי / יָמֵינוּ",
+      "descriptionKo": "복수 접미형. ‘나의 날들/우리의 날들’ 등의 용법.",
+      "evidenceRefs": [
+        "Job 7:6",
+        "Gen 29:21",
+        "Jer 35:8"
+      ],
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS",
+        "BDB-H3117-S4-LIFETIME"
+      ]
+    }
+  ],
+  "rightsBasis": {
+    "originalWork": "Brown-Driver-Briggs Hebrew and English Lexicon (1906)",
+    "originalWorkRights": "Public Domain",
+    "digitalDataset": "Open Scriptures Hebrew Lexicon",
+    "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "datasetPaths": [
+      "BrownDriverBriggs.xml",
+      "LexicalIndex.xml",
+      "BDBPartsOfSpeech.xml",
+      "AugIndex.xml"
+    ],
+    "license": "CC BY 4.0",
+    "attribution": "Open Scriptures Hebrew Bible Project",
+    "derivativeKoreanTranslationAllowed": true,
+    "structuredRedistributionAllowed": true,
+    "changeNoticeRequired": true,
+    "canonicalIngestSource": "Open Scriptures Hebrew Lexicon",
+    "printCrosscheckPolicy": "Public-domain BDB 1906 print structure/references may be used only as cross-check; third-party electronic editorial content is not canonical ingest.",
+    "excludedCanonicalSources": [
+      "BibleHub scraped lexicon content",
+      "NAS-derived copyrighted lexicon/concordance content without explicit compatible permission",
+      "HELPS Word-studies without explicit compatible permission"
+    ]
+  },
+  "nodeTraceability": [
+    {
+      "sourceNodeId": "1",
+      "status": "unchanged",
+      "koreanText": "יוֹם, 남성 명사: 날. 밤과 대조되는 낮, 시간의 구분으로서의 날, 여호와의 날, 사람의 생애를 이루는 날들, 날들, 때, 여러 관용 표현에 쓰인다.",
+      "sourceAccountIds": [
+        "BDB-H3117-HEADER-FORMS"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1",
+      "status": "unchanged",
+      "koreanText": "밤과 대조되는 낮, 날.",
+      "sourceAccountIds": [
+        "BDB-H3117-S1"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2",
+      "status": "unchanged",
+      "koreanText": "시간을 나누는 단위로서의 날.",
+      "sourceAccountIds": [
+        "BDB-H3117-S2",
+        "BDB-H3117-S2A-WORKDAY",
+        "BDB-H3117-S2B-JOURNEY",
+        "BDB-H3117-S2C-DURATION",
+        "BDB-H3117-S2D-EVENING-MORNING",
+        "BDB-H3117-S2E-DAY-OF-MONTH",
+        "BDB-H3117-S2F-DEFINED-DAY"
+      ]
+    },
+    {
+      "sourceNodeId": "1.3",
+      "status": "unchanged",
+      "koreanText": "יוֹם י׳, 여호와의 날: 주로 그가 심판하러 오시는 때를 가리키며, 의인에게 복을 수반하는 경우가 많다.",
+      "sourceAccountIds": [
+        "BDB-H3117-S3-YHWH"
+      ]
+    },
+    {
+      "sourceNodeId": "1.4",
+      "status": "unchanged",
+      "koreanText": "어떤 사람의 날들, 곧 그 사람에게 속한 생애의 날들.",
+      "sourceAccountIds": [
+        "BDB-H3117-S4-LIFETIME",
+        "BDB-H3117-S4-HISTORICAL-DAYS"
+      ]
+    },
+    {
+      "sourceNodeId": "1.5",
+      "status": "unchanged",
+      "koreanText": "날들.",
+      "sourceAccountIds": [
+        "BDB-H3117-S5-DAYS"
+      ]
+    },
+    {
+      "sourceNodeId": "1.6",
+      "status": "unchanged",
+      "koreanText": "יוֹם이 ‘때’를 뜻하는 용법.",
+      "sourceAccountIds": [
+        "BDB-H3117-S6-TIME"
+      ]
+    },
+    {
+      "sourceNodeId": "1.7",
+      "status": "unchanged",
+      "koreanText": "여러 관용 표현.",
+      "sourceAccountIds": [
+        "BDB-H3117-S2F-DEFINED-DAY",
+        "BDB-H3117-S7-PHRASES"
+      ]
+    }
+  ],
+  "fullFidelityGapResolution": {
+    "sevenBdbSenseGroupsRepresented": true,
+    "bdbFormInventoryRepresented": true,
+    "dayVsNightBoundaryPreserved": true,
+    "divisionOfTimeSubstructureRepresented": true,
+    "dayOfYahwehQualifierPreserved": true,
+    "lifetimeDaysBoundaryPreserved": true,
+    "indefiniteDaysBoundaryPreserved": true,
+    "timeSensePreserved": true,
+    "phraseSensePreserved": true,
+    "genesisCreationDayEvidenceRepresentedWithoutTheologicalDurationClaim": true,
+    "koreanSenseSourceTraceabilityComplete": true,
+    "unsupportedSemanticExpansionDetected": false,
+    "bdbQualifierLossDetected": false,
+    "gapResolved": true
+  },
+  "generator": {
+    "role": "gpt-primary-research",
+    "model": "GPT-5.6 Sol",
+    "sourceOnly": true,
+    "otherModelOutputUsed": false
+  },
+  "governance": {
+    "candidateOnly": true,
+    "finalApprovalAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false
+  },
+  "candidateFingerprint": "sha256:8f959407c575ddb16fbb6a9a4e1d9fd0ea74c2d0b83e2de66c4ecd0afcd8a72a"
+}

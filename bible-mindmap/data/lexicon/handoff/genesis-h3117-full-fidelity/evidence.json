@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "GEN-FF-H3117-EVIDENCE-v1",
+  "book": "GEN",
+  "strong": "H3117",
+  "lemma": "יוֹם",
+  "candidateId": "GEN-FF-H3117-GPT-v1",
+  "candidateFingerprint": "sha256:8f959407c575ddb16fbb6a9a4e1d9fd0ea74c2d0b83e2de66c4ecd0afcd8a72a",
+  "authoritativeSources": [
+    {
+      "sourceId": "openscriptures-hebrewlexicon-bdb",
+      "work": "Brown-Driver-Briggs Hebrew and English Lexicon",
+      "locator": "BrownDriverBriggs.xml:j.ay.aa",
+      "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "role": "canonical lexical ingest",
+      "rights": "BDB original public domain; Open Scriptures dataset CC BY 4.0"
+    },
+    {
+      "sourceId": "bdb-1906-print-crosscheck",
+      "work": "Brown-Driver-Briggs Hebrew and English Lexicon (1906)",
+      "locator": "יוֹם entry, pp. 398–401",
+      "role": "public-domain form/qualifier/reference cross-check",
+      "canonicalIngest": false
+    },
+    {
+      "sourceId": "openscriptures-morphhb-genesis",
+      "work": "Open Scriptures Hebrew Bible / morphology",
+      "locator": "wlc/Gen.xml",
+      "role": "Genesis token and morphology evidence",
+      "rights": "CC BY 4.0"
+    },
+    {
+      "sourceId": "genesis-license-safe-reaudit-2026-08-13",
+      "repositoryPath": "bible-mindmap/reports/genesis-license-safe-reaudit-2026-08-13.json",
+      "role": "rights admission",
+      "sourceInputFingerprint": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0"
+    },
+    {
+      "sourceId": "legacy-p5-candidate",
+      "repositoryPath": "bible-mindmap/data/lexicon/candidates/genesis-p5/core-theology-context.json",
+      "candidateId": "GEN-P5-H3117-H3117-GPT-v1",
+      "candidateFingerprint": "sha256:170972a3fc2c7f5bd70f470f0259a935b13a0c0eeaf81367f3a9fedb0876048e",
+      "role": "protected Korean baseline"
+    },
+    {
+      "sourceId": "claude-independent-audit",
+      "repositoryPath": "bible-mindmap/reports/genesis-p5-claude-audit-results.json",
+      "auditId": "AUDIT-GEN-P5-H3117-H3117-GPT-v1",
+      "verdict": "PASS",
+      "role": "prior independent parity audit; not a substitute for Full-Fidelity C1–C6"
+    }
+  ],
+  "lexicalCoverage": {
+    "sourceNodeCountIncludingSummaryRoot": 8,
+    "xmlChildSenseCount": 7,
+    "sourceAccountCount": 15,
+    "usageQualifierCount": 5,
+    "representativeRefRecordCount": 93,
+    "genesisTokenEvidenceCount": 23,
+    "morphologyFormCount": 7,
+    "senseGroups": [
+      {
+        "id": "1",
+        "label": "day, opposed to night"
+      },
+      {
+        "id": "2",
+        "label": "Day as division of time",
+        "printSubgroups": [
+          "working-day",
+          "journey",
+          "duration",
+          "evening/morning",
+          "day of month",
+          "defined day"
+        ]
+      },
+      {
+        "id": "3",
+        "label": "day of Yahweh"
+      },
+      {
+        "id": "4",
+        "label": "days of anyone / lifetime / period of activity"
+      },
+      {
+        "id": "5",
+        "label": "Days — indefinite or long time"
+      },
+      {
+        "id": "6",
+        "label": "יוֹם = time"
+      },
+      {
+        "id": "7",
+        "label": "Phrases"
+      }
+    ]
+  },
+  "genesisCorpusEvidence": {
+    "scope": "verified representative Genesis OSHB token evidence across major H3117 sense/morphology classes; not asserted as exhaustive concordance",
+    "records": [
+      {
+        "ref": "Gen 1:5",
+        "tokenId": "01wrL",
+        "surface": "י֔וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "1.1",
+        "sourceAccountIds": [
+          "BDB-H3117-S1"
+        ]
+      },
+      {
+        "ref": "Gen 1:5",
+        "tokenId": "013TS",
+        "surface": "י֥וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S2D-EVENING-MORNING"
+        ]
+      },
+      {
+        "ref": "Gen 5:5",
+        "tokenId": "01Npb",
+        "surface": "יְמֵ֤י",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 8:3",
+        "tokenId": "01hjj",
+        "surface": "יֽוֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 8:4",
+        "tokenId": "01c3h",
+        "surface": "י֖וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "1.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2E-DAY-OF-MONTH"
+        ]
+      },
+      {
+        "ref": "Gen 8:6",
+        "tokenId": "0153W",
+        "surface": "י֑וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "1",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 39:10",
+        "tokenId": "01spw",
+        "surface": "י֑וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "1",
+        "sourceAccountIds": [
+          "BDB-H3117-S7-PHRASES"
+        ]
+      },
+      {
+        "ref": "Gen 40:12",
+        "tokenId": "01erx",
+        "surface": "יָמִ֖ים",
+        "lemma": "3117",
+        "morph": "HNcmpa",
+        "oshbSense": "0.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 40:13",
+        "tokenId": "01XDT",
+        "surface": "יָמִ֗ים",
+        "lemma": "3117",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1.1",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 40:18",
+        "tokenId": "01ias",
+        "surface": "יָמִ֖ים",
+        "lemma": "3117",
+        "morph": "HNcmpa",
+        "oshbSense": "0.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 40:19",
+        "tokenId": "01KAh",
+        "surface": "יָמִ֗ים",
+        "lemma": "3117",
+        "morph": "HNcmpa",
+        "oshbSense": "1.1.1",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 40:20",
+        "tokenId": "01cey",
+        "surface": "בַּ/יּ֣וֹם",
+        "lemma": "b/3117",
+        "morph": "HRd/Ncmsa",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S2F-DEFINED-DAY"
+        ]
+      },
+      {
+        "ref": "Gen 40:20",
+        "tokenId": "01Rtu",
+        "surface": "י֚וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsc",
+        "oshbSense": "1.1.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2F-DEFINED-DAY"
+        ]
+      },
+      {
+        "ref": "Gen 47:8",
+        "tokenId": "01XUt",
+        "surface": "יְמֵ֖י",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": "0.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 47:9",
+        "tokenId": "01NoZ",
+        "surface": "יְמֵי֙",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": "1.1.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 47:9",
+        "tokenId": "01Gy8",
+        "surface": "יְמֵי֙",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": "0.2.0",
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 47:9",
+        "tokenId": "01fcB",
+        "surface": "יְמֵי֙",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": "0.1.1",
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 47:28",
+        "tokenId": "01buu",
+        "surface": "יְמֵֽי",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 47:29",
+        "tokenId": "01fQX",
+        "surface": "יְמֵֽי",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S4-LIFETIME"
+        ]
+      },
+      {
+        "ref": "Gen 50:3",
+        "tokenId": "01mWy",
+        "surface": "י֔וֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "1.1",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 50:3",
+        "tokenId": "01R3p",
+        "surface": "יְמֵ֣י",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 50:3",
+        "tokenId": "01jYf",
+        "surface": "יֽוֹם",
+        "lemma": "3117",
+        "morph": "HNcmsa",
+        "oshbSense": "0",
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      },
+      {
+        "ref": "Gen 50:4",
+        "tokenId": "01MRK",
+        "surface": "יְמֵ֣י",
+        "lemma": "3117",
+        "morph": "HNcmpc",
+        "oshbSense": null,
+        "sourceAccountIds": [
+          "BDB-H3117-S2C-DURATION"
+        ]
+      }
+    ],
+    "observedMorphCodes": [
+      "HNcmpa",
+      "HNcmpc",
+      "HNcmsa",
+      "HNcmsc",
+      "HRd/Ncmsa"
+    ],
+    "note": "Creation-day tokens are represented as lexical/corpus evidence only. No theological claim about the duration of Genesis creation days is encoded."
+  },
+  "integrity": {
+    "approvedRegistryMutation": false,
+    "approvedH3117SnapshotMutation": false,
+    "approvedEvidenceFingerprintMutation": false,
+    "h776Mutation": false,
+    "productionWrite": false,
+    "approvalClaimed": false,
+    "legacyKoreanNodesChanged": false
+  },
+  "limitations": [
+    "This packet is a research candidate, not an approval or Registry promotion.",
+    "Genesis token records are representative verified corpus evidence, not an exhaustive H3117 concordance.",
+    "BDB 1906 print structure/references are used only for public-domain cross-check; canonical digital ingest remains the pinned Open Scriptures dataset.",
+    "No lexical definition is used to decide the theological duration of the Genesis creation days."
+  ]
+}
