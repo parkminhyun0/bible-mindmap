@@ -50,12 +50,39 @@
 3. `verify:strong-link`는 `prebuild`/`predev` 체인에 넣지 않았다(다른 자동화와의 충돌 회피). **CI 필수 검사로 편입되지 않은 상태**이며, 편입은 별도 과제로 분리한다.
 4. `LexiconPopup.jsx`의 3개 인라인 정규화는 이미 정상 동작하므로 손대지 않았다. 헬퍼 일원화는 후속 과제.
 
+## ⚠️ 사고 기록 · 저장소 자동화의 무승인 자동 병합 (2026-08-14 추가)
+
+**사용자는 "병합은 내가 한다"고 명시했고 0-lead는 병합하지 않았으나, 저장소 자동화가 PR #367을 사람 승인 없이 자동 병합했다.**
+
+- `merged_by = github-actions[bot]` · `merged_at = 2026-08-14T07:44:48Z` · squash → **main `42eac141`**
+- 사람 리뷰 승인 0건 (제출된 review는 `github-advanced-security[bot]`의 COMMENTED 1건뿐)
+- 판정 경로: `lexicon-human-approval` = `ordinary-auto: no approved lexicon data touched` → 일반 lane → `Ordinary Auto Merge` / `Safe auto merge` 워크플로가 병합
+- 병합 후 `Deploy to GitHub Pages` SUCCESS → **수정 사항이 이미 라이브에 반영됨**
+- 0-lead는 `gh pr merge`를 호출하지 않았고 auto-merge를 활성화하지도 않았다. Draft 지정도 하지 않았다(일반 PR로 생성).
+
+### 2차 피해와 조치
+
+자동 병합이 **CodeQL 수정 커밋 이전 시점(`17dcd3ca`)** 을 대상으로 실행되어, 반복 1회차의 수정이 main에 들어가지 못했다. 결과적으로 **main에 고위험 CodeQL 경보 1건이 열린 상태로 남았다** (`js/incomplete-url-substring-sanitization` @ `scripts/verify-strong-external-link-policy.mjs:53`).
+
+- 조치: `pipeline/task-strong-link-codeql` 브랜치를 `origin/main` 기준으로 만들어 CodeQL 수정을 cherry-pick하고 **PR #368을 Draft로 생성**했다.
+- **Draft로 생성한 이유**: 이 저장소에서 Draft는 auto-merge를 차단하는 검증된 방법(노션 2026-08-13 Delivery canary 기록)이며, 사용자가 직접 병합하겠다는 지시를 자동화로부터 보호하기 위한 유일한 수단이다.
+- PR #367 브랜치(`pipeline/task-strong-link`)에는 PR head 동기화 유도용 빈 커밋(`e9faf103`)이 남아 있다. 이미 병합·종료된 브랜치이므로 삭제 여부는 사용자 판단에 맡긴다.
+
+### 다음 사이클 규칙 개정 (반드시 반영)
+
+1. **PR은 Draft로 생성한다.** 사용자가 병합 주체인 이상, 일반 PR로 열면 이 저장소의 auto-merge 워크플로가 사람 승인 없이 병합할 수 있다.
+2. **로컬 verifier·oxlint PASS만으로 사이클을 닫지 않는다.** PR CI의 CodeQL 결과까지 확인한 뒤 최종 판정한다(이번에 CodeQL 경보를 사후에 발견한 원인).
+3. 사이클 종료 전 `merged_by`를 확인해 의도치 않은 자동 병합이 있었는지 점검한다.
+
 ## 후속 조치
 
-- [x] `gh` CLI로 PR 생성 (Draft 아님, auto-merge·self-approve 없음)
-- [ ] **병합은 사용자(박 목사님)가 수행** — 0-lead는 병합하지 않는다
-- [ ] 병합·배포 후 `H0776` 계열 링크가 BibleHub `/hebrew/776.htm`으로 실제 이동하는지 사용자 화면 확인
-- [x] 노션 「하루 작업 브리핑」에 결과 요약 추가
+- [x] `gh` CLI로 PR #367 생성 (0-lead는 병합하지 않음)
+- [x] ~~병합은 사용자가 수행~~ → **저장소 자동화가 무승인 자동 병합함** (위 사고 기록 참조). main `42eac141` · Pages 배포 완료
+- [x] CodeQL 수정 후속 PR **#368 Draft** 생성 — 병합은 사용자
+- [ ] **PR #368 병합은 사용자(박 목사님)가 수행** (Ready for review 전환 후)
+- [ ] 라이브에서 `H0776` 계열 링크가 BibleHub `/hebrew/776.htm`으로 실제 이동하는지 사용자 화면 확인
+- [ ] auto-merge 워크플로가 사람 승인 없이 일반 lane PR을 병합하는 현행 동작을 유지할지 사용자 결정 필요
+- [x] 노션 「하루 작업 브리핑」에 결과 요약 및 자동 병합 사고 기록 추가
 
 ## 다른 자동화와의 간섭 점검
 
