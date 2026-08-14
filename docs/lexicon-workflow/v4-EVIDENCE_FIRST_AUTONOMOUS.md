@@ -1,81 +1,93 @@
 # License-Safe Full-Fidelity Lexicon Workflow — Current Policy SSOT
 
-**Status**: ACTIVE · supersedes the previous Evidence-First v4 and pre-license Full-Fidelity completion/workflow models.
-**Compatibility path**: this file keeps its historical filename so existing agents and CI references do not break. Its contents are the current policy and former v4/pre-license rules must not be used for completion decisions.
+**Status**: ACTIVE · mandatory.
+**Supersedes**: all previous Evidence-First v4, pre-license Full-Fidelity, Genesis-only BDB-presentation, and `Approved/Live = quality complete` rules.
 **Runtime authority**: GitHub-derived `main → active lexicon PR → exact head → CI/review/deploy` first; Notion mirrors current operational state.
 
 ## 0. Core principle
 
 > **Rights-safe source admission comes first. Source fidelity defines dictionary quality. Delivery visibility does not.**
 
-No lexical source may enter candidate generation, correction, approval, or redistribution merely because it is freely viewable on the web. The rights status of the original work and the rights/license of the exact digital transcription, correction, or edited dataset actually used must be assessed separately.
+H776 `אֶרֶץ` is the Golden baseline for license-safe full-fidelity preservation and presentation, not a node-count/depth template. A simple source remains simple; a complex source remains complex.
 
-H776 `אֶרֶץ` is the Golden baseline for **license-safe full-fidelity preservation and presentation**, not a requirement that every Strong have the same number of nodes or the same depth. Every entry must preserve all information actually present in its admitted pinned source entry. A simple source remains simple; a complex source remains complex.
+`Approved`, `Registry`, `Live`, or `App Active` do not imply `Source Quality Complete` unless Rights/License, Full-Fidelity source accounting, book usage/morphology, required Tier gates, and the app presentation contract all pass.
 
-`Approved`, `Registry`, `Live`, or `App Active` are delivery states. They do **not** mean `Source Quality Complete` unless the entry has passed both the Rights/License gate and the full-fidelity contract below.
+## 1. C0 Rights / License gate
 
-## 1. C0 Rights / License source-admission gate
+Before source text is copied, translated, structurally transformed, sent to an external model, stored, or redistributed, pin:
+- original work and edition;
+- exact digital dataset and immutable version/commit;
+- source locator;
+- license/rights basis;
+- attribution and modification/change-notice requirements;
+- whether derivative translation, full-text storage, model input, and redistribution are permitted;
+- retrieved-at identity and content fingerprint.
 
-Before any source text is copied, stored, sent to an external model, translated, structurally transformed, or redistributed, record a machine-readable rights packet containing at minimum:
+Unknown, contradictory, version-ambiguous, or incompatible rights fail closed as `LICENSE_HOLD`.
 
-- `sourceWork` — original lexical work;
-- `sourceEdition` — edition/publication identity where applicable;
-- `digitalDataset` — exact machine-readable dataset actually used;
-- `datasetVersion` / git commit or immutable release identifier;
-- `sourceLocator` and dataset path;
-- `rightsBasis` / exact license expression;
-- attribution requirements;
-- modification/change-notice requirements;
-- ShareAlike / NonCommercial / NoDerivatives or other restrictions;
-- whether external LLM input is allowed;
-- whether derivative translation is allowed;
-- whether full-text storage is allowed;
-- whether redistribution is allowed;
-- `retrievedAt`;
-- canonical content hash/fingerprint.
+Public-domain status of BDB, Strong's, Thayer, or another historical work does not automatically grant reuse rights in every modern website/database presentation. BibleHub and comparable web displays are not canonical scraping/ingest sources. Modern copyrighted NAS-derived material, HELPS, site-authored topical/editorial material, or other restricted content is excluded unless compatible permission is explicit.
 
-Fail closed as `LICENSE_HOLD` when any required right is unknown, contradictory, version-ambiguous, or incompatible with the intended project use. Do not silently substitute another web source to fill a gap; use `SOURCE_GAP` or `LICENSE_HOLD` instead.
+For the admitted Hebrew pipeline, BDB 1906 and the exact pinned Open Scriptures Hebrew Lexicon dataset are separate rights objects and both must be recorded.
 
-### 1.1 Public-domain original vs digital dataset
+## 2. Mandatory Old Testament BDB Full-Fidelity scope
 
-Public-domain status of BDB, Strong's, Thayer, or another historical work does **not** automatically grant reuse rights in every modern website/database presentation of that work. Treat the historical work and the exact digital dataset as separate rights objects.
+**This contract applies to the entire Old Testament, not Genesis only.**
 
-### 1.2 Canonical-source exclusions
-
-BibleHub and comparable third-party web pages are not canonical scraping/ingest sources for production. They may be used as human reference surfaces or outbound links only. Modern copyrighted components such as NAS-derived content, HELPS Word-studies, site-authored topical material, or other restricted content must not be ingested without explicit compatible permission.
-
-STEP resources are admitted module-by-module/dataset-by-dataset. Never assume one license for the entire STEP service. OpenScriptures or any other repository is admitted only at an exact pinned version/commit with verified license/provenance.
-
-## 2. Full-Fidelity source contract
-
-For every Hebrew entry, use a Rights-PASS pinned BDB/OpenScriptures source identity. For Greek entries, use the Rights-PASS pinned Greek lexical source named by the active book/batch contract.
-
-A quality-complete entry must preserve, where present in the admitted source:
-- Strong/lemma identity and source locator/provenance;
-- homograph and extended-Strong boundaries;
-- part of speech, morphology/stem/binyan or analogous Greek morphology distinctions;
-- every sense/subsense and their semantic boundaries;
-- qualifiers, usage restrictions, idiomatic/figurative/rare/poetic or other source labels;
-- source order and structural relationships when the source encodes them;
-- book-level usage/context evidence required by the applicable Tier.
+Every Hebrew/Aramaic Strong entry that is researched, corrected, approved, delivered, or displayed in the Korean lexicon must preserve every material element present in its Rights-PASS pinned BDB/OpenScriptures source, where applicable:
+- Strong/lemma and homograph/extended-Strong identity;
+- part of speech;
+- BDB form-list;
+- morphology/stem/binyan distinctions;
+- every sense/subsense and source order;
+- qualifiers and usage restrictions;
+- usage groups and semantic boundaries;
+- idiomatic/figurative/rare/poetic labels;
+- representative biblical references;
+- book-level usage/context and morphology required by Tier;
+- source/provenance and rights metadata.
 
 Forbidden shortcuts:
-- merging materially distinct source senses into one Korean summary;
-- dropping qualifiers or usage restrictions for brevity;
-- flattening source distinctions when that loses information;
-- inventing extra senses to make another entry look like H776;
-- using app visibility as a substitute for source completeness;
-- placing theological interpretation inside lexical meaning unless the source itself encodes it. Theological significance must be separate;
-- using a rights-unknown or rights-incompatible source for convenience.
+- flattening materially distinct BDB structures into a short Korean summary;
+- dropping a form-list, qualifier, usage restriction, usage group, or representative-reference boundary for brevity;
+- hiding material Full-Fidelity structure in research artifacts while the Korean app shows only a reduced `approvedSenseTree` summary and still calling that `Full-Fidelity App Active`;
+- inventing senses to imitate H776's node count;
+- adding theology to lexical meaning unless the admitted source itself encodes it.
 
-## 3. Production workflow
+The previous Genesis-only scope is superseded and must not be used as an execution rule.
+
+## 3. Mandatory Korean presentation serialization
+
+For every material BDB source account that is intended for approved app delivery, there must be a source-faithful Korean presentation record traceable to the same immutable Full-Fidelity candidate/evidence identity.
+
+The presentation layer must preserve:
+- source-account order and grouping;
+- form-list boundaries;
+- sense/subsense boundaries;
+- qualifier/usage-group boundaries;
+- representative references;
+- morphology labels;
+- source locator;
+- candidate fingerprint;
+- approved Evidence fingerprint.
+
+The presentation layer must not rewrite or silently replace the approved Korean sense tree. It may enrich the approved meaning with verified source structure only when:
+1. canonical Strong/lemma identity matches;
+2. the approved Evidence fingerprint matches the presentation baseline;
+3. protected Korean node text remains byte-consistent with the approved baseline where the presentation claims unchanged wording;
+4. every material sourceAccount is accounted for;
+5. no unsupported semantic expansion is introduced.
+
+If any invariant fails, the Full-Fidelity enrichment fails closed and `Full-Fidelity App Active` must not be claimed.
+
+## 4. Production workflow
 
 Canonical flow:
 
 `C0 Rights/License PASS`
-→ `pinned license-safe source capture`
-→ `source structure/information extraction`
-→ `Korean candidate or correction candidate`
+→ `pinned source full capture`
+→ `sourceAccount / structure extraction`
+→ `Korean candidate/correction`
+→ `Full-Fidelity Korean presentation serialization`
 → `source fidelity + completeness verification`
 → `book usage/context + morphology verification`
 → `Tier audit / exception handling`
@@ -83,7 +95,8 @@ Canonical flow:
 → `lexicon-human-approval when protected approved data is touched`
 → `Approval Registry`
 → `deterministic public registry/manifests/shards`
-→ `safe Strong+lemma app resolution`
+→ `Full-Fidelity presentation linkage`
+→ `Strong+lemma app resolver`
 → `GitHub Pages`
 → `Live SHA verification`
 → `Notion sync`
@@ -91,200 +104,148 @@ Canonical flow:
 
 Research/candidate completion alone is not production completion.
 
-## 4. Re-audit and correction rule for existing Genesis entries
+## 5. Existing Old Testament entry correction rule
 
 H776 is preserved as the Golden reference unless an actual source or rights regression is proven.
 
-Re-audit scope:
-- all currently approved Hebrew entries, including H776 for C0 rights/provenance verification;
-- all currently approved non-H776 Hebrew entries for full-fidelity correction review;
-- Genesis Batch04;
-- Genesis Batch05 and subsequent active candidates;
-- Genesis R4 entries.
+All currently approved Old Testament Hebrew/Aramaic entries are subject to this same contract. Existing approved data is protected and must not be silently overwritten.
 
-Existing approved data is protected. Do not silently overwrite it. Required correction path:
+Required correction path:
 
 `current approved snapshot`
 → `C0 rights/provenance re-audit`
-→ `full source re-audit`
+→ `full BDB source re-audit`
 → `correction candidate`
-→ `full-fidelity verifier`
-→ `existing Tier/audit gates`
+→ `Full-Fidelity presentation artifact`
+→ `verifier`
+→ `Tier/audit gates`
 → `exact-head non-author review`
 → `lexicon-human-approval`
-→ `Registry correction`
-→ `public delivery rebuild`
+→ `Registry/delivery correction when required`
 → `app/Pages/Live verification`.
 
-An old `full BDB hierarchy PASS`, `App Active`, or pre-license source approval flag is insufficient under this contract unless current Rights/License and full-fidelity Evidence exists.
+An old `full BDB hierarchy PASS`, `App Active`, pre-license approval, or book-local completion flag is insufficient unless current rights-safe Full-Fidelity Evidence and presentation exist.
 
-## 5. Rights-safe provenance display
+## 6. Rights-safe provenance display
 
-Every approved Hebrew entry shown in the app must expose enough public provenance to identify the rights-safe source lineage without requiring the user to inspect repository internals. At minimum show:
+Every approved Old Testament entry shown in the app must expose enough public provenance to identify:
 - original work;
 - digital dataset/provider;
-- immutable dataset version/commit;
+- immutable version/commit;
 - rights/license basis;
-- required attribution;
-- change/derivative notice for the Korean translation/structuring;
+- attribution;
+- derivative/change notice;
 - source locator when practical.
 
-For the currently admitted Open Scriptures BDB dataset, the public source registry is the machine SSOT for the exact pinned commit, license expression, attribution, change-notice requirement, and content hash. The UI must not imply that BibleHub or another third-party display is the source of the Korean derivative.
+The UI must not imply that BibleHub or another third-party display is the canonical source of the Korean derivative.
 
-## 6. Full-Fidelity report contract
+## 7. Full-Fidelity PASS
 
-Each corrected or newly promoted entry must have machine-readable evidence containing at minimum:
+PASS requires all applicable checks to be zero/clean:
+- missing source information;
+- improperly merged source information;
+- unsupported Korean information;
+- structure mismatch;
+- qualifier mismatch;
+- identity/homograph mismatch;
+- morphology mismatch;
+- presentation-account omission;
+- provenance missing;
+- unresolved conflict.
 
-```json
-{
-  "strong": "Hxxxx",
-  "lemma": "",
-  "rightsVerdict": "PASS|LICENSE_HOLD|SOURCE_GAP",
-  "sourceWork": "",
-  "digitalDataset": "",
-  "datasetVersion": "",
-  "rightsBasis": "",
-  "sourceLocator": "",
-  "sourceUnitCount": 0,
-  "koMappedUnitCount": 0,
-  "missingSourceInformation": [],
-  "improperlyMergedSourceInformation": [],
-  "extraUnsupportedKoInformation": [],
-  "structureMismatch": [],
-  "qualifierMismatch": [],
-  "identityBoundaryMismatch": [],
-  "morphologyBoundaryMismatch": [],
-  "provenanceMissing": [],
-  "unresolved": [],
-  "verdict": "PASS|HOLD|DISPUTE"
-}
-```
+`sourceUnitCount` comes from the actual admitted source. Never force another entry to equal H776's node count.
 
-`sourceUnitCount` is determined from the actual admitted source entry. It is **not** forced to equal H776's node count.
+## 8. Tier and protected human gates
 
-PASS requires `rightsVerdict=PASS`, zero missing source information, zero improper merges, zero unsupported Korean additions, zero material structure/qualifier/identity/morphology mismatches, complete provenance, and `unresolved=0`, plus every existing Tier-required gate.
+`tier-gate-matrix.json` remains authoritative and no Tier may be weakened.
+- R0–R2: all required deterministic Evidence gates PASS.
+- R3: required same-baseline model/audit evidence remains mandatory where the matrix requires it; model majority is never authority.
+- R4: never auto-promote; extended research and human final wording remain mandatory.
 
-## 7. Tier Router and audit gates
+Approval Registry, approved meanings, Golden/Gold Set data/contracts, promotion/approval policy, and protected presentation data remain human-review protected. Exact-head non-author approval with write/maintain/admin permission is required whenever the protected lane applies.
 
-`tier-gate-matrix.json` remains the machine gate matrix. This policy does not weaken any Tier.
+No self-approval, synthesized human approval, or gate bypass.
 
-- R0–R2: every matrix-required deterministic Evidence gate must PASS.
-- R3: required GPT/Claude/Gemini same-baseline evidence and unresolved-zero rules remain mandatory where the matrix requires them. Model majority is never authority.
-- R4: never auto-promote. Perform extended research first, then all Tier-required audits, then human final wording.
-- Missing required evidence = fail closed.
-- Source conflict = HOLD or DISPUTE; do not block unrelated entries that can safely continue.
-- Rights uncertainty = `LICENSE_HOLD`; do not substitute with a convenient unreviewed source.
+## 9. Jarvis C0–C6 checkpoint
 
-## 8. Protected approval data
+- C0 Rights/License — exact work/dataset/version/license and permitted uses.
+- C1 Source fidelity — source locator/existence and Korean/source alignment.
+- C2 Source completeness — no omitted/merged sense, qualifier, usage, morphology, or presentation account.
+- C3 Fingerprint + exact-head — baseline/fingerprint/current head consistency.
+- C4 Regression — H776 and unrelated approved entries unchanged; deterministic rebuild.
+- C5 Evidence — packet/schema/provenance/pinned-source references valid.
+- C6 App presentation — the Korean dictionary reproduces the actual BDB structural boundaries and rights-safe provenance; summary-only rendering is not Full-Fidelity PASS.
 
-Approval Registry, approved meanings, Golden/Gold Set data/contracts, promotion logic, approval schema, and human-exception policy remain protected.
+## 10. Mandatory app presentation contract
 
-Any PR mutating protected approved data requires:
-- exact PR head;
-- all required CI and deterministic regression checks green;
-- non-author reviewer with write/maintain/admin permission;
-- `lexicon-human-approval` success;
-- no unresolved required review thread, evidence conflict, or rights conflict.
+All approved Old Testament Hebrew/Aramaic dictionary details use the same quality contract as H776, while the actual number and depth of senses follow each source entry.
 
-No self-approval, model-generated human approval, or gate bypass is allowed.
-
-## 9. GPT executor and Jarvis checkpoint verifier
-
-When `RUN_STATE=RUN · EXECUTOR=GPT`:
-- GPT is the execution owner for source-rights intake, research, correction candidates, verifier implementation, PR preparation, post-approval Registry/public delivery, Pages/Live verification, and Notion synchronization.
-- Jarvis is an independent checkpoint verifier and must not mutate Approval Registry or substitute for required human approval.
-
-Jarvis checkpoint framework:
-- **C0 Rights/License** — exact work/dataset/version/license, permitted uses, attribution/change obligations, and content fingerprint;
-- **C1 source fidelity** — source locator/existence and Korean/source sense alignment;
-- **C2 source completeness** — no omitted or improperly merged source meaning, qualifier, usage, or morphology information; no H776 node-count forcing;
-- **C3 fingerprint + exact-head** — unrelated baseline entries unchanged, target identity/fingerprint valid, CI SHA equals PR head;
-- **C4 regression** — Golden H776 unchanged, deterministic public rebuild, usage/morphology regression zero;
-- **C5 Evidence** — Evidence packet exists, schema/fingerprint/provenance/pinned-source references valid;
-- **C6 app presentation** — H776 and corrected entries use the same detailed dictionary presentation contract and show the required license-safe provenance while displaying each entry's actual source-derived information.
-
-A Jarvis baseline snapshot may be used as an external regression oracle, but repository/current PR evidence remains the shared auditable source for promotion decisions.
-
-## 10. App presentation and activation
-
-Approved delivery must follow:
-
-`Approval Registry → public registry/manifests/shards → Strong+lemma resolver → Pages → Live SHA`.
-
-Exact Strong match is preferred. A base Strong may resolve to an extended canonical Strong only when the candidate is unique for that base and lemma identity matches. Multiple homographs, lemma mismatch, missing identity, or unapproved data fail closed.
-
-All approved dictionary details use the same H776-style detailed UI contract:
+Required visible structure where present:
 - lemma;
 - Korean transliteration;
 - Strong identity;
-- part of speech/morphology distinctions where available;
-- source-derived meaning structure and qualifiers;
-- source/provenance;
+- part of speech;
+- **BDB form-list**;
+- **sense/subsense hierarchy**;
+- **qualifiers and usage restrictions**;
+- **usage groups**;
+- **representative references**;
+- **morphology/form distinctions**;
+- provenance;
 - rights/license/attribution/change notice;
 - approval/read-only state.
 
-The number/depth of displayed senses follows the actual source entry, not H776's count.
+`approvedSenseTree`-only rendering is not sufficient when verified Full-Fidelity metadata contains additional material BDB structure.
 
-## 11. Parallelism and current execution scope
+Exact Strong match is preferred. Base-Strong alias resolution is allowed only when unique and lemma identity matches. Ambiguous homographs, lemma mismatch, missing identity, or unapproved data fail closed.
 
-Research/Evidence/correction preparation can proceed concurrently off the promotion path, but only one dependent main-bound lexicon correction/promotion PR may be active at a time.
+## 11. Parallelism and execution scope
 
-**Current GPT execution scope (2026-08-13): Genesis only.** Luke is explicitly outside the GPT execution lane while the user delegates Luke work to Claude. GPT automation must not generate, mutate, promote, or change Luke state until the user reassigns it.
+Research/Evidence/presentation preparation may proceed concurrently across Old Testament books and lemmas. A HOLD/DISPUTE blocks only the affected entry when unrelated work can safely continue.
+
+Only one dependent main-bound correction/promotion implementation PR should be active at a time unless the active governance explicitly permits independent non-overlapping delivery.
+
+A book-specific executor assignment is an operational routing decision only; it never narrows this Old Testament quality contract.
 
 ## 12. Status vocabulary
 
-Use these states distinctly:
-- `Rights Intake`
-- `Rights/License PASS`
-- `LICENSE_HOLD`
-- `SOURCE_GAP`
-- `Research/Candidate`
-- `Reaudit Required`
-- `Correction In Progress`
-- `Source Full-Fidelity PASS`
-- `Tier Audit PASS`
-- `Approval Required`
-- `Delivery Approved`
-- `App Active`
-- `Live Verified`
-- `Source Quality Complete`
+Use distinctly:
+`Rights Intake → Rights/License PASS → Research/Candidate → Reaudit Required → Correction In Progress → Source Full-Fidelity PASS → Presentation Ready → Tier Audit PASS → Approval Required → Delivery Approved → App Active → Live Verified → Source Quality Complete`.
 
-Never collapse `App Active` into `Source Quality Complete`.
+`App Active` and `Source Quality Complete` are never interchangeable. `Full-Fidelity App Active` requires the presentation contract in §10.
 
 ## 13. Fail-closed rules
 
-Fail closed on any of:
-- exact digital dataset/license/version unresolved;
-- rights incompatible with translation, model input, storage, or redistribution;
-- source identity or locator unresolved;
-- missing/merged source information that changes meaning or qualification;
-- unsupported Korean sense/addition;
-- candidate/evidence/source fingerprint drift;
-- required Tier audit missing or failing;
-- unresolved review/evidence conflict;
-- protected approved data mutation without exact-head human approval;
-- Golden H776 regression;
-- required CI fail;
+Fail closed on:
+- unresolved dataset/license/version;
+- incompatible rights;
+- unresolved source identity/locator;
+- missing/merged material BDB information;
+- missing Korean presentation for a material sourceAccount intended for app delivery;
+- unsupported Korean addition;
+- fingerprint drift;
+- required Tier audit missing/failing;
+- unresolved evidence/review conflict;
+- protected mutation without exact-head human approval;
+- H776 regression;
+- required CI failure;
 - verifier/gate weakening or bypass.
 
 ## 14. Notion synchronization
 
-`📚 원어 한글사전 66권 · Public-First 관제 대시보드` is current-state control, not historical truth. It must distinguish Rights/License state, delivery state, and source-quality state and may uncheck an old completion when the new contract reveals regression.
+`📚 원어 한글사전 66권 · Public-First 관제 대시보드` mirrors current state. `🗓️ 원어 한글사전 · 일일 변경 브리핑` records material transitions.
 
-`🗓️ 원어 한글사전 · 일일 변경 브리핑` records material transitions with Strong/lemma, rights verdict, exact dataset/version/license, full-fidelity verdict, fingerprint, PR/head, review, merge, Pages and Live evidence where applicable.
-
-Genesis detail cards use the same workflow vocabulary. Luke state is not changed by GPT while Luke is user-delegated to Claude.
+All Old Testament book cards inherit this exact contract. No book card may define a weaker Genesis-only or local presentation rule.
 
 ## 15. Superseded rules
 
-The former v4 principle `Human approves POLICY. Evidence approves each Strong` is no longer sufficient as a completion rule for approved production changes. Evidence remains necessary, but rights-safe source admission and protected approved-data human approval are also mandatory.
-
-The following former concepts are superseded as standalone completion rules:
-- `Evidence-First v4 completion`;
-- pre-license `Full-Fidelity PASS` without Rights/License PASS;
-- `full BDB hierarchy complete` without full-fidelity Evidence;
+The following are deleted as execution/completion rules:
+- Genesis-only BDB Full-Fidelity presentation scope;
+- `approvedSenseTree` summary-only rendering as sufficient Full-Fidelity app delivery;
+- Evidence-First completion without current Rights/License PASS;
+- pre-license Full-Fidelity completion;
 - `Approved/Live/App Active = dictionary quality complete`;
 - H776 node-count/depth imitation;
 - free-web-viewability as reuse permission.
 
-All agents must use this document's License-Safe Full-Fidelity workflow for new work and for the active Genesis re-audit/correction program.
+All agents must use this Old-Testament-wide License-Safe BDB Full-Fidelity workflow for current and future Hebrew/Aramaic lexicon work.
