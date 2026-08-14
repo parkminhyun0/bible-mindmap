@@ -166,13 +166,23 @@ export default defineConfig({
             },
           },
           {
+            // BDB 사전 응답은 절 본문 캐시와 분리해 서로 축출하지 않는다.
+            urlPattern: /^https:\/\/bolls\.life\/dictionary-definition\/.*$/,
+            handler: 'StaleWhileRevalidate',
+            options: {
+              cacheName: 'bm-bolls-dict-v1',
+              expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 30 },
+              cacheableResponse: { statuses: [200] },
+            },
+          },
+          {
             // KRV/ESV 등 성경 본문 API (bolls.life) — 변경 드묾. StaleWhileRevalidate.
             urlPattern: /^https:\/\/bolls\.life\/.*$/,
             handler: 'StaleWhileRevalidate',
             options: {
               cacheName: 'bm-bolls-v1',
               expiration: { maxEntries: 500, maxAgeSeconds: 60 * 60 * 24 * 7 }, // 7일
-              cacheableResponse: { statuses: [0, 200] },
+              cacheableResponse: { statuses: [200] },
             },
           },
           {
