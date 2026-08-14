@@ -12,7 +12,7 @@ H776 `אֶרֶץ` is the Golden baseline for license-safe full-fidelity preserva
 
 `Approved`, `Registry`, `Live`, or `App Active` do not imply `Source Quality Complete` unless Rights/License, Full-Fidelity source accounting, book usage/morphology, required Tier gates, and the app presentation contract all pass.
 
-## 1. C0 Rights / License gate
+## 1. C0 Rights / License source-admission gate
 
 Before source text is copied, translated, structurally transformed, sent to an external model, stored, or redistributed, pin:
 - original work and edition;
@@ -23,13 +23,13 @@ Before source text is copied, translated, structurally transformed, sent to an e
 - whether derivative translation, full-text storage, model input, and redistribution are permitted;
 - retrieved-at identity and content fingerprint.
 
-Unknown, contradictory, version-ambiguous, or incompatible rights fail closed as `LICENSE_HOLD`.
+`C0 Rights/License PASS` is required before source use. Unknown, contradictory, version-ambiguous, or incompatible rights fail closed as `LICENSE_HOLD`.
 
 Public-domain status of BDB, Strong's, Thayer, or another historical work does not automatically grant reuse rights in every modern website/database presentation. BibleHub and comparable web displays are not canonical scraping/ingest sources. Modern copyrighted NAS-derived material, HELPS, site-authored topical/editorial material, or other restricted content is excluded unless compatible permission is explicit.
 
 For the admitted Hebrew pipeline, BDB 1906 and the exact pinned Open Scriptures Hebrew Lexicon dataset are separate rights objects and both must be recorded.
 
-## 2. Mandatory Old Testament BDB Full-Fidelity scope
+## 2. Full-Fidelity source contract
 
 **This contract applies to the entire Old Testament, not Genesis only.**
 
@@ -55,31 +55,7 @@ Forbidden shortcuts:
 
 The previous Genesis-only scope is superseded and must not be used as an execution rule.
 
-## 3. Mandatory Korean presentation serialization
-
-For every material BDB source account that is intended for approved app delivery, there must be a source-faithful Korean presentation record traceable to the same immutable Full-Fidelity candidate/evidence identity.
-
-The presentation layer must preserve:
-- source-account order and grouping;
-- form-list boundaries;
-- sense/subsense boundaries;
-- qualifier/usage-group boundaries;
-- representative references;
-- morphology labels;
-- source locator;
-- candidate fingerprint;
-- approved Evidence fingerprint.
-
-The presentation layer must not rewrite or silently replace the approved Korean sense tree. It may enrich the approved meaning with verified source structure only when:
-1. canonical Strong/lemma identity matches;
-2. the approved Evidence fingerprint matches the presentation baseline;
-3. protected Korean node text remains byte-consistent with the approved baseline where the presentation claims unchanged wording;
-4. every material sourceAccount is accounted for;
-5. no unsupported semantic expansion is introduced.
-
-If any invariant fails, the Full-Fidelity enrichment fails closed and `Full-Fidelity App Active` must not be claimed.
-
-## 4. Production workflow
+## 3. Production workflow
 
 Canonical flow:
 
@@ -103,6 +79,30 @@ Canonical flow:
 → `user screen confirmation for UI-visible 100%`.
 
 Research/candidate completion alone is not production completion.
+
+## 4. Mandatory Korean presentation serialization
+
+For every material BDB source account intended for approved app delivery, there must be a source-faithful Korean presentation record traceable to the same immutable Full-Fidelity candidate/evidence identity.
+
+The presentation layer must preserve:
+- source-account order and grouping;
+- form-list boundaries;
+- sense/subsense boundaries;
+- qualifier/usage-group boundaries;
+- representative references;
+- morphology labels;
+- source locator;
+- candidate fingerprint;
+- approved Evidence fingerprint.
+
+The presentation layer must not rewrite or silently replace the approved Korean sense tree. It may enrich the approved meaning with verified source structure only when:
+1. canonical Strong/lemma identity matches;
+2. the approved Evidence fingerprint matches the presentation baseline;
+3. protected Korean node text remains byte-consistent with the approved baseline where the presentation claims unchanged wording;
+4. every material sourceAccount is accounted for;
+5. no unsupported semantic expansion is introduced.
+
+If any invariant fails, the Full-Fidelity enrichment fails closed and `Full-Fidelity App Active` must not be claimed.
 
 ## 5. Existing Old Testament entry correction rule
 
@@ -139,9 +139,7 @@ Every approved Old Testament entry shown in the app must expose enough public pr
 
 The UI must not imply that BibleHub or another third-party display is the canonical source of the Korean derivative.
 
-## 7. Full-Fidelity PASS
-
-PASS requires all applicable checks to be zero/clean:
+Full-Fidelity PASS additionally requires all applicable checks to be zero/clean:
 - missing source information;
 - improperly merged source information;
 - unsupported Korean information;
@@ -155,28 +153,42 @@ PASS requires all applicable checks to be zero/clean:
 
 `sourceUnitCount` comes from the actual admitted source. Never force another entry to equal H776's node count.
 
-## 8. Tier and protected human gates
+## 7. Tier Router and audit gates
 
 `tier-gate-matrix.json` remains authoritative and no Tier may be weakened.
 - R0–R2: all required deterministic Evidence gates PASS.
 - R3: required same-baseline model/audit evidence remains mandatory where the matrix requires it; model majority is never authority.
 - R4: never auto-promote; extended research and human final wording remain mandatory.
 
-Approval Registry, approved meanings, Golden/Gold Set data/contracts, promotion/approval policy, and protected presentation data remain human-review protected. Exact-head non-author approval with write/maintain/admin permission is required whenever the protected lane applies.
+Missing required evidence fails closed. Source conflict remains HOLD/DISPUTE. Rights uncertainty remains `LICENSE_HOLD`.
+
+## 8. Protected approval data
+
+Approval Registry, approved meanings, Golden/Gold Set data/contracts, promotion/approval policy, approval schema, and protected presentation data remain human-review protected.
+
+Any PR mutating protected approved data requires:
+- exact PR head;
+- all required CI and deterministic regression checks green;
+- non-author reviewer with write/maintain/admin permission;
+- `lexicon-human-approval` success;
+- no unresolved required review thread, evidence conflict, or rights conflict.
 
 No self-approval, synthesized human approval, or gate bypass.
 
-## 9. Jarvis C0–C6 checkpoint
+## 9. GPT executor and Jarvis checkpoint verifier
 
-- C0 Rights/License — exact work/dataset/version/license and permitted uses.
-- C1 Source fidelity — source locator/existence and Korean/source alignment.
-- C2 Source completeness — no omitted/merged sense, qualifier, usage, morphology, or presentation account.
-- C3 Fingerprint + exact-head — baseline/fingerprint/current head consistency.
-- C4 Regression — H776 and unrelated approved entries unchanged; deterministic rebuild.
-- C5 Evidence — packet/schema/provenance/pinned-source references valid.
-- C6 App presentation — the Korean dictionary reproduces the actual BDB structural boundaries and rights-safe provenance; summary-only rendering is not Full-Fidelity PASS.
+Executor routing is operational only and never narrows this Old-Testament-wide quality contract. When an executor is authorized by current runtime state, it may perform only the actions that governance permits; protected human approval is never synthesized by an agent.
 
-## 10. Mandatory app presentation contract
+Jarvis checkpoint framework:
+- **C0 Rights/License** — exact work/dataset/version/license and permitted uses.
+- **C1 source fidelity** — source locator/existence and Korean/source alignment.
+- **C2 source completeness** — no omitted/merged sense, qualifier, usage, morphology, or presentation account.
+- **C3 fingerprint + exact-head** — baseline/fingerprint/current head consistency.
+- **C4 regression** — H776 and unrelated approved entries unchanged; deterministic rebuild.
+- **C5 Evidence** — packet/schema/provenance/pinned-source references valid.
+- **C6 app presentation** — the Korean dictionary reproduces the actual BDB structural boundaries and rights-safe provenance; summary-only rendering is not Full-Fidelity PASS.
+
+## 10. App presentation and activation
 
 All approved Old Testament Hebrew/Aramaic dictionary details use the same quality contract as H776, while the actual number and depth of senses follow each source entry.
 
@@ -198,6 +210,8 @@ Required visible structure where present:
 `approvedSenseTree`-only rendering is not sufficient when verified Full-Fidelity metadata contains additional material BDB structure.
 
 Exact Strong match is preferred. Base-Strong alias resolution is allowed only when unique and lemma identity matches. Ambiguous homographs, lemma mismatch, missing identity, or unapproved data fail closed.
+
+Approved activation follows `Approval Registry → deterministic public registry/manifests/shards → Full-Fidelity presentation linkage → Strong+lemma resolver → Pages → Live SHA`.
 
 ## 11. Parallelism and execution scope
 
