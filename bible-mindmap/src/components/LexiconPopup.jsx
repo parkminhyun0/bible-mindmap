@@ -6,24 +6,42 @@ import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
-import { subscribeApprovedEntry } from '../utils/lexiconTranslationPilotBridge.jsx';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
 
-function approvedNodes(senses = []) {
-  const ordered = [...senses].sort((a, b) => a.order - b.order);
-  const byId = new Map(ordered.map((sense) => [sense.id, {
-    id: sense.id,
-    depth: 0,
-    text: sense.translationKo,
-    children: [],
-  }]));
-  const roots = [];
-  for (const sense of ordered) {
-    const node = byId.get(sense.id);
-    if (sense.parentId && byId.has(sense.parentId)) byId.get(sense.parentId).children.push(node);
-    else roots.push(node);
+const POPUP_MIN_WIDTH = 320;
+const POPUP_MIN_HEIGHT = 280;
+const POPUP_VIEWPORT_MARGIN = 12;
+const DEFAULT_DESKTOP_WIDTH = 420;
+const DEFAULT_DESKTOP_HEIGHT = 540;
+
+function clampSize(width, height, vw, vh) {
+  const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
+  const maxH = Math.max(POPUP_MIN_HEIGHT, vh - POPUP_VIEWPORT_MARGIN * 2);
+  return {
+    width: Math.min(Math.max(POPUP_MIN_WIDTH, width), maxW),
+    height: Math.min(Math.max(POPUP_MIN_HEIGHT, height), maxH),
+  };
+}
+
+// Resize handle strip geometry keyed by side. Edges are 6px thick and hug the
+// popup border; corners are 12px squares so the pointer target remains reachable
+// where two edges meet. Every handle sits above content (z-index) and does not
+// paint anything visible so it never obscures text, links, or scrollbars.
+function resizeHandleStyle(side) {
+  const thickness = 6;
+  const corner = 12;
+  const base = { position: 'absolute', zIndex: 2, background: 'transparent', userSelect: 'none' };
+  switch (side) {
+    case 'top':    return { ...base, top: 0, left: corner, right: corner, height: thickness, cursor: 'ns-resize' };
+    case 'bottom': return { ...base, bottom: 0, left: corner, right: corner, height: thickness, cursor: 'ns-resize' };
+    case 'left':   return { ...base, left: 0, top: corner, bottom: corner, width: thickness, cursor: 'ew-resize' };
+    case 'right':  return { ...base, right: 0, top: corner, bottom: corner, width: thickness, cursor: 'ew-resize' };
+    case 'nw':     return { ...base, top: 0, left: 0, width: corner, height: corner, cursor: 'nwse-resize' };
+    case 'ne':     return { ...base, top: 0, right: 0, width: corner, height: corner, cursor: 'nesw-resize' };
+    case 'sw':     return { ...base, bottom: 0, left: 0, width: corner, height: corner, cursor: 'nesw-resize' };
+    case 'se':     return { ...base, bottom: 0, right: 0, width: corner, height: corner, cursor: 'nwse-resize' };
+    default:       return base;
   }
-  return roots;
 }
 
 /**
@@ -44,7 +62,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
   const [researchActive, setResearchActive] = useState(false);
-  const [approvedEntry, setApprovedEntry] = useState(null);
 
   const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
   const [usageLoading, setUsageLoading] = useState(false);
@@ -62,15 +79,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
       .finally(() => { if (!cancelled) setDefLoading(false); });
     return () => { cancelled = true; };
   }, [entry?.s]);
-
-  useEffect(() => {
-    setApprovedEntry(null);
-    if (!entry?.s) return () => {};
-    const unsubscribe = subscribeApprovedEntry(entry.s, entry.l, (approved) => {
-      setApprovedEntry(approved || null);
-    });
-    return unsubscribe;
-  }, [entry?.s, entry?.l]);
 
   useEffect(() => {
     if (tab !== 'usage' || usages !== null) return;
@@ -107,7 +115,24 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const dragState = useRef(null);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
-  useEffect(() => { setDragOffset({ x: 0, y: 0 }); }, [entry?.s]);
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const [popupSize, setPopupSize] = useState(() =>
+    clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh),
+  );
+
+  useEffect(() => {
+    setDragOffset({ x: 0, y: 0 });
+    setPopupSize(clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh));
+  }, [entry?.s]);
+
+  useEffect(() => {
+    const onResize = () => {
+      setPopupSize((prev) => clampSize(prev.width, prev.height, window.innerWidth, window.innerHeight));
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   const onDragStart = (e) => {
     if (isMobile || researchActive) return;
@@ -129,6 +154,49 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     window.addEventListener('mouseup', onUp);
   };
 
+  // Directional resize. Each handle declares which edges follow the pointer:
+  //   left/right shift width (and translate x when left grows leftward)
+  //   top/bottom shift height (and translate y when top grows upward)
+  const onResizeStart = (edges) => (e) => {
+    if (isMobile || researchActive) return;
+    if (e.button !== 0) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const start = {
+      mouseX: e.clientX,
+      mouseY: e.clientY,
+      width: popupSize.width,
+      height: popupSize.height,
+      offsetX: dragOffset.x,
+      offsetY: dragOffset.y,
+    };
+    const onMove = (ev) => {
+      const dx = ev.clientX - start.mouseX;
+      const dy = ev.clientY - start.mouseY;
+      let width = start.width;
+      let height = start.height;
+      let offsetX = start.offsetX;
+      let offsetY = start.offsetY;
+      if (edges.right) width = start.width + dx;
+      if (edges.bottom) height = start.height + dy;
+      if (edges.left) { width = start.width - dx; offsetX = start.offsetX + dx; }
+      if (edges.top) { height = start.height - dy; offsetY = start.offsetY + dy; }
+      const clamped = clampSize(width, height, window.innerWidth, window.innerHeight);
+      // If clamping refused a shrink we also refuse the corresponding offset shift
+      // so the popup edge that was dragged does not drift away from the pointer.
+      if (edges.left && clamped.width !== width) offsetX = start.offsetX + (start.width - clamped.width);
+      if (edges.top && clamped.height !== height) offsetY = start.offsetY + (start.height - clamped.height);
+      setPopupSize(clamped);
+      setDragOffset({ x: offsetX, y: offsetY });
+    };
+    const onUp = () => {
+      window.removeEventListener('mousemove', onMove);
+      window.removeEventListener('mouseup', onUp);
+    };
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+  };
+
   if (!entry) return null;
 
   const isHebrew = entry.s?.startsWith('H');
@@ -137,13 +205,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
   const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
   const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
-  const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
-  const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const width = isMobile ? vw : 380;
-  const maxHeight = isMobile ? Math.round(vh * 0.85) : Math.min(600, vh - 40);
-  const margin = 12;
+  const width = isMobile ? vw : popupSize.width;
+  const height = isMobile ? Math.round(vh * 0.85) : popupSize.height;
+  const margin = POPUP_VIEWPORT_MARGIN;
   const baseLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
-  const baseTop  = isMobile ? (vh - maxHeight) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - maxHeight - margin));
+  const baseTop  = isMobile ? (vh - height) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - height - margin));
   const left = isMobile ? 0 : baseLeft + dragOffset.x;
   const top  = isMobile ? baseTop : baseTop + dragOffset.y;
   const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
@@ -163,7 +229,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
         className={isMobile ? 'momentum-scroll' : undefined}
         style={{
           position: 'fixed',
-          left, top, width, maxHeight,
+          left, top, width,
+          height: isMobile ? undefined : height,
+          maxHeight: isMobile ? height : undefined,
           zIndex: resolvedZIndex,
           background: '#fff',
           borderRadius: isMobile ? '16px 16px 0 0' : 10,
@@ -294,16 +362,16 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                 <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
                   {isHebrew ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
                 </span>
-                {(approvedEntry || definition?.source) && (
+                {definition?.source && (
                   <span style={{
                     fontSize: 9, borderRadius: 3, padding: '1px 5px', fontWeight: 600,
-                    color: approvedEntry || definition?.source === 'bdbt' ? '#92400e' : '#065f46',
-                    background: approvedEntry || definition?.source === 'bdbt' ? '#fef3c7' : '#d1fae5',
+                    color: definition.source === 'bdbt' ? '#92400e' : '#065f46',
+                    background: definition.source === 'bdbt' ? '#fef3c7' : '#d1fae5',
                   }}>
-                    {approvedEntry ? '한글 승인본' : definition?.source === 'bdbt' ? 'BDB' : "Strong's"}
+                    {definition.source === 'bdbt' ? 'BDB' : "Strong's"}
                   </span>
                 )}
-                {!approvedEntry && definition?.bdbUnavailable && (
+                {isHebrew && definition?.bdbUnavailable && (
                   <span data-testid="bdb-fallback-status" style={{ color: '#b45309', fontSize: 9, fontWeight: 700 }}>BDB 조회 실패 · Strong&apos;s 표시</span>
                 )}
               </div>
@@ -322,31 +390,16 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   )}
                 </div>
               )}
-              {(definition || approvedEntry) && (
+              {definition && (
                 <>
-                  {approvedEntry ? (
-                    <section data-testid="approved-korean-definition">
-                      <div style={{ marginBottom: 8, color: '#166534', fontSize: 10, fontWeight: 700 }}>
-                        {approvedEntry.reviewer?.reviewerType === 'human' ? '✓ 사람 검토 완료' : '✓ Evidence 검증 승인'} · 근거 구성 {approvedEntry.approvedSenseTree?.length || 0}개 · 읽기 전용
-                      </div>
-                      <LexiconDefinitionTree nodes={approvedNodes(approvedEntry.approvedSenseTree)} isHebrew={isHebrew} approved />
-                      <details style={{ marginTop: 12, borderTop: '1px solid #fde68a', paddingTop: 8 }}>
-                        <summary style={{ cursor: 'pointer', color: '#64748b', fontSize: 10, fontWeight: 700 }}>영문 BDB 원문</summary>
-                        {definition && <div style={{ marginTop: 8 }}><LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} /></div>}
-                      </details>
-                    </section>
-                  ) : (
-                    <>
-                      <LexiconDefinitionTree nodes={definition?.nodes || []} isHebrew={isHebrew} />
-                      {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
-                        <div data-testid="lexicon-definition-meta" style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9', color: '#64748b', fontSize: 11, lineHeight: 1.65 }}>
-                          {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
-                          {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
-                          {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
-                          {definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
-                        </div>
-                      )}
-                    </>
+                  <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} />
+                  {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
+                    <div data-testid="lexicon-definition-meta" style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9', color: '#64748b', fontSize: 11, lineHeight: 1.65 }}>
+                      {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
+                      {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
+                      {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
+                      {definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
+                    </div>
                   )}
                   {entry.s && (
                     <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
@@ -416,6 +469,18 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
         }}>
           데이터: STEPBible.data (CC BY 4.0) · 사전: Bolls.life / BibleHub
         </div>
+        {!isMobile && !researchActive && (
+          <>
+            <div data-testid="resize-handle-top" onMouseDown={onResizeStart({ top: true })} style={resizeHandleStyle('top')} />
+            <div data-testid="resize-handle-bottom" onMouseDown={onResizeStart({ bottom: true })} style={resizeHandleStyle('bottom')} />
+            <div data-testid="resize-handle-left" onMouseDown={onResizeStart({ left: true })} style={resizeHandleStyle('left')} />
+            <div data-testid="resize-handle-right" onMouseDown={onResizeStart({ right: true })} style={resizeHandleStyle('right')} />
+            <div data-testid="resize-handle-nw" onMouseDown={onResizeStart({ top: true, left: true })} style={resizeHandleStyle('nw')} />
+            <div data-testid="resize-handle-ne" onMouseDown={onResizeStart({ top: true, right: true })} style={resizeHandleStyle('ne')} />
+            <div data-testid="resize-handle-sw" onMouseDown={onResizeStart({ bottom: true, left: true })} style={resizeHandleStyle('sw')} />
+            <div data-testid="resize-handle-se" onMouseDown={onResizeStart({ bottom: true, right: true })} style={resizeHandleStyle('se')} />
+          </>
+        )}
       </div>
     </>,
     document.body
