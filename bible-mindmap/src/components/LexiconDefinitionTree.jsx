@@ -34,37 +34,39 @@ export function formatDepthMarker(index, depth) {
   return style.wrap(body);
 }
 
-function TreeNode({ node, index, depth, isHebrew, approved }) {
+function TreeNode({ node, index, depth, isHebrew, approved, flat }) {
   return (
     <li
       data-depth={depth}
       style={{
         display: 'grid',
-        gridTemplateColumns: '2.6em minmax(0, 1fr)',
-        gap: 8,
-        marginTop: depth ? 6 : 10,
+        gridTemplateColumns: flat ? 'minmax(0, 1fr)' : '2.6em minmax(0, 1fr)',
+        gap: flat ? 0 : 8,
+        marginTop: depth ? 6 : flat ? 8 : 10,
       }}
     >
-      <span
-        aria-hidden="true"
-        data-marker={formatDepthMarker(index, depth)}
-        style={{
-          color: depth === 0 ? '#92400e' : depth === 1 ? '#1d4ed8' : '#64748b',
-          fontFamily: 'monospace',
-          fontSize: depth === 0 ? 13 : 12,
-          fontWeight: 700,
-          lineHeight: 1.65,
-          textAlign: 'right',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {formatDepthMarker(index, depth)}
-      </span>
+      {!flat && (
+        <span
+          aria-hidden="true"
+          data-marker={formatDepthMarker(index, depth)}
+          style={{
+            color: depth === 0 ? '#92400e' : depth === 1 ? '#1d4ed8' : '#64748b',
+            fontFamily: 'monospace',
+            fontSize: depth === 0 ? 13 : 12,
+            fontWeight: 700,
+            lineHeight: 1.65,
+            textAlign: 'right',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {formatDepthMarker(index, depth)}
+        </span>
+      )}
       <div
         style={{
           color: '#1e293b',
           fontSize: depth === 0 ? 14 : 13,
-          fontWeight: depth === 0 ? 700 : depth === 1 ? 600 : 500,
+          fontWeight: flat ? 500 : depth === 0 ? 700 : depth === 1 ? 600 : 500,
           lineHeight: 1.65,
           wordBreak: approved ? 'keep-all' : 'normal',
           minWidth: 0,
@@ -74,17 +76,18 @@ function TreeNode({ node, index, depth, isHebrew, approved }) {
           ? node.text
           : <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(node.text, isHebrew) }} />}
         {!!node.children?.length && (
-          <Tree nodes={node.children} depth={depth + 1} isHebrew={isHebrew} approved={approved} />
+          <Tree nodes={node.children} depth={depth + 1} isHebrew={isHebrew} approved={approved} flat={flat} />
         )}
       </div>
     </li>
   );
 }
 
-function Tree({ nodes, depth = 0, isHebrew, approved }) {
+function Tree({ nodes, depth = 0, isHebrew, approved, flat = false }) {
   return (
     <ol
       data-lexicon-definition-tree={depth === 0 ? 'true' : undefined}
+      data-flat-definition={depth === 0 && flat ? 'true' : undefined}
       style={{ listStyle: 'none', margin: 0, padding: 0 }}
     >
       {nodes.map((node, index) => (
@@ -95,12 +98,13 @@ function Tree({ nodes, depth = 0, isHebrew, approved }) {
           depth={depth}
           isHebrew={isHebrew}
           approved={approved}
+          flat={flat}
         />
       ))}
     </ol>
   );
 }
 
-export default function LexiconDefinitionTree({ nodes = [], isHebrew = false, approved = false }) {
-  return <Tree nodes={nodes} isHebrew={isHebrew} approved={approved} />;
+export default function LexiconDefinitionTree({ nodes = [], isHebrew = false, approved = false, flat = false }) {
+  return <Tree nodes={nodes} isHebrew={isHebrew} approved={approved} flat={flat} />;
 }
