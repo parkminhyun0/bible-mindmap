@@ -2,7 +2,7 @@
 
 - 작성: 0-lead (Claude) · 2026-08-14
 - 브랜치: `pipeline/task-strong-link` (base `origin/main` = `087243ac`)
-- 사이클 반복: 1회 (재작업 없음)
+- 사이클 반복: **2회** (초기 PASS → PR CI의 CodeQL 경보로 1회 재작업 → 재검증 PASS)
 
 ## 판정: **PASS · PR 생성 (병합은 사용자)**
 
@@ -31,6 +31,17 @@
 - `parseInt('1254a', 10) === 1254`, 헬퍼 결과 `'1254a'` → `1254` → 동일
 - 무효 입력 `H0`: 기존 `-1`, 신규 `NaN` → 두 경우 모두 존재하지 않는 청크 파일 요청 후 null. 최종 거동 동일
 - 이탈이지만 같은 파일·같은 정규화 주제이며, 검증 스크립트의 정적 계약(`replace(/^[GH]/` 잔존 금지)을 만족시키기 위한 불가피한 변경
+
+## 반복 1회차 · CodeQL 경보 대응 (2026-08-14 추가)
+
+초기 PASS 판정 후 PR #367의 GitHub CI에서 **로컬 검증이 잡지 못한** 신규 고위험 경보가 나왔다. 파이프라인 규칙대로 1-run 재실행 → 2-review 재검증을 1회 수행했다.
+
+- **경보**: `js/incomplete-url-substring-sanitization` (high) · `scripts/verify-strong-external-link-policy.mjs:53`
+- **성격**: 정적 계약 검사가 **우리 소스 코드 텍스트**를 `line.includes('biblehub.com')`로 훑은 것을 CodeQL이 "URL 호스트 부분문자열 검사"로 오인한 오탐. 런타임 코드가 아니며 실제 취약점은 아니다. 다만 CodeQL은 blocking 체크이므로 해소가 필요했다.
+- **조치**: 경보 suppress 주석이나 Gate 완화 없이, **호스트명을 언급하지 않는** 계약으로 대체했다 — ① 헬퍼 `import` + 실사용 여부 검사, ② 헬퍼 결과(`${num}`) 외의 표현식으로 `/(?:hebrew|greek)/${...}` 경로를 조립하면 실패, ③ 기존 `replace(/^[GH]/` 잔존 금지 유지.
+- **범위**: `scripts/verify-strong-external-link-policy.mjs` 1개 파일만 수정. 구현 파일 4개(`strongLink.js`, `lexicon.js`, `WordSearchModal.jsx`, `package.json`)는 `424fd8f1` 이후 **무변경**. 동작 케이스 16건 유지.
+- **실효성 실증**: 2-review가 위반 코드 3종(0패딩 패턴 부활 / 헬퍼 우회 URL 조립 / 헬퍼 호출 제거)을 임시 주입해 각각 exit 1 실패를 확인하고 원상복구했다. 새 계약이 기존보다 **더 강하다**(헬퍼 실사용까지 강제).
+- **교훈**: 이 저장소는 CodeQL이 blocking이므로, 로컬 verifier·oxlint PASS만으로 사이클을 닫지 말고 **PR CI의 CodeQL 결과까지 확인한 뒤** 최종 판정해야 한다. 다음 사이클의 01-plan 검증 절차에 반영한다.
 
 ## 잔여 리스크 (PR 본문에 명시)
 
