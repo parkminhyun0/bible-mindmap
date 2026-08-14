@@ -37,3 +37,12 @@
 - 2-review 환경에 oxlint가 설치되어 있거나 네트워크가 허용되면 `npx oxlint`를 재실행해야 한다.
 
 git commit 및 push는 수행하지 않았다.
+
+## 반복 1회차 · CodeQL 대응
+
+- `scripts/verify-strong-external-link-policy.mjs`의 `line.includes('biblehub.com')` 호스트명 부분문자열 검사를 제거했다.
+- 두 대상 파일에서 각 Strong 링크 헬퍼의 import와 import문 밖 실제 호출을 확인하도록 정적 계약을 보강했다.
+- 호스트명을 언급하지 않고 `/hebrew/${…}`·`/greek/${…}` 직접 조립을 검사하며, `lexicon.js`의 정규화된 `${num}` 외 표현식은 실패 처리하도록 변경했다. 기존 `replace(/^[GH]/` 잔존 금지 검사는 유지했다.
+- `node scripts/verify-strong-external-link-policy.mjs`: PASS — 기존 16개 동작 케이스 및 정적 계약 통과.
+- 실효성 확인: `WordSearchModal.jsx`에 임시 직접 조립(`/hebrew/${strong}.htm`)을 삽입했을 때 검증기가 의도대로 FAIL했다. 임시 코드는 즉시 원상복구했으며 최종 diff에 남지 않았다.
+- git commit 및 push는 수행하지 않았다.
