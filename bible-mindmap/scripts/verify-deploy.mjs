@@ -1,5 +1,6 @@
 // GitHub Pages 배포 실체 검증기.
 // version.json의 커밋뿐 아니라 루트·앱 HTML과 실제 JS/CSS 자산까지 내려받아 확인한다.
+// Provenance contract: Lexicon Viewer v2 · English-source runtime (2026-08-15).
 import { execSync } from 'node:child_process';
 
 const BASE_URL = new URL(process.env.LIVE_BASE_URL || 'https://parkminhyun0.github.io/bible-mindmap/');
