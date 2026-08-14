@@ -8,11 +8,14 @@ import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
 
-const POPUP_MIN_WIDTH = 320;
-const POPUP_MIN_HEIGHT = 280;
+const POPUP_MIN_WIDTH = 340;
+const POPUP_MIN_HEIGHT = 300;
 const POPUP_VIEWPORT_MARGIN = 12;
-const DEFAULT_DESKTOP_WIDTH = 420;
-const DEFAULT_DESKTOP_HEIGHT = 540;
+// Prototype-fidelity default: dictionary content dominates.  Wide-mode single-
+// line horizontal metadata + three tabs + generous body + collapsed bottom
+// provenance toggle.  Freely resizable; viewport-clamped.
+const DEFAULT_DESKTOP_WIDTH = 760;
+const DEFAULT_DESKTOP_HEIGHT = 620;
 
 function clampSize(width, height, vw, vh) {
   const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
@@ -307,31 +310,24 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           >✕</button>
         </header>
 
-        <div style={{ padding: '8px 16px', borderBottom: '1px solid #f1f5f9', fontSize: 12, background: '#f8fafc' }}>
+        <div data-testid="popup-meta-strip" style={{
+          padding: '8px 16px', borderBottom: '1px solid #f1f5f9', fontSize: 12,
+          background: '#f8fafc',
+          display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'baseline',
+        }}>
           {entry.l && (
-            <MetaRow label="사전형">
-              <span style={{
-                fontSize: 14, color: '#1e293b',
-                fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif',
-              }}>{entry.l}</span>
-            </MetaRow>
+            <MetaChip label="사전형">
+              <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 13, color: '#1e293b' }}>{entry.l}</span>
+            </MetaChip>
           )}
           {morphHuman && (
-            <MetaRow label="형태 요약">
+            <MetaChip label="형태">
               <span style={{ color: '#475569' }}>{morphHuman}</span>
-              <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
-            </MetaRow>
+              <span style={{ color: '#94a3b8', marginLeft: 4, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
+            </MetaChip>
           )}
-          {koreanGloss && (
-            <MetaRow label="한글 뜻">
-              <span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span>
-            </MetaRow>
-          )}
-          {entry.g && (
-            <MetaRow label="기본뜻">
-              <span style={{ color: '#1e293b', fontWeight: 500 }}>{entry.g}</span>
-            </MetaRow>
-          )}
+          {entry.g && <MetaChip label="기본뜻"><span style={{ color: '#1e293b' }}>{entry.g}</span></MetaChip>}
+          {koreanGloss && <MetaChip label="한글 뜻"><span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span></MetaChip>}
         </div>
 
         <div style={{
@@ -441,25 +437,21 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           )}
 
           {tab === 'morph' && (
-            <div data-testid="morph-tab" style={{ padding: '12px 16px', fontSize: 12, color: '#1e293b', lineHeight: 1.7 }}>
-              <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5, marginBottom: 8 }}>
+            <div data-testid="morph-tab" style={{ padding: '16px', color: '#1e293b' }}>
+              <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5, marginBottom: 12 }}>
                 MORPHOLOGY · 클릭한 실제 토큰 형태
               </div>
-              <MetaRow label="사전형">
-                <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 14 }}>{entry.l || '—'}</span>
-              </MetaRow>
-              {entry.tr && <MetaRow label="학술 음역"><span style={{ fontStyle: 'italic' }}>{entry.tr}</span></MetaRow>}
-              {entry.translitKo && <MetaRow label="한글 음역"><span>{entry.translitKo}</span></MetaRow>}
-              <MetaRow label="형태 분석">
-                <span data-testid="morph-humanized">{morphHuman || '—'}</span>
-              </MetaRow>
-              {entry.m && (
-                <MetaRow label="raw code">
-                  <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#64748b', background: '#f1f5f9', padding: '1px 6px', borderRadius: 3 }}>{entry.m}</span>
-                </MetaRow>
-              )}
-              {entry.g && <MetaRow label="기본뜻"><span>{entry.g}</span></MetaRow>}
-              {definition?.meta?.partOfSpeech && <MetaRow label="품사"><span>{definition.meta.partOfSpeech}</span></MetaRow>}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 10 }}>
+                <MorphCard label="사전형">
+                  <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 18 }}>{entry.l || '—'}</span>
+                </MorphCard>
+                {entry.tr && <MorphCard label="학술 음역"><span style={{ fontStyle: 'italic' }}>{entry.tr}</span></MorphCard>}
+                {entry.translitKo && <MorphCard label="한글 음역">{entry.translitKo}</MorphCard>}
+                <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
+                {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
+                {entry.g && <MorphCard label="기본뜻">{entry.g}</MorphCard>}
+                {definition?.meta?.partOfSpeech && <MorphCard label="품사">{definition.meta.partOfSpeech}</MorphCard>}
+              </div>
             </div>
           )}
 
@@ -559,11 +551,27 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   );
 }
 
-function MetaRow({ label, children }) {
+// Horizontal inline chip: label above value, hugs content width.  Used for the
+// compact header metadata row that wraps gracefully on narrow widths.
+function MetaChip({ label, children }) {
   return (
-    <div style={{ display: 'flex', gap: 8, marginBottom: 3, alignItems: 'baseline' }}>
-      <span style={{ color: '#94a3b8', fontSize: 10, minWidth: 46, fontWeight: 600 }}>{label}</span>
-      <span style={{ flex: 1 }}>{children}</span>
+    <span style={{ display: 'inline-flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>
+      <span style={{ color: '#94a3b8', fontSize: 9, fontWeight: 700, letterSpacing: 0.4, textTransform: 'uppercase' }}>{label}</span>
+      <span style={{ fontSize: 12 }}>{children}</span>
+    </span>
+  );
+}
+
+// Grouped labeled card used in the morphology tab.  Fills a responsive grid so
+// the tab reads as a set of compact fields rather than a tall MetaRow stack.
+function MorphCard({ label, children, mono }) {
+  return (
+    <div style={{
+      background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 8,
+      padding: '10px 12px', minWidth: 0,
+    }}>
+      <div style={{ color: '#94a3b8', fontSize: 10, fontWeight: 700, letterSpacing: 0.5, marginBottom: 4, textTransform: 'uppercase' }}>{label}</div>
+      <div style={{ fontSize: 14, color: '#1e293b', fontWeight: 600, fontFamily: mono ? 'monospace' : undefined, wordBreak: 'break-word' }}>{children}</div>
     </div>
   );
 }
