@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "scope": "old-testament-bdb-full-fidelity-presentation",
+  "strong": "H1254a",
+  "lemma": "בָּרָא",
+  "candidateFingerprint": "sha256:eeb90cc35d04b703e2f7102cc1d7bbf6fcf074f63f191b1ff8229ec88b07c625",
+  "approvedEvidenceFingerprint": "sha256:43a91cd4c50101a46d2a4c7459198f63c46d789c3700ba6ce0276b520cae7f84",
+  "sourceLocator": "BrownDriverBriggs.xml:b.cw.aa",
+  "sourceStructureRequired": true,
+  "sections": [
+    {
+      "id": "qal",
+      "labelKo": "칼(Qal)",
+      "accountIds": [
+        "BDB-H1254a-QAL-FORMS",
+        "BDB-H1254a-QAL-QUALIFIER",
+        "BDB-H1254a-QAL-G1",
+        "BDB-H1254a-QAL-G2",
+        "BDB-H1254a-QAL-G3",
+        "BDB-H1254a-QAL-G4"
+      ]
+    },
+    {
+      "id": "niphal",
+      "labelKo": "니팔(Niphal)",
+      "accountIds": [
+        "BDB-H1254a-NIPH-FORMS",
+        "BDB-H1254a-NIPH-1",
+        "BDB-H1254a-NIPH-2",
+        "BDB-H1254a-NIPH-3"
+      ]
+    },
+    {
+      "id": "piel",
+      "labelKo": "피엘(Piel)",
+      "accountIds": [
+        "BDB-H1254a-PIEL-FORMS",
+        "BDB-H1254a-PIEL-1",
+        "BDB-H1254a-PIEL-2"
+      ]
+    }
+  ],
+  "accounts": {
+    "BDB-H1254a-QAL-FORMS": {
+      "labelKo": "형태 목록",
+      "textKo": "완료형·미완료형·부정사·명령형·분사·접미형을 포함하는 칼형의 실제 BDB 형태 목록입니다.",
+      "kind": "forms"
+    },
+    "BDB-H1254a-QAL-QUALIFIER": {
+      "labelKo": "용법 제한",
+      "textKo": "BDB는 칼형 용법을 ‘언제나 신적 활동(always of divine activity)’이라는 제한과 함께 제시합니다.",
+      "kind": "qualifier"
+    },
+    "BDB-H1254a-QAL-G1": {
+      "labelKo": "용법 1",
+      "textKo": "우주·인간·생물 등 창조되는 대상을 창조하거나 형성하는 용법.",
+      "kind": "usage"
+    },
+    "BDB-H1254a-QAL-G2": {
+      "labelKo": "용법 2",
+      "textKo": "개별 인물과 이스라엘·야곱 및 관련 행위자를 창조하는 용법.",
+      "kind": "usage"
+    },
+    "BDB-H1254a-QAL-G3": {
+      "labelKo": "용법 3",
+      "textKo": "새로운 상태나 상황을 생기게 하거나 이루어 내는 용법.",
+      "kind": "usage"
+    },
+    "BDB-H1254a-QAL-G4": {
+      "labelKo": "용법 4",
+      "textKo": "새롭거나 변화된 상태로 바꾸거나 새롭게 하는 용법.",
+      "kind": "usage"
+    },
+    "BDB-H1254a-NIPH-FORMS": {
+      "labelKo": "형태 목록",
+      "textKo": "완료형·미완료형·접미형 부정사·분사를 포함하는 니팔형의 실제 BDB 형태 목록입니다.",
+      "kind": "forms"
+    },
+    "BDB-H1254a-NIPH-1": {
+      "labelKo": "용법 1",
+      "textKo": "창조되다.",
+      "kind": "sense"
+    },
+    "BDB-H1254a-NIPH-2": {
+      "labelKo": "용법 2",
+      "textKo": "생겨남·출생 또는 기원과 관련하여 쓰이는 용법.",
+      "kind": "sense"
+    },
+    "BDB-H1254a-NIPH-3": {
+      "labelKo": "용법 3",
+      "textKo": "새롭고 놀라운 어떤 것이 생겨나는 것을 나타내는 용법.",
+      "kind": "sense"
+    },
+    "BDB-H1254a-PIEL-FORMS": {
+      "labelKo": "형태 목록",
+      "textKo": "완료형과 부정사 절대형을 포함하는 피엘형의 BDB 형태 목록입니다. 창세기에서 H1254a 피엘 용례가 있다고 주장하지 않습니다.",
+      "kind": "forms"
+    },
+    "BDB-H1254a-PIEL-1": {
+      "labelKo": "용법 1",
+      "textKo": "베어 쓰러뜨리다.",
+      "kind": "sense"
+    },
+    "BDB-H1254a-PIEL-2": {
+      "labelKo": "용법 2",
+      "textKo": "베어내다.",
+      "kind": "sense"
+    }
+  }
+}
