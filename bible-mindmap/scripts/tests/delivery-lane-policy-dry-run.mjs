@@ -29,9 +29,27 @@ for (const filename of [
   'bible-mindmap/data/lexicon/v4/golden-audit-contract.json',
   'docs/lexicon-workflow/TRACK_STATE.json',
   'bible-mindmap/scripts/verify-genesis-v4-batch-03-registry-promotion.mjs',
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/candidate.json',
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/evidence.json',
 ]) {
   assert.equal(isLexiconApprovalSensitivePath(filename), true, `${filename} must require lexicon approval`)
 }
+
+const handoffOnly = classifyDeliveryLane([
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/candidate.json',
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/evidence.json',
+])
+assert.equal(handoffOnly.lane, LEXICON_APPROVAL_LANE, 'lexicon handoff artifacts must classify as lexicon-human-approval')
+assert.deepEqual(handoffOnly.lexiconApprovalFiles, [
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/candidate.json',
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/evidence.json',
+])
+
+const handoffMixed = classifyDeliveryLane([
+  'bible-mindmap/src/components/LexiconPopup.jsx',
+  'bible-mindmap/data/lexicon/handoff/genesis-h1254a-full-fidelity/candidate.json',
+])
+assert.equal(handoffMixed.lane, LEXICON_APPROVAL_LANE, 'mixed PR containing handoff artifact must still require lexicon-human-approval')
 
 for (const filename of [
   'AGENTS.md',
