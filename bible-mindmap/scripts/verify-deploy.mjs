@@ -106,16 +106,24 @@ async function main() {
       request(new URL(href, APP_URL), { label: `modulepreload[${index}] ${href}` })
     ));
     const bundleCorpus = [moduleAsset.value, ...preloadAssets.map((asset) => asset.value)].join('\n');
+    // Runtime provenance contract follows the currently shipped English-source
+    // Lexicon Viewer.  Korean approved-dictionary runtime is paused, so the old
+    // OSHL/Korean-drawer marker set is not a valid deployment requirement here.
+    // Keep this gate fail-closed by requiring the actual bottom provenance UI,
+    // lexical-work identity, runtime-provider disclosure, morphology/concordance
+    // attribution, and the explicit reuse-rights warning to all ship together.
     const provenanceMarkers = [
-      '⚖️ 출처 · 라이선스 · 변경 고지',
-      '21c9add13bc727d3a951361778e97e3ff7afd1ce',
-      'Open Scriptures Hebrew Lexicon',
+      '출처 · 저작권 · 재사용 근거',
+      'Brown–Driver–Briggs Hebrew and English Lexicon (1906)',
+      'Bolls.life BDBT',
+      'STEPBible.data',
+      'FREE ACCESS ≠ REUSE PERMISSION',
     ];
     const missingProvenance = provenanceMarkers.filter((marker) => !bundleCorpus.includes(marker));
     if (missingProvenance.length > 0) {
-      throw new Error(`shipped bundle missing License-Safe provenance markers (searched ${preloadAssets.length + 1} chunks): ${missingProvenance.join(' | ')}`);
+      throw new Error(`shipped bundle missing current Lexicon Viewer provenance markers (searched ${preloadAssets.length + 1} chunks): ${missingProvenance.join(' | ')}`);
     }
-    checks.push(`bundle (${preloadAssets.length + 1} chunks) contains License-Safe provenance markers`);
+    checks.push(`bundle (${preloadAssets.length + 1} chunks) contains current Lexicon Viewer provenance markers`);
 
     const stylesheetUrl = new URL(stylesheetHref, APP_URL);
     const stylesheet = await request(stylesheetUrl, { label: 'stylesheet asset' });
