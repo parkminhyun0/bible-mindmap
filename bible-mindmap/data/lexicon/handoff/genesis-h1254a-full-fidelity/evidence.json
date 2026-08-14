@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "evidenceId": "GEN-FF-H1254a-GPT-EVIDENCE-v1",
+  "strong": "H1254a",
+  "lemma": "בָּרָא",
+  "candidateFingerprint": "sha256:eeb90cc35d04b703e2f7102cc1d7bbf6fcf074f63f191b1ff8229ec88b07c625",
+  "authoritativeSources": [
+    {
+      "role": "lexical-source",
+      "repository": "openscriptures/HebrewLexicon",
+      "path": "BrownDriverBriggs.xml",
+      "entryLocator": "b.cw.aa",
+      "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+      "datasetFileBlobSha": "21bb98cab34334cd500553addc38aca6792f7bce",
+      "sourceWork": "Brown–Driver–Briggs Hebrew and English Lexicon (1906)",
+      "sourceWorkRights": "Public Domain",
+      "datasetLicense": "CC BY 4.0",
+      "attribution": "Open Scriptures Hebrew Bible Project"
+    },
+    {
+      "role": "genesis-corpus-morphology",
+      "repository": "parkminhyun0/bible-mindmap",
+      "path": ".oshb-cache/Gen.xml",
+      "ref": "main@65bc53ecdb14109f3d42a4df6ff1a21dba34b94e",
+      "blobSha": "09ac9cab0a47c5fae8d747c2868f1cf50d6d1131",
+      "corpus": "Open Scriptures Hebrew Bible / Open Scriptures Hebrew Morphology",
+      "license": "CC BY 4.0",
+      "h1254aGenesisVerseCount": 8,
+      "h1254aGenesisTokenCount": 11
+    },
+    {
+      "role": "rights-admission",
+      "repository": "parkminhyun0/bible-mindmap",
+      "path": "bible-mindmap/reports/genesis-license-safe-reaudit-2026-08-13.json",
+      "ref": "main@65bc53ecdb14109f3d42a4df6ff1a21dba34b94e",
+      "reportBlobSha": "017fc6099ee66d059147133f1540d6c905e2400e",
+      "rightsVerdict": "PASS",
+      "note": "C0 dataset-level rights admission only; not semantic approval."
+    },
+    {
+      "role": "legacy-candidate-baseline",
+      "repository": "parkminhyun0/bible-mindmap",
+      "path": "bible-mindmap/data/lexicon/candidates/genesis-p5/core-theology-context.json",
+      "legacyCandidateId": "GEN-P5-H1254-H1254a-GPT-v1",
+      "legacyCandidateFingerprint": "sha256:b99fc8722919cbf124b378ff2d5aeb926ba16a67d7c8b1f47059c0e475bb8b60"
+    }
+  ],
+  "lexicalCoverage": {
+    "qal": {
+      "formListAccountId": "BDB-H1254a-QAL-FORMS",
+      "qualifierAccountId": "BDB-H1254a-QAL-QUALIFIER",
+      "usageGroupAccountIds": [
+        "BDB-H1254a-QAL-G1",
+        "BDB-H1254a-QAL-G2",
+        "BDB-H1254a-QAL-G3",
+        "BDB-H1254a-QAL-G4"
+      ]
+    },
+    "niphal": {
+      "formListAccountId": "BDB-H1254a-NIPH-FORMS",
+      "senseAccountIds": [
+        "BDB-H1254a-NIPH-1",
+        "BDB-H1254a-NIPH-2",
+        "BDB-H1254a-NIPH-3"
+      ]
+    },
+    "piel": {
+      "formListAccountId": "BDB-H1254a-PIEL-FORMS",
+      "senseAccountIds": [
+        "BDB-H1254a-PIEL-1",
+        "BDB-H1254a-PIEL-2"
+      ],
+      "genesisOccurrence": false
+    }
+  },
+  "integrity": {
+    "approvedRegistryMutation": false,
+    "approvedH1254aSnapshotMutation": false,
+    "approvedEvidenceFingerprintMutation": false,
+    "h776Mutation": false,
+    "productionWrite": false,
+    "approvalClaimed": false
+  },
+  "preflight": {
+    "method": "local mirror of main classifier logic; Jarvis must run repository classifier against published artifact",
+    "observedClassification": "VERIFIER_READY",
+    "reasonCodes": [],
+    "actualMergedClassifierRunByGPT": false
+  }
+}
