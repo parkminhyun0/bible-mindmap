@@ -7,6 +7,71 @@ const PILOT_SELECTOR = '[role="dialog"][aria-label^="원어 사전"]';
 const BUTTON_ATTR = 'data-lexicon-translation-toggle';
 const DRAWER_ROOT_ATTR = 'data-lexicon-translation-pilot-root';
 
+// Approved-entry channel. This bridge is the sole owner of the detailed
+// approved-lexicon loader; downstream consumers (e.g. LexiconPopup) read
+// resolved entries through subscribeApprovedEntry without importing the loader
+// themselves, preserving the P4 read-only delivery SSOT contract enforced by
+// scripts/verify-lexicon-delivery-loader.mjs.
+const approvedEntryCache = new Map();
+const approvedEntrySubscribers = new Map();
+
+function approvedEntryKey(strong, lemma) {
+  return `${strong}|${lemma || ''}`;
+}
+
+function notifyApprovedEntry(key, value) {
+  const subscribers = approvedEntrySubscribers.get(key);
+  if (!subscribers) return;
+  for (const callback of subscribers) {
+    try { callback(value); } catch { /* isolate subscriber failures */ }
+  }
+}
+
+function loadApprovedEntryIntoCache(strong, lemma) {
+  const key = approvedEntryKey(strong, lemma);
+  const cached = approvedEntryCache.get(key);
+  if (cached && typeof cached.then === 'function') return cached;
+  if (cached !== undefined) return Promise.resolve(cached);
+  const load = lexiconApprovalLoader.loadApprovedEntry(strong, { lemma })
+    .then((entry) => {
+      const resolved = entry || null;
+      approvedEntryCache.set(key, resolved);
+      notifyApprovedEntry(key, resolved);
+      return resolved;
+    })
+    .catch(() => {
+      approvedEntryCache.set(key, null);
+      notifyApprovedEntry(key, null);
+      return null;
+    });
+  approvedEntryCache.set(key, load);
+  return load;
+}
+
+export function subscribeApprovedEntry(strong, lemma, callback) {
+  if (!strong || typeof callback !== 'function') return () => {};
+  const key = approvedEntryKey(strong, lemma);
+  const subscribers = approvedEntrySubscribers.get(key) || new Set();
+  subscribers.add(callback);
+  approvedEntrySubscribers.set(key, subscribers);
+
+  const cached = approvedEntryCache.get(key);
+  if (cached !== undefined && !(cached && typeof cached.then === 'function')) {
+    Promise.resolve().then(() => {
+      if (approvedEntrySubscribers.get(key)?.has(callback)) callback(cached);
+    });
+  } else if (cached === undefined) {
+    loadApprovedEntryIntoCache(strong, lemma);
+  }
+
+  return () => {
+    const set = approvedEntrySubscribers.get(key);
+    if (!set) return;
+    set.delete(callback);
+    if (!set.size) approvedEntrySubscribers.delete(key);
+  };
+}
+
 function detectStrong(dialog) {
   for (const link of dialog.querySelectorAll('a')) {
     const text = link.textContent || '';
@@ -190,7 +255,7 @@ export function installLexiconTranslationPilotBridge() {
     const lookupKey = `${strong}|${lemma || ''}`;
     if (!state) {
       if (unavailable.get(dialog) === lookupKey || pending.has(dialog)) return;
-      const load = lexiconApprovalLoader.loadApprovedEntry(strong, { lemma })
+      const load = loadApprovedEntryIntoCache(strong, lemma)
         .then((approvedEntry) => {
           if (!approvedEntry) {
             unavailable.set(dialog, lookupKey);

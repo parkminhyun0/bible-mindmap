@@ -6,7 +6,7 @@ import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
-import { lexiconApprovalLoader } from '../data/lexiconApprovalLoader';
+import { subscribeApprovedEntry } from '../utils/lexiconTranslationPilotBridge.jsx';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
 
 function approvedNodes(senses = []) {
@@ -64,13 +64,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   }, [entry?.s]);
 
   useEffect(() => {
-    let cancelled = false;
     setApprovedEntry(null);
-    if (!entry?.s) return () => { cancelled = true; };
-    lexiconApprovalLoader.loadApprovedEntry(entry.s, { lemma: entry.l })
-      .then((approved) => { if (!cancelled) setApprovedEntry(approved); })
-      .catch(() => { if (!cancelled) setApprovedEntry(null); });
-    return () => { cancelled = true; };
+    if (!entry?.s) return () => {};
+    const unsubscribe = subscribeApprovedEntry(entry.s, entry.l, (approved) => {
+      setApprovedEntry(approved || null);
+    });
+    return unsubscribe;
   }, [entry?.s, entry?.l]);
 
   useEffect(() => {
