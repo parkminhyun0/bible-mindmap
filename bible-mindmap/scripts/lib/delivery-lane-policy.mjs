@@ -16,6 +16,7 @@ const LEXICON_APPROVAL_EXACT_FILES = new Set([
 
 const LEXICON_APPROVAL_PREFIXES = [
   'bible-mindmap/data/lexicon/schemas/',
+  'bible-mindmap/data/lexicon/handoff/',
 ]
 
 const LEXICON_APPROVAL_PATTERNS = [
