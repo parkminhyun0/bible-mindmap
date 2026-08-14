@@ -314,12 +314,21 @@ test('V5 · Hebrew noun morphology surfaces gender/number/state', async ({ page 
   expect(humanized).toMatch(/명사|noun/i);
 });
 
-test('V6 · Korean transliteration renders only when translitKo exists', async ({ page }) => {
+test('V6 · Korean transliteration uses reviewed metadata only and never synthesizes', async ({ page }) => {
   test.setTimeout(120_000);
   await routeLexiconFixtures(page);
-  // Fixture entry does not provide translitKo — Korean translit chip must be absent.
-  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
-  await expect(dialog.getByTestId('popup-translit-ko')).toHaveCount(0);
+
+  // H430 fixture carries no token translitKo and the reviewed baseline has no
+  // H430 entry, so no Korean transliteration may be synthesized.
+  const dialog430 = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog430.getByTestId('popup-translit-ko')).toHaveCount(0);
+  await page.keyboard.press('Escape');
+
+  // H776 is already present in the reviewed KOREAN_GLOSS baseline as 에레츠.
+  // Reuse that metadata in the header/morphology view without re-enabling the
+  // paused Korean dictionary translation layer.
+  const dialog776 = await openStrong(page, { strong: 'H0776', strongText: 'הָאָרֶץ' });
+  await expect(dialog776.getByTestId('popup-translit-ko')).toHaveText('에레츠');
 });
 
 test('V7 · no approved-Korean dictionary tree or drawer surface', async ({ page }) => {
@@ -385,13 +394,15 @@ test('V12 · Hebrew BDB failure never presents Strong\'s/KJV as the normal BDB d
   expect(await dialog.locator('[data-lexicon-definition-tree="true"]').count()).toBe(0);
 });
 
-test('V13 · Greek retains the current Greek lexical source', async ({ page }) => {
+test('V13 · Greek retains current source without fabricated hierarchy markers', async ({ page }) => {
   test.setTimeout(120_000);
   await routeLexiconFixtures(page);
   const dialog = await openStrong(page, { book: '요한복음', strong: 'G3056', strongText: 'λόγος' });
-  // Greek source badge is Strong's (not BDB) and the tree renders from local Greek data.
   await expect(dialog.getByTestId('popup-source-badge')).toHaveText("Strong's");
-  await expect(dialog.locator('[data-lexicon-definition-tree="true"]').first()).toBeVisible();
+  const tree = dialog.locator('[data-lexicon-definition-tree="true"]').first();
+  await expect(tree).toBeVisible();
+  await expect(tree).toHaveAttribute('data-flat-definition', 'true');
+  expect(await tree.locator('[data-marker]').count()).toBe(0);
 });
 
 test('V14 · no H776/H430/H1254 Strong-specific rendering hardcode', async () => {
