@@ -416,7 +416,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {/* Hebrew BDB success OR Greek: render tree */}
               {!defLoading && !defError && definition && !(isHebrew && definition.bdbUnavailable) && (
                 <>
-                  <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} />
+                  <LexiconDefinitionTree
+                    nodes={definition.nodes || []}
+                    isHebrew={isHebrew}
+                    flat={!isHebrew && definition.source === 'local'}
+                  />
                   {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
                     <div data-testid="lexicon-definition-meta" style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9', color: '#64748b', fontSize: 11, lineHeight: 1.65 }}>
                       {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
