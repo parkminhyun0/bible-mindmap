@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
+import { fetchStrongDefinition, fetchStrongConcordance, humanizeMorph, linkifyDefinition, evictStrongDefinitionCache } from '../utils/lexicon';
 import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
@@ -57,7 +57,8 @@ function resizeHandleStyle(side) {
 export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
   const isMobile = useMobile();
-  const [tab, setTab] = useState('def'); // 'def' | 'usage'
+  const [tab, setTab] = useState('def'); // 'def' | 'usage' | 'morph'
+  const [defReloadNonce, setDefReloadNonce] = useState(0);
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
@@ -78,7 +79,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
       .catch((e) => { if (!cancelled) setDefError(e.message || '조회 실패'); })
       .finally(() => { if (!cancelled) setDefLoading(false); });
     return () => { cancelled = true; };
-  }, [entry?.s]);
+  }, [entry?.s, defReloadNonce]);
 
   useEffect(() => {
     if (tab !== 'usage' || usages !== null) return;
@@ -249,57 +250,64 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
         }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div
+        <header
           onMouseDown={onDragStart}
           style={{
-            padding: '12px 14px', background: isHebrew ? '#fef3c7' : '#dbeafe',
-            borderBottom: '1px solid #e2e8f0',
-            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8,
+            padding: '12px 16px',
+            background: '#0f172a',
+            color: '#f8fafc',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12,
             cursor: isMobile ? 'default' : 'grab',
             userSelect: 'none',
           }}
         >
-          <div>
+          <div style={{ minWidth: 0, flex: 1 }}>
             <div style={{
-              fontSize: 22, fontWeight: 700,
+              fontSize: 24, fontWeight: 700,
               fontFamily: isHebrew ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
-              color: '#1e293b',
               direction: isHebrew ? 'rtl' : 'ltr',
-              lineHeight: 1.4,
+              lineHeight: 1.3,
+              color: '#f8fafc',
             }}>
               {entry.w}
             </div>
-            {entry.tr && (
-              <div style={{ fontSize: 12, color: '#64748b', fontStyle: 'italic', marginTop: 2 }}>
-                {entry.tr}
-              </div>
-            )}
+            <div style={{ marginTop: 4, fontSize: 12, color: '#cbd5e1', display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'baseline' }}>
+              {entry.tr && <span style={{ fontStyle: 'italic' }}>{entry.tr}</span>}
+              {entry.tr && entry.translitKo && <span style={{ color: '#64748b' }}>·</span>}
+              {entry.translitKo && <span data-testid="popup-translit-ko">{entry.translitKo}</span>}
+              {(entry.tr || entry.translitKo) && entry.s && <span style={{ color: '#64748b' }}>·</span>}
+              {entry.s && (
+                <a
+                  href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
+                  target="_blank" rel="noreferrer"
+                  style={{ color: '#93c5fd', fontFamily: 'monospace', fontWeight: 600, textDecoration: 'none' }}
+                >
+                  {entry.s} ↗
+                </a>
+              )}
+            </div>
+            <div style={{ marginTop: 6, fontSize: 10, color: '#94a3b8', letterSpacing: 0.5 }}>
+              <span>Source: </span>
+              <span data-testid="popup-source-badge" style={{ color: '#f8fafc', fontWeight: 700 }}>
+                {isHebrew ? 'BDB' : "Strong's"}
+              </span>
+            </div>
           </div>
           <button
             onClick={onClose}
             onMouseDown={(e) => e.stopPropagation()}
             style={{
-              background: 'none', border: 'none', fontSize: isMobile ? 22 : 18,
-              cursor: 'pointer', color: '#64748b', padding: 0, lineHeight: 1,
-              flexShrink: 0, minWidth: isMobile ? 44 : undefined, minHeight: isMobile ? 44 : undefined,
+              background: 'transparent', border: '1px solid #334155', borderRadius: 6,
+              fontSize: isMobile ? 20 : 16,
+              cursor: 'pointer', color: '#f8fafc', padding: 0, lineHeight: 1,
+              flexShrink: 0,
+              width: isMobile ? 44 : 30, height: isMobile ? 44 : 30,
             }}
             title="닫기 (Esc)"
           >✕</button>
-        </div>
+        </header>
 
-        <div style={{ padding: '10px 14px', borderBottom: '1px solid #f1f5f9', fontSize: 12 }}>
-          {entry.s && (
-            <MetaRow label="Strong's">
-              <a
-                href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
-                target="_blank"
-                rel="noreferrer"
-                style={{ color: '#3b82f6', fontFamily: 'monospace', fontWeight: 600, textDecoration: 'none' }}
-              >
-                {entry.s} ↗
-              </a>
-            </MetaRow>
-          )}
+        <div style={{ padding: '8px 16px', borderBottom: '1px solid #f1f5f9', fontSize: 12, background: '#f8fafc' }}>
           {entry.l && (
             <MetaRow label="사전형">
               <span style={{
@@ -309,7 +317,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             </MetaRow>
           )}
           {morphHuman && (
-            <MetaRow label="형태소">
+            <MetaRow label="형태 요약">
               <span style={{ color: '#475569' }}>{morphHuman}</span>
               <span style={{ color: '#94a3b8', marginLeft: 6, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
             </MetaRow>
@@ -331,8 +339,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           background: '#f8fafc',
         }}>
           {[
-            { key: 'def', label: '📖 사전 정의' },
-            { key: 'usage', label: `🔍 용례${bookId ? '' : ' (책 미선택)'}` },
+            { key: 'def', label: '사전 정의' },
+            { key: 'usage', label: `관련 구절${bookId ? '' : ' (책 미선택)'}` },
+            { key: 'morph', label: '형태 분석' },
           ].map(({ key, label }) => (
             <button
               key={key}
@@ -357,23 +366,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain',
             touchAction: 'pan-y' }}>
           {tab === 'def' && (
-            <div style={{ padding: '10px 14px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 8 }}>
+            <div style={{ padding: '12px 16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
                 <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
-                  {isHebrew ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
+                  {isHebrew ? 'HEBREW LEXICON · BDB' : 'GREEK LEXICON'}
                 </span>
-                {definition?.source && (
-                  <span style={{
-                    fontSize: 9, borderRadius: 3, padding: '1px 5px', fontWeight: 600,
-                    color: definition.source === 'bdbt' ? '#92400e' : '#065f46',
-                    background: definition.source === 'bdbt' ? '#fef3c7' : '#d1fae5',
-                  }}>
-                    {definition.source === 'bdbt' ? 'BDB' : "Strong's"}
-                  </span>
-                )}
-                {isHebrew && definition?.bdbUnavailable && (
-                  <span data-testid="bdb-fallback-status" style={{ color: '#b45309', fontSize: 9, fontWeight: 700 }}>BDB 조회 실패 · Strong&apos;s 표시</span>
-                )}
               </div>
 
               {defLoading && <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>}
@@ -390,7 +387,33 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   )}
                 </div>
               )}
-              {definition && (
+              {/* Hebrew BDB failure = explicit failure + retry (do NOT render Strong's/KJV as the BDB definition) */}
+              {!defLoading && !defError && isHebrew && definition?.bdbUnavailable && (
+                <div data-testid="bdb-failure-panel" style={{ padding: 12, background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, color: '#7f1d1d', fontSize: 12, lineHeight: 1.6 }}>
+                  <div style={{ fontWeight: 700, marginBottom: 6 }}>⚠️ BDB 사전 로드 실패</div>
+                  <div style={{ color: '#991b1b', marginBottom: 10 }}>
+                    Hebrew 정의를 BDB에서 불러오지 못했습니다. 네트워크 또는 dictionary provider 상태를 확인한 뒤 다시 시도해 주세요.
+                  </div>
+                  <button
+                    data-testid="bdb-retry"
+                    onClick={() => { evictStrongDefinitionCache(entry.s); setDefReloadNonce((n) => n + 1); }}
+                    style={{
+                      padding: '6px 12px', fontSize: 12, fontWeight: 700,
+                      background: '#dc2626', color: '#fff', border: 'none', borderRadius: 6,
+                      cursor: 'pointer',
+                    }}
+                  >다시 시도</button>
+                  {entry.s && (
+                    <a
+                      href={`https://biblehub.com/hebrew/${entry.s.replace(/^H0*/, '')}.htm`}
+                      target="_blank" rel="noreferrer"
+                      style={{ marginLeft: 12, color: '#b91c1c', fontSize: 11, textDecoration: 'none', fontWeight: 600 }}
+                    >BibleHub에서 열기 ↗</a>
+                  )}
+                </div>
+              )}
+              {/* Hebrew BDB success OR Greek: render tree */}
+              {!defLoading && !defError && definition && !(isHebrew && definition.bdbUnavailable) && (
                 <>
                   <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} />
                   {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
@@ -417,6 +440,29 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             </div>
           )}
 
+          {tab === 'morph' && (
+            <div data-testid="morph-tab" style={{ padding: '12px 16px', fontSize: 12, color: '#1e293b', lineHeight: 1.7 }}>
+              <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5, marginBottom: 8 }}>
+                MORPHOLOGY · 클릭한 실제 토큰 형태
+              </div>
+              <MetaRow label="사전형">
+                <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 14 }}>{entry.l || '—'}</span>
+              </MetaRow>
+              {entry.tr && <MetaRow label="학술 음역"><span style={{ fontStyle: 'italic' }}>{entry.tr}</span></MetaRow>}
+              {entry.translitKo && <MetaRow label="한글 음역"><span>{entry.translitKo}</span></MetaRow>}
+              <MetaRow label="형태 분석">
+                <span data-testid="morph-humanized">{morphHuman || '—'}</span>
+              </MetaRow>
+              {entry.m && (
+                <MetaRow label="raw code">
+                  <span style={{ fontFamily: 'monospace', fontSize: 11, color: '#64748b', background: '#f1f5f9', padding: '1px 6px', borderRadius: 3 }}>{entry.m}</span>
+                </MetaRow>
+              )}
+              {entry.g && <MetaRow label="기본뜻"><span>{entry.g}</span></MetaRow>}
+              {definition?.meta?.partOfSpeech && <MetaRow label="품사"><span>{definition.meta.partOfSpeech}</span></MetaRow>}
+            </div>
+          )}
+
           {tab === 'usage' && (
             <div style={{ padding: 0 }}>
               {!bookId && (
@@ -424,11 +470,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   구절 노드를 선택하면 해당 책에서의 용례를 볼 수 있습니다.
                 </div>
               )}
-              {usageLoading && <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>🔍 용례 검색 중…</div>}
+              {usageLoading && <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>🔍 관련 구절 검색 중…</div>}
               {usageError && <div style={{ padding: '8px 14px', color: '#ef4444', fontSize: 12 }}>⚠️ {usageError}</div>}
               {!usageLoading && Array.isArray(usages) && usages.length === 0 && !usageError && (
                 <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>
-                  이 책에서 용례를 찾지 못했습니다.
+                  이 책에서 관련 구절을 찾지 못했습니다.
                 </div>
               )}
               {Array.isArray(usages) && usages.length > 0 && (
@@ -463,12 +509,38 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           onActiveChange={setResearchActive}
         />
 
-        <div style={{
-          padding: '6px 14px', borderTop: '1px solid #e2e8f0',
-          fontSize: 9, color: '#94a3b8', background: '#f8fafc',
-        }}>
-          데이터: STEPBible.data (CC BY 4.0) · 사전: Bolls.life / BibleHub
-        </div>
+        <details data-testid="provenance-toggle" style={{ borderTop: '1px solid #e2e8f0', background: '#f8fafc' }}>
+          <summary style={{
+            padding: '8px 16px', fontSize: 11, color: '#475569', cursor: 'pointer',
+            listStyle: 'none', display: 'flex', alignItems: 'center', gap: 6,
+            minHeight: 32, userSelect: 'none',
+          }}>
+            <span style={{ fontSize: 12 }}>ⓘ</span>
+            <span style={{ fontWeight: 600 }}>출처 · 저작권 · 재사용 근거</span>
+          </summary>
+          <div data-testid="provenance-panel" style={{
+            padding: '10px 16px', maxHeight: 200, overflowY: 'auto',
+            borderTop: '1px solid #e2e8f0', fontSize: 11, lineHeight: 1.7, color: '#475569',
+          }}>
+            {isHebrew ? (
+              <>
+                <div><b>렉시컬 원본:</b> Brown–Driver–Briggs Hebrew and English Lexicon (1906) · Public Domain</div>
+                <div><b>런타임 사전 제공:</b> Bolls.life BDBT — provider only. 무료 접근이 재사용 허가는 아니며 이 라벨은 BDB에 대한 라이선스 근거가 아닙니다.</div>
+                <div><b>형태/용례 데이터:</b> STEPBible.data · CC BY 4.0 · Attribution to <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer" style={{ color: '#3b82f6', textDecoration: 'none' }}>STEP Bible</a> 필요.</div>
+                <div><b>Strong number 링크:</b> BibleHub (외부 참조).</div>
+              </>
+            ) : (
+              <>
+                <div><b>렉시컬 원본:</b> 현재 저장소에 포함된 English Greek Strong's 청크 데이터.</div>
+                <div><b>형태/용례 데이터:</b> STEPBible.data · CC BY 4.0 · Attribution to <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer" style={{ color: '#3b82f6', textDecoration: 'none' }}>STEP Bible</a> 필요.</div>
+                <div><b>Strong number 링크:</b> BibleHub (외부 참조).</div>
+              </>
+            )}
+            <div style={{ marginTop: 6, color: '#94a3b8', fontSize: 10 }}>
+              FREE ACCESS ≠ REUSE PERMISSION — 라이선스는 프로젝트 C0 Rights evidence 기반으로만 표기합니다.
+            </div>
+          </div>
+        </details>
         {!isMobile && !researchActive && (
           <>
             <div data-testid="resize-handle-top" onMouseDown={onResizeStart({ top: true })} style={resizeHandleStyle('top')} />
@@ -498,12 +570,14 @@ function MetaRow({ label, children }) {
 
 function UsageRow({ entry, bookId, isHebrew, onAdd }) {
   const koName = getBook(bookId)?.ko || bookId;
+  const morphKo = entry.m ? humanizeMorph(entry.m) : null;
   return (
-    <div style={{
-      display: 'flex', alignItems: 'center', gap: 6,
-      padding: '6px 12px',
+    <div data-testid="usage-row" style={{
+      display: 'flex', alignItems: 'flex-start', gap: 6,
+      padding: '8px 12px',
       borderBottom: '1px solid #f1f5f9',
       fontSize: 11,
+      flexWrap: 'wrap',
     }}>
       <span
         onClick={onAdd || undefined}
@@ -528,8 +602,13 @@ function UsageRow({ entry, bookId, isHebrew, onAdd }) {
       }}>
         {entry.w}
       </span>
+      {morphKo && (
+        <span data-testid="usage-morph-human" style={{ fontSize: 11, color: '#475569', flexBasis: '100%', paddingLeft: 88 }}>
+          {morphKo}
+        </span>
+      )}
       {entry.m && (
-        <span style={{
+        <span data-testid="usage-morph-raw" style={{
           fontSize: 9, color: '#94a3b8', fontFamily: 'monospace',
           background: '#f8fafc', borderRadius: 3, padding: '1px 3px',
           flexShrink: 0,

@@ -254,3 +254,160 @@ test('BDB-only · popup does not render approved-Korean UI', async ({ page }) =>
   const drawerToggle = page.locator('[data-lexicon-translation-toggle]');
   expect(await drawerToggle.count()).toBe(0);
 });
+
+// -----------------------------------------------------------------------------
+// Lexicon Viewer v2 · V1–V14
+// -----------------------------------------------------------------------------
+
+test('V1 · popup exposes 사전 정의 · 관련 구절 · 형태 분석 tabs', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog.getByRole('button', { name: /^사전 정의$/ })).toBeVisible();
+  await expect(dialog.getByRole('button', { name: /^관련 구절/ })).toBeVisible();
+  await expect(dialog.getByRole('button', { name: /^형태 분석$/ })).toBeVisible();
+});
+
+test('V2 · related-verses tab reuses Strong concordance results', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await dialog.getByRole('button', { name: /^관련 구절/ }).click();
+  // Concordance is client-driven from the loaded chapter fixture; at least one
+  // usage row must render.
+  await expect(dialog.getByTestId('usage-row').first()).toBeVisible({ timeout: 15_000 });
+});
+
+test('V3 · morphology tab renders humanizeMorph output', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await dialog.getByRole('button', { name: /^형태 분석$/ }).click();
+  const humanized = dialog.getByTestId('morph-humanized');
+  await expect(humanized).toBeVisible();
+  const text = (await humanized.innerText()).trim();
+  expect(text.length).toBeGreaterThan(0);
+  expect(text).not.toBe('—');
+});
+
+test('V4 · Hebrew verb morphology surfaces stem label from morph code', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  // Route Gen 1:1 with a Qal-perfect fixture token so humanizeMorph exposes Qal.
+  await page.route('**/data/lex/hot/Gen/1.json', (route) => route.fulfill({ json: {
+    '1': [
+      { w: 'בָּרָא', l: 'בָּרָא', g: 'created', s: 'H1254', m: 'HVqp3ms' },
+      { w: 'אֱלֹהִים', l: 'אֱלֹהִים', g: 'God', s: 'H0430', m: 'HNcmpa' },
+    ],
+  } }));
+  const dialog = await openStrong(page, { strong: 'H1254', strongText: 'בָּרָא' });
+  await dialog.getByRole('button', { name: /^형태 분석$/ }).click();
+  await expect(dialog.getByTestId('morph-humanized')).toContainText('Qal');
+});
+
+test('V5 · Hebrew noun morphology surfaces gender/number/state', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0776', strongText: 'הָאָרֶץ' });
+  await dialog.getByRole('button', { name: /^형태 분석$/ }).click();
+  const humanized = await dialog.getByTestId('morph-humanized').innerText();
+  expect(humanized).toMatch(/명사|noun/i);
+});
+
+test('V6 · Korean transliteration renders only when translitKo exists', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  // Fixture entry does not provide translitKo — Korean translit chip must be absent.
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog.getByTestId('popup-translit-ko')).toHaveCount(0);
+});
+
+test('V7 · no approved-Korean dictionary tree or drawer surface', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog.getByTestId('approved-korean-definition')).toHaveCount(0);
+  await expect(dialog.getByText('한글 승인본', { exact: true })).toHaveCount(0);
+  expect(await page.locator('[data-lexicon-translation-toggle]').count()).toBe(0);
+});
+
+test('V8 · provenance toggle is bottom-mounted and closed by default', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  const details = dialog.getByTestId('provenance-toggle');
+  await expect(details).toBeVisible();
+  expect(await details.evaluate((el) => el.open)).toBe(false);
+  // Bottom-mounted: sits after the def tab region.
+  const boxDefs = await dialog.locator('[data-lexicon-definition-tree="true"]').first().boundingBox();
+  const boxDetails = await details.boundingBox();
+  expect(boxDetails.y).toBeGreaterThan((boxDefs?.y ?? 0));
+});
+
+test('V9 · provenance expand does not hide the dictionary state', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await dialog.getByTestId('provenance-toggle').locator('summary').click();
+  await expect(dialog.getByTestId('provenance-panel')).toBeVisible();
+  // Dictionary tree still present in the DOM.
+  await expect(dialog.locator('[data-lexicon-definition-tree="true"]').first()).toBeVisible();
+});
+
+test('V10 · mobile has all three tabs and no resize handles', async ({ browser }) => {
+  test.setTimeout(120_000);
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true });
+  const page = await context.newPage();
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog.getByRole('button', { name: /^사전 정의$/ })).toBeVisible();
+  await expect(dialog.getByRole('button', { name: /^관련 구절/ })).toBeVisible();
+  await expect(dialog.getByRole('button', { name: /^형태 분석$/ })).toBeVisible();
+  expect(await page.locator('[data-testid^="resize-handle-"]').count()).toBe(0);
+  await context.close();
+});
+
+test('V11 · Hebrew BDB failure exposes explicit failure + retry', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page, { bdb: 'fail' });
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  await expect(dialog.getByTestId('bdb-failure-panel')).toBeVisible();
+  await expect(dialog.getByTestId('bdb-retry')).toBeVisible();
+});
+
+test('V12 · Hebrew BDB failure never presents Strong\'s/KJV as the normal BDB definition', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page, { bdb: 'fail' });
+  const dialog = await openStrong(page, { strong: 'H0430', strongText: 'אֱלֹהִים' });
+  // BDB failure panel is shown ...
+  await expect(dialog.getByTestId('bdb-failure-panel')).toBeVisible();
+  // ... and the BDB tree is NOT rendered in place of the failure.
+  expect(await dialog.locator('[data-lexicon-definition-tree="true"]').count()).toBe(0);
+});
+
+test('V13 · Greek retains the current Greek lexical source', async ({ page }) => {
+  test.setTimeout(120_000);
+  await routeLexiconFixtures(page);
+  const dialog = await openStrong(page, { book: '요한복음', strong: 'G3056', strongText: 'λόγος' });
+  // Greek source badge is Strong's (not BDB) and the tree renders from local Greek data.
+  await expect(dialog.getByTestId('popup-source-badge')).toHaveText("Strong's");
+  await expect(dialog.locator('[data-lexicon-definition-tree="true"]').first()).toBeVisible();
+});
+
+test('V14 · no H776/H430/H1254 Strong-specific rendering hardcode', async () => {
+  const fs = await import('node:fs');
+  const path = await import('node:path');
+  const url = await import('node:url');
+  const HERE = url.fileURLToPath(new URL('.', import.meta.url));
+  const files = [
+    path.resolve(HERE, '../src/components/LexiconPopup.jsx'),
+    path.resolve(HERE, '../src/components/LexiconDefinitionTree.jsx'),
+    path.resolve(HERE, '../src/utils/lexicon.js'),
+  ];
+  for (const file of files) {
+    const source = fs.readFileSync(file, 'utf8');
+    // Reject bare Strong-number literal comparisons like `=== 'H776'` in runtime source.
+    expect(source).not.toMatch(/===\s*['"]H0*(?:776|430|1254a?)['"]/);
+    expect(source).not.toMatch(/===\s*['"]G0*3056['"]/);
+  }
+});

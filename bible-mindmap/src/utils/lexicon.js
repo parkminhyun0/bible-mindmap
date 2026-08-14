@@ -248,6 +248,17 @@ const FALLBACK_CACHE_TTL_MS = 60_000;
  *   Greek : (1) 로컬 청크만 (즉시, 외부 API 없음)
  * 반환: { topic, definition, source } 또는 null
  */
+// Evict a single Strong from the definition cache so the next fetch bypasses
+// stale fallback state.  Used by the Hebrew LexiconPopup Retry control to
+// re-attempt BDB after a transient failure without waiting for the fallback
+// TTL to expire.
+export function evictStrongDefinitionCache(strongNum) {
+  if (!strongNum) return;
+  const prefix = strongNum[0];
+  const key = prefix + parseInt(strongNum.slice(1), 10);
+  _defCache.delete(key);
+}
+
 export async function fetchStrongDefinition(strongNum) {
   if (!strongNum) return null;
   // 선행 0 제거 정규화: H0430 → H430
