@@ -5,6 +5,7 @@ import {
   fetchKRVVerses, fetchWEBVerses, fetchOrigLangVerses, deriveOriginalFromKorean,
 } from '../utils/wordSearch';
 import { fetchStrongDefinition, humanizeMorph, linkifyDefinition } from '../utils/lexicon';
+import { biblehubStrongUrl } from '../utils/strongLink.js';
 import LexiconPopup from './LexiconPopup';
 import AlignmentAwareVerseText from './AlignmentAwareVerseText';
 import ApprovedKoreanLexiconPane from './ApprovedKoreanLexiconPane';
@@ -379,6 +380,7 @@ function DictionaryPanel({
 
   const srcLabel = def?.source === 'bdbt' ? 'BDB' : "Strong's";
   const srcColor = def?.source === 'bdbt' ? { bg: '#fef3c7', text: '#92400e' } : { bg: '#d1fae5', text: '#065f46' };
+  const biblehubUrl = biblehubStrongUrl(strong, isHeb);
 
   const col1Style = isMobile
     ? { width: '100%', flexShrink: 0, flexGrow: 0 }
@@ -398,8 +400,8 @@ function DictionaryPanel({
         </span>
         {def && <span style={{ fontSize: fz - 3, borderRadius: 3, padding: '1px 6px', fontWeight: 700, background: srcColor.bg, color: srcColor.text }}>{srcLabel}</span>}
         <span style={{ fontSize: fz - 3, color: '#92400e', fontWeight: 800 }}>+ 한글 승인 사전</span>
-        {strong && (
-          <a href={`https://biblehub.com/${isHeb ? 'hebrew' : 'greek'}/${strong.replace(/^[GH]/, '')}.htm`}
+        {strong && biblehubUrl && (
+          <a href={biblehubUrl}
             target="_blank" rel="noreferrer"
             style={{ marginLeft: 'auto', fontSize: fz - 3, color: '#94a3b8', textDecoration: 'none' }}>
             📖 BibleHub ({strong}) ↗
@@ -440,7 +442,7 @@ function DictionaryPanel({
               {!loading && !def && (
                 <div style={{ fontSize: fz - 1, color: '#94a3b8' }}>
                   정의를 찾을 수 없습니다.{' '}
-                  {strong && <a href={`https://biblehub.com/${isHeb ? 'hebrew' : 'greek'}/${strong.replace(/^[GH]/, '')}.htm`} target="_blank" rel="noreferrer" style={{ color: '#3b82f6' }}>BibleHub ↗</a>}
+                  {strong && biblehubUrl && <a href={biblehubUrl} target="_blank" rel="noreferrer" style={{ color: '#3b82f6' }}>BibleHub ↗</a>}
                 </div>
               )}
               {def && (
