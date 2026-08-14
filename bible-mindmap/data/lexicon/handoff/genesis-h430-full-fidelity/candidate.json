@@ -1,0 +1,1152 @@
+{
+  "schemaVersion": 2,
+  "candidateId": "GEN-FF-H430-GPT-v1",
+  "book": "GEN",
+  "baseStrong": "H430",
+  "sourceStrong": "H430",
+  "language": "hebrew",
+  "status": "candidate",
+  "supersedesCandidate": {
+    "candidateId": "GEN-P5-H430-H430-GPT-v1",
+    "candidateFingerprint": "sha256:02664e787a8128b60111e81b254d01362cd4230e98cf9897de54d365accad89e",
+    "preservation": "historical-evidence-only"
+  },
+  "approvedBaseline": {
+    "approvedEvidenceFingerprint": "sha256:13121be18dd2b5e68bfabdaa38a89b3c755d07a9e948189a6ce4138b8cff374a",
+    "sourceLocator": "BrownDriverBriggs.xml:a.dl.ad",
+    "approvedNodeCount": 13,
+    "mutationAllowed": false
+  },
+  "sourceBundleFingerprint": "sha256:adc1c48a14b111ed8c7046a9274478f70cbd9a17a27532eebc81d9c29fcbdf1c",
+  "sourceInputFingerprint": "sha256:f239a1ce682946ae7b3537026033fa5dd61f4b485d22aba37189c2e6f2c873b0",
+  "parserOutputFingerprint": "sha256:686076ee0badbda3ff7c797bb81b46c6a0bf7deb64043f7bf4e11ec04eeec201",
+  "identity": {
+    "lemma": "אֱלֹהִים",
+    "lemmaNormalized": "אֱלֹהִים",
+    "transliterationScientific": "ʾĕlōhîm",
+    "transliterationKo": "엘로힘",
+    "partOfSpeech": "N",
+    "primaryGlossKo": "하나님, 신들",
+    "notesKo": "수적으로 복수인 용법과 강의적 복수, 관사형 הָאֱלֹהִים, 일반 אֱלֹהִים=God 용법을 분리한다. 삼위일체·언약 등 BDB를 넘어서는 신학적 확장을 사전 뜻에 추가하지 않는다."
+  },
+  "risk": {
+    "tier": "R3",
+    "flags": [
+      "polysemy",
+      "theological-sensitive"
+    ],
+    "nextGate": "JARVIS_C1_C6_INDEPENDENT_VERIFICATION"
+  },
+  "nodes": [
+    {
+      "sourceNodeId": "1",
+      "textKo": "אֱלֹהִים, 남성 명사 복수형. 수적으로 복수일 때는 통치자·재판관, 신적·초인간적 존재, 천사, 신들을 가리키며, 강의적 복수에서는 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 그리고 하나님을 가리킨다.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "polysemy",
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1",
+      "textKo": "수적으로 복수인 용법: 통치자·재판관, 신적·초인간적 존재, 천사, 신들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.1.1",
+      "textKo": "성소에서 신적 대표자로 서거나 신적 위엄과 능력을 반영하는 통치자들·재판관들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.1.2",
+      "textKo": "하나님과 천사를 포함한 신적 존재들, 초인간적 존재들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.1.3",
+      "textKo": "천사들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.1.4",
+      "textKo": "신들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2",
+      "textKo": "강의적 복수 용법: 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 하나님.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.1",
+      "textKo": "신 또는 여신.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.2",
+      "textKo": "신과 같은 존재.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.3",
+      "textKo": "하나님의 행위 또는 하나님께 속한 것들.",
+      "confidence": 0.89,
+      "riskFlags": []
+    },
+    {
+      "sourceNodeId": "1.2.4",
+      "textKo": "하나님.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.3",
+      "textKo": "הָאֱלֹהִים: 참 하나님.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    },
+    {
+      "sourceNodeId": "1.4",
+      "textKo": "אֱלֹהִים: 하나님.",
+      "confidence": 0.86,
+      "riskFlags": [
+        "theological-sensitive"
+      ]
+    }
+  ],
+  "sourceAccount": [
+    {
+      "accountId": "BDB-H430-MORPH-HEADER",
+      "sourceNodeId": "1",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#entry-header",
+      "captureMode": "normalized-source-account",
+      "capturedText": "אֱלֹהִים 2570 noun masculine plural; feminine usage noted at 1 Kings 11:33.",
+      "sourceElements": {
+        "partOfSpeech": "noun",
+        "gender": "masculine",
+        "number": "plural",
+        "exception": "feminine at 1 Kings 11:33"
+      },
+      "relatedNodeIds": [
+        "1"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-1",
+      "sourceNodeId": "1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-1",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "pl. in number.",
+      "relatedNodeIds": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2",
+        "1.1.3",
+        "1.1.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-1A",
+      "sourceNodeId": "1.1.1",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-1a",
+      "captureMode": "normalized-source-account",
+      "capturedText": "rulers, judges, as divine representatives at sacred places or reflecting divine majesty and power",
+      "representativeRefs": [
+        "Exod 21:6",
+        "Exod 22:7",
+        "Exod 22:8",
+        "Ps 82:1",
+        "Ps 82:6",
+        "Ps 138:1"
+      ],
+      "relatedNodeIds": [
+        "1.1.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-1B",
+      "sourceNodeId": "1.1.2",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-1b",
+      "captureMode": "normalized-source-account",
+      "capturedText": "divine ones, superhuman beings including God and angels",
+      "representativeRefs": [
+        "Ps 8:6",
+        "Gen 1:27",
+        "Job 38:7"
+      ],
+      "relatedNodeIds": [
+        "1.1.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-1C",
+      "sourceNodeId": "1.1.3",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-1c",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "angels",
+      "representativeRefs": [
+        "Ps 97:7",
+        "Job 1:6",
+        "Job 2:1",
+        "Job 38:7",
+        "Gen 6:2",
+        "Gen 6:4"
+      ],
+      "relatedNodeIds": [
+        "1.1.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-1D",
+      "sourceNodeId": "1.1.4",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-1d",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "gods",
+      "representativeRefs": [
+        "Exod 18:11",
+        "Exod 20:3",
+        "Exod 32:1",
+        "Gen 35:2",
+        "Gen 35:4",
+        "Gen 31:53",
+        "Deut 10:17",
+        "Ps 136:2"
+      ],
+      "relatedNodeIds": [
+        "1.1.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-2",
+      "sourceNodeId": "1.2",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-2",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "pl. intensive",
+      "relatedNodeIds": [
+        "1",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3",
+        "1.2.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-2A",
+      "sourceNodeId": "1.2.1",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-2a",
+      "captureMode": "normalized-source-account",
+      "capturedText": "god or goddess",
+      "representativeRefs": [
+        "1 Sam 5:7",
+        "Judg 11:24",
+        "1 Kgs 18:24",
+        "1 Kgs 11:33",
+        "2 Kgs 17:26",
+        "2 Kgs 17:27",
+        "1 Kgs 20:28"
+      ],
+      "relatedNodeIds": [
+        "1.2.1"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-2B",
+      "sourceNodeId": "1.2.2",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-2b",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "godlike one",
+      "representativeRefs": [
+        "Exod 4:16",
+        "Exod 7:1",
+        "1 Sam 28:13",
+        "Ps 45:7"
+      ],
+      "relatedNodeIds": [
+        "1.2.2"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-2C",
+      "sourceNodeId": "1.2.3",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-2c",
+      "captureMode": "normalized-source-account",
+      "capturedText": "works of God, or things specially belonging to him",
+      "representativeRefs": [
+        "Ps 68:16",
+        "Ezek 28:14",
+        "Ezek 28:16",
+        "Job 1:16",
+        "Ezek 28:13",
+        "Ezek 31:8",
+        "Ezek 31:9"
+      ],
+      "relatedNodeIds": [
+        "1.2.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-2D",
+      "sourceNodeId": "1.2.4",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-2d",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "God (see senses 3 and 4)",
+      "representativeRefs": [
+        "Deut 4:35",
+        "Deut 4:39",
+        "Isa 45:18",
+        "Gen 5:22",
+        "Gen 5:24"
+      ],
+      "relatedNodeIds": [
+        "1.2.4",
+        "1.3",
+        "1.4"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-3",
+      "sourceNodeId": "1.3",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-3",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "הָאֱלֹהִים the (true) God",
+      "representativeRefs": [
+        "Deut 4:35",
+        "Deut 4:39",
+        "1 Kgs 18:39",
+        "Isa 45:18",
+        "Gen 5:22",
+        "Gen 5:24",
+        "Gen 6:9",
+        "Gen 6:11",
+        "Gen 17:18",
+        "Gen 44:16"
+      ],
+      "relatedNodeIds": [
+        "1.3"
+      ]
+    },
+    {
+      "accountId": "BDB-H430-4",
+      "sourceNodeId": "1.4",
+      "bdbLocator": "BrownDriverBriggs.xml:a.dl.ad#sense-4",
+      "captureMode": "short-verbatim-source-phrase",
+      "capturedText": "אֱלֹהִים = God",
+      "representativeRefs": [
+        "Gen 1:1",
+        "Gen 1:3",
+        "Gen 1:6",
+        "Gen 1:9",
+        "Gen 1:16",
+        "Gen 1:27"
+      ],
+      "relatedNodeIds": [
+        "1.4"
+      ]
+    }
+  ],
+  "usageQualifier": [
+    {
+      "qualifierId": "H430-Q1",
+      "text": "남성 명사 복수형(n.m.pl.); BDB는 1 Kings 11:33의 여성 일치를 예외로 주기한다.",
+      "sourceText": "noun masculine plural (feminine 1 Kings 11:33)",
+      "sourceAccountIds": [
+        "BDB-H430-MORPH-HEADER"
+      ]
+    },
+    {
+      "qualifierId": "H430-Q2",
+      "text": "수적으로 복수인 용법(plural in number)을 강의적 복수와 분리한다.",
+      "sourceText": "pl. in number.",
+      "sourceAccountIds": [
+        "BDB-H430-1"
+      ]
+    },
+    {
+      "qualifierId": "H430-Q3",
+      "text": "강의적 복수(plural intensive)를 수적으로 복수인 용법과 분리한다.",
+      "sourceText": "pl. intensive",
+      "sourceAccountIds": [
+        "BDB-H430-2"
+      ]
+    },
+    {
+      "qualifierId": "H430-Q4",
+      "text": "관사형 הָאֱלֹהִים은 BDB에서 '참 하나님(the true God)'으로 별도 표제된다.",
+      "sourceText": "הָאֱלֹהִים the (true) God",
+      "sourceAccountIds": [
+        "BDB-H430-3"
+      ]
+    }
+  ],
+  "representativeRefs": [
+    {
+      "ref": "Exod 21:6",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 22:7",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 22:8",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 82:1",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 82:6",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 138:1",
+      "sourceAccountId": "BDB-H430-1A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 8:6",
+      "sourceAccountId": "BDB-H430-1B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:27",
+      "sourceAccountId": "BDB-H430-1B",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Job 38:7",
+      "sourceAccountId": "BDB-H430-1B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 97:7",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Job 1:6",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Job 2:1",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Job 38:7",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 6:2",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 6:4",
+      "sourceAccountId": "BDB-H430-1C",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 18:11",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 20:3",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 32:1",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 35:2",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 35:4",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 31:53",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Deut 10:17",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 136:2",
+      "sourceAccountId": "BDB-H430-1D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Sam 5:7",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Judg 11:24",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Kgs 18:24",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Kgs 11:33",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "2 Kgs 17:26",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "2 Kgs 17:27",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Kgs 20:28",
+      "sourceAccountId": "BDB-H430-2A",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 4:16",
+      "sourceAccountId": "BDB-H430-2B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Exod 7:1",
+      "sourceAccountId": "BDB-H430-2B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Sam 28:13",
+      "sourceAccountId": "BDB-H430-2B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 45:7",
+      "sourceAccountId": "BDB-H430-2B",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ps 68:16",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ezek 28:14",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ezek 28:16",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Job 1:16",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ezek 28:13",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ezek 31:8",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Ezek 31:9",
+      "sourceAccountId": "BDB-H430-2C",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Deut 4:35",
+      "sourceAccountId": "BDB-H430-2D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Deut 4:39",
+      "sourceAccountId": "BDB-H430-2D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Isa 45:18",
+      "sourceAccountId": "BDB-H430-2D",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 5:22",
+      "sourceAccountId": "BDB-H430-2D",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 5:24",
+      "sourceAccountId": "BDB-H430-2D",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Deut 4:35",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Deut 4:39",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "1 Kgs 18:39",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Isa 45:18",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "broader-canon",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 5:22",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 5:24",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 6:9",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 6:11",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 17:18",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 44:16",
+      "sourceAccountId": "BDB-H430-3",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:1",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:3",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:6",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:9",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:16",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    },
+    {
+      "ref": "Gen 1:27",
+      "sourceAccountId": "BDB-H430-4",
+      "scope": "Genesis",
+      "basis": "BDB-1906-print-reference"
+    }
+  ],
+  "genesisRefs": [
+    {
+      "ref": "Gen 1:3",
+      "tokenId": "01JM7",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.0",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:4",
+      "tokenId": "01v6U",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.0.0",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:6",
+      "tokenId": "01hh7",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:9",
+      "tokenId": "01PzC",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1.1",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:16",
+      "tokenId": "01XyU",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:17",
+      "tokenId": "01cn3",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.0",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:18",
+      "tokenId": "016qf",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "0.0",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:20",
+      "tokenId": "01dAC",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.2",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:21",
+      "tokenId": "01kDm",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "0.0",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:24",
+      "tokenId": "014fv",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1.1",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:26",
+      "tokenId": "01azZ",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": "1.1",
+      "sourceAccountIds": [
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "ref": "Gen 1:27",
+      "tokenId": "0179E",
+      "surface": "אֱלֹהִים",
+      "lemma": "430",
+      "morph": "HNcmpa",
+      "oshbSense": null,
+      "sourceAccountIds": [
+        "BDB-H430-4",
+        "BDB-H430-1B"
+      ]
+    }
+  ],
+  "morphologyForms": [
+    {
+      "formClass": "AbsolutePlural",
+      "stem": "nominal",
+      "form": "אֱלֹהִים",
+      "morphCode": "HNcmpa",
+      "descriptionKo": "남성 복수 절대형. 창세기 1장의 일반적인 אֱלֹהִים 형태.",
+      "evidenceRefs": [
+        "Gen 1:3",
+        "Gen 1:6",
+        "Gen 1:9",
+        "Gen 1:16",
+        "Gen 1:27"
+      ],
+      "sourceAccountIds": [
+        "BDB-H430-MORPH-HEADER",
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "formClass": "DefiniteArticle",
+      "stem": "nominal",
+      "form": "הָאֱלֹהִים",
+      "descriptionKo": "관사 결합형. BDB sense 3에서 '참 하나님' 용법을 별도 구분.",
+      "evidenceRefs": [
+        "Gen 5:22",
+        "Gen 5:24",
+        "Gen 6:9",
+        "Gen 6:11"
+      ],
+      "sourceAccountIds": [
+        "BDB-H430-3"
+      ]
+    },
+    {
+      "formClass": "ConstructPlural",
+      "stem": "nominal",
+      "form": "אֱלֹהֵי",
+      "descriptionKo": "복수 연계형. '신들의 하나님', '이방 신들' 등의 구문에서 확인.",
+      "evidenceRefs": [
+        "Deut 10:17",
+        "Gen 35:2",
+        "Gen 35:4"
+      ],
+      "sourceAccountIds": [
+        "BDB-H430-1D"
+      ]
+    },
+    {
+      "formClass": "IntensivePluralReferent",
+      "stem": "nominal",
+      "form": "אֱלֹהִים",
+      "descriptionKo": "형태는 복수이나 단일 신/여신 또는 하나님을 가리킬 수 있는 BDB의 강의적 복수 범주.",
+      "evidenceRefs": [
+        "1 Sam 5:7",
+        "Judg 11:24",
+        "1 Kgs 18:24",
+        "Gen 1:1"
+      ],
+      "sourceAccountIds": [
+        "BDB-H430-2",
+        "BDB-H430-2A",
+        "BDB-H430-2D",
+        "BDB-H430-4"
+      ]
+    },
+    {
+      "formClass": "GenderAgreementException",
+      "stem": "nominal",
+      "form": "אֱלֹהִים",
+      "descriptionKo": "BDB 표제는 남성 복수 명사이나 1 Kings 11:33에서 여성 일치를 주기한다.",
+      "evidenceRefs": [
+        "1 Kgs 11:33"
+      ],
+      "sourceAccountIds": [
+        "BDB-H430-MORPH-HEADER",
+        "BDB-H430-2A"
+      ]
+    }
+  ],
+  "rightsBasis": {
+    "originalWork": "Brown-Driver-Briggs Hebrew and English Lexicon (1906)",
+    "originalWorkRights": "Public Domain",
+    "digitalDataset": "Open Scriptures Hebrew Lexicon",
+    "datasetCommit": "21c9add13bc727d3a951361778e97e3ff7afd1ce",
+    "datasetPaths": [
+      "BrownDriverBriggs.xml",
+      "LexicalIndex.xml",
+      "BDBPartsOfSpeech.xml",
+      "AugIndex.xml"
+    ],
+    "license": "CC BY 4.0",
+    "attribution": "Open Scriptures Hebrew Bible Project",
+    "derivativeKoreanTranslationAllowed": true,
+    "structuredRedistributionAllowed": true,
+    "changeNoticeRequired": true,
+    "canonicalIngestSource": "Open Scriptures Hebrew Lexicon",
+    "excludedCanonicalSources": [
+      "BibleHub scraped lexicon content",
+      "NAS-derived copyrighted lexicon/concordance content without explicit compatible permission",
+      "HELPS Word-studies without explicit compatible permission"
+    ]
+  },
+  "nodeTraceability": [
+    {
+      "sourceNodeId": "1",
+      "status": "unchanged",
+      "koreanText": "אֱלֹהִים, 남성 명사 복수형. 수적으로 복수일 때는 통치자·재판관, 신적·초인간적 존재, 천사, 신들을 가리키며, 강의적 복수에서는 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 그리고 하나님을 가리킨다.",
+      "sourceAccountIds": [
+        "BDB-H430-MORPH-HEADER",
+        "BDB-H430-1",
+        "BDB-H430-2"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1",
+      "status": "unchanged",
+      "koreanText": "수적으로 복수인 용법: 통치자·재판관, 신적·초인간적 존재, 천사, 신들.",
+      "sourceAccountIds": [
+        "BDB-H430-1"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1.1",
+      "status": "unchanged",
+      "koreanText": "성소에서 신적 대표자로 서거나 신적 위엄과 능력을 반영하는 통치자들·재판관들.",
+      "sourceAccountIds": [
+        "BDB-H430-1",
+        "BDB-H430-1A"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1.2",
+      "status": "unchanged",
+      "koreanText": "하나님과 천사를 포함한 신적 존재들, 초인간적 존재들.",
+      "sourceAccountIds": [
+        "BDB-H430-1",
+        "BDB-H430-1B"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1.3",
+      "status": "unchanged",
+      "koreanText": "천사들.",
+      "sourceAccountIds": [
+        "BDB-H430-1",
+        "BDB-H430-1C"
+      ]
+    },
+    {
+      "sourceNodeId": "1.1.4",
+      "status": "unchanged",
+      "koreanText": "신들.",
+      "sourceAccountIds": [
+        "BDB-H430-1",
+        "BDB-H430-1D"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2",
+      "status": "unchanged",
+      "koreanText": "강의적 복수 용법: 신 또는 여신, 신과 같은 존재, 하나님의 행위나 그에게 속한 것들, 하나님.",
+      "sourceAccountIds": [
+        "BDB-H430-2"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2.1",
+      "status": "unchanged",
+      "koreanText": "신 또는 여신.",
+      "sourceAccountIds": [
+        "BDB-H430-2",
+        "BDB-H430-2A"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2.2",
+      "status": "unchanged",
+      "koreanText": "신과 같은 존재.",
+      "sourceAccountIds": [
+        "BDB-H430-2",
+        "BDB-H430-2B"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2.3",
+      "status": "unchanged",
+      "koreanText": "하나님의 행위 또는 하나님께 속한 것들.",
+      "sourceAccountIds": [
+        "BDB-H430-2",
+        "BDB-H430-2C"
+      ]
+    },
+    {
+      "sourceNodeId": "1.2.4",
+      "status": "unchanged",
+      "koreanText": "하나님.",
+      "sourceAccountIds": [
+        "BDB-H430-2",
+        "BDB-H430-2D"
+      ]
+    },
+    {
+      "sourceNodeId": "1.3",
+      "status": "unchanged",
+      "koreanText": "הָאֱלֹהִים: 참 하나님.",
+      "sourceAccountIds": [
+        "BDB-H430-2D",
+        "BDB-H430-3"
+      ]
+    },
+    {
+      "sourceNodeId": "1.4",
+      "status": "unchanged",
+      "koreanText": "אֱלֹהִים: 하나님.",
+      "sourceAccountIds": [
+        "BDB-H430-2D",
+        "BDB-H430-4"
+      ]
+    }
+  ],
+  "fullFidelityGapResolution": {
+    "bdbPrintQualifiersRepresented": true,
+    "representativeReferencesRepresented": true,
+    "pluralInNumberPreserved": true,
+    "pluralIntensivePreserved": true,
+    "definiteTrueGodSensePreserved": true,
+    "genericGodSensePreserved": true,
+    "koreanSenseSourceTraceabilityComplete": true,
+    "unsupportedSemanticExpansionDetected": false,
+    "bdbQualifierLossDetected": false,
+    "gapResolved": true
+  },
+  "generator": {
+    "role": "gpt-primary-research",
+    "model": "GPT-5.6 Sol",
+    "sourceOnly": true,
+    "otherModelOutputUsed": false
+  },
+  "governance": {
+    "candidateOnly": true,
+    "finalApprovalAllowed": false,
+    "approvalRegistryWriteAllowed": false,
+    "serviceUiWriteAllowed": false,
+    "productionWriteAllowed": false,
+    "existingApprovedMeaningMutationAllowed": false
+  },
+  "candidateFingerprint": "sha256:38581e4194ec20447cfee4b584af4cbfb6e85dac9028a40f81aa7e5387d89c20"
+}
