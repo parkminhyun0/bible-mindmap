@@ -142,7 +142,68 @@ async function lookupLocalDef(strongNum) {
   if (raw.d) parts.push(`<p>${raw.d.trim()}</p>`);
   if (raw.k) parts.push(`<p class="lex-kjv"><b>KJV 용례:</b> ${raw.k}</p>`);
 
-  return parts.length ? { topic: strongNum, definition: parts.join(''), source: 'local' } : null;
+  const nodes = splitDefinitionSentences(raw.d).map((text, index) => ({
+    id: `local-${index + 1}`,
+    depth: 0,
+    text,
+    children: [],
+  }));
+
+  return parts.length ? {
+    topic: strongNum,
+    definition: parts.join(''),
+    source: 'local',
+    nodes,
+    meta: { originKo: raw.e || undefined, kjvUsage: raw.k || undefined },
+    raw: { definition: parts.join('') },
+  } : null;
+}
+
+function splitDefinitionSentences(value) {
+  const text = String(value || '').trim();
+  if (!text) return [];
+  const sentences = text.match(/[^.!?;]+(?:[.!?;]+|$)/g) || [text];
+  return sentences.map((sentence) => sentence.trim()).filter(Boolean);
+}
+
+function textWithoutNestedLists(element) {
+  const clone = element.cloneNode(true);
+  clone.querySelectorAll('ol, ul').forEach((list) => list.remove());
+  return clone.textContent?.replace(/\s+/g, ' ').trim() || '';
+}
+
+function parseBdbDefinition(definition) {
+  if (typeof DOMParser === 'undefined') return { nodes: [], meta: {} };
+  const document = new DOMParser().parseFromString(`<div>${definition || ''}</div>`, 'text/html');
+  const root = document.body.firstElementChild;
+  const meta = {};
+
+  for (const element of [...root.children]) {
+    if (element.matches('ol, ul')) continue;
+    const text = element.textContent?.replace(/\s+/g, ' ').trim() || '';
+    const origin = text.match(/^Origin:\s*(.+)$/i);
+    const twot = text.match(/^TWOT entry:\s*(.+)$/i);
+    const partOfSpeech = text.match(/^Part\(s\) of speech:\s*(.+)$/i);
+    if (origin) meta.originKo = origin[1];
+    else if (twot) meta.twot = twot[1];
+    else if (partOfSpeech) meta.partOfSpeech = partOfSpeech[1];
+  }
+
+  let sequence = 0;
+  const parseList = (list, depth) => [...list.children]
+    .filter((item) => item.tagName === 'LI')
+    .map((item) => {
+      sequence += 1;
+      const children = [...item.children]
+        .filter((child) => child.matches('ol, ul'))
+        .flatMap((child) => parseList(child, depth + 1));
+      return { id: `bdb-${sequence}`, depth, text: textWithoutNestedLists(item), children };
+    });
+
+  const nodes = [...root.children]
+    .filter((element) => element.matches('ol, ul'))
+    .flatMap((list) => parseList(list, 0));
+  return { nodes, meta };
 }
 
 // ── bolls.life BDBT (히브리어 BDB 정의 — 더 상세) ──────────────────────────
@@ -150,18 +211,35 @@ async function fetchBDBDef(strongNum) {
   // H0430 → H430 정규화, 숫자만도 시도
   const normalized = 'H' + parseInt(strongNum.replace(/^H/, ''), 10);
   const numOnly    = String(parseInt(strongNum.replace(/^H/, ''), 10));
-  for (const id of [normalized, numOnly]) {
-    try {
-      const res = await fetch(`https://bolls.life/dictionary-definition/BDBT/${id}/`);
-      if (!res.ok) continue;
-      const arr = await res.json();
-      if (Array.isArray(arr) && arr[0]) return { ...arr[0], source: 'bdbt' };
-    } catch { /* try next */ }
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    for (const id of [normalized, numOnly]) {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 6000);
+      try {
+        const res = await fetch(`https://bolls.life/dictionary-definition/BDBT/${id}/`, { signal: controller.signal });
+        if (!res.ok) continue;
+        const arr = await res.json();
+        if (Array.isArray(arr) && arr[0]) {
+          const definition = arr[0].definition || '';
+          const normalizedTree = parseBdbDefinition(definition);
+          return {
+            ...arr[0],
+            source: 'bdbt',
+            nodes: normalizedTree.nodes,
+            meta: normalizedTree.meta,
+            raw: { definition },
+          };
+        }
+      } catch { /* try next key / retry */ }
+      finally { clearTimeout(timeout); }
+    }
+    if (attempt === 0) await new Promise((resolve) => setTimeout(resolve, 120));
   }
   return null;
 }
 
 const _defCache = new Map();
+const FALLBACK_CACHE_TTL_MS = 60_000;
 
 /**
  * Strong's 번호로 사전 정의 조회.
@@ -175,7 +253,9 @@ export async function fetchStrongDefinition(strongNum) {
   // 선행 0 제거 정규화: H0430 → H430
   const prefix = strongNum[0];
   strongNum = prefix + parseInt(strongNum.slice(1), 10);
-  if (_defCache.has(strongNum)) return _defCache.get(strongNum);
+  const cached = _defCache.get(strongNum);
+  if (cached && (cached.expiresAt === Infinity || cached.expiresAt > Date.now())) return cached.value;
+  if (cached) _defCache.delete(strongNum);
 
   const isHeb = strongNum.startsWith('H');
 
@@ -186,13 +266,16 @@ export async function fetchStrongDefinition(strongNum) {
       lookupLocalDef(strongNum).catch(() => null),
       fetchBDBDef(strongNum).catch(() => null),
     ]);
-    entry = bdbt || local || null;
+    entry = bdbt || (local ? { ...local, bdbUnavailable: true } : null);
   } else {
     // 헬라어: 로컬 청크만 (외부 API 불필요)
     entry = await lookupLocalDef(strongNum).catch(() => null);
   }
 
-  _defCache.set(strongNum, entry);
+  _defCache.set(strongNum, {
+    value: entry,
+    expiresAt: entry?.source === 'bdbt' ? Infinity : Date.now() + FALLBACK_CACHE_TTL_MS,
+  });
   return entry;
 }
 

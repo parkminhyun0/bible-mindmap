@@ -1,6 +1,7 @@
-# task2 · 01-plan **초안** — 사전 정의 탭 형식 통일 (코드 층)
+# task2 · 01-plan — 사전 정의 탭 형식 통일 (코드 층)
 
-- 작성: 0-lead (Claude) · 2026-08-14 · **초안 · 사용자 승인 전 착수 금지**
+- 작성: 0-lead (Claude) · 2026-08-14 · **사용자 착수 승인 완료 (2026-08-14)**
+- 승인 조건 4건은 8절에 명시하며, 명세·검증 전반에 반영됨
 - 근거: `.pipeline/task2/00-investigation.md` 9절
 - 브랜치(예정): `pipeline/task-lexicon-definition-format`
 - 개정 규칙 적용: **Draft PR 생성** · **PR CI의 CodeQL 확인 후 판정** · **종료 전 `merged_by` 점검**
@@ -63,13 +64,16 @@
 - 없으면 영문 BDB 트리만 렌더한다.
 - **이 분기는 Strong 하드코딩 없이 레지스트리 존재 여부만으로 결정한다** → 승인이 늘어나면 코드 변경 없이 자동 전환된다(9.6 요구사항).
 
-### 3.4 서비스 워커 캐시 분리 (`vite.config.js`)
+### 3.4 서비스 워커 캐시 분리 (`vite.config.js`) — **승인 조건 (1) 적용**
 
 현재 `https://bolls.life/*` 전체가 `maxEntries: 500` 한 칸을 공유하고, 실측 결과 **이미 500개 포화**다. 절 본문 요청이 사전 응답을 축출한다.
 
-- `dictionary-definition` 경로를 **별도 캐시**로 분리한다: `cacheName: 'bm-bolls-dict-v1'`, `maxEntries: 300`, `maxAgeSeconds: 30일`.
-- 두 규칙 모두 `cacheableResponse.statuses`에서 **`0`(opaque)을 제거**하고 `[200]`만 남긴다. 실패 응답이 7일간 고착되는 경로를 차단한다.
-- 절 본문 규칙(`bm-bolls-v1`)은 기존 설정 유지.
+허용된 변경은 **아래 두 가지뿐이다.**
+
+1. `dictionary-definition` 경로를 **별도 캐시 규칙으로 분리**한다: `cacheName: 'bm-bolls-dict-v1'`, `maxEntries: 300`, `maxAgeSeconds: 30일`, `handler: 'StaleWhileRevalidate'`. 기존 `bolls.life/*` 규칙보다 **앞에** 배치해 우선 매칭되게 한다.
+2. `cacheableResponse.statuses`에서 **`0`(opaque)을 제거**해 `[200]`만 남긴다.
+
+**절 본문 캐시(`bm-bolls-v1`) 동작은 건드리지 않는다.** `handler`·`cacheName`·`maxEntries`·`maxAgeSeconds`는 전부 현행 유지하며, 그 규칙에 대한 변경은 위 2번(`statuses`에서 `0` 제거) **한 줄로 한정**한다. 다른 runtimeCaching 규칙(HTML·CHUNK·LEX·STRONGS·폰트)은 **일절 수정 금지**.
 
 ### 3.5 헬라어
 
@@ -80,20 +84,30 @@
 1. `node scripts/verify-strong-external-link-policy.mjs` — task1 계약 유지 확인
 2. `npx oxlint` — 신규 에러 0
 3. `node scripts/verify-mobile-safety.mjs`, `verify-korean-gloss.mjs`, `verify-translation-alignment.mjs` — 기준선 유지
-4. **신규 Playwright 계약 테스트** `tests/lexicon-definition-format.spec.js`:
-   - **T1** 한글 승인본 보유 Strong(H776) → 정의 탭에 한글 트리 노드가 렌더되고 승인 배지가 보인다
-   - **T2** 한글 승인본 보유 + 승인 트리 텍스트가 레지스트리 값과 **바이트 일치**한다 (변형 금지 계약)
-   - **T3** 히브리어 미승인 Strong → 영문 BDB 트리(중첩 노드 ≥ 2 depth)가 렌더된다
-   - **T4** **BDB 조회 실패를 강제 주입**(라우트 차단)했을 때 산문 덤프가 아니라 **동일 구조 틀 + 실패 상태 표시**가 나온다
-   - **T5** 헬라어 Strong → 히브리어와 동일한 구조 틀로 렌더된다 (`KJV 용례`는 `meta` 영역에 배치, 본문 산문 덩어리 없음)
-   - **T6 (자동 전환 계약)** 승인 레지스트리 응답을 스텁으로 바꿔 특정 Strong을 "승인됨"으로 만들면, **코드 변경 없이** 해당 Strong의 정의 탭이 한글 승인본으로 전환된다
-5. `git diff origin/main --stat` — 2절 파일 목록 이탈 없음
+4. **신규 Playwright 계약 테스트** `tests/lexicon-definition-format.spec.js` — **승인 조건 (2)(3) 적용**
+
+   네트워크는 `page.route`로 **고정 픽스처를 주입**해 결정적으로 만든다(bolls.life BDBT 응답, `data/strongs-def` 청크, `lexicon/ko` 레지스트리·매니페스트·샤드). 외부 API 실시간 의존은 테스트에 넣지 않는다. 픽스처 본문은 실제 응답 형태를 그대로 쓴다.
+
+   **[조건 (3)] 아래 4개 상태를 각각 최소 1건 실측한다:**
+   - **T1 · 히브리어 BDB 정상** — 미승인 히브리어 Strong. BDBT 200 픽스처 → **영문 BDB 구조 트리**(중첩 depth ≥ 2)가 렌더되고 배지가 `BDB`
+   - **T2 · 히브리어 BDB 실패 폴백** — 동일 Strong에 BDBT 라우트를 실패(503/네트워크 오류)로 주입 → **산문 덤프가 아니라 동일 구조 틀 + `Strong's` 배지 + 조회 실패 상태 표시**. `<p class="lex-kjv">` 같은 원시 산문 블록이 DOM에 **없어야** 한다
+   - **T3 · 헬라어** — 헬라어 Strong → 히브리어와 **동일한 구조 틀**로 렌더. `KJV 용례`는 본문 산문이 아니라 meta 영역에 배치
+   - **T4 · 한글 승인본 보유(H776)** — 정의 탭 상단에 **한글 승인 트리** + 승인 배지. 트리 텍스트가 승인 레지스트리 값과 **바이트 일치**(변형 금지 계약)
+
+   **[조건 (2)] 회귀 보존 계약 — 반드시 포함:**
+   - **T5 · BibleHub / TWOT 링크 보존** — 정의 본문의 `H####`·`G####`·`TWOT` 링크가 여전히 생성되고 `href`가 `biblehub.com`의 **0패딩 없는** 경로를 가리킨다(task1 계약 유지). 헤더의 `📖 BibleHub (…)` 링크도 존재
+   - **T6 · `📚 한글 사전` 드로어 보존** — 승인 항목 보유 Strong에서 팝업 툴바에 `📚 한글 사전` 토글이 **여전히 나타나고**, 클릭 시 드로어가 열려 승인 트리를 보여준다(`lexiconTranslationPilotBridge`가 찾는 DOM 구조 — `aria-label^="원어 사전"` 다이얼로그, `HEBREW/GREEK LEXICON` 라벨을 가진 툴바, 첫 `<a>`의 Strong 링크 — 를 깨뜨리지 않았다는 증거)
+   - **T7 · 자동 전환 계약** — 레지스트리 픽스처에 임의 Strong을 "승인됨"으로 추가하면 **코드 변경 없이** 그 Strong의 정의 탭이 한글 승인본으로 전환된다 (데이터 층 진행 시 자동 반영 보장)
+
+5. `git diff origin/main --stat` — 2절 파일 목록 이탈 없음. **특히 `vite.config.js` 변경이 3.4의 2가지를 넘지 않았는지 diff를 직접 읽어 확인**(조건 (1))
 6. **PR CI에서 CodeQL 결과 확인** (개정 규칙)
+
+> Playwright 브라우저가 설치돼 있지 않거나 실행이 불가능하면 **PASS로 판정하지 말고 그 사실을 명시**한 뒤 FAIL 또는 조건부 보류로 보고한다. 실행하지 않은 테스트를 통과로 기록하는 것은 금지한다.
 
 ## 5. 판정 기준
 
-- **PASS**: 4번 1~6 전부 통과 + 금지 영역 위반 0 + 한글 승인 텍스트 변형 0
-- **FAIL**: T1~T6 중 1건이라도 실패, 파일 범위 이탈, 또는 CodeQL 신규 경보
+- **PASS**: 4번 1~6 전부 통과 + 금지 영역 위반 0 + 한글 승인 텍스트 변형 0 + T5·T6 회귀 0
+- **FAIL**: T1~T7 중 1건이라도 실패, 파일 범위 이탈, `vite.config.js` 변경이 3.4 범위 초과, 또는 CodeQL 신규 경보
 
 ## 6. 리스크
 
@@ -102,3 +116,14 @@
 3. SW 캐시 규칙 변경은 **기존 사용자 브라우저의 캐시 전환**을 수반한다. `cacheName`을 새로 만들므로 구 캐시는 `cleanupOutdatedCaches`로 정리되나, 첫 방문 시 사전 재조회가 발생한다(성능 일시 저하).
 4. bolls.life 의존 자체는 남는다. 근본 해소(로컬 BDB 데이터셋)는 라이선스·Source Gate 심사가 필요한 데이터 작업이며 별도 lane 소관이다.
 5. `ApprovedKoreanLexiconPane`·`LexiconTranslationDrawer`와 렌더 로직이 중복될 수 있다. 공통 컴포넌트로 추출하면 두 파일이 범위에 추가되는데, 이는 자비스 lane이 최근 건드린 파일(`609b8a77`)이라 **이번 사이클에서는 건드리지 않고** 중복을 허용한다. 통합은 후속 과제.
+
+## 8. 사용자 착수 승인 조건 (2026-08-14)
+
+| # | 조건 | 반영 위치 |
+|---|---|---|
+| 1 | SW 캐시 변경은 **사전 캐시 분리 + `statuses`에서 `0` 제거까지만**. 절 본문 캐시 동작은 건드리지 말 것 | 3.4 (허용 변경 2가지 명시, 나머지 규칙 수정 금지) · 4-5 (diff 직접 확인) |
+| 2 | 기존 **BibleHub·TWOT 링크**와 **`📚 한글 사전` 드로어**를 회귀 없이 보존하고 agy 검증 케이스에 포함 | 4-T5 · 4-T6 |
+| 3 | **히브리어 BDB 정상 / 히브리어 BDB 실패 폴백 / 헬라어 / 한글 승인본 보유(H776) / 미승인** 각 1개 이상 실측 | 4-T1~T4 (미승인 히브리어는 T1·T2에서 사용) |
+| 4 | 완료 후 **Draft PR**. 병합과 실기 확인은 사용자가 수행 | 7절 · 사이클 종료 절차 |
+
+**사이클 종료 절차**: 04-decision 기록 → Draft PR(기존 #371 재사용 또는 신규) → PR CI의 **CodeQL 확인** → **`merged_by` 점검** → 노션 브리핑 기록. **0-lead는 병합하지 않는다.**

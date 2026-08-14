@@ -6,6 +6,25 @@ import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
+import { lexiconApprovalLoader } from '../data/lexiconApprovalLoader';
+import LexiconDefinitionTree from './LexiconDefinitionTree';
+
+function approvedNodes(senses = []) {
+  const ordered = [...senses].sort((a, b) => a.order - b.order);
+  const byId = new Map(ordered.map((sense) => [sense.id, {
+    id: sense.id,
+    depth: 0,
+    text: sense.translationKo,
+    children: [],
+  }]));
+  const roots = [];
+  for (const sense of ordered) {
+    const node = byId.get(sense.id);
+    if (sense.parentId && byId.has(sense.parentId)) byId.get(sense.parentId).children.push(node);
+    else roots.push(node);
+  }
+  return roots;
+}
 
 /**
  * 원어 단어 어형 분석 카드.
@@ -25,6 +44,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
   const [researchActive, setResearchActive] = useState(false);
+  const [approvedEntry, setApprovedEntry] = useState(null);
 
   const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
   const [usageLoading, setUsageLoading] = useState(false);
@@ -42,6 +62,16 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
       .finally(() => { if (!cancelled) setDefLoading(false); });
     return () => { cancelled = true; };
   }, [entry?.s]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setApprovedEntry(null);
+    if (!entry?.s) return () => { cancelled = true; };
+    lexiconApprovalLoader.loadApprovedEntry(entry.s, { lemma: entry.l })
+      .then((approved) => { if (!cancelled) setApprovedEntry(approved); })
+      .catch(() => { if (!cancelled) setApprovedEntry(null); });
+    return () => { cancelled = true; };
+  }, [entry?.s, entry?.l]);
 
   useEffect(() => {
     if (tab !== 'usage' || usages !== null) return;
@@ -265,14 +295,17 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                 <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
                   {isHebrew ? 'HEBREW LEXICON' : 'GREEK LEXICON'}
                 </span>
-                {definition?.source && (
+                {(approvedEntry || definition?.source) && (
                   <span style={{
                     fontSize: 9, borderRadius: 3, padding: '1px 5px', fontWeight: 600,
-                    color: definition.source === 'bdbt' ? '#92400e' : definition.source === 'local' ? '#065f46' : '#1e40af',
-                    background: definition.source === 'bdbt' ? '#fef3c7' : definition.source === 'local' ? '#d1fae5' : '#dbeafe',
+                    color: approvedEntry || definition?.source === 'bdbt' ? '#92400e' : '#065f46',
+                    background: approvedEntry || definition?.source === 'bdbt' ? '#fef3c7' : '#d1fae5',
                   }}>
-                    {definition.source === 'bdbt' ? 'BDB' : definition.source === 'local' ? "Strong's" : 'BibleHub'}
+                    {approvedEntry ? '한글 승인본' : definition?.source === 'bdbt' ? 'BDB' : "Strong's"}
                   </span>
+                )}
+                {!approvedEntry && definition?.bdbUnavailable && (
+                  <span data-testid="bdb-fallback-status" style={{ color: '#b45309', fontSize: 9, fontWeight: 700 }}>BDB 조회 실패 · Strong&apos;s 표시</span>
                 )}
               </div>
 
@@ -290,12 +323,32 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   )}
                 </div>
               )}
-              {definition && (
+              {(definition || approvedEntry) && (
                 <>
-                  <div
-                    className="lex-def"
-                    dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.definition || '', isHebrew) }}
-                  />
+                  {approvedEntry ? (
+                    <section data-testid="approved-korean-definition">
+                      <div style={{ marginBottom: 8, color: '#166534', fontSize: 10, fontWeight: 700 }}>
+                        {approvedEntry.reviewer?.reviewerType === 'human' ? '✓ 사람 검토 완료' : '✓ Evidence 검증 승인'} · 근거 구성 {approvedEntry.approvedSenseTree?.length || 0}개 · 읽기 전용
+                      </div>
+                      <LexiconDefinitionTree nodes={approvedNodes(approvedEntry.approvedSenseTree)} isHebrew={isHebrew} approved />
+                      <details style={{ marginTop: 12, borderTop: '1px solid #fde68a', paddingTop: 8 }}>
+                        <summary style={{ cursor: 'pointer', color: '#64748b', fontSize: 10, fontWeight: 700 }}>영문 BDB 원문</summary>
+                        {definition && <div style={{ marginTop: 8 }}><LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} /></div>}
+                      </details>
+                    </section>
+                  ) : (
+                    <>
+                      <LexiconDefinitionTree nodes={definition?.nodes || []} isHebrew={isHebrew} />
+                      {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
+                        <div data-testid="lexicon-definition-meta" style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9', color: '#64748b', fontSize: 11, lineHeight: 1.65 }}>
+                          {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
+                          {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
+                          {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
+                          {definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
+                        </div>
+                      )}
+                    </>
+                  )}
                   {entry.s && (
                     <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
                       <a
