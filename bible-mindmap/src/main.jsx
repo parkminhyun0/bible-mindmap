@@ -15,7 +15,12 @@ import LegacyModalAccessibilityBridge from './components/LegacyModalAccessibilit
 import { installCrossReferenceToolbarBridge } from './utils/crossReferenceToolbarBridge.js'
 import { installMarkResearchLayerBridge } from './utils/markResearchLayerBridge.js'
 import { installMarkResearchThreeColumnRepair } from './utils/markResearchThreeColumnRepair.js'
-import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
+// Korean-approved dictionary drawer disabled from the normal lexicon popup by
+// product decision (2026-08-14). The bridge module remains on disk so the P4
+// SSOT verifier (which enforces bridge is the sole loader owner) keeps
+// passing, and Approval Registry / approved Korean data remain preserved as
+// research assets — they are simply not connected to the runtime popup UI.
+// import { installLexiconTranslationPilotBridge } from './utils/lexiconTranslationPilotBridge.jsx'
 import { installWordSearchAlignmentPilotBridge } from './utils/wordSearchAlignmentPilotBridge.jsx'
 import { installWordSearchFullscreenBridge } from './utils/wordSearchFullscreenBridge.js'
 
@@ -36,7 +41,7 @@ applyInitialTheme()
 installCrossReferenceToolbarBridge()
 installMarkResearchLayerBridge()
 installMarkResearchThreeColumnRepair()
-installLexiconTranslationPilotBridge()
+// installLexiconTranslationPilotBridge()  // disabled — see import above
 installWordSearchAlignmentPilotBridge()
 installWordSearchFullscreenBridge()
 
