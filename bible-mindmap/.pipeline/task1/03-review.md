@@ -81,3 +81,76 @@
 - 01-plan 명세에 따른 요구사항이 충실히 구현되었으며, 모든 자동화 검증 스크립트와 회귀/안전성 테스트를 통과했습니다.
 - **판정: PASS**
 - 후속 조치: 0-lead의 최종 판정 및 PR 생성을 권장합니다. (배포 후 BibleHub 실제 라우팅 수동 점검 권장)
+
+---
+
+## 반복 1회차 재검증 (CodeQL 경보 대응)
+
+- 검증자: 2-review (Antigravity)
+- 일시: 2026-08-14
+- 대상 브랜치: `pipeline/task-strong-link`
+- 재검증 판정: **PASS**
+
+### 1. 재검증 명령 실행 결과 요약
+
+| 검증 항목 | 실행 명령 | 결과 | 상세 요약 |
+|---|---|---|---|
+| 1. Strong 링크 정책 검증 | `node scripts/verify-strong-external-link-policy.mjs` | **PASS** | 16개 동작 케이스 및 개정된 정적 계약 검증 통과 |
+| 2. Lint 검사 | `npx oxlint` | **PASS** | 신규 에러 0건 (exit code 0, 기존 경고만 존재) |
+| 3. 반복 변경 파일 범위 | `git diff 424fd8f1..HEAD --stat` | **PASS** | `scripts/verify-strong-external-link-policy.mjs` 및 `.pipeline/task1/**`로 한정 (구현 파일 무변경) |
+| 4-1. 모바일 안전성 | `node scripts/verify-mobile-safety.mjs` | **PASS** | 모바일 안전·성능 규칙 통과 |
+| 4-2. 한글 표제어 가드 | `node scripts/verify-korean-gloss.mjs` | **PASS** | 144항목·73개념 구조/과병합 가드 통과 |
+| 4-3. 번역 정렬 일치성 | `node scripts/verify-translation-alignment.mjs` | **PASS** | regression=29, committedRecords=52 통과 |
+| 5. 패키지 스크립트 | `npm run verify:strong-link` | **PASS** | 스크립트 정상 구동 확인 |
+
+### 2. 중점 검토 항목 분석
+
+#### 2.1 호스트명 부분문자열 검사 제거 및 CodeQL 우회 여부 검토
+- `scripts/verify-strong-external-link-policy.mjs`의 정적 분석 코드에서 `line.includes('biblehub.com')` 및 호스트명 부분문자열 검사가 완전히 제거되었습니다.
+- 주석 억제(`// lgtm`, `// codeql`)나 검증 Gate 완화 없이, 대상 소스 코드의 AST/정적 구조 검사(`helperContracts` 기반 import & use 검사 및 URL 경로 조립 잔존 패턴 매칭)로 전환되었습니다.
+- 01-plan 3.4-A/B의 16개 동작 케이스(`strongNumberForExternalLink` 13건, `biblehubStrongUrl` 3건)가 온전히 유지되었습니다.
+
+#### 2.2 새 정적 계약 검사의 실효성 직접 실증
+새 정적 검사기가 잠재적 위반 코드를 정확히 차단하는지 임시 코드를 주입하여 실증했습니다:
+
+1. **(a) 0패딩 미제거 패턴 잔존 차단 실증 (`replace(/^[GH]/, '')` 주입)**:
+   - `WordSearchModal.jsx` 및 `lexicon.js`에 임시 삽입 시 `verify-strong-external-link-policy.mjs` 실행:
+     ```
+     Strong external-link policy verification FAILED
+     - src/components/WordSearchModal.jsx: zero-padding-unsafe Strong prefix replacement remains
+     ```
+     (exit code 1로 즉시 실패 감지 확인)
+2. **(b) 헬퍼 우회 URL 직접 조립 차단 실증 (`/hebrew/${strong}.htm` 주입)**:
+   - `WordSearchModal.jsx`에 임시 삽입 시 `verify-strong-external-link-policy.mjs` 실행:
+     ```
+     Strong external-link policy verification FAILED
+     - src/components/WordSearchModal.jsx: Strong URL path bypasses the strongLink helper result: /hebrew/${strong}
+     ```
+     (exit code 1로 즉시 실패 감지 확인)
+3. **(c) 헬퍼 미사용 계약 실효성 실증 (헬퍼 호출부 제거)**:
+   - `WordSearchModal.jsx`에서 `biblehubStrongUrl` 호출 제거 시:
+     ```
+     Strong external-link policy verification FAILED
+     - src/components/WordSearchModal.jsx: biblehubStrongUrl is not used
+     ```
+     (exit code 1로 즉시 실패 감지 확인)
+4. **(d) 실증 종료 후 원상복구 확인**:
+   - `git checkout`으로 임시 변경을 즉시 롤백하였으며, `git status` 및 `git diff`가 깨끗함을 확인했습니다.
+
+#### 2.3 변경 범위 한정성 검토
+- `git diff 424fd8f1..HEAD --stat` 결과:
+  ```
+   bible-mindmap/.pipeline/task1/01-plan.md           | 13 ++++
+   bible-mindmap/.pipeline/task1/02-impl.md           |  9 +++
+   bible-mindmap/.pipeline/task1/03-review.md         | 83 ++++++++++++++++++++++
+   bible-mindmap/.pipeline/task1/04-decision.md       | 53 ++++++++++++++
+   .../scripts/verify-strong-external-link-policy.mjs | 32 +++++++--
+   5 files changed, 184 insertions(+), 6 deletions(-)
+  ```
+- 구현 파일(`src/utils/strongLink.js`, `src/utils/lexicon.js`, `src/components/WordSearchModal.jsx`, `package.json`)은 424fd8f1 이후 전혀 변경되지 않았으며, 이번 반복 수정은 `scripts/verify-strong-external-link-policy.mjs`와 `.pipeline/task1/**`로 철저히 한정되었습니다.
+
+### 3. 반복 1회차 최종 결론
+
+- CodeQL 경보의 원인이 된 `line.includes('biblehub.com')`가 완전히 제거되었고, 더 견고하고 실효성 있는 정적 계약 검사로 대체되었음을 실증했습니다.
+- 모든 동작 케이스 16건 및 린트/가드 스크립트가 통과하며 구현 코드 및 금지 구역에 대한 침범이 없습니다.
+- **반복 1회차 판정: PASS**

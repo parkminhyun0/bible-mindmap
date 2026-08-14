@@ -44,19 +44,39 @@ const sourceFiles = [
   'src/components/WordSearchModal.jsx',
 ];
 
+const helperContracts = {
+  'src/utils/lexicon.js': {
+    importPattern: /import\s*\{[^}]*\bstrongNumberForExternalLink\b[^}]*\}\s*from\s*['"]\.\/strongLink\.js['"];/,
+    usePattern: /\bstrongNumberForExternalLink\s*\(/,
+    helperName: 'strongNumberForExternalLink',
+  },
+  'src/components/WordSearchModal.jsx': {
+    importPattern: /import\s*\{[^}]*\bbiblehubStrongUrl\b[^}]*\}\s*from\s*['"]\.\.\/utils\/strongLink\.js['"];/,
+    usePattern: /\bbiblehubStrongUrl\s*\(/,
+    helperName: 'biblehubStrongUrl',
+  },
+};
+
 for (const relativePath of sourceFiles) {
   const source = fs.readFileSync(path.join(root, relativePath), 'utf8');
   if (/replace\(\s*\/\^\[GH\]\//.test(source)) {
     failures.push(`${relativePath}: zero-padding-unsafe Strong prefix replacement remains`);
   }
 
-  const biblehubLines = source.split('\n').filter((line) => line.includes('biblehub.com'));
-  for (const line of biblehubLines) {
-    const isTwot = line.includes('biblehub.com/twot/');
+  const contract = helperContracts[relativePath];
+  if (!contract.importPattern.test(source)) {
+    failures.push(`${relativePath}: ${contract.helperName} import is missing`);
+  }
+  const sourceWithoutImports = source.replace(/^import[\s\S]*?;\s*$/gm, '');
+  if (!contract.usePattern.test(sourceWithoutImports)) {
+    failures.push(`${relativePath}: ${contract.helperName} is not used`);
+  }
+
+  for (const match of source.matchAll(/\/(?:hebrew|greek)\/\$\{([^}]+)\}/g)) {
     const usesNormalizedNumber = relativePath === 'src/utils/lexicon.js'
-      && /biblehub\.com\/(?:hebrew|greek)\/\$\{num\}\.htm/.test(line);
-    if (!isTwot && !usesNormalizedNumber) {
-      failures.push(`${relativePath}: BibleHub URL does not use the strongLink helper result: ${line.trim()}`);
+      && match[1].trim() === 'num';
+    if (!usesNormalizedNumber) {
+      failures.push(`${relativePath}: Strong URL path bypasses the strongLink helper result: ${match[0]}`);
     }
   }
 }
