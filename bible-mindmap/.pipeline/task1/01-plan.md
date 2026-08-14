@@ -121,6 +121,19 @@ export function biblehubStrongUrl(strong, isHebrew) { ... }
 - **PASS**: 5번 1~4 전부 통과 + 금지 사항 위반 0.
 - **FAIL**: 검증 케이스 1건이라도 실패, 또는 4번의 파일 범위 이탈.
 
+## 6-1. 반복 1회차 추가 명세 (CodeQL 대응 · 2026-08-14 추가)
+
+PR #367의 GitHub CI에서 로컬 검증이 잡지 못한 신규 CodeQL 고위험 경보가 발생했다. 파이프라인 규칙(FAIL/수정 지시 → 1-run 재실행 → 2-review 재검증)에 따라 아래를 추가 명세로 지시한다.
+
+- **경보**: `js/incomplete-url-substring-sanitization` (high) · `scripts/verify-strong-external-link-policy.mjs:53`
+- **원인**: 정적 계약 검사가 소스 라인을 `line.includes('biblehub.com')`로 필터링한다. CodeQL이 이를 "URL 호스트 부분문자열 검사"(호스트 위조 우회 가능)로 오인한다. 검사 대상이 URL이 아니라 **우리 소스 코드 텍스트**이므로 실제 취약점은 아니지만, CodeQL은 blocking 체크이므로 해소해야 한다.
+- **수정 방향**: 호스트명 부분문자열 검사를 **제거**하고, 동등하거나 더 강한 계약으로 대체한다. 취약점을 억제(suppress)하는 주석이나 Gate 완화로 해결하지 않는다.
+  - 검사 대상 두 파일(`src/utils/lexicon.js`, `src/components/WordSearchModal.jsx`)에서 **호스트명을 언급하지 않는** 판정 기준을 쓴다. 예: BibleHub 경로 조각을 직접 조립하는 잔존 패턴(`/(?:hebrew|greek)\/\$\{`)이 헬퍼 결과(`${num}`) 외의 표현식으로 남아 있으면 실패 처리.
+  - 기존 `replace(/^[GH]/` 잔존 금지 검사는 그대로 유지한다.
+  - `WordSearchModal.jsx`가 `biblehubStrongUrl`을 import·사용하는지, `lexicon.js`가 `strongNumberForExternalLink`를 import·사용하는지 확인하는 검사를 추가해 계약 강도를 유지한다.
+- **불변 조건**: 3.1~3.3의 구현 코드(`strongLink.js`, `lexicon.js`, `WordSearchModal.jsx`)와 4절 금지 사항, 3.4-A/B의 동작 케이스 16건은 **변경하지 않는다.** 수정 범위는 `scripts/verify-strong-external-link-policy.mjs`의 정적 계약 검사부(C)로 한정한다.
+- **재검증**: 5절 1~4를 다시 수행하고, 추가로 정적 계약 검사가 여전히 **실효성이 있는지**(고의로 `replace(/^[GH]/`를 되살리거나 헬퍼를 우회하는 URL 조립을 넣으면 실패하는지) 확인한다.
+
 ## 7. 사이클 운영 메모
 
 - agy(2-review) 호출 **직전에 반드시 커밋**하여 복구 지점을 확보한다 (ROLES.md 권한 정책 — `--dangerously-skip-permissions`는 커밋된 트리에서만).
