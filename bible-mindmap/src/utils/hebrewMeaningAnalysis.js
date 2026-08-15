@@ -66,13 +66,12 @@ function stemMatches(text, stem) {
 
 function nominalMatches(text, human) {
   const haystack = normalizedText(text);
-  const lower = haystack.toLowerCase();
   const signals = [];
   if (/복수/.test(human || '')) signals.push(/\bplural\b|\bpl\./i);
   if (/단수/.test(human || '')) signals.push(/\bsingular\b|\bsg\./i);
   if (/연계형/.test(human || '')) signals.push(/\bconstruct\b|\bcstr\.?\b/i);
   if (/독립형/.test(human || '')) signals.push(/\babsolute\b|\babs\.?\b/i);
-  return signals.some((pattern) => pattern.test(haystack) || pattern.test(lower));
+  return signals.some((pattern) => pattern.test(haystack));
 }
 
 function branchPreview(row) {
@@ -106,13 +105,20 @@ function topLevelBranches(nodes, limit = 6) {
   return uniqueBranches((Array.isArray(nodes) ? nodes : []).map((node) => ({ node, path: [node] })), limit);
 }
 
+function withOverview(result, bdbNodes) {
+  return {
+    ...result,
+    overviewBranches: topLevelBranches(bdbNodes),
+  };
+}
+
 export function analyzeHebrewMorphologyMeaning(code, bdbNodes = []) {
   const lexical = lexicalMorphSegment(code);
   const human = lexical?.human || '';
   const allRows = flattenNodes(bdbNodes);
 
   if (!lexical) {
-    return {
+    return withOverview({
       kind: 'unknown',
       title: '형태와 의미 연결',
       grammarSummary: human || '형태 정보 없음',
@@ -120,14 +126,14 @@ export function analyzeHebrewMorphologyMeaning(code, bdbNodes = []) {
       sourceLabel: 'BDB 주요 의미 분기',
       branches: topLevelBranches(bdbNodes),
       caution: '형태 정보가 부족한 경우 뜻을 추정하지 않습니다. BDB 원문과 문맥을 직접 확인해 주세요.',
-    };
+    }, bdbNodes);
   }
 
   if (lexical.code.startsWith('V')) {
     const stem = human.split(' · ')[1] || '';
     const info = STEM_INFO[stem] || null;
     const matched = info ? allRows.filter(({ node }) => stemMatches(node.text, stem)) : [];
-    return {
+    return withOverview({
       kind: 'verb',
       title: info ? `${info.ko}(${stem})이 의미에 주는 영향` : '동사 어간이 의미에 주는 영향',
       grammarSummary: human,
@@ -136,13 +142,13 @@ export function analyzeHebrewMorphologyMeaning(code, bdbNodes = []) {
       sourceLabel: matched.length ? `BDB · 현재 ${stem} 관련 분기` : 'BDB · 주요 의미 분기',
       branches: matched.length ? uniqueBranches(matched) : topLevelBranches(bdbNodes),
       caution: 'Binyan은 의미 해석의 중요한 단서이지만 뜻 자체를 자동 결정하지 않습니다. 일반적인 어간 기능보다 이 어휘의 BDB stem/sense 구조를 우선합니다.',
-    };
+    }, bdbNodes);
   }
 
   if (lexical.code.startsWith('N') || lexical.code.startsWith('A')) {
     const matched = allRows.filter(({ node }) => nominalMatches(node.text, human));
     const isPlural = /복수/.test(human);
-    return {
+    return withOverview({
       kind: 'nominal',
       title: '명사 형태와 BDB 의미 분기',
       grammarSummary: human,
@@ -150,10 +156,10 @@ export function analyzeHebrewMorphologyMeaning(code, bdbNodes = []) {
       sourceLabel: matched.length ? 'BDB · 현재 형태와 관련된 의미 분기' : 'BDB · 주요 의미 분기',
       branches: matched.length ? uniqueBranches(matched) : topLevelBranches(bdbNodes),
       caution: '특히 복수 형태는 곧바로 “여러 개체”라는 뜻을 보장하지 않습니다. BDB의 실제 sense 분기와 이 절의 통사적 일치를 함께 확인해야 합니다.',
-    };
+    }, bdbNodes);
   }
 
-  return {
+  return withOverview({
     kind: 'other',
     title: '형태와 의미 연결',
     grammarSummary: human,
@@ -161,7 +167,7 @@ export function analyzeHebrewMorphologyMeaning(code, bdbNodes = []) {
     sourceLabel: 'BDB · 주요 의미 분기',
     branches: topLevelBranches(bdbNodes),
     caution: '형태론과 어휘 의미를 구분하여 표시합니다. 형태 정보만으로 사전 의미를 새로 생성하지 않습니다.',
-  };
+  }, bdbNodes);
 }
 
 export function hebrewStemGuidance(stem) {
