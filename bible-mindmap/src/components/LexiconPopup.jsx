@@ -5,9 +5,10 @@ import { getBook } from '../data/bibleBooks';
 import { useCanvas } from '../context/CanvasContext';
 import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
-import { KOREAN_GLOSS } from '../data/koreanGloss';
+import { KOREAN_GLOSS_ACTIVE } from '../data/koreanGlossActive';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
-import { normalizeHebrewLexicalForm } from '../utils/hebrewLexicalForm';
+import { normalizeHebrewLexicalForm, normalizeHebrewSurfaceForm } from '../utils/hebrewLexicalForm';
+import { buildHebrewWordComposition, humanizeHebrewMorphCode } from '../utils/hebrewMorphologyDisplay';
 import './LexiconPopup.css';
 
 const POPUP_MIN_WIDTH = 340;
@@ -23,6 +24,26 @@ function clampSize(width, height, vw, vh) {
   return {
     width: Math.min(Math.max(POPUP_MIN_WIDTH, width), maxW),
     height: Math.min(Math.max(POPUP_MIN_HEIGHT, height), maxH),
+  };
+}
+
+function clamp(value, min, max) {
+  return Math.min(Math.max(value, min), Math.max(min, max));
+}
+
+function baseDesktopPosition(anchor, width, height, vw, vh) {
+  const margin = POPUP_VIEWPORT_MARGIN;
+  return {
+    left: clamp((anchor?.x ?? vw / 2) - width / 2, margin, vw - width - margin),
+    top: clamp((anchor?.y ?? vh / 2) + 8, margin, vh - height - margin),
+  };
+}
+
+function clampDesktopPosition(left, top, width, height, vw, vh) {
+  const margin = POPUP_VIEWPORT_MARGIN;
+  return {
+    left: clamp(left, margin, vw - width - margin),
+    top: clamp(top, margin, vh - height - margin),
   };
 }
 
@@ -61,6 +82,18 @@ function displayLexicalForm(value, isHebrew) {
   return isHebrew ? normalizeHebrewLexicalForm(value) : (value || '');
 }
 
+function displaySurfaceForm(value, isHebrew) {
+  return isHebrew ? normalizeHebrewSurfaceForm(value) : (value || '');
+}
+
+function resolveKoreanTransliteration(entry) {
+  if (entry?.translitKo) return entry.translitKo;
+  const key = normalizedStrong(entry?.s);
+  const record = (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
+  if (!record?.translitKo || record.review === false) return null;
+  return record.translitKo;
+}
+
 function morphologyFields(human) {
   if (!human) return [];
   if (human.includes(' | ')) return [{ label: '형태 분석', value: human }];
@@ -75,7 +108,7 @@ function morphologyFields(human) {
     return parts.map((value, index) => ({ label: labels[index] || `형태 ${index}`, value }));
   }
   if (pos === '명사' && parts.length >= 3) {
-    const stateLike = parts[parts.length - 1] === '독립형' || parts[parts.length - 1] === '연계형';
+    const stateLike = ['독립형', '연계형', '한정형'].includes(parts[parts.length - 1]);
     const labels = stateLike ? ['품사', '성', '수', '상태'] : ['품사', '격', '수', '성'];
     return parts.map((value, index) => ({ label: labels[index] || `형태 ${index}`, value }));
   }
@@ -161,6 +194,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   useEffect(() => {
     const onWindowResize = () => {
       setPopupSize((previous) => clampSize(previous.width, previous.height, window.innerWidth, window.innerHeight));
+      setDragOffset({ x: 0, y: 0 });
     };
     window.addEventListener('resize', onWindowResize);
     return () => window.removeEventListener('resize', onWindowResize);
@@ -169,17 +203,37 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const onDragStart = (event) => {
     if (isMobile || researchActive || event.button !== 0) return;
     event.preventDefault();
+    const currentBase = baseDesktopPosition(anchor, popupSize.width, popupSize.height, window.innerWidth, window.innerHeight);
+    const currentPosition = clampDesktopPosition(
+      currentBase.left + dragOffset.x,
+      currentBase.top + dragOffset.y,
+      popupSize.width,
+      popupSize.height,
+      window.innerWidth,
+      window.innerHeight,
+    );
     dragState.current = {
       startMouseX: event.clientX,
       startMouseY: event.clientY,
-      startX: dragOffset.x,
-      startY: dragOffset.y,
+      startLeft: currentPosition.left,
+      startTop: currentPosition.top,
     };
     const onMove = (moveEvent) => {
       if (!dragState.current) return;
+      const width = popupSize.width;
+      const height = popupSize.height;
+      const nextBase = baseDesktopPosition(anchor, width, height, window.innerWidth, window.innerHeight);
+      const nextPosition = clampDesktopPosition(
+        dragState.current.startLeft + moveEvent.clientX - dragState.current.startMouseX,
+        dragState.current.startTop + moveEvent.clientY - dragState.current.startMouseY,
+        width,
+        height,
+        window.innerWidth,
+        window.innerHeight,
+      );
       setDragOffset({
-        x: dragState.current.startX + moveEvent.clientX - dragState.current.startMouseX,
-        y: dragState.current.startY + moveEvent.clientY - dragState.current.startMouseY,
+        x: nextPosition.left - nextBase.left,
+        y: nextPosition.top - nextBase.top,
       });
     };
     const onUp = () => {
@@ -195,31 +249,66 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     if (isMobile || researchActive || event.button !== 0) return;
     event.preventDefault();
     event.stopPropagation();
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+    const base = baseDesktopPosition(anchor, popupSize.width, popupSize.height, viewportWidth, viewportHeight);
+    const position = clampDesktopPosition(
+      base.left + dragOffset.x,
+      base.top + dragOffset.y,
+      popupSize.width,
+      popupSize.height,
+      viewportWidth,
+      viewportHeight,
+    );
+
     const start = {
       mouseX: event.clientX,
       mouseY: event.clientY,
-      width: popupSize.width,
-      height: popupSize.height,
-      offsetX: dragOffset.x,
-      offsetY: dragOffset.y,
+      left: position.left,
+      top: position.top,
+      right: position.left + popupSize.width,
+      bottom: position.top + popupSize.height,
     };
+
     const onMove = (moveEvent) => {
+      const margin = POPUP_VIEWPORT_MARGIN;
+      const currentVw = window.innerWidth;
+      const currentVh = window.innerHeight;
       const dx = moveEvent.clientX - start.mouseX;
       const dy = moveEvent.clientY - start.mouseY;
-      let width = start.width;
-      let height = start.height;
-      let offsetX = start.offsetX;
-      let offsetY = start.offsetY;
-      if (edges.right) width = start.width + dx;
-      if (edges.bottom) height = start.height + dy;
-      if (edges.left) { width = start.width - dx; offsetX = start.offsetX + dx; }
-      if (edges.top) { height = start.height - dy; offsetY = start.offsetY + dy; }
-      const clamped = clampSize(width, height, window.innerWidth, window.innerHeight);
-      if (edges.left && clamped.width !== width) offsetX = start.offsetX + (start.width - clamped.width);
-      if (edges.top && clamped.height !== height) offsetY = start.offsetY + (start.height - clamped.height);
-      setPopupSize(clamped);
-      setDragOffset({ x: offsetX, y: offsetY });
+
+      let left = start.left;
+      let top = start.top;
+      let right = start.right;
+      let bottom = start.bottom;
+
+      if (edges.left) left = clamp(start.left + dx, margin, start.right - POPUP_MIN_WIDTH);
+      if (edges.right) right = clamp(start.right + dx, start.left + POPUP_MIN_WIDTH, currentVw - margin);
+      if (edges.top) top = clamp(start.top + dy, margin, start.bottom - POPUP_MIN_HEIGHT);
+      if (edges.bottom) bottom = clamp(start.bottom + dy, start.top + POPUP_MIN_HEIGHT, currentVh - margin);
+
+      if (!edges.left && left < margin) left = margin;
+      if (!edges.top && top < margin) top = margin;
+      if (!edges.right && right > currentVw - margin) right = currentVw - margin;
+      if (!edges.bottom && bottom > currentVh - margin) bottom = currentVh - margin;
+
+      const nextSize = clampSize(right - left, bottom - top, currentVw, currentVh);
+      if (edges.left) left = right - nextSize.width;
+      else right = left + nextSize.width;
+      if (edges.top) top = bottom - nextSize.height;
+      else bottom = top + nextSize.height;
+
+      const nextPosition = clampDesktopPosition(left, top, nextSize.width, nextSize.height, currentVw, currentVh);
+      const nextBase = baseDesktopPosition(anchor, nextSize.width, nextSize.height, currentVw, currentVh);
+
+      setPopupSize(nextSize);
+      setDragOffset({
+        x: nextPosition.left - nextBase.left,
+        y: nextPosition.top - nextBase.top,
+      });
     };
+
     const onUp = () => {
       window.removeEventListener('mousemove', onMove);
       window.removeEventListener('mouseup', onUp);
@@ -231,25 +320,28 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   if (!entry) return null;
 
   const isHebrew = entry.s?.startsWith('H');
-  const morphHuman = humanizeMorph(entry.m);
-  const morphFields = morphologyFields(morphHuman);
-  const glossKey = normalizedStrong(entry.s);
-  const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
-  const koreanTranslit = entry.translitKo || koreanGloss?.translitKo || null;
+  const hebrewComposition = isHebrew ? buildHebrewWordComposition(entry.w, entry.m) : [];
+  const fullMorphHuman = isHebrew ? humanizeHebrewMorphCode(entry.m) : humanizeMorph(entry.m);
+  const primaryMorphHuman = isHebrew
+    ? (hebrewComposition[hebrewComposition.length - 1]?.human || fullMorphHuman)
+    : fullMorphHuman;
+  const morphFields = morphologyFields(primaryMorphHuman);
+  const koreanTranslit = resolveKoreanTransliteration(entry);
   const lexicalSource = entry.l || entry.w || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
-  const surfaceForm = displayLexicalForm(entry.w, isHebrew) || lemma;
+  const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
   const strongHref = externalStrongHref(entry.s, isHebrew);
 
   const width = isMobile ? vw : popupSize.width;
   const height = isMobile ? Math.round(vh * 0.88) : popupSize.height;
-  const margin = POPUP_VIEWPORT_MARGIN;
-  const baseLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
-  const baseTop = isMobile ? vh - height : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - height - margin));
-  const left = isMobile ? 0 : baseLeft + dragOffset.x;
-  const top = isMobile ? baseTop : baseTop + dragOffset.y;
+  const base = isMobile ? { left: 0, top: vh - height } : baseDesktopPosition(anchor, width, height, vw, vh);
+  const desktopPosition = isMobile
+    ? base
+    : clampDesktopPosition(base.left + dragOffset.x, base.top + dragOffset.y, width, height, vw, vh);
+  const left = isMobile ? 0 : desktopPosition.left;
+  const top = isMobile ? base.top : desktopPosition.top;
   const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
   const threeColumn = !isMobile && popupSize.width >= THREE_COLUMN_MIN_WIDTH;
 
@@ -257,17 +349,19 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     ['Strong', entry.s || '—'],
     ['Lemma', lemma || '—'],
     ['Academic translit.', entry.tr || '—'],
-    ['한글 음역', koreanTranslit || '—'],
+    ['한글 음역', koreanTranslit || '검토 대기'],
     ['Part of speech', partOfSpeech],
   ];
 
   const leftFields = [
     ['사전형', lemma],
     ['학술 음역 (SBL)', entry.tr],
-    ['한글 음역', koreanTranslit],
-    ['표기 기준', 'SBL 학술 음역 / 검증된 한글 음역 병기'],
+    ...(koreanTranslit ? [
+      ['한글 음역', koreanTranslit],
+      ['표기 기준', 'SBL 학술 음역 / 검토 완료 한글 음역 병기'],
+    ] : []),
     ...morphFields.map((field) => [field.label, field.value]),
-    ['대표 어형', surfaceForm],
+    ['실제 어형', surfaceForm],
     ['TWOT', definition?.meta?.twot],
   ].filter(([, value]) => value);
 
@@ -316,8 +410,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
         {[
           ['def', '사전 정의'],
           ['usage', '관련 구절'],
-          ['morph', '형태 분석'],
-          ['research', '원어 분석'],
+          ['analysis', '형태·원어 분석'],
         ].map(([key, label]) => (
           <button key={key} className={`lexicon-tab${tab === key ? ' is-active' : ''}`} onClick={() => setTab(key)}>{label}</button>
         ))}
@@ -331,14 +424,14 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {leftFields.map(([label, value]) => (
                 <div className="lexicon-side-field" key={`${label}-${String(value)}`}>
                   <dt>{label}</dt>
-                  <dd className={isHebrew && (label === '사전형' || label === '대표 어형') ? 'is-hebrew' : ''}>{value}</dd>
+                  <dd className={isHebrew && (label === '사전형' || label === '실제 어형') ? 'is-hebrew' : ''}>{value}</dd>
                 </div>
               ))}
             </dl>
             {isHebrew && (
               <div className="lexicon-side-status">
                 <strong>형태 표시 원칙</strong><br />
-                동사는 실제 토큰 morph code에서 Qal · Niphal · Piel · Pual · Hiphil · Hophal · Hithpael 등을 표시하고, 명사는 성·수·상태를 표시합니다.
+                실제 본문 어형은 관사·전치사·접속사·접미 요소를 포함한 표면형으로 보존하고, 사전 표제어와 분리해서 표시합니다.
               </div>
             )}
           </aside>
@@ -389,7 +482,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             <section className="lexicon-tab-panel" data-panel="usage">
               <div className="lexicon-section-title">
                 <strong>관련 구절 · {entry.s} {lemma}</strong>
-                <span>{bookId ? `${getBook(bookId)?.ko || bookId} 범위` : '책 미선택'}</span>
+                <span>{bookId ? `${getBook(bookId)?.ko || bookId} 범위 · 실제 본문 어형 표시` : '책 미선택'}</span>
               </div>
               {!bookId && <div className="lexicon-empty">구절 노드를 선택하면 해당 책에서의 관련 구절을 볼 수 있습니다.</div>}
               {usageLoading && <div className="lexicon-empty">🔍 관련 구절 검색 중…</div>}
@@ -416,23 +509,54 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             </section>
           )}
 
-          {tab === 'morph' && (
-            <section className="lexicon-tab-panel" data-panel="morphology" data-testid="morph-tab">
+          {tab === 'analysis' && (
+            <section className="lexicon-tab-panel" data-panel="analysis" data-testid="morph-tab">
               <div className="lexicon-section-title">
-                <strong>형태 분석 · {lemma}</strong>
-                <span>클릭한 실제 토큰 형태</span>
+                <strong>형태·원어 분석 · {lemma}</strong>
+                <span>실제 표면형 · 형태소 구성 · 문법 · 원어 연구</span>
               </div>
+
               <div className="lexicon-morph-grid">
                 <MorphCard label="사전형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
+                <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
                 {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
                 {entry.tr && <MorphCard label="학술 음역">{entry.tr}</MorphCard>}
                 <MorphCard label="품사">{partOfSpeech}</MorphCard>
-                {morphFields.filter((field) => field.label !== '품사').map((field) => (
-                  <MorphCard label={field.label} key={`${field.label}-${field.value}`}>{field.value}</MorphCard>
-                ))}
-                <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
-                <MorphCard label="대표 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
+                <MorphCard label="문법 분석"><span data-testid="morph-humanized">{fullMorphHuman || '—'}</span></MorphCard>
               </div>
+
+              {isHebrew && (
+                <div className="lexicon-morph-detail" data-testid="morph-composition-panel" style={{ marginTop: 12 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 10, alignItems: 'baseline', marginBottom: 10 }}>
+                    <b>형태 구성</b>
+                    <span style={{ color: '#64748b', fontSize: 11 }}>
+                      {hebrewComposition.length > 1 ? `${hebrewComposition.length}개 형태소 결합` : '단일 형태'}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {hebrewComposition.map((part, index) => (
+                      <div
+                        key={`${part.form}-${part.code}-${index}`}
+                        data-testid="morph-composition-row"
+                        style={{
+                          display: 'grid',
+                          gridTemplateColumns: 'minmax(92px, auto) minmax(0, 1fr) auto',
+                          gap: 10,
+                          alignItems: 'center',
+                          padding: '9px 10px',
+                          border: '1px solid #e0e6ef',
+                          borderRadius: 10,
+                          background: '#fff',
+                        }}
+                      >
+                        <span className="is-hebrew" style={{ fontSize: 22, fontWeight: 700, direction: 'rtl' }}>{part.form || '—'}</span>
+                        <span style={{ fontSize: 12, lineHeight: 1.5 }}>{part.human || '형태 정보 없음'}</span>
+                        {part.code && <code style={{ fontSize: 10 }}>{part.code}</code>}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <button
                 type="button"
@@ -445,13 +569,13 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
               {morphDetailOpen && (
                 <div className="lexicon-morph-detail" data-testid="morph-detail-panel">
-                  <div><b>정규화 사전형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</span></div>
-                  <div><b>정규화 어형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</span></div>
+                  <div><b>사전 표제어:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</span></div>
+                  <div><b>본문 표면형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</span></div>
                   {entry.m && <div><b>raw morph code:</b> <code>{entry.m}</code></div>}
-                  {entry.w && <div><b>원본 토큰:</b> <code>{entry.w}</code></div>}
+                  {entry.w && <div><b>원본 분절 토큰:</b> <code>{entry.w}</code></div>}
                   {isHebrew && (
                     <div className="lexicon-morph-detail-note">
-                      관사·접속사 등 prefix morpheme와 문장부호·칸틸레이션은 사전 표제어에서 제거합니다. 동사 Binyan은 실제 morphology code에 기록된 값만 표시합니다.
+                      사전 표제어는 lexical morpheme만 사용하고, 실제 본문 어형은 접속사·전치사·정관사·접미 요소를 포함한 표면형을 보존합니다. 각 형태소의 문법 설명은 원자료 morphology segment와 같은 순서로 대응시킵니다.
                     </div>
                   )}
                 </div>
@@ -459,25 +583,27 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
               {isHebrew && morphFields.some((field) => field.label === '어간 (Binyan)') && (
                 <div className="lexicon-morph-note">
-                  <strong>동사 어간:</strong> Qal/Piel/Pual 등은 사전형에서 추정하지 않고, 현재 클릭한 토큰의 morphology code에 기록된 값만 표시합니다.
+                  <strong>동사 어간:</strong> Qal/Piel/Pual 등은 사전형에서 추정하지 않고 현재 클릭한 토큰의 morphology code에 기록된 값만 표시합니다.
                 </div>
               )}
-            </section>
-          )}
 
-          {tab === 'research' && (
-            <section className="lexicon-tab-panel lexicon-research-panel" data-panel="research" data-testid="original-language-analysis-tab">
-              <div className="lexicon-section-title">
-                <strong>원어 분석 · {lemma}</strong>
-                <span>용례 · 구문 · 병렬 본문 · 원어 브릿지</span>
+              <div
+                className="lexicon-research-panel"
+                data-testid="original-language-analysis-tab"
+                style={{ marginTop: 16, paddingTop: 14, borderTop: '1px solid #e0e6ef' }}
+              >
+                <div className="lexicon-section-title">
+                  <strong>원어 연구</strong>
+                  <span>용례 · 구문 · 병렬 본문 · 원어 브릿지</span>
+                </div>
+                <OriginalLanguageResearchActions
+                  entry={{ ...entry, w: surfaceForm || entry.w, l: lemma || entry.l }}
+                  anchor={anchor}
+                  passage={passage}
+                  isHebrew={isHebrew}
+                  onActiveChange={setResearchActive}
+                />
               </div>
-              <OriginalLanguageResearchActions
-                entry={{ ...entry, w: surfaceForm || entry.w, l: lemma || entry.l }}
-                anchor={anchor}
-                passage={passage}
-                isHebrew={isHebrew}
-                onActiveChange={setResearchActive}
-              />
             </section>
           )}
         </main>
@@ -558,8 +684,10 @@ function MorphCard({ label, children, mono = false, languageClass = '' }) {
 
 function UsageCard({ entry, bookId, isHebrew, onAdd }) {
   const koName = getBook(bookId)?.ko || bookId;
-  const morphKo = entry.m ? humanizeMorph(entry.m) : null;
-  const displayForm = displayLexicalForm(entry.w, isHebrew) || entry.w || '';
+  const morphKo = entry.m
+    ? (isHebrew ? humanizeHebrewMorphCode(entry.m) : humanizeMorph(entry.m))
+    : null;
+  const displayForm = displaySurfaceForm(entry.w, isHebrew) || entry.w || '';
   return (
     <article className="lexicon-usage-card" data-testid="usage-row">
       <div className="lexicon-usage-head">
