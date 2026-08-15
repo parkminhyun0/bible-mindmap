@@ -62,6 +62,11 @@ export default function HebrewMeaningAnalysisCard({ strong, code }) {
     [code, definition],
   );
 
+  const otherOverviewBranches = useMemo(() => {
+    const selected = new Set((analysis.branches || []).map((branch) => branch.text));
+    return (analysis.overviewBranches || []).filter((branch) => !selected.has(branch.text));
+  }, [analysis]);
+
   if (!strong?.startsWith('H') || !code?.startsWith('H')) return null;
 
   const bdbReady = definition?.source === 'bdbt' && !definition?.bdbUnavailable;
@@ -117,6 +122,21 @@ export default function HebrewMeaningAnalysisCard({ strong, code }) {
           </div>
         )}
       </div>
+
+      {!loading && !error && bdbReady && otherOverviewBranches.length > 0 && (
+        <details
+          open={analysis.kind === 'nominal'}
+          data-testid="bdb-other-senses"
+          style={{ marginTop: 10, borderTop: '1px solid #dbe5f0', paddingTop: 8 }}
+        >
+          <summary style={{ cursor: 'pointer', color: '#475569', fontSize: 10.5, fontWeight: 800 }}>
+            BDB의 다른 주요 의미 분기 · 비교하기
+          </summary>
+          <div style={{ marginTop: 7, display: 'flex', flexDirection: 'column', gap: 6 }}>
+            {otherOverviewBranches.map((branch) => <SourceBranch branch={branch} key={`overview-${branch.id || branch.text}`} />)}
+          </div>
+        </details>
+      )}
 
       <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #dbe5f0', color: '#64748b', fontSize: 9.5, lineHeight: 1.6 }} data-testid="meaning-analysis-caution">
         <strong style={{ color: '#475569' }}>해석 원칙:</strong> {analysis.caution} 현재 절에서 어느 sense가 실제로 선택되는지는 형태론뿐 아니라 구문·주어/동사 일치·앞뒤 문맥까지 함께 확인합니다.
