@@ -4,6 +4,7 @@ import useMobile from '../hooks/useMobile';
 import { parseReference } from '../utils/citationDetector';
 import { hasLexicalBridge } from '../data/lexicalBridgePilot';
 import MorphologyKoreanCard from './MorphologyKoreanCard';
+import HebrewMeaningAnalysisCard from './HebrewMeaningAnalysisCard';
 
 const WordSearchModal = lazy(() => import('./WordSearchModal'));
 const SyntaxPanel = lazy(() => import('./SyntaxPanel'));
@@ -143,6 +144,7 @@ export default function OriginalLanguageResearchActions({
     <>
       <div style={{ padding: '0 12px 10px', background: '#fff' }}>
         <MorphologyKoreanCard code={entry.m} isHebrew={isHebrew} />
+        {isHebrew && <HebrewMeaningAnalysisCard strong={entry.s} code={entry.m} />}
       </div>
 
       {researchActionCount > 0 && (
