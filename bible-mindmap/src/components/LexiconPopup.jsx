@@ -63,6 +63,8 @@ function morphologyFields(human) {
   if (!parts.length) return [];
   const pos = parts[0];
   if (pos === '동사' && parts.length >= 4) {
+    // Hebrew: 동사 · Binyan · aspect · person · gender · number
+    // Greek:  동사 · tense · voice · mood · person · number
     const looksHebrewStem = ['Qal', 'Niphal', 'Piel', 'Pual', 'Hiphil', 'Hophal', 'Hithpael'].includes(parts[1]);
     const labels = looksHebrewStem
       ? ['품사', '어간 (Binyan)', '시상', '인칭', '성', '수']
@@ -267,7 +269,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     <div
       role="dialog"
       aria-modal={isMobile ? 'true' : 'false'}
-      aria-label={`원어 사전 · ${lemma || entry.tr || entry.s || ''}`}
+      aria-label={`원어 사전 · ${entry.w || lemma || entry.tr || entry.s || ''}`}
       aria-hidden={researchActive ? 'true' : undefined}
       className={`lexicon-popup-v2${isMobile ? ' lexicon-popup-v2--mobile momentum-scroll' : ''}`}
       style={{
@@ -287,10 +289,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`}>{lemma}</div>
           <div className="lexicon-title-translit">
             {entry.tr && <span>{entry.tr}</span>}
-            {koreanTranslit && <><span className="lexicon-dot">·</span><span data-testid="popup-translit-ko">한글 음역: {koreanTranslit}</span></>}
+            {koreanTranslit && <><span className="lexicon-dot">·</span><span>한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
             {entry.s && <><span className="lexicon-dot">·</span><span>{entry.s}</span></>}
           </div>
-          <span className="lexicon-source-badge" data-testid="popup-source-badge">Source: {source}</span>
+          <span className="lexicon-source-badge">Source: <span data-testid="popup-source-badge">{isHebrew ? 'BDB' : "Strong's"}</span></span>
         </div>
         <button className="lexicon-close" onClick={onClose} onMouseDown={(event) => event.stopPropagation()} title="닫기 (Esc)">×</button>
       </header>
