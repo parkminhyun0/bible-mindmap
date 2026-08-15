@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { fetchStrongDefinition } from '../utils/lexicon.js';
-import { analyzeHebrewMorphologyMeaning } from '../utils/hebrewMeaningAnalysis.js';
+import { analyzeHebrewMorphologyMeaning, hebrewStemGuidanceList } from '../utils/hebrewMeaningAnalysis.js';
 
 function SourceBranch({ branch }) {
   return (
@@ -31,6 +31,68 @@ function SourceBranch({ branch }) {
         </div>
       )}
     </div>
+  );
+}
+
+function BinyanGuide({ currentStem, appliesToCurrentWord }) {
+  const guides = useMemo(() => hebrewStemGuidanceList(), []);
+
+  return (
+    <details
+      open={appliesToCurrentWord}
+      data-testid="binyan-korean-guide"
+      style={{ marginTop: 10, borderTop: '1px solid #dbe5f0', paddingTop: 8 }}
+    >
+      <summary style={{ cursor: 'pointer', color: '#334155', fontSize: 11, fontWeight: 850 }}>
+        히브리어 7대 Binyan · 해석상 의미 변화 한글 가이드
+      </summary>
+
+      <div style={{ marginTop: 8, color: '#64748b', fontSize: 9.5, lineHeight: 1.6 }}>
+        {appliesToCurrentWord
+          ? '현재 동사의 어간을 강조해서 보여줍니다. 아래 설명은 각 Binyan의 일반적인 해석 경향이며, 실제 번역과 의미 선택은 해당 단어의 BDB stem/sense와 문맥을 우선합니다.'
+          : '현재 단어는 동사가 아니므로 Binyan이 직접 적용되지 않습니다. 아래 내용은 히브리어 동사를 분석할 때 사용하는 비교 가이드입니다.'}
+      </div>
+
+      <div style={{ marginTop: 9, display: 'flex', flexDirection: 'column', gap: 7 }}>
+        {guides.map((guide) => {
+          const active = guide.stem === currentStem;
+          return (
+            <div
+              key={guide.stem}
+              data-testid={`binyan-guide-${guide.stem.toLowerCase()}`}
+              style={{
+                border: active ? '1px solid #8bb5e8' : '1px solid #e1e7ef',
+                borderRadius: 9,
+                background: active ? '#eef6ff' : '#fff',
+                padding: '9px 10px',
+                boxShadow: active ? '0 0 0 1px rgba(59,130,246,.05)' : 'none',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                <strong style={{ color: '#17375f', fontSize: 11.5 }}>
+                  {guide.ko} ({guide.stem})
+                </strong>
+                {active && (
+                  <span style={{ padding: '2px 6px', borderRadius: 999, background: '#dbeafe', color: '#1d4ed8', fontSize: 8.5, fontWeight: 850 }}>
+                    현재 형태
+                  </span>
+                )}
+              </div>
+              <div style={{ marginTop: 6, color: '#475569', fontSize: 10.5, lineHeight: 1.65 }}>
+                <b style={{ color: '#334155' }}>해석상 경향:</b> {guide.interpretation}
+              </div>
+              <div style={{ marginTop: 4, color: '#526074', fontSize: 10, lineHeight: 1.6 }}>
+                <b style={{ color: '#475569' }}>의미 이동:</b> {guide.semanticShift}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{ marginTop: 8, padding: '8px 9px', borderRadius: 8, background: '#fff8e8', border: '1px solid #f1dfb7', color: '#725414', fontSize: 9.5, lineHeight: 1.6 }}>
+        <strong>주의:</strong> Binyan은 의미를 기계적으로 결정하는 공식이 아닙니다. 같은 어간이라도 어휘마다 의미가 달라질 수 있으므로, 이 가이드는 해석 방향을 이해하기 위한 보조 설명이고 최종 의미는 BDB의 실제 분기와 문장 구조를 확인합니다.
+      </div>
+    </details>
   );
 }
 
@@ -70,6 +132,7 @@ export default function HebrewMeaningAnalysisCard({ strong, code }) {
   if (!strong?.startsWith('H') || !code?.startsWith('H')) return null;
 
   const bdbReady = definition?.source === 'bdbt' && !definition?.bdbUnavailable;
+  const isVerb = analysis.kind === 'verb';
 
   return (
     <section
@@ -97,6 +160,8 @@ export default function HebrewMeaningAnalysisCard({ strong, code }) {
           {analysis.explanation}
         </div>
       </div>
+
+      <BinyanGuide currentStem={analysis.stem || ''} appliesToCurrentWord={isVerb} />
 
       <div style={{ marginTop: 10 }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8, marginBottom: 6 }}>
