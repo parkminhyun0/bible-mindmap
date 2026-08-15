@@ -7,15 +7,14 @@ import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
+import './LexiconPopup.css';
 
 const POPUP_MIN_WIDTH = 340;
 const POPUP_MIN_HEIGHT = 300;
 const POPUP_VIEWPORT_MARGIN = 12;
-// Prototype-fidelity default: dictionary content dominates.  Wide-mode single-
-// line horizontal metadata + three tabs + generous body + collapsed bottom
-// provenance toggle.  Freely resizable; viewport-clamped.
 const DEFAULT_DESKTOP_WIDTH = 760;
 const DEFAULT_DESKTOP_HEIGHT = 620;
+const THREE_COLUMN_MIN_WIDTH = 720;
 
 function clampSize(width, height, vw, vh) {
   const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
@@ -26,48 +25,72 @@ function clampSize(width, height, vw, vh) {
   };
 }
 
-// Resize handle strip geometry keyed by side. Edges are 6px thick and hug the
-// popup border; corners are 12px squares so the pointer target remains reachable
-// where two edges meet. Every handle sits above content (z-index) and does not
-// paint anything visible so it never obscures text, links, or scrollbars.
 function resizeHandleStyle(side) {
-  const thickness = 6;
-  const corner = 12;
-  const base = { position: 'absolute', zIndex: 2, background: 'transparent', userSelect: 'none' };
+  const thickness = 8;
+  const corner = 14;
+  const base = { position: 'absolute', zIndex: 50, background: 'transparent', userSelect: 'none' };
   switch (side) {
-    case 'top':    return { ...base, top: 0, left: corner, right: corner, height: thickness, cursor: 'ns-resize' };
-    case 'bottom': return { ...base, bottom: 0, left: corner, right: corner, height: thickness, cursor: 'ns-resize' };
-    case 'left':   return { ...base, left: 0, top: corner, bottom: corner, width: thickness, cursor: 'ew-resize' };
-    case 'right':  return { ...base, right: 0, top: corner, bottom: corner, width: thickness, cursor: 'ew-resize' };
-    case 'nw':     return { ...base, top: 0, left: 0, width: corner, height: corner, cursor: 'nwse-resize' };
-    case 'ne':     return { ...base, top: 0, right: 0, width: corner, height: corner, cursor: 'nesw-resize' };
-    case 'sw':     return { ...base, bottom: 0, left: 0, width: corner, height: corner, cursor: 'nesw-resize' };
-    case 'se':     return { ...base, bottom: 0, right: 0, width: corner, height: corner, cursor: 'nwse-resize' };
-    default:       return base;
+    case 'top': return { ...base, top: -4, left: 10, right: 10, height: thickness, cursor: 'ns-resize' };
+    case 'bottom': return { ...base, bottom: -4, left: 10, right: 10, height: thickness, cursor: 'ns-resize' };
+    case 'left': return { ...base, left: -4, top: 10, bottom: 10, width: thickness, cursor: 'ew-resize' };
+    case 'right': return { ...base, right: -4, top: 10, bottom: 10, width: thickness, cursor: 'ew-resize' };
+    case 'nw': return { ...base, top: -6, left: -6, width: corner, height: corner, cursor: 'nwse-resize' };
+    case 'ne': return { ...base, top: -6, right: -6, width: corner, height: corner, cursor: 'nesw-resize' };
+    case 'sw': return { ...base, bottom: -6, left: -6, width: corner, height: corner, cursor: 'nesw-resize' };
+    case 'se': return { ...base, bottom: -6, right: -6, width: corner, height: corner, cursor: 'nwse-resize' };
+    default: return base;
   }
 }
 
-/**
- * 원어 단어 어형 분석 카드.
- * Props:
- *   entry     = { w, tr, s, m, l, g }  (word / transliteration / strong / morph / lemma / gloss)
- *   anchor    = { x, y }               팝업이 등장할 화면 좌표
- *   bookId    = string                  현재 구절의 책 ID (용례 검색 범위)
- *   passage   = { bookId, chapter, verseStart, verseEnd } 원래 연구 위치
- *   onClose
- *   onAddVerse(ref)                     용례에서 "+ 추가" 클릭 시 호출
- */
+function normalizedStrong(strong) {
+  return strong ? strong.replace(/^([HG])0+(?=\d)/, '$1') : '';
+}
+
+function strongNumber(strong) {
+  if (!strong) return '';
+  return strong.replace(/^([GH])0*/, '');
+}
+
+function externalStrongHref(strong, isHebrew) {
+  const num = strongNumber(strong);
+  return num ? `https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${num}.htm` : null;
+}
+
+function morphologyFields(human) {
+  if (!human) return [];
+  if (human.includes(' | ')) return [{ label: '형태 분석', value: human }];
+  const parts = human.split(' · ').filter(Boolean);
+  if (!parts.length) return [];
+  const pos = parts[0];
+  if (pos === '동사' && parts.length >= 4) {
+    const looksHebrewStem = ['Qal', 'Niphal', 'Piel', 'Pual', 'Hiphil', 'Hophal', 'Hithpael'].includes(parts[1]);
+    const labels = looksHebrewStem
+      ? ['품사', '어간 (Binyan)', '시상', '인칭', '성', '수']
+      : ['품사', '시제', '태', '법', '인칭', '수'];
+    return parts.map((value, index) => ({ label: labels[index] || `형태 ${index}`, value }));
+  }
+  if (pos === '명사' && parts.length >= 3) {
+    const stateLike = parts[parts.length - 1] === '독립형' || parts[parts.length - 1] === '연계형';
+    const labels = stateLike ? ['품사', '성', '수', '상태'] : ['품사', '격', '수', '성'];
+    return parts.map((value, index) => ({ label: labels[index] || `형태 ${index}`, value }));
+  }
+  return [{ label: '형태 분석', value: human }];
+}
+
+function sourceLabel(isHebrew) {
+  return isHebrew ? 'BDB' : "Greek Strong's";
+}
+
 export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, zIndex }) {
   const { onAddVerse } = useCanvas() || {};
   const isMobile = useMobile();
-  const [tab, setTab] = useState('def'); // 'def' | 'usage' | 'morph'
+  const [tab, setTab] = useState('def');
   const [defReloadNonce, setDefReloadNonce] = useState(0);
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
   const [defError, setDefError] = useState(null);
   const [researchActive, setResearchActive] = useState(false);
-
-  const [usages, setUsages] = useState(null);   // null = 미로드, [] = 없음, [...] = 목록
+  const [usages, setUsages] = useState(null);
   const [usageLoading, setUsageLoading] = useState(false);
   const [usageError, setUsageError] = useState('');
 
@@ -78,8 +101,8 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     setDefError(null);
     setDefinition(null);
     fetchStrongDefinition(entry.s)
-      .then((d) => { if (!cancelled) setDefinition(d); })
-      .catch((e) => { if (!cancelled) setDefError(e.message || '조회 실패'); })
+      .then((value) => { if (!cancelled) setDefinition(value); })
+      .catch((error) => { if (!cancelled) setDefError(error.message || '조회 실패'); })
       .finally(() => { if (!cancelled) setDefLoading(false); });
     return () => { cancelled = true; };
   }, [entry?.s, defReloadNonce]);
@@ -91,11 +114,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     setUsageLoading(true);
     setUsageError('');
     fetchStrongConcordance(entry.s, bookId)
-      .then((list) => {
-        if (!cancelled) setUsages(list);
-      })
-      .catch((e) => {
-        if (!cancelled) { setUsages([]); setUsageError(e.message || '용례 로드 실패'); }
+      .then((list) => { if (!cancelled) setUsages(list); })
+      .catch((error) => {
+        if (!cancelled) {
+          setUsages([]);
+          setUsageError(error.message || '관련 구절 로드 실패');
+        }
       })
       .finally(() => { if (!cancelled) setUsageLoading(false); });
     return () => { cancelled = true; };
@@ -109,21 +133,18 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   }, [entry?.s]);
 
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape' && !researchActive) onClose();
+    const onKey = (event) => {
+      if (event.key === 'Escape' && !researchActive) onClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, researchActive]);
 
-  const dragState = useRef(null);
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-
   const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
   const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const [popupSize, setPopupSize] = useState(() =>
-    clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh),
-  );
+  const [popupSize, setPopupSize] = useState(() => clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh));
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const dragState = useRef(null);
 
   useEffect(() => {
     setDragOffset({ x: 0, y: 0 });
@@ -131,23 +152,28 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   }, [entry?.s]);
 
   useEffect(() => {
-    const onResize = () => {
-      setPopupSize((prev) => clampSize(prev.width, prev.height, window.innerWidth, window.innerHeight));
+    const onWindowResize = () => {
+      setPopupSize((previous) => clampSize(previous.width, previous.height, window.innerWidth, window.innerHeight));
     };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    window.addEventListener('resize', onWindowResize);
+    return () => window.removeEventListener('resize', onWindowResize);
   }, []);
 
-  const onDragStart = (e) => {
-    if (isMobile || researchActive) return;
-    if (e.button !== 0) return;
-    e.preventDefault();
-    dragState.current = { startMouseX: e.clientX, startMouseY: e.clientY, startX: dragOffset.x, startY: dragOffset.y };
-    const onMove = (ev) => {
+  const onDragStart = (event) => {
+    if (isMobile || researchActive || event.button !== 0) return;
+    event.preventDefault();
+    dragState.current = {
+      startMouseX: event.clientX,
+      startMouseY: event.clientY,
+      startX: dragOffset.x,
+      startY: dragOffset.y,
+    };
+    const onMove = (moveEvent) => {
       if (!dragState.current) return;
-      const dx = ev.clientX - dragState.current.startMouseX;
-      const dy = ev.clientY - dragState.current.startMouseY;
-      setDragOffset({ x: dragState.current.startX + dx, y: dragState.current.startY + dy });
+      setDragOffset({
+        x: dragState.current.startX + moveEvent.clientX - dragState.current.startMouseX,
+        y: dragState.current.startY + moveEvent.clientY - dragState.current.startMouseY,
+      });
     };
     const onUp = () => {
       dragState.current = null;
@@ -158,25 +184,21 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     window.addEventListener('mouseup', onUp);
   };
 
-  // Directional resize. Each handle declares which edges follow the pointer:
-  //   left/right shift width (and translate x when left grows leftward)
-  //   top/bottom shift height (and translate y when top grows upward)
-  const onResizeStart = (edges) => (e) => {
-    if (isMobile || researchActive) return;
-    if (e.button !== 0) return;
-    e.preventDefault();
-    e.stopPropagation();
+  const onResizeStart = (edges) => (event) => {
+    if (isMobile || researchActive || event.button !== 0) return;
+    event.preventDefault();
+    event.stopPropagation();
     const start = {
-      mouseX: e.clientX,
-      mouseY: e.clientY,
+      mouseX: event.clientX,
+      mouseY: event.clientY,
       width: popupSize.width,
       height: popupSize.height,
       offsetX: dragOffset.x,
       offsetY: dragOffset.y,
     };
-    const onMove = (ev) => {
-      const dx = ev.clientX - start.mouseX;
-      const dy = ev.clientY - start.mouseY;
+    const onMove = (moveEvent) => {
+      const dx = moveEvent.clientX - start.mouseX;
+      const dy = moveEvent.clientY - start.mouseY;
       let width = start.width;
       let height = start.height;
       let offsetX = start.offsetX;
@@ -186,8 +208,6 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
       if (edges.left) { width = start.width - dx; offsetX = start.offsetX + dx; }
       if (edges.top) { height = start.height - dy; offsetY = start.offsetY + dy; }
       const clamped = clampSize(width, height, window.innerWidth, window.innerHeight);
-      // If clamping refused a shrink we also refuse the corresponding offset shift
-      // so the popup edge that was dragged does not drift away from the pointer.
       if (edges.left && clamped.width !== width) offsetX = start.offsetX + (start.width - clamped.width);
       if (edges.top && clamped.height !== height) offsetY = start.offsetY + (start.height - clamped.height);
       setPopupSize(clamped);
@@ -205,447 +225,335 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
   const isHebrew = entry.s?.startsWith('H');
   const morphHuman = humanizeMorph(entry.m);
-  // lex 데이터의 Strong 은 0 패딩(예: "H0776")인데 KOREAN_GLOSS 키는 비패딩("H776").
-  // 선행 0 을 제거해 정규화한 뒤 조회한다(패딩·비패딩 모두 매칭).
-  const glossKey = entry.s ? entry.s.replace(/^([HG])0+(?=\d)/, '$1') : null;
+  const morphFields = morphologyFields(morphHuman);
+  const glossKey = normalizedStrong(entry.s);
   const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
-  // Korean transliteration is metadata, not dictionary translation. Prefer an
-  // explicitly supplied token value, then reuse the existing reviewed baseline
-  // transliteration already carried by KOREAN_GLOSS (for example H776 → 에레츠).
-  // Never synthesize a transliteration when neither source provides one.
   const koreanTranslit = entry.translitKo || koreanGloss?.translitKo || null;
+  const lemma = entry.l || entry.w || '';
+  const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
+  const source = sourceLabel(isHebrew);
+  const strongHref = externalStrongHref(entry.s, isHebrew);
+
   const width = isMobile ? vw : popupSize.width;
-  const height = isMobile ? Math.round(vh * 0.85) : popupSize.height;
+  const height = isMobile ? Math.round(vh * 0.88) : popupSize.height;
   const margin = POPUP_VIEWPORT_MARGIN;
   const baseLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
-  const baseTop  = isMobile ? (vh - height) : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - height - margin));
+  const baseTop = isMobile ? vh - height : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - height - margin));
   const left = isMobile ? 0 : baseLeft + dragOffset.x;
-  const top  = isMobile ? baseTop : baseTop + dragOffset.y;
+  const top = isMobile ? baseTop : baseTop + dragOffset.y;
   const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
+  const threeColumn = !isMobile && popupSize.width >= THREE_COLUMN_MIN_WIDTH;
 
-  return createPortal(
-    <>
-      {isMobile && (
-        <div onClick={researchActive ? undefined : onClose} style={{ position:'fixed',inset:0,
-          background:'rgba(15,23,42,.4)',zIndex:resolvedZIndex - 1,
-          pointerEvents: researchActive ? 'none' : 'auto' }} />
-      )}
-      <div
-        role="dialog"
-        aria-modal={isMobile ? 'true' : 'false'}
-        aria-label={`원어 사전 · ${entry.w || entry.tr || entry.s || ''}`}
-        aria-hidden={researchActive ? 'true' : undefined}
-        className={isMobile ? 'momentum-scroll' : undefined}
-        style={{
-          position: 'fixed',
-          left, top, width,
-          height: isMobile ? undefined : height,
-          maxHeight: isMobile ? height : undefined,
-          zIndex: resolvedZIndex,
-          background: '#fff',
-          borderRadius: isMobile ? '16px 16px 0 0' : 10,
-          boxShadow: isMobile ? '0 -8px 32px rgba(15,23,42,.24)' : '0 12px 40px rgba(0,0,0,0.25)',
-          border: isMobile ? 'none' : '1px solid #e2e8f0',
-          overflow: 'hidden',
-          fontFamily: "'Pretendard', 'Noto Sans KR', sans-serif",
-          display: 'flex', flexDirection: 'column',
-          paddingBottom: isMobile ? 'env(safe-area-inset-bottom, 0px)' : 0,
-          pointerEvents: researchActive ? 'none' : 'auto',
-          opacity: researchActive ? 0.72 : 1,
-          willChange: 'transform, opacity',
-          transform: 'translateZ(0)',
-          transition: 'opacity .16s ease',
-        }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <header
-          onMouseDown={onDragStart}
-          style={{
-            padding: '12px 16px',
-            background: '#0f172a',
-            color: '#f8fafc',
-            display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12,
-            cursor: isMobile ? 'default' : 'grab',
-            userSelect: 'none',
-          }}
-        >
-          <div style={{ minWidth: 0, flex: 1 }}>
-            <div style={{
-              fontSize: 24, fontWeight: 700,
-              fontFamily: isHebrew ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
-              direction: isHebrew ? 'rtl' : 'ltr',
-              lineHeight: 1.3,
-              color: '#f8fafc',
-            }}>
-              {entry.w}
-            </div>
-            <div style={{ marginTop: 4, fontSize: 12, color: '#cbd5e1', display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'baseline' }}>
-              {entry.tr && <span style={{ fontStyle: 'italic' }}>{entry.tr}</span>}
-              {entry.tr && koreanTranslit && <span style={{ color: '#64748b' }}>·</span>}
-              {koreanTranslit && <span data-testid="popup-translit-ko">{koreanTranslit}</span>}
-              {(entry.tr || koreanTranslit) && entry.s && <span style={{ color: '#64748b' }}>·</span>}
-              {entry.s && (
-                <a
-                  href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
-                  target="_blank" rel="noreferrer"
-                  style={{ color: '#93c5fd', fontFamily: 'monospace', fontWeight: 600, textDecoration: 'none' }}
-                >
-                  {entry.s} ↗
-                </a>
-              )}
-            </div>
-            <div style={{ marginTop: 6, fontSize: 10, color: '#94a3b8', letterSpacing: 0.5 }}>
-              <span>Source: </span>
-              <span data-testid="popup-source-badge" style={{ color: '#f8fafc', fontWeight: 700 }}>
-                {isHebrew ? 'BDB' : "Strong's"}
-              </span>
-            </div>
+  const metaCells = [
+    ['Strong', entry.s || '—'],
+    ['Lemma', lemma || '—'],
+    ['Academic translit.', entry.tr || '—'],
+    ['한글 음역', koreanTranslit || '—'],
+    ['Part of speech', partOfSpeech],
+  ];
+
+  const leftFields = [
+    ['사전형', lemma],
+    ['학술 음역 (SBL)', entry.tr],
+    ['한글 음역', koreanTranslit],
+    ['표기 기준', 'SBL 학술 음역 / 검증된 한글 음역 병기'],
+    ...morphFields.map((field) => [field.label, field.value]),
+    ['raw code', entry.m],
+    ['대표 어형', entry.w],
+    ['TWOT', definition?.meta?.twot],
+  ].filter(([, value]) => value);
+
+  const popup = (
+    <div
+      role="dialog"
+      aria-modal={isMobile ? 'true' : 'false'}
+      aria-label={`원어 사전 · ${lemma || entry.tr || entry.s || ''}`}
+      aria-hidden={researchActive ? 'true' : undefined}
+      className={`lexicon-popup-v2${isMobile ? ' lexicon-popup-v2--mobile momentum-scroll' : ''}`}
+      style={{
+        left,
+        top,
+        width,
+        height: isMobile ? undefined : height,
+        maxHeight: isMobile ? height : undefined,
+        zIndex: resolvedZIndex,
+        pointerEvents: researchActive ? 'none' : 'auto',
+        opacity: researchActive ? 0.72 : 1,
+      }}
+      onClick={(event) => event.stopPropagation()}
+    >
+      <header className="lexicon-titlebar" onMouseDown={onDragStart}>
+        <div className="lexicon-title-left">
+          <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`}>{lemma}</div>
+          <div className="lexicon-title-translit">
+            {entry.tr && <span>{entry.tr}</span>}
+            {koreanTranslit && <><span className="lexicon-dot">·</span><span data-testid="popup-translit-ko">한글 음역: {koreanTranslit}</span></>}
+            {entry.s && <><span className="lexicon-dot">·</span><span>{entry.s}</span></>}
           </div>
-          <button
-            onClick={onClose}
-            onMouseDown={(e) => e.stopPropagation()}
-            style={{
-              background: 'transparent', border: '1px solid #334155', borderRadius: 6,
-              fontSize: isMobile ? 20 : 16,
-              cursor: 'pointer', color: '#f8fafc', padding: 0, lineHeight: 1,
-              flexShrink: 0,
-              width: isMobile ? 44 : 30, height: isMobile ? 44 : 30,
-            }}
-            title="닫기 (Esc)"
-          >✕</button>
-        </header>
-
-        <div data-testid="popup-meta-strip" style={{
-          padding: '8px 16px', borderBottom: '1px solid #f1f5f9', fontSize: 12,
-          background: '#f8fafc',
-          display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'baseline',
-        }}>
-          {entry.l && (
-            <MetaChip label="사전형">
-              <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 13, color: '#1e293b' }}>{entry.l}</span>
-            </MetaChip>
-          )}
-          {morphHuman && (
-            <MetaChip label="형태">
-              <span style={{ color: '#475569' }}>{morphHuman}</span>
-              <span style={{ color: '#94a3b8', marginLeft: 4, fontFamily: 'monospace', fontSize: 10 }}>({entry.m})</span>
-            </MetaChip>
-          )}
-          {entry.g && <MetaChip label="기본뜻"><span style={{ color: '#1e293b' }}>{entry.g}</span></MetaChip>}
-          {koreanGloss && <MetaChip label="한글 뜻"><span style={{ color: '#1e293b', fontWeight: 600 }}>{koreanGloss.glossKo}</span></MetaChip>}
+          <span className="lexicon-source-badge" data-testid="popup-source-badge">Source: {source}</span>
         </div>
+        <button className="lexicon-close" onClick={onClose} onMouseDown={(event) => event.stopPropagation()} title="닫기 (Esc)">×</button>
+      </header>
 
-        <div style={{
-          display: 'flex', borderBottom: '1px solid #e2e8f0',
-          background: '#f8fafc',
-        }}>
-          {[
-            { key: 'def', label: '사전 정의' },
-            { key: 'usage', label: `관련 구절${bookId ? '' : ' (책 미선택)'}` },
-            { key: 'morph', label: '형태 분석' },
-          ].map(({ key, label }) => (
-            <button
-              key={key}
-              onClick={() => setTab(key)}
-              style={{
-                flex: 1, padding: '7px 0', border: 'none', fontSize: 11, fontWeight: 600,
-                cursor: 'pointer',
-                background: tab === key ? '#fff' : 'transparent',
-                color: tab === key ? (isHebrew ? '#92400e' : '#1d4ed8') : '#64748b',
-                borderBottom: tab === key ? `2px solid ${isHebrew ? '#f59e0b' : '#3b82f6'}` : '2px solid transparent',
-              }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+      <div className="lexicon-topmeta" data-testid="popup-meta-strip">
+        {metaCells.map(([label, value]) => (
+          <div className="lexicon-meta-cell" key={label}>
+            <div className="lexicon-meta-key">{label}</div>
+            <div className={`lexicon-meta-value${label === 'Lemma' && isHebrew ? ' is-hebrew' : ''}`}>{value}</div>
+          </div>
+        ))}
+      </div>
 
-        {/* [스크롤 먹통 수정] useModalDialog 화이트리스트 표식 + minHeight:0(iOS flex 자식 수축 보장) + 관성 스크롤 */}
-        <div
-          data-modal-scroll-region="true"
-          style={{ overflowY: 'auto', flex: 1, minHeight: 0,
-            WebkitOverflowScrolling: 'touch', overscrollBehavior: 'contain',
-            touchAction: 'pan-y' }}>
+      <nav className="lexicon-tabs" aria-label="원어 사전 탭">
+        {[
+          ['def', '사전 정의'],
+          ['usage', '관련 구절'],
+          ['morph', '형태 분석'],
+        ].map(([key, label]) => (
+          <button key={key} className={`lexicon-tab${tab === key ? ' is-active' : ''}`} onClick={() => setTab(key)}>{label}</button>
+        ))}
+      </nav>
+
+      <div className={`lexicon-content${threeColumn ? ' is-three-column' : ''}`}>
+        {threeColumn && (
+          <aside className="lexicon-side lexicon-side--left" data-testid="lexicon-morph-summary">
+            <h4>형태 정보</h4>
+            <dl>
+              {leftFields.map(([label, value]) => (
+                <div className="lexicon-side-field" key={`${label}-${String(value)}`}>
+                  <dt>{label}</dt>
+                  <dd className={isHebrew && (label === '사전형' || label === '대표 어형') ? 'is-hebrew' : ''}>{value}</dd>
+                </div>
+              ))}
+            </dl>
+            {isHebrew && (
+              <div className="lexicon-side-status">
+                <strong>형태 표시 원칙</strong><br />
+                동사는 실제 토큰 morph code에서 Qal · Niphal · Piel · Pual · Hiphil · Hophal · Hithpael 등을 표시하고, 명사는 성·수·상태를 표시합니다.
+              </div>
+            )}
+          </aside>
+        )}
+
+        <main className="lexicon-main" data-modal-scroll-region="true">
           {tab === 'def' && (
-            <div style={{ padding: '12px 16px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-                <span style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5 }}>
-                  {isHebrew ? 'HEBREW LEXICON · BDB' : 'GREEK LEXICON'}
-                </span>
+            <section className="lexicon-tab-panel" data-panel="definition">
+              <div className="lexicon-section-title">
+                <strong>{isHebrew ? '영문 BDB 원문 · 구조 보기' : "영문 Greek Strong's · 원문 보기"}</strong>
+                <span>{isHebrew ? 'Brown–Driver–Briggs · Source: BDB' : "Current Greek English lexical source"}</span>
               </div>
 
-              {defLoading && <div style={{ color: '#94a3b8', fontSize: 12 }}>불러오는 중…</div>}
-              {defError && <div style={{ color: '#ef4444', fontSize: 12 }}>⚠️ {defError}</div>}
+              {defLoading && <div className="lexicon-empty">불러오는 중…</div>}
+              {defError && <div className="lexicon-error">⚠️ {defError}</div>}
               {!defLoading && !defError && !definition && (
-                <div style={{ fontSize: 12, color: '#94a3b8' }}>
-                  정의를 찾을 수 없습니다.{' '}
-                  {entry.s && (
-                    <a
-                      href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
-                      target="_blank" rel="noreferrer"
-                      style={{ color: '#3b82f6', textDecoration: 'none' }}
-                    >BibleHub에서 보기 ↗</a>
-                  )}
+                <div className="lexicon-empty">
+                  정의를 찾을 수 없습니다. {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHub에서 보기 ↗</a>}
                 </div>
               )}
-              {/* Hebrew BDB failure = explicit failure + retry (do NOT render Strong's/KJV as the BDB definition) */}
+
               {!defLoading && !defError && isHebrew && definition?.bdbUnavailable && (
-                <div data-testid="bdb-failure-panel" style={{ padding: 12, background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, color: '#7f1d1d', fontSize: 12, lineHeight: 1.6 }}>
-                  <div style={{ fontWeight: 700, marginBottom: 6 }}>⚠️ BDB 사전 로드 실패</div>
-                  <div style={{ color: '#991b1b', marginBottom: 10 }}>
-                    Hebrew 정의를 BDB에서 불러오지 못했습니다. 네트워크 또는 dictionary provider 상태를 확인한 뒤 다시 시도해 주세요.
-                  </div>
-                  <button
-                    data-testid="bdb-retry"
-                    onClick={() => { evictStrongDefinitionCache(entry.s); setDefReloadNonce((n) => n + 1); }}
-                    style={{
-                      padding: '6px 12px', fontSize: 12, fontWeight: 700,
-                      background: '#dc2626', color: '#fff', border: 'none', borderRadius: 6,
-                      cursor: 'pointer',
-                    }}
-                  >다시 시도</button>
-                  {entry.s && (
-                    <a
-                      href={`https://biblehub.com/hebrew/${entry.s.replace(/^H0*/, '')}.htm`}
-                      target="_blank" rel="noreferrer"
-                      style={{ marginLeft: 12, color: '#b91c1c', fontSize: 11, textDecoration: 'none', fontWeight: 600 }}
-                    >BibleHub에서 열기 ↗</a>
-                  )}
+                <div className="lexicon-bdb-failure" data-testid="bdb-failure-panel">
+                  <strong>⚠️ BDB 사전 로드 실패</strong>
+                  <p>Hebrew 정의를 BDB에서 불러오지 못했습니다. 네트워크 또는 dictionary provider 상태를 확인한 뒤 다시 시도해 주세요.</p>
+                  <button data-testid="bdb-retry" onClick={() => { evictStrongDefinitionCache(entry.s); setDefReloadNonce((nonce) => nonce + 1); }}>다시 시도</button>
+                  {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHub에서 열기 ↗</a>}
                 </div>
               )}
-              {/* Hebrew BDB success OR Greek: render tree */}
+
               {!defLoading && !defError && definition && !(isHebrew && definition.bdbUnavailable) && (
                 <>
-                  <LexiconDefinitionTree
-                    nodes={definition.nodes || []}
-                    isHebrew={isHebrew}
-                    flat={!isHebrew && definition.source === 'local'}
-                  />
+                  <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} flat={!isHebrew && definition.source === 'local'} />
                   {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
-                    <div data-testid="lexicon-definition-meta" style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9', color: '#64748b', fontSize: 11, lineHeight: 1.65 }}>
+                    <div className="lexicon-definition-meta" data-testid="lexicon-definition-meta">
                       {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
                       {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
                       {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
-                      {definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
-                    </div>
-                  )}
-                  {entry.s && (
-                    <div style={{ marginTop: 10, paddingTop: 8, borderTop: '1px solid #f1f5f9' }}>
-                      <a
-                        href={`https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${entry.s.replace(/^([GH])0*/, '')}.htm`}
-                        target="_blank" rel="noreferrer"
-                        style={{ color: '#94a3b8', fontSize: 10, textDecoration: 'none' }}
-                      >
-                        📖 BibleHub 전체 사전 ({entry.s}) ↗
-                      </a>
+                      {!isHebrew && definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
                     </div>
                   )}
                 </>
               )}
-            </div>
-          )}
-
-          {tab === 'morph' && (
-            <div data-testid="morph-tab" style={{ padding: '16px', color: '#1e293b' }}>
-              <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, letterSpacing: 0.5, marginBottom: 12 }}>
-                MORPHOLOGY · 클릭한 실제 토큰 형태
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 10 }}>
-                <MorphCard label="사전형">
-                  <span style={{ fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif', fontSize: 18 }}>{entry.l || '—'}</span>
-                </MorphCard>
-                {entry.tr && <MorphCard label="학술 음역"><span style={{ fontStyle: 'italic' }}>{entry.tr}</span></MorphCard>}
-                {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
-                <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
-                {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
-                {entry.g && <MorphCard label="기본뜻">{entry.g}</MorphCard>}
-                {definition?.meta?.partOfSpeech && <MorphCard label="품사">{definition.meta.partOfSpeech}</MorphCard>}
-              </div>
-            </div>
+            </section>
           )}
 
           {tab === 'usage' && (
-            <div style={{ padding: 0 }}>
-              {!bookId && (
-                <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>
-                  구절 노드를 선택하면 해당 책에서의 용례를 볼 수 있습니다.
-                </div>
-              )}
-              {usageLoading && <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>🔍 관련 구절 검색 중…</div>}
-              {usageError && <div style={{ padding: '8px 14px', color: '#ef4444', fontSize: 12 }}>⚠️ {usageError}</div>}
-              {!usageLoading && Array.isArray(usages) && usages.length === 0 && !usageError && (
-                <div style={{ padding: '12px 14px', color: '#94a3b8', fontSize: 12 }}>
-                  이 책에서 관련 구절을 찾지 못했습니다.
-                </div>
+            <section className="lexicon-tab-panel" data-panel="usage">
+              <div className="lexicon-section-title">
+                <strong>관련 구절 · {entry.s} {lemma}</strong>
+                <span>{bookId ? `${getBook(bookId)?.ko || bookId} 범위` : '책 미선택'}</span>
+              </div>
+              {!bookId && <div className="lexicon-empty">구절 노드를 선택하면 해당 책에서의 관련 구절을 볼 수 있습니다.</div>}
+              {usageLoading && <div className="lexicon-empty">🔍 관련 구절 검색 중…</div>}
+              {usageError && <div className="lexicon-error">⚠️ {usageError}</div>}
+              {!usageLoading && Array.isArray(usages) && usages.length === 0 && !usageError && bookId && (
+                <div className="lexicon-empty">이 책에서 관련 구절을 찾지 못했습니다.</div>
               )}
               {Array.isArray(usages) && usages.length > 0 && (
                 <>
-                  <div style={{
-                    padding: '6px 14px', background: '#f8fafc',
-                    fontSize: 10, color: '#64748b', fontWeight: 700,
-                    borderBottom: '1px solid #f1f5f9',
-                  }}>
-                    {getBook(bookId)?.ko} · 총 {usages.length}회 사용
+                  <div className="lexicon-usage-count">{getBook(bookId)?.ko || bookId} · 총 {usages.length}회 사용</div>
+                  <div className="lexicon-usage-list">
+                    {usages.map((usage, index) => (
+                      <UsageCard
+                        key={`${usage.ch}-${usage.v}-${index}`}
+                        entry={usage}
+                        bookId={bookId}
+                        isHebrew={isHebrew}
+                        onAdd={onAddVerse ? () => onAddVerse({ bookId, chapter: usage.ch, verseStart: usage.v, verseEnd: usage.v }, null) : null}
+                      />
+                    ))}
                   </div>
-                  {usages.map((u, i) => (
-                    <UsageRow
-                      key={i}
-                      entry={u}
-                      bookId={bookId}
-                      isHebrew={isHebrew}
-                      onAdd={onAddVerse ? () => onAddVerse({ bookId, chapter: u.ch, verseStart: u.v, verseEnd: u.v }, null) : null}
-                    />
-                  ))}
                 </>
               )}
-            </div>
+            </section>
           )}
-        </div>
 
-        <OriginalLanguageResearchActions
-          entry={entry}
-          anchor={anchor}
-          passage={passage}
-          isHebrew={isHebrew}
-          onActiveChange={setResearchActive}
-        />
+          {tab === 'morph' && (
+            <section className="lexicon-tab-panel" data-panel="morphology" data-testid="morph-tab">
+              <div className="lexicon-section-title">
+                <strong>형태 분석 · {lemma}</strong>
+                <span>클릭한 실제 토큰 형태</span>
+              </div>
+              <div className="lexicon-morph-grid">
+                <MorphCard label="사전형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
+                {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
+                {entry.tr && <MorphCard label="학술 음역">{entry.tr}</MorphCard>}
+                <MorphCard label="품사">{partOfSpeech}</MorphCard>
+                {morphFields.filter((field) => field.label !== '품사').map((field) => (
+                  <MorphCard label={field.label} key={`${field.label}-${field.value}`}>{field.value}</MorphCard>
+                ))}
+                <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
+                {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
+                {entry.w && <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{entry.w}</MorphCard>}
+              </div>
+              {isHebrew && morphFields.some((field) => field.label === '어간 (Binyan)') && (
+                <div className="lexicon-morph-note">
+                  <strong>동사 어간:</strong> Qal/Piel/Pual 등은 사전형에서 추정하지 않고, 현재 클릭한 토큰의 morphology code에 기록된 값만 표시합니다.
+                </div>
+              )}
+            </section>
+          )}
+        </main>
 
-        <details data-testid="provenance-toggle" style={{ borderTop: '1px solid #e2e8f0', background: '#f8fafc' }}>
-          <summary style={{
-            padding: '8px 16px', fontSize: 11, color: '#475569', cursor: 'pointer',
-            listStyle: 'none', display: 'flex', alignItems: 'center', gap: 6,
-            minHeight: 32, userSelect: 'none',
-          }}>
-            <span style={{ fontSize: 12 }}>ⓘ</span>
-            <span style={{ fontWeight: 600 }}>출처 · 저작권 · 재사용 근거</span>
-          </summary>
-          <div data-testid="provenance-panel" style={{
-            padding: '10px 16px', maxHeight: 200, overflowY: 'auto',
-            borderTop: '1px solid #e2e8f0', fontSize: 11, lineHeight: 1.7, color: '#475569',
-          }}>
-            {isHebrew ? (
-              <>
-                <div><b>렉시컬 원본:</b> Brown–Driver–Briggs Hebrew and English Lexicon (1906) · Public Domain</div>
-                <div><b>런타임 사전 제공:</b> Bolls.life BDBT — provider only. 무료 접근이 재사용 허가는 아니며 이 라벨은 BDB에 대한 라이선스 근거가 아닙니다.</div>
-                <div><b>형태/용례 데이터:</b> STEPBible.data · CC BY 4.0 · Attribution to <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer" style={{ color: '#3b82f6', textDecoration: 'none' }}>STEP Bible</a> 필요.</div>
-                <div><b>Strong number 링크:</b> BibleHub (외부 참조).</div>
-              </>
-            ) : (
-              <>
-                <div><b>렉시컬 원본:</b> 현재 저장소에 포함된 English Greek Strong's 청크 데이터.</div>
-                <div><b>형태/용례 데이터:</b> STEPBible.data · CC BY 4.0 · Attribution to <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer" style={{ color: '#3b82f6', textDecoration: 'none' }}>STEP Bible</a> 필요.</div>
-                <div><b>Strong number 링크:</b> BibleHub (외부 참조).</div>
-              </>
-            )}
-            <div style={{ marginTop: 6, color: '#94a3b8', fontSize: 10 }}>
-              FREE ACCESS ≠ REUSE PERMISSION — 라이선스는 프로젝트 C0 Rights evidence 기반으로만 표기합니다.
+        {threeColumn && (
+          <aside className="lexicon-side lexicon-side--right">
+            <h4>외부 링크</h4>
+            <div className="lexicon-linkbox">
+              {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHub · {entry.s} ↗</a>}
+              {definition?.meta?.twot && <div className="lexicon-link-static">TWOT · {definition.meta.twot}</div>}
+              <div className="lexicon-link-static">Strong's Concordance · {entry.s}</div>
             </div>
-          </div>
-        </details>
-        {!isMobile && !researchActive && (
-          <>
-            <div data-testid="resize-handle-top" onMouseDown={onResizeStart({ top: true })} style={resizeHandleStyle('top')} />
-            <div data-testid="resize-handle-bottom" onMouseDown={onResizeStart({ bottom: true })} style={resizeHandleStyle('bottom')} />
-            <div data-testid="resize-handle-left" onMouseDown={onResizeStart({ left: true })} style={resizeHandleStyle('left')} />
-            <div data-testid="resize-handle-right" onMouseDown={onResizeStart({ right: true })} style={resizeHandleStyle('right')} />
-            <div data-testid="resize-handle-nw" onMouseDown={onResizeStart({ top: true, left: true })} style={resizeHandleStyle('nw')} />
-            <div data-testid="resize-handle-ne" onMouseDown={onResizeStart({ top: true, right: true })} style={resizeHandleStyle('ne')} />
-            <div data-testid="resize-handle-sw" onMouseDown={onResizeStart({ bottom: true, left: true })} style={resizeHandleStyle('sw')} />
-            <div data-testid="resize-handle-se" onMouseDown={onResizeStart({ bottom: true, right: true })} style={resizeHandleStyle('se')} />
-          </>
+            <div className="lexicon-side-status">
+              <strong>표시 정책</strong><br />
+              {isHebrew
+                ? 'BDB 원자료의 parent/child 관계를 보존하고 화면 계층 표지만 A. → 1. → a. 형식으로 정규화합니다.'
+                : 'Greek source가 flat이면 flat으로 표시하고, 원자료에 없는 A./1./a. 계층을 만들지 않습니다.'}
+            </div>
+            <details className="lexicon-research-details">
+              <summary>연구 도구</summary>
+              <OriginalLanguageResearchActions
+                entry={entry}
+                anchor={anchor}
+                passage={passage}
+                isHebrew={isHebrew}
+                onActiveChange={setResearchActive}
+              />
+            </details>
+          </aside>
         )}
       </div>
+
+      {!threeColumn && (
+        <details className="lexicon-research-details lexicon-research-details--bottom">
+          <summary>연구 도구</summary>
+          <OriginalLanguageResearchActions
+            entry={entry}
+            anchor={anchor}
+            passage={passage}
+            isHebrew={isHebrew}
+            onActiveChange={setResearchActive}
+          />
+        </details>
+      )}
+
+      <details className="lexicon-rights" data-testid="provenance-toggle">
+        <summary><span>ⓘ 출처 · 저작권 · 재사용 근거</span><span className="lexicon-rights-chevron">⌄</span></summary>
+        <div className="lexicon-rights-panel" data-testid="provenance-panel">
+          {isHebrew ? (
+            <>
+              <RightsRow label="Lexical work"><strong>Brown–Driver–Briggs Hebrew and English Lexicon (1906)</strong> · Public Domain</RightsRow>
+              <RightsRow label="Runtime provider"><strong>Bolls.life BDBT</strong> · provider only; BDB 재사용 권리의 근거로 간주하지 않음</RightsRow>
+              <RightsRow label="Morph / concordance"><strong>STEPBible.data</strong> · CC BY 4.0 · <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer">STEP Bible attribution ↗</a></RightsRow>
+              <RightsRow label="UI transformation">원자료 의미 순서와 parent/child 관계를 보존하고 표시 계층 표지만 A. → 1. → a. 형식으로 정규화</RightsRow>
+            </>
+          ) : (
+            <>
+              <RightsRow label="Lexical source">현재 저장소의 English Greek Strong's 청크 데이터</RightsRow>
+              <RightsRow label="Morph / concordance"><strong>STEPBible.data</strong> · CC BY 4.0 · <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer">STEP Bible attribution ↗</a></RightsRow>
+              <RightsRow label="UI transformation">원자료가 flat이면 flat으로 유지하며 없는 계층을 생성하지 않음</RightsRow>
+            </>
+          )}
+          <div className="lexicon-rights-note"><strong>권리 원칙:</strong> FREE ACCESS ≠ REUSE PERMISSION. 실제 재사용 표기는 프로젝트 C0 Rights evidence가 확인한 범위만 사용합니다.</div>
+        </div>
+      </details>
+
+      <div className="lexicon-footer">Lexicon Viewer v2 · {entry.s} {lemma} · Source: {source}</div>
+
+      {!isMobile && !researchActive && (
+        <>
+          <div data-testid="resize-handle-top" onMouseDown={onResizeStart({ top: true })} style={resizeHandleStyle('top')} />
+          <div data-testid="resize-handle-bottom" onMouseDown={onResizeStart({ bottom: true })} style={resizeHandleStyle('bottom')} />
+          <div data-testid="resize-handle-left" onMouseDown={onResizeStart({ left: true })} style={resizeHandleStyle('left')} />
+          <div data-testid="resize-handle-right" onMouseDown={onResizeStart({ right: true })} style={resizeHandleStyle('right')} />
+          <div data-testid="resize-handle-nw" onMouseDown={onResizeStart({ top: true, left: true })} style={resizeHandleStyle('nw')} />
+          <div data-testid="resize-handle-ne" onMouseDown={onResizeStart({ top: true, right: true })} style={resizeHandleStyle('ne')} />
+          <div data-testid="resize-handle-sw" onMouseDown={onResizeStart({ bottom: true, left: true })} style={resizeHandleStyle('sw')} />
+          <div data-testid="resize-handle-se" onMouseDown={onResizeStart({ bottom: true, right: true })} style={resizeHandleStyle('se')} />
+        </>
+      )}
+    </div>
+  );
+
+  return createPortal(
+    <>
+      {isMobile && <div className="lexicon-mobile-backdrop" onClick={researchActive ? undefined : onClose} style={{ zIndex: resolvedZIndex - 1, pointerEvents: researchActive ? 'none' : 'auto' }} />}
+      {popup}
     </>,
-    document.body
+    document.body,
   );
 }
 
-// Horizontal inline chip: label above value, hugs content width.  Used for the
-// compact header metadata row that wraps gracefully on narrow widths.
-function MetaChip({ label, children }) {
+function MorphCard({ label, children, mono = false, languageClass = '' }) {
   return (
-    <span style={{ display: 'inline-flex', flexDirection: 'column', lineHeight: 1.2, minWidth: 0 }}>
-      <span style={{ color: '#94a3b8', fontSize: 9, fontWeight: 700, letterSpacing: 0.4, textTransform: 'uppercase' }}>{label}</span>
-      <span style={{ fontSize: 12 }}>{children}</span>
-    </span>
-  );
-}
-
-// Grouped labeled card used in the morphology tab.  Fills a responsive grid so
-// the tab reads as a set of compact fields rather than a tall MetaRow stack.
-function MorphCard({ label, children, mono }) {
-  return (
-    <div style={{
-      background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 8,
-      padding: '10px 12px', minWidth: 0,
-    }}>
-      <div style={{ color: '#94a3b8', fontSize: 10, fontWeight: 700, letterSpacing: 0.5, marginBottom: 4, textTransform: 'uppercase' }}>{label}</div>
-      <div style={{ fontSize: 14, color: '#1e293b', fontWeight: 600, fontFamily: mono ? 'monospace' : undefined, wordBreak: 'break-word' }}>{children}</div>
+    <div className="lexicon-morph-card">
+      <h5>{label}</h5>
+      <div className={`lexicon-morph-value${mono ? ' is-mono' : ''}${languageClass ? ` ${languageClass}` : ''}`}>{children}</div>
     </div>
   );
 }
 
-function UsageRow({ entry, bookId, isHebrew, onAdd }) {
+function UsageCard({ entry, bookId, isHebrew, onAdd }) {
   const koName = getBook(bookId)?.ko || bookId;
   const morphKo = entry.m ? humanizeMorph(entry.m) : null;
   return (
-    <div data-testid="usage-row" style={{
-      display: 'flex', alignItems: 'flex-start', gap: 6,
-      padding: '8px 12px',
-      borderBottom: '1px solid #f1f5f9',
-      fontSize: 11,
-      flexWrap: 'wrap',
-    }}>
-      <span
-        onClick={onAdd || undefined}
-        title={onAdd ? `${koName} ${entry.ch}:${entry.v} 캔버스에 추가` : undefined}
-        style={{
-          minWidth: 80, fontFamily: 'monospace', fontSize: 10, fontWeight: 700,
-          color: onAdd ? '#3b82f6' : '#64748b',
-          background: onAdd ? '#eff6ff' : '#f1f5f9',
-          borderRadius: 3, padding: '2px 5px', textAlign: 'center', flexShrink: 0,
-          cursor: onAdd ? 'pointer' : 'default',
-          border: onAdd ? '1px solid #bfdbfe' : '1px solid transparent',
-          whiteSpace: 'nowrap',
-        }}
-      >
-        {koName} {entry.ch}:{entry.v}
-      </span>
-      <span style={{
-        flex: 1, minWidth: 0,
-        fontFamily: isHebrew ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
-        fontSize: 13, color: '#1e293b', direction: isHebrew ? 'rtl' : 'ltr',
-        overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-      }}>
-        {entry.w}
-      </span>
-      {morphKo && (
-        <span data-testid="usage-morph-human" style={{ fontSize: 11, color: '#475569', flexBasis: '100%', paddingLeft: 88 }}>
-          {morphKo}
-        </span>
-      )}
-      {entry.m && (
-        <span data-testid="usage-morph-raw" style={{
-          fontSize: 9, color: '#94a3b8', fontFamily: 'monospace',
-          background: '#f8fafc', borderRadius: 3, padding: '1px 3px',
-          flexShrink: 0,
-        }}>
-          {entry.m}
-        </span>
-      )}
-      {onAdd && (
-        <button
-          onClick={onAdd}
-          title="이 구절을 캔버스에 추가"
-          style={{
-            padding: '2px 6px', fontSize: 10, fontWeight: 700,
-            background: '#059669', color: '#fff', border: 'none',
-            borderRadius: 3, cursor: 'pointer', flexShrink: 0,
-          }}
-        >+</button>
-      )}
-    </div>
+    <article className="lexicon-usage-card" data-testid="usage-row">
+      <div className="lexicon-usage-head">
+        <button className="lexicon-usage-ref" onClick={onAdd || undefined} disabled={!onAdd} title={onAdd ? '이 구절을 캔버스에 추가' : undefined}>{koName} {entry.ch}:{entry.v}</button>
+        <div className={`lexicon-usage-form${isHebrew ? ' is-hebrew' : ''}`}>{entry.w}</div>
+      </div>
+      <div className="lexicon-usage-meta">
+        {morphKo && <span className="lexicon-chip" data-testid="usage-morph-human">{morphKo}</span>}
+        {entry.m && <span className="lexicon-chip is-mono" data-testid="usage-morph-raw">{entry.m}</span>}
+        {onAdd && <button className="lexicon-add-verse" onClick={onAdd} title="이 구절을 캔버스에 추가">+ 추가</button>}
+      </div>
+    </article>
   );
 }
 
-// linkifyDefinition is now exported from ../utils/lexicon
+function RightsRow({ label, children }) {
+  return (
+    <div className="lexicon-rights-row">
+      <div className="lexicon-rights-key">{label}</div>
+      <div className="lexicon-rights-value">{children}</div>
+    </div>
+  );
+}

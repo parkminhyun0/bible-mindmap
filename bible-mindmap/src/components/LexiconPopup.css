@@ -1,0 +1,132 @@
+.lexicon-popup-v2{
+  --lx-ink:#172033;
+  --lx-muted:#6b7280;
+  --lx-line:#d8dee9;
+  --lx-navy:#0f2747;
+  --lx-accent:#c9891a;
+  --lx-green:#0f8b57;
+  --lx-green-soft:#eaf8f1;
+  position:fixed;
+  min-width:340px;
+  min-height:300px;
+  background:#fff;
+  border:1px solid #cfd6e2;
+  border-radius:16px;
+  box-shadow:0 18px 60px rgba(22,34,55,.22);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  font-family:-apple-system,BlinkMacSystemFont,"Pretendard","Noto Sans KR","Segoe UI",sans-serif;
+  color:var(--lx-ink);
+  transition:opacity .16s ease;
+}
+.lexicon-titlebar{
+  height:58px;
+  flex:0 0 58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 14px 0 16px;
+  background:var(--lx-navy);
+  color:#fff;
+  cursor:grab;
+  user-select:none;
+}
+.lexicon-titlebar:active{cursor:grabbing}
+.lexicon-title-left{display:flex;align-items:center;gap:12px;min-width:0;overflow:hidden}
+.lexicon-title-lemma{font-family:"Gentium Plus",Cardo,serif;font-size:25px;font-weight:700;white-space:nowrap}
+.lexicon-title-lemma.is-hebrew,.is-hebrew{font-family:"SBL BibLit","Ezra SIL","Times New Roman",serif;direction:rtl}
+.lexicon-title-translit{font-size:12px;color:#d7e0ee;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lexicon-dot{margin:0 5px;color:#8392a8}
+.lexicon-source-badge{font-size:10px;font-weight:750;letter-spacing:.03em;padding:5px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.32);background:rgba(255,255,255,.08);white-space:nowrap}
+.lexicon-close{width:34px;height:34px;border-radius:9px;border:0;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;font-size:20px;flex:0 0 34px}
+.lexicon-topmeta{flex:0 0 auto;border-bottom:1px solid var(--lx-line);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:#fbfcfe}
+.lexicon-meta-cell{padding:10px 12px;border-right:1px solid #edf0f5;min-width:0}
+.lexicon-meta-cell:last-child{border-right:0}
+.lexicon-meta-key{font-size:9px;color:#8390a3;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.lexicon-meta-value{font-size:12px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lexicon-tabs{flex:0 0 44px;display:flex;align-items:flex-end;border-bottom:1px solid var(--lx-line);padding:0 12px;background:#fff}
+.lexicon-tab{border:0;background:transparent;padding:12px 14px 10px;color:#6a7586;font-weight:650;cursor:pointer;border-bottom:2px solid transparent}
+.lexicon-tab.is-active{color:#172033;border-bottom-color:var(--lx-accent)}
+.lexicon-content{flex:1 1 auto;min-height:0;display:grid;grid-template-columns:1fr;background:#fff}
+.lexicon-content.is-three-column{grid-template-columns:180px minmax(0,1fr) 170px}
+.lexicon-side{padding:14px 12px;overflow:auto;background:#fcfdff;min-width:0}
+.lexicon-side--left{border-right:1px solid var(--lx-line)}
+.lexicon-side--right{border-left:1px solid var(--lx-line)}
+.lexicon-side h4{margin:0 0 10px;font-size:12px;color:#4a5668}
+.lexicon-side dl{margin:0}
+.lexicon-side-field{margin-top:9px}
+.lexicon-side-field:first-child{margin-top:0}
+.lexicon-side dt{font-size:9px;color:#8a95a6}
+.lexicon-side dd{margin:2px 0 0;font-size:11px;font-weight:650;line-height:1.45;word-break:break-word}
+.lexicon-side-status{margin-top:14px;padding:10px 11px;border-radius:10px;background:var(--lx-green-soft);border:1px solid #ccebdc;color:#176341;font-size:10px;line-height:1.55}
+.lexicon-main{min-width:0;min-height:0;overflow:auto;padding:16px 18px 24px;background:#fff;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
+.lexicon-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}
+.lexicon-section-title strong{font-size:13px}
+.lexicon-section-title span{font-size:9px;color:#8a95a6;text-align:right}
+.lexicon-empty{font-size:12px;color:#94a3b8;padding:10px 0;line-height:1.6}
+.lexicon-empty a{color:#3b82f6;text-decoration:none}
+.lexicon-error{font-size:12px;color:#ef4444;padding:8px 0}
+.lexicon-bdb-failure{padding:12px;background:#fef2f2;border:1px solid #fecaca;border-radius:10px;color:#7f1d1d;font-size:12px;line-height:1.6}
+.lexicon-bdb-failure p{margin:5px 0 10px;color:#991b1b}
+.lexicon-bdb-failure button{padding:6px 12px;font-size:11px;font-weight:700;background:#dc2626;color:#fff;border:0;border-radius:7px;cursor:pointer}
+.lexicon-bdb-failure a{margin-left:12px;color:#b91c1c;font-size:10px;text-decoration:none;font-weight:650}
+.lexicon-definition-meta{margin-top:14px;padding-top:10px;border-top:1px solid #f1f5f9;color:#64748b;font-size:10px;line-height:1.7}
+.lexicon-linkbox{display:flex;flex-direction:column;gap:8px}
+.lexicon-linkbox a,.lexicon-link-static{display:block;text-decoration:none;color:#25364f;border:1px solid #d8dee8;background:#fff;padding:9px 10px;border-radius:9px;font-size:10px;font-weight:650;line-height:1.35}
+.lexicon-link-static{color:#5b6779;background:#f9fbfd}
+.lexicon-research-details{margin-top:12px;border:1px solid #dfe5ee;border-radius:9px;background:#fff;overflow:hidden}
+.lexicon-research-details>summary{cursor:pointer;list-style:none;padding:8px 9px;font-size:10px;font-weight:750;color:#4b5565;background:#f8fafc}
+.lexicon-research-details>summary::-webkit-details-marker{display:none}
+.lexicon-research-details [data-original-language-research-actions]{border-top:1px solid #e2e8f0!important;padding:8px!important}
+.lexicon-research-details--bottom{margin:0;border-width:1px 0 0;border-radius:0}
+.lexicon-usage-count{font-size:10px;color:#64748b;font-weight:700;margin-bottom:10px}
+.lexicon-usage-list{display:flex;flex-direction:column;gap:10px}
+.lexicon-usage-card{border:1px solid #dfe5ee;border-radius:12px;padding:11px 12px;background:#fff}
+.lexicon-usage-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.lexicon-usage-ref{font-size:11px;font-weight:800;color:#17375f;border:0;background:transparent;padding:0;cursor:pointer}
+.lexicon-usage-ref:disabled{cursor:default}
+.lexicon-usage-form{font-family:"Gentium Plus",Cardo,serif;font-size:18px;font-weight:700}
+.lexicon-usage-form.is-hebrew{font-size:19px}
+.lexicon-usage-meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.lexicon-chip{display:inline-flex;align-items:center;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:700;background:#f3f6fa;border:1px solid #dde4ed;color:#526074;line-height:1.25}
+.lexicon-chip.is-mono{font-family:monospace;font-weight:600}
+.lexicon-add-verse{margin-left:auto;border:0;background:#0f8b57;color:#fff;padding:4px 8px;border-radius:8px;font-size:9px;font-weight:800;cursor:pointer}
+.lexicon-morph-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.lexicon-morph-card{border:1px solid #dfe5ee;border-radius:12px;padding:12px;background:#fff;min-width:0}
+.lexicon-morph-card h5{margin:0 0 8px;font-size:9px;color:#526074;text-transform:uppercase;letter-spacing:.03em}
+.lexicon-morph-value{font-size:13px;font-weight:800;color:#172033;word-break:break-word}
+.lexicon-morph-value.is-hebrew{font-size:21px}
+.lexicon-morph-value.is-mono{font-family:monospace;font-size:11px}
+.lexicon-morph-note{margin-top:12px;padding:10px 11px;border-radius:10px;background:#fff8e8;border:1px solid #f1dfb7;color:#725414;font-size:10px;line-height:1.55}
+.lexicon-rights{flex:0 0 auto;border-top:1px solid var(--lx-line);background:#fff}
+.lexicon-rights>summary{height:34px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 12px;list-style:none;cursor:pointer;font-size:10px;font-weight:750;color:#475569;background:#fbfcfe;user-select:none}
+.lexicon-rights>summary::-webkit-details-marker{display:none}
+.lexicon-rights-chevron{font-size:13px;color:#8b96a6;transition:transform .16s ease}
+.lexicon-rights[open] .lexicon-rights-chevron{transform:rotate(180deg)}
+.lexicon-rights-panel{max-height:180px;overflow:auto;border-top:1px solid #e3e9f1;background:#f8fbff}
+.lexicon-rights-row{display:grid;grid-template-columns:135px minmax(0,1fr);border-bottom:1px solid #edf1f6}
+.lexicon-rights-key,.lexicon-rights-value{padding:7px 10px;font-size:9px;line-height:1.5}
+.lexicon-rights-key{color:#64748b;font-weight:700;background:#fbfdff;border-right:1px solid #edf1f6}
+.lexicon-rights-value{color:#24324a;word-break:break-word}
+.lexicon-rights-value a{color:#245b9c;text-decoration:none;font-weight:700}
+.lexicon-rights-note{padding:8px 10px;font-size:9px;line-height:1.5;color:#6b4d13;background:#fff8e8;border-top:1px solid #f2dfb5}
+.lexicon-footer{flex:0 0 28px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--lx-line);font-size:9px;color:#8792a2;background:#fbfcfe;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 10px}
+.lexicon-mobile-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.4)}
+.lexicon-popup-v2--mobile{left:0!important;right:0!important;bottom:0!important;top:auto!important;width:100%!important;height:88vh!important;max-height:88vh!important;min-width:0;border:0;border-radius:18px 18px 0 0;box-shadow:0 -8px 32px rgba(15,23,42,.24);padding-bottom:env(safe-area-inset-bottom,0px)}
+.lexicon-popup-v2--mobile .lexicon-titlebar{cursor:default}
+.lexicon-popup-v2--mobile .lexicon-topmeta{grid-template-columns:repeat(2,minmax(0,1fr))}
+.lexicon-popup-v2--mobile .lexicon-meta-cell:nth-child(n+5){display:none}
+.lexicon-popup-v2--mobile .lexicon-main{padding:14px 14px 20px}
+.lexicon-popup-v2--mobile .lexicon-morph-grid{grid-template-columns:1fr}
+.lexicon-popup-v2--mobile .lexicon-rights-panel{max-height:160px}
+.lexicon-popup-v2--mobile .lexicon-rights-row{grid-template-columns:105px minmax(0,1fr)}
+.lexicon-popup-v2--mobile .lexicon-title-lemma{font-size:22px}
+.lexicon-popup-v2--mobile .lexicon-title-translit{font-size:11px}
+.lexicon-popup-v2--mobile .lexicon-source-badge{display:none}
+@media (max-width:520px){
+  .lexicon-tabs{padding:0 6px}
+  .lexicon-tab{padding-left:8px;padding-right:8px;font-size:10px}
+  .lexicon-section-title{align-items:flex-start;flex-direction:column;gap:3px}
+  .lexicon-section-title span{text-align:left}
+}
