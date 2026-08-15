@@ -63,6 +63,8 @@ function morphologyFields(human) {
   if (!parts.length) return [];
   const pos = parts[0];
   if (pos === 'ë™ì‚¬' && parts.length >= 4) {
+    // Hebrew: ë™ì‚¬ Â· Binyan Â· aspect Â· person Â· gender Â· number
+    // Greek:  ë™ì‚¬ Â· tense Â· voice Â· mood Â· person Â· number
     const looksHebrewStem = ['Qal', 'Niphal', 'Piel', 'Pual', 'Hiphil', 'Hophal', 'Hithpael'].includes(parts[1]);
     const labels = looksHebrewStem
       ? ['í’ˆì‚¬', 'ì–´ê°„ (Binyan)', 'ì‹œìƒ', 'ì¸ì¹­', 'ì„±', 'ìˆ˜']
@@ -74,486 +76,154 @@ function morphologyFields(human) {
     const labels = stateLike ? ['í’ˆì‚¬', 'ì„±', 'ìˆ˜', 'ìƒíƒœ'] : ['í’ˆì‚¬', 'ê²©', 'ìˆ˜', 'ì„±'];
     return parts.map((value, index) => ({ label: labels[index] || `í˜•íƒœ ${index}`, value }));
   }
-  return [{ label: 'í˜•íƒœ ë¶„ì„', value: human }];
-}
+  return [{ label: 'm¢ºaç:í¡;!'IË˜[YNˆ[X[ˆWNÂŸB‚™[˜İ[ÛˆÛİ\˜ÙSX™[
+\ÒXœ™]ÊHÂˆ™]\›ˆ\ÒXœ™]ÈÈ	Ğ‘‰Èˆ‘Ü™YZÈİ›Û™ÉÜÈÂŸB‚™^ÜY˜][[˜İ[Ûˆ^XÛÛ”Ü\
+È[K[˜ÚÜ‹›ÛÚÒY\ÜØYÙKÛÛÜÙK’[™^JHÂˆÛÛœİÈÛY™\œÙHHH\ÙPØ[˜\Ê
+HßNÂˆÛÛœİ\Ó[Øš[HH\ÙS[Øš[J
+NÂˆÛÛœİİX‹Ù]X—HH\ÙTİ]J	ÙY‰ÊNÂˆÛÛœİÙY”™[ØY›Û˜ÙKÙ]Y”™[ØY›Û˜ÙWHH\ÙTİ]J
+NÂˆÛÛœİÙYš[š][Û‹Ù]Yš[š][Û—HH\ÙTİ]J[
+NÂˆÛÛœİÙY“ØY[™ËÙ]Y“ØY[™×HH\ÙTİ]J˜[ÙJNÂˆÛÛœİÙY‘\œ›Ü‹Ù]Y‘\œ›Ü—HH\ÙTİ]J[
+NÂˆÛÛœİÜ™\ÙX\˜ÚXİ]™KÙ]™\ÙX\˜ÚXİ]™WHH\ÙTİ]J˜[ÙJNÂˆÛÛœİİ\ØYÙ\ËÙ]\ØYÙ\×HH\ÙTİ]J[
+NÂˆÛÛœİİ\ØYÙSØY[™ËÙ]\ØYÙSØY[™×HH\ÙTİ]J˜[ÙJNÂˆÛÛœİİ\ØYÙQ\œ›Ü‹Ù]\ØYÙQ\œ›Ü—HH\ÙTİ]J	ÉÊNÂ‚ˆ\ÙQY™™Xİ
 
-function sourceLabel(isHebrew) {
-  return isHebrew ? 'BDB' : "Greek Strong's";
-}
 
-export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, zIndex }) {
-  const { onAddVerse } = useCanvas() || {};
-  const isMobile = useMobile();
-  const [tab, setTab] = useState('def');
-  const [defReloadNonce, setDefReloadNonce] = useState(0);
-  const [definition, setDefinition] = useState(null);
-  const [defLoading, setDefLoading] = useState(false);
-  const [defError, setDefError] = useState(null);
-  const [researchActive, setResearchActive] = useState(false);
-  const [usages, setUsages] = useState(null);
-  const [usageLoading, setUsageLoading] = useState(false);
-  const [usageError, setUsageError] = useState('');
+HOˆÂˆYˆ
+Y[OËœÊH™]\›Âˆ]Ø[˜Ù[YH˜[ÙNÂˆÙ]Y“ØY[™ÊYJNÂˆÙ]Y‘\œ›ÜŠ[
+NÂˆÙ]Yš[š][ÛŠ[
+NÂˆ™]Úİ›Û™ÑYš[š][ÛŠ[KœÊBˆ[Š
+˜[YJHOˆÈYˆ
+XØ[˜Ù[Y
+HÙ]Yš[š][ÛŠ˜[YJNÈJBˆ˜Ø]Ú
 
-  useEffect(() => {
-    if (!entry?.s) return;
-    let cancelled = false;
-    setDefLoading(true);
-    setDefError(null);
-    setDefinition(null);
-    fetchStrongDefinition(entry.s)
-      .then((value) => { if (!cancelled) setDefinition(value); })
-      .catch((error) => { if (!cancelled) setDefError(error.message || 'ì¡°íšŒ ì‹¤íŒ¨'); })
-      .finally(() => { if (!cancelled) setDefLoading(false); });
-    return () => { cancelled = true; };
-  }, [entry?.s, defReloadNonce]);
+\œ›ÜŠHOˆÈYˆ
+XØ[˜Ù[Y
+HÙ]Y‘\œ›ÜŠ\œ›Ü‹›Y\ÜØYÙH	û(l;f£;"é;c*	ÊNÈJBˆ™š[˜[J
 
-  useEffect(() => {
-    if (tab !== 'usage' || usages !== null) return;
-    if (!entry?.s || !bookId) { setUsages([]); return; }
-    let cancelled = false;
-    setUsageLoading(true);
-    setUsageError('');
-    fetchStrongConcordance(entry.s, bookId)
-      .then((list) => { if (!cancelled) setUsages(list); })
-      .catch((error) => {
-        if (!cancelled) {
-          setUsages([]);
-          setUsageError(error.message || 'ê´€ë ¨ êµ¬ì ˆ ë¡œë“œ ì‹¤íŒ¨');
-        }
-      })
-      .finally(() => { if (!cancelled) setUsageLoading(false); });
-    return () => { cancelled = true; };
-  }, [tab, entry?.s, bookId, usages]);
+HOˆÈYˆ
+XØ[˜Ù[Y
+HÙ]Y“ØY[™Ê˜[ÙJNÈJNÂˆ™]\›ˆ
 
-  useEffect(() => {
-    setTab('def');
-    setUsages(null);
-    setUsageError('');
-    setResearchActive(false);
-  }, [entry?.s]);
+HOˆÈØ[˜Ù[YHYNÈNÂˆKÙ[OËœËY”™[ØY›Û˜ÙWJNÂ‚ˆ\ÙQY™™Xİ
 
-  useEffect(() => {
-    const onKey = (event) => {
-      if (event.key === 'Escape' && !researchActive) onClose();
-    };
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose, researchActive]);
 
-  const vw = typeof window !== 'undefined' ? window.innerWidth : 1200;
-  const vh = typeof window !== 'undefined' ? window.innerHeight : 800;
-  const [popupSize, setPopupSize] = useState(() => clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh));
-  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const dragState = useRef(null);
+HOˆÂˆYˆ
+XˆOOH	İ\ØYÙIÈ\ØYÙ\ÈOOH[
+H™]\›ÂˆYˆ
+Y[OËœÈX›ÛÚÒY
+HÈÙ]\ØYÙ\Ê×JNÈ™]\›ÈBˆ]Ø[˜Ù[YH˜[ÙNÂˆÙ]\ØYÙSØY[™ÊYJNÂˆÙ]\ØYÙQ\œ›ÜŠ	ÉÊNÂˆ™]Úİ›Û™ĞÛÛ˜ÛÜ™[˜ÙJ[KœË›ÛÚÒY
+Bˆ[Š
+\İ
+HOˆÈYˆ
+XØ[˜Ù[Y
+HÙ]\ØYÙ\Ê\İ
+NÈJBˆ˜Ø]Ú
 
-  useEffect(() => {
-    setDragOffset({ x: 0, y: 0 });
-    setPopupSize(clampSize(DEFAULT_DESKTOP_WIDTH, DEFAULT_DESKTOP_HEIGHT, vw, vh));
-  }, [entry?.s]);
+\œ›ÜŠHOˆÂˆYˆ
+XØ[˜Ù[Y
+HÂˆÙ]\ØYÙ\Ê×JNÂˆÙ]\ØYÙQ\œ›ÜŠ\œ›Ü‹›Y\ÜØYÙH	ú­ :è*:­k;(":èg:äç;"é;c*	ÊNÂˆBˆJBˆ™š[˜[J
 
-  useEffect(() => {
-    const onWindowResize = () => {
-      setPopupSize((previous) => clampSize(previous.width, previous.height, window.innerWidth, window.innerHeight));
-    };
-    window.addEventListener('resize', onWindowResize);
-    return () => window.removeEventListener('resize', onWindowResize);
-  }, []);
+HOˆÈYˆ
+XØ[˜Ù[Y
+HÙ]\ØYÙSØY[™Ê˜[ÙJNÈJNÂˆ™]\›ˆ
 
-  const onDragStart = (event) => {
-    if (isMobile || researchActive || event.button !== 0) return;
-    event.preventDefault();
-    dragState.current = {
-      startMouseX: event.clientX,
-      startMouseY: event.clientY,
-      startX: dragOffset.x,
-      startY: dragOffset.y,
-    };
-    const onMove = (moveEvent) => {
-      if (!dragState.current) return;
-      setDragOffset({
-        x: dragState.current.startX + moveEvent.clientX - dragState.current.startMouseX,
-        y: dragState.current.startY + moveEvent.clientY - dragState.current.startMouseY,
-      });
-    };
-    const onUp = () => {
-      dragState.current = null;
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseup', onUp);
-    };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
-  };
+HOˆÈØ[˜Ù[YHYNÈNÂˆKİX‹[OËœË›ÛÚÒY\ØYÙ\×JNÂ‚ˆ\ÙQY™™Xİ
 
-  const onResizeStart = (edges) => (event) => {
-    if (isMobile || researchActive || event.button !== 0) return;
-    event.preventDefault();
-    event.stopPropagation();
-    const start = {
-      mouseX: event.clientX,
-      mouseY: event.clientY,
-      width: popupSize.width,
-      height: popupSize.height,
-      offsetX: dragOffset.x,
-      offsetY: dragOffset.y,
-    };
-    const onMove = (moveEvent) => {
-      const dx = moveEvent.clientX - start.mouseX;
-      const dy = moveEvent.clientY - start.mouseY;
-      let width = start.width;
-      let height = start.height;
-      let offsetX = start.offsetX;
-      let offsetY = start.offsetY;
-      if (edges.right) width = start.width + dx;
-      if (edges.bottom) height = start.height + dy;
-      if (edges.left) { width = start.width - dx; offsetX = start.offsetX + dx; }
-      if (edges.top) { height = start.height - dy; offsetY = start.offsetY + dy; }
-      const clamped = clampSize(width, height, window.innerWidth, window.innerHeight);
-      if (edges.left && clamped.width !== width) offsetX = start.offsetX + (start.width - clamped.width);
-      if (edges.top && clamped.height !== height) offsetY = start.offsetY + (start.height - clamped.height);
-      setPopupSize(clamped);
-      setDragOffset({ x: offsetX, y: offsetY });
-    };
-    const onUp = () => {
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('mouseup', onUp);
-    };
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('mouseup', onUp);
-  };
 
-  if (!entry) return null;
+HOˆÂˆÙ]XŠ	ÙY‰ÊNÂˆÙ]\ØYÙ\Ê[
+NÂˆÙ]\ØYÙQ\œ›ÜŠ	ÉÊNÂˆÙ]™\ÙX\˜ÚXİ]™J˜[ÙJNÂˆKÙ[OËœ×JNÂ‚ˆ\ÙQY™™Xİ
 
-  const isHebrew = entry.s?.startsWith('H');
-  const morphHuman = humanizeMorph(entry.m);
-  const morphFields = morphologyFields(morphHuman);
-  const glossKey = normalizedStrong(entry.s);
-  const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
-  const koreanTranslit = entry.translitKo || koreanGloss?.translitKo || null;
-  const lemma = entry.l || entry.w || '';
-  const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === 'í’ˆì‚¬')?.value || 'â€”';
-  const source = sourceLabel(isHebrew);
-  const strongHref = externalStrongHref(entry.s, isHebrew);
 
-  const width = isMobile ? vw : popupSize.width;
-  const height = isMobile ? Math.round(vh * 0.88) : popupSize.height;
-  const margin = POPUP_VIEWPORT_MARGIN;
-  const baseLeft = isMobile ? 0 : Math.max(margin, Math.min((anchor?.x ?? vw / 2) - width / 2, vw - width - margin));
-  const baseTop = isMobile ? vh - height : Math.max(margin, Math.min((anchor?.y ?? vh / 2) + 8, vh - height - margin));
-  const left = isMobile ? 0 : baseLeft + dragOffset.x;
-  const top = isMobile ? baseTop : baseTop + dragOffset.y;
-  const resolvedZIndex = researchActive ? Math.min(zIndex ?? 2501, 1200) : (zIndex ?? 2501);
-  const threeColumn = !isMobile && popupSize.width >= THREE_COLUMN_MIN_WIDTH;
+HOˆÂˆÛÛœİÛ’Ù^HH
+]™[
+HOˆÂˆYˆ
+]™[šÙ^HOOH	Ñ\ØØ\IÈ	‰ˆ\™\ÙX\˜ÚXİ]™JHÛÛÜÙJ
+NÂˆNÂˆÚ[™İË˜Y]™[\İ[™\Š	ÚÙ^YİÛ‰ËÛ’Ù^JNÂˆ™]\›ˆ
 
-  const metaCells = [
-    ['Strong', entry.s || 'â€”'],
-    ['Lemma', lemma || 'â€”'],
-    ['Academic translit.', entry.tr || 'â€”'],
-    ['í•œê¸€ ìŒì—­', koreanTranslit || 'â€”'],
-    ['Part of speech', partOfSpeech],
-  ];
+HOˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	ÚÙ^YİÛ‰ËÛ’Ù^JNÂˆKÛÛÛÜÙK™\ÙX\˜ÚXİ]™WJNÂ‚ˆÛÛœİÈH\[ÙˆÚ[™İÈOOH	İ[™Yš[™Y	ÈÈÚ[™İËš[›™\•ÚYˆLŒÂˆÛÛœİšH\[ÙˆÚ[™İÈOOH	İ[™Yš[™Y	ÈÈÚ[™İËš[›™\’ZYÚˆÂˆÛÛœİÜÜ\Ú^™KÙ]Ü\Ú^™WHH\ÙTİ]J
 
-  const leftFields = [
-    ['ì‚¬ì „í˜•', lemma],
-    ['í•™ìˆ  ìŒì—­ (SBL)', entry.tr],
-    ['í•œê¸€ ìŒì—­', koreanTranslit],
-    ['í‘œê¸° ê¸°ì¤€', 'SBL í•™ìˆ  ìŒì—­ / ê²€ì¦ëœ í•œê¸€ ìŒì—­ ë³‘ê¸°'],
-    ...morphFields.map((field) => [field.label, field.value]),
-    ['raw code', entry.m],
-    ['ëŒ€í‘œ ì–´í˜•', entry.w],
-    ['TWOT', definition?.meta?.twot],
-  ].filter(([, value]) => value);
+HOˆÛ[\Ú^™JQUSÑTÒÕÔÕÒQQUSÑTÒÕÔÒRQÒËš
+JNÂˆÛÛœİÙ˜YÓÙ™œÙ]Ù]˜YÓÙ™œÙ]HH\ÙTİ]JÈˆNˆJNÂˆÛÛœİ˜YÔİ]HH\ÙT™YŠ[
+NÂ‚ˆ\ÙQY™™Xİ
 
-  const popup = (
-    <div
-      role="dialog"
-      aria-modal={isMobile ? 'true' : 'false'}
-      aria-label={`ì›ì–´ ì‚¬ì „ Â· ${lemma || entry.tr || entry.s || ''}`}
-      aria-hidden={researchActive ? 'true' : undefined}
-      className={`lexicon-popup-v2${isMobile ? ' lexicon-popup-v2--mobile momentum-scroll' : ''}`}
-      style={{
-        left,
-        top,
-        width,
-        height: isMobile ? undefined : height,
-        maxHeight: isMobile ? height : undefined,
-        zIndex: resolvedZIndex,
-        pointerEvents: researchActive ? 'none' : 'auto',
-        opacity: researchActive ? 0.72 : 1,
-      }}
-      onClick={(event) => event.stopPropagation()}
-    >
-      <header className="lexicon-titlebar" onMouseDown={onDragStart}>
-        <div className="lexicon-title-left">
-          <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`}>{lemma}</div>
-          <div className="lexicon-title-translit">
-            {entry.tr && <span>{entry.tr}</span>}
-            {koreanTranslit && <><span className="lexicon-dot">Â·</span><span data-testid="popup-translit-ko">í•œê¸€ ìŒì—­: {koreanTranslit}</span></>}
-            {entry.s && <><span className="lexicon-dot">Â·</span><span>{entry.s}</span></>}
-          </div>
-          <span className="lexicon-source-badge" data-testid="popup-source-badge">Source: {source}</span>
-        </div>
-        <button className="lexicon-close" onClick={onClose} onMouseDown={(event) => event.stopPropagation()} title="ë‹«ê¸° (Esc)">Ã—</button>
-      </header>
 
-      <div className="lexicon-topmeta" data-testid="popup-meta-strip">
-        {metaCells.map(([label, value]) => (
-          <div className="lexicon-meta-cell" key={label}>
-            <div className="lexicon-meta-key">{label}</div>
-            <div className={`lexicon-meta-value${label === 'Lemma' && isHebrew ? ' is-hebrew' : ''}`}>{value}</div>
-          </div>
-        ))}
-      </div>
+HOˆÂˆÙ]˜YÓÙ™œÙ]
+ÈˆNˆJNÂˆÙ]Ü\Ú^™JÛ[\Ú^™JQUSÑTÒÕÔÕÒQQUSÑTÒÕÔÒRQÒËš
+JNÂˆKÙ[OËœ×JNÂ‚ˆ\ÙQY™™Xİ
 
-      <nav className="lexicon-tabs" aria-label="ì›ì–´ ì‚¬ì „ íƒ­">
-        {[
-          ['def', 'ì‚¬ì „ ì •ì˜'],
-          ['usage', 'ê´€ë ¨ êµ¬ì ˆ'],
-          ['morph', 'í˜•íƒœ ë¶„ì„'],
-        ].map(([key, label]) => (
-          <button key={key} className={`lexicon-tab${tab === key ? ' is-active' : ''}`} onClick={() => setTab(key)}>{label}</button>
-        ))}
-      </nav>
 
-      <div className={`lexicon-content${threeColumn ? ' is-three-column' : ''}`}>
-        {threeColumn && (
-          <aside className="lexicon-side lexicon-side--left" data-testid="lexicon-morph-summary">
-            <h4>í˜•íƒœ ì •ë³´</h4>
-            <dl>
-              {leftFields.map(([label, value]) => (
-                <div className="lexicon-side-field" key={`${label}-${String(value)}`}>
-                  <dt>{label}</dt>
-                  <dd className={isHebrew && (label === 'ì‚¬ì „í˜•' || label === 'ëŒ€í‘œ ì–´í˜•') ? 'is-hebrew' : ''}>{value}</dd>
-                </div>
-              ))}
-            </dl>
-            {isHebrew && (
-              <div className="lexicon-side-status">
-                <strong>í˜•íƒœ í‘œì‹œ ì›ì¹™</strong><br />
-                ë™ì‚¬ëŠ” ì‹¤ì œ í† í° morph codeì—ì„œ Qal Â· Niphal Â· Piel Â· Pual Â· Hiphil Â· Hophal Â· Hithpael ë“±ì„ í‘œì‹œí•˜ê³ , ëª…ì‚¬ëŠ” ì„±Â·ìˆ˜Â·ìƒíƒœë¥¼ í‘œì‹œí•©ë‹ˆë‹¤.
-              </div>
-            )}
-          </aside>
-        )}
+HOˆÂˆÛÛœİÛ•Ú[™İÔ™\Ú^™HH
 
-        <main className="lexicon-main" data-modal-scroll-region="true">
-          {tab === 'def' && (
-            <section className="lexicon-tab-panel" data-panel="definition">
-              <div className="lexicon-section-title">
-                <strong>{isHebrew ? 'ì˜ë¬¸ BDB ì›ë¬¸ Â· êµ¬ì¡° ë³´ê¸°' : "ì˜ë¬¸ Greek Strong's Â· ì›ë¬¸ ë³´ê¸°"}</strong>
-                <span>{isHebrew ? 'Brownâ€“Driverâ€“Briggs Â· Source: BDB' : "Current Greek English lexical source"}</span>
-              </div>
+HOˆÂˆÙ]Ü\Ú^™J
+™]š[İ\ÊHOˆÛ[\Ú^™J™]š[İ\ËÚY™]š[İ\ËšZYÚÚ[™İËš[›™\•ÚYÚ[™İËš[›™\’ZYÚ
+JNÂˆNÂˆÚ[™İË˜Y]™[\İ[™\Š	Ü™\Ú^™IËÛ•Ú[™İÔ™\Ú^™JNÂˆ™]\›ˆ
 
-              {defLoading && <div className="lexicon-empty">ë¶ˆëŸ¬ì˜¤ëŠ” ì¤‘â€¦</div>}
-              {defError && <div className="lexicon-error">âš ï¸ {defError}</div>}
-              {!defLoading && !defError && !definition && (
-                <div className="lexicon-empty">
-                  ì •ì˜ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHubì—ì„œ ë³´ê¸° â†—</a>}
-                </div>
-              )}
+HOˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	Ü™\Ú^™IËÛ•Ú[™İÔ™\Ú^™JNÂˆK×JNÂ‚ˆÛÛœİÛ‘˜YÔİ\H
+]™[
+HOˆÂˆYˆ
+\Ó[Øš[H™\ÙX\˜ÚXİ]™H]™[˜]ÛˆOOH
+H™]\›Âˆ]™[œ™]™[Y˜][
 
-              {!defLoading && !defError && isHebrew && definition?.bdbUnavailable && (
-                <div className="lexicon-bdb-failure" data-testid="bdb-failure-panel">
-                  <strong>âš ï¸ BDB ì‚¬ì „ ë¡œë“œ ì‹¤íŒ¨</strong>
-                  <p>Hebrew ì •ì˜ë¥¼ BDBì—ì„œ ë¶ˆëŸ¬ì˜¤ì§€ ëª»í–ˆìŠµë‹ˆë‹¤. ë„¤íŠ¸ì›Œí¬ ë˜ëŠ” dictionary provider ìƒíƒœë¥¼ í™•ì¸í•œ ë’¤ ë‹¤ì‹œ ì‹œë„í•´ ì£¼ì„¸ìš”.</p>
-                  <button data-testid="bdb-retry" onClick={() => { evictStrongDefinitionCache(entry.s); setDefReloadNonce((nonce) => nonce + 1); }}>ë‹¤ì‹œ ì‹œë„</button>
-                  {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHubì—ì„œ ì—´ê¸° â†—</a>}
-                </div>
-              )}
+NÂˆ˜YÔİ]K˜İ\œ™[HÂˆİ\[İ\ÙVˆ]™[˜ÛY[ˆİ\[İ\ÙVNˆ]™[˜ÛY[Kˆİ\ˆ˜YÓÙ™œÙ]ˆİ\Nˆ˜YÓÙ™œÙ]KˆNÂˆÛÛœİÛ“[İ™HH
+[İ™Q]™[
+HOˆÂˆYˆ
+Y˜YÔİ]K˜İ\œ™[
+H™]\›ÂˆÙ]˜YÓÙ™œÙ]
+Âˆˆ˜YÔİ]K˜İ\œ™[œİ\
+È[İ™Q]™[˜ÛY[H˜YÔİ]K˜İ\œ™[œİ\[İ\ÙVˆNˆ˜YÔİ]K˜İ\œ™[œİ\H
+È[İ™Q]™[˜ÛY[HH˜YÔİ]K˜İ\œ™[œİ\[İ\ÙVKˆJNÂˆNÂˆÛÛœİÛ‘\H
 
-              {!defLoading && !defError && definition && !(isHebrew && definition.bdbUnavailable) && (
-                <>
-                  <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} flat={!isHebrew && definition.source === 'local'} />
-                  {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
-                    <div className="lexicon-definition-meta" data-testid="lexicon-definition-meta">
-                      {definition.meta.originKo && <div><b>ì–´ì›:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
-                      {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
-                      {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
-                      {!isHebrew && definition.meta.kjvUsage && <div><b>KJV ìš©ë¡€:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
-                    </div>
-                  )}
-                </>
-              )}
-            </section>
-          )}
+HOˆÂˆ˜YÔİ]K˜İ\œ™[H[ÂˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	Û[İ\Ù[[İ™IËÛ“[İ™JNÂˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	Û[İ\Ù]\	ËÛ•\
+NÂˆNÂˆÚ[™İË˜Y]™[\İ[™\Š	Û[İ\Ù[[İ™IËÛ“[İ™JNÂˆÚ[™İË˜Y]™[\İ[™\Š	Û[İ\Ù]\	ËÛ‘\
+NÂˆNÂ‚ˆÛÛœİÛ”™\Ú^™Tİ\H
+YÙ\ÊHOˆ
+]™[
+HOˆÂˆYˆ
+\Ó[Øš[H™\ÙX\˜ÚXİ]™H]™[˜]ÛˆOOH
+H™]\›Âˆ]™[œ™]™[Y˜][
 
-          {tab === 'usage' && (
-            <section className="lexicon-tab-panel" data-panel="usage">
-              <div className="lexicon-section-title">
-                <strong>ê´€ë ¨ êµ¬ì ˆ Â· {entry.s} {lemma}</strong>
-                <span>{bookId ? `${getBook(bookId)?.ko || bookId} ë²”ìœ„` : 'ì±… ë¯¸ì„ íƒ'}</span>
-              </div>
-              {!bookId && <div className="lexicon-empty">êµ¬ì ˆ ë…¸ë“œë¥¼ ì„ íƒí•˜ë©´ í•´ë‹¹ ì±…ì—ì„œì˜ ê´€ë ¨ êµ¬ì ˆì„ ë³¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤.</div>}
-              {usageLoading && <div className="lexicon-empty">ğŸ” ê´€ë ¨ êµ¬ì ˆ ê²€ìƒ‰ ì¤‘â€¦</div>}
-              {usageError && <div className="lexicon-error">âš ï¸ {usageError}</div>}
-              {!usageLoading && Array.isArray(usages) && usages.length === 0 && !usageError && bookId && (
-                <div className="lexicon-empty">ì´ ì±…ì—ì„œ ê´€ë ¨ êµ¬ì ˆì„ ì°¾ì§€ ëª»í–ˆìŠµë‹ˆë‹¤.</div>
-              )}
-              {Array.isArray(usages) && usages.length > 0 && (
-                <>
-                  <div className="lexicon-usage-count">{getBook(bookId)?.ko || bookId} Â· ì´ {usages.length}íšŒ ì‚¬ìš©</div>
-                  <div className="lexicon-usage-list">
-                    {usages.map((usage, index) => (
-                      <UsageCard
-                        key={`${usage.ch}-${usage.v}-${index}`}
-                        entry={usage}
-                        bookId={bookId}
-                        isHebrew={isHebrew}
-                        onAdd={onAddVerse ? () => onAddVerse({ bookId, chapter: usage.ch, verseStart: usage.v, verseEnd: usage.v }, null) : null}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
-            </section>
-          )}
+NÂˆ]™[œİÜ›ÜYØ][ÛŠ
+NÂˆÛÛœİİ\HÂˆ[İ\ÙVˆ]™[˜ÛY[ˆ[İ\ÙVNˆ]™[˜ÛY[KˆÚYˆÜ\Ú^™KÚYˆZYÚˆÜ\Ú^™KšZYÚˆÙ™œÙ]ˆ˜YÓÙ™œÙ]ˆÙ™œÙ]Nˆ˜YÓÙ™œÙ]KˆNÂˆÛÛœİÛ“[İ™HH
+[İ™Q]™[
+HOˆÂˆÛÛœİH[İ™Q]™[˜ÛY[Hİ\›[İ\ÙVÂˆÛÛœİHH[İ™Q]™[˜ÛY[HHİ\›[İ\ÙVNÂˆ]ÚYHİ\ÚYÂˆ]ZYÚHİ\šZYÚÂˆ]Ù™œÙ]Hİ\›Ù™œÙ]Âˆ]Ù™œÙ]HHİ\›Ù™œÙ]NÂˆYˆ
+YÙ\ËœšYÚ
+HÚYHİ\ÚY
+ÈÂˆYˆ
+YÙ\Ë˜›İÛJHZYÚHİ\šZYÚ
+ÈNÂˆYˆ
+YÙ\Ë›Y
+HÈÚYHİ\ÚYHÈÙ™œÙ]Hİ\›Ù™œÙ]
+ÈÈBˆYˆ
+YÙ\ËÜ
+HÈZYÚHİ\šZYÚHNÈÙ™œÙ]HHİ\›Ù™œÙ]H
+ÈNÈBˆÛÛœİÛ[\YHÛ[\Ú^™JÚYZYÚÚ[™İËš[›™\•ÚYÚ[™İËš[›™\’ZYÚ
+NÂˆYˆ
+YÙ\Ë›Y	‰ˆÛ[\YÚYOOHÚY
+HÙ™œÙ]Hİ\›Ù™œÙ]
+È
+İ\ÚYHÛ[\YÚY
+NÂˆYˆ
+YÙ\ËÜ	‰ˆÛ[\YšZYÚOOHZYÚ
+HÙ™œÙ]HHİ\›Ù™œÙ]H
+È
+İ\šZYÚHÛ[\YšZYÚ
+NÂˆÙ]Ü\Ú^™JÛ[\Y
+NÂˆÙ]˜YÓÙ™œÙ]
+ÈˆÙ™œÙ]NˆÙ™œÙ]HJNÂˆNÂˆÛÛœİÛ•\H
 
-          {tab === 'morph' && (
-            <section className="lexicon-tab-panel" data-panel="morphology" data-testid="morph-tab">
-              <div className="lexicon-section-title">
-                <strong>í˜•íƒœ ë¶„ì„ Â· {lemma}</strong>
-                <span>í´ë¦­í•œ ì‹¤ì œ í† í° í˜•íƒœ</span>
-              </div>
-              <div className="lexicon-morph-grid">
-                <MorphCard label="ì‚¬ì „í˜•" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || 'â€”'}</MorphCard>
-                {koreanTranslit && <MorphCard label="í•œê¸€ ìŒì—­">{koreanTranslit}</MorphCard>}
-                {entry.tr && <MorphCard label="í•™ìˆ  ìŒì—­">{entry.tr}</MorphCard>}
-                <MorphCard label="í’ˆì‚¬">{partOfSpeech}</MorphCard>
-                {morphFields.filter((field) => field.label !== 'í’ˆì‚¬').map((field) => (
-                  <MorphCard label={field.label} key={`${field.label}-${field.value}`}>{field.value}</MorphCard>
-                ))}
-                <MorphCard label="í˜•íƒœ ë¶„ì„"><span data-testid="morph-humanized">{morphHuman || 'â€”'}</span></MorphCard>
-                {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
-                {entry.w && <MorphCard label="ì‹¤ì œ ì–´í˜•" languageClass={isHebrew ? 'is-hebrew' : ''}>{entry.w}</MorphCard>}
-              </div>
-              {isHebrew && morphFields.some((field) => field.label === 'ì–´ê°„ (Binyan)') && (
-                <div className="lexicon-morph-note">
-                  <strong>ë™ì‚¬ ì–´ê°„:</strong> Qal/Piel/Pual ë“±ì€ ì‚¬ì „í˜•ì—ì„œ ì¶”ì •í•˜ì§€ ì•Šê³ , í˜„ì¬ í´ë¦­í•œ í† í°ì˜ morphology codeì— ê¸°ë¡ëœ ê°’ë§Œ í‘œì‹œí•©ë‹ˆë‹¤.
-                </div>
-              )}
-            </section>
-          )}
-        </main>
+HOˆÂˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	Û[İ\Ù[[İ™IËÛ“[İ™JNÂˆÚ[™İËœ™[[İ™Q]™[\İ[™\Š	Û[İ\Ù]\	ËÛ•\
+NÂˆNÂˆÚ[™İË˜Y]™[\İ[™\Š	Û[İ\Ù[[İ™IËÛ“[İ™JNÂˆÚ[™İË˜Y]™[\İ[™\Š	Û[İ\Ù]\	ËÛ•\
+NÂˆNÂ‚ˆYˆ
+Y[JH™]\›ˆ[Â‚ˆÛÛœİ\ÒXœ™]ÈH[KœÏËœİ\ÕÚ]
+	Ò	ÊNÂˆÛÛœİ[Üœ[X[ˆH[X[š^™S[Üœ
+[K›JNÂˆÛÛœİ[ÜœšY[ÈH[ÜœÛÙŞQšY[Ê[Üœ[X[ŠNÂˆÛÛœİÛÜÜÒÙ^HH›Ü›X[^™Yİ›Û™Ê[KœÊNÂˆÛÛœİÛÜ™X[‘ÛÜÜÈH
+ÛÜÜÒÙ^H	‰ˆÓÔ‘PS—ÑÓÔÔÖÙÛÜÜÒÙ^WJH
+[KœÈ	‰ˆÓÔ‘PS—ÑÓÔÔÖÙ[Kœ×JH[ÂˆÛÛœİÛÜ™X[•˜[œÛ]H[K˜[œÛ]ÛÈÛÜ™X[‘ÛÜÜÏË˜[œÛ]ÛÈ[ÂˆÛÛœİ[[XHH[K›[KÈ	ÉÎÂˆÛÛœİ\Ù”ÜYXÚHYš[š][ÛË›Y]OËœ\Ù”ÜYXÚ[ÜœšY[Ë™š[™
 
-        {threeColumn && (
-          <aside className="lexicon-side lexicon-side--right">
-            <h4>ì™¸ë¶€ ë§í¬</h4>
-            <div className="lexicon-linkbox">
-              {strongHref && <a href={strongHref} target="_blank" rel="noreferrer">BibleHub Â· {entry.s} â†—</a>}
-              {definition?.meta?.twot && <div className="lexicon-link-static">TWOT Â· {definition.meta.twot}</div>}
-              <div className="lexicon-link-static">Strong's Concordance Â· {entry.s}</div>
-            </div>
-            <div className="lexicon-side-status">
-              <strong>í‘œì‹œ ì •ì±…</strong><br />
-              {isHebrew
-                ? 'BDB ì›ìë£Œì˜ parent/child ê´€ê³„ë¥¼ ë³´ì¡´í•˜ê³  í™”ë©´ ê³„ì¸µ í‘œì§€ë§Œ A. â†’ 1. â†’ a. í˜•ì‹ìœ¼ë¡œ ì •ê·œí™”í•©ë‹ˆë‹¤.'
-                : 'Greek sourceê°€ flatì´ë©´ flatìœ¼ë¡œ í‘œì‹œí•˜ê³ , ì›ìë£Œì— ì—†ëŠ” A./1./a. ê³„ì¸µì„ ë§Œë“¤ì§€ ì•ŠìŠµë‹ˆë‹¤.'}
-            </div>
-            <details className="lexicon-research-details">
-              <summary>ì—°êµ¬ ë„êµ¬</summary>
-              <OriginalLanguageResearchActions
-                entry={entry}
-                anchor={anchor}
-                passage={passage}
-                isHebrew={isHebrew}
-                onActiveChange={setResearchActive}
-              />
-            </details>
-          </aside>
-        )}
-      </div>
-
-      {!threeColumn && (
-        <details className="lexicon-research-details lexicon-research-details--bottom">
-          <summary>ì—°êµ¬ ë„êµ¬</summary>
-          <OriginalLanguageResearchActions
-            entry={entry}
-            anchor={anchor}
-            passage={passage}
-            isHebrew={isHebrew}
-            onActiveChange={setResearchActive}
-          />
-        </details>
-      )}
-
-      <details className="lexicon-rights" data-testid="provenance-toggle">
-        <summary><span>â“˜ ì¶œì²˜ Â· ì €ì‘ê¶Œ Â· ì¬ì‚¬ìš© ê·¼ê±°</span><span className="lexicon-rights-chevron">âŒ„</span></summary>
-        <div className="lexicon-rights-panel" data-testid="provenance-panel">
-          {isHebrew ? (
-            <>
-              <RightsRow label="Lexical work"><strong>Brownâ€“Driverâ€“Briggs Hebrew and English Lexicon (1906)</strong> Â· Public Domain</RightsRow>
-              <RightsRow label="Runtime provider"><strong>Bolls.life BDBT</strong> Â· provider only; BDB ì¬ì‚¬ìš© ê¶Œë¦¬ì˜ ê·¼ê±°ë¡œ ê°„ì£¼í•˜ì§€ ì•ŠìŒ</RightsRow>
-              <RightsRow label="Morph / concordance"><strong>STEPBible.data</strong> Â· CC BY 4.0 Â· <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer">STEP Bible attribution â†—</a></RightsRow>
-              <RightsRow label="UI transformation">ì›ìë£Œ ì˜ë¯¸ ìˆœì„œì™€ parent/child ê´€ê³„ë¥¼ ë³´ì¡´í•˜ê³  í‘œì‹œ ê³„ì¸µ í‘œì§€ë§Œ A. â†’ 1. â†’ a. í˜•ì‹ìœ¼ë¡œ ì •ê·œí™”</RightsRow>
-            </>
-          ) : (
-            <>
-              <RightsRow label="Lexical source">í˜„ì¬ ì €ì¥ì†Œì˜ English Greek Strong's ì²­í¬ ë°ì´í„°</RightsRow>
-              <RightsRow label="Morph / concordance"><strong>STEPBible.data</strong> Â· CC BY 4.0 Â· <a href="https://stepbible.github.io/STEPBible-Data/" target="_blank" rel="noreferrer">STEP Bible attribution â†—</a></RightsRow>
-              <RightsRow label="UI transformation">ì›ìë£Œê°€ flatì´ë©´ flatìœ¼ë¡œ ìœ ì§€í•˜ë©° ì—†ëŠ” ê³„ì¸µì„ ìƒì„±í•˜ì§€ ì•ŠìŒ</RightsRow>
-            </>
-          )}
-          <div className="lexicon-rights-note"><strong>ê¶Œë¦¬ ì›ì¹™:</strong> FREE ACCESS â‰  REUSE PERMISSION. ì‹¤ì œ ì¬ì‚¬ìš© í‘œê¸°ëŠ” í”„ë¡œì íŠ¸ C0 Rights evidenceê°€ í™•ì¸í•œ ë²”ìœ„ë§Œ ì‚¬ìš©í•©ë‹ˆë‹¤.</div>
-        </div>
-      </details>
-
-      <div className="lexicon-footer">Lexicon Viewer v2 Â· {entry.s} {lemma} Â· Source: {source}</div>
-
-      {!isMobile && !researchActive && (
-        <>
-          <div data-testid="resize-handle-top" onMouseDown={onResizeStart({ top: true })} style={resizeHandleStyle('top')} />
-          <div data-testid="resize-handle-bottom" onMouseDown={onResizeStart({ bottom: true })} style={resizeHandleStyle('bottom')} />
-          <div data-testid="resize-handle-left" onMouseDown={onResizeStart({ left: true })} style={resizeHandleStyle('left')} />
-          <div data-testid="resize-handle-right" onMouseDown={onResizeStart({ right: true })} style={resizeHandleStyle('right')} />
-          <div data-testid="resize-handle-nw" onMouseDown={onResizeStart({ top: true, left: true })} style={resizeHandleStyle('nw')} />
-          <div data-testid="resize-handle-ne" onMouseDown={onResizeStart({ top: true, right: true })} style={resizeHandleStyle('ne')} />
-          <div data-testid="resize-handle-sw" onMouseDown={onResizeStart({ bottom: true, left: true })} style={resizeHandleStyle('sw')} />
-          <div data-testid="resize-handle-se" onMouseDown={onResizeStart({ bottom: true, right: true })} style={resizeHandleStyle('se')} />
-        </>
-      )}
-    </div>
-  );
-
-  return createPortal(
-    <>
-      {isMobile && <div className="lexicon-mobile-backdrop" onClick={researchActive ? undefined : onClose} style={{ zIndex: resolvedZIndex - 1, pointerEvents: researchActive ? 'none' : 'auto' }} />}
-      {popup}
-    </>,
-    document.body,
-  );
-}
-
-function MorphCard({ label, children, mono = false, languageClass = '' }) {
-  return (
-    <div className="lexicon-morph-card">
-      <h5>{label}</h5>
-      <div className={`lexicon-morph-value${mono ? ' is-mono' : ''}${languageClass ? ` ${languageClass}` : ''}`}>{children}</div>
-    </div>
-  );
-}
-
-function UsageCard({ entry, bookId, isHebrew, onAdd }) {
-  const koName = getBook(bookId)?.ko || bookId;
-  const morphKo = entry.m ? humanizeMorph(entry.m) : null;
-  return (
-    <article className="lexicon-usage-card" data-testid="usage-row">
-      <div className="lexicon-usage-head">
-        <button className="lexicon-usage-ref" onClick={onAdd || undefined} disabled={!onAdd} title={onAdd ? 'ì´ êµ¬ì ˆì„ ìº”ë²„ìŠ¤ì— ì¶”ê°€' : undefined}>{koName} {entry.ch}:{entry.v}</button>
-        <div className={`lexicon-usage-form${isHebrew ? ' is-hebrew' : ''}`}>{entry.w}</div>
-      </div>
-      <div className="lexicon-usage-meta">
-        {morphKo && <span className="lexicon-chip" data-testid="usage-morph-human">{morphKo}</span>}
-        {entry.m && <span className="lexicon-chip is-mono" data-testid="usage-morph-raw">{entry.m}</span>}
-        {onAdd && <button className="lexicon-add-verse" onClick={onAdd} title="ì´ êµ¬ì ˆì„ ìº”ë²„ìŠ¤ì— ì¶”ê°€">+ ì¶”ê°€</button>}
-      </div>
-    </article>
-  );
-}
-
-function RightsRow({ label, children }) {
-  return (
-    <div className="lexicon-rights-row">
-      <div className="lexicon-rights-key">{label}</div>
-      <div className="lexicon-rights-value">{children}</div>
-    </div>
-  );
-}
+šY[
+HOˆšY[›X™[OOH	ûd¢; «	ÊOË˜[YH	ø %	ÎÂˆÛÛœİÛİ\˜ÙHHÛİ\˜ÙSX™[
+\ÒXœ™]ÊNÂˆÛÛœİİ›Û™Ò™YˆH^\›˜[İ›Û™Ò™YŠ[KœË\ÒXœ™]ÊNÂ‚ˆÛÛœİÚYH\Ó[Øš[HÈÈˆÜ\Ú^™KÚYÂˆÛÛœİZYÚH\Ó[Øš[HÈX]œ›İ[™
+š
+ˆ
+HˆÜ\Ú^™KšZYÚÂˆÛÛœİX\™Ú[ˆHÔTÕ’QUÔÔ•ÓPT‘ÒSÂˆÛÛœİ˜\ÙSYH\Ó[Øš[HÈˆX]›X^
+X\™Ú[‹X]›Z[Š
+[˜ÚÜËÏÈŸÎõÙÈZ®Ëkºwµç
