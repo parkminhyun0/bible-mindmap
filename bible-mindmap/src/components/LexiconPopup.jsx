@@ -7,6 +7,7 @@ import useMobile from '../hooks/useMobile';
 import OriginalLanguageResearchActions from './OriginalLanguageResearchActions';
 import { KOREAN_GLOSS } from '../data/koreanGloss';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
+import { normalizeHebrewLexicalForm } from '../utils/hebrewLexicalForm';
 import './LexiconPopup.css';
 
 const POPUP_MIN_WIDTH = 340;
@@ -56,6 +57,10 @@ function externalStrongHref(strong, isHebrew) {
   return num ? `https://biblehub.com/${isHebrew ? 'hebrew' : 'greek'}/${num}.htm` : null;
 }
 
+function displayLexicalForm(value, isHebrew) {
+  return isHebrew ? normalizeHebrewLexicalForm(value) : (value || '');
+}
+
 function morphologyFields(human) {
   if (!human) return [];
   if (human.includes(' | ')) return [{ label: '형태 분석', value: human }];
@@ -63,8 +68,6 @@ function morphologyFields(human) {
   if (!parts.length) return [];
   const pos = parts[0];
   if (pos === '동사' && parts.length >= 4) {
-    // Hebrew: 동사 · Binyan · aspect · person · gender · number
-    // Greek:  동사 · tense · voice · mood · person · number
     const looksHebrewStem = ['Qal', 'Niphal', 'Piel', 'Pual', 'Hiphil', 'Hophal', 'Hithpael'].includes(parts[1]);
     const labels = looksHebrewStem
       ? ['품사', '어간 (Binyan)', '시상', '인칭', '성', '수']
@@ -87,6 +90,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const { onAddVerse } = useCanvas() || {};
   const isMobile = useMobile();
   const [tab, setTab] = useState('def');
+  const [morphDetailOpen, setMorphDetailOpen] = useState(false);
   const [defReloadNonce, setDefReloadNonce] = useState(0);
   const [definition, setDefinition] = useState(null);
   const [defLoading, setDefLoading] = useState(false);
@@ -129,6 +133,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
   useEffect(() => {
     setTab('def');
+    setMorphDetailOpen(false);
     setUsages(null);
     setUsageError('');
     setResearchActive(false);
@@ -231,7 +236,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const glossKey = normalizedStrong(entry.s);
   const koreanGloss = (glossKey && KOREAN_GLOSS[glossKey]) || (entry.s && KOREAN_GLOSS[entry.s]) || null;
   const koreanTranslit = entry.translitKo || koreanGloss?.translitKo || null;
-  const lemma = entry.l || entry.w || '';
+  const lexicalSource = entry.l || entry.w || '';
+  const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
+  const surfaceForm = displayLexicalForm(entry.w, isHebrew) || lemma;
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
   const strongHref = externalStrongHref(entry.s, isHebrew);
@@ -260,8 +267,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     ['한글 음역', koreanTranslit],
     ['표기 기준', 'SBL 학술 음역 / 검증된 한글 음역 병기'],
     ...morphFields.map((field) => [field.label, field.value]),
-    ['raw code', entry.m],
-    ['대표 어형', entry.w],
+    ['대표 어형', surfaceForm],
     ['TWOT', definition?.meta?.twot],
   ].filter(([, value]) => value);
 
@@ -286,7 +292,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     >
       <header className="lexicon-titlebar" onMouseDown={onDragStart}>
         <div className="lexicon-title-left">
-          <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`}>{lemma}</div>
+          <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`} data-testid="popup-headword">{lemma}</div>
           <div className="lexicon-title-translit">
             {entry.tr && <span>{entry.tr}</span>}
             {koreanTranslit && <><span className="lexicon-dot">·</span><span>한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
@@ -311,6 +317,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           ['def', '사전 정의'],
           ['usage', '관련 구절'],
           ['morph', '형태 분석'],
+          ['research', '원어 분석'],
         ].map(([key, label]) => (
           <button key={key} className={`lexicon-tab${tab === key ? ' is-active' : ''}`} onClick={() => setTab(key)}>{label}</button>
         ))}
@@ -342,7 +349,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
             <section className="lexicon-tab-panel" data-panel="definition">
               <div className="lexicon-section-title">
                 <strong>{isHebrew ? '영문 BDB 원문 · 구조 보기' : "영문 Greek Strong's · 원문 보기"}</strong>
-                <span>{isHebrew ? 'Brown–Driver–Briggs · Source: BDB' : "Current Greek English lexical source"}</span>
+                <span>{isHebrew ? 'BDB 1906 · Source hierarchy preserved' : 'Current Greek English lexical source'}</span>
               </div>
 
               {defLoading && <div className="lexicon-empty">불러오는 중…</div>}
@@ -367,10 +374,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   <LexiconDefinitionTree nodes={definition.nodes || []} isHebrew={isHebrew} flat={!isHebrew && definition.source === 'local'} />
                   {(definition.meta?.originKo || definition.meta?.twot || definition.meta?.partOfSpeech || definition.meta?.kjvUsage) && (
                     <div className="lexicon-definition-meta" data-testid="lexicon-definition-meta">
-                      {definition.meta.originKo && <div><b>어원:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
+                      {definition.meta.originKo && <div><b>Origin:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.originKo, isHebrew) }} /></div>}
                       {definition.meta.twot && <div><b>TWOT entry:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(`TWOT ${definition.meta.twot}`, isHebrew) }} /></div>}
                       {definition.meta.partOfSpeech && <div><b>Part(s) of speech:</b> {definition.meta.partOfSpeech}</div>}
-                      {!isHebrew && definition.meta.kjvUsage && <div><b>KJV 용례:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
+                      {!isHebrew && definition.meta.kjvUsage && <div><b>KJV usage:</b> <span dangerouslySetInnerHTML={{ __html: linkifyDefinition(definition.meta.kjvUsage, isHebrew) }} /></div>}
                     </div>
                   )}
                 </>
@@ -424,14 +431,53 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                   <MorphCard label={field.label} key={`${field.label}-${field.value}`}>{field.value}</MorphCard>
                 ))}
                 <MorphCard label="형태 분석"><span data-testid="morph-humanized">{morphHuman || '—'}</span></MorphCard>
-                {entry.m && <MorphCard label="raw code" mono>{entry.m}</MorphCard>}
-                {entry.w && <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{entry.w}</MorphCard>}
+                <MorphCard label="대표 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
               </div>
+
+              <button
+                type="button"
+                className={`lexicon-morph-detail-toggle${morphDetailOpen ? ' is-open' : ''}`}
+                onClick={() => setMorphDetailOpen((open) => !open)}
+                aria-expanded={morphDetailOpen}
+              >
+                형태론 자세히보기 <span>{morphDetailOpen ? '−' : '+'}</span>
+              </button>
+
+              {morphDetailOpen && (
+                <div className="lexicon-morph-detail" data-testid="morph-detail-panel">
+                  <div><b>정규화 사전형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</span></div>
+                  <div><b>정규화 어형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</span></div>
+                  {entry.m && <div><b>raw morph code:</b> <code>{entry.m}</code></div>}
+                  {entry.w && <div><b>원본 토큰:</b> <code>{entry.w}</code></div>}
+                  {isHebrew && (
+                    <div className="lexicon-morph-detail-note">
+                      관사·접속사 등 prefix morpheme와 문장부호·칸틸레이션은 사전 표제어에서 제거합니다. 동사 Binyan은 실제 morphology code에 기록된 값만 표시합니다.
+                    </div>
+                  )}
+                </div>
+              )}
+
               {isHebrew && morphFields.some((field) => field.label === '어간 (Binyan)') && (
                 <div className="lexicon-morph-note">
                   <strong>동사 어간:</strong> Qal/Piel/Pual 등은 사전형에서 추정하지 않고, 현재 클릭한 토큰의 morphology code에 기록된 값만 표시합니다.
                 </div>
               )}
+            </section>
+          )}
+
+          {tab === 'research' && (
+            <section className="lexicon-tab-panel lexicon-research-panel" data-panel="research" data-testid="original-language-analysis-tab">
+              <div className="lexicon-section-title">
+                <strong>원어 분석 · {lemma}</strong>
+                <span>용례 · 구문 · 병렬 본문 · 원어 브릿지</span>
+              </div>
+              <OriginalLanguageResearchActions
+                entry={{ ...entry, w: surfaceForm || entry.w, l: lemma || entry.l }}
+                anchor={anchor}
+                passage={passage}
+                isHebrew={isHebrew}
+                onActiveChange={setResearchActive}
+              />
             </section>
           )}
         </main>
@@ -450,32 +496,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
                 ? 'BDB 원자료의 parent/child 관계를 보존하고 화면 계층 표지만 A. → 1. → a. 형식으로 정규화합니다.'
                 : 'Greek source가 flat이면 flat으로 표시하고, 원자료에 없는 A./1./a. 계층을 만들지 않습니다.'}
             </div>
-            <details className="lexicon-research-details">
-              <summary>연구 도구</summary>
-              <OriginalLanguageResearchActions
-                entry={entry}
-                anchor={anchor}
-                passage={passage}
-                isHebrew={isHebrew}
-                onActiveChange={setResearchActive}
-              />
-            </details>
           </aside>
         )}
       </div>
-
-      {!threeColumn && (
-        <details className="lexicon-research-details lexicon-research-details--bottom">
-          <summary>연구 도구</summary>
-          <OriginalLanguageResearchActions
-            entry={entry}
-            anchor={anchor}
-            passage={passage}
-            isHebrew={isHebrew}
-            onActiveChange={setResearchActive}
-          />
-        </details>
-      )}
 
       <details className="lexicon-rights" data-testid="provenance-toggle">
         <summary><span>ⓘ 출처 · 저작권 · 재사용 근거</span><span className="lexicon-rights-chevron">⌄</span></summary>
@@ -536,11 +559,12 @@ function MorphCard({ label, children, mono = false, languageClass = '' }) {
 function UsageCard({ entry, bookId, isHebrew, onAdd }) {
   const koName = getBook(bookId)?.ko || bookId;
   const morphKo = entry.m ? humanizeMorph(entry.m) : null;
+  const displayForm = displayLexicalForm(entry.w, isHebrew) || entry.w || '';
   return (
     <article className="lexicon-usage-card" data-testid="usage-row">
       <div className="lexicon-usage-head">
         <button className="lexicon-usage-ref" onClick={onAdd || undefined} disabled={!onAdd} title={onAdd ? '이 구절을 캔버스에 추가' : undefined}>{koName} {entry.ch}:{entry.v}</button>
-        <div className={`lexicon-usage-form${isHebrew ? ' is-hebrew' : ''}`}>{entry.w}</div>
+        <div className={`lexicon-usage-form${isHebrew ? ' is-hebrew' : ''}`}>{displayForm}</div>
       </div>
       <div className="lexicon-usage-meta">
         {morphKo && <span className="lexicon-chip" data-testid="usage-morph-human">{morphKo}</span>}
