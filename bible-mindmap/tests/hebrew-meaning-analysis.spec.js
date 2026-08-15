@@ -1,5 +1,5 @@
 import { expect, test } from 'playwright/test';
-import { analyzeHebrewMorphologyMeaning, hebrewStemGuidance } from '../src/utils/hebrewMeaningAnalysis.js';
+import { analyzeHebrewMorphologyMeaning, hebrewStemGuidance, hebrewStemGuidanceList } from '../src/utils/hebrewMeaningAnalysis.js';
 
 test('Piel morphology explains the stem without reducing it to emphasis and prefers matching BDB branch', () => {
   const nodes = [
@@ -50,4 +50,20 @@ test('when no exact BDB morphology label is found, analysis falls back to source
 test('stem guidance includes passive derived stems too', () => {
   expect(hebrewStemGuidance('Pual')?.ko).toBe('푸알');
   expect(hebrewStemGuidance('Hophal')?.ko).toBe('호팔');
+});
+
+test('seven-Binyan guide exposes Korean interpretation and semantic-shift explanations in canonical order', () => {
+  const guides = hebrewStemGuidanceList();
+  expect(guides.map((guide) => guide.stem)).toEqual([
+    'Qal', 'Niphal', 'Piel', 'Pual', 'Hiphil', 'Hophal', 'Hithpael',
+  ]);
+  expect(guides).toHaveLength(7);
+  for (const guide of guides) {
+    expect(guide.ko).toBeTruthy();
+    expect(guide.interpretation.length).toBeGreaterThan(20);
+    expect(guide.semanticShift.length).toBeGreaterThan(20);
+  }
+  expect(hebrewStemGuidance('Piel')?.interpretation).toContain('강조형');
+  expect(hebrewStemGuidance('Hiphil')?.semanticShift).toContain('하게 하다');
+  expect(hebrewStemGuidance('Hithpael')?.semanticShift).toContain('서로');
 });
