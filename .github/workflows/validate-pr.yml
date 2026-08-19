@@ -3,6 +3,14 @@ name: Validate pull request
 on:
   pull_request:
     branches: [main]
+  # A trusted main run seeds the default-branch Playwright browser cache so
+  # later pull requests can restore it. Re-seed when this workflow or the
+  # lockfile changes (including Playwright version changes).
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/validate-pr.yml'
+      - 'bible-mindmap/package-lock.json'
   workflow_dispatch:
 
 permissions:
@@ -135,8 +143,55 @@ jobs:
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
 
+      - name: Resolve Playwright version
+        id: playwright-version
+        shell: bash
+        run: node -e "const p=require('./node_modules/playwright/package.json'); console.log('version='+p.version)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: playwright-browser-cache
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-${{ hashFiles('bible-mindmap/package-lock.json') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-
+
+      - name: Report Playwright browser cache
+        run: echo "cache-hit=${{ steps.playwright-browser-cache.outputs.cache-hit }}"
+
+      - name: Configure apt network bounds for Playwright dependencies
+        shell: bash
+        run: |
+          sudo tee /etc/apt/apt.conf.d/99playwright-ci-network >/dev/null <<'EOF'
+          Acquire::Retries "3";
+          Acquire::http::Timeout "20";
+          Acquire::https::Timeout "20";
+          EOF
+
+      - name: Ensure Playwright system dependencies
+        shell: bash
+        timeout-minutes: 8
+        run: |
+          if npx playwright install-deps --dry-run chromium webkit; then
+            echo "Playwright system dependencies already satisfied; skipping apt install."
+            exit 0
+          fi
+
+          for attempt in 1 2; do
+            echo "Playwright dependency install attempt ${attempt}/2"
+            if npx playwright install-deps chromium webkit; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 2 ]; then
+              sleep 5
+            fi
+          done
+          exit 1
+
       - name: Install Chromium and WebKit
-        run: npx playwright install --with-deps chromium webkit
+        timeout-minutes: 8
+        run: npx playwright install chromium webkit
 
       - name: Run desktop, mobile, tablet, and modal smoke tests
         run: npm run test:smoke
