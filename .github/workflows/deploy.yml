@@ -37,6 +37,7 @@ jobs:
   build:
     needs: status-start
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     defaults:
       run:
         working-directory: bible-mindmap
@@ -86,7 +87,25 @@ jobs:
       - name: Build lexicon data (STEPBible TAGNT + TAHOT)
         run: node scripts/build-lexicon.mjs
 
+      - name: Resolve Playwright version
+        id: playwright-version
+        shell: bash
+        run: node -e "const p=require('./node_modules/playwright/package.json'); console.log('version='+p.version)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache Playwright browsers
+        id: playwright-browser-cache
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-${{ hashFiles('bible-mindmap/package-lock.json') }}
+          restore-keys: |
+            playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-
+
+      - name: Report Playwright browser cache
+        run: echo "cache-hit=${{ steps.playwright-browser-cache.outputs.cache-hit }}"
+
       - name: Install Chromium for browser regression tests
+        timeout-minutes: 8
         run: npx playwright install chromium
 
       - name: Run desktop, mobile, tablet, and modal smoke tests
