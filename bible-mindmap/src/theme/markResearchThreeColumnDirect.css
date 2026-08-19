@@ -173,3 +173,11 @@
     overflow-y: auto !important;
   }
 }
+
+@media (forced-colors: active) and (min-width: 901px) {
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-direct-first-divider:focus-visible,
+  :root[data-layout="desktop"] .mark-research-layout-test > .mark-research-second-divider:focus-visible {
+    outline: 2px solid Highlight !important;
+    outline-offset: -2px;
+  }
+}
