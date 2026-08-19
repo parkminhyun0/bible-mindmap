@@ -18,6 +18,10 @@
 
 - [ ] 로마서 gold standard 불변 (`pivots=12`·`arcs=8`·`chapterAgenda=16`)
 - [ ] `npm run build` 통과 · `oxlint` clean
+- [ ] UI 변경은 desktop + tablet + mobile portrait/landscape에 같은 기능으로 동시 적용
+- [ ] mouse/keyboard + touch/pointer-coarse 입력 동등성 확인 (핵심 터치 대상 ≥ 44px)
+- [ ] Playwright desktop/mobile/tablet smoke 및 `verify-mobile-safety` 통과, 또는 비-UI 변경의 제외 사유 기록
+- [ ] 자동 시각 검증이 불가능하면 실기기 확인을 `NEXT_ACTION`/브리핑에 남기고 100% 완료로 선언하지 않음
 - [ ] `npm run verify:deploy`로 라이브 반영 확인 예정 (배포 후)
 
 ## Notion 동기화 (릴리스 시)

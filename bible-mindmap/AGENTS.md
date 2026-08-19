@@ -99,3 +99,16 @@ notion(🤖 CI 자동 배포 로그 갱신)` 순으로 자동 실행. Notion 자
 ---
 
 **변경 시 관련 Notion 페이지도 함께 갱신하세요** (자동화 규칙 · 대시보드는 매 릴리스 마지막에 필수).
+
+## 🖥️📱 전 디바이스 동시 적용 계약 (모든 UI 작업의 기본값)
+
+PC 구현만으로 UI 작업을 완료 처리하지 않습니다. 별도 지시가 없는 한 신규 기능·수정·상호작용은 **같은 작업·같은 PR에서 desktop + tablet + mobile에 동시에 제공**해야 합니다.
+
+1. **기능 동등성**: 핵심 기능과 정보는 화면 크기와 입력 장치 때문에 사라지면 안 됩니다. 레이아웃은 달라도 기능 결과는 같아야 합니다.
+2. **입력 동등성**: mouse/keyboard뿐 아니라 touch/pointer-coarse에서도 실행 가능해야 합니다. hover-only 동작, 44px 미만 핵심 터치 대상, 가로 스크롤에 갇힌 주요 행동을 금지합니다.
+3. **뷰포트 동등성**: desktop, tablet, mobile portrait와 mobile landscape에서 overflow·가림·모달 이탈·키보드/노치 안전영역을 확인합니다.
+4. **성능 동등성**: 저사양 모바일을 고려해 DPR, 대형 자산, observer/listener, 애니메이션 비용을 제한하고 필요한 경우 점진적 품질 저하를 적용합니다.
+5. **완료 Evidence**: `npm run build`, `verify-mobile-safety`, Playwright desktop/mobile/tablet smoke와 배포 후 라이브 확인을 기록합니다. 자동 브라우저를 사용할 수 없으면 완료를 100%로 선언하지 않고 실기기 확인을 다음 행동으로 남깁니다.
+6. **예외**: 데이터·문서·백엔드처럼 사용자 화면이 전혀 없는 변경만 디바이스 검증에서 제외할 수 있으며, PR에 제외 사유를 적습니다. UI 변경의 desktop-only 또는 mobile-only 범위는 사용자의 명시적 승인이 있어야 합니다.
+
+이 계약은 모델과 세션이 바뀌어도 유지되는 기본 Definition of Done입니다. 기존 `verify-mobile-safety.mjs`와 CI의 desktop/mobile/tablet/WebKit smoke를 약화하거나 우회하지 않습니다.
