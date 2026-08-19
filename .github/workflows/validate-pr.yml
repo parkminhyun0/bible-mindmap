@@ -3,9 +3,8 @@ name: Validate pull request
 on:
   pull_request:
     branches: [main]
-  # A trusted main run seeds the default-branch Playwright browser cache so
-  # later pull requests can restore it. Re-seed when this workflow or the
-  # lockfile changes (including Playwright version changes).
+  # A trusted main run re-verifies the pinned Playwright container whenever
+  # this workflow or the lockfile changes, including Playwright upgrades.
   push:
     branches: [main]
     paths:
@@ -124,18 +123,39 @@ jobs:
     needs: verify-and-build
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --user 1001 --ipc=host
     defaults:
       run:
+        shell: bash
         working-directory: bible-mindmap
 
     steps:
       - uses: actions/checkout@v6
 
+      # Keep Node 20 as the project runtime even though the pinned Playwright
+      # image carries its own Node version. This matches the non-container jobs.
       - uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: bible-mindmap/package-lock.json
+
+      - name: Resolve npm cache directory
+        id: npm-cache-dir
+        shell: bash
+        run: echo "dir=$(npm config get cache)" >> "$GITHUB_OUTPUT"
+
+      - name: Cache npm downloads
+        id: npm-cache
+        uses: actions/cache@v5
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: npm-${{ runner.os }}-node20-playwright-container-v1.61.1-${{ hashFiles('bible-mindmap/package-lock.json') }}
+          restore-keys: |
+            npm-${{ runner.os }}-node20-playwright-container-v1.61.1-
+
+      - name: Report npm cache
+        run: echo "cache-hit=${{ steps.npm-cache.outputs.cache-hit }}"
 
       - name: Install dependencies
         run: npm ci
@@ -143,55 +163,42 @@ jobs:
       - name: Build Strong and lexicon definitions
         run: npm run build:lexicon
 
-      - name: Resolve Playwright version
-        id: playwright-version
-        shell: bash
-        run: node -e "const p=require('./node_modules/playwright/package.json'); console.log('version='+p.version)" >> "$GITHUB_OUTPUT"
-
-      - name: Cache Playwright browsers
-        id: playwright-browser-cache
-        uses: actions/cache@v5
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-${{ hashFiles('bible-mindmap/package-lock.json') }}
-          restore-keys: |
-            playwright-${{ runner.os }}-${{ steps.playwright-version.outputs.version }}-
-
-      - name: Report Playwright browser cache
-        run: echo "cache-hit=${{ steps.playwright-browser-cache.outputs.cache-hit }}"
-
-      - name: Configure apt network bounds for Playwright dependencies
+      - name: Verify Playwright container contract
         shell: bash
         run: |
-          sudo tee /etc/apt/apt.conf.d/99playwright-ci-network >/dev/null <<'EOF'
-          Acquire::Retries "3";
-          Acquire::http::Timeout "20";
-          Acquire::https::Timeout "20";
-          EOF
+          node <<'NODE'
+          const fs = require('node:fs');
+          const nodeMajor = Number(process.versions.node.split('.')[0]);
+          const projectVersion = require('./node_modules/playwright/package.json').version;
+          const dockerInfoPath = '/ms-playwright/.docker-info';
 
-      - name: Ensure Playwright system dependencies
-        shell: bash
-        timeout-minutes: 8
-        run: |
-          if npx playwright install-deps --dry-run chromium webkit; then
-            echo "Playwright system dependencies already satisfied; skipping apt install."
-            exit 0
-          fi
+          if (nodeMajor !== 20) {
+            console.error(`::error::browser-smoke Node runtime drifted: expected 20.x, got ${process.versions.node}`);
+            process.exit(1);
+          }
+          if (!fs.existsSync(dockerInfoPath)) {
+            console.error(`::error::Playwright container marker missing: ${dockerInfoPath}`);
+            process.exit(1);
+          }
 
-          for attempt in 1 2; do
-            echo "Playwright dependency install attempt ${attempt}/2"
-            if npx playwright install-deps chromium webkit; then
-              exit 0
-            fi
-            if [ "$attempt" -lt 2 ]; then
-              sleep 5
-            fi
-          done
-          exit 1
+          const dockerInfo = JSON.parse(fs.readFileSync(dockerInfoPath, 'utf8'));
+          if (dockerInfo.driverVersion !== projectVersion) {
+            console.error(`::error::Playwright version mismatch: project=${projectVersion}, container=${dockerInfo.driverVersion}. Update package-lock.json and the browser-smoke container tag together.`);
+            process.exit(1);
+          }
 
-      - name: Install Chromium and WebKit
-        timeout-minutes: 8
-        run: npx playwright install chromium webkit
+          const { chromium, webkit } = require('playwright');
+          for (const [name, browserType] of [['chromium', chromium], ['webkit', webkit]]) {
+            const executable = browserType.executablePath();
+            if (!fs.existsSync(executable)) {
+              console.error(`::error::Baked ${name} executable missing: ${executable}`);
+              process.exit(1);
+            }
+            console.log(`${name}=${executable}`);
+          }
+
+          console.log(`Playwright container aligned: version=${projectVersion}, node=${process.versions.node}`);
+          NODE
 
       - name: Run desktop, mobile, tablet, and modal smoke tests
         run: npm run test:smoke
