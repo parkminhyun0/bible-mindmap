@@ -94,3 +94,10 @@
 .mark-macro-arc{padding:6px 8px;border-radius:8px;background:#fbfaff;border:1px solid #ede9fe;border-left:3px solid var(--arc)}
 .mark-macro-arc b{display:block;font-size:10px;font-weight:800;color:#4c1d95;line-height:1.4}
 .mark-macro-arc span{display:block;margin-top:2px;font-size:9px;font-weight:600;color:#8b7fb8;line-height:1.4}
+
+@media (forced-colors: active) {
+  .mark-research-divider:focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: -2px;
+  }
+}

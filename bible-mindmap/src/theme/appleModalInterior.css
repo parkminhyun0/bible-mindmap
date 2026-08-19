@@ -324,3 +324,15 @@
     border-width: 1px !important;
   }
 }
+
+@media (forced-colors: active) {
+  .at-modal__content input:focus,
+  .at-modal__content select:focus,
+  .at-modal__content textarea:focus,
+  .at-modal__controls input:focus,
+  .at-modal__controls select:focus,
+  .at-modal__controls textarea:focus {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}

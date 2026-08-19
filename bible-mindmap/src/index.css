@@ -905,3 +905,10 @@ html[data-theme='dark'] {
     background: linear-gradient(135deg, var(--at-navy-top), var(--at-navy-bottom)) !important;
   }
 }
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 2px solid Highlight;
+    outline-offset: 2px;
+  }
+}
