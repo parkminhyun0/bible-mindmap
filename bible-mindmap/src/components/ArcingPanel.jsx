@@ -51,7 +51,7 @@ function grkVerbLabel(m) {
 // ── 주동사 절 행 ────────────────────────────────────────────────────────────
 function MainRow({ item, hasPreceding, fontSize, isExpanded, onToggle, words, loadingWords, onWordClick, isHebrew }) {
   const verbFont   = isHebrew
-    ? '"Ezra SIL", "SBL BibLit", serif'
+    ? '"Ezra SIL", "SBL BibLit", "Noto Serif Hebrew", serif'
     : '"SBL BibLit", "Palatino Linotype", Palatino, "Times New Roman", serif';
   const verbDir    = isHebrew ? 'rtl' : 'ltr';
 

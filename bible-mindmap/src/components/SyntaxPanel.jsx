@@ -103,7 +103,7 @@ function ParseTreeSVG({ tree, sizes, onWordClick }) {
                   fontSize={sizes.heb}
                   fontFamily={isGreekWord
                     ? '"SBL BibLit", "Palatino Linotype", Palatino, "Times New Roman", serif'
-                    : '"Ezra SIL", "SBL BibLit", "SBL Hebrew", serif'}
+                    : '"Ezra SIL", "SBL BibLit", "SBL Hebrew", "Noto Serif Hebrew", serif'}
                   fill="#1e293b"
                   textDecoration="underline"
                   style={{ cursor: 'pointer', textDecorationStyle: 'dotted', textDecorationColor: '#8b5cf6' }}
@@ -473,7 +473,7 @@ function FlowCell({ color, sizes, entries, note, implied, onWordClick, cellBg, c
                   direction: isGreek ? 'ltr' : 'rtl',
                   fontFamily: isGreek
                     ? '"SBL BibLit", "Palatino Linotype", Palatino, "Times New Roman", serif'
-                    : '"Ezra SIL", "SBL BibLit", serif',
+                    : '"Ezra SIL", "SBL BibLit", "Noto Serif Hebrew", serif',
                   fontSize: sizes.heb * 0.85,
                   padding: '2px 7px 4px', borderRadius: 5,
                   background: implied ? 'transparent' : col.bg,

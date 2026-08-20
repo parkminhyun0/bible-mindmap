@@ -6,6 +6,7 @@
 import { isOT } from '../data/bibleBooks';
 import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
 import { strongNumberForExternalLink } from './strongLink.js';
+import { normalizeHebrewLexiconChapter } from './hebrewDisplay.js';
 
 const BASE = import.meta.env.BASE_URL; // ex: "/bible-mindmap/"
 
@@ -38,9 +39,10 @@ export async function loadChapterLexicon(bookId, chapter, langOverride) {
   const url = lang === 'lxx'
     ? `${BASE}lxx-lex/${bookId}/${chapter}.json`
     : `${DATA_BASE}data/lex/${lang}/${bookId}/${chapter}.json`;
-  const promise = resilientFetch(url).then((res) => {
+  const promise = resilientFetch(url).then(async (res) => {
     if (!res.ok) throw new Error(`lexicon fetch ${res.status}`);
-    return res.json();
+    const data = await res.json();
+    return lang === 'hot' ? normalizeHebrewLexiconChapter(data) : data;
   }).catch((err) => {
     _chapterCache.delete(key);
     throw err;
