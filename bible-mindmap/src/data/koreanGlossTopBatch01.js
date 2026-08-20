@@ -24,13 +24,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ho',
     translitKo: '호',
     glossKo: 'the (sometimes to be supplied, at others omitted, in English idiom)',
-    review: true,
-  },
-  H853: {
-    lemma: 'אֵת',
-    translit: '',
-    translitKo: '에트',
-    glossKo: 'properly, self (but generally used to point out more definitely the ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2532: {
@@ -38,6 +32,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'kai',
     translitKo: '카이',
     glossKo: 'and, also, even, so then, too, etc.; often used in connection (or co',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3068: {
@@ -53,13 +48,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'autou',
     translitKo: '아우토스',
     glossKo: 'the reflexive pronoun self, used (alone or in the comparative G1438 ',
-    review: true,
-  },
-  H5921: {
-    lemma: 'עַל',
-    translit: '',
-    translitKo: '알',
-    glossKo: 'above, over, upon, or against (yet always in this last relation with',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H413: {
@@ -67,6 +56,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '엘',
     glossKo: 'near, with or among; often in general, to',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H834: {
@@ -82,13 +72,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '콜',
     glossKo: 'properly, the whole; hence, all, any or every (in the singular only,',
-    review: true,
-  },
-  H559: {
-    lemma: 'אָמַר',
-    translit: '',
-    translitKo: '아마르',
-    glossKo: 'to say (used with great latitude)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3808: {
@@ -96,20 +80,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '로',
     glossKo: 'not (the simple or abs. negation); by implication, no; often used wi',
-    review: true,
-  },
-  H3588: {
-    lemma: 'כִּי',
-    translit: '',
-    translitKo: '키',
-    glossKo: '(by implication) very widely used as a relative conjunction or adver',
-    review: true,
-  },
-  H1961: {
-    lemma: 'הָיָה',
-    translit: '',
-    translitKo: '하야',
-    glossKo: 'to exist, i.e. be or become, come to pass (always emphatic, and not ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G4771: {
@@ -125,6 +96,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'de',
     translitKo: '데',
     glossKo: 'but, and, etc.',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1722: {
@@ -132,6 +104,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'en',
     translitKo: '엔',
     glossKo: '"in," at, (up-)on, by, etc.',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H6213: {
@@ -139,13 +112,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아사',
     glossKo: 'to do or make, in the broadest sense and widest application',
-    review: true,
-  },
-  H430: {
-    lemma: 'אֱלֹהִים',
-    translit: '',
-    translitKo: '엘로힘',
-    glossKo: 'gods in the ordinary sense; but specifically used (in the plural thu',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H935: {
@@ -161,6 +128,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '멜렉',
     glossKo: 'a king',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3478: {
@@ -168,6 +136,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '이스라엘',
     glossKo: 'Jisrael, a symbolical name of Jacob; also (typically) of his posteri',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1510: {
@@ -175,21 +144,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'estin',
     translitKo: '에이미',
     glossKo: 'I exist (used only when emphatic)',
-    review: true,
-  },
-  H3117: {
-    lemma: 'יוֹם',
-    translit: '',
-    translitKo: '욤',
-    glossKo: 'a day (as the warm hours), whether literal (from sunrise to sunset, ',
-    review: true,
-  },
-  H6440: {
-    lemma: 'פָּנֶה',
-    translit: '',
-    translitKo: '파네',
-    glossKo: 'the face (as the part that turns); used in a great variety of applic',
-    note: '팝업에 표시되는 표제어 철자가 복수형이 아니라 פָּנֶה이므로 철자와 어긋나는 파님은 혼란을 준다.',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1004: {
@@ -197,6 +152,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '바이트',
     glossKo: 'a house (in the greatest variation of applications, especially famil',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3165: {
@@ -204,6 +160,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'mou',
     translitKo: '에고',
     glossKo: 'me',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5414: {
@@ -211,6 +168,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '나탄',
     glossKo: 'to give, used with greatest latitude of application (put, make, etc.',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1931: {
@@ -218,6 +176,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '후',
     glossKo: 'he (she or it); only expressed when emphatic or without a verb; also',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5971: {
@@ -225,6 +184,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '암',
     glossKo: 'a people (as a congregated unit); specifically, a tribe (as those of',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1519: {
@@ -232,6 +192,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'eis',
     translitKo: '에이스',
     glossKo: 'to or into (indicating the point reached or entered), of place, time',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3756: {
@@ -239,6 +200,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ouk',
     translitKo: '우',
     glossKo: 'the absolute negative (compare G3361 (μή)) adverb; no or not',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H376: {
@@ -246,6 +208,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '이쉬',
     glossKo: 'a man as an individual or a male person; often used as an adjunct to',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3027: {
@@ -253,6 +216,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '야드',
     glossKo: 'a hand (the open one (indicating power, means, direction, etc.),',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1980: {
@@ -268,6 +232,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ho',
     translitKo: '호스',
     glossKo: 'the relatively (sometimes demonstrative) pronoun, who, which, what, ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3778: {
@@ -283,6 +248,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'legei',
     translitKo: '레고',
     glossKo: 'properly, to "lay" forth, i.e. (figuratively) relate (in words (usua',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2316: {
@@ -298,13 +264,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'hoti',
     translitKo: '호티',
     glossKo: 'demonstrative, that (sometimes redundant); causative, because',
-    review: true,
-  },
-  H7200: {
-    lemma: 'רָאָה',
-    translit: '',
-    translitKo: '라아',
-    glossKo: 'to see, literally or figuratively (in numerous applications, direct ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3956: {
@@ -312,6 +272,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'panta',
     translitKo: '파스',
     glossKo: 'all, any, every, the whole',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5704: {
@@ -319,6 +280,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아드',
     glossKo: 'as far (or long, or much) as, whether of space (even unto) or time (',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1: {
@@ -326,6 +288,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아브',
     glossKo: 'father, in a literal and immediate, or figurative and remote applica',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H4480: {
@@ -333,6 +296,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '민',
     glossKo: 'properly, a part of; hence (prepositionally), from or out of in many',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H2088: {
@@ -340,6 +304,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '제',
     glossKo: 'the masculine demonstrative pronoun, this or that',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H8085: {
@@ -347,6 +312,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '샤마',
     glossKo: 'to hear intelligently (often with implication of attention, obedienc',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1696: {
@@ -354,6 +320,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '다바르',
     glossKo: 'perhaps properly, to arrange; but used figuratively (of words), to s',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H859: {
@@ -361,6 +328,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아타',
     glossKo: 'thou and thee, or (plural) ye and you',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5892: {
@@ -368,6 +336,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '이르',
     glossKo: 'a city (a place guarded by waking or a watch) in the widest sense (e',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3361: {
@@ -375,6 +344,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'mē',
     translitKo: '메',
     glossKo: '(adverb) not, (conjunction) lest; also (as an interrogative implying',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1063: {
@@ -382,6 +352,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'gar',
     translitKo: '가르',
     glossKo: 'properly, assigning a reason (used in argument, explanation or inten',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3427: {
@@ -389,6 +360,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '야샤브',
     glossKo: 'properly, to sit down (specifically as judge. in ambush, in quiet); ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H1732: {
@@ -404,6 +376,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '임',
     glossKo: 'used very widely as demonstrative, lo!; interrogative, whether?; or ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H7725: {
@@ -411,6 +384,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '슈브',
     glossKo: 'to turn back (hence, away) transitively or intransitively, literally',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5973: {
@@ -418,6 +392,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '임',
     glossKo: 'adverb or preposition, with (i.e. in conjunction with), in varied ap',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2424: {
@@ -428,18 +403,12 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     note: '한국어 성경과 교회에서 완전히 굳어진 고유명사다.',
     review: true,
   },
-  H259: {
-    lemma: 'אֶחָד',
-    translit: '',
-    translitKo: '에하드',
-    glossKo: 'properly, united, i.e. one; or (as an ordinal) first',
-    review: true,
-  },
   H3947: {
     lemma: 'לָקַח',
     translit: '',
     translitKo: '라카흐',
     glossKo: 'to take (in the widest variety of applications)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2036: {
@@ -447,6 +416,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'eipen',
     translitKo: '에포',
     glossKo: 'to speak or say (by word or writing)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H3045: {
@@ -454,6 +424,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '야다',
     glossKo: 'to know (properly, to ascertain by seeing); used in a great variety ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1537: {
@@ -461,6 +432,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ek',
     translitKo: '에크',
     glossKo: 'literal or figurative; direct or remote)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H854: {
@@ -468,6 +440,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '에트',
     glossKo: 'properly, nearness (used only as a preposition or an adverb), near; ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1909: {
@@ -475,6 +448,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'epi',
     translitKo: '에피',
     glossKo: 'properly, meaning superimposition (of time, place, order, etc.), as ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5927: {
@@ -482,6 +456,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '알라',
     glossKo: 'to ascend, intransitively (be high) or actively (mount); used in a g',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H5869: {
@@ -489,6 +464,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아인',
     glossKo: 'an eye (literally or figuratively); by analogy, a fountain (as the e',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H8141: {
@@ -496,6 +472,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '샤나',
     glossKo: 'a year (as a revolution of time)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H589: {
@@ -503,13 +480,15 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아니',
     glossKo: 'I',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1473: {
     lemma: 'ἐγώ',
     translit: 'egō',
     translitKo: '에고',
-    glossKo: '',
+    glossKo: 'I, me',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   H7971: {
@@ -517,6 +496,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '샬라흐',
     glossKo: 'to send away, for, or out (in a great variety of applications)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2962: {
@@ -532,6 +512,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'pros',
     translitKo: '프로스',
     glossKo: 'a preposition of direction; forward to, i.e. toward (with the geniti',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2192: {
@@ -539,6 +520,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'echei',
     translitKo: '에코',
     glossKo: 'to hold (used in very various applications, literally or figurativel',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1223: {
@@ -546,6 +528,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'dia',
     translitKo: '디아',
     glossKo: 'through (in very wide applications, local, causal, or occasional)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G575: {
@@ -553,6 +536,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'apo',
     translitKo: '아포',
     glossKo: '"off," i.e. away (from something near), in various senses (of place,',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1096: {
@@ -560,6 +544,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'egeneto',
     translitKo: '기노마이',
     glossKo: 'to cause to be ("gen"-erate), i.e. (reflexively) to become (come int',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2443: {
@@ -575,6 +560,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'all᾽',
     translitKo: '알라',
     glossKo: 'properly, other things, i.e. (adverbially) contrariwise (in many rel',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2064: {
@@ -582,6 +568,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ēlthen',
     translitKo: '에르코마이',
     glossKo: 'to come or go (in a great variety of applications, literally and fig',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G4160: {
@@ -589,6 +576,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'epoiēsen',
     translitKo: '포이에오',
     glossKo: 'to make or do (in a very wide application, more or less direct)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G5101: {
@@ -596,6 +584,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ti',
     translitKo: '티스',
     glossKo: 'an interrogative pronoun, who, which or what (in direct or indirect ',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G444: {
@@ -611,6 +600,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'tis',
     translitKo: '티스',
     glossKo: 'some or any person or object',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3767: {
@@ -618,6 +608,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'oun',
     translitKo: '운',
     glossKo: '(adverbially) certainly, or (conjunctionally) accordingly',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1487: {
@@ -625,6 +616,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ei',
     translitKo: '에이',
     glossKo: 'if, whether, that, etc.',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G5613: {
@@ -632,6 +624,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'hōs',
     translitKo: '호스',
     glossKo: 'which how, i.e. in that manner (very variously used, as follows)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2596: {
@@ -639,6 +632,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'kata',
     translitKo: '카타',
     glossKo: '(prepositionally) down (in place or time), in varied relations (acco',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3326: {
@@ -646,6 +640,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'meta',
     translitKo: '메타',
     glossKo: 'properly, denoting accompaniment; "amid" (local or causal); modified',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G191: {
@@ -653,6 +648,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'akousantes',
     translitKo: '아쿠오',
     glossKo: 'to hear (in various senses)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G3962: {
@@ -660,6 +656,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'patēr',
     translitKo: '파테르',
     glossKo: 'a "father" (literally or figuratively, near or more remote)',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1325: {
@@ -667,6 +664,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'edōken',
     translitKo: '디도미',
     glossKo: 'to give (used in a very wide application, properly, or by implicatio',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G2250: {
@@ -674,6 +672,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'hēmeras',
     translitKo: '헤메라',
     glossKo: 'day, i.e. (literally) the time space between dawn and dark, or the w',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G5207: {
@@ -681,6 +680,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'huios',
     translitKo: '휘오스',
     glossKo: 'a "son" (sometimes of animals), used very widely of immediate, remot',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1492: {
@@ -688,6 +688,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'eidon',
     translitKo: '에이도',
     glossKo: 'used only in certain past tenses, the others being borrowed from the',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G4183: {
@@ -703,6 +704,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ē',
     translitKo: '에',
     glossKo: 'disjunctive, or; comparative, than',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
   G1520: {
@@ -710,6 +712,16 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'heis',
     translitKo: '헤이스',
     glossKo: 'one',
+    note: '네 관점(SBL 엄밀식·개역개정 관용식·발음 중심·기존 표기 일관성)이 독립으로 작성한 표기가 모두 일치했다.',
     review: true,
   },
+};
+
+export const KOREAN_GLOSS_TOP_BATCH_01_META = {
+  batchId: 'top-frequency-batch-01',
+  status: 'candidate',
+  entryCount: 87,
+  reviewedCount: 85,
+  pendingCount: 2,
+  scope: '66권 전체 빈도 상위 100개 중 기존 사전에 없던 항목',
 };
