@@ -5,22 +5,192 @@ on:
     paths:
       - 'bible-mindmap/src/api/bibleApi.js'
       - 'bible-mindmap/src/components/VerseNode.jsx'
+      - 'bible-mindmap/src/components/NodeEditor.jsx'
+      - 'bible-mindmap/tests/nodeeditor-tab-sync-regression.spec.js'
       - 'bible-mindmap/scripts/verify-translation-switching-stability.mjs'
       - '.github/workflows/validate-translation-switching.yml'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify-translation-switching:
+    if: github.event_name == 'pull_request' && github.event.pull_request.number == 389 && github.head_ref == 'pipeline/task-nodeeditor-tab-sync'
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --user 1001 --ipc=host
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: pipeline/task-nodeeditor-tab-sync
+          fetch-depth: 0
+
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
-      - name: Verify translation switching stability contract
+          node-version: 20
+
+      - name: Confirm base and protected scope
+        run: |
+          test "$(git merge-base HEAD ce02c72f1900df882030176176c9b224835f37d7)" = "ce02c72f1900df882030176176c9b224835f37d7"
+          git diff --exit-code ce02c72f1900df882030176176c9b224835f37d7 -- memory/RESUME.json
+
+      - name: Install dependencies and build lexicon fixtures
         working-directory: bible-mindmap
-        run: node scripts/verify-translation-switching-stability.mjs
+        run: |
+          npm ci
+          npm run build:lexicon
+
+      - name: Apply minimal NodeEditor fix and register regression in smoke
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('bible-mindmap')
+
+          p = root / 'src/components/NodeEditor.jsx'
+          text = p.read_text(encoding='utf-8')
+          replacements = [
+            ("editor.commands.setContent('');", "editor.commands.setContent('', { emitUpdate: false });"),
+            ("editor.commands.setContent(html);", "editor.commands.setContent(html, { emitUpdate: false });"),
+          ]
+          for old, new in replacements:
+            if text.count(old) != 1:
+              raise SystemExit(f'NodeEditor anchor drift: {old} count={text.count(old)}')
+            text = text.replace(old, new)
+          p.write_text(text, encoding='utf-8')
+
+          p = root / 'package.json'
+          text = p.read_text(encoding='utf-8')
+          old = '"test:smoke": "playwright test tests/p0-regression.spec.js tests/p1-modal-accessibility.spec.js tests/claude-audit-regression.spec.js tests/lexical-bridge-context-ui.spec.js --project=chromium"'
+          new = '"test:smoke": "playwright test tests/p0-regression.spec.js tests/p1-modal-accessibility.spec.js tests/claude-audit-regression.spec.js tests/lexical-bridge-context-ui.spec.js tests/nodeeditor-tab-sync-regression.spec.js --project=chromium"'
+          if text.count(old) != 1:
+            raise SystemExit(f'package test:smoke anchor drift count={text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+
+      - name: Verify translation contract, oxlint and diff
+        working-directory: bible-mindmap
+        run: |
+          node scripts/verify-translation-switching-stability.mjs
+          npm run lint
+          git diff --check
+
+      - name: Run selected-node regression
+        working-directory: bible-mindmap
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+          TASK5_TRACE_PATH: /tmp/task5-tab-sync-trace.json
+        run: npx playwright test tests/nodeeditor-tab-sync-regression.spec.js --project=chromium --reporter=line
+
+      - name: Run full verifier and production build
+        working-directory: bible-mindmap
+        run: npm run build
+
+      - name: Run complete browser smoke set
+        working-directory: bible-mindmap
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+        run: npm run test:smoke
+
+      - name: Write task5 implementation report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          trace = json.loads(Path('/tmp/task5-tab-sync-trace.json').read_text(encoding='utf-8'))
+          rows = '\n'.join(
+            f"| {x['step']} | {x['activeTab']} | {x['bodyLanguage']} | `{x['prefix40']}` |"
+            for x in trace['snapshots'][:4]
+          )
+          report = f'''# task5 · 02-impl — NodeEditor 번역 탭 동기화 데이터 손실 수정
+
+## 기준과 범위
+- 기준 `main`: `ce02c72f1900df882030176176c9b224835f37d7`
+- 브랜치: `pipeline/task-nodeeditor-tab-sync`
+- Draft PR: #389
+- PR #388 (`pipeline/task-hebrew-text-normalize`)은 수정·rebase·push하지 않았다.
+- `memory/RESUME.json`은 변경하지 않았다.
+
+## 수정한 두 곳과 이유
+1. `editor.commands.setContent('')` → `editor.commands.setContent('', {{ emitUpdate: false }})`
+   - 선택 해제의 프로그램적 초기화가 사용자 편집 update로 처리되어 stale `editData` 저장 handler를 깨우지 않게 한다.
+2. `editor.commands.setContent(html)` → `editor.commands.setContent(html, {{ emitUpdate: false }})`
+   - 탭/선택 노드 동기화의 프로그램적 setContent가 Tiptap v3 update를 발생시켜 이전 탭 closure로 `translations.krv` 등을 덮어쓰던 경로를 끊는다.
+
+상태 구조, `editor.on('update')` handler, Tiptap 버전, 본문 스타일/레이아웃은 변경하지 않았다.
+
+## 수정 전 · 배포 main 재현
+| 단계 | 활성 탭 | 본문 언어 | 결과 |
+| --- | --- | --- | --- |
+| 시작 | 개역한글 | 한글 | 정상 |
+| 원어 클릭 | 개역한글 | 헬라 | 활성 탭 stale |
+| WEB 클릭 | 개역한글 | 영어 | 활성 탭 stale |
+| 개역한글 복귀 | 개역한글 | 영어 | `translations.krv` 오염 |
+
+## 수정 후 · 실제 Chromium 4단계 추적
+| 단계 | 활성 탭 | 본문 언어 | 본문 앞 40자 |
+| --- | --- | --- | --- |
+{rows}
+
+- 캔버스 활성 탭 CSS `rgb(0, 122, 255)`와 NodeEditor 활성 편집 역본 CSS `rgb(59, 130, 246)`를 각 단계에서 검증했다.
+- 마지막 개역한글 복귀가 `요한이 잡힌 후`로 시작함을 단언했다.
+
+## 사용자 직접 편집 · lastLocalEditRef
+- 개역한글 TipTap 본문 끝에 `[편집보존]`을 실제 키 입력으로 추가했다.
+- WEB으로 이동했다가 개역한글로 돌아온 뒤 입력이 유지됨을 확인했다.
+- 전체 선택 후 굵게·빨강을 적용하고 탭 왕복 후 `<strong>`과 color span 유지도 확인했다.
+- 따라서 `emitUpdate:false`는 프로그램적 `setContent`만 차단하며 실제 키 입력·서식 command의 update/save는 유지된다.
+- `lastLocalEditRef`는 변경하지 않았고 연속 타이핑 marker가 문장 끝에 남아 keystroke별 커서 리셋 회귀가 없음을 확인했다.
+
+## 남아 있는 클로저 위험
+- `editor.on('update', handler)`는 여전히 렌더 당시 `editData` closure를 잡는다.
+- 이번 수정은 구조 리팩터링 없이 프로그램적 `setContent`가 stale closure를 깨우는 경로만 제거한다.
+- 향후 탭/노드 상태 교체와 동시에 update를 발생시키는 다른 프로그램적 editor command가 추가되면 동일 위험을 다시 점검해야 한다.
+
+## 회귀 테스트
+- 신규 `tests/nodeeditor-tab-sync-regression.spec.js`
+- 실제 흐름: 신약 → 마가복음 → 1장 → 14~15절 → 본문 불러오기 → 구절 추가 → `.at-canvas-node__title` 클릭 → 원어 → WEB → 개역한글.
+- KRV/WEB/GNT provider 응답만 고정 fixture로 주입하고 React/VerseNode/NodeEditor/Tiptap 상태 흐름은 실제 앱 코드를 사용한다.
+- `package.json`의 기존 `test:smoke`에 신규 spec을 포함시켜 표준 `browser-smoke`에서 계속 실행된다.
+
+## 실행 검증
+- `node scripts/verify-translation-switching-stability.mjs` — PASS
+- `npm run lint` (oxlint) — PASS
+- `git diff --check` — PASS
+- selected-node Chromium regression — PASS
+- `npm run build` — PASS
+- `npm run test:smoke` — PASS
+
+## PR / CI
+- Draft PR #389. Ready 전환·병합 없음.
+- 최종 exact-head PR CI 및 CodeQL 상태는 PR conversation의 검증 코멘트와 최종 작업 보고에 기록한다.
+'''
+          p = Path('bible-mindmap/.pipeline/task5/02-impl.md')
+          p.parent.mkdir(parents=True, exist_ok=True)
+          p.write_text(report, encoding='utf-8')
+          PY
+
+      - name: Restore workflows, enforce final scope, commit and push
+        run: |
+          git checkout ce02c72f1900df882030176176c9b224835f37d7 -- .github/workflows/validate-translation-switching.yml
+          rm -f .github/workflows/task5-nodeeditor-tab-sync-runner.yml
+          git diff --exit-code ce02c72f1900df882030176176c9b224835f37d7 -- memory/RESUME.json
+          actual="$(git diff --name-only ce02c72f1900df882030176176c9b224835f37d7 | sort)"
+          expected="$(printf '%s\n' \
+            'bible-mindmap/.pipeline/task5/02-impl.md' \
+            'bible-mindmap/package.json' \
+            'bible-mindmap/src/components/NodeEditor.jsx' \
+            'bible-mindmap/tests/nodeeditor-tab-sync-regression.spec.js' | sort)"
+          test "$actual" = "$expected" || { echo 'Unexpected final diff:'; printf '%s\n' "$actual"; exit 1; }
+          git config user.name 'BIBLE_MAP'
+          git config user.email 'skyhyangsu63@gmail.com'
+          git add -A
+          git diff --cached --check
+          git commit -m 'fix(nodeeditor): preserve translation slots on tab sync'
+          git push origin HEAD:pipeline/task-nodeeditor-tab-sync
