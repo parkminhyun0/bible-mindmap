@@ -42,3 +42,5 @@ public/data/*
 # Playwright artifacts
 test-results/
 playwright-report/
+
+.claude/settings.local.json

@@ -1,0 +1,39 @@
+{
+  "shard": "A",
+  "model": "gem31pro",
+  "checked": 49,
+  "findings": [
+    {
+      "strong": "H4872",
+      "field": "note",
+      "current": null,
+      "suggested": "관용 표기(모세)와의 차이를 설명하는 내용",
+      "severity": "high",
+      "reason": "관용 표기가 굳은 고유명사이나 학술 표기(모셰)와의 차이 이유를 설명하는 note 필드가 누락되었습니다."
+    },
+    {
+      "strong": "H3063",
+      "field": "note",
+      "current": null,
+      "suggested": "관용 표기(유다)와의 차이를 설명하는 내용",
+      "severity": "high",
+      "reason": "관용 표기가 굳은 고유명사이나 학술 표기(예후다)와의 차이 이유를 설명하는 note 필드가 누락되었습니다."
+    },
+    {
+      "strong": "H3389",
+      "field": "note",
+      "current": null,
+      "suggested": "관용 표기(예루살렘)와의 차이를 설명하는 내용",
+      "severity": "medium",
+      "reason": "관용 표기가 굳은 고유명사이나 학술 표기(예루샬라임)와의 차이 이유를 설명하는 note 필드가 누락되었습니다."
+    },
+    {
+      "strong": "H4714",
+      "field": "note",
+      "current": null,
+      "suggested": "관용 표기(애굽/이집트)와의 차이를 설명하는 내용",
+      "severity": "medium",
+      "reason": "관용 표기가 굳은 고유명사이나 학술 표기(미츠라임)와의 차이 이유를 설명하는 note 필드가 누락되었습니다."
+    }
+  ]
+}

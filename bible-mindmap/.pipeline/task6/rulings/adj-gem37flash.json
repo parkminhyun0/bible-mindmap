@@ -1,0 +1,488 @@
+{
+  "model": "gem37flash",
+  "rules": {
+    "begadkepat": "SBL 라틴 음역에서 다게쉬 레네가 없는 베가드케파트 자음의 연음(마찰음화)을 하선/상선 부호(ḇ, ḡ, ḏ, ḵ, p̄, ṯ)로 엄밀히 구분하여 적는다. (학술 표기 기준: 원어 음운의 파열음/마찰음 대립 정보를 정확히 보존하기 위함이다.)",
+    "final_shin": "히브리어 שׁ(š)가 모음이 뒤따르지 않는 음절 말(어말 또는 음절 말)에 올 때 한글 표기는 \"…쉬\"로 통일한다. (학술 표기 기준: 무성 후치경 마찰음 [ʃ] 음가를 보존하고 שׂ([s], \"스\")와의 혼동을 방지하며 기존 사전 표기와의 일관성을 유지하기 위함이다.)",
+    "gemination": "히브리어 강 다게쉬(dagesh forte)에 의한 자음 중복은 한글에서 앞 음절 받침(ㅅ, ㅂ, ㅁ 등)으로 살려 적는다. (학술 표기 기준: 원어의 중복 자음(gemination) 음가를 충실히 반영하고 기존 사전 표기와의 일관성을 지키기 위함이다.)",
+    "waw": "자음 ו(waw)의 한글 표기는 현대식 \"바/베/비\" 대신 고전 히브리어 음가 및 SBL 전사(w)에 맞춰 \"와/웨/위/워\" 계열로 적는다. (학술 표기 기준: 고전 히브리어의 양순 반모음 [w] 음가와 SBL 학술 표준을 준수하기 위함이다.)",
+    "ayin_holam": "ע(ʿ)와 홀렘 바브(וֹ)가 결합된 음절(עָוֺן 등)은 \"아원\"으로 표기한다. (학술 표기 기준: ו가 단순 모음이 아닌 어근 자음[w]에 홀렘 모음이 결합된 음절 구조(wōn)이므로 자음 음가를 온전히 보존하기 위함이다.)"
+  },
+  "rulings": [
+    {
+      "strong": "H7586",
+      "translit": "šāʾûl",
+      "translitKo": "샤울",
+      "choice": "option2",
+      "note": "한국어 성경 관용 표기는 \"사울\"이나 학술 표기 원칙에 따라 שׁ(š)의 음가를 살린 \"샤울\"을 표제로 채택한다."
+    },
+    {
+      "strong": "H3701",
+      "translit": "kesep̄",
+      "translitKo": "케세프",
+      "choice": "other",
+      "note": "다게쉬가 없는 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 kesep̄를 채택한다."
+    },
+    {
+      "strong": "H7651",
+      "translit": "šeḇaʿ",
+      "translitKo": "셰바",
+      "choice": "option2",
+      "note": "다게쉬가 없는 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šeḇaʿ를 채택한다."
+    },
+    {
+      "strong": "H2091",
+      "translit": "zāhāḇ",
+      "translitKo": "자하브",
+      "choice": "option2",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 zāhāḇ를 채택한다."
+    },
+    {
+      "strong": "H3381",
+      "translit": "yāraḏ",
+      "translitKo": "야라드",
+      "choice": "option2",
+      "note": "어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 yāraḏ를 채택한다."
+    },
+    {
+      "strong": "H5002",
+      "translit": "nəʾum",
+      "translitKo": "네움",
+      "choice": "other",
+      "note": "유성 셰바(ְ)를 ə로 전사하는 SBL 학술 표기 규범에 따라 nəʾum을 채택한다."
+    },
+    {
+      "strong": "H5046",
+      "translit": "nāḡaḏ",
+      "translitKo": "나가드",
+      "choice": "option2",
+      "note": "기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 nāḡaḏ를 채택한다."
+    },
+    {
+      "strong": "H3290",
+      "translit": "yaʿăqōḇ",
+      "translitKo": "야아코브",
+      "choice": "option2",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 yaʿăqōḇ를 채택하며, 관용 표기 \"야곱\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H2568",
+      "translit": "ḥāmēš",
+      "translitKo": "하메쉬",
+      "choice": "option2",
+      "note": "음절 말 שׁ(š)의 마찰음 음가를 보존하는 표기 원칙에 따라 \"하메쉬\"로 판정한다."
+    },
+    {
+      "strong": "H5439",
+      "translit": "sāḇîḇ",
+      "translitKo": "사비브",
+      "choice": "option2",
+      "note": "다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇîḇ를 채택한다."
+    },
+    {
+      "strong": "H7704",
+      "translit": "śāḏeh",
+      "translitKo": "사데",
+      "choice": "other",
+      "note": "달렛(ד)의 연음(ḏ)과 어말 세골-헤(eh)를 모두 반영한 SBL 학술 표기 śāḏeh를 채택한다."
+    },
+    {
+      "strong": "H113",
+      "translit": "ʾāḏôn",
+      "translitKo": "아돈",
+      "choice": "option2",
+      "note": "달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʾāḏôn을 채택한다."
+    },
+    {
+      "strong": "H3627",
+      "translit": "kəlî",
+      "translitKo": "켈리",
+      "choice": "other",
+      "note": "유성 셰바(ְ)를 ə로 전사하는 SBL 학술 표기 규범에 따라 kəlî를 채택한다."
+    },
+    {
+      "strong": "H5030",
+      "translit": "nāḇîʾ",
+      "translitKo": "나비",
+      "choice": "option2",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 nāḇîʾ를 채택한다."
+    },
+    {
+      "strong": "H4940",
+      "translit": "mišpāḥâ",
+      "translitKo": "미쉬파하",
+      "choice": "option2",
+      "note": "음절 말 שׁ(š)를 \"쉬\"로 적는 표기 일관성에 따라 \"미쉬파하\"로 판정한다."
+    },
+    {
+      "strong": "H6485",
+      "translit": "pāqaḏ",
+      "translitKo": "파카드",
+      "choice": "option2",
+      "note": "어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 pāqaḏ를 채택한다."
+    },
+    {
+      "strong": "H3966",
+      "translit": "məʾōḏ",
+      "translitKo": "메오드",
+      "choice": "other",
+      "note": "유성 셰바(ə)와 어말 달렛의 연음(ḏ)을 모두 반영한 SBL 학술 표기 məʾōḏ를 채택한다."
+    },
+    {
+      "strong": "H6256",
+      "translit": "ʿēṯ",
+      "translitKo": "에트",
+      "choice": "option2",
+      "note": "어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 ʿēṯ를 채택한다."
+    },
+    {
+      "strong": "H2403",
+      "translit": "ḥaṭṭāʾâ",
+      "translitKo": "핫타아",
+      "choice": "option2",
+      "note": "테트(ט)의 강 다게쉬(dagesh forte) 중복음을 받침 ㅅ으로 살린 \"핫타아\"를 채택한다."
+    },
+    {
+      "strong": "H8010",
+      "translit": "šəlōmōh",
+      "translitKo": "셸로모",
+      "choice": "other",
+      "note": "유성 셰바(ə)와 어말 홀렘-헤(ōh)를 정확히 반영한 SBL 학술 표기 šəlōmōh를 채택하며, 관용 표기 \"솔로몬\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H6430",
+      "translit": "pəlištî",
+      "translitKo": "펠리쉬티",
+      "choice": "other",
+      "note": "유성 셰바(ə)와 음절 말 שׁ의 \"쉬\" 음가를 살린 SBL 학술 표기 pəlištî / \"펠리쉬티\"를 채택한다."
+    },
+    {
+      "strong": "H3772",
+      "translit": "kāraṯ",
+      "translitKo": "카라트",
+      "choice": "option2",
+      "note": "어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 kāraṯ를 채택한다."
+    },
+    {
+      "strong": "H5647",
+      "translit": "ʿāḇaḏ",
+      "translitKo": "아바드",
+      "choice": "option2",
+      "note": "베트(ב)와 달렛(ד)의 연음(ḇ, ḏ)을 반영한 SBL 학술 표기 ʿāḇaḏ를 채택한다."
+    },
+    {
+      "strong": "H2320",
+      "translit": "ḥōḏeš",
+      "translitKo": "호데쉬",
+      "choice": "option2",
+      "note": "달렛의 연음(ḏ)과 어말 שׁ의 \"쉬\" 음가를 모두 반영한 ḥōḏeš / \"호데쉬\"(option2)를 채택한다."
+    },
+    {
+      "strong": "H341",
+      "translit": "ʾōyēḇ",
+      "translitKo": "오예브",
+      "choice": "option2",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾōyēḇ를 채택한다."
+    },
+    {
+      "strong": "H7126",
+      "translit": "qāraḇ",
+      "translitKo": "카라브",
+      "choice": "option2",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 qāraḇ를 채택한다."
+    },
+    {
+      "strong": "H4294",
+      "translit": "maṭṭeh",
+      "translitKo": "맛테",
+      "choice": "option2",
+      "note": "테트(ט)의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"맛테\"를 채택한다."
+    },
+    {
+      "strong": "H1366",
+      "translit": "gəḇûl",
+      "translitKo": "게불",
+      "choice": "other",
+      "note": "유성 셰바(ə)와 베트의 연음(ḇ)을 모두 반영한 SBL 학술 표기 gəḇûl를 채택한다."
+    },
+    {
+      "strong": "H5771",
+      "translit": "ʿāwōn",
+      "translitKo": "아원",
+      "choice": "option1",
+      "note": "어근 자음 바브(w)와 홀렘 모음이 결합된 음절 구조(wōn)를 살려 \"아원\"으로 판정한다."
+    },
+    {
+      "strong": "H3091",
+      "translit": "yəhôšûaʿ",
+      "translitKo": "예호슈아",
+      "choice": "option2",
+      "note": "유성 셰바(ə)와 어말 아인 앞 furtive patach(uaʿ)를 반영한 SBL 학술 표기 yəhôšûaʿ를 채택한다."
+    },
+    {
+      "strong": "H3130",
+      "translit": "yôsēp̄",
+      "translitKo": "요세프",
+      "choice": "option1",
+      "note": "어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yôsēp̄를 채택하며, 관용 표기 \"요셉\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3254",
+      "translit": "yāsap̄",
+      "translitKo": "야사프",
+      "choice": "option1",
+      "note": "어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yāsap̄를 채택한다."
+    },
+    {
+      "strong": "H7901",
+      "translit": "šāḵaḇ",
+      "translitKo": "샤카브",
+      "choice": "option1",
+      "note": "카프(כ)와 베트(ב)의 연음(ḵ, ḇ)을 반영한 SBL 학술 표기 šāḵaḇ를 채택한다."
+    },
+    {
+      "strong": "H157",
+      "translit": "ʾāhaḇ",
+      "translitKo": "아하브",
+      "choice": "option1",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾāhaḇ를 채택한다."
+    },
+    {
+      "strong": "H3467",
+      "translit": "yāšaʿ",
+      "translitKo": "야샤",
+      "choice": "option1",
+      "note": "שָׁ의 정확한 한글 음역인 \"샤\"를 따라 \"야샤\"로 판정한다."
+    },
+    {
+      "strong": "H8199",
+      "translit": "šāp̄aṭ",
+      "translitKo": "샤파트",
+      "choice": "option1",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 šāp̄aṭ를 채택한다."
+    },
+    {
+      "strong": "H622",
+      "translit": "ʾāsap̄",
+      "translitKo": "아사프",
+      "choice": "option1",
+      "note": "어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾāsap̄를 채택한다."
+    },
+    {
+      "strong": "H3201",
+      "translit": "yāḵōl",
+      "translitKo": "야콜",
+      "choice": "option1",
+      "note": "카프(כ)의 연음(ḵ)을 반영한 SBL 학술 표기 yāḵōl를 채택한다."
+    },
+    {
+      "strong": "H3709",
+      "translit": "kap̄",
+      "translitKo": "카프",
+      "choice": "option1",
+      "note": "어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 kap̄를 채택한다."
+    },
+    {
+      "strong": "H929",
+      "translit": "bəhēmâ",
+      "translitKo": "베헤마",
+      "choice": "option1",
+      "note": "유성 셰바(ə)를 정확히 반영한 SBL 학술 표기 bəhēmâ를 채택한다."
+    },
+    {
+      "strong": "H5612",
+      "translit": "sēp̄er",
+      "translitKo": "세페르",
+      "choice": "option1",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sēp̄er를 채택한다."
+    },
+    {
+      "strong": "H7650",
+      "translit": "šāḇaʿ",
+      "translitKo": "샤바",
+      "choice": "option1",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šāḇaʿ를 채택한다."
+    },
+    {
+      "strong": "H6",
+      "translit": "ʾāḇaḏ",
+      "translitKo": "아바드",
+      "choice": "other",
+      "note": "베트(ב)와 달렛(ד)의 연음(ḇ, ḏ)을 모두 반영한 SBL 학술 표기 ʾāḇaḏ를 채택한다."
+    },
+    {
+      "strong": "H4687",
+      "translit": "miṣwâ",
+      "translitKo": "미츠와",
+      "choice": "option1",
+      "note": "고전 히브리어 바브(w) 음가와 SBL 전사에 따라 \"미츠와\"로 판정한다."
+    },
+    {
+      "strong": "H4124",
+      "translit": "môʾāḇ",
+      "translitKo": "모아브",
+      "choice": "option1",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 môʾāḇ를 채택하며, 관용 표기 \"모압\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H669",
+      "translit": "ʾep̄rayim",
+      "translitKo": "에프라임",
+      "choice": "option1",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾep̄rayim을 채택하며, 관용 표기 \"에브라임\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4430",
+      "translit": "meleḵ",
+      "translitKo": "멜레크",
+      "choice": "option1",
+      "note": "어말 카프(ךְ)의 연음(ḵ)과 음절 구조를 반영한 SBL 학술 표기 meleḵ / \"멜레크\"를 채택한다."
+    },
+    {
+      "strong": "H8193",
+      "translit": "śāp̄â",
+      "translitKo": "사파",
+      "choice": "option1",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 śāp̄â를 채택한다."
+    },
+    {
+      "strong": "H85",
+      "translit": "ʾaḇrāhām",
+      "translitKo": "아브라함",
+      "choice": "option1",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾaḇrāhām을 채택한다."
+    },
+    {
+      "strong": "H7970",
+      "translit": "šəlôšîm",
+      "translitKo": "셸로심",
+      "choice": "option2",
+      "note": "유성 셰바(ə)와 홀렘 바브(ô)를 반영한 SBL 학술 표기 šəlôšîm을 채택한다."
+    },
+    {
+      "strong": "H4399",
+      "translit": "məlāʾḵâ",
+      "translitKo": "멜라카",
+      "choice": "option2",
+      "note": "유성 셰바(ə)와 카프의 연음(ḵ)을 모두 반영한 SBL 학술 표기 məlāʾḵâ를 채택한다."
+    },
+    {
+      "strong": "H2572",
+      "translit": "ḥămiššîm",
+      "translitKo": "하미쉼",
+      "choice": "option1",
+      "note": "שׁ(š)의 음가를 살린 한글 표기 \"하미쉼\"을 채택한다."
+    },
+    {
+      "strong": "H1368",
+      "translit": "gibbôr",
+      "translitKo": "깁보르",
+      "choice": "option2",
+      "note": "베트(בּ)의 강 다게쉬 중복음을 받침 ㅂ으로 반영한 \"깁보르\"를 채택한다."
+    },
+    {
+      "strong": "H2077",
+      "translit": "zeḇaḥ",
+      "translitKo": "제바흐",
+      "choice": "option2",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 zeḇaḥ를 채택한다."
+    },
+    {
+      "strong": "H5437",
+      "translit": "sāḇaḇ",
+      "translitKo": "사바브",
+      "choice": "option2",
+      "note": "다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇaḇ를 채택한다."
+    },
+    {
+      "strong": "H5608",
+      "translit": "sāp̄ar",
+      "translitKo": "사파르",
+      "choice": "option2",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sāp̄ar를 채택한다."
+    },
+    {
+      "strong": "H6666",
+      "translit": "ṣəḏāqâ",
+      "translitKo": "체다카",
+      "choice": "option2",
+      "note": "유성 셰바(ə)와 달렛의 연음(ḏ)을 반영한 SBL 학술 표기 ṣəḏāqâ를 채택한다."
+    },
+    {
+      "strong": "H4194",
+      "translit": "māweṯ",
+      "translitKo": "마웨트",
+      "choice": "option2",
+      "note": "어말 타브(ת)의 연음(ṯ)과 바브의 w 음가를 반영한 SBL 학술 표기 māweṯ를 채택한다."
+    },
+    {
+      "strong": "H6828",
+      "translit": "ṣāp̄ôn",
+      "translitKo": "차폰",
+      "choice": "option2",
+      "note": "페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ṣāp̄ôn을 채택한다."
+    },
+    {
+      "strong": "H804",
+      "translit": "ʾaššûr",
+      "translitKo": "앗슈르",
+      "choice": "option1",
+      "note": "שּׁ의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"앗슈르\"를 채택하며, 관용 표기 \"앗수르\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H5048",
+      "translit": "neḡeḏ",
+      "translitKo": "네게드",
+      "choice": "option2",
+      "note": "기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 neḡeḏ를 채택한다."
+    },
+    {
+      "strong": "H5060",
+      "translit": "nāḡaʿ",
+      "translitKo": "나가",
+      "choice": "option2",
+      "note": "기멜(ג)의 연음(ḡ)을 반영한 SBL 학술 표기 nāḡaʿ를 채택한다."
+    },
+    {
+      "strong": "H7230",
+      "translit": "rōḇ",
+      "translitKo": "로브",
+      "choice": "option2",
+      "note": "어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 rōḇ를 채택한다."
+    },
+    {
+      "strong": "H5712",
+      "translit": "ʿēḏâ",
+      "translitKo": "에다",
+      "choice": "option2",
+      "note": "달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʿēḏâ를 채택한다."
+    },
+    {
+      "strong": "H3414",
+      "translit": "yirməyâ",
+      "translitKo": "이르메야",
+      "choice": "option2",
+      "note": "유성 셰바(ə)와 어말 카메츠-헤(â)를 반영한 SBL 학술 표기 yirməyâ를 채택하며, 관용 표기 \"예레미야\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H7665",
+      "translit": "šāḇar",
+      "translitKo": "샤바르",
+      "choice": "option2",
+      "note": "베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šāḇar를 채택한다."
+    },
+    {
+      "strong": "H4519",
+      "translit": "mənaššeh",
+      "translitKo": "메나셰",
+      "choice": "other",
+      "note": "유성 셰바(ə)와 어말 세골-헤(eh)를 살린 SBL 라틴 표기 mənaššeh와 신-세골(še)의 올바른 한글 표기 \"메나셰\"를 채택한다. (관용 표기 \"므낫세\"와 차이 있음)"
+    },
+    {
+      "strong": "H7843",
+      "translit": "šāḥaṯ",
+      "translitKo": "샤하트",
+      "choice": "option2",
+      "note": "어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 šāḥaṯ를 채택한다."
+    }
+  ]
+}
