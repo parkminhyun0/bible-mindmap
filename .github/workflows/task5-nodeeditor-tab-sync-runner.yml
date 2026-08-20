@@ -1,17 +1,16 @@
 name: Task5 NodeEditor tab sync implementation runner
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/workflows/task5-nodeeditor-tab-sync-runner.yml'
+  push:
+    branches:
+      - pipeline/task-nodeeditor-tab-sync
 
 permissions:
   contents: write
 
 jobs:
   implement-verify-and-push:
-    if: github.head_ref == 'pipeline/task-nodeeditor-tab-sync'
+    if: github.ref_name == 'pipeline/task-nodeeditor-tab-sync'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -266,7 +265,7 @@ test('선택된 구절 노드의 번역 탭은 KRV 슬롯을 덮어쓰지 않고
       - name: Write implementation report
         shell: bash
         env:
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_NUMBER: '389'
         run: |
           python - <<'PY'
           import json, os
