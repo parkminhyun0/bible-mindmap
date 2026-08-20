@@ -99,7 +99,7 @@ export default function NodeEditor({
     if (!selectedNode) {
       setEditData(null);
       lastLocalEditRef.current = { nodeId: null, tab: null, html: null };
-      editor.commands.setContent('');
+      editor.commands.setContent('', { emitUpdate: false });
       setContemporaries(null);
       setContError('');
       setPlacePersons(null);
@@ -128,12 +128,23 @@ export default function NodeEditor({
 
     // 방금 로컬 편집으로 저장했던 값이면 setContent 재호출 안 함
     // (그렇지 않으면 매 keystroke마다 커서/선택이 리셋되어 볼드·색상이 안 먹힘)
+    //
+    // 단, 편집기가 실제로 그 html을 들고 있을 때만 건너뛴다. 탭을 바꿨다가
+    // 돌아오면 편집기에는 직전 탭 내용이 남아 있는데, 저장 기록만 보고
+    // 건너뛰면 편집기와 노드 본문이 어긋난 채 굳는다. 그 상태에서 타이핑하면
+    // 직전 탭 내용이 현재 탭 슬롯에 저장되어 본문이 사라진다.
     const last = lastLocalEditRef.current;
-    if (last.nodeId === selectedNode.id && last.tab === activeTab && last.html === html) {
+    if (
+      last.nodeId === selectedNode.id
+      && last.tab === activeTab
+      && last.html === html
+      && isEditorUsable(editor)
+      && editor.getHTML() === html
+    ) {
       return;
     }
     if (isEditorUsable(editor) && editor.getHTML() !== html) {
-      editor.commands.setContent(html);
+      editor.commands.setContent(html, { emitUpdate: false });
     }
   }, [selectedNode, editor]);
 

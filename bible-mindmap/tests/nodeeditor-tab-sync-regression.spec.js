@@ -132,12 +132,26 @@ test('선택된 구절 노드의 번역 탭은 KRV 슬롯을 덮어쓰지 않고
   const editor = toolbar.locator('.node-editor-tiptap .ProseMirror');
   await expect(editor).toBeVisible();
   await editor.click();
-  await page.keyboard.press('End');
+  // 'End'는 줄 끝까지만 가고, 전체 선택 후 ArrowRight는 ProseMirror에서
+  // 접히지 않아 본문을 덮어쓴다. DOM Range로 문서 끝에 캐럿을 직접 둔다.
+  await page.evaluate(() => {
+    const el = document.querySelector(
+      '[data-node-editor-toolbar="true"] .node-editor-tiptap .ProseMirror',
+    );
+    const range = document.createRange();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+  });
   await page.keyboard.type(' [편집보존]');
   await expect(editor).toContainText('[편집보존]');
+  // 캐럿이 접히지 않아 전체 선택을 덮어썼다면 본문이 통째로 사라진다. 둘 다 본다.
   expect((await editor.innerText()).trim()).toMatch(/\[편집보존\]$/u);
+  expect((await editor.innerText()).replace(/\s+/gu, ' ')).toContain('요한이 잡힌 후');
 
-  await page.keyboard.press('Control+A');
+  await page.keyboard.press('ControlOrMeta+A');
   await toolbar.getByTitle('굵게 (Ctrl+B)').click();
   await toolbar.locator('button[title="빨강"]').first().click();
   await expect(editor.locator('strong').first()).toBeVisible();
