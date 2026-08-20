@@ -16,6 +16,10 @@ import {
   KOREAN_GLOSS_TOP_BATCH_01,
   KOREAN_GLOSS_TOP_BATCH_01_META,
 } from '../src/data/koreanGlossTopBatch01.js';
+import {
+  KOREAN_GLOSS_TOP_BATCH_02,
+  KOREAN_GLOSS_TOP_BATCH_02_META,
+} from '../src/data/koreanGlossTopBatch02.js';
 import { KOREAN_GLOSS_ACTIVE } from '../src/data/koreanGlossActive.js';
 import { findKoreanSpans, splitGlossCandidates } from '../src/utils/translationAlignment.js';
 
@@ -68,9 +72,11 @@ for (const { entries: batch, meta } of batches) {
 // 빈도 상위 배치(구약·신약 공통)도 같은 규칙으로 검사한다. 창세기 배치와 달리
 // 헬라어(G) 항목을 포함하고, TAHOT 에 학술 음역 필드가 없어 히브리어 translit 은
 // 비어 있을 수 있다. 그 두 가지만 다르고 나머지 계약은 동일하다.
-{
-  const meta = KOREAN_GLOSS_TOP_BATCH_01_META;
-  const entries = Object.entries(KOREAN_GLOSS_TOP_BATCH_01);
+for (const { entries: topBatch, meta } of [
+  { entries: KOREAN_GLOSS_TOP_BATCH_01, meta: KOREAN_GLOSS_TOP_BATCH_01_META },
+  { entries: KOREAN_GLOSS_TOP_BATCH_02, meta: KOREAN_GLOSS_TOP_BATCH_02_META },
+]) {
+  const entries = Object.entries(topBatch);
   if (entries.length !== meta.entryCount) {
     errors.push(`${meta.batchId}: entryCount mismatch meta=${meta.entryCount}, actual=${entries.length}`);
   }
@@ -119,6 +125,17 @@ for (const { entries: batch, meta } of batches) {
   }
   if (entries.length - reviewed !== meta.pendingCount) {
     errors.push(`${meta.batchId}: pendingCount mismatch meta=${meta.pendingCount}, actual=${entries.length - reviewed}`);
+  }
+}
+
+// batch 02 는 히브리어 학술 음역까지 직접 채운 배치라 batch 01 과 달리 translit 이
+// 비어 있으면 안 된다. 또 박 목사님 확인 전까지 전 항목이 검토 대상으로 남아야 한다.
+for (const [strong, entry] of Object.entries(KOREAN_GLOSS_TOP_BATCH_02)) {
+  if (typeof entry.translit !== 'string' || entry.translit.trim() === '') {
+    errors.push(`${strong}: top-frequency-batch-02 requires a non-empty translit`);
+  }
+  if (entry.review !== true) {
+    errors.push(`${strong}: top-frequency-batch-02 entries must remain review=true until approval`);
   }
 }
 

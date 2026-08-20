@@ -1,0 +1,2440 @@
+{
+  "batchId": "top-frequency-batch-02",
+  "rules": {
+    "begadkepat": "SBL 라틴에서 베가드케파트 연음 구분 기호를 쓰지 않는다 (선례: ṭôb · ʿereb · bōqer).",
+    "gemination": "다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다 (선례: 아타 · 카포레트 · 탈라사).",
+    "final_shin": "음절 말 שׁ 는 쉬로 적는다 (선례: 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬).",
+    "waw": "자음 ו 는 w 로 보고 와/웨/위/워로 적는다 (판정자 3/3 합의).",
+    "ayin_holam": "ע + 홀렘 바브는 아원으로 적는다 (판정자 3/3 합의)."
+  },
+  "ruleBasis": "표결이 아니라 이미 배포된 koreanGloss·창세기 배치의 선례를 기준으로 확정했다.",
+  "total": 245,
+  "changesByRule": {
+    "gemination": 5,
+    "begadkepat": 44
+  },
+  "changes": [
+    {
+      "strong": "H802",
+      "rule": "gemination",
+      "field": "translitKo",
+      "from": "잇샤",
+      "to": "이샤"
+    },
+    {
+      "strong": "H3701",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "kesep̄",
+      "to": "kesep"
+    },
+    {
+      "strong": "H7651",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šeḇaʿ",
+      "to": "šebaʿ"
+    },
+    {
+      "strong": "H2091",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "zāhāḇ",
+      "to": "zāhāb"
+    },
+    {
+      "strong": "H3381",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "yāraḏ",
+      "to": "yārad"
+    },
+    {
+      "strong": "H5046",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "nāḡaḏ",
+      "to": "nāgad"
+    },
+    {
+      "strong": "H3290",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "yaʿăqōḇ",
+      "to": "yaʿăqōb"
+    },
+    {
+      "strong": "H5439",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "sāḇîḇ",
+      "to": "sābîb"
+    },
+    {
+      "strong": "H7704",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "śāḏeh",
+      "to": "śādeh"
+    },
+    {
+      "strong": "H113",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾāḏôn",
+      "to": "ʾādôn"
+    },
+    {
+      "strong": "H5030",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "nāḇîʾ",
+      "to": "nābîʾ"
+    },
+    {
+      "strong": "H6485",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "pāqaḏ",
+      "to": "pāqad"
+    },
+    {
+      "strong": "H6256",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʿēṯ",
+      "to": "ʿēt"
+    },
+    {
+      "strong": "H2403",
+      "rule": "gemination",
+      "field": "translitKo",
+      "from": "핫타아",
+      "to": "하타아"
+    },
+    {
+      "strong": "H3772",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "kāraṯ",
+      "to": "kārat"
+    },
+    {
+      "strong": "H5647",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʿāḇaḏ",
+      "to": "ʿābad"
+    },
+    {
+      "strong": "H2320",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ḥōḏeš",
+      "to": "ḥōdeš"
+    },
+    {
+      "strong": "H341",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾōyēḇ",
+      "to": "ʾōyēb"
+    },
+    {
+      "strong": "H7126",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "qāraḇ",
+      "to": "qārab"
+    },
+    {
+      "strong": "H4294",
+      "rule": "gemination",
+      "field": "translitKo",
+      "from": "맛테",
+      "to": "마테"
+    },
+    {
+      "strong": "H3130",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "yôsēp̄",
+      "to": "yôsēp"
+    },
+    {
+      "strong": "H3254",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "yāsap̄",
+      "to": "yāsap"
+    },
+    {
+      "strong": "H7901",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šāḵaḇ",
+      "to": "šākab"
+    },
+    {
+      "strong": "H157",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾāhaḇ",
+      "to": "ʾāhab"
+    },
+    {
+      "strong": "H8199",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šāp̄aṭ",
+      "to": "šāpaṭ"
+    },
+    {
+      "strong": "H622",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾāsap̄",
+      "to": "ʾāsap"
+    },
+    {
+      "strong": "H3201",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "yāḵōl",
+      "to": "yākōl"
+    },
+    {
+      "strong": "H3709",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "kap̄",
+      "to": "kap"
+    },
+    {
+      "strong": "H5612",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "sēp̄er",
+      "to": "sēper"
+    },
+    {
+      "strong": "H7650",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šāḇaʿ",
+      "to": "šābaʿ"
+    },
+    {
+      "strong": "H6",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾāḇaḏ",
+      "to": "ʾābad"
+    },
+    {
+      "strong": "H4124",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "môʾāḇ",
+      "to": "môʾāb"
+    },
+    {
+      "strong": "H669",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾep̄rayim",
+      "to": "ʾeprayim"
+    },
+    {
+      "strong": "H4430",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "meleḵ",
+      "to": "melek"
+    },
+    {
+      "strong": "H8193",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "śāp̄â",
+      "to": "śāpâ"
+    },
+    {
+      "strong": "H85",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʾaḇrāhām",
+      "to": "ʾabrāhām"
+    },
+    {
+      "strong": "H1368",
+      "rule": "gemination",
+      "field": "translitKo",
+      "from": "깁보르",
+      "to": "기보르"
+    },
+    {
+      "strong": "H2077",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "zeḇaḥ",
+      "to": "zebaḥ"
+    },
+    {
+      "strong": "H5437",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "sāḇaḇ",
+      "to": "sābab"
+    },
+    {
+      "strong": "H5608",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "sāp̄ar",
+      "to": "sāpar"
+    },
+    {
+      "strong": "H4194",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "māweṯ",
+      "to": "māwet"
+    },
+    {
+      "strong": "H6828",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ṣāp̄ôn",
+      "to": "ṣāpôn"
+    },
+    {
+      "strong": "H804",
+      "rule": "gemination",
+      "field": "translitKo",
+      "from": "앗슈르",
+      "to": "아슈르"
+    },
+    {
+      "strong": "H5048",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "neḡeḏ",
+      "to": "neged"
+    },
+    {
+      "strong": "H5060",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "nāḡaʿ",
+      "to": "nāgaʿ"
+    },
+    {
+      "strong": "H7230",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "rōḇ",
+      "to": "rōb"
+    },
+    {
+      "strong": "H5712",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "ʿēḏâ",
+      "to": "ʿēdâ"
+    },
+    {
+      "strong": "H7665",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šāḇar",
+      "to": "šābar"
+    },
+    {
+      "strong": "H7843",
+      "rule": "begadkepat",
+      "field": "translit",
+      "from": "šāḥaṯ",
+      "to": "šāḥat"
+    }
+  ],
+  "entries": [
+    {
+      "strong": "H4191",
+      "lemma": "מוּת",
+      "translit": "mût",
+      "translitKo": "무트",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3063",
+      "lemma": "יְהוּדָה",
+      "translit": "yəhûdâ",
+      "translitKo": "예후다",
+      "note": "관용 표기 '유다'와 차이",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H398",
+      "lemma": "אָכַל",
+      "translit": "ʾākal",
+      "translitKo": "아칼",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5650",
+      "lemma": "עֶבֶד",
+      "translit": "ʿebed",
+      "translitKo": "에베드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H369",
+      "lemma": "אַיִן",
+      "translit": "ʾayin",
+      "translitKo": "아인",
+      "note": "알레프로 시작하는 이 낱말(ʾayin, 없음)은 H5869 עַ֫יִן(ʿayin, 눈)과 한글로는 똑같이 아인이 된다. 라틴 표기의 ʾ/ʿ로만 구별된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H802",
+      "lemma": "אִשָּׁה",
+      "translit": "ʾiššâ",
+      "translitKo": "이샤",
+      "note": "다게시로 겹친 שּׁ(šš)를 받침 ㅅ으로 살려 잇샤로 적는다. 겹침을 살리지 않는 이샤 표기도 쓰인다.",
+      "origin": "agreed",
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H8147",
+      "lemma": "שְׁנַיִם",
+      "translit": "šənayim",
+      "translitKo": "셰나임",
+      "note": "유성 셰바(šə-)를 아셰르(אֲשֶׁר)와 같은 계열로 보아 셰로 적는다. 쉬나임 표기도 쓰인다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4872",
+      "lemma": "מֹשֶׁה",
+      "translit": "mōšeh",
+      "translitKo": "모셰",
+      "note": "관용 표기 '모세'와 차이",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5315",
+      "lemma": "נֶפֶשׁ",
+      "translit": "nepeš",
+      "translitKo": "네페쉬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H310",
+      "lemma": "אַחַר",
+      "translit": "ʾaḥar",
+      "translitKo": "아하르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1870",
+      "lemma": "דֶּרֶךְ",
+      "translit": "derek",
+      "translitKo": "데레크",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7451",
+      "lemma": "רַע",
+      "translit": "raʿ",
+      "translitKo": "라",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5375",
+      "lemma": "נָשָׂא",
+      "translit": "nāśāʾ",
+      "translitKo": "나사",
+      "note": "שׂ는 ś(사)이지 š(샤)가 아니다. 나샤로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3389",
+      "lemma": "יְרוּשָׁלַ͏ִם",
+      "translit": "yərûšālaim",
+      "translitKo": "예루샬라임",
+      "note": "관용 표기 '예루살렘'과 차이",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4714",
+      "lemma": "מִצְרַיִם",
+      "translit": "miṣrayim",
+      "translitKo": "미츠라임",
+      "note": "관용 표기 '애굽'과 차이",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H251",
+      "lemma": "אָח",
+      "translit": "ʾāḥ",
+      "translitKo": "아흐",
+      "note": "어말 ח(ḥ)를 루아흐(רוּחַ)와 같이 흐로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6965",
+      "lemma": "קוּם",
+      "translit": "qûm",
+      "translitKo": "쿰",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7218",
+      "lemma": "רֹאשׁ",
+      "translit": "rōʾš",
+      "translitKo": "로쉬",
+      "note": "중간의 א(ʾ)는 소리 나지 않아 한글로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3820",
+      "lemma": "לֵב",
+      "translit": "lēb",
+      "translitKo": "레브",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1323",
+      "lemma": "בַּת",
+      "translit": "bat",
+      "translitKo": "바트",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7760",
+      "lemma": "שׂוּם",
+      "translit": "śûm",
+      "translitKo": "숨",
+      "note": "שׂ는 ś(수)이지 š(슈)가 아니다. 슘으로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3967",
+      "lemma": "מֵאָה",
+      "translit": "mēʾâ",
+      "translitKo": "메아",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1471",
+      "lemma": "גּוֹי",
+      "translit": "gôy",
+      "translitKo": "고이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H582",
+      "lemma": "אֱנוֹשׁ",
+      "translit": "ʾĕnôš",
+      "translitKo": "에노쉬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5674",
+      "lemma": "עָבַר",
+      "translit": "ʿābar",
+      "translitKo": "아바르",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H120",
+      "lemma": "אָדָם",
+      "translit": "ʾādām",
+      "translitKo": "아담",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2896",
+      "lemma": "טוֹב",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1419",
+      "lemma": "גָּדוֹל",
+      "translit": "gādôl",
+      "translitKo": "가돌",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5975",
+      "lemma": "עָמַד",
+      "translit": "ʿāmad",
+      "translitKo": "아마드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6963",
+      "lemma": "קוֹל",
+      "translit": "qôl",
+      "translitKo": "콜",
+      "note": "H3605 כֹּל(kōl, 모두)과 한글로는 똑같이 콜이 된다. 라틴 표기의 q/k로만 구별된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H505",
+      "lemma": "אֶלֶף",
+      "translit": "ʾelep",
+      "translitKo": "엘레프",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8478",
+      "lemma": "תַּחַת",
+      "translit": "taḥat",
+      "translitKo": "타하트",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5221",
+      "lemma": "נָכָה",
+      "translit": "nākâ",
+      "translitKo": "나카",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6310",
+      "lemma": "פֶּה",
+      "translit": "peh",
+      "translitKo": "페",
+      "note": "어말 ה(h)는 소리 나지 않아 한글로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2416",
+      "lemma": "חַי",
+      "translit": "ḥay",
+      "translitKo": "하이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3205",
+      "lemma": "יָלַד",
+      "translit": "yālad",
+      "translitKo": "얄라드",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6680",
+      "lemma": "צָוָה",
+      "translit": "ṣāwâ",
+      "translitKo": "차와",
+      "note": "ו를 성서 히브리어의 w로 읽어 차와로 적는다. 현대 히브리어 발음(v)을 따르면 차바가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5750",
+      "lemma": "עוֹד",
+      "translit": "ʿôd",
+      "translitKo": "오드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6635",
+      "lemma": "צָבָא",
+      "translit": "ṣābāʾ",
+      "translitKo": "차바",
+      "note": "어말 א(ʾ)는 소리 나지 않아 한글로 적지 않는다. 복수 연계형 צְבָאוֹת는 츠바오트(만군)로 굳어 있다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6944",
+      "lemma": "קֹדֶשׁ",
+      "translit": "qōdeš",
+      "translitKo": "코데쉬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8104",
+      "lemma": "שָׁמַר",
+      "translit": "šāmar",
+      "translitKo": "샤마르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4672",
+      "lemma": "מָצָא",
+      "translit": "māṣāʾ",
+      "translitKo": "마차",
+      "note": "어말 א(ʾ)는 소리 나지 않아 한글로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7227",
+      "lemma": "רַב",
+      "translit": "rab",
+      "translitKo": "라브",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H136",
+      "lemma": "אֲדֹנָי",
+      "translit": "ʾădōnāy",
+      "translitKo": "아도나이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5769",
+      "lemma": "עוֹלָם",
+      "translit": "ʿôlām",
+      "translitKo": "올람",
+      "note": "ע는 한글로 따로 적지 않음",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5307",
+      "lemma": "נָפַל",
+      "translit": "nāpal",
+      "translitKo": "나팔",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7969",
+      "lemma": "שָׁלוֹשׁ",
+      "translit": "šālôš",
+      "translitKo": "샬로쉬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8269",
+      "lemma": "שַׂר",
+      "translit": "śar",
+      "translitKo": "사르",
+      "note": "שׂ는 ś(사)이지 š(샤)가 아니다. 샤르로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8432",
+      "lemma": "תָּוֶךְ",
+      "translit": "tāwek",
+      "translitKo": "타웨크",
+      "note": "ו를 성서 히브리어의 w로 읽어 타웨크로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4725",
+      "lemma": "מָקוֹם",
+      "translit": "māqôm",
+      "translitKo": "마콤",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4196",
+      "lemma": "מִזְבֵּחַ",
+      "translit": "mizbēaḥ",
+      "translitKo": "미즈베아흐",
+      "note": "어말 후음 앞의 a는 furtive patach(숨은 파타흐)로 발음 순서에 따라 아흐로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1129",
+      "lemma": "בָּנָה",
+      "translit": "bānâ",
+      "translitKo": "바나",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G80",
+      "lemma": "ἀδελφός",
+      "translit": "adelphós",
+      "translitKo": "아델포스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4427",
+      "lemma": "מָלַךְ",
+      "translit": "mālak",
+      "translitKo": "말라크",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H175",
+      "lemma": "אַהֲרוֹן",
+      "translit": "ʾahărôn",
+      "translitKo": "아하론",
+      "note": "관용 표기는 아론이나, 후음 h와 모음 ă를 반영하여 학술 표기 아하론을 표제로 한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H168",
+      "lemma": "אֹהֶל",
+      "translit": "ʾōhel",
+      "translitKo": "오헬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6240",
+      "lemma": "עָשָׂר",
+      "translit": "ʿāśār",
+      "translitKo": "아사르",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6030",
+      "lemma": "עָנָה",
+      "translit": "ʿānâ",
+      "translitKo": "아나",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1288",
+      "lemma": "בָרַךְ",
+      "translit": "bārak",
+      "translitKo": "바라크",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4421",
+      "lemma": "מִלְחָמָה",
+      "translit": "milḥāmâ",
+      "translitKo": "밀하마",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H702",
+      "lemma": "אַרְבַּע",
+      "translit": "ʾarbaʿ",
+      "translitKo": "아르바",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3372",
+      "lemma": "יָרֵא",
+      "translit": "yārēʾ",
+      "translitKo": "야레",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6242",
+      "lemma": "עֶשְׂרִים",
+      "translit": "ʿeśrîm",
+      "translitKo": "에스림",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3069",
+      "lemma": "יְהֹוִה",
+      "translit": "yĕhōwih",
+      "translitKo": "예호위",
+      "note": "신명을 엘로힘으로 대독할 때의 모음 부호가 붙은 형태다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5493",
+      "lemma": "סוּר",
+      "translit": "sûr",
+      "translitKo": "수르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2980",
+      "lemma": "λαλέω",
+      "translit": "laléō",
+      "translitKo": "랄레오",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2388",
+      "lemma": "חָזַק",
+      "translit": "ḥāzaq",
+      "translitKo": "하자크",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3881",
+      "lemma": "לֵוִיִּי",
+      "translit": "lēwiyyî",
+      "translitKo": "레위이",
+      "note": "관용 표기는 레위인이나 학술 표기는 레위이를 따른다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5930",
+      "lemma": "עֹלָה",
+      "translit": "ʿōlâ",
+      "translitKo": "올라",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G6063",
+      "lemma": "εἴδω",
+      "translit": "eídō",
+      "translitKo": "에이도",
+      "note": "G1492(εἴδω)의 변형 Strong 번호다. 음역은 동일하게 에이도로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2421",
+      "lemma": "חָיָה",
+      "translit": "ḥāyâ",
+      "translitKo": "하야",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G3772",
+      "lemma": "οὐρανός",
+      "translit": "ouranós",
+      "translitKo": "우라노스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H639",
+      "lemma": "אַף",
+      "translit": "ʾap",
+      "translitKo": "아프",
+      "note": "어말 페(ף)를 독립 음절로 적으면 아프, 받침으로 적으면 압이 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6629",
+      "lemma": "צֹאן",
+      "translit": "ṣōʾn",
+      "translitKo": "촌",
+      "note": "묵음 알레프(א)를 반영하지 않고 발음대로 적으면 촌, 철자대로 음절을 나누면 초안이 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6547",
+      "lemma": "פַּרְעֹה",
+      "translit": "parʿōh",
+      "translitKo": "파르오",
+      "note": "학술 표기는 파르오다. 한국어 성경(개역개정 등)은 바로로 번역한다. 이집트어 페르아아(pr-ꜥꜣ)에서 유래한 히브리어 음역이다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H68",
+      "lemma": "אֶבֶן",
+      "translit": "ʾeben",
+      "translitKo": "에벤",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1320",
+      "lemma": "בָּשָׂר",
+      "translit": "bāśār",
+      "translitKo": "바사르",
+      "note": "שׂ(ś)는 ㅅ으로 적어 שׁ(š, '쉬/시')와 구분한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G3101",
+      "lemma": "μαθητής",
+      "translit": "mathētḗs",
+      "translitKo": "마테테스",
+      "note": "세타(θ)를 무성음 ㅌ로 적으면 마테테스, 유성음 ㄷ로 적으면 마데테스가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2983",
+      "lemma": "λαμβάνω",
+      "translit": "lambánō",
+      "translitKo": "람바노",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7563",
+      "lemma": "רָשָׁע",
+      "translit": "rāšāʿ",
+      "translitKo": "라샤",
+      "note": "어말 ע는 한글로 적지 않는 것이 기본이다(שָׁמַע→샤마와 같은 꼴).",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1093",
+      "lemma": "γῆ",
+      "translit": "gē",
+      "translitKo": "게",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3824",
+      "lemma": "לֵבָב",
+      "translit": "lēbāb",
+      "translitKo": "레바브",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4390",
+      "lemma": "מָלֵא",
+      "translit": "mālēʾ",
+      "translitKo": "말레",
+      "note": "어말 알레프(א)는 묵음이며, 라메드(ל)의 자음 [l]을 살려 말레로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G611",
+      "lemma": "ἀποκρίνομαι",
+      "translit": "apokrínomai",
+      "translitKo": "아포크리노마이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H520",
+      "lemma": "אַמָּה",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "note": "멤(מ)의 다게쉬(중복음)를 반영해 암마로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2617",
+      "lemma": "חֵסֵד",
+      "translit": "ḥēsēd",
+      "translitKo": "헤세드",
+      "note": "입력 lemma가 체레(ֵ) 점형이라 ḥēsēd로 적었다. 통용 점형 חֶסֶד(ḥesed)와 한글 표기는 '헤세드'로 같다. ח는 ㅎ으로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2428",
+      "lemma": "חַיִל",
+      "translit": "ḥayil",
+      "translitKo": "하일",
+      "note": "기존 표기 עַיִן→아인과 같은 꼴로 맞췄다. ח는 ㅎ으로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4100",
+      "lemma": "πιστεύω",
+      "translit": "pisteúō",
+      "translitKo": "피스테우오",
+      "note": "이중모음 ευ(eu) 뒤에 모음이 오므로 학술 표기 원칙에 따라 피스테우오로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7272",
+      "lemma": "רֶגֶל",
+      "translit": "regel",
+      "translitKo": "레겔",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4102",
+      "lemma": "πίστις",
+      "translit": "pístis",
+      "translitKo": "피스티스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H410",
+      "lemma": "אֵל",
+      "translit": "ʾēl",
+      "translitKo": "엘",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5288",
+      "lemma": "נַעַר",
+      "translit": "naʿar",
+      "translitKo": "나아르",
+      "note": "ע를 한글로 적지 않아 모음 두 개가 이어진다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2398",
+      "lemma": "חָטָא",
+      "translit": "ḥāṭāʾ",
+      "translitKo": "하타",
+      "note": "어말 알레프(א)는 묵음이므로 하타로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4639",
+      "lemma": "מַעֲשֶׂה",
+      "translit": "maʿăśeh",
+      "translitKo": "마아세",
+      "note": "ע는 적지 않고 하테프 파타흐(ֲ)만 '아'로 남긴다. שׂ는 ㅅ, 어말 ה는 묵음이다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2142",
+      "lemma": "זָכַר",
+      "translit": "zākar",
+      "translitKo": "자카르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3423",
+      "lemma": "יָרַשׁ",
+      "translit": "yāraš",
+      "translitKo": "야라쉬",
+      "note": "어말 쉰(שׁ)을 쉬로 적으면 야라쉬, 시로 적으면 야라시가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7235",
+      "lemma": "רָבָה",
+      "translit": "rābâ",
+      "translitKo": "라바",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7130",
+      "lemma": "קֶרֶב",
+      "translit": "qereb",
+      "translitKo": "케레브",
+      "note": "ק(q)와 כ(k)는 한글에서 모두 ㅋ으로 적혀 구분되지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1245",
+      "lemma": "בָּקַשׁ",
+      "translit": "bāqaš",
+      "translitKo": "바카쉬",
+      "note": "어말 쉰(שׁ)의 음역에 따라 바카쉬 또는 바카시로 표기할 수 있다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H127",
+      "lemma": "אֲדָמָה",
+      "translit": "ʾădāmâ",
+      "translitKo": "아다마",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3789",
+      "lemma": "כָּתַב",
+      "translit": "kātab",
+      "translitKo": "카타브",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5159",
+      "lemma": "נַחֲלָה",
+      "translit": "naḥălâ",
+      "translitKo": "나할라",
+      "note": "라메드(ל)의 자음 [l]을 살려 나할라로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4150",
+      "lemma": "מוֹעֵד",
+      "translit": "môʿēd",
+      "translitKo": "모에드",
+      "note": "ע를 적지 않아 '모에드'가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1097",
+      "lemma": "γινώσκω",
+      "translit": "ginṓskō",
+      "translitKo": "기노스코",
+      "note": "기존 표기 γίνομαι→기노마이와 같이 γι를 '기'로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1135",
+      "lemma": "γυνή",
+      "translit": "gynḗ",
+      "translitKo": "귀네",
+      "note": "윕실론(υ)을 학술 표기 원칙(위 계열)에 따라 귀네로 표기한다. 코이네 발음으로는 기네가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1831",
+      "lemma": "ἐξέρχομαι",
+      "translit": "exérchomai",
+      "translitKo": "엑세르코마이",
+      "note": "ξ는 ㄱ받침+ㅅ으로 풀고 χ는 ㅋ으로 적는다(ἔχω→에코와 같은 꼴).",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H517",
+      "lemma": "אֵם",
+      "translit": "ʾēm",
+      "translitKo": "엠",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8451",
+      "lemma": "תּוֹרָה",
+      "translit": "tôrâ",
+      "translitKo": "토라",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8354",
+      "lemma": "שָׁתָה",
+      "translit": "šātâ",
+      "translitKo": "샤타",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G435",
+      "lemma": "ἀνήρ",
+      "translit": "anḗr",
+      "translitKo": "아네르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3559",
+      "lemma": "כּוּן",
+      "translit": "kûn",
+      "translitKo": "쿤",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8337",
+      "lemma": "שֵׁשׁ",
+      "translit": "šēš",
+      "translitKo": "셰쉬",
+      "note": "첫 쉰(שֵׁ)을 셰로 적고 어말 쉰(שׁ)을 쉬로 적으면 셰쉬가 되며, 세쉬로 적기도 한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5800",
+      "lemma": "עָזַב",
+      "translit": "ʿāzab",
+      "translitKo": "아자브",
+      "note": "어두 ע는 한글로 적지 않는다(עַם→암과 같은 꼴).",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4264",
+      "lemma": "מַחֲנֶה",
+      "translit": "maḥăneh",
+      "translitKo": "마하네",
+      "note": "ח는 ㅎ으로 적고 어말 ה는 묵음이다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5186",
+      "lemma": "נָטָה",
+      "translit": "nāṭâ",
+      "translitKo": "나타",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4397",
+      "lemma": "מֲלְאָךְ",
+      "translit": "malʾāk",
+      "translitKo": "말아크",
+      "note": "라메드(ל)의 음절 종성 [l]과 알레프(א)의 초성을 구분해 적으면 말아크가 되고, 연음하면 말라크가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5337",
+      "lemma": "נָצַל",
+      "translit": "nāṣal",
+      "translitKo": "나찰",
+      "note": "צ는 기존 표기 에레츠와 같이 ㅊ 계열로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2309",
+      "lemma": "θέλω",
+      "translit": "thélō",
+      "translitKo": "텔로",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H4503",
+      "lemma": "מִנְחָה",
+      "translit": "minḥâ",
+      "translitKo": "민하",
+      "note": "후음 ḥ: 보통 ㅎ으로 표기함",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1410",
+      "lemma": "δύναμαι",
+      "translit": "dýnamai",
+      "translitKo": "뒤나마이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3615",
+      "lemma": "כָּלָה",
+      "translit": "kālâ",
+      "translitKo": "칼라",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6662",
+      "lemma": "צַדִּיק",
+      "translit": "ṣaddîq",
+      "translitKo": "차디크",
+      "note": "צ(ṣ)는 보통 ㅊ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1125",
+      "lemma": "γράφω",
+      "translit": "gráphō",
+      "translitKo": "그라포",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H727",
+      "lemma": "אָרוֹן",
+      "translit": "ʾārôn",
+      "translitKo": "아론",
+      "note": "히브리어 '아론(ārôn)'은 '궤'를 뜻하는 보통명사. 동명의 아론(Aaron, H175)과 구별 필요.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H905",
+      "lemma": "בַּד",
+      "translit": "bad",
+      "translitKo": "바드",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G3551",
+      "lemma": "νόμος",
+      "translit": "nómos",
+      "translitKo": "노모스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2453",
+      "lemma": "Ἰουδαῖος",
+      "translit": "Ioudaîos",
+      "translitKo": "이우다이오스",
+      "note": "관용 표기(유대인)가 있으나 원음대로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1525",
+      "lemma": "εἰσέρχομαι",
+      "translit": "eisérchomai",
+      "translitKo": "에이세르코마이",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8081",
+      "lemma": "שֶׁמֶן",
+      "translit": "šemen",
+      "translitKo": "셰멘",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2691",
+      "lemma": "חָצֵר",
+      "translit": "ḥāṣēr",
+      "translitKo": "하체르",
+      "note": "ḥ는 보통 ㅎ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7311",
+      "lemma": "רוּם",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7453",
+      "lemma": "רֵעַ",
+      "translit": "rēaʿ",
+      "translitKo": "레아",
+      "note": "어말 ע 앞의 furtive patach",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2889",
+      "lemma": "κόσμος",
+      "translit": "kósmos",
+      "translitKo": "코스모스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H352",
+      "lemma": "אַיִל",
+      "translit": "ʾayil",
+      "translitKo": "아일",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H241",
+      "lemma": "אֹזֶן",
+      "translit": "ʾōzen",
+      "translitKo": "오젠",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1540",
+      "lemma": "גָּלָה",
+      "translit": "gālâ",
+      "translitKo": "갈라",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G32",
+      "lemma": "ἄγγελος",
+      "translit": "ángelos",
+      "translitKo": "앙겔로스",
+      "note": "γγ는 ng로 발음되어 앙겔로스로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1241",
+      "lemma": "בָּקָר",
+      "translit": "bāqār",
+      "translitKo": "바카르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3383",
+      "lemma": "יַרְדֵּן",
+      "translit": "yardēn",
+      "translitKo": "야르덴",
+      "note": "관용 표기(요단)가 있으나 원음대로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G5495",
+      "lemma": "χείρ",
+      "translit": "cheír",
+      "translitKo": "케이르",
+      "note": "χ는 ㅋ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2205",
+      "lemma": "זָקֵן",
+      "translit": "zāqēn",
+      "translitKo": "자켄",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2147",
+      "lemma": "εὑρίσκω",
+      "translit": "heurískō",
+      "translitKo": "헤우리스코",
+      "note": "ευ는 후속 자음 ρ가 유음이므로 '에우'로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3898",
+      "lemma": "לָחַם",
+      "translit": "lāḥam",
+      "translitKo": "라함",
+      "note": "ḥ는 보통 ㅎ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2041",
+      "lemma": "ἔργον",
+      "translit": "érgon",
+      "translitKo": "에르곤",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G3793",
+      "lemma": "ὄχλος",
+      "translit": "óchlos",
+      "translitKo": "오클로스",
+      "note": "χ는 ㅋ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6235",
+      "lemma": "עֶשֶׂר",
+      "translit": "ʿeśer",
+      "translitKo": "에세르",
+      "note": "ע는 보통 한글로 표기하지 않음, שׂ(ś)는 ㅅ으로 표기",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G266",
+      "lemma": "ἁμαρτία",
+      "translit": "hamartía",
+      "translitKo": "하마르티아",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6942",
+      "lemma": "קָדַשׁ",
+      "translit": "qādaš",
+      "translitKo": "카다쉬",
+      "note": "שׁ(shin)를 쉬 계열로 적으면 카다쉬, 시 계열로 적으면 카다시가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7812",
+      "lemma": "שָׁחָה",
+      "translit": "šāḥâ",
+      "translitKo": "샤하",
+      "note": "ח(ḥet)를 흐 계열로 적으면 샤하, 목구멍 마찰음을 무시하면 샤아가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7592",
+      "lemma": "שָׁאַל",
+      "translit": "šāʾal",
+      "translitKo": "샤알",
+      "note": "א(알레프)는 성문파열음으로 한국어에서 따로 적지 않는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H977",
+      "lemma": "בָּחַר",
+      "translit": "bāḥar",
+      "translitKo": "바하르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H995",
+      "lemma": "בִּין",
+      "translit": "bîn",
+      "translitKo": "빈",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1755",
+      "lemma": "דּוֹר",
+      "translit": "dôr",
+      "translitKo": "도르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2026",
+      "lemma": "הָרַג",
+      "translit": "hārag",
+      "translitKo": "하라그",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1144",
+      "lemma": "בִּנְיָמִין",
+      "translit": "binyāmîn",
+      "translitKo": "빈야민",
+      "note": "학술 표기는 빈야민이다. 한국어 성경은 베냐민으로 관용한다. 첫 음절의 히리크(ִ) 모음을 엄밀히 옮기면 빈야민이 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H312",
+      "lemma": "אַחֵר",
+      "translit": "ʾaḥēr",
+      "translitKo": "아헤르",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4172",
+      "lemma": "πόλις",
+      "translit": "pólis",
+      "translitKo": "폴리스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1984",
+      "lemma": "הָלַל",
+      "translit": "hālal",
+      "translitKo": "할랄",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G3972",
+      "lemma": "Παῦλος",
+      "translit": "Paûlos",
+      "translitKo": "파울로스",
+      "note": "학술 표기는 파울로스다. 한국어 성경은 바울로 굳어져 있다. 헬라어 무성 파열음 파이(π)를 학술적으로 옮기면 파울로스가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G1484",
+      "lemma": "ἔθνος",
+      "translit": "éthnos",
+      "translitKo": "에트노스",
+      "note": "세타(θ)를 무성음 ㅌ로 적으면 에트노스, 유성음 ㄷ로 적으면 에드노스가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H1875",
+      "lemma": "דָּרַשׁ",
+      "translit": "dāraš",
+      "translitKo": "다라쉬",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6607",
+      "lemma": "פֶּתַח",
+      "translit": "petaḥ",
+      "translitKo": "페타흐",
+      "note": "어말 ח(ḥet)를 흐로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2351",
+      "lemma": "חוּץ",
+      "translit": "ḥûṣ",
+      "translitKo": "후츠",
+      "note": "ח(ḥet)를 후로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H2930",
+      "lemma": "טָמֵא",
+      "translit": "ṭāmēʾ",
+      "translitKo": "타메",
+      "note": "어말 알레프(א)는 묵음이므로 '타메'로 표기하며, 철자를 보존하면 '타메아'가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2588",
+      "lemma": "καρδία",
+      "translit": "kardía",
+      "translitKo": "카르디아",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4074",
+      "lemma": "Πέτρος",
+      "translit": "Pétros",
+      "translitKo": "페트로스",
+      "note": "학술 표기는 페트로스다. 한국어 성경은 베드로로 굳어져 있다. 헬라어 무성 파열음 파이(π)와 타우(τ)를 엄밀히 옮기면 페트로스가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H5127",
+      "lemma": "נוּס",
+      "translit": "nûs",
+      "translitKo": "누스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H6726",
+      "lemma": "צִיּוֹן",
+      "translit": "ṣiyyôn",
+      "translitKo": "치욘",
+      "note": "학술 표기는 치욘(또는 찌욘)이다. 한국어 성경은 시온으로 굳어져 있다. 히브리어 자음 츠아데(צ)의 음가를 학술적으로 옮기면 치욘이 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G5485",
+      "lemma": "χάρις",
+      "translit": "cháris",
+      "translitKo": "카리스",
+      "note": "χ(chi)는 무성 연구개 마찰음으로 한글 ㅋ로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2476",
+      "lemma": "ἵστημι",
+      "translit": "hístēmi",
+      "translitKo": "히스테미",
+      "note": "어두의 거친 기식부호(ἵ의 ῾)를 ㅎ로 적으면 히스테미, 생략하면 이스테미가 된다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H8055",
+      "lemma": "שָׂמַח",
+      "translit": "śāmaḥ",
+      "translitKo": "사마흐",
+      "note": "שׂ(sin)는 ś로 한글 ㅅ에 대응한다. 어말 ח(ḥet)를 흐로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4198",
+      "lemma": "πορεύομαι",
+      "translit": "poreúomai",
+      "translitKo": "포레우오마이",
+      "note": "이중모음 ευ를 학술적으로 모음화하여 '포레우오마이'로 표기한다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H3680",
+      "lemma": "כָּסָה",
+      "translit": "kāsâ",
+      "translitKo": "카사",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4561",
+      "lemma": "σάρξ",
+      "translit": "sárx",
+      "translitKo": "사르크스",
+      "note": "ξ(ksi)는 크스로 적는다.",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G4396",
+      "lemma": "προφήτης",
+      "translit": "prophḗtēs",
+      "translitKo": "프로페테스",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G2564",
+      "lemma": "καλέω",
+      "translit": "kaléō",
+      "translitKo": "칼레오",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "G863",
+      "lemma": "ἀφίημι",
+      "translit": "aphíēmi",
+      "translitKo": "아피에미",
+      "note": "",
+      "origin": "agreed"
+    },
+    {
+      "strong": "H7586",
+      "lemma": "שָׁאוּל",
+      "translit": "šāʾûl",
+      "translitKo": "샤울",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 한국어 성경 관용은 '사울'이지만 명세가 학술 표기를 표제로 삼으라 하므로 שׁ를 샤로 적는다. 이미 확정된 다위드(개역 '다윗')와 같은 처리다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H3701",
+      "lemma": "כֶּסֶף",
+      "translit": "kesep",
+      "translitKo": "케세프",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 ף는 연음된 peh지만 베가드케파트 무표기 규칙에 따라 p로 적는다. 확정 표기 rāḥap(라하프)와 같은 방식이다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7651",
+      "lemma": "שֶׁבַע",
+      "translit": "šebaʿ",
+      "translitKo": "셰바",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šeḇaʿ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H2091",
+      "lemma": "זָהָב",
+      "translit": "zāhāb",
+      "translitKo": "자하브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 zāhāḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3381",
+      "lemma": "יָרַד",
+      "translit": "yārad",
+      "translitKo": "야라드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 yāraḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5002",
+      "lemma": "נְאֻם",
+      "translit": "nĕʾum",
+      "translitKo": "네움",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 쉐바를 ə가 아니라 ĕ로 적는 규칙에 따랐다. 확정 표기 tĕhôm과 같은 방식이다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H5046",
+      "lemma": "נָגַד",
+      "translit": "nāgad",
+      "translitKo": "나가드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 nāḡaḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3290",
+      "lemma": "יַעֲקֹב",
+      "translit": "yaʿăqōb",
+      "translitKo": "야아코브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙으로 ḇ를 b로 적는다. 관용은 '야곱'이나 학술 표기를 표제로 삼아 야아코브로 두고, ע는 한글로 따로 적지 않는다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H2568",
+      "lemma": "חָמֵשׁ",
+      "translit": "ḥāmēš",
+      "translitKo": "하메쉬",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 라틴은 두 안이 같고 한글만 갈렸다. 음절을 닫는 שׁ는 쉬로 적는 규칙에 따라 하메쉬.",
+      "origin": "adjudicated",
+      "votesKo": 2
+    },
+    {
+      "strong": "H5439",
+      "lemma": "סָבִיב",
+      "translit": "sābîb",
+      "translitKo": "사비브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇîḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7704",
+      "lemma": "שָׂדֶה",
+      "translit": "śādeh",
+      "translitKo": "사데",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙으로 ḏ를 d로 적고, 어말 세골-헤는 -eh로 살린다. ś는 확정 표기(이스라엘·아사)대로 ㅅ.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H113",
+      "lemma": "אָדוֹן",
+      "translit": "ʾādôn",
+      "translitKo": "아돈",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʾāḏôn을 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3627",
+      "lemma": "כְּלִי",
+      "translit": "kĕlî",
+      "translitKo": "켈리",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ְ)를 ə로 전사하는 SBL 학술 표기 규범에 따라 kəlî를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H5030",
+      "lemma": "נָבִיא",
+      "translit": "nābîʾ",
+      "translitKo": "나비",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 nāḇîʾ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H4940",
+      "lemma": "מִשְׁפָּחָה",
+      "translit": "mišpāḥâ",
+      "translitKo": "미쉬파하",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 라틴은 두 안이 같다. 음절을 닫는 שׁ는 쉬로 적는 규칙이며, 확정 표기 미쉬파트(mišpāṭ)와 같은 자리다.",
+      "origin": "adjudicated",
+      "votesKo": 2
+    },
+    {
+      "strong": "H6485",
+      "lemma": "פָּקַד",
+      "translit": "pāqad",
+      "translitKo": "파카드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 pāqaḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3966",
+      "lemma": "מְאֹד",
+      "translit": "mĕʾōd",
+      "translitKo": "메오드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 달렛의 연음(ḏ)을 모두 반영한 SBL 학술 표기 məʾōḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H6256",
+      "lemma": "עֵת",
+      "translit": "ʿēt",
+      "translitKo": "에트",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ṯ를 t로 적는다. 확정 표기 ʾēt(에트)와 같은 처리다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H2403",
+      "lemma": "חַטָּאָה",
+      "translit": "ḥaṭṭāʾâ",
+      "translitKo": "하타아",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬(dagesh forte) 중복음을 받침 ㅅ으로 살린 \"핫타아\"를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H8010",
+      "lemma": "שְׁלֹמֹה",
+      "translit": "šĕlōmōh",
+      "translitKo": "셸로모",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 홀렘-헤(ōh)를 정확히 반영한 SBL 학술 표기 šəlōmōh를 채택하며, 관용 표기 \"솔로몬\" 대신 학술 표기를 표제로 둔다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H6430",
+      "lemma": "פְּלִשְׁתִּי",
+      "translit": "pĕlištî",
+      "translitKo": "펠리쉬티",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 쉐바 ĕ 규칙은 option1에, 음절을 닫는 שׁ를 쉬로 적는 규칙은 option2에 있어 두 규칙을 합쳤다. 관용 표기 '블레셋'과는 다르나 학술 표기를 표제로 삼는다.",
+      "origin": "adjudicated",
+      "votesKo": 2
+    },
+    {
+      "strong": "H3772",
+      "lemma": "כָּרַת",
+      "translit": "kārat",
+      "translitKo": "카라트",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 kāraṯ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5647",
+      "lemma": "עָבַד",
+      "translit": "ʿābad",
+      "translitKo": "아바드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 베트(ב)와 달렛(ד)의 연음(ḇ, ḏ)을 반영한 SBL 학술 표기 ʿāḇaḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H2320",
+      "lemma": "חֹדֶשׁ",
+      "translit": "ḥōdeš",
+      "translitKo": "호데쉬",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 라틴은 무표기 규칙(ḥōdeš, option1), 한글은 음절 끝 שׁ 규칙(호데쉬, option2)이라 두 안을 합쳤다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H341",
+      "lemma": "אֹיֵב",
+      "translit": "ʾōyēb",
+      "translitKo": "오예브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾōyēḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7126",
+      "lemma": "קָרַב",
+      "translit": "qārab",
+      "translitKo": "카라브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 qāraḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H4294",
+      "lemma": "מַטֶּה",
+      "translit": "maṭṭeh",
+      "translitKo": "마테",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"맛테\"를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H1366",
+      "lemma": "גְּבוּל",
+      "translit": "gĕbûl",
+      "translitKo": "게불",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 베트의 연음(ḇ)을 모두 반영한 SBL 학술 표기 gəḇûl를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H5771",
+      "lemma": "עָוֺן",
+      "translit": "ʿāwōn",
+      "translitKo": "아원",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. 홀렘을 얹은 ו는 자음 w이므로 '원'으로 적고 ע는 한글로 적지 않아 아원이 된다. '아온'은 바브를 모음으로 오해한 관용형이다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H3091",
+      "lemma": "יְהוֹשׁוּעַ",
+      "translit": "yĕhôšûaʿ",
+      "translitKo": "예호슈아",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 아인 앞 furtive patach(uaʿ)를 반영한 SBL 학술 표기 yəhôšûaʿ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H3130",
+      "lemma": "יוֹסֵף",
+      "translit": "yôsēp",
+      "translitKo": "요세프",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yôsēp̄를 채택하며, 관용 표기 \"요셉\" 대신 학술 표기를 표제로 둔다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3254",
+      "lemma": "יָסַף",
+      "translit": "yāsap",
+      "translitKo": "야사프",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yāsap̄를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7901",
+      "lemma": "שָׁכַב",
+      "translit": "šākab",
+      "translitKo": "샤카브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 카프(כ)와 베트(ב)의 연음(ḵ, ḇ)을 반영한 SBL 학술 표기 šāḵaḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H157",
+      "lemma": "אָהַב",
+      "translit": "ʾāhab",
+      "translitKo": "아하브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾāhaḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3467",
+      "lemma": "יָשַׁע",
+      "translit": "yāšaʿ",
+      "translitKo": "야샤",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. שׁ가 음절 첫소리라 뒤 모음에 붙여 샤로 적는다. '솨'는 이 사전이 쓰지 않는 표기다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H8199",
+      "lemma": "שָׁפַט",
+      "translit": "šāpaṭ",
+      "translitKo": "샤파트",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 šāp̄aṭ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H622",
+      "lemma": "אָסַף",
+      "translit": "ʾāsap",
+      "translitKo": "아사프",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾāsap̄를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3201",
+      "lemma": "יָכֹל",
+      "translit": "yākōl",
+      "translitKo": "야콜",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 카프(כ)의 연음(ḵ)을 반영한 SBL 학술 표기 yāḵōl를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3709",
+      "lemma": "כַּף",
+      "translit": "kap",
+      "translitKo": "카프",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 kap̄를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H929",
+      "lemma": "בְּהֵמָה",
+      "translit": "bĕhēmâ",
+      "translitKo": "베헤마",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)를 정확히 반영한 SBL 학술 표기 bəhēmâ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H5612",
+      "lemma": "סֵפֶר",
+      "translit": "sēper",
+      "translitKo": "세페르",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sēp̄er를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "translit": "šābaʿ",
+      "translitKo": "샤바",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ를 b로 적는다. 어말 ע는 한글로 적지 않아 샤바.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H6",
+      "lemma": "אָבַד",
+      "translit": "ʾābad",
+      "translitKo": "아바드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ·ḏ를 b·d로 적는다. 첫 자음이 א라 H5647(ʿābad)와 라틴에서 구별되지만 한글은 둘 다 아바드다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H4687",
+      "lemma": "מִצְוָה",
+      "translit": "miṣwâ",
+      "translitKo": "미츠와",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. ו를 자음 w로 보고 와/웨/위로 적는 규칙에 따라 미츠와이며, 확정 표기 야훼·다위드와 같은 처리다. 현대 히브리어식 '미츠바'는 표제로 쓰지 않는다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H4124",
+      "lemma": "מוֹאָב",
+      "translit": "môʾāb",
+      "translitKo": "모아브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 môʾāḇ를 채택하며, 관용 표기 \"모압\" 대신 학술 표기를 표제로 둔다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H669",
+      "lemma": "אֶפְרַיִם",
+      "translit": "ʾeprayim",
+      "translitKo": "에프라임",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾep̄rayim을 채택하며, 관용 표기 \"에브라임\" 대신 학술 표기를 표제로 둔다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H4430",
+      "lemma": "מֶלֶךְ",
+      "translit": "melek",
+      "translitKo": "멜레크",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 어말 카프(ךְ)의 연음(ḵ)과 음절 구조를 반영한 SBL 학술 표기 meleḵ / \"멜레크\"를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H8193",
+      "lemma": "שָׂפָה",
+      "translit": "śāpâ",
+      "translitKo": "사파",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 śāp̄â를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H85",
+      "lemma": "אַבְרָהָם",
+      "translit": "ʾabrāhām",
+      "translitKo": "아브라함",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾaḇrāhām을 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7970",
+      "lemma": "שְׁלוֹשִׁים",
+      "translit": "šĕlôšîm",
+      "translitKo": "셸로심",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 쉐바 ĕ 규칙은 option1에, 홀렘 바브를 ô로 적는 정확한 표기는 option2에 있어 확정 표기 tĕhôm과 같은 방식으로 합쳤다. שׁ가 음절 첫소리라 한글은 셸로심.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H4399",
+      "lemma": "מְלָאכָה",
+      "translit": "mĕlāʾkâ",
+      "translitKo": "멜라카",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 카프의 연음(ḵ)을 모두 반영한 SBL 학술 표기 məlāʾḵâ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H2572",
+      "lemma": "חֲמִשִּׁים",
+      "translit": "ḥămiššîm",
+      "translitKo": "하미심",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(1/3 일치). 라틴은 두 안이 같다. 다게쉬 포르테를 받침으로 겹치지 않고, שׁ가 뒤 음절의 첫소리라 시로 적어 하미심이 된다.",
+      "origin": "adjudicated",
+      "votesKo": 1
+    },
+    {
+      "strong": "H1368",
+      "lemma": "גִּבּוֹר",
+      "translit": "gibbôr",
+      "translitKo": "기보르",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 베트(בּ)의 강 다게쉬 중복음을 받침 ㅂ으로 반영한 \"깁보르\"를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H2077",
+      "lemma": "זֶבַח",
+      "translit": "zebaḥ",
+      "translitKo": "제바흐",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ를 b로 적는다. 어말 ח는 확정 표기 루아흐처럼 흐로 적는다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5437",
+      "lemma": "סָבַב",
+      "translit": "sābab",
+      "translitKo": "사바브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇaḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5608",
+      "lemma": "סָפַר",
+      "translit": "sāpar",
+      "translitKo": "사파르",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sāp̄ar를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H6666",
+      "lemma": "צְדָקָה",
+      "translit": "ṣĕdāqâ",
+      "translitKo": "체다카",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 달렛의 연음(ḏ)을 반영한 SBL 학술 표기 ṣəḏāqâ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H4194",
+      "lemma": "מָוֶת",
+      "translit": "māwet",
+      "translitKo": "마웨트",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)과 바브의 w 음가를 반영한 SBL 학술 표기 māweṯ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H6828",
+      "lemma": "צָפוֹן",
+      "translit": "ṣāpôn",
+      "translitKo": "차폰",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ṣāp̄ôn을 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H804",
+      "lemma": "אַשּׁוּר",
+      "translit": "ʾaššûr",
+      "translitKo": "아슈르",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). שּׁ의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"앗슈르\"를 채택하며, 관용 표기 \"앗수르\" 대신 학술 표기를 표제로 둔다.",
+      "origin": "adjudicated",
+      "votesKo": 2,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5048",
+      "lemma": "נֶגֶד",
+      "translit": "neged",
+      "translitKo": "네게드",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 neḡeḏ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5060",
+      "lemma": "נָגַע",
+      "translit": "nāgaʿ",
+      "translitKo": "나가",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḡ를 g로 적는다. 어말 ע는 한글로 적지 않아 나가.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H7230",
+      "lemma": "רֹב",
+      "translit": "rōb",
+      "translitKo": "로브",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 rōḇ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H5712",
+      "lemma": "עֵדָה",
+      "translit": "ʿēdâ",
+      "translitKo": "에다",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʿēḏâ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H3414",
+      "lemma": "יִרְמְיָה",
+      "translit": "yirmĕyâ",
+      "translitKo": "이르메야",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 쉐바 ĕ 규칙은 option1에, 어말 카메츠-헤를 â로 적는 확정 표기(hāyâ·rāʾâ)는 option2에 있어 둘을 합쳤다. 한글은 두 안이 같다.",
+      "origin": "adjudicated",
+      "votesKo": 3
+    },
+    {
+      "strong": "H7665",
+      "lemma": "שָׁבַר",
+      "translit": "šābar",
+      "translitKo": "샤바르",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šāḇar를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    },
+    {
+      "strong": "H4519",
+      "lemma": "מְנַשֶּׁה",
+      "translit": "mĕnaššeh",
+      "translitKo": "메나셰",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 유성 셰바(ə)와 어말 세골-헤(eh)를 살린 SBL 라틴 표기 mənaššeh와 신-세골(še)의 올바른 한글 표기 \"메나셰\"를 채택한다. (관용 표기 \"므낫세\"와 차이 있음)",
+      "origin": "adjudicated",
+      "votesKo": 2
+    },
+    {
+      "strong": "H7843",
+      "lemma": "שָׁחַת",
+      "translit": "šāḥat",
+      "translitKo": "샤하트",
+      "note": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 šāḥaṯ를 채택한다.",
+      "origin": "adjudicated",
+      "votesKo": 3,
+      "ruleAdjusted": true
+    }
+  ]
+}
