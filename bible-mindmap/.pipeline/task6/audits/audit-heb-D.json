@@ -1,0 +1,33 @@
+{
+  "scope": "hebrew-D",
+  "checked": 36,
+  "findings": [
+    {
+      "strong": "H4430",
+      "field": "translitKo",
+      "current": "멜레크",
+      "suggested": "멜렉",
+      "evidence": "src/data/koreanGlossTopBatch01.js:133-136 — 동일 lemma מֶ֫לֶךְ(H4428)가 이미 '멜렉'으로 배포돼 있다. koreanGlossActive.js가 batch01과 batch02를 같은 런타임 사전으로 합치므로 같은 낱말이 '멜렉'과 '멜레크' 두 표기로 동시에 노출된다.",
+      "severity": "high",
+      "reason": "배포된 데이터에 같은 자음·모음의 같은 낱말(H4428)이 '멜렉'으로 확정돼 있는데 이 항목만 '멜레크'로 갈렸다. 어말 카프 처리 원칙 자체는 배포 데이터 안에서도 갈리지만(할라크·호셰크는 크), 완전히 같은 lemma의 선례가 있는 이상 그 선례를 따라야 한 사전 안의 모순이 생기지 않는다."
+    },
+    {
+      "strong": "H929",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)를 정확히 반영한 SBL 학술 표기 bəhēmâ를 채택한다.",
+      "suggested": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바를 반영한 학술 표기 bĕhēmâ를 채택한다(기존 배치 tĕhôm·ʾĕlōhîm 선례).",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js H8415 translit 'tĕhôm'(תְּהוֹם)·H430 translit 'ʾĕlōhîm' — 배포된 데이터는 유성 셰바를 ə가 아니라 ĕ로 적는다. 이 항목의 translit 필드도 실제로는 'bĕhēmâ'다.",
+      "severity": "medium",
+      "reason": "note가 채택했다고 밝힌 형태(bəhēmâ)가 같은 항목의 translit 필드('bĕhēmâ')와도, 배포된 tĕhôm 선례와도 어긋난다. 표기는 맞고 설명만 틀린 자리라 note를 배포 선례에 맞춰 고쳐야 한다."
+    },
+    {
+      "strong": "H3615",
+      "field": "note",
+      "current": "두 모델 계열(Gemini·Claude)이 독립으로 만든 음역안이 일치했다.",
+      "suggested": "두 모델 계열(Gemini·Claude)이 독립으로 만든 음역안이 일치했다. 배포된 H3618(כַּלָּה, 신부)도 한글로 '칼라'라 표기가 겹친다.",
+      "evidence": "src/data/koreanGloss.js H3618 translitKo '칼라'(כַּלָּה)·src/data/canonicalConceptsT3.js:14 'כַּלָּה (칼라)' — 배포 데이터에 이미 '칼라'가 다른 Strong 번호로 있고, koreanGlossActive.js에서 두 항목이 같은 사전에 들어간다.",
+      "severity": "low",
+      "reason": "이 파일은 한글 표기가 겹치는 자리에 구별 설명을 다는 것을 원칙으로 삼는다(H727은 아론(궤)과 아론(Aaron), H6은 아바드 두 개를 note로 구별했다). 배포된 H3618과 겹치는 이 항목만 그 설명이 빠져 있다."
+    }
+  ]
+}

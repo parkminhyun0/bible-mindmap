@@ -1,0 +1,33 @@
+{
+  "scope": "hebrew-C",
+  "checked": 39,
+  "findings": [
+    {
+      "strong": "H4294",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"맛테\"를 채택한다. 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.",
+      "suggested": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않고 \"마테\"를 채택한다.",
+      "evidence": "src/data/koreanGlossTopBatch01.js H857 (아타), src/data/koreanGlossGenesis1Batch01.js H3727 (카포레트) 및 확정 표기 규칙 2항 (다게쉬 포르테 받침 겹침 금지)",
+      "severity": "high",
+      "reason": "note 설명 전반부에 \"맛테를 채택한다\"고 잘못 기술되어 있어 실제 translitKo 필드(\"마테\") 및 후속 문장(\"받침으로 겹쳐 적지 않았다\")과 정면으로 상충합니다."
+    },
+    {
+      "strong": "H3091",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 아인 앞 furtive patach(uaʿ)를 반영한 SBL 학술 표기 yəhôšûaʿ를 채택한다.",
+      "suggested": "학술 표기는 예호슈아다. 한국어 성경은 여호수아로 관용한다. 유성 셰바 ĕ와 어말 아인 앞 furtive patach(uaʿ)를 반영한 SBL 학술 표기 yĕhôšûaʿ를 채택한다.",
+      "evidence": "src/data/bookContext.js:784 등 배포 데이터의 관용 표기 \"여호수아\" 및 Batch02 다른 고유명사(모세·유다·예루샬렘·애굽·아론·바로)의 note 선례",
+      "severity": "medium",
+      "reason": "배포 데이터에서 관용 표기인 '여호수아'가 널리 사용되고 있으나 note에 관용 표기와의 차이 설명이 누락되었으며, note 내 학술 표기(yəhôšûaʿ)에 규칙 1항의 ĕ 대신 ə가 남아 있습니다."
+    },
+    {
+      "strong": "H1366",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 베트의 연음(ḇ)을 모두 반영한 SBL 학술 표기 gəḇûl를 채택한다.",
+      "suggested": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바 ĕ를 반영한 SBL 학술 표기 gĕbûl를 채택한다.",
+      "evidence": "src/data/koreanGlossTopBatch02.js H1366 translit 필드('gĕbûl') 및 확정 표기 규칙 1항(연음 기호 ḇ 미사용)",
+      "severity": "low",
+      "reason": "실제 translit 필드에는 연음 기호 ḇ가 제거된 'gĕbûl'이 반영되어 있으나, note 필드에는 규칙 1항과 어긋나는 초안 표기(gəḇûl)가 그대로 남아 있습니다."
+    }
+  ]
+}

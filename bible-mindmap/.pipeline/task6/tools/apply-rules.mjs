@@ -119,6 +119,48 @@ const GREEK_EU = new Map([
   ['G2147', { ko: '휴리스코', why: 'εὑ 는 거친 기식이 얹힌 ευ 다. 유 계열에 ㅎ 을 얹어 휴로 적는다.' }],
 ]);
 
+// --- 규칙 7: 유성 쉐바는 ĕ ---------------------------------------------
+// 배포된 창세기 배치가 ʾĕlōhîm · tĕhôm 으로 적는다. 이 배치도 15개는 ĕ 인데
+// 3개만 ə 로 갈렸다. 같은 소리를 두 기호로 적을 이유가 없다.
+const deShewa = (s) => String(s).replace(/ə/g, 'ĕ').replace(/Ə/g, 'Ĕ');
+
+// --- 규칙 8: 같은 lemma 는 같게 --------------------------------------
+// 이미 배포된 항목과 철자가 완전히 같은 낱말은 배포된 표기를 따른다.
+// 사전 팝업에서 같은 글자가 다르게 읽히면 그 자체가 오류로 보인다.
+const SAME_AS_SHIPPED = new Map([
+  ['H4430', { ko: '멜렉', why: '아람어 항목이지만 철자가 히브리어 H4428(מֶלֶךְ)과 같고, 그쪽이 이미 멜렉으로 배포돼 있다. 같은 낱말을 사전 안에서 다르게 적지 않는다.' }],
+]);
+
+// --- 손질이 필요한 개별 항목 ------------------------------------------
+// 감사에서 지적됐고 근거를 확인한 것만 손댄다.
+const NOTE_OVERRIDE = new Map([
+  ['H3069', '신명 YHWH 에 아도나이가 아니라 엘로힘의 모음을 얹은 형태다. 모음은 신명 자체의 것이 아니라 대독하는 낱말의 것이므로, 예호위는 재구성된 발음이 아니라 표기를 그대로 읽은 형태다. 같은 신명의 재구성 발음은 H3068 야훼를 보라. 표기를 확정하기 전 박 목사님 확인이 필요한 항목이다.'],
+  ['H3091', '학술 표기는 예호슈아다. 한국어 성경은 여호수아로 옮긴다. 신명의 축약형(예호-)이 한국어 성경에서 여호-로 굳은 데서 온 차이다.'],
+  ['H3414', '학술 표기는 이르메야다. 한국어 성경은 예레미야로 옮긴다. 그리스어 Ἰερεμίας 를 거쳐 굳은 형태다.'],
+]);
+
+// note 가 필드와 어긋나는지 본다. 판정 단계의 근거는 규칙 교정 전 표기를
+// 인용해 쓴 것이라, 교정 뒤에는 팝업에서 표기와 설명이 서로 다른 말을 한다.
+function noteIsStale(note, translitKo) {
+  if (!note) return false;
+  if (/[ḇḡḏḵṯ]/.test(note)) return true;              // 지운 연음 기호를 아직 인용
+  if (/[bpBP]̄/.test(note.normalize('NFD'))) return true;
+  if (note.includes('ə')) return true;                 // 통일한 쉐바 기호를 아직 인용
+  // 한글은 "채택한다/적는다/표기한다" 처럼 **채택을 주장하는 자리**만 본다.
+  // 관용 표기를 인용하는 문장("관용 표기 '유다'와 차이")은 정상 설명이므로 남긴다.
+  const adopt = [
+    ...note.matchAll(/["“”'‘’]([가-힣]{2,})["“”'‘’]\s*(?:를|을)?\s*채택/g),
+    ...note.matchAll(/([가-힣]{2,})\s*(?:로|으로)\s*(?:채택|표기한다|적는다|표기하다)/g),
+  ].map((m) => m[1]);
+  return adopt.some((k) => k !== translitKo);
+}
+
+// 앞머리의 집계 문장(“…판정했다(2/3 일치).” / “…일치했다.”)만 남긴다.
+function tallySentence(note) {
+  const m = /^[^.]*(?:판정했다\([^)]*\)|일치했다)\./.exec(String(note));
+  return m ? m[0] : '';
+}
+
 // --- 적용 ---------------------------------------------------------------
 const entries = new Map();
 for (const a of consensus.agreed) {
@@ -174,8 +216,34 @@ for (const e of entries.values()) {
     e.note = eu.why;
   }
 
+  const shewa = deShewa(e.translit);
+  if (shewa !== e.translit) {
+    changes.push({ strong: e.strong, rule: 'shewa', field: 'translit', from: e.translit, to: shewa });
+    e.translit = shewa;
+  }
+
+  const same = SAME_AS_SHIPPED.get(e.strong);
+  if (same && e.translitKo !== same.ko) {
+    changes.push({ strong: e.strong, rule: 'same_as_shipped', field: 'translitKo', from: e.translitKo, to: same.ko, why: same.why });
+    e.translitKo = same.ko;
+    e.note = same.why;
+  }
+
   if (e.translitKo !== beforeKo || e.translit !== beforeLat) {
     e.ruleAdjusted = true;
+  }
+
+  // 교정 뒤에도 남아 있는 옛 표기 인용을 걷어낸다. 집계 문장은 사실이므로 남긴다.
+  if (noteIsStale(e.note, e.translitKo)) {
+    const kept = tallySentence(e.note);
+    changes.push({ strong: e.strong, rule: 'note_stale', field: 'note', from: e.note, to: kept });
+    e.note = kept;
+  }
+
+  const override = NOTE_OVERRIDE.get(e.strong);
+  if (override) {
+    const kept = tallySentence(e.note);
+    e.note = [kept, override].filter(Boolean).join(' ');
   }
 }
 

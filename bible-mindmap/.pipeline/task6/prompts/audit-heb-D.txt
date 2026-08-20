@@ -1,0 +1,23 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 '히브리어 음역 감사자'다. 파일을 고치지 마라. 찾아서 보고만 하라.
+
+`src/data/koreanGlossTopBatch02.js` 의 히브리어(H로 시작) 항목 중 **`.pipeline/task6/audits/agreed-D.json` 과 `.pipeline/task6/input/shard-D.json` 에 들어 있는 Strong 번호**만 감사하라. 다른 묶음은 건드리지 마라.
+
+핵심 점검: **이미 배포된 데이터와 어긋나는 표기를 찾아라.** 헬라어 감사에서 이 방식으로 실제 오류 4건이 나왔다.
+읽어야 할 배포 데이터(읽기 전용): `src/data/bookContext.js`, `src/data/koreanGloss.js`, `src/data/koreanGlossTopBatch01.js`, `src/data/koreanGlossGenesis1Batch01.js`, `src/data/koreanGlossGenesis1Batch02.js`, `src/data/canonicalConcepts*.js`. 같은 lemma·같은 어근·같은 자모 조합이 거기 어떻게 적혀 있는지 grep 으로 직접 찾아 대조하라.
+
+확정된 표기 규칙(이대로 적혀 있어야 한다):
+1. 베가드케파트 연음 기호(ḇ ḡ ḏ ḵ p̄ ṯ)를 쓰지 않는다. 단 ṭ ṣ ḥ 아래점과 ā ē î ô 모음 장음은 그대로 둔다.
+2. 다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다 (아타 · 카포레트 · 마테 · 하타아).
+3. 음절 말 שׁ 는 쉬 (에쉬 · 데바쉬 · 쇼레쉬 · 이쉬). 뒤에 모음이 오면 샤/셰/시/쇼/슈.
+4. 자음 ו 는 와/웨/위/워.
+5. ע 는 한글로 따로 적지 않되, 관용 표기가 굳은 낱말은 관용을 따르고 이유를 note 에 남긴다.
+
+그 밖에 볼 것: SBL 라틴 음역이 lemma 의 모음부호와 맞는가, 같은 자모 조합이 이 묶음 안에서 서로 다르게 적혔는가, 관용 표기가 굳은 고유명사인데 note 설명이 없는가.
+
+출력은 `.pipeline/task6/audits/audit-heb-D.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. git 명령도 쓰지 마라.
+
+형식(마크다운 코드펜스 없이 JSON만):
+{"scope":"hebrew-D","checked":<개수>,"findings":[{"strong":"H1234","field":"translitKo|translit|note","current":"…","suggested":"…","evidence":"배포 데이터의 어느 파일 어느 표기와 어긋나는지","severity":"high|medium|low","reason":"한국어 한두 문장"}]}
+
+배포 데이터에 실제 근거(evidence)가 없는 지적은 하지 마라. 취향 차이는 보고하지 마라. 문제가 없으면 findings 를 빈 배열로 둬라.
+다 쓴 뒤 node -e 로 JSON.parse 하고 "audit-heb-D.json findings=<개수> OK" 한 줄만 보고하라.

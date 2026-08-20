@@ -56,7 +56,8 @@ for (const item of disputed.items) {
     .filter(Boolean)
     .sort((a, b) => b.length - a.length)[0] || '';
 
-  const tally = `표기가 갈려 5개 모델이 독립 판정했다(${koCount}/${picks.length} 일치).`;
+  // 판정자 수를 하드코딩하지 않는다. 실제로 판정한 모델 수를 그대로 쓴다.
+  const tally = `표기가 갈려 ${picks.length}개 모델이 독립 판정했다(${koCount}/${picks.length} 일치).`;
   out.push({
     strong: item.strong,
     lemma: item.lemma,

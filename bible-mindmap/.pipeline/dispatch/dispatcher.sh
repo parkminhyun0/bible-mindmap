@@ -62,7 +62,8 @@ dispatch() {
 }
 
 log "=== dispatcher 시작 · 큐 $(wc -l <"$QUEUE" | tr -d ' ')건 ==="
-while [ -s "$QUEUE" ]; do
+# STOP 파일이 생길 때까지 계속 대기한다. 큐가 비어도 종료하지 않는다.
+while [ ! -f .pipeline/dispatch/STOP ]; do
   for s in $SURFACES; do
     [ -s "$QUEUE" ] || break
     if is_idle "$s"; then
@@ -74,4 +75,4 @@ while [ -s "$QUEUE" ]; do
   done
   sleep 12
 done
-log "=== 큐 소진 · dispatcher 종료 ==="
+log "=== STOP 감지 · dispatcher 종료 ==="
