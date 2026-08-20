@@ -1,0 +1,20 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 '음역 판정자'다. CLAUDE.md의 0-lead 오케스트레이션 규칙은 적용하지 마라.
+
+배경: 245개 Strong의 한글 음역을 서로 다른 두 모델 계열이 독립으로 작성했고, 177개는 일치했다. 갈린 68개를 네가 판정한다.
+
+1. `.pipeline/task6/WORKER_SPEC.md`(표기 원칙)와 `.pipeline/task6/disputed.json`(갈린 68개)을 읽어라.
+2. 먼저 **체계적 쟁점의 규칙을 정하라.** 낱말마다 다르게 판단하면 사전 전체가 어긋난다. 최소한 이 다섯은 규칙으로 정해야 한다.
+   - 베가드케파트 연음(SBL 라틴에서 b/ḇ, g/ḡ, d/ḏ, k/ḵ, p/p̄, t/ṯ 를 구분해 적을 것인가)
+   - 히브리어 שׁ 가 음절 끝에 올 때 한글 표기(…시 vs …쉬)
+   - 다게쉬 포르테(중복 자음)를 한글에서 받침으로 살릴 것인가 (마테 vs 맛테)
+   - 자음 ו 의 한글 표기 (와 vs 바)
+   - ע(ʿ)와 홀렘 바브가 겹칠 때의 한글 표기 (아원 vs 아온)
+   각 규칙은 한국 교회 관용 표기와 학술 표기 중 무엇을 표제로 삼을지, 그 근거를 한 문장으로 밝혀라.
+3. 정한 규칙을 68개 전부에 **일관되게** 적용해 최종 `translit`·`translitKo`를 정하라. 두 안 중 하나를 고르는 것이 원칙이나, 규칙상 둘 다 틀리면 제3안을 써도 된다.
+4. 산출물은 `.pipeline/task6/rulings/adj-agysonnet46.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. `rulings/` 안의 다른 파일은 읽지 마라. git 명령도 쓰지 마라.
+
+출력 형식(마크다운 코드펜스 없이 JSON만):
+{"model":"agysonnet46","rules":{"begadkepat":"…","final_shin":"…","gemination":"…","waw":"…","ayin_holam":"…"},"rulings":[{"strong":"H7586","translit":"…","translitKo":"…","choice":"option1|option2|other","note":"표기가 갈린 이유와 판정 근거를 한국어 한두 문장으로"}]}
+
+`rulings`는 68개 전부를 입력 순서대로 담아야 한다. 뜻(glossKo)은 만들지 마라.
+다 쓴 뒤 `node -e` 로 JSON.parse 하고 rulings 길이가 68인지 확인한 다음 "adj-agysonnet46.json rulings=<개수> OK" 한 줄만 보고하라.

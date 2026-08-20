@@ -1,0 +1,41 @@
+{
+  "batchId": "top-frequency-batch-02",
+  "source": "src/data/glossFrequency.json (STEPBible corpus) + public/data/strongs-def",
+  "totalItems": 245,
+  "activeBefore": 256,
+  "missingDef": [
+    "G6063"
+  ],
+  "shards": [
+    {
+      "shard": "A",
+      "count": 49,
+      "first": "H4191",
+      "last": "H8432"
+    },
+    {
+      "shard": "B",
+      "count": 49,
+      "first": "H7586",
+      "last": "H7126"
+    },
+    {
+      "shard": "C",
+      "count": 49,
+      "first": "H639",
+      "last": "H5337"
+    },
+    {
+      "shard": "D",
+      "count": 49,
+      "first": "H3130",
+      "last": "G266"
+    },
+    {
+      "shard": "E",
+      "count": 49,
+      "first": "H7970",
+      "last": "H7843"
+    }
+  ]
+}
