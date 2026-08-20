@@ -13,13 +13,14 @@
 //       그대로 두고, 갈린 68개는 세 모델이 독립 판정했다.
 //
 // 표기가 갈린 자리는 낱말마다 따로 정하지 않고 규칙으로 정했다. 규칙은 표결이
-// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, 49개 항목을
+// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, 53개 항목을
 // 그 규칙에 맞춰 기계적으로 교정했다.
 //   · 베가드케파트 연음: 구분 기호를 쓰지 않는다 (선례 ṭôb · ʿereb · bōqer)
 //   · 다게쉬 포르테: 받침으로 겹쳐 적지 않는다 (선례 아타 · 카포레트 · 탈라사)
 //   · 음절 말 שׁ: 쉬로 적는다 (선례 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬)
 //   · 자음 ו: w 로 보고 와/웨/위/워로 적는다 (판정 3/3 합의)
 //   · ע + 홀렘 바브: 아원으로 적는다 (판정 3/3 합의)
+//   · 헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마 · 유다이오스)
 //
 // glossKo: 이 배치는 음역 전용이다. 뜻은 생성하지 않았고 public/data/strongs-def
 //       (Strong 원 정의)의 영문 뜻을 기계적으로 옮겨 담았다. 한글 뜻은 권위 사전
@@ -945,9 +946,9 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
   G4100: {
     lemma: 'πιστεύω',
     translit: 'pisteúō',
-    translitKo: '피스테우오',
+    translitKo: '피스튜오',
     glossKo: 'believe(-r), commit (to trust), put in trust with',
-    note: '이중모음 ευ(eu) 뒤에 모음이 오므로 학술 표기 원칙에 따라 피스테우오로 표기한다.',
+    note: 'ἐπορεύετο→에포류에토 · πνεῦμα→프뉴마 처럼 배포 데이터는 ευ 를 유 계열로 적는다.',
     review: true,
   },
   H7272: {
@@ -1337,9 +1338,9 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
   G2453: {
     lemma: 'Ἰουδαῖος',
     translit: 'Ioudaîos',
-    translitKo: '이우다이오스',
+    translitKo: '유다이오스',
     glossKo: 'Jew(-ess), of Judæa',
-    note: '관용 표기(유대인)가 있으나 원음대로 표기',
+    note: '배포 데이터에 Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이 로 그대로 있다.',
     review: true,
   },
   G1525: {
@@ -1537,9 +1538,9 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
   G2147: {
     lemma: 'εὑρίσκω',
     translit: 'heurískō',
-    translitKo: '헤우리스코',
+    translitKo: '휴리스코',
     glossKo: 'find, get, obtain, perceive, see',
-    note: 'ευ는 후속 자음 ρ가 유음이므로 \'에우\'로 표기',
+    note: 'εὑ 는 거친 기식이 얹힌 ευ 다. 유 계열에 ㅎ 을 얹어 휴로 적는다.',
     review: true,
   },
   H3898: {
@@ -1865,9 +1866,9 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
   G4198: {
     lemma: 'πορεύομαι',
     translit: 'poreúomai',
-    translitKo: '포레우오마이',
+    translitKo: '포류오마이',
     glossKo: '--depart, go (away, forth, one\'s way, up), (make a, take a) journey, walk',
-    note: '이중모음 ευ를 학술적으로 모음화하여 \'포레우오마이\'로 표기한다.',
+    note: '같은 동사의 활용형이 배포 데이터에 ἐπορεύετο→에포류에토 로 있다.',
     review: true,
   },
   H6828: {
@@ -2001,5 +2002,5 @@ export const KOREAN_GLOSS_TOP_BATCH_02_META = {
   scope: '66권 전체 빈도 상위 300개 중 batch 01 이후 남은 미수록 항목',
   agreedCount: 177,
   adjudicatedCount: 68,
-  ruleAdjustedCount: 49,
+  ruleAdjustedCount: 53,
 };

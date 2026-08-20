@@ -106,6 +106,19 @@ function finalShin(translit, ko) {
   return { ko, changed: false };
 }
 
+// --- 규칙 6: 헬라어 ευ 는 유 계열 -------------------------------------
+// 배포된 bookContext.js 가 εὐθύς→유튀스 · ἐπορεύετο→에포류에토 · πνεῦμα→프뉴마 ·
+// Ἰουδαῖος→유다이오스 로 일관되게 적는다. 저장소 어디에도 ευ 를 '에우'로 적은
+// 사례가 없다(ηὔξανεν→에우크사넨은 ηυ 로 다른 이중모음이다).
+// 낱말별로 확인한 것만 고친다. 일괄 변환하지 않는다
+// (transliterationPolicy.js 가 ευ 자동 단일화를 금하고 있다).
+const GREEK_EU = new Map([
+  ['G4100', { ko: '피스튜오', why: 'ἐπορεύετο→에포류에토 · πνεῦμα→프뉴마 처럼 배포 데이터는 ευ 를 유 계열로 적는다.' }],
+  ['G4198', { ko: '포류오마이', why: '같은 동사의 활용형이 배포 데이터에 ἐπορεύετο→에포류에토 로 있다.' }],
+  ['G2453', { ko: '유다이오스', why: '배포 데이터에 Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이 로 그대로 있다.' }],
+  ['G2147', { ko: '휴리스코', why: 'εὑ 는 거친 기식이 얹힌 ευ 다. 유 계열에 ㅎ 을 얹어 휴로 적는다.' }],
+]);
+
 // --- 적용 ---------------------------------------------------------------
 const entries = new Map();
 for (const a of consensus.agreed) {
@@ -152,6 +165,15 @@ for (const e of entries.values()) {
     e.translitKo = shin.ko;
   }
 
+  const eu = GREEK_EU.get(e.strong);
+  if (eu && e.translitKo !== eu.ko) {
+    changes.push({ strong: e.strong, rule: 'greek_eu', field: 'translitKo', from: e.translitKo, to: eu.ko, why: eu.why });
+    e.translitKo = eu.ko;
+    // 판정 단계의 근거는 '에우'를 전제로 쓴 것이라 교정된 표기와 어긋난다.
+    // 덧붙이지 않고 교체한다.
+    e.note = eu.why;
+  }
+
   if (e.translitKo !== beforeKo || e.translit !== beforeLat) {
     e.ruleAdjusted = true;
   }
@@ -169,6 +191,7 @@ fs.writeFileSync(
         begadkepat: 'SBL 라틴에서 베가드케파트 연음 구분 기호를 쓰지 않는다 (선례: ṭôb · ʿereb · bōqer).',
         gemination: '다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다 (선례: 아타 · 카포레트 · 탈라사).',
         final_shin: '음절 말 שׁ 는 쉬로 적는다 (선례: 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬).',
+        greek_eu: '헬라어 ευ 는 유 계열로 적는다 (선례: 유튀스 · 에포류에토 · 프뉴마 · 유다이오스). 낱말별 확인분만 교정한다.',
         waw: '자음 ו 는 w 로 보고 와/웨/위/워로 적는다 (판정자 3/3 합의).',
         ayin_holam: 'ע + 홀렘 바브는 아원으로 적는다 (판정자 3/3 합의).',
       },

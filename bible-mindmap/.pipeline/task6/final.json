@@ -4,6 +4,7 @@
     "begadkepat": "SBL 라틴에서 베가드케파트 연음 구분 기호를 쓰지 않는다 (선례: ṭôb · ʿereb · bōqer).",
     "gemination": "다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다 (선례: 아타 · 카포레트 · 탈라사).",
     "final_shin": "음절 말 שׁ 는 쉬로 적는다 (선례: 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬).",
+    "greek_eu": "헬라어 ευ 는 유 계열로 적는다 (선례: 유튀스 · 에포류에토 · 프뉴마 · 유다이오스). 낱말별 확인분만 교정한다.",
     "waw": "자음 ו 는 w 로 보고 와/웨/위/워로 적는다 (판정자 3/3 합의).",
     "ayin_holam": "ע + 홀렘 바브는 아원으로 적는다 (판정자 3/3 합의)."
   },
@@ -11,6 +12,7 @@
   "total": 245,
   "changesByRule": {
     "gemination": 5,
+    "greek_eu": 4,
     "begadkepat": 44
   },
   "changes": [
@@ -20,6 +22,38 @@
       "field": "translitKo",
       "from": "잇샤",
       "to": "이샤"
+    },
+    {
+      "strong": "G4100",
+      "rule": "greek_eu",
+      "field": "translitKo",
+      "from": "피스테우오",
+      "to": "피스튜오",
+      "why": "ἐπορεύετο→에포류에토 · πνεῦμα→프뉴마 처럼 배포 데이터는 ευ 를 유 계열로 적는다."
+    },
+    {
+      "strong": "G2453",
+      "rule": "greek_eu",
+      "field": "translitKo",
+      "from": "이우다이오스",
+      "to": "유다이오스",
+      "why": "배포 데이터에 Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이 로 그대로 있다."
+    },
+    {
+      "strong": "G2147",
+      "rule": "greek_eu",
+      "field": "translitKo",
+      "from": "헤우리스코",
+      "to": "휴리스코",
+      "why": "εὑ 는 거친 기식이 얹힌 ευ 다. 유 계열에 ㅎ 을 얹어 휴로 적는다."
+    },
+    {
+      "strong": "G4198",
+      "rule": "greek_eu",
+      "field": "translitKo",
+      "from": "포레우오마이",
+      "to": "포류오마이",
+      "why": "같은 동사의 활용형이 배포 데이터에 ἐπορεύετο→에포류에토 로 있다."
     },
     {
       "strong": "H3701",
@@ -1060,9 +1094,10 @@
       "strong": "G4100",
       "lemma": "πιστεύω",
       "translit": "pisteúō",
-      "translitKo": "피스테우오",
-      "note": "이중모음 ευ(eu) 뒤에 모음이 오므로 학술 표기 원칙에 따라 피스테우오로 표기한다.",
-      "origin": "agreed"
+      "translitKo": "피스튜오",
+      "note": "ἐπορεύετο→에포류에토 · πνεῦμα→프뉴마 처럼 배포 데이터는 ευ 를 유 계열로 적는다.",
+      "origin": "agreed",
+      "ruleAdjusted": true
     },
     {
       "strong": "H7272",
@@ -1372,9 +1407,10 @@
       "strong": "G2453",
       "lemma": "Ἰουδαῖος",
       "translit": "Ioudaîos",
-      "translitKo": "이우다이오스",
-      "note": "관용 표기(유대인)가 있으나 원음대로 표기",
-      "origin": "agreed"
+      "translitKo": "유다이오스",
+      "note": "배포 데이터에 Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이 로 그대로 있다.",
+      "origin": "agreed",
+      "ruleAdjusted": true
     },
     {
       "strong": "G1525",
@@ -1492,9 +1528,10 @@
       "strong": "G2147",
       "lemma": "εὑρίσκω",
       "translit": "heurískō",
-      "translitKo": "헤우리스코",
-      "note": "ευ는 후속 자음 ρ가 유음이므로 '에우'로 표기",
-      "origin": "agreed"
+      "translitKo": "휴리스코",
+      "note": "εὑ 는 거친 기식이 얹힌 ευ 다. 유 계열에 ㅎ 을 얹어 휴로 적는다.",
+      "origin": "agreed",
+      "ruleAdjusted": true
     },
     {
       "strong": "H3898",
@@ -1732,9 +1769,10 @@
       "strong": "G4198",
       "lemma": "πορεύομαι",
       "translit": "poreúomai",
-      "translitKo": "포레우오마이",
-      "note": "이중모음 ευ를 학술적으로 모음화하여 '포레우오마이'로 표기한다.",
-      "origin": "agreed"
+      "translitKo": "포류오마이",
+      "note": "같은 동사의 활용형이 배포 데이터에 ἐπορεύετο→에포류에토 로 있다.",
+      "origin": "agreed",
+      "ruleAdjusted": true
     },
     {
       "strong": "H3680",

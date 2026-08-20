@@ -1,0 +1,21 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 .pipeline/ROLES.md 의 2-review 검증자다. 코드를 수정하지 마라. 찾아서 판정만 하라.
+
+1. `.pipeline/task6/01-plan.md` 와 `.pipeline/task6/02-impl.md` 를 읽어라.
+2. 구현 파일을 직접 읽고 명세와 대조하라: `src/data/koreanGlossTopBatch02.js`, `src/data/koreanGlossActive.js`, `scripts/verify-korean-strong-genesis.mjs`.
+3. 테스트를 **직접 실행해** 확인하라. 최소한 다음을 돌려라.
+   - `node scripts/verify-korean-strong-genesis.mjs`
+   - `npm run lint`
+   - `node scripts/verify-korean-gloss.mjs`
+   - `node scripts/verify-transliteration-policy.mjs`
+   - `git diff --stat 3667d15a HEAD` 로 손댄 파일 범위 확인
+4. 01-plan.md 6절의 PASS 조건 7가지를 하나씩 검사하라. 특히 이것들을 직접 세어 확인하라.
+   - 활성 사전 개수가 정확히 501 인가 (256 + 245), 중복 키 0 인가
+   - 245개 전부 translit·translitKo 가 비어 있지 않고 review 가 true 인가
+   - 기존 배치 파일 4개(koreanGloss.js, koreanGlossGenesis1Batch01/02.js, koreanGlossTopBatch01.js)에 diff 가 없는가
+   - glossKo 에 새로 만든 한글 뜻이 섞여 들어가지 않았는가 (권위 사전 영문 정의여야 한다)
+   - 02-impl.md 4절이 주장하는 다섯 규칙이 245개 전체에 **일관되게** 적용됐는가.
+     표본이 아니라 스크립트로 전수 검사하라. 예: 라틴 음역에 ḇ ḡ ḏ ḵ ṯ p̄ 가 남아 있는가,
+     받침 중복(맛테 식 표기)이 남아 있는가, 음절 말 š 인데 한글이 '시'로 끝나는 항목이 있는가.
+5. 02-impl.md 가 사실과 다른 주장을 하는 곳이 있으면 그것도 지적하라.
+
+판정(PASS 또는 FAIL)과 근거를 `.pipeline/task6/03-review.md` 에 한국어로 작성하라. 그 파일 하나만 만들고 다른 파일은 만들지도 고치지도 마라. git 커밋도 하지 마라. 실행한 명령과 실제 출력을 근거로 인용하라. 문제를 못 찾았으면 억지로 만들지 말고, 무엇을 어떻게 확인했는지 적어라.
