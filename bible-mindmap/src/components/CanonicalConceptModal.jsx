@@ -561,7 +561,7 @@ export default function CanonicalConceptModal({ initialConcept = null, onClose }
             <div style={{ padding: '14px 18px 10px', borderBottom: `1px solid ${UI.line}`, background: UI.surface, flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap' }}>
                 <span style={{ fontSize: T, fontWeight: 800, color: UI.ink, letterSpacing: '-.015em' }}>{concept.emoji} {concept.labelKo}</span>
-                <span style={{ fontSize: Math.round(T * 0.75), color: '#92400e', fontFamily: '"SBL BibLit", serif' }}>{concept.labelHe}</span>
+                <span style={{ fontSize: Math.round(T * 0.75), color: '#92400e', fontFamily: '"SBL BibLit", "Noto Serif Hebrew", serif' }}>{concept.labelHe}</span>
                 <span style={{ fontSize: Math.round(T * 0.75), color: '#1d4ed8', fontFamily: '"Gentium Plus", Cardo, serif' }}>{concept.labelGr}</span>
                 {CONCEPT_CATEGORIES[concept.category] && (
                   <span style={{
@@ -846,7 +846,7 @@ function LexRow({ lang, flag, strong, label, isHebrew, onOpen, T, C }) {
           style={{
             fontSize: Math.round(T * 0.85), fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer',
             color: isHebrew ? '#92400e' : '#1d4ed8', padding: 0, textAlign: 'left',
-            fontFamily: isHebrew ? '"SBL BibLit", serif' : '"Gentium Plus", Cardo, serif',
+            fontFamily: isHebrew ? '"SBL BibLit", "Noto Serif Hebrew", serif' : '"Gentium Plus", Cardo, serif',
           }}
           title="원어 사전 열기"
         >{label}</button>

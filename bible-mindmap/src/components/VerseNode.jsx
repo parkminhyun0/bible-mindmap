@@ -405,7 +405,7 @@ export default function VerseNode({ id, data, selected }) {
         >
           {e.w}
         </span>
-        {' '}
+        {e.displayJoinNext ? null : ' '}
       </span>
     ));
   };
@@ -561,7 +561,7 @@ export default function VerseNode({ id, data, selected }) {
       ) : (activeTab === 'original' || activeTab === 'lxx') && selected && lexEntries.length > 0 ? (
         <div
           onMouseUp={revealSelectionPin}
-          style={{ color: '#1e293b', fontSize: bodySize, direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif' }}
+          style={{ color: '#1e293b', fontSize: bodySize, direction: isRTL ? 'rtl' : 'ltr', fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", "Noto Serif Hebrew", serif' : '"Gentium Plus", Cardo, serif' }}
         >
           {renderOriginalWithLexicon()}
           <div style={{ fontSize: 9, color: '#94a3b8', marginTop: 4 }}>
@@ -612,7 +612,7 @@ export default function VerseNode({ id, data, selected }) {
               color: displayText.startsWith('(') ? '#94a3b8' : '#1e293b',
               fontSize: bodySize,
               direction: isRTL ? 'rtl' : 'ltr',
-              fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", serif' : '"Gentium Plus", Cardo, serif',
+              fontFamily: isRTL ? '"SBL BibLit", "Ezra SIL", "Noto Serif Hebrew", serif' : '"Gentium Plus", Cardo, serif',
             }}
             dangerouslySetInnerHTML={{
               __html: decorateAnnotatedHtml(displayText, selectedTextAnnotations),

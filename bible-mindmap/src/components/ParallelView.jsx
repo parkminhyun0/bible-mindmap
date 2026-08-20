@@ -550,7 +550,9 @@ export default function ParallelView({ node, onSave, onClose }) {
               <div className={isMobile ? 'momentum-scroll' : undefined}
                 style={{
                   ...chipsWrapStyle,
-                  fontFamily: col.font,
+                  fontFamily: col.id === 'original' && isOT(node.data.bookId)
+          ? 'SBL BibLit, "Noto Serif Hebrew", Cardo, serif'
+          : col.font,
                   fontSize: fontSizes[col.id],
                   direction: col.id === 'original' && isOT(node.data.bookId) ? 'rtl' : 'ltr',
                   maxHeight: isMobile ? 260 : undefined,
