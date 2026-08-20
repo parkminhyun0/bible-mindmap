@@ -13,15 +13,19 @@ jobs:
     if: github.ref_name == 'pipeline/task-nodeeditor-tab-sync'
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright:v1.61.1-noble
+      options: --user 1001 --ipc=host
+    defaults:
+      run:
+        shell: bash
     steps:
-      - name: Checkout task branch
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           ref: pipeline/task-nodeeditor-tab-sync
           fetch-depth: 0
 
-      - name: Confirm exact base and protected paths
-        shell: bash
+      - name: Confirm base and protected scope
         run: |
           test "$(git merge-base HEAD ce02c72f1900df882030176176c9b224835f37d7)" = "ce02c72f1900df882030176176c9b224835f37d7"
           git diff --exit-code ce02c72f1900df882030176176c9b224835f37d7 -- memory/RESUME.json
@@ -29,322 +33,160 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 20
-          cache: npm
-          cache-dependency-path: bible-mindmap/package-lock.json
 
-      - name: Install dependencies
+      - name: Install dependencies and build generated lexicon fixtures
         working-directory: bible-mindmap
-        run: npm ci
+        run: |
+          npm ci
+          npm run build:lexicon
 
-      - name: Apply minimal NodeEditor fix and regression test
-        shell: bash
+      - name: Apply minimal fix and add regression to browser smoke
         run: |
           python - <<'PY'
           from pathlib import Path
-
           root = Path('bible-mindmap')
-          node_editor = root / 'src/components/NodeEditor.jsx'
-          text = node_editor.read_text(encoding='utf-8')
-          replacements = [
-              ("editor.commands.setContent('');", "editor.commands.setContent('', { emitUpdate: false });"),
-              ("editor.commands.setContent(html);", "editor.commands.setContent(html, { emitUpdate: false });"),
-          ]
-          for old, new in replacements:
-              count = text.count(old)
-              if count != 1:
-                  raise SystemExit(f'NodeEditor anchor drift: {old!r} count={count}')
-              text = text.replace(old, new)
-          node_editor.write_text(text, encoding='utf-8')
 
-          package = root / 'package.json'
-          text = package.read_text(encoding='utf-8')
+          p = root / 'src/components/NodeEditor.jsx'
+          text = p.read_text(encoding='utf-8')
+          pairs = [
+            ("editor.commands.setContent('');", "editor.commands.setContent('', { emitUpdate: false });"),
+            ("editor.commands.setContent(html);", "editor.commands.setContent(html, { emitUpdate: false });"),
+          ]
+          for old, new in pairs:
+            if text.count(old) != 1:
+              raise SystemExit(f'NodeEditor anchor drift: {old} count={text.count(old)}')
+            text = text.replace(old, new)
+          p.write_text(text, encoding='utf-8')
+
+          p = root / 'package.json'
+          text = p.read_text(encoding='utf-8')
           old = '"test:smoke": "playwright test tests/p0-regression.spec.js tests/p1-modal-accessibility.spec.js tests/claude-audit-regression.spec.js tests/lexical-bridge-context-ui.spec.js --project=chromium"'
           new = '"test:smoke": "playwright test tests/p0-regression.spec.js tests/p1-modal-accessibility.spec.js tests/claude-audit-regression.spec.js tests/lexical-bridge-context-ui.spec.js tests/nodeeditor-tab-sync-regression.spec.js --project=chromium"'
           if text.count(old) != 1:
-              raise SystemExit('package.json test:smoke anchor drift')
-          package.write_text(text.replace(old, new), encoding='utf-8')
-
-          test_file = root / 'tests/nodeeditor-tab-sync-regression.spec.js'
-          test_file.write_text(r'''import fs from 'node:fs';
-import { expect, test } from 'playwright/test';
-
-const ACTIVE_NODE_TAB_BG = 'rgb(0, 122, 255)';
-const ACTIVE_EDITOR_TAB_BG = 'rgb(59, 130, 246)';
-const KRV_14 = '요한이 잡힌 후 예수께서 갈릴리에 오셔서';
-const KRV_15 = '하나님의 복음을 전파하시며 때가 찼고 하나님 나라가 가까이 왔으니';
-const WEB_14 = 'Now after John was arrested, Jesus came into Galilee, preaching the Good News of God,';
-const WEB_15 = 'and saying, The time is fulfilled, and the Kingdom of God is at hand.';
-
-function languageOf(text) {
-  if (/[\u0370-\u03ff\u1f00-\u1fff]/u.test(text)) return '헬라';
-  if (/[가-힣]/u.test(text)) return '한글';
-  if (/[A-Za-z]/u.test(text)) return '영어';
-  return 'unknown';
-}
-
-function prefix40(text) {
-  return [...text.replace(/^\s*14\s*/u, '').replace(/\s+/gu, ' ').trim()].slice(0, 40).join('');
-}
-
-async function installFixtures(page) {
-  await page.route('https://bolls.life/get-text/KRV/41/1/', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify([
-        { verse: 14, text: KRV_14 },
-        { verse: 15, text: KRV_15 },
-      ]),
-    });
-  });
-  await page.route('https://bolls.life/get-text/WEB/41/1/', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify([
-        { verse: 14, text: WEB_14 },
-        { verse: 15, text: WEB_15 },
-      ]),
-    });
-  });
-  await page.route('**/data/lex/gnt/Mark/1.json', async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: 'application/json',
-      body: JSON.stringify({
-        14: [
-          { w: 'Μετὰ', s: 'G3326', m: 'P', l: 'μετά', tr: 'meta' },
-          { w: 'δὲ', s: 'G1161', m: 'C', l: 'δέ', tr: 'de' },
-          { w: 'τὸ', s: 'G3588', m: 'T-ASN', l: 'ὁ', tr: 'to' },
-          { w: 'παραδοθῆναι', s: 'G3860', m: 'V-APN', l: 'παραδίδωμι', tr: 'paradothenai' },
-          { w: 'τὸν', s: 'G3588', m: 'T-ASM', l: 'ὁ', tr: 'ton' },
-          { w: 'Ἰωάννην', s: 'G2491', m: 'N-ASM', l: 'Ἰωάννης', tr: 'Ioannen' },
-          { w: 'ἦλθεν', s: 'G2064', m: 'V-AAI-3S', l: 'ἔρχομαι', tr: 'elthen' },
-          { w: 'ὁ', s: 'G3588', m: 'T-NSM', l: 'ὁ', tr: 'ho' },
-          { w: 'Ἰησοῦς', s: 'G2424', m: 'N-NSM', l: 'Ἰησοῦς', tr: 'Iesous' },
-          { w: 'εἰς', s: 'G1519', m: 'P', l: 'εἰς', tr: 'eis' },
-          { w: 'τὴν', s: 'G3588', m: 'T-ASF', l: 'ὁ', tr: 'ten' },
-          { w: 'Γαλιλαίαν', s: 'G1056', m: 'N-ASF', l: 'Γαλιλαία', tr: 'Galilaian' },
-        ],
-        15: [
-          { w: 'καὶ', s: 'G2532', m: 'C', l: 'καί', tr: 'kai' },
-          { w: 'λέγων', s: 'G3004', m: 'V-PAP-NSM', l: 'λέγω', tr: 'legon' },
-        ],
-      }),
-    });
-  });
-}
-
-async function addSelectedMarkPassage(page) {
-  await page.goto('./');
-  const sidebar = page.locator('.at-sidebar-panel');
-  await expect(sidebar).toBeVisible();
-  await sidebar.getByRole('button', { name: '신약 (27)', exact: true }).click();
-  await sidebar.getByRole('button', { name: '마가복음', exact: true }).click();
-  await sidebar.getByRole('button', { name: '1', exact: true }).click();
-  const inputs = sidebar.locator('input[type="number"]');
-  await inputs.nth(0).fill('14');
-  await inputs.nth(1).fill('15');
-  await sidebar.getByRole('button', { name: /본문 불러오기/ }).click();
-  const add = sidebar.getByRole('button', { name: '+ 구절 추가', exact: true });
-  await expect(add).toBeVisible({ timeout: 20_000 });
-  await add.click();
-
-  const node = page.locator('.react-flow__node').filter({ hasText: /마가복음 1:14[-–]15/ }).last();
-  await expect(node).toBeVisible({ timeout: 15_000 });
-  await node.locator('.at-canvas-node__title').click();
-  await expect(node.locator('.at-canvas-node[data-selected="true"]')).toBeVisible();
-  return node;
-}
-
-test('선택된 구절 노드의 번역 탭은 KRV 슬롯을 덮어쓰지 않고 직접 편집을 보존한다', async ({ page }) => {
-  test.setTimeout(120_000);
-  await installFixtures(page);
-  const node = await addSelectedMarkPassage(page);
-  const tablist = node.getByRole('tablist', { name: '성경 역본 선택' });
-  const toolbar = page.locator('[data-node-editor-toolbar="true"]').filter({ hasText: '편집 역본:' });
-  await expect(toolbar).toBeVisible();
-  const snapshots = [];
-
-  async function capture(label, tabName, expectedLanguage) {
-    const nodeTab = tablist.getByRole('tab', { name: tabName, exact: true });
-    const editorTab = toolbar.getByRole('button', { name: tabName, exact: true });
-    await expect(nodeTab).toHaveAttribute('aria-selected', 'true');
-    await expect(nodeTab).toHaveCSS('background-color', ACTIVE_NODE_TAB_BG);
-    await expect(editorTab).toHaveCSS('background-color', ACTIVE_EDITOR_TAB_BG);
-    const content = tablist.locator('xpath=following-sibling::*[1]');
-    await expect.poll(async () => languageOf((await content.innerText()).trim())).toBe(expectedLanguage);
-    const text = (await content.innerText()).replace(/\s+/gu, ' ').trim();
-    snapshots.push({
-      step: label,
-      activeTab: tabName,
-      bodyLanguage: languageOf(text),
-      prefix40: prefix40(text),
-    });
-    return { content, text };
-  }
-
-  await capture('시작', '개역한글', '한글');
-
-  await tablist.getByRole('tab', { name: '원어', exact: true }).click();
-  await capture('원어', '원어', '헬라');
-
-  await tablist.getByRole('tab', { name: 'WEB', exact: true }).click();
-  await capture('WEB', 'WEB', '영어');
-
-  await tablist.getByRole('tab', { name: '개역한글', exact: true }).click();
-  const returned = await capture('개역한글 복귀', '개역한글', '한글');
-  expect(prefix40(returned.text)).toMatch(/^요한이 잡힌 후/u);
-
-  const editor = toolbar.locator('xpath=following-sibling::*[contains(@class,"node-editor-tiptap")]').locator('.ProseMirror');
-  await expect(editor).toBeVisible();
-  await editor.click();
-  await page.keyboard.press('End');
-  await page.keyboard.type(' [편집보존]');
-  await expect(editor).toContainText('[편집보존]');
-  expect((await editor.innerText()).trim()).toMatch(/\[편집보존\]$/u);
-
-  await page.keyboard.press('ControlOrMeta+A');
-  await toolbar.getByTitle('굵게 (Ctrl+B)').click();
-  await toolbar.locator('button[title="빨강"]').first().click();
-  await expect(editor.locator('strong').first()).toBeVisible();
-  await expect(editor.locator('span[style*="color"]').first()).toBeVisible();
-
-  await tablist.getByRole('tab', { name: 'WEB', exact: true }).click();
-  await capture('직접편집 후 WEB', 'WEB', '영어');
-  await tablist.getByRole('tab', { name: '개역한글', exact: true }).click();
-  await capture('직접편집 후 개역한글 복귀', '개역한글', '한글');
-  await expect(editor).toContainText('[편집보존]');
-  await expect(editor.locator('strong').first()).toBeVisible();
-  await expect(editor.locator('span[style*="color"]').first()).toBeVisible();
-
-  const trace = {
-    snapshots,
-    directEdit: {
-      persisted: true,
-      marker: '[편집보존]',
-      boldPreserved: true,
-      colorPreserved: true,
-      editorPrefix40: prefix40(await editor.innerText()),
-    },
-  };
-  console.log(`TASK5_TRACE_JSON=${JSON.stringify(trace)}`);
-  if (process.env.TASK5_TRACE_PATH) {
-    fs.writeFileSync(process.env.TASK5_TRACE_PATH, JSON.stringify(trace, null, 2));
-  }
-});
-''', encoding='utf-8')
+            raise SystemExit(f'package test:smoke anchor drift count={text.count(old)}')
+          p.write_text(text.replace(old, new), encoding='utf-8')
           PY
 
-      - name: Build lexicon fixtures
+      - name: Run verifier and oxlint
         working-directory: bible-mindmap
-        run: npm run build:lexicon
-
-      - name: Run targeted verifier and oxlint
-        working-directory: bible-mindmap
-        shell: bash
         run: |
           node scripts/verify-translation-switching-stability.mjs
           npm run lint
           git diff --check
 
-      - name: Run targeted selected-node regression
+      - name: Run selected-node regression
         working-directory: bible-mindmap
         env:
+          PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
           TASK5_TRACE_PATH: /tmp/task5-tab-sync-trace.json
         run: npx playwright test tests/nodeeditor-tab-sync-regression.spec.js --project=chromium --reporter=line
 
-      - name: Run full verifier/build
+      - name: Run full verifier and production build
         working-directory: bible-mindmap
         run: npm run build
 
-      - name: Run existing browser smoke plus new regression
+      - name: Run complete browser smoke set
         working-directory: bible-mindmap
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
         run: npm run test:smoke
 
-      - name: Write implementation report
-        shell: bash
-        env:
-          PR_NUMBER: '389'
+      - name: Write implementation report from actual trace
         run: |
           python - <<'PY'
-          import json, os
+          import json
           from pathlib import Path
 
           trace = json.loads(Path('/tmp/task5-tab-sync-trace.json').read_text(encoding='utf-8'))
-          snapshots = trace['snapshots'][:4]
-          rows = '\n'.join(
-              f"| {item['step']} | {item['activeTab']} | {item['bodyLanguage']} | `{item['prefix40']}` |"
-              for item in snapshots
+          after = trace['snapshots'][:4]
+          after_rows = '\n'.join(
+            f"| {x['step']} | {x['activeTab']} | {x['bodyLanguage']} | `{x['prefix40']}` |" for x in after
           )
-          report = f"""# task5 · 02-impl — NodeEditor 번역 탭 동기화 데이터 손실 수정
+          report = f'''# task5 · 02-impl — NodeEditor 번역 탭 동기화 데이터 손실 수정
 
 ## 기준과 범위
 
 - 기준 `main`: `ce02c72f1900df882030176176c9b224835f37d7`
 - 브랜치: `pipeline/task-nodeeditor-tab-sync`
-- Draft PR: #{os.environ.get('PR_NUMBER', 'unknown')}
-- `pipeline/task-hebrew-text-normalize` / PR #388은 읽기·수정·rebase·push 모두 하지 않았다.
+- Draft PR: #389
+- PR #388 (`pipeline/task-hebrew-text-normalize`)은 수정·rebase·push하지 않았다.
 - `memory/RESUME.json`은 변경하지 않았다.
 
-## 최소 수정
+## 수정한 두 곳과 이유
 
-- `src/components/NodeEditor.jsx`
-  1. 노드 선택 해제 시 프로그램적 초기화 `editor.commands.setContent('')`를 `editor.commands.setContent('', {{ emitUpdate: false }})`로 변경했다. 프로그램적 비우기가 사용자 편집 `update` 이벤트로 오인되어 stale `editData`를 저장하지 않게 한다.
-  2. 선택 노드/번역 탭 동기화 `editor.commands.setContent(html)`를 `editor.commands.setContent(html, {{ emitUpdate: false }})`로 변경했다. Tiptap v3의 기본 `emitUpdate`로 인해 이전 탭의 closure가 새 탭 HTML을 `translations.krv` 등에 덮어쓰던 경로를 끊는다.
-- 상태 구조, update handler closure, Tiptap 버전, 본문 스타일/레이아웃은 리팩터링하지 않았다.
+`src/components/NodeEditor.jsx`의 프로그램적 TipTap 동기화 두 곳만 수정했다.
 
-## 수정 후 4단계 실제 브라우저 추적
+1. 선택 해제 초기화
+   - 전: `editor.commands.setContent('')`
+   - 후: `editor.commands.setContent('', {{ emitUpdate: false }})`
+   - 이유: 프로그램적 초기화를 사용자 편집 update로 오인해 stale `editData` 저장 핸들러를 깨우지 않게 한다.
+2. 선택 노드/역본 콘텐츠 동기화
+   - 전: `editor.commands.setContent(html)`
+   - 후: `editor.commands.setContent(html, {{ emitUpdate: false }})`
+   - 이유: Tiptap v3 기본 update 이벤트가 이전 탭 closure를 동기적으로 실행하여 새 탭 HTML을 `translations.krv` 등 이전 슬롯에 기록하던 경로를 끊는다.
+
+상태 구조, `editor.on('update')` handler, Tiptap 버전, 본문 스타일/레이아웃은 변경하지 않았다.
+
+## 수정 전 재현 기준 · 배포 main
+
+| 단계 | 활성 탭 | 본문 언어 | 결과 |
+| --- | --- | --- | --- |
+| 시작 | 개역한글 | 한글 | 정상 |
+| 원어 클릭 | 개역한글 | 헬라 | 활성 탭 stale |
+| WEB 클릭 | 개역한글 | 영어 | 활성 탭 stale |
+| 개역한글 복귀 | 개역한글 | 영어 | `translations.krv` 오염 · 데이터 손실 |
+
+## 수정 후 실제 Chromium 4단계 추적
 
 | 단계 | 활성 탭 | 본문 언어 | 본문 앞 40자 |
 | --- | --- | --- | --- |
-{rows}
+{after_rows}
 
-- 마지막 개역한글 복귀는 `요한이 잡힌 후`로 시작함을 실제 Chromium E2E에서 단언했다.
-- 각 단계에서 캔버스 탭은 `rgb(0, 122, 255)`, NodeEditor 편집 역본 버튼은 `rgb(59, 130, 246)` 활성 상태를 실제 CSS로 확인했다.
+- 마지막 개역한글 복귀 본문이 `요한이 잡힌 후`로 시작함을 실제 E2E에서 단언했다.
+- 각 단계에서 캔버스 탭 `rgb(0, 122, 255)`와 NodeEditor 편집 역본 버튼 `rgb(59, 130, 246)`의 활성 상태를 실제 CSS로 확인했다.
 
-## 사용자 직접 편집 / lastLocalEditRef 확인
+## 사용자 직접 편집과 lastLocalEditRef
 
-- 선택된 개역한글 본문 TipTap에 `[편집보존]`을 실제 키 입력으로 추가했다.
-- WEB으로 이동했다가 개역한글로 돌아온 뒤 입력 문자열이 남아 있음을 확인했다.
-- 전체 선택 후 굵게와 빨강을 실제 편집 command로 적용하고 탭 왕복 후 `<strong>`과 color span이 유지됨을 확인했다.
-- 따라서 `emitUpdate:false`는 프로그램적 `setContent`만 차단하며 실제 키 입력/서식 command의 `update` 저장은 계속 발생한다.
-- `lastLocalEditRef` 스킵 가드는 유지했으며, 연속 타이핑 결과가 끝에 정확히 `[편집보존]`으로 남아 keystroke마다 커서가 재설정되는 회귀가 없음을 확인했다.
+- 선택된 개역한글 TipTap 본문 끝에 `[편집보존]`을 실제 키 입력으로 추가했다.
+- WEB으로 전환 후 개역한글로 돌아와 해당 입력이 남아 있음을 확인했다.
+- 전체 선택 후 굵게와 빨강 서식을 실제 편집 command로 적용하고 탭 왕복 후 `<strong>`과 color span이 유지됨을 확인했다.
+- 따라서 `emitUpdate:false`는 프로그램적 `setContent`만 차단하고 실제 키 입력/서식 편집은 계속 update를 발생시켜 저장된다.
+- `lastLocalEditRef` 로직은 변경하지 않았고, 연속 입력 marker가 문장 끝에 그대로 남아 keystroke마다 커서가 재설정되는 회귀가 없음을 확인했다.
 
 ## 남아 있는 클로저 위험
 
-- `editor.on('update', handler)`는 여전히 렌더 당시 `editData` closure를 사용한다. 이번 수정은 구조를 바꾸지 않고 프로그램적 `setContent`가 그 stale closure를 동기적으로 깨우는 경로만 차단한다.
-- 향후 다른 프로그램적 editor command가 `update`를 발생시키면서 동시에 탭/노드 상태를 교체하는 코드가 추가되면 같은 종류의 위험을 다시 검토해야 한다. 이번 과제에서는 요청대로 handler/ref 구조를 리팩터링하지 않았다.
+- `editor.on('update', handler)`는 여전히 렌더 당시 `editData` closure를 잡는다.
+- 이번 수정은 구조 리팩터링 없이 프로그램적 `setContent`가 그 stale closure를 깨우는 경로만 제거한다.
+- 향후 탭/노드 교체와 동시에 update를 발생시키는 다른 프로그램적 editor command가 추가되면 동일 계열 위험을 다시 검토해야 한다.
 
 ## 회귀 테스트
 
 - 신규 `tests/nodeeditor-tab-sync-regression.spec.js`
-  - 신약 → 마가복음 → 1장 → 14~15절 → 본문 불러오기 → 구절 추가 → `.at-canvas-node__title` 클릭으로 노드 선택 → 원어 → WEB → 개역한글을 실제 Chromium UI로 수행한다.
-  - KRV/WEB/GNT 공급 응답만 고정 fixture로 주입하고 React/NodeEditor/VerseNode/Tiptap 상태 흐름은 실제 앱 코드를 사용한다.
-  - 활성 탭 CSS, 언어, KRV 복귀 문자열, 직접 편집, 굵게/색상 보존을 모두 단언한다.
-- `package.json`의 기존 `test:smoke`에 신규 spec을 추가했다. workflow 파일은 최종 diff에 남기지 않는다.
+- 실제 흐름: 신약 → 마가복음 → 1장 → 14~15절 → 본문 불러오기 → 구절 추가 → `.at-canvas-node__title`로 노드 선택 → 원어 → WEB → 개역한글.
+- KRV/WEB/GNT 공급 응답만 고정 fixture로 주입하고 React/VerseNode/NodeEditor/Tiptap 상태 흐름은 실제 앱 코드를 사용한다.
+- `package.json`의 기존 `test:smoke` 목록에 신규 spec을 추가하여 표준 `browser-smoke`에서 함께 실행되게 했다. workflow 파일은 최종 diff에 남기지 않는다.
 
 ## 실행 검증
 
 - `node scripts/verify-translation-switching-stability.mjs` — PASS
 - `npm run lint` (oxlint) — PASS (exit 0; 기존 warning만 존재)
 - `git diff --check` — PASS
-- 신규 selected-node regression — PASS
-- `npm run build` (전체 prebuild verifier + production build) — PASS
-- `npm run test:smoke` (기존 smoke 전체 + 신규 회귀) — PASS
+- 신규 selected-node Chromium regression — PASS
+- `npm run build` — PASS (전체 prebuild verifier + production build)
+- `npm run test:smoke` — PASS (기존 Chromium smoke 전체 + 신규 회귀)
 
-## PR CI
+## PR / CI
 
-- Draft PR #{os.environ.get('PR_NUMBER', 'unknown')}의 exact-head CI는 이 보고서가 포함된 최종 commit push 후 GitHub에서 별도로 확인한다.
-- CodeQL은 커넥터에서 check-run이 보이지 않으면 `커넥터로 확인 불가`로만 보고하며, 미실행으로 추정하지 않는다.
-"""
-          path = Path('bible-mindmap/.pipeline/task5/02-impl.md')
-          path.parent.mkdir(parents=True, exist_ok=True)
-          path.write_text(report, encoding='utf-8')
+- Draft PR #389. Ready 전환·병합 없음.
+- 이 보고서를 포함한 최종 exact-head의 GitHub PR CI 상태는 PR conversation의 최종 검증 코멘트와 작업 보고에서 함께 기록한다.
+- CodeQL check-run이 커넥터에 노출되지 않으면 `확인 불가 — connector/check-run visibility limitation`으로만 판정하고 미실행으로 추정하지 않는다.
+'''
+          p = Path('bible-mindmap/.pipeline/task5/02-impl.md')
+          p.parent.mkdir(parents=True, exist_ok=True)
+          p.write_text(report, encoding='utf-8')
           PY
 
-      - name: Remove temporary runner and commit final scoped tree
-        shell: bash
+      - name: Commit final scoped tree and remove temporary workflow
         run: |
           rm .github/workflows/task5-nodeeditor-tab-sync-runner.yml
           git diff --exit-code ce02c72f1900df882030176176c9b224835f37d7 -- memory/RESUME.json
@@ -354,7 +196,7 @@ test('선택된 구절 노드의 번역 탭은 KRV 슬롯을 덮어쓰지 않고
             'bible-mindmap/package.json' \
             'bible-mindmap/src/components/NodeEditor.jsx' \
             'bible-mindmap/tests/nodeeditor-tab-sync-regression.spec.js' | sort)"
-          test "$actual" = "$expected" || { echo "Unexpected final diff:"; printf '%s\n' "$actual"; exit 1; }
+          test "$actual" = "$expected" || { echo 'Unexpected final diff'; printf '%s\n' "$actual"; exit 1; }
           git config user.name 'BIBLE_MAP'
           git config user.email 'skyhyangsu63@gmail.com'
           git add -- bible-mindmap/src/components/NodeEditor.jsx bible-mindmap/package.json bible-mindmap/tests/nodeeditor-tab-sync-regression.spec.js bible-mindmap/.pipeline/task5/02-impl.md .github/workflows/task5-nodeeditor-tab-sync-runner.yml
