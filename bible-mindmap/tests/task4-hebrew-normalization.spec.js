@@ -73,7 +73,7 @@ test('Task4 Hebrew display normalization keeps lookup data, marks, webfont and G
   expect(countHebrewMarks(hebrewText)).toBe(110);
   expect(hebrewText).toContain('עַל־פְּנֵ֣י');
 
-  const fontEvidence = await hebrewBody.evaluate(async (element) => {
+  const fontEvidence = await hebrew.word.evaluate(async (element) => {
     await document.fonts.load('16px "Noto Serif Hebrew"');
     await document.fonts.ready;
     const faces = [...document.fonts]
