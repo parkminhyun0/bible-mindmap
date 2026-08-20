@@ -12,6 +12,10 @@ import {
   KOREAN_GLOSS_GENESIS_1_BATCH_02,
   KOREAN_GLOSS_GENESIS_1_BATCH_02_META,
 } from '../src/data/koreanGlossGenesis1Batch02.js';
+import {
+  KOREAN_GLOSS_TOP_BATCH_01,
+  KOREAN_GLOSS_TOP_BATCH_01_META,
+} from '../src/data/koreanGlossTopBatch01.js';
 import { KOREAN_GLOSS_ACTIVE } from '../src/data/koreanGlossActive.js';
 import { findKoreanSpans, splitGlossCandidates } from '../src/utils/translationAlignment.js';
 
@@ -19,6 +23,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
 const ALIGNMENT_PATH = path.join(ROOT, 'public/data/alignment/krv/genesis/1.json');
 const STRONG_RE = /^H\d+$/;
+const TOP_STRONG_RE = /^[HG]\d+$/;
 const REQUIRED_FIELDS = ['lemma', 'translit', 'translitKo', 'glossKo', 'note', 'review'];
 const SENSITIVE = new Set(['H430']);
 const errors = [];
@@ -28,6 +33,7 @@ const batches = [
   { entries: KOREAN_GLOSS_GENESIS_1_BATCH_02, meta: KOREAN_GLOSS_GENESIS_1_BATCH_02_META },
 ];
 const seen = new Set();
+const topSeen = new Set();
 
 for (const { entries: batch, meta } of batches) {
   const entries = Object.entries(batch);
@@ -59,7 +65,65 @@ for (const { entries: batch, meta } of batches) {
   }
 }
 
-const expectedActiveCount = Object.keys(KOREAN_GLOSS).length + seen.size;
+// 빈도 상위 배치(구약·신약 공통)도 같은 규칙으로 검사한다. 창세기 배치와 달리
+// 헬라어(G) 항목을 포함하고, TAHOT 에 학술 음역 필드가 없어 히브리어 translit 은
+// 비어 있을 수 있다. 그 두 가지만 다르고 나머지 계약은 동일하다.
+{
+  const meta = KOREAN_GLOSS_TOP_BATCH_01_META;
+  const entries = Object.entries(KOREAN_GLOSS_TOP_BATCH_01);
+  if (entries.length !== meta.entryCount) {
+    errors.push(`${meta.batchId}: entryCount mismatch meta=${meta.entryCount}, actual=${entries.length}`);
+  }
+  if (meta.status !== 'candidate') errors.push(`${meta.batchId}: status must remain candidate`);
+
+  let reviewed = 0;
+  for (const [strong, entry] of entries) {
+    if (!TOP_STRONG_RE.test(strong)) errors.push(`${strong}: invalid Strong ID`);
+    if (Object.prototype.hasOwnProperty.call(KOREAN_GLOSS, strong)) {
+      errors.push(`${strong}: duplicates existing koreanGloss.js entry`);
+    }
+    if (seen.has(strong)) errors.push(`${strong}: duplicates a Genesis batch entry`);
+    if (topSeen.has(strong)) errors.push(`${strong}: duplicated inside the top-frequency batch`);
+    topSeen.add(strong);
+
+    for (const field of REQUIRED_FIELDS) {
+      if (!Object.prototype.hasOwnProperty.call(entry, field)) errors.push(`${strong}: missing ${field}`);
+    }
+    // translit 은 히브리어에서 비어 있을 수 있다(TAHOT 미제공). 나머지는 비면 안 된다.
+    for (const field of ['lemma', 'translitKo', 'glossKo', 'note']) {
+      if (typeof entry[field] !== 'string' || entry[field].trim() === '') {
+        errors.push(`${strong}: ${field} must be a non-empty string`);
+      }
+    }
+    if (typeof entry.translit !== 'string') errors.push(`${strong}: translit must be a string`);
+    if (typeof entry.review !== 'boolean') errors.push(`${strong}: review must be boolean`);
+    // variants 는 통용되는 다른 표기다. 있으면 팝업이 note 를 함께 보여 준다.
+    // 비어 있는 배열이나 표제 표기와 같은 값이 들어가면 화면에 헛것이 뜬다.
+    if (entry.variants !== undefined) {
+      if (!Array.isArray(entry.variants) || entry.variants.length === 0) {
+        errors.push(`${strong}: variants must be a non-empty array when present`);
+      } else {
+        for (const v of entry.variants) {
+          if (typeof v !== 'string' || v.trim() === '') errors.push(`${strong}: variants entries must be non-empty strings`);
+          if (v === entry.translitKo) errors.push(`${strong}: variants must not repeat translitKo`);
+        }
+      }
+    }
+    if (SENSITIVE.has(strong) && entry.review !== true) {
+      errors.push(`${strong}: theological sensitive entry must remain review=true`);
+    }
+    if (entry.review === true) reviewed += 1;
+  }
+  if (reviewed !== meta.reviewedCount) {
+    errors.push(`${meta.batchId}: reviewedCount mismatch meta=${meta.reviewedCount}, actual=${reviewed}`);
+  }
+  if (entries.length - reviewed !== meta.pendingCount) {
+    errors.push(`${meta.batchId}: pendingCount mismatch meta=${meta.pendingCount}, actual=${entries.length - reviewed}`);
+  }
+}
+
+// 활성 사전에 계산되지 않은 항목이 섞여 들어오지 않았는지 확인한다.
+const expectedActiveCount = Object.keys(KOREAN_GLOSS).length + seen.size + topSeen.size;
 if (Object.keys(KOREAN_GLOSS_ACTIVE).length !== expectedActiveCount) {
   errors.push(`active dictionary count mismatch: expected=${expectedActiveCount}, actual=${Object.keys(KOREAN_GLOSS_ACTIVE).length}`);
 }

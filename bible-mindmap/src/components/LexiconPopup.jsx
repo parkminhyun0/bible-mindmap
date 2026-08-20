@@ -94,6 +94,18 @@ function resolveKoreanTransliteration(entry) {
   return record.translitKo;
 }
 
+// 한글 음역은 학술(SBL) 표기를 기본으로 삼는다. 낱말에 따라 다른 표기가 통용되기도
+// 하는데, 그런 경우에만 왜 갈리는지를 음역 바로 아래에 보여 준다.
+// 판단 기준은 variants — 실제로 통용되는 다른 표기가 기록된 항목만 대상이다.
+// 표기가 갈리지 않는 낱말에까지 설명을 붙이면 화면이 무거워진다.
+function resolveTransliterationNote(entry) {
+  const key = normalizedStrong(entry?.s);
+  const record = (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
+  if (!record || !Array.isArray(record.variants) || record.variants.length === 0) return null;
+  const note = typeof record.note === 'string' ? record.note.trim() : '';
+  return note ? { note, variants: record.variants } : null;
+}
+
 function morphologyFields(human) {
   if (!human) return [];
   if (human.includes(' | ')) return [{ label: '형태 분석', value: human }];
@@ -327,6 +339,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     : fullMorphHuman;
   const morphFields = morphologyFields(primaryMorphHuman);
   const koreanTranslit = resolveKoreanTransliteration(entry);
+  const translitNote = resolveTransliterationNote(entry);
   const lexicalSource = entry.l || entry.w || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
@@ -405,6 +418,15 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           </div>
         ))}
       </div>
+
+      {translitNote && (
+        <div className="lexicon-translit-note" data-testid="popup-translit-note">
+          <span className="lexicon-translit-note__variants">
+            다른 표기: {translitNote.variants.join(' · ')}
+          </span>
+          <p className="lexicon-translit-note__text">{translitNote.note}</p>
+        </div>
+      )}
 
       <nav className="lexicon-tabs" aria-label="원어 사전 탭">
         {[
