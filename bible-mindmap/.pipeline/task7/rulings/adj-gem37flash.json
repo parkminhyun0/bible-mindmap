@@ -1,0 +1,82 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H3097",
+      "translit": "yôʾāb",
+      "translitKo": "요아브",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H2091 zāhāb → 자하브, H3290 yaʿăqōb → 야아코브)",
+      "note": "학술 표기는 요아브(yôʾāb)이며, 개역 계열 관용 표기는 어말 ב를 받침으로 굳혀 '요압'으로 적는다."
+    },
+    {
+      "strong": "H1008",
+      "translit": "bêt-ʾēl",
+      "translitKo": "베트엘",
+      "evidence": "src/data/koreanGlossGenesis1Batch02.js (H996 bên → 벤), src/data/koreanGlossGenesis1Batch01.js (H7225 rēʾšît → 레쉬트)",
+      "note": "학술 표기는 베트엘(bêt-ʾēl)이며, 개역 계열 관용 표기는 '벧엘'이다. 체레 요드(ê)를 단모음 'ㅔ'로 반영해 '베트엘'로 표기한다."
+    },
+    {
+      "strong": "G2491",
+      "translit": "Iōánnēs",
+      "translitKo": "이오안네스",
+      "evidence": "src/data/bibleReferences.js (Q43264·Q9412 Ἰωάννης → 이오안네스(Iōannēs)), src/data/koreanGlossTopBatch01.js (G2424 Ἰησοῦς → 이에수스)",
+      "note": "학술 표기는 이오안네스(Iōánnēs)이며, 개역 계열 관용 표기인 '요한'은 히브리어 요하난에서 유래한 형태다."
+    },
+    {
+      "strong": "H5983",
+      "translit": "ʿammôn",
+      "translitKo": "암몬",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H520 אַמָּה → 암마), src/data/biblicalPeopleT3.js (암몬)",
+      "note": "배포 데이터 선례(אַמָּה→암마)와 같이 מ의 다게쉬 포르테를 받침과 초성으로 반영하고 관용 표기와도 일치하는 '암몬'으로 표기한다."
+    },
+    {
+      "strong": "H426",
+      "translit": "ʾĕlāh",
+      "translitKo": "엘라흐",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js (H430 ʾĕlōhîm → 엘로힘), src/data/koreanGlossTopBatch02.js (H251 ʾāḥ → 아흐)",
+      "note": "어말 ה에 마피크(mappiq)가 있어 자음(h)으로 발음되므로 '엘라흐'로 표기한다. 모음 표지인 일반 어말 ה(파르오·모셰)와 구별된다."
+    },
+    {
+      "strong": "H3092",
+      "translit": "yĕhôšāpāṭ",
+      "translitKo": "예호샤파트",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H3091 yĕhôšûaʿ → 예호슈아, H3063 yĕhûdâ → 예후다, H4941 mišpāṭ → 미쉬파트)",
+      "note": "학술 표기는 예호샤파트(yĕhôšāpāṭ)이며, 개역 계열 관용 표기는 '여호사밧'이다. 신명 축약 접두형(yĕhô-→예호)과 šāpāṭ(샤파트)을 결합해 표기한다."
+    },
+    {
+      "strong": "H7896",
+      "translit": "šît",
+      "translitKo": "시트",
+      "evidence": "src/data/koreanGloss.js (H4899 māšîaḥ → 마시아흐), src/data/koreanGlossTopBatch02.js (H2572 ḥămiššîm → 하미심)",
+      "note": "음절 첫소리 שׁ 뒤에 모음 '이'(î)가 오므로 확정 규칙 및 선례(마시아흐·하미심)에 따라 '시'로 적어 '시트'로 표기한다."
+    },
+    {
+      "strong": "H7043",
+      "translit": "qālal",
+      "translitKo": "칼랄",
+      "evidence": "src/data/koreanGloss.js (H7965 šālôm → 샬롬), src/data/koreanGlossTopBatch01.js (H1980 hālak → 할라크), src/data/koreanGlossTopBatch02.js (H5769 ʿôlām → 올람)",
+      "note": "모음 사이 ל은 앞 음절 받침 ㄹ + 뒤 음절 초성 ㄹ로 적는 선례(샬롬·할라크·올람)에 따라 '칼랄'로 표기한다."
+    },
+    {
+      "strong": "H205",
+      "translit": "ʾāwen",
+      "translitKo": "아웬",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H8432 tāwek → 타웨크, H4687 miṣwâ → 미츠와)",
+      "note": "자음 ו에 세골(e)이 결합된 음절(wen)이므로 확정 규칙(w→와/웨/위)에 따라 '아웬'으로 표기한다. ע+홀렘 바브인 H5771(아원)과 구별된다."
+    },
+    {
+      "strong": "H2470",
+      "translit": "ḥālâ",
+      "translitKo": "할라",
+      "evidence": "src/data/koreanGloss.js (H7965 šālôm → 샬롬), src/data/koreanGlossTopBatch01.js (H1980 hālak → 할라크), src/data/koreanGlossGenesis1Batch01.js (H430 ʾĕlōhîm → 엘로힘)",
+      "note": "모음 사이 ל은 앞 음절 받침 ㄹ + 뒤 음절 초성 ㄹ로 적는 선례(샬롬·엘로힘·할라크)에 따라 '할라'로 표기한다."
+    },
+    {
+      "strong": "H7998",
+      "translit": "šālāl",
+      "translitKo": "샬랄",
+      "evidence": "src/data/koreanGloss.js (H7965 šālôm → 샬롬), src/data/koreanGlossTopBatch02.js (H7969 šālôš → 샬로쉬)",
+      "note": "모음 사이 ל은 앞 음절 받침 ㄹ + 뒤 음절 초성 ㄹ로 적는 선례(샬롬·샬로쉬)에 따라 '샬랄'로 표기한다."
+    }
+  ]
+}

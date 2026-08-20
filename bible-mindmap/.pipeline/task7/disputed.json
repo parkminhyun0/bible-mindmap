@@ -1,0 +1,379 @@
+{
+  "count": 11,
+  "items": [
+    {
+      "shard": "F",
+      "strong": "H3097",
+      "lemma": "יוֹאָב",
+      "lang": "hebrew",
+      "glossEn": "Joab.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "yôʾāb",
+          "translitKo": "요압",
+          "note": "관용 표기(요압) 수용"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yôʾāb",
+          "translitKo": "요아브",
+          "note": "관용 표기 '요압'과 차이"
+        },
+        {
+          "model": "gem36flash",
+          "translit": "yôʾāb",
+          "translitKo": "요압",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yôʾāb",
+          "translitKo": "요아브",
+          "note": "학술 표기는 요아브. 개역 계열 관용 표기는 어말 ב를 받침으로 굳혀 '요압'으로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "F",
+      "strong": "H1008",
+      "lemma": "בֵּית־אֵל",
+      "lang": "hebrew",
+      "glossEn": "Beth-el.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "bêt-ʾēl",
+          "translitKo": "베이트엘",
+          "note": "관용 표기(벧엘)와 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt-ʾēl",
+          "translitKo": "베트엘",
+          "note": "관용 표기 '벧엘'과 차이"
+        },
+        {
+          "model": "gem36flash",
+          "translit": "bêt-ʾēl",
+          "translitKo": "베이트엘",
+          "note": "개역개정은 관용을 따라 '베델'로 옮긴다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt-ʾēl",
+          "translitKo": "베트엘",
+          "note": "합성 지명 '벧(집) + 엘(하나님)'. 학술 표기는 베트엘, 개역 계열 관용 표기는 '벧엘'."
+        }
+      ]
+    },
+    {
+      "shard": "F",
+      "strong": "G2491",
+      "lemma": "Ἰωάννης",
+      "lang": "greek",
+      "glossEn": "John",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "Iōánnēs",
+          "translitKo": "이오안네스",
+          "note": "관용 표기(요한)와 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Iōánnēs",
+          "translitKo": "요안네스",
+          "note": "관용 표기 '요한'과 차이"
+        },
+        {
+          "model": "gem36flash",
+          "translit": "Iōánnēs",
+          "translitKo": "이오아네스",
+          "note": "개역개정은 관용을 따라 '요한'으로 옮긴다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "Iōánnēs",
+          "translitKo": "이오안네스",
+          "note": "학술 표기는 이오안네스. 개역 계열 관용 표기 '요한'은 히브리어 요하난 경유형이다."
+        }
+      ]
+    },
+    {
+      "shard": "G",
+      "strong": "H5983",
+      "lemma": "עַמּוֹן",
+      "lang": "hebrew",
+      "glossEn": "Ammon, Ammonites.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ʿammôn",
+          "translitKo": "아몬",
+          "note": "다게쉬 포르테 중복 자음 겹쳐 적지 않음, 관용 표기 암몬"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿammôn",
+          "translitKo": "암몬",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ʿammôn",
+          "translitKo": "아몬",
+          "note": "한국어 성경의 관용 표기는 '암몬'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿammôn",
+          "translitKo": "암몬",
+          "note": "다게쉬 포르테를 받침으로 겹쳐 적지 않는 것이 원칙이나, ם은 한글 받침이 자연스럽고 기존 표기 אַמָּה→암마 선례와 한국어 성경 관용 표기 '암몬'이 일치해 암몬으로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "G",
+      "strong": "H426",
+      "lemma": "אֱלָהּ",
+      "lang": "hebrew",
+      "glossEn": "God, god.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ʾĕlāh",
+          "translitKo": "엘라흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾĕlāh",
+          "translitKo": "엘라흐",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ʾĕlāh",
+          "translitKo": "엘라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾĕlāh",
+          "translitKo": "엘라",
+          "note": "마피크가 찍힌 어말 ה라 학술 표기는 ʾĕlāh이지만, 어말 ה는 한글로 적지 않는 기존 처리(פַּרְעֹה→파르오)를 따라 엘라로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H3092",
+      "lemma": "יְהוֹשָׁפָט",
+      "lang": "hebrew",
+      "glossEn": "Jehoshaphat. Compare H3146 (יוֹשָׁפָט).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "yĕhôšāpāṭ",
+          "translitKo": "예호샤파트",
+          "note": "관용 표기(여호사밧)와 차이"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhôšāpāṭ",
+          "translitKo": "여호샤파트",
+          "note": "고유명사. 학술 표기는 여호샤파트(yəhôšāpāṭ)이며, 개역개정 관용 표기는 여호사밧이다."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "yehōšāpāṭ",
+          "translitKo": "예호샤팟",
+          "note": "관용 표기는 여호사밧이다. SBL 학술 음역 예호샤팟(yehōšāpāṭ)을 표제로 삼는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhôšāpāṭ",
+          "translitKo": "예호샤파트",
+          "note": "관용 표기 ‘여호사밧’과 차이. 학술 표기는 요소별로 yĕhô(야훼)+šāpāṭ(심판하다)이므로 예호샤파트다."
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H7896",
+      "lemma": "שִׁית",
+      "lang": "hebrew",
+      "glossEn": "apply, appoint, array, bring, consider, lay (up), let alone, [idiom] look, make, mark, put (on), [phrase] regard, set, shew, be stayed, [idiom] take.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "šît",
+          "translitKo": "쉬트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šît",
+          "translitKo": "시트",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "šît",
+          "translitKo": "쉬트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šît",
+          "translitKo": "시트",
+          "note": "음절 첫소리 שׁ이므로 시로 적는다(음절 말이 아니라 쉬가 아니다)."
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H7043",
+      "lemma": "קָלַל",
+      "lang": "hebrew",
+      "glossEn": "abate, make bright, bring into contempt, (ac-) curse, despise, (be) ease(-y, -ier), (be a, make, make somewhat, move, seem a, set) light(-en, -er, -ly, -ly afflict, -ly esteem, thing), [idiom] slight(-ly), be swift(-er), (be, be more, make, re-) vile, whet.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "qālal",
+          "translitKo": "칼랄",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "qālal",
+          "translitKo": "카랄",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "qālal",
+          "translitKo": "카랄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qālal",
+          "translitKo": "칼랄",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H205",
+      "lemma": "אָוֶן",
+      "lang": "hebrew",
+      "glossEn": "affliction, evil, false, idol, iniquity, mischief, mourners(-ing), naught, sorrow, unjust, unrighteous, vain, vanity, wicked(-ness). Compare H369 (אַיִן).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ʾāwen",
+          "translitKo": "아웬",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾāwen",
+          "translitKo": "아원",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ʾāwen",
+          "translitKo": "아원",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾāwen",
+          "translitKo": "아웬",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H2470",
+      "lemma": "חָלָה",
+      "lang": "hebrew",
+      "glossEn": "beseech, (be) diseased, (put to) grief, be grieved, (be) grievous, infirmity, intreat, lay to, put to pain, [idiom] pray, make prayer, be (fall, make) sick, sore, be sorry, make suit ([idiom] supplication), woman in travail, be (become) weak, be wounded.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ḥālâ",
+          "translitKo": "할라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥālâ",
+          "translitKo": "하라",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ḥālāh",
+          "translitKo": "하라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥālâ",
+          "translitKo": "할라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "H",
+      "strong": "H7998",
+      "lemma": "שָׁלָל",
+      "lang": "hebrew",
+      "glossEn": "prey, spoil.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "šālāl",
+          "translitKo": "샬랄",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šālāl",
+          "translitKo": "샤랄",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "šālāl",
+          "translitKo": "샤랄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šālāl",
+          "translitKo": "샬랄",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}
