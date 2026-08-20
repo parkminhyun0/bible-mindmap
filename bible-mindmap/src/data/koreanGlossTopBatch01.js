@@ -1,20 +1,23 @@
 // 66권 빈도 상위 Strong 한글 음역 확장 · batch 01
 //
-// 범위: 성경 66권 전체 본문 빈도 상위 100개 중 기존 169개에 없던 항목.
+// 범위: 성경 66권 전체 본문 빈도 상위 100개 중 기존 사전에 없던 항목.
 //       구약 305,638어절 · 신약 141,746어절을 집계해 Strong 단위로 순위를 냈다.
+//
+// 표기 원칙: 학술(SBL) 표기를 기본으로 삼는다. 한국어 성경의 관용 표기가 다른
+//       고유명사(H3068 · H1732 · G2424)도 학술 표기를 표제로 두고, 관용 표기와
+//       그 차이가 생긴 이유를 note 에 적어 함께 보여 준다.
 //
 // 방법: 서로 다른 네 관점이 독립으로 음역안을 만든 뒤 대조했다.
 //         ① SBL 엄밀식        ② 개역개정 관용식
-//         ③ 발음 중심(Gemini) ④ 기존 169개 표기의 규칙 일관성
-//       네 안이 모두 일치한 항목은 그대로 채택했다(83개).
-//       갈린 항목은 서로 다른 두 모델(Claude Opus · Gemini Pro)이 독립 판정했고,
-//       14개 전부 두 판정자의 답이 일치했다.
+//         ③ 발음 중심(Gemini) ④ 기존 표기의 규칙 일관성
+//       네 안이 일치한 74개는 그대로 두고, 갈린 13개는 서로 다른 두 모델
+//       (Claude Opus · Gemini Pro)이 독립 판정했다. 13개 전부 답이 일치했다.
 //
-// review: false 는 화면에 노출되지 않는다. 두 판정자가 모두 확신도 '보통'을 준
-//       항목이며 표기 확정 전까지 보류한다.
+// note: 표기가 갈리는 낱말은 왜 갈리는지를 적었다. 팝업에서 한글 음역 바로
+//       아래에 표시된다.
 //
 // 제외: H9030 · H9033 · H9038 은 낱말이 아니라 인칭 접미사 문법 코드다(lemma·정의 없음).
-//       빈도가 높아 상위 목록에 섞였으나 사전 항목이 아니므로 넣지 않는다.
+//       창세기 1장 배치와 겹치는 10개도 뺐다. 그쪽은 본문을 직접 검토해 만든 것이다.
 //
 // 기존 파일은 수정하지 않는다. 통합은 koreanGlossActive.js 에서 한다.
 
@@ -38,9 +41,10 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
   H3068: {
     lemma: 'יהוה',
     translit: '',
-    translitKo: '여호와',
+    translitKo: '야훼',
     glossKo: 'Jehovah, Jewish national name of God',
-    note: '개역개정을 비롯한 한국어 성경과 교회 관행에 완전히 굳어진 신명 표기이며, 유대교 발음 회피 전통상 재구음 야훼를 새로 강제할 이유가 없다.',
+    note: '학술 표기는 야훼다. 개역개정 등 한국어 성경은 여호와로 옮긴다. 유대인이 신명을 소리 내어 읽지 않고 아도나이로 대독해 온 탓에 본래 모음이 전해지지 않았고, 중세 사본이 자음 YHWH에 아도나이의 모음을 붙여 적은 것을 라틴어권이 그대로 읽어 Jehovah가 되었다. 야훼는 초기 교부 기록 등을 근거로 재구성한 발음이다.',
+    variants: ['여호와'],
     review: true,
   },
   G846: {
@@ -64,8 +68,9 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '아셰르',
     glossKo: 'who, which, what, that; also (as an adverb and a conjunction) when, ',
-    note: '표기 확신이 낮다. 후보: 아셰르 / 아쉐르 / 아셔. 확인 전까지 노출하지 않는다.',
-    review: false,
+    note: '관계사다. שֶׁ의 셰골 모음을 셰로 적으면 아셰르, 쉐로 적으면 아쉐르가 된다. 한국어에 시/셰/쉐 구분이 흐려 표기가 갈리며, 어말 ר를 흘려 적으면 아셔가 된다.',
+    variants: ['아쉐르', '아셔'],
+    review: true,
   },
   H3605: {
     lemma: 'כֹּל',
@@ -88,8 +93,9 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'humin',
     translitKo: '쉬',
     glossKo: 'thou',
-    note: '표기 확신이 낮다. 후보: 쉬 / 수 / 슈. 확인 전까지 노출하지 않는다.',
-    review: false,
+    note: '윕실론(υ)의 음가 문제다. 고전 헬라어에서 [y] (독일어 ü)에 가까워 학술 표기는 위 계열이라 쉬가 되고, 코이네 이후 [i]로 변한 발음을 따르면 수, 영어식으로 읽으면 슈가 된다.',
+    variants: ['수', '슈'],
+    review: true,
   },
   G1161: {
     lemma: 'δέ',
@@ -120,7 +126,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '보',
     glossKo: 'to go or come (in a wide variety of applications)',
-    note: '어말 묵음 알레프를 적지 않는 기존 규칙과 단음절 표제어 허용 사례에 그대로 부합한다.',
+    note: '어말 알레프(א)는 소리가 나지 않는 묵음이다. 이를 적지 않으면 보, 철자를 그대로 옮기면 보아가 된다.',
+    variants: ['보아'],
     review: true,
   },
   H4428: {
@@ -224,7 +231,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: '',
     translitKo: '할라크',
     glossKo: 'to walk (in a great variety of applications, literally and figurativ',
-    note: '어말 ךְ를 크로 적는 기존 표기와 일치하고 한국 원어 교재에서도 할라크가 표준이다.',
+    note: '어말 카프(ךְ)에 슈바가 붙어 자음만 남는다. 이를 크로 적으면 할라크, 받침으로 처리하면 할락·할랙이 된다.',
+    variants: ['할락', '할랙'],
     review: true,
   },
   G3739: {
@@ -240,7 +248,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'touto',
     translitKo: '후토스',
     glossKo: 'the he (she or it), i.e. this or that (often with article repeated)',
-    note: '기식음을 ㅎ로 적는 기존 규칙에 따르며 네 관점 중 셋이 일치한다.',
+    note: '어두의 거친 기식부호(ὁ의 ῾)를 ㅎ로 적으면 후토스, 무시하면 우토스가 된다. 코이네 후기에는 이 기식이 실제로 소리나지 않게 되었다.',
+    variants: ['우토스'],
     review: true,
   },
   G3004: {
@@ -256,7 +265,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'theou',
     translitKo: '테오스',
     glossKo: 'figuratively, a magistrate; by Hebraism, very',
-    note: '기존 표기가 θ를 트/테로 처리하고 한국 신학 용어로도 테오스가 통용된다.',
+    note: '세타(θ)는 무성 치간 마찰음으로 영어 think의 th에 해당한다. 한국어에 없는 소리라 ㅌ로 적으면 테오스, 유성음으로 흘려 적으면 데오스가 된다.',
+    variants: ['데오스'],
     review: true,
   },
   G3754: {
@@ -366,9 +376,10 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
   H1732: {
     lemma: 'דָּוִד',
     translit: '',
-    translitKo: '다윗',
+    translitKo: '다위드',
     glossKo: 'David, the youngest son of Jesse',
-    note: '한국어 성경의 고유명사로 완전히 굳어져 있어 재구음 표기를 쓸 자리가 아니다.',
+    note: '학술 표기는 다위드다. 한국어 성경은 다윗으로 굳어져 있다. 어말 달렛(ד)을 음절로 적으면 다위드, 받침으로 적으면 다윗이 된다.',
+    variants: ['다윗'],
     review: true,
   },
   H518: {
@@ -398,9 +409,10 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
   G2424: {
     lemma: 'Ἰησοῦς',
     translit: 'Iēsous',
-    translitKo: '예수',
+    translitKo: '이에수스',
     glossKo: 'Jesus (i.e. Jehoshua), the name of our Lord and two (three) other Is',
-    note: '한국어 성경과 교회에서 완전히 굳어진 고유명사다.',
+    note: '학술 표기는 이에수스다. 한국어 성경은 예수로 굳어져 있다. Ἰη를 두 음절로 읽으면 이에, 한 음절로 줄이면 예가 된다. 히브리어 예슈아(יֵשׁוּעַ)를 헬라어로 옮기며 어미 -ς가 붙은 형태다.',
+    variants: ['예수'],
     review: true,
   },
   H3947: {
@@ -504,7 +516,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'kuriou',
     translitKo: '퀴리오스',
     glossKo: 'supreme in authority, i.e. (as noun) controller; by implication, Mas',
-    note: '한국 신학·설교 현장에서 퀴리오스로 통용되며 기존 υ→위 규칙과도 맞는다.',
+    note: '윕실론(υ)을 위 계열로 적으면 퀴리오스, 영어식 u로 읽으면 큐리오스가 된다.',
+    variants: ['큐리오스'],
     review: true,
   },
   G4314: {
@@ -552,7 +565,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'ina',
     translitKo: '히나',
     glossKo: 'compare G3588 (ὁ)); in order that (denoting the purpose or the resul',
-    note: '어두 기식음을 ㅎ로 적는 기존 규칙에 따르며 원어 문법 교재의 표준 표기다.',
+    note: '어두의 거친 기식부호(ἵ의 ῾)를 ㅎ로 적으면 히나, 무시하면 이나가 된다.',
+    variants: ['이나'],
     review: true,
   },
   G235: {
@@ -592,7 +606,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'anthrōpou',
     translitKo: '안트로포스',
     glossKo: 'from G3700 (ὀπτάνομαι)); man-faced, i.e. a human being',
-    note: 'θ를 트로 적는 기존 규칙과 일치하고 한국어 학술·설교 관용 표기도 안트로포스다.',
+    note: '세타(θ)를 무성음 ㅌ로 적으면 안트로포스, 유성음 ㄷ로 적으면 안드로포스가 된다. 영어 anthropology의 th와 같은 소리다.',
+    variants: ['안드로포스'],
     review: true,
   },
   G5100: {
@@ -696,7 +711,8 @@ export const KOREAN_GLOSS_TOP_BATCH_01 = {
     translit: 'polloi',
     translitKo: '폴뤼스',
     glossKo: '(singular) much (in any respect) or (plural) many; neuter (singular)',
-    note: 'υ를 위 계열로 적는 기존 규칙에 맞고 동시에 πόλις(폴리스)와의 혼동을 막아준다.',
+    note: '윕실론(υ)을 위 계열로 적으면 폴뤼스, u로 적으면 폴루스가 된다. 폴뤼스로 적으면 폴리스(πόλις, 도시)와 눈으로도 구분된다.',
+    variants: ['폴루스'],
     review: true,
   },
   G2228: {
@@ -721,7 +737,7 @@ export const KOREAN_GLOSS_TOP_BATCH_01_META = {
   batchId: 'top-frequency-batch-01',
   status: 'candidate',
   entryCount: 87,
-  reviewedCount: 85,
-  pendingCount: 2,
+  reviewedCount: 87,
+  pendingCount: 0,
   scope: '66권 전체 빈도 상위 100개 중 기존 사전에 없던 항목',
 };

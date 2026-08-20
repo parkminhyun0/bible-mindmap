@@ -97,6 +97,18 @@ for (const { entries: batch, meta } of batches) {
     }
     if (typeof entry.translit !== 'string') errors.push(`${strong}: translit must be a string`);
     if (typeof entry.review !== 'boolean') errors.push(`${strong}: review must be boolean`);
+    // variants 는 통용되는 다른 표기다. 있으면 팝업이 note 를 함께 보여 준다.
+    // 비어 있는 배열이나 표제 표기와 같은 값이 들어가면 화면에 헛것이 뜬다.
+    if (entry.variants !== undefined) {
+      if (!Array.isArray(entry.variants) || entry.variants.length === 0) {
+        errors.push(`${strong}: variants must be a non-empty array when present`);
+      } else {
+        for (const v of entry.variants) {
+          if (typeof v !== 'string' || v.trim() === '') errors.push(`${strong}: variants entries must be non-empty strings`);
+          if (v === entry.translitKo) errors.push(`${strong}: variants must not repeat translitKo`);
+        }
+      }
+    }
     if (SENSITIVE.has(strong) && entry.review !== true) {
       errors.push(`${strong}: theological sensitive entry must remain review=true`);
     }

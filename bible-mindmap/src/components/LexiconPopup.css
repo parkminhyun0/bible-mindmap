@@ -48,6 +48,10 @@
 .lexicon-meta-key{font-size:9px;color:#8390a3;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .lexicon-meta-value{font-size:12px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:19px;display:flex;align-items:center}
 .lexicon-meta-value.is-hebrew{font-size:21px;line-height:1.15;overflow:visible;text-overflow:clip}
+/* 한글 음역 바로 아래 — 표기가 갈리는 낱말에만 그 이유를 설명한다 */
+.lexicon-translit-note{flex:0 0 auto;padding:9px 12px 10px;border-bottom:1px solid var(--lx-line);background:#f7f9fc}
+.lexicon-translit-note__variants{display:inline-block;margin-bottom:4px;padding:2px 7px;border-radius:999px;background:#e8eef7;color:#41536e;font-size:10px;font-weight:650;letter-spacing:.01em}
+.lexicon-translit-note__text{margin:0;color:#5a677d;font-size:11px;line-height:1.6;word-break:keep-all}
 
 .lexicon-tabs{flex:0 0 44px;display:flex;align-items:flex-end;border-bottom:1px solid var(--lx-line);padding:0 12px;background:#fff}
 .lexicon-tab{border:0;background:transparent;padding:12px 14px 10px;color:#6a7586;font-size:12px;font-weight:650;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
