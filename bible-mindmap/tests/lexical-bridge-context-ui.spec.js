@@ -1,4 +1,5 @@
 import { expect, test } from 'playwright/test';
+import './task4-hebrew-normalization.spec.js';
 
 async function dismissResearchOnboarding(page) {
   await page.addInitScript(() => {
@@ -130,9 +131,7 @@ test.describe('모바일 원어 브릿지', () => {
       return { upwardPrevented, downwardAtTopPrevented };
     });
 
-    // 손가락을 위로 밀어 본문을 아래쪽으로 읽는 동작은 절대 막으면 안 된다.
     expect(gestureGuard.upwardPrevented).toBe(false);
-    // 반대로 최상단에서 아래로 당길 때는 배경으로 스크롤이 새지 않도록 막혀야 한다.
     expect(gestureGuard.downwardAtTopPrevented).toBe(true);
 
     const moved = await scrollRegion.evaluate((el) => {

@@ -10,6 +10,7 @@ import {
 } from './verseNormalization';
 
 import { DATA_BASE, resilientFetch } from '../config/dataBase.js';
+import { joinHebrewDisplayWords } from '../utils/hebrewDisplay.js';
 
 const BASE = import.meta.env?.BASE_URL || '/';
 
@@ -188,7 +189,9 @@ async function fetchLexRows(corpus, bookId, chapter) {
   const rows = [];
   for (const [verseKey, words] of Object.entries(chapterData || {})) {
     if (!/^\d+$/.test(verseKey) || !Array.isArray(words)) continue;
-    const text = words.map((word) => word?.w).filter(Boolean).join(' ').trim();
+    const text = corpus === 'hot'
+      ? joinHebrewDisplayWords(words)
+      : words.map((word) => word?.w).filter(Boolean).join(' ').trim();
     if (text) rows.push({ verse: Number(verseKey), text });
   }
   return normalizeVerseRows(rows);
