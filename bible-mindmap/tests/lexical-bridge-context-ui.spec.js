@@ -1,5 +1,4 @@
 import { expect, test } from 'playwright/test';
-import './task4-hebrew-normalization.spec.js';
 
 async function dismissResearchOnboarding(page) {
   await page.addInitScript(() => {
