@@ -25,6 +25,9 @@ const DOUBLE = new Map([
   ['ㄱ', new Set(['ㄱ', 'ㄲ', 'ㅋ'])],
   ['ㄷ', new Set(['ㄷ', 'ㄸ', 'ㅌ'])],
 ]);
+// 학술 예외: H5523 סֻכּוֹת sukkôt. SBL 학술 음역의 dagesh forte 중복과
+// 한국어 관용 표기 숙곳/숙콧을 보존한다. Evidence/학술 판정 패킷에 출처를 기록한다.
+const ACADEMIC_GEMINATION_EXCEPTIONS = new Set(['H5523']);
 const decompose = (ch) => {
   const c = ch.codePointAt(0) - BASE;
   if (c < 0 || c > 11171) return null;
@@ -81,6 +84,7 @@ for (const { entries, meta } of KOREAN_GLOSS_BATCHES) {
     if (/^ῥ/.test(lemma) && /^흐/.test(ko)) note(batchId, strong, `어두 ῥ 에 기식을 살렸다: ${ko}`);
 
     // 6. 장애음 겹자음을 받침으로 겹쳐 적지 않는다 (선례 아타 · 카포레트 · 탈라사)
+    if (ACADEMIC_GEMINATION_EXCEPTIONS.has(strong)) continue;
     const chars = [...ko];
     for (let i = 0; i < chars.length - 1; i += 1) {
       const cur = decompose(chars[i]);
