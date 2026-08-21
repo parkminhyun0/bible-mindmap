@@ -1,2 +1,0 @@
-{"type": "NOTION_BRIEFING_PENDING", "project": "bible-mindmap", "title": "task6 검증 (2-review)", "state": "승인 대기", "pr": "", "sha": "HEAD", "next_action": "PR 생성 후 CI 검증"}
-{"type":"NOTION_BRIEFING_PENDING","timestamp":"2026-08-20T17:26:29.975Z","data":{"title":"히브리어 음역 감사 (shard-E / agreed-E)","date":"2026-08-20","project":"bible-mindmap","model":"Gemini 3.6 Flash","status":"완료","type":"Audit","evidence":".pipeline/task6/audits/audit-heb-E.json (findings=4)","next":"Task 6 consensus reconciliation","source":".pipeline/task6/audits/audit-heb-E.json"}}
