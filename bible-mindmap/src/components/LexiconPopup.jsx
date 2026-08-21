@@ -364,6 +364,9 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
     || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
+  const segmentedSurfaceForm = isHebrew && hebrewComposition.length > 1
+    ? hebrewComposition.map((part) => part.form).filter(Boolean).join(' / ')
+    : surfaceForm;
   const surfaceKoreanTranslit = resolveSurfaceKoreanTransliteration(entry.w, isHebrew);
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
@@ -565,7 +568,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
 
               <div className="lexicon-morph-grid">
                 <MorphCard label="사전 원형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
-                <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
+                <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{segmentedSurfaceForm || '—'}</MorphCard>
                 {lexicalRecord?.translit && <MorphCard label="원형 학술 음역">{lexicalRecord.translit}</MorphCard>}
                 {koreanTranslit && <MorphCard label="원형 한글 음역">{koreanTranslit}</MorphCard>}
                 {entry.tr && <MorphCard label="어형 학술 음역">{entry.tr}</MorphCard>}
@@ -619,7 +622,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {morphDetailOpen && (
                 <div className="lexicon-morph-detail" data-testid="morph-detail-panel">
                   <div><b>사전 표제어:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</span></div>
-                  <div><b>본문 표면형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</span></div>
+                  <div><b>본문 표면형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{segmentedSurfaceForm || '—'}</span></div>
                   {entry.m && <div><b>raw morph code:</b> <code>{entry.m}</code></div>}
                   {entry.w && <div><b>원본 분절 토큰:</b> <code>{entry.w}</code></div>}
                   {isHebrew && (
