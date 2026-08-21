@@ -1,0 +1,47 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "G1122",
+      "translit": "grammateús",
+      "translitKo": "그람마튜스",
+      "evidence": "koreanGloss.js G2409 ἱερεύς → 히에류스 · koreanGlossTopBatch02.js G4100 πιστεύω → 피스튜오, G4198 πορεύομαι → 포류오마이, G235 ἀλλά → 알라, G32 ἄγγελος → 앙겔로스, G2983 λαμβάνω → 람바노",
+      "note": "ευ는 유 계열로 적는다(선례 히에류스·피스튜오). 겹자음 μμ는 ㅁ이라 받침+초성으로 나눠 적는 자리이며(선례 알라·앙겔로스), 이 낱말의 한국어 성경 대응어는 음역이 아니라 번역어 '서기관'이다."
+    },
+    {
+      "strong": "H1109",
+      "translit": "bilʿām",
+      "translitKo": "빌암",
+      "evidence": "bibleReferences.js 기드온(Gidʿôn) · koreanGlossTopBatch02.js H4421 milḥāmâ → 밀하마, H702 ʾarbaʿ → 아르바, H6547 parʿōh → 파르오",
+      "note": "개역개정 관용 표기는 '발람'이다. 배포된 기드온(Gidʿôn)·파르오(parʿōh)처럼 ע 앞의 자음은 제 음절에 그대로 두고 ע는 한글로 따로 적지 않으므로, 앞 음절은 받침 ㄹ로 닫히고 ʿām만 한 음절이 된다."
+    },
+    {
+      "strong": "H4080",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "evidence": "koreanGloss.js H4057 מִדְבָּר(midbār) → 미드바르 · koreanGlossTopBatch02.js H1144 binyāmîn → 빈야민 · bibleReferences.js place:midian canonicalName '미디안'",
+      "note": "배포된 지명 데이터와 개역개정은 '미디안'으로 적는다. 학술 표기를 표제로 두는 원칙에 따라, 묵음 쉐바가 붙은 מִדְ는 미드로(선례 미드바르), 자음 요드가 이끄는 יָן은 얀으로(선례 빈야민) 적었다."
+    },
+    {
+      "strong": "H347",
+      "translit": "ʾiyyôb",
+      "translitKo": "이요브",
+      "evidence": "bibleReferences.js Q40640 transliteration '이요브(ʾIyyôḇ)', canonicalName '욥' · koreanGlossTopBatch02.js H2091 zāhāb → 자하브, H3290 yaʿăqōb → 야아코브, H4124 môʾāb → 모아브",
+      "note": "배포된 성경책 데이터가 이 낱말의 음역으로 이미 이 표기를 싣고 책 이름은 관용 표기 '욥'으로 따로 두고 있다. 어말 ב는 브로 적는 자리다(선례 자하브·야아코브·모아브)."
+    },
+    {
+      "strong": "H5945",
+      "translit": "ʿelyôn",
+      "translitKo": "엘욘",
+      "evidence": "koreanGlossTopBatch02.js H1144 binyāmîn → 빈야민, H4421 milḥāmâ → 밀하마 · bibleReferences.js 기드온(Gidʿôn)",
+      "note": "여기 ו는 홀렘 바브가 모음 ô로 읽히는 자리라, 자음 ו를 워로 적는 H5771 아원과는 다른 낱말이다. 요드는 자음이므로 앞 음절이 받침 ㄹ로 닫히고 יוֹן이 한 음절로 이어진다(선례 빈야민·기드온)."
+    },
+    {
+      "strong": "H7346",
+      "translit": "rĕḥabʿām",
+      "translitKo": "레하브암",
+      "evidence": "koreanGlossTopBatch02.js H3063 yĕhûdâ → 예후다, H2091 zāhāb → 자하브, H3290 yaʿăqōb → 야아코브 · bibleReferences.js 기드온(Gidʿôn)",
+      "note": "개역개정 관용 표기는 칠십인역 Ροβοαμ을 거친 '르호보암'이다. 유성 쉐바는 에 계열 모음으로(선례 예후다), 음절 끝 ב는 브로(선례 자하브·야아코브), ע는 한글로 따로 적지 않고 그 모음만 한 음절로(선례 기드온) 적었다."
+    }
+  ]
+}

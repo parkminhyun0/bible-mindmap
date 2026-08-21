@@ -1,0 +1,47 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "G1122",
+      "translit": "grammateús",
+      "translitKo": "그람마튜스",
+      "evidence": "src/data/koreanGloss.js (G2409 ἱερεύς→히에류스), src/data/bookContext.js (ἀρχιε레ὺς→아르키에류스), src/data/koreanGlossTopBatch02.js (ευ→유 계열)",
+      "note": "ευ는 배포 선례(ἱερεύς→히에류스)에 따라 유 계열인 '-튜스'로 적고, 겹자음 μμ은 '그람마'로 적어 '그람마튜스'를 채택한다. 관용 표기는 '그람마테우스'다."
+    },
+    {
+      "strong": "H1109",
+      "translit": "bilʿām",
+      "translitKo": "빌암",
+      "evidence": "src/data/koreanGlossTopBatch01.js (H5971 עַם→암), .pipeline/task8/WORKER_SPEC.md (ע 한글 미표기)",
+      "note": "개역개정 관용 표기는 '발람'이나, 히브리어 철자(bilʿām)와 어중 ע 비표기 원칙(H5971 עַם→암 선례)에 따라 학술 표기인 '빌암'을 채택한다."
+    },
+    {
+      "strong": "H4080",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "evidence": "src/data/contextChapterCardsNumDeut.js (L216: מִדְיָן (미드얀))",
+      "note": "학술 음역(midyān)과 달렛의 무성 쉐바에 따라 배포 선례와 같이 '미드얀'을 채택한다. 개역개정 관용 표기는 '미디안'이다."
+    },
+    {
+      "strong": "H347",
+      "translit": "ʾiyyôb",
+      "translitKo": "이요브",
+      "evidence": "src/data/koreanGlossTopBatch02.js (zāhāb→자하브, yaʿăqōb→야아코브, môʾāb→모아브), src/data/bibleReferences.js",
+      "note": "학술 표기(ʾiyyôb)와 어말 ב 표기 원칙(자하브·야아코브·모아브 선례)에 따라 '이요브'를 채택한다. 개역개정 관용 표기는 '욥'이다."
+    },
+    {
+      "strong": "H5945",
+      "translit": "ʿelyôn",
+      "translitKo": "엘욘",
+      "evidence": "src/data/contextChapterCardsPs1.js (L20: עֶלְיוֹן (엘욘)), src/data/contextChapterCardsPs2.js (L50: עֶלְיוֹן (엘욘))",
+      "note": "배포 선례(עֶלְיוֹן→엘욘)에 따라 라메드의 무성 쉐바와 자음 요드를 반영해 '엘욘'으로 표기한다."
+    },
+    {
+      "strong": "H7346",
+      "translit": "rĕḥabʿām",
+      "translitKo": "레하브암",
+      "evidence": "src/data/koreanGlossTopBatch02.js (유성 쉐바 ĕ→'에' 계열 선례: yĕhûdâ→예후다 등), src/data/koreanGlossTopBatch01.js (H5971 עַם→암)",
+      "note": "유성 쉐바(ĕ→에 계열), 어중 ב(브), 어중 ע 비표기 및 עָם(암) 규칙에 따라 '레하브암'으로 표기한다. 개역개정 관용 표기는 '르호보암'이다."
+    }
+  ]
+}

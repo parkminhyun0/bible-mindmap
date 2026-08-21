@@ -1,0 +1,906 @@
+{
+  "shard": "J",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G4352",
+      "lang": "greek",
+      "count": 60,
+      "lemma": "προσκυνέω",
+      "translit": "proskynéō",
+      "glossEn": "worship",
+      "defEn": "to fawn or crouch to, i.e. (literally or figuratively) prostrate oneself in homage (do reverence to, adore)"
+    },
+    {
+      "strong": "G3037",
+      "lang": "greek",
+      "count": 60,
+      "lemma": "λίθος",
+      "translit": "líthos",
+      "glossEn": "(mill-, stumbling-)stone",
+      "defEn": "a stone (literally or figuratively)"
+    },
+    {
+      "strong": "H2555",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "חָמָס",
+      "translit": "",
+      "glossEn": "cruel(-ty), damage, false, injustice, [idiom] oppressor, unrighteous, violence (against, done), violent (dealing), wrong.",
+      "defEn": "violence; by implication, wrong; by meton. unjust gain"
+    },
+    {
+      "strong": "H1516",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "גַּיְא",
+      "translit": "",
+      "glossEn": "valley.",
+      "defEn": "a gorge (from its lofty sides; hence, narrow, but not a gully or winter-torrent)"
+    },
+    {
+      "strong": "H1316",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "בָּשָׁן",
+      "translit": "",
+      "glossEn": "Bashan.",
+      "defEn": "Bashan (often with the article), a region East of the Jordan"
+    },
+    {
+      "strong": "H5019",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "נְבוּכַדְנֶאצַּר",
+      "translit": "",
+      "glossEn": "Nebuchadnezzar, Nebuchadrezzar.",
+      "defEn": "Nebukadnetstsar (or -retstsar, or -retstsor), king of Babylon"
+    },
+    {
+      "strong": "H5088",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "נֶדֶר",
+      "translit": "",
+      "glossEn": "vow(-ed).",
+      "defEn": "a promise (to God); also (concretely) a thing promised"
+    },
+    {
+      "strong": "H4782",
+      "lang": "hebrew",
+      "count": 60,
+      "lemma": "מׇרְדְּכַי",
+      "translit": "",
+      "glossEn": "Mordecai.",
+      "defEn": "Mordecai, an Israelite"
+    },
+    {
+      "strong": "G1320",
+      "lang": "greek",
+      "count": 59,
+      "lemma": "διδάσκαλος",
+      "translit": "didáskalos",
+      "glossEn": "doctor, master, teacher",
+      "defEn": "an instructor (genitive case or specially)"
+    },
+    {
+      "strong": "G5479",
+      "lang": "greek",
+      "count": 59,
+      "lemma": "χαρά",
+      "translit": "chará",
+      "glossEn": "gladness, X greatly, (X be exceeding) joy(-ful, -fully, -fulness, -ous)",
+      "defEn": "cheerfulness, i.e. calm delight"
+    },
+    {
+      "strong": "G1138",
+      "lang": "greek",
+      "count": 59,
+      "lemma": "Δαβίδ",
+      "translit": "Dabíd",
+      "glossEn": "David",
+      "defEn": "Dabid (i.e. David), the Israelite king"
+    },
+    {
+      "strong": "H4080",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "מִדְיָן",
+      "translit": "",
+      "glossEn": "Midian, Midianite.",
+      "defEn": "Midjan, a son of Abraham; also his country and (collectively) his descendants"
+    },
+    {
+      "strong": "H3198",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "יָכַח",
+      "translit": "",
+      "glossEn": "appoint, argue, chasten, convince, correct(-ion), daysman, dispute, judge, maintain, plead, reason (together), rebuke, reprove(-r), surely, in any wise.",
+      "defEn": "to be right (i.e. correct); reciprocal, to argue; causatively, to decide, justify or convict"
+    },
+    {
+      "strong": "H3878",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "לֵוִי",
+      "translit": "",
+      "glossEn": "Levi. See also H3879 (לֵוִי), H3881 (לֵוִיִּי).",
+      "defEn": "Levi, a son of Jacob"
+    },
+    {
+      "strong": "H3293",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "יַעַר",
+      "translit": "",
+      "glossEn": "(honey-) comb, forest, wood.",
+      "defEn": "a copse of bushes; hence, a forest; hence, honey in the comb (as hived in trees)"
+    },
+    {
+      "strong": "H8346",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "שִׁשִּׁים",
+      "translit": "",
+      "glossEn": "sixty, three score.",
+      "defEn": "sixty"
+    },
+    {
+      "strong": "H6299",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "פָּדָה",
+      "translit": "",
+      "glossEn": "[idiom] at all, deliver, [idiom] by any means, ransom, (that are to be, let be) redeem(-ed), rescue, [idiom] surely.",
+      "defEn": "to sever, i.e. ransom; gener. to release, preserve"
+    },
+    {
+      "strong": "H5157",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "נָחַל",
+      "translit": "",
+      "glossEn": "divide, have (inheritance), take as a heritage, (cause to, give to, make to) inherit, (distribute for, divide (for, for an, by), give for, have, leave for, take (for)) inheritance, (have in, cause to, be made to) possess(-ion).",
+      "defEn": "to inherit (as a (figurative) mode of descent), or (generally) to occupy; causatively, to bequeath, or (generally) distribute, instate"
+    },
+    {
+      "strong": "H3001",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "יָבֵשׁ",
+      "translit": "",
+      "glossEn": "be ashamed, clean, be confounded, (make) dry (up), (do) shame(-fully), [idiom] utterly, wither (away).",
+      "defEn": "to be ashamed, confused or disappointed; also (as failing) to dry up (as water) or wither (as herbage)"
+    },
+    {
+      "strong": "H8163",
+      "lang": "hebrew",
+      "count": 59,
+      "lemma": "שָׂעִיר",
+      "translit": "",
+      "glossEn": "devil, goat, hairy, kid, rough, satyr.",
+      "defEn": "shaggy; as noun, a he-goat; by analogy, a faun"
+    },
+    {
+      "strong": "G2334",
+      "lang": "greek",
+      "count": 58,
+      "lemma": "θεωρέω",
+      "translit": "theōréō",
+      "glossEn": "behold, consider, look on, perceive, see",
+      "defEn": "to be a spectator of, i.e. discern, (literally, figuratively (experience) or intensively (acknowledge))"
+    },
+    {
+      "strong": "H2342",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "חוּל",
+      "translit": "",
+      "glossEn": "bear, (make to) bring forth, (make to) calve, dance, drive away, fall grievously (with pain), fear, form, great, grieve, (be) grievous, hope, look, make, be in pain, be much (sore) pained, rest, shake, shapen, (be) sorrow(-ful), stay, tarry, travail (with pain), tremble, trust, wait carefully (patiently), be wounded.",
+      "defEn": "properly, to twist or whirl (in a circular or spiral manner), i.e. (specifically) to dance, to writhe in pain (especially of parturition) or fear; figuratively, to wait, to pervert"
+    },
+    {
+      "strong": "H3058",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "יֵהוּא",
+      "translit": "",
+      "glossEn": "Jehu.",
+      "defEn": "Jehu, the name of five Israelites"
+    },
+    {
+      "strong": "H5193",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "נָטַע",
+      "translit": "",
+      "glossEn": "fastened, plant(-er).",
+      "defEn": "properly, to strike in, i.e. fix; specifically, to plant (literally or figuratively)"
+    },
+    {
+      "strong": "H8672",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "תֵּשַׁע",
+      "translit": "",
+      "glossEn": "nine ([phrase] -teen, [phrase] -teenth, -th).",
+      "defEn": "nine or (ordinal) ninth"
+    },
+    {
+      "strong": "H609",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "אָסָא",
+      "translit": "",
+      "glossEn": "Asa.",
+      "defEn": "Asa, the name of a king and of a Levite"
+    },
+    {
+      "strong": "H2308",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "חָדַל",
+      "translit": "",
+      "glossEn": "cease, end, fall, forbear, forsake, leave (off), let alone, rest, be unoccupied, want.",
+      "defEn": "properly, to be flabby, i.e. (by implication) desist; (figuratively) be lacking or idle"
+    },
+    {
+      "strong": "H5553",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "סֶלַע",
+      "translit": "",
+      "glossEn": "(ragged) rock, stone(-ny), strong hold.",
+      "defEn": "a craggy rock, literally or figuratively (a fortress)"
+    },
+    {
+      "strong": "H477",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "אֱלִישָׁע",
+      "translit": "",
+      "glossEn": "Elisha.",
+      "defEn": "Elisha, the famous prophet"
+    },
+    {
+      "strong": "H1097",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "בְּלִי",
+      "translit": "",
+      "glossEn": "corruption, ig(norantly), for lack of, where no...is, so that no, none, not, un(awares), without.",
+      "defEn": "properly, failure, i.e. nothing or destruction; usually (with preposition) without, not yet, because not, as long as, etc."
+    },
+    {
+      "strong": "H7381",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "רֵיחַ",
+      "translit": "",
+      "glossEn": "savour, scent, smell.",
+      "defEn": "odor (as if blown)"
+    },
+    {
+      "strong": "H347",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "אִיּוֹב",
+      "translit": "",
+      "glossEn": "Job.",
+      "defEn": "Ijob, the patriarch famous for his patience"
+    },
+    {
+      "strong": "H734",
+      "lang": "hebrew",
+      "count": 58,
+      "lemma": "אֹרַח",
+      "translit": "",
+      "glossEn": "manner, path, race, rank, traveller, troop, (by-, high-) way.",
+      "defEn": "a well-trodden road (literally or figuratively); also a caravan"
+    },
+    {
+      "strong": "G746",
+      "lang": "greek",
+      "count": 57,
+      "lemma": "ἀρχή",
+      "translit": "archḗ",
+      "glossEn": "beginning, corner, (at the, the) first (estate), magistrate, power, principality, principle, rule",
+      "defEn": "(properly abstract) a commencement, or (concretely) chief (in various applications of order, time, place, or rank)"
+    },
+    {
+      "strong": "G782",
+      "lang": "greek",
+      "count": 57,
+      "lemma": "ἀσπάζομαι",
+      "translit": "aspázomai",
+      "glossEn": "embrace, greet, salute, take leave",
+      "defEn": "to enfold in the arms, i.e. (by implication) to salute, (figuratively) to welcome"
+    },
+    {
+      "strong": "G1209",
+      "lang": "greek",
+      "count": 57,
+      "lemma": "δέχομαι",
+      "translit": "déchomai",
+      "glossEn": "accept, receive, take",
+      "defEn": "to receive (in various applications, literally or figuratively)"
+    },
+    {
+      "strong": "G4864",
+      "lang": "greek",
+      "count": 57,
+      "lemma": "συναγωγή",
+      "translit": "synagōgḗ",
+      "glossEn": "assembly, congregation, synagogue",
+      "defEn": "an assemblage of persons; specially, a Jewish \"synagogue\" (the meeting or the place); by analogy, a Christian church"
+    },
+    {
+      "strong": "H8416",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "תְּהִלָּה",
+      "translit": "",
+      "glossEn": "praise.",
+      "defEn": "laudation; specifically (concretely) a hymn"
+    },
+    {
+      "strong": "H6571",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "פָּרָשׁ",
+      "translit": "",
+      "glossEn": "horseman.",
+      "defEn": "a steed (as stretched out to a vehicle, not single nor for mounting ); also (by implication) a driver (in a chariot), i.e. (collectively) cavalry"
+    },
+    {
+      "strong": "H3405",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "יְרִיחוֹ",
+      "translit": "",
+      "glossEn": "Jericho.",
+      "defEn": "Jericho or Jerecho, a place in Palestine"
+    },
+    {
+      "strong": "H433",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "אֱלוֹהַּ",
+      "translit": "",
+      "glossEn": "God, god. See H430 (אֱלֹהִים).",
+      "defEn": "a deity or the Deity"
+    },
+    {
+      "strong": "H1841",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "דָּנִיֵּאל",
+      "translit": "",
+      "glossEn": "Daniel.",
+      "defEn": "Danijel, the Hebrew prophet"
+    },
+    {
+      "strong": "H4437",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "מַלְכוּ",
+      "translit": "",
+      "glossEn": "kingdom, kingly, realm, reign.",
+      "defEn": "dominion (abstractly or concretely)"
+    },
+    {
+      "strong": "H7368",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "רָחַק",
+      "translit": "",
+      "glossEn": "(a-, be, cast, drive, get, go, keep (self), put, remove, be too, (wander), withdraw) far (away, off), loose, [idiom] refrain, very, (be) a good way (off).",
+      "defEn": "to widen (in any direction), i.e. (intransitively) recede or (transitively) remove (literally or figuratively, of place or relation)"
+    },
+    {
+      "strong": "H6466",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "פָּעַל",
+      "translit": "",
+      "glossEn": "commit, (evil-) do(-er), make(-r), ordain, work(-er).",
+      "defEn": "to do or make (systematically and habitually), especially to practise"
+    },
+    {
+      "strong": "H8077",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "שְׁמָמָה",
+      "translit": "",
+      "glossEn": "(laid, [idiom] most) desolate(-ion), waste.",
+      "defEn": "devastation; figuratively, astonishment"
+    },
+    {
+      "strong": "H134",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "אֶדֶן",
+      "translit": "",
+      "glossEn": "foundation, socket.",
+      "defEn": "a basis (of a building, a column, etc.)"
+    },
+    {
+      "strong": "H7703",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "שָׁדַד",
+      "translit": "",
+      "glossEn": "dead, destroy(-er), oppress, robber, spoil(-er), [idiom] utterly, (lay) waste.",
+      "defEn": "properly, to be burly, i.e. (figuratively) powerful (passively, impregnable); by implication, to ravage"
+    },
+    {
+      "strong": "H4210",
+      "lang": "hebrew",
+      "count": 57,
+      "lemma": "מִזְמוֹר",
+      "translit": "",
+      "glossEn": "psalm.",
+      "defEn": "properly, instrumental music; by implication, a poem set to notes"
+    },
+    {
+      "strong": "G1905",
+      "lang": "greek",
+      "count": 56,
+      "lemma": "ἐπερωτάω",
+      "translit": "eperōtáō",
+      "glossEn": "ask (after, questions), demand, desire, question",
+      "defEn": "to ask for, i.e. inquire, seek"
+    },
+    {
+      "strong": "G2896",
+      "lang": "greek",
+      "count": 56,
+      "lemma": "κράζω",
+      "translit": "krázō",
+      "glossEn": "cry (out)",
+      "defEn": "properly, to \"croak\" (as a raven) or scream, i.e. (genitive case) to call aloud (shriek, exclaim, intreat)"
+    },
+    {
+      "strong": "H7521",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "רָצָה",
+      "translit": "",
+      "glossEn": "(be) accept(-able), accomplish, set affection, approve, consent with, delight (self), enjoy, (be, have a) favour(-able), like, observe, pardon, (be, have, take) please(-ure), reconcile self.",
+      "defEn": "to be pleased with; specifically, to satisfy adebt"
+    },
+    {
+      "strong": "H4284",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "מַחֲשָׁבָה",
+      "translit": "",
+      "glossEn": "cunning (work), curious work, device(-sed), imagination, invented, means, purpose, thought.",
+      "defEn": "a contrivance, i.e. (concretely) a texture, machine, or (abstractly) intention, plan (whether bad, a plot; or good, advice)"
+    },
+    {
+      "strong": "H519",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "אָמָה",
+      "translit": "",
+      "glossEn": "(hand-) bondmaid(-woman), maid(-servant).",
+      "defEn": "a maidservant or female slave"
+    },
+    {
+      "strong": "H490",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "אַלְמָנָה",
+      "translit": "",
+      "glossEn": "desolate house (palace), widow.",
+      "defEn": "a widow; also a desolate place"
+    },
+    {
+      "strong": "H2389",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "חָזָק",
+      "translit": "",
+      "glossEn": "harder, hottest, [phrase] impudent, loud, mighty, sore, stiff(-hearted), strong(-er).",
+      "defEn": "strong (usu. in a bad sense, hard, bold, violent)"
+    },
+    {
+      "strong": "H7522",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "רָצוֹן",
+      "translit": "",
+      "glossEn": "(be) acceptable(-ance, -ed), delight, desire, favour, (good) pleasure, (own, self, voluntary) will, as...(what) would.",
+      "defEn": "delight (especially as shown)"
+    },
+    {
+      "strong": "H2232",
+      "lang": "hebrew",
+      "count": 56,
+      "lemma": "זָרַע",
+      "translit": "",
+      "glossEn": "bear, conceive seed, set with sow(-er), yield.",
+      "defEn": "to sow; figuratively, to disseminate, plant, fructify"
+    },
+    {
+      "strong": "G2097",
+      "lang": "greek",
+      "count": 55,
+      "lemma": "εὐαγγελίζω",
+      "translit": "euangelízō",
+      "glossEn": "declare, bring (declare, show) glad (good) tidings, preach (the gospel)",
+      "defEn": "to announce good news (\"evangelize\") especially the gospel"
+    },
+    {
+      "strong": "G4091",
+      "lang": "greek",
+      "count": 55,
+      "lemma": "Πιλᾶτος",
+      "translit": "Pilâtos",
+      "glossEn": "Pilate",
+      "defEn": "close-pressed, i.e. firm; Pilatus, a Roman"
+    },
+    {
+      "strong": "H4060",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "מִדָּה",
+      "translit": "",
+      "glossEn": "garment, measure(-ing, meteyard, piece, size, (great) stature, tribute, wide.",
+      "defEn": "properly, extension, i.e. height or breadth; also a measure (including its standard); hence a portion (as measured) or a vestment; specifically, tribute (as measured)"
+    },
+    {
+      "strong": "H8127",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "שֵׁן",
+      "translit": "",
+      "glossEn": "crag, [idiom] forefront, ivory, [idiom] sharp, tooth.",
+      "defEn": "a tooth (as sharp); specifically  ivory; figuratively, a cliff"
+    },
+    {
+      "strong": "H6817",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "צָעַק",
+      "translit": "",
+      "glossEn": "[idiom] at all, call together, cry (out), gather (selves) (together).",
+      "defEn": "to shriek; (by implication) to proclaim (an assembly)"
+    },
+    {
+      "strong": "H5080",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "נָדַח",
+      "translit": "",
+      "glossEn": "banish, bring, cast down (out), chase, compel, draw away, drive (away, out, quite), fetch a stroke, force, go away, outcast, thrust away (out), withdraw.",
+      "defEn": "to push off; used in a great variety of applications, literally and figuratively (to expel, mislead, strike, inflict, etc.)"
+    },
+    {
+      "strong": "H2372",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "חָזָה",
+      "translit": "",
+      "glossEn": "behold, look, prophesy, provide, see.",
+      "defEn": "to gaze at; mentally to perceive, contemplate (with pleasure); specifically, to have avision of"
+    },
+    {
+      "strong": "H3837",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "לָבָן",
+      "translit": "",
+      "glossEn": "Laban.",
+      "defEn": "Laban, a Mesopotamian; also a place in the Desert"
+    },
+    {
+      "strong": "H5999",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "עָמָל",
+      "translit": "",
+      "glossEn": "grievance(-vousness), iniquity, labour, mischief, miserable(-sery), pain(-ful), perverseness, sorrow, toil, travail, trouble, wearisome, wickedness.",
+      "defEn": "toil, i.e. wearing effort; hence, worry, wheth. of body or mind"
+    },
+    {
+      "strong": "H635",
+      "lang": "hebrew",
+      "count": 55,
+      "lemma": "אֶסְתֵּר",
+      "translit": "",
+      "glossEn": "Esther.",
+      "defEn": "Ester, the Jewish heroine"
+    },
+    {
+      "strong": "G3700",
+      "lang": "greek",
+      "count": 54,
+      "lemma": "ὀπτάνομαι",
+      "translit": "optánomai",
+      "glossEn": "appear, look, see, shew self",
+      "defEn": "to gaze (i.e. with wide-open eyes, as at something remarkable; and thus differing from G991 (βλέπω), which denotes simply voluntary observation; and from G1492 (εἴδω), which expres"
+    },
+    {
+      "strong": "G3982",
+      "lang": "greek",
+      "count": 54,
+      "lemma": "πείθω",
+      "translit": "peíthō",
+      "glossEn": "agree, assure, believe, have confidence, be (wax) conflent, make friend, obey, persuade, trust, yield",
+      "defEn": "to convince (by argument, true or false); by analogy, to pacify or conciliate (by other fair means); reflexively or passively, to assent (to evidence or authority), to rely (by inw"
+    },
+    {
+      "strong": "G3137",
+      "lang": "greek",
+      "count": 54,
+      "lemma": "Μαρία",
+      "translit": "María",
+      "glossEn": "Mary",
+      "defEn": "Maria or Mariam (i.e. Mirjam), the name of six Christian females"
+    },
+    {
+      "strong": "H1692",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "דָּבַק",
+      "translit": "",
+      "glossEn": "abide fast, cleave (fast together), follow close (hard after), be joined (together), keep (fast), overtake, pursue hard, stick, take.",
+      "defEn": "properly, to impinge, i.e. cling or adhere; figuratively, to catch by pursuit"
+    },
+    {
+      "strong": "H14",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "אָבָה",
+      "translit": "",
+      "glossEn": "consent, rest content will, be willing.",
+      "defEn": "to breathe after, i.e. (figuratively) to be acquiescent"
+    },
+    {
+      "strong": "H1581",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "גָּמָל",
+      "translit": "",
+      "glossEn": "camel.",
+      "defEn": "a camel"
+    },
+    {
+      "strong": "H7442",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "רָנַן",
+      "translit": "",
+      "glossEn": "aloud for joy, cry out, be joyful (greatly, make to) rejoice, (cause to) shout (for joy), (cause to) sing (aloud, for joy, out), triumph.",
+      "defEn": "properly, to creak (or emit a stridulous sound), i.e. to shout (usually for joy)"
+    },
+    {
+      "strong": "H3407",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "יְרִיעָה",
+      "translit": "",
+      "glossEn": "curtain.",
+      "defEn": "a hanging (as tremulous)"
+    },
+    {
+      "strong": "H5766",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "עֶוֶל",
+      "translit": "",
+      "glossEn": "iniquity, perverseness, unjust(-ly), unrighteousness(-ly); wicked(-ness).",
+      "defEn": "(moral) evil"
+    },
+    {
+      "strong": "H8040",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "שְׂמֹאול",
+      "translit": "",
+      "glossEn": "left (hand, side).",
+      "defEn": "properly, dark (as enveloped), i.e. the north; hence (by orientation), the left hand"
+    },
+    {
+      "strong": "H3707",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "כַּעַס",
+      "translit": "",
+      "glossEn": "be angry, be grieved, take indignation, provoke (to anger, unto wrath), have sorrow, vex, be wroth.",
+      "defEn": "to trouble; by implication, to grieve, rage, be indignant"
+    },
+    {
+      "strong": "H6887",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "צָרַר",
+      "translit": "",
+      "glossEn": "adversary, (be in) afflict(-ion), beseige, bind (up), (be in, bring) distress, enemy, narrower, oppress, pangs, shut up, be in a strait (trouble), vex.",
+      "defEn": "to cramp, literally or figuratively, transitive or intransitive"
+    },
+    {
+      "strong": "H6172",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "עֶרְוָה",
+      "translit": "",
+      "glossEn": "nakedness, shame, unclean(-ness).",
+      "defEn": "nudity, literally (especially the pudenda) or figuratively (disgrace, blemish)"
+    },
+    {
+      "strong": "H4791",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "מָרוֹם",
+      "translit": "",
+      "glossEn": "(far) above, dignity, haughty, height, (most, on) high (one, place), loftily, upward.",
+      "defEn": "altitude, i.e. concretely (an elevated place), abstractly (elevation, figuratively (elation), or adverbially (aloft)"
+    },
+    {
+      "strong": "H2001",
+      "lang": "hebrew",
+      "count": 54,
+      "lemma": "הָמָן",
+      "translit": "",
+      "glossEn": "Haman.",
+      "defEn": "Haman, a Persian vizier"
+    },
+    {
+      "strong": "G1680",
+      "lang": "greek",
+      "count": 53,
+      "lemma": "ἐλπίς",
+      "translit": "elpís",
+      "glossEn": "faith, hope",
+      "defEn": "expectation (abstractly or concretely) or confidence"
+    },
+    {
+      "strong": "G5550",
+      "lang": "greek",
+      "count": 53,
+      "lemma": "χρόνος",
+      "translit": "chrónos",
+      "glossEn": "+ years old, season, space, (X often-)time(-s), (a) while",
+      "defEn": "a space of time (in general, and thus properly distinguished from G2540 (καιρός), which designates a fixed or special occasion; and from G165 (αἰών), which denotes a particular per"
+    },
+    {
+      "strong": "H2671",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "חֵץ",
+      "translit": "",
+      "glossEn": "[phrase] archer, arrow, dart, shaft, staff, wound.",
+      "defEn": "properly, a piercer, i.e. an arrow; by implication, a wound; figuratively, (of God) thunderbolt; the shaft of aspear"
+    },
+    {
+      "strong": "H6659",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "צָדוֹק",
+      "translit": "",
+      "glossEn": "Zadok.",
+      "defEn": "Tsadok, the name of eight or nine Israelites"
+    },
+    {
+      "strong": "H2319",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "חָדָשׁ",
+      "translit": "",
+      "glossEn": "fresh, new thing.",
+      "defEn": "new"
+    },
+    {
+      "strong": "H5560",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "סֹלֶת",
+      "translit": "",
+      "glossEn": "(fine) flour, meal.",
+      "defEn": "flour (as chipped off)"
+    },
+    {
+      "strong": "H4682",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "מַצָּה",
+      "translit": "",
+      "glossEn": "unleaved (bread, cake), without leaven.",
+      "defEn": "properly, sweetness; concretely, sweet (i.e. not soured or bittered with yeast); specifically, an unfermented cake or loaf, or (elliptically) the festival of Passover (because no l"
+    },
+    {
+      "strong": "H2977",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "יֹאשִׁיָּה",
+      "translit": "",
+      "glossEn": "Josiah.",
+      "defEn": "Joshijah, the name of two Israelites"
+    },
+    {
+      "strong": "H5945",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "עֶלְיוֹן",
+      "translit": "",
+      "glossEn": "(Most, on) high(-er, -est), upper(-most).",
+      "defEn": "an elevation, i.e. (adj.) lofty (compar.); as title, the Supreme"
+    },
+    {
+      "strong": "H4082",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "מְדִינָה",
+      "translit": "",
+      "glossEn": "([idiom] every) province.",
+      "defEn": "properly, a judgeship, i.e. jurisdiction; by implication, a district (as ruled by a judge); generally, a region"
+    },
+    {
+      "strong": "H7723",
+      "lang": "hebrew",
+      "count": 53,
+      "lemma": "שָׁוְא",
+      "translit": "",
+      "glossEn": "false(-ly), lie, lying, vain, vanity.",
+      "defEn": "evil (as destructive), literally (ruin) or morally (especially guile); figuratively idolatry (as false, subjective), uselessness (as deceptive, objective; also adverbially, in vain"
+    },
+    {
+      "strong": "G3813",
+      "lang": "greek",
+      "count": 52,
+      "lemma": "παιδίον",
+      "translit": "paidíon",
+      "glossEn": "(little, young) child, damsel",
+      "defEn": "a childling (of either sex), i.e. (properly), an infant, or (by extension) a half-grown boy or girl; figuratively, an immature Christian"
+    },
+    {
+      "strong": "G4687",
+      "lang": "greek",
+      "count": 52,
+      "lemma": "σπείρω",
+      "translit": "speírō",
+      "glossEn": "sow(- er), receive seed",
+      "defEn": "to scatter, i.e. sow (literally or figuratively)"
+    },
+    {
+      "strong": "G1860",
+      "lang": "greek",
+      "count": 52,
+      "lemma": "ἐπαγγελία",
+      "translit": "epangelía",
+      "glossEn": "message, promise",
+      "defEn": "an announcement (for information, assent or pledge; especially a divine assurance of good)"
+    },
+    {
+      "strong": "H2865",
+      "lang": "hebrew",
+      "count": 52,
+      "lemma": "חָתַת",
+      "translit": "",
+      "glossEn": "abolish, affright, be (make) afraid, amaze, beat down, discourage, (cause to) dismay, go down, scare, terrify.",
+      "defEn": "properly, to prostrate; hence, to break down, either (literally) by violence, or (figuratively) by confusion and fear"
+    },
+    {
+      "strong": "H2763",
+      "lang": "hebrew",
+      "count": 52,
+      "lemma": "חָרַם",
+      "translit": "",
+      "glossEn": "make accursed, consecrate, (utterly) destroy, devote, forfeit, have a flat nose, utterly (slay, make away).",
+      "defEn": "to seclude; specifically (by a ban) to devote to religious uses (especially destruction); physical and reflexive, to be blunt as to the nose"
+    },
+    {
+      "strong": "H4279",
+      "lang": "hebrew",
+      "count": 52,
+      "lemma": "מָחָר",
+      "translit": "",
+      "glossEn": "time to come, tomorrow.",
+      "defEn": "properly, deferred, i.e. the morrow; usually (adverbially) tomorrow; indefinitely, hereafter"
+    }
+  ]
+}
