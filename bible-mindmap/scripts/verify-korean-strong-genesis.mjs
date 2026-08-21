@@ -20,6 +20,10 @@ import {
   KOREAN_GLOSS_TOP_BATCH_02,
   KOREAN_GLOSS_TOP_BATCH_02_META,
 } from '../src/data/koreanGlossTopBatch02.js';
+import {
+  KOREAN_GLOSS_TOP_BATCH_03,
+  KOREAN_GLOSS_TOP_BATCH_03_META,
+} from '../src/data/koreanGlossTopBatch03.js';
 import { KOREAN_GLOSS_ACTIVE } from '../src/data/koreanGlossActive.js';
 import { findKoreanSpans, splitGlossCandidates } from '../src/utils/translationAlignment.js';
 
@@ -75,6 +79,7 @@ for (const { entries: batch, meta } of batches) {
 for (const { entries: topBatch, meta } of [
   { entries: KOREAN_GLOSS_TOP_BATCH_01, meta: KOREAN_GLOSS_TOP_BATCH_01_META },
   { entries: KOREAN_GLOSS_TOP_BATCH_02, meta: KOREAN_GLOSS_TOP_BATCH_02_META },
+  { entries: KOREAN_GLOSS_TOP_BATCH_03, meta: KOREAN_GLOSS_TOP_BATCH_03_META },
 ]) {
   const entries = Object.entries(topBatch);
   if (entries.length !== meta.entryCount) {
@@ -130,12 +135,12 @@ for (const { entries: topBatch, meta } of [
 
 // batch 02 는 히브리어 학술 음역까지 직접 채운 배치라 batch 01 과 달리 translit 이
 // 비어 있으면 안 된다. 또 박 목사님 확인 전까지 전 항목이 검토 대상으로 남아야 한다.
-for (const [strong, entry] of Object.entries(KOREAN_GLOSS_TOP_BATCH_02)) {
+for (const [strong, entry] of [...Object.entries(KOREAN_GLOSS_TOP_BATCH_02), ...Object.entries(KOREAN_GLOSS_TOP_BATCH_03)]) {
   if (typeof entry.translit !== 'string' || entry.translit.trim() === '') {
-    errors.push(`${strong}: top-frequency-batch-02 requires a non-empty translit`);
+    errors.push(`${strong}: 빈도 배치는 translit 이 비어 있으면 안 된다`);
   }
   if (entry.review !== true) {
-    errors.push(`${strong}: top-frequency-batch-02 entries must remain review=true until approval`);
+    errors.push(`${strong}: 빈도 배치 항목은 승인 전까지 review=true 여야 한다`);
   }
 }
 
