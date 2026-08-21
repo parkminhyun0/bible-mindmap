@@ -1,0 +1,2698 @@
+{
+  "scope": "batch-06-codex",
+  "checked": 300,
+  "findings": [
+    {
+      "strong": "H6779",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6779는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2244",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2244는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4318",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 미카이며, 개역개정 등 관용 표기는 미가다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 미카이며, 개역개정 등 관용 표기는 미가다.",
+      "evidence": ".pipeline/task10/final.json의 H4318는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 미카이며, 개역개정 등 관용 표기는 미가다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2280",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2280는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7045",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H7045는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5941",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘엘리’와 같음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘엘리’와 같음",
+      "evidence": ".pipeline/task10/final.json의 H5941는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘엘리’와 같음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7440",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H7440는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2859",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2859는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3243",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3243는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2623",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2623는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6654",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6654는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2399",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다",
+      "evidence": ".pipeline/task10/final.json의 H2399는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6203",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6203는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3830",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3830는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6187",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6187는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6212",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6212는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6884",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6884는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3876",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘롯’과 갈림",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘롯’과 갈림",
+      "evidence": ".pipeline/task10/final.json의 H3876는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘롯’과 갈림'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6241",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6241는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1832",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1832는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3853",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3853는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4905",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4905는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2190",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G2190는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2246",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G2246는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1653",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G1653는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4128",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4128는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5281",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G5281는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4283",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4283는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6955",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘고핫’과 갈림",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘고핫’과 갈림",
+      "evidence": ".pipeline/task10/final.json의 H6955는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘고핫’과 갈림'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6486",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6486는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5980",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H5980는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1436",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '그달리야'와 차이",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '그달리야'와 차이",
+      "evidence": ".pipeline/task10/final.json의 H1436는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '그달리야'와 차이'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4219",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4219는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5592",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5592는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3972",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3972는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3582",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3582는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7887",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘실로’와 같음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘실로’와 같음",
+      "evidence": ".pipeline/task10/final.json의 H7887는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘실로’와 같음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3611",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3611는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4676",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4676는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H759",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H759는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7416",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H7416는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2876",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2876는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4578",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4578는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8426",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8426는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4643",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4643는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7262",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '랍사게'와 차이",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '랍사게'와 차이",
+      "evidence": ".pipeline/task10/final.json의 H7262는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '랍사게'와 차이'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2898",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2898는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3715",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3715는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7622",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H7622는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6845",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6845는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1941",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1941는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4893",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4893는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1679",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1679는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G59",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G59는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2511",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2511는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5316",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G5316는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3954",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G3954는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5442",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G5442는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2541",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 카이사르이며, 개역개정 등 관용 표기는 가이사다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 카이사르이며, 개역개정 등 관용 표기는 가이사다.",
+      "evidence": ".pipeline/task10/final.json의 G2541는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 카이사르이며, 개역개정 등 관용 표기는 가이사다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5443",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G5443는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G417",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G417는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G721",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G721는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5090",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5090는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2474",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2474는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H676",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H676는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2919",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2919는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5645",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H5645는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5521",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H5521는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7857",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7857는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H591",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H591는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5087",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5087는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8213",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8213는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6459",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6459는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2934",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2934는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3577",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3577는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6099",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6099는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6591",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말",
+      "evidence": ".pipeline/task10/final.json의 H6591는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2370",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다",
+      "evidence": ".pipeline/task10/final.json의 H2370는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 어말 알렙은 소리 나지 않아 한글에 옮기지 않는다'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5020",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 네부카드네차르이며, 개역개정 등 관용 표기는 느부갓네살이다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 네부카드네차르이며, 개역개정 등 관용 표기는 느부갓네살이다.",
+      "evidence": ".pipeline/task10/final.json의 H5020는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 네부카드네차르이며, 개역개정 등 관용 표기는 느부갓네살이다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H325",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '아하수에로'와 차이",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '아하수에로'와 차이",
+      "evidence": ".pipeline/task10/final.json의 H325는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '아하수에로'와 차이'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4327",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4327는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3629",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3629는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5003",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5003는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2563",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2563는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3123",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘요나’와 같음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘요나’와 같음",
+      "evidence": ".pipeline/task10/final.json의 H3123는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘요나’와 같음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3816",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3816는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5343",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. ευ는 유 계열로 적는 선례를 따랐다(프뉴마·유튀스)",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. ευ는 유 계열로 적는 선례를 따랐다(프뉴마·유튀스)",
+      "evidence": ".pipeline/task10/final.json의 G5343는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. ευ는 유 계열로 적는 선례를 따랐다(프뉴마·유튀스)'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5426",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G5426는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1322",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1322는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1249",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1249는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4624",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4624는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3928",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3928는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2243",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 '엘리야'와 차이. 히브리어 אֵלִיָּהוּ의 헬라어 형이다",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 관용 표기 '엘리야'와 차이. 히브리어 אֵלִיָּהוּ의 헬라어 형이다",
+      "evidence": ".pipeline/task10/final.json의 G2243는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 '엘리야'와 차이. 히브리어 אֵלִיָּהוּ의 헬라어 형이다'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3568",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 쿠쉬이며, 개역개정 등 관용 표기는 구스다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 쿠쉬이며, 개역개정 등 관용 표기는 구스다.",
+      "evidence": ".pipeline/task10/final.json의 H3568는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 쿠쉬이며, 개역개정 등 관용 표기는 구스다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1497",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1497는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3978",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3978는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H54",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘아비아달’과 갈림",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘아비아달’과 갈림",
+      "evidence": ".pipeline/task10/final.json의 H54는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘아비아달’과 갈림'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7621",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H7621는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1926",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1926는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2406",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2406는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5126",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5126는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5594",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5594는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3316",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「입다」(Jephthah). 여기서는 학술 표기를 표제로 두었다. 관용형은 어말 후음 ח 를 적지 않고 다게쉬 없는 פ 를 ㅂ로 옮긴 결과다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「입다」(Jephthah). 여기서는 학술 표기를 표제로 두었다. 관용형은 어말 후음 ח 를 적지 않고 다게쉬 없는 פ 를 ㅂ로 옮긴 결과다.",
+      "evidence": ".pipeline/task10/final.json의 H3316는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「입다」(Jephthah). 여기서는 학술 표기를 표제로 두었다. 관용형은 어말 후음 ח 를 적지 않고 다게쉬 없는 פ 를 ㅂ로 옮긴 결과다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1826",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1826는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1322",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1322는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7562",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H7562는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1406",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H1406는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1065",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1065는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1819",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1819는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7493",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H7493는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3213",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3213는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6032",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H6030 עָנָה(ʿānâ)와 한글 음역이 같아진다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H6030 עָנָה(ʿānâ)와 한글 음역이 같아진다.",
+      "evidence": ".pipeline/task10/final.json의 H6032는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H6030 עָנָה(ʿānâ)와 한글 음역이 같아진다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7257",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7257는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8573",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8573는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3639",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3639는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7259",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「리브가」. 관용형은 다게쉬 없는 ק 계열 표기를 ㄱ로 옮긴 것이고, 여기서는 학술 표기를 표제로 두었다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「리브가」. 관용형은 다게쉬 없는 ק 계열 표기를 ㄱ로 옮긴 것이고, 여기서는 학술 표기를 표제로 두었다.",
+      "evidence": ".pipeline/task10/final.json의 H7259는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「리브가」. 관용형은 다게쉬 없는 ק 계열 표기를 ㄱ로 옮긴 것이고, 여기서는 학술 표기를 표제로 두었다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1108",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1108는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2378",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ는 위로 적음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. υ는 위로 적음",
+      "evidence": ".pipeline/task10/final.json의 G2378는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. υ는 위로 적음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3874",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3874는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3408",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3408는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3957",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경은 이 낱말을 「유월절」로 옮긴다. 여기 적는 것은 음역뿐이다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경은 이 낱말을 「유월절」로 옮긴다. 여기 적는 것은 음역뿐이다.",
+      "evidence": ".pipeline/task10/final.json의 G3957는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경은 이 낱말을 「유월절」로 옮긴다. 여기 적는 것은 음역뿐이다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1060",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1060는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G921",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바나바」. 관용형은 ρ 를 받침으로 적지 않고 어말 -ς 를 살리지 않은 결과다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바나바」. 관용형은 ρ 를 받침으로 적지 않고 어말 -ς 를 살리지 않은 결과다.",
+      "evidence": ".pipeline/task10/final.json의 G921는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바나바」. 관용형은 ρ 를 받침으로 적지 않고 어말 -ς 를 살리지 않은 결과다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2008",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2008는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2513",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2513는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2689",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2689는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3442",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע 앞의 furtive patach 를 -aʿ 로 적었다. 개역 관용 표기는 「예수아」.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע 앞의 furtive patach 를 -aʿ 로 적었다. 개역 관용 표기는 「예수아」.",
+      "evidence": ".pipeline/task10/final.json의 H3442는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע 앞의 furtive patach 를 -aʿ 로 적었다. 개역 관용 표기는 「예수아」.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2608",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「하나냐」. 관용형은 어말 -yâ 를 「냐」로 줄여 적은 것이다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「하나냐」. 관용형은 어말 -yâ 를 「냐」로 줄여 적은 것이다.",
+      "evidence": ".pipeline/task10/final.json의 H2608는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「하나냐」. 관용형은 어말 -yâ 를 「냐」로 줄여 적은 것이다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7110",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7110는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H974",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H974는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1314",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1314는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7151",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7151는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4296",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4296는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4513",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H4513는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3088",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「여호람」. 신명 요소 יְהוֹ- 를 관용에서는 「여호」로 적는다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「여호람」. 신명 요소 יְהוֹ- 를 관용에서는 「여호」로 적는다.",
+      "evidence": ".pipeline/task10/final.json의 H3088는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 개역 관용 표기는 「여호람」. 신명 요소 יְהוֹ- 를 관용에서는 「여호」로 적는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6438",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6438는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3259",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H3259는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8071",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H8071는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2266",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2266는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5079",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5079는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3341",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3341는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3801",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H3801는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2492",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2492는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6903",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 아람어 낱말.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 아람어 낱말.",
+      "evidence": ".pipeline/task10/final.json의 H6903는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 아람어 낱말.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6509",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6509는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6260",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H6260는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3836",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘라반’과 학술 음역이 같다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘라반’과 학술 음역이 같다.",
+      "evidence": ".pipeline/task10/final.json의 H3836는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘라반’과 학술 음역이 같다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1259",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1259는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2154",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2154는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G37",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G37는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4716",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4716는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4395",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G4395는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2917",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2917는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G91",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G91는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3528",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3528는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2233",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2233는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5055",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G5055는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2364",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2364는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5561",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G5561는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4341",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4341는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2480",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2480는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2968",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2968는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8659",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '다시스'와 차이",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '다시스'와 차이",
+      "evidence": ".pipeline/task10/final.json의 H8659는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 '다시스'와 차이'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5867",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H5867는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4604",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H4604는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8003",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 관용 표기(살렘)와 차이",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 관용 표기(살렘)와 차이",
+      "evidence": ".pipeline/task10/final.json의 H8003는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기(살렘)와 차이'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4598",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H4598는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4487",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4487는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7399",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7399는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5081",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5081는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H550",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H550는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6413",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H6413는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5956",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H5956는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6346",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6346는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8251",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H8251는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7185",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7185는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4541",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4541는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1201",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「바아사」. 여기서는 슈바가 붙은 ע 를 한글로 따로 적지 않았다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「바아사」. 여기서는 슈바가 붙은 ע 를 한글로 따로 적지 않았다.",
+      "evidence": ".pipeline/task10/final.json의 H1201는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 개역 관용 표기는 「바아사」. 여기서는 슈바가 붙은 ע 를 한글로 따로 적지 않았다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1310",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1310는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6601",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6601는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7939",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7939는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3411",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3411는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5488",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5488는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2498",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2498는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2820",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2820는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3887",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3887는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6539",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바사」(페르시아). 여기서는 학술 표기를 표제로 두었다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바사」(페르시아). 여기서는 학술 표기를 표제로 두었다.",
+      "evidence": ".pipeline/task10/final.json의 H6539는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역 관용 표기는 「바사」(페르시아). 여기서는 학술 표기를 표제로 두었다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8181",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H8181는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8300",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8300는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8433",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8433는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5074",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5074는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5648",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H5647 עָבַד(ʿābad)와 한글 음역이 같아진다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H5647 עָבַד(ʿābad)와 한글 음역이 같아진다.",
+      "evidence": ".pipeline/task10/final.json의 H5648는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말. 히브리어 H5647 עָבַד(ʿābad)와 한글 음역이 같아진다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2942",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음",
+      "evidence": ".pipeline/task10/final.json의 H2942는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. ע는 한글로 따로 적지 않음'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3052",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말.",
+      "evidence": ".pipeline/task10/final.json의 H3052는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 아람어 낱말.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5665",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 아베드 네고다. 개역개정 등 한국어 성경은 아벳느고로 옮긴다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 아베드 네고다. 개역개정 등 한국어 성경은 아벳느고로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 H5665는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 아베드 네고다. 개역개정 등 한국어 성경은 아벳느고로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7848",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 개역에서는 이 나무를 「조각목」으로 옮기고 복수형 지명은 「싯딤」으로 적는다. 여기 적는 것은 표제형의 음역뿐이다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 개역에서는 이 나무를 「조각목」으로 옮기고 복수형 지명은 「싯딤」으로 적는다. 여기 적는 것은 표제형의 음역뿐이다.",
+      "evidence": ".pipeline/task10/final.json의 H7848는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 개역에서는 이 나무를 「조각목」으로 옮기고 복수형 지명은 「싯딤」으로 적는다. 여기 적는 것은 표제형의 음역뿐이다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8577",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H8577는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8392",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8392는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2673",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2673는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3466",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. υ는 위로 표기",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. υ는 위로 표기",
+      "evidence": ".pipeline/task10/final.json의 G3466는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. υ는 위로 표기'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1746",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적는 원칙에 따라 엔뒤오로 두었다. 관용 표기는 엔두오다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적는 원칙에 따라 엔뒤오로 두었다. 관용 표기는 엔두오다.",
+      "evidence": ".pipeline/task10/final.json의 G1746는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적는 원칙에 따라 엔뒤오로 두었다. 관용 표기는 엔두오다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5095",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 티모테오스다. 한국어 성경은 디모데로 굳어져 있다. 헬라어 무성 파열음 타우(τ)와 세타(θ)를 엄밀히 옮기면 티모테오스가 된다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 티모테오스다. 한국어 성경은 디모데로 굳어져 있다. 헬라어 무성 파열음 타우(τ)와 세타(θ)를 엄밀히 옮기면 티모테오스가 된다.",
+      "evidence": ".pipeline/task10/final.json의 G5095는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 티모테오스다. 한국어 성경은 디모데로 굳어져 있다. 헬라어 무성 파열음 타우(τ)와 세타(θ)를 엄밀히 옮기면 티모테오스가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5503",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G5503는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1656",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1656는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2390",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2390는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1632",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 G1632는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G941",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G941는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1859",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1859는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2384",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 이아코브다. 한국어 성경은 구약 야아코브(야곱)와 맞춰 야곱으로 옮긴다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 이아코브다. 한국어 성경은 구약 야아코브(야곱)와 맞춰 야곱으로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 G2384는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 이아코브다. 한국어 성경은 구약 야아코브(야곱)와 맞춰 야곱으로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2713",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2713는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7967",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 샬룸이다. 한국어 성경은 살룸으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 샬룸이다. 한국어 성경은 살룸으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "evidence": ".pipeline/task10/final.json의 H7967는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 샬룸이다. 한국어 성경은 살룸으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7854",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 사탄이다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 사탄이다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다.",
+      "evidence": ".pipeline/task10/final.json의 H7854는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 사탄이다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2204",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2204는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4546",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4546는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5818",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 우지야다. 한국어 성경은 웃시야로 굳어져 있다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 우지야다. 한국어 성경은 웃시야로 굳어져 있다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "evidence": ".pipeline/task10/final.json의 H5818는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 우지야다. 한국어 성경은 웃시야로 굳어져 있다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8052",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8052는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4161",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4161는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1100",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 벨리알이다. 한국어 성경은 벨리알 또는 불량배로 옮긴다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 벨리알이다. 한국어 성경은 벨리알 또는 불량배로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 H1100는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 벨리알이다. 한국어 성경은 벨리알 또는 불량배로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2449",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2449는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4170",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 음절 말 שׁ는 쉬",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 음절 말 שׁ는 쉬",
+      "evidence": ".pipeline/task10/final.json의 H4170는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 음절 말 שׁ는 쉬'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7136",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7136는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H117",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H117는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3394",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 후음 앞 furtive patach를 살려 '아흐'로 적었다(רוּחַ→루아흐와 같은 원칙).",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 후음 앞 furtive patach를 살려 '아흐'로 적었다(רוּחַ→루아흐와 같은 원칙).",
+      "evidence": ".pipeline/task10/final.json의 H3394는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 후음 앞 furtive patach를 살려 '아흐'로 적었다(רוּחַ→루아흐와 같은 원칙).'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8518",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8518는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5360",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5360는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2254",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2254는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6341",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6341는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7797",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘이나 슈스로 적지 않는다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘이나 슈스로 적지 않는다.",
+      "evidence": ".pipeline/task10/final.json의 H7797는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘이나 슈스로 적지 않는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5423",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5423는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3104",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 요벨이다. 한국어 성경은 희년 또는 양각 나팔로 옮긴다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 요벨이다. 한국어 성경은 희년 또는 양각 나팔로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 H3104는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 요벨이다. 한국어 성경은 희년 또는 양각 나팔로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1672",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 헬렌이다. 한국어 성경은 헬라인으로 굳어져 있다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 헬렌이다. 한국어 성경은 헬라인으로 굳어져 있다.",
+      "evidence": ".pipeline/task10/final.json의 G1672는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 헬렌이다. 한국어 성경은 헬라인으로 굳어져 있다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G601",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. υ를 '위'로 적어 아포칼륍토로 두었다. 관용 표기는 아포칼립토다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. υ를 '위'로 적어 아포칼륍토로 두었다. 관용 표기는 아포칼립토다.",
+      "evidence": ".pipeline/task10/final.json의 G601는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. υ를 '위'로 적어 아포칼륍토로 두었다. 관용 표기는 아포칼립토다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4202",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4202는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G79",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G79는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3670",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3670는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2240",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2240는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3076",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 뤼페오로 두었다. 관용 표기는 루페오다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 뤼페오로 두었다. 관용 표기는 루페오다.",
+      "evidence": ".pipeline/task10/final.json의 G3076는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 뤼페오로 두었다. 관용 표기는 루페오다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4920",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 쉬니에미로 두었다. 관용 표기는 수니에미다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 쉬니에미로 두었다. 관용 표기는 수니에미다.",
+      "evidence": ".pipeline/task10/final.json의 G4920는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 쉬니에미로 두었다. 관용 표기는 수니에미다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4757",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4757는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2753",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 현대 그리스어식으로 읽으면 켈레보, 관용으로는 켈류오가 된다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 현대 그리스어식으로 읽으면 켈레보, 관용으로는 켈류오가 된다.",
+      "evidence": ".pipeline/task10/final.json의 G2753는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 현대 그리스어식으로 읽으면 켈레보, 관용으로는 켈류오가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3660",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 옴뉘오로 두었다. 관용 표기는 옴누오다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 옴뉘오로 두었다. 관용 표기는 옴누오다.",
+      "evidence": ".pipeline/task10/final.json의 G3660는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. υ를 '위'로 적어 옴뉘오로 두었다. 관용 표기는 옴누오다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6870",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 체루야다. 한국어 성경은 스루야로 옮긴다. צ(ṣ)의 음가를 학술적으로 옮기면 체루야가 된다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 체루야다. 한국어 성경은 스루야로 옮긴다. צ(ṣ)의 음가를 학술적으로 옮기면 체루야가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H6870는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 체루야다. 한국어 성경은 스루야로 옮긴다. צ(ṣ)의 음가를 학술적으로 옮기면 체루야가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7605",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7605는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H183",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기",
+      "evidence": ".pipeline/task10/final.json의 H183는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4046",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H4046는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H138",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H138는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2856",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2856는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6685",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6685는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7287",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7287는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2905",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H2905는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7358",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7358는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6510",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6510는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3569",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기는 구스 사람(구시)이다. שׁ 뒤에 모음이 와 음절 첫소리이므로 시로 적었다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기는 구스 사람(구시)이다. שׁ 뒤에 모음이 와 음절 첫소리이므로 시로 적었다.",
+      "evidence": ".pipeline/task10/final.json의 H3569는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기는 구스 사람(구시)이다. שׁ 뒤에 모음이 와 음절 첫소리이므로 시로 적었다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5833",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5833는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5071",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5071는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6923",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6923는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6504",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6504는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5404",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5404는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6403",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H6403는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5774",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5774는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3021",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע(ʿ)는 한글로 따로 적지 않아 야가가 된다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע(ʿ)는 한글로 따로 적지 않아 야가가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H3021는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע(ʿ)는 한글로 따로 적지 않아 야가가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5787",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 웨로 표기",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 웨로 표기",
+      "evidence": ".pipeline/task10/final.json의 H5787는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 웨로 표기'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3867",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기",
+      "evidence": ".pipeline/task10/final.json의 H3867는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 와로 표기'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7761",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘으로 적지 않는다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘으로 적지 않는다.",
+      "evidence": ".pipeline/task10/final.json의 H7761는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(ś)는 sin으로 한글 ㅅ에 대응한다. 슘으로 적지 않는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3390",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 예루살렘이다. שׁ를 샤로 적어 예루샬렘으로 두었다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 예루살렘이다. שׁ를 샤로 적어 예루샬렘으로 두었다.",
+      "evidence": ".pipeline/task10/final.json의 H3390는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 예루살렘이다. שׁ를 샤로 적어 예루샬렘으로 두었다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5713",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5713는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1952",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1952는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5410",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5410는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H191",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 위로 표기",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 위로 표기",
+      "evidence": ".pipeline/task10/final.json의 H191는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו는 w로 보고 위로 표기'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1263",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 바루크다. 한국어 성경은 바룩으로 굳어져 있다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 바루크다. 한국어 성경은 바룩으로 굳어져 있다.",
+      "evidence": ".pipeline/task10/final.json의 H1263는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 바루크다. 한국어 성경은 바룩으로 굳어져 있다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G93",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G93는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3129",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3129는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G5368",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G5368는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G2749",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G2749는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G3918",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G3918는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1398",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 둘류오다.",
+      "suggested": "다섯 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 둘류오다.",
+      "evidence": ".pipeline/task10/final.json의 G1398는 judges=5, votesKo=3인데 note는 '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 둘류오다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G4972",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G4972는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G125",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 아이귑토스다. 개역개정은 애굽, 현대 번역은 이집트로 옮긴다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 아이귑토스다. 개역개정은 애굽, 현대 번역은 이집트로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 G125는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 아이귑토스다. 개역개정은 애굽, 현대 번역은 이집트로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G308",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G308는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "G1186",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 G1186는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2340",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 히위다. 한국어 성경은 히위 사람으로 옮긴다. ו(w)의 음가를 살려 히위로 적는다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 히위다. 한국어 성경은 히위 사람으로 옮긴다. ו(w)의 음가를 살려 히위로 적는다.",
+      "evidence": ".pipeline/task10/final.json의 H2340는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 히위다. 한국어 성경은 히위 사람으로 옮긴다. ו(w)의 음가를 살려 히위로 적는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8025",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H8025는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7497",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 라파다. 한국어 성경은 르바임 또는 라파로 옮긴다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 라파다. 한국어 성경은 르바임 또는 라파로 옮긴다.",
+      "evidence": ".pipeline/task10/final.json의 H7497는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 라파다. 한국어 성경은 르바임 또는 라파로 옮긴다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5258",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H5258는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H52",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 아비샤이다. 한국어 성경은 아비새로 굳어져 있다. 어말 -ay 이중모음을 엄밀히 옮기면 아비샤이가 된다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 아비샤이다. 한국어 성경은 아비새로 굳어져 있다. 어말 -ay 이중모음을 엄밀히 옮기면 아비샤이가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H52는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 아비샤이다. 한국어 성경은 아비새로 굳어져 있다. 어말 -ay 이중모음을 엄밀히 옮기면 아비샤이가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3474",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3474는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5699",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H5699는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7270",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7270는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H8559",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 타마르다. 한국어 성경은 다말로 굳어져 있다. 무성 파열음 타브(ת)와 어말 레쉬(ר)를 엄밀히 옮기면 타마르가 된다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 타마르다. 한국어 성경은 다말로 굳어져 있다. 무성 파열음 타브(ת)와 어말 레쉬(ר)를 엄밀히 옮기면 타마르가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H8559는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 타마르다. 한국어 성경은 다말로 굳어져 있다. 무성 파열음 타브(ת)와 어말 레쉬(ר)를 엄밀히 옮기면 타마르가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H29",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H29는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H2672",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다.",
+      "evidence": ".pipeline/task10/final.json의 H2672는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H7860",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H7860는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H4918",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 메슐람이다. 한국어 성경은 므술람으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 메슐람이다. 한국어 성경은 므술람으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "evidence": ".pipeline/task10/final.json의 H4918는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 메슐람이다. 한국어 성경은 므술람으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1396",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1396는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H6372",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 핀하스다. 한국어 성경은 비느하스로 굳어져 있다. 무성 파열음 페(פ)를 엄밀히 옮기면 핀하스가 된다.",
+      "suggested": "다섯 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 핀하스다. 한국어 성경은 비느하스로 굳어져 있다. 무성 파열음 페(פ)를 엄밀히 옮기면 핀하스가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H6372는 judges=5, votesKo=4인데 note는 '네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 핀하스다. 한국어 성경은 비느하스로 굳어져 있다. 무성 파열음 페(פ)를 엄밀히 옮기면 핀하스가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5028",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 네바트다. 한국어 성경은 느밧으로 굳어져 있다. 쉐바(ְ)와 자음 ט(ṭ)를 엄밀히 옮기면 네바트가 된다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 네바트다. 한국어 성경은 느밧으로 굳어져 있다. 쉐바(ְ)와 자음 ט(ṭ)를 엄밀히 옮기면 네바트가 된다.",
+      "evidence": ".pipeline/task10/final.json의 H5028는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 네바트다. 한국어 성경은 느밧으로 굳어져 있다. 쉐바(ְ)와 자음 ט(ṭ)를 엄밀히 옮기면 네바트가 된다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H3708",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H3708는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H1290",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "evidence": ".pipeline/task10/final.json의 H1290는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    },
+    {
+      "strong": "H5227",
+      "field": "note",
+      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ח(ḥ)의 furtive patach를 반영해 노카흐로 적는다.",
+      "suggested": "다섯 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ח(ḥ)의 furtive patach를 반영해 노카흐로 적는다.",
+      "evidence": ".pipeline/task10/final.json의 H5227는 judges=5, votesKo=5인데 note는 '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ח(ḥ)의 furtive patach를 반영해 노카흐로 적는다.'로 기록됨; 지정된 배포 데이터 파일에는 이 Strong이 아직 없어 배포 반영 여부도 확인이 필요함.",
+      "severity": "medium",
+      "reason": "note의 판정자 수가 같은 항목의 실제 judges 값과 어긋난다."
+    }
+  ],
+  "summary": "final.json 300개 항목과 지정된 배포 파일들을 Node로 전수 대조했다. lemma·translit·translitKo의 배포 중복 충돌은 확인되지 않았지만, final.json의 judges=5 항목 note 299건이 모두 “네 모델”이라고 적혀 수치가 어긋난다."
+}

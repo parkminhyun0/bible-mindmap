@@ -1,0 +1,27 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 batch 06 의 '독립 감사자'다. 파일을 고치지 마라. 찾아서 보고만 하라.
+
+너는 이 배치를 만든 모델들과 **다른 계열**이다. 앞선 감사는 Gemini·Claude 계열이 했다. 그들이 공유하는 맹점을 찾는 것이 네 몫이다.
+
+배경: batch 02 에서 같은 방식의 감사가 실제 오류를 여러 건 잡았다. 헬라어 ευ 표기 4건이 배포된 bookContext.js 와 어긋났고, 판정 근거 61건이 실제 표기와 모순됐으며, note 66건이 판정자 수를 사실과 다르게 적고 있었다.
+
+1. `.pipeline/task10/WORKER_SPEC.md` 의 확정 표기 규칙과 `.pipeline/task10/final.json` 전체를 읽어라.
+2. 배포된 데이터와 대조하라. grep 으로 직접 확인할 파일:
+   `src/data/koreanGloss.js`, `src/data/koreanGlossTopBatch01.js`, `src/data/koreanGlossTopBatch02.js`,
+   `src/data/koreanGlossGenesis1Batch01.js`, `src/data/koreanGlossGenesis1Batch02.js`,
+   `src/data/bookContext.js`, `src/data/bibleReferences.js`, `src/data/contextChapterCards*.js`.
+3. 점검할 것:
+   - 같은 lemma·같은 어근이 배포 데이터에 다르게 적혀 있는가
+   - 확정 규칙 위반 (연음 기호 · 장애음 겹자음 받침 · 어말 שׁ · 자음 ו · 유성 쉐바 ə · 헬라어 ευ)
+   - note 가 실제 translit·translitKo 와 어긋나는 말을 하는가, 사실과 다른 수치를 말하는가
+   - 같은 조합이 배치 안에서 서로 다르게 적혔는가
+   - 한글 표기가 겹쳐 서로 다른 낱말이 구별되지 않는 자리가 있는가
+   - **앞선 감사들이 놓쳤을 만한 것.** 규칙 자체가 특정 자리에서 잘못된 결과를 내지는 않는지 의심하라.
+4. 검사는 눈으로 훑지 말고 node 스크립트로 전수로 하라.
+
+출력은 `.pipeline/task10/audits/audit-codex.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. git 커밋은 하지 마라.
+
+형식(마크다운 코드펜스 없이 JSON만):
+{"scope":"batch-06-codex","checked":<개수>,"findings":[{"strong":"H1234","field":"translitKo|translit|note","current":"…","suggested":"…","evidence":"배포 데이터의 어느 파일 어느 표기와 어긋나는지","severity":"high|medium|low","reason":"한국어 한두 문장"}],"summary":"한국어 두세 문장"}
+
+**배포 데이터에 실제 근거(evidence)가 없는 지적은 하지 마라.** 취향 차이는 보고하지 마라. 문제가 없으면 findings 를 빈 배열로 둬라.
+다 쓴 뒤 node -e 로 JSON.parse 하고 "audit-codex.json findings=<개수> OK" 한 줄만 보고하라.

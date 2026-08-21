@@ -1,0 +1,65 @@
+claude	b03 재감사 · Claude Opus 5	.pipeline/task7/prompts/recheck.txt	.pipeline/task7/audits/recheck.json
+codex	b05 L · Codex GPT-5	.pipeline/task9/prompts/L-codex.txt	.pipeline/task9/proposals/L-codex.json
+gemini-3.1-pro-high	b05 L · Gemini 3.1 Pro	.pipeline/task9/prompts/L-gem31pro.txt	.pipeline/task9/proposals/L-gem31pro.json
+gemini-3.7-flash-high	b05 L · Gemini 3.7 Flash	.pipeline/task9/prompts/L-gem37flash.txt	.pipeline/task9/proposals/L-gem37flash.json
+gemini-3.6-flash-high	b05 L · Gemini 3.6 Flash	.pipeline/task9/prompts/L-gem36flash.txt	.pipeline/task9/proposals/L-gem36flash.json
+claude	b05 L · Claude Opus 5	.pipeline/task9/prompts/L-claudeopus5.txt	.pipeline/task9/proposals/L-claudeopus5.json
+codex	b05 M · Codex GPT-5	.pipeline/task9/prompts/M-codex.txt	.pipeline/task9/proposals/M-codex.json
+gemini-3.1-pro-high	b05 M · Gemini 3.1 Pro	.pipeline/task9/prompts/M-gem31pro.txt	.pipeline/task9/proposals/M-gem31pro.json
+gemini-3.7-flash-high	b05 M · Gemini 3.7 Flash	.pipeline/task9/prompts/M-gem37flash.txt	.pipeline/task9/proposals/M-gem37flash.json
+gemini-3.6-flash-high	b05 M · Gemini 3.6 Flash	.pipeline/task9/prompts/M-gem36flash.txt	.pipeline/task9/proposals/M-gem36flash.json
+claude	b05 M · Claude Opus 5	.pipeline/task9/prompts/M-claudeopus5.txt	.pipeline/task9/proposals/M-claudeopus5.json
+codex	b05 N · Codex GPT-5	.pipeline/task9/prompts/N-codex.txt	.pipeline/task9/proposals/N-codex.json
+gemini-3.1-pro-high	b05 N · Gemini 3.1 Pro	.pipeline/task9/prompts/N-gem31pro.txt	.pipeline/task9/proposals/N-gem31pro.json
+gemini-3.7-flash-high	b05 N · Gemini 3.7 Flash	.pipeline/task9/prompts/N-gem37flash.txt	.pipeline/task9/proposals/N-gem37flash.json
+gemini-3.6-flash-high	b05 N · Gemini 3.6 Flash	.pipeline/task9/prompts/N-gem36flash.txt	.pipeline/task9/proposals/N-gem36flash.json
+claude	b05 N · Claude Opus 5	.pipeline/task9/prompts/N-claudeopus5.txt	.pipeline/task9/proposals/N-claudeopus5.json
+codex	b06 O · Codex GPT-5	.pipeline/task10/prompts/O-codex.txt	.pipeline/task10/proposals/O-codex.json
+gemini-3.1-pro-high	b06 O · Gemini 3.1 Pro	.pipeline/task10/prompts/O-gem31pro.txt	.pipeline/task10/proposals/O-gem31pro.json
+gemini-3.7-flash-high	b06 O · Gemini 3.7 Flash	.pipeline/task10/prompts/O-gem37flash.txt	.pipeline/task10/proposals/O-gem37flash.json
+gemini-3.6-flash-high	b06 O · Gemini 3.6 Flash	.pipeline/task10/prompts/O-gem36flash.txt	.pipeline/task10/proposals/O-gem36flash.json
+claude	b06 O · Claude Opus 5	.pipeline/task10/prompts/O-claudeopus5.txt	.pipeline/task10/proposals/O-claudeopus5.json
+codex	b06 P · Codex GPT-5	.pipeline/task10/prompts/P-codex.txt	.pipeline/task10/proposals/P-codex.json
+gemini-3.1-pro-high	b06 P · Gemini 3.1 Pro	.pipeline/task10/prompts/P-gem31pro.txt	.pipeline/task10/proposals/P-gem31pro.json
+gemini-3.7-flash-high	b06 P · Gemini 3.7 Flash	.pipeline/task10/prompts/P-gem37flash.txt	.pipeline/task10/proposals/P-gem37flash.json
+gemini-3.6-flash-high	b06 P · Gemini 3.6 Flash	.pipeline/task10/prompts/P-gem36flash.txt	.pipeline/task10/proposals/P-gem36flash.json
+claude	b06 P · Claude Opus 5	.pipeline/task10/prompts/P-claudeopus5.txt	.pipeline/task10/proposals/P-claudeopus5.json
+codex	b06 Q · Codex GPT-5	.pipeline/task10/prompts/Q-codex.txt	.pipeline/task10/proposals/Q-codex.json
+gemini-3.1-pro-high	b06 Q · Gemini 3.1 Pro	.pipeline/task10/prompts/Q-gem31pro.txt	.pipeline/task10/proposals/Q-gem31pro.json
+gemini-3.7-flash-high	b06 Q · Gemini 3.7 Flash	.pipeline/task10/prompts/Q-gem37flash.txt	.pipeline/task10/proposals/Q-gem37flash.json
+gemini-3.6-flash-high	b06 Q · Gemini 3.6 Flash	.pipeline/task10/prompts/Q-gem36flash.txt	.pipeline/task10/proposals/Q-gem36flash.json
+claude	b06 Q · Claude Opus 5	.pipeline/task10/prompts/Q-claudeopus5.txt	.pipeline/task10/proposals/Q-claudeopus5.json
+gemini-3.1-pro-high	b05 판정 · Gemini 3.1 Pro	.pipeline/task9/prompts/adj-gem31pro.txt	.pipeline/task9/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b05 판정 · Gemini 3.7 Flash	.pipeline/task9/prompts/adj-gem37flash.txt	.pipeline/task9/rulings/adj-gem37flash.json
+claude	b05 판정 · Claude Opus 5	.pipeline/task9/prompts/adj-claudeopus5.txt	.pipeline/task9/rulings/adj-claudeopus5.json
+codex	b07 R · Codex GPT-5	.pipeline/task11/prompts/R-codex.txt	.pipeline/task11/proposals/R-codex.json
+gemini-3.1-pro-high	b07 R · Gemini 3.1 Pro	.pipeline/task11/prompts/R-gem31pro.txt	.pipeline/task11/proposals/R-gem31pro.json
+gemini-3.7-flash-high	b07 R · Gemini 3.7 Flash	.pipeline/task11/prompts/R-gem37flash.txt	.pipeline/task11/proposals/R-gem37flash.json
+gemini-3.6-flash-high	b07 R · Gemini 3.6 Flash	.pipeline/task11/prompts/R-gem36flash.txt	.pipeline/task11/proposals/R-gem36flash.json
+claude	b07 R · Claude Opus 5	.pipeline/task11/prompts/R-claudeopus5.txt	.pipeline/task11/proposals/R-claudeopus5.json
+codex	b07 S · Codex GPT-5	.pipeline/task11/prompts/S-codex.txt	.pipeline/task11/proposals/S-codex.json
+gemini-3.1-pro-high	b07 S · Gemini 3.1 Pro	.pipeline/task11/prompts/S-gem31pro.txt	.pipeline/task11/proposals/S-gem31pro.json
+gemini-3.7-flash-high	b07 S · Gemini 3.7 Flash	.pipeline/task11/prompts/S-gem37flash.txt	.pipeline/task11/proposals/S-gem37flash.json
+gemini-3.6-flash-high	b07 S · Gemini 3.6 Flash	.pipeline/task11/prompts/S-gem36flash.txt	.pipeline/task11/proposals/S-gem36flash.json
+claude	b07 S · Claude Opus 5	.pipeline/task11/prompts/S-claudeopus5.txt	.pipeline/task11/proposals/S-claudeopus5.json
+codex	b07 T · Codex GPT-5	.pipeline/task11/prompts/T-codex.txt	.pipeline/task11/proposals/T-codex.json
+gemini-3.1-pro-high	b07 T · Gemini 3.1 Pro	.pipeline/task11/prompts/T-gem31pro.txt	.pipeline/task11/proposals/T-gem31pro.json
+gemini-3.7-flash-high	b07 T · Gemini 3.7 Flash	.pipeline/task11/prompts/T-gem37flash.txt	.pipeline/task11/proposals/T-gem37flash.json
+gemini-3.6-flash-high	b07 T · Gemini 3.6 Flash	.pipeline/task11/prompts/T-gem36flash.txt	.pipeline/task11/proposals/T-gem36flash.json
+claude	b07 T · Claude Opus 5	.pipeline/task11/prompts/T-claudeopus5.txt	.pipeline/task11/proposals/T-claudeopus5.json
+gemini-3.1-pro-high	b06 감사 1 · Gemini 3.1 Pro	.pipeline/task10/prompts/audit-1.txt	.pipeline/task10/audits/audit-1.json
+gemini-3.7-flash-high	b06 감사 2 · Gemini 3.7 Flash	.pipeline/task10/prompts/audit-2.txt	.pipeline/task10/audits/audit-2.json
+claude	b06 감사 3 · Claude Opus 5	.pipeline/task10/prompts/audit-3.txt	.pipeline/task10/audits/audit-3.json
+codex	b06 감사 codex · Codex GPT-5	.pipeline/task10/prompts/audit-codex.txt	.pipeline/task10/audits/audit-codex.json
+gemini-3.1-pro-high	b05 감사 1 · Gemini 3.1 Pro	.pipeline/task9/prompts/audit-1.txt	.pipeline/task9/audits/audit-1.json
+gemini-3.7-flash-high	b05 감사 2 · Gemini 3.7 Flash	.pipeline/task9/prompts/audit-2.txt	.pipeline/task9/audits/audit-2.json
+claude	b05 감사 3 · Claude Opus 5	.pipeline/task9/prompts/audit-3.txt	.pipeline/task9/audits/audit-3.json
+codex	b05 감사 codex · Codex GPT-5	.pipeline/task9/prompts/audit-codex.txt	.pipeline/task9/audits/audit-codex.json
+codex	b06 재감사 · Codex GPT-5	.pipeline/task10/prompts/recheck.txt	.pipeline/task10/audits/recheck.json
+claude	b05 재감사 · Claude Opus 5	.pipeline/task9/prompts/recheck.txt	.pipeline/task9/audits/recheck.json
+gemini-3.1-pro-high	b06 판정 · Gemini 3.1 Pro	.pipeline/task10/prompts/adj-gem31pro.txt	.pipeline/task10/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b06 판정 · Gemini 3.7 Flash	.pipeline/task10/prompts/adj-gem37flash.txt	.pipeline/task10/rulings/adj-gem37flash.json
+claude	b06 판정 · Claude Opus 5	.pipeline/task10/prompts/adj-claudeopus5.txt	.pipeline/task10/rulings/adj-claudeopus5.json
+gemini-3.1-pro-high	b07 판정 · Gemini 3.1 Pro	.pipeline/task11/prompts/adj-gem31pro.txt	.pipeline/task11/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b07 판정 · Gemini 3.7 Flash	.pipeline/task11/prompts/adj-gem37flash.txt	.pipeline/task11/rulings/adj-gem37flash.json
+claude	b07 판정 · Claude Opus 5	.pipeline/task11/prompts/adj-claudeopus5.txt	.pipeline/task11/rulings/adj-claudeopus5.json

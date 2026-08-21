@@ -1,0 +1,45 @@
+{
+  "count": 1,
+  "items": [
+    {
+      "shard": "P",
+      "strong": "H1032",
+      "lemma": "בֵּית חוֹרוֹן",
+      "lang": "hebrew",
+      "glossEn": "Beth-horon.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt Ḥôrôn",
+          "translitKo": "벳 호론",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt ḥôrôn",
+          "translitKo": "베트 호론",
+          "note": "관용 표기(벧호론)와 차이"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt ḥôrôn",
+          "translitKo": "베트 호론",
+          "note": "관용 표기 '벧호론'과 차이"
+        },
+        {
+          "model": "gem36flash",
+          "translit": "bêt ḥôrôn",
+          "translitKo": "베이트 호론",
+          "note": "학술 표기는 베이트 호론이다. 개역개정 등 한국어 성경은 벧호론으로 옮긴다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt ḥôrôn",
+          "translitKo": "베트호론",
+          "note": "개역 관용 표기는 「벧호론」. 합성 지명의 앞 요소 בֵּית 를 관용에서는 받침 「벧」으로 줄여 적는다."
+        }
+      ]
+    }
+  ]
+}
