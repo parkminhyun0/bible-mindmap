@@ -57,8 +57,24 @@ for (const { entries, meta } of KOREAN_GLOSS_BATCHES) {
     }
 
     // 4. 헬라어 ευ 는 유 계열 (선례 유튀스 · 프로슈코메노스 · 유앙겔리온)
-    if (/ε[υύὐὑῦὺ]/.test(lemma) && /에우|[가-힣]에\s*우/.test(ko)) {
-      note(batchId, strong, `ευ 는 유 계열로 적는다: ${ko}`);
+    //    'ㅔ 음절 + ㅇ/ㅜ 음절' 이 안 합쳐진 채 남아 있으면 어긋난 것이다.
+    //    뒤 음절에 받침이 있어도 마찬가지다 — εὐλογέω 를 에울로게오 로 적은 자리가 그랬다.
+    if (/ε[υύὐὑῦὺ]/.test(lemma)) {
+      const cs = [...ko];
+      for (let i = 0; i < cs.length - 1; i += 1) {
+        const cur = decompose(cs[i]);
+        const nxt = decompose(cs[i + 1]);
+        const nxtCho = cs[i + 1].codePointAt(0) >= BASE ? Math.floor((cs[i + 1].codePointAt(0) - BASE) / 588) : -1;
+        if (cur && !cur.jong && cur.jungIdx === 5 && nxt && nxt.jungIdx === 13 && nxtCho === 11) {
+          note(batchId, strong, `ευ 를 유 계열로 합치지 않았다: ${ko}`);
+          break;
+        }
+      }
+    }
+
+    // 4-2. Ἰου- 는 유 (선례 유다이오스 · 유다이오이). 어두 단독 ου 는 우 다.
+    if (/^Ἰ[οό][υύὐὑῦὺ]/.test(lemma) && /^이우/.test(ko)) {
+      note(batchId, strong, `Ἰου- 는 유 로 적는다: ${ko}`);
     }
 
     // 5. 어두 ῥ 는 ㄹ (선례 라브도스 · 리자)

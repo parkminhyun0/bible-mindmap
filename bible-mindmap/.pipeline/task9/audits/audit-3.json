@@ -1,0 +1,78 @@
+{
+  "shard": "3",
+  "checked": 100,
+  "findings": [
+    {
+      "strong": "G2127",
+      "field": "translitKo",
+      "current": "에울로게오",
+      "suggested": "율로게오",
+      "evidence": "src/data/bookContext.js 는 εὐ- 를 예외 없이 '유'로 적는다: εὐθύς→유튀스(699행), εὐαγγελίσασθαι→유앙겔리사스타이(1173행), εὐαγγέλιον→유앙겔리온(2558행), εὐχαριστοῦμεν→유카리스투멘(2880행), εὐχαριστεῖν→유카리스테인(3043행), εὐσέβεια→유세베이아(3334행), εὐκαίρως→유카이로스(3511행). src/data/koreanGlossTopBatch03.js 2171-2173행 εὐαγγέλιον→'유앙겔리온'. 뒤따르는 λ 은 ἄγγελος→앙겔로스(koreanGlossTopBatch02.js)처럼 받침 ㄹ+초성 ㄹ 로 갈라 적는다.",
+      "severity": "high",
+      "reason": "batch 02 에서 배포 선례로 확정한 '헬라어 ευ 는 유 계열' 규칙을 정면으로 어겼다. 배포된 유앙겔리온·유카리스테인과 나란히 놓이면 같은 접두사가 두 가지로 보인다."
+    },
+    {
+      "strong": "G2455",
+      "field": "translitKo",
+      "current": "이우다스",
+      "suggested": "유다스",
+      "evidence": "src/data/bookContext.js 1458행 οἱ Ἰουδαῖοι→'호이 유다이오이', 2747행 Ἰουδαῖος→'유다이오스'. src/data/koreanGlossTopBatch02.js G2453 Ἰουδαῖος 의 translitKo 가 '유다이오스'이고 그 note 가 '배포 데이터에 Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이 로 그대로 있다'고 근거까지 밝혀 두었다.",
+      "severity": "high",
+      "reason": "같은 어간 Ἰουδ- 를 배포 데이터는 '유다-'로 적는데 여기서만 '이우다-'로 갈랐다. 같은 사전 안에서 유다이오스와 이우다스가 나란히 서게 된다."
+    },
+    {
+      "strong": "H1053",
+      "field": "translitKo",
+      "current": "베이트 셰메쉬",
+      "suggested": "베트 셰메쉬",
+      "evidence": "src/data/koreanGlossTopBatch03.js H1008 בֵּית־אֵל bêt-ʾēl→'베트엘', H1035 בֵּית לֶחֶם bêt leḥem→'베트 레헴'. H1008 의 note 는 'ê를 에이로 늘려 적을지에서 갈렸다. 배포된 bên이 벤이므로 ê는 에 한 음절'이라고 판정 근거까지 적어 두었고, 그 bên→'벤'은 src/data/koreanGlossGenesis1Batch02.js H996 에 있다. 뒷말 שֶׁמֶשׁ→'셰메쉬'는 같은 파일 H8121 과 일치한다.",
+      "severity": "high",
+      "reason": "배포된 두 개의 bêt 복합 지명이 모두 '베트'인데 여기서만 '베이트'로 늘렸다. 사전에서 베트엘·베트 레헴·베이트 셰메쉬가 같은 낱말 בֵּית 를 두 가지로 보여 준다."
+    },
+    {
+      "strong": "G2127",
+      "field": "note",
+      "current": "네 모델 중 3개가 같은 음역안을 냈다. ευ 뒤에 자음 λ이 오므로 에울로게오로 표기",
+      "suggested": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "evidence": "src/data/koreanGlossTopBatch03.js 머리말과 .pipeline/task9/WORKER_SPEC.md 확정 규칙이 '헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마)'로 못박았고, bookContext.js 의 유튀스·유앙겔리온·유카리스테인이 그 선례다.",
+      "severity": "high",
+      "reason": "note 가 폐기된 '뒤 자음에 따라 에우/에브/에프' 판단을 되살려 확정 규칙과 배포 선례를 뒤집는 근거로 쓰였다. translitKo 를 고치면 이 문장도 함께 걷어내야 한다."
+    },
+    {
+      "strong": "G2455",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 이우다스다. 한국어 성경 관용 표기는 유다다.",
+      "suggested": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 유다스다. 한국어 성경 관용 표기는 유다다.",
+      "evidence": "src/data/koreanGlossTopBatch02.js G2453 Ἰουδαῖος→'유다이오스', src/data/bookContext.js 1458·2747행 유다이오이·유다이오스.",
+      "severity": "medium",
+      "reason": "'학술 표기는 이우다스'라는 문장이 배포 데이터의 유다이오스와 어긋난다. 학술 표기와 관용 표기의 차이가 실제로는 어미 -ς 유무뿐인데 어간까지 다른 것처럼 설명한다."
+    },
+    {
+      "strong": "H7157",
+      "field": "note",
+      "current": "…개역개정 등 한국어 성경은 관용 표기로 기리앗여아림이라 하나, 학술 표기 원칙에 따라 키르야트 예아림으로 적는다.",
+      "suggested": "…개역개정 등 한국어 성경은 관용 표기로 기럇여아림이라 하나, 학술 표기 원칙에 따라 키르야트 예아림으로 적는다.",
+      "evidence": "src/data/bibleReferences.js 331행 'place:kiriath-jearim' 의 canonicalName 이 '기럇여아림'이다. src/data/contextChapterCardsMonarchy.js 96행(1Chr:13) 본문도 '기럇여아림에서 궤를 새 수레에 싣고'로 적는다. 배포 데이터 어디에도 '기리앗여아림'은 없다.",
+      "severity": "medium",
+      "reason": "관용 표기를 잘못 인용해 이 앱이 실제로 쓰는 지명과 note 가 어긋난다. 사용자가 사전에서 본 관용형으로 지도·본문을 찾으면 맞는 항목이 없다."
+    },
+    {
+      "strong": "H8096",
+      "field": "note",
+      "current": "…관용 표기 '시므이'와 차이. 어근·음절 구조가 H8095 와 같아 같은 규칙으로 적었다. …",
+      "suggested": "…관용 표기 '시므이'와 차이. 배포된 chapter card 는 이 이름을 '쉬므이'로 적었으나, 확정 규칙(음절 첫소리 שׁ 는 시/셰)과 배포된 śimḥâ→심하·gilʿād→길아드 선례를 따라 심이로 적었다. …",
+      "evidence": "src/data/contextChapterCardsMonarchy.js 28행(2Sam:16)·31행(2Sam:19) 의 마커가 ['שמעי (쉬므이)', …] 로 같은 이름을 '쉬므이'로 음역해 두었다. 반면 받침 처리 선례는 src/data/koreanGlossTopBatch03.js H8057 שִׂמְחָה śimḥâ→'심하', H1568 גִּלְעָד gilʿād→'길아드'다.",
+      "severity": "medium",
+      "reason": "배포 데이터가 이 고유명사를 이미 '쉬므이'로 적어 두었는데 note 는 관용 표기 '시므이'만 언급하고 그 충돌을 남기지 않았다. 표기가 갈린 자리라는 판정 근거로는 설명이 모자란다."
+    },
+    {
+      "strong": "H5654",
+      "field": "note",
+      "current": "…개역개정 등 한국어 성경은 관용 표기로 오벳에돔이라 하나, 학술 표기 원칙에 따라 오베드 에돔으로 적는다.",
+      "suggested": "…개역개정 등 한국어 성경은 관용 표기로 오벧에돔이라 하나, 학술 표기 원칙에 따라 오베드 에돔으로 적는다.",
+      "evidence": "src/data/contextChapterCardsMonarchy.js 가 이 인명을 '오벧에돔'으로 적는다(1Chr:13 등 5회). 배포 데이터에 '오벳에돔'은 한 번도 없고, '오벳'은 룻기의 다른 인물(H5744)에만 쓰인다.",
+      "severity": "low",
+      "reason": "관용 표기를 오벳에돔으로 잘못 인용해 배포 데이터의 오벧에돔과 어긋난다. 룻기의 오벳과 혼동할 여지도 남는다."
+    }
+  ]
+}

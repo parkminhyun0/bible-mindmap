@@ -1,0 +1,40 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H8095",
+      "translit": "šimʿôn",
+      "translitKo": "심온",
+      "evidence": "src/data/bibleReferences.js (שִׁמְשׁוֹן→심숀), src/data/contextChapterCardsPs2.js (שִׁמְךָ→심카)",
+      "note": "관용 표기 '시므온'과 차이. ע(ʿ)는 한글로 적지 않고 מ 아래 묵음 쉐바를 받침으로 처리해 학술 표기 '심온'을 표제로 삼는다."
+    },
+    {
+      "strong": "H8096",
+      "translit": "šimʿî",
+      "translitKo": "심이",
+      "evidence": "src/data/bibleReferences.js (שִׁמְשׁוֹן→심숀), src/data/contextChapterCardsPs2.js (שִׁמְךָ→심카)",
+      "note": "관용 표기 '시므이'와 차이. מ 아래 묵음 쉐바를 받침으로 처리하고 ע(ʿ)는 생략하여 학술 표기 '심이'를 표제로 삼는다."
+    },
+    {
+      "strong": "G2168",
+      "translit": "eucharistéō",
+      "translitKo": "유카리스테오",
+      "evidence": "src/data/bookContext.js (εὐχαριστοῦμεν→유카리스투멘, εὐχαριστεῖν→유카리스테인), src/data/koreanGlossTopBatch02.js (ευ→유 계열)",
+      "note": "배포된 ευ 계열 선례(유카리스투멘·유튀스)와 표기 규칙에 따라 '유카리스테오'로 표기한다."
+    },
+    {
+      "strong": "G4335",
+      "translit": "proseuchḗ",
+      "translitKo": "프로슈케",
+      "evidence": "src/data/bookContext.js (προσευχή→프로슈케, προσευχόμενος→프로슈코메노스), src/data/koreanGlossTopBatch02.js (ευ→유 계열)",
+      "note": "배포 데이터의 동일 어휘 선례(προσευχή→프로슈케)와 ευ의 유 계열 표기 규칙에 따라 '프로슈케'로 표기한다."
+    },
+    {
+      "strong": "G1607",
+      "translit": "ekporeúomai",
+      "translitKo": "에크포류오마이",
+      "evidence": "src/data/koreanGlossTopBatch01.js (G1537 ἐκ→에크), src/data/koreanGlossTopBatch02.js (G4198 πορεύομαι→포류오마이), src/data/bookContext.js (ἐπορεύετο→에포류에토)",
+      "note": "접두사 ἐκ(에크) 선례와 어근 πορεύομαι(포류오마이, ἐπορεύε토→에포류에토) 선례를 결합하여 '에크포류오마이'로 표기한다."
+    }
+  ]
+}

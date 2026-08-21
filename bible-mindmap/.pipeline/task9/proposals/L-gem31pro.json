@@ -1,0 +1,707 @@
+{
+  "shard": "L",
+  "model": "gem31pro",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H7356",
+      "lemma": "רַחַם",
+      "translit": "raḥam",
+      "translitKo": "라함",
+      "note": ""
+    },
+    {
+      "strong": "H835",
+      "lemma": "אֶשֶׁר",
+      "translit": "ʾešer",
+      "translitKo": "에셰르",
+      "note": ""
+    },
+    {
+      "strong": "H5237",
+      "lemma": "נׇכְרִי",
+      "translit": "nokrî",
+      "translitKo": "노크리",
+      "note": ""
+    },
+    {
+      "strong": "H4784",
+      "lemma": "מָרָה",
+      "translit": "mārāh",
+      "translitKo": "마라",
+      "note": ""
+    },
+    {
+      "strong": "H6967",
+      "lemma": "קוֹמָה",
+      "translit": "qômāh",
+      "translitKo": "코마",
+      "note": ""
+    },
+    {
+      "strong": "H3374",
+      "lemma": "יִרְאָה",
+      "translit": "yirʾāh",
+      "translitKo": "이르아",
+      "note": ""
+    },
+    {
+      "strong": "H7667",
+      "lemma": "שֶׁבֶר",
+      "translit": "šeber",
+      "translitKo": "셰베르",
+      "note": ""
+    },
+    {
+      "strong": "G1330",
+      "lemma": "διέρχομαι",
+      "translit": "diérchomai",
+      "translitKo": "디에르코마이",
+      "note": ""
+    },
+    {
+      "strong": "G1921",
+      "lemma": "ἐπιγινώσκω",
+      "translit": "epiginṓskō",
+      "translitKo": "에피기노스코",
+      "note": ""
+    },
+    {
+      "strong": "G1210",
+      "lemma": "δέω",
+      "translit": "déō",
+      "translitKo": "데오",
+      "note": ""
+    },
+    {
+      "strong": "G3089",
+      "lemma": "λύω",
+      "translit": "lýō",
+      "translitKo": "뤼오",
+      "note": ""
+    },
+    {
+      "strong": "G2347",
+      "lemma": "θλῖψις",
+      "translit": "thlîpsis",
+      "translitKo": "틀립시스",
+      "note": "θ는 보통 ㅌ로 표기"
+    },
+    {
+      "strong": "G2296",
+      "lemma": "θαυμάζω",
+      "translit": "thaumázō",
+      "translitKo": "타우마조",
+      "note": ""
+    },
+    {
+      "strong": "G2449",
+      "lemma": "Ἰουδαία",
+      "translit": "Ioudaía",
+      "translitKo": "이우다이아",
+      "note": "유대(Judea) 관용 표기와 차이"
+    },
+    {
+      "strong": "G2264",
+      "lemma": "Ἡρώδης",
+      "translit": "Hērṓdēs",
+      "translitKo": "헤로데스",
+      "note": "헤롯(Herod) 관용 표기와 차이"
+    },
+    {
+      "strong": "G2323",
+      "lemma": "θεραπεύω",
+      "translit": "therapeúō",
+      "translitKo": "테라페우오",
+      "note": ""
+    },
+    {
+      "strong": "H2502",
+      "lemma": "חָלַץ",
+      "translit": "ḥālaṣ",
+      "translitKo": "할라츠",
+      "note": ""
+    },
+    {
+      "strong": "H8095",
+      "lemma": "שִׁמְעוֹן",
+      "translit": "šimʿôn",
+      "translitKo": "시므온",
+      "note": "관용 표기 시므온(Simeon)을 따름. ʿ(아인)은 한글 표기에서 생략."
+    },
+    {
+      "strong": "H959",
+      "lemma": "בָּזָה",
+      "translit": "bāzāh",
+      "translitKo": "바자",
+      "note": ""
+    },
+    {
+      "strong": "H4818",
+      "lemma": "מֶרְכָּבָה",
+      "translit": "merkābāh",
+      "translitKo": "메르카바",
+      "note": ""
+    },
+    {
+      "strong": "H4186",
+      "lemma": "מוֹשָׁב",
+      "translit": "môšāb",
+      "translitKo": "모샤브",
+      "note": ""
+    },
+    {
+      "strong": "H7194",
+      "lemma": "קָשַׁר",
+      "translit": "qāšar",
+      "translitKo": "카샤르",
+      "note": ""
+    },
+    {
+      "strong": "H5352",
+      "lemma": "נָקָה",
+      "translit": "nāqāh",
+      "translitKo": "나카",
+      "note": ""
+    },
+    {
+      "strong": "H5749",
+      "lemma": "עוּד",
+      "translit": "ʿûd",
+      "translitKo": "우드",
+      "note": ""
+    },
+    {
+      "strong": "H2296",
+      "lemma": "חָגַר",
+      "translit": "ḥāgar",
+      "translitKo": "하가르",
+      "note": ""
+    },
+    {
+      "strong": "H7321",
+      "lemma": "רוּעַ",
+      "translit": "rûaʿ",
+      "translitKo": "루아흐",
+      "note": "ע는 생략하고 furtive patach 적용하여 아흐로 표기"
+    },
+    {
+      "strong": "H2461",
+      "lemma": "חָלָב",
+      "translit": "ḥālāb",
+      "translitKo": "할라브",
+      "note": ""
+    },
+    {
+      "strong": "H657",
+      "lemma": "אֶפֶס",
+      "translit": "ʾepes",
+      "translitKo": "에페스",
+      "note": ""
+    },
+    {
+      "strong": "H970",
+      "lemma": "בָּחוּר",
+      "translit": "bāḥûr",
+      "translitKo": "바후르",
+      "note": ""
+    },
+    {
+      "strong": "H1005",
+      "lemma": "בַּיִת",
+      "translit": "bayit",
+      "translitKo": "바이트",
+      "note": ""
+    },
+    {
+      "strong": "G2127",
+      "lemma": "εὐλογέω",
+      "translit": "eulogéō",
+      "translitKo": "에울로게오",
+      "note": "ευ 뒤에 자음 λ이 오므로 에울로게오로 표기"
+    },
+    {
+      "strong": "G5092",
+      "lemma": "τιμή",
+      "translit": "timḗ",
+      "translitKo": "티메",
+      "note": ""
+    },
+    {
+      "strong": "G264",
+      "lemma": "ἁμαρτάνω",
+      "translit": "hamartánō",
+      "translitKo": "하마르타노",
+      "note": ""
+    },
+    {
+      "strong": "G1448",
+      "lemma": "ἐγγίζω",
+      "translit": "engízō",
+      "translitKo": "엥기조",
+      "note": "γγ는 ㅇㄱ으로 표기"
+    },
+    {
+      "strong": "G5455",
+      "lemma": "φωνέω",
+      "translit": "phōnéō",
+      "translitKo": "포네오",
+      "note": ""
+    },
+    {
+      "strong": "G1074",
+      "lemma": "γενεά",
+      "translit": "geneá",
+      "translitKo": "게네아",
+      "note": ""
+    },
+    {
+      "strong": "H3129",
+      "lemma": "יוֹנָתָן",
+      "translit": "yônātān",
+      "translitKo": "요나탄",
+      "note": "요나단(Jonathan) 관용 표기와 차이"
+    },
+    {
+      "strong": "H6584",
+      "lemma": "פָּשַׁט",
+      "translit": "pāšaṭ",
+      "translitKo": "파샤트",
+      "note": ""
+    },
+    {
+      "strong": "H3485",
+      "lemma": "יִשָּׂשכָר",
+      "translit": "yiśśākār",
+      "translitKo": "이사카르",
+      "note": "잇사갈(Issachar) 관용 표기와 차이"
+    },
+    {
+      "strong": "H836",
+      "lemma": "אָשֵׁר",
+      "translit": "ʾāšēr",
+      "translitKo": "아셰르",
+      "note": "아셀(Asher) 관용 표기와 차이"
+    },
+    {
+      "strong": "H2148",
+      "lemma": "זְכַרְיָה",
+      "translit": "zekaryāh",
+      "translitKo": "제카르야",
+      "note": "스가랴(Zechariah) 관용 표기와 차이"
+    },
+    {
+      "strong": "H3256",
+      "lemma": "יָסַר",
+      "translit": "yāsar",
+      "translitKo": "야사르",
+      "note": ""
+    },
+    {
+      "strong": "H2040",
+      "lemma": "הָרַס",
+      "translit": "hāras",
+      "translitKo": "하라스",
+      "note": ""
+    },
+    {
+      "strong": "H8096",
+      "lemma": "שִׁמְעִי",
+      "translit": "šimʿî",
+      "translitKo": "시므이",
+      "note": "관용 표기 시므이(Shimei)를 따름. ʿ(아인) 생략."
+    },
+    {
+      "strong": "H5331",
+      "lemma": "נֶצַח",
+      "translit": "neṣaḥ",
+      "translitKo": "네차흐",
+      "note": ""
+    },
+    {
+      "strong": "H2029",
+      "lemma": "הָרָה",
+      "translit": "hārāh",
+      "translitKo": "하라",
+      "note": ""
+    },
+    {
+      "strong": "H1473",
+      "lemma": "גּוֹלָה",
+      "translit": "gôlāh",
+      "translitKo": "골라",
+      "note": ""
+    },
+    {
+      "strong": "H3245",
+      "lemma": "יָסַד",
+      "translit": "yāsad",
+      "translitKo": "야사드",
+      "note": ""
+    },
+    {
+      "strong": "H5355",
+      "lemma": "נָקִי",
+      "translit": "nāqî",
+      "translitKo": "나키",
+      "note": ""
+    },
+    {
+      "strong": "H3871",
+      "lemma": "לוּחַ",
+      "translit": "lûaḥ",
+      "translitKo": "루아흐",
+      "note": "furtive patach 적용"
+    },
+    {
+      "strong": "H215",
+      "lemma": "אוֹר",
+      "translit": "ʾôr",
+      "translitKo": "오르",
+      "note": ""
+    },
+    {
+      "strong": "H962",
+      "lemma": "בָּזַז",
+      "translit": "bāzaz",
+      "translitKo": "바자즈",
+      "note": ""
+    },
+    {
+      "strong": "H7339",
+      "lemma": "רְחֹב",
+      "translit": "reḥōb",
+      "translitKo": "레호브",
+      "note": ""
+    },
+    {
+      "strong": "H7068",
+      "lemma": "קִנְאָה",
+      "translit": "qinʾāh",
+      "translitKo": "킨아",
+      "note": ""
+    },
+    {
+      "strong": "H400",
+      "lemma": "אֹכֶל",
+      "translit": "ʾōkel",
+      "translitKo": "오켈",
+      "note": ""
+    },
+    {
+      "strong": "H8438",
+      "lemma": "תּוֹלָע",
+      "translit": "tôlāʿ",
+      "translitKo": "톨라",
+      "note": "ע는 한글 표기에서 생략"
+    },
+    {
+      "strong": "H1101",
+      "lemma": "בָּלַל",
+      "translit": "bālal",
+      "translitKo": "발랄",
+      "note": ""
+    },
+    {
+      "strong": "H5207",
+      "lemma": "נִיחוֹחַ",
+      "translit": "nîḥôaḥ",
+      "translitKo": "니호아흐",
+      "note": "furtive patach 적용"
+    },
+    {
+      "strong": "H1111",
+      "lemma": "בָּלָק",
+      "translit": "bālāq",
+      "translitKo": "발라크",
+      "note": "발락(Balak) 관용 표기와 차이"
+    },
+    {
+      "strong": "G5056",
+      "lemma": "τέλος",
+      "translit": "télos",
+      "translitKo": "텔로스",
+      "note": ""
+    },
+    {
+      "strong": "G3313",
+      "lemma": "μέρος",
+      "translit": "méros",
+      "translitKo": "메로스",
+      "note": ""
+    },
+    {
+      "strong": "G3958",
+      "lemma": "πάσχω",
+      "translit": "páschō",
+      "translitKo": "파스코",
+      "note": ""
+    },
+    {
+      "strong": "G2385",
+      "lemma": "Ἰάκωβος",
+      "translit": "Iákōbos",
+      "translitKo": "이아코보스",
+      "note": "야고보(James) 관용 표기와 차이"
+    },
+    {
+      "strong": "G386",
+      "lemma": "ἀνάστασις",
+      "translit": "anástasis",
+      "translitKo": "아나스타시스",
+      "note": ""
+    },
+    {
+      "strong": "G3936",
+      "lemma": "παρίστημι",
+      "translit": "parístēmi",
+      "translitKo": "파리스테미",
+      "note": ""
+    },
+    {
+      "strong": "H3448",
+      "lemma": "יִשַׁי",
+      "translit": "yišay",
+      "translitKo": "이샤이",
+      "note": "이새(Jesse) 관용 표기와 차이"
+    },
+    {
+      "strong": "H1141",
+      "lemma": "בְּנָיָה",
+      "translit": "benāyāh",
+      "translitKo": "베나야",
+      "note": "브나야(Benaiah) 관용 표기와 차이"
+    },
+    {
+      "strong": "H5416",
+      "lemma": "נָתָן",
+      "translit": "nātān",
+      "translitKo": "나탄",
+      "note": "나단(Nathan) 관용 표기와 차이"
+    },
+    {
+      "strong": "H3658",
+      "lemma": "כִּנּוֹר",
+      "translit": "kinnôr",
+      "translitKo": "키노르",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H6865",
+      "lemma": "צֹר",
+      "translit": "ṣōr",
+      "translitKo": "초르",
+      "note": "두로(Tyre) 관용 표기와 차이"
+    },
+    {
+      "strong": "H4256",
+      "lemma": "מַחֲלֹקֶת",
+      "translit": "maḥălōqet",
+      "translitKo": "마할로케트",
+      "note": ""
+    },
+    {
+      "strong": "H5631",
+      "lemma": "סָרִיס",
+      "translit": "sārîs",
+      "translitKo": "사리스",
+      "note": ""
+    },
+    {
+      "strong": "H271",
+      "lemma": "אָחָז",
+      "translit": "ʾāḥāz",
+      "translitKo": "아하즈",
+      "note": "아하스(Ahaz) 관용 표기와 차이"
+    },
+    {
+      "strong": "H1053",
+      "lemma": "בֵּית שֶׁמֶשׁ",
+      "translit": "bêt šemeš",
+      "translitKo": "베이트 셰메쉬",
+      "note": "벧세메스(Beth-shemesh) 관용 표기와 차이. 음절 말 שׁ는 쉬로 적음"
+    },
+    {
+      "strong": "H3303",
+      "lemma": "יָפֶה",
+      "translit": "yāpeh",
+      "translitKo": "야페",
+      "note": ""
+    },
+    {
+      "strong": "H1588",
+      "lemma": "גַּן",
+      "translit": "gan",
+      "translitKo": "간",
+      "note": ""
+    },
+    {
+      "strong": "H983",
+      "lemma": "בֶּטַח",
+      "translit": "beṭaḥ",
+      "translitKo": "베타흐",
+      "note": ""
+    },
+    {
+      "strong": "H8394",
+      "lemma": "תָּבוּן",
+      "translit": "tābûn",
+      "translitKo": "타분",
+      "note": ""
+    },
+    {
+      "strong": "H2945",
+      "lemma": "טַף",
+      "translit": "ṭap",
+      "translitKo": "타프",
+      "note": ""
+    },
+    {
+      "strong": "H5422",
+      "lemma": "נָתַץ",
+      "translit": "nātaṣ",
+      "translitKo": "나타츠",
+      "note": ""
+    },
+    {
+      "strong": "H8393",
+      "lemma": "תְּבוּאָה",
+      "translit": "tebûʾāh",
+      "translitKo": "테부아",
+      "note": ""
+    },
+    {
+      "strong": "H8144",
+      "lemma": "שָׁנִי",
+      "translit": "šānî",
+      "translitKo": "샤니",
+      "note": ""
+    },
+    {
+      "strong": "H2100",
+      "lemma": "זוּב",
+      "translit": "zûb",
+      "translitKo": "주브",
+      "note": ""
+    },
+    {
+      "strong": "H6925",
+      "lemma": "קֳדָם",
+      "translit": "qŏdām",
+      "translitKo": "코담",
+      "note": ""
+    },
+    {
+      "strong": "H2723",
+      "lemma": "חׇרְבָּה",
+      "translit": "ḥorbāh",
+      "translitKo": "호르바",
+      "note": ""
+    },
+    {
+      "strong": "H3490",
+      "lemma": "יָתוֹם",
+      "translit": "yātôm",
+      "translitKo": "야톰",
+      "note": ""
+    },
+    {
+      "strong": "H6677",
+      "lemma": "צַוָּאר",
+      "translit": "ṣawwāʾr",
+      "translitKo": "차와르",
+      "note": "자음 ו(w) 반영하여 와로 표기"
+    },
+    {
+      "strong": "G3985",
+      "lemma": "πειράζω",
+      "translit": "peirázō",
+      "translitKo": "페이라조",
+      "note": ""
+    },
+    {
+      "strong": "G3049",
+      "lemma": "λογίζομαι",
+      "translit": "logízomai",
+      "translitKo": "로기조마이",
+      "note": ""
+    },
+    {
+      "strong": "G2038",
+      "lemma": "ἐργάζομαι",
+      "translit": "ergázomai",
+      "translitKo": "에르가조마이",
+      "note": ""
+    },
+    {
+      "strong": "G3404",
+      "lemma": "μισέω",
+      "translit": "miséō",
+      "translitKo": "미세오",
+      "note": ""
+    },
+    {
+      "strong": "G2455",
+      "lemma": "Ἰούδας",
+      "translit": "Ioúdas",
+      "translitKo": "이우다스",
+      "note": "유다(Judas) 관용 표기와 차이"
+    },
+    {
+      "strong": "G3419",
+      "lemma": "μνημεῖον",
+      "translit": "mnēmeîon",
+      "translitKo": "므네메이온",
+      "note": ""
+    },
+    {
+      "strong": "H2983",
+      "lemma": "יְבוּסִי",
+      "translit": "yebûsî",
+      "translitKo": "예부시",
+      "note": "여부스(Jebusite) 관용 표기와 차이"
+    },
+    {
+      "strong": "H8098",
+      "lemma": "שְׁמַעְיָה",
+      "translit": "šemaʿyāh",
+      "translitKo": "셰마야",
+      "note": "스마야(Shemaiah) 관용 표기와 차이. ʿ는 한글 표기에서 생략."
+    },
+    {
+      "strong": "H7264",
+      "lemma": "רָגַז",
+      "translit": "rāgaz",
+      "translitKo": "라가즈",
+      "note": ""
+    },
+    {
+      "strong": "H268",
+      "lemma": "אָחוֹר",
+      "translit": "ʾāḥôr",
+      "translitKo": "아호르",
+      "note": ""
+    },
+    {
+      "strong": "H2778",
+      "lemma": "חָרַף",
+      "translit": "ḥārap",
+      "translitKo": "하라프",
+      "note": ""
+    },
+    {
+      "strong": "H553",
+      "lemma": "אָמַץ",
+      "translit": "ʾāmaṣ",
+      "translitKo": "아마츠",
+      "note": ""
+    },
+    {
+      "strong": "H8252",
+      "lemma": "שָׁקַט",
+      "translit": "šāqaṭ",
+      "translitKo": "샤카트",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,707 @@
+{
+  "shard": "M",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H3515",
+      "lemma": "כָּבֵד",
+      "translit": "kābēd",
+      "translitKo": "카베드",
+      "note": ""
+    },
+    {
+      "strong": "H6586",
+      "lemma": "פָּשַׁע",
+      "translit": "pāšaʿ",
+      "translitKo": "파샤",
+      "note": ""
+    },
+    {
+      "strong": "H1364",
+      "lemma": "גָּבֹהַּ",
+      "translit": "gābōah",
+      "translitKo": "가보아",
+      "note": "어말 ה(맙픽) 앞 furtive patach를 아로 적었다. ח(ḥ)와 달리 ה는 한글로 따로 적지 않아 미즈베아흐→에아흐 식의 흐를 붙이지 않는다."
+    },
+    {
+      "strong": "H3985",
+      "lemma": "מָאֵן",
+      "translit": "māʾēn",
+      "translitKo": "마엔",
+      "note": ""
+    },
+    {
+      "strong": "H6663",
+      "lemma": "צָדַק",
+      "translit": "ṣādaq",
+      "translitKo": "차다크",
+      "note": ""
+    },
+    {
+      "strong": "H1537",
+      "lemma": "גִּלְגָּל",
+      "translit": "gilgāl",
+      "translitKo": "길갈",
+      "note": "고유명사지만 학술 표기와 관용 표기(길갈)가 같다."
+    },
+    {
+      "strong": "H3176",
+      "lemma": "יָחַל",
+      "translit": "yāḥal",
+      "translitKo": "야할",
+      "note": ""
+    },
+    {
+      "strong": "H2550",
+      "lemma": "חָמַל",
+      "translit": "ḥāmal",
+      "translitKo": "하말",
+      "note": ""
+    },
+    {
+      "strong": "H693",
+      "lemma": "אָרַב",
+      "translit": "ʾārab",
+      "translitKo": "아라브",
+      "note": ""
+    },
+    {
+      "strong": "H4611",
+      "lemma": "מַעֲלָל",
+      "translit": "maʿălāl",
+      "translitKo": "마알랄",
+      "note": ""
+    },
+    {
+      "strong": "H2740",
+      "lemma": "חָרוֹן",
+      "translit": "ḥārôn",
+      "translitKo": "하론",
+      "note": ""
+    },
+    {
+      "strong": "H238",
+      "lemma": "אָזַן",
+      "translit": "ʾāzan",
+      "translitKo": "아잔",
+      "note": ""
+    },
+    {
+      "strong": "H8336",
+      "lemma": "שֵׁשׁ",
+      "translit": "šēš",
+      "translitKo": "셰쉬",
+      "note": ""
+    },
+    {
+      "strong": "G3618",
+      "lemma": "οἰκοδομέω",
+      "translit": "oikodoméō",
+      "translitKo": "오이코도메오",
+      "note": ""
+    },
+    {
+      "strong": "G5293",
+      "lemma": "ὑποτάσσω",
+      "translit": "hypotássō",
+      "translitKo": "휘포타소",
+      "note": "υ를 위로 적는 원칙(휘오스·귀네 선례)을 따라 휘포타소로 적었다. 관용은 히포타소."
+    },
+    {
+      "strong": "G4105",
+      "lemma": "πλανάω",
+      "translit": "planáō",
+      "translitKo": "플라나오",
+      "note": ""
+    },
+    {
+      "strong": "G2374",
+      "lemma": "θύρα",
+      "translit": "thýra",
+      "translitKo": "튀라",
+      "note": "υ를 위로 적는 원칙에 따랐다. 관용은 두라/티라."
+    },
+    {
+      "strong": "G2090",
+      "lemma": "ἑτοιμάζω",
+      "translit": "hetoimázō",
+      "translitKo": "헤토이마조",
+      "note": ""
+    },
+    {
+      "strong": "G681",
+      "lemma": "ἅπτω",
+      "translit": "háptō",
+      "translitKo": "합토",
+      "note": "π가 자음 τ 앞에서 받침 ㅂ이 된다(안트로포스의 ν→ㄴ과 같은 처리)."
+    },
+    {
+      "strong": "G2799",
+      "lemma": "κλαίω",
+      "translit": "klaíō",
+      "translitKo": "클라이오",
+      "note": ""
+    },
+    {
+      "strong": "G4263",
+      "lemma": "πρόβατον",
+      "translit": "próbaton",
+      "translitKo": "프로바톤",
+      "note": ""
+    },
+    {
+      "strong": "H5654",
+      "lemma": "עֹבֵד אֱדוֹם",
+      "translit": "ʿōbēd ʾĕdôm",
+      "translitKo": "오베드 에돔",
+      "note": "관용 표기는 오벧에돔. 학술 표기를 표제로 두고 두 낱말을 띄어 적었다."
+    },
+    {
+      "strong": "H558",
+      "lemma": "אֲמַצְיָה",
+      "translit": "ʾămaṣyâ",
+      "translitKo": "아마츠야",
+      "note": "관용 표기는 아마샤. צ를 츠로 적는 원칙(미츠라임)을 따랐다."
+    },
+    {
+      "strong": "H842",
+      "lemma": "אֲשֵׁרָה",
+      "translit": "ʾăšērâ",
+      "translitKo": "아셰라",
+      "note": "관용 표기는 아세라. שׁ가 음절 첫소리라 셰로 적었다."
+    },
+    {
+      "strong": "H4709",
+      "lemma": "מִצְפָּה",
+      "translit": "miṣpâ",
+      "translitKo": "미츠파",
+      "note": "관용 표기는 미스바."
+    },
+    {
+      "strong": "H1280",
+      "lemma": "בְּרִיחַ",
+      "translit": "bĕrîaḥ",
+      "translitKo": "베리아흐",
+      "note": "어말 ח 앞 furtive patach를 아로 적고 ח는 흐로 적었다(미즈베아흐 선례)."
+    },
+    {
+      "strong": "H6763",
+      "lemma": "צֵלָע",
+      "translit": "ṣēlāʿ",
+      "translitKo": "첼라",
+      "note": ""
+    },
+    {
+      "strong": "H5203",
+      "lemma": "נָטַשׁ",
+      "translit": "nāṭaš",
+      "translitKo": "나타쉬",
+      "note": ""
+    },
+    {
+      "strong": "H5128",
+      "lemma": "נוּעַ",
+      "translit": "nûaʿ",
+      "translitKo": "누아",
+      "note": "어말 ע 앞 furtive patach를 아로 적었다."
+    },
+    {
+      "strong": "H374",
+      "lemma": "אֵיפָה",
+      "translit": "ʾêpâ",
+      "translitKo": "에파",
+      "note": "관용 표기는 에바. פ에 다게쉬가 없어 ㅍ로 적었다."
+    },
+    {
+      "strong": "H1589",
+      "lemma": "גָּנַב",
+      "translit": "gānab",
+      "translitKo": "가나브",
+      "note": ""
+    },
+    {
+      "strong": "H1715",
+      "lemma": "דָּגָן",
+      "translit": "dāgān",
+      "translitKo": "다간",
+      "note": ""
+    },
+    {
+      "strong": "H2717",
+      "lemma": "חָרַב",
+      "translit": "ḥārab",
+      "translitKo": "하라브",
+      "note": ""
+    },
+    {
+      "strong": "H6833",
+      "lemma": "צִפּוֹר",
+      "translit": "ṣippôr",
+      "translitKo": "치포르",
+      "note": ""
+    },
+    {
+      "strong": "H5857",
+      "lemma": "עַי",
+      "translit": "ʿay",
+      "translitKo": "아이",
+      "note": "고유명사지만 학술 표기와 관용 표기(아이)가 같다."
+    },
+    {
+      "strong": "G4052",
+      "lemma": "περισσεύω",
+      "translit": "perisseúō",
+      "translitKo": "페리슈오",
+      "note": "-εύω의 ευ를 휴리스코(εὑρίσκω) 선례와 같은 방식으로 σεύ→슈로 적었다."
+    },
+    {
+      "strong": "G1344",
+      "lemma": "δικαιόω",
+      "translit": "dikaióō",
+      "translitKo": "디카이오오",
+      "note": ""
+    },
+    {
+      "strong": "G4238",
+      "lemma": "πράσσω",
+      "translit": "prássō",
+      "translitKo": "프라소",
+      "note": ""
+    },
+    {
+      "strong": "G2007",
+      "lemma": "ἐπιτίθημι",
+      "translit": "epitíthēmi",
+      "translitKo": "에피티테미",
+      "note": ""
+    },
+    {
+      "strong": "H8435",
+      "lemma": "תּוֹלְדָה",
+      "translit": "tôlĕdâ",
+      "translitKo": "톨레다",
+      "note": ""
+    },
+    {
+      "strong": "H6002",
+      "lemma": "עֲמָלֵק",
+      "translit": "ʿămālēq",
+      "translitKo": "아말레크",
+      "note": "관용 표기는 아말렉."
+    },
+    {
+      "strong": "H8165",
+      "lemma": "שֵׂעִיר",
+      "translit": "śēʿîr",
+      "translitKo": "세이르",
+      "note": "관용 표기는 세일. שׂ(ś)는 ㅅ로, ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H4631",
+      "lemma": "מְעָרָה",
+      "translit": "mĕʿārâ",
+      "translitKo": "메아라",
+      "note": ""
+    },
+    {
+      "strong": "H223",
+      "lemma": "אוּרִיָּה",
+      "translit": "ʾûrîyâ",
+      "translitKo": "우리야",
+      "note": "관용 표기는 우리아."
+    },
+    {
+      "strong": "H6950",
+      "lemma": "קָהַל",
+      "translit": "qāhal",
+      "translitKo": "카할",
+      "note": ""
+    },
+    {
+      "strong": "H7157",
+      "lemma": "קִרְיַת יְעָרִים",
+      "translit": "qiryat yĕʿārîm",
+      "translitKo": "키르얏 예아림",
+      "note": "관용 표기는 기럇여아림. 합성 지명이라 두 낱말을 띄어 적었다."
+    },
+    {
+      "strong": "H3470",
+      "lemma": "יְשַׁעְיָה",
+      "translit": "yĕšaʿyâ",
+      "translitKo": "예샤야",
+      "note": "관용 표기는 이사야. 히브리어 표제형을 그대로 옮기면 예샤야다."
+    },
+    {
+      "strong": "H56",
+      "lemma": "אָבַל",
+      "translit": "ʾābal",
+      "translitKo": "아발",
+      "note": ""
+    },
+    {
+      "strong": "H2729",
+      "lemma": "חָרַד",
+      "translit": "ḥārad",
+      "translitKo": "하라드",
+      "note": ""
+    },
+    {
+      "strong": "H2656",
+      "lemma": "חֵפֶץ",
+      "translit": "ḥēpeṣ",
+      "translitKo": "헤페츠",
+      "note": ""
+    },
+    {
+      "strong": "H5148",
+      "lemma": "נָחָה",
+      "translit": "nāḥâ",
+      "translitKo": "나하",
+      "note": ""
+    },
+    {
+      "strong": "H2219",
+      "lemma": "זָרָה",
+      "translit": "zārâ",
+      "translitKo": "자라",
+      "note": ""
+    },
+    {
+      "strong": "H8384",
+      "lemma": "תְּאֵן",
+      "translit": "tĕʾēn",
+      "translitKo": "테엔",
+      "note": ""
+    },
+    {
+      "strong": "H4912",
+      "lemma": "מָשָׁל",
+      "translit": "māšāl",
+      "translitKo": "마샬",
+      "note": "두 번째 שׁ가 음절 첫소리라 샤로 적었다(쉬 아님)."
+    },
+    {
+      "strong": "H926",
+      "lemma": "בָּהַל",
+      "translit": "bāhal",
+      "translitKo": "바할",
+      "note": ""
+    },
+    {
+      "strong": "H8047",
+      "lemma": "שַׁמָּה",
+      "translit": "šammâ",
+      "translitKo": "샤마",
+      "note": ""
+    },
+    {
+      "strong": "H4820",
+      "lemma": "מִרְמָה",
+      "translit": "mirmâ",
+      "translitKo": "미르마",
+      "note": ""
+    },
+    {
+      "strong": "H5467",
+      "lemma": "סְדֹם",
+      "translit": "sĕdōm",
+      "translitKo": "세돔",
+      "note": "관용 표기는 소돔."
+    },
+    {
+      "strong": "H1439",
+      "lemma": "גִּדְעוֹן",
+      "translit": "gidʿôn",
+      "translitKo": "기드온",
+      "note": "고유명사지만 학술 표기와 관용 표기(기드온)가 같다."
+    },
+    {
+      "strong": "G2168",
+      "lemma": "εὐχαριστέω",
+      "translit": "eucharistéō",
+      "translitKo": "유카리스테오",
+      "note": "어두 εὐ를 휴리스코(εὑρίσκω) 선례와 같은 방식으로 유로 적었다. 관용은 에우카리스테오."
+    },
+    {
+      "strong": "G2744",
+      "lemma": "καυχάομαι",
+      "translit": "kaucháomai",
+      "translitKo": "카우카오마이",
+      "note": "αυ는 ευ와 달리 아우로 적는다(아우토스 선례)."
+    },
+    {
+      "strong": "G3854",
+      "lemma": "παραγίνομαι",
+      "translit": "paragínomai",
+      "translitKo": "파라기노마이",
+      "note": ""
+    },
+    {
+      "strong": "G1939",
+      "lemma": "ἐπιθυμία",
+      "translit": "epithymía",
+      "translitKo": "에피튀미아",
+      "note": "υ를 위로 적는 원칙에 따랐다."
+    },
+    {
+      "strong": "G5376",
+      "lemma": "Φίλιππος",
+      "translit": "Phílippos",
+      "translitKo": "필리포스",
+      "note": "관용 표기는 빌립. φ는 ㅍ, ππ는 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "H998",
+      "lemma": "בִּינָה",
+      "translit": "bînâ",
+      "translitKo": "비나",
+      "note": ""
+    },
+    {
+      "strong": "H5035",
+      "lemma": "נֶבֶל",
+      "translit": "nebel",
+      "translitKo": "네벨",
+      "note": ""
+    },
+    {
+      "strong": "H1391",
+      "lemma": "גִּבְעוֹן",
+      "translit": "gibʿôn",
+      "translitKo": "기브온",
+      "note": "고유명사지만 학술 표기와 관용 표기(기브온)가 같다."
+    },
+    {
+      "strong": "H8084",
+      "lemma": "שְׁמֹנִים",
+      "translit": "šĕmōnîm",
+      "translitKo": "셰모님",
+      "note": ""
+    },
+    {
+      "strong": "H4131",
+      "lemma": "מוֹט",
+      "translit": "môṭ",
+      "translitKo": "모트",
+      "note": ""
+    },
+    {
+      "strong": "H4393",
+      "lemma": "מְלֹא",
+      "translit": "mĕlōʾ",
+      "translitKo": "멜로",
+      "note": ""
+    },
+    {
+      "strong": "H3637",
+      "lemma": "כָּלַם",
+      "translit": "kālam",
+      "translitKo": "칼람",
+      "note": ""
+    },
+    {
+      "strong": "H2764",
+      "lemma": "חֵרֶם",
+      "translit": "ḥērem",
+      "translitKo": "헤렘",
+      "note": ""
+    },
+    {
+      "strong": "H6696",
+      "lemma": "צוּר",
+      "translit": "ṣûr",
+      "translitKo": "추르",
+      "note": ""
+    },
+    {
+      "strong": "H2132",
+      "lemma": "זַיִת",
+      "translit": "zayit",
+      "translitKo": "자이트",
+      "note": ""
+    },
+    {
+      "strong": "H2315",
+      "lemma": "חֶדֶר",
+      "translit": "ḥeder",
+      "translitKo": "헤데르",
+      "note": ""
+    },
+    {
+      "strong": "H2809",
+      "lemma": "חֶשְׁבּוֹן",
+      "translit": "ḥešbôn",
+      "translitKo": "헤쉬본",
+      "note": "관용 표기는 헤스본."
+    },
+    {
+      "strong": "H2436",
+      "lemma": "חֵיק",
+      "translit": "ḥêq",
+      "translitKo": "헤크",
+      "note": ""
+    },
+    {
+      "strong": "H160",
+      "lemma": "אַהֲבָה",
+      "translit": "ʾahăbâ",
+      "translitKo": "아하바",
+      "note": ""
+    },
+    {
+      "strong": "H1767",
+      "lemma": "דַּי",
+      "translit": "day",
+      "translitKo": "다이",
+      "note": ""
+    },
+    {
+      "strong": "H3557",
+      "lemma": "כּוּל",
+      "translit": "kûl",
+      "translitKo": "쿨",
+      "note": ""
+    },
+    {
+      "strong": "H5739",
+      "lemma": "עֵדֶר",
+      "translit": "ʿēder",
+      "translitKo": "에데르",
+      "note": ""
+    },
+    {
+      "strong": "H713",
+      "lemma": "אַרְגָּמָן",
+      "translit": "ʾargāmān",
+      "translitKo": "아르가만",
+      "note": ""
+    },
+    {
+      "strong": "H8492",
+      "lemma": "תִּירוֹשׁ",
+      "translit": "tîrôš",
+      "translitKo": "티로쉬",
+      "note": ""
+    },
+    {
+      "strong": "H875",
+      "lemma": "בְּאֵר",
+      "translit": "bĕʾēr",
+      "translitKo": "베에르",
+      "note": ""
+    },
+    {
+      "strong": "H4405",
+      "lemma": "מִלָּה",
+      "translit": "millâ",
+      "translitKo": "밀라",
+      "note": ""
+    },
+    {
+      "strong": "H8065",
+      "lemma": "שָׁמַיִן",
+      "translit": "šāmayin",
+      "translitKo": "샤마인",
+      "note": "아람어 형태다. 히브리어 שָׁמַיִם(샤마임)과 같은 방식으로 적었다."
+    },
+    {
+      "strong": "H8283",
+      "lemma": "שָׂרָה",
+      "translit": "śārâ",
+      "translitKo": "사라",
+      "note": "고유명사지만 학술 표기와 관용 표기(사라)가 같다. שׂ(ś)는 ㅅ로 적었다."
+    },
+    {
+      "strong": "H8123",
+      "lemma": "שִׁמְשׁוֹן",
+      "translit": "šimšôn",
+      "translitKo": "심숀",
+      "note": "관용 표기는 삼손. 첫 שׁ는 음절 첫소리라 시, 뒤의 שׁ도 음절 첫소리라 쇼로 적었다."
+    },
+    {
+      "strong": "G1014",
+      "lemma": "βούλομαι",
+      "translit": "boúlomai",
+      "translitKo": "불로마이",
+      "note": ""
+    },
+    {
+      "strong": "G3775",
+      "lemma": "οὖς",
+      "translit": "oûs",
+      "translitKo": "우스",
+      "note": ""
+    },
+    {
+      "strong": "G758",
+      "lemma": "ἄρχων",
+      "translit": "árchōn",
+      "translitKo": "아르콘",
+      "note": ""
+    },
+    {
+      "strong": "G4567",
+      "lemma": "Σατανᾶς",
+      "translit": "Satanâs",
+      "translitKo": "사타나스",
+      "note": "관용 표기는 사탄. 헬라어 주격 어미 -ᾶς를 살려 적었다."
+    },
+    {
+      "strong": "G3141",
+      "lemma": "μαρτυρία",
+      "translit": "martyría",
+      "translitKo": "마르튀리아",
+      "note": "υ를 위로 적는 원칙에 따랐다."
+    },
+    {
+      "strong": "G1247",
+      "lemma": "διακονέω",
+      "translit": "diakonéō",
+      "translitKo": "디아코네오",
+      "note": ""
+    },
+    {
+      "strong": "G68",
+      "lemma": "ἀγρός",
+      "translit": "agrós",
+      "translitKo": "아그로스",
+      "note": ""
+    },
+    {
+      "strong": "H6370",
+      "lemma": "פִּילֶגֶשׁ",
+      "translit": "pîlegeš",
+      "translitKo": "필레게쉬",
+      "note": ""
+    },
+    {
+      "strong": "H7141",
+      "lemma": "קֹרַח",
+      "translit": "qōraḥ",
+      "translitKo": "코라흐",
+      "note": "관용 표기는 고라. ק를 ㅋ로, 어말 ח를 흐로 적었다."
+    },
+    {
+      "strong": "H6467",
+      "lemma": "פֹּעַל",
+      "translit": "pōʿal",
+      "translitKo": "포알",
+      "note": ""
+    },
+    {
+      "strong": "H2796",
+      "lemma": "חָרָשׁ",
+      "translit": "ḥārāš",
+      "translitKo": "하라쉬",
+      "note": ""
+    },
+    {
+      "strong": "H7778",
+      "lemma": "שׁוֹעֵר",
+      "translit": "šôʿēr",
+      "translitKo": "쇼에르",
+      "note": ""
+    }
+  ]
+}
