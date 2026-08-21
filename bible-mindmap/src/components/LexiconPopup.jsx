@@ -19,6 +19,13 @@ const DEFAULT_DESKTOP_WIDTH = 760;
 const DEFAULT_DESKTOP_HEIGHT = 620;
 const THREE_COLUMN_MIN_WIDTH = 720;
 
+// HOT가 일부 토큰에서 lemma를 생략하는 경우의 최소 원형 보정.
+// H0776 창 1:2는 וְ/הָ/אָ֗רֶץ만 제공하므로 접두사·관사를 제거한
+// 사전 원형 אֶרֶץ를 명시한다.
+const HEBREW_LEMMA_FALLBACKS = {
+  H776: 'אֶרֶץ',
+};
+
 function clampSize(width, height, vw, vh) {
   const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
   const maxH = Math.max(POPUP_MIN_HEIGHT, vh - POPUP_VIEWPORT_MARGIN * 2);
@@ -350,7 +357,11 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   // 일부 HOT 토큰은 활용형만 있고 `l`(lemma)이 없다. 이때 전체 어형을
   // 사전 원형으로 표시하면 접두사·관사까지 원형에 섞이므로 활성 사전의
   // 검증된 lemma를 먼저 사용한다.
-  const lexicalSource = entry.l || lexicalRecord?.lemma || entry.w || '';
+  const lexicalSource = entry.l
+    || lexicalRecord?.lemma
+    || (isHebrew ? HEBREW_LEMMA_FALLBACKS[normalizedStrong(entry.s)] : '')
+    || entry.w
+    || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
   const surfaceKoreanTranslit = resolveSurfaceKoreanTransliteration(entry.w, isHebrew);
