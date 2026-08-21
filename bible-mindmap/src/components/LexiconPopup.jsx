@@ -9,6 +9,7 @@ import { KOREAN_GLOSS_ACTIVE } from '../data/koreanGlossActive';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
 import { normalizeHebrewLexicalForm, normalizeHebrewSurfaceForm } from '../utils/hebrewLexicalForm';
 import { buildHebrewWordComposition, humanizeHebrewMorphCode } from '../utils/hebrewMorphologyDisplay';
+import { resolveSurfaceKoreanTransliteration } from '../utils/surfaceKoreanTransliteration';
 import './LexiconPopup.css';
 
 const POPUP_MIN_WIDTH = 340;
@@ -92,6 +93,11 @@ function resolveKoreanTransliteration(entry) {
   const record = (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
   if (!record?.translitKo || record.review === false) return null;
   return record.translitKo;
+}
+
+function resolveLexicalRecord(entry) {
+  const key = normalizedStrong(entry?.s);
+  return (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
 }
 
 // 한글 음역은 학술(SBL) 표기를 기본으로 삼는다. 낱말에 따라 다른 표기가 통용되기도
@@ -343,6 +349,8 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const lexicalSource = entry.l || entry.w || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
+  const surfaceKoreanTranslit = resolveSurfaceKoreanTransliteration(entry.w, isHebrew);
+  const lexicalRecord = resolveLexicalRecord(entry);
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
   const strongHref = externalStrongHref(entry.s, isHebrew);
@@ -361,20 +369,22 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const metaCells = [
     ['Strong', entry.s || '—'],
     ['Lemma', lemma || '—'],
-    ['Academic translit.', entry.tr || '—'],
-    ['한글 음역', koreanTranslit || '검토 대기'],
+    ['어형 학술 음역', entry.tr || '—'],
+    ['어형 한글 음역', surfaceKoreanTranslit || '검토 대기'],
     ['Part of speech', partOfSpeech],
   ];
 
   const leftFields = [
-    ['사전형', lemma],
-    ['학술 음역 (SBL)', entry.tr],
-    ...(koreanTranslit ? [
-      ['한글 음역', koreanTranslit],
+    ['사전 원형', lemma],
+    ['원형 학술 음역 (SBL)', lexicalRecord?.translit],
+    ['원형 한글 음역', koreanTranslit],
+    ['실제 어형', surfaceForm],
+    ['어형 학술 음역 (SBL)', entry.tr],
+    ...(surfaceKoreanTranslit ? [
+      ['어형 한글 음역', surfaceKoreanTranslit],
       ['표기 기준', 'SBL 학술 음역 / 검토 완료 한글 음역 병기'],
     ] : []),
     ...morphFields.map((field) => [field.label, field.value]),
-    ['실제 어형', surfaceForm],
     ['TWOT', definition?.meta?.twot],
   ].filter(([, value]) => value);
 
@@ -402,7 +412,8 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`} data-testid="popup-headword">{lemma}</div>
           <div className="lexicon-title-translit">
             {entry.tr && <span>{entry.tr}</span>}
-            {koreanTranslit && <><span className="lexicon-dot">·</span><span>한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
+            {lexicalRecord?.translit && <><span className="lexicon-dot">·</span><span>원형 학술 음역: {lexicalRecord.translit}</span></>}
+            {koreanTranslit && <><span className="lexicon-dot">·</span><span>원형 한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
             {entry.s && <><span className="lexicon-dot">·</span><span>{entry.s}</span></>}
           </div>
           <span className="lexicon-source-badge">Source: <span data-testid="popup-source-badge">{isHebrew ? 'BDB' : "Strong's"}</span></span>
@@ -446,7 +457,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {leftFields.map(([label, value]) => (
                 <div className="lexicon-side-field" key={`${label}-${String(value)}`}>
                   <dt>{label}</dt>
-                  <dd className={isHebrew && (label === '사전형' || label === '실제 어형') ? 'is-hebrew' : ''}>{value}</dd>
+                  <dd className={isHebrew && (label === '사전 원형' || label === '실제 어형') ? 'is-hebrew' : ''}>{value}</dd>
                 </div>
               ))}
             </dl>
@@ -539,10 +550,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               </div>
 
               <div className="lexicon-morph-grid">
-                <MorphCard label="사전형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
+                <MorphCard label="사전 원형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
                 <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
-                {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
-                {entry.tr && <MorphCard label="학술 음역">{entry.tr}</MorphCard>}
+                {lexicalRecord?.translit && <MorphCard label="원형 학술 음역">{lexicalRecord.translit}</MorphCard>}
+                {koreanTranslit && <MorphCard label="원형 한글 음역">{koreanTranslit}</MorphCard>}
+                {entry.tr && <MorphCard label="어형 학술 음역">{entry.tr}</MorphCard>}
+                {surfaceKoreanTranslit && <MorphCard label="어형 한글 음역">{surfaceKoreanTranslit}</MorphCard>}
                 <MorphCard label="품사">{partOfSpeech}</MorphCard>
                 <MorphCard label="문법 분석"><span data-testid="morph-humanized">{fullMorphHuman || '—'}</span></MorphCard>
               </div>
