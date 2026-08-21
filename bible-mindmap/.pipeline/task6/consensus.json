@@ -1,0 +1,3052 @@
+{
+  "batchId": "top-frequency-batch-02",
+  "totals": {
+    "input": 245,
+    "agreed": 177,
+    "disputed": 68
+  },
+  "shards": [
+    {
+      "shard": "A",
+      "items": 49,
+      "p1": {
+        "slug": "A-gem31pro",
+        "missing": false,
+        "count": 49
+      },
+      "p2": {
+        "slug": "A-claudeopus5",
+        "missing": false,
+        "count": 49
+      },
+      "agree": 49,
+      "disagree": 0,
+      "missing": 0
+    },
+    {
+      "shard": "B",
+      "items": 49,
+      "p1": {
+        "slug": "B-gem31pro",
+        "missing": false,
+        "count": 49
+      },
+      "p2": {
+        "slug": "B-agyopus46",
+        "missing": false,
+        "count": 49
+      },
+      "agree": 23,
+      "disagree": 26,
+      "missing": 0
+    },
+    {
+      "shard": "C",
+      "items": 49,
+      "p1": {
+        "slug": "C-gem37flash",
+        "missing": false,
+        "count": 49
+      },
+      "p2": {
+        "slug": "C-claudeopus5",
+        "missing": false,
+        "count": 49
+      },
+      "agree": 45,
+      "disagree": 4,
+      "missing": 0
+    },
+    {
+      "shard": "D",
+      "items": 49,
+      "p1": {
+        "slug": "D-gem31pro",
+        "missing": false,
+        "count": 49
+      },
+      "p2": {
+        "slug": "D-agysonnet46",
+        "missing": false,
+        "count": 49
+      },
+      "agree": 30,
+      "disagree": 19,
+      "missing": 0
+    },
+    {
+      "shard": "E",
+      "items": 49,
+      "p1": {
+        "slug": "E-gem37flash",
+        "missing": false,
+        "count": 49
+      },
+      "p2": {
+        "slug": "E-agyopus46",
+        "missing": false,
+        "count": 49
+      },
+      "agree": 30,
+      "disagree": 19,
+      "missing": 0
+    }
+  ],
+  "agreed": [
+    {
+      "shard": "A",
+      "strong": "H4191",
+      "lemma": "מוּת",
+      "translit": "mût",
+      "translitKo": "무트",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H3063",
+      "lemma": "יְהוּדָה",
+      "translit": "yəhûdâ",
+      "translitKo": "예후다",
+      "note": "관용 표기 '유다'와 차이",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H398",
+      "lemma": "אָכַל",
+      "translit": "ʾākal",
+      "translitKo": "아칼",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5650",
+      "lemma": "עֶבֶד",
+      "translit": "ʿebed",
+      "translitKo": "에베드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H369",
+      "lemma": "אַיִן",
+      "translit": "ʾayin",
+      "translitKo": "아인",
+      "note": "알레프로 시작하는 이 낱말(ʾayin, 없음)은 H5869 עַ֫יִן(ʿayin, 눈)과 한글로는 똑같이 아인이 된다. 라틴 표기의 ʾ/ʿ로만 구별된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H802",
+      "lemma": "אִשָּׁה",
+      "translit": "ʾiššâ",
+      "translitKo": "잇샤",
+      "note": "다게시로 겹친 שּׁ(šš)를 받침 ㅅ으로 살려 잇샤로 적는다. 겹침을 살리지 않는 이샤 표기도 쓰인다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H8147",
+      "lemma": "שְׁנַיִם",
+      "translit": "šənayim",
+      "translitKo": "셰나임",
+      "note": "유성 셰바(šə-)를 아셰르(אֲשֶׁר)와 같은 계열로 보아 셰로 적는다. 쉬나임 표기도 쓰인다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H4872",
+      "lemma": "מֹשֶׁה",
+      "translit": "mōšeh",
+      "translitKo": "모셰",
+      "note": "관용 표기 '모세'와 차이",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5315",
+      "lemma": "נֶפֶשׁ",
+      "translit": "nepeš",
+      "translitKo": "네페쉬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H310",
+      "lemma": "אַחַר",
+      "translit": "ʾaḥar",
+      "translitKo": "아하르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H1870",
+      "lemma": "דֶּרֶךְ",
+      "translit": "derek",
+      "translitKo": "데레크",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H7451",
+      "lemma": "רַע",
+      "translit": "raʿ",
+      "translitKo": "라",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5375",
+      "lemma": "נָשָׂא",
+      "translit": "nāśāʾ",
+      "translitKo": "나사",
+      "note": "שׂ는 ś(사)이지 š(샤)가 아니다. 나샤로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H3389",
+      "lemma": "יְרוּשָׁלַ͏ִם",
+      "translit": "yərûšālaim",
+      "translitKo": "예루샬라임",
+      "note": "관용 표기 '예루살렘'과 차이",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H4714",
+      "lemma": "מִצְרַיִם",
+      "translit": "miṣrayim",
+      "translitKo": "미츠라임",
+      "note": "관용 표기 '애굽'과 차이",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H251",
+      "lemma": "אָח",
+      "translit": "ʾāḥ",
+      "translitKo": "아흐",
+      "note": "어말 ח(ḥ)를 루아흐(רוּחַ)와 같이 흐로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6965",
+      "lemma": "קוּם",
+      "translit": "qûm",
+      "translitKo": "쿰",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H7218",
+      "lemma": "רֹאשׁ",
+      "translit": "rōʾš",
+      "translitKo": "로쉬",
+      "note": "중간의 א(ʾ)는 소리 나지 않아 한글로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H3820",
+      "lemma": "לֵב",
+      "translit": "lēb",
+      "translitKo": "레브",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H1323",
+      "lemma": "בַּת",
+      "translit": "bat",
+      "translitKo": "바트",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H7760",
+      "lemma": "שׂוּם",
+      "translit": "śûm",
+      "translitKo": "숨",
+      "note": "שׂ는 ś(수)이지 š(슈)가 아니다. 슘으로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H3967",
+      "lemma": "מֵאָה",
+      "translit": "mēʾâ",
+      "translitKo": "메아",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H1471",
+      "lemma": "גּוֹי",
+      "translit": "gôy",
+      "translitKo": "고이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H582",
+      "lemma": "אֱנוֹשׁ",
+      "translit": "ʾĕnôš",
+      "translitKo": "에노쉬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5674",
+      "lemma": "עָבַר",
+      "translit": "ʿābar",
+      "translitKo": "아바르",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H120",
+      "lemma": "אָדָם",
+      "translit": "ʾādām",
+      "translitKo": "아담",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H2896",
+      "lemma": "טוֹב",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H1419",
+      "lemma": "גָּדוֹל",
+      "translit": "gādôl",
+      "translitKo": "가돌",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5975",
+      "lemma": "עָמַד",
+      "translit": "ʿāmad",
+      "translitKo": "아마드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6963",
+      "lemma": "קוֹל",
+      "translit": "qôl",
+      "translitKo": "콜",
+      "note": "H3605 כֹּל(kōl, 모두)과 한글로는 똑같이 콜이 된다. 라틴 표기의 q/k로만 구별된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H505",
+      "lemma": "אֶלֶף",
+      "translit": "ʾelep",
+      "translitKo": "엘레프",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H8478",
+      "lemma": "תַּחַת",
+      "translit": "taḥat",
+      "translitKo": "타하트",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5221",
+      "lemma": "נָכָה",
+      "translit": "nākâ",
+      "translitKo": "나카",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6310",
+      "lemma": "פֶּה",
+      "translit": "peh",
+      "translitKo": "페",
+      "note": "어말 ה(h)는 소리 나지 않아 한글로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H2416",
+      "lemma": "חַי",
+      "translit": "ḥay",
+      "translitKo": "하이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H3205",
+      "lemma": "יָלַד",
+      "translit": "yālad",
+      "translitKo": "얄라드",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6680",
+      "lemma": "צָוָה",
+      "translit": "ṣāwâ",
+      "translitKo": "차와",
+      "note": "ו를 성서 히브리어의 w로 읽어 차와로 적는다. 현대 히브리어 발음(v)을 따르면 차바가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5750",
+      "lemma": "עוֹד",
+      "translit": "ʿôd",
+      "translitKo": "오드",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6635",
+      "lemma": "צָבָא",
+      "translit": "ṣābāʾ",
+      "translitKo": "차바",
+      "note": "어말 א(ʾ)는 소리 나지 않아 한글로 적지 않는다. 복수 연계형 צְבָאוֹת는 츠바오트(만군)로 굳어 있다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H6944",
+      "lemma": "קֹדֶשׁ",
+      "translit": "qōdeš",
+      "translitKo": "코데쉬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H8104",
+      "lemma": "שָׁמַר",
+      "translit": "šāmar",
+      "translitKo": "샤마르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H4672",
+      "lemma": "מָצָא",
+      "translit": "māṣāʾ",
+      "translitKo": "마차",
+      "note": "어말 א(ʾ)는 소리 나지 않아 한글로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H7227",
+      "lemma": "רַב",
+      "translit": "rab",
+      "translitKo": "라브",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H136",
+      "lemma": "אֲדֹנָי",
+      "translit": "ʾădōnāy",
+      "translitKo": "아도나이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5769",
+      "lemma": "עוֹלָם",
+      "translit": "ʿôlām",
+      "translitKo": "올람",
+      "note": "ע는 한글로 따로 적지 않음",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H5307",
+      "lemma": "נָפַל",
+      "translit": "nāpal",
+      "translitKo": "나팔",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H7969",
+      "lemma": "שָׁלוֹשׁ",
+      "translit": "šālôš",
+      "translitKo": "샬로쉬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H8269",
+      "lemma": "שַׂר",
+      "translit": "śar",
+      "translitKo": "사르",
+      "note": "שׂ는 ś(사)이지 š(샤)가 아니다. 샤르로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "A",
+      "strong": "H8432",
+      "lemma": "תָּוֶךְ",
+      "translit": "tāwek",
+      "translitKo": "타웨크",
+      "note": "ו를 성서 히브리어의 w로 읽어 타웨크로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H4725",
+      "lemma": "מָקוֹם",
+      "translit": "māqôm",
+      "translitKo": "마콤",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H4196",
+      "lemma": "מִזְבֵּחַ",
+      "translit": "mizbēaḥ",
+      "translitKo": "미즈베아흐",
+      "note": "어말 후음 앞의 a는 furtive patach(숨은 파타흐)로 발음 순서에 따라 아흐로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H1129",
+      "lemma": "בָּנָה",
+      "translit": "bānâ",
+      "translitKo": "바나",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "G80",
+      "lemma": "ἀδελφός",
+      "translit": "adelphós",
+      "translitKo": "아델포스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H4427",
+      "lemma": "מָלַךְ",
+      "translit": "mālak",
+      "translitKo": "말라크",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H175",
+      "lemma": "אַהֲרוֹן",
+      "translit": "ʾahărôn",
+      "translitKo": "아하론",
+      "note": "관용 표기는 아론이나, 후음 h와 모음 ă를 반영하여 학술 표기 아하론을 표제로 한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H168",
+      "lemma": "אֹהֶל",
+      "translit": "ʾōhel",
+      "translitKo": "오헬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H6240",
+      "lemma": "עָשָׂר",
+      "translit": "ʿāśār",
+      "translitKo": "아사르",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H6030",
+      "lemma": "עָנָה",
+      "translit": "ʿānâ",
+      "translitKo": "아나",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H1288",
+      "lemma": "בָרַךְ",
+      "translit": "bārak",
+      "translitKo": "바라크",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H4421",
+      "lemma": "מִלְחָמָה",
+      "translit": "milḥāmâ",
+      "translitKo": "밀하마",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H702",
+      "lemma": "אַרְבַּע",
+      "translit": "ʾarbaʿ",
+      "translitKo": "아르바",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H3372",
+      "lemma": "יָרֵא",
+      "translit": "yārēʾ",
+      "translitKo": "야레",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H6242",
+      "lemma": "עֶשְׂרִים",
+      "translit": "ʿeśrîm",
+      "translitKo": "에스림",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H3069",
+      "lemma": "יְהֹוִה",
+      "translit": "yĕhōwih",
+      "translitKo": "예호위",
+      "note": "신명을 엘로힘으로 대독할 때의 모음 부호가 붙은 형태다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H5493",
+      "lemma": "סוּר",
+      "translit": "sûr",
+      "translitKo": "수르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "G2980",
+      "lemma": "λαλέω",
+      "translit": "laléō",
+      "translitKo": "랄레오",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H2388",
+      "lemma": "חָזַק",
+      "translit": "ḥāzaq",
+      "translitKo": "하자크",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H3881",
+      "lemma": "לֵוִיִּי",
+      "translit": "lēwiyyî",
+      "translitKo": "레위이",
+      "note": "관용 표기는 레위인이나 학술 표기는 레위이를 따른다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H5930",
+      "lemma": "עֹלָה",
+      "translit": "ʿōlâ",
+      "translitKo": "올라",
+      "note": "후음 ʿ는 한글로 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "G6063",
+      "lemma": "εἴδω",
+      "translit": "eídō",
+      "translitKo": "에이도",
+      "note": "G1492(εἴδω)의 변형 Strong 번호다. 음역은 동일하게 에이도로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "H2421",
+      "lemma": "חָיָה",
+      "translit": "ḥāyâ",
+      "translitKo": "하야",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "B",
+      "strong": "G3772",
+      "lemma": "οὐρανός",
+      "translit": "ouranós",
+      "translitKo": "우라노스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H639",
+      "lemma": "אַף",
+      "translit": "ʾap",
+      "translitKo": "아프",
+      "note": "어말 페(ף)를 독립 음절로 적으면 아프, 받침으로 적으면 압이 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H6629",
+      "lemma": "צֹאן",
+      "translit": "ṣōʾn",
+      "translitKo": "촌",
+      "note": "묵음 알레프(א)를 반영하지 않고 발음대로 적으면 촌, 철자대로 음절을 나누면 초안이 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H6547",
+      "lemma": "פַּרְעֹה",
+      "translit": "parʿōh",
+      "translitKo": "파르오",
+      "note": "학술 표기는 파르오다. 한국어 성경(개역개정 등)은 바로로 번역한다. 이집트어 페르아아(pr-ꜥꜣ)에서 유래한 히브리어 음역이다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H68",
+      "lemma": "אֶבֶן",
+      "translit": "ʾeben",
+      "translitKo": "에벤",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H1320",
+      "lemma": "בָּשָׂר",
+      "translit": "bāśār",
+      "translitKo": "바사르",
+      "note": "שׂ(ś)는 ㅅ으로 적어 שׁ(š, '쉬/시')와 구분한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G3101",
+      "lemma": "μαθητής",
+      "translit": "mathētḗs",
+      "translitKo": "마테테스",
+      "note": "세타(θ)를 무성음 ㅌ로 적으면 마테테스, 유성음 ㄷ로 적으면 마데테스가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G2983",
+      "lemma": "λαμβάνω",
+      "translit": "lambánō",
+      "translitKo": "람바노",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H7563",
+      "lemma": "רָשָׁע",
+      "translit": "rāšāʿ",
+      "translitKo": "라샤",
+      "note": "어말 ע는 한글로 적지 않는 것이 기본이다(שָׁמַע→샤마와 같은 꼴).",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G1093",
+      "lemma": "γῆ",
+      "translit": "gē",
+      "translitKo": "게",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H3824",
+      "lemma": "לֵבָב",
+      "translit": "lēbāb",
+      "translitKo": "레바브",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H4390",
+      "lemma": "מָלֵא",
+      "translit": "mālēʾ",
+      "translitKo": "말레",
+      "note": "어말 알레프(א)는 묵음이며, 라메드(ל)의 자음 [l]을 살려 말레로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G611",
+      "lemma": "ἀποκρίνομαι",
+      "translit": "apokrínomai",
+      "translitKo": "아포크리노마이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H520",
+      "lemma": "אַמָּה",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "note": "멤(מ)의 다게쉬(중복음)를 반영해 암마로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H2617",
+      "lemma": "חֵסֵד",
+      "translit": "ḥēsēd",
+      "translitKo": "헤세드",
+      "note": "입력 lemma가 체레(ֵ) 점형이라 ḥēsēd로 적었다. 통용 점형 חֶסֶד(ḥesed)와 한글 표기는 '헤세드'로 같다. ח는 ㅎ으로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H2428",
+      "lemma": "חַיִל",
+      "translit": "ḥayil",
+      "translitKo": "하일",
+      "note": "기존 표기 עַיִן→아인과 같은 꼴로 맞췄다. ח는 ㅎ으로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G4100",
+      "lemma": "πιστεύω",
+      "translit": "pisteúō",
+      "translitKo": "피스테우오",
+      "note": "이중모음 ευ(eu) 뒤에 모음이 오므로 학술 표기 원칙에 따라 피스테우오로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H7272",
+      "lemma": "רֶגֶל",
+      "translit": "regel",
+      "translitKo": "레겔",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G4102",
+      "lemma": "πίστις",
+      "translit": "pístis",
+      "translitKo": "피스티스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H410",
+      "lemma": "אֵל",
+      "translit": "ʾēl",
+      "translitKo": "엘",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H5288",
+      "lemma": "נַעַר",
+      "translit": "naʿar",
+      "translitKo": "나아르",
+      "note": "ע를 한글로 적지 않아 모음 두 개가 이어진다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H2398",
+      "lemma": "חָטָא",
+      "translit": "ḥāṭāʾ",
+      "translitKo": "하타",
+      "note": "어말 알레프(א)는 묵음이므로 하타로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H4639",
+      "lemma": "מַעֲשֶׂה",
+      "translit": "maʿăśeh",
+      "translitKo": "마아세",
+      "note": "ע는 적지 않고 하테프 파타흐(ֲ)만 '아'로 남긴다. שׂ는 ㅅ, 어말 ה는 묵음이다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H2142",
+      "lemma": "זָכַר",
+      "translit": "zākar",
+      "translitKo": "자카르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H3423",
+      "lemma": "יָרַשׁ",
+      "translit": "yāraš",
+      "translitKo": "야라쉬",
+      "note": "어말 쉰(שׁ)을 쉬로 적으면 야라쉬, 시로 적으면 야라시가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H7235",
+      "lemma": "רָבָה",
+      "translit": "rābâ",
+      "translitKo": "라바",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H7130",
+      "lemma": "קֶרֶב",
+      "translit": "qereb",
+      "translitKo": "케레브",
+      "note": "ק(q)와 כ(k)는 한글에서 모두 ㅋ으로 적혀 구분되지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H1245",
+      "lemma": "בָּקַשׁ",
+      "translit": "bāqaš",
+      "translitKo": "바카쉬",
+      "note": "어말 쉰(שׁ)의 음역에 따라 바카쉬 또는 바카시로 표기할 수 있다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H127",
+      "lemma": "אֲדָמָה",
+      "translit": "ʾădāmâ",
+      "translitKo": "아다마",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H3789",
+      "lemma": "כָּתַב",
+      "translit": "kātab",
+      "translitKo": "카타브",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H5159",
+      "lemma": "נַחֲלָה",
+      "translit": "naḥălâ",
+      "translitKo": "나할라",
+      "note": "라메드(ל)의 자음 [l]을 살려 나할라로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H4150",
+      "lemma": "מוֹעֵד",
+      "translit": "môʿēd",
+      "translitKo": "모에드",
+      "note": "ע를 적지 않아 '모에드'가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G1097",
+      "lemma": "γινώσκω",
+      "translit": "ginṓskō",
+      "translitKo": "기노스코",
+      "note": "기존 표기 γίνομαι→기노마이와 같이 γι를 '기'로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G1135",
+      "lemma": "γυνή",
+      "translit": "gynḗ",
+      "translitKo": "귀네",
+      "note": "윕실론(υ)을 학술 표기 원칙(위 계열)에 따라 귀네로 표기한다. 코이네 발음으로는 기네가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G1831",
+      "lemma": "ἐξέρχομαι",
+      "translit": "exérchomai",
+      "translitKo": "엑세르코마이",
+      "note": "ξ는 ㄱ받침+ㅅ으로 풀고 χ는 ㅋ으로 적는다(ἔχω→에코와 같은 꼴).",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H517",
+      "lemma": "אֵם",
+      "translit": "ʾēm",
+      "translitKo": "엠",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H8451",
+      "lemma": "תּוֹרָה",
+      "translit": "tôrâ",
+      "translitKo": "토라",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H8354",
+      "lemma": "שָׁתָה",
+      "translit": "šātâ",
+      "translitKo": "샤타",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "G435",
+      "lemma": "ἀνήρ",
+      "translit": "anḗr",
+      "translitKo": "아네르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H3559",
+      "lemma": "כּוּן",
+      "translit": "kûn",
+      "translitKo": "쿤",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H8337",
+      "lemma": "שֵׁשׁ",
+      "translit": "šēš",
+      "translitKo": "셰쉬",
+      "note": "첫 쉰(שֵׁ)을 셰로 적고 어말 쉰(שׁ)을 쉬로 적으면 셰쉬가 되며, 세쉬로 적기도 한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H5800",
+      "lemma": "עָזַב",
+      "translit": "ʿāzab",
+      "translitKo": "아자브",
+      "note": "어두 ע는 한글로 적지 않는다(עַם→암과 같은 꼴).",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H4264",
+      "lemma": "מַחֲנֶה",
+      "translit": "maḥăneh",
+      "translitKo": "마하네",
+      "note": "ח는 ㅎ으로 적고 어말 ה는 묵음이다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H5186",
+      "lemma": "נָטָה",
+      "translit": "nāṭâ",
+      "translitKo": "나타",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H4397",
+      "lemma": "מֲלְאָךְ",
+      "translit": "malʾāk",
+      "translitKo": "말아크",
+      "note": "라메드(ל)의 음절 종성 [l]과 알레프(א)의 초성을 구분해 적으면 말아크가 되고, 연음하면 말라크가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "C",
+      "strong": "H5337",
+      "lemma": "נָצַל",
+      "translit": "nāṣal",
+      "translitKo": "나찰",
+      "note": "צ는 기존 표기 에레츠와 같이 ㅊ 계열로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G2309",
+      "lemma": "θέλω",
+      "translit": "thélō",
+      "translitKo": "텔로",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H4503",
+      "lemma": "מִנְחָה",
+      "translit": "minḥâ",
+      "translitKo": "민하",
+      "note": "후음 ḥ: 보통 ㅎ으로 표기함",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G1410",
+      "lemma": "δύναμαι",
+      "translit": "dýnamai",
+      "translitKo": "뒤나마이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H3615",
+      "lemma": "כָּלָה",
+      "translit": "kālâ",
+      "translitKo": "칼라",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H6662",
+      "lemma": "צַדִּיק",
+      "translit": "ṣaddîq",
+      "translitKo": "차디크",
+      "note": "צ(ṣ)는 보통 ㅊ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G1125",
+      "lemma": "γράφω",
+      "translit": "gráphō",
+      "translitKo": "그라포",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H727",
+      "lemma": "אָרוֹן",
+      "translit": "ʾārôn",
+      "translitKo": "아론",
+      "note": "히브리어 '아론(ārôn)'은 '궤'를 뜻하는 보통명사. 동명의 아론(Aaron, H175)과 구별 필요.",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H905",
+      "lemma": "בַּד",
+      "translit": "bad",
+      "translitKo": "바드",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G3551",
+      "lemma": "νόμος",
+      "translit": "nómos",
+      "translitKo": "노모스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G2453",
+      "lemma": "Ἰουδαῖος",
+      "translit": "Ioudaîos",
+      "translitKo": "이우다이오스",
+      "note": "관용 표기(유대인)가 있으나 원음대로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G1525",
+      "lemma": "εἰσέρχομαι",
+      "translit": "eisérchomai",
+      "translitKo": "에이세르코마이",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H8081",
+      "lemma": "שֶׁמֶן",
+      "translit": "šemen",
+      "translitKo": "셰멘",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H2691",
+      "lemma": "חָצֵר",
+      "translit": "ḥāṣēr",
+      "translitKo": "하체르",
+      "note": "ḥ는 보통 ㅎ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H7311",
+      "lemma": "רוּם",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H7453",
+      "lemma": "רֵעַ",
+      "translit": "rēaʿ",
+      "translitKo": "레아",
+      "note": "어말 ע 앞의 furtive patach",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G2889",
+      "lemma": "κόσμος",
+      "translit": "kósmos",
+      "translitKo": "코스모스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H352",
+      "lemma": "אַיִל",
+      "translit": "ʾayil",
+      "translitKo": "아일",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H241",
+      "lemma": "אֹזֶן",
+      "translit": "ʾōzen",
+      "translitKo": "오젠",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H1540",
+      "lemma": "גָּלָה",
+      "translit": "gālâ",
+      "translitKo": "갈라",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G32",
+      "lemma": "ἄγγελος",
+      "translit": "ángelos",
+      "translitKo": "앙겔로스",
+      "note": "γγ는 ng로 발음되어 앙겔로스로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H1241",
+      "lemma": "בָּקָר",
+      "translit": "bāqār",
+      "translitKo": "바카르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H3383",
+      "lemma": "יַרְדֵּן",
+      "translit": "yardēn",
+      "translitKo": "야르덴",
+      "note": "관용 표기(요단)가 있으나 원음대로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G5495",
+      "lemma": "χείρ",
+      "translit": "cheír",
+      "translitKo": "케이르",
+      "note": "χ는 ㅋ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H2205",
+      "lemma": "זָקֵן",
+      "translit": "zāqēn",
+      "translitKo": "자켄",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G2147",
+      "lemma": "εὑρίσκω",
+      "translit": "heurískō",
+      "translitKo": "헤우리스코",
+      "note": "ευ는 후속 자음 ρ가 유음이므로 '에우'로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H3898",
+      "lemma": "לָחַם",
+      "translit": "lāḥam",
+      "translitKo": "라함",
+      "note": "ḥ는 보통 ㅎ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G2041",
+      "lemma": "ἔργον",
+      "translit": "érgon",
+      "translitKo": "에르곤",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G3793",
+      "lemma": "ὄχλος",
+      "translit": "óchlos",
+      "translitKo": "오클로스",
+      "note": "χ는 ㅋ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "H6235",
+      "lemma": "עֶשֶׂר",
+      "translit": "ʿeśer",
+      "translitKo": "에세르",
+      "note": "ע는 보통 한글로 표기하지 않음, שׂ(ś)는 ㅅ으로 표기",
+      "agreement": "both"
+    },
+    {
+      "shard": "D",
+      "strong": "G266",
+      "lemma": "ἁμαρτία",
+      "translit": "hamartía",
+      "translitKo": "하마르티아",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H6942",
+      "lemma": "קָדַשׁ",
+      "translit": "qādaš",
+      "translitKo": "카다쉬",
+      "note": "שׁ(shin)를 쉬 계열로 적으면 카다쉬, 시 계열로 적으면 카다시가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H7812",
+      "lemma": "שָׁחָה",
+      "translit": "šāḥâ",
+      "translitKo": "샤하",
+      "note": "ח(ḥet)를 흐 계열로 적으면 샤하, 목구멍 마찰음을 무시하면 샤아가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H7592",
+      "lemma": "שָׁאַל",
+      "translit": "šāʾal",
+      "translitKo": "샤알",
+      "note": "א(알레프)는 성문파열음으로 한국어에서 따로 적지 않는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H977",
+      "lemma": "בָּחַר",
+      "translit": "bāḥar",
+      "translitKo": "바하르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H995",
+      "lemma": "בִּין",
+      "translit": "bîn",
+      "translitKo": "빈",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H1755",
+      "lemma": "דּוֹר",
+      "translit": "dôr",
+      "translitKo": "도르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H2026",
+      "lemma": "הָרַג",
+      "translit": "hārag",
+      "translitKo": "하라그",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H1144",
+      "lemma": "בִּנְיָמִין",
+      "translit": "binyāmîn",
+      "translitKo": "빈야민",
+      "note": "학술 표기는 빈야민이다. 한국어 성경은 베냐민으로 관용한다. 첫 음절의 히리크(ִ) 모음을 엄밀히 옮기면 빈야민이 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H312",
+      "lemma": "אַחֵר",
+      "translit": "ʾaḥēr",
+      "translitKo": "아헤르",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G4172",
+      "lemma": "πόλις",
+      "translit": "pólis",
+      "translitKo": "폴리스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H1984",
+      "lemma": "הָלַל",
+      "translit": "hālal",
+      "translitKo": "할랄",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G3972",
+      "lemma": "Παῦλος",
+      "translit": "Paûlos",
+      "translitKo": "파울로스",
+      "note": "학술 표기는 파울로스다. 한국어 성경은 바울로 굳어져 있다. 헬라어 무성 파열음 파이(π)를 학술적으로 옮기면 파울로스가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G1484",
+      "lemma": "ἔθνος",
+      "translit": "éthnos",
+      "translitKo": "에트노스",
+      "note": "세타(θ)를 무성음 ㅌ로 적으면 에트노스, 유성음 ㄷ로 적으면 에드노스가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H1875",
+      "lemma": "דָּרַשׁ",
+      "translit": "dāraš",
+      "translitKo": "다라쉬",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H6607",
+      "lemma": "פֶּתַח",
+      "translit": "petaḥ",
+      "translitKo": "페타흐",
+      "note": "어말 ח(ḥet)를 흐로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H2351",
+      "lemma": "חוּץ",
+      "translit": "ḥûṣ",
+      "translitKo": "후츠",
+      "note": "ח(ḥet)를 후로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H2930",
+      "lemma": "טָמֵא",
+      "translit": "ṭāmēʾ",
+      "translitKo": "타메",
+      "note": "어말 알레프(א)는 묵음이므로 '타메'로 표기하며, 철자를 보존하면 '타메아'가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G2588",
+      "lemma": "καρδία",
+      "translit": "kardía",
+      "translitKo": "카르디아",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G4074",
+      "lemma": "Πέτρος",
+      "translit": "Pétros",
+      "translitKo": "페트로스",
+      "note": "학술 표기는 페트로스다. 한국어 성경은 베드로로 굳어져 있다. 헬라어 무성 파열음 파이(π)와 타우(τ)를 엄밀히 옮기면 페트로스가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H5127",
+      "lemma": "נוּס",
+      "translit": "nûs",
+      "translitKo": "누스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H6726",
+      "lemma": "צִיּוֹן",
+      "translit": "ṣiyyôn",
+      "translitKo": "치욘",
+      "note": "학술 표기는 치욘(또는 찌욘)이다. 한국어 성경은 시온으로 굳어져 있다. 히브리어 자음 츠아데(צ)의 음가를 학술적으로 옮기면 치욘이 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G5485",
+      "lemma": "χάρις",
+      "translit": "cháris",
+      "translitKo": "카리스",
+      "note": "χ(chi)는 무성 연구개 마찰음으로 한글 ㅋ로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G2476",
+      "lemma": "ἵστημι",
+      "translit": "hístēmi",
+      "translitKo": "히스테미",
+      "note": "어두의 거친 기식부호(ἵ의 ῾)를 ㅎ로 적으면 히스테미, 생략하면 이스테미가 된다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H8055",
+      "lemma": "שָׂמַח",
+      "translit": "śāmaḥ",
+      "translitKo": "사마흐",
+      "note": "שׂ(sin)는 ś로 한글 ㅅ에 대응한다. 어말 ח(ḥet)를 흐로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G4198",
+      "lemma": "πορεύομαι",
+      "translit": "poreúomai",
+      "translitKo": "포레우오마이",
+      "note": "이중모음 ευ를 학술적으로 모음화하여 '포레우오마이'로 표기한다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "H3680",
+      "lemma": "כָּסָה",
+      "translit": "kāsâ",
+      "translitKo": "카사",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G4561",
+      "lemma": "σάρξ",
+      "translit": "sárx",
+      "translitKo": "사르크스",
+      "note": "ξ(ksi)는 크스로 적는다.",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G4396",
+      "lemma": "προφήτης",
+      "translit": "prophḗtēs",
+      "translitKo": "프로페테스",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G2564",
+      "lemma": "καλέω",
+      "translit": "kaléō",
+      "translitKo": "칼레오",
+      "note": "",
+      "agreement": "both"
+    },
+    {
+      "shard": "E",
+      "strong": "G863",
+      "lemma": "ἀφίημι",
+      "translit": "aphíēmi",
+      "translitKo": "아피에미",
+      "note": "",
+      "agreement": "both"
+    }
+  ],
+  "disputed": [
+    {
+      "shard": "B",
+      "strong": "H7586",
+      "lemma": "שָׁאוּל",
+      "lang": "hebrew",
+      "glossEn": "Saul, Shaul.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "šāʾûl",
+        "translitKo": "사울",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "šāʾûl",
+        "translitKo": "샤울",
+        "note": "한국어 성경은 사울로 굳어져 있다. 학술 표기는 šāʾûl이며 שׁ를 ㅅ이 아닌 ㅃ/ʃ 계열 샤로 적는다."
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3701",
+      "lemma": "כֶּסֶף",
+      "lang": "hebrew",
+      "glossEn": "money, price, silver(-ling).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "kesep",
+        "translitKo": "케세프",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "kesef",
+        "translitKo": "케세프",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H7651",
+      "lemma": "שֶׁבַע",
+      "lang": "hebrew",
+      "glossEn": "([phrase] by) seven(-fold),-s, (-teen, -teenth), -th, times). Compare H7658 (שִׁבְעָנָה).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "šebaʿ",
+        "translitKo": "셰바",
+        "note": "후음 ʿ는 한글로 따로 적지 않는다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "šeḇaʿ",
+        "translitKo": "셰바",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H2091",
+      "lemma": "זָהָב",
+      "lang": "hebrew",
+      "glossEn": "gold(-en), fair weather.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "zāhāb",
+        "translitKo": "자하브",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "zāhāḇ",
+        "translitKo": "자하브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3381",
+      "lemma": "יָרַד",
+      "lang": "hebrew",
+      "glossEn": "[idiom] abundantly, bring down, carry down, cast down, (cause to) come(-ing) down, fall (down), get down, go(-ing) down(-ward), hang down, [idiom] indeed, let down, light (down), put down (off), (cause to, let) run down, sink, subdue, take down.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "yārad",
+        "translitKo": "야라드",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "yāraḏ",
+        "translitKo": "야라드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H5002",
+      "lemma": "נְאֻם",
+      "lang": "hebrew",
+      "glossEn": "(hath) said, saith.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "nĕʾum",
+        "translitKo": "네움",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "neʾum",
+        "translitKo": "네움",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H5046",
+      "lemma": "נָגַד",
+      "lang": "hebrew",
+      "glossEn": "bewray, [idiom] certainly, certify, declare(-ing), denounce, expound, [idiom] fully, messenger, plainly, profess, rehearse, report, shew (forth), speak, [idiom] surely, tell, utter.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "nāgad",
+        "translitKo": "나가드",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "nāḡaḏ",
+        "translitKo": "나가드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3290",
+      "lemma": "יַעֲקֹב",
+      "lang": "hebrew",
+      "glossEn": "Jacob.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "yaʿăqōb",
+        "translitKo": "야아코브",
+        "note": "관용 표기는 야곱이나, 후음 ʿ(아인)과 모음 ă를 반영하여 학술 표기 야아코브를 표제로 한다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "yaʿăqōḇ",
+        "translitKo": "야아코브",
+        "note": "한국어 성경은 야곱으로 굳어져 있다. 학술 표기는 yaʿăqōḇ이며 ע를 따로 적지 않는 것이 기본이나, 음절 구분을 위해 야아코브로 적는다."
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H2568",
+      "lemma": "חָמֵשׁ",
+      "lang": "hebrew",
+      "glossEn": "fif(-teen), fifth, five ([idiom] apiece).",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ḥāmēš",
+        "translitKo": "하메시",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ḥāmēš",
+        "translitKo": "하메쉬",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H5439",
+      "lemma": "סָבִיב",
+      "lang": "hebrew",
+      "glossEn": "(place, round) about, circuit, compass, on every side.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "sābîb",
+        "translitKo": "사비브",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "sāḇîḇ",
+        "translitKo": "사비브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H7704",
+      "lemma": "שָׂדֶה",
+      "lang": "hebrew",
+      "glossEn": "country, field, ground, land, soil, [idiom] wild.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "śādeh",
+        "translitKo": "사데",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "śāḏe",
+        "translitKo": "사데",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H113",
+      "lemma": "אָדוֹן",
+      "lang": "hebrew",
+      "glossEn": "lord, master, owner. Compare also names beginning with 'Adoni-'.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ʾādôn",
+        "translitKo": "아돈",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ʾāḏôn",
+        "translitKo": "아돈",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3627",
+      "lemma": "כְּלִי",
+      "lang": "hebrew",
+      "glossEn": "armour(-bearer), artillery, bag, carriage, [phrase] furnish, furniture, instrument, jewel, that is made of, [idiom] one from another, that which pertaineth, pot, [phrase] psaltery, sack, stuff, thing, tool, vessel, ware, weapon, [phrase] whatsoever.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "kĕlî",
+        "translitKo": "켈리",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "kelî",
+        "translitKo": "켈리",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H5030",
+      "lemma": "נָבִיא",
+      "lang": "hebrew",
+      "glossEn": "prophecy, that prophesy, prophet.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "nābîʾ",
+        "translitKo": "나비",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "nāḇîʾ",
+        "translitKo": "나비",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H4940",
+      "lemma": "מִשְׁפָּחָה",
+      "lang": "hebrew",
+      "glossEn": "family, kind(-red).",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "mišpāḥâ",
+        "translitKo": "미슈파하",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "mišpāḥâ",
+        "translitKo": "미쉬파하",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H6485",
+      "lemma": "פָּקַד",
+      "lang": "hebrew",
+      "glossEn": "appoint, [idiom] at all, avenge, bestow, (appoint to have the, give a) charge, commit, count, deliver to keep, be empty, enjoin, go see, hurt, do judgment, lack, lay up, look, make, [idiom] by any means, miss, number, officer, (make) overseer, have (the) oversight, punish, reckon, (call to) remember(-brance), set (over), sum, [idiom] surely, visit, want.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "pāqad",
+        "translitKo": "파카드",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "pāqaḏ",
+        "translitKo": "파카드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3966",
+      "lemma": "מְאֹד",
+      "lang": "hebrew",
+      "glossEn": "diligently, especially, exceeding(-ly), far, fast, good, great(-ly), [idiom] louder and louder, might(-ily, -y), (so) much, quickly, (so) sore, utterly, very ([phrase] much, sore), well.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "mĕʾōd",
+        "translitKo": "메오드",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "meʾōḏ",
+        "translitKo": "메오드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H6256",
+      "lemma": "עֵת",
+      "lang": "hebrew",
+      "glossEn": "[phrase] after, (al-) ways, [idiom] certain, [phrase] continually, [phrase] evening, long, (due) season, so (long) as, (even-, evening-, noon-) tide, (meal-), what) time, when.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ʿēt",
+        "translitKo": "에트",
+        "note": "후음 ʿ는 한글로 따로 적지 않는다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ʿēṯ",
+        "translitKo": "에트",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H2403",
+      "lemma": "חַטָּאָה",
+      "lang": "hebrew",
+      "glossEn": "punishment (of sin), purifying(-fication for sin), sin(-ner, offering).",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ḥaṭṭāʾâ",
+        "translitKo": "하타아",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ḥaṭṭāʾâ",
+        "translitKo": "핫타아",
+        "note": "דגש חזק(강 다게쉬)로 인해 ט가 겹자음이 되어 핫타아로 적는다."
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H8010",
+      "lemma": "שְׁלֹמֹה",
+      "lang": "hebrew",
+      "glossEn": "Solomon.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "šĕlōmōh",
+        "translitKo": "셸로모",
+        "note": "관용 표기는 솔로몬이나 학술 표기는 셸로모를 따른다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "šelōmō",
+        "translitKo": "셸로모",
+        "note": "한국어 성경은 솔로몬으로 굳어져 있다. 학술 표기는 šelōmō이며 셸로모가 된다."
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H6430",
+      "lemma": "פְּלִשְׁתִּי",
+      "lang": "hebrew",
+      "glossEn": "Philistine.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "pĕlištî",
+        "translitKo": "펠리슈티",
+        "note": "관용 표기는 블레셋이나 학술 표기는 펠리시티를 따른다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "pelištî",
+        "translitKo": "펠리쉬티",
+        "note": "한국어 성경은 블레셋으로 굳어져 있다. 학술 표기는 pelištî이며 펠리쉬티가 된다."
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H3772",
+      "lemma": "כָּרַת",
+      "lang": "hebrew",
+      "glossEn": "be chewed, be con-(feder-) ate, covenant, cut (down, off), destroy, fail, feller, be freed, hew (down), make a league (covenant), [idiom] lose, perish, [idiom] utterly, [idiom] want.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "kārat",
+        "translitKo": "카라트",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "kāraṯ",
+        "translitKo": "카라트",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H5647",
+      "lemma": "עָבַד",
+      "lang": "hebrew",
+      "glossEn": "[idiom] be, keep in bondage, be bondmen, bond-service, compel, do, dress, ear, execute, [phrase] husbandman, keep, labour(-ing man, bring to pass, (cause to, make to) serve(-ing, self), (be, become) servant(-s), do (use) service, till(-er), transgress (from margin), (set a) work, be wrought, worshipper,",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ʿābad",
+        "translitKo": "아바드",
+        "note": "후음 ʿ는 한글로 따로 적지 않는다."
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ʿāḇaḏ",
+        "translitKo": "아바드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H2320",
+      "lemma": "חֹדֶשׁ",
+      "lang": "hebrew",
+      "glossEn": "month(-ly), new moon.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ḥōdeš",
+        "translitKo": "호데시",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ḥōḏeš",
+        "translitKo": "호데쉬",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H341",
+      "lemma": "אֹיֵב",
+      "lang": "hebrew",
+      "glossEn": "enemy, foe.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "ʾōyēb",
+        "translitKo": "오예브",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "ʾōyēḇ",
+        "translitKo": "오예브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "B",
+      "strong": "H7126",
+      "lemma": "קָרַב",
+      "lang": "hebrew",
+      "glossEn": "(cause to) approach, (cause to) bring (forth, near), (cause to) come (near, nigh), (cause to) draw near (nigh), go (near), be at hand, join, be near, offer, present, produce, make ready, stand, take.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "B-gem31pro",
+        "translit": "qārab",
+        "translitKo": "카라브",
+        "note": ""
+      },
+      "b": {
+        "model": "B-agyopus46",
+        "translit": "qāraḇ",
+        "translitKo": "카라브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "C",
+      "strong": "H4294",
+      "lemma": "מַטֶּה",
+      "lang": "hebrew",
+      "glossEn": "rod, staff, tribe.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "C-gem37flash",
+        "translit": "maṭṭeh",
+        "translitKo": "마테",
+        "note": "테트(ט)의 다게쉬(중복점)를 반영해 맛테로 적기도 하나, 학술 표기 기본에 따라 마테로 표기한다."
+      },
+      "b": {
+        "model": "C-claudeopus5",
+        "translit": "maṭṭeh",
+        "translitKo": "맛테",
+        "note": "ט의 다게쉬(중복)를 받침 ㅅ으로 살렸다. 어말 ה는 묵음이라 적지 않는다."
+      }
+    },
+    {
+      "shard": "C",
+      "strong": "H1366",
+      "lemma": "גְּבוּל",
+      "lang": "hebrew",
+      "glossEn": "border, bound, coast, [idiom] great, landmark, limit, quarter, space.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "C-gem37flash",
+        "translit": "gĕbûl",
+        "translitKo": "게불",
+        "note": "어두 유성 셰바(ְ)를 에 모음으로 옮겨 게불로 표기한다. 으 모음으로 옮기면 그불이 된다."
+      },
+      "b": {
+        "model": "C-claudeopus5",
+        "translit": "gəbûl",
+        "translitKo": "게불",
+        "note": "어두 쉐바(ְ)는 짧은 '에'로 적는다."
+      }
+    },
+    {
+      "shard": "C",
+      "strong": "H5771",
+      "lemma": "עָוֺן",
+      "lang": "hebrew",
+      "glossEn": "fault, iniquity, mischeif, punishment (of iniquity), sin.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "C-gem37flash",
+        "translit": "ʿāwōn",
+        "translitKo": "아원",
+        "note": "바브(ו)를 반모음 w로 보아 아원으로 표기한다. 단순 모음화하면 아온, v음가로 보면 아본이 된다."
+      },
+      "b": {
+        "model": "C-claudeopus5",
+        "translit": "ʿāwōn",
+        "translitKo": "아온",
+        "note": "기존 표기 דָּוִד→다위드처럼 ו를 반모음으로 처리해 '아온'으로 적었다. ו를 v로 읽는 현대식 관용 표기는 '아본'이다. 어두 ע는 적지 않는다."
+      }
+    },
+    {
+      "shard": "C",
+      "strong": "H3091",
+      "lemma": "יְהוֹשׁוּעַ",
+      "lang": "hebrew",
+      "glossEn": "Jehoshua, Jehoshuah, Joshua. Compare H1954 (הוֹשֵׁעַ), H3442 (יֵשׁוּעַ).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "C-gem37flash",
+        "translit": "yĕhôšûaʿ",
+        "translitKo": "예호슈아",
+        "note": "학술 표기는 예호슈아다. 한국어 성경(개역개정 등)은 여호수아로 옮긴다. 어말 아인(ע) 앞의 furtive patach를 살려 슈아로 표기한다."
+      },
+      "b": {
+        "model": "C-claudeopus5",
+        "translit": "yəhôšûaʿ",
+        "translitKo": "예호슈아",
+        "note": "어말 ע 앞 furtive patach를 '아'로 살렸다. 개역개정 관용 표기 '여호수아'는 어두 יְ를 '여'로 옮긴 전래 표기다."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H3130",
+      "lemma": "יוֹסֵף",
+      "lang": "hebrew",
+      "glossEn": "Joseph. Compare H3084 (יְהוֹסֵף).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "yôsēp̄",
+        "translitKo": "요세프",
+        "note": "관용 표기(요셉)가 있으나 원음대로 표기"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "yôsēp",
+        "translitKo": "요세프",
+        "note": "한국어 관용 표기 '요셉'이 통용되나 SBL 학술 표기는 요세프. 관용 표기와 차이 있음."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H3254",
+      "lemma": "יָסַף",
+      "lang": "hebrew",
+      "glossEn": "add, [idiom] again, [idiom] any more, [idiom] cease, [idiom] come more, [phrase] conceive again, continue, exceed, [idiom] further, [idiom] gather together, get more, give more-over, [idiom] henceforth, increase (more and more), join, [idiom] longer (bring, do, make, much, put), [idiom] (the, much, yet) more (and more), proceed (further), prolong, put, be (strong-) er, [idiom] yet, yield.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "yāsap̄",
+        "translitKo": "야사프",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "yāsap",
+        "translitKo": "야사프",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H7901",
+      "lemma": "שָׁכַב",
+      "lang": "hebrew",
+      "glossEn": "[idiom] at all, cast down, (lover-)lay (self) (down), (make to) lie (down, down to sleep, still with), lodge, ravish, take rest, sleep, stay.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "šāḵaḇ",
+        "translitKo": "샤카브",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "šākab",
+        "translitKo": "샤카브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H157",
+      "lemma": "אָהַב",
+      "lang": "hebrew",
+      "glossEn": "(be-) love(-d, -ly, -r), like, friend.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "ʾāhaḇ",
+        "translitKo": "아하브",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "ʾāhab",
+        "translitKo": "아하브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H3467",
+      "lemma": "יָשַׁע",
+      "lang": "hebrew",
+      "glossEn": "[idiom] at all, avenging, defend, deliver(-er), help, preserve, rescue, be safe, bring (having) salvation, save(-iour), get victory.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "yāšaʿ",
+        "translitKo": "야샤",
+        "note": "ע는 보통 한글로 표기하지 않음"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "yāšaʿ",
+        "translitKo": "야솨",
+        "note": "어말 ע(ʿayin)은 한글로 따로 적지 않는 것이 기본 원칙. 야샤 또는 야솨 표기 혼용 가능."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H8199",
+      "lemma": "שָׁפַט",
+      "lang": "hebrew",
+      "glossEn": "[phrase] avenge, [idiom] that condemn, contend, defend, execute (judgment), (be a) judge(-ment), [idiom] needs, plead, reason, rule.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "šāp̄aṭ",
+        "translitKo": "샤파트",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "šāpaṭ",
+        "translitKo": "샤파트",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H622",
+      "lemma": "אָסַף",
+      "lang": "hebrew",
+      "glossEn": "assemble, bring, consume, destroy, felch, gather (in, together, up again), [idiom] generally, get (him), lose, put all together, receive, recover (another from leprosy), (be) rereward, [idiom] surely, take (away, into, up), [idiom] utterly, withdraw.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "ʾāsap̄",
+        "translitKo": "아사프",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "ʾāsap",
+        "translitKo": "아사프",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H3201",
+      "lemma": "יָכֹל",
+      "lang": "hebrew",
+      "glossEn": "be able, any at all (ways), attain, can (away with, (-not)), could, endure, might, overcome, have power, prevail, still, suffer.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "yāḵōl",
+        "translitKo": "야콜",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "yākōl",
+        "translitKo": "야콜",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H3709",
+      "lemma": "כַּף",
+      "lang": "hebrew",
+      "glossEn": "branch, [phrase] foot, hand((-ful), -dle, (-led)), hollow, middle, palm, paw, power, sole, spoon.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "kap̄",
+        "translitKo": "카프",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "kap",
+        "translitKo": "카프",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H929",
+      "lemma": "בְּהֵמָה",
+      "lang": "hebrew",
+      "glossEn": "beast, cattle.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "bəhēmâ",
+        "translitKo": "베헤마",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "bĕhēmâ",
+        "translitKo": "베헤마",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H5612",
+      "lemma": "סֵפֶר",
+      "lang": "hebrew",
+      "glossEn": "bill, book, evidence, [idiom] learn(-ed) (-ing), letter, register, scroll.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "sēp̄er",
+        "translitKo": "세페르",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "sēper",
+        "translitKo": "세페르",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "lang": "hebrew",
+      "glossEn": "adjure, charge (by an oath, with an oath), feed to the full (by mistake for H7646 (שָׂבַע)), take an oath, [idiom] straitly, (cause to, make to) swear.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "šāḇaʿ",
+        "translitKo": "샤바",
+        "note": "ע는 보통 한글로 표기하지 않음"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "šābaʿ",
+        "translitKo": "샤바",
+        "note": "어말 ע는 한글로 따로 적지 않는 기본 원칙 적용."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H6",
+      "lemma": "אָבַד",
+      "lang": "hebrew",
+      "glossEn": "break, destroy(-uction), [phrase] not escape, fail, lose, (cause to, make) perish, spend, [idiom] and surely, take, be undone, [idiom] utterly, be void of, have no way to flee.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "ʾāḇad",
+        "translitKo": "아바드",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "ʾābad",
+        "translitKo": "아바드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H4687",
+      "lemma": "מִצְוָה",
+      "lang": "hebrew",
+      "glossEn": "(which was) commanded(-ment), law, ordinance, precept.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "miṣwâ",
+        "translitKo": "미츠와",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "miṣwâ",
+        "translitKo": "미츠바",
+        "note": "ṣ(צ)를 '츠'로, w(ו)를 '바'로 표기. 유대 전통 발음 '미츠봐'와 달리 SBL 표기 기준."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H4124",
+      "lemma": "מוֹאָב",
+      "lang": "hebrew",
+      "glossEn": "Moab.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "môʾāḇ",
+        "translitKo": "모아브",
+        "note": "관용 표기(모압)가 있으나 원음대로 표기"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "môʾāb",
+        "translitKo": "모아브",
+        "note": "한국어 관용 표기 '모압'도 통용되나 SBL 음역 기준 모아브."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H669",
+      "lemma": "אֶפְרַיִם",
+      "lang": "hebrew",
+      "glossEn": "Ephraim, Ephraimites.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "ʾep̄rayim",
+        "translitKo": "에프라임",
+        "note": "관용 표기(에브라임)가 있으나 원음대로 표기"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "ʾeprayim",
+        "translitKo": "에프라임",
+        "note": "한국어 관용 표기 '에브라임'과 다름. SBL 음역 기준 에프라임."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H4430",
+      "lemma": "מֶלֶךְ",
+      "lang": "hebrew",
+      "glossEn": "king, royal.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "meleḵ",
+        "translitKo": "멜레크",
+        "note": "어말 ךְ는 k(ḵ)로 표기"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "melek",
+        "translitKo": "멜렉",
+        "note": ""
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H8193",
+      "lemma": "שָׂפָה",
+      "lang": "hebrew",
+      "glossEn": "band, bank, binding, border, brim, brink, edge, language, lip, prating, (sea-)shore, side, speech, talk, (vain) words.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "śāp̄â",
+        "translitKo": "사파",
+        "note": "שׂ(ś)는 ㅅ으로 표기"
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "śāpâ",
+        "translitKo": "사파",
+        "note": "שׂ는 ś(왼쪽 점 sin). 한글로 '사'로 표기."
+      }
+    },
+    {
+      "shard": "D",
+      "strong": "H85",
+      "lemma": "אַבְרָהָם",
+      "lang": "hebrew",
+      "glossEn": "Abraham.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "D-gem31pro",
+        "translit": "ʾaḇrāhām",
+        "translitKo": "아브라함",
+        "note": ""
+      },
+      "b": {
+        "model": "D-agysonnet46",
+        "translit": "ʾabrāhām",
+        "translitKo": "아브라함",
+        "note": "한국어 관용 표기 '아브라함'이 학술 표기와 일치."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H7970",
+      "lemma": "שְׁלוֹשִׁים",
+      "lang": "hebrew",
+      "glossEn": "thirty, thirtieth. Compare H7991 (שָׁלִישׁ).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "šĕlōšîm",
+        "translitKo": "셸로심",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "šəlôšîm",
+        "translitKo": "셸로심",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H4399",
+      "lemma": "מְלָאכָה",
+      "lang": "hebrew",
+      "glossEn": "business, [phrase] cattle, [phrase] industrious, occupation, ([phrase] -pied), [phrase] officer, thing (made), use, (manner of) work((-man), -manship).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "mĕlāʾkâ",
+        "translitKo": "멜라카",
+        "note": "알레프(א)가 묵음화되어 '멜라카'로 읽히며, 철자를 살려 '멜라아카'로 표기하기도 한다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "məlāʾḵâ",
+        "translitKo": "멜라카",
+        "note": "א(알레프)는 묵음이라 따로 적지 않고, 어말 ה는 모음 표기용이다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H2572",
+      "lemma": "חֲמִשִּׁים",
+      "lang": "hebrew",
+      "glossEn": "fifty.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "ḥămiššîm",
+        "translitKo": "하미쉼",
+        "note": "50을 뜻하는 수사. 중복점(dagesh forte)이 있는 שּׁ의 음역에 따라 '하미쉼' 또는 '하밋쉼'으로 표기된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "ḥămiššîm",
+        "translitKo": "하미심",
+        "note": "שּׁ(shin dagesh)로 겹자음이지만 한글에서 ㅅㅅ 병기가 어렵다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H1368",
+      "lemma": "גִּבּוֹר",
+      "lang": "hebrew",
+      "glossEn": "champion, chief, [idiom] excel, giant, man, mighty (man, one), strong (man), valiant man.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "gibbôr",
+        "translitKo": "기보르",
+        "note": "중복점(dagesh forte)을 반영하여 '깁보르'로 적거나 단자음으로 '기보르'로 표기한다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "gibbôr",
+        "translitKo": "깁보르",
+        "note": "בּ(bet dagesh)로 겹자음이다. 기보르로도 적을 수 있다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H2077",
+      "lemma": "זֶבַח",
+      "lang": "hebrew",
+      "glossEn": "offer(-ing), sacrifice.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "zebaḥ",
+        "translitKo": "제바흐",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "zeḇaḥ",
+        "translitKo": "제바흐",
+        "note": "어말 ח(ḥet)를 흐로 적는다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H5437",
+      "lemma": "סָבַב",
+      "lang": "hebrew",
+      "glossEn": "bring, cast, fetch, lead, make, walk, [idiom] whirl, [idiom] round about, be about on every side, apply, avoid, beset (about), besiege, bring again, carry (about), change, cause to come about, [idiom] circuit, (fetch a) compass (about, round), drive, environ, [idiom] on every side, beset (close, come, compass, go, stand) round about, inclose, remove, return, set, sit down, turn (self) (about, aside, away, back).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "sābab",
+        "translitKo": "사바브",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "sāḇaḇ",
+        "translitKo": "사바브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H5608",
+      "lemma": "סָפַר",
+      "lang": "hebrew",
+      "glossEn": "commune, (ac-) count; declare, number, [phrase] penknife, reckon, scribe, shew forth, speak, talk, tell (out), writer.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "sāpar",
+        "translitKo": "사파르",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "sāp̄ar",
+        "translitKo": "사파르",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H6666",
+      "lemma": "צְדָקָה",
+      "lang": "hebrew",
+      "glossEn": "justice, moderately, right(-eous) (act, -ly, -ness).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "ṣĕdāqâ",
+        "translitKo": "체다카",
+        "note": "צְ의 셰바 모음을 ㅔ로 적으면 체다카, ㅡ로 적으면 츠다카가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "ṣəḏāqâ",
+        "translitKo": "체다카",
+        "note": "צ(tsade)를 체/츠 계열로 적는다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H4194",
+      "lemma": "מָוֶת",
+      "lang": "hebrew",
+      "glossEn": "(be) dead(-ly), death, die(-d).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "māwet",
+        "translitKo": "마웨트",
+        "note": "자음 바브(ו)를 w로 음역하면 마웨트, v로 음역하면 마베트가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "māweṯ",
+        "translitKo": "마웨트",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H6828",
+      "lemma": "צָפוֹן",
+      "lang": "hebrew",
+      "glossEn": "north(-ern, side, -ward, wind).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "ṣāpôn",
+        "translitKo": "차폰",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "ṣāp̄ôn",
+        "translitKo": "차폰",
+        "note": "צ(tsade)를 차 계열로 적는다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H804",
+      "lemma": "אַשּׁוּר",
+      "lang": "hebrew",
+      "glossEn": "Asshur, Assur, Assyria, Assyrians. See H838 (אָשֻׁר).",
+      "reason": "korean-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "ʾaššûr",
+        "translitKo": "앗슈르",
+        "note": "학술 표기는 앗슈르(또는 아슈르)다. 한국어 성경은 앗수르로 굳어져 있다. 신(שׁ)의 음가를 살리면 앗슈르가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "ʾaššûr",
+        "translitKo": "아슈르",
+        "note": "한국어 성경은 앗수르/앗시리아로 표기한다. 학술 표기는 아슈르이다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H5048",
+      "lemma": "נֶגֶד",
+      "lang": "hebrew",
+      "glossEn": "about, (over) against, [idiom] aloof, [idiom] far (off), [idiom] from, over, presence, [idiom] other side, sight, [idiom] to view.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "neged",
+        "translitKo": "네게드",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "neḡeḏ",
+        "translitKo": "네게드",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H5060",
+      "lemma": "נָגַע",
+      "lang": "hebrew",
+      "glossEn": "beat, ([idiom] be able to) bring (down), cast, come (nigh), draw near (nigh), get up, happen, join, near, plague, reach (up), smite, strike, touch.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "nāgaʿ",
+        "translitKo": "나가",
+        "note": "어말 아인(ע)은 한글로 따로 표기하지 않아 '나가'가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "nāḡaʿ",
+        "translitKo": "나가",
+        "note": "어말 ע(아인)는 한글로 따로 적지 않는다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H7230",
+      "lemma": "רֹב",
+      "lang": "hebrew",
+      "glossEn": "abundance(-antly), all, [idiom] common (sort), excellent, great(-ly, -ness, number), huge, be increased, long, many, more in number, most, much, multitude, plenty(-ifully), [idiom] very (age).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "rōb",
+        "translitKo": "로브",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "rōḇ",
+        "translitKo": "로브",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H5712",
+      "lemma": "עֵדָה",
+      "lang": "hebrew",
+      "glossEn": "assembly, company, congregation, multitude, people, swarm. Compare H5713 (עֵדָה).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "ʿēdâ",
+        "translitKo": "에다",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "ʿēḏâ",
+        "translitKo": "에다",
+        "note": "ע(아인)는 한글로 따로 적지 않는다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H3414",
+      "lemma": "יִרְמְיָה",
+      "lang": "hebrew",
+      "glossEn": "Jeremiah.",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "yirmĕyāh",
+        "translitKo": "이르메야",
+        "note": "학술 표기는 이르메야(또는 이르메야흐)다. 한국어 성경은 예레미야로 굳어져 있다. 히브리어 첫 모음(יִ, 히리크)과 셰바 모음들을 반영하면 이르메야가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "yirməyâ",
+        "translitKo": "이르메야",
+        "note": "한국어 성경은 예레미야로 표기한다. 학술 표기는 이르메야이다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H7665",
+      "lemma": "שָׁבַר",
+      "lang": "hebrew",
+      "glossEn": "break (down, off, in pieces, up), broken (-hearted), bring to the birth, crush, destroy, hurt, quench, [idiom] quite, tear, view (by mistake for H7663 (שָׂבַר)).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "šābar",
+        "translitKo": "샤바르",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "šāḇar",
+        "translitKo": "샤바르",
+        "note": ""
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H4519",
+      "lemma": "מְנַשֶּׁה",
+      "lang": "hebrew",
+      "glossEn": "Manasseh.",
+      "reason": "korean-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "mĕnaššeh",
+        "translitKo": "메나셰",
+        "note": "학술 표기는 메나셰다. 한국어 성경은 므낫세로 굳어져 있다. מְ의 셰바를 ㅔ로, שֶּׁ의 신(š)과 셰골을 반영하면 메나셰가 된다."
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "mənašše",
+        "translitKo": "메나쉐",
+        "note": "한국어 성경은 므낫세로 표기한다. 학술 표기는 메나쉐이다."
+      }
+    },
+    {
+      "shard": "E",
+      "strong": "H7843",
+      "lemma": "שָׁחַת",
+      "lang": "hebrew",
+      "glossEn": "batter, cast off, corrupt(-er, thing), destroy(-er, -uction), lose, mar, perish, spill, spoiler, [idiom] utterly, waste(-r).",
+      "reason": "latin-differs",
+      "a": {
+        "model": "E-gem37flash",
+        "translit": "šāḥat",
+        "translitKo": "샤하트",
+        "note": ""
+      },
+      "b": {
+        "model": "E-agyopus46",
+        "translit": "šāḥaṯ",
+        "translitKo": "샤하트",
+        "note": "ח(ḥet)를 하로 적는다."
+      }
+    }
+  ]
+}

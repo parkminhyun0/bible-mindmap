@@ -1,0 +1,20 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 '교정 후 재감사자'다. 파일을 고치지 마라. 찾아서 보고만 하라.
+
+배경: `src/data/koreanGlossTopBatch02.js` 의 note 61건에서 규칙 교정 전 표기를 인용한 문장을 걷어냈고, 판정자 수를 잘못 적은 진술 66건을 고쳤다. 그 정리가 **새 문제를 만들지 않았는지** 확인하는 것이 네 일이다.
+
+점검:
+1. note 가 실제 필드와 어긋나는 항목이 남아 있는가. 245개 전수 검사하라.
+   - note 가 A 표기를 채택했다고 하는데 translitKo 가 B 인 자리
+   - note 에 지운 연음 기호(ḇ ḡ ḏ ḵ ṯ p̄)나 통일한 쉐바 기호(ə)가 아직 인용된 자리
+   - note 가 사실과 다른 수치를 말하는 자리 (판정자는 3개 모델이었다)
+2. 정리 과정에서 **있어야 할 설명이 사라진** 항목이 있는가. 특히 관용 표기와 갈리는 고유명사인데 그 이유가 적혀 있지 않은 자리를 찾아라. 배포 데이터(`src/data/bibleReferences.js`, `src/data/bookContext.js`, `src/data/contextChapterCards*.js`)에서 관용 표기를 찾아 대조하라.
+3. note 가 집계 문장만 남아 정보가 없는 항목이 몇 개인지 세고, 그중 설명이 꼭 필요한 것을 골라라. 전부 나열하지 말고 필요한 것만.
+4. `git diff 9bc2829d HEAD -- src/data/koreanGlossTopBatch02.js` 로 이번 정리가 표기 값 자체를 잘못 바꾼 곳이 없는지 확인하라.
+
+출력은 `.pipeline/task6/audits/recheck-gem31pro.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. git 커밋은 하지 마라(읽기용 git 명령은 써도 된다).
+
+형식(마크다운 코드펜스 없이 JSON만):
+{"scope":"recheck","checked":245,"regressions":[{"strong":"H1234","issue":"…","evidence":"…","severity":"high|medium|low"}],"remaining":[{"strong":"H1234","issue":"…","severity":"…"}],"summary":"한국어 두세 문장"}
+
+근거 없는 지적은 하지 마라. 문제가 없으면 빈 배열로 둬라.
+다 쓴 뒤 node -e 로 JSON.parse 하고 "recheck OK regressions=<개수> remaining=<개수>" 한 줄만 보고하라.

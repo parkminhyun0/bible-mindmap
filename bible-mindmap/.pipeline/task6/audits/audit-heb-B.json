@@ -1,0 +1,60 @@
+{
+  "scope": "hebrew-B",
+  "checked": 45,
+  "findings": [
+    {
+      "strong": "H3069",
+      "field": "translitKo",
+      "current": "예호위",
+      "suggested": "야훼",
+      "evidence": "koreanGlossTopBatch01.js H3068(יהוה) translitKo='야훼'이고 그 note가 \"자음 YHWH에 아도나이의 모음을 붙여 적은 것을 라틴어권이 그대로 읽어 Jehovah가 되었다\"고 명시한다. contextChapterCardsPs1.js·Isa.js·GenExod.js·FmrProph.js의 יְהוָה 병기 음역도 여호와·야훼·아도나이뿐이고 배포 데이터 어디에도 예호위 계열 표기가 없다.",
+      "severity": "high",
+      "reason": "예호위는 신명의 자음에 대독어 모음을 얹은 혼성 부호를 그대로 읽은 형태로, 배포된 H3068 note가 \"Jehovah\"를 만든 잘못된 독법이라고 이미 못박은 바로 그 방식이다. 같은 신명을 사전 팝업에서 H3068은 야훼, H3069는 예호위로 서로 다르게 읽게 만든다."
+    },
+    {
+      "strong": "H3627",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ְ)를 ə로 전사하는 SBL 학술 표기 규범에 따라 kəlî를 채택한다.",
+      "suggested": "…유성 셰바를 ĕ로 전사하는 이 배치의 규칙에 따라 kĕlî로 적는다(확정 표기 tĕhôm과 같은 방식).",
+      "evidence": "koreanGlossGenesis1Batch01.js H8415 translit='tĕhôm'·H430 translit='ʾĕlōhîm'이 유성 셰바를 ĕ로 적는다. 같은 묶음 H5002 note도 \"쉐바를 ə가 아니라 ĕ로 적는 규칙에 따랐다. 확정 표기 tĕhôm과 같은 방식이다\"라고 적었다.",
+      "severity": "medium",
+      "reason": "note는 kəlî를 채택했다고 하는데 실제 translit은 kĕlî이고, 배포 데이터의 선례도 ĕ다. 베가드케파트 항목들과 달리 뒤에 정정 문장도 없어 팝업에서 표기와 설명이 정면으로 어긋난다."
+    },
+    {
+      "strong": "H3966",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 달렛의 연음(ḏ)을 모두 반영한 SBL 학술 표기 məʾōḏ를 채택한다.",
+      "suggested": "…유성 셰바는 ĕ로, 어말 달렛은 베가드케파트 무표기 규칙에 따라 d로 적어 mĕʾōd로 둔다.",
+      "evidence": "koreanGlossGenesis1Batch01.js H8415 'tĕhôm'(ĕ)과 koreanGlossGenesis1Batch02.js H2895 'ṭôb'·H6153 'ʿereb'(연음 무표기).",
+      "severity": "medium",
+      "reason": "note는 məʾōḏ를 채택했다고 하지만 실제 translit은 mĕʾōd다. 셰바와 베가드케파트 두 가지가 다 배포 선례와 어긋나게 적혀 있고 정정 문장이 없다."
+    },
+    {
+      "strong": "H8010",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 홀렘-헤(ōh)를 정확히 반영한 SBL 학술 표기 šəlōmōh를 채택하며, 관용 표기 \"솔로몬\" 대신 학술 표기를 표제로 둔다.",
+      "suggested": "…유성 셰바는 ĕ로 적어 šĕlōmōh로 두고, 어말 홀렘-헤는 -ōh로 살린다. 배포 데이터(contextChapterCardsEcclSong.js·Monarchy.js)는 같은 낱말을 쉘로모로 적었으나, 음절 첫 שׁ+모음은 셰로 적는 규칙(아셰르·셰베트·호셰크)에 따라 셸로모를 표제로 삼는다.",
+      "evidence": "셰바 ĕ 선례는 koreanGlossGenesis1Batch01.js 'tĕhôm'. 한글 쪽 선례는 contextChapterCardsEcclSong.js·contextChapterCardsMonarchy.js의 שְׁלֹמֹה(쉘로모)와, koreanGlossTopBatch01.js H834 아셰르·canonicalConceptsT10.js שֵׁבֶט(셰베트)·canonicalConceptsT6.js חֹשֶׁךְ(호셰크).",
+      "severity": "medium",
+      "reason": "note가 šəlōmōh를 채택했다고 적었지만 실제 translit은 šĕlōmōh다. 또 배포 데이터는 같은 이름을 두 곳에서 쉘로모로 적었는데 note는 그 차이를 전혀 다루지 않아, 왜 셸로모로 갈라지는지 근거가 남지 않았다."
+    },
+    {
+      "strong": "H113",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(3/3 일치). 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʾāḏôn을 채택한다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.",
+      "suggested": "…무표기 규칙에 따라 달렛의 연음(ḏ)을 d로 적어 ʾādôn으로 둔다. (H3290·H3701·H6256·H7704 note와 같은 서술 방식)",
+      "evidence": "koreanGlossGenesis1Batch02.js H2895 'ṭôb'·H6153 'ʿereb'·H1242 'bōqer'가 베가드케파트 연음 기호를 쓰지 않는다. 같은 묶음의 H3290·H3701·H6256·H7704 note는 이 상황을 \"무표기 규칙으로 ḏ를 d로 적는다\"라고 바르게 서술한다.",
+      "severity": "low",
+      "reason": "note 첫머리가 실제로 쓰지 않은 ʾāḏôn을 \"채택한다\"고 단정한 뒤 뒤 문장에서 뒤집는다. 같은 묶음 안에서 H2091·H2403·H3381·H341·H3772·H5030·H5046·H5439·H5647·H6485·H7126·H7651까지 13개가 같은 모양이고, 나머지 4개(H3290·H3701·H6256·H7704)만 정정된 서술이라 같은 상황이 두 가지로 적혀 있다."
+    },
+    {
+      "strong": "H2403",
+      "field": "note",
+      "current": "표기가 갈려 5개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬(dagesh forte) 중복음을 받침 ㅅ으로 살린 \"핫타아\"를 채택한다. 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.",
+      "suggested": "…테트의 강 다게쉬는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않아 하타아로 둔다.",
+      "evidence": "contextChapterCardsPs1.js의 חַטָּאתִי(하타티), koreanGloss.js H3727 카포레트, koreanGlossTopBatch01.js H859 אַתָּה(아타), contextChapterCardsNumDeut.js שְׁמִטָּה(셰미타) 모두 다게쉬 포르테를 받침으로 겹쳐 적지 않는다.",
+      "severity": "low",
+      "reason": "note가 \"핫타아를 채택한다\"고 한글 표기를 명시하는데 실제 translitKo는 하타아이고 배포 데이터도 하타티다. 13개 중 이 한 건만 한글 표기를 잘못 단정해 팝업에서 오해를 부를 수 있다."
+    }
+  ]
+}

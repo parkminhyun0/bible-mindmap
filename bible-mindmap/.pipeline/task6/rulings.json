@@ -1,0 +1,954 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "claudeopus5",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {
+        "begadkepat": "SBL 라틴 표기에서 베가드케파트 연음 구분 기호(ḇ ḡ ḏ ḵ p̄ ṯ)를 쓰지 않고 b g d k p t로만 적는다 — 학술 표기 중에서도 이미 배포된 창세기 배치(ṭôb·ʿereb·bādal·rāḥap·ʾēt)가 무표기 SBL 일반식을 쓰고 있어, 한글 음역에 아무 차이도 만들지 않는 구분을 지금 들이면 사전이 두 체계로 쪼개지기 때문이다. 같은 이유로 쉐바는 ə가 아니라 확정 표기 tĕhôm·ʾĕlōhîm과 같은 ĕ로 적는다.",
+        "final_shin": "음절을 닫는 שׁ는 '쉬', 음절을 여는 שׁ는 뒤따르는 모음에 붙여 샤/셰/시/쇼/슈로 적는다 — 학술 표기를 표제로 삼되 이미 확정된 이쉬(ʾîš)·미쉬파트(mišpāṭ)·에쉬(ʾēš)와 마시아흐(māšîaḥ)·샤마(šāmaʿ)가 정확히 이 갈래를 따르고 있어 관용과도 충돌하지 않는다.",
+        "gemination": "다게쉬 포르테는 한글에서 받침으로 겹쳐 적지 않는다(맛테 ✗ 마테 ○) — 확정 배포된 אַתָּה → 아타가 선례이고, 한국어의 받침 겹침은 원음 재현이 아니라 다른 낱말로 읽히게 만들 뿐이라 관용·학술 어느 쪽에도 이득이 없다. 라틴 표기에서는 ṭṭ·šš처럼 그대로 겹쳐 적는다.",
+        "waw": "ו는 자음 w로 보고 와/웨/위/워로 적는다(바 ✗) — 현대 히브리어식 v가 아니라 성서 히브리어 학술 표기를 표제로 삼으며, 이미 확정된 야훼(yhwh)·다위드(dāwid)가 같은 처리다.",
+        "ayin_holam": "ע는 한글로 따로 적지 않고, 그 뒤에 오는 홀렘 얹은 바브는 waw 규칙대로 자음 w로 읽어 '원'으로 적는다(עָוֺן → 아원) — 관용형 '아온'은 자음 바브를 단순 모음으로 오해한 표기라 학술 표기를 표제로 삼는다."
+      }
+    },
+    {
+      "model": "gem31pro",
+      "rules": {
+        "begadkepat": "베가드케파트 연음은 SBL 학술 표기 원칙에 따라 밑줄 기호(ḇ, ḡ, ḏ, ḵ, p̄, ṯ)를 명시하여 구별한다.",
+        "final_shin": "음절 말 שׁ는 외래어 표기 관례 및 모음 첨가 최소화 원칙에 따라 '쉬'가 아닌 '시'로 통일한다.",
+        "gemination": "다게쉬 포르테(중복 자음)는 원어의 겹자음 특성을 살려 한글 표기 시 앞 음절의 받침(ㅅ, ㅂ, ㄱ 등)으로 반영한다.",
+        "waw": "자음 ו는 SBL 라틴 음역 'w'를 반영하여 현대 히브리어 관용(v)이 아닌 고전 반모음(w, 예: 와, 위, 워)으로 표기한다.",
+        "ayin_holam": "ע와 홀렘 바브(וֹ)가 결합할 때 ו를 반모음 w로 간주하여 '아원' 등 w음을 살려 표기한다."
+      }
+    },
+    {
+      "model": "gem37flash",
+      "rules": {
+        "begadkepat": "SBL 라틴 음역에서 다게쉬 레네가 없는 베가드케파트 자음의 연음(마찰음화)을 하선/상선 부호(ḇ, ḡ, ḏ, ḵ, p̄, ṯ)로 엄밀히 구분하여 적는다. (학술 표기 기준: 원어 음운의 파열음/마찰음 대립 정보를 정확히 보존하기 위함이다.)",
+        "final_shin": "히브리어 שׁ(š)가 모음이 뒤따르지 않는 음절 말(어말 또는 음절 말)에 올 때 한글 표기는 \"…쉬\"로 통일한다. (학술 표기 기준: 무성 후치경 마찰음 [ʃ] 음가를 보존하고 שׂ([s], \"스\")와의 혼동을 방지하며 기존 사전 표기와의 일관성을 유지하기 위함이다.)",
+        "gemination": "히브리어 강 다게쉬(dagesh forte)에 의한 자음 중복은 한글에서 앞 음절 받침(ㅅ, ㅂ, ㅁ 등)으로 살려 적는다. (학술 표기 기준: 원어의 중복 자음(gemination) 음가를 충실히 반영하고 기존 사전 표기와의 일관성을 지키기 위함이다.)",
+        "waw": "자음 ו(waw)의 한글 표기는 현대식 \"바/베/비\" 대신 고전 히브리어 음가 및 SBL 전사(w)에 맞춰 \"와/웨/위/워\" 계열로 적는다. (학술 표기 기준: 고전 히브리어의 양순 반모음 [w] 음가와 SBL 학술 표준을 준수하기 위함이다.)",
+        "ayin_holam": "ע(ʿ)와 홀렘 바브(וֹ)가 결합된 음절(עָוֺן 등)은 \"아원\"으로 표기한다. (학술 표기 기준: ו가 단순 모음이 아닌 어근 자음[w]에 홀렘 모음이 결합된 음절 구조(wōn)이므로 자음 음가를 온전히 보존하기 위함이다.)"
+      }
+    }
+  ],
+  "tieCount": 7,
+  "ties": [
+    {
+      "strong": "H3966",
+      "koRank": [
+        [
+          "메오드",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕʾōd",
+          1
+        ],
+        [
+          "mĕʾōḏ",
+          1
+        ],
+        [
+          "məʾōḏ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H1366",
+      "koRank": [
+        [
+          "게불",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "gĕbûl",
+          1
+        ],
+        [
+          "gĕḇûl",
+          1
+        ],
+        [
+          "gəḇûl",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H7970",
+      "koRank": [
+        [
+          "셸로심",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "šĕlôšîm",
+          1
+        ],
+        [
+          "šĕlōšîm",
+          1
+        ],
+        [
+          "šəlôšîm",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H4399",
+      "koRank": [
+        [
+          "멜라카",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕlāʾkâ",
+          1
+        ],
+        [
+          "mĕlāʾḵâ",
+          1
+        ],
+        [
+          "məlāʾḵâ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2572",
+      "koRank": [
+        [
+          "하미심",
+          1
+        ],
+        [
+          "하밋심",
+          1
+        ],
+        [
+          "하미쉼",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ḥămiššîm",
+          3
+        ]
+      ]
+    },
+    {
+      "strong": "H6666",
+      "koRank": [
+        [
+          "체다카",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "ṣĕdāqâ",
+          1
+        ],
+        [
+          "ṣĕḏāqâ",
+          1
+        ],
+        [
+          "ṣəḏāqâ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3414",
+      "koRank": [
+        [
+          "이르메야",
+          3
+        ]
+      ],
+      "latRank": [
+        [
+          "yirmĕyâ",
+          1
+        ],
+        [
+          "yirmĕyāh",
+          1
+        ],
+        [
+          "yirməyâ",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H7586",
+      "lemma": "שָׁאוּל",
+      "translit": "šāʾûl",
+      "translitKo": "샤울",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 한국어 성경 관용은 '사울'이지만 명세가 학술 표기를 표제로 삼으라 하므로 שׁ를 샤로 적는다. 이미 확정된 다위드(개역 '다윗')와 같은 처리다."
+    },
+    {
+      "strong": "H3701",
+      "lemma": "כֶּסֶף",
+      "translit": "kesep̄",
+      "translitKo": "케세프",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ף는 연음된 peh지만 베가드케파트 무표기 규칙에 따라 p로 적는다. 확정 표기 rāḥap(라하프)와 같은 방식이다."
+    },
+    {
+      "strong": "H7651",
+      "lemma": "שֶׁבַע",
+      "translit": "šeḇaʿ",
+      "translitKo": "셰바",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šeḇaʿ를 채택한다."
+    },
+    {
+      "strong": "H2091",
+      "lemma": "זָהָב",
+      "translit": "zāhāḇ",
+      "translitKo": "자하브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 zāhāḇ를 채택한다."
+    },
+    {
+      "strong": "H3381",
+      "lemma": "יָרַד",
+      "translit": "yāraḏ",
+      "translitKo": "야라드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 yāraḏ를 채택한다."
+    },
+    {
+      "strong": "H5002",
+      "lemma": "נְאֻם",
+      "translit": "nĕʾum",
+      "translitKo": "네움",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 쉐바를 ə가 아니라 ĕ로 적는 규칙에 따랐다. 확정 표기 tĕhôm과 같은 방식이다."
+    },
+    {
+      "strong": "H5046",
+      "lemma": "נָגַד",
+      "translit": "nāḡaḏ",
+      "translitKo": "나가드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 nāḡaḏ를 채택한다."
+    },
+    {
+      "strong": "H3290",
+      "lemma": "יַעֲקֹב",
+      "translit": "yaʿăqōḇ",
+      "translitKo": "야아코브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙으로 ḇ를 b로 적는다. 관용은 '야곱'이나 학술 표기를 표제로 삼아 야아코브로 두고, ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H2568",
+      "lemma": "חָמֵשׁ",
+      "translit": "ḥāmēš",
+      "translitKo": "하메쉬",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 라틴은 두 안이 같고 한글만 갈렸다. 음절을 닫는 שׁ는 쉬로 적는 규칙에 따라 하메쉬."
+    },
+    {
+      "strong": "H5439",
+      "lemma": "סָבִיב",
+      "translit": "sāḇîḇ",
+      "translitKo": "사비브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇîḇ를 채택한다."
+    },
+    {
+      "strong": "H7704",
+      "lemma": "שָׂדֶה",
+      "translit": "śāḏeh",
+      "translitKo": "사데",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙으로 ḏ를 d로 적고, 어말 세골-헤는 -eh로 살린다. ś는 확정 표기(이스라엘·아사)대로 ㅅ."
+    },
+    {
+      "strong": "H113",
+      "lemma": "אָדוֹן",
+      "translit": "ʾāḏôn",
+      "translitKo": "아돈",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʾāḏôn을 채택한다."
+    },
+    {
+      "strong": "H3627",
+      "lemma": "כְּלִי",
+      "translit": "kĕlî",
+      "translitKo": "켈리",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ְ)를 ə로 전사하는 SBL 학술 표기 규범에 따라 kəlî를 채택한다."
+    },
+    {
+      "strong": "H5030",
+      "lemma": "נָבִיא",
+      "translit": "nāḇîʾ",
+      "translitKo": "나비",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 nāḇîʾ를 채택한다."
+    },
+    {
+      "strong": "H4940",
+      "lemma": "מִשְׁפָּחָה",
+      "translit": "mišpāḥâ",
+      "translitKo": "미쉬파하",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 라틴은 두 안이 같다. 음절을 닫는 שׁ는 쉬로 적는 규칙이며, 확정 표기 미쉬파트(mišpāṭ)와 같은 자리다."
+    },
+    {
+      "strong": "H6485",
+      "lemma": "פָּקַד",
+      "translit": "pāqaḏ",
+      "translitKo": "파카드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 pāqaḏ를 채택한다."
+    },
+    {
+      "strong": "H3966",
+      "lemma": "מְאֹד",
+      "translit": "mĕʾōd",
+      "translitKo": "메오드",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 달렛의 연음(ḏ)을 모두 반영한 SBL 학술 표기 məʾōḏ를 채택한다."
+    },
+    {
+      "strong": "H6256",
+      "lemma": "עֵת",
+      "translit": "ʿēṯ",
+      "translitKo": "에트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ṯ를 t로 적는다. 확정 표기 ʾēt(에트)와 같은 처리다."
+    },
+    {
+      "strong": "H2403",
+      "lemma": "חַטָּאָה",
+      "translit": "ḥaṭṭāʾâ",
+      "translitKo": "핫타아",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬(dagesh forte) 중복음을 받침 ㅅ으로 살린 \"핫타아\"를 채택한다."
+    },
+    {
+      "strong": "H8010",
+      "lemma": "שְׁלֹמֹה",
+      "translit": "šĕlōmōh",
+      "translitKo": "셸로모",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 홀렘-헤(ōh)를 정확히 반영한 SBL 학술 표기 šəlōmōh를 채택하며, 관용 표기 \"솔로몬\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H6430",
+      "lemma": "פְּלִשְׁתִּי",
+      "translit": "pĕlištî",
+      "translitKo": "펠리쉬티",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 쉐바 ĕ 규칙은 option1에, 음절을 닫는 שׁ를 쉬로 적는 규칙은 option2에 있어 두 규칙을 합쳤다. 관용 표기 '블레셋'과는 다르나 학술 표기를 표제로 삼는다."
+    },
+    {
+      "strong": "H3772",
+      "lemma": "כָּרַת",
+      "translit": "kāraṯ",
+      "translitKo": "카라트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 kāraṯ를 채택한다."
+    },
+    {
+      "strong": "H5647",
+      "lemma": "עָבַד",
+      "translit": "ʿāḇaḏ",
+      "translitKo": "아바드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베트(ב)와 달렛(ד)의 연음(ḇ, ḏ)을 반영한 SBL 학술 표기 ʿāḇaḏ를 채택한다."
+    },
+    {
+      "strong": "H2320",
+      "lemma": "חֹדֶשׁ",
+      "translit": "ḥōḏeš",
+      "translitKo": "호데쉬",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 라틴은 무표기 규칙(ḥōdeš, option1), 한글은 음절 끝 שׁ 규칙(호데쉬, option2)이라 두 안을 합쳤다."
+    },
+    {
+      "strong": "H341",
+      "lemma": "אֹיֵב",
+      "translit": "ʾōyēḇ",
+      "translitKo": "오예브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾōyēḇ를 채택한다."
+    },
+    {
+      "strong": "H7126",
+      "lemma": "קָרַב",
+      "translit": "qāraḇ",
+      "translitKo": "카라브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 qāraḇ를 채택한다."
+    },
+    {
+      "strong": "H4294",
+      "lemma": "מַטֶּה",
+      "translit": "maṭṭeh",
+      "translitKo": "맛테",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 테트(ט)의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"맛테\"를 채택한다."
+    },
+    {
+      "strong": "H1366",
+      "lemma": "גְּבוּל",
+      "translit": "gĕbûl",
+      "translitKo": "게불",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 베트의 연음(ḇ)을 모두 반영한 SBL 학술 표기 gəḇûl를 채택한다."
+    },
+    {
+      "strong": "H5771",
+      "lemma": "עָוֺן",
+      "translit": "ʿāwōn",
+      "translitKo": "아원",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. 홀렘을 얹은 ו는 자음 w이므로 '원'으로 적고 ע는 한글로 적지 않아 아원이 된다. '아온'은 바브를 모음으로 오해한 관용형이다."
+    },
+    {
+      "strong": "H3091",
+      "lemma": "יְהוֹשׁוּעַ",
+      "translit": "yĕhôšûaʿ",
+      "translitKo": "예호슈아",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 어말 아인 앞 furtive patach(uaʿ)를 반영한 SBL 학술 표기 yəhôšûaʿ를 채택한다."
+    },
+    {
+      "strong": "H3130",
+      "lemma": "יוֹסֵף",
+      "translit": "yôsēp̄",
+      "translitKo": "요세프",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yôsēp̄를 채택하며, 관용 표기 \"요셉\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3254",
+      "lemma": "יָסַף",
+      "translit": "yāsap̄",
+      "translitKo": "야사프",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 yāsap̄를 채택한다."
+    },
+    {
+      "strong": "H7901",
+      "lemma": "שָׁכַב",
+      "translit": "šāḵaḇ",
+      "translitKo": "샤카브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 카프(כ)와 베트(ב)의 연음(ḵ, ḇ)을 반영한 SBL 학술 표기 šāḵaḇ를 채택한다."
+    },
+    {
+      "strong": "H157",
+      "lemma": "אָהַב",
+      "translit": "ʾāhaḇ",
+      "translitKo": "아하브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾāhaḇ를 채택한다."
+    },
+    {
+      "strong": "H3467",
+      "lemma": "יָשַׁע",
+      "translit": "yāšaʿ",
+      "translitKo": "야샤",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. שׁ가 음절 첫소리라 뒤 모음에 붙여 샤로 적는다. '솨'는 이 사전이 쓰지 않는 표기다."
+    },
+    {
+      "strong": "H8199",
+      "lemma": "שָׁפַט",
+      "translit": "šāp̄aṭ",
+      "translitKo": "샤파트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 šāp̄aṭ를 채택한다."
+    },
+    {
+      "strong": "H622",
+      "lemma": "אָסַף",
+      "translit": "ʾāsap̄",
+      "translitKo": "아사프",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾāsap̄를 채택한다."
+    },
+    {
+      "strong": "H3201",
+      "lemma": "יָכֹל",
+      "translit": "yāḵōl",
+      "translitKo": "야콜",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 카프(כ)의 연음(ḵ)을 반영한 SBL 학술 표기 yāḵōl를 채택한다."
+    },
+    {
+      "strong": "H3709",
+      "lemma": "כַּף",
+      "translit": "kap̄",
+      "translitKo": "카프",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 kap̄를 채택한다."
+    },
+    {
+      "strong": "H929",
+      "lemma": "בְּהֵמָה",
+      "translit": "bĕhēmâ",
+      "translitKo": "베헤마",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)를 정확히 반영한 SBL 학술 표기 bəhēmâ를 채택한다."
+    },
+    {
+      "strong": "H5612",
+      "lemma": "סֵפֶר",
+      "translit": "sēp̄er",
+      "translitKo": "세페르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sēp̄er를 채택한다."
+    },
+    {
+      "strong": "H7650",
+      "lemma": "שָׁבַע",
+      "translit": "šāḇaʿ",
+      "translitKo": "샤바",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ를 b로 적는다. 어말 ע는 한글로 적지 않아 샤바."
+    },
+    {
+      "strong": "H6",
+      "lemma": "אָבַד",
+      "translit": "ʾāḇaḏ",
+      "translitKo": "아바드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ·ḏ를 b·d로 적는다. 첫 자음이 א라 H5647(ʿābad)와 라틴에서 구별되지만 한글은 둘 다 아바드다."
+    },
+    {
+      "strong": "H4687",
+      "lemma": "מִצְוָה",
+      "translit": "miṣwâ",
+      "translitKo": "미츠와",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 라틴은 두 안이 같다. ו를 자음 w로 보고 와/웨/위로 적는 규칙에 따라 미츠와이며, 확정 표기 야훼·다위드와 같은 처리다. 현대 히브리어식 '미츠바'는 표제로 쓰지 않는다."
+    },
+    {
+      "strong": "H4124",
+      "lemma": "מוֹאָב",
+      "translit": "môʾāḇ",
+      "translitKo": "모아브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 môʾāḇ를 채택하며, 관용 표기 \"모압\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H669",
+      "lemma": "אֶפְרַיִם",
+      "translit": "ʾep̄rayim",
+      "translitKo": "에프라임",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ʾep̄rayim을 채택하며, 관용 표기 \"에브라임\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4430",
+      "lemma": "מֶלֶךְ",
+      "translit": "meleḵ",
+      "translitKo": "멜레크",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 카프(ךְ)의 연음(ḵ)과 음절 구조를 반영한 SBL 학술 표기 meleḵ / \"멜레크\"를 채택한다."
+    },
+    {
+      "strong": "H8193",
+      "lemma": "שָׂפָה",
+      "translit": "śāp̄â",
+      "translitKo": "사파",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 śāp̄â를 채택한다."
+    },
+    {
+      "strong": "H85",
+      "lemma": "אַבְרָהָם",
+      "translit": "ʾaḇrāhām",
+      "translitKo": "아브라함",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 ʾaḇrāhām을 채택한다."
+    },
+    {
+      "strong": "H7970",
+      "lemma": "שְׁלוֹשִׁים",
+      "translit": "šĕlôšîm",
+      "translitKo": "셸로심",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 쉐바 ĕ 규칙은 option1에, 홀렘 바브를 ô로 적는 정확한 표기는 option2에 있어 확정 표기 tĕhôm과 같은 방식으로 합쳤다. שׁ가 음절 첫소리라 한글은 셸로심."
+    },
+    {
+      "strong": "H4399",
+      "lemma": "מְלָאכָה",
+      "translit": "mĕlāʾkâ",
+      "translitKo": "멜라카",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 카프의 연음(ḵ)을 모두 반영한 SBL 학술 표기 məlāʾḵâ를 채택한다."
+    },
+    {
+      "strong": "H2572",
+      "lemma": "חֲמִשִּׁים",
+      "translit": "ḥămiššîm",
+      "translitKo": "하미심",
+      "votesKo": 1,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 라틴은 두 안이 같다. 다게쉬 포르테를 받침으로 겹치지 않고, שׁ가 뒤 음절의 첫소리라 시로 적어 하미심이 된다."
+    },
+    {
+      "strong": "H1368",
+      "lemma": "גִּבּוֹר",
+      "translit": "gibbôr",
+      "translitKo": "깁보르",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 베트(בּ)의 강 다게쉬 중복음을 받침 ㅂ으로 반영한 \"깁보르\"를 채택한다."
+    },
+    {
+      "strong": "H2077",
+      "lemma": "זֶבַח",
+      "translit": "zeḇaḥ",
+      "translitKo": "제바흐",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḇ를 b로 적는다. 어말 ח는 확정 표기 루아흐처럼 흐로 적는다."
+    },
+    {
+      "strong": "H5437",
+      "lemma": "סָבַב",
+      "translit": "sāḇaḇ",
+      "translitKo": "사바브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬가 없는 두 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 sāḇaḇ를 채택한다."
+    },
+    {
+      "strong": "H5608",
+      "lemma": "סָפַר",
+      "translit": "sāp̄ar",
+      "translitKo": "사파르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 sāp̄ar를 채택한다."
+    },
+    {
+      "strong": "H6666",
+      "lemma": "צְדָקָה",
+      "translit": "ṣĕdāqâ",
+      "translitKo": "체다카",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 셰바(ə)와 달렛의 연음(ḏ)을 반영한 SBL 학술 표기 ṣəḏāqâ를 채택한다."
+    },
+    {
+      "strong": "H4194",
+      "lemma": "מָוֶת",
+      "translit": "māweṯ",
+      "translitKo": "마웨트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)과 바브의 w 음가를 반영한 SBL 학술 표기 māweṯ를 채택한다."
+    },
+    {
+      "strong": "H6828",
+      "lemma": "צָפוֹן",
+      "translit": "ṣāp̄ôn",
+      "translitKo": "차폰",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 페(פ)의 연음(p̄)을 반영한 SBL 학술 표기 ṣāp̄ôn을 채택한다."
+    },
+    {
+      "strong": "H804",
+      "lemma": "אַשּׁוּר",
+      "translit": "ʾaššûr",
+      "translitKo": "앗슈르",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). שּׁ의 강 다게쉬 중복음을 받침 ㅅ으로 반영한 \"앗슈르\"를 채택하며, 관용 표기 \"앗수르\" 대신 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H5048",
+      "lemma": "נֶגֶד",
+      "translit": "neḡeḏ",
+      "translitKo": "네게드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 기멜(ג)과 달렛(ד)의 연음(ḡ, ḏ)을 반영한 SBL 학술 표기 neḡeḏ를 채택한다."
+    },
+    {
+      "strong": "H5060",
+      "lemma": "נָגַע",
+      "translit": "nāḡaʿ",
+      "translitKo": "나가",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 무표기 규칙에 따라 ḡ를 g로 적는다. 어말 ע는 한글로 적지 않아 나가."
+    },
+    {
+      "strong": "H7230",
+      "lemma": "רֹב",
+      "translit": "rōḇ",
+      "translitKo": "로브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 rōḇ를 채택한다."
+    },
+    {
+      "strong": "H5712",
+      "lemma": "עֵדָה",
+      "translit": "ʿēḏâ",
+      "translitKo": "에다",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 달렛(ד)의 연음(ḏ)을 반영한 SBL 학술 표기 ʿēḏâ를 채택한다."
+    },
+    {
+      "strong": "H3414",
+      "lemma": "יִרְמְיָה",
+      "translit": "yirmĕyâ",
+      "translitKo": "이르메야",
+      "votesKo": 3,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 쉐바 ĕ 규칙은 option1에, 어말 카메츠-헤를 â로 적는 확정 표기(hāyâ·rāʾâ)는 option2에 있어 둘을 합쳤다. 한글은 두 안이 같다."
+    },
+    {
+      "strong": "H7665",
+      "lemma": "שָׁבַר",
+      "translit": "šāḇar",
+      "translitKo": "샤바르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베트(ב)의 연음(ḇ)을 반영한 SBL 학술 표기 šāḇar를 채택한다."
+    },
+    {
+      "strong": "H4519",
+      "lemma": "מְנַשֶּׁה",
+      "translit": "mĕnaššeh",
+      "translitKo": "메나셰",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 유성 셰바(ə)와 어말 세골-헤(eh)를 살린 SBL 라틴 표기 mənaššeh와 신-세골(še)의 올바른 한글 표기 \"메나셰\"를 채택한다. (관용 표기 \"므낫세\"와 차이 있음)"
+    },
+    {
+      "strong": "H7843",
+      "lemma": "שָׁחַת",
+      "translit": "šāḥaṯ",
+      "translitKo": "샤하트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 타브(ת)의 연음(ṯ)을 반영한 SBL 학술 표기 šāḥaṯ를 채택한다."
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "scope": "hebrew-A",
+  "checked": 49,
+  "findings": [
+    {
+      "strong": "H2416",
+      "field": "translitKo",
+      "current": "하이",
+      "suggested": "카이",
+      "evidence": "src/data/bookContext.js:179 ('카이 아도나이')",
+      "severity": "high",
+      "reason": "이미 배포된 bookContext.js 에서는 חַי 를 '카이'로 표기했습니다."
+    },
+    {
+      "strong": "H4872",
+      "field": "translitKo",
+      "current": "모셰",
+      "suggested": "모쉐",
+      "evidence": "src/data/bookContext.js:529 ('와이할 모쉐')",
+      "severity": "medium",
+      "reason": "배포 데이터에서는 מֹשֶׁה 를 '모쉐' 또는 '모세'로 표기했습니다."
+    },
+    {
+      "strong": "H3063",
+      "field": "translit",
+      "current": "yəhûdâ",
+      "suggested": "yĕhûdâ",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js 의 tĕhôm 및 H5002 쉐바 규칙",
+      "severity": "medium",
+      "reason": "유성 쉐바를 ĕ로 표기하는 규칙과 달리 ə가 쓰였습니다."
+    },
+    {
+      "strong": "H3389",
+      "field": "translit",
+      "current": "yərûšālaim",
+      "suggested": "yĕrûšālaim",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js 의 tĕhôm 및 H5002 쉐바 규칙",
+      "severity": "medium",
+      "reason": "유성 쉐바를 ĕ로 표기하는 규칙과 달리 ə가 쓰였습니다."
+    },
+    {
+      "strong": "H8147",
+      "field": "translit",
+      "current": "šənayim",
+      "suggested": "šĕnayim",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js 의 tĕhôm 및 H5002 쉐바 규칙",
+      "severity": "medium",
+      "reason": "유성 쉐바를 ĕ로 표기하는 규칙과 달리 ə가 쓰였습니다."
+    }
+  ]
+}

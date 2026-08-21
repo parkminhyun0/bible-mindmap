@@ -1,0 +1,46 @@
+{
+  "scope": "greek",
+  "checked": 39,
+  "findings": [
+    {
+      "strong": "G4100",
+      "field": "translitKo",
+      "current": "피스테우오",
+      "suggested": "피스튜오",
+      "severity": "high",
+      "reason": "이미 배포된 src/data/bookContext.js 는 같은 동사의 활용형 πιστεύουσιν 을 '피스튜우신'으로 적는다(ευ→유). 배포 데이터에서 ευ 를 '에우'로 적은 사례는 하나도 없고(프뉴마·히에류스·유앙겔리온·유튀스 등 19곳 전부 유), '에우'는 ηυ 전용이다(ηὔξανεν→에우크사넨)."
+    },
+    {
+      "strong": "G4198",
+      "field": "translitKo",
+      "current": "포레우오마이",
+      "suggested": "포류오마이",
+      "severity": "high",
+      "reason": "bookContext.js 가 같은 동사의 활용형 ἐπορεύετο 를 '에포류에토'로 적어 ευ 뒤에 모음이 와도 '류'로 적는다. note 에 적힌 '뒤에 모음이 오므로 에우' 규칙은 배포 데이터(εὐαγγέλιον→유앙겔리온, παιδεύει→파이듀에이, πολίτευμα→폴리튜마)와 정면으로 어긋난다."
+    },
+    {
+      "strong": "G2453",
+      "field": "translitKo",
+      "current": "이우다이오스",
+      "suggested": "유다이오스",
+      "severity": "high",
+      "reason": "bookContext.js 에 같은 lemma 가 그대로 있고 'Ἰουδαῖος → 유다이오스', 복수형도 'Ἰουδαῖοι → 유다이오이'로 적혀 있다. note 는 '유대인'을 관용 표기로 보고 피했으나, 배포된 원음 음역 자체가 이미 유다이오스다."
+    },
+    {
+      "strong": "G2147",
+      "field": "translitKo",
+      "current": "헤우리스코",
+      "suggested": "휴리스코",
+      "severity": "medium",
+      "reason": "ευ→유 규칙(프뉴마·히에류스·유튀스)에 거친 기식을 얹으면 '휴'가 된다. note 의 '후속 자음 ρ가 유음이므로 에우' 규칙은 배포 데이터에 선례가 없고, 이 배치의 ευ 세 항목만 저장소 전체와 어긋나게 만든다."
+    },
+    {
+      "strong": "G1093",
+      "field": "translit",
+      "current": "gē",
+      "suggested": "gê",
+      "severity": "low",
+      "reason": "γῆ 는 곡절 악센트를 가지는데 translit 에 악센트 표시가 빠졌다. 이 배치의 나머지 38개는 모두 악센트를 표시하며 곡절도 Παῦλος→Paûlos, Ἰουδαῖος→Ioudaîos 처럼 살렸다."
+    }
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "shard": "C",
+  "model": "claudeopus5",
+  "count": 49,
+  "entries": [
+    {
+      "strong": "H639",
+      "lemma": "אַף",
+      "translit": "ʾap",
+      "translitKo": "아프",
+      "note": "어말 פ는 다게쉬가 없어 마찰음 f로 읽히므로 한글은 '프'로 적는다. 어두 א(ʾ)는 따로 적지 않는다."
+    },
+    {
+      "strong": "H6629",
+      "lemma": "צֹאן",
+      "translit": "ṣōʾn",
+      "translitKo": "촌",
+      "note": "א는 묵음이라 모음만 남는다. צ는 기존 표기 אֶרֶץ→에레츠와 같이 ㅊ 계열로 적는다."
+    },
+    {
+      "strong": "H6547",
+      "lemma": "פַּרְעֹה",
+      "translit": "parʿōh",
+      "translitKo": "파르오",
+      "note": "학술 표기를 표제로 둔다. ע는 한글로 적지 않는다. 개역개정 관용 표기 '바로'는 히브리어가 아니라 이집트어 pr-ʿȝ를 거친 전래 표기다."
+    },
+    {
+      "strong": "H68",
+      "lemma": "אֶבֶן",
+      "translit": "ʾeben",
+      "translitKo": "에벤",
+      "note": ""
+    },
+    {
+      "strong": "H1320",
+      "lemma": "בָּשָׂר",
+      "translit": "bāśār",
+      "translitKo": "바사르",
+      "note": "שׂ(ś)는 ㅅ으로 적어 שׁ(š, '쉬/시')와 구분한다."
+    },
+    {
+      "strong": "G3101",
+      "lemma": "μαθητής",
+      "translit": "mathētḗs",
+      "translitKo": "마테테스",
+      "note": ""
+    },
+    {
+      "strong": "G2983",
+      "lemma": "λαμβάνω",
+      "translit": "lambánō",
+      "translitKo": "람바노",
+      "note": ""
+    },
+    {
+      "strong": "H7563",
+      "lemma": "רָשָׁע",
+      "translit": "rāšāʿ",
+      "translitKo": "라샤",
+      "note": "어말 ע는 한글로 적지 않는 것이 기본이다(שָׁמַע→샤마와 같은 꼴)."
+    },
+    {
+      "strong": "G1093",
+      "lemma": "γῆ",
+      "translit": "gē",
+      "translitKo": "게",
+      "note": ""
+    },
+    {
+      "strong": "H3824",
+      "lemma": "לֵבָב",
+      "translit": "lēbāb",
+      "translitKo": "레바브",
+      "note": ""
+    },
+    {
+      "strong": "H4294",
+      "lemma": "מַטֶּה",
+      "translit": "maṭṭeh",
+      "translitKo": "맛테",
+      "note": "ט의 다게쉬(중복)를 받침 ㅅ으로 살렸다. 어말 ה는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H4390",
+      "lemma": "מָלֵא",
+      "translit": "mālēʾ",
+      "translitKo": "말레",
+      "note": "어말 א는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "G611",
+      "lemma": "ἀποκρίνομαι",
+      "translit": "apokrínomai",
+      "translitKo": "아포크리노마이",
+      "note": ""
+    },
+    {
+      "strong": "H520",
+      "lemma": "אַמָּה",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "note": ""
+    },
+    {
+      "strong": "H2617",
+      "lemma": "חֵסֵד",
+      "translit": "ḥēsēd",
+      "translitKo": "헤세드",
+      "note": "입력 lemma가 체레(ֵ) 점형이라 ḥēsēd로 적었다. 통용 점형 חֶסֶד(ḥesed)와 한글 표기는 '헤세드'로 같다. ח는 ㅎ으로 적는다."
+    },
+    {
+      "strong": "H2428",
+      "lemma": "חַיִל",
+      "translit": "ḥayil",
+      "translitKo": "하일",
+      "note": "기존 표기 עַיִן→아인과 같은 꼴로 맞췄다. ח는 ㅎ으로 적는다."
+    },
+    {
+      "strong": "G4100",
+      "lemma": "πιστεύω",
+      "translit": "pisteúō",
+      "translitKo": "피스테우오",
+      "note": "ευ 뒤에 모음 ω가 와서 '에우'로 적는다(자음 앞이면 에브/에프로 갈린다)."
+    },
+    {
+      "strong": "H7272",
+      "lemma": "רֶגֶל",
+      "translit": "regel",
+      "translitKo": "레겔",
+      "note": ""
+    },
+    {
+      "strong": "G4102",
+      "lemma": "πίστις",
+      "translit": "pístis",
+      "translitKo": "피스티스",
+      "note": ""
+    },
+    {
+      "strong": "H1366",
+      "lemma": "גְּבוּל",
+      "translit": "gəbûl",
+      "translitKo": "게불",
+      "note": "어두 쉐바(ְ)는 짧은 '에'로 적는다."
+    },
+    {
+      "strong": "H410",
+      "lemma": "אֵל",
+      "translit": "ʾēl",
+      "translitKo": "엘",
+      "note": ""
+    },
+    {
+      "strong": "H5288",
+      "lemma": "נַעַר",
+      "translit": "naʿar",
+      "translitKo": "나아르",
+      "note": "ע를 한글로 적지 않아 모음 두 개가 이어진다."
+    },
+    {
+      "strong": "H2398",
+      "lemma": "חָטָא",
+      "translit": "ḥāṭāʾ",
+      "translitKo": "하타",
+      "note": "ח는 ㅎ으로 적고 어말 א는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H4639",
+      "lemma": "מַעֲשֶׂה",
+      "translit": "maʿăśeh",
+      "translitKo": "마아세",
+      "note": "ע는 적지 않고 하테프 파타흐(ֲ)만 '아'로 남긴다. שׂ는 ㅅ, 어말 ה는 묵음이다."
+    },
+    {
+      "strong": "H5771",
+      "lemma": "עָוֺן",
+      "translit": "ʿāwōn",
+      "translitKo": "아온",
+      "note": "기존 표기 דָּוִד→다위드처럼 ו를 반모음으로 처리해 '아온'으로 적었다. ו를 v로 읽는 현대식 관용 표기는 '아본'이다. 어두 ע는 적지 않는다."
+    },
+    {
+      "strong": "H2142",
+      "lemma": "זָכַר",
+      "translit": "zākar",
+      "translitKo": "자카르",
+      "note": ""
+    },
+    {
+      "strong": "H3423",
+      "lemma": "יָרַשׁ",
+      "translit": "yāraš",
+      "translitKo": "야라쉬",
+      "note": "어말 שׁ(š)는 기존 표기 אִישׁ→이쉬와 같이 '쉬'로 적는다."
+    },
+    {
+      "strong": "H7235",
+      "lemma": "רָבָה",
+      "translit": "rābâ",
+      "translitKo": "라바",
+      "note": ""
+    },
+    {
+      "strong": "H7130",
+      "lemma": "קֶרֶב",
+      "translit": "qereb",
+      "translitKo": "케레브",
+      "note": "ק(q)와 כ(k)는 한글에서 모두 ㅋ으로 적혀 구분되지 않는다."
+    },
+    {
+      "strong": "H1245",
+      "lemma": "בָּקַשׁ",
+      "translit": "bāqaš",
+      "translitKo": "바카쉬",
+      "note": "어말 שׁ는 이쉬와 같은 꼴로 '쉬'로 적는다."
+    },
+    {
+      "strong": "H127",
+      "lemma": "אֲדָמָה",
+      "translit": "ʾădāmâ",
+      "translitKo": "아다마",
+      "note": ""
+    },
+    {
+      "strong": "H3789",
+      "lemma": "כָּתַב",
+      "translit": "kātab",
+      "translitKo": "카타브",
+      "note": ""
+    },
+    {
+      "strong": "H5159",
+      "lemma": "נַחֲלָה",
+      "translit": "naḥălâ",
+      "translitKo": "나할라",
+      "note": "ח는 ㅎ으로 적는다(לָקַח→라카흐와 같은 꼴). 어말 ה는 묵음이다."
+    },
+    {
+      "strong": "H4150",
+      "lemma": "מוֹעֵד",
+      "translit": "môʿēd",
+      "translitKo": "모에드",
+      "note": "ע를 적지 않아 '모에드'가 된다."
+    },
+    {
+      "strong": "G1097",
+      "lemma": "γινώσκω",
+      "translit": "ginṓskō",
+      "translitKo": "기노스코",
+      "note": "기존 표기 γίνομαι→기노마이와 같이 γι를 '기'로 적는다."
+    },
+    {
+      "strong": "G1135",
+      "lemma": "γυνή",
+      "translit": "gynḗ",
+      "translitKo": "귀네",
+      "note": "υ는 '위'로 적는 원칙에 따랐다(κύριος→퀴리오스와 같은 꼴). 발음 중심 관용 표기는 '기네'다."
+    },
+    {
+      "strong": "G1831",
+      "lemma": "ἐξέρχομαι",
+      "translit": "exérchomai",
+      "translitKo": "엑세르코마이",
+      "note": "ξ는 ㄱ받침+ㅅ으로 풀고 χ는 ㅋ으로 적는다(ἔχω→에코와 같은 꼴)."
+    },
+    {
+      "strong": "H517",
+      "lemma": "אֵם",
+      "translit": "ʾēm",
+      "translitKo": "엠",
+      "note": ""
+    },
+    {
+      "strong": "H8451",
+      "lemma": "תּוֹרָה",
+      "translit": "tôrâ",
+      "translitKo": "토라",
+      "note": ""
+    },
+    {
+      "strong": "H8354",
+      "lemma": "שָׁתָה",
+      "translit": "šātâ",
+      "translitKo": "샤타",
+      "note": ""
+    },
+    {
+      "strong": "H3091",
+      "lemma": "יְהוֹשׁוּעַ",
+      "translit": "yəhôšûaʿ",
+      "translitKo": "예호슈아",
+      "note": "어말 ע 앞 furtive patach를 '아'로 살렸다. 개역개정 관용 표기 '여호수아'는 어두 יְ를 '여'로 옮긴 전래 표기다."
+    },
+    {
+      "strong": "G435",
+      "lemma": "ἀνήρ",
+      "translit": "anḗr",
+      "translitKo": "아네르",
+      "note": ""
+    },
+    {
+      "strong": "H3559",
+      "lemma": "כּוּן",
+      "translit": "kûn",
+      "translitKo": "쿤",
+      "note": ""
+    },
+    {
+      "strong": "H8337",
+      "lemma": "שֵׁשׁ",
+      "translit": "šēš",
+      "translitKo": "셰쉬",
+      "note": "어두 שׁ는 '셰', 어말 שׁ는 이쉬와 같은 꼴로 '쉬'로 적는다."
+    },
+    {
+      "strong": "H5800",
+      "lemma": "עָזַב",
+      "translit": "ʿāzab",
+      "translitKo": "아자브",
+      "note": "어두 ע는 한글로 적지 않는다(עַם→암과 같은 꼴)."
+    },
+    {
+      "strong": "H4264",
+      "lemma": "מַחֲנֶה",
+      "translit": "maḥăneh",
+      "translitKo": "마하네",
+      "note": "ח는 ㅎ으로 적고 어말 ה는 묵음이다."
+    },
+    {
+      "strong": "H5186",
+      "lemma": "נָטָה",
+      "translit": "nāṭâ",
+      "translitKo": "나타",
+      "note": ""
+    },
+    {
+      "strong": "H4397",
+      "lemma": "מֲלְאָךְ",
+      "translit": "malʾāk",
+      "translitKo": "말아크",
+      "note": "입력 lemma의 점형이 통용형 מַלְאָךְ와 달라 보이나 음가는 malʾāk이다. א는 묵음이고 어말 ךְ는 기존 표기 הָלַךְ→할라크와 같이 '크'로 적는다."
+    },
+    {
+      "strong": "H5337",
+      "lemma": "נָצַל",
+      "translit": "nāṣal",
+      "translitKo": "나찰",
+      "note": "צ는 기존 표기 에레츠와 같이 ㅊ 계열로 적는다."
+    }
+  ]
+}

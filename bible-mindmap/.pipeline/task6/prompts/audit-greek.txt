@@ -1,0 +1,18 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 '헬라어 음역 감사자'다. 파일을 고치지 마라. 찾아서 보고만 하라.
+
+`src/data/koreanGlossTopBatch02.js` 에 들어간 항목 중 **헬라어(G로 시작) 39개**만 감사하라. 히브리어 항목은 다른 감사에서 다뤘으니 건드리지 마라.
+
+점검 항목:
+1. 기존 확정 표기와 어긋나는가. 참고(읽기 전용): `src/data/koreanGloss.js`, `src/data/koreanGlossTopBatch01.js`. 예: λόγος→로고스, χριστός→크리스토스, πνεῦμα→프뉴마, βασιλεία→바실레이아, δόξα→독사, θάλασσα→탈라사, στέφανος→스테파노스.
+2. ευ 의 한글 표기가 후속 자음에 따라 일관된가.
+3. υ 를 위/유 중 무엇으로 적었고 일관된가. ῥ(rh), σσ, γγ/γκ(비음 앞 감마), 이중모음 ει/οι/αι 처리가 일관된가.
+4. 기식(rough breathing, ἁ/ἡ)을 ㅎ 로 살렸는가, 일관된가.
+5. 라틴 음역(translit)이 lemma 의 악센트·기식과 맞는가.
+6. 이 배치 안에서 같은 조합이 서로 다르게 적힌 곳이 있는가.
+
+출력은 `.pipeline/task6/audits/audit-greek.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. git 명령도 쓰지 마라.
+
+형식(마크다운 코드펜스 없이 JSON만):
+{"scope":"greek","checked":<개수>,"findings":[{"strong":"G1234","field":"translitKo|translit","current":"…","suggested":"…","severity":"high|medium|low","reason":"한국어 한두 문장"}]}
+
+문제가 없으면 findings 를 빈 배열로 둬라. 억지로 찾아내지 마라. 다 쓴 뒤 node -e 로 JSON.parse 하고 "audit-greek.json findings=<개수> OK" 한 줄만 보고하라.

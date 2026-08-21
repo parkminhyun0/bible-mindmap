@@ -1,0 +1,23 @@
+{
+  "shard": "B",
+  "model": "gem31pro2",
+  "checked": 23,
+  "findings": [
+    {
+      "strong": "H3069",
+      "field": "translitKo",
+      "current": "예호위",
+      "suggested": "야훼",
+      "severity": "high",
+      "reason": "H3068과 동일한 신명(YHWH)이므로 TopBatch01의 H3068과 동일하게 '야훼'로 표기해야 합니다. '예호위'는 대독(Qere)용 모음부호를 기계적으로 읽은 것입니다."
+    },
+    {
+      "strong": "H3069",
+      "field": "translit",
+      "current": "yĕhōwih",
+      "suggested": "",
+      "severity": "medium",
+      "reason": "TopBatch01의 H3068이 translit을 비워둔 것과 일관성을 맞추어 비워두거나 yhwh로 적어야 합니다."
+    }
+  ]
+}
