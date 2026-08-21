@@ -346,11 +346,14 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const morphFields = morphologyFields(primaryMorphHuman);
   const koreanTranslit = resolveKoreanTransliteration(entry);
   const translitNote = resolveTransliterationNote(entry);
-  const lexicalSource = entry.l || entry.w || '';
+  const lexicalRecord = resolveLexicalRecord(entry);
+  // 일부 HOT 토큰은 활용형만 있고 `l`(lemma)이 없다. 이때 전체 어형을
+  // 사전 원형으로 표시하면 접두사·관사까지 원형에 섞이므로 활성 사전의
+  // 검증된 lemma를 먼저 사용한다.
+  const lexicalSource = entry.l || lexicalRecord?.lemma || entry.w || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
   const surfaceKoreanTranslit = resolveSurfaceKoreanTransliteration(entry.w, isHebrew);
-  const lexicalRecord = resolveLexicalRecord(entry);
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
   const strongHref = externalStrongHref(entry.s, isHebrew);
