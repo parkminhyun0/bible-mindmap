@@ -1,0 +1,138 @@
+{
+  "model": "codex",
+  "rulings": [
+    {
+      "strong": "H1687",
+      "translit": "dĕbîr",
+      "translitKo": "데비르",
+      "evidence": "koreanGlossTopBatch03.js의 H8050(šĕmûʾēl) 표기 및 WORKER_SPEC.md 1항",
+      "note": "SBL 학술 표기 원칙을 따라 데비르로 적는다. 인명/지명 관용 표기 드빌과 차이가 있다."
+    },
+    {
+      "strong": "H6190",
+      "translit": "ʿorlâ",
+      "translitKo": "오를라",
+      "evidence": "koreanGlossTopBatch02.js의 H3383(yardēn) 표기 및 카메츠 하투프 적용",
+      "note": "히브리어 자음 ר(r)과 ל(l)이 연달아 올 때 한국어 표기에서 '르'를 살려 오를라로 적는다."
+    },
+    {
+      "strong": "H5018",
+      "translit": "nĕbûzarʾădān",
+      "translitKo": "네부자르아단",
+      "evidence": "WORKER_SPEC.md 1항 베가드케파트 연음 규칙 및 H8050(šĕmûʾēl) 표기",
+      "note": "SBL 학술 표기 원칙을 따라 네부자르아단으로 적는다. 관용 표기 느부사라단과 차이가 있다."
+    },
+    {
+      "strong": "H6593",
+      "translit": "pišteh",
+      "translitKo": "피쉬테",
+      "evidence": "koreanGlossTopBatch04.js의 H4960(mišteh) 선례 및 WORKER_SPEC.md 3항",
+      "note": "음절 말 שׁ는 '쉬'로 적는다는 규칙과 기존 선례에 따라 피쉬테로 표기한다."
+    },
+    {
+      "strong": "H2174",
+      "translit": "zimrî",
+      "translitKo": "짐리",
+      "evidence": "koreanGlossTopBatch08.js의 H6018(ʿomrî - 옴리) 선례",
+      "note": "학술 표기 원칙에 따라 짐리로 표기한다. 관용 표기 시므리와 차이가 있다."
+    },
+    {
+      "strong": "H7237",
+      "translit": "rabbâ",
+      "translitKo": "라바",
+      "evidence": "koreanGlossTopBatch02.js의 H7227(rabbâ) 및 H7676(šabbāṯ) 표기 선례",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 학술 표기 원칙에 따라 라바로 표기한다. 관용 표기 랍바와 차이가 있다."
+    },
+    {
+      "strong": "H2811",
+      "translit": "ḥăšabyâ",
+      "translitKo": "하샤브야",
+      "evidence": "WORKER_SPEC.md 1항 베가드케파트 연음 규칙 및 3항 음절 말 표기",
+      "note": "학술 표기 원칙을 따라 하샤브야로 적는다. 관용 표기 하사뱌와 차이가 있다."
+    },
+    {
+      "strong": "H7814",
+      "translit": "śĕḥôq",
+      "translitKo": "세호크",
+      "evidence": "koreanGlossTopBatch04.js의 H8040(śĕmōʾl - 세몰) 표기 선례",
+      "note": "슈와(shewa)를 ĕ로 표기하는 학술 관례에 따라 세호크로 적는다."
+    },
+    {
+      "strong": "H8574",
+      "translit": "tannûr",
+      "translitKo": "타누르",
+      "evidence": "WORKER_SPEC.md 2항 다게쉬 포르테 규칙",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 원칙에 따라 타누르로 표기한다."
+    },
+    {
+      "strong": "H783",
+      "translit": "ʾartaḥšaštāʾ",
+      "translitKo": "아르타흐샤쉬타",
+      "evidence": "WORKER_SPEC.md 3항 음절 말 שׁ 규칙",
+      "note": "음절 말 שׁ는 '쉬'로 적는다는 학술 표기 원칙을 따른다. 관용 표기 아닥사스다와 차이가 있다."
+    },
+    {
+      "strong": "G5180",
+      "translit": "týptō",
+      "translitKo": "튑토",
+      "evidence": "koreanGlossTopBatch03.js의 G907(baptízō - 밥티조) 표기 선례",
+      "note": "π(p)를 받침 ㅂ으로 적었던 밥티조의 선례를 따라 튑토로 표기한다."
+    },
+    {
+      "strong": "G312",
+      "translit": "anangéllō",
+      "translitKo": "아낭겔로",
+      "evidence": "koreanGlossTopBatch01.js의 G32(ángelos - 앙겔로스) 표기 선례",
+      "note": "접두어 ana-가 붙은 형태이며 γγ는 ng로 발음되므로 아낭겔로로 표기한다."
+    },
+    {
+      "strong": "H5417",
+      "translit": "nĕtanʾēl",
+      "translitKo": "네탄엘",
+      "evidence": "koreanGlossTopBatch03.js의 H1008(bêt-ʾēl - 베트엘) 표기 선례",
+      "note": "알레프(ʾ)를 독립적인 음절 첫소리로 보아 네탄엘로 표기한다. 관용 표기 느다넬과 차이가 있다."
+    },
+    {
+      "strong": "H3378",
+      "translit": "yĕrubbaʿal",
+      "translitKo": "예루바알",
+      "evidence": "WORKER_SPEC.md 2항 다게쉬 포르테 규칙",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 원칙에 따라 예루바알로 표기한다. 관용 표기 여룹바알과 차이가 있다."
+    },
+    {
+      "strong": "H3550",
+      "translit": "kĕhunnâ",
+      "translitKo": "케후나",
+      "evidence": "WORKER_SPEC.md 2항 다게쉬 포르테 규칙",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 원칙에 따라 케후나로 표기한다."
+    },
+    {
+      "strong": "H3425",
+      "translit": "yĕruššâ",
+      "translitKo": "예루샤",
+      "evidence": "WORKER_SPEC.md 2항 다게쉬 포르테 규칙",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 원칙에 따라 예루샤로 표기한다."
+    },
+    {
+      "strong": "H3004",
+      "translit": "yabbāšâ",
+      "translitKo": "야바샤",
+      "evidence": "WORKER_SPEC.md 2항 다게쉬 포르테 규칙",
+      "note": "다게쉬 포르테를 겹쳐 적지 않는 원칙에 따라 야바샤로 표기한다."
+    },
+    {
+      "strong": "G5177",
+      "translit": "tynchánō",
+      "translitKo": "튄카노",
+      "evidence": "koreanGlossTopBatch02.js의 G5485(cháris - 카리스) 등 χ의 ㅋ 표기 관례",
+      "note": "χ를 ㅋ으로 적는 관례에 따라 튄카노로 표기한다."
+    },
+    {
+      "strong": "G1605",
+      "translit": "ekplḗssō",
+      "translitKo": "에크플레소",
+      "evidence": "koreanGlossTopBatch05.js의 G1607(ekporeúomai - 에크포류오마이) 및 WORKER_SPEC.md 2항",
+      "note": "κ 뒤에 파열음(π)이 올 때 '크'로 분리하고, 중복 자음 σσ를 겹쳐 적지 않는 원칙을 따른다."
+    }
+  ]
+}

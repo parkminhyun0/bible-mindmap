@@ -1,0 +1,101 @@
+[
+  {
+    "strong": "G2165",
+    "field": "translitKo",
+    "current": "유프라이노",
+    "suggested": "에프라이노",
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entry G2165; WORKER_SPEC.md batch 02 rule 5; src/data/koreanGlossTopBatch01.js",
+    "severity": "medium",
+    "reason": "εὐφραίνω의 ευ는 후속 자음 φ 앞에서 에프 계열로 적는 확정 규칙을 따르므로 유프라이노가 아니라 에프라이노여야 한다."
+  },
+  {
+    "strong": "G1763",
+    "field": "note",
+    "current": "ευ의 표기는 관행적으로 에우를 따름",
+    "suggested": "",
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entry G1763; WORKER_SPEC.md batch 02 rule 5",
+    "severity": "low",
+    "reason": "lemma ἐνιαυτός에는 ευ 연쇄가 없으므로 ευ 표기 설명이 해당 항목과 모순된다."
+  },
+  {
+    "strong": "G312",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "G5180",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H2174",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H2811",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H5417",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H7237",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H7814",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H783",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H8574",
+    "field": "entry",
+    "current": null,
+    "suggested": null,
+    "evidence": ".pipeline/task13/input/shard-Y.json; .pipeline/task13/final.json Y entries",
+    "severity": "high",
+    "reason": "Y 입력 항목에는 있으나 final.json의 Y 결과에 항목 자체가 누락되었다."
+  }
+]

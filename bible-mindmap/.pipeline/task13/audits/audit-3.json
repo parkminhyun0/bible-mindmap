@@ -1,0 +1,80 @@
+[
+  {
+    "strong": "H3378",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "yĕrubbaʿal",
+      "translitKo": "예루바알",
+      "note": "개역개정 관용 표기는 여룹바알이다. 유성 쉐바(yĕ→예)와 다게쉬 포르테 단자음화(bb→ㅂ) 학술 표기 규칙에 따른다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings.json H3378; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H3550",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "kĕhunnâ",
+      "translitKo": "케훈나",
+      "note": "유성 쉐바는 케로 적고, 비음 겹자음 נּ은 받침과 초성으로 나눈다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings.json H3550; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H3425",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "yĕrûšâ",
+      "translitKo": "예루샤",
+      "note": "유성 쉐바(yĕ→예)와 שׁ의 다게쉬 포르테 단자음화 규칙에 따른다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings.json H3425; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "H3004",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "yāḇāšâ",
+      "translitKo": "야바샤",
+      "note": "다게쉬 포르테는 한글에서 받침으로 겹쳐 적지 않는다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings.json H3004; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "G5177",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "tynchánō",
+      "translitKo": "튄카노",
+      "note": "χ는 ㅋ으로, γχ와 υ의 확정 음역 규칙에 따른다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings/adj-gem37flash.json G5177; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  },
+  {
+    "strong": "G1605",
+    "field": "entry",
+    "current": null,
+    "suggested": {
+      "translit": "ekplḗssō",
+      "translitKo": "에크플레소",
+      "note": "κπ의 에크 표기와 σσ 단자음화 규칙에 따른다."
+    },
+    "evidence": ".pipeline/task13/input/shard-Z.json; .pipeline/task13/rulings/adj-gem37flash.json G1605; .pipeline/task13/final.json의 Z entries",
+    "severity": "high",
+    "reason": "Z 입력 항목에는 있으나 final.json의 Z shard 결과에 항목 자체가 누락되었다."
+  }
+]

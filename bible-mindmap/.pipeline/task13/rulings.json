@@ -1,0 +1,235 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 0,
+  "ties": [],
+  "rulings": [
+    {
+      "strong": "H1687",
+      "lemma": "דְּבִיר",
+      "translit": "dĕbîr",
+      "translitKo": "데비르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 지성소를 뜻하는 명사다. 유성 쉐바(ĕ)를 'ㅔ'로 표기하는 학술 원칙(선례: 베헤마·게불)에 따라 데비르로 적으며, 관용 표기는 드빌이다."
+    },
+    {
+      "strong": "H6190",
+      "lemma": "עׇרְלָה",
+      "translit": "ʿorlâ",
+      "translitKo": "오를라",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 히브리어 자음 ר(r)과 ל(l)이 연달아 올 때 한국어 표기에서 '르'를 살려 오를라로 적는다."
+    },
+    {
+      "strong": "H5018",
+      "lemma": "נְבוּזַרְאֲדָן",
+      "translit": "nĕbûzarʾădān",
+      "translitKo": "네부자르아단",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 느부사라단이다. 유성 쉐바(nĕ→네)와 어간 자음을 살린 학술 표기는 네부자르아단이다."
+    },
+    {
+      "strong": "H6593",
+      "lemma": "פִּשְׁתֶּה",
+      "translit": "pišteh",
+      "translitKo": "피쉬테",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 음절 말 שׁ(š)은 확정 규칙 3항(선례: 펠리쉬티·미쉬파하)에 따라 '쉬'로 적어 피쉬테가 된다."
+    },
+    {
+      "strong": "H2174",
+      "lemma": "זִמְרִי",
+      "translit": "zimrî",
+      "translitKo": "짐리",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 시므리다. 폐음절의 מ 받침과 ז(z→ㅈ)을 살린 학술 표기는 짐리다."
+    },
+    {
+      "strong": "H7237",
+      "lemma": "רַבָּה",
+      "translit": "rabbâ",
+      "translitKo": "라바",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 랍바다. 파열음의 다게쉬 포르테를 받침으로 겹쳐 적지 않는 확정 규칙 2항(선례: 기보르·아타)에 따라 라바로 적는다."
+    },
+    {
+      "strong": "H2811",
+      "lemma": "חֲשַׁבְיָה",
+      "translit": "ḥăšabyâ",
+      "translitKo": "하샤브야",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 하사뱌다. 원어 모음 patah(שַׁ→샤)와 학술 표기 규칙에 따라 하샤브야로 적는다."
+    },
+    {
+      "strong": "H7814",
+      "lemma": "שְׂחוֹק",
+      "translit": "śĕḥôq",
+      "translitKo": "세호크",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 쉐바(ĕ)를 'ㅔ'로 적는 학술 규칙(선례: ʾĕlōhîm→엘로힘, śĕrāyâ→세라야)에 따라 세호크로 적는다."
+    },
+    {
+      "strong": "H8574",
+      "lemma": "תַּנּוּר",
+      "translit": "tannûr",
+      "translitKo": "탄누르",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 비음 겹자음 נּ(nn)은 폐쇄음과 달리 받침+초성으로 나누는 선례(선례: ʾammâ→암마, tĕḥinnâ→테힌나)에 따라 탄누르로 적는다."
+    },
+    {
+      "strong": "H783",
+      "lemma": "אַרְתַּחְשַׁשְׁתָּא",
+      "translit": "ʾartaḥšaštāʾ",
+      "translitKo": "아르타흐샤쉬타",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 아닥사스다다. 음절 말 שׁ(š)을 '쉬'로 적는 학술 표기 규칙(선례: pĕlištî→펠리쉬티)에 따라 아르타흐샤쉬타로 적는다."
+    },
+    {
+      "strong": "G5180",
+      "lemma": "τύπτω",
+      "translit": "týptō",
+      "translitKo": "튑토",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 그리스어 자음군 πτ는 앞 음절 받침 ㅂ과 뒤 음절 ㅌ으로 적는 선례(선례: níptō→닙토, krýptō→크립토)에 따라 튑토로 적는다."
+    },
+    {
+      "strong": "G312",
+      "lemma": "ἀναγγέλλω",
+      "translit": "anangéllō",
+      "translitKo": "아낭겔로",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 접두사 ἀνα-와 γγ(ng)의 음역 선례(선례: apangéllō→아팡겔로, katangéllō→카탕겔로)에 따라 아낭겔로로 적는다."
+    },
+    {
+      "strong": "H5417",
+      "lemma": "נְתַנְאֵל",
+      "translit": "nĕtanʾēl",
+      "translitKo": "네탄엘",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 느다넬이다. 어근 결합(nĕtan + ʾēl)과 SBL 학술 표기 규칙에 따라 네탄엘로 적는다."
+    },
+    {
+      "strong": "H3378",
+      "lemma": "יְרֻבַּעַל",
+      "translit": "yĕrubbaʿal",
+      "translitKo": "예루바알",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 여룹바알이다. 유성 쉐바(yĕ→예)와 다게쉬 포르테 단자음화(bb→ㅂ) 학술 표기 규칙에 따라 예루바알로 적는다."
+    },
+    {
+      "strong": "H3550",
+      "lemma": "כְּהֻנָּה",
+      "translit": "kĕhunnâ",
+      "translitKo": "케훈나",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 유성 쉐바는 '케'(선례: kĕlî→켈리)로 적고, 비음 겹자음 נּ은 받침과 초성으로 나누는 선례(선례: tĕḥinnâ→테힌나)에 따라 케훈나로 적는다."
+    },
+    {
+      "strong": "H3425",
+      "lemma": "יְרֻשָּׁה",
+      "translit": "yĕruššâ",
+      "translitKo": "예루샤",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 유성 쉐바(yĕ→예)와 שׁ의 다게쉬 포르테 단자음 표기 규칙(선례: yĕhûdâ→예후다, ʾiššâ→이샤)에 따라 예루샤로 적는다."
+    },
+    {
+      "strong": "H3004",
+      "lemma": "יַבָּשָׁה",
+      "translit": "yabbāšâ",
+      "translitKo": "야바샤",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬 포르테(중복 자음)는 확정 규칙 2항(선례: gibbôr→기보르, ʾattâ→아타)에 따라 받침으로 겹쳐 적지 않고 야바샤로 적는다."
+    },
+    {
+      "strong": "G5177",
+      "lemma": "τυγχάνω",
+      "translit": "tynchánō",
+      "translitKo": "튄카노",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 그리스어 χ(chi)는 'ㅋ'으로 표기(선례: cháris→카리스, elénchō→엘렝코)하며, γχ(nch)와 υ(y) 음역 규칙에 따라 튄카노로 적는다."
+    },
+    {
+      "strong": "G1605",
+      "lemma": "ἐκπλήσσω",
+      "translit": "ekplḗssō",
+      "translitKo": "에크플레소",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). κ 뒤에 파열음 π가 올 때 '에크'로 적는 선례(선례: ekporeúomai→에크포류오마이)와 σσ 단자음화 규칙(선례: 탈라사)에 따라 에크플레소로 적는다."
+    }
+  ]
+}

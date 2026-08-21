@@ -1,0 +1,1 @@
+현재 폴더 bible-mindmap. `.pipeline/task13/final.json`의 Y shard 100개를 독립 감사하라. 배포된 `src/data/koreanGloss*.js`, `bookContext.js`, `bibleReferences.js`의 선례와 확정 규칙만 근거로 실제 표기 오류·note 모순을 기록한다. 산출물은 `.pipeline/task13/audits/audit-2.json` JSON 배열이며 오류가 없으면 빈 배열을 쓴다.
