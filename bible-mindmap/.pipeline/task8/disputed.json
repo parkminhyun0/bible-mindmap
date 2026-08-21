@@ -1,0 +1,209 @@
+{
+  "count": 6,
+  "items": [
+    {
+      "shard": "I",
+      "strong": "G1122",
+      "lemma": "γραμματεύς",
+      "lang": "greek",
+      "glossEn": "scribe, town-clerk",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "grammateús",
+          "translitKo": "그라마테우스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "grammateús",
+          "translitKo": "그람마테우스",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "grammateús",
+          "translitKo": "그라마테우스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "grammateús",
+          "translitKo": "그람마튜스",
+          "note": "ευς를 '-튜스'로 적었다. 이미 배포된 데이터의 ἱερεύς→히에류스 선례를 따른 것이며, 관용 표기는 '그람마테우스'다."
+        }
+      ]
+    },
+    {
+      "shard": "I",
+      "strong": "H1109",
+      "lemma": "בִּלְעָם",
+      "lang": "hebrew",
+      "glossEn": "Balaam, Bileam.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "bilʿām",
+          "translitKo": "빌암",
+          "note": "관용 표기(발람) 대신 학술 표기를 따름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bilʿām",
+          "translitKo": "빌람",
+          "note": "관용 표기는 발람이다. 학술 표기는 빌람이다(모음 hiriq 반영)."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "bilʿām",
+          "translitKo": "빌람",
+          "note": "고유명사 관용 표기: 발람."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bilʿām",
+          "translitKo": "빌암",
+          "note": "개역개정 관용 표기는 '발람'이다. ע는 한글로 따로 적지 않아 '빌암'이 된다."
+        }
+      ]
+    },
+    {
+      "shard": "J",
+      "strong": "H4080",
+      "lemma": "מִדְיָן",
+      "lang": "hebrew",
+      "glossEn": "Midian, Midianite.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "midyān",
+          "translitKo": "미디안",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "midyān",
+          "translitKo": "미디안",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "midyān",
+          "translitKo": "미디얀",
+          "note": "관용 표기는 미디안이다. 학술 표기 midyān을 따라 미디얀으로 적는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "midyān",
+          "translitKo": "미드얀",
+          "note": "관용 표기 “미디안”과 차이. 달렛에 유성 쉐바가 없어 미드얀으로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "J",
+      "strong": "H347",
+      "lemma": "אִיּוֹב",
+      "lang": "hebrew",
+      "glossEn": "Job.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ʾîyôb",
+          "translitKo": "이욥",
+          "note": "관용 표기는 '욥'이다."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾiyyôb",
+          "translitKo": "이요브",
+          "note": "학술 표기는 이요브(ʾiyyôb)다. 한국어 성경(개역개정)은 욥으로 축약 표기한다."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ʾîyôb",
+          "translitKo": "이욥",
+          "note": "관용 표기는 욥이다. 학술 표기를 따라 이욥으로 적는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾiyyôb",
+          "translitKo": "이요브",
+          "note": "관용 표기 “욥”과 차이. 학술 표기를 표제로 둔다."
+        }
+      ]
+    },
+    {
+      "shard": "J",
+      "strong": "H5945",
+      "lemma": "עֶלְיוֹן",
+      "lang": "hebrew",
+      "glossEn": "(Most, on) high(-er, -est), upper(-most).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "ʿelyôn",
+          "translitKo": "엘욘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿelyôn",
+          "translitKo": "엘리온",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ʿelyôn",
+          "translitKo": "엘용",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿelyôn",
+          "translitKo": "엘욘",
+          "note": "요드를 자음으로 보아 엘욘으로 적는다. 엘리온으로 적는 표기와 갈릴 수 있다."
+        }
+      ]
+    },
+    {
+      "shard": "K",
+      "strong": "H7346",
+      "lemma": "רְחַבְעָם",
+      "lang": "hebrew",
+      "glossEn": "Rehoboam.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "gem31pro",
+          "translit": "rəḥabʿām",
+          "translitKo": "레하브암",
+          "note": "관용 표기: 르호보암"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rəḥabʿām",
+          "translitKo": "르하브암",
+          "note": "인명(르호보암). 학술 표기는 르하브암이며, 한국어 성경 관용 표기는 르호보암이다."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "reḥabʿām",
+          "translitKo": "레합암",
+          "note": "개역개정 관용 표기는 르호보암."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rĕḥabʿām",
+          "translitKo": "레하브암",
+          "note": "학술 표기는 레하브암이다. 개역개정은 '르호보암'으로 적는다. 관용 표기는 칠십인역 Ροβοαμ을 거친 형태다. 어중 ע(ʿ)는 한글로 따로 적지 않는다."
+        }
+      ]
+    }
+  ]
+}
