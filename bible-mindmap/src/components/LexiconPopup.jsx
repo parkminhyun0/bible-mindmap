@@ -26,6 +26,10 @@ const HEBREW_LEMMA_FALLBACKS = {
   H776: 'אֶרֶץ',
 };
 
+const HEBREW_SURFACE_SEGMENT_FALLBACKS = {
+  H776: ['וְ', 'הָ', 'אָרֶץ'],
+};
+
 function clampSize(width, height, vw, vh) {
   const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
   const maxH = Math.max(POPUP_MIN_HEIGHT, vh - POPUP_VIEWPORT_MARGIN * 2);
@@ -345,7 +349,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   if (!entry) return null;
 
   const isHebrew = entry.s?.startsWith('H');
-  const hebrewComposition = isHebrew ? buildHebrewWordComposition(entry.w, entry.m) : [];
+  const surfaceSegments = isHebrew && HEBREW_SURFACE_SEGMENT_FALLBACKS[normalizedStrong(entry.s)]
+    ? HEBREW_SURFACE_SEGMENT_FALLBACKS[normalizedStrong(entry.s)].join('/')
+    : entry.w;
+  const hebrewComposition = isHebrew ? buildHebrewWordComposition(surfaceSegments, entry.m) : [];
   const fullMorphHuman = isHebrew ? humanizeHebrewMorphCode(entry.m) : humanizeMorph(entry.m);
   const primaryMorphHuman = isHebrew
     ? (hebrewComposition[hebrewComposition.length - 1]?.human || fullMorphHuman)
