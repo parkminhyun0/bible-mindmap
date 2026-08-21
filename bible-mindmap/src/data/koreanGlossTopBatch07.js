@@ -916,7 +916,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'kîyôr',
     translitKo: '키요르',
     glossKo: 'hearth, laver, pan, scaffold.',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다.',
+    note: '요드 다게쉬(yy)를 라틴 음역에 반영했다. 한국어 표기는 키요르로 유지한다.',
     review: true,
   },
   H6522: {
@@ -1138,9 +1138,9 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
   G3900: {
     lemma: 'παράπτωμα',
     translit: 'paráptōma',
-    translitKo: '파라프토마',
+    translitKo: '파랍토마',
     glossKo: 'fall, fault, offence, sin, trespass',
-    note: '네 모델 중 3개가 같은 음역안을 냈다.',
+    note: '배포 선례 G4098 핍토·G907 밥티조에 따라 π 앞 음절을 받침으로 닫아 파랍토마로 정정했다.',
     review: true,
   },
   G2525: {
@@ -1772,7 +1772,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'ʾelqānâ',
     translitKo: '엘카나',
     glossKo: 'Elkanah.',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기 ‘엘가나’와 차이.',
+    note: '음역형 엘카나와 한국어 성경 관용 표기 엘가나를 병기한다.',
     review: true,
   },
   H446: {
@@ -1796,7 +1796,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'ʾîtāmār',
     translitKo: '이타마르',
     glossKo: 'Ithamar.',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기 ‘이다말’과 차이.',
+    note: '음역형 이타마르와 한국어 성경 관용 표기 이다말을 병기한다.',
     review: true,
   },
   H2216: {
@@ -1868,7 +1868,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'ʾăkîš',
     translitKo: '아키쉬',
     glossKo: 'Achish.',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기 ‘아기스’와 차이.',
+    note: '음역형 아키쉬와 한국어 성경 관용 표기 아기스를 병기한다.',
     review: true,
   },
   H4321: {
@@ -1884,7 +1884,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'lĕḥî',
     translitKo: '레히',
     glossKo: 'cheek (bone), jaw (bone).',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기는 레이이다.',
+    note: '배포된 사사기 15장 카드의 표기는 레히다. 기존 note의 관용 표기 레이는 사실 오류라 삭제했다.',
     review: true,
   },
   H6957: {
@@ -2348,7 +2348,7 @@ export const KOREAN_GLOSS_TOP_BATCH_07 = {
     translit: 'ʿălîyâ',
     translitKo: '알리야',
     glossKo: 'ascent, (upper) chamber, going up, loft, parlour.',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 어두 ע 는 한글로 따로 적지 않았다.',
+    note: '요드 다게쉬(yy)를 라틴 음역에 반영했다. 한국어 표기는 알리야로 유지한다.',
     review: true,
   },
   H8304: {
