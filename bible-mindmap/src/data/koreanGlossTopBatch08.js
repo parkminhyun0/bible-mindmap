@@ -1076,7 +1076,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
     translit: 'sukkôt',
     translitKo: '숙코트',
     glossKo: 'Succoth.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치).',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기: 숙코트 · 한국교회 관용 표기: 숙곳/숙콧.',
     review: true,
   },
   H2674: {
