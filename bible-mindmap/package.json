@@ -5,7 +5,7 @@
   "type": "module",
   "homepage": "https://parkminhyun0.github.io/bible-mindmap",
   "scripts": {
-    "predev": "node scripts/verify-dependency-integrity.mjs && node scripts/verify-workflow-security.mjs && node scripts/verify-data-registry-integrity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/audit-context-v2.mjs && node scripts/verify-biblical-periods.mjs && node scripts/verify-biblical-people.mjs && node scripts/verify-korean-gloss.mjs && node scripts/verify-translation-alignment.mjs && node scripts/verify-lexicon-translation-pilot.mjs && node scripts/verify-parallel-study.mjs && node scripts/verify-context-scaffolding.mjs && node scripts/verify-curated-chapters.mjs && node scripts/verify-doctrinal-safety.mjs && node scripts/verify-transliteration-policy.mjs && node scripts/verify-mobile-safety.mjs && node scripts/verify-chapter-card-markers.mjs && node scripts/verify-canonical-concepts.mjs && node scripts/verify-canonical-usage-completeness.mjs && node scripts/verify-verse-loader-regression.mjs && node scripts/verify-ai-candidates.mjs && node scripts/verify-ai-provider-boundary.mjs && node scripts/verify-embedding-contract.mjs && node scripts/verify-hybrid-search.mjs && node scripts/verify-retrieval-evaluation.mjs && node scripts/verify-nvidia-embedding-model-policy.mjs && node scripts/verify-nvidia-retrieval-audit.mjs && node scripts/verify-nvidia-embedding-poc.mjs && node scripts/verify-nvidia-embedding-dimension-bakeoff.mjs && node scripts/verify-nvidia-reranker-contract.mjs && node scripts/verify-nvidia-reranker-poc.mjs && node scripts/verify-nvidia-hybrid-shadow-index.mjs && node scripts/verify-system-audit-residual-risks.mjs",
+    "predev": "node scripts/verify-dependency-integrity.mjs && node scripts/verify-workflow-security.mjs && node scripts/verify-data-registry-integrity.mjs && node scripts/verify-expanded-contexts.mjs && node scripts/verify-context-arc-system.mjs && node scripts/audit-context-v2.mjs && node scripts/verify-biblical-periods.mjs && node scripts/verify-biblical-people.mjs && node scripts/build-korean-gloss-registry.mjs --check && node scripts/verify-translit-rules.mjs && node scripts/verify-korean-gloss.mjs && node scripts/verify-translation-alignment.mjs && node scripts/verify-lexicon-translation-pilot.mjs && node scripts/verify-parallel-study.mjs && node scripts/verify-context-scaffolding.mjs && node scripts/verify-curated-chapters.mjs && node scripts/verify-doctrinal-safety.mjs && node scripts/verify-transliteration-policy.mjs && node scripts/verify-mobile-safety.mjs && node scripts/verify-chapter-card-markers.mjs && node scripts/verify-canonical-concepts.mjs && node scripts/verify-canonical-usage-completeness.mjs && node scripts/verify-verse-loader-regression.mjs && node scripts/verify-ai-candidates.mjs && node scripts/verify-ai-provider-boundary.mjs && node scripts/verify-embedding-contract.mjs && node scripts/verify-hybrid-search.mjs && node scripts/verify-retrieval-evaluation.mjs && node scripts/verify-nvidia-embedding-model-policy.mjs && node scripts/verify-nvidia-retrieval-audit.mjs && node scripts/verify-nvidia-embedding-poc.mjs && node scripts/verify-nvidia-embedding-dimension-bakeoff.mjs && node scripts/verify-nvidia-reranker-contract.mjs && node scripts/verify-nvidia-reranker-poc.mjs && node scripts/verify-nvidia-hybrid-shadow-index.mjs && node scripts/verify-system-audit-residual-risks.mjs",
     "dev": "vite",
     "build": "vite build",
     "build:lexicon": "node scripts/build-lexicon.mjs",
@@ -53,7 +53,10 @@
     "predeploy": "npm run build:places && npm run build && cp -r landing/. dist/ && npm run inject:visitor-status && npm run verify:visitor-status",
     "deploy": "gh-pages -d dist --dotfiles",
     "verify:deploy": "node scripts/verify-deploy.mjs",
-    "build:places": "node scripts/build-places.mjs"
+    "build:places": "node scripts/build-places.mjs",
+    "verify:gloss-registry": "node scripts/build-korean-gloss-registry.mjs --check",
+    "verify:translit-rules": "node scripts/verify-translit-rules.mjs",
+    "build:gloss-registry": "node scripts/build-korean-gloss-registry.mjs"
   },
   "dependencies": {
     "@dagrejs/dagre": "^3.0.0",
@@ -65,6 +68,7 @@
     "@tiptap/starter-kit": "^3.28.0",
     "@xyflow/react": "^12.11.2",
     "docx": "^9.7.1",
+    "glob": "^13.0.6",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
