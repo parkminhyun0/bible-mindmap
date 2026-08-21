@@ -20,7 +20,7 @@ if (fs.existsSync(policyPath)) {
 
 if (policy) {
   if (policy.schemaVersion !== 1) fail('음역 정책 schemaVersion은 1이어야 합니다.');
-  if (!['pending-pastor-approval', 'approved'].includes(policy.status)) {
+  if (!['pending-pastor-approval', 'rules-approved', 'approved'].includes(policy.status)) {
     fail(`허용하지 않는 음역 정책 상태: ${policy.status}`);
   }
   if (!Array.isArray(policy.proposedMappings) || policy.proposedMappings.length < 5) {
@@ -50,6 +50,17 @@ if (policy) {
     }
   }
 
+  if (policy.status === 'rules-approved') {
+    if (policy.migrationEnabled !== false
+      || policy.approval?.approved !== true
+      || !policy.approval?.approvedBy
+      || !policy.approval?.approvedAt
+      || policy.proposedMappings.some((entry) => entry.approved !== true)
+      || canApplyTransliterationMigration?.(policy) !== false) {
+      fail('rules-approved 상태는 규칙 승인만 기록하고 migrationEnabled와 데이터 이관은 반드시 비활성화해야 합니다.');
+    }
+  }
+
   if (policy.status === 'approved') {
     if (policy.migrationEnabled !== true
       || policy.approval?.approved !== true
@@ -70,9 +81,9 @@ const canonicalSource = canonicalFiles
 
 // 이번 승인 게이트 PR은 기반만 추가하고 labelHe/labelGr 일괄 이관을 하지 않는다.
 // 승인 이후 별도 PR이 정책 버전 표식을 추가할 때 이 검사는 그 변경과 함께 갱신한다.
-if (policy?.status === 'pending-pastor-approval'
+if (['pending-pastor-approval', 'rules-approved'].includes(policy?.status)
   && /transliterationPolicyVersion\s*:/u.test(canonicalSource)) {
-  fail('승인 대기 상태에서 canonical 음역 이관 표식이 감지됐습니다. 데이터 변경을 되돌리세요.');
+  fail('규칙 승인 전후 이관 차단 상태에서 canonical 음역 이관 표식이 감지됐습니다. 데이터 변경을 되돌리세요.');
 }
 
 if (fs.existsSync(docsPath)) {

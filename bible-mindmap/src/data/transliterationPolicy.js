@@ -5,17 +5,17 @@
 export const TRANSLITERATION_POLICY = Object.freeze({
   schemaVersion: 1,
   decisionId: 'ADR-1',
-  status: 'pending-pastor-approval',
+  status: 'rules-approved',
   migrationEnabled: false,
   displayFormat: Object.freeze({
     withCustomary: '원어 (SBL 엄밀 음역 / 개역개정 관용 표기)',
     strictOnly: '원어 (SBL 엄밀 음역)',
   }),
   approval: Object.freeze({
-    approved: false,
-    approvedBy: '',
-    approvedAt: '',
-    note: '박 목사님 확인 전 데이터 이관 금지',
+    approved: true,
+    approvedBy: '박 목사님',
+    approvedAt: '2026-08-21',
+    note: '표기 규칙만 승인 · 데이터 이관·앱 표시는 미승인',
   }),
   preservation: Object.freeze([
     '원어 철자·모음부호·악센트 불변',
@@ -32,7 +32,7 @@ export const TRANSLITERATION_POLICY = Object.freeze({
       sblSymbol: 'š / ś',
       proposedKoreanRule: 'שׁ은 문맥에 따라 시/쉬 계열, שׂ은 스/사 계열로 구분하되 실제 음절은 단어 단위 검토',
       mode: 'word-level-review',
-      approved: false,
+      approved: true,
     }),
     Object.freeze({
       id: 'he-gutturals',
@@ -41,7 +41,7 @@ export const TRANSLITERATION_POLICY = Object.freeze({
       sblSymbol: 'ḥ / h / ʿ',
       proposedKoreanRule: 'ח는 흐/흐 계열, ה는 하/ㅎ 계열, ע는 아인 표지 또는 문맥상 비표기 후보를 단어별 검토',
       mode: 'word-level-review',
-      approved: false,
+      approved: true,
     }),
     Object.freeze({
       id: 'he-furtive-patach',
@@ -50,7 +50,7 @@ export const TRANSLITERATION_POLICY = Object.freeze({
       sblSymbol: 'a before final guttural',
       proposedKoreanRule: '어말 후음 앞 a를 먼저 읽는 순서를 보존: 예 מָשִׁיחַ → 마시아흐 후보',
       mode: 'word-level-review',
-      approved: false,
+      approved: true,
     }),
     Object.freeze({
       id: 'gr-eu',
@@ -59,7 +59,7 @@ export const TRANSLITERATION_POLICY = Object.freeze({
       sblSymbol: 'eu',
       proposedKoreanRule: '후속 자음의 유·무성에 따른 에우/에브/에프 계열은 자동 단일화하지 않고 단어별 검토',
       mode: 'context-required',
-      approved: false,
+      approved: true,
     }),
     Object.freeze({
       id: 'gr-double-sigma-upsilon-rho',
@@ -68,7 +68,7 @@ export const TRANSLITERATION_POLICY = Object.freeze({
       sblSymbol: 'ss / y / rh',
       proposedKoreanRule: 'σσ의 장단·표기, υ의 위/유 계열, 어두 ῥ의 흐/르 계열을 기존 관용 표기와 함께 단어별 검토',
       mode: 'word-level-review',
-      approved: false,
+      approved: true,
     }),
   ]),
 });
