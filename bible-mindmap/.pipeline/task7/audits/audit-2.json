@@ -1,0 +1,15 @@
+{
+  "shard": "2",
+  "checked": 100,
+  "findings": [
+    {
+      "strong": "G935",
+      "field": "translitKo",
+      "current": "바실레우스",
+      "suggested": "바실류스",
+      "evidence": "src/data/bookContext.js (ἀρχιερεὺς→아르키에류스) 및 src/data/koreanGlossTopBatch02.js (헬라어 ευ 규칙 및 G4100 피스튜오, G4198 포류오마이, G2147 휴리스코)",
+      "severity": "high",
+      "reason": "배포 데이터(bookContext.js의 ἀρχιερεὺς→아르키에류스)와 batch 02 확정 표기 규칙(koreanGlossTopBatch02.js)에 따르면 헬라어 ευ는 예외 없이 \"유\" 계열로 적어야 하나, G935(βασιλεύς)가 \"바실레우스\"로 적혀 배포 선례 및 확정 규칙과 어긋납니다."
+    }
+  ]
+}

@@ -4,23 +4,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { KOREAN_GLOSS } from '../src/data/koreanGloss.js';
-import {
-  KOREAN_GLOSS_GENESIS_1_BATCH_01,
-  KOREAN_GLOSS_GENESIS_1_BATCH_01_META,
-} from '../src/data/koreanGlossGenesis1Batch01.js';
-import {
-  KOREAN_GLOSS_GENESIS_1_BATCH_02,
-  KOREAN_GLOSS_GENESIS_1_BATCH_02_META,
-} from '../src/data/koreanGlossGenesis1Batch02.js';
-import {
-  KOREAN_GLOSS_TOP_BATCH_01,
-  KOREAN_GLOSS_TOP_BATCH_01_META,
-} from '../src/data/koreanGlossTopBatch01.js';
-import {
-  KOREAN_GLOSS_TOP_BATCH_02,
-  KOREAN_GLOSS_TOP_BATCH_02_META,
-} from '../src/data/koreanGlossTopBatch02.js';
-import { KOREAN_GLOSS_ACTIVE } from '../src/data/koreanGlossActive.js';
+// 배치 목록은 등록부에서 받는다. 배치가 늘어도 이 파일은 고치지 않는다.
+// 등록부는 scripts/build-korean-gloss-registry.mjs 가 만든다.
+import { KOREAN_GLOSS_ACTIVE, KOREAN_GLOSS_BATCHES } from '../src/data/koreanGlossActive.js';
+
+const isTop = (m) => /^top-frequency-batch-/.test(m?.batchId || '');
+const genesisBatches = KOREAN_GLOSS_BATCHES.filter((b) => !isTop(b.meta));
+const topBatches = KOREAN_GLOSS_BATCHES.filter((b) => isTop(b.meta));
+// batch 01 은 TAHOT 에 학술 음역이 없어 translit 이 비어 있을 수 있다.
+const requiresLatin = (m) => isTop(m) && m.batchId !== 'top-frequency-batch-01';
 import { findKoreanSpans, splitGlossCandidates } from '../src/utils/translationAlignment.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,10 +24,7 @@ const REQUIRED_FIELDS = ['lemma', 'translit', 'translitKo', 'glossKo', 'note', '
 const SENSITIVE = new Set(['H430']);
 const errors = [];
 
-const batches = [
-  { entries: KOREAN_GLOSS_GENESIS_1_BATCH_01, meta: KOREAN_GLOSS_GENESIS_1_BATCH_01_META },
-  { entries: KOREAN_GLOSS_GENESIS_1_BATCH_02, meta: KOREAN_GLOSS_GENESIS_1_BATCH_02_META },
-];
+const batches = genesisBatches;
 const seen = new Set();
 const topSeen = new Set();
 
@@ -72,10 +61,7 @@ for (const { entries: batch, meta } of batches) {
 // 빈도 상위 배치(구약·신약 공통)도 같은 규칙으로 검사한다. 창세기 배치와 달리
 // 헬라어(G) 항목을 포함하고, TAHOT 에 학술 음역 필드가 없어 히브리어 translit 은
 // 비어 있을 수 있다. 그 두 가지만 다르고 나머지 계약은 동일하다.
-for (const { entries: topBatch, meta } of [
-  { entries: KOREAN_GLOSS_TOP_BATCH_01, meta: KOREAN_GLOSS_TOP_BATCH_01_META },
-  { entries: KOREAN_GLOSS_TOP_BATCH_02, meta: KOREAN_GLOSS_TOP_BATCH_02_META },
-]) {
+for (const { entries: topBatch, meta } of topBatches) {
   const entries = Object.entries(topBatch);
   if (entries.length !== meta.entryCount) {
     errors.push(`${meta.batchId}: entryCount mismatch meta=${meta.entryCount}, actual=${entries.length}`);
@@ -130,12 +116,13 @@ for (const { entries: topBatch, meta } of [
 
 // batch 02 는 히브리어 학술 음역까지 직접 채운 배치라 batch 01 과 달리 translit 이
 // 비어 있으면 안 된다. 또 박 목사님 확인 전까지 전 항목이 검토 대상으로 남아야 한다.
-for (const [strong, entry] of Object.entries(KOREAN_GLOSS_TOP_BATCH_02)) {
+for (const { entries: topBatch, meta } of topBatches.filter((b) => requiresLatin(b.meta)))
+  for (const [strong, entry] of Object.entries(topBatch)) {
   if (typeof entry.translit !== 'string' || entry.translit.trim() === '') {
-    errors.push(`${strong}: top-frequency-batch-02 requires a non-empty translit`);
+    errors.push(`${strong}: 빈도 배치는 translit 이 비어 있으면 안 된다`);
   }
   if (entry.review !== true) {
-    errors.push(`${strong}: top-frequency-batch-02 entries must remain review=true until approval`);
+    errors.push(`${strong}: 빈도 배치 항목은 승인 전까지 review=true 여야 한다`);
   }
 }
 

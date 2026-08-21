@@ -1,0 +1,28 @@
+{
+  "batchId": "top-frequency-batch-03",
+  "totalItems": 300,
+  "activeBefore": 501,
+  "shards": [
+    {
+      "shard": "F",
+      "count": 100,
+      "first": "H8130",
+      "last": "H5982",
+      "freq": "146→111"
+    },
+    {
+      "shard": "G",
+      "count": 100,
+      "first": "H7676",
+      "last": "H6924",
+      "freq": "111→87"
+    },
+    {
+      "shard": "H",
+      "count": 100,
+      "first": "G757",
+      "last": "H7979",
+      "freq": "86→71"
+    }
+  ]
+}
