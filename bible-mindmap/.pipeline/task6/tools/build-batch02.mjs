@@ -44,6 +44,11 @@ const esc = (s) => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 const hebrew = order.filter((s) => s[0] === 'H').length;
 const greek = order.length - hebrew;
 
+// 머리말 수치는 실제로 **표기가 바뀐** 항목 수여야 한다. note 문장을 걷어낸
+// 기록까지 한데 세면 교정 규모를 부풀려 말하게 된다.
+const fieldFixCount = new Set(final.changes.filter((c) => c.field !== 'note').map((c) => c.strong)).size;
+const staleNoteCount = final.changes.filter((c) => c.field === 'note').length;
+
 const lines = [];
 lines.push(`// 66권 빈도 상위 Strong 한글 음역 확장 · batch 02
 //
@@ -60,14 +65,22 @@ lines.push(`// 66권 빈도 상위 Strong 한글 음역 확장 · batch 02
 //       그대로 두고, 갈린 ${consensus.disputed.length}개는 세 모델이 독립 판정했다.
 //
 // 표기가 갈린 자리는 낱말마다 따로 정하지 않고 규칙으로 정했다. 규칙은 표결이
-// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, ${final.changes.length}개 항목을
-// 그 규칙에 맞춰 기계적으로 교정했다.
+// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, ${fieldFixCount}개 항목의
+// 표기를 그 규칙에 맞춰 기계적으로 교정했다.
 //   · 베가드케파트 연음: 구분 기호를 쓰지 않는다 (선례 ṭôb · ʿereb · bōqer)
-//   · 다게쉬 포르테: 받침으로 겹쳐 적지 않는다 (선례 아타 · 카포레트 · 탈라사)
-//   · 음절 말 שׁ: 쉬로 적는다 (선례 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬)
+//   · 다게쉬 포르테: 장애음 겹자음을 받침으로 겹쳐 적지 않는다
+//     (선례 아타 · 카포레트 · 탈라사). ㅁ·ㄴ·ㄹ 은 한국어가 자음 하나짜리도
+//     받침+초성으로 나눠 적으므로(샬롬 · 엘로힘) 이 규칙에서 뺀다.
+//   · 음절 말 שׁ: 쉬로 적는다 (선례 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬).
+//     뒤에 모음이 오면 음절 첫소리이므로 샤/셰/시/쇼/슈로 적는다 (마시아흐)
 //   · 자음 ו: w 로 보고 와/웨/위/워로 적는다 (판정 3/3 합의)
-//   · ע + 홀렘 바브: 아원으로 적는다 (판정 3/3 합의)
-//   · 헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마 · 유다이오스)
+//   · 어근 자음 ו 에 홀렘이 얹힌 음절: 모음이 아니라 자음 w 로 읽는다
+//     (עָוֺן → 아원, 아온 아님) (판정 3/3 합의)
+//   · 헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마)
+//   · 유성 쉐바: ĕ 로 적는다 (선례 ʾĕlōhîm · tĕhôm)
+//
+// 그 밖에 판정 근거로 쓴 문장 가운데 교정 전 표기를 인용해 필드와 어긋나게 된
+// ${staleNoteCount}건은 문장 단위로 걷어냈다. 관용 표기를 설명하는 문장은 남겼다.
 //
 // glossKo: 이 배치는 음역 전용이다. 뜻은 생성하지 않았고 public/data/strongs-def
 //       (Strong 원 정의)의 영문 뜻을 기계적으로 옮겨 담았다. 한글 뜻은 권위 사전
@@ -114,7 +127,8 @@ lines.push(`export const KOREAN_GLOSS_TOP_BATCH_02_META = {
   scope: '66권 전체 빈도 상위 300개 중 batch 01 이후 남은 미수록 항목',
   agreedCount: ${consensus.agreed.length},
   adjudicatedCount: ${consensus.disputed.length},
-  ruleAdjustedCount: ${final.changes.length},
+  ruleAdjustedCount: ${fieldFixCount},
+  staleNoteCleanedCount: ${staleNoteCount},
 };`);
 lines.push('');
 

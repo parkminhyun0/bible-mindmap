@@ -137,25 +137,53 @@ const NOTE_OVERRIDE = new Map([
   ['H3069', '신명 YHWH 에 아도나이가 아니라 엘로힘의 모음을 얹은 형태다. 모음은 신명 자체의 것이 아니라 대독하는 낱말의 것이므로, 예호위는 재구성된 발음이 아니라 표기를 그대로 읽은 형태다. 같은 신명의 재구성 발음은 H3068 야훼를 보라. 표기를 확정하기 전 박 목사님 확인이 필요한 항목이다.'],
   ['H3091', '학술 표기는 예호슈아다. 한국어 성경은 여호수아로 옮긴다. 신명의 축약형(예호-)이 한국어 성경에서 여호-로 굳은 데서 온 차이다.'],
   ['H3414', '학술 표기는 이르메야다. 한국어 성경은 예레미야로 옮긴다. 그리스어 Ἰερεμίας 를 거쳐 굳은 형태다.'],
+  // 아래는 관용 표기 설명이 판정 근거와 한 문장에 섞여 있어 문장째 걷힌 것들이다.
+  // 설명 자체는 필요하므로 다시 적는다.
+  ['H8010', '관용 표기는 솔로몬이다. 학술 표기를 표제로 삼아 셸로모로 둔다. 그리스어 Σολομών 을 거쳐 굳은 차이다.'],
+  ['H3130', '관용 표기는 요셉이다. 학술 표기를 표제로 삼아 요세프로 둔다.'],
+  ['H804', '관용 표기는 앗수르다. 학술 표기를 표제로 삼아 아슈르로 둔다.'],
+  ['H4124', '관용 표기는 모압이다. 학술 표기를 표제로 삼아 모아브로 둔다. 어말 ב 를 브로 적는 이 배치의 원칙(자하브·야아코브)을 따랐다.'],
+  ['H669', '관용 표기는 에브라임이다. 학술 표기를 표제로 삼아 에프라임으로 둔다.'],
+  ['H4196', '어말 후음 앞의 a 는 숨은 파타흐(furtive patach)다. 발음 순서를 살려 미즈베아흐로 적는다. 마시아흐·루아흐와 같은 자리다.'],
+  ['H8147', '유성 쉐바를 셰로 보아 셰나임으로 적는다. 쉬나임 표기도 쓰인다.'],
+  ['H520', '멤은 다게쉬 포르테로 겹치지만, 한국어는 자음 하나짜리 מ 도 받침+초성으로 나눠 적으므로(샬롬) 이 자리는 받침 겹침 규칙에서 뺀다. 암마로 적는다.'],
 ]);
 
-// note 가 필드와 어긋나는지 본다. 판정 단계의 근거는 규칙 교정 전 표기를
-// 인용해 쓴 것이라, 교정 뒤에는 팝업에서 표기와 설명이 서로 다른 말을 한다.
-function noteIsStale(note, translitKo) {
-  if (!note) return false;
-  if (/[ḇḡḏḵṯ]/.test(note)) return true;              // 지운 연음 기호를 아직 인용
-  if (/[bpBP]̄/.test(note.normalize('NFD'))) return true;
-  if (note.includes('ə')) return true;                 // 통일한 쉐바 기호를 아직 인용
+// 판정 단계의 근거는 규칙 교정 **전** 표기를 인용해 쓴 것이라, 교정 뒤에는
+// 팝업에서 표기와 설명이 서로 다른 말을 한다. 그렇다고 note 를 통째로 지우면
+// "관용 표기 '야곱'과 차이" 같은 멀쩡한 설명까지 날아간다. **문장 단위로** 본다.
+function sentenceIsStale(sentence, translitKo) {
+  if (/[ḇḡḏḵṯ]/.test(sentence)) return true;              // 지운 연음 기호를 아직 인용
+  if (/[bpBP]̄/.test(sentence.normalize('NFD'))) return true;
+  if (sentence.includes('ə')) return true;                 // 통일한 쉐바 기호를 아직 인용
   // 한글은 "채택한다/적는다/표기한다" 처럼 **채택을 주장하는 자리**만 본다.
   // 관용 표기를 인용하는 문장("관용 표기 '유다'와 차이")은 정상 설명이므로 남긴다.
   const adopt = [
-    ...note.matchAll(/["“”'‘’]([가-힣]{2,})["“”'‘’]\s*(?:를|을)?\s*채택/g),
-    ...note.matchAll(/([가-힣]{2,})\s*(?:로|으로)\s*(?:채택|표기한다|적는다|표기하다)/g),
+    ...sentence.matchAll(/["“”'‘’]([가-힣]{2,})["“”'‘’]\s*(?:를|을)?\s*채택/g),
+    ...sentence.matchAll(/([가-힣]{2,}?)(?:으로|로)\s*(?:채택|표기한다|적는다|표기하다)/g),
   ].map((m) => m[1]);
   return adopt.some((k) => k !== translitKo);
 }
 
-// 앞머리의 집계 문장(“…판정했다(2/3 일치).” / “…일치했다.”)만 남긴다.
+function splitSentences(note) {
+  return String(note)
+    .split(/(?<=\.)\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
+
+// 어긋나는 문장만 빼고 나머지는 그대로 둔다.
+function pruneNote(note, translitKo) {
+  if (!note) return { note: '', dropped: [] };
+  const kept = [];
+  const dropped = [];
+  for (const s of splitSentences(note)) {
+    (sentenceIsStale(s, translitKo) ? dropped : kept).push(s);
+  }
+  return { note: kept.join(' '), dropped };
+}
+
+// 앞머리의 집계 문장(“…판정했다(2/3 일치).” / “…일치했다.”)만 뽑는다.
 function tallySentence(note) {
   const m = /^[^.]*(?:판정했다\([^)]*\)|일치했다)\./.exec(String(note));
   return m ? m[0] : '';
@@ -226,18 +254,26 @@ for (const e of entries.values()) {
   if (same && e.translitKo !== same.ko) {
     changes.push({ strong: e.strong, rule: 'same_as_shipped', field: 'translitKo', from: e.translitKo, to: same.ko, why: same.why });
     e.translitKo = same.ko;
-    e.note = same.why;
+    // 판정 집계는 사실이므로 남기고, 근거만 갈아 끼운다.
+    e.note = [tallySentence(e.note), same.why].filter(Boolean).join(' ');
   }
 
   if (e.translitKo !== beforeKo || e.translit !== beforeLat) {
     e.ruleAdjusted = true;
   }
 
-  // 교정 뒤에도 남아 있는 옛 표기 인용을 걷어낸다. 집계 문장은 사실이므로 남긴다.
-  if (noteIsStale(e.note, e.translitKo)) {
-    const kept = tallySentence(e.note);
-    changes.push({ strong: e.strong, rule: 'note_stale', field: 'note', from: e.note, to: kept });
-    e.note = kept;
+  // 교정 뒤에도 남아 있는 옛 표기 인용만 문장 단위로 걷어낸다.
+  const pruned = pruneNote(e.note, e.translitKo);
+  if (pruned.dropped.length) {
+    changes.push({
+      strong: e.strong,
+      rule: 'note_stale',
+      field: 'note',
+      from: e.note,
+      to: pruned.note,
+      droppedSentences: pruned.dropped,
+    });
+    e.note = pruned.note;
   }
 
   const override = NOTE_OVERRIDE.get(e.strong);

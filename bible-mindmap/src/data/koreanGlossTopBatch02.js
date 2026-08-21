@@ -13,14 +13,22 @@
 //       그대로 두고, 갈린 68개는 세 모델이 독립 판정했다.
 //
 // 표기가 갈린 자리는 낱말마다 따로 정하지 않고 규칙으로 정했다. 규칙은 표결이
-// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, 118개 항목을
-// 그 규칙에 맞춰 기계적으로 교정했다.
+// 아니라 **이미 배포된 데이터의 선례**를 기준으로 삼았고, 56개 항목의
+// 표기를 그 규칙에 맞춰 기계적으로 교정했다.
 //   · 베가드케파트 연음: 구분 기호를 쓰지 않는다 (선례 ṭôb · ʿereb · bōqer)
-//   · 다게쉬 포르테: 받침으로 겹쳐 적지 않는다 (선례 아타 · 카포레트 · 탈라사)
-//   · 음절 말 שׁ: 쉬로 적는다 (선례 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬)
+//   · 다게쉬 포르테: 장애음 겹자음을 받침으로 겹쳐 적지 않는다
+//     (선례 아타 · 카포레트 · 탈라사). ㅁ·ㄴ·ㄹ 은 한국어가 자음 하나짜리도
+//     받침+초성으로 나눠 적으므로(샬롬 · 엘로힘) 이 규칙에서 뺀다.
+//   · 음절 말 שׁ: 쉬로 적는다 (선례 에쉬 · 데바쉬 · 쇼레쉬 · 이쉬).
+//     뒤에 모음이 오면 음절 첫소리이므로 샤/셰/시/쇼/슈로 적는다 (마시아흐)
 //   · 자음 ו: w 로 보고 와/웨/위/워로 적는다 (판정 3/3 합의)
-//   · ע + 홀렘 바브: 아원으로 적는다 (판정 3/3 합의)
-//   · 헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마 · 유다이오스)
+//   · 어근 자음 ו 에 홀렘이 얹힌 음절: 모음이 아니라 자음 w 로 읽는다
+//     (עָוֺן → 아원, 아온 아님) (판정 3/3 합의)
+//   · 헬라어 ευ: 유 계열로 적는다 (선례 유튀스 · 에포류에토 · 프뉴마)
+//   · 유성 쉐바: ĕ 로 적는다 (선례 ʾĕlōhîm · tĕhôm)
+//
+// 그 밖에 판정 근거로 쓴 문장 가운데 교정 전 표기를 인용해 필드와 어긋나게 된
+// 61건은 문장 단위로 걷어냈다. 관용 표기를 설명하는 문장은 남겼다.
 //
 // glossKo: 이 배치는 음역 전용이다. 뜻은 생성하지 않았고 public/data/strongs-def
 //       (Strong 원 정의)의 영문 뜻을 기계적으로 옮겨 담았다. 한글 뜻은 권위 사전
@@ -76,7 +84,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʾiššâ',
     translitKo: '이샤',
     glossKo: '(adulter) ess, each, every, female, [idiom] many, [phrase] none, one, [phrase] together, wife, woman. Often unexpressed in English.',
-    note: '두 모델 계열(Gemini·Claude)이 독립으로 만든 음역안이 일치했다. 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.',
+    note: '겹침을 살리지 않는 이샤 표기도 쓰인다. 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.',
     review: true,
   },
   H8147: {
@@ -84,7 +92,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'šĕnayim',
     translitKo: '셰나임',
     glossKo: 'both, couple, double, second, twain, [phrase] twelfth, [phrase] twelve, [phrase] twenty (sixscore) thousand, twice, two.',
-    note: '두 모델 계열(Gemini·Claude)이 독립으로 만든 음역안이 일치했다.',
+    note: '유성 쉐바를 셰로 보아 셰나임으로 적는다. 쉬나임 표기도 쓰인다.',
     review: true,
   },
   H4872: {
@@ -452,7 +460,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'mizbēaḥ',
     translitKo: '미즈베아흐',
     glossKo: 'altar.',
-    note: '두 모델 계열(Gemini·Claude)이 독립으로 만든 음역안이 일치했다.',
+    note: '어말 후음 앞의 a 는 숨은 파타흐(furtive patach)다. 발음 순서를 살려 미즈베아흐로 적는다. 마시아흐·루아흐와 같은 자리다.',
     review: true,
   },
   H7651: {
@@ -492,7 +500,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'nĕʾum',
     translitKo: '네움',
     glossKo: '(hath) said, saith.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치).',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 확정 표기 tĕhôm과 같은 방식이다.',
     review: true,
   },
   H5046: {
@@ -508,7 +516,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'yaʿăqōb',
     translitKo: '야아코브',
     glossKo: 'Jacob.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 관용은 \'야곱\'이나 학술 표기를 표제로 삼아 야아코브로 두고, ע는 한글로 따로 적지 않는다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   G80: {
@@ -572,7 +580,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'śādeh',
     translitKo: '사데',
     glossKo: 'country, field, ground, land, soil, [idiom] wild.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ś는 확정 표기(이스라엘·아사)대로 ㅅ. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H113: {
@@ -700,7 +708,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʿēt',
     translitKo: '에트',
     glossKo: '[phrase] after, (al-) ways, [idiom] certain, [phrase] continually, [phrase] evening, long, (due) season, so (long) as, (even-, evening-, noon-) tide, (meal-), what) time, when.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 확정 표기 ʾēt(에트)와 같은 처리다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H2403: {
@@ -716,7 +724,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'šĕlōmōh',
     translitKo: '셸로모',
     glossKo: 'Solomon.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치).',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 관용 표기는 솔로몬이다. 학술 표기를 표제로 삼아 셸로모로 둔다. 그리스어 Σολομών 을 거쳐 굳은 차이다.',
     review: true,
   },
   H2388: {
@@ -924,7 +932,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʾammâ',
     translitKo: '암마',
     glossKo: 'cubit, [phrase] hundred (by exchange for H3967 (מֵאָה)), measure, post.',
-    note: '멤(מ)의 다게쉬(중복음)를 반영해 암마로 표기한다.',
+    note: '멤은 다게쉬 포르테로 겹치지만, 한국어는 자음 하나짜리 מ 도 받침+초성으로 나눠 적으므로(샬롬) 이 자리는 받침 겹침 규칙에서 뺀다. 암마로 적는다.',
     review: true,
   },
   H2617: {
@@ -1212,7 +1220,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'yôsēp',
     translitKo: '요세프',
     glossKo: 'Joseph. Compare H3084 (יְהוֹסֵף).',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 관용 표기는 요셉이다. 학술 표기를 표제로 삼아 요세프로 둔다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H3254: {
@@ -1452,7 +1460,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'šābaʿ',
     translitKo: '샤바',
     glossKo: 'adjure, charge (by an oath, with an oath), feed to the full (by mistake for H7646 (שָׂבַע)), take an oath, [idiom] straitly, (cause to, make to) swear.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ע는 한글로 적지 않아 샤바. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   G32: {
@@ -1468,7 +1476,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʾābad',
     translitKo: '아바드',
     glossKo: 'break, destroy(-uction), [phrase] not escape, fail, lose, (cause to, make) perish, spend, [idiom] and surely, take, be undone, [idiom] utterly, be void of, have no way to flee.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 첫 자음이 א라 H5647(ʿābad)와 라틴에서 구별되지만 한글은 둘 다 아바드다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H1241: {
@@ -1500,7 +1508,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'môʾāb',
     translitKo: '모아브',
     glossKo: 'Moab.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 관용 표기는 모압이다. 학술 표기를 표제로 삼아 모아브로 둔다. 어말 ב 를 브로 적는 이 배치의 원칙(자하브·야아코브)을 따랐다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   G5495: {
@@ -1516,7 +1524,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʾeprayim',
     translitKo: '에프라임',
     glossKo: 'Ephraim, Ephraimites.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 관용 표기는 에브라임이다. 학술 표기를 표제로 삼아 에프라임으로 둔다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H4430: {
@@ -1524,7 +1532,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'melek',
     translitKo: '멜렉',
     glossKo: 'king, royal.',
-    note: '아람어 항목이지만 철자가 히브리어 H4428(מֶלֶךְ)과 같고, 그쪽이 이미 멜렉으로 배포돼 있다. 같은 낱말을 사전 안에서 다르게 적지 않는다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 아람어 항목이지만 철자가 히브리어 H4428(מֶלֶךְ)과 같고, 그쪽이 이미 멜렉으로 배포돼 있다. 같은 낱말을 사전 안에서 다르게 적지 않는다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H2205: {
@@ -1764,7 +1772,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'zebaḥ',
     translitKo: '제바흐',
     glossKo: 'offer(-ing), sacrifice.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ח는 확정 표기 루아흐처럼 흐로 적는다. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   H2930: {
@@ -1900,7 +1908,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'ʾaššûr',
     translitKo: '아슈르',
     glossKo: 'Asshur, Assur, Assyria, Assyrians. See H838 (אָשֻׁר).',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 관용 표기는 앗수르다. 학술 표기를 표제로 삼아 아슈르로 둔다. 다게쉬 포르테는 기존 배치(아타·카포레트)를 따라 받침으로 겹쳐 적지 않았다.',
     review: true,
   },
   H5048: {
@@ -1916,7 +1924,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'nāgaʿ',
     translitKo: '나가',
     glossKo: 'beat, ([idiom] be able to) bring (down), cast, come (nigh), draw near (nigh), get up, happen, join, near, plague, reach (up), smite, strike, touch.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ע는 한글로 적지 않아 나가. 베가드케파트 연음은 기존 배치(ṭôb·ʿereb)를 따라 구분 기호 없이 적었다.',
     review: true,
   },
   G4396: {
@@ -1980,7 +1988,7 @@ export const KOREAN_GLOSS_TOP_BATCH_02 = {
     translit: 'mĕnaššeh',
     translitKo: '메나셰',
     glossKo: 'Manasseh.',
-    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치).',
+    note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). (관용 표기 "므낫세"와 차이 있음)',
     review: true,
   },
   H7843: {
@@ -2002,5 +2010,6 @@ export const KOREAN_GLOSS_TOP_BATCH_02_META = {
   scope: '66권 전체 빈도 상위 300개 중 batch 01 이후 남은 미수록 항목',
   agreedCount: 177,
   adjudicatedCount: 68,
-  ruleAdjustedCount: 118,
+  ruleAdjustedCount: 56,
+  staleNoteCleanedCount: 61,
 };
