@@ -1,0 +1,7 @@
+{
+  "scope": "batch-06-recheck",
+  "checked": 300,
+  "regressions": [],
+  "remaining": [],
+  "summary": "300개 항목과 41개 changes를 Node로 대조했다. note 소실·불일치, 교정 후 값 불일치, 규칙 적용으로 새로 생긴 표기 중복을 전수 검사했으며 근거가 확인된 회귀만 보고한다."
+}

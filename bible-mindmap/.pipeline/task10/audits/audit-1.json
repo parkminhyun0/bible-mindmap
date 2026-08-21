@@ -1,0 +1,42 @@
+{
+  "shard": "1",
+  "checked": 100,
+  "findings": [
+    {
+      "strong": "H5980",
+      "field": "translitKo",
+      "current": "움마",
+      "suggested": "우마",
+      "evidence": "같은 배치의 H3639 כְּלִמָּה(kĕlimmâ)가 '켈리마'로 적힌 것과 모순됨",
+      "severity": "high",
+      "reason": "다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다는 확정 규칙에 어긋나며, 배치 내 표기 일관성(켈리마)과도 충돌합니다."
+    },
+    {
+      "strong": "H7440",
+      "field": "translitKo",
+      "current": "린나",
+      "suggested": "리나",
+      "evidence": "같은 배치의 H6438 פִּנָּה(pinnâ)가 '피나'로 적힌 것과 모순됨",
+      "severity": "high",
+      "reason": "다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다는 확정 규칙에 어긋나며, 배치 내 표기 일관성(피나)과도 충돌합니다."
+    },
+    {
+      "strong": "H7967",
+      "field": "note",
+      "current": "네 모델 중 4개가 같은 음역안을 냈다. 학술 표기는 샬룸이다. 한국어 성경은 살룸으로 옮긴다. 다게쉬 포르테는 한글에서 겹쳐 적지 않는다.",
+      "suggested": "학술 표기는 샬룸이다. 한국어 성경은 살룸으로 옮긴다. 헬라어와 달리 히브리어 שׁ는 샤/쇼/슈 계열로 적는다.",
+      "evidence": "실제 표기(샬룸)",
+      "severity": "medium",
+      "reason": "실제 표기인 '샬룸'은 ㄹ을 겹쳐 적고 있으며, '살룸'과의 차이는 다게쉬 포르테 유무가 아니라 שׁ 표기에 있으므로 note 설명이 모순됩니다."
+    },
+    {
+      "strong": "G5442",
+      "field": "translitKo",
+      "current": "퓔라소",
+      "suggested": "퓔랏소",
+      "evidence": "WORKER_SPEC.md 헬라어 σσ 규칙 위반",
+      "severity": "high",
+      "reason": "σσ는 ㅅㅅ 계열을 기본으로 적어야 하므로 '퓔랏소'가 되어야 합니다. (또는 관용 표기를 따른 것이라면 note에 설명이 있어야 합니다)"
+    }
+  ]
+}

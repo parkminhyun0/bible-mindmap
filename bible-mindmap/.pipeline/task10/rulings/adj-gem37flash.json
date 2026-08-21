@@ -1,0 +1,12 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H1032",
+      "translit": "bêt ḥôrôn",
+      "translitKo": "베트 호론",
+      "evidence": "src/data/koreanGlossTopBatch03.js H1035(베트 레헴)·H1008(베트엘), src/data/bibleReferences.js 벧호론",
+      "note": "학술 표기는 베트 호론이다. 배포된 선례(H1035 베트 레헴·H1008 베트엘)에 따라 בֵּית를 '베트'로 적고 띄어쓰기를 유지하며, 개역개정 등 한국어 성경의 관용 표기는 '벧호론'이다."
+    }
+  ]
+}
