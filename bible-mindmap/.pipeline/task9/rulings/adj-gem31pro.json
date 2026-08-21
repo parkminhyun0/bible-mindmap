@@ -1,0 +1,40 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H8095",
+      "translit": "šimʿôn",
+      "translitKo": "심온",
+      "evidence": "WORKER_SPEC.md (고유명사 학술 표기 원칙)",
+      "note": "학술 표기를 표제로 삼아 음절을 심온으로 끊어 적음. 한국어 성경 관용 표기는 시므온이다."
+    },
+    {
+      "strong": "H8096",
+      "translit": "šimʿî",
+      "translitKo": "심이",
+      "evidence": "WORKER_SPEC.md (고유명사 학술 표기 원칙)",
+      "note": "학술 표기를 표제로 삼아 음절을 심이로 끊어 적음. 한국어 성경 관용 표기는 시므이다."
+    },
+    {
+      "strong": "G2168",
+      "translit": "eucharistéō",
+      "translitKo": "유카리스테오",
+      "evidence": "src/data/koreanGloss.js (프뉴마, 휴리스코 선례)",
+      "note": "어두 ευ는 기존 배포 데이터의 휴리스코, 프뉴마 선례를 따라 유 계열로 표기함."
+    },
+    {
+      "strong": "G4335",
+      "translit": "proseuchḗ",
+      "translitKo": "프로슈케",
+      "evidence": "src/data/koreanGloss.js (프뉴마 선례)",
+      "note": "ευ는 기존 배포 데이터의 선례(프뉴마, 포류오마이)를 따라 유 계열로 적어 프로슈케로 표기함."
+    },
+    {
+      "strong": "G1607",
+      "translit": "ekporeúomai",
+      "translitKo": "엑포류오마이",
+      "evidence": "src/data/koreanGlossTopBatch02.js (포류오마이 선례)",
+      "note": "배포 데이터에 있는 같은 동사의 활용형 포류오마이 선례를 따름. 어두 ἐκ은 엑으로 적음."
+    }
+  ]
+}

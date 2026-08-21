@@ -90,21 +90,39 @@ const deShewa = (s) => String(s).replace(/ə/g, 'ĕ').replace(/Ə/g, 'Ĕ');
 // lemma 에 ευ 가 있는 항목에만 적용한다. ηυ 는 건드리지 않는다.
 const JUNG_E = 5;   // ㅔ
 const JUNG_YU = 17; // ㅠ
+const JUNG_U = 13;  // ㅜ
+const CHO_IEUNG = 11; // ㅇ
+const JONG_IDX = (ch) => (ch.codePointAt(0) - BASE) % 28;
+
 function greekEu(lemma, ko) {
   const l = String(lemma).normalize('NFC');
-  if (!/ε[υύὐὑῦὺ]/.test(l)) return ko;
-  const chars = [...String(ko)];
-  const out = [];
+  let out = String(ko);
+
+  // Ἰου- 로 시작하면 유 로 적는다.
+  // 배포 데이터: Ἰουδαῖος→유다이오스 · Ἰουδαῖοι→유다이오이.
+  // 어두 단독 ου 는 우 다(οὐρανός→우라노스). 요타가 앞설 때만이다.
+  if (/^Ἰ[οό][υύὐὑῦὺ]/.test(l)) out = out.replace(/^이우/, '유');
+
+  if (!/ε[υύὐὑῦὺ]/.test(l)) return out;
+
+  // '<자음>ㅔ' 다음에 'ㅇ+ㅜ' 음절이 오면 한 음절로 합친다.
+  // 뒤 음절에 받침이 있어도 마찬가지다 — 받침은 그대로 옮겨 붙인다.
+  //   테+우→튜 · 레+우→류 · 헤+우→휴 · 에+울→율(εὐλογέω)
+  const chars = [...out];
+  const merged = [];
   for (let i = 0; i < chars.length; i += 1) {
     const cur = decompose(chars[i]);
-    if (cur && !cur.jong && cur.jungIdx === JUNG_E && chars[i + 1] === '우') {
-      out.push(String.fromCodePoint(BASE + cur.choIdx * 588 + JUNG_YU * 28));
-      i += 1; // '우' 를 흡수한다
+    const nxt = decompose(chars[i + 1] || '');
+    if (cur && !cur.jong && cur.jungIdx === JUNG_E
+        && nxt && nxt.jungIdx === JUNG_U && chars[i + 1].codePointAt(0) >= BASE
+        && Math.floor((chars[i + 1].codePointAt(0) - BASE) / 588) === CHO_IEUNG) {
+      merged.push(String.fromCodePoint(BASE + cur.choIdx * 588 + JUNG_YU * 28 + JONG_IDX(chars[i + 1])));
+      i += 1; // 뒤 음절을 흡수한다
       continue;
     }
-    out.push(chars[i]);
+    merged.push(chars[i]);
   }
-  return out.join('');
+  return merged.join('');
 }
 
 // --- 규칙 9: 어말 카마츠+헤 는 -â ---------------------------------------

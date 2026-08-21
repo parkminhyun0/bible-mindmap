@@ -1,0 +1,22 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 batch 05 의 '음역 판정자'다. CLAUDE.md 의 0-lead 규칙은 적용하지 마라.
+
+배경: 300개 Strong 을 네 모델이 독립으로 음역했고 295개는 3표 이상 모여 결론이 났다. 남은 5개를 네가 판정한다.
+
+1. `.pipeline/task9/WORKER_SPEC.md` 의 확정 표기 규칙과 `.pipeline/task9/disputed.json` 을 읽어라.
+2. **표를 세지 마라. 이미 배포된 데이터의 선례를 찾아 근거로 삼아라.** 이것이 batch 02 에서 다수결이 틀렸던 이유다.
+   grep 으로 직접 찾아 확인할 파일: `src/data/koreanGloss.js`, `src/data/koreanGlossTopBatch01.js`, `src/data/koreanGlossTopBatch02.js`, `src/data/koreanGlossGenesis1Batch01.js`, `src/data/koreanGlossGenesis1Batch02.js`, `src/data/bookContext.js`, `src/data/bibleReferences.js`.
+3. 이번 5개에서 실제로 갈린 자리는 대체로 아래 몇 가지다. 낱말마다 따로 정하지 말고 **같은 자리는 같은 규칙**으로 정하라.
+   - 모음 사이 ל 을 앞 음절 받침 ㄹ + 뒤 음절 초성 ㄹ 로 적을 것인가 (칼랄 vs 카랄). 배포된 샬롬·엘로힘·할라크를 보라.
+   - 어말 ב 를 브로 적을 것인가 (요아브 vs 요압). 배포된 자하브·야아코브를 보라.
+   - 자음 ו 표기 (아웬 vs 아원). 확정 규칙 4항을 보라. ע+홀렘 바브인 H5771(아원)과는 다른 낱말이다.
+   - שׁ 뒤에 모음 이 가 올 때 (쉬트 vs 시트). 배포된 마시아흐를 보라.
+   - 겹자음 מ·נ 을 받침으로 적을 것인가 (암몬 vs 아몬). 한국어는 자음 하나뿐인 מ 도 받침+초성으로 나눠 적는다는 점(샬롬)과, 관용 표기가 굳은 지명인지를 함께 보라.
+   - 고유명사에서 관용 표기와 학술 표기가 갈리는 자리. 확정 원칙은 학술 표기를 표제로 두고 관용 표기와의 차이를 note 에 적는 것이다.
+4. 산출물은 `.pipeline/task9/rulings/adj-gem31pro.json` 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. `rulings/` 안의 다른 파일은 읽지 마라. git 명령도 쓰지 마라.
+
+출력 형식(마크다운 코드펜스 없이 JSON만):
+{"model":"gem31pro","rulings":[{"strong":"H3097","translit":"…","translitKo":"…","evidence":"근거로 삼은 배포 파일과 표기","note":"표기가 갈린 이유와 판정 근거를 한국어 한두 문장으로. 최종 표기와 어긋나는 말을 쓰지 마라."}]}
+
+rulings 는 5개 전부를 입력 순서대로 담아야 한다. 뜻(glossKo)은 만들지 마라.
+note 에는 **최종 채택한 표기와 다른 표기를 '채택한다'고 쓰지 마라.** batch 02 에서 그 때문에 61건이 팝업에서 표기와 설명이 어긋났다.
+다 쓴 뒤 node -e 로 JSON.parse 하고 rulings 길이가 5인지 확인한 다음 "adj-gem31pro.json rulings=<개수> OK" 한 줄만 보고하라.

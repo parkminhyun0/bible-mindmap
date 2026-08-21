@@ -1,0 +1,707 @@
+{
+  "shard": "L",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H7356",
+      "lemma": "רַחַם",
+      "translit": "raḥam",
+      "translitKo": "라함",
+      "note": "동일 어근의 동사 H7355(rāḥam)도 한글로는 라함이 된다."
+    },
+    {
+      "strong": "H835",
+      "lemma": "אֶשֶׁר",
+      "translit": "ʾešer",
+      "translitKo": "에셰르",
+      "note": ""
+    },
+    {
+      "strong": "H5237",
+      "lemma": "נׇכְרִי",
+      "translit": "nokrî",
+      "translitKo": "노크리",
+      "note": "첫 모음은 카마츠 카탄이므로 a가 아니라 o로 읽는다."
+    },
+    {
+      "strong": "H4784",
+      "lemma": "מָרָה",
+      "translit": "mārâ",
+      "translitKo": "마라",
+      "note": ""
+    },
+    {
+      "strong": "H6967",
+      "lemma": "קוֹמָה",
+      "translit": "qômâ",
+      "translitKo": "코마",
+      "note": ""
+    },
+    {
+      "strong": "H3374",
+      "lemma": "יִרְאָה",
+      "translit": "yirʾâ",
+      "translitKo": "이르아",
+      "note": "알레프(ʾ)는 한글로 따로 적지 않아 이르아가 된다."
+    },
+    {
+      "strong": "H7667",
+      "lemma": "שֶׁבֶר",
+      "translit": "šeber",
+      "translitKo": "셰베르",
+      "note": ""
+    },
+    {
+      "strong": "G1330",
+      "lemma": "διέρχομαι",
+      "translit": "diérchomai",
+      "translitKo": "디에르코마이",
+      "note": ""
+    },
+    {
+      "strong": "G1921",
+      "lemma": "ἐπιγινώσκω",
+      "translit": "epiginṓskō",
+      "translitKo": "에피기노스코",
+      "note": ""
+    },
+    {
+      "strong": "G1210",
+      "lemma": "δέω",
+      "translit": "déō",
+      "translitKo": "데오",
+      "note": ""
+    },
+    {
+      "strong": "G3089",
+      "lemma": "λύω",
+      "translit": "lýō",
+      "translitKo": "뤼오",
+      "note": "υ를 위로 적는 원칙을 따랐다(선례 퓌르·바뷜론). 루오 표기도 쓰인다."
+    },
+    {
+      "strong": "G2347",
+      "lemma": "θλῖψις",
+      "translit": "thlîpsis",
+      "translitKo": "틀립시스",
+      "note": ""
+    },
+    {
+      "strong": "G2296",
+      "lemma": "θαυμάζω",
+      "translit": "thaumázō",
+      "translitKo": "타우마조",
+      "note": "αυ는 뒤에 유성음 μ가 와서 아우로 적는다."
+    },
+    {
+      "strong": "G2449",
+      "lemma": "Ἰουδαία",
+      "translit": "Ioudaía",
+      "translitKo": "유다이아",
+      "note": "관용 표기 '유대'와 차이. 선례 Ἰουδαῖος→유다이오스를 따랐다."
+    },
+    {
+      "strong": "G2264",
+      "lemma": "Ἡρώδης",
+      "translit": "Hērṓdēs",
+      "translitKo": "헤로데스",
+      "note": "관용 표기 '헤롯'과 차이. 관용형은 어미 -ης를 떨어뜨린 형태다."
+    },
+    {
+      "strong": "G2323",
+      "lemma": "θεραπεύω",
+      "translit": "therapeúō",
+      "translitKo": "테라퓨오",
+      "note": "ευ는 유 계열로 적는다(선례 유튀스·에포류에토)."
+    },
+    {
+      "strong": "H2502",
+      "lemma": "חָלַץ",
+      "translit": "ḥālaṣ",
+      "translitKo": "할라츠",
+      "note": ""
+    },
+    {
+      "strong": "H8095",
+      "lemma": "שִׁמְעוֹן",
+      "translit": "šimʿôn",
+      "translitKo": "심온",
+      "note": "관용 표기 '시므온'과 차이. ע(ʿ)는 한글로 따로 적지 않고, מ 아래 쉐바는 묵음이라 심-온 두 음절로 끊었다."
+    },
+    {
+      "strong": "H959",
+      "lemma": "בָּזָה",
+      "translit": "bāzâ",
+      "translitKo": "바자",
+      "note": ""
+    },
+    {
+      "strong": "H4818",
+      "lemma": "מֶרְכָּבָה",
+      "translit": "merkābâ",
+      "translitKo": "메르카바",
+      "note": ""
+    },
+    {
+      "strong": "H4186",
+      "lemma": "מוֹשָׁב",
+      "translit": "môšāb",
+      "translitKo": "모샤브",
+      "note": ""
+    },
+    {
+      "strong": "H7194",
+      "lemma": "קָשַׁר",
+      "translit": "qāšar",
+      "translitKo": "카샤르",
+      "note": ""
+    },
+    {
+      "strong": "H5352",
+      "lemma": "נָקָה",
+      "translit": "nāqâ",
+      "translitKo": "나카",
+      "note": ""
+    },
+    {
+      "strong": "H5749",
+      "lemma": "עוּד",
+      "translit": "ʿûd",
+      "translitKo": "우드",
+      "note": "ע(ʿ)는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H2296",
+      "lemma": "חָגַר",
+      "translit": "ḥāgar",
+      "translitKo": "하가르",
+      "note": ""
+    },
+    {
+      "strong": "H7321",
+      "lemma": "רוּעַ",
+      "translit": "rûaʿ",
+      "translitKo": "루아",
+      "note": "어말 후음 앞 furtive patach를 살려 루아로 적는다. ע(ʿ)는 한글로 따로 적지 않아 רוּחַ(rûaḥ, 루아흐)와 달리 끝소리가 없다."
+    },
+    {
+      "strong": "H2461",
+      "lemma": "חָלָב",
+      "translit": "ḥālāb",
+      "translitKo": "할라브",
+      "note": ""
+    },
+    {
+      "strong": "H657",
+      "lemma": "אֶפֶס",
+      "translit": "ʾepes",
+      "translitKo": "에페스",
+      "note": ""
+    },
+    {
+      "strong": "H970",
+      "lemma": "בָּחוּר",
+      "translit": "bāḥûr",
+      "translitKo": "바후르",
+      "note": ""
+    },
+    {
+      "strong": "H1005",
+      "lemma": "בַּיִת",
+      "translit": "bayit",
+      "translitKo": "바이트",
+      "note": "아람어 항목. 히브리어 H1004(바이트)와 철자·음역이 같다."
+    },
+    {
+      "strong": "G2127",
+      "lemma": "εὐλογέω",
+      "translit": "eulogéō",
+      "translitKo": "유로게오",
+      "note": "어두 ευ는 유 계열로 적는다(선례 유튀스)."
+    },
+    {
+      "strong": "G5092",
+      "lemma": "τιμή",
+      "translit": "timḗ",
+      "translitKo": "티메",
+      "note": ""
+    },
+    {
+      "strong": "G264",
+      "lemma": "ἁμαρτάνω",
+      "translit": "hamartánō",
+      "translitKo": "하마르타노",
+      "note": ""
+    },
+    {
+      "strong": "G1448",
+      "lemma": "ἐγγίζω",
+      "translit": "engízō",
+      "translitKo": "엥기조",
+      "note": "γγ는 ㅇ받침+ㄱ으로 적는다(선례 ἄγγελος→앙겔로스)."
+    },
+    {
+      "strong": "G5455",
+      "lemma": "φωνέω",
+      "translit": "phōnéō",
+      "translitKo": "포네오",
+      "note": ""
+    },
+    {
+      "strong": "G1074",
+      "lemma": "γενεά",
+      "translit": "geneá",
+      "translitKo": "게네아",
+      "note": ""
+    },
+    {
+      "strong": "H3129",
+      "lemma": "יוֹנָתָן",
+      "translit": "yônātān",
+      "translitKo": "요나탄",
+      "note": "관용 표기 '요나단'과 차이."
+    },
+    {
+      "strong": "H6584",
+      "lemma": "פָּשַׁט",
+      "translit": "pāšaṭ",
+      "translitKo": "파샤트",
+      "note": ""
+    },
+    {
+      "strong": "H3485",
+      "lemma": "יִשָּׂשכָר",
+      "translit": "yiśśākār",
+      "translitKo": "이사카르",
+      "note": "표제형에 שׂ가 한 번 더 적혀 있으나 마소라 낭독 전통에서는 읽지 않는다(yiśśākār). 관용 표기 '잇사갈'과 차이."
+    },
+    {
+      "strong": "H836",
+      "lemma": "אָשֵׁר",
+      "translit": "ʾāšēr",
+      "translitKo": "아셰르",
+      "note": "관용 표기 '아셀'과 차이."
+    },
+    {
+      "strong": "H2148",
+      "lemma": "זְכַרְיָה",
+      "translit": "zĕkaryâ",
+      "translitKo": "제카르야",
+      "note": "관용 표기 '스가랴'와 차이. 유성 쉐바를 제로 적는 선례(체다카·셸로심)를 따랐다."
+    },
+    {
+      "strong": "H3256",
+      "lemma": "יָסַר",
+      "translit": "yāsar",
+      "translitKo": "야사르",
+      "note": ""
+    },
+    {
+      "strong": "H2040",
+      "lemma": "הָרַס",
+      "translit": "hāras",
+      "translitKo": "하라스",
+      "note": ""
+    },
+    {
+      "strong": "H8096",
+      "lemma": "שִׁמְעִי",
+      "translit": "šimʿî",
+      "translitKo": "심이",
+      "note": "관용 표기 '시므이'와 차이. H8095(심온)와 같은 어근이라 같은 방식으로 끊었다."
+    },
+    {
+      "strong": "H5331",
+      "lemma": "נֶצַח",
+      "translit": "neṣaḥ",
+      "translitKo": "네차흐",
+      "note": ""
+    },
+    {
+      "strong": "H2029",
+      "lemma": "הָרָה",
+      "translit": "hārâ",
+      "translitKo": "하라",
+      "note": ""
+    },
+    {
+      "strong": "H1473",
+      "lemma": "גּוֹלָה",
+      "translit": "gôlâ",
+      "translitKo": "골라",
+      "note": ""
+    },
+    {
+      "strong": "H3245",
+      "lemma": "יָסַד",
+      "translit": "yāsad",
+      "translitKo": "야사드",
+      "note": ""
+    },
+    {
+      "strong": "H5355",
+      "lemma": "נָקִי",
+      "translit": "nāqî",
+      "translitKo": "나키",
+      "note": ""
+    },
+    {
+      "strong": "H3871",
+      "lemma": "לוּחַ",
+      "translit": "lûaḥ",
+      "translitKo": "루아흐",
+      "note": "어말 후음 앞 furtive patach를 살렸다. רוּחַ(rûaḥ, 영)와 한글로는 똑같이 루아흐가 된다. 라틴 표기의 l/r로만 구별된다."
+    },
+    {
+      "strong": "H215",
+      "lemma": "אוֹר",
+      "translit": "ʾôr",
+      "translitKo": "오르",
+      "note": "명사 H216 אוֹר(빛)와 철자·음역이 같다."
+    },
+    {
+      "strong": "H962",
+      "lemma": "בָּזַז",
+      "translit": "bāzaz",
+      "translitKo": "바자즈",
+      "note": ""
+    },
+    {
+      "strong": "H7339",
+      "lemma": "רְחֹב",
+      "translit": "rĕḥōb",
+      "translitKo": "레호브",
+      "note": ""
+    },
+    {
+      "strong": "H7068",
+      "lemma": "קִנְאָה",
+      "translit": "qinʾâ",
+      "translitKo": "킨아",
+      "note": "알레프(ʾ)는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H400",
+      "lemma": "אֹכֶל",
+      "translit": "ʾōkel",
+      "translitKo": "오켈",
+      "note": ""
+    },
+    {
+      "strong": "H8438",
+      "lemma": "תּוֹלָע",
+      "translit": "tôlāʿ",
+      "translitKo": "톨라",
+      "note": "어말 ע(ʿ)는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H1101",
+      "lemma": "בָּלַל",
+      "translit": "bālal",
+      "translitKo": "발랄",
+      "note": "같은 꼴의 선례 hālal→할랄을 따랐다."
+    },
+    {
+      "strong": "H5207",
+      "lemma": "נִיחוֹחַ",
+      "translit": "nîḥôaḥ",
+      "translitKo": "니호아흐",
+      "note": "어말 후음 앞 furtive patach를 살렸다."
+    },
+    {
+      "strong": "H1111",
+      "lemma": "בָּלָק",
+      "translit": "bālāq",
+      "translitKo": "발라크",
+      "note": "관용 표기 '발락'과 차이."
+    },
+    {
+      "strong": "G5056",
+      "lemma": "τέλος",
+      "translit": "télos",
+      "translitKo": "텔로스",
+      "note": ""
+    },
+    {
+      "strong": "G3313",
+      "lemma": "μέρος",
+      "translit": "méros",
+      "translitKo": "메로스",
+      "note": ""
+    },
+    {
+      "strong": "G3958",
+      "lemma": "πάσχω",
+      "translit": "páschō",
+      "translitKo": "파스코",
+      "note": ""
+    },
+    {
+      "strong": "G2385",
+      "lemma": "Ἰάκωβος",
+      "translit": "Iákōbos",
+      "translitKo": "이아코보스",
+      "note": "관용 표기 '야고보'와 차이. 히브리어 H3290 야아코브의 헬라어 음역이다."
+    },
+    {
+      "strong": "G386",
+      "lemma": "ἀνάστασις",
+      "translit": "anástasis",
+      "translitKo": "아나스타시스",
+      "note": ""
+    },
+    {
+      "strong": "G3936",
+      "lemma": "παρίστημι",
+      "translit": "parístēmi",
+      "translitKo": "파리스테미",
+      "note": ""
+    },
+    {
+      "strong": "H3448",
+      "lemma": "יִשַׁי",
+      "translit": "yišay",
+      "translitKo": "이샤이",
+      "note": "관용 표기 '이새'와 차이."
+    },
+    {
+      "strong": "H1141",
+      "lemma": "בְּנָיָה",
+      "translit": "bĕnāyâ",
+      "translitKo": "베나야",
+      "note": "관용 표기 '브나야'와 차이."
+    },
+    {
+      "strong": "H5416",
+      "lemma": "נָתָן",
+      "translit": "nātān",
+      "translitKo": "나탄",
+      "note": "관용 표기 '나단'과 차이."
+    },
+    {
+      "strong": "H3658",
+      "lemma": "כִּנּוֹר",
+      "translit": "kinnôr",
+      "translitKo": "킨노르",
+      "note": "다게쉬 포르테지만 ㄴ은 한국어가 자음 하나짜리도 받침+초성으로 나눠 적는 소리라 킨노르로 적었다(선례 엘로힘·샬롬)."
+    },
+    {
+      "strong": "H6865",
+      "lemma": "צֹר",
+      "translit": "ṣōr",
+      "translitKo": "초르",
+      "note": "관용 표기 '두로'와 차이. 관용형은 헬라어 Τύρος를 거친 표기다."
+    },
+    {
+      "strong": "H4256",
+      "lemma": "מַחֲלֹקֶת",
+      "translit": "maḥălōqet",
+      "translitKo": "마할로케트",
+      "note": ""
+    },
+    {
+      "strong": "H5631",
+      "lemma": "סָרִיס",
+      "translit": "sārîs",
+      "translitKo": "사리스",
+      "note": ""
+    },
+    {
+      "strong": "H271",
+      "lemma": "אָחָז",
+      "translit": "ʾāḥāz",
+      "translitKo": "아하즈",
+      "note": "관용 표기 '아하스'와 차이."
+    },
+    {
+      "strong": "H1053",
+      "lemma": "בֵּית שֶׁמֶשׁ",
+      "translit": "bêt šemeš",
+      "translitKo": "베트 셰메쉬",
+      "note": "관용 표기 '벧세메스'와 차이. 두 낱말이라 띄어 적었고, 음절 말 שׁ는 쉬로 적었다."
+    },
+    {
+      "strong": "H3303",
+      "lemma": "יָפֶה",
+      "translit": "yāpeh",
+      "translitKo": "야페",
+      "note": ""
+    },
+    {
+      "strong": "H1588",
+      "lemma": "גַּן",
+      "translit": "gan",
+      "translitKo": "간",
+      "note": ""
+    },
+    {
+      "strong": "H983",
+      "lemma": "בֶּטַח",
+      "translit": "beṭaḥ",
+      "translitKo": "베타흐",
+      "note": ""
+    },
+    {
+      "strong": "H8394",
+      "lemma": "תָּבוּן",
+      "translit": "tābûn",
+      "translitKo": "타분",
+      "note": ""
+    },
+    {
+      "strong": "H2945",
+      "lemma": "טַף",
+      "translit": "ṭap",
+      "translitKo": "타프",
+      "note": ""
+    },
+    {
+      "strong": "H5422",
+      "lemma": "נָתַץ",
+      "translit": "nātaṣ",
+      "translitKo": "나타츠",
+      "note": ""
+    },
+    {
+      "strong": "H8393",
+      "lemma": "תְּבוּאָה",
+      "translit": "tĕbûʾâ",
+      "translitKo": "테부아",
+      "note": "알레프(ʾ)는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H8144",
+      "lemma": "שָׁנִי",
+      "translit": "šānî",
+      "translitKo": "샤니",
+      "note": ""
+    },
+    {
+      "strong": "H2100",
+      "lemma": "זוּב",
+      "translit": "zûb",
+      "translitKo": "주브",
+      "note": ""
+    },
+    {
+      "strong": "H6925",
+      "lemma": "קֳדָם",
+      "translit": "qŏdām",
+      "translitKo": "코담",
+      "note": "아람어 항목. 하테프 카마츠를 ŏ로 적는다."
+    },
+    {
+      "strong": "H2723",
+      "lemma": "חׇרְבָּה",
+      "translit": "ḥorbâ",
+      "translitKo": "호르바",
+      "note": "첫 모음은 카마츠 카탄이므로 o로 읽는다."
+    },
+    {
+      "strong": "H3490",
+      "lemma": "יָתוֹם",
+      "translit": "yātôm",
+      "translitKo": "야톰",
+      "note": ""
+    },
+    {
+      "strong": "H6677",
+      "lemma": "צַוָּאר",
+      "translit": "ṣawwāʾr",
+      "translitKo": "차와르",
+      "note": "자음 ו는 와로 적고(선례 미츠와), 다게쉬 포르테는 겹쳐 적지 않는다. 알레프(ʾ)는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "G3985",
+      "lemma": "πειράζω",
+      "translit": "peirázō",
+      "translitKo": "페이라조",
+      "note": ""
+    },
+    {
+      "strong": "G3049",
+      "lemma": "λογίζομαι",
+      "translit": "logízomai",
+      "translitKo": "로기조마이",
+      "note": ""
+    },
+    {
+      "strong": "G2038",
+      "lemma": "ἐργάζομαι",
+      "translit": "ergázomai",
+      "translitKo": "에르가조마이",
+      "note": ""
+    },
+    {
+      "strong": "G3404",
+      "lemma": "μισέω",
+      "translit": "miséō",
+      "translitKo": "미세오",
+      "note": ""
+    },
+    {
+      "strong": "G2455",
+      "lemma": "Ἰούδας",
+      "translit": "Ioúdas",
+      "translitKo": "유다스",
+      "note": "관용 표기 '유다'와 차이. 히브리어 H3063 예후다에 해당하는 헬라어 음역이다."
+    },
+    {
+      "strong": "G3419",
+      "lemma": "μνημεῖον",
+      "translit": "mnēmeîon",
+      "translitKo": "므네메이온",
+      "note": ""
+    },
+    {
+      "strong": "H2983",
+      "lemma": "יְבוּסִי",
+      "translit": "yĕbûsî",
+      "translitKo": "예부시",
+      "note": "관용 표기 '여부스 사람'과 차이."
+    },
+    {
+      "strong": "H8098",
+      "lemma": "שְׁמַעְיָה",
+      "translit": "šĕmaʿyâ",
+      "translitKo": "셰마야",
+      "note": "관용 표기 '스마야'와 차이. ע(ʿ)는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H7264",
+      "lemma": "רָגַז",
+      "translit": "rāgaz",
+      "translitKo": "라가즈",
+      "note": ""
+    },
+    {
+      "strong": "H268",
+      "lemma": "אָחוֹר",
+      "translit": "ʾāḥôr",
+      "translitKo": "아호르",
+      "note": ""
+    },
+    {
+      "strong": "H2778",
+      "lemma": "חָרַף",
+      "translit": "ḥārap",
+      "translitKo": "하라프",
+      "note": ""
+    },
+    {
+      "strong": "H553",
+      "lemma": "אָמַץ",
+      "translit": "ʾāmaṣ",
+      "translitKo": "아마츠",
+      "note": ""
+    },
+    {
+      "strong": "H8252",
+      "lemma": "שָׁקַט",
+      "translit": "šāqaṭ",
+      "translitKo": "샤카트",
+      "note": ""
+    }
+  ]
+}

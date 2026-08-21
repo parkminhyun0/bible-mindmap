@@ -1,0 +1,205 @@
+{
+  "count": 5,
+  "items": [
+    {
+      "shard": "L",
+      "strong": "H8095",
+      "lemma": "שִׁמְעוֹן",
+      "lang": "hebrew",
+      "glossEn": "Simeon.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šimʿôn",
+          "translitKo": "시므온",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šimʿôn",
+          "translitKo": "시므온",
+          "note": "관용 표기 시므온(Simeon)을 따름. ʿ(아인)은 한글 표기에서 생략."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šimʿôn",
+          "translitKo": "시몬",
+          "note": "학술 표기는 시몬이다. 한국어 성경 관용 표기는 시므온이다."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "šimʿôn",
+          "translitKo": "심온",
+          "note": "개역개정 관용 표기는 '시므온'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šimʿôn",
+          "translitKo": "심온",
+          "note": "관용 표기 '시므온'과 차이. ע(ʿ)는 한글로 따로 적지 않고, מ 아래 쉐바는 묵음이라 심-온 두 음절로 끊었다."
+        }
+      ]
+    },
+    {
+      "shard": "L",
+      "strong": "H8096",
+      "lemma": "שִׁמְעִי",
+      "lang": "hebrew",
+      "glossEn": "Shimeah (from the margin), Shimei, Shimhi, Shimi.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šimʿî",
+          "translitKo": "시므이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šimʿî",
+          "translitKo": "시므이",
+          "note": "관용 표기 시므이(Shimei)를 따름. ʿ(아인) 생략."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šimʿî",
+          "translitKo": "시미",
+          "note": "학술 표기는 시미다. 한국어 성경 관용 표기는 시므이다."
+        },
+        {
+          "model": "gem36flash",
+          "translit": "šimʿî",
+          "translitKo": "심이",
+          "note": "개역개정 관용 표기는 '시므이'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šimʿî",
+          "translitKo": "심이",
+          "note": "관용 표기 '시므이'와 차이. H8095(심온)와 같은 어근이라 같은 방식으로 끊었다."
+        }
+      ]
+    },
+    {
+      "shard": "M",
+      "strong": "G2168",
+      "lemma": "εὐχαριστέω",
+      "lang": "greek",
+      "glossEn": "(give) thank(-ful, -s)",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "eucharistéō",
+          "translitKo": "유카리스테오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "eucharistéō",
+          "translitKo": "에프카리스테오",
+          "note": "ευ 뒤에 무성음 χ가 와서 에프로 표기함"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "eucharistéō",
+          "translitKo": "에우카리스테오",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "eucharistéō",
+          "translitKo": "에우카리스테오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "eucharistéō",
+          "translitKo": "유카리스테오",
+          "note": "어두 εὐ를 휴리스코(εὑρίσκω) 선례와 같은 방식으로 유로 적었다. 관용은 에우카리스테오."
+        }
+      ]
+    },
+    {
+      "shard": "N",
+      "strong": "G4335",
+      "lemma": "προσευχή",
+      "lang": "greek",
+      "glossEn": "X pray earnestly, prayer",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "proseuchḗ",
+          "translitKo": "프로슈케",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "proseuchḗ",
+          "translitKo": "프로세프케",
+          "note": "ευ 뒤에 무성음 χ가 오므로 '에프'로 적음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "proseuchḗ",
+          "translitKo": "프로세우케",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "proseuchḗ",
+          "translitKo": "프로세우케",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "proseuchḗ",
+          "translitKo": "프로슈케",
+          "note": "ευ 는 유 계열로 적는다(선례 프뉴마·포류오마이). 에우케 계열로 갈릴 수 있는 자리다."
+        }
+      ]
+    },
+    {
+      "shard": "N",
+      "strong": "G1607",
+      "lemma": "ἐκπορεύομαι",
+      "lang": "greek",
+      "glossEn": "come (forth, out of), depart, go (forth, out), issue, proceed (out of)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekporeúomai",
+          "translitKo": "엑포류오마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekporeúomai",
+          "translitKo": "엑포레우오마이",
+          "note": "ευ 뒤에 모음 ο가 오므로 '에우'로 적음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekporeúomai",
+          "translitKo": "에크포레우오마이",
+          "note": ""
+        },
+        {
+          "model": "gem36flash",
+          "translit": "ekporeúomai",
+          "translitKo": "엑포레우오마이",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekporeúomai",
+          "translitKo": "에크포류오마이",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

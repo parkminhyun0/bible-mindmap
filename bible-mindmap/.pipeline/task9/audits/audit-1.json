@@ -1,0 +1,1 @@
+{"shard":"1","checked":100,"findings":[{"strong":"H2148","field":"translitKo","current":"제카르야","suggested":"즈카르야","evidence":"src/data/contextChapterCardsRestoration.js 의 זְכַרְיָה (즈카르야)","severity":"high","reason":"배포 데이터에 '즈카르야'로 굳어진 표기가 이미 존재함에도 불구하고 다르게 적음."}]}
