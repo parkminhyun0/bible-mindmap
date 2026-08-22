@@ -1,0 +1,155 @@
+[
+  {
+    "strong": "H796",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아슈도드(H795)의 지명 형용사형이다. 개역개정은 지명을 아스돗으로 적어 아스돗 사람이 되지만, 배포 선례가 아슈도드이므로 학술 표기를 표제로 두었다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 아쉬도드(H795)의 지명 형용사형이다. 개역개정은 지명을 아스돗으로 적어 아스돗 사람이 되지만, 배포 선례가 아쉬도드이므로 학술 표기를 표제로 두었다.",
+    "evidence": "배포 데이터 H795 = src/data/koreanGlossTopBatch08.js : lemma אַשְׁדּוֹד · translit ʾašdôd · translitKo 아쉬도드. 이 항목 자신의 translitKo도 아쉬도디(쉬)이고, WORKER_SPEC 규칙 3(음절 말 שׁ→쉬)과 같은 배치의 H4867 미쉬바르·H4937 미쉬엔도 모두 쉬다.",
+    "severity": "medium",
+    "reason": "note가 근거로 든 배포 선례가 아슈도드라는 진술이 사실과 다르다. 실제 배포 선례는 아쉬도드이며, note는 자기 항목의 translitKo 아쉬도디와도 어긋난다. 표제값은 옳고 note만 틀렸으나 이 note가 다음 배치의 선례 근거로 인용되면 슈·쉬가 갈린다."
+  },
+  {
+    "strong": "H1660",
+    "field": "note",
+    "current": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '가드'다(블레셋 지명 가드 등). 학술 표기 '가트'를 표제로 둔다.",
+    "suggested": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기 가트를 표제로 둔다. 개역개정이 가드로 적는 것은 철자가 같은 블레셋 지명 H1661이고, 이 낱말은 보통명사다.",
+    "evidence": "입력 .pipeline/task21/input 의 H1660 : glossEn = \"(wine-) press (fat).\" · defEn = \"a wine-press (or vat for holding the grapes in pressing them)\" 로 보통명사다. 블레셋 지명 가드는 H1661이며 이미 배포돼 있다 — koreanGlossTopBatch05.js : H1661 גַּת gat 가트 glossKo \"Gath.\"",
+    "severity": "medium",
+    "reason": "note가 다른 Strong(H1661 지명)의 개역개정 표기를 이 보통명사 항목의 관용 표기로 잘못 귀속했다. 개역개정은 H1660을 포도주 틀류로 번역할 뿐 가드로 음역하지 않는다."
+  },
+  {
+    "strong": "H1655",
+    "field": "note",
+    "current": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 동음이철인 H1653(gešem→게솀)과 동일한 배포 선례를 따른다.",
+    "suggested": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 철자가 같은 H1653(gešem→게솀)과 동일한 배포 선례를 따른다.",
+    "evidence": "배포 H1653 = koreanGlossTopBatch05.js 의 lemma גֶּשֶׁם 는 이 항목 H1655의 lemma גֶּשֶׁם 와 코드포인트까지 동일하다.",
+    "severity": "low",
+    "reason": "동음이철은 소리는 같고 철자가 다르다는 뜻인데 두 표제형은 철자가 완전히 같다(동철이의). note가 선례를 따르는 근거로 든 관계 규정 자체가 사실과 반대다."
+  },
+  {
+    "strong": "H1252",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 우물·구덩이의 보르(H953 bôr)와 철자가 겹치지만 이 낱말은 홀렘이다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 우물·구덩이의 보르(H953 bôr)와 한글 표기가 겹치지만 철자가 다르다. 이 낱말은 바브 없는 홀렘이다.",
+    "evidence": "배포 H953 = koreanGlossTopBatch04.js : lemma בּוֹר · translit bôr · glossKo \"cistern, dungeon, fountain, pit, well.\" 로 홀렘 바브다. 이 항목 H1252의 lemma는 בֹּר(바브 없는 홀렘)이고 입력 glossEn은 \"cleanness, pureness.\" 다.",
+    "severity": "low",
+    "reason": "note가 철자가 겹친다고 했지만 בֹּר 와 בּוֹר 는 철자가 다르다. 겹치는 것은 한글 보르다. 또 구별 근거로 든 이 낱말은 홀렘이다라는 진술은 H953도 홀렘(바브 포함)이라 구별이 되지 않는다. 한 문장 안에서 두 주장이 서로 어긋난다."
+  },
+  {
+    "strong": "H5433",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이쪽은 사메크에 카메츠 둘이다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": "final.json changes[0] : rule=note_stale 이 지명·민족명 스바(H5434) 대조 문장만 삭제하고 뒤 문장을 남겼다. H5434는 배포 데이터에 없다.",
+    "severity": "low",
+    "reason": "대조 대상 문장을 지우면서 지시어 이쪽은 이 가리킬 상대가 사라졌다. 남은 문장만으로는 무엇과 대비되는지 알 수 없는 고아 문장이다."
+  },
+  {
+    "strong": "H2994",
+    "field": "translit",
+    "current": "yᵉbēmet",
+    "suggested": "yĕbēmet",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 yĕbēmet로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H3994",
+    "field": "translit",
+    "current": "mᵉʾērâ",
+    "suggested": "mĕʾērâ",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 mĕʾērâ로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H6636",
+    "field": "translit",
+    "current": "ṣᵉbōʾîm",
+    "suggested": "ṣĕbōʾîm",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 ṣĕbōʾîm로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H8570",
+    "field": "translit",
+    "current": "tᵉnûbâ",
+    "suggested": "tĕnûbâ",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 tĕnûbâ로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H4099",
+    "field": "translit",
+    "current": "mᵉdātāʾ",
+    "suggested": "mĕdātāʾ",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 mĕdātāʾ로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H7508",
+    "field": "translit",
+    "current": "rᵉpîdîm",
+    "suggested": "rĕpîdîm",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 rĕpîdîm로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H1240",
+    "field": "translit",
+    "current": "bᵉqar",
+    "suggested": "bĕqar",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 bĕqar로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H3215",
+    "field": "translit",
+    "current": "yᵉlālâ",
+    "suggested": "yĕlālâ",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 yĕlālâ로 이미 규약대로 냈다).",
+    "severity": "medium",
+    "reason": "확정 translit이 codex 안 그대로 실리면서 배포 규약과 다른 ᵉ가 남았다. changes 블록의 기계 교정이 베가드케파트(ḇ→b)와 카메츠-헤(āh→â)만 정규화하고 쉐바 표기는 손대지 않아 같은 항목들에 비표준 기호가 그대로 남았다."
+  },
+  {
+    "strong": "H2191",
+    "field": "translit",
+    "current": "zᵉʿēr",
+    "suggested": "zĕʿêr",
+    "evidence": "배포 데이터 전체에서 유성 쉐바는 ĕ(U+0115)가 381건, ᵉ(U+1D49)는 3건뿐이다(koreanGlossTopBatch08.js 잔재). WORKER_SPEC이 기준으로 삼은 batch 14 헤더도 유성 쉐바는 ĕ 로 적는다(선례 ʾĕlōhîm · tĕhôm)로 못박았고, final.json 자신도 나머지 32건은 ĕ를 쓴다. proposals/ 대조 결과 이 9건의 확정 translit은 전부 codex 안이며 네 모델 중 codex만 ᵉ를 썼다(gem37flash는 zĕʿêr로 이미 규약대로 냈다). 추가로 lemma זְעֵיר 는 체레+요드(U+05B5 + U+05D9)라 ê여야 한다. claudeopus5 zəʿêr · gem31pro zeʿêr · gem37flash zĕʿêr 로 3/4가 ê를 냈고 codex만 ē다. 같은 파일의 다른 체레-요드 항목(H996 벤 bên 선례 포함)은 예외 없이 ê다.",
+    "severity": "high",
+    "reason": "유성 쉐바 표기가 배포 규약 ĕ 와 다르고, 체레-요드를 ē로 적어 장모음 체레와 구별이 사라졌다. 3/4 모델이 ê를 냈는데 소수안이 실렸다. note의 3개가 같은 음역안을 냈다는 진술은 translitKo에 대한 것이고 라틴 음역은 그 다수와 무관하게 확정됐다."
+  },
+  {
+    "strong": "H170",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기와 학술 표기가 갈릴 수 있음.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기 오홀라와 학술 표기가 같다.",
+    "evidence": "개역개정 겔 23:4 등에서 Oholah는 오홀라이고 이 항목의 translitKo도 오홀라다. 같은 배치의 자매 항목 H171 אׇהֳלִיאָב 은 학술 표기는 오홀리아브다. 한국어 성경 관용 표기는 오홀리압이다 처럼 실제 차이를 명시한다.",
+    "severity": "low",
+    "reason": "note가 갈릴 수 있음이라고 유보했지만 실제로는 관용과 학술이 일치한다. 관용이 같을 때 이 배치가 쓰는 문구(H11·H27·H1441·H2497·H3849·H5881의 학술 표기와 일치한다)와도 어긋나는 유일한 유보형이다."
+  },
+  {
+    "strong": "H7021",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 '박넝쿨'이다. 학술 표기 '키카욘'을 표제로 둔다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정은 이 낱말을 박넝쿨로 번역해 옮긴다. 학술 표기 키카욘을 표제로 둔다.",
+    "evidence": "개역개정 욘 4:6은 קִיקָיוֹן 을 음역하지 않고 박넝쿨로 번역한다. 같은 배치는 번역된 경우 관용역이라는 말을 쓴다 — H91 관용역은 아각 사람으로 옮긴다 · H8660 관용역은 직명 총독으로 옮긴다.",
+    "severity": "low",
+    "reason": "이 파일에서 관용 표기는 한글 음역을 가리키는 말인데 박넝쿨은 음역이 아니라 번역이다. 같은 파일이 이미 구분해 쓰는 용어를 뒤섞어 음역 선례로 오독될 수 있다."
+  },
+  {
+    "strong": "H7486",
+    "field": "note",
+    "current": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 라메세스다. 한국어 성경 관용 표기는 라암셋이다(출 1:11, bibleReferences: 비돔·라암셋).",
+    "suggested": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 라메세스다. 한국어 성경 관용 표기는 라암셋이다(출 1:11 비돔과 라암셋).",
+    "evidence": "현재 note 본문에 파이프라인 내부 필드명 bibleReferences: 가 그대로 들어 있다. final.json 300건 중 필드명이 note에 노출된 항목은 이것뿐이다.",
+    "severity": "low",
+    "reason": "사용자에게 보이는 note에 내부 필드명이 새어 나왔다. 사실관계는 맞지만 표기 산출물로서 결함이다."
+  }
+]

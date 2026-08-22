@@ -1,0 +1,378 @@
+{
+  "items": [
+    {
+      "shard": "AP",
+      "strong": "H3481",
+      "lemma": "יִשְׂרְאֵלִי",
+      "lang": "hebrew",
+      "glossEn": "of Israel, Israelite.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yiśrēʾēlî",
+          "translitKo": "이스라엘리",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yiśreʾēlî",
+          "translitKo": "이스레엘리",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yiśrĕʾēlî",
+          "translitKo": "이스라엘리",
+          "note": "개역개정 관용 표기는 ‘이스라엘 사람’이다. 학술 표기(이스라엘리)를 표제로 둔다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yiśrĕʾēlî",
+          "translitKo": "이스레엘리",
+          "note": "이스라엘(H3478 yiśrāʾēl)의 형용사형이다. 레쉬 아래가 카메츠가 아니라 쉐바라 이스라엘리가 아니라 이스레엘리다."
+        }
+      ]
+    },
+    {
+      "shard": "AP",
+      "strong": "H1655",
+      "lemma": "גֶּשֶׁם",
+      "lang": "hebrew",
+      "glossEn": "body.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gešem",
+          "translitKo": "게셈",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gešem",
+          "translitKo": "게솀",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gešem",
+          "translitKo": "게쉠",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gešem",
+          "translitKo": "게셈",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H7486",
+      "lemma": "רַעְמְסֵס",
+      "lang": "hebrew",
+      "glossEn": "Raamses, Rameses.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "raʿmᵉsēs",
+          "translitKo": "라암세스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "raʿmesēs",
+          "translitKo": "라암세스",
+          "note": "관용 표기 라암셋"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "raʿmĕsēs",
+          "translitKo": "라메세스",
+          "note": "학술 표기는 라메세스다. 한국어 성경 관용 표기는 라암셋이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "raʿməsēs",
+          "translitKo": "라므세스",
+          "note": "관용 표기는 '라암셋'. ע를 한글로 따로 적지 않는 규칙에 따라 '라므세스'로 두었다."
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H2156",
+      "lemma": "זְמוֹרָה",
+      "lang": "hebrew",
+      "glossEn": "vine, branch, slip.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "zᵉmôrāh",
+          "translitKo": "즈모라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "zemôrâ",
+          "translitKo": "즈모라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zĕmôrâ",
+          "translitKo": "제모라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zəmôrâ",
+          "translitKo": "제모라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H6706",
+      "lemma": "צְחִיחַ",
+      "lang": "hebrew",
+      "glossEn": "higher place, top.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ṣᵉḥîaḥ",
+          "translitKo": "츠히아흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ṣeḥîaḥ",
+          "translitKo": "츠히아흐",
+          "note": "furtive patach"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ṣĕḥîaḥ",
+          "translitKo": "체히아흐",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ṣəḥîaḥ",
+          "translitKo": "체히아흐",
+          "note": "어말 ח 앞 furtive patach를 살려 '-아흐'로 적었다(마시아흐 선례)."
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H1552",
+      "lemma": "גְלִילָה",
+      "lang": "hebrew",
+      "glossEn": "border, coast, country.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gᵉlîlāh",
+          "translitKo": "글릴라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gelîlâ",
+          "translitKo": "글릴라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gĕlîlâ",
+          "translitKo": "겔릴라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gəlîlâ",
+          "translitKo": "겔릴라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H2828",
+      "lemma": "חָשֻׁם",
+      "lang": "hebrew",
+      "glossEn": "Hashum.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥāšum",
+          "translitKo": "하숨",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥāšum",
+          "translitKo": "하슘",
+          "note": "관용 표기 하숨"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥāšum",
+          "translitKo": "하슘",
+          "note": "학술 표기는 하슘이다. 한국어 성경 관용 표기는 하숨이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥāšum",
+          "translitKo": "하숨",
+          "note": "관용 표기 '하숨'과 같다."
+        }
+      ]
+    },
+    {
+      "shard": "AQ",
+      "strong": "H3540",
+      "lemma": "כְּדׇרְלָעֹמֶר",
+      "lang": "hebrew",
+      "glossEn": "Chedorlaomer.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Kᵉḏorlaʿōmer",
+          "translitKo": "케돌라오메르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kedorlāʿōmer",
+          "translitKo": "케도를라오메르",
+          "note": "관용 표기 그돌라오멜"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕdorlāʿōmer",
+          "translitKo": "케도르라오메르",
+          "note": "학술 표기는 케도르라오메르다. 한국어 성경 관용 표기는 그돌라오멜이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kədorlāʿōmer",
+          "translitKo": "케도를라오메르",
+          "note": "관용 표기는 '그돌라오멜'. 둘째 음절은 카메츠 카탄이라 o로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "AR",
+      "strong": "H1660",
+      "lemma": "גַּת",
+      "lang": "hebrew",
+      "glossEn": "(wine-) press (fat).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gat",
+          "translitKo": "갓",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gat",
+          "translitKo": "가트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gat",
+          "translitKo": "갓",
+          "note": "개역개정 관용 표기는 '가드'다(블레셋 지명 가드 등). 학술 표기 '갓'을 표제로 둔다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gat",
+          "translitKo": "가트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AR",
+      "strong": "G1598",
+      "lemma": "ἐκπειράζω",
+      "lang": "greek",
+      "glossEn": "tempt",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekpeirázō",
+          "translitKo": "엑페라조",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekpeirázō",
+          "translitKo": "에크페이라조",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekpeirázō",
+          "translitKo": "엑페이라조",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekpeirázō",
+          "translitKo": "에크페이라조",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AR",
+      "strong": "G4302",
+      "lemma": "προλέγω",
+      "lang": "greek",
+      "glossEn": "foretell, tell before",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "prolégō",
+          "translitKo": "프로레고",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "prolégō",
+          "translitKo": "프롤레고",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "prolégō",
+          "translitKo": "프로레고",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "prolégō",
+          "translitKo": "프롤레고",
+          "note": "모음 사이 λ를 겹쳐 적는 배포 선례를 따랐다."
+        }
+      ]
+    }
+  ]
+}

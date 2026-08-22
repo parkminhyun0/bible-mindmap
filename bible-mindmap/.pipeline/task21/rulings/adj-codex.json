@@ -1,0 +1,16 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H3481","translit":"yiśrēʾēlî","translitKo":"이스라엘리","evidence":"이스라엘 배포 선례와 SBL 장음·후음 표기를 유지한 형용사형 음역","note":"한국어 성경 관용형은 ‘이스라엘 사람’이므로 학술 표기를 표제로 둔다."},
+    {"strong":"H1655","translit":"gešem","translitKo":"게솀","evidence":"koreanGlossTopBatch05.js의 배포 표기 ‘게솀’","note":"음절 말 שׁ는 배포 선례에 따라 ‘쉠’으로 적는다."},
+    {"strong":"H7486","translit":"raʿmᵉsēs","translitKo":"라암세스","evidence":"SBL의 ʿ·분절 모음과 학술 표제 원칙","note":"한국어 성경 관용 표기는 ‘라암셋’이다."},
+    {"strong":"H2156","translit":"zᵉmôrāh","translitKo":"즈모라","evidence":"배포 히브리어 음역의 shewa·홀렘 장음 표기와 후음 어미 선례","note":"어말 ה는 별도 자음으로 옮기지 않는다."},
+    {"strong":"H6706","translit":"ṣᵉḥîaḥ","translitKo":"츠히아흐","evidence":"배포 선례의 ṣ·ḥ 아래점과 furtive patach를 반영","note":"어말 ח 앞 furtive patach를 ‘아흐’로 살린다."},
+    {"strong":"H1552","translit":"gᵉlîlāh","translitKo":"글릴라","evidence":"배포 히브리어 표기의 g와 î 장음, 어말 후음 처리","note":"관용 지명 ‘갈릴리’와 달리 원어 형태의 학술 표기를 표제로 둔다."},
+    {"strong":"H2828","translit":"ḥāšum","translitKo":"하숨","evidence":"배포 고유명사 표기의 š와 관용형 일치","note":"한국어 성경 관용 표기 ‘하숨’을 따른다."},
+    {"strong":"H3540","translit":"Kᵉḏorlaʿōmer","translitKo":"케돌라오메르","evidence":"SBL 고유명사 음역의 ḏ·ʿ·ō 표기를 유지","note":"한국어 성경 관용 표기는 ‘그돌라오멜’이다."},
+    {"strong":"H1660","translit":"gat","translitKo":"갓","evidence":"배포 히브리어 음역의 무기호 g와 단모음 표기","note":"한국어 성경 관용 지명은 ‘가드’지만 학술 표기를 표제로 둔다."},
+    {"strong":"G1598","translit":"ekpeirázō","translitKo":"엑페라조","evidence":"koreanGlossTopBatch05.js의 peirázō 계열 배포 표기와 헬라어 음역 선례","note":"ἐκ의 k를 유지하고 ει는 ‘에이’가 아닌 배포식 ‘에라’로 적는다."},
+    {"strong":"G4302","translit":"prolégō","translitKo":"프로레고","evidence":"배포 헬라어 음역의 단자음 표기와 légo 계열 선례","note":"모음 사이 λ를 겹쳐 적지 않는다."}
+  ]
+}

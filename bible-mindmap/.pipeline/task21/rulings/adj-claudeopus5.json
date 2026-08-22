@@ -1,0 +1,82 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "H3481",
+      "translit": "yiśrĕʾēlî",
+      "translitKo": "이스레엘리",
+      "evidence": "koreanGlossTopBatch10 H3158 יִזְרְעֵאלִי yizrĕʿēʾlî → 이즈레엘리, koreanGlossTopBatch05 H3157 יִזְרְעֵאל → 이즈레엘. 같은 꼴(Ci-C-rĕ-ʾē-l + î 겐틸리키움)이 이미 배포돼 있고, 레쉬의 유성 쉐바를 '에'로 적었다. koreanGlossTopBatch13 H3761 כַּרְמְלִי karmĕlî → 카르멜리도 같다.",
+      "note": "H3478 יִשְׂרָאֵל(카메츠)은 이스라엘로 배포돼 있으나 이 낱말은 레쉬가 쉐바라 모음이 다르다. 배포된 이즈레엘/이즈레엘리가 관용 표기(이스르엘)를 따르지 않고 실제 모음부호를 따랐으므로 같은 원칙을 적용했다. 개역개정 관용 표기는 '이스라엘 사람'이다."
+    },
+    {
+      "strong": "H1655",
+      "translit": "gešem",
+      "translitKo": "게솀",
+      "evidence": "koreanGlossTopBatch05 H1653 גֶּשֶׁם gešem → 게솀. 철자가 완전히 같은 동형이의어가 이미 배포돼 있다. koreanGlossTopBatch03 H8121 שֶׁמֶשׁ šemeš → 셰메쉬도 음절 첫소리 שׁ+세골을 '셰'로 적는다(솀 = 셰+ㅁ).",
+      "note": ""
+    },
+    {
+      "strong": "H7486",
+      "translit": "raʿmĕsēs",
+      "translitKo": "라메세스",
+      "evidence": "묵음 쉐바로 닫힌 음절의 ע는 배포 데이터가 한글로 적지 않는다 — koreanGlossTopBatch06 H1201 בַּעְשָׁא baʿšāʾ → 바샤, koreanGlossTopBatch09 H4570 מַעְגָּל maʿgāl → 마갈, koreanGlossTopBatch14 H3936 לַעְדָּן laʿdān → 라단. 따라서 raʿ는 '라'다. 이어지는 מְ는 연속 쉐바의 둘째라 유성이므로 '메'(선례 H3414 yirmĕyâ → 이르메야).",
+      "note": "관용 표기는 '라암셋'이다(src/data/bibleReferences.js 'place:pithom-rameses' canonicalName '비돔·라암셋'). 학술 표기를 표제로 두었다. '라암세스'는 ע를 '아'로 적은 것이라 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "H2156",
+      "translit": "zĕmôrâ",
+      "translitKo": "제모라",
+      "evidence": "koreanGlossTopBatch11 H2166 זְמָן zĕmān → 제만, koreanGlossTopBatch03 H2220 זְרוֹעַ zĕrôaʿ → 제로아, koreanGlossTopBatch14 H2061 זְאֵב zĕʾēb → 제에브. 어두 유성 쉐바는 배포 데이터 전체에서 '으' 계열이 아니라 '에' 계열로 적는다(게불·체다카·켈리·테홈·엘로힘).",
+      "note": ""
+    },
+    {
+      "strong": "H6706",
+      "translit": "ṣĕḥîaḥ",
+      "translitKo": "체히아흐",
+      "evidence": "어두 צְ는 koreanGlossTopBatch02 H6666 צְדָקָה ṣĕdāqâ → 체다카, koreanGlossTopBatch05 H6643 צְבִי ṣĕbî → 체비. 어말 ח 앞 furtive patach는 koreanGlossTopBatch05 H1280 בְּרִיחַ bĕrîaḥ → 베리아흐, H5207 נִיחוֹחַ → 니호아흐, koreanGlossTopBatch07 H7878 שִׂיחַ śîaḥ → 시아흐.",
+      "note": ""
+    },
+    {
+      "strong": "H1552",
+      "translit": "gĕlîlâ",
+      "translitKo": "겔릴라",
+      "evidence": "koreanGlossTopBatch12 H1541 גְּלָה gĕlâ → 겔라가 어두 גְ+ל을 '겔'로 적는다. koreanGlossTopBatch02 H3627 כְּלִי kĕlî → 켈리, koreanGlossTopBatch04 H1097 בְּלִי bĕlî → 벨리도 같다. 모음 사이 ל은 ㄹ받침+ㄹ초성으로 적으므로 -lîlâ는 '릴라' — koreanGlossTopBatch04 G1056 Γαλιλαία → 갈릴라이아.",
+      "note": ""
+    },
+    {
+      "strong": "H2828",
+      "translit": "ḥāšum",
+      "translitKo": "하슘",
+      "evidence": "koreanGlossTopBatch10 H8036 שֻׁם šum → 슘. 같은 음절이 단독 표제어로 배포돼 있다. koreanGlossTopBatch13 H2838 חָשֻׁק ḥāšûq → 하슈크, koreanGlossTopBatch12 H838 אָשֻׁר ʾāšur → 아슈르도 שֻׁ를 '슈'로 적는다. 확정 규칙 3(뒤에 모음이 오면 샤/셰/시/쇼/슈)에 해당한다.",
+      "note": "개역개정 관용 표기는 '하숨'이다. 학술 표기 '하슘'을 표제로 두었다."
+    },
+    {
+      "strong": "H3540",
+      "translit": "kĕdorlāʿōmer",
+      "translitKo": "케도를라오메르",
+      "evidence": "r+l 연속은 koreanGlossTopBatch09 H6190 עׇרְלָה ʿorlâ → 오를라 하나뿐이며 '를라'로 적는다. 어두 כְּ는 koreanGlossTopBatch03 H3667 כְּנַעַן kĕnaʿan → 케나안. 카메츠 카탄은 koreanGlossTopBatch05 H5237 נׇכְרִי nokrî → 노크리, koreanGlossTopBatch08 H6018 עׇמְרִי ʿomrî → 옴리로 'o'다. עֹ는 ע를 적지 않아 '오'(koreanGlossTopBatch10 H1187 pĕʿôr → 페오르, H3049 yiddĕʿōnî → 이데오니).",
+      "note": "개역개정 관용 표기는 '그돌라오멜'이다. 학술 표기를 표제로 두었다. '케도르라오메르'는 오를라 선례와 어긋나고 '케돌라오메르'는 카메츠 카탄 음절 도(dor)의 ר을 빠뜨린다."
+    },
+    {
+      "strong": "H1660",
+      "translit": "gat",
+      "translitKo": "가트",
+      "evidence": "koreanGlossTopBatch05 H1661 גַּת gat → 가트. 철자가 같은 지명 표제어가 이미 배포돼 있다. 어말 ת는 배포 데이터 전체가 받침이 아니라 '트'로 적는다 — H1323 בַּת bat → 바트, H7676 שַׁבָּת šabbāt → 샤바트, H1881 דָּת dāt → 다트, H1847 דַּעַת daʿat → 다아트.",
+      "note": "개역개정 관용 표기는 '가드'다(src/data/bibleReferences.js 'place:gath' canonicalName '가드'). 학술 표기를 표제로 두었다. '갓'은 어말 ת를 받침으로 적은 것이라 선례에 없다."
+    },
+    {
+      "strong": "G1598",
+      "translit": "ekpeirázō",
+      "translitKo": "에크페이라조",
+      "evidence": "πειρ-는 koreanGlossTopBatch05 G3985 πειράζω → 페이라조, koreanGlossTopBatch07 G3986 πειρασμός → 페이라스모스로 배포돼 있다(ει → 에이). ἐκ- 접두사는 '에크'가 다수 선례다 — 에크포류오마이(G1607)·에크플레소(G1605)·에크핍토(G1601)·에크디케시스(G1557)·에크페로(G1627)·에크데코마이(G1551)·에크디케오(G1556)·에크뒤오(G1562)·에크발로(G1544).",
+      "note": "합성어의 뒷말이 이미 '페이라조'로 배포돼 있으므로 '엑페라조'처럼 ει를 줄이면 같은 어근이 두 표기로 갈린다."
+    },
+    {
+      "strong": "G4302",
+      "translit": "prolégō",
+      "translitKo": "프롤레고",
+      "evidence": "모음 사이 단일 λ는 배포 데이터가 예외 없이 ㄹ받침+ㄹ초성으로 적는다 — koreanGlossTopBatch06 G3670 ὁμολογέω → 호몰로게오, koreanGlossTopBatch05 G2127 εὐλογέω → 율로게오, koreanGlossTopBatch02 G2980 λαλέω → 랄레오·G2564 καλέω → 칼레오, koreanGlossTopBatch03 G3870 παρακαλέω → 파라칼레오. πρό- 접두사는 G4254 προάγω → 프로아고처럼 '프로'다.",
+      "note": ""
+    }
+  ]
+}

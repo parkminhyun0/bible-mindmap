@@ -1,0 +1,147 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 0,
+  "ties": [],
+  "rulings": [
+    {
+      "strong": "H3481",
+      "lemma": "יִשְׂרְאֵלִי",
+      "translit": "yiśrĕʾēlî",
+      "translitKo": "이스레엘리",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 이스라엘(H3478 yiśrāʾēl)에 관계형용사 접미사(-î)가 붙어 레쉬의 모음이 유성 쉐바(ĕ)로 단축된 형태(yiśrĕʾēlî)다. 개역개정 관용 표기는 '이스라엘 사람'이다."
+    },
+    {
+      "strong": "H1655",
+      "lemma": "גֶּשֶׁם",
+      "translit": "gešem",
+      "translitKo": "게솀",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 동음이철인 H1653(gešem→게솀)과 동일한 배포 선례를 따른다."
+    },
+    {
+      "strong": "H7486",
+      "lemma": "רַעְמְסֵס",
+      "translit": "raʿmĕsēs",
+      "translitKo": "라메세스",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 라메세스다. 한국어 성경 관용 표기는 라암셋이다(출 1:11, bibleReferences: 비돔·라암셋)."
+    },
+    {
+      "strong": "H2156",
+      "lemma": "זְמוֹרָה",
+      "translit": "zĕmôrâ",
+      "translitKo": "제모라",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6706",
+      "lemma": "צְחִיחַ",
+      "translit": "ṣĕḥîaḥ",
+      "translitKo": "체히아흐",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 ח 앞의 furtive patach(어말 후음 앞 a)를 살려 '-아흐'로 적는다."
+    },
+    {
+      "strong": "H1552",
+      "lemma": "גְלִילָה",
+      "translit": "gĕlîlâ",
+      "translitKo": "겔릴라",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2828",
+      "lemma": "חָשֻׁם",
+      "translit": "ḥāšum",
+      "translitKo": "하슘",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 하슘이다. 한국어 성경 관용 표기는 하숨이다(스 2:19, 느 7:22)."
+    },
+    {
+      "strong": "H3540",
+      "lemma": "כְּדׇרְלָעֹמֶר",
+      "translit": "kĕdorlāʿōmer",
+      "translitKo": "케도를라오메르",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 케도를라오메르다(דׇ의 카메츠 카탄 o 반영, r+l은 H6190 오를라 선례). 한국어 성경 관용 표기는 그돌라오멜이다(창 14:1)."
+    },
+    {
+      "strong": "H1660",
+      "lemma": "גַּת",
+      "translit": "gat",
+      "translitKo": "가트",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '가드'다(블레셋 지명 가드 등). 학술 표기 '가트'를 표제로 둔다."
+    },
+    {
+      "strong": "G1598",
+      "lemma": "ἐκπειράζω",
+      "translit": "ekpeirázō",
+      "translitKo": "에크페이라조",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "G4302",
+      "lemma": "προλέγω",
+      "translit": "prolégō",
+      "translitKo": "프롤레고",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 모음 간 단일 λ를 'ㄹ' 받침과 초성으로 겹쳐 적는 배포 선례를 따랐다."
+    }
+  ]
+}

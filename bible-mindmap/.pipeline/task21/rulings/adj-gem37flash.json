@@ -1,0 +1,82 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H3481",
+      "translit": "yiśrĕʾēlî",
+      "translitKo": "이스레엘리",
+      "evidence": "H3158(yizrĕʿēʾlî→이즈레엘리), H7206(rĕʾûbēnî→레우베니), H7261(rabrĕbān→라브레반) 등 배포 선례에서 유성 쉐바(ĕ)는 '레'로 음역됨",
+      "note": "이스라엘(H3478 yiśrāʾēl)에 관계형용사 접미사(-î)가 붙어 레쉬의 모음이 유성 쉐바(ĕ)로 단축된 형태(yiśrĕʾēlî)다. 개역개정 관용 표기는 '이스라엘 사람'이다."
+    },
+    {
+      "strong": "H1655",
+      "translit": "gešem",
+      "translitKo": "게솀",
+      "evidence": "H1653(גֶּשֶׁם gešem→게솀), H2833(ḥōšen→호셴), H1880(dešen→데셴) 등 배포 선례에서 שׁ+segol+coda는 솀/셴으로 음역됨",
+      "note": "동음이철인 H1653(gešem→게솀)과 동일한 배포 선례를 따른다."
+    },
+    {
+      "strong": "H7486",
+      "translit": "raʿmĕsēs",
+      "translitKo": "라메세스",
+      "evidence": "H7451(raʿ→라), H7474(raʿyâ→라야), H1201(baʿšāʾ→바샤)에서 음절말 ע는 모음을 추가하지 않음; H3414(yirmĕyâ→이르메야), H8111(šōmĕrôn→쇼메론), H4023(mĕgiddôn→메기돈)에서 유성 쉐바(mĕ)는 '메'로 음역됨",
+      "note": "학술 표기는 라메세스다. 한국어 성경 관용 표기는 라암셋이다(출 1:11, bibleReferences: 비돔·라암셋)."
+    },
+    {
+      "strong": "H2156",
+      "translit": "zĕmôrâ",
+      "translitKo": "제모라",
+      "evidence": "H2166(zĕmān→제만), H2220(zĕrôaʿ→제로아), H2074(zĕbûlûn→제불룬), H2148(zĕkaryâ→제카르야) 등 어두 זְ(zĕ)는 일관되게 '제'로 음역됨",
+      "note": ""
+    },
+    {
+      "strong": "H6706",
+      "translit": "ṣĕḥîaḥ",
+      "translitKo": "체히아흐",
+      "evidence": "H6666(ṣĕdāqâ→체다카), H6643(ṣĕbî→체비) 등 어두 צְ(ṣĕ)는 체, H1280(bĕrîaḥ→베리아흐) 및 마시아흐 선례에서 어말 ח 앞 furtive patach는 '-아흐'로 음역됨",
+      "note": "어말 ח 앞의 furtive patach(어말 후음 앞 a)를 살려 '-아흐'로 적는다."
+    },
+    {
+      "strong": "H1552",
+      "translit": "gĕlîlâ",
+      "translitKo": "겔릴라",
+      "evidence": "H1366(gĕbûl→게불), H1541(gĕlâ→겔라), H3627(kĕlî→켈리), H4399(mĕlāʾkâ→멜라카) 등 어두 유성 쉐바(ĕ)는 ㅔ, 후속 lamed는 받침과 초성으로 연음되어 '겔릴라'로 음역됨",
+      "note": ""
+    },
+    {
+      "strong": "H2828",
+      "translit": "ḥāšum",
+      "translitKo": "하슘",
+      "evidence": "H8036(šum→슘), H2838(ḥāšûq→하슈크), H4918(mĕšullām→메슐람) 등 שׁ(š)+모음 u는 슈/슘 계열로 음역됨",
+      "note": "학술 표기는 하슘이다. 한국어 성경 관용 표기는 하숨이다(스 2:19, 느 7:22)."
+    },
+    {
+      "strong": "H3540",
+      "translit": "kĕdorlāʿōmer",
+      "translitKo": "케도를라오메르",
+      "evidence": "H6190(ʿorlâ→오를라)의 r+l 음역 선례, H6547(parʿōh→파르오)의 עֹ(ʿō→오) 음역 선례, H4782(mordĕkay→모르데카이)의 카메츠 카탄(o) 음역 선례",
+      "note": "학술 표기는 케도를라오메르다(דׇ의 카메츠 카탄 o 반영, r+l은 H6190 오를라 선례). 한국어 성경 관용 표기는 그돌라오멜이다(창 14:1)."
+    },
+    {
+      "strong": "H1660",
+      "translit": "gat",
+      "translitKo": "가트",
+      "evidence": "H1661(גַּת gat→가트), H1667(גַּת־רִמּוֹן gat-rimmôn→가트림몬), H1323(bat→바트), H4962(mat→마트), H6595(pat→파트) 등 어말 tav(t)는 받침(ㅅ)이 아니라 독립 음절 '트'로 음역됨",
+      "note": "개역개정 관용 표기는 '가드'다(블레셋 지명 가드 등). 학술 표기 '가트'를 표제로 둔다."
+    },
+    {
+      "strong": "G1598",
+      "translit": "ekpeirázō",
+      "translitKo": "에크페이라조",
+      "evidence": "G3985(peirázō→페이라조), G1607(ekporeúomai→에크포류오마이), G1605(ekplḗssō→에크플레소), G1601(ekpíptō→에크핍토) 등 ek- 접두사+무성음 p는 '에크'로 분리 음역되고 peir-는 '페이라'로 음역됨",
+      "note": ""
+    },
+    {
+      "strong": "G4302",
+      "translit": "prolégō",
+      "translitKo": "프롤레고",
+      "evidence": "G483(antilégō→안틸레고), G2127(eulogéō→율로게오), G2641(kataleípō→카탈레이포), G1260(dialogízomai→디알로기조마이) 등 모음 간 단일 람다(λ)는 'ㄹ' 받침과 초성으로 겹쳐 적는 배포 선례가 일관됨",
+      "note": "모음 간 단일 λ를 'ㄹ' 받침과 초성으로 겹쳐 적는 배포 선례를 따랐다."
+    }
+  ]
+}

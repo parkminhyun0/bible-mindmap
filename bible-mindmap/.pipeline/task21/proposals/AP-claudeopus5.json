@@ -1,0 +1,707 @@
+{
+  "shard": "AP",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H7134",
+      "lemma": "קַרְדֹּם",
+      "translit": "qardōm",
+      "translitKo": "카르돔",
+      "note": ""
+    },
+    {
+      "strong": "H5888",
+      "lemma": "עָיֵף",
+      "translit": "ʿāyēp",
+      "translitKo": "아예프",
+      "note": ""
+    },
+    {
+      "strong": "H7210",
+      "lemma": "רֳאִי",
+      "translit": "rŏʾî",
+      "translitKo": "로이",
+      "note": "하테프 카메츠(ŏ)는 배포 선례대로 오로 적었다 — 코담·오니·요피."
+    },
+    {
+      "strong": "H2394",
+      "lemma": "חׇזְקָה",
+      "translit": "ḥozqâ",
+      "translitKo": "호즈카",
+      "note": "첫 모음이 카메츠 하투프(o)다. 장모음 ā가 아니므로 하즈카가 아니라 호즈카로 적었다."
+    },
+    {
+      "strong": "H7413",
+      "lemma": "רָמָה",
+      "translit": "rāmâ",
+      "translitKo": "라마",
+      "note": "지명 라마. 학술 표기와 개역개정 관용 표기가 같다."
+    },
+    {
+      "strong": "H5367",
+      "lemma": "נָקַשׁ",
+      "translit": "nāqaš",
+      "translitKo": "나카쉬",
+      "note": ""
+    },
+    {
+      "strong": "H3888",
+      "lemma": "לוּשׁ",
+      "translit": "lûš",
+      "translitKo": "루쉬",
+      "note": ""
+    },
+    {
+      "strong": "H796",
+      "lemma": "אַשְׁדּוֹדִי",
+      "translit": "ʾašdôdî",
+      "translitKo": "아쉬도디",
+      "note": "아슈도드(H795)의 지명 형용사형이다. 개역개정은 지명을 아스돗으로 적어 아스돗 사람이 되지만, 배포 선례가 아슈도드이므로 학술 표기를 표제로 두었다."
+    },
+    {
+      "strong": "H5763",
+      "lemma": "עוּל",
+      "translit": "ʿûl",
+      "translitKo": "울",
+      "note": "어두 ע는 한글로 따로 적지 않아 한 음절 울이 된다."
+    },
+    {
+      "strong": "H235",
+      "lemma": "אָזַל",
+      "translit": "ʾāzal",
+      "translitKo": "아잘",
+      "note": ""
+    },
+    {
+      "strong": "H5233",
+      "lemma": "נֶכֶס",
+      "translit": "nekes",
+      "translitKo": "네케스",
+      "note": ""
+    },
+    {
+      "strong": "H3993",
+      "lemma": "מַאֲרָב",
+      "translit": "maʾărāb",
+      "translitKo": "마아라브",
+      "note": ""
+    },
+    {
+      "strong": "H5490",
+      "lemma": "סוֹף",
+      "translit": "sôp",
+      "translitKo": "소프",
+      "note": "홍해의 수프(H5488 sûp)와 철자가 다르다. 이 낱말은 홀렘 바브라 소프다."
+    },
+    {
+      "strong": "H8463",
+      "lemma": "תַּחֲלוּא",
+      "translit": "taḥălûʾ",
+      "translitKo": "타할루",
+      "note": "어말 알레프는 소리가 없어 한글로 적지 않는다."
+    },
+    {
+      "strong": "H4971",
+      "lemma": "מַתְכֹנֶת",
+      "translit": "matkōnet",
+      "translitKo": "마트코네트",
+      "note": ""
+    },
+    {
+      "strong": "H4705",
+      "lemma": "מִצְעָר",
+      "translit": "miṣʿār",
+      "translitKo": "미츠아르",
+      "note": ""
+    },
+    {
+      "strong": "H3755",
+      "lemma": "כֹּרֵם",
+      "translit": "kōrēm",
+      "translitKo": "코렘",
+      "note": ""
+    },
+    {
+      "strong": "H2196",
+      "lemma": "זָעַף",
+      "translit": "zāʿap",
+      "translitKo": "자아프",
+      "note": ""
+    },
+    {
+      "strong": "H6077",
+      "lemma": "עֹפֶל",
+      "translit": "ʿōpel",
+      "translitKo": "오펠",
+      "note": "예루살렘 지명 오펠. 개역개정은 오벨로 적는다."
+    },
+    {
+      "strong": "H6982",
+      "lemma": "קוֹרָה",
+      "translit": "qôrâ",
+      "translitKo": "코라",
+      "note": ""
+    },
+    {
+      "strong": "H5566",
+      "lemma": "סֶמֶל",
+      "translit": "semel",
+      "translitKo": "세멜",
+      "note": ""
+    },
+    {
+      "strong": "H7183",
+      "lemma": "קַשָּׁב",
+      "translit": "qaššāb",
+      "translitKo": "카샤브",
+      "note": ""
+    },
+    {
+      "strong": "H2284",
+      "lemma": "חָגָב",
+      "translit": "ḥāgāb",
+      "translitKo": "하가브",
+      "note": ""
+    },
+    {
+      "strong": "H7096",
+      "lemma": "קָצָה",
+      "translit": "qāṣâ",
+      "translitKo": "카차",
+      "note": ""
+    },
+    {
+      "strong": "H7024",
+      "lemma": "קִיר",
+      "translit": "qîr",
+      "translitKo": "키르",
+      "note": "지명 키르. 개역개정은 길로 적는다."
+    },
+    {
+      "strong": "H1891",
+      "lemma": "הָבַל",
+      "translit": "hābal",
+      "translitKo": "하발",
+      "note": "같은 어근의 명사 헤벨(H1892 hebel)과 모음이 달라 하발이다."
+    },
+    {
+      "strong": "H762",
+      "lemma": "אֲרָמִית",
+      "translit": "ʾărāmît",
+      "translitKo": "아라미트",
+      "note": "아람어를 가리키는 부사형이다. 지명·민족명 아람(H758)과 같은 어근이다."
+    },
+    {
+      "strong": "H6675",
+      "lemma": "צוֹאָה",
+      "translit": "ṣôʾâ",
+      "translitKo": "초아",
+      "note": ""
+    },
+    {
+      "strong": "H5007",
+      "lemma": "נְאָצָה",
+      "translit": "nĕʾāṣâ",
+      "translitKo": "네아차",
+      "note": ""
+    },
+    {
+      "strong": "H4693",
+      "lemma": "מָצוֹר",
+      "translit": "māṣôr",
+      "translitKo": "마초르",
+      "note": ""
+    },
+    {
+      "strong": "H7116",
+      "lemma": "קָצֵר",
+      "translit": "qāṣēr",
+      "translitKo": "카체르",
+      "note": ""
+    },
+    {
+      "strong": "H5599",
+      "lemma": "סָפִיחַ",
+      "translit": "sāpîaḥ",
+      "translitKo": "사피아흐",
+      "note": "어말 ח 앞의 furtive patach라 루아흐·마시아흐와 같은 -아흐로 닫힌다."
+    },
+    {
+      "strong": "H686",
+      "lemma": "אָצַר",
+      "translit": "ʾāṣar",
+      "translitKo": "아차르",
+      "note": ""
+    },
+    {
+      "strong": "H5786",
+      "lemma": "עָוַר",
+      "translit": "ʿāwar",
+      "translitKo": "아와르",
+      "note": ""
+    },
+    {
+      "strong": "H2970",
+      "lemma": "יַאֲזַנְיָה",
+      "translit": "yaʾăzanyâ",
+      "translitKo": "야아잔야",
+      "note": "인명 야아잔야. 개역개정은 야아사냐로 적는다."
+    },
+    {
+      "strong": "H8239",
+      "lemma": "שָׁפַת",
+      "translit": "šāpat",
+      "translitKo": "샤파트",
+      "note": "재판하다의 샤파트(H8199 šāpaṭ)와 어말 자음이 다르다. 이쪽은 타우다."
+    },
+    {
+      "strong": "H6398",
+      "lemma": "פָּלַח",
+      "translit": "pālaḥ",
+      "translitKo": "팔라흐",
+      "note": ""
+    },
+    {
+      "strong": "H3739",
+      "lemma": "כָּרָה",
+      "translit": "kārâ",
+      "translitKo": "카라",
+      "note": "ק로 시작하는 카라(H7121 qārāʾ)와 첫 자음이 다르다. 이쪽은 카프다."
+    },
+    {
+      "strong": "H1634",
+      "lemma": "גֶּרֶם",
+      "translit": "gerem",
+      "translitKo": "게렘",
+      "note": ""
+    },
+    {
+      "strong": "H570",
+      "lemma": "אֶמֶשׁ",
+      "translit": "ʾemeš",
+      "translitKo": "에메쉬",
+      "note": ""
+    },
+    {
+      "strong": "H3823",
+      "lemma": "לָבַב",
+      "translit": "lābab",
+      "translitKo": "라바브",
+      "note": ""
+    },
+    {
+      "strong": "H1217",
+      "lemma": "בָּצֵק",
+      "translit": "bāṣēq",
+      "translitKo": "바체크",
+      "note": ""
+    },
+    {
+      "strong": "H6446",
+      "lemma": "פַּס",
+      "translit": "pas",
+      "translitKo": "파스",
+      "note": ""
+    },
+    {
+      "strong": "H2773",
+      "lemma": "חֹרֹנַיִם",
+      "translit": "ḥōrōnayim",
+      "translitKo": "호로나임",
+      "note": "지명 호로나임. 학술 표기와 개역개정 관용 표기가 같다."
+    },
+    {
+      "strong": "H5498",
+      "lemma": "סָחַב",
+      "translit": "sāḥab",
+      "translitKo": "사하브",
+      "note": ""
+    },
+    {
+      "strong": "H3481",
+      "lemma": "יִשְׂרְאֵלִי",
+      "translit": "yiśrĕʾēlî",
+      "translitKo": "이스레엘리",
+      "note": "이스라엘(H3478 yiśrāʾēl)의 형용사형이다. 레쉬 아래가 카메츠가 아니라 쉐바라 이스라엘리가 아니라 이스레엘리다."
+    },
+    {
+      "strong": "H8222",
+      "lemma": "שָׂפָם",
+      "translit": "śāpām",
+      "translitKo": "사팜",
+      "note": "ש에 사인 점이 찍혀 ś다. 샤팜이 아니다."
+    },
+    {
+      "strong": "H6775",
+      "lemma": "צָמַד",
+      "translit": "ṣāmad",
+      "translitKo": "차마드",
+      "note": ""
+    },
+    {
+      "strong": "H661",
+      "lemma": "אָפַף",
+      "translit": "ʾāpap",
+      "translitKo": "아파프",
+      "note": ""
+    },
+    {
+      "strong": "H4867",
+      "lemma": "מִשְׁבָּר",
+      "translit": "mišbār",
+      "translitKo": "미쉬바르",
+      "note": ""
+    },
+    {
+      "strong": "H4146",
+      "lemma": "מוֹסָדָה",
+      "translit": "môsādâ",
+      "translitKo": "모사다",
+      "note": ""
+    },
+    {
+      "strong": "H4937",
+      "lemma": "מִשְׁעֵן",
+      "translit": "mišʿēn",
+      "translitKo": "미쉬엔",
+      "note": ""
+    },
+    {
+      "strong": "H1252",
+      "lemma": "בֹּר",
+      "translit": "bōr",
+      "translitKo": "보르",
+      "note": "우물·구덩이의 보르(H953 bôr)와 철자가 겹치지만 이 낱말은 홀렘이다."
+    },
+    {
+      "strong": "H6617",
+      "lemma": "פָּתַל",
+      "translit": "pātal",
+      "translitKo": "파탈",
+      "note": ""
+    },
+    {
+      "strong": "H1801",
+      "lemma": "דָּלַג",
+      "translit": "dālag",
+      "translitKo": "달라그",
+      "note": ""
+    },
+    {
+      "strong": "H6038",
+      "lemma": "עֲנָוָה",
+      "translit": "ʿănāwâ",
+      "translitKo": "아나와",
+      "note": ""
+    },
+    {
+      "strong": "H886",
+      "lemma": "בְּאֵרֹתִי",
+      "translit": "bĕʾērōtî",
+      "translitKo": "베에로티",
+      "note": "지명 브에롯 사람을 가리키는 형용사형이다. 개역개정은 브에롯 사람으로 푼다."
+    },
+    {
+      "strong": "H5356",
+      "lemma": "נִקָּיוֹן",
+      "translit": "niqqāyôn",
+      "translitKo": "니카욘",
+      "note": ""
+    },
+    {
+      "strong": "H2392",
+      "lemma": "חֹזֶק",
+      "translit": "ḥōzeq",
+      "translitKo": "호제크",
+      "note": ""
+    },
+    {
+      "strong": "H5968",
+      "lemma": "עָלַף",
+      "translit": "ʿālap",
+      "translitKo": "알라프",
+      "note": ""
+    },
+    {
+      "strong": "H6071",
+      "lemma": "עָסִיס",
+      "translit": "ʿāsîs",
+      "translitKo": "아시스",
+      "note": ""
+    },
+    {
+      "strong": "H4772",
+      "lemma": "מַרְגְלָה",
+      "translit": "margĕlâ",
+      "translitKo": "마르겔라",
+      "note": ""
+    },
+    {
+      "strong": "H6470",
+      "lemma": "פָּעַם",
+      "translit": "pāʿam",
+      "translitKo": "파암",
+      "note": ""
+    },
+    {
+      "strong": "H3330",
+      "lemma": "יַצִּיב",
+      "translit": "yaṣṣîb",
+      "translitKo": "야치브",
+      "note": ""
+    },
+    {
+      "strong": "H2749",
+      "lemma": "חַרְטֹם",
+      "translit": "ḥarṭōm",
+      "translitKo": "하르톰",
+      "note": ""
+    },
+    {
+      "strong": "H3916",
+      "lemma": "לֵילְיָא",
+      "translit": "lêlyāʾ",
+      "translitKo": "렐야",
+      "note": "아람어. 체레-요드는 배포 선례대로 에로 적는다 — 벤·헤크·테만."
+    },
+    {
+      "strong": "H1289",
+      "lemma": "בְּרַךְ",
+      "translit": "bĕrak",
+      "translitKo": "베라크",
+      "note": "아람어형이다. 히브리어 바라크(H1288 bārak)와 뿌리가 같다."
+    },
+    {
+      "strong": "H7624",
+      "lemma": "שְׁבַח",
+      "translit": "šĕbaḥ",
+      "translitKo": "셰바흐",
+      "note": ""
+    },
+    {
+      "strong": "H4483",
+      "lemma": "מְנָא",
+      "translit": "mĕnāʾ",
+      "translitKo": "메나",
+      "note": "다니엘 5:25의 메네·메네와 같은 어근의 아람어 동사다."
+    },
+    {
+      "strong": "H8624",
+      "lemma": "תַּקִּיף",
+      "translit": "taqqîp",
+      "translitKo": "타키프",
+      "note": ""
+    },
+    {
+      "strong": "H7662",
+      "lemma": "שְׁבַק",
+      "translit": "šĕbaq",
+      "translitKo": "셰바크",
+      "note": ""
+    },
+    {
+      "strong": "H5460",
+      "lemma": "סְגַן",
+      "translit": "sĕgan",
+      "translitKo": "세간",
+      "note": ""
+    },
+    {
+      "strong": "H7314",
+      "lemma": "רוּם",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "note": "아람어 명사 높이다. 히브리어 동사 쿰(H6965)이 아니라 룸(H7311)과 같은 어근이다."
+    },
+    {
+      "strong": "H8160",
+      "lemma": "שָׁעָה",
+      "translit": "šāʿâ",
+      "translitKo": "샤아",
+      "note": ""
+    },
+    {
+      "strong": "H1655",
+      "lemma": "גֶּשֶׁם",
+      "translit": "gešem",
+      "translitKo": "게셈",
+      "note": ""
+    },
+    {
+      "strong": "H8631",
+      "lemma": "תְּקֵף",
+      "translit": "tĕqēp",
+      "translitKo": "테케프",
+      "note": ""
+    },
+    {
+      "strong": "H5491",
+      "lemma": "סוֹף",
+      "translit": "sôp",
+      "translitKo": "소프",
+      "note": "아람어형이다. 히브리어 소프(H5490)와 같은 뜻·같은 철자다."
+    },
+    {
+      "strong": "H8460",
+      "lemma": "תְּחוֹת",
+      "translit": "tĕḥôt",
+      "translitKo": "테호트",
+      "note": ""
+    },
+    {
+      "strong": "H2920",
+      "lemma": "טַל",
+      "translit": "ṭal",
+      "translitKo": "탈",
+      "note": ""
+    },
+    {
+      "strong": "H6647",
+      "lemma": "צְבַע",
+      "translit": "ṣĕbaʿ",
+      "translitKo": "체바",
+      "note": "어말 ע는 한글로 적지 않아 체바로 닫힌다."
+    },
+    {
+      "strong": "H7238",
+      "lemma": "רְבוּ",
+      "translit": "rĕbû",
+      "translitKo": "레부",
+      "note": ""
+    },
+    {
+      "strong": "H5870",
+      "lemma": "עַיִן",
+      "translit": "ʿayin",
+      "translitKo": "아인",
+      "note": "아람어형이다. 히브리어 아인(H5869)과 표기가 같다."
+    },
+    {
+      "strong": "H1780",
+      "lemma": "דִּין",
+      "translit": "dîn",
+      "translitKo": "딘",
+      "note": ""
+    },
+    {
+      "strong": "H8355",
+      "lemma": "שְׁתָה",
+      "translit": "šĕtâ",
+      "translitKo": "셰타",
+      "note": ""
+    },
+    {
+      "strong": "H636",
+      "lemma": "אָע",
+      "translit": "ʾāʿ",
+      "translitKo": "아",
+      "note": "어두 알레프와 어말 ע 둘 다 한글로 적지 않아 한 음절 아만 남는다."
+    },
+    {
+      "strong": "H4076",
+      "lemma": "מָדַי",
+      "translit": "māday",
+      "translitKo": "마다이",
+      "note": "민족·지명 마다이. 개역개정은 메대로 적는다."
+    },
+    {
+      "strong": "H5632",
+      "lemma": "סָרֵךְ",
+      "translit": "sārēk",
+      "translitKo": "사레크",
+      "note": ""
+    },
+    {
+      "strong": "H4449",
+      "lemma": "מְלַל",
+      "translit": "mĕlal",
+      "translitKo": "멜랄",
+      "note": ""
+    },
+    {
+      "strong": "H3488",
+      "lemma": "יְתִב",
+      "translit": "yĕtib",
+      "translitKo": "예티브",
+      "note": ""
+    },
+    {
+      "strong": "H5609",
+      "lemma": "סְפַר",
+      "translit": "sĕpar",
+      "translitKo": "세파르",
+      "note": ""
+    },
+    {
+      "strong": "H2380",
+      "lemma": "חָזוּת",
+      "translit": "ḥāzût",
+      "translitKo": "하주트",
+      "note": ""
+    },
+    {
+      "strong": "H8510",
+      "lemma": "תֵּל",
+      "translit": "tēl",
+      "translitKo": "텔",
+      "note": ""
+    },
+    {
+      "strong": "H5579",
+      "lemma": "סְנַפִּיר",
+      "translit": "sĕnappîr",
+      "translitKo": "세나피르",
+      "note": ""
+    },
+    {
+      "strong": "H6893",
+      "lemma": "קָאַת",
+      "translit": "qāʾat",
+      "translitKo": "카아트",
+      "note": ""
+    },
+    {
+      "strong": "H8059",
+      "lemma": "שְׁמִטָּה",
+      "translit": "šĕmiṭṭâ",
+      "translitKo": "셰미타",
+      "note": ""
+    },
+    {
+      "strong": "H1379",
+      "lemma": "גָּבַל",
+      "translit": "gābal",
+      "translitKo": "가발",
+      "note": ""
+    },
+    {
+      "strong": "H5433",
+      "lemma": "סָבָא",
+      "translit": "sābāʾ",
+      "translitKo": "사바",
+      "note": "지명·민족명 스바(H5434 səbāʾ)와 철자가 다르다. 이쪽은 사메크에 카메츠 둘이다."
+    },
+    {
+      "strong": "H6948",
+      "lemma": "קְדֵשָׁה",
+      "translit": "qĕdēšâ",
+      "translitKo": "케데샤",
+      "note": ""
+    },
+    {
+      "strong": "H6998",
+      "lemma": "קָטַף",
+      "translit": "qāṭap",
+      "translitKo": "카타프",
+      "note": ""
+    },
+    {
+      "strong": "H7347",
+      "lemma": "רֵחֶה",
+      "translit": "rēḥeh",
+      "translitKo": "레헤",
+      "note": ""
+    }
+  ]
+}
