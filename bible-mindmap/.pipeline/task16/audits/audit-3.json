@@ -1,0 +1,56 @@
+[
+  {
+    "strong": "G4496",
+    "field": "translitKo",
+    "current": "리프토",
+    "suggested": "흐리프토",
+    "evidence": "규칙 'ῥ는 흐르 계열을 기본으로 하되...' 및 note의 '흐르 계열을 기본으로 표기' 주장과 모순됨",
+    "severity": "high",
+    "reason": "note에서는 ῥ를 흐르 계열로 표기했다고 적었으나 실제 음역은 '리'로 적어 규칙과 note 내용에 모두 위배됨"
+  },
+  {
+    "strong": "G3955",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ῥ는 흐르 계열을 기본으로 표기",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": "실제 표기인 '파르레시아조마이'에는 '흐르'가 반영되지 않음",
+    "severity": "medium",
+    "reason": "음역에 '흐르'를 반영하지 않았는데 note에는 반영했다고 적어 모순됨"
+  },
+  {
+    "strong": "G3177",
+    "field": "translitKo",
+    "current": "메테르메뉴오",
+    "suggested": "메테르메네우오",
+    "evidence": "규칙 'ευ는 후속 자음에 따라 에우/에브/에프가 갈린다'",
+    "severity": "high",
+    "reason": "ευ를 '에우/에브'로 풀어서 적지 않고 영어식 발음 '유'로 축약해 '뉴'로 표기함"
+  },
+  {
+    "strong": "G4753",
+    "field": "translitKo",
+    "current": "스트라튜마",
+    "suggested": "스트라테브마",
+    "evidence": "규칙 'ευ는 후속 자음에 따라 에우/에브/에프가 갈린다'",
+    "severity": "high",
+    "reason": "후속 자음이 μ(유성음)이므로 '에브'로 표기해야 하나 영어식 '튜'로 표기함"
+  },
+  {
+    "strong": "G2135",
+    "field": "translitKo",
+    "current": "유누코스",
+    "suggested": "에브누코스",
+    "evidence": "규칙 'ευ는 후속 자음에 따라 에우/에브/에프가 갈린다'",
+    "severity": "high",
+    "reason": "후속 자음이 ν(유성음)이므로 '에브'로 표기해야 하나 '유'로 표기함"
+  },
+  {
+    "strong": "G3017",
+    "field": "translitKo",
+    "current": "류이",
+    "suggested": "레우이",
+    "evidence": "규칙 'ευ는 후속 자음에 따라 에우/에브/에프가 갈린다'",
+    "severity": "high",
+    "reason": "Λευΐ의 ευ를 '에우' 계열로 표기하지 않고 '류'로 축약 표기함"
+  }
+]

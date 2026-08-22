@@ -1,0 +1,707 @@
+{
+  "shard": "AI",
+  "model": "gem37flash",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G75",
+      "lemma": "ἀγωνίζομαι",
+      "translit": "agōnízomai",
+      "translitKo": "아고니조마이",
+      "note": ""
+    },
+    {
+      "strong": "G5040",
+      "lemma": "τεκνίον",
+      "translit": "tekníon",
+      "translitKo": "테크니온",
+      "note": ""
+    },
+    {
+      "strong": "G3751",
+      "lemma": "ὀσφῦς",
+      "translit": "osphŷs",
+      "translitKo": "오스퓌스",
+      "note": ""
+    },
+    {
+      "strong": "G1025",
+      "lemma": "βρέφος",
+      "translit": "bréphos",
+      "translitKo": "브레포스",
+      "note": ""
+    },
+    {
+      "strong": "G569",
+      "lemma": "ἀπιστέω",
+      "translit": "apistéō",
+      "translitKo": "아피스테오",
+      "note": ""
+    },
+    {
+      "strong": "G4350",
+      "lemma": "προσκόπτω",
+      "translit": "proskóptō",
+      "translitKo": "프로스코프토",
+      "note": ""
+    },
+    {
+      "strong": "G3575",
+      "lemma": "Νῶε",
+      "translit": "Nōe",
+      "translitKo": "노에",
+      "note": "개역개정 관용 표기는 '노아'다. 헬라어 표제형(Νῶε)의 학술 음역은 노에다."
+    },
+    {
+      "strong": "G1295",
+      "lemma": "διασώζω",
+      "translit": "diasṓzō",
+      "translitKo": "디아소조",
+      "note": ""
+    },
+    {
+      "strong": "G2572",
+      "lemma": "καλύπτω",
+      "translit": "kalýptō",
+      "translitKo": "칼뤼프토",
+      "note": ""
+    },
+    {
+      "strong": "G2841",
+      "lemma": "κοινωνέω",
+      "translit": "koinōnéō",
+      "translitKo": "코이노네오",
+      "note": ""
+    },
+    {
+      "strong": "G3138",
+      "lemma": "Μάρκος",
+      "translit": "Márkos",
+      "translitKo": "마르코스",
+      "note": "개역개정 관용 표기는 '마가'다. 헬라어 표제형(Μάρκος)의 학술 음역은 마르코스다."
+    },
+    {
+      "strong": "G3955",
+      "lemma": "παῤῥησιάζομαι",
+      "translit": "parrhēsiázomai",
+      "translitKo": "파르레시아조마이",
+      "note": ""
+    },
+    {
+      "strong": "G1628",
+      "lemma": "ἐκφεύγω",
+      "translit": "ekpheúgō",
+      "translitKo": "에크페우고",
+      "note": ""
+    },
+    {
+      "strong": "G4291",
+      "lemma": "προΐστημι",
+      "translit": "proḯstēmi",
+      "translitKo": "프로이스테미",
+      "note": ""
+    },
+    {
+      "strong": "G4570",
+      "lemma": "σβέννυμι",
+      "translit": "sbénnymi",
+      "translitKo": "스베뉘미",
+      "note": ""
+    },
+    {
+      "strong": "G1533",
+      "lemma": "εἰσφέρω",
+      "translit": "eisphérō",
+      "translitKo": "에이스페로",
+      "note": ""
+    },
+    {
+      "strong": "G1627",
+      "lemma": "ἐκφέρω",
+      "translit": "ekphérō",
+      "translitKo": "에크페로",
+      "note": ""
+    },
+    {
+      "strong": "G714",
+      "lemma": "ἀρκέω",
+      "translit": "arkéō",
+      "translitKo": "아르케오",
+      "note": ""
+    },
+    {
+      "strong": "G572",
+      "lemma": "ἁπλότης",
+      "translit": "haplótēs",
+      "translitKo": "하플로테스",
+      "note": ""
+    },
+    {
+      "strong": "G3170",
+      "lemma": "μεγαλύνω",
+      "translit": "megalýnō",
+      "translitKo": "메갈뤼노",
+      "note": ""
+    },
+    {
+      "strong": "G3034",
+      "lemma": "λιθάζω",
+      "translit": "litházō",
+      "translitKo": "리타조",
+      "note": ""
+    },
+    {
+      "strong": "G997",
+      "lemma": "βοηθέω",
+      "translit": "boēthéō",
+      "translitKo": "보에테오",
+      "note": ""
+    },
+    {
+      "strong": "G1753",
+      "lemma": "ἐνέργεια",
+      "translit": "enérgeia",
+      "translitKo": "에네르게이아",
+      "note": ""
+    },
+    {
+      "strong": "G600",
+      "lemma": "ἀποκαθίστημι",
+      "translit": "apokathístēmi",
+      "translitKo": "아포카티스테미",
+      "note": ""
+    },
+    {
+      "strong": "G2066",
+      "lemma": "ἐσθής",
+      "translit": "esthḗs",
+      "translitKo": "에스테스",
+      "note": ""
+    },
+    {
+      "strong": "G4779",
+      "lemma": "συγκαλέω",
+      "translit": "synkaléō",
+      "translitKo": "쉰칼레오",
+      "note": ""
+    },
+    {
+      "strong": "G3724",
+      "lemma": "ὁρίζω",
+      "translit": "horízō",
+      "translitKo": "호리조",
+      "note": ""
+    },
+    {
+      "strong": "G1807",
+      "lemma": "ἐξαιρέω",
+      "translit": "exairéō",
+      "translitKo": "엑사이레오",
+      "note": ""
+    },
+    {
+      "strong": "G1334",
+      "lemma": "διηγέομαι",
+      "translit": "diēgéomai",
+      "translitKo": "디에게오마이",
+      "note": ""
+    },
+    {
+      "strong": "G3177",
+      "lemma": "μεθερμηνεύω",
+      "translit": "methermēneúō",
+      "translitKo": "메테르메네우오",
+      "note": ""
+    },
+    {
+      "strong": "G2507",
+      "lemma": "καθαιρέω",
+      "translit": "kathairéō",
+      "translitKo": "카타이레오",
+      "note": ""
+    },
+    {
+      "strong": "G4947",
+      "lemma": "Συρία",
+      "translit": "Syría",
+      "translitKo": "쉬리아",
+      "note": "개역개정 관용 표기는 '수리아'다. 헬라어 표제형(Συρία)의 학술 음역은 쉬리아다."
+    },
+    {
+      "strong": "G2791",
+      "lemma": "Κιλικία",
+      "translit": "Kilikía",
+      "translitKo": "킬리키아",
+      "note": "개역개정 관용 표기는 '길리기아'다. 헬라어 표제형(Κιλικία)의 학술 음역은 킬리키아다."
+    },
+    {
+      "strong": "G1291",
+      "lemma": "διαστέλλομαι",
+      "translit": "diastéllomai",
+      "translitKo": "디아스텔로마이",
+      "note": ""
+    },
+    {
+      "strong": "G1272",
+      "lemma": "διανοίγω",
+      "translit": "dianoígō",
+      "translitKo": "디아노이고",
+      "note": ""
+    },
+    {
+      "strong": "G1670",
+      "lemma": "ἑλκύω",
+      "translit": "helkýō",
+      "translitKo": "헬퀴오",
+      "note": ""
+    },
+    {
+      "strong": "G4363",
+      "lemma": "προσπίπτω",
+      "translit": "prospíptō",
+      "translitKo": "프로스피프토",
+      "note": ""
+    },
+    {
+      "strong": "G2795",
+      "lemma": "κινέω",
+      "translit": "kinéō",
+      "translitKo": "키네오",
+      "note": ""
+    },
+    {
+      "strong": "G3461",
+      "lemma": "μυριάς",
+      "translit": "myriás",
+      "translitKo": "뮈리아스",
+      "note": ""
+    },
+    {
+      "strong": "G3418",
+      "lemma": "μνῆμα",
+      "translit": "mnēma",
+      "translitKo": "므네마",
+      "note": ""
+    },
+    {
+      "strong": "G2223",
+      "lemma": "ζώνη",
+      "translit": "zṓnē",
+      "translitKo": "조네",
+      "note": ""
+    },
+    {
+      "strong": "G4496",
+      "lemma": "ῥίπτω",
+      "translit": "rhíptō",
+      "translitKo": "흐리프토",
+      "note": ""
+    },
+    {
+      "strong": "G4753",
+      "lemma": "στράτευμα",
+      "translit": "stráteuma",
+      "translitKo": "스트라테우마",
+      "note": ""
+    },
+    {
+      "strong": "G2293",
+      "lemma": "θαρσέω",
+      "translit": "tharséō",
+      "translitKo": "타르세오",
+      "note": ""
+    },
+    {
+      "strong": "G4232",
+      "lemma": "πραιτώριον",
+      "translit": "praitṓrion",
+      "translitKo": "프라이토리온",
+      "note": "개역개정 관용 표기는 '브라이도리온'이다. 라틴어 차용어 praetorium의 헬라어 표제형(πραιτώριον) 학술 음역은 프라이토리온이다."
+    },
+    {
+      "strong": "G4824",
+      "lemma": "συμβούλιον",
+      "translit": "symboúlion",
+      "translitKo": "쉼불리온",
+      "note": ""
+    },
+    {
+      "strong": "G2135",
+      "lemma": "εὐνοῦχος",
+      "translit": "eunoûchos",
+      "translitKo": "에우누코스",
+      "note": ""
+    },
+    {
+      "strong": "G2592",
+      "lemma": "καρποφορέω",
+      "translit": "karpophoréō",
+      "translitKo": "카르포포레오",
+      "note": ""
+    },
+    {
+      "strong": "G2244",
+      "lemma": "ἡλικία",
+      "translit": "hēlikía",
+      "translitKo": "헬리키아",
+      "note": ""
+    },
+    {
+      "strong": "G3710",
+      "lemma": "ὀργίζω",
+      "translit": "orgízō",
+      "translitKo": "오르기조",
+      "note": ""
+    },
+    {
+      "strong": "G3968",
+      "lemma": "πατρίς",
+      "translit": "patrís",
+      "translitKo": "파트리스",
+      "note": ""
+    },
+    {
+      "strong": "G1950",
+      "lemma": "ἐπιλανθάνομαι",
+      "translit": "epilanthánomai",
+      "translitKo": "에필란타노마이",
+      "note": ""
+    },
+    {
+      "strong": "G3017",
+      "lemma": "Λευΐ",
+      "translit": "Leuḯ",
+      "translitKo": "레우이",
+      "note": "개역개정 관용 표기는 '레위'다. 헬라어 표제형(Λευΐ)의 학술 음역은 레우이다."
+    },
+    {
+      "strong": "G4937",
+      "lemma": "συντρίβω",
+      "translit": "syntríbō",
+      "translitKo": "쉰트리보",
+      "note": ""
+    },
+    {
+      "strong": "G1072",
+      "lemma": "γεμίζω",
+      "translit": "gemízō",
+      "translitKo": "게미조",
+      "note": ""
+    },
+    {
+      "strong": "G1147",
+      "lemma": "δάκτυλος",
+      "translit": "dáktylos",
+      "translitKo": "닥튈로스",
+      "note": ""
+    },
+    {
+      "strong": "G965",
+      "lemma": "Βηθλεέμ",
+      "translit": "Bēthleém",
+      "translitKo": "베틀레엠",
+      "note": "개역개정 관용 표기는 '베들레헴'이다. 헬라어 표제형(Βηθλεέμ)의 학술 음역은 베틀레엠이다."
+    },
+    {
+      "strong": "G1996",
+      "lemma": "ἐπισυνάγω",
+      "translit": "episynágō",
+      "translitKo": "에피쉬나고",
+      "note": ""
+    },
+    {
+      "strong": "G1742",
+      "lemma": "ἔνδυμα",
+      "translit": "éndyma",
+      "translitKo": "엔뒤마",
+      "note": ""
+    },
+    {
+      "strong": "G2875",
+      "lemma": "κόπτω",
+      "translit": "kóptō",
+      "translitKo": "코프토",
+      "note": ""
+    },
+    {
+      "strong": "G4816",
+      "lemma": "συλλέγω",
+      "translit": "syllégō",
+      "translitKo": "쉴레고",
+      "note": ""
+    },
+    {
+      "strong": "G34",
+      "lemma": "ἀγέλη",
+      "translit": "agélē",
+      "translitKo": "아겔레",
+      "note": ""
+    },
+    {
+      "strong": "G1407",
+      "lemma": "δρέπανον",
+      "translit": "drépanon",
+      "translitKo": "드레파논",
+      "note": ""
+    },
+    {
+      "strong": "G2877",
+      "lemma": "κοράσιον",
+      "translit": "korásion",
+      "translitKo": "코라시온",
+      "note": ""
+    },
+    {
+      "strong": "G2215",
+      "lemma": "ζιζάνιον",
+      "translit": "zizánion",
+      "translitKo": "지자니온",
+      "note": ""
+    },
+    {
+      "strong": "G3359",
+      "lemma": "μέτωπον",
+      "translit": "métōpon",
+      "translitKo": "메토폰",
+      "note": ""
+    },
+    {
+      "strong": "H8422",
+      "lemma": "תּוּבַל",
+      "translit": "tûbal",
+      "translitKo": "투발",
+      "note": "개역개정 관용 표기는 '두발'이다. 히브리어 표제형(תּוּבַל)의 학술 음역은 투발이다."
+    },
+    {
+      "strong": "H3794",
+      "lemma": "כִּתִּי",
+      "translit": "kittî",
+      "translitKo": "키티",
+      "note": "개역개정 관용 표기는 '깃딤'(복수형) 또는 '깃디'다. 히브리어 표제형(כִּתִּי)의 학술 음역은 키티다."
+    },
+    {
+      "strong": "H5780",
+      "lemma": "עוּץ",
+      "translit": "ʿûṣ",
+      "translitKo": "우츠",
+      "note": "개역개정 관용 표기는 '우스'다. 히브리어 표제형(עוּץ)의 학술 음역은 우츠다."
+    },
+    {
+      "strong": "H5858",
+      "lemma": "עֵיבָל",
+      "translit": "ʿêbāl",
+      "translitKo": "에발",
+      "note": ""
+    },
+    {
+      "strong": "H6649",
+      "lemma": "צִבְעוֹן",
+      "translit": "ṣibʿôn",
+      "translitKo": "치브온",
+      "note": "개역개정 관용 표기는 '시브온'이다. 히브리어 표제형(צִבְעוֹן)의 학술 음역은 치브온이다."
+    },
+    {
+      "strong": "H1224",
+      "lemma": "בׇּצְרָה",
+      "translit": "boṣrâ",
+      "translitKo": "보츠라",
+      "note": "개역개정 관용 표기는 '보스라'다. 첫 모음은 카마츠 카탄(o)이며, 히브리어 표제형(בׇּצְרָה)의 학술 음역은 보츠라다."
+    },
+    {
+      "strong": "H8489",
+      "lemma": "תֵּימָנִי",
+      "translit": "têmānî",
+      "translitKo": "테마니",
+      "note": "개역개정 관용 표기는 '데만 사람'(또는 데만)이다. 히브리어 표제형(תֵּימָנִי)의 학술 음역은 테마니다."
+    },
+    {
+      "strong": "H173",
+      "lemma": "אׇהֳלִיבָמָה",
+      "translit": "ʾohŏlîbāmâ",
+      "translitKo": "오홀리바마",
+      "note": ""
+    },
+    {
+      "strong": "H1533",
+      "lemma": "גִּלְבֹּעַ",
+      "translit": "gilbōaʿ",
+      "translitKo": "길보아",
+      "note": "어말 후음(ע) 앞의 파타흐는 파타흐 푸르티붐(furtive patach)으로 '아' 소리가 앞서 난다."
+    },
+    {
+      "strong": "H5725",
+      "lemma": "עֲדֻלָּם",
+      "translit": "ʿădullām",
+      "translitKo": "아둘람",
+      "note": ""
+    },
+    {
+      "strong": "H5820",
+      "lemma": "עַזְמָוֶת",
+      "translit": "ʿazmāwet",
+      "translitKo": "아즈마웨트",
+      "note": "개역개정 관용 표기는 '아스마웨'(또는 아스마웻)이다. 히브리어 표제형(עַזְמָוֶת)의 학술 음역은 아즈마웨트다."
+    },
+    {
+      "strong": "H2066",
+      "lemma": "זָבָד",
+      "translit": "zābād",
+      "translitKo": "자바드",
+      "note": "개역개정 관용 표기는 '사밧'이다. 히브리어 표제형(זָבָד)의 학술 음역은 자바드다."
+    },
+    {
+      "strong": "H1393",
+      "lemma": "גִּבְעֹנִי",
+      "translit": "gibʿōnî",
+      "translitKo": "기브오니",
+      "note": "개역개정 관용 표기는 '기브온 사람'이다. 히브리어 표제형(גִּבְעֹנִי)의 학술 음역은 기브오니다."
+    },
+    {
+      "strong": "H7145",
+      "lemma": "קׇרְחִי",
+      "translit": "qorḥî",
+      "translitKo": "코르히",
+      "note": "개역개정 관용 표기는 '고라 사람'이다. 첫 모음은 카마츠 카탄(o)이며, 히브리어 표제형(קׇרְחִי)의 학술 음역은 코르히다."
+    },
+    {
+      "strong": "H1188",
+      "lemma": "בַּעַל פְּרָצִים",
+      "translit": "baʿal pĕrāṣîm",
+      "translitKo": "바알 페라침",
+      "note": "개역개정 관용 표기는 '바알브라심'이다. 히브리어 표제형(בַּעַל פְּרָצִים)의 학술 음역은 바알 페라침이다."
+    },
+    {
+      "strong": "H6222",
+      "lemma": "עֲשָׂיָה",
+      "translit": "ʿăśāyâ",
+      "translitKo": "아사야",
+      "note": ""
+    },
+    {
+      "strong": "H387",
+      "lemma": "אֵיתָן",
+      "translit": "ʾêtān",
+      "translitKo": "에탄",
+      "note": "개역개정 관용 표기는 '에단'이다. 히브리어 표제형(אֵיתָן)의 학술 음역은 에탄이다."
+    },
+    {
+      "strong": "H4993",
+      "lemma": "מַתִּתְיָה",
+      "translit": "mattityâ",
+      "translitKo": "마티트야",
+      "note": "개역개정 관용 표기는 '맛디디야'다. 히브리어 표제형(מַתִּתְיָה)의 학술 음역은 마티트야다."
+    },
+    {
+      "strong": "H948",
+      "lemma": "בּוּץ",
+      "translit": "bûṣ",
+      "translitKo": "부츠",
+      "note": ""
+    },
+    {
+      "strong": "H5970",
+      "lemma": "עָלַץ",
+      "translit": "ʿālaṣ",
+      "translitKo": "알라츠",
+      "note": ""
+    },
+    {
+      "strong": "H209",
+      "lemma": "אוֹנָן",
+      "translit": "ʾônān",
+      "translitKo": "오난",
+      "note": ""
+    },
+    {
+      "strong": "H7956",
+      "lemma": "שֵׁלָה",
+      "translit": "šēlâ",
+      "translitKo": "셸라",
+      "note": "개역개정 관용 표기는 '셀라'다. 히브리어 표제형(שֵׁלָה)의 학술 음역은 셸라다."
+    },
+    {
+      "strong": "H3756",
+      "lemma": "כַּרְמִי",
+      "translit": "karmî",
+      "translitKo": "카르미",
+      "note": "개역개정 관용 표기는 '갈미'다. 히브리어 표제형(כַּרְמִי)의 학술 음역은 카르미다."
+    },
+    {
+      "strong": "H3396",
+      "lemma": "יְרַחְמְאֵל",
+      "translit": "yəraḥməʾēl",
+      "translitKo": "예라흐메엘",
+      "note": "개역개정 관용 표기는 '여라무엘'(또는 여라므엘)이다. 히브리어 표제형(יְרַחְמְאֵל)의 학술 음역은 예라흐메엘이다."
+    },
+    {
+      "strong": "H3459",
+      "lemma": "יִשְׁמָעֵאלִי",
+      "translit": "yišmāʿēʾlî",
+      "translitKo": "이쉬마엘리",
+      "note": "개역개정 관용 표기는 '이스마엘 사람'이다. 히브리어 표제형(יִשְׁמָעֵאלִי)의 학술 음역은 이쉬마엘리다."
+    },
+    {
+      "strong": "H221",
+      "lemma": "אוּרִי",
+      "translit": "ʾûrî",
+      "translitKo": "우리",
+      "note": ""
+    },
+    {
+      "strong": "H2971",
+      "lemma": "יָאִיר",
+      "translit": "yāʾîr",
+      "translitKo": "야이르",
+      "note": "개역개정 관용 표기는 '야일'이다. 히브리어 표제형(יָאִיר)의 학술 음역은 야이르다."
+    },
+    {
+      "strong": "H2334",
+      "lemma": "חַוּוֹת יָעִיר",
+      "translit": "ḥawwōt yāʿîr",
+      "translitKo": "하워트 야이르",
+      "note": "개역개정 관용 표기는 '하봇야일'이다. 히브리어 표제형(חַוּוֹת יָעִיר)의 학술 음역은 하워트 야이르다."
+    },
+    {
+      "strong": "H4584",
+      "lemma": "מָעוֹן",
+      "translit": "māʿôn",
+      "translitKo": "마온",
+      "note": ""
+    },
+    {
+      "strong": "H1049",
+      "lemma": "בֵּית צוּר",
+      "translit": "bêt ṣûr",
+      "translitKo": "베이트 추르",
+      "note": "개역개정 관용 표기는 '벧술'이다. 히브리어 표제형(בֵּית צוּר)의 학술 음역은 베이트 추르다."
+    },
+    {
+      "strong": "H8666",
+      "lemma": "תְּשׁוּבָה",
+      "translit": "təšûbâ",
+      "translitKo": "테슈바",
+      "note": ""
+    },
+    {
+      "strong": "H5528",
+      "lemma": "סָכַל",
+      "translit": "sākal",
+      "translitKo": "사칼",
+      "note": ""
+    },
+    {
+      "strong": "H8019",
+      "lemma": "שְׁלֹמִית",
+      "translit": "šəlōmît",
+      "translitKo": "셸로미트",
+      "note": "개역개정 관용 표기는 '슬로밋'이다. 히브리어 표제형(שְׁלֹמִית)의 학술 음역은 셸로미트다."
+    },
+    {
+      "strong": "H3189",
+      "lemma": "יַחַת",
+      "translit": "yaḥat",
+      "translitKo": "야하트",
+      "note": "개역개정 관용 표기는 '야핫'이다. 히브리어 표제형(יַחַת)의 학술 음역은 야하트다."
+    }
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "model": "gptoss120b",
+  "rulings": [
+    {
+      "strong": "G3198",
+      "translit": "Melchisedék",
+      "translitKo": "멜키세데크",
+      "evidence": "koreanGlossTopBatch01.js (ἐκ -> 에크) 등 헬라어 어말 κ는 크로 적음",
+      "note": "관용 표기는 멜기세덱"
+    },
+    {
+      "strong": "H6720",
+      "translit": "ṣêdâ",
+      "translitKo": "체다",
+      "evidence": "WORKER_SPEC 규칙 1(연음 기호 생략)에 따라 d 표기. בֵּית(bêt)가 '베트'인 것에 비추어 ṣê는 '체'로 적음",
+      "note": ""
+    },
+    {
+      "strong": "H7633",
+      "translit": "šibyâ",
+      "translitKo": "시브야",
+      "evidence": "WORKER_SPEC 규칙 3에 따라 שׁ 뒤에 모음(i)이 오므로 첫소리 '시'로 적음. 규칙 1에 따라 b로 표기.",
+      "note": ""
+    },
+    {
+      "strong": "H7128",
+      "translit": "qĕrāb",
+      "translitKo": "케라브",
+      "evidence": "koreanGlossTopBatch06.js (קְלָלָה -> qĕlālâ -> 켈랄라) 선례에 따라 qĕ, '케'로 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8359",
+      "translit": "šĕtî",
+      "translitKo": "셰티",
+      "evidence": "koreanGlossTopBatch02.js (שְׁנַיִם -> šĕnayim -> 셰나임) 선례에 따라 šĕ, '셰'로 표기",
+      "note": ""
+    },
+    {
+      "strong": "G2782",
+      "translit": "kḗrygma",
+      "translitKo": "케뤼그마",
+      "evidence": "WORKER_SPEC 규칙 'υ는 위'에 따라 뤼로 적고, 표제어는 학술 표기를 따름",
+      "note": "관용 표기는 케리그마"
+    },
+    {
+      "strong": "G1628",
+      "translit": "ekpheúgō",
+      "translitKo": "에크페브고",
+      "evidence": "WORKER_SPEC 규칙 'ευ는 후속 자음에 따라 에우/에브/에프'에 의거, 유성음 γ 앞이므로 에브로 표기",
+      "note": "ευ 뒤에 유성음 γ가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G3177",
+      "translit": "methermēneúō",
+      "translitKo": "메테르메네브오",
+      "evidence": "WORKER_SPEC 규칙에 의거, 모음 ω 앞이므로 에브로 표기",
+      "note": "ευ 뒤에 모음이 오므로 에브로 표기"
+    },
+    {
+      "strong": "G4753",
+      "translit": "stráteuma",
+      "translitKo": "스트라테브마",
+      "evidence": "WORKER_SPEC 규칙에 의거, 유성음 μ 앞이므로 에브로 표기",
+      "note": "ευ 뒤에 유성음 μ가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G2135",
+      "translit": "eunoûchos",
+      "translitKo": "에브누코스",
+      "evidence": "WORKER_SPEC 규칙에 의거, 유성음 ν 앞이므로 에브로 표기",
+      "note": "ευ 뒤에 유성음 ν가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G3017",
+      "translit": "Leuḯ",
+      "translitKo": "레우이",
+      "evidence": "학술(SBL) 표기를 표제로 삼는 원칙에 따라 헬라어 표제형(Λευΐ)의 학술 음역을 따름",
+      "note": "관용 표기는 레위"
+    },
+    {
+      "strong": "G1147",
+      "translit": "dáktylos",
+      "translitKo": "닥튈로스",
+      "evidence": "koreanGlossTopBatch08.js의 '틱토(tiktō)' 선례처럼 k, p 등의 무성 폐쇄음은 뒤에 자음이 올 때 받침으로 적음",
+      "note": ""
+    },
+    {
+      "strong": "H3396",
+      "translit": "yĕraḥmĕʾēl",
+      "translitKo": "예라흐메엘",
+      "evidence": "koreanGlossTopBatch02.js의 'yĕhûdâ(예후다)' 및 'mĕʾōd(메오드)' 선례에 따라 yĕ, mĕ 표기",
+      "note": "관용 표기는 여라무엘(또는 여라므엘)"
+    },
+    {
+      "strong": "H1049",
+      "translit": "bêt ṣûr",
+      "translitKo": "베트 추르",
+      "evidence": "koreanGloss*.js 선례에서 בֵּית(bêt)를 주로 '베트'로 적음",
+      "note": "관용 표기는 벧술"
+    }
+  ]
+}

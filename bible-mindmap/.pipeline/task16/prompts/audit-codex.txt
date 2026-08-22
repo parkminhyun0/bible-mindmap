@@ -1,0 +1,1 @@
+현재 폴더 bible-mindmap. `.pipeline/task16/final.json`의 전체 300개 중 note 모순 위주를 독립 감사하라. `.pipeline/task16/WORKER_SPEC.md`와 배포 선례를 기준으로 실제 표기 오류·note 모순만 기록하고, 뜻은 만들지 마라. 산출물은 `.pipeline/task16/audits/audit-codex.json` JSON 배열이며 각 항목은 strong, field, current, suggested, evidence, severity, reason을 포함한다. 오류가 없으면 빈 배열을 쓴다.

@@ -1,0 +1,103 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "G3198",
+      "translit": "Melchisedék",
+      "translitKo": "멜키세데크",
+      "evidence": "헬라어 어말 κ는 '크'로 적으며(예: Ἰσαάκ→이츠하크와 유사), 관용 표기(멜기세덱)와 차이가 있음.",
+      "note": "관용 표기는 멜기세덱"
+    },
+    {
+      "strong": "H6720",
+      "translit": "ṣêdâ",
+      "translitKo": "체다",
+      "evidence": "베가드케파트 연음 ḏ 대신 d 사용. ê는 한 음절 '에'로 표기(선례: bên→벤). 어말 ה는 â로 표기(선례: hāyâ→하야).",
+      "note": ""
+    },
+    {
+      "strong": "H7633",
+      "translit": "šibyâ",
+      "translitKo": "시브야",
+      "evidence": "베가드케파트 연음 ḇ 대신 b 사용. שׁ 뒤에 모음 i가 오므로 음절 첫소리 '시'로 표기(선례: šibʿîm→시브임).",
+      "note": "쉬/시 구분: 뒤에 모음 i가 오므로 시"
+    },
+    {
+      "strong": "H7128",
+      "translit": "qĕrāb",
+      "translitKo": "케라브",
+      "evidence": "베가드케파트 연음 ḇ 대신 b 사용. 유성 셰와는 ĕ로 표기(선례: šĕnayim).",
+      "note": ""
+    },
+    {
+      "strong": "H8359",
+      "translit": "šĕtî",
+      "translitKo": "셰티",
+      "evidence": "유성 셰와는 ĕ로 표기하며(선례: šĕnayim), šĕ는 '셰'로 적음.",
+      "note": ""
+    },
+    {
+      "strong": "G2782",
+      "translit": "kḗrygma",
+      "translitKo": "케뤼그마",
+      "evidence": "υ는 위 계열로 표기(선례: kērýssō→케뤼소). 관용 표기(케리그마)와 차이가 있음.",
+      "note": "관용 표기는 케리그마"
+    },
+    {
+      "strong": "G1628",
+      "translit": "ekpheúgō",
+      "translitKo": "에크페브고",
+      "evidence": "WORKER_SPEC에 따라 ευ 뒤에 유성음 γ가 오므로 '에브'로 표기. κ 뒤에 파열음이 오므로 '크'를 제 음절로 적음.",
+      "note": "ευ 뒤에 유성음 γ가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G3177",
+      "translit": "methermēneúō",
+      "translitKo": "메테르메네브오",
+      "evidence": "ευ 뒤에 모음이 오므로 '에브'로 표기.",
+      "note": "ευ 뒤에 모음이 오므로 에브로 표기"
+    },
+    {
+      "strong": "G4753",
+      "translit": "stráteuma",
+      "translitKo": "스트라테브마",
+      "evidence": "ευ 뒤에 유성음 μ가 오므로 '에브'로 표기.",
+      "note": "ευ 뒤에 유성음 μ가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G2135",
+      "translit": "eunoûchos",
+      "translitKo": "에브누코스",
+      "evidence": "ευ 뒤에 유성음 ν가 오므로 '에브'로 표기.",
+      "note": "ευ 뒤에 유성음 ν가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G3017",
+      "translit": "Leuḯ",
+      "translitKo": "레우이",
+      "evidence": "헬라어 표제형의 학술 음역을 따름. 헬라어 표제형(Λευΐ)의 학술 음역은 레우이다.",
+      "note": "관용 표기는 레위"
+    },
+    {
+      "strong": "G1147",
+      "translit": "dáktylos",
+      "translitKo": "다크튈로스",
+      "evidence": "υ는 위 계열로 표기. κ 뒤에 파열음(τ)이 올 때 '크'를 제 음절로 적음(선례: 에크티스테).",
+      "note": ""
+    },
+    {
+      "strong": "H3396",
+      "translit": "yĕraḥmĕʾēl",
+      "translitKo": "예라흐메엘",
+      "evidence": "유성 셰와는 ĕ로 표기하며(선례: šĕnayim), mĕ는 '메'로 적음. 관용 표기(여라무엘/여라므엘)와 차이가 있음.",
+      "note": "관용 표기는 여라무엘 (또는 여라므엘)"
+    },
+    {
+      "strong": "H1049",
+      "translit": "bêt ṣûr",
+      "translitKo": "베트 추르",
+      "evidence": "ê는 '에'로 한 음절로 표기(선례: bêt-ʾēl→베트엘). צוּר는 '추르'로 표기(선례: H6697 צוּר).",
+      "note": "관용 표기는 벧술"
+    }
+  ]
+}
