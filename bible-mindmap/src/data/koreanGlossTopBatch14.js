@@ -50,7 +50,7 @@ export const KOREAN_GLOSS_TOP_BATCH_14 = {
   H1806: {
     lemma: 'דְּלָיָה',
     translit: 'dĕlāyâ',
-    translitKo: '들라야',
+    translitKo: '델라야',
     glossKo: 'Dalaiah, Delaiah.',
     note: '표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 학술 음역을 표제로 삼고 관용 성경 표기 들라야를 따른다.',
     review: true,
@@ -242,7 +242,7 @@ export const KOREAN_GLOSS_TOP_BATCH_14 = {
   H2426: {
     lemma: 'חֵיל',
     translit: 'ḥêl',
-    translitKo: '헤일',
+    translitKo: '헬',
     glossKo: 'army, bulwark, host, [phrase] poor, rampart, trench, wall.',
     note: '네 모델 중 3개가 같은 음역안을 냈다.',
     review: true,

@@ -50,7 +50,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H3059: {
     lemma: 'יְהוֹאָחָז',
     translit: 'Yĕhôʾāḥāz',
-    translitKo: '여호아하즈',
+    translitKo: '예호아하즈',
     glossKo: 'Jehoahaz. Compare H3099 (יוֹאָחָז).',
     note: '네 모델 중 3개가 같은 음역안을 냈다.',
     review: true,
@@ -954,7 +954,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H7206: {
     lemma: 'רְאוּבֵנִי',
     translit: 'rĕʾûbēnî',
-    translitKo: '르우베니',
+    translitKo: '레우베니',
     glossKo: 'children of Reuben, Reubenites.',
     note: '네 모델 중 4개가 같은 음역안을 냈다.',
     review: true,
@@ -986,7 +986,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H6578: {
     lemma: 'פְּרָת',
     translit: 'pĕrāt',
-    translitKo: '프라트',
+    translitKo: '페라트',
     glossKo: 'Euphrates.',
     note: '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 유프라테스와 구별되는 학술 음역.',
     review: true,
@@ -1018,7 +1018,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H7084: {
     lemma: 'קְעִילָה',
     translit: 'qĕʿîlâ',
-    translitKo: '크일라',
+    translitKo: '케일라',
     glossKo: 'Keilah.',
     note: '네 모델 중 3개가 같은 음역안을 냈다.',
     review: true,
@@ -1034,7 +1034,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H3841: {
     lemma: 'לִבְנָה',
     translit: 'libnâ',
-    translitKo: '립나',
+    translitKo: '리브나',
     glossKo: 'Libnah.',
     note: '네 모델 중 3개가 같은 음역안을 냈다.',
     review: true,
@@ -1226,7 +1226,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H3730: {
     lemma: 'כַּפְתֹּר',
     translit: 'kaphtōr',
-    translitKo: '갑토르',
+    translitKo: '카프토르',
     glossKo: 'knop, (upper) lintel.',
     note: '표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 자음군 kapht를 반영하되 다게쉬 포르테를 겹쳐 적지 않아 갑토르로 표기한다.',
     review: true,
@@ -1522,7 +1522,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H3038: {
     lemma: 'יְדוּתוּן',
     translit: 'yĕdûtûn',
-    translitKo: '여두둔',
+    translitKo: '예두툰',
     glossKo: 'Jeduthun.',
     note: '네 모델 중 4개가 같은 음역안을 냈다.',
     review: true,
@@ -1826,7 +1826,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H795: {
     lemma: 'אַשְׁדּוֹד',
     translit: 'ʾašdôd',
-    translitKo: '아슈도드',
+    translitKo: '아쉬도드',
     glossKo: 'Ahdod.',
     note: '네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 ‘아스돗’과 다름',
     review: true,
@@ -1866,7 +1866,7 @@ export const KOREAN_GLOSS_TOP_BATCH_08 = {
   H3060: {
     lemma: 'יְהוֹאָשׁ',
     translit: 'yĕhôʾāš',
-    translitKo: '여호아쉬',
+    translitKo: '예호아쉬',
     glossKo: 'Jehoash. Compare H3101 (יוֹאָשׁ).',
     note: '네 모델 중 4개가 같은 음역안을 냈다. 관용 표기 ‘여호아스’와 다름.',
     review: true,

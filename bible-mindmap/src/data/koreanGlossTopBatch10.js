@@ -274,7 +274,7 @@ export const KOREAN_GLOSS_TOP_BATCH_10 = {
   H3158: {
     lemma: 'יִזְרְעֵאלִי',
     translit: 'yizrĕʿēʾlî',
-    translitKo: '이스르엘리',
+    translitKo: '이즈레엘리',
     glossKo: 'Jezreelite.',
     note: '표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 이스르엘 지명 계열의 관용 표기를 따름.',
     review: true,
