@@ -1,4 +1,3 @@
-claude	b03 재감사 · Claude Opus 5	.pipeline/task7/prompts/recheck.txt	.pipeline/task7/audits/recheck.json
 codex	b05 L · Codex GPT-5	.pipeline/task9/prompts/L-codex.txt	.pipeline/task9/proposals/L-codex.json
 gemini-3.1-pro-high	b05 L · Gemini 3.1 Pro	.pipeline/task9/prompts/L-gem31pro.txt	.pipeline/task9/proposals/L-gem31pro.json
 gemini-3.7-flash-high	b05 L · Gemini 3.7 Flash	.pipeline/task9/prompts/L-gem37flash.txt	.pipeline/task9/proposals/L-gem37flash.json
@@ -55,11 +54,197 @@ gemini-3.1-pro-high	b05 감사 1 · Gemini 3.1 Pro	.pipeline/task9/prompts/audit
 gemini-3.7-flash-high	b05 감사 2 · Gemini 3.7 Flash	.pipeline/task9/prompts/audit-2.txt	.pipeline/task9/audits/audit-2.json
 claude	b05 감사 3 · Claude Opus 5	.pipeline/task9/prompts/audit-3.txt	.pipeline/task9/audits/audit-3.json
 codex	b05 감사 codex · Codex GPT-5	.pipeline/task9/prompts/audit-codex.txt	.pipeline/task9/audits/audit-codex.json
-codex	b06 재감사 · Codex GPT-5	.pipeline/task10/prompts/recheck.txt	.pipeline/task10/audits/recheck.json
-claude	b05 재감사 · Claude Opus 5	.pipeline/task9/prompts/recheck.txt	.pipeline/task9/audits/recheck.json
 gemini-3.1-pro-high	b06 판정 · Gemini 3.1 Pro	.pipeline/task10/prompts/adj-gem31pro.txt	.pipeline/task10/rulings/adj-gem31pro.json
 gemini-3.7-flash-high	b06 판정 · Gemini 3.7 Flash	.pipeline/task10/prompts/adj-gem37flash.txt	.pipeline/task10/rulings/adj-gem37flash.json
 claude	b06 판정 · Claude Opus 5	.pipeline/task10/prompts/adj-claudeopus5.txt	.pipeline/task10/rulings/adj-claudeopus5.json
 gemini-3.1-pro-high	b07 판정 · Gemini 3.1 Pro	.pipeline/task11/prompts/adj-gem31pro.txt	.pipeline/task11/rulings/adj-gem31pro.json
 gemini-3.7-flash-high	b07 판정 · Gemini 3.7 Flash	.pipeline/task11/prompts/adj-gem37flash.txt	.pipeline/task11/rulings/adj-gem37flash.json
 claude	b07 판정 · Claude Opus 5	.pipeline/task11/prompts/adj-claudeopus5.txt	.pipeline/task11/rulings/adj-claudeopus5.json
+claude	b07 감사 3 · Claude Opus 5	.pipeline/task11/prompts/audit-3.txt	.pipeline/task11/audits/audit-3.json
+codex	b08 U · Codex GPT-5	.pipeline/task12/prompts/U-codex.txt	.pipeline/task12/proposals/U-codex.json
+gemini-3.1-pro-high	b08 U · Gemini 3.1 Pro	.pipeline/task12/prompts/U-gem31pro.txt	.pipeline/task12/proposals/U-gem31pro.json
+gemini-3.7-flash-high	b08 U · Gemini 3.7 Flash	.pipeline/task12/prompts/U-gem37flash.txt	.pipeline/task12/proposals/U-gem37flash.json
+gemini-3.6-flash-high	b08 U · Gemini 3.6 Flash	.pipeline/task12/prompts/U-gem36flash.txt	.pipeline/task12/proposals/U-gem36flash.json
+claude	b08 U · Claude Opus 5	.pipeline/task12/prompts/U-claudeopus5.txt	.pipeline/task12/proposals/U-claudeopus5.json
+codex	b08 V · Codex GPT-5	.pipeline/task12/prompts/V-codex.txt	.pipeline/task12/proposals/V-codex.json
+gemini-3.1-pro-high	b08 V · Gemini 3.1 Pro	.pipeline/task12/prompts/V-gem31pro.txt	.pipeline/task12/proposals/V-gem31pro.json
+gemini-3.7-flash-high	b08 V · Gemini 3.7 Flash	.pipeline/task12/prompts/V-gem37flash.txt	.pipeline/task12/proposals/V-gem37flash.json
+gemini-3.6-flash-high	b08 V · Gemini 3.6 Flash	.pipeline/task12/prompts/V-gem36flash.txt	.pipeline/task12/proposals/V-gem36flash.json
+claude	b08 V · Claude Opus 5	.pipeline/task12/prompts/V-claudeopus5.txt	.pipeline/task12/proposals/V-claudeopus5.json
+codex	b08 W · Codex GPT-5	.pipeline/task12/prompts/W-codex.txt	.pipeline/task12/proposals/W-codex.json
+gemini-3.1-pro-high	b08 판정 · Gemini 3.1 Pro	.pipeline/task12/prompts/adj-gem31pro.txt	.pipeline/task12/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b08 판정 · Gemini 3.7 Flash	.pipeline/task12/prompts/adj-gem37flash.txt	.pipeline/task12/rulings/adj-gem37flash.json
+codex	b08 판정 · Codex GPT-5	.pipeline/task12/prompts/adj-codex.txt	.pipeline/task12/rulings/adj-codex.json
+gemini-3.1-pro-high	b08 감사 1 · Gemini 3.1 Pro	.pipeline/task12/prompts/audit-1.txt	.pipeline/task12/audits/audit-1.json
+codex	b08 감사 1 · Codex GPT-5 failover	.pipeline/task12/prompts/audit-1.txt	.pipeline/task12/audits/audit-1.json
+gemini-3.7-flash-high	b08 감사 2 · Gemini 3.7 Flash	.pipeline/task12/prompts/audit-2.txt	.pipeline/task12/audits/audit-2.json
+codex	b08 감사 3 · Codex GPT-5	.pipeline/task12/prompts/audit-3.txt	.pipeline/task12/audits/audit-3.json
+codex	b08 감사 Codex · Codex GPT-5	.pipeline/task12/prompts/audit-codex.txt	.pipeline/task12/audits/audit-codex.json
+codex	독립 검증 · batch07	.pipeline/dispatch/verify-b07.txt	.pipeline/dispatch/check-b07.json
+codex	독립 검증 · batch08	.pipeline/dispatch/verify-b08.txt	.pipeline/dispatch/check-b08.json
+codex	독립 검증 · registry/PR 범위	.pipeline/dispatch/verify-registry.txt	.pipeline/dispatch/check-registry.json
+codex	PR 준비 보조 · batch07	.pipeline/dispatch/pr-b07.txt	.pipeline/dispatch/pr-b07.md
+codex	PR 준비 보조 · batch08	.pipeline/dispatch/pr-b08.txt	.pipeline/dispatch/pr-b08.md
+codex	Evidence 보고 초안	.pipeline/dispatch/evidence-report.txt	.pipeline/dispatch/notion-briefing-draft.md
+gemini-3.1-pro-high	b08 W · Gemini 3.1 Pro	.pipeline/task12/prompts/W-gem31pro.txt	.pipeline/task12/proposals/W-gem31pro.json
+gemini-3.7-flash-high	b08 W · Gemini 3.7 Flash	.pipeline/task12/prompts/W-gem37flash.txt	.pipeline/task12/proposals/W-gem37flash.json
+gemini-3.6-flash-high	b08 W · Gemini 3.6 Flash	.pipeline/task12/prompts/W-gem36flash.txt	.pipeline/task12/proposals/W-gem36flash.json
+claude	b08 W · Claude Opus 5	.pipeline/task12/prompts/W-claudeopus5.txt	.pipeline/task12/proposals/W-claudeopus5.json
+claude-opus-4-6-thinking	b08 U · Claude Opus 4.6	.pipeline/task12/prompts/U-claudeopus46.txt	.pipeline/task12/proposals/U-claudeopus46.json
+gpt-oss-120b-medium	b08 U · GPT-OSS 120B	.pipeline/task12/prompts/U-gptoss120b.txt	.pipeline/task12/proposals/U-gptoss120b.json
+claude-opus-4-6-thinking	b08 V · Claude Opus 4.6	.pipeline/task12/prompts/V-claudeopus46.txt	.pipeline/task12/proposals/V-claudeopus46.json
+gpt-oss-120b-medium	b08 V · GPT-OSS 120B	.pipeline/task12/prompts/V-gptoss120b.txt	.pipeline/task12/proposals/V-gptoss120b.json
+claude-opus-4-6-thinking	b08 W · Claude Opus 4.6	.pipeline/task12/prompts/W-claudeopus46.txt	.pipeline/task12/proposals/W-claudeopus46.json
+gpt-oss-120b-medium	b08 W · GPT-OSS 120B	.pipeline/task12/prompts/W-gptoss120b.txt	.pipeline/task12/proposals/W-gptoss120b.json
+codex	b07 독립감사 · Codex GPT-5 (재실행)	.pipeline/task11/prompts/audit-codex.txt	.pipeline/task11/audits/audit-codex.json
+claude	b09 X · Claude Opus 5	.pipeline/task13/prompts/X-claudeopus5.txt	.pipeline/task13/proposals/X-claudeopus5.json
+gemini-3.1-pro-high	b09 X · Gemini 3.1 Pro	.pipeline/task13/prompts/X-gem31pro.txt	.pipeline/task13/proposals/X-gem31pro.json
+codex	b09 X · Codex GPT-5	.pipeline/task13/prompts/X-codex.txt	.pipeline/task13/proposals/X-codex.json
+claude-opus-4-6-thinking	b09 X · Claude Opus 4.6	.pipeline/task13/prompts/X-claudeopus46.txt	.pipeline/task13/proposals/X-claudeopus46.json
+gemini-3.7-flash-high	b09 X · Gemini 3.7 Flash	.pipeline/task13/prompts/X-gem37flash.txt	.pipeline/task13/proposals/X-gem37flash.json
+gpt-oss-120b-medium	b09 X · GPT-OSS 120B	.pipeline/task13/prompts/X-gptoss120b.txt	.pipeline/task13/proposals/X-gptoss120b.json
+claude	b09 Y · Claude Opus 5	.pipeline/task13/prompts/Y-claudeopus5.txt	.pipeline/task13/proposals/Y-claudeopus5.json
+gemini-3.1-pro-high	b09 Y · Gemini 3.1 Pro	.pipeline/task13/prompts/Y-gem31pro.txt	.pipeline/task13/proposals/Y-gem31pro.json
+codex	b09 Y · Codex GPT-5	.pipeline/task13/prompts/Y-codex.txt	.pipeline/task13/proposals/Y-codex.json
+claude-opus-4-6-thinking	b09 Y · Claude Opus 4.6	.pipeline/task13/prompts/Y-claudeopus46.txt	.pipeline/task13/proposals/Y-claudeopus46.json
+gemini-3.7-flash-high	b09 Y · Gemini 3.7 Flash	.pipeline/task13/prompts/Y-gem37flash.txt	.pipeline/task13/proposals/Y-gem37flash.json
+gpt-oss-120b-medium	b09 Y · GPT-OSS 120B	.pipeline/task13/prompts/Y-gptoss120b.txt	.pipeline/task13/proposals/Y-gptoss120b.json
+claude	b09 Z · Claude Opus 5	.pipeline/task13/prompts/Z-claudeopus5.txt	.pipeline/task13/proposals/Z-claudeopus5.json
+gemini-3.1-pro-high	b09 Z · Gemini 3.1 Pro	.pipeline/task13/prompts/Z-gem31pro.txt	.pipeline/task13/proposals/Z-gem31pro.json
+codex	b09 Z · Codex GPT-5	.pipeline/task13/prompts/Z-codex.txt	.pipeline/task13/proposals/Z-codex.json
+claude-opus-4-6-thinking	b09 Z · Claude Opus 4.6	.pipeline/task13/prompts/Z-claudeopus46.txt	.pipeline/task13/proposals/Z-claudeopus46.json
+gemini-3.7-flash-high	b09 Z · Gemini 3.7 Flash	.pipeline/task13/prompts/Z-gem37flash.txt	.pipeline/task13/proposals/Z-gem37flash.json
+gpt-oss-120b-medium	b09 Z · GPT-OSS 120B	.pipeline/task13/prompts/Z-gptoss120b.txt	.pipeline/task13/proposals/Z-gptoss120b.json
+codex	📋 rules-approved 상태 신설 · Codex GPT-5	.pipeline/dispatch/task-rules-approved.txt	.pipeline/dispatch/rules-approved-report.md
+codex	b10 AA · Codex GPT-5	.pipeline/task14/prompts/AA-codex.txt	.pipeline/task14/proposals/AA-codex.json
+gemini-3.1-pro-high	b10 AA · Gemini 3.1 Pro	.pipeline/task14/prompts/AA-gem31pro.txt	.pipeline/task14/proposals/AA-gem31pro.json
+gpt-oss-120b-medium	b10 AA · GPT-OSS 120B	.pipeline/task14/prompts/AA-gptoss120b.txt	.pipeline/task14/proposals/AA-gptoss120b.json
+gemini-3.7-flash-high	b10 AA · Gemini 3.7 Flash	.pipeline/task14/prompts/AA-gem37flash.txt	.pipeline/task14/proposals/AA-gem37flash.json
+codex	b10 AB · Codex GPT-5	.pipeline/task14/prompts/AB-codex.txt	.pipeline/task14/proposals/AB-codex.json
+gemini-3.1-pro-high	b10 AB · Gemini 3.1 Pro	.pipeline/task14/prompts/AB-gem31pro.txt	.pipeline/task14/proposals/AB-gem31pro.json
+gpt-oss-120b-medium	b10 AB · GPT-OSS 120B	.pipeline/task14/prompts/AB-gptoss120b.txt	.pipeline/task14/proposals/AB-gptoss120b.json
+gemini-3.7-flash-high	b10 AB · Gemini 3.7 Flash	.pipeline/task14/prompts/AB-gem37flash.txt	.pipeline/task14/proposals/AB-gem37flash.json
+codex	b10 AC · Codex GPT-5	.pipeline/task14/prompts/AC-codex.txt	.pipeline/task14/proposals/AC-codex.json
+gemini-3.1-pro-high	b10 AC · Gemini 3.1 Pro	.pipeline/task14/prompts/AC-gem31pro.txt	.pipeline/task14/proposals/AC-gem31pro.json
+gpt-oss-120b-medium	b10 AC · GPT-OSS 120B	.pipeline/task14/prompts/AC-gptoss120b.txt	.pipeline/task14/proposals/AC-gptoss120b.json
+codex	b10 판정 · Codex GPT-5	.pipeline/task14/prompts/adj-codex.txt	.pipeline/task14/rulings/adj-codex.json
+gemini-3.1-pro-high	b10 판정 · Gemini 3.1 Pro	.pipeline/task14/prompts/adj-gem31pro.txt	.pipeline/task14/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b10 판정 · Gemini 3.7 Flash	.pipeline/task14/prompts/adj-gem37flash.txt	.pipeline/task14/rulings/adj-gem37flash.json
+gemini-3.7-flash-high	b10 AC · Gemini 3.7 Flash	.pipeline/task14/prompts/AC-gem37flash.txt	.pipeline/task14/proposals/AC-gem37flash.json
+gemini-3.1-pro-high	b09 판정 · gem31pro	.pipeline/task13/prompts/adj-gem31pro.txt	.pipeline/task13/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b09 판정 · gem37flash	.pipeline/task13/prompts/adj-gem37flash.txt	.pipeline/task13/rulings/adj-gem37flash.json
+codex	b09 판정 · codex	.pipeline/task13/prompts/adj-codex.txt	.pipeline/task13/rulings/adj-codex.json
+gemini-3.1-pro-high	b09 감사 1 · Gemini 3.1 Pro	.pipeline/task13/prompts/audit-1.txt	.pipeline/task13/audits/audit-1.json
+gemini-3.7-flash-high	b09 감사 2 · Gemini 3.7 Flash	.pipeline/task13/prompts/audit-2.txt	.pipeline/task13/audits/audit-2.json
+codex	b09 감사 3 · Codex GPT-5	.pipeline/task13/prompts/audit-3.txt	.pipeline/task13/audits/audit-3.json
+gpt-oss-120b-medium	b09 감사 Codex · GPT-OSS 120B	.pipeline/task13/prompts/audit-codex.txt	.pipeline/task13/audits/audit-codex.json
+codex	b11 AD · Codex GPT-5	.pipeline/task15/prompts/AD-codex.txt	.pipeline/task15/proposals/AD-codex.json
+gemini-3.1-pro-high	b11 AD · Gemini 3.1 Pro	.pipeline/task15/prompts/AD-gem31pro.txt	.pipeline/task15/proposals/AD-gem31pro.json
+gpt-oss-120b-medium	b11 AD · GPT-OSS 120B	.pipeline/task15/prompts/AD-gptoss120b.txt	.pipeline/task15/proposals/AD-gptoss120b.json
+gemini-3.7-flash-high	b11 AD · Gemini 3.7 Flash	.pipeline/task15/prompts/AD-gem37flash.txt	.pipeline/task15/proposals/AD-gem37flash.json
+codex	b11 AE · Codex GPT-5	.pipeline/task15/prompts/AE-codex.txt	.pipeline/task15/proposals/AE-codex.json
+gemini-3.1-pro-high	b11 AE · Gemini 3.1 Pro	.pipeline/task15/prompts/AE-gem31pro.txt	.pipeline/task15/proposals/AE-gem31pro.json
+gpt-oss-120b-medium	b11 AE · GPT-OSS 120B	.pipeline/task15/prompts/AE-gptoss120b.txt	.pipeline/task15/proposals/AE-gptoss120b.json
+gemini-3.7-flash-high	b11 AE · Gemini 3.7 Flash	.pipeline/task15/prompts/AE-gem37flash.txt	.pipeline/task15/proposals/AE-gem37flash.json
+codex	b11 AF · Codex GPT-5	.pipeline/task15/prompts/AF-codex.txt	.pipeline/task15/proposals/AF-codex.json
+gemini-3.1-pro-high	b11 AF · Gemini 3.1 Pro	.pipeline/task15/prompts/AF-gem31pro.txt	.pipeline/task15/proposals/AF-gem31pro.json
+gpt-oss-120b-medium	b11 AF · GPT-OSS 120B	.pipeline/task15/prompts/AF-gptoss120b.txt	.pipeline/task15/proposals/AF-gptoss120b.json
+gemini-3.7-flash-high	b11 AF · Gemini 3.7 Flash	.pipeline/task15/prompts/AF-gem37flash.txt	.pipeline/task15/proposals/AF-gem37flash.json
+codex	b12 AG · Codex GPT-5	.pipeline/task16/prompts/AG-codex.txt	.pipeline/task16/proposals/AG-codex.json
+gemini-3.1-pro-high	b12 AG · Gemini 3.1 Pro	.pipeline/task16/prompts/AG-gem31pro.txt	.pipeline/task16/proposals/AG-gem31pro.json
+gpt-oss-120b-medium	b12 AG · GPT-OSS 120B	.pipeline/task16/prompts/AG-gptoss120b.txt	.pipeline/task16/proposals/AG-gptoss120b.json
+gemini-3.7-flash-high	b12 AG · Gemini 3.7 Flash	.pipeline/task16/prompts/AG-gem37flash.txt	.pipeline/task16/proposals/AG-gem37flash.json
+codex	b12 AH · Codex GPT-5	.pipeline/task16/prompts/AH-codex.txt	.pipeline/task16/proposals/AH-codex.json
+gemini-3.1-pro-high	b12 AH · Gemini 3.1 Pro	.pipeline/task16/prompts/AH-gem31pro.txt	.pipeline/task16/proposals/AH-gem31pro.json
+gpt-oss-120b-medium	b12 AH · GPT-OSS 120B	.pipeline/task16/prompts/AH-gptoss120b.txt	.pipeline/task16/proposals/AH-gptoss120b.json
+gemini-3.7-flash-high	b12 AH · Gemini 3.7 Flash	.pipeline/task16/prompts/AH-gem37flash.txt	.pipeline/task16/proposals/AH-gem37flash.json
+codex	b12 AI · Codex GPT-5	.pipeline/task16/prompts/AI-codex.txt	.pipeline/task16/proposals/AI-codex.json
+gemini-3.1-pro-high	b12 AI · Gemini 3.1 Pro	.pipeline/task16/prompts/AI-gem31pro.txt	.pipeline/task16/proposals/AI-gem31pro.json
+gpt-oss-120b-medium	b12 AI · GPT-OSS 120B	.pipeline/task16/prompts/AI-gptoss120b.txt	.pipeline/task16/proposals/AI-gptoss120b.json
+gemini-3.7-flash-high	b12 AI · Gemini 3.7 Flash	.pipeline/task16/prompts/AI-gem37flash.txt	.pipeline/task16/proposals/AI-gem37flash.json
+claude	b03 재감사 · Claude Opus 5	.pipeline/task7/prompts/recheck.txt	.pipeline/task7/audits/recheck.json
+codex	b06 재감사 · Codex GPT-5	.pipeline/task10/prompts/recheck.txt	.pipeline/task10/audits/recheck.json
+claude	b05 재감사 · Claude Opus 5	.pipeline/task9/prompts/recheck.txt	.pipeline/task9/audits/recheck.json
+codex	b07 재감사 · Codex GPT-5	.pipeline/task11/prompts/recheck.txt	.pipeline/task11/audits/recheck.json
+codex	b08 재감사 · Codex GPT-5	.pipeline/task12/prompts/recheck.txt	.pipeline/task12/audits/recheck.json
+claude	b07 재감사 · Claude Opus 5	.pipeline/task11/prompts/recheck.txt	.pipeline/task11/audits/recheck.json
+codex	b13 AJ · Codex GPT-5	.pipeline/task17/prompts/AJ-codex.txt	.pipeline/task17/proposals/AJ-codex.json
+gemini-3.1-pro-high	b13 AJ · Gemini 3.1 Pro	.pipeline/task17/prompts/AJ-gem31pro.txt	.pipeline/task17/proposals/AJ-gem31pro.json
+gpt-oss-120b-medium	b13 AJ · GPT-OSS 120B	.pipeline/task17/prompts/AJ-gptoss120b.txt	.pipeline/task17/proposals/AJ-gptoss120b.json
+gemini-3.7-flash-high	b13 AJ · Gemini 3.7 Flash	.pipeline/task17/prompts/AJ-gem37flash.txt	.pipeline/task17/proposals/AJ-gem37flash.json
+codex	b13 AK · Codex GPT-5	.pipeline/task17/prompts/AK-codex.txt	.pipeline/task17/proposals/AK-codex.json
+gemini-3.1-pro-high	b13 AK · Gemini 3.1 Pro	.pipeline/task17/prompts/AK-gem31pro.txt	.pipeline/task17/proposals/AK-gem31pro.json
+gpt-oss-120b-medium	b13 AK · GPT-OSS 120B	.pipeline/task17/prompts/AK-gptoss120b.txt	.pipeline/task17/proposals/AK-gptoss120b.json
+gemini-3.7-flash-high	b13 AK · Gemini 3.7 Flash	.pipeline/task17/prompts/AK-gem37flash.txt	.pipeline/task17/proposals/AK-gem37flash.json
+codex	b13 AL · Codex GPT-5	.pipeline/task17/prompts/AL-codex.txt	.pipeline/task17/proposals/AL-codex.json
+gemini-3.1-pro-high	b13 AL · Gemini 3.1 Pro	.pipeline/task17/prompts/AL-gem31pro.txt	.pipeline/task17/proposals/AL-gem31pro.json
+gpt-oss-120b-medium	b13 AL · GPT-OSS 120B	.pipeline/task17/prompts/AL-gptoss120b.txt	.pipeline/task17/proposals/AL-gptoss120b.json
+gemini-3.7-flash-high	b13 AL · Gemini 3.7 Flash	.pipeline/task17/prompts/AL-gem37flash.txt	.pipeline/task17/proposals/AL-gem37flash.json
+codex	b14 감사 1 · Codex GPT-5	.pipeline/task14/prompts/audit-1.txt	.pipeline/task14/audits/audit-1.json
+codex	b14 감사 2 · Codex GPT-5	.pipeline/task14/prompts/audit-2.txt	.pipeline/task14/audits/audit-2.json
+codex	b14 감사 3 · Codex GPT-5	.pipeline/task14/prompts/audit-3.txt	.pipeline/task14/audits/audit-3.json
+codex	b14 감사 Codex · Codex GPT-5	.pipeline/task14/prompts/audit-codex.txt	.pipeline/task14/audits/audit-codex.json
+codex	b13 재감사 · Codex GPT-5	.pipeline/task13/prompts/recheck.txt	.pipeline/task13/audits/recheck.json
+codex	b09 재감사 · Codex GPT-5	.pipeline/task13/prompts/recheck.txt	.pipeline/task13/audits/recheck.json
+gemini-3.1-pro-high	b10 재감사 · Gemini 3.1 Pro	.pipeline/task14/prompts/recheck.txt	.pipeline/task14/audits/recheck.json
+codex	b11 판정 · Codex GPT-5	.pipeline/task15/prompts/adj-codex.txt	.pipeline/task15/rulings/adj-codex.json
+gemini-3.1-pro-high	b11 판정 · Gemini 3.1 Pro	.pipeline/task15/prompts/adj-gem31pro.txt	.pipeline/task15/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b11 판정 · Gemini 3.7 Flash	.pipeline/task15/prompts/adj-gem37flash.txt	.pipeline/task15/rulings/adj-gem37flash.json
+gpt-oss-120b-medium	b11 판정 · GPT-OSS 120B	.pipeline/task15/prompts/adj-gptoss120b.txt	.pipeline/task15/rulings/adj-gptoss120b.json
+codex	b12 판정 · Codex GPT-5	.pipeline/task16/prompts/adj-codex.txt	.pipeline/task16/rulings/adj-codex.json
+gemini-3.1-pro-high	b12 판정 · Gemini 3.1 Pro	.pipeline/task16/prompts/adj-gem31pro.txt	.pipeline/task16/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b12 판정 · Gemini 3.7 Flash	.pipeline/task16/prompts/adj-gem37flash.txt	.pipeline/task16/rulings/adj-gem37flash.json
+gpt-oss-120b-medium	b12 판정 · GPT-OSS 120B	.pipeline/task16/prompts/adj-gptoss120b.txt	.pipeline/task16/rulings/adj-gptoss120b.json
+gemini-3.1-pro-high	b11 감사 1 · Gemini 3.1 Pro	.pipeline/task15/prompts/audit-1.txt	.pipeline/task15/audits/audit-1.json
+gemini-3.7-flash-high	b11 감사 2 · Gemini 3.7 Flash	.pipeline/task15/prompts/audit-2.txt	.pipeline/task15/audits/audit-2.json
+gpt-oss-120b-medium	b11 감사 3 · GPT-OSS 120B	.pipeline/task15/prompts/audit-3.txt	.pipeline/task15/audits/audit-3.json
+codex	b11 감사 codex · Codex GPT-5	.pipeline/task15/prompts/audit-codex.txt	.pipeline/task15/audits/audit-codex.json
+gemini-3.1-pro-high	b12 감사 1 · Gemini 3.1 Pro	.pipeline/task16/prompts/audit-1.txt	.pipeline/task16/audits/audit-1.json
+gemini-3.7-flash-high	b12 감사 2 · Gemini 3.7 Flash	.pipeline/task16/prompts/audit-2.txt	.pipeline/task16/audits/audit-2.json
+gpt-oss-120b-medium	b12 감사 3 · GPT-OSS 120B	.pipeline/task16/prompts/audit-3.txt	.pipeline/task16/audits/audit-3.json
+codex	b12 감사 codex · Codex GPT-5	.pipeline/task16/prompts/audit-codex.txt	.pipeline/task16/audits/audit-codex.json
+codex	b14 AM · Codex GPT-5	.pipeline/task18/prompts/AM-codex.txt	.pipeline/task18/proposals/AM-codex.json
+gemini-3.1-pro-high	b14 AM · Gemini 3.1 Pro	.pipeline/task18/prompts/AM-gem31pro.txt	.pipeline/task18/proposals/AM-gem31pro.json
+gpt-oss-120b-medium	b14 AM · GPT-OSS 120B	.pipeline/task18/prompts/AM-gptoss120b.txt	.pipeline/task18/proposals/AM-gptoss120b.json
+gemini-3.7-flash-high	b14 AM · Gemini 3.7 Flash	.pipeline/task18/prompts/AM-gem37flash.txt	.pipeline/task18/proposals/AM-gem37flash.json
+codex	b14 AN · Codex GPT-5	.pipeline/task18/prompts/AN-codex.txt	.pipeline/task18/proposals/AN-codex.json
+gemini-3.1-pro-high	b14 AN · Gemini 3.1 Pro	.pipeline/task18/prompts/AN-gem31pro.txt	.pipeline/task18/proposals/AN-gem31pro.json
+gpt-oss-120b-medium	b14 AN · GPT-OSS 120B	.pipeline/task18/prompts/AN-gptoss120b.txt	.pipeline/task18/proposals/AN-gptoss120b.json
+gemini-3.7-flash-high	b14 AN · Gemini 3.7 Flash	.pipeline/task18/prompts/AN-gem37flash.txt	.pipeline/task18/proposals/AN-gem37flash.json
+codex	b14 AO · Codex GPT-5	.pipeline/task18/prompts/AO-codex.txt	.pipeline/task18/proposals/AO-codex.json
+gemini-3.1-pro-high	b14 AO · Gemini 3.1 Pro	.pipeline/task18/prompts/AO-gem31pro.txt	.pipeline/task18/proposals/AO-gem31pro.json
+gpt-oss-120b-medium	b14 AO · GPT-OSS 120B	.pipeline/task18/prompts/AO-gptoss120b.txt	.pipeline/task18/proposals/AO-gptoss120b.json
+gemini-3.7-flash-high	b14 AO · Gemini 3.7 Flash	.pipeline/task18/prompts/AO-gem37flash.txt	.pipeline/task18/proposals/AO-gem37flash.json
+codex	b13 판정 · Codex GPT-5	.pipeline/task17/prompts/adj-codex.txt	.pipeline/task17/rulings/adj-codex.json
+gemini-3.1-pro-high	b13 판정 · Gemini 3.1 Pro	.pipeline/task17/prompts/adj-gem31pro.txt	.pipeline/task17/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b13 판정 · Gemini 3.7 Flash	.pipeline/task17/prompts/adj-gem37flash.txt	.pipeline/task17/rulings/adj-gem37flash.json
+gpt-oss-120b-medium	b13 판정 · GPT-OSS 120B	.pipeline/task17/prompts/adj-gptoss120b.txt	.pipeline/task17/rulings/adj-gptoss120b.json
+codex	b14 판정 · Codex GPT-5	.pipeline/task18/prompts/adj-codex.txt	.pipeline/task18/rulings/adj-codex.json
+gemini-3.1-pro-high	b14 판정 · Gemini 3.1 Pro	.pipeline/task18/prompts/adj-gem31pro.txt	.pipeline/task18/rulings/adj-gem31pro.json
+gemini-3.7-flash-high	b14 판정 · Gemini 3.7 Flash	.pipeline/task18/prompts/adj-gem37flash.txt	.pipeline/task18/rulings/adj-gem37flash.json
+gpt-oss-120b-medium	b14 판정 · GPT-OSS 120B	.pipeline/task18/prompts/adj-gptoss120b.txt	.pipeline/task18/rulings/adj-gptoss120b.json
+codex	b11 재감사 · Codex GPT-5	.pipeline/task15/prompts/recheck.txt	.pipeline/task15/audits/recheck.json
+gemini-3.1-pro-high	b12 재감사 · Gemini 3.1 Pro	.pipeline/task16/prompts/recheck.txt	.pipeline/task16/audits/recheck.json
+gemini-3.1-pro-high	b13 감사 1 · Gemini 3.1 Pro	.pipeline/task17/prompts/audit-1.txt	.pipeline/task17/audits/audit-1.json
+gemini-3.7-flash-high	b13 감사 2 · Gemini 3.7 Flash	.pipeline/task17/prompts/audit-2.txt	.pipeline/task17/audits/audit-2.json
+gpt-oss-120b-medium	b13 감사 3 · GPT-OSS 120B	.pipeline/task17/prompts/audit-3.txt	.pipeline/task17/audits/audit-3.json
+codex	b13 감사 codex · Codex GPT-5	.pipeline/task17/prompts/audit-codex.txt	.pipeline/task17/audits/audit-codex.json
+gemini-3.1-pro-high	b14 감사 1 · Gemini 3.1 Pro	.pipeline/task18/prompts/audit-1.txt	.pipeline/task18/audits/audit-1.json
+gemini-3.7-flash-high	b14 감사 2 · Gemini 3.7 Flash	.pipeline/task18/prompts/audit-2.txt	.pipeline/task18/audits/audit-2.json
+gpt-oss-120b-medium	b14 감사 3 · GPT-OSS 120B	.pipeline/task18/prompts/audit-3.txt	.pipeline/task18/audits/audit-3.json
+codex	b14 감사 codex · Codex GPT-5	.pipeline/task18/prompts/audit-codex.txt	.pipeline/task18/audits/audit-codex.json
+codex	b02 재감사 · Codex GPT-5	.pipeline/task6/prompts/recheck.txt	.pipeline/task6/audits/recheck.json
+codex	b13 재감사 · Codex GPT-5	.pipeline/task17/prompts/recheck.txt	.pipeline/task17/audits/recheck.json
+gemini-3.1-pro-high	b14 재감사 · Gemini 3.1 Pro	.pipeline/task18/prompts/recheck.txt	.pipeline/task18/audits/recheck.json
+codex	b15 AG · Codex GPT-5	.pipeline/task19/prompts/AG-codex.txt	.pipeline/task19/proposals/AG-codex.json
+gemini-3.1-pro-high	b15 AG · Gemini 3.1 Pro	.pipeline/task19/prompts/AG-gem31pro.txt	.pipeline/task19/proposals/AG-gem31pro.json
+gpt-oss-120b-medium	b15 AG · GPT-OSS 120B	.pipeline/task19/prompts/AG-gptoss120b.txt	.pipeline/task19/proposals/AG-gptoss120b.json
+gemini-3.7-flash-high	b15 AG · Gemini 3.7 Flash	.pipeline/task19/prompts/AG-gem37flash.txt	.pipeline/task19/proposals/AG-gem37flash.json
+codex	b15 AH · Codex GPT-5	.pipeline/task19/prompts/AH-codex.txt	.pipeline/task19/proposals/AH-codex.json
+gemini-3.1-pro-high	b15 AH · Gemini 3.1 Pro	.pipeline/task19/prompts/AH-gem31pro.txt	.pipeline/task19/proposals/AH-gem31pro.json
+gpt-oss-120b-medium	b15 AH · GPT-OSS 120B	.pipeline/task19/prompts/AH-gptoss120b.txt	.pipeline/task19/proposals/AH-gptoss120b.json
+gemini-3.7-flash-high	b15 AH · Gemini 3.7 Flash	.pipeline/task19/prompts/AH-gem37flash.txt	.pipeline/task19/proposals/AH-gem37flash.json
+codex	b15 AI · Codex GPT-5	.pipeline/task19/prompts/AI-codex.txt	.pipeline/task19/proposals/AI-codex.json
+gemini-3.1-pro-high	b15 AI · Gemini 3.1 Pro	.pipeline/task19/prompts/AI-gem31pro.txt	.pipeline/task19/proposals/AI-gem31pro.json
+gpt-oss-120b-medium	b15 AI · GPT-OSS 120B	.pipeline/task19/prompts/AI-gptoss120b.txt	.pipeline/task19/proposals/AI-gptoss120b.json
+gemini-3.7-flash-high	b15 AI · Gemini 3.7 Flash	.pipeline/task19/prompts/AI-gem37flash.txt	.pipeline/task19/proposals/AI-gem37flash.json

@@ -68,6 +68,7 @@
     "@tiptap/starter-kit": "^3.28.0",
     "@xyflow/react": "^12.11.2",
     "docx": "^9.7.1",
+    "hebrew-transliteration": "^2.11.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },

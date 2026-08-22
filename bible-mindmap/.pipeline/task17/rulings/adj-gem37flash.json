@@ -1,0 +1,194 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H4187",
+      "translit": "mûšî",
+      "translitKo": "무시",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H7896 šît→시트, H7970 šĕlôšîm→셸로심, H2572 ḥămiššîm→하미심)",
+      "note": "한국어 성경 관용 표기는 '무시'다. שׁ 뒤에 모음 î가 오는 음절 첫소리이므로 '시'로 적는다(선례: H7896 šît→시트, H7970 šĕlôšîm→셸로심)."
+    },
+    {
+      "strong": "H1667",
+      "translit": "gat-rimmôn",
+      "translitKo": "가트림몬",
+      "evidence": "src/data/koreanGlossTopBatch05.js (H1661 gat→가트), src/data/koreanGlossTopBatch07.js (H1339 bat-šebaʿ→바트셰바), src/data/koreanGlossTopBatch06.js (H7417 rimmôn→림몬)",
+      "note": "한국어 성경 관용 표기는 '가드림몬'이다. 학술 음역 gat(가트)와 rimmôn(림몬)의 결합형으로 '가트림몬'으로 적는다(선례: H1661 gat→가트, H1339 bat-šebaʿ→바트셰바)."
+    },
+    {
+      "strong": "H359",
+      "translit": "ʾêlôt",
+      "translitKo": "엘로트",
+      "evidence": "src/data/koreanGlossTopBatch09.js (H361 ʾêlām→엘람), src/data/koreanGlossTopBatch03.js (H226 ʾôt→오트, H269 ʾāḥôt→아호트), src/data/koreanGlossTopBatch07.js (H5022 nābôt→나보트)",
+      "note": "한국어 성경 관용 표기는 '엘롯'(또는 '엘랏')이다. 학술 음역 ʾêlôt에 따라 '엘로트'로 적는다(선례: H361 ʾêlām→엘람, H226 ʾôt→오트, H5022 nābôt→나보트)."
+    },
+    {
+      "strong": "H1096",
+      "translit": "bēlṭĕšaʾṣṣar",
+      "translitKo": "벨테샤차르",
+      "evidence": "src/data/koreanGlossTopBatch06.js (H2942 ṭĕʿēm→테엠), src/data/koreanGlossTopBatch04.js (H8416 tĕhillâ→테힐라), src/data/koreanGlossTopBatch03.js (H8605 tĕpillâ→테필라)",
+      "note": "한국어 성경 관용 표기는 '벨드사살'이다. 학술 음역 bēlṭĕšaʾṣṣar에 따라 '벨테샤차르'로 적는다(선례: H2942 ṭĕʿēm→테엠, H8416 tĕhillâ→테힐라)."
+    },
+    {
+      "strong": "H3682",
+      "translit": "kĕsût",
+      "translitKo": "케수트",
+      "evidence": "src/data/koreanGlossTopBatch09.js (H3550 kĕhunnâ→케훈나), src/data/koreanGlossTopBatch10.js (H3702 kĕsap→케사프, H3792 kĕtāb→케타브)",
+      "note": "유성 쉐바(ĕ) 표기 원칙 및 kĕ- 음역 선례(H3550 kĕhunnâ→케훈나, H3702 kĕsap→케사프)에 따라 '케수트'로 적는다."
+    },
+    {
+      "strong": "H1047",
+      "translit": "bêt pĕʿôr",
+      "translitKo": "베트 페오르",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H1187 baʿal pĕʿôr→바알 페오르), src/data/koreanGlossTopBatch03.js (H1035 bêt leḥem→베트 레헴), src/data/koreanGlossTopBatch08.js (H1052 bêt šĕʾān→베트 셰안)",
+      "note": "한국어 성경 관용 표기는 '뱃브올'(또는 '벧브올')이다. 학술 음역 bêt pĕʿôr에 따라 '베트 페오르'로 적는다(선례: H1187 baʿal pĕʿôr→바알 페오르, H1035 bêt leḥem→베트 레헴)."
+    },
+    {
+      "strong": "H8519",
+      "translit": "tĕlûnâ",
+      "translitKo": "텔루나",
+      "evidence": "src/data/koreanGlossGenesis1Batch01.js (H8415 tĕhôm→테홈), src/data/koreanGlossTopBatch03.js (H8605 tĕpillâ→테필라, H8641 tĕrûmâ→테루마), src/data/koreanGlossTopBatch04.js (H8416 tĕhillâ→테힐라)",
+      "note": "유성 쉐바(ĕ)를 'ㅔ'로 표기하는 일관된 선례(H8415 tĕhôm→테홈, H8605 tĕpillâ→테필라)에 따라 '텔루나'로 적는다."
+    },
+    {
+      "strong": "H8571",
+      "translit": "tĕnûk",
+      "translitKo": "테누크",
+      "evidence": "src/data/koreanGlossTopBatch06.js (H8573 tĕnûpâ→테누파), src/data/koreanGlossGenesis1Batch01.js (H8415 tĕhôm→테홈)",
+      "note": "베가드케파트 비연음화 규칙(k) 및 tĕ- 음역 선례(H8573 tĕnûpâ→테누파)에 따라 '테누크'로 적는다."
+    },
+    {
+      "strong": "H1865",
+      "translit": "dĕrôr",
+      "translitKo": "데로르",
+      "evidence": "src/data/koreanGlossTopBatch07.js (H1823 dĕmût→데무트, H1722 dĕhab→데하브), src/data/koreanGlossTopBatch09.js (H1687 dĕbîr→데비르)",
+      "note": "유성 쉐바(ĕ)를 'ㅔ'로 표기하는 일관된 선례(H1823 dĕmût→데무트, H1687 dĕbîr→데비르)에 따라 '데로르'로 적는다."
+    },
+    {
+      "strong": "H3529",
+      "translit": "kĕbār",
+      "translitKo": "케바르",
+      "evidence": "src/data/koreanGlossTopBatch09.js (H3550 kĕhunnâ→케훈나), src/data/koreanGlossTopBatch10.js (H3702 kĕsap→케사프, H3792 kĕtāb→케타브)",
+      "note": "한국어 성경 관용 표기는 강 이름 '그발'이다. 학술 음역 kĕbār에 따라 '케바르'로 적는다(선례: H3550 kĕhunnâ→케훈나, H3792 kĕtāb→케타브)."
+    },
+    {
+      "strong": "H1020",
+      "translit": "bêt hayšîmôt",
+      "translitKo": "베트 하이시모트",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H1035 bêt leḥem→베트 레헴), src/data/koreanGlossTopBatch08.js (H4074 māday→마다이, H1052 bêt šĕʾān→베트 셰안), src/data/koreanGlossTopBatch10.js (H3406 yerîmôt→예리모트)",
+      "note": "한국어 성경 관용 표기는 '벧여시못'이다. 학술 음역 bêt hayšîmôt에 따라 '베트 하이시모트'로 적는다(선례: H1035 bêt leḥem→베트 레헴, H3406 yerîmôt→예리모트)."
+    },
+    {
+      "strong": "H5166",
+      "translit": "nĕḥemyâ",
+      "translitKo": "네헴야",
+      "evidence": "src/data/koreanGlossTopBatch07.js (H5418 nĕtanyâ→네탄야), src/data/koreanGlossTopBatch06.js (H1436 gĕdalyâ→게달야, H2608 ḥănanyâ→하난야)",
+      "note": "한국어 성경 관용 표기는 '느헤미야'다. 학술 음역 nĕḥemyâ(nĕ-ḥem-yâ)에 따라 '네헴야'로 적는다(선례: H5418 nĕtanyâ→네탄야, H1436 gĕdalyâ→게달야)."
+    },
+    {
+      "strong": "H7348",
+      "translit": "rĕḥûm",
+      "translitKo": "레훔",
+      "evidence": "src/data/koreanGlossTopBatch09.js (H7233 rĕbābâ→레바바, H7423 rĕmiyyâ→레미야), src/data/koreanGlossTopBatch10.js (H7425 rĕmalyāhû→레말야후)",
+      "note": "한국어 성경 관용 표기는 '르훔'이다. 학술 음역 rĕḥûm에 따라 '레훔'으로 적는다(선례: H7233 rĕbābâ→레바바, H7425 rĕmalyāhû→레말야후)."
+    },
+    {
+      "strong": "H4303",
+      "translit": "maṭʿam",
+      "translitKo": "마트암",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H3379 yārobʿām→야로브암), src/data/koreanGlossTopBatch04.js (H7346 rĕḥabʿām→레하브암), src/data/koreanGlossTopBatch02.js (H6547 parʿōh→파르오)",
+      "note": "무성 쉐바가 붙은 maṭ(마트)와 후음 ʿam(암) 음절 분절 및 선례(H3379 yārobʿām→야로브암, H6547 parʿōh→파르오)에 따라 '마트암'으로 적는다."
+    },
+    {
+      "strong": "H394",
+      "translit": "ʾakzārî",
+      "translitKo": "아크자리",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H4363 mikmās→미크마스), src/data/koreanGlossTopBatch03.js (G1544 ekbállō→에크발로)",
+      "note": "무성 쉐바가 붙은 k를 음절 분리하여 '크'로 적는 일관된 선례(H4363 mikmās→미크마스)에 따라 '아크자리'로 적는다."
+    },
+    {
+      "strong": "H516",
+      "translit": "ʾal tašḥēt",
+      "translitKo": "알 타쉬헤트",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H6252 ʿaštārôt→아쉬타로트), src/data/koreanGlossTopBatch09.js (H2811 ḥăšabyâ→하샤브야), src/data/koreanGlossTopBatch01.js (H408 ʾal→알)",
+      "note": "한국어 성경 관용 표기는 시편 표제어 '알다스혯'이다. 음절 말 שׁ는 '쉬'로 적는 원칙(선례: H6252 ʿaštārôt→아쉬타로트) 및 ḥēt→헤트에 따라 '알 타쉬헤트'로 적는다."
+    },
+    {
+      "strong": "G1551",
+      "translit": "ekdéchomai",
+      "translitKo": "에크데코마이",
+      "evidence": "src/data/koreanGlossTopBatch01.js (G1537 ek→에크), src/data/koreanGlossTopBatch03.js (G1544 ekbállō→에크발로), src/data/koreanGlossTopBatch05.js (G1607 ekporeúomai→에크포류오마이)",
+      "note": "전치사/접두사 ek는 '에크'로 적는 일관된 선례(G1537 ek→에크, G1544 ekbállō→에크발로)에 따라 '에크데코마이'로 적는다."
+    },
+    {
+      "strong": "G2848",
+      "translit": "kókkos",
+      "translitKo": "코코스",
+      "evidence": "src/data/koreanGlossTopBatch05.js (G5376 Phílippos→필리포스), src/data/koreanGlossTopBatch04.js (G1100 glōssa→글로사), src/data/koreanGlossTopBatch08.js (G2462 híppos→히포스)",
+      "note": "중복 자음(다게쉬 포르테/겹자음)을 받침으로 겹치지 않는 원칙(선례: G5376 Phílippos→필리포스, G1100 glōssa→글로사)에 따라 '코코스'로 적는다."
+    },
+    {
+      "strong": "G4754",
+      "translit": "strateúomai",
+      "translitKo": "스트라튜오마이",
+      "evidence": "src/data/koreanGlossTopBatch02.js (G4100 pisteúō→피스튜오), src/data/koreanGlossTopBatch06.js (G4395 prophēteúō→프로페튜오), src/data/koreanGlossTopBatch07.js (G3522 nēsteúō→네스튜오)",
+      "note": "헬라어 ευ는 유 계열 한 음절로 적는 원칙(선례: G4100 pisteúō→피스튜오, G4395 prophēteúō→프로페튜오, G4198 poreúomai→포류오마이)에 따라 '스트라튜오마이'로 적는다."
+    },
+    {
+      "strong": "G5012",
+      "translit": "tapeinophrosýnē",
+      "translitKo": "타페이노프로쉬네",
+      "evidence": "src/data/koreanGlossTopBatch03.js (G1343 dikaiosýnē→디카이오쉬네), src/data/koreanGlossTopBatch09.js (G1654 eleēmosýnē→엘레에모쉬네), src/data/koreanGlossTopBatch04.js (G4864 synagōgḗ→쉬나고게)",
+      "note": "헬라어 υ는 '위'로 적어 sy(σu)는 '쉬'가 되는 일관된 선례(G1343 dikaiosýnē→디카이오쉬네, G1654 eleēmosýnē→엘레에모쉬네)에 따라 '타페이노프로쉬네'로 적는다."
+    },
+    {
+      "strong": "G2961",
+      "translit": "kyrieúō",
+      "translitKo": "퀴리유오",
+      "evidence": "src/data/koreanGlossTopBatch01.js (G2962 kuriou/kýrios→퀴리오스), src/data/koreanGlossTopBatch07.js (G936 basileúō→바실류오), src/data/koreanGlossTopBatch02.js (G4100 pisteúō→피스튜오)",
+      "note": "G2962(kýrios→퀴리오스)의 ky(퀴) 선례와 -eúō를 '유오'로 적는 일관된 선례(G936 basileúō→바실류오)에 따라 '퀴리유오'로 적는다."
+    },
+    {
+      "strong": "G2172",
+      "translit": "eúchomai",
+      "translitKo": "유코마이",
+      "evidence": "src/data/koreanGlossTopBatch03.js (G4336 proseúchomai→프로슈코마이), src/data/koreanGlossTopBatch05.js (G2168 eucharistéō→유카리스테오), src/data/koreanGlossTopBatch07.js (G2106 eudokéō→유도케오)",
+      "note": "헬라어 어두 ευ는 유 계열 한 음절로 적는 원칙(선례: G2168 eucharistéō→유카리스테오, G4336 proseúchomai→프로슈코마)에 따라 '유코마이'로 적는다."
+    },
+    {
+      "strong": "G4766",
+      "translit": "strṓnnymi",
+      "translitKo": "스트론뉘미",
+      "evidence": "src/data/koreanGlossTopBatch10.js (G1731 endeíknymi→엔데이크뉘미, G1067 géenna→게엔나), src/data/koreanGlossTopBatch03.js (G2491 Iōánnēs→이오안네스, G1080 gennáō→겐나오)",
+      "note": "헬라어 υ의 '위'(뉘) 음역(선례: G1731 endeíknymi→엔데이크뉘미) 및 νν의 비음 연자음 표기(선례: G2491 Iōánnēs→이오안네스, G1080 gennáō→겐나오)에 따라 '스트론뉘미'로 적는다."
+    },
+    {
+      "strong": "G5603",
+      "translit": "ōidḗ",
+      "translitKo": "오이데",
+      "evidence": "src/data/koreanGlossTopBatch09.js (G3027 lēistḗs→레이스테스)",
+      "note": "하기 이오타(iota subscript)를 '이'로 반영하는 SBL 음역 선례(G3027 lēistḗs→레이스테스)에 따라 '오이데'로 적는다."
+    },
+    {
+      "strong": "G4486",
+      "translit": "rhḗgnymi",
+      "translitKo": "레그뉘미",
+      "evidence": "src/data/koreanGlossTopBatch03.js (G4487 rhēma→레마), src/data/koreanGlossTopBatch04.js (G4483 rhéō→레오), src/data/koreanGlossTopBatch10.js (G1731 endeíknymi→엔데이크뉘미)",
+      "note": "헬라어 어두 ῥ에 '흐'를 붙이지 않는 일관된 선례(G4487 rhēma→레마, G4483 rhéō→레오) 및 υ의 '위'(뉘) 음역(G1731 endeíknymi→엔데이크뉘미)에 따라 '레그뉘미'로 적는다."
+    },
+    {
+      "strong": "H1622",
+      "translit": "girgāšî",
+      "translitKo": "기르가시",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H7896 šît→시트, H7970 šĕlôšîm→셸로심, H2572 ḥămiššîm→하미심)",
+      "note": "한국어 성경 관용 표기는 '기르가스 사람'이다. שׁ 뒤에 모음 î가 오는 음절 첫소리이므로 '시'로 적는 원칙(선례: H7896 šît→시트, H7970 šĕlôšîm→셸로심)에 따라 '기르가시'로 적는다."
+    },
+    {
+      "strong": "H8048",
+      "translit": "šammâ",
+      "translitKo": "샤마",
+      "evidence": "src/data/koreanGlossTopBatch05.js (H8047 šammâ→샤마), src/data/koreanGlossTopBatch04.js (H1834 dammeśeq→다메세크), src/data/koreanGlossTopBatch03.js (H5982 ʿammûd→아무드)",
+      "note": "한국어 성경 관용 표기는 '삼마'다. 다게쉬 포르테를 겹쳐 적지 않는 원칙 및 동음이의어 선례(H8047 šammâ→샤마)에 따라 '샤마'로 적는다."
+    }
+  ]
+}

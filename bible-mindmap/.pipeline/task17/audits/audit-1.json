@@ -1,0 +1,11 @@
+[
+  {
+    "strong": "H4763",
+    "field": "translit",
+    "current": "mĕrăʾăšâ",
+    "suggested": "mĕraʾăšâ",
+    "evidence": "원어 레마 'מְרַאֲשָׁה'에서 ר(Resh) 아래의 모음은 hataf patach(ă)가 아니라 일반 patach(a)이므로 'ră'가 아닌 'ra'로 음역해야 한다.",
+    "severity": "medium",
+    "reason": "모음부호 음역 오류 (patach를 hataf patach 기호로 오기)"
+  }
+]

@@ -2887,7 +2887,7 @@
       "strong": "H7799",
       "lemma": "שׁוּשַׁן",
       "translit": "šûšan",
-      "translitKo": "슈샨",
+      "translitKo": "수산",
       "votesKo": 3,
       "judges": 5,
       "note": "네 모델 중 3개가 같은 음역안을 냈다.",
@@ -2989,7 +2989,7 @@
       "translitKo": "고바흐",
       "votesKo": 5,
       "judges": 5,
-      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 현재 lemma גֹּבַהּ의 어말 הּ는 마피크가 있어 자음 h로 발음된다.",
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 מַהּ 의 ה 에 마피크가 있어 자음 h 로 발음되고 그 앞 파타흐는 후음 앞 파타흐(furtive patach)다. 루아흐 선례를 따라 어말 h 를 흐 로 적었다.",
       "origin": "unanimous",
       "ruleAdjusted": true
     },
@@ -4045,8 +4045,8 @@
       "strong": "H5523",
       "lemma": "סֻכּוֹת",
       "translit": "sukkôt",
-      "translitKo": "숙코트",
-      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기: 숙코트 · 한국교회 관용 표기: 숙곳/숙콧.",
+      "translitKo": "수코트",
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치).",
       "origin": "adjudicated",
       "ruleAdjusted": true
     },
@@ -4086,8 +4086,8 @@
       "strong": "H2789",
       "lemma": "חֶרֶשׂ",
       "translit": "ḥereś",
-      "translitKo": "헤레스",
-      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 שׂ(ś)는 s 음가로 표기한다.",
+      "translitKo": "헤레쉬",
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 שׂ는 음절 말이므로 시가 아니라 쉬로 표기한다.",
       "origin": "adjudicated"
     },
     {

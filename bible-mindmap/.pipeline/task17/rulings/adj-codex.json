@@ -1,0 +1,32 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H4187","translit":"mûšî","translitKo":"무시","evidence":"מוּשִׁי의 어두 שׁ는 다음 모음 앞에서 시로 표기하는 배포 음절 규칙","note":""},
+    {"strong":"H1667","translit":"gat-rimmôn","translitKo":"가트림몬","evidence":"גַּת־רִמּוֹן의 ת와 רִ를 자모대로 반영한 배포식 학술 음역","note":"관용 표기 가드림몬과 구별"},
+    {"strong":"H359","translit":"ʾêlôṯ","translitKo":"엘로트","evidence":"אֵילוֹת의 צֵירֵי와 홀렘을 반영한 SBL 음역 및 어말 ת 표기","note":"관용 표기 엘롯/엘랏과 구별"},
+    {"strong":"H1096","translit":"bēlṭᵊšaʾṣṣar","translitKo":"벨트샤차르","evidence":"בֵּלְטְשַׁאצַּר의 자음과 축약 모음을 반영한 SBL 음역","note":"관용 표기 벨드사살과 구별"},
+    {"strong":"H3682","translit":"kesût","translitKo":"크수트","evidence":"כְּסוּת의 짧은 e와 û를 반영한 배포 SBL식 표기","note":""},
+    {"strong":"H1047","translit":"Bêt-Peʿôr","translitKo":"베트 프오르","evidence":"בֵּית פְּעוֹר의 두 단어와 פְ의 학술 음역을 반영","note":"관용 표기 벧브올과 구별"},
+    {"strong":"H8519","translit":"tĕlûnâ","translitKo":"틀루나","evidence":"תְּלוּנָה의 짧은 e와 û를 반영한 SBL 음역","note":""},
+    {"strong":"H8571","translit":"tĕnûḵ","translitKo":"트누크","evidence":"תְּנוּךְ의 짧은 e, û, 후음 כ를 반영","note":""},
+    {"strong":"H1865","translit":"dĕrôr","translitKo":"드로르","evidence":"דְּרוֹר의 짧은 e와 홀렘을 반영한 배포식","note":""},
+    {"strong":"H3529","translit":"Kĕḇār","translitKo":"크바르","evidence":"כְּבָר의 짧은 e와 ב의 기본 b를 반영","note":"관용 지명 그발과 구별"},
+    {"strong":"H1020","translit":"Bêt ha-Yĕšîmôt","translitKo":"베트 하예시모트","evidence":"בֵּית הַיְשִׁימוֹת의 접두어·음절과 어말 ת를 반영","note":"관용 지명 벧여시못과 구별"},
+    {"strong":"H5166","translit":"Nĕḥemyâ","translitKo":"느헤먀","evidence":"נְחֶמְיָה의 ḥ와 yâ를 반영한 SBL 음역","note":"관용 인명 느헤미야와 구별"},
+    {"strong":"H7348","translit":"Rĕḥûm","translitKo":"르훔","evidence":"רְחוּם의 짧은 e, ḥ, û를 반영한 배포 표기","note":""},
+    {"strong":"H4303","translit":"maṭʿam","translitKo":"마트암","evidence":"מַטְעַם의 ṭ와 ע를 반영하고 겹자음을 늘리지 않음","note":""},
+    {"strong":"H394","translit":"ʾakzārî","translitKo":"아크자리","evidence":"אַכְזָרִי의 어두 ʾ와 k를 반영한 SBL 음역","note":""},
+    {"strong":"H516","translit":"ʾal-tašḥēt","translitKo":"알 타셰트","evidence":"אַל תַּשְׁחֵת의 שׁ, ḥ와 명령형 어미를 반영","note":""},
+    {"strong":"G1551","translit":"ekdéchomai","translitKo":"엑데코마이","evidence":"ἐκδέχομαι의 κδ를 배포 그리스어 자모 원칙대로 반영","note":""},
+    {"strong":"G2848","translit":"kókkos","translitKo":"콕코스","evidence":"κόκκος의 κκ를 다게쉬 포르테 규칙에 따라 한글에서 중복하지 않음","note":""},
+    {"strong":"G4754","translit":"strateúomai","translitKo":"스트라튜오마이","evidence":"στρατεύομαι의 ευ를 유 계열로 적는 배포 규칙","note":""},
+    {"strong":"G5012","translit":"tapeinophrosýnē","translitKo":"타페이노프로쉬네","evidence":"ταπεινοφροσύνη의 φ, υ와 음절 말 σ의 배포 표기","note":""},
+    {"strong":"G2961","translit":"kyrieúō","translitKo":"키리유오","evidence":"κυριεύω의 υ와 ευ를 유 계열로 적는 배포 규칙","note":""},
+    {"strong":"G2172","translit":"eúchomai","translitKo":"유코마이","evidence":"εὔχομαι의 ευ를 후속 자음과 무관하게 유 계열로 적는 배포 규칙","note":""},
+    {"strong":"G4766","translit":"strṓnnymi","translitKo":"스트로뉘미","evidence":"στρώννυμι의 υ를 위 계열로 적고 포르테를 중복하지 않는 배포 표기","note":""},
+    {"strong":"G5603","translit":"ōidḗ","translitKo":"오이데","evidence":"ᾠδή의 ῳ를 ōi로 반영한 SBL 음역","note":""},
+    {"strong":"G4486","translit":"rhḗgnymi","translitKo":"레그뉘미","evidence":"ῥήγνυμι의 어두 ῥ를 레로, υ를 위 계열로 적는 배포 선례","note":"어두 ῥ에 흐를 붙이지 않음"},
+    {"strong":"H1622","translit":"girgāšî","translitKo":"기르가시","evidence":"גִּרְגָּשִׁי의 어말 שׁ가 다음 모음 앞에서 시가 되는 배포 규칙","note":"관용 표기 기르가스 사람과 구별"},
+    {"strong":"H8048","translit":"šammâ","translitKo":"샴마","evidence":"שַׁמָּה의 어두 שׁ와 다게쉬 포르테 비중복 표기","note":"관용 표기 삼마와 구별"}
+  ]
+}

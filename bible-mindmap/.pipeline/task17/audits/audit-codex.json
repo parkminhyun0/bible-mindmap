@@ -1,0 +1,1820 @@
+[
+  {
+    "strong": "H7550",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5459",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7961",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7543",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4806",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4403",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7197",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1413",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4763",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2290",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H331",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7172",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H865",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1022",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7193",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1731",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4670",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2914",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4694",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2553",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4241",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5274",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4521",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7401",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6969",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1037",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2401",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4411",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1598",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2724",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1803",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3510",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5276",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3535",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H529",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3363",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4498",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5425",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6805",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H437",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3939",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2013",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2864",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7962",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. w는 와/웨/위/워로 음역",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3835",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H8175",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H8421",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2452",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3493",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H69",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H870",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1251",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7260",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H524",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3345",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H703",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4291",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7261",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3790",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3969",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4456",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5627",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3284",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2151",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7648",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4144",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3313",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4022",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3369",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2912",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6045",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7980",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7647",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5613",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1246",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H57",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7663",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2556",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6482",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4225",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2838",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2805",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3725",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 등 한국어 성경에서는 속죄의 의미로 쓰이며, 유대 절기 욤 키푸르(대속죄일)의 '키푸르'이다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1627",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3302",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2921",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6149",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1808",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5509",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2554",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4658",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2851",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5861",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1508",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3479",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3549",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1783",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5895",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5711",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5470",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4671",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2135",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1348",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6476",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H7496",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1986",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1210",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H8327",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4032",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H8388",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3013",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H1760",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H6958",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H2985",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H5106",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1213",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4907",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 윕실론(υ)의 음가에 따라 학술 표기는 '쉬네시스'가 되며, '시네시스'로 표기되기도 한다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1496",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4241",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G819",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4796",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. γ가 χ 앞에서 비음 [ŋ]으로 발음되며, 윕실론(υ)은 위 계열로 음역되어 '쉰카이로'가 된다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5448",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 윕실론(υ)을 '위'로 음역하여 '퓌시오오'가 되며, '피시오오'로 표기되기도 한다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G109",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5491",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5568",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 등 한국어 성경에서는 책 이름으로 '시편'으로 번역된다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2666",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5370",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4822",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 윕실론(υ)을 '위'로 음역하여 '쉼비바조'가 된다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2026",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1764",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G548",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4189",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G627",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1945",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4712",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G48",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1567",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1985",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5406",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. ευ는 후속 자음이 없으므로 유(에우/유) 계열 표기. 포뉴스로 적음.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3417",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1589",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4392",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 프로파시스로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5348",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φθ를 프타로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G467",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2932",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4357",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3847",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1706",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. μπ를 엠핍토로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G874",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G515",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. x를 크스로 표기 (악시오오)",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2214",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5465",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. χ는 ㅋ 계열로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1382",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2989",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2512",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. θ를 타로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5279",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(휘)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G539",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4747",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χ는 ㅋ 계열로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3335",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4686",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1430",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1611",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2910",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(뉘)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1294",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 포로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5137",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χ는 ㅋ 계열로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G588",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χ는 ㅋ 계열로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1925",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(뉘)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1458",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. γκ를 엥칼로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5286",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(휘)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2351",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. θ를 토로 표기. υ를 위(뤼)로 표기.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2516",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. θ를 테로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4377",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 포로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5536",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χ를 크(크레)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3558",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4154",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1303",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. θ를 테로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4639",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G818",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G543",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. θ를 테로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2395",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3781",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 페로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2827",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G3146",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4170",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1026",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χ는 ㅋ 계열로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5421",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 프(프레)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G23",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1030",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(뤼)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4873",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 위(쉬)로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G1988",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G2303",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. θ를 테로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4501",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. ῥ를 흐르(흐롬)로 표기. φ를 파로 표기.",
+    "suggested": "",
+    "evidence": "어두 ῥ는 '흐'를 붙이지 않는 것이 절대 규칙이며, 실제 표기도 '롬파이아'로 했으나 note에서 모순된 설명을 함.",
+    "severity": "high",
+    "reason": "절대 표기 규칙과 모순된 설명"
+  },
+  {
+    "strong": "G4017",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G4430",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "G5028",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. φ를 포로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H4111",
+    "field": "translit",
+    "current": "mahalalʾēl",
+    "suggested": "mahălalʾēl",
+    "evidence": "note에서는 학술 표기가 'mahălalʾēl'이라고 설명하지만 실제 translit 필드는 'mahalalʾēl'임.",
+    "severity": "high",
+    "reason": "note와 translit 간의 불일치"
+  },
+  {
+    "strong": "H2341",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 자음 ו를 w(위)로 표기. 후음 ח 처리.",
+    "suggested": "",
+    "evidence": "명세: \"이 다섯 규칙에 해당하는 낱말이면 note에 굳이 규칙을 반복해 적지 않아도 된다.\" (자음 ו 규칙 반복)",
+    "severity": "medium",
+    "reason": "5대 확정 규칙을 불필요하게 반복 설명함"
+  },
+  {
+    "strong": "H7982",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. שׁ + 모음을 셸로 표기",
+    "suggested": "",
+    "evidence": "관용 표기 차이, 후음 처리 등 예외적 설명이 필요 없는 단순 규칙/일치 사실만 기재함. WORKER_SPEC: \"갈릴 이유가 없으면 빈 문자열로 둔다.\"",
+    "severity": "medium",
+    "reason": "불필요한 note 기재 (빈 문자열이어야 함)"
+  },
+  {
+    "strong": "H3682",
+    "field": "translit",
+    "current": "kesût",
+    "suggested": "kĕsût",
+    "evidence": "note에서는 유성 쉐바(ĕ) 표기 원칙을 따른다고 설명하지만 실제 translit 필드는 'kesût'임.",
+    "severity": "high",
+    "reason": "note와 translit 간의 불일치"
+  },
+  {
+    "strong": "H1047",
+    "field": "translit",
+    "current": "Bêt-Peʿôr",
+    "suggested": "bêt pĕʿôr",
+    "evidence": "note에서는 학술 음역 'bêt pĕʿôr'에 따른다고 설명하지만 실제 translit 필드는 'Bêt-Peʿôr'임.",
+    "severity": "high",
+    "reason": "note와 translit 간의 불일치"
+  },
+  {
+    "strong": "H8571",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 베가드케파트 비연음화 규칙(k) 및 tĕ- 음역 선례(H8573 tĕnûpâ→테누파)에 따라 '테누크'로 적는다.",
+    "suggested": "",
+    "evidence": "명세: \"이 다섯 규칙에 해당하는 낱말이면 note에 굳이 규칙을 반복해 적지 않아도 된다.\" (베가드케파트 규칙 반복)",
+    "severity": "medium",
+    "reason": "5대 확정 규칙을 불필요하게 반복 설명함"
+  },
+  {
+    "strong": "G2848",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 중복 자음(다게쉬 포르테/겹자음)을 받침으로 겹치지 않는 원칙(선례: G5376 Phílippos→필리포스, G1100 glōssa→글로사)에 따라 '코코스'로 적는다.",
+    "suggested": "",
+    "evidence": "명세: \"이 다섯 규칙에 해당하는 낱말이면 note에 굳이 규칙을 반복해 적지 않아도 된다.\" (다게쉬 포르테 규칙 반복)",
+    "severity": "medium",
+    "reason": "5대 확정 규칙을 불필요하게 반복 설명함"
+  }
+]

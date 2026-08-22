@@ -1,0 +1,20 @@
+[
+  {
+    "strong": "G1743",
+    "field": "translitKo",
+    "current": "엔디나모오",
+    "suggested": "엔뒤나모오",
+    "evidence": "WORKER_SPEC.md 'υ는 위' 표기 원칙; src/data/koreanGlossTopBatch02.js G1410(δύναμαι -> dýnamai / 뒤나마이), koreanGlossTopBatch03.js G1411(δύναμις -> dýnamis / 뒤나미스)",
+    "severity": "high",
+    "reason": "헬라어 윕실론(υ)은 단독 모음일 때 '위'로 전사하는 것이 SBL 학술 음역 표제어 원칙이며, 선행 배포 데이터에서도 동일 어근이 δύναμαι(뒤나마이), δύναμις(뒤나미스)로 일관되게 확정되어 있다. 일반 동사에서 관용 표기를 이유로 '디'로 전사한 것은 명세 및 선례와 모순되므로 '엔뒤나모오'로 수정해야 한다."
+  },
+  {
+    "strong": "G1743",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. υ를 관용 표기에 따라 '디'로 적음",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "evidence": "WORKER_SPEC.md 표기 원칙; .pipeline/task17/final.json G1743 entry; G1410·G1411 배포 선례",
+    "severity": "medium",
+    "reason": "note에서 υ를 관용 표기라며 '디'로 적었다고 설명하나, 이는 배포 선례(뒤나마이, 뒤나미스) 및 학술 음역 원칙(υ는 위)과 모순되는 잘못된 판정 근거가 기록된 것이다."
+  }
+]

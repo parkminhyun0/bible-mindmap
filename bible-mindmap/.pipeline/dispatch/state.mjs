@@ -5,14 +5,25 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const BATCHES = [
-  { task: 'task7', no: '03', shards: ['F', 'G', 'H'] },
-  { task: 'task8', no: '04', shards: ['I', 'J', 'K'] },
-  { task: 'task9', no: '05', shards: ['L', 'M', 'N'] },
-  { task: 'task10', no: '06', shards: ['O', 'P', 'Q'] },
-  { task: 'task11', no: '07', shards: ['R', 'S', 'T'] },
-];
-const MODELS = ['codex', 'gem31pro', 'gem37flash', 'gem36flash', 'claudeopus5'];
+// 배치 목록은 폴더에서 읽는다. 손으로 적어 두던 앞 판본은 b11 부터 빠져 있었고,
+// 그래서 b11·b12 가 재감사까지 다 끝났는데도 0-lead 대행이 "PR 대상 없음" 으로
+// 계속 대기했다. 배치를 열 때마다 사람이 이 목록을 고쳐야 하는 구조 자체가
+// 조용한 정지를 부른다. 파일에서 읽으면 그런 자리가 없다.
+// batch 번호는 task6 = batch02 기준으로 4를 뺀다.
+const BATCHES = fs.readdirSync(path.join(ROOT, '.pipeline'))
+  .filter((d) => /^task\d+$/.test(d))
+  .map((task) => {
+    const inp = path.join(ROOT, '.pipeline', task, 'input');
+    if (!fs.existsSync(inp)) return null;
+    const shards = fs.readdirSync(inp)
+      .map((f) => /^shard-([A-Z]+)\.json$/.exec(f)).filter(Boolean).map((m) => m[1]).sort();
+    if (!shards.length) return null;
+    const no = String(Number(task.slice(4)) - 4).padStart(2, '0');
+    return { task, no, shards };
+  })
+  .filter(Boolean)
+  .sort((a, b) => Number(a.no) - Number(b.no));
+const MODELS = ['codex', 'gem31pro', 'gptoss120b', 'gem37flash'];
 
 const has = (p) => fs.existsSync(path.join(ROOT, p));
 const count = (dir, pred = () => true) => {
