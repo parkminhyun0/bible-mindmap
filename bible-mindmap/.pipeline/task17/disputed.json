@@ -1,0 +1,922 @@
+{
+  "items": [
+    {
+      "shard": "AJ",
+      "strong": "H4187",
+      "lemma": "מוּשִׁי",
+      "lang": "hebrew",
+      "glossEn": "Mushi.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mûšî",
+          "translitKo": "무시",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mûšî",
+          "translitKo": "무쉬",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "mûšî",
+          "translitKo": "무쉬",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mûšî",
+          "translitKo": "무시",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AJ",
+      "strong": "H1667",
+      "lemma": "גַּת־רִמּוֹן",
+      "lang": "hebrew",
+      "glossEn": "Gath-rimmon. d",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gat-rimmôn",
+          "translitKo": "갓림몬",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gat-rimmôn",
+          "translitKo": "가트림몬",
+          "note": "가드림몬(관용)과 다름"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "gat-rimmôn",
+          "translitKo": "가트림몬",
+          "note": "가드림몬(관용)과 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gat-rimmôn",
+          "translitKo": "가트 림몬",
+          "note": "한국어 성경 관용 표기는 가드림몬이다."
+        }
+      ]
+    },
+    {
+      "shard": "AJ",
+      "strong": "H359",
+      "lemma": "אֵילוֹת",
+      "lang": "hebrew",
+      "glossEn": "Elath, Eloth.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾêlôṯ",
+          "translitKo": "에일롯",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾêlôt",
+          "translitKo": "엘로트",
+          "note": "엘롯(관용)과 다름"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʾêlôt",
+          "translitKo": "엘로트",
+          "note": "엘롯(관용)과 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾêlôt",
+          "translitKo": "엘롯",
+          "note": "한국어 성경 관용 표기는 엘랏(엘롯)이다."
+        }
+      ]
+    },
+    {
+      "shard": "AJ",
+      "strong": "H1096",
+      "lemma": "בֵּלְטְשַׁאצַּר",
+      "lang": "hebrew",
+      "glossEn": "Belteshazzar.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bēlṭᵊšaʾṣṣar",
+          "translitKo": "벨트샤차르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bēlṭəšaʾṣṣar",
+          "translitKo": "벨테샤차르",
+          "note": "벨드사살(관용)과 다름"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "bēlṭəšaʾṣṣar",
+          "translitKo": "벨테샤차르",
+          "note": "벨드사살(관용)과 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bēlṭĕšaʾṣṣar",
+          "translitKo": "벨트샤차르",
+          "note": "한국어 성경 관용 표기는 벨드사살이다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H3682",
+      "lemma": "כְּסוּת",
+      "lang": "hebrew",
+      "glossEn": "covering, raiment, vesture.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kesût",
+          "translitKo": "크수트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kəsût",
+          "translitKo": "케수트",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "kesût",
+          "translitKo": "크수트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕsût",
+          "translitKo": "케수트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H1047",
+      "lemma": "בֵּית פְּעוֹר",
+      "lang": "hebrew",
+      "glossEn": "Bethpeor.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt-Peʿôr",
+          "translitKo": "베트 프오르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt pəʿôr",
+          "translitKo": "베이트 페오르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Bêt-Peʿôr",
+          "translitKo": "베트 프오르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt pĕʿôr",
+          "translitKo": "베트 페오르",
+          "note": "개역개정 등 한국어 성경에서는 지명 '뱃브올'(벧브올)로 음역되어 관용 표기로 굳어졌다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H8519",
+      "lemma": "תְּלוּנָה",
+      "lang": "hebrew",
+      "glossEn": "murmuring.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tĕlûnâ",
+          "translitKo": "틀루나",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "təlûnâ",
+          "translitKo": "텔루나",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "tĕlûnâ",
+          "translitKo": "틀루나",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tĕlûnâ",
+          "translitKo": "텔루나",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H8571",
+      "lemma": "תְּנוּךְ",
+      "lang": "hebrew",
+      "glossEn": "tip.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tĕnûḵ",
+          "translitKo": "트누크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tənûk",
+          "translitKo": "테누크",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "tĕnûḵ",
+          "translitKo": "트누크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tĕnûk",
+          "translitKo": "테누크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H1865",
+      "lemma": "דְּרוֹר",
+      "lang": "hebrew",
+      "glossEn": "liberty, pure.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "dĕrôr",
+          "translitKo": "드로르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "dərôr",
+          "translitKo": "데로르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "dĕrôr",
+          "translitKo": "드로르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "dĕrôr",
+          "translitKo": "데로르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H3529",
+      "lemma": "כְּבָר",
+      "lang": "hebrew",
+      "glossEn": "Chebar. Compare H2249 (חָבוֹר).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Kĕḇār",
+          "translitKo": "크바르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kəbār",
+          "translitKo": "케바르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Kĕḇār",
+          "translitKo": "크바르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕbār",
+          "translitKo": "케바르",
+          "note": "개역개정 등 한국어 성경에서는 강 이름으로 '그발'로 음역되어 관용 표기로 굳어졌다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H1020",
+      "lemma": "בֵּית הַיְשִׁימוֹת",
+      "lang": "hebrew",
+      "glossEn": "Beth-jeshimoth.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt ha-Yĕšîmôt",
+          "translitKo": "베트 하예시모트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt hayšîmôt",
+          "translitKo": "베이트 하이시모트",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Bêt ha-Yĕšîmôt",
+          "translitKo": "베트 하예시모트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt hayšîmôt",
+          "translitKo": "베트 하이시모트",
+          "note": "개역개정 등 한국어 성경에서는 지명 '벧여시못'으로 음역되어 관용 표기로 굳어졌다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H5166",
+      "lemma": "נְחֶמְיָה",
+      "lang": "hebrew",
+      "glossEn": "Nehemiah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Nĕḥemyâ",
+          "translitKo": "느헤먀",
+          "note": "관용 표기 ‘느헤미야’와 달리 SBL 음역."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nəḥemyâ",
+          "translitKo": "네헴야",
+          "note": "관용 표기 느헤미야와 차이남"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Nĕḥemyâ",
+          "translitKo": "느헤먀",
+          "note": "관용 표기 ‘느헤미야’와 달리 SBL 음역."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nĕḥemyâ",
+          "translitKo": "네헤먀",
+          "note": "개역개정 등 한국어 성경에서는 인명·책 이름으로 '느헤미야'로 음역되어 관용 표기로 굳어졌다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H7348",
+      "lemma": "רְחוּם",
+      "lang": "hebrew",
+      "glossEn": "Rehum.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Rĕḥûm",
+          "translitKo": "르훔",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rəḥûm",
+          "translitKo": "레훔",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Rĕḥûm",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕḥûm",
+          "translitKo": "레훔",
+          "note": "개역개정 등 한국어 성경에서는 인명 '르훔'으로 음역되어 관용 표기로 굳어졌다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H4303",
+      "lemma": "מַטְעַם",
+      "lang": "hebrew",
+      "glossEn": "dainty (meat), savoury meat.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "maṭʿam",
+          "translitKo": "마타암",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "maṭʿam",
+          "translitKo": "마트암",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "maṭʿam",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "maṭʿam",
+          "translitKo": "마트암",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H394",
+      "lemma": "אַכְזָרִי",
+      "lang": "hebrew",
+      "glossEn": "cruel (one).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾakzārî",
+          "translitKo": "악자리",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾakzārî",
+          "translitKo": "아크자리",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʾakzārî",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾakzārî",
+          "translitKo": "아크자리",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "H516",
+      "lemma": "אַל תַּשְׁחֵת",
+      "lang": "hebrew",
+      "glossEn": "Al-taschith.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾal-tašḥēt",
+          "translitKo": "알 타셰트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾal tašḥēt",
+          "translitKo": "알 타쉬헤트",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʾal-tašḥēt",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾal tašḥēt",
+          "translitKo": "알 타쉬헤트",
+          "note": "개역개정 등 한국어 성경에서는 시편 표제어로 '알다스혯'으로 음역된다."
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "G1551",
+      "lemma": "ἐκδέχομαι",
+      "lang": "greek",
+      "glossEn": "expect, look (tarry) for, wait (for)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekdéchomai",
+          "translitKo": "엑데코마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekdéchomai",
+          "translitKo": "에크데코마이",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekdéchomai",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekdéchomai",
+          "translitKo": "에크데코마이",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "G2848",
+      "lemma": "κόκκος",
+      "lang": "greek",
+      "glossEn": "corn, grain",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kókkos",
+          "translitKo": "콕코스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kókkos",
+          "translitKo": "코코스",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "kókkos",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kókkos",
+          "translitKo": "코코스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AK",
+      "strong": "G4754",
+      "lemma": "στρατεύομαι",
+      "lang": "greek",
+      "glossEn": "soldier, (go to) war(-fare)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "strateúomai",
+          "translitKo": "스트라튜오마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "strateúomai",
+          "translitKo": "스트라테우오마이",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "",
+          "translitKo": "",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "strateúomai",
+          "translitKo": "스트라테우오마이",
+          "note": "디프통 ευ의 발음에 따라 '스트라테우오마이' 또는 '스트라테보마이'로 표기될 수 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G5012",
+      "lemma": "ταπεινοφροσύνη",
+      "lang": "greek",
+      "glossEn": "humbleness of mind, humility (of mind, loneliness (of mind)",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tapeinophrosýnē",
+          "translitKo": "타페이노프로쉬네",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tapeinophrosýnē",
+          "translitKo": "타페이노프로시네",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "tapeinophrosýnē",
+          "translitKo": "타페이노프로시네",
+          "note": "φ를 프/파/페/피/포 로 표기. υ는 위(시/시네)."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tapeinophrosýnē",
+          "translitKo": "타페이노프로쉬네",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G2961",
+      "lemma": "κυριεύω",
+      "lang": "greek",
+      "glossEn": "have dominion over, lord, be lord of, exercise lordship over",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kyrieúō",
+          "translitKo": "키리유오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kyrieúō",
+          "translitKo": "키리에우오",
+          "note": "ευ는 후속 모음에 따라 에우로 표기"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "kyrieúō",
+          "translitKo": "퀴리에우오",
+          "note": "υ를 위로 표기. ευ 뒤에 모음이 오므로 에우로 표기."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kyrieúō",
+          "translitKo": "퀴리유오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G2172",
+      "lemma": "εὔχομαι",
+      "lang": "greek",
+      "glossEn": "pray, will, wish",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "eúchomai",
+          "translitKo": "에우코마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "eúchomai",
+          "translitKo": "에프코마이",
+          "note": "ευ는 후속 자음(무성음)에 따라 에프, χ는 ㅋ 계열로 표기"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "eúchomai",
+          "translitKo": "에프코마이",
+          "note": "ευ 뒤에 무성음(χ)이 오므로 에프로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "eúchomai",
+          "translitKo": "유코마이",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G4766",
+      "lemma": "στρώννυμι",
+      "lang": "greek",
+      "glossEn": "make bed, furnish, spread, strew",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "strṓnnymi",
+          "translitKo": "스트로뉘미",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "strṓnnymi",
+          "translitKo": "스트론니미",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "strṓnnymi",
+          "translitKo": "스트론뉘미",
+          "note": "υ를 위(뉘)로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "strṓnnymi",
+          "translitKo": "스트론뉘미",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G5603",
+      "lemma": "ᾠδή",
+      "lang": "greek",
+      "glossEn": "song",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ōidḗ",
+          "translitKo": "오이데",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ōidḗ",
+          "translitKo": "오데",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ōidḗ",
+          "translitKo": "오데",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ōidḗ",
+          "translitKo": "오이데",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "G4486",
+      "lemma": "ῥήγνυμι",
+      "lang": "greek",
+      "glossEn": "break (forth), burst, rend, tear",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rhḗgnymi",
+          "translitKo": "흐레그뉘미",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rhḗgnymi",
+          "translitKo": "흐레그니미",
+          "note": "ῥ는 흐르 계열로 표기"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "rhḗgnymi",
+          "translitKo": "흐레그뉘미",
+          "note": "ῥ를 흐르(흐레)로 표기. υ를 위(뉘)로 표기."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rhḗgnymi",
+          "translitKo": "레그뉘미",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "H1622",
+      "lemma": "גִּרְגָּשִׁי",
+      "lang": "hebrew",
+      "glossEn": "Girgashite, Girgasite.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "girgāšî",
+          "translitKo": "기르가시",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "girgāšî",
+          "translitKo": "기르가쉬",
+          "note": "관용 표기(기르가스 사람)와 다름"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "girgāšî",
+          "translitKo": "기르가쉬",
+          "note": "관용 표기 기르가스와 차이. 음절 말 שׁ를 쉬로 표기."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "girgāšî",
+          "translitKo": "기르가시",
+          "note": "관용 표기: 기르가스 사람. 학술 표기는 기르가시(girgāšî)이다."
+        }
+      ]
+    },
+    {
+      "shard": "AL",
+      "strong": "H8048",
+      "lemma": "שַׁמָּה",
+      "lang": "hebrew",
+      "glossEn": "Shammah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šammâ",
+          "translitKo": "샴마",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šammâ",
+          "translitKo": "샤마",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "šammâ",
+          "translitKo": "샴마",
+          "note": "관용 표기 삼마와 차이. 다게쉬 포르테(겹자음)를 겹쳐 적지 않음."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šammâ",
+          "translitKo": "샤마",
+          "note": "관용 표기: 삼마. 학술 표기는 샤마(šammâ)이다."
+        }
+      ]
+    }
+  ]
+}

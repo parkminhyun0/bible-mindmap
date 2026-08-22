@@ -1,0 +1,906 @@
+{
+  "shard": "AL",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G1945",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐπίκειμαι",
+      "translit": "epíkeimai",
+      "glossEn": "impose, be instant, (be) laid (there-, up-)on, (when) lay (on), lie (on), press upon",
+      "defEn": "to rest upon (literally or figuratively)"
+    },
+    {
+      "strong": "G4712",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "στάδιον",
+      "translit": "stádion",
+      "glossEn": "furlong, race",
+      "defEn": "a stade or certain measure of distance; by implication, a stadium or race-course"
+    },
+    {
+      "strong": "G48",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἁγνίζω",
+      "translit": "hagnízō",
+      "glossEn": "purify (self)",
+      "defEn": "to make clean, i.e. (figuratively) sanctify (ceremonially or morally)"
+    },
+    {
+      "strong": "G1567",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐκζητέω",
+      "translit": "ekzētéō",
+      "glossEn": "en- (re-)quire, seek after (carefully, diligently)",
+      "defEn": "to search out, i.e. (figuratively)investigate, crave, demand, (by Hebraism) worship"
+    },
+    {
+      "strong": "G4622",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Σιών",
+      "translit": "Siṓn",
+      "glossEn": "Sion",
+      "defEn": "Sion (i.e. Tsijon), a hill of Jerusalem; figuratively, the Church (militant or triumphant)"
+    },
+    {
+      "strong": "G1985",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐπίσκοπος",
+      "translit": "epískopos",
+      "glossEn": "bishop, overseer",
+      "defEn": "a superintendent, i.e. Christian officer in genitive case charge of a (or the) church (literally or figuratively)"
+    },
+    {
+      "strong": "G5406",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "φονεύς",
+      "translit": "phoneús",
+      "glossEn": "murderer",
+      "defEn": "a murderer (always of criminal (or at least intentional) homicide; which G443 (ἀνθρωποκτόνος) does not necessarily imply; while G4607 (σικάριος) is a special term for a public band"
+    },
+    {
+      "strong": "G5012",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ταπεινοφροσύνη",
+      "translit": "tapeinophrosýnē",
+      "glossEn": "humbleness of mind, humility (of mind, loneliness (of mind)",
+      "defEn": "humiliation of mind, i.e. modesty"
+    },
+    {
+      "strong": "G3417",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "μνεία",
+      "translit": "mneía",
+      "glossEn": "mention, remembrance",
+      "defEn": "recollection; by implication, recital"
+    },
+    {
+      "strong": "G1589",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐκλογή",
+      "translit": "eklogḗ",
+      "glossEn": "chosen, election",
+      "defEn": "(divine) selection (abstractly or concretely)"
+    },
+    {
+      "strong": "G4392",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "πρόφασις",
+      "translit": "próphasis",
+      "glossEn": "cloke, colour, pretence, show",
+      "defEn": "an outward showing, i.e. pretext"
+    },
+    {
+      "strong": "G5348",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "φθάνω",
+      "translit": "phthánō",
+      "glossEn": "(already) attain, come, prevent",
+      "defEn": "to be beforehand, i.e. anticipate or precede; by extension, to have arrived at"
+    },
+    {
+      "strong": "G467",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀνταποδίδωμι",
+      "translit": "antapodídōmi",
+      "glossEn": "recompense, render, repay",
+      "defEn": "to requite (good or evil)"
+    },
+    {
+      "strong": "G2932",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "κτάομαι",
+      "translit": "ktáomai",
+      "glossEn": "obtain, possess, provide, purchase",
+      "defEn": "to get, i.e. acquire (by any means; own)"
+    },
+    {
+      "strong": "G4357",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "προσμένω",
+      "translit": "prosménō",
+      "glossEn": "abide still, be with, cleave unto, continue in (with)",
+      "defEn": "to stay further, i.e. remain in a place, with a person; figuratively, to adhere to, persevere in"
+    },
+    {
+      "strong": "G1743",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐνδυναμόω",
+      "translit": "endynamóō",
+      "glossEn": "enable, (increase in) strength(-en), be (make) strong",
+      "defEn": "to empower"
+    },
+    {
+      "strong": "G3847",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "παράβασις",
+      "translit": "parábasis",
+      "glossEn": "breaking, transgression",
+      "defEn": "violation"
+    },
+    {
+      "strong": "G1706",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐμπίπτω",
+      "translit": "empíptō",
+      "glossEn": "fall among (into)",
+      "defEn": "to fall on, i.e. (literally) to be entrapped by, or (figuratively) be overwhelmed with"
+    },
+    {
+      "strong": "G874",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀφορμή",
+      "translit": "aphormḗ",
+      "glossEn": "occasion",
+      "defEn": "a starting-point, i.e. (figuratively) an opportunity"
+    },
+    {
+      "strong": "G515",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀξιόω",
+      "translit": "axióō",
+      "glossEn": "desire, think good, count (think) worthy",
+      "defEn": "to deem entitled or fit"
+    },
+    {
+      "strong": "G2214",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ζήτησις",
+      "translit": "zḗtēsis",
+      "glossEn": "question",
+      "defEn": "a searching (properly, the act), i.e. a dispute or its theme"
+    },
+    {
+      "strong": "G2961",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "κυριεύω",
+      "translit": "kyrieúō",
+      "glossEn": "have dominion over, lord, be lord of, exercise lordship over",
+      "defEn": "to rule"
+    },
+    {
+      "strong": "G5465",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "χαλάω",
+      "translit": "chaláō",
+      "glossEn": "let down, strike",
+      "defEn": "to lower (as into a void)"
+    },
+    {
+      "strong": "G1382",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "δοκιμή",
+      "translit": "dokimḗ",
+      "glossEn": "experience(-riment), proof, trial",
+      "defEn": "test (abstractly or concretely); by implication, trustiness"
+    },
+    {
+      "strong": "G2172",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "εὔχομαι",
+      "translit": "eúchomai",
+      "glossEn": "pray, will, wish",
+      "defEn": "to wish; by implication, to pray to God"
+    },
+    {
+      "strong": "G2989",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "λάμπω",
+      "translit": "lámpō",
+      "glossEn": "give light, shine",
+      "defEn": "to beam, i.e. radiate brilliancy (literally or figuratively)"
+    },
+    {
+      "strong": "G4826",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Συμεών",
+      "translit": "Symeṓn",
+      "glossEn": "Simeon, Simon",
+      "defEn": "Symeon (i.e. Shimon), the name of five Israelites"
+    },
+    {
+      "strong": "G2512",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "καθαρισμός",
+      "translit": "katharismós",
+      "glossEn": "cleansing, + purge, purification(-fying)",
+      "defEn": "a washing off, i.e. (ceremonially) ablution, (morally) expiation"
+    },
+    {
+      "strong": "G5279",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ὑπομιμνήσκω",
+      "translit": "hypomimnḗskō",
+      "glossEn": "put in mind, remember, bring to (put in) remembrance",
+      "defEn": "to remind quietly, i.e. suggest to the (middle voice, one's own) memory"
+    },
+    {
+      "strong": "G539",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀπάτη",
+      "translit": "apátē",
+      "glossEn": "deceit(-ful, -fulness), deceivableness(-ving)",
+      "defEn": "delusion"
+    },
+    {
+      "strong": "G4747",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "στοιχεῖον",
+      "translit": "stoicheîon",
+      "glossEn": "element, principle, rudiment",
+      "defEn": "something orderly in arrangement, i.e. (by implication) a serial (basal, fundamental, initial) constituent (literally), proposition (figuratively)"
+    },
+    {
+      "strong": "G3335",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "μεταλαμβάνω",
+      "translit": "metalambánō",
+      "glossEn": "eat, have, be partaker, receive, take",
+      "defEn": "to participate; genitive case, to accept (and use)"
+    },
+    {
+      "strong": "G5190",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Τυχικός",
+      "translit": "Tychikós",
+      "glossEn": "Tychicus",
+      "defEn": "fortuitous, i.e. fortunate; Tychicus, a Christian"
+    },
+    {
+      "strong": "G4686",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "σπεῖρα",
+      "translit": "speîra",
+      "glossEn": "band",
+      "defEn": "a coil (spira, \"spire\"), i.e. (figuratively) a mass of men (a Roman military cohort; also (by analogy) a squad of Levitical janitors)"
+    },
+    {
+      "strong": "G1430",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "δῶμα",
+      "translit": "dōma",
+      "glossEn": "housetop",
+      "defEn": "properly, an edifice, i.e. (specially) a roof"
+    },
+    {
+      "strong": "G1611",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἔκστασις",
+      "translit": "ékstasis",
+      "glossEn": "+ be amazed, amazement, astonishment, trance",
+      "defEn": "a displacement of the mind, i.e. bewilderment, \"ecstasy\""
+    },
+    {
+      "strong": "G4367",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "προστάσσω",
+      "translit": "prostássō",
+      "glossEn": "bid, command",
+      "defEn": "to arrange towards, i.e. (figuratively) enjoin"
+    },
+    {
+      "strong": "G2910",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "κρεμάννυμι",
+      "translit": "kremánnymi",
+      "glossEn": "hang",
+      "defEn": "to hang"
+    },
+    {
+      "strong": "G4736",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Στέφανος",
+      "translit": "Stéphanos",
+      "glossEn": "Stephen",
+      "defEn": "Stephanus, a Christian"
+    },
+    {
+      "strong": "G1294",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "διαστρέφω",
+      "translit": "diastréphō",
+      "glossEn": "perverse(-rt), turn away",
+      "defEn": "to distort, i.e. (figuratively) misinterpret, or (morally) corrupt"
+    },
+    {
+      "strong": "G5137",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "τράχηλος",
+      "translit": "tráchēlos",
+      "glossEn": "neck",
+      "defEn": "the throat (neck), i.e. (figuratively) life"
+    },
+    {
+      "strong": "G588",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀποδέχομαι",
+      "translit": "apodéchomai",
+      "glossEn": "accept, receive (gladly)",
+      "defEn": "to take fully, i.e. welcome (persons), approve (things)"
+    },
+    {
+      "strong": "G1925",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐπιδείκνυμι",
+      "translit": "epideíknymi",
+      "glossEn": "shew",
+      "defEn": "to exhibit (physically or mentally)"
+    },
+    {
+      "strong": "G1458",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐγκαλέω",
+      "translit": "enkaléō",
+      "glossEn": "accuse, call in question, implead, lay to the charge",
+      "defEn": "to call in (as a debt or demand), i.e. bring to account (charge, criminate, etc.)"
+    },
+    {
+      "strong": "G5286",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ὑποπόδιον",
+      "translit": "hypopódion",
+      "glossEn": "footstool",
+      "defEn": "something under the feet, i.e. a foot-rest (figuratively)"
+    },
+    {
+      "strong": "G2351",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "θόρυβος",
+      "translit": "thórybos",
+      "glossEn": "tumult, uproar",
+      "defEn": "a disturbance"
+    },
+    {
+      "strong": "G2516",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "καθέζομαι",
+      "translit": "kathézomai",
+      "glossEn": "sit",
+      "defEn": "to sit down"
+    },
+    {
+      "strong": "G4377",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "προσφωνέω",
+      "translit": "prosphōnéō",
+      "glossEn": "call unto, speak (un-)to",
+      "defEn": "to sound towards, i.e. address, exclaim, summon"
+    },
+    {
+      "strong": "G5536",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "χρῆμα",
+      "translit": "chrēma",
+      "glossEn": "money, riches",
+      "defEn": "something useful or needed, i.e. wealth, price"
+    },
+    {
+      "strong": "G3558",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "νότος",
+      "translit": "nótos",
+      "glossEn": "south (wind)",
+      "defEn": "the south(-west) wind; by extension, the southern quarter itself"
+    },
+    {
+      "strong": "G4154",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "πνέω",
+      "translit": "pnéō",
+      "glossEn": "blow",
+      "defEn": "to breathe hard, i.e. breeze"
+    },
+    {
+      "strong": "G1303",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "διατίθεμαι",
+      "translit": "diatíthemai",
+      "glossEn": "appoint, make, testator",
+      "defEn": "to put apart, i.e. (figuratively) dispose (by assignment, compact, or bequest)"
+    },
+    {
+      "strong": "G4639",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "σκιά",
+      "translit": "skiá",
+      "glossEn": "shadow",
+      "defEn": "\"shade\" or a shadow (literally or figuratively (darkness of error or an adumbration))"
+    },
+    {
+      "strong": "G818",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀτιμάζω",
+      "translit": "atimázō",
+      "glossEn": "despise, dishonour, suffer shame, entreat shamefully",
+      "defEn": "to render infamous, i.e. (by implication) contemn or maltreat"
+    },
+    {
+      "strong": "G4766",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "στρώννυμι",
+      "translit": "strṓnnymi",
+      "glossEn": "make bed, furnish, spread, strew",
+      "defEn": "to \"strew,\" i.e. spread (as a carpet or couch)"
+    },
+    {
+      "strong": "G543",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀπείθεια",
+      "translit": "apeítheia",
+      "glossEn": "disobedience, unbelief",
+      "defEn": "disbelief (obstinate and rebellious)"
+    },
+    {
+      "strong": "G5603",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ᾠδή",
+      "translit": "ōidḗ",
+      "glossEn": "song",
+      "defEn": "a chant or \"ode\" (the general term for any words sung; while G5215 (ὕμνος) denotes especially a religious metrical composition, and G5568 (ψαλμός) still more specially, a Hebrew ca"
+    },
+    {
+      "strong": "G2395",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἰατρός",
+      "translit": "iatrós",
+      "glossEn": "physician",
+      "defEn": "a physician"
+    },
+    {
+      "strong": "G4486",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ῥήγνυμι",
+      "translit": "rhḗgnymi",
+      "glossEn": "break (forth), burst, rend, tear",
+      "defEn": "G2608 (κατάγνυμι) being its intensive (with the preposition in composition), and G2352 (θραύω) a shattering to minute fragments; but not a reduction to the constituent particles, l"
+    },
+    {
+      "strong": "G1659",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐλευθερόω",
+      "translit": "eleutheróō",
+      "glossEn": "deliver, make free",
+      "defEn": "to liberate, i.e. (figuratively) to exempt (from moral, ceremonial or mortal liability)"
+    },
+    {
+      "strong": "G3781",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ὀφειλέτης",
+      "translit": "opheilétēs",
+      "glossEn": "debtor, which owed, sinner",
+      "defEn": "an ower, i.e. person indebted; figuratively, a delinquent; morally, a transgressor (against God)"
+    },
+    {
+      "strong": "G2410",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Ἱεριχώ",
+      "translit": "Hierichṓ",
+      "glossEn": "Jericho",
+      "defEn": "Jericho, a place in Palestine"
+    },
+    {
+      "strong": "G2827",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "κλίνω",
+      "translit": "klínō",
+      "glossEn": "bow (down), be far spent, lay, turn to flight, wear away",
+      "defEn": "to slant or slope, i.e. incline or recline (literally or figuratively)"
+    },
+    {
+      "strong": "G3146",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "μαστιγόω",
+      "translit": "mastigóō",
+      "glossEn": "scourge",
+      "defEn": "to flog (literally or figuratively)"
+    },
+    {
+      "strong": "G4170",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "πολεμέω",
+      "translit": "poleméō",
+      "glossEn": "fight, (make) war",
+      "defEn": "to be (engaged) in warfare, i.e. to battle (literally or figuratively)"
+    },
+    {
+      "strong": "G1026",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "βρέχω",
+      "translit": "bréchō",
+      "glossEn": "(send) rain, wash",
+      "defEn": "to moisten (especially by a shower)"
+    },
+    {
+      "strong": "G966",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Βηθσαϊδά",
+      "translit": "Bēthsaïdá",
+      "glossEn": "Bethsaida",
+      "defEn": "fishing-house; Bethsaida, a place in Palestine"
+    },
+    {
+      "strong": "G5421",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "φρέαρ",
+      "translit": "phréar",
+      "glossEn": "well, pit",
+      "defEn": "a hole in the ground (dug for obtaining or holding water or other purposes), i.e. a cistern or well; figuratively, an abyss (as a prison)"
+    },
+    {
+      "strong": "G954",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "Βεελζεβούλ",
+      "translit": "Beelzeboúl",
+      "glossEn": "Beelzebub",
+      "defEn": "dung-god; Beelzebul, a name of Satan"
+    },
+    {
+      "strong": "G23",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἀγανακτέω",
+      "translit": "aganaktéō",
+      "glossEn": "be much (sore) displeased, have (be moved with, with) indignation",
+      "defEn": "akin to the base of G43 (ἀγκάλη)); to be greatly afflicted, i.e. (figuratively) indignant"
+    },
+    {
+      "strong": "G1030",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "βρυγμός",
+      "translit": "brygmós",
+      "glossEn": "gnashing",
+      "defEn": "a grating (of the teeth)"
+    },
+    {
+      "strong": "G4873",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "συνανάκειμαι",
+      "translit": "synanákeimai",
+      "glossEn": "sit (down, at the table, together) with (at meat)",
+      "defEn": "to recline in company with (at a meal)"
+    },
+    {
+      "strong": "G1988",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ἐπιστάτης",
+      "translit": "epistátēs",
+      "glossEn": "master",
+      "defEn": "an appointee over, i.e. commander (teacher)"
+    },
+    {
+      "strong": "G2303",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "θεῖον",
+      "translit": "theîon",
+      "glossEn": "brimstone",
+      "defEn": "sulphur"
+    },
+    {
+      "strong": "G4501",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "ῥομφαία",
+      "translit": "rhomphaía",
+      "glossEn": "sword",
+      "defEn": "a sabre, i.e. a long and broad cutlass (any weapon of the kind, literally or figuratively)"
+    },
+    {
+      "strong": "G4017",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "περιβλέπω",
+      "translit": "periblépō",
+      "glossEn": "look (round) about (on)",
+      "defEn": "to look all around"
+    },
+    {
+      "strong": "G4430",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "πτῶμα",
+      "translit": "ptōma",
+      "glossEn": "dead body, carcase, corpse",
+      "defEn": "a ruin, i.e. (specially), lifeless body (corpse, carrion)"
+    },
+    {
+      "strong": "G5028",
+      "lang": "greek",
+      "count": 7,
+      "lemma": "τάφος",
+      "translit": "táphos",
+      "glossEn": "sepulchre, tomb",
+      "defEn": "a grave (the place of interment)"
+    },
+    {
+      "strong": "H583",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "אֱנוֹשׁ",
+      "translit": "",
+      "glossEn": "Enos.",
+      "defEn": "Enosh, a son of Seth"
+    },
+    {
+      "strong": "H4111",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "מַהֲלַלְאֵל",
+      "translit": "",
+      "glossEn": "Mahalaleel.",
+      "defEn": "Mahalalel, the name of an antediluvian patriarch and of an Israelite"
+    },
+    {
+      "strong": "H3382",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "יֶרֶד",
+      "translit": "",
+      "glossEn": "Jared.",
+      "defEn": "Jered, the name of an antediluvian, and of an Israelite"
+    },
+    {
+      "strong": "H6316",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "פּוּט",
+      "translit": "",
+      "glossEn": "Phut, Put.",
+      "defEn": "Put, a son of Ham, also the name of his descendants or their region, and of a Persian tribe"
+    },
+    {
+      "strong": "H2341",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "חֲוִילָה",
+      "translit": "",
+      "glossEn": "Havilah.",
+      "defEn": "Chavilah, the name of two or three eastern regions; also perhaps of two men"
+    },
+    {
+      "strong": "H1622",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "גִּרְגָּשִׁי",
+      "translit": "",
+      "glossEn": "Girgashite, Girgasite.",
+      "defEn": "a Girgashite, one of the native tribes of Canaan"
+    },
+    {
+      "strong": "H6389",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "פֶּלֶג",
+      "translit": "",
+      "glossEn": "Peleg.",
+      "defEn": "Peleg, a son of Shem"
+    },
+    {
+      "strong": "H8048",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "שַׁמָּה",
+      "translit": "",
+      "glossEn": "Shammah.",
+      "defEn": "Shammah, the name of an Edomite and four Israelites"
+    },
+    {
+      "strong": "H3877",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "לוֹטָן",
+      "translit": "",
+      "glossEn": "Lotan.",
+      "defEn": "Lotan, an Idumaean"
+    },
+    {
+      "strong": "H1787",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "דִּישׁוֹן",
+      "translit": "",
+      "glossEn": "Dishon.",
+      "defEn": "Dishon, the name of two Edomites"
+    },
+    {
+      "strong": "H5907",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "עַכְבּוֹר",
+      "translit": "",
+      "glossEn": "Achbor.",
+      "defEn": "Akbor, the name of an Idumaean and of two Israelites"
+    },
+    {
+      "strong": "H8621",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "תְּקוֹעִי",
+      "translit": "",
+      "glossEn": "Tekoite.",
+      "defEn": "a Tekoite or inhabitant of Tekoah"
+    },
+    {
+      "strong": "H44",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "אֲבִיעֶזֶר",
+      "translit": "",
+      "glossEn": "Abiezer.",
+      "defEn": "Abiezer, the name of two Israelites"
+    },
+    {
+      "strong": "H3761",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "כַּרְמְלִי",
+      "translit": "",
+      "glossEn": "Carmelite.",
+      "defEn": "a Karmelite or inhabitant of Karmel (the town)"
+    },
+    {
+      "strong": "H3449",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "יִשִּׁיָּה",
+      "translit": "",
+      "glossEn": "Ishiah, Isshiah, Ishijah, Jesiah.",
+      "defEn": "Jishshijah, the name of five Israelites"
+    },
+    {
+      "strong": "H1446",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "גְדֹר",
+      "translit": "",
+      "glossEn": "Gedor.",
+      "defEn": "Gedor, a place in Palestine; also the name of three Israelites"
+    },
+    {
+      "strong": "H7645",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "שְׁבַנְיָה",
+      "translit": "",
+      "glossEn": "Shebaniah.",
+      "defEn": "Shebanjah, the name of three or four Israelites"
+    },
+    {
+      "strong": "H6131",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "עָקַר",
+      "translit": "",
+      "glossEn": "dig down, hough, pluck up, root up.",
+      "defEn": "to pluck up (especially by the roots); specifically, to hamstring; figuratively, to exterminate"
+    },
+    {
+      "strong": "H7982",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "שֶׁלֶט",
+      "translit": "",
+      "glossEn": "shield.",
+      "defEn": "probably a shield (as controlling, i.e. protecting the person)"
+    },
+    {
+      "strong": "H6432",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "פְּלֵתִי",
+      "translit": "",
+      "glossEn": "Pelethites.",
+      "defEn": "a courier (collectively) or official messenger"
+    },
+    {
+      "strong": "H7410",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "רָם",
+      "translit": "",
+      "glossEn": "Ram. See also H1027 (בֵּית הָרָם).",
+      "defEn": "Ram, the name of an Arabian and of an Israelite"
+    },
+    {
+      "strong": "H8620",
+      "lang": "hebrew",
+      "count": 7,
+      "lemma": "תְּקוֹעַ",
+      "translit": "",
+      "glossEn": "Tekoa, Tekoah.",
+      "defEn": "Tekoa, a place in Palestine"
+    }
+  ]
+}

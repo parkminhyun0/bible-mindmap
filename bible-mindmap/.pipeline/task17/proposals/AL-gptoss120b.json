@@ -1,0 +1,707 @@
+{
+  "shard": "AL",
+  "model": "gptoss120b",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G1945",
+      "lemma": "ἐπίκειμαι",
+      "translit": "epíkeimai",
+      "translitKo": "에피케이마이",
+      "note": ""
+    },
+    {
+      "strong": "G4712",
+      "lemma": "στάδιον",
+      "translit": "stádion",
+      "translitKo": "스타디온",
+      "note": ""
+    },
+    {
+      "strong": "G48",
+      "lemma": "ἁγνίζω",
+      "translit": "hagnízō",
+      "translitKo": "하그니조",
+      "note": ""
+    },
+    {
+      "strong": "G1567",
+      "lemma": "ἐκζητέω",
+      "translit": "ekzētéō",
+      "translitKo": "엑제테오",
+      "note": ""
+    },
+    {
+      "strong": "G4622",
+      "lemma": "Σιών",
+      "translit": "Siṓn",
+      "translitKo": "시온",
+      "note": ""
+    },
+    {
+      "strong": "G1985",
+      "lemma": "ἐπίσκοπος",
+      "translit": "epískopos",
+      "translitKo": "에피스코포스",
+      "note": ""
+    },
+    {
+      "strong": "G5406",
+      "lemma": "φονεύς",
+      "translit": "phoneús",
+      "translitKo": "포뉴스",
+      "note": "ευ는 후속 자음이 없으므로 유(에우/유) 계열 표기. 포뉴스로 적음."
+    },
+    {
+      "strong": "G5012",
+      "lemma": "ταπεινοφροσύνη",
+      "translit": "tapeinophrosýnē",
+      "translitKo": "타페이노프로시네",
+      "note": "φ를 프/파/페/피/포 로 표기. υ는 위(시/시네)."
+    },
+    {
+      "strong": "G3417",
+      "lemma": "μνεία",
+      "translit": "mneía",
+      "translitKo": "므네이아",
+      "note": ""
+    },
+    {
+      "strong": "G1589",
+      "lemma": "ἐκλογή",
+      "translit": "eklogḗ",
+      "translitKo": "에클로게",
+      "note": ""
+    },
+    {
+      "strong": "G4392",
+      "lemma": "πρόφασις",
+      "translit": "próphasis",
+      "translitKo": "프로파시스",
+      "note": "φ를 프로파시스로 표기"
+    },
+    {
+      "strong": "G5348",
+      "lemma": "φθάνω",
+      "translit": "phthánō",
+      "translitKo": "프타노",
+      "note": "φθ를 프타로 표기"
+    },
+    {
+      "strong": "G467",
+      "lemma": "ἀνταποδίδωμι",
+      "translit": "antapodídōmi",
+      "translitKo": "안타포디도미",
+      "note": ""
+    },
+    {
+      "strong": "G2932",
+      "lemma": "κτάομαι",
+      "translit": "ktáomai",
+      "translitKo": "크타오마이",
+      "note": ""
+    },
+    {
+      "strong": "G4357",
+      "lemma": "προσμένω",
+      "translit": "prosménō",
+      "translitKo": "프로스메노",
+      "note": ""
+    },
+    {
+      "strong": "G1743",
+      "lemma": "ἐνδυναμόω",
+      "translit": "endynamóō",
+      "translitKo": "엔디나모오",
+      "note": "υ를 관용 표기에 따라 '디'로 적음"
+    },
+    {
+      "strong": "G3847",
+      "lemma": "παράβασις",
+      "translit": "parábasis",
+      "translitKo": "파라바시스",
+      "note": ""
+    },
+    {
+      "strong": "G1706",
+      "lemma": "ἐμπίπτω",
+      "translit": "empíptō",
+      "translitKo": "엠핍토",
+      "note": "μπ를 엠핍토로 표기"
+    },
+    {
+      "strong": "G874",
+      "lemma": "ἀφορμή",
+      "translit": "aphormḗ",
+      "translitKo": "아포르메",
+      "note": ""
+    },
+    {
+      "strong": "G515",
+      "lemma": "ἀξιόω",
+      "translit": "axióō",
+      "translitKo": "악시오오",
+      "note": "x를 크스로 표기 (악시오오)"
+    },
+    {
+      "strong": "G2214",
+      "lemma": "ζήτησις",
+      "translit": "zḗtēsis",
+      "translitKo": "제테시스",
+      "note": ""
+    },
+    {
+      "strong": "G2961",
+      "lemma": "κυριεύω",
+      "translit": "kyrieúō",
+      "translitKo": "퀴리에우오",
+      "note": "υ를 위로 표기. ευ 뒤에 모음이 오므로 에우로 표기."
+    },
+    {
+      "strong": "G5465",
+      "lemma": "χαλάω",
+      "translit": "chaláō",
+      "translitKo": "칼라오",
+      "note": "χ를 크(칼)로 표기"
+    },
+    {
+      "strong": "G1382",
+      "lemma": "δοκιμή",
+      "translit": "dokimḗ",
+      "translitKo": "도키메",
+      "note": ""
+    },
+    {
+      "strong": "G2172",
+      "lemma": "εὔχομαι",
+      "translit": "eúchomai",
+      "translitKo": "에프코마이",
+      "note": "ευ 뒤에 무성음(χ)이 오므로 에프로 표기"
+    },
+    {
+      "strong": "G2989",
+      "lemma": "λάμπω",
+      "translit": "lámpō",
+      "translitKo": "람포",
+      "note": ""
+    },
+    {
+      "strong": "G4826",
+      "lemma": "Συμεών",
+      "translit": "Symeṓn",
+      "translitKo": "쉬메온",
+      "note": "관용 표기 시므온과 차이. υ는 위(쉬)로 표기."
+    },
+    {
+      "strong": "G2512",
+      "lemma": "καθαρισμός",
+      "translit": "katharismós",
+      "translitKo": "카타리스모스",
+      "note": "θ를 타로 표기"
+    },
+    {
+      "strong": "G5279",
+      "lemma": "ὑπομιμνήσκω",
+      "translit": "hypomimnḗskō",
+      "translitKo": "휘포밈네스코",
+      "note": "υ를 위(휘)로 표기"
+    },
+    {
+      "strong": "G539",
+      "lemma": "ἀπάτη",
+      "translit": "apátē",
+      "translitKo": "아파테",
+      "note": ""
+    },
+    {
+      "strong": "G4747",
+      "lemma": "στοιχεῖον",
+      "translit": "stoicheîon",
+      "translitKo": "스토이케이온",
+      "note": "χ를 케로 표기"
+    },
+    {
+      "strong": "G3335",
+      "lemma": "μεταλαμβάνω",
+      "translit": "metalambánō",
+      "translitKo": "메탈람바노",
+      "note": ""
+    },
+    {
+      "strong": "G5190",
+      "lemma": "Τυχικός",
+      "translit": "Tychikós",
+      "translitKo": "튀키코스",
+      "note": "관용 표기 두기고와 차이. υ는 위(튀)로 표기."
+    },
+    {
+      "strong": "G4686",
+      "lemma": "σπεῖρα",
+      "translit": "speîra",
+      "translitKo": "스페이라",
+      "note": ""
+    },
+    {
+      "strong": "G1430",
+      "lemma": "δῶμα",
+      "translit": "dōma",
+      "translitKo": "도마",
+      "note": ""
+    },
+    {
+      "strong": "G1611",
+      "lemma": "ἔκστασις",
+      "translit": "ékstasis",
+      "translitKo": "엑스타시스",
+      "note": ""
+    },
+    {
+      "strong": "G4367",
+      "lemma": "προστάσσω",
+      "translit": "prostássō",
+      "translitKo": "프로스타소",
+      "note": "σσ는 관용에 따라 ㅅ(소)로 표기"
+    },
+    {
+      "strong": "G2910",
+      "lemma": "κρεμάννυμι",
+      "translit": "kremánnymi",
+      "translitKo": "크레만뉘미",
+      "note": "υ를 위(뉘)로 표기"
+    },
+    {
+      "strong": "G4736",
+      "lemma": "Στέφανος",
+      "translit": "Stéphanos",
+      "translitKo": "스테파노스",
+      "note": "관용 표기 스데반과 차이. φ를 파로 표기."
+    },
+    {
+      "strong": "G1294",
+      "lemma": "διαστρέφω",
+      "translit": "diastréphō",
+      "translitKo": "디아스트레포",
+      "note": "φ를 포로 표기"
+    },
+    {
+      "strong": "G5137",
+      "lemma": "τράχηλος",
+      "translit": "tráchēlos",
+      "translitKo": "트라켈로스",
+      "note": "χ를 케로 표기"
+    },
+    {
+      "strong": "G588",
+      "lemma": "ἀποδέχομαι",
+      "translit": "apodéchomai",
+      "translitKo": "아포데코마이",
+      "note": "χ를 코로 표기"
+    },
+    {
+      "strong": "G1925",
+      "lemma": "ἐπιδείκνυμι",
+      "translit": "epideíknymi",
+      "translitKo": "에피데이크뉘미",
+      "note": "υ를 위(뉘)로 표기"
+    },
+    {
+      "strong": "G1458",
+      "lemma": "ἐγκαλέω",
+      "translit": "enkaléō",
+      "translitKo": "엥칼레오",
+      "note": "γκ를 엥칼로 표기"
+    },
+    {
+      "strong": "G5286",
+      "lemma": "ὑποπόδιον",
+      "translit": "hypopódion",
+      "translitKo": "휘포포디온",
+      "note": "υ를 위(휘)로 표기"
+    },
+    {
+      "strong": "G2351",
+      "lemma": "θόρυβος",
+      "translit": "thórybos",
+      "translitKo": "토뤼보스",
+      "note": "θ를 토로 표기. υ를 위(뤼)로 표기."
+    },
+    {
+      "strong": "G2516",
+      "lemma": "καθέζομαι",
+      "translit": "kathézomai",
+      "translitKo": "카테조마이",
+      "note": "θ를 테로 표기"
+    },
+    {
+      "strong": "G4377",
+      "lemma": "προσφωνέω",
+      "translit": "prosphōnéō",
+      "translitKo": "프로스포네오",
+      "note": "φ를 포로 표기"
+    },
+    {
+      "strong": "G5536",
+      "lemma": "χρῆμα",
+      "translit": "chrēma",
+      "translitKo": "크레마",
+      "note": "χ를 크(크레)로 표기"
+    },
+    {
+      "strong": "G3558",
+      "lemma": "νότος",
+      "translit": "nótos",
+      "translitKo": "노토스",
+      "note": ""
+    },
+    {
+      "strong": "G4154",
+      "lemma": "πνέω",
+      "translit": "pnéō",
+      "translitKo": "프네오",
+      "note": ""
+    },
+    {
+      "strong": "G1303",
+      "lemma": "διατίθεμαι",
+      "translit": "diatíthemai",
+      "translitKo": "디아티테마이",
+      "note": "θ를 테로 표기"
+    },
+    {
+      "strong": "G4639",
+      "lemma": "σκιά",
+      "translit": "skiá",
+      "translitKo": "스키아",
+      "note": ""
+    },
+    {
+      "strong": "G818",
+      "lemma": "ἀτιμάζω",
+      "translit": "atimázō",
+      "translitKo": "아티마조",
+      "note": ""
+    },
+    {
+      "strong": "G4766",
+      "lemma": "στρώννυμι",
+      "translit": "strṓnnymi",
+      "translitKo": "스트론뉘미",
+      "note": "υ를 위(뉘)로 표기"
+    },
+    {
+      "strong": "G543",
+      "lemma": "ἀπείθεια",
+      "translit": "apeítheia",
+      "translitKo": "아페이테이아",
+      "note": "θ를 테로 표기"
+    },
+    {
+      "strong": "G5603",
+      "lemma": "ᾠδή",
+      "translit": "ōidḗ",
+      "translitKo": "오데",
+      "note": ""
+    },
+    {
+      "strong": "G2395",
+      "lemma": "ἰατρός",
+      "translit": "iatrós",
+      "translitKo": "이아트로스",
+      "note": ""
+    },
+    {
+      "strong": "G4486",
+      "lemma": "ῥήγνυμι",
+      "translit": "rhḗgnymi",
+      "translitKo": "흐레그뉘미",
+      "note": "ῥ를 흐르(흐레)로 표기. υ를 위(뉘)로 표기."
+    },
+    {
+      "strong": "G1659",
+      "lemma": "ἐλευθερόω",
+      "translit": "eleutheróō",
+      "translitKo": "엘류테로오",
+      "note": "ευ 뒤에 무성음 θ가 오나 관용에 따라 엘류테로오로 표기"
+    },
+    {
+      "strong": "G3781",
+      "lemma": "ὀφειλέτης",
+      "translit": "opheilétēs",
+      "translitKo": "오페일레테스",
+      "note": "φ를 페로 표기"
+    },
+    {
+      "strong": "G2410",
+      "lemma": "Ἱεριχώ",
+      "translit": "Hierichṓ",
+      "translitKo": "히에리코",
+      "note": "관용 표기 여리고와 차이. χ를 코로 표기."
+    },
+    {
+      "strong": "G2827",
+      "lemma": "κλίνω",
+      "translit": "klínō",
+      "translitKo": "클리노",
+      "note": ""
+    },
+    {
+      "strong": "G3146",
+      "lemma": "μαστιγόω",
+      "translit": "mastigóō",
+      "translitKo": "마스티고오",
+      "note": ""
+    },
+    {
+      "strong": "G4170",
+      "lemma": "πολεμέω",
+      "translit": "poleméō",
+      "translitKo": "폴레메오",
+      "note": ""
+    },
+    {
+      "strong": "G1026",
+      "lemma": "βρέχω",
+      "translit": "bréchō",
+      "translitKo": "브레코",
+      "note": "χ를 코로 표기"
+    },
+    {
+      "strong": "G966",
+      "lemma": "Βηθσαϊδά",
+      "translit": "Bēthsaïdá",
+      "translitKo": "베트사이다",
+      "note": "관용 표기 벳새다와 차이. θ를 트로 표기."
+    },
+    {
+      "strong": "G5421",
+      "lemma": "φρέαρ",
+      "translit": "phréar",
+      "translitKo": "프레아르",
+      "note": "φ를 프(프레)로 표기"
+    },
+    {
+      "strong": "G954",
+      "lemma": "Βεελζεβούλ",
+      "translit": "Beelzeboúl",
+      "translitKo": "베엘제불",
+      "note": "관용 표기 바알세불과 차이"
+    },
+    {
+      "strong": "G23",
+      "lemma": "ἀγανακτέω",
+      "translit": "aganaktéō",
+      "translitKo": "아가낙테오",
+      "note": ""
+    },
+    {
+      "strong": "G1030",
+      "lemma": "βρυγμός",
+      "translit": "brygmós",
+      "translitKo": "브뤼그모스",
+      "note": "υ를 위(뤼)로 표기"
+    },
+    {
+      "strong": "G4873",
+      "lemma": "συνανάκειμαι",
+      "translit": "synanákeimai",
+      "translitKo": "쉬나나케이마이",
+      "note": "υ를 위(쉬)로 표기"
+    },
+    {
+      "strong": "G1988",
+      "lemma": "ἐπιστάτης",
+      "translit": "epistátēs",
+      "translitKo": "에피스타테스",
+      "note": ""
+    },
+    {
+      "strong": "G2303",
+      "lemma": "θεῖον",
+      "translit": "theîon",
+      "translitKo": "테이온",
+      "note": "θ를 테로 표기"
+    },
+    {
+      "strong": "G4501",
+      "lemma": "ῥομφαία",
+      "translit": "rhomphaía",
+      "translitKo": "흐롬파이아",
+      "note": "ῥ를 흐르(흐롬)로 표기. φ를 파로 표기."
+    },
+    {
+      "strong": "G4017",
+      "lemma": "περιβλέπω",
+      "translit": "periblépō",
+      "translitKo": "페리블레포",
+      "note": ""
+    },
+    {
+      "strong": "G4430",
+      "lemma": "πτῶμα",
+      "translit": "ptōma",
+      "translitKo": "프토마",
+      "note": ""
+    },
+    {
+      "strong": "G5028",
+      "lemma": "τάφος",
+      "translit": "táphos",
+      "translitKo": "타포스",
+      "note": "φ를 포로 표기"
+    },
+    {
+      "strong": "H583",
+      "lemma": "אֱנוֹשׁ",
+      "translit": "ʾĕnôš",
+      "translitKo": "에노쉬",
+      "note": "음절 말 שׁ를 쉬로 표기"
+    },
+    {
+      "strong": "H4111",
+      "lemma": "מַהֲלַלְאֵל",
+      "translit": "mahălalʾēl",
+      "translitKo": "마할랄엘",
+      "note": "관용 표기 마할랄렐과 차이. 후음 ה 처리."
+    },
+    {
+      "strong": "H3382",
+      "lemma": "יֶרֶד",
+      "translit": "yered",
+      "translitKo": "예레드",
+      "note": "관용 표기 야렛과 차이"
+    },
+    {
+      "strong": "H6316",
+      "lemma": "פּוּט",
+      "translit": "pûṭ",
+      "translitKo": "푸트",
+      "note": ""
+    },
+    {
+      "strong": "H2341",
+      "lemma": "חֲוִילָה",
+      "translit": "ḥăwîlâ",
+      "translitKo": "하윌라",
+      "note": "자음 ו를 w(위)로 표기. 후음 ח 처리."
+    },
+    {
+      "strong": "H1622",
+      "lemma": "גִּרְגָּשִׁי",
+      "translit": "girgāšî",
+      "translitKo": "기르가쉬",
+      "note": "관용 표기 기르가스와 차이. 음절 말 שׁ를 쉬로 표기."
+    },
+    {
+      "strong": "H6389",
+      "lemma": "פֶּלֶג",
+      "translit": "peleg",
+      "translitKo": "펠레그",
+      "note": "관용 표기 벨렉과 차이. 연음 없는 g(그) 표기."
+    },
+    {
+      "strong": "H8048",
+      "lemma": "שַׁמָּה",
+      "translit": "šammâ",
+      "translitKo": "샴마",
+      "note": "관용 표기 삼마와 차이. 다게쉬 포르테(겹자음)를 겹쳐 적지 않음."
+    },
+    {
+      "strong": "H3877",
+      "lemma": "לוֹטָן",
+      "translit": "lôṭān",
+      "translitKo": "로탄",
+      "note": ""
+    },
+    {
+      "strong": "H1787",
+      "lemma": "דִּישׁוֹן",
+      "translit": "dîšôn",
+      "translitKo": "디숀",
+      "note": ""
+    },
+    {
+      "strong": "H5907",
+      "lemma": "עַכְבּוֹר",
+      "translit": "ʿakbôr",
+      "translitKo": "아크보르",
+      "note": "관용 표기 악볼과 차이. 연음 없는 b(보) 표기."
+    },
+    {
+      "strong": "H8621",
+      "lemma": "תְּקוֹעִי",
+      "translit": "tĕqôʿî",
+      "translitKo": "테코이",
+      "note": "관용 표기 드고아인과 차이. ע(ʿ)를 따로 적지 않음."
+    },
+    {
+      "strong": "H44",
+      "lemma": "אֲבִיעֶזֶר",
+      "translit": "ʾăbîʿezer",
+      "translitKo": "아비에제르",
+      "note": "관용 표기 아비에셀과 차이. ע(ʿ)를 따로 적지 않음."
+    },
+    {
+      "strong": "H3761",
+      "lemma": "כַּרְמְלִי",
+      "translit": "karmĕlî",
+      "translitKo": "카르멜리",
+      "note": "관용 표기 갈멜인과 차이"
+    },
+    {
+      "strong": "H3449",
+      "lemma": "יִשִּׁיָּה",
+      "translit": "yiššîyâ",
+      "translitKo": "이쉬야",
+      "note": "관용 표기 잇시야와 차이. 다게쉬 포르테를 겹쳐 적지 않음."
+    },
+    {
+      "strong": "H1446",
+      "lemma": "גְדֹר",
+      "translit": "gĕdōr",
+      "translitKo": "게도르",
+      "note": "관용 표기 그돌과 차이"
+    },
+    {
+      "strong": "H7645",
+      "lemma": "שְׁבַנְיָה",
+      "translit": "šĕbanyâ",
+      "translitKo": "셰반야",
+      "note": "관용 표기 스바냐와 차이. שׁ + 모음을 셰로 표기."
+    },
+    {
+      "strong": "H6131",
+      "lemma": "עָקַר",
+      "translit": "ʿāqar",
+      "translitKo": "아카르",
+      "note": "ע(ʿ)를 따로 적지 않음"
+    },
+    {
+      "strong": "H7982",
+      "lemma": "שֶׁלֶט",
+      "translit": "šeleṭ",
+      "translitKo": "셸레트",
+      "note": "שׁ + 모음을 셸로 표기"
+    },
+    {
+      "strong": "H6432",
+      "lemma": "פְּלֵתִי",
+      "translit": "pĕlētî",
+      "translitKo": "펠레티",
+      "note": "관용 표기 블렛과 차이"
+    },
+    {
+      "strong": "H7410",
+      "lemma": "רָם",
+      "translit": "rām",
+      "translitKo": "람",
+      "note": ""
+    },
+    {
+      "strong": "H8620",
+      "lemma": "תְּקוֹעַ",
+      "translit": "tĕqôaʿ",
+      "translitKo": "테코아",
+      "note": "관용 표기 드고아와 차이. furtive patach(어말 후음 앞 a) 반영."
+    }
+  ]
+}

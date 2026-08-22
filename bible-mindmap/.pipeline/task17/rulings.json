@@ -1,0 +1,545 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "gptoss120b"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    },
+    {
+      "model": "gptoss120b",
+      "rules": {}
+    }
+  ],
+  "tieCount": 8,
+  "ties": [
+    {
+      "strong": "H3682",
+      "koRank": [
+        [
+          "케수트",
+          2
+        ],
+        [
+          "크수트",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "kesût",
+          2
+        ],
+        [
+          "kĕsût",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H1047",
+      "koRank": [
+        [
+          "베트 페오르",
+          2
+        ],
+        [
+          "베트 프오르",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Bêt-Peʿôr",
+          2
+        ],
+        [
+          "bêt pĕʿôr",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H8571",
+      "koRank": [
+        [
+          "테누크",
+          2
+        ],
+        [
+          "트누크",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "tĕnûḵ",
+          2
+        ],
+        [
+          "tĕnûk",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H3529",
+      "koRank": [
+        [
+          "케바르",
+          2
+        ],
+        [
+          "크바르",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Kĕḇār",
+          2
+        ],
+        [
+          "kĕbār",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H1020",
+      "koRank": [
+        [
+          "베트 하이시모트",
+          2
+        ],
+        [
+          "베트 하예시모트",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Bêt ha-Yĕšîmôt",
+          2
+        ],
+        [
+          "bêt hayšîmôt",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H5166",
+      "koRank": [
+        [
+          "네헴야",
+          2
+        ],
+        [
+          "느헤먀",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Nĕḥemyâ",
+          2
+        ],
+        [
+          "nĕḥemyâ",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H7348",
+      "koRank": [
+        [
+          "레훔",
+          2
+        ],
+        [
+          "르훔",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Rĕḥûm",
+          2
+        ],
+        [
+          "rĕḥûm",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H516",
+      "koRank": [
+        [
+          "알 타쉬헤트",
+          2
+        ],
+        [
+          "알 타셰트",
+          1
+        ],
+        [
+          "",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ʾal-tašḥēt",
+          2
+        ],
+        [
+          "ʾal tašḥēt",
+          2
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H4187",
+      "lemma": "מוּשִׁי",
+      "translit": "mûšî",
+      "translitKo": "무시",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 '무시'다. שׁ 뒤에 모음 î가 오는 음절 첫소리이므로 '시'로 적는다(선례: H7896 šît→시트, H7970 šĕlôšîm→셸로심)."
+    },
+    {
+      "strong": "H1667",
+      "lemma": "גַּת־רִמּוֹן",
+      "translit": "gat-rimmôn",
+      "translitKo": "가트림몬",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 '가드림몬'이다. 학술 음역 gat(가트)와 rimmôn(림몬)의 결합형으로 '가트림몬'으로 적는다(선례: H1661 gat→가트, H1339 bat-šebaʿ→바트셰바)."
+    },
+    {
+      "strong": "H359",
+      "lemma": "אֵילוֹת",
+      "translit": "ʾêlôt",
+      "translitKo": "엘로트",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 '엘롯'(또는 '엘랏')이다. 학술 음역 ʾêlôt에 따라 '엘로트'로 적는다(선례: H361 ʾêlām→엘람, H226 ʾôt→오트, H5022 nābôt→나보트)."
+    },
+    {
+      "strong": "H1096",
+      "lemma": "בֵּלְטְשַׁאצַּר",
+      "translit": "bēlṭĕšaʾṣṣar",
+      "translitKo": "벨트샤차르",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 관용 표기 벨드사살과 구별"
+    },
+    {
+      "strong": "H3682",
+      "lemma": "כְּסוּת",
+      "translit": "kesût",
+      "translitKo": "케수트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 유성 쉐바(ĕ) 표기 원칙 및 kĕ- 음역 선례(H3550 kĕhunnâ→케훈나, H3702 kĕsap→케사프)에 따라 '케수트'로 적는다."
+    },
+    {
+      "strong": "H1047",
+      "lemma": "בֵּית פְּעוֹר",
+      "translit": "Bêt-Peʿôr",
+      "translitKo": "베트 페오르",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '뱃브올'(또는 '벧브올')이다. 학술 음역 bêt pĕʿôr에 따라 '베트 페오르'로 적는다(선례: H1187 baʿal pĕʿôr→바알 페오르, H1035 bêt leḥem→베트 레헴)."
+    },
+    {
+      "strong": "H8519",
+      "lemma": "תְּלוּנָה",
+      "translit": "tĕlûnâ",
+      "translitKo": "텔루나",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 유성 쉐바(ĕ)를 'ㅔ'로 표기하는 일관된 선례(H8415 tĕhôm→테홈, H8605 tĕpillâ→테필라)에 따라 '텔루나'로 적는다."
+    },
+    {
+      "strong": "H8571",
+      "lemma": "תְּנוּךְ",
+      "translit": "tĕnûḵ",
+      "translitKo": "테누크",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 베가드케파트 비연음화 규칙(k) 및 tĕ- 음역 선례(H8573 tĕnûpâ→테누파)에 따라 '테누크'로 적는다."
+    },
+    {
+      "strong": "H1865",
+      "lemma": "דְּרוֹר",
+      "translit": "dĕrôr",
+      "translitKo": "데로르",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 유성 쉐바(ĕ)를 'ㅔ'로 표기하는 일관된 선례(H1823 dĕmût→데무트, H1687 dĕbîr→데비르)에 따라 '데로르'로 적는다."
+    },
+    {
+      "strong": "H3529",
+      "lemma": "כְּבָר",
+      "translit": "Kĕḇār",
+      "translitKo": "케바르",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 강 이름 '그발'이다. 학술 음역 kĕbār에 따라 '케바르'로 적는다(선례: H3550 kĕhunnâ→케훈나, H3792 kĕtāb→케타브)."
+    },
+    {
+      "strong": "H1020",
+      "lemma": "בֵּית הַיְשִׁימוֹת",
+      "translit": "Bêt ha-Yĕšîmôt",
+      "translitKo": "베트 하이시모트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '벧여시못'이다. 학술 음역 bêt hayšîmôt에 따라 '베트 하이시모트'로 적는다(선례: H1035 bêt leḥem→베트 레헴, H3406 yerîmôt→예리모트)."
+    },
+    {
+      "strong": "H5166",
+      "lemma": "נְחֶמְיָה",
+      "translit": "Nĕḥemyâ",
+      "translitKo": "네헴야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '느헤미야'다. 학술 음역 nĕḥemyâ(nĕ-ḥem-yâ)에 따라 '네헴야'로 적는다(선례: H5418 nĕtanyâ→네탄야, H1436 gĕdalyâ→게달야)."
+    },
+    {
+      "strong": "H7348",
+      "lemma": "רְחוּם",
+      "translit": "Rĕḥûm",
+      "translitKo": "레훔",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '르훔'이다. 학술 음역 rĕḥûm에 따라 '레훔'으로 적는다(선례: H7233 rĕbābâ→레바바, H7425 rĕmalyāhû→레말야후)."
+    },
+    {
+      "strong": "H4303",
+      "lemma": "מַטְעַם",
+      "translit": "maṭʿam",
+      "translitKo": "마트암",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 무성 쉐바가 붙은 maṭ(마트)와 후음 ʿam(암) 음절 분절 및 선례(H3379 yārobʿām→야로브암, H6547 parʿōh→파르오)에 따라 '마트암'으로 적는다."
+    },
+    {
+      "strong": "H394",
+      "lemma": "אַכְזָרִי",
+      "translit": "ʾakzārî",
+      "translitKo": "아크자리",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 무성 쉐바가 붙은 k를 음절 분리하여 '크'로 적는 일관된 선례(H4363 mikmās→미크마스)에 따라 '아크자리'로 적는다."
+    },
+    {
+      "strong": "H516",
+      "lemma": "אַל תַּשְׁחֵת",
+      "translit": "ʾal-tašḥēt",
+      "translitKo": "알 타쉬헤트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 시편 표제어 '알다스혯'이다. 음절 말 שׁ는 '쉬'로 적는 원칙(선례: H6252 ʿaštārôt→아쉬타로트) 및 ḥēt→헤트에 따라 '알 타쉬헤트'로 적는다."
+    },
+    {
+      "strong": "G1551",
+      "lemma": "ἐκδέχομαι",
+      "translit": "ekdéchomai",
+      "translitKo": "에크데코마이",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 전치사/접두사 ek는 '에크'로 적는 일관된 선례(G1537 ek→에크, G1544 ekbállō→에크발로)에 따라 '에크데코마이'로 적는다."
+    },
+    {
+      "strong": "G2848",
+      "lemma": "κόκκος",
+      "translit": "kókkos",
+      "translitKo": "코코스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 중복 자음(다게쉬 포르테/겹자음)을 받침으로 겹치지 않는 원칙(선례: G5376 Phílippos→필리포스, G1100 glōssa→글로사)에 따라 '코코스'로 적는다."
+    },
+    {
+      "strong": "G4754",
+      "lemma": "στρατεύομαι",
+      "translit": "strateúomai",
+      "translitKo": "스트라튜오마이",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 헬라어 ευ는 유 계열 한 음절로 적는 원칙(선례: G4100 pisteúō→피스튜오, G4395 prophēteúō→프로페튜오, G4198 poreúomai→포류오마이)에 따라 '스트라튜오마이'로 적는다."
+    },
+    {
+      "strong": "G5012",
+      "lemma": "ταπεινοφροσύνη",
+      "translit": "tapeinophrosýnē",
+      "translitKo": "타페이노프로쉬네",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 헬라어 υ는 '위'로 적어 sy(σu)는 '쉬'가 되는 일관된 선례(G1343 dikaiosýnē→디카이오쉬네, G1654 eleēmosýnē→엘레에모쉬네)에 따라 '타페이노프로쉬네'로 적는다."
+    },
+    {
+      "strong": "G2961",
+      "lemma": "κυριεύω",
+      "translit": "kyrieúō",
+      "translitKo": "퀴리유오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). G2962(kýrios→퀴리오스)의 ky(퀴) 선례와 -eúō를 '유오'로 적는 일관된 선례(G936 basileúō→바실류오)에 따라 '퀴리유오'로 적는다."
+    },
+    {
+      "strong": "G2172",
+      "lemma": "εὔχομαι",
+      "translit": "eúchomai",
+      "translitKo": "유코마이",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 헬라어 어두 ευ는 유 계열 한 음절로 적는 원칙(선례: G2168 eucharistéō→유카리스테오, G4336 proseúchomai→프로슈코마)에 따라 '유코마이'로 적는다."
+    },
+    {
+      "strong": "G4766",
+      "lemma": "στρώννυμι",
+      "translit": "strṓnnymi",
+      "translitKo": "스트론뉘미",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 헬라어 υ의 '위'(뉘) 음역(선례: G1731 endeíknymi→엔데이크뉘미) 및 νν의 비음 연자음 표기(선례: G2491 Iōánnēs→이오안네스, G1080 gennáō→겐나오)에 따라 '스트론뉘미'로 적는다."
+    },
+    {
+      "strong": "G5603",
+      "lemma": "ᾠδή",
+      "translit": "ōidḗ",
+      "translitKo": "오이데",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 하기 이오타(iota subscript)를 '이'로 반영하는 SBL 음역 선례(G3027 lēistḗs→레이스테스)에 따라 '오이데'로 적는다."
+    },
+    {
+      "strong": "G4486",
+      "lemma": "ῥήγνυμι",
+      "translit": "rhḗgnymi",
+      "translitKo": "레그뉘미",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 헬라어 어두 ῥ에 '흐'를 붙이지 않는 일관된 선례(G4487 rhēma→레마, G4483 rhéō→레오) 및 υ의 '위'(뉘) 음역(G1731 endeíknymi→엔데이크뉘미)에 따라 '레그뉘미'로 적는다."
+    },
+    {
+      "strong": "H1622",
+      "lemma": "גִּרְגָּשִׁי",
+      "translit": "girgāšî",
+      "translitKo": "기르가시",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 '기르가스 사람'이다. שׁ 뒤에 모음 î가 오는 음절 첫소리이므로 '시'로 적는 원칙(선례: H7896 šît→시트, H7970 šĕlôšîm→셸로심)에 따라 '기르가시'로 적는다."
+    },
+    {
+      "strong": "H8048",
+      "lemma": "שַׁמָּה",
+      "translit": "šammâ",
+      "translitKo": "샤마",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '삼마'다. 다게쉬 포르테를 겹쳐 적지 않는 원칙 및 동음이의어 선례(H8047 šammâ→샤마)에 따라 '샤마'로 적는다."
+    }
+  ]
+}

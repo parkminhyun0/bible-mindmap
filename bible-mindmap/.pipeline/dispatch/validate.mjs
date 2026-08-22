@@ -21,7 +21,21 @@ const read = (p) => {
   return JSON.parse(raw);
 };
 
+// 판정·감사 산출물도 빈 파일이나 깨진 JSON 으로 남을 수 있다. 파일이 있으면
+// 디스패처는 완료로 보므로, 0 바이트짜리 하나가 그 단계를 영구히 막는다.
+// 실제로 b09 감사 1 이 쿼터로 죽으며 0 바이트를 남겼고, 아무도 모르는 채
+// 감사가 3/4 에서 멈춰 있었다. 제안만 보던 앞 판본은 이것을 놓쳤다.
 for (const task of fs.readdirSync(path.join(ROOT, '.pipeline')).filter((d) => /^task\d+$/.test(d))) {
+  for (const sub of ['rulings', 'audits']) {
+    const d2 = path.join(ROOT, '.pipeline', task, sub);
+    if (!fs.existsSync(d2)) continue;
+    for (const f of fs.readdirSync(d2).filter((x) => x.endsWith('.json'))) {
+      const p = path.join(d2, f);
+      if (!fs.statSync(p).size) { bad.push({ p, why: '0 바이트 — 실행이 중간에 끊겼다' }); continue; }
+      try { read(p); } catch (e) { bad.push({ p, why: `JSON 파싱 실패: ${e.message.slice(0, 60)}` }); }
+    }
+  }
+
   const dir = path.join(ROOT, '.pipeline', task, 'proposals');
   if (!fs.existsSync(dir)) continue;
 
@@ -48,7 +62,7 @@ for (const task of fs.readdirSync(path.join(ROOT, '.pipeline')).filter((d) => /^
 }
 
 if (!bad.length) {
-  console.log('✓ 제안 산출물 이상 없음');
+  console.log('✓ 모델 산출물 이상 없음 (제안·판정·감사)');
   process.exit(0);
 }
 

@@ -4,12 +4,21 @@
   "findings": [
     {
       "strong": "G4336",
-      "field": "note",
-      "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ευ는 후속 자음에 따라 갈리나, 기존 표기 εὑρίσκω→헤우리스코·πιστεύω→피스테우오와 같이 에우로 적었다.",
-      "suggested": "기존 표기 εὑρίσκω→휴리스코·πιστεύω→피스튜오 선례를 따라 프로슈코마이로 적는다.",
-      "evidence": "src/data/koreanGlossTopBatch02.js 의 G2147(휴리스코), G4100(피스튜오)",
+      "field": "translitKo",
+      "current": "프로슈코마이",
+      "suggested": "프로세우코마이",
+      "evidence": "WORKER_SPEC.md 헬라어 ευ 규칙 위반",
       "severity": "high",
-      "reason": "note에서 주장하는 선례(헤우리스코, 피스테우오)가 배포 데이터에 존재하지 않으며, 실제 배포된 선례(휴리스코, 피스튜오)와 완전히 모순됨. 이에 따라 translitKo 표기도 '프로슈코마이' 등으로 수정이 필요함."
+      "reason": "헬라어 ευ는 후속 자음에 따라 에우/에브/에프가 갈린다는 확정 규칙에 어긋남 ('슈'로 잘못 적음)."
+    },
+    {
+      "strong": "G3475",
+      "field": "translitKo",
+      "current": "모슈스",
+      "suggested": "모세우스",
+      "evidence": "WORKER_SPEC.md 헬라어 ευ 규칙 위반",
+      "severity": "high",
+      "reason": "헬라어 ευ 표기 규칙 위반('슈'로 잘못 적음). note는 관용 표기('모세')와 다르다고 설명하나, 제시된 '모슈스'는 학술 표기도 아닌 오류임."
     }
   ]
 }

@@ -8,60 +8,26 @@
 
 배치 하나는 아래 순서를 거친다. 앞 단계가 끝나야 다음 단계를 넣는다.
 
-1. **제안** — GPT/Gemini 작업자들이 셰이드마다 독립으로 음역. 기존 `claudeopus5` 슬롯은 새 실행에서 Codex GPT로 대체하며, 기존 Claude 산출물은 보존한다. `proposals/<셰이드>-<모델>.json`
+1. **제안** — 5개 모델(codex · gem31pro · gem37flash · gem36flash · claudeopus5)이 셰이드마다 독립으로 음역. `proposals/<셰이드>-<모델>.json`
 2. **대조** — 0-lead(사람 쪽)가 스크립트로 실행. 네가 넣는 일이 아니다.
-3. **판정** — `disputed.json` 이 생긴 뒤, Gemini와 Codex가 독립 판정. `rulings/adj-<모델>.json`
-4. **감사** — `final.json` 이 생긴 뒤, 셰이드 3분할 감사(Gemini/Codex) + Codex 독립 감사. `audits/audit-1.json` `audit-2.json` `audit-3.json` `audit-codex.json`
+3. **판정** — `disputed.json` 이 생긴 뒤, 3개 모델(gem31pro · gem37flash · claudeopus5)이 독립 판정. `rulings/adj-<모델>.json`
+4. **감사** — `final.json` 이 생긴 뒤, 셰이드 3분할 감사(gem31pro · gem37flash · claudeopus5) + Codex 독립 감사. `audits/audit-1.json` `audit-2.json` `audit-3.json` `audit-codex.json`
 5. **재감사** — 규칙 교정 뒤 회귀 점검 1건. `audits/recheck.json`
 6. **배치 파일 생성 · 검증 · PR** — 0-lead가 한다. 네가 넣는 일이 아니다.
 
 ## 네가 하는 일
 
-### 0) 열린 패널 자동 운영 원칙
-
-- workspace:8의 모든 열린 작업 패널은 idle 상태로 방치하지 말고, `jobs.tsv`의 다음 역할을 즉시 배정한다.
-- 패널 번호와 역할을 고정하지 않는다. idle 패널이 생기면 현재 단계의 미완료 작업을 먼저 배정하고, 단계가 바뀌면 같은 패널을 다음 역할로 순환시킨다.
-- 판정은 패널 3개가 아니라 **독립 판정자 3개**가 품질 계약이다. 세 판정 산출물이 모두 유효해질 때까지 다음 단계로 넘기지 않는다. 남는 패널은 같은 판정을 중복 생성하지 말고, 현재 단계의 다른 독립 역할·검증·감사 작업을 맡긴다.
-- 추가 판정자가 필요하다는 별도 계약이 없는 한 3개를 초과해 결과를 합의에 섞지 않는다. 패널을 더 쓰는 것과 판정자 수를 늘리는 것은 구분한다.
-- 한 패널의 모델이 quota/API/빈 출력으로 실패하면 해당 패널을 즉시 Codex GPT failover에 재사용하고, 다른 idle 패널도 같은 미완료 산출물에 순차 투입한다. 동일 산출물의 동시 중복 실행은 금지한다.
-- 선행 단계가 끝나기 전에는 후속 의미 변환을 실행하지 않는다. 대신 빈 패널은 선행 단계의 누락 검증, 산출물 schema 검증, 또는 다음 단계의 이미 존재하는 작업을 맡는다.
-- 제안 산출물이 모두 있으면 자동으로 대조 단계의 존재 여부를 확인하고, 대조 결과가 생기면 판정 작업을 추가한다.
-- 판정 결과가 생기면 감사 작업을 추가하고, 감사 결과가 생기면 재감사 작업을 추가한다.
-- 재감사가 끝나면 0-lead 후속 작업(규칙 적용·배치 생성·검증·PR)을 `plan.md`에 명시하고, 실행 가능한 자동 작업은 계속 큐에 연결한다.
-- 큐가 비어도 즉시 종료하지 말고 `state.mjs`로 다음 누락 단계와 누락 프롬프트를 점검한다. 프롬프트가 있으면 `jobs.tsv`에 추가하고, 없으면 정확한 누락을 `plan.md`에 기록한다.
-- Gemini quota/API 실패, 빈 산출물, 패널 반환은 실패로 기록하고 같은 역할의 Codex GPT failover를 연결한다. 완료 파일은 절대 덮어쓰지 않는다.
-- 각 단계 전환마다 `report.md`를 갱신하고, 0-lead는 검증 Evidence를 확인한 뒤 Notion 구조화 브리핑을 갱신한다.
-
-### 0-2) 학술 충돌 해결 프로토콜 — 자동 다수결보다 근거 우선
-
-- 음역·음운·형태·역사적 발음에서 모델 판정, 기존 프로젝트 규칙, 공개 학술 표준이 충돌하면 즉시 `ACADEMIC_REVIEW_REQUIRED`로 표시하고 자동 확정하지 않는다.
-- 먼저 SBL 등 해당 분야의 표준/학술 핸드북, 원문 문법·음운론 자료, 권위 사전·원어 데이터, 한국어 성경·학술 표기 관행을 각각 확인한다. 검색 결과는 URL·핵심 근거·적용 범위를 Evidence에 기록한다.
-- 자료의 권위와 직접성을 우선해 결론을 정한다: 해당 표기 체계의 공식 규정 → 원문 언어의 학술 문법/사전 → 검증된 원어 데이터 → 한국어 관행 → 모델 다수 의견 순서다.
-- 학술 표준이 기존 내부 규칙과 충돌하면 내부 규칙을 몰래 약화하지 않는다. 표준 예외가 정당한지, 규칙 자체를 개정할지, 기존 규칙을 유지할지 사람 승인용 판정 패킷으로 분리한다.
-- 결론이 재현 가능하면 후보/final과 검증기에 반영할 수정안을 준비하되, 승인 데이터·CI 규칙·Golden 계약 변경은 비작성자 인간 승인 전까지 병합하지 않는다.
-- 학술 표기와 한국교회·한국어 성경의 관용 표기가 다르면 학술 표기를 `translitKo` 기본값으로 두고, 관용 표기를 `note`에 반드시 병기한다. 형식은 `학술 표기: X · 한국교회 관용 표기: Y`로 통일한다.
-- Notion과 `report.md`에는 `권고 결론`, `반대 근거`, `인간 승인 필요 여부`, `출처 URL`을 함께 기록한다. 해결되지 않은 충돌을 완료로 표시하지 않는다.
-
-### 0-1) 단계 연쇄 실행 규칙 — 대기 금지
-
-- 어떤 작업이 완료되면 즉시 `state.mjs`를 다시 실행하고, 그 출력에서 첫 번째 미완료 단계를 찾아 다음 작업을 큐에 연결한다.
-- 제안 완료 → 대조/consensus → disputed 판정 → 판정 병합 → 감사 4분할 → 재감사 → 규칙 적용 → final/배치 파일 → registry/predev/lint → Draft PR 순서를 자동으로 이어간다.
-- 선행 산출물이 유효하면 다음 단계의 작업을 사람의 추가 명령 없이 등록한다. 이미 등록된 작업·이미 존재하는 산출물은 중복 등록하지 않는다.
-- 후속 단계 프롬프트가 없으면 기존 task의 동일 역할 프롬프트와 규칙을 재사용해 생성하고, 재사용이 불가능할 때만 `plan.md`에 정확한 결손을 기록한다.
-- 로컬 검증·보고서·Notion 갱신은 완료 즉시 수행한다. 사용자 병합·목회자 승인처럼 명시된 인간 게이트만 대기 상태로 남긴다.
-- 한 작업이 끝난 뒤 패널을 비워 두지 않는다. 다음 순차 작업이 아직 선행 조건을 기다리는 경우에도 검증·감사·산출물 무결성 확인을 배정한다.
-
 ### (1) 빠진 모델 작업을 `jobs.tsv` 에 덧붙인다
 
 형식은 탭 구분 네 칸이다: `모델\t제목\t프롬프트경로\t산출물경로`
 
-- 모델 값: `codex` · legacy `claude`(실행 시 Codex로 라우팅) · `gemini-3.1-pro-high` · `gemini-3.7-flash-high` · `gemini-3.6-flash-high`
+- 모델 값: `codex` · `claude` · `gemini-3.1-pro-high` · `gemini-3.7-flash-high` · `gemini-3.6-flash-high`
 - **이미 산출물이 있는 일은 넣지 마라.** 디스패처가 건너뛰긴 하지만 목록이 지저분해진다.
 - **이미 `jobs.tsv` 에 있는 줄은 다시 넣지 마라.** 넣기 전에 grep 으로 확인하라.
 - 프롬프트 파일이 없으면 그 일은 넣지 말고 `plan.md` 에 "프롬프트 없음"으로 적어라. 프롬프트를 새로 만들지 마라.
 
 프롬프트 경로 규칙:
-- 제안: `.pipeline/<task>/prompts/<셰이드>-<모델슬러그>.txt` (기존 슬러그 `claudeopus5`는 새 실행에서 Codex 대체 작업자로 처리)
+- 제안: `.pipeline/<task>/prompts/<셰이드>-<모델슬러그>.txt` (슬러그: codex · gem31pro · gem37flash · gem36flash · claudeopus5)
 - 판정: `.pipeline/<task>/prompts/adj-<모델슬러그>.txt`
 - 감사: `.pipeline/<task>/prompts/audit-<1|2|3|codex>.txt`
 - 재감사: `.pipeline/<task>/prompts/recheck.txt`
@@ -124,3 +90,115 @@
 수치는 반드시 `state.mjs` 출력에서 가져와라. 기억이나 추측으로 쓰지 마라.
 항목 수는 `.pipeline/<task>/input/manifest.json` 의 `totalItems` 를 쓴다.
 단계가 하나도 안 바뀌었으면 보고서를 다시 쓰지 마라.
+
+---
+
+## (5) 결정이 필요 없는 스크립트는 네가 직접 돌린다
+
+아래 넷은 **판단이 들어가지 않는 기계 작업**이다. 0-lead 를 기다리지 마라.
+파이프라인이 사람에게서 멈추던 자리가 여기였다.
+
+| 조건 | 실행 |
+|---|---|
+| 제안이 15/15 인데 `consensus.json` 이 없다 | `node .pipeline/<task>/tools/consensus.mjs` |
+| `consensus.json` 은 있는데 `disputed.json` 이 없다 | 아래 스니펫 |
+| 판정이 3/3 인데 `rulings.json` 이 없다 | `node .pipeline/<task>/tools/merge-rulings.mjs` |
+| `rulings.json` 은 있는데 `final.json` 이 없다 | `node .pipeline/task7/tools/apply-rules.mjs <task>` |
+
+disputed.json 생성:
+
+    node --input-type=module -e "import fs from 'node:fs'; const c=JSON.parse(fs.readFileSync('.pipeline/TASK/consensus.json','utf8')); fs.writeFileSync('.pipeline/TASK/disputed.json', JSON.stringify({count:c.disputed.length, items:c.disputed}, null, 2)+'\n')"
+
+TASK 자리에 실제 폴더 이름을 넣어라.
+
+도구 파일이 그 폴더에 없으면 **앞 배치에서 복사**해 온다.
+
+    cp .pipeline/task11/tools/consensus.mjs .pipeline/<task>/tools/
+
+복사한 뒤 두 자리만 그 배치에 맞게 고친다 — `const SHARDS` 의 셰이드 문자와
+`top-frequency-batch-NN` 의 번호. 그 밖은 건드리지 마라.
+
+스크립트가 실패하면 고치려 들지 말고 `plan.md` 에 출력을 그대로 적어라.
+
+**여기 적힌 넷 말고는 실행하지 마라.** `src/` 수정 · git · PR 은 0-lead 몫이다.
+
+---
+
+## (6) 제안자 로스터 — 계열을 공평하게 2:2:2
+
+`.pipeline/dispatch/roster.tsv` 가 표준 로스터다. 탭 구분 네 칸이며
+`모델 · 슬러그 · 표시이름 · 계열` 이다.
+
+| 계열 | 모델 |
+|---|---|
+| Claude | Claude Opus 5 (`claude`) · Claude Opus 4.6 (`claude-opus-4-6-thinking`) |
+| Gemini | Gemini 3.1 Pro · Gemini 3.7 Flash |
+| GPT | Codex GPT-5 (`codex`) · GPT-OSS 120B (`gpt-oss-120b-medium`) |
+
+**새 배치의 제안 작업을 넣을 때는 이 여섯을 전부 넣어라.** 한 계열이 셋 이상이
+되지 않게 하라. 같은 계열끼리는 같은 오류를 공유하므로, 계열이 기울면 그 계열의
+맹점이 다수결을 통과한다. batch 02 에서 Gemini 둘이 다수결로 틀렸을 때 Claude
+혼자 맞았던 자리가 그 증거다.
+
+제안자가 여섯이면 대조 도구의 `MAJORITY` 는 **4** 다. 도구를 복사할 때 함께 고쳐라.
+
+판정자는 셋으로 하되 **계열을 겹치지 마라** — Claude Opus 5 · Gemini 3.1 Pro ·
+Codex GPT-5 가 기본이다.
+
+---
+
+## (7) 패널이 놀지 않게 하는 것이 네 첫 임무다
+
+패널이 노는 원인은 재배정이 느려서가 아니라 **큐가 비어서**다. 디스패처는 패널이
+셸로 돌아오면 4초 안에 다음 일을 물린다. 네가 할 일은 **물릴 일이 떨어지지 않게**
+하는 것이다.
+
+호출될 때마다 아래를 **위에서부터** 확인하고, 넣을 수 있는 일을 전부 넣어라.
+하나 넣고 끝내지 마라. 작업자 패널이 10개이므로 남은 일이 **최소 10건**은 되게 한다.
+
+1. **(5) 의 기계 작업** — 조건이 맞으면 네가 직접 돌린다. 큐에 넣는 게 아니라
+   지금 실행한다. 이게 다음 단계의 일감을 만들어 낸다.
+2. **빠진 제안** — 로스터 여섯 중 산출물이 없는 것.
+3. **판정** — `disputed.json` 이 있고 `rulings/` 가 3개 미만이면.
+4. **감사** — `final.json` 이 있고 `audits/audit-*.json` 이 4개 미만이면.
+5. **재감사** — 감사 4개가 다 있고 `audits/recheck.json` 이 없으면.
+6. **여기까지 넣었는데도 빈다면 아무것도 더 넣지 마라.**
+
+   감사를 더 붙이지 마라. 한때 "빈 패널이 있으면 감사를 더 붙여라" 고 했더니
+   `audit-gem31pro2` · `audit-gem31pro3` 같은 작업이 배치마다 쌓였고, 상당수가
+   실패해 오히려 패널을 막았다. 감사 4건 + 재감사 1건이면 충분하다.
+
+   빈 패널을 채우는 것은 **공급 감독관의 일**이다. 그쪽이 새 배치를 열면
+   제안 18건이 한 번에 생긴다. 네가 없는 일을 만들 필요가 없다.
+
+### 네가 즉시 처리할 수 있는 일은 큐에 넣지 말고 직접 하라
+
+- 깨진 산출물 확인: `node .pipeline/dispatch/validate.mjs --fix`
+- 도구 파일 복사와 `SHARDS` · `batchId` · `MAJORITY` 수정
+- `disputed.json` 생성
+
+이런 것은 모델 한 번 돌릴 값어치가 없다. 네가 하면 몇 초다.
+
+### 넣을 일이 정말 없을 때
+
+`plan.md` 에 **"일감 고갈 · 0-lead 조치 필요"** 를 맨 위에 쓰고, 무엇이 막고
+있는지 한 줄로 적어라. 그것이 0-lead 가 가장 먼저 볼 신호다.
+
+---
+
+## (8) 역할 경계 — 공급 감독관과 겹치지 마라
+
+감독관은 둘이다. 겹치면 같은 일을 두 번 넣거나 `jobs.tsv` 가 섞인다.
+
+| | 진행 감독관 (너) | 공급 감독관 |
+|---|---|---|
+| 대상 | **이미 열린 배치** | **새 배치 개설** |
+| 하는 일 | 대조·판정·감사·재감사 진행 | `next-batch.mjs` 실행 |
+| 안 하는 일 | 새 배치를 열지 마라 | 기존 배치를 건드리지 않는다 |
+
+**`node .pipeline/dispatch/next-batch.mjs` 를 실행하지 마라.** 새 배치가 필요하면
+`plan.md` 에 적기만 하라. 공급 감독관이 20건 미만이면 알아서 연다.
+
+`jobs.tsv` 에 덧붙일 때는 반드시 락을 거쳐라. 직접 `>>` 하지 마라.
+
+    printf '%s\t%s\t%s\t%s\n' "모델" "제목" "프롬프트" "산출물" | bash .pipeline/dispatch/append-jobs.sh
