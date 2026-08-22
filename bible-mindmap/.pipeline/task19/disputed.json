@@ -1,0 +1,242 @@
+{
+  "items": [
+    {
+      "shard": "R",
+      "strong": "H4968",
+      "lemma": "מְתוּשֶׁלַח",
+      "lang": "hebrew",
+      "glossEn": "Methuselah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Mətûšel aḥ",
+          "translitKo": "므투셸라흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mětûšelaḥ",
+          "translitKo": "메투셸라흐",
+          "note": "관용 표기는 므두셀라"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mĕtûšelaḥ",
+          "translitKo": "메투셸라흐",
+          "note": "학술 표기는 메투셸라흐다. 개역개정 등 한국어 성경은 므두셀라로 표기한다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕtûšelaḥ",
+          "translitKo": "메투셀라흐",
+          "note": "개역개정 관용 표기는 「므두셀라」다. 학술 표기는 שׁ를 ㅅ 계열로, 어말 ח를 흐로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "R",
+      "strong": "H283",
+      "lemma": "אַחְיוֹ",
+      "lang": "hebrew",
+      "glossEn": "Ahio.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾAḥyô",
+          "translitKo": "아히오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾaḥyô",
+          "translitKo": "아흐요",
+          "note": "관용 표기는 아효"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾaḥyô",
+          "translitKo": "아효",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾaḥyô",
+          "translitKo": "아흐요",
+          "note": "개역개정 관용 표기는 「아효」다. 학술 표기는 음절 말 ח를 흐로 살린다."
+        }
+      ]
+    },
+    {
+      "shard": "R",
+      "strong": "H8060",
+      "lemma": "שַׁמַּי",
+      "lang": "hebrew",
+      "glossEn": "Shammai.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šammay",
+          "translitKo": "샴마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šammay",
+          "translitKo": "샴마이",
+          "note": "관용 표기는 삼매"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šammay",
+          "translitKo": "샤마이",
+          "note": "학술 표기는 샤마이다. 개역개정 등 한국어 성경은 삼매로 표기한다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šammay",
+          "translitKo": "샤마이",
+          "note": "개역개정 관용 표기는 「삼매」다. 다게쉬 포르테를 받침으로 겹쳐 적지 않고 어말 ־ַי는 아이로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "S",
+      "strong": "H634",
+      "lemma": "אֵסַר־חַדּוֹן",
+      "lang": "hebrew",
+      "glossEn": "Esar-haddon.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾêsar-ḥaddôn",
+          "translitKo": "에사르핫돈",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾēsar-ḥaddôn",
+          "translitKo": "에사르-하돈",
+          "note": "다게쉬 포르테는 겹쳐 적지 않음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾēsar-ḥaddôn",
+          "translitKo": "에사르하돈",
+          "note": "개역개정 관용 표기는 '에살핫돈'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾēsar-ḥaddôn",
+          "translitKo": "에사르하돈",
+          "note": "마카프로 이어진 왕 이름이다. 개역개정 관용 표기는 에살핫돈이다."
+        }
+      ]
+    },
+    {
+      "shard": "S",
+      "strong": "H5050",
+      "lemma": "נָגַהּ",
+      "lang": "hebrew",
+      "glossEn": "(en-) lighten, (cause to) shine.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nāgah",
+          "translitKo": "나가",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nāgah",
+          "translitKo": "나가흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nāgah",
+          "translitKo": "나가흐",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nāgah",
+          "translitKo": "나가",
+          "note": "어말 ה 에 마피크가 있어 자음 h 로 읽는다. 한글로는 따로 적지 않았다."
+        }
+      ]
+    },
+    {
+      "shard": "T",
+      "strong": "H5572",
+      "lemma": "סְנֶה",
+      "lang": "hebrew",
+      "glossEn": "bush.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "seneh",
+          "translitKo": "세네",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "səneh",
+          "translitKo": "스네",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sĕneh",
+          "translitKo": "스네",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sĕneh",
+          "translitKo": "세네",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "T",
+      "strong": "H3882",
+      "lemma": "לִוְיָתָן",
+      "lang": "hebrew",
+      "glossEn": "leviathan, mourning.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "liwyāṯān",
+          "translitKo": "리위야탄",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "liwyātān",
+          "translitKo": "리우야탄",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "liwyātān",
+          "translitKo": "리위야탄",
+          "note": "개역개정 표기는 '리워야단' 또는 '리워야탄'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "liwyātān",
+          "translitKo": "리우야탄",
+          "note": "개역 관용 표기는 '리워야단'. ו는 자음 w이며 여기서는 음절을 닫아 '우'로 적는다."
+        }
+      ]
+    }
+  ]
+}
