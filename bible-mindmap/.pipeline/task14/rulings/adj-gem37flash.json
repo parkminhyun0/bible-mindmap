@@ -1,0 +1,327 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H5992",
+      "translit": "ʿammînādāb",
+      "translitKo": "아미나다브",
+      "evidence": "H4124(môʾāb→모아브), H3097(yôʾāb→요아브), H3290(yaʿăqōb→야아코브) 등 어말 ב는 '브'로 표기. H5982(ʿammûd→아무드), H1834(dammeśeq→다메세크) 등 장애음/표제형 다게쉬 포르테 단모음 표기 선례.",
+      "note": "학술 표기는 아미나다브다. 한국어 성경 관용 표기는 암미나답이다."
+    },
+    {
+      "strong": "H3158",
+      "translit": "yizrĕʿēʾlî",
+      "translitKo": "이즈르엘리",
+      "evidence": "유성 쉐바 ĕ 표기 선례 181건. ז는 z(즈), עֵ는 sere ē(엘) 선례.",
+      "note": "학술 표기는 이즈르엘리다. 한국어 성경 관용 표기는 이스르엘 사람이다."
+    },
+    {
+      "strong": "G4514",
+      "translit": "Rhōmaîos",
+      "translitKo": "로마이오스",
+      "evidence": "G4487(rhēma→레마), G4483(rhéō→레오), G4461(rhabbí→라비) 등 헬라어 어두 rh/ῥ는 로/레 표기 선례.",
+      "note": "학술 표기는 로마이오스다. 관용 표기 '로마인'과 차이가 있다."
+    },
+    {
+      "strong": "G377",
+      "translit": "anapíptō",
+      "translitKo": "아나핍토",
+      "evidence": "G4098(píptō→핍토), G601(apokalýptō→아포칼륍토), G3538(níptō→닙토), G125(Aígyptos→아이귑토스) 등 헬라어 폐음절 pt는 ㅂ 받침 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G3094",
+      "translit": "Magdalēnḗ",
+      "translitKo": "마그달레네",
+      "evidence": "G68(agrós→아그로스), G50(agnoéō→아그노에오), G1922(epígnōsis→에피그노시스) 등 헬라어 자음 앞 γ는 '그' 표기 선례.",
+      "note": "학술 표기는 마그달레네다. 관용 표기 '막달라'와 차이가 있다."
+    },
+    {
+      "strong": "G910",
+      "translit": "Baptistḗs",
+      "translitKo": "밥티스테스",
+      "evidence": "G907(baptízō→밥티조), G908(báptisma→밥티스마) 등 bapt- 계열 밥티- 표기 선례.",
+      "note": "학술 표기는 밥티스테스다. 관용 표기 '세례자/세례 요한'과 차이가 있다."
+    },
+    {
+      "strong": "H62",
+      "translit": "ʾābēl bêt-maʿăkâ",
+      "translitKo": "아벨 베트마아카",
+      "evidence": "H1008(bêt-ʾēl→베트엘), H1035(bêt leḥem→베트 레헴), H1032(Bêt Ḥôrôn→베트 호론), H1052(bêt šĕʾān→베트 셰안) 등 bêt의 베트 표기 선례 및 마케프 합성어 한글 연철 선례.",
+      "note": "학술 표기는 아벨 베트마아카다. 관용 표기 '아벨벧마아가'와 차이가 있다."
+    },
+    {
+      "strong": "H5872",
+      "translit": "ʿên gedî",
+      "translitKo": "엔 게디",
+      "evidence": "H6025(ʿênāb→에나브) 및 ʿên(엔) 연계형 독립 표기 선례.",
+      "note": "학술 표기는 엔 게디다. 관용 표기 '엔게디'와 차이가 있다."
+    },
+    {
+      "strong": "H471",
+      "translit": "ʾelyāqîm",
+      "translitKo": "엘야킴",
+      "evidence": "H475(ʾelyāšîb→엘야시브), H5945(ʿelyôn→엘욘), H1436(gĕdalyâ→게달야) 등 el-y 계열 엘야- 표기 선례.",
+      "note": "학술 표기는 엘야킴이다. 한국어 성경 관용 표기는 엘리아김이다."
+    },
+    {
+      "strong": "H1593",
+      "translit": "gannâ",
+      "translitKo": "간나",
+      "evidence": "H1590(gannāb→간나브), H8467(tĕḥinnâ→테힌나), H7440(rinnâ→린나), H6793(ṣinnâ→친나), H520(ʾammâ→암마) 등 비음 다게쉬 포르테 받침 표기 규칙 및 어말 ה â 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H2376",
+      "translit": "ḥēzēw",
+      "translitKo": "헤제우",
+      "evidence": "자음 ו w(우) 표기 및 장모음 tsere ē(헤/제) 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H8036",
+      "translit": "šum",
+      "translitKo": "슘",
+      "evidence": "šum 단모음 u(슈) + mem 받침(ㅁ) 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H5457",
+      "translit": "sĕgid",
+      "translitKo": "세기드",
+      "evidence": "유성 쉐바 ĕ 및 베가드케파트 d 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H7412",
+      "translit": "rĕmâ",
+      "translitKo": "레마",
+      "evidence": "유성 쉐바 ĕ 및 어말 ה â 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H3792",
+      "translit": "kĕtāb",
+      "translitKo": "케타브",
+      "evidence": "유성 쉐바 ĕ 및 베가드케파트 t, b(브) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H8245",
+      "translit": "šāqad",
+      "translitKo": "샤카드",
+      "evidence": "šā(샤), qad(카드) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H4550",
+      "translit": "massaʿ",
+      "translitKo": "마사",
+      "evidence": "장애음 다게쉬 포르테 받침 미표기(규칙 2) 및 어말 ע 미표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H4172",
+      "translit": "môrāʾ",
+      "translitKo": "모라",
+      "evidence": "mô(모), rāʾ(라) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H5392",
+      "translit": "nešek",
+      "translitKo": "네셰크",
+      "evidence": "모음 앞 שׁ(셰) 및 베가드케파트 k(크) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H2023",
+      "translit": "hōr",
+      "translitKo": "호르",
+      "evidence": "hōr(호르) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H2042",
+      "translit": "hārār",
+      "translitKo": "하라르",
+      "evidence": "hārār(하라르) 장음 qamets 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H1187",
+      "translit": "baʿal pĕʿôr",
+      "translitKo": "바알 페오르",
+      "evidence": "유성 쉐바 ĕ 및 baʿal, pĕʿôr 띄어쓰기 표기 선례.",
+      "note": "학술 표기는 바알 페오르다. 한국어 성경 관용 표기는 바알브올이다."
+    },
+    {
+      "strong": "H1447",
+      "translit": "gādēr",
+      "translitKo": "가데르",
+      "evidence": "베가드케파트 d(데) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H4966",
+      "translit": "mātôq",
+      "translitKo": "마토크",
+      "evidence": "베가드케파트 t(토) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H2270",
+      "translit": "ḥābēr",
+      "translitKo": "하베르",
+      "evidence": "베가드케파트 b(베) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H4753",
+      "translit": "mōr",
+      "translitKo": "모르",
+      "evidence": "mōr(모르) 표기 선례.",
+      "note": "학술 표기는 모르다. 관용 표기 '몰약'과 차이가 있다."
+    },
+    {
+      "strong": "H3843",
+      "translit": "lĕbēnâ",
+      "translitKo": "레베나",
+      "evidence": "유성 쉐바 ĕ, 어말 ה â, 베가드케파트 b 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H6363",
+      "translit": "peṭer",
+      "translitKo": "페테르",
+      "evidence": "peṭer(페테르) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H4701",
+      "translit": "miṣnepet",
+      "translitKo": "미츠네페트",
+      "evidence": "miṣnepet(미츠네페트) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H5549",
+      "translit": "sālal",
+      "translitKo": "살랄",
+      "evidence": "sālal(살랄) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H947",
+      "translit": "bûs",
+      "translitKo": "부스",
+      "evidence": "samekh s(스) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H6780",
+      "translit": "ṣemaḥ",
+      "translitKo": "체마흐",
+      "evidence": "contextChapterCardsMinorProph.js의 צֶמַח(순) 및 furtive patach(아흐) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H2874",
+      "translit": "ṭebaḥ",
+      "translitKo": "테바흐",
+      "evidence": "베가드케파트 b(바) 및 furtive patach(아흐) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H5301",
+      "translit": "nāpaḥ",
+      "translitKo": "나파흐",
+      "evidence": "furtive patach(아흐) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H6355",
+      "translit": "paḥat môʾāb",
+      "translitKo": "파하트 모아브",
+      "evidence": "H4124(môʾāb→모아브), 베가드케파트 t, b 표기 선례.",
+      "note": "학술 표기는 파하트 모아브다. 한국어 성경 관용 표기는 바핫모압이다."
+    },
+    {
+      "strong": "H1904",
+      "translit": "hāgār",
+      "translitKo": "하가르",
+      "evidence": "contextChapterCardsGenExod.js:15의 הָגָר(하가르) 배포 선례.",
+      "note": "학술 표기는 하가르다. 한국어 성경 관용 표기는 하갈이다."
+    },
+    {
+      "strong": "H7385",
+      "translit": "rîq",
+      "translitKo": "리크",
+      "evidence": "rîq(리크) 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G1657",
+      "translit": "eleuthería",
+      "translitKo": "엘류테리아",
+      "evidence": "bookContext.js:2149(ἐλευθερία→엘류테리아) 배포 선례 및 헬라어 eu(유 계열) 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G5452",
+      "translit": "phyteúō",
+      "translitKo": "퓌튜오",
+      "evidence": "G5438(phylakḗ→퓔라케), G5442(phylássō→퓔라소), G5443(phylḗ→퓔레) 등 어두 phy-(퓔/퓌) 선례 및 G4100(pisteúō→피스튜오) 등 -teúō(-튜오) 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G1968",
+      "translit": "epipíptō",
+      "translitKo": "에피핍토",
+      "evidence": "G4098(píptō→핍토) 동사 어근 및 폐음절 pt 받침 표기 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G1980",
+      "translit": "episképtomai",
+      "translitKo": "에피스켑토마이",
+      "evidence": "G2812(kléptēs→클렙테스), G4098(píptō→핍토) 등 헬라어 모음 뒤 pt ㅂ 받침 선례.",
+      "note": ""
+    },
+    {
+      "strong": "G912",
+      "translit": "Barabbâs",
+      "translitKo": "바라바스",
+      "evidence": "G4521(sábbaton→사바톤), G4461(rhabbí→라비) 등 헬라어 장애음 중복(ββ) 받침 미표기(규칙 2) 선례.",
+      "note": "한국어 성경 관용 표기는 바라바다."
+    },
+    {
+      "strong": "H1283",
+      "translit": "bĕrîʿâ",
+      "translitKo": "베리아",
+      "evidence": "H1280(bĕrîaḥ→베리아흐), H1293(bĕrākâ→베라카), H1265(bĕrôš→베로쉬) 등 bĕr- 계열 베리/베라 표기 선례.",
+      "note": "학술 표기는 베리아다. 한국어 성경 관용 표기는 브리아다."
+    },
+    {
+      "strong": "H6765",
+      "translit": "ṣĕlopḥād",
+      "translitKo": "첼로프하드",
+      "evidence": "H8010(šĕlōmōh→셸로모), H6430(pĕlištî→펠리쉬티) 등 ĕl 계열 ㄹㄹ 연음 선례 및 무성음 p(프) 표기 선례.",
+      "note": "학술 표기는 첼로프하드다. 한국어 성경 관용 표기는 슬로브핫이다."
+    },
+    {
+      "strong": "H3049",
+      "translit": "yiddĕʿōnî",
+      "translitKo": "이데오니",
+      "evidence": "H1436(gĕdalyâ→게달야), H1834(dammeśeq→다메세크) 등 장애음 d 다게쉬 단모음 표기 및 유성 쉐바 ĕ(데) 선례.",
+      "note": ""
+    },
+    {
+      "strong": "H7775",
+      "translit": "šawʿâ",
+      "translitKo": "샤와",
+      "evidence": "자음 ו w(와) 표기(규칙 4) 및 어말 ה â 표기 선례.",
+      "note": ""
+    }
+  ]
+}

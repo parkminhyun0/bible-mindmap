@@ -1,0 +1,128 @@
+[
+  {
+    "strong": "G5053",
+    "field": "translitKo",
+    "current": "텔류타오",
+    "suggested": "텔레프타오",
+    "evidence": "lemma τελευτάω; WORKER_SPEC.md의 ευ 규칙과 배포 선례상 뒤의 무성 자음 τ 앞에서는 에프 계열로 적는다.",
+    "severity": "high",
+    "reason": "ευ가 무성 자음 τ 앞에 있어 현재의 에우/류 표기가 명세의 에프 계열 규칙과 모순된다."
+  },
+  {
+    "strong": "G5574",
+    "field": "translitKo",
+    "current": "프슈도마이",
+    "suggested": "프세브도마이",
+    "evidence": "lemma ψεύδομαι; WORKER_SPEC.md의 ευ 규칙과 배포 선례상 뒤의 유성 자음 δ 앞에서는 에브 계열로 적는다.",
+    "severity": "high",
+    "reason": "ευ가 유성 자음 δ 앞에 있어 현재 표기가 에브 계열 규칙과 모순된다."
+  },
+  {
+    "strong": "G5578",
+    "field": "translitKo",
+    "current": "프슈도프로페테스",
+    "suggested": "프세브도프로페테스",
+    "evidence": "lemma ψευδοπροφήτης; 복합어 첫 요소의 ευ가 유성 자음 δ 앞에 있다.",
+    "severity": "high",
+    "reason": "복합어 안의 ευ도 동일한 에브 계열 규칙을 따라야 하는데 현재 표기가 이를 따르지 않는다."
+  },
+  {
+    "strong": "G2680",
+    "field": "translitKo",
+    "current": "카타스큐아조",
+    "suggested": "카타스케프아조",
+    "evidence": "lemma κατασκευάζω; WORKER_SPEC.md의 ευ 규칙과 배포 선례상 뒤의 무성 자음 κ 앞에서는 에프 계열로 적는다.",
+    "severity": "high",
+    "reason": "ευ가 무성 자음 κ 앞에 있어 현재의 큐아 표기가 에프 계열 규칙과 모순된다."
+  },
+  {
+    "strong": "G5053",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 이후 greek_eu 규칙에 따라 조정했다.",
+    "evidence": "final.json에서 translitKo가 독립 제안의 텔레우타오에서 텔류타오로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "현재 표기가 독립 제안 그대로가 아니라 사후 규칙 조정 결과인데 note가 그 사실을 누락한다."
+  },
+  {
+    "strong": "G5574",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이후 greek_eu 규칙에 따라 조정했다.",
+    "evidence": "final.json에서 translitKo가 독립 제안의 프세우도마이에서 프슈도마이로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "현재 표기가 사후 규칙 조정 결과인데 note가 조정 이력을 설명하지 않는다."
+  },
+  {
+    "strong": "H424",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 qamats-he 규칙에 따라 ʾēlâ로 조정했다.",
+    "evidence": "final.json에서 translit가 ʾēlāh에서 ʾēlâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안과 최종 표기가 다르고 조정이 있었는데 전원 일치 note가 이를 가린다."
+  },
+  {
+    "strong": "H8203",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 셰파트야다. 한국어 성경 관용 표기는 스바댜다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 begadkepat·qamats-he 규칙에 따라 šepaṭyâ로 조정했다. 학술 표기는 셰파트야다. 한국어 성경 관용 표기는 스바댜다.",
+    "evidence": "final.json에서 translit가 šep̄aṭyāh에서 šepaṭyāh를 거쳐 šepaṭyâ로 조정되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "복수의 라틴 표기 조정이 있었는데 note가 독립 제안 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H4490",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 mānāh와 mānâ로 갈렸고 qamats-he 규칙에 따라 mānâ로 조정했다.",
+    "evidence": "final.json에서 translit가 mānāh에서 mānâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 갈렸는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H3924",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 lulāʾāh와 lulāʾâ로 갈렸고 qamats-he 규칙에 따라 lulāʾâ로 조정했다.",
+    "evidence": "final.json에서 translit가 lulāʾāh에서 lulāʾâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 갈렸는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H4878",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 begadkepat·qamats-he 규칙에 따라 mĕšûbâ로 조정했다.",
+    "evidence": "final.json에서 translit가 mĕšûḇâ에서 mĕšûbâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 복수였는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H2893",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 qamats-he 규칙에 따라 ṭohŏrâ로 조정했다.",
+    "evidence": "final.json에서 translit가 ṭohŏrāh에서 ṭohŏrâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 갈렸는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H3048",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 여다야이다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 begadkepat·qamats-he 규칙에 따라 Yĕdaʿyâ로 조정했다. 관용 표기는 여다야이다.",
+    "evidence": "final.json에서 translit가 Yĕḏaʿyāh에서 Yĕdaʿyāh를 거쳐 Yĕdaʿyâ로 조정되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "현재 라틴 표기가 독립 제안의 단순 다수 결과가 아니라 두 규칙의 조정 결과인데 note가 이를 설명하지 않는다."
+  },
+  {
+    "strong": "H8585",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고 qamats-he 규칙에 따라 tĕʿālâ로 조정했다.",
+    "evidence": "final.json에서 translit가 tĕʿālāh에서 tĕʿālâ로 변경되었고 ruleAdjusted가 true다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 갈렸는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  }
+]
