@@ -1,0 +1,412 @@
+{
+  "items": [
+    {
+      "shard": "AD",
+      "strong": "H7526",
+      "lemma": "רְצִין",
+      "lang": "hebrew",
+      "glossEn": "Rezin.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Rəṣîn",
+          "translitKo": "르친",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rəṣîn",
+          "translitKo": "르친",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "rəṣîn",
+          "translitKo": "레친",
+          "note": "관용 표기는 '르신'이나 학술 표기를 따름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕṣîn",
+          "translitKo": "레친",
+          "note": "학술 표기는 레친이다. 한국어 성경 관용 표기는 르신이다."
+        }
+      ]
+    },
+    {
+      "shard": "AD",
+      "strong": "H2166",
+      "lemma": "זְמָן",
+      "lang": "hebrew",
+      "glossEn": "season, time.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "zəmān",
+          "translitKo": "즈만",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "zəmān",
+          "translitKo": "즈만",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "zəmān",
+          "translitKo": "제만",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zĕmān",
+          "translitKo": "제만",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AD",
+      "strong": "H7123",
+      "lemma": "קְרָא",
+      "lang": "hebrew",
+      "glossEn": "call, cry, read.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "qərāʾ",
+          "translitKo": "크라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "qərāʾ",
+          "translitKo": "크라",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "qərāʾ",
+          "translitKo": "케라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "qĕrāʾ",
+          "translitKo": "케라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AD",
+      "strong": "G1601",
+      "lemma": "ἐκπίπτω",
+      "lang": "greek",
+      "glossEn": "be cast, fail, fall (away, off), take none effect",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekpíptō",
+          "translitKo": "엑핍토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekpíptō",
+          "translitKo": "에크피프토",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekpíptō",
+          "translitKo": "에크피프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekpíptō",
+          "translitKo": "에크핍토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AD",
+      "strong": "G1581",
+      "lemma": "ἐκκόπτω",
+      "lang": "greek",
+      "glossEn": "cut down (off, out), hew down, hinder",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekkóptō",
+          "translitKo": "엑콥토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekkóptō",
+          "translitKo": "에크코프토",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekkóptō",
+          "translitKo": "에크코프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekkóptō",
+          "translitKo": "에콥토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AD",
+      "strong": "G1459",
+      "lemma": "ἐγκαταλείπω",
+      "lang": "greek",
+      "glossEn": "forsake, leave",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "enkataleípō",
+          "translitKo": "엥카탈레이포",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "enkataleípō",
+          "translitKo": "엔카탈레이포",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "enkataleípō",
+          "translitKo": "엔카탈레이포",
+          "note": "γ가 κ 앞에 올 때의 비음 반영"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "enkataleípō",
+          "translitKo": "엥카탈레이포",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AE",
+      "strong": "H7935",
+      "lemma": "שְׁכַנְיָה",
+      "lang": "hebrew",
+      "glossEn": "Shecaniah, Shechaniah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šᵊḵanyāh",
+          "translitKo": "스가냐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šəkanyâ",
+          "translitKo": "셰카냐",
+          "note": "관용 표기 스가냐"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "šəkanyâ",
+          "translitKo": "셰카냐",
+          "note": "관용 표기 스가냐"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šəkanyāh",
+          "translitKo": "셰칸야",
+          "note": "개역개정 관용 표기는 '스가냐'이나, SBL 학술 음역은 셰칸야(šəkanyāh)다."
+        }
+      ]
+    },
+    {
+      "shard": "AE",
+      "strong": "H5989",
+      "lemma": "עַמִּיהוּד",
+      "lang": "hebrew",
+      "glossEn": "Ammihud.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿAmmîhûḏ",
+          "translitKo": "암미훗",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿammîhûd",
+          "translitKo": "암미후드",
+          "note": "관용 표기 암미훗"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʿammîhûd",
+          "translitKo": "암미후드",
+          "note": "관용 표기 암미훗"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿammîhûd",
+          "translitKo": "아미후드",
+          "note": "개역개정 관용 표기는 '암미훗'이나, SBL 학술 음역은 아미후드(ʿammîhûd)다."
+        }
+      ]
+    },
+    {
+      "shard": "AE",
+      "strong": "H6881",
+      "lemma": "צׇרְעָה",
+      "lang": "hebrew",
+      "glossEn": "Zareah, Zorah, Zoreah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ṣorʿāh",
+          "translitKo": "초르아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ṣārʿâ",
+          "translitKo": "차르아",
+          "note": "관용 표기 소라"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ṣārʿâ",
+          "translitKo": "차르아",
+          "note": "관용 표기 소라"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ṣorʿâ",
+          "translitKo": "초르아",
+          "note": "개역개정 관용 표기는 '소라'이나, SBL 학술 음역은 초르아(ṣorʿâ)다."
+        }
+      ]
+    },
+    {
+      "shard": "AF",
+      "strong": "H4916",
+      "lemma": "מִשְׁלוֹחַ",
+      "lang": "hebrew",
+      "glossEn": "to lay, to put, sending (forth), to set.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mišlōaḥ",
+          "translitKo": "미슐로아흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mišlôaḥ",
+          "translitKo": "미쉴로아흐",
+          "note": "furtive patach 적용"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "mišlôaḥ",
+          "translitKo": "미쉴로아흐",
+          "note": "furtive patach 적용"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mišlôaḥ",
+          "translitKo": "미쉬로아흐",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AF",
+      "strong": "H4079",
+      "lemma": "מִדְיָן",
+      "lang": "hebrew",
+      "glossEn": "brawling, contention(-ous).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Miḏyān",
+          "translitKo": "미디안",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "midyān",
+          "translitKo": "미드얀",
+          "note": "관용 표기는 '미디안'이다."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "midyān",
+          "translitKo": "미디안",
+          "note": "관용 표기 미디안을 따름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "midyān",
+          "translitKo": "미드얀",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AF",
+      "strong": "G2107",
+      "lemma": "εὐδοκία",
+      "lang": "greek",
+      "glossEn": "desire, good pleasure (will), X seem good",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "eudokía",
+          "translitKo": "유도키아",
+          "note": "ευ는 후속 유성 자음 앞에서 에우가 아닌 유로 관용 표기."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "eudokía",
+          "translitKo": "에우도키아",
+          "note": "ευ는 후속 자음에 따라 갈릴 수 있으나 에우로 표기"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "eudokía",
+          "translitKo": "에우도키아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "eudokía",
+          "translitKo": "유도키아",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

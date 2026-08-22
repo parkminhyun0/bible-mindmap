@@ -1,0 +1,89 @@
+{
+  "model": "gptoss120b",
+  "rulings": [
+    {
+      "strong": "H7526",
+      "translit": "rəṣîn",
+      "translitKo": "레친",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": "관용 표기는 '르신'이나 학술 표기를 따름"
+    },
+    {
+      "strong": "H2166",
+      "translit": "zəmān",
+      "translitKo": "제만",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H7123",
+      "translit": "qərāʾ",
+      "translitKo": "케라",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "G1601",
+      "translit": "ekpíptō",
+      "translitKo": "엑핍토",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "G1581",
+      "translit": "ekkóptō",
+      "translitKo": "엑콥토",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "G1459",
+      "translit": "enkataleípō",
+      "translitKo": "엔카탈레이포",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": "γ가 κ 앞에 올 때의 비음 반영"
+    },
+    {
+      "strong": "H7935",
+      "translit": "Šᵊḵanyāh",
+      "translitKo": "스가냐",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5989",
+      "translit": "ʿAmmîhûḏ",
+      "translitKo": "암미훗",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6881",
+      "translit": "Ṣorʿāh",
+      "translitKo": "초르아",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4916",
+      "translit": "mišlōaḥ",
+      "translitKo": "미슐로아흐",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4079",
+      "translit": "Miḏyān",
+      "translitKo": "미디안",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "G2107",
+      "translit": "eudokía",
+      "translitKo": "유도키아",
+      "evidence": "Based on existing transliteration conventions in src/data/koreanGloss*.js, bibleReferences.js, and contextChapterCards*.js",
+      "note": "ευ는 후속 유성 자음 앞에서 에우가 아닌 유로 관용 표기."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "strong": "H672",
+    "field": "translit",
+    "current": "ʾephrāt",
+    "suggested": "ʾeprāt",
+    "evidence": ".pipeline/task15/WORKER_SPEC.md batch 02 규칙 1(베가드케파트 연음 기호 및 ph 등 미사용); .pipeline/task15/final.json H672 note('SBL 학술 음역은 에프라트(ʾeprāt)다.')",
+    "severity": "medium",
+    "reason": "히브리어 pe(פ) 표기에서 Rule 1에 따라 ph가 아닌 p를 사용해야 하며, note의 학술 음역 표기(ʾeprāt)와도 불일치한다."
+  },
+  {
+    "strong": "H2128",
+    "field": "translit",
+    "current": "zîph",
+    "suggested": "zîp",
+    "evidence": ".pipeline/task15/WORKER_SPEC.md batch 02 규칙 1(베가드케파트 연음 기호 및 ph 등 미사용); .pipeline/task15/final.json H2128 note('SBL 학술 음역은 지프(zîp)다.')",
+    "severity": "medium",
+    "reason": "히브리어 어말 pe(ף) 표기에서 Rule 1에 따라 ph가 아닌 p를 사용해야 하며, note의 학술 음역 표기(zîp)와도 불일치한다."
+  },
+  {
+    "strong": "H6846",
+    "field": "translit",
+    "current": "ṣĕphanyâ",
+    "suggested": "ṣĕpanyâ",
+    "evidence": ".pipeline/task15/WORKER_SPEC.md batch 02 규칙 1(베가드케파트 연음 기호 및 ph 등 미사용); .pipeline/task15/final.json H6846 entry",
+    "severity": "medium",
+    "reason": "히브리어 pe(פ) 표기에서 Rule 1에 따라 ph가 아닌 p를 사용해야 하므로 ṣĕphanyâ가 아니라 ṣĕpanyâ여야 한다."
+  },
+  {
+    "strong": "H8018",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용 표기는 '셀레먀'이나, SBL 학술 음역은 셸렘야(šelemyāh)다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용 표기는 '셀레먀'이나, SBL 학술 음역은 셸렘야(šelemyâ)다.",
+    "evidence": ".pipeline/task15/final.json H8018 entry: translit가 šelemyâ로 확정되어 있음; qamats-he 규칙",
+    "severity": "low",
+    "reason": "translit 필드는 qamats-he 규칙에 따라 šelemyâ로 되어 있으나, note에는 조정 전 표기인 šelemyāh가 남아 있어 모순된다."
+  }
+]

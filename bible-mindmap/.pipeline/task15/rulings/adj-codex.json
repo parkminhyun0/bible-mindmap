@@ -1,0 +1,89 @@
+{
+  "model": "codex",
+  "rulings": [
+    {
+      "strong": "H7526",
+      "translit": "rĕṣîn",
+      "translitKo": "레친",
+      "evidence": "단순 쉐바는 ĕ로 표기하고 '에/레/베'로 음역하는 선례(lĕbānôn→레바논, kĕsîl→케실)를 따름.",
+      "note": "한국어 성경 관용 표기는 르신이나, 학술 음역을 따름."
+    },
+    {
+      "strong": "H2166",
+      "translit": "zĕmān",
+      "translitKo": "제만",
+      "evidence": "단순 쉐바 ĕ 반영 선례(šĕnayim, kĕsîl)에 따라 zĕmān, 제만으로 판정.",
+      "note": ""
+    },
+    {
+      "strong": "H7123",
+      "translit": "qĕrāʾ",
+      "translitKo": "케라",
+      "evidence": "단순 쉐바 ĕ 반영 선례(qĕhāt→케핫, qĕlālâ→켈랄라)에 따라 qĕrāʾ, 케라로 판정.",
+      "note": ""
+    },
+    {
+      "strong": "G1601",
+      "translit": "ekpíptō",
+      "translitKo": "에크핍토",
+      "evidence": "κ 뒤에 파열음이 올 때 '크'로 적는 선례(ekporeúomai→에크포류오마이)와, πτω를 받침 ㅂ으로 적는 선례(πίπτω→핍토)를 따름.",
+      "note": ""
+    },
+    {
+      "strong": "G1581",
+      "translit": "ekkóptō",
+      "translitKo": "에콥토",
+      "evidence": "중복 자음 kk는 하나로 적는 선례(ekklēsía→에클레시아)와, πτω를 받침 ㅂ으로 적는 선례(πίπτω→핍토)를 따름.",
+      "note": ""
+    },
+    {
+      "strong": "G1459",
+      "translit": "enkataleípō",
+      "translitKo": "엥카탈레이포",
+      "evidence": "γ가 κ 앞에 올 때 nk로 음역하고 받침 ㅇ으로 적는 선례(anánkē→아낭케)를 따름.",
+      "note": "γ가 κ 앞에 올 때의 비음(n) 반영"
+    },
+    {
+      "strong": "H7935",
+      "translit": "šĕkanyâ",
+      "translitKo": "셰카냐",
+      "evidence": "단순 쉐바 ĕ 반영 선례(zĕkaryâ→제카르야)와 nyâ를 '냐'로 적는 선례(mattanyâ→마타냐)를 따름.",
+      "note": "한국어 성경 관용 표기는 스가냐이나, 학술 음역을 따름."
+    },
+    {
+      "strong": "H5989",
+      "translit": "ʿammîhûd",
+      "translitKo": "아미후드",
+      "evidence": "중복 자음(다게쉬 포르테)을 한글 받침으로 겹쳐 적지 않는 규칙(אַתָּה→아타)과, ע를 한글로 표기하지 않는 규칙을 따름.",
+      "note": "한국어 성경 관용 표기는 암미훗이나, 학술 음역을 따름."
+    },
+    {
+      "strong": "H6881",
+      "translit": "ṣorʿâ",
+      "translitKo": "초르아",
+      "evidence": "폐음절 무강세의 카메츠 하투프(o)를 반영하고, ע를 한글로 표기하지 않는 규칙을 따름.",
+      "note": "한국어 성경 관용 표기는 소라이나, 학술 음역을 따름."
+    },
+    {
+      "strong": "H4916",
+      "translit": "mišlôaḥ",
+      "translitKo": "미쉬로아흐",
+      "evidence": "음절 말 שׁ를 쉬로 적는 규칙(mišpāṭ→미쉬파트)과 furtive patach(a)를 반영하는 선례를 따름.",
+      "note": "음절 말 שׁ는 '쉬'로 적고, furtive patach를 적용함."
+    },
+    {
+      "strong": "H4079",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "evidence": "베가드케파트 연음을 무음가로 적는 규칙(d)과 선례 H4080(midyān→미드얀)을 따름.",
+      "note": "한국어 성경 관용 표기는 미디안이나, 학술 음역을 따름."
+    },
+    {
+      "strong": "G2107",
+      "translit": "eudokía",
+      "translitKo": "유도키아",
+      "evidence": "εὐ- 계열 선례(eudokéō→유도케오, euangélion→유앙겔리온)를 따라 ευ를 '유'로 적는 규칙을 따름.",
+      "note": "ευ는 후속 자음에 따라 갈릴 수 있으나 선례를 따라 '유'로 표기함."
+    }
+  ]
+}

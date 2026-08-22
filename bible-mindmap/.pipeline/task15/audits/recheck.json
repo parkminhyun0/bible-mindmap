@@ -1,0 +1,47 @@
+[
+  {
+    "strong": "H672",
+    "field": "translit",
+    "current": "ʾephrāt",
+    "suggested": "ʾeprāt",
+    "evidence": "WORKER_SPEC.md batch 02 규칙 1은 פ를 ph가 아닌 p로 표기하며, final.json H672 note도 SBL 표기를 ʾeprāt로 명시한다.",
+    "severity": "medium",
+    "reason": "확정된 배포 음역 규칙과 동일 항목의 note를 동시에 위반하는 회귀다."
+  },
+  {
+    "strong": "H2128",
+    "field": "translit",
+    "current": "zîph",
+    "suggested": "zîp",
+    "evidence": "WORKER_SPEC.md batch 02 규칙 1은 어말 פ도 p로 표기하며, final.json H2128 note는 SBL 표기를 zîp로 명시한다.",
+    "severity": "medium",
+    "reason": "어말 פ의 ph 표기는 확정 규칙과 자기 note에 모두 모순된다."
+  },
+  {
+    "strong": "H6846",
+    "field": "translit",
+    "current": "ṣĕphanyâ",
+    "suggested": "ṣĕpanyâ",
+    "evidence": "WORKER_SPEC.md batch 02 규칙 1은 פ를 ph가 아닌 p로 표기한다. final.json은 H6846에 ruleAdjusted=true를 기록했지만 결과값은 여전히 ph다.",
+    "severity": "medium",
+    "reason": "규칙 적용 표시 후에도 규칙 적용 전 값이 남아 있어 명백한 적용 회귀다."
+  },
+  {
+    "strong": "H8018",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용 표기는 '셀레먀'이나, SBL 학술 음역은 셸렘야(šelemyāh)다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용 표기는 '셀레먀'이나, SBL 학술 음역은 셸렘야(šelemyâ)다.",
+    "evidence": "final.json H8018의 translit는 šelemyâ이며, 같은 note는 qamats-he 조정 전인 šelemyāh를 가리킨다.",
+    "severity": "low",
+    "reason": "규칙 적용 후 translit와 note의 SBL 표기가 서로 달라 note 모순이 남았다."
+  },
+  {
+    "strong": "G2107",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ευ는 후속 자음에 따라 갈릴 수 있으나 선례를 따라 '유'로 표기함.",
+    "suggested": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 배포 선례에 따라 ευ를 '유' 계열로 표기함.",
+    "evidence": "WORKER_SPEC.md는 ευ를 유 계열 한 음절로 고정하고 후속 자음 분기를 폐기한다. AUDIT_DECISION.md도 해당 낡은 규칙을 오판 원인으로 판정한다.",
+    "severity": "medium",
+    "reason": "현재 값 유도키아 자체는 맞지만 note가 폐기된 후속 자음 분기 규칙을 여전히 주장해 규칙과 모순된다."
+  }
+]
