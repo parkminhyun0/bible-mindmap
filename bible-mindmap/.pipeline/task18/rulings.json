@@ -1,0 +1,224 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "gptoss120b"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    },
+    {
+      "model": "gptoss120b",
+      "rules": {}
+    }
+  ],
+  "tieCount": 1,
+  "ties": [
+    {
+      "strong": "H1806",
+      "koRank": [
+        [
+          "들라야",
+          2
+        ],
+        [
+          "델라야",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "dĕlāyâ",
+          2
+        ],
+        [
+          "dəlāyā",
+          1
+        ],
+        [
+          "delāyāh",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H1806",
+      "lemma": "דְּלָיָה",
+      "translit": "dĕlāyâ",
+      "translitKo": "들라야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 학술 음역을 표제로 삼고 관용 성경 표기 들라야를 따른다."
+    },
+    {
+      "strong": "H4812",
+      "lemma": "מְרָיוֹת",
+      "translit": "mĕrāyôt",
+      "translitKo": "메라요트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 학술 표기는 메라요트(mĕrāyôt)다. 개역개정 관용 표기는 므라욧이다."
+    },
+    {
+      "strong": "H3672",
+      "lemma": "כִּנְּרוֹת",
+      "translit": "kinnĕrôt",
+      "translitKo": "키네로트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기는 키네로트(kinnĕrôt)다. 개역개정 관용 표기는 긴네롯(또는 긴네렛)이다."
+    },
+    {
+      "strong": "H2999",
+      "lemma": "יַבֹּק",
+      "translit": "yabbōq",
+      "translitKo": "야보크",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기는 야보크(yabbōq)다. 개역개정 관용 표기는 얍복이다."
+    },
+    {
+      "strong": "H6367",
+      "lemma": "פִּי הַחִירֹת",
+      "translit": "pî haḥîrōt",
+      "translitKo": "피 하히로트",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기는 피 하히로트(pî haḥîrōt)다. 개역개정 관용 표기는 비하히롯이다."
+    },
+    {
+      "strong": "G2045",
+      "lemma": "ἐρευνάω",
+      "translit": "ereunáō",
+      "translitKo": "에류나오",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ευ는 에우가 아니라 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G4348",
+      "lemma": "πρόσκομμα",
+      "translit": "próskomma",
+      "translitKo": "프로스코마",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). μμ를 한글에서 중복 표기하지 않는다."
+    },
+    {
+      "strong": "G2331",
+      "lemma": "Θεσσαλονικεύς",
+      "translit": "Thessalonikeús",
+      "translitKo": "테살로니큐스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 학술 표기는 테살로니큐스(Thessalonikeús)다. 개역개정 관용 표기는 데살로니가인이다."
+    },
+    {
+      "strong": "G1011",
+      "lemma": "βουλεύω",
+      "translit": "bouleúō",
+      "translitKo": "불류오",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ευ는 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G2292",
+      "lemma": "θαῤῥέω",
+      "translit": "tharrhéō",
+      "translitKo": "타레오",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ρρ를 한글에서 중복 표기하지 않는다."
+    },
+    {
+      "strong": "G1556",
+      "lemma": "ἐκδικέω",
+      "translit": "ekdikéō",
+      "translitKo": "에크디케오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G1573",
+      "lemma": "ἐκκακέω",
+      "translit": "ekkakéō",
+      "translitKo": "에카케오",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 중복 자음 κκ는 하나로 표기"
+    },
+    {
+      "strong": "G1562",
+      "lemma": "ἐκδύω",
+      "translit": "ekdýō",
+      "translitKo": "에크뒤오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G4692",
+      "lemma": "σπεύδω",
+      "translit": "speúdō",
+      "translitKo": "스퓨도",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ευ는 에우가 아니라 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G4125",
+      "lemma": "πλευρά",
+      "translit": "pleurá",
+      "translitKo": "플류라",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ευ는 유 계열 한 음절로 적는다."
+    }
+  ]
+}

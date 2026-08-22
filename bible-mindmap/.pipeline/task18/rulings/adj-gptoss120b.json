@@ -1,0 +1,20 @@
+{
+  "model": "gptoss120b",
+  "rulings": [
+    {"strong":"H1806","translit":"dĕlāyâ","translitKo":"들라야","evidence":"src/data/koreanGloss.js","note":""},
+    {"strong":"H4812","translit":"mĕrāyôt","translitKo":"므라요트","evidence":"src/data/koreanGloss.js","note":"관용 표기(므라욧)와 다름"},
+    {"strong":"H3672","translit":"kinnĕrôt","translitKo":"키네로트","evidence":"src/data/koreanGloss.js","note":"관용 표기(긴네롯)와 다름, 다게쉬 포르테 겹쳐 적지 않음"},
+    {"strong":"H2999","translit":"yabbōq","translitKo":"야보크","evidence":"src/data/koreanGloss.js","note":"관용 표기 얍복"},
+    {"strong":"H6367","translit":"pî haḥîrōt","translitKo":"피 하히로트","evidence":"src/data/koreanGloss.js","note":"관용 표기 비하히롯"},
+    {"strong":"G2045","translit":"ereunáō","translintKo":"에류나오","evidence":"src/data/koreanGloss.js","note":"ευ는 유 계열 한 음절로 표기"},
+    {"strong":"G4348","translit":"próskomma","translitKo":"프로스코마","evidence":"src/data/koreanGloss.js","note":"중복 자음 μμ는 하나로 표기"},
+    {"strong":"G2331","translit":"Thessalonikeús","translitKo":"테살로니큐스","evidence":"src/data/koreanGloss.js","note":"관용 표기는 데살로니가인. 중복 자음 σσ 생략, ευ는 유 계열로 표기"},
+    {"strong":"G1011","translit":"bouleúō","translitKo":"불류오","evidence":"src/data/koreanGloss.js","note":"ευ는 유 계열 한 음절로 표기"},
+    {"strong":"G2292","translit":"tharrhéō","translitKo":"타레오","evidence":"src/data/koreanGloss.js","note":"중복 자음 ρρ는 하나로 표기"},
+    {"strong":"G1556","translit":"ekdikéō","translintKo":"에크디케오","evidence":"src/data/koreanGloss.js","note":""},
+    {"strong":"G1573","translit":"ekkakéō","translitKo":"에카케오","evidence":"src/data/koreanGloss.js","note":"중복 자음 κκ는 하나로 표기"},
+    {"strong":"G1562","translit":"ekdýō","translintKo":"에크뒤오","evidence":"src/data/koreanGloss.js","note":"υ는 위 계열로 표기"},
+    {"strong":"G4692","translit":"speúdō","translintKo":"스퓨도","evidence":"src/data/koreanGloss.js","note":"ευ는 유 계열 한 음절로 표기"},
+    {"strong":"G4125","translit":"pleurá","translintKo":"플류라","evidence":"src/data/koreanGloss.js","note":"ευ는 유 계열 한 음절로 표기"}
+  ]
+}

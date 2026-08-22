@@ -1,0 +1,56 @@
+[
+  {
+    "strong": "H3204",
+    "field": "translit",
+    "current": "yĕkonyā",
+    "suggested": "yĕkonyâ",
+    "evidence": "lemma יְכׇנְיָה; final.json changes에는 shewa만 적용되어 있고 qamats-he가 남아 있다. WORKER_SPEC.md의 SBL qamats-he 표기 원칙은 어말 ה를 â로 둔다.",
+    "severity": "medium",
+    "reason": "규칙 적용 후에도 어말 qamats-he의 ā 표기가 남아 있어 확정된 배포 음역 규칙과 모순되는 회귀다."
+  },
+  {
+    "strong": "H4543",
+    "field": "translit",
+    "current": "miskennâ",
+    "suggested": "miskĕnâ",
+    "evidence": "lemma מִסְכְּנָה; 다게쉬는 כְּ에 있고 נ에는 없으며, WORKER_SPEC.md는 원어 자음과 모음부호에 맞춰 SBL 음역을 구성하도록 한다.",
+    "severity": "medium",
+    "reason": "현재 값은 lemma에 없는 nun 중복과 כְּ의 유성 쉐바 표기를 반영하지 않아 원어 표제형 및 SBL 음역 규칙과 모순된다."
+  },
+  {
+    "strong": "H8140",
+    "field": "translit",
+    "current": "šnâ",
+    "suggested": "šĕnâ",
+    "evidence": "lemma שְׁנָה; 어두 שְׁ의 유성 쉐바는 ĕ로 표기한다. WORKER_SPEC.md의 SBL 음역 원칙과 동일하다.",
+    "severity": "medium",
+    "reason": "현재 값은 lemma의 어두 유성 쉐바를 탈락시킨 규칙 적용 회귀다."
+  },
+  {
+    "strong": "G1329",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. ευ 후속 자음 없음 (모음 연결)",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "evidence": "WORKER_SPEC.md는 ευ를 후속 자음에 따라 분기하지 않는 유 계열 한 음절로 고정하고, 폐기된 분기 규칙을 낡은 문장으로 명시한다. final.json의 translitKo는 이미 디에르메뉴오다.",
+    "severity": "medium",
+    "reason": "현재 한글 표기는 확정 규칙에 맞지만 note가 폐기된 후속 자음 분기를 전제로 해 확정 표기·명세와 모순된다."
+  },
+  {
+    "strong": "G5360",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기와 개역개정 관용 표기가 일치한다(빌라델비아/필라델피아).",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 필라델피아다. 개역개정 관용 표기는 빌라델비아다.",
+    "evidence": "final.json의 translitKo는 필라델피아이고 프로젝트 성경 관용 표기 선례는 빌라델비아다. 두 문자열은 서로 다르다.",
+    "severity": "medium",
+    "reason": "서로 다른 학술 표기와 관용 표기를 일치한다고 서술한 note의 논리적 모순이다."
+  },
+  {
+    "strong": "H1806",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 학술 음역을 표제로 삼고 관용 성경 표기 들라야를 따른다.",
+    "suggested": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 학술 표기는 델라야다. 개역개정 관용 표기는 들라야다.",
+    "evidence": "lemma דְּלָיָה와 라틴 dĕlāyâ의 학술 한글 대응은 델라야이며, 프로젝트 관용 표기 선례는 들라야다. WORKER_SPEC.md는 학술 표기를 표제로 삼고 관용 차이를 note에 설명하도록 한다.",
+    "severity": "medium",
+    "reason": "현재 note는 학술 표기를 표제로 삼는다고 하면서 관용 표기를 따른다고 서술해 적용 원칙이 충돌한다. 감사안의 데라야는 델라야로 교정했다."
+  }
+]

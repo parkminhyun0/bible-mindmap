@@ -1,0 +1,11 @@
+[
+  {
+    "strong": "G1329",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. ευ 후속 자음 없음 (모음 연결)",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "evidence": ".pipeline/task18/WORKER_SPEC.md 헬라어 ευ 규칙(유 계열 한 음절 표기, 후속 자음에 따른 분기 규칙 폐지); .pipeline/task18/final.json G1329 entry(translitKo '디에르메뉴오') 및 G4909 note_stale 변경 선례",
+    "severity": "medium",
+    "reason": "G1329의 한글 음역은 WORKER_SPEC.md 규칙에 따라 '디에르메뉴오'(유 계열 한 음절)로 정상 반영되었으나, note에는 기존 3개 모델의 제안('디에르메네우오')에 딸려 있던 낡은 분기 사유('ευ 후속 자음 없음 (모음 연결)')가 잔존하여 확정 표기 및 명세와 모순된다."
+  }
+]

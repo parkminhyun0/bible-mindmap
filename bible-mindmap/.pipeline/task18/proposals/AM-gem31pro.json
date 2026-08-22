@@ -1,0 +1,693 @@
+{
+  "shard": "AM",
+  "model": "gem31pro",
+  "count": 98,
+  "entries": [
+    {
+      "strong": "H3936",
+      "lemma": "לַעְדָּן",
+      "translit": "laʿdān",
+      "translitKo": "라단",
+      "note": "ע는 한글로 따로 적지 않는 것을 원칙으로 함"
+    },
+    {
+      "strong": "H2039",
+      "lemma": "הָרָן",
+      "translit": "hārān",
+      "translitKo": "하란",
+      "note": ""
+    },
+    {
+      "strong": "H1806",
+      "lemma": "דְּלָיָה",
+      "translit": "delāyāh",
+      "translitKo": "델라야",
+      "note": ""
+    },
+    {
+      "strong": "H6274",
+      "lemma": "עׇתְנִיאֵל",
+      "translit": "ʿotnîʾēl",
+      "translitKo": "오트니엘",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H8256",
+      "lemma": "שִׁקְמָה",
+      "translit": "šiqmāh",
+      "translitKo": "시크마",
+      "note": ""
+    },
+    {
+      "strong": "H8289",
+      "lemma": "שָׁרוֹן",
+      "translit": "šārôn",
+      "translitKo": "샤론",
+      "note": ""
+    },
+    {
+      "strong": "H4207",
+      "lemma": "מַזְלֵג",
+      "translit": "mazlēg",
+      "translitKo": "마즐레그",
+      "note": ""
+    },
+    {
+      "strong": "H2212",
+      "lemma": "זָקַק",
+      "translit": "zāqaq",
+      "translitKo": "자카크",
+      "note": ""
+    },
+    {
+      "strong": "H293",
+      "lemma": "אֲחִינֹעַם",
+      "translit": "ʾăḥînōʿam",
+      "translitKo": "아히노암",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H3204",
+      "lemma": "יְכׇנְיָה",
+      "translit": "yekonyāh",
+      "translitKo": "예콘야",
+      "note": ""
+    },
+    {
+      "strong": "H4762",
+      "lemma": "מַרְאֵשָׁה",
+      "translit": "marʾēšāh",
+      "translitKo": "마르에샤",
+      "note": ""
+    },
+    {
+      "strong": "H4812",
+      "lemma": "מְרָיוֹת",
+      "translit": "merāyôt",
+      "translitKo": "메라요트",
+      "note": ""
+    },
+    {
+      "strong": "H4409",
+      "lemma": "מַלּוּךְ",
+      "translit": "mallûk",
+      "translitKo": "말루크",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H2918",
+      "lemma": "טִירָה",
+      "translit": "ṭîrāh",
+      "translitKo": "티라",
+      "note": ""
+    },
+    {
+      "strong": "H7156",
+      "lemma": "קִרְיָתַיִם",
+      "translit": "qiryātayim",
+      "translitKo": "키르야타임",
+      "note": ""
+    },
+    {
+      "strong": "H8590",
+      "lemma": "תַּעֲנָךְ",
+      "translit": "taʿănāk",
+      "translitKo": "타아나크",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H1756",
+      "lemma": "דּוֹר",
+      "translit": "dôr",
+      "translitKo": "도르",
+      "note": ""
+    },
+    {
+      "strong": "H682",
+      "lemma": "אָצֵל",
+      "translit": "ʾāṣēl",
+      "translitKo": "아첼",
+      "note": ""
+    },
+    {
+      "strong": "H8185",
+      "lemma": "שַׂעֲרָה",
+      "translit": "śaʿărāh",
+      "translitKo": "사아라",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H590",
+      "lemma": "אֳנִי",
+      "translit": "ʾŏnî",
+      "translitKo": "오니",
+      "note": ""
+    },
+    {
+      "strong": "H7895",
+      "lemma": "שִׁישַׁק",
+      "translit": "šîšaq",
+      "translitKo": "시샤크",
+      "note": ""
+    },
+    {
+      "strong": "H3672",
+      "lemma": "כִּנְּרוֹת",
+      "translit": "kinnerôt",
+      "translitKo": "키네로트",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H6835",
+      "lemma": "צַפַּחַת",
+      "translit": "ṣappaḥat",
+      "translitKo": "차파하트",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H5692",
+      "lemma": "עֻגָּה",
+      "translit": "ʿuggāh",
+      "translitKo": "우가",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음, ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H6452",
+      "lemma": "פָּסַח",
+      "translit": "pāsaḥ",
+      "translitKo": "파사흐",
+      "note": ""
+    },
+    {
+      "strong": "H3952",
+      "lemma": "לָקַק",
+      "translit": "lāqaq",
+      "translitKo": "라카크",
+      "note": ""
+    },
+    {
+      "strong": "H2426",
+      "lemma": "חֵיל",
+      "translit": "ḥêl",
+      "translitKo": "헤일",
+      "note": ""
+    },
+    {
+      "strong": "H1315",
+      "lemma": "בׇּשְׂמַת",
+      "translit": "bośmat",
+      "translitKo": "보스마트",
+      "note": ""
+    },
+    {
+      "strong": "H7049",
+      "lemma": "קָלַע",
+      "translit": "qālaʿ",
+      "translitKo": "칼라",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H2339",
+      "lemma": "חוּט",
+      "translit": "ḥûṭ",
+      "translitKo": "후트",
+      "note": ""
+    },
+    {
+      "strong": "H8333",
+      "lemma": "שַׁרְשְׁרָה",
+      "translit": "šaršerāh",
+      "translitKo": "샤르셰라",
+      "note": ""
+    },
+    {
+      "strong": "H422",
+      "lemma": "אָלָה",
+      "translit": "ʾālāh",
+      "translitKo": "알라",
+      "note": ""
+    },
+    {
+      "strong": "H4543",
+      "lemma": "מִסְכְּנָה",
+      "translit": "miskenāh",
+      "translitKo": "미스케나",
+      "note": ""
+    },
+    {
+      "strong": "H1672",
+      "lemma": "דָּאַג",
+      "translit": "dāʾag",
+      "translitKo": "다아그",
+      "note": ""
+    },
+    {
+      "strong": "H821",
+      "lemma": "אַשְׁמֻרָה",
+      "translit": "ʾašmurāh",
+      "translitKo": "아쉬무라",
+      "note": "음절 말 שׁ는 쉬로 표기"
+    },
+    {
+      "strong": "H662",
+      "lemma": "אָפַק",
+      "translit": "ʾāpaq",
+      "translitKo": "아파크",
+      "note": ""
+    },
+    {
+      "strong": "H2356",
+      "lemma": "חוֹר",
+      "translit": "ḥôr",
+      "translitKo": "호르",
+      "note": ""
+    },
+    {
+      "strong": "H6484",
+      "lemma": "פָּצַר",
+      "translit": "pāṣar",
+      "translitKo": "파차르",
+      "note": ""
+    },
+    {
+      "strong": "H5825",
+      "lemma": "עֲזֵקָה",
+      "translit": "ʿăzēqāh",
+      "translitKo": "아제카",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H2239",
+      "lemma": "זֶרֶת",
+      "translit": "zeret",
+      "translitKo": "제레트",
+      "note": ""
+    },
+    {
+      "strong": "H830",
+      "lemma": "אַשְׁפֹּת",
+      "translit": "ʾašpôt",
+      "translitKo": "아쉬포트",
+      "note": "음절 말 שׁ는 쉬로 표기"
+    },
+    {
+      "strong": "H7696",
+      "lemma": "שָׁגַע",
+      "translit": "šāgaʿ",
+      "translitKo": "샤가",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H2793",
+      "lemma": "חֹרֶשׁ",
+      "translit": "ḥōreš",
+      "translitKo": "호레쉬",
+      "note": "음절 말 שׁ는 쉬로 표기"
+    },
+    {
+      "strong": "H185",
+      "lemma": "אַוָּה",
+      "translit": "ʾawwāh",
+      "translitKo": "아와",
+      "note": "자음 ו는 w로 보고 와로 표기, 다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H5849",
+      "lemma": "עָטַר",
+      "translit": "ʿāṭar",
+      "translitKo": "아타르",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H3919",
+      "lemma": "לַיִשׁ",
+      "translit": "layiš",
+      "translitKo": "라이쉬",
+      "note": "음절 말 שׁ는 쉬로 표기"
+    },
+    {
+      "strong": "H8639",
+      "lemma": "תַּרְדֵּמָה",
+      "translit": "tardēmāh",
+      "translitKo": "타르데마",
+      "note": ""
+    },
+    {
+      "strong": "H3544",
+      "lemma": "כֵּהֶה",
+      "translit": "kēheh",
+      "translitKo": "케헤",
+      "note": ""
+    },
+    {
+      "strong": "H7253",
+      "lemma": "רֶבַע",
+      "translit": "rebaʿ",
+      "translitKo": "레바",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H406",
+      "lemma": "אִכָּר",
+      "translit": "ʾikkār",
+      "translitKo": "이카르",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H2189",
+      "lemma": "זַעֲוָה",
+      "translit": "zaʿăwāh",
+      "translitKo": "자아와",
+      "note": "ע는 한글로 따로 적지 않음, 자음 ו는 w로 보고 와로 표기"
+    },
+    {
+      "strong": "H8322",
+      "lemma": "שְׁרֵקָה",
+      "translit": "šerēqāh",
+      "translitKo": "셰레카",
+      "note": ""
+    },
+    {
+      "strong": "H5394",
+      "lemma": "נָשַׁל",
+      "translit": "nāšal",
+      "translitKo": "나샬",
+      "note": ""
+    },
+    {
+      "strong": "H1239",
+      "lemma": "בָּקַר",
+      "translit": "bāqar",
+      "translitKo": "바카르",
+      "note": ""
+    },
+    {
+      "strong": "H1442",
+      "lemma": "גָּדַף",
+      "translit": "gādap",
+      "translitKo": "가다프",
+      "note": ""
+    },
+    {
+      "strong": "H2397",
+      "lemma": "חָח",
+      "translit": "ḥāḥ",
+      "translitKo": "하흐",
+      "note": ""
+    },
+    {
+      "strong": "H494",
+      "lemma": "אֶלְנָתָן",
+      "translit": "ʾelnātān",
+      "translitKo": "엘나탄",
+      "note": ""
+    },
+    {
+      "strong": "H4525",
+      "lemma": "מַסְגֵּר",
+      "translit": "masgēr",
+      "translitKo": "마스게르",
+      "note": ""
+    },
+    {
+      "strong": "H5590",
+      "lemma": "סָעַר",
+      "translit": "sāʿar",
+      "translitKo": "사아르",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H3122",
+      "lemma": "יוֹנָדָב",
+      "translit": "yônādāb",
+      "translitKo": "요나다브",
+      "note": ""
+    },
+    {
+      "strong": "H7909",
+      "lemma": "שַׁכּוּל",
+      "translit": "šakkûl",
+      "translitKo": "샤쿨",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H4571",
+      "lemma": "מָעַד",
+      "translit": "māʿad",
+      "translitKo": "마아드",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H4024",
+      "lemma": "מִגְדּוֹל",
+      "translit": "migdôl",
+      "translitKo": "미그돌",
+      "note": ""
+    },
+    {
+      "strong": "H4828",
+      "lemma": "מֵרֵעַ",
+      "translit": "mērēaʿ",
+      "translitKo": "메레아",
+      "note": "어말 후음 앞 a(furtive patach) 적용, ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H5986",
+      "lemma": "עָמוֹס",
+      "translit": "ʿāmôs",
+      "translitKo": "아모스",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H2779",
+      "lemma": "חֹרֶף",
+      "translit": "ḥōrep",
+      "translitKo": "호레프",
+      "note": ""
+    },
+    {
+      "strong": "H5092",
+      "lemma": "נְהִי",
+      "translit": "nehî",
+      "translitKo": "네히",
+      "note": ""
+    },
+    {
+      "strong": "H5628",
+      "lemma": "סָרַח",
+      "translit": "sāraḥ",
+      "translitKo": "사라흐",
+      "note": ""
+    },
+    {
+      "strong": "H7117",
+      "lemma": "קְצָת",
+      "translit": "qeṣāt",
+      "translitKo": "케차트",
+      "note": ""
+    },
+    {
+      "strong": "H4332",
+      "lemma": "מִישָׁאֵל",
+      "translit": "mîšāʾēl",
+      "translitKo": "미샤엘",
+      "note": ""
+    },
+    {
+      "strong": "H8658",
+      "lemma": "תַּרְשִׁישׁ",
+      "translit": "taršîš",
+      "translitKo": "타르시쉬",
+      "note": "음절 말 שׁ는 쉬로 표기, 음절 첫소리 שׁ는 시로 표기"
+    },
+    {
+      "strong": "H7290",
+      "lemma": "רָדַם",
+      "translit": "rādam",
+      "translitKo": "라담",
+      "note": ""
+    },
+    {
+      "strong": "H4924",
+      "lemma": "מַשְׁמָן",
+      "translit": "mašmān",
+      "translitKo": "마쉬만",
+      "note": "음절 말 שׁ는 쉬로 표기"
+    },
+    {
+      "strong": "H5649",
+      "lemma": "עֲבַד",
+      "translit": "ʿăbad",
+      "translitKo": "아바드",
+      "note": "ע는 한글로 따로 적지 않음"
+    },
+    {
+      "strong": "H3367",
+      "lemma": "יְקָר",
+      "translit": "yeqār",
+      "translitKo": "예카르",
+      "note": ""
+    },
+    {
+      "strong": "H7",
+      "lemma": "אֲבַד",
+      "translit": "ʾăbad",
+      "translitKo": "아바드",
+      "note": ""
+    },
+    {
+      "strong": "H6992",
+      "lemma": "קְטַל",
+      "translit": "qeṭal",
+      "translitKo": "케탈",
+      "note": ""
+    },
+    {
+      "strong": "H746",
+      "lemma": "אֲרְיוֹךְ",
+      "translit": "ʾaryôk",
+      "translitKo": "아르요크",
+      "note": ""
+    },
+    {
+      "strong": "H5415",
+      "lemma": "נְתַן",
+      "translit": "netan",
+      "translitKo": "네탄",
+      "note": ""
+    },
+    {
+      "strong": "H236",
+      "lemma": "אֲזַל",
+      "translit": "ʾăzal",
+      "translitKo": "아잘",
+      "note": ""
+    },
+    {
+      "strong": "H3061",
+      "lemma": "יְהוּד",
+      "translit": "yehûd",
+      "translitKo": "예후드",
+      "note": ""
+    },
+    {
+      "strong": "H5559",
+      "lemma": "סְלִק",
+      "translit": "seliq",
+      "translitKo": "셀리크",
+      "note": ""
+    },
+    {
+      "strong": "H2417",
+      "lemma": "חַי",
+      "translit": "ḥay",
+      "translitKo": "하이",
+      "note": ""
+    },
+    {
+      "strong": "H3825",
+      "lemma": "לְבַב",
+      "translit": "lebab",
+      "translitKo": "레바브",
+      "note": ""
+    },
+    {
+      "strong": "H7271",
+      "lemma": "רְגַל",
+      "translit": "regal",
+      "translitKo": "레갈",
+      "note": ""
+    },
+    {
+      "strong": "H1753",
+      "lemma": "דּוּר",
+      "translit": "dûr",
+      "translitKo": "두르",
+      "note": ""
+    },
+    {
+      "strong": "H7981",
+      "lemma": "שְׁלֵט",
+      "translit": "šelēṭ",
+      "translitKo": "셸레트",
+      "note": ""
+    },
+    {
+      "strong": "H2429",
+      "lemma": "חַיִל",
+      "translit": "ḥayil",
+      "translitKo": "하일",
+      "note": ""
+    },
+    {
+      "strong": "H3961",
+      "lemma": "לִשָּׁן",
+      "translit": "liššān",
+      "translitKo": "리샨",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H7032",
+      "lemma": "קָל",
+      "translit": "qāl",
+      "translitKo": "칼",
+      "note": ""
+    },
+    {
+      "strong": "H399",
+      "lemma": "אֲכַל",
+      "translit": "ʾăkal",
+      "translitKo": "아칼",
+      "note": ""
+    },
+    {
+      "strong": "H8450",
+      "lemma": "תּוֹר",
+      "translit": "tôr",
+      "translitKo": "토르",
+      "note": ""
+    },
+    {
+      "strong": "H1113",
+      "lemma": "בֵּלְשַׁאצַּר",
+      "translit": "bēlšaṣṣar",
+      "translitKo": "벨샤차르",
+      "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+    },
+    {
+      "strong": "H3984",
+      "lemma": "מָאן",
+      "translit": "māʾn",
+      "translitKo": "마안",
+      "note": ""
+    },
+    {
+      "strong": "H7560",
+      "lemma": "רְשַׁם",
+      "translit": "rešam",
+      "translitKo": "레샴",
+      "note": ""
+    },
+    {
+      "strong": "H8140",
+      "lemma": "שְׁנָה",
+      "translit": "šenāh",
+      "translitKo": "셰나",
+      "note": ""
+    },
+    {
+      "strong": "H633",
+      "lemma": "אֱסָר",
+      "translit": "ʾĕsār",
+      "translitKo": "에사르",
+      "note": ""
+    },
+    {
+      "strong": "H4823",
+      "lemma": "מִרְמָס",
+      "translit": "mirmās",
+      "translitKo": "미르마스",
+      "note": ""
+    }
+  ]
+}
