@@ -1,0 +1,138 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H1687",
+      "translit": "dĕbîr",
+      "translitKo": "데비르",
+      "evidence": "koreanGlossTopBatch02.js:bĕhēmâ(베헤마)·gĕbûl(게불), WORKER_SPEC.md:데바쉬",
+      "note": "지성소를 뜻하는 명사다. 유성 쉐바(ĕ)를 'ㅔ'로 표기하는 학술 원칙(선례: 베헤마·게불)에 따라 데비르로 적으며, 관용 표기는 드빌이다."
+    },
+    {
+      "strong": "H6190",
+      "translit": "ʿorlâ",
+      "translitKo": "오를라",
+      "evidence": "koreanGlossTopBatch02.js:H5930(ʿōlâ→올라)·H702(ʾarbaʿ→아르바)",
+      "note": "עֹלָה(H5930, 올라)와 달리 ר 자음이 포함된 ʿorlâ이므로 오를라로 적는다."
+    },
+    {
+      "strong": "H5018",
+      "translit": "nĕbûzarʾădān",
+      "translitKo": "네부자르아단",
+      "evidence": "koreanGlossTopBatch02.js:H5002(nĕʾum→네움)·H702(ʾarbaʿ→아르바)",
+      "note": "개역개정 관용 표기는 느부사라단이다. 유성 쉐바(nĕ→네)와 어간 자음을 살린 학술 표기는 네부자르아단이다."
+    },
+    {
+      "strong": "H6593",
+      "translit": "pišteh",
+      "translitKo": "피쉬테",
+      "evidence": "koreanGlossTopBatch02.js:H6430(pĕlištî→펠리쉬티)·H4940(mišpāḥâ→미쉬파하)",
+      "note": "음절 말 שׁ(š)은 확정 규칙 3항(선례: 펠리쉬티·미쉬파하)에 따라 '쉬'로 적어 피쉬테가 된다."
+    },
+    {
+      "strong": "H2174",
+      "translit": "zimrî",
+      "translitKo": "짐리",
+      "evidence": "bibleReferences.js:Q61742(Šimšôn→심숀)·Q128569(Nəḥemyāh→느헴야), koreanGlossTopBatch02.js:H520(ʾammâ→암마)",
+      "note": "개역개정 관용 표기는 시므리다. 폐음절의 מ 받침과 ז(z→ㅈ)을 살린 학술 표기는 짐리다."
+    },
+    {
+      "strong": "H7237",
+      "translit": "rabbâ",
+      "translitKo": "라바",
+      "evidence": "koreanGlossTopBatch02.js:H1368(gibbôr→기보르)·H859(ʾattâ→아타), WORKER_SPEC.md:카포레트",
+      "note": "개역개정 관용 표기는 랍바다. 파열음의 다게쉬 포르테를 받침으로 겹쳐 적지 않는 확정 규칙 2항(선례: 기보르·아타)에 따라 라바로 적는다."
+    },
+    {
+      "strong": "H2811",
+      "translit": "ḥăšabyâ",
+      "translitKo": "하샤브야",
+      "evidence": "koreanGlossTopBatch02.js:H85(ʾabrāhām→아브라함)·H3414(yirmĕyâ→이르메야)",
+      "note": "개역개정 관용 표기는 하사뱌다. 원어 모음 patah(שַׁ→샤)와 학술 표기 규칙에 따라 하샤브야로 적는다."
+    },
+    {
+      "strong": "H7814",
+      "translit": "śĕḥôq",
+      "translitKo": "세호크",
+      "evidence": "koreanGlossGenesis1Batch01.js:ʾĕlōhîm(엘로힘), koreanGlossTopBatch02.js:šĕlôšîm(셸로심), koreanGlossTopBatch07.js:H8304(śĕrāyâ→세라야)",
+      "note": "유성 쉐바(ĕ)를 'ㅔ'로 적는 학술 규칙(선례: ʾĕlōhîm→엘로힘, śĕrāyâ→세라야)에 따라 세호크로 적는다."
+    },
+    {
+      "strong": "H8574",
+      "translit": "tannûr",
+      "translitKo": "탄누르",
+      "evidence": "koreanGlossTopBatch02.js:H520(ʾammâ→암마), koreanGlossTopBatch07.js:H8467(tĕḥinnâ→테힌나)",
+      "note": "비음 겹자음 נּ(nn)은 폐쇄음과 달리 받침+초성으로 나누는 선례(선례: ʾammâ→암마, tĕḥinnâ→테힌나)에 따라 탄누르로 적는다."
+    },
+    {
+      "strong": "H783",
+      "translit": "ʾartaḥšaštāʾ",
+      "translitKo": "아르타흐샤쉬타",
+      "evidence": "koreanGlossTopBatch02.js:H6430(pĕlištî→펠리쉬티), WORKER_SPEC.md:선례(데바쉬·쇼레쉬)",
+      "note": "개역개정 관용 표기는 아닥사스다다. 음절 말 שׁ(š)을 '쉬'로 적는 학술 표기 규칙(선례: pĕlištî→펠리쉬티)에 따라 아르타흐샤쉬타로 적는다."
+    },
+    {
+      "strong": "G5180",
+      "translit": "týptō",
+      "translitKo": "튑토",
+      "evidence": "koreanGlossTopBatch08.js:G3538(níptō→닙토)·G2928(krýptō→크립토)",
+      "note": "그리스어 자음군 πτ는 앞 음절 받침 ㅂ과 뒤 음절 ㅌ으로 적는 선례(선례: níptō→닙토, krýptō→크립토)에 따라 튑토로 적는다."
+    },
+    {
+      "strong": "G312",
+      "translit": "anangéllō",
+      "translitKo": "아낭겔로",
+      "evidence": "koreanGlossTopBatch04.js:G518(apangéllō→아팡겔로), koreanGlossTopBatch06.js:G3853(parangéllō→파랑겔로), koreanGlossTopBatch08.js:G2605(katangéllō→카탕겔로)",
+      "note": "접두사 ἀνα-와 γγ(ng)의 음역 선례(선례: apangéllō→아팡겔로, katangéllō→카탕겔로)에 따라 아낭겔로로 적는다."
+    },
+    {
+      "strong": "H5417",
+      "translit": "nĕtanʾēl",
+      "translitKo": "네탄엘",
+      "evidence": "bibleReferences.js:Q183403(Yišmāʿēl→이쉬마엘)·Q43259(Šəmûʾēl→셰무엘), koreanGlossTopBatch07.js:H5418(nĕtanyâ→네탄야)",
+      "note": "개역개정 관용 표기는 느다넬이다. 어근 결합(nĕtan + ʾēl)과 SBL 학술 표기 규칙에 따라 네탄엘로 적는다."
+    },
+    {
+      "strong": "H3378",
+      "translit": "yĕrubbaʿal",
+      "translitKo": "예루바알",
+      "evidence": "koreanGlossTopBatch02.js:H3063(yĕhûdâ→예후다)·H1368(gibbôr→기보르)",
+      "note": "개역개정 관용 표기는 여룹바알이다. 유성 쉐바(yĕ→예)와 다게쉬 포르테 단자음화(bb→ㅂ) 학술 표기 규칙에 따라 예루바알로 적는다."
+    },
+    {
+      "strong": "H3550",
+      "translit": "kĕhunnâ",
+      "translitKo": "케훈나",
+      "evidence": "koreanGlossTopBatch02.js:H3627(kĕlî→켈리)·H520(ʾammâ→암마), koreanGlossTopBatch07.js:H8467(tĕḥinnâ→테힌나)",
+      "note": "유성 쉐바는 '케'(선례: kĕlî→켈리)로 적고, 비음 겹자음 נּ은 받침과 초성으로 나누는 선례(선례: tĕḥinnâ→테힌나)에 따라 케훈나로 적는다."
+    },
+    {
+      "strong": "H3425",
+      "translit": "yĕruššâ",
+      "translitKo": "예루샤",
+      "evidence": "koreanGlossTopBatch02.js:H3063(yĕhûdâ→예후다)·H802(ʾiššâ→이샤)·H4519(mĕnaššeh→메나셰)",
+      "note": "유성 쉐바(yĕ→예)와 שׁ의 다게쉬 포르테 단자음 표기 규칙(선례: yĕhûdâ→예후다, ʾiššâ→이샤)에 따라 예루샤로 적는다."
+    },
+    {
+      "strong": "H3004",
+      "translit": "yabbāšâ",
+      "translitKo": "야바샤",
+      "evidence": "koreanGlossTopBatch02.js:H1368(gibbôr→기보르)·H859(ʾattâ→아타), WORKER_SPEC.md:카포레트",
+      "note": "다게쉬 포르테(중복 자음)는 확정 규칙 2항(선례: gibbôr→기보르, ʾattâ→아타)에 따라 받침으로 겹쳐 적지 않고 야바샤로 적는다."
+    },
+    {
+      "strong": "G5177",
+      "translit": "tynchánō",
+      "translitKo": "튄카노",
+      "evidence": "koreanGlossTopBatch08.js:G1651(elénchō→엘렝코), koreanGlossTopBatch02.js:G5485(cháris→카리스)·G1410(dýnamai→뒤나마이)",
+      "note": "그리스어 χ(chi)는 'ㅋ'으로 표기(선례: cháris→카리스, elénchō→엘렝코)하며, γχ(nch)와 υ(y) 음역 규칙에 따라 튄카노로 적는다."
+    },
+    {
+      "strong": "G1605",
+      "translit": "ekplḗssō",
+      "translitKo": "에크플레소",
+      "evidence": "koreanGlossTopBatch05.js:G1607(ekporeúomai→에크포류오마이), koreanGlossTopBatch01.js:G1537(ek→에크), WORKER_SPEC.md:탈라사",
+      "note": "κ 뒤에 파열음 π가 올 때 '에크'로 적는 선례(선례: ekporeúomai→에크포류오마이)와 σσ 단자음화 규칙(선례: 탈라사)에 따라 에크플레소로 적는다."
+    }
+  ]
+}

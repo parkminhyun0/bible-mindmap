@@ -1,0 +1,29 @@
+[
+  {
+    "strong": "G1089",
+    "field": "translitKo",
+    "current": "규오마이",
+    "suggested": "게우오마이",
+    "evidence": ".pipeline/task13/final.json entries[63]; .pipeline/task13/consensus.json G1089; .pipeline/task13/proposals/X-claudeopus5.json G1089",
+    "severity": "medium",
+    "reason": "γεύομαι의 γ는 게로, ευ는 후속 모음 앞에서 에우로 표기하는 선례와 WORKER_SPEC의 ευ 규칙에 맞아야 한다. 현재 규오마이는 υ를 위로 처리한 표기로 실제 음역 규칙과 불일치한다."
+  },
+  {
+    "strong": "G4531",
+    "field": "translitKo",
+    "current": "살류오",
+    "suggested": "살레우오",
+    "evidence": ".pipeline/task13/final.json entries[71]; .pipeline/task13/consensus.json G4531; .pipeline/task13/proposals/X-claudeopus5.json G4531",
+    "severity": "medium",
+    "reason": "σαλεύω의 ευ는 후속 모음 앞에서 에우로 표기해야 하므로 살레우오가 된다. 현재 살류오는 ευ를 단순히 류로 축약해 표기 원칙과 합의 표기를 어긴다."
+  },
+  {
+    "strong": "G3431",
+    "field": "translitKo",
+    "current": "모이큐오",
+    "suggested": "모이케우오",
+    "evidence": ".pipeline/task13/final.json entries[78]; .pipeline/task13/consensus.json G3431; .pipeline/task13/proposals/X-claudeopus5.json G3431; WORKER_SPEC.md 헬라어 ευ/χ 규칙",
+    "severity": "medium",
+    "reason": "μοιχεύω에서 χ는 ㅋ 계열로, ευ는 후속 모음 앞에서 에우로 표기해야 한다. 현재 모이큐오는 χ와 ευ를 모두 잘못 합친 표기이며 합의 표기 모이케우오와도 다르다."
+  }
+]

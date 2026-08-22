@@ -1,0 +1,651 @@
+{
+  "count": 19,
+  "items": [
+    {
+      "shard": "X",
+      "strong": "H1687",
+      "lemma": "דְּבִיר",
+      "lang": "hebrew",
+      "glossEn": "oracle.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "dᵉḇîr",
+          "translitKo": "드비르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "dĕbîr",
+          "translitKo": "데비르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "dĕbîr",
+          "translitKo": "데비르",
+          "note": "지성소를 뜻하는 명사다. 학술 표기는 데비르이며 인명/지명 관용 표기는 드빌이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "dĕḇîr",
+          "translitKo": "드비르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "X",
+      "strong": "H6190",
+      "lemma": "עׇרְלָה",
+      "lang": "hebrew",
+      "glossEn": "foreskin, [phrase] uncircumcised.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿorlâ",
+          "translitKo": "올라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿorlâ",
+          "translitKo": "오를라",
+          "note": "카메츠 하투프(qamets hatuf) 적용"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿorlâ",
+          "translitKo": "오를라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿorlāh",
+          "translitKo": "올라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "X",
+      "strong": "H5018",
+      "lemma": "נְבוּזַרְאֲדָן",
+      "lang": "hebrew",
+      "glossEn": "Nebuzaradan.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nᵉḇûzaraʾdān",
+          "translitKo": "느부자라단",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nĕbûzarʾădān",
+          "translitKo": "네부자르아단",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nĕbûzarʾădān",
+          "translitKo": "네부자르아단",
+          "note": "학술 표기는 네부자르아단이다. 개역개정 관용 표기는 느부사라단이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "Nĕḇûzarʾăḏān",
+          "translitKo": "느부사르단",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "X",
+      "strong": "H6593",
+      "lemma": "פִּשְׁתֶּה",
+      "lang": "hebrew",
+      "glossEn": "flax, linen.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pištê",
+          "translitKo": "피셰테",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pišteh",
+          "translitKo": "피슈테",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pišteh",
+          "translitKo": "피쉬테",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pišteh",
+          "translitKo": "피셰테",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H2174",
+      "lemma": "זִמְרִי",
+      "lang": "hebrew",
+      "glossEn": "Zimri.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "zimrî",
+          "translitKo": "지므리",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "zimrî",
+          "translitKo": "지므리",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zimrî",
+          "translitKo": "짐리",
+          "note": "개역개정 등 한국어 성경에서는 '시므리'로 음역한다. SBL 학술 표기는 '짐리'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zimrî",
+          "translitKo": "짐리",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H7237",
+      "lemma": "רַבָּה",
+      "lang": "hebrew",
+      "glossEn": "Rabbah, Rabbath.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rabbâ",
+          "translitKo": "랍바",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rabbāh",
+          "translitKo": "라바",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rabbâ",
+          "translitKo": "라바",
+          "note": "개역개정 등 한국어 성경에서는 '랍바'로 음역한다. 다게쉬 포르테를 단자음으로 적는 SBL 학술 표기는 '라바'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rabbâ",
+          "translitKo": "랍바",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H2811",
+      "lemma": "חֲשַׁבְיָה",
+      "lang": "hebrew",
+      "glossEn": "Hashabiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥăšaḇyâ",
+          "translitKo": "하시브야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥăšabyāh",
+          "translitKo": "하샤브야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥăšabyâ",
+          "translitKo": "하샤브야",
+          "note": "개역개정 등 한국어 성경에서는 '하사뱌'로 음역한다. SBL 학술 표기는 '하샤브야'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥăšabyâ",
+          "translitKo": "하시브야",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H7814",
+      "lemma": "שְׂחוֹק",
+      "lang": "hebrew",
+      "glossEn": "derision, laughter(-ed to scorn, -ing), mocked, sport.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "śəḥôq",
+          "translitKo": "스호크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "śǝḥôq",
+          "translitKo": "세호크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "śəḥôq",
+          "translitKo": "세호크",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "śəḥōq",
+          "translitKo": "스호크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H8574",
+      "lemma": "תַּנּוּר",
+      "lang": "hebrew",
+      "glossEn": "furnace, oven.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tannûr",
+          "translitKo": "탄누르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tannûr",
+          "translitKo": "타누르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tannûr",
+          "translitKo": "타누르",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "tannûr",
+          "translitKo": "탄누르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H783",
+      "lemma": "אַרְתַּחְשַׁשְׁתָּא",
+      "lang": "hebrew",
+      "glossEn": "Artaxerxes.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾartaḥšaštāʾ",
+          "translitKo": "아르타흐샤스타",
+          "note": "관용 표기 ‘아닥사스다’와 다름."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾartaḥšaštāʾ",
+          "translitKo": "아르타흐샤쉬타",
+          "note": "관용 표기(아닥사스다) 대신 학술 표기 우선"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾartaḥšaštāʾ",
+          "translitKo": "아르타흐샤쉬타",
+          "note": "개역개정 등 한국어 성경에서는 '아닥사스다'로 음역한다. SBL 학술 표기는 '아르타흐샤쉬타'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾartaḥšaštāʾ",
+          "translitKo": "아르타흐샤스타",
+          "note": "관용 표기 ‘아닥사스다’와 달리 SBL 표기."
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "G5180",
+      "lemma": "τύπτω",
+      "lang": "greek",
+      "glossEn": "beat, smite, strike, wound",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "týptō",
+          "translitKo": "튀프토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "týptō",
+          "translitKo": "튑토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "týptō",
+          "translitKo": "튑토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "týptō",
+          "translitKo": "튀프토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "G312",
+      "lemma": "ἀναγγέλλω",
+      "lang": "greek",
+      "glossEn": "declare, rehearse, report, show, speak, tell",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "anangéllō",
+          "translitKo": "앙겔로",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "anangéllō",
+          "translitKo": "아낭겔로",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "anangéllō",
+          "translitKo": "아낭겔로",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "anangéllō",
+          "translitKo": "앙겔로",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Y",
+      "strong": "H5417",
+      "lemma": "נְתַנְאֵל",
+      "lang": "hebrew",
+      "glossEn": "Nethaneel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nəṯanʾēl",
+          "translitKo": "네타넬",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nǝtanʾēl",
+          "translitKo": "네탄엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nətanʾēl",
+          "translitKo": "네탄엘",
+          "note": "개역개정 등 한국어 성경에서는 '느다넬'로 음역한다. SBL 학술 표기는 '네탄엘'이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nətanʾēl",
+          "translitKo": "네타넬",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "H3378",
+      "lemma": "יְרֻבַּעַל",
+      "lang": "hebrew",
+      "glossEn": "Jerubbaal.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yĕrubbaʿal",
+          "translitKo": "여룹바알",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yerubbaʿal",
+          "translitKo": "예루바알",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yĕrubbaʿal",
+          "translitKo": "예루바알",
+          "note": "개역개정 관용 표기는 여룹바알이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕrubbaʿal",
+          "translitKo": "여룹바알",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "H3550",
+      "lemma": "כְּהֻנָּה",
+      "lang": "hebrew",
+      "glossEn": "priesthood, priest's office.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kĕhunnāh",
+          "translitKo": "크훈나",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kehunnāh",
+          "translitKo": "케후나",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕhunnâ",
+          "translitKo": "케후나",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kĕhunnāh",
+          "translitKo": "케훈나",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "H3425",
+      "lemma": "יְרֻשָּׁה",
+      "lang": "hebrew",
+      "glossEn": "heritage, inheritance, possession.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yĕruššāh",
+          "translitKo": "여루샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yeruššāh",
+          "translitKo": "예루샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yĕruššâ",
+          "translitKo": "예루샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕruššāh",
+          "translitKo": "여루샤",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "H3004",
+      "lemma": "יַבָּשָׁה",
+      "lang": "hebrew",
+      "glossEn": "dry (ground, land).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yabbāšāh",
+          "translitKo": "얍바샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yabbāšāh",
+          "translitKo": "야바샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yabbāšâ",
+          "translitKo": "야바샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yabbašāh",
+          "translitKo": "얍바샤",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "G5177",
+      "lemma": "τυγχάνω",
+      "lang": "greek",
+      "glossEn": "be, chance, enjoy, little, obtain, X refresh…self, + special",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tynchánō",
+          "translitKo": "튕하노",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tynchánō",
+          "translitKo": "튄카노",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tynchánō",
+          "translitKo": "튄카노",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "tynchánō",
+          "translitKo": "튕하노",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "Z",
+      "strong": "G1605",
+      "lemma": "ἐκπλήσσω",
+      "lang": "greek",
+      "glossEn": "amaze, astonish",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekplḗssō",
+          "translitKo": "엑플레소",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekplḗssō",
+          "translitKo": "에크플레소",
+          "note": "σσ는 ㅅㅅ 계열로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekplḗssō",
+          "translitKo": "에크플레소",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekplḗssō",
+          "translitKo": "에클레소",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

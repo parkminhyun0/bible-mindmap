@@ -1,0 +1,11 @@
+[
+  {
+    "strong": "G1763",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ευ의 표기는 관행적으로 에우를 따름",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": ".pipeline/task13/final.json entries G1763; .pipeline/task13/input/shard-Y.json G1763; .pipeline/task13/WORKER_SPEC.md:75-76",
+    "severity": "low",
+    "reason": "ἐνιαυτός( G1763 )에는 ευ 연쇄가 없으므로 현재 note의 ευ 표기 설명이 해당 lemma와 모순된다. 표기값 에니아우토스 자체는 변경 대상이 아니다."
+  }
+]
