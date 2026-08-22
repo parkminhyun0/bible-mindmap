@@ -44,3 +44,15 @@ test-results/
 playwright-report/
 
 .claude/settings.local.json
+
+# ── 음역 파이프라인 운용 산출물 ──────────────────────────────────────
+# 여기 있는 것은 제품 코드가 아니라 병렬 작업을 굴리는 도구와 그 흔적이다.
+# 일부만 추적되던 탓에 배치 PR 마다 "작업트리 오염" 경보가 반복됐고,
+# 실제로 남의 미커밋 변경이 PR 에 딸려 들어가 CI 를 깨뜨린 적도 있다.
+# 배치 산출물(.pipeline/taskNN)은 계속 추적한다 — 그것은 근거 자료다.
+.pipeline/dispatch/
+.pipeline/archive/
+.pipeline/audit-full/
+.pipeline/audit-verify/
+.pipeline/gap-survey/
+.pipeline/relay/
