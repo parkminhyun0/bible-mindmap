@@ -1,0 +1,29 @@
+[
+  {
+    "strong": "H3204",
+    "field": "translit",
+    "current": "yĕkonyā",
+    "suggested": "yĕkonyâ",
+    "evidence": "lemma: יְכׇנְיָה",
+    "severity": "medium",
+    "reason": "어말의 ה(Qamets-He)는 SBL 라틴 음역에서 â(circumflex)로 표기해야 합니다."
+  },
+  {
+    "strong": "H4543",
+    "field": "translit",
+    "current": "miskennâ",
+    "suggested": "miskĕnâ",
+    "evidence": "lemma: מִסְכְּנָה",
+    "severity": "medium",
+    "reason": "원어 표제형(מִסְכְּנָה)의 נ(nun)에는 다게쉬 포르테가 없으므로 nn이 아닌 n으로 음역해야 하며, כְּ의 쉐바는 유성 쉐바이므로 ĕ가 포함되어야 합니다."
+  },
+  {
+    "strong": "H8140",
+    "field": "translit",
+    "current": "šnâ",
+    "suggested": "šĕnâ",
+    "evidence": "lemma: שְׁנָה",
+    "severity": "medium",
+    "reason": "어두의 쉐바는 유성 쉐바이므로 SBL 음역에서 šĕnâ로 표기해야 합니다."
+  }
+]

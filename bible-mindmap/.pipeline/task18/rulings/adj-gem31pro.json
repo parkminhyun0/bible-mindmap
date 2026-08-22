@@ -1,0 +1,110 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H1806",
+      "translit": "delāyāh",
+      "translitKo": "델라야",
+      "evidence": "דְּבַשׁ→데바쉬 선례에 따라 shewa를 '데'로 표기",
+      "note": "관용 표기: 들라야"
+    },
+    {
+      "strong": "H4812",
+      "translit": "merāyôt",
+      "translitKo": "메라요트",
+      "evidence": "כַּפֹּרֶת→카포레트 선례에 따라 음절 말 ת를 '트'로 표기, shewa는 '메'로 표기",
+      "note": "관용 표기: 므라욧"
+    },
+    {
+      "strong": "H3672",
+      "translit": "kinnerôt",
+      "translitKo": "키네로트",
+      "evidence": "다게쉬 포르테 중복 자음 규칙(앗타 아님 → 아타) 및 카포레트 선례(음절 말 ת → 트)",
+      "note": "관용 표기: 긴네롯"
+    },
+    {
+      "strong": "H2999",
+      "translit": "yabbōq",
+      "translitKo": "야보크",
+      "evidence": "다게쉬 포르테 중복 자음 규칙 적용 (받침으로 겹쳐 적지 않음)",
+      "note": "관용 표기: 얍복"
+    },
+    {
+      "strong": "H6367",
+      "translit": "pî haḥîrōt",
+      "translitKo": "피 하히로트",
+      "evidence": "카포레트 선례에 따라 음절 말 ת를 '트'로 표기",
+      "note": "관용 표기: 비하히롯"
+    },
+    {
+      "strong": "G2045",
+      "translit": "ereunáō",
+      "translitKo": "에류나오",
+      "evidence": "WORKER_SPEC 헬라어 규칙: ευ는 유 계열 한 음절로 표기 (예: 테라퓨오)",
+      "note": "ευ는 유 계열 한 음절로 표기"
+    },
+    {
+      "strong": "G4348",
+      "translit": "próskomma",
+      "translitKo": "프로스코마",
+      "evidence": "다게쉬 포르테 규칙에 따라 헬라어 중복 자음(μμ)도 받침으로 겹쳐 적지 않음 (탈라사 선례)",
+      "note": "중복 자음 μμ는 하나로 표기"
+    },
+    {
+      "strong": "G2331",
+      "translit": "Thessalonikeús",
+      "translitKo": "테살로니큐스",
+      "evidence": "ευ는 유 계열 한 음절 규칙 적용, 중복 자음(σσ)은 하나로 표기",
+      "note": "관용 표기: 데살로니가인"
+    },
+    {
+      "strong": "G1011",
+      "translit": "bouleúō",
+      "translitKo": "불류오",
+      "evidence": "WORKER_SPEC 헬라어 규칙: ευ는 유 계열 한 음절로 표기",
+      "note": "ευ는 유 계열 한 음절로 표기"
+    },
+    {
+      "strong": "G2292",
+      "translit": "tharrhéō",
+      "translitKo": "타레오",
+      "evidence": "다게쉬 포르테 규칙에 따라 중복 자음(ρρ) 받침으로 겹쳐 적지 않음",
+      "note": "중복 자음 ρρ는 하나로 표기"
+    },
+    {
+      "strong": "G1556",
+      "translit": "ekdikéō",
+      "translitKo": "에크디케오",
+      "evidence": "유성음 앞 ἐκ 표기 선례(ekballō → 에크발로)를 따름",
+      "note": ""
+    },
+    {
+      "strong": "G1573",
+      "translit": "ekkakéō",
+      "translitKo": "에카케오",
+      "evidence": "다게쉬 포르테 규칙에 따라 중복 자음(κκ) 받침으로 겹쳐 적지 않음",
+      "note": "중복 자음 κκ는 하나로 표기"
+    },
+    {
+      "strong": "G1562",
+      "translit": "ekdýō",
+      "translitKo": "에크뒤오",
+      "evidence": "유성음 앞 ἐκ 표기 선례(ekballō → 에크발로)를 따름, υ는 위 계열 표기",
+      "note": ""
+    },
+    {
+      "strong": "G4692",
+      "translit": "speúdō",
+      "translitKo": "스퓨도",
+      "evidence": "WORKER_SPEC 헬라어 규칙: ευ는 유 계열 한 음절로 표기",
+      "note": "ευ는 유 계열 한 음절로 표기"
+    },
+    {
+      "strong": "G4125",
+      "translit": "pleurá",
+      "translitKo": "플류라",
+      "evidence": "WORKER_SPEC 헬라어 규칙: ευ는 유 계열 한 음절로 표기",
+      "note": "ευ는 유 계열 한 음절로 표기"
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "model": "codex",
+  "rulings": [
+    {
+      "strong": "H1806",
+      "translit": "dəlāyā",
+      "translitKo": "들라야",
+      "evidence": "SBL 히브리어 음역 원칙과 고유명사 배포 표기 선례; src/data/koreanGloss*.js",
+      "note": "학술 음역을 표제로 삼고 관용 성경 표기 들라야를 따른다."
+    },
+    {
+      "strong": "H4812",
+      "translit": "mərāyôt",
+      "translitKo": "므라욧",
+      "evidence": "고유명사 관용 표기 선례 므라리·유사 히브리어 음역; src/data/koreanGlossTopBatch05.js, src/data/contextChapterCardsFmrProph.js",
+      "note": "학술 음역을 표제로 삼되 배포된 성경 관용 표기 므라욧을 따른다."
+    },
+    {
+      "strong": "H3672",
+      "translit": "kinnərôṯ",
+      "translitKo": "킨네롯",
+      "evidence": "다게쉬 포르테를 한글에서 겹쳐 적지 않는 배포 원칙; src/data/koreanGloss.js",
+      "note": "관용 지명 표기를 반영한 학술 음역이다."
+    },
+    {
+      "strong": "H2999",
+      "translit": "yabbōq",
+      "translitKo": "얍복",
+      "evidence": "배포 지명 인덱스와 문맥 카드의 canonicalName·본문 표기; src/data/bibleReferences.js, src/data/bookContext.js, src/data/contextChapterCardsGenExod.js",
+      "note": "성경 배포 관용 표기 얍복을 따른다."
+    },
+    {
+      "strong": "H6367",
+      "translit": "pî haḥîrōt",
+      "translitKo": "피 하히롯",
+      "evidence": "히브리어 후음 ḥ 및 어말 표기 선례; src/data/koreanGloss*.js",
+      "note": "관용 표기 비하히롯과 달리 원문 구성요소를 보이는 학술 음역을 표제로 삼는다."
+    },
+    {
+      "strong": "G2045",
+      "translit": "ereunáō",
+      "translitKo": "에류나오",
+      "evidence": "ευ를 유 계열로 적는 배포 선례 유앙겔리온·유앙겔리조; src/data/bookContext.js, src/data/koreanGlossTopBatch03.js, src/data/koreanGlossTopBatch04.js",
+      "note": "ευ는 에우가 아니라 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G4348",
+      "translit": "próskomma",
+      "translitKo": "프로스코마",
+      "evidence": "헬라어 중복 자음을 한글에서 겹쳐 적지 않는 배포 선례; src/data/koreanGloss.js",
+      "note": "μμ를 한글에서 중복 표기하지 않는다."
+    },
+    {
+      "strong": "G2331",
+      "translit": "Thessalonikeús",
+      "translitKo": "테살로니큐스",
+      "evidence": "Θεσσαλονικεύς의 ευ를 유 계열로 처리하는 명세와 배포 지명 표기 테살로니키; src/data/bibleReferences.js",
+      "note": "학술 음역을 표제로 삼고 ευ를 큐로 적는다. 관용 표기는 데살로니가인이다."
+    },
+    {
+      "strong": "G1011",
+      "translit": "bouleúō",
+      "translitKo": "불류오",
+      "evidence": "ευ를 유 계열로 적는 배포 선례; src/data/bookContext.js, src/data/koreanGlossTopBatch03.js, src/data/koreanGlossTopBatch04.js",
+      "note": "ευ는 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G2292",
+      "translit": "tharrhéō",
+      "translitKo": "타레오",
+      "evidence": "다게쉬 포르테·중복 자음을 한글에서 겹쳐 적지 않는 배포 선례; src/data/koreanGloss.js",
+      "note": "ρρ를 한글에서 중복 표기하지 않는다."
+    },
+    {
+      "strong": "G1556",
+      "translit": "ekdikéō",
+      "translitKo": "엑디케오",
+      "evidence": "헬라어 접두사 ἐκ의 배포 음역 선례; src/data/koreanGloss*.js",
+      "note": "배포된 접두사 음역을 따른다."
+    },
+    {
+      "strong": "G1573",
+      "translit": "ekkakéō",
+      "translitKo": "엑카케오",
+      "evidence": "헬라어 중복 자음을 한글에서 겹쳐 적지 않는 배포 선례; src/data/koreanGloss.js",
+      "note": "κκ의 중복을 한글에서 별도 겹자음으로 표기하지 않는다."
+    },
+    {
+      "strong": "G1562",
+      "translit": "ekdýō",
+      "translitKo": "엑뒤오",
+      "evidence": "υ를 위 계열로 적는 배포 선례; src/data/koreanGloss*.js",
+      "note": "υ는 위 계열로 적고 ἐκ의 배포 음역을 따른다."
+    },
+    {
+      "strong": "G4692",
+      "translit": "speúdō",
+      "translitKo": "스퓨도",
+      "evidence": "ευ를 유 계열로 적는 배포 선례; src/data/bookContext.js, src/data/koreanGlossTopBatch03.js, src/data/koreanGlossTopBatch04.js",
+      "note": "ευ는 에우가 아니라 유 계열 한 음절로 적는다."
+    },
+    {
+      "strong": "G4125",
+      "translit": "pleurá",
+      "translitKo": "플류라",
+      "evidence": "ευ를 유 계열로 적는 배포 선례; src/data/bookContext.js, src/data/koreanGlossTopBatch03.js, src/data/koreanGlossTopBatch04.js",
+      "note": "ευ는 유 계열 한 음절로 적는다."
+    }
+  ]
+}

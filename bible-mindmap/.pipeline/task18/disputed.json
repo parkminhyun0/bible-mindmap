@@ -1,0 +1,514 @@
+{
+  "items": [
+    {
+      "shard": "AM",
+      "strong": "H1806",
+      "lemma": "דְּלָיָה",
+      "lang": "hebrew",
+      "glossEn": "Dalaiah, Delaiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "dəlāyā",
+          "translitKo": "들라야",
+          "note": "관용 표기와 학술 음역이 다를 수 있는 고유명사."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "delāyāh",
+          "translitKo": "델라야",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "dĕlāyâ",
+          "translitKo": "들라야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "dəlāyâ",
+          "translitKo": "델라야",
+          "note": "관용 표기 들라야"
+        }
+      ]
+    },
+    {
+      "shard": "AM",
+      "strong": "H4812",
+      "lemma": "מְרָיוֹת",
+      "lang": "hebrew",
+      "glossEn": "Meraioth.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərāyôt",
+          "translitKo": "므라욧",
+          "note": "관용 표기와 학술 음역이 다를 수 있는 고유명사."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "merāyôt",
+          "translitKo": "메라요트",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "mĕrāyôt",
+          "translitKo": "므라요트",
+          "note": "관용 표기(므라욧)와 다름"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərāyôt",
+          "translitKo": "메라요트",
+          "note": "관용 표기 므라욧"
+        }
+      ]
+    },
+    {
+      "shard": "AM",
+      "strong": "H3672",
+      "lemma": "כִּנְּרוֹת",
+      "lang": "hebrew",
+      "glossEn": "Chinnereth, Chinneroth, Cinneroth.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kinnərôṯ",
+          "translitKo": "킨네롯",
+          "note": "관용 표기와 학술 음역이 다를 수 있는 고유명사."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kinnerôt",
+          "translitKo": "키네로트",
+          "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않음"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "kinnĕrôt",
+          "translitKo": "키네로트",
+          "note": "관용 표기(긴네롯)와 다름, 다게쉬 포르테 겹쳐 적지 않음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kinnərôt",
+          "translitKo": "킨네로트",
+          "note": "관용 표기 긴네롯"
+        }
+      ]
+    },
+    {
+      "shard": "AN",
+      "strong": "H2999",
+      "lemma": "יַבֹּק",
+      "lang": "hebrew",
+      "glossEn": "Jabbok.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yabbōq",
+          "translitKo": "얍복",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yabbōq",
+          "translitKo": "야보크",
+          "note": "관용 표기: 얍복"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "yabbōq",
+          "translitKo": "야보크",
+          "note": "관용 표기 얍복"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yabbōq",
+          "translitKo": "야복",
+          "note": "한국어 성경 관용 표기는 얍복이다."
+        }
+      ]
+    },
+    {
+      "shard": "AN",
+      "strong": "H6367",
+      "lemma": "פִּי הַחִירֹת",
+      "lang": "hebrew",
+      "glossEn": "Pi-hahiroth. (In Numbers 14:19 without Pi-.)",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pî haḥîrōt",
+          "translitKo": "피 하히롯",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pî haḥîrōt",
+          "translitKo": "피 하히로트",
+          "note": "관용 표기: 비하히롯"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "pî haḥîrōt",
+          "translitKo": "피 하히로트",
+          "note": "관용 표기 비하히롯"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pî haḥîrōt",
+          "translitKo": "피 하히롯",
+          "note": "한국어 성경 관용 표기는 비하히롯이다."
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G2045",
+      "lemma": "ἐρευνάω",
+      "lang": "greek",
+      "glossEn": "search",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ereunáō",
+          "translitKo": "에레우나오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ereunáō",
+          "translitKo": "에레우나오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ereunáō",
+          "translitKo": "에류나오",
+          "note": "ευ는 유 계열 한 음절로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ereunáō",
+          "translitKo": "에류나오",
+          "note": "자음 뒤 이중모음 ευ(에류나오/에레우나오) 표기가 갈릴 수 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G4348",
+      "lemma": "πρόσκομμα",
+      "lang": "greek",
+      "glossEn": "offence, stumbling(-block, (-stone))",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "próskomma",
+          "translitKo": "프로스콤마",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "próskomma",
+          "translitKo": "프로스코마",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "próskomma",
+          "translitKo": "프로스코마",
+          "note": "중복 자음 μμ는 하나로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "próskomma",
+          "translitKo": "프로스콤마",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G2331",
+      "lemma": "Θεσσαλονικεύς",
+      "lang": "greek",
+      "glossEn": "Thessalonian",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Thessalonikeús",
+          "translitKo": "테살로니케우스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Thessalonikeús",
+          "translitKo": "테살로니케우스",
+          "note": "관용 표기는 '데살로니가인'이나 학술 표기를 따름"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Thessalonikeús",
+          "translitKo": "테살로니큐스",
+          "note": "관용 표기는 데살로니가인. 중복 자음 σσ 생략, ευ는 유 계열로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Thessalonikeús",
+          "translitKo": "테살로니큐스",
+          "note": "학술 표기는 테살로니큐스다. 개역개정 관용 표기는 데살로니가인이다."
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G1011",
+      "lemma": "βουλεύω",
+      "lang": "greek",
+      "glossEn": "consult, take counsel, determine, be minded, purpose",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bouleúō",
+          "translitKo": "불레우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bouleúō",
+          "translitKo": "불레우오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "bouleúō",
+          "translitKo": "불류오",
+          "note": "ευ는 유 계열 한 음절로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bouleúō",
+          "translitKo": "불류오",
+          "note": "자음 뒤 이중모음 ευ(불류오/불레우오) 표기가 갈릴 수 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G2292",
+      "lemma": "θαῤῥέω",
+      "lang": "greek",
+      "glossEn": "be bold, X boldly, have confidence, be confident",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tharrhéō",
+          "translitKo": "타르레오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tharrhéō",
+          "translitKo": "타레오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "tharrhéō",
+          "translitKo": "타레오",
+          "note": "중복 자음 ρρ는 하나로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tharrhéō",
+          "translitKo": "타르레오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G1556",
+      "lemma": "ἐκδικέω",
+      "lang": "greek",
+      "glossEn": "a (re-)venge",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekdikéō",
+          "translitKo": "엑디케오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekdikéō",
+          "translitKo": "에크디케오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekdikéō",
+          "translitKo": "에크디케오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekdikéō",
+          "translitKo": "엑디케오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G1573",
+      "lemma": "ἐκκακέω",
+      "lang": "greek",
+      "glossEn": "faint, be weary",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekkakéō",
+          "translitKo": "엑카케오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekkakéō",
+          "translitKo": "에카케오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekkakéō",
+          "translitKo": "에카케오",
+          "note": "중복 자음 κκ는 하나로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekkakéō",
+          "translitKo": "엑카케오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G1562",
+      "lemma": "ἐκδύω",
+      "lang": "greek",
+      "glossEn": "strip, take off from, unclothe",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekdýō",
+          "translitKo": "엑뒤오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekdýō",
+          "translitKo": "에크뒤오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ekdýō",
+          "translitKo": "에크뒤오",
+          "note": "υ는 위 계열로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekdýō",
+          "translitKo": "엑뒤오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G4692",
+      "lemma": "σπεύδω",
+      "lang": "greek",
+      "glossEn": "(make, with) haste unto",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "speúdō",
+          "translitKo": "스페우도",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "speúdō",
+          "translitKo": "스페우도",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "speúdō",
+          "translitKo": "스퓨도",
+          "note": "ευ는 유 계열 한 음절로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "speúdō",
+          "translitKo": "스퓨도",
+          "note": "자음 뒤 이중모음 ευ(스퓨도/스페우도) 표기가 갈릴 수 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AO",
+      "strong": "G4125",
+      "lemma": "πλευρά",
+      "lang": "greek",
+      "glossEn": "side",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pleurá",
+          "translitKo": "플레우라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pleurá",
+          "translitKo": "플레우라",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "pleurá",
+          "translitKo": "플류라",
+          "note": "ευ는 유 계열 한 음절로 표기"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pleurá",
+          "translitKo": "플류라",
+          "note": "자음 뒤 이중모음 ευ(플류라/플레우라) 표기가 갈릴 수 있다."
+        }
+      ]
+    }
+  ]
+}
