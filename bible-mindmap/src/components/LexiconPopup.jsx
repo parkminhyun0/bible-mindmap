@@ -9,6 +9,7 @@ import { KOREAN_GLOSS_ACTIVE } from '../data/koreanGlossActive';
 import LexiconDefinitionTree from './LexiconDefinitionTree';
 import { normalizeHebrewLexicalForm, normalizeHebrewSurfaceForm } from '../utils/hebrewLexicalForm';
 import { buildHebrewWordComposition, humanizeHebrewMorphCode } from '../utils/hebrewMorphologyDisplay';
+import { resolveSurfaceKoreanTransliteration } from '../utils/surfaceKoreanTransliteration';
 import './LexiconPopup.css';
 
 const POPUP_MIN_WIDTH = 340;
@@ -17,6 +18,17 @@ const POPUP_VIEWPORT_MARGIN = 12;
 const DEFAULT_DESKTOP_WIDTH = 760;
 const DEFAULT_DESKTOP_HEIGHT = 620;
 const THREE_COLUMN_MIN_WIDTH = 720;
+
+// HOT가 일부 토큰에서 lemma를 생략하는 경우의 최소 원형 보정.
+// H0776 창 1:2는 וְ/הָ/אָ֗רֶץ만 제공하므로 접두사·관사를 제거한
+// 사전 원형 אֶרֶץ를 명시한다.
+const HEBREW_LEMMA_FALLBACKS = {
+  H776: 'אֶרֶץ',
+};
+
+const HEBREW_SURFACE_SEGMENT_FALLBACKS = {
+  H776: ['וְ', 'הָ', 'אָרֶץ'],
+};
 
 function clampSize(width, height, vw, vh) {
   const maxW = Math.max(POPUP_MIN_WIDTH, vw - POPUP_VIEWPORT_MARGIN * 2);
@@ -92,6 +104,11 @@ function resolveKoreanTransliteration(entry) {
   const record = (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
   if (!record?.translitKo || record.review === false) return null;
   return record.translitKo;
+}
+
+function resolveLexicalRecord(entry) {
+  const key = normalizedStrong(entry?.s);
+  return (key && KOREAN_GLOSS_ACTIVE[key]) || (entry?.s && KOREAN_GLOSS_ACTIVE[entry.s]) || null;
 }
 
 // 한글 음역은 학술(SBL) 표기를 기본으로 삼는다. 낱말에 따라 다른 표기가 통용되기도
@@ -332,7 +349,10 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   if (!entry) return null;
 
   const isHebrew = entry.s?.startsWith('H');
-  const hebrewComposition = isHebrew ? buildHebrewWordComposition(entry.w, entry.m) : [];
+  const surfaceSegments = isHebrew && HEBREW_SURFACE_SEGMENT_FALLBACKS[normalizedStrong(entry.s)]
+    ? HEBREW_SURFACE_SEGMENT_FALLBACKS[normalizedStrong(entry.s)].join('/')
+    : entry.w;
+  const hebrewComposition = isHebrew ? buildHebrewWordComposition(surfaceSegments, entry.m) : [];
   const fullMorphHuman = isHebrew ? humanizeHebrewMorphCode(entry.m) : humanizeMorph(entry.m);
   const primaryMorphHuman = isHebrew
     ? (hebrewComposition[hebrewComposition.length - 1]?.human || fullMorphHuman)
@@ -340,9 +360,21 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const morphFields = morphologyFields(primaryMorphHuman);
   const koreanTranslit = resolveKoreanTransliteration(entry);
   const translitNote = resolveTransliterationNote(entry);
-  const lexicalSource = entry.l || entry.w || '';
+  const lexicalRecord = resolveLexicalRecord(entry);
+  // 일부 HOT 토큰은 활용형만 있고 `l`(lemma)이 없다. 이때 전체 어형을
+  // 사전 원형으로 표시하면 접두사·관사까지 원형에 섞이므로 활성 사전의
+  // 검증된 lemma를 먼저 사용한다.
+  const lexicalSource = entry.l
+    || lexicalRecord?.lemma
+    || (isHebrew ? HEBREW_LEMMA_FALLBACKS[normalizedStrong(entry.s)] : '')
+    || entry.w
+    || '';
   const lemma = displayLexicalForm(lexicalSource, isHebrew) || lexicalSource;
   const surfaceForm = displaySurfaceForm(entry.w, isHebrew) || lemma;
+  const segmentedSurfaceForm = isHebrew && hebrewComposition.length > 1
+    ? hebrewComposition.map((part) => part.form).filter(Boolean).join(' / ')
+    : surfaceForm;
+  const surfaceKoreanTranslit = resolveSurfaceKoreanTransliteration(entry.w, isHebrew);
   const partOfSpeech = definition?.meta?.partOfSpeech || morphFields.find((field) => field.label === '품사')?.value || '—';
   const source = sourceLabel(isHebrew);
   const strongHref = externalStrongHref(entry.s, isHebrew);
@@ -361,20 +393,22 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
   const metaCells = [
     ['Strong', entry.s || '—'],
     ['Lemma', lemma || '—'],
-    ['Academic translit.', entry.tr || '—'],
-    ['한글 음역', koreanTranslit || '검토 대기'],
+    ['어형 학술 음역', entry.tr || '—'],
+    ['어형 한글 음역', surfaceKoreanTranslit || '검토 대기'],
     ['Part of speech', partOfSpeech],
   ];
 
   const leftFields = [
-    ['사전형', lemma],
-    ['학술 음역 (SBL)', entry.tr],
-    ...(koreanTranslit ? [
-      ['한글 음역', koreanTranslit],
+    ['사전 원형', lemma],
+    ['원형 학술 음역 (SBL)', lexicalRecord?.translit],
+    ['원형 한글 음역', koreanTranslit],
+    ['실제 어형', surfaceForm],
+    ['어형 학술 음역 (SBL)', entry.tr],
+    ...(surfaceKoreanTranslit ? [
+      ['어형 한글 음역', surfaceKoreanTranslit],
       ['표기 기준', 'SBL 학술 음역 / 검토 완료 한글 음역 병기'],
     ] : []),
     ...morphFields.map((field) => [field.label, field.value]),
-    ['실제 어형', surfaceForm],
     ['TWOT', definition?.meta?.twot],
   ].filter(([, value]) => value);
 
@@ -402,7 +436,8 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
           <div className={`lexicon-title-lemma${isHebrew ? ' is-hebrew' : ''}`} data-testid="popup-headword">{lemma}</div>
           <div className="lexicon-title-translit">
             {entry.tr && <span>{entry.tr}</span>}
-            {koreanTranslit && <><span className="lexicon-dot">·</span><span>한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
+            {lexicalRecord?.translit && <><span className="lexicon-dot">·</span><span>원형 학술 음역: {lexicalRecord.translit}</span></>}
+            {koreanTranslit && <><span className="lexicon-dot">·</span><span>원형 한글 음역: <span data-testid="popup-translit-ko">{koreanTranslit}</span></span></>}
             {entry.s && <><span className="lexicon-dot">·</span><span>{entry.s}</span></>}
           </div>
           <span className="lexicon-source-badge">Source: <span data-testid="popup-source-badge">{isHebrew ? 'BDB' : "Strong's"}</span></span>
@@ -446,7 +481,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {leftFields.map(([label, value]) => (
                 <div className="lexicon-side-field" key={`${label}-${String(value)}`}>
                   <dt>{label}</dt>
-                  <dd className={isHebrew && (label === '사전형' || label === '실제 어형') ? 'is-hebrew' : ''}>{value}</dd>
+                  <dd className={isHebrew && (label === '사전 원형' || label === '실제 어형') ? 'is-hebrew' : ''}>{value}</dd>
                 </div>
               ))}
             </dl>
@@ -539,10 +574,12 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               </div>
 
               <div className="lexicon-morph-grid">
-                <MorphCard label="사전형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
-                <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</MorphCard>
-                {koreanTranslit && <MorphCard label="한글 음역">{koreanTranslit}</MorphCard>}
-                {entry.tr && <MorphCard label="학술 음역">{entry.tr}</MorphCard>}
+                <MorphCard label="사전 원형" languageClass={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</MorphCard>
+                <MorphCard label="실제 어형" languageClass={isHebrew ? 'is-hebrew' : ''}>{segmentedSurfaceForm || '—'}</MorphCard>
+                {lexicalRecord?.translit && <MorphCard label="원형 학술 음역">{lexicalRecord.translit}</MorphCard>}
+                {koreanTranslit && <MorphCard label="원형 한글 음역">{koreanTranslit}</MorphCard>}
+                {entry.tr && <MorphCard label="어형 학술 음역">{entry.tr}</MorphCard>}
+                {surfaceKoreanTranslit && <MorphCard label="어형 한글 음역">{surfaceKoreanTranslit}</MorphCard>}
                 <MorphCard label="품사">{partOfSpeech}</MorphCard>
                 <MorphCard label="문법 분석"><span data-testid="morph-humanized">{fullMorphHuman || '—'}</span></MorphCard>
               </div>
@@ -592,7 +629,7 @@ export default function LexiconPopup({ entry, anchor, bookId, passage, onClose, 
               {morphDetailOpen && (
                 <div className="lexicon-morph-detail" data-testid="morph-detail-panel">
                   <div><b>사전 표제어:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{lemma || '—'}</span></div>
-                  <div><b>본문 표면형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{surfaceForm || '—'}</span></div>
+                  <div><b>본문 표면형:</b> <span className={isHebrew ? 'is-hebrew' : ''}>{segmentedSurfaceForm || '—'}</span></div>
                   {entry.m && <div><b>raw morph code:</b> <code>{entry.m}</code></div>}
                   {entry.w && <div><b>원본 분절 토큰:</b> <code>{entry.w}</code></div>}
                   {isHebrew && (
