@@ -1,0 +1,707 @@
+{
+  "shard": "V",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G3942",
+      "lemma": "παροιμία",
+      "translit": "paroimía",
+      "translitKo": "파로이미아",
+      "note": ""
+    },
+    {
+      "strong": "G2965",
+      "lemma": "κύων",
+      "translit": "kýōn",
+      "translitKo": "퀴온",
+      "note": ""
+    },
+    {
+      "strong": "G3068",
+      "lemma": "λούω",
+      "translit": "loúō",
+      "translitKo": "루오",
+      "note": ""
+    },
+    {
+      "strong": "G1265",
+      "lemma": "διαμένω",
+      "translit": "diaménō",
+      "translitKo": "디아메노",
+      "note": ""
+    },
+    {
+      "strong": "G2332",
+      "lemma": "Θεσσαλονίκη",
+      "translit": "Thessaloníkē",
+      "translitKo": "테살로니케",
+      "note": "학술 표기는 테살로니케다. 개역개정 관용 표기는 데살로니가다. 배포된 Θεσσαλονικεύς→테살로니큐스와 같은 자리다."
+    },
+    {
+      "strong": "G5274",
+      "lemma": "ὑπολαμβάνω",
+      "translit": "hypolambánō",
+      "translitKo": "휘폴람바노",
+      "note": ""
+    },
+    {
+      "strong": "G3156",
+      "lemma": "Ματθαῖος",
+      "translit": "Matthaîos",
+      "translitKo": "마타이오스",
+      "note": "학술 표기는 마타이오스다. 한국어 성경은 마태로 굳어져 있다. -αῖος는 파리사이오스·제베다이오스 선례대로 -아이오스로 적었다."
+    },
+    {
+      "strong": "G256",
+      "lemma": "Ἀλφαῖος",
+      "translit": "Alphaîos",
+      "translitKo": "알파이오스",
+      "note": "학술 표기는 알파이오스다. 개역개정 관용 표기는 알패오다."
+    },
+    {
+      "strong": "G3595",
+      "lemma": "ὁδηγός",
+      "translit": "hodēgós",
+      "translitKo": "호데고스",
+      "note": ""
+    },
+    {
+      "strong": "G2954",
+      "lemma": "Κύπρος",
+      "translit": "Kýpros",
+      "translitKo": "퀴프로스",
+      "note": "학술 표기는 퀴프로스다. 개역개정 관용 표기는 구브로다. υ는 배포된 Τύρος→튀로스와 같이 위로 적었다."
+    },
+    {
+      "strong": "G446",
+      "lemma": "ἀνθύπατος",
+      "translit": "anthýpatos",
+      "translitKo": "안튀파토스",
+      "note": ""
+    },
+    {
+      "strong": "G3828",
+      "lemma": "Παμφυλία",
+      "translit": "Pamphylía",
+      "translitKo": "팜퓔리아",
+      "note": "학술 표기는 팜퓔리아다. 개역개정 관용 표기는 밤빌리아다."
+    },
+    {
+      "strong": "G2421",
+      "lemma": "Ἰεσσαί",
+      "translit": "Iessaí",
+      "translitKo": "이에사이",
+      "note": "학술 표기는 이에사이다. 한국어 성경 관용 표기는 이새이며, 히브리어 H3448(이샤이)에서 왔다."
+    },
+    {
+      "strong": "G853",
+      "lemma": "ἀφανίζω",
+      "translit": "aphanízō",
+      "translitKo": "아파니조",
+      "note": ""
+    },
+    {
+      "strong": "G2868",
+      "lemma": "κονιορτός",
+      "translit": "koniortós",
+      "translitKo": "코니오르토스",
+      "note": ""
+    },
+    {
+      "strong": "G1284",
+      "lemma": "διαῤῥήσσω",
+      "translit": "diarrhḗssō",
+      "translitKo": "디아르레소",
+      "note": "어중 ῤῥ는 배포된 παῤῥησία→파르레시아 선례대로 르레로 적었다."
+    },
+    {
+      "strong": "G1705",
+      "lemma": "ἐμπίπλημι",
+      "translit": "empíplēmi",
+      "translitKo": "엠피플레미",
+      "note": ""
+    },
+    {
+      "strong": "G4951",
+      "lemma": "σύρω",
+      "translit": "sýrō",
+      "translitKo": "쉬로",
+      "note": ""
+    },
+    {
+      "strong": "G2213",
+      "lemma": "ζήτημα",
+      "translit": "zḗtēma",
+      "translitKo": "제테마",
+      "note": ""
+    },
+    {
+      "strong": "G1279",
+      "lemma": "διαπορεύομαι",
+      "translit": "diaporeúomai",
+      "translitKo": "디아포류오마이",
+      "note": ""
+    },
+    {
+      "strong": "G1378",
+      "lemma": "δόγμα",
+      "translit": "dógma",
+      "translitKo": "도그마",
+      "note": ""
+    },
+    {
+      "strong": "G1966",
+      "lemma": "ἐπιοῦσα",
+      "translit": "epioûsa",
+      "translitKo": "에피우사",
+      "note": ""
+    },
+    {
+      "strong": "G2350",
+      "lemma": "θορυβέω",
+      "translit": "thorybéō",
+      "translitKo": "토뤼베오",
+      "note": ""
+    },
+    {
+      "strong": "G2394",
+      "lemma": "Ἰάσων",
+      "translit": "Iásōn",
+      "translitKo": "이아손",
+      "note": "학술 표기는 이아손이다. 개역개정 관용 표기는 야손이다."
+    },
+    {
+      "strong": "G1924",
+      "lemma": "ἐπιγράφω",
+      "translit": "epigráphō",
+      "translitKo": "에피그라포",
+      "note": ""
+    },
+    {
+      "strong": "G2482",
+      "lemma": "Ἰταλία",
+      "translit": "Italía",
+      "translitKo": "이탈리아",
+      "note": "학술 표기는 이탈리아다. 개역개정 관용 표기는 이달리야다."
+    },
+    {
+      "strong": "G735",
+      "lemma": "Ἄρτεμις",
+      "translit": "Ártemis",
+      "translitKo": "아르테미스",
+      "note": "학술 표기는 아르테미스다. 개역개정 관용 표기는 아데미이며, 영어 성경은 로마 신명 Diana로 옮기기도 한다."
+    },
+    {
+      "strong": "G3729",
+      "lemma": "ὁρμάω",
+      "translit": "hormáō",
+      "translitKo": "호르마오",
+      "note": ""
+    },
+    {
+      "strong": "G708",
+      "lemma": "Ἀρίσταρχος",
+      "translit": "Arístarchos",
+      "translitKo": "아리스타르코스",
+      "note": "학술 표기는 아리스타르코스다. 개역개정 관용 표기는 아리스다고다."
+    },
+    {
+      "strong": "G4797",
+      "lemma": "συγχέω",
+      "translit": "synchéō",
+      "translitKo": "쉰케오",
+      "note": ""
+    },
+    {
+      "strong": "G20",
+      "lemma": "ἀγαλλίασις",
+      "translit": "agallíasis",
+      "translitKo": "아갈리아시스",
+      "note": ""
+    },
+    {
+      "strong": "G4748",
+      "lemma": "στοιχέω",
+      "translit": "stoichéō",
+      "translitKo": "스토이케오",
+      "note": ""
+    },
+    {
+      "strong": "G375",
+      "lemma": "ἀναπέμπω",
+      "translit": "anapémpō",
+      "translitKo": "아나펨포",
+      "note": ""
+    },
+    {
+      "strong": "G1793",
+      "lemma": "ἐντυγχάνω",
+      "translit": "entynchánō",
+      "translitKo": "엔튄카노",
+      "note": ""
+    },
+    {
+      "strong": "G2914",
+      "lemma": "Κρήτη",
+      "translit": "Krḗtē",
+      "translitKo": "크레테",
+      "note": "학술 표기는 크레테다. 개역개정 관용 표기는 그레데다."
+    },
+    {
+      "strong": "G2949",
+      "lemma": "κῦμα",
+      "translit": "kŷma",
+      "translitKo": "퀴마",
+      "note": ""
+    },
+    {
+      "strong": "G2191",
+      "lemma": "ἔχιδνα",
+      "translit": "échidna",
+      "translitKo": "에키드나",
+      "note": ""
+    },
+    {
+      "strong": "G4029",
+      "lemma": "περίκειμαι",
+      "translit": "períkeimai",
+      "translitKo": "페리케이마이",
+      "note": ""
+    },
+    {
+      "strong": "G1813",
+      "lemma": "ἐξαλείφω",
+      "translit": "exaleíphō",
+      "translitKo": "엑살레이포",
+      "note": ""
+    },
+    {
+      "strong": "G1982",
+      "lemma": "ἐπισκιάζω",
+      "translit": "episkiázō",
+      "translitKo": "에피스키아조",
+      "note": ""
+    },
+    {
+      "strong": "G5328",
+      "lemma": "Φαραώ",
+      "translit": "Pharaṓ",
+      "translitKo": "파라오",
+      "note": "학술 표기는 파라오다. 개역개정 관용 표기는 바로이며, 히브리어 H6547(파르오)의 헬라어 음차다."
+    },
+    {
+      "strong": "G942",
+      "lemma": "βάτος",
+      "translit": "bátos",
+      "translitKo": "바토스",
+      "note": ""
+    },
+    {
+      "strong": "G2",
+      "lemma": "Ἀαρών",
+      "translit": "Aarṓn",
+      "translitKo": "아아론",
+      "note": "학술 표기는 아아론이다. 한국어 성경 관용 표기는 아론이다. 겹모음 αα는 배포된 Ἀβραάμ→아브라암·Ἰσαάκ→이사아크 선례대로 그대로 살렸다."
+    },
+    {
+      "strong": "G3886",
+      "lemma": "παραλύω",
+      "translit": "paralýō",
+      "translitKo": "파랄뤼오",
+      "note": ""
+    },
+    {
+      "strong": "G3594",
+      "lemma": "ὁδηγέω",
+      "translit": "hodēgéō",
+      "translitKo": "호데게오",
+      "note": ""
+    },
+    {
+      "strong": "G4711",
+      "lemma": "σπυρίς",
+      "translit": "spyrís",
+      "translitKo": "스퓌리스",
+      "note": ""
+    },
+    {
+      "strong": "G909",
+      "lemma": "βαπτισμός",
+      "translit": "baptismós",
+      "translitKo": "밥티스모스",
+      "note": ""
+    },
+    {
+      "strong": "G103",
+      "lemma": "ᾄδω",
+      "translit": "áidō",
+      "translitKo": "아이도",
+      "note": "이오타 하기(ᾳ)를 이로 살려 적었다. 배포된 ᾠδή→오이데와 같은 자리다."
+    },
+    {
+      "strong": "G2189",
+      "lemma": "ἔχθρα",
+      "translit": "échthra",
+      "translitKo": "에크트라",
+      "note": ""
+    },
+    {
+      "strong": "G3747",
+      "lemma": "ὀστέον",
+      "translit": "ostéon",
+      "translitKo": "오스테온",
+      "note": ""
+    },
+    {
+      "strong": "G3848",
+      "lemma": "παραβάτης",
+      "translit": "parabátēs",
+      "translitKo": "파라바테스",
+      "note": ""
+    },
+    {
+      "strong": "G1397",
+      "lemma": "δουλεία",
+      "translit": "douleía",
+      "translitKo": "둘레이아",
+      "note": ""
+    },
+    {
+      "strong": "G4723",
+      "lemma": "στείρος",
+      "translit": "steíros",
+      "translitKo": "스테이로스",
+      "note": ""
+    },
+    {
+      "strong": "G1590",
+      "lemma": "ἐκλύω",
+      "translit": "eklýō",
+      "translitKo": "에클뤼오",
+      "note": ""
+    },
+    {
+      "strong": "G3011",
+      "lemma": "λειτουργός",
+      "translit": "leitourgós",
+      "translitKo": "레이투르고스",
+      "note": ""
+    },
+    {
+      "strong": "G2662",
+      "lemma": "καταπατέω",
+      "translit": "katapatéō",
+      "translitKo": "카타파테오",
+      "note": ""
+    },
+    {
+      "strong": "G5549",
+      "lemma": "χρονίζω",
+      "translit": "chronízō",
+      "translitKo": "크로니조",
+      "note": ""
+    },
+    {
+      "strong": "G2013",
+      "lemma": "ἐπιτυγχάνω",
+      "translit": "epitynchánō",
+      "translitKo": "에피튄카노",
+      "note": ""
+    },
+    {
+      "strong": "G3392",
+      "lemma": "μιαίνω",
+      "translit": "miaínō",
+      "translitKo": "미아이노",
+      "note": ""
+    },
+    {
+      "strong": "G4579",
+      "lemma": "σείω",
+      "translit": "seíō",
+      "translitKo": "세이오",
+      "note": ""
+    },
+    {
+      "strong": "G2999",
+      "lemma": "λατρεία",
+      "translit": "latreía",
+      "translitKo": "라트레이아",
+      "note": ""
+    },
+    {
+      "strong": "G3131",
+      "lemma": "μάννα",
+      "translit": "mánna",
+      "translitKo": "만나",
+      "note": "νν은 배포된 Ἰωάννης→이오안네스 선례대로 받침으로 적었다. 학술 표기와 관용 표기가 모두 만나다."
+    },
+    {
+      "strong": "G1078",
+      "lemma": "γένεσις",
+      "translit": "génesis",
+      "translitKo": "게네시스",
+      "note": ""
+    },
+    {
+      "strong": "G3997",
+      "lemma": "πένθος",
+      "translit": "pénthos",
+      "translitKo": "펜토스",
+      "note": ""
+    },
+    {
+      "strong": "G2613",
+      "lemma": "καταδικάζω",
+      "translit": "katadikázō",
+      "translitKo": "카타디카조",
+      "note": ""
+    },
+    {
+      "strong": "G4637",
+      "lemma": "σκηνόω",
+      "translit": "skēnóō",
+      "translitKo": "스케노오",
+      "note": ""
+    },
+    {
+      "strong": "G1591",
+      "lemma": "ἐκμάσσω",
+      "translit": "ekmássō",
+      "translitKo": "에크마소",
+      "note": ""
+    },
+    {
+      "strong": "G1690",
+      "lemma": "ἐμβριμάομαι",
+      "translit": "embrimáomai",
+      "translitKo": "엠브리마오마이",
+      "note": ""
+    },
+    {
+      "strong": "G3688",
+      "lemma": "ὄνος",
+      "translit": "ónos",
+      "translitKo": "오노스",
+      "note": ""
+    },
+    {
+      "strong": "G4738",
+      "lemma": "στῆθος",
+      "translit": "stēthos",
+      "translitKo": "스테토스",
+      "note": ""
+    },
+    {
+      "strong": "G2779",
+      "lemma": "κῆπος",
+      "translit": "kēpos",
+      "translitKo": "케포스",
+      "note": ""
+    },
+    {
+      "strong": "G3817",
+      "lemma": "παίω",
+      "translit": "paíō",
+      "translitKo": "파이오",
+      "note": ""
+    },
+    {
+      "strong": "G3530",
+      "lemma": "Νικόδημος",
+      "translit": "Nikódēmos",
+      "translitKo": "니코데모스",
+      "note": "학술 표기는 니코데모스다. 개역개정 관용 표기는 니고데모다."
+    },
+    {
+      "strong": "G3608",
+      "lemma": "ὀθόνιον",
+      "translit": "othónion",
+      "translitKo": "오토니온",
+      "note": ""
+    },
+    {
+      "strong": "G4142",
+      "lemma": "πλοιάριον",
+      "translit": "ploiárion",
+      "translitKo": "플로이아리온",
+      "note": ""
+    },
+    {
+      "strong": "G3795",
+      "lemma": "ὀψάριον",
+      "translit": "opsárion",
+      "translitKo": "옵사리온",
+      "note": ""
+    },
+    {
+      "strong": "G2861",
+      "lemma": "κολυμβήθρα",
+      "translit": "kolymbḗthra",
+      "translitKo": "콜륌베트라",
+      "note": ""
+    },
+    {
+      "strong": "G1049",
+      "lemma": "γαζοφυλάκιον",
+      "translit": "gazophylákion",
+      "translitKo": "가조퓔라키온",
+      "note": ""
+    },
+    {
+      "strong": "G4260",
+      "lemma": "προβαίνω",
+      "translit": "probaínō",
+      "translitKo": "프로바이노",
+      "note": ""
+    },
+    {
+      "strong": "G3961",
+      "lemma": "πατέω",
+      "translit": "patéō",
+      "translitKo": "파테오",
+      "note": ""
+    },
+    {
+      "strong": "G4651",
+      "lemma": "σκορπίος",
+      "translit": "skorpíos",
+      "translitKo": "스코르피오스",
+      "note": ""
+    },
+    {
+      "strong": "G2049",
+      "lemma": "ἐρημόω",
+      "translit": "erēmóō",
+      "translitKo": "에레모오",
+      "note": ""
+    },
+    {
+      "strong": "G372",
+      "lemma": "ἀνάπαυσις",
+      "translit": "anápausis",
+      "translitKo": "아나파우시스",
+      "note": ""
+    },
+    {
+      "strong": "G2337",
+      "lemma": "θηλάζω",
+      "translit": "thēlázō",
+      "translitKo": "텔라조",
+      "note": ""
+    },
+    {
+      "strong": "G4094",
+      "lemma": "πίναξ",
+      "translit": "pínax",
+      "translitKo": "피낙스",
+      "note": ""
+    },
+    {
+      "strong": "G1424",
+      "lemma": "δυσμή",
+      "translit": "dysmḗ",
+      "translitKo": "뒤스메",
+      "note": ""
+    },
+    {
+      "strong": "G4615",
+      "lemma": "σίναπι",
+      "translit": "sínapi",
+      "translitKo": "시나피",
+      "note": ""
+    },
+    {
+      "strong": "G4411",
+      "lemma": "πρωτοκλισία",
+      "translit": "prōtoklisía",
+      "translitKo": "프로토클리시아",
+      "note": ""
+    },
+    {
+      "strong": "G2625",
+      "lemma": "κατακλίνω",
+      "translit": "kataklínō",
+      "translitKo": "카타클리노",
+      "note": ""
+    },
+    {
+      "strong": "G105",
+      "lemma": "ἀετός",
+      "translit": "aetós",
+      "translitKo": "아에토스",
+      "note": ""
+    },
+    {
+      "strong": "G5411",
+      "lemma": "φόρος",
+      "translit": "phóros",
+      "translitKo": "포로스",
+      "note": ""
+    },
+    {
+      "strong": "G1923",
+      "lemma": "ἐπιγραφή",
+      "translit": "epigraphḗ",
+      "translitKo": "에피그라페",
+      "note": ""
+    },
+    {
+      "strong": "G349",
+      "lemma": "ἀνακράζω",
+      "translit": "anakrázō",
+      "translitKo": "아나크라조",
+      "note": ""
+    },
+    {
+      "strong": "G231",
+      "lemma": "ἁλιεύς",
+      "translit": "halieús",
+      "translitKo": "할리유스",
+      "note": "ιευ의 ευ는 배포 선례대로 유 한 음절로 적었다(포뉴스·테살로니큐스)."
+    },
+    {
+      "strong": "G4719",
+      "lemma": "στάχυς",
+      "translit": "stáchys",
+      "translitKo": "스타퀴스",
+      "note": ""
+    },
+    {
+      "strong": "G4846",
+      "lemma": "συμπνίγω",
+      "translit": "sympnígō",
+      "translitKo": "쉼프니고",
+      "note": ""
+    },
+    {
+      "strong": "G2899",
+      "lemma": "κράσπεδον",
+      "translit": "kráspedon",
+      "translitKo": "크라스페돈",
+      "note": ""
+    },
+    {
+      "strong": "G3429",
+      "lemma": "μοιχάω",
+      "translit": "moicháō",
+      "translitKo": "모이카오",
+      "note": ""
+    },
+    {
+      "strong": "G3899",
+      "lemma": "παραπορεύομαι",
+      "translit": "paraporeúomai",
+      "translitKo": "파라포류오마이",
+      "note": ""
+    },
+    {
+      "strong": "G4654",
+      "lemma": "σκοτίζω",
+      "translit": "skotízō",
+      "translitKo": "스코티조",
+      "note": ""
+    }
+  ]
+}

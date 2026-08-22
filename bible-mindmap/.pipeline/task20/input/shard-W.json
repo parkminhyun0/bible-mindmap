@@ -1,0 +1,906 @@
+{
+  "shard": "W",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G1713",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἔμπορος",
+      "translit": "émporos",
+      "glossEn": "merchant",
+      "defEn": "a (wholesale) tradesman"
+    },
+    {
+      "strong": "G3025",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ληνός",
+      "translit": "lēnós",
+      "glossEn": "winepress",
+      "defEn": "a trough, i.e. wine-vat"
+    },
+    {
+      "strong": "G3769",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "οὐρά",
+      "translit": "ourá",
+      "glossEn": "tail",
+      "defEn": "a tail"
+    },
+    {
+      "strong": "G4072",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πέτομαι",
+      "translit": "pétomai",
+      "glossEn": "fly(-ing)",
+      "defEn": "to fly"
+    },
+    {
+      "strong": "H7484",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רַעְמָה",
+      "translit": "",
+      "glossEn": "Raamah.",
+      "defEn": "Ramah, the name of a grandson of Ham, and of a place (perhaps founded by him)"
+    },
+    {
+      "strong": "H3865",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "לוּד",
+      "translit": "",
+      "glossEn": "Lud, Lydia.",
+      "defEn": "Lud, the name of two nations"
+    },
+    {
+      "strong": "H7466",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רְעוּ",
+      "translit": "",
+      "glossEn": "Reu.",
+      "defEn": "Reu, a postdiluvian patriarch"
+    },
+    {
+      "strong": "H8286",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שְׂרוּג",
+      "translit": "",
+      "glossEn": "Serug.",
+      "defEn": "Serug, a postdiluvian patriarch"
+    },
+    {
+      "strong": "H5032",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "נְבָיוֹת",
+      "translit": "",
+      "glossEn": "Nebaioth, Nebajoth.",
+      "defEn": "Nebajoth, a son of Ismael, and the country settled by him"
+    },
+    {
+      "strong": "H8485",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תֵּימָא",
+      "translit": "",
+      "glossEn": "Tema.",
+      "defEn": "Tema, a son of Ishmael, and the region settled by him"
+    },
+    {
+      "strong": "H5891",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֵיפָה",
+      "translit": "",
+      "glossEn": "Ephah.",
+      "defEn": "Ephah, the name of a son of Midian, and of the region settled by him; also of an Israelite and of an Israelitess"
+    },
+    {
+      "strong": "H5184",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "נַחַת",
+      "translit": "",
+      "glossEn": "Nahath.",
+      "defEn": "Nachath, the name of an Edomite and of two Israelites"
+    },
+    {
+      "strong": "H687",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֶצֶר",
+      "translit": "",
+      "glossEn": "Ezer.",
+      "defEn": "Etser, an Idumaean"
+    },
+    {
+      "strong": "H1789",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דִּישָׁן",
+      "translit": "",
+      "glossEn": "Dishan, Dishon.",
+      "defEn": "Dishan, an Edomite"
+    },
+    {
+      "strong": "H4506",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מָנַחַת",
+      "translit": "",
+      "glossEn": "Manahath.",
+      "defEn": "Manachath, the name of an Edomite and of a place in Moab"
+    },
+    {
+      "strong": "H1734",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דּוֹדוֹ",
+      "translit": "",
+      "glossEn": "Dodo.",
+      "defEn": "Dodo, the name of three Israelites"
+    },
+    {
+      "strong": "H266",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲחוֹחִי",
+      "translit": "",
+      "glossEn": "Ahohite.",
+      "defEn": "an Achochite or descendant of Achoach"
+    },
+    {
+      "strong": "H2503",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חֶלֶץ",
+      "translit": "",
+      "glossEn": "Helez.",
+      "defEn": "Chelets, the name of two Israelites"
+    },
+    {
+      "strong": "H6069",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַנְתֹתִי",
+      "translit": "",
+      "glossEn": "of Anathoth, Anethothite, Anetothite, Antothite.",
+      "defEn": "a Antothite or inhabitant of Anathoth"
+    },
+    {
+      "strong": "H2843",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חֻשָׁתִי",
+      "translit": "",
+      "glossEn": "Hushathite.",
+      "defEn": "a Chushathite or descendant of Chushah"
+    },
+    {
+      "strong": "H6553",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "פִּרְעָתוֹנִי",
+      "translit": "",
+      "glossEn": "Pirathonite.",
+      "defEn": "a Pirathonite or inhabitant of Pirathon"
+    },
+    {
+      "strong": "H2043",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "הֲרָרִי",
+      "translit": "",
+      "glossEn": "Hararite.",
+      "defEn": "{Hararite}"
+    },
+    {
+      "strong": "H218",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אוּר",
+      "translit": "",
+      "glossEn": "Ur.",
+      "defEn": "Ur, a place in Chaldaea; also an Israelite"
+    },
+    {
+      "strong": "H3505",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יִתְרִי",
+      "translit": "",
+      "glossEn": "Ithrite.",
+      "defEn": "a Jithrite or descendant of Jether"
+    },
+    {
+      "strong": "H8041",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׂמַאל",
+      "translit": "",
+      "glossEn": "(go, turn) (on the, to the) left.",
+      "defEn": "to use the left hand or pass in that direction)"
+    },
+    {
+      "strong": "H5829",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֵזֶר",
+      "translit": "",
+      "glossEn": "Ezer. Compare H5827 (עֶזֶר).",
+      "defEn": "Ezer, the name of four Israelites"
+    },
+    {
+      "strong": "H6022",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֲמָשַׂי",
+      "translit": "",
+      "glossEn": "Amasai.",
+      "defEn": "Amasai, the name of three Israelites"
+    },
+    {
+      "strong": "H4768",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מַרְבִּית",
+      "translit": "",
+      "glossEn": "greatest part, greatness, increase, multitude.",
+      "defEn": "a multitude; also offspring; specifically interest (on capital)"
+    },
+    {
+      "strong": "H1839",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דָּנִי",
+      "translit": "",
+      "glossEn": "Danites, of Daniel",
+      "defEn": "a Danite (often collectively) or descendants (or inhabitants) of Dan"
+    },
+    {
+      "strong": "H1690",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דְּבֵלָה",
+      "translit": "",
+      "glossEn": "cake (lump) of figs.",
+      "defEn": "a cake of pressed figs"
+    },
+    {
+      "strong": "H8051",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שַׁמּוּעַ",
+      "translit": "",
+      "glossEn": "Shammua, Shammuah.",
+      "defEn": "Shammua, the name of four Israelites"
+    },
+    {
+      "strong": "H3309",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יָפִיעַ",
+      "translit": "",
+      "glossEn": "Japhia.",
+      "defEn": "Japhia, the name of a Canaanite, an Israelite, and a place in Palestine"
+    },
+    {
+      "strong": "H809",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲשִׁישָׁה",
+      "translit": "",
+      "glossEn": "flagon.",
+      "defEn": "something closely pressed together, i.e. a cake of raisins or other comfits"
+    },
+    {
+      "strong": "H1927",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "הֲדָרָה",
+      "translit": "",
+      "glossEn": "beauty, honour.",
+      "defEn": "decoration"
+    },
+    {
+      "strong": "H2621",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חֹסָה",
+      "translit": "",
+      "glossEn": "Hosah.",
+      "defEn": "Chosah, an Israelite; also a place in Palestine"
+    },
+    {
+      "strong": "H8583",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תֹּעוּ",
+      "translit": "",
+      "glossEn": "Toi, Tou.",
+      "defEn": "Tou or Toi, a Syrian king"
+    },
+    {
+      "strong": "H286",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲחִילוּד",
+      "translit": "",
+      "glossEn": "Ahilud.",
+      "defEn": "Achilud, an Israelite"
+    },
+    {
+      "strong": "H4311",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מֵידְבָא",
+      "translit": "",
+      "glossEn": "Medeba.",
+      "defEn": "Medeba, a place in Palestine"
+    },
+    {
+      "strong": "H8092",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שִׁמְעָא",
+      "translit": "",
+      "glossEn": "Shimea, Shimei, Shamma.",
+      "defEn": "Shima, the name of four Israelites"
+    },
+    {
+      "strong": "H3469",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יִשְׁעִי",
+      "translit": "",
+      "glossEn": "Ishi.",
+      "defEn": "Jishi, the name of four Israelites"
+    },
+    {
+      "strong": "H8348",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שֵׁשָׁן",
+      "translit": "",
+      "glossEn": "Sheshan.",
+      "defEn": "Sheshan, an Israelite"
+    },
+    {
+      "strong": "H8087",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שֶׁמַע",
+      "translit": "",
+      "glossEn": "Shema.",
+      "defEn": "Shema, the name of a place in Palestine and of four Israelites"
+    },
+    {
+      "strong": "H4162",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מוֹצָא",
+      "translit": "",
+      "glossEn": "Moza.",
+      "defEn": "Motsa, the name of two Israelites"
+    },
+    {
+      "strong": "H5915",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַכְסָה",
+      "translit": "",
+      "glossEn": "Achsah.",
+      "defEn": "Aksah, an Israelitess"
+    },
+    {
+      "strong": "H4662",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מִפְקָד",
+      "translit": "",
+      "glossEn": "appointed place, commandment, number.",
+      "defEn": "an appointment, i.e. mandate; concretely, a designated spot; specifically, a census"
+    },
+    {
+      "strong": "H6876",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "צֹרִי",
+      "translit": "",
+      "glossEn": "(man) of Tyre.",
+      "defEn": "a Tsorite or inhabitant of Tsor (i.e. Syrian)"
+    },
+    {
+      "strong": "H7345",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רְחַבְיָה",
+      "translit": "",
+      "glossEn": "Rehabiah.",
+      "defEn": "Rechabjah, an Israelite"
+    },
+    {
+      "strong": "H4612",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מַעֲמָד",
+      "translit": "",
+      "glossEn": "attendance, office, place, state.",
+      "defEn": "(figuratively) a position"
+    },
+    {
+      "strong": "H4227",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מַחֲבַת",
+      "translit": "",
+      "glossEn": "pan.",
+      "defEn": "a pan for baking in"
+    },
+    {
+      "strong": "H2294",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חַגִּית",
+      "translit": "",
+      "glossEn": "Haggith.",
+      "defEn": "Chaggith, a wife of David"
+    },
+    {
+      "strong": "H616",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אַסִּיר",
+      "translit": "",
+      "glossEn": "prisoner.",
+      "defEn": "{bound, i.e. a captive}"
+    },
+    {
+      "strong": "H6410",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "פְּלַטְיָה",
+      "translit": "",
+      "glossEn": "Pelatiah.",
+      "defEn": "Pelatjah, the name of four Israelites"
+    },
+    {
+      "strong": "H7509",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רְפָיָה",
+      "translit": "",
+      "glossEn": "Rephaiah.",
+      "defEn": "Rephajah, the name of five Israelites"
+    },
+    {
+      "strong": "H2407",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חַטּוּשׁ",
+      "translit": "",
+      "glossEn": "Hattush.",
+      "defEn": "Chattush, the name of four or five Israelites"
+    },
+    {
+      "strong": "H5862",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֵיטָם",
+      "translit": "",
+      "glossEn": "Etam.",
+      "defEn": "Etam, a place in Palestine"
+    },
+    {
+      "strong": "H6714",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "צֹחַר",
+      "translit": "",
+      "glossEn": "Zohar. Compare H3328 (יִצְחַר).",
+      "defEn": "Tsochar, the name of a Hittite and of an Israelite"
+    },
+    {
+      "strong": "H7397",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רֵכָה",
+      "translit": "",
+      "glossEn": "Rechah.",
+      "defEn": "Rekah, a place in Palestine"
+    },
+    {
+      "strong": "H2182",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "זָנוֹחַ",
+      "translit": "",
+      "glossEn": "Zanoah.",
+      "defEn": "Zanoach, the name of two places in Palestine"
+    },
+    {
+      "strong": "H5871",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַיִן",
+      "translit": "",
+      "glossEn": "Ain.",
+      "defEn": "Ajin, the name (thus simply) of two places in Palestine"
+    },
+    {
+      "strong": "H6396",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "פַּלּוּא",
+      "translit": "",
+      "glossEn": "Pallu, Phallu.",
+      "defEn": "Pallu, an Israelite"
+    },
+    {
+      "strong": "H1470",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גּוֹזָן",
+      "translit": "",
+      "glossEn": "Gozan.",
+      "defEn": "Gozan, a province of Assyria"
+    },
+    {
+      "strong": "H50",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲבִישׁוּעַ",
+      "translit": "",
+      "glossEn": "Abishua.",
+      "defEn": "Abishua, the name of two Israelites"
+    },
+    {
+      "strong": "H1231",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בֻּקִּי",
+      "translit": "",
+      "glossEn": "Bukki.",
+      "defEn": "Bukki, the name of two Israelites"
+    },
+    {
+      "strong": "H2228",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "זְרַחְיָה",
+      "translit": "",
+      "glossEn": "Zerahiah.",
+      "defEn": "Zerachjah, the name of two Israelites"
+    },
+    {
+      "strong": "H3845",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "לִבְנִי",
+      "translit": "",
+      "glossEn": "Libni.",
+      "defEn": "Libni, an Israelite"
+    },
+    {
+      "strong": "H8106",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שֶׁמֶר",
+      "translit": "",
+      "glossEn": "Shamer, Shemer.",
+      "defEn": "Shemer, the name of three Israelites"
+    },
+    {
+      "strong": "H1221",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בֶּצֶר",
+      "translit": "",
+      "glossEn": "Bezer.",
+      "defEn": "Betser, a place in Palestine; also an Israelite"
+    },
+    {
+      "strong": "H8110",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שִׁמְרוֹן",
+      "translit": "",
+      "glossEn": "Shimron.",
+      "defEn": "Shimron, the name of an Israelite and of a place in Palestine"
+    },
+    {
+      "strong": "H1071",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בֶכֶר",
+      "translit": "",
+      "glossEn": "Becher.",
+      "defEn": "Beker, the name of two Israelites"
+    },
+    {
+      "strong": "H3668",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "כְּנַעֲנָה",
+      "translit": "",
+      "glossEn": "Chenaanah.",
+      "defEn": "Kenaanah, the name of two Israelites"
+    },
+    {
+      "strong": "H4244",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מַחְלָה",
+      "translit": "",
+      "glossEn": "Mahlah.",
+      "defEn": "Machlah, the name apparently of two Israelitesses"
+    },
+    {
+      "strong": "H3232",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יִמְנָה",
+      "translit": "",
+      "glossEn": "Imna, Imnah, Jimnah, Jimnites.",
+      "defEn": "Jimnah, the name of two Israelites; also (with the article) of the posterity of one of them"
+    },
+    {
+      "strong": "H207",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אוֹנוֹ",
+      "translit": "",
+      "glossEn": "Ono.",
+      "defEn": "Ono, a place in Palestine"
+    },
+    {
+      "strong": "H6166",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֲרָד",
+      "translit": "",
+      "glossEn": "Arad.",
+      "defEn": "Arad, the name of a place near Palestine, also of a Canaanite and an Israelite"
+    },
+    {
+      "strong": "H6698",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "צוּר",
+      "translit": "",
+      "glossEn": "Zur.",
+      "defEn": "Tsur, the name of a Midianite and of an Israelite"
+    },
+    {
+      "strong": "H2815",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חַשּׁוּב",
+      "translit": "",
+      "glossEn": "Hashub, Hasshub.",
+      "defEn": "Chashshub, the name of two or three Israelites"
+    },
+    {
+      "strong": "H2929",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "טַלְמוֹן",
+      "translit": "",
+      "glossEn": "Talmon.",
+      "defEn": "Talmon, a temple doorkeeper"
+    },
+    {
+      "strong": "H49",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲבִישַׁג",
+      "translit": "",
+      "glossEn": "Abishag.",
+      "defEn": "Abishag, a concubine of David"
+    },
+    {
+      "strong": "H1949",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "הוּם",
+      "translit": "",
+      "glossEn": "destroy, move, make a noise, put, ring again.",
+      "defEn": "to make an uproar, or agitate greatly"
+    },
+    {
+      "strong": "H7820",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׁחַט",
+      "translit": "",
+      "glossEn": "beat.",
+      "defEn": "to hammer out"
+    },
+    {
+      "strong": "H4488",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מָנֶה",
+      "translit": "",
+      "glossEn": "maneh, pound.",
+      "defEn": "properly, a fixed weight or measured amount, i.e. (techn.) a maneh or mina"
+    },
+    {
+      "strong": "H8282",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׂרָה",
+      "translit": "",
+      "glossEn": "lady, princess, queen.",
+      "defEn": "a mistress, i.e. female noble"
+    },
+    {
+      "strong": "H673",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֶפְרָתִי",
+      "translit": "",
+      "glossEn": "Ephraimite, Ephrathite.",
+      "defEn": "an Ephrathite or an Ephraimite"
+    },
+    {
+      "strong": "H5279",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "נַעֲמָה",
+      "translit": "",
+      "glossEn": "Naamah.",
+      "defEn": "Naamah, the name of an antediluvian woman, of an Ammonitess, and of a place in Palestine"
+    },
+    {
+      "strong": "H38",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲבִיָּם",
+      "translit": "",
+      "glossEn": "Abijam.",
+      "defEn": "Abijam (or Abijah), a king of Judah"
+    },
+    {
+      "strong": "H5250",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "נִמְשִׁי",
+      "translit": "",
+      "glossEn": "Nimshi.",
+      "defEn": "Nimshi, the (grand-) father of Jehu"
+    },
+    {
+      "strong": "H980",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בַּחֻרִים",
+      "translit": "",
+      "glossEn": "Bahurim.",
+      "defEn": "Bachurim, a place in Palestine"
+    },
+    {
+      "strong": "H3419",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יָרָק",
+      "translit": "",
+      "glossEn": "green, herbs.",
+      "defEn": "properly, green; concretely, a vegetable"
+    },
+    {
+      "strong": "H2247",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חָבָה",
+      "translit": "",
+      "glossEn": "hide (self).",
+      "defEn": "to secrete"
+    },
+    {
+      "strong": "H709",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אַרְגֹּב",
+      "translit": "",
+      "glossEn": "Argob.",
+      "defEn": "Argob, a district of Palestine"
+    },
+    {
+      "strong": "H3795",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "כָּתִית",
+      "translit": "",
+      "glossEn": "beaten.",
+      "defEn": "beaten, i.e. pure (oil)"
+    },
+    {
+      "strong": "H5449",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "סַבָּל",
+      "translit": "",
+      "glossEn": "(to bear, bearer of) burden(-s).",
+      "defEn": "a porter"
+    },
+    {
+      "strong": "H4524",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מֵסַב",
+      "translit": "",
+      "glossEn": "that compass about, (place) round about, at table.",
+      "defEn": "a divan (as enclosing the room); abstractly (adverbial) around"
+    },
+    {
+      "strong": "H5672",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֲבִי",
+      "translit": "",
+      "glossEn": "thick(-ness). Compare H5645 (עָב).",
+      "defEn": "density, i.e. depth or width"
+    },
+    {
+      "strong": "H4212",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מְזַמְּרָה",
+      "translit": "",
+      "glossEn": "snuffers.",
+      "defEn": "a tweezer (only in the plural)"
+    },
+    {
+      "strong": "H2073",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "זְבוּל",
+      "translit": "",
+      "glossEn": "dwell in, dwelling, habitation.",
+      "defEn": "a residence"
+    },
+    {
+      "strong": "H2596",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חָנַךְ",
+      "translit": "",
+      "glossEn": "dedicate, train up.",
+      "defEn": "properly, to narrow; figuratively, to initiate or discipline"
+    },
+    {
+      "strong": "H2652",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חׇפְנִי",
+      "translit": "",
+      "glossEn": "Hophni.",
+      "defEn": "Chophni, an Israelite"
+    },
+    {
+      "strong": "H3913",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "לָטַשׁ",
+      "translit": "",
+      "glossEn": "instructer, sharp(-en), whet.",
+      "defEn": "properly, to hammer out (an edge), i.e. to sharpen"
+    },
+    {
+      "strong": "H855",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֵת",
+      "translit": "",
+      "glossEn": "coulter, plowshare.",
+      "defEn": "a hoe or other digging implement"
+    }
+  ]
+}

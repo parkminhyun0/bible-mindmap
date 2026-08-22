@@ -1,0 +1,21 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H5873","translit":"ʿên gannîm","translitKo":"엔 간님","evidence":"WORKER_SPEC의 SBL 표기·다게쉬 포르테 규칙과 src/data/koreanGlossTopBatch10.js의 학술 지명 ‘엔 게디’ 선례.","note":"관용 표기 ‘엔간님’과 달리 학술 표제와 단어 경계를 보존했다."},
+    {"strong":"H458","translit":"ʾĕlîmelek","translitKo":"엘리멜렉","evidence":"WORKER_SPEC의 유성 쉐바 ĕ 및 SBL 표기 원칙; 배포된 koreanGloss 계열의 학술 음역 선례.","note":"관용 표기 ‘엘리멜렉’과 일치한다."},
+    {"strong":"G3879","translit":"parakýptō","translitKo":"파라퀴프토","evidence":"WORKER_SPEC의 υ=위 규칙과 src/data/koreanGlossTopBatch14.js의 ‘프로코프토’, TopBatch12.js의 ‘코프토’ 선례.","note":"υ를 ‘위’ 계열로 적었다."},
+    {"strong":"G1465","translit":"enkóptō","translitKo":"엥코프토","evidence":"WORKER_SPEC의 SBL 자음 대응과 src/data/koreanGlossTopBatch12.js의 ‘코프토’, TopBatch11.js의 ‘에크핍토’ 선례.","note":"γκ를 ‘엥ㅋ’ 계열로, π를 ㅍ으로 적었다."},
+    {"strong":"G1624","translit":"ektrépō","translitKo":"에크트레포","evidence":"src/data/koreanGlossTopBatch06.js의 ‘에크트로스’와 TopBatch13.js의 접두사 ek→‘에크’ 판정 선례.","note":"접두사 ἐκ-를 배포 표기대로 ‘에크’로 적었다."},
+    {"strong":"G5535","translit":"chrḗizō","translitKo":"크레조","evidence":"WORKER_SPEC의 그리스어 학술 음역 원칙과 배포 사전의 축약·관용 모음 처리 선례.","note":"표제형의 ῃ를 별도 ‘이’ 음절로 늘리지 않았다."},
+    {"strong":"G1284","translit":"diarrhḗssō","translitKo":"디아르레소","evidence":"WORKER_SPEC의 어두 ῥ 규칙과 src/data/koreanGlossTopBatch06.js의 ‘파르레시아’, TopBatch12.js의 ‘파르레시아조마이’ 선례.","note":"어중 ῤῥ를 배포 선례대로 ‘르레’로 적었다."},
+    {"strong":"H8051","translit":"šammûaʿ","translitKo":"샴무아","evidence":"WORKER_SPEC의 음절 말 שׁ·furtive patach·어말 ע 처리와 배포 히브리어 고유명사 음역 선례.","note":"관용 표기 ‘삼무아’보다 학술 자음 대응을 따랐다."},
+    {"strong":"H4311","translit":"mêḏĕḇāʾ","translitKo":"메드바","evidence":"WORKER_SPEC의 장음·베가드케파트 표기 규칙과 배포 고유명사 음역의 단어 구조 선례.","note":"관용 표기 ‘메드바’와 일치한다."},
+    {"strong":"H3469","translit":"yišʿî","translitKo":"이시","evidence":"WORKER_SPEC의 음절 말 שׁ 및 ע 무음 처리 원칙과 배포된 ‘이쉬보셰트’ 등 자음 위치별 음역 선례.","note":"שׁ 뒤에 모음이 이어지는 위치이므로 ‘쉬’가 아닌 ‘시’로 적었다."},
+    {"strong":"H7345","translit":"rĕḥaḇyâ","translitKo":"르합야","evidence":"WORKER_SPEC의 유성 쉐바·후음 ḥ·베가드케파트 규칙과 배포 고유명사 음역 선례.","note":"관용 표기 ‘르하뱌’와 달리 ḥ와 yâ를 학술적으로 반영했다."},
+    {"strong":"H6410","translit":"pĕlaṭyâ","translitKo":"플라트야","evidence":"WORKER_SPEC의 유성 쉐바·ṭ·yâ 표기 원칙과 배포 고유명사 음역 선례.","note":"관용 표기 ‘블라댜’와 달리 학술 자음·모음 대응을 따랐다."},
+    {"strong":"H7509","translit":"rĕpāyâ","translitKo":"르파야","evidence":"WORKER_SPEC의 유성 쉐바와 베가드케파트 연음 기호 제거 규칙 및 배포 고유명사 선례.","note":"관용 표기 ‘르바야’와 달리 p를 학술적으로 보존했다."},
+    {"strong":"H2228","translit":"zĕraḥyâ","translitKo":"즈라흐야","evidence":"WORKER_SPEC의 유성 쉐바·ḥ·yâ 규칙과 배포 히브리어 후음 표기 선례.","note":"관용 표기 ‘스라히야’와 달리 학술 음역을 따랐다."},
+    {"strong":"H3668","translit":"kĕnaʿănâ","translitKo":"크나아나","evidence":"WORKER_SPEC의 유성 쉐바·ע 무음 처리 원칙과 배포 아/아 계열 히브리어 음역 선례.","note":"관용 표기 ‘그나아나’와 달리 k의 학술 대응을 보존했다."},
+    {"strong":"H2073","translit":"zĕbûl","translitKo":"즈불","evidence":"WORKER_SPEC의 유성 쉐바·베가드케파트 연음 규칙과 배포된 z 계열 히브리어 음역 선례.","note":"관용 표기와 학술 표기의 한글 차이가 없는 항목이다."}
+  ]
+}

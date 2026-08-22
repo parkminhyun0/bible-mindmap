@@ -1,0 +1,246 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 2,
+  "ties": [
+    {
+      "strong": "G3879",
+      "koRank": [
+        [
+          "파라큅토",
+          2
+        ],
+        [
+          "파라퀴프토",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "parakýptō",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G5535",
+      "koRank": [
+        [
+          "크레이조",
+          2
+        ],
+        [
+          "크레조",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "chrḗizō",
+          4
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H5873",
+      "lemma": "עֵין גַּנִּים",
+      "translit": "ʿên gannîm",
+      "translitKo": "엔 가님",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 엔간님이다. 다게쉬 포르테(중복 자음)를 받침으로 겹쳐 적지 않는 원칙에 따라 가님으로 표기한다."
+    },
+    {
+      "strong": "H458",
+      "lemma": "אֱלִימֶלֶךְ",
+      "translit": "ʾĕlîmelek",
+      "translitKo": "엘리멜렉",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 한국어 성경 관용 표기는 엘리멜렉이다. 어말 -melek 요소를 기존 확정 표기(멜렉·아비멜렉·아히멜렉)에 일치시켰다."
+    },
+    {
+      "strong": "G3879",
+      "lemma": "παρακύπτω",
+      "translit": "parakýptō",
+      "translitKo": "파라큅토",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 헬라어 자음군 πτ는 앞 음절 받침 ㅂ으로 닫는 선례(G601 아포칼륍토, G5180 튑토, G4098 핍토)에 따라 파라큅토로 적는다."
+    },
+    {
+      "strong": "G1465",
+      "lemma": "ἐγκόπτω",
+      "translit": "enkóptō",
+      "translitKo": "엥코프토",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 같은 πτ라도 배포 데이터는 υ 앞에서는 받침(륍토·튑토), -κόπτω 어간에서는 갈라 적는다(코프토). 그 선례를 그대로 따라 '엥코프토'로 적었다."
+    },
+    {
+      "strong": "G1624",
+      "lemma": "ἐκτρέπω",
+      "translit": "ektrépō",
+      "translitKo": "에크트레포",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ἐκτείνω→'엑테이노'는 τ가 모음과 붙어 '테'가 되어 받침이 가능한 자리였다. ἐκτρέπω는 τρ 자음군이라 τ가 '트'가 되므로 그 선례가 그대로 적용되지 않아 '에크' 기본형을 따랐다."
+    },
+    {
+      "strong": "G5535",
+      "lemma": "χρῄζω",
+      "translit": "chrḗizō",
+      "translitKo": "크레이조",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 하기 이오타(iota subscript ῃ)를 '이'로 반영하는 SBL 음역 선례(G3027 lēistḗs→레이스테스, G5603 ōidḗ→오이데)에 따라 크레이조로 적는다."
+    },
+    {
+      "strong": "G1284",
+      "lemma": "διαῤῥήσσω",
+      "translit": "diarrhḗssō",
+      "translitKo": "디아르레소",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). koreanGlossTopBatch14.js θαῤῥέω→'타레오'는 접두사 경계가 아니라 어간 내부의 ρρ라 구조가 다르다. 접두사 경계 사례인 παῤῥησία 쪽을 따랐다."
+    },
+    {
+      "strong": "H8051",
+      "lemma": "שַׁמּוּעַ",
+      "translit": "šammûaʿ",
+      "translitKo": "샤무아",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 삼무아다. 다게쉬 포르테(중복 자음)를 받침으로 겹치지 않는 학술 음역 원칙과 어말 furtive patach를 반영해 샤무아로 적는다."
+    },
+    {
+      "strong": "H4311",
+      "lemma": "מֵידְבָא",
+      "translit": "mêdĕbāʾ",
+      "translitKo": "메데바",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 메드바이다. 유성 쉐바(dĕ)를 '데'로 옮기는 학술 표기 원칙(선례: 데비르·데보라·로 데바르)에 따라 메데바로 적는다."
+    },
+    {
+      "strong": "H3469",
+      "lemma": "יִשְׁעִי",
+      "translit": "yišʿî",
+      "translitKo": "이쉬이",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 이시이다. 음절 말 שׁ를 '쉬'로 적는 학술 표기 원칙(선례 이쉬마엘)과 ע 무음가 처리에 따라 이쉬이로 적는다."
+    },
+    {
+      "strong": "H7345",
+      "lemma": "רְחַבְיָה",
+      "translit": "rĕḥabyâ",
+      "translitKo": "레하브야",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 르합야(개역개정 르하뱌)이다. 유성 쉐바 rĕ를 '레'로 적는 학술 표기 원칙과 동일 어근 선례 H7346(레하브암)에 따라 레하브야로 적는다."
+    },
+    {
+      "strong": "H6410",
+      "lemma": "פְּלַטְיָה",
+      "translit": "pĕlaṭyâ",
+      "translitKo": "펠라트야",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 '블라댜'다(src/data/contextChapterCardsEzekDan.js 겔 11장 카드에도 '블라댜'로 실려 있다). 사전 표제는 학술 표기를 쓴다."
+    },
+    {
+      "strong": "H7509",
+      "lemma": "רְפָיָה",
+      "translit": "rĕpāyâ",
+      "translitKo": "레파야",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 르바야이다. 베가드케파트 연음 부호를 생략(p)하고 유성 쉐바 rĕ를 '레'로 적는 학술 표기 원칙에 따라 레파야로 적는다."
+    },
+    {
+      "strong": "H2228",
+      "lemma": "זְרַחְיָה",
+      "translit": "zĕraḥyâ",
+      "translitKo": "제라흐야",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 스라히야이다. 유성 쉐바 zĕ를 '제'로, 후음 ḥ를 '흐'로 적는 학술 표기 원칙(선례 제카르야·제바드야)에 따라 제라흐야로 적는다."
+    },
+    {
+      "strong": "H3668",
+      "lemma": "כְּנַעֲנָה",
+      "translit": "kĕnaʿănâ",
+      "translitKo": "케나아나",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 한국어 성경 관용 표기는 그나아나이다. 동일 어근의 확정 선례 H3667(케나안)·H3669(케나아니)에 따라 케나아나로 적는다."
+    },
+    {
+      "strong": "H2073",
+      "lemma": "זְבוּל",
+      "translit": "zĕbûl",
+      "translitKo": "제불",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 베가드케파트 구분 기호를 쓰지 않는 원칙(b)과 유성 쉐바 zĕ를 '제'로 적는 선례(H2074 zĕbûlûn→제불룬)에 따라 제불로 적는다."
+    }
+  ]
+}
