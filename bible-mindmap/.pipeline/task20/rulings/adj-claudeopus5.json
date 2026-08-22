@@ -1,0 +1,117 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "H5873",
+      "translit": "ʿên gannîm",
+      "translitKo": "엔 가님",
+      "evidence": "עֵין 연계형은 배포 선례가 '엔'이다 — koreanGlossTopBatch10.js:1676 עֵין גֶּדִי ʿên gedî→'엔 게디', koreanGlossTopBatch13.js עֵין רֹגֵל ʿên rōgēl→'엔 로겔'. '에인'으로 적은 선례는 없다. 띄어쓰기도 두 선례가 모두 두 낱말로 띄운다. גַּנִּים 의 다게쉬 포르테(nn)는 겹쳐 적지 않는다 — koreanGlossTopBatch10.js:372 חַנָּה ḥannâ→'하나', koreanGlossTopBatch14.js בִּנּוּי binnûy→'비누이'.",
+      "note": "개역개정 관용 표기는 '엔간님'이다. 학술 표기를 표제로 두고 다게쉬 포르테 미중복 규칙에 따라 '가님'으로 적었다."
+    },
+    {
+      "strong": "H458",
+      "translit": "ʾĕlîmelek",
+      "translitKo": "엘리멜렉",
+      "evidence": "-מֶלֶךְ 로 끝나는 인명 합성어의 배포 선례가 일치한다 — koreanGlossTopBatch04.js:300 אֲבִימֶלֶךְ ʾăbîmelek→'아비멜렉', koreanGlossTopBatch08.js:1556 אֲחִימֶלֶךְ ʾăḥîmelek→'아히멜렉'. 단독 표제 מֶלֶךְ melek 도 koreanGlossTopBatch02.js 에서 '멜렉'이다. 어두 유성 셰바 ʾĕ 는 한 음절로 적는다(koreanGlossGenesis1Batch01.js אֱלֹהִים→'엘로힘').",
+      "note": "학술 표기와 개역개정 관용 표기('엘리멜렉')가 같아 병기하지 않는다."
+    },
+    {
+      "strong": "G3879",
+      "translit": "parakýptō",
+      "translitKo": "파라큅토",
+      "evidence": "υ + πτ 는 배포 데이터가 받침 ㅂ 쪽으로 4:1 이다 — koreanGlossTopBatch06.js ἀποκαλύπτω apokalýptō→'아포칼륍토', koreanGlossTopBatch09.js τύπτω týptō→'튑토', koreanGlossTopBatch08.js κρύπτω krýptō→'크립토', koreanGlossTopBatch06.js Αἴγυπτος→'아이귑토스'. 반대 사례는 koreanGlossTopBatch12.js καλύπτω→'칼뤼프토' 하나뿐이다. 특히 접두 합성어라는 구조가 같은 ἀποκαλύπτω→'아포칼륍토'가 가장 가까운 선례다.",
+      "note": ""
+    },
+    {
+      "strong": "G1465",
+      "translit": "enkóptō",
+      "translitKo": "엥코프토",
+      "evidence": "γκ 는 앞 음절 받침 ㅇ + ㅋ 이다 — koreanGlossTopBatch13.js ἐγκαλέω enkaléō→'엥칼레오', koreanGlossTopBatch11.js ἐγκαταλείπω enkataleípō→'엥카탈레이포'. 그러나 -κόπτω 어간은 ο + πτ 를 갈라 적는 것이 배포 선례로 4:1 이다 — koreanGlossTopBatch12.js κόπτω→'코프토', koreanGlossTopBatch14.js ἀποκόπτω→'아포코프토'·προκόπτω→'프로코프토', koreanGlossTopBatch12.js προσκόπτω→'프로스코프토'. 예외는 koreanGlossTopBatch11.js ἐκκόπτω→'에콥토' 하나다.",
+      "note": "같은 πτ라도 배포 데이터는 υ 앞에서는 받침(륍토·튑토), -κόπτω 어간에서는 갈라 적는다(코프토). 그 선례를 그대로 따라 '엥코프토'로 적었다."
+    },
+    {
+      "strong": "G1624",
+      "translit": "ektrépō",
+      "translitKo": "에크트레포",
+      "evidence": "ἐκ- 접두사의 배포 선례가 압도적으로 '에크'다 — koreanGlossTopBatch03.js ἐκβάλλω→'에크발로', koreanGlossTopBatch11.js ἐκπίπτω→'에크핍토', koreanGlossTopBatch09.js ἐκπλήσσω→'에크플레소' 등 10건 대 '엑' 2건(ἐκτείνω→'엑테이노', ἐκζητέω→'엑제테오'). 뒤에 자음군이 오는 유일한 선례 ἐκπλήσσω 가 '에크플레소'이고, 배포 데이터 전체에 ㄱ받침 뒤 '트'가 오는 표기는 한 건도 없다. 반대로 크+트 연쇄는 koreanGlossTopBatch06.js ἐχθρός→'에크트로스'로 실재한다.",
+      "note": "ἐκτείνω→'엑테이노'는 τ가 모음과 붙어 '테'가 되어 받침이 가능한 자리였다. ἐκτρέπω는 τρ 자음군이라 τ가 '트'가 되므로 그 선례가 그대로 적용되지 않아 '에크' 기본형을 따랐다."
+    },
+    {
+      "strong": "G5535",
+      "translit": "chrḗizō",
+      "translitKo": "크레이조",
+      "evidence": "요타 하기(ῃ/ᾳ)를 라틴 음역에서 i로 적은 항목은 한글에서도 '이'를 적는 것이 배포 선례다 — koreanGlossTopBatch09.js λῃστής lēistḗs→'레이스테스', koreanGlossTopBatch12.js πρᾳότης praiótēs→'프라이오테스'. χρ 는 '크ㄹ'(χριστός→'크리스토스'), -ζω 는 '조'(βαπτίζω→'밥티조', ἐγγίζω→'엥기조')다.",
+      "note": "요타를 안 적는 ᾅδης→'하데스'는 이미 굳은 관용 표기라 예외로 본다. χρῄζω에는 굳은 관용 표기가 없으므로 선례대로 '이'를 적었다."
+    },
+    {
+      "strong": "G1284",
+      "translit": "diarrhḗssō",
+      "translitKo": "디아르레소",
+      "evidence": "접두사 경계에서 생긴 어중 ῤῥ 의 배포 선례가 '르레'다 — koreanGlossTopBatch06.js παῤῥησία parrhēsía→'파르레시아', 같은 어족 παῤῥησιάζομαι→'파르레시아조마이'. διαῤῥήσσω도 διά + ῥήσσω 로 어간 첫소리 ῥ가 접두사와 만나 겹친 같은 구조다. σσ 는 '소'(ἐκπλήσσω→'에크플레소', θάλασσα→'탈라사').",
+      "note": "koreanGlossTopBatch14.js θαῤῥέω→'타레오'는 접두사 경계가 아니라 어간 내부의 ρρ라 구조가 다르다. 접두사 경계 사례인 παῤῥησία 쪽을 따랐다."
+    },
+    {
+      "strong": "H8051",
+      "translit": "šammûaʿ",
+      "translitKo": "샤무아",
+      "evidence": "다게쉬 포르테 mm 은 겹쳐 적지 않는다 — koreanGlossTopBatch05.js:1276 שַׁמָּה šammâ→'샤마'가 같은 어근·같은 자리의 직접 선례다. 어말 ע 앞 furtive patach 는 '우아'로 적는다 — koreanGlossTopBatch08.js:84 שָׁבוּעַ šābûaʿ→'샤부아', koreanGlossTopBatch11.js:1116 מַלְכִּישׁוּעַ malkîšûaʿ→'말키슈아'.",
+      "note": "개역개정 관용 표기는 '삼무아'다. 학술 표기를 표제로 두고 다게쉬 포르테 미중복 규칙을 적용했다."
+    },
+    {
+      "strong": "H4311",
+      "translit": "mêdĕbāʾ",
+      "translitKo": "메데바",
+      "evidence": "장모음 열린 음절 뒤의 셰바는 유성 셰바이며, 배포 데이터는 어중 유성 셰바 ĕ 에 언제나 독립 음절을 준다 — koreanGlossTopBatch13.js:547 לֹא דְבַר lōʾ dĕbar→'로 데바르'(dĕb→'데바'로 이 낱말과 자음이 같다), koreanGlossTopBatch02.js יִרְמְיָה yirmĕyâ→'이르메야', koreanGlossTopBatch12.js יְרַחְמְאֵל yĕraḥmĕʾēl→'예라흐메엘', koreanGlossTopBatch03.js אַשְׁקְלוֹן ʾašqĕlôn→'아쉬켈론'. 무성 셰바만 '드/브/크'로 줄인다(אַבְרָהָם→'아브라함', שַׁדְרַךְ→'샤드라크').",
+      "note": "개역개정 관용 표기는 '메드바'다. 라틴 음역을 mêdĕbāʾ(유성 셰바)로 잡은 이상 한글도 선례대로 '데'를 살려야 일관된다."
+    },
+    {
+      "strong": "H3469",
+      "translit": "yišʿî",
+      "translitKo": "이쉬이",
+      "evidence": "음절 말 שׁ 뒤에 ע 가 오는 배포 선례가 그대로 있다 — koreanGlossTopBatch10.js:1756 מִשְׁעֵנָה mišʿēnâ→'미쉬에나'. 음절 말 שׁ는 '쉬'(אִישׁ→'이쉬', חֹדֶשׁ→'호데쉬'), ע 는 따로 적지 않고 뒤 모음만 적는다(שֶׁבַע→'셰바', כְּנַעַן→'케나안', שִׁמְעִי→'심이').",
+      "note": "개역개정 관용 표기는 '이시'다."
+    },
+    {
+      "strong": "H7345",
+      "translit": "rĕḥabyâ",
+      "translitKo": "레하브야",
+      "evidence": "어두 유성 셰바 rĕ 는 '레'다 — koreanGlossTopBatch10.js:484 רְמַלְיָהוּ rĕmalyāhû→'레말야후', רְמִיָּה rĕmiyyâ→'레미야'. 자음 앞 ב 는 '브'이고 -יָה 는 '야'다 — koreanGlossTopBatch09.js:892 חֲשַׁבְיָה ḥăšabyâ→'하샤브야'가 -ab-yâ 로 구조가 같다. 어중 ח + 자음도 '흐'다(מַחְסוֹר→'마흐소르').",
+      "note": "개역개정 관용 표기는 '르하뱌'다. 배포 데이터는 어두 셰바를 '르'로 줄인 예가 없고 -יָה 도 '야'로 갈라 적는다."
+    },
+    {
+      "strong": "H6410",
+      "translit": "pĕlaṭyâ",
+      "translitKo": "펠라트야",
+      "evidence": "koreanGlossTopBatch10.js:172 שְׁפַטְיָה šepaṭyâ→'셰파트야'가 -aṭ-yâ→'-아트야'의 직접 선례다. 어두 pĕ + l 은 '펠'로 붙는다 — koreanGlossTopBatch02.js פְּלִשְׁתִּי pĕlištî→'펠리쉬티'. 다른 pĕ- 선례도 페다야(פְּדָיָה)·페리(פְּרִי)·바알 페오르로 모두 '페' 계열이다.",
+      "note": "개역개정 관용 표기는 '블라댜'다(src/data/contextChapterCardsEzekDan.js 겔 11장 카드에도 '블라댜'로 실려 있다). 사전 표제는 학술 표기를 쓴다."
+    },
+    {
+      "strong": "H7509",
+      "translit": "rĕpāyâ",
+      "translitKo": "레파야",
+      "evidence": "koreanGlossTopBatch13.js:60 פְּדָיָה pĕdāyâ→'페다야'가 Cĕ-CāC-yâ 구조의 직접 선례다. 어두 rĕ 는 '레'(רְמַלְיָהוּ→'레말야후', רְמִיָּה→'레미야'). 베가드케파트 연음 기호를 쓰지 않으므로 라틴 음역은 rĕpāyâ 이고 ף 는 'ㅍ'이다.",
+      "note": "개역개정 관용 표기는 '르바야'다."
+    },
+    {
+      "strong": "H2228",
+      "translit": "zĕraḥyâ",
+      "translitKo": "제라흐야",
+      "evidence": "어두 zĕ 는 '제'다 — koreanGlossTopBatch12.js:372 זְבַדְיָה zĕbadyâ→'제바드야', koreanGlossTopBatch05.js זְכַרְיָה zĕkaryâ→'제카르야'. 두 선례 모두 -יָה 를 '야'로 갈라 적는다. 어중 ח + 자음은 '흐'다 — koreanGlossTopBatch13.js:372 מִחְיָה miḥyâ→'미흐야'(ḥ+y→'흐야'로 이 낱말과 같은 자리), koreanGlossTopBatch12.js יְרַחְמְאֵל→'예라흐메엘'.",
+      "note": "개역개정 관용 표기는 '스라히야'다."
+    },
+    {
+      "strong": "H3668",
+      "translit": "kĕnaʿănâ",
+      "translitKo": "케나아나",
+      "evidence": "koreanGlossTopBatch03.js:1324 כְּנַעַן kĕnaʿan→'케나안'이 같은 어근의 직접 선례다. 어두 kĕ 는 '케'(כְּלִי kĕlî→'켈리'), ע 는 따로 적지 않고 뒤 모음만 적는다.",
+      "note": "개역개정 관용 표기는 '그나아나'다."
+    },
+    {
+      "strong": "H2073",
+      "translit": "zĕbûl",
+      "translitKo": "제불",
+      "evidence": "koreanGlossTopBatch02.js:980 גְּבוּל gĕbûl→'게불'이 Cĕ-bûl 구조의 직접 선례다. 어두 zĕ 는 '제'(זְבַדְיָה→'제바드야', זְכַרְיָה→'제카르야'). 배포 데이터에 어두 셰바를 '즈'로 적은 항목은 없다.",
+      "note": ""
+    }
+  ]
+}

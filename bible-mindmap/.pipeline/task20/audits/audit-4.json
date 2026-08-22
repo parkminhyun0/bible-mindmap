@@ -1,0 +1,83 @@
+[
+  {
+    "strong": "*",
+    "field": "entries",
+    "current": "entries 284개 (consensus.json 의 settled 만 담겨 있다)",
+    "suggested": "entries 300개 (disputed 16건의 판정 결과를 병합)",
+    "evidence": "input/shard-U·V·W.json 의 items 합계는 300개인데 final.json 은 284개다. consensus.json totals 는 settled 284 · disputed 16 이고, 빠진 16건은 disputed.json 에 그대로 있다: H5873 · H458 · G3879 · G1465 · G1624 · G5535 · G1284 · H8051 · H4311 · H3469 · H7345 · H6410 · H7509 · H2228 · H3668 · H2073. rulings/adj-claudeopus5.json · adj-codex.json · adj-gem31pro.json · adj-gem37flash.json 은 이 16건 전부에 대한 판정을 이미 갖고 있다(각 16건).",
+    "severity": "high",
+    "reason": "판정이 끝난 16건이 final.json 에 반영되지 않았다. final.json 을 그대로 배치 파일로 옮기면 입력 300개 중 16개가 조용히 누락된다. 표기 오류는 아니지만 감사 범위가 '전체'이므로 함께 적는다."
+  },
+  {
+    "strong": "G3110",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 마게도냐이다. 학술 표기는 마케돈(Makedṓn)이다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 마케돈(Makedṓn)이다. 개역개정은 '마게도냐 사람'으로 옮긴다.",
+    "evidence": "'마게도냐'는 지역명 Μακεδονία(G3109)의 관용 표기다 — src/data/koreanGlossTopBatch07.js G3109 마케도니아 note: '개역개정 관용 표기는 마게도냐.' G3110 Μακεδών 은 사람이며 입력 glossEn 도 'of Macedonia, Macedonian' · defEn 'inhabitant of Macedonia' 이다. 같은 final.json 의 소속·파생형은 모두 '~사람'으로 적었다(H2843 '후사 사람' · H1839 '단 사람' · H6069 '아나돗 사람').",
+    "severity": "low",
+    "reason": "다른 Strong(G3109)의 관용 표기를 이 표제의 관용 표기로 적어, 배포된 G3109 note 와 겹치고 배치 자체의 파생형 표기 관례와도 어긋난다. translitKo '마케돈'은 옳다."
+  },
+  {
+    "strong": "H4212",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 다게쉬 연음 생략",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 다게쉬 포르테 מּ 를 겹쳐 적지 않았다. 배포 데이터의 비음 겹자음은 처리가 갈린다(אַמָּה→암마 · מְזִמָּה→메짐마 ↔ אֻמָּה→우마 · מְשַׁמָּה→메샤마).",
+    "evidence": "같은 final.json 의 G3131 μάννα→'만나' note 는 'νν은 배포된 Ἰωάννης→이오안네스 선례대로 받침으로 적었다'고 적어 비음 겹자음을 겹쳐 적었다(선례 src/data/koreanGlossTopBatch03.js G2491 이오안네스). 배포 데이터의 히브리어 비음 겹자음은 갈린다 — koreanGlossTopBatch02.js H520 אַמָּה→'암마'(note 에 '한국어는 자음 하나짜리 מ 도 받침+초성으로 나눠 적으므로 이 자리는 받침 겹침 규칙에서 뺀다'고 명시) · koreanGlossTopBatch08.js H4209 מְזִמָּה→'메짐마' ↔ koreanGlossTopBatch13.js H524 אֻמָּה→'우마' · koreanGlossTopBatch14.js H4923 מְשַׁמָּה→'메샤마'.",
+    "severity": "low",
+    "reason": "같은 배치 안에서 비음 겹자음을 한쪽(G3131)은 받침으로 겹쳐 적고 한쪽(H4212)은 '생략'이라 적어 note 끼리 어긋난다. 다만 배포 선례가 반반이고 WORKER_SPEC 규칙 2 문면에는 비음 예외가 없으므로 translitKo '메자메라' 값 교체는 제안하지 않고 note 만 실상에 맞춘다."
+  },
+  {
+    "strong": "G4051",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 규칙에 따라 ευ는 유 계열 한 음절(슈), σσ는 단일 ㅅ(리)으로 표기한다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. ευ는 유 계열 한 음절로 적고 σσ는 겹치지 않고 하나로 적는다(배포된 περισσεύω→페리슈오와 같은 자리다).",
+    "severity": "low",
+    "evidence": "translitKo '페리슈마'에서 σσ 가 실현된 자리는 '슈'의 ㅅ 이고 '리'에는 ㅅ 이 없다. 값 자체는 배포 선례와 같다 — src/data/koreanGlossTopBatch05.js G4052 περισσεύω perisseúō → '페리슈오'.",
+    "reason": "note 가 지목한 음절(리)에는 해당 자음이 없어 설명이 표기와 어긋난다. translitKo 는 옳다."
+  },
+  {
+    "strong": "H8583",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 '도우'(삼하 8:9)·'도이'.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 '도우'(대상 18:9)·'도이'(삼하 8:9).",
+    "evidence": "입력 defEn 이 'Tou or Toi'로 두 형태를 함께 싣는다(표제형은 대상 18:9 의 תֹּעוּ, 삼하 8:9 는 תֹּעִי). 개역개정은 삼하 8:9 를 '도이', 대상 18:9 를 '도우'로 옮긴다. 저장소에 한국어 성경 본문 데이터가 없어 판본 대조는 저장소 밖 기준이다.",
+    "severity": "low",
+    "reason": "두 관용 표기에 붙인 절 인용이 서로 바뀌었다. translitKo '토우'는 표제형 תֹּעוּ 에 맞다."
+  },
+  {
+    "strong": "H6876",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 두로(צֹר)의 파생형. 개역개정은 '두로 사람'으로 푼다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 초르(צֹר)의 파생형. 개역개정은 '두로 사람'으로 푼다.",
+    "evidence": "src/data/koreanGlossTopBatch05.js H6865 צֹר ṣōr → '초르'. 그 note 에 \"관용 표기 '두로'와 차이. 관용형은 헬라어 Τύρος를 거친 표기다\"라고 적혀 있다.",
+    "severity": "low",
+    "reason": "학술 표제 '초리'의 어기를 관용 표기 '두로'로 적어 배포된 학술 표제(초르)와 어긋나고, 같은 문장 뒤의 '개역개정은 두로 사람'과 층위가 겹친다. translitKo '초리'는 옳다."
+  },
+  {
+    "strong": "H6069",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 지명 아나돗(עֲנָתוֹת)의 파생형. 개역개정은 '아나돗 사람'으로 푼다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 지명 아나토트(עֲנָתוֹת)의 파생형. 개역개정은 '아나돗 사람'으로 푼다.",
+    "evidence": "src/data/koreanGlossTopBatch09.js H6068 עֲנָתוֹת ʿănātôt → '아나토트'(note 에 '개역개정 등 한국어 성경에서는 아나돗으로 음역한다'고 따로 적혀 있다).",
+    "severity": "low",
+    "reason": "H6876 과 같은 자리다. 학술 표제 '안토티'의 어기를 관용 표기 '아나돗'으로 적었다. translitKo '안토티'는 옳다."
+  },
+  {
+    "strong": "H8041",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. שׂ(ś)는 '사' 계열. 어말 א는 소리 나지 않는다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. שׂ(ś)는 '사' 계열. 음절 말 묵음 א(ʾ)는 소리 나지 않는다.",
+    "evidence": "lemma שָׂמַאל 의 마지막 글자는 ל 이고 א 는 그 앞 음절 말이다. translit 도 śāmaʾl 로 ʾ 뒤에 l 을 둔다. 같은 배치의 진짜 어말 א 는 H8485 תֵּימָא(têmāʾ→테마) · H8092 שִׁמְעָא(šimʿāʾ→심아) 다.",
+    "severity": "low",
+    "reason": "א 의 위치를 어말로 잘못 적어 어말 א 항목들과 구분되지 않는다. translitKo '사말'은 옳다."
+  },
+  {
+    "strong": "H4488",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 마네이다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": "translitKo 가 '마네'로 관용 표기와 같다. WORKER_SPEC '엄밀식과 관용식이 같으면 굳이 병기하지 않는다' · src/data/transliterationPolicy.js preservation '엄밀식과 관용식이 같으면 중복 병기 금지'. 같은 배치에서 값이 같은 자리는 G1116(고모라) · G3131(만나)처럼 '또한 같다'고 밝히거나 note 를 비워 둔다.",
+    "severity": "low",
+    "reason": "차이가 없는 자리를 차이가 있는 것처럼 병기해 규칙과 어긋난다. translitKo '마네'는 옳다."
+  }
+]

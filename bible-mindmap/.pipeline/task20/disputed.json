@@ -1,0 +1,548 @@
+{
+  "items": [
+    {
+      "shard": "U",
+      "strong": "H5873",
+      "lemma": "עֵין גַּנִּים",
+      "lang": "hebrew",
+      "glossEn": "En-gannim.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿÊn Gannîm",
+          "translitKo": "엔 간님",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿên gannîm",
+          "translitKo": "에인 가님",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿên gannîm",
+          "translitKo": "엔 가님",
+          "note": "개역개정 관용 표기는 엔간님이다. 다게쉬 포르테(중복 자음)를 받침으로 겹쳐 적지 않는 원칙에 따라 가님으로 표기한다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿên gannîm",
+          "translitKo": "엔 가님",
+          "note": "개역개정 '엔간님'. 다게쉬 포르테를 한글에서 겹쳐 적지 않는 규칙에 따라 '가님'으로 적었다(선례 엔 게디)."
+        }
+      ]
+    },
+    {
+      "shard": "U",
+      "strong": "H458",
+      "lemma": "אֱלִימֶלֶךְ",
+      "lang": "hebrew",
+      "glossEn": "Elimelech.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾĔlîmeleḵ",
+          "translitKo": "엘리멜레크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾĕlîmelek",
+          "translitKo": "엘리멜레크",
+          "note": "관용 표기는 엘리멜렉"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾĕlîmelek",
+          "translitKo": "엘리멜렉",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾĕlîmelek",
+          "translitKo": "엘리멜렉",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "U",
+      "strong": "G3879",
+      "lemma": "παρακύπτω",
+      "lang": "greek",
+      "glossEn": "look (into), stoop down",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "parakýptō",
+          "translitKo": "파라큅토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "parakýptō",
+          "translitKo": "파라퀴프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "parakýptō",
+          "translitKo": "파라퀴프토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "parakýptō",
+          "translitKo": "파라큅토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "U",
+      "strong": "G1465",
+      "lemma": "ἐγκόπτω",
+      "lang": "greek",
+      "glossEn": "hinder, be tedious unto",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "enkóptō",
+          "translitKo": "엔콥토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "enkóptō",
+          "translitKo": "엥코프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "enkóptō",
+          "translitKo": "엥코프토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "enkóptō",
+          "translitKo": "엥콥토",
+          "note": "γκ 는 앞 음절 받침 ㅇ + ㅋ 로 적는다(선례 아낭케)."
+        }
+      ]
+    },
+    {
+      "shard": "U",
+      "strong": "G1624",
+      "lemma": "ἐκτρέπω",
+      "lang": "greek",
+      "glossEn": "avoid, turn (aside, out of the way)",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ektrépō",
+          "translitKo": "엑트레포",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ektrépō",
+          "translitKo": "에크트레포",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ektrépō",
+          "translitKo": "에크트레포",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ektrépō",
+          "translitKo": "엑트레포",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "U",
+      "strong": "G5535",
+      "lemma": "χρῄζω",
+      "lang": "greek",
+      "glossEn": "(have) need",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "chrḗizō",
+          "translitKo": "크레이지조",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "chrḗizō",
+          "translitKo": "크레조",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "chrḗizō",
+          "translitKo": "크레이조",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "chrḗizō",
+          "translitKo": "크레조",
+          "note": "표제형의 ῃ(요타 하기)는 ē 로 보아 앞 모음만 적는다 — 크레조."
+        }
+      ]
+    },
+    {
+      "shard": "V",
+      "strong": "G1284",
+      "lemma": "διαῤῥήσσω",
+      "lang": "greek",
+      "glossEn": "break, rend",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "diarrhḗssō",
+          "translitKo": "디아르레소",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "diarrhḗssō",
+          "translitKo": "디아레소",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "diarrhḗssō",
+          "translitKo": "디아레소",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "diarrhḗssō",
+          "translitKo": "디아르레소",
+          "note": "어중 ῤῥ는 배포된 παῤῥησία→파르레시아 선례대로 르레로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H8051",
+      "lemma": "שַׁמּוּעַ",
+      "lang": "hebrew",
+      "glossEn": "Shammua, Shammuah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šammûaʿ",
+          "translitKo": "샴무아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šammûaʿ",
+          "translitKo": "샴무아",
+          "note": "ע 무음가, furtive patach"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šammûaʿ",
+          "translitKo": "샤무아",
+          "note": "한국어 성경 관용 표기는 삼무아다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šammûaʿ",
+          "translitKo": "샤무아",
+          "note": "어말 ע 앞 furtive patach로 '무아'. 개역개정 관용 표기는 '삼무아'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H4311",
+      "lemma": "מֵידְבָא",
+      "lang": "hebrew",
+      "glossEn": "Medeba.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mêḏĕḇāʾ",
+          "translitKo": "메드바",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mêdebāʾ",
+          "translitKo": "메데바",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mêdĕbāʾ",
+          "translitKo": "메데바",
+          "note": "한국어 성경 관용 표기는 메드바이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mêdĕbāʾ",
+          "translitKo": "메드바",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H3469",
+      "lemma": "יִשְׁעִי",
+      "lang": "hebrew",
+      "glossEn": "Ishi.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yišʿî",
+          "translitKo": "이시",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yišʿî",
+          "translitKo": "이시",
+          "note": "ע 무음가"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yišʿî",
+          "translitKo": "이쉬이",
+          "note": "한국어 성경 관용 표기는 이시이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yišʿî",
+          "translitKo": "이쉬이",
+          "note": "음절 말 שׁ는 '쉬', 이어지는 ע는 적지 않는다. 개역개정 관용 표기는 '이시'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H7345",
+      "lemma": "רְחַבְיָה",
+      "lang": "hebrew",
+      "glossEn": "Rehabiah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rĕḥaḇyâ",
+          "translitKo": "르합야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "reḥabyâ",
+          "translitKo": "르하뱌",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕḥabyâ",
+          "translitKo": "레하브야",
+          "note": "한국어 성경 관용 표기는 르합야이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rĕḥabyâ",
+          "translitKo": "레하브야",
+          "note": "-yâ는 야훼 이름의 축약형. 개역개정 관용 표기는 '르하뱌'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H6410",
+      "lemma": "פְּלַטְיָה",
+      "lang": "hebrew",
+      "glossEn": "Pelatiah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pĕlaṭyâ",
+          "translitKo": "플라트야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pelaṭyâ",
+          "translitKo": "플라탸",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pĕlaṭyâ",
+          "translitKo": "펠라트야",
+          "note": "한국어 성경 관용 표기는 블라디야이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pĕlaṭyâ",
+          "translitKo": "펠라트야",
+          "note": "개역개정 관용 표기는 '블라댜'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H7509",
+      "lemma": "רְפָיָה",
+      "lang": "hebrew",
+      "glossEn": "Rephaiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rĕp̄āyâ",
+          "translitKo": "르파야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "repāyâ",
+          "translitKo": "르파야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕpāyâ",
+          "translitKo": "레파야",
+          "note": "한국어 성경 관용 표기는 르바야이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rĕpāyâ",
+          "translitKo": "레파야",
+          "note": "개역개정 관용 표기는 '르바야'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H2228",
+      "lemma": "זְרַחְיָה",
+      "lang": "hebrew",
+      "glossEn": "Zerahiah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "zĕraḥyâ",
+          "translitKo": "즈라흐야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "zeraḥyâ",
+          "translitKo": "제라햐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zĕraḥyâ",
+          "translitKo": "제라흐야",
+          "note": "한국어 성경 관용 표기는 스라히야이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zĕraḥyâ",
+          "translitKo": "제라흐야",
+          "note": "-yâ는 야훼 이름의 축약형. 개역개정 관용 표기는 '스라히야'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H3668",
+      "lemma": "כְּנַעֲנָה",
+      "lang": "hebrew",
+      "glossEn": "Chenaanah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kĕnaʿănâ",
+          "translitKo": "크나아나",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kenaʿănâ",
+          "translitKo": "크나아나",
+          "note": "ע 무음가"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕnaʿănâ",
+          "translitKo": "케나아나",
+          "note": "한국어 성경 관용 표기는 그나아나이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kĕnaʿănâ",
+          "translitKo": "케나아나",
+          "note": "개역개정 관용 표기는 '그나아나'."
+        }
+      ]
+    },
+    {
+      "shard": "W",
+      "strong": "H2073",
+      "lemma": "זְבוּל",
+      "lang": "hebrew",
+      "glossEn": "dwell in, dwelling, habitation.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "zĕḇûl",
+          "translitKo": "즈불",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "zebûl",
+          "translitKo": "즈불",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zĕbûl",
+          "translitKo": "제불",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zĕbûl",
+          "translitKo": "제불",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

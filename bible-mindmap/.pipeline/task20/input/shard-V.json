@@ -1,0 +1,906 @@
+{
+  "shard": "V",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G3942",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "παροιμία",
+      "translit": "paroimía",
+      "glossEn": "parable, proverb",
+      "defEn": "apparently a state alongside of supposition, i.e. (concretely) an adage; specially, an enigmatical or fictitious illustration"
+    },
+    {
+      "strong": "G2965",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κύων",
+      "translit": "kýōn",
+      "glossEn": "dog",
+      "defEn": "a dog (\"hound\") (literally or figuratively)"
+    },
+    {
+      "strong": "G3068",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "λούω",
+      "translit": "loúō",
+      "glossEn": "wash",
+      "defEn": "to bathe (the whole person; whereas G3538 (νίπτω) means to wet a part only, and G4150 (πλύνω) to wash, cleanse garments exclusively)"
+    },
+    {
+      "strong": "G1265",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "διαμένω",
+      "translit": "diaménō",
+      "glossEn": "continue, remain",
+      "defEn": "to stay constantly (in being or relation)"
+    },
+    {
+      "strong": "G2332",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Θεσσαλονίκη",
+      "translit": "Thessaloníkē",
+      "glossEn": "Thessalonica",
+      "defEn": "Thessalonice, a place in Asia Minor"
+    },
+    {
+      "strong": "G5274",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὑπολαμβάνω",
+      "translit": "hypolambánō",
+      "glossEn": "answer, receive, suppose",
+      "defEn": "to take from below, i.e. carry upward; figuratively, to take up, i.e. continue a discourse or topic; mentally, to assume (presume)"
+    },
+    {
+      "strong": "G3156",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ματθαῖος",
+      "translit": "Matthaîos",
+      "glossEn": "Matthew",
+      "defEn": "Matthæus (i.e. Matthitjah), an Israelite and a Christian"
+    },
+    {
+      "strong": "G256",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἀλφαῖος",
+      "translit": "Alphaîos",
+      "glossEn": "Alpheus",
+      "defEn": "Alphæus, an Israelite"
+    },
+    {
+      "strong": "G3595",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὁδηγός",
+      "translit": "hodēgós",
+      "glossEn": "guide, leader",
+      "defEn": "a conductor (literally or figuratively (teacher))"
+    },
+    {
+      "strong": "G2954",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Κύπρος",
+      "translit": "Kýpros",
+      "glossEn": "Cyprus",
+      "defEn": "Cyprus, an island in the Mediterranean"
+    },
+    {
+      "strong": "G446",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀνθύπατος",
+      "translit": "anthýpatos",
+      "glossEn": "deputy",
+      "defEn": "instead of the highest officer, i.e. (specially) a Roman proconsul"
+    },
+    {
+      "strong": "G3828",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Παμφυλία",
+      "translit": "Pamphylía",
+      "glossEn": "Pamphylia",
+      "defEn": "every-tribal, i.e. heterogeneous (G5561 (χώρα) being implied); Pamphylia, a region of Asia Minor"
+    },
+    {
+      "strong": "G2421",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἰεσσαί",
+      "translit": "Iessaí",
+      "glossEn": "Jesse",
+      "defEn": "Jessæ (i.e. Jishai), an Israelite"
+    },
+    {
+      "strong": "G853",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀφανίζω",
+      "translit": "aphanízō",
+      "glossEn": "corrupt, disfigure, perish, vanish away",
+      "defEn": "to render unapparent, i.e. (actively) consume (becloud), or (passively) disappear (be destroyed)"
+    },
+    {
+      "strong": "G2868",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κονιορτός",
+      "translit": "koniortós",
+      "glossEn": "dust",
+      "defEn": "pulverulence (as blown about)"
+    },
+    {
+      "strong": "G1284",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "διαῤῥήσσω",
+      "translit": "diarrhḗssō",
+      "glossEn": "break, rend",
+      "defEn": "to tear asunder"
+    },
+    {
+      "strong": "G1705",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐμπίπλημι",
+      "translit": "empíplēmi",
+      "glossEn": "fill",
+      "defEn": "to fill in (up), i.e. (by implication) to satisfy (literally or figuratively)"
+    },
+    {
+      "strong": "G4951",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σύρω",
+      "translit": "sýrō",
+      "glossEn": "drag, draw, hale",
+      "defEn": "to trail"
+    },
+    {
+      "strong": "G2213",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ζήτημα",
+      "translit": "zḗtēma",
+      "glossEn": "question",
+      "defEn": "a search (properly concretely), i.e. (in words) a debate"
+    },
+    {
+      "strong": "G1279",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "διαπορεύομαι",
+      "translit": "diaporeúomai",
+      "glossEn": "go through, journey in, pass by",
+      "defEn": "to travel through"
+    },
+    {
+      "strong": "G1378",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "δόγμα",
+      "translit": "dógma",
+      "glossEn": "decree, ordinance",
+      "defEn": "a law (civil, ceremonial or ecclesiastical)"
+    },
+    {
+      "strong": "G1966",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐπιοῦσα",
+      "translit": "epioûsa",
+      "glossEn": "following, next",
+      "defEn": "supervening, i.e. (G2250 (ἡμέρα) or G3571 (νύξ) being expressed or implied) the ensuing day or night"
+    },
+    {
+      "strong": "G2350",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "θορυβέω",
+      "translit": "thorybéō",
+      "glossEn": "make ado (a noise), trouble self, set on an uproar",
+      "defEn": "to be in tumult, i.e. disturb, clamor"
+    },
+    {
+      "strong": "G2394",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἰάσων",
+      "translit": "Iásōn",
+      "glossEn": "Jason",
+      "defEn": "about to cure; Jason, a Christian"
+    },
+    {
+      "strong": "G1924",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐπιγράφω",
+      "translit": "epigráphō",
+      "glossEn": "inscription, write in (over, thereon)",
+      "defEn": "to inscribe (physically or mentally)"
+    },
+    {
+      "strong": "G2482",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἰταλία",
+      "translit": "Italía",
+      "glossEn": "Italy",
+      "defEn": "Italia, a region of Europe"
+    },
+    {
+      "strong": "G735",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἄρτεμις",
+      "translit": "Ártemis",
+      "glossEn": "Diana",
+      "defEn": "prompt; Artemis, the name of a Grecian goddess borrowed by the Asiatics for one of their deities"
+    },
+    {
+      "strong": "G3729",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὁρμάω",
+      "translit": "hormáō",
+      "glossEn": "run (violently), rush",
+      "defEn": "to start, spur or urge on, i.e. (reflexively) to dash or plunge"
+    },
+    {
+      "strong": "G708",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἀρίσταρχος",
+      "translit": "Arístarchos",
+      "glossEn": "Aristarchus",
+      "defEn": "best ruling; Aristarchus, a Macedonian"
+    },
+    {
+      "strong": "G4797",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "συγχέω",
+      "translit": "synchéō",
+      "glossEn": "confound, confuse, stir up, be in an uproar",
+      "defEn": "to commingle promiscuously, i.e. (figuratively) to throw (an assembly) into disorder, to perplex (the mind)"
+    },
+    {
+      "strong": "G20",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀγαλλίασις",
+      "translit": "agallíasis",
+      "glossEn": "gladness, (exceeding) joy",
+      "defEn": "exultation; specially, welcome"
+    },
+    {
+      "strong": "G4748",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "στοιχέω",
+      "translit": "stoichéō",
+      "glossEn": "walk (orderly)",
+      "defEn": "to march in (military) rank (keep step), i.e. (figuratively) to conform to virtue and piety"
+    },
+    {
+      "strong": "G375",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀναπέμπω",
+      "translit": "anapémpō",
+      "glossEn": "send (again)",
+      "defEn": "to send up or back"
+    },
+    {
+      "strong": "G1793",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐντυγχάνω",
+      "translit": "entynchánō",
+      "glossEn": "deal with, make intercession",
+      "defEn": "to chance upon, i.e. (by implication) confer with; by extension to entreat (in favor or against)"
+    },
+    {
+      "strong": "G2914",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Κρήτη",
+      "translit": "Krḗtē",
+      "glossEn": "Crete",
+      "defEn": "Crete, an island in the Mediterranean"
+    },
+    {
+      "strong": "G2949",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κῦμα",
+      "translit": "kŷma",
+      "glossEn": "wave",
+      "defEn": "a billow (as bursting or toppling)"
+    },
+    {
+      "strong": "G2191",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἔχιδνα",
+      "translit": "échidna",
+      "glossEn": "viper",
+      "defEn": "an adder or other poisonous snake (literally or figuratively)"
+    },
+    {
+      "strong": "G4029",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "περίκειμαι",
+      "translit": "períkeimai",
+      "glossEn": "be bound (compassed) with, hang about",
+      "defEn": "to lie all around, i.e. inclose, encircle, hamper (literally or figuratively)"
+    },
+    {
+      "strong": "G1813",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐξαλείφω",
+      "translit": "exaleíphō",
+      "glossEn": "blot out, wipe away",
+      "defEn": "to smear out, i.e. obliterate (erase tears, figuratively, pardon sin)"
+    },
+    {
+      "strong": "G1982",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐπισκιάζω",
+      "translit": "episkiázō",
+      "glossEn": "overshadow",
+      "defEn": "to cast a shade upon, i.e. (by analogy) to envelop in a haze of brilliancy; figuratively, to invest with preternatural influence"
+    },
+    {
+      "strong": "G5328",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Φαραώ",
+      "translit": "Pharaṓ",
+      "glossEn": "Pharaoh",
+      "defEn": "Pharao (i.e. Pharoh), an Egyptian king"
+    },
+    {
+      "strong": "G942",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "βάτος",
+      "translit": "bátos",
+      "glossEn": "bramble, bush",
+      "defEn": "a brier shrub"
+    },
+    {
+      "strong": "G2",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Ἀαρών",
+      "translit": "Aarṓn",
+      "glossEn": "Aaron",
+      "defEn": "Aaron, the brother of Moses"
+    },
+    {
+      "strong": "G3886",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "παραλύω",
+      "translit": "paralýō",
+      "glossEn": "feeble, sick of the (taken with) palsy",
+      "defEn": "to loosen beside, i.e. relax (perfect passive participle, paralyzed or enfeebled)"
+    },
+    {
+      "strong": "G3594",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὁδηγέω",
+      "translit": "hodēgéō",
+      "glossEn": "guide, lead",
+      "defEn": "to show the way (literally or figuratively (teach))"
+    },
+    {
+      "strong": "G4711",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σπυρίς",
+      "translit": "spyrís",
+      "glossEn": "basket",
+      "defEn": "a hamper or lunch-receptacle"
+    },
+    {
+      "strong": "G909",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "βαπτισμός",
+      "translit": "baptismós",
+      "glossEn": "baptism, washing",
+      "defEn": "ablution (ceremonial or Christian)"
+    },
+    {
+      "strong": "G103",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ᾄδω",
+      "translit": "áidō",
+      "glossEn": "sing",
+      "defEn": "to sing"
+    },
+    {
+      "strong": "G2189",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἔχθρα",
+      "translit": "échthra",
+      "glossEn": "enmity, hatred",
+      "defEn": "hostility; by implication, a reason for opposition"
+    },
+    {
+      "strong": "G3747",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὀστέον",
+      "translit": "ostéon",
+      "glossEn": "bone",
+      "defEn": "a bone"
+    },
+    {
+      "strong": "G3848",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "παραβάτης",
+      "translit": "parabátēs",
+      "glossEn": "breaker, transgress(-or)",
+      "defEn": "a violator"
+    },
+    {
+      "strong": "G1397",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "δουλεία",
+      "translit": "douleía",
+      "glossEn": "bondage",
+      "defEn": "slavery (ceremonially or figuratively)"
+    },
+    {
+      "strong": "G4723",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "στείρος",
+      "translit": "steíros",
+      "glossEn": "barren",
+      "defEn": "\"sterile\""
+    },
+    {
+      "strong": "G1590",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐκλύω",
+      "translit": "eklýō",
+      "glossEn": "faint",
+      "defEn": "to relax (literally or figuratively)"
+    },
+    {
+      "strong": "G3011",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "λειτουργός",
+      "translit": "leitourgós",
+      "glossEn": "minister(-ed)",
+      "defEn": "a public servant, i.e. a functionary in the Temple or Gospel, or (genitive case) a worshipper (of God) or benefactor (of man)"
+    },
+    {
+      "strong": "G2662",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "καταπατέω",
+      "translit": "katapatéō",
+      "glossEn": "trample, tread (down, underfoot)",
+      "defEn": "to trample down; figuratively, to reject with disdain"
+    },
+    {
+      "strong": "G5549",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "χρονίζω",
+      "translit": "chronízō",
+      "glossEn": "delay, tarry",
+      "defEn": "to take time, i.e. linger"
+    },
+    {
+      "strong": "G2013",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐπιτυγχάνω",
+      "translit": "epitynchánō",
+      "glossEn": "obtain",
+      "defEn": "to chance upon, i.e. (by implication) to attain"
+    },
+    {
+      "strong": "G3392",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "μιαίνω",
+      "translit": "miaínō",
+      "glossEn": "defile",
+      "defEn": "to sully or taint, i.e. contaminate (ceremonially or morally)"
+    },
+    {
+      "strong": "G4579",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σείω",
+      "translit": "seíō",
+      "glossEn": "move, quake, shake",
+      "defEn": "to rock (vibrate, properly, sideways or to and fro), i.e. (generally) to agitate (in any direction; cause to tremble); figuratively, to throw into a tremor (of fear or concern)"
+    },
+    {
+      "strong": "G2999",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "λατρεία",
+      "translit": "latreía",
+      "glossEn": "(divine) service",
+      "defEn": "ministration of God, i.e. worship"
+    },
+    {
+      "strong": "G3131",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "μάννα",
+      "translit": "mánna",
+      "glossEn": "manna",
+      "defEn": "manna (i.e. man), an edible gum"
+    },
+    {
+      "strong": "G1078",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "γένεσις",
+      "translit": "génesis",
+      "glossEn": "generation, nature(-ral)",
+      "defEn": "nativity; figuratively, nature"
+    },
+    {
+      "strong": "G3997",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πένθος",
+      "translit": "pénthos",
+      "glossEn": "mourning, sorrow",
+      "defEn": "grief"
+    },
+    {
+      "strong": "G2613",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "καταδικάζω",
+      "translit": "katadikázō",
+      "glossEn": "condemn",
+      "defEn": "to adjudge against, i.e. pronounce guilty"
+    },
+    {
+      "strong": "G4637",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σκηνόω",
+      "translit": "skēnóō",
+      "glossEn": "dwell",
+      "defEn": "to tent or encamp, i.e. (figuratively) to occupy (as a mansion) or (specially), to reside (as God did in the Tabernacle of old, a symbol of protection and communion)"
+    },
+    {
+      "strong": "G1591",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐκμάσσω",
+      "translit": "ekmássō",
+      "glossEn": "wipe",
+      "defEn": "to knead out, i.e. (by analogy) to wipe dry"
+    },
+    {
+      "strong": "G1690",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐμβριμάομαι",
+      "translit": "embrimáomai",
+      "glossEn": "straitly charge, groan, murmur against",
+      "defEn": "to have indignation on, i.e. (transitively) to blame, (intransitively) to sigh with chagrin, (specially) to sternly enjoin"
+    },
+    {
+      "strong": "G3688",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὄνος",
+      "translit": "ónos",
+      "glossEn": "an ass",
+      "defEn": "a donkey"
+    },
+    {
+      "strong": "G4738",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "στῆθος",
+      "translit": "stēthos",
+      "glossEn": "breast",
+      "defEn": "the (entire external) bosom, i.e. chest"
+    },
+    {
+      "strong": "G2779",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κῆπος",
+      "translit": "kēpos",
+      "glossEn": "garden",
+      "defEn": "a garden"
+    },
+    {
+      "strong": "G3817",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "παίω",
+      "translit": "paíō",
+      "glossEn": "smite, strike",
+      "defEn": "to hit (as if by a single blow and less violently than G5180 (τύπτω)); specially, to sting (as a scorpion)"
+    },
+    {
+      "strong": "G3530",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "Νικόδημος",
+      "translit": "Nikódēmos",
+      "glossEn": "Nicodemus",
+      "defEn": "victorious among his people; Nicodemus, an Israelite"
+    },
+    {
+      "strong": "G3608",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὀθόνιον",
+      "translit": "othónion",
+      "glossEn": "linen clothes",
+      "defEn": "a linen bandage"
+    },
+    {
+      "strong": "G4142",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πλοιάριον",
+      "translit": "ploiárion",
+      "glossEn": "boat, little (small) ship",
+      "defEn": "a boat"
+    },
+    {
+      "strong": "G3795",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ὀψάριον",
+      "translit": "opsárion",
+      "glossEn": "fish",
+      "defEn": "a relish to other food (as if cooked sauce), i.e. (specially), fish (presumably salted and dried as a condiment)"
+    },
+    {
+      "strong": "G2861",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κολυμβήθρα",
+      "translit": "kolymbḗthra",
+      "glossEn": "pool",
+      "defEn": "a diving-place, i.e. pond for bathing (or swimming)"
+    },
+    {
+      "strong": "G1049",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "γαζοφυλάκιον",
+      "translit": "gazophylákion",
+      "glossEn": "treasury",
+      "defEn": "a treasure-house, i.e. a court in the temple for the collection-boxes"
+    },
+    {
+      "strong": "G4260",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "προβαίνω",
+      "translit": "probaínō",
+      "glossEn": "+ be of a great age, go farther (on), be well stricken",
+      "defEn": "to walk forward, i.e. advance (literally, or in years)"
+    },
+    {
+      "strong": "G3961",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πατέω",
+      "translit": "patéō",
+      "glossEn": "tread (down, under foot)",
+      "defEn": "to trample (literally or figuratively)"
+    },
+    {
+      "strong": "G4651",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σκορπίος",
+      "translit": "skorpíos",
+      "glossEn": "scorpion",
+      "defEn": "a \"scorpion\" (from its sting)"
+    },
+    {
+      "strong": "G2049",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐρημόω",
+      "translit": "erēmóō",
+      "glossEn": "(bring to, make) desolate(-ion), come to nought",
+      "defEn": "to lay waste (literally or figuratively)"
+    },
+    {
+      "strong": "G372",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀνάπαυσις",
+      "translit": "anápausis",
+      "glossEn": "rest",
+      "defEn": "intermission; by implication, recreation"
+    },
+    {
+      "strong": "G2337",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "θηλάζω",
+      "translit": "thēlázō",
+      "glossEn": "(give) suck(-ling)",
+      "defEn": "to suckle, (by implication) to suck"
+    },
+    {
+      "strong": "G4094",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πίναξ",
+      "translit": "pínax",
+      "glossEn": "charger, platter",
+      "defEn": "a plate"
+    },
+    {
+      "strong": "G1424",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "δυσμή",
+      "translit": "dysmḗ",
+      "glossEn": "west",
+      "defEn": "the sun-set, i.e. (by implication) the western region"
+    },
+    {
+      "strong": "G4615",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σίναπι",
+      "translit": "sínapi",
+      "glossEn": "mustard",
+      "defEn": "mustard (the plant)"
+    },
+    {
+      "strong": "G4411",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "πρωτοκλισία",
+      "translit": "prōtoklisía",
+      "glossEn": "chief (highest, uppermost) room",
+      "defEn": "a reclining first (in the place of honor) at the dinner-bed, i.e. preeminence at meals"
+    },
+    {
+      "strong": "G2625",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κατακλίνω",
+      "translit": "kataklínō",
+      "glossEn": "(make) sit down (at meat)",
+      "defEn": "to recline down, i.e. (specially) to take a place at table"
+    },
+    {
+      "strong": "G105",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀετός",
+      "translit": "aetós",
+      "glossEn": "eagle",
+      "defEn": "an eagle (from its wind-like flight)"
+    },
+    {
+      "strong": "G5411",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "φόρος",
+      "translit": "phóros",
+      "glossEn": "tribute",
+      "defEn": "a load (as borne), i.e. (figuratively) a tax (properly, an individual assessment on persons or property; whereas G5056 (τέλος) is usually a general toll on goods or travel)"
+    },
+    {
+      "strong": "G1923",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἐπιγραφή",
+      "translit": "epigraphḗ",
+      "glossEn": "superscription",
+      "defEn": "an inscription"
+    },
+    {
+      "strong": "G349",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἀνακράζω",
+      "translit": "anakrázō",
+      "glossEn": "cry out",
+      "defEn": "to scream up (aloud)"
+    },
+    {
+      "strong": "G231",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "ἁλιεύς",
+      "translit": "halieús",
+      "glossEn": "fisher(-man)",
+      "defEn": "a sailor (as engaged on the salt water), i.e. (by implication) a fisher"
+    },
+    {
+      "strong": "G4719",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "στάχυς",
+      "translit": "stáchys",
+      "glossEn": "ear (of corn)",
+      "defEn": "a head of grain (as standing out from the stalk)"
+    },
+    {
+      "strong": "G4846",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "συμπνίγω",
+      "translit": "sympnígō",
+      "glossEn": "choke, throng",
+      "defEn": "to strangle completely, i.e. (literally) to drown, or (figuratively) to crowd"
+    },
+    {
+      "strong": "G2899",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "κράσπεδον",
+      "translit": "kráspedon",
+      "glossEn": "border, hem",
+      "defEn": "a margin, i.e. (specially), a fringe or tassel"
+    },
+    {
+      "strong": "G3429",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "μοιχάω",
+      "translit": "moicháō",
+      "glossEn": "commit adultery",
+      "defEn": "(middle voice) to commit adultery"
+    },
+    {
+      "strong": "G3899",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "παραπορεύομαι",
+      "translit": "paraporeúomai",
+      "glossEn": "go, pass (by)",
+      "defEn": "to travel near"
+    },
+    {
+      "strong": "G4654",
+      "lang": "greek",
+      "count": 5,
+      "lemma": "σκοτίζω",
+      "translit": "skotízō",
+      "glossEn": "darken",
+      "defEn": "to obscure (literally or figuratively)"
+    }
+  ]
+}
