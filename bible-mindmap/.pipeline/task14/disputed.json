@@ -1,0 +1,1395 @@
+{
+  "count": 46,
+  "items": [
+    {
+      "shard": "AA",
+      "strong": "H5992",
+      "lemma": "עַמִּינָדָב",
+      "lang": "hebrew",
+      "glossEn": "Amminadab.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿammînāḏāḇ",
+          "translitKo": "암미나답",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿammînādāb",
+          "translitKo": "아미나다브",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʿammînādāb",
+          "translitKo": "아미나답",
+          "note": "관용 표기는 '암미나답'이나 다게쉬 포르테를 겹쳐 적지 않는 원칙을 따름. / ע는 한글로 따로 적지 않음."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿammînādāb",
+          "translitKo": "아미나다브",
+          "note": "학술 표기는 아미나다브다(다게쉬 포르테 중복 받침 미표기). 한국어 성경 관용 표기는 암미나답이다."
+        }
+      ]
+    },
+    {
+      "shard": "AA",
+      "strong": "H3158",
+      "lemma": "יִזְרְעֵאלִי",
+      "lang": "hebrew",
+      "glossEn": "Jezreelite.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yizreʿēʾlî",
+          "translitKo": "이스르엘리",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yizrəʿēʾlî",
+          "translitKo": "이즈르엘리",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "yizrəʿēʾlî",
+          "translitKo": "이즈레엘리",
+          "note": "관용 표기와 다르나 학술 표기 원칙을 따름. / ע는 한글로 따로 적지 않음."
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yizrĕʿēʾlî",
+          "translitKo": "이즈르엘리",
+          "note": "학술 표기는 이즈르엘리다. 한국어 성경 관용 표기는 이스르엘 사람이다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "G4514",
+      "lemma": "Ῥωμαῖος",
+      "lang": "greek",
+      "glossEn": "Roman, of Rome",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Rhōmaîos",
+          "translitKo": "르흐오ㅁ아이오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Rhōmaîos",
+          "translitKo": "로마이오스",
+          "note": "ῥ는 '흐르'가 기본이나 관용 표기를 따름."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Rhōmaîos",
+          "translitKo": "흐로마이오스",
+          "note": "관용 표기 로마"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Rhōmaîos",
+          "translitKo": "로마이오스",
+          "note": "학술 표기는 로마이오스다. 관용 표기 '로마인'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "G377",
+      "lemma": "ἀναπίπτω",
+      "lang": "greek",
+      "glossEn": "lean, sit down (to meat)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "anapíptō",
+          "translitKo": "아ㄴ아프프트오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "anapíptō",
+          "translitKo": "아나피프토",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "anapíptō",
+          "translitKo": "아나피프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "anapíptō",
+          "translitKo": "아나핍토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "G3094",
+      "lemma": "Μαγδαληνή",
+      "lang": "greek",
+      "glossEn": "Magdalene",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Magdalēnḗ",
+          "translitKo": "ㅁ아그드아ㄹ에ㄴ",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Magdalēnḗ",
+          "translitKo": "막달레네",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Magdalēnḗ",
+          "translitKo": "막달레네",
+          "note": "관용 표기 막달라"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Magdalēnḗ",
+          "translitKo": "마그달레네",
+          "note": "학술 표기는 마그달레네다. 관용 표기 '막달라'와 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "G910",
+      "lemma": "Βαπτιστής",
+      "lang": "greek",
+      "glossEn": "Baptist",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Baptistḗs",
+          "translitKo": "브아프트이스트스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Baptistḗs",
+          "translitKo": "바프티스테스",
+          "note": "관용 표기 '세례 요한/세례자'이나 학술 표기를 따름."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Baptistḗs",
+          "translitKo": "밥티스테스",
+          "note": "관용 표기 세례/침례"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Baptistḗs",
+          "translitKo": "밥티스테스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H62",
+      "lemma": "אָבֵל בֵּית־מֲעַכָה",
+      "lang": "hebrew",
+      "glossEn": "Abel-beth-maachah, Abel of Beth-maachah,",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾāḇēl bêth-maʿăḵāh",
+          "translitKo": "아브에ㄹ-브에트흐-ㅁ아아크아흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾābēl bêt-maʿăkâ",
+          "translitKo": "아벨 베이트마아카",
+          "note": "관용 표기 '아벨 벧 마아가'이나 학술 표기를 따름."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʾābēl bêt-maʿăkâ",
+          "translitKo": "아벨 베트마아카",
+          "note": "관용 표기 아벨 벧마아가"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾābēl bêt-maʿăkâ",
+          "translitKo": "아벨 베이트-마아카",
+          "note": "학술 표기는 아벨 베이트-마아카다. 관용 표기 '아벨벧마아가'와 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H5872",
+      "lemma": "עֵין גֶּדִי",
+      "lang": "hebrew",
+      "glossEn": "En-gedi.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿên geḏî",
+          "translitKo": "에ㄴ-그에드이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿên gedî",
+          "translitKo": "에인 게디",
+          "note": "관용 표기 '엔게디'이나 학술 표기를 따름."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʿên gedî",
+          "translitKo": "엔 게디",
+          "note": "관용 표기 엔게디"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿên gedî",
+          "translitKo": "엔 게디",
+          "note": "학술 표기는 엔 게디다. 관용 표기 '엔게디'와 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H471",
+      "lemma": "אֶלְיָקִים",
+      "lang": "hebrew",
+      "glossEn": "Eliakim.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾelyāqîm",
+          "translitKo": "에ㄹ이아크이ㅁ",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾelyāqîm",
+          "translitKo": "엘야킴",
+          "note": "관용 표기 '엘리아김'이나 학술 표기를 따름."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ʾelyāqîm",
+          "translitKo": "엘야킴",
+          "note": "관용 표기 엘리아김"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾelyāqîm",
+          "translitKo": "엘랴킴",
+          "note": "학술 표기는 엘랴킴이다. 관용 표기 '엘리아김'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H1593",
+      "lemma": "גַּנָּה",
+      "lang": "hebrew",
+      "glossEn": "garden.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gannah",
+          "translitKo": "그아ㄴㄴ아흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gannâ",
+          "translitKo": "가나",
+          "note": "다게쉬 포르테는 한글 받침으로 겹쳐 적지 않음."
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "gannâ",
+          "translitKo": "가나",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gannâ",
+          "translitKo": "간나",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H2376",
+      "lemma": "חֵזֵו",
+      "lang": "hebrew",
+      "glossEn": "look, vision.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥēzēw",
+          "translitKo": "흐에즈에우",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ḥêzew",
+          "translitKo": "헤제우",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥēzēw",
+          "translitKo": "헤제우",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H8036",
+      "lemma": "שֻׁם",
+      "lang": "hebrew",
+      "glossEn": "name.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šum",
+          "translitKo": "쉬우ㅁ",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "šum",
+          "translitKo": "슘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šum",
+          "translitKo": "슘",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H5457",
+      "lemma": "סְגִד",
+      "lang": "hebrew",
+      "glossEn": "worship.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "sĕgiḏ",
+          "translitKo": "스에그이드",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "səgid",
+          "translitKo": "세기드",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sĕgid",
+          "translitKo": "세기드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H7412",
+      "lemma": "רְמָה",
+      "lang": "hebrew",
+      "glossEn": "cast (down), impose.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rĕmāh",
+          "translitKo": "르에ㅁ아흐",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "rəmâ",
+          "translitKo": "레마",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕmâ",
+          "translitKo": "레마",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H3792",
+      "lemma": "כְּתָב",
+      "lang": "hebrew",
+      "glossEn": "prescribing, writing(-ten).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kĕthāḇ",
+          "translitKo": "크에트흐아브",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "kətāb",
+          "translitKo": "케타브",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kĕtāb",
+          "translitKo": "케타브",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H8245",
+      "lemma": "שָׁקַד",
+      "lang": "hebrew",
+      "glossEn": "hasten, remain, wake, watch (for).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šāqaḏ",
+          "translitKo": "쉬아크아드",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "šāqad",
+          "translitKo": "샤카드",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šāqad",
+          "translitKo": "샤카드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H4550",
+      "lemma": "מַסַּע",
+      "lang": "hebrew",
+      "glossEn": "journey(-ing).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "massaʿ",
+          "translitKo": "ㅁ아스스아",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "massaʿ",
+          "translitKo": "마사",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "massaʿ",
+          "translitKo": "마사",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H4172",
+      "lemma": "מוֹרָא",
+      "lang": "hebrew",
+      "glossEn": "dread, (that ought to be) fear(-ed), terribleness, terror.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "môrāʾ",
+          "translitKo": "ㅁ오르아",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "môrāʾ",
+          "translitKo": "모라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "môrāʾ",
+          "translitKo": "모라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H5392",
+      "lemma": "נֶשֶׁךְ",
+      "lang": "hebrew",
+      "glossEn": "usury.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nešeḵ",
+          "translitKo": "ㄴ에쉬에크",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "nešek",
+          "translitKo": "네셰크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nešek",
+          "translitKo": "네셰크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H2023",
+      "lemma": "הֹר",
+      "lang": "hebrew",
+      "glossEn": "Hor.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hōr",
+          "translitKo": "흐오르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "hōr",
+          "translitKo": "호르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hōr",
+          "translitKo": "호르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H2042",
+      "lemma": "הָרָר",
+      "lang": "hebrew",
+      "glossEn": "hill, mount(-ain).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hārar",
+          "translitKo": "흐아르아르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "hārār",
+          "translitKo": "하라르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hārār",
+          "translitKo": "하라르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H1187",
+      "lemma": "בַּעַל פְּעוֹר",
+      "lang": "hebrew",
+      "glossEn": "Baal-peor.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "baʿal pĕʿôr",
+          "translitKo": "브아아ㄹ-프에오르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "baʿal pəʿôr",
+          "translitKo": "바알 페오르",
+          "note": "관용 표기 바알브올"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "baʿal pĕʿôr",
+          "translitKo": "바알 페오르",
+          "note": "학술 표기는 바알 페오르다. 관용 표기 '바알브올'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H1447",
+      "lemma": "גָּדֵר",
+      "lang": "hebrew",
+      "glossEn": "fence, hedge, wall.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gāḏēr",
+          "translitKo": "그아드에르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "gādēr",
+          "translitKo": "가데르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gādēr",
+          "translitKo": "가데르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H4966",
+      "lemma": "מָתוֹק",
+      "lang": "hebrew",
+      "glossEn": "sweet(-er, -ness).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "māthôq",
+          "translitKo": "ㅁ아트흐오크",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "mātôq",
+          "translitKo": "마토크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mātôq",
+          "translitKo": "마토크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H2270",
+      "lemma": "חָבֵר",
+      "lang": "hebrew",
+      "glossEn": "companion, fellow, knit together.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥāḇēr",
+          "translitKo": "흐아브에르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ḥābēr",
+          "translitKo": "하베르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥābēr",
+          "translitKo": "하베르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H4753",
+      "lemma": "מֹר",
+      "lang": "hebrew",
+      "glossEn": "myrrh.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mōr",
+          "translitKo": "ㅁ오르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "mōr",
+          "translitKo": "모르",
+          "note": "관용 표기 몰약"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mōr",
+          "translitKo": "모르",
+          "note": "학술 표기는 모르다. 관용 표기 '몰약'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H3843",
+      "lemma": "לְבֵנָה",
+      "lang": "hebrew",
+      "glossEn": "(altar of) brick, tile.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "lĕḇēnāh",
+          "translitKo": "ㄹ에브에ㄴ아흐",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ləbēnâ",
+          "translitKo": "레베나",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "lĕbēnâ",
+          "translitKo": "레베나",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H6363",
+      "lemma": "פֶּטֶר",
+      "lang": "hebrew",
+      "glossEn": "firstling, openeth, such as open.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "peṭer",
+          "translitKo": "프에트에르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "peṭer",
+          "translitKo": "페테르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "peṭer",
+          "translitKo": "페테르",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H4701",
+      "lemma": "מִצְנֶפֶת",
+      "lang": "hebrew",
+      "glossEn": "diadem, mitre.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "miṣnepet",
+          "translitKo": "ㅁ이츠ㄴ에프에트",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "miṣnepet",
+          "translitKo": "미츠네페트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "miṣnepet",
+          "translitKo": "미츠네페트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H5549",
+      "lemma": "סָלַל",
+      "lang": "hebrew",
+      "glossEn": "cast up, exalt (self), extol, make plain, raise up.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "salal",
+          "translitKo": "스아ㄹ아ㄹ",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "sālal",
+          "translitKo": "살랄",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sālal",
+          "translitKo": "살랄",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H947",
+      "lemma": "בּוּס",
+      "lang": "hebrew",
+      "glossEn": "loath, tread (down, under (foot)), be polluted.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bûṣ",
+          "translitKo": "브우츠",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "bûs",
+          "translitKo": "부스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bûs",
+          "translitKo": "부스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H6780",
+      "lemma": "צֶמַח",
+      "lang": "hebrew",
+      "glossEn": "branch, bud, that which (where) grew (upon), spring(-ing).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ṣemaḥ",
+          "translitKo": "츠에ㅁ아흐",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ṣemaḥ",
+          "translitKo": "체마흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ṣemaḥ",
+          "translitKo": "체마흐",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H2874",
+      "lemma": "טֶבַח",
+      "lang": "hebrew",
+      "glossEn": "[idiom] beast, slaughter, [idiom] slay, [idiom] sore.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ṭeḇaḥ",
+          "translitKo": "트에브아흐",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ṭebaḥ",
+          "translitKo": "테바흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ṭebaḥ",
+          "translitKo": "테바흐",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H5301",
+      "lemma": "נָפַח",
+      "lang": "hebrew",
+      "glossEn": "blow, breath, give up, cause to lose (life), seething, snuff.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nāpaḥ",
+          "translitKo": "ㄴ아프아흐",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "nāpaḥ",
+          "translitKo": "나파흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nāpaḥ",
+          "translitKo": "나파흐",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H6355",
+      "lemma": "פַּחַת מוֹאָב",
+      "lang": "hebrew",
+      "glossEn": "Pahathmoab.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "paḥath môʾāḇ",
+          "translitKo": "프아흐아트흐-ㅁ오아브",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "paḥat môʾāb",
+          "translitKo": "파하트 모아브",
+          "note": "관용 표기 바핫모압"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "paḥat môʾāb",
+          "translitKo": "파하트 모아브",
+          "note": "학술 표기는 파하트 모아브다. 관용 표기 '바핫모압'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H1904",
+      "lemma": "הָגָר",
+      "lang": "hebrew",
+      "glossEn": "Hagar.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hāgār",
+          "translitKo": "흐아그아르",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "hāgār",
+          "translitKo": "하가르",
+          "note": "관용 표기 하갈"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hāgār",
+          "translitKo": "하가르",
+          "note": "학술 표기는 하가르다. 관용 표기 '하갈'과 차이가 있다."
+        }
+      ]
+    },
+    {
+      "shard": "AB",
+      "strong": "H7385",
+      "lemma": "רִיק",
+      "lang": "hebrew",
+      "glossEn": "empty, to no purpose, (in) vain (thing), vanity.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rîq",
+          "translitKo": "르이크",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "rîq",
+          "translitKo": "리크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rîq",
+          "translitKo": "리크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "G1657",
+      "lemma": "ἐλευθερία",
+      "lang": "greek",
+      "glossEn": "liberty",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "eleuthería",
+          "translitKo": "엘류테리아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "eleuthería",
+          "translitKo": "엘레우테리아",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "eleuthería",
+          "translitKo": "엘레우테리아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "eleuthería",
+          "translitKo": "엘류테리아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "G5452",
+      "lemma": "φυτεύω",
+      "lang": "greek",
+      "glossEn": "plant",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "phyteúō",
+          "translitKo": "퓌튜오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "phyteúō",
+          "translitKo": "퓌테우오",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "phyteúō",
+          "translitKo": "피테우오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "phyteúō",
+          "translitKo": "피튜오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "G1968",
+      "lemma": "ἐπιπίπτω",
+      "lang": "greek",
+      "glossEn": "fall into (on, upon) lie on, press upon",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "epipíptō",
+          "translitKo": "에피핍토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "epipíptō",
+          "translitKo": "에피핍토",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "epipíptō",
+          "translitKo": "에피피프토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "epipíptō",
+          "translitKo": "에피피프토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "G1980",
+      "lemma": "ἐπισκέπτομαι",
+      "lang": "greek",
+      "glossEn": "look out, visit",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "episképtomai",
+          "translitKo": "에피스켑토마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "episképtomai",
+          "translitKo": "에피스켑토마이",
+          "note": ""
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "episképtomai",
+          "translitKo": "에피스케프토마이",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "episképtomai",
+          "translitKo": "에피스케프토마이",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "G912",
+      "lemma": "Βαραββᾶς",
+      "lang": "greek",
+      "glossEn": "Barabbas",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Barabbâs",
+          "translitKo": "바랍바스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Barabbâs",
+          "translitKo": "바랍바스",
+          "note": "관용 표기: 바라바"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "Barabbâs",
+          "translitKo": "바라바스",
+          "note": "관용 표기는 바라바"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Barabbâs",
+          "translitKo": "바라바스",
+          "note": "관용 표기는 바라바이다."
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "H1283",
+      "lemma": "בְּרִיעָה",
+      "lang": "hebrew",
+      "glossEn": "Beriah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bĕrîʿāh",
+          "translitKo": "브리아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bǝrîʿâ",
+          "translitKo": "브리아",
+          "note": "관용 표기: 브리아"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "berîʿâ",
+          "translitKo": "베리아",
+          "note": "관용 표기는 브리아"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bĕrîʿâ",
+          "translitKo": "베리아",
+          "note": "관용 표기는 브리아이다."
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "H6765",
+      "lemma": "צְלׇפְחָד",
+      "lang": "hebrew",
+      "glossEn": "Zelophehad.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ṣĕlop̄ḥāḏ",
+          "translitKo": "첼롭하드",
+          "note": "관용 표기: 슬로브핫"
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ṣǝlopḥād",
+          "translitKo": "츨로프하드",
+          "note": "관용 표기: 슬로브핫"
+        },
+        {
+          "model": "gptoss120b",
+          "translit": "ṣelopḥād",
+          "translitKo": "첼로프하드",
+          "note": "관용 표기는 슬로브핫"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ṣĕlopḥād",
+          "translitKo": "첼로프하드",
+          "note": "관용 표기는 슬로브핫이다."
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "H3049",
+      "lemma": "יִדְּעֹנִי",
+      "lang": "hebrew",
+      "glossEn": "wizard.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yiddĕʿōnî",
+          "translitKo": "이데오니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yiddǝʿōnî",
+          "translitKo": "이드오니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yiddĕʿōnî",
+          "translitKo": "이데오니",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AC",
+      "strong": "H7775",
+      "lemma": "שַׁוְעָה",
+      "lang": "hebrew",
+      "glossEn": "crying.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "šawʿāh",
+          "translitKo": "샤와아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šawʿâ",
+          "translitKo": "샤와",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šawʿâ",
+          "translitKo": "샤와",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}
