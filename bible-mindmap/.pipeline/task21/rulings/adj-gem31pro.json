@@ -1,0 +1,82 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H3481",
+      "translit": "yiśrĕʾēlî",
+      "translitKo": "이스레엘리",
+      "evidence": "koreanGlossTopBatch02.js의 '유성 쉐바: ĕ' 규칙(선례 tĕhôm)을 따르며, 이스라엘(H3478)과 달리 레쉬 아래가 유성 쉐바이므로 '이스레엘리'로 표기한다.",
+      "note": ""
+    },
+    {
+      "strong": "H1655",
+      "translit": "gešem",
+      "translitKo": "게솀",
+      "evidence": "H1653(gešem)이 '게솀'으로 확정된 선례(koreanGlossTopBatch05.js)와 동일하게 표기한다.",
+      "note": ""
+    },
+    {
+      "strong": "H7486",
+      "translit": "raʿmĕsēs",
+      "translitKo": "라메세스",
+      "evidence": "H7474(raʿyâ, 라야)처럼 음절 말 ע를 한글 표기에서 생략하는 선례를 따랐다. 멤 아래 모음은 유성 쉐바이므로 ĕ와 '메'로 적는다.",
+      "note": "관용 표기는 라암셋이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H2156",
+      "translit": "zĕmôrâ",
+      "translitKo": "제모라",
+      "evidence": "H2074(제불룬), H2148(제카르야) 등 זְ(자인+유성 쉐바)를 '제'로 표기한 선례(koreanGlossTopBatch04, 05)를 따른다.",
+      "note": ""
+    },
+    {
+      "strong": "H6706",
+      "translit": "ṣĕḥîaḥ",
+      "translitKo": "체히아흐",
+      "evidence": "H6666(ṣĕdāqâ, 체다카) 선례에 따라 צְ를 '체'로 표기하며, 어말 ח 앞 furtive patach를 살려 '-아흐'로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H1552",
+      "translit": "gĕlîlâ",
+      "translitKo": "겔릴라",
+      "evidence": "H1366(gĕbûl, 게불) 선례에 따라 גְ(기멜+유성 쉐바)를 '게'로 표기한다.",
+      "note": ""
+    },
+    {
+      "strong": "H2828",
+      "translit": "ḥāšum",
+      "translitKo": "하슘",
+      "evidence": "batch 02 규칙 3에 따라 שׁ(š) 뒤에 모음(u)이 오므로 '슈'로 적는다.",
+      "note": "관용 표기는 하숨이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3540",
+      "translit": "kĕdorlāʿōmer",
+      "translitKo": "케도를라오메르",
+      "evidence": "H6190(ʿorlâ, 오를라)처럼 r+l 연쇄를 '를라'로 표기하는 선례(koreanGlossTopBatch09.js)를 따른다.",
+      "note": "관용 표기는 그돌라오멜이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H1660",
+      "translit": "gat",
+      "translitKo": "가트",
+      "evidence": "H4191(mût, 무트), H3727(kappōret, 카포레트) 선례에 따라 어말 ת(t)를 '트'로 적는다.",
+      "note": "관용 표기는 '가드'다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G1598",
+      "translit": "ekpeirázō",
+      "translitKo": "에크페이라조",
+      "evidence": "G1544(ekbállō, 에크발로)의 '에크' 선례와 G3985(peirázō, 페이라조)의 '페이라조' 선례를 결합했다.",
+      "note": ""
+    },
+    {
+      "strong": "G4302",
+      "translit": "prolégō",
+      "translitKo": "프롤레고",
+      "evidence": "G225(alḗtheia, 알레테이아), G652(apóstolos, 아포스톨로스) 등 모음 사이 λ(l)를 겹쳐 적어 'ㄹㄹ'로 표기하는 선례를 따랐다.",
+      "note": ""
+    }
+  ]
+}

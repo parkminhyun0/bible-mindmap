@@ -1,0 +1,906 @@
+{
+  "shard": "AR",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H1660",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גַּת",
+      "translit": "",
+      "glossEn": "(wine-) press (fat).",
+      "defEn": "a wine-press (or vat for holding the grapes in pressing them)"
+    },
+    {
+      "strong": "H8575",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תַּנְחוּם",
+      "translit": "",
+      "glossEn": "comfort, consolation.",
+      "defEn": "compassion, solace"
+    },
+    {
+      "strong": "H7951",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׁלָה",
+      "translit": "",
+      "glossEn": "be happy, prosper, be in safety.",
+      "defEn": "to be tranquil, i.e. secure or successful"
+    },
+    {
+      "strong": "H2028",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "הֲרֵגָה",
+      "translit": "",
+      "glossEn": "slaughter.",
+      "defEn": "slaughter"
+    },
+    {
+      "strong": "H7745",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שׁוּחָה",
+      "translit": "",
+      "glossEn": "ditch, pit.",
+      "defEn": "a chasm"
+    },
+    {
+      "strong": "H5856",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עִי",
+      "translit": "",
+      "glossEn": "heap.",
+      "defEn": "a ruin (as if overturned)"
+    },
+    {
+      "strong": "H1587",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גְּמַרְיָה",
+      "translit": "",
+      "glossEn": "Gemariah.",
+      "defEn": "Gemarjah, the name of two Israelites"
+    },
+    {
+      "strong": "H7599",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׁאַן",
+      "translit": "",
+      "glossEn": "be at ease, be quiet, rest. See also H1052 (בֵּית שְׁאָן).",
+      "defEn": "to loll, i.e. be peaceful"
+    },
+    {
+      "strong": "H4446",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מְלֶכֶת",
+      "translit": "",
+      "glossEn": "queen.",
+      "defEn": "a queen"
+    },
+    {
+      "strong": "H8503",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תַּכְלִית",
+      "translit": "",
+      "glossEn": "end, perfect(-ion).",
+      "defEn": "completion; by implication, an extremity"
+    },
+    {
+      "strong": "H2465",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חֶלֶד",
+      "translit": "",
+      "glossEn": "age, short time, world.",
+      "defEn": "life (as a fleeting portion of time); hence, the world (as transient)"
+    },
+    {
+      "strong": "H2786",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חָרַק",
+      "translit": "",
+      "glossEn": "gnash.",
+      "defEn": "to grate the teeth"
+    },
+    {
+      "strong": "H1085",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בִּלְדַּד",
+      "translit": "",
+      "glossEn": "Bildad.",
+      "defEn": "Bildad, one of Job's friends"
+    },
+    {
+      "strong": "H7747",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שׁוּחִי",
+      "translit": "",
+      "glossEn": "Shuhite.",
+      "defEn": "a Shuchite or descendant of Shuach"
+    },
+    {
+      "strong": "H5767",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַוָּל",
+      "translit": "",
+      "glossEn": "unjust, unrighteous, wicked.",
+      "defEn": "evil (morally)"
+    },
+    {
+      "strong": "H8538",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תֻּמָּה",
+      "translit": "",
+      "glossEn": "integrity.",
+      "defEn": "innocence"
+    },
+    {
+      "strong": "H7135",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "קָרָה",
+      "translit": "",
+      "glossEn": "cold.",
+      "defEn": "coolness"
+    },
+    {
+      "strong": "H11",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲבַדּוֹן",
+      "translit": "",
+      "glossEn": "destruction.",
+      "defEn": "abstract, a perishing; concrete, Hades"
+    },
+    {
+      "strong": "H7176",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "קֶרֶת",
+      "translit": "",
+      "glossEn": "city.",
+      "defEn": "a city"
+    },
+    {
+      "strong": "H1843",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דֵּעַ",
+      "translit": "",
+      "glossEn": "knowledge, opinion.",
+      "defEn": "knowledge"
+    },
+    {
+      "strong": "H7169",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "קָרַץ",
+      "translit": "",
+      "glossEn": "form, move, wink.",
+      "defEn": "to pinch, i.e. (partially) to bite the lips, blink the eyes (as a gesture of malice), or (fully) to squeeze off (a piece of clay in order to mould a vessel from it)"
+    },
+    {
+      "strong": "H8572",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "תְּנוּמָה",
+      "translit": "",
+      "glossEn": "slumber(-ing).",
+      "defEn": "drowsiness, i.e. sleep"
+    },
+    {
+      "strong": "H6094",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַצֶּבֶת",
+      "translit": "",
+      "glossEn": "sorrow, wound.",
+      "defEn": "a idol; also, a pain or wound"
+    },
+    {
+      "strong": "H7851",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שִׁטִּים",
+      "translit": "",
+      "glossEn": "Shittim.",
+      "defEn": "Shittim, a place East of the Jordan"
+    },
+    {
+      "strong": "H7021",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "קִיקָיוֹן",
+      "translit": "",
+      "glossEn": "gourd.",
+      "defEn": "the gourd (as nauseous)"
+    },
+    {
+      "strong": "H7343",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רָחָב",
+      "translit": "",
+      "glossEn": "Rahab.",
+      "defEn": "Rachab, a Canaanitess"
+    },
+    {
+      "strong": "H6465",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "פְּעוֹר",
+      "translit": "",
+      "glossEn": "Peor. See also H1047 (בֵּית פְּעוֹר).",
+      "defEn": "Peor, a mountain East of Jordan; Baal Peor,  (for a deity worshipped there"
+    },
+    {
+      "strong": "H7541",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "רַקָּה",
+      "translit": "",
+      "glossEn": "temple.",
+      "defEn": "properly, thinness, i.e. the side of the head"
+    },
+    {
+      "strong": "H4348",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מִכְוָה",
+      "translit": "",
+      "glossEn": "that burneth, burning.",
+      "defEn": "a burn"
+    },
+    {
+      "strong": "H3849",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "לֹג",
+      "translit": "",
+      "glossEn": "log (of oil).",
+      "defEn": "a log or measure forliquids"
+    },
+    {
+      "strong": "H4134",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "מוּךְ",
+      "translit": "",
+      "glossEn": "be (waxen) poor(-er).",
+      "defEn": "to become thin, i.e. (figuratively) be impoverished"
+    },
+    {
+      "strong": "H1941",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "הוֹדִיָּה",
+      "translit": "",
+      "glossEn": "Hodijah.",
+      "defEn": "Hodijah, the name of three Israelites"
+    },
+    {
+      "strong": "H3111",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "יוֹיָדָע",
+      "translit": "",
+      "glossEn": "Jehoiada, Joiada.",
+      "defEn": "Jojada, the name of two Israelites"
+    },
+    {
+      "strong": "H468",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֱלִיצוּר",
+      "translit": "",
+      "glossEn": "Elizur.",
+      "defEn": "Elitsur, an Israelite"
+    },
+    {
+      "strong": "H7707",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שְׁדֵיאוּר",
+      "translit": "",
+      "glossEn": "Shedeur.",
+      "defEn": "Shedejur, an Israelite"
+    },
+    {
+      "strong": "H8017",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שְׁלֻמִיאֵל",
+      "translit": "",
+      "glossEn": "Shelumiel.",
+      "defEn": "Shelumiel, an Israelite"
+    },
+    {
+      "strong": "H6686",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "צוּעָר",
+      "translit": "",
+      "glossEn": "Zuar.",
+      "defEn": "Tsuar, an Israelite"
+    },
+    {
+      "strong": "H2497",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "חֵלֹן",
+      "translit": "",
+      "glossEn": "Helon.",
+      "defEn": "Chelon, an Israelite"
+    },
+    {
+      "strong": "H1583",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גַּמְלִיאֵל",
+      "translit": "",
+      "glossEn": "Gamaliel.",
+      "defEn": "Gamliel, an Israelite"
+    },
+    {
+      "strong": "H27",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲבִידָן",
+      "translit": "",
+      "glossEn": "Abidan.",
+      "defEn": "Abidan, an Israelite"
+    },
+    {
+      "strong": "H1441",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גִּדְעֹנִי",
+      "translit": "",
+      "glossEn": "Gideoni.",
+      "defEn": "Gidoni, an Israelite"
+    },
+    {
+      "strong": "H5996",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עַמִּישַׁדַּי",
+      "translit": "",
+      "glossEn": "Ammishaddai.",
+      "defEn": "Ammishaddai, an Israelite"
+    },
+    {
+      "strong": "H6295",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "פַּגְעִיאֵל",
+      "translit": "",
+      "glossEn": "Pagiel.",
+      "defEn": "Pagiel, an Israelite"
+    },
+    {
+      "strong": "H5918",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עׇכְרָן",
+      "translit": "",
+      "glossEn": "Ocran.",
+      "defEn": "Okran, an Israelite"
+    },
+    {
+      "strong": "H299",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "אֲחִירַע",
+      "translit": "",
+      "glossEn": "Ahira.",
+      "defEn": "Achira, an Israelite"
+    },
+    {
+      "strong": "H5881",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֵינָן",
+      "translit": "",
+      "glossEn": "Enan. Compare H2704 (חֲצַר עֵינָן).",
+      "defEn": "Enan, an Israelite"
+    },
+    {
+      "strong": "H1198",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "בַּעַר",
+      "translit": "",
+      "glossEn": "brutish (person), foolish.",
+      "defEn": "properly, foot (as consumed); i.e. (by exten.) of cattle brutishness; (concretely) stupid"
+    },
+    {
+      "strong": "H5317",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "נֹפֶת",
+      "translit": "",
+      "glossEn": "honeycomb.",
+      "defEn": "a dripping i.e. of honey (from the comb)"
+    },
+    {
+      "strong": "H1794",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "דָּכָה",
+      "translit": "",
+      "glossEn": "break (sore), contrite, crouch.",
+      "defEn": "to collapse (phys. or mentally)"
+    },
+    {
+      "strong": "H1584",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "גָּמַר",
+      "translit": "",
+      "glossEn": "cease, come to an end, fail, perfect, perform.",
+      "defEn": "to end (in the sense of completion or failure)"
+    },
+    {
+      "strong": "H8324",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "שָׁרַר",
+      "translit": "",
+      "glossEn": "enemy.",
+      "defEn": "to be hostile (only active participle an opponent)"
+    },
+    {
+      "strong": "H6082",
+      "lang": "hebrew",
+      "count": 5,
+      "lemma": "עֹפֶר",
+      "translit": "",
+      "glossEn": "young roe (hart).",
+      "defEn": "a fawn (from the dusty color)"
+    },
+    {
+      "strong": "G4734",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "Στεφανᾶς",
+      "translit": "Stephanâs",
+      "glossEn": "Stephanas",
+      "defEn": "from G4737 (στεφανόω)); Stephanas, a Christian"
+    },
+    {
+      "strong": "G3471",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "μωραίνω",
+      "translit": "mōraínō",
+      "glossEn": "become fool, make foolish, lose savour",
+      "defEn": "to become insipid; figuratively, to make (passively, act) as a simpleton"
+    },
+    {
+      "strong": "G1598",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἐκπειράζω",
+      "translit": "ekpeirázō",
+      "glossEn": "tempt",
+      "defEn": "to test thoroughly"
+    },
+    {
+      "strong": "G1495",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "εἰδωλολατρεία",
+      "translit": "eidōlolatreía",
+      "glossEn": "idolatry",
+      "defEn": "image-worship (literally or figuratively)"
+    },
+    {
+      "strong": "G3863",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "παραζηλόω",
+      "translit": "parazēlóō",
+      "glossEn": "provoke to emulation (jealousy)",
+      "defEn": "to stimulate alongside, i.e. excite to rivalry"
+    },
+    {
+      "strong": "G3377",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "μηνύω",
+      "translit": "mēnýō",
+      "glossEn": "shew, tell",
+      "defEn": "to disclose (through the idea of mental effort and thus calling to mind), i.e. report, declare, intimate"
+    },
+    {
+      "strong": "G2751",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κείρω",
+      "translit": "keírō",
+      "glossEn": "shear(-er)",
+      "defEn": "to shear"
+    },
+    {
+      "strong": "G364",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀνάμνησις",
+      "translit": "anámnēsis",
+      "glossEn": "remembrance (again)",
+      "defEn": "recollection"
+    },
+    {
+      "strong": "G1172",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "δειπνέω",
+      "translit": "deipnéō",
+      "glossEn": "sup (X -er)",
+      "defEn": "to dine, i.e. take the principle (or evening) meal"
+    },
+    {
+      "strong": "G4722",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "στέγω",
+      "translit": "stégō",
+      "glossEn": "(for-)bear, suffer",
+      "defEn": "to roof over, i.e. (figuratively) to cover with silence (endure patiently)"
+    },
+    {
+      "strong": "G2788",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κιθάρα",
+      "translit": "kithára",
+      "glossEn": "harp",
+      "defEn": "a lyre"
+    },
+    {
+      "strong": "G3903",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "παρασκευάζω",
+      "translit": "paraskeuázō",
+      "glossEn": "prepare self, be (make) ready",
+      "defEn": "to furnish aside, i.e. get ready"
+    },
+    {
+      "strong": "G2793",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κινδυνεύω",
+      "translit": "kindyneúō",
+      "glossEn": "be in danger, be (stand) in jeopardy",
+      "defEn": "to undergo peril"
+    },
+    {
+      "strong": "G2934",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κτῆνος",
+      "translit": "ktēnos",
+      "glossEn": "beast",
+      "defEn": "property, i.e. (specially) a domestic animal"
+    },
+    {
+      "strong": "G3534",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "νῖκος",
+      "translit": "nîkos",
+      "glossEn": "victory",
+      "defEn": "a conquest (concretely), i.e. (by implication) triumph"
+    },
+    {
+      "strong": "G1053",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "Γαλατία",
+      "translit": "Galatía",
+      "glossEn": "Galatia",
+      "defEn": "Galatia, a region of Asia"
+    },
+    {
+      "strong": "G2137",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "εὐοδόω",
+      "translit": "euodóō",
+      "glossEn": "(have a) prosper(-ous journey)",
+      "defEn": "to help on the road, i.e. (passively) succeed in reaching; figuratively, to succeed in business affairs"
+    },
+    {
+      "strong": "G3887",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "παραμένω",
+      "translit": "paraménō",
+      "glossEn": "abide, continue",
+      "defEn": "to stay near, i.e. remain (literally, tarry; or figuratively, be permanent, persevere)"
+    },
+    {
+      "strong": "G3914",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "παραχειμάζω",
+      "translit": "paracheimázō",
+      "glossEn": "winter",
+      "defEn": "to winter near, i.e. stay with over the rainy season"
+    },
+    {
+      "strong": "G2901",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κραταιόω",
+      "translit": "krataióō",
+      "glossEn": "be strengthened, be (wax) strong",
+      "defEn": "to empower, i.e. (passively) increase in vigor"
+    },
+    {
+      "strong": "G613",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀποκρύπτω",
+      "translit": "apokrýptō",
+      "glossEn": "hide",
+      "defEn": "to conceal away (i.e. fully); figuratively, to keep secret"
+    },
+    {
+      "strong": "G584",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀποδείκνυμι",
+      "translit": "apodeíknymi",
+      "glossEn": "(ap-)prove, set forth, shew",
+      "defEn": "to show off, i.e. exhibit; figuratively, to demonstrate, i.e. accredit"
+    },
+    {
+      "strong": "G3058",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "λοιδορέω",
+      "translit": "loidoréō",
+      "glossEn": "revile",
+      "defEn": "to reproach, i.e. vilify"
+    },
+    {
+      "strong": "G3639",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ὄλεθρος",
+      "translit": "ólethros",
+      "glossEn": "destruction",
+      "defEn": "a prolonged form); ruin, i.e. death, punishment"
+    },
+    {
+      "strong": "G2220",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ζυμόω",
+      "translit": "zymóō",
+      "glossEn": "leaven",
+      "defEn": "to cause to ferment"
+    },
+    {
+      "strong": "G4123",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "πλεονέκτης",
+      "translit": "pleonéktēs",
+      "glossEn": "covetous",
+      "defEn": "holding (desiring) more, i.e. eager for gain (avaricious, hence a defrauder)"
+    },
+    {
+      "strong": "G3432",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "μοιχός",
+      "translit": "moichós",
+      "glossEn": "adulterer",
+      "defEn": "a (male) paramour; figuratively, apostate"
+    },
+    {
+      "strong": "G1850",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἐξουσιάζω",
+      "translit": "exousiázō",
+      "glossEn": "exercise authority upon, bring under the (have) power of",
+      "defEn": "to control"
+    },
+    {
+      "strong": "G22",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἄγαμος",
+      "translit": "ágamos",
+      "glossEn": "unmarried",
+      "defEn": "unmarried"
+    },
+    {
+      "strong": "G651",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀποστολή",
+      "translit": "apostolḗ",
+      "glossEn": "apostleship",
+      "defEn": "commission, i.e. (specially) apostolate"
+    },
+    {
+      "strong": "G3800",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ὀψώνιον",
+      "translit": "opsṓnion",
+      "glossEn": "wages",
+      "defEn": "rations for a soldier, i.e. (by extension) his stipend or pay"
+    },
+    {
+      "strong": "G4791",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "συγκοινωνός",
+      "translit": "synkoinōnós",
+      "glossEn": "companion, partake(-r, -r with)",
+      "defEn": "a co-participant"
+    },
+    {
+      "strong": "G5584",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ψηλαφάω",
+      "translit": "psēlapháō",
+      "glossEn": "feel after, handle, touch",
+      "defEn": "to manipulate, i.e. verify by contact; figuratively, to search for"
+    },
+    {
+      "strong": "G5432",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "φρουρέω",
+      "translit": "phrouréō",
+      "glossEn": "keep (with a garrison)",
+      "defEn": "to be a watcher in advance, i.e. to mount guard as a sentinel (post spies at gates); figuratively, to hem in, protect"
+    },
+    {
+      "strong": "G52",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἄγνοια",
+      "translit": "ágnoia",
+      "glossEn": "ignorance",
+      "defEn": "ignorance (properly, the quality)"
+    },
+    {
+      "strong": "G438",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἄνθος",
+      "translit": "ánthos",
+      "glossEn": "flower",
+      "defEn": "a blossom"
+    },
+    {
+      "strong": "G2555",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κακοποιός",
+      "translit": "kakopoiós",
+      "glossEn": "evil-doer, malefactor",
+      "defEn": "a bad-doer; (specially), a criminal"
+    },
+    {
+      "strong": "G1984",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἐπισκοπή",
+      "translit": "episkopḗ",
+      "glossEn": "the office of a \"bishop\", bishoprick, visitation",
+      "defEn": "inspection (for relief); by implication, superintendence; specially, the Christian \"episcopate\""
+    },
+    {
+      "strong": "G1872",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἐπακολουθέω",
+      "translit": "epakolouthéō",
+      "glossEn": "follow (after)",
+      "defEn": "to accompany"
+    },
+    {
+      "strong": "G4564",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "Σάῤῥα",
+      "translit": "Sárrha",
+      "glossEn": "Sara, Sarah",
+      "defEn": "Sarra (i.e. Sarah), the wife of Abraham"
+    },
+    {
+      "strong": "G2554",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κακοποιέω",
+      "translit": "kakopoiéō",
+      "glossEn": "do(ing) evil",
+      "defEn": "to be a bad-doer, i.e. (objectively) to injure, or (genitive) to sin"
+    },
+    {
+      "strong": "G4317",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "προσάγω",
+      "translit": "proságō",
+      "glossEn": "bring, draw near",
+      "defEn": "to lead towards, i.e. (transitively) to conduct near (summon, present), or (intransitively) to approach"
+    },
+    {
+      "strong": "G1112",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "γογγυσμός",
+      "translit": "gongysmós",
+      "glossEn": "grudging, murmuring",
+      "defEn": "a grumbling"
+    },
+    {
+      "strong": "G3051",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "λόγιον",
+      "translit": "lógion",
+      "glossEn": "oracle",
+      "defEn": "an utterance (of God)"
+    },
+    {
+      "strong": "G2634",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "κατακυριεύω",
+      "translit": "katakyrieúō",
+      "glossEn": "exercise dominion over (lordship), be lord over, overcome",
+      "defEn": "to lord against, i.e. control, subjugate"
+    },
+    {
+      "strong": "G4610",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "Σιλουανός",
+      "translit": "Silouanós",
+      "glossEn": "Silvanus",
+      "defEn": "\"silvan\"; Silvanus, a Christian"
+    },
+    {
+      "strong": "G4136",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "πληροφορία",
+      "translit": "plērophoría",
+      "glossEn": "(full) assurance",
+      "defEn": "entire confidence"
+    },
+    {
+      "strong": "G4302",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "προλέγω",
+      "translit": "prolégō",
+      "glossEn": "foretell, tell before",
+      "defEn": "to say beforehand, i.e. predict, forewarn"
+    }
+  ]
+}

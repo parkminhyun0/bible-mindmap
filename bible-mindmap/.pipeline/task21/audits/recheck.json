@@ -1,0 +1,14 @@
+[
+  {"strong":"H796","field":"note","current":"아슈도드(H795)","suggested":"아쉬도드(H795)","evidence":"배포 H795와 H796의 translitKo가 모두 아쉬도드/아쉬도디이며 WORKER_SPEC의 음절 말 שׁ→쉬 규칙과 일치한다.","severity":"low","reason":"note의 선례 철자가 실제 배포 표기와 달라 자기 항목 및 근거 선례와 모순된다."},
+  {"strong":"H2994","field":"translit","current":"yᵉbēmet","suggested":"yĕbēmet","evidence":"배포 데이터와 WORKER_SPEC batch 14 선례는 유성 셰와를 ĕ로 표기하며, final의 나머지 항목도 ĕ를 사용한다.","severity":"medium","reason":"ᵉ는 배포 규약과 다른 잔재 기호다."},
+  {"strong":"H170","field":"note","current":"관용 표기와 학술 표기가 갈릴 수 있음.","suggested":"관용 표기 '오홀라'와 같다.","evidence":"H170의 translitKo와 개역개정 겔 23:4의 표기가 모두 오홀라이고, 동일 배치에는 일치 시 이를 명시하는 선례가 있다.","severity":"low","reason":"실제로 일치하는 표기를 불필요하게 가능성으로 유보해 note가 부정확하다."},
+  {"strong":"H1660","field":"note","current":"개역개정 관용 표기는 '가드'다.","suggested":"개역개정은 이 낱말을 포도주 틀로 번역한다. 학술 표기 가트를 표제로 둔다.","evidence":"입력 H1660은 wine-press 보통명사이고, 블레셋 지명 가드는 별도 Strong H1661이다.","severity":"medium","reason":"다른 Strong의 지명 표기를 이 보통명사에 잘못 귀속했다."},
+  {"strong":"H1655","field":"note","current":"동음이철인 H1653과 동일한 배포 선례","suggested":"철자가 같은 H1653과 동일한 배포 선례","evidence":"H1653과 H1655의 lemma גֶּשֶׁם은 코드포인트까지 동일하다.","severity":"low","reason":"두 항목은 동음이철이 아니라 동철이므로 note의 관계 설명이 반대다."},
+  {"strong":"H1252","field":"note","current":"보르(H953)와 철자가 겹치지만 이 낱말은 홀렘이다.","suggested":"보르(H953)와 한글 표기가 겹치지만 철자가 다르다. 이 낱말은 바브 없는 홀렘이다.","evidence":"H1252는 בֹּר, H953은 בּוֹר로 철자가 다르고 둘 다 홀렘 계열이다.","severity":"low","reason":"겹치는 것은 한글 표기이며 현재 문장은 구별 근거도 모순된다."},
+  {"strong":"H5433","field":"note","current":"이쪽은 사메크에 카메츠 둘이다.","suggested":"네 모델이 독립으로 만든 음역안이 모두 일치했다.","evidence":"note_stale가 비교 대상 문장만 삭제해 지시어 '이쪽'의 선행사가 사라졌다.","severity":"low","reason":"규칙 적용 후 고아 문장이 남아 note가 의미상 모순된다."},
+  {"strong":"H1240","field":"translit","current":"bᵉqar","suggested":"bĕqar","evidence":"WORKER_SPEC 및 배포 선례의 유성 셰와는 ĕ이며 ᵉ는 소수 잔재다.","severity":"medium","reason":"확정 음역에 비표준 셰와 기호가 남았다."},
+  {"strong":"H3215","field":"translit","current":"yᵉlālâ","suggested":"yĕlālâ","evidence":"WORKER_SPEC 및 배포 선례의 유성 셰와는 ĕ다.","severity":"medium","reason":"확정 음역에 비표준 셰와 기호가 남았다."},
+  {"strong":"H2191","field":"translit","current":"zᵉʿēr","suggested":"zĕʿêr","evidence":"유성 셰와는 ĕ이고, זְעֵיר의 체레+요드는 ê로 표기하는 배포 선례를 따른다.","severity":"high","reason":"셰와와 체레-요드를 모두 잘못 표기해 규칙 및 다수 선례와 충돌한다."},
+  {"strong":"H7021","field":"note","current":"개역개정 관용 표기는 '박넝쿨'이다.","suggested":"개역개정은 이 낱말을 박넝쿨로 번역한다.","evidence":"개역개정 욘 4:6은 קִיקָיוֹן을 음역하지 않고 박넝쿨로 번역한다.","severity":"low","reason":"번역어를 관용 음역 표기로 부르면 표기 규칙의 용어가 모순된다."},
+  {"strong":"H7486","field":"note","current":"(출 1:11, bibleReferences: 비돔·라암셋)","suggested":"(출 1:11 비돔과 라암셋)","evidence":"note에 파이프라인 내부 필드명 bibleReferences가 그대로 노출되어 있다.","severity":"low","reason":"사용자 표기 산출물에 내부 필드명이 남은 회귀다."}
+]
