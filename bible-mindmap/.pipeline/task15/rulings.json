@@ -1,0 +1,268 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "gptoss120b"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    },
+    {
+      "model": "gptoss120b",
+      "rules": {}
+    }
+  ],
+  "tieCount": 4,
+  "ties": [
+    {
+      "strong": "H7526",
+      "koRank": [
+        [
+          "레친",
+          3
+        ],
+        [
+          "르친",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "rĕṣîn",
+          2
+        ],
+        [
+          "rəṣîn",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H2166",
+      "koRank": [
+        [
+          "제만",
+          3
+        ],
+        [
+          "즈만",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "zĕmān",
+          2
+        ],
+        [
+          "zəmān",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H7123",
+      "koRank": [
+        [
+          "케라",
+          3
+        ],
+        [
+          "크라",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "qĕrāʾ",
+          2
+        ],
+        [
+          "qərāʾ",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H7935",
+      "koRank": [
+        [
+          "셰카냐",
+          2
+        ],
+        [
+          "셰칸야",
+          1
+        ],
+        [
+          "스가냐",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "šĕkanyâ",
+          1
+        ],
+        [
+          "šəkanyâ",
+          1
+        ],
+        [
+          "šəkanyāh",
+          1
+        ],
+        [
+          "Šᵊḵanyāh",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H7526",
+      "lemma": "רְצִין",
+      "translit": "rĕṣîn",
+      "translitKo": "레친",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기는 레친이다. 한국어 성경 관용 표기는 르신이다."
+    },
+    {
+      "strong": "H2166",
+      "lemma": "זְמָן",
+      "translit": "zĕmān",
+      "translitKo": "제만",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "H7123",
+      "lemma": "קְרָא",
+      "translit": "qĕrāʾ",
+      "translitKo": "케라",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1601",
+      "lemma": "ἐκπίπτω",
+      "translit": "ekpíptō",
+      "translitKo": "에크핍토",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1581",
+      "lemma": "ἐκκόπτω",
+      "translit": "ekkóptō",
+      "translitKo": "에콥토",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1459",
+      "lemma": "ἐγκαταλείπω",
+      "translit": "enkataleípō",
+      "translitKo": "엥카탈레이포",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). γ가 κ 앞에 올 때의 비음(n) 반영"
+    },
+    {
+      "strong": "H7935",
+      "lemma": "שְׁכַנְיָה",
+      "translit": "šĕkanyâ",
+      "translitKo": "셰카냐",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역개정 관용 표기는 '스가냐'이나 SBL 학술 음역을 따름"
+    },
+    {
+      "strong": "H5989",
+      "lemma": "עַמִּיהוּד",
+      "translit": "ʿammîhûd",
+      "translitKo": "암미후드",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 한국어 성경 관용 표기는 '암미훗'이나, SBL 학술 음역은 암미후드(ʿammîhûd)다."
+    },
+    {
+      "strong": "H6881",
+      "lemma": "צׇרְעָה",
+      "translit": "ṣorʿâ",
+      "translitKo": "초르아",
+      "votesKo": 4,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 '소라'이나, SBL 학술 음역은 초르아(ṣorʿâ)다."
+    },
+    {
+      "strong": "H4916",
+      "lemma": "מִשְׁלוֹחַ",
+      "translit": "mišlôaḥ",
+      "translitKo": "미쉬로아흐",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 음절 말 שׁ는 '쉬'로 적고, furtive patach를 적용함."
+    },
+    {
+      "strong": "H4079",
+      "lemma": "מִדְיָן",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기를 표제로 두는 원칙에 따라 미드얀으로 적음(관용 표기 미디안)"
+    },
+    {
+      "strong": "G2107",
+      "lemma": "εὐδοκία",
+      "translit": "eudokía",
+      "translitKo": "유도키아",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ευ는 후속 자음에 따라 갈릴 수 있으나 선례를 따라 '유'로 표기함."
+    }
+  ]
+}

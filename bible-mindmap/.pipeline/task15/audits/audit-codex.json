@@ -1,0 +1,38 @@
+[
+  {
+    "strong": "H672",
+    "field": "translit",
+    "current": "ʾephrāt",
+    "suggested": "ʾeprāt",
+    "evidence": "WORKER_SPEC.md batch 02 rule 1; the same entry's note identifies the SBL form as ʾeprāt.",
+    "severity": "medium",
+    "reason": "The Hebrew פ is rendered as ph, while this batch's SBL convention requires p; the value also contradicts its own note."
+  },
+  {
+    "strong": "H2128",
+    "field": "translit",
+    "current": "zîph",
+    "suggested": "zîp",
+    "evidence": "WORKER_SPEC.md batch 02 rule 1; the same entry's note identifies the SBL form as zîp.",
+    "severity": "medium",
+    "reason": "The Hebrew final פ is rendered as ph, while this batch's SBL convention requires p; the value also contradicts its own note."
+  },
+  {
+    "strong": "H6846",
+    "field": "translit",
+    "current": "ṣĕphanyâ",
+    "suggested": "ṣĕpanyâ",
+    "evidence": "WORKER_SPEC.md batch 02 rule 1; the deployed spelling convention uses p rather than ph for פ.",
+    "severity": "medium",
+    "reason": "The Hebrew פ is rendered as ph, contrary to the established SBL convention for this batch."
+  },
+  {
+    "strong": "G2107",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ευ는 후속 자음에 따라 갈릴 수 있으나 선례를 따라 '유'로 표기함.",
+    "suggested": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 배포 선례에 따라 ευ를 '유' 계열로 표기함.",
+    "evidence": "WORKER_SPEC.md states that ευ is written as one 유계 syllable and cites deployed precedents; AUDIT_DECISION.md records that the older 후속 자음 rule is obsolete.",
+    "severity": "medium",
+    "reason": "The note asserts the obsolete 후속 자음-dependent alternation while the current specification and deployment precedent explicitly reject that rule."
+  }
+]

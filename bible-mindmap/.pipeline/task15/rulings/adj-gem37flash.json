@@ -1,0 +1,89 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H7526",
+      "translit": "rĕṣîn",
+      "translitKo": "레친",
+      "evidence": "src/data/koreanGlossTopBatch02.js 유성 쉐바 ĕ/레 표기 선례 (H7205 rĕʾûbēn 레우벤, H7346 rĕḥabʿām 레하브암, H7399 rĕkûš 레쿠쉬)",
+      "note": "학술 표기는 레친이다. 한국어 성경 관용 표기는 르신이다."
+    },
+    {
+      "strong": "H2166",
+      "translit": "zĕmān",
+      "translitKo": "제만",
+      "evidence": "src/data/koreanGlossTopBatch02.js, TopBatch05.js 유성 쉐바 zĕ/제 표기 선례 (H2220 zĕrôaʿ 제로아, H2074 zĕbûlûn 제불룬, H2148 zĕkaryâ 제카르야)",
+      "note": ""
+    },
+    {
+      "strong": "H7123",
+      "translit": "qĕrāʾ",
+      "translitKo": "케라",
+      "evidence": "src/data/koreanGlossTopBatch05.js, TopBatch07.js 유성 쉐바 qĕ/케 표기 선례 (H6903 qĕbēl 케벨, H6955 qĕhāt 케하트, H6900 qĕbûrâ 케부라)",
+      "note": ""
+    },
+    {
+      "strong": "G1601",
+      "translit": "ekpíptō",
+      "translitKo": "에크핍토",
+      "evidence": "src/data/koreanGlossTopBatch03.js (G4098 píptō 핍토, G1544 ekbállō 에크발로), TopBatch05.js (G1605 ekplḗssō 에크플레소, G681 háptō 합토)",
+      "note": ""
+    },
+    {
+      "strong": "G1581",
+      "translit": "ekkóptō",
+      "translitKo": "에콥토",
+      "evidence": "src/data/koreanGlossTopBatch02.js 다게쉬 포르테/장애음 겹자음 단일 표기 원칙 (θάλασσα 탈라사, G5376 Phílippos 필리포스), TopBatch03.js (G1577 ekklēsía 에클레시아, G4098 píptō 핍토)",
+      "note": ""
+    },
+    {
+      "strong": "G1459",
+      "translit": "enkataleípō",
+      "translitKo": "엥카탈레이포",
+      "evidence": "src/data/koreanGlossTopBatch08.js (G318 anánkē 아낭케, G1651 elénchō 엘렝코), TopBatch05.js (G1448 engízō 엥기조, γκ/γγ 비음 ㅇ 받침 선례)",
+      "note": ""
+    },
+    {
+      "strong": "H7935",
+      "translit": "šəkanyāh",
+      "translitKo": "셰칸야",
+      "evidence": "src/data/koreanGlossTopBatch06.js (H2608 ḥănanyâ 하난야), TopBatch08.js (H5418 nĕtanyâ 네탄야), TopBatch02.js (H8147 šĕnayim 셰나임)",
+      "note": "개역개정 관용 표기는 '스가냐'이나, SBL 학술 음역은 셰칸야(šəkanyāh)다."
+    },
+    {
+      "strong": "H5989",
+      "translit": "ʿammîhûd",
+      "translitKo": "암미후드",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H520 ʾammâ 암마, ㅁ 비음 중복자음 받침 선례), TopBatch03.js (H5983 ʿammôn 암몬), TopBatch01.js (H5650 ʿebed 에베드, 어말 d/드 선례)",
+      "note": "한국어 성경 관용 표기는 '암미훗'이나, SBL 학술 음역은 암미후드(ʿammîhûd)다."
+    },
+    {
+      "strong": "H6881",
+      "translit": "ṣorʿâ",
+      "translitKo": "초르아",
+      "evidence": "src/data/koreanGlossTopBatch04.js (H7133 qorbān 코르반, 카마츠 카탄 o 표기 선례), TopBatch06.js (H3379 yārobʿām 야로브암), TopBatch05.js (H2723 ḥorbâ 호르바)",
+      "note": "개역개정 관용 표기는 '소라'이나, SBL 학술 음역은 초르아(ṣorʿâ)다."
+    },
+    {
+      "strong": "H4916",
+      "translit": "mišlôaḥ",
+      "translitKo": "미쉴로아흐",
+      "evidence": "src/data/koreanGlossTopBatch02.js (H4940 mišpāḥâ 미쉬파하, H8010 šĕlōmōh 셸로모), TopBatch06.js (H4495 mānôaḥ 마노아흐, furtive patach 선례)",
+      "note": "furtive patach 적용"
+    },
+    {
+      "strong": "H4079",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "evidence": "src/data/koreanGlossTopBatch04.js (H4080 midyān 미드얀 동일 철자 선례, H4057 midbār 미드바르)",
+      "note": "학술 표기를 표제로 두는 원칙에 따라 미드얀으로 적음(관용 표기 미디안)"
+    },
+    {
+      "strong": "G2107",
+      "translit": "eudokía",
+      "translitKo": "유도키아",
+      "evidence": "src/data/koreanGlossTopBatch04.js (G2106 eudokéō 유도케오 동일 어근 선례, G2098 euangélion 유앙겔리온, εὐ/유 계열 선례)",
+      "note": ""
+    }
+  ]
+}

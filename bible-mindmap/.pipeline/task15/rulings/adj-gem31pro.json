@@ -1,0 +1,89 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H7526",
+      "translit": "rəṣîn",
+      "translitKo": "르친",
+      "evidence": "관용 표기는 '르신'이나 학술 표기를 따름",
+      "note": "관용 표기는 '르신'이나 학술 표기를 따름"
+    },
+    {
+      "strong": "H2166",
+      "translit": "zəmān",
+      "translitKo": "즈만",
+      "evidence": "단순 쉐바(ə)의 자연스러운 한글 표기(즈) 적용",
+      "note": ""
+    },
+    {
+      "strong": "H7123",
+      "translit": "qərāʾ",
+      "translitKo": "크라",
+      "evidence": "단순 쉐바(ə)의 자연스러운 한글 표기(크) 적용",
+      "note": ""
+    },
+    {
+      "strong": "G1601",
+      "translit": "ekpíptō",
+      "translitKo": "에크핍토",
+      "evidence": "G4098(πίπτω/píptō/핍토) 배포 선례 적용",
+      "note": ""
+    },
+    {
+      "strong": "G1581",
+      "translit": "ekkóptō",
+      "translitKo": "에콥토",
+      "evidence": "다게쉬 포르테 원칙 및 G1577(ekklēsía/에클레시아) 선례와 같이 겹자음은 받침으로 겹쳐 적지 않음",
+      "note": ""
+    },
+    {
+      "strong": "G1459",
+      "translit": "enkataleípō",
+      "translitKo": "엥카탈레이포",
+      "evidence": "G32(ángelos/앙겔로스) 선례와 같이 γ가 κ 앞에 올 때 비음(ng)이 되므로 '엥카'로 표기",
+      "note": "γ가 κ 앞에 올 때의 비음 반영"
+    },
+    {
+      "strong": "H7935",
+      "translit": "šəkanyâ",
+      "translitKo": "셰카냐",
+      "evidence": "H3169(히즈키야) 선례와 같이 יָה는 yâ(야)로 적음",
+      "note": "개역개정 관용 표기는 '스가냐'이나 SBL 학술 음역을 따름"
+    },
+    {
+      "strong": "H5989",
+      "translit": "ʿammîhûd",
+      "translitKo": "암미후드",
+      "evidence": "관용 표기 암미훗 대신 SBL 학술 음역 원칙 준수",
+      "note": "개역개정 관용 표기는 '암미훗'이나 SBL 학술 음역을 따름"
+    },
+    {
+      "strong": "H6881",
+      "translit": "ṣorʿâ",
+      "translitKo": "초르아",
+      "evidence": "카메츠 하투프(단모음 o) 반영",
+      "note": "개역개정 관용 표기는 '소라'이나 SBL 학술 음역을 따름"
+    },
+    {
+      "strong": "H4916",
+      "translit": "mišlôaḥ",
+      "translitKo": "미쉬로아흐",
+      "evidence": "음절 말 שׁ는 '쉬'로 적는 원칙 및 furtive patach(어말 후음 앞 a) 적용",
+      "note": "furtive patach 적용"
+    },
+    {
+      "strong": "H4079",
+      "translit": "midyān",
+      "translitKo": "미드얀",
+      "evidence": "H4080(מִדְיָן/midyān/미드얀) 배포 선례와 동일하게 적용",
+      "note": "관용 표기는 '미디안'이나 학술 표기를 표제로 둠"
+    },
+    {
+      "strong": "G2107",
+      "translit": "eudokía",
+      "translitKo": "유도키아",
+      "evidence": "G2098(euangélion/유앙겔리온), G2127(eulogéō/율로게오) 배포 선례 적용",
+      "note": "ευ는 관용 표기에 따라 '유'로 표기"
+    }
+  ]
+}
