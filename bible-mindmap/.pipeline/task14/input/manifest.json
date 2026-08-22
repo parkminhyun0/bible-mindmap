@@ -1,0 +1,21 @@
+{
+  "batchId": "top-frequency-batch-10",
+  "totalItems": 382,
+  "shards": [
+    {
+      "shard": "AA",
+      "count": 128,
+      "freq": "13→12"
+    },
+    {
+      "shard": "AB",
+      "count": 128,
+      "freq": "12→12"
+    },
+    {
+      "shard": "AC",
+      "count": 126,
+      "freq": "12→11"
+    }
+  ]
+}

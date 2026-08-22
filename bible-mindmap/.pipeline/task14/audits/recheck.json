@@ -1,0 +1,119 @@
+[
+  {
+    "strong": "G5053",
+    "field": "translitKo",
+    "current": "텔류타오",
+    "suggested": "텔레프타오",
+    "evidence": "lemma τελευτάω; WORKER_SPEC.md의 ευ 규칙은 뒤 무성 자음 τ 앞에서 에프 계열을 요구한다.",
+    "severity": "high",
+    "reason": "ευ의 후속 자음이 무성음 τ인데 현재 표기는 에우/유 계열이라 확정 규칙과 맞지 않는다."
+  },
+  {
+    "strong": "G5574",
+    "field": "translitKo",
+    "current": "프슈도마이",
+    "suggested": "프세브도마이",
+    "evidence": "lemma ψεύδομαι; WORKER_SPEC.md의 ευ 규칙은 뒤 유성 자음 δ 앞에서 에브 계열을 요구한다.",
+    "severity": "high",
+    "reason": "ευ의 후속 자음이 유성음 δ인데 현재 표기는 에브 계열이 아니다."
+  },
+  {
+    "strong": "G5578",
+    "field": "translitKo",
+    "current": "프슈도프로페테스",
+    "suggested": "프세브도프로페테스",
+    "evidence": "lemma ψευδοπροφήτης; WORKER_SPEC.md의 ευ 규칙은 복합어에서도 뒤 유성 자음 δ 앞에서 에브 계열을 요구한다.",
+    "severity": "high",
+    "reason": "복합어 첫 요소의 ευ가 유성음 δ 앞에 있으므로 현재 에우/유 계열 표기는 규칙과 모순된다."
+  },
+  {
+    "strong": "G5053",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 이후 greek_eu 규칙에 따라 텔류타오로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: G5053 translitKo 텔레우타오 -> 텔류타오; proposals/*의 독립 제안은 텔레우타오.",
+    "severity": "medium",
+    "reason": "현재 표기는 세 모델의 독립 제안이 아니라 사후 규칙 조정 결과인데 note가 조정 사실을 말하지 않아 표기 이력과 모순된다."
+  },
+  {
+    "strong": "G5574",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이후 greek_eu 규칙에 따라 프슈도마이로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: G5574 translitKo 프세우도마이 -> 프슈도마이; proposals/*의 독립 제안은 프세우도마이.",
+    "severity": "medium",
+    "reason": "현재 표기는 독립 제안과 일치하지 않고 사후 규칙 조정으로 바뀌었으므로 note의 현재 표기 이력 설명이 모순된다."
+  },
+  {
+    "strong": "H424",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 ʾēlāh와 ʾēlâ로 갈렸고, qamats-he 규칙에 따라 ʾēlâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H424 translit ʾēlāh -> ʾēlâ; proposals/*에 ʾēlāh와 ʾēlâ가 함께 존재한다.",
+    "severity": "medium",
+    "reason": "라틴 음역 제안이 모두 일치하지 않았는데 note가 전원 일치로 기록되어 실제 제안 이력과 모순된다."
+  },
+  {
+    "strong": "H8203",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 셰파트야다. 한국어 성경 관용 표기는 스바댜다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고, begadkepat·qamats-he 규칙에 따라 šepaṭyâ로 조정했다. 학술 표기는 셰파트야다. 한국어 성경 관용 표기는 스바댜다.",
+    "evidence": ".pipeline/task14/final.json changes: H8203 translit가 šep̄aṭyāh -> šepaṭyāh -> šepaṭyâ로 조정됨; proposals/*에 복수 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "복수의 독립 라틴 제안과 연속 조정이 있었으므로 전원 일치라는 note가 실제 표기 이력과 모순된다."
+  },
+  {
+    "strong": "H4490",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 mānāh와 mānâ로 갈렸고, qamats-he 규칙에 따라 mānâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H4490 translit mānāh -> mānâ; proposals/*에 두 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "독립 제안이 라틴 표기에서 갈렸는데 note가 전원 일치로 기록되어 이력과 모순된다."
+  },
+  {
+    "strong": "H3924",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 lulāʾāh와 lulāʾâ로 갈렸고, qamats-he 규칙에 따라 lulāʾâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H3924 translit lulāʾāh -> lulāʾâ; proposals/*에 두 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 일치하지 않았는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H4878",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 mĕšûḇâ와 mĕšûbâ 등으로 갈렸고, begadkepat·qamats-he 규칙에 따라 mĕšûbâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H4878 translit mĕšûḇâ -> mĕšûbâ; proposals/*에 복수 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 복수였는데 note가 전원 일치로 기록되어 실제 제안 이력과 모순된다."
+  },
+  {
+    "strong": "H2893",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 ṭohorâ, ṭohŏrâ 등으로 갈렸고, qamats-he 규칙에 따라 ṭohŏrâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H2893 translit ṭohŏrāh -> ṭohŏrâ; proposals/*에 복수 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 일치하지 않았는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  },
+  {
+    "strong": "H3048",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기는 여다야이다.",
+    "suggested": "네 모델의 라틴 음역 제안은 갈렸고, begadkepat·qamats-he 규칙에 따라 Yĕdaʿyâ로 조정했다. 관용 표기는 여다야이다.",
+    "evidence": ".pipeline/task14/final.json changes: H3048 translit Yĕḏaʿyāh -> Yĕdaʿyāh -> Yĕdaʿyâ; proposals/*에 최종 표기와 다른 복수 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "현재 라틴 표기는 3개 독립 제안의 공통 결과가 아니라 사후 두 규칙 조정 결과인데 note가 이를 설명하지 않는다."
+  },
+  {
+    "strong": "H8585",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "suggested": "네 모델의 라틴 음역 제안은 tĕʿālâ와 tĕʿālāh 등으로 갈렸고, qamats-he 규칙에 따라 tĕʿālâ로 조정했다.",
+    "evidence": ".pipeline/task14/final.json changes: H8585 translit tĕʿālāh -> tĕʿālâ; proposals/*에 두 라틴안이 존재한다.",
+    "severity": "medium",
+    "reason": "독립 라틴 제안이 일치하지 않았는데 note가 전원 일치로 기록되어 실제 이력과 모순된다."
+  }
+]

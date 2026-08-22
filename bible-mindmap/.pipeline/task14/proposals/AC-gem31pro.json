@@ -1,0 +1,889 @@
+{
+  "shard": "AC",
+  "model": "gem31pro",
+  "count": 126,
+  "entries": [
+    {
+      "strong": "H4878",
+      "lemma": "מְשׁוּבָה",
+      "translit": "mǝšûbâ",
+      "translitKo": "메슈바",
+      "note": ""
+    },
+    {
+      "strong": "H7836",
+      "lemma": "שָׁחַר",
+      "translit": "šāḥar",
+      "translitKo": "샤하르",
+      "note": ""
+    },
+    {
+      "strong": "H3851",
+      "lemma": "לַהַב",
+      "translit": "lahab",
+      "translitKo": "라하브",
+      "note": ""
+    },
+    {
+      "strong": "H8454",
+      "lemma": "תּוּשִׁיָּה",
+      "translit": "tûšîyâ",
+      "translitKo": "투시야",
+      "note": ""
+    },
+    {
+      "strong": "H2714",
+      "lemma": "חֵקֶר",
+      "translit": "ḥēqer",
+      "translitKo": "헤케르",
+      "note": ""
+    },
+    {
+      "strong": "H5663",
+      "lemma": "עֶבֶד מֶלֶךְ",
+      "translit": "ʿebed melek",
+      "translitKo": "에베드 멜레크",
+      "note": ""
+    },
+    {
+      "strong": "H2078",
+      "lemma": "זֶבַח",
+      "translit": "zebaḥ",
+      "translitKo": "제바흐",
+      "note": "관용 표기: 세바"
+    },
+    {
+      "strong": "H6759",
+      "lemma": "צַלְמֻנָּע",
+      "translit": "ṣalmunnāʿ",
+      "translitKo": "찰문나",
+      "note": "관용 표기: 살문나"
+    },
+    {
+      "strong": "H934",
+      "lemma": "בֹּהֶרֶת",
+      "translit": "bōheret",
+      "translitKo": "보헤레트",
+      "note": ""
+    },
+    {
+      "strong": "H5997",
+      "lemma": "עָמִית",
+      "translit": "ʿāmît",
+      "translitKo": "아미트",
+      "note": ""
+    },
+    {
+      "strong": "H936",
+      "lemma": "בּוּז",
+      "translit": "bûz",
+      "translitKo": "부즈",
+      "note": ""
+    },
+    {
+      "strong": "H7327",
+      "lemma": "רוּת",
+      "translit": "rût",
+      "translitKo": "루트",
+      "note": "관용 표기: 룻"
+    },
+    {
+      "strong": "G2821",
+      "lemma": "κλῆσις",
+      "translit": "klēsis",
+      "translitKo": "클레시스",
+      "note": ""
+    },
+    {
+      "strong": "G1848",
+      "lemma": "ἐξουθενέω",
+      "translit": "exouthenéō",
+      "translitKo": "엑수테네오",
+      "note": ""
+    },
+    {
+      "strong": "G1439",
+      "lemma": "ἐάω",
+      "translit": "eáō",
+      "translitKo": "에아오",
+      "note": ""
+    },
+    {
+      "strong": "G1497",
+      "lemma": "εἴδωλον",
+      "translit": "eídōlon",
+      "translitKo": "에이돌론",
+      "note": ""
+    },
+    {
+      "strong": "G1657",
+      "lemma": "ἐλευθερία",
+      "translit": "eleuthería",
+      "translitKo": "엘레우테리아",
+      "note": ""
+    },
+    {
+      "strong": "G2206",
+      "lemma": "ζηλόω",
+      "translit": "zēlóō",
+      "translitKo": "젤로오",
+      "note": ""
+    },
+    {
+      "strong": "G2549",
+      "lemma": "κακία",
+      "translit": "kakía",
+      "translitKo": "카키아",
+      "note": ""
+    },
+    {
+      "strong": "G2290",
+      "lemma": "θάπτω",
+      "translit": "tháptō",
+      "translitKo": "타프토",
+      "note": ""
+    },
+    {
+      "strong": "G2227",
+      "lemma": "ζωοποιέω",
+      "translit": "zōopoiéō",
+      "translitKo": "조오포이에오",
+      "note": ""
+    },
+    {
+      "strong": "G5452",
+      "lemma": "φυτεύω",
+      "translit": "phyteúō",
+      "translitKo": "퓌테우오",
+      "note": ""
+    },
+    {
+      "strong": "G5461",
+      "lemma": "φωτίζω",
+      "translit": "phōtízō",
+      "translitKo": "포티조",
+      "note": ""
+    },
+    {
+      "strong": "G1868",
+      "lemma": "ἔπαινος",
+      "translit": "épainos",
+      "translitKo": "에파이노스",
+      "note": ""
+    },
+    {
+      "strong": "G3687",
+      "lemma": "ὀνομάζω",
+      "translit": "onomázō",
+      "translitKo": "오노마조",
+      "note": ""
+    },
+    {
+      "strong": "G2745",
+      "lemma": "καύχημα",
+      "translit": "kaúchēma",
+      "translitKo": "카우케마",
+      "note": ""
+    },
+    {
+      "strong": "G4229",
+      "lemma": "πρᾶγμα",
+      "translit": "prâgma",
+      "translitKo": "프라그마",
+      "note": ""
+    },
+    {
+      "strong": "G5530",
+      "lemma": "χράομαι",
+      "translit": "chráomai",
+      "translitKo": "크라오마이",
+      "note": ""
+    },
+    {
+      "strong": "G3855",
+      "lemma": "παράγω",
+      "translit": "parágō",
+      "translitKo": "파라고",
+      "note": ""
+    },
+    {
+      "strong": "G1035",
+      "lemma": "βρῶσις",
+      "translit": "brōsis",
+      "translitKo": "브로시스",
+      "note": ""
+    },
+    {
+      "strong": "G4165",
+      "lemma": "ποιμαίνω",
+      "translit": "poimaínō",
+      "translitKo": "포이마이노",
+      "note": ""
+    },
+    {
+      "strong": "G979",
+      "lemma": "βίος",
+      "translit": "bíos",
+      "translitKo": "비오스",
+      "note": ""
+    },
+    {
+      "strong": "G4698",
+      "lemma": "σπλάγχνον",
+      "translit": "splánchnon",
+      "translitKo": "스플랑크논",
+      "note": ""
+    },
+    {
+      "strong": "G5578",
+      "lemma": "ψευδοπροφήτης",
+      "translit": "pseudoprophḗtēs",
+      "translitKo": "프세우도프로페테스",
+      "note": ""
+    },
+    {
+      "strong": "G21",
+      "lemma": "ἀγαλλιάω",
+      "translit": "agalliáō",
+      "translitKo": "아갈리아오",
+      "note": ""
+    },
+    {
+      "strong": "G2602",
+      "lemma": "καταβολή",
+      "translit": "katabolḗ",
+      "translitKo": "카타볼레",
+      "note": ""
+    },
+    {
+      "strong": "G1388",
+      "lemma": "δόλος",
+      "translit": "dólos",
+      "translitKo": "돌로스",
+      "note": ""
+    },
+    {
+      "strong": "G2289",
+      "lemma": "θανατόω",
+      "translit": "thanatóō",
+      "translitKo": "타나토오",
+      "note": ""
+    },
+    {
+      "strong": "G2680",
+      "lemma": "κατασκευάζω",
+      "translit": "kataskeuázō",
+      "translitKo": "카타스케우아조",
+      "note": ""
+    },
+    {
+      "strong": "G4704",
+      "lemma": "σπουδάζω",
+      "translit": "spoudázō",
+      "translitKo": "스푸다조",
+      "note": ""
+    },
+    {
+      "strong": "G570",
+      "lemma": "ἀπιστία",
+      "translit": "apistía",
+      "translitKo": "아피스티아",
+      "note": ""
+    },
+    {
+      "strong": "G1731",
+      "lemma": "ἐνδείκνυμι",
+      "translit": "endeíknymi",
+      "translitKo": "엔데이크뉘미",
+      "note": ""
+    },
+    {
+      "strong": "G2348",
+      "lemma": "θνήσκω",
+      "translit": "thnḗskō",
+      "translitKo": "트네스코",
+      "note": ""
+    },
+    {
+      "strong": "G3354",
+      "lemma": "μετρέω",
+      "translit": "metréō",
+      "translitKo": "메트레오",
+      "note": ""
+    },
+    {
+      "strong": "G1144",
+      "lemma": "δάκρυ",
+      "translit": "dákry",
+      "translitKo": "다크뤼",
+      "note": ""
+    },
+    {
+      "strong": "G1431",
+      "lemma": "δωρεά",
+      "translit": "dōreá",
+      "translitKo": "도레아",
+      "note": ""
+    },
+    {
+      "strong": "G1870",
+      "lemma": "ἐπαισχύνομαι",
+      "translit": "epaischýnomai",
+      "translitKo": "에파이스퀴노마이",
+      "note": ""
+    },
+    {
+      "strong": "G254",
+      "lemma": "ἅλυσις",
+      "translit": "hálysis",
+      "translitKo": "할뤼시스",
+      "note": ""
+    },
+    {
+      "strong": "G4540",
+      "lemma": "Σαμάρεια",
+      "translit": "Samáreia",
+      "translitKo": "사마레이아",
+      "note": "관용 표기: 사마리아"
+    },
+    {
+      "strong": "G1057",
+      "lemma": "Γαλιλαῖος",
+      "translit": "Galilaîos",
+      "translitKo": "갈릴라이오스",
+      "note": "관용 표기: 갈릴리인"
+    },
+    {
+      "strong": "G1968",
+      "lemma": "ἐπιπίπτω",
+      "translit": "epipíptō",
+      "translitKo": "에피핍토",
+      "note": ""
+    },
+    {
+      "strong": "G4977",
+      "lemma": "σχίζω",
+      "translit": "schízō",
+      "translitKo": "스키조",
+      "note": ""
+    },
+    {
+      "strong": "G1980",
+      "lemma": "ἐπισκέπτομαι",
+      "translit": "episképtomai",
+      "translitKo": "에피스켑토마이",
+      "note": ""
+    },
+    {
+      "strong": "G58",
+      "lemma": "ἀγορά",
+      "translit": "agorá",
+      "translitKo": "아고라",
+      "note": ""
+    },
+    {
+      "strong": "G3554",
+      "lemma": "νόσος",
+      "translit": "nósos",
+      "translitKo": "노소스",
+      "note": ""
+    },
+    {
+      "strong": "G5184",
+      "lemma": "Τύρος",
+      "translit": "Týros",
+      "translitKo": "튀로스",
+      "note": "관용 표기: 두로"
+    },
+    {
+      "strong": "G1521",
+      "lemma": "εἰσάγω",
+      "translit": "eiságō",
+      "translitKo": "에이사고",
+      "note": ""
+    },
+    {
+      "strong": "G367",
+      "lemma": "Ἀνανίας",
+      "translit": "Ananías",
+      "translitKo": "아나니아스",
+      "note": "관용 표기: 아나니아"
+    },
+    {
+      "strong": "G5509",
+      "lemma": "χιτών",
+      "translit": "chitṓn",
+      "translitKo": "키톤",
+      "note": ""
+    },
+    {
+      "strong": "G1637",
+      "lemma": "ἔλαιον",
+      "translit": "élaion",
+      "translitKo": "엘라이온",
+      "note": ""
+    },
+    {
+      "strong": "G2545",
+      "lemma": "καίω",
+      "translit": "kaíō",
+      "translitKo": "카이오",
+      "note": ""
+    },
+    {
+      "strong": "G912",
+      "lemma": "Βαραββᾶς",
+      "translit": "Barabbâs",
+      "translitKo": "바랍바스",
+      "note": "관용 표기: 바라바"
+    },
+    {
+      "strong": "G2197",
+      "lemma": "Ζαχαρίας",
+      "translit": "Zacharías",
+      "translitKo": "자카리아스",
+      "note": "관용 표기: 사가랴"
+    },
+    {
+      "strong": "G1073",
+      "lemma": "γέμω",
+      "translit": "gémō",
+      "translitKo": "게모",
+      "note": ""
+    },
+    {
+      "strong": "G533",
+      "lemma": "ἀπαρνέομαι",
+      "translit": "aparnéomai",
+      "translitKo": "아파르네오마이",
+      "note": ""
+    },
+    {
+      "strong": "G2798",
+      "lemma": "κλάδος",
+      "translit": "kládos",
+      "translitKo": "클라도스",
+      "note": ""
+    },
+    {
+      "strong": "G3041",
+      "lemma": "λίμνη",
+      "translit": "límnē",
+      "translitKo": "림네",
+      "note": ""
+    },
+    {
+      "strong": "H3929",
+      "lemma": "לֶמֶךְ",
+      "translit": "lemek",
+      "translitKo": "레메크",
+      "note": "관용 표기: 라멕"
+    },
+    {
+      "strong": "H3315",
+      "lemma": "יֶפֶת",
+      "translit": "yepet",
+      "translitKo": "예페트",
+      "note": "관용 표기: 야벳"
+    },
+    {
+      "strong": "H3120",
+      "lemma": "יָוָן",
+      "translit": "yāwān",
+      "translitKo": "야완",
+      "note": "관용 표기: 야완/야반"
+    },
+    {
+      "strong": "H1719",
+      "lemma": "דְּדָן",
+      "translit": "dǝdān",
+      "translitKo": "데단",
+      "note": "관용 표기: 드단"
+    },
+    {
+      "strong": "H7467",
+      "lemma": "רְעוּאֵל",
+      "translit": "rǝʿûʾēl",
+      "translitKo": "르우엘",
+      "note": "관용 표기: 르우엘"
+    },
+    {
+      "strong": "H8487",
+      "lemma": "תֵּימָן",
+      "translit": "têmān",
+      "translitKo": "테만",
+      "note": "관용 표기: 데만"
+    },
+    {
+      "strong": "H7073",
+      "lemma": "קְנַז",
+      "translit": "qǝnaz",
+      "translitKo": "케나즈",
+      "note": "관용 표기: 그나스"
+    },
+    {
+      "strong": "H1856",
+      "lemma": "דָּקַר",
+      "translit": "dāqar",
+      "translitKo": "다카르",
+      "note": ""
+    },
+    {
+      "strong": "H4679",
+      "lemma": "מְצַד",
+      "translit": "mǝṣad",
+      "translitKo": "메차드",
+      "note": ""
+    },
+    {
+      "strong": "H5333",
+      "lemma": "נְצִיב",
+      "translit": "nǝṣîb",
+      "translitKo": "네치브",
+      "note": ""
+    },
+    {
+      "strong": "H5200",
+      "lemma": "נְטֹפָתִי",
+      "translit": "nǝṭōpātî",
+      "translitKo": "네토파티",
+      "note": "관용 표기: 느도바"
+    },
+    {
+      "strong": "H3076",
+      "lemma": "יְהוֹחָנָן",
+      "translit": "yǝhôḥānān",
+      "translitKo": "예호하난",
+      "note": "관용 표기: 여호하난"
+    },
+    {
+      "strong": "H3107",
+      "lemma": "יוֹזָבָד",
+      "translit": "yôzābād",
+      "translitKo": "요자바드",
+      "note": "관용 표기: 요사밧"
+    },
+    {
+      "strong": "H453",
+      "lemma": "אֱלִיהוּ",
+      "translit": "ʾĕlîhû",
+      "translitKo": "엘리후",
+      "note": ""
+    },
+    {
+      "strong": "H5737",
+      "lemma": "עֲדַר",
+      "translit": "ʿadar",
+      "translitKo": "아다르",
+      "note": ""
+    },
+    {
+      "strong": "H1296",
+      "lemma": "בֶּרֶכְיָה",
+      "translit": "berekkyâ",
+      "translitKo": "베레크야",
+      "note": "관용 표기: 베레갸"
+    },
+    {
+      "strong": "H7623",
+      "lemma": "שָׁבַח",
+      "translit": "šābaḥ",
+      "translitKo": "샤바흐",
+      "note": ""
+    },
+    {
+      "strong": "H2586",
+      "lemma": "חָנוּן",
+      "translit": "ḥānûn",
+      "translitKo": "하눈",
+      "note": "관용 표기: 하눈"
+    },
+    {
+      "strong": "H3664",
+      "lemma": "כָּנַס",
+      "translit": "kānas",
+      "translitKo": "카나스",
+      "note": ""
+    },
+    {
+      "strong": "H1496",
+      "lemma": "גָּזִית",
+      "translit": "gāzît",
+      "translitKo": "가지트",
+      "note": ""
+    },
+    {
+      "strong": "H1283",
+      "lemma": "בְּרִיעָה",
+      "translit": "bǝrîʿâ",
+      "translitKo": "브리아",
+      "note": "관용 표기: 브리아"
+    },
+    {
+      "strong": "H2893",
+      "lemma": "טׇהֳרָה",
+      "translit": "ṭohŏrâ",
+      "translitKo": "토호라",
+      "note": ""
+    },
+    {
+      "strong": "H3048",
+      "lemma": "יְדַעְיָה",
+      "translit": "yǝdaʿyâ",
+      "translitKo": "예다야",
+      "note": "관용 표기: 여다야"
+    },
+    {
+      "strong": "H2766",
+      "lemma": "חָרִם",
+      "translit": "ḥārim",
+      "translitKo": "하림",
+      "note": ""
+    },
+    {
+      "strong": "H2607",
+      "lemma": "חֲנָנִי",
+      "translit": "ḥănānî",
+      "translitKo": "하나니",
+      "note": "관용 표기: 하나니"
+    },
+    {
+      "strong": "H3098",
+      "lemma": "יוֹאָח",
+      "translit": "yôʾāḥ",
+      "translitKo": "요아흐",
+      "note": "관용 표기: 요아"
+    },
+    {
+      "strong": "H7718",
+      "lemma": "שֹׁהַם",
+      "translit": "šōham",
+      "translitKo": "쇼함",
+      "note": "관용 표기: 호마노"
+    },
+    {
+      "strong": "H2268",
+      "lemma": "חֶבֶר",
+      "translit": "ḥeber",
+      "translitKo": "헤베르",
+      "note": "관용 표기: 헤벨"
+    },
+    {
+      "strong": "H1090",
+      "lemma": "בִּלְהָה",
+      "translit": "bilhâ",
+      "translitKo": "빌하",
+      "note": "관용 표기: 빌하"
+    },
+    {
+      "strong": "H5813",
+      "lemma": "עֻזִּי",
+      "translit": "ʿuzzî",
+      "translitKo": "우지",
+      "note": "관용 표기: 웃시"
+    },
+    {
+      "strong": "H761",
+      "lemma": "אֲרַמִּי",
+      "translit": "ʾărammî",
+      "translitKo": "아라미",
+      "note": "관용 표기: 아람 사람"
+    },
+    {
+      "strong": "H6765",
+      "lemma": "צְלׇפְחָד",
+      "translit": "ṣǝlopḥād",
+      "translitKo": "츨로프하드",
+      "note": "관용 표기: 슬로브핫"
+    },
+    {
+      "strong": "H6290",
+      "lemma": "פָּארָן",
+      "translit": "pāʾrān",
+      "translitKo": "파란",
+      "note": "관용 표기: 바란"
+    },
+    {
+      "strong": "H7752",
+      "lemma": "שׁוֹט",
+      "translit": "šôṭ",
+      "translitKo": "쇼트",
+      "note": ""
+    },
+    {
+      "strong": "H6939",
+      "lemma": "קִדְרוֹן",
+      "translit": "qidrôn",
+      "translitKo": "키드론",
+      "note": "관용 표기: 기드론"
+    },
+    {
+      "strong": "H48",
+      "lemma": "אֲבִירָם",
+      "translit": "ʾăbîrām",
+      "translitKo": "아비람",
+      "note": "관용 표기: 아비람"
+    },
+    {
+      "strong": "H3364",
+      "lemma": "יָקַץ",
+      "translit": "yāqaṣ",
+      "translitKo": "야카츠",
+      "note": ""
+    },
+    {
+      "strong": "H8585",
+      "lemma": "תְּעָלָה",
+      "translit": "tǝʿālâ",
+      "translitKo": "테알라",
+      "note": ""
+    },
+    {
+      "strong": "H1569",
+      "lemma": "גִּלְעָדִי",
+      "translit": "gilʿādî",
+      "translitKo": "길아디",
+      "note": "관용 표기: 길르앗 사람"
+    },
+    {
+      "strong": "H5172",
+      "lemma": "נָחַשׁ",
+      "translit": "nāḥaš",
+      "translitKo": "나하쉬",
+      "note": ""
+    },
+    {
+      "strong": "H2782",
+      "lemma": "חָרַץ",
+      "translit": "ḥāraṣ",
+      "translitKo": "하라츠",
+      "note": ""
+    },
+    {
+      "strong": "H5055",
+      "lemma": "נָגַח",
+      "translit": "nāgaḥ",
+      "translitKo": "나가흐",
+      "note": ""
+    },
+    {
+      "strong": "H354",
+      "lemma": "אַיָּל",
+      "translit": "ʾayyāl",
+      "translitKo": "아얄",
+      "note": ""
+    },
+    {
+      "strong": "H6603",
+      "lemma": "פִּתּוּחַ",
+      "translit": "pittûaḥ",
+      "translitKo": "피투아흐",
+      "note": ""
+    },
+    {
+      "strong": "H2836",
+      "lemma": "חָשַׁק",
+      "translit": "ḥāšaq",
+      "translitKo": "하샤크",
+      "note": ""
+    },
+    {
+      "strong": "H4363",
+      "lemma": "מִכְמָס",
+      "translit": "mikmās",
+      "translitKo": "미크마스",
+      "note": "관용 표기: 믹마스"
+    },
+    {
+      "strong": "H4569",
+      "lemma": "מַעֲבָר",
+      "translit": "maʿăbār",
+      "translitKo": "마아바르",
+      "note": ""
+    },
+    {
+      "strong": "H2938",
+      "lemma": "טָעַם",
+      "translit": "ṭāʿam",
+      "translitKo": "타암",
+      "note": ""
+    },
+    {
+      "strong": "H8154",
+      "lemma": "שָׁסָה",
+      "translit": "šāsâ",
+      "translitKo": "샤사",
+      "note": ""
+    },
+    {
+      "strong": "H7081",
+      "lemma": "קֶסֶם",
+      "translit": "qesem",
+      "translitKo": "케셈",
+      "note": ""
+    },
+    {
+      "strong": "H2087",
+      "lemma": "זָדוֹן",
+      "translit": "zādôn",
+      "translitKo": "자돈",
+      "note": ""
+    },
+    {
+      "strong": "H4055",
+      "lemma": "מַד",
+      "translit": "mad",
+      "translitKo": "마드",
+      "note": ""
+    },
+    {
+      "strong": "H3365",
+      "lemma": "יָקַר",
+      "translit": "yāqar",
+      "translitKo": "야카르",
+      "note": ""
+    },
+    {
+      "strong": "H5181",
+      "lemma": "נָחַת",
+      "translit": "nāḥat",
+      "translitKo": "나하트",
+      "note": ""
+    },
+    {
+      "strong": "H2873",
+      "lemma": "טָבַח",
+      "translit": "ṭābaḥ",
+      "translitKo": "타바흐",
+      "note": ""
+    },
+    {
+      "strong": "H7306",
+      "lemma": "רוּחַ",
+      "translit": "rûaḥ",
+      "translitKo": "루아흐",
+      "note": ""
+    },
+    {
+      "strong": "H3049",
+      "lemma": "יִדְּעֹנִי",
+      "translit": "yiddǝʿōnî",
+      "translitKo": "이드오니",
+      "note": ""
+    },
+    {
+      "strong": "H7775",
+      "lemma": "שַׁוְעָה",
+      "translit": "šawʿâ",
+      "translitKo": "샤와",
+      "note": ""
+    },
+    {
+      "strong": "H6492",
+      "lemma": "פֶּקַח",
+      "translit": "peqaḥ",
+      "translitKo": "페카흐",
+      "note": "관용 표기: 베가"
+    }
+  ]
+}

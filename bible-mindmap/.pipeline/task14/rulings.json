@@ -1,0 +1,583 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 2,
+  "ties": [
+    {
+      "strong": "H3158",
+      "koRank": [
+        [
+          "이스르엘리",
+          1
+        ],
+        [
+          "이즈레엘리",
+          1
+        ],
+        [
+          "이즈르엘리",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yizrĕʿēʾlî",
+          3
+        ]
+      ]
+    },
+    {
+      "strong": "H6765",
+      "koRank": [
+        [
+          "첼로프하드",
+          2
+        ],
+        [
+          "첼롭하드",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Ṣĕlop̄ḥāḏ",
+          1
+        ],
+        [
+          "ṣĕlophād",
+          1
+        ],
+        [
+          "ṣĕlopḥād",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H5992",
+      "lemma": "עַמִּינָדָב",
+      "translit": "ʿammînādāb",
+      "translitKo": "아미나다브",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 아미나다브다. 관용 표기 '암미나답'과 차이가 있다."
+    },
+    {
+      "strong": "H3158",
+      "lemma": "יִזְרְעֵאלִי",
+      "translit": "yizrĕʿēʾlî",
+      "translitKo": "이스르엘리",
+      "votesKo": 1,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 이스르엘 지명 계열의 관용 표기를 따름."
+    },
+    {
+      "strong": "G4514",
+      "lemma": "Ῥωμαῖος",
+      "translit": "Rhōmaîos",
+      "translitKo": "로마이오스",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 로마이오스다. 관용 표기 '로마인'과 차이가 있다."
+    },
+    {
+      "strong": "G377",
+      "lemma": "ἀναπίπτω",
+      "translit": "anapíptō",
+      "translitKo": "아나핍토",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 복수 자음은 한글에서 자연스러운 음절로 옮김."
+    },
+    {
+      "strong": "G3094",
+      "lemma": "Μαγδαληνή",
+      "translit": "Magdalēnḗ",
+      "translitKo": "마그달레네",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 마그달레네다. 관용 표기 '막달라'와 차이가 있다."
+    },
+    {
+      "strong": "G910",
+      "lemma": "Βαπτιστής",
+      "translit": "Baptistḗs",
+      "translitKo": "밥티스테스",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 밥티스테스다. 관용 표기 '세례자/세례 요한'과 차이가 있다."
+    },
+    {
+      "strong": "H62",
+      "lemma": "אָבֵל בֵּית־מֲעַכָה",
+      "translit": "ʾābēl bêt-maʿăkâ",
+      "translitKo": "아벨 베트마아카",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 아벨 베트마아카다. 관용 표기 '아벨 벧마아가'와 차이가 있다."
+    },
+    {
+      "strong": "H5872",
+      "lemma": "עֵין גֶּדִי",
+      "translit": "ʿên gedî",
+      "translitKo": "엔 게디",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 엔 게디다. 관용 표기 '엔게디'와 차이가 있다."
+    },
+    {
+      "strong": "H471",
+      "lemma": "אֶלְיָקִים",
+      "translit": "ʾelyāqîm",
+      "translitKo": "엘야킴",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 엘야킴이다. 관용 표기 '엘리아김'과 차이가 있다."
+    },
+    {
+      "strong": "H1593",
+      "lemma": "גַּנָּה",
+      "translit": "gannâ",
+      "translitKo": "간나",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 겹자음을 한글에서 중복하지 않음."
+    },
+    {
+      "strong": "H2376",
+      "lemma": "חֵזֵו",
+      "translit": "ḥēzēw",
+      "translitKo": "헤제우",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ו를 w가 아닌 음절 말 우로 반영."
+    },
+    {
+      "strong": "H8036",
+      "lemma": "שֻׁם",
+      "translit": "šum",
+      "translitKo": "슘",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 음절 첫 שׁ는 슈 계열로 옮김."
+    },
+    {
+      "strong": "H5457",
+      "lemma": "סְגִד",
+      "translit": "sĕgid",
+      "translitKo": "세기드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 베가드케파트 연음 기호를 쓰지 않음."
+    },
+    {
+      "strong": "H7412",
+      "lemma": "רְמָה",
+      "translit": "rĕmâ",
+      "translitKo": "레마",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ה는 한글로 별도 자음을 더하지 않음."
+    },
+    {
+      "strong": "H3792",
+      "lemma": "כְּתָב",
+      "translit": "kĕtāb",
+      "translitKo": "케타브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ḇ는 b로 표기."
+    },
+    {
+      "strong": "H8245",
+      "lemma": "שָׁקַד",
+      "translit": "šāqad",
+      "translitKo": "샤카드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 음절 첫 שׁ는 샤로 옮김."
+    },
+    {
+      "strong": "H4550",
+      "lemma": "מַסַּע",
+      "translit": "massaʿ",
+      "translitKo": "마사",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4172",
+      "lemma": "מוֹרָא",
+      "translit": "môrāʾ",
+      "translitKo": "모라",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 א는 한글로 따로 적지 않음."
+    },
+    {
+      "strong": "H5392",
+      "lemma": "נֶשֶׁךְ",
+      "translit": "nešek",
+      "translitKo": "네셰크",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 음절 말 שׁ는 셰로 옮김."
+    },
+    {
+      "strong": "H2023",
+      "lemma": "הֹר",
+      "translit": "hōr",
+      "translitKo": "호르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 후음이 아닌 ה는 h로 반영."
+    },
+    {
+      "strong": "H2042",
+      "lemma": "הָרָר",
+      "translit": "hārār",
+      "translitKo": "하라르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬 없는 ר은 단일 r로 옮김."
+    },
+    {
+      "strong": "H1187",
+      "lemma": "בַּעַל פְּעוֹר",
+      "translit": "baʿal pĕʿôr",
+      "translitKo": "바알 페오르",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 바알 페오르다. 관용 표기 '바알브올'과 차이가 있다."
+    },
+    {
+      "strong": "H1447",
+      "lemma": "גָּדֵר",
+      "translit": "gādēr",
+      "translitKo": "가데르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ḏ는 d로 표기."
+    },
+    {
+      "strong": "H4966",
+      "lemma": "מָתוֹק",
+      "translit": "mātôq",
+      "translitKo": "마토크",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ת는 t로 옮김."
+    },
+    {
+      "strong": "H2270",
+      "lemma": "חָבֵר",
+      "translit": "ḥābēr",
+      "translitKo": "하베르",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ḇ는 b로 표기."
+    },
+    {
+      "strong": "H4753",
+      "lemma": "מֹר",
+      "translit": "mōr",
+      "translitKo": "모르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 모르다. 관용 표기 '몰약'과 차이가 있다."
+    },
+    {
+      "strong": "H3843",
+      "lemma": "לְבֵנָה",
+      "translit": "lĕbēnâ",
+      "translitKo": "레베나",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ḇ는 b, 어말 ה는 별도 자음 없이 표기."
+    },
+    {
+      "strong": "H6363",
+      "lemma": "פֶּטֶר",
+      "translit": "peṭer",
+      "translitKo": "페테르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ṭ는 한글에서 ㅌ 계열로 옮김."
+    },
+    {
+      "strong": "H4701",
+      "lemma": "מִצְנֶפֶת",
+      "translit": "miṣnepet",
+      "translitKo": "미츠네페트",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ṣ는 츠로 옮김."
+    },
+    {
+      "strong": "H5549",
+      "lemma": "סָלַל",
+      "translit": "sālal",
+      "translitKo": "살랄",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 다게쉬 포르테를 겹쳐 적지 않음."
+    },
+    {
+      "strong": "H947",
+      "lemma": "בּוּס",
+      "translit": "bûs",
+      "translitKo": "부스",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6780",
+      "lemma": "צֶמַח",
+      "translit": "ṣemaḥ",
+      "translitKo": "체마흐",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ṣ는 ㅊ, ḥ는 ㅎ 계열로 옮김."
+    },
+    {
+      "strong": "H2874",
+      "lemma": "טֶבַח",
+      "translit": "ṭebaḥ",
+      "translitKo": "테바흐",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ḇ는 b로 표기."
+    },
+    {
+      "strong": "H5301",
+      "lemma": "נָפַח",
+      "translit": "nāpaḥ",
+      "translitKo": "나파흐",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 후음 ḥ를 흐 계열로 옮김."
+    },
+    {
+      "strong": "H6355",
+      "lemma": "פַּחַת מוֹאָב",
+      "translit": "paḥat môʾāb",
+      "translitKo": "파하트 모아브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 파하트 모아브다. 한국어 성경 관용 표기는 바핫모압이다."
+    },
+    {
+      "strong": "H1904",
+      "lemma": "הָגָר",
+      "translit": "hāgār",
+      "translitKo": "하가르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 학술 표기는 하가르다. 한국어 성경 관용 표기는 하갈이다."
+    },
+    {
+      "strong": "H7385",
+      "lemma": "רִיק",
+      "translit": "rîq",
+      "translitKo": "리크",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 간결한 학술 음역."
+    },
+    {
+      "strong": "G1657",
+      "lemma": "ἐλευθερία",
+      "translit": "eleuthería",
+      "translitKo": "엘류테리아",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). ευ는 후속 자음이 없어 에우/류 계열 관용 음절로 반영."
+    },
+    {
+      "strong": "G5452",
+      "lemma": "φυτεύω",
+      "translit": "phyteúō",
+      "translitKo": "퓌튜오",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). υ는 위/퓌 계열로 옮김."
+    },
+    {
+      "strong": "G1968",
+      "lemma": "ἐπιπίπτω",
+      "translit": "epipíptō",
+      "translitKo": "에피핍토",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 헬라어 중복 자음은 한글에서 한 번만 적음."
+    },
+    {
+      "strong": "G1980",
+      "lemma": "ἐπισκέπτομαι",
+      "translit": "episképtomai",
+      "translitKo": "에피스켑토마이",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). πτ는 프트가 아닌 한국어 음절 구조로 옮김."
+    },
+    {
+      "strong": "G912",
+      "lemma": "Βαραββᾶς",
+      "translit": "Barabbâs",
+      "translitKo": "바라바스",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 한국어 성경 관용 표기는 바라바다."
+    },
+    {
+      "strong": "H1283",
+      "lemma": "בְּרִיעָה",
+      "translit": "bĕrîʿâ",
+      "translitKo": "베리아",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 베리아다. 한국어 성경 관용 표기는 브리아다."
+    },
+    {
+      "strong": "H6765",
+      "lemma": "צְלׇפְחָד",
+      "translit": "Ṣĕlop̄ḥāḏ",
+      "translitKo": "첼로프하드",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 학술 표기는 첼로프하드다. 한국어 성경 관용 표기는 슬로브핫이다."
+    },
+    {
+      "strong": "H3049",
+      "lemma": "יִדְּעֹנִי",
+      "translit": "yiddĕʿōnî",
+      "translitKo": "이데오니",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 중복 자음과 ע를 한글에서 따로 적지 않음."
+    },
+    {
+      "strong": "H7775",
+      "lemma": "שַׁוְעָה",
+      "translit": "šawʿâ",
+      "translitKo": "샤와",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    }
+  ]
+}

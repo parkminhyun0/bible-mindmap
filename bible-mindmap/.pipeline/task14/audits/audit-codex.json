@@ -1,0 +1,38 @@
+[
+  {
+    "strong": "G5053",
+    "field": "translitKo",
+    "current": "텔레우타오",
+    "suggested": "텔레프타오",
+    "evidence": "lemma τελευτάω; WORKER_SPEC.md의 ευ 규칙(뒤 무성 자음 τ 앞에서는 에프)",
+    "severity": "high",
+    "reason": "ευ가 무성 폐쇄음 τ 앞에 있으므로 에우가 아니라 에프 계열이어야 한다."
+  },
+  {
+    "strong": "G5574",
+    "field": "translitKo",
+    "current": "프세우도마이",
+    "suggested": "프세브도마이",
+    "evidence": "lemma ψεύδομαι; WORKER_SPEC.md의 ευ 규칙(뒤 유성 자음 δ 앞에서는 에브)",
+    "severity": "high",
+    "reason": "ευ가 유성 자음 δ 앞에 있으므로 에우가 아니라 에브 계열이어야 한다."
+  },
+  {
+    "strong": "G5578",
+    "field": "translitKo",
+    "current": "프세우도프로페테스",
+    "suggested": "프세브도프로페테스",
+    "evidence": "lemma ψευδοπροφήτης; WORKER_SPEC.md의 ευ 규칙(뒤 유성 자음 δ 앞에서는 에브)",
+    "severity": "high",
+    "reason": "복합어 첫 요소의 ευ가 유성 자음 δ 앞에 있으므로 에우가 아니라 에브 계열이어야 한다."
+  },
+  {
+    "strong": "G2680",
+    "field": "translitKo",
+    "current": "카타스케우아조",
+    "suggested": "카타스케프아조",
+    "evidence": "lemma κατασκευάζω; WORKER_SPEC.md의 ευ 규칙(뒤 무성 자음 κ 앞에서는 에프)",
+    "severity": "high",
+    "reason": "ευ가 무성 자음 κ 앞에 있으므로 에우가 아니라 에프 계열이어야 한다."
+  }
+]
