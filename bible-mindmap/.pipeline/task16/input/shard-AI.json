@@ -1,0 +1,906 @@
+{
+  "shard": "AI",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G75",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἀγωνίζομαι",
+      "translit": "agōnízomai",
+      "glossEn": "fight, labor fervently, strive",
+      "defEn": "to struggle, literally (to compete for a prize), figuratively (to contend with an adversary), or genitive case (to endeavor to accomplish something)"
+    },
+    {
+      "strong": "G5040",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "τεκνίον",
+      "translit": "tekníon",
+      "glossEn": "little children",
+      "defEn": "an infant, i.e. (plural figuratively) darlings (Christian converts)"
+    },
+    {
+      "strong": "G3751",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ὀσφῦς",
+      "translit": "osphŷs",
+      "glossEn": "loin",
+      "defEn": "the loin (externally), i.e. the hip; internally (by extension) procreative power"
+    },
+    {
+      "strong": "G1025",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "βρέφος",
+      "translit": "bréphos",
+      "glossEn": "babe, (young) child, infant",
+      "defEn": "an infant (properly, unborn) literally or figuratively"
+    },
+    {
+      "strong": "G569",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἀπιστέω",
+      "translit": "apistéō",
+      "glossEn": "believe not",
+      "defEn": "to be unbelieving, i.e. (transitively) disbelieve, or (by implication) disobey"
+    },
+    {
+      "strong": "G4350",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "προσκόπτω",
+      "translit": "proskóptō",
+      "glossEn": "beat upon, dash, stumble (at)",
+      "defEn": "to strike at, i.e. surge against (as water); specially, to stub on, i.e. trip up (literally or figuratively)"
+    },
+    {
+      "strong": "G3575",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Νῶε",
+      "translit": "Nōe",
+      "glossEn": "Noe",
+      "defEn": "Noë, (i.e. Noäch), a patriarch"
+    },
+    {
+      "strong": "G1295",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "διασώζω",
+      "translit": "diasṓzō",
+      "glossEn": "bring safe, escape (safe), heal, make perfectly whole, save",
+      "defEn": "to save thoroughly, i.e. (by implication or analogy) to cure, preserve, rescue, etc."
+    },
+    {
+      "strong": "G2572",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "καλύπτω",
+      "translit": "kalýptō",
+      "glossEn": "cover, hide",
+      "defEn": "to cover up (literally or figuratively)"
+    },
+    {
+      "strong": "G2841",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "κοινωνέω",
+      "translit": "koinōnéō",
+      "glossEn": "communicate, distribute, be partaker",
+      "defEn": "to share with others (objectively or subjectively)"
+    },
+    {
+      "strong": "G3138",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Μάρκος",
+      "translit": "Márkos",
+      "glossEn": "Marcus, Mark",
+      "defEn": "Marcus, a Christian"
+    },
+    {
+      "strong": "G3955",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "παῤῥησιάζομαι",
+      "translit": "parrhēsiázomai",
+      "glossEn": "be (wax) bold, (preach, speak) boldly",
+      "defEn": "to be frank in utterance, or confident in spirit and demeanor"
+    },
+    {
+      "strong": "G1628",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐκφεύγω",
+      "translit": "ekpheúgō",
+      "glossEn": "escape, flee",
+      "defEn": "to flee out"
+    },
+    {
+      "strong": "G4291",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "προΐστημι",
+      "translit": "proḯstēmi",
+      "glossEn": "maintain, be over, rule",
+      "defEn": "to stand before, i.e. (in rank) to preside, or (by implication) to practise"
+    },
+    {
+      "strong": "G4570",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "σβέννυμι",
+      "translit": "sbénnymi",
+      "glossEn": "go out, quench",
+      "defEn": "to extinguish (literally or figuratively)"
+    },
+    {
+      "strong": "G1533",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "εἰσφέρω",
+      "translit": "eisphérō",
+      "glossEn": "bring (in), lead into",
+      "defEn": "to carry inward (literally or figuratively)"
+    },
+    {
+      "strong": "G1627",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐκφέρω",
+      "translit": "ekphérō",
+      "glossEn": "bear, bring forth, carry forth (out)",
+      "defEn": "to bear out (literally or figuratively)"
+    },
+    {
+      "strong": "G714",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἀρκέω",
+      "translit": "arkéō",
+      "glossEn": "be content, be enough, suffice, be sufficient",
+      "defEn": "properly, to ward off, i.e. (by implication) to avail (figuratively, be satisfactory)"
+    },
+    {
+      "strong": "G572",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἁπλότης",
+      "translit": "haplótēs",
+      "glossEn": "bountifulness, liberal(-ity), simplicity, singleness",
+      "defEn": "singleness, i.e. (subjectively) sincerity (without dissimulation or self-seeking), or (objectively) generosity (copious bestowal)"
+    },
+    {
+      "strong": "G3170",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "μεγαλύνω",
+      "translit": "megalýnō",
+      "glossEn": "enlarge, magnify, shew great",
+      "defEn": "to make (or declare) great, i.e. increase or (figuratively) extol"
+    },
+    {
+      "strong": "G3034",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "λιθάζω",
+      "translit": "litházō",
+      "glossEn": "stone",
+      "defEn": "to lapidate"
+    },
+    {
+      "strong": "G997",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "βοηθέω",
+      "translit": "boēthéō",
+      "glossEn": "help, succor",
+      "defEn": "to aid or relieve"
+    },
+    {
+      "strong": "G1753",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐνέργεια",
+      "translit": "enérgeia",
+      "glossEn": "operation, strong, (effectual) working",
+      "defEn": "efficiency (\"energy\")"
+    },
+    {
+      "strong": "G600",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἀποκαθίστημι",
+      "translit": "apokathístēmi",
+      "glossEn": "restore (again)",
+      "defEn": "to reconstitute (in health, home or organization)"
+    },
+    {
+      "strong": "G2066",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐσθής",
+      "translit": "esthḗs",
+      "glossEn": "apparel, clothing, raiment, robe",
+      "defEn": "dress"
+    },
+    {
+      "strong": "G4779",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "συγκαλέω",
+      "translit": "synkaléō",
+      "glossEn": "call together",
+      "defEn": "to convoke"
+    },
+    {
+      "strong": "G3724",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ὁρίζω",
+      "translit": "horízō",
+      "glossEn": "declare, determine, limit, ordain",
+      "defEn": "to mark out or bound (\"horizon\"), i.e. (figuratively) to appoint, decree, specify"
+    },
+    {
+      "strong": "G1807",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐξαιρέω",
+      "translit": "exairéō",
+      "glossEn": "deliver, pluck out, rescue",
+      "defEn": "actively, to tear out; middle voice, to select; figuratively, to release"
+    },
+    {
+      "strong": "G1334",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "διηγέομαι",
+      "translit": "diēgéomai",
+      "glossEn": "declare, shew, tell",
+      "defEn": "to relate fully"
+    },
+    {
+      "strong": "G3177",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "μεθερμηνεύω",
+      "translit": "methermēneúō",
+      "glossEn": "(by) interpret(-ation)",
+      "defEn": "to explain over, i.e. translate"
+    },
+    {
+      "strong": "G2507",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "καθαιρέω",
+      "translit": "kathairéō",
+      "glossEn": "cast (pull, put, take) down, destroy",
+      "defEn": "to lower (or with violence) demolish (literally or figuratively)"
+    },
+    {
+      "strong": "G4947",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Συρία",
+      "translit": "Syría",
+      "glossEn": "Syria",
+      "defEn": "Syria (i.e. Tsyria or Tyre), a region of Asia"
+    },
+    {
+      "strong": "G2791",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Κιλικία",
+      "translit": "Kilikía",
+      "glossEn": "Cilicia",
+      "defEn": "Cilicia, a region of Asia Minor"
+    },
+    {
+      "strong": "G1291",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "διαστέλλομαι",
+      "translit": "diastéllomai",
+      "glossEn": "charge, that which was (give) commanded(-ment)",
+      "defEn": "to set (oneself) apart (figuratively, distinguish), i.e. (by implication) to enjoin"
+    },
+    {
+      "strong": "G1272",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "διανοίγω",
+      "translit": "dianoígō",
+      "glossEn": "open",
+      "defEn": "to open thoroughly, literally (as a first-born) or figuratively (to expound)"
+    },
+    {
+      "strong": "G1670",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἑλκύω",
+      "translit": "helkýō",
+      "glossEn": "draw",
+      "defEn": "to drag (literally or figuratively)"
+    },
+    {
+      "strong": "G4363",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "προσπίπτω",
+      "translit": "prospíptō",
+      "glossEn": "beat upon, fall (down) at (before)",
+      "defEn": "to fall towards, i.e. (gently) prostrate oneself (in supplication or homage), or (violently) to rush upon (in storm)"
+    },
+    {
+      "strong": "G2795",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "κινέω",
+      "translit": "kinéō",
+      "glossEn": "(re-)move(-r), way",
+      "defEn": "to stir (transitively), literally or figuratively"
+    },
+    {
+      "strong": "G3461",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "μυριάς",
+      "translit": "myriás",
+      "glossEn": "ten thousand",
+      "defEn": "a ten-thousand; by extension, a \"myriad\" or indefinite number"
+    },
+    {
+      "strong": "G3418",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "μνῆμα",
+      "translit": "mnēma",
+      "glossEn": "grave, sepulchre, tomb",
+      "defEn": "a memorial, i.e. sepulchral monument (burial-place)"
+    },
+    {
+      "strong": "G2223",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ζώνη",
+      "translit": "zṓnē",
+      "glossEn": "girdle, purse",
+      "defEn": "a belt; by implication, a pocket"
+    },
+    {
+      "strong": "G4496",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ῥίπτω",
+      "translit": "rhíptō",
+      "glossEn": "cast (down, out), scatter abroad, throw",
+      "defEn": "to fling (properly, with a quick toss, thus differing from G906 (βάλλω), which denotes a deliberate hurl; and from (see in G1614 (ἐκτείνω)), which indicates an extended projection)"
+    },
+    {
+      "strong": "G4753",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "στράτευμα",
+      "translit": "stráteuma",
+      "glossEn": "army, soldier, man of war",
+      "defEn": "an armament, i.e. (by implication) a body of troops (more or less extensive or systematic)"
+    },
+    {
+      "strong": "G2293",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "θαρσέω",
+      "translit": "tharséō",
+      "glossEn": "be of good cheer (comfort)",
+      "defEn": "to have courage"
+    },
+    {
+      "strong": "G4232",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "πραιτώριον",
+      "translit": "praitṓrion",
+      "glossEn": "(common, judgment) hall (of judgment), palace, prætorium",
+      "defEn": "the prætorium or governor's courtroom (sometimes including the whole edifice and camp)"
+    },
+    {
+      "strong": "G4824",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "συμβούλιον",
+      "translit": "symboúlion",
+      "glossEn": "consultation, counsel, council",
+      "defEn": "advisement; specially, a deliberative body, i.e. the provincial assessors or lay-court"
+    },
+    {
+      "strong": "G2135",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "εὐνοῦχος",
+      "translit": "eunoûchos",
+      "glossEn": "eunuch",
+      "defEn": "a castrated person (such being employed in Oriental bed-chambers); by extension an impotent or unmarried man; by implication, a chamberlain (state-officer)"
+    },
+    {
+      "strong": "G2592",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "καρποφορέω",
+      "translit": "karpophoréō",
+      "glossEn": "be (bear, bring forth) fruit(-ful)",
+      "defEn": "to be fertile (literally or figuratively)"
+    },
+    {
+      "strong": "G2244",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἡλικία",
+      "translit": "hēlikía",
+      "glossEn": "age, stature",
+      "defEn": "maturity (in years or size)"
+    },
+    {
+      "strong": "G3710",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ὀργίζω",
+      "translit": "orgízō",
+      "glossEn": "be angry (wroth)",
+      "defEn": "to provoke or enrage, i.e. (passively) become exasperated"
+    },
+    {
+      "strong": "G3968",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "πατρίς",
+      "translit": "patrís",
+      "glossEn": "(own) country",
+      "defEn": "a father-land, i.e. native town; (figuratively) heavenly home"
+    },
+    {
+      "strong": "G1950",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐπιλανθάνομαι",
+      "translit": "epilanthánomai",
+      "glossEn": "(be) forget(-ful of)",
+      "defEn": "to lose out of mind; by implication, to neglect"
+    },
+    {
+      "strong": "G3017",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Λευΐ",
+      "translit": "Leuḯ",
+      "glossEn": "Levi",
+      "defEn": "Levi, the name of three Israelites"
+    },
+    {
+      "strong": "G4937",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "συντρίβω",
+      "translit": "syntríbō",
+      "glossEn": "break (in pieces), broken to shivers (+ -hearted), bruise",
+      "defEn": "to crush completely, i.e. to shatter (literally or figuratively)"
+    },
+    {
+      "strong": "G1072",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "γεμίζω",
+      "translit": "gemízō",
+      "glossEn": "fill (be) full",
+      "defEn": "to fill entirely"
+    },
+    {
+      "strong": "G1147",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "δάκτυλος",
+      "translit": "dáktylos",
+      "glossEn": "finger",
+      "defEn": "a finger"
+    },
+    {
+      "strong": "G965",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "Βηθλεέμ",
+      "translit": "Bēthleém",
+      "glossEn": "Bethlehem",
+      "defEn": "Bethleem (i.e. Beth-lechem), a place in Palestine"
+    },
+    {
+      "strong": "G1996",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἐπισυνάγω",
+      "translit": "episynágō",
+      "glossEn": "gather (together)",
+      "defEn": "to collect upon the same place"
+    },
+    {
+      "strong": "G1742",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἔνδυμα",
+      "translit": "éndyma",
+      "glossEn": "clothing, garment, raiment",
+      "defEn": "apparel (especially the outer robe)"
+    },
+    {
+      "strong": "G2875",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "κόπτω",
+      "translit": "kóptō",
+      "glossEn": "cut down, lament, mourn, (be-)wail",
+      "defEn": "to \"chop\"; specially, to beat the breast in grief"
+    },
+    {
+      "strong": "G4816",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "συλλέγω",
+      "translit": "syllégō",
+      "glossEn": "gather (together, up)",
+      "defEn": "to collect"
+    },
+    {
+      "strong": "G34",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ἀγέλη",
+      "translit": "agélē",
+      "glossEn": "herd",
+      "defEn": "a drove"
+    },
+    {
+      "strong": "G1407",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "δρέπανον",
+      "translit": "drépanon",
+      "glossEn": "sickle",
+      "defEn": "a gathering hook (especially for harvesting)"
+    },
+    {
+      "strong": "G2877",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "κοράσιον",
+      "translit": "korásion",
+      "glossEn": "damsel, maid",
+      "defEn": "a (little) girl"
+    },
+    {
+      "strong": "G2215",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "ζιζάνιον",
+      "translit": "zizánion",
+      "glossEn": "tares",
+      "defEn": "darnel or false grain"
+    },
+    {
+      "strong": "G3359",
+      "lang": "greek",
+      "count": 8,
+      "lemma": "μέτωπον",
+      "translit": "métōpon",
+      "glossEn": "forehead",
+      "defEn": "the forehead (as opposite the countenance)"
+    },
+    {
+      "strong": "H8422",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "תּוּבַל",
+      "translit": "",
+      "glossEn": "Tubal.",
+      "defEn": "Tubal, a postdiluvian patriarch and his posterity"
+    },
+    {
+      "strong": "H3794",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "כִּתִּי",
+      "translit": "",
+      "glossEn": "Chittim, Kittim.",
+      "defEn": "a Kittite or Cypriote; hence, an islander in general, i.e. the Greeks or Romans on the shores opposite Palestine"
+    },
+    {
+      "strong": "H5780",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עוּץ",
+      "translit": "",
+      "glossEn": "Uz.",
+      "defEn": "Uts, a son of Aram, also a Seirite, and the regions settled by them."
+    },
+    {
+      "strong": "H5858",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עֵיבָל",
+      "translit": "",
+      "glossEn": "Ebal.",
+      "defEn": "Ebal, a mountain of Palestine"
+    },
+    {
+      "strong": "H6649",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "צִבְעוֹן",
+      "translit": "",
+      "glossEn": "Zibeon.",
+      "defEn": "Tsibon, an Idumaean"
+    },
+    {
+      "strong": "H1224",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "בׇּצְרָה",
+      "translit": "",
+      "glossEn": "Bozrah.",
+      "defEn": "Botsrah, a place in Edom"
+    },
+    {
+      "strong": "H8489",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "תֵּימָנִי",
+      "translit": "",
+      "glossEn": "Temani, Temanite.",
+      "defEn": "a Temanite or descendant of Teman"
+    },
+    {
+      "strong": "H173",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "אׇהֳלִיבָמָה",
+      "translit": "",
+      "glossEn": "Aholibamah.",
+      "defEn": "Oholibamah, a wife of Esau"
+    },
+    {
+      "strong": "H1533",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "גִּלְבֹּעַ",
+      "translit": "",
+      "glossEn": "Gilboa.",
+      "defEn": "Gilboa, a mountain of Palestine"
+    },
+    {
+      "strong": "H5725",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עֲדֻלָּם",
+      "translit": "",
+      "glossEn": "Adullam.",
+      "defEn": "Adullam, a place in Palestine"
+    },
+    {
+      "strong": "H5820",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עַזְמָוֶת",
+      "translit": "",
+      "glossEn": "Azmaveth. See also H1041 (בֵּית עַזְמָוֶת).",
+      "defEn": "Azmaveth, the name of three Israelites and of a place in Palestine"
+    },
+    {
+      "strong": "H2066",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "זָבָד",
+      "translit": "",
+      "glossEn": "Zabad.",
+      "defEn": "Zabad, the name of seven Israelites"
+    },
+    {
+      "strong": "H1393",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "גִּבְעֹנִי",
+      "translit": "",
+      "glossEn": "Gibeonite.",
+      "defEn": "a Gibonite, or inhabitant of Gibon"
+    },
+    {
+      "strong": "H7145",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "קׇרְחִי",
+      "translit": "",
+      "glossEn": "Korahite, Korathite, sons of Kore, Korhite.",
+      "defEn": "a Korchite (collectively) or descendants of Korach"
+    },
+    {
+      "strong": "H1188",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "בַּעַל פְּרָצִים",
+      "translit": "",
+      "glossEn": "Baal-perazim.",
+      "defEn": "Baal-Peratsim, a place in Palestine"
+    },
+    {
+      "strong": "H6222",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עֲשָׂיָה",
+      "translit": "",
+      "glossEn": "Asaiah.",
+      "defEn": "Asajah, the name of three or four Israelites"
+    },
+    {
+      "strong": "H387",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "אֵיתָן",
+      "translit": "",
+      "glossEn": "Ethan.",
+      "defEn": "Ethan, the name of four Israelites"
+    },
+    {
+      "strong": "H4993",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "מַתִּתְיָה",
+      "translit": "",
+      "glossEn": "Mattithiah. n",
+      "defEn": "Mattithjah, the name of four Israelites"
+    },
+    {
+      "strong": "H948",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "בּוּץ",
+      "translit": "",
+      "glossEn": "fine (white) linen.",
+      "defEn": "probably cotton (of some sort)"
+    },
+    {
+      "strong": "H5970",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "עָלַץ",
+      "translit": "",
+      "glossEn": "be joyful, rejoice, triumph.",
+      "defEn": "to jump for joy, i.e. exult"
+    },
+    {
+      "strong": "H209",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "אוֹנָן",
+      "translit": "",
+      "glossEn": "Onan.",
+      "defEn": "Onan, a son of Judah"
+    },
+    {
+      "strong": "H7956",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "שֵׁלָה",
+      "translit": "",
+      "glossEn": "Shelah.",
+      "defEn": "Shelah, the name of a postdiluvian patriarch and of an Israelite"
+    },
+    {
+      "strong": "H3756",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "כַּרְמִי",
+      "translit": "",
+      "glossEn": "Carmi.",
+      "defEn": "Karmi, the name of three Israelites"
+    },
+    {
+      "strong": "H3396",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "יְרַחְמְאֵל",
+      "translit": "",
+      "glossEn": "Jerahmeel.",
+      "defEn": "Jerachmeel, the name of three Israelites"
+    },
+    {
+      "strong": "H3459",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "יִשְׁמָעֵאלִי",
+      "translit": "",
+      "glossEn": "Ishmaelite.",
+      "defEn": "a Jishmaelite or descendant of Jishmael"
+    },
+    {
+      "strong": "H221",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "אוּרִי",
+      "translit": "",
+      "glossEn": "Uri.",
+      "defEn": "Uri, the name of three Israelites"
+    },
+    {
+      "strong": "H2971",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "יָאִיר",
+      "translit": "",
+      "glossEn": "Jair.",
+      "defEn": "Jair, the name of four Israelites"
+    },
+    {
+      "strong": "H2334",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "חַוּוֹת יָעִיר",
+      "translit": "",
+      "glossEn": "(Bashan-) Havoth-jair.",
+      "defEn": "hamlets of Jair, a region of Palestine"
+    },
+    {
+      "strong": "H4584",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "מָעוֹן",
+      "translit": "",
+      "glossEn": "Maon, Maonites. Compare H1010 (בֵּית בַּעַל מְעוֹן), H4586 (מְעוּנִי)lemma מְעוּנָי third vowel, corrected to מְעוּנִי.",
+      "defEn": "Maon, the name of an Israelite and of a place in Palestine"
+    },
+    {
+      "strong": "H1049",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "בֵּית צוּר",
+      "translit": "",
+      "glossEn": "Beth-zur.",
+      "defEn": "Beth-Tsur, a place in Palestine"
+    },
+    {
+      "strong": "H8666",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "תְּשׁוּבָה",
+      "translit": "",
+      "glossEn": "answer, be expired, return.",
+      "defEn": "a recurrence (of time or place); a reply (as returned)"
+    },
+    {
+      "strong": "H5528",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "סָכַל",
+      "translit": "",
+      "glossEn": "do (make, play the, turn into) fool(-ish, -ishly, -ishness).",
+      "defEn": "to be silly"
+    },
+    {
+      "strong": "H8019",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "שְׁלֹמִית",
+      "translit": "",
+      "glossEn": "Shelomith.",
+      "defEn": "Shelomith, the name of five Israelites and three Israelitesses"
+    },
+    {
+      "strong": "H3189",
+      "lang": "hebrew",
+      "count": 8,
+      "lemma": "יַחַת",
+      "translit": "",
+      "glossEn": "Jahath.",
+      "defEn": "Jachath, the name of four Israelites"
+    }
+  ]
+}

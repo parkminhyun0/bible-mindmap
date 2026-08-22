@@ -1,0 +1,262 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "gptoss120b"
+  ],
+  "rules": [
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    },
+    {
+      "model": "gptoss120b",
+      "rules": {}
+    }
+  ],
+  "tieCount": 4,
+  "ties": [
+    {
+      "strong": "G3177",
+      "koRank": [
+        [
+          "메테르메뉴오",
+          2
+        ],
+        [
+          "메테르메네브오",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "methermēneúō",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G4753",
+      "koRank": [
+        [
+          "스트라튜마",
+          2
+        ],
+        [
+          "스트라테브마",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "stráteuma",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G2135",
+      "koRank": [
+        [
+          "유누코스",
+          2
+        ],
+        [
+          "에브누코스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "eunoûchos",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G1147",
+      "koRank": [
+        [
+          "다크튈로스",
+          2
+        ],
+        [
+          "닥튈로스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "dáktylos",
+          4
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "G3198",
+      "lemma": "Μελχισεδέκ",
+      "translit": "Melchisedék",
+      "translitKo": "멜키세데크",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 한국어 성경 관용 표기는 '멜기세덱'이다. 학술 표기(Melchisedék)를 표제로 두었다."
+    },
+    {
+      "strong": "H6720",
+      "lemma": "צֵידָה",
+      "translit": "ṣêdâ",
+      "translitKo": "체다",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "H7633",
+      "lemma": "שִׁבְיָה",
+      "translit": "šibyâ",
+      "translitKo": "시브야",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 쉬/시 구분: 뒤에 모음 i가 오므로 시"
+    },
+    {
+      "strong": "H7128",
+      "lemma": "קְרָב",
+      "translit": "qĕrāb",
+      "translitKo": "케라브",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "H8359",
+      "lemma": "שְׁתִי",
+      "translit": "šĕtî",
+      "translitKo": "셰티",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "G2782",
+      "lemma": "κήρυγμα",
+      "translit": "kḗrygma",
+      "translitKo": "케뤼그마",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 한국어 성경 및 신학적 관용 표기는 '케리그마'다. 배포 선례(G2784 κηρύσσω→케뤼소) 및 υ 표기 규칙에 따라 케뤼그마로 표기했다."
+    },
+    {
+      "strong": "G1628",
+      "lemma": "ἐκφεύγω",
+      "translit": "ekpheúgō",
+      "translitKo": "에크페브고",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). ευ 뒤에 유성음 γ가 오므로 에브로 표기"
+    },
+    {
+      "strong": "G3177",
+      "lemma": "μεθερμηνεύω",
+      "translit": "methermēneúō",
+      "translitKo": "메테르메뉴오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G4753",
+      "lemma": "στράτευμα",
+      "translit": "stráteuma",
+      "translitKo": "스트라튜마",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G2135",
+      "lemma": "εὐνοῦχος",
+      "translit": "eunoûchos",
+      "translitKo": "유누코스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G3017",
+      "lemma": "Λευΐ",
+      "translit": "Leuḯ",
+      "translitKo": "레우이",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 한국어 성경(개역개정) 관용 표기는 '레위'다. 헬라어 표제형(Λευΐ, 분음 부호 포함)의 학술 표기는 레우이다."
+    },
+    {
+      "strong": "G1147",
+      "lemma": "δάκτυλος",
+      "translit": "dáktylos",
+      "translitKo": "다크튈로스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H3396",
+      "lemma": "יְרַחְמְאֵל",
+      "translit": "yĕraḥmĕʾēl",
+      "translitKo": "예라흐메엘",
+      "votesKo": 4,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 '여라무엘'(또는 여라므엘)이다. 히브리어 표제형(יְרַחְמְאֵל)의 학술 음역은 예라흐메엘이다."
+    },
+    {
+      "strong": "H1049",
+      "lemma": "בֵּית צוּר",
+      "translit": "bêt ṣûr",
+      "translitKo": "베트 추르",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 '벧술'이다. 배포 선례(베트엘·베트 레헴·베트 호론·베트 셰안·베트 아웬)에 따라 בֵּית를 '베트'로 적고 학술 표기를 표제로 두었다."
+    }
+  ]
+}

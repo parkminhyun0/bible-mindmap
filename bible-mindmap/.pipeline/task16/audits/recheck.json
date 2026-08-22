@@ -1,0 +1,47 @@
+[
+  {
+    "strong": "H4749",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 음절 말 שׁ는 쉬로 표기",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": ".pipeline/task16/final.json entry H4749; lemma מִקְשָׁה (miqšâ), translitKo 미크샤",
+    "severity": "medium",
+    "reason": "מִקְשָׁה(miqšâ)의 שׁ(š)는 개음절 모음 qamats(ָ)가 결합된 초성(샤)으로 음절 말이 아니며 한글 표기도 '미크샤'인데, note에 '음절 말 שׁ는 쉬로 표기'라는 사실과 다른 판정 근거가 기록되어 표제어 및 실제 표기와 모순된다."
+  },
+  {
+    "strong": "G3955",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ῥ는 흐르 계열을 기본으로 표기",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+    "evidence": "WORKER_SPEC.md의 어두 ῥ 규칙(배포 선례는 레마·레오·뤼오마이·라비로 흐를 붙이지 않음); 현재 translitKo 파르레시아조마이",
+    "severity": "medium",
+    "reason": "현재 표기는 흐르 계열이 아닌데 note는 ῥ에 흐르 계열을 기본으로 표기한다고 설명해 표기와 note가 모순된다."
+  },
+  {
+    "strong": "G4496",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. ῥ는 흐르 계열을 기본으로 표기",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다.",
+    "evidence": "WORKER_SPEC.md의 어두 ῥ 규칙; .pipeline/task16/AUDIT_DECISION.md의 G4496 리프토 선례 및 현재 translitKo 리프토",
+    "severity": "medium",
+    "reason": "규칙 적용으로 현재 표기는 리프토로 흐를 붙이지 않게 되었는데 note는 여전히 흐르 계열을 기본으로 표기한다고 하므로 표기와 note가 모순된다."
+  },
+  {
+    "strong": "G1628",
+    "field": "translitKo",
+    "current": "에크페브고",
+    "suggested": "에크퓨고",
+    "evidence": "WORKER_SPEC.md의 헬라어 ευ 규칙(배포된 사전 38개가 예외 없이 유 계열); 배포 선례 및 .pipeline/task16/AUDIT_DECISION.md의 ευ 판정",
+    "severity": "high",
+    "reason": "현재 표기는 ευ를 에브로 적어 확정된 유 계열 배포 규칙과 어긋난다. (규칙 적용 누락)"
+  },
+  {
+    "strong": "G1628",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). ευ 뒤에 유성음 γ가 오므로 에브로 표기",
+    "suggested": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치).",
+    "evidence": "WORKER_SPEC.md의 헬라어 ευ 규칙; .pipeline/task16/AUDIT_DECISION.md의 ευ 관련 배포 선례 판정",
+    "severity": "high",
+    "reason": "note가 에브 표기를 정당화하지만 배포 기준은 ευ를 유 계열로 고정하므로 현재 표기와 근거가 모두 기준과 모순된다."
+  }
+]

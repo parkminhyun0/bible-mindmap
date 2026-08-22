@@ -1,0 +1,103 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "G3198",
+      "translit": "Melchisedék",
+      "translitKo": "멜키세데크",
+      "evidence": "koreanGlossTopBatch07 G2464(Ἰσαάκ→이사아크)·Batch06 G2384(Ἰακώβ→이아코브)·Batch05 G2501(Ἰωσήφ→이오세프)·Batch04 G1138(Δαβίδ→다비드)·Batch01 G1537(ἐκ→에크) 등 헬라어 어말 파열음 자음(κ, β, φ, δ)에 'ㅡ' 모음을 붙여 음절을 완성하는 SBL 학술 음역 배포 선례 준수",
+      "note": "한국어 성경 관용 표기는 '멜기세덱'이다. 학술 표기(Melchisedék)를 표제로 두었다."
+    },
+    {
+      "strong": "H6720",
+      "translit": "ṣêdâ",
+      "translitKo": "체다",
+      "evidence": "WORKER_SPEC 규칙 1(베가드케파트 ḏ→d, 어말 he ָה→â) 및 koreanGlossActive/Batch05 H374(ʾêpâ→에파)·H2436(ḥêq→헤크)·Batch06 H5867(ʿêlām→엘람)·H6413(pĕlêṭâ→펠레타)·Batch07 H343(ʾêd→에드)·H8486(têmān→테만) 등 tsere-yod(ê)를 '에' 단일 음절로 적는 46건의 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "H7633",
+      "translit": "šibyâ",
+      "translitKo": "시브야",
+      "evidence": "WORKER_SPEC 규칙 3(뒤에 모음이 오면 음절 첫소리 샤/셰/시/쇼/슈) 및 koreanGlossActive/Batch03 H7657(šibʿîm→시브임)·Batch04 H8198(šipḥâ→시프하)·H8346(šiššîm→시심)·Batch06 H8251(šiqqûṣ→시쿠츠)·H7848(šiṭṭâ→시타) 등 히브리어 שִׁ(š+i)를 '시'로 적는 44건의 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "H7128",
+      "translit": "qĕrāb",
+      "translitKo": "케라브",
+      "evidence": "WORKER_SPEC 규칙 1(연음 ḇ→b) 및 koreanGlossTopBatch06 H7045(qĕlālâ→켈랄라)·H6955(qĕhāt→케하트)·H6903(qĕbēl→케벨)·Batch08 H7086(qĕʿārâ→케아라)·Batch09 H6900(qĕbûrâ→케부라) 등 히브리어 유성 쉐바(ĕ)를 '케'로 적는 배포 선례(208건 ĕ 표기 선례) 일치",
+      "note": ""
+    },
+    {
+      "strong": "H8359",
+      "translit": "šĕtî",
+      "translitKo": "셰티",
+      "evidence": "koreanGlossTopBatch02 H8147(šĕnayim→셰나임)·H8010(šĕlōmōh→셸로모)·Batch03 H8050(šĕmûʾēl→셰무엘)·H8083(šĕmōneh→셰모네)·Batch04 H7611(šĕʾērît→셰에리트)·H7927(šĕkem→셰켐)·Batch06 H7622(šĕbût→셰부트)·H7621(šĕbûʿâ→셰부아) 등 어두 שְׁ(š+ĕ)를 예외 없이 '셰'로 적는 25건의 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "G2782",
+      "translit": "kḗrygma",
+      "translitKo": "케뤼그마",
+      "evidence": "koreanGlossTopBatch04 G2784(κηρύσσω/kērýssō→케뤼소)의 동일 어근 직결 선례 및 WORKER_SPEC 표기 원칙(υ는 위 계열), Batch03 G622(apóllymi→아폴뤼미)·Batch04 G4245(presbýteros→프레스뷔테로스)·G2414(Hierosólyma→히에로솔뤼마)·Batch09 G3464(mýron→뮈론) 등 헬라어 υ를 '위/뤼/튀/퓔'로 적는 79건의 배포 선례 일치",
+      "note": "한국어 성경 및 신학적 관용 표기는 '케리그마'다. 배포 선례(G2784 κηρύσσω→케뤼소) 및 υ 표기 규칙에 따라 케뤼그마로 표기했다."
+    },
+    {
+      "strong": "G1628",
+      "translit": "ekpheúgō",
+      "translitKo": "엑퓨고",
+      "evidence": "koreanGlossTopBatch06 G5343(φεύγω/pheúgō→퓨고, 'ευ는 유 계열 선례 따름') 직결 선례 및 Batch08 G1614(ἐκτείνω/ekteínō→엑테이노)·Batch05 G4335(προσευχή/proseuchḗ→프로슈케) 등 자음 앞 ἐκ-의 받침 표기와 자음 뒤 ευ의 '유(퓨)' 융합 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "G3177",
+      "translit": "methermēneúō",
+      "translitKo": "메테르메뉴오",
+      "evidence": "koreanGlossTopBatch07 G3421(μνημονεύω/mnēmoneúō→므네모뉴오)의 동일한 -νεύω 선례 및 Batch02 G4100(pisteúō→피스튜오)·Batch05 G2323(therapeúō→테라퓨오)·Batch06 G1955(keleúō→켈류오)·Batch07 G1118(goneús→고뉴스)·G1707(nēsteúō→네스튜오) 등 자음 뒤 -εύω를 '-뉴오/-튜오/-류오'로 적는 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "G4753",
+      "translit": "stráteuma",
+      "translitKo": "스트라튜마",
+      "evidence": "koreanGlossTopBatch01 G4151(πνεῦμα/pneûma→프뉴마)·Batch05 G2518(καθεύδω/katheúdō→카튜도, '배포 선례 폴리튜마·듀테란처럼 자음+ευ를 앞 자음에 붙임')·Batch02 G4100(pisteúō→피스튜오)·Batch08 G1122(grammateús→그람마튜스) 등 -τευ-를 '튜'로 적는 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "G2135",
+      "translit": "eunoûchos",
+      "translitKo": "유누코스",
+      "evidence": "koreanGlossTopBatch03 G2098(εὐαγγέλιον/euangélion→유앙겔리온)·Batch05 G2127(εὐλογέω/eulogéō→율로게오)·G2168(εὐχαριστέω/eucharistéō→유카리스테오)·Batch07 G2106(εὐδοκέω/eudokéō→유도케오, '헬라어 이중모음 ευ는 원칙에 따라 유 계열로 적음')·Batch09 G2150(εὐσέβεια/eusébeia→유세베이아) 등 어두 εὐ-를 '유'로 적는 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "G3017",
+      "translit": "Leuḯ",
+      "translitKo": "레우이",
+      "evidence": "트레마(분음 부호 ῐ)로 인해 이중모음이 아닌 독립 모음 음절(Le-u-i)로 분리되는 헬라어 표제형 SBL 학술 음역 규칙 및 koreanGlossTopBatch02 H3881(lēwiyyî→레위이)·Batch03 H7205(rĕʾûbēn→레우벤)·Batch07 G2464(Isaák→이사아크, '학술 표기는 세 음절을 그대로 적음') 선례 일치",
+      "note": "한국어 성경(개역개정) 관용 표기는 '레위'다. 헬라어 표제형(Λευΐ, 분음 부호 포함)의 학술 표기는 레우이다."
+    },
+    {
+      "strong": "G1147",
+      "translit": "dáktylos",
+      "translitKo": "닥튈로스",
+      "evidence": "koreanGlossTopBatch08 G5088(τίκτω/tíktō→틱토)·G1614(ἐκτείνω/ekteínō→엑테이노)·G5180(τύπτω/týptō→튑토)·Batch07 G3900(paráptōma→파랍토마)·Batch04 G5438(phylakḗ→퓔라케) 등 헬라어 폐음절 파열음(κ/π)의 받침 닫힘 및 υ='위' 배포 선례 일치",
+      "note": ""
+    },
+    {
+      "strong": "H3396",
+      "translit": "yəraḥməʾēl",
+      "translitKo": "예라흐메엘",
+      "evidence": "koreanGlossTopBatch03 H3414(yirmĕyâ→이르메야)·H8111(šōmĕrôn→쇼메론)·Batch05 H4847(mĕrārî→메라리)·H4918(mĕšullām→메슐람)·H5417(nĕtanʾēl→네탄엘)·Batch07 H3273(yĕʿîʾēl→예이엘)·H3171(yĕḥîʾēl→예히엘) 등 מְ(mĕ/mə)의 '메' 음역 및 -אֵל(-ʾēl)의 '-엘' 결합 배포 선례 일치",
+      "note": "개역개정 관용 표기는 '여라무엘'(또는 여라므엘)이다. 히브리어 표제형(יְרַחְמְאֵל)의 학술 음역은 예라흐메엘이다."
+    },
+    {
+      "strong": "H1049",
+      "translit": "bêt ṣûr",
+      "translitKo": "베트 추르",
+      "evidence": "koreanGlossTopBatch03 H1008(bêt-ʾēl→베트엘, 'ê는 에 한 음절, ת의 트를 붙여 베트')·H1035(bêt leḥem→베트 레헴)·Batch06 H1032(Bêt Ḥôrôn→베트 호론)·Batch08 H1052(bêt šĕʾān→베트 셰안)·Batch09 H1007(bêt ʾāwen→베트 아웬) 등 בֵּית 복합 지명을 '베트'로 통일한 5건의 배포 선례 일치",
+      "note": "개역개정 관용 표기는 '벧술'이다. 배포 선례(베트엘·베트 레헴·베트 호론·베트 셰안·베트 아웬)에 따라 בֵּית를 '베트'로 적고 학술 표기를 표제로 두었다."
+    }
+  ]
+}
