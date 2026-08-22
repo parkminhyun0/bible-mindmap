@@ -1,0 +1,108 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 0,
+  "ties": [],
+  "rulings": [
+    {
+      "strong": "H4968",
+      "lemma": "מְתוּשֶׁלַח",
+      "translit": "mĕtûšelaḥ",
+      "translitKo": "메투셸라흐",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 「므두셀라」다. 표제는 학술 표기를 쓴다."
+    },
+    {
+      "strong": "H283",
+      "lemma": "אַחְיוֹ",
+      "translit": "ʾaḥyô",
+      "translitKo": "아흐요",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 아효다. 학술 표기는 음절말 ח를 '흐'로 살려 아흐요로 표기한다."
+    },
+    {
+      "strong": "H8060",
+      "lemma": "שַׁמַּי",
+      "translit": "šammay",
+      "translitKo": "샤마이",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 학술 표기는 샤마이다. 개역개정 관용 표기는 삼매다. 다게쉬 포르테(mm)는 규칙 2에 따라 받침으로 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "H634",
+      "lemma": "אֵסַר־חַדּוֹן",
+      "translit": "ʾēsar-ḥaddôn",
+      "translitKo": "에사르하돈",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 에살핫돈이다. 마카프(-)로 이어진 왕 이름으로 학술 표기는 에사르하돈이다."
+    },
+    {
+      "strong": "H5050",
+      "lemma": "נָגַהּ",
+      "translit": "nāgah",
+      "translitKo": "나가흐",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 같은 어근의 명사 H5051 nōgah 는 배포에 「노가」로 들어가 있다. 동사인 이 항목은 가바흐·타마흐 계열을 따른다."
+    },
+    {
+      "strong": "H5572",
+      "lemma": "סְנֶה",
+      "translit": "sĕneh",
+      "translitKo": "세네",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 유성 쉐바(sĕ-)는 배포 선례(세돔·세아·세굴라)에 따라 '세'로 적는다."
+    },
+    {
+      "strong": "H3882",
+      "lemma": "לִוְיָתָן",
+      "translit": "liwyātān",
+      "translitKo": "리우야탄",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 배포된 contextChapterCardsJob·Isa·Ps3 는 관용 표기 「리워야단」을 쓴다. 표제는 학술 표기를 쓰고 관용은 문맥 카드 쪽에 남는다."
+    }
+  ]
+}

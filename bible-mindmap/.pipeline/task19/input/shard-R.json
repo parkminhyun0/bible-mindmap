@@ -1,0 +1,906 @@
+{
+  "shard": "R",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G2859",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "κόλπος",
+      "translit": "kólpos",
+      "glossEn": "bosom, creek",
+      "defEn": "the bosom; by analogy, a bay"
+    },
+    {
+      "strong": "G4446",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "πυρετός",
+      "translit": "pyretós",
+      "glossEn": "fever",
+      "defEn": "inflamed, i.e. (by implication) feverish (as noun, fever)"
+    },
+    {
+      "strong": "G3346",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "μετατίθημι",
+      "translit": "metatíthēmi",
+      "glossEn": "carry over, change, remove, translate, turn",
+      "defEn": "to transfer, i.e. (literally) transport, (by implication) exchange, (reflexively) change sides, or (figuratively) pervert"
+    },
+    {
+      "strong": "G5395",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "φλόξ",
+      "translit": "phlóx",
+      "glossEn": "flame(-ing)",
+      "defEn": "a blaze"
+    },
+    {
+      "strong": "G3906",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "παρατηρέω",
+      "translit": "paratēréō",
+      "glossEn": "observe, watch",
+      "defEn": "to inspect alongside, i.e. note insidiously or scrupulously"
+    },
+    {
+      "strong": "G2993",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "Λαοδίκεια",
+      "translit": "Laodíkeia",
+      "glossEn": "Laodicea",
+      "defEn": "Laodicia, a place in Asia Minor"
+    },
+    {
+      "strong": "G5311",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ὕψος",
+      "translit": "hýpsos",
+      "glossEn": "be exalted, height, (on) high",
+      "defEn": "elevation, i.e. (abstractly) altitude, (specially), the sky, or (figuratively) dignity"
+    },
+    {
+      "strong": "G4024",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "περιζώννυμι",
+      "translit": "perizṓnnymi",
+      "glossEn": "gird (about, self)",
+      "defEn": "to gird all around, i.e. (middle voice or passive) to fasten on one's belt (literally or figuratively)"
+    },
+    {
+      "strong": "G3353",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "μέτοχος",
+      "translit": "métochos",
+      "glossEn": "fellow, partaker, partner",
+      "defEn": "participant, i.e. (as noun) a sharer; by implication, an associate"
+    },
+    {
+      "strong": "G206",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἄκρον",
+      "translit": "ákron",
+      "glossEn": "one end… other, tip, top, uttermost participle",
+      "defEn": "the extremity"
+    },
+    {
+      "strong": "G4693",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "σπήλαιον",
+      "translit": "spḗlaion",
+      "glossEn": "cave, den",
+      "defEn": "a cavern; by implication, a hiding-place or resort"
+    },
+    {
+      "strong": "G3448",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "μόσχος",
+      "translit": "móschos",
+      "glossEn": "calf",
+      "defEn": "a young bullock"
+    },
+    {
+      "strong": "G4930",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "συντέλεια",
+      "translit": "syntéleia",
+      "glossEn": "end",
+      "defEn": "entire completion, i.e. consummation (of a dispensation)"
+    },
+    {
+      "strong": "G3007",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "λείπω",
+      "translit": "leípō",
+      "glossEn": "be destitute (wanting), lack",
+      "defEn": "to leave, i.e. (intransitively or passively) to fail or be absent"
+    },
+    {
+      "strong": "G2328",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "θερμαίνω",
+      "translit": "thermaínō",
+      "glossEn": "(be) warm(-ed, self)",
+      "defEn": "to heat (oneself)"
+    },
+    {
+      "strong": "G2672",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "καταράομαι",
+      "translit": "kataráomai",
+      "glossEn": "curse",
+      "defEn": "to execrate; by analogy, to doom"
+    },
+    {
+      "strong": "G3482",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "Ναθαναήλ",
+      "translit": "Nathanaḗl",
+      "glossEn": "Nathanael",
+      "defEn": "Nathanaël (i.e. Nathanel), an Israelite and Christian"
+    },
+    {
+      "strong": "G5176",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "τρώγω",
+      "translit": "trṓgō",
+      "glossEn": "eat",
+      "defEn": "or perhaps rather of a base of G5167 (τρυγών) and G5149 (τρίζω) through the idea of a craunching sound; to gnaw or chew, i.e. (generally) to eat"
+    },
+    {
+      "strong": "G3904",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "παρασκευή",
+      "translit": "paraskeuḗ",
+      "glossEn": "preparation",
+      "defEn": "readiness"
+    },
+    {
+      "strong": "G3690",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ὄξος",
+      "translit": "óxos",
+      "glossEn": "vinegar",
+      "defEn": "vinegar, i.e. sour wine"
+    },
+    {
+      "strong": "G2894",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "κόφινος",
+      "translit": "kóphinos",
+      "glossEn": "basket",
+      "defEn": "a (small) basket"
+    },
+    {
+      "strong": "G4081",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "πηλός",
+      "translit": "pēlós",
+      "glossEn": "clay",
+      "defEn": "clay"
+    },
+    {
+      "strong": "G4082",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "πήρα",
+      "translit": "pḗra",
+      "glossEn": "scrip",
+      "defEn": "a wallet or leather pouch for food"
+    },
+    {
+      "strong": "G2807",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "κλείς",
+      "translit": "kleís",
+      "glossEn": "key",
+      "defEn": "a key (as shutting a lock), literally or figuratively"
+    },
+    {
+      "strong": "G596",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἀποθήκη",
+      "translit": "apothḗkē",
+      "glossEn": "barn, garner",
+      "defEn": "a repository, i.e. granary"
+    },
+    {
+      "strong": "G347",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἀνακλίνω",
+      "translit": "anaklínō",
+      "glossEn": "lay, (make) sit down",
+      "defEn": "to lean back"
+    },
+    {
+      "strong": "G3994",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "πενθερά",
+      "translit": "pentherá",
+      "glossEn": "mother in law, wife's mother",
+      "defEn": "a wife's mother"
+    },
+    {
+      "strong": "G589",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἀποδημέω",
+      "translit": "apodēméō",
+      "glossEn": "go (travel) into a far country, journey",
+      "defEn": "to go abroad, i.e. visit a foreign land"
+    },
+    {
+      "strong": "G946",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "βδέλυγμα",
+      "translit": "bdélygma",
+      "glossEn": "abomination",
+      "defEn": "a detestation, i.e. (specially) idolatry"
+    },
+    {
+      "strong": "G5576",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ψευδομαρτυρέω",
+      "translit": "pseudomartyréō",
+      "glossEn": "be a false witness",
+      "defEn": "to be an untrue testifier, i.e. offer falsehood in evidence"
+    },
+    {
+      "strong": "G2574",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "κάμηλος",
+      "translit": "kámēlos",
+      "glossEn": "camel",
+      "defEn": "a \"camel\""
+    },
+    {
+      "strong": "G1716",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἐμπτύω",
+      "translit": "emptýō",
+      "glossEn": "spit (upon)",
+      "defEn": "to spit at or on"
+    },
+    {
+      "strong": "G4616",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "σινδών",
+      "translit": "sindṓn",
+      "glossEn": "(fine) linen (cloth)",
+      "defEn": "byssos, i.e. bleached linen (the cloth or a garment of it)"
+    },
+    {
+      "strong": "G2266",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "Ἡρωδιάς",
+      "translit": "Hērōdiás",
+      "glossEn": "Herodias",
+      "defEn": "Herodias, a woman of the Heodian family"
+    },
+    {
+      "strong": "G2595",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "κάρφος",
+      "translit": "kárphos",
+      "glossEn": "mote",
+      "defEn": "a dry twig or straw"
+    },
+    {
+      "strong": "G1385",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "δοκός",
+      "translit": "dokós",
+      "glossEn": "beam",
+      "defEn": "a stick of timber"
+    },
+    {
+      "strong": "G5444",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "φύλλον",
+      "translit": "phýllon",
+      "glossEn": "leaf",
+      "defEn": "a sprout, i.e. leaf"
+    },
+    {
+      "strong": "G3677",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ὄναρ",
+      "translit": "ónar",
+      "glossEn": "dream",
+      "defEn": "a dream"
+    },
+    {
+      "strong": "G3667",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ὁμοίωμα",
+      "translit": "homoíōma",
+      "glossEn": "made like to, likeness, shape, similitude",
+      "defEn": "a form; abstractly, resemblance"
+    },
+    {
+      "strong": "G929",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "βασανισμός",
+      "translit": "basanismós",
+      "glossEn": "torment",
+      "defEn": "torture"
+    },
+    {
+      "strong": "G1461",
+      "lang": "greek",
+      "count": 6,
+      "lemma": "ἐγκεντρίζω",
+      "translit": "enkentrízō",
+      "glossEn": "graff in(-to)",
+      "defEn": "to prick in, i.e. ingraft"
+    },
+    {
+      "strong": "H7018",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "קֵינָן",
+      "translit": "",
+      "glossEn": "Cainan, Kenan.",
+      "defEn": "Kenan, an antediluvian"
+    },
+    {
+      "strong": "H4968",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "מְתוּשֶׁלַח",
+      "translit": "",
+      "glossEn": "Methuselah.",
+      "defEn": "Methushelach, an antediluvian patriarch"
+    },
+    {
+      "strong": "H1586",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גֹּמֶר",
+      "translit": "",
+      "glossEn": "Gomer.",
+      "defEn": "Gomer, the name of a son of Japheth and of his descendants; also of a Hebrewess"
+    },
+    {
+      "strong": "H3355",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "יׇקְטָן",
+      "translit": "",
+      "glossEn": "Joktan.",
+      "defEn": "Joktan, an Arabian patriarch"
+    },
+    {
+      "strong": "H8555",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תִּמְנָע",
+      "translit": "",
+      "glossEn": "Timna, Timnah.",
+      "defEn": "Timna, the name of two Edomites"
+    },
+    {
+      "strong": "H345",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אַיָּה",
+      "translit": "",
+      "glossEn": "Aiah, Ajah.",
+      "defEn": "Ajah, the name of two Israelites"
+    },
+    {
+      "strong": "H4407",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "מִלּוֹא",
+      "translit": "",
+      "glossEn": "Millo. See also H1037 (בֵּית מִלּוֹא).",
+      "defEn": "a rampart (as filled in), i.e. the citadel"
+    },
+    {
+      "strong": "H5896",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עִירָא",
+      "translit": "",
+      "glossEn": "Ira.",
+      "defEn": "Ira, the name of three Israelites"
+    },
+    {
+      "strong": "H1905",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "הַגְרִי",
+      "translit": "",
+      "glossEn": "Hagarene, Hagarite, Haggeri.",
+      "defEn": "a Hagrite or member of a certain Arabian clan"
+    },
+    {
+      "strong": "H3043",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "יְדִיעֲאֵל",
+      "translit": "",
+      "glossEn": "Jediael.",
+      "defEn": "Jediael, the name of three Israelites"
+    },
+    {
+      "strong": "H295",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אֲחִיעֶזֶר",
+      "translit": "",
+      "glossEn": "Ahiezer.",
+      "defEn": "Achiezer, the name of two Israelites"
+    },
+    {
+      "strong": "H3166",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "יַחֲזִיאֵל",
+      "translit": "",
+      "glossEn": "Jahaziel, Jahziel.",
+      "defEn": "Jachaziel, the name of five Israelites"
+    },
+    {
+      "strong": "H5832",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עֲזַרְאֵל",
+      "translit": "",
+      "glossEn": "Azarael, Azareel.",
+      "defEn": "Azarel, the name of five Israelites"
+    },
+    {
+      "strong": "H1173",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "בַּעֲלָה",
+      "translit": "",
+      "glossEn": "Baalah.",
+      "defEn": "Baalah, the name of three places in Palestine"
+    },
+    {
+      "strong": "H283",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אַחְיוֹ",
+      "translit": "",
+      "glossEn": "Ahio.",
+      "defEn": "Achio, the name of three Israelites"
+    },
+    {
+      "strong": "H469",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אֱלִיצָפָן",
+      "translit": "",
+      "glossEn": "Elizaphan, Elzaphan.",
+      "defEn": "Elitsaphan or Eltsaphan, an Israelite"
+    },
+    {
+      "strong": "H2690",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "חָצַר",
+      "translit": "",
+      "glossEn": "blow, sound, trumpeter.",
+      "defEn": "to trumpet, i.e. blow on that instrument"
+    },
+    {
+      "strong": "H3226",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "יָמִין",
+      "translit": "",
+      "glossEn": "Jamin. See also H1144 (בִּנְיָמִין).",
+      "defEn": "Jamin, the name of three Israelites"
+    },
+    {
+      "strong": "H8060",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "שַׁמַּי",
+      "translit": "",
+      "glossEn": "Shammai.",
+      "defEn": "Shammai, the name of three Israelites"
+    },
+    {
+      "strong": "H32",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אֲבִיהַיִל",
+      "translit": "",
+      "glossEn": "Abihail.",
+      "defEn": "Abihail or Abichail, the name of three Israelites and two Israelitesses"
+    },
+    {
+      "strong": "H501",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אֶלְעָשָׂה",
+      "translit": "",
+      "glossEn": "Elasah, Eleasah.",
+      "defEn": "Elasah, the name of four Israelites"
+    },
+    {
+      "strong": "H8599",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תַּפּוּחַ",
+      "translit": "",
+      "glossEn": "Tappuah.",
+      "defEn": "Tappuach, the name of two places in Palestine, also of an Israelite"
+    },
+    {
+      "strong": "H7552",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "רֶקֶם",
+      "translit": "",
+      "glossEn": "Rekem.",
+      "defEn": "Rekem, the name of a place in Palestine, also of a Midianite and an Israelite"
+    },
+    {
+      "strong": "H1555",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גׇּלְיַת",
+      "translit": "",
+      "glossEn": "Goliath.",
+      "defEn": "Goljath, a Philistine"
+    },
+    {
+      "strong": "H7619",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "שְׁבוּאֵל",
+      "translit": "",
+      "glossEn": "Shebuel, Shubael.",
+      "defEn": "Shebuel or Shubael, the name of two Israelites"
+    },
+    {
+      "strong": "H6976",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "קוֹץ",
+      "translit": "",
+      "glossEn": "Koz, Hakkoz (including the article).",
+      "defEn": "Kots, the name of two Israelites"
+    },
+    {
+      "strong": "H5988",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עַמִּיאֵל",
+      "translit": "",
+      "glossEn": "Ammiel.",
+      "defEn": "Ammiel, the name of three or four Israelites"
+    },
+    {
+      "strong": "H2276",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "חֶבְרוֹנִי",
+      "translit": "",
+      "glossEn": "Hebronites.",
+      "defEn": "Chebronite (collectively), an inhabitant of Chebron"
+    },
+    {
+      "strong": "H2227",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "זַרְחִי",
+      "translit": "",
+      "glossEn": "Zarchite.",
+      "defEn": "a Zarchite or descendant of Zerach"
+    },
+    {
+      "strong": "H2067",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "זַבְדִּי",
+      "translit": "",
+      "glossEn": "Zabdi.",
+      "defEn": "Zabdi, the name of four Israelites"
+    },
+    {
+      "strong": "H757",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אַרְכִּי",
+      "translit": "",
+      "glossEn": "Archi, Archite.",
+      "defEn": "an Arkite or native of Erek"
+    },
+    {
+      "strong": "H1916",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "הֲדֹם",
+      "translit": "",
+      "glossEn": "(foot-) stool.",
+      "defEn": "a foot stool"
+    },
+    {
+      "strong": "H8526",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תַּלְמַי",
+      "translit": "",
+      "glossEn": "Talmai.",
+      "defEn": "Talmai, the name of a Canaanite and a Syrian"
+    },
+    {
+      "strong": "H5840",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עַזְרִיקָם",
+      "translit": "",
+      "glossEn": "Azrikam.",
+      "defEn": "Azrikam, the name of four Israelites"
+    },
+    {
+      "strong": "H851",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אֶשְׁתְּמֹעַ",
+      "translit": "",
+      "glossEn": "Eshtemoa, Eshtemoh.",
+      "defEn": "Eshtemoa or Eshtemoh, a place in Palestine"
+    },
+    {
+      "strong": "H8480",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תַּחַת",
+      "translit": "",
+      "glossEn": "Tahath.",
+      "defEn": "Tachath, the name of a place in the Desert, also of three Israelites"
+    },
+    {
+      "strong": "H4494",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "מָנוֹחַ",
+      "translit": "",
+      "glossEn": "(place of) rest.",
+      "defEn": "quiet, i.e. (concretely) a settled spot, or (figuratively) a home"
+    },
+    {
+      "strong": "H1551",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גָּלִיל",
+      "translit": "",
+      "glossEn": "Galilee.",
+      "defEn": "Galil (as a special circuit) in the North of Palestine"
+    },
+    {
+      "strong": "H8439",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תּוֹלָע",
+      "translit": "",
+      "glossEn": "Tola.",
+      "defEn": "Tola, the name of two Israelites"
+    },
+    {
+      "strong": "H4807",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "מְרִיב בַּעַל",
+      "translit": "",
+      "glossEn": "Merib-baal. Compare H4810 (מְרִי בַעַל).",
+      "defEn": "quarreller of Baal, Merib-Baal, an epithet of Gideon"
+    },
+    {
+      "strong": "H7888",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "שִׁילוֹנִי",
+      "translit": "",
+      "glossEn": "Shilonite.",
+      "defEn": "a Shilonite or inhabitant of Shiloh"
+    },
+    {
+      "strong": "H5543",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "סַלּוּ",
+      "translit": "",
+      "glossEn": "Sallai, Sallu, Salu.",
+      "defEn": "Sallu or Sallai, the name of two Israelites"
+    },
+    {
+      "strong": "H1521",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גִּיחוֹן",
+      "translit": "",
+      "glossEn": "Gihon.",
+      "defEn": "Gichon, a river of Paradise; also a valley (or pool) near Jerusalem"
+    },
+    {
+      "strong": "H2485",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "חָלִיל",
+      "translit": "",
+      "glossEn": "pipe.",
+      "defEn": "a flute (as perforated)"
+    },
+    {
+      "strong": "H6152",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עֲרָב",
+      "translit": "",
+      "glossEn": "Arabia.",
+      "defEn": "Arab (i.e. Arabia), a country East of Palestine"
+    },
+    {
+      "strong": "H5696",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עָגֹל",
+      "translit": "",
+      "glossEn": "round.",
+      "defEn": "circular"
+    },
+    {
+      "strong": "H7675",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "שֶׁבֶת",
+      "translit": "",
+      "glossEn": "place, seat. Compare H3429 (יֹשֵׁב בַּשֶּׁבֶת).",
+      "defEn": "properly, session; but used also concretely, an abode or locality"
+    },
+    {
+      "strong": "H2209",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "זִקְנָה",
+      "translit": "",
+      "glossEn": "old (age).",
+      "defEn": "old age"
+    },
+    {
+      "strong": "H1377",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גְּבִירָה",
+      "translit": "",
+      "glossEn": "queen.",
+      "defEn": "a mistress"
+    },
+    {
+      "strong": "H6137",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "עַקְרָב",
+      "translit": "",
+      "glossEn": "scorpion.",
+      "defEn": "a scorpion; figuratively, a scourge or knotted whip"
+    },
+    {
+      "strong": "H4991",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "מַתָּת",
+      "translit": "",
+      "glossEn": "gift.",
+      "defEn": "a present"
+    },
+    {
+      "strong": "H8366",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "שָׁתַן",
+      "translit": "",
+      "glossEn": "piss.",
+      "defEn": "(causatively) to make water, i.e. urinate"
+    },
+    {
+      "strong": "H1405",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "גִּבְּתוֹן",
+      "translit": "",
+      "glossEn": "Gibbethon.",
+      "defEn": "Gibbethon, a place in Palestine"
+    },
+    {
+      "strong": "H8664",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "תִּשְׁבִּי",
+      "translit": "",
+      "glossEn": "Tishbite.",
+      "defEn": "a Tishbite or inhabitant of Tishbeh (in Gilead)"
+    },
+    {
+      "strong": "H3897",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "לָחַךְ",
+      "translit": "",
+      "glossEn": "lick (up).",
+      "defEn": "to lick"
+    },
+    {
+      "strong": "H7028",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "קִישׁוֹן",
+      "translit": "",
+      "glossEn": "Kishon, Kison.",
+      "defEn": "Kishon, a river of Palestine"
+    },
+    {
+      "strong": "H65",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אָבֵל מְחוֹלָה",
+      "translit": "",
+      "glossEn": "Abel-meholah.",
+      "defEn": "Abel-Mecholah, a place in Palestine"
+    },
+    {
+      "strong": "H328",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "אַט",
+      "translit": "",
+      "glossEn": "charmer, gently, secret, softly.",
+      "defEn": "(as a noun) a necromancer (from their soft incantations), (as an adverb) gently"
+    },
+    {
+      "strong": "H6458",
+      "lang": "hebrew",
+      "count": 6,
+      "lemma": "פָּסַל",
+      "translit": "",
+      "glossEn": "grave, hew.",
+      "defEn": "to carve, whether wood or stone"
+    }
+  ]
+}
