@@ -1,0 +1,24 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H6450","translit":"pas dammîm","translitKo":"파스 담밈","evidence":"src/data/koreanGlossTopBatch02.js의 다게쉬 포르테 비중복 선례(아타·카포레트)와 두 요소를 띄어 쓰는 배포 표기","note":""},
+    {"strong":"H3613","translit":"kālēḇ ʾephrāṯāh","translitKo":"칼레브 에프라타","evidence":"src/data/koreanGlossTopBatch03.js의 학술 표기 베트엘·베트 레헴 선례와 b 표기의 배포 일관성","note":"관용 표기 갈렙 에브라다와 달리 학술 표기를 따른다."},
+    {"strong":"H4089","translit":"madmannāh","translitKo":"마드만나","evidence":"src/data/koreanGlossTopBatch02.js 및 TopBatch10.js의 다게쉬 포르테 비중복 선례","note":""},
+    {"strong":"H1013","translit":"bêt-gādēr","translitKo":"베트 가데르","evidence":"src/data/koreanGlossTopBatch03.js의 베트엘·베트 레헴 및 src/data/koreanGlossTopBatch13.js의 베트 페오르 선례","note":"마케프는 라틴 붙임표를 유지하고 한글은 베트 구성 표기에 따른다."},
+    {"strong":"H1011","translit":"bêt birʾî","translitKo":"베트 비르아이","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch06.js의 בֵּית→베트 선례와 src/data/koreanGlossGenesis1Batch02.js의 묵음 א 처리","note":""},
+    {"strong":"H2712","translit":"ḥuqqōq","translitKo":"후콕","evidence":"src/data/koreanGlossTopBatch02.js 및 TopBatch10.js의 다게쉬 포르테 비중복 선례","note":""},
+    {"strong":"H2540","translit":"ḥammôn","translitKo":"함몬","evidence":"src/data/koreanGlossTopBatch02.js 및 TopBatch10.js의 다게쉬 포르테 비중복 선례","note":""},
+    {"strong":"H658","translit":"ʾepes dammîm","translitKo":"에페스 담밈","evidence":"src/data/koreanGlossTopBatch02.js의 다게쉬 포르테 비중복 선례와 두 요소를 띄어 쓰는 배포 표기","note":""},
+    {"strong":"H5555","translit":"selaʿ hammaḥlĕqôt","translitKo":"셀라 함마흘레코트","evidence":"src/data/koreanGlossTopBatch10.js의 마흘리 선례와 src/data/koreanGlossTopBatch13.js의 음절 말 שׁ→쉬 선례","note":"관용 표기 셀라하마흘곳과 달리 학술 표기를 따른다."},
+    {"strong":"H1485","translit":"gûr-baʿal","translitKo":"구르바알","evidence":"src/data/koreanGlossTopBatch16.js의 마케프로 이어진 이름을 붙여 적는 선례와 src/data/koreanGloss.js의 ע 처리 선례","note":"마케프는 한글에서 붙여 적고 ע는 별도 음가로 적지 않는다."},
+    {"strong":"H2431","translit":"ḥēlām","translitKo":"헬람","evidence":"src/data/koreanGlossTopBatch03.js의 bên→벤·베트엘 선례 및 src/data/koreanGlossTopBatch15.js의 엔도르 선례","note":""},
+    {"strong":"H4917","translit":"mišlaḥat","translitKo":"미쉬라하트","evidence":"src/data/koreanGloss.js의 mišpāṭ→미쉬파트 및 src/data/koreanGlossTopBatch13.js의 음절 말 שׁ→쉬 선례","note":""},
+    {"strong":"H6255","translit":"ʿaštĕrōt qarnayim","translitKo":"아쉬테로트 카르나임","evidence":"src/data/koreanGlossTopBatch10.js의 ʿaštārôt→아쉬타로트 및 src/data/koreanGlossTopBatch13.js의 음절 말 שׁ→쉬 선례","note":"관용 표기 아스드롯 가르나임과 달리 학술 표기를 따른다."},
+    {"strong":"H5880","translit":"ʿên mišpāṭ","translitKo":"엔 미쉬파트","evidence":"src/data/koreanGlossTopBatch15.js의 엔도르 선례와 src/data/koreanGloss.js의 mišpāṭ→미쉬파트 선례","note":""},
+    {"strong":"G1464","translit":"enkopḗ","translitKo":"엥코페","evidence":"src/data/koreanGlossTopBatch04.js·TopBatch16.js의 γγ→앙겔·앞 음절 받침 ㅇ 선례","note":"γ к 결합의 비음화를 배포 선례에 맞췄다."},
+    {"strong":"G2585","translit":"kapēleúō","translitKo":"카펠류오","evidence":"src/data/koreanGlossTopBatch15.js의 ευ→유 계열 한 음절 원칙 및 src/data/bookContext.js의 유앙겔리온 선례","note":""},
+    {"strong":"G5232","translit":"hyperauxánō","translitKo":"휘페라욱사노","evidence":"src/data/koreanGlossTopBatch07.js의 αὐξάνω→아욱사노 선례","note":""},
+    {"strong":"G4725","translit":"stémma","translitKo":"스템마","evidence":"src/data/koreanGlossTopBatch09.js의 γράμμα→그람마 선례","note":""},
+    {"strong":"G4543","translit":"Samothráikē","translitKo":"사모트라케","evidence":"src/data/koreanGloss.js 및 관련 배포 사전의 학술 그리스어 음역 원칙","note":"관용 표기 사모드라게와 달리 학술 표기를 따른다."}
+  ]
+}
