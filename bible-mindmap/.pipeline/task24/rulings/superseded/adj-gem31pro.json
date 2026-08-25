@@ -1,0 +1,16 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"엑테네이아","evidence":"배포 헬라어 선례의 k 계열 표기와 -eia 표기를 따른다.","note":""},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉰알라소","evidence":"배포 선례의 υ 위 계열과 명세의 σσ 중복자음 비중첩 원칙을 따른다.","note":""},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"배포 헬라어 선례의 ps 표기와 단어 말 -ios 음역을 따른다.","note":""},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷧소스","evidence":"배포 선례의 υ 위 계열과 σσ 중복자음 비중첩 원칙을 따른다.","note":""},
+    {"strong":"H1009","translit":"bêt ʾarbēʾēl","translitKo":"베트 아르베엘","evidence":"배포 히브리어의 bêt 표기와 א의 학술 음역을 유지한다.","note":"한국어 관용 표기 ‘벧아르벨’과 달리 학술 표기를 표제로 삼았다."},
+    {"strong":"H8112","translit":"šimrôn merʾôn","translitKo":"심론 메론","evidence":"배포 선례의 š 음절 표기와 어말 후음·א의 학술 표기를 따른다.","note":"한국어 관용 표기 ‘시므론 므론’과 달리 학술 음역을 따른다."},
+    {"strong":"H2995","translit":"yabnĕʾēl","translitKo":"야브네엘","evidence":"배포 히브리어의 e 계열과 א의 학술 음역을 따른다.","note":"한국어 관용 표기 ‘얍느엘’과 달리 학술 음역을 따른다."},
+    {"strong":"H1034","translit":"bêt lĕbāʾôt","translitKo":"베트 르바오트","evidence":"배포 bêt 선례와 לְ의 약모음 르, ו의 오 계열 표기를 따른다.","note":"한국어 관용 표기 ‘벧르바옷’과 달리 학술 음역을 따른다."},
+    {"strong":"H1192","translit":"baʿălat Bĕʾēr","translitKo":"발라트 브에르","evidence":"배포 선례의 ע 비표기, 다게쉬 비중첩, בֵּאֵר 계열 ‘브에르’ 표기를 따른다.","note":"한국어 관용 표기 ‘바알랏브에르’와 달리 ע를 한글로 따로 적지 않았다."},
+    {"strong":"H514","translit":"ʾEltĕqēʾ","translitKo":"엘트케","evidence":"배포 히브리어의 qē 케 표기와 어말 א의 학술 음역을 따른다.","note":"한국어 관용 표기 ‘엘드게’와 달리 학술 음역을 따른다."},
+    {"strong":"H1139","translit":"Bĕnê-Bĕraq","translitKo":"브네 브라크","evidence":"배포 bĕ 계열의 브 표기와 다게쉬 비중첩 원칙을 따른다.","note":"한국어 관용 표기 ‘브네브락’과 달리 구성요소를 학술 표기로 구분했다."}
+  ]
+}

@@ -1,0 +1,13 @@
+[
+  {"strong":"H2160","field":"translit","current":"zemîrâ","suggested":"zĕmîrâ","evidence":"배포 히브리 음역의 어두 유성 쉐바는 ĕ로 통일되어 있으며, 같은 항목의 lemma זְמִירָה도 유성 쉐바다.","severity":"medium","reason":"같은 쉐바를 e로 적어 배포 선례의 SBL 표기와 어긋난다."},
+  {"strong":"H1064","field":"translit","current":"bekôrat","suggested":"bĕkôrat","evidence":"lemma בְּכוֹרַת의 어두 유성 쉐바는 배포에서 ĕ로 적는다.","severity":"medium","reason":"어두 유성 쉐바를 e로 적었다."},
+  {"strong":"H4922","field":"translit","current":"mĕšul lemeth","suggested":"mĕšullemet","evidence":"lemma מְשֻׁלֶּמֶת는 한 낱말이고, 배포 선례의 어말 ת는 t로 적는다.","severity":"high","reason":"한 낱말 중간에 공백이 들어갔고 어말을 th로 적었다."},
+  {"strong":"H2080","field":"translitKo","current":"즈비다","suggested":"제비다","evidence":"lemma זְבִידָה의 어두 유성 쉐바와 ז의 배포 선례는 제 계열이다(H2069 zĕbadyâ→제바드야).","severity":"medium","reason":"유성 쉐바를 즈로 적어 배포 표기와 어긋난다."},
+  {"strong":"H1914","field":"translit","current":"hiddai","suggested":"hidday","evidence":"lemma הִדַּי는 어말 요드이고 배포의 어말 요드 표기는 -ay다(H2311 ḥadlay, H5724 ʿadlay).","severity":"medium","reason":"어말 요드를 ai로 적었다."},
+  {"strong":"H5538","field":"translit","current":"sillā","suggested":"sillāʾ","evidence":"lemma סִלָּא는 어말 알레프이며, 배포의 어말 א는 -āʾ로 보존한다(H7774 šûʿāʾ, H5925 ʿullāʾ).","severity":"low","reason":"어말 알레프가 라틴 음역에서 빠졌다."},
+  {"strong":"H7714","field":"translit","current":"Šadrak","suggested":"šadrak","evidence":"동일 lemma의 배포 선례 H7715 שַׁדְרַךְ는 šadrak이며, 같은 배치의 H4335와 다수 고유명사도 소문자다.","severity":"low","reason":"배포 선례와 대소문자가 다르다."},
+  {"strong":"H4335","field":"translit","current":"Mêšak","suggested":"mêšak","evidence":"동일 lemma의 배포 선례 H4336 מֵישַׁךְ는 mêšak이고, H7714와 같은 대소문자 규칙이 적용된다.","severity":"low","reason":"동일 lemma의 배포 표제와 대소문자가 다르다."},
+  {"strong":"H2217","field":"translitKo","current":"스루바벨","suggested":"제루바벨","evidence":"동일 lemma의 배포 선례 H2216 זְרֻבָּבֶל은 zĕrubbābel→제루바벨이다.","severity":"high","reason":"관용형 스룹바벨을 기계적으로 줄인 표기가 학술 표제 및 동일 lemma 배포 선례와 충돌한다."},
+  {"strong":"H3679","field":"translit","current":"kaśday","suggested":"kasday","evidence":"lemma כַּסְדַּי의 셋째 글자는 ס(samekh)이며, ś는 שׂ에만 사용한다.","severity":"high","reason":"사메크를 ś로 적어 원어 자모와 SBL 대응이 어긋난다."},
+  {"strong":"H3131","field":"translit","current":"yôsiphyâ","suggested":"yôsipyâ","evidence":"WORKER_SPEC의 베가드케파트 규칙은 ph가 아닌 p를 사용하며, 배포 다수 선례도 p다.","severity":"low","reason":"연음 פ를 ph로 적었다."}
+]

@@ -1,0 +1,432 @@
+{
+  "model": "codex",
+  "rulings": [
+    {
+      "strong": "H2466",
+      "translit": "ḥēled",
+      "translitKo": "헬레드",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5814",
+      "translit": "ʿuzzîyāʾ",
+      "translitKo": "웃지야",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": "관용 표기 웃시야와 달리 ז의 음가를 반영했다."
+    },
+    {
+      "strong": "H4925",
+      "translit": "mišmannâ",
+      "translitKo": "미쉬만나",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3621",
+      "translit": "kĕlûbay",
+      "translitKo": "클루바이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3421",
+      "translit": "yorkĕʿām",
+      "translitKo": "요르크암",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8101",
+      "translit": "šimʿātî",
+      "translitKo": "쉬마티",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6469",
+      "translit": "pĕʿullĕtay",
+      "translitKo": "프울레타이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8049",
+      "translit": "šamhût",
+      "translitKo": "샴후트",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5724",
+      "translit": "ʿadlay",
+      "translitKo": "아들라이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8488",
+      "translit": "tēmĕnî",
+      "translitKo": "테메니",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H326",
+      "translit": "ʾăḥaštārî",
+      "translitKo": "아하스타리",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H7746",
+      "translit": "šûḥāh",
+      "translitKo": "슈하",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8468",
+      "translit": "tĕḥinnâ",
+      "translitKo": "테힌나",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3578",
+      "translit": "kôzĕbāʾ",
+      "translitKo": "코즈바",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3143",
+      "translit": "yôšibyāh",
+      "translitKo": "요시브야",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5661",
+      "translit": "ʿabdîʾēl",
+      "translitKo": "압디엘",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2979",
+      "translit": "yeʾātray",
+      "translitKo": "예아트라이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2293",
+      "translit": "ḥaggîyāh",
+      "translitKo": "학기야",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H379",
+      "translit": "ʾîšhôd",
+      "translitKo": "이쉬호드",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H7609",
+      "translit": "šeʾērāh",
+      "translitKo": "셰에라",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6457",
+      "translit": "pāsak",
+      "translitKo": "파사흐",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4331",
+      "translit": "mêšāʾ",
+      "translitKo": "메이샤",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": "어말 א는 별도 음가를 한글로 덧붙이지 않았다."
+    },
+    {
+      "strong": "H8039",
+      "translit": "šimʿāh",
+      "translitKo": "쉬므아",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4921",
+      "translit": "mešillemît",
+      "translitKo": "메쉴레밋",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8043",
+      "translit": "šimʿām",
+      "translitKo": "쉬므암",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6871",
+      "translit": "ṣerûʿāh",
+      "translitKo": "츠루아",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2886",
+      "translit": "ṭabrimmôn",
+      "translitKo": "타브림몬",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2383",
+      "translit": "ḥezyôn",
+      "translitKo": "헤즈욘",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H456",
+      "translit": "ʾĕlîḥōrep",
+      "translitKo": "엘리호렙",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": "어말 후음 앞 furtive patach 및 פ의 기본 표기를 배포 선례에 맞췄다."
+    },
+    {
+      "strong": "H292",
+      "translit": "ʾăḥînādāb",
+      "translitKo": "아히나다브",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": "어말 ב는 관용형과 달리 학술 음역의 b를 반영했다."
+    },
+    {
+      "strong": "H2802",
+      "translit": "ḥeret",
+      "translitKo": "헤레트",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4582",
+      "translit": "māʿôk",
+      "translitKo": "마오흐",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5525",
+      "translit": "sukkî",
+      "translitKo": "숙키",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6859",
+      "translit": "ṣepātāh",
+      "translitKo": "츠파타",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6007",
+      "translit": "ʿămasyāh",
+      "translitKo": "아마스야",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8116",
+      "translit": "šimrît",
+      "translitKo": "쉬므리트",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2311",
+      "translit": "ḥadlay",
+      "translitKo": "하들라이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3260",
+      "translit": "yeʿdî",
+      "translitKo": "예디",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3089",
+      "translit": "yehôšebaʿ",
+      "translitKo": "예호셰바",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5180",
+      "translit": "nĕḥuštān",
+      "translitKo": "느후스탄",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3192",
+      "translit": "yoṭbā",
+      "translitKo": "욧바",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5179",
+      "translit": "nĕḥuštā",
+      "translitKo": "느후스타",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3380",
+      "translit": "yĕrubbešet",
+      "translitKo": "예룹베셰트",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3041",
+      "translit": "yĕdîdyāh",
+      "translitKo": "예디드야",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4012",
+      "translit": "mĕbunnay",
+      "translitKo": "므분나이",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3609",
+      "translit": "kilʾāb",
+      "translitKo": "킬아브",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5522",
+      "translit": "sikkût",
+      "translitKo": "시쿳",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3594",
+      "translit": "kiyyûn",
+      "translitKo": "기윤",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H7598",
+      "translit": "šĕʾaltîʾēl",
+      "translitKo": "셰알티엘",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H144",
+      "translit": "ʾădār",
+      "translitKo": "아달",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6997",
+      "translit": "qaṭṭān",
+      "translitKo": "카탄",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5611",
+      "translit": "sĕpār",
+      "translitKo": "세파르",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8134",
+      "translit": "šinʾāb",
+      "translitKo": "신아브",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3044",
+      "translit": "yidlāp",
+      "translitKo": "이드랍",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6230",
+      "translit": "ʿēśeq",
+      "translitKo": "에세크",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4649",
+      "translit": "muppîm",
+      "translitKo": "무핌",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1691",
+      "translit": "diblāyim",
+      "translitKo": "디블라임",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8020",
+      "translit": "šalman",
+      "translitKo": "샬만",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4088",
+      "translit": "madmēnāh",
+      "translitKo": "마드메나",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1966",
+      "translit": "hêlēl",
+      "translitKo": "헬렐",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": "개역의 계명성과 달리 lemma의 음역만 기록했다."
+    },
+    {
+      "strong": "H2262",
+      "translit": "ḥăbaṣṣanyāh",
+      "translitKo": "하바차냐",
+      "evidence": "src/data/koreanGloss*.js; bookContext.js; bibleReferences.js; contextChapterCards*.js",
+      "note": ""
+    }
+  ]
+}

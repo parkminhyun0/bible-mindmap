@@ -1,0 +1,707 @@
+{
+  "shard": "CE",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G4443",
+      "lemma": "πυρά",
+      "translit": "pyrá",
+      "translitKo": "퓌라",
+      "note": ""
+    },
+    {
+      "strong": "G4962",
+      "lemma": "συστρέφω",
+      "translit": "systréphō",
+      "translitKo": "쉬스트레포",
+      "note": "συν 이 σ 앞에서 συ- 로 줄어든 형태다. 배포 선례 쉬니스타오(synistáō)·쉰트리보(syntríbō)를 따라 쉬-로 적었다."
+    },
+    {
+      "strong": "G660",
+      "lemma": "ἀποτινάσσω",
+      "translit": "apotinássō",
+      "translitKo": "아포티나소",
+      "note": ""
+    },
+    {
+      "strong": "G324",
+      "lemma": "ἀναδέχομαι",
+      "translit": "anadéchomai",
+      "translitKo": "아나데코마이",
+      "note": ""
+    },
+    {
+      "strong": "G3975",
+      "lemma": "παχύνω",
+      "translit": "pachýnō",
+      "translitKo": "파퀴노",
+      "note": "χυ 는 배포 선례 이스퀴오(ischýō)·카타이스퀴노(kataischýnō)대로 퀴로 적었다."
+    },
+    {
+      "strong": "G2576",
+      "lemma": "καμμύω",
+      "translit": "kammýō",
+      "translitKo": "캄뮈오",
+      "note": "μμ 은 겹쳐 적었다. 장애음 겹자음을 겹치지 않는 규칙에서 ㅁ·ㄴ·ㄹ 은 빠지며, 배포 선례가 그람마(grámma)·그람마튜스·휘포그람모스·엠마우스다."
+    },
+    {
+      "strong": "G4293",
+      "lemma": "προκαταγγέλλω",
+      "translit": "prokatangéllō",
+      "translitKo": "프로카탕겔로",
+      "note": "γγ 는 [ŋg] 이므로 앞 음절 ㅇ 받침으로 적었다. 배포 선례가 카탕겔로(katangéllō)·파랑겔로·아팡겔로다."
+    },
+    {
+      "strong": "G1757",
+      "lemma": "ἐνευλογέω",
+      "translit": "eneulogéō",
+      "translitKo": "에뉼로게오",
+      "note": "ἐν + εὐλογέω 다. ευ 는 확정 규칙대로 유 계열 한 음절로 적고(배포 선례 율로게오), ἐν 의 ν 은 배포 선례 에네르게오(energéō)·에니아우토스처럼 뒤 모음에 이어 적었다."
+    },
+    {
+      "strong": "G471",
+      "lemma": "ἀντέπω",
+      "translit": "antépō",
+      "translitKo": "안테포",
+      "note": ""
+    },
+    {
+      "strong": "G1896",
+      "lemma": "ἐπεῖδον",
+      "translit": "epeîdon",
+      "translitKo": "에페이돈",
+      "note": ""
+    },
+    {
+      "strong": "G1282",
+      "lemma": "διαπρίω",
+      "translit": "diapríō",
+      "translitKo": "디아프리오",
+      "note": ""
+    },
+    {
+      "strong": "G582",
+      "lemma": "ἀπογραφή",
+      "translit": "apographḗ",
+      "translitKo": "아포그라페",
+      "note": ""
+    },
+    {
+      "strong": "G3351",
+      "lemma": "μετοικίζω",
+      "translit": "metoikízō",
+      "translitKo": "메토이키조",
+      "note": ""
+    },
+    {
+      "strong": "G2697",
+      "lemma": "κατάσχεσις",
+      "translit": "katáschesis",
+      "translitKo": "카타스케시스",
+      "note": "σχ 는 배포 선례 파스코(páschō)·모스코스(móschos)대로 스ㅋ 로 적었다."
+    },
+    {
+      "strong": "G1348",
+      "lemma": "δικαστής",
+      "translit": "dikastḗs",
+      "translitKo": "디카스테스",
+      "note": ""
+    },
+    {
+      "strong": "G4726",
+      "lemma": "στεναγμός",
+      "translit": "stenagmós",
+      "translitKo": "스테나그모스",
+      "note": "γμ 은 배포 선례 디오그모스(diōgmós)·케뤼그마·프라그마대로 그ㅁ 로 적었다."
+    },
+    {
+      "strong": "G4313",
+      "lemma": "προπορεύομαι",
+      "translit": "proporeúomai",
+      "translitKo": "프로포류오마이",
+      "note": ""
+    },
+    {
+      "strong": "G4756",
+      "lemma": "στρατιά",
+      "translit": "stratiá",
+      "translitKo": "스트라티아",
+      "note": ""
+    },
+    {
+      "strong": "G1296",
+      "lemma": "διαταγή",
+      "translit": "diatagḗ",
+      "translitKo": "디아타게",
+      "note": ""
+    },
+    {
+      "strong": "G4391",
+      "lemma": "προϋπάρχω",
+      "translit": "proÿpárchō",
+      "translitKo": "프로위파르코",
+      "note": "προ + ὑπάρχω 이지만 표제형 철자가 분음부호 ϋ 라 거친 숨표가 없다. 배포 선례 프로이스테미(proḯstēmi)·프라위파티아(praÿpathía)를 따라 h 를 넣지 않고 위로 적었다. 거친 숨표를 살린 판본을 따르면 프로휘파르코가 된다."
+    },
+    {
+      "strong": "G5521",
+      "lemma": "χολή",
+      "translit": "cholḗ",
+      "translitKo": "콜레",
+      "note": ""
+    },
+    {
+      "strong": "G1765",
+      "lemma": "ἐνισχύω",
+      "translit": "enischýō",
+      "translitKo": "에니스퀴오",
+      "note": ""
+    },
+    {
+      "strong": "G339",
+      "lemma": "ἀνακαθίζω",
+      "translit": "anakathízō",
+      "translitKo": "아나카티조",
+      "note": ""
+    },
+    {
+      "strong": "G1412",
+      "lemma": "δυναμόω",
+      "translit": "dynamóō",
+      "translitKo": "뒤나모오",
+      "note": ""
+    },
+    {
+      "strong": "G604",
+      "lemma": "ἀποκαταλλάσσω",
+      "translit": "apokatallássō",
+      "translitKo": "아포카탈라소",
+      "note": "λλ 은 ㄹ 받침 + ㄹ 초성으로 나눠 적었다(배포 선례 카탈라소·아포스텔로). σσ 는 단자음으로 적었다(배포 선례 타소·케뤼소)."
+    },
+    {
+      "strong": "G3884",
+      "lemma": "παραλογίζομαι",
+      "translit": "paralogízomai",
+      "translitKo": "파랄로기조마이",
+      "note": ""
+    },
+    {
+      "strong": "G4492",
+      "lemma": "ῥιζόω",
+      "translit": "rhizóō",
+      "translitKo": "리조오",
+      "note": "어두 ῥ 에는 흐를 붙이지 않는다. 배포 선례가 레마(rhēma)·레오·뤼오마이·라비다."
+    },
+    {
+      "strong": "G4806",
+      "lemma": "συζωοποιέω",
+      "translit": "syzōopoiéō",
+      "translitKo": "쉬조오포이에오",
+      "note": ""
+    },
+    {
+      "strong": "G554",
+      "lemma": "ἀπεκδύομαι",
+      "translit": "apekdýomai",
+      "translitKo": "아펙뒤오마이",
+      "note": "배포 선례 아펙데코마이(apekdéchomai)·에크뒤오(ekdýō)를 따랐다."
+    },
+    {
+      "strong": "G1165",
+      "lemma": "δειγματίζω",
+      "translit": "deigmatízō",
+      "translitKo": "데이그마티조",
+      "note": ""
+    },
+    {
+      "strong": "G860",
+      "lemma": "ἁφή",
+      "translit": "haphḗ",
+      "translitKo": "하페",
+      "note": ""
+    },
+    {
+      "strong": "G838",
+      "lemma": "αὔξησις",
+      "translit": "aúxēsis",
+      "translitKo": "아욱세시스",
+      "note": "αυ 는 배포 선례 아욱사노(auxánō)·카우케시스대로 아우로, ξ 는 ㄱ 받침 + ㅅ 계열로 적었다."
+    },
+    {
+      "strong": "G5047",
+      "lemma": "τελειότης",
+      "translit": "teleiótēs",
+      "translitKo": "텔레이오테스",
+      "note": ""
+    },
+    {
+      "strong": "G5215",
+      "lemma": "ὕμνος",
+      "translit": "hýmnos",
+      "translitKo": "휨노스",
+      "note": "어두 ὑ 는 거친 숨표를 살려 휘로 적고, 음절 경계의 μν 은 배포 선례 옴뉘오(omnýō)·아남네시스·포임네대로 ㅁ 받침 + ㄴ 초성으로 적었다."
+    },
+    {
+      "strong": "G3787",
+      "lemma": "ὀφθαλμοδουλεία",
+      "translit": "ophthalmodouleía",
+      "translitKo": "오프탈모둘레이아",
+      "note": "배포 선례 오프탈모스(ophthalmós) + 둘레이아(douleía) 를 그대로 이었다."
+    },
+    {
+      "strong": "G441",
+      "lemma": "ἀνθρωπάρεσκος",
+      "translit": "anthrōpáreskos",
+      "translitKo": "안트로파레스코스",
+      "note": "배포 선례 안트로포스 + 아레스코(aréskō) 의 합성이다."
+    },
+    {
+      "strong": "G346",
+      "lemma": "ἀνακεφαλαίομαι",
+      "translit": "anakephalaíomai",
+      "translitKo": "아나케팔라이오마이",
+      "note": ""
+    },
+    {
+      "strong": "G4776",
+      "lemma": "συγκαθίζω",
+      "translit": "synkathízō",
+      "translitKo": "쉰카티조",
+      "note": "συγ- 의 γκ 는 배포 선례가 예외 없이 쉰-이다(쉰칼레오·쉰카이로·쉰케오·쉰코이노노스·쉰케란뉘미·쉰카타테시스). 같은 [ŋk] 라도 ἐγ- 계열은 엥-으로 갈리므로(엥코프토·엥켄트리조) 접두사별 선례를 따랐다."
+    },
+    {
+      "strong": "G4161",
+      "lemma": "ποίημα",
+      "translit": "poíēma",
+      "translitKo": "포이에마",
+      "note": ""
+    },
+    {
+      "strong": "G4282",
+      "lemma": "προετοιμάζω",
+      "translit": "proetoimázō",
+      "translitKo": "프로에토이마조",
+      "note": "배포 선례 헤토이마조(hetoimázō) 를 이었다. 합성 안에서는 거친 숨표가 표기되지 않아 헤가 아니라 에다."
+    },
+    {
+      "strong": "G4883",
+      "lemma": "συναρμολογέω",
+      "translit": "synarmologéō",
+      "translitKo": "쉬나르몰로게오",
+      "note": "배포 선례 하르모조(harmózō) 의 어근이나 합성 안이라 거친 숨표를 적지 않았다."
+    },
+    {
+      "strong": "G2732",
+      "lemma": "κατοικητήριον",
+      "translit": "katoikētḗrion",
+      "translitKo": "카토이케테리온",
+      "note": ""
+    },
+    {
+      "strong": "G1775",
+      "lemma": "ἑνότης",
+      "translit": "henótēs",
+      "translitKo": "헤노테스",
+      "note": ""
+    },
+    {
+      "strong": "G3180",
+      "lemma": "μεθοδεία",
+      "translit": "methodeía",
+      "translitKo": "메토데이아",
+      "note": ""
+    },
+    {
+      "strong": "G2024",
+      "lemma": "ἐπιχορηγία",
+      "translit": "epichorēgía",
+      "translitKo": "에피코레기아",
+      "note": "배포 선례 에피코레게오(epichorēgéō) 를 이었다."
+    },
+    {
+      "strong": "G3067",
+      "lemma": "λουτρόν",
+      "translit": "loutrón",
+      "translitKo": "루트론",
+      "note": ""
+    },
+    {
+      "strong": "G1625",
+      "lemma": "ἐκτρέφω",
+      "translit": "ektréphō",
+      "translitKo": "에크트레포",
+      "note": ""
+    },
+    {
+      "strong": "G4347",
+      "lemma": "προσκολλάω",
+      "translit": "proskolláō",
+      "translitKo": "프로스콜라오",
+      "note": ""
+    },
+    {
+      "strong": "G3949",
+      "lemma": "παροργίζω",
+      "translit": "parorgízō",
+      "translitKo": "파로르기조",
+      "note": ""
+    },
+    {
+      "strong": "G4323",
+      "lemma": "προσανατίθημι",
+      "translit": "prosanatíthēmi",
+      "translitKo": "프로사나티테미",
+      "note": "προσ 뒤에 모음이 오므로 배포 선례 프로세르코마이(prosérchomai)처럼 σ 를 뒤 모음에 이어 적었다."
+    },
+    {
+      "strong": "G3922",
+      "lemma": "παρεισέρχομαι",
+      "translit": "pareisérchomai",
+      "translitKo": "파레이세르코마이",
+      "note": ""
+    },
+    {
+      "strong": "G1728",
+      "lemma": "ἐνάρχομαι",
+      "translit": "enárchomai",
+      "translitKo": "에나르코마이",
+      "note": ""
+    },
+    {
+      "strong": "G1846",
+      "lemma": "ἐξορύσσω",
+      "translit": "exorýssō",
+      "translitKo": "엑소뤼소",
+      "note": ""
+    },
+    {
+      "strong": "G1576",
+      "lemma": "ἐκκλείω",
+      "translit": "ekkleíō",
+      "translitKo": "에클레이오",
+      "note": "ἐκκ 는 배포 선례 에클레시아(ekklēsía)대로 에클로 적었다."
+    },
+    {
+      "strong": "G355",
+      "lemma": "ἀναλίσκω",
+      "translit": "analískō",
+      "translitKo": "아날리스코",
+      "note": ""
+    },
+    {
+      "strong": "G5331",
+      "lemma": "φαρμακεία",
+      "translit": "pharmakeía",
+      "translitKo": "파르마케이아",
+      "note": ""
+    },
+    {
+      "strong": "G4240",
+      "lemma": "πραΰτης",
+      "translit": "praÿtēs",
+      "translitKo": "프라위테스",
+      "note": "πραΰ 의 분음부호 υ 는 배포 선례 프라위파티아(praÿpathía)대로 위로 적었다."
+    },
+    {
+      "strong": "G1667",
+      "lemma": "ἑλίσσω",
+      "translit": "helíssō",
+      "translitKo": "헬리소",
+      "note": ""
+    },
+    {
+      "strong": "G1457",
+      "lemma": "ἐγκαινίζω",
+      "translit": "enkainízō",
+      "translitKo": "엥카이니조",
+      "note": "ἐγ- 의 γκ 는 배포 선례가 엥-이다(엥코프토·엥켄트리조·엥칼레오·엥카탈레이포). συγ- 계열은 쉰-으로 갈리므로 접두사별 선례를 따랐다."
+    },
+    {
+      "strong": "G4834",
+      "lemma": "συμπαθέω",
+      "translit": "sympathéō",
+      "translitKo": "쉼파테오",
+      "note": "배포 선례 쉼파스코(sympáschō)·쉼페로를 따라 μ 를 ㅁ 받침으로 적었다."
+    },
+    {
+      "strong": "G577",
+      "lemma": "ἀποβάλλω",
+      "translit": "apobállō",
+      "translitKo": "아포발로",
+      "note": ""
+    },
+    {
+      "strong": "G3939",
+      "lemma": "παροικέω",
+      "translit": "paroikéō",
+      "translitKo": "파로이케오",
+      "note": ""
+    },
+    {
+      "strong": "G3984",
+      "lemma": "πεῖρα",
+      "translit": "peîra",
+      "translitKo": "페이라",
+      "note": "배포 선례 스페이라(speîra) 를 따랐다."
+    },
+    {
+      "strong": "G2558",
+      "lemma": "κακουχέω",
+      "translit": "kakouchéō",
+      "translitKo": "카쿠케오",
+      "note": "ου 는 우로, χ 는 ㅋ 로 적었다."
+    },
+    {
+      "strong": "G3692",
+      "lemma": "ὀπή",
+      "translit": "opḗ",
+      "translitKo": "오페",
+      "note": ""
+    },
+    {
+      "strong": "G872",
+      "lemma": "ἀφοράω",
+      "translit": "aphoráō",
+      "translitKo": "아포라오",
+      "note": "배포 선례 호라오(horáō) 의 합성이나 합성 안이라 거친 숨표를 적지 않았다."
+    },
+    {
+      "strong": "G3810",
+      "lemma": "παιδευτής",
+      "translit": "paideutḗs",
+      "translitKo": "파이듀테스",
+      "note": "ευ 는 확정 규칙대로 유 계열 한 음절이다. 배포 선례가 파이듀오(paideúō)다."
+    },
+    {
+      "strong": "G1776",
+      "lemma": "ἐνοχλέω",
+      "translit": "enochléō",
+      "translitKo": "에노클레오",
+      "note": ""
+    },
+    {
+      "strong": "G2124",
+      "lemma": "εὐλάβεια",
+      "translit": "eulábeia",
+      "translitKo": "율라베이아",
+      "note": "어두 εὐ 는 확정 규칙대로 유 계열 한 음절로 적었다. 배포 선례가 유앙겔리온·유튀테스다."
+    },
+    {
+      "strong": "G5381",
+      "lemma": "φιλονεξία",
+      "translit": "philonexía",
+      "translitKo": "필로넥시아",
+      "note": "ξ 는 앞 음절 ㄱ 받침 + ㅅ 계열로 적었다(배포 선례 탁시스·엑시스테미). 표제형 철자는 Strong 이 실은 φιλονεξία 이며 통용 철자 φιλοξενία(필록세니아)와 갈린다."
+    },
+    {
+      "strong": "G3311",
+      "lemma": "μερισμός",
+      "translit": "merismós",
+      "translitKo": "메리스모스",
+      "note": ""
+    },
+    {
+      "strong": "G2433",
+      "lemma": "ἱλάσκομαι",
+      "translit": "hiláskomai",
+      "translitKo": "힐라스코마이",
+      "note": "배포 선례 힐라스모스(hilasmós) 를 이었다."
+    },
+    {
+      "strong": "G3894",
+      "lemma": "παραπικρασμός",
+      "translit": "parapikrasmós",
+      "translitKo": "파라피크라스모스",
+      "note": ""
+    },
+    {
+      "strong": "G4360",
+      "lemma": "προσοχθίζω",
+      "translit": "prosochthízō",
+      "translitKo": "프로소크티조",
+      "note": "χθ 는 배포 선례 에크트로스(echthrós)·이크튀스대로 크ㅌ 로 적었다."
+    },
+    {
+      "strong": "G3665",
+      "lemma": "ὁμοιότης",
+      "translit": "homoiótēs",
+      "translitKo": "호모이오테스",
+      "note": ""
+    },
+    {
+      "strong": "G5146",
+      "lemma": "τρίβολος",
+      "translit": "tríbolos",
+      "translitKo": "트리볼로스",
+      "note": ""
+    },
+    {
+      "strong": "G951",
+      "lemma": "βεβαίωσις",
+      "translit": "bebaíōsis",
+      "translitKo": "베바이오시스",
+      "note": "배포 선례 베바이오오(bebaióō) 를 이었다."
+    },
+    {
+      "strong": "G1183",
+      "lemma": "δεκατόω",
+      "translit": "dekatóō",
+      "translitKo": "데카토오",
+      "note": ""
+    },
+    {
+      "strong": "G5050",
+      "lemma": "τελείωσις",
+      "translit": "teleíōsis",
+      "translitKo": "텔레이오시스",
+      "note": ""
+    },
+    {
+      "strong": "G3549",
+      "lemma": "νομοθετέω",
+      "translit": "nomothetéō",
+      "translitKo": "노모테테오",
+      "note": "배포 선례 노모테테스(nomothétēs)·아테테오를 이었다."
+    },
+    {
+      "strong": "G115",
+      "lemma": "ἀθέτησις",
+      "translit": "athétēsis",
+      "translitKo": "아테테시스",
+      "note": "배포 선례 아테테오(athetéō) 를 이었다."
+    },
+    {
+      "strong": "G1095",
+      "lemma": "γηράσκω",
+      "translit": "gēráskō",
+      "translitKo": "게라스코",
+      "note": ""
+    },
+    {
+      "strong": "G2053",
+      "lemma": "ἔριον",
+      "translit": "érion",
+      "translitKo": "에리온",
+      "note": ""
+    },
+    {
+      "strong": "G5301",
+      "lemma": "ὕσσωπος",
+      "translit": "hýssōpos",
+      "translitKo": "휘소포스",
+      "note": "어두 ὑ 는 거친 숨표를 살려 휘로, σσ 는 단자음으로 적었다(배포 선례 카타뉘소·케뤼소). 개역 관용 표기는 우슬초(히브리 ʾēzôb 경유)이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G1503",
+      "lemma": "εἴκω",
+      "translit": "eíkō",
+      "translitKo": "에이코",
+      "note": ""
+    },
+    {
+      "strong": "G2830",
+      "lemma": "κλύδων",
+      "translit": "klýdōn",
+      "translitKo": "클뤼돈",
+      "note": ""
+    },
+    {
+      "strong": "G3633",
+      "lemma": "οἴομαι",
+      "translit": "oíomai",
+      "translitKo": "오이오마이",
+      "note": ""
+    },
+    {
+      "strong": "G4197",
+      "lemma": "πορεία",
+      "translit": "poreía",
+      "translitKo": "포레이아",
+      "note": "-εία 는 배포 선례 크레이아(chreía)·포르네이아대로 에이아로 적었다. ευ 자리가 아니다."
+    },
+    {
+      "strong": "G658",
+      "lemma": "ἀποτελέω",
+      "translit": "apoteléō",
+      "translitKo": "아포텔레오",
+      "note": ""
+    },
+    {
+      "strong": "G616",
+      "lemma": "ἀποκυέω",
+      "translit": "apokyéō",
+      "translitKo": "아포퀴에오",
+      "note": "κυ 는 배포 선례 프로스퀴네오(proskynéō)·퀴리유오대로 퀴로 적었다."
+    },
+    {
+      "strong": "G1394",
+      "lemma": "δόσις",
+      "translit": "dósis",
+      "translitKo": "도시스",
+      "note": ""
+    },
+    {
+      "strong": "G1434",
+      "lemma": "δώρημα",
+      "translit": "dṓrēma",
+      "translitKo": "도레마",
+      "note": "배포 선례 도론(dōron) + -ημα 계열 파테마·텔레마를 이었다."
+    },
+    {
+      "strong": "G5468",
+      "lemma": "χαλιναγωγέω",
+      "translit": "chalinagōgéō",
+      "translitKo": "칼리나고게오",
+      "note": "배포 선례 칼리노스(chalinós) + 아고게(agōgḗ) 의 합성이다."
+    },
+    {
+      "strong": "G3329",
+      "lemma": "μετάγω",
+      "translit": "metágō",
+      "translitKo": "메타고",
+      "note": ""
+    },
+    {
+      "strong": "G2116",
+      "lemma": "εὐθύνω",
+      "translit": "euthýnō",
+      "translitKo": "유튀노",
+      "note": "어두 εὐ 는 확정 규칙대로 유 계열 한 음절이다. 배포 선례가 유튀테스(euthýtēs)다."
+    },
+    {
+      "strong": "G381",
+      "lemma": "ἀνάπτω",
+      "translit": "anáptō",
+      "translitKo": "아납토",
+      "note": "πτ 는 배포 선례 합토(háptō)·핍토·옵타노마이대로 ㅂ 받침 + ㅌ 로 적었다."
+    },
+    {
+      "strong": "G4695",
+      "lemma": "σπιλόω",
+      "translit": "spilóō",
+      "translitKo": "스필로오",
+      "note": ""
+    },
+    {
+      "strong": "G5394",
+      "lemma": "φλογίζω",
+      "translit": "phlogízō",
+      "translitKo": "플로기조",
+      "note": "배포 선례 플록스(phlóx) 의 어근이다."
+    },
+    {
+      "strong": "G5004",
+      "lemma": "ταλαιπωρία",
+      "translit": "talaipōría",
+      "translitKo": "탈라이포리아",
+      "note": ""
+    },
+    {
+      "strong": "G3106",
+      "lemma": "μακαρίζω",
+      "translit": "makarízō",
+      "translitKo": "마카리조",
+      "note": ""
+    }
+  ]
+}

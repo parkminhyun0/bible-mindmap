@@ -1,0 +1,906 @@
+{
+  "shard": "CG",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G5314",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φάγος",
+      "translit": "phágos",
+      "glossEn": "gluttonous",
+      "defEn": "a glutton"
+    },
+    {
+      "strong": "G3630",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "οἰνοπότης",
+      "translit": "oinopótēs",
+      "glossEn": "winebibber",
+      "defEn": "a tippler"
+    },
+    {
+      "strong": "G2439",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἱματίζω",
+      "translit": "himatízō",
+      "glossEn": "clothe",
+      "defEn": "to dress"
+    },
+    {
+      "strong": "G2622",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατακλάω",
+      "translit": "katakláō",
+      "glossEn": "break",
+      "defEn": "to break down, i.e. divide"
+    },
+    {
+      "strong": "G4952",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συσπαράσσω",
+      "translit": "sysparássō",
+      "glossEn": "throw down",
+      "defEn": "to rend completely, i.e. (by analogy) to convulse violently"
+    },
+    {
+      "strong": "G2682",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατασκήνωσις",
+      "translit": "kataskḗnōsis",
+      "glossEn": "nest",
+      "defEn": "an encamping, i.e. (figuratively) a perch"
+    },
+    {
+      "strong": "G293",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀμφίβληστρον",
+      "translit": "amphíblēstron",
+      "glossEn": "net",
+      "defEn": "a (fishing) net (as thrown about the fish)"
+    },
+    {
+      "strong": "G4445",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πυρέσσω",
+      "translit": "pyréssō",
+      "glossEn": "be sick of a fever",
+      "defEn": "to be on fire, i.e. (specially), to have a fever"
+    },
+    {
+      "strong": "G4801",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συζεύγνυμι",
+      "translit": "syzeúgnymi",
+      "glossEn": "join together",
+      "defEn": "to yoke together, i.e. (figuratively) conjoin (in marriage)"
+    },
+    {
+      "strong": "G1723",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐναγκαλίζομαι",
+      "translit": "enankalízomai",
+      "glossEn": "take up in arms",
+      "defEn": "to take in one's arms, i.e. embrace"
+    },
+    {
+      "strong": "G4768",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "στυγνάζω",
+      "translit": "stygnázō",
+      "glossEn": "lower, be sad",
+      "defEn": "to render gloomy, i.e. (by implication) glower (be overcast with clouds, or sombreness of speech)"
+    },
+    {
+      "strong": "G4476",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ῥαφίς",
+      "translit": "rhaphís",
+      "glossEn": "needle",
+      "defEn": "perhaps rather akin to the base of G4474 (ῥαπίζω) through the idea of puncturing); a needle"
+    },
+    {
+      "strong": "G2715",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατεξουσιάζω",
+      "translit": "katexousiázō",
+      "glossEn": "exercise authority",
+      "defEn": "to have (wield) full privilege over"
+    },
+    {
+      "strong": "G2690",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καταστρέφω",
+      "translit": "katastréphō",
+      "glossEn": "overthrow",
+      "defEn": "to turn upside down, i.e. upset"
+    },
+    {
+      "strong": "G2835",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κοδράντης",
+      "translit": "kodrántēs",
+      "glossEn": "farthing",
+      "defEn": "a quadrans, i.e. the fourth part of an as"
+    },
+    {
+      "strong": "G5304",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὑστέρησις",
+      "translit": "hystérēsis",
+      "glossEn": "want",
+      "defEn": "a falling short, i.e. (specially), penury"
+    },
+    {
+      "strong": "G1881",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπανίσταμαι",
+      "translit": "epanístamai",
+      "glossEn": "rise up against",
+      "defEn": "to stand up on, i.e. (figuratively) to attack"
+    },
+    {
+      "strong": "G5437",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φυγή",
+      "translit": "phygḗ",
+      "glossEn": "flight",
+      "defEn": "a fleeing, i.e. escape"
+    },
+    {
+      "strong": "G5338",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φέγγος",
+      "translit": "phéngos",
+      "glossEn": "light",
+      "defEn": "brilliancy"
+    },
+    {
+      "strong": "G1631",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐκφύω",
+      "translit": "ekphýō",
+      "glossEn": "put forth",
+      "defEn": "to sprout up"
+    },
+    {
+      "strong": "G2708",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καταχέω",
+      "translit": "katachéō",
+      "glossEn": "pour",
+      "defEn": "to pour down (out)"
+    },
+    {
+      "strong": "G1686",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐμβάπτω",
+      "translit": "embáptō",
+      "glossEn": "dip",
+      "defEn": "to whelm on, i.e. wet (a part of the person, etc.) by contact with a fluid"
+    },
+    {
+      "strong": "G5165",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τρύβλιον",
+      "translit": "trýblion",
+      "glossEn": "dish",
+      "defEn": "a bowl"
+    },
+    {
+      "strong": "G5417",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φραγελλόω",
+      "translit": "phragellóō",
+      "glossEn": "scourge",
+      "defEn": "to whip, i.e. lash as a public punishment"
+    },
+    {
+      "strong": "G4518",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "σαβαχθάνι",
+      "translit": "sabachtháni",
+      "glossEn": "sabachthani",
+      "defEn": "thou hast left me; sabachthani (i.e. shebakthani), a cry of distress"
+    },
+    {
+      "strong": "G2998",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λατομέω",
+      "translit": "latoméō",
+      "glossEn": "hew",
+      "defEn": "to quarry"
+    },
+    {
+      "strong": "G4351",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προσκυλίω",
+      "translit": "proskylíō",
+      "glossEn": "roll (to)",
+      "defEn": "to roll towards, i.e. block against"
+    },
+    {
+      "strong": "G4470",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ῥάκος",
+      "translit": "rhákos",
+      "glossEn": "cloth",
+      "defEn": "a \"rag,\" i.e. piece of cloth"
+    },
+    {
+      "strong": "G1816",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐξανατέλλω",
+      "translit": "exanatéllō",
+      "glossEn": "spring up",
+      "defEn": "to start up out of the ground, i.e. germinate"
+    },
+    {
+      "strong": "G1142",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δαίμων",
+      "translit": "daímōn",
+      "glossEn": "devil",
+      "defEn": "a dæmon or supernatural spirit (of a bad nature)"
+    },
+    {
+      "strong": "G2365",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "θυγάτριον",
+      "translit": "thygátrion",
+      "glossEn": "little (young) daughter",
+      "defEn": "a daughterling"
+    },
+    {
+      "strong": "G4918",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συνθλίβω",
+      "translit": "synthlíbō",
+      "glossEn": "throng",
+      "defEn": "to compress, i.e. crowd on all sides"
+    },
+    {
+      "strong": "G5045",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τέκτων",
+      "translit": "téktōn",
+      "glossEn": "carpenter",
+      "defEn": "an artificer (as producer of fabrics), i.e. (specially), a craftsman in wood"
+    },
+    {
+      "strong": "G1077",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "γενέσια",
+      "translit": "genésia",
+      "glossEn": "birthday",
+      "defEn": "birthday ceremonies"
+    },
+    {
+      "strong": "G4237",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πρασιά",
+      "translit": "prasiá",
+      "glossEn": "in ranks",
+      "defEn": "a garden plot, i.e. (by implication, of regular beds) a row (repeated in plural by Hebraism, to indicate an arrangement)"
+    },
+    {
+      "strong": "G5326",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φάντασμα",
+      "translit": "phántasma",
+      "glossEn": "spirit",
+      "defEn": "(properly concrete) a (mere) show (\"phantasm\"), i.e. spectre"
+    },
+    {
+      "strong": "G2829",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κλοπή",
+      "translit": "klopḗ",
+      "glossEn": "theft",
+      "defEn": "stealing"
+    },
+    {
+      "strong": "G2485",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἰχθύδιον",
+      "translit": "ichthýdion",
+      "glossEn": "little (small) fish",
+      "defEn": "a petty fish"
+    },
+    {
+      "strong": "G3659",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὄμμα",
+      "translit": "ómma",
+      "glossEn": "eye",
+      "defEn": "a sight, i.e. (by implication) the eye"
+    },
+    {
+      "strong": "G465",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀντάλλαγμα",
+      "translit": "antállagma",
+      "glossEn": "in exchange",
+      "defEn": "an equivalent or ransom"
+    },
+    {
+      "strong": "G3021",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λευκαίνω",
+      "translit": "leukaínō",
+      "glossEn": "make white, whiten",
+      "defEn": "to whiten"
+    },
+    {
+      "strong": "G1760",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνθυμέομαι",
+      "translit": "enthyméomai",
+      "glossEn": "think",
+      "defEn": "to be inspirited, i.e. ponder"
+    },
+    {
+      "strong": "G3615",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "οἰκιακός",
+      "translit": "oikiakós",
+      "glossEn": "they (them) of (his own) household",
+      "defEn": "familiar, i.e. (as noun) relatives"
+    },
+    {
+      "strong": "G3043",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λίνον",
+      "translit": "línon",
+      "glossEn": "linen",
+      "defEn": "flax, i.e. (by implication) \"linen\""
+    },
+    {
+      "strong": "G2327",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "θεριστής",
+      "translit": "theristḗs",
+      "glossEn": "reaper",
+      "defEn": "a harvester"
+    },
+    {
+      "strong": "G1285",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "διασαφέω",
+      "translit": "diasaphéō",
+      "glossEn": "tell unto",
+      "defEn": "to clear thoroughly, i.e. (figuratively) declare"
+    },
+    {
+      "strong": "G3332",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μεταίρω",
+      "translit": "metaírō",
+      "glossEn": "depart",
+      "defEn": "to betake oneself, i.e. remove (locally)"
+    },
+    {
+      "strong": "G2670",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καταποντίζω",
+      "translit": "katapontízō",
+      "glossEn": "drown, sink",
+      "defEn": "to plunge down, i.e. submerge"
+    },
+    {
+      "strong": "G1365",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "διστάζω",
+      "translit": "distázō",
+      "glossEn": "doubt",
+      "defEn": "properly, to duplicate, i.e. (mentally) to waver (in opinion)"
+    },
+    {
+      "strong": "G5577",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ψευδομαρτυρία",
+      "translit": "pseudomartyría",
+      "glossEn": "false witness",
+      "defEn": "untrue testimony"
+    },
+    {
+      "strong": "G4449",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πυῤῥάζω",
+      "translit": "pyrrházō",
+      "glossEn": "be red",
+      "defEn": "to redden (intransitively)"
+    },
+    {
+      "strong": "G4583",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "σεληνιάζομαι",
+      "translit": "selēniázomai",
+      "glossEn": "be a lunatic",
+      "defEn": "to be moon-struck, i.e. crazy"
+    },
+    {
+      "strong": "G1323",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δίδραχμον",
+      "translit": "dídrachmon",
+      "glossEn": "tribute",
+      "defEn": "a double drachma (didrachm)"
+    },
+    {
+      "strong": "G2134",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "εὐνουχίζω",
+      "translit": "eunouchízō",
+      "glossEn": "make…eunuch",
+      "defEn": "to castrate (figuratively, live unmarried)"
+    },
+    {
+      "strong": "G198",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀκριβόω",
+      "translit": "akribóō",
+      "glossEn": "enquire diligently",
+      "defEn": "to be exact, i.e. ascertain"
+    },
+    {
+      "strong": "G3030",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λίβανος",
+      "translit": "líbanos",
+      "glossEn": "frankincense",
+      "defEn": "the incense-tree, i.e. (by implication) incense itself"
+    },
+    {
+      "strong": "G3409",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μισθόω",
+      "translit": "misthóō",
+      "glossEn": "hire",
+      "defEn": "to let out for wages, i.e. (middle voice) to hire"
+    },
+    {
+      "strong": "G2519",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καθηγητής",
+      "translit": "kathēgētḗs",
+      "glossEn": "master",
+      "defEn": "a guide, i.e. (figuratively) a teacher"
+    },
+    {
+      "strong": "G3953",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παροψίς",
+      "translit": "paropsís",
+      "glossEn": "platter",
+      "defEn": "a side-dish (the receptacle)"
+    },
+    {
+      "strong": "G4474",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ῥαπίζω",
+      "translit": "rhapízō",
+      "glossEn": "smite (with the palm of the hand)",
+      "defEn": "to slap"
+    },
+    {
+      "strong": "G5511",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χλαμύς",
+      "translit": "chlamýs",
+      "glossEn": "robe",
+      "defEn": "a military cloak"
+    },
+    {
+      "strong": "G3783",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὀφείλημα",
+      "translit": "opheílēma",
+      "glossEn": "debt",
+      "defEn": "something owed, i.e. (figuratively) a due; morally, a fault"
+    },
+    {
+      "strong": "G1028",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "βροχή",
+      "translit": "brochḗ",
+      "glossEn": "rain",
+      "defEn": "rain"
+    },
+    {
+      "strong": "G834",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "αὐλητής",
+      "translit": "aulētḗs",
+      "glossEn": "minstrel, piper",
+      "defEn": "a flute-player"
+    },
+    {
+      "strong": "G603",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποκαραδοκία",
+      "translit": "apokaradokía",
+      "glossEn": "earnest expectation",
+      "defEn": "intense anticipation"
+    },
+    {
+      "strong": "G4866",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συναθλέω",
+      "translit": "synathléō",
+      "glossEn": "labour with, strive together for",
+      "defEn": "to wrestle in company with, i.e. (figuratively) to seek jointly"
+    },
+    {
+      "strong": "G1677",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐλλογέω",
+      "translit": "ellogéō",
+      "glossEn": "impute, put on account",
+      "defEn": "to reckon in, i.e. attribute"
+    },
+    {
+      "strong": "G5474",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χαλκολίβανον",
+      "translit": "chalkolíbanon",
+      "glossEn": "fine brass",
+      "defEn": "burnished copper, an alloy of copper (or gold) and silver having a brilliant lustre"
+    },
+    {
+      "strong": "G2463",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἶρις",
+      "translit": "îris",
+      "glossEn": "rainbow",
+      "defEn": "a rainbow (\"iris\")"
+    },
+    {
+      "strong": "G2790",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κιθαρῳδός",
+      "translit": "kitharōidós",
+      "glossEn": "harper",
+      "defEn": "a lyre-singer(-player), i.e. harpist"
+    },
+    {
+      "strong": "G2738",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καῦμα",
+      "translit": "kaûma",
+      "glossEn": "heat",
+      "defEn": "properly, a burn (concretely), but used (abstractly) of a glow"
+    },
+    {
+      "strong": "G808",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀσχημοσύνη",
+      "translit": "aschēmosýnē",
+      "glossEn": "shame, that which is unseemly",
+      "defEn": "an indecency; by implication, the pudenda"
+    },
+    {
+      "strong": "G5558",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χρυσόω",
+      "translit": "chrysóō",
+      "glossEn": "deck",
+      "defEn": "to gild, i.e. bespangle with golden ornaments"
+    },
+    {
+      "strong": "G4763",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "στρηνιάω",
+      "translit": "strēniáō",
+      "glossEn": "live deliciously",
+      "defEn": "to be luxurious"
+    },
+    {
+      "strong": "G948",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "βδελύσσω",
+      "translit": "bdelýssō",
+      "glossEn": "abhor, abominable",
+      "defEn": "to be disgusted, i.e. (by implication) detest (especially of idolatry)"
+    },
+    {
+      "strong": "G5194",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὕαλος",
+      "translit": "hýalos",
+      "glossEn": "glass",
+      "defEn": "glass"
+    },
+    {
+      "strong": "G4556",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "σάρδιος",
+      "translit": "sárdios",
+      "glossEn": "sardius",
+      "defEn": "sardian (3037 being implied), i.e. (as noun) the gem so called"
+    },
+    {
+      "strong": "G2930",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κρύσταλλος",
+      "translit": "krýstallos",
+      "glossEn": "crystal",
+      "defEn": "ice, i.e. (by analogy) rock \"crystal\""
+    },
+    {
+      "strong": "G5518",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χοῖνιξ",
+      "translit": "choînix",
+      "glossEn": "measure",
+      "defEn": "a chœnix or certain dry measure"
+    },
+    {
+      "strong": "G3031",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λιβανωτός",
+      "translit": "libanōtós",
+      "glossEn": "censer",
+      "defEn": "frankincense, i.e. (by extension) a censer for burning it"
+    },
+    {
+      "strong": "G894",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἄψινθος",
+      "translit": "ápsinthos",
+      "glossEn": "wormwood",
+      "defEn": "wormwood (as a type of bitterness, i.e. (figuratively) calamity)"
+    },
+    {
+      "strong": "G3337",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μεταλλάσσω",
+      "translit": "metallássō",
+      "glossEn": "change",
+      "defEn": "to exchange"
+    },
+    {
+      "strong": "G5540",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χρῆσις",
+      "translit": "chrēsis",
+      "glossEn": "use",
+      "defEn": "employment, i.e. (specially), sexual intercourse (as an occupation of the body)"
+    },
+    {
+      "strong": "G65",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀγριέλαιος",
+      "translit": "agriélaios",
+      "glossEn": "olive tree (which is) wild",
+      "defEn": "an oleaster"
+    },
+    {
+      "strong": "G663",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποτομία",
+      "translit": "apotomía",
+      "glossEn": "severity",
+      "defEn": "(figuratively) decisiveness, i.e. rigor"
+    },
+    {
+      "strong": "G342",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνακαίνωσις",
+      "translit": "anakaínōsis",
+      "glossEn": "renewing",
+      "defEn": "renovation"
+    },
+    {
+      "strong": "G463",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνοχή",
+      "translit": "anochḗ",
+      "glossEn": "forbearance",
+      "defEn": "self-restraint, i.e. tolerance"
+    },
+    {
+      "strong": "G1347",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δικαίωσις",
+      "translit": "dikaíōsis",
+      "glossEn": "justification",
+      "defEn": "aquittal (for Christ's sake)"
+    },
+    {
+      "strong": "G2538",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καινότης",
+      "translit": "kainótēs",
+      "glossEn": "newness",
+      "defEn": "renewal (figuratively)"
+    },
+    {
+      "strong": "G3873",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παράκειμαι",
+      "translit": "parákeimai",
+      "glossEn": "be present",
+      "defEn": "to lie near, i.e. be at hand (figuratively, be prompt or easy)"
+    },
+    {
+      "strong": "G3627",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "οἰκτείρω",
+      "translit": "oikteírō",
+      "glossEn": "have compassion on",
+      "defEn": "to exercise pity"
+    },
+    {
+      "strong": "G4932",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συντέμνω",
+      "translit": "syntémnō",
+      "glossEn": "(cut) short",
+      "defEn": "to contract by cutting, i.e. (figuratively) do concisely (speedily)"
+    },
+    {
+      "strong": "H1480",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גּוּפָה",
+      "translit": "",
+      "glossEn": "body.",
+      "defEn": "a corpse (as closed to sense)"
+    },
+    {
+      "strong": "H2304",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֶדְוָה",
+      "translit": "",
+      "glossEn": "gladness, joy.",
+      "defEn": "rejoicing"
+    },
+    {
+      "strong": "H4063",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מֶדֶו",
+      "translit": "",
+      "glossEn": "garment.",
+      "defEn": "properly, extent, i.e. measure; by implication, a dress (as measured)"
+    },
+    {
+      "strong": "H6267",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עַתִּיק",
+      "translit": "",
+      "glossEn": "ancient, drawn.",
+      "defEn": "removed, i.e. weaned; also antique"
+    },
+    {
+      "strong": "H8143",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שֶׁנְהַבִּים",
+      "translit": "",
+      "glossEn": "ivory.",
+      "defEn": "probably, tooth of elephants, i.e. ivory tusk"
+    },
+    {
+      "strong": "H6995",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "קֹטֶן",
+      "translit": "",
+      "glossEn": "little finger.",
+      "defEn": "a pettiness, i.e. the little finger"
+    },
+    {
+      "strong": "H908",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בָּדָא",
+      "translit": "",
+      "glossEn": "devise, feign.",
+      "defEn": "(figuratively) to invent"
+    },
+    {
+      "strong": "H4580",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מָעוֹג",
+      "translit": "",
+      "glossEn": "cake, feast.",
+      "defEn": "a cake of bread; parasite"
+    }
+  ]
+}

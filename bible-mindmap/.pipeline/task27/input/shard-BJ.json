@@ -1,0 +1,906 @@
+{
+  "shard": "BJ",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H5538",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סִלָּא",
+      "translit": "",
+      "glossEn": "Silla.",
+      "defEn": "Silla, a place in Jerusalem"
+    },
+    {
+      "strong": "H5471",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סוֹא",
+      "translit": "",
+      "glossEn": "So.",
+      "defEn": "So, an Egyptian king"
+    },
+    {
+      "strong": "H5370",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נֵרְגַּל",
+      "translit": "",
+      "glossEn": "Nergal.",
+      "defEn": "Nergal, a Cuthite deity"
+    },
+    {
+      "strong": "H807",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אַשִׁימָא",
+      "translit": "",
+      "glossEn": "Ashima.",
+      "defEn": "Ashima, a deity of Hamath"
+    },
+    {
+      "strong": "H5026",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נִבְחַז",
+      "translit": "",
+      "glossEn": "Nibhaz.",
+      "defEn": "Nibchaz, a deity of the Avites"
+    },
+    {
+      "strong": "H8662",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "תַּרְתָּק",
+      "translit": "",
+      "glossEn": "Tartak.",
+      "defEn": "Tartak, a deity of the Avvites"
+    },
+    {
+      "strong": "H21",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֲבִי",
+      "translit": "",
+      "glossEn": "Abi.",
+      "defEn": "Abi, Hezekiah's mother"
+    },
+    {
+      "strong": "H5180",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נְחֻשְׁתָּן",
+      "translit": "",
+      "glossEn": "Nehushtan.",
+      "defEn": "something made of copper, i.e. the copper serpent of the Desert"
+    },
+    {
+      "strong": "H4922",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מְשֻׁלֶּמֶת",
+      "translit": "",
+      "glossEn": "Meshullemeth.",
+      "defEn": "Meshullemeth, an Israelitess"
+    },
+    {
+      "strong": "H2743",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חָרוּץ",
+      "translit": "",
+      "glossEn": "Haruz.",
+      "defEn": "Charuts, an Israelite"
+    },
+    {
+      "strong": "H3192",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יׇטְבָה",
+      "translit": "",
+      "glossEn": "Jotbah.",
+      "defEn": "Jotbah, a place in Palestine"
+    },
+    {
+      "strong": "H3040",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יְדִידָה",
+      "translit": "",
+      "glossEn": "Jedidah.",
+      "defEn": "Jedidah, an Israelitess"
+    },
+    {
+      "strong": "H2745",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חַרְחַס",
+      "translit": "",
+      "glossEn": "Harhas.",
+      "defEn": "Charchas, an Israelite"
+    },
+    {
+      "strong": "H2080",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "זְבִידָה",
+      "translit": "",
+      "glossEn": "Zebudah.",
+      "defEn": "Zebidah, an Israelitess"
+    },
+    {
+      "strong": "H5179",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נְחֻשְׁתָּא",
+      "translit": "",
+      "glossEn": "Nehushta.",
+      "defEn": "Nechushta, an Israelitess"
+    },
+    {
+      "strong": "H920",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "בִּדְקַר",
+      "translit": "",
+      "glossEn": "Bidkar.",
+      "defEn": "Bidkar, an Israelite"
+    },
+    {
+      "strong": "H1483",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "גּוּר",
+      "translit": "",
+      "glossEn": "Gur.",
+      "defEn": "Gur, a place in Palestine"
+    },
+    {
+      "strong": "H3380",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יְרֻבֶּשֶׁת",
+      "translit": "",
+      "glossEn": "Jerubbesheth.",
+      "defEn": "Jerubbesheth, a symbolic name for Gideon"
+    },
+    {
+      "strong": "H3041",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יְדִידְיָה",
+      "translit": "",
+      "glossEn": "Jedidiah.",
+      "defEn": "Jedidejah, a name of Solomon"
+    },
+    {
+      "strong": "H3501",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יִתְרָא",
+      "translit": "",
+      "glossEn": "Ithra.",
+      "defEn": "Jithra, an Israelite (or Ishmaelite)"
+    },
+    {
+      "strong": "H522",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אַמָּה",
+      "translit": "",
+      "glossEn": "Ammah.",
+      "defEn": "Ammah, a hill in Palestine"
+    },
+    {
+      "strong": "H1520",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "גִּיחַ",
+      "translit": "",
+      "glossEn": "Giah.",
+      "defEn": "Giach, a place in Palestine"
+    },
+    {
+      "strong": "H764",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אַרְמֹנִי",
+      "translit": "",
+      "glossEn": "Armoni.",
+      "defEn": "Armoni, an Israelite"
+    },
+    {
+      "strong": "H5593",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סַף",
+      "translit": "",
+      "glossEn": "Saph. Compare H5598 (סִפַּי).",
+      "defEn": "Saph, a Philistine"
+    },
+    {
+      "strong": "H5722",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "עֲדִינוֹ",
+      "translit": "",
+      "glossEn": "Adino.",
+      "defEn": "his spear"
+    },
+    {
+      "strong": "H89",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אָגֵא",
+      "translit": "",
+      "glossEn": "Agee.",
+      "defEn": "Age, an Israelite"
+    },
+    {
+      "strong": "H470",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֱלִיקָא",
+      "translit": "",
+      "glossEn": "Elika.",
+      "defEn": "Elika, an Israelite"
+    },
+    {
+      "strong": "H4012",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מְבֻנַּי",
+      "translit": "",
+      "glossEn": "Mebunnai.",
+      "defEn": "Mebunnai, an Israelite"
+    },
+    {
+      "strong": "H2460",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חֵלֶב",
+      "translit": "",
+      "glossEn": "Heleb.",
+      "defEn": "Cheleb, an Israelite"
+    },
+    {
+      "strong": "H1914",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "הִדַּי",
+      "translit": "",
+      "glossEn": "Hiddai.",
+      "defEn": "Hiddai, an Israelite"
+    },
+    {
+      "strong": "H3464",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יָשֵׁן",
+      "translit": "",
+      "glossEn": "Jashen.",
+      "defEn": "Jashen, an Israelite"
+    },
+    {
+      "strong": "H8325",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שָׁרַר",
+      "translit": "",
+      "glossEn": "Sharar.",
+      "defEn": "Sharar, an Israelite"
+    },
+    {
+      "strong": "H308",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֲחַסְבַּי",
+      "translit": "",
+      "glossEn": "Ahasbai.",
+      "defEn": "Achasbai, an Israelite"
+    },
+    {
+      "strong": "H6474",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פַּעֲרַי",
+      "translit": "",
+      "glossEn": "Paarai.",
+      "defEn": "Paarai, an Israelite"
+    },
+    {
+      "strong": "H1842",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "דָּן יַעַן",
+      "translit": "",
+      "glossEn": "Dan-jaan.",
+      "defEn": "Dan-Jaan, a place in Palestine"
+    },
+    {
+      "strong": "H3609",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כִּלְאָב",
+      "translit": "",
+      "glossEn": "Chileab.",
+      "defEn": "Kilab, an Israelite"
+    },
+    {
+      "strong": "H5225",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נָכוֹן",
+      "translit": "",
+      "glossEn": "Nachon.",
+      "defEn": "Nakon, probably an Israelite"
+    },
+    {
+      "strong": "H5522",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סִכּוּת",
+      "translit": "",
+      "glossEn": "tabernacle.",
+      "defEn": "an (idolatrous) booth"
+    },
+    {
+      "strong": "H3594",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כִּיּוּן",
+      "translit": "",
+      "glossEn": "Chiun.",
+      "defEn": "properly, a statue, i.e. idol; but used (by euphemism) forsome heathen deity (perhaps corresponding to Priapus or Baal-peor)"
+    },
+    {
+      "strong": "H7714",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שַׁדְרַךְ",
+      "translit": "",
+      "glossEn": "Shadrach.",
+      "defEn": "Shadrak, the Babylonian name of one of Daniel's companions"
+    },
+    {
+      "strong": "H4335",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מֵישַׁךְ",
+      "translit": "",
+      "glossEn": "Meshak.",
+      "defEn": "Meshak, an Israelite"
+    },
+    {
+      "strong": "H2217",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "זְרֻבָּבֶל",
+      "translit": "",
+      "glossEn": "Zerubbabel.",
+      "defEn": "{Zerubbabel, an Israelite}"
+    },
+    {
+      "strong": "H7598",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שְׁאַלְתִּיאֵל",
+      "translit": "",
+      "glossEn": "Shealtiel.",
+      "defEn": "{Shealtiel, an Israelite}"
+    },
+    {
+      "strong": "H3679",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כַּסְדַּי",
+      "translit": "",
+      "glossEn": "Chaldean.",
+      "defEn": "{a Kasdite, or descendant of Kesed; by implication, a Chaldaean (as if so descended); also an astrologer (as if proverbial of that people}"
+    },
+    {
+      "strong": "H144",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֲדָר",
+      "translit": "",
+      "glossEn": "Adar.",
+      "defEn": "{Adar, the 12th Hebrew month}"
+    },
+    {
+      "strong": "H3131",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יוֹסִפְיָה",
+      "translit": "",
+      "glossEn": "Josiphiah.",
+      "defEn": "Josiphjah, an Israelite"
+    },
+    {
+      "strong": "H6997",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "קָטָן",
+      "translit": "",
+      "glossEn": "Hakkatan (including the article).",
+      "defEn": "Katan, an Israelite"
+    },
+    {
+      "strong": "H7449",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "רֶסֶן",
+      "translit": "",
+      "glossEn": "Resen.",
+      "defEn": "Resen, a place in Assyrian"
+    },
+    {
+      "strong": "H3962",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "לֶשַׁע",
+      "translit": "",
+      "glossEn": "Lasha.",
+      "defEn": "Lesha, a place probably East of the Jordan"
+    },
+    {
+      "strong": "H5745",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "עוֹבָל",
+      "translit": "",
+      "glossEn": "Obal.",
+      "defEn": "Obal, a son of Joktan"
+    },
+    {
+      "strong": "H5611",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סְפָר",
+      "translit": "",
+      "glossEn": "Sephar.",
+      "defEn": "Sephar, a place in Arabia"
+    },
+    {
+      "strong": "H3252",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יִסְכָּה",
+      "translit": "",
+      "glossEn": "Iscah.",
+      "defEn": "Jiskah, sister of Lot"
+    },
+    {
+      "strong": "H1298",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "בֶּרַע",
+      "translit": "",
+      "glossEn": "Bera.",
+      "defEn": "Bera, a Sodomitish king"
+    },
+    {
+      "strong": "H1306",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "בִּרְשַׁע",
+      "translit": "",
+      "glossEn": "Birsha.",
+      "defEn": "Birsha, a king of Gomorrah"
+    },
+    {
+      "strong": "H8134",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שִׁנְאָב",
+      "translit": "",
+      "glossEn": "Shinab.",
+      "defEn": "Shinab, a Canaanite"
+    },
+    {
+      "strong": "H2327",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חוֹבָה",
+      "translit": "",
+      "glossEn": "Hobah.",
+      "defEn": "Chobah, a place in Syria"
+    },
+    {
+      "strong": "H3777",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כֶּשֶׂד",
+      "translit": "",
+      "glossEn": "Chesed.",
+      "defEn": "Kesed, a relative of Abraham"
+    },
+    {
+      "strong": "H2375",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חֲזוֹ",
+      "translit": "",
+      "glossEn": "Hazo.",
+      "defEn": "Chazo, a nephew of Abraham"
+    },
+    {
+      "strong": "H6394",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פִּלְדָּשׁ",
+      "translit": "",
+      "glossEn": "Pildash.",
+      "defEn": "Pildash, a relative of Abraham"
+    },
+    {
+      "strong": "H3044",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יִדְלָף",
+      "translit": "",
+      "glossEn": "Jidlaph.",
+      "defEn": "Jidlaph, a Mesopotamian"
+    },
+    {
+      "strong": "H2875",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "טֶבַח",
+      "translit": "",
+      "glossEn": "Tebah.",
+      "defEn": "Tebach, the name of a Mesopotamian and of an Israelite"
+    },
+    {
+      "strong": "H1514",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "גַּחַם",
+      "translit": "",
+      "glossEn": "Gaham.",
+      "defEn": "Gacham, a son of Nahor"
+    },
+    {
+      "strong": "H8477",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "תַּחַשׁ",
+      "translit": "",
+      "glossEn": "Thahash.",
+      "defEn": "Tachash, a relative of Abraham"
+    },
+    {
+      "strong": "H6230",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "עֵשֶׂק",
+      "translit": "",
+      "glossEn": "Esek.",
+      "defEn": "strife"
+    },
+    {
+      "strong": "H7856",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שִׂטְנָה",
+      "translit": "",
+      "glossEn": "Sitnah.",
+      "defEn": "Sitnah, the name of a well in Pal"
+    },
+    {
+      "strong": "H7656",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שִׁבְעָה",
+      "translit": "",
+      "glossEn": "Shebah.",
+      "defEn": "Shebah, a well in Palestine"
+    },
+    {
+      "strong": "H3067",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יְהוּדִית",
+      "translit": "",
+      "glossEn": "Judith.",
+      "defEn": "Jehudith, a Canaanitess"
+    },
+    {
+      "strong": "H2533",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חֶמְדָּן",
+      "translit": "",
+      "glossEn": "Hemdan.",
+      "defEn": "Chemdan, an Idumaean"
+    },
+    {
+      "strong": "H1924",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "הֲדַר",
+      "translit": "",
+      "glossEn": "Hadar.",
+      "defEn": "Hadar, an Edomite"
+    },
+    {
+      "strong": "H5113",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נוֹד",
+      "translit": "",
+      "glossEn": "Nod.",
+      "defEn": "Nod, the land of Cain"
+    },
+    {
+      "strong": "H2989",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יָבָל",
+      "translit": "",
+      "glossEn": "Jabal.",
+      "defEn": "Jabal, an antediluvian"
+    },
+    {
+      "strong": "H6837",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "צִפְיוֹן",
+      "translit": "",
+      "glossEn": "Ziphion. Compare H6827 (צְפוֹן).",
+      "defEn": "Tsiphjon, an Israelite"
+    },
+    {
+      "strong": "H278",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֵחִי",
+      "translit": "",
+      "glossEn": "Ehi.",
+      "defEn": "Echi, an Israelite"
+    },
+    {
+      "strong": "H4649",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מֻפִּים",
+      "translit": "",
+      "glossEn": "Muppim. Compare H8206 (שֻׁפִּים).",
+      "defEn": "Muppim, an Israelite"
+    },
+    {
+      "strong": "H7886",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שִׁילֹה",
+      "translit": "",
+      "glossEn": "Shiloh.",
+      "defEn": "Shiloh, an epithet of the Messiah"
+    },
+    {
+      "strong": "H3572",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כּוּשָׁן",
+      "translit": "",
+      "glossEn": "Cushan.",
+      "defEn": "Cushan, a region of Arabia"
+    },
+    {
+      "strong": "H1691",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "דִּבְלַיִם",
+      "translit": "",
+      "glossEn": "Diblaim.",
+      "defEn": "Diblajim, a symbolic name"
+    },
+    {
+      "strong": "H8020",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שַׁלְמַן",
+      "translit": "",
+      "glossEn": "Shalman. Compare H8022 (שַׁלְמַנְאֶסֶר).",
+      "defEn": "Shalman, a king apparently of Assyria"
+    },
+    {
+      "strong": "H8637",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "תִּרְגַּל",
+      "translit": "",
+      "glossEn": "teach to go.",
+      "defEn": "to cause to walk"
+    },
+    {
+      "strong": "H1180",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "בַּעֲלִי",
+      "translit": "",
+      "glossEn": "Baali.",
+      "defEn": "Baali, a symbolical name for Jehovah"
+    },
+    {
+      "strong": "H4644",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מֹף",
+      "translit": "",
+      "glossEn": "Memphis. Compare H5297 (נֹף).",
+      "defEn": "Moph, the capital of Lower Egypt"
+    },
+    {
+      "strong": "H4088",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מַדְמֵנָה",
+      "translit": "",
+      "glossEn": "Madmenah.",
+      "defEn": "Madmenah, a place in Palestine"
+    },
+    {
+      "strong": "H1966",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "הֵילֵל",
+      "translit": "",
+      "glossEn": "lucifer.",
+      "defEn": "the morning-star"
+    },
+    {
+      "strong": "H97",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "אֶגְלַיִם",
+      "translit": "",
+      "glossEn": "Eglaim.",
+      "defEn": "Eglajim, a place in Moab"
+    },
+    {
+      "strong": "H5623",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סַרְגּוֹן",
+      "translit": "",
+      "glossEn": "Sargon.",
+      "defEn": "Sargon, an Assyrian king"
+    },
+    {
+      "strong": "H4098",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מְדֻשָּׁה",
+      "translit": "",
+      "glossEn": "threshing.",
+      "defEn": "a threshing, i.e. (concretely and figuratively) down-trodden people"
+    },
+    {
+      "strong": "H1720",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "דְּדָנִים",
+      "translit": "",
+      "glossEn": "Dedanim.",
+      "defEn": "Dedanites, the descendants or inhabitants of Dedan"
+    },
+    {
+      "strong": "H6585",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פָּשַׂע",
+      "translit": "",
+      "glossEn": "go.",
+      "defEn": "to stride (from spreading the legs), i.e. rush upon"
+    },
+    {
+      "strong": "H6702",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "צוּת",
+      "translit": "",
+      "glossEn": "burn.",
+      "defEn": "to blaze"
+    },
+    {
+      "strong": "H6559",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פְּרָצִים",
+      "translit": "",
+      "glossEn": "Perazim.",
+      "defEn": "Peratsim, a mountain in Palestine"
+    },
+    {
+      "strong": "H2609",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חָנֵס",
+      "translit": "",
+      "glossEn": "Hanes.",
+      "defEn": "Chanes, a place in Egypt"
+    },
+    {
+      "strong": "H7088",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "קָפַד",
+      "translit": "",
+      "glossEn": "cut off.",
+      "defEn": "to contract, i.e. roll together"
+    },
+    {
+      "strong": "H6463",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פָּעָה",
+      "translit": "",
+      "glossEn": "cry.",
+      "defEn": "to scream"
+    },
+    {
+      "strong": "H5395",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "נָשַׁם",
+      "translit": "",
+      "glossEn": "destroy.",
+      "defEn": "properly, to blow away, i.e. destroy"
+    },
+    {
+      "strong": "H5719",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "עָדִין",
+      "translit": "",
+      "glossEn": "given to pleasures.",
+      "defEn": "voluptuous"
+    },
+    {
+      "strong": "H2413",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חָטַם",
+      "translit": "",
+      "glossEn": "refrain.",
+      "defEn": "to stop"
+    },
+    {
+      "strong": "H3000",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יְבֶרֶכְיָהוּ",
+      "translit": "",
+      "glossEn": "Jeberechiah.",
+      "defEn": "Jeberekjah, an Israelite"
+    },
+    {
+      "strong": "H1601",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "גֹּעָה",
+      "translit": "",
+      "glossEn": "Goath.",
+      "defEn": "Goah, a place near Jerusalem"
+    },
+    {
+      "strong": "H2262",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חֲבַצַּנְיָה",
+      "translit": "",
+      "glossEn": "Habazaniah.",
+      "defEn": "Chabatstsanjah, a Rechabite"
+    },
+    {
+      "strong": "H3012",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "יִגְדַּלְיָהוּ",
+      "translit": "",
+      "glossEn": "Igdaliah.",
+      "defEn": "Jigdaljah, an Israelite"
+    }
+  ]
+}

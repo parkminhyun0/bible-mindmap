@@ -1,0 +1,282 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 5,
+  "ties": [
+    {
+      "strong": "H1662",
+      "koRank": [
+        [
+          "가트하헤페르",
+          2
+        ],
+        [
+          "가트 하헤페르",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "gat-haḥēper",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H1016",
+      "koRank": [
+        [
+          "베트다곤",
+          2
+        ],
+        [
+          "베트 다곤",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "bêt-dāgôn",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H6495",
+      "koRank": [
+        [
+          "페카흐코아흐",
+          2
+        ],
+        [
+          "페카흐 코아흐",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "pĕqaḥ-qôaḥ",
+          3
+        ],
+        [
+          "pəqaḥ-qôaḥ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2991",
+      "koRank": [
+        [
+          "이브레암",
+          2
+        ],
+        [
+          "이블르암",
+          1
+        ],
+        [
+          "이브르암",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yiblĕʿām",
+          2
+        ],
+        [
+          "yibləʿām",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H8093",
+      "koRank": [
+        [
+          "심아",
+          4
+        ]
+      ],
+      "latRank": [
+        [
+          "šimʿâ",
+          2
+        ],
+        [
+          "šimʿāh",
+          2
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H1030",
+      "lemma": "בֵּית הַשִּׁמְשִׁי",
+      "translit": "bêt haššimšî",
+      "translitKo": "베트 하심시",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 '벧세메스 사람/인'(삼상 6:14)이다. 배포 선례에 따라 בֵּית는 '베트'로 띄어 적고, 다게쉬 포르테는 겹치지 않으며(하심시), 모음 앞 שׁ는 '시'로 적는다."
+    },
+    {
+      "strong": "H1662",
+      "lemma": "גַּת־הַחֵפֶר",
+      "translit": "gat-haḥēper",
+      "translitKo": "가트하헤페르",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 관용 표기는 '가드헤벨'이다."
+    },
+    {
+      "strong": "H1016",
+      "lemma": "בֵּית־דָּגוֹן",
+      "translit": "bêt-dāgôn",
+      "translitKo": "베트다곤",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 관용 표기는 '벧다곤'이다."
+    },
+    {
+      "strong": "H407",
+      "lemma": "אַכְשָׁף",
+      "translit": "ʾakšāp",
+      "translitKo": "아크샤프",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역개정 관용 표기는 '악삽'(수 11:1)이다. 배포 선례에 따라 무성 셰바 כ(k)는 '크'로 분리하여 학술 표기 '아크샤프'를 표제로 둔다."
+    },
+    {
+      "strong": "G1545",
+      "lemma": "ἔκβασις",
+      "translit": "ékbasis",
+      "translitKo": "에크바시스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 접두사 ἐκ-(ek-)는 배포 선례(G1537 ek→에크, G1544 ekbállō→에크발로, G1538 ekdéchomai→에크데코마이)에 따라 '에크'로 적어 '에크바시스'로 정한다."
+    },
+    {
+      "strong": "G4786",
+      "lemma": "συγκεράννυμι",
+      "translit": "synkeránnymi",
+      "translitKo": "쉰케란뉘미",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 접두사 συν-(συγ-)는 배포 선례에 따라 '쉰-'으로 적고, -ννυμι는 배포 선례(G2910 kremánnymi→크레만뉘미, G4563 sbénnymi→스벤뉘미)에 따라 '-ㄴ뉘미'로 적어 '쉰케란뉘미'로 정한다."
+    },
+    {
+      "strong": "H6495",
+      "lemma": "פְּקַח־קוֹחַ",
+      "translit": "pĕqaḥ-qôaḥ",
+      "translitKo": "페카흐코아흐",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H6383",
+      "lemma": "פִּלְאִי",
+      "translit": "pilʾî",
+      "translitKo": "필이",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 히브리어 음절 말 ל(l) 뒤의 א(ʾ)는 음절 경계를 유지하므로(선례: malʾāk→말아크, tiglat pilʾeser→티글라트 필에세르, ḥelʾâ→헬아) '필리'가 아닌 '필이'로 적는다."
+    },
+    {
+      "strong": "G2030",
+      "lemma": "ἐπόπτης",
+      "translit": "epóptēs",
+      "translitKo": "에폽테스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 헬라어 -πτ-(-pt-)는 받침 ㅂ으로 적는 일관된 선례(G2812 kléptēs→클렙테스, G3700 optánomai→옵타노마이, G1581 ekkóptō→에콥토)에 따라 '에폽테스'로 정한다."
+    },
+    {
+      "strong": "G1695",
+      "lemma": "Ἐμμαούς",
+      "translit": "Emmaoús",
+      "translitKo": "엠마우스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 관용 표기는 '엠마오'다(bookContext.js·bibleReferences.js·contextChapterCardsLuke.js, 눅 24:13)."
+    },
+    {
+      "strong": "H2991",
+      "lemma": "יִבְלְעָם",
+      "translit": "yiblĕʿām",
+      "translitKo": "이브레암",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역개정 관용 표기는 '이블르암'(수 17:11)이다. 묵음 셰바 ב는 '브'(선례: ʿibrî→이브리, gibʿōnî→기브오니), 유성 셰바 לְ는 '레'(선례: lĕbānôn→레바논, tôlĕdâ→톨레다), ע는 무음가로 처리하여 학술 표기 '이브레암'을 표제로 둔다."
+    },
+    {
+      "strong": "H8093",
+      "lemma": "שִׁמְעָה",
+      "translit": "šimʿâ",
+      "translitKo": "심아",
+      "votesKo": 4,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 '시므아'(삼하 13:3)이다. 배포 선례(H8092 šimʿāʾ→심아, H8095 šimʿôn→심온, H8096 šimʿî→심이)에 따라 묵음 셰바 שִׁם은 '심', ע는 무음가로 처리하여 학술 표기 '심아'를 표제로 둔다."
+    },
+    {
+      "strong": "G2454",
+      "lemma": "Ἰουδαϊσμός",
+      "translit": "Ioudaïsmós",
+      "translitKo": "유다이스모스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역개정 관용 표기는 '유대교'(갈 1:13)이다. 어두 Ἰου-(Iou-)는 배포 선례(G2453 Ioudaîos→유다이오스, G2449 Ioudaía→유다이아, G2455 Ioúdas→유다스)에 따라 '유-'로 적어 '유다이스모스'로 정한다."
+    }
+  ]
+}

@@ -1,0 +1,707 @@
+{
+  "shard": "BV",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H8186",
+      "lemma": "שַׁעֲרוּרָה",
+      "translit": "šaʿărûrâ",
+      "translitKo": "샤아루라",
+      "note": ""
+    },
+    {
+      "strong": "H1063",
+      "lemma": "בִּכּוּרָה",
+      "translit": "bikkûrâ",
+      "translitKo": "비쿠라",
+      "note": "배포된 H1061(בִּכּוּר)이 '빅쿠림'으로 적혀 있으나, 다게쉬 포르테를 받침으로 겹치지 않는 규칙에 따라 '비쿠라'로 적는다."
+    },
+    {
+      "strong": "H4974",
+      "lemma": "מְתֹם",
+      "translit": "mĕtōm",
+      "translitKo": "메톰",
+      "note": ""
+    },
+    {
+      "strong": "H6850",
+      "lemma": "צָפַף",
+      "translit": "ṣāpap",
+      "translitKo": "차파프",
+      "note": ""
+    },
+    {
+      "strong": "H4213",
+      "lemma": "מִזְעָר",
+      "translit": "mizʿār",
+      "translitKo": "미즈아르",
+      "note": ""
+    },
+    {
+      "strong": "H1281",
+      "lemma": "בָּרִיחַ",
+      "translit": "bārîaḥ",
+      "translitKo": "바리아흐",
+      "note": "어말 ח 앞 furtive patach를 살려 '마시아흐(מָשִׁיחַ)'와 같은 꼴로 적는다."
+    },
+    {
+      "strong": "H5218",
+      "lemma": "נָכֵא",
+      "translit": "nākēʾ",
+      "translitKo": "나케",
+      "note": ""
+    },
+    {
+      "strong": "H5194",
+      "lemma": "נֶטַע",
+      "translit": "neṭaʿ",
+      "translitKo": "네타",
+      "note": ""
+    },
+    {
+      "strong": "H6978",
+      "lemma": "קַו־קַו",
+      "translit": "qaw-qaw",
+      "translitKo": "카우카우",
+      "note": "ו가 음절 첫소리가 아니라 음절 말 반모음이라 '와/웨'가 아닌 '우'로 적는다."
+    },
+    {
+      "strong": "H6703",
+      "lemma": "צַח",
+      "translit": "ṣaḥ",
+      "translitKo": "차흐",
+      "note": ""
+    },
+    {
+      "strong": "H2973",
+      "lemma": "יָאַל",
+      "translit": "yāʾal",
+      "translitKo": "야알",
+      "note": ""
+    },
+    {
+      "strong": "H6892",
+      "lemma": "קֵא",
+      "translit": "qēʾ",
+      "translitKo": "케",
+      "note": ""
+    },
+    {
+      "strong": "H3514",
+      "lemma": "כֹּבֶד",
+      "translit": "kōbed",
+      "translitKo": "코베드",
+      "note": ""
+    },
+    {
+      "strong": "H8663",
+      "lemma": "תְּשֻׁאָה",
+      "translit": "tĕšuʾâ",
+      "translitKo": "테슈아",
+      "note": ""
+    },
+    {
+      "strong": "H6209",
+      "lemma": "עָרַר",
+      "translit": "ʿārar",
+      "translitKo": "아라르",
+      "note": ""
+    },
+    {
+      "strong": "H6682",
+      "lemma": "צְוָחָה",
+      "translit": "ṣĕwāḥâ",
+      "translitKo": "체와하",
+      "note": ""
+    },
+    {
+      "strong": "H7292",
+      "lemma": "רָהַב",
+      "translit": "rāhab",
+      "translitKo": "라하브",
+      "note": ""
+    },
+    {
+      "strong": "H5466",
+      "lemma": "סָדִין",
+      "translit": "sādîn",
+      "translitKo": "사딘",
+      "note": ""
+    },
+    {
+      "strong": "H2846",
+      "lemma": "חָתָה",
+      "translit": "ḥātâ",
+      "translitKo": "하타",
+      "note": ""
+    },
+    {
+      "strong": "H7448",
+      "lemma": "רֶסֶן",
+      "translit": "resen",
+      "translitKo": "레센",
+      "note": ""
+    },
+    {
+      "strong": "H7258",
+      "lemma": "רֵבֶץ",
+      "translit": "rēbeṣ",
+      "translitKo": "레베츠",
+      "note": ""
+    },
+    {
+      "strong": "H1824",
+      "lemma": "דְּמִי",
+      "translit": "dĕmî",
+      "translitKo": "데미",
+      "note": ""
+    },
+    {
+      "strong": "H3655",
+      "lemma": "כָּנָה",
+      "translit": "kānâ",
+      "translitKo": "카나",
+      "note": ""
+    },
+    {
+      "strong": "H6777",
+      "lemma": "צַמָּה",
+      "translit": "ṣammâ",
+      "translitKo": "차마",
+      "note": ""
+    },
+    {
+      "strong": "H1565",
+      "lemma": "גַּלְמוּד",
+      "translit": "galmûd",
+      "translitKo": "갈무드",
+      "note": ""
+    },
+    {
+      "strong": "H6473",
+      "lemma": "פָּעַר",
+      "translit": "pāʿar",
+      "translitKo": "파아르",
+      "note": ""
+    },
+    {
+      "strong": "H5934",
+      "lemma": "עָלוּם",
+      "translit": "ʿālûm",
+      "translitKo": "알룸",
+      "note": ""
+    },
+    {
+      "strong": "H7726",
+      "lemma": "שׁוֹבָב",
+      "translit": "šôbāb",
+      "translitKo": "쇼바브",
+      "note": ""
+    },
+    {
+      "strong": "H928",
+      "lemma": "בֶּהָלָה",
+      "translit": "behālâ",
+      "translitKo": "베할라",
+      "note": ""
+    },
+    {
+      "strong": "H5842",
+      "lemma": "עֵט",
+      "translit": "ʿēṭ",
+      "translitKo": "에트",
+      "note": ""
+    },
+    {
+      "strong": "H6761",
+      "lemma": "צֶלַע",
+      "translit": "ṣelaʿ",
+      "translitKo": "첼라",
+      "note": ""
+    },
+    {
+      "strong": "H5520",
+      "lemma": "סֹךְ",
+      "translit": "sōk",
+      "translitKo": "소크",
+      "note": ""
+    },
+    {
+      "strong": "H7033",
+      "lemma": "קָלָה",
+      "translit": "qālâ",
+      "translitKo": "칼라",
+      "note": ""
+    },
+    {
+      "strong": "H6752",
+      "lemma": "צֵלֶל",
+      "translit": "ṣēlel",
+      "translitKo": "첼렐",
+      "note": ""
+    },
+    {
+      "strong": "H3453",
+      "lemma": "יָשִׁישׁ",
+      "translit": "yāšîš",
+      "translitKo": "야시쉬",
+      "note": "앞 שׁ는 음절 첫소리라 '시', 어말 שׁ는 '쉬'로 적는다."
+    },
+    {
+      "strong": "H7683",
+      "lemma": "שָׁגַג",
+      "translit": "šāgag",
+      "translitKo": "샤가그",
+      "note": ""
+    },
+    {
+      "strong": "H5243",
+      "lemma": "נָמַל",
+      "translit": "nāmal",
+      "translitKo": "나말",
+      "note": ""
+    },
+    {
+      "strong": "H502",
+      "lemma": "אָלַף",
+      "translit": "ʾālap",
+      "translitKo": "알라프",
+      "note": ""
+    },
+    {
+      "strong": "H2141",
+      "lemma": "זָכַךְ",
+      "translit": "zākak",
+      "translitKo": "자카크",
+      "note": ""
+    },
+    {
+      "strong": "H7445",
+      "lemma": "רְנָנָה",
+      "translit": "rĕnānâ",
+      "translitKo": "레나나",
+      "note": ""
+    },
+    {
+      "strong": "H8443",
+      "lemma": "תּוֹעָפָה",
+      "translit": "tôʿāpâ",
+      "translitKo": "토아파",
+      "note": ""
+    },
+    {
+      "strong": "H5541",
+      "lemma": "סָלָה",
+      "translit": "sālâ",
+      "translitKo": "살라",
+      "note": "시편의 '셀라(סֶלָה, H5542)'와 다른 낱말이다. 여기서는 카메츠라 '살라'로 적는다."
+    },
+    {
+      "strong": "H7685",
+      "lemma": "שָׂגָה",
+      "translit": "śāgâ",
+      "translitKo": "사가",
+      "note": "שׂ(ś)이므로 '샤'가 아니라 '사'로 적는다. H7683 šāgag(샤가그)와 자음이 다르다."
+    },
+    {
+      "strong": "H8367",
+      "lemma": "שָׁתַק",
+      "translit": "šātaq",
+      "translitKo": "샤타크",
+      "note": ""
+    },
+    {
+      "strong": "H139",
+      "lemma": "אֲדֹנִי־צֶדֶק",
+      "translit": "ʾădōnî-ṣedeq",
+      "translitKo": "아도니체데크",
+      "note": "개역 관용 표기는 '아도니세덱'이나, 학술 표기를 표제로 두어 צ를 '체', ק를 '크'로 적는다."
+    },
+    {
+      "strong": "H4529",
+      "lemma": "מָסָה",
+      "translit": "māsâ",
+      "translitKo": "마사",
+      "note": ""
+    },
+    {
+      "strong": "H4610",
+      "lemma": "מַעֲלֵה עַקְרַבִּים",
+      "translit": "maʿălēh ʿaqrabbîm",
+      "translitKo": "마알레 아크라빔",
+      "note": "개역 관용은 '아그랍빔 비탈길'이다. 학술 표기를 표제로 두고 ק는 '크', 다게쉬 포르테는 겹치지 않는다."
+    },
+    {
+      "strong": "H5852",
+      "lemma": "עֲטָרוֹת",
+      "translit": "ʿăṭārôt",
+      "translitKo": "아타로트",
+      "note": "개역 관용은 '아다롯'이나, 배포된 ʿăṭārâ(아타라)와 같은 어근이므로 학술 표기로 '아타로트'를 표제로 둔다."
+    },
+    {
+      "strong": "H5853",
+      "lemma": "עַטְרוֹת אַדָּר",
+      "translit": "ʿaṭrôt ʾaddār",
+      "translitKo": "아트로트 아다르",
+      "note": "개역 관용은 '아다롯 앗달'이다. 학술 표기를 표제로 두고 다게쉬 포르테는 겹치지 않는다."
+    },
+    {
+      "strong": "H42",
+      "lemma": "אֲבִינֹעַם",
+      "translit": "ʾăbînōʿam",
+      "translitKo": "아비노암",
+      "note": "어말 ע 앞 furtive patach가 '암'으로 실현되어 관용 표기와 결과가 같다."
+    },
+    {
+      "strong": "H1902",
+      "lemma": "הִגָּיוֹן",
+      "translit": "higgāyôn",
+      "translitKo": "히가욘",
+      "note": "개역 시편의 관용 표기는 '힉가욘'이나, 다게쉬 포르테를 받침으로 겹치지 않는 규칙에 따라 '히가욘'으로 적는다."
+    },
+    {
+      "strong": "H7903",
+      "lemma": "שְׁכֹבֶת",
+      "translit": "šĕkōbet",
+      "translitKo": "셰코베트",
+      "note": ""
+    },
+    {
+      "strong": "H981",
+      "lemma": "בָּטָא",
+      "translit": "bāṭāʾ",
+      "translitKo": "바타",
+      "note": ""
+    },
+    {
+      "strong": "H603",
+      "lemma": "אֲנָקָה",
+      "translit": "ʾănāqâ",
+      "translitKo": "아나카",
+      "note": ""
+    },
+    {
+      "strong": "H1749",
+      "lemma": "דּוֹנַג",
+      "translit": "dônag",
+      "translitKo": "도나그",
+      "note": ""
+    },
+    {
+      "strong": "H174",
+      "lemma": "אֲהָלִים",
+      "translit": "ʾăhālîm",
+      "translitKo": "아할림",
+      "note": ""
+    },
+    {
+      "strong": "H6302",
+      "lemma": "פָּדוּי",
+      "translit": "pādûy",
+      "translitKo": "파두이",
+      "note": ""
+    },
+    {
+      "strong": "H1621",
+      "lemma": "גַּרְגְּרוֹת",
+      "translit": "gargĕrôt",
+      "translitKo": "가르게로트",
+      "note": ""
+    },
+    {
+      "strong": "H8424",
+      "lemma": "תּוּגָה",
+      "translit": "tûgâ",
+      "translitKo": "투가",
+      "note": ""
+    },
+    {
+      "strong": "H5107",
+      "lemma": "נוּב",
+      "translit": "nûb",
+      "translitKo": "누브",
+      "note": ""
+    },
+    {
+      "strong": "H1790",
+      "lemma": "דַּךְ",
+      "translit": "dak",
+      "translitKo": "다크",
+      "note": ""
+    },
+    {
+      "strong": "H8496",
+      "lemma": "תֹּךְ",
+      "translit": "tōk",
+      "translitKo": "토크",
+      "note": ""
+    },
+    {
+      "strong": "H1713",
+      "lemma": "דָּגַל",
+      "translit": "dāgal",
+      "translitKo": "다갈",
+      "note": ""
+    },
+    {
+      "strong": "H1747",
+      "lemma": "דּוּמִיָּה",
+      "translit": "dûmiyyâ",
+      "translitKo": "두미야",
+      "note": ""
+    },
+    {
+      "strong": "G4148",
+      "lemma": "πλουτίζω",
+      "translit": "ploutízō",
+      "translitKo": "플루티조",
+      "note": ""
+    },
+    {
+      "strong": "G3559",
+      "lemma": "νουθεσία",
+      "translit": "nouthesía",
+      "translitKo": "누테시아",
+      "note": ""
+    },
+    {
+      "strong": "G5297",
+      "lemma": "ὑποφέρω",
+      "translit": "hypophérō",
+      "translitKo": "휘포페로",
+      "note": ""
+    },
+    {
+      "strong": "G3587",
+      "lemma": "ξυράω",
+      "translit": "xyráō",
+      "translitKo": "크시라오",
+      "note": "ξυ는 배포된 ξύλον→'크실론' 선례를 따라 '크쉬'가 아닌 '크시'로 적는다."
+    },
+    {
+      "strong": "G2619",
+      "lemma": "κατακαλύπτω",
+      "translit": "katakalýptō",
+      "translitKo": "카타칼뤼프토",
+      "note": ""
+    },
+    {
+      "strong": "G4914",
+      "lemma": "συνήθεια",
+      "translit": "synḗtheia",
+      "translitKo": "쉬네테이아",
+      "note": ""
+    },
+    {
+      "strong": "G4301",
+      "lemma": "προλαμβάνω",
+      "translit": "prolambánō",
+      "translitKo": "프롤람바노",
+      "note": ""
+    },
+    {
+      "strong": "G1243",
+      "lemma": "διαίρεσις",
+      "translit": "diaíresis",
+      "translitKo": "디아이레시스",
+      "note": ""
+    },
+    {
+      "strong": "G2386",
+      "lemma": "ἴαμα",
+      "translit": "íama",
+      "translitKo": "이아마",
+      "note": ""
+    },
+    {
+      "strong": "G1253",
+      "lemma": "διάκρισις",
+      "translit": "diákrisis",
+      "translitKo": "디아크리시스",
+      "note": ""
+    },
+    {
+      "strong": "G1293",
+      "lemma": "διαστολή",
+      "translit": "diastolḗ",
+      "translitKo": "디아스톨레",
+      "note": ""
+    },
+    {
+      "strong": "G832",
+      "lemma": "αὐλέω",
+      "translit": "auléō",
+      "translitKo": "아울레오",
+      "note": "αυ는 ευ와 달리 '아우'로 적는다. 배포된 κατάπαυσις→'카타파우시스' 선례."
+    },
+    {
+      "strong": "G5575",
+      "lemma": "ψευδομάρτυρ",
+      "translit": "pseudomártyr",
+      "translitKo": "프슈도마르튀르",
+      "note": "ευ를 '유' 계열 한 음절로 적어 ψευ는 '프슈'가 된다."
+    },
+    {
+      "strong": "G3786",
+      "lemma": "ὄφελος",
+      "translit": "óphelos",
+      "translitKo": "오펠로스",
+      "note": ""
+    },
+    {
+      "strong": "G110",
+      "lemma": "ἀθανασία",
+      "translit": "athanasía",
+      "translitKo": "아타나시아",
+      "note": ""
+    },
+    {
+      "strong": "G2119",
+      "lemma": "εὐκαιρέω",
+      "translit": "eukairéō",
+      "translitKo": "유카이레오",
+      "note": ""
+    },
+    {
+      "strong": "G4793",
+      "lemma": "συγκρίνω",
+      "translit": "synkrínō",
+      "translitKo": "슁크리노",
+      "note": "κ 앞의 γ는 비음이라 배포된 σάλπιγξ→'살핑크스' 선례대로 받침 ㅇ으로 적는다."
+    },
+    {
+      "strong": "G1370",
+      "lemma": "διχοστασία",
+      "translit": "dichostasía",
+      "translitKo": "디코스타시아",
+      "note": ""
+    },
+    {
+      "strong": "G2302",
+      "lemma": "θέατρον",
+      "translit": "théatron",
+      "translitKo": "테아트론",
+      "note": ""
+    },
+    {
+      "strong": "G3807",
+      "lemma": "παιδαγωγός",
+      "translit": "paidagōgós",
+      "translitKo": "파이다고고스",
+      "note": ""
+    },
+    {
+      "strong": "G1505",
+      "lemma": "εἰλικρίνεια",
+      "translit": "eilikríneia",
+      "translitKo": "에일리크리네이아",
+      "note": ""
+    },
+    {
+      "strong": "G4874",
+      "lemma": "συναναμίγνυμι",
+      "translit": "synanamígnymi",
+      "translitKo": "쉬나나미그뉘미",
+      "note": ""
+    },
+    {
+      "strong": "G2922",
+      "lemma": "κριτήριον",
+      "translit": "kritḗrion",
+      "translitKo": "크리테리온",
+      "note": ""
+    },
+    {
+      "strong": "G3782",
+      "lemma": "ὀφειλή",
+      "translit": "opheilḗ",
+      "translitKo": "오페일레",
+      "note": ""
+    },
+    {
+      "strong": "G4980",
+      "lemma": "σχολάζω",
+      "translit": "scholázō",
+      "translitKo": "스콜라조",
+      "note": ""
+    },
+    {
+      "strong": "G5084",
+      "lemma": "τήρησις",
+      "translit": "tḗrēsis",
+      "translitKo": "테레시스",
+      "note": ""
+    },
+    {
+      "strong": "G3435",
+      "lemma": "μολύνω",
+      "translit": "molýnō",
+      "translitKo": "몰뤼노",
+      "note": ""
+    },
+    {
+      "strong": "G248",
+      "lemma": "ἀλοάω",
+      "translit": "aloáō",
+      "translitKo": "알로아오",
+      "note": ""
+    },
+    {
+      "strong": "G722",
+      "lemma": "ἀροτριόω",
+      "translit": "arotrióō",
+      "translitKo": "아로트리오오",
+      "note": ""
+    },
+    {
+      "strong": "G5186",
+      "lemma": "τυφλόω",
+      "translit": "typhlóō",
+      "translitKo": "튀플로오",
+      "note": ""
+    },
+    {
+      "strong": "G443",
+      "lemma": "ἀνθρωποκτόνος",
+      "translit": "anthrōpoktónos",
+      "translitKo": "안트로포크토노스",
+      "note": ""
+    },
+    {
+      "strong": "G2607",
+      "lemma": "καταγινώσκω",
+      "translit": "kataginṓskō",
+      "translitKo": "카타기노스코",
+      "note": ""
+    },
+    {
+      "strong": "G155",
+      "lemma": "αἴτημα",
+      "translit": "aítēma",
+      "translitKo": "아이테마",
+      "note": ""
+    },
+    {
+      "strong": "G1290",
+      "lemma": "διασπορά",
+      "translit": "diasporá",
+      "translitKo": "디아스포라",
+      "note": ""
+    },
+    {
+      "strong": "G3084",
+      "lemma": "λυτρόω",
+      "translit": "lytróō",
+      "translitKo": "뤼트로오",
+      "note": ""
+    },
+    {
+      "strong": "G2487",
+      "lemma": "ἴχνος",
+      "translit": "íchnos",
+      "translitKo": "이크노스",
+      "note": ""
+    }
+  ]
+}

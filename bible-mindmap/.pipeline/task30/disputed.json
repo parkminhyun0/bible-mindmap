@@ -1,0 +1,1330 @@
+{
+  "items": [
+    {
+      "shard": "BQ",
+      "strong": "H5244",
+      "lemma": "נְמָלָה",
+      "lang": "hebrew",
+      "glossEn": "ant.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nəmālā",
+          "translitKo": "느말라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nemālāh",
+          "translitKo": "네말라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nəmālāh",
+          "translitKo": "느말라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nəmālâ",
+          "translitKo": "네말라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "H7310",
+      "lemma": "רְוָיָה",
+      "lang": "hebrew",
+      "glossEn": "runneth over, wealthy.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "rəwāyā",
+          "translitKo": "르와야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rewayāh",
+          "translitKo": "레와야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rəwāyāh",
+          "translitKo": "르와야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rəwāyâ",
+          "translitKo": "레와야",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "G4211",
+      "lemma": "πορφυρόπωλις",
+      "lang": "greek",
+      "glossEn": "seller of purple",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "porphyrópōlis",
+          "translitKo": "포르피로폴리스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "porphyrópōlis",
+          "translitKo": "포르퓌로폴리스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "porphyrópōlis",
+          "translitKo": "포르피로폴리스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "porphyrópōlis",
+          "translitKo": "포르퓌로폴리스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "H3880",
+      "lemma": "לִוְיָה",
+      "lang": "hebrew",
+      "glossEn": "ornament.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "liwyā",
+          "translitKo": "리와",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "liwyāh",
+          "translitKo": "리와야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "liwyāh",
+          "translitKo": "리와야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "liwyâ",
+          "translitKo": "리위야",
+          "note": "ו 가 음절 끝에 오는 자음 w 라 위로 받아 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "G753",
+      "lemma": "ἀρχιτέκτων",
+      "lang": "greek",
+      "glossEn": "masterbuilder",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "architéktōn",
+          "translitKo": "아르히텍톤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "architéktōn",
+          "translitKo": "아르히테크톤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "architéktōn",
+          "translitKo": "아르키텍톤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "architéktōn",
+          "translitKo": "아르키텍톤",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "G3125",
+      "lemma": "μάμμη",
+      "lang": "greek",
+      "glossEn": "grandmother",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mámmē",
+          "translitKo": "맘메",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mámmē",
+          "translitKo": "마메",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mámmē",
+          "translitKo": "맘메",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mámmē",
+          "translitKo": "마메",
+          "note": "겹자음 μμ 는 탈라사(θάλασσα) 선례대로 겹쳐 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "G1546",
+      "lemma": "ἐκβολή",
+      "lang": "greek",
+      "glossEn": "+ lighten the ship",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekbolḗ",
+          "translitKo": "엑볼레",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekbolḗ",
+          "translitKo": "에크볼레",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekbolḗ",
+          "translitKo": "엑볼레",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekbolḗ",
+          "translitKo": "에크볼레",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BQ",
+      "strong": "G2510",
+      "lemma": "καθάπτω",
+      "lang": "greek",
+      "glossEn": "fasten on",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "katháptō",
+          "translitKo": "카답토",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "katháptō",
+          "translitKo": "카탑토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "katháptō",
+          "translitKo": "카타프토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "katháptō",
+          "translitKo": "카타프토",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G1420",
+      "lemma": "δυσεντερία",
+      "lang": "greek",
+      "glossEn": "bloody flux",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "dysentería",
+          "translitKo": "뒤센테리아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "dysentería",
+          "translitKo": "디센테리아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "dysentería",
+          "translitKo": "드위스에느트에르이́아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "dysentería",
+          "translitKo": "뒤센테리아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4974",
+      "lemma": "σφυρόν",
+      "lang": "greek",
+      "glossEn": "ancle bone",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "sphyrón",
+          "translitKo": "스퓌론",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "sphyrón",
+          "translitKo": "스피론",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sphyrón",
+          "translitKo": "스프흐위르오́느",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sphyrón",
+          "translitKo": "스퓌론",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G1031",
+      "lemma": "βρύχω",
+      "lang": "greek",
+      "glossEn": "gnash",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "brýchō",
+          "translitKo": "브뤼코",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "brýchō",
+          "translitKo": "브리코",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "brýchō",
+          "translitKo": "브르위́ㅋ흐오̄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "brýchō",
+          "translitKo": "브뤼코",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4792",
+      "lemma": "συγκομίζω",
+      "lang": "greek",
+      "glossEn": "carry",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synkomízō",
+          "translitKo": "슁코미조",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synkomízō",
+          "translitKo": "싱코미조",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synkomízō",
+          "translitKo": "스위느크오므이́즈오̄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synkomízō",
+          "translitKo": "쉰코미조",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G3320",
+      "lemma": "μεσότοιχον",
+      "lang": "greek",
+      "glossEn": "middle wall",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mesótoichon",
+          "translitKo": "메소토이콘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mesótoichon",
+          "translitKo": "메소이콘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mesótoichon",
+          "translitKo": "므에스오́트오ㅋ흐오느",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mesótoichon",
+          "translitKo": "메소토이콘",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G2375",
+      "lemma": "θυρεός",
+      "lang": "greek",
+      "glossEn": "shield",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "thyreós",
+          "translitKo": "튀레오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "thyreós",
+          "translitKo": "티레오스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "thyreós",
+          "translitKo": "트흐위르에́스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "thyreós",
+          "translitKo": "튀레오스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G2366",
+      "lemma": "θύελλα",
+      "lang": "greek",
+      "glossEn": "tempest",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "thýella",
+          "translitKo": "튀엘라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "thýella",
+          "translitKo": "티엘라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "thýella",
+          "translitKo": "트흐위́에르르아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "thýella",
+          "translitKo": "튀엘라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G3452",
+      "lemma": "μυελός",
+      "lang": "greek",
+      "glossEn": "marrow",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "myelós",
+          "translitKo": "뮐로스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "myelós",
+          "translitKo": "미엘로스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "myelós",
+          "translitKo": "므위르오́스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "myelós",
+          "translitKo": "뮈엘로스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4713",
+      "lemma": "στάμνος",
+      "lang": "greek",
+      "glossEn": "pot",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "stámnos",
+          "translitKo": "스타므노스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "stámnos",
+          "translitKo": "스타므노스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "stámnos",
+          "translitKo": "스트아́므느오스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "stámnos",
+          "translitKo": "스탐노스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G5208",
+      "lemma": "ὕλη",
+      "lang": "greek",
+      "glossEn": "matter",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hýlē",
+          "translitKo": "휠레",
+          "note": "υ의 학술 음가를 반영한 표기."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "hýlē",
+          "translitKo": "힐레",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hýlē",
+          "translitKo": "흐위́르에̄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "hýlē",
+          "translitKo": "휠레",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G232",
+      "lemma": "ἁλιεύω",
+      "lang": "greek",
+      "glossEn": "go a-fishing",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "halieúō",
+          "translitKo": "할리에우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "halieúō",
+          "translitKo": "할리에오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "halieúō",
+          "translitKo": "흐아르이́오̄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "halieúō",
+          "translitKo": "할리유오",
+          "note": "ευ는 유 계열 한 음절. 선례 바실류오(βασιλεύω)·모이큐오(μοιχεύω)."
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G1903",
+      "lemma": "ἐπενδύτης",
+      "lang": "greek",
+      "glossEn": "fisher's coat",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ependýtēs",
+          "translitKo": "에펜뒤테스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ependýtēs",
+          "translitKo": "에펜디테스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ependýtēs",
+          "translitKo": "에프에느드위́트에̄스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ependýtēs",
+          "translitKo": "에펜뒤테스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4795",
+      "lemma": "συγκυρία",
+      "lang": "greek",
+      "glossEn": "chance",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synkyría",
+          "translitKo": "슁퀴리아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synkyría",
+          "translitKo": "싱키리아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synkyría",
+          "translitKo": "스위느크위르이́아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synkyría",
+          "translitKo": "쉰퀴리아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G289",
+      "lemma": "ἀμπελουργός",
+      "lang": "greek",
+      "glossEn": "vine-dresser",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ampelourgós",
+          "translitKo": "암펠우르고스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ampelourgós",
+          "translitKo": "암펠루르고스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ampelourgós",
+          "translitKo": "아므프에르오르그오́스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ampelourgós",
+          "translitKo": "암펠루르고스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G1146",
+      "lemma": "δακτύλιος",
+      "lang": "greek",
+      "glossEn": "ring",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "daktýlios",
+          "translitKo": "닥튈리오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "daktýlios",
+          "translitKo": "닥틸리오스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "daktýlios",
+          "translitKo": "드아크트위́르이스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "daktýlios",
+          "translitKo": "닥튈리오스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4858",
+      "lemma": "συμφωνία",
+      "lang": "greek",
+      "glossEn": "music",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "symphōnía",
+          "translitKo": "쉼포니아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "symphōnía",
+          "translitKo": "심포니아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "symphōnía",
+          "translitKo": "스위므프흐오̄느이́아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "symphōnía",
+          "translitKo": "쉼포니아",
+          "note": "관용 외래어는 '심포니'. 학술 표기를 표제로 둔다. 선례 쉼포네오(συμφωνέω)."
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4807",
+      "lemma": "συκάμινος",
+      "lang": "greek",
+      "glossEn": "sycamine tree",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "sykáminos",
+          "translitKo": "쉬카미노스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "sykáminos",
+          "translitKo": "시카미노스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sykáminos",
+          "translitKo": "스위크아́므이느오스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sykáminos",
+          "translitKo": "쉬카미노스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4809",
+      "lemma": "συκομωραία",
+      "lang": "greek",
+      "glossEn": "sycamore tree",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "sykomōraía",
+          "translitKo": "쉬코모라이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "sykomōraía",
+          "translitKo": "시코모라이아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sykomōraía",
+          "translitKo": "스위크오므오̄르아́아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sykomōraía",
+          "translitKo": "쉬코모라이아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G5167",
+      "lemma": "τρυγών",
+      "lang": "greek",
+      "glossEn": "turtle-dove",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "trygṓn",
+          "translitKo": "튀곤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "trygṓn",
+          "translitKo": "트리곤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "trygṓn",
+          "translitKo": "트르위그오̄́느",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "trygṓn",
+          "translitKo": "트뤼곤",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G5473",
+      "lemma": "χαλκίον",
+      "lang": "greek",
+      "glossEn": "brazen vessel",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "chalkíon",
+          "translitKo": "할키온",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "chalkíon",
+          "translitKo": "할키온",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "chalkíon",
+          "translitKo": "ㅋ흐아르크이́오느",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "chalkíon",
+          "translitKo": "칼키온",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G2947",
+      "lemma": "κυλιόω",
+      "lang": "greek",
+      "glossEn": "wallow",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kylióō",
+          "translitKo": "퀼리오오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kylióō",
+          "translitKo": "킬리오오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kylióō",
+          "translitKo": "크위르이́오̄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kylióō",
+          "translitKo": "퀼리오오",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G4552",
+      "lemma": "σάπφειρος",
+      "lang": "greek",
+      "glossEn": "sapphire",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "sáppheiros",
+          "translitKo": "삽페이로스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "sáppheiros",
+          "translitKo": "사페이로스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "sáppheiros",
+          "translitKo": "스아́프프흐에르오스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sáppheiros",
+          "translitKo": "사페이로스",
+          "note": "πφ는 겹쳐 적지 않는다. 선례 마타이오스(Ματθαῖος). 관용 외래어는 '사파이어'."
+        }
+      ]
+    },
+    {
+      "shard": "BR",
+      "strong": "G969",
+      "lemma": "βήρυλλος",
+      "lang": "greek",
+      "glossEn": "beryl",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bḗryllos",
+          "translitKo": "베륄로스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bḗryllos",
+          "translitKo": "베릴로스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bḗryllos",
+          "translitKo": "브에̄́르위르르오스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bḗryllos",
+          "translitKo": "베륄로스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H7471",
+      "lemma": "רְעִי",
+      "lang": "hebrew",
+      "glossEn": "pasture.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "reʿî",
+          "translitKo": "레히",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "rĕʿî",
+          "translitKo": "레히",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "rĕʿî",
+          "translitKo": "레위",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rĕʿî",
+          "translitKo": "레이",
+          "note": "ע를 한글로 따로 적지 않아 rĕ-ʿî가 \"레이\"가 된다."
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H7053",
+      "lemma": "קִלְּשׁוֹן",
+      "lang": "hebrew",
+      "glossEn": "fork.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "qilšôn",
+          "translitKo": "킬숀",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "qillešôn",
+          "translitKo": "킬레숀",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "qilšôn",
+          "translitKo": "킬숀",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qillĕšôn",
+          "translitKo": "킬레숀",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H6498",
+      "lemma": "פַּקֻּעָה",
+      "lang": "hebrew",
+      "glossEn": "gourd.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "paqquʿâ",
+          "translitKo": "팍쿠아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "paqquʿâ",
+          "translitKo": "파쿠아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "paqquʿāh",
+          "translitKo": "팍쿠아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "paqquʿâ",
+          "translitKo": "파쿠아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H2841",
+      "lemma": "חַשְׁרָה",
+      "lang": "hebrew",
+      "glossEn": "dark.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥašrâ",
+          "translitKo": "하쉬라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥašrâ",
+          "translitKo": "하슈라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥašrāh",
+          "translitKo": "하슈라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥašrâ",
+          "translitKo": "하쉬라",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H6361",
+      "lemma": "פַּטִּישׁ",
+      "lang": "hebrew",
+      "glossEn": "hose.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "paṭṭîš",
+          "translitKo": "팟티쉬",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "paṭṭîš",
+          "translitKo": "팟티쉬",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "paṭṭîš",
+          "translitKo": "파트티쉬",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "paṭṭîš",
+          "translitKo": "파티쉬",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H8429",
+      "lemma": "תְּוַהּ",
+      "lang": "hebrew",
+      "glossEn": "be astonied.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "tĕwah",
+          "translitKo": "테와",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "tĕwāh",
+          "translitKo": "테와",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "tĕwāh",
+          "translitKo": "트와",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "tĕwah",
+          "translitKo": "테와흐",
+          "note": "어말 הּ(마피크)는 자음 h이므로 \"흐\"로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H4567",
+      "lemma": "מַעְבָד",
+      "lang": "hebrew",
+      "glossEn": "work.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "maʿbād",
+          "translitKo": "마바드",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "maʿbāḏ",
+          "translitKo": "마아바드",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "maʿbād",
+          "translitKo": "마아바드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "maʿbād",
+          "translitKo": "마바드",
+          "note": "묵음 ע(shva 아래)를 한글로 적지 않아 \"마바드\"가 된다."
+        }
+      ]
+    },
+    {
+      "shard": "BS",
+      "strong": "H1080",
+      "lemma": "בְּלָא",
+      "lang": "hebrew",
+      "glossEn": "wear out.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bĕlāʾ",
+          "translitKo": "벨라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bĕlāʾ",
+          "translitKo": "블라",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bĕlāʾ",
+          "translitKo": "블라",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bĕlāʾ",
+          "translitKo": "벨라",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}

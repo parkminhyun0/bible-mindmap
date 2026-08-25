@@ -1,0 +1,789 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "H3780",
+      "translit": "kāśâ",
+      "translitKo": "카사",
+      "evidence": "H4229 māḥâ 마하 · H7086 qĕʿārâ 케아라 — 어말 ־ָה는 â로 적고 한글에서 ה를 적지 않는다. H7025 qîr ḥereś 키르 헤레스 — ś는 ㅅ. 규칙1로 כּ는 k.",
+      "note": ""
+    },
+    {
+      "strong": "H7876",
+      "translit": "šāyâ",
+      "translitKo": "샤야",
+      "evidence": "H5753 ʿāwâ 아와 · H1806 dĕlāyâ 델라야 — ־ָיָה는 야로 닫는다. H7911 šākaḥ 샤카흐 — 음절 첫소리 שׁ는 샤.",
+      "note": ""
+    },
+    {
+      "strong": "H4198",
+      "translit": "māzeh",
+      "translitKo": "마제",
+      "evidence": "H5929 ʿāleh 알레 · H7097 qāṣeh 카체 — 어말 ־ֶה는 eh로 적되 한글에서 ה를 적지 않는다. H2226 zeraḥ 제라흐 — ז는 ㅈ.",
+      "note": ""
+    },
+    {
+      "strong": "H4815",
+      "translit": "mĕrîrî",
+      "translitKo": "메리리",
+      "evidence": "H4847 mĕrārî 메라리 · H4805 mĕrî 메리 · H4807 mĕrîb baʿal 메리브 바알 — 어두 유성 쉐바는 메로 적는다(배포 455건이 모두 온전한 모음).",
+      "note": ""
+    },
+    {
+      "strong": "H6284",
+      "translit": "pāʾâ",
+      "translitKo": "파아",
+      "evidence": "H2244 ḥābāʾ 하바 — ʾ는 한글로 적지 않는다. H6605 pātaḥ 파타흐 — פּ는 ㅍ. H4229 māḥâ 마하 — 어말 â.",
+      "note": ""
+    },
+    {
+      "strong": "H3647",
+      "translit": "kāmas",
+      "translitKo": "카마스",
+      "evidence": "H3792 kĕtāb 케타브 — 규칙1로 כּ는 k(ḵ 아님). H5437 sābab 사바브 — 어말 자음은 별도 음절로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H2245",
+      "translit": "ḥābab",
+      "translitKo": "하바브",
+      "evidence": "H5437 sābab 사바브 · H1641 gārar 가라르 — 겹자음 어근의 어말 자음은 브/르로 편다. 규칙1로 ḇ가 아니라 b.",
+      "note": ""
+    },
+    {
+      "strong": "H8497",
+      "translit": "tākâ",
+      "translitKo": "타카",
+      "evidence": "H6186 ʿārak 아라크 — 규칙1로 כ는 k. H4229 māḥâ 마하 — 어말 ־ָה는 â.",
+      "note": ""
+    },
+    {
+      "strong": "H6988",
+      "translit": "qĕṭôrâ",
+      "translitKo": "케토라",
+      "evidence": "H6992 qĕṭal 케탈 · H7086 qĕʿārâ 케아라 · H6900 qĕbûrâ 케부라 — 어두 유성 쉐바 קְ는 케.",
+      "note": ""
+    },
+    {
+      "strong": "H2653",
+      "translit": "ḥopap",
+      "translitKo": "호파프",
+      "evidence": "H2670 ḥopšî 호프시 · H2652 ḥopnî 호프니 · H1031 bêt ḥoglâ 베트 호글라 — 레마의 카메츠 하툽(U+05C7)을 배포 45건이 예외 없이 o로 적는다.",
+      "note": "레마 모음이 카메츠 하툽(U+05C7)이라 배포 선례대로 o로 적었다. 겹자음 어근으로 보아 ḥāpap(하파프)로 적는 사전도 있다."
+    },
+    {
+      "strong": "H1645",
+      "translit": "gereš",
+      "translitKo": "게레쉬",
+      "evidence": "H5663 ʿebed melek 에베드 멜레크 — ־ֶ־ֶ 형은 에/에로. H5428 nātaš 나타쉬 — 규칙3, 음절 말 שׁ는 쉬.",
+      "note": ""
+    },
+    {
+      "strong": "H8228",
+      "translit": "šepaʿ",
+      "translitKo": "셰파",
+      "evidence": "H7927 šĕkem 셰켐 — 음절 첫소리 שֶׁ는 셰. H6647 ṣĕbaʿ 체바 · H6319 pôṭî peraʿ 포티 페라 — 어말 ע는 한글로 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H2187",
+      "translit": "zānaq",
+      "translitKo": "자나크",
+      "evidence": "H2186 zānaḥ 자나흐 — 같은 자모 배열이 이미 배포됨. H6061 ʿănāq 아나크 — 어말 ק는 크.",
+      "note": ""
+    },
+    {
+      "strong": "H4515",
+      "translit": "minʿāl",
+      "translitKo": "민알",
+      "evidence": "H1186 baʿal mĕʿôn 바알 메온 — ע는 한글로 따로 적지 않는다(규칙5). H6018 ʿomrî 옴리 — 묵음 쉐바 앞 자음은 받침으로.",
+      "note": ""
+    },
+    {
+      "strong": "H1679",
+      "translit": "dōbeʾ",
+      "translitKo": "도베",
+      "evidence": "H4393 mĕlōʾ 멜로 — 어말 ʾ는 적지 않는다. H1755 dôr 도르 — ד는 ㄷ. 규칙1로 ḇ 아닌 b.",
+      "note": ""
+    },
+    {
+      "strong": "H3893",
+      "translit": "lēaḥ",
+      "translitKo": "레아흐",
+      "evidence": "H7381 rêaḥ 레아흐 · H3581 kōaḥ 코아흐 · H5117 nûaḥ 누아흐 — 푸르티브 파타흐는 -aḥ/아흐로 편다.",
+      "note": ""
+    },
+    {
+      "strong": "H7190",
+      "translit": "qĕšî",
+      "translitKo": "케시",
+      "evidence": "H7147 qĕrî 케리 — 어두 유성 쉐바 קְ는 케. H1030 bêt haššimšî 베트 하심시 · H1020 Bêt ha-Yĕšîmôt 베트 하이시모트 — 모음 앞 שִׁ는 시.",
+      "note": ""
+    },
+    {
+      "strong": "H5506",
+      "translit": "sĕḥōrâ",
+      "translitKo": "세호라",
+      "evidence": "H5467 sĕdōm 세돔 · H5609 sĕpar 세파르 — 어두 유성 쉐바 סְ는 세. H2914 ṭĕḥōr 테호르 — ḥō는 호.",
+      "note": ""
+    },
+    {
+      "strong": "H1728",
+      "translit": "dawwāg",
+      "translitKo": "다와그",
+      "evidence": "H2334 ḥawwôt yāʿîr 하워트 야이르 · H6680 ṣāwâ 차와 — 규칙4, 자음 ו는 w로 보고 와/워로 적는다. 규칙2로 겹자음을 받침으로 겹쳐 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H2751",
+      "translit": "ḥōrî",
+      "translitKo": "호리",
+      "evidence": "H2752 חֹרִי ḥōrî 호리 — 철자·모음이 같은 표제형이 이미 배포되어 있다.",
+      "note": ""
+    },
+    {
+      "strong": "H4761",
+      "translit": "marʾāšâ",
+      "translitKo": "마르아샤",
+      "evidence": "H5371 nērgal šarʾeṣer 네르갈 샤르에체르 — ־רְא־는 르+아로 편다. H6948 qĕdēšâ 케데샤 — 모음 앞 שָׁ는 샤.",
+      "note": ""
+    },
+    {
+      "strong": "H4734",
+      "translit": "miqlaʿat",
+      "translitKo": "미클라아트",
+      "evidence": "H402 ʾoklâ 오클라 — 묵음 쉐바 뒤 ק는 클. H1043 bêt ʿănāt 베트 아나트 — 어말 ת는 트. ע는 적지 않는다(규칙5).",
+      "note": ""
+    },
+    {
+      "strong": "H1550",
+      "translit": "gālîl",
+      "translitKo": "갈릴",
+      "evidence": "H1551 גָּלִיל gālîl 갈릴 — 철자·모음이 같은 표제형이 이미 배포되어 있다.",
+      "note": ""
+    },
+    {
+      "strong": "H2707",
+      "translit": "ḥāqâ",
+      "translitKo": "하카",
+      "evidence": "H4229 māḥâ 마하 — 어말 ־ָה는 â. H6013 ʿāmōq 아모크 — ק는 ㅋ. H2244 ḥābāʾ 하바 — ḥā는 하.",
+      "note": ""
+    },
+    {
+      "strong": "H4237",
+      "translit": "meḥĕzâ",
+      "translitKo": "메헤자",
+      "evidence": "H5825 ʿăzēqâ 아제카 — ז는 ㅈ. H3966 mĕʾōd 메오드 — 메로 여는 배포 선례. 하텝 세골 ĕ도 온전한 모음으로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H2947",
+      "translit": "ṭēpaḥ",
+      "translitKo": "테파흐",
+      "evidence": "H6607 petaḥ 페타흐 — 푸르티브 파타흐 -aḥ는 아흐. H2966 ṭĕrēpâ 테레파 — ט는 ㅌ.",
+      "note": ""
+    },
+    {
+      "strong": "H4165",
+      "translit": "mûṣāq",
+      "translitKo": "무차크",
+      "evidence": "H6828 ṣāpôn 차폰 · H6099 ʿāṣûm 아춤 — ṣā는 차. H3972 mĕʾûmâ 메우마 — û는 우. H6013 ʿāmōq 아모크 — 어말 ק는 크.",
+      "note": ""
+    },
+    {
+      "strong": "H2837",
+      "translit": "ḥēšeq",
+      "translitKo": "헤셰크",
+      "evidence": "H2436 ḥêq 헤크 — ḥē/ḥê는 헤. H7927 šĕkem 셰켐 — 모음 앞 שֶׁ는 셰.",
+      "note": ""
+    },
+    {
+      "strong": "H8622",
+      "translit": "tĕqûpâ",
+      "translitKo": "테쿠파",
+      "evidence": "H8573 tĕnûpâ 테누파 · H8641 tĕrûmâ 테루마 — 어두 유성 쉐바 תְּ는 테, û는 우.",
+      "note": ""
+    },
+    {
+      "strong": "H6926",
+      "translit": "qidmâ",
+      "translitKo": "키드마",
+      "evidence": "H6667 ṣidqiyyâ 치드키야 — ־ִדְ는 이드. H4082 mĕdînâ 메디나 — 어말 ־ָה는 â/마.",
+      "note": ""
+    },
+    {
+      "strong": "H6877",
+      "translit": "ṣĕrîaḥ",
+      "translitKo": "체리아흐",
+      "evidence": "H6706 ṣĕḥîaḥ 체히아흐 — 어두 צְ는 체이고 푸르티브 파타흐는 아흐. H6875 ṣĕrî 체리.",
+      "note": ""
+    },
+    {
+      "strong": "H6277",
+      "translit": "ʿātāq",
+      "translitKo": "아타크",
+      "evidence": "H6279 ʿātar 아타르 — ʿā는 아. H6061 ʿănāq 아나크 — 어말 ק는 크. 규칙1로 ṯ 아닌 t.",
+      "note": ""
+    },
+    {
+      "strong": "H2844",
+      "translit": "ḥat",
+      "translitKo": "하트",
+      "evidence": "H2244 ḥābāʾ 하바 — ḥa는 하. H8556 timnat ḥeres 팀나트 헤레스 — 어말 ת는 트.",
+      "note": ""
+    },
+    {
+      "strong": "H4770",
+      "translit": "marbēq",
+      "translitKo": "마르베크",
+      "evidence": "H5371 nērgal šarʾeṣer 네르갈 샤르에체르 — 묵음 쉐바 ר는 르 받침. H7127 qĕrēb 케레브 — bē는 베. 규칙1로 b.",
+      "note": ""
+    },
+    {
+      "strong": "H6750",
+      "translit": "ṣālal",
+      "translitKo": "찰랄",
+      "evidence": "H6743 ṣālaḥ 찰라흐 · H6767 ṣĕlāṣal 첼라찰 · H1556 gālal 갈랄 — ṣā+l은 찰, 어말 ל은 랄.",
+      "note": ""
+    },
+    {
+      "strong": "H2524",
+      "translit": "ḥām",
+      "translitKo": "함",
+      "evidence": "H2244 ḥābāʾ 하바 — ḥā는 하. H430 ʾĕlōhîm 엘로힘 — 어말 ם은 받침 ㅁ.",
+      "note": ""
+    },
+    {
+      "strong": "H8495",
+      "translit": "tayiš",
+      "translitKo": "타이쉬",
+      "evidence": "H4714 miṣrayim 미츠라임 — ־ַיִ־는 아이. H5428 nātaš 나타쉬 — 규칙3, 어말 שׁ는 쉬.",
+      "note": ""
+    },
+    {
+      "strong": "H2688",
+      "translit": "ḥaṣṣôn tāmār",
+      "translitKo": "하츠촌 타마르",
+      "evidence": "H1224 בׇּצְרָה boṣrâ 보츠라 — 짧은 모음 뒤 묵음 쉐바가 붙은 צ를 츠로 적는다. H6828 ṣāpôn 차폰 — ṣô는 초. H1035 bêt leḥem 베트 레헴 — 두 낱말은 띄어 쓴다.",
+      "note": "Strong 원 표기는 Chatsətsown 으로 쉐바를 유성으로 본다. 배포 선례 보츠라가 같은 자리(짧은 모음+צ+묵음 쉐바)를 츠로 적으므로 하츠촌으로 두었다. 개역 관용 표기는 하사손다말이다."
+    },
+    {
+      "strong": "H1765",
+      "translit": "dāḥap",
+      "translitKo": "다하프",
+      "evidence": "H2498 ḥālap 할라프 · H5848 ʿāṭap 아타프 — 어말 ף는 프. 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H1740",
+      "translit": "dûaḥ",
+      "translitKo": "두아흐",
+      "evidence": "H5117 nûaḥ 누아흐 · H3871 lûaḥ 루아흐 — û+푸르티브 파타흐는 우아흐.",
+      "note": ""
+    },
+    {
+      "strong": "H225",
+      "translit": "ʾût",
+      "translitKo": "우트",
+      "evidence": "H1823 dĕmût 데무트 · H2184 zĕnût 제누트 — ût는 우트. 어두 ʾ는 적지 않는다. 규칙1로 ṯ 아닌 t.",
+      "note": ""
+    },
+    {
+      "strong": "H4964",
+      "translit": "meteg",
+      "translitKo": "메테그",
+      "evidence": "H8504 tĕkēlet 테켈레트 — ־ֶ־ֶ 형은 에/에. H1044 bêt ʿēqed 베트 에케드 — 어말 유성 폐쇄음은 그/드로 편다. 규칙1로 ḡ 아닌 g.",
+      "note": ""
+    },
+    {
+      "strong": "H7046",
+      "translit": "qālas",
+      "translitKo": "칼라스",
+      "evidence": "H1548 gālaḥ 갈라흐 · H5545 sālaḥ 살라흐 — Cā+l은 칼/갈/살. 어말 ס는 스.",
+      "note": ""
+    },
+    {
+      "strong": "H219",
+      "translit": "ʾôrâ",
+      "translitKo": "오라",
+      "evidence": "H734 ʾōraḥ 오라흐 · H214 ʾôṣār 오차르 — 어두 אוֹ는 오. H8451 tôrâ 토라 — ־וֹרָה는 오라.",
+      "note": ""
+    },
+    {
+      "strong": "H579",
+      "translit": "ʾānâ",
+      "translitKo": "아나",
+      "evidence": "H6030 ʿānâ 아나 · H6032 ʿănâ 아나 — 같은 자모 배열이 이미 배포됨. 어두 ʾ는 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H5730",
+      "translit": "ʿēden",
+      "translitKo": "에덴",
+      "evidence": "H5731 עֵדֶן ʿēden 에덴 — 철자·모음이 같은 표제형이 이미 배포되어 있다.",
+      "note": ""
+    },
+    {
+      "strong": "H2897",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "evidence": "H2896 טוֹב ṭôb 토브 — 철자·모음이 같은 표제형이 이미 배포되어 있고, 규칙1(베가드케파트 구분 기호 미사용)의 대표 선례다.",
+      "note": ""
+    },
+    {
+      "strong": "H5228",
+      "translit": "nākōaḥ",
+      "translitKo": "나코아흐",
+      "evidence": "H5227 nōkaḥ 노카흐 · H3581 kōaḥ 코아흐 — kō는 코, 푸르티브 파타흐는 아흐. 규칙1로 ḵ 아닌 k.",
+      "note": ""
+    },
+    {
+      "strong": "H7504",
+      "translit": "rāpeh",
+      "translitKo": "라페",
+      "evidence": "H5929 ʿāleh 알레 · H7097 qāṣeh 카체 — 어말 ־ֶה는 eh로 적되 한글에서 ה를 적지 않는다. 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H5742",
+      "translit": "ʿādāš",
+      "translitKo": "아다쉬",
+      "evidence": "H5737 ʿădar 아다르 — ʿā는 아, ד는 ㄷ. H5428 nātaš 나타쉬 — 규칙3, 어말 שׁ는 쉬.",
+      "note": ""
+    },
+    {
+      "strong": "H4794",
+      "translit": "mĕrûṣâ",
+      "translitKo": "메루차",
+      "evidence": "H4847 mĕrārî 메라리 · H8641 tĕrûmâ 테루마 — 어두 מְ는 메, û는 우. H6666 ṣĕdāqâ 체다카 — ṣâ는 차.",
+      "note": ""
+    },
+    {
+      "strong": "H92",
+      "translit": "ʾăguddâ",
+      "translitKo": "아구다",
+      "evidence": "H5725 ʿădullām 아둘람 · H6662 ṣaddîq 차디크 — 규칙2, 다게쉬 포르테를 받침으로 겹쳐 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H491",
+      "translit": "ʾalmānût",
+      "translitKo": "알마누트",
+      "evidence": "H5956 ʿālam 알람 — ־ַלְ־는 받침 ㄹ. H2184 zĕnût 제누트 — ût는 우트. 규칙1로 ṯ 아닌 t.",
+      "note": ""
+    },
+    {
+      "strong": "H7791",
+      "translit": "šûr",
+      "translitKo": "슈르",
+      "evidence": "H2705 ḥăṣar šûʿāl 하차르 슈알 · H8668 tĕšûʿâ 테슈아 — שׁוּ는 슈. 어말 ר는 르.",
+      "note": ""
+    },
+    {
+      "strong": "H5920",
+      "translit": "ʿal",
+      "translitKo": "알",
+      "evidence": "H5953 ʿālal 알랄 · H5949 ʿălîlâ 알릴라 — 규칙5, ע는 한글로 따로 적지 않고 ־ַל은 알.",
+      "note": ""
+    },
+    {
+      "strong": "H877",
+      "translit": "bōʾr",
+      "translitKo": "보르",
+      "evidence": "H4393 mĕlōʾ 멜로 — 묵음 א는 적지 않는다. H1755 dôr 도르 — 어말 ר는 르. 규칙1로 b.",
+      "note": ""
+    },
+    {
+      "strong": "H5190",
+      "translit": "nāṭal",
+      "translitKo": "나탈",
+      "evidence": "H5341 nāṣar 나차르 — nā는 나. H5953 ʿālal 알랄 · H6743 ṣālaḥ 찰라흐 — Cā+l은 탈/랄.",
+      "note": ""
+    },
+    {
+      "strong": "H7875",
+      "translit": "śîd",
+      "translitKo": "시드",
+      "evidence": "H8040 śĕmōʾl 세몰 · H7654 śobʿâ 소브아 — שׂ는 ㅅ. H343 ʾêd 에드 — 어말 ד는 드.",
+      "note": ""
+    },
+    {
+      "strong": "H5995",
+      "translit": "ʿāmîr",
+      "translitKo": "아미르",
+      "evidence": "H6223 ʿāšîr 아시르 — 같은 ־ָ־ִיר 배열. H5716 ʿădî 아디 — 규칙5, ע는 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H6217",
+      "translit": "ʿāšûq",
+      "translitKo": "아슈크",
+      "evidence": "H6231 ʿāšaq 아샤크 — 같은 어근이 배포됨. H8668 tĕšûʿâ 테슈아 — שׁוּ는 슈.",
+      "note": ""
+    },
+    {
+      "strong": "H5229",
+      "translit": "nĕkōḥâ",
+      "translitKo": "네코하",
+      "evidence": "H5227 nōkaḥ 노카흐 — kō는 코. H5360 nĕqāmâ 네카마 — 어두 נְ는 네. 규칙1로 ḵ 아닌 k.",
+      "note": ""
+    },
+    {
+      "strong": "H2172",
+      "translit": "zimrâ",
+      "translitKo": "짐라",
+      "evidence": "H6018 ʿomrî 옴리 — 묵음 쉐바 מ는 받침 ㅁ. H2167 zāmar 자마르 — 같은 어근. 어말 ־ָה는 â/라.",
+      "note": ""
+    },
+    {
+      "strong": "H1488",
+      "translit": "gēz",
+      "translitKo": "게즈",
+      "evidence": "H2086 zēd 제드 — 어말 유성음은 즈/드. H1044 bêt ʿēqed 베트 에케드 — gē는 게. 규칙1로 g.",
+      "note": ""
+    },
+    {
+      "strong": "H594",
+      "translit": "ʾănāk",
+      "translitKo": "아나크",
+      "evidence": "H6061 ʿănāq 아나크 · H6186 ʿārak 아라크 — 어말 כ는 크이고, 규칙1로 ḵ 아닌 k.",
+      "note": ""
+    },
+    {
+      "strong": "H5342",
+      "translit": "nēṣer",
+      "translitKo": "네체르",
+      "evidence": "H5331 neṣaḥ 네차흐 · H6664 ṣedeq 체데크 — צ는 ㅊ 계열이고 ṣe는 체.",
+      "note": ""
+    },
+    {
+      "strong": "H6716",
+      "translit": "ṣî",
+      "translitKo": "치",
+      "evidence": "H2677 ḥēṣî 헤치 · H6726 ṣiyyôn 치욘 — ṣî는 치.",
+      "note": ""
+    },
+    {
+      "strong": "H4070",
+      "translit": "mĕdôr",
+      "translitKo": "메도르",
+      "evidence": "H1865 dĕrôr 데로르 · H1755 dôr 도르 — dô는 도. H4082 mĕdînâ 메디나 — 어두 מְ는 메.",
+      "note": ""
+    },
+    {
+      "strong": "H4486",
+      "translit": "mandaʿ",
+      "translitKo": "만다",
+      "evidence": "H8556 timnat 팀나트 — 닫힌 음절 נ은 받침 ㄴ. H6647 ṣĕbaʿ 체바 — 어말 ע는 적지 않는다. 규칙2로 다게쉬를 겹쳐 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H1547",
+      "translit": "gālût",
+      "translitKo": "갈루트",
+      "evidence": "H1556 gālal 갈랄 — gā+l은 갈. H2184 zĕnût 제누트 — ût는 우트. 규칙1로 ṯ 아닌 t.",
+      "note": ""
+    },
+    {
+      "strong": "H3546",
+      "translit": "kĕhal",
+      "translitKo": "케할",
+      "evidence": "H1763 dĕḥal 데할 — 같은 ־ְ־ַל 배열의 아람어 동사. H3702 kĕsap 케사프 — 어두 כְּ는 케.",
+      "note": ""
+    },
+    {
+      "strong": "H4223",
+      "translit": "mĕḥāʾ",
+      "translitKo": "메하",
+      "evidence": "H65 ʾābēl mĕḥôlâ 아벨 메홀라 — 어두 מְ+ח는 메하. H7123 qĕrāʾ 케라 — 어말 ʾ는 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H6151",
+      "translit": "ʿărab",
+      "translitKo": "아라브",
+      "evidence": "H6152 ʿărāb 아라브 — 같은 어근이 배포됨. H5689 ʿăgab 아가브 — 어말 ב는 브. 규칙1로 ḇ 아닌 b.",
+      "note": ""
+    },
+    {
+      "strong": "H4756",
+      "translit": "mārēʾ",
+      "translitKo": "마레",
+      "evidence": "H7123 qĕrāʾ 케라 — 어말 ʾ는 적지 않는다. H4847 mĕrārî 메라리 — mā/rē는 마/레.",
+      "note": ""
+    },
+    {
+      "strong": "H521",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "evidence": "H520 אַמָּה ʾammâ 암마 — 철자·모음이 같은 표제형이 이미 배포되어 있다. ㅁ은 규칙2의 예외로 받침+초성으로 나눠 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H8361",
+      "translit": "šittîn",
+      "translitKo": "시틴",
+      "evidence": "H6662 ṣaddîq 차디크 · H8605 tĕpillâ 테필라 — 규칙2, 장애음 다게쉬 포르테를 받침으로 겹쳐 적지 않는다. H1030 haššimšî 하심시 — שִׁ는 시.",
+      "note": ""
+    },
+    {
+      "strong": "H2597",
+      "translit": "ḥănukkāʾ",
+      "translitKo": "하누카",
+      "evidence": "H6662 ṣaddîq 차디크 — 규칙2, 다게쉬 포르테 כּ를 겹쳐 적지 않는다. H7123 qĕrāʾ 케라 — 어말 ʾ는 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H4953",
+      "translit": "mašrôqî",
+      "translitKo": "마쉬로키",
+      "evidence": "H3573 Kûšan Rišʿātayim 쿠샨 리쉬아타임 · H516 ʾal-tašḥēt 알 타쉬헤트 — 규칙3, 음절 말 שׁ는 쉬.",
+      "note": ""
+    },
+    {
+      "strong": "H7030",
+      "translit": "qîtārōs",
+      "translitKo": "키타로스",
+      "evidence": "H6914 qibrôt 키브로트 — qî는 키. H4340 mêtār 메타르 — tā는 타. H6367 pî haḥîrōt 피 하히로트 — ō는 오, 어말 ס는 스.",
+      "note": ""
+    },
+    {
+      "strong": "H5443",
+      "translit": "sabbĕkāʾ",
+      "translitKo": "사베카",
+      "evidence": "H2216 zĕrubbābel 제루바벨 — 규칙2, 다게쉬 포르테 ב를 겹쳐 적지 않는다. H3702 kĕsap 케사프 — 유성 쉐바는 온전한 모음. H7123 qĕrāʾ 케라 — 어말 ʾ.",
+      "note": ""
+    },
+    {
+      "strong": "H6460",
+      "translit": "pĕsanṭērîn",
+      "translitKo": "페산테린",
+      "evidence": "H6529 pĕrî 페리 — 어두 פְּ는 페. H5418 nĕtanyâ 네탄야 — ־ַנְ־는 받침 ㄴ. H2966 ṭĕrēpâ 테레파 — ט는 ṭ/ㅌ.",
+      "note": "레마의 넷째 자음은 ט(tet)이므로 라틴 음역을 ṭ로 적었다. 규칙1의 구분 기호 제거는 베가드케파트에만 적용된다."
+    },
+    {
+      "strong": "H5481",
+      "translit": "sûmpônyâ",
+      "translitKo": "숨폰야",
+      "evidence": "H3204 yĕkonyā 예콘야 · H5418 nĕtanyâ 네탄야 — ־נְיָה는 받침 ㄴ+야. H6018 ʿomrî 옴리 — 묵음 쉐바 מ는 받침 ㅁ.",
+      "note": ""
+    },
+    {
+      "strong": "H2178",
+      "translit": "zan",
+      "translitKo": "잔",
+      "evidence": "H2226 zeraḥ 제라흐 — ז는 ㅈ. H5460 sĕgan 세간 — 어말 ן은 받침 ㄴ.",
+      "note": ""
+    },
+    {
+      "strong": "H2170",
+      "translit": "zĕmār",
+      "translitKo": "제마르",
+      "evidence": "H2166 zĕmān 제만 · H2167 zāmar 자마르 — 같은 어근이 배포됨. 어두 유성 쉐바 זְ는 제.",
+      "note": ""
+    },
+    {
+      "strong": "H3729",
+      "translit": "kĕpat",
+      "translitKo": "케파트",
+      "evidence": "H3702 kĕsap 케사프 · H3801 kĕtōnet 케토네트 · H7117 qĕṣāt 케차트 — 어두 כְּ는 케, 어말 ת는 트.",
+      "note": ""
+    },
+    {
+      "strong": "H1907",
+      "translit": "haddābār",
+      "translitKo": "하다바르",
+      "evidence": "H6914 qibrôt hattaʾăwâ 키브로트 하타아와 · H1022 bêt hallaḥmî 베트 할라흐미 — 관사 다게쉬를 한글에서 겹쳐 적지 않는다. 규칙1로 ḏ/ḇ 아닌 d/b.",
+      "note": ""
+    },
+    {
+      "strong": "H7960",
+      "translit": "šālû",
+      "translitKo": "샬루",
+      "evidence": "H4122 Mahēr Šālāl 마헤르 샬랄 · H8010 šĕlōmōh 셸로모 — שָׁ+ל은 샬. 어말 וּ는 루.",
+      "note": ""
+    },
+    {
+      "strong": "H6744",
+      "translit": "ṣĕlaḥ",
+      "translitKo": "첼라흐",
+      "evidence": "H6765 Ṣĕlopḥād 첼로프하드 · H6767 ṣĕlāṣal 첼라찰 — 어두 צְ+ל은 첼. H6743 ṣālaḥ 찰라흐 — 어말 ח는 아흐가 아니라 흐.",
+      "note": ""
+    },
+    {
+      "strong": "H8001",
+      "translit": "šĕlām",
+      "translitKo": "셸람",
+      "evidence": "H8010 šĕlōmōh 셸로모 · H7970 šĕlôšîm 셸로심 — 어두 שְׁ+ל은 셸. 어말 ם은 받침 ㅁ.",
+      "note": ""
+    },
+    {
+      "strong": "H1859",
+      "translit": "dār",
+      "translitKo": "다르",
+      "evidence": "H1755 dôr 도르 · H6862 ṣar 차르 — 어말 ר는 르.",
+      "note": ""
+    },
+    {
+      "strong": "H6056",
+      "translit": "ʿănap",
+      "translitKo": "아나프",
+      "evidence": "H6057 עָנָף ʿānāp 아나프 — 같은 어근이 이미 배포됨. 규칙5로 ע는 적지 않고, 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H6853",
+      "translit": "ṣĕpar",
+      "translitKo": "체파르",
+      "evidence": "H6854 ṣĕpardēaʿ 체파르데아 — 같은 어근의 앞 세 음절이 그대로 배포되어 있다. H5609 sĕpar 세파르.",
+      "note": ""
+    },
+    {
+      "strong": "H2499",
+      "translit": "ḥălap",
+      "translitKo": "할라프",
+      "evidence": "H2498 חָלַף ḥālap 할라프 — 같은 어근의 히브리어 표제형이 이미 배포됨. 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H2957",
+      "translit": "ṭĕrad",
+      "translitKo": "테라드",
+      "evidence": "H2914 ṭĕḥōr 테호르 · H2966 ṭĕrēpâ 테레파 — 어두 טְ는 테. 규칙1로 ḏ 아닌 d.",
+      "note": ""
+    },
+    {
+      "strong": "H8648",
+      "translit": "tĕrên",
+      "translitKo": "테렌",
+      "evidence": "H8486 têmān 테만 · H996 bên 벤 · H7386 rêq 레크 — ê는 에 한 음절(배포 85건의 대세). H8641 tĕrûmâ 테루마 — 어두 תְּ는 테.",
+      "note": ""
+    },
+    {
+      "strong": "H7313",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "evidence": "H7311 רוּם rûm 룸 — 철자·모음이 같은 표제형이 이미 배포되어 있다.",
+      "note": ""
+    },
+    {
+      "strong": "H8214",
+      "translit": "šĕpal",
+      "translitKo": "셰팔",
+      "evidence": "H8213 שָׁפֵל šāpēl 샤펠 — 같은 어근의 히브리어 표제형이 배포됨. H7927 šĕkem 셰켐 — 어두 שְׁ는 셰. 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H506",
+      "translit": "ʾălap",
+      "translitKo": "알라프",
+      "evidence": "H5954 ʿălal 알랄 — ־ֲ+ל은 알라. H2498 ḥālap 할라프 — 어말 ף는 프. 규칙1로 p̄ 아닌 p.",
+      "note": ""
+    },
+    {
+      "strong": "H5142",
+      "translit": "nĕzaq",
+      "translitKo": "네자크",
+      "evidence": "H5360 nĕqāmâ 네카마 — 어두 נְ는 네. H5141 nezem 네젬 — ז는 ㅈ. 어말 ק는 크.",
+      "note": ""
+    },
+    {
+      "strong": "H6695",
+      "translit": "ṣôq",
+      "translitKo": "초크",
+      "evidence": "H6696 ṣûr 추르 · H7522 rāṣôn 라촌 · H6828 ṣāpôn 차폰 — ṣô는 초. 어말 ק는 크.",
+      "note": ""
+    },
+    {
+      "strong": "H1682",
+      "translit": "dĕbôrâ",
+      "translitKo": "데보라",
+      "evidence": "H1683 דְּבּוֹרָה dĕbôrâ 데보라 — 같은 이름이 이미 배포되어 있다. 규칙1로 ḇ 아닌 b.",
+      "note": ""
+    },
+    {
+      "strong": "H4863",
+      "translit": "mišʾeret",
+      "translitKo": "미쉬에레트",
+      "evidence": "H3573 Rišʿātayim 리쉬아타임 — 규칙3, 음절 말 שׁ는 쉬이고 뒤 후음은 별도 음절. H8504 tĕkēlet 테켈레트 — 어말 ת는 트이며 규칙1로 ṯ를 쓰지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H798",
+      "translit": "ʾašdôt happisgâ",
+      "translitKo": "아쉬도트 하피스가",
+      "evidence": "H516 ʾal-tašḥēt 알 타쉬헤트 — 규칙3, 닫힌 음절 שׁ는 쉬. H5899 ʿîr hattĕmārîm 이르 하테마림 · H6367 pî haḥîrōt 피 하히로트 — 관사는 뒤 낱말에 붙여 쓰고 다게쉬를 한글에서 겹쳐 적지 않는다.",
+      "note": "개역 관용 표기는 비스가 산기슭이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H8562",
+      "translit": "tamrûq",
+      "translitKo": "탐루크",
+      "evidence": "H6018 ʿomrî 옴리 · H8556 timnat 팀나트 — 묵음 쉐바 מ는 받침 ㅁ. H8641 tĕrûmâ 테루마 — rû는 루. 어말 ק는 크.",
+      "note": ""
+    },
+    {
+      "strong": "H323",
+      "translit": "ʾăḥašdarpan",
+      "translitKo": "아하쉬다르판",
+      "evidence": "H3573 Kûšan Rišʿātayim 쿠샨 리쉬아타임 — 규칙3, 음절 말 שׁ는 쉬. H5018 nĕbûzarʾădān 네부자르아단 — ־רְ־는 받침 르. H6662 ṣaddîq 차디크 — 규칙2.",
+      "note": "마지막 음절은 פַּן(파타흐)이라 pan 으로 적었다. pān 으로 적는 사전도 있다."
+    },
+    {
+      "strong": "H7958",
+      "translit": "śĕlāw",
+      "translitKo": "셀라우",
+      "evidence": "H6035 ʿānāw 아나우 — 어말 자음 ו는 우(규칙4). H5559 sĕliq 셀리크 — 어두 유성 쉐바+ל은 셀. H8040 śĕmōʾl 세몰 — שׂ는 ㅅ.",
+      "note": ""
+    },
+    {
+      "strong": "H5230",
+      "translit": "nākal",
+      "translitKo": "나칼",
+      "evidence": "H5227 nōkaḥ 노카흐 · H6186 ʿārak 아라크 — 규칙1로 ḵ가 아니라 k이며 한글도 ㅋ. H5953 ʿālal 알랄 — 어말 ל은 칼.",
+      "note": ""
+    },
+    {
+      "strong": "H5852",
+      "translit": "ʿăṭārôt",
+      "translitKo": "아타로트",
+      "evidence": "H6068 ʿănātôt 아나토트 · H5688 ʿăbōt 아보트 — 규칙5로 ע는 적지 않고 어말 ־וֹת는 오트.",
+      "note": "개역 관용 표기는 아다롯이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H5853",
+      "translit": "ʿaṭrôt ʾaddār",
+      "translitKo": "아트로트 아다르",
+      "evidence": "H6274 ʿotnîʾēl 오트니엘 — 묵음 쉐바 앞 ט/ת는 트. H6068 ʿănātôt 아나토트 — ־וֹת는 오트. H117 ʾaddîr 아디르 — 규칙2, 다게쉬 포르테를 겹쳐 적지 않는다.",
+      "note": "개역 관용 표기는 아다롯 앗달이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H1621",
+      "translit": "gargĕrôt",
+      "translitKo": "가르게로트",
+      "evidence": "H5371 nērgal 네르갈 — 묵음 쉐바 ר는 받침 르. H1369 gĕbûrâ 게부라 — 유성 쉐바 גְּ는 게. H6068 ʿănātôt 아나토트 — ־וֹת는 오트.",
+      "note": ""
+    },
+    {
+      "strong": "G4914",
+      "translit": "synḗtheia",
+      "translitKo": "쉬네테이아",
+      "evidence": "G4892 synédrion 쉬네드리온 · G4893 syneídēsis 쉬네이데시스 — συν+모음은 쉬네. G4906 synesthíō 쉬네스티오 · G4916 syntháptō 쉰탑토 — θ는 ㅌ. G4930 syntéleia 쉰텔레이아 — -εια는 에이아.",
+      "note": ""
+    },
+    {
+      "strong": "G4874",
+      "translit": "synanamígnymi",
+      "translitKo": "쉬나나미그뉘미",
+      "evidence": "G4873 synanákeimai 쉬나나케이마이 — συνανα-는 쉬나나. G4786 synkeránnymi 쉰케란뉘미 — -νυμι는 뉘미. G4774 syngnṓmē 슁그노메 — γν의 γ는 그.",
+      "note": ""
+    },
+    {
+      "strong": "G3435",
+      "translit": "molýnō",
+      "translitKo": "몰뤼노",
+      "evidence": "G3436 molysmós 몰뤼스모스 — 같은 어근이 이미 배포됨. G3170 megalýnō 메갈뤼노 · G4645 sklērýnō 스클레뤼노 — -λύνω는 뤼노.",
+      "note": ""
+    }
+  ]
+}

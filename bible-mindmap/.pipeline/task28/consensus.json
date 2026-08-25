@@ -1,0 +1,4172 @@
+{
+  "batchId": "top-frequency-batch-24",
+  "models": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "claudeopus5"
+  ],
+  "majorityThreshold": 3,
+  "totals": {
+    "settled": 264,
+    "disputed": 36
+  },
+  "shards": [
+    {
+      "shard": "BK",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 0,
+      "majority": 89,
+      "split": 11
+    },
+    {
+      "shard": "BL",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 27,
+      "majority": 58,
+      "split": 15
+    },
+    {
+      "shard": "BM",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 14,
+      "majority": 76,
+      "split": 10
+    }
+  ],
+  "settled": [
+    {
+      "shard": "BK",
+      "strong": "H3570",
+      "lemma": "כּוּשִׁי",
+      "translit": "kûšî",
+      "translitKo": "쿠시",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용은 '구시'다. 어말이 아니라 히렉-요드 앞 음절 첫소리이므로 '쉬'가 아니라 '시'로 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5655",
+      "lemma": "עַבְדְּאֵל",
+      "translit": "ʿaḇdeʾēl",
+      "translitKo": "압드엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3081",
+      "lemma": "יְהוּכַל",
+      "translit": "yəhûkal",
+      "translitKo": "여후칼",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5778",
+      "lemma": "עוֹפַי",
+      "translit": "ʿôpay",
+      "translitKo": "오파이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 케티브는 עיפי, 사전이 표제로 삼은 것은 난외(케레) 독법이다. 영어 사전의 'from margin'이 그 뜻이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1185",
+      "lemma": "בַּעֲלִיס",
+      "translit": "baʿălîs",
+      "translitKo": "바알리스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6548",
+      "lemma": "פַּרְעֹה חׇפְרַע",
+      "translit": "parʿōh ḥop̄raʿ",
+      "translitKo": "파르오 호프라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이집트 왕명. 개역개정 관용은 '바로 호브라'다. 두 낱말이므로 띄어 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4086",
+      "lemma": "מַדְמֵן",
+      "translit": "madmēn",
+      "translitKo": "마드멘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용은 '맛멘'이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4508",
+      "lemma": "מִנִּי",
+      "translit": "Minnî",
+      "translitKo": "민니",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H930",
+      "lemma": "בְּהֵמוֹת",
+      "translit": "bəhēmôṯ",
+      "translitKo": "베헤모트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용은 '베헤못'이다. 어말 ת를 '트'로 살려 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3224",
+      "lemma": "יְמִימָה",
+      "translit": "yəmîmāh",
+      "translitKo": "여미마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7103",
+      "lemma": "קְצִיעָה",
+      "translit": "qəṣîʿāh",
+      "translitKo": "크치아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6602",
+      "lemma": "פְּתוּאֵל",
+      "translit": "pətûʾēl",
+      "translitKo": "프투엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1944",
+      "lemma": "הוֹהָם",
+      "translit": "hôhām",
+      "translitKo": "호함",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6502",
+      "lemma": "פִּרְאָם",
+      "translit": "pirʾām",
+      "translitKo": "피르암",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2036",
+      "lemma": "הֹרָם",
+      "translit": "hōrām",
+      "translitKo": "호람",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1445",
+      "lemma": "גֶּדֶר",
+      "translit": "geḏer",
+      "translitKo": "게데르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3297",
+      "lemma": "יְעָרִים",
+      "translit": "yəʿārîm",
+      "translitKo": "여아림",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7942",
+      "lemma": "שִׁכְּרוֹן",
+      "translit": "šiḵərôn",
+      "translitKo": "시크론",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H538",
+      "lemma": "אֲמָם",
+      "translit": "ʾămām",
+      "translitKo": "아맘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6799",
+      "lemma": "צְנָן",
+      "translit": "ṣənān",
+      "translitKo": "츠난",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2478",
+      "lemma": "חַלְחוּל",
+      "translit": "ḥalḥûl",
+      "translitKo": "할훌",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4081",
+      "lemma": "מִדִּין",
+      "translit": "Middîn",
+      "translitKo": "미딘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1553",
+      "lemma": "גְּלִילוֹת",
+      "translit": "gəlîlôṯ",
+      "translitKo": "글릴롯",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7104",
+      "lemma": "קְצִיץ",
+      "translit": "qəṣîṣ",
+      "translitKo": "크치츠",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H507",
+      "lemma": "אֶלֶף",
+      "translit": "ʾelep̄",
+      "translitKo": "엘레프",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이미 배포된 동철 항목(H505 계열)의 '엘레프'와 같게 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1394",
+      "lemma": "גִּבְעַת",
+      "translit": "Giḇʿaṯ",
+      "translitKo": "기브아트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 연계형(기브앗 하아랄롯 등)으로 나타난다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2615",
+      "lemma": "חַנָּתֹן",
+      "translit": "ḥannāṯōn",
+      "translitKo": "한나톤",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3946",
+      "lemma": "לַקּוּם",
+      "translit": "Laqqûm",
+      "translitKo": "라쿰",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6863",
+      "lemma": "צֵר",
+      "translit": "Ṣēr",
+      "translitKo": "체르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7557",
+      "lemma": "רַקַּת",
+      "translit": "Raqqat",
+      "translitKo": "라캇",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2765",
+      "lemma": "חֳרֵם",
+      "translit": "ḥŏrēm",
+      "translitKo": "호렘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 첫 모음은 하테프 카메츠이므로 o로 읽었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5960",
+      "lemma": "עַלְמוֹן",
+      "translit": "ʿalmôn",
+      "translitKo": "알몬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1203",
+      "lemma": "בְּעֶשְׁתְּרָה",
+      "translit": "Bəʿeštərāh",
+      "translitKo": "베에쉬테라",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7178",
+      "lemma": "קַרְתָּן",
+      "translit": "Qartān",
+      "translitKo": "카르탄",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6625",
+      "lemma": "פַּתְרֻסִי",
+      "translit": "Patrûsî",
+      "translitKo": "파트루시",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 족속명 복수형 '파트루심'으로 더 자주 나온다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H8026",
+      "lemma": "שֶׁלֶף",
+      "translit": "Šelep̄",
+      "translitKo": "셸레프",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H39",
+      "lemma": "אֲבִימָאֵל",
+      "translit": "ʾĂḇîmāʾēl",
+      "translitKo": "아비마엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4854",
+      "lemma": "מַשָּׂא",
+      "translit": "Maśśāʾ",
+      "translitKo": "마사",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용은 '맛사'다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3435",
+      "lemma": "יִשְׁבָּק",
+      "translit": "Yišbāq",
+      "translitKo": "이스박",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7744",
+      "lemma": "שׁוּחַ",
+      "translit": "Šûaḥ",
+      "translitKo": "슈아흐",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어말 후음 앞 furtive patach를 살려 '아흐'로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5935",
+      "lemma": "עַלְוָן",
+      "translit": "ʿAlwān",
+      "translitKo": "알완",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 대상 1:40에는 עַלְיָן(알얀, Alian) 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H8195",
+      "lemma": "שְׁפוֹ",
+      "translit": "Šəp̄ô",
+      "translitKo": "셰포",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 대상 1:40에는 שְׁפִי(šĕpî) 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5933",
+      "lemma": "עַלְוָה",
+      "translit": "ʿAlwāh",
+      "translitKo": "알와",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 대상 1:51에는 עַלְיָה(알야, Aliah) 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6373",
+      "lemma": "פִּינֹן",
+      "translit": "Pînōn",
+      "translitKo": "피논",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4014",
+      "lemma": "מִבְצָר",
+      "translit": "Miḇṣār",
+      "translitKo": "미브차르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4025",
+      "lemma": "מַגְדִּיאֵל",
+      "translit": "Magdîʾēl",
+      "translitKo": "막디엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5902",
+      "lemma": "עִירָם",
+      "translit": "ʿÎrām",
+      "translitKo": "이람",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2453",
+      "lemma": "חַכְמוֹנִי",
+      "translit": "ḥakmônî",
+      "translitKo": "하크모니",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H739",
+      "lemma": "אֲרִיאֵל",
+      "translit": "ʾĂrîʾēl",
+      "translitKo": "아리엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7380",
+      "lemma": "רִיבַי",
+      "translit": "Rîḇay",
+      "translitKo": "리바이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H455",
+      "lemma": "אֶלְיַחְבָּא",
+      "translit": "ʾEl yaḥbāʾ",
+      "translitKo": "엘야흐바",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H279",
+      "lemma": "אֲחִיאָם",
+      "translit": "ʾĂḥîʾām",
+      "translitKo": "아히암",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7940",
+      "lemma": "שָׂכָר",
+      "translit": "Śāḵār",
+      "translitKo": "사카르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ(신)이므로 '샤'가 아니라 '사'로 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2695",
+      "lemma": "חֶצְרוֹ",
+      "translit": "Ḥeṣrô",
+      "translitKo": "헤츠로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 삼하 23:35에는 חֶצְרַי(ḥeṣray) 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H6768",
+      "lemma": "צֶלֶק",
+      "translit": "Ṣeleq",
+      "translitKo": "첼레크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5171",
+      "lemma": "נַחֲרַי",
+      "translit": "Naḥăray",
+      "translitKo": "나하라이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. נַחְרַי(naḥray) 이형이 함께 전해진다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H304",
+      "lemma": "אַחְלַי",
+      "translit": "ʾAḥlay",
+      "translitKo": "아흘라이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2369",
+      "lemma": "חוֹתָם",
+      "translit": "Ḥôtām",
+      "translitKo": "호탐",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 대상 11:44에는 חוֹתָן(ḥôtān) 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3300",
+      "lemma": "יַעֲשִׂיאֵל",
+      "translit": "Yaʿăśîʾēl",
+      "translitKo": "야아시엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. יַשִׂיאֵל(yaśîʾēl) 축약형 이형이 있다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3460",
+      "lemma": "יִשְׁמַעְיָה",
+      "translit": "Yišmaʿyāh",
+      "translitKo": "이스마야",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H443",
+      "lemma": "אֶלְזָבָד",
+      "translit": "ʾElzāḇāḏ",
+      "translitKo": "엘자바드",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5734",
+      "lemma": "עַדְנָה",
+      "translit": "ʿAḏnāh",
+      "translitKo": "아드나",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H684",
+      "lemma": "אֹצֶם",
+      "translit": "ʾOṣem",
+      "translitKo": "오쳄",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H806",
+      "lemma": "אַשְׁחוּר",
+      "translit": "ʾAšḥûr",
+      "translitKo": "아쉬후르",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3047",
+      "lemma": "יָדָע",
+      "translit": "Yāḏāʿ",
+      "translitKo": "야다",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H51",
+      "lemma": "אֲבִישׁוּר",
+      "translit": "ʾĂḇîšûr",
+      "translitKo": "아비슈르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5540",
+      "lemma": "סֶלֶד",
+      "translit": "Seleḏ",
+      "translitKo": "셀레드",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H649",
+      "lemma": "אַפַּיִם",
+      "translit": "ʾAppayim",
+      "translitKo": "아파임",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H654",
+      "lemma": "אֶפְלָל",
+      "translit": "ʾEplāl",
+      "translitKo": "에플랄",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H5581",
+      "lemma": "סִסְמַי",
+      "translit": "sismay",
+      "translitKo": "시스마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4337",
+      "lemma": "מֵישָׁע",
+      "translit": "Mêšaʿ",
+      "translitKo": "메샤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1495",
+      "lemma": "גָּזֵז",
+      "translit": "Gāzēz",
+      "translitKo": "가제즈",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H8174",
+      "lemma": "שַׁעַף",
+      "translit": "Šaʿap̄",
+      "translitKo": "샤아프",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H7724",
+      "lemma": "שְׁוָא",
+      "translit": "Šəwāʾ",
+      "translitKo": "셰와",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2241",
+      "lemma": "זֵתָם",
+      "translit": "Zētām",
+      "translitKo": "제탐",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2125",
+      "lemma": "זִיזָה",
+      "translit": "Zîzāh",
+      "translitKo": "지자",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3360",
+      "lemma": "יְקַמְעָם",
+      "translit": "Yəqamʿām",
+      "translitKo": "여캄암",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2387",
+      "lemma": "חֵזִיר",
+      "translit": "Ḥēzîr",
+      "translitKo": "헤지르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4590",
+      "lemma": "מַעַזְיָה",
+      "translit": "Maʿazyāh",
+      "translitKo": "마아즈야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3165",
+      "lemma": "יֶחְדִּיָּהוּ",
+      "translit": "yeḥdiyyāhû",
+      "translitKo": "예흐디야후",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3269",
+      "lemma": "יַעֲזִיָּהוּ",
+      "translit": "yaʿăziyyāhû",
+      "translitKo": "야아지야후",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1232",
+      "lemma": "בֻּקִּיָּה",
+      "translit": "Buqqîyāh",
+      "translitKo": "북키야",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H448",
+      "lemma": "אֱלִיאָתָה",
+      "translit": "ʾĔlîʾāṯāh",
+      "translitKo": "엘리아타",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1437",
+      "lemma": "גִּדַּלְתִּי",
+      "translit": "Giddaltî",
+      "translitKo": "기달티",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4413",
+      "lemma": "מַלּוֹתִי",
+      "translit": "Mallôtî",
+      "translitKo": "말로티",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H1956",
+      "lemma": "הוֹתִיר",
+      "translit": "Hôtîr",
+      "translitKo": "호티르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H4238",
+      "lemma": "מַחֲזִיאוֹת",
+      "translit": "Maḥăzîʾôṯ",
+      "translitKo": "마하지오트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BK",
+      "strong": "H3172",
+      "lemma": "יְחִיאֵלִי",
+      "translit": "Yəḥîʾēlî",
+      "translitKo": "여히엘리",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BK",
+      "strong": "H2068",
+      "lemma": "זַבְדִּיאֵל",
+      "translit": "Zaḇdîʾēl",
+      "translitKo": "자브디엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2469",
+      "lemma": "חֶלְדַּי",
+      "translit": "ḥeldai",
+      "translitKo": "헬다이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '헬대'다. 어말 -ay를 개역이 '대'로 줄여 적은 결과이며, 이 사전은 배포 선례(모르데카이·하가이·샤마이)를 따라 '아이'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3035",
+      "lemma": "יִדּוֹ",
+      "translit": "yiddô",
+      "translitKo": "이도",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '잇도'다. 다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는 규칙에 따라 '이도'로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3135",
+      "lemma": "יוֹעָשׁ",
+      "translit": "yôʿāš",
+      "translitKo": "요아쉬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '요아스'다. 어말 שׁ는 이 사전에서 '쉬'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3507",
+      "lemma": "יִתְרְעָם",
+      "translit": "yitrəʿām",
+      "translitKo": "이트르암",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1340",
+      "lemma": "בַּת־שׁוּעַ",
+      "translit": "bat-šûaʿ",
+      "translitKo": "바트슈아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '밧수아'다. 어말 ע 앞 furtive patach를 -아로 적고 ע 자체는 한글로 적지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3142",
+      "lemma": "יוּשַׁב חֶסֶד",
+      "translit": "yûšaḇ ḥeseḏ",
+      "translitKo": "유샤브 헤세드",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '유사브헤셋'이다. 두 낱말이므로 띄어 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2458",
+      "lemma": "חֶלְאָה",
+      "translit": "ḥelʾāh",
+      "translitKo": "헬아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '헬라'다. 알렙(ʾ)을 한글로 적지 않아 '헬아'가 된다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H850",
+      "lemma": "אֶשְׁתּוֹן",
+      "translit": "ʾeštôn",
+      "translitKo": "에쉬톤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '에스돈'이다. 음절 말 שׁ는 '쉬'로, ת은 'ㅌ'으로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1051",
+      "lemma": "בֵּית רָפָא",
+      "translit": "bêt-rāfāʾ",
+      "translitKo": "베트 라파",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경 관용 표기는 '벧라바'다. בֵּית는 배포 선례(베트 셰안·베트 에덴)를 따라 '베트'로 적고 띄어 쓴다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4778",
+      "lemma": "מֶרֶד",
+      "translit": "mereḏ",
+      "translitKo": "메레드",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '메렛'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1135",
+      "lemma": "בֶּן־חָנָן",
+      "translit": "ben-ḥānān",
+      "translitKo": "벤하난",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1132",
+      "lemma": "בֶּן־זוֹחֵת",
+      "translit": "ben-zôḥēt",
+      "translitKo": "벤조헤트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '벤소헷'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3433",
+      "lemma": "יָשֻׁבִי לֶחֶם",
+      "translit": "yāšûḇî leḥem",
+      "translitKo": "야슈비 레헴",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '야수비레헴'이다. 두 낱말이므로 띄어 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2124",
+      "lemma": "זִיזָא",
+      "translit": "zîzāʾ",
+      "translitKo": "지자",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '시사'다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H277",
+      "lemma": "אֲחִי",
+      "translit": "ʾăḥî",
+      "translitKo": "아히",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H557",
+      "lemma": "אַמְצִי",
+      "translit": "ʾamṣî",
+      "translitKo": "암치",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '암시'다. צ(ṣ)는 이 사전에서 'ㅊ' 계열로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H675",
+      "lemma": "אֶצְבּוֹן",
+      "translit": "ʾeṣbôn",
+      "translitKo": "에츠본",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '에스본'이다. 음절 말 צ는 배포 선례(에레츠)를 따라 '츠'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5893",
+      "lemma": "עִיר",
+      "translit": "ʿîr",
+      "translitKo": "이르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H917",
+      "lemma": "בְּדָן",
+      "translit": "bədān",
+      "translitKo": "브단",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H7763",
+      "lemma": "שׁוֹמֵר",
+      "translit": "šômēr",
+      "translitKo": "쇼메르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '소멜'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H6690",
+      "lemma": "צוֹפַח",
+      "translit": "ṣôfaḥ",
+      "translitKo": "초파흐",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '소바'다. 어말 ח 앞 furtive patach를 살려 '-아흐'로 적는다(루아흐·마시아흐와 같은 처리).",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8037",
+      "lemma": "שַׁמָּא",
+      "translit": "šammāʾ",
+      "translitKo": "샴마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2592",
+      "lemma": "חַנִּיאֵל",
+      "translit": "ḥannîʾēl",
+      "translitKo": "한니엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H7498",
+      "lemma": "רָפָא",
+      "translit": "rāp̄āʾ",
+      "translitKo": "라파",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '라바'다. 베가드케파트 연음을 표기에 반영하지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8349",
+      "lemma": "שָׁשַׁק",
+      "translit": "šāšaq",
+      "translitKo": "샤샤크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '사삭'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H792",
+      "lemma": "אֶשְׁבַּעַל",
+      "translit": "ʾešbaʿal",
+      "translitKo": "에쉬바알",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '에스바알'이다. 음절 말 שׁ는 '쉬'로 적고 ע는 한글로 따로 적지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H6377",
+      "lemma": "פִּיתוֹן",
+      "translit": "pîtôn",
+      "translitKo": "피톤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '비돈'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3085",
+      "lemma": "יְהוֹעַדָּה",
+      "translit": "yəhôʿaddāh",
+      "translitKo": "여호아다",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1150",
+      "lemma": "בִּנְעָא",
+      "translit": "binəʿāʾ",
+      "translitKo": "빈아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '비느아'다. ע를 한글로 따로 적지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5793",
+      "lemma": "עוּתַי",
+      "translit": "ʿûtai",
+      "translitKo": "우타이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '우대'다. 어말 -ay는 '아이'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H566",
+      "lemma": "אִמְרִי",
+      "translit": "ʾimrî",
+      "translitKo": "임리",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '이므리'다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3294",
+      "lemma": "יַעְרָה",
+      "translit": "yaʿrāh",
+      "translitKo": "야라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H151",
+      "lemma": "אֲדֹרָם",
+      "translit": "ʾăḏōrām",
+      "translitKo": "아도람",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1527",
+      "lemma": "גִּינַת",
+      "translit": "gînaṯ",
+      "translitKo": "기나트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '기낫'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1017",
+      "lemma": "בֵּית הָאֱלִי",
+      "translit": "bêt hāʾĕlî",
+      "translitKo": "베트 하엘리",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경은 고유명사로 옮기지 않고 '벧엘 사람'으로 푼다. 여기서는 원어 표제형을 그대로 음역했다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H7977",
+      "lemma": "שִׁלְחִי",
+      "translit": "šilḥî",
+      "translitKo": "실히",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5653",
+      "lemma": "עַבְדָּא",
+      "translit": "ʿaḇdāʾ",
+      "translitKo": "압다",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1133",
+      "lemma": "בֶּן־חוּר",
+      "translit": "ben-ḥûr",
+      "translitKo": "벤후르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '벤훌'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1128",
+      "lemma": "בֶּן־דֶּקֶר",
+      "translit": "ben-deqer",
+      "translitKo": "벤데케르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '벤데겔'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1125",
+      "lemma": "בֶּן־אֲבִינָדָב",
+      "translit": "ben-ʾăḇînāḏāḇ",
+      "translitKo": "벤아비나답",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1127",
+      "lemma": "בֶּן־גֶּבֶר",
+      "translit": "ben-geḇer",
+      "translitKo": "벤게베르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '벤게벨'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2099",
+      "lemma": "זִו",
+      "translit": "zîw",
+      "translitKo": "지우",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '시브'다. 자음 ו는 w로 보아 배포 선례(에사우)를 따라 음절 말에서 '우'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3521",
+      "lemma": "כָּבוּל",
+      "translit": "kāḇûl",
+      "translitKo": "카불",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '가불'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3415",
+      "lemma": "יָרַע",
+      "translit": "yāraʿ",
+      "translitKo": "야라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ע를 한글로 따로 적지 않아 H3294 야라(יַעְרָה)와 한글 표기가 같아진다. 라틴 음역(yāraʿ / yaʿrâ)으로 구별된다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H6406",
+      "lemma": "פַּלְטִי",
+      "translit": "palṭî",
+      "translitKo": "팔티",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '발디'다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H7124",
+      "lemma": "קֹרֵא",
+      "translit": "qōrēʾ",
+      "translitKo": "코레",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 알렙은 소리가 나지 않아 한글로 적지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H59",
+      "lemma": "אָבֵל",
+      "translit": "ʾāḇēl",
+      "translitKo": "아벨",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 가인의 동생 아벨은 히브리어로 헤벨(H1893, הֶבֶל)이며 다른 낱말이다. 한글 표기가 같아지므로 주의한다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4258",
+      "lemma": "מַחֲלַת",
+      "translit": "maḥălaṯ",
+      "translitKo": "마할라트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경 관용 표기는 '마할랏'이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4322",
+      "lemma": "מִיכָיָהוּ",
+      "translit": "mîḵāyāhû",
+      "translitKo": "미카야후",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경 관용 표기는 '미가야'다. 어말 -yāhû를 줄이지 않고 '야후'까지 적는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1134",
+      "lemma": "בֶּן־חַיִל",
+      "translit": "ben-ḥayil",
+      "translitKo": "벤하일",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2899",
+      "lemma": "טוֹב אֲדֹנִיָּהוּ",
+      "translit": "ṭôḇ ʾăḏōnîyāhû",
+      "translitKo": "토브 아도니야후",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '도바도니야'다. 두 낱말이므로 띄어 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H6645",
+      "lemma": "צִבְיָּה",
+      "translit": "ṣiḇyāh",
+      "translitKo": "치브야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '시비아'다. צ(ṣ)는 'ㅊ' 계열로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8100",
+      "lemma": "שִׁמְעַת",
+      "translit": "šimʿaṯ",
+      "translitKo": "심앗",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4919",
+      "lemma": "מְשִׁלֵּמוֹת",
+      "translit": "məšillēmôṯ",
+      "translitKo": "므실레모트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H683",
+      "lemma": "אֲצַלְיָהוּ",
+      "translit": "ʾăṣalyāhû",
+      "translitKo": "아찰야후",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '아살리야'다. צ(ṣ)는 'ㅊ' 계열로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2468",
+      "lemma": "חֻלְדָּה",
+      "translit": "ḥuldāh",
+      "translitKo": "훌다",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2578",
+      "lemma": "חֲמַת צוֹבָה",
+      "translit": "ḥămaṯ ṣôḇāh",
+      "translitKo": "하마트 초바",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경 관용 표기는 '하맛소바'다. 두 낱말이므로 띄어 적는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H573",
+      "lemma": "אֲמִתַּי",
+      "translit": "ʾămittai",
+      "translitKo": "아밋타이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1424",
+      "lemma": "גָּדִי",
+      "translit": "gādî",
+      "translitKo": "가디",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5524",
+      "lemma": "סֻכּוֹת בְּנוֹת",
+      "translit": "sukkôṯ bənôṯ",
+      "translitKo": "숙코트 브노트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8661",
+      "lemma": "תַּרְתָּן",
+      "translit": "tartān",
+      "translitKo": "타르탄",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '다르단'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5268",
+      "lemma": "נִסְרֹךְ",
+      "translit": "nisrōḵ",
+      "translitKo": "니스로크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '니스록'이다. 어말 ך는 배포 선례(멜렉·데레크)를 따라 'ㅋ'로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1081",
+      "lemma": "בַּלְאֲדָן",
+      "translit": "balʾăḏān",
+      "translitKo": "발아단",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '발라단'이다. 알렙(ʾ)을 한글로 적지 않아 '발아단'이 된다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5419",
+      "lemma": "נְתַן־מֶלֶךְ",
+      "translit": "nəṯan-meleḵ",
+      "translitKo": "느탄멜레크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8576",
+      "lemma": "תַּנְחֻמֶת",
+      "translit": "tanḥumeṯ",
+      "translitKo": "탄후메트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '단후멧'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H7731",
+      "lemma": "שׁוֹבָךְ",
+      "translit": "šôḇāḵ",
+      "translitKo": "쇼바크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '소박'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H463",
+      "lemma": "אֱלִיעָם",
+      "translit": "ʾĕlîʿām",
+      "translitKo": "엘리암",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3430",
+      "lemma": "יִשְׁבּוֹ בְּנֹב",
+      "translit": "yišbô bənoḇ",
+      "translitKo": "이스보 브노브",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3296",
+      "lemma": "יַעֲרֵי אֹרְגִים",
+      "translit": "yaʿărê ʾōrḡîm",
+      "translitKo": "야아레 오르김",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3429",
+      "lemma": "יֹשֵׁב בַּשֶּׁבֶת",
+      "translit": "yōšēḇ baššeḇeṯ",
+      "translitKo": "요셰브 바셰베트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '요셉밧세벳'이다. 다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H45",
+      "lemma": "אֲבִי־עַלְבוֹן",
+      "translit": "ʾăḇî-ʿalbôn",
+      "translitKo": "아비알본",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H6409",
+      "lemma": "פַּלְטִיאֵל",
+      "translit": "palṭîʾēl",
+      "translitKo": "팔티엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '발디엘'이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4965",
+      "lemma": "מֶתֶג הָאַמָּה",
+      "translit": "meteḡ hāʾammāh",
+      "translitKo": "메테그 하암마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H206",
+      "lemma": "אָוֶן",
+      "translit": "ʾāwen",
+      "translitKo": "아웬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 배포 선례 '베트 아웬'(בֵּית אָוֶן)과 같은 자모로 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2579",
+      "lemma": "חֲמַת רַבָּה",
+      "translit": "ḥămaṯ rabbāh",
+      "translitKo": "하마트 라바",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경은 대개 '하맛'으로만 옮긴다. 두 낱말이므로 띄어 적고 다게쉬 포르테는 겹쳐 적지 않는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1095",
+      "lemma": "בֵּלְטְשַׁאצַּר",
+      "translit": "bēlṭəšaʾṣṣar",
+      "translitKo": "벨트샤차르",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5664",
+      "lemma": "עֲבֵד נְגוֹ",
+      "translit": "ʿăḇēḏ nəḡô",
+      "translitKo": "아베드 느고",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H210",
+      "lemma": "אוּפָז",
+      "translit": "ʾûp̄āz",
+      "translitKo": "우파즈",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '우바스'다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H4398",
+      "lemma": "מַלְאַךְ",
+      "translit": "malʾāḵ",
+      "translitKo": "말아크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 아람어 낱말이다. 히브리어 대응어 H4397(מַלְאָךְ)의 배포 표기 '말아크'와 같게 적었다. 알렙(ʾ)은 한글로 적지 않는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5191",
+      "lemma": "נְטַל",
+      "translit": "nəṭal",
+      "translitKo": "느탈",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BL",
+      "strong": "H1403",
+      "lemma": "גַּבְרִיאֵל",
+      "translit": "gaḇrîʾēl",
+      "translitKo": "가브리엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H8303",
+      "lemma": "שִׁרְיוֹן",
+      "translit": "širyôn",
+      "translitKo": "시르욘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경 관용 표기는 '시룐'이다. 표제형에 신 점(שׁ)이 찍혀 있어 그대로 š로 읽었으나, 이 이름은 사본·판본에 따라 שִׂרְיֹן(śiryōn)으로도 점이 찍힌다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H2726",
+      "lemma": "חַרְבוֹנָא",
+      "translit": "ḥarḇônāʾ",
+      "translitKo": "하르보나",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H5212",
+      "lemma": "נִיסָן",
+      "translit": "nîsān",
+      "translitKo": "니산",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BL",
+      "strong": "H3115",
+      "lemma": "יוֹכֶבֶד",
+      "translit": "yôḵeḇeḏ",
+      "translitKo": "요케베드",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 한국어 성경 관용 표기는 '요게벳'이다. 베가드케파트 연음을 표기에 반영하지 않는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5733",
+      "lemma": "עַדְנָא",
+      "translit": "ʿadnā",
+      "translitKo": "아드나",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1114",
+      "lemma": "בִּלְשָׁן",
+      "translit": "Bilšān",
+      "translitKo": "빌샨",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. -šān 은 뒤에 모음이 오는 음절 첫소리이므로 쉬가 아니라 샨으로 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2410",
+      "lemma": "חֲטִיטָא",
+      "translit": "Ḥăṭîṭā",
+      "translitKo": "하티타",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7630",
+      "lemma": "שֹׁבַי",
+      "translit": "Šōḇay",
+      "translitKo": "쇼바이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2817",
+      "lemma": "חֲשׂוּפָא",
+      "translit": "Ḥăśûp̄ā",
+      "translitKo": "하수파",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. śin(ś)은 배포 선례 사르(śar)·바사르(bāśār)대로 ㅅ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2884",
+      "lemma": "טַבָּעוֹת",
+      "translit": "Ṭabāʿôṯ",
+      "translitKo": "타바오트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 다게쉬 포르테를 받침으로 겹치지 않았다. 어중 ʿ 는 한글로 따로 적지 않았다. 개역개정 관용 표기는 다바옷이나 학술 표기를 표제로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7026",
+      "lemma": "קֵירֹס",
+      "translit": "Qêrōs",
+      "translitKo": "케로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5517",
+      "lemma": "סִיעָא",
+      "translit": "Sîʿā",
+      "translitKo": "시아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ʿ 를 따로 적지 않는 배포 선례 심아(šimʿāʾ)를 따랐다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6303",
+      "lemma": "פָּדוֹן",
+      "translit": "Pādôn",
+      "translitKo": "파돈",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H3838",
+      "lemma": "לְבָנָא",
+      "translit": "Ləḇānā",
+      "translitKo": "르바나",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2286",
+      "lemma": "חֲגָבָא",
+      "translit": "Ḥăḡāḇā",
+      "translitKo": "하가바",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H8014",
+      "lemma": "שַׂלְמַי",
+      "translit": "Śalmay",
+      "translitKo": "살마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. śin(ś)은 ㅅ으로 적었다. 개역개정 관용 표기는 살매다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1515",
+      "lemma": "גַּחַר",
+      "translit": "Gaḥar",
+      "translitKo": "가하르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1502",
+      "lemma": "גַּזָּם",
+      "translit": "Gazzām",
+      "translitKo": "가잠",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1153",
+      "lemma": "בְּסַי",
+      "translit": "Bəsay",
+      "translitKo": "브사이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1227",
+      "lemma": "בַּקְבּוּק",
+      "translit": "Baqbûq",
+      "translitKo": "바크북",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2709",
+      "lemma": "חֲקוּפָא",
+      "translit": "Ḥăqûp̄ā",
+      "translitKo": "하쿠파",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2744",
+      "lemma": "חַרְחוּר",
+      "translit": "Ḥarḥûr",
+      "translitKo": "하르후르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1213",
+      "lemma": "בַּצְלוּת",
+      "translit": "Baṣlûṯ",
+      "translitKo": "바츨루트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 뒤 l 은 배포 선례 카슬루힘(kasluḥîm)대로 앞 음절 받침 ㄹ로 붙여 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H4240",
+      "lemma": "מְחִידָא",
+      "translit": "Məḥîdā",
+      "translitKo": "므히다",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2797",
+      "lemma": "חַרְשָׁא",
+      "translit": "Ḥaršā",
+      "translitKo": "하르샤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1302",
+      "lemma": "בַּרְקוֹס",
+      "translit": "Barqôs",
+      "translitKo": "바르코스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H8547",
+      "lemma": "תֶּמַח",
+      "translit": "Temaḥ",
+      "translitKo": "테마흐",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ḥ 는 배포 선례 페타흐(petaḥ)대로 흐로 적었다. 개역개정 관용 표기는 다마다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5335",
+      "lemma": "נְצִיחַ",
+      "translit": "Nəṣîaḥ",
+      "translitKo": "느치아흐",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2412",
+      "lemma": "חֲטִיפָא",
+      "translit": "Ḥăṭîp̄ā",
+      "translitKo": "하티파",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5479",
+      "lemma": "סוֹטַי",
+      "translit": "Sôṭay",
+      "translitKo": "소타이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5618",
+      "lemma": "סֹפֶרֶת",
+      "translit": "Sōp̄ereṯ",
+      "translitKo": "소페레트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6514",
+      "lemma": "פְּרוּדָא",
+      "translit": "Pərûdā",
+      "translitKo": "프루다",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H3279",
+      "lemma": "יַעֲלָא",
+      "translit": "Yaʿălā",
+      "translitKo": "야알라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ʿ 를 따로 적지 않는 배포 선례 야아코브(yaʿăqōb)를 따랐다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1874",
+      "lemma": "דַּרְקוֹן",
+      "translit": "Darqôn",
+      "translitKo": "다르콘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2411",
+      "lemma": "חַטִּיל",
+      "translit": "Ḥaṭṭîl",
+      "translitKo": "하틸",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2252",
+      "lemma": "חֲבַיָּה",
+      "translit": "Ḥăḇayyā",
+      "translitKo": "하바야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2870",
+      "lemma": "טָבְאֵל",
+      "translit": "Ṭāḇʾēl",
+      "translitKo": "타브엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 베가드케파트 구분 기호를 쓰지 않고 b 로 적었다. 개역개정 관용 표기는 다브엘이나 학술 표기를 표제로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H112",
+      "lemma": "אִדּוֹ",
+      "translit": "ʾIddô",
+      "translitKo": "잇도",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H882",
+      "lemma": "בְּאֵרִי",
+      "translit": "Bəʾērî",
+      "translitKo": "브에리",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2437",
+      "lemma": "חִירָה",
+      "translit": "Ḥîrā",
+      "translitKo": "히라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5897",
+      "lemma": "עִירָד",
+      "translit": "ʿÎrāḏ",
+      "translitKo": "이라드",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 ʿ 는 한글로 따로 적지 않았다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H4232",
+      "lemma": "מְחוּיָאֵל",
+      "translit": "Məḥûyāʾēl",
+      "translitKo": "므후야엘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7764",
+      "lemma": "שׁוּנִי",
+      "translit": "Šûnî",
+      "translitKo": "수니",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6179",
+      "lemma": "עֵרִי",
+      "translit": "ʿĒrî",
+      "translitKo": "에리",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H3183",
+      "lemma": "יַחְצְאֵל",
+      "translit": "Yaḥṣəʾēl",
+      "translitKo": "야흐츠엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H3377",
+      "lemma": "יָרֵב",
+      "translit": "Yārēḇ",
+      "translitKo": "야레브",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6964",
+      "lemma": "קוֹלָיָה",
+      "translit": "Qôlāyā",
+      "translitKo": "콜라야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H4271",
+      "lemma": "מַחְסֵיָה",
+      "translit": "Maḥsēyā",
+      "translitKo": "마흐세야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5562",
+      "lemma": "סַמְגַּר נְבוֹ",
+      "translit": "Samgar Nəḇô",
+      "translitKo": "삼가르 느보",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H8310",
+      "lemma": "שַׂרְסְכִים",
+      "translit": "Śarsəkîm",
+      "translitKo": "사르스킴",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H528",
+      "lemma": "אָמוֹן",
+      "translit": "ʾĀmôn",
+      "translitKo": "아몬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 이집트 신 이름. 사람 이름 아몬(H526)과 철자가 갈리나 음역은 같다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1292",
+      "lemma": "בָּרַכְאֵל",
+      "translit": "Bāraḵʾēl",
+      "translitKo": "바라크엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말이 아닌 k 지만 배포 선례 말아크(malʾāk)처럼 ʾ 앞에서 크로 끊어 적었다. 개역개정 관용 표기는 바라겔이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7163",
+      "lemma": "קֶרֶן הַפּוּךְ",
+      "translit": "Qeren Happûḵ",
+      "translitKo": "케렌 하푸크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 두 낱말 합성 이름이라 띄어 적었다. 어말 k 는 배포 선례 데레크(derek)대로 크로 적었다. 개역개정 관용 표기는 게렌합북이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H189",
+      "lemma": "אֱוִי",
+      "translit": "ʾĔwî",
+      "translitKo": "에위",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 자음 ו 는 확정 규칙대로 w 로 보아 위로 적었다(배포 선례 레위이).",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7254",
+      "lemma": "רֶבַע",
+      "translit": "Reḇaʿ",
+      "translitKo": "레바",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ʿ 는 배포 선례 셰바(šebaʿ)·아르바(ʾarbaʿ)대로 한글로 적지 않았다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H932",
+      "lemma": "בֹּהַן",
+      "translit": "Bōhan",
+      "translitKo": "보한",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2507",
+      "lemma": "חֵלֶק",
+      "translit": "Ḥēleq",
+      "translitKo": "헬레크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어말 q 는 배포 선례 체데크(ṣedeq)대로 크로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1985",
+      "lemma": "הִלֵּל",
+      "translit": "Hillēl",
+      "translitKo": "힐렐",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6067",
+      "lemma": "עֲנָת",
+      "translit": "ʿĂnāṯ",
+      "translitKo": "아나트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2446",
+      "lemma": "חֲכַלְיָה",
+      "translit": "Ḥăḵalyā",
+      "translitKo": "하칼야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2756",
+      "lemma": "חָרִיף",
+      "translit": "Ḥārîp̄",
+      "translitKo": "하리프",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 베가드케파트 구분 기호를 쓰지 않고 p 로 적었다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6043",
+      "lemma": "עֲנָיָה",
+      "translit": "ʿĂnāyā",
+      "translitKo": "아나야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H3873",
+      "lemma": "לוֹחֵשׁ",
+      "translit": "Lôḥēš",
+      "translitKo": "로헤쉬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 음절 말 שׁ 는 확정 규칙대로 쉬로 적었다. 개역개정 관용 표기 할로헤스는 정관사 하(ה)를 붙인 형태다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6055",
+      "lemma": "עֲנַנְיָה",
+      "translit": "ʿĂnanyā",
+      "translitKo": "아난야",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5987",
+      "lemma": "עָמוֹק",
+      "translit": "ʿĀmôq",
+      "translitKo": "아모크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2813",
+      "lemma": "חֲשַׁבְנְיָה",
+      "translit": "Ḥăšaḇnəyā",
+      "translitKo": "하샤브느야",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7278",
+      "lemma": "רֶגֶם מֶלֶךְ",
+      "translit": "Reḡem Meleḵ",
+      "translitKo": "레겜 멜레크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 두 낱말 합성 이름이라 띄어 적었다. 어말 k 는 배포 선례 데레크·말아크대로 크로 적었다(단독 H4428 은 멜렉으로 배포되어 있다). 개역개정 관용 표기는 레겜멜렉이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "G5436",
+      "lemma": "Φύγελλος",
+      "translit": "Phýgellos",
+      "translitKo": "퓌겔로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ 는 배포 선례 뒤나미스·뤼오대로 위 계열로 적었다. 개역개정 관용 표기는 부겔로이나 학술 표기를 표제로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G2061",
+      "lemma": "Ἑρμογένης",
+      "translit": "Hermogénēs",
+      "translitKo": "헤르모게네스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어두 거친 숨표는 ㅎ으로 적었다. 개역개정 관용 표기는 허모게네다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G5372",
+      "lemma": "Φίλητος",
+      "translit": "Phílētos",
+      "translitKo": "필레토스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 빌레도이나 학술 표기를 표제로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G2913",
+      "lemma": "Κρήσκης",
+      "translit": "Krḗskēs",
+      "translitKo": "크레스케스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 그레스게다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G2591",
+      "lemma": "Κάρπος",
+      "translit": "Kárpos",
+      "translitKo": "카르포스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 가보다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G2103",
+      "lemma": "Εὔβουλος",
+      "translit": "Eúboulos",
+      "translitKo": "유불로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ευ 는 확정 규칙대로 유 계열 한 음절로 적었다. 개역개정 관용 표기는 으불로다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G4227",
+      "lemma": "Πούδης",
+      "translit": "Poúdēs",
+      "translitKo": "푸데스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 부데다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G3044",
+      "lemma": "Λίνος",
+      "translit": "Línos",
+      "translitKo": "리노스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 리노다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G2803",
+      "lemma": "Κλαυδία",
+      "translit": "Klaudía",
+      "translitKo": "클라우디아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. αυ 는 배포 선례 아우토스(autós)대로 아우로 적었다. 개역개정 관용 표기는 글라우디아다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G986",
+      "lemma": "Βλάστος",
+      "translit": "Blástos",
+      "translitKo": "블라스토스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 블라스도다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G6084",
+      "lemma": "Τιτίος",
+      "translit": "Titíos",
+      "translitKo": "티티오스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 입력에 권위 사전 라틴 음역이 비어 있어 lemma(Τιτίος)에서 직접 채웠다. 개역개정 관용 표기는 디도다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G4986",
+      "lemma": "Σώπατρος",
+      "translit": "Sṓpatros",
+      "translitKo": "소파트로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 소바더다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G6077",
+      "lemma": "Πύρρος",
+      "translit": "Pýrrhos",
+      "translitKo": "퓌로스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 입력에 권위 사전 라틴 음역이 비어 있어 lemma(Πύρρος)에서 직접 채웠다. υ 는 위 계열, ρρ 는 배포 선례 사라(Sárrha)·타레오(tharrhéō)대로 겹쳐 적지 않았다. 개역개정 관용 표기는 부로다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "G4580",
+      "lemma": "Σεκοῦνδος",
+      "translit": "Sekoûndos",
+      "translitKo": "세쿤도스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 세군도다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "G1359",
+      "lemma": "Διόσκουροι",
+      "translit": "Dióskouroi",
+      "translitKo": "디오스쿠로이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ου 는 우로 적었다. 개역개정 관용 표기는 디오스구로다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1829",
+      "lemma": "דִּמְנָה",
+      "translit": "Dimnā",
+      "translitKo": "딤나",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5910",
+      "lemma": "עַכּוֹ",
+      "translit": "ʿAkkô",
+      "translitKo": "악고",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 관용 표기 ‘악고’는 ע를 별도 음역하지 않는다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H2462",
+      "lemma": "חֶלְבָּה",
+      "translit": "Ḥeləbā",
+      "translitKo": "헬바",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5451",
+      "lemma": "סִבֹּלֶת",
+      "translit": "Sibbōleṯ",
+      "translitKo": "시볼레트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 사메크(ס)로 시작하므로 시볼레트다. 신(שׁ)으로 시작하는 쉽볼렛(H7641)과 갈린다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H7796",
+      "lemma": "שׂוֹרֵק",
+      "translit": "Śôrēq",
+      "translitKo": "소레크",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. śin(ś)은 ㅅ으로 적었다. 개역개정 관용 표기는 소렉이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1440",
+      "lemma": "גִּדְעֹם",
+      "translit": "Gidʿōm",
+      "translitKo": "기드옴",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ʿ 는 한글로 따로 적지 않았다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H1704",
+      "lemma": "דִּבְרִי",
+      "translit": "Diḇrî",
+      "translitKo": "디브리",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H4401",
+      "lemma": "מַלְאָכִי",
+      "translit": "Malʾāḵî",
+      "translitKo": "말라키",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H8208",
+      "lemma": "שָׁפִיר",
+      "translit": "Šāp̄îr",
+      "translitKo": "샤피르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 뒤에 모음이 오는 음절 첫소리 שׁ 이므로 샤로 적었다. 개역개정 관용 표기는 사빌이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H6630",
+      "lemma": "צַאֲנָן",
+      "translit": "Ṣaʾănān",
+      "translitKo": "차아난",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 관용 표기는 사아난이다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BM",
+      "strong": "H4796",
+      "lemma": "מָרוֹת",
+      "translit": "Mārôṯ",
+      "translitKo": "마로트",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 관용 표기는 마롯이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BM",
+      "strong": "H5151",
+      "lemma": "נַחוּם",
+      "translit": "Naḥûm",
+      "translitKo": "나훔",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기 ‘나훔’을 따름.",
+      "origin": "unanimous"
+    }
+  ],
+  "disputed": [
+    {
+      "shard": "BK",
+      "strong": "H4781",
+      "lemma": "מְרֹדָךְ",
+      "lang": "hebrew",
+      "glossEn": "Merodach. Compare H4757 (מְרֹאדַךְ בַּלְאָדָן).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərōdaḵ",
+          "translitKo": "므로닥",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mərōḏāk",
+          "translitKo": "므로드악",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərōḏāk",
+          "translitKo": "메로다크",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrōdāk",
+          "translitKo": "메로다크",
+          "note": "바빌론 신명. 개역개정 관용은 '므로닥'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H4850",
+      "lemma": "מְרָתַיִם",
+      "lang": "hebrew",
+      "glossEn": "Merathaim.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərāṯayim",
+          "translitKo": "므라타임",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mərāṯayim",
+          "translitKo": "므라타임",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərāṯayim",
+          "translitKo": "메라타임",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrātayim",
+          "translitKo": "메라타임",
+          "note": "개역개정 관용은 '므라다임'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H694",
+      "lemma": "אֲרָב",
+      "lang": "hebrew",
+      "glossEn": "Arab.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾărāḇ",
+          "translitKo": "아랍",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾĂrāḇ",
+          "translitKo": "아랍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾărāḇ",
+          "translitKo": "아라브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾărāb",
+          "translitKo": "아라브",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H6911",
+      "lemma": "קִבְצַיִם",
+      "lang": "hebrew",
+      "glossEn": "Kibzaim.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Qiḇṣayim",
+          "translitKo": "키브차임",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Qiḇṣayim",
+          "translitKo": "킵차임",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "qiḇṣayim",
+          "translitKo": "킵차임",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qibṣayim",
+          "translitKo": "키브차임",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H486",
+      "lemma": "אַלְמוֹדָד",
+      "lang": "hebrew",
+      "glossEn": "Almodad.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾalmôḏāḏ",
+          "translitKo": "알모닷",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾAlmôḏāḏ",
+          "translitKo": "알모닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾalmôḏāḏ",
+          "translitKo": "알모다드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾalmôdād",
+          "translitKo": "알모다드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H2301",
+      "lemma": "חֲדַד",
+      "lang": "hebrew",
+      "glossEn": "Hadad.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ḥăḏaḏ",
+          "translitKo": "하닷",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Ḥăḏaḏ",
+          "translitKo": "하닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥăḏaḏ",
+          "translitKo": "하다드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥădad",
+          "translitKo": "하다드",
+          "note": "H1908(하다드)의 이형 표기다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H2175",
+      "lemma": "זִמְרָן",
+      "lang": "hebrew",
+      "glossEn": "Zimran.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Zimrān",
+          "translitKo": "지므란",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Zimrān",
+          "translitKo": "짐란",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zimrān",
+          "translitKo": "지므란",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zimrān",
+          "translitKo": "짐란",
+          "note": "개역개정 관용은 '시므란'이다. ז를 ㅈ 계열로 적는 기존 표기(자하브·미즈라흐)를 따랐다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H4091",
+      "lemma": "מְדָן",
+      "lang": "hebrew",
+      "glossEn": "Medan.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Məḏān",
+          "translitKo": "므단",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Məḏān",
+          "translitKo": "므단",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "məḏān",
+          "translitKo": "메단",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕdān",
+          "translitKo": "메단",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H7780",
+      "lemma": "שׁוֹפָךְ",
+      "lang": "hebrew",
+      "glossEn": "Shophach.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šôp̄āḵ",
+          "translitKo": "소파크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Šôp̄āk",
+          "translitKo": "쇼팍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šôp̄āḵ",
+          "translitKo": "쇼파크",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šôpāk",
+          "translitKo": "쇼파크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H6431",
+      "lemma": "פֶּלֶת",
+      "lang": "hebrew",
+      "glossEn": "Peleth.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Pelet",
+          "translitKo": "펠렛",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Pelet",
+          "translitKo": "펠렛",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "peleṯ",
+          "translitKo": "펠레트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pelet",
+          "translitKo": "펠레트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H3436",
+      "lemma": "יׇשְׁבְּקָשָׁה",
+      "lang": "hebrew",
+      "glossEn": "Joshbekashah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Yāšbəqāšāh",
+          "translitKo": "야슈베카샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Yāšbəqāšāh",
+          "translitKo": "야슈브카샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yāšbəqāšāh",
+          "translitKo": "야시브카샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yošbĕqāšâ",
+          "translitKo": "요쉬베카샤",
+          "note": "첫 모음은 카메츠 하투프이므로 o로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3620",
+      "lemma": "כְּלוּב",
+      "lang": "hebrew",
+      "glossEn": "Chelub.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kelûḇ",
+          "translitKo": "켈룹",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kelûḇ",
+          "translitKo": "켈루브",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kelûḇ",
+          "translitKo": "켈룹",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kĕlûb",
+          "translitKo": "켈루브",
+          "note": "한국어 성경 관용 표기는 '글룹'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3094",
+      "lemma": "יְהַלֶּלְאֵל",
+      "lang": "hebrew",
+      "glossEn": "Jehalellel, Jehalelel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhall ʼēl",
+          "translitKo": "여할렐엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhalleʾēl",
+          "translitKo": "예할렐엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhallelleʾl",
+          "translitKo": "여할렐엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhallelʾēl",
+          "translitKo": "예할렐엘",
+          "note": "한국어 성경 관용 표기는 '여할렐렐'이다. -ʾēl은 배포 선례를 따라 '엘'로 끊어 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3042",
+      "lemma": "יְדָיָה",
+      "lang": "hebrew",
+      "glossEn": "Jedaiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəḏāyāh",
+          "translitKo": "여다야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yədāyāh",
+          "translitKo": "예다야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yədāyāh",
+          "translitKo": "여다야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕdāyâ",
+          "translitKo": "예다야",
+          "note": "한국어 성경 관용 표기는 '여다야'다. 어두 יְ는 배포 선례(예호슈아·예후다)를 따라 '예'로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H1074",
+      "lemma": "בֹּכְרוּ",
+      "lang": "hebrew",
+      "glossEn": "Bocheru.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bōḵrû",
+          "translitKo": "보크루",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bōḵərû",
+          "translitKo": "보크루",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bōḵərû",
+          "translitKo": "보케루",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bōkĕrû",
+          "translitKo": "보케루",
+          "note": "한국어 성경 관용 표기는 '보그루'다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H4810",
+      "lemma": "מְרִי בַעַל",
+      "lang": "hebrew",
+      "glossEn": "Meri-baal. Compare H4807 (מְרִיב בַּעַל).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərî baʿal",
+          "translitKo": "므리바알",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mərî baʿal",
+          "translitKo": "므리 바알",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərî-baʿal",
+          "translitKo": "므리바알",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrî baʿal",
+          "translitKo": "메리 바알",
+          "note": "한국어 성경 관용 표기는 '므리바알'이다. 두 낱말이므로 띄어 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3227",
+      "lemma": "יְמִינִי",
+      "lang": "hebrew",
+      "glossEn": "(on the) right (hand).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmînî",
+          "translitKo": "예미니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmînî",
+          "translitKo": "예미니",
+          "note": "배포 선례 '벤예미니'(בֶּן־יְמִינִי)와 같은 자모로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3090",
+      "lemma": "יְהוֹשַׁבְעַת",
+      "lang": "hebrew",
+      "glossEn": "Jehoshabeath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호사브앗",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호샤브앗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호샤브앗",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhôšabʿat",
+          "translitKo": "예호샤브아트",
+          "note": "한국어 성경 관용 표기는 '여호사브앗'이다. ע를 한글로 따로 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3086",
+      "lemma": "יְהוֹעַדִּין",
+      "lang": "hebrew",
+      "glossEn": "Jehoaddan.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호앗딘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호아딘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호아딘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhôʿaddîn",
+          "translitKo": "예호아딘",
+          "note": "한국어 성경 관용 표기는 '여호앗단'이다(케레·크티브 차이로 여호앗딘으로도 읽는다)."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3203",
+      "lemma": "יְכׇלְיָה",
+      "lang": "hebrew",
+      "glossEn": "Jecholiah, Jecoliah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəḵolyāh",
+          "translitKo": "여콜야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəḵoləyāh",
+          "translitKo": "예콜야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəḵolyāh",
+          "translitKo": "여콜야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕkolyâ",
+          "translitKo": "예콜야",
+          "note": "한국어 성경 관용 표기는 '여골리아'다. כׇ는 카메츠 카탄이므로 'o'로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3388",
+      "lemma": "יְרוּשָׁא",
+      "lang": "hebrew",
+      "glossEn": "Jerusha, Jerushah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yərûšāʾ",
+          "translitKo": "여루샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yərûšāʾ",
+          "translitKo": "예루샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yərûšāʾ",
+          "translitKo": "여루샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕrûšāʾ",
+          "translitKo": "예루샤",
+          "note": "한국어 성경 관용 표기는 '여루사'다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3228",
+      "lemma": "יְמִינִי",
+      "lang": "hebrew",
+      "glossEn": "Jaminites. See also H1145 (בֶּן־יְמִינִי).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmînî",
+          "translitKo": "예미니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmînî",
+          "translitKo": "예미니",
+          "note": "자모가 H3227과 같아 한글 표기도 같다. 한국어 성경은 이 항목을 '야민 사람'으로 푼다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H2313",
+      "lemma": "חִדֶּקֶל",
+      "lang": "hebrew",
+      "glossEn": "Hiddekel.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데겔",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데겔",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데켈",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥiddeqel",
+          "translitKo": "히데켈",
+          "note": "한국어 성경 관용 표기는 '힛데겔'이다. 다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H904",
+      "lemma": "בִּגְתָן",
+      "lang": "hebrew",
+      "glossEn": "Bigthan, Bigthana.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bigṯān",
+          "translitKo": "빅단",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "biḡtān",
+          "translitKo": "빅단",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bigṯān",
+          "translitKo": "빅탄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bigtān",
+          "translitKo": "비그탄",
+          "note": "한국어 성경 관용 표기는 '빅단'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3223",
+      "lemma": "יְמוּאֵל",
+      "lang": "hebrew",
+      "glossEn": "Jemuel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmûʾēl",
+          "translitKo": "여무엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmûʾēl",
+          "translitKo": "예무엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmûʾēl",
+          "translitKo": "여무엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmûʾēl",
+          "translitKo": "예무엘",
+          "note": "한국어 성경 관용 표기는 '여무엘'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H4990",
+      "lemma": "מִתְרְדָת",
+      "lang": "hebrew",
+      "glossEn": "Mithredath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르다트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르다트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mitrĕdāt",
+          "translitKo": "미트레다트",
+          "note": "한국어 성경 관용 표기는 '미드르닷'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H4967",
+      "lemma": "מְתוּשָׁאֵל",
+      "lang": "hebrew",
+      "glossEn": "Methusael.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Mətûšāʾēl",
+          "translitKo": "므투샤엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Məṯûšāʾēl",
+          "translitKo": "므투사엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Məṯûšāʾêl",
+          "translitKo": "므투샤엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕtûšāʾēl",
+          "translitKo": "메투샤엘",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H5624",
+      "lemma": "סֶרֶד",
+      "lang": "hebrew",
+      "glossEn": "Sered.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Sered",
+          "translitKo": "세렛",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Sered",
+          "translitKo": "세렛",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Sereḏ",
+          "translitKo": "세레드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sered",
+          "translitKo": "세레드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H3376",
+      "lemma": "יִרְאִיָּיה",
+      "lang": "hebrew",
+      "glossEn": "Irijah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Yirʾiyyā",
+          "translitKo": "이르아이야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Yirʾiyyāyā",
+          "translitKo": "이르이야야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Yirʾiyyāyā",
+          "translitKo": "이르아이야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yirʾiyyâ",
+          "translitKo": "이르이야",
+          "note": "lemma 철자(יִרְאִיָּיה)에 요드가 겹쳐 있으나 원어 철자는 그대로 두고 음역만 붙였다. 개역개정 관용 표기는 이리야다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H7433",
+      "lemma": "רָמֹת גִּלעָד",
+      "lang": "hebrew",
+      "glossEn": "Ramoth-gilead, Ramoth in Gilead. See also H7216 (רָאמוֹת).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Rāmōṯ Gilʿād",
+          "translitKo": "라모트 길르앗",
+          "note": "관용 표기 길르앗을 병기한다."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Rāmōṯ Gilʿāḏ",
+          "translitKo": "라못 길르앗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Rāmōṯ Gilʿāḏ",
+          "translitKo": "라못 길르앗",
+          "note": "관용 표기 ‘라못 길르앗’ 병기."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rāmōt gilʿād",
+          "translitKo": "라모트 길아드",
+          "note": "두 낱말 지명이라 띄어 적었다. ʿ 는 한글로 따로 적지 않았다. 개역개정 관용 표기는 길르앗 라못으로 어순이 뒤집혀 있다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H7003",
+      "lemma": "קִטְרוֹן",
+      "lang": "hebrew",
+      "glossEn": "Kitron.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Qiṭrôn",
+          "translitKo": "킷론",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Qiṭrôn",
+          "translitKo": "킷론",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Qiṭrôn",
+          "translitKo": "키트론",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qiṭrôn",
+          "translitKo": "키트론",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H303",
+      "lemma": "אַחְלָב",
+      "lang": "hebrew",
+      "glossEn": "Ahlab.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘랍",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘랍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘라브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾaḥlāb",
+          "translitKo": "아흘라브",
+          "note": "자음 뒤 l 은 배포 선례 카슬루힘대로 앞 음절 받침 ㄹ로 붙여 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H3941",
+      "lemma": "לַפִּידוֹת",
+      "lang": "hebrew",
+      "glossEn": "Lappidoth.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Lappidôṯ",
+          "translitKo": "랍비돗",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Lappîḏôṯ",
+          "translitKo": "랍비돗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Lappîḏôṯ",
+          "translitKo": "라피도트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "lappîdôt",
+          "translitKo": "라피도트",
+          "note": "다게쉬 포르테를 받침으로 겹치지 않았다. 개역개정 관용 표기는 랍비돗이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H4789",
+      "lemma": "מֵרוֹז",
+      "lang": "hebrew",
+      "glossEn": "Meroz.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Mērôz",
+          "translitKo": "메로스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mērôz",
+          "translitKo": "메로스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Mêrôz",
+          "translitKo": "메로즈",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mērôz",
+          "translitKo": "메로즈",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H2888",
+      "lemma": "טַבַּת",
+      "lang": "hebrew",
+      "glossEn": "Tabbath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ṭabbat",
+          "translitKo": "탑밧",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Ṭabbaṯ",
+          "translitKo": "타밧",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Ṭabbaṯ",
+          "translitKo": "타바트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ṭabbat",
+          "translitKo": "타바트",
+          "note": "다게쉬 포르테를 받침으로 겹치지 않았다. 개역개정 관용 표기는 답밧이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H1286",
+      "lemma": "בְּרִית",
+      "lang": "hebrew",
+      "glossEn": "Berith.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bərîṯ",
+          "translitKo": "브릿",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Bərîṯ",
+          "translitKo": "브릿",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Bərîṯ",
+          "translitKo": "브리트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bĕrît",
+          "translitKo": "베리트",
+          "note": "세겜의 신 이름. 언약을 뜻하는 낱말 베리트(H1285)와 음역이 같다. 개역개정 관용 표기는 브릿(바알브릿)이다."
+        }
+      ]
+    }
+  ]
+}

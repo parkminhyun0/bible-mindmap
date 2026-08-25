@@ -1,0 +1,707 @@
+{
+  "shard": "BT",
+  "model": "claude-opus-5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H3780",
+      "lemma": "כָּשָׂה",
+      "translit": "kāśâ",
+      "translitKo": "카사",
+      "note": ""
+    },
+    {
+      "strong": "H7876",
+      "lemma": "שָׁיָה",
+      "translit": "šāyâ",
+      "translitKo": "샤야",
+      "note": ""
+    },
+    {
+      "strong": "H4198",
+      "lemma": "מָזֶה",
+      "translit": "māzeh",
+      "translitKo": "마제",
+      "note": ""
+    },
+    {
+      "strong": "H4815",
+      "lemma": "מְרִירִי",
+      "translit": "mĕrîrî",
+      "translitKo": "메리리",
+      "note": ""
+    },
+    {
+      "strong": "H6284",
+      "lemma": "פָּאָה",
+      "translit": "pāʾâ",
+      "translitKo": "파아",
+      "note": ""
+    },
+    {
+      "strong": "H3647",
+      "lemma": "כָּמַס",
+      "translit": "kāmas",
+      "translitKo": "카마스",
+      "note": ""
+    },
+    {
+      "strong": "H2245",
+      "lemma": "חָבַב",
+      "translit": "ḥābab",
+      "translitKo": "하바브",
+      "note": ""
+    },
+    {
+      "strong": "H8497",
+      "lemma": "תָּכָה",
+      "translit": "tākâ",
+      "translitKo": "타카",
+      "note": ""
+    },
+    {
+      "strong": "H6988",
+      "lemma": "קְטוֹרָה",
+      "translit": "qĕṭôrâ",
+      "translitKo": "케토라",
+      "note": ""
+    },
+    {
+      "strong": "H2653",
+      "lemma": "חׇפַף",
+      "translit": "ḥopap",
+      "translitKo": "호파프",
+      "note": "첫 모음이 카마츠 카탄(ׇ)이라 ā 가 아니라 o 다. 선례 מׇחֳרָת→moḥŏrāt 모호라트 · יָרׇבְעָם→yārobʿām 야로브암."
+    },
+    {
+      "strong": "H1645",
+      "lemma": "גֶּרֶשׁ",
+      "translit": "gereš",
+      "translitKo": "게레쉬",
+      "note": ""
+    },
+    {
+      "strong": "H8228",
+      "lemma": "שֶׁפַע",
+      "translit": "šepaʿ",
+      "translitKo": "셰파",
+      "note": ""
+    },
+    {
+      "strong": "H2187",
+      "lemma": "זָנַק",
+      "translit": "zānaq",
+      "translitKo": "자나크",
+      "note": ""
+    },
+    {
+      "strong": "H4515",
+      "lemma": "מִנְעָל",
+      "translit": "minʿāl",
+      "translitKo": "민알",
+      "note": ""
+    },
+    {
+      "strong": "H1679",
+      "lemma": "דֹּבֶא",
+      "translit": "dōbeʾ",
+      "translitKo": "도베",
+      "note": ""
+    },
+    {
+      "strong": "H3893",
+      "lemma": "לֵחַ",
+      "translit": "lēaḥ",
+      "translitKo": "레아흐",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다. 선례 מִזְבֵּחַ→미즈베아흐."
+    },
+    {
+      "strong": "H7190",
+      "lemma": "קְשִׁי",
+      "translit": "qĕšî",
+      "translitKo": "케시",
+      "note": "שׁ 뒤에 히렉이 와 음절 첫소리이므로 시로 적었다(쉬 아님). 선례 חֲמִשִּׁים→하미심."
+    },
+    {
+      "strong": "H5506",
+      "lemma": "סְחֹרָה",
+      "translit": "sĕḥōrâ",
+      "translitKo": "세호라",
+      "note": ""
+    },
+    {
+      "strong": "H1728",
+      "lemma": "דַּוָּג",
+      "translit": "dawwāg",
+      "translitKo": "다와그",
+      "note": ""
+    },
+    {
+      "strong": "H2751",
+      "lemma": "חֹרִי",
+      "translit": "ḥōrî",
+      "translitKo": "호리",
+      "note": ""
+    },
+    {
+      "strong": "H4761",
+      "lemma": "מַרְאָשָׁה",
+      "translit": "marʾāšâ",
+      "translitKo": "마르아샤",
+      "note": "선례 מַרְאֶה→마르에 대로 אְ 를 르 받침으로 적었다."
+    },
+    {
+      "strong": "H4734",
+      "lemma": "מִקְלַעַת",
+      "translit": "miqlaʿat",
+      "translitKo": "미클라아트",
+      "note": ""
+    },
+    {
+      "strong": "H1550",
+      "lemma": "גָּלִיל",
+      "translit": "gālîl",
+      "translitKo": "갈릴",
+      "note": ""
+    },
+    {
+      "strong": "H2707",
+      "lemma": "חָקָה",
+      "translit": "ḥāqâ",
+      "translitKo": "하카",
+      "note": ""
+    },
+    {
+      "strong": "H4237",
+      "lemma": "מֶחֱזָה",
+      "translit": "meḥĕzâ",
+      "translitKo": "메헤자",
+      "note": ""
+    },
+    {
+      "strong": "H2947",
+      "lemma": "טֵפַח",
+      "translit": "ṭēpaḥ",
+      "translitKo": "테파흐",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H4165",
+      "lemma": "מוּצָק",
+      "translit": "mûṣāq",
+      "translitKo": "무차크",
+      "note": ""
+    },
+    {
+      "strong": "H2837",
+      "lemma": "חֵשֶׁק",
+      "translit": "ḥēšeq",
+      "translitKo": "헤셰크",
+      "note": ""
+    },
+    {
+      "strong": "H8622",
+      "lemma": "תְּקוּפָה",
+      "translit": "tĕqûpâ",
+      "translitKo": "테쿠파",
+      "note": ""
+    },
+    {
+      "strong": "H6926",
+      "lemma": "קִדְמָה",
+      "translit": "qidmâ",
+      "translitKo": "키드마",
+      "note": ""
+    },
+    {
+      "strong": "H6877",
+      "lemma": "צְרִיחַ",
+      "translit": "ṣĕrîaḥ",
+      "translitKo": "체리아흐",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H6277",
+      "lemma": "עָתָק",
+      "translit": "ʿātāq",
+      "translitKo": "아타크",
+      "note": ""
+    },
+    {
+      "strong": "H2844",
+      "lemma": "חַת",
+      "translit": "ḥat",
+      "translitKo": "하트",
+      "note": ""
+    },
+    {
+      "strong": "H4770",
+      "lemma": "מַרְבֵּק",
+      "translit": "marbēq",
+      "translitKo": "마르베크",
+      "note": ""
+    },
+    {
+      "strong": "H6750",
+      "lemma": "צָלַל",
+      "translit": "ṣālal",
+      "translitKo": "찰랄",
+      "note": "모음 사이 ל 은 선례 חָלַל→할랄 · פָּלַל→팔랄 대로 받침 ㄹ + 초성 ㄹ 로 적었다."
+    },
+    {
+      "strong": "H2524",
+      "lemma": "חָם",
+      "translit": "ḥām",
+      "translitKo": "함",
+      "note": ""
+    },
+    {
+      "strong": "H8495",
+      "lemma": "תַּיִשׁ",
+      "translit": "tayiš",
+      "translitKo": "타이쉬",
+      "note": ""
+    },
+    {
+      "strong": "H2688",
+      "lemma": "חַצְצוֹן תָּמָר",
+      "translit": "ḥaṣṣôn tāmār",
+      "translitKo": "하츠촌 타마르",
+      "note": "지명. 첫 צ 의 쉐바는 무성이라 하츠 로 닫고 둘째 צ 를 촌 으로 적었다. 개역 관용 표기는 하사손다말이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H1765",
+      "lemma": "דָּחַף",
+      "translit": "dāḥap",
+      "translitKo": "다하프",
+      "note": ""
+    },
+    {
+      "strong": "H1740",
+      "lemma": "דּוּחַ",
+      "translit": "dûaḥ",
+      "translitKo": "두아흐",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다. 선례 מָנוֹחַ→마노아흐."
+    },
+    {
+      "strong": "H225",
+      "lemma": "אוּת",
+      "translit": "ʾût",
+      "translitKo": "우트",
+      "note": ""
+    },
+    {
+      "strong": "H4964",
+      "lemma": "מֶתֶג",
+      "translit": "meteg",
+      "translitKo": "메테그",
+      "note": ""
+    },
+    {
+      "strong": "H7046",
+      "lemma": "קָלַס",
+      "translit": "qālas",
+      "translitKo": "칼라스",
+      "note": ""
+    },
+    {
+      "strong": "H219",
+      "lemma": "אוֹרָה",
+      "translit": "ʾôrâ",
+      "translitKo": "오라",
+      "note": ""
+    },
+    {
+      "strong": "H579",
+      "lemma": "אָנָה",
+      "translit": "ʾānâ",
+      "translitKo": "아나",
+      "note": ""
+    },
+    {
+      "strong": "H5730",
+      "lemma": "עֵדֶן",
+      "translit": "ʿēden",
+      "translitKo": "에덴",
+      "note": "선례 H5731 עֵדֶן→에덴 과 같게 적었다. 학술 표기와 관용 표기가 같아 병기하지 않는다."
+    },
+    {
+      "strong": "H2897",
+      "lemma": "טוֹב",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "note": "지명(사사기 11:3). 학술 표기는 보통명사 טוֹב 와 같은 토브이나 개역 관용 표기는 돕이다."
+    },
+    {
+      "strong": "H5228",
+      "lemma": "נָכֹחַ",
+      "translit": "nākōaḥ",
+      "translitKo": "나코아흐",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H7504",
+      "lemma": "רָפֶה",
+      "translit": "rāpeh",
+      "translitKo": "라페",
+      "note": ""
+    },
+    {
+      "strong": "H5742",
+      "lemma": "עָדָשׁ",
+      "translit": "ʿādāš",
+      "translitKo": "아다쉬",
+      "note": ""
+    },
+    {
+      "strong": "H4794",
+      "lemma": "מְרוּצָה",
+      "translit": "mĕrûṣâ",
+      "translitKo": "메루차",
+      "note": ""
+    },
+    {
+      "strong": "H92",
+      "lemma": "אֲגֻדָּה",
+      "translit": "ʾăguddâ",
+      "translitKo": "아구다",
+      "note": ""
+    },
+    {
+      "strong": "H491",
+      "lemma": "אַלְמָנוּת",
+      "translit": "ʾalmānût",
+      "translitKo": "알마누트",
+      "note": ""
+    },
+    {
+      "strong": "H7791",
+      "lemma": "שׁוּר",
+      "translit": "šûr",
+      "translitKo": "슈르",
+      "note": "선례 אַשּׁוּר→아슈르 대로 שׁוּ 를 슈로 적었다."
+    },
+    {
+      "strong": "H5920",
+      "lemma": "עַל",
+      "translit": "ʿal",
+      "translitKo": "알",
+      "note": ""
+    },
+    {
+      "strong": "H877",
+      "lemma": "בֹּאר",
+      "translit": "bōʾr",
+      "translitKo": "보르",
+      "note": ""
+    },
+    {
+      "strong": "H5190",
+      "lemma": "נָטַל",
+      "translit": "nāṭal",
+      "translitKo": "나탈",
+      "note": ""
+    },
+    {
+      "strong": "H7875",
+      "lemma": "שִׂיד",
+      "translit": "śîd",
+      "translitKo": "시드",
+      "note": ""
+    },
+    {
+      "strong": "H5995",
+      "lemma": "עָמִיר",
+      "translit": "ʿāmîr",
+      "translitKo": "아미르",
+      "note": ""
+    },
+    {
+      "strong": "H6217",
+      "lemma": "עָשׁוּק",
+      "translit": "ʿāšûq",
+      "translitKo": "아슈크",
+      "note": ""
+    },
+    {
+      "strong": "H5229",
+      "lemma": "נְכֹחָה",
+      "translit": "nĕkōḥâ",
+      "translitKo": "네코하",
+      "note": ""
+    },
+    {
+      "strong": "H2172",
+      "lemma": "זִמְרָה",
+      "translit": "zimrâ",
+      "translitKo": "짐라",
+      "note": ""
+    },
+    {
+      "strong": "H1488",
+      "lemma": "גֵּז",
+      "translit": "gēz",
+      "translitKo": "게즈",
+      "note": ""
+    },
+    {
+      "strong": "H594",
+      "lemma": "אֲנָךְ",
+      "translit": "ʾănāk",
+      "translitKo": "아나크",
+      "note": ""
+    },
+    {
+      "strong": "H5342",
+      "lemma": "נֵצֶר",
+      "translit": "nēṣer",
+      "translitKo": "네체르",
+      "note": ""
+    },
+    {
+      "strong": "H6716",
+      "lemma": "צִי",
+      "translit": "ṣî",
+      "translitKo": "치",
+      "note": ""
+    },
+    {
+      "strong": "H4070",
+      "lemma": "מְדוֹר",
+      "translit": "mĕdôr",
+      "translitKo": "메도르",
+      "note": ""
+    },
+    {
+      "strong": "H4486",
+      "lemma": "מַנְדַּע",
+      "translit": "mandaʿ",
+      "translitKo": "만다",
+      "note": ""
+    },
+    {
+      "strong": "H1547",
+      "lemma": "גָּלוּת",
+      "translit": "gālût",
+      "translitKo": "갈루트",
+      "note": ""
+    },
+    {
+      "strong": "H3546",
+      "lemma": "כְּהַל",
+      "translit": "kĕhal",
+      "translitKo": "케할",
+      "note": ""
+    },
+    {
+      "strong": "H4223",
+      "lemma": "מְחָא",
+      "translit": "mĕḥāʾ",
+      "translitKo": "메하",
+      "note": ""
+    },
+    {
+      "strong": "H6151",
+      "lemma": "עֲרַב",
+      "translit": "ʿărab",
+      "translitKo": "아라브",
+      "note": ""
+    },
+    {
+      "strong": "H4756",
+      "lemma": "מָרֵא",
+      "translit": "mārēʾ",
+      "translitKo": "마레",
+      "note": ""
+    },
+    {
+      "strong": "H521",
+      "lemma": "אַמָּה",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "note": "선례 H520 אַמָּה→암마 와 같게 적었다."
+    },
+    {
+      "strong": "H8361",
+      "lemma": "שִׁתִּין",
+      "translit": "šittîn",
+      "translitKo": "시틴",
+      "note": ""
+    },
+    {
+      "strong": "H2597",
+      "lemma": "חֲנֻכָּא",
+      "translit": "ḥănukkāʾ",
+      "translitKo": "하누카",
+      "note": ""
+    },
+    {
+      "strong": "H4953",
+      "lemma": "מַשְׁרוֹקִי",
+      "translit": "mašrôqî",
+      "translitKo": "마쉬로키",
+      "note": ""
+    },
+    {
+      "strong": "H7030",
+      "lemma": "קִיתָרֹס",
+      "translit": "qîtārōs",
+      "translitKo": "키타로스",
+      "note": "헬라어 κίθαρις 계열 차용어. 원어 철자를 그대로 음역했다."
+    },
+    {
+      "strong": "H5443",
+      "lemma": "סַבְּכָא",
+      "translit": "sabbĕkāʾ",
+      "translitKo": "사베카",
+      "note": "בְּ 의 쉐바를 유성으로 보아 베로 적었다. 사브카로 갈릴 수 있는 자리다."
+    },
+    {
+      "strong": "H6460",
+      "lemma": "פְּסַנְטֵרִין",
+      "translit": "pĕsantērîn",
+      "translitKo": "페산테린",
+      "note": "헬라어 ψαλτήριον 계열 차용어. 원어 철자를 그대로 음역했다."
+    },
+    {
+      "strong": "H5481",
+      "lemma": "סוּמְפּוֹנְיָה",
+      "translit": "sûmpônyâ",
+      "translitKo": "숨폰야",
+      "note": "헬라어 συμφωνία 계열 차용어. נְ 의 쉐바는 무성이라 선례 בִּנְיָמִין→빈야민 대로 폰야 로 붙여 적었다."
+    },
+    {
+      "strong": "H2178",
+      "lemma": "זַן",
+      "translit": "zan",
+      "translitKo": "잔",
+      "note": ""
+    },
+    {
+      "strong": "H2170",
+      "lemma": "זְמָר",
+      "translit": "zĕmār",
+      "translitKo": "제마르",
+      "note": ""
+    },
+    {
+      "strong": "H3729",
+      "lemma": "כְּפַת",
+      "translit": "kĕpat",
+      "translitKo": "케파트",
+      "note": ""
+    },
+    {
+      "strong": "H1907",
+      "lemma": "הַדָּבָר",
+      "translit": "haddābār",
+      "translitKo": "하다바르",
+      "note": ""
+    },
+    {
+      "strong": "H7960",
+      "lemma": "שָׁלוּ",
+      "translit": "šālû",
+      "translitKo": "샬루",
+      "note": ""
+    },
+    {
+      "strong": "H6744",
+      "lemma": "צְלַח",
+      "translit": "ṣĕlaḥ",
+      "translitKo": "첼라흐",
+      "note": "선례 צָלַח→찰라흐 와 같은 어근이며 모음 사이 ל 을 받침 ㄹ + 초성 ㄹ 로 적었다."
+    },
+    {
+      "strong": "H8001",
+      "lemma": "שְׁלָם",
+      "translit": "šĕlām",
+      "translitKo": "셸람",
+      "note": "선례 שְׁלֹמֹה→셸로모 · שְׁלוֹשִׁים→셸로심 대로 שְׁלָ 를 셸라 로 적었다."
+    },
+    {
+      "strong": "H1859",
+      "lemma": "דָּר",
+      "translit": "dār",
+      "translitKo": "다르",
+      "note": ""
+    },
+    {
+      "strong": "H6056",
+      "lemma": "עֲנַף",
+      "translit": "ʿănap",
+      "translitKo": "아나프",
+      "note": ""
+    },
+    {
+      "strong": "H6853",
+      "lemma": "צְפַר",
+      "translit": "ṣĕpar",
+      "translitKo": "체파르",
+      "note": ""
+    },
+    {
+      "strong": "H2499",
+      "lemma": "חֲלַף",
+      "translit": "ḥălap",
+      "translitKo": "할라프",
+      "note": ""
+    },
+    {
+      "strong": "H2957",
+      "lemma": "טְרַד",
+      "translit": "ṭĕrad",
+      "translitKo": "테라드",
+      "note": ""
+    },
+    {
+      "strong": "H8648",
+      "lemma": "תְּרֵין",
+      "translit": "tĕrên",
+      "translitKo": "테렌",
+      "note": ""
+    },
+    {
+      "strong": "H7313",
+      "lemma": "רוּם",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "note": "선례 H7311 רוּם→룸 과 같게 적었다."
+    },
+    {
+      "strong": "H8214",
+      "lemma": "שְׁפַל",
+      "translit": "šĕpal",
+      "translitKo": "셰팔",
+      "note": ""
+    },
+    {
+      "strong": "H506",
+      "lemma": "אֲלַף",
+      "translit": "ʾălap",
+      "translitKo": "알라프",
+      "note": ""
+    },
+    {
+      "strong": "H5142",
+      "lemma": "נְזַק",
+      "translit": "nĕzaq",
+      "translitKo": "네자크",
+      "note": ""
+    },
+    {
+      "strong": "H6695",
+      "lemma": "צוֹק",
+      "translit": "ṣôq",
+      "translitKo": "초크",
+      "note": ""
+    },
+    {
+      "strong": "H1682",
+      "lemma": "דְּבוֹרָה",
+      "translit": "dĕbôrâ",
+      "translitKo": "데보라",
+      "note": "선례 H1683 דְּבּוֹרָה→데보라 와 같게 적었다. 개역 관용 표기는 드보라이나 학술 표기를 표제로 둔다."
+    }
+  ]
+}

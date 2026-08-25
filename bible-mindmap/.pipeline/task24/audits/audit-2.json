@@ -1,0 +1,11 @@
+[
+  {
+    "strong": "H7007",
+    "field": "translitKo",
+    "current": "카이트",
+    "suggested": "카이츠",
+    "evidence": "final.json의 H7007은 קַיִט, SBL translit qayiṭ이다. 배포된 src/data/koreanGlossTopBatch08.js의 같은 음절·같은 צ 계열 표제 קַיִץ(qayiṣ)는 qayiṣ→카이츠로 표기되어 있다.",
+    "severity": "medium",
+    "reason": "ṭ와 ṣ를 모두 배포 선례의 ㅊ 계열로 처리하는 이 배치의 음역 규칙 및 qayiṣ→카이츠 선례와 달리, 현재 카이트는 같은 어말 ṭ 계열을 ㅌ으로 표기한다."
+  }
+]

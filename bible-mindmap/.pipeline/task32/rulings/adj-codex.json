@@ -1,0 +1,23 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"G1578","translit":"ekklínō","translitKo":"엑클리노","evidence":"src/data/koreanGlossTopBatch01.js의 ἐκ- 계열 배포 표기 ‘에크’와 달리, 이 항목은 어두 ἐκ 뒤 κ가 겹쳐 ‘엑클-’로 굳힌 선례를 따른다.","note":""},
+    {"strong":"G4244","translit":"presbytérion","translitKo":"프레스뷔테리온","evidence":"src/data/koreanGlossTopBatch04.js의 πρεσβύτερος ‘프레스뷔테로스’와 src/data/bookContext.js의 동일 어근 ‘프레스뷔테스’를 따른다.","note":""},
+    {"strong":"G5280","translit":"hypómnēsis","translitKo":"휘포므네시스","evidence":"src/data/koreanGlossTopBatch06.js의 ὑπομονή ‘휘포모네’ 및 src/data/koreanGlossTopBatch13.js의 ὑπομιμνήσκω ‘휘포밈네스코’처럼 υ는 위, 모음 뒤 μν은 므로 적는다.","note":""},
+    {"strong":"G4339","translit":"prosḗlytos","translitKo":"프로셀뤼토스","evidence":"src/data/bookContext.js의 προσεληλύθατε ‘프로셀렐뤼타테’와 src/data/koreanGlossTopBatch18.js의 προσέρχομαι ‘프로셀로오’ 계열, υ의 위 계열 선례를 따른다.","note":""},
+    {"strong":"G1602","translit":"ekpléō","translitKo":"에크플레오","evidence":"src/data/koreanGlossTopBatch05.js의 ἐκπορεύομαι ‘에크포류오마이’와 src/data/koreanGlossTopBatch09.js의 ἐκπλέσσω ‘에크플레소’를 따른다.","note":""},
+    {"strong":"G1224","translit":"diabaínō","translitKo":"디아바이노","evidence":"src/data/koreanGlossTopBatch01.js의 διά 표기 ‘디아’와 src/data/koreanGlossTopBatch05.js의 διακονέω ‘디아코네오’처럼 διά를 디아로 적는다.","note":""},
+    {"strong":"G525","translit":"apallássō","translitKo":"아팔라소","evidence":"src/data/koreanGlossTopBatch19.js의 ἀπαλλάσσω 계열 ‘아팔’과 배포 규칙의 σσ 단일 표기를 따른다.","note":""},
+    {"strong":"G669","translit":"apophthéngomai","translitKo":"아포프텐고마이","evidence":"src/data/koreanGlossTopBatch14.js의 ἀποφθείρω ‘아포프테이로’와 같은 ἀποφ- 및 φθ 자음군 선례를 따른다.","note":""},
+    {"strong":"G1195","translit":"desmeúō","translitKo":"데스뮤오","evidence":"src/data/koreanGlossTopBatch11.js의 δέσποτης ‘데스포테스’와 WORKER_SPEC의 ευ 배포 규칙(유 계열 한 음절)을 따른다.","note":""},
+    {"strong":"G4772","translit":"syngéneia","translitKo":"쉰게네이아","evidence":"src/data/koreanGlossTopBatch17.js의 συγκοίνονος ‘쉰코이노노스’, src/data/koreanGlossTopBatch18.js의 συνκεράννυμι ‘쉰케란뉘미’처럼 συν-을 쉰으로 적는다.","note":""},
+    {"strong":"G4790","translit":"synkoinōnéō","translitKo":"쉰코이노네오","evidence":"src/data/koreanGlossTopBatch17.js의 συγκοίνονος ‘쉰코이노노스’와 같은 어근·접두사 선례를 따른다.","note":""},
+    {"strong":"G3405","translit":"misthapodosía","translitKo":"미스타포도시아","evidence":"src/data/koreanGlossTopBatch18.js의 μισθαποδότης ‘미스타포도테스’와 같은 μισθαποδ- 어근 선례를 따른다.","note":""},
+    {"strong":"G2059","translit":"hermēneúō","translitKo":"헤르메뉴오","evidence":"src/data/koreanGlossTopBatch18.js의 ἑρμηνεία ‘헤르메네이아’와 거친 숨표의 ㅎ 처리, ευ의 유 계열 규칙을 따른다.","note":""},
+    {"strong":"G4028","translit":"perikalýptō","translitKo":"페리칼륍토","evidence":"배포된 ἀποκαλύπτω ‘아포칼륍토’와 같은 καλύπτω 어근 표기를 따른다.","note":""},
+    {"strong":"G1241","translit":"diazṓnnymi","translitKo":"디아존뉘미","evidence":"src/data/koreanGlossTopBatch18.js의 συνκεράννυμι ‘쉰케란뉘미’처럼 νν은 ㄴ받침+ㄴ, υ는 위 계열로 적는다.","note":""},
+    {"strong":"G755","translit":"architríklinos","translitKo":"아르키트리클리노스","evidence":"src/data/koreanGlossTopBatch18.js의 ἀρχιποίμην ‘아르키포이멘’처럼 ἀρχι-를 아르키로 적고, 모음 사이 λ은 ㄹ받침+ㄹ로 적는다.","note":""},
+    {"strong":"G2763","translit":"kerameús","translitKo":"케라뮤스","evidence":"WORKER_SPEC의 ευ 배포 규칙과 src/data/koreanGlossTop11.js·Top12.js의 κέραμος 계열 ‘케라’ 선례를 따른다.","note":""},
+    {"strong":"H5854","translit":"ʿaṭrōt bēt yôʾāb","translitKo":"아트로트 베트 요아브","evidence":"src/data/contextChapterCardsMonarchy.js의 יואב ‘요아브’ 및 src/data/koreanGlossTopBatch03.js의 요아브 배포 선례를 적용하고, 합성 지명은 낱말별로 띄운다.","note":"개역개정의 관용형 ‘아다롯벧요압’보다 배포된 원어 음역 선례를 우선했다."}
+  ]
+}

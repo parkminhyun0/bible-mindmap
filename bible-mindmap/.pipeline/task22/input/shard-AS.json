@@ -1,0 +1,906 @@
+{
+ "shard": "AS",
+ "count": 100,
+ "items": [
+  {
+   "strong": "G3100",
+   "lang": "greek",
+   "count": 4,
+   "lemma": "μαθητεύω",
+   "translit": "mathēteúō",
+   "glossEn": "be disciple, instruct, teach",
+   "defEn": "intransitively, to become a pupil; transitively, to disciple, i.e. enrol as scholar"
+  },
+  {
+   "strong": "G4614",
+   "lang": "greek",
+   "count": 4,
+   "lemma": "Σινᾶ",
+   "translit": "Sinâ",
+   "glossEn": "Sina",
+   "defEn": "Sina (i.e. Sinai), a mountain in Arabia"
+  },
+  {
+   "strong": "G1805",
+   "lang": "greek",
+   "count": 4,
+   "lemma": "ἐξαγοράζω",
+   "translit": "exagorázō",
+   "glossEn": "redeem",
+   "defEn": "to buy up, i.e. ransom; figuratively, to rescue from loss (improve opportunity)"
+  },
+  {
+   "strong": "H3231",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "יָמַן",
+   "translit": "",
+   "glossEn": "go (turn) to (on, use) the right hand.",
+   "defEn": "to be right-handed or take the right-hand side"
+  },
+  {
+   "strong": "H6454",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "פָּסֵחַ",
+   "translit": "",
+   "glossEn": "Paseah, Phaseah.",
+   "defEn": "Paseach, the name of two Israelites"
+  },
+  {
+   "strong": "H289",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "אֲחִימַן",
+   "translit": "",
+   "glossEn": "Ahiman.",
+   "defEn": "Achiman, the name of an Anakite and of an Israelite"
+  },
+  {
+   "strong": "H1030",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית הַשִּׁמְשִׁי",
+   "translit": "",
+   "glossEn": "Bethshemite.",
+   "defEn": "a Beth-shimshite, or inhabitant of Bethshemesh"
+  },
+  {
+   "strong": "H3305",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "יָפוֹ",
+   "translit": "",
+   "glossEn": "Japha, Joppa.",
+   "defEn": "Japho, a place in Palestine"
+  },
+  {
+   "strong": "H1044",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית עֵקֶד",
+   "translit": "",
+   "glossEn": "shearing house.",
+   "defEn": "Beth-Eked, a place in Palestine"
+  },
+  {
+   "strong": "H1662",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "גַּת־הַחֵפֶר",
+   "translit": "",
+   "glossEn": "Gath-kephr, Gittah-kephr.",
+   "defEn": "Gath-Chepher, a place in Palestine"
+  },
+  {
+   "strong": "H780",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "אֲרָרַט",
+   "translit": "",
+   "glossEn": "Ararat, Armenia.",
+   "defEn": "Ararat (or rather Armenia)"
+  },
+  {
+   "strong": "H1050",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית רְחוֹב",
+   "translit": "",
+   "glossEn": "Beth-rehob.",
+   "defEn": "Beth-Rechob, a place in Palestine"
+  },
+  {
+   "strong": "H3446",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "יִשְׂחָק",
+   "translit": "",
+   "glossEn": "Isaac. Compare H3327 (יִצְחָק).",
+   "defEn": "Jischak, the heir of Abraham"
+  },
+  {
+   "strong": "H1630",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "גְּרִזִים",
+   "translit": "",
+   "glossEn": "Gerizim.",
+   "defEn": "Gerizim, a mountain of Palestine"
+  },
+  {
+   "strong": "H8528",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "תֵּל מֶלַח",
+   "translit": "",
+   "glossEn": "Tel-melah.",
+   "defEn": "Tel-Melach, a place in Babylonia"
+  },
+  {
+   "strong": "H8521",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "תֵּל חַרְשָׁא",
+   "translit": "",
+   "glossEn": "Tel-haresha, Tel-harsa.",
+   "defEn": "Tel-Charsha, a place in Babylonia"
+  },
+  {
+   "strong": "H5029",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "נְבִיא",
+   "translit": "",
+   "glossEn": "prophet.",
+   "defEn": "a prophet"
+  },
+  {
+   "strong": "H1021",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית הַכֶּרֶם",
+   "translit": "",
+   "glossEn": "Beth-haccerem.",
+   "defEn": "Beth-hak-Kerem, a place in Palestine"
+  },
+  {
+   "strong": "H1039",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית נִמְרָה",
+   "translit": "",
+   "glossEn": "Beth-Nimrah. Compare H5247 (נִמְרָה).",
+   "defEn": "Beth-Nimrah, a place east of the Jordan"
+  },
+  {
+   "strong": "H1046",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית פֶּלֶט",
+   "translit": "",
+   "glossEn": "Beth-palet.",
+   "defEn": "Beth-Palet, a place in Palestine"
+  },
+  {
+   "strong": "H1016",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית־דָּגוֹן",
+   "translit": "",
+   "glossEn": "Beth-dagon.",
+   "defEn": "Beth-Dagon, the name of two places in Palestine"
+  },
+  {
+   "strong": "H7154",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "קִרְיַת בַּעַל",
+   "translit": "",
+   "glossEn": "Kirjathbaal.",
+   "defEn": "Kirjath-Baal, a place in Palestine"
+  },
+  {
+   "strong": "H5270",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "נֹעָה",
+   "translit": "",
+   "glossEn": "Noah.",
+   "defEn": "Noah, an Israelitess"
+  },
+  {
+   "strong": "H1012",
+   "lang": "hebrew",
+   "count": 4,
+   "lemma": "בֵּית בָּרָה",
+   "translit": "",
+   "glossEn": "Beth-barah.",
+   "defEn": "Beth-Barah, a place in Palestine"
+  },
+  {
+   "strong": "G3547",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "νομοδιδάσκαλος",
+   "translit": "nomodidáskalos",
+   "glossEn": "doctor (teacher) of the law",
+   "defEn": "an expounder of the (Jewish) law, i.e. a Rabbi"
+  },
+  {
+   "strong": "G3399",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Μίλητος",
+   "translit": "Mílētos",
+   "glossEn": "Miletus",
+   "defEn": "Miletus, a city of Asia Minor"
+  },
+  {
+   "strong": "G5019",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Ταρσός",
+   "translit": "Tarsós",
+   "glossEn": "Tarsus",
+   "defEn": "Tarsus, a place in Asia Minor"
+  },
+  {
+   "strong": "G4011",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Πέργη",
+   "translit": "Pérgē",
+   "glossEn": "Perga",
+   "defEn": "a tower; Perga, a place in Asia Minor"
+  },
+  {
+   "strong": "G4545",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Σαμουήλ",
+   "translit": "Samouḗl",
+   "glossEn": "Samuel",
+   "defEn": "Samuel (i.e. Shemuel), an Israelite"
+  },
+  {
+   "strong": "G1191",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Δέρβη",
+   "translit": "Dérbē",
+   "glossEn": "Derbe",
+   "defEn": "Derbe, a place in Asia Minor"
+  },
+  {
+   "strong": "G3069",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Λύδδα",
+   "translit": "Lýdda",
+   "glossEn": "Lydda",
+   "defEn": "Lydda (i.e. Lod), a place in Palestine"
+  },
+  {
+   "strong": "G3085",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "λύτρωσις",
+   "translit": "lýtrōsis",
+   "glossEn": "+ redeemed, redemption",
+   "defEn": "a ransoming (figuratively)"
+  },
+  {
+   "strong": "G1115",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Γολγοθᾶ",
+   "translit": "Golgothâ",
+   "glossEn": "Golgotha",
+   "defEn": "the skull; Golgotha, a knoll near Jerusalem"
+  },
+  {
+   "strong": "G967",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Βηθφαγή",
+   "translit": "Bēthphagḗ",
+   "glossEn": "Bethphage",
+   "defEn": "fig-house; Beth-phage, a place in Palestine"
+  },
+  {
+   "strong": "G1179",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Δεκάπολις",
+   "translit": "Dekápolis",
+   "glossEn": "Decapolis",
+   "defEn": "the ten-city region; the Decapolis, a district in Syria"
+  },
+  {
+   "strong": "G2408",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Ἱερεμίας",
+   "translit": "Hieremías",
+   "glossEn": "Jeremiah",
+   "defEn": "Hieremias (i.e. Jermijah), an Israelite"
+  },
+  {
+   "strong": "G2194",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Ζαβουλών",
+   "translit": "Zaboulṓn",
+   "glossEn": "Zabulon",
+   "defEn": "Zabulon (i.e. Zebulon), a region of Palestine"
+  },
+  {
+   "strong": "G4554",
+   "lang": "greek",
+   "count": 3,
+   "lemma": "Σάρδεις",
+   "translit": "Sárdeis",
+   "glossEn": "Sardis",
+   "defEn": "Sardis, a place in Asia Minor"
+  },
+  {
+   "strong": "H7928",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "שֶׁכֶם",
+   "translit": "",
+   "glossEn": "Shechem.",
+   "defEn": "Shekem, the name of a Hivite and two Israelites"
+  },
+  {
+   "strong": "H5016",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "נְבוּאָה",
+   "translit": "",
+   "glossEn": "prophecy.",
+   "defEn": "a prediction (spoken or written)"
+  },
+  {
+   "strong": "H1886",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "דֹּתָן",
+   "translit": "",
+   "glossEn": "Dothan. h",
+   "defEn": "Dothan, a place in Palestine"
+  },
+  {
+   "strong": "H1321",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "בְּשַׁר",
+   "translit": "",
+   "glossEn": "flesh.",
+   "defEn": "{flesh (from its freshness); by extension, body, person; also (by euphemistically) the pudenda of aman}"
+  },
+  {
+   "strong": "H5831",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "עֶזְרָא",
+   "translit": "",
+   "glossEn": "Ezra.",
+   "defEn": "Ezra, an Israelite"
+  },
+  {
+   "strong": "H1078",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "בֵּל",
+   "translit": "",
+   "glossEn": "Bel.",
+   "defEn": "Bel, the Baal of the Babylonians"
+  },
+  {
+   "strong": "H6165",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "עָרַג",
+   "translit": "",
+   "glossEn": "cry, pant.",
+   "defEn": "to long for"
+  },
+  {
+   "strong": "H7783",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "שׁוּק",
+   "translit": "",
+   "glossEn": "overflow, water.",
+   "defEn": "to run after or over, i.e. overflow"
+  },
+  {
+   "strong": "H3032",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "יָדַד",
+   "translit": "",
+   "glossEn": "cast.",
+   "defEn": "properly, to handle, i.e. to throw, e.g. lots"
+  },
+  {
+   "strong": "H407",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "אַכְשָׁף",
+   "translit": "",
+   "glossEn": "Achshaph.",
+   "defEn": "Acshaph, a place in Palestine"
+  },
+  {
+   "strong": "H6111",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "עַצְמוֹן",
+   "translit": "",
+   "glossEn": "Azmon.",
+   "defEn": "Atsmon, a place near Palestine"
+  },
+  {
+   "strong": "H7071",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "קָנָה",
+   "translit": "",
+   "glossEn": "Kanah.",
+   "defEn": "Kanah, the name of a stream and of a place in Palestine"
+  },
+  {
+   "strong": "H5096",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "נַהֲלָל",
+   "translit": "",
+   "glossEn": "Nahalal, Nahallal, Nahalol.",
+   "defEn": "Nahalal or Nahalol, a place in Palestine"
+  },
+  {
+   "strong": "H7464",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "רֵעָה",
+   "translit": "",
+   "glossEn": "companion, fellow.",
+   "defEn": "a female associate"
+  },
+  {
+   "strong": "H3896",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "לֶחִי",
+   "translit": "",
+   "glossEn": "Lehi. Compare also H7437 (רָמַת לֶחִי).",
+   "defEn": "Lechi, a place in Palestine"
+  },
+  {
+   "strong": "H4253",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "מַחְלָפָה",
+   "translit": "",
+   "glossEn": "lock.",
+   "defEn": "a ringlet of hair (as gliding over each other)"
+  },
+  {
+   "strong": "H2414",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "חָטַף",
+   "translit": "",
+   "glossEn": "catch.",
+   "defEn": "to clutch; hence, to seize as aprisoner"
+  },
+  {
+   "strong": "H2800",
+   "lang": "hebrew",
+   "count": 3,
+   "lemma": "חֲרֹשֶׁת",
+   "translit": "",
+   "glossEn": "Harosheth.",
+   "defEn": "Charosheth, a place in Palestine"
+  },
+  {
+   "strong": "G1545",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἔκβασις",
+   "translit": "ékbasis",
+   "glossEn": "end, way to escape",
+   "defEn": "an exit (literally or figuratively)"
+  },
+  {
+   "strong": "G1755",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἐνέργημα",
+   "translit": "enérgēma",
+   "glossEn": "operation, working",
+   "defEn": "an effect"
+  },
+  {
+   "strong": "G5321",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "φανέρωσις",
+   "translit": "phanérōsis",
+   "glossEn": "manifestation",
+   "defEn": "exhibition, i.e. (figuratively) expression, (by extension) a bestowment"
+  },
+  {
+   "strong": "G2058",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἑρμηνεία",
+   "translit": "hermēneía",
+   "glossEn": "interpretation",
+   "defEn": "translation"
+  },
+  {
+   "strong": "G4786",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "συγκεράννυμι",
+   "translit": "synkeránnymi",
+   "glossEn": "mix with, temper together",
+   "defEn": "to commingle, i.e. (figuratively) to combine or assimilate"
+  },
+  {
+   "strong": "G4841",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "συμπάσχω",
+   "translit": "sympáschō",
+   "glossEn": "suffer with",
+   "defEn": "to experience pain jointly or of the same kind (specially, persecution; to \"sympathize\")"
+  },
+  {
+   "strong": "G5595",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ψωμίζω",
+   "translit": "psōmízō",
+   "glossEn": "(bestow to) feed",
+   "defEn": "to supply with bits, i.e. (generally) to nourish"
+  },
+  {
+   "strong": "G807",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἀσχημονέω",
+   "translit": "aschēmonéō",
+   "glossEn": "behave self uncomely (unseemly)",
+   "defEn": "to be (i.e. act) unbecoming"
+  },
+  {
+   "strong": "G3947",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "παροξύνω",
+   "translit": "paroxýnō",
+   "glossEn": "easily provoke, stir",
+   "defEn": "to sharpen alongside, i.e. (figuratively) to exasperate"
+  },
+  {
+   "strong": "G2789",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "κιθαρίζω",
+   "translit": "kitharízō",
+   "glossEn": "harp",
+   "defEn": "to play on a lyre"
+  },
+  {
+   "strong": "G5424",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "φρήν",
+   "translit": "phrḗn",
+   "glossEn": "understanding",
+   "defEn": "the midrif (as a partition of the body), i.e. (figuratively and by implication, of sympathy) the feelings (or sensitive nature; by extension (also in the plural) the mind or cognit"
+  },
+  {
+   "strong": "G56",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἀγνωσία",
+   "translit": "agnōsía",
+   "glossEn": "ignorance, not the knowledge",
+   "defEn": "ignorance (properly, the state)"
+  },
+  {
+   "strong": "G3048",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "λογία",
+   "translit": "logía",
+   "glossEn": "collection, gathering",
+   "defEn": "a contribution"
+  },
+  {
+   "strong": "G5247",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ὑπεροχή",
+   "translit": "hyperochḗ",
+   "glossEn": "authority, excellency",
+   "defEn": "prominence, i.e. (figuratively) superiority (in rank or character)"
+  },
+  {
+   "strong": "G4821",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "συμβασιλεύω",
+   "translit": "symbasileúō",
+   "glossEn": "reign with",
+   "defEn": "to be co-regent (figuratively)"
+  },
+  {
+   "strong": "G1571",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ἐκκαθαίρω",
+   "translit": "ekkathaírō",
+   "glossEn": "purge (out)",
+   "defEn": "to cleanse thoroughly"
+  },
+  {
+   "strong": "G3060",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "λοίδορος",
+   "translit": "loídoros",
+   "glossEn": "railer, reviler",
+   "defEn": "abusive, i.e. a blackguard"
+  },
+  {
+   "strong": "G4958",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "συστέλλω",
+   "translit": "systéllō",
+   "glossEn": "short, wind up",
+   "defEn": "to send (draw) together, i.e. enwrap (enshroud a corpse for burial), contract (an interval)"
+  },
+  {
+   "strong": "G5248",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "ὑπερπερισσεύω",
+   "translit": "hyperperisseúō",
+   "glossEn": "abound much more, exceeding",
+   "defEn": "to super-abound"
+  },
+  {
+   "strong": "G960",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "Βέροια",
+   "translit": "Béroia",
+   "glossEn": "Berea",
+   "defEn": "Berœa, a place in Macedonia"
+  },
+  {
+   "strong": "G3824",
+   "lang": "greek",
+   "count": 2,
+   "lemma": "παλιγγενεσία",
+   "translit": "palingenesía",
+   "glossEn": "regeneration",
+   "defEn": "(spiritual) rebirth (the state or the act), i.e. (figuratively) spiritual renovation; specially, Messianic restoration"
+  },
+  {
+   "strong": "H2016",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "הֶפֶךְ",
+   "translit": "",
+   "glossEn": "contrary.",
+   "defEn": "a turn, i.e. the reverse"
+  },
+  {
+   "strong": "H6610",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "פִּתְחוֹן",
+   "translit": "",
+   "glossEn": "open(-ing).",
+   "defEn": "opening (the act)"
+  },
+  {
+   "strong": "H8004",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "שָׁלֵם",
+   "translit": "",
+   "glossEn": "Salem.",
+   "defEn": "Shalem, an early name of Jerusalem"
+  },
+  {
+   "strong": "H8280",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "שָׂרָה",
+   "translit": "",
+   "glossEn": "have power (as a prince).",
+   "defEn": "to prevail"
+  },
+  {
+   "strong": "H3349",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "יִקָּהָה",
+   "translit": "",
+   "glossEn": "gathering, to obey.",
+   "defEn": "obedience"
+  },
+  {
+   "strong": "H2415",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "חֹטֵר",
+   "translit": "",
+   "glossEn": "rod.",
+   "defEn": "a twig"
+  },
+  {
+   "strong": "H6027",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "עֹנֶג",
+   "translit": "",
+   "glossEn": "delight, pleasant.",
+   "defEn": "luxury"
+  },
+  {
+   "strong": "H4766",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "מַרְבֶה",
+   "translit": "",
+   "glossEn": "great, increase.",
+   "defEn": "properly, increasing; as noun, greatness, or (adverbially) greatly"
+  },
+  {
+   "strong": "H6425",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "פֶּלֶס",
+   "translit": "",
+   "glossEn": "scales, weight.",
+   "defEn": "a balance"
+  },
+  {
+   "strong": "H4893",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "מִשְׁחָת",
+   "translit": "",
+   "glossEn": "corruption, marred.",
+   "defEn": "disfigurement"
+  },
+  {
+   "strong": "H7132",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "קְרָבָה",
+   "translit": "",
+   "glossEn": "approaching, draw near.",
+   "defEn": "approach"
+  },
+  {
+   "strong": "H2784",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "חַרְצֻבָּה",
+   "translit": "",
+   "glossEn": "band.",
+   "defEn": "a fetter; figuratively, a pain"
+  },
+  {
+   "strong": "H6495",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "פְּקַח־קוֹחַ",
+   "translit": "",
+   "glossEn": "opening of the prison.",
+   "defEn": "opening (of a dungeon), i.e. jail-delivery (figuratively, salvation for sin)"
+  },
+  {
+   "strong": "H525",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "אָמוֹן",
+   "translit": "",
+   "glossEn": "one brought up.",
+   "defEn": "skilled, i.e. an architect"
+  },
+  {
+   "strong": "H7072",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "קַנּוֹא",
+   "translit": "",
+   "glossEn": "jealous.",
+   "defEn": "jealous or angry"
+  },
+  {
+   "strong": "H6383",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "פִּלְאִי",
+   "translit": "",
+   "glossEn": "secret, wonderful.",
+   "defEn": "remarkable"
+  },
+  {
+   "strong": "H8166",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "שְׂעִירָה",
+   "translit": "",
+   "glossEn": "kid.",
+   "defEn": "a she-goat"
+  },
+  {
+   "strong": "H6800",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "צָנַע",
+   "translit": "",
+   "glossEn": "humbly, lowly.",
+   "defEn": "to humiliate"
+  },
+  {
+   "strong": "H4715",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "מִצְרֵף",
+   "translit": "",
+   "glossEn": "fining pot.",
+   "defEn": "a crucible"
+  },
+  {
+   "strong": "H7664",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "שֵׂבֶר",
+   "translit": "",
+   "glossEn": "hope.",
+   "defEn": "expectation"
+  },
+  {
+   "strong": "H7454",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "רֵעַ",
+   "translit": "",
+   "glossEn": "thought.",
+   "defEn": "a thought (as association of ideas)"
+  },
+  {
+   "strong": "H8312",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "שַׂרְעַף",
+   "translit": "",
+   "glossEn": "thought.",
+   "defEn": "cogitation"
+  },
+  {
+   "strong": "H4862",
+   "lang": "hebrew",
+   "count": 2,
+   "lemma": "מִשְׁאָלָה",
+   "translit": "",
+   "glossEn": "desire, petition.",
+   "defEn": "a request"
+  }
+ ]
+}

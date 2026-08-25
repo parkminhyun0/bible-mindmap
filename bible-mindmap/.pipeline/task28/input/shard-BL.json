@@ -1,0 +1,906 @@
+{
+  "shard": "BL",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H2469",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֶלְדַּי",
+      "translit": "",
+      "glossEn": "Heldai.",
+      "defEn": "Cheldai, the name of two Israelites"
+    },
+    {
+      "strong": "H3035",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יִדּוֹ",
+      "translit": "",
+      "glossEn": "Iddo.",
+      "defEn": "Jiddo, an Israelite"
+    },
+    {
+      "strong": "H3620",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כְּלוּב",
+      "translit": "",
+      "glossEn": "Chelub.",
+      "defEn": "Kelub, the name of two Israelites"
+    },
+    {
+      "strong": "H3135",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יוֹעָשׁ",
+      "translit": "",
+      "glossEn": "Joash.",
+      "defEn": "Joash, the name of two Israelites"
+    },
+    {
+      "strong": "H3507",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יִתְרְעָם",
+      "translit": "",
+      "glossEn": "Ithream.",
+      "defEn": "Jithream, a son of David"
+    },
+    {
+      "strong": "H1340",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בַּת־שׁוּעַ",
+      "translit": "",
+      "glossEn": "Bath-shua.",
+      "defEn": "Bath-shua,"
+    },
+    {
+      "strong": "H3142",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יוּשַׁב חֶסֶד",
+      "translit": "",
+      "glossEn": "Jushab-hesed.",
+      "defEn": "Jushab-Chesed, an Israelite"
+    },
+    {
+      "strong": "H2458",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֶלְאָה",
+      "translit": "",
+      "glossEn": "Helah.",
+      "defEn": "Chelah, an Israelitess"
+    },
+    {
+      "strong": "H850",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֶשְׁתּוֹן",
+      "translit": "",
+      "glossEn": "Eshton.",
+      "defEn": "Eshton, an Israelite"
+    },
+    {
+      "strong": "H1051",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית רָפָא",
+      "translit": "",
+      "glossEn": "Beth-rapha.",
+      "defEn": "Beth-Rapha, an Israelite"
+    },
+    {
+      "strong": "H3094",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְהַלֶּלְאֵל",
+      "translit": "",
+      "glossEn": "Jehalellel, Jehalelel.",
+      "defEn": "Jehallelel, the name of two Israelites"
+    },
+    {
+      "strong": "H4778",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מֶרֶד",
+      "translit": "",
+      "glossEn": "Mered.",
+      "defEn": "Mered, an Israelite"
+    },
+    {
+      "strong": "H1135",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־חָנָן",
+      "translit": "",
+      "glossEn": "Ben-hanan.",
+      "defEn": "Ben-Chanan, an Israelite"
+    },
+    {
+      "strong": "H1132",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־זוֹחֵת",
+      "translit": "",
+      "glossEn": "Ben-zoketh.",
+      "defEn": "Ben-Zocheth, an Israelite"
+    },
+    {
+      "strong": "H3433",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יָשֻׁבִי לֶחֶם",
+      "translit": "",
+      "glossEn": "Jashubi-lehem. (Prob. the text should be pointed יֹשְׁבֵי לֶחֶם and rendered '(they were) inhabitants of Lechem,' i.e. of Bethlehem (by contraction). Compare H3902 (לַחְמִי)).",
+      "defEn": "Jashubi-Lechem, an Israelite"
+    },
+    {
+      "strong": "H2124",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "זִיזָא",
+      "translit": "",
+      "glossEn": "Ziza.",
+      "defEn": "Ziza, the name of two Israelites"
+    },
+    {
+      "strong": "H3042",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְדָיָה",
+      "translit": "",
+      "glossEn": "Jedaiah.",
+      "defEn": "Jedajah, the name of two Israelites"
+    },
+    {
+      "strong": "H277",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲחִי",
+      "translit": "",
+      "glossEn": "Ahi.",
+      "defEn": "Achi, the name of two Israelites"
+    },
+    {
+      "strong": "H557",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אַמְצִי",
+      "translit": "",
+      "glossEn": "Amzi.",
+      "defEn": "Amtsi, an Israelite"
+    },
+    {
+      "strong": "H675",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֶצְבּוֹן",
+      "translit": "",
+      "glossEn": "Ezbon.",
+      "defEn": "Etsbon, the name of two Israelites"
+    },
+    {
+      "strong": "H5893",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עִיר",
+      "translit": "",
+      "glossEn": "Ir.",
+      "defEn": "Ir, an Israelite"
+    },
+    {
+      "strong": "H917",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בְּדָן",
+      "translit": "",
+      "glossEn": "Bedan.",
+      "defEn": "Bedan, the name of two Israelites"
+    },
+    {
+      "strong": "H7763",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שׁוֹמֵר",
+      "translit": "",
+      "glossEn": "Shomer.",
+      "defEn": "Shomer, the name of two Israelites"
+    },
+    {
+      "strong": "H6690",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צוֹפַח",
+      "translit": "",
+      "glossEn": "Zophah.",
+      "defEn": "Tsophach, an Israelite"
+    },
+    {
+      "strong": "H8037",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שַׁמָּא",
+      "translit": "",
+      "glossEn": "Shamma.",
+      "defEn": "Shamma, an Israelite"
+    },
+    {
+      "strong": "H2592",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חַנִּיאֵל",
+      "translit": "",
+      "glossEn": "Hanniel.",
+      "defEn": "Channiel, the name of two Israelites"
+    },
+    {
+      "strong": "H7498",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "רָפָא",
+      "translit": "",
+      "glossEn": "Rapha.",
+      "defEn": "Rapha or Raphah, the name of two Israelites"
+    },
+    {
+      "strong": "H8349",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שָׁשַׁק",
+      "translit": "",
+      "glossEn": "Shashak.",
+      "defEn": "Shashak, an Israelite"
+    },
+    {
+      "strong": "H792",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֶשְׁבַּעַל",
+      "translit": "",
+      "glossEn": "Eshbaal.",
+      "defEn": "Eshbaal (or Ishbosheth), a son of Saul"
+    },
+    {
+      "strong": "H6377",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פִּיתוֹן",
+      "translit": "",
+      "glossEn": "Pithon.",
+      "defEn": "Pithon, an Israelite"
+    },
+    {
+      "strong": "H3085",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְהוֹעַדָּה",
+      "translit": "",
+      "glossEn": "Jehoada.",
+      "defEn": "Jehoaddah, an Israelite"
+    },
+    {
+      "strong": "H1150",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בִּנְעָא",
+      "translit": "",
+      "glossEn": "Binea, Bineah.",
+      "defEn": "Bina or Binah, an Israelite"
+    },
+    {
+      "strong": "H1074",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֹּכְרוּ",
+      "translit": "",
+      "glossEn": "Bocheru.",
+      "defEn": "Bokeru, an Israelite"
+    },
+    {
+      "strong": "H5793",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עוּתַי",
+      "translit": "",
+      "glossEn": "Uthai.",
+      "defEn": "Uthai, the name of two Israelites"
+    },
+    {
+      "strong": "H566",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אִמְרִי",
+      "translit": "",
+      "glossEn": "Imri.",
+      "defEn": "Imri, the name of two Israelites"
+    },
+    {
+      "strong": "H4810",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מְרִי בַעַל",
+      "translit": "",
+      "glossEn": "Meri-baal. Compare H4807 (מְרִיב בַּעַל).",
+      "defEn": "Meri-Baal, an epithet of Gideon"
+    },
+    {
+      "strong": "H3294",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יַעְרָה",
+      "translit": "",
+      "glossEn": "Jarah.",
+      "defEn": "Jarah, an Israelite"
+    },
+    {
+      "strong": "H151",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲדֹרָם",
+      "translit": "",
+      "glossEn": "Adoram.",
+      "defEn": "Adoram (or Adoniram), an Israelite"
+    },
+    {
+      "strong": "H1527",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גִּינַת",
+      "translit": "",
+      "glossEn": "Ginath.",
+      "defEn": "Ginath, an Israelite"
+    },
+    {
+      "strong": "H1017",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית הָאֱלִי",
+      "translit": "",
+      "glossEn": "Bethelite.",
+      "defEn": "a Beth-elite, or inhabitant of Bethel"
+    },
+    {
+      "strong": "H7977",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שִׁלְחִי",
+      "translit": "",
+      "glossEn": "Shilhi.",
+      "defEn": "Shilchi, an Israelite"
+    },
+    {
+      "strong": "H5653",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עַבְדָּא",
+      "translit": "",
+      "glossEn": "Abda",
+      "defEn": "Abda, the name of two Israelites"
+    },
+    {
+      "strong": "H1133",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־חוּר",
+      "translit": "",
+      "glossEn": "the son of Hur.",
+      "defEn": "Ben-Chur, an Israelite"
+    },
+    {
+      "strong": "H1128",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־דֶּקֶר",
+      "translit": "",
+      "glossEn": "the son of Dekar.",
+      "defEn": "Ben-Deker, an Israelite"
+    },
+    {
+      "strong": "H1125",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־אֲבִינָדָב",
+      "translit": "",
+      "glossEn": "the son of Abinadab.",
+      "defEn": "Ben-Abinadab, an Israelite"
+    },
+    {
+      "strong": "H1127",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־גֶּבֶר",
+      "translit": "",
+      "glossEn": "the son of Geber.",
+      "defEn": "Ben-Geber, an Israelite"
+    },
+    {
+      "strong": "H2099",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "זִו",
+      "translit": "",
+      "glossEn": "Zif.",
+      "defEn": "Ziv (corresponding to Ijar or May)"
+    },
+    {
+      "strong": "H3521",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כָּבוּל",
+      "translit": "",
+      "glossEn": "Cabul.",
+      "defEn": "Cabul, the name of two places in Palestine"
+    },
+    {
+      "strong": "H3415",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יָרַע",
+      "translit": "",
+      "glossEn": "be grevious (only Isaiah 15:4; the rest belong to H7489 (רָעַע)).",
+      "defEn": "properly, to be broken up (with any violent action) i.e. (figuratively) to fear"
+    },
+    {
+      "strong": "H6406",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פַּלְטִי",
+      "translit": "",
+      "glossEn": "Palti, Phalti.",
+      "defEn": "Palti, the name of two Israelites"
+    },
+    {
+      "strong": "H7124",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "קֹרֵא",
+      "translit": "",
+      "glossEn": "partridge. See also H6981 (קוֹרֵא).",
+      "defEn": "a caller, i.e. partridge (from its cry)"
+    },
+    {
+      "strong": "H59",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אָבֵל",
+      "translit": "",
+      "glossEn": "Abel.",
+      "defEn": "Abel, the name of two places in Palestine."
+    },
+    {
+      "strong": "H3227",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְמִינִי",
+      "translit": "",
+      "glossEn": "(on the) right (hand).",
+      "defEn": "right"
+    },
+    {
+      "strong": "H4258",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַחֲלַת",
+      "translit": "",
+      "glossEn": "Mahalath.",
+      "defEn": "Machalath, the name of an Ishmaelitess and of an Israelitess"
+    },
+    {
+      "strong": "H4322",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מִיכָיָהוּ",
+      "translit": "",
+      "glossEn": "Michaiah.",
+      "defEn": "Mikajah, the name of an Israelite and an Israelitess"
+    },
+    {
+      "strong": "H1134",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּן־חַיִל",
+      "translit": "",
+      "glossEn": "Ben-hail.",
+      "defEn": "Ben-Chail, an Israelite"
+    },
+    {
+      "strong": "H2899",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "טוֹב אֲדֹנִיָּהוּ",
+      "translit": "",
+      "glossEn": "Tob-adonijah.",
+      "defEn": "Tob-Adonijah, an Israelite"
+    },
+    {
+      "strong": "H3090",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְהוֹשַׁבְעַת",
+      "translit": "",
+      "glossEn": "Jehoshabeath.",
+      "defEn": "Jehoshabath, an Israelitess"
+    },
+    {
+      "strong": "H6645",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צִבְיָּה",
+      "translit": "",
+      "glossEn": "Zibiah.",
+      "defEn": "Tsibjah, an Israelite"
+    },
+    {
+      "strong": "H8100",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שִׁמְעַת",
+      "translit": "",
+      "glossEn": "Shimath.",
+      "defEn": "Shimath, an Ammonitess"
+    },
+    {
+      "strong": "H3086",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְהוֹעַדִּין",
+      "translit": "",
+      "glossEn": "Jehoaddan.",
+      "defEn": "Jehoaddin or Jehoaddan, an Israelitess"
+    },
+    {
+      "strong": "H3203",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְכׇלְיָה",
+      "translit": "",
+      "glossEn": "Jecholiah, Jecoliah.",
+      "defEn": "Jekoljah or Jekiljah, an Israelitess"
+    },
+    {
+      "strong": "H3388",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְרוּשָׁא",
+      "translit": "",
+      "glossEn": "Jerusha, Jerushah.",
+      "defEn": "Jerusha or Jerushah, as Israelitess"
+    },
+    {
+      "strong": "H4919",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מְשִׁלֵּמוֹת",
+      "translit": "",
+      "glossEn": "Meshillemoth. Compare H4921 (מְשִׁלֵּמִית).",
+      "defEn": "Meshillemoth, an Israelite"
+    },
+    {
+      "strong": "H683",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲצַלְיָהוּ",
+      "translit": "",
+      "glossEn": "Azaliah.",
+      "defEn": "Atsaljah, an Israelite"
+    },
+    {
+      "strong": "H2468",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֻלְדָּה",
+      "translit": "",
+      "glossEn": "Huldah.",
+      "defEn": "Chuldah, an Israelitess"
+    },
+    {
+      "strong": "H2578",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֲמַת צוֹבָה",
+      "translit": "",
+      "glossEn": "Hamath-Zobah.",
+      "defEn": "Chamath-Tsobah"
+    },
+    {
+      "strong": "H573",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲמִתַּי",
+      "translit": "",
+      "glossEn": "Amittai.",
+      "defEn": "Amittai, an Israelite"
+    },
+    {
+      "strong": "H1424",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גָּדִי",
+      "translit": "",
+      "glossEn": "Gadi.",
+      "defEn": "Gadi, an Israelite"
+    },
+    {
+      "strong": "H5524",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "סֻכּוֹת בְּנוֹת",
+      "translit": "",
+      "glossEn": "Succothbenoth.",
+      "defEn": "booths of (the) daughters; brothels, i.e. idoalatrous tents forimpure purpose"
+    },
+    {
+      "strong": "H8661",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תַּרְתָּן",
+      "translit": "",
+      "glossEn": "Tartan.",
+      "defEn": "Tartan, an Assyrian"
+    },
+    {
+      "strong": "H5268",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נִסְרֹךְ",
+      "translit": "",
+      "glossEn": "Nisroch.",
+      "defEn": "Nisrok, a Babylonian idol"
+    },
+    {
+      "strong": "H1081",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בַּלְאֲדָן",
+      "translit": "",
+      "glossEn": "Baladan.",
+      "defEn": "Baladan, the name of a Babylonian prince"
+    },
+    {
+      "strong": "H5419",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נְתַן־מֶלֶךְ",
+      "translit": "",
+      "glossEn": "Nathanmelech.",
+      "defEn": "Nethan-Melek, an Israelite"
+    },
+    {
+      "strong": "H8576",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תַּנְחֻמֶת",
+      "translit": "",
+      "glossEn": "Tanhumeth.",
+      "defEn": "Tanchumeth, an Israelite"
+    },
+    {
+      "strong": "H7731",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שׁוֹבָךְ",
+      "translit": "",
+      "glossEn": "Shobach.",
+      "defEn": "Shobak, a Syrian"
+    },
+    {
+      "strong": "H463",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֱלִיעָם",
+      "translit": "",
+      "glossEn": "Eliam.",
+      "defEn": "Eliam, an Israelite"
+    },
+    {
+      "strong": "H3228",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְמִינִי",
+      "translit": "",
+      "glossEn": "Jaminites. See also H1145 (בֶּן־יְמִינִי).",
+      "defEn": "a Jeminite (collectively) or descendants of Jamin"
+    },
+    {
+      "strong": "H3430",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יִשְׁבּוֹ בְּנֹב",
+      "translit": "",
+      "glossEn": "Ishbi-benob (from the margin).",
+      "defEn": "Jishbo-be-Nob, a Philistine"
+    },
+    {
+      "strong": "H3296",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יַעֲרֵי אֹרְגִים",
+      "translit": "",
+      "glossEn": "Jaare-oregim.",
+      "defEn": "Jaare-Oregim, an Israelite"
+    },
+    {
+      "strong": "H3429",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יֹשֵׁב בַּשֶּׁבֶת",
+      "translit": "",
+      "glossEn": "that sat in the seat.",
+      "defEn": "Joshebbash-Shebeth, an Israelite"
+    },
+    {
+      "strong": "H45",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲבִי־עַלְבוֹן",
+      "translit": "",
+      "glossEn": "Abialbon.",
+      "defEn": "Abialbon, an Israelite"
+    },
+    {
+      "strong": "H6409",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פַּלְטִיאֵל",
+      "translit": "",
+      "glossEn": "Paltiel, Phaltiel.",
+      "defEn": "Paltiel, the name of two Israelites"
+    },
+    {
+      "strong": "H4965",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מֶתֶג הָאַמָּה",
+      "translit": "",
+      "glossEn": "Metheg-ammah.",
+      "defEn": "Metheg-ha-Ammah, an epithet of Gath"
+    },
+    {
+      "strong": "H206",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אָוֶן",
+      "translit": "",
+      "glossEn": "Aven. See also H204 (אוֹן), H1007 (בֵּית אָוֶן).",
+      "defEn": "Aven, the contemptuous synonym of three places, one in Coele-Syria, one in Egypt (On), and one in Palestine (Bethel)"
+    },
+    {
+      "strong": "H2579",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֲמַת רַבָּה",
+      "translit": "",
+      "glossEn": "Hamath-",
+      "defEn": "Chamath-Rabbah"
+    },
+    {
+      "strong": "H1095",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּלְטְשַׁאצַּר",
+      "translit": "",
+      "glossEn": "Belteshazzar.",
+      "defEn": "Belteshatstsar, the Babylonian name of Daniel"
+    },
+    {
+      "strong": "H5664",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עֲבֵד נְגוֹ",
+      "translit": "",
+      "glossEn": "Abed-nego.",
+      "defEn": "Abed-Nego, the Babylonian name of one of Daniel's companions"
+    },
+    {
+      "strong": "H2313",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חִדֶּקֶל",
+      "translit": "",
+      "glossEn": "Hiddekel.",
+      "defEn": "the Chiddekel (or Tigris) river"
+    },
+    {
+      "strong": "H210",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אוּפָז",
+      "translit": "",
+      "glossEn": "Uphaz.",
+      "defEn": "Uphaz, a famous gold region"
+    },
+    {
+      "strong": "H4398",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַלְאַךְ",
+      "translit": "",
+      "glossEn": "angel.",
+      "defEn": "an angel"
+    },
+    {
+      "strong": "H5191",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נְטַל",
+      "translit": "",
+      "glossEn": "take up.",
+      "defEn": "to raise"
+    },
+    {
+      "strong": "H1403",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גַּבְרִיאֵל",
+      "translit": "",
+      "glossEn": "Garbriel.",
+      "defEn": "Gabriel, an archangel"
+    },
+    {
+      "strong": "H8303",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שִׁרְיוֹן",
+      "translit": "",
+      "glossEn": "Sirion.",
+      "defEn": "Shirjon or Sirjon, a peak of the Lebanon"
+    },
+    {
+      "strong": "H2726",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חַרְבוֹנָא",
+      "translit": "",
+      "glossEn": "Harbona, Harbonah.",
+      "defEn": "Charbona or Charbonah, a eunuch of Xerxes"
+    },
+    {
+      "strong": "H904",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בִּגְתָן",
+      "translit": "",
+      "glossEn": "Bigthan, Bigthana.",
+      "defEn": "Bigthan or Bigthana, a eunuch of Xerxes"
+    },
+    {
+      "strong": "H5212",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נִיסָן",
+      "translit": "",
+      "glossEn": "Nisan.",
+      "defEn": "Nisan, the first month of the Jewish sacred year"
+    },
+    {
+      "strong": "H3223",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְמוּאֵל",
+      "translit": "",
+      "glossEn": "Jemuel.",
+      "defEn": "Jemuel, an Israelite"
+    },
+    {
+      "strong": "H3115",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יוֹכֶבֶד",
+      "translit": "",
+      "glossEn": "Jochebed.",
+      "defEn": "Jokebed, the mother of Moses"
+    },
+    {
+      "strong": "H4990",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מִתְרְדָת",
+      "translit": "",
+      "glossEn": "Mithredath.",
+      "defEn": "Mithredath, the name of two Persians"
+    }
+  ]
+}

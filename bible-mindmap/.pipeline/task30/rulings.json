@@ -1,0 +1,572 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 5,
+  "ties": [
+    {
+      "strong": "H5244",
+      "koRank": [
+        [
+          "네말라",
+          2
+        ],
+        [
+          "느말라",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "nəmālāh",
+          2
+        ],
+        [
+          "nĕmālâ",
+          1
+        ],
+        [
+          "nəmālā",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "G4211",
+      "koRank": [
+        [
+          "포르퓌로폴리스",
+          2
+        ],
+        [
+          "포르피로폴리스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "porphyrópōlis",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G4795",
+      "koRank": [
+        [
+          "쉰퀴리아",
+          2
+        ],
+        [
+          "슁퀴리아",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "synkyría",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H7053",
+      "koRank": [
+        [
+          "킬숀",
+          3
+        ],
+        [
+          "킬레숀",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "qillĕšôn",
+          2
+        ],
+        [
+          "qilšôn",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H4567",
+      "koRank": [
+        [
+          "마바드",
+          3
+        ],
+        [
+          "마아바드",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "maʿbād",
+          2
+        ],
+        [
+          "maʿbad",
+          2
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H5244",
+      "lemma": "נְמָלָה",
+      "translit": "nəmālāh",
+      "translitKo": "네말라",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어말 ה를 라틴 음역에 반영하되 한글 관용 표기는 네말라로 둔다."
+    },
+    {
+      "strong": "H7310",
+      "lemma": "רְוָיָה",
+      "translit": "rəwāyāh",
+      "translitKo": "르와야",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ו를 바/비가 아닌 w 계열로 표기한다."
+    },
+    {
+      "strong": "G4211",
+      "lemma": "πορφυρόπωλις",
+      "translit": "porphyrópōlis",
+      "translitKo": "포르퓌로폴리스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). υ를 퓌로 표기한다."
+    },
+    {
+      "strong": "H3880",
+      "lemma": "לִוְיָה",
+      "translit": "liwyāh",
+      "translitKo": "리와야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). ו를 w로 읽어 리와야로 표기한다."
+    },
+    {
+      "strong": "G753",
+      "lemma": "ἀρχιτέκτων",
+      "translit": "architéktōn",
+      "translitKo": "아르키텍톤",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). κ는 키로 표기한다."
+    },
+    {
+      "strong": "G3125",
+      "lemma": "μάμμη",
+      "translit": "mámmē",
+      "translitKo": "맘메",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 탈라사(θάλασσα)식 무겹침 규칙은 장애음 겹자음에만 걸린다. 배포 안에 프로스코마·스테마 같은 반례가 있으나 소수다."
+    },
+    {
+      "strong": "G1546",
+      "lemma": "ἐκβολή",
+      "translit": "ekbolḗ",
+      "translitKo": "엑볼레",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). κ는 앞 음절에서 받침으로 처리한다."
+    },
+    {
+      "strong": "G2510",
+      "lemma": "καθάπτω",
+      "translit": "katháptō",
+      "translitKo": "카답토",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). φ가 아니라 π이므로 답으로 표기한다."
+    },
+    {
+      "strong": "G1420",
+      "lemma": "δυσεντερία",
+      "translit": "dysentería",
+      "translitKo": "뒤센테리아",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). υ를 뒤로 표기한다."
+    },
+    {
+      "strong": "G4974",
+      "lemma": "σφυρόν",
+      "translit": "sphyrón",
+      "translitKo": "스퓌론",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). υ를 퓌로 표기한다."
+    },
+    {
+      "strong": "G1031",
+      "lemma": "βρύχω",
+      "translit": "brýchō",
+      "translitKo": "브뤼코",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). υ를 뤼로 표기한다."
+    },
+    {
+      "strong": "G4792",
+      "lemma": "συγκομίζω",
+      "translit": "synkomízō",
+      "translitKo": "쉰코미조",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 접두어의 비음 동화와 υ 표기를 배포 관행에 맞춘다."
+    },
+    {
+      "strong": "G3320",
+      "lemma": "μεσότοιχον",
+      "translit": "mesótoichon",
+      "translitKo": "메소토이콘",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). τοι를 토이로 보존한다."
+    },
+    {
+      "strong": "G2375",
+      "lemma": "θυρεός",
+      "translit": "thyreós",
+      "translitKo": "튀레오스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). θυ의 υ를 위 계열로 표기한다."
+    },
+    {
+      "strong": "G2366",
+      "lemma": "θύελλα",
+      "translit": "thýella",
+      "translitKo": "튀엘라",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). θυ를 튀로 표기한다."
+    },
+    {
+      "strong": "G3452",
+      "lemma": "μυελός",
+      "translit": "myelós",
+      "translitKo": "뮐로스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). υ를 위 계열로 표기한다."
+    },
+    {
+      "strong": "G4713",
+      "lemma": "στάμνος",
+      "translit": "stámnos",
+      "translitKo": "스타므노스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 원어 자음군을 보존한다."
+    },
+    {
+      "strong": "G5208",
+      "lemma": "ὕλη",
+      "translit": "hýlē",
+      "translitKo": "휠레",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 어두 ὑ를 휘로 표기한다."
+    },
+    {
+      "strong": "G232",
+      "lemma": "ἁλιεύω",
+      "translit": "halieúō",
+      "translitKo": "할리유오",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1903",
+      "lemma": "ἐπενδύτης",
+      "translit": "ependýtēs",
+      "translitKo": "에펜뒤테스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). υ를 뒤로 표기한다."
+    },
+    {
+      "strong": "G4795",
+      "lemma": "συγκυρία",
+      "translit": "synkyría",
+      "translitKo": "쉰퀴리아",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). υ를 퀴로 표기한다."
+    },
+    {
+      "strong": "G289",
+      "lemma": "ἀμπελουργός",
+      "translit": "ampelourgós",
+      "translitKo": "암펠우르고스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ου를 우로 표기한다."
+    },
+    {
+      "strong": "G1146",
+      "lemma": "δακτύλιος",
+      "translit": "daktýlios",
+      "translitKo": "닥튈리오스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 같은 어근인 배포 항목 δάκτυλος 는 다크튈로스(batch12)로 적혀 있어 갈린다. 배포 안에서도 딕튀온과 다크튈로스가 이미 어긋나 있어 다수 관행을 따랐다."
+    },
+    {
+      "strong": "G4858",
+      "lemma": "συμφωνία",
+      "translit": "symphōnía",
+      "translitKo": "쉼포니아",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 관용 외래어는 '심포니'이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4807",
+      "lemma": "συκάμινος",
+      "translit": "sykáminos",
+      "translitKo": "쉬카미노스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역은 '뽕나무'로 옮겼다. 표제는 학술 음역이다."
+    },
+    {
+      "strong": "G4809",
+      "lemma": "συκομωραία",
+      "translit": "sykomōraía",
+      "translitKo": "쉬코모라이아",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역은 '돌무화과나무'로 옮겼다."
+    },
+    {
+      "strong": "G5167",
+      "lemma": "τρυγών",
+      "translit": "trygṓn",
+      "translitKo": "튀곤",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). υ를 튀로 표기한다."
+    },
+    {
+      "strong": "G5473",
+      "lemma": "χαλκίον",
+      "translit": "chalkíon",
+      "translitKo": "할키온",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). χ는 한글 표제에서 ㅎ으로 둔다."
+    },
+    {
+      "strong": "G2947",
+      "lemma": "κυλιόω",
+      "translit": "kylióō",
+      "translitKo": "퀼리오오",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). υ를 퀼로 표기한다."
+    },
+    {
+      "strong": "G4552",
+      "lemma": "σάπφειρος",
+      "translit": "sáppheiros",
+      "translitKo": "삽페이로스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). φφ는 겹쳐 적지 않고 ει는 에이로 표기한다."
+    },
+    {
+      "strong": "G969",
+      "lemma": "βήρυλλος",
+      "translit": "bḗryllos",
+      "translitKo": "베륄로스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역은 '녹보석'이다."
+    },
+    {
+      "strong": "H7471",
+      "lemma": "רְעִי",
+      "translit": "rĕʿî",
+      "translitKo": "레히",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H7053",
+      "lemma": "קִלְּשׁוֹן",
+      "translit": "qillĕšôn",
+      "translitKo": "킬숀",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 어말 ן을 온으로 늘이지 않고 숀으로 표기한다."
+    },
+    {
+      "strong": "H6498",
+      "lemma": "פַּקֻּעָה",
+      "translit": "paqquʿâ",
+      "translitKo": "팍쿠아",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 다게쉬 포르테를 한글에서 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "H2841",
+      "lemma": "חַשְׁרָה",
+      "translit": "ḥašrâ",
+      "translitKo": "하쉬라",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). שׁ을 쉬로 표기한다."
+    },
+    {
+      "strong": "H6361",
+      "lemma": "פַּטִּישׁ",
+      "translit": "paṭṭîš",
+      "translitKo": "팟티쉬",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어말 שׁ은 쉬로 표기한다."
+    },
+    {
+      "strong": "H8429",
+      "lemma": "תְּוַהּ",
+      "translit": "tĕwah",
+      "translitKo": "테와",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ו는 와로, 어말 ה는 별도 음가를 덧붙이지 않는다."
+    },
+    {
+      "strong": "H4567",
+      "lemma": "מַעְבָד",
+      "translit": "maʿbād",
+      "translitKo": "마바드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). ע 뒤에 하테프 모음이 오면 음절이 생겨 마아세(maʿăśeh)처럼 적는다. 이 낱말은 묵음이라 갈린다."
+    },
+    {
+      "strong": "H1080",
+      "lemma": "בְּלָא",
+      "translit": "bĕlāʾ",
+      "translitKo": "벨라",
+      "votesKo": 4,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 어말 א는 한글에서 별도 음가를 덧붙이지 않는다."
+    }
+  ]
+}

@@ -1,0 +1,906 @@
+{
+  "shard": "BG",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G3416",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μνάσων",
+      "translit": "Mnásōn",
+      "glossEn": "Mnason",
+      "defEn": "Mnason, a Christian"
+    },
+    {
+      "strong": "G1409",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Δρούσιλλα",
+      "translit": "Droúsilla",
+      "glossEn": "Drusilla",
+      "defEn": "Drusilla, a member of the Herodian family"
+    },
+    {
+      "strong": "G4201",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πόρκιος",
+      "translit": "Pórkios",
+      "glossEn": "Porcius",
+      "defEn": "apparently swinish; Porcius, a Roman"
+    },
+    {
+      "strong": "G2333",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Θευδᾶς",
+      "translit": "Theudâs",
+      "glossEn": "Theudas",
+      "defEn": "Theudas, an Israelite"
+    },
+    {
+      "strong": "G4402",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πρόχορος",
+      "translit": "Próchoros",
+      "glossEn": "Prochorus",
+      "defEn": "before the dance; Prochorus, a Christian"
+    },
+    {
+      "strong": "G3527",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Νικάνωρ",
+      "translit": "Nikánōr",
+      "glossEn": "Nicanor",
+      "defEn": "victorious; Nicanor, a Christian"
+    },
+    {
+      "strong": "G5096",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Τίμων",
+      "translit": "Tímōn",
+      "glossEn": "Timon",
+      "defEn": "valuable; Timon, a Christian"
+    },
+    {
+      "strong": "G3937",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Παρμενᾶς",
+      "translit": "Parmenâs",
+      "glossEn": "Parmenas",
+      "defEn": "constant; Parmenas, a Christian"
+    },
+    {
+      "strong": "G3532",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Νικόλαος",
+      "translit": "Nikólaos",
+      "glossEn": "Nicolaus",
+      "defEn": "victorious over the people; Nicolaus, a heretic"
+    },
+    {
+      "strong": "G1697",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐμμόρ",
+      "translit": "Emmór",
+      "glossEn": "Emmor",
+      "defEn": "Emmor (i.e. Chamor), a Canaanite"
+    },
+    {
+      "strong": "G4481",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥεμφάν",
+      "translit": "Rhemphán",
+      "glossEn": "Remphan",
+      "defEn": "Remphan (i.e. Kijun), an Egyptian idol"
+    },
+    {
+      "strong": "G2994",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λαοδικεύς",
+      "translit": "Laodikeús",
+      "glossEn": "Laodicean",
+      "defEn": "a Laodicean, i.e. inhabitant of Laodicia"
+    },
+    {
+      "strong": "G2858",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κολοσσαεύς",
+      "translit": "Kolossaeús",
+      "glossEn": "Colossian",
+      "defEn": "a Colossæan, (i.e. inhabitant of Colossæ"
+    },
+    {
+      "strong": "G4520",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σαββατισμός",
+      "translit": "sabbatismós",
+      "glossEn": "rest",
+      "defEn": "a \"sabbatism\", i.e. (figuratively) the repose of Christianity (as a type of heaven)"
+    },
+    {
+      "strong": "G5502",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "χερουβίμ",
+      "translit": "cheroubím",
+      "glossEn": "cherubims",
+      "defEn": "\"cherubim\" (i.e. cherubs or kerubim)"
+    },
+    {
+      "strong": "G1456",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐγκαίνια",
+      "translit": "enkaínia",
+      "glossEn": "dedication",
+      "defEn": "innovatives, i.e. (specially) renewal (of religious services after the Antiochian interruption)"
+    },
+    {
+      "strong": "G2187",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐφραίμ",
+      "translit": "Ephraím",
+      "glossEn": "Ephraim",
+      "defEn": "Ephraim, a place in Palestine"
+    },
+    {
+      "strong": "G3124",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μάλχος",
+      "translit": "Málchos",
+      "glossEn": "Malchus",
+      "defEn": "Malchus, an Israelite"
+    },
+    {
+      "strong": "G2832",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κλωπᾶς",
+      "translit": "Klōpâs",
+      "glossEn": "Cleophas",
+      "defEn": "Clopas, an Israelite"
+    },
+    {
+      "strong": "G4634",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σκηνοπηγία",
+      "translit": "skēnopēgía",
+      "glossEn": "tabernacles",
+      "defEn": "the Festival of Tabernacles (so called from the custom of erecting booths for temporary homes)"
+    },
+    {
+      "strong": "G2879",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κορέ",
+      "translit": "Koré",
+      "glossEn": "Core",
+      "defEn": "Core (i.e. Korach), an Israelite"
+    },
+    {
+      "strong": "G3078",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λυσανίας",
+      "translit": "Lysanías",
+      "glossEn": "Lysanias",
+      "defEn": "grief-dispelling; Lysanias, a governor of Abilene"
+    },
+    {
+      "strong": "G2242",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἡλί",
+      "translit": "Hēlí",
+      "glossEn": "Heli",
+      "defEn": "Heli (i.e. Eli), an Israelite"
+    },
+    {
+      "strong": "G2388",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰαννά",
+      "translit": "Ianná",
+      "glossEn": "Janna",
+      "defEn": "Janna, an Israelite"
+    },
+    {
+      "strong": "G3486",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ναούμ",
+      "translit": "Naoúm",
+      "glossEn": "Naum",
+      "defEn": "Naum (i.e. Nachum), an Israelite"
+    },
+    {
+      "strong": "G2069",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐσλί",
+      "translit": "Eslí",
+      "glossEn": "Esli",
+      "defEn": "Esli, an Israelite"
+    },
+    {
+      "strong": "G3477",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ναγγαί",
+      "translit": "Nangaí",
+      "glossEn": "Nagge",
+      "defEn": "Nangæ (i.e. perhaps Nogach), an Israelite"
+    },
+    {
+      "strong": "G3092",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μαάθ",
+      "translit": "Maáth",
+      "glossEn": "Maath",
+      "defEn": "Maath, an Israelite"
+    },
+    {
+      "strong": "G4584",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σεμεΐ",
+      "translit": "Semeḯ",
+      "glossEn": "Semei",
+      "defEn": "Semei (i.e. Shimi), an Israelite"
+    },
+    {
+      "strong": "G6044",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰωσήχ",
+      "translit": "",
+      "glossEn": "Josech",
+      "defEn": ""
+    },
+    {
+      "strong": "G6043",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰωδά",
+      "translit": "",
+      "glossEn": "Joda",
+      "defEn": ""
+    },
+    {
+      "strong": "G2490",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰωαννᾶς",
+      "translit": "Iōannâs",
+      "glossEn": "Joannas",
+      "defEn": "Joannas, an Israelite"
+    },
+    {
+      "strong": "G4488",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥησά",
+      "translit": "Rhēsá",
+      "glossEn": "Rhesa",
+      "defEn": "Resa (i.e. Rephajah), an Israelite"
+    },
+    {
+      "strong": "G3518",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Νηρί",
+      "translit": "Nērí",
+      "glossEn": "Neri",
+      "defEn": "Neri (i.e. Nerijah), an Israelite"
+    },
+    {
+      "strong": "G78",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀδδί",
+      "translit": "Addí",
+      "glossEn": "Addi",
+      "defEn": "Addi, an Israelite"
+    },
+    {
+      "strong": "G2973",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κωσάμ",
+      "translit": "Kōsám",
+      "glossEn": "Cosam",
+      "defEn": "Cosam (i.e. Kosam) an Israelite"
+    },
+    {
+      "strong": "G1678",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐλμωδάμ",
+      "translit": "Elmōdám",
+      "glossEn": "Elmodam",
+      "defEn": "Elmodam, an Israelite"
+    },
+    {
+      "strong": "G2262",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἤρ",
+      "translit": "Ḗr",
+      "glossEn": "Er",
+      "defEn": "Er, an Israelite"
+    },
+    {
+      "strong": "G1663",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐλιέζερ",
+      "translit": "Eliézer",
+      "glossEn": "Eliezer",
+      "defEn": "Eliezer, an Israelite"
+    },
+    {
+      "strong": "G2497",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰωρείμ",
+      "translit": "Iōreím",
+      "glossEn": "Jorim",
+      "defEn": "Jorim, an Israelite"
+    },
+    {
+      "strong": "G2494",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰωνάν",
+      "translit": "Iōnán",
+      "glossEn": "Jonan",
+      "defEn": "Jonan, an Israelite"
+    },
+    {
+      "strong": "G3190",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μελεᾶς",
+      "translit": "Meleâs",
+      "glossEn": "Meleas",
+      "defEn": "Meleas, an Israelite"
+    },
+    {
+      "strong": "G3104",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μαϊνάν",
+      "translit": "Maïnán",
+      "glossEn": "Mainan",
+      "defEn": "Mainan, an Israelite"
+    },
+    {
+      "strong": "G3160",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ματταθά",
+      "translit": "Mattathá",
+      "glossEn": "Mattatha",
+      "defEn": "Mattatha (i.e. Mattithjah), an Israelite"
+    },
+    {
+      "strong": "G3481",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ναθάν",
+      "translit": "Nathán",
+      "glossEn": "Nathan",
+      "defEn": "Nathan, an Israelite"
+    },
+    {
+      "strong": "G6002",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀδμίν",
+      "translit": "",
+      "glossEn": "Admin",
+      "defEn": ""
+    },
+    {
+      "strong": "G6095",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀρνὶ",
+      "translit": "",
+      "glossEn": "Arni",
+      "defEn": ""
+    },
+    {
+      "strong": "G2291",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Θάρα",
+      "translit": "Thára",
+      "glossEn": "Thara",
+      "defEn": "Thara (i.e. Terach), the father of Abraham"
+    },
+    {
+      "strong": "G3493",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ναχώρ",
+      "translit": "Nachṓr",
+      "glossEn": "Nachor",
+      "defEn": "Nachor, the grandfather of Abraham"
+    },
+    {
+      "strong": "G4562",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σαρούχ",
+      "translit": "Saroúch",
+      "glossEn": "Saruch",
+      "defEn": "Saruch (i.e. Serug), a patriarch"
+    },
+    {
+      "strong": "G4466",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥαγαῦ",
+      "translit": "Rhagaû",
+      "glossEn": "Ragau",
+      "defEn": "Ragau (i.e. Reu), a patriarch"
+    },
+    {
+      "strong": "G5317",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φάλεκ",
+      "translit": "Phálek",
+      "glossEn": "Phalec",
+      "defEn": "Phalek (i.e. Peleg), a patriarch"
+    },
+    {
+      "strong": "G1443",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐβέρ",
+      "translit": "Ebér",
+      "glossEn": "Eber",
+      "defEn": "Eber, a patriarch"
+    },
+    {
+      "strong": "G742",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀρφαξάδ",
+      "translit": "Arphaxád",
+      "glossEn": "Arphaxad",
+      "defEn": "Arphaxad, a post-diluvian patriarch"
+    },
+    {
+      "strong": "G4590",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σήμ",
+      "translit": "Sḗm",
+      "glossEn": "Sem",
+      "defEn": "Sem (i.e. Shem), a patriarch"
+    },
+    {
+      "strong": "G2984",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λάμεχ",
+      "translit": "Lámech",
+      "glossEn": "Lamech",
+      "defEn": "Lamech (i.e. Lemek), a patriarch"
+    },
+    {
+      "strong": "G3103",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μαθουσάλα",
+      "translit": "Mathousála",
+      "glossEn": "Mathusala",
+      "defEn": "Mathusala (i.e. Methushelach), an antediluvian"
+    },
+    {
+      "strong": "G2391",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰάρεδ",
+      "translit": "Iáred",
+      "glossEn": "Jared",
+      "defEn": "Jared (i.e. Jered), an antediluvian"
+    },
+    {
+      "strong": "G3121",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μαλελεήλ",
+      "translit": "Maleleḗl",
+      "glossEn": "Maleleel",
+      "defEn": "Maleleel (i.e. Mahalalel), an antediluvian"
+    },
+    {
+      "strong": "G1800",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐνώς",
+      "translit": "Enṓs",
+      "glossEn": "Enos",
+      "defEn": "Enos (i.e. Enosh), a patriarch"
+    },
+    {
+      "strong": "G4589",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σήθ",
+      "translit": "Sḗth",
+      "glossEn": "Seth",
+      "defEn": "Seth (i.e. Sheth), a patriarch"
+    },
+    {
+      "strong": "G4948",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σύρος",
+      "translit": "Sýros",
+      "glossEn": "Syrian",
+      "defEn": "a Syran (i.e. probably Tyrian), a native of Syria"
+    },
+    {
+      "strong": "G5529",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Χουζᾶς",
+      "translit": "Chouzâs",
+      "glossEn": "Chuza",
+      "defEn": "Chuzas, an officer of Herod"
+    },
+    {
+      "strong": "G4677",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σουσάννα",
+      "translit": "Sousánna",
+      "glossEn": "Susanna",
+      "defEn": "lily; Susannah (i.e. Shoshannah), an Israelitess"
+    },
+    {
+      "strong": "G4949",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Συροφοίνισσα",
+      "translit": "Syrophoínissa",
+      "glossEn": "Syrophenician",
+      "defEn": "a Syro-phœnician woman, i.e. a female native of Phœnicia in Syria"
+    },
+    {
+      "strong": "G2196",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ζαρά",
+      "translit": "Zará",
+      "glossEn": "Zara",
+      "defEn": "Zara, (i.e. Zerach), an Israelite"
+    },
+    {
+      "strong": "G2283",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Θάμαρ",
+      "translit": "Thámar",
+      "glossEn": "Thamar",
+      "defEn": "Thamar (i.e. Tamar), an Israelitess"
+    },
+    {
+      "strong": "G3002",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λεββαῖος",
+      "translit": "Lebbaîos",
+      "glossEn": "Lebbæus",
+      "defEn": "Lebbæus, a Christian"
+    },
+    {
+      "strong": "G4471",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥαμᾶ",
+      "translit": "Rhamâ",
+      "glossEn": "Rama",
+      "defEn": "Rama (i.e. Ramah), a place in Palestine"
+    },
+    {
+      "strong": "G745",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀρχέλαος",
+      "translit": "Archélaos",
+      "glossEn": "Archelaus",
+      "defEn": "people-ruling; Archelaus, a Jewish king"
+    },
+    {
+      "strong": "G4469",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ῥακά",
+      "translit": "rhaká",
+      "glossEn": "Raca",
+      "defEn": "O empty one, i.e. thou worthless (as a term of utter vilification)"
+    },
+    {
+      "strong": "G2136",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Εὐοδία",
+      "translit": "Euodía",
+      "glossEn": "Euodias",
+      "defEn": "fine travelling; Euodia, a Christian woman"
+    },
+    {
+      "strong": "G4941",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Συντύχη",
+      "translit": "Syntýchē",
+      "glossEn": "Syntyche",
+      "defEn": "an accident; Syntyche, a Christian female"
+    },
+    {
+      "strong": "G2815",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κλήμης",
+      "translit": "Klḗmēs",
+      "glossEn": "Clement",
+      "defEn": "merciful; Clemes (i.e. Clemens), a Christian"
+    },
+    {
+      "strong": "G682",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀπφία",
+      "translit": "Apphía",
+      "glossEn": "Apphia",
+      "defEn": "Apphia, a woman of Collosæ"
+    },
+    {
+      "strong": "G4502",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥουβήν",
+      "translit": "Rhoubḗn",
+      "glossEn": "Reuben",
+      "defEn": "Ruben (i.e. Reuben), an Israelite"
+    },
+    {
+      "strong": "G1045",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Γάδ",
+      "translit": "Gád",
+      "glossEn": "Gad",
+      "defEn": "Gad, a tribe of Israelites"
+    },
+    {
+      "strong": "G2466",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰσαχάρ",
+      "translit": "Isachár",
+      "glossEn": "Issachar",
+      "defEn": "Isachar (i.e. Jissaskar), a son of Jacob (figuratively, his descendant)"
+    },
+    {
+      "strong": "G5402",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φοίβη",
+      "translit": "Phoíbē",
+      "glossEn": "Phebe",
+      "defEn": "probably akin to the base of G5457 (φῶς)); Phœbe, a Christian woman"
+    },
+    {
+      "strong": "G1866",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐπαίνετος",
+      "translit": "Epaínetos",
+      "glossEn": "Epenetus",
+      "defEn": "praised; Epænetus, a Christian"
+    },
+    {
+      "strong": "G408",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀνδρόνικος",
+      "translit": "Andrónikos",
+      "glossEn": "Adronicus",
+      "defEn": "man of victory; Andronicos, an Israelite"
+    },
+    {
+      "strong": "G2458",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰουνιᾶς",
+      "translit": "Iouniâs",
+      "glossEn": "Junias",
+      "defEn": "Junias, a Christian"
+    },
+    {
+      "strong": "G291",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀμπλίας",
+      "translit": "Amplías",
+      "glossEn": "Amplias",
+      "defEn": "Amplias, a Roman Christian"
+    },
+    {
+      "strong": "G3773",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Οὐρβανός",
+      "translit": "Ourbanós",
+      "glossEn": "Urbanus",
+      "defEn": "Urbanus (of the city, \"urbane\"), a Christian"
+    },
+    {
+      "strong": "G4720",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Στάχυς",
+      "translit": "Stáchys",
+      "glossEn": "Stachys",
+      "defEn": "Stachys, a Christian"
+    },
+    {
+      "strong": "G559",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀπελλῆς",
+      "translit": "Apellēs",
+      "glossEn": "Apelles",
+      "defEn": "Apelles, a Christian"
+    },
+    {
+      "strong": "G711",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀριστόβουλος",
+      "translit": "Aristóboulos",
+      "glossEn": "Aristobulus",
+      "defEn": "best counselling; Aristoboulus, a Christian"
+    },
+    {
+      "strong": "G2267",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἡρωδίων",
+      "translit": "Hērōdíōn",
+      "glossEn": "Herodion",
+      "defEn": "Herodion, a Christian"
+    },
+    {
+      "strong": "G3488",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Νάρκισσος",
+      "translit": "Nárkissos",
+      "glossEn": "Narcissus",
+      "defEn": "Narcissus, a Roman"
+    },
+    {
+      "strong": "G5170",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Τρύφαινα",
+      "translit": "Trýphaina",
+      "glossEn": "Tryphena",
+      "defEn": "luxurious; Tryphæna, a Christian woman"
+    },
+    {
+      "strong": "G5173",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Τρυφῶσα",
+      "translit": "Tryphōsa",
+      "glossEn": "Tryphosa",
+      "defEn": "luxuriating; Tryphosa, a Christian female"
+    },
+    {
+      "strong": "G4069",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Περσίς",
+      "translit": "Persís",
+      "glossEn": "Persis",
+      "defEn": "a Persian woman; Persis, a Christian female"
+    },
+    {
+      "strong": "G799",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀσύγκριτος",
+      "translit": "Asýnkritos",
+      "glossEn": "Asyncritos",
+      "defEn": "incomparable; Asyncritus, a Christian"
+    },
+    {
+      "strong": "G5393",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φλέγων",
+      "translit": "Phlégōn",
+      "glossEn": "Phlegon",
+      "defEn": "blazing; Phlegon, a Christian"
+    },
+    {
+      "strong": "G3969",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πατροβᾶς",
+      "translit": "Patrobâs",
+      "glossEn": "Patrobas",
+      "defEn": "father's life; Patrobas, a Christian"
+    },
+    {
+      "strong": "G2057",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἑρμᾶς",
+      "translit": "Hermâs",
+      "glossEn": "Hermas",
+      "defEn": "Hermas, a Christian"
+    },
+    {
+      "strong": "G5378",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φιλόλογος",
+      "translit": "Philólogos",
+      "glossEn": "Philologus",
+      "defEn": "fond of words, i.e. talkative (argumentative, learned, \"philological\"); Philologus, a Christian"
+    },
+    {
+      "strong": "G2456",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἰουλία",
+      "translit": "Ioulía",
+      "glossEn": "Julia",
+      "defEn": "Julia, a Christian woman"
+    },
+    {
+      "strong": "G3517",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Νηρεύς",
+      "translit": "Nēreús",
+      "glossEn": "Nereus",
+      "defEn": "Nereus, a Christian"
+    },
+    {
+      "strong": "G3652",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ὀλυμπᾶς",
+      "translit": "Olympâs",
+      "glossEn": "Olympas",
+      "defEn": "Olympas, a Christian"
+    }
+  ]
+}

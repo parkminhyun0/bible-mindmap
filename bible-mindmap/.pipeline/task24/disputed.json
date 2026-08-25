@@ -1,0 +1,616 @@
+{
+  "items": [
+    {
+      "shard": "AY",
+      "strong": "G1616",
+      "lemma": "ἐκτένεια",
+      "lang": "greek",
+      "glossEn": "X instantly",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekténeia",
+          "translitKo": "엑테네이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekténeia",
+          "translitKo": "에크테네이아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekténeia",
+          "translitKo": "에크테네이아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekténeia",
+          "translitKo": "엑테네이아",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AY",
+      "strong": "G9996",
+      "lemma": "συναλλάσσω",
+      "lang": "greek",
+      "glossEn": "to urge",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synallássō",
+          "translitKo": "쉰알라소",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synallássō",
+          "translitKo": "쉬날랏소",
+          "note": "υ는 위, σσ는 ㅅㅅ 계열로 적음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synallássō",
+          "translitKo": "쉬날라소",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synallássō",
+          "translitKo": "쉬날라소",
+          "note": "입력에 라틴 음역이 비어 있어 직접 채웠다. συν-의 υ는 '위' 원칙에 따라 '쉬'."
+        }
+      ]
+    },
+    {
+      "shard": "AY",
+      "strong": "G431",
+      "lemma": "ἀνεψιός",
+      "lang": "greek",
+      "glossEn": "sister's son",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "anepsiós",
+          "translitKo": "아넵시오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "anepsiós",
+          "translitKo": "아넵시오스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "anepsiós",
+          "translitKo": "아네프시오스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "anepsiós",
+          "translitKo": "아네프시오스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AY",
+      "strong": "G1040",
+      "lemma": "βύσσος",
+      "lang": "greek",
+      "glossEn": "fine linen",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "býssos",
+          "translitKo": "뷧소스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "býssos",
+          "translitKo": "뷧소스",
+          "note": "υ는 위, σσ는 ㅅㅅ 계열로 적음"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "býssos",
+          "translitKo": "뷔소스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "býssos",
+          "translitKo": "뷔소스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AZ",
+      "strong": "H1009",
+      "lemma": "בֵּית אַרְבֵּאל",
+      "lang": "hebrew",
+      "glossEn": "Beth-Arbel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt ʾArbēʾel",
+          "translitKo": "베트 아르베엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt ʾarbēl",
+          "translitKo": "베트 아르벨",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt ʾarbēʾēl",
+          "translitKo": "베트 아르베엘",
+          "note": "개역개정 관용 표기는 벧아르벨이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt ʾarbēʾl",
+          "translitKo": "베트 아르벨",
+          "note": "한국어 성경 관용 표기는 벧아르벨이다. 어말 א는 묵음이라 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "AZ",
+      "strong": "H8112",
+      "lemma": "שִׁמְרוֹן מְראוֹן",
+      "lang": "hebrew",
+      "glossEn": "Shimon-meron.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šimrôn Mᵉrōʾn",
+          "translitKo": "시므론 메론",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šimrôn merʾôn",
+          "translitKo": "심론 메르온",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šimrôn mĕrʾôn",
+          "translitKo": "심론 메르온",
+          "note": "개역개정 관용 표기는 시므론 므론이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šimrôn merʾôn",
+          "translitKo": "심론 메론",
+          "note": "한국어 성경 관용 표기는 시므론 므론이다. 배포된 šimrôn→심론을 따랐고, מְראוֹן의 א는 묵음이라 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H2995",
+      "lemma": "יַבְנְאֵל",
+      "lang": "hebrew",
+      "glossEn": "Jabneel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Yabnĕʾēl",
+          "translitKo": "야브네엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yabnəʾēl",
+          "translitKo": "야브느엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yabnĕʾēl",
+          "translitKo": "야브느엘",
+          "note": "한국어 성경 관용 표기는 '얍느엘'(수 15:11)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yabneʾēl",
+          "translitKo": "야브네엘",
+          "note": "개역개정 관용 표기는 '얍느엘'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H1034",
+      "lemma": "בֵּית לְבָאוֹת",
+      "lang": "hebrew",
+      "glossEn": "Beth-lebaoth. Compare H3822 (לְבָאוֹת).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt Lĕbāʾôt",
+          "translitKo": "베트 르바오트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt ləbāʾôt",
+          "translitKo": "베이트 르바오트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt lĕbāʾôt",
+          "translitKo": "베트 레바오트",
+          "note": "한국어 성경 관용 표기는 '벧르바옷'(수 19:6)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt lebāʾôt",
+          "translitKo": "베트 레바오트",
+          "note": "개역개정 관용 표기는 '벧르바옷'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H1192",
+      "lemma": "בַּעֲלַת בְּאֵר",
+      "lang": "hebrew",
+      "glossEn": "Baalath-beer.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Baʿălat Bĕʾēr",
+          "translitKo": "발라트 브에르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "baʿălat bəʾēr",
+          "translitKo": "바알라트 브에르",
+          "note": "ע"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "baʿălat bĕʾēr",
+          "translitKo": "바알라트 베에르",
+          "note": "한국어 성경 관용 표기는 '바알랏브에르'(수 19:8)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "baʿălat beʾēr",
+          "translitKo": "바알라트 베에르",
+          "note": "개역개정 관용 표기는 '바알랏브엘'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H514",
+      "lemma": "אֶלְתְּקֵא",
+      "lang": "hebrew",
+      "glossEn": "Eltekeh.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾEltĕqēʾ",
+          "translitKo": "엘트케",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾeltəqēʾ",
+          "translitKo": "엘트케",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾeltĕqēʾ",
+          "translitKo": "엘테케",
+          "note": "한국어 성경 관용 표기는 '엘드게'(수 19:44, 21:23). 어말 א는 묵음이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾelteqēʾ",
+          "translitKo": "엘테케",
+          "note": "어말 א는 묵음이라 적지 않음. 개역개정 관용 표기는 '엘드게'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H1139",
+      "lemma": "בְּנֵי־בְּרַק",
+      "lang": "hebrew",
+      "glossEn": "Bene-barak.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bĕnê-Bĕraq",
+          "translitKo": "브네 베라크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bənê-bəraq",
+          "translitKo": "브네이브라크",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bĕnê-bĕraq",
+          "translitKo": "베네베라크",
+          "note": "한국어 성경 관용 표기는 '브네브락'(수 19:45)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "benê-beraq",
+          "translitKo": "베네베라크",
+          "note": "개역개정 관용 표기는 '바네베락'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H3959",
+      "lemma": "לֶשֶׁם",
+      "lang": "hebrew",
+      "glossEn": "Leshem.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Lešem",
+          "translitKo": "레셈",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "lešem",
+          "translitKo": "레솀",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "lešem",
+          "translitKo": "레솀",
+          "note": "한국어 성경 관용 표기는 '레센'(수 19:47)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "lešem",
+          "translitKo": "레셈",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H5875",
+      "lemma": "עֵין הַקּוֹרֵא",
+      "lang": "hebrew",
+      "glossEn": "En-hakhore.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿÊn Haqqôrēʾ",
+          "translitKo": "엔 학코레",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿên haqqôrēʾ",
+          "translitKo": "에인 하코레",
+          "note": "ע"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿên haqqôrēʾ",
+          "translitKo": "엔 하코레",
+          "note": "한국어 성경 관용 표기는 '엔학고레'(삿 15:19). 다게쉬 포르테는 겹쳐 적지 않는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿên haqqôrēʾ",
+          "translitKo": "엔 하코레",
+          "note": "개역개정 관용 표기는 '엔학고레'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H876",
+      "lemma": "בְּאֵר",
+      "lang": "hebrew",
+      "glossEn": "Beer.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bĕʾēr",
+          "translitKo": "브에르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bəʾēr",
+          "translitKo": "브에르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bĕʾēr",
+          "translitKo": "베에르",
+          "note": "한국어 성경 관용 표기는 '브엘'(민 21:16, 삿 9:21)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "beʾēr",
+          "translitKo": "베에르",
+          "note": "개역개정 관용 표기는 '브엘'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H1036",
+      "lemma": "בֵּית לְעַפְרָה",
+      "lang": "hebrew",
+      "glossEn": "house of Aphrah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bêt LĕʿAphrāh",
+          "translitKo": "베트 르아프라",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt ləʿaprâ",
+          "translitKo": "베이트 르아프라",
+          "note": "ע"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt lĕʿaprâ",
+          "translitKo": "베트 레아프라",
+          "note": "한국어 성경 관용 표기는 '베들레아브라'(미 1:10)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt leʿaprâ",
+          "translitKo": "베트 레아프라",
+          "note": "표제형에 전치사 לְ가 포함돼 있어 그대로 음역함. 개역개정 관용 표기는 '베들레아브라'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "H5884",
+      "lemma": "עֵין רִמּוֹן",
+      "lang": "hebrew",
+      "glossEn": "En-rimmon.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿÊn Rimmôn",
+          "translitKo": "엔 림몬",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿên rimmôn",
+          "translitKo": "에인 리몬",
+          "note": "ע"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿên rimmôn",
+          "translitKo": "엔 리몬",
+          "note": "한국어 성경 관용 표기는 '엔림몬'(느 11:29). 다게쉬 포르테는 겹쳐 적지 않는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿên rimmôn",
+          "translitKo": "엔 리몬",
+          "note": "개역개정 관용 표기는 '에느림몬'."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "G4829",
+      "lemma": "συμμερίζομαι",
+      "lang": "greek",
+      "glossEn": "be partaker with",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "symmerízomai",
+          "translitKo": "심메리조마이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "symmerízomai",
+          "translitKo": "쉼메리조마이",
+          "note": "υ는 위"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "symmerízomai",
+          "translitKo": "쉼메리조마이",
+          "note": "υ는 위 계열로 적는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "symmerízomai",
+          "translitKo": "쉬메리조마이",
+          "note": "υ는 '위'(마르튀스 선례). μμ 중복 자음은 겹쳐 적지 않음(탈라사 선례)."
+        }
+      ]
+    },
+    {
+      "shard": "BA",
+      "strong": "G5175",
+      "lemma": "Τρωγύλλιον",
+      "lang": "greek",
+      "glossEn": "Trogyllium",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Trōgýllion",
+          "translitKo": "트로길리온",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Trōgýllion",
+          "translitKo": "트로귈리온",
+          "note": "υ는 위"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Trōgýllion",
+          "translitKo": "트로귈리온",
+          "note": "한국어 성경 관용 표기는 '드로길리온'(행 20:15 TR 본문). υ는 위 계열로 적는다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "Trōgýllion",
+          "translitKo": "트로귀리온",
+          "note": "υ는 '위'. λλ 중복 자음은 겹쳐 적지 않음(탈라사 선례)."
+        }
+      ]
+    }
+  ]
+}

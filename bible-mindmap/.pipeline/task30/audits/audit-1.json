@@ -1,0 +1,20 @@
+[
+  {
+    "strong": "G3964",
+    "field": "note",
+    "current": "ῳ(어이오타)를 ōi 로 풀어 로이로 적는다.",
+    "suggested": "ῳ(이오타 첨자)를 ōi 로 풀어 로이로 적는다.",
+    "evidence": "WORKER_SPEC.md의 note 규칙은 표기 차이의 설명만 허용하며, 배포 선례상 ῳ는 이오타 첨자(iota subscript)이다.",
+    "severity": "minor",
+    "reason": "‘어이오타’는 이오타 첨자를 가리키는 용어의 실제 표기 오류다. 음역·뜻은 변경하지 않는다."
+  },
+  {
+    "strong": "G3389",
+    "field": "note",
+    "current": "ῳ(어이오타)를 ōi 로 풀어 로이로 적는다.",
+    "suggested": "ῳ(이오타 첨자)를 ōi 로 풀어 로이로 적는다.",
+    "evidence": "WORKER_SPEC.md의 note 규칙은 표기 차이의 설명만 허용하며, 배포 선례상 ῳ는 이오타 첨자(iota subscript)이다.",
+    "severity": "minor",
+    "reason": "‘어이오타’는 이오타 첨자를 가리키는 용어의 실제 표기 오류다. 음역·뜻은 변경하지 않는다."
+  }
+]

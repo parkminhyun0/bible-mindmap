@@ -1,0 +1,906 @@
+{
+  "shard": "CC",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H4206",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מָזִיחַ",
+      "translit": "",
+      "glossEn": "girdle, strength.",
+      "defEn": "a belt (as movable)"
+    },
+    {
+      "strong": "H7811",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שָׂחָה",
+      "translit": "",
+      "glossEn": "(make to) swim.",
+      "defEn": "to swim; causatively, to inundate"
+    },
+    {
+      "strong": "H7099",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "קֶצֶו",
+      "translit": "",
+      "glossEn": "end, edge, uttermost participle",
+      "defEn": "a limit"
+    },
+    {
+      "strong": "H6694",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "צוּק",
+      "translit": "",
+      "glossEn": "be molten, pour.",
+      "defEn": "to pour out, i.e. (figuratively) smelt, utter"
+    },
+    {
+      "strong": "H1898",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "הָגָה",
+      "translit": "",
+      "glossEn": "stay, stay away.",
+      "defEn": "to remove"
+    },
+    {
+      "strong": "H3944",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "לָצוֹן",
+      "translit": "",
+      "glossEn": "scornful(-ning).",
+      "defEn": "derision"
+    },
+    {
+      "strong": "H8311",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שָׂרַע",
+      "translit": "",
+      "glossEn": "stretch out self, (have any) superfluous thing.",
+      "defEn": "to prolong, i.e. (reflex) be deformed by excess of members"
+    },
+    {
+      "strong": "H7100",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "קֶצַח",
+      "translit": "",
+      "glossEn": "fitches.",
+      "defEn": "fennelflower (from its pungency)"
+    },
+    {
+      "strong": "H3646",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "כַּמֹּן",
+      "translit": "",
+      "glossEn": "cummin.",
+      "defEn": "'cummin' (from its use as a condiment)"
+    },
+    {
+      "strong": "H3918",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "לַיִשׁ",
+      "translit": "",
+      "glossEn": "(old) lion.",
+      "defEn": "a lion (from his destructive blows)"
+    },
+    {
+      "strong": "H660",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "אֶפְעֶה",
+      "translit": "",
+      "glossEn": "viper.",
+      "defEn": "an asp or other venomous serpent"
+    },
+    {
+      "strong": "H1879",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "דָּשֵׁן",
+      "translit": "",
+      "glossEn": "fat.",
+      "defEn": "fat; figuratively, rich, fertile"
+    },
+    {
+      "strong": "H1098",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "בְּלִיל",
+      "translit": "",
+      "glossEn": "corn, fodder, provender.",
+      "defEn": "mixed, i.e. (specifically) feed (for cattle)"
+    },
+    {
+      "strong": "H625",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "אֹסֶף",
+      "translit": "",
+      "glossEn": "gathering.",
+      "defEn": "a collection (of fruits)"
+    },
+    {
+      "strong": "H2646",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חֻפָּה",
+      "translit": "",
+      "glossEn": "chamber, closet, defence.",
+      "defEn": "a canopy"
+    },
+    {
+      "strong": "H3718",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "כֶּפֶל",
+      "translit": "",
+      "glossEn": "double.",
+      "defEn": "a duplicate"
+    },
+    {
+      "strong": "H2329",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חוּג",
+      "translit": "",
+      "glossEn": "circle, circuit, compass.",
+      "defEn": "a circle"
+    },
+    {
+      "strong": "H6109",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "עׇצְמָה",
+      "translit": "",
+      "glossEn": "abundance, strength.",
+      "defEn": "powerfulness; by extension, numerousness"
+    },
+    {
+      "strong": "H6360",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "פַּטִּישׁ",
+      "translit": "",
+      "glossEn": "hammer.",
+      "defEn": "a hammer"
+    },
+    {
+      "strong": "H6352",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "פֶּחָם",
+      "translit": "",
+      "glossEn": "coals.",
+      "defEn": "a coal, whether charred or live"
+    },
+    {
+      "strong": "H7908",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שְׁכוֹל",
+      "translit": "",
+      "glossEn": "loss of children, spoiling.",
+      "defEn": "bereavement"
+    },
+    {
+      "strong": "H3401",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "יָרִיב",
+      "translit": "",
+      "glossEn": "that content(-eth), that strive.",
+      "defEn": "literally he will contend; properly, adjective, contentious; used as noun, an adversary"
+    },
+    {
+      "strong": "H2168",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "זָמַר",
+      "translit": "",
+      "glossEn": "prune.",
+      "defEn": "to trim (a vine)"
+    },
+    {
+      "strong": "H7536",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "רֹק",
+      "translit": "",
+      "glossEn": "spit(-ting, -tle).",
+      "defEn": "spittle"
+    },
+    {
+      "strong": "H8653",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "תַּרְעֵלָה",
+      "translit": "",
+      "glossEn": "astonishment, trembling.",
+      "defEn": "reeling"
+    },
+    {
+      "strong": "H4998",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "נָאָה",
+      "translit": "",
+      "glossEn": "be beautiful, become, be comely.",
+      "defEn": "properly, to be at home, i.e. (by implication) to be pleasant (or suitable), i.e. beautiful"
+    },
+    {
+      "strong": "H1793",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "דַּכָּא",
+      "translit": "",
+      "glossEn": "contrite, destruction.",
+      "defEn": "crushed (literally powder, or figuratively, contrite)"
+    },
+    {
+      "strong": "H4683",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מַצָּה",
+      "translit": "",
+      "glossEn": "contention, debate, strife.",
+      "defEn": "a quarrel"
+    },
+    {
+      "strong": "H4788",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מָרוּד",
+      "translit": "",
+      "glossEn": "cast out, misery.",
+      "defEn": "an outcast; (abstractly) destitution"
+    },
+    {
+      "strong": "H6632",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "צָב",
+      "translit": "",
+      "glossEn": "covered, litter, tortoise.",
+      "defEn": "a palanquin or canopy (as a fixture); also a species of lizard (probably as clinging fast)"
+    },
+    {
+      "strong": "H8584",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "תְּעוּדָה",
+      "translit": "",
+      "glossEn": "testimony.",
+      "defEn": "attestation, i.e. a precept, usage"
+    },
+    {
+      "strong": "H4164",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מוּצַק",
+      "translit": "",
+      "glossEn": "anguish, is straitened, straitness.",
+      "defEn": "narrowness; figuratively, distress"
+    },
+    {
+      "strong": "H1466",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "גֵּוָה",
+      "translit": "",
+      "glossEn": "lifting up, pride.",
+      "defEn": "exaltation; (figuratively) arrogance"
+    },
+    {
+      "strong": "H4420",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מְלֵחָה",
+      "translit": "",
+      "glossEn": "barren land(-ness), salt (land).",
+      "defEn": "properly, salted (i.e. land), i.e. a desert"
+    },
+    {
+      "strong": "H3659",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "כׇּנְיָהוּ",
+      "translit": "",
+      "glossEn": "Coniah.",
+      "defEn": "Conjah, an Israelite king"
+    },
+    {
+      "strong": "H8604",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "תִּפְלָה",
+      "translit": "",
+      "glossEn": "folly, foolishly.",
+      "defEn": "frivolity"
+    },
+    {
+      "strong": "H6819",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "צָעַר",
+      "translit": "",
+      "glossEn": "be brought low, little one, be small.",
+      "defEn": "to be small, i.e. (figuratively) ignoble"
+    },
+    {
+      "strong": "H1669",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "דָּאַב",
+      "translit": "",
+      "glossEn": "mourn, sorrow(-ful).",
+      "defEn": "to pine"
+    },
+    {
+      "strong": "H1094",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "בְּלוֹא",
+      "translit": "",
+      "glossEn": "old.",
+      "defEn": "(only in plural construction) rags"
+    },
+    {
+      "strong": "H1955",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "הוֹשַׁעְיָה",
+      "translit": "",
+      "glossEn": "Hoshaiah.",
+      "defEn": "Hoshajah, the name of two Israelites"
+    },
+    {
+      "strong": "H2473",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חֹלוֹן",
+      "translit": "",
+      "glossEn": "Holon.",
+      "defEn": "Cholon, the name of two places in Palestine"
+    },
+    {
+      "strong": "H3353",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "יָקוּשׁ",
+      "translit": "",
+      "glossEn": "fowler, snare.",
+      "defEn": "properly, entangled, i.e. by implication (intransitively) a snare, or (transitive) a snarer"
+    },
+    {
+      "strong": "H7228",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "רַב",
+      "translit": "",
+      "glossEn": "archer.",
+      "defEn": "an archer"
+    },
+    {
+      "strong": "H8587",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "תַּעֲלֻמָּה",
+      "translit": "",
+      "glossEn": "thing that is hid, secret.",
+      "defEn": "a secret"
+    },
+    {
+      "strong": "H7758",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שׁוֹלָל",
+      "translit": "",
+      "glossEn": "spoiled, stripped.",
+      "defEn": "nude (especially bare-foot); by implication, captive"
+    },
+    {
+      "strong": "H2950",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "טָפַל",
+      "translit": "",
+      "glossEn": "forge(-r), sew up.",
+      "defEn": "properly, to stick on as apatch; figuratively, to impute falsely"
+    },
+    {
+      "strong": "H6991",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "קָטַל",
+      "translit": "",
+      "glossEn": "kill, slay.",
+      "defEn": "properly, to cut off, i.e. (figuratively) put to death"
+    },
+    {
+      "strong": "H7881",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שִׂיחָה",
+      "translit": "",
+      "glossEn": "meditation, prayer.",
+      "defEn": "reflection; be extension, devotion"
+    },
+    {
+      "strong": "H444",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "אָלַח",
+      "translit": "",
+      "glossEn": "become filthy.",
+      "defEn": "to muddle, i.e. (figuratively and intransitive) to turn (morally) corrupt"
+    },
+    {
+      "strong": "H7502",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "רָפַד",
+      "translit": "",
+      "glossEn": "comfort, make (a bed), spread.",
+      "defEn": "to spread (a bed); by implication, to refresh"
+    },
+    {
+      "strong": "H7805",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "שָׁזַף",
+      "translit": "",
+      "glossEn": "look up, see.",
+      "defEn": "to tan (by sunburning); figuratively (as if by a piercing ray) to scan"
+    },
+    {
+      "strong": "H5965",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "עָלַס",
+      "translit": "",
+      "glossEn": "[idiom] peacock, rejoice, solace self.",
+      "defEn": "to leap for joy, i.e. exult, wave joyously"
+    },
+    {
+      "strong": "H2686",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חָצַץ",
+      "translit": "",
+      "glossEn": "archer, [idiom] bands, cut off in the midst.",
+      "defEn": "properly, to chop into, pierce or sever; hence, to curtail, to distribute (into ranks);  to shoot an arrow"
+    },
+    {
+      "strong": "H2385",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חֲזִיז",
+      "translit": "",
+      "glossEn": "bright cloud, lightning.",
+      "defEn": "a flash of lightning"
+    },
+    {
+      "strong": "H4973",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "מְתַלְּעָה",
+      "translit": "",
+      "glossEn": "cheek (jaw) tooth, jaw.",
+      "defEn": "properly, a biter, i.e. a tooth"
+    },
+    {
+      "strong": "G70",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀγρυπνία",
+      "translit": "agrypnía",
+      "glossEn": "watch",
+      "defEn": "sleeplessness, i.e. a keeping awake"
+    },
+    {
+      "strong": "G2376",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "θυρίς",
+      "translit": "thyrís",
+      "glossEn": "window",
+      "defEn": "an aperture, i.e. window"
+    },
+    {
+      "strong": "G4258",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προαμαρτάνω",
+      "translit": "proamartánō",
+      "glossEn": "sin already, heretofore sin",
+      "defEn": "to sin previously (to conversion)"
+    },
+    {
+      "strong": "G4928",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συνοχή",
+      "translit": "synochḗ",
+      "glossEn": "anguish, distress",
+      "defEn": "restraint, i.e. (figuratively) anxiety"
+    },
+    {
+      "strong": "G2964",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κυρόω",
+      "translit": "kyróō",
+      "glossEn": "confirm",
+      "defEn": "to make authoritative, i.e. ratify"
+    },
+    {
+      "strong": "G2358",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "θριαμβεύω",
+      "translit": "thriambeúō",
+      "glossEn": "(cause) to triumph (over)",
+      "defEn": "and a derivative of G680 (ἅπτομαι) (meaning a noisy iambus, sung in honor of Bacchus); to make an acclamatory procession, i.e. (figuratively) to conquer or (by Hebraism) to give vi"
+    },
+    {
+      "strong": "G2427",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἱκανόω",
+      "translit": "hikanóō",
+      "glossEn": "make able (meet)",
+      "defEn": "to enable, i.e. qualify"
+    },
+    {
+      "strong": "G2633",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατάκρισις",
+      "translit": "katákrisis",
+      "glossEn": "condemn(-ation)",
+      "defEn": "sentencing adversely (the act)"
+    },
+    {
+      "strong": "G343",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνακαλύπτω",
+      "translit": "anakalýptō",
+      "glossEn": "open, (un-)taken away",
+      "defEn": "to unveil"
+    },
+    {
+      "strong": "G5462",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φωτισμός",
+      "translit": "phōtismós",
+      "glossEn": "light",
+      "defEn": "illumination (figuratively)"
+    },
+    {
+      "strong": "G2598",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καταβάλλω",
+      "translit": "katabállō",
+      "glossEn": "cast down, lay",
+      "defEn": "to throw down"
+    },
+    {
+      "strong": "G3500",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "νέκρωσις",
+      "translit": "nékrōsis",
+      "glossEn": "deadness, dying",
+      "defEn": "decease; figuratively, impotency"
+    },
+    {
+      "strong": "G341",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνακαινόω",
+      "translit": "anakainóō",
+      "glossEn": "renew",
+      "defEn": "to renovate"
+    },
+    {
+      "strong": "G3613",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "οἰκητήριον",
+      "translit": "oikētḗrion",
+      "glossEn": "habitation, house",
+      "defEn": "a residence (literally or figuratively)"
+    },
+    {
+      "strong": "G1902",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπενδύομαι",
+      "translit": "ependýomai",
+      "glossEn": "be clothed upon",
+      "defEn": "to invest upon oneself"
+    },
+    {
+      "strong": "G3469",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μωμάομαι",
+      "translit": "mōmáomai",
+      "glossEn": "blame",
+      "defEn": "to carp at, i.e. censure (discredit)"
+    },
+    {
+      "strong": "G489",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀντιμισθία",
+      "translit": "antimisthía",
+      "glossEn": "recompense",
+      "defEn": "requital, correspondence"
+    },
+    {
+      "strong": "G1972",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπιπόθησις",
+      "translit": "epipóthēsis",
+      "glossEn": "earnest (vehement) desire",
+      "defEn": "a longing for"
+    },
+    {
+      "strong": "G3602",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὀδυρμός",
+      "translit": "odyrmós",
+      "glossEn": "mourning",
+      "defEn": "moaning, i.e. lamentation"
+    },
+    {
+      "strong": "G4278",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προενάρχομαι",
+      "translit": "proenárchomai",
+      "glossEn": "begin (before)",
+      "defEn": "to commence already"
+    },
+    {
+      "strong": "G2471",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἰσότης",
+      "translit": "isótēs",
+      "glossEn": "equal(-ity)",
+      "defEn": "likeness (in condition or proportion); by implication, equity"
+    },
+    {
+      "strong": "G4842",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συμπέμπω",
+      "translit": "sympémpō",
+      "glossEn": "send with",
+      "defEn": "to despatch in company"
+    },
+    {
+      "strong": "G4898",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συνέκδημος",
+      "translit": "synékdēmos",
+      "glossEn": "companion in travel, travel with",
+      "defEn": "a co-absentee from home, i.e. fellow-traveller"
+    },
+    {
+      "strong": "G4724",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "στέλλω",
+      "translit": "stéllō",
+      "glossEn": "avoid, withdraw self",
+      "defEn": "properly, to set fast (\"stall\"), i.e. (figuratively) to repress (reflexively, abstain from associating with)"
+    },
+    {
+      "strong": "G2042",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐρεθίζω",
+      "translit": "erethízō",
+      "glossEn": "provoke",
+      "defEn": "to stimulate (especially to anger)"
+    },
+    {
+      "strong": "G4279",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προεπαγγέλλομαι",
+      "translit": "proepangéllomai",
+      "glossEn": "promise before",
+      "defEn": "to promise of old"
+    },
+    {
+      "strong": "G1862",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπάγγελμα",
+      "translit": "epángelma",
+      "glossEn": "promise",
+      "defEn": "a self-committal (by assurance of conferring some good)"
+    },
+    {
+      "strong": "G4679",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "σοφίζω",
+      "translit": "sophízō",
+      "glossEn": "cunningly devised, make wise",
+      "defEn": "to render wise; in a sinister acceptation, to form \"sophisms\", i.e. continue plausible error"
+    },
+    {
+      "strong": "G1710",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐμπορεύομαι",
+      "translit": "emporeúomai",
+      "glossEn": "buy and sell, make merchandise",
+      "defEn": "to travel in (a country as a pedlar), i.e. (by implication) to trade"
+    },
+    {
+      "strong": "G3573",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "νυστάζω",
+      "translit": "nystázō",
+      "glossEn": "slumber",
+      "defEn": "to nod, i.e. (by implication) to fall asleep; figuratively, to delay"
+    },
+    {
+      "strong": "G2669",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καταπονέω",
+      "translit": "kataponéō",
+      "glossEn": "oppress, vex",
+      "defEn": "to labor down, i.e. wear with toil (figuratively, harass)"
+    },
+    {
+      "strong": "G2849",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κολάζω",
+      "translit": "kolázō",
+      "glossEn": "punish",
+      "defEn": "properly, to curtail, i.e. (figuratively) to chastise (or reserve for infliction)"
+    },
+    {
+      "strong": "G5172",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τρυφή",
+      "translit": "tryphḗ",
+      "glossEn": "delicately, riot",
+      "defEn": "effeminacy, i.e. luxury or debauchery"
+    },
+    {
+      "strong": "G4910",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συνευωχέω",
+      "translit": "syneuōchéō",
+      "glossEn": "feast with",
+      "defEn": "to entertain sumptuously in company with, i.e. (middle voice or passive) to revel together"
+    },
+    {
+      "strong": "G5268",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὑποζύγιον",
+      "translit": "hypozýgion",
+      "glossEn": "ass",
+      "defEn": "an animal under the yoke (draught-beast), i.e. (specially), a donkey"
+    },
+    {
+      "strong": "G1707",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐμπλέκω",
+      "translit": "emplékō",
+      "glossEn": "entangle (in, self with)",
+      "defEn": "to entwine, i.e. (figuratively) involve with"
+    },
+    {
+      "strong": "G1703",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐμπαίκτης",
+      "translit": "empaíktēs",
+      "glossEn": "mocker, scoffer",
+      "defEn": "a derider, i.e. (by implication) a false teacher"
+    },
+    {
+      "strong": "G2741",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καυσόω",
+      "translit": "kausóō",
+      "glossEn": "fervent heat",
+      "defEn": "to set on fire"
+    },
+    {
+      "strong": "G1740",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνδοξάζω",
+      "translit": "endoxázō",
+      "glossEn": "glorify",
+      "defEn": "to glorify"
+    },
+    {
+      "strong": "G4777",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συγκακοπαθέω",
+      "translit": "synkakopathéō",
+      "glossEn": "be partaker of afflictions",
+      "defEn": "to suffer hardship in company with"
+    },
+    {
+      "strong": "G118",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀθλέω",
+      "translit": "athléō",
+      "glossEn": "strive",
+      "defEn": "to contend in the competitive games"
+    },
+    {
+      "strong": "G3542",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "νομή",
+      "translit": "nomḗ",
+      "glossEn": "X eat, pasture",
+      "defEn": "pasture, i.e. (the act) feeding (figuratively, spreading of a gangrene), or (the food) pasturage"
+    },
+    {
+      "strong": "G2221",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ζωγρέω",
+      "translit": "zōgréō",
+      "glossEn": "take captive, catch",
+      "defEn": "to take alive (make a prisoner of war), i.e. (figuratively) to capture or ensnare"
+    },
+    {
+      "strong": "G213",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀλαζών",
+      "translit": "alazṓn",
+      "glossEn": "boaster",
+      "defEn": "braggart"
+    },
+    {
+      "strong": "G3446",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μόρφωσις",
+      "translit": "mórphōsis",
+      "glossEn": "form",
+      "defEn": "formation, i.e. (by implication), appearance (semblance or (concretely) formula)"
+    }
+  ]
+}

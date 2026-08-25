@@ -1,0 +1,789 @@
+{
+  "model": "codex",
+  "rulings": [
+    {
+      "strong": "H3780",
+      "translit": "kāśâ",
+      "translitKo": "카사",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7876",
+      "translit": "šāyâ",
+      "translitKo": "샤야",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4198",
+      "translit": "māzeh",
+      "translitKo": "마제",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4815",
+      "translit": "mĕrîrî",
+      "translitKo": "메리리",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6284",
+      "translit": "pāʾâ",
+      "translitKo": "파아",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H3647",
+      "translit": "kāmas",
+      "translitKo": "카마스",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2245",
+      "translit": "ḥābab",
+      "translitKo": "하바브",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H8497",
+      "translit": "tākâ",
+      "translitKo": "타카",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6988",
+      "translit": "qĕṭôrâ",
+      "translitKo": "케토라",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2653",
+      "translit": "ḥāpap",
+      "translitKo": "호파프",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "첫 모음이 카마츠 카탄(ׇ)이라 ā 가 아니라 o 다. 선례 מׇחֳרָת→moḥŏrāt 모호라트 · יָרׇבְעָם→yārobʿām 야로브암."
+    },
+    {
+      "strong": "H1645",
+      "translit": "gereš",
+      "translitKo": "게레쉬",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H8228",
+      "translit": "šepaʿ",
+      "translitKo": "셰파",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2187",
+      "translit": "zānaq",
+      "translitKo": "자나크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4515",
+      "translit": "minʿāl",
+      "translitKo": "민알",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1679",
+      "translit": "dōbeʾ",
+      "translitKo": "도베",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H3893",
+      "translit": "lēaḥ",
+      "translitKo": "레아흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다. 선례 מִזְבֵּחַ→미즈베아흐."
+    },
+    {
+      "strong": "H7190",
+      "translit": "qĕšî",
+      "translitKo": "케시",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "שׁ 뒤에 히렉이 와 음절 첫소리이므로 시로 적었다(쉬 아님). 선례 חֲמִשִּׁים→하미심."
+    },
+    {
+      "strong": "H5506",
+      "translit": "sĕḥōrâ",
+      "translitKo": "세호라",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1728",
+      "translit": "dawwāg",
+      "translitKo": "다와그",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2751",
+      "translit": "ḥōrî",
+      "translitKo": "호리",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4761",
+      "translit": "marʾāšâ",
+      "translitKo": "마르아샤",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 מַרְאֶה→마르에 대로 אְ 를 르 받침으로 적었다."
+    },
+    {
+      "strong": "H4734",
+      "translit": "miqlaʿat",
+      "translitKo": "미클라아트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1550",
+      "translit": "gālîl",
+      "translitKo": "갈릴",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2707",
+      "translit": "ḥāqâ",
+      "translitKo": "하카",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4237",
+      "translit": "meḥĕzâ",
+      "translitKo": "메헤자",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2947",
+      "translit": "ṭēpaḥ",
+      "translitKo": "테파흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H4165",
+      "translit": "mûṣāq",
+      "translitKo": "무차크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2837",
+      "translit": "ḥēšeq",
+      "translitKo": "헤셰크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H8622",
+      "translit": "tĕqûpâ",
+      "translitKo": "테쿠파",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6926",
+      "translit": "qidmâ",
+      "translitKo": "키드마",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6877",
+      "translit": "ṣĕrîaḥ",
+      "translitKo": "체리아흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H6277",
+      "translit": "ʿātāq",
+      "translitKo": "아타크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2844",
+      "translit": "ḥat",
+      "translitKo": "하트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4770",
+      "translit": "marbēq",
+      "translitKo": "마르베크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6750",
+      "translit": "ṣālal",
+      "translitKo": "찰랄",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "모음 사이 ל 은 선례 חָלַל→할랄 · פָּלַל→팔랄 대로 받침 ㄹ + 초성 ㄹ 로 적었다."
+    },
+    {
+      "strong": "H2524",
+      "translit": "ḥām",
+      "translitKo": "함",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H8495",
+      "translit": "tayiš",
+      "translitKo": "타이쉬",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2688",
+      "translit": "ḥaṣṣôn tāmār",
+      "translitKo": "하츠촌 타마르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "지명. 첫 צ 의 쉐바는 무성이라 하츠 로 닫고 둘째 צ 를 촌 으로 적었다. 개역 관용 표기는 하사손다말이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H1765",
+      "translit": "dāḥap",
+      "translitKo": "다하프",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1740",
+      "translit": "dûaḥ",
+      "translitKo": "두아흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다. 선례 מָנוֹחַ→마노아흐."
+    },
+    {
+      "strong": "H225",
+      "translit": "ʾût",
+      "translitKo": "우트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4964",
+      "translit": "meteg",
+      "translitKo": "메테그",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7046",
+      "translit": "qālas",
+      "translitKo": "칼라스",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H219",
+      "translit": "ʾôrâ",
+      "translitKo": "오라",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H579",
+      "translit": "ʾānâ",
+      "translitKo": "아나",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5730",
+      "translit": "ʿēden",
+      "translitKo": "에덴",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 H5731 עֵדֶן→에덴 과 같게 적었다. 학술 표기와 관용 표기가 같아 병기하지 않는다."
+    },
+    {
+      "strong": "H2897",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "지명(사사기 11:3). 학술 표기는 보통명사 טוֹב 와 같은 토브이나 개역 관용 표기는 돕이다."
+    },
+    {
+      "strong": "H5228",
+      "translit": "nākōaḥ",
+      "translitKo": "나코아흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 ח 앞 furtive patach 를 아로 적었다."
+    },
+    {
+      "strong": "H7504",
+      "translit": "rāpeh",
+      "translitKo": "라페",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5742",
+      "translit": "ʿādāš",
+      "translitKo": "아다쉬",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4794",
+      "translit": "mĕrûṣâ",
+      "translitKo": "메루차",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H92",
+      "translit": "ʾăguddâ",
+      "translitKo": "아구다",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H491",
+      "translit": "ʾalmānût",
+      "translitKo": "알마누트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7791",
+      "translit": "šûr",
+      "translitKo": "슈르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 אַשּׁוּר→아슈르 대로 שׁוּ 를 슈로 적었다."
+    },
+    {
+      "strong": "H5920",
+      "translit": "ʿal",
+      "translitKo": "알",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H877",
+      "translit": "bōʾr",
+      "translitKo": "보르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5190",
+      "translit": "nāṭal",
+      "translitKo": "나탈",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7875",
+      "translit": "śîd",
+      "translitKo": "시드",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5995",
+      "translit": "ʿāmîr",
+      "translitKo": "아미르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6217",
+      "translit": "ʿāšûq",
+      "translitKo": "아슈크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5229",
+      "translit": "nĕkōḥâ",
+      "translitKo": "네코하",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2172",
+      "translit": "zimrâ",
+      "translitKo": "짐라",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1488",
+      "translit": "gēz",
+      "translitKo": "게즈",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H594",
+      "translit": "ʾănāk",
+      "translitKo": "아나크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5342",
+      "translit": "nēṣer",
+      "translitKo": "네체르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6716",
+      "translit": "ṣî",
+      "translitKo": "치",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4070",
+      "translit": "mĕdôr",
+      "translitKo": "메도르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4486",
+      "translit": "mandaʿ",
+      "translitKo": "만다",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1547",
+      "translit": "gālût",
+      "translitKo": "갈루트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H3546",
+      "translit": "kĕhal",
+      "translitKo": "케할",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4223",
+      "translit": "mĕḥāʾ",
+      "translitKo": "메하",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6151",
+      "translit": "ʿărab",
+      "translitKo": "아라브",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4756",
+      "translit": "mārēʾ",
+      "translitKo": "마레",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H521",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 H520 אַמָּה→암마 와 같게 적었다."
+    },
+    {
+      "strong": "H8361",
+      "translit": "šittîn",
+      "translitKo": "시틴",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2597",
+      "translit": "ḥănukkāʾ",
+      "translitKo": "하누카",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H4953",
+      "translit": "mašrôqî",
+      "translitKo": "마쉬로키",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7030",
+      "translit": "qîtārōs",
+      "translitKo": "키타로스",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "헬라어 κίθαρις 계열 차용어. 원어 철자를 그대로 음역했다."
+    },
+    {
+      "strong": "H5443",
+      "translit": "sabbĕkāʾ",
+      "translitKo": "사베카",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "בְּ 의 쉐바를 유성으로 보아 베로 적었다. 사브카로 갈릴 수 있는 자리다."
+    },
+    {
+      "strong": "H6460",
+      "translit": "pĕsantērîn",
+      "translitKo": "페산테린",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "헬라어 ψαλτήριον 계열 차용어. 원어 철자를 그대로 음역했다."
+    },
+    {
+      "strong": "H5481",
+      "translit": "sûmpônyâ",
+      "translitKo": "숨폰야",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "헬라어 συμφωνία 계열 차용어. נְ 의 쉐바는 무성이라 선례 בִּנְיָמִין→빈야민 대로 폰야 로 붙여 적었다."
+    },
+    {
+      "strong": "H2178",
+      "translit": "zan",
+      "translitKo": "잔",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2170",
+      "translit": "zĕmār",
+      "translitKo": "제마르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H3729",
+      "translit": "kĕpat",
+      "translitKo": "케파트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1907",
+      "translit": "haddābār",
+      "translitKo": "하다바르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7960",
+      "translit": "šālû",
+      "translitKo": "샬루",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6744",
+      "translit": "ṣĕlaḥ",
+      "translitKo": "첼라흐",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 צָלַח→찰라흐 와 같은 어근이며 모음 사이 ל 을 받침 ㄹ + 초성 ㄹ 로 적었다."
+    },
+    {
+      "strong": "H8001",
+      "translit": "šĕlām",
+      "translitKo": "셸람",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 שְׁלֹמֹה→셸로모 · שְׁלוֹשִׁים→셸로심 대로 שְׁלָ 를 셸라 로 적었다."
+    },
+    {
+      "strong": "H1859",
+      "translit": "dār",
+      "translitKo": "다르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6056",
+      "translit": "ʿănap",
+      "translitKo": "아나프",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6853",
+      "translit": "ṣĕpar",
+      "translitKo": "체파르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2499",
+      "translit": "ḥălap",
+      "translitKo": "할라프",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H2957",
+      "translit": "ṭĕrad",
+      "translitKo": "테라드",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H8648",
+      "translit": "tĕrên",
+      "translitKo": "테렌",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H7313",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 H7311 רוּם→룸 과 같게 적었다."
+    },
+    {
+      "strong": "H8214",
+      "translit": "šĕpal",
+      "translitKo": "셰팔",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H506",
+      "translit": "ʾălap",
+      "translitKo": "알라프",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5142",
+      "translit": "nĕzaq",
+      "translitKo": "네자크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H6695",
+      "translit": "ṣôq",
+      "translitKo": "초크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H1682",
+      "translit": "dĕbôrâ",
+      "translitKo": "데보라",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "선례 H1683 דְּבּוֹרָה→데보라 와 같게 적었다. 개역 관용 표기는 드보라이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4863",
+      "translit": "mišʾeret",
+      "translitKo": "미쉬에레트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H798",
+      "translit": "ʾašdôt happisgâ",
+      "translitKo": "아쉬도트 하피스가",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "학술 표기는 아쉬도트 하피스가다. 개역개정은 '아스돗 비스가'로 적는다 — 그리스어 계열 전사(Ashdoth)와 פ·ב 연음 관용이 굳은 결과다."
+    },
+    {
+      "strong": "H8562",
+      "translit": "tamrûq",
+      "translitKo": "탐루크",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H323",
+      "translit": "ʾăḥašdarpan",
+      "translitKo": "아하쉬다르판",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "페르시아어 satrap의 히브리 음차다. 개역개정은 낱말을 '방백'으로 옮겨 굳은 관용 음역이 없다."
+    },
+    {
+      "strong": "H7958",
+      "translit": "śĕlāw",
+      "translitKo": "셀라우",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "어말 자음 ו를 -우로 적었다. עֵשָׂו 에사우 선례를 따른다."
+    },
+    {
+      "strong": "H5230",
+      "translit": "nākal",
+      "translitKo": "나칼",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "H5852",
+      "translit": "ʿăṭārôt",
+      "translitKo": "아타로트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "개역 관용은 '아다롯'이나, 배포된 ʿăṭārâ(아타라)와 같은 어근이므로 학술 표기로 '아타로트'를 표제로 둔다."
+    },
+    {
+      "strong": "H5853",
+      "translit": "ʿaṭrôt ʾaddār",
+      "translitKo": "아트로트 아다르",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": "개역 관용은 '아다롯 앗달'이다. 학술 표기를 표제로 두고 다게쉬 포르테는 겹치지 않는다."
+    },
+    {
+      "strong": "H1621",
+      "translit": "gargĕrôt",
+      "translitKo": "가르게로트",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "G4914",
+      "translit": "synḗtheia",
+      "translitKo": "쉬네테이아",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "G4874",
+      "translit": "synanamígnymi",
+      "translitKo": "쉬나나미그뉘미",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    },
+    {
+      "strong": "G3435",
+      "translit": "molýnō",
+      "translitKo": "몰뤼노",
+      "evidence": "배포 선례: src/data/koreanGloss.js 및 관련 koreanGloss 배치의 학술 음역·한글 표기 일관성",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"엑테네이아","evidence":"src/data/koreanGlossTopBatch08.js: ἐκτείνω→엑테이노; 같은 ἐκτε-의 자음군에서 엑테 선례","note":""},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉬날라소","evidence":"WORKER_SPEC: ευ/υ를 유·위 계열로 표기; src/data/koreanGlossTopBatch01.js의 υ 위 계열 선례와 ㅅㅅ 중복 미표기 규칙","note":""},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"배포 음역의 자음군 표기에서 ψ를 프스로 풀지 않고 단일 자모군으로 처리하는 학술 표기 원칙","note":""},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷧소스","evidence":"WORKER_SPEC의 υ 위·σσ ㅅㅅ 계열 규칙","note":""},
+    {"strong":"H1009","translit":"bêt ʾArbēʾel","translitKo":"베트 아르베엘","evidence":"src/data/koreanGlossTopBatch07.js의 아르베 계열 표기와 WORKER_SPEC의 학술 표제 우선 원칙","note":"개역개정 관용 표기 벧아르벨과 달리 어말 א를 학술 음역에 반영했다."},
+    {"strong":"H8112","translit":"šimrôn merʾôn","translitKo":"심론 메론","evidence":"src/data/koreanGlossTopBatch16.js H8110 שִׁמְרוֹן→심론; WORKER_SPEC의 שׁ 음절 말·어말 א 처리","note":"개역개정 관용 표기는 시므론 므론이다."},
+    {"strong":"H2995","translit":"yabnĕʾēl","translitKo":"야브네엘","evidence":"WORKER_SPEC의 학술 표제 우선 및 유성 쉐바 에 표기 선례","note":"개역개정 관용 표기는 얍느엘이다."},
+    {"strong":"H1034","translit":"bêt lĕbāʾôt","translitKo":"베트 르바오트","evidence":"WORKER_SPEC의 לְ 유성 쉐바 에/르 표기와 בֵּית→베트 선례","note":"개역개정 관용 표기는 벧르바옷이다."},
+    {"strong":"H1192","translit":"baʿălat Bĕʾēr","translitKo":"바알라트 베에르","evidence":"src/data/koreanGlossTopBatch05.js의 בְּאֵר→베에르; ע는 한글로 따로 적지 않는 WORKER_SPEC 원칙","note":"개역개정 관용 표기는 바알랏브에르이다."},
+    {"strong":"H514","translit":"ʾEltĕqēʾ","translitKo":"엘트케","evidence":"WORKER_SPEC의 학술 음역 및 다게쉬 포르테 중복 미표기 규칙","note":"개역개정 관용 표기는 엘드게이며 어말 א는 묵음이다."},
+    {"strong":"H1139","translit":"Bĕnê-Bĕraq","translitKo":"브네 베라크","evidence":"src/data/koreanGlossTopBatch15.js의 בְּנֵי 합성 지명 선례; בֵּית→베트 계열의 학술 표기","note":"개역개정 관용 표기는 브네브락이다."},
+    {"strong":"H3959","translit":"Lešem","translitKo":"레셈","evidence":"WORKER_SPEC의 음절 말 שׁ→쉬 원칙과 배포된 학술형 자음 표기","note":"개역개정 관용 표기는 레센이다."},
+    {"strong":"H5875","translit":"ʿÊn Haqqôrēʾ","translitKo":"엔 하코레","evidence":"WORKER_SPEC의 ע 무표기·다게쉬 포르테 중복 미표기; עֵין 지명 선두를 엔으로 처리","note":"개역개정 관용 표기는 엔학고레이다."},
+    {"strong":"H876","translit":"Bĕʾēr","translitKo":"베에르","evidence":"src/data/koreanGlossTopBatch05.js의 בְּאֵר→베에르; 유성 쉐바 에 표기 선례","note":"개역개정 관용 표기는 브엘이다."},
+    {"strong":"H1036","translit":"bêt lĕʿAphrāh","translitKo":"베트 르아프라","evidence":"WORKER_SPEC의 ע 무표기 및 לְ 유성 쉐바 표기; בֵּית→베트 선례","note":"개역개정 관용 표기는 베들레아브라이다."},
+    {"strong":"H5884","translit":"ʿÊn Rimmôn","translitKo":"엔 림몬","evidence":"src/data/koreanGlossTopBatch06.js의 רִמּוֹן→림몬; עֵין을 엔으로 처리하고 דגש forte는 중복하지 않음","note":"개역개정 관용 표기는 엔림몬이다."},
+    {"strong":"G4829","translit":"symmerízomai","translitKo":"쉼메리조마이","evidence":"WORKER_SPEC의 υ 위 계열·중복 자음 미표기 규칙; 배포 사전의 υ 위 표기 선례","note":""},
+    {"strong":"G5175","translit":"Trōgýllion","translitKo":"트로귈리온","evidence":"WORKER_SPEC의 υ 위 계열·중복 λ 미표기 규칙; 배포 사전의 υ 위 표기 선례","note":"개역개정 관용 표기는 드로길리온이다."}
+  ]
+}

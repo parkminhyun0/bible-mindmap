@@ -1,0 +1,707 @@
+{
+  "shard": "BS",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G2995",
+      "lemma": "λάρυγξ",
+      "translit": "lárynx",
+      "translitKo": "라륑크스",
+      "note": "γ가 ξ 앞에서 비음 ŋ으로 나므로 받침 ㅇ으로 적었다."
+    },
+    {
+      "strong": "G785",
+      "lemma": "ἀσπίς",
+      "translit": "aspís",
+      "translitKo": "아스피스",
+      "note": ""
+    },
+    {
+      "strong": "G4247",
+      "lemma": "πρεσβῦτις",
+      "translit": "presbŷtis",
+      "translitKo": "프레스뷔티스",
+      "note": ""
+    },
+    {
+      "strong": "H5084",
+      "lemma": "נָדָן",
+      "translit": "nādān",
+      "translitKo": "나단",
+      "note": ""
+    },
+    {
+      "strong": "H8527",
+      "lemma": "תַּלְמִיד",
+      "translit": "talmîd",
+      "translitKo": "탈미드",
+      "note": ""
+    },
+    {
+      "strong": "H7471",
+      "lemma": "רְעִי",
+      "translit": "rĕʿî",
+      "translitKo": "레이",
+      "note": "ע를 한글로 따로 적지 않아 rĕ-ʿî가 \"레이\"가 된다."
+    },
+    {
+      "strong": "H1702",
+      "lemma": "דֹּבְרָה",
+      "translit": "dōbĕrâ",
+      "translitKo": "도베라",
+      "note": ""
+    },
+    {
+      "strong": "H7053",
+      "lemma": "קִלְּשׁוֹן",
+      "translit": "qillĕšôn",
+      "translitKo": "킬레숀",
+      "note": ""
+    },
+    {
+      "strong": "H7513",
+      "lemma": "רַפְסֹדָה",
+      "translit": "rapsōdâ",
+      "translitKo": "라프소다",
+      "note": ""
+    },
+    {
+      "strong": "H6746",
+      "lemma": "צְלֹחִית",
+      "translit": "ṣĕlōḥît",
+      "translitKo": "첼로히트",
+      "note": ""
+    },
+    {
+      "strong": "H610",
+      "lemma": "אָסוּךְ",
+      "translit": "ʾāsûk",
+      "translitKo": "아수크",
+      "note": ""
+    },
+    {
+      "strong": "H6498",
+      "lemma": "פַּקֻּעָה",
+      "translit": "paqquʿâ",
+      "translitKo": "파쿠아",
+      "note": ""
+    },
+    {
+      "strong": "H4323",
+      "lemma": "מִיכָל",
+      "translit": "mîkāl",
+      "translitKo": "미칼",
+      "note": "동철 인명 H4324는 개역 관용 표기가 \"미갈\"이나, 여기서는 보통명사이므로 학술 표기 mîkāl을 표제로 삼았다."
+    },
+    {
+      "strong": "H7013",
+      "lemma": "קַיִן",
+      "translit": "qayin",
+      "translitKo": "카인",
+      "note": "동철 인명 H7014의 관용 표기는 \"가인\"이다. 여기서는 보통명사이므로 학술 표기를 표제로 삼았다."
+    },
+    {
+      "strong": "H2841",
+      "lemma": "חַשְׁרָה",
+      "translit": "ḥašrâ",
+      "translitKo": "하쉬라",
+      "note": ""
+    },
+    {
+      "strong": "H1729",
+      "lemma": "דּוּגָה",
+      "translit": "dûgâ",
+      "translitKo": "두가",
+      "note": ""
+    },
+    {
+      "strong": "H951",
+      "lemma": "בּוֹקֵר",
+      "translit": "bôqēr",
+      "translitKo": "보케르",
+      "note": ""
+    },
+    {
+      "strong": "H1401",
+      "lemma": "גִּבָּר",
+      "translit": "gibbār",
+      "translitKo": "기바르",
+      "note": ""
+    },
+    {
+      "strong": "H6361",
+      "lemma": "פַּטִּישׁ",
+      "translit": "paṭṭîš",
+      "translitKo": "파티쉬",
+      "note": ""
+    },
+    {
+      "strong": "H5267",
+      "lemma": "נְסַק",
+      "translit": "nĕsaq",
+      "translitKo": "네사크",
+      "note": ""
+    },
+    {
+      "strong": "H8429",
+      "lemma": "תְּוַהּ",
+      "translit": "tĕwah",
+      "translitKo": "테와흐",
+      "note": "어말 הּ(마피크)는 자음 h이므로 \"흐\"로 적었다."
+    },
+    {
+      "strong": "H7365",
+      "lemma": "רְחַץ",
+      "translit": "rĕḥaṣ",
+      "translitKo": "레하츠",
+      "note": ""
+    },
+    {
+      "strong": "H7954",
+      "lemma": "שְׁלָה",
+      "translit": "šĕlâ",
+      "translitKo": "셸라",
+      "note": ""
+    },
+    {
+      "strong": "H2927",
+      "lemma": "טְלַל",
+      "translit": "ṭĕlal",
+      "translitKo": "텔랄",
+      "note": ""
+    },
+    {
+      "strong": "H2110",
+      "lemma": "זוּן",
+      "translit": "zûn",
+      "translitKo": "준",
+      "note": ""
+    },
+    {
+      "strong": "H5426",
+      "lemma": "נְתַר",
+      "translit": "nĕtar",
+      "translitKo": "네타르",
+      "note": "H5202 nĕṭar(נְטַר)와 한글 표기가 같아진다. 라틴 음역의 t/ṭ로 구별된다."
+    },
+    {
+      "strong": "H5111",
+      "lemma": "נוּד",
+      "translit": "nûd",
+      "translitKo": "누드",
+      "note": ""
+    },
+    {
+      "strong": "H7595",
+      "lemma": "שְׁאֵלָא",
+      "translit": "šĕʾēlāʾ",
+      "translitKo": "셰엘라",
+      "note": ""
+    },
+    {
+      "strong": "H8075",
+      "lemma": "שְׁמַם",
+      "translit": "šĕmam",
+      "translitKo": "셰맘",
+      "note": ""
+    },
+    {
+      "strong": "H4431",
+      "lemma": "מְלַךְ",
+      "translit": "mĕlak",
+      "translitKo": "멜라크",
+      "note": ""
+    },
+    {
+      "strong": "H6562",
+      "lemma": "פְּרַק",
+      "translit": "pĕraq",
+      "translitKo": "페라크",
+      "note": ""
+    },
+    {
+      "strong": "H6033",
+      "lemma": "עֲנָה",
+      "translit": "ʿănâ",
+      "translitKo": "아나",
+      "note": ""
+    },
+    {
+      "strong": "H5751",
+      "lemma": "עוֹד",
+      "translit": "ʿôd",
+      "translitKo": "오드",
+      "note": ""
+    },
+    {
+      "strong": "H2804",
+      "lemma": "חֲשַׁב",
+      "translit": "ḥăšab",
+      "translitKo": "하샤브",
+      "note": ""
+    },
+    {
+      "strong": "H8627",
+      "lemma": "תְּקַן",
+      "translit": "tĕqan",
+      "translitKo": "테칸",
+      "note": ""
+    },
+    {
+      "strong": "H3255",
+      "lemma": "יְסַף",
+      "translit": "yĕsap",
+      "translitKo": "예사프",
+      "note": ""
+    },
+    {
+      "strong": "H4567",
+      "lemma": "מַעְבָד",
+      "translit": "maʿbād",
+      "translitKo": "마바드",
+      "note": "묵음 ע(shva 아래)를 한글로 적지 않아 \"마바드\"가 된다."
+    },
+    {
+      "strong": "H3900",
+      "lemma": "לְחֶם",
+      "translit": "lĕḥem",
+      "translitKo": "레헴",
+      "note": ""
+    },
+    {
+      "strong": "H5043",
+      "lemma": "נֶבְרְשָׁא",
+      "translit": "nebrĕšāʾ",
+      "translitKo": "네브레샤",
+      "note": ""
+    },
+    {
+      "strong": "H1528",
+      "lemma": "גִּיר",
+      "translit": "gîr",
+      "translitKo": "기르",
+      "note": ""
+    },
+    {
+      "strong": "H2783",
+      "lemma": "חֲרַץ",
+      "translit": "ḥăraṣ",
+      "translitKo": "하라츠",
+      "note": ""
+    },
+    {
+      "strong": "H5368",
+      "lemma": "נְקַשׁ",
+      "translit": "nĕqaš",
+      "translitKo": "네카쉬",
+      "note": ""
+    },
+    {
+      "strong": "H7672",
+      "lemma": "שְׁבַשׁ",
+      "translit": "šĕbaš",
+      "translitKo": "셰바쉬",
+      "note": ""
+    },
+    {
+      "strong": "H4961",
+      "lemma": "מִשְׁתֶּה",
+      "translit": "mišteh",
+      "translitKo": "미쉬테",
+      "note": "어말 ה는 묵음이므로 한글로 적지 않았다."
+    },
+    {
+      "strong": "H280",
+      "lemma": "אֲחִידָה",
+      "translit": "ʾăḥîdâ",
+      "translitKo": "아히다",
+      "note": ""
+    },
+    {
+      "strong": "H6167",
+      "lemma": "עֲרָד",
+      "translit": "ʿărād",
+      "translitKo": "아라드",
+      "note": "동철 지명 H6166의 관용 표기는 \"아랏\"이다. 여기서는 보통명사이므로 학술 표기를 표제로 삼았다."
+    },
+    {
+      "strong": "H5396",
+      "lemma": "נִשְׁמָא",
+      "translit": "nišmāʾ",
+      "translitKo": "니쉬마",
+      "note": ""
+    },
+    {
+      "strong": "H2627",
+      "lemma": "חַסִּיר",
+      "translit": "ḥassîr",
+      "translitKo": "하시르",
+      "note": ""
+    },
+    {
+      "strong": "H5330",
+      "lemma": "נְצַח",
+      "translit": "nĕṣaḥ",
+      "translitKo": "네차흐",
+      "note": ""
+    },
+    {
+      "strong": "H6246",
+      "lemma": "עֲשִׁת",
+      "translit": "ʿăšit",
+      "translitKo": "아시트",
+      "note": "שׁ 뒤에 모음(히렉)이 있어 음절 첫소리이므로 \"쉬\"가 아니라 \"시\"로 적었다."
+    },
+    {
+      "strong": "H5049",
+      "lemma": "נֶגֶד",
+      "translit": "neged",
+      "translitKo": "네게드",
+      "note": ""
+    },
+    {
+      "strong": "H1291",
+      "lemma": "בֶּרֶךְ",
+      "translit": "berek",
+      "translitKo": "베레크",
+      "note": ""
+    },
+    {
+      "strong": "H1079",
+      "lemma": "בָּל",
+      "translit": "bāl",
+      "translitKo": "발",
+      "note": ""
+    },
+    {
+      "strong": "H4606",
+      "lemma": "מֵעָל",
+      "translit": "mēʿāl",
+      "translitKo": "메알",
+      "note": ""
+    },
+    {
+      "strong": "H8122",
+      "lemma": "שֶׁמֶשׁ",
+      "translit": "šemeš",
+      "translitKo": "셰메쉬",
+      "note": ""
+    },
+    {
+      "strong": "H7712",
+      "lemma": "שְׁדַר",
+      "translit": "šĕdar",
+      "translitKo": "셰다르",
+      "note": ""
+    },
+    {
+      "strong": "H6640",
+      "lemma": "צְבוּ",
+      "translit": "ṣĕbû",
+      "translitKo": "체부",
+      "note": ""
+    },
+    {
+      "strong": "H5075",
+      "lemma": "נְדַד",
+      "translit": "nĕdad",
+      "translitKo": "네다드",
+      "note": ""
+    },
+    {
+      "strong": "H6088",
+      "lemma": "עֲצַב",
+      "translit": "ʿăṣab",
+      "translitKo": "아차브",
+      "note": ""
+    },
+    {
+      "strong": "H2200",
+      "lemma": "זְעִק",
+      "translit": "zĕʿiq",
+      "translitKo": "제이크",
+      "note": ""
+    },
+    {
+      "strong": "H2136",
+      "lemma": "זָכוּ",
+      "translit": "zākû",
+      "translitKo": "자쿠",
+      "note": ""
+    },
+    {
+      "strong": "H2248",
+      "lemma": "חֲבוּלָה",
+      "translit": "ḥăbûlâ",
+      "translitKo": "하불라",
+      "note": ""
+    },
+    {
+      "strong": "H2868",
+      "lemma": "טְאֵב",
+      "translit": "ṭĕʾēb",
+      "translitKo": "테에브",
+      "note": ""
+    },
+    {
+      "strong": "H1635",
+      "lemma": "גֶּרֶם",
+      "translit": "gerem",
+      "translitKo": "게렘",
+      "note": ""
+    },
+    {
+      "strong": "H1519",
+      "lemma": "גִּיחַ",
+      "translit": "gîaḥ",
+      "translitKo": "기아흐",
+      "note": "어말 ח 앞 furtive patach를 \"아\"로 적었다(루아흐·마시아흐 선례)."
+    },
+    {
+      "strong": "H4804",
+      "lemma": "מְרַט",
+      "translit": "mĕraṭ",
+      "translitKo": "메라트",
+      "note": ""
+    },
+    {
+      "strong": "H8578",
+      "lemma": "תִּנְיָן",
+      "translit": "tinyān",
+      "translitKo": "틴얀",
+      "note": ""
+    },
+    {
+      "strong": "H5967",
+      "lemma": "עֲלַע",
+      "translit": "ʿălaʿ",
+      "translitKo": "알라",
+      "note": "첫 ע와 어말 ע를 모두 한글로 적지 않아 \"알라\"가 된다."
+    },
+    {
+      "strong": "H1355",
+      "lemma": "גַּב",
+      "translit": "gab",
+      "translitKo": "가브",
+      "note": ""
+    },
+    {
+      "strong": "H7920",
+      "lemma": "שְׂכַל",
+      "translit": "śĕkal",
+      "translitKo": "세칼",
+      "note": ""
+    },
+    {
+      "strong": "H2192",
+      "lemma": "זְעֵיר",
+      "translit": "zĕʿêr",
+      "translitKo": "제에르",
+      "note": ""
+    },
+    {
+      "strong": "H6132",
+      "lemma": "עֲקַר",
+      "translit": "ʿăqar",
+      "translitKo": "아카르",
+      "note": ""
+    },
+    {
+      "strong": "H2358",
+      "lemma": "חִוָּר",
+      "translit": "ḥiwwār",
+      "translitKo": "히와르",
+      "note": ""
+    },
+    {
+      "strong": "H5343",
+      "lemma": "נְקֵא",
+      "translit": "nĕqēʾ",
+      "translitKo": "네케",
+      "note": "어말 א는 묵음이므로 한글로 적지 않았다."
+    },
+    {
+      "strong": "H1535",
+      "lemma": "גַּלְגַּל",
+      "translit": "galgal",
+      "translitKo": "갈갈",
+      "note": "지명 길갈(H1537)과 어근이 같지만 여기서는 \"수레바퀴\"를 뜻하는 보통명사이므로 학술 표기를 따랐다."
+    },
+    {
+      "strong": "H1815",
+      "lemma": "דְּלַק",
+      "translit": "dĕlaq",
+      "translitKo": "델라크",
+      "note": ""
+    },
+    {
+      "strong": "H5047",
+      "lemma": "נְגַד",
+      "translit": "nĕgad",
+      "translitKo": "네가드",
+      "note": ""
+    },
+    {
+      "strong": "H8120",
+      "lemma": "שְׁמַשׁ",
+      "translit": "šĕmaš",
+      "translitKo": "셰마쉬",
+      "note": ""
+    },
+    {
+      "strong": "H785",
+      "lemma": "אֵשׁ",
+      "translit": "ʾēš",
+      "translitKo": "에쉬",
+      "note": ""
+    },
+    {
+      "strong": "H6050",
+      "lemma": "עֲנַן",
+      "translit": "ʿănan",
+      "translitKo": "아난",
+      "note": ""
+    },
+    {
+      "strong": "H3735",
+      "lemma": "כָּרָא",
+      "translit": "kārāʾ",
+      "translitKo": "카라",
+      "note": ""
+    },
+    {
+      "strong": "H5085",
+      "lemma": "נִדְנֶה",
+      "translit": "nidneh",
+      "translitKo": "니드네",
+      "note": ""
+    },
+    {
+      "strong": "H2273",
+      "lemma": "חַבְרָה",
+      "translit": "ḥabrâ",
+      "translitKo": "하브라",
+      "note": ""
+    },
+    {
+      "strong": "H7129",
+      "lemma": "קְרָב",
+      "translit": "qĕrāb",
+      "translitKo": "케라브",
+      "note": ""
+    },
+    {
+      "strong": "H1080",
+      "lemma": "בְּלָא",
+      "translit": "bĕlāʾ",
+      "translitKo": "벨라",
+      "note": ""
+    },
+    {
+      "strong": "H5202",
+      "lemma": "נְטַר",
+      "translit": "nĕṭar",
+      "translitKo": "네타르",
+      "note": "H5426 nĕtar(נְתַר)와 한글 표기가 같아진다. ט/ת는 라틴 음역 ṭ/t로 구별된다."
+    },
+    {
+      "strong": "H2852",
+      "lemma": "חָתַךְ",
+      "translit": "ḥātak",
+      "translitKo": "하타크",
+      "note": ""
+    },
+    {
+      "strong": "H4874",
+      "lemma": "מַשֶּׁה",
+      "translit": "maššeh",
+      "translitKo": "마셰",
+      "note": ""
+    },
+    {
+      "strong": "H4530",
+      "lemma": "מִסָּה",
+      "translit": "missâ",
+      "translitKo": "미사",
+      "note": ""
+    },
+    {
+      "strong": "H4096",
+      "lemma": "מִדְרָךְ",
+      "translit": "midrāk",
+      "translitKo": "미드라크",
+      "note": ""
+    },
+    {
+      "strong": "H4624",
+      "lemma": "מַעֲקֶה",
+      "translit": "maʿăqeh",
+      "translitKo": "마아케",
+      "note": ""
+    },
+    {
+      "strong": "H1795",
+      "lemma": "דַּכָּה",
+      "translit": "dakkâ",
+      "translitKo": "다카",
+      "note": ""
+    },
+    {
+      "strong": "H8212",
+      "lemma": "שׇׁפְכָה",
+      "translit": "šopkâ",
+      "translitKo": "쇼프카",
+      "note": "첫 모음이 카메츠 카탄(U+05C7)이므로 ā가 아니라 o로 읽었다."
+    },
+    {
+      "strong": "H240",
+      "lemma": "אָזֵן",
+      "translit": "ʾāzēn",
+      "translitKo": "아젠",
+      "note": ""
+    },
+    {
+      "strong": "H4425",
+      "lemma": "מְלִילָה",
+      "translit": "mĕlîlâ",
+      "translitKo": "멜릴라",
+      "note": ""
+    },
+    {
+      "strong": "H5535",
+      "lemma": "סָכַת",
+      "translit": "sākat",
+      "translitKo": "사카트",
+      "note": ""
+    },
+    {
+      "strong": "H2628",
+      "lemma": "חָסַל",
+      "translit": "ḥāsal",
+      "translitKo": "하살",
+      "note": ""
+    },
+    {
+      "strong": "H7268",
+      "lemma": "רַגָּז",
+      "translit": "raggāz",
+      "translitKo": "라가즈",
+      "note": ""
+    },
+    {
+      "strong": "H3214",
+      "lemma": "יְלֵל",
+      "translit": "yĕlēl",
+      "translitKo": "옐렐",
+      "note": ""
+    },
+    {
+      "strong": "H2561",
+      "lemma": "חֶמֶר",
+      "translit": "ḥemer",
+      "translitKo": "헤메르",
+      "note": ""
+    }
+  ]
+}

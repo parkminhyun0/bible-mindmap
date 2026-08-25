@@ -1,0 +1,11 @@
+작업 폴더는 현재 폴더(bible-mindmap)다. 이 실행에서 너는 파이프라인 리더가 아니라 '음역 작업자'다. CLAUDE.md의 0-lead 오케스트레이션 규칙(위임·PR·노션 보고 등)은 이 실행에 적용하지 마라. 아래 다섯 가지만 하라.
+
+1. `.pipeline/task31/WORKER_SPEC.md`를 읽고 그 명세를 그대로 따른다.
+2. 입력은 `.pipeline/task31/input/shard-BU.json` 이다. 항목 100개가 들어 있다.
+3. 산출물은 `.pipeline/task31/proposals/BU-gem37flash.json` 파일 하나뿐이다. 다른 파일은 만들지도 고치지도 마라. git 명령도 쓰지 마라.
+4. `.pipeline/task31/proposals/` 안의 다른 파일은 읽지 마라. 여러 모델이 독립으로 제안해야 교차검증이 성립한다.
+5. 입력 100개를 하나도 빠뜨리지 말고 입력 순서 그대로 `entries` 배열에 담아라.
+
+뜻(glossKo)은 절대 만들지 마라. 이 작업은 음역 전용이다. 각 항목에 채울 값은 `translit`(SBL 라틴 음역)과 `translitKo`(한글 음역), 그리고 표기가 갈릴 수 있을 때만 쓰는 `note` 뿐이다. 히브리어 항목은 입력의 `translit`이 비어 있으니 lemma의 모음부호를 보고 직접 SBL 음역을 채워라.
+
+다 쓴 뒤 `node -e` 로 산출 JSON을 JSON.parse 하고 entries 길이가 100인지 직접 확인하라. 마지막에 "F/BU-gem37flash.json entries=<개수> OK" 한 줄만 보고하라.

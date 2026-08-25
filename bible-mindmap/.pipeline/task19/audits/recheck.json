@@ -1,0 +1,47 @@
+[
+  {
+    "strong": "H5450",
+    "field": "translitKo",
+    "current": "스발라",
+    "suggested": "세발라",
+    "evidence": "WORKER_SPEC와 koreanGlossTopBatch15 헤더가 유성 쉐바 ĕ를 에 계열로 확정하며, 같은 초성 סְ의 H5467 sĕdōm→세돔 및 H5572 sĕneh→세네가 배포 선례다.",
+    "severity": "high",
+    "reason": "sĕbālâ의 유성 쉐바를 스로 적어 확정 표기 규칙과 동일 배치의 선례를 회귀시킨다."
+  },
+  {
+    "strong": "H4494",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 사람 이름으로 쓰일 때 개역개정 관용 표기는 「마노아」다. 학술 표기는 furtive patach 뒤 ח를 흐로 살린다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ‘안식처·처소’를 뜻하는 보통명사다. 동형 인명 마노아는 H4495다. 어말 후음 앞 furtive patach를 아로, ח를 흐로 적는다(루아흐 선례).",
+    "evidence": "public/data/strongs-def/hot에서 H4494의 뜻은 settled spot/home/place of rest이고, 인명 Manoach는 별도 H4495다.",
+    "severity": "medium",
+    "reason": "현재 note가 H4494의 보통명사 뜻을 생략하고 다른 Strong의 인명 관용형만 제시해 표제어를 인명으로 오독하게 만든다."
+  },
+  {
+    "strong": "H329",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정 표기는 '아탓'이다.",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정은 고유명사로 「아닷」, 보통명사로는 「가시나무」로 옮긴다.",
+    "evidence": "H329의 배포 정의는 Atad/bramble/thorn이며, 개역개정 창세기 50:10-11의 고유명사 표기는 아닷이다.",
+    "severity": "medium",
+    "reason": "note가 실재하지 않는 관용 표기 ‘아탓’을 제시해 학술 표기와 성경 관용 표기의 관계를 잘못 설명한다."
+  },
+  {
+    "strong": "H6875",
+    "field": "note",
+    "current": "네 모델 중 3개가 같은 음역안을 냈다. 개역개정 표기는 '유향'으로 번역되며, 지명/인명 관용 표기는 '츠리/스리'로 표기되기도 한다.",
+    "suggested": "네 모델 중 3개가 같은 음역안을 냈다. 보통명사라 개역개정은 ‘유향’으로 번역한다. 동형 인명 스리는 H6874다.",
+    "evidence": "public/data/strongs-def/hot에서 H6875는 balm/distillation인 보통명사이고, 인명 Zeri/스리는 별도 H6874다.",
+    "severity": "medium",
+    "reason": "현재 note가 H6875에 없는 지명·인명 용례를 덧붙이고 다른 Strong의 인명 표기를 혼입한다."
+  },
+  {
+    "strong": "G4446",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 관용 표기는 피레토스",
+    "suggested": "네 모델이 독립으로 만든 음역안이 모두 일치했다. υ는 위 계열로 적는다(퓌로오 선례).",
+    "evidence": "G4446 πυρετός는 배포 정의상 fever이며, 같은 배포 어근 G4448 πυρόω의 note는 υ를 위 계열로만 설명하고 관용 음역을 제시하지 않는다.",
+    "severity": "medium",
+    "reason": "근거 없는 관용 표기를 추가해 보통명사 표제의 규칙 적용을 관용형과 대립하는 것처럼 만들며 note도 미완성 문장이다."
+  }
+]

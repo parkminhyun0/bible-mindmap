@@ -1,0 +1,28 @@
+{
+  "scope": "recheck",
+  "checked": 245,
+  "regressions": [],
+  "remaining": [
+    {
+      "strong": "H1471",
+      "issue": "only_aggr_note_for_proper_noun",
+      "severity": "low"
+    },
+    {
+      "strong": "H410",
+      "issue": "only_aggr_note_for_proper_noun",
+      "severity": "low"
+    },
+    {
+      "strong": "G1525",
+      "issue": "only_aggr_note_for_proper_noun",
+      "severity": "low"
+    },
+    {
+      "strong": "H85",
+      "issue": "only_aggr_note_for_proper_noun",
+      "severity": "low"
+    }
+  ],
+  "summary": "노트와 실제 필드 불일치, 연음 기호 잔존, 판정자 수 오류를 점검했습니다. 정보가 유실된 고유명사 설명도 확인했습니다."
+}

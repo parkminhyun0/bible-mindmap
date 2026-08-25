@@ -1,0 +1,96 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H1030",
+      "translit": "bêt haššimšî",
+      "translitKo": "베트 하심시",
+      "evidence": "bêt는 '베트'로 적는 선례(H1008 베트엘)를 따른다. 다게쉬 포르테는 겹쳐 적지 않으며, 음절 첫소리 שׁ는 '시'로 적는다.",
+      "note": "관용 표기는 '벧세메스 사람'이다."
+    },
+    {
+      "strong": "H1662",
+      "translit": "gat-haḥēper",
+      "translitKo": "가트하헤페르",
+      "evidence": "gat는 '가트'로 적고, 마케프로 이어진 지명은 붙여 적는 선례(베트엘)를 따른다.",
+      "note": "관용 표기는 '가드헤벨'이다."
+    },
+    {
+      "strong": "H1016",
+      "translit": "bêt-dāgôn",
+      "translitKo": "베트다곤",
+      "evidence": "bêt는 '베트'로 적고, 마케프로 이어진 지명은 붙여 적는 선례(베트엘)를 따른다.",
+      "note": "관용 표기는 '벧다곤'이다."
+    },
+    {
+      "strong": "H407",
+      "translit": "ʾakšāp",
+      "translitKo": "아크샤프",
+      "evidence": "무성 쉐바가 붙은 k를 음절 분리하여 '크'로 적는 선례(H4363 mikmās→미크마스)를 따른다.",
+      "note": "관용 표기는 '악삽'이다."
+    },
+    {
+      "strong": "G1545",
+      "translit": "ékbasis",
+      "translitKo": "에크바시스",
+      "evidence": "κ 뒤에 파열음(β)이 올 때 '크'를 제 음절로 적는 선례(아페크뒤사메노스)를 따른다.",
+      "note": ""
+    },
+    {
+      "strong": "G4786",
+      "translit": "synkeránnymi",
+      "translitKo": "쉰케란뉘미",
+      "evidence": "συγ-는 선례(συγκαλέω→쉰칼레오)를 따라 '쉰'으로 적고, νν은 비음 연자음 선례(Iōánnēs→이오안네스)에 따라 받침+초성으로 적는다. υ는 '위'로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H6495",
+      "translit": "pəqaḥ-qôaḥ",
+      "translitKo": "페카흐코아흐",
+      "evidence": "마케프로 이어진 단어는 붙여 적는 선례를 따르고, 어말 ח 앞의 furtive patach는 '-아흐'로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H6383",
+      "translit": "pilʾî",
+      "translitKo": "필이",
+      "evidence": "묵음 알레프는 한글로 따로 적지 않되 앞 음절을 닫고 분리하여 '필이'로 적는 선례(말아크)를 따른다.",
+      "note": ""
+    },
+    {
+      "strong": "G2030",
+      "translit": "epóptēs",
+      "translitKo": "에폽테스",
+      "evidence": "πτ에서 π 앞 음절을 받침 ㅂ으로 닫는 선례(밥티조)를 따른다.",
+      "note": ""
+    },
+    {
+      "strong": "G1695",
+      "translit": "Emmaoús",
+      "translitKo": "엠마우스",
+      "evidence": "겹자음 중 mm은 받침+초성으로 적는 선례(이오안네스, 암마)를 따른다.",
+      "note": "관용 표기는 '엠마오'이다."
+    },
+    {
+      "strong": "H2991",
+      "translit": "yibləʿām",
+      "translitKo": "이브르암",
+      "evidence": "b(coda)는 '브'로 적고, 쉐바가 붙은 l은 '르'로 적으며 ע는 한글로 따로 적지 않는다.",
+      "note": "관용 표기는 '이블르암'이다."
+    },
+    {
+      "strong": "H8093",
+      "translit": "šimʿāh",
+      "translitKo": "심아",
+      "evidence": "m은 앞 음절을 닫는 받침 ㅁ으로 적고, ע는 한글로 따로 적지 않는 선례(šimʿôn→심온)를 따른다.",
+      "note": "관용 표기는 '시므아'이다."
+    },
+    {
+      "strong": "G2454",
+      "translit": "Ioudaïsmós",
+      "translitKo": "유다이스모스",
+      "evidence": "Ἰου-는 기 배포된 선례(Ἰουδαῖος→유다이오스)를 따라 '유-'로 적는다.",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,707 @@
+{
+  "shard": "BJ",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H5538",
+      "lemma": "סִלָּא",
+      "translit": "sillāʾ",
+      "translitKo": "실라",
+      "note": ""
+    },
+    {
+      "strong": "H5471",
+      "lemma": "סוֹא",
+      "translit": "sôʾ",
+      "translitKo": "소",
+      "note": ""
+    },
+    {
+      "strong": "H5370",
+      "lemma": "נֵרְגַּל",
+      "translit": "nērgal",
+      "translitKo": "네르갈",
+      "note": ""
+    },
+    {
+      "strong": "H807",
+      "lemma": "אַשִׁימָא",
+      "translit": "ʾašîmāʾ",
+      "translitKo": "아시마",
+      "note": ""
+    },
+    {
+      "strong": "H5026",
+      "lemma": "נִבְחַז",
+      "translit": "nibḥaz",
+      "translitKo": "니브하즈",
+      "note": ""
+    },
+    {
+      "strong": "H8662",
+      "lemma": "תַּרְתָּק",
+      "translit": "tartāq",
+      "translitKo": "타르타크",
+      "note": ""
+    },
+    {
+      "strong": "H21",
+      "lemma": "אֲבִי",
+      "translit": "ʾăbî",
+      "translitKo": "아비",
+      "note": ""
+    },
+    {
+      "strong": "H5180",
+      "lemma": "נְחֻשְׁתָּן",
+      "translit": "nəḥuštān",
+      "translitKo": "네후쉬탄",
+      "note": "개역 관용 표기는 '느후스단'. 학술 표기를 표제로 두고 관용형은 병기하지 않는다."
+    },
+    {
+      "strong": "H4922",
+      "lemma": "מְשֻׁלֶּמֶת",
+      "translit": "məšullemet",
+      "translitKo": "메슐레메트",
+      "note": ""
+    },
+    {
+      "strong": "H2743",
+      "lemma": "חָרוּץ",
+      "translit": "ḥārûṣ",
+      "translitKo": "하루츠",
+      "note": ""
+    },
+    {
+      "strong": "H3192",
+      "lemma": "יׇטְבָה",
+      "translit": "yoṭbâ",
+      "translitKo": "요트바",
+      "note": "첫 모음은 qamets qatan이므로 o로 읽는다(yā- 아님)."
+    },
+    {
+      "strong": "H3040",
+      "lemma": "יְדִידָה",
+      "translit": "yədîdâ",
+      "translitKo": "예디다",
+      "note": ""
+    },
+    {
+      "strong": "H2745",
+      "lemma": "חַרְחַס",
+      "translit": "ḥarḥas",
+      "translitKo": "하르하스",
+      "note": ""
+    },
+    {
+      "strong": "H2080",
+      "lemma": "זְבִידָה",
+      "translit": "zəbîdâ",
+      "translitKo": "제비다",
+      "note": "영어 사전 표제 Zebudah는 케티브(דּ) 계열이고, 여기 lemma는 요드형이므로 zəbîdâ로 읽는다."
+    },
+    {
+      "strong": "H5179",
+      "lemma": "נְחֻשְׁתָּא",
+      "translit": "nəḥuštāʾ",
+      "translitKo": "네후쉬타",
+      "note": "개역 관용 표기는 '느후스다'."
+    },
+    {
+      "strong": "H920",
+      "lemma": "בִּדְקַר",
+      "translit": "bidqar",
+      "translitKo": "비드카르",
+      "note": ""
+    },
+    {
+      "strong": "H1483",
+      "lemma": "גּוּר",
+      "translit": "gûr",
+      "translitKo": "구르",
+      "note": ""
+    },
+    {
+      "strong": "H3380",
+      "lemma": "יְרֻבֶּשֶׁת",
+      "translit": "yərubbešet",
+      "translitKo": "예루베셰트",
+      "note": "말미의 שׁ는 뒤에 모음(segol)이 오므로 음절 첫소리 '셰'로 적는다."
+    },
+    {
+      "strong": "H3041",
+      "lemma": "יְדִידְיָה",
+      "translit": "yədîdyâ",
+      "translitKo": "예디드야",
+      "note": ""
+    },
+    {
+      "strong": "H3501",
+      "lemma": "יִתְרָא",
+      "translit": "yitrāʾ",
+      "translitKo": "이트라",
+      "note": ""
+    },
+    {
+      "strong": "H522",
+      "lemma": "אַמָּה",
+      "translit": "ʾammâ",
+      "translitKo": "아마",
+      "note": ""
+    },
+    {
+      "strong": "H1520",
+      "lemma": "גִּיחַ",
+      "translit": "gîaḥ",
+      "translitKo": "기아흐",
+      "note": "어말 ח 앞 furtive patach이므로 -aḥ가 덧붙는다."
+    },
+    {
+      "strong": "H764",
+      "lemma": "אַרְמֹנִי",
+      "translit": "ʾarmōnî",
+      "translitKo": "아르모니",
+      "note": ""
+    },
+    {
+      "strong": "H5593",
+      "lemma": "סַף",
+      "translit": "sap",
+      "translitKo": "사프",
+      "note": ""
+    },
+    {
+      "strong": "H5722",
+      "lemma": "עֲדִינוֹ",
+      "translit": "ʿădînô",
+      "translitKo": "아디노",
+      "note": ""
+    },
+    {
+      "strong": "H89",
+      "lemma": "אָגֵא",
+      "translit": "ʾāgēʾ",
+      "translitKo": "아게",
+      "note": ""
+    },
+    {
+      "strong": "H470",
+      "lemma": "אֱלִיקָא",
+      "translit": "ʾĕlîqāʾ",
+      "translitKo": "엘리카",
+      "note": ""
+    },
+    {
+      "strong": "H4012",
+      "lemma": "מְבֻנַּי",
+      "translit": "məbunnay",
+      "translitKo": "메부나이",
+      "note": ""
+    },
+    {
+      "strong": "H2460",
+      "lemma": "חֵלֶב",
+      "translit": "ḥēleb",
+      "translitKo": "헬레브",
+      "note": ""
+    },
+    {
+      "strong": "H1914",
+      "lemma": "הִדַּי",
+      "translit": "hidday",
+      "translitKo": "히다이",
+      "note": ""
+    },
+    {
+      "strong": "H3464",
+      "lemma": "יָשֵׁן",
+      "translit": "yāšēn",
+      "translitKo": "야셴",
+      "note": ""
+    },
+    {
+      "strong": "H8325",
+      "lemma": "שָׁרַר",
+      "translit": "šārar",
+      "translitKo": "샤라르",
+      "note": ""
+    },
+    {
+      "strong": "H308",
+      "lemma": "אֲחַסְבַּי",
+      "translit": "ʾăḥasbay",
+      "translitKo": "아하스바이",
+      "note": ""
+    },
+    {
+      "strong": "H6474",
+      "lemma": "פַּעֲרַי",
+      "translit": "paʿăray",
+      "translitKo": "파아라이",
+      "note": ""
+    },
+    {
+      "strong": "H1842",
+      "lemma": "דָּן יַעַן",
+      "translit": "dān yaʿan",
+      "translitKo": "단 야안",
+      "note": "두 낱말 지명이므로 라틴·한글 모두 띄어 적는다(관용 표기 '단야안')."
+    },
+    {
+      "strong": "H3609",
+      "lemma": "כִּלְאָב",
+      "translit": "kilʾāb",
+      "translitKo": "킬아브",
+      "note": "개역 관용 표기는 '길르압'."
+    },
+    {
+      "strong": "H5225",
+      "lemma": "נָכוֹן",
+      "translit": "nākôn",
+      "translitKo": "나콘",
+      "note": ""
+    },
+    {
+      "strong": "H5522",
+      "lemma": "סִכּוּת",
+      "translit": "sikkût",
+      "translitKo": "시쿠트",
+      "note": ""
+    },
+    {
+      "strong": "H3594",
+      "lemma": "כִּיּוּן",
+      "translit": "kiyyûn",
+      "translitKo": "키윤",
+      "note": "개역 관용 표기는 '기윤'."
+    },
+    {
+      "strong": "H7714",
+      "lemma": "שַׁדְרַךְ",
+      "translit": "šadrak",
+      "translitKo": "샤드라크",
+      "note": "개역 관용 표기는 '사드락'."
+    },
+    {
+      "strong": "H4335",
+      "lemma": "מֵישַׁךְ",
+      "translit": "mêšak",
+      "translitKo": "메샤크",
+      "note": "개역 관용 표기는 '메삭'."
+    },
+    {
+      "strong": "H2217",
+      "lemma": "זְרֻבָּבֶל",
+      "translit": "zərubbābel",
+      "translitKo": "제루바벨",
+      "note": "개역 관용 표기는 '스룹바벨'."
+    },
+    {
+      "strong": "H7598",
+      "lemma": "שְׁאַלְתִּיאֵל",
+      "translit": "šəʾaltîʾēl",
+      "translitKo": "셰알티엘",
+      "note": "개역 관용 표기는 '스알디엘'."
+    },
+    {
+      "strong": "H3679",
+      "lemma": "כַּסְדַּי",
+      "translit": "kasday",
+      "translitKo": "카스다이",
+      "note": "'갈대아 사람'을 가리키는 종족명이며, 관용 표기 '갈대아'는 뜻풀이 쪽 표기다."
+    },
+    {
+      "strong": "H144",
+      "lemma": "אֲדָר",
+      "translit": "ʾădār",
+      "translitKo": "아다르",
+      "note": "달 이름으로는 관용 표기 '아달'."
+    },
+    {
+      "strong": "H3131",
+      "lemma": "יוֹסִפְיָה",
+      "translit": "yôsipyâ",
+      "translitKo": "요시프야",
+      "note": ""
+    },
+    {
+      "strong": "H6997",
+      "lemma": "קָטָן",
+      "translit": "qāṭān",
+      "translitKo": "카탄",
+      "note": "영어 사전 표제 Hakkatan은 정관사 ha-를 포함한 형태이고, lemma 자체는 관사가 없다."
+    },
+    {
+      "strong": "H7449",
+      "lemma": "רֶסֶן",
+      "translit": "resen",
+      "translitKo": "레센",
+      "note": ""
+    },
+    {
+      "strong": "H3962",
+      "lemma": "לֶשַׁע",
+      "translit": "lešaʿ",
+      "translitKo": "레샤",
+      "note": ""
+    },
+    {
+      "strong": "H5745",
+      "lemma": "עוֹבָל",
+      "translit": "ʿôbāl",
+      "translitKo": "오발",
+      "note": ""
+    },
+    {
+      "strong": "H5611",
+      "lemma": "סְפָר",
+      "translit": "səpār",
+      "translitKo": "세파르",
+      "note": ""
+    },
+    {
+      "strong": "H3252",
+      "lemma": "יִסְכָּה",
+      "translit": "yiskâ",
+      "translitKo": "이스카",
+      "note": ""
+    },
+    {
+      "strong": "H1298",
+      "lemma": "בֶּרַע",
+      "translit": "beraʿ",
+      "translitKo": "베라",
+      "note": ""
+    },
+    {
+      "strong": "H1306",
+      "lemma": "בִּרְשַׁע",
+      "translit": "biršaʿ",
+      "translitKo": "비르샤",
+      "note": ""
+    },
+    {
+      "strong": "H8134",
+      "lemma": "שִׁנְאָב",
+      "translit": "šinʾāb",
+      "translitKo": "신아브",
+      "note": ""
+    },
+    {
+      "strong": "H2327",
+      "lemma": "חוֹבָה",
+      "translit": "ḥôbâ",
+      "translitKo": "호바",
+      "note": ""
+    },
+    {
+      "strong": "H3777",
+      "lemma": "כֶּשֶׂד",
+      "translit": "keśed",
+      "translitKo": "케세드",
+      "note": "שׂ(ś)이므로 '셰'가 아니라 '세'로 적는다."
+    },
+    {
+      "strong": "H2375",
+      "lemma": "חֲזוֹ",
+      "translit": "ḥăzô",
+      "translitKo": "하조",
+      "note": ""
+    },
+    {
+      "strong": "H6394",
+      "lemma": "פִּלְדָּשׁ",
+      "translit": "pildāš",
+      "translitKo": "필다쉬",
+      "note": ""
+    },
+    {
+      "strong": "H3044",
+      "lemma": "יִדְלָף",
+      "translit": "yidlāp",
+      "translitKo": "이들라프",
+      "note": ""
+    },
+    {
+      "strong": "H2875",
+      "lemma": "טֶבַח",
+      "translit": "ṭebaḥ",
+      "translitKo": "테바흐",
+      "note": ""
+    },
+    {
+      "strong": "H1514",
+      "lemma": "גַּחַם",
+      "translit": "gaḥam",
+      "translitKo": "가함",
+      "note": ""
+    },
+    {
+      "strong": "H8477",
+      "lemma": "תַּחַשׁ",
+      "translit": "taḥaš",
+      "translitKo": "타하쉬",
+      "note": ""
+    },
+    {
+      "strong": "H6230",
+      "lemma": "עֵשֶׂק",
+      "translit": "ʿēśeq",
+      "translitKo": "에세크",
+      "note": "개역 관용 표기는 '에섹'."
+    },
+    {
+      "strong": "H7856",
+      "lemma": "שִׂטְנָה",
+      "translit": "śiṭnâ",
+      "translitKo": "시트나",
+      "note": "שׂ(ś)이므로 '시'로 적고, 뒤의 שׁ 규칙과 무관하다."
+    },
+    {
+      "strong": "H7656",
+      "lemma": "שִׁבְעָה",
+      "translit": "šibʿâ",
+      "translitKo": "시브아",
+      "note": ""
+    },
+    {
+      "strong": "H3067",
+      "lemma": "יְהוּדִית",
+      "translit": "yəhûdît",
+      "translitKo": "예후디트",
+      "note": "관용 표기는 '유딧'."
+    },
+    {
+      "strong": "H2533",
+      "lemma": "חֶמְדָּן",
+      "translit": "ḥemdān",
+      "translitKo": "헴단",
+      "note": ""
+    },
+    {
+      "strong": "H1924",
+      "lemma": "הֲדַר",
+      "translit": "hădar",
+      "translitKo": "하다르",
+      "note": ""
+    },
+    {
+      "strong": "H5113",
+      "lemma": "נוֹד",
+      "translit": "nôd",
+      "translitKo": "노드",
+      "note": ""
+    },
+    {
+      "strong": "H2989",
+      "lemma": "יָבָל",
+      "translit": "yābāl",
+      "translitKo": "야발",
+      "note": ""
+    },
+    {
+      "strong": "H6837",
+      "lemma": "צִפְיוֹן",
+      "translit": "ṣipyôn",
+      "translitKo": "치프욘",
+      "note": "개역 관용 표기는 '시뵨'."
+    },
+    {
+      "strong": "H278",
+      "lemma": "אֵחִי",
+      "translit": "ʾēḥî",
+      "translitKo": "에히",
+      "note": ""
+    },
+    {
+      "strong": "H4649",
+      "lemma": "מֻפִּים",
+      "translit": "muppîm",
+      "translitKo": "무핌",
+      "note": ""
+    },
+    {
+      "strong": "H7886",
+      "lemma": "שִׁילֹה",
+      "translit": "šîlōh",
+      "translitKo": "실로",
+      "note": ""
+    },
+    {
+      "strong": "H3572",
+      "lemma": "כּוּשָׁן",
+      "translit": "kûšān",
+      "translitKo": "쿠샨",
+      "note": ""
+    },
+    {
+      "strong": "H1691",
+      "lemma": "דִּבְלַיִם",
+      "translit": "diblayim",
+      "translitKo": "디블라임",
+      "note": ""
+    },
+    {
+      "strong": "H8020",
+      "lemma": "שַׁלְמַן",
+      "translit": "šalman",
+      "translitKo": "샬만",
+      "note": ""
+    },
+    {
+      "strong": "H8637",
+      "lemma": "תִּרְגַּל",
+      "translit": "tirgal",
+      "translitKo": "티르갈",
+      "note": ""
+    },
+    {
+      "strong": "H1180",
+      "lemma": "בַּעֲלִי",
+      "translit": "baʿălî",
+      "translitKo": "바알리",
+      "note": ""
+    },
+    {
+      "strong": "H4644",
+      "lemma": "מֹף",
+      "translit": "mōp",
+      "translitKo": "모프",
+      "note": "이집트 도시 멤피스를 가리키며 개역 관용 표기는 '놉'(H5297 נֹף)."
+    },
+    {
+      "strong": "H4088",
+      "lemma": "מַדְמֵנָה",
+      "translit": "madmēnâ",
+      "translitKo": "마드메나",
+      "note": ""
+    },
+    {
+      "strong": "H1966",
+      "lemma": "הֵילֵל",
+      "translit": "hêlēl",
+      "translitKo": "헬렐",
+      "note": "라틴역 Lucifer로 알려졌고 개역은 '계명성'으로 옮긴 낱말이다."
+    },
+    {
+      "strong": "H97",
+      "lemma": "אֶגְלַיִם",
+      "translit": "ʾeglayim",
+      "translitKo": "에글라임",
+      "note": ""
+    },
+    {
+      "strong": "H5623",
+      "lemma": "סַרְגּוֹן",
+      "translit": "sargôn",
+      "translitKo": "사르곤",
+      "note": ""
+    },
+    {
+      "strong": "H4098",
+      "lemma": "מְדֻשָּׁה",
+      "translit": "məduššâ",
+      "translitKo": "메두샤",
+      "note": ""
+    },
+    {
+      "strong": "H1720",
+      "lemma": "דְּדָנִים",
+      "translit": "dədānîm",
+      "translitKo": "데다님",
+      "note": ""
+    },
+    {
+      "strong": "H6585",
+      "lemma": "פָּשַׂע",
+      "translit": "pāśaʿ",
+      "translitKo": "파사",
+      "note": "שׂ(ś)이므로 '샤'가 아니라 '사'로 적는다."
+    },
+    {
+      "strong": "H6702",
+      "lemma": "צוּת",
+      "translit": "ṣût",
+      "translitKo": "추트",
+      "note": ""
+    },
+    {
+      "strong": "H6559",
+      "lemma": "פְּרָצִים",
+      "translit": "pərāṣîm",
+      "translitKo": "페라침",
+      "note": ""
+    },
+    {
+      "strong": "H2609",
+      "lemma": "חָנֵס",
+      "translit": "ḥānēs",
+      "translitKo": "하네스",
+      "note": ""
+    },
+    {
+      "strong": "H7088",
+      "lemma": "קָפַד",
+      "translit": "qāpad",
+      "translitKo": "카파드",
+      "note": ""
+    },
+    {
+      "strong": "H6463",
+      "lemma": "פָּעָה",
+      "translit": "pāʿâ",
+      "translitKo": "파아",
+      "note": ""
+    },
+    {
+      "strong": "H5395",
+      "lemma": "נָשַׁם",
+      "translit": "nāšam",
+      "translitKo": "나샴",
+      "note": ""
+    },
+    {
+      "strong": "H5719",
+      "lemma": "עָדִין",
+      "translit": "ʿādîn",
+      "translitKo": "아딘",
+      "note": ""
+    },
+    {
+      "strong": "H2413",
+      "lemma": "חָטַם",
+      "translit": "ḥāṭam",
+      "translitKo": "하탐",
+      "note": ""
+    },
+    {
+      "strong": "H3000",
+      "lemma": "יְבֶרֶכְיָהוּ",
+      "translit": "yəberekyāhû",
+      "translitKo": "예베레크야후",
+      "note": ""
+    },
+    {
+      "strong": "H1601",
+      "lemma": "גֹּעָה",
+      "translit": "gōʿâ",
+      "translitKo": "고아",
+      "note": ""
+    },
+    {
+      "strong": "H2262",
+      "lemma": "חֲבַצַּנְיָה",
+      "translit": "ḥăbaṣṣanyâ",
+      "translitKo": "하바찬야",
+      "note": ""
+    },
+    {
+      "strong": "H3012",
+      "lemma": "יִגְדַּלְיָהוּ",
+      "translit": "yigdalyāhû",
+      "translitKo": "이그달야후",
+      "note": ""
+    }
+  ]
+}

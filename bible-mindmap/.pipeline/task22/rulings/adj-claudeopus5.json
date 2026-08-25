@@ -1,0 +1,96 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "H1030",
+      "translit": "bêt haššimšî",
+      "translitKo": "베트 하심시",
+      "evidence": "bêt→베트 (배포 15건 중 14건: 베트 호론·베트 레헴·베트 셰안·베트 할라흐미). lemma에 마케프가 없고 공백이므로 '베트 하…' 로 띄어 적는 배포형(bêt hallaḥmî→베트 할라흐미, Bêt ha-Yĕšîmôt→베트 하이시모트)을 따른다. 관사 다게쉬 포르테는 겹쳐 적지 않는다 — ʿîr hattĕmārîm→이르 하테마림, ʾaššûr→아슈르, ḥămiššîm→하미심. 음절 말 ם은 받침, 뒤 שִׁ는 음절 첫소리 '시' — šimšôn→심숀, nimšî→님시.",
+      "note": "관용 표기는 '벧세메스 사람'이다(bibleReferences.js·contextChapterCardsFmrProph.js에 '벧세메스')."
+    },
+    {
+      "strong": "H1662",
+      "translit": "gat-haḥēper",
+      "translitKo": "가트하헤페르",
+      "evidence": "마케프로 이어진 합성 지명은 배포 데이터에서 붙여 적는다 — gat-rimmôn→가트림몬, bêt-ʾēl→베트엘, ben-hădad→벤하다드, ʾîš-bōšet→이쉬보셰트, ʾădōnî-bezeq→아도니베제크, ʿên-dōʾr→엔도르 (마케프 15건 중 12건이 붙여쓰기). 낱말 조각은 gat→가트, ḥēper→헤페르 그대로다.",
+      "note": "관용 표기는 '가드헤벨'이다."
+    },
+    {
+      "strong": "H1016",
+      "translit": "bêt-dāgôn",
+      "translitKo": "베트다곤",
+      "evidence": "bêt-ʾēl→베트엘이 같은 마케프 구조의 직접 선례다. 마케프 합성어 붙여쓰기(가트림몬·벤하다드·이쉬보셰트)와 dāgôn→다곤 배포형을 그대로 잇는다.",
+      "note": "관용 표기는 '벧다곤'이다."
+    },
+    {
+      "strong": "H407",
+      "translit": "ʾakšāp",
+      "translitKo": "아크샤프",
+      "evidence": "히브리어에서 모음 뒤 k가 자음 앞에 올 때 배포 데이터는 20건 대 2건으로 '크'다 — mikšôl→미크숄(kš 동일 환경), ʾakzārî→아크자리, ʿakbôr→아크보르, ʿakbār→아크바르, makbēr→마크베르, miktāb→미크타브, ḥokmâ→호크마. 받침으로 적은 예는 ʾarpakšad→아르팍샤드, ʿaksâ→악사 둘뿐이다. translit은 베가드케파트 규칙에 따라 ḵ 대신 k.",
+      "note": "관용 표기는 '악삽'이다."
+    },
+    {
+      "strong": "G1545",
+      "translit": "ékbasis",
+      "translitKo": "에크바시스",
+      "evidence": "ekbállō→에크발로가 ekb- 동일 환경의 직접 선례다. 접두사 ἐκ-는 배포 전반이 에크- 다 — ekporeúomai→에크포류오마이, ekplḗssō→에크플레소, ekphérō→에크페로, ekdíkēsis→에크디케시스. 어미는 parábasis→파라바시스.",
+      "note": ""
+    },
+    {
+      "strong": "G4786",
+      "translit": "synkeránnymi",
+      "translitKo": "쉰케란뉘미",
+      "evidence": "συν+연구개음은 배포에서 '쉰-'이다 — synchéō→쉰케오, synkaléō→쉰칼레오, synkoinōnós→쉰코이노노스, synchaírō→쉰카이로. -ννυμι 동사군도 배포 선례가 셋 다 '…ㄴ뉘미'다 — kremánnymi→크레만뉘미, sbénnymi→스벤뉘미, strṓnnymi→스트론뉘미, perizṓnnymi→페리존뉘미. ㅁ·ㄴ·ㄹ은 겹자음 미중복 규칙에서 빠진다.",
+      "note": "γ가 κ 앞 비음이라도 배포 선례는 '슁-·싱-'이 아니라 συν-형 '쉰-'으로 적는다."
+    },
+    {
+      "strong": "H6495",
+      "translit": "pĕqaḥ-qôaḥ",
+      "translitKo": "페카흐코아흐",
+      "evidence": "마케프 합성어 붙여쓰기(가트림몬·베트엘·벤하다드). 조각은 peqaḥ→페카흐(pāqaḥ→파카흐, leqaḥ→레카흐)와 furtive patach -ôaḥ→-오아흐(malqôaḥ→말코아흐, mānôaḥ→마노아흐, zānôaḥ→자노아흐, nîḥôaḥ→니호아흐). translit의 유성 쉐바는 ĕ로 적는다 — 배포 473건 전부 ĕ이고 ə는 0건이다.",
+      "note": ""
+    },
+    {
+      "strong": "H6383",
+      "translit": "pilʾî",
+      "translitKo": "필이",
+      "evidence": "닫힌 음절 뒤의 א·ע는 앞 자음을 넘겨 붙이지 않고 모음만 따로 적는 것이 배포형이다 — malʾāk→말아크(말라크 아님), ḥelʾâ→헬아, bĕṣalʾēl→베찰엘, tiglat pilʾeser→티글라트 필에세르, šimʿôn→심온, bilʿām→빌암. 따라서 pil+ʾî는 '필이'다.",
+      "note": "'필리'는 ל을 뒤 음절 첫소리로 넘긴 형태라 배포 선례(말아크·필에세르)와 어긋난다."
+    },
+    {
+      "strong": "G2030",
+      "translit": "epóptēs",
+      "translitKo": "에폽테스",
+      "evidence": "모음 뒤 πτ는 배포에서 받침 ㅂ이다 — ekkóptō→에콥토(-όπτ- 동일 환경), píptō→핍토, háptō→합토, níptō→닙토, paráptōma→파랍토마, apokalýptō→아포칼륍토. 어미 -τēs는 kléptēs→클렙테스.",
+      "note": "'프토코스'처럼 '프-'로 적는 예는 어두 πτ뿐이다."
+    },
+    {
+      "strong": "G1695",
+      "translit": "Emmaoús",
+      "translitKo": "엠마우스",
+      "evidence": "헬라어 μμ는 배포에서 겹쳐 적는다 — grámma→그람마, grammateús→그람마튜스, mánna→만나. ㅁ·ㄴ·ㄹ은 겹자음 미중복 규칙에서 빠진다(샬롬·암마). αου는 Kapernaoúm→카페르나움, Saoúl→사울처럼 -아우-.",
+      "note": "관용 표기는 '엠마오'다(bookContext.js·bibleReferences.js·contextChapterCardsLuke.js, 눅 24:13)."
+    },
+    {
+      "strong": "H2991",
+      "translit": "yiblĕʿām",
+      "translitKo": "이브레암",
+      "evidence": "닫힌 음절 + 유성 쉐바 음절의 배포형이 그대로 답이다 — yizrĕʿēʾl→이즈레엘(구조가 같다), yiśrĕʾēlî→이스레엘리, rabrĕbān→라브레반, yirmĕyâ→이르메야, mordĕkay→모르데카이. 어말 -ʿām은 bilʿām→빌암, yārobʿām→야로브암, rĕḥabʿām→레하브암처럼 ע를 적지 않고 '암'. translit의 유성 쉐바는 ĕ(배포 473:0).",
+      "note": "관용 표기는 '이블르암'(수 17:11)이지만, 배포 데이터는 같은 구조의 יִזְרְעֶאל을 관용형 '이스르엘'이 아니라 학술형 '이즈레엘'로 적었다."
+    },
+    {
+      "strong": "H8093",
+      "translit": "šimʿâ",
+      "translitKo": "심아",
+      "evidence": "šimʿāʾ→심아가 같은 낱말꼴의 직접 선례이고, šimʿôn→심온, šimʿî→심이, dimʿâ→딤아가 ם 받침 + ע 미표기를 뒷받침한다. 어말 ה+카메츠는 â로 적는다(ḥoglâ, šammâ, bĕhēmâ). 표제는 소문자 — 배포 4950건 중 대문자 시작은 150건뿐이다.",
+      "note": "관용 표기는 '시므아'다."
+    },
+    {
+      "strong": "G2454",
+      "translit": "Ioudaïsmós",
+      "translitKo": "유다이스모스",
+      "evidence": "Ἰου-는 배포 선례가 둘 다 '유-'다 — Ioudaîos→유다이오스, Ioudaía→유다이아. 분음부호가 붙은 αϊ는 이어 읽지 않고 '아이'로 적는다.",
+      "note": ""
+    }
+  ]
+}

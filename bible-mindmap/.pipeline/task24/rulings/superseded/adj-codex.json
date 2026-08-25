@@ -1,0 +1,16 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"엑테네이아","evidence":"src/data/koreanGlossTopBatch16.js의 ἐκτείνω→엑테이노 선례","note":"τ가 모음과 붙는 배포 선례를 따른다."},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉬날라소","evidence":"src/data/koreanGlossTopBatch19.js의 συναλίζω→쉬날리조 선례와 WORKER_SPEC의 υ·σσ 규칙","note":"υ는 위 계열, σσ는 ㅅ 계열로 적는다."},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"src/data/koreanGloss*.js의 ψ 계열 자음 표기 선례","note":"ψ를 프시로 분해하지 않고 한 음절 자음군으로 적는다."},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷧소스","evidence":"src/data/koreanGlossTopBatch12.js의 υ 계열 표기와 θάλασσα→탈라사 선례","note":"υ는 위, σσ는 겹받침 없이 ㅅ 계열로 적는다."},
+    {"strong":"H1009","translit":"Bêt ʾArbēʾel","translitKo":"베트 아르베엘","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch06.js의 בֵּית→베트 및 학술 표기 우선 선례","note":"어말 א를 묵음으로 소거하지 않고 학술 음역을 표제로 둔다."},
+    {"strong":"H8112","translit":"Šimrôn Mᵉrōʾn","translitKo":"심론 메론","evidence":"src/data/koreanGlossTopBatch16.js의 H8112 배포 표기 심론 및 모음부호 기반 학술 음역 선례","note":"관용 표기 시므론 므론과 달리 학술 표기를 따른다."},
+    {"strong":"H2995","translit":"Yabnĕʾēl","translitKo":"야브네엘","evidence":"src/data/koreanGlossTopBatch*.js의 학술 표기 우선 및 ʾ 처리 선례","note":"관용 표기 얍느엘과 달리 표제 모음과 어말 א를 학술적으로 반영한다."},
+    {"strong":"H1034","translit":"Bêt Lĕbāʾôt","translitKo":"베트 르바오트","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch06.js·TopBatch13.js의 בֵּית→베트·유성 쉐바→르 선례","note":"관용 표기 벧르바옷 대신 학술 표기를 따른다."},
+    {"strong":"H1192","translit":"Baʿălat Bĕʾēr","translitKo":"발라트 브에르","evidence":"src/data/koreanGlossTopBatch05.js의 브에르 배포 선례와 음역 전용 원칙","note":"관용 표기 바알랏브엘과 달리 ע를 별도 음절로 늘리지 않고 학술 표기를 따른다."},
+    {"strong":"H514","translit":"ʾEltĕqēʾ","translitKo":"엘트케","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch06.js의 ê/e 단음절 및 어말 א 묵음 선례","note":"관용 표기 엘드게와 달리 학술 표기를 따른다."},
+    {"strong":"H1139","translit":"Bĕnê-Bĕraq","translitKo":"브네 베라크","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch06.js의 학술 표기 및 בֵּית 구성명 베트 선례","note":"관용 표기 브네브락·바네베락과 달리 분리된 두 낱말의 학술 음역을 따른다."}
+  ]
+}

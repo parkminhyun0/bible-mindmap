@@ -1,0 +1,446 @@
+{
+  "items": [
+    {
+      "shard": "AS",
+      "strong": "H1030",
+      "lemma": "בֵּית הַשִּׁמְשִׁי",
+      "lang": "hebrew",
+      "glossEn": "Bethshemite.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bêt haššimšî",
+          "translitKo": "베트 하시므시",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt haššimšî",
+          "translitKo": "베이트 하심시",
+          "note": "다게쉬 포르테 미반영"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt haššimšî",
+          "translitKo": "베트 하심시",
+          "note": "한국어 성경의 관용 표기는 벧세메스 사람(SMS인)이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt haššimšî",
+          "translitKo": "베트 하심시",
+          "note": "복합 지명은 띄어 적는다. 뒤 שִׁ는 음절 첫소리라 '시'."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "H1662",
+      "lemma": "גַּת־הַחֵפֶר",
+      "lang": "hebrew",
+      "glossEn": "Gath-kephr, Gittah-kephr.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gat-haḥēper",
+          "translitKo": "가트 하헤페르",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gat-haḥēper",
+          "translitKo": "가트-하헤페르",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gat-haḥēper",
+          "translitKo": "가트하헤페르",
+          "note": "한국어 성경의 지명 관용 표기는 가드헤벨이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gat-haḥēper",
+          "translitKo": "가트 하헤페르",
+          "note": "마케프로 이어진 복합 지명은 띄어 적는다. 관용 표기는 '가드헤벨'."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "H1016",
+      "lemma": "בֵּית־דָּגוֹן",
+      "lang": "hebrew",
+      "glossEn": "Beth-dagon.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bêt-dāgôn",
+          "translitKo": "베트 다곤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bêt-dāgôn",
+          "translitKo": "베이트-다곤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bêt-dāgôn",
+          "translitKo": "베트다곤",
+          "note": "한국어 성경의 지명 관용 표기는 벧다곤이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bêt-dāgôn",
+          "translitKo": "베트 다곤",
+          "note": "관용 표기는 '벧다곤'."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "H407",
+      "lemma": "אַכְשָׁף",
+      "lang": "hebrew",
+      "glossEn": "Achshaph.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾaḵšāp",
+          "translitKo": "악샤프",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾakšāp",
+          "translitKo": "아크샤프",
+          "note": "음절 말 שׁ는 쉬"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾakšāp",
+          "translitKo": "악샤프",
+          "note": "한국어 성경의 지명 관용 표기는 악삽이다."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾakšāp",
+          "translitKo": "아크샤프",
+          "note": "관용 표기는 '악삽'."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "G1545",
+      "lemma": "ἔκβασις",
+      "lang": "greek",
+      "glossEn": "end, way to escape",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ékbasis",
+          "translitKo": "엑바시스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ékbasis",
+          "translitKo": "에크바시스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ékbasis",
+          "translitKo": "엑바시스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekbasis",
+          "translitKo": "에크바시스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "G4786",
+      "lemma": "συγκεράννυμι",
+      "lang": "greek",
+      "glossEn": "mix with, temper together",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synkeránnymi",
+          "translitKo": "쉰케란뉘미",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synkeránnymi",
+          "translitKo": "쉰케란뉘미",
+          "note": "다게쉬 포르테 미반영, υ는 위"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synkeránnymi",
+          "translitKo": "싱케란뉘미",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synkerannymi",
+          "translitKo": "슁케란뉘미",
+          "note": "γ가 κ 앞에서 비음이라 받침 ㅇ으로 적는다. 중복 자음 νν은 겹쳐 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "H6495",
+      "lemma": "פְּקַח־קוֹחַ",
+      "lang": "hebrew",
+      "glossEn": "opening of the prison.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pĕqaḥ-qôaḥ",
+          "translitKo": "페카흐 코아흐",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pəqaḥ-qôaḥ",
+          "translitKo": "페카흐-코아흐",
+          "note": "furtive patach"
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pĕqaḥ-qôaḥ",
+          "translitKo": "페카흐코아흐",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pəqaḥ-qôaḥ",
+          "translitKo": "페카흐 코아흐",
+          "note": "마케프로 이어진 겹낱말. 어말 ח 앞 furtive patach를 '-아흐'로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "AS",
+      "strong": "H6383",
+      "lemma": "פִּלְאִי",
+      "lang": "hebrew",
+      "glossEn": "secret, wonderful.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "pilʾî",
+          "translitKo": "필아이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "pilʾî",
+          "translitKo": "필이",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "pilʾî",
+          "translitKo": "필이",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pilʾî",
+          "translitKo": "필리",
+          "note": "א는 한글로 따로 적지 않아 앞 ל이 이어져 '필리'가 된다."
+        }
+      ]
+    },
+    {
+      "shard": "AT",
+      "strong": "G2030",
+      "lemma": "ἐπόπτης",
+      "lang": "greek",
+      "glossEn": "eye-witness",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "epóptēs",
+          "translitKo": "에포프테스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "epóptēs",
+          "translitKo": "에포프테스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "epóptēs",
+          "translitKo": "에폽테스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "epóptēs",
+          "translitKo": "에폽테스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "AU",
+      "strong": "G1695",
+      "lemma": "Ἐμμαούς",
+      "lang": "greek",
+      "glossEn": "Emmaus",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Emmaoús",
+          "translitKo": "엠마우스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Emmaoús",
+          "translitKo": "엠마우스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Emmaoús",
+          "translitKo": "에마우스",
+          "note": "개역개정 관용 표기는 '엠마오'이다(눅 24:13)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "Emmaoús",
+          "translitKo": "에마우스",
+          "note": "관용 표기 '엠마오'(눅 24:13). 겹자음 μμ를 겹쳐 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "AU",
+      "strong": "H2991",
+      "lemma": "יִבְלְעָם",
+      "lang": "hebrew",
+      "glossEn": "Ibleam.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yibləʿām",
+          "translitKo": "이브르암",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yibləʿām",
+          "translitKo": "이블르암",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yiblĕʿām",
+          "translitKo": "이브레암",
+          "note": "개역개정 관용 표기는 '이블르암'이다(수 17:11)."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yibləʿām",
+          "translitKo": "이블암",
+          "note": "관용 표기 '이블르암'. ע는 한글로 따로 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "AU",
+      "strong": "H8093",
+      "lemma": "שִׁמְעָה",
+      "lang": "hebrew",
+      "glossEn": "Shimeah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šimʿāh",
+          "translitKo": "심아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "šimʿāh",
+          "translitKo": "시므아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šimʿâ",
+          "translitKo": "시므아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šimʿâ",
+          "translitKo": "심아",
+          "note": "관용 표기 '시므아'. ע는 한글로 따로 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "AU",
+      "strong": "G2454",
+      "lemma": "Ἰουδαϊσμός",
+      "lang": "greek",
+      "glossEn": "Jews' religion",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ioudaïsmós",
+          "translitKo": "유다이스모스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Ioudaïsmós",
+          "translitKo": "이우다이스모스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Ioudaïsmós",
+          "translitKo": "이우다이스모스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "Ioudaïsmós",
+          "translitKo": "유다이스모스",
+          "note": "Ἰου-는 기존 '유다이오스' 선례를 따라 '유-'로 적는다."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {"strong":"H245","translit":"ʾăzanyāh","translitKo":"아자냐","evidence":"koreanGlossTopBatch 계열의 -yāh 인명 선례와 H8034 שֵׁם→셈의 SBL 소문자 표기","note":"어말 יָה는 배포 선례대로 야로 적고, Azaniah의 음절 결합은 아자냐로 판정했다."},
+    {"strong":"H1148","translit":"bənînû","translitKo":"브니누","evidence":"koreanGloss.js의 בְּרִית bĕrît→베리트 및 배포 인명 표기의 유성 셰바 선례","note":"관용 표기 브니누와 배포의 셰바 처리에 맞췄다."},
+    {"strong":"H5041","translit":"nəballāṭ","translitKo":"느발라트","evidence":"WORKER_SPEC의 다게쉬 포르테 비중복 원칙과 H4306 māṭar→마타르 선례","note":"다게쉬 포르테는 한글에서 겹치지 않고, 어말 ṭ는 트로 적었다."},
+    {"strong":"H4811","translit":"mərāyāh","translitKo":"므라야","evidence":"koreanGlossTopBatch의 인명 -yāh 표기 선례와 H4496 mĕnûḥâ→메누하","note":"유성 셰바는 에로 확장하지 않고 인명 관용형 므라야를 유지했다."},
+    {"strong":"H797","translit":"ʾašdōdît","translitKo":"아쉬도딧","evidence":"koreanGloss.js의 H784 אֵשׁ→에쉬 및 H7782 שׁוֹפָר→쇼파르","note":"음절 말 שׁ는 쉬로 적고, 형용사형의 어미 ת는 트로 적었다."},
+    {"strong":"H1152","translit":"bəsōdyāh","translitKo":"브소드야","evidence":"koreanGloss.js의 H1285 בְּרִית→베리트와 인명 -yāh 배포 선례","note":"자음 ד 뒤 יָה는 드야로 이어 적었다."},
+    {"strong":"H5149","translit":"nĕḥûm","translitKo":"네훔","evidence":"koreanGloss.js의 H4496 מְנוּחָה→메누하","note":"유성 셰바를 에로 적는 배포 선례를 적용했다."},
+    {"strong":"H5300","translit":"nĕpûšĕsîm","translitKo":"네푸셰심","evidence":"koreanGloss.js의 H8328 שֶׁרֶשׁ→쇼레쉬와 H7837 שַׁחַר→샤하르","note":"두 셰바를 에로 읽고, 음절 첫소리 שׁ는 셰로 적었다."},
+    {"strong":"H3662","translit":"kĕnānî","translitKo":"케나니","evidence":"koreanGlossTopBatch의 유성 셰바 인명 선례","note":"관용 그나니와 달리 학술식 셰바를 반영해 케나니로 판정했다."},
+    {"strong":"H1427","translit":"gaddîʾēl","translitKo":"가디엘","evidence":"koreanGlossTopBatch의 H1061 בִּכּוּר→빅쿠림 및 WORKER_SPEC의 다게쉬 포르테 비중복 원칙","note":"다게쉬 포르테를 겹쳐 쓰지 않아 가디엘로 적었다."},
+    {"strong":"H1426","translit":"gaddî","translitKo":"가디","evidence":"같은 גַּדִּי 계열의 다게쉬 포르테 비중복 선례","note":"관용 갓디와 달리 배포 원칙대로 겹자음을 표기하지 않았다."},
+    {"strong":"H2058","translit":"wopsî","translitKo":"옵시","evidence":"WORKER_SPEC의 자음 ו w 원칙 및 koreanGlossTopBatch의 w 계열 표기 선례","note":"초성 ו가 형태상 모음 앞에서 탈락하는 배포식 음절 표기인 옵시를 채택했다."},
+    {"strong":"H3020","translit":"yāglî","translitKo":"야글리","evidence":"WORKER_SPEC의 모음부호 보존 원칙과 배포된 ā 표기 선례(H7782 šôpār 등)","note":"카마츠 계열을 ā로 판정해 관용 영어식 Jogli와 달리 야글리로 적었다."},
+    {"strong":"H6535","translit":"parnaḵ","translitKo":"파르나크","evidence":"koreanGlossTopBatch의 어말 ךְ 선례와 H2719 חֶרֶב→헤레브","note":"다게쉬 פּ는 p, 어말 ךְ는 크로 적었다."},
+    {"strong":"H360","translit":"ʾĕyālût","translitKo":"에얄루트","evidence":"koreanGloss.js의 H3974 מָאוֹר→마오르 및 장음 ā/û 표기 선례","note":"אֱ의 셰바는 에, יָלוּ는 얄루로 읽고 어말 ת는 트로 적었다."},
+    {"strong":"H2317","translit":"ḥadrāḵ","translitKo":"하드라크","evidence":"WORKER_SPEC의 어말 후음 및 ךְ 처리 원칙과 H7307 רוּחַ→루아흐의 후음 선례","note":"어말 ךְ는 크로 적어 관용 하드락과 구별했다."}
+  ]
+}

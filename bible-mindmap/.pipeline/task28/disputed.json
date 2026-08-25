@@ -1,0 +1,1228 @@
+{
+  "items": [
+    {
+      "shard": "BK",
+      "strong": "H4781",
+      "lemma": "מְרֹדָךְ",
+      "lang": "hebrew",
+      "glossEn": "Merodach. Compare H4757 (מְרֹאדַךְ בַּלְאָדָן).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərōdaḵ",
+          "translitKo": "므로닥",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mərōḏāk",
+          "translitKo": "므로드악",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərōḏāk",
+          "translitKo": "메로다크",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrōdāk",
+          "translitKo": "메로다크",
+          "note": "바빌론 신명. 개역개정 관용은 '므로닥'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H4850",
+      "lemma": "מְרָתַיִם",
+      "lang": "hebrew",
+      "glossEn": "Merathaim.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərāṯayim",
+          "translitKo": "므라타임",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mərāṯayim",
+          "translitKo": "므라타임",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərāṯayim",
+          "translitKo": "메라타임",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrātayim",
+          "translitKo": "메라타임",
+          "note": "개역개정 관용은 '므라다임'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H694",
+      "lemma": "אֲרָב",
+      "lang": "hebrew",
+      "glossEn": "Arab.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾărāḇ",
+          "translitKo": "아랍",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾĂrāḇ",
+          "translitKo": "아랍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾărāḇ",
+          "translitKo": "아라브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾărāb",
+          "translitKo": "아라브",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H6911",
+      "lemma": "קִבְצַיִם",
+      "lang": "hebrew",
+      "glossEn": "Kibzaim.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Qiḇṣayim",
+          "translitKo": "키브차임",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Qiḇṣayim",
+          "translitKo": "킵차임",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "qiḇṣayim",
+          "translitKo": "킵차임",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qibṣayim",
+          "translitKo": "키브차임",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H486",
+      "lemma": "אַלְמוֹדָד",
+      "lang": "hebrew",
+      "glossEn": "Almodad.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾalmôḏāḏ",
+          "translitKo": "알모닷",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾAlmôḏāḏ",
+          "translitKo": "알모닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾalmôḏāḏ",
+          "translitKo": "알모다드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾalmôdād",
+          "translitKo": "알모다드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H2301",
+      "lemma": "חֲדַד",
+      "lang": "hebrew",
+      "glossEn": "Hadad.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ḥăḏaḏ",
+          "translitKo": "하닷",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Ḥăḏaḏ",
+          "translitKo": "하닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥăḏaḏ",
+          "translitKo": "하다드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥădad",
+          "translitKo": "하다드",
+          "note": "H1908(하다드)의 이형 표기다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H2175",
+      "lemma": "זִמְרָן",
+      "lang": "hebrew",
+      "glossEn": "Zimran.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Zimrān",
+          "translitKo": "지므란",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Zimrān",
+          "translitKo": "짐란",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "zimrān",
+          "translitKo": "지므란",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "zimrān",
+          "translitKo": "짐란",
+          "note": "개역개정 관용은 '시므란'이다. ז를 ㅈ 계열로 적는 기존 표기(자하브·미즈라흐)를 따랐다."
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H4091",
+      "lemma": "מְדָן",
+      "lang": "hebrew",
+      "glossEn": "Medan.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Məḏān",
+          "translitKo": "므단",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Məḏān",
+          "translitKo": "므단",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "məḏān",
+          "translitKo": "메단",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕdān",
+          "translitKo": "메단",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H7780",
+      "lemma": "שׁוֹפָךְ",
+      "lang": "hebrew",
+      "glossEn": "Shophach.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Šôp̄āḵ",
+          "translitKo": "소파크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Šôp̄āk",
+          "translitKo": "쇼팍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "šôp̄āḵ",
+          "translitKo": "쇼파크",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "šôpāk",
+          "translitKo": "쇼파크",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H6431",
+      "lemma": "פֶּלֶת",
+      "lang": "hebrew",
+      "glossEn": "Peleth.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Pelet",
+          "translitKo": "펠렛",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Pelet",
+          "translitKo": "펠렛",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "peleṯ",
+          "translitKo": "펠레트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "pelet",
+          "translitKo": "펠레트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BK",
+      "strong": "H3436",
+      "lemma": "יׇשְׁבְּקָשָׁה",
+      "lang": "hebrew",
+      "glossEn": "Joshbekashah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Yāšbəqāšāh",
+          "translitKo": "야슈베카샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Yāšbəqāšāh",
+          "translitKo": "야슈브카샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yāšbəqāšāh",
+          "translitKo": "야시브카샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yošbĕqāšâ",
+          "translitKo": "요쉬베카샤",
+          "note": "첫 모음은 카메츠 하투프이므로 o로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3620",
+      "lemma": "כְּלוּב",
+      "lang": "hebrew",
+      "glossEn": "Chelub.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kelûḇ",
+          "translitKo": "켈룹",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kelûḇ",
+          "translitKo": "켈루브",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kelûḇ",
+          "translitKo": "켈룹",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kĕlûb",
+          "translitKo": "켈루브",
+          "note": "한국어 성경 관용 표기는 '글룹'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3094",
+      "lemma": "יְהַלֶּלְאֵל",
+      "lang": "hebrew",
+      "glossEn": "Jehalellel, Jehalelel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhall ʼēl",
+          "translitKo": "여할렐엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhalleʾēl",
+          "translitKo": "예할렐엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhallelleʾl",
+          "translitKo": "여할렐엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhallelʾēl",
+          "translitKo": "예할렐엘",
+          "note": "한국어 성경 관용 표기는 '여할렐렐'이다. -ʾēl은 배포 선례를 따라 '엘'로 끊어 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3042",
+      "lemma": "יְדָיָה",
+      "lang": "hebrew",
+      "glossEn": "Jedaiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəḏāyāh",
+          "translitKo": "여다야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yədāyāh",
+          "translitKo": "예다야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yədāyāh",
+          "translitKo": "여다야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕdāyâ",
+          "translitKo": "예다야",
+          "note": "한국어 성경 관용 표기는 '여다야'다. 어두 יְ는 배포 선례(예호슈아·예후다)를 따라 '예'로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H1074",
+      "lemma": "בֹּכְרוּ",
+      "lang": "hebrew",
+      "glossEn": "Bocheru.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bōḵrû",
+          "translitKo": "보크루",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "bōḵərû",
+          "translitKo": "보크루",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bōḵərû",
+          "translitKo": "보케루",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bōkĕrû",
+          "translitKo": "보케루",
+          "note": "한국어 성경 관용 표기는 '보그루'다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H4810",
+      "lemma": "מְרִי בַעַל",
+      "lang": "hebrew",
+      "glossEn": "Meri-baal. Compare H4807 (מְרִיב בַּעַל).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərî baʿal",
+          "translitKo": "므리바알",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mərî baʿal",
+          "translitKo": "므리 바알",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mərî-baʿal",
+          "translitKo": "므리바알",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrî baʿal",
+          "translitKo": "메리 바알",
+          "note": "한국어 성경 관용 표기는 '므리바알'이다. 두 낱말이므로 띄어 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3227",
+      "lemma": "יְמִינִי",
+      "lang": "hebrew",
+      "glossEn": "(on the) right (hand).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmînî",
+          "translitKo": "예미니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmînî",
+          "translitKo": "예미니",
+          "note": "배포 선례 '벤예미니'(בֶּן־יְמִינִי)와 같은 자모로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3090",
+      "lemma": "יְהוֹשַׁבְעַת",
+      "lang": "hebrew",
+      "glossEn": "Jehoshabeath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호사브앗",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호샤브앗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhôšaḇʿaṯ",
+          "translitKo": "여호샤브앗",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhôšabʿat",
+          "translitKo": "예호샤브아트",
+          "note": "한국어 성경 관용 표기는 '여호사브앗'이다. ע를 한글로 따로 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3086",
+      "lemma": "יְהוֹעַדִּין",
+      "lang": "hebrew",
+      "glossEn": "Jehoaddan.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호앗딘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호아딘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəhôʿaddîn",
+          "translitKo": "여호아딘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕhôʿaddîn",
+          "translitKo": "예호아딘",
+          "note": "한국어 성경 관용 표기는 '여호앗단'이다(케레·크티브 차이로 여호앗딘으로도 읽는다)."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3203",
+      "lemma": "יְכׇלְיָה",
+      "lang": "hebrew",
+      "glossEn": "Jecholiah, Jecoliah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəḵolyāh",
+          "translitKo": "여콜야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəḵoləyāh",
+          "translitKo": "예콜야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəḵolyāh",
+          "translitKo": "여콜야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕkolyâ",
+          "translitKo": "예콜야",
+          "note": "한국어 성경 관용 표기는 '여골리아'다. כׇ는 카메츠 카탄이므로 'o'로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3388",
+      "lemma": "יְרוּשָׁא",
+      "lang": "hebrew",
+      "glossEn": "Jerusha, Jerushah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yərûšāʾ",
+          "translitKo": "여루샤",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yərûšāʾ",
+          "translitKo": "예루샤",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yərûšāʾ",
+          "translitKo": "여루샤",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕrûšāʾ",
+          "translitKo": "예루샤",
+          "note": "한국어 성경 관용 표기는 '여루사'다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3228",
+      "lemma": "יְמִינִי",
+      "lang": "hebrew",
+      "glossEn": "Jaminites. See also H1145 (בֶּן־יְמִינִי).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmînî",
+          "translitKo": "예미니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmînî",
+          "translitKo": "여미니",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmînî",
+          "translitKo": "예미니",
+          "note": "자모가 H3227과 같아 한글 표기도 같다. 한국어 성경은 이 항목을 '야민 사람'으로 푼다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H2313",
+      "lemma": "חִדֶּקֶל",
+      "lang": "hebrew",
+      "glossEn": "Hiddekel.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데겔",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데겔",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥiddeqel",
+          "translitKo": "힛데켈",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥiddeqel",
+          "translitKo": "히데켈",
+          "note": "한국어 성경 관용 표기는 '힛데겔'이다. 다게쉬 포르테를 한글 받침으로 겹쳐 적지 않는다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H904",
+      "lemma": "בִּגְתָן",
+      "lang": "hebrew",
+      "glossEn": "Bigthan, Bigthana.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bigṯān",
+          "translitKo": "빅단",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "biḡtān",
+          "translitKo": "빅단",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "bigṯān",
+          "translitKo": "빅탄",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bigtān",
+          "translitKo": "비그탄",
+          "note": "한국어 성경 관용 표기는 '빅단'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H3223",
+      "lemma": "יְמוּאֵל",
+      "lang": "hebrew",
+      "glossEn": "Jemuel.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yəmûʾēl",
+          "translitKo": "여무엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yəmûʾēl",
+          "translitKo": "예무엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yəmûʾēl",
+          "translitKo": "여무엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yĕmûʾēl",
+          "translitKo": "예무엘",
+          "note": "한국어 성경 관용 표기는 '여무엘'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BL",
+      "strong": "H4990",
+      "lemma": "מִתְרְדָת",
+      "lang": "hebrew",
+      "glossEn": "Mithredath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르다트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르닷",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "mitrədāṯ",
+          "translitKo": "미트르다트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mitrĕdāt",
+          "translitKo": "미트레다트",
+          "note": "한국어 성경 관용 표기는 '미드르닷'이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H4967",
+      "lemma": "מְתוּשָׁאֵל",
+      "lang": "hebrew",
+      "glossEn": "Methusael.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Mətûšāʾēl",
+          "translitKo": "므투샤엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Məṯûšāʾēl",
+          "translitKo": "므투사엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Məṯûšāʾêl",
+          "translitKo": "므투샤엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕtûšāʾēl",
+          "translitKo": "메투샤엘",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H5624",
+      "lemma": "סֶרֶד",
+      "lang": "hebrew",
+      "glossEn": "Sered.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Sered",
+          "translitKo": "세렛",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Sered",
+          "translitKo": "세렛",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Sereḏ",
+          "translitKo": "세레드",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "sered",
+          "translitKo": "세레드",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H3376",
+      "lemma": "יִרְאִיָּיה",
+      "lang": "hebrew",
+      "glossEn": "Irijah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Yirʾiyyā",
+          "translitKo": "이르아이야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Yirʾiyyāyā",
+          "translitKo": "이르이야야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Yirʾiyyāyā",
+          "translitKo": "이르아이야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yirʾiyyâ",
+          "translitKo": "이르이야",
+          "note": "lemma 철자(יִרְאִיָּיה)에 요드가 겹쳐 있으나 원어 철자는 그대로 두고 음역만 붙였다. 개역개정 관용 표기는 이리야다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H7433",
+      "lemma": "רָמֹת גִּלעָד",
+      "lang": "hebrew",
+      "glossEn": "Ramoth-gilead, Ramoth in Gilead. See also H7216 (רָאמוֹת).",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Rāmōṯ Gilʿād",
+          "translitKo": "라모트 길르앗",
+          "note": "관용 표기 길르앗을 병기한다."
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Rāmōṯ Gilʿāḏ",
+          "translitKo": "라못 길르앗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Rāmōṯ Gilʿāḏ",
+          "translitKo": "라못 길르앗",
+          "note": "관용 표기 ‘라못 길르앗’ 병기."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "rāmōt gilʿād",
+          "translitKo": "라모트 길아드",
+          "note": "두 낱말 지명이라 띄어 적었다. ʿ 는 한글로 따로 적지 않았다. 개역개정 관용 표기는 길르앗 라못으로 어순이 뒤집혀 있다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H7003",
+      "lemma": "קִטְרוֹן",
+      "lang": "hebrew",
+      "glossEn": "Kitron.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Qiṭrôn",
+          "translitKo": "킷론",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Qiṭrôn",
+          "translitKo": "킷론",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Qiṭrôn",
+          "translitKo": "키트론",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "qiṭrôn",
+          "translitKo": "키트론",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H303",
+      "lemma": "אַחְלָב",
+      "lang": "hebrew",
+      "glossEn": "Ahlab.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘랍",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘랍",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾAḥlāḇ",
+          "translitKo": "아흘라브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾaḥlāb",
+          "translitKo": "아흘라브",
+          "note": "자음 뒤 l 은 배포 선례 카슬루힘대로 앞 음절 받침 ㄹ로 붙여 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H3941",
+      "lemma": "לַפִּידוֹת",
+      "lang": "hebrew",
+      "glossEn": "Lappidoth.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Lappidôṯ",
+          "translitKo": "랍비돗",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Lappîḏôṯ",
+          "translitKo": "랍비돗",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Lappîḏôṯ",
+          "translitKo": "라피도트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "lappîdôt",
+          "translitKo": "라피도트",
+          "note": "다게쉬 포르테를 받침으로 겹치지 않았다. 개역개정 관용 표기는 랍비돗이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H4789",
+      "lemma": "מֵרוֹז",
+      "lang": "hebrew",
+      "glossEn": "Meroz.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Mērôz",
+          "translitKo": "메로스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mērôz",
+          "translitKo": "메로스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Mêrôz",
+          "translitKo": "메로즈",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mērôz",
+          "translitKo": "메로즈",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H2888",
+      "lemma": "טַבַּת",
+      "lang": "hebrew",
+      "glossEn": "Tabbath.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Ṭabbat",
+          "translitKo": "탑밧",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Ṭabbaṯ",
+          "translitKo": "타밧",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Ṭabbaṯ",
+          "translitKo": "타바트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ṭabbat",
+          "translitKo": "타바트",
+          "note": "다게쉬 포르테를 받침으로 겹치지 않았다. 개역개정 관용 표기는 답밧이다."
+        }
+      ]
+    },
+    {
+      "shard": "BM",
+      "strong": "H1286",
+      "lemma": "בְּרִית",
+      "lang": "hebrew",
+      "glossEn": "Berith.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "Bərîṯ",
+          "translitKo": "브릿",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Bərîṯ",
+          "translitKo": "브릿",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Bərîṯ",
+          "translitKo": "브리트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bĕrît",
+          "translitKo": "베리트",
+          "note": "세겜의 신 이름. 언약을 뜻하는 낱말 베리트(H1285)와 음역이 같다. 개역개정 관용 표기는 브릿(바알브릿)이다."
+        }
+      ]
+    }
+  ]
+}

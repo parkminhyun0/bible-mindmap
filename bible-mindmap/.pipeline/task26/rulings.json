@@ -1,0 +1,1322 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 15,
+  "ties": [
+    {
+      "strong": "G214",
+      "koRank": [
+        [
+          "알랄라조",
+          2
+        ],
+        [
+          "알라조",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "alalázō",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G1467",
+      "koRank": [
+        [
+          "엥크라튜오마이",
+          2
+        ],
+        [
+          "엔크라튜오마이",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "enkrateúomai",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G1226",
+      "koRank": [
+        [
+          "디아베바이오오마이",
+          2
+        ],
+        [
+          "디아베바이오마이",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "diabebaióomai",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G3157",
+      "koRank": [
+        [
+          "마탄",
+          2
+        ],
+        [
+          "맛단",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Matthán",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H3853",
+      "koRank": [
+        [
+          "레하빔",
+          2
+        ],
+        [
+          "르하빔",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Ləhāḇîm",
+          2
+        ],
+        [
+          "lĕhābîm",
+          1
+        ],
+        [
+          "ləhāḇîm",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H1255",
+      "koRank": [
+        [
+          "베로다크 발아단",
+          1
+        ],
+        [
+          "브로다크 발아단",
+          1
+        ],
+        [
+          "베로아닥 발라단",
+          1
+        ],
+        [
+          "브로닥 발라단",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Bərōʾḏaḵ Balʾăḏān",
+          2
+        ],
+        [
+          "bĕrōʾdak balʾădān",
+          1
+        ],
+        [
+          "bərōʾḏaḵ balʾăḏān",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H4757",
+      "koRank": [
+        [
+          "메로다크 발아단",
+          1
+        ],
+        [
+          "므로다크 발아단",
+          1
+        ],
+        [
+          "메로닥 발라단",
+          1
+        ],
+        [
+          "므로닥 발라단",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Mərōʾḏaḵ Balʾāḏān",
+          2
+        ],
+        [
+          "mĕrōʾdak balʾādān",
+          1
+        ],
+        [
+          "mərōʾḏaḵ balʾādān",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2246",
+      "koRank": [
+        [
+          "호바브",
+          2
+        ],
+        [
+          "호밥",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Ḥōḇāḇ",
+          2
+        ],
+        [
+          "ḥōbāb",
+          1
+        ],
+        [
+          "ḥōḇāḇ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "G2858",
+      "koRank": [
+        [
+          "콜로사유스",
+          2
+        ],
+        [
+          "콜로사에우스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Kolossaeús",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G2187",
+      "koRank": [
+        [
+          "에프라임",
+          2
+        ],
+        [
+          "에브라임",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Ephraím",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G6043",
+      "koRank": [
+        [
+          "이오다",
+          2
+        ],
+        [
+          "요다",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Iōdá",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G4941",
+      "koRank": [
+        [
+          "쉰튀케",
+          2
+        ],
+        [
+          "신튀케",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Syntýchē",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G1045",
+      "koRank": [
+        [
+          "가드",
+          2
+        ],
+        [
+          "갓",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Gád",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G799",
+      "koRank": [
+        [
+          "아쉰크리토스",
+          2
+        ],
+        [
+          "아싱크리토스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Asýnkritos",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G5378",
+      "koRank": [
+        [
+          "필롤로고스",
+          2
+        ],
+        [
+          "필로로고스",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Philólogos",
+          4
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "G214",
+      "lemma": "ἀλαλάζω",
+      "translit": "alalázō",
+      "translitKo": "알랄라조",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G5353",
+      "lemma": "φθόγγος",
+      "translit": "phthóngos",
+      "translitKo": "프통고스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "G2880",
+      "lemma": "κορέννυμι",
+      "translit": "korénnymi",
+      "translitKo": "코렌뉘미",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "G2275",
+      "lemma": "ἥττημα",
+      "translit": "hḗttēma",
+      "translitKo": "헤테마",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1467",
+      "lemma": "ἐγκρατεύομαι",
+      "translit": "enkrateúomai",
+      "translitKo": "엥크라튜오마이",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G4473",
+      "lemma": "ῥαντισμός",
+      "translit": "rhantismós",
+      "translitKo": "란티스모스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 배포 선례의 어두 ῥ 표기처럼 흐를 붙이지 않는다."
+    },
+    {
+      "strong": "G4964",
+      "lemma": "συσχηματίζω",
+      "translit": "syschēmatízō",
+      "translitKo": "쉬스케마티조",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G2029",
+      "lemma": "ἐποπτεύω",
+      "translit": "epopteúō",
+      "translitKo": "에포프튜오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G546",
+      "lemma": "ἀπειλέω",
+      "translit": "apeiléō",
+      "translitKo": "아페일레오",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G743",
+      "lemma": "ἀρχάγγελος",
+      "translit": "archángelos",
+      "translitKo": "아르캉겔로스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1226",
+      "lemma": "διαβεβαιόομαι",
+      "translit": "diabebaióomai",
+      "translitKo": "디아베바이오오마이",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G1783",
+      "lemma": "ἔντευξις",
+      "translit": "énteuxis",
+      "translitKo": "엔튜크시스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G2096",
+      "lemma": "Εὖα",
+      "translit": "Eûa",
+      "translitKo": "유아",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 하와(히브리어 H2332 ḥawwâ 경유)이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4131",
+      "lemma": "πλήκτης",
+      "translit": "plḗktēs",
+      "translitKo": "플레크테스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G47",
+      "lemma": "ἁγνεία",
+      "translit": "hagneía",
+      "translitKo": "하그네이아",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G4269",
+      "lemma": "πρόγονος",
+      "translit": "prógonos",
+      "translitKo": "프로고노스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G2108",
+      "lemma": "εὐεργεσία",
+      "translit": "euergesía",
+      "translitKo": "유에르게시아",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G5313",
+      "lemma": "ὕψωμα",
+      "translit": "hýpsōma",
+      "translitKo": "휩소마",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G2185",
+      "lemma": "ἐφικνέομαι",
+      "translit": "ephiknéomai",
+      "translitKo": "에피크네오마이",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G4465",
+      "lemma": "ῥαβδοῦχος",
+      "translit": "rhabdoûchos",
+      "translitKo": "라브두코스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 어두 ῥ는 흐를 붙이지 않는 배포 선례를 따른다."
+    },
+    {
+      "strong": "G4462",
+      "lemma": "ῥαββονί",
+      "translit": "rhabboní",
+      "translitKo": "라보니",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 어두 ῥ는 흐를 붙이지 않는 배포 선례를 따른다."
+    },
+    {
+      "strong": "G2489",
+      "lemma": "Ἰωάννα",
+      "translit": "Iōánna",
+      "translitKo": "이오안나",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 요안나이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3158",
+      "lemma": "Ματθάτ",
+      "translit": "Matthát",
+      "translitKo": "마트타트",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G3161",
+      "lemma": "Ματταθίας",
+      "translit": "Mattathías",
+      "translitKo": "마타티아스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 맛다디아이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2536",
+      "lemma": "Καϊνάν",
+      "translit": "Kaïnán",
+      "translitKo": "카이난",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 가이난이나 배포 선례는 어두 κ 를 ㅋ 로 적는다."
+    },
+    {
+      "strong": "G2383",
+      "lemma": "Ἰάειρος",
+      "translit": "Iáeiros",
+      "translitKo": "이아이로스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G4504",
+      "lemma": "Ῥοῦφος",
+      "translit": "Rhoûphos",
+      "translitKo": "루포스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 어두 Ῥ의 관용 표기와 학술 음역을 구별한다."
+    },
+    {
+      "strong": "G2498",
+      "lemma": "Ἰωσαφάτ",
+      "translit": "Iōsaphát",
+      "translitKo": "이오사파트",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 여호사밧이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2496",
+      "lemma": "Ἰωράμ",
+      "translit": "Iōrám",
+      "translitKo": "이오람",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 요람이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2488",
+      "lemma": "Ἰωάθαμ",
+      "translit": "Iōátham",
+      "translitKo": "이오아탐",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 요담이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G881",
+      "lemma": "Ἀχάζ",
+      "translit": "Acház",
+      "translitKo": "아하즈",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G2502",
+      "lemma": "Ἰωσίας",
+      "translit": "Iōsías",
+      "translitKo": "이오시아스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 요시야이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2423",
+      "lemma": "Ἰεχονίας",
+      "translit": "Iechonías",
+      "translitKo": "이에코니아스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 여고냐이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G885",
+      "lemma": "Ἀχείμ",
+      "translit": "Acheím",
+      "translitKo": "아케임",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 아킴이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3157",
+      "lemma": "Ματθάν",
+      "translit": "Matthán",
+      "translitKo": "마탄",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 맛단이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3853",
+      "lemma": "לְהָבִים",
+      "translit": "Ləhāḇîm",
+      "translitKo": "레하빔",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H1255",
+      "lemma": "בְּרֹאדַךְ בַּלְאֲדָן",
+      "translit": "Bərōʾḏaḵ Balʾăḏān",
+      "translitKo": "베로다크 발아단",
+      "votesKo": 1,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(1/4 일치). 개역 관용 표기는 브로닥발라단이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H8339",
+      "lemma": "שֵׁשְׁבַּצַּר",
+      "translit": "Šēšəḇaṣṣar",
+      "translitKo": "셰셰바차르",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H6847",
+      "lemma": "צׇפְנַת פַּעְנֵחַ",
+      "translit": "Ṣāp̄ənat Paʿnēaḥ",
+      "translitKo": "초프나트 파네아흐",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 사브낫바네아이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4757",
+      "lemma": "מְרֹאדַךְ בַּלְאָדָן",
+      "translit": "Mərōʾḏaḵ Balʾāḏān",
+      "translitKo": "메로다크 발아단",
+      "votesKo": 1,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(1/4 일치). 개역 관용 표기는 므로닥발라단이나 학술 표기를 표제로 둔다. H1255 와 같은 이름의 다른 철자다."
+    },
+    {
+      "strong": "H78",
+      "lemma": "אִבְצָן",
+      "translit": "ʾIbṣān",
+      "translitKo": "입찬",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H2246",
+      "lemma": "חֹבָב",
+      "translit": "Ḥōḇāḇ",
+      "translitKo": "호바브",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 호밥이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4312",
+      "lemma": "מֵידָד",
+      "translit": "Mēḏāḏ",
+      "translitKo": "메다드",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 메닷이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3579",
+      "lemma": "כֹּזְבִי",
+      "translit": "Kōzḇî",
+      "translitKo": "코즈비",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 고스비이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G919",
+      "lemma": "Βαριησοῦς",
+      "translit": "Bariēsoûs",
+      "translitKo": "바리에수스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 바예수이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2333",
+      "lemma": "Θευδᾶς",
+      "translit": "Theudâs",
+      "translitKo": "테우다스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G3937",
+      "lemma": "Παρμενᾶς",
+      "translit": "Parmenâs",
+      "translitKo": "파르메나스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치)."
+    },
+    {
+      "strong": "G3532",
+      "lemma": "Νικόλαος",
+      "translit": "Nikólaos",
+      "translitKo": "니콜라오스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 니골라이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2858",
+      "lemma": "Κολοσσαεύς",
+      "translit": "Kolossaeús",
+      "translitKo": "콜로사유스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 골로새 사람이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2187",
+      "lemma": "Ἐφραίμ",
+      "translit": "Ephraím",
+      "translitKo": "에프라임",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 에브라임이나 배포 선례는 φ 를 ㅍ 로 적는다."
+    },
+    {
+      "strong": "G2879",
+      "lemma": "Κορέ",
+      "translit": "Koré",
+      "translitKo": "코레",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 고라이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2242",
+      "lemma": "Ἡλί",
+      "translit": "Hēlí",
+      "translitKo": "헬리",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 헬리로 같다."
+    },
+    {
+      "strong": "G3092",
+      "lemma": "Μαάθ",
+      "translit": "Maáth",
+      "translitKo": "마아트",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 마앗이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G6044",
+      "lemma": "Ἰωσήχ",
+      "translit": "Iōsḗch",
+      "translitKo": "이오세크",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 요세이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G6043",
+      "lemma": "Ἰωδά",
+      "translit": "Iōdá",
+      "translitKo": "이오다",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 요다이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G78",
+      "lemma": "Ἀδδί",
+      "translit": "Addí",
+      "translitKo": "아디",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 앗디이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3160",
+      "lemma": "Ματταθά",
+      "translit": "Mattathá",
+      "translitKo": "마타타",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 맛다다이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3481",
+      "lemma": "Ναθάν",
+      "translit": "Nathán",
+      "translitKo": "나탄",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 나단이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2291",
+      "lemma": "Θάρα",
+      "translit": "Thára",
+      "translitKo": "타라",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 데라이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G742",
+      "lemma": "Ἀρφαξάδ",
+      "translit": "Arphaxád",
+      "translitKo": "아르팍사드",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 아박삿이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3103",
+      "lemma": "Μαθουσάλα",
+      "translit": "Mathousála",
+      "translitKo": "마투살라",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 므두셀라이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2391",
+      "lemma": "Ἰάρεδ",
+      "translit": "Iáred",
+      "translitKo": "야렛",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "G2283",
+      "lemma": "Θάμαρ",
+      "translit": "Thámar",
+      "translitKo": "타마르",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 다말이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3002",
+      "lemma": "Λεββαῖος",
+      "translit": "Lebbaîos",
+      "translitKo": "레바이오스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 렙배오이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4941",
+      "lemma": "Συντύχη",
+      "translit": "Syntýchē",
+      "translitKo": "쉰튀케",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 순두게이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2815",
+      "lemma": "Κλήμης",
+      "translit": "Klḗmēs",
+      "translitKo": "클레메스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 글레멘드이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G682",
+      "lemma": "Ἀπφία",
+      "translit": "Apphía",
+      "translitKo": "앱피아",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "G1045",
+      "lemma": "Γάδ",
+      "translit": "Gád",
+      "translitKo": "가드",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 갓이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2466",
+      "lemma": "Ἰσαχάρ",
+      "translit": "Isachár",
+      "translitKo": "이사카르",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 잇사갈이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G5402",
+      "lemma": "Φοίβη",
+      "translit": "Phoíbē",
+      "translitKo": "포이베",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 뵈뵈이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G1866",
+      "lemma": "Ἐπαίνετος",
+      "translit": "Epaínetos",
+      "translitKo": "에파이네토스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 에배네도이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G408",
+      "lemma": "Ἀνδρόνικος",
+      "translit": "Andrónikos",
+      "translitKo": "안드로니코스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 안드로니고이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2458",
+      "lemma": "Ἰουνιᾶς",
+      "translit": "Iouniâs",
+      "translitKo": "유니아스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 유니아이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G291",
+      "lemma": "Ἀμπλίας",
+      "translit": "Amplías",
+      "translitKo": "암플리아스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 암블리아이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3773",
+      "lemma": "Οὐρβανός",
+      "translit": "Ourbanós",
+      "translitKo": "우르바노스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 우르바노이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4720",
+      "lemma": "Στάχυς",
+      "translit": "Stáchys",
+      "translitKo": "스타퀴스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 스다구이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G559",
+      "lemma": "Ἀπελλῆς",
+      "translit": "Apellēs",
+      "translitKo": "아펠레스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 아벨레이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G711",
+      "lemma": "Ἀριστόβουλος",
+      "translit": "Aristóboulos",
+      "translitKo": "아리스토불로스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 아리스도불로이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G5170",
+      "lemma": "Τρύφαινα",
+      "translit": "Trýphaina",
+      "translitKo": "트뤼파이나",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 드루배나이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G5173",
+      "lemma": "Τρυφῶσα",
+      "translit": "Tryphōsa",
+      "translitKo": "트뤼포사",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 드루보사이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4069",
+      "lemma": "Περσίς",
+      "translit": "Persís",
+      "translitKo": "페르시스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 버시이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G799",
+      "lemma": "Ἀσύγκριτος",
+      "translit": "Asýnkritos",
+      "translitKo": "아쉰크리토스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 아순그리도이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G5393",
+      "lemma": "Φλέγων",
+      "translit": "Phlégōn",
+      "translitKo": "플레곤",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 블레곤이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3969",
+      "lemma": "Πατροβᾶς",
+      "translit": "Patrobâs",
+      "translitKo": "파트로바스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 바드로바이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2057",
+      "lemma": "Ἑρμᾶς",
+      "translit": "Hermâs",
+      "translitKo": "헤르마스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 허메이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G5378",
+      "lemma": "Φιλόλογος",
+      "translit": "Philólogos",
+      "translitKo": "필롤로고스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 빌롤로고이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3652",
+      "lemma": "Ὀλυμπᾶς",
+      "translit": "Olympâs",
+      "translitKo": "올륌파스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 올름바이나 학술 표기를 표제로 둔다."
+    }
+  ]
+}

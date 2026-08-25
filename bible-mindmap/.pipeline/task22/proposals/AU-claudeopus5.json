@@ -1,0 +1,707 @@
+{
+  "shard": "AU",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G3995",
+      "lemma": "πενθερός",
+      "translit": "pentherós",
+      "translitKo": "펜테로스",
+      "note": ""
+    },
+    {
+      "strong": "G1042",
+      "lemma": "γαββαθά",
+      "translit": "gabbathá",
+      "translitKo": "가바타",
+      "note": "관용 표기 '가바다'(요 19:13). 학술 표기는 θ를 ㅌ로, 겹자음 ββ를 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G4353",
+      "lemma": "προσκυνητής",
+      "translit": "proskynētḗs",
+      "translitKo": "프로스퀴네테스",
+      "note": ""
+    },
+    {
+      "strong": "G964",
+      "lemma": "Βηθεσδά",
+      "translit": "Bēthesdá",
+      "translitKo": "베테스다",
+      "note": "관용 표기 '베데스다'. θ를 ㅌ로 적는 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2407",
+      "lemma": "ἱερατεύω",
+      "translit": "hierateúō",
+      "translitKo": "히에라튜오",
+      "note": ""
+    },
+    {
+      "strong": "G2370",
+      "lemma": "θυμιάω",
+      "translit": "thymiáō",
+      "translitKo": "튀미아오",
+      "note": ""
+    },
+    {
+      "strong": "G4992",
+      "lemma": "σωτήριον",
+      "translit": "sōtḗrion",
+      "translitKo": "소테리온",
+      "note": ""
+    },
+    {
+      "strong": "G1695",
+      "lemma": "Ἐμμαούς",
+      "translit": "Emmaoús",
+      "translitKo": "에마우스",
+      "note": "관용 표기 '엠마오'(눅 24:13). 겹자음 μμ를 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G2231",
+      "lemma": "ἡγεμονία",
+      "translit": "hēgemonía",
+      "translitKo": "헤게모니아",
+      "note": ""
+    },
+    {
+      "strong": "G4558",
+      "lemma": "Σάρεπτα",
+      "translit": "Sárepta",
+      "translitKo": "사렙타",
+      "note": "관용 표기 '사렙다'."
+    },
+    {
+      "strong": "G3484",
+      "lemma": "Ναΐν",
+      "translit": "Naḯn",
+      "translitKo": "나인",
+      "note": "분음부호가 있어 να-ΐν 두 음절로 읽는다."
+    },
+    {
+      "strong": "G354",
+      "lemma": "ἀνάληψις",
+      "translit": "análēpsis",
+      "translitKo": "아날렙시스",
+      "note": ""
+    },
+    {
+      "strong": "G3462",
+      "lemma": "μυρίζω",
+      "translit": "myrízō",
+      "translitKo": "뮈리조",
+      "note": ""
+    },
+    {
+      "strong": "G1148",
+      "lemma": "Δαλμανουθά",
+      "translit": "Dalmanouthá",
+      "translitKo": "달마누타",
+      "note": "관용 표기 '달마누다'."
+    },
+    {
+      "strong": "G3093",
+      "lemma": "Μαγδαλά",
+      "translit": "Magdalá",
+      "translitKo": "마그달라",
+      "note": "관용 표기 '막달라'."
+    },
+    {
+      "strong": "G6066",
+      "lemma": "ὀλιγοπιστία",
+      "translit": "oligopistía",
+      "translitKo": "올리고피스티아",
+      "note": "권위 사전에 라틴 음역이 없어 직접 채웠다."
+    },
+    {
+      "strong": "G5440",
+      "lemma": "φυλακτήριον",
+      "translit": "phylaktḗrion",
+      "translitKo": "퓔락테리온",
+      "note": ""
+    },
+    {
+      "strong": "G2653",
+      "lemma": "καταναθεματίζω",
+      "translit": "katanathematízō",
+      "translitKo": "카타나테마티조",
+      "note": ""
+    },
+    {
+      "strong": "G1454",
+      "lemma": "ἔγερσις",
+      "translit": "égersis",
+      "translitKo": "에게르시스",
+      "note": ""
+    },
+    {
+      "strong": "G1259",
+      "lemma": "διαλλάσσω",
+      "translit": "diallássō",
+      "translitKo": "디알라소",
+      "note": ""
+    },
+    {
+      "strong": "G2132",
+      "lemma": "εὐνοέω",
+      "translit": "eunoéō",
+      "translitKo": "유노에오",
+      "note": ""
+    },
+    {
+      "strong": "G3890",
+      "lemma": "παραμύθιον",
+      "translit": "paramýthion",
+      "translitKo": "파라뮈티온",
+      "note": ""
+    },
+    {
+      "strong": "G1815",
+      "lemma": "ἐξανάστασις",
+      "translit": "exanástasis",
+      "translitKo": "엑사나스타시스",
+      "note": ""
+    },
+    {
+      "strong": "G3963",
+      "lemma": "Πάτμος",
+      "translit": "Pátmos",
+      "translitKo": "파트모스",
+      "note": "관용 표기 '밧모'(계 1:9)."
+    },
+    {
+      "strong": "G717",
+      "lemma": "Ἀρμαγεδδών",
+      "translit": "Armageddṓn",
+      "translitKo": "아르마게돈",
+      "note": "관용 표기 '아마겟돈'. 겹자음 δδ를 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G2652",
+      "lemma": "κατανάθεμα",
+      "translit": "katanáthema",
+      "translitKo": "카타나테마",
+      "note": ""
+    },
+    {
+      "strong": "G2305",
+      "lemma": "θειότης",
+      "translit": "theiótēs",
+      "translitKo": "테이오테스",
+      "note": ""
+    },
+    {
+      "strong": "G4573",
+      "lemma": "σεβάζομαι",
+      "translit": "sebázomai",
+      "translitKo": "세바조마이",
+      "note": ""
+    },
+    {
+      "strong": "G2416",
+      "lemma": "ἱεροσυλέω",
+      "translit": "hierosyléō",
+      "translitKo": "히에로쉴레오",
+      "note": ""
+    },
+    {
+      "strong": "G685",
+      "lemma": "ἀρά",
+      "translit": "ará",
+      "translitKo": "아라",
+      "note": ""
+    },
+    {
+      "strong": "G4888",
+      "lemma": "συνδοξάζω",
+      "translit": "syndoxázō",
+      "translitKo": "쉰독사조",
+      "note": ""
+    },
+    {
+      "strong": "G5241",
+      "lemma": "ὑπερεντυγχάνω",
+      "translit": "hyperentynchánō",
+      "translitKo": "휘페렌튕카노",
+      "note": "γ가 χ 앞에서 비음으로 나므로 '튕'으로 적는다."
+    },
+    {
+      "strong": "G3548",
+      "lemma": "νομοθεσία",
+      "translit": "nomothesía",
+      "translitKo": "노모테시아",
+      "note": ""
+    },
+    {
+      "strong": "H3740",
+      "lemma": "כֵּרָה",
+      "translit": "kērâ",
+      "translitKo": "케라",
+      "note": ""
+    },
+    {
+      "strong": "H2761",
+      "lemma": "חֲרַךְ",
+      "translit": "ḥărak",
+      "translitKo": "하라크",
+      "note": "아람어 낱말. 어말 ךְ는 구분 기호 없이 k로 적는다."
+    },
+    {
+      "strong": "H598",
+      "lemma": "אֲנַס",
+      "translit": "ʾănas",
+      "translitKo": "아나스",
+      "note": "아람어 낱말."
+    },
+    {
+      "strong": "H888",
+      "lemma": "בְּאֵשׁ",
+      "translit": "bəʾēš",
+      "translitKo": "베에쉬",
+      "note": "아람어 낱말. 묵음 א는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H2887",
+      "lemma": "טֵבֶת",
+      "translit": "ṭēbet",
+      "translitKo": "테베트",
+      "note": "관용 표기 '데벳'(에 2:16)."
+    },
+    {
+      "strong": "H118",
+      "lemma": "אֲדַלְיָא",
+      "translit": "ʾădalyāʾ",
+      "translitKo": "아달야",
+      "note": "관용 표기 '아달랴'(에 9:8)."
+    },
+    {
+      "strong": "H5412",
+      "lemma": "נְתִין",
+      "translit": "nətîn",
+      "translitKo": "네틴",
+      "note": "관용 표기는 복수형 '느디님'. 여기서는 단수 표제형을 적는다."
+    },
+    {
+      "strong": "H2447",
+      "lemma": "חַכְלִיל",
+      "translit": "ḥaklîl",
+      "translitKo": "하클릴",
+      "note": ""
+    },
+    {
+      "strong": "G2551",
+      "lemma": "κακολογέω",
+      "translit": "kakologéō",
+      "translitKo": "카콜로게오",
+      "note": ""
+    },
+    {
+      "strong": "G5336",
+      "lemma": "φάτνη",
+      "translit": "phátnē",
+      "translitKo": "파트네",
+      "note": ""
+    },
+    {
+      "strong": "G4209",
+      "lemma": "πορφύρα",
+      "translit": "porphýra",
+      "translitKo": "포르퓌라",
+      "note": ""
+    },
+    {
+      "strong": "H3864",
+      "lemma": "לוּבִי",
+      "translit": "lûbî",
+      "translitKo": "루비",
+      "note": "관용 표기는 복수형 '룹 사람'. 여기서는 단수 표제형을 적는다."
+    },
+    {
+      "strong": "H3169",
+      "lemma": "יְחִזְקִיָּה",
+      "translit": "yəḥizqiyyâ",
+      "translitKo": "예히즈키야",
+      "note": "관용 표기 '여히스기야/히스기야'."
+    },
+    {
+      "strong": "H2991",
+      "lemma": "יִבְלְעָם",
+      "translit": "yibləʿām",
+      "translitKo": "이블암",
+      "note": "관용 표기 '이블르암'. ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H8405",
+      "lemma": "תֵּבֵץ",
+      "translit": "tēbēṣ",
+      "translitKo": "테베츠",
+      "note": "관용 표기 '데베스'."
+    },
+    {
+      "strong": "H8093",
+      "lemma": "שִׁמְעָה",
+      "translit": "šimʿâ",
+      "translitKo": "심아",
+      "note": "관용 표기 '시므아'. ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H5025",
+      "lemma": "נֹבַח",
+      "translit": "nōbaḥ",
+      "translitKo": "노바흐",
+      "note": "어말 후음 앞 furtive patach. 관용 표기 '노바'."
+    },
+    {
+      "strong": "H3128",
+      "lemma": "יוֹנַת אֵלֶם רְחֹקִים",
+      "translit": "yônat ʾēlem rəḥōqîm",
+      "translitKo": "요나트 엘렘 레호킴",
+      "note": "시 56편 표제어. 관용 표기 '요낫 엘렘 르호김'."
+    },
+    {
+      "strong": "G2434",
+      "lemma": "ἱλασμός",
+      "translit": "hilasmós",
+      "translitKo": "힐라스모스",
+      "note": ""
+    },
+    {
+      "strong": "G4195",
+      "lemma": "Πόντος",
+      "translit": "Póntos",
+      "translitKo": "폰토스",
+      "note": "관용 표기 '본도'."
+    },
+    {
+      "strong": "G2587",
+      "lemma": "Καππαδοκία",
+      "translit": "Kappadokía",
+      "translitKo": "카파도키아",
+      "note": "관용 표기 '갑바도기아'. 겹자음 ππ를 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G978",
+      "lemma": "Βιθυνία",
+      "translit": "Bithynía",
+      "translitKo": "비튀니아",
+      "note": "관용 표기 '비두니아'."
+    },
+    {
+      "strong": "G2406",
+      "lemma": "ἱεράτευμα",
+      "translit": "hieráteuma",
+      "translitKo": "히에라튜마",
+      "note": ""
+    },
+    {
+      "strong": "G635",
+      "lemma": "ἀποπλανάω",
+      "translit": "apoplanáō",
+      "translitKo": "아포플라나오",
+      "note": ""
+    },
+    {
+      "strong": "G54",
+      "lemma": "ἁγνότης",
+      "translit": "hagnótēs",
+      "translitKo": "하그노테스",
+      "note": ""
+    },
+    {
+      "strong": "G4636",
+      "lemma": "σκῆνος",
+      "translit": "skēnos",
+      "translitKo": "스케노스",
+      "note": ""
+    },
+    {
+      "strong": "G4243",
+      "lemma": "πρεσβεύω",
+      "translit": "presbeúō",
+      "translitKo": "프레스뷰오",
+      "note": ""
+    },
+    {
+      "strong": "G2692",
+      "lemma": "καταστροφή",
+      "translit": "katastrophḗ",
+      "translitKo": "카타스트로페",
+      "note": ""
+    },
+    {
+      "strong": "G4696",
+      "lemma": "σπίλος",
+      "translit": "spílos",
+      "translitKo": "스필로스",
+      "note": ""
+    },
+    {
+      "strong": "G646",
+      "lemma": "ἀποστασία",
+      "translit": "apostasía",
+      "translitKo": "아포스타시아",
+      "note": ""
+    },
+    {
+      "strong": "G4574",
+      "lemma": "σέβασμα",
+      "translit": "sébasma",
+      "translitKo": "세바스마",
+      "note": ""
+    },
+    {
+      "strong": "G4689",
+      "lemma": "σπένδω",
+      "translit": "spéndō",
+      "translitKo": "스펜도",
+      "note": ""
+    },
+    {
+      "strong": "G3974",
+      "lemma": "Πάφος",
+      "translit": "Páphos",
+      "translitKo": "파포스",
+      "note": "관용 표기 '바보'(행 13:6)."
+    },
+    {
+      "strong": "G4099",
+      "lemma": "Πισιδία",
+      "translit": "Pisidía",
+      "translitKo": "피시디아",
+      "note": "관용 표기 '비시디아'."
+    },
+    {
+      "strong": "G5477",
+      "lemma": "Χαναάν",
+      "translit": "Chanaán",
+      "translitKo": "카나안",
+      "note": "관용 표기 '가나안'. χ를 ㅋ로 적는 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3465",
+      "lemma": "Μυσία",
+      "translit": "Mysía",
+      "translitKo": "뮈시아",
+      "note": "관용 표기 '무시아'."
+    },
+    {
+      "strong": "G3070",
+      "lemma": "Λυδία",
+      "translit": "Lydía",
+      "translitKo": "뤼디아",
+      "note": "관용 표기 '루디아'. 여기서는 소아시아 지역명."
+    },
+    {
+      "strong": "G2747",
+      "lemma": "Κεγχρεαί",
+      "translit": "Kenchreaí",
+      "translitKo": "켕크레아이",
+      "note": "관용 표기 '겐그레아'. γ가 χ 앞에서 비음으로 난다."
+    },
+    {
+      "strong": "G221",
+      "lemma": "Ἀλεξανδρεύς",
+      "translit": "Alexandreús",
+      "translitKo": "알렉산드류스",
+      "note": "관용 표기 '알렉산드리아 사람'."
+    },
+    {
+      "strong": "G3318",
+      "lemma": "Μεσοποταμία",
+      "translit": "Mesopotamía",
+      "translitKo": "메소포타미아",
+      "note": ""
+    },
+    {
+      "strong": "G789",
+      "lemma": "Ἄσσος",
+      "translit": "Ássos",
+      "translitKo": "아소스",
+      "note": "관용 표기 '앗소'. 겹자음 σσ를 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G4174",
+      "lemma": "πολιτεία",
+      "translit": "politeía",
+      "translitKo": "폴리테이아",
+      "note": ""
+    },
+    {
+      "strong": "G1885",
+      "lemma": "ἐπαρχία",
+      "translit": "eparchía",
+      "translitKo": "에파르키아",
+      "note": ""
+    },
+    {
+      "strong": "G3578",
+      "lemma": "ξενία",
+      "translit": "xenía",
+      "translitKo": "크세니아",
+      "note": ""
+    },
+    {
+      "strong": "G5488",
+      "lemma": "Χαῤῥάν",
+      "translit": "Charrhán",
+      "translitKo": "카란",
+      "note": "관용 표기 '하란'. χ를 ㅋ로 적고 ῤῥ는 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G4966",
+      "lemma": "Συχέμ",
+      "translit": "Sychém",
+      "translitKo": "쉬켐",
+      "note": "관용 표기 '수겜'."
+    },
+    {
+      "strong": "G4916",
+      "lemma": "συνθάπτω",
+      "translit": "syntháptō",
+      "translitKo": "쉰탑토",
+      "note": ""
+    },
+    {
+      "strong": "G5487",
+      "lemma": "χαριτόω",
+      "translit": "charitóō",
+      "translitKo": "카리토오",
+      "note": ""
+    },
+    {
+      "strong": "G5428",
+      "lemma": "φρόνησις",
+      "translit": "phrónēsis",
+      "translitKo": "프로네시스",
+      "note": ""
+    },
+    {
+      "strong": "G226",
+      "lemma": "ἀληθεύω",
+      "translit": "alētheúō",
+      "translitKo": "알레튜오",
+      "note": ""
+    },
+    {
+      "strong": "G3742",
+      "lemma": "ὁσιότης",
+      "translit": "hosiótēs",
+      "translitKo": "호시오테스",
+      "note": ""
+    },
+    {
+      "strong": "G2454",
+      "lemma": "Ἰουδαϊσμός",
+      "translit": "Ioudaïsmós",
+      "translitKo": "유다이스모스",
+      "note": "Ἰου-는 기존 '유다이오스' 선례를 따라 '유-'로 적는다."
+    },
+    {
+      "strong": "G688",
+      "lemma": "Ἀραβία",
+      "translit": "Arabía",
+      "translitKo": "아라비아",
+      "note": ""
+    },
+    {
+      "strong": "G4460",
+      "lemma": "Ῥαάβ",
+      "translit": "Rhaáb",
+      "translitKo": "라압",
+      "note": "어두 ῥ에 '흐'를 붙이지 않는다. 관용 표기 '라합'."
+    },
+    {
+      "strong": "G4532",
+      "lemma": "Σαλήμ",
+      "translit": "Salḗm",
+      "translitKo": "살렘",
+      "note": ""
+    },
+    {
+      "strong": "G5469",
+      "lemma": "χαλινός",
+      "translit": "chalinós",
+      "translitKo": "칼리노스",
+      "note": ""
+    },
+    {
+      "strong": "G2415",
+      "lemma": "Ἱεροσολυμίτης",
+      "translit": "Hierosolymítēs",
+      "translitKo": "히에로솔뤼미테스",
+      "note": "관용 표기 '예루살렘 사람'."
+    },
+    {
+      "strong": "G2183",
+      "lemma": "ἐφημερία",
+      "translit": "ephēmería",
+      "translitKo": "에페메리아",
+      "note": ""
+    },
+    {
+      "strong": "G5523",
+      "lemma": "Χοραζίν",
+      "translit": "Chorazín",
+      "translitKo": "코라진",
+      "note": "관용 표기 '고라신'."
+    },
+    {
+      "strong": "G3083",
+      "lemma": "λύτρον",
+      "translit": "lýtron",
+      "translitKo": "뤼트론",
+      "note": ""
+    },
+    {
+      "strong": "G1068",
+      "lemma": "Γεθσημανῆ",
+      "translit": "Gethsēmanē",
+      "translitKo": "게트세마네",
+      "note": "관용 표기 '겟세마네'."
+    },
+    {
+      "strong": "G2581",
+      "lemma": "Κανανίτης",
+      "translit": "Kananítēs",
+      "translitKo": "카나니테스",
+      "note": "관용 표기 '가나안인'. 어원상 G5477(Χαναάν)과 혼동된 형태다."
+    },
+    {
+      "strong": "G2878",
+      "lemma": "κορβᾶν",
+      "translit": "korbân",
+      "translitKo": "코르반",
+      "note": "관용 표기 '고르반'(막 7:11)."
+    },
+    {
+      "strong": "G856",
+      "lemma": "ἀφεδρών",
+      "translit": "aphedrṓn",
+      "translitKo": "아페드론",
+      "note": ""
+    },
+    {
+      "strong": "G875",
+      "lemma": "ἀφρίζω",
+      "translit": "aphrízō",
+      "translitKo": "아프리조",
+      "note": ""
+    },
+    {
+      "strong": "G4667",
+      "lemma": "Σμύρνα",
+      "translit": "Smýrna",
+      "translitKo": "스뮈르나",
+      "note": "관용 표기 '서머나'(계 2:8)."
+    },
+    {
+      "strong": "G4010",
+      "lemma": "Πέργαμος",
+      "translit": "Pérgamos",
+      "translitKo": "페르가모스",
+      "note": "관용 표기 '버가모'(계 2:12)."
+    }
+  ]
+}

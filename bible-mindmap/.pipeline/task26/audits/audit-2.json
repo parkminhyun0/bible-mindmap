@@ -1,0 +1,29 @@
+[
+  {
+    "strong": "H4036",
+    "field": "translitKo",
+    "current": "마고르 미사빕",
+    "suggested": "마고르 미사비브",
+    "evidence": "translit은 māgôr missābîb이고 배포 선례 src/data/koreanGlossTopBatch02.js의 sābîb는 '사비브'이다. note는 관용 표기와 달리 SBL 표기를 표제로 둔다고 적었다.",
+    "severity": "major",
+    "reason": "어말 ב를 'ㅂ' 받침으로 적어 관용형 '미사빕'이 되었고, SBL 표기를 표제로 둔다는 note 및 배포 선례 '사비브'와 모순된다."
+  },
+  {
+    "strong": "H8044",
+    "field": "translitKo",
+    "current": "삼갈",
+    "suggested": "샴가르",
+    "evidence": "translit은 Šamgar이다. 배포 선례 src/data/koreanGlossTopBatch02.js의 šalmanʾeser는 '샬마네세르', 같은 어말 ר 표기는 '르'로 적는다. WORKER_SPEC.md는 학술(SBL) 표기를 표제로 삼으라고 한다.",
+    "severity": "major",
+    "reason": "Š를 'ㅅ'으로, 어말 ר를 'ㄹ' 받침으로 적어 관용형 '삼갈'이 되었으며 학술 음역 및 배포 자모 선례와 어긋난다."
+  },
+  {
+    "strong": "H419",
+    "field": "translitKo",
+    "current": "엘닷",
+    "suggested": "엘다드",
+    "evidence": "translit은 ʾEldād이다. 같은 배치 H4312 Mēdād는 '메다드'이고, 배포 선례의 어말 ד도 '드'(예: ʾeḥād→에하드, ʿebed→에베드)로 표기된다.",
+    "severity": "major",
+    "reason": "어말 ד를 '닷'으로 적어 관용형이 되었고, 같은 음역 자모와 배포 선례의 '드' 표기와 모순된다."
+  }
+]

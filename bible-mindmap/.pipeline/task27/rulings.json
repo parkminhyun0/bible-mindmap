@@ -1,0 +1,1049 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 13,
+  "ties": [
+    {
+      "strong": "H3578",
+      "koRank": [
+        [
+          "코즈바",
+          2
+        ],
+        [
+          "코제바",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "kōzĕbāʾ",
+          1
+        ],
+        [
+          "kôzĕbāʾ",
+          1
+        ],
+        [
+          "kôzĕḇāʾ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2979",
+      "koRank": [
+        [
+          "예아트라이",
+          2
+        ],
+        [
+          "예아테라이",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕʾātĕray",
+          1
+        ],
+        [
+          "yeʾātray",
+          1
+        ],
+        [
+          "yeʾāṯray",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H4921",
+      "koRank": [
+        [
+          "메쉴레밋",
+          2
+        ],
+        [
+          "메실레미트",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕšillēmît",
+          1
+        ],
+        [
+          "mešillemît",
+          1
+        ],
+        [
+          "mešillemîṯ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H6871",
+      "koRank": [
+        [
+          "츠루아",
+          2
+        ],
+        [
+          "체루아",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ṣĕrûʿâ",
+          1
+        ],
+        [
+          "ṣerûʿāh",
+          1
+        ],
+        [
+          "ṣĕrûʿāh",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H6859",
+      "koRank": [
+        [
+          "체파타",
+          1
+        ],
+        [
+          "츠파타",
+          1
+        ],
+        [
+          "츠파트하",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ṣĕpātâ",
+          1
+        ],
+        [
+          "ṣepātāh",
+          1
+        ],
+        [
+          "ṣĕp̄āṯāh",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H8116",
+      "koRank": [
+        [
+          "심리트",
+          1
+        ],
+        [
+          "쉬므리트",
+          1
+        ],
+        [
+          "심릿",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "šimrît",
+          2
+        ],
+        [
+          "šimrîṯ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3089",
+      "koRank": [
+        [
+          "예호셰바",
+          2
+        ],
+        [
+          "여호세바",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕhôšebaʿ",
+          1
+        ],
+        [
+          "yehôšebaʿ",
+          1
+        ],
+        [
+          "yehôšeḇaʿ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3192",
+      "koRank": [
+        [
+          "욧바",
+          2
+        ],
+        [
+          "요트바",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yoṭbâ",
+          1
+        ],
+        [
+          "yoṭbā",
+          1
+        ],
+        [
+          "yoṭḇā",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3380",
+      "koRank": [
+        [
+          "예루베셰트",
+          1
+        ],
+        [
+          "예룹베셰트",
+          1
+        ],
+        [
+          "여룹베셰트",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕrubbešet",
+          3
+        ]
+      ]
+    },
+    {
+      "strong": "H3041",
+      "koRank": [
+        [
+          "예디드야",
+          2
+        ],
+        [
+          "여디드야",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕdîdyâ",
+          1
+        ],
+        [
+          "yĕdîdyāh",
+          1
+        ],
+        [
+          "yĕḏîḏyāh",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H5522",
+      "koRank": [
+        [
+          "시쿠트",
+          1
+        ],
+        [
+          "시쿳",
+          1
+        ],
+        [
+          "식굿",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "sikkût",
+          3
+        ]
+      ]
+    },
+    {
+      "strong": "H1691",
+      "koRank": [
+        [
+          "디블라임",
+          2
+        ],
+        [
+          "딥라임",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "diblayim",
+          1
+        ],
+        [
+          "diblāyim",
+          1
+        ],
+        [
+          "diḇlāyim",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2262",
+      "koRank": [
+        [
+          "하바찬야",
+          1
+        ],
+        [
+          "하바차냐",
+          1
+        ],
+        [
+          "하바차느야",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ḥăbaṣṣanyâ",
+          1
+        ],
+        [
+          "ḥăbaṣṣanyāh",
+          1
+        ],
+        [
+          "ḥăḇaṣṣanyāh",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H2466",
+      "lemma": "חֵלֶד",
+      "translit": "ḥēled",
+      "translitKo": "헬레드",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H5814",
+      "lemma": "עֻזִּיָּא",
+      "translit": "ʿuzzîyāʾ",
+      "translitKo": "웃지야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 끝 알레프는 음역 표제에 반영하되 한글에서는 생략했다."
+    },
+    {
+      "strong": "H4925",
+      "lemma": "מִשְׁמַנָּה",
+      "translit": "mišmannâ",
+      "translitKo": "미쉬만나",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H3621",
+      "lemma": "כְּלוּבַי",
+      "translit": "kĕlûbay",
+      "translitKo": "클루바이",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3421",
+      "lemma": "יׇרְקְעָם",
+      "translit": "yorqĕʿām",
+      "translitKo": "요르크암",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 첫 모음은 배포 음절 선례에 따라 요르-로 읽는다."
+    },
+    {
+      "strong": "H8101",
+      "lemma": "שִׁמְעָתִי",
+      "translit": "šimʿātî",
+      "translitKo": "쉬마티",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6469",
+      "lemma": "פְּעֻלְּתַי",
+      "translit": "pĕʿullĕtay",
+      "translitKo": "프울레타이",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H8049",
+      "lemma": "שַׁמְהוּת",
+      "translit": "šamhût",
+      "translitKo": "샴후트",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H5724",
+      "lemma": "עַדְלַי",
+      "translit": "ʿadlay",
+      "translitKo": "아들라이",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H8488",
+      "lemma": "תֵּימְנִי",
+      "translit": "tēmĕnî",
+      "translitKo": "테메니",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 영문 표제 Temeni 도 세 음절이다."
+    },
+    {
+      "strong": "H326",
+      "lemma": "אֲחַשְׁתָּרִי",
+      "translit": "ʾăḥaštārî",
+      "translitKo": "아하스타리",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 정관사 없이 표제형만 음역했다."
+    },
+    {
+      "strong": "H7746",
+      "lemma": "שׁוּחָה",
+      "translit": "šûḥāh",
+      "translitKo": "슈하",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 어말 ־ָה 는 translit 에서 â, 한글로는 '하'(ח)+'아' 가 아니라 '하' 한 음절이다(선례 토라·라바)."
+    },
+    {
+      "strong": "H8468",
+      "lemma": "תְּחִנָּה",
+      "translit": "tĕḥinnâ",
+      "translitKo": "테힌나",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 겹자음은 받침으로 중복하지 않는다."
+    },
+    {
+      "strong": "H3578",
+      "lemma": "כֹּזְבָא",
+      "translit": "kōzĕbāʾ",
+      "translitKo": "코즈바",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3143",
+      "lemma": "יוֹשִׁבְיָה",
+      "translit": "yôšibyāh",
+      "translitKo": "요시브야",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H5661",
+      "lemma": "עַבְדִיאֵל",
+      "translit": "ʿabdîʾēl",
+      "translitKo": "압디엘",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2979",
+      "lemma": "יְאָתְרַי",
+      "translit": "yĕʾātĕray",
+      "translitKo": "예아트라이",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2293",
+      "lemma": "חַגִּיָּה",
+      "translit": "ḥaggîyāh",
+      "translitKo": "학기야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H379",
+      "lemma": "אִישְׁהוֹד",
+      "translit": "ʾîšhôd",
+      "translitKo": "이쉬호드",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H7609",
+      "lemma": "שֶׁאֱרָה",
+      "translit": "šeʾērāh",
+      "translitKo": "셰에라",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H6457",
+      "lemma": "פָּסַךְ",
+      "translit": "pāsak",
+      "translitKo": "파사흐",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 ח는 후음 ḥ 계열로 적는다."
+    },
+    {
+      "strong": "H4331",
+      "lemma": "מֵישָׁא",
+      "translit": "mêšāʾ",
+      "translitKo": "메이샤",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 א는 별도 음가를 한글로 덧붙이지 않았다."
+    },
+    {
+      "strong": "H8039",
+      "lemma": "שִׁמְאָה",
+      "translit": "šimʿāh",
+      "translitKo": "심아",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). lemma 가 א 이므로 translit 은 šimʿâ 가 아니라 šimʾâ 다."
+    },
+    {
+      "strong": "H4921",
+      "lemma": "מְשִׁלֵּמִית",
+      "translit": "mĕšillēmît",
+      "translitKo": "메쉴레밋",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H8043",
+      "lemma": "שִׁמְאָם",
+      "translit": "šimʿām",
+      "translitKo": "심암",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). lemma 가 א 이므로 translit 은 šimʾām 이다."
+    },
+    {
+      "strong": "H6871",
+      "lemma": "צְרוּעָה",
+      "translit": "ṣĕrûʿâ",
+      "translitKo": "츠루아",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2886",
+      "lemma": "טַבְרִמּוֹן",
+      "translit": "ṭabrimmôn",
+      "translitKo": "타브림몬",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H2383",
+      "lemma": "חֶזְיוֹן",
+      "translit": "ḥezyôn",
+      "translitKo": "헤즈욘",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H456",
+      "lemma": "אֱלִיחֹרֶף",
+      "translit": "ʾĕlîḥōrep",
+      "translitKo": "엘리호레프",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H292",
+      "lemma": "אֲחִינָדָב",
+      "translit": "ʾăḥînādāb",
+      "translitKo": "아히나다브",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역 관용 표기는 '아히나답'이나 배포 데이터는 어말 ב 를 자하브·모아브·요아브처럼 '브'로 적는다."
+    },
+    {
+      "strong": "H2802",
+      "lemma": "חֶרֶת",
+      "translit": "ḥeret",
+      "translitKo": "헤레트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H4582",
+      "lemma": "מָעוֹךְ",
+      "translit": "māʿôk",
+      "translitKo": "마오흐",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H5525",
+      "lemma": "סֻכִּי",
+      "translit": "sukkî",
+      "translitKo": "숙키",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6859",
+      "lemma": "צְפָתָה",
+      "translit": "ṣĕpātâ",
+      "translitKo": "체파타",
+      "votesKo": 1,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치)."
+    },
+    {
+      "strong": "H6007",
+      "lemma": "עֲמַסְיָה",
+      "translit": "ʿămasyāh",
+      "translitKo": "아마스야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H8116",
+      "lemma": "שִׁמְרִית",
+      "translit": "šimrît",
+      "translitKo": "심리트",
+      "votesKo": 1,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치)."
+    },
+    {
+      "strong": "H2311",
+      "lemma": "חַדְלַי",
+      "translit": "ḥadlay",
+      "translitKo": "하들라이",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H3260",
+      "lemma": "יֶעְדִּי",
+      "translit": "yeʿdî",
+      "translitKo": "예디",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 영문 표제 Iddo 는 마소라 난외독(케레)에서 온 것이고 표제 철자는 יֶעְדִּי 다."
+    },
+    {
+      "strong": "H3089",
+      "lemma": "יְהוֹשֶׁבַע",
+      "translit": "yĕhôšebaʿ",
+      "translitKo": "예호셰바",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역 관용 표기는 '여호세바'다. 배포 데이터는 יְהוֹ 를 '예호'로, שֶׁ 를 '셰'로 적는다."
+    },
+    {
+      "strong": "H5180",
+      "lemma": "נְחֻשְׁתָּן",
+      "translit": "nĕḥuštān",
+      "translitKo": "느후스탄",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3192",
+      "lemma": "יׇטְבָה",
+      "translit": "yoṭbâ",
+      "translitKo": "욧바",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H5179",
+      "lemma": "נְחֻשְׁתָּא",
+      "translit": "nĕḥuštā",
+      "translitKo": "느후스타",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3380",
+      "lemma": "יְרֻבֶּשֶׁת",
+      "translit": "yĕrubbešet",
+      "translitKo": "예루베셰트",
+      "votesKo": 1,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 어말 שׁ 뒤에 세골 모음이 오므로 음절 첫소리 '셰'로 적는다."
+    },
+    {
+      "strong": "H3041",
+      "lemma": "יְדִידְיָה",
+      "translit": "yĕdîdyâ",
+      "translitKo": "예디드야",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4012",
+      "lemma": "מְבֻנַּי",
+      "translit": "mĕbunnay",
+      "translitKo": "므분나이",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3609",
+      "lemma": "כִּלְאָב",
+      "translit": "kilʾāb",
+      "translitKo": "킬아브",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역 관용 표기는 '길르압'이다."
+    },
+    {
+      "strong": "H5522",
+      "lemma": "סִכּוּת",
+      "translit": "sikkût",
+      "translitKo": "시쿠트",
+      "votesKo": 1,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치)."
+    },
+    {
+      "strong": "H3594",
+      "lemma": "כִּיּוּן",
+      "translit": "kiyyûn",
+      "translitKo": "기윤",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H7598",
+      "lemma": "שְׁאַלְתִּיאֵל",
+      "translit": "šĕʾaltîʾēl",
+      "translitKo": "셰알티엘",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역 관용 표기는 '스알디엘'이다. 배포 데이터는 유성 쉐바를 '으'가 아니라 '에'로 적는다."
+    },
+    {
+      "strong": "H144",
+      "lemma": "אֲדָר",
+      "translit": "ʾădār",
+      "translitKo": "아달",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6997",
+      "lemma": "קָטָן",
+      "translit": "qaṭṭān",
+      "translitKo": "카탄",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 영문 표제 Hakkatan 은 정관사 הַ 를 포함한 형태이고 lemma 자체에는 관사도 다게쉬도 없다."
+    },
+    {
+      "strong": "H5611",
+      "lemma": "סְפָר",
+      "translit": "sĕpār",
+      "translitKo": "세파르",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치)."
+    },
+    {
+      "strong": "H8134",
+      "lemma": "שִׁנְאָב",
+      "translit": "šinʾāb",
+      "translitKo": "신아브",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3044",
+      "lemma": "יִדְלָף",
+      "translit": "yidlāp",
+      "translitKo": "이드랍",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H6230",
+      "lemma": "עֵשֶׂק",
+      "translit": "ʿēśeq",
+      "translitKo": "에세크",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역 관용 표기는 '에섹'이다."
+    },
+    {
+      "strong": "H4649",
+      "lemma": "מֻפִּים",
+      "translit": "muppîm",
+      "translitKo": "무핌",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H1691",
+      "lemma": "דִּבְלַיִם",
+      "translit": "diblayim",
+      "translitKo": "디블라임",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H8020",
+      "lemma": "שַׁלְמַן",
+      "translit": "šalman",
+      "translitKo": "샬만",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4088",
+      "lemma": "מַדְמֵנָה",
+      "translit": "madmēnāh",
+      "translitKo": "마드메나",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H1966",
+      "lemma": "הֵילֵל",
+      "translit": "hêlēl",
+      "translitKo": "헬렐",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 라틴역 Lucifer 로 알려졌고 개역은 '계명성'으로 옮긴 낱말이다."
+    },
+    {
+      "strong": "H2262",
+      "lemma": "חֲבַצַּנְיָה",
+      "translit": "ḥăbaṣṣanyâ",
+      "translitKo": "하바찬야",
+      "votesKo": 1,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치)."
+    }
+  ]
+}

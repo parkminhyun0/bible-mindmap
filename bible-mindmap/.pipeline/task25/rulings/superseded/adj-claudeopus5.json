@@ -1,0 +1,16 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {"strong":"G883","translit":"Achaïkós","translitKo":"아카이코스","evidence":"koreanGlossTopBatch11.js의 G882 Achaḯa→아카이아 선례처럼 χ는 ㅋ, αι는 아이로 적는다.","note":""},
+    {"strong":"H6318","translit":"pôṭîpar","translitKo":"포티파르","evidence":"koreanGlossTopBatch 파일들의 학술 음역 선례를 따라 p·ṭ·î·par를 포·티·파르로 보존한다.","note":"관용 표기 보디발과 구별되는 학술 음역."},
+    {"strong":"H2265","translit":"ḥăḇaqqûq","translitKo":"하바쿡","evidence":"koreanGlossTopBatch의 후음 ḥ→하, q→ㅋ 및 다게쉬 포르테를 겹치지 않는 선례를 따른다.","note":""},
+    {"strong":"H3818","translit":"lōʾ ʿammî","translitKo":"로암미","evidence":"배포 고유명사 선례에서 합성 인명은 붙여 적고, WORKER_SPEC의 ע 무표기 원칙을 적용한다.","note":""},
+    {"strong":"G4551","translit":"Sappheírē","translitKo":"삽비라","evidence":"contextChapterCardsActs.js의 ‘삽비라’ 배포 표기를 따른다.","note":"관용 배포 표기."},
+    {"strong":"G3434","translit":"Molóch","translitKo":"몰록","evidence":"배포 성경 고유명사 표기의 어말 χ→ㅋ 선례를 따른다.","note":"관용 배포 표기."},
+    {"strong":"G4546","translit":"Sampsṓn","translitKo":"삼손","evidence":"bibleReferences.js의 canonicalName ‘삼손’과 koreanGlossTopBatch05.js의 삼손 관용 표기 선례를 따른다.","note":"관용 배포 표기."},
+    {"strong":"G2422","translit":"Iephtháe","translitKo":"입다에","evidence":"koreanGlossTopBatch06.js의 학술 Jephthah 표기와 어말 후음을 보존하는 음역 원칙을 따른다.","note":"관용 ‘입다’와 구별되는 헬라어 음역."},
+    {"strong":"G993","translit":"Boanergés","translitKo":"보아너게스","evidence":"배포 그리스어 음역의 어말 -és를 -에스, γ를 ㄱ으로 적는 선례를 따른다.","note":""},
+    {"strong":"G4477","translit":"Rhacháb","translitKo":"라합","evidence":"koreanGlossTopBatch17.js의 Rahab→라하브 및 bibleReferences.js의 관용 인명 표기 선례를 종합해 신약 관용형을 따른다.","note":"관용 배포 표기; 어두 ῥ는 흐를 붙이지 않는다."},
+    {"strong":"G4503","translit":"Rhoúth","translitKo":"룻","evidence":"bibleReferences.js의 canonicalName ‘룻’과 koreanGlossTopBatch10.js의 관용 표기 선례를 따른다.","note":"관용 배포 표기."}
+  ]
+}

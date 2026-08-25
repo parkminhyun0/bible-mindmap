@@ -1,0 +1,614 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "G214",
+      "translit": "alalázō",
+      "translitKo": "알라조",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5353",
+      "translit": "phthóngos",
+      "translitKo": "프통고스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2880",
+      "translit": "korénnymi",
+      "translitKo": "코렌뉘미",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2275",
+      "translit": "hḗttēma",
+      "translitKo": "헤테마",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1467",
+      "translit": "enkrateúomai",
+      "translitKo": "엔크라튜오마이",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4473",
+      "translit": "rhantismós",
+      "translitKo": "란티스모스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "배포 선례의 어두 ῥ 표기처럼 흐를 붙이지 않는다."
+    },
+    {
+      "strong": "G4964",
+      "translit": "syschēmatízō",
+      "translitKo": "쉬스케마티조",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2029",
+      "translit": "epopteúō",
+      "translitKo": "에포프튜오",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G546",
+      "translit": "apeiléō",
+      "translitKo": "아페일레오",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G743",
+      "translit": "archángelos",
+      "translitKo": "아르캉겔로스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1226",
+      "translit": "diabebaióomai",
+      "translitKo": "디아베바이오마이",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1783",
+      "translit": "énteuxis",
+      "translitKo": "엔튜크시스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2096",
+      "translit": "Eûa",
+      "translitKo": "유아",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4131",
+      "translit": "plḗktēs",
+      "translitKo": "플렉테스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G47",
+      "translit": "hagneía",
+      "translitKo": "하기네이아",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4269",
+      "translit": "prógonos",
+      "translitKo": "프로고노스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2108",
+      "translit": "euergesía",
+      "translitKo": "유에르게시아",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5313",
+      "translit": "hýpsōma",
+      "translitKo": "휘프소마",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2185",
+      "translit": "ephiknéomai",
+      "translitKo": "에피크네오마이",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4465",
+      "translit": "rhabdoûchos",
+      "translitKo": "랍두우코스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "배포 선례의 어두 ῥ 표기처럼 흐를 붙이지 않는다."
+    },
+    {
+      "strong": "G4462",
+      "translit": "rhabboní",
+      "translitKo": "랍보니",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "배포 선례의 어두 ῥ 표기처럼 흐를 붙이지 않는다."
+    },
+    {
+      "strong": "G2489",
+      "translit": "Iōánna",
+      "translitKo": "요안나",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3158",
+      "translit": "Matthát",
+      "translitKo": "맛닷",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3161",
+      "translit": "Mattathías",
+      "translitKo": "맛타티아스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2536",
+      "translit": "Kaïnán",
+      "translitKo": "가이난",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2383",
+      "translit": "Iáeiros",
+      "translitKo": "야이로스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4504",
+      "translit": "Rhoûphos",
+      "translitKo": "루포스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2498",
+      "translit": "Iōsaphát",
+      "translitKo": "여호사밧",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "한국어 성경의 굳어진 관용 표기를 따르되 학술 음역과의 차이를 기록했다."
+    },
+    {
+      "strong": "G2496",
+      "translit": "Iōrám",
+      "translitKo": "요람",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2488",
+      "translit": "Iōátham",
+      "translitKo": "요담",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G881",
+      "translit": "Acház",
+      "translitKo": "아하스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2502",
+      "translit": "Iōsías",
+      "translitKo": "요시야",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2423",
+      "translit": "Iechonías",
+      "translitKo": "여고냐",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "한국어 성경의 굳어진 관용 표기를 따르되 학술 음역과의 차이를 기록했다."
+    },
+    {
+      "strong": "G885",
+      "translit": "Acheím",
+      "translitKo": "아킴",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3157",
+      "translit": "Matthán",
+      "translitKo": "맛단",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H3853",
+      "translit": "Ləhāḇîm",
+      "translitKo": "르하빔",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H1255",
+      "translit": "Bərōʾḏaḵ Balʾăḏān",
+      "translitKo": "브로닥 발라단",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H8339",
+      "translit": "Šēšəḇaṣṣar",
+      "translitKo": "셰스바차르",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H6847",
+      "translit": "Ṣāp̄ənat Paʿnēaḥ",
+      "translitKo": "차프낫 파네아흐",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H4757",
+      "translit": "Mərōʾḏaḵ Balʾāḏān",
+      "translitKo": "므로닥 발라단",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H78",
+      "translit": "ʾIbṣān",
+      "translitKo": "입산",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H2246",
+      "translit": "Ḥōḇāḇ",
+      "translitKo": "호밥",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H4312",
+      "translit": "Mēḏāḏ",
+      "translitKo": "메닷",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H3579",
+      "translit": "Kōzḇî",
+      "translitKo": "고즈비",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G919",
+      "translit": "Bariēsoûs",
+      "translitKo": "바리에수스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2333",
+      "translit": "Theudâs",
+      "translitKo": "유다스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": "배포 사전의 ευ 유 계열 표기에 따른다."
+    },
+    {
+      "strong": "G3937",
+      "translit": "Parmenâs",
+      "translitKo": "파르메나스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3532",
+      "translit": "Nikólaos",
+      "translitKo": "니콜라오스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2858",
+      "translit": "Kolossaeús",
+      "translitKo": "콜로사유스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2187",
+      "translit": "Ephraím",
+      "translitKo": "에프라임",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2879",
+      "translit": "Koré",
+      "translitKo": "코레",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2242",
+      "translit": "Hēlí",
+      "translitKo": "헬리",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3092",
+      "translit": "Maáth",
+      "translitKo": "마아트",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G6044",
+      "translit": "Iōsḗch",
+      "translitKo": "요세크",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G6043",
+      "translit": "Iōdá",
+      "translitKo": "요다",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G78",
+      "translit": "Addí",
+      "translitKo": "아디",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3160",
+      "translit": "Mattathá",
+      "translitKo": "마타타",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3481",
+      "translit": "Nathán",
+      "translitKo": "나단",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2291",
+      "translit": "Thára",
+      "translitKo": "타라",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G742",
+      "translit": "Arphaxád",
+      "translitKo": "아르팍사드",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3103",
+      "translit": "Mathousála",
+      "translitKo": "마투살라",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2391",
+      "translit": "Iáred",
+      "translitKo": "야렛",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2283",
+      "translit": "Thámar",
+      "translitKo": "다말",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3002",
+      "translit": "Lebbaîos",
+      "translitKo": "레바이오스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4941",
+      "translit": "Syntýchē",
+      "translitKo": "신튀케",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2815",
+      "translit": "Klḗmēs",
+      "translitKo": "클레메스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G682",
+      "translit": "Apphía",
+      "translitKo": "앱피아",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1045",
+      "translit": "Gád",
+      "translitKo": "갓",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2466",
+      "translit": "Isachár",
+      "translitKo": "이사카르",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5402",
+      "translit": "Phoíbē",
+      "translitKo": "포이베",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1866",
+      "translit": "Epaínetos",
+      "translitKo": "에파이네토스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G408",
+      "translit": "Andrónikos",
+      "translitKo": "안드로니코스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2458",
+      "translit": "Iouniâs",
+      "translitKo": "유니아스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G291",
+      "translit": "Amplías",
+      "translitKo": "암플리아",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3773",
+      "translit": "Ourbanós",
+      "translitKo": "우르바노스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4720",
+      "translit": "Stáchys",
+      "translitKo": "스타퀴스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G559",
+      "translit": "Apellēs",
+      "translitKo": "아펠레스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G711",
+      "translit": "Aristóboulos",
+      "translitKo": "아리스토불로스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5170",
+      "translit": "Trýphaina",
+      "translitKo": "트뤼파이나",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5173",
+      "translit": "Tryphōsa",
+      "translitKo": "트뤼포사",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G4069",
+      "translit": "Persís",
+      "translitKo": "페르시스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G799",
+      "translit": "Asýnkritos",
+      "translitKo": "아싱크리토스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5393",
+      "translit": "Phlégōn",
+      "translitKo": "플레곤",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3969",
+      "translit": "Patrobâs",
+      "translitKo": "파트로바스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2057",
+      "translit": "Hermâs",
+      "translitKo": "헤르마스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G5378",
+      "translit": "Philólogos",
+      "translitKo": "필로로고스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3652",
+      "translit": "Olympâs",
+      "translitKo": "올륌파스",
+      "evidence": "src/data/koreanGloss*.js 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 배포 음역 선례",
+      "note": ""
+    }
+  ]
+}

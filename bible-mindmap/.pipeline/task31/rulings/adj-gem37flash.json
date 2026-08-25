@@ -1,0 +1,790 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H3780",
+      "translit": "kāśâ",
+      "translitKo": "카사",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7876",
+      "translit": "šāyâ",
+      "translitKo": "샤야",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4198",
+      "translit": "māzeh",
+      "translitKo": "마제",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4815",
+      "translit": "mᵊrîrî",
+      "translitKo": "므리리",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6284",
+      "translit": "pāʾâ",
+      "translitKo": "파아",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H3647",
+      "translit": "kāmas",
+      "translitKo": "카마스",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2245",
+      "translit": "ḥabab",
+      "translitKo": "하바브",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8497",
+      "translit": "tākâ",
+      "translitKo": "타카",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6988",
+      "translit": "qᵊṭôrâ",
+      "translitKo": "크토라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2653",
+      "translit": "ḥapap",
+      "translitKo": "하파프",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1645",
+      "translit": "gēreš",
+      "translitKo": "게레쉬",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8228",
+      "translit": "šepaʿ",
+      "translitKo": "셰파",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2187",
+      "translit": "zānaq",
+      "translitKo": "자나크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4515",
+      "translit": "minʿāl",
+      "translitKo": "민알",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1679",
+      "translit": "dōḇeʾ",
+      "translitKo": "도베",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H3893",
+      "translit": "lēaḥ",
+      "translitKo": "레아흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7190",
+      "translit": "qᵊšî",
+      "translitKo": "크시",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5506",
+      "translit": "sᵊḥōrâ",
+      "translitKo": "스호라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1728",
+      "translit": "dawwāḡ",
+      "translitKo": "다와그",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2751",
+      "translit": "ḥōrî",
+      "translitKo": "호리",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4761",
+      "translit": "marʾāšâ",
+      "translitKo": "마르아샤",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4734",
+      "translit": "miqlāʿat",
+      "translitKo": "미클라아트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1550",
+      "translit": "gālîl",
+      "translitKo": "갈릴",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2707",
+      "translit": "ḥāqâ",
+      "translitKo": "하카",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4237",
+      "translit": "meḥĕzâ",
+      "translitKo": "메헤자",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2947",
+      "translit": "ṭēpaḥ",
+      "translitKo": "테파흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4165",
+      "translit": "mûṣāq",
+      "translitKo": "무차크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2837",
+      "translit": "ḥēšeq",
+      "translitKo": "헤셰크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8622",
+      "translit": "tᵊqûpâ",
+      "translitKo": "트쿠파",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6926",
+      "translit": "qidmâ",
+      "translitKo": "키드마",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6877",
+      "translit": "ṣᵊrîaḥ",
+      "translitKo": "츠리아흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6277",
+      "translit": "ʿāṯāq",
+      "translitKo": "아타크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2844",
+      "translit": "ḥat",
+      "translitKo": "하트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4770",
+      "translit": "marbēq",
+      "translitKo": "마르베크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6750",
+      "translit": "ṣālal",
+      "translitKo": "찰랄",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2524",
+      "translit": "ḥām",
+      "translitKo": "함",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8495",
+      "translit": "tayiš",
+      "translitKo": "타이쉬",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2688",
+      "translit": "Ḥaṣṣĕṣôn Tāmār",
+      "translitKo": "하체촌 타마르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1765",
+      "translit": "dāḥap̄",
+      "translitKo": "다하프",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1740",
+      "translit": "dûaḥ",
+      "translitKo": "두아흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H225",
+      "translit": "ʾûṯ",
+      "translitKo": "우트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4964",
+      "translit": "meteḡ",
+      "translitKo": "메테그",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7046",
+      "translit": "qālas",
+      "translitKo": "칼라스",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H219",
+      "translit": "ʾôrâ",
+      "translitKo": "오라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H579",
+      "translit": "ʾānâ",
+      "translitKo": "아나",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5730",
+      "translit": "ʿēden",
+      "translitKo": "에덴",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2897",
+      "translit": "ṭôb",
+      "translitKo": "토브",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5228",
+      "translit": "nāḵōaḥ",
+      "translitKo": "나코아흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7504",
+      "translit": "rāp̄eh",
+      "translitKo": "라페",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5742",
+      "translit": "ʿādāš",
+      "translitKo": "아다쉬",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4794",
+      "translit": "mᵊrûṣâ",
+      "translitKo": "므루차",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H92",
+      "translit": "ʾăḡuddâ",
+      "translitKo": "아구다",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H491",
+      "translit": "ʾalmanûṯ",
+      "translitKo": "알마누트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7791",
+      "translit": "šûr",
+      "translitKo": "슈르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5920",
+      "translit": "ʿal",
+      "translitKo": "알",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H877",
+      "translit": "bōʾr",
+      "translitKo": "보르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5190",
+      "translit": "nāṭal",
+      "translitKo": "나탈",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7875",
+      "translit": "śîd",
+      "translitKo": "시드",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5995",
+      "translit": "ʿāmîr",
+      "translitKo": "아미르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6217",
+      "translit": "ʿāšûq",
+      "translitKo": "아슈크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5229",
+      "translit": "nᵊḵōḥâ",
+      "translitKo": "느코하",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2172",
+      "translit": "zimrâ",
+      "translitKo": "짐라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1488",
+      "translit": "gēz",
+      "translitKo": "게즈",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H594",
+      "translit": "ʾănāḵ",
+      "translitKo": "아나크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5342",
+      "translit": "nēṣer",
+      "translitKo": "네체르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6716",
+      "translit": "ṣî",
+      "translitKo": "치",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4070",
+      "translit": "mᵊdôr",
+      "translitKo": "므도르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4486",
+      "translit": "mandaʿ",
+      "translitKo": "만다",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1547",
+      "translit": "gālûṯ",
+      "translitKo": "갈루트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H3546",
+      "translit": "kᵊhal",
+      "translitKo": "크할",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4223",
+      "translit": "mᵊḥāʾ",
+      "translitKo": "므하",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6151",
+      "translit": "ʿăraḇ",
+      "translitKo": "아라브",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4756",
+      "translit": "mārēʾ",
+      "translitKo": "마레",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H521",
+      "translit": "ʾammâ",
+      "translitKo": "암마",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8361",
+      "translit": "šittîn",
+      "translitKo": "시틴",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2597",
+      "translit": "ḥănukkāʾ",
+      "translitKo": "하누카",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4953",
+      "translit": "mašrōqî",
+      "translitKo": "마시로키",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7030",
+      "translit": "qîtārōs",
+      "translitKo": "키타로스",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5443",
+      "translit": "sabbᵊḵāʾ",
+      "translitKo": "사브카",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6460",
+      "translit": "pᵊsantērîn",
+      "translitKo": "프산테린",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5481",
+      "translit": "sûmpōnyâ",
+      "translitKo": "숨포냐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2178",
+      "translit": "zan",
+      "translitKo": "잔",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2170",
+      "translit": "zᵊmar",
+      "translitKo": "즈마르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H3729",
+      "translit": "kᵊpat",
+      "translitKo": "크파트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1907",
+      "translit": "haddāḇār",
+      "translitKo": "하다바르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7960",
+      "translit": "šālû",
+      "translitKo": "샬루",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6744",
+      "translit": "ṣᵊlaḥ",
+      "translitKo": "츨라흐",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8001",
+      "translit": "šᵊlām",
+      "translitKo": "슐람",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1859",
+      "translit": "dār",
+      "translitKo": "다르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6056",
+      "translit": "ʿănap̄",
+      "translitKo": "아나프",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6853",
+      "translit": "ṣᵊpar",
+      "translitKo": "츠파르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2499",
+      "translit": "ḥălap̄",
+      "translitKo": "할라프",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H2957",
+      "translit": "ṭᵊraḏ",
+      "translitKo": "트라드",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8648",
+      "translit": "tᵊrēn",
+      "translitKo": "트레인",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7313",
+      "translit": "rûm",
+      "translitKo": "룸",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8214",
+      "translit": "šᵊpal",
+      "translitKo": "슈팔",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H506",
+      "translit": "ʾălap̄",
+      "translitKo": "알라프",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5142",
+      "translit": "nᵊzaq",
+      "translitKo": "느자크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H6695",
+      "translit": "ṣôq",
+      "translitKo": "초크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1682",
+      "translit": "dᵊḇôrâ",
+      "translitKo": "드보라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H4863",
+      "translit": "mišʾereṯ",
+      "translitKo": "미쉬에레트",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H798",
+      "translit": "ʾašdōṯ hap-pisgāh",
+      "translitKo": "아쉬도트 하피스가",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H8562",
+      "translit": "tamrûq",
+      "translitKo": "타므루크",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H323",
+      "translit": "ʾăḥašdarpān",
+      "translitKo": "아하쉬다르판",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H7958",
+      "translit": "śelāw",
+      "translitKo": "셀라",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5230",
+      "translit": "nāḵal",
+      "translitKo": "나할",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5852",
+      "translit": "ʿăṭârôṯ",
+      "translitKo": "아타롯",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H5853",
+      "translit": "ʿaṭrôṯ ʾaddâr",
+      "translitKo": "아트롯 아다르",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "H1621",
+      "translit": "gargĕrôṯ",
+      "translitKo": "가르게롯",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "G4914",
+      "translit": "synḗtheia",
+      "translitKo": "시네테이아",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "G4874",
+      "translit": "synanamígnymi",
+      "translitKo": "시나나미그니미",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    },
+    {
+      "strong": "G3435",
+      "translit": "molýnō",
+      "translitKo": "몰리노",
+      "evidence": "src/data/koreanGloss*.js 및 관련 배포 선례의 SBL 음역·한글 표기",
+      "note": ""
+    }
+  ]
+}
+

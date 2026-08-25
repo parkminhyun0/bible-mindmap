@@ -1,0 +1,707 @@
+{
+  "shard": "BH",
+  "model": "gem31pro",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G4989",
+      "lemma": "Σωσίπατρος",
+      "translit": "Sōsípatros",
+      "translitKo": "Sosipater",
+      "note": ""
+    },
+    {
+      "strong": "G5060",
+      "lemma": "Τέρτιος",
+      "translit": "Tértios",
+      "translitKo": "Tertius",
+      "note": ""
+    },
+    {
+      "strong": "G2890",
+      "lemma": "Κούαρτος",
+      "translit": "Koúartos",
+      "translitKo": "Quartus",
+      "note": ""
+    },
+    {
+      "strong": "G734",
+      "lemma": "Ἀρτεμάς",
+      "translit": "Artemás",
+      "translitKo": "Artemas",
+      "note": ""
+    },
+    {
+      "strong": "G2211",
+      "lemma": "Ζηνᾶς",
+      "translit": "Zēnâs",
+      "translitKo": "Zenas",
+      "note": ""
+    },
+    {
+      "strong": "H2566",
+      "lemma": "חַמְרָן",
+      "translit": "ḥamrān",
+      "translitKo": "함란",
+      "note": ""
+    },
+    {
+      "strong": "H3292",
+      "lemma": "יַעֲקָן",
+      "translit": "yaʿăqān",
+      "translitKo": "야아칸",
+      "note": ""
+    },
+    {
+      "strong": "H8054",
+      "lemma": "שַׁמּוֹת",
+      "translit": "šammôt",
+      "translitKo": "샴모트",
+      "note": ""
+    },
+    {
+      "strong": "H5866",
+      "lemma": "עִילַי",
+      "translit": "ʿîlay",
+      "translitKo": "일라이",
+      "note": ""
+    },
+    {
+      "strong": "H2466",
+      "lemma": "חֵלֶד",
+      "translit": "ḥēled",
+      "translitKo": "헬레드",
+      "note": ""
+    },
+    {
+      "strong": "H2360",
+      "lemma": "חוּרַי",
+      "translit": "ḥûray",
+      "translitKo": "후라이",
+      "note": ""
+    },
+    {
+      "strong": "H2044",
+      "lemma": "הָשֵׁם",
+      "translit": "hāšēm",
+      "translitKo": "하셈",
+      "note": ""
+    },
+    {
+      "strong": "H7681",
+      "lemma": "שָׁגֶא",
+      "translit": "šāge",
+      "translitKo": "샤게",
+      "note": ""
+    },
+    {
+      "strong": "H465",
+      "lemma": "אֱלִיפָל",
+      "translit": "ʾĕlîp̄al",
+      "translitKo": "엘리팔",
+      "note": ""
+    },
+    {
+      "strong": "H5293",
+      "lemma": "נַעֲרַי",
+      "translit": "naʿăray",
+      "translitKo": "나아라이",
+      "note": ""
+    },
+    {
+      "strong": "H229",
+      "lemma": "אֶזְבַּי",
+      "translit": "ʾezbay",
+      "translitKo": "에즈바이",
+      "note": ""
+    },
+    {
+      "strong": "H4006",
+      "lemma": "מִבְחָר",
+      "translit": "miḇḥār",
+      "translitKo": "미브하르",
+      "note": ""
+    },
+    {
+      "strong": "H5721",
+      "lemma": "עֲדִינָא",
+      "translit": "ʿădînâ",
+      "translitKo": "아디나",
+      "note": ""
+    },
+    {
+      "strong": "H7877",
+      "lemma": "שִׁיזָא",
+      "translit": "šîzā",
+      "translitKo": "시자",
+      "note": ""
+    },
+    {
+      "strong": "H5814",
+      "lemma": "עֻזִּיָּא",
+      "translit": "ʿuzzîyā",
+      "translitKo": "웃시야",
+      "note": ""
+    },
+    {
+      "strong": "H8091",
+      "lemma": "שָׁמָע",
+      "translit": "šāmaʿ",
+      "translitKo": "샤마",
+      "note": ""
+    },
+    {
+      "strong": "H493",
+      "lemma": "אֶלְנַעַם",
+      "translit": "ʾelnaʿam",
+      "translitKo": "엘나암",
+      "note": ""
+    },
+    {
+      "strong": "H498",
+      "lemma": "אֶלְעוּזַי",
+      "translit": "ʾelʿûzay",
+      "translitKo": "엘우자이",
+      "note": ""
+    },
+    {
+      "strong": "H4925",
+      "lemma": "מִשְׁמַנָּה",
+      "translit": "mišmannâ",
+      "translitKo": "미쉬만나",
+      "note": ""
+    },
+    {
+      "strong": "H4344",
+      "lemma": "מַכְבַּנַּי",
+      "translit": "makbannay",
+      "translitKo": "마크반나이",
+      "note": ""
+    },
+    {
+      "strong": "H3592",
+      "lemma": "כִּידוֹן",
+      "translit": "kîḏôn",
+      "translitKo": "키돈",
+      "note": ""
+    },
+    {
+      "strong": "H6984",
+      "lemma": "קוּשָׁיָהוּ",
+      "translit": "qûšāyāhû",
+      "translitKo": "쿠샤야후",
+      "note": ""
+    },
+    {
+      "strong": "H1122",
+      "lemma": "בֵּן",
+      "translit": "bēn",
+      "translitKo": "벤",
+      "note": ""
+    },
+    {
+      "strong": "H5917",
+      "lemma": "עָכָר",
+      "translit": "ʿākār",
+      "translitKo": "아카르",
+      "note": ""
+    },
+    {
+      "strong": "H3621",
+      "lemma": "כְּלוּבַי",
+      "translit": "kelûḇay",
+      "translitKo": "켈루바이",
+      "note": ""
+    },
+    {
+      "strong": "H7288",
+      "lemma": "רַדַּי",
+      "translit": "radday",
+      "translitKo": "라다이",
+      "note": ""
+    },
+    {
+      "strong": "H3408",
+      "lemma": "יְרִיעוֹת",
+      "translit": "yerîʿôt",
+      "translitKo": "예리오트",
+      "note": ""
+    },
+    {
+      "strong": "H3475",
+      "lemma": "יֵשֶׁר",
+      "translit": "yēšer",
+      "translitKo": "예셰르",
+      "note": ""
+    },
+    {
+      "strong": "H5851",
+      "lemma": "עֲטָרָה",
+      "translit": "ʿăṭārâ",
+      "translitKo": "아타라",
+      "note": ""
+    },
+    {
+      "strong": "H4619",
+      "lemma": "מַעַץ",
+      "translit": "maʿaṣ",
+      "translitKo": "마아츠",
+      "note": ""
+    },
+    {
+      "strong": "H257",
+      "lemma": "אַחְבָן",
+      "translit": "ʾaḥbān",
+      "translitKo": "아흐반",
+      "note": ""
+    },
+    {
+      "strong": "H4140",
+      "lemma": "מוֹלִיד",
+      "translit": "môlîḏ",
+      "translitKo": "몰리드",
+      "note": ""
+    },
+    {
+      "strong": "H7357",
+      "lemma": "רַחַם",
+      "translit": "raḥam",
+      "translitKo": "라함",
+      "note": ""
+    },
+    {
+      "strong": "H3421",
+      "lemma": "יׇרְקְעָם",
+      "translit": "yārqĕʿām",
+      "translitKo": "야르크암",
+      "note": ""
+    },
+    {
+      "strong": "H3056",
+      "lemma": "יֶהְדַי",
+      "translit": "yehdāy",
+      "translitKo": "예흐다이",
+      "note": ""
+    },
+    {
+      "strong": "H7276",
+      "lemma": "רֶגֶם",
+      "translit": "reḡem",
+      "translitKo": "레겜",
+      "note": ""
+    },
+    {
+      "strong": "H7669",
+      "lemma": "שֶׁבֶר",
+      "translit": "šeḇer",
+      "translitKo": "셰베르",
+      "note": ""
+    },
+    {
+      "strong": "H8647",
+      "lemma": "תִּרְחֲנָה",
+      "translit": "tirḥănâ",
+      "translitKo": "티르하나",
+      "note": ""
+    },
+    {
+      "strong": "H4343",
+      "lemma": "מַכְבֵּנָא",
+      "translit": "makbēnā",
+      "translitKo": "마크베나",
+      "note": ""
+    },
+    {
+      "strong": "H1388",
+      "lemma": "גִּבְעָא",
+      "translit": "giḇʿā",
+      "translitKo": "기브아",
+      "note": ""
+    },
+    {
+      "strong": "H2780",
+      "lemma": "חָרֵף",
+      "translit": "ḥārēp̄",
+      "translitKo": "하레프",
+      "note": ""
+    },
+    {
+      "strong": "H7204",
+      "lemma": "רֹאֵה",
+      "translit": "rōʾeh",
+      "translitKo": "로에",
+      "note": ""
+    },
+    {
+      "strong": "H8654",
+      "lemma": "תִּרְעָתִי",
+      "translit": "tirʿātî",
+      "translitKo": "티르아티",
+      "note": ""
+    },
+    {
+      "strong": "H8101",
+      "lemma": "שִׁמְעָתִי",
+      "translit": "šimʿātî",
+      "translitKo": "쉬므아티",
+      "note": ""
+    },
+    {
+      "strong": "H7756",
+      "lemma": "שׂוּכָתִי",
+      "translit": "śûḵātî",
+      "translitKo": "수카티",
+      "note": ""
+    },
+    {
+      "strong": "H5598",
+      "lemma": "סִפַּי",
+      "translit": "sippay",
+      "translitKo": "시파이",
+      "note": ""
+    },
+    {
+      "strong": "H3265",
+      "lemma": "יָעוּר",
+      "translit": "yaʿûr",
+      "translitKo": "야우르",
+      "note": ""
+    },
+    {
+      "strong": "H3902",
+      "lemma": "לַחְמִי",
+      "translit": "laḥmî",
+      "translitKo": "라흐미",
+      "note": ""
+    },
+    {
+      "strong": "H3480",
+      "lemma": "יְשַׂרְאֵלָה",
+      "translit": "yeśarʾēlā",
+      "translitKo": "예사르엘라",
+      "note": ""
+    },
+    {
+      "strong": "H3496",
+      "lemma": "יַתְנִיאֵל",
+      "translit": "yaṯnîʾēl",
+      "translitKo": "야트니엘",
+      "note": ""
+    },
+    {
+      "strong": "H6469",
+      "lemma": "פְּעֻלְּתַי",
+      "translit": "pĕʿullĕṯay",
+      "translitKo": "페울레타이",
+      "note": ""
+    },
+    {
+      "strong": "H6273",
+      "lemma": "עׇתְנִי",
+      "translit": "ʿotnî",
+      "translitKo": "오트니",
+      "note": ""
+    },
+    {
+      "strong": "H2882",
+      "lemma": "טְבַלְיָהוּ",
+      "translit": "ṭeḇalyāhû",
+      "translitKo": "테발야후",
+      "note": ""
+    },
+    {
+      "strong": "H7996",
+      "lemma": "שַׁלֶּכֶת",
+      "translit": "šalleḵeṯ",
+      "translitKo": "샬레케트",
+      "note": ""
+    },
+    {
+      "strong": "H1737",
+      "lemma": "דּוֹדַי",
+      "translit": "dôḏay",
+      "translitKo": "도다이",
+      "note": ""
+    },
+    {
+      "strong": "H5990",
+      "lemma": "עַמִּיזָבָד",
+      "translit": "ʿammîzāḇāḏ",
+      "translitKo": "암미자바드",
+      "note": ""
+    },
+    {
+      "strong": "H8049",
+      "lemma": "שַׁמְהוּת",
+      "translit": "šamhûṯ",
+      "translitKo": "삼후트",
+      "note": ""
+    },
+    {
+      "strong": "H5836",
+      "lemma": "עֶזְרִי",
+      "translit": "ʿezrî",
+      "translitKo": "에즈리",
+      "note": ""
+    },
+    {
+      "strong": "H7861",
+      "lemma": "שִׁטְרַי",
+      "translit": "šiṭray",
+      "translitKo": "쉬트라이",
+      "note": ""
+    },
+    {
+      "strong": "H5724",
+      "lemma": "עַדְלַי",
+      "translit": "ʿaḏlay",
+      "translitKo": "아드라이",
+      "note": ""
+    },
+    {
+      "strong": "H179",
+      "lemma": "אוֹבִיל",
+      "translit": "ʾôḇîl",
+      "translitKo": "오빌",
+      "note": ""
+    },
+    {
+      "strong": "H3151",
+      "lemma": "יָזִיז",
+      "translit": "yāzîz",
+      "translitKo": "야지즈",
+      "note": ""
+    },
+    {
+      "strong": "H1953",
+      "lemma": "הוֹשָׁמָע",
+      "translit": "hôšāmāʿ",
+      "translitKo": "호샤마",
+      "note": ""
+    },
+    {
+      "strong": "H770",
+      "lemma": "אַרְנָן",
+      "translit": "ʾarnān",
+      "translitKo": "아르난",
+      "note": ""
+    },
+    {
+      "strong": "H267",
+      "lemma": "אֲחוּמַי",
+      "translit": "ʾăḥûmay",
+      "translitKo": "아후마이",
+      "note": ""
+    },
+    {
+      "strong": "H3855",
+      "lemma": "לַהַד",
+      "translit": "laḥaḏ",
+      "translitKo": "라하드",
+      "note": ""
+    },
+    {
+      "strong": "H6753",
+      "lemma": "צְלֶלְפּוֹנִי",
+      "translit": "ṣĕlelpônî",
+      "translitKo": "첼렐포니",
+      "note": ""
+    },
+    {
+      "strong": "H2364",
+      "lemma": "חוּשָׁה",
+      "translit": "ḥûšā",
+      "translitKo": "후샤",
+      "note": ""
+    },
+    {
+      "strong": "H275",
+      "lemma": "אֲחֻזָּם",
+      "translit": "ʾăḥuzzām",
+      "translitKo": "아후잠",
+      "note": ""
+    },
+    {
+      "strong": "H8488",
+      "lemma": "תֵּימְנִי",
+      "translit": "tēmĕnî",
+      "translitKo": "테메니",
+      "note": ""
+    },
+    {
+      "strong": "H326",
+      "lemma": "אֲחַשְׁתָּרִי",
+      "translit": "ʾăḥaštārî",
+      "translitKo": "아하스타리",
+      "note": ""
+    },
+    {
+      "strong": "H6889",
+      "lemma": "צֶרֶת",
+      "translit": "ṣereṯ",
+      "translitKo": "체레트",
+      "note": ""
+    },
+    {
+      "strong": "H6036",
+      "lemma": "עָנוּב",
+      "translit": "ʿānûḇ",
+      "translitKo": "아누브",
+      "note": ""
+    },
+    {
+      "strong": "H316",
+      "lemma": "אֲחַרְחֵל",
+      "translit": "ʾăḥarḥēl",
+      "translitKo": "아하르헬",
+      "note": ""
+    },
+    {
+      "strong": "H2037",
+      "lemma": "הָרֻם",
+      "translit": "hārûm",
+      "translitKo": "하룸",
+      "note": ""
+    },
+    {
+      "strong": "H7746",
+      "lemma": "שׁוּחָה",
+      "translit": "šûḥā",
+      "translitKo": "수하",
+      "note": ""
+    },
+    {
+      "strong": "H4243",
+      "lemma": "מְחִיר",
+      "translit": "mĕḥîr",
+      "translitKo": "메히르",
+      "note": ""
+    },
+    {
+      "strong": "H8468",
+      "lemma": "תְּחִנָּה",
+      "translit": "tĕḥinnâ",
+      "translitKo": "테히나",
+      "note": ""
+    },
+    {
+      "strong": "H2867",
+      "lemma": "חֲתַת",
+      "translit": "ḥăṯaṯ",
+      "translitKo": "하타트",
+      "note": ""
+    },
+    {
+      "strong": "H2798",
+      "lemma": "חֲרָשִׁים",
+      "translit": "ḥărāšîm",
+      "translitKo": "하라심",
+      "note": ""
+    },
+    {
+      "strong": "H5900",
+      "lemma": "עִירוּ",
+      "translit": "ʿîrû",
+      "translitKo": "이루",
+      "note": ""
+    },
+    {
+      "strong": "H8493",
+      "lemma": "תִּירְיָא",
+      "translit": "tiryā",
+      "translitKo": "티르야",
+      "note": ""
+    },
+    {
+      "strong": "H5834",
+      "lemma": "עֶזְרָה",
+      "translit": "ʿezrā",
+      "translitKo": "에즈라",
+      "note": ""
+    },
+    {
+      "strong": "H3431",
+      "lemma": "יִשְׁבַּח",
+      "translit": "yišbaḥ",
+      "translitKo": "이쉬바흐",
+      "note": ""
+    },
+    {
+      "strong": "H3354",
+      "lemma": "יְקוּתִיאֵל",
+      "translit": "yĕqûṯîʾēl",
+      "translitKo": "예쿠티엘",
+      "note": ""
+    },
+    {
+      "strong": "H1332",
+      "lemma": "בִּתְיָה",
+      "translit": "bityāh",
+      "translitKo": "비트야",
+      "note": ""
+    },
+    {
+      "strong": "H1940",
+      "lemma": "הוֹדִיָּה",
+      "translit": "hôḏiyyāh",
+      "translitKo": "호디야",
+      "note": ""
+    },
+    {
+      "strong": "H5163",
+      "lemma": "נַחַם",
+      "translit": "naḥam",
+      "translitKo": "나함",
+      "note": ""
+    },
+    {
+      "strong": "H7889",
+      "lemma": "שִׁימוֹן",
+      "translit": "šîmôn",
+      "translitKo": "시몬",
+      "note": ""
+    },
+    {
+      "strong": "H2105",
+      "lemma": "זוֹחֵת",
+      "translit": "zôḥēṯ",
+      "translitKo": "조헤트",
+      "note": ""
+    },
+    {
+      "strong": "H3922",
+      "lemma": "לֵכָה",
+      "translit": "lēḵāh",
+      "translitKo": "레카",
+      "note": ""
+    },
+    {
+      "strong": "H791",
+      "lemma": "אַשְׁבֵּעַ",
+      "translit": "ʾašbēaʿ",
+      "translitKo": "아쉬베아",
+      "note": ""
+    },
+    {
+      "strong": "H3578",
+      "lemma": "כֹּזְבָא",
+      "translit": "kôzĕḇā",
+      "translitKo": "코제바",
+      "note": ""
+    },
+    {
+      "strong": "H5196",
+      "lemma": "נְטָעִים",
+      "translit": "nĕṭāʿîm",
+      "translitKo": "네타임",
+      "note": ""
+    },
+    {
+      "strong": "H2536",
+      "lemma": "חַמּוּאֵל",
+      "translit": "ḥammûʾēl",
+      "translitKo": "하무엘",
+      "note": ""
+    }
+  ]
+}

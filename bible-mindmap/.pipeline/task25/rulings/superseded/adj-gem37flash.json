@@ -1,0 +1,16 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {"strong":"G883","translit":"Achaïkós","translitKo":"아카이코스","evidence":"배포 음역의 χ 계열과 -ikos 계열 표기 선례","note":""},
+    {"strong":"H6318","translit":"pôṭîpar","translitKo":"포티파르","evidence":"배포 히브리어 음역의 학술 자음·장음 표기 선례","note":"개역 관용 표기 ‘보디발’과 구별되는 학술 음역"},
+    {"strong":"H2265","translit":"ḥăbaqqûq","translitKo":"하바쿡","evidence":"배포 히브리어 음역의 ḥ 및 중복 자음 비중복 표기 선례","note":"개역 관용 표기 ‘하박국’과 구별되는 학술 음역"},
+    {"strong":"H3818","translit":"lōʾ ʿammî","translitKo":"로 암미","evidence":"bookContext·성경 고유명사 표기의 어절 분리 선례","note":"두 어절을 분리해 표기"},
+    {"strong":"G4551","translit":"Sappheírē","translitKo":"삽피레","evidence":"배포 헬라어 음역의 φ·ει·ρη 대응 선례","note":"개역 관용 표기 ‘삽비라’와 구별되는 학술 음역"},
+    {"strong":"G3434","translit":"Molóch","translitKo":"몰로흐","evidence":"배포 헬라어 음역에서 χ를 흐 계열로 적는 선례","note":"개역 관용 표기 ‘몰록’과 구별되는 학술 음역"},
+    {"strong":"G4546","translit":"Sampsṓn","translitKo":"삼프손","evidence":"배포 헬라어 음역의 자음군을 보존하는 선례","note":"개역 관용 표기 ‘삼손’과 구별되는 학술 음역"},
+    {"strong":"G2422","translit":"Iephtháe","translitKo":"이에프타에","evidence":"배포 헬라어 음역의 ει·φθ·αι 대응 선례","note":"개역 관용 표기 ‘입다’와 구별되는 헬라어 학술 음역"},
+    {"strong":"G993","translit":"Boanergés","translitKo":"보아네르게스","evidence":"배포 헬라어 음역의 -ergés 계열 표기 선례","note":""},
+    {"strong":"G4477","translit":"Rhacháb","translitKo":"라카브","evidence":"명세의 어두 ῥ 무기음 표기와 헬라어 χ 표기 선례","note":"개역 관용 표기 ‘라합’과 구별되는 학술 음역"},
+    {"strong":"G4503","translit":"Rhoúth","translitKo":"루트","evidence":"명세의 어두 ῥ 무기음 표기 및 ου·θ 배포 선례","note":"개역 관용 표기 ‘룻’과 구별되는 학술 음역"}
+  ]
+}

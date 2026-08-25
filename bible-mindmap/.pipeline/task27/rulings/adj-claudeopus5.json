@@ -1,0 +1,432 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "H2466",
+      "translit": "ḥēled",
+      "translitKo": "헬레드",
+      "evidence": "H2506 חֵלֶק ḥēleq→헬레크 (koreanGlossTopBatch*): 같은 חֵ־ֶ 형 세골 명사를 '헬레-'로 적는다. H2506 셰메르/H8106 šemer→셰메르 도 같은 골격이다.",
+      "note": ""
+    },
+    {
+      "strong": "H5814",
+      "translit": "ʿuzziyyāʾ",
+      "translitKo": "우지야",
+      "evidence": "H5818 עֻזִּיָּה ʿuzziyyâ→우지야 가 이미 배포돼 있다. 같은 이름의 א 어미형이므로 한글은 같게 적는다. 다게쉬 포르테 זּ 는 받침으로 겹치지 않는다(선례 아타·카포레트).",
+      "note": "어말 א 는 translit 에서만 ʾ 로 남기고 한글에는 적지 않는다(선례 šimʿāʾ→심아·têmāʾ→테마)."
+    },
+    {
+      "strong": "H4925",
+      "translit": "mišmannâ",
+      "translitKo": "미쉬만나",
+      "evidence": "H4924 מַשְׁמָן mašmān→마쉬만 과 H4089 מַדְמַנָּה madmannâ→마드만나 가 배포돼 있다. miš-→미쉬, -nnâ→만나 를 그대로 잇는다.",
+      "note": ""
+    },
+    {
+      "strong": "H3621",
+      "translit": "kĕlûbay",
+      "translitKo": "켈루바이",
+      "evidence": "H3627 כְּלִי kĕlî→켈리 (kĕ→켈), H4782 mordĕkay→모르데카이·H2292 ḥaggay→하가이 (-ay→아이).",
+      "note": "개역개정 관용 표기는 '글루배'다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3421",
+      "translit": "yorqĕʿām",
+      "translitKo": "요르케암",
+      "evidence": "H4782 מׇרְדְּכַי mordĕkay→모르데카이 가 'yoR-Cĕ-' 골격의 직접 선례다. H3379 יָרׇבְעָם yārobʿām→야로브암 이 -ʿām→암 을, H6881 צׇרְעָה ṣorʿâ→초르아 가 ʿ 무표기를 뒷받침한다.",
+      "note": "첫 모음은 카메츠 카탄이라 o 로 읽는다(선례 코르반·오클라·옴리)."
+    },
+    {
+      "strong": "H8101",
+      "translit": "šimʿātî",
+      "translitKo": "심아티",
+      "evidence": "H8093 שִׁמְעָה šimʿâ→심아, H8096 שִׁמְעִי šimʿî→심이, H8095 שִׁמְעוֹן šimʿôn→심온 이 모두 배포돼 있다. שִׁ 는 뒤에 모음이 있어 '시', ם 는 받침, ע 는 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H6469",
+      "translit": "pĕʿullĕtay",
+      "translitKo": "페울레타이",
+      "evidence": "H6468 פְּעֻלָּה pĕʿullâ→페울라 가 같은 어근의 직접 선례다(pĕ→페, ʿu→우, ll→ㄹ). -ay 는 H4782 모르데카이·H1271 barzillay→바르질라이 처럼 '아이'.",
+      "note": ""
+    },
+    {
+      "strong": "H8049",
+      "translit": "šamhût",
+      "translitKo": "샴후트",
+      "evidence": "H8047 שַׁמָּה šammâ→샤마 (šam-→샤/ㅁ받침), H4191 מוּת mût→무트·H5715 ʿēdût→에두트 (어말 ת→트).",
+      "note": ""
+    },
+    {
+      "strong": "H5724",
+      "translit": "ʿadlay",
+      "translitKo": "아들라이",
+      "evidence": "H7247 רִבְלָה riblâ→리블라, H402 אׇכְלָה ʾoklâ→오클라, H5697 עֶגְלָה ʿeglâ→에글라: 폐음절 장애음+ל 는 '브·클·글+라' 로 적는다. ʿ 는 H6547 parʿōh→파르오 처럼 적지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H8488",
+      "translit": "têmĕnî",
+      "translitKo": "테메니",
+      "evidence": "H8486 תֵּימָן têmān→테만, H8489 תֵּימָנִי têmānî→테마니 (tê→테). מ 의 쉐바는 불변장모음 뒤라 유성이므로 ĕ→에 로 적는다(선례 예후다·모르데카이·쇼메론).",
+      "note": "영문 표제 Temeni 도 세 음절이다."
+    },
+    {
+      "strong": "H326",
+      "translit": "ʾăḥaštārî",
+      "translitKo": "아하쉬타리",
+      "evidence": "H324 אֲחַשְׁדַּרְפַּן ʾăḥašdarpan→아하쉬다르판 이 ʾăḥaš-→아하쉬 의 직접 선례다. H783 ʾartaḥšaštāʾ→아르타흐샤쉬타 도 같다.",
+      "note": "개역개정의 '하아하스다리'는 정관사 הָ 를 포함해 읽은 형태다. 표제는 정관사를 뺀 낱말 자체로 둔다."
+    },
+    {
+      "strong": "H7746",
+      "translit": "šûḥâ",
+      "translitKo": "슈하",
+      "evidence": "H7745 שׁוּחָה šûḥâ→슈하 가 같은 철자로 이미 배포돼 있다. H7747 שׁוּחִי šûḥî→슈히 도 같다.",
+      "note": "어말 ־ָה 는 translit 에서 â, 한글로는 '하'(ח)+'아' 가 아니라 '하' 한 음절이다(선례 토라·라바)."
+    },
+    {
+      "strong": "H8468",
+      "translit": "tĕḥinnâ",
+      "translitKo": "테힌나",
+      "evidence": "H8467 תְּחִנָּה tĕḥinnâ→테힌나 가 같은 철자로 이미 배포돼 있다. nn 은 H7440 rinnâ→린나·H4089 madmannâ→마드만나 처럼 받침으로 적는다(ㄴ 은 다게쉬 포르테 규칙에서 제외).",
+      "note": ""
+    },
+    {
+      "strong": "H3578",
+      "translit": "kōzĕbāʾ",
+      "translitKo": "코제바",
+      "evidence": "H8111 שֹׁמְרוֹן šōmĕrôn→쇼메론, H5550 סֹלְלָה sōlĕlâ→솔렐라: 개음절 장모음 ō 뒤 쉐바는 유성이라 ĕ→에 로 적는다. 어말 ב 는 H2091 zāhāb→자하브 처럼 '브'.",
+      "note": ""
+    },
+    {
+      "strong": "H3143",
+      "translit": "yôšibyâ",
+      "translitKo": "요시브야",
+      "evidence": "H2811 חֲשַׁבְיָה ḥăšabyâ→하샤브야 가 -byâ→브야 의 직접 선례다. שִׁ 는 뒤에 모음이 있어 '시'(선례 H8096 심이·H2670 ḥopšî→호프시).",
+      "note": ""
+    },
+    {
+      "strong": "H5661",
+      "translit": "ʿabdîʾēl",
+      "translitKo": "아브디엘",
+      "evidence": "H5658 עַבְדוֹן ʿabdôn→아브돈 이 ʿabd-→아브드 의 직접 선례다. -îʾēl 은 H1583 gamlîʾēl→감리엘·H8050 šĕmûʾēl→셰무엘.",
+      "note": "개역 관용 표기는 '압디엘'이나 배포 데이터는 오바드야·에베드·아브돈처럼 ב 를 '브'로 적는다."
+    },
+    {
+      "strong": "H2979",
+      "translit": "yĕʾātĕray",
+      "translitKo": "예아테라이",
+      "evidence": "H4782 mordĕkay→모르데카이 (-Cĕ-ay→-데-아이). ת 의 쉐바는 개음절 카메츠 뒤라 유성이며, 배포 선례는 유성 쉐바를 ĕ→에 로 적는다(예후다·베헤마·체다카).",
+      "note": "영문 표제 Jeaterai 도 같은 음절 수다."
+    },
+    {
+      "strong": "H2293",
+      "translit": "ḥaggiyyâ",
+      "translitKo": "하기야",
+      "evidence": "H2294 חַגִּית ḥaggît→하기트, H2292 חַגַּי ḥaggay→하가이 가 גּ 다게쉬를 겹치지 않는 직접 선례다. -iyyâ 는 H281 ʾăḥiyyâ→아히야·H29 ʾăbiyyâ→아비야.",
+      "note": ""
+    },
+    {
+      "strong": "H379",
+      "translit": "ʾîšhôd",
+      "translitKo": "이쉬호드",
+      "evidence": "H378 אִישׁ־בֹּשֶׁת ʾîš-bōšet→이쉬보셰트 가 ʾîš-→이쉬 의 직접 선례다. 어말 ד 는 H795 ʾašdôd→아쉬도드 처럼 '드'.",
+      "note": ""
+    },
+    {
+      "strong": "H7609",
+      "translit": "šeʾĕrâ",
+      "translitKo": "셰에라",
+      "evidence": "H7611 שְׁאֵרִית šĕʾērît→셰에리트 가 같은 어근의 직접 선례다(še→셰, ʾĕ→에). 어말 ־ָה 는 '라'.",
+      "note": ""
+    },
+    {
+      "strong": "H6457",
+      "translit": "pāsak",
+      "translitKo": "파사크",
+      "evidence": "H1870 דֶּרֶךְ derek→데레크, H4427 מָלַךְ mālak→말라크, H5564 סָמַךְ sāmak→사마크: 어말 ך 는 '크'.",
+      "note": ""
+    },
+    {
+      "strong": "H4331",
+      "translit": "mêšāʾ",
+      "translitKo": "메샤",
+      "evidence": "H4339 מֵישָׁר mêšār→메샤르, H4336 מֵישַׁךְ mêšak→메샤크 가 mêšā-→메샤 의 직접 선례다. ê 는 H1008 bêt-ʾēl→베트엘·H6249 ʿaštê→아쉬테 처럼 '에' 한 음절.",
+      "note": ""
+    },
+    {
+      "strong": "H8039",
+      "translit": "šimʾâ",
+      "translitKo": "심아",
+      "evidence": "H8093 שִׁמְעָה šimʿâ→심아, H8092 שִׁמְעָא šimʿāʾ→심아 가 배포돼 있다. 이 표제는 ע 가 아니라 א 지만 한글 표기는 같다.",
+      "note": "lemma 가 א 이므로 translit 은 šimʿâ 가 아니라 šimʾâ 다."
+    },
+    {
+      "strong": "H4921",
+      "translit": "mĕšillēmît",
+      "translitKo": "메실레미트",
+      "evidence": "H8029 שִׁלֵּשׁ šillēš→실레쉬 가 šillē-→실레 의 직접 선례다. H4546 מְסִלָּה mesillâ→메실라 도 같다. 어말 ־ִית 는 H7611 šĕʾērît→셰에리트 처럼 '리트'.",
+      "note": ""
+    },
+    {
+      "strong": "H8043",
+      "translit": "šimʾām",
+      "translitKo": "심암",
+      "evidence": "H8039 와 짝이며 H8093 šimʿâ→심아 가 선례다. -ām 은 H8152 שִׁנְעָר šinʿār→신아르, H3379 yārobʿām→야로브암 처럼 앞 음절 받침을 살려 '암'.",
+      "note": "lemma 가 א 이므로 translit 은 šimʾām 이다."
+    },
+    {
+      "strong": "H6871",
+      "translit": "ṣĕrûʿâ",
+      "translitKo": "체루아",
+      "evidence": "H6870 צְרוּיָה ṣĕrûyâ→체루야 가 ṣĕrû-→체루 의 직접 선례다. ʿâ 는 H1389 גִּבְעָה gibʿâ→기브아 처럼 '아'.",
+      "note": ""
+    },
+    {
+      "strong": "H2886",
+      "translit": "ṭabrimmôn",
+      "translitKo": "타브림몬",
+      "evidence": "H7416 רִמּוֹן rimmôn→림몬 이 -rimmôn 의 직접 선례다. ṭab- 는 H4904 miškāb→미쉬카브·H2809 ḥešbôn→헤쉬본 처럼 폐음절 ב 를 '브'로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H2383",
+      "translit": "ḥezyôn",
+      "translitKo": "헤즈욘",
+      "evidence": "H274 אֲחַזְיָה ʾăḥazyâ→아하즈야 가 -zy-→즈ㅇ 의 직접 선례다. -yôn 은 H5945 ʿelyôn→엘욘·H8302 širyôn→시르욘.",
+      "note": ""
+    },
+    {
+      "strong": "H456",
+      "translit": "ʾĕlîḥōrep",
+      "translitKo": "엘리호레프",
+      "evidence": "H430 ʾĕlōhîm→엘로힘·H452 ʾēliyyâ→엘리야 (ʾĕlî-→엘리), H3701 כֶּסֶף kesep→케세프·H505 ʾelep→엘레프 (어말 ף→프).",
+      "note": ""
+    },
+    {
+      "strong": "H292",
+      "translit": "ʾăḥînādāb",
+      "translitKo": "아히나다브",
+      "evidence": "H5992 עַמִּינָדָב ʿammînādāb→아미나다브 가 -nādāb→나다브 의 직접 선례다. ʾăḥî- 는 H281 ʾăḥiyyâ→아히야.",
+      "note": "개역 관용 표기는 '아히나답'이나 배포 데이터는 어말 ב 를 자하브·모아브·요아브처럼 '브'로 적는다."
+    },
+    {
+      "strong": "H2802",
+      "translit": "ḥeret",
+      "translitKo": "헤레트",
+      "evidence": "H2506 ḥēleq→헬레크·H8106 šemer→셰메르 (헤/셰레-), H5178 nĕḥōšet→네호셰트·H1817 delet→델레트 (어말 ת→트).",
+      "note": ""
+    },
+    {
+      "strong": "H4582",
+      "translit": "māʿôk",
+      "translitKo": "마오크",
+      "evidence": "H6547 פַּרְעֹה parʿōh→파르오 처럼 ע 는 적지 않는다. 어말 ך 는 H8432 tāwek→타웨크·H4336 mêšak→메샤크 처럼 '크'.",
+      "note": ""
+    },
+    {
+      "strong": "H5525",
+      "translit": "sukkî",
+      "translitKo": "수키",
+      "evidence": "H5521 סֻכָּה sukkâ→수카 가 같은 어근의 직접 선례다. כּ 다게쉬 포르테를 받침으로 겹치지 않는다(H7910 šikkôr→시코르·H2139 zakkûr→자쿠르).",
+      "note": ""
+    },
+    {
+      "strong": "H6859",
+      "translit": "ṣĕpātâ",
+      "translitKo": "체파타",
+      "evidence": "H6666 צְדָקָה ṣĕdāqâ→체다카 가 ṣĕ→체 의 직접 선례다. 어말 ־ָה 는 H8451 tôrâ→토라 처럼 '타'.",
+      "note": ""
+    },
+    {
+      "strong": "H6007",
+      "translit": "ʿămasyâ",
+      "translitKo": "아마스야",
+      "evidence": "H558 אֲמַצְיָה ʾămaṣyâ→아마츠야, H2811 ḥăšabyâ→하샤브야, H5662 ʿōbadyâ→오바드야: 자음+יָה 는 그 자음을 독립 음절로 적고 '야'를 붙인다.",
+      "note": ""
+    },
+    {
+      "strong": "H8116",
+      "translit": "šimrît",
+      "translitKo": "심리트",
+      "evidence": "H8110 שִׁמְרוֹן šimrôn→심론 이 šimr-→심ㄹ 의 직접 선례다. 어말 ־ִית 는 H7611 šĕʾērît→셰에리트·H2294 ḥaggît→하기트 처럼 '리트'.",
+      "note": ""
+    },
+    {
+      "strong": "H2311",
+      "translit": "ḥadlay",
+      "translitKo": "하들라이",
+      "evidence": "H7247 riblâ→리블라·H402 ʾoklâ→오클라 (폐음절 장애음+ל→들/블/클+라), H2292 ḥaggay→하가이·H1271 barzillay→바르질라이 (-ay→아이).",
+      "note": ""
+    },
+    {
+      "strong": "H3260",
+      "translit": "yeʿdî",
+      "translitKo": "예디",
+      "evidence": "H8096 שִׁמְעִי šimʿî→심이, H6547 parʿōh→파르오, H4830 מִרְעִית mirʿît→미르이트: ע 는 한글로 적지 않는다. 여기서는 ע 가 음절 받침이라 통째로 사라져 '예디'가 된다.",
+      "note": "영문 표제 Iddo 는 마소라 난외독(케레)에서 온 것이고 표제 철자는 יֶעְדִּי 다."
+    },
+    {
+      "strong": "H3089",
+      "translit": "yĕhôšebaʿ",
+      "translitKo": "예호셰바",
+      "evidence": "H884 בְּאֵר שֶׁבַע bĕʾēr šebaʿ→베에르 셰바 가 šebaʿ→셰바 의 직접 선례다. יְהוֹ 는 H3091 yĕhôšûaʿ→예호슈아·H3092 yĕhôšāpāṭ→예호샤파트·H3083 yĕhônātān→예호나탄.",
+      "note": "개역 관용 표기는 '여호세바'다. 배포 데이터는 יְהוֹ 를 '예호'로, שֶׁ 를 '셰'로 적는다."
+    },
+    {
+      "strong": "H5180",
+      "translit": "nĕḥuštān",
+      "translitKo": "네후쉬탄",
+      "evidence": "H5178 נְחֹשֶׁת nĕḥōšet→네호셰트 가 같은 어근의 직접 선례다(nĕ→네). שׁ 는 음절 말이라 '쉬'(선례 미쉬칸·아쉬도드·펠리쉬티).",
+      "note": "개역 관용 표기는 '느후스단'이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3192",
+      "translit": "yoṭbâ",
+      "translitKo": "요트바",
+      "evidence": "H6936 קׇדְקֹד qodqōd→코드코드 가 카메츠 카탄 o + 폐음절 장애음 골격의 직접 선례다. H4993 mattityâ→마티트야 도 폐음절 ת 를 '트'로 적는다.",
+      "note": "첫 모음은 카메츠 카탄이라 o 로 읽는다(선례 코르반·호르바·옴리)."
+    },
+    {
+      "strong": "H5179",
+      "translit": "nĕḥuštāʾ",
+      "translitKo": "네후쉬타",
+      "evidence": "H5178 nĕḥōšet→네호셰트 와 같은 어근이며 H5180 과 짝이다. miš-·ʾaš- 계열 배포 선례대로 음절 말 שׁ 는 '쉬'.",
+      "note": "개역 관용 표기는 '느후스다'다."
+    },
+    {
+      "strong": "H3380",
+      "translit": "yĕrubbešet",
+      "translitKo": "예루베셰트",
+      "evidence": "H3378 יְרֻבַּעַל yĕrubbaʿal→예루바알 이 yĕrubb-→예루바 의 직접 선례다(בּ 다게쉬를 겹치지 않는다). -šet 는 H5178 nĕḥōšet→네호셰트·H378 ʾîš-bōšet→이쉬보셰트 처럼 '셰트'.",
+      "note": "어말 שׁ 뒤에 세골 모음이 오므로 음절 첫소리 '셰'로 적는다."
+    },
+    {
+      "strong": "H3041",
+      "translit": "yĕdîdyâ",
+      "translitKo": "예디드야",
+      "evidence": "H5662 עֹבַדְיָה ʿōbadyâ→오바드야 가 -dyâ→드야 의 직접 선례다. yĕ→예 는 H3063 yĕhûdâ→예후다.",
+      "note": ""
+    },
+    {
+      "strong": "H4012",
+      "translit": "mĕbunnay",
+      "translitKo": "메분나이",
+      "evidence": "H4089 madmannâ→마드만나·H7440 rinnâ→린나·H8577 tannîn→탄닌 이 nn 을 받침으로 적는 선례다(ㄴ 은 다게쉬 포르테 규칙에서 제외). -ay 는 H2292 ḥaggay→하가이.",
+      "note": ""
+    },
+    {
+      "strong": "H3609",
+      "translit": "kilʾāb",
+      "translitKo": "킬아브",
+      "evidence": "H3629 כִּלְיָה kilyâ→킬야 가 kil-→킬 의 직접 선례다. 어말 ב 는 H2091 zāhāb→자하브·H4124 môʾāb→모아브 처럼 '브'이고 א 는 적지 않는다.",
+      "note": "개역 관용 표기는 '길르압'이다."
+    },
+    {
+      "strong": "H5522",
+      "translit": "sikkût",
+      "translitKo": "시쿠트",
+      "evidence": "H5521 sukkâ→수카·H7910 šikkôr→시코르 (כּ 다게쉬를 겹치지 않는다), H4191 mût→무트·H1546 gālût→갈루트 (어말 ־וּת→우트).",
+      "note": ""
+    },
+    {
+      "strong": "H3594",
+      "translit": "kiyyûn",
+      "translitKo": "키윤",
+      "evidence": "H3603 kikkār→키카르·H3794 kittî→키티 (어두 כּ→키), H6726 ṣiyyôn→치욘·H6723 ṣiyyâ→치야 (־ִיּ→이/야 계열).",
+      "note": "개역 관용 표기는 '기윤'이다."
+    },
+    {
+      "strong": "H7598",
+      "translit": "šĕʾaltîʾēl",
+      "translitKo": "셰알티엘",
+      "evidence": "H7585 שְׁאוֹל šĕʾôl→셰올, H7611 šĕʾērît→셰에리트 가 šĕʾa-→셰아 의 직접 선례다. -tîʾēl 은 H1583 gamlîʾēl→감리엘.",
+      "note": "개역 관용 표기는 '스알디엘'이다. 배포 데이터는 유성 쉐바를 '으'가 아니라 '에'로 적는다."
+    },
+    {
+      "strong": "H144",
+      "translit": "ʾădār",
+      "translitKo": "아다르",
+      "evidence": "H8269 שַׂר śar→사르, H1320 bāśār→바사르, H6240 ʿāśār→아사르: 어말 ר 는 '르'로 풀어 적는다.",
+      "note": "달 이름으로 굳은 개역 관용 표기는 '아달'이다. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H6997",
+      "translit": "qāṭān",
+      "translitKo": "카탄",
+      "evidence": "H6998 קָטַף qāṭap→카타프, H6999 קָטַר qāṭar→카타르 가 qāṭā-→카타 의 직접 선례다. -ān 은 H4908 miškān→미쉬칸.",
+      "note": "영문 표제 Hakkatan 은 정관사 הַ 를 포함한 형태이고 lemma 자체에는 관사도 다게쉬도 없다."
+    },
+    {
+      "strong": "H5611",
+      "translit": "sĕpār",
+      "translitKo": "세파르",
+      "evidence": "H5579 סְנַפִּיר sĕnappîr→세나피르 가 sĕ→세 의 직접 선례다. -pār 은 H1697 dābār→다바르·H1320 bāśār→바사르.",
+      "note": ""
+    },
+    {
+      "strong": "H8134",
+      "translit": "šinʾāb",
+      "translitKo": "신아브",
+      "evidence": "H8152 שִׁנְעָר šinʿār→신아르 가 šin-→신 의 직접 선례다. 어말 ב 는 H2091 zāhāb→자하브 처럼 '브'.",
+      "note": ""
+    },
+    {
+      "strong": "H3044",
+      "translit": "yidlāp",
+      "translitKo": "이들라프",
+      "evidence": "H7247 riblâ→리블라·H402 ʾoklâ→오클라 (폐음절 장애음+ל→들라), H3701 kesep→케세프·H3130 yôsēp→요세프 (어말 ף→프).",
+      "note": ""
+    },
+    {
+      "strong": "H6230",
+      "translit": "ʿēśeq",
+      "translitKo": "에세크",
+      "evidence": "H6235 עֶשֶׂר ʿeśer→에세르 가 ʿēśe-→에세 의 직접 선례다(שׂ→ㅅ). 어말 ק 는 H6664 ṣedeq→체데크·H2506 ḥēleq→헬레크 처럼 '크'.",
+      "note": "개역 관용 표기는 '에섹'이다."
+    },
+    {
+      "strong": "H4649",
+      "translit": "muppîm",
+      "translitKo": "무핌",
+      "evidence": "H6833 צִפּוֹר ṣippôr→치포르, H3940 lappîd→라피드, H5601 sappîr→사피르: פּ 다게쉬 포르테를 받침으로 겹치지 않는다.",
+      "note": ""
+    },
+    {
+      "strong": "H1691",
+      "translit": "diblayim",
+      "translitKo": "디블라임",
+      "evidence": "H7247 רִבְלָה riblâ→리블라 가 -bl-→블 의 직접 선례다. -ayim 은 H8147 šĕnayim→셰나임·H4714 miṣrayim→미츠라임·H669 ʾeprayim→에프라임.",
+      "note": ""
+    },
+    {
+      "strong": "H8020",
+      "translit": "šalman",
+      "translitKo": "샬만",
+      "evidence": "H7967 שַׁלּוּם šallûm→샬룸, H7990 šallîṭ→샬리트, H7962 שַׁלְוָה šalwâ→샬와: šal-→샬. שׁ 는 '사'가 아니라 '샤' 계열이다.",
+      "note": ""
+    },
+    {
+      "strong": "H4088",
+      "translit": "madmēnâ",
+      "translitKo": "마드메나",
+      "evidence": "H4089 מַדְמַנָּה madmannâ→마드만나 가 한 글자 차이의 직접 선례다. 이 표제는 נ 에 다게쉬가 없으므로 겹치지 않고 '메나'로 적는다.",
+      "note": ""
+    },
+    {
+      "strong": "H1966",
+      "translit": "hêlēl",
+      "translitKo": "헬렐",
+      "evidence": "H5867 עֵילָם ʿêlām→엘람, H361 ʾêlām→엘람: ê+ל 은 앞 음절 받침 ㄹ 로 들어간다. 모음 사이 ל 은 H8010 šĕlōmōh→셸로모·H2447 ḥaklîl→하클릴 처럼 받침+초성으로 적는다.",
+      "note": "라틴역 Lucifer 로 알려졌고 개역은 '계명성'으로 옮긴 낱말이다."
+    },
+    {
+      "strong": "H2262",
+      "translit": "ḥăbaṣṣanyâ",
+      "translitKo": "하바찬야",
+      "evidence": "H2608 חֲנַנְיָה ḥănanyâ→하난야, H5418 נְתַנְיָה nĕtanyâ→네탄야 가 -nyâ→ㄴ받침+야 의 선례다. צּ 다게쉬 포르테는 H2403 ḥaṭṭāʾâ→하타아 처럼 겹치지 않는다.",
+      "note": ""
+    }
+  ]
+}

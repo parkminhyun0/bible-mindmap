@@ -1,0 +1,82 @@
+{
+  "model": "claudeopus5",
+  "rulings": [
+    {
+      "strong": "G1616",
+      "translit": "ekténeia",
+      "translitKo": "엑테네이아",
+      "evidence": "src/data/koreanGloss.js의 헬라어 학술 음역에서 ἐκ 계열을 '엑'으로 적는 선례와 -εια의 '에이아' 표기를 따름.",
+      "note": ""
+    },
+    {
+      "strong": "G9996",
+      "translit": "synallássō",
+      "translitKo": "쉬날라소",
+      "evidence": "src/data/koreanGlossTopBatch19.js의 유사 υ 표기 '쉬날리조'와 task24 명세의 υ·σσ 규칙을 따름.",
+      "note": ""
+    },
+    {
+      "strong": "G431",
+      "translit": "anepsiós",
+      "translitKo": "아넵시오스",
+      "evidence": "src/data/koreanGloss*.js의 π 표기 및 -ιος의 '이오스' 선례를 따름.",
+      "note": ""
+    },
+    {
+      "strong": "G1040",
+      "translit": "býssos",
+      "translitKo": "뷔소스",
+      "evidence": "src/data/koreanGloss.js의 υ 표기 선례(퓌르·마르튀스)와 task24의 중복 자음 미중첩 규칙을 적용함.",
+      "note": ""
+    },
+    {
+      "strong": "H1009",
+      "translit": "bêt ʾarbēʾēl",
+      "translitKo": "베트 아르베엘",
+      "evidence": "src/data/koreanGlossTopBatch03.js·TopBatch06.js·TopBatch12.js의 בֵּית→'베트' 배포 선례를 따름.",
+      "note": "한국어 성경 관용 표기는 벧아르벨이지만 학술 음역을 표제로 삼았다."
+    },
+    {
+      "strong": "H8112",
+      "translit": "šimrôn merʾôn",
+      "translitKo": "심론 메르온",
+      "evidence": "src/data/koreanGlossTopBatch03.js의 히브리어 שׁ 표기 선례와 배포된 홀렘·어말 후음 처리 관례를 따름.",
+      "note": "한국어 성경 관용 표기는 시므론 므론이며, 학술 음역을 표제로 삼았다."
+    },
+    {
+      "strong": "H2995",
+      "translit": "yabnĕʾēl",
+      "translitKo": "야브네엘",
+      "evidence": "src/data/koreanGlossTopBatch03.js·TopBatch16.js의 히브리어 e 계열 및 베트 합성 지명 음역 선례를 따름.",
+      "note": "한국어 성경 관용 표기는 얍느엘이며, 학술 음역을 표제로 삼았다."
+    },
+    {
+      "strong": "H1034",
+      "translit": "bêt lĕbāʾôt",
+      "translitKo": "베트 레바오트",
+      "evidence": "src/data/koreanGlossTopBatch03.js·TopBatch06.js·TopBatch12.js의 בֵּית→'베트' 선례와 בָּאוֹת의 모음 표기를 따름.",
+      "note": "한국어 성경 관용 표기는 벧르바옷이며, 학술 음역을 표제로 삼았다."
+    },
+    {
+      "strong": "H1192",
+      "translit": "baʿălat Bĕʾēr",
+      "translitKo": "바알라트 베에르",
+      "evidence": "src/data/koreanGloss.js의 ע 처리(한글에서 별도 표기하지 않음)와 אֵ르 계열의 '에르' 표기 선례를 따름.",
+      "note": "한국어 성경 관용 표기는 바알랏브엘이며, 학술 음역을 표제로 삼았다."
+    },
+    {
+      "strong": "H514",
+      "translit": "ʾEltĕqēʾ",
+      "translitKo": "엘테케",
+      "evidence": "src/data/koreanGlossTopBatch03.js의 e 계열 음역 선례와 어말 א를 한글로 별도 적지 않는 배포 관례를 따름.",
+      "note": "한국어 성경 관용 표기는 엘드게이며, 어말 א는 묵음으로 처리했다."
+    },
+    {
+      "strong": "H1139",
+      "translit": "Bĕnê-Bĕraq",
+      "translitKo": "브네 베라크",
+      "evidence": "src/data/koreanGlossTopBatch03.js·TopBatch06.js의 בֵּית 및 히브리어 e 계열 배포 음역 선례를 따름.",
+      "note": "한국어 성경 관용 표기는 브네브락이며, 학술 음역과 단어 경계를 보존했다."
+    }
+  ]
+}

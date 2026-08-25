@@ -1,0 +1,38 @@
+[
+  {
+    "strong": "G3158",
+    "field": "translitKo",
+    "current": "마트타트",
+    "suggested": "마타트",
+    "evidence": "WORKER_SPEC.md의 다게쉬 포르테 규칙은 중복 자음을 한글에서 겹쳐 적지 않도록 한다. 같은 배치의 G3157 Ματθάν→마탄, G3161 Ματταθίας→마타티아스, G3160 Ματταθά→마타타와 배포 선례가 일관되게 θ/τθ를 자음 하나로 처리한다.",
+    "severity": "major",
+    "reason": "τθ를 '트ㅌ'로 중복 표기해 같은 이름 계열 및 확정된 중복 자음 규칙과 모순된다."
+  },
+  {
+    "strong": "G881",
+    "field": "translitKo",
+    "current": "아하즈",
+    "suggested": "아카즈",
+    "evidence": "translit은 Acház이며, 배포 선례의 χ는 ㅋ으로 표기된다(같은 배치 G885 Ἀχείμ→아케임, G2423 Ἰεχονίας→이에코니아스, G3493 Ναχώρ→나코르).",
+    "severity": "major",
+    "reason": "χ를 ㅎ으로 적어 배포 표기 규칙 및 같은 배치의 χ 표기와 어긋난다."
+  },
+  {
+    "strong": "G2391",
+    "field": "translitKo",
+    "current": "야렛",
+    "suggested": "이아레드",
+    "evidence": "translit은 Iáred이다. 배포 선례는 어두 Ἰα를 이아로 적고(같은 배치 G2383 Ἰάειρος→이아이로스), 어말 δ를 드로 적는다(같은 배치 G742→아르팍사드, G1045→가드).",
+    "severity": "major",
+    "reason": "어두와 어말을 모두 개역 관용형에 맞춰 야렛으로 적어 학술 음역 표제 및 배포 선례와 모순된다."
+  },
+  {
+    "strong": "G682",
+    "field": "translitKo",
+    "current": "애피아",
+    "suggested": "아피아",
+    "evidence": "lemma Ἀπφία는 Apphía이고, WORKER_SPEC.md의 다게쉬 포르테 규칙은 중복 자음을 줄이는 규칙이지 모음 ㅏ를 ㅐ로 바꾸는 규칙이 아니다. 배포 음역 선례에 헬라어 음역의 ㅐ 변환은 없다.",
+    "severity": "major",
+    "reason": "πφ 처리 과정에서 모음까지 ㅐ로 바뀐 표기 오류다."
+  }
+]

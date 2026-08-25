@@ -1,0 +1,432 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "H2466",
+      "translit": "ḥēled",
+      "translitKo": "헬레드",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5814",
+      "translit": "ʿuzzîyā",
+      "translitKo": "웃시야",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4925",
+      "translit": "mišmannâ",
+      "translitKo": "미쉬만나",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3621",
+      "translit": "kelûḇay",
+      "translitKo": "켈루바이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3421",
+      "translit": "yārqĕʿām",
+      "translitKo": "야르크암",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8101",
+      "translit": "šimʿātî",
+      "translitKo": "쉬므아티",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6469",
+      "translit": "pĕʿullĕṯay",
+      "translitKo": "페울레타이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8049",
+      "translit": "šamhûṯ",
+      "translitKo": "샴후트",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5724",
+      "translit": "ʿaḏlay",
+      "translitKo": "아드라이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8488",
+      "translit": "tēmĕnî",
+      "translitKo": "테메니",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H326",
+      "translit": "ʾăḥaštārî",
+      "translitKo": "아하스타리",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H7746",
+      "translit": "šûḥā",
+      "translitKo": "수하",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8468",
+      "translit": "tĕḥinnâ",
+      "translitKo": "테히나",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3578",
+      "translit": "kôzĕḇā",
+      "translitKo": "코제바",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3143",
+      "translit": "yôšîḇyāh",
+      "translitKo": "요쉬브야",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5661",
+      "translit": "ʿaḇdîʾēl",
+      "translitKo": "압디엘",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2979",
+      "translit": "yĕʾāṯray",
+      "translitKo": "예아트라이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2293",
+      "translit": "ḥaggîyāh",
+      "translitKo": "학기야",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H379",
+      "translit": "ʾîšhôḏ",
+      "translitKo": "이쉬호드",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H7609",
+      "translit": "šĕʾērāh",
+      "translitKo": "셰에라",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6457",
+      "translit": "pāsaḵ",
+      "translitKo": "파사크",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4331",
+      "translit": "mêšāʾ",
+      "translitKo": "메이샤",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8039",
+      "translit": "šimʿāh",
+      "translitKo": "쉬므아",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4921",
+      "translit": "mĕšillēmîṯ",
+      "translitKo": "메쉴레밋",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8043",
+      "translit": "šimʿām",
+      "translitKo": "쉬므암",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6871",
+      "translit": "ṣĕrûʿāh",
+      "translitKo": "체루아",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2886",
+      "translit": "ṭaḇrimmôn",
+      "translitKo": "타브림몬",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2383",
+      "translit": "ḥezyôn",
+      "translitKo": "헤즈욘",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H456",
+      "translit": "ʾĕlîḥōreph",
+      "translitKo": "엘리호레프",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H292",
+      "translit": "ʾăḥînāḏāḇ",
+      "translitKo": "아히나다브",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2802",
+      "translit": "ḥereṯ",
+      "translitKo": "헤레트",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4582",
+      "translit": "māʿôḵ",
+      "translitKo": "마오흐",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5525",
+      "translit": "sukkî",
+      "translitKo": "숙키",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6859",
+      "translit": "ṣĕphāṯāh",
+      "translitKo": "체파타",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6007",
+      "translit": "ʿămasyāh",
+      "translitKo": "아마샤",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8116",
+      "translit": "šimrîṯ",
+      "translitKo": "쉬므리트",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2311",
+      "translit": "ḥaḏlay",
+      "translitKo": "하들라이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3260",
+      "translit": "yeʿdî",
+      "translitKo": "예드디",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3089",
+      "translit": "yĕhôšeḇaʿ",
+      "translitKo": "여호셰바",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5180",
+      "translit": "Nəḥušṯān",
+      "translitKo": "네후스탄",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3192",
+      "translit": "Yoṭḇā",
+      "translitKo": "욧바",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5179",
+      "translit": "Nəḥušṯā",
+      "translitKo": "네후스타",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3380",
+      "translit": "Yərubbešet",
+      "translitKo": "예룹베셰트",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3041",
+      "translit": "Yədîḏyā",
+      "translitKo": "예디디야",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4012",
+      "translit": "Məḇunnay",
+      "translitKo": "메분나이",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3609",
+      "translit": "Kilʾāḇ",
+      "translitKo": "킬압",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5522",
+      "translit": "Sikkûṯ",
+      "translitKo": "시쿳",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3594",
+      "translit": "Kiyyûn",
+      "translitKo": "기윤",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H7598",
+      "translit": "Šəʾaltîʾēl",
+      "translitKo": "스알티엘",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H144",
+      "translit": "ʾĂḏār",
+      "translitKo": "아달",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6997",
+      "translit": "Qaṭṭān",
+      "translitKo": "카탄",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H5611",
+      "translit": "Səp̄ār",
+      "translitKo": "세파르",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8134",
+      "translit": "Šinʾāḇ",
+      "translitKo": "신압",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H3044",
+      "translit": "Yidlāp̄",
+      "translitKo": "이들랍",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H6230",
+      "translit": "ʿĒśeq",
+      "translitKo": "에셰크",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4649",
+      "translit": "Muppîm",
+      "translitKo": "무핌",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H1691",
+      "translit": "Diḇlayim",
+      "translitKo": "딥라임",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H8020",
+      "translit": "Šalman",
+      "translitKo": "살만",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H4088",
+      "translit": "Maḏmēnā",
+      "translitKo": "맛메나",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H1966",
+      "translit": "Hêlēl",
+      "translitKo": "헬렐",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    },
+    {
+      "strong": "H2262",
+      "translit": "Ḥăḇaṣṣanyāh",
+      "translitKo": "하밧차냐",
+      "evidence": "src/data/koreanGloss*.js 배포 음역 선례 및 bookContext.js·bibleReferences.js·contextChapterCards*.js의 고유명사 표기와 대조",
+      "note": ""
+    }
+  ]
+}

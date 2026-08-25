@@ -1,0 +1,290 @@
+[
+  {
+    "strong": "G28",
+    "field": "translitKo",
+    "current": "하갈",
+    "suggested": "아가르",
+    "evidence": "note 가 '관용 표기와 학술 음역이 다름' 이라고 적어 놓고 정작 값은 개역 관용 표기 '하갈'(src/data/bibleReferences.js·biblicalPeopleT2.js 에 쓰이는 그 표기)이다. WORKER_SPEC '학술(SBL) 표기를 표제로 삼는다' + 배포 선례 koreanGlossTopBatch09.js ʿărôʿēr→아로에르(관용 아로엘 아님). 어말 ρ 선례는 같은 배치 G768 Ἀσήρ→아세르 · G2466 Ἰσαχάρ→이사카르.",
+    "severity": "critical",
+    "reason": "Ἄγαρ 의 학술 음역은 아가르인데 값은 히브리어 경유 관용 표기 하갈이다. note 가 '학술 음역이 다르다'고 선언한 내용과 값이 정반대다. 같은 배치 G2096 Εὖα 는 관용 하와를 버리고 유아로 적었으므로 내부에서도 어긋난다."
+  },
+  {
+    "strong": "H8044",
+    "field": "translitKo",
+    "current": "삼갈",
+    "suggested": "샴가르",
+    "evidence": "translit 은 Šamgar 인데 값은 개역 관용 표기 삼갈이다. 어두 שַׁ→샤 선례 340건(배포 שָׁמַיִם→샤마임 · שָׁמַר→샤마르 · שָׁפַט→샤파트). 어말 ר→르 선례(다바르 · 샤마르 · 차르 · 하체르), 같은 배치 H8022 šalmanʾeser→샬마네세르.",
+    "severity": "critical",
+    "reason": "š 를 ㅅ 로, 어말 ר 를 ㄹ 받침으로 적어 배포 선례를 두 군데 어겼다. 결과가 관용 표기 삼갈과 같아졌는데 note 는 보일러플레이트뿐이라 관용을 따른 이유도 적혀 있지 않다."
+  },
+  {
+    "strong": "H419",
+    "field": "translitKo",
+    "current": "엘닷",
+    "suggested": "엘다드",
+    "evidence": "translit 은 ʾEldād. 어말 ד→드 선례 155건(배포 ʾeḥād→에하드 · ʿebed→에베드 · gilʿād→길아드). 같은 배치 H4312 Mēdād→메다드 는 note 에 '개역 관용 표기는 메닷이나 학술 표기를 표제로 둔다'고 적고 드로 적었다.",
+    "severity": "major",
+    "reason": "같은 배치 · 같은 어말 자음인 메다드와 정반대로 관용 표기 엘닷을 그대로 썼다. 155건의 배포 선례와 어긋나며 note 에 예외 사유도 없다."
+  },
+  {
+    "strong": "H78",
+    "field": "translitKo",
+    "current": "입찬",
+    "suggested": "이브찬",
+    "evidence": "translit 은 ʾIbṣān. בְ(무성 쉐바 앞 ב)→브 선례 43건, 그중 מִבְצָר mibṣār→미브차르 는 자음 배열이 완전히 같다. 그 밖에 ʾabrāhām→아브라함 · gibʿâ→기브아 · ribqâ→리브카.",
+    "severity": "major",
+    "reason": "ב 를 받침 ㅂ 로 눌러 적어 배포 선례 미브차르와 어긋난다. 배포 데이터에 ב 를 받침으로 적은 사례는 없다."
+  },
+  {
+    "strong": "H4036",
+    "field": "translitKo",
+    "current": "마고르 미사빕",
+    "suggested": "마고르 미사비브",
+    "evidence": "translit 은 māgôr missābîb. 어말 ב→브 선례 169건 전부, 그중 סָבִיב sābîb→사비브 는 같은 낱말이다. note 는 '관용 표기 마골미사빕과 달리 SBL 음역을 표제로 둔다'고 적혀 있다.",
+    "severity": "major",
+    "reason": "note 는 관용 표기와 달리 적었다고 선언하는데 뒷말 '미사빕'은 관용 표기 그대로다. 배포된 사비브(sābîb)와도 어긋난다."
+  },
+  {
+    "strong": "G4463",
+    "field": "translitKo",
+    "current": "랍디조",
+    "suggested": "라브디조",
+    "evidence": "note 는 '어두 ῥ는 흐를 붙이지 않는다'며 배포 선례 준수를 주장한다. 그러나 β+자음→브 선례는 배포 βδέλυγμα bdélygma→브델뤼그마 · βλέπω→블레포 · στρεβλόω→스트레블로오 이고, 같은 배치 G4465 ῥαβδοῦχος 는 라브두코스다.",
+    "severity": "major",
+    "reason": "같은 어근 ῥαβδ- 를 한 항목은 라브두코스, 다른 항목은 랍디조로 갈라 적었다. 배포 데이터에 β 를 받침 ㅂ 로 적은 사례는 없다."
+  },
+  {
+    "strong": "G682",
+    "field": "translitKo",
+    "current": "애피아",
+    "suggested": "아피아",
+    "evidence": "changes 기록상 gemination 규칙이 '앱피아'→'애피아'로 기계 교정했다. 그러나 πφ 는 같은 자모의 겹침이 아니라 π+φ 이고, 규칙 2 의 선례(아타 · 카포레트 · 탈라사 · 기보르)는 모두 모음을 바꾸지 않는다.",
+    "severity": "major",
+    "reason": "받침만 떼야 할 자리에서 모음 ㅏ 가 ㅐ 로 바뀌었다. 배포 데이터에 헬라어 음역을 ㅐ 로 적은 선례가 없는 기계 교정 사고다."
+  },
+  {
+    "strong": "G4589",
+    "field": "translitKo",
+    "current": "셋",
+    "suggested": "세트",
+    "evidence": "translit 은 Sḗth. 어말 θ→트 선례는 배포 Ναζαρέθ→나자레트, 같은 배치 G3092 Μαάθ→마아트 · G4519 σαβαώθ→사바오트.",
+    "severity": "major",
+    "reason": "어말 θ 를 ㅅ 받침으로 적어 개역 관용 표기 '셋'이 되었다. 같은 배치 마아트 · 사바오트와 어긋나고 note 에 예외 사유도 없다."
+  },
+  {
+    "strong": "G2391",
+    "field": "translitKo",
+    "current": "야렛",
+    "suggested": "이아레드",
+    "evidence": "translit 은 Iáred. 어말 δ→드 선례는 배포 Δαβίδ→다비드, 같은 배치 G742 Ἀρφαξάδ→아르팍사드 · G1045 Γάδ→가드 · G10 Ἀβιούδ→아비우드. 어두 Ἰα→이아 선례는 배포 Ἰάκωβος→이아코보스 · Ἰακώβ→이아코브 · Ἰάσων→이아손, 같은 배치 G2383 Ἰάειρος→이아이로스.",
+    "severity": "major",
+    "reason": "어말 δ 를 ㅅ 받침으로 적어 관용 표기 야렛이 되었다. 최소한 어말은 '드'여야 하고, 어두 Ἰα 도 배포 선례대로 이아여야 한다."
+  },
+  {
+    "strong": "G3158",
+    "field": "translitKo",
+    "current": "마트타트",
+    "suggested": "마타트",
+    "evidence": "같은 배치 G3157 Ματθάν→마탄 · G3159 Ματθίας→마티아스 · G3161 Ματταθίας→마타티아스 · G3160 Ματταθά→마타타. 배포 선례도 τθ 를 ㅌ 하나로 적는다.",
+    "severity": "major",
+    "reason": "τθ 를 '트ㅌ' 두 음절로 늘려 적어 같은 이름 계열 네 항목과 어긋난다."
+  },
+  {
+    "strong": "G4562",
+    "field": "translitKo",
+    "current": "사루흐",
+    "suggested": "사루크",
+    "evidence": "χ→ㅋ 선례는 배포 전역(χάρις→카리스 · ἀρχή→아르케 · ψυχή→프쉬케 · ἔρχομαι→에르코마이), 어말 χ 는 Μελχισεδέκ→멜키세데크 · Ἰσαάκ→이사아크 계열로 크. 같은 배치도 G2984 를 뺀 전부가 ㅋ(나코르 · 말코스 · 이사카르 · 아케임 · 멜키).",
+    "severity": "major",
+    "reason": "χ 를 ㅎ 로 적었다. 배포 데이터에 χ 를 ㅎ 로 적은 사례가 없다."
+  },
+  {
+    "strong": "G881",
+    "field": "translitKo",
+    "current": "아하즈",
+    "suggested": "아카즈",
+    "evidence": "translit 은 Acház. χ→ㅋ 선례는 배포 χάρις→카리스 · καυχάομαι→카우카오마이, 같은 배치 G885 Ἀχείμ→아케임 · G2423 Ἰεχονίας→이에코니아스 · G3493 Ναχώρ→나코르.",
+    "severity": "major",
+    "reason": "χ 를 ㅎ 로 적어 같은 배치의 아케임 · 이에코니아스와 어긋난다. 결과가 관용 표기 계열로 기울었는데 note 에 사유가 없다."
+  },
+  {
+    "strong": "G2984",
+    "field": "translitKo",
+    "current": "라멕",
+    "suggested": "라메크",
+    "evidence": "translit 은 Lámech. 어말 χ/κ→크 선례는 배포 Μελχισεδέκ→멜키세데크 · Ἰσαάκ→이사아크 · ἐκ→에크, 같은 배치 G4524 Σαδώκ→사도크.",
+    "severity": "major",
+    "reason": "어말 χ 를 ㄱ 받침으로 적어 관용 표기 라멕이 되었다. 배포 선례는 어말 폐쇄음을 받침으로 적지 않는다."
+  },
+  {
+    "strong": "G5317",
+    "field": "translitKo",
+    "current": "팔렉",
+    "suggested": "팔레크",
+    "evidence": "translit 은 Phálek. 어말 κ→크 선례는 배포 Μελχισεδέκ→멜키세데크 · Ἰσαάκ→이사아크 · ἐκ→에크, 같은 배치 G4524 Σαδώκ→사도크.",
+    "severity": "major",
+    "reason": "같은 배치 사도크와 같은 어말 κ 인데 혼자만 ㄱ 받침으로 적었다."
+  },
+  {
+    "strong": "G2490",
+    "field": "translitKo",
+    "current": "요안나스",
+    "suggested": "이오안나스",
+    "evidence": "어두 Ἰω→이오 선례는 배포 Ἰωάννης→이오안네스 · Ἰωσήφ→이오세프 · Ἰωνᾶς→이오나스 · Ἰορδάνης→이오르다네스. 같은 배치 G2489 Ἰωάννα 는 이오안나다.",
+    "severity": "major",
+    "reason": "같은 파일에서 Ἰωάννα 는 이오안나, Ἰωαννᾶς 는 요안나스로 갈라 적었다. 요- 는 히브리어 יוֹ 에만 쓰는 표기다(배포 요아브 · 요나탄)."
+  },
+  {
+    "strong": "G2497",
+    "field": "translitKo",
+    "current": "요레임",
+    "suggested": "이오레임",
+    "evidence": "어두 Ἰω→이오 선례는 배포 이오안네스 · 이오세프 · 이오나스 · 이오르다네스. 같은 배치 G2496 Ἰωράμ→이오람 · G2488 Ἰωάθαμ→이오아탐 · G2502 Ἰωσίας→이오시아스.",
+    "severity": "major",
+    "reason": "같은 배치의 다른 Ἰω- 이름 일곱 개는 모두 이오- 인데 이 항목만 요- 다."
+  },
+  {
+    "strong": "G2494",
+    "field": "translitKo",
+    "current": "요난",
+    "suggested": "이오난",
+    "evidence": "어두 Ἰω→이오 선례는 배포 Ἰωνᾶς→이오나스(자모 배열이 거의 같다) · 이오안네스 · 이오세프. 같은 배치 G6043 Ἰωδά→이오다 · G6044 Ἰωσήχ→이오세크.",
+    "severity": "major",
+    "reason": "배포된 이오나스와 같은 자리인데 요- 로 적어 배치 안에서도 갈렸다."
+  },
+  {
+    "strong": "G2389",
+    "field": "translitKo",
+    "current": "얀네스",
+    "suggested": "이안네스",
+    "evidence": "어두 Ἰα→이아 선례는 배포 Ἰάκωβος→이아코보스 · Ἰακώβ→이아코브 · Ἰάσων→이아손, 같은 배치 G2383 Ἰάειρος→이아이로스.",
+    "severity": "minor",
+    "reason": "Ἰ 를 반모음으로 흘려 야- 로 적었다. 배포 선례는 Ἰα 를 두 음절 이아- 로 적는다."
+  },
+  {
+    "strong": "G2387",
+    "field": "translitKo",
+    "current": "얌브레스",
+    "suggested": "이암브레스",
+    "evidence": "어두 Ἰα→이아 선례는 배포 이아코보스 · 이아코브 · 이아손, 같은 배치 G2383 Ἰάειρος→이아이로스.",
+    "severity": "minor",
+    "reason": "G2389 와 같은 문제다. Ἰ 를 독립 음절로 적지 않았다."
+  },
+  {
+    "strong": "G2388",
+    "field": "translitKo",
+    "current": "얀나",
+    "suggested": "이안나",
+    "evidence": "어두 Ἰα→이아 선례는 배포 이아코보스 · 이아코브 · 이아손, 같은 배치 G2383 Ἰάειρος→이아이로스.",
+    "severity": "minor",
+    "reason": "G2389 · G2387 과 같은 문제다."
+  },
+  {
+    "strong": "G799",
+    "field": "translitKo",
+    "current": "아쉰크리토스",
+    "suggested": "아슁크리토스",
+    "evidence": "연구개음 앞 γ→ㅇ 받침 선례는 같은 배치만 봐도 G1456 ἐγκαίνια→엥카이니아 · G1467 ἐγκρατεύομαι→엥크라튜오마이 · G31→앙겔리아 · G743→아르캉겔로스 · G1804→엑상겔로 · G3477→낭가이 · G5353→프통고스.",
+    "severity": "minor",
+    "reason": "Ἀσύγκριτος 의 γ 는 κ 앞이라 ㅇ 인데 혼자 ㄴ 으로 적었다. 같은 배치 일곱 항목과 어긋난다."
+  },
+  {
+    "strong": "H6847",
+    "field": "translit",
+    "current": "Ṣāpĕnat Paʿnēaḥ",
+    "suggested": "Ṣopĕnat Paʿnēaḥ",
+    "evidence": "lemma 첫 모음부호가 U+05C7 QAMATS QATAN 이다. 배포 선례 צְלׇפְחָד Ṣĕlopḥād→첼로프하드 · יָרׇבְעָם yārobʿām→야로브암 은 이 부호를 o 로 적는다. 같은 항목의 translitKo 도 이미 '초프나트'로 o 다.",
+    "severity": "major",
+    "reason": "카마츠 카탄을 장모음 ā 로 적어 translit 과 translitKo 가 서로 어긋난다. ā 라면 한글은 '차프나트'여야 하는데 값은 '초프나트'다."
+  },
+  {
+    "strong": "H5393",
+    "field": "translit",
+    "current": "nishkâ",
+    "suggested": "niškâ",
+    "evidence": "배포된 히브리어 3632건 가운데 sh 이중자를 쓴 translit 은 0 건이고 전부 š 다(배포 šāmayim · šālôš · šākab). 같은 배치도 ʿāšēš · šalmanʾeser · Šamgar · Šēšĕbaṣṣar 로 š 를 쓴다.",
+    "severity": "major",
+    "reason": "SBL 표기 š 대신 영어식 이중자 sh 를 썼다. 같은 파일 안에서도 표기가 갈린다."
+  },
+  {
+    "strong": "H4659",
+    "field": "translit",
+    "current": "mifʿāl",
+    "suggested": "mipʿāl",
+    "evidence": "WORKER_SPEC 규칙 1 은 베가드케파트 연음을 구분 기호 없이 b g d k p t 로 적으라고 한다. 배포 선례 שָׁפַט šāpaṭ→샤파트 · שָׂפָה śāpâ→사파 · צָפוֹן ṣāpôn→차폰 모두 p 다. 같은 배치 H6847 도 Ṣāpĕnat 로 p 를 쓴다.",
+    "severity": "minor",
+    "reason": "연음된 פ 를 f 로 적어 규칙 1 과 어긋난다. begadkepat 기계 교정이 ḇḡḏḵp̄ṯ 만 훑어 f 를 놓쳤다."
+  },
+  {
+    "strong": "H569",
+    "field": "translit",
+    "current": "ʾAmrāfel",
+    "suggested": "ʾAmrāpel",
+    "evidence": "H4659 와 같다. 규칙 1 + 배포 선례 šāpaṭ · śāpâ · ṣāpôn, 같은 배치 Ṣāpĕnat.",
+    "severity": "minor",
+    "reason": "연음된 פ 를 f 로 적어 규칙 1 과 어긋난다."
+  },
+  {
+    "strong": "G6002",
+    "field": "translit",
+    "current": "Admin",
+    "suggested": "Admín",
+    "evidence": "lemma 는 Ἀδμίν 으로 ί 에 예음 부호가 있다. 같은 배치의 같은 꼴 이름은 모두 부호를 남긴다 — Ῥεμφάν→Rhemphán · Ἰωνάν→Iōnán · Καϊνάν→Kaïnán · Μαϊνάν→Maïnán.",
+    "severity": "minor",
+    "reason": "악센트가 빠져 영어 낱말 'Admin' 과 구별되지 않는다."
+  },
+  {
+    "strong": "G2060",
+    "field": "translit",
+    "current": "Hermēs",
+    "suggested": "Hermês",
+    "evidence": "lemma Ἑρμῆς 의 η 는 곡절 부호다. 같은 배치가 곡절을 남기는 선례 — G2057 Ἑρμᾶς→Hermâs · G2832 Κλωπᾶς→Klōpâs · G4504 Ῥοῦφος→Rhoûphos · G3002 Λεββαῖος→Lebbaîos.",
+    "severity": "minor",
+    "reason": "같은 파일에서 Ἑρμᾶς 는 â 를 남기고 Ἑρμῆς 는 부호를 지웠다. translitKo(헤르메스)에는 영향이 없다."
+  },
+  {
+    "strong": "G559",
+    "field": "translit",
+    "current": "Apellēs",
+    "suggested": "Apellês",
+    "evidence": "lemma Ἀπελλῆς 의 곡절 부호. 같은 배치 선례 Hermâs · Klōpâs · Skeuâs · Theudâs · Bariēsoûs.",
+    "severity": "minor",
+    "reason": "곡절 부호가 빠졌다. translitKo 에는 영향이 없다."
+  },
+  {
+    "strong": "G2389",
+    "field": "translit",
+    "current": "Iannēs",
+    "suggested": "Iannês",
+    "evidence": "lemma Ἰαννῆς 의 곡절 부호. 같은 배치 선례 Hermâs · Klōpâs · Rhagaû · Lebbaîos.",
+    "severity": "minor",
+    "reason": "곡절 부호가 빠졌다."
+  },
+  {
+    "strong": "G2387",
+    "field": "translit",
+    "current": "Iambrēs",
+    "suggested": "Iambrês",
+    "evidence": "lemma Ἰαμβρῆς 의 곡절 부호. 같은 배치 선례 Hermâs · Klōpâs · Rhagaû · Lebbaîos.",
+    "severity": "minor",
+    "reason": "곡절 부호가 빠졌다."
+  },
+  {
+    "strong": "G5173",
+    "field": "translit",
+    "current": "Tryphōsa",
+    "suggested": "Tryphôsa",
+    "evidence": "lemma Τρυφῶσα 의 ω 는 곡절 부호다. 같은 배치 선례 Klōpâs · Skeuâs · Rhoûphos.",
+    "severity": "minor",
+    "reason": "곡절 부호가 빠졌다."
+  },
+  {
+    "strong": "G2242",
+    "field": "note",
+    "current": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 헬리로 같다.",
+    "suggested": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치).",
+    "evidence": "WORKER_SPEC 표기 원칙 마지막 줄 — '엄밀식과 관용식이 같으면 굳이 병기하지 않는다.' 같은 배치에서 관용과 값이 같은 다른 항목들(G689 Ἀράμ→아람 · G760 Ἀσά→아사 · G1158 Δανιήλ→다니엘)은 이런 문장을 달지 않았다.",
+    "severity": "minor",
+    "reason": "관용과 학술이 같다는 사실을 굳이 적어 명세와 어긋나고 같은 배치의 다른 동일 사례와도 처리가 다르다. 값 자체는 옳다."
+  }
+]

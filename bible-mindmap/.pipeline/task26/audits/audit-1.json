@@ -1,0 +1,11 @@
+[
+  {
+    "strong": "G5018",
+    "field": "translitKo",
+    "current": "타르슈스",
+    "suggested": "타르수스",
+    "evidence": "WORKER_SPEC.md의 헬라어 ευ 규칙(유 계열) 및 배포 선례 src/data/bibleReferences.js의 Tarsus 표기 '타르수스'",
+    "severity": "major",
+    "reason": "Ταρσεύς의 ευ를 슈로 적어 확정된 유 계열 표기와 배포 선례의 타르수스 표기를 어겼다."
+  }
+]

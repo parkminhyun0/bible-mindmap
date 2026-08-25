@@ -1,0 +1,697 @@
+{
+  "judgeCount": 3,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    }
+  ],
+  "tieCount": 10,
+  "ties": [
+    {
+      "strong": "H4781",
+      "koRank": [
+        [
+          "메로다크",
+          1
+        ],
+        [
+          "므로닥",
+          1
+        ],
+        [
+          "므로드악",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕrōdāk",
+          1
+        ],
+        [
+          "mərōdak",
+          1
+        ],
+        [
+          "mərōḏāk",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H486",
+      "koRank": [
+        [
+          "알모닷",
+          2
+        ],
+        [
+          "알모다드",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ʾalmôdād",
+          1
+        ],
+        [
+          "ʾalmôdad",
+          1
+        ],
+        [
+          "ʾalmōḏāḏ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H4091",
+      "koRank": [
+        [
+          "므단",
+          2
+        ],
+        [
+          "메단",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕdān",
+          1
+        ],
+        [
+          "mədan",
+          1
+        ],
+        [
+          "məḏān",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3620",
+      "koRank": [
+        [
+          "켈루브",
+          2
+        ],
+        [
+          "켈룹",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "kĕlûb",
+          1
+        ],
+        [
+          "kəlûb",
+          1
+        ],
+        [
+          "kelûḇ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3094",
+      "koRank": [
+        [
+          "예할렐엘",
+          2
+        ],
+        [
+          "여할렐엘",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕhallelʾēl",
+          1
+        ],
+        [
+          "yəhallēlʾēl",
+          1
+        ],
+        [
+          "yəhalleʾēl",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3042",
+      "koRank": [
+        [
+          "여다야",
+          2
+        ],
+        [
+          "예다야",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yĕdāyâ",
+          1
+        ],
+        [
+          "yədāyāh",
+          1
+        ],
+        [
+          "yəḏāyāh",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3086",
+      "koRank": [
+        [
+          "예호아딘",
+          1
+        ],
+        [
+          "여호앗딘",
+          1
+        ],
+        [
+          "여호아딘",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yəhôʿaddîn",
+          2
+        ],
+        [
+          "yĕhôʿaddîn",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3376",
+      "koRank": [
+        [
+          "이르아이야",
+          2
+        ],
+        [
+          "이르이야",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yirʾiyyâ",
+          1
+        ],
+        [
+          "yirʾiyyāh",
+          1
+        ],
+        [
+          "yirʾiyyā",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H7433",
+      "koRank": [
+        [
+          "라모트 길르앗",
+          2
+        ],
+        [
+          "라모트 길아드",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "rāmōt gilʿād",
+          1
+        ],
+        [
+          "rāmōṯ gilʿād",
+          1
+        ],
+        [
+          "rāmōṯ Gilʿāḏ",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3941",
+      "koRank": [
+        [
+          "랍비돗",
+          2
+        ],
+        [
+          "라피도트",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "lappîdôt",
+          1
+        ],
+        [
+          "lappidôṯ",
+          1
+        ],
+        [
+          "lappîḏôṯ",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H4781",
+      "lemma": "מְרֹדָךְ",
+      "translit": "mĕrōdāk",
+      "translitKo": "메로다크",
+      "votesKo": 1,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 바빌론 신 이름. 개역개정 관용 표기는 '므로닥'(사 39:1 므로닥발라단)이나, 배포 데이터가 어두 쉐바를 '므'가 아니라 '메'로 적어 왔으므로 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H4850",
+      "lemma": "מְרָתַיִם",
+      "translit": "mərāṯayim",
+      "translitKo": "므라타임",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H694",
+      "lemma": "אֲרָב",
+      "translit": "ʾărāb",
+      "translitKo": "아랍",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 ב는 배포 한글 선례에 따라 브가 아니라 받침으로 적는다."
+    },
+    {
+      "strong": "H6911",
+      "lemma": "קִבְצַיִם",
+      "translit": "qiḇṣayim",
+      "translitKo": "키브차임",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(3/3 일치). 개역개정 관용 표기는 '깁사임'(수 21:22)이다."
+    },
+    {
+      "strong": "H486",
+      "lemma": "אַלְמוֹדָד",
+      "translit": "ʾalmôdād",
+      "translitKo": "알모닷",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 ד는 다게쉬·베가드케파트 구별 없이 t 계열로 음역한다."
+    },
+    {
+      "strong": "H2301",
+      "lemma": "חֲדַד",
+      "translit": "ḥădad",
+      "translitKo": "하다드",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '하닷'(창 25:15)이다. H1908(하다드)의 이형이다."
+    },
+    {
+      "strong": "H2175",
+      "lemma": "זִמְרָן",
+      "translit": "zimrān",
+      "translitKo": "지므란",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 관용 '시므란'과 달리 자모 z를 학술적으로 반영한다."
+    },
+    {
+      "strong": "H4091",
+      "lemma": "מְדָן",
+      "translit": "mĕdān",
+      "translitKo": "므단",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H7780",
+      "lemma": "שׁוֹפָךְ",
+      "translit": "šôpāk",
+      "translitKo": "쇼파크",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '소박'(대상 19:16)이다."
+    },
+    {
+      "strong": "H6431",
+      "lemma": "פֶּלֶת",
+      "translit": "pelet",
+      "translitKo": "펠레트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '벨렛'(민 16:1)이다."
+    },
+    {
+      "strong": "H3436",
+      "lemma": "יׇשְׁבְּקָשָׁה",
+      "translit": "yāšbəqāšāh",
+      "translitKo": "야슈베카샤",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 첫 음절의 qə를 '베'로 축약하지 않고 학술 음절을 반영한다."
+    },
+    {
+      "strong": "H3620",
+      "lemma": "כְּלוּב",
+      "translit": "kĕlûb",
+      "translitKo": "켈루브",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '글룹'(대상 4:11)이다."
+    },
+    {
+      "strong": "H3094",
+      "lemma": "יְהַלֶּלְאֵל",
+      "translit": "yĕhallelʾēl",
+      "translitKo": "예할렐엘",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 표기는 '여할렐렐'(대상 4:16)이다."
+    },
+    {
+      "strong": "H3042",
+      "lemma": "יְדָיָה",
+      "translit": "yĕdāyâ",
+      "translitKo": "여다야",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 한국어 배포 선례의 관용형 '여다야'를 따른다."
+    },
+    {
+      "strong": "H1074",
+      "lemma": "בֹּכְרוּ",
+      "translit": "bōḵrû",
+      "translitKo": "보크루",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4810",
+      "lemma": "מְרִי בַעַל",
+      "translit": "mərî baʿal",
+      "translitKo": "므리바알",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 두 낱말을 의미로 새로 번역하지 않고 배포 관용 결합형을 따른다."
+    },
+    {
+      "strong": "H3227",
+      "lemma": "יְמִינִי",
+      "translit": "yəmînî",
+      "translitKo": "여미니",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 관용·배포 인명 선례의 '여미니'를 따른다."
+    },
+    {
+      "strong": "H3090",
+      "lemma": "יְהוֹשַׁבְעַת",
+      "translit": "yəhôšaḇʿaṯ",
+      "translitKo": "여호사브앗",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 개역개정 관용 '여호사브앗'을 유지한다."
+    },
+    {
+      "strong": "H3086",
+      "lemma": "יְהוֹעַדִּין",
+      "translit": "yəhôʿaddîn",
+      "translitKo": "예호아딘",
+      "votesKo": 1,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(1/3 일치). 개역개정 관용 표기는 '여호앗단'(왕하 14:2)이며, 케레·크티브 차이로 '여호앗딘'으로도 읽는다."
+    },
+    {
+      "strong": "H3203",
+      "lemma": "יְכׇלְיָה",
+      "translit": "yəḵolyāh",
+      "translitKo": "여콜야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). כׇ의 단모음은 o로 읽어 '콜'로 적는다."
+    },
+    {
+      "strong": "H3388",
+      "lemma": "יְרוּשָׁא",
+      "translit": "yərûšāʾ",
+      "translitKo": "여루샤",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 א는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H3228",
+      "lemma": "יְמִינִי",
+      "translit": "yəmînî",
+      "translitKo": "여미니",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2313",
+      "lemma": "חִדֶּקֶל",
+      "translit": "ḥiddeqel",
+      "translitKo": "힛데겔",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 관용 지명 표기를 따른다."
+    },
+    {
+      "strong": "H904",
+      "lemma": "בִּגְתָן",
+      "translit": "bigṯān",
+      "translitKo": "빅단",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3223",
+      "lemma": "יְמוּאֵל",
+      "translit": "yəmûʾēl",
+      "translitKo": "여무엘",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4990",
+      "lemma": "מִתְרְדָת",
+      "translit": "mitrədāṯ",
+      "translitKo": "미트르다트",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4967",
+      "lemma": "מְתוּשָׁאֵל",
+      "translit": "mətûšāʾēl",
+      "translitKo": "므투샤엘",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 음절 말이 아닌 שׁ 뒤 모음이 있으므로 '샤'로 적는다."
+    },
+    {
+      "strong": "H5624",
+      "lemma": "סֶרֶד",
+      "translit": "sered",
+      "translitKo": "세렛",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H3376",
+      "lemma": "יִרְאִיָּיה",
+      "translit": "yirʾiyyâ",
+      "translitKo": "이르아이야",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 반복 y를 임의로 줄이지 않는다."
+    },
+    {
+      "strong": "H7433",
+      "lemma": "רָמֹת גִּלעָד",
+      "translit": "rāmōt gilʿād",
+      "translitKo": "라모트 길르앗",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 두 지명 요소를 띄어 적고 ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H7003",
+      "lemma": "קִטְרוֹן",
+      "translit": "qiṭrôn",
+      "translitKo": "킷론",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H303",
+      "lemma": "אַחְלָב",
+      "translit": "ʾaḥlāb",
+      "translitKo": "아흘랍",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 어말 ב는 배포 한글 관용형에 따라 받침으로 적는다."
+    },
+    {
+      "strong": "H3941",
+      "lemma": "לַפִּידוֹת",
+      "translit": "lappîdôt",
+      "translitKo": "랍비돗",
+      "votesKo": 2,
+      "votesLat": 1,
+      "judges": 3,
+      "tie": true,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H4789",
+      "lemma": "מֵרוֹז",
+      "translit": "mērôz",
+      "translitKo": "메로스",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H2888",
+      "lemma": "טַבַּת",
+      "translit": "ṭabbat",
+      "translitKo": "탑밧",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치)."
+    },
+    {
+      "strong": "H1286",
+      "lemma": "בְּרִית",
+      "translit": "bərîṯ",
+      "translitKo": "브릿",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 3,
+      "tie": false,
+      "note": "표기가 갈려 3개 모델이 독립 판정했다(2/3 일치). 기존 배포 표제와 같은 lemma의 관용 음역 '브릿'을 따른다."
+    }
+  ]
+}

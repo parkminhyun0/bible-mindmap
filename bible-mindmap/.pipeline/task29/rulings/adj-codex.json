@@ -1,0 +1,21 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H245","translit":"ʾăzanyāh","translitKo":"아자느야","evidence":"koreanGlossTopBatch02.js의 학술 음역과 어말 יָה 선례; 배포의 셰바 처리","note":"어말 יָה는 네탄야·셰반야 계열의 -야로 적고, 내부 셰바를 보존했다."},
+    {"strong":"H1148","translit":"bĕnînû","translitKo":"브니누","evidence":"koreanGlossTopBatch02.js의 bĕ- 계열 인명 음역과 브니누 관용 선례","note":"유성 셰바의 한글은 배포 인명 선례에 맞춰 브로 적었다."},
+    {"strong":"H5041","translit":"nĕballāṭ","translitKo":"네발라트","evidence":"koreanGlossTopBatch02.js의 다게쉬 포르테 비중복 선례(카포레트·마테)","note":"다게쉬 포르테를 한글에서 겹쳐 적지 않고 어말 ṭ를 트로 적었다."},
+    {"strong":"H4811","translit":"mĕrāyāh","translitKo":"메라야","evidence":"koreanGlossTopBatch02.js의 mĕ- 인명 선례와 어말 יָה 음역","note":"유성 셰바를 메로 적는 배포 인명 선례를 따랐다."},
+    {"strong":"H797","translit":"ʾašdōdît","translitKo":"아쉬도딧","evidence":"bibleReferences.js의 아스돗 표기와 koreanGlossTopBatch17.js의 Ashdod 파생형 선례","note":"שׁ는 배포 규칙대로 쉬로 적어 아스돗 관용 지명과 구별했다."},
+    {"strong":"H1152","translit":"bĕsōdyāh","translitKo":"베소드야","evidence":"koreanGlossTopBatch02.js의 bĕ- 셰바 및 יָה 인명 표기 선례","note":"유성 셰바를 베로 적고 יָה는 야로 적었다."},
+    {"strong":"H5149","translit":"nĕḥûm","translitKo":"네훔","evidence":"koreanGloss.js의 מְנוּחָה→메누하 및 koreanGlossTopBatch01.js의 후음 처리 선례","note":"유성 셰바를 네로, ח를 후음 ㅎ으로 적었다."},
+    {"strong":"H5300","translit":"nĕpûšĕsîm","translitKo":"네푸셰심","evidence":"WORKER_SPEC의 셰바·음절 말 שׁ 규칙과 koreanGloss.js의 שׁ 선례","note":"장모음 뒤 셰바를 셰로 읽고 음절 말 שׁ를 심으로 적었다."},
+    {"strong":"H3662","translit":"kĕnānî","translitKo":"케나니","evidence":"koreanGlossTopBatch02.js의 kĕ- 인명 음역 선례","note":"개역 관용 표기 그나니와 달리 학술 음역을 따른다."},
+    {"strong":"H1427","translit":"gaddîʾēl","translitKo":"가디엘","evidence":"koreanGlossTopBatch02.js의 다게쉬 포르테 비중복 선례와 אל 인명 표기","note":"다게쉬를 겹자음으로 옮기지 않았다. 개역 관용 표기는 갓디엘이다."},
+    {"strong":"H1426","translit":"gaddî","translitKo":"가디","evidence":"koreanGlossTopBatch02.js의 다게쉬 포르테 비중복 선례","note":"개역 관용 표기 갓디와 달리 겹자음을 한글에서 중복하지 않았다."},
+    {"strong":"H2058","translit":"wop̄sî","translitKo":"워프시","evidence":"WORKER_SPEC의 자음 ו=w 규칙 및 w 계열 배포 선례(아원·타웨크)","note":"어두 ו를 w로, פ를 p로 읽어 워프시로 적었다."},
+    {"strong":"H3020","translit":"yoglî","translitKo":"요글리","evidence":"WORKER_SPEC의 모음부호 보존 원칙과 배포 SBL 음역 선례","note":"첫 카마츠 카탄(ׇ)을 o로 읽어 요글리로 적었다."},
+    {"strong":"H6535","translit":"parnaḵ","translitKo":"파르나크","evidence":"WORKER_SPEC 및 koreanGlossTopBatch02.js의 후음·어말 כְּ 음역 선례(타웨크)","note":"어말 ךְ는 크로 적고 p와 ḵ를 보존했다. 관용 표기는 바르낙이다."},
+    {"strong":"H360","translit":"ʾĕyālûṯ","translitKo":"에얄루트","evidence":"koreanGlossTopBatch02.js의 ʾĕ- 및 장모음 음역 선례","note":"אֱ의 셰바를 에로, ו를 w 계열로 읽고 어말 ת를 트로 적었다."},
+    {"strong":"H2317","translit":"ḥaḏrāḵ","translitKo":"하드라크","evidence":"WORKER_SPEC의 베가드케파트 구분기호 제거 및 koreanGlossTopBatch02.js의 어말 ךְ 선례","note":"ד의 구분기호는 배포 규칙대로 d로, 어말 ךְ는 크로 적었다. 관용 표기는 하드락이다."}
+  ]
+}

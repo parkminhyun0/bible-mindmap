@@ -1,0 +1,906 @@
+{
+  "shard": "BQ",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H2738",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "חָרוּל",
+      "translit": "",
+      "glossEn": "nettle.",
+      "defEn": "properly, pointed, i.e. a bramble or other thorny weed"
+    },
+    {
+      "strong": "H3943",
+      "lang": "hebrew",
+      "count": 3,
+      "lemma": "לָפַת",
+      "translit": "",
+      "glossEn": "take hold, turn aside (self).",
+      "defEn": "properly, to bend, i.e. (by implication) to clasp; also (reflexively) to turn around or aside"
+    },
+    {
+      "strong": "G2863",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κομάω",
+      "translit": "komáō",
+      "glossEn": "have long hair",
+      "defEn": "to wear tresses of hair"
+    },
+    {
+      "strong": "G2072",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἔσοπτρον",
+      "translit": "ésoptron",
+      "glossEn": "glass",
+      "defEn": "a mirror (for looking into)"
+    },
+    {
+      "strong": "H2965",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "טָרָף",
+      "translit": "",
+      "glossEn": "pluckt off.",
+      "defEn": "recently torn off, i.e. fresh"
+    },
+    {
+      "strong": "H1876",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "דָּשָׁא",
+      "translit": "",
+      "glossEn": "bring forth, spring.",
+      "defEn": "to sprout"
+    },
+    {
+      "strong": "H5214",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נִיר",
+      "translit": "",
+      "glossEn": "break up.",
+      "defEn": "to till the soil"
+    },
+    {
+      "strong": "H2261",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֲבַצֶּלֶת",
+      "translit": "",
+      "glossEn": "rose.",
+      "defEn": "probably meadow-saffron"
+    },
+    {
+      "strong": "H3554",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כָּוָה",
+      "translit": "",
+      "glossEn": "burn.",
+      "defEn": "properly, to prick or penetrate; hence, to blister (as smarting or eating into)"
+    },
+    {
+      "strong": "H5764",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עוּל",
+      "translit": "",
+      "glossEn": "sucking child, infant.",
+      "defEn": "a babe"
+    },
+    {
+      "strong": "H891",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בְּאֻשִׁים",
+      "translit": "",
+      "glossEn": "wild grapes.",
+      "defEn": "poison-berries"
+    },
+    {
+      "strong": "H1226",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בַּצֹּרֶת",
+      "translit": "",
+      "glossEn": "dearth, drought.",
+      "defEn": "restraint (of rain), i.e. drought"
+    },
+    {
+      "strong": "H1287",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֹּרִית",
+      "translit": "",
+      "glossEn": "sope.",
+      "defEn": "vegetable alkali"
+    },
+    {
+      "strong": "H5244",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נְמָלָה",
+      "translit": "",
+      "glossEn": "ant.",
+      "defEn": "an ant (probably from its almost bisected form)"
+    },
+    {
+      "strong": "H7310",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "רְוָיָה",
+      "translit": "",
+      "glossEn": "runneth over, wealthy.",
+      "defEn": "satisfaction"
+    },
+    {
+      "strong": "G4493",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ῥιπή",
+      "translit": "rhipḗ",
+      "glossEn": "twinkling",
+      "defEn": "a jerk (of the eye, i.e. (by analogy) an instant)"
+    },
+    {
+      "strong": "G5612",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὠρύομαι",
+      "translit": "ōrýomai",
+      "glossEn": "roar",
+      "defEn": "to \"roar\""
+    },
+    {
+      "strong": "G4647",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σκόλοψ",
+      "translit": "skólops",
+      "glossEn": "thorn",
+      "defEn": "withered at the front, i.e. a point or prickle (figuratively, a bodily annoyance or disability)"
+    },
+    {
+      "strong": "G4211",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πορφυρόπωλις",
+      "translit": "porphyrópōlis",
+      "glossEn": "seller of purple",
+      "defEn": "a female trader in purple cloth"
+    },
+    {
+      "strong": "G4635",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σκηνοποιός",
+      "translit": "skēnopoiós",
+      "glossEn": "tent-maker",
+      "defEn": "a manufacturer of tents"
+    },
+    {
+      "strong": "G5079",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "τεχνίτης",
+      "translit": "technítēs",
+      "glossEn": "builder, craftsman",
+      "defEn": "an artisan; figuratively, a founder (Creator)"
+    },
+    {
+      "strong": "G4810",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "σῦκον",
+      "translit": "sŷkon",
+      "glossEn": "fig",
+      "defEn": "a fig"
+    },
+    {
+      "strong": "G3014",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "λέπρα",
+      "translit": "lépra",
+      "glossEn": "leprosy",
+      "defEn": "scaliness, i.e. \"leprosy\""
+    },
+    {
+      "strong": "G211",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀλάβαστρον",
+      "translit": "alábastron",
+      "glossEn": "(alabaster) box",
+      "defEn": "properly, an \"alabaster\" box, i.e. (by extension) a perfume vase (of any material)"
+    },
+    {
+      "strong": "G200",
+      "lang": "greek",
+      "count": 4,
+      "lemma": "ἀκρίς",
+      "translit": "akrís",
+      "glossEn": "locust",
+      "defEn": "a locust (as pointed, or as lighting on the top of vegetation)"
+    },
+    {
+      "strong": "G2405",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἱερατεία",
+      "translit": "hierateía",
+      "glossEn": "office of the priesthood, priest's office",
+      "defEn": "priestliness, i.e. the sacerdotal function"
+    },
+    {
+      "strong": "G2823",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κλίβανος",
+      "translit": "klíbanos",
+      "glossEn": "oven",
+      "defEn": "an earthen pot used for baking in"
+    },
+    {
+      "strong": "G5454",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φωλεός",
+      "translit": "phōleós",
+      "glossEn": "hole",
+      "defEn": "a burrow or lurking-place"
+    },
+    {
+      "strong": "G4849",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συμπόσιον",
+      "translit": "sympósion",
+      "glossEn": "company",
+      "defEn": "a drinking-party (\"symposium\"), i.e. (by extension) a room of guests"
+    },
+    {
+      "strong": "G3582",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ξέστης",
+      "translit": "xéstēs",
+      "glossEn": "pot",
+      "defEn": "by implication, (of friction) to boil or heat); a vessel (as fashioned or for cooking) (or perhaps by corruption from the Latin sextarius, the sixth of a modius, i.e. about a pint)"
+    },
+    {
+      "strong": "H1512",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גָּחוֹן",
+      "translit": "",
+      "glossEn": "belly.",
+      "defEn": "the external abdomen, belly (as the source of the faetus )"
+    },
+    {
+      "strong": "H736",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֹרְחָה",
+      "translit": "",
+      "glossEn": "(travelling) company.",
+      "defEn": "a caravan"
+    },
+    {
+      "strong": "H4750",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מִקְשָׁה",
+      "translit": "",
+      "glossEn": "garden of cucumbers.",
+      "defEn": "literally a cucumbered field, i.e. a cucumber patch"
+    },
+    {
+      "strong": "H4254",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַחֲלָצָה",
+      "translit": "",
+      "glossEn": "changeable suit of apparel, change of raiment.",
+      "defEn": "a mantle (as easily drawn off)"
+    },
+    {
+      "strong": "H4881",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מְשׂוּכָה",
+      "translit": "",
+      "glossEn": "hedge.",
+      "defEn": "a hedge"
+    },
+    {
+      "strong": "H5908",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עַכָּבִישׁ",
+      "translit": "",
+      "glossEn": "spider.",
+      "defEn": "a spider (as weaving a network)"
+    },
+    {
+      "strong": "H4038",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַגָּל",
+      "translit": "",
+      "glossEn": "sickle.",
+      "defEn": "a sickle"
+    },
+    {
+      "strong": "H5906",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עַיִשׁ",
+      "translit": "",
+      "glossEn": "Arcturus.",
+      "defEn": "the constellation of the Great Bear (perhaps from its migration through the heavens)"
+    },
+    {
+      "strong": "H4477",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַמְתַּק",
+      "translit": "",
+      "glossEn": "(most) sweet.",
+      "defEn": "something sweet (literally or figuratively)"
+    },
+    {
+      "strong": "H3880",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "לִוְיָה",
+      "translit": "",
+      "glossEn": "ornament.",
+      "defEn": "something attached, i.e. a wreath"
+    },
+    {
+      "strong": "H6688",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צוּף",
+      "translit": "",
+      "glossEn": "honeycomb.",
+      "defEn": "comb of honey (from dripping)"
+    },
+    {
+      "strong": "H2264",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חִבֻּק",
+      "translit": "",
+      "glossEn": "fold.",
+      "defEn": "a clasping of the hands (in idleness)"
+    },
+    {
+      "strong": "H5390",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נְשִׁיקָה",
+      "translit": "",
+      "glossEn": "kiss.",
+      "defEn": "a kiss"
+    },
+    {
+      "strong": "G3111",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μάκελλον",
+      "translit": "mákellon",
+      "glossEn": "shambles",
+      "defEn": "a butcher's stall, meat market or provision-shop"
+    },
+    {
+      "strong": "G2864",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κόμη",
+      "translit": "kómē",
+      "glossEn": "hair",
+      "defEn": "the hair of the head (locks, as ornamental, and thus differing from G2359 (θρίξ); which properly denotes merely the scalp)"
+    },
+    {
+      "strong": "G1091",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "γεώργιον",
+      "translit": "geṓrgion",
+      "glossEn": "husbandry",
+      "defEn": "cultivable, i.e. a farm"
+    },
+    {
+      "strong": "G753",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀρχιτέκτων",
+      "translit": "architéktōn",
+      "glossEn": "masterbuilder",
+      "defEn": "a chief constructor, i.e. \"architect\""
+    },
+    {
+      "strong": "G2562",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καλάμη",
+      "translit": "kalámē",
+      "glossEn": "stubble",
+      "defEn": "a stalk of grain, i.e. (collectively) stubble"
+    },
+    {
+      "strong": "G1708",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐμπλοκή",
+      "translit": "emplokḗ",
+      "glossEn": "plaiting",
+      "defEn": "elaborate braiding of the hair"
+    },
+    {
+      "strong": "G980",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "βιόω",
+      "translit": "bióō",
+      "glossEn": "live",
+      "defEn": "to spend existence"
+    },
+    {
+      "strong": "G3632",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "οἰνοφλυγία",
+      "translit": "oinophlygía",
+      "glossEn": "excess of wine",
+      "defEn": "an overflow (or surplus) of wine, i.e. vinolency (drunkenness)"
+    },
+    {
+      "strong": "G5162",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τροφός",
+      "translit": "trophós",
+      "glossEn": "nurse",
+      "defEn": "a nourisher, i.e. nurse"
+    },
+    {
+      "strong": "G3964",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πατραλῴας",
+      "translit": "patralṓias",
+      "glossEn": "murderer of fathers",
+      "defEn": "a parricide"
+    },
+    {
+      "strong": "G3389",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μητραλῴας",
+      "translit": "mētralṓias",
+      "glossEn": "murderer of mothers",
+      "defEn": "a mother-thresher, i.e. matricide"
+    },
+    {
+      "strong": "G2689",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταστολή",
+      "translit": "katastolḗ",
+      "glossEn": "apparel",
+      "defEn": "a deposit, i.e. (specially) costume"
+    },
+    {
+      "strong": "G2743",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καυτηριάζω",
+      "translit": "kautēriázō",
+      "glossEn": "sear with a hot iron",
+      "defEn": "to brand (\"cauterize\"), i.e. (by implication) to render unsensitive (figuratively)"
+    },
+    {
+      "strong": "G5044",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τεκνοτροφέω",
+      "translit": "teknotrophéō",
+      "glossEn": "bring up children",
+      "defEn": "to be a childrearer, i.e. fulfil the duties of a female parent"
+    },
+    {
+      "strong": "G3580",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ξενοδοχέω",
+      "translit": "xenodochéō",
+      "glossEn": "lodge strangers",
+      "defEn": "to be hospitable"
+    },
+    {
+      "strong": "G5041",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τεκνογονέω",
+      "translit": "teknogonéō",
+      "glossEn": "bear children",
+      "defEn": "to be a child-bearer, i.e. parent (mother)"
+    },
+    {
+      "strong": "G3616",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "οἰκοδεσποτέω",
+      "translit": "oikodespotéō",
+      "glossEn": "guide the house",
+      "defEn": "to be the head of (i.e. rule) a family"
+    },
+    {
+      "strong": "G5202",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὑδροποτέω",
+      "translit": "hydropotéō",
+      "glossEn": "drink water",
+      "defEn": "to be a water-drinker, i.e. to abstain from vinous beverages"
+    },
+    {
+      "strong": "G4751",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "στόμαχος",
+      "translit": "stómachos",
+      "glossEn": "stomach",
+      "defEn": "an orifice (the gullet), i.e. (specially), the \"stomach\""
+    },
+    {
+      "strong": "G1305",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "διατροφή",
+      "translit": "diatrophḗ",
+      "glossEn": "food",
+      "defEn": "nourishment"
+    },
+    {
+      "strong": "G4629",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σκέπασμα",
+      "translit": "sképasma",
+      "glossEn": "raiment",
+      "defEn": "perhaps akin to the base of G4649 (σκοπός) through the idea of noticeableness); clothing"
+    },
+    {
+      "strong": "G4553",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σαργάνη",
+      "translit": "sargánē",
+      "glossEn": "basket",
+      "defEn": "a basket (as interwoven or wicker-work"
+    },
+    {
+      "strong": "G6068",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὀμίχλη",
+      "translit": "",
+      "glossEn": "fog",
+      "defEn": ""
+    },
+    {
+      "strong": "G1829",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐξέραμα",
+      "translit": "exérama",
+      "glossEn": "vomit",
+      "defEn": "vomit, i.e. food disgorged"
+    },
+    {
+      "strong": "G5300",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὗς",
+      "translit": "hŷs",
+      "glossEn": "sow",
+      "defEn": "a hog (\"swine\")"
+    },
+    {
+      "strong": "G2946",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κύλισμα",
+      "translit": "kýlisma",
+      "glossEn": "wallowing",
+      "defEn": "a wallow (the effect of rolling), i.e. filth"
+    },
+    {
+      "strong": "G1004",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "βόρβορος",
+      "translit": "bórboros",
+      "glossEn": "mire",
+      "defEn": "mud"
+    },
+    {
+      "strong": "G4020",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "περιεργάζομαι",
+      "translit": "periergázomai",
+      "glossEn": "be a busybody",
+      "defEn": "to work all around, i.e. bustle about (meddle)"
+    },
+    {
+      "strong": "G3125",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μάμμη",
+      "translit": "mámmē",
+      "glossEn": "grandmother",
+      "defEn": "a grandmother"
+    },
+    {
+      "strong": "G1044",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "γάγγραινα",
+      "translit": "gángraina",
+      "glossEn": "canker",
+      "defEn": "an ulcer (\"gangrene\")"
+    },
+    {
+      "strong": "G5341",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "φελόνης",
+      "translit": "phelónēs",
+      "glossEn": "cloke",
+      "defEn": "a mantle (surtout)"
+    },
+    {
+      "strong": "G3200",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μεμβράνα",
+      "translit": "membrána",
+      "glossEn": "parchment",
+      "defEn": "a (written) sheep-skin"
+    },
+    {
+      "strong": "G5471",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "χαλκεύς",
+      "translit": "chalkeús",
+      "glossEn": "coppersmith",
+      "defEn": "a copper-worker or brazier"
+    },
+    {
+      "strong": "G4981",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σχολή",
+      "translit": "scholḗ",
+      "glossEn": "school",
+      "defEn": "properly, loitering (as a withholding of oneself from work) or leisure, i.e. (by implication) a \"school\" (as vacation from physical employment)"
+    },
+    {
+      "strong": "G4612",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σιμικίνθιον",
+      "translit": "simikínthion",
+      "glossEn": "apron",
+      "defEn": "a semicinctium or half-girding, i.e. narrow covering (apron)"
+    },
+    {
+      "strong": "G695",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀργυροκόπος",
+      "translit": "argyrokópos",
+      "glossEn": "silversmith",
+      "defEn": "a beater (i.e. worker) of silver"
+    },
+    {
+      "strong": "G1098",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "γλεῦκος",
+      "translit": "gleûkos",
+      "glossEn": "new wine",
+      "defEn": "sweet wine, i.e. (properly) must (fresh juice), but used of the more saccharine (and therefore highly inebriating) fermented wine"
+    },
+    {
+      "strong": "G5148",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τριετία",
+      "translit": "trietía",
+      "glossEn": "space of three years",
+      "defEn": "a three years' period (triennium)"
+    },
+    {
+      "strong": "G4607",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σικάριος",
+      "translit": "sikários",
+      "glossEn": "murderer",
+      "defEn": "a dagger-man or assassin; a freebooter (Jewish fanatic outlawed by the Romans)"
+    },
+    {
+      "strong": "G3147",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μαστίζω",
+      "translit": "mastízō",
+      "glossEn": "scourge",
+      "defEn": "to whip (literally)"
+    },
+    {
+      "strong": "G5109",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τοῖχος",
+      "translit": "toîchos",
+      "glossEn": "wall",
+      "defEn": "a wall"
+    },
+    {
+      "strong": "G3130",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μανία",
+      "translit": "manía",
+      "glossEn": "(+ make) X mad",
+      "defEn": "craziness"
+    },
+    {
+      "strong": "G3490",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ναύκληρος",
+      "translit": "naúklēros",
+      "glossEn": "owner of a ship",
+      "defEn": "a captain"
+    },
+    {
+      "strong": "G2148",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Εὐροκλύδων",
+      "translit": "Euroklýdōn",
+      "glossEn": "Euroklydon",
+      "defEn": "a storm from the East (or southeast), i.e. (in modern phrase) a Levanter"
+    },
+    {
+      "strong": "G5269",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὑποζώννυμι",
+      "translit": "hypozṓnnymi",
+      "glossEn": "undergirt",
+      "defEn": "to gird under, i.e. frap (a vessel with cables across the keel, sides and deck)"
+    },
+    {
+      "strong": "G1546",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐκβολή",
+      "translit": "ekbolḗ",
+      "glossEn": "+ lighten the ship",
+      "defEn": "ejection, i.e. (specially) a throwing overboard of the cargo"
+    },
+    {
+      "strong": "G4631",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σκευή",
+      "translit": "skeuḗ",
+      "glossEn": "tackling",
+      "defEn": "furniture, i.e. spare tackle"
+    },
+    {
+      "strong": "G776",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀσιτία",
+      "translit": "asitía",
+      "glossEn": "abstinence",
+      "defEn": "fasting (the state)"
+    },
+    {
+      "strong": "G2893",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κουφίζω",
+      "translit": "kouphízō",
+      "glossEn": "lighten",
+      "defEn": "to unload"
+    },
+    {
+      "strong": "G736",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀρτέμων",
+      "translit": "artémōn",
+      "glossEn": "mainsail",
+      "defEn": "properly, something ready (or else more remotely from G142 (αἴρω) (compare G740 (ἄρτος)); something hung up), i.e. (specially) the topsail (rather foresail or jib) of a vessel"
+    },
+    {
+      "strong": "G2027",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐποκέλλω",
+      "translit": "epokéllō",
+      "glossEn": "run aground",
+      "defEn": "to drive upon the shore, i.e. to beach a vessel"
+    },
+    {
+      "strong": "G3491",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ναῦς",
+      "translit": "naûs",
+      "glossEn": "ship",
+      "defEn": "a boat (of any size)"
+    },
+    {
+      "strong": "G2860",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κολυμβάω",
+      "translit": "kolymbáō",
+      "glossEn": "swim",
+      "defEn": "to plunge into water"
+    },
+    {
+      "strong": "G4548",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σανίς",
+      "translit": "sanís",
+      "glossEn": "board",
+      "defEn": "a plank"
+    },
+    {
+      "strong": "G5434",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "φρύγανον",
+      "translit": "phrýganon",
+      "glossEn": "stick",
+      "defEn": "akin to the base of G5395 (φλόξ)); something desiccated, i.e. a dry twig"
+    },
+    {
+      "strong": "G2329",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "θέρμη",
+      "translit": "thérmē",
+      "glossEn": "heat",
+      "defEn": "warmth"
+    },
+    {
+      "strong": "G2510",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καθάπτω",
+      "translit": "katháptō",
+      "glossEn": "fasten on",
+      "defEn": "to seize upon"
+    }
+  ]
+}

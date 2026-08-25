@@ -1,0 +1,254 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 2,
+  "ties": [
+    {
+      "strong": "H1148",
+      "koRank": [
+        [
+          "베니누",
+          2
+        ],
+        [
+          "브니누",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "bĕnînû",
+          3
+        ],
+        [
+          "bənînû",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H2058",
+      "koRank": [
+        [
+          "워프시",
+          2
+        ],
+        [
+          "옵시",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "wopsî",
+          3
+        ],
+        [
+          "wop̄sî",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "H245",
+      "lemma": "אֲזַנְיָה",
+      "translit": "ʾăzanyāh",
+      "translitKo": "아자냐",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어말 יָה는 배포 선례대로 야로 적고, Azaniah의 음절 결합은 아자냐로 판정했다."
+    },
+    {
+      "strong": "H1148",
+      "lemma": "בְּנִינוּ",
+      "translit": "bĕnînû",
+      "translitKo": "베니누",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 유성 셰바를 에로 적는 배포 선례(베나야·벨리)를 따른다. 개역 관용 표기는 브니누."
+    },
+    {
+      "strong": "H5041",
+      "lemma": "נְבַלָּט",
+      "translit": "nĕballāṭ",
+      "translitKo": "네발라트",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 다게쉬 포르테를 한글에서 겹쳐 적지 않고 어말 ṭ를 트로 적었다."
+    },
+    {
+      "strong": "H4811",
+      "lemma": "מְרָיָה",
+      "translit": "mĕrāyāh",
+      "translitKo": "메라야",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 유성 셰바를 에로 적고 어말 יָה를 야로 적었다."
+    },
+    {
+      "strong": "H797",
+      "lemma": "אַשְׁדּוֹדִית",
+      "translit": "ʾašdōdît",
+      "translitKo": "아쉬도딧",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 음절 말 שׁ는 쉬로 적고, 형용사형의 어미 ת는 트로 적었다."
+    },
+    {
+      "strong": "H1152",
+      "lemma": "בְּסוֹדְיָה",
+      "translit": "bĕsōdyāh",
+      "translitKo": "베소드야",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 유성 셰바와 דְיָה의 드야 연속을 반영했다."
+    },
+    {
+      "strong": "H5149",
+      "lemma": "נְחוּם",
+      "translit": "nĕḥûm",
+      "translitKo": "네훔",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 유성 셰바를 네로, ח를 후음 ㅎ으로 적었다."
+    },
+    {
+      "strong": "H5300",
+      "lemma": "נְפוּשְׁסִים",
+      "translit": "nĕpûšĕsîm",
+      "translitKo": "네푸셰심",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 장모음 뒤 셰바를 셰로 읽고 음절 말 שׁ를 심으로 적었다."
+    },
+    {
+      "strong": "H3662",
+      "lemma": "כְּנָנִי",
+      "translit": "kĕnānî",
+      "translitKo": "케나니",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 관용 그나니와 달리 학술식 셰바를 반영해 케나니로 판정했다."
+    },
+    {
+      "strong": "H1427",
+      "lemma": "גַּדִּיאֵל",
+      "translit": "gaddîʾēl",
+      "translitKo": "가디엘",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). דּ의 중복을 한글에서 겹쳐 적지 않고, א는 음가를 따로 적지 않았다."
+    },
+    {
+      "strong": "H1426",
+      "lemma": "גַּדִּי",
+      "translit": "gaddî",
+      "translitKo": "가디",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기 갓디와 달리 겹자음을 한글에서 중복하지 않았다."
+    },
+    {
+      "strong": "H2058",
+      "lemma": "וׇפְסִי",
+      "translit": "wopsî",
+      "translitKo": "워프시",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어두 ו는 w로 보고 카마츠 카탄과 합쳐 워로 적는다. 개역 관용 표기는 워시."
+    },
+    {
+      "strong": "H3020",
+      "lemma": "יׇגְלִי",
+      "translit": "yoglî",
+      "translitKo": "요글리",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 첫 모음이 카마츠 카탄(U+05C7)이라 o로 읽었다. 개역 관용 표기는 요글리."
+    },
+    {
+      "strong": "H6535",
+      "lemma": "פַּרְנַךְ",
+      "translit": "parnaḵ",
+      "translitKo": "파르나크",
+      "votesKo": 4,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 어말 ךְ는 크로 적고 p와 ḵ를 보존했다. 관용 표기는 바르낙이다."
+    },
+    {
+      "strong": "H360",
+      "lemma": "אֱיָלוּת",
+      "translit": "ʾĕyālût",
+      "translitKo": "에얄루트",
+      "votesKo": 4,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). אֱ의 셰바는 에, יָלוּ는 얄루로 읽고 어말 ת는 트로 적었다."
+    },
+    {
+      "strong": "H2317",
+      "lemma": "חַדְרָךְ",
+      "translit": "ḥadrāḵ",
+      "translitKo": "하드라크",
+      "votesKo": 4,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). ד의 구분기호는 배포 규칙대로 d로, 어말 ךְ는 크로 적었다. 관용 표기는 하드락이다."
+    }
+  ]
+}

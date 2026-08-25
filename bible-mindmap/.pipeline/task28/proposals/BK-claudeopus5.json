@@ -1,0 +1,707 @@
+{
+  "shard": "BK",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "H3570",
+      "lemma": "כּוּשִׁי",
+      "translit": "kûšî",
+      "translitKo": "쿠시",
+      "note": "개역개정 관용은 '구시'다. 어말이 아니라 히렉-요드 앞 음절 첫소리이므로 '쉬'가 아니라 '시'로 적었다."
+    },
+    {
+      "strong": "H5655",
+      "lemma": "עַבְדְּאֵל",
+      "translit": "ʿabdĕʾēl",
+      "translitKo": "아브데엘",
+      "note": "개역개정 관용은 '압데엘'이다."
+    },
+    {
+      "strong": "H3081",
+      "lemma": "יְהוּכַל",
+      "translit": "yĕhûkal",
+      "translitKo": "예후칼",
+      "note": "개역개정 관용은 '여후갈'이다."
+    },
+    {
+      "strong": "H5778",
+      "lemma": "עוֹפַי",
+      "translit": "ʿôpay",
+      "translitKo": "오파이",
+      "note": "케티브는 עיפי, 사전이 표제로 삼은 것은 난외(케레) 독법이다. 영어 사전의 'from margin'이 그 뜻이다."
+    },
+    {
+      "strong": "H1185",
+      "lemma": "בַּעֲלִיס",
+      "translit": "baʿălîs",
+      "translitKo": "바알리스",
+      "note": ""
+    },
+    {
+      "strong": "H6548",
+      "lemma": "פַּרְעֹה חׇפְרַע",
+      "translit": "parʿōh ḥopraʿ",
+      "translitKo": "파르오 호프라",
+      "note": "이집트 왕명. 개역개정 관용은 '바로 호브라'다. 두 낱말이므로 띄어 적었다."
+    },
+    {
+      "strong": "H4086",
+      "lemma": "מַדְמֵן",
+      "translit": "madmēn",
+      "translitKo": "마드멘",
+      "note": "개역개정 관용은 '맛멘'이다."
+    },
+    {
+      "strong": "H4781",
+      "lemma": "מְרֹדָךְ",
+      "translit": "mĕrōdāk",
+      "translitKo": "메로다크",
+      "note": "바빌론 신명. 개역개정 관용은 '므로닥'이다."
+    },
+    {
+      "strong": "H4850",
+      "lemma": "מְרָתַיִם",
+      "translit": "mĕrātayim",
+      "translitKo": "메라타임",
+      "note": "개역개정 관용은 '므라다임'이다."
+    },
+    {
+      "strong": "H4508",
+      "lemma": "מִנִּי",
+      "translit": "minnî",
+      "translitKo": "미니",
+      "note": "개역개정 관용은 '민니'다."
+    },
+    {
+      "strong": "H930",
+      "lemma": "בְּהֵמוֹת",
+      "translit": "bĕhēmôt",
+      "translitKo": "베헤모트",
+      "note": "개역개정 관용은 '베헤못'이다. 어말 ת를 '트'로 살려 적었다."
+    },
+    {
+      "strong": "H3224",
+      "lemma": "יְמִימָה",
+      "translit": "yĕmîmâ",
+      "translitKo": "예미마",
+      "note": "개역개정 관용은 '여미마'다."
+    },
+    {
+      "strong": "H7103",
+      "lemma": "קְצִיעָה",
+      "translit": "qĕṣîʿâ",
+      "translitKo": "케치아",
+      "note": "개역개정 관용은 '긋시아'다."
+    },
+    {
+      "strong": "H6602",
+      "lemma": "פְּתוּאֵל",
+      "translit": "pĕtûʾēl",
+      "translitKo": "페투엘",
+      "note": "개역개정 관용은 '브두엘'이다."
+    },
+    {
+      "strong": "H1944",
+      "lemma": "הוֹהָם",
+      "translit": "hôhām",
+      "translitKo": "호함",
+      "note": ""
+    },
+    {
+      "strong": "H6502",
+      "lemma": "פִּרְאָם",
+      "translit": "pirʾām",
+      "translitKo": "피르암",
+      "note": ""
+    },
+    {
+      "strong": "H2036",
+      "lemma": "הֹרָם",
+      "translit": "hōrām",
+      "translitKo": "호람",
+      "note": ""
+    },
+    {
+      "strong": "H1445",
+      "lemma": "גֶּדֶר",
+      "translit": "geder",
+      "translitKo": "게데르",
+      "note": ""
+    },
+    {
+      "strong": "H3297",
+      "lemma": "יְעָרִים",
+      "translit": "yĕʿārîm",
+      "translitKo": "예아림",
+      "note": "기럇여아림(H7157)의 뒷말이다."
+    },
+    {
+      "strong": "H7942",
+      "lemma": "שִׁכְּרוֹן",
+      "translit": "šikkĕrôn",
+      "translitKo": "시케론",
+      "note": "개역개정 관용은 '식그론'이다."
+    },
+    {
+      "strong": "H538",
+      "lemma": "אֲמָם",
+      "translit": "ʾămām",
+      "translitKo": "아맘",
+      "note": ""
+    },
+    {
+      "strong": "H6799",
+      "lemma": "צְנָן",
+      "translit": "ṣĕnān",
+      "translitKo": "체난",
+      "note": ""
+    },
+    {
+      "strong": "H694",
+      "lemma": "אֲרָב",
+      "translit": "ʾărāb",
+      "translitKo": "아라브",
+      "note": ""
+    },
+    {
+      "strong": "H2478",
+      "lemma": "חַלְחוּל",
+      "translit": "ḥalḥûl",
+      "translitKo": "할훌",
+      "note": ""
+    },
+    {
+      "strong": "H4081",
+      "lemma": "מִדִּין",
+      "translit": "middîn",
+      "translitKo": "미딘",
+      "note": ""
+    },
+    {
+      "strong": "H1553",
+      "lemma": "גְּלִילוֹת",
+      "translit": "gĕlîlôt",
+      "translitKo": "겔릴로트",
+      "note": ""
+    },
+    {
+      "strong": "H7104",
+      "lemma": "קְצִיץ",
+      "translit": "qĕṣîṣ",
+      "translitKo": "케치츠",
+      "note": ""
+    },
+    {
+      "strong": "H507",
+      "lemma": "אֶלֶף",
+      "translit": "ʾelep",
+      "translitKo": "엘레프",
+      "note": "이미 배포된 동철 항목(H505 계열)의 '엘레프'와 같게 적었다."
+    },
+    {
+      "strong": "H1394",
+      "lemma": "גִּבְעַת",
+      "translit": "gibʿat",
+      "translitKo": "기브아트",
+      "note": "연계형(기브앗 하아랄롯 등)으로 나타난다."
+    },
+    {
+      "strong": "H2615",
+      "lemma": "חַנָּתֹן",
+      "translit": "ḥannātōn",
+      "translitKo": "하나톤",
+      "note": ""
+    },
+    {
+      "strong": "H3946",
+      "lemma": "לַקּוּם",
+      "translit": "laqqûm",
+      "translitKo": "라쿰",
+      "note": ""
+    },
+    {
+      "strong": "H6863",
+      "lemma": "צֵר",
+      "translit": "ṣēr",
+      "translitKo": "체르",
+      "note": ""
+    },
+    {
+      "strong": "H7557",
+      "lemma": "רַקַּת",
+      "translit": "raqqat",
+      "translitKo": "라카트",
+      "note": ""
+    },
+    {
+      "strong": "H2765",
+      "lemma": "חֳרֵם",
+      "translit": "ḥŏrēm",
+      "translitKo": "호렘",
+      "note": "첫 모음은 하테프 카메츠이므로 o로 읽었다."
+    },
+    {
+      "strong": "H5960",
+      "lemma": "עַלְמוֹן",
+      "translit": "ʿalmôn",
+      "translitKo": "알몬",
+      "note": ""
+    },
+    {
+      "strong": "H6911",
+      "lemma": "קִבְצַיִם",
+      "translit": "qibṣayim",
+      "translitKo": "키브차임",
+      "note": ""
+    },
+    {
+      "strong": "H1203",
+      "lemma": "בְּעֶשְׁתְּרָה",
+      "translit": "bĕʿeštĕrâ",
+      "translitKo": "베에쉬테라",
+      "note": ""
+    },
+    {
+      "strong": "H7178",
+      "lemma": "קַרְתָּן",
+      "translit": "qartān",
+      "translitKo": "카르탄",
+      "note": ""
+    },
+    {
+      "strong": "H6625",
+      "lemma": "פַּתְרֻסִי",
+      "translit": "patrusî",
+      "translitKo": "파트루시",
+      "note": "족속명 복수형 '파트루심'으로 더 자주 나온다."
+    },
+    {
+      "strong": "H486",
+      "lemma": "אַלְמוֹדָד",
+      "translit": "ʾalmôdād",
+      "translitKo": "알모다드",
+      "note": ""
+    },
+    {
+      "strong": "H8026",
+      "lemma": "שֶׁלֶף",
+      "translit": "šelep",
+      "translitKo": "셀레프",
+      "note": ""
+    },
+    {
+      "strong": "H39",
+      "lemma": "אֲבִימָאֵל",
+      "translit": "ʾăbîmāʾēl",
+      "translitKo": "아비마엘",
+      "note": ""
+    },
+    {
+      "strong": "H4854",
+      "lemma": "מַשָּׂא",
+      "translit": "maśśāʾ",
+      "translitKo": "마사",
+      "note": "개역개정 관용은 '맛사'다."
+    },
+    {
+      "strong": "H2301",
+      "lemma": "חֲדַד",
+      "translit": "ḥădad",
+      "translitKo": "하다드",
+      "note": "H1908(하다드)의 이형 표기다."
+    },
+    {
+      "strong": "H2175",
+      "lemma": "זִמְרָן",
+      "translit": "zimrān",
+      "translitKo": "짐란",
+      "note": "개역개정 관용은 '시므란'이다. ז를 ㅈ 계열로 적는 기존 표기(자하브·미즈라흐)를 따랐다."
+    },
+    {
+      "strong": "H4091",
+      "lemma": "מְדָן",
+      "translit": "mĕdān",
+      "translitKo": "메단",
+      "note": ""
+    },
+    {
+      "strong": "H3435",
+      "lemma": "יִשְׁבָּק",
+      "translit": "yišbāq",
+      "translitKo": "이쉬바크",
+      "note": ""
+    },
+    {
+      "strong": "H7744",
+      "lemma": "שׁוּחַ",
+      "translit": "šûaḥ",
+      "translitKo": "슈아흐",
+      "note": "어말 후음 앞 furtive patach를 살려 '아흐'로 적었다."
+    },
+    {
+      "strong": "H5935",
+      "lemma": "עַלְוָן",
+      "translit": "ʿalwān",
+      "translitKo": "알완",
+      "note": "대상 1:40에는 עַלְיָן(알얀, Alian) 이형이 있다."
+    },
+    {
+      "strong": "H8195",
+      "lemma": "שְׁפוֹ",
+      "translit": "šĕpô",
+      "translitKo": "셰포",
+      "note": "대상 1:40에는 שְׁפִי(šĕpî) 이형이 있다."
+    },
+    {
+      "strong": "H5933",
+      "lemma": "עַלְוָה",
+      "translit": "ʿalwâ",
+      "translitKo": "알와",
+      "note": "대상 1:51에는 עַלְיָה(알야, Aliah) 이형이 있다."
+    },
+    {
+      "strong": "H6373",
+      "lemma": "פִּינֹן",
+      "translit": "pînōn",
+      "translitKo": "피논",
+      "note": ""
+    },
+    {
+      "strong": "H4014",
+      "lemma": "מִבְצָר",
+      "translit": "mibṣār",
+      "translitKo": "미브차르",
+      "note": ""
+    },
+    {
+      "strong": "H4025",
+      "lemma": "מַגְדִּיאֵל",
+      "translit": "magdîʾēl",
+      "translitKo": "마그디엘",
+      "note": ""
+    },
+    {
+      "strong": "H5902",
+      "lemma": "עִירָם",
+      "translit": "ʿîrām",
+      "translitKo": "이람",
+      "note": ""
+    },
+    {
+      "strong": "H2453",
+      "lemma": "חַכְמוֹנִי",
+      "translit": "ḥakmônî",
+      "translitKo": "하크모니",
+      "note": ""
+    },
+    {
+      "strong": "H739",
+      "lemma": "אֲרִיאֵל",
+      "translit": "ʾărîʾēl",
+      "translitKo": "아리엘",
+      "note": ""
+    },
+    {
+      "strong": "H7380",
+      "lemma": "רִיבַי",
+      "translit": "rîbay",
+      "translitKo": "리바이",
+      "note": ""
+    },
+    {
+      "strong": "H455",
+      "lemma": "אֶלְיַחְבָּא",
+      "translit": "ʾelyaḥbāʾ",
+      "translitKo": "엘야흐바",
+      "note": ""
+    },
+    {
+      "strong": "H279",
+      "lemma": "אֲחִיאָם",
+      "translit": "ʾăḥîʾām",
+      "translitKo": "아히암",
+      "note": ""
+    },
+    {
+      "strong": "H7940",
+      "lemma": "שָׂכָר",
+      "translit": "śākār",
+      "translitKo": "사카르",
+      "note": "שׂ(신)이므로 '샤'가 아니라 '사'로 적었다."
+    },
+    {
+      "strong": "H2695",
+      "lemma": "חֶצְרוֹ",
+      "translit": "ḥeṣrô",
+      "translitKo": "헤츠로",
+      "note": "삼하 23:35에는 חֶצְרַי(ḥeṣray) 이형이 있다."
+    },
+    {
+      "strong": "H6768",
+      "lemma": "צֶלֶק",
+      "translit": "ṣeleq",
+      "translitKo": "첼레크",
+      "note": ""
+    },
+    {
+      "strong": "H5171",
+      "lemma": "נַחֲרַי",
+      "translit": "naḥăray",
+      "translitKo": "나하라이",
+      "note": "נַחְרַי(naḥray) 이형이 함께 전해진다."
+    },
+    {
+      "strong": "H304",
+      "lemma": "אַחְלַי",
+      "translit": "ʾaḥlay",
+      "translitKo": "아흘라이",
+      "note": ""
+    },
+    {
+      "strong": "H2369",
+      "lemma": "חוֹתָם",
+      "translit": "ḥôtām",
+      "translitKo": "호탐",
+      "note": "대상 11:44에는 חוֹתָן(ḥôtān) 이형이 있다."
+    },
+    {
+      "strong": "H3300",
+      "lemma": "יַעֲשִׂיאֵל",
+      "translit": "yaʿăśîʾēl",
+      "translitKo": "야아시엘",
+      "note": "יַשִׂיאֵל(yaśîʾēl) 축약형 이형이 있다."
+    },
+    {
+      "strong": "H3460",
+      "lemma": "יִשְׁמַעְיָה",
+      "translit": "yišmaʿyâ",
+      "translitKo": "이쉬마야",
+      "note": ""
+    },
+    {
+      "strong": "H443",
+      "lemma": "אֶלְזָבָד",
+      "translit": "ʾelzābād",
+      "translitKo": "엘자바드",
+      "note": ""
+    },
+    {
+      "strong": "H5734",
+      "lemma": "עַדְנָה",
+      "translit": "ʿadnâ",
+      "translitKo": "아드나",
+      "note": ""
+    },
+    {
+      "strong": "H7780",
+      "lemma": "שׁוֹפָךְ",
+      "translit": "šôpāk",
+      "translitKo": "쇼파크",
+      "note": ""
+    },
+    {
+      "strong": "H684",
+      "lemma": "אֹצֶם",
+      "translit": "ʾōṣem",
+      "translitKo": "오쳄",
+      "note": ""
+    },
+    {
+      "strong": "H806",
+      "lemma": "אַשְׁחוּר",
+      "translit": "ʾašḥûr",
+      "translitKo": "아쉬후르",
+      "note": ""
+    },
+    {
+      "strong": "H3047",
+      "lemma": "יָדָע",
+      "translit": "yādāʿ",
+      "translitKo": "야다",
+      "note": ""
+    },
+    {
+      "strong": "H51",
+      "lemma": "אֲבִישׁוּר",
+      "translit": "ʾăbîšûr",
+      "translitKo": "아비슈르",
+      "note": ""
+    },
+    {
+      "strong": "H5540",
+      "lemma": "סֶלֶד",
+      "translit": "seled",
+      "translitKo": "셀레드",
+      "note": ""
+    },
+    {
+      "strong": "H649",
+      "lemma": "אַפַּיִם",
+      "translit": "ʾappayim",
+      "translitKo": "아파임",
+      "note": ""
+    },
+    {
+      "strong": "H6431",
+      "lemma": "פֶּלֶת",
+      "translit": "pelet",
+      "translitKo": "펠레트",
+      "note": ""
+    },
+    {
+      "strong": "H654",
+      "lemma": "אֶפְלָל",
+      "translit": "ʾeplāl",
+      "translitKo": "에플랄",
+      "note": ""
+    },
+    {
+      "strong": "H5581",
+      "lemma": "סִסְמַי",
+      "translit": "sismay",
+      "translitKo": "시스마이",
+      "note": ""
+    },
+    {
+      "strong": "H4337",
+      "lemma": "מֵישָׁע",
+      "translit": "mêšāʿ",
+      "translitKo": "메샤",
+      "note": ""
+    },
+    {
+      "strong": "H1495",
+      "lemma": "גָּזֵז",
+      "translit": "gāzēz",
+      "translitKo": "가제즈",
+      "note": ""
+    },
+    {
+      "strong": "H8174",
+      "lemma": "שַׁעַף",
+      "translit": "šaʿap",
+      "translitKo": "샤아프",
+      "note": ""
+    },
+    {
+      "strong": "H7724",
+      "lemma": "שְׁוָא",
+      "translit": "šĕwāʾ",
+      "translitKo": "셰와",
+      "note": ""
+    },
+    {
+      "strong": "H2241",
+      "lemma": "זֵתָם",
+      "translit": "zētām",
+      "translitKo": "제탐",
+      "note": ""
+    },
+    {
+      "strong": "H2125",
+      "lemma": "זִיזָה",
+      "translit": "zîzâ",
+      "translitKo": "지자",
+      "note": ""
+    },
+    {
+      "strong": "H3360",
+      "lemma": "יְקַמְעָם",
+      "translit": "yĕqamʿām",
+      "translitKo": "예캄암",
+      "note": ""
+    },
+    {
+      "strong": "H2387",
+      "lemma": "חֵזִיר",
+      "translit": "ḥēzîr",
+      "translitKo": "헤지르",
+      "note": ""
+    },
+    {
+      "strong": "H4590",
+      "lemma": "מַעַזְיָה",
+      "translit": "maʿazyâ",
+      "translitKo": "마아즈야",
+      "note": ""
+    },
+    {
+      "strong": "H3165",
+      "lemma": "יֶחְדִּיָּהוּ",
+      "translit": "yeḥdiyyāhû",
+      "translitKo": "예흐디야후",
+      "note": ""
+    },
+    {
+      "strong": "H3269",
+      "lemma": "יַעֲזִיָּהוּ",
+      "translit": "yaʿăziyyāhû",
+      "translitKo": "야아지야후",
+      "note": ""
+    },
+    {
+      "strong": "H1232",
+      "lemma": "בֻּקִּיָּה",
+      "translit": "buqqiyyâ",
+      "translitKo": "부키야",
+      "note": ""
+    },
+    {
+      "strong": "H448",
+      "lemma": "אֱלִיאָתָה",
+      "translit": "ʾĕlîʾātâ",
+      "translitKo": "엘리아타",
+      "note": ""
+    },
+    {
+      "strong": "H1437",
+      "lemma": "גִּדַּלְתִּי",
+      "translit": "giddaltî",
+      "translitKo": "기달티",
+      "note": ""
+    },
+    {
+      "strong": "H3436",
+      "lemma": "יׇשְׁבְּקָשָׁה",
+      "translit": "yošbĕqāšâ",
+      "translitKo": "요쉬베카샤",
+      "note": "첫 모음은 카메츠 하투프이므로 o로 읽었다."
+    },
+    {
+      "strong": "H4413",
+      "lemma": "מַלּוֹתִי",
+      "translit": "mallôtî",
+      "translitKo": "말로티",
+      "note": ""
+    },
+    {
+      "strong": "H1956",
+      "lemma": "הוֹתִיר",
+      "translit": "hôtîr",
+      "translitKo": "호티르",
+      "note": ""
+    },
+    {
+      "strong": "H4238",
+      "lemma": "מַחֲזִיאוֹת",
+      "translit": "maḥăzîʾôt",
+      "translitKo": "마하지오트",
+      "note": ""
+    },
+    {
+      "strong": "H3172",
+      "lemma": "יְחִיאֵלִי",
+      "translit": "yĕḥîʾēlî",
+      "translitKo": "예히엘리",
+      "note": ""
+    },
+    {
+      "strong": "H2068",
+      "lemma": "זַבְדִּיאֵל",
+      "translit": "zabdîʾēl",
+      "translitKo": "자브디엘",
+      "note": ""
+    }
+  ]
+}

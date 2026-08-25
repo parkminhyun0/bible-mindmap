@@ -1,0 +1,906 @@
+{
+ "shard": "AT",
+ "count": 100,
+ "items": [
+  {
+   "strong": "G2950",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κύμβαλον",
+   "translit": "kýmbalon",
+   "glossEn": "cymbal",
+   "defEn": "a \"cymbal\" (as hollow)"
+  },
+  {
+   "strong": "G5541",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "χρηστεύομαι",
+   "translit": "chrēsteúomai",
+   "glossEn": "be kind",
+   "defEn": "to show oneself useful, i.e. act benevolently"
+  },
+  {
+   "strong": "G4068",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "περπερεύομαι",
+   "translit": "perpereúomai",
+   "glossEn": "vaunt itself",
+   "defEn": "perhaps by reduplication of the base of G4008 (πέραν)); to boast"
+  },
+  {
+   "strong": "G135",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "αἴνιγμα",
+   "translit": "aínigma",
+   "glossEn": "X darkly",
+   "defEn": "an obscure saying (\"enigma\"), i.e. (abstractly) obscureness"
+  },
+  {
+   "strong": "G2239",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἦθος",
+   "translit": "ēthos",
+   "glossEn": "manners",
+   "defEn": "usage, i.e. (plural) moral habits"
+  },
+  {
+   "strong": "G407",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀνδρίζομαι",
+   "translit": "andrízomai",
+   "glossEn": "quit like men",
+   "defEn": "to act manly"
+  },
+  {
+   "strong": "G3134",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "μαρὰν ἀθά",
+   "translit": "maràn athá",
+   "glossEn": "Maran-atha",
+   "defEn": "maranatha, i.e. an exclamation of the approaching divine judgment"
+  },
+  {
+   "strong": "G585",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀπόδειξις",
+   "translit": "apódeixis",
+   "glossEn": "demonstration",
+   "defEn": "manifestation"
+  },
+  {
+   "strong": "G1858",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἑορτάζω",
+   "translit": "heortázō",
+   "glossEn": "keep the feast",
+   "defEn": "to observe a festival"
+  },
+  {
+   "strong": "G1396",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "δουλαγωγέω",
+   "translit": "doulagōgéō",
+   "glossEn": "bring into subjection",
+   "defEn": "to be a slave-driver, i.e. to enslave (figuratively, subdue)"
+  },
+  {
+   "strong": "G3529",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "νίκη",
+   "translit": "níkē",
+   "glossEn": "victory",
+   "defEn": "conquest (abstractly), i.e. (figuratively) the means of success"
+  },
+  {
+   "strong": "G328",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀναζώννυμι",
+   "translit": "anazṓnnymi",
+   "glossEn": "gird up",
+   "defEn": "to gird afresh"
+  },
+  {
+   "strong": "G4701",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "σπορά",
+   "translit": "sporá",
+   "glossEn": "seed",
+   "defEn": "a sowing, i.e. (by implication) parentage"
+  },
+  {
+   "strong": "G5261",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ὑπογραμμός",
+   "translit": "hypogrammós",
+   "glossEn": "example",
+   "defEn": "an underwriting, i.e. copy for imitation (figuratively)"
+  },
+  {
+   "strong": "G3468",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "μώλωψ",
+   "translit": "mṓlōps",
+   "glossEn": "stripe",
+   "defEn": "probably akin to the base of G3433 (μόλις)) and probably (the face; from G3700 (ὀπτάνομαι)); a mole (\"black eye\") or blow-mark"
+  },
+  {
+   "strong": "G1906",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπερώτημα",
+   "translit": "eperṓtēma",
+   "glossEn": "answer",
+   "defEn": "an inquiry"
+  },
+  {
+   "strong": "G2939",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κτίστης",
+   "translit": "ktístēs",
+   "glossEn": "Creator",
+   "defEn": "a founder, i.e. God (as author of all things)"
+  },
+  {
+   "strong": "G750",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀρχιποίμην",
+   "translit": "archipoímēn",
+   "glossEn": "chief shepherd",
+   "defEn": "a head shepherd"
+  },
+  {
+   "strong": "G1463",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐγκομβόομαι",
+   "translit": "enkombóomai",
+   "glossEn": "be clothed with",
+   "defEn": "to engirdle oneself (for labor), i.e. figuratively (the apron as being a badge of servitude) to wear (in token of mutual deference)"
+  },
+  {
+   "strong": "G2752",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κέλευμα",
+   "translit": "kéleuma",
+   "glossEn": "shout",
+   "defEn": "a cry of incitement"
+  },
+  {
+   "strong": "G487",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀντίλυτρον",
+   "translit": "antílytron",
+   "glossEn": "ransom",
+   "defEn": "a redemption-price"
+  },
+  {
+   "strong": "G2317",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "θεοσέβεια",
+   "translit": "theosébeia",
+   "glossEn": "godliness",
+   "defEn": "devoutness, i.e. piety"
+  },
+  {
+   "strong": "G831",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "αὐθεντέω",
+   "translit": "authentéō",
+   "glossEn": "usurp authority over",
+   "defEn": "to act of oneself, i.e. (figuratively) dominate"
+  },
+  {
+   "strong": "G1477",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἑδραίωμα",
+   "translit": "hedraíōma",
+   "glossEn": "ground",
+   "defEn": "a support, i.e. (figuratively) basis"
+  },
+  {
+   "strong": "G1129",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "γυμνασία",
+   "translit": "gymnasía",
+   "glossEn": "exercise",
+   "defEn": "training, i.e. (figuratively) asceticism"
+  },
+  {
+   "strong": "G5365",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "φιλαργυρία",
+   "translit": "philargyría",
+   "glossEn": "love of money",
+   "defEn": "avarice"
+  },
+  {
+   "strong": "G3794",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ὀχύρωμα",
+   "translit": "ochýrōma",
+   "glossEn": "stronghold",
+   "defEn": "a castle (figuratively, argument)"
+  },
+  {
+   "strong": "G718",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἁρμόζω",
+   "translit": "harmózō",
+   "glossEn": "espouse",
+   "defEn": "to joint, i.e. (figuratively) to woo (reflexively, to betroth)"
+  },
+  {
+   "strong": "G5570",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ψευδαπόστολος",
+   "translit": "pseudapóstolos",
+   "glossEn": "false teacher",
+   "defEn": "a spurious apostle, i.e. pretended pracher"
+  },
+  {
+   "strong": "G1981",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπισκηνόω",
+   "translit": "episkēnóō",
+   "glossEn": "rest upon",
+   "defEn": "to tent upon, i.e. (figuratively) abide with"
+  },
+  {
+   "strong": "G2426",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἱκανότης",
+   "translit": "hikanótēs",
+   "glossEn": "sufficiency",
+   "defEn": "ability"
+  },
+  {
+   "strong": "G2734",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κατοπτρίζομαι",
+   "translit": "katoptrízomai",
+   "glossEn": "behold as in a glass",
+   "defEn": "to mirror oneself, i.e. to see reflected (figuratively)"
+  },
+  {
+   "strong": "G2086",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἑτεροζυγέω",
+   "translit": "heterozygéō",
+   "glossEn": "unequally yoke together with",
+   "defEn": "to yoke up differently, i.e. (figuratively) to associate discordantly"
+  },
+  {
+   "strong": "G3436",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "μολυσμός",
+   "translit": "molysmós",
+   "glossEn": "filthiness",
+   "defEn": "a stain; i.e. (figuratively) immorality"
+  },
+  {
+   "strong": "G4433",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "πτωχεύω",
+   "translit": "ptōcheúō",
+   "glossEn": "become poor",
+   "defEn": "to be a beggar, i.e. (by implication) to become indigent (figuratively)"
+  },
+  {
+   "strong": "G1395",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "δότης",
+   "translit": "dótēs",
+   "glossEn": "giver",
+   "defEn": "a giver"
+  },
+  {
+   "strong": "G3923",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "παρεισφέρω",
+   "translit": "pareisphérō",
+   "glossEn": "give",
+   "defEn": "to bear in alongside, i.e. introduce simultaneously"
+  },
+  {
+   "strong": "G2030",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπόπτης",
+   "translit": "epóptēs",
+   "glossEn": "eye-witness",
+   "defEn": "a looker-on"
+  },
+  {
+   "strong": "G1955",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπίλυσις",
+   "translit": "epílysis",
+   "glossEn": "interpretation",
+   "defEn": "explanation, i.e. application"
+  },
+  {
+   "strong": "G5572",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ψευδοδιδάσκαλος",
+   "translit": "pseudodidáskalos",
+   "glossEn": "false teacher",
+   "defEn": "a spurious teacher, i.e. propagator of erroneous Christian doctrine"
+  },
+  {
+   "strong": "G5020",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ταρταρόω",
+   "translit": "tartaróō",
+   "glossEn": "cast down to hell",
+   "defEn": "to incarcerate in eternal torment"
+  },
+  {
+   "strong": "G1022",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "βραδύτης",
+   "translit": "bradýtēs",
+   "glossEn": "slackness",
+   "defEn": "tardiness"
+  },
+  {
+   "strong": "G329",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀναζωπυρέω",
+   "translit": "anazōpyréō",
+   "glossEn": "stir up",
+   "defEn": "to re-enkindle"
+  },
+  {
+   "strong": "G1167",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "δειλία",
+   "translit": "deilía",
+   "glossEn": "fear",
+   "defEn": "timidity"
+  },
+  {
+   "strong": "G4995",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "σωφρονισμός",
+   "translit": "sōphronismós",
+   "glossEn": "sound mind",
+   "defEn": "discipline, i.e. self-control"
+  },
+  {
+   "strong": "G3718",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ὀρθοτομέω",
+   "translit": "orthotoméō",
+   "glossEn": "rightly divide",
+   "defEn": ""
+  },
+  {
+   "strong": "G6031",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐλεγμός",
+   "translit": "",
+   "glossEn": "",
+   "defEn": ""
+  },
+  {
+   "strong": "G1882",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπανόρθωσις",
+   "translit": "epanórthōsis",
+   "glossEn": "correction",
+   "defEn": "a straightening up again, i.e. (figuratively) rectification (reformation)"
+  },
+  {
+   "strong": "G359",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀνάλυσις",
+   "translit": "análysis",
+   "glossEn": "departure",
+   "defEn": "departure"
+  },
+  {
+   "strong": "G5039",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "τεκμήριον",
+   "translit": "tekmḗrion",
+   "glossEn": "infallible proof",
+   "defEn": "a token (as defining a fact), i.e. criterion of certainty"
+  },
+  {
+   "strong": "G4037",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "περιμένω",
+   "translit": "periménō",
+   "glossEn": "wait for",
+   "defEn": "to stay around, i.e. await"
+  },
+  {
+   "strong": "G184",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Ἀκελδαμά",
+   "translit": "Akeldamá",
+   "glossEn": "Aceldama",
+   "defEn": "corresponding to H02506 and H01818); Akeldama, a place near Jerusalem"
+  },
+  {
+   "strong": "G4381",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "προσωπολήπτης",
+   "translit": "prosōpolḗptēs",
+   "glossEn": "respecter of persons",
+   "defEn": "an accepter of a face (individual), i.e. (specially), one exhibiting partiality"
+  },
+  {
+   "strong": "G2109",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "εὐεργετέω",
+   "translit": "euergetéō",
+   "glossEn": "do good",
+   "defEn": "to be philanthropic"
+  },
+  {
+   "strong": "G1995",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐπιστροφή",
+   "translit": "epistrophḗ",
+   "glossEn": "conversion",
+   "defEn": "reversion, i.e. morally, revolution"
+  },
+  {
+   "strong": "G4436",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Πύθων",
+   "translit": "Pýthōn",
+   "glossEn": "divination",
+   "defEn": "a Python, i.e. (by analogy, with the supposed diviner there) inspiration (soothsaying)"
+  },
+  {
+   "strong": "G1041",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "βωμός",
+   "translit": "bōmós",
+   "glossEn": "altar",
+   "defEn": "properly, a stand, i.e. (specially) an altar"
+  },
+  {
+   "strong": "G3734",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ὁροθεσία",
+   "translit": "horothesía",
+   "glossEn": "bound",
+   "defEn": "a limit-placing, i.e. (concretely) boundary-line"
+  },
+  {
+   "strong": "G5237",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ὑπερείδω",
+   "translit": "hypereídō",
+   "glossEn": "wink at",
+   "defEn": "to overlook, i.e. not punish"
+  },
+  {
+   "strong": "G4362",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "προσπήγνυμι",
+   "translit": "prospḗgnymi",
+   "glossEn": "crucify",
+   "defEn": "to fasten to, i.e. (specially), to impale (on a cross)"
+  },
+  {
+   "strong": "G2660",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κατανύσσω",
+   "translit": "katanýssō",
+   "glossEn": "prick",
+   "defEn": "to pierce thoroughly, i.e. (figuratively) to agitate violently (\"sting to the quick\")"
+  },
+  {
+   "strong": "G49",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἁγνισμός",
+   "translit": "hagnismós",
+   "glossEn": "purification",
+   "defEn": "a cleansing (the act), i.e. (ceremonially) lustration"
+  },
+  {
+   "strong": "G1429",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "δωδεκάφυλον",
+   "translit": "dōdekáphylon",
+   "glossEn": "twelve tribes",
+   "defEn": "the commonwealth of Israel"
+  },
+  {
+   "strong": "G3194",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Μελίτη",
+   "translit": "Melítē",
+   "glossEn": "Melita",
+   "defEn": "Melita, an island in the Mediterranean"
+  },
+  {
+   "strong": "G605",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀποκατάστασις",
+   "translit": "apokatástasis",
+   "glossEn": "restitution",
+   "defEn": "reconstitution"
+  },
+  {
+   "strong": "G6065",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "οἰκοδόμος",
+   "translit": "",
+   "glossEn": "",
+   "defEn": ""
+  },
+  {
+   "strong": "G2561",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "κάκωσις",
+   "translit": "kákōsis",
+   "glossEn": "affliction",
+   "defEn": "maltreatment"
+  },
+  {
+   "strong": "G3447",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "μοσχοποιέω",
+   "translit": "moschopoiéō",
+   "glossEn": "make a calf",
+   "defEn": "to fabricate the image of a bullock"
+  },
+  {
+   "strong": "G4968",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "σφάγιον",
+   "translit": "sphágion",
+   "glossEn": "slain beast",
+   "defEn": "a victim (in sacrifice)"
+  },
+  {
+   "strong": "G496",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀντιπίπτω",
+   "translit": "antipíptō",
+   "glossEn": "resist",
+   "defEn": "to oppose"
+  },
+  {
+   "strong": "G1048",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Γάζα",
+   "translit": "Gáza",
+   "glossEn": "Gaza",
+   "defEn": "Gazah (i.e. Azzah), a place in Palestine"
+  },
+  {
+   "strong": "G2857",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Κολοσσαί",
+   "translit": "Kolossaí",
+   "glossEn": "Colosse",
+   "defEn": "Colossæ, a place in Asia Minor"
+  },
+  {
+   "strong": "G699",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀρεσκεία",
+   "translit": "areskeía",
+   "glossEn": "pleasing",
+   "defEn": "complaisance"
+  },
+  {
+   "strong": "G4409",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "πρωτεύω",
+   "translit": "prōteúō",
+   "glossEn": "have the preeminence",
+   "defEn": "to be first (in rank or influence)"
+  },
+  {
+   "strong": "G1517",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "εἰρηνοποιέω",
+   "translit": "eirēnopoiéō",
+   "glossEn": "make peace",
+   "defEn": "to be a peace-maker, i.e. (figuratively) to harmonize"
+  },
+  {
+   "strong": "G466",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀνταναπληρόω",
+   "translit": "antanaplēróō",
+   "glossEn": "fill up",
+   "defEn": "to supplement"
+  },
+  {
+   "strong": "G4812",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "συλαγωγέω",
+   "translit": "sylagōgéō",
+   "glossEn": "spoil",
+   "defEn": "to lead away as booty, i.e. (figuratively) seduce"
+  },
+  {
+   "strong": "G5385",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "φιλοσοφία",
+   "translit": "philosophía",
+   "glossEn": "philosophy",
+   "defEn": "\"philosophy\", i.e. (specially), Jewish sophistry"
+  },
+  {
+   "strong": "G2320",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "θεότης",
+   "translit": "theótēs",
+   "glossEn": "godhead",
+   "defEn": "divinity (abstractly)"
+  },
+  {
+   "strong": "G555",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀπέκδυσις",
+   "translit": "apékdysis",
+   "glossEn": "putting off",
+   "defEn": "divestment"
+  },
+  {
+   "strong": "G5498",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "χειρόγραφον",
+   "translit": "cheirógraphon",
+   "glossEn": "handwriting",
+   "defEn": "something hand-written (\"chirograph\"), i.e. a manuscript (specially, a legal document or bond (figuratively))"
+  },
+  {
+   "strong": "G4338",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "προσηλόω",
+   "translit": "prosēlóō",
+   "glossEn": "nail to",
+   "defEn": "to peg to, i.e. spike fast"
+  },
+  {
+   "strong": "G3561",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "νουμηνία",
+   "translit": "noumēnía",
+   "glossEn": "new moon",
+   "defEn": "the festival of new moon"
+  },
+  {
+   "strong": "G1479",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἐθελοθρησκεία",
+   "translit": "ethelothrēskeía",
+   "glossEn": "will worship",
+   "defEn": "voluntary (arbitrary and unwarranted) piety, i.e. sanctimony"
+  },
+  {
+   "strong": "G469",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀνταπόδοσις",
+   "translit": "antapódosis",
+   "glossEn": "reward",
+   "defEn": "requital (properly, the act)"
+  },
+  {
+   "strong": "G3931",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "παρηγορία",
+   "translit": "parēgoría",
+   "glossEn": "comfort",
+   "defEn": "an address alongside, i.e. (specially), consolation"
+  },
+  {
+   "strong": "G2404",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Ἱεράπολις",
+   "translit": "Hierápolis",
+   "glossEn": "Hierapolis",
+   "defEn": "holy city; Hierapolis, a place in Asia Minor"
+  },
+  {
+   "strong": "G4276",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "προελπίζω",
+   "translit": "proelpízō",
+   "glossEn": "first trust",
+   "defEn": "to hope in advance of other confirmation"
+  },
+  {
+   "strong": "G4343",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "προσκαρτέρησις",
+   "translit": "proskartérēsis",
+   "glossEn": "perseverance",
+   "defEn": "persistancy"
+  },
+  {
+   "strong": "G2118",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "εὐθύτης",
+   "translit": "euthýtēs",
+   "glossEn": "righteousness",
+   "defEn": "rectitude"
+  },
+  {
+   "strong": "G3406",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "μισθαποδότης",
+   "translit": "misthapodótēs",
+   "glossEn": "rewarder",
+   "defEn": "a renumerator"
+  },
+  {
+   "strong": "G5051",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "τελειωτής",
+   "translit": "teleiōtḗs",
+   "glossEn": "finisher",
+   "defEn": "a completer, i.e. consummater"
+  },
+  {
+   "strong": "G4415",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "πρωτοτόκια",
+   "translit": "prōtotókia",
+   "glossEn": "birthright",
+   "defEn": "primogeniture (as a privilege)"
+  },
+  {
+   "strong": "G2428",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἱκετηρία",
+   "translit": "hiketēría",
+   "glossEn": "supplication",
+   "defEn": "intreaty"
+  },
+  {
+   "strong": "G388",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "ἀνασταυρόω",
+   "translit": "anastauróō",
+   "glossEn": "crucify afresh",
+   "defEn": "to recrucify (figuratively)"
+  },
+  {
+   "strong": "G4274",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "πρόδρομος",
+   "translit": "pródromos",
+   "glossEn": "forerunner",
+   "defEn": "a runner ahead, i.e. scout (figuratively, precursor)"
+  },
+  {
+   "strong": "G2369",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "θυμιαστήριον",
+   "translit": "thymiastḗrion",
+   "glossEn": "censer",
+   "defEn": "a place of fumigation, i.e. the alter of incense (in the Temple)"
+  },
+  {
+   "strong": "G3550",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "νομοθέτης",
+   "translit": "nomothétēs",
+   "glossEn": "lawgiver",
+   "defEn": "a legislator"
+  },
+  {
+   "strong": "G902",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "βαΐον",
+   "translit": "baḯon",
+   "glossEn": "branch",
+   "defEn": "a palm twig (as going out far)"
+  },
+  {
+   "strong": "G2748",
+   "lang": "greek",
+   "count": 1,
+   "lemma": "Κεδρών",
+   "translit": "Kedrṓn",
+   "glossEn": "Cedron",
+   "defEn": "Cedron (i.e. Kidron), a brook near Jerusalem"
+  }
+ ]
+}

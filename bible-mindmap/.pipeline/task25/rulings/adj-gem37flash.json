@@ -1,0 +1,397 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "G883",
+      "translit": "Achaïkós",
+      "translitKo": "아카이코스",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "관용 성경 표기 ‘아하이코스’보다 배포 선례의 음역 원칙에 맞춰 아카이코스로 기록."
+    },
+    {
+      "strong": "H6318",
+      "translit": "pôṭîpar",
+      "translitKo": "보디발",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘보디발’을 따른다."
+    },
+    {
+      "strong": "H2265",
+      "translit": "ḥăḇaqqûq",
+      "translitKo": "하박국",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘하박국’을 따른다."
+    },
+    {
+      "strong": "H3818",
+      "translit": "lōʾ ʿammî",
+      "translitKo": "로암미",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "복합 고유명사는 배포 표기처럼 붙여 적는다."
+    },
+    {
+      "strong": "G4551",
+      "translit": "Sappheírē",
+      "translitKo": "삽비라",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘삽비라’를 따른다."
+    },
+    {
+      "strong": "G3434",
+      "translit": "Molóch",
+      "translitKo": "몰록",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘몰록’을 따른다."
+    },
+    {
+      "strong": "G4546",
+      "translit": "Sampsṓn",
+      "translitKo": "삼손",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘삼손’을 따른다."
+    },
+    {
+      "strong": "G2422",
+      "translit": "Iephtháe",
+      "translitKo": "입다",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘입다’를 따른다."
+    },
+    {
+      "strong": "G993",
+      "translit": "Boanergés",
+      "translitKo": "보아네르게스",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 음역 선례의 어말 -γές를 ‘르게스’로 적는다."
+    },
+    {
+      "strong": "G4477",
+      "translit": "Rhacháb",
+      "translitKo": "라합",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘라합’을 따른다."
+    },
+    {
+      "strong": "G4503",
+      "translit": "Rhoúth",
+      "translitKo": "룻",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘룻’을 따른다."
+    },
+    {
+      "strong": "G3774",
+      "translit": "Ourías",
+      "translitKo": "우리야",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘우리야’를 따른다."
+    },
+    {
+      "strong": "G2403",
+      "translit": "Iezabḗl",
+      "translitKo": "이세벨",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘이세벨’을 따른다."
+    },
+    {
+      "strong": "G5617",
+      "translit": "Hōsēé",
+      "translitKo": "호세아",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘호세아’를 따른다."
+    },
+    {
+      "strong": "H1112",
+      "translit": "bēlšaʾṣṣar",
+      "translitKo": "벨사살",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘벨사살’을 따른다."
+    },
+    {
+      "strong": "H2157",
+      "translit": "zamzōm",
+      "translitKo": "잠줌",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H968",
+      "translit": "biztāʾ",
+      "translitKo": "빗사",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H903",
+      "translit": "bigtāʾ",
+      "translitKo": "빅타",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8190",
+      "translit": "šaʿašgaz",
+      "translitKo": "샤아슈가즈",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H630",
+      "translit": "ʾaspātāʾ",
+      "translitKo": "아스바타",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6534",
+      "translit": "parmaštāʾ",
+      "translitKo": "파르마슈타",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2055",
+      "translit": "wayzātāʾ",
+      "translitKo": "와이제타",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H8236",
+      "translit": "šip̄rāh",
+      "translitKo": "십라",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6326",
+      "translit": "pûʿāh",
+      "translitKo": "부아",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3112",
+      "translit": "yôyāqîn",
+      "translitKo": "여호야긴",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘여호야긴’을 따른다."
+    },
+    {
+      "strong": "H1380",
+      "translit": "gəḇal",
+      "translitKo": "그발",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1689",
+      "translit": "Diblāh",
+      "translitKo": "디블라",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H2657",
+      "translit": "Ḥep̄ṣî-ḇāh",
+      "translitKo": "헵치바",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H192",
+      "translit": "ʾĔwîl Mĕrōḏaḵ",
+      "translitKo": "에윌 므로닥",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1996",
+      "translit": "Hămôn Gôḡ",
+      "translitKo": "하몬 고그",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H7294",
+      "translit": "Rahab",
+      "translitKo": "라합",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 고유명사 선례의 관용 표기 ‘라합’을 따른다."
+    },
+    {
+      "strong": "H2606",
+      "translit": "Ḥănanʾēl",
+      "translitKo": "하난엘",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 지명 선례의 ‘하난엘’을 따른다."
+    },
+    {
+      "strong": "H4956",
+      "translit": "Miśrĕp̄ôṯ Mayim",
+      "translitKo": "미스르폿 마임",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H392",
+      "translit": "ʾAḵzîḇ",
+      "translitKo": "악십",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 지명 선례의 관용 표기 ‘악십’을 따른다."
+    },
+    {
+      "strong": "H3317",
+      "translit": "Yip̄taḥ-ʾĒl",
+      "translitKo": "입다엘",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 지명 선례의 관용 표기 ‘입다엘’을 따른다."
+    },
+    {
+      "strong": "H5963",
+      "translit": "ʿAlmōn Diḇlāṯāymāh",
+      "translitKo": "알몬 디블라다임",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 지명 선례의 관용 표기 ‘알몬 디블라다임’을 따른다."
+    },
+    {
+      "strong": "G2459",
+      "translit": "Ioûstos",
+      "translitKo": "유스도",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘유스도’를 따른다."
+    },
+    {
+      "strong": "G1675",
+      "translit": "Hellēnistḗs",
+      "translitKo": "헬라",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 용례의 관용 표기 ‘헬라파/헬라인’을 따른다."
+    },
+    {
+      "strong": "G3019",
+      "translit": "Leuḯtēs",
+      "translitKo": "레위인",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 용례의 관용 표기 ‘레위인’을 따른다."
+    },
+    {
+      "strong": "G1802",
+      "translit": "Enṓch",
+      "translitKo": "에녹",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘에녹’을 따른다."
+    },
+    {
+      "strong": "G2195",
+      "translit": "Zakchaîos",
+      "translitKo": "삭개오",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘삭개오’를 따른다."
+    },
+    {
+      "strong": "G4528",
+      "translit": "Salathiḗl",
+      "translitKo": "스알디엘",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘스알디엘’을 따른다."
+    },
+    {
+      "strong": "G1662",
+      "translit": "Eliakeím",
+      "translitKo": "엘리아김",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘엘리아김’을 따른다."
+    },
+    {
+      "strong": "G3476",
+      "translit": "Naassṓn",
+      "translitKo": "나아손",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘나손’ 계열 관용 표기를 따른다."
+    },
+    {
+      "strong": "G1082",
+      "translit": "Gennēsarét",
+      "translitKo": "게네사렛",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 지명 선례의 관용 표기 ‘게네사렛’을 따른다."
+    },
+    {
+      "strong": "G2500",
+      "translit": "Iōsēs",
+      "translitKo": "요세",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘요세’를 따른다."
+    },
+    {
+      "strong": "G3128",
+      "translit": "Manassēs",
+      "translitKo": "므낫세",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": "배포 성경 인명 선례의 관용 표기 ‘므낫세’를 따른다."
+    },
+    {
+      "strong": "H4017",
+      "translit": "mibśām",
+      "translitKo": "밉삼",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1609",
+      "translit": "gaʿtām",
+      "translitKo": "가으탐",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H4105",
+      "translit": "mĕhêṭabʾēl",
+      "translitKo": "므헤이타브엘",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3434",
+      "translit": "yāšobʿām",
+      "translitKo": "야소브암",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6909",
+      "translit": "qabṣĕʾēl",
+      "translitKo": "갑스엘",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H6142",
+      "translit": "ʿiqqēš",
+      "translitKo": "익케쉬",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H5294",
+      "translit": "nĕʿaryāh",
+      "translitKo": "느아르야",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H1705",
+      "translit": "dăḇĕrat",
+      "translitKo": "다브라트",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    },
+    {
+      "strong": "H3037",
+      "translit": "yaddûaʿ",
+      "translitKo": "야두아",
+      "evidence": "배포 선례: src/data/koreanGloss*.js 및 관련 bookContext.js·bibleReferences.js·contextChapterCards*.js",
+      "note": ""
+    }
+  ]
+}

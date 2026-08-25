@@ -1,0 +1,616 @@
+{
+  "items": [
+    {
+      "shard": "BW",
+      "strong": "G1578",
+      "lemma": "ἐκκλίνω",
+      "lang": "greek",
+      "glossEn": "avoid, eschew, go out of the way",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekklínō",
+          "translitKo": "엑클리노",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekklínō",
+          "translitKo": "엑클리노",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekklínō",
+          "translitKo": "에클리노",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekklínō",
+          "translitKo": "에클리노",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BW",
+      "strong": "G4244",
+      "lemma": "πρεσβυτέριον",
+      "lang": "greek",
+      "glossEn": "(estate of) elder(-s), presbytery",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "presbytérion",
+          "translitKo": "프레쉬뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "presbytérion",
+          "translitKo": "프레스뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "presbytérion",
+          "translitKo": "프레쉬뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "presbytérion",
+          "translitKo": "프레스뷔테리온",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BW",
+      "strong": "G5280",
+      "lemma": "ὑπόμνησις",
+      "lang": "greek",
+      "glossEn": "remembrance",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hypómnēsis",
+          "translitKo": "휘포므네시스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "hypómnēsis",
+          "translitKo": "휘폼네시스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hypómnēsis",
+          "translitKo": "휘포므네시스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "hypómnēsis",
+          "translitKo": "휘폼네시스",
+          "note": "모음 뒤 μν은 받침 ㅁ으로 붙인다. 어두 μν은 μνημεῖον→므네메이온처럼 「므네」로 편다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4339",
+      "lemma": "προσήλυτος",
+      "lang": "greek",
+      "glossEn": "proselyte",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "prosḗlytos",
+          "translitKo": "프르오스에르위트오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀리토스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀뤼토스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀뤼토스",
+          "note": "개역개정은 이 낱말을 \"유대교에 입교한 사람\"으로 풀어 옮겨 굳어진 관용 음역이 없다. 모음 사이 λ은 배포 선례(아폴루오·카탈랄리아)대로 ㄹㄹ로 적었고, υ는 위 계열로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1602",
+      "lemma": "ἐκπλέω",
+      "lang": "greek",
+      "glossEn": "sail (away, thence)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekpléō",
+          "translitKo": "에크프르에오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekpléō",
+          "translitKo": "엑플레오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekpléō",
+          "translitKo": "에크플레오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekpléō",
+          "translitKo": "에크플레오",
+          "note": "ἐκ 뒤에 자음이 오는 낱말은 배포 선례(에크포류오마이·에크핍토)대로 \"에크-\"로 적었다. \"엑플레오\"로 적지 않았다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1224",
+      "lemma": "διαβαίνω",
+      "lang": "greek",
+      "glossEn": "come over, pass (through)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "diabaínō",
+          "translitKo": "드이아브아이느오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "diabaínō",
+          "translitKo": "디바이노",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "diabaínō",
+          "translitKo": "디아바이노",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "diabaínō",
+          "translitKo": "디아바이노",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G525",
+      "lemma": "ἀπαλλάσσω",
+      "lang": "greek",
+      "glossEn": "deliver, depart",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "apallássō",
+          "translitKo": "아프아르르아스스오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "apallássō",
+          "translitKo": "아팔라소",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "apallássō",
+          "translitKo": "아팔랏소",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "apallássō",
+          "translitKo": "아팔라소",
+          "note": "λλ은 ㄹ받침+ㄹ, σσ는 겹치지 않고 한 번만 적었다. 배포 선례 쉬날라소(συναλλάσσω)와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G669",
+      "lemma": "ἀποφθέγγομαι",
+      "lang": "greek",
+      "glossEn": "say, speak forth, utterance",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "apophthéngomai",
+          "translitKo": "아프오프트에느그오므아이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텐고마이",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텐고마이",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텡고마이",
+          "note": "φθ는 배포 선례(오프탈모스·프타노)대로 \"프ㅌ\"로, γγ는 앙겔로스 선례대로 ㅇ받침+ㄱ으로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1195",
+      "lemma": "δεσμεύω",
+      "lang": "greek",
+      "glossEn": "bind",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "desmeúō",
+          "translitKo": "드에스므에우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "desmeúō",
+          "translitKo": "데스메우오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "desmeúō",
+          "translitKo": "데스뮤오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "desmeúō",
+          "translitKo": "데스뮤오",
+          "note": "ευ는 확정 규칙대로 유 계열 한 음절이다. 배포 선례 바실류오와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4772",
+      "lemma": "συγγένεια",
+      "lang": "greek",
+      "glossEn": "kindred",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "syngéneia",
+          "translitKo": "스위느그에느에이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "syngéneia",
+          "translitKo": "슁게네이아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "syngéneia",
+          "translitKo": "쉰게네이아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "syngéneia",
+          "translitKo": "쉰게네이아",
+          "note": "γγ만 보면 앙겔로스처럼 ㅇ받침이 되겠으나, συν- 접두사 낱말은 배포 선례(쉰코이노노스·쉰케란뉘미·쉰카이로)가 모두 \"쉰\"이라 접두사 쪽 선례를 따랐다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4790",
+      "lemma": "συγκοινωνέω",
+      "lang": "greek",
+      "glossEn": "communicate (have fellowship) with, be partaker of",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synkoinōnéō",
+          "translitKo": "스위느크오이느오느에오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synkoinōnéō",
+          "translitKo": "슁코이노네오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synkoinōnéō",
+          "translitKo": "쉰코이노네오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synkoinōnéō",
+          "translitKo": "쉰코이노네오",
+          "note": "γκ 앞의 γ는 배포 선례(쉰코이노노스·쉰케란뉘미)대로 ㄴ받침으로 적었다. 같은 어근의 명사 표기와 맞췄다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G3405",
+      "lemma": "μισθαποδοσία",
+      "lang": "greek",
+      "glossEn": "recompence of reward",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "misthapodosía",
+          "translitKo": "므이스트아프오드오스이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "misthapodosía",
+          "translitKo": "미스하포도시아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "misthapodosía",
+          "translitKo": "미스타포도시아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "misthapodosía",
+          "translitKo": "미스타포도시아",
+          "note": "σθ는 \"스ㅌ\"로 갈라 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G2059",
+      "lemma": "ἑρμηνεύω",
+      "lang": "greek",
+      "glossEn": "interpret",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hermēneúō",
+          "translitKo": "흐에르므에느에우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메네우오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메뉴오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메뉴오",
+          "note": "어두 거친 숨표는 ㅎ, ευ는 유 계열 한 음절이다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4028",
+      "lemma": "περικαλύπτω",
+      "lang": "greek",
+      "glossEn": "blindfold, cover, overlay",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "perikalýptō",
+          "translitKo": "프에르이크아르ý프트오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼립토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼립토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼륍토",
+          "note": "같은 어근의 배포 선례가 아포칼륍토(ἀποκαλύπτω)라 그에 맞췄다. 명사 아포칼립시스는 관용 표기가 굳은 자리라 다르게 적혀 있다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1241",
+      "lemma": "διαζώννυμι",
+      "lang": "greek",
+      "glossEn": "gird",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "diazṓnnymi",
+          "translitKo": "드이아즈ṓ느느위므이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아조뉘미",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아존뉘미",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아존뉘미",
+          "note": "νν은 ㄴ받침+ㄴ, υ는 위 계열이다. 배포 선례 쉰케란뉘미와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G755",
+      "lemma": "ἀρχιτρίκλινος",
+      "lang": "greek",
+      "glossEn": "governor (ruler) of the feast",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "architríklinos",
+          "translitKo": "아르크이트르이크르이느오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "architríklinos",
+          "translitKo": "아르히트리클리노스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "architríklinos",
+          "translitKo": "아르키트리클리노스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "architríklinos",
+          "translitKo": "아르키트리클리노스",
+          "note": "모음 앞 χ는 \"키\"로, 모음 사이 λ은 ㄹ받침+ㄹ로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BY",
+      "strong": "G2763",
+      "lemma": "κεραμεύς",
+      "lang": "greek",
+      "glossEn": "potter",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kerameús",
+          "translitKo": "케라뮤스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kerameús",
+          "translitKo": "케라메우스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kerameús",
+          "translitKo": "케라메우스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kerameús",
+          "translitKo": "케라뮤스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BY",
+      "strong": "H5854",
+      "lemma": "עַטְרוֹת בֵּית יוֹאָב",
+      "lang": "hebrew",
+      "glossEn": "Ataroth the house of Joab.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿAṭrōṯ bêṯ Yôʾāḇ",
+          "translitKo": "아트롯 베트 요압",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿĂṭrôṯ bêṯ Yôʾāḇ",
+          "translitKo": "아트롯 베트 요아브",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿaṭrôṯ bêṯ yôʾāḇ",
+          "translitKo": "아트로트 베트 요아브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿaṭrôt bêt yôʾāb",
+          "translitKo": "아트로트 베트 요아브",
+          "note": "합성 지명이라 낱말 사이를 띄어 적는다. 한국어 성경(개역개정)은 아다롯벧요압으로 옮긴다."
+        }
+      ]
+    }
+  ]
+}

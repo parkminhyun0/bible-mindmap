@@ -1,0 +1,18 @@
+{
+  "model": "codex",
+  "rulings": [
+    {"strong":"H1030","translit":"bêt haššimšî","translitKo":"베트 하시므시","evidence":"src/data/koreanGlossTopBatch05.js의 בֵּית שֶׁמֶשׁ 계열 '베이트 셰메쉬' 선례와 WORKER_SPEC의 다게쉬·복합명사 규칙","note":"관용 지명 표기와 구별되는 학술 음역이다."},
+    {"strong":"H1662","translit":"gat-haḥēper","translitKo":"가트 하헤페르","evidence":"src/data/koreanGlossTopBatch05.js의 '가트' 선례와 src/data/koreanGlossTopBatch03.js의 후음 ח 음역 선례","note":"관용 표기 '가드헤벨'과 구별되는 학술 음역이다."},
+    {"strong":"H1016","translit":"bêt-dāgôn","translitKo":"베트 다곤","evidence":"src/data/koreanGlossTopBatch03.js의 '베트엘'·'베트 레헴' 선례와 WORKER_SPEC의 다게쉬 규칙","note":"관용 표기 '벧다곤'과 구별되는 학술 음역이다."},
+    {"strong":"H407","translit":"ʾakšāp","translitKo":"악샤프","evidence":"src/data/koreanGlossTopBatch04.js의 후음·어두 음역 선례와 WORKER_SPEC의 음절 말 שׁ='쉬' 규칙","note":"관용 표기 '악삽'과 구별되는 학술 음역이다."},
+    {"strong":"G1545","translit":"ékbasis","translitKo":"엑바시스","evidence":"src/data/koreanGloss.js의 G1841 éxodos→'엑소도스', src/data/koreanGlossTopBatch01.js의 '에크' 계열 선례","note":"κβ 자음군을 배포의 엑-/바시스 관행으로 적었다."},
+    {"strong":"G4786","translit":"synkeránnymi","translitKo":"쉰케란뉘미","evidence":"src/data/koreanGlossTopBatch16.js의 G4782 계열 '쉰케오' 선례와 WORKER_SPEC의 υ='위', 겹자음 비중복 규칙","note":"γ가 κ 앞에서 나는 비음은 별도 뜻을 만들지 않고 기존 한글 음역 관행에 따라 적었다."},
+    {"strong":"H6495","translit":"pĕqaḥ-qôaḥ","translitKo":"페카흐 코아흐","evidence":"src/data/koreanGlossTopBatch10.js의 '페카흐'와 src/data/koreanGlossTopBatch03.js의 '코아흐' 선례","note":"복합어를 띄어 쓰고 어말 ח의 furtive patach를 아흐로 반영했다."},
+    {"strong":"H6383","translit":"pilʾî","translitKo":"필아이","evidence":"src/data/koreanGlossTopBatch05.js의 필- 계열 고유명사 음역 선례와 WORKER_SPEC의 ע/א 무표기 원칙","note":"א를 자음으로 덧붙이지 않고 î의 모음값을 반영했다."},
+    {"strong":"G2030","translit":"epóptēs","translitKo":"에포프테스","evidence":"src/data/koreanGlossTopBatch01.js의 그리스어 π 계열 음역 선례와 WORKER_SPEC의 겹자음 비중복 규칙","note":"πτ를 '프테'로 적는 배포 표기 관행을 따랐다."},
+    {"strong":"G1695","translit":"Emmaoús","translitKo":"엠마우스","evidence":"src/data/koreanGlossTopBatch16.js의 겹자음 비중복 선례와 src/data/bibleReferences.js의 고유명사 표기 분리 관행","note":"관용 표기 '엠마오'와 구별되는 학술 음역이다."},
+    {"strong":"H2991","translit":"yibləʿām","translitKo":"이블르암","evidence":"src/data/koreanGlossTopBatch16.js의 H8093 שִׁמְעָה→'심아' 선례와 WORKER_SPEC의 ע 무표기 원칙","note":"관용 성경 표기 '이블르암'을 유지하되 학술 라틴 음역은 yibləʿām으로 적었다."},
+    {"strong":"H8093","translit":"šimʿāh","translitKo":"심아","evidence":"src/data/koreanGlossTopBatch16.js의 동일 항목 שִׁמְעָה→'심아' 배포 선례","note":"관용 표기 '시므아'와 구별되는 학술 음역이다."},
+    {"strong":"G2454","translit":"Ioudaïsmós","translitKo":"유다이스모스","evidence":"src/data/koreanGlossTopBatch02.js의 Ἰουδαῖος→'유다이오스'와 src/data/bookContext.js의 '유다이오이' 선례","note":"Ἰου-는 배포 선례대로 '유-'로 적었다."}
+  ]
+}

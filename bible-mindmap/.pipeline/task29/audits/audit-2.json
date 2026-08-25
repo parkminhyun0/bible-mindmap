@@ -1,0 +1,47 @@
+[
+  {
+    "strong": "H6265",
+    "field": "translit",
+    "current": "ʿĂtāyâ",
+    "suggested": "ʿătāyâ",
+    "evidence": "WORKER_SPEC.md: SBL 라틴 음역을 표제로 삼음; 같은 배치의 일반 음역 표기는 단어 첫 글자도 소문자이며 breve는 소문자 ă로 표기됨.",
+    "severity": "minor",
+    "reason": "첫 모음이 대문자 Ă로 표기되어 SBL 음역의 대소문자 표기와 어긋난다."
+  },
+  {
+    "strong": "H2382",
+    "field": "translit",
+    "current": "Ḥăzāyâ",
+    "suggested": "ḥăzāyâ",
+    "evidence": "WORKER_SPEC.md: SBL 라틴 음역을 표제로 삼음; 배포 선례는 단어 첫 후음도 소문자 ḥ로 표기함.",
+    "severity": "minor",
+    "reason": "단어 첫 후음 ḥ가 대문자 Ḥ로 표기된 단순 대소문자 오류다."
+  },
+  {
+    "strong": "H2736",
+    "field": "translit",
+    "current": "Ḥarhăyâ",
+    "suggested": "ḥarhăyâ",
+    "evidence": "WORKER_SPEC.md: SBL 라틴 음역을 표제로 삼음; 배포 선례는 단어 첫 후음도 소문자 ḥ로 표기함.",
+    "severity": "minor",
+    "reason": "단어 첫 후음 ḥ가 대문자 Ḥ로 표기된 단순 대소문자 오류다."
+  },
+  {
+    "strong": "H2739",
+    "field": "note",
+    "current": "어말 ף는 베가드케파트 무표기 규칙에 따라 p로 적고 한글은 프로 닫는다(선례 엘레프·케세프).",
+    "suggested": "어말 ף는 베가드케파트 무표기 규칙에 따라 p로 적고 한글은 프 받침으로 닫는다(선례 엘레프·케세프).",
+    "evidence": "WORKER_SPEC.md: note에는 표기 차이의 이유만 적음; current translitKo는 ‘하루마프’로 어말을 받침 프로 닫는다.",
+    "severity": "minor",
+    "reason": "note의 ‘프로 닫는다’가 current translitKo ‘하루마프’와 모순된다."
+  },
+  {
+    "strong": "H5302",
+    "field": "note",
+    "current": "여기 파타흐는 פ 아래 있는 정상 모음이라 furtive patach가 아니다.",
+    "suggested": "어말 ח 앞의 פ 아래 파타흐는 furtive patach다.",
+    "evidence": "WORKER_SPEC.md: furtive patach는 어말 후음 앞 a를 단어 단위로 판단함; lemma נֹפַח에서 פ 아래 파타흐가 어말 ח 앞에 있다.",
+    "severity": "major",
+    "reason": "lemma의 어말 후음 ח 앞 파타흐를 정상 모음이라고 부정해 note가 형태와 정반대다."
+  }
+]

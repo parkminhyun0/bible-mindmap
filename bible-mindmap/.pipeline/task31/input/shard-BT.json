@@ -1,0 +1,906 @@
+{
+  "shard": "BT",
+  "count": 100,
+  "items": [
+    {
+      "strong": "H3780",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כָּשָׂה",
+      "translit": "",
+      "glossEn": "be covered. Compare H3680 (כָּסָה).",
+      "defEn": "to grow fat (i.e. be covered with flesh)"
+    },
+    {
+      "strong": "H7876",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שָׁיָה",
+      "translit": "",
+      "glossEn": "be unmindful. (Render Deuteronomy 32:18, 'A Rock bore thee, thou must recollect; and (yet) thou hast forgotten,' etc.)",
+      "defEn": "to keep in memory"
+    },
+    {
+      "strong": "H4198",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מָזֶה",
+      "translit": "",
+      "glossEn": "burnt.",
+      "defEn": "exhausted"
+    },
+    {
+      "strong": "H4815",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מְרִירִי",
+      "translit": "",
+      "glossEn": "bitter.",
+      "defEn": "bitter, i.e. poisonous"
+    },
+    {
+      "strong": "H6284",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "פָּאָה",
+      "translit": "",
+      "glossEn": "scatter into corners.",
+      "defEn": "to puff, i.e. blow away"
+    },
+    {
+      "strong": "H3647",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "כָּמַס",
+      "translit": "",
+      "glossEn": "lay up in store.",
+      "defEn": "to store away, i.e. (figuratively) in the memory"
+    },
+    {
+      "strong": "H2245",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חָבַב",
+      "translit": "",
+      "glossEn": "love.",
+      "defEn": "properly, to hide (as in the bosom), i.e. to cherish (with affection)"
+    },
+    {
+      "strong": "H8497",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "תָּכָה",
+      "translit": "",
+      "glossEn": "sit down.",
+      "defEn": "to strew, i.e. encamp"
+    },
+    {
+      "strong": "H6988",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "קְטוֹרָה",
+      "translit": "",
+      "glossEn": "incense.",
+      "defEn": "perfume"
+    },
+    {
+      "strong": "H2653",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חׇפַף",
+      "translit": "",
+      "glossEn": "cover.",
+      "defEn": "to cover (in protection)"
+    },
+    {
+      "strong": "H1645",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "גֶּרֶשׁ",
+      "translit": "",
+      "glossEn": "put forth.",
+      "defEn": "produce (as if expelled)"
+    },
+    {
+      "strong": "H8228",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "שֶׁפַע",
+      "translit": "",
+      "glossEn": "abundance.",
+      "defEn": "resources"
+    },
+    {
+      "strong": "H2187",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "זָנַק",
+      "translit": "",
+      "glossEn": "leap.",
+      "defEn": "properly, to draw together the feet (as an animal about to dart upon its prey), i.e. to spring forward"
+    },
+    {
+      "strong": "H4515",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מִנְעָל",
+      "translit": "",
+      "glossEn": "shoe.",
+      "defEn": "a bolt"
+    },
+    {
+      "strong": "H1679",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "דֹּבֶא",
+      "translit": "",
+      "glossEn": "strength.",
+      "defEn": "quiet"
+    },
+    {
+      "strong": "H3893",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "לֵחַ",
+      "translit": "",
+      "glossEn": "natural force.",
+      "defEn": "freshness, i.e. vigor"
+    },
+    {
+      "strong": "H7190",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "קְשִׁי",
+      "translit": "",
+      "glossEn": "stubbornness.",
+      "defEn": "obstinacy"
+    },
+    {
+      "strong": "H5506",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "סְחֹרָה",
+      "translit": "",
+      "glossEn": "merchandise.",
+      "defEn": "traffic"
+    },
+    {
+      "strong": "H1728",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "דַּוָּג",
+      "translit": "",
+      "glossEn": "fisher.",
+      "defEn": "a fisherman"
+    },
+    {
+      "strong": "H2751",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "חֹרִי",
+      "translit": "",
+      "glossEn": "white.",
+      "defEn": "white bread"
+    },
+    {
+      "strong": "H4761",
+      "lang": "hebrew",
+      "count": 1,
+      "lemma": "מַרְאָשָׁה",
+      "translit": "",
+      "glossEn": "principality.",
+      "defEn": "properly, headship, i.e. (plural for collective) dominion"
+    },
+    {
+      "strong": "H4734",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מִקְלַעַת",
+      "translit": "",
+      "glossEn": "carved (figure), carving, graving.",
+      "defEn": "a sculpture (probably in bas-relief)"
+    },
+    {
+      "strong": "H1550",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "גָּלִיל",
+      "translit": "",
+      "glossEn": "folding, ring.",
+      "defEn": "a valve of a folding door (as turning); also a ring (as round)"
+    },
+    {
+      "strong": "H2707",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חָקָה",
+      "translit": "",
+      "glossEn": "carved work, portrayed, set a print.",
+      "defEn": "to carve; by implication, to delineate; also to entrench"
+    },
+    {
+      "strong": "H4237",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מֶחֱזָה",
+      "translit": "",
+      "glossEn": "light.",
+      "defEn": "a window"
+    },
+    {
+      "strong": "H2947",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "טֵפַח",
+      "translit": "",
+      "glossEn": "coping, hand-breadth.",
+      "defEn": "a spread of the hand, i.e. a palm-breadth (not 'span' of the fingers); architecturally, a corbel (as a supporting palm)"
+    },
+    {
+      "strong": "H4165",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מוּצָק",
+      "translit": "",
+      "glossEn": "casting, hardness.",
+      "defEn": "properly, fusion, i.e. literally, a casting (of metal); figuratively, a mass (of clay)"
+    },
+    {
+      "strong": "H2837",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חֵשֶׁק",
+      "translit": "",
+      "glossEn": "desire, pleasure.",
+      "defEn": "delight"
+    },
+    {
+      "strong": "H8622",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "תְּקוּפָה",
+      "translit": "",
+      "glossEn": "circuit, come about, end.",
+      "defEn": "a revolution, i.e. (of the sun) course, (of time) lapse"
+    },
+    {
+      "strong": "H6926",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "קִדְמָה",
+      "translit": "",
+      "glossEn": "east(-ward).",
+      "defEn": "the forward part (or relatively) East (often adverbially, on the east or in front)"
+    },
+    {
+      "strong": "H6877",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צְרִיחַ",
+      "translit": "",
+      "glossEn": "high place, hold.",
+      "defEn": "a citadel"
+    },
+    {
+      "strong": "H6277",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עָתָק",
+      "translit": "",
+      "glossEn": "arrogancy, grievous (hard) things, stiff.",
+      "defEn": "impudent"
+    },
+    {
+      "strong": "H2844",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חַת",
+      "translit": "",
+      "glossEn": "broken, dismayed, dread, fear.",
+      "defEn": "concretely, crushed; also afraid; abstractly, terror"
+    },
+    {
+      "strong": "H4770",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מַרְבֵּק",
+      "translit": "",
+      "glossEn": "[idiom] fat(-ted), stall.",
+      "defEn": "a stall (for cattle)"
+    },
+    {
+      "strong": "H6750",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צָלַל",
+      "translit": "",
+      "glossEn": "quiver, tingle.",
+      "defEn": "to tinkle, i.e. rattle together (as the ears in reddening with shame, or the teeth in chattering with fear)"
+    },
+    {
+      "strong": "H2524",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חָם",
+      "translit": "",
+      "glossEn": "father in law.",
+      "defEn": "a father-in-law (as in affinity)"
+    },
+    {
+      "strong": "H8495",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "תַּיִשׁ",
+      "translit": "",
+      "glossEn": "he goat.",
+      "defEn": "a buck or he-goat (as given to butting)"
+    },
+    {
+      "strong": "H2688",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חַצְצוֹן תָּמָר",
+      "translit": "",
+      "glossEn": "Hazezon-tamar.",
+      "defEn": "Chatsetson-tamar, a place in Palestine"
+    },
+    {
+      "strong": "H1765",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "דָּחַף",
+      "translit": "",
+      "glossEn": "(be) haste(-ned), pressed on.",
+      "defEn": "to urge, i.e. hasten"
+    },
+    {
+      "strong": "H1740",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "דּוּחַ",
+      "translit": "",
+      "glossEn": "cast out, purge, wash.",
+      "defEn": "to thrust away; figuratively, to cleanse"
+    },
+    {
+      "strong": "H225",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אוּת",
+      "translit": "",
+      "glossEn": "consent.",
+      "defEn": "properly, to come, i.e. (implied) to assent"
+    },
+    {
+      "strong": "H4964",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מֶתֶג",
+      "translit": "",
+      "glossEn": "bit, bridle.",
+      "defEn": "a bit"
+    },
+    {
+      "strong": "H7046",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "קָלַס",
+      "translit": "",
+      "glossEn": "mock, scoff, scorn.",
+      "defEn": "to disparage, i.e. ridicule"
+    },
+    {
+      "strong": "H219",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אוֹרָה",
+      "translit": "",
+      "glossEn": "herb, light.",
+      "defEn": "luminousness, i.e. (figuratively) prosperity; also a plant (as being bright)"
+    },
+    {
+      "strong": "H579",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אָנָה",
+      "translit": "",
+      "glossEn": "befall, deliver, happen, seek a quarrel.",
+      "defEn": "to approach; hence, to meet in various senses"
+    },
+    {
+      "strong": "H5730",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עֵדֶן",
+      "translit": "",
+      "glossEn": "delicate, delight, pleasure. See also H1040 (בֵּית עֵדֶן).",
+      "defEn": "pleasure"
+    },
+    {
+      "strong": "H2897",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "טוֹב",
+      "translit": "",
+      "glossEn": "Tob.",
+      "defEn": "Tob, a region apparently East of the Jordan"
+    },
+    {
+      "strong": "H5228",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "נָכֹחַ",
+      "translit": "",
+      "glossEn": "plain, right, uprightness.",
+      "defEn": "straightforward, i.e. (figuratively), equitable, correct, or (abstractly), integrity"
+    },
+    {
+      "strong": "H7504",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "רָפֶה",
+      "translit": "",
+      "glossEn": "weak. raphah, Raphah. See H7497 (רָפָא), H7498 (רָפָא). riphah. See H7383 (רִיפָה).",
+      "defEn": "slack (in body or mind)"
+    },
+    {
+      "strong": "H5742",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עָדָשׁ",
+      "translit": "",
+      "glossEn": "lentile.",
+      "defEn": "a lentil"
+    },
+    {
+      "strong": "H4794",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מְרוּצָה",
+      "translit": "",
+      "glossEn": "course, running. Compare H4835 (מְרֻצָה).",
+      "defEn": "a race (the act), whether the manner or the progress"
+    },
+    {
+      "strong": "H92",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אֲגֻדָּה",
+      "translit": "",
+      "glossEn": "bunch, burden, troop.",
+      "defEn": "a band, bundle, knot, or arch"
+    },
+    {
+      "strong": "H491",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אַלְמָנוּת",
+      "translit": "",
+      "glossEn": "widow, widowhood.",
+      "defEn": "concrete, a widow; abstract, widowhood"
+    },
+    {
+      "strong": "H7791",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שׁוּר",
+      "translit": "",
+      "glossEn": "wall.",
+      "defEn": "a wall (as going about)"
+    },
+    {
+      "strong": "H5920",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עַל",
+      "translit": "",
+      "glossEn": "above, high, most High.",
+      "defEn": "properly, the top; specifically, the highest (i.e. God); also (adverb) aloft, to Jehovah"
+    },
+    {
+      "strong": "H877",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "בֹּאר",
+      "translit": "",
+      "glossEn": "cistern.",
+      "defEn": "a cistern"
+    },
+    {
+      "strong": "H5190",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "נָטַל",
+      "translit": "",
+      "glossEn": "bear, offer, take up.",
+      "defEn": "to lift; by implication, to impose"
+    },
+    {
+      "strong": "H7875",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שִׂיד",
+      "translit": "",
+      "glossEn": "lime, plaister.",
+      "defEn": "lime (as boiling when slacked)"
+    },
+    {
+      "strong": "H5995",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עָמִיר",
+      "translit": "",
+      "glossEn": "handful, sheaf.",
+      "defEn": "a bunch of grain"
+    },
+    {
+      "strong": "H6217",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עָשׁוּק",
+      "translit": "",
+      "glossEn": "oppressed(-ion). (Doubtful.)",
+      "defEn": "used in plural masculine as abstractly, tyranny"
+    },
+    {
+      "strong": "H5229",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "נְכֹחָה",
+      "translit": "",
+      "glossEn": "equity, right (thing), uprightness.",
+      "defEn": "properly, straightforwardness, i.e. (figuratively) integrity, or (concretely) a truth"
+    },
+    {
+      "strong": "H2172",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "זִמְרָה",
+      "translit": "",
+      "glossEn": "melody, psalm.",
+      "defEn": "a musical piece or song to be accompanied by an instrument"
+    },
+    {
+      "strong": "H1488",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "גֵּז",
+      "translit": "",
+      "glossEn": "fleece, mowing, mown grass.",
+      "defEn": "a fleece (as shorn); also mown grass"
+    },
+    {
+      "strong": "H594",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אֲנָךְ",
+      "translit": "",
+      "glossEn": "plumb-line",
+      "defEn": "according to most a plumb-line, and to others a hook"
+    },
+    {
+      "strong": "H5342",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "נֵצֶר",
+      "translit": "",
+      "glossEn": "branch.",
+      "defEn": "a shoot; figuratively, a descendant"
+    },
+    {
+      "strong": "H6716",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צִי",
+      "translit": "",
+      "glossEn": "ship.",
+      "defEn": "a ship (as a fixture)"
+    },
+    {
+      "strong": "H4070",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מְדוֹר",
+      "translit": "",
+      "glossEn": "dwelling.",
+      "defEn": "a dwelling"
+    },
+    {
+      "strong": "H4486",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מַנְדַּע",
+      "translit": "",
+      "glossEn": "knowledge, reason, understanding.",
+      "defEn": "wisdom or intelligence"
+    },
+    {
+      "strong": "H1547",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "גָּלוּת",
+      "translit": "",
+      "glossEn": "captivity.",
+      "defEn": "{captivity; concretely, exiles (collectively)}"
+    },
+    {
+      "strong": "H3546",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "כְּהַל",
+      "translit": "",
+      "glossEn": "be able, could.",
+      "defEn": "to be able"
+    },
+    {
+      "strong": "H4223",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מְחָא",
+      "translit": "",
+      "glossEn": "hang, smite, stay.",
+      "defEn": "to strike in pieces; also to arrest; specifically to impale"
+    },
+    {
+      "strong": "H6151",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עֲרַב",
+      "translit": "",
+      "glossEn": "mingle (self), mix.",
+      "defEn": "to commingle"
+    },
+    {
+      "strong": "H4756",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מָרֵא",
+      "translit": "",
+      "glossEn": "lord, Lord.",
+      "defEn": "a master"
+    },
+    {
+      "strong": "H521",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אַמָּה",
+      "translit": "",
+      "glossEn": "cubit.",
+      "defEn": "{properly, a mother (i.e. unit of measure, or the fore-arm (below the elbow), i.e. a cubit; also a door-base (as a bond of the entrance)}"
+    },
+    {
+      "strong": "H8361",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שִׁתִּין",
+      "translit": "",
+      "glossEn": "threescore.",
+      "defEn": "sixty"
+    },
+    {
+      "strong": "H2597",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חֲנֻכָּא",
+      "translit": "",
+      "glossEn": "dedication.",
+      "defEn": "consecration"
+    },
+    {
+      "strong": "H4953",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "מַשְׁרוֹקִי",
+      "translit": "",
+      "glossEn": "flute.",
+      "defEn": "a (musical) pipe (from its whistling sound)"
+    },
+    {
+      "strong": "H7030",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "קִיתָרֹס",
+      "translit": "",
+      "glossEn": "harp.",
+      "defEn": "a lyre"
+    },
+    {
+      "strong": "H5443",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "סַבְּכָא",
+      "translit": "",
+      "glossEn": "sackbut.",
+      "defEn": "a lyre"
+    },
+    {
+      "strong": "H6460",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "פְּסַנְטֵרִין",
+      "translit": "",
+      "glossEn": "psaltery.",
+      "defEn": "psalterion; a lyre"
+    },
+    {
+      "strong": "H5481",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "סוּמְפּוֹנְיָה",
+      "translit": "",
+      "glossEn": "dulcimer.",
+      "defEn": "a bagpipe (with a double pipe)"
+    },
+    {
+      "strong": "H2178",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "זַן",
+      "translit": "",
+      "glossEn": "kind.",
+      "defEn": "sort"
+    },
+    {
+      "strong": "H2170",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "זְמָר",
+      "translit": "",
+      "glossEn": "musick.",
+      "defEn": "instrumental music"
+    },
+    {
+      "strong": "H3729",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "כְּפַת",
+      "translit": "",
+      "glossEn": "bind.",
+      "defEn": "to fetter"
+    },
+    {
+      "strong": "H1907",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "הַדָּבָר",
+      "translit": "",
+      "glossEn": "counsellor.",
+      "defEn": "a vizier"
+    },
+    {
+      "strong": "H7960",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שָׁלוּ",
+      "translit": "",
+      "glossEn": "error, [idiom] fail, thing amiss.",
+      "defEn": "a fault"
+    },
+    {
+      "strong": "H6744",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צְלַח",
+      "translit": "",
+      "glossEn": "promote, prosper.",
+      "defEn": "to advance (transitive or intransitive)"
+    },
+    {
+      "strong": "H8001",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שְׁלָם",
+      "translit": "",
+      "glossEn": "peace.",
+      "defEn": "prosperity"
+    },
+    {
+      "strong": "H1859",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "דָּר",
+      "translit": "",
+      "glossEn": "generation.",
+      "defEn": "an age"
+    },
+    {
+      "strong": "H6056",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "עֲנַף",
+      "translit": "",
+      "glossEn": "bough, branch.",
+      "defEn": "{a twig (as covering the limbs)}"
+    },
+    {
+      "strong": "H6853",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צְפַר",
+      "translit": "",
+      "glossEn": "bird.",
+      "defEn": "a bird."
+    },
+    {
+      "strong": "H2499",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "חֲלַף",
+      "translit": "",
+      "glossEn": "pass.",
+      "defEn": "to pass on (of time)"
+    },
+    {
+      "strong": "H2957",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "טְרַד",
+      "translit": "",
+      "glossEn": "drive.",
+      "defEn": "to expel"
+    },
+    {
+      "strong": "H8648",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "תְּרֵין",
+      "translit": "",
+      "glossEn": "second, [phrase] twelve, two.",
+      "defEn": "two"
+    },
+    {
+      "strong": "H7313",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "רוּם",
+      "translit": "",
+      "glossEn": "extol, lift up (self), set up.",
+      "defEn": "{to be high actively, to rise or raise (in various applications, literally or figuratively)}"
+    },
+    {
+      "strong": "H8214",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "שְׁפַל",
+      "translit": "",
+      "glossEn": "abase, humble, put down, subdue.",
+      "defEn": "{to depress or sink (expectation figuratively, to humiliate, intransitive or transitive)}"
+    },
+    {
+      "strong": "H506",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "אֲלַף",
+      "translit": "",
+      "glossEn": "thousand.",
+      "defEn": "{hence (the ox's head being the first letter of the alphabet, and this eventually used as a numeral) a thousand}"
+    },
+    {
+      "strong": "H5142",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "נְזַק",
+      "translit": "",
+      "glossEn": "have (en-) damage, hurt(-ful).",
+      "defEn": "to suffer (causatively, inflict) loss"
+    },
+    {
+      "strong": "H6695",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "צוֹק",
+      "translit": "",
+      "glossEn": "anguish, [idiom] troublous.",
+      "defEn": "a strait, i.e. (figuratively) distress"
+    },
+    {
+      "strong": "H1682",
+      "lang": "hebrew",
+      "count": 4,
+      "lemma": "דְּבוֹרָה",
+      "translit": "",
+      "glossEn": "bee.",
+      "defEn": "the bee (from its systematic instincts)"
+    }
+  ]
+}

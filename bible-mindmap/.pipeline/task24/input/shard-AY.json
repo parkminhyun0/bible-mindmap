@@ -1,0 +1,681 @@
+{
+  "shard": "AY",
+  "count": 75,
+  "items": [
+    {
+      "strong": "G494",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀντιπατρίς",
+      "translit": "Antipatrís",
+      "glossEn": "Antipatris",
+      "defEn": "Antipatris, a place in Palestine"
+    },
+    {
+      "strong": "G4414",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πρωτοστάτης",
+      "translit": "prōtostátēs",
+      "glossEn": "ringleader",
+      "defEn": "one standing first in the ranks, i.e. a captain (champion)"
+    },
+    {
+      "strong": "G778",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀσκέω",
+      "translit": "askéō",
+      "glossEn": "exercise",
+      "defEn": "to elaborate, i.e. (figuratively) train (by implication, strive)"
+    },
+    {
+      "strong": "G1175",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "δεισιδαιμονία",
+      "translit": "deisidaimonía",
+      "glossEn": "superstition",
+      "defEn": "religion"
+    },
+    {
+      "strong": "G1616",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐκτένεια",
+      "translit": "ekténeia",
+      "glossEn": "X instantly",
+      "defEn": "intentness"
+    },
+    {
+      "strong": "G1947",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπικουρία",
+      "translit": "epikouría",
+      "glossEn": "help",
+      "defEn": "assistance"
+    },
+    {
+      "strong": "G3460",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μύρα",
+      "translit": "Mýra",
+      "glossEn": "Myra",
+      "defEn": "Myra, a place in Asia Minor"
+    },
+    {
+      "strong": "G3073",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λυκία",
+      "translit": "Lykía",
+      "glossEn": "Lycia",
+      "defEn": "Lycia, a province of Asia Minor"
+    },
+    {
+      "strong": "G2834",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κνίδος",
+      "translit": "Knídos",
+      "glossEn": "Cnidus",
+      "defEn": "Cnidus, a place in Asia Minor"
+    },
+    {
+      "strong": "G5405",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φοῖνιξ",
+      "translit": "Phoînix",
+      "glossEn": "Phenice",
+      "defEn": "Phœnix, a place in Crete"
+    },
+    {
+      "strong": "G4950",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σύρτις",
+      "translit": "sýrtis",
+      "glossEn": "quicksands",
+      "defEn": "a shoal (from the sand drawn thither by the waves), i.e. the Syrtis Major or great bay on the north coast of Africa"
+    },
+    {
+      "strong": "G99",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀδρίας",
+      "translit": "Adrías",
+      "glossEn": "Adria",
+      "defEn": "the Adriatic sea (including the Ionian)"
+    },
+    {
+      "strong": "G4946",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Συράκουσαι",
+      "translit": "Syrákousai",
+      "glossEn": "Syracuse",
+      "defEn": "Syracuse, the capital of Sicily"
+    },
+    {
+      "strong": "G4484",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥήγιον",
+      "translit": "Rhḗgion",
+      "glossEn": "Rhegium",
+      "defEn": "Rhegium, a place in Italy"
+    },
+    {
+      "strong": "G4223",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ποτίολοι",
+      "translit": "Potíoloi",
+      "glossEn": "Puteoli",
+      "defEn": "little wells, i.e. mineral springs; Potioli (i.e. Puteoli), a place in Italy"
+    },
+    {
+      "strong": "G675",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἄππιος",
+      "translit": "Áppios",
+      "glossEn": "Appii",
+      "defEn": "(in the genitive, i.e. possessive case) of Appius, the name of a Roman"
+    },
+    {
+      "strong": "G5410",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Φόρον",
+      "translit": "Phóron",
+      "glossEn": "forum",
+      "defEn": "a forum or market-place; only in comparative with G675 (Ἄππιος); a station on the Appian road"
+    },
+    {
+      "strong": "G4999",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ταβέρναι",
+      "translit": "Tabérnai",
+      "glossEn": "taverns",
+      "defEn": "huts or wooden-walled buildings; Tabernæ"
+    },
+    {
+      "strong": "G1842",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐξολοθρεύω",
+      "translit": "exolothreúō",
+      "glossEn": "destroy",
+      "defEn": "to extirpate"
+    },
+    {
+      "strong": "G5433",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "φρυάσσω",
+      "translit": "phryássō",
+      "glossEn": "rage",
+      "defEn": "to snort (as a spirited horse), i.e. (figuratively) to make a tumult"
+    },
+    {
+      "strong": "G3791",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὀχλέω",
+      "translit": "ochléō",
+      "glossEn": "vex",
+      "defEn": "to mob, i.e. (by implication) to harass"
+    },
+    {
+      "strong": "G1087",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "γερουσία",
+      "translit": "gerousía",
+      "glossEn": "senate",
+      "defEn": "the eldership, i.e. (collectively) the Jewish Sanhedrin"
+    },
+    {
+      "strong": "G3865",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παραθεωρέω",
+      "translit": "paratheōréō",
+      "glossEn": "neglect",
+      "defEn": "to overlook or disregard"
+    },
+    {
+      "strong": "G5466",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Χαλδαῖος",
+      "translit": "Chaldaîos",
+      "glossEn": "Chaldæan",
+      "defEn": "a Chaldæan (i.e. Kasdi), or native or the region of the lower Euphrates"
+    },
+    {
+      "strong": "G319",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀναγνωρίζομαι",
+      "translit": "anagnōrízomai",
+      "glossEn": "be made known",
+      "defEn": "to make (oneself) known"
+    },
+    {
+      "strong": "G2686",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κατασοφίζομαι",
+      "translit": "katasophízomai",
+      "glossEn": "deal subtilly with",
+      "defEn": "to be crafty against, i.e. circumvent"
+    },
+    {
+      "strong": "G9996",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "συναλλάσσω",
+      "translit": "",
+      "glossEn": "to urge",
+      "defEn": ""
+    },
+    {
+      "strong": "G3099",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μαδιάν",
+      "translit": "Madián",
+      "glossEn": "Madian",
+      "defEn": "Madian (i.e. Midian), a region of Arabia"
+    },
+    {
+      "strong": "G1660",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἔλευσις",
+      "translit": "éleusis",
+      "glossEn": "coming",
+      "defEn": "an advent"
+    },
+    {
+      "strong": "G2870",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κοπετός",
+      "translit": "kopetós",
+      "glossEn": "lamentation",
+      "defEn": "mourning (properly, by beating the breast)"
+    },
+    {
+      "strong": "G3075",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "λυμαίνομαι",
+      "translit": "lymaínomai",
+      "glossEn": "make havock of",
+      "defEn": "properly, to soil, i.e. (figuratively) insult (maltreat)"
+    },
+    {
+      "strong": "G3095",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μαγεία",
+      "translit": "mageía",
+      "glossEn": "sorcery",
+      "defEn": "\"magic\""
+    },
+    {
+      "strong": "G1963",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπίνοια",
+      "translit": "epínoia",
+      "glossEn": "thought",
+      "defEn": "attention of the mind, i.e. (by implication) purpose"
+    },
+    {
+      "strong": "G4042",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "περιοχή",
+      "translit": "periochḗ",
+      "glossEn": "place",
+      "defEn": "a being held around, i.e. (concretely) a passage (of Scripture, as circumscribed)"
+    },
+    {
+      "strong": "G108",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἄζωτος",
+      "translit": "Ázōtos",
+      "glossEn": "Azotus",
+      "defEn": "Azotus (i.e. Ashdod), a place in Palestine"
+    },
+    {
+      "strong": "G1709",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐμπνέω",
+      "translit": "empnéō",
+      "glossEn": "breathe",
+      "defEn": "to inhale, i.e. (figuratively) to be animated by (bent upon)"
+    },
+    {
+      "strong": "G4565",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σάρων",
+      "translit": "Sárōn",
+      "glossEn": "Saron",
+      "defEn": "Saron (i.e. Sharon), a district of Palestine"
+    },
+    {
+      "strong": "G3102",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μαθήτρια",
+      "translit": "mathḗtria",
+      "glossEn": "disciple",
+      "defEn": "a female pupil"
+    },
+    {
+      "strong": "G4257",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προακούω",
+      "translit": "proakoúō",
+      "glossEn": "hear before",
+      "defEn": "to hear already,i.e. anticipate"
+    },
+    {
+      "strong": "G3334",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μετακινέω",
+      "translit": "metakinéō",
+      "glossEn": "move away",
+      "defEn": "to stir to a place elsewhere, i.e. remove (figuratively)"
+    },
+    {
+      "strong": "G4086",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πιθανολογία",
+      "translit": "pithanología",
+      "glossEn": "enticing words",
+      "defEn": "persuasive language"
+    },
+    {
+      "strong": "G4733",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "στερέωμα",
+      "translit": "steréōma",
+      "glossEn": "stedfastness",
+      "defEn": "something established, i.e. (abstractly) confirmation (stability)"
+    },
+    {
+      "strong": "G2603",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταβραβεύω",
+      "translit": "katabrabeúō",
+      "glossEn": "beguile of reward",
+      "defEn": "to award the price against, i.e. (figuratively) to defraud (of salvation)"
+    },
+    {
+      "strong": "G1687",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐμβατεύω",
+      "translit": "embateúō",
+      "glossEn": "intrude into",
+      "defEn": "equivalent to G1684 (ἐμβαίνω); to intrude on (figuratively)"
+    },
+    {
+      "strong": "G1379",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "δογματίζω",
+      "translit": "dogmatízō",
+      "glossEn": "be subject to ordinances",
+      "defEn": "to prescribe by statute, i.e. (reflexively) to submit to, ceremonially rule"
+    },
+    {
+      "strong": "G857",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀφειδία",
+      "translit": "apheidía",
+      "glossEn": "neglecting",
+      "defEn": "unsparingness, i.e. austerity (asceticism)"
+    },
+    {
+      "strong": "G4140",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πλησμονή",
+      "translit": "plēsmonḗ",
+      "glossEn": "satisfying",
+      "defEn": "a filling up, i.e. (figuratively) gratification"
+    },
+    {
+      "strong": "G148",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "αἰσχρολογία",
+      "translit": "aischrología",
+      "glossEn": "filthy communication",
+      "defEn": "vile conversation"
+    },
+    {
+      "strong": "G4658",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σκύθης",
+      "translit": "Skýthēs",
+      "glossEn": "Scythian",
+      "defEn": "a Scythene or Scythian, i.e. (by implication) a savage"
+    },
+    {
+      "strong": "G431",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀνεψιός",
+      "translit": "anepsiós",
+      "glossEn": "sister's son",
+      "defEn": "properly, akin, i.e. (specially) a cousin"
+    },
+    {
+      "strong": "G3823",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πάλη",
+      "translit": "pálē",
+      "glossEn": "+ wrestle",
+      "defEn": "another form for G906 (βάλλω)); wrestling"
+    },
+    {
+      "strong": "G5098",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τιμωρία",
+      "translit": "timōría",
+      "glossEn": "punishment",
+      "defEn": "vindication, i.e. (by implication) a penalty"
+    },
+    {
+      "strong": "G119",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἄθλησις",
+      "translit": "áthlēsis",
+      "glossEn": "fight",
+      "defEn": "a struggle (figuratively)"
+    },
+    {
+      "strong": "G1650",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἔλεγχος",
+      "translit": "élenchos",
+      "glossEn": "evidence, reproof",
+      "defEn": "proof, conviction"
+    },
+    {
+      "strong": "G2125",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "εὐλαβέομαι",
+      "translit": "eulabéomai",
+      "glossEn": "(moved with) fear",
+      "defEn": "to be circumspect, i.e. (by implication) to be apprehensive; religiously, to reverence"
+    },
+    {
+      "strong": "G2594",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καρτερέω",
+      "translit": "karteréō",
+      "glossEn": "endure",
+      "defEn": "to be strong, i.e. (figuratively) steadfast (patient)"
+    },
+    {
+      "strong": "G4378",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πρόσχυσις",
+      "translit": "próschysis",
+      "glossEn": "sprinkling",
+      "defEn": "a shedding forth, i.e. affusion"
+    },
+    {
+      "strong": "G2610",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταγωνίζομαι",
+      "translit": "katagōnízomai",
+      "glossEn": "subdue",
+      "defEn": "to struggle against, i.e. (by implication) to overcome"
+    },
+    {
+      "strong": "G3374",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μηλωτή",
+      "translit": "mēlōtḗ",
+      "glossEn": "sheepskin",
+      "defEn": "a sheep-skin"
+    },
+    {
+      "strong": "G464",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀνταγωνίζομαι",
+      "translit": "antagōnízomai",
+      "glossEn": "strive against",
+      "defEn": "to struggle against (figuratively) (\"antagonize\")"
+    },
+    {
+      "strong": "G41",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἁγιότης",
+      "translit": "hagiótēs",
+      "glossEn": "holiness",
+      "defEn": "sanctity (i.e. properly, the state)"
+    },
+    {
+      "strong": "G2308",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "θέλησις",
+      "translit": "thélēsis",
+      "glossEn": "will",
+      "defEn": "determination (properly, the act), i.e. option"
+    },
+    {
+      "strong": "G3856",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παραδειγματίζω",
+      "translit": "paradeigmatízō",
+      "glossEn": "make a public example, put to an open shame",
+      "defEn": "to show alongside (the public), i.e. expose to infamy"
+    },
+    {
+      "strong": "G1151",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "δάμαλις",
+      "translit": "dámalis",
+      "glossEn": "heifer",
+      "defEn": "a heifer (as tame)"
+    },
+    {
+      "strong": "G2514",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καθαρότης",
+      "translit": "katharótēs",
+      "glossEn": "purification",
+      "defEn": "cleanness (ceremonially)"
+    },
+    {
+      "strong": "G2552",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κακοπάθεια",
+      "translit": "kakopátheia",
+      "glossEn": "suffering affliction",
+      "defEn": "hardship"
+    },
+    {
+      "strong": "G3537",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "νιπτήρ",
+      "translit": "niptḗr",
+      "glossEn": "bason",
+      "defEn": "a ewer"
+    },
+    {
+      "strong": "G137",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Αἰνών",
+      "translit": "Ainṓn",
+      "glossEn": "Ænon",
+      "defEn": "Ænon, a place in Palestine"
+    },
+    {
+      "strong": "G4530",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σαλείμ",
+      "translit": "Saleím",
+      "glossEn": "Salim",
+      "defEn": "Salim, a place in Palestine"
+    },
+    {
+      "strong": "G4965",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Συχάρ",
+      "translit": "Sychár",
+      "glossEn": "Sychar",
+      "defEn": "Sychar (i.e. Shekar), a place in Palestine"
+    },
+    {
+      "strong": "G764",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀσεβέω",
+      "translit": "asebéō",
+      "glossEn": "commit (live, that after should live) ungodly",
+      "defEn": "to be (by implied act) impious or wicked"
+    },
+    {
+      "strong": "G3681",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὄνειδος",
+      "translit": "óneidos",
+      "glossEn": "reproach",
+      "defEn": "notoriety, i.e. a taunt (disgrace)"
+    },
+    {
+      "strong": "G704",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀρήν",
+      "translit": "arḗn",
+      "glossEn": "lamb",
+      "defEn": "a lamb (as a male)"
+    },
+    {
+      "strong": "G1040",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "βύσσος",
+      "translit": "býssos",
+      "glossEn": "fine linen",
+      "defEn": "white linen"
+    },
+    {
+      "strong": "G4535",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σάλος",
+      "translit": "sálos",
+      "glossEn": "wave",
+      "defEn": "a vibration, i.e. (specially), billow"
+    }
+  ]
+}

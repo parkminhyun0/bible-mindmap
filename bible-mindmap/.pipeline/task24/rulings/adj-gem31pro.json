@@ -1,0 +1,23 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"에크테네이아","evidence":"src/data/koreanGlossTopBatch06.js의 에크- 계열 표기(에크트로스)와 배포 그리스어 음역 선례","note":"초두 εκ는 배포 선례의 에크 계열을 따른다."},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉬날라소","evidence":"WORKER_SPEC의 υ→위, σσ 중복 자음 비중복 규칙; src/data/koreanGlossTopBatch06.js의 synérchomai·syneídēsis 선례","note":"υ는 위 계열, σσ는 한글에서 겹쳐 적지 않는다."},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"src/data/koreanGlossTopBatch01.js 및 그리스어 자음군의 배포 음역 선례","note":"ψ는 프시로 풀지 않고 프뉴마·크리스토스 계열처럼 단일 자음군으로 적는다."},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷧소스","evidence":"WORKER_SPEC의 υ→위, σσ 중복 자음 비중복 규칙; src/data/koreanGlossTopBatch06.js의 중복 자음 선례","note":"υ는 위, σσ는 ㅅㅅ 계열로 판정한다."},
+    {"strong":"H1009","translit":"bêt ʾarbēl","translitKo":"베트 아르벨","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch16.js의 bêt→베트 선례","note":"학술 표제를 우선하고 어말 א는 별도 음절로 늘리지 않는다."},
+    {"strong":"H8112","translit":"šimrôn merʾôn","translitKo":"심론 메론","evidence":"src/data/koreanGlossTopBatch16.js의 H8110 šimrôn→심론 선례","note":"שׁ는 심, 어말 א는 한글 음절로 따로 적지 않는다."},
+    {"strong":"H2995","translit":"yabnĕʾēl","translitKo":"야브네엘","evidence":"src/data/koreanGlossTopBatch13.js·TopBatch16.js의 학술 음역 우선 고유명사 선례","note":"관용 얍느엘과 달리 학술 음역을 표제로 삼고 어말 모음은 보존한다."},
+    {"strong":"H1034","translit":"bêt lĕbāʾôt","translitKo":"베트 르바오트","evidence":"src/data/koreanGlossTopBatch18.js·TopBatch19.js의 bêt 결합형→베트 선례","note":"전치사 לְ의 약모음은 르로, ו는 와 계열로 적는다."},
+    {"strong":"H1192","translit":"baʿălat bĕʾēr","translitKo":"바알라트 베에르","evidence":"src/data/koreanGlossTopBatch16.js의 baʿal mĕʿôn→바알 메온 선례와 WORKER_SPEC의 ע 처리 규칙","note":"관용 바알랏브에르와 달리 학술 표기를 유지하고 ע는 별도 한글 자음으로 세지 않는다."},
+    {"strong":"H514","translit":"ʾeltĕqēʾ","translitKo":"엘테케","evidence":"src/data/koreanGlossTopBatch06.js의 학술 자음·모음 음역 선례","note":"어말 א는 묵음 처리한다."},
+    {"strong":"H1139","translit":"bĕnê-bĕraq","translitKo":"베네베라크","evidence":"src/data/koreanGlossTopBatch13.js의 bat-šebaʿ 결합형과 WORKER_SPEC의 약모음 표기","note":"연결 하이픈은 유지하고 בּ의 중복은 겹쳐 적지 않는다."},
+    {"strong":"H3959","translit":"lešem","translitKo":"레셈","evidence":"src/data/koreanGlossTopBatch06.js의 š 자모 및 음절 말 표기 선례","note":"음절 말 שׁ는 셈이 아니라 셈의 초성 שׁ가 아니라 표제 발음에 맞춰 셈으로 적는다."},
+    {"strong":"H5875","translit":"ʿên haqqôrēʾ","translitKo":"엔 하코레","evidence":"src/data/koreanGlossTopBatch13.js의 엔 로겔, TopBatch19.js의 엔 하로드 선례","note":"ע는 따로 적지 않고 q 발음은 코로, 다게쉬 포르테는 겹치지 않는다."},
+    {"strong":"H876","translit":"bĕʾēr","translitKo":"브에르","evidence":"src/data/koreanGlossTopBatch16.js의 학술 음역 및 בֵּית 계열 선례","note":"관용 브엘과 달리 원어 모음과 א를 학술 음역에 반영한다."},
+    {"strong":"H1036","translit":"bêt lĕʿaprâ","translitKo":"베트 레아프라","evidence":"src/data/koreanGlossTopBatch18.js·TopBatch19.js의 bêt→베트 및 레- 약모음 선례","note":"전치사 לְ는 레로, ע는 한글로 별도 표기하지 않는다."},
+    {"strong":"H5884","translit":"ʿên rimmôn","translitKo":"엔 리몬","evidence":"src/data/koreanGlossTopBatch06.js의 rimmôn→림몬 선례와 TopBatch13.js의 gat-rimmôn→가트림몬 결합형","note":"다게쉬 포르테는 겹치지 않아 리몬으로 적는다."},
+    {"strong":"G4829","translit":"symmerízomai","translitKo":"쉼메리조마이","evidence":"WORKER_SPEC의 υ→위 및 중복 자음 비중복 규칙; src/data/koreanGlossTopBatch06.js의 syneídēsis 선례","note":"υ는 위 계열로, μμ은 한글에서 중복 표기하지 않는다."},
+    {"strong":"G5175","translit":"Trōgýllion","translitKo":"트로귈리온","evidence":"WORKER_SPEC의 υ→위 규칙과 src/data/koreanGlossTopBatch15.js의 trogo 계열 선례","note":"υ는 위 계열로 적고 λλ은 중복 표기하지 않는다."}
+  ]
+}

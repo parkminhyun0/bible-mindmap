@@ -1,0 +1,707 @@
+{
+  "shard": "AS",
+  "model": "gem37flash",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G3100",
+      "lemma": "μαθητεύω",
+      "translit": "mathēteúō",
+      "translitKo": "마테튜오",
+      "note": ""
+    },
+    {
+      "strong": "G4614",
+      "lemma": "Σινᾶ",
+      "translit": "Sinâ",
+      "translitKo": "시나",
+      "note": "한국어 성경의 관용 표기는 시내(시내산)다."
+    },
+    {
+      "strong": "G1805",
+      "lemma": "ἐξαγοράζω",
+      "translit": "exagorázō",
+      "translitKo": "엑사고라조",
+      "note": ""
+    },
+    {
+      "strong": "H3231",
+      "lemma": "יָמַן",
+      "translit": "yāman",
+      "translitKo": "야만",
+      "note": ""
+    },
+    {
+      "strong": "H6454",
+      "lemma": "פָּסֵחַ",
+      "translit": "pāsēaḥ",
+      "translitKo": "파세아흐",
+      "note": "한국어 성경의 인명 관용 표기는 바세아 또는 파세아다."
+    },
+    {
+      "strong": "H289",
+      "lemma": "אֲחִימַן",
+      "translit": "ʾăḥîman",
+      "translitKo": "아히만",
+      "note": ""
+    },
+    {
+      "strong": "H1030",
+      "lemma": "בֵּית הַשִּׁמְשִׁי",
+      "translit": "bêt haššimšî",
+      "translitKo": "베트 하심시",
+      "note": "한국어 성경의 관용 표기는 벧세메스 사람(SMS인)이다."
+    },
+    {
+      "strong": "H3305",
+      "lemma": "יָפוֹ",
+      "translit": "yāpô",
+      "translitKo": "야포",
+      "note": "한국어 성경의 지명 관용 표기는 욥바다."
+    },
+    {
+      "strong": "H1044",
+      "lemma": "בֵּית עֵקֶד",
+      "translit": "bêt ʿēqed",
+      "translitKo": "베트 에케드",
+      "note": "한국어 성경의 관용 표기는 벧에켓이다."
+    },
+    {
+      "strong": "H1662",
+      "lemma": "גַּת־הַחֵפֶר",
+      "translit": "gat-haḥēper",
+      "translitKo": "가트하헤페르",
+      "note": "한국어 성경의 지명 관용 표기는 가드헤벨이다."
+    },
+    {
+      "strong": "H780",
+      "lemma": "אֲרָרַט",
+      "translit": "ʾărāraṭ",
+      "translitKo": "아라라트",
+      "note": "한국어 성경의 지명 관용 표기는 아라랏이다."
+    },
+    {
+      "strong": "H1050",
+      "lemma": "בֵּית רְחוֹב",
+      "translit": "bêt rĕḥôb",
+      "translitKo": "베트 레호브",
+      "note": "한국어 성경의 지명 관용 표기는 벧르홉이다."
+    },
+    {
+      "strong": "H3446",
+      "lemma": "יִשְׂחָק",
+      "translit": "yiśḥāq",
+      "translitKo": "이스하크",
+      "note": "한국어 성경의 관용 표기는 이삭(יִצְחָק)이다. 본 표제어는 שׂ(ś) 철자 변이형이다."
+    },
+    {
+      "strong": "H1630",
+      "lemma": "גְּרִזִים",
+      "translit": "gĕrizîm",
+      "translitKo": "게리짐",
+      "note": "한국어 성경의 지명 관용 표기는 그리심(산)이다."
+    },
+    {
+      "strong": "H8528",
+      "lemma": "תֵּל מֶלַח",
+      "translit": "tēl melaḥ",
+      "translitKo": "텔 멜라흐",
+      "note": "한국어 성경의 지명 관용 표기는 델멜라다."
+    },
+    {
+      "strong": "H8521",
+      "lemma": "תֵּל חַרְשָׁא",
+      "translit": "tēl ḥaršāʾ",
+      "translitKo": "텔 하르샤",
+      "note": "한국어 성경의 지명 관용 표기는 델하라사다."
+    },
+    {
+      "strong": "H5029",
+      "lemma": "נְבִיא",
+      "translit": "nĕbîʾ",
+      "translitKo": "네비",
+      "note": ""
+    },
+    {
+      "strong": "H1021",
+      "lemma": "בֵּית הַכֶּרֶם",
+      "translit": "bêt hakkerem",
+      "translitKo": "베트 하케렘",
+      "note": "한국어 성경의 지명 관용 표기는 벧학게렘이다."
+    },
+    {
+      "strong": "H1039",
+      "lemma": "בֵּית נִמְרָה",
+      "translit": "bêt nimrâ",
+      "translitKo": "베트 님라",
+      "note": "한국어 성경의 지명 관용 표기는 벧니므라다."
+    },
+    {
+      "strong": "H1046",
+      "lemma": "בֵּית פֶּלֶט",
+      "translit": "bêt peleṭ",
+      "translitKo": "베트 펠레트",
+      "note": "한국어 성경의 지명 관용 표기는 벧벨렛이다."
+    },
+    {
+      "strong": "H1016",
+      "lemma": "בֵּית־דָּגוֹן",
+      "translit": "bêt-dāgôn",
+      "translitKo": "베트다곤",
+      "note": "한국어 성경의 지명 관용 표기는 벧다곤이다."
+    },
+    {
+      "strong": "H7154",
+      "lemma": "קִרְיַת בַּעַל",
+      "translit": "qiryat baʿal",
+      "translitKo": "키르야트 바알",
+      "note": "한국어 성경의 지명 관용 표기는 기럇 바알이다."
+    },
+    {
+      "strong": "H5270",
+      "lemma": "נֹעָה",
+      "translit": "nōʿâ",
+      "translitKo": "노아",
+      "note": "한국어 성경의 인명 관용 표기는 노아다. 남성 인명 노아(H5146 נֹחַ Nōaḥ)와 원어가 다르다."
+    },
+    {
+      "strong": "H1012",
+      "lemma": "בֵּית בָּרָה",
+      "translit": "bêt bārâ",
+      "translitKo": "베트 바라",
+      "note": "한국어 성경의 지명 관용 표기는 벧바라다."
+    },
+    {
+      "strong": "G3547",
+      "lemma": "νομοδιδάσκαλος",
+      "translit": "nomodidáskalos",
+      "translitKo": "노모디다스칼로스",
+      "note": ""
+    },
+    {
+      "strong": "G3399",
+      "lemma": "Μίλητος",
+      "translit": "Mílētos",
+      "translitKo": "밀레토스",
+      "note": "한국어 성경의 지명 관용 표기는 밀레도다."
+    },
+    {
+      "strong": "G5019",
+      "lemma": "Ταρσός",
+      "translit": "Tarsós",
+      "translitKo": "타르소스",
+      "note": "한국어 성경의 지명 관용 표기는 다소다."
+    },
+    {
+      "strong": "G4011",
+      "lemma": "Πέργη",
+      "translit": "Pérgē",
+      "translitKo": "페르게",
+      "note": "한국어 성경의 지명 관용 표기는 버가다."
+    },
+    {
+      "strong": "G4545",
+      "lemma": "Σαμουήλ",
+      "translit": "Samouḗl",
+      "translitKo": "사무엘",
+      "note": ""
+    },
+    {
+      "strong": "G1191",
+      "lemma": "Δέρβη",
+      "translit": "Dérbē",
+      "translitKo": "데르베",
+      "note": "한국어 성경의 지명 관용 표기는 더베다."
+    },
+    {
+      "strong": "G3069",
+      "lemma": "Λύδδα",
+      "translit": "Lýdda",
+      "translitKo": "뤼다",
+      "note": "한국어 성경의 지명 관용 표기는 룻다다."
+    },
+    {
+      "strong": "G3085",
+      "lemma": "λύτρωσις",
+      "translit": "lýtrōsis",
+      "translitKo": "뤼트로시스",
+      "note": ""
+    },
+    {
+      "strong": "G1115",
+      "lemma": "Γολγοθᾶ",
+      "translit": "Golgothâ",
+      "translitKo": "골고타",
+      "note": "한국어 성경의 지명 관용 표기는 골고다다."
+    },
+    {
+      "strong": "G967",
+      "lemma": "Βηθφαγή",
+      "translit": "Bēthphagḗ",
+      "translitKo": "베트파게",
+      "note": "한국어 성경의 지명 관용 표기는 벳바게다."
+    },
+    {
+      "strong": "G1179",
+      "lemma": "Δεκάπολις",
+      "translit": "Dekápolis",
+      "translitKo": "데카폴리스",
+      "note": "한국어 성경의 지명 관용 표기는 데가볼리다."
+    },
+    {
+      "strong": "G2408",
+      "lemma": "Ἱερεμίας",
+      "translit": "Hieremías",
+      "translitKo": "히에레미아스",
+      "note": "한국어 성경의 인명 관용 표기는 예레미야다."
+    },
+    {
+      "strong": "G2194",
+      "lemma": "Ζαβουλών",
+      "translit": "Zaboulṓn",
+      "translitKo": "자불론",
+      "note": "한국어 성경의 관용 표기는 스불론(히브리어 Zĕbûlūn)이다."
+    },
+    {
+      "strong": "G4554",
+      "lemma": "Σάρδεις",
+      "translit": "Sárdeis",
+      "translitKo": "사르데이스",
+      "note": "한국어 성경의 지명 관용 표기는 사데다."
+    },
+    {
+      "strong": "H7928",
+      "lemma": "שֶׁכֶם",
+      "translit": "šekem",
+      "translitKo": "셰켐",
+      "note": "한국어 성경의 지명·인명 관용 표기는 세겜이다."
+    },
+    {
+      "strong": "H5016",
+      "lemma": "נְבוּאָה",
+      "translit": "nĕbûʾâ",
+      "translitKo": "네부아",
+      "note": ""
+    },
+    {
+      "strong": "H1886",
+      "lemma": "דֹּתָן",
+      "translit": "dōtān",
+      "translitKo": "도탄",
+      "note": "한국어 성경의 지명 관용 표기는 도단이다."
+    },
+    {
+      "strong": "H1321",
+      "lemma": "בְּשַׁר",
+      "translit": "bĕšar",
+      "translitKo": "베샤르",
+      "note": ""
+    },
+    {
+      "strong": "H5831",
+      "lemma": "עֶזְרָא",
+      "translit": "ʿezrāʾ",
+      "translitKo": "에즈라",
+      "note": "한국어 성경의 인명 관용 표기는 에스라다."
+    },
+    {
+      "strong": "H1078",
+      "lemma": "בֵּל",
+      "translit": "bēl",
+      "translitKo": "벨",
+      "note": ""
+    },
+    {
+      "strong": "H6165",
+      "lemma": "עָרַג",
+      "translit": "ʿārag",
+      "translitKo": "아라그",
+      "note": ""
+    },
+    {
+      "strong": "H7783",
+      "lemma": "שׁוּק",
+      "translit": "šûq",
+      "translitKo": "슈크",
+      "note": ""
+    },
+    {
+      "strong": "H3032",
+      "lemma": "יָדַד",
+      "translit": "yādad",
+      "translitKo": "야다드",
+      "note": ""
+    },
+    {
+      "strong": "H407",
+      "lemma": "אַכְשָׁף",
+      "translit": "ʾakšāp",
+      "translitKo": "악샤프",
+      "note": "한국어 성경의 지명 관용 표기는 악삽이다."
+    },
+    {
+      "strong": "H6111",
+      "lemma": "עַצְמוֹן",
+      "translit": "ʿaṣmôn",
+      "translitKo": "아츠몬",
+      "note": "한국어 성경의 지명 관용 표기는 아스몬이다."
+    },
+    {
+      "strong": "H7071",
+      "lemma": "קָנָה",
+      "translit": "qānâ",
+      "translitKo": "카나",
+      "note": "한국어 성경의 지명 관용 표기는 가나다."
+    },
+    {
+      "strong": "H5096",
+      "lemma": "נַהֲלָל",
+      "translit": "nahălāl",
+      "translitKo": "나할랄",
+      "note": "한국어 성경의 지명 관용 표기는 나할랄 또는 나할롤이다."
+    },
+    {
+      "strong": "H7464",
+      "lemma": "רֵעָה",
+      "translit": "rēʿâ",
+      "translitKo": "레아",
+      "note": ""
+    },
+    {
+      "strong": "H3896",
+      "lemma": "לֶחִי",
+      "translit": "leḥî",
+      "translitKo": "레히",
+      "note": "한국어 성경의 지명 관용 표기는 레히다."
+    },
+    {
+      "strong": "H4253",
+      "lemma": "מַחְלָפָה",
+      "translit": "maḥlāpâ",
+      "translitKo": "마흘라파",
+      "note": ""
+    },
+    {
+      "strong": "H2414",
+      "lemma": "חָטַף",
+      "translit": "ḥāṭap",
+      "translitKo": "하타프",
+      "note": ""
+    },
+    {
+      "strong": "H2800",
+      "lemma": "חֲרֹשֶׁת",
+      "translit": "ḥărōšet",
+      "translitKo": "하로셰트",
+      "note": "한국어 성경의 지명 관용 표기는 하로셋이다."
+    },
+    {
+      "strong": "G1545",
+      "lemma": "ἔκβασις",
+      "translit": "ékbasis",
+      "translitKo": "엑바시스",
+      "note": ""
+    },
+    {
+      "strong": "G1755",
+      "lemma": "ἐνέργημα",
+      "translit": "enérgēma",
+      "translitKo": "에네르게마",
+      "note": ""
+    },
+    {
+      "strong": "G5321",
+      "lemma": "φανέρωσις",
+      "translit": "phanérōsis",
+      "translitKo": "파네로시스",
+      "note": ""
+    },
+    {
+      "strong": "G2058",
+      "lemma": "ἑρμηνεία",
+      "translit": "hermēneía",
+      "translitKo": "헤르메네이아",
+      "note": ""
+    },
+    {
+      "strong": "G4786",
+      "lemma": "συγκεράννυμι",
+      "translit": "synkeránnymi",
+      "translitKo": "싱케란뉘미",
+      "note": ""
+    },
+    {
+      "strong": "G4841",
+      "lemma": "συμπάσχω",
+      "translit": "sympáschō",
+      "translitKo": "쉼파스코",
+      "note": ""
+    },
+    {
+      "strong": "G5595",
+      "lemma": "ψωμίζω",
+      "translit": "psōmízō",
+      "translitKo": "프소미조",
+      "note": ""
+    },
+    {
+      "strong": "G807",
+      "lemma": "ἀσχημονέω",
+      "translit": "aschēmonéō",
+      "translitKo": "아스케모네오",
+      "note": ""
+    },
+    {
+      "strong": "G3947",
+      "lemma": "παροξύνω",
+      "translit": "paroxýnō",
+      "translitKo": "파록시노",
+      "note": ""
+    },
+    {
+      "strong": "G2789",
+      "lemma": "κιθαρίζω",
+      "translit": "kitharízō",
+      "translitKo": "키타리조",
+      "note": ""
+    },
+    {
+      "strong": "G5424",
+      "lemma": "φρήν",
+      "translit": "phrḗn",
+      "translitKo": "프렌",
+      "note": ""
+    },
+    {
+      "strong": "G56",
+      "lemma": "ἀγνωσία",
+      "translit": "agnōsía",
+      "translitKo": "아그노시아",
+      "note": ""
+    },
+    {
+      "strong": "G3048",
+      "lemma": "λογία",
+      "translit": "logía",
+      "translitKo": "로기아",
+      "note": ""
+    },
+    {
+      "strong": "G5247",
+      "lemma": "ὑπεροχή",
+      "translit": "hyperochḗ",
+      "translitKo": "휘페로케",
+      "note": ""
+    },
+    {
+      "strong": "G4821",
+      "lemma": "συμβασιλεύω",
+      "translit": "symbasileúō",
+      "translitKo": "쉼바실류오",
+      "note": ""
+    },
+    {
+      "strong": "G1571",
+      "lemma": "ἐκκαθαίρω",
+      "translit": "ekkathaírō",
+      "translitKo": "에카타이로",
+      "note": ""
+    },
+    {
+      "strong": "G3060",
+      "lemma": "λοίδορος",
+      "translit": "loídoros",
+      "translitKo": "로이도로스",
+      "note": ""
+    },
+    {
+      "strong": "G4958",
+      "lemma": "συστέλλω",
+      "translit": "systéllō",
+      "translitKo": "쉬스텔로",
+      "note": ""
+    },
+    {
+      "strong": "G5248",
+      "lemma": "ὑπερπερισσεύω",
+      "translit": "hyperperisseúō",
+      "translitKo": "휘페르페리슈오",
+      "note": ""
+    },
+    {
+      "strong": "G960",
+      "lemma": "Βέροια",
+      "translit": "Béroia",
+      "translitKo": "베로이아",
+      "note": "한국어 성경의 지명 관용 표기는 베뢰아다."
+    },
+    {
+      "strong": "G3824",
+      "lemma": "παλιγγενεσία",
+      "translit": "palingenesía",
+      "translitKo": "팔링게네시아",
+      "note": ""
+    },
+    {
+      "strong": "H2016",
+      "lemma": "הֶפֶךְ",
+      "translit": "hepek",
+      "translitKo": "헤페크",
+      "note": ""
+    },
+    {
+      "strong": "H6610",
+      "lemma": "פִּתְחוֹן",
+      "translit": "pitḥôn",
+      "translitKo": "피트혼",
+      "note": ""
+    },
+    {
+      "strong": "H8004",
+      "lemma": "שָׁלֵם",
+      "translit": "šālēm",
+      "translitKo": "샬렘",
+      "note": "한국어 성경의 지명 관용 표기는 살렘이다."
+    },
+    {
+      "strong": "H8280",
+      "lemma": "שָׂרָה",
+      "translit": "śārâ",
+      "translitKo": "사라",
+      "note": "한국어 성경에서 겨루다/다스리다 동사다. 인명 사라(H8283)와 철자가 같다."
+    },
+    {
+      "strong": "H3349",
+      "lemma": "יִקָּהָה",
+      "translit": "yiqqāhâ",
+      "translitKo": "이카하",
+      "note": ""
+    },
+    {
+      "strong": "H2415",
+      "lemma": "חֹטֵר",
+      "translit": "ḥōṭēr",
+      "translitKo": "호테르",
+      "note": ""
+    },
+    {
+      "strong": "H6027",
+      "lemma": "עֹנֶג",
+      "translit": "ʿōneg",
+      "translitKo": "오네그",
+      "note": ""
+    },
+    {
+      "strong": "H4766",
+      "lemma": "מַרְבֶה",
+      "translit": "marbeh",
+      "translitKo": "마르베",
+      "note": ""
+    },
+    {
+      "strong": "H6425",
+      "lemma": "פֶּלֶס",
+      "translit": "peles",
+      "translitKo": "펠레스",
+      "note": ""
+    },
+    {
+      "strong": "H4893",
+      "lemma": "מִשְׁחָת",
+      "translit": "mišḥāt",
+      "translitKo": "미쉬하트",
+      "note": ""
+    },
+    {
+      "strong": "H7132",
+      "lemma": "קְרָבָה",
+      "translit": "qĕrābâ",
+      "translitKo": "케라바",
+      "note": ""
+    },
+    {
+      "strong": "H2784",
+      "lemma": "חַרְצֻבָּה",
+      "translit": "ḥarṣubbâ",
+      "translitKo": "하르추바",
+      "note": ""
+    },
+    {
+      "strong": "H6495",
+      "lemma": "פְּקַח־קוֹחַ",
+      "translit": "pĕqaḥ-qôaḥ",
+      "translitKo": "페카흐코아흐",
+      "note": ""
+    },
+    {
+      "strong": "H525",
+      "lemma": "אָמוֹן",
+      "translit": "ʾāmôn",
+      "translitKo": "아몬",
+      "note": "한국어 성경에서 장색/숙련공 의미의 보통명사다. 인명 아몬(H526)과 형태가 같다."
+    },
+    {
+      "strong": "H7072",
+      "lemma": "קַנּוֹא",
+      "translit": "qannôʾ",
+      "translitKo": "카노",
+      "note": ""
+    },
+    {
+      "strong": "H6383",
+      "lemma": "פִּלְאִי",
+      "translit": "pilʾî",
+      "translitKo": "필이",
+      "note": ""
+    },
+    {
+      "strong": "H8166",
+      "lemma": "שְׂעִירָה",
+      "translit": "śĕʿîrâ",
+      "translitKo": "세이라",
+      "note": "한국어 성경에서 암염소 의미의 보통명사다. 지명 세일(H8165)과 어근이 같다."
+    },
+    {
+      "strong": "H6800",
+      "lemma": "צָנַע",
+      "translit": "ṣānaʿ",
+      "translitKo": "차나",
+      "note": ""
+    },
+    {
+      "strong": "H4715",
+      "lemma": "מִצְרֵף",
+      "translit": "miṣrēp",
+      "translitKo": "미츠레프",
+      "note": ""
+    },
+    {
+      "strong": "H7664",
+      "lemma": "שֵׂבֶר",
+      "translit": "śēber",
+      "translitKo": "세베르",
+      "note": ""
+    },
+    {
+      "strong": "H7454",
+      "lemma": "רֵעַ",
+      "translit": "rēaʿ",
+      "translitKo": "레아",
+      "note": "한국어 성경에서 생각/뜻 의미의 명사(시 139:2 등)다."
+    },
+    {
+      "strong": "H8312",
+      "lemma": "שַׂרְעַף",
+      "translit": "śarʿap",
+      "translitKo": "사르아프",
+      "note": ""
+    },
+    {
+      "strong": "H4862",
+      "lemma": "מִשְׁאָלָה",
+      "translit": "mišʾālâ",
+      "translitKo": "미쉬알라",
+      "note": ""
+    }
+  ]
+}

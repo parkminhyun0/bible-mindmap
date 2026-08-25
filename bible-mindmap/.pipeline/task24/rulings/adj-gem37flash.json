@@ -1,0 +1,23 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"엑테네이아","evidence":"koreanGlossTopBatch08.js의 ἐκτείνω→엑테이노 선례에서 εκτ-를 엑트로 처리한다.","note":""},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉬날라소","evidence":"WORKER_SPEC의 υ=위 계열과 koreanGlossTopBatch14.js의 διαλλάσσω→알라소 선례, 다게쉬 포르테 비중복 규칙을 적용했다.","note":""},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"배포 헬라어 표기의 자음군을 보존하고, ψ를 프시로 풀지 않는 기존 음역 선례와 일치한다.","note":""},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷔소스","evidence":"WORKER_SPEC의 υ=위 계열과 σσ 중복 비표기 규칙을 적용했다.","note":""},
+    {"strong":"H1009","translit":"bêt ʾarbēʾēl","translitKo":"베트 아르베엘","evidence":"koreanGlossTopBatch13.js의 베트 합성 지명 선례와 학술 표기 우선 원칙을 적용했다.","note":"개역개정 관용 표기는 벧아르벨이다."},
+    {"strong":"H8112","translit":"šimrôn mĕrʾôn","translitKo":"심론 메르온","evidence":"koreanGlossTopBatch03.js의 שֹׁמְרוֹן→쇼메론 및 koreanGlossTopBatch16.js의 시므론 관용 차이 기록을 대조해 학술 표기를 택했다.","note":"관용 표기는 시므론 므론이다."},
+    {"strong":"H2995","translit":"yabnĕʾēl","translitKo":"야브느엘","evidence":"배포된 유성 쉐바 표기 선례를 따라 nĕ를 느로 적고, 어말 알레프는 한글로 따로 적지 않는다.","note":"관용 표기는 얍느엘이다."},
+    {"strong":"H1034","translit":"bêt lĕbāʾôt","translitKo":"베트 레바오트","evidence":"koreanGlossTopBatch13.js의 bêt 합성 지명 선례와 유성 쉐바 lĕ→레 표기를 적용했다.","note":"관용 표기는 벧르바옷이다."},
+    {"strong":"H1192","translit":"baʿălat bĕʾēr","translitKo":"바알라트 베에르","evidence":"배포 선례의 관용 고유명사 바알라트 계열과 H876의 bĕʾēr→베에르를 맞췄다.","note":"관용 표기는 바알랏브에르이다."},
+    {"strong":"H514","translit":"ʾeltĕqēʾ","translitKo":"엘테케","evidence":"자음 t를 살린 학술 표기와 어말 알레프 비표기 원칙을 적용했다.","note":"관용 표기는 엘드게이다."},
+    {"strong":"H1139","translit":"bĕnê-bĕraq","translitKo":"브네 베라크","evidence":"bĕnê의 배포 학술 표기와 베트 합성 지명 표기를 적용했다.","note":"관용 표기는 브네브락이다."},
+    {"strong":"H3959","translit":"lešem","translitKo":"레셈","evidence":"WORKER_SPEC의 음절 말 שׁ=쉬 규칙을 적용하되, 표제어 말미의 š가 지명 음절 끝에서 셈으로 굳은 배포 선례를 따랐다.","note":"관용 표기는 레센이다."},
+    {"strong":"H5875","translit":"ʿên haqqôrēʾ","translitKo":"엔 하코레","evidence":"배포된 엔학고레 선례와 다게쉬 포르테 비중복 규칙을 적용했다.","note":"관용 표기는 엔학고레이다."},
+    {"strong":"H876","translit":"bĕʾēr","translitKo":"브에르","evidence":"koreanGlossTopBatch05.js의 학술 표기 선례와 어말 알레프 비표기 원칙을 적용했다.","note":"관용 표기는 브엘이다."},
+    {"strong":"H1036","translit":"bêt lĕʿaprâ","translitKo":"베트 레아프라","evidence":"koreanGlossTopBatch13.js의 bêt 합성 지명 및 전치사 לְ의 lĕ→레 표기를 적용했다.","note":"관용 표기는 베들레아브라이다."},
+    {"strong":"H5884","translit":"ʿên rimmôn","translitKo":"엔 림몬","evidence":"koreanGlossTopBatch06.js의 림몬 선례와 다게쉬 포르테 비중복 규칙을 적용했다.","note":"관용 표기는 엔림몬이다."},
+    {"strong":"G4829","translit":"symmerízomai","translitKo":"쉼메리조마이","evidence":"WORKER_SPEC의 υ=위 계열, 다게쉬 포르테 비중복 규칙과 koreanGloss.js의 μάρτυς→마르튀스 선례를 적용했다.","note":""},
+    {"strong":"G5175","translit":"Trōgýllion","translitKo":"트로귈리온","evidence":"WORKER_SPEC의 υ=위 계열과 중복 자음 비중복 규칙을 적용했다.","note":"관용 표기는 드로길리온이다."}
+  ]
+}

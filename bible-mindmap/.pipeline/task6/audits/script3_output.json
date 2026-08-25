@@ -1,0 +1,10 @@
+{
+  "regressions": [],
+  "remaining": [
+    {
+      "strong": "H4519",
+      "issue": "관용 표기와 갈리는 이유 설명(유성 셰바, 신-세골 등)이 삭제되며 정보가 유실됨",
+      "severity": "medium"
+    }
+  ]
+}

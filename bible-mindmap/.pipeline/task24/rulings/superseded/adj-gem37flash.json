@@ -1,0 +1,16 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {"strong":"G1616","translit":"ekténeia","translitKo":"에크테네이아","evidence":"src/data/koreanGlossTopBatch08.js의 엑테이노 선례와 배포 음역의 κτ·ει 표기를 적용","note":""},
+    {"strong":"G9996","translit":"synallássō","translitKo":"쉬날라소","evidence":"src/data/koreanGlossTopBatch19.js의 쉬날리조 선례와 명세의 υ·σσ 규칙을 적용","note":""},
+    {"strong":"G431","translit":"anepsiós","translitKo":"아넵시오스","evidence":"src/data/koreanGloss*.js의 헬라어 ψ 음역 선례에 따라 ψ를 프시가 아닌 넵시 계열로 처리","note":""},
+    {"strong":"G1040","translit":"býssos","translitKo":"뷧소스","evidence":"src/data/koreanGlossTopBatch12.js의 υ 음역 선례와 명세의 σσ 중복자음 규칙을 적용","note":""},
+    {"strong":"H1009","translit":"bêt ʾarbēʾēl","translitKo":"베트 아르베엘","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch16.js의 בֵּית→베트, 합성 지명 선례를 적용","note":"개역개정 관용 표기는 벧아르벨이다."},
+    {"strong":"H8112","translit":"šimrôn mĕrʾôn","translitKo":"심론 메르온","evidence":"src/data/koreanGlossTopBatch16.js의 שִׁמְרוֹן→심론 선례와 명세의 음절 말 שׁ·묵음 א 처리 규칙을 적용","note":"개역개정 관용 표기는 시므론 므론이다."},
+    {"strong":"H2995","translit":"yabnĕʾēl","translitKo":"야브네엘","evidence":"src/data/koreanGloss*.js의 학술식 쉐바 표기와 어말 א 처리 선례를 적용","note":"개역개정 관용 표기는 얍느엘이다."},
+    {"strong":"H1034","translit":"bêt lĕbāʾôt","translitKo":"베트 레바오트","evidence":"src/data/koreanGlossTopBatch03.js·TopBatch13.js의 베트 합성 지명 표기 선례를 적용","note":"개역개정 관용 표기는 벧르바옷이다."},
+    {"strong":"H1192","translit":"baʿălat Bĕʾēr","translitKo":"바알라트 브에르","evidence":"src/data/koreanGloss.js의 ʿ 처리 및 src/data/koreanGlossTopBatch16.js의 학술식 쉐바 표기 선례를 적용","note":"개역개정 관용 표기는 바알랏브엘이다."},
+    {"strong":"H514","translit":"ʾEltĕqēʾ","translitKo":"엘트케","evidence":"src/data/koreanGlossTopBatch16.js의 학술식 지명 표기와 어말 א 묵음 선례를 적용","note":"개역개정 관용 표기는 엘드게이다."},
+    {"strong":"H1139","translit":"Bĕnê-Bĕraq","translitKo":"브네 베라크","evidence":"src/data/koreanGlossTopBatch16.js의 학술식 בְּ 음역 및 합성 지명 선례를 적용","note":"개역개정 관용 표기는 바네베락이다."}
+  ]
+}

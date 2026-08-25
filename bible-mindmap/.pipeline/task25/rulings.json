@@ -1,0 +1,1291 @@
+{
+  "judgeCount": 4,
+  "judges": [
+    "claudeopus5",
+    "codex",
+    "gem31pro",
+    "gem37flash"
+  ],
+  "rules": [
+    {
+      "model": "claudeopus5",
+      "rules": {}
+    },
+    {
+      "model": "codex",
+      "rules": {}
+    },
+    {
+      "model": "gem31pro",
+      "rules": {}
+    },
+    {
+      "model": "gem37flash",
+      "rules": {}
+    }
+  ],
+  "tieCount": 29,
+  "ties": [
+    {
+      "strong": "H2265",
+      "koRank": [
+        [
+          "하바쿠크",
+          2
+        ],
+        [
+          "하바쿡",
+          1
+        ],
+        [
+          "하박국",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ḥăbaqqûq",
+          2
+        ],
+        [
+          "ḥăḇaqqûq",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "G4551",
+      "koRank": [
+        [
+          "사페이레",
+          2
+        ],
+        [
+          "삽비라",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Sappheírē",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G3434",
+      "koRank": [
+        [
+          "몰로크",
+          2
+        ],
+        [
+          "몰록",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Molóch",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G4546",
+      "koRank": [
+        [
+          "삼프손",
+          2
+        ],
+        [
+          "삼손",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Sampsṓn",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G2422",
+      "koRank": [
+        [
+          "이에프타에",
+          2
+        ],
+        [
+          "입다",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Iephtháe",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H2157",
+      "koRank": [
+        [
+          "잠좀",
+          2
+        ],
+        [
+          "잠줌",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "zamzōm",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H968",
+      "koRank": [
+        [
+          "비즈타",
+          2
+        ],
+        [
+          "빗사",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "biztāʾ",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H903",
+      "koRank": [
+        [
+          "비그타",
+          2
+        ],
+        [
+          "빅타",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "bigtāʾ",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H8190",
+      "koRank": [
+        [
+          "샤아쉬가즈",
+          2
+        ],
+        [
+          "샤아슈가즈",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "šaʿašgaz",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H630",
+      "koRank": [
+        [
+          "아스파타",
+          2
+        ],
+        [
+          "아스바타",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "ʾaspātāʾ",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H6534",
+      "koRank": [
+        [
+          "파르마쉬타",
+          2
+        ],
+        [
+          "파르마슈타",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "parmaštāʾ",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H2055",
+      "koRank": [
+        [
+          "와이자타",
+          2
+        ],
+        [
+          "와이제타",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "wayzātāʾ",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "H8236",
+      "koRank": [
+        [
+          "시프라",
+          2
+        ],
+        [
+          "십라",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "šiprâ",
+          2
+        ],
+        [
+          "šip̄rāh",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H6326",
+      "koRank": [
+        [
+          "푸아",
+          2
+        ],
+        [
+          "부아",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "pûʿâ",
+          2
+        ],
+        [
+          "pûʿāh",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H3112",
+      "koRank": [
+        [
+          "요야킨",
+          2
+        ],
+        [
+          "여호야긴",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "yôyākîn",
+          2
+        ],
+        [
+          "yôyāqîn",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H1380",
+      "koRank": [
+        [
+          "게발",
+          2
+        ],
+        [
+          "그발",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "gəḇal",
+          2
+        ],
+        [
+          "gĕbal",
+          1
+        ],
+        [
+          "gəbal",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H1689",
+      "koRank": [
+        [
+          "디블라",
+          4
+        ]
+      ],
+      "latRank": [
+        [
+          "diblâ",
+          2
+        ],
+        [
+          "Diblāh",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H2657",
+      "koRank": [
+        [
+          "헵치바",
+          2
+        ],
+        [
+          "헤프치 바흐",
+          1
+        ],
+        [
+          "헵시바",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ḥepṣî bāh",
+          2
+        ],
+        [
+          "Ḥep̄ṣî-ḇāh",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H1996",
+      "koRank": [
+        [
+          "하몬 고그",
+          3
+        ],
+        [
+          "하몬곡",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "hămôn gôg",
+          2
+        ],
+        [
+          "Hămôn Gôḡ",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H7294",
+      "koRank": [
+        [
+          "라합",
+          3
+        ],
+        [
+          "라하브",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "rahab",
+          2
+        ],
+        [
+          "Rahab",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H2606",
+      "koRank": [
+        [
+          "하난엘",
+          3
+        ],
+        [
+          "하나넬",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ḥănanʾēl",
+          2
+        ],
+        [
+          "Ḥănanʾēl",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H392",
+      "koRank": [
+        [
+          "악십",
+          2
+        ],
+        [
+          "아크지브",
+          1
+        ],
+        [
+          "악집",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ʾakzîb",
+          2
+        ],
+        [
+          "ʾAḵzîḇ",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H3317",
+      "koRank": [
+        [
+          "입다엘",
+          2
+        ],
+        [
+          "이프타흐엘",
+          1
+        ],
+        [
+          "입타흐엘",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "yiptaḥ-ʾēl",
+          2
+        ],
+        [
+          "Yip̄taḥ-ʾĒl",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "H5963",
+      "koRank": [
+        [
+          "알몬 디블라타이마",
+          2
+        ],
+        [
+          "알몬디블라다임",
+          1
+        ],
+        [
+          "알몬 디블라다임",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "ʿalmōn diblātāymâ",
+          2
+        ],
+        [
+          "ʿAlmōn Diḇlāṯāymāh",
+          2
+        ]
+      ]
+    },
+    {
+      "strong": "G3019",
+      "koRank": [
+        [
+          "류이테스",
+          2
+        ],
+        [
+          "레위인",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Leuḯtēs",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G4528",
+      "koRank": [
+        [
+          "살라티엘",
+          2
+        ],
+        [
+          "스알디엘",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "Salathiḗl",
+          4
+        ]
+      ]
+    },
+    {
+      "strong": "G3128",
+      "koRank": [
+        [
+          "마나세스",
+          1
+        ],
+        [
+          "마낫세",
+          1
+        ],
+        [
+          "마나쎄스",
+          1
+        ],
+        [
+          "므낫세",
+          1
+        ]
+      ],
+      "latRank": [
+        [
+          "Manassēs",
+          3
+        ],
+        [
+          "Manassês",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H4105",
+      "koRank": [
+        [
+          "메헤타브엘",
+          2
+        ],
+        [
+          "므헤이타브엘",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "mĕhêṭabʾēl",
+          3
+        ],
+        [
+          "Mᵉhêṭaḇʾēl",
+          1
+        ]
+      ]
+    },
+    {
+      "strong": "H3434",
+      "koRank": [
+        [
+          "야쇼브암",
+          2
+        ],
+        [
+          "야소브암",
+          2
+        ]
+      ],
+      "latRank": [
+        [
+          "yāšobʿām",
+          3
+        ],
+        [
+          "Yāšoḇʿām",
+          1
+        ]
+      ]
+    }
+  ],
+  "rulings": [
+    {
+      "strong": "G883",
+      "lemma": "Ἀχαϊκός",
+      "translit": "Achaïkós",
+      "translitKo": "아카이코스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 아가이고이나 배포 원칙대로 학술 표기를 표제로 둔다. gem37flash·claudeopus5의 '아하이코스'는 χ를 ㅎ으로 옮겨 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "H6318",
+      "lemma": "פּוֹטִיפַר",
+      "translit": "pôṭîpar",
+      "translitKo": "포티파르",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '보디발'이다. 아르팍샤드(H775, 관용 아르박삿)·이프타흐(H3316, 관용 입다) 선례대로 학술 표기를 표제로 둔다. 어말을 '발'로 적은 안은 관용형을 따른 것이라 배제했다."
+    },
+    {
+      "strong": "H2265",
+      "lemma": "חֲבַקּוּק",
+      "translit": "ḥăbaqqûq",
+      "translitKo": "하바쿠크",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '하박국'이다. '하바쿡'은 어말 ק를 ㄱ받침으로 적은 것이라 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "H3818",
+      "lemma": "לֹא עַמִּי",
+      "translit": "lōʾ ʿammî",
+      "translitKo": "로 아미",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 마케프(־)로 이어진 표제만 붙여 적으므로(베트엘·바트셰바) 공백 표제인 이 항목은 '로암미'로 붙이지 않는다."
+    },
+    {
+      "strong": "G4551",
+      "lemma": "Σαπφείρη",
+      "translit": "Sappheírē",
+      "translitKo": "사페이레",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '삽비라'이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3434",
+      "lemma": "Μολόχ",
+      "translit": "Molóch",
+      "translitKo": "몰로크",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '몰록'이다. '몰로흐'는 χ를 ㅎ으로 옮겨 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "G4546",
+      "lemma": "Σαμψών",
+      "translit": "Sampsṓn",
+      "translitKo": "삼프손",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '삼손'이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2422",
+      "lemma": "Ἰεφθάε",
+      "translit": "Iephtháe",
+      "translitKo": "이에프타에",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '입다'이다. H3316 יִפְתָּח→이프타흐가 그 관용형을 명시적으로 배제한 배포 선례다."
+    },
+    {
+      "strong": "G993",
+      "lemma": "Βοανεργές",
+      "translit": "Boanergés",
+      "translitKo": "보아네르게스",
+      "votesKo": 4,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 '보아너게'로 어말 -ς를 적지 않으나, 배포 선례는 어말 -ς를 '스'로 적는다(헤로데스·이오안네스)."
+    },
+    {
+      "strong": "G4477",
+      "lemma": "Ῥαχάβ",
+      "translit": "Rhacháb",
+      "translitKo": "라카브",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 같은 인물의 다른 헬라어 철자 Ῥαάβ(G4460)는 '라압'으로 배포됐으나, 어말 폐쇄음을 열린 음절로 적는 선례(이아코브·다비드·엘리사베트·이사아크)가 압도적이라 '라카브'로 적는다. 개역 관용 표기는 '라합'이다."
+    },
+    {
+      "strong": "G4503",
+      "lemma": "Ῥούθ",
+      "translit": "Rhoúth",
+      "translitKo": "루트",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 '룻'이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3774",
+      "lemma": "Οὐρίας",
+      "translit": "Ourías",
+      "translitKo": "우리아스",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 '우리야'이나 어말 -ς를 '스'로 적는 배포 선례를 따른다."
+    },
+    {
+      "strong": "G2403",
+      "lemma": "Ἰεζαβήλ",
+      "translit": "Iezabḗl",
+      "translitKo": "이에자벨",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '이세벨'이나 학술 표기를 표제로 둔다. '이예자벨'은 Ἰε-를 '이예'로 적어 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "G5617",
+      "lemma": "Ὡσηέ",
+      "translit": "Hōsēé",
+      "translitKo": "호세에",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기 '호세아'와 달리 어말 έ는 '에'다."
+    },
+    {
+      "strong": "H1112",
+      "lemma": "בֵּלְשַׁאצַּר",
+      "translit": "bēlšaʾṣṣar",
+      "translitKo": "벨샤차르",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 '벨사살'이다. 같은 다니엘서 인명인 네부카드네차르(H5019/H5020)가 관용형 '느부갓네살' 대신 학술 표기로 배포된 선례를 따른다."
+    },
+    {
+      "strong": "H2157",
+      "lemma": "זַמְזֹם",
+      "translit": "zamzōm",
+      "translitKo": "잠좀",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 관용 표기와 차이"
+    },
+    {
+      "strong": "H968",
+      "lemma": "בִּזְתָא",
+      "translit": "biztāʾ",
+      "translitKo": "비즈타",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 여기 שְׁ… 자리의 셰바는 정지 셰바이므로 translit에 모음을 넣지 않는다(biztāʾ). 개역 관용 표기는 '빅다'이다."
+    },
+    {
+      "strong": "H903",
+      "lemma": "בִּגְתָא",
+      "translit": "bigtāʾ",
+      "translitKo": "비그타",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '빅단'이다."
+    },
+    {
+      "strong": "H8190",
+      "lemma": "שַׁעַשְׁגַּז",
+      "translit": "šaʿašgaz",
+      "translitKo": "샤아쉬가즈",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 관용 표기와 차이, ע은 따로 표기하지 않음"
+    },
+    {
+      "strong": "H630",
+      "lemma": "אַסְפָּתָא",
+      "translit": "ʾaspātāʾ",
+      "translitKo": "아스파타",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어두 א는 translit에 ʾ로 남긴다 — 아브라함(ʾabrāhām)·에프라임(ʾeprayim)·악지브(ʾakzîb) 계열 선례. 개역 관용 표기는 '아스바다'이다."
+    },
+    {
+      "strong": "H6534",
+      "lemma": "פַּרְמַשְׁתָּא",
+      "translit": "parmaštāʾ",
+      "translitKo": "파르마쉬타",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '바르마스다'이다."
+    },
+    {
+      "strong": "H2055",
+      "lemma": "וַיְזָתָא",
+      "translit": "wayzātāʾ",
+      "translitKo": "와이자타",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). '와이제타'는 두 번째 음절의 카메츠를 '에'로 옮긴 것이라 배제했다. 개역 관용 표기는 '와이사다'이다."
+    },
+    {
+      "strong": "H8236",
+      "lemma": "שִׁפְרָה",
+      "translit": "šiprâ",
+      "translitKo": "시프라",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '십브라'이다."
+    },
+    {
+      "strong": "H6326",
+      "lemma": "פּוּעָה",
+      "translit": "pûʿâ",
+      "translitKo": "푸아",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '부아'이나 다게쉬 있는 פּ를 ㅂ로 적은 관용형이라 배제했다."
+    },
+    {
+      "strong": "H3112",
+      "lemma": "יוֹיָכִין",
+      "translit": "yôyākîn",
+      "translitKo": "요야킨",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '여호야긴'이며 이는 긴 형태 יְהוֹיָכִין을 옮긴 것이다. 이 표제는 짧은 형태 יוֹיָכִין이므로 요야킨으로 적는다."
+    },
+    {
+      "strong": "H1380",
+      "lemma": "גְּבַל",
+      "translit": "gəḇal",
+      "translitKo": "게발",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '그발'로 셰바를 '으'로 적으나 배포 선례는 예외 없이 '에' 계열이다. 베가드케파트 구분 기호는 쓰지 않으므로 gĕbal로 적는다."
+    },
+    {
+      "strong": "H1689",
+      "lemma": "דִּבְלָה",
+      "translit": "diblâ",
+      "translitKo": "디블라",
+      "votesKo": 4,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(4/4 일치). 개역 관용 표기는 '딥랏/딥라'이나 ב 폐음절을 ㅂ받침으로 적은 것이라 배제했다."
+    },
+    {
+      "strong": "H2657",
+      "lemma": "חֶפְצִי בָּהּ",
+      "translit": "ḥepṣî bāh",
+      "translitKo": "헵치바",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H192",
+      "lemma": "אֱוִיל מְרֹדַךְ",
+      "translit": "ʾĔwîl Mĕrōḏaḵ",
+      "translitKo": "에윌 므로닥",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H1996",
+      "lemma": "הֲמוֹן גּוֹג",
+      "translit": "hămôn gôg",
+      "translitKo": "하몬 고그",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 '하몬곡'이다."
+    },
+    {
+      "strong": "H7294",
+      "lemma": "רַהַב",
+      "translit": "rahab",
+      "translitKo": "라합",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 배포 성경 고유명사 선례의 관용 표기 ‘라합’을 따른다."
+    },
+    {
+      "strong": "H2606",
+      "lemma": "חֲנַנְאֵל",
+      "translit": "ḥănanʾēl",
+      "translitKo": "하난엘",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). '하나넬'은 폐음절 נ를 다음 음절 첫소리로 넘긴 관용형이라 배제했다."
+    },
+    {
+      "strong": "H4956",
+      "lemma": "מִשְׂרְפוֹת מַיִם",
+      "translit": "Miśrĕp̄ôṯ Mayim",
+      "translitKo": "미스르폿 마임",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H392",
+      "lemma": "אַכְזִיב",
+      "translit": "ʾakzîb",
+      "translitKo": "악십",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 지명 선례의 관용 표기 ‘악십’을 따른다."
+    },
+    {
+      "strong": "H3317",
+      "lemma": "יִפְתַּח־אֵל",
+      "translit": "yiptaḥ-ʾēl",
+      "translitKo": "입다엘",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 지명 선례의 관용 표기 ‘입다엘’을 따른다."
+    },
+    {
+      "strong": "H5963",
+      "lemma": "עַלְמֹן דִּבְלָתָיְמָה",
+      "translit": "ʿalmōn diblātāymâ",
+      "translitKo": "알몬 디블라타이마",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 어말 ־ָה(방향의 he)는 배포 선례대로 translit을 â로 적고 한글로는 '마'까지만 적는다. 개역 관용 표기는 '알몬디블라다임'이다."
+    },
+    {
+      "strong": "G2459",
+      "lemma": "Ἰοῦστος",
+      "translit": "Ioûstos",
+      "translitKo": "유스도",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 인명 선례의 관용 표기 ‘유스도’를 따른다."
+    },
+    {
+      "strong": "G1675",
+      "lemma": "Ἑλληνιστής",
+      "translit": "Hellēnistḗs",
+      "translitKo": "헬라",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 용례의 관용 표기 ‘헬라파/헬라인’을 따른다."
+    },
+    {
+      "strong": "G3019",
+      "lemma": "Λευΐτης",
+      "translit": "Leuḯtēs",
+      "translitKo": "류이테스",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '레위인'이다. G3017의 note도 '관용 표기는 레위'라고 적고 학술 표기를 표제로 두었다."
+    },
+    {
+      "strong": "G1802",
+      "lemma": "Ἐνώχ",
+      "translit": "Enṓch",
+      "translitKo": "에녹",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 인명 선례의 관용 표기 ‘에녹’을 따른다."
+    },
+    {
+      "strong": "G2195",
+      "lemma": "Ζακχαῖος",
+      "translit": "Zakchaîos",
+      "translitKo": "삭개오",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 인명 선례의 관용 표기 ‘삭개오’를 따른다."
+    },
+    {
+      "strong": "G4528",
+      "lemma": "Σαλαθιήλ",
+      "translit": "Salathiḗl",
+      "translitKo": "살라티엘",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 개역 관용 표기는 '스알디엘'로 히브리어 שְׁאַלְתִּיאֵל 경유형이나, 이 표제는 헬라어형이므로 학술 표기를 표제로 둔다. '살라디엘'은 θ를 ㄷ으로 옮겨 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "G1662",
+      "lemma": "Ἐλιακείμ",
+      "translit": "Eliakeím",
+      "translitKo": "엘리아김",
+      "votesKo": 2,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 인명 선례의 관용 표기 ‘엘리아김’을 따른다."
+    },
+    {
+      "strong": "G3476",
+      "lemma": "Ναασσών",
+      "translit": "Naassṓn",
+      "translitKo": "나아손",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 개역 관용 표기는 '나손'이다. '나아쏜'의 ㅆ은 배포 선례에 없다."
+    },
+    {
+      "strong": "G1082",
+      "lemma": "Γεννησαρέτ",
+      "translit": "Gennēsarét",
+      "translitKo": "게네사렛",
+      "votesKo": 3,
+      "votesLat": 4,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 배포 성경 지명 선례의 관용 표기 ‘게네사렛’을 따른다."
+    },
+    {
+      "strong": "G2500",
+      "lemma": "Ἰωσῆς",
+      "translit": "Iōsēs",
+      "translitKo": "요세",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). 배포 성경 인명 선례의 관용 표기 ‘요세’를 따른다."
+    },
+    {
+      "strong": "G3128",
+      "lemma": "Μανασσῆς",
+      "translit": "Manassēs",
+      "translitKo": "마나세스",
+      "votesKo": 1,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(1/4 일치). 개역 관용 표기는 '므낫세'이다. '마낫세'는 σσ를 ㅅ받침으로 살린 것이라 배포 선례와 어긋난다."
+    },
+    {
+      "strong": "H4017",
+      "lemma": "מִבְשָׂם",
+      "translit": "mibśām",
+      "translitKo": "밉삼",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "H1609",
+      "lemma": "גַּעְתָּם",
+      "translit": "gaʿtām",
+      "translitKo": "가으탐",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H4105",
+      "lemma": "מְהֵיטַבְאֵל",
+      "translit": "mĕhêṭabʾēl",
+      "translitKo": "메헤타브엘",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). '므헤이타브엘/메헤이타브엘'은 ê를 '에이'로 적은 것이라 배포 다수 선례와 어긋난다(예외는 베이트 셰메쉬 1건뿐)."
+    },
+    {
+      "strong": "H3434",
+      "lemma": "יָשׇׁבְעָם",
+      "translit": "yāšobʿām",
+      "translitKo": "야쇼브암",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": true,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치). '야소브암'은 음절 첫 שׁ를 ㅅ으로 적은 것이라 배제했다."
+    },
+    {
+      "strong": "H6909",
+      "lemma": "קַבְצְאֵל",
+      "translit": "qabṣĕʾēl",
+      "translitKo": "갑스엘",
+      "votesKo": 2,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H6142",
+      "lemma": "עִקֵּשׁ",
+      "translit": "ʿiqqēš",
+      "translitKo": "익케쉬",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치)."
+    },
+    {
+      "strong": "H5294",
+      "lemma": "נְעַרְיָה",
+      "translit": "nĕʿaryāh",
+      "translitKo": "느아르야",
+      "votesKo": 2,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(2/4 일치)."
+    },
+    {
+      "strong": "H1705",
+      "lemma": "דֲּבְרַת",
+      "translit": "dăḇĕrat",
+      "translitKo": "다브라트",
+      "votesKo": 3,
+      "votesLat": 2,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). 표제의 첫 모음은 하테프 파타흐이므로 '다'로 적는다('드'가 아니다). ב 아래 셰바는 정지 셰바이므로 translit에 모음을 넣지 않는다. '다브랏'은 어말 ת를 ㅅ받침으로 적은 것이라 배제했다."
+    },
+    {
+      "strong": "H3037",
+      "lemma": "יַדּוּעַ",
+      "translit": "yaddûaʿ",
+      "translitKo": "야두아",
+      "votesKo": 3,
+      "votesLat": 3,
+      "judges": 4,
+      "tie": false,
+      "note": "표기가 갈려 4개 모델이 독립 판정했다(3/4 일치). '얏두아'는 다게쉬 포르테를 ㅅ받침으로 겹쳐 적은 것이라 확정 규칙 2에 어긋난다."
+    }
+  ]
+}

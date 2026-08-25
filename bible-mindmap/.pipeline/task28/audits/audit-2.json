@@ -1,0 +1,137 @@
+[
+  {
+    "strong": "H5793",
+    "field": "translit",
+    "current": "ʿûtai",
+    "suggested": "ʿûtay",
+    "evidence": "배포 히브리 표제의 어말 파타흐-요드는 H4782 mordĕkay, H8297 śāray, H383 ʾîtay처럼 -ay로 표기된다.",
+    "severity": "high",
+    "reason": "히브리 어말 -ay를 -ai로 적었고, 같은 항목 note의 '-ay' 진술과도 모순된다."
+  },
+  {
+    "strong": "H573",
+    "field": "translit",
+    "current": "ʾămittai",
+    "suggested": "ʾămittay",
+    "evidence": "배포 히브리 어말 표기 H4782 mordĕkay, H2416 ḥay, H1767 day; 히브리 -ai 표기는 확인되지 않는다.",
+    "severity": "medium",
+    "reason": "히브리 어말 파타흐-요드를 -ai로 적어 배포 선례 및 같은 파일의 H7630 Šōbay, H5479 Sôṭay와 갈린다."
+  },
+  {
+    "strong": "H6690",
+    "field": "translit",
+    "current": "ṣôfaḥ",
+    "suggested": "ṣôpaḥ",
+    "evidence": "WORKER_SPEC 확정 규칙 1은 베가드케파트 구분 기호를 쓰지 않고 p를 사용한다. 같은 배포 표기의 H8174 Šaʿap, H8026 Šelep, H507 ʾelep도 p다.",
+    "severity": "high",
+    "reason": "베가드케파트 연음 표기 f를 사용해 확정 규칙을 위반했다."
+  },
+  {
+    "strong": "H1125",
+    "field": "translitKo",
+    "current": "벤아비나답",
+    "suggested": "벤아비나다브",
+    "evidence": "배포에서 어말 ב는 H2895 ṭôb→토브, H6153 ʿereb→에레브, H2091 zāhāb→자하브처럼 예외 없이 '브'다.",
+    "severity": "medium",
+    "reason": "어말 ב를 ㅂ받침으로 굳혀 배포의 어말 ב 표기와 어긋난다."
+  },
+  {
+    "strong": "H5517",
+    "field": "translit",
+    "current": "Sîʿā",
+    "suggested": "Sîʿāʾ",
+    "evidence": "배포 어말 א 표제는 H8092 šimʿāʾ, H5516 sîsĕrāʾ, H5665 nĕgôʾ처럼 어말 ʾ를 보존한다.",
+    "severity": "medium",
+    "reason": "어말 알렙을 translit에서 누락했다."
+  },
+  {
+    "strong": "H5517",
+    "field": "note",
+    "current": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ʿ 를 따로 적지 않는 배포 선례 심아(šimʿāʾ)를 따랐다.",
+    "suggested": "translit을 Sîʿāʾ로 고쳐 인용한 선례와 맞춘다.",
+    "evidence": "note가 인용한 H8092의 배포 translit은 šimʿāʾ로 어말 ʾ를 보존한다.",
+    "severity": "medium",
+    "reason": "note가 인용한 선례와 같은 항목의 translit 필드가 서로 맞지 않는다."
+  },
+  {
+    "strong": "H5664",
+    "field": "translitKo",
+    "current": "아베드 느고",
+    "suggested": "아베드 네고",
+    "evidence": "배포 H5665 ʿăbēd nĕgôʾ의 translitKo는 '아베드 네고'이며, 유성 쉐바 nĕ-는 배포에서 네- 계열로 표기된다.",
+    "severity": "high",
+    "reason": "같은 이름의 배포 표기와 유성 쉐바 처리에서 갈린다."
+  },
+  {
+    "strong": "H3430",
+    "field": "translitKo",
+    "current": "이스보 브노브",
+    "suggested": "이쉬보 베노브",
+    "evidence": "WORKER_SPEC 확정 규칙 3은 음절 말 שׁ를 '쉬'로 적고, 유성 쉐바 ĕ는 배포에서 '에' 계열이다.",
+    "severity": "medium",
+    "reason": "어두 שׁ를 '스'로, 둘째 낱말의 유성 쉐바를 '브'로 적어 두 배포 규칙을 어겼다."
+  },
+  {
+    "strong": "H3085",
+    "field": "translitKo",
+    "current": "여호아다",
+    "suggested": "예호아다",
+    "evidence": "배포의 yĕ- 표제는 H3063 예후다, H3091 예호슈아, H3048 Yĕdaʿyâ→예다야처럼 예-로 통일되며 여- 표제는 없다.",
+    "severity": "medium",
+    "reason": "유성 쉐바 yĕ-를 여-로 적어 배포 선례와 갈린다."
+  },
+  {
+    "strong": "H1227",
+    "field": "translitKo",
+    "current": "바크북",
+    "suggested": "바크부크",
+    "evidence": "배포에서 어말 ב는 예외 없이 '브'다. 같은 자모 규칙의 어말 q도 H2507 Ḥēleq→헬레크, H5987 ʿĀmôq→아모크처럼 크로 적는다.",
+    "severity": "medium",
+    "reason": "둘째 ב를 받침으로 적어 배포의 열린 음절 표기와 어긋난다."
+  },
+  {
+    "strong": "H8100",
+    "field": "translitKo",
+    "current": "심앗",
+    "suggested": "심아트",
+    "evidence": "배포 어말 ת는 H1394 Gibʿat→기브아트, H2578 ḥămat→하마트처럼 '트'로 표기된다.",
+    "severity": "medium",
+    "reason": "어말 ת를 받침으로 굳혀 배포 표기와 갈린다."
+  },
+  {
+    "strong": "H1150",
+    "field": "translit",
+    "current": "binĕʿāʾ",
+    "suggested": "binʿāʾ",
+    "evidence": "lemma בִּנְעָא의 נְ는 닫힌 음절 뒤 무성 쉐바이며, 현재 translitKo '빈아'도 무성 쉐바 처리를 전제한다.",
+    "severity": "medium",
+    "reason": "무성 쉐바를 유성 쉐바 ĕ로 적어 translit과 translitKo가 서로 맞지 않는다."
+  },
+  {
+    "strong": "H5733",
+    "field": "translit",
+    "current": "ʿadnā",
+    "suggested": "ʿadnāʾ",
+    "evidence": "배포 어말 א 표제는 H8092 šimʿāʾ, H5516 sîsĕrāʾ, H5665 nĕgôʾ처럼 어말 ʾ를 보존한다.",
+    "severity": "low",
+    "reason": "어말 알렙이 translit에서 누락됐다."
+  },
+  {
+    "strong": "H3838",
+    "field": "translit",
+    "current": "Lĕbānā",
+    "suggested": "Lĕbānāʾ",
+    "evidence": "배포 어말 א 표제는 H8092 šimʿāʾ, H5516 sîsĕrāʾ, H5665 nĕgôʾ처럼 어말 ʾ를 보존한다.",
+    "severity": "low",
+    "reason": "어말 알렙이 translit에서 누락됐다."
+  },
+  {
+    "strong": "H4240",
+    "field": "translit",
+    "current": "Mĕḥîdā",
+    "suggested": "Mĕḥîdāʾ",
+    "evidence": "배포 어말 א 표제는 H8092 šimʿāʾ, H5516 sîsĕrāʾ, H5665 nĕgôʾ처럼 어말 ʾ를 보존한다.",
+    "severity": "low",
+    "reason": "어말 알렙이 translit에서 누락됐다."
+  }
+]

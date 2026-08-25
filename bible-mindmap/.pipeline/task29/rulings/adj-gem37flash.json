@@ -1,0 +1,21 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {"strong":"H245","translit":"ʾăzanyāh","translitKo":"아자냐","evidence":"H5418 네탄야·H1436 게달야·H7971 셰반야의 -yāh/-yâ 배포 선례","note":"어말 יָה는 야로 적고, א는 묵음으로 반영하지 않았다."},
+    {"strong":"H1148","translit":"bĕnînû","translitKo":"베니누","evidence":"H3050 יְהוּדָה 예후다·H3467 שְׁמַעְיָה 셰마야 및 H1285 bĕrît 베리트","note":"유성 셰바를 에 계열로 적는 배포 선례를 따랐다."},
+    {"strong":"H5041","translit":"nĕballāṭ","translitKo":"네발라트","evidence":"H3727 kappōret 카포레트·H4039 mĕgillâ 메길라의 다게쉬 포르테 비중복 선례","note":"다게쉬 포르테를 한글에서 겹쳐 적지 않고, ṭ는 트로 옮겼다."},
+    {"strong":"H4811","translit":"mĕrāyāh","translitKo":"메라야","evidence":"H5418 nĕtanyâ 네탄야·H1436 gĕdalyâ 게달야","note":"유성 셰바를 에로 적고 어말 יָה를 야로 적었다."},
+    {"strong":"H797","translit":"ʾašdōdît","translitKo":"아쉬도딧","evidence":"H784 ʾēš 에쉬·H5175 nāḥāš 나하시의 음절 말 שׁ=쉬 선례","note":"아스돗에서 파생된 형용사형이므로 음절 말 שׁ를 쉬로 적었다."},
+    {"strong":"H1152","translit":"bĕsōdyāh","translitKo":"베소드야","evidence":"H1285 bĕrît 베리트·H5418 nĕtanyâ 네탄야","note":"유성 셰바와 דְיָה의 드야 연속을 반영했다."},
+    {"strong":"H5149","translit":"nĕḥûm","translitKo":"네훔","evidence":"H4496 mĕnûḥâ 메누하·H1285 bĕrît 베리트","note":"유성 셰바를 에로 적는 배포 선례를 따랐다."},
+    {"strong":"H5300","translit":"nĕpûšĕsîm","translitKo":"네푸셰심","evidence":"H5418 nĕtanyâ 네탄야 및 H784 ʾēš 에쉬의 셰바·שׁ 표기 선례","note":"장모음 뒤 셰바를 에로, 음절 첫 שׁ를 셰로 적었다."},
+    {"strong":"H3662","translit":"kĕnānî","translitKo":"케나니","evidence":"H2451 ḥokmâ 호크마·H1285 bĕrît 베리트의 셰바 표기 선례","note":"개역 관용 표기 그나니와 달리 학술 음역을 따랐다."},
+    {"strong":"H1427","translit":"gaddîʾēl","translitKo":"가디엘","evidence":"H3727 kappōret 카포레트의 다게쉬 포르테 비중복 선례","note":"דּ의 중복을 한글에서 겹쳐 적지 않고, א는 음가를 따로 적지 않았다."},
+    {"strong":"H1426","translit":"gaddî","translitKo":"가디","evidence":"H3727 kappōret 카포레트의 다게쉬 포르테 비중복 선례","note":"다게쉬 포르테를 한글에서 겹쳐 적지 않았다."},
+    {"strong":"H2058","translit":"wopsî","translitKo":"옵시","evidence":"H5771 ʿāwōn 아원·H6040 tāweḵ 타웨크·H4687 miṣwâ 미츠와의 ו 자음 w 선례","note":"어두 ו는 w로 반영하되, 이 형태의 첫 음절은 배포 음절화 선례에 따라 옵시로 적었다."},
+    {"strong":"H3020","translit":"yoglî","translitKo":"요글리","evidence":"חׇכְמָה ḥokmâ 호크마 등 카마츠 카탄을 o로 읽는 배포 선례","note":"첫 모음의 카마츠 카탄을 o로 읽었다."},
+    {"strong":"H6535","translit":"parnaḵ","translitKo":"파르나크","evidence":"H1870 dereḵ 데레크의 어말 ךְ=크 선례; H3727 kappōret의 p 표기","note":"다게쉬가 있는 פ는 p, 어말 ךְ는 크로 적었다."},
+    {"strong":"H360","translit":"ʾĕyālût","translitKo":"에얄루트","evidence":"H1285 bĕrît 베리트·H4496 mĕnûḥâ 메누하의 유성 셰바 및 H7716 śeh 세","note":"א는 묵음으로 두고, י는 y, ו는 모음 û, ת는 t로 반영했다."},
+    {"strong":"H2317","translit":"ḥadrāḵ","translitKo":"하드라크","evidence":"H1870 dereḵ 데레크·H6040 tāweḵ 타웨크의 어말 ךְ=크 선례","note":"어말 ךְ를 크로 적었다."}
+  ]
+}

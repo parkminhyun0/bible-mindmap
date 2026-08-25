@@ -1,0 +1,707 @@
+{
+  "shard": "AS",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G3100",
+      "lemma": "μαθητεύω",
+      "translit": "mathēteuō",
+      "translitKo": "마테튜오",
+      "note": ""
+    },
+    {
+      "strong": "G4614",
+      "lemma": "Σινᾶ",
+      "translit": "Sina",
+      "translitKo": "시나",
+      "note": "한국어 성경 관용 표기는 '시내'. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G1805",
+      "lemma": "ἐξαγοράζω",
+      "translit": "exagorazō",
+      "translitKo": "엑사고라조",
+      "note": ""
+    },
+    {
+      "strong": "H3231",
+      "lemma": "יָמַן",
+      "translit": "yāman",
+      "translitKo": "야만",
+      "note": ""
+    },
+    {
+      "strong": "H6454",
+      "lemma": "פָּסֵחַ",
+      "translit": "pāsēaḥ",
+      "translitKo": "파세아흐",
+      "note": "어말 ח 앞 furtive patach를 -아흐로 적는다."
+    },
+    {
+      "strong": "H289",
+      "lemma": "אֲחִימַן",
+      "translit": "ʾăḥîman",
+      "translitKo": "아히만",
+      "note": ""
+    },
+    {
+      "strong": "H1030",
+      "lemma": "בֵּית הַשִּׁמְשִׁי",
+      "translit": "bêt haššimšî",
+      "translitKo": "베트 하심시",
+      "note": "복합 지명은 띄어 적는다. 뒤 שִׁ는 음절 첫소리라 '시'."
+    },
+    {
+      "strong": "H3305",
+      "lemma": "יָפוֹ",
+      "translit": "yāpô",
+      "translitKo": "야포",
+      "note": "한국어 성경 관용 표기는 '욥바'(그리스어 Ἰόππη 경유). 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H1044",
+      "lemma": "בֵּית עֵקֶד",
+      "translit": "bêt ʿēqed",
+      "translitKo": "베트 에케드",
+      "note": "ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H1662",
+      "lemma": "גַּת־הַחֵפֶר",
+      "translit": "gat-haḥēper",
+      "translitKo": "가트 하헤페르",
+      "note": "마케프로 이어진 복합 지명은 띄어 적는다. 관용 표기는 '가드헤벨'."
+    },
+    {
+      "strong": "H780",
+      "lemma": "אֲרָרַט",
+      "translit": "ʾărāraṭ",
+      "translitKo": "아라라트",
+      "note": ""
+    },
+    {
+      "strong": "H1050",
+      "lemma": "בֵּית רְחוֹב",
+      "translit": "bêt rəḥôb",
+      "translitKo": "베트 레호브",
+      "note": ""
+    },
+    {
+      "strong": "H3446",
+      "lemma": "יִשְׂחָק",
+      "translit": "yiśḥāq",
+      "translitKo": "이스하크",
+      "note": "H3327 יִצְחָק의 이형. 관용 표기는 '이삭'. שׂ(ś)는 '스'로 적는다."
+    },
+    {
+      "strong": "H1630",
+      "lemma": "גְּרִזִים",
+      "translit": "gərizîm",
+      "translitKo": "게리짐",
+      "note": ""
+    },
+    {
+      "strong": "H8528",
+      "lemma": "תֵּל מֶלַח",
+      "translit": "tēl melaḥ",
+      "translitKo": "텔 멜라흐",
+      "note": ""
+    },
+    {
+      "strong": "H8521",
+      "lemma": "תֵּל חַרְשָׁא",
+      "translit": "tēl ḥaršāʾ",
+      "translitKo": "텔 하르샤",
+      "note": "어말 א는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H5029",
+      "lemma": "נְבִיא",
+      "translit": "nəbîʾ",
+      "translitKo": "네비",
+      "note": "아람어형. 어말 א는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H1021",
+      "lemma": "בֵּית הַכֶּרֶם",
+      "translit": "bêt hakkerem",
+      "translitKo": "베트 하케렘",
+      "note": ""
+    },
+    {
+      "strong": "H1039",
+      "lemma": "בֵּית נִמְרָה",
+      "translit": "bêt nimrâ",
+      "translitKo": "베트 님라",
+      "note": ""
+    },
+    {
+      "strong": "H1046",
+      "lemma": "בֵּית פֶּלֶט",
+      "translit": "bêt peleṭ",
+      "translitKo": "베트 펠레트",
+      "note": ""
+    },
+    {
+      "strong": "H1016",
+      "lemma": "בֵּית־דָּגוֹן",
+      "translit": "bêt-dāgôn",
+      "translitKo": "베트 다곤",
+      "note": "관용 표기는 '벧다곤'."
+    },
+    {
+      "strong": "H7154",
+      "lemma": "קִרְיַת בַּעַל",
+      "translit": "qiryat baʿal",
+      "translitKo": "키르야트 바알",
+      "note": "관용 표기는 '기럇바알'. ע는 한글로 따로 적지 않아 '바알'."
+    },
+    {
+      "strong": "H5270",
+      "lemma": "נֹעָה",
+      "translit": "nōʿâ",
+      "translitKo": "노아",
+      "note": "ע를 적지 않아 H5146 נֹחַ(노아흐)와 한글이 겹칠 수 있다. 관용 표기도 '노아'."
+    },
+    {
+      "strong": "H1012",
+      "lemma": "בֵּית בָּרָה",
+      "translit": "bêt bārâ",
+      "translitKo": "베트 바라",
+      "note": ""
+    },
+    {
+      "strong": "G3547",
+      "lemma": "νομοδιδάσκαλος",
+      "translit": "nomodidaskalos",
+      "translitKo": "노모디다스칼로스",
+      "note": ""
+    },
+    {
+      "strong": "G3399",
+      "lemma": "Μίλητος",
+      "translit": "Milētos",
+      "translitKo": "밀레토스",
+      "note": "관용 표기는 '밀레도'."
+    },
+    {
+      "strong": "G5019",
+      "lemma": "Ταρσός",
+      "translit": "Tarsos",
+      "translitKo": "타르소스",
+      "note": "관용 표기는 '다소'. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4011",
+      "lemma": "Πέργη",
+      "translit": "Pergē",
+      "translitKo": "페르게",
+      "note": "관용 표기는 '버가'."
+    },
+    {
+      "strong": "G4545",
+      "lemma": "Σαμουήλ",
+      "translit": "Samouēl",
+      "translitKo": "사무엘",
+      "note": ""
+    },
+    {
+      "strong": "G1191",
+      "lemma": "Δέρβη",
+      "translit": "Derbē",
+      "translitKo": "데르베",
+      "note": "관용 표기는 '더베'."
+    },
+    {
+      "strong": "G3069",
+      "lemma": "Λύδδα",
+      "translit": "Lydda",
+      "translitKo": "뤼다",
+      "note": "υ는 '위'로, 중복 자음 δδ는 겹쳐 적지 않는다. 관용 표기는 '룻다'."
+    },
+    {
+      "strong": "G3085",
+      "lemma": "λύτρωσις",
+      "translit": "lytrōsis",
+      "translitKo": "뤼트로시스",
+      "note": ""
+    },
+    {
+      "strong": "G1115",
+      "lemma": "Γολγοθᾶ",
+      "translit": "Golgotha",
+      "translitKo": "골고타",
+      "note": "관용 표기는 '골고다'."
+    },
+    {
+      "strong": "G967",
+      "lemma": "Βηθφαγή",
+      "translit": "Bēthphagē",
+      "translitKo": "베트파게",
+      "note": "관용 표기는 '벳바게'. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G1179",
+      "lemma": "Δεκάπολις",
+      "translit": "Dekapolis",
+      "translitKo": "데카폴리스",
+      "note": "관용 표기는 '데가볼리'."
+    },
+    {
+      "strong": "G2408",
+      "lemma": "Ἱερεμίας",
+      "translit": "Hieremias",
+      "translitKo": "히에레미아스",
+      "note": "어두 거친 숨표를 h로 적는다. 관용 표기는 히브리어형을 따른 '예레미야'."
+    },
+    {
+      "strong": "G2194",
+      "lemma": "Ζαβουλών",
+      "translit": "Zaboulōn",
+      "translitKo": "자불론",
+      "note": "관용 표기는 '스불론'(히브리어 זְבוּלֻן). 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4554",
+      "lemma": "Σάρδεις",
+      "translit": "Sardeis",
+      "translitKo": "사르데이스",
+      "note": "관용 표기는 '사데'."
+    },
+    {
+      "strong": "H7928",
+      "lemma": "שֶׁכֶם",
+      "translit": "šekem",
+      "translitKo": "셰켐",
+      "note": "관용 표기는 '세겜'. 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H5016",
+      "lemma": "נְבוּאָה",
+      "translit": "nəbûʾâ",
+      "translitKo": "네부아",
+      "note": ""
+    },
+    {
+      "strong": "H1886",
+      "lemma": "דֹּתָן",
+      "translit": "dōtān",
+      "translitKo": "도탄",
+      "note": ""
+    },
+    {
+      "strong": "H1321",
+      "lemma": "בְּשַׁר",
+      "translit": "bəšar",
+      "translitKo": "베샤르",
+      "note": "아람어형. 히브리어 בָּשָׂר(바사르)와 자음이 다르다."
+    },
+    {
+      "strong": "H5831",
+      "lemma": "עֶזְרָא",
+      "translit": "ʿezrāʾ",
+      "translitKo": "에즈라",
+      "note": "관용 표기는 '에스라'."
+    },
+    {
+      "strong": "H1078",
+      "lemma": "בֵּל",
+      "translit": "bēl",
+      "translitKo": "벨",
+      "note": ""
+    },
+    {
+      "strong": "H6165",
+      "lemma": "עָרַג",
+      "translit": "ʿārag",
+      "translitKo": "아라그",
+      "note": ""
+    },
+    {
+      "strong": "H7783",
+      "lemma": "שׁוּק",
+      "translit": "šûq",
+      "translitKo": "슈크",
+      "note": ""
+    },
+    {
+      "strong": "H3032",
+      "lemma": "יָדַד",
+      "translit": "yādad",
+      "translitKo": "야다드",
+      "note": ""
+    },
+    {
+      "strong": "H407",
+      "lemma": "אַכְשָׁף",
+      "translit": "ʾakšāp",
+      "translitKo": "아크샤프",
+      "note": "관용 표기는 '악삽'."
+    },
+    {
+      "strong": "H6111",
+      "lemma": "עַצְמוֹן",
+      "translit": "ʿaṣmôn",
+      "translitKo": "아츠몬",
+      "note": ""
+    },
+    {
+      "strong": "H7071",
+      "lemma": "קָנָה",
+      "translit": "qānâ",
+      "translitKo": "카나",
+      "note": ""
+    },
+    {
+      "strong": "H5096",
+      "lemma": "נַהֲלָל",
+      "translit": "nahălāl",
+      "translitKo": "나할랄",
+      "note": ""
+    },
+    {
+      "strong": "H7464",
+      "lemma": "רֵעָה",
+      "translit": "rēʿâ",
+      "translitKo": "레아",
+      "note": "ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H3896",
+      "lemma": "לֶחִי",
+      "translit": "leḥî",
+      "translitKo": "레히",
+      "note": ""
+    },
+    {
+      "strong": "H4253",
+      "lemma": "מַחְלָפָה",
+      "translit": "maḥlāpâ",
+      "translitKo": "마흘라파",
+      "note": "음절 말 ח를 받침 없이 '흐'로 풀어 적는다."
+    },
+    {
+      "strong": "H2414",
+      "lemma": "חָטַף",
+      "translit": "ḥāṭap",
+      "translitKo": "하타프",
+      "note": ""
+    },
+    {
+      "strong": "H2800",
+      "lemma": "חֲרֹשֶׁת",
+      "translit": "ḥărōšet",
+      "translitKo": "하로셰트",
+      "note": ""
+    },
+    {
+      "strong": "G1545",
+      "lemma": "ἔκβασις",
+      "translit": "ekbasis",
+      "translitKo": "에크바시스",
+      "note": ""
+    },
+    {
+      "strong": "G1755",
+      "lemma": "ἐνέργημα",
+      "translit": "energēma",
+      "translitKo": "에네르게마",
+      "note": ""
+    },
+    {
+      "strong": "G5321",
+      "lemma": "φανέρωσις",
+      "translit": "phanerōsis",
+      "translitKo": "파네로시스",
+      "note": ""
+    },
+    {
+      "strong": "G2058",
+      "lemma": "ἑρμηνεία",
+      "translit": "hermēneia",
+      "translitKo": "헤르메네이아",
+      "note": ""
+    },
+    {
+      "strong": "G4786",
+      "lemma": "συγκεράννυμι",
+      "translit": "synkerannymi",
+      "translitKo": "슁케란뉘미",
+      "note": "γ가 κ 앞에서 비음이라 받침 ㅇ으로 적는다. 중복 자음 νν은 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G4841",
+      "lemma": "συμπάσχω",
+      "translit": "sympaschō",
+      "translitKo": "쉼파스코",
+      "note": ""
+    },
+    {
+      "strong": "G5595",
+      "lemma": "ψωμίζω",
+      "translit": "psōmizō",
+      "translitKo": "프소미조",
+      "note": ""
+    },
+    {
+      "strong": "G807",
+      "lemma": "ἀσχημονέω",
+      "translit": "aschēmoneō",
+      "translitKo": "아스케모네오",
+      "note": ""
+    },
+    {
+      "strong": "G3947",
+      "lemma": "παροξύνω",
+      "translit": "paroxynō",
+      "translitKo": "파록쉬노",
+      "note": ""
+    },
+    {
+      "strong": "G2789",
+      "lemma": "κιθαρίζω",
+      "translit": "kitharizō",
+      "translitKo": "키타리조",
+      "note": ""
+    },
+    {
+      "strong": "G5424",
+      "lemma": "φρήν",
+      "translit": "phrēn",
+      "translitKo": "프렌",
+      "note": ""
+    },
+    {
+      "strong": "G56",
+      "lemma": "ἀγνωσία",
+      "translit": "agnōsia",
+      "translitKo": "아그노시아",
+      "note": ""
+    },
+    {
+      "strong": "G3048",
+      "lemma": "λογία",
+      "translit": "logia",
+      "translitKo": "로기아",
+      "note": ""
+    },
+    {
+      "strong": "G5247",
+      "lemma": "ὑπεροχή",
+      "translit": "hyperochē",
+      "translitKo": "휘페로케",
+      "note": "어두 ὑ는 거친 숨표라 h를 붙이고 한글은 '휘'."
+    },
+    {
+      "strong": "G4821",
+      "lemma": "συμβασιλεύω",
+      "translit": "symbasileuō",
+      "translitKo": "쉼바실류오",
+      "note": "ευ는 유 계열 한 음절 — 배포 선례 βασιλεύς→바실류스."
+    },
+    {
+      "strong": "G1571",
+      "lemma": "ἐκκαθαίρω",
+      "translit": "ekkathairō",
+      "translitKo": "에카타이로",
+      "note": "중복 자음 κκ는 겹쳐 적지 않는다."
+    },
+    {
+      "strong": "G3060",
+      "lemma": "λοίδορος",
+      "translit": "loidoros",
+      "translitKo": "로이도로스",
+      "note": ""
+    },
+    {
+      "strong": "G4958",
+      "lemma": "συστέλλω",
+      "translit": "systellō",
+      "translitKo": "쉬스텔로",
+      "note": ""
+    },
+    {
+      "strong": "G5248",
+      "lemma": "ὑπερπερισσεύω",
+      "translit": "hyperperisseuō",
+      "translitKo": "휘페르페리슈오",
+      "note": "σσ는 겹쳐 적지 않는다(선례 θάλασσα→탈라사). σσευ는 ευ 규칙을 따라 '슈'."
+    },
+    {
+      "strong": "G960",
+      "lemma": "Βέροια",
+      "translit": "Beroia",
+      "translitKo": "베로이아",
+      "note": "관용 표기는 '베뢰아'."
+    },
+    {
+      "strong": "G3824",
+      "lemma": "παλιγγενεσία",
+      "translit": "palingenesia",
+      "translitKo": "팔링게네시아",
+      "note": "γγ는 앞 γ가 비음이라 받침 ㅇ으로 적는다."
+    },
+    {
+      "strong": "H2016",
+      "lemma": "הֶפֶךְ",
+      "translit": "hepek",
+      "translitKo": "헤페크",
+      "note": ""
+    },
+    {
+      "strong": "H6610",
+      "lemma": "פִּתְחוֹן",
+      "translit": "pitḥôn",
+      "translitKo": "피트혼",
+      "note": ""
+    },
+    {
+      "strong": "H8004",
+      "lemma": "שָׁלֵם",
+      "translit": "šālēm",
+      "translitKo": "샬렘",
+      "note": "관용 표기는 '살렘'. שׁ를 ㅅ이 아닌 샤 계열로 적는다."
+    },
+    {
+      "strong": "H8280",
+      "lemma": "שָׂרָה",
+      "translit": "śārâ",
+      "translitKo": "사라",
+      "note": "שׂ(ś)라서 '사라'. 인명 שָׂרָה(사라)와 한글이 같다."
+    },
+    {
+      "strong": "H3349",
+      "lemma": "יִקָּהָה",
+      "translit": "yiqqāhâ",
+      "translitKo": "이카하",
+      "note": ""
+    },
+    {
+      "strong": "H2415",
+      "lemma": "חֹטֵר",
+      "translit": "ḥōṭēr",
+      "translitKo": "호테르",
+      "note": ""
+    },
+    {
+      "strong": "H6027",
+      "lemma": "עֹנֶג",
+      "translit": "ʿōneg",
+      "translitKo": "오네그",
+      "note": ""
+    },
+    {
+      "strong": "H4766",
+      "lemma": "מַרְבֶה",
+      "translit": "marbeh",
+      "translitKo": "마르베",
+      "note": "어말 ה는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H6425",
+      "lemma": "פֶּלֶס",
+      "translit": "peles",
+      "translitKo": "펠레스",
+      "note": ""
+    },
+    {
+      "strong": "H4893",
+      "lemma": "מִשְׁחָת",
+      "translit": "mišḥāt",
+      "translitKo": "미쉬하트",
+      "note": ""
+    },
+    {
+      "strong": "H7132",
+      "lemma": "קְרָבָה",
+      "translit": "qərābâ",
+      "translitKo": "케라바",
+      "note": ""
+    },
+    {
+      "strong": "H2784",
+      "lemma": "חַרְצֻבָּה",
+      "translit": "ḥarṣubbâ",
+      "translitKo": "하르추바",
+      "note": ""
+    },
+    {
+      "strong": "H6495",
+      "lemma": "פְּקַח־קוֹחַ",
+      "translit": "pəqaḥ-qôaḥ",
+      "translitKo": "페카흐 코아흐",
+      "note": "마케프로 이어진 겹낱말. 어말 ח 앞 furtive patach를 '-아흐'로 적는다."
+    },
+    {
+      "strong": "H525",
+      "lemma": "אָמוֹן",
+      "translit": "ʾāmôn",
+      "translitKo": "아몬",
+      "note": ""
+    },
+    {
+      "strong": "H7072",
+      "lemma": "קַנּוֹא",
+      "translit": "qannôʾ",
+      "translitKo": "카노",
+      "note": "중복 자음 נּ은 겹쳐 적지 않고, 어말 א는 묵음이라 적지 않는다."
+    },
+    {
+      "strong": "H6383",
+      "lemma": "פִּלְאִי",
+      "translit": "pilʾî",
+      "translitKo": "필리",
+      "note": "א는 한글로 따로 적지 않아 앞 ל이 이어져 '필리'가 된다."
+    },
+    {
+      "strong": "H8166",
+      "lemma": "שְׂעִירָה",
+      "translit": "śəʿîrâ",
+      "translitKo": "세이라",
+      "note": "שׂ(ś)는 ㅅ 계열, ע는 따로 적지 않는다."
+    },
+    {
+      "strong": "H6800",
+      "lemma": "צָנַע",
+      "translit": "ṣānaʿ",
+      "translitKo": "차나",
+      "note": "어말 ע는 한글로 따로 적지 않는다."
+    },
+    {
+      "strong": "H4715",
+      "lemma": "מִצְרֵף",
+      "translit": "miṣrēp",
+      "translitKo": "미츠레프",
+      "note": ""
+    },
+    {
+      "strong": "H7664",
+      "lemma": "שֵׂבֶר",
+      "translit": "śēber",
+      "translitKo": "세베르",
+      "note": "שׂ(ś)라서 '세베르'. שֶׁבֶר(셰베르, 파멸)와 구별된다."
+    },
+    {
+      "strong": "H7454",
+      "lemma": "רֵעַ",
+      "translit": "rēaʿ",
+      "translitKo": "레아",
+      "note": "어말 ע 앞 furtive patach. ע를 적지 않아 H7464 רֵעָה와 한글이 겹친다."
+    },
+    {
+      "strong": "H8312",
+      "lemma": "שַׂרְעַף",
+      "translit": "śarʿap",
+      "translitKo": "사르아프",
+      "note": "שׂ(ś)는 ㅅ 계열, ע는 따로 적지 않는다."
+    },
+    {
+      "strong": "H4862",
+      "lemma": "מִשְׁאָלָה",
+      "translit": "mišʾālâ",
+      "translitKo": "미쉬알라",
+      "note": "음절 말 שׁ는 '쉬'."
+    }
+  ]
+}

@@ -1,0 +1,3758 @@
+{
+  "batchId": "top-frequency-batch-28",
+  "models": [
+    "codex",
+    "gem31pro",
+    "gem37flash",
+    "claudeopus5"
+  ],
+  "majorityThreshold": 3,
+  "totals": {
+    "settled": 282,
+    "disputed": 18
+  },
+  "shards": [
+    {
+      "shard": "BW",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 86,
+      "majority": 11,
+      "split": 3
+    },
+    {
+      "shard": "BX",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 1,
+      "majority": 86,
+      "split": 13
+    },
+    {
+      "shard": "BY",
+      "items": 100,
+      "proposers": 4,
+      "unanimous": 76,
+      "majority": 22,
+      "split": 2
+    }
+  ],
+  "settled": [
+    {
+      "shard": "BW",
+      "strong": "G3059",
+      "lemma": "λοιδορία",
+      "translit": "loidoría",
+      "translitKo": "로이도리아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1908",
+      "lemma": "ἐπηρεάζω",
+      "translit": "epēreázō",
+      "translitKo": "에페레아조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1013",
+      "lemma": "βούλημα",
+      "translit": "boúlēma",
+      "translitKo": "불레마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2970",
+      "lemma": "κῶμος",
+      "translit": "kōmos",
+      "translitKo": "코모스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4936",
+      "lemma": "συντρέχω",
+      "translit": "syntréchō",
+      "translitKo": "쉰트레코",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G810",
+      "lemma": "ἀσωτία",
+      "translit": "asōtía",
+      "translitKo": "아소티아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4451",
+      "lemma": "πύρωσις",
+      "translit": "pýrōsis",
+      "translitKo": "퓌로시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3449",
+      "lemma": "μόχθος",
+      "translit": "móchthos",
+      "translitKo": "모크토스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. χθ는 φθ를 「프ㅌ」로 푸는 선례(프테이로·프토라)와 같은 방식으로 「크ㅌ」로 편다. 「목토스」처럼 받침으로 붙이지 않는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1912",
+      "lemma": "ἐπιβαρέω",
+      "translit": "epibaréō",
+      "translitKo": "에피바레오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2720",
+      "lemma": "κατευθύνω",
+      "translit": "kateuthýnō",
+      "translitKo": "카테우티노",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G42",
+      "lemma": "ἁγιωσύνη",
+      "translit": "hagiōsýnē",
+      "translitKo": "하기오쉬네",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3806",
+      "lemma": "πάθος",
+      "translit": "páthos",
+      "translitKo": "파토스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5389",
+      "lemma": "φιλοτιμέομαι",
+      "translit": "philotiméomai",
+      "translitKo": "필로티메오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G529",
+      "lemma": "ἀπάντησις",
+      "translit": "apántēsis",
+      "translitKo": "아판테시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G803",
+      "lemma": "ἀσφάλεια",
+      "translit": "aspháleia",
+      "translitKo": "아스팔레이아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3888",
+      "lemma": "παραμυθέομαι",
+      "translit": "paramythéomai",
+      "translitKo": "파라뮈테오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G795",
+      "lemma": "ἀστοχέω",
+      "translit": "astochéō",
+      "translitKo": "아스토케오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4587",
+      "lemma": "σεμνότης",
+      "translit": "semnótēs",
+      "translitKo": "셈노테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2783",
+      "lemma": "κῆρυξ",
+      "translit": "kēryx",
+      "translitKo": "케뤽스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4997",
+      "lemma": "σωφροσύνη",
+      "translit": "sōphrosýnē",
+      "translitKo": "소프로쉬네",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G538",
+      "lemma": "ἀπατάω",
+      "translit": "apatáō",
+      "translitKo": "아파타오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3713",
+      "lemma": "ὀρέγομαι",
+      "translit": "orégomai",
+      "translitKo": "오레고마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1959",
+      "lemma": "ἐπιμελέομαι",
+      "translit": "epimeléomai",
+      "translitKo": "에피멜레오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5187",
+      "lemma": "τυφόω",
+      "translit": "typhóō",
+      "translitKo": "튀포오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4046",
+      "lemma": "περιποιέομαι",
+      "translit": "peripoiéomai",
+      "translitKo": "페리포이에오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G320",
+      "lemma": "ἀνάγνωσις",
+      "translit": "anágnōsis",
+      "translitKo": "아나그노시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 모음 뒤 γν은 받침(「아낙노시스」)이 아니라 「그」로 편다. 유성 폐쇄음은 받침으로 붙이지 않는 한국어 표기 관행을 따른다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3191",
+      "lemma": "μελετάω",
+      "translit": "meletáō",
+      "translitKo": "멜레타오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4297",
+      "lemma": "προκοπή",
+      "translit": "prokopḗ",
+      "translitKo": "프로코페",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4306",
+      "lemma": "προνοέω",
+      "translit": "pronoéō",
+      "translitKo": "프로노에오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1884",
+      "lemma": "ἐπαρκέω",
+      "translit": "eparkéō",
+      "translitKo": "에파르케오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4022",
+      "lemma": "περιέρχομαι",
+      "translit": "periérchomai",
+      "translitKo": "페리에르코마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2724",
+      "lemma": "κατηγορία",
+      "translit": "katēgoría",
+      "translitKo": "카테고리아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 외래어로 굳은 「카테고리」와 갈린다. 학술 표기를 표제로 두어 카테고리아로 적는다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G482",
+      "lemma": "ἀντιλαμβάνομαι",
+      "translit": "antilambánomai",
+      "translitKo": "안틸람바노마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2225",
+      "lemma": "ζωογονέω",
+      "translit": "zōogonéō",
+      "translitKo": "조오고네오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1413",
+      "lemma": "δυνάστης",
+      "translit": "dynástēs",
+      "translitKo": "뒤나스테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3866",
+      "lemma": "παραθήκη",
+      "translit": "parathḗkē",
+      "translitKo": "파라테케",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G728",
+      "lemma": "ἀῤῥαβών",
+      "translit": "arrhabṓn",
+      "translitKo": "아르라본",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ῤῥ는 παῤῥησία→파르레시아 선례를 따라 「르ㄹ」로 편다. 관용 표기 「아라본」과 갈리지만 학술 표기를 표제로 둔다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2506",
+      "lemma": "καθαίρεσις",
+      "translit": "kathaíresis",
+      "translitKo": "카타이레시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3876",
+      "lemma": "παρακοή",
+      "translit": "parakoḗ",
+      "translitKo": "파라코에",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2655",
+      "lemma": "καταναρκάω",
+      "translit": "katanarkáō",
+      "translitKo": "카타나르카오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5420",
+      "lemma": "φράσσω",
+      "translit": "phrássō",
+      "translitKo": "프라소",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2824",
+      "lemma": "κλίμα",
+      "translit": "klíma",
+      "translitKo": "클리마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5592",
+      "lemma": "ψύχος",
+      "translit": "psýchos",
+      "translitKo": "프쉬코스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1132",
+      "lemma": "γυμνότης",
+      "translit": "gymnótēs",
+      "translitKo": "귐노테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3857",
+      "lemma": "παράδεισος",
+      "translit": "parádeisos",
+      "translitKo": "파라데이소스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 개역개정은 「낙원」으로 옮겨 음역이 없고, 일상 외래어는 「파라다이스」다. 둘 다 아닌 학술 표기를 표제로 둔다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5229",
+      "lemma": "ὑπεραίρομαι",
+      "translit": "hyperaíromai",
+      "translitKo": "휘페라이로마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5196",
+      "lemma": "ὕβρις",
+      "translit": "hýbris",
+      "translitKo": "휘브리스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2274",
+      "lemma": "ἡττάω",
+      "translit": "hēttáō",
+      "translitKo": "헤타오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1414",
+      "lemma": "δυνατέω",
+      "translit": "dynatéō",
+      "translitKo": "뒤나테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2175",
+      "lemma": "εὐωδία",
+      "translit": "euōdía",
+      "translitKo": "유오디아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ευ는 유 계열로 표기",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1449",
+      "lemma": "ἐγγράφω",
+      "translit": "engráphō",
+      "translitKo": "엥그라포",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3188",
+      "lemma": "μέλαν",
+      "translit": "mélan",
+      "translitKo": "멜란",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4109",
+      "lemma": "πλάξ",
+      "translit": "pláx",
+      "translitKo": "플락스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4729",
+      "lemma": "στενοχωρέω",
+      "translit": "stenochōréō",
+      "translitKo": "스테노코레오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4064",
+      "lemma": "περιφέρω",
+      "translit": "periphérō",
+      "translitKo": "페리페로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1736",
+      "lemma": "ἐνδημέω",
+      "translit": "endēméō",
+      "translitKo": "엔데메오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1553",
+      "lemma": "ἐκδημέω",
+      "translit": "ekdēméō",
+      "translitKo": "엑데메오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4115",
+      "lemma": "πλατύνω",
+      "translit": "platýnō",
+      "translitKo": "플라튀노",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4880",
+      "lemma": "συναποθνήσκω",
+      "translit": "synapothnḗskō",
+      "translitKo": "쉬나포트네스코",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4800",
+      "lemma": "συζάω",
+      "translit": "syzáō",
+      "translitKo": "쉬자오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4432",
+      "lemma": "πτωχεία",
+      "translit": "ptōcheía",
+      "translitKo": "프토케이아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1433",
+      "lemma": "δωρέομαι",
+      "translit": "dōréomai",
+      "translitKo": "도레오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G668",
+      "lemma": "ἀποφεύγω",
+      "translit": "apopheúgō",
+      "translitKo": "아포퓨고",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4638",
+      "lemma": "σκήνωμα",
+      "translit": "skḗnōma",
+      "translitKo": "스케노마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1811",
+      "lemma": "ἐξακολουθέω",
+      "translit": "exakolouthéō",
+      "translitKo": "엑사콜루테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3168",
+      "lemma": "μεγαλειότης",
+      "translit": "megaleiótēs",
+      "translitKo": "메갈레이오테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1863",
+      "lemma": "ἐπάγω",
+      "translit": "epágō",
+      "translitKo": "에파고",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1185",
+      "lemma": "δελεάζω",
+      "translit": "deleázō",
+      "translitKo": "델레아조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5350",
+      "lemma": "φθέγγομαι",
+      "translit": "phthéngomai",
+      "translitKo": "프텡고마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2978",
+      "lemma": "λαῖλαψ",
+      "translit": "laîlaps",
+      "translitKo": "라일랍스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3153",
+      "lemma": "ματαιότης",
+      "translit": "mataiótēs",
+      "translitKo": "마타이오테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4879",
+      "lemma": "συναπάγω",
+      "translit": "synapágō",
+      "translitKo": "쉬나파고",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2661",
+      "lemma": "καταξιόω",
+      "translit": "kataxióō",
+      "translitKo": "카탁시오오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1349",
+      "lemma": "δίκη",
+      "translit": "díkē",
+      "translitKo": "디케",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2360",
+      "lemma": "θροέω",
+      "translit": "throéō",
+      "translitKo": "트로에오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G138",
+      "lemma": "αἱρέομαι",
+      "translit": "hairéomai",
+      "translitKo": "하이레오마이",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4737",
+      "lemma": "στεφανόω",
+      "translit": "stephanóō",
+      "translitKo": "스테파노오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2553",
+      "lemma": "κακοπαθέω",
+      "translit": "kakopathéō",
+      "translitKo": "카코파테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G396",
+      "lemma": "ἀνατρέπω",
+      "translit": "anatrépō",
+      "translitKo": "아나트레포",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4273",
+      "lemma": "προδότης",
+      "translit": "prodótēs",
+      "translitKo": "프로도테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2099",
+      "lemma": "εὐαγγελιστής",
+      "translit": "euangelistḗs",
+      "translitKo": "유앙겔리스테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. ευ는 유 계열로 표기",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1408",
+      "lemma": "δρόμος",
+      "translit": "drómos",
+      "translitKo": "드로모스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3845",
+      "lemma": "παραβαίνω",
+      "translit": "parabaínō",
+      "translitKo": "파라바이노",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3422",
+      "lemma": "μνημόσυνον",
+      "translit": "mnēmósynon",
+      "translitKo": "므네모쉬논",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1038",
+      "lemma": "βυρσεύς",
+      "translit": "byrseús",
+      "translitKo": "뷔르세우스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1289",
+      "lemma": "διασπείρω",
+      "translit": "diaspeírō",
+      "translitKo": "디아스페이로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G327",
+      "lemma": "ἀναζητέω",
+      "translit": "anazētéō",
+      "translitKo": "아나제테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5441",
+      "lemma": "φύλαξ",
+      "translit": "phýlax",
+      "translitKo": "퓔락스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G2224",
+      "lemma": "ζώννυμι",
+      "translit": "zṓnnymi",
+      "translitKo": "존뉘미",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. -ννυμι 계열은 배포 선례(στρώννυμι→스트론뉘미·κρεμάννυμι→크레만뉘미·σβέννυμι→스벤뉘미)가 모두 받침 ㄴ을 살렸다. 그 일관성을 따른다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5265",
+      "lemma": "ὑποδέω",
+      "translit": "hypodéō",
+      "translitKo": "휘포데오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G4894",
+      "lemma": "συνείδω",
+      "translit": "syneídō",
+      "translitKo": "쉬네이도",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1634",
+      "lemma": "ἐκψύχω",
+      "translit": "ekpsýchō",
+      "translitKo": "엑프쉬코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BW",
+      "strong": "G3008",
+      "lemma": "λειτουργέω",
+      "translit": "leitourgéō",
+      "translitKo": "레이투르게오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G672",
+      "lemma": "ἀποχωρέω",
+      "translit": "apochōréō",
+      "translitKo": "아포코레오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G1023",
+      "lemma": "βραχίων",
+      "translit": "brachíōn",
+      "translitKo": "브라키온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5282",
+      "lemma": "ὑπονοέω",
+      "translit": "hyponoéō",
+      "translitKo": "휘포노에오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BW",
+      "strong": "G5256",
+      "lemma": "ὑπηρετέω",
+      "translit": "hypēretéō",
+      "translitKo": "휘페레테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BX",
+      "strong": "G242",
+      "lemma": "ἅλλομαι",
+      "translit": "hállomai",
+      "translitKo": "할로마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ으로 적었다. λλ은 모음 사이 λ 선례(쉬날라소)대로 ㄹ받침+ㄹ로 적었고 겹자음으로 늘려 적지 않았다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1817",
+      "lemma": "ἐξανίστημι",
+      "translit": "exanístēmi",
+      "translitKo": "엑사니스테미",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ἐξ의 ξ는 배포 선례(엑세게이로·쉰독사조)대로 ㄱ받침+ㅅ으로 갈라 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G461",
+      "lemma": "ἀνορθόω",
+      "translit": "anorthóō",
+      "translitKo": "아노르토오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1989",
+      "lemma": "ἐπιστέλλω",
+      "translit": "epistéllō",
+      "translitKo": "에피스텔로",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4732",
+      "lemma": "στερεόω",
+      "translit": "stereóō",
+      "translitKo": "스테레오오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1200",
+      "lemma": "δεσμοφύλαξ",
+      "translit": "desmophýlax",
+      "translitKo": "데스모퓔락스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어말 ξ는 배포 선례(마스틱스·펠릭스)대로 ㄱ받침+스로 적었다. φυ의 υ는 위 계열이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G387",
+      "lemma": "ἀναστατόω",
+      "translit": "anastatóō",
+      "translitKo": "아나스타토오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5078",
+      "lemma": "τέχνη",
+      "translit": "téchnē",
+      "translitKo": "테크네",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 자음 앞 χ는 \"크\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G92",
+      "lemma": "ἀδίκημα",
+      "translit": "adíkēma",
+      "translitKo": "아디케마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2171",
+      "lemma": "εὐχή",
+      "translit": "euchḗ",
+      "translitKo": "유케",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ευ는 확정 규칙대로 유 계열 한 음절로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2021",
+      "lemma": "ἐπιχειρέω",
+      "translit": "epicheiréō",
+      "translitKo": "에피케이레오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4845",
+      "lemma": "συμπληρόω",
+      "translit": "symplēróō",
+      "translitKo": "쉼플레로오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. συμ-은 배포 선례(쉼비바조·쉼파스코)대로 \"쉼\"으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3494",
+      "lemma": "νεανίας",
+      "translit": "neanías",
+      "translitKo": "네아니아스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1117",
+      "lemma": "γόμος",
+      "translit": "gómos",
+      "translitKo": "고모스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4144",
+      "lemma": "πλόος",
+      "translit": "plóos",
+      "translitKo": "플로오스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 비축약형 표제 πλόος를 그대로 음역했다. 축약형 πλοῦς(플루스)로 적지 않았다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1229",
+      "lemma": "διαγγέλλω",
+      "translit": "diangéllō",
+      "translitKo": "디앙겔로",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. γγ는 배포 선례(아낭겔로·카탕겔로)대로 ㅇ받침+ㄱ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G397",
+      "lemma": "ἀνατρέφω",
+      "translit": "anatréphō",
+      "translitKo": "아나트레포",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4400",
+      "lemma": "προχειρίζομαι",
+      "translit": "procheirízomai",
+      "translitKo": "프로케이리조마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4934",
+      "lemma": "συντίθεμαι",
+      "translit": "syntíthemai",
+      "translitKo": "쉰티테마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. συν-은 배포 선례(쉰텔레이아·쉰탑토)대로 \"쉰\"으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1913",
+      "lemma": "ἐπιβιβάζω",
+      "translit": "epibibázō",
+      "translitKo": "에피비바조",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3061",
+      "lemma": "λοιμός",
+      "translit": "loimós",
+      "translitKo": "로이모스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5335",
+      "lemma": "φάσκω",
+      "translit": "pháskō",
+      "translitKo": "파스코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1230",
+      "lemma": "διαγίνομαι",
+      "translit": "diagínomai",
+      "translitKo": "디아기노마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5586",
+      "lemma": "ψῆφος",
+      "translit": "psēphos",
+      "translitKo": "프세포스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 ψ는 배포 선례(프살모스·프소미조)대로 \"프ㅅ\"로 갈라 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2667",
+      "lemma": "καταπίπτω",
+      "translit": "katapíptō",
+      "translitKo": "카타핍토",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. πτ는 배포 선례(에크핍토·쉰탑토)대로 앞 음절 ㅂ받침으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3040",
+      "lemma": "λιμήν",
+      "translit": "limḗn",
+      "translitKo": "리멘",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4627",
+      "lemma": "σκάφη",
+      "translit": "skáphē",
+      "translitKo": "스카페",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2114",
+      "lemma": "εὐθυμέω",
+      "translit": "euthyméō",
+      "translitKo": "유튀메오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ευ는 유 계열 한 음절, θυ의 υ는 위 계열이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3492",
+      "lemma": "ναύτης",
+      "translit": "naútēs",
+      "translitKo": "나우테스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. αυ는 배포 선례(아우토스·클라우디아)대로 두 음절 \"아우\"로 적었다. ευ와 다르다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1339",
+      "lemma": "διΐστημι",
+      "translit": "diḯstēmi",
+      "translitKo": "디이스테미",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ι 위의 분음 부호는 앞 모음과 겹모음을 이루지 말라는 표시라 \"디이-\"로 갈라 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4403",
+      "lemma": "πρύμνα",
+      "translit": "prýmna",
+      "translitKo": "프륌나",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. υ는 위 계열, 뒤따르는 μ은 앞 음절 받침으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4045",
+      "lemma": "περιπίπτω",
+      "translit": "peripíptō",
+      "translitKo": "페리핍토",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2073",
+      "lemma": "ἑσπέρα",
+      "translit": "hespéra",
+      "translitKo": "헤스페라",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2285",
+      "lemma": "θάμβος",
+      "translit": "thámbos",
+      "translitKo": "탐보스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3965",
+      "lemma": "πατριά",
+      "translit": "patriá",
+      "translitKo": "파트리아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2392",
+      "lemma": "ἴασις",
+      "translit": "íasis",
+      "translitKo": "이아시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3557",
+      "lemma": "νοσφίζομαι",
+      "translit": "nosphízomai",
+      "translitKo": "노스피조마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3722",
+      "lemma": "ὄρθρος",
+      "translit": "órthros",
+      "translitKo": "오르트로스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4370",
+      "lemma": "προστρέχω",
+      "translit": "prostréchō",
+      "translitKo": "프로스트레코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4967",
+      "lemma": "σφαγή",
+      "translit": "sphagḗ",
+      "translitKo": "스파게",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4199",
+      "lemma": "πορθέω",
+      "translit": "porthéō",
+      "translitKo": "포르테오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G526",
+      "lemma": "ἀπαλλοτριόω",
+      "translit": "apallotrióō",
+      "translitKo": "아팔로트리오오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. λλ은 ㄹ받침+ㄹ로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4891",
+      "lemma": "συνεγείρω",
+      "translit": "synegeírō",
+      "translitKo": "쉬네게이로",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. συν- 뒤에 모음이 오므로 ν이 다음 음절 첫소리가 되어 \"쉬네-\"가 된다. 배포 선례 쉬네르코마이와 같다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4213",
+      "lemma": "πόσις",
+      "translit": "pósis",
+      "translitKo": "포시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2345",
+      "lemma": "θιγγάνω",
+      "translit": "thingánō",
+      "translitKo": "팅가노",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. γγ는 ㅇ받침+ㄱ이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1778",
+      "lemma": "ἔνταλμα",
+      "translit": "éntalma",
+      "translitKo": "엔탈마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. λμ의 λ은 앞 음절 ㄹ받침으로 적었다. 배포 선례 오프탈모스와 같다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3499",
+      "lemma": "νεκρόω",
+      "translit": "nekróō",
+      "translitKo": "네크로오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G433",
+      "lemma": "ἀνήκω",
+      "translit": "anḗkō",
+      "translitKo": "아네코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G741",
+      "lemma": "ἀρτύω",
+      "translit": "artýō",
+      "translitKo": "아르튀오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. υ는 위 계열이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4869",
+      "lemma": "συναιχμάλωτος",
+      "translit": "synaichmálōtos",
+      "translitKo": "쉬나이크말로토스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. συν- 뒤에 모음이 와서 \"쉬나-\"가 된다. 자음 앞 χ는 ἐκ 선례를 좇아 \"크\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4388",
+      "lemma": "προτίθεμαι",
+      "translit": "protíthemai",
+      "translitKo": "프로티테마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4318",
+      "lemma": "προσαγωγή",
+      "translit": "prosagōgḗ",
+      "translitKo": "프로사고게",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3372",
+      "lemma": "μῆκος",
+      "translit": "mēkos",
+      "translitKo": "메코스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G161",
+      "lemma": "αἰχμαλωσία",
+      "translit": "aichmalōsía",
+      "translitKo": "아이크말로시아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 자음 앞 χ는 \"크\"로 적었다. 개역개정은 \"사로잡힘\"으로 풀어 옮겨 관용 음역이 없다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4656",
+      "lemma": "σκοτόω",
+      "translit": "skotóō",
+      "translitKo": "스코토오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4457",
+      "lemma": "πώρωσις",
+      "translit": "pṓrōsis",
+      "translitKo": "포로시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3833",
+      "lemma": "πανοπλία",
+      "translit": "panoplía",
+      "translitKo": "파노플리아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G424",
+      "lemma": "ἀνέρχομαι",
+      "translit": "anérchomai",
+      "translitKo": "아네르코마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G208",
+      "lemma": "ἀκυρόω",
+      "translit": "akyróō",
+      "translitKo": "아퀴로오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. υ는 위 계열이라 κυ를 \"퀴\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2012",
+      "lemma": "ἐπίτροπος",
+      "translit": "epítropos",
+      "translitKo": "에피트로포스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3108",
+      "lemma": "μακαρισμός",
+      "translit": "makarismós",
+      "translitKo": "마카리스모스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5605",
+      "lemma": "ὠδίνω",
+      "translit": "ōdínō",
+      "translitKo": "오디노",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1758",
+      "lemma": "ἐνέχω",
+      "translit": "enéchō",
+      "translitKo": "에네코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3178",
+      "lemma": "μέθη",
+      "translit": "méthē",
+      "translitKo": "메테",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3172",
+      "lemma": "μεγαλωσύνη",
+      "translit": "megalōsýnē",
+      "translitKo": "메갈로쉬네",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 모음 사이 λ은 ㄹ받침+ㄹ, συ는 \"쉬\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3646",
+      "lemma": "ὁλοκαύτωμα",
+      "translit": "holokaútōma",
+      "translitKo": "홀로카우토마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ, αυ는 두 음절 \"아우\"다. 개역개정은 \"번제\"로 옮겨 관용 음역이 없다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G724",
+      "lemma": "ἁρπαγή",
+      "translit": "harpagḗ",
+      "translitKo": "하르파게",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3331",
+      "lemma": "μετάθεσις",
+      "translit": "metáthesis",
+      "translitKo": "메타테시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2100",
+      "lemma": "εὐαρεστέω",
+      "translit": "euarestéō",
+      "translitKo": "유아레스테오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ευ 뒤에 모음 α가 이어져도 ευ는 확정 규칙대로 유 계열 한 음절로 적었다. \"에우아레스테오\"로 갈라 적지 않았다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2577",
+      "lemma": "κάμνω",
+      "translit": "kámnō",
+      "translitKo": "캄노",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5453",
+      "lemma": "φύω",
+      "translit": "phýō",
+      "translitKo": "퓌오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. υ는 위 계열이다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1642",
+      "lemma": "ἐλαττόω",
+      "translit": "elattóō",
+      "translitKo": "엘라토오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. ττ는 겹자음으로 늘려 적지 않았다. 배포 선례 탈라사와 같은 처리다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2420",
+      "lemma": "ἱερωσύνη",
+      "translit": "hierōsýnē",
+      "translitKo": "히에로쉬네",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3728",
+      "lemma": "ὁρκωμοσία",
+      "translit": "horkōmosía",
+      "translitKo": "호르코모시아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 거친 숨표는 ㅎ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3201",
+      "lemma": "μέμφομαι",
+      "translit": "mémphomai",
+      "translitKo": "멤포마이",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4700",
+      "lemma": "σποδός",
+      "translit": "spodós",
+      "translitKo": "스포도스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2742",
+      "lemma": "καύσων",
+      "translit": "kaúsōn",
+      "translitKo": "카우손",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. αυ는 두 음절 \"아우\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G1914",
+      "lemma": "ἐπιβλέπω",
+      "translit": "epiblépō",
+      "translitKo": "에피블레포",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G2447",
+      "lemma": "ἰός",
+      "translit": "iós",
+      "translitKo": "이오스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BX",
+      "strong": "G3799",
+      "lemma": "ὄψις",
+      "translit": "ópsis",
+      "translitKo": "옵시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 낱말 가운데 ψ는 배포 선례(틀립시스·휩소오)대로 앞 음절 ㅂ받침+ㅅ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5222",
+      "lemma": "ὑπάντησις",
+      "translit": "hypántēsis",
+      "translitKo": "휘판테시스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 ὑ는 거친 숨표 ㅎ에 위 계열을 합쳐 \"휘\"로 적었다. 배포 선례 휩소오와 같다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4475",
+      "lemma": "ῥάπισμα",
+      "translit": "rhápisma",
+      "translitKo": "라피스마",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 ῥ에는 확정 규칙대로 ㅎ을 붙이지 않았다. 배포 선례 레마·라비와 같다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5621",
+      "lemma": "ὠτίον",
+      "translit": "ōtíon",
+      "translitKo": "오티온",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4120",
+      "lemma": "πλέκω",
+      "translit": "plékō",
+      "translitKo": "플레코",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4699",
+      "lemma": "σπόγγος",
+      "translit": "spóngos",
+      "translitKo": "스퐁고스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. γγ는 ㅇ받침+ㄱ으로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G4628",
+      "lemma": "σκέλος",
+      "translit": "skélos",
+      "translitKo": "스켈로스",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 모음 사이 λ은 ㄹ받침+ㄹ로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BX",
+      "strong": "G5201",
+      "lemma": "ὑδρία",
+      "translit": "hydría",
+      "translitKo": "휘드리아",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 어두 ὑ는 \"휘\"로 적었다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2855",
+      "lemma": "κολλυβιστής",
+      "translit": "kollybistḗs",
+      "translitKo": "콜뤼비스테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1794",
+      "lemma": "ἐντυλίσσω",
+      "translit": "entylíssō",
+      "translitKo": "엔튈리소",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G709",
+      "lemma": "ἀριστάω",
+      "translit": "aristáō",
+      "translitKo": "아리스타오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1833",
+      "lemma": "ἐξετάζω",
+      "translit": "exetázō",
+      "translitKo": "엑세타조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4429",
+      "lemma": "πτύω",
+      "translit": "ptýō",
+      "translitKo": "프튀오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G7",
+      "lemma": "Ἀβιά",
+      "translit": "Abiá",
+      "translitKo": "아비아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 학술 표기는 아비아. 한국어 성경(개역개정)은 히브리어 아비야(H29)에 맞춰 아비야로 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4246",
+      "lemma": "πρεσβύτης",
+      "translit": "presbýtēs",
+      "translitKo": "프레스뷔테스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3423",
+      "lemma": "μνηστεύω",
+      "translit": "mnēsteúō",
+      "translitKo": "므네스튜오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4640",
+      "lemma": "σκιρτάω",
+      "translit": "skirtáō",
+      "translitKo": "스키르타오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4563",
+      "lemma": "σαρόω",
+      "translit": "saróō",
+      "translitKo": "사로오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3149",
+      "lemma": "μαστός",
+      "translit": "mastós",
+      "translitKo": "마스토스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3426",
+      "lemma": "μόδιος",
+      "translit": "módios",
+      "translitKo": "모디오스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 라틴어 modius 차용어지만 헬라어 형태 그대로 음역한다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G712",
+      "lemma": "ἄριστον",
+      "translit": "áriston",
+      "translitKo": "아리스톤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G705",
+      "lemma": "ἀριθμέω",
+      "translit": "arithméō",
+      "translitKo": "아리트메오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4597",
+      "lemma": "σής",
+      "translit": "sḗs",
+      "translitKo": "세스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2322",
+      "lemma": "θεραπεία",
+      "translit": "therapeía",
+      "translitKo": "테라페이아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3016",
+      "lemma": "λεπτόν",
+      "translit": "leptón",
+      "translitKo": "렙톤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4626",
+      "lemma": "σκάπτω",
+      "translit": "skáptō",
+      "translitKo": "스캅토",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G258",
+      "lemma": "ἀλώπηξ",
+      "translit": "alṓpēx",
+      "translitKo": "알로펙스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1406",
+      "lemma": "δραχμή",
+      "translit": "drachmḗ",
+      "translitKo": "드라크메",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5589",
+      "lemma": "ψιχίον",
+      "translit": "psichíon",
+      "translitKo": "프시키온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1668",
+      "lemma": "ἕλκος",
+      "translit": "hélkos",
+      "translitKo": "헬코스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G931",
+      "lemma": "βάσανος",
+      "translit": "básanos",
+      "translitKo": "바사노스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2646",
+      "lemma": "κατάλυμα",
+      "translit": "katályma",
+      "translitKo": "카탈뤼마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2050",
+      "lemma": "ἐρήμωσις",
+      "translit": "erḗmōsis",
+      "translitKo": "에레모시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2330",
+      "lemma": "θέρος",
+      "translit": "théros",
+      "translitKo": "테로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2729",
+      "lemma": "κατισχύω",
+      "translit": "katischýō",
+      "translitKo": "카티스퀴오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1606",
+      "lemma": "ἐκπνέω",
+      "translit": "ekpnéō",
+      "translitKo": "엑프네오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4870",
+      "lemma": "συνακολουθέω",
+      "translit": "synakolouthéō",
+      "translitKo": "쉬나콜루테오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5075",
+      "lemma": "τετραρχέω",
+      "translit": "tetrarchéō",
+      "translitKo": "테트라르케오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5147",
+      "lemma": "τρίβος",
+      "translit": "tríbos",
+      "translitKo": "트리보스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G284",
+      "lemma": "Ἀμιναδάβ",
+      "translit": "Aminadáb",
+      "translitKo": "아미나답",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4150",
+      "lemma": "πλύνω",
+      "translit": "plýnō",
+      "translitKo": "플뤼노",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1877",
+      "lemma": "ἐπανάγω",
+      "translit": "epanágō",
+      "translitKo": "에파나고",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5058",
+      "lemma": "τελώνιον",
+      "translit": "telṓnion",
+      "translitKo": "텔로니온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3567",
+      "lemma": "νυμφών",
+      "translit": "nymphṓn",
+      "translitKo": "뉨폰",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G522",
+      "lemma": "ἀπαίρω",
+      "translit": "apaírō",
+      "translitKo": "아파이로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5089",
+      "lemma": "τίλλω",
+      "translit": "tíllō",
+      "translitKo": "틸로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G999",
+      "lemma": "βόθυνος",
+      "translit": "bóthynos",
+      "translitKo": "보튀노스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1227",
+      "lemma": "διαβλέπω",
+      "translit": "diablépō",
+      "translitKo": "디아블레포",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4718",
+      "lemma": "σταφυλή",
+      "translit": "staphylḗ",
+      "translitKo": "스타퓔레",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5166",
+      "lemma": "τρυγάω",
+      "translit": "trygáō",
+      "translitKo": "트뤼가오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4721",
+      "lemma": "στέγη",
+      "translit": "stégē",
+      "translitKo": "스테게",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G294",
+      "lemma": "ἀμφιέννυμι",
+      "translit": "amphiénnymi",
+      "translitKo": "암피엔뉘미",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1055",
+      "lemma": "γαλήνη",
+      "translit": "galḗnē",
+      "translitKo": "갈레네",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3976",
+      "lemma": "πέδη",
+      "translit": "pédē",
+      "translitKo": "페데",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2911",
+      "lemma": "κρημνός",
+      "translit": "krēmnós",
+      "translitKo": "크렘노스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4511",
+      "lemma": "ῥύσις",
+      "translit": "rhýsis",
+      "translitKo": "뤼시스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어두 ῥ에 흐를 붙이지 않는다. 배포 선례 리자(ῥίζα)·라브도스(ῥάβδος)·뤼오마이(ῥύομαι)와 같다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2606",
+      "lemma": "καταγελάω",
+      "translit": "katageláō",
+      "translitKo": "카타겔라오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4682",
+      "lemma": "σπαράσσω",
+      "translit": "sparássō",
+      "translitKo": "스파라소",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1310",
+      "lemma": "διαφημίζω",
+      "translit": "diaphēmízō",
+      "translitKo": "디아페미조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G647",
+      "lemma": "ἀποστάσιον",
+      "translit": "apostásion",
+      "translitKo": "아포스타시온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4641",
+      "lemma": "σκληροκαρδία",
+      "translit": "sklērokardía",
+      "translitKo": "스클레로카르디아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2515",
+      "lemma": "καθέδρα",
+      "translit": "kathédra",
+      "translitKo": "카테드라",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3736",
+      "lemma": "ὀρύσσω",
+      "translit": "orýssō",
+      "translitKo": "오뤼소",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G85",
+      "lemma": "ἀδημονέω",
+      "translit": "adēmonéō",
+      "translitKo": "아데모네오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2649",
+      "lemma": "καταμαρτυρέω",
+      "translit": "katamartyréō",
+      "translitKo": "카타마르튀레오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G29",
+      "lemma": "ἀγγαρεύω",
+      "translit": "angareúō",
+      "translitKo": "앙가류오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2760",
+      "lemma": "κεντυρίων",
+      "translit": "kentyríōn",
+      "translitKo": "켄튀리온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 라틴어 centurio 차용어지만 헬라어 형태 그대로 음역한다. 한국어 성경은 뜻으로 백부장이라 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3444",
+      "lemma": "μορφή",
+      "translit": "morphḗ",
+      "translitKo": "모르페",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1283",
+      "lemma": "διαρπάζω",
+      "translit": "diarpázō",
+      "translitKo": "디아르파조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2869",
+      "lemma": "κοπάζω",
+      "translit": "kopázō",
+      "translitKo": "코파조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4155",
+      "lemma": "πνίγω",
+      "translit": "pnígō",
+      "translitKo": "프니고",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3878",
+      "lemma": "παρακούω",
+      "translit": "parakoúō",
+      "translitKo": "파라쿠오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3175",
+      "lemma": "μεγιστᾶνες",
+      "translit": "megistânes",
+      "translitKo": "메기스타네스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5510",
+      "lemma": "χιών",
+      "translit": "chiṓn",
+      "translitKo": "키온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4663",
+      "lemma": "σκώληξ",
+      "translit": "skṓlēx",
+      "translitKo": "스콜렉스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G233",
+      "lemma": "ἁλίζω",
+      "translit": "halízō",
+      "translitKo": "할리조",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3119",
+      "lemma": "μαλακία",
+      "translit": "malakía",
+      "translitKo": "말라키아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4868",
+      "lemma": "συναίρω",
+      "translit": "synaírō",
+      "translitKo": "쉬나이로",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2083",
+      "lemma": "ἑταῖρος",
+      "translit": "hetaîros",
+      "translitKo": "헤타이로스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4929",
+      "lemma": "συντάσσω",
+      "translit": "syntássō",
+      "translitKo": "쉰탁소",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2892",
+      "lemma": "κουστωδία",
+      "translit": "koustōdía",
+      "translitKo": "쿠스토디아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 라틴어 custodia 차용어지만 헬라어 형태 그대로 음역한다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2771",
+      "lemma": "κέρδος",
+      "translit": "kérdos",
+      "translitKo": "케르도스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G974",
+      "lemma": "βιβλιαρίδιον",
+      "translit": "bibliarídion",
+      "translitKo": "비블리아리디온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1238",
+      "lemma": "διάδημα",
+      "translit": "diádēma",
+      "translitKo": "디아데마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3321",
+      "lemma": "μεσουράνημα",
+      "translit": "mesouránēma",
+      "translitKo": "메수라네마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2767",
+      "lemma": "κεράννυμι",
+      "translit": "keránnymi",
+      "translitKo": "케란뉘미",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G3732",
+      "lemma": "ὄρνεον",
+      "translit": "órneon",
+      "translitKo": "오르네온",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G5333",
+      "lemma": "φάρμακος",
+      "translit": "phármakos",
+      "translitKo": "파르마코스",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G1575",
+      "lemma": "ἐκκλάω",
+      "translit": "ekkláō",
+      "translitKo": "엑클라오",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "G4828",
+      "lemma": "συμμαρτυρέω",
+      "translit": "symmartyréō",
+      "translitKo": "쉼마르튀레오",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "G2631",
+      "lemma": "κατάκριμα",
+      "translit": "katákrima",
+      "translitKo": "카타크리마",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H813",
+      "lemma": "אַשְׁכְּנַז",
+      "translit": "ʾAškenaz",
+      "translitKo": "아쉬케나즈",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다. 학술 표기는 아쉬케나즈. 한국어 성경(개역개정)은 창10:3에서 아스그나스로 옮긴다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "H473",
+      "lemma": "אֱלִישָׁה",
+      "translit": "ʾĕlîšâ",
+      "translitKo": "엘리샤",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 야완의 아들 엘리샤다. 학술 표기 ʾĕlîšâ는 어말이 ה(â)이고, 선지자 엘리사 H477 ʾĕlîšāʿ는 어말이 ע라서 라틴 음역으로 구별된다. 한국어 성경(개역개정)은 이 낱말을 엘리사로 옮겨 두 이름이 한글에서 겹친다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H22",
+      "lemma": "אֲבִיאֵל",
+      "translit": "ʾĂḇîʾēl",
+      "translitKo": "아비엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H6807",
+      "lemma": "צְעָדָה",
+      "translit": "ṣĕʿādâ",
+      "translitKo": "츠아다",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "H5961",
+      "lemma": "עֲלָמוֹת",
+      "translit": "ʿĂlāmôṯ",
+      "translitKo": "알라모트",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경(개역개정)은 시편 46편 표제에서 알라못으로 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H7770",
+      "lemma": "שׁוּעַ",
+      "translit": "Šûaʿ",
+      "translitKo": "슈아",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 어말 ע 앞 furtive patach를 아로 적고 ע는 따로 적지 않는다. 한국어 성경(개역개정)은 수아로 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H2757",
+      "lemma": "חָרִיץ",
+      "translit": "ḥārîṣ",
+      "translitKo": "하리츠",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H7246",
+      "lemma": "רָבַךְ",
+      "translit": "rāḇaḵ",
+      "translitKo": "라바크",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H4474",
+      "lemma": "מִמְשָׁל",
+      "translit": "mimšāl",
+      "translitKo": "밈샬",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H5837",
+      "lemma": "עַזְרִיאֵל",
+      "translit": "ʿAzrîʾēl",
+      "translitKo": "아즈리엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경(개역개정)은 아스리엘로 옮겨 H844 ʾaśrîʾēl과 한글 표기가 겹친다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H5717",
+      "lemma": "עֲדִיאֵל",
+      "translit": "ʿĂḏîʾēl",
+      "translitKo": "아디엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H8189",
+      "lemma": "שַׁעֲרַיִם",
+      "translit": "šaʿărayim",
+      "translitKo": "샤아라임",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경(개역개정)은 사아라임으로 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H5660",
+      "lemma": "עַבְדִּי",
+      "translit": "ʿAḇdî",
+      "translitKo": "압디",
+      "votesKo": 3,
+      "judges": 4,
+      "note": "네 모델 중 3개가 같은 음역안을 냈다.",
+      "origin": "majority"
+    },
+    {
+      "shard": "BY",
+      "strong": "H6063",
+      "lemma": "עָנֵר",
+      "translit": "ʿĀnēr",
+      "translitKo": "아네르",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. 한국어 성경(개역개정)은 아넬로 옮긴다.",
+      "origin": "unanimous"
+    },
+    {
+      "shard": "BY",
+      "strong": "H844",
+      "lemma": "אַשְׂרִיאֵל",
+      "translit": "ʾaśrîʾēl",
+      "translitKo": "아스리엘",
+      "votesKo": 4,
+      "judges": 4,
+      "note": "네 모델이 독립으로 만든 음역안이 모두 일치했다. שׂ를 ś로 적어 H5837 ʿazrîʾēl과 라틴 음역에서 구별된다. 한글로는 두 낱말이 개역개정에서 모두 아스리엘로 겹친다.",
+      "origin": "unanimous"
+    }
+  ],
+  "disputed": [
+    {
+      "shard": "BW",
+      "strong": "G1578",
+      "lemma": "ἐκκλίνω",
+      "lang": "greek",
+      "glossEn": "avoid, eschew, go out of the way",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekklínō",
+          "translitKo": "엑클리노",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekklínō",
+          "translitKo": "엑클리노",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekklínō",
+          "translitKo": "에클리노",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekklínō",
+          "translitKo": "에클리노",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BW",
+      "strong": "G4244",
+      "lemma": "πρεσβυτέριον",
+      "lang": "greek",
+      "glossEn": "(estate of) elder(-s), presbytery",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "presbytérion",
+          "translitKo": "프레쉬뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "presbytérion",
+          "translitKo": "프레스뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "presbytérion",
+          "translitKo": "프레쉬뷔테리온",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "presbytérion",
+          "translitKo": "프레스뷔테리온",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BW",
+      "strong": "G5280",
+      "lemma": "ὑπόμνησις",
+      "lang": "greek",
+      "glossEn": "remembrance",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hypómnēsis",
+          "translitKo": "휘포므네시스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "hypómnēsis",
+          "translitKo": "휘폼네시스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hypómnēsis",
+          "translitKo": "휘포므네시스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "hypómnēsis",
+          "translitKo": "휘폼네시스",
+          "note": "모음 뒤 μν은 받침 ㅁ으로 붙인다. 어두 μν은 μνημεῖον→므네메이온처럼 「므네」로 편다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4339",
+      "lemma": "προσήλυτος",
+      "lang": "greek",
+      "glossEn": "proselyte",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "prosḗlytos",
+          "translitKo": "프르오스에르위트오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀리토스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀뤼토스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "prosḗlytos",
+          "translitKo": "프로셀뤼토스",
+          "note": "개역개정은 이 낱말을 \"유대교에 입교한 사람\"으로 풀어 옮겨 굳어진 관용 음역이 없다. 모음 사이 λ은 배포 선례(아폴루오·카탈랄리아)대로 ㄹㄹ로 적었고, υ는 위 계열로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1602",
+      "lemma": "ἐκπλέω",
+      "lang": "greek",
+      "glossEn": "sail (away, thence)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ekpléō",
+          "translitKo": "에크프르에오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ekpléō",
+          "translitKo": "엑플레오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ekpléō",
+          "translitKo": "에크플레오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ekpléō",
+          "translitKo": "에크플레오",
+          "note": "ἐκ 뒤에 자음이 오는 낱말은 배포 선례(에크포류오마이·에크핍토)대로 \"에크-\"로 적었다. \"엑플레오\"로 적지 않았다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1224",
+      "lemma": "διαβαίνω",
+      "lang": "greek",
+      "glossEn": "come over, pass (through)",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "diabaínō",
+          "translitKo": "드이아브아이느오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "diabaínō",
+          "translitKo": "디바이노",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "diabaínō",
+          "translitKo": "디아바이노",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "diabaínō",
+          "translitKo": "디아바이노",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G525",
+      "lemma": "ἀπαλλάσσω",
+      "lang": "greek",
+      "glossEn": "deliver, depart",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "apallássō",
+          "translitKo": "아프아르르아스스오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "apallássō",
+          "translitKo": "아팔라소",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "apallássō",
+          "translitKo": "아팔랏소",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "apallássō",
+          "translitKo": "아팔라소",
+          "note": "λλ은 ㄹ받침+ㄹ, σσ는 겹치지 않고 한 번만 적었다. 배포 선례 쉬날라소(συναλλάσσω)와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G669",
+      "lemma": "ἀποφθέγγομαι",
+      "lang": "greek",
+      "glossEn": "say, speak forth, utterance",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "apophthéngomai",
+          "translitKo": "아프오프트에느그오므아이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텐고마이",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텐고마이",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "apophthéngomai",
+          "translitKo": "아포프텡고마이",
+          "note": "φθ는 배포 선례(오프탈모스·프타노)대로 \"프ㅌ\"로, γγ는 앙겔로스 선례대로 ㅇ받침+ㄱ으로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1195",
+      "lemma": "δεσμεύω",
+      "lang": "greek",
+      "glossEn": "bind",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "desmeúō",
+          "translitKo": "드에스므에우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "desmeúō",
+          "translitKo": "데스메우오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "desmeúō",
+          "translitKo": "데스뮤오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "desmeúō",
+          "translitKo": "데스뮤오",
+          "note": "ευ는 확정 규칙대로 유 계열 한 음절이다. 배포 선례 바실류오와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4772",
+      "lemma": "συγγένεια",
+      "lang": "greek",
+      "glossEn": "kindred",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "syngéneia",
+          "translitKo": "스위느그에느에이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "syngéneia",
+          "translitKo": "슁게네이아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "syngéneia",
+          "translitKo": "쉰게네이아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "syngéneia",
+          "translitKo": "쉰게네이아",
+          "note": "γγ만 보면 앙겔로스처럼 ㅇ받침이 되겠으나, συν- 접두사 낱말은 배포 선례(쉰코이노노스·쉰케란뉘미·쉰카이로)가 모두 \"쉰\"이라 접두사 쪽 선례를 따랐다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4790",
+      "lemma": "συγκοινωνέω",
+      "lang": "greek",
+      "glossEn": "communicate (have fellowship) with, be partaker of",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "synkoinōnéō",
+          "translitKo": "스위느크오이느오느에오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "synkoinōnéō",
+          "translitKo": "슁코이노네오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "synkoinōnéō",
+          "translitKo": "쉰코이노네오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "synkoinōnéō",
+          "translitKo": "쉰코이노네오",
+          "note": "γκ 앞의 γ는 배포 선례(쉰코이노노스·쉰케란뉘미)대로 ㄴ받침으로 적었다. 같은 어근의 명사 표기와 맞췄다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G3405",
+      "lemma": "μισθαποδοσία",
+      "lang": "greek",
+      "glossEn": "recompence of reward",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "misthapodosía",
+          "translitKo": "므이스트아프오드오스이아",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "misthapodosía",
+          "translitKo": "미스하포도시아",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "misthapodosía",
+          "translitKo": "미스타포도시아",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "misthapodosía",
+          "translitKo": "미스타포도시아",
+          "note": "σθ는 \"스ㅌ\"로 갈라 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G2059",
+      "lemma": "ἑρμηνεύω",
+      "lang": "greek",
+      "glossEn": "interpret",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "hermēneúō",
+          "translitKo": "흐에르므에느에우오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메네우오",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메뉴오",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "hermēneúō",
+          "translitKo": "헤르메뉴오",
+          "note": "어두 거친 숨표는 ㅎ, ευ는 유 계열 한 음절이다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G4028",
+      "lemma": "περικαλύπτω",
+      "lang": "greek",
+      "glossEn": "blindfold, cover, overlay",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "perikalýptō",
+          "translitKo": "프에르이크아르ý프트오",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼립토",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼립토",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "perikalýptō",
+          "translitKo": "페리칼륍토",
+          "note": "같은 어근의 배포 선례가 아포칼륍토(ἀποκαλύπτω)라 그에 맞췄다. 명사 아포칼립시스는 관용 표기가 굳은 자리라 다르게 적혀 있다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G1241",
+      "lemma": "διαζώννυμι",
+      "lang": "greek",
+      "glossEn": "gird",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "diazṓnnymi",
+          "translitKo": "드이아즈ṓ느느위므이",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아조뉘미",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아존뉘미",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "diazṓnnymi",
+          "translitKo": "디아존뉘미",
+          "note": "νν은 ㄴ받침+ㄴ, υ는 위 계열이다. 배포 선례 쉰케란뉘미와 같다."
+        }
+      ]
+    },
+    {
+      "shard": "BX",
+      "strong": "G755",
+      "lemma": "ἀρχιτρίκλινος",
+      "lang": "greek",
+      "glossEn": "governor (ruler) of the feast",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "architríklinos",
+          "translitKo": "아르크이트르이크르이느오스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "architríklinos",
+          "translitKo": "아르히트리클리노스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "architríklinos",
+          "translitKo": "아르키트리클리노스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "architríklinos",
+          "translitKo": "아르키트리클리노스",
+          "note": "모음 앞 χ는 \"키\"로, 모음 사이 λ은 ㄹ받침+ㄹ로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BY",
+      "strong": "G2763",
+      "lemma": "κεραμεύς",
+      "lang": "greek",
+      "glossEn": "potter",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kerameús",
+          "translitKo": "케라뮤스",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kerameús",
+          "translitKo": "케라메우스",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kerameús",
+          "translitKo": "케라메우스",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kerameús",
+          "translitKo": "케라뮤스",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BY",
+      "strong": "H5854",
+      "lemma": "עַטְרוֹת בֵּית יוֹאָב",
+      "lang": "hebrew",
+      "glossEn": "Ataroth the house of Joab.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʿAṭrōṯ bêṯ Yôʾāḇ",
+          "translitKo": "아트롯 베트 요압",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʿĂṭrôṯ bêṯ Yôʾāḇ",
+          "translitKo": "아트롯 베트 요아브",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʿaṭrôṯ bêṯ yôʾāḇ",
+          "translitKo": "아트로트 베트 요아브",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʿaṭrôt bêt yôʾāb",
+          "translitKo": "아트로트 베트 요아브",
+          "note": "합성 지명이라 낱말 사이를 띄어 적는다. 한국어 성경(개역개정)은 아다롯벧요압으로 옮긴다."
+        }
+      ]
+    }
+  ]
+}

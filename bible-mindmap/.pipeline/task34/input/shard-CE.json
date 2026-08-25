@@ -1,0 +1,906 @@
+{
+  "shard": "CE",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G4443",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πυρά",
+      "translit": "pyrá",
+      "glossEn": "fire",
+      "defEn": "a fire (concretely)"
+    },
+    {
+      "strong": "G4962",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συστρέφω",
+      "translit": "systréphō",
+      "glossEn": "gather",
+      "defEn": "to twist together, i.e. collect (a bundle, a crowd)"
+    },
+    {
+      "strong": "G660",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποτινάσσω",
+      "translit": "apotinássō",
+      "glossEn": "shake off",
+      "defEn": "to brush off"
+    },
+    {
+      "strong": "G324",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀναδέχομαι",
+      "translit": "anadéchomai",
+      "glossEn": "receive",
+      "defEn": "to entertain (as a guest)"
+    },
+    {
+      "strong": "G3975",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παχύνω",
+      "translit": "pachýnō",
+      "glossEn": "wax gross",
+      "defEn": "to thicken, i.e. (by implication) to fatten (figuratively, stupefy or render callous)"
+    },
+    {
+      "strong": "G2576",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "καμμύω",
+      "translit": "kammýō",
+      "glossEn": "close",
+      "defEn": "to shut down, i.e. close the eyes"
+    },
+    {
+      "strong": "G4293",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προκαταγγέλλω",
+      "translit": "prokatangéllō",
+      "glossEn": "foretell, have notice, (shew) before",
+      "defEn": "to anounce beforehand, i.e. predict, promise"
+    },
+    {
+      "strong": "G1757",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνευλογέω",
+      "translit": "eneulogéō",
+      "glossEn": "bless",
+      "defEn": "to confer a benefit on"
+    },
+    {
+      "strong": "G471",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀντέπω",
+      "translit": "antépō",
+      "glossEn": "gainsay, say against",
+      "defEn": "to refute or deny"
+    },
+    {
+      "strong": "G1896",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπεῖδον",
+      "translit": "epeîdon",
+      "glossEn": "behold, look upon",
+      "defEn": "to regard (favorably or otherwise)"
+    },
+    {
+      "strong": "G1282",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "διαπρίω",
+      "translit": "diapríō",
+      "glossEn": "cut (to the heart)",
+      "defEn": "to saw asunder, i.e. (figuratively) to exasperate"
+    },
+    {
+      "strong": "G582",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀπογραφή",
+      "translit": "apographḗ",
+      "glossEn": "taxing",
+      "defEn": "an enrollment; by implication, an assessment"
+    },
+    {
+      "strong": "G3351",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μετοικίζω",
+      "translit": "metoikízō",
+      "glossEn": "carry away, remove into",
+      "defEn": "to transfer as a settler or captive, i.e colonize or exile"
+    },
+    {
+      "strong": "G2697",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατάσχεσις",
+      "translit": "katáschesis",
+      "glossEn": "possession",
+      "defEn": "a holding down, i.e. occupancy"
+    },
+    {
+      "strong": "G1348",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δικαστής",
+      "translit": "dikastḗs",
+      "glossEn": "judge",
+      "defEn": "a judger"
+    },
+    {
+      "strong": "G4726",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "στεναγμός",
+      "translit": "stenagmós",
+      "glossEn": "groaning",
+      "defEn": "a sigh"
+    },
+    {
+      "strong": "G4313",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προπορεύομαι",
+      "translit": "proporeúomai",
+      "glossEn": "go before",
+      "defEn": "to precede (as guide or herald)"
+    },
+    {
+      "strong": "G4756",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "στρατιά",
+      "translit": "stratiá",
+      "glossEn": "host",
+      "defEn": "from the base of G4766 (στρώννυμι), as encamped); camp-likeness, i.e. an army, i.e. (figuratively) the angels, the celestial luminaries"
+    },
+    {
+      "strong": "G1296",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "διαταγή",
+      "translit": "diatagḗ",
+      "glossEn": "instrumentality",
+      "defEn": "arrangement, i.e. institution"
+    },
+    {
+      "strong": "G4391",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προϋπάρχω",
+      "translit": "proÿpárchō",
+      "glossEn": "+ be before(-time)",
+      "defEn": "to exist before, i.e. (adverbially) to be or do something previously"
+    },
+    {
+      "strong": "G5521",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χολή",
+      "translit": "cholḗ",
+      "glossEn": "gall",
+      "defEn": "\"gall\" or bile, i.e. (by analogy) poison or an anodyne (wormwood, poppy, etc.)"
+    },
+    {
+      "strong": "G1765",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνισχύω",
+      "translit": "enischýō",
+      "glossEn": "strengthen",
+      "defEn": "to invigorate (transitively or reflexively)"
+    },
+    {
+      "strong": "G339",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνακαθίζω",
+      "translit": "anakathízō",
+      "glossEn": "sit up",
+      "defEn": "properly, to set up, i.e. (reflexively) to sit up"
+    },
+    {
+      "strong": "G1412",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δυναμόω",
+      "translit": "dynamóō",
+      "glossEn": "strengthen",
+      "defEn": "to enable"
+    },
+    {
+      "strong": "G604",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποκαταλλάσσω",
+      "translit": "apokatallássō",
+      "glossEn": "reconcile",
+      "defEn": "to reconcile fully"
+    },
+    {
+      "strong": "G3884",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παραλογίζομαι",
+      "translit": "paralogízomai",
+      "glossEn": "beguile, deceive",
+      "defEn": "to misreckon, i.e. delude"
+    },
+    {
+      "strong": "G4492",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ῥιζόω",
+      "translit": "rhizóō",
+      "glossEn": "root",
+      "defEn": "to root (figuratively, become stable)"
+    },
+    {
+      "strong": "G4806",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συζωοποιέω",
+      "translit": "syzōopoiéō",
+      "glossEn": "quicken together with",
+      "defEn": "to reanimate conjointly with (figuratively)"
+    },
+    {
+      "strong": "G554",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀπεκδύομαι",
+      "translit": "apekdýomai",
+      "glossEn": "put off, spoil",
+      "defEn": "to divest wholly oneself, or (for oneself) despoil"
+    },
+    {
+      "strong": "G1165",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δειγματίζω",
+      "translit": "deigmatízō",
+      "glossEn": "make a shew",
+      "defEn": "to exhibit"
+    },
+    {
+      "strong": "G860",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἁφή",
+      "translit": "haphḗ",
+      "glossEn": "joint",
+      "defEn": "probably a ligament (as fastening)"
+    },
+    {
+      "strong": "G838",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "αὔξησις",
+      "translit": "aúxēsis",
+      "glossEn": "increase",
+      "defEn": "growth"
+    },
+    {
+      "strong": "G5047",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τελειότης",
+      "translit": "teleiótēs",
+      "glossEn": "perfection(-ness)",
+      "defEn": "(the state) completeness (mentally or morally)"
+    },
+    {
+      "strong": "G5215",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὕμνος",
+      "translit": "hýmnos",
+      "glossEn": "hymn",
+      "defEn": "probably akin to G103 (ᾄδω); compare H05667); a \"hymn\" or religious ode (one of the Psalms)"
+    },
+    {
+      "strong": "G3787",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὀφθαλμοδουλεία",
+      "translit": "ophthalmodouleía",
+      "glossEn": "eye-service",
+      "defEn": "sight-labor, i.e. that needs watching (remissness)"
+    },
+    {
+      "strong": "G441",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνθρωπάρεσκος",
+      "translit": "anthrōpáreskos",
+      "glossEn": "men-pleaser",
+      "defEn": "man-courting, i.e. fawning"
+    },
+    {
+      "strong": "G346",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνακεφαλαίομαι",
+      "translit": "anakephalaíomai",
+      "glossEn": "briefly comprehend, gather together in one",
+      "defEn": "to sum up"
+    },
+    {
+      "strong": "G4776",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συγκαθίζω",
+      "translit": "synkathízō",
+      "glossEn": "(make) sit (down) together",
+      "defEn": "to give (or take) a seat in company with"
+    },
+    {
+      "strong": "G4161",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ποίημα",
+      "translit": "poíēma",
+      "glossEn": "thing that is made, workmanship",
+      "defEn": "a product, i.e. fabric (literally or figuratively)"
+    },
+    {
+      "strong": "G4282",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προετοιμάζω",
+      "translit": "proetoimázō",
+      "glossEn": "ordain before, prepare afore",
+      "defEn": "to fit up in advance (literally or figuratively)"
+    },
+    {
+      "strong": "G4883",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συναρμολογέω",
+      "translit": "synarmologéō",
+      "glossEn": "be fitly framed (joined) together",
+      "defEn": "to render close-jointed together, i.e. organize compactly"
+    },
+    {
+      "strong": "G2732",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κατοικητήριον",
+      "translit": "katoikētḗrion",
+      "glossEn": "habitation",
+      "defEn": "a dwelling-place"
+    },
+    {
+      "strong": "G1775",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἑνότης",
+      "translit": "henótēs",
+      "glossEn": "unity",
+      "defEn": "oneness, i.e. (figuratively) unanimity"
+    },
+    {
+      "strong": "G3180",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μεθοδεία",
+      "translit": "methodeía",
+      "glossEn": "wile, lie in wait",
+      "defEn": "travelling over, i.e. travesty (trickery)"
+    },
+    {
+      "strong": "G2024",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐπιχορηγία",
+      "translit": "epichorēgía",
+      "glossEn": "supply",
+      "defEn": "contribution"
+    },
+    {
+      "strong": "G3067",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "λουτρόν",
+      "translit": "loutrón",
+      "glossEn": "washing",
+      "defEn": "a bath, i.e. (figuratively), baptism"
+    },
+    {
+      "strong": "G1625",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐκτρέφω",
+      "translit": "ektréphō",
+      "glossEn": "bring up, nourish",
+      "defEn": "to rear up to maturity, i.e. (genitive case) to cherish or train"
+    },
+    {
+      "strong": "G4347",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προσκολλάω",
+      "translit": "proskolláō",
+      "glossEn": "cleave, join (self)",
+      "defEn": "to glue to, i.e. (figuratively) to adhere"
+    },
+    {
+      "strong": "G3949",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παροργίζω",
+      "translit": "parorgízō",
+      "glossEn": "anger, provoke to wrath",
+      "defEn": "to anger alongside, i.e. enrage"
+    },
+    {
+      "strong": "G4323",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προσανατίθημι",
+      "translit": "prosanatíthēmi",
+      "glossEn": "in conference add, confer",
+      "defEn": "to lay up in addition, i.e. (middle voice and figuratively) to impart or (by implication) to consult"
+    },
+    {
+      "strong": "G3922",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παρεισέρχομαι",
+      "translit": "pareisérchomai",
+      "glossEn": "come in privily, enter",
+      "defEn": "to come in alongside, i.e. supervene additionally or steathily"
+    },
+    {
+      "strong": "G1728",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνάρχομαι",
+      "translit": "enárchomai",
+      "glossEn": "rule (by mistake for G757 (ἄρχω))",
+      "defEn": "to commence on"
+    },
+    {
+      "strong": "G1846",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐξορύσσω",
+      "translit": "exorýssō",
+      "glossEn": "break up, pluck out",
+      "defEn": "to dig out, i.e. (by extension) to extract (an eye), remove (roofing)"
+    },
+    {
+      "strong": "G1576",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐκκλείω",
+      "translit": "ekkleíō",
+      "glossEn": "exclude",
+      "defEn": "to shut out (literally or figuratively)"
+    },
+    {
+      "strong": "G355",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀναλίσκω",
+      "translit": "analískō",
+      "glossEn": "consume",
+      "defEn": "properly, to use up, i.e. destroy"
+    },
+    {
+      "strong": "G5331",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φαρμακεία",
+      "translit": "pharmakeía",
+      "glossEn": "sorcery, witchcraft",
+      "defEn": "medication (\"pharmacy\"), i.e. (by extension) magic (literally or figuratively)"
+    },
+    {
+      "strong": "G4240",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πραΰτης",
+      "translit": "praÿtēs",
+      "glossEn": "meekness",
+      "defEn": "mildness, i.e. (by implication) humility"
+    },
+    {
+      "strong": "G1667",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἑλίσσω",
+      "translit": "helíssō",
+      "glossEn": "fold up",
+      "defEn": "to coil or wrap"
+    },
+    {
+      "strong": "G1457",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐγκαινίζω",
+      "translit": "enkainízō",
+      "glossEn": "consecrate, dedicate",
+      "defEn": "to renew, i.e. inaugurate"
+    },
+    {
+      "strong": "G4834",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "συμπαθέω",
+      "translit": "sympathéō",
+      "glossEn": "have compassion, be touched with a feeling of",
+      "defEn": "to feel \"sympathy\" with, i.e. (by implication) to commiserate"
+    },
+    {
+      "strong": "G577",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποβάλλω",
+      "translit": "apobállō",
+      "glossEn": "cast away",
+      "defEn": "to throw off; figuratively, to lose"
+    },
+    {
+      "strong": "G3939",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παροικέω",
+      "translit": "paroikéō",
+      "glossEn": "sojourn in, be a stranger",
+      "defEn": "to dwell near, i.e. reside as a foreigner"
+    },
+    {
+      "strong": "G3984",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πεῖρα",
+      "translit": "peîra",
+      "glossEn": "assaying, trial",
+      "defEn": "a test, i.e. attempt, experience"
+    },
+    {
+      "strong": "G2558",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κακουχέω",
+      "translit": "kakouchéō",
+      "glossEn": "which suffer adversity, torment",
+      "defEn": "to maltreat"
+    },
+    {
+      "strong": "G3692",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὀπή",
+      "translit": "opḗ",
+      "glossEn": "cave, place",
+      "defEn": "a hole (as if for light), i.e. cavern; by analogy, a spring (of water)"
+    },
+    {
+      "strong": "G872",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀφοράω",
+      "translit": "aphoráō",
+      "glossEn": "look",
+      "defEn": "to consider attentively"
+    },
+    {
+      "strong": "G3810",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παιδευτής",
+      "translit": "paideutḗs",
+      "glossEn": "which corrected, instructor",
+      "defEn": "a trainer, i.e. teacher or (by implication) discipliner"
+    },
+    {
+      "strong": "G1776",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἐνοχλέω",
+      "translit": "enochléō",
+      "glossEn": "trouble",
+      "defEn": "to crowd in, i.e. (figuratively) to annoy"
+    },
+    {
+      "strong": "G2124",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "εὐλάβεια",
+      "translit": "eulábeia",
+      "glossEn": "fear(-ed)",
+      "defEn": "properly, caution, i.e. (religiously) reverence (piety); by implication, dread (concretely)"
+    },
+    {
+      "strong": "G5381",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φιλονεξία",
+      "translit": "philonexía",
+      "glossEn": "entertain stranger, hospitality",
+      "defEn": "hospitableness"
+    },
+    {
+      "strong": "G3311",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μερισμός",
+      "translit": "merismós",
+      "glossEn": "dividing asunder, gift",
+      "defEn": "a separation or distribution"
+    },
+    {
+      "strong": "G2433",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἱλάσκομαι",
+      "translit": "hiláskomai",
+      "glossEn": "be merciful, make reconciliation for",
+      "defEn": "to conciliate, i.e. (transitively) to atone for (sin), or (intransitively) be propitious"
+    },
+    {
+      "strong": "G3894",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "παραπικρασμός",
+      "translit": "parapikrasmós",
+      "glossEn": "provocation",
+      "defEn": "irritation"
+    },
+    {
+      "strong": "G4360",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "προσοχθίζω",
+      "translit": "prosochthízō",
+      "glossEn": "be grieved at",
+      "defEn": "to feel indignant at"
+    },
+    {
+      "strong": "G3665",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὁμοιότης",
+      "translit": "homoiótēs",
+      "glossEn": "like as, similitude",
+      "defEn": "resemblance"
+    },
+    {
+      "strong": "G5146",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τρίβολος",
+      "translit": "tríbolos",
+      "glossEn": "brier, thistle",
+      "defEn": "properly, a crow-foot (three-pronged obstruction in war), i.e. (by analogy) a thorny plant (caltrop)"
+    },
+    {
+      "strong": "G951",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "βεβαίωσις",
+      "translit": "bebaíōsis",
+      "glossEn": "confirmation",
+      "defEn": "stabiliment"
+    },
+    {
+      "strong": "G1183",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δεκατόω",
+      "translit": "dekatóō",
+      "glossEn": "pay (receive) tithes",
+      "defEn": "to tithe, i.e. to give or take a tenth"
+    },
+    {
+      "strong": "G5050",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "τελείωσις",
+      "translit": "teleíōsis",
+      "glossEn": "perfection, performance",
+      "defEn": "(the act) completion, i.e. (of prophecy) verification, or (of expiation) absolution"
+    },
+    {
+      "strong": "G3549",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "νομοθετέω",
+      "translit": "nomothetéō",
+      "glossEn": "establish, receive the law",
+      "defEn": "to legislate, i.e. (passively) to have (the Mosaic) enactments injoined, be sanctioned (by them)"
+    },
+    {
+      "strong": "G115",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀθέτησις",
+      "translit": "athétēsis",
+      "glossEn": "disannulling, put away",
+      "defEn": "cancellation (literally or figuratively)"
+    },
+    {
+      "strong": "G1095",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "γηράσκω",
+      "translit": "gēráskō",
+      "glossEn": "be (wax) old",
+      "defEn": "to be senescent"
+    },
+    {
+      "strong": "G2053",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἔριον",
+      "translit": "érion",
+      "glossEn": "wool",
+      "defEn": "wool"
+    },
+    {
+      "strong": "G5301",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ὕσσωπος",
+      "translit": "hýssōpos",
+      "glossEn": "hyssop",
+      "defEn": "\"hyssop\""
+    },
+    {
+      "strong": "G1503",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "εἴκω",
+      "translit": "eíkō",
+      "glossEn": "be like",
+      "defEn": "to resemble"
+    },
+    {
+      "strong": "G2830",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "κλύδων",
+      "translit": "klýdōn",
+      "glossEn": "raging, wave",
+      "defEn": "a surge of the sea (literally or figuratively)"
+    },
+    {
+      "strong": "G3633",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "οἴομαι",
+      "translit": "oíomai",
+      "glossEn": "suppose, think",
+      "defEn": "to make like (oneself), i.e. imagine (be of the opinion)"
+    },
+    {
+      "strong": "G4197",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "πορεία",
+      "translit": "poreía",
+      "glossEn": "journey(-ing), ways",
+      "defEn": "travel (by land); figuratively (plural) proceedings, i.e. career"
+    },
+    {
+      "strong": "G658",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποτελέω",
+      "translit": "apoteléō",
+      "glossEn": "finish",
+      "defEn": "to complete entirely, i.e. consummate"
+    },
+    {
+      "strong": "G616",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀποκυέω",
+      "translit": "apokyéō",
+      "glossEn": "beget, produce",
+      "defEn": "to breed forth, i.e. (by transference) to generate (figuratively)"
+    },
+    {
+      "strong": "G1394",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δόσις",
+      "translit": "dósis",
+      "glossEn": "gift, giving",
+      "defEn": "a giving; by implication, (concretely) a gift"
+    },
+    {
+      "strong": "G1434",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "δώρημα",
+      "translit": "dṓrēma",
+      "glossEn": "gift",
+      "defEn": "a bestowment"
+    },
+    {
+      "strong": "G5468",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "χαλιναγωγέω",
+      "translit": "chalinagōgéō",
+      "glossEn": "bridle",
+      "defEn": "to be a bit-leader, i.e. to curb (figuratively)"
+    },
+    {
+      "strong": "G3329",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μετάγω",
+      "translit": "metágō",
+      "glossEn": "turn about",
+      "defEn": "to lead over, i.e. transfer (direct)"
+    },
+    {
+      "strong": "G2116",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "εὐθύνω",
+      "translit": "euthýnō",
+      "glossEn": "governor, make straight",
+      "defEn": "to straighten (level); technically, to steer"
+    },
+    {
+      "strong": "G381",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ἀνάπτω",
+      "translit": "anáptō",
+      "glossEn": "kindle, light",
+      "defEn": "to enkindle"
+    },
+    {
+      "strong": "G4695",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "σπιλόω",
+      "translit": "spilóō",
+      "glossEn": "defile, spot",
+      "defEn": "to stain or soil (literally or figuratively)"
+    },
+    {
+      "strong": "G5394",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "φλογίζω",
+      "translit": "phlogízō",
+      "glossEn": "set on fire",
+      "defEn": "to cause a blaze, i.e. ignite (figuratively, to inflame with passion)"
+    },
+    {
+      "strong": "G5004",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "ταλαιπωρία",
+      "translit": "talaipōría",
+      "glossEn": "misery",
+      "defEn": "wretchedness, i.e. calamity"
+    },
+    {
+      "strong": "G3106",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "μακαρίζω",
+      "translit": "makarízō",
+      "glossEn": "call blessed, count happy",
+      "defEn": "to beatify, i.e. pronounce (or esteem) fortunate"
+    }
+  ]
+}

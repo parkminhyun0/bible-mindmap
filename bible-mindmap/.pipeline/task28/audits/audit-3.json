@@ -1,0 +1,74 @@
+[
+  {
+    "strong": "H7764",
+    "field": "translitKo",
+    "current": "수니",
+    "suggested": "슈니",
+    "evidence": "WORKER_SPEC 확정 규칙 3은 음절 첫소리의 שׁ를 샤/셰/시/쇼/슈 계열로 적도록 한다. 같은 배포 선례의 שׁוֹרֵשׁ은 쇼레쉬다.",
+    "severity": "medium",
+    "reason": "어두 שׁ를 '수'로 적어, 뒤 모음에 따른 슈 계열 표기와 어긋난다."
+  },
+  {
+    "strong": "H5562",
+    "field": "translitKo",
+    "current": "삼가르 느보",
+    "suggested": "삼가르 네보",
+    "evidence": "WORKER_SPEC는 유성 쉐바 ĕ의 배포 표기를 '네-' 계열로 제시하고, 같은 규칙의 H5665 ʿăbēd nĕgôʾ를 '아베드 네고'로 선례화한다.",
+    "severity": "medium",
+    "reason": "둘째 낱말의 유성 쉐바 nĕ-를 '느-'로 적었다."
+  },
+  {
+    "strong": "H8310",
+    "field": "translitKo",
+    "current": "사르스킴",
+    "suggested": "사르세킴",
+    "evidence": "WORKER_SPEC는 유성 쉐바 ĕ를 배포에서 '네-' 계열로 표기한다고 명시한다.",
+    "severity": "medium",
+    "reason": "두 번째 음절의 ĕ를 '스'로 처리해 유성 쉐바 표기 원칙과 맞지 않는다."
+  },
+  {
+    "strong": "H2813",
+    "field": "translitKo",
+    "current": "하샤브느야",
+    "suggested": "하샤브네야",
+    "evidence": "WORKER_SPEC는 유성 쉐바 ĕ를 배포에서 '네-' 계열로 표기한다고 명시한다.",
+    "severity": "medium",
+    "reason": "-nĕ-를 '느-'로 적어 유성 쉐바 표기와 어긋난다."
+  },
+  {
+    "strong": "H4850",
+    "field": "translitKo",
+    "current": "므라타임",
+    "suggested": "메라타임",
+    "evidence": "같은 final.json의 H4781 note가 배포 데이터에서 어두 쉐바 mĕ-를 '메-'로 적어 왔다고 명시한다.",
+    "severity": "medium",
+    "reason": "어두 유성 쉐바 mĕ-를 '므-'로 적어 같은 파일이 인용한 배포 선례와 모순된다."
+  },
+  {
+    "strong": "H4967",
+    "field": "translitKo",
+    "current": "므투샤엘",
+    "suggested": "메투샤엘",
+    "evidence": "같은 final.json의 H4781 note가 배포 데이터에서 어두 쉐바 mĕ-를 '메-'로 적어 왔다고 명시한다.",
+    "severity": "medium",
+    "reason": "어두 유성 쉐바 mĕ-를 '므-'로 적어 배포 선례와 어긋난다."
+  },
+  {
+    "strong": "H5624",
+    "field": "translitKo",
+    "current": "세렛",
+    "suggested": "세레드",
+    "evidence": "배포 선례는 어말 ד를 받침이 아닌 '드'로 적는다(H259 ʾeḥād→에하드, H5650 ʿebed→에베드). WORKER_SPEC도 학술 표기를 배포 선례와 일관되게 유지하도록 한다.",
+    "severity": "high",
+    "reason": "어말 ד를 'ㅅ' 받침으로 적어 배포의 어말 d→드 표기와 정면으로 갈린다."
+  },
+  {
+    "strong": "H2888",
+    "field": "translitKo",
+    "current": "타밧",
+    "suggested": "타바트",
+    "evidence": "WORKER_SPEC 확정 규칙 2는 다게쉬 포르테를 한글에서 중복 자음으로 적지 않는다. 또한 배포의 어말 ת는 H1394 Gibʿat→기브아트, H2578 ḥămat→하마트처럼 '트'다.",
+    "severity": "high",
+    "reason": "ּב를 중복 자음으로 처리하지 않아야 하는데 첫 음절을 '밧'으로 굳혔고, 어말 ת도 'ㅅ' 받침으로 적었다."
+  }
+]

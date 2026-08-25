@@ -1,0 +1,397 @@
+{
+  "model": "gem31pro",
+  "rulings": [
+    {
+      "strong": "G883",
+      "translit": "Achaïkós",
+      "translitKo": "아카이코스",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H6318",
+      "translit": "pôṭîpar",
+      "translitKo": "포티파르",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H2265",
+      "translit": "ḥăbaqqûq",
+      "translitKo": "하바쿠크",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H3818",
+      "translit": "lōʾ ʿammî",
+      "translitKo": "로 아미",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이, ע은 따로 표기하지 않음"
+    },
+    {
+      "strong": "G4551",
+      "translit": "Sappheírē",
+      "translitKo": "사페이레",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G3434",
+      "translit": "Molóch",
+      "translitKo": "몰로크",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G4546",
+      "translit": "Sampsṓn",
+      "translitKo": "삼프손",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G2422",
+      "translit": "Iephtháe",
+      "translitKo": "이에프타에",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G993",
+      "translit": "Boanergés",
+      "translitKo": "보아네르게스",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G4477",
+      "translit": "Rhacháb",
+      "translitKo": "라카브",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이, 어두 ῥ에 흐를 붙이지 않음"
+    },
+    {
+      "strong": "G4503",
+      "translit": "Rhoúth",
+      "translitKo": "루트",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이, 어두 ῥ에 흐를 붙이지 않음"
+    },
+    {
+      "strong": "G3774",
+      "translit": "Ourías",
+      "translitKo": "우리아스",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G2403",
+      "translit": "Iezabḗl",
+      "translitKo": "이에자벨",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "G5617",
+      "translit": "Hōsēé",
+      "translitKo": "호세에",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H1112",
+      "translit": "bēlšaʾṣṣar",
+      "translitKo": "벨샤차르",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H2157",
+      "translit": "zamzōm",
+      "translitKo": "잠좀",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H968",
+      "translit": "biztāʾ",
+      "translitKo": "비즈타",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H903",
+      "translit": "bigtāʾ",
+      "translitKo": "비그타",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H8190",
+      "translit": "šaʿašgaz",
+      "translitKo": "샤아쉬가즈",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이, ע은 따로 표기하지 않음"
+    },
+    {
+      "strong": "H630",
+      "translit": "ʾaspātāʾ",
+      "translitKo": "아스파타",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H6534",
+      "translit": "parmaštāʾ",
+      "translitKo": "파르마쉬타",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H2055",
+      "translit": "wayzātāʾ",
+      "translitKo": "와이자타",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H8236",
+      "translit": "šiprâ",
+      "translitKo": "시프라",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H6326",
+      "translit": "pûʿâ",
+      "translitKo": "푸아",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이, ע은 따로 표기하지 않음"
+    },
+    {
+      "strong": "H3112",
+      "translit": "yôyākîn",
+      "translitKo": "요야킨",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H1380",
+      "translit": "gəbal",
+      "translitKo": "게발",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기와 차이"
+    },
+    {
+      "strong": "H1689",
+      "translit": "diblâ",
+      "translitKo": "디블라",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H2657",
+      "translit": "ḥepṣî bāh",
+      "translitKo": "헵시바",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름(헵시바)"
+    },
+    {
+      "strong": "H192",
+      "translit": "ʾĕwîl mərōdak",
+      "translitKo": "에윌므로닥",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H1996",
+      "translit": "hămôn gôg",
+      "translitKo": "하몬곡",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H7294",
+      "translit": "rahab",
+      "translitKo": "라합",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H2606",
+      "translit": "ḥănanʾēl",
+      "translitKo": "하나넬",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H4956",
+      "translit": "miśrəpôt mayim",
+      "translitKo": "미스르봇 마임",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H392",
+      "translit": "ʾakzîb",
+      "translitKo": "악십",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H3317",
+      "translit": "yiptaḥ-ʾēl",
+      "translitKo": "입다엘",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "H5963",
+      "translit": "ʿalmōn diblātāymâ",
+      "translitKo": "알몬디블라다임",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G2459",
+      "translit": "Ioûstos",
+      "translitKo": "유스도",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G1675",
+      "translit": "Hellēnistḗs",
+      "translitKo": "헬라",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름(헬라파/헬라인)"
+    },
+    {
+      "strong": "G3019",
+      "translit": "Leuḯtēs",
+      "translitKo": "레위인",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G1802",
+      "translit": "Enṓch",
+      "translitKo": "에녹",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G2195",
+      "translit": "Zakchaîos",
+      "translitKo": "삭개오",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G4528",
+      "translit": "Salathiḗl",
+      "translitKo": "스알디엘",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G1662",
+      "translit": "Eliakeím",
+      "translitKo": "엘리아김",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": "관용 표기를 따름"
+    },
+    {
+      "strong": "G3476",
+      "translit": "Naassṓn",
+      "translitKo": "나아쏜",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G1082",
+      "translit": "Gennēsarét",
+      "translitKo": "게네사렛",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G2500",
+      "translit": "Iōsēs",
+      "translitKo": "요세스",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "G3128",
+      "translit": "Manassēs",
+      "translitKo": "마나쎄스",
+      "evidence": "src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch13.js; src/data/koreanGlossTopBatch17.js의 헬라어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H4017",
+      "translit": "Miḇsām",
+      "translitKo": "밉삼",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H1609",
+      "translit": "Gaʿtām",
+      "translitKo": "갓탐",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H4105",
+      "translit": "Mᵉhêṭaḇʾēl",
+      "translitKo": "메헤타브엘",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H3434",
+      "translit": "Yāšoḇʿām",
+      "translitKo": "야쇼브암",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H6909",
+      "translit": "Qaḇṣᵉʾēl",
+      "translitKo": "갑체엘",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H6142",
+      "translit": "ʿIqqēš",
+      "translitKo": "익케쉬",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H5294",
+      "translit": "Nᵉʿaryāh",
+      "translitKo": "느아랴",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H1705",
+      "translit": "Dᵃḇᵉrat",
+      "translitKo": "다브랏",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    },
+    {
+      "strong": "H3037",
+      "translit": "Yaddûaʿ",
+      "translitKo": "얏두아",
+      "evidence": "src/data/koreanGlossTopBatch04.js; src/data/koreanGlossTopBatch06.js; src/data/koreanGlossTopBatch11.js의 히브리어 음역 선례",
+      "note": ""
+    }
+  ]
+}

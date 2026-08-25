@@ -1,0 +1,548 @@
+{
+  "items": [
+    {
+      "shard": "BN",
+      "strong": "H245",
+      "lemma": "אֲזַנְיָה",
+      "lang": "hebrew",
+      "glossEn": "Azaniah.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾăzanyāh",
+          "translitKo": "아자느야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾĂzanyāh",
+          "translitKo": "아자냐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾAzanyāh",
+          "translitKo": "아자냐",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾăzanyâ",
+          "translitKo": "아잔야",
+          "note": "어말 -יָה를 -야로 적는 배포 선례(네탄야·셰반야)를 따른다. 관용 표기(아사냐)와 다르다."
+        }
+      ]
+    },
+    {
+      "shard": "BN",
+      "strong": "H1148",
+      "lemma": "בְּנִינוּ",
+      "lang": "hebrew",
+      "glossEn": "Beninu.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bənînû",
+          "translitKo": "브니누",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Bənînû",
+          "translitKo": "브니누",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Bĕnînû",
+          "translitKo": "베니누",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bĕnînû",
+          "translitKo": "베니누",
+          "note": "관용 표기(브니누)와 달리 유성 셰바를 에로 적는 배포 선례(예후다·셰마야)를 따른다."
+        }
+      ]
+    },
+    {
+      "shard": "BN",
+      "strong": "H5041",
+      "lemma": "נְבַלָּט",
+      "lang": "hebrew",
+      "glossEn": "Neballat.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nəballāṭ",
+          "translitKo": "느발라트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Nəballāṭ",
+          "translitKo": "느발라트",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Nĕballāṭ",
+          "translitKo": "네발랏",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nĕballāṭ",
+          "translitKo": "네발라트",
+          "note": "다게쉬 포르테는 한글에서 겹쳐 적지 않는다. 관용 표기(느발랏)와 다르다."
+        }
+      ]
+    },
+    {
+      "shard": "BN",
+      "strong": "H4811",
+      "lemma": "מְרָיָה",
+      "lang": "hebrew",
+      "glossEn": "Meraiah. Compare H3236 (יִמְרָה).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "mərāyāh",
+          "translitKo": "므라야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Mərāyāh",
+          "translitKo": "므라야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Mĕrāyāh",
+          "translitKo": "메라야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "mĕrāyâ",
+          "translitKo": "메라야",
+          "note": "관용 표기(므라야)와 달리 유성 셰바를 에로 적는다."
+        }
+      ]
+    },
+    {
+      "shard": "BN",
+      "strong": "H797",
+      "lemma": "אַשְׁדּוֹדִית",
+      "lang": "hebrew",
+      "glossEn": "in the speech of Ashdod.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾašdōdît",
+          "translitKo": "아슈도딧",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾAšdôdît",
+          "translitKo": "아쉬도딧",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾAšdôḏît",
+          "translitKo": "아슈돗",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾašdôdît",
+          "translitKo": "아쉬도디트",
+          "note": "아스돗(ʾašdôd)에서 온 형용사·부사형이다. 음절 말 שׁ는 쉬로 적어 지명 관용 표기(아스돗)와 갈린다."
+        }
+      ]
+    },
+    {
+      "shard": "BN",
+      "strong": "H1152",
+      "lemma": "בְּסוֹדְיָה",
+      "lang": "hebrew",
+      "glossEn": "Besodeiah.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "bəsōḏyāh",
+          "translitKo": "브소드야",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "Bəsôdyāh",
+          "translitKo": "브소드야",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "Bĕsôdyāh",
+          "translitKo": "베소드야",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "bĕsôdyâ",
+          "translitKo": "베소드야",
+          "note": "자음 ד + יָה는 드야로 적는다. 관용 표기(브소드야)와 다르다."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H5149",
+      "lemma": "נְחוּם",
+      "lang": "hebrew",
+      "glossEn": "Nehum.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nĕḥûm",
+          "translitKo": "네훔",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nəḥûm",
+          "translitKo": "느훔",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nəḥûm",
+          "translitKo": "느훔",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nĕḥûm",
+          "translitKo": "네훔",
+          "note": "유성 셰바를 에로 적는 선례(메누하·베리트)를 따랐다. 개역 관용 표기는 느훔."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H5300",
+      "lemma": "נְפוּשְׁסִים",
+      "lang": "hebrew",
+      "glossEn": "Nephisesim (from the margin).",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "nĕpûšĕsîm",
+          "translitKo": "네푸셰심",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "nəpûšəsîm",
+          "translitKo": "느푸셰심",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "nəp̄ûšəsîm",
+          "translitKo": "느푸셰심",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "nĕpûšĕsîm",
+          "translitKo": "네푸셰심",
+          "note": "장모음 뒤 셰바를 유성으로 보아 שׁ를 음절 첫소리(셰)로 적었다. 케티브·케레가 갈리는 낱말이며 개역 관용 표기는 느부심."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H3662",
+      "lemma": "כְּנָנִי",
+      "lang": "hebrew",
+      "glossEn": "Chenani.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "kĕnānî",
+          "translitKo": "케나니",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "kənānî",
+          "translitKo": "크나니",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "kənānî",
+          "translitKo": "크나니",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "kĕnānî",
+          "translitKo": "케나니",
+          "note": "개역 관용 표기는 그나니."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H1427",
+      "lemma": "גַּדִּיאֵל",
+      "lang": "hebrew",
+      "glossEn": "Gaddiel.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gaddîʾēl",
+          "translitKo": "가디엘",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gaddîʾēl",
+          "translitKo": "갓디엘",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gaddîʾēl",
+          "translitKo": "갇디엘",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gaddîʾēl",
+          "translitKo": "가디엘",
+          "note": "개역 관용 표기는 갓디엘."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H1426",
+      "lemma": "גַּדִּי",
+      "lang": "hebrew",
+      "glossEn": "Gaddi.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "gaddî",
+          "translitKo": "가디",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "gaddî",
+          "translitKo": "갓디",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "gaddî",
+          "translitKo": "갇디",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "gaddî",
+          "translitKo": "가디",
+          "note": "개역 관용 표기는 갓디."
+        }
+      ]
+    },
+    {
+      "shard": "BO",
+      "strong": "H2058",
+      "lemma": "וׇפְסִי",
+      "lang": "hebrew",
+      "glossEn": "Vophsi.",
+      "reason": "no-majority",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "wop̄sî",
+          "translitKo": "옵시",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "wopsî",
+          "translitKo": "옵시",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "wāp̄sî",
+          "translitKo": "왑시",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "wopsî",
+          "translitKo": "워프시",
+          "note": "어두 ו는 w로 보고 카마츠 카탄과 합쳐 워로 적는다. 개역 관용 표기는 워시."
+        }
+      ]
+    },
+    {
+      "shard": "BP",
+      "strong": "H3020",
+      "lemma": "יׇגְלִי",
+      "lang": "hebrew",
+      "glossEn": "Jogli.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "yoglı̂",
+          "translitKo": "요글리",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "yāglî",
+          "translitKo": "야글리",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "yāglî",
+          "translitKo": "야글리",
+          "note": "관용 영어 표기 Jogli와 다를 수 있음."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "yoglî",
+          "translitKo": "요글리",
+          "note": "첫 모음이 카마츠 카탄(U+05C7)이라 o로 읽었다."
+        }
+      ]
+    },
+    {
+      "shard": "BP",
+      "strong": "H6535",
+      "lemma": "פַּרְנַךְ",
+      "lang": "hebrew",
+      "glossEn": "Parnach.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "parnaḵ",
+          "translitKo": "파르나크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "parnaḵ",
+          "translitKo": "파르나흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "parnaḵ",
+          "translitKo": "파르나흐",
+          "note": "관용 영어 표기 Parnak과 다를 수 있음."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "parnak",
+          "translitKo": "파르나크",
+          "note": "개역개정 관용 표기는 '바르낙'(민 34:25)이다. 다게쉬가 든 פּ는 p, 어말 ךְ는 선례(דֶּרֶךְ→데레크)대로 '크'로 적었다."
+        }
+      ]
+    },
+    {
+      "shard": "BP",
+      "strong": "H360",
+      "lemma": "אֱיָלוּת",
+      "lang": "hebrew",
+      "glossEn": "strength.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ʾĕyālûṯ",
+          "translitKo": "엘루트",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ʾĕyālût",
+          "translitKo": "엘라웃",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ʾĕyālût",
+          "translitKo": "엘랴우트",
+          "note": ""
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ʾĕyālût",
+          "translitKo": "에얄루트",
+          "note": ""
+        }
+      ]
+    },
+    {
+      "shard": "BP",
+      "strong": "H2317",
+      "lemma": "חַדְרָךְ",
+      "lang": "hebrew",
+      "glossEn": "Hadrach.",
+      "reason": "tie",
+      "options": [
+        {
+          "model": "codex",
+          "translit": "ḥaḏrāḵ",
+          "translitKo": "하드라크",
+          "note": ""
+        },
+        {
+          "model": "gem31pro",
+          "translit": "ḥadrāḵ",
+          "translitKo": "하드라흐",
+          "note": ""
+        },
+        {
+          "model": "gem37flash",
+          "translit": "ḥadraḵ",
+          "translitKo": "하드라흐",
+          "note": "관용 영어 표기 Chadrak과 다를 수 있음."
+        },
+        {
+          "model": "claudeopus5",
+          "translit": "ḥadrāk",
+          "translitKo": "하드라크",
+          "note": "개역개정 관용 표기는 '하드락'(슥 9:1)이다. 어말 ךְ는 선례(תָּוֶךְ→타웨크)대로 '크'로 적었다."
+        }
+      ]
+    }
+  ]
+}
