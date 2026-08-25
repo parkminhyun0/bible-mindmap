@@ -8,10 +8,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-const [taskArg = 'task13', ...shardArgs] = process.argv.slice(2);
+const [taskArg = 'task26', ...shardArgs] = process.argv.slice(2);
 const T7 = path.join(ROOT, `.pipeline/${taskArg}`);
-const SHARDS = ['X', 'Y', 'Z'];
-const MODELS = ['codex', 'gem31pro', 'gem37flash', 'gem36flash', 'claudeopus5'];
+const SHARDS = ["BE","BF","BG"];
+const MODELS = ["codex","gem31pro","gem37flash","claudeopus5"];
 const MAJORITY = 3;
 
 const norm = (s) => String(s ?? '').normalize('NFC').replace(/\s+/g, ' ').trim();

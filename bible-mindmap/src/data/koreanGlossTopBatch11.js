@@ -2434,7 +2434,7 @@ export const KOREAN_GLOSS_TOP_BATCH_11 = {
 };
 
 export const KOREAN_GLOSS_TOP_BATCH_11_META = {
-  batchId: 'top-frequency-batch-08',
+  batchId: 'top-frequency-batch-11',
   status: 'candidate',
   entryCount: 300,
   reviewedCount: 300,

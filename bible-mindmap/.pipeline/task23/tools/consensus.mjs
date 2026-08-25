@@ -108,7 +108,11 @@ for (const shard of SHARDS) {
 fs.writeFileSync(
   path.join(T7, 'consensus.json'),
   `${JSON.stringify({
-    batchId: `top-frequency-batch-${taskArg === 'task23' ? '08' : '07'}`,
+    /* 배치 번호는 task 번호에서 유도한다. 앞 판본은
+       `taskArg === 'task14' ? '08' : '07'` 처럼 그때그때 분기를 박았고, 그것이
+       다음 배치로 계속 복사돼 batch 09 부터 열 개가 모두 같은 id 를 달았다.
+       id 로 배치를 찾는 코드는 전부 엉뚱한 배치를 가리켰다. */
+    batchId: `top-frequency-batch-${String(Number(String(taskArg).replace('task','')) - 4).padStart(2, '0')}`,
     models: MODELS,
     majorityThreshold: MAJORITY,
     totals: { settled: settled.length, disputed: disputed.length },

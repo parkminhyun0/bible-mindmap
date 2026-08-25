@@ -102,7 +102,7 @@ for (const strong of order) {
 lines.push('};');
 lines.push('');
 lines.push(`export const ${CONST}_META = {
-  batchId: '${consensus.batchId}',
+  batchId: 'top-frequency-batch-${batchNo}',
   status: 'candidate',
   entryCount: ${order.length},
   reviewedCount: ${order.length},
