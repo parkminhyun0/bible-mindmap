@@ -1,6 +1,6 @@
 // 66권 빈도 상위 Strong 한글 음역 확장 · batch 18
 //
-// 범위: 300개. 히브리어 77개 · 헬라어 223개,
+// 범위: 297개. 히브리어 77개 · 헬라어 220개,
 //       빈도 4회~2회.
 //
 // 표기 원칙: batch 02 에서 확정한 규칙을 그대로 따른다. 규칙은 표결이 아니라
@@ -1199,14 +1199,6 @@ export const KOREAN_GLOSS_TOP_BATCH_18 = {
     note: '네 모델이 독립으로 만든 음역안이 모두 일치했다.',
     review: true,
   },
-  G6031: {
-    lemma: 'ἐλεγμός',
-    translit: 'elegmós',
-    translitKo: '엘레그모스',
-    glossKo: '',
-    note: '네 모델 중 3개가 같은 음역안을 냈다. 입력에 라틴 음역이 비어 있어 lemma ἐλεγμός 에서 직접 채웠다.',
-    review: true,
-  },
   G1882: {
     lemma: 'ἐπανόρθωσις',
     translit: 'epanórthōsis',
@@ -1349,14 +1341,6 @@ export const KOREAN_GLOSS_TOP_BATCH_18 = {
     translitKo: '아포카타스타시스',
     glossKo: 'restitution',
     note: '네 모델이 독립으로 만든 음역안이 모두 일치했다.',
-    review: true,
-  },
-  G6065: {
-    lemma: 'οἰκοδόμος',
-    translit: 'oikodómos',
-    translitKo: '오이코도모스',
-    glossKo: '',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 입력에 라틴 음역이 비어 있어 lemma οἰκοδόμος 에서 직접 채웠다.',
     review: true,
   },
   G2561: {
@@ -1749,14 +1733,6 @@ export const KOREAN_GLOSS_TOP_BATCH_18 = {
     translitKo: '막달라',
     glossKo: 'Magdala',
     note: '네 모델 중 3개가 같은 음역안을 냈다.',
-    review: true,
-  },
-  G6066: {
-    lemma: 'ὀλιγοπιστία',
-    translit: 'oligopistía',
-    translitKo: '올리고피스티아',
-    glossKo: '',
-    note: '네 모델이 독립으로 만든 음역안이 모두 일치했다. 권위 사전에 라틴 음역이 없어 직접 채웠다.',
     review: true,
   },
   G5440: {
@@ -2436,8 +2412,8 @@ export const KOREAN_GLOSS_TOP_BATCH_18 = {
 export const KOREAN_GLOSS_TOP_BATCH_18_META = {
   batchId: 'top-frequency-batch-08',
   status: 'candidate',
-  entryCount: 300,
-  reviewedCount: 300,
+  entryCount: 297,
+  reviewedCount: 297,
   pendingCount: 0,
   scope: '66권 전체 빈도 상위 후보 중 batch 17 이후 남은 미수록 항목',
   unanimousCount: 238,
