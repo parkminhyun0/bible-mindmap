@@ -1,0 +1,707 @@
+{
+  "shard": "AV",
+  "model": "claudeopus5",
+  "count": 100,
+  "entries": [
+    {
+      "strong": "G5359",
+      "lemma": "Φιλαδέλφεια",
+      "translit": "Philadélpheia",
+      "translitKo": "필라델페이아",
+      "note": "-φεια는 배포 선례 아폴레이아(apṓleia)대로 페이아로 적었다. 개역 관용 표기는 빌라델비아이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G2166",
+      "lemma": "Εὐφράτης",
+      "translit": "Euphrátēs",
+      "translitKo": "유프라테스",
+      "note": "ευ는 확정 규칙대로 유 계열 한 음절로 적었다. 개역 관용 표기는 유브라데이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G4681",
+      "lemma": "Σπανία",
+      "translit": "Spanía",
+      "translitKo": "스파니아",
+      "note": "개역 관용 표기는 서바나(라틴 Hispania 경유)이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "G3533",
+      "lemma": "Νικόπολις",
+      "translit": "Nikópolis",
+      "translitKo": "니코폴리스",
+      "note": "-πολις는 배포 선례 폴리스(pólis)대로 적었다. 개역 관용 표기는 니고볼리이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H5320",
+      "lemma": "נַפְתֻּחִים",
+      "translit": "naptuḥîm",
+      "translitKo": "나프투힘",
+      "note": ""
+    },
+    {
+      "strong": "H3695",
+      "lemma": "כַּסְלֻחִים",
+      "translit": "kasluḥîm",
+      "translitKo": "카슬루힘",
+      "note": "자음 뒤 l 은 배포 선례 치클라그·미클라트·시클루트대로 앞 음절 받침 ㄹ로 붙여 적었다."
+    },
+    {
+      "strong": "H2700",
+      "lemma": "חֲצַרְמָוֶת",
+      "translit": "ḥăṣarmāwet",
+      "translitKo": "하차르마웨트",
+      "note": "자음 ו는 w로 보아 웨로 적었다."
+    },
+    {
+      "strong": "H3392",
+      "lemma": "יֶרַח",
+      "translit": "yeraḥ",
+      "translitKo": "예라흐",
+      "note": ""
+    },
+    {
+      "strong": "H1853",
+      "lemma": "דִּקְלָה",
+      "translit": "diqlâ",
+      "translitKo": "디클라",
+      "note": "자음 뒤 l 은 배포 선례 치클라그·미클라트대로 앞 음절 받침 ㄹ로 붙여 적었다."
+    },
+    {
+      "strong": "H1838",
+      "lemma": "דִּנְהָבָה",
+      "translit": "dinhābâ",
+      "translitKo": "딘하바",
+      "note": ""
+    },
+    {
+      "strong": "H911",
+      "lemma": "בְּדַד",
+      "translit": "bĕdad",
+      "translitKo": "베다드",
+      "note": ""
+    },
+    {
+      "strong": "H5762",
+      "lemma": "עֲוִית",
+      "translit": "ʿăwît",
+      "translitKo": "아위트",
+      "note": "자음 ו는 w로 보아 위로 적었고, 어두 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H6464",
+      "lemma": "פָּעוּ",
+      "translit": "pāʿû",
+      "translitKo": "파우",
+      "note": "ע는 한글로 따로 적지 않아 파우가 된다."
+    },
+    {
+      "strong": "H4308",
+      "lemma": "מַטְרֵד",
+      "translit": "maṭrēd",
+      "translitKo": "마트레드",
+      "note": ""
+    },
+    {
+      "strong": "H3509",
+      "lemma": "יְתֵת",
+      "translit": "yĕtēt",
+      "translitKo": "예테트",
+      "note": ""
+    },
+    {
+      "strong": "H6450",
+      "lemma": "פַּס דַּמִּים",
+      "translit": "pas dammîm",
+      "translitKo": "파스 담밈",
+      "note": "두 낱말 사이 공백은 그대로 두었다. ㅁ은 다게쉬 포르테 비중복 규칙에서 빠지므로 담밈으로 적었다."
+    },
+    {
+      "strong": "H7079",
+      "lemma": "קְנָת",
+      "translit": "qĕnāt",
+      "translitKo": "케나트",
+      "note": ""
+    },
+    {
+      "strong": "H3613",
+      "lemma": "כָּלֵב אֶפְרָתָה",
+      "translit": "kālēb ʾeprātâ",
+      "translitKo": "칼레브 에프라타",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 개역 관용 표기는 갈렙 에브라다이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H3398",
+      "lemma": "יַרְחָע",
+      "translit": "yarḥāʿ",
+      "translitKo": "야르하",
+      "note": "어말 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H4089",
+      "lemma": "מַדְמַנָּה",
+      "translit": "madmannâ",
+      "translitKo": "마드만나",
+      "note": "ㄴ은 다게쉬 포르테 비중복 규칙에서 빠지므로 만나로 적었다."
+    },
+    {
+      "strong": "H1013",
+      "lemma": "בֵּית־גָּדֵר",
+      "translit": "bêt-gādēr",
+      "translitKo": "베트가데르",
+      "note": "마케프는 라틴에서 붙임표로 두되 한글에서는 배포 선례 엔도르·라브사리스대로 붙여 적었다."
+    },
+    {
+      "strong": "H2702",
+      "lemma": "חֲצַר סוּסִים",
+      "translit": "ḥăṣar sûsîm",
+      "translitKo": "하차르 수심",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H1011",
+      "lemma": "בֵּית בִּרְאִי",
+      "translit": "bêt birʾî",
+      "translitKo": "베트 비르이",
+      "note": "묵음 א는 한글로 따로 적지 않았다(선례 티글라트 필에세르)."
+    },
+    {
+      "strong": "H438",
+      "lemma": "אַלּוֹן",
+      "translit": "ʾallôn",
+      "translitKo": "알론",
+      "note": ""
+    },
+    {
+      "strong": "H3361",
+      "lemma": "יׇקְמְעָם",
+      "translit": "yoqmĕʿām",
+      "translitKo": "요크메암",
+      "note": "카메츠 카탄은 o로, ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H2712",
+      "lemma": "חֻקֹּק",
+      "translit": "ḥuqqōq",
+      "translitKo": "후콕",
+      "note": ""
+    },
+    {
+      "strong": "H2540",
+      "lemma": "חַמּוֹן",
+      "translit": "ḥammôn",
+      "translitKo": "함몬",
+      "note": "ㅁ은 다게쉬 포르테 비중복 규칙에서 빠지므로 함몬으로 적었다."
+    },
+    {
+      "strong": "H7177",
+      "lemma": "קַרְתָּה",
+      "translit": "qartâ",
+      "translitKo": "카르타",
+      "note": ""
+    },
+    {
+      "strong": "H1260",
+      "lemma": "בֶּרֶד",
+      "translit": "bered",
+      "translitKo": "베레드",
+      "note": ""
+    },
+    {
+      "strong": "H242",
+      "lemma": "אֻזֵּן שֶׁאֱרָה",
+      "translit": "ʾuzzēn šeʾĕrâ",
+      "translitKo": "우젠 셰에라",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 뒤에 모음이 오는 שׁ는 셰로 적었다."
+    },
+    {
+      "strong": "H7777",
+      "lemma": "שׁוּעָל",
+      "translit": "šûʿāl",
+      "translitKo": "슈알",
+      "note": "ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H146",
+      "lemma": "אַדָּר",
+      "translit": "ʾaddār",
+      "translitKo": "아다르",
+      "note": ""
+    },
+    {
+      "strong": "H1592",
+      "lemma": "גְּנֻבַת",
+      "translit": "gĕnubat",
+      "translitKo": "게누바트",
+      "note": ""
+    },
+    {
+      "strong": "H6868",
+      "lemma": "צְרֵדָה",
+      "translit": "ṣĕrēdâ",
+      "translitKo": "체레다",
+      "note": ""
+    },
+    {
+      "strong": "H3747",
+      "lemma": "כְּרִית",
+      "translit": "kĕrît",
+      "translitKo": "케리트",
+      "note": "개역 관용 표기는 그릿이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H8607",
+      "lemma": "תִּפְסַח",
+      "translit": "tipsaḥ",
+      "translitKo": "티프사흐",
+      "note": ""
+    },
+    {
+      "strong": "H8412",
+      "lemma": "תַּדְמֹר",
+      "translit": "tadmōr",
+      "translitKo": "타드모르",
+      "note": "개역 관용 표기는 다드몰이나 학술 표기를 표제로 둔다."
+    },
+    {
+      "strong": "H7436",
+      "lemma": "רָמָתַיִם צוֹפִים",
+      "translit": "rāmātayim ṣôpîm",
+      "translitKo": "라마타임 초핌",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H6650",
+      "lemma": "צְבֹעִים",
+      "translit": "ṣĕbōʿîm",
+      "translitKo": "체보임",
+      "note": "ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H658",
+      "lemma": "אֶפֶס דַּמִּים",
+      "translit": "ʾepes dammîm",
+      "translitKo": "에페스 담밈",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H5555",
+      "lemma": "סֶלַע הַמַּחְלְקוֹת",
+      "translit": "selaʿ hammaḥlĕqôt",
+      "translitKo": "셀라 함마흘레코트",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 자음 뒤 l 은 선례 마흘리(maḥlî)대로 받침 ㄹ로 붙여 적었다."
+    },
+    {
+      "strong": "H1554",
+      "lemma": "גַּלִּים",
+      "translit": "gallîm",
+      "translitKo": "갈림",
+      "note": ""
+    },
+    {
+      "strong": "H3565",
+      "lemma": "כּוֹר עָשָׁן",
+      "translit": "kôr ʿāšān",
+      "translitKo": "코르 아샨",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 어두 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H1033",
+      "lemma": "בֵּית כַּר",
+      "translit": "bêt kar",
+      "translitKo": "베트 카르",
+      "note": "두 낱말 사이 공백은 그대로 두었다(선례 베트 할라흐미)."
+    },
+    {
+      "strong": "H6787",
+      "lemma": "צְמָרַיִם",
+      "translit": "ṣĕmārayim",
+      "translitKo": "체마라임",
+      "note": ""
+    },
+    {
+      "strong": "H3466",
+      "lemma": "יְשָׁנָה",
+      "translit": "yĕšānâ",
+      "translitKo": "예샤나",
+      "note": ""
+    },
+    {
+      "strong": "H66",
+      "lemma": "אַבֵל מַיִם",
+      "translit": "ʾabēl mayim",
+      "translitKo": "아벨 마임",
+      "note": "두 낱말 사이 공백은 그대로 두었다(선례 아벨 메홀라)."
+    },
+    {
+      "strong": "H1485",
+      "lemma": "גּוּר־בַּעַל",
+      "translit": "gûr-baʿal",
+      "translitKo": "구르바알",
+      "note": "마케프는 한글에서 붙여 적었다. ע는 한글로 따로 적지 않아 바알이 된다."
+    },
+    {
+      "strong": "H3371",
+      "lemma": "יׇקְתְאֵל",
+      "translit": "yoqtĕʾēl",
+      "translitKo": "요크테엘",
+      "note": "카메츠 카탄은 o로 적었다."
+    },
+    {
+      "strong": "H3575",
+      "lemma": "כּוּת",
+      "translit": "kût",
+      "translitKo": "쿠트",
+      "note": ""
+    },
+    {
+      "strong": "H7316",
+      "lemma": "רוּמָה",
+      "translit": "rûmâ",
+      "translitKo": "루마",
+      "note": ""
+    },
+    {
+      "strong": "H1190",
+      "lemma": "בַּעַל שָׁלִשָׁה",
+      "translit": "baʿal šālišâ",
+      "translitKo": "바알 샬리샤",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 모음 사이 l 은 선례 갈릴·칼리대로 ㄹㄹ로 적었다."
+    },
+    {
+      "strong": "H549",
+      "lemma": "אֲמָנָה",
+      "translit": "ʾămānâ",
+      "translitKo": "아마나",
+      "note": ""
+    },
+    {
+      "strong": "H2431",
+      "lemma": "חֵילָם",
+      "translit": "ḥêlām",
+      "translitKo": "헤람",
+      "note": "체레-요드(ê)는 선례 엔도르·메타브대로 에로 적었다."
+    },
+    {
+      "strong": "H1178",
+      "lemma": "בַּעַל חָצוֹר",
+      "translit": "baʿal ḥāṣôr",
+      "translitKo": "바알 하초르",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H805",
+      "lemma": "אֲשׁוּרִי",
+      "translit": "ʾăšûrî",
+      "translitKo": "아슈리",
+      "note": "뒤에 모음이 오는 שׁ이므로 슈로 적었다(선례 슈르)."
+    },
+    {
+      "strong": "H2521",
+      "lemma": "חֶלְקַת הַצֻּרִים",
+      "translit": "ḥelqat haṣṣurîm",
+      "translitKo": "헬카트 하추림",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H8483",
+      "lemma": "תַּחְתִּים חׇדְשִׁי",
+      "translit": "taḥtîm ḥodšî",
+      "translitKo": "타흐팀 호드시",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 카메츠 카탄은 o로, 뒤에 모음이 오는 שׁ는 시로 적었다."
+    },
+    {
+      "strong": "H1664",
+      "lemma": "גִּתַּיִם",
+      "translit": "gittayim",
+      "translitKo": "기타임",
+      "note": ""
+    },
+    {
+      "strong": "H1268",
+      "lemma": "בֵּרוֹתָה",
+      "translit": "bērôtâ",
+      "translitKo": "베로타",
+      "note": ""
+    },
+    {
+      "strong": "H1040",
+      "lemma": "בֵּית עֵדֶן",
+      "translit": "bêt ʿēden",
+      "translitKo": "베트 에덴",
+      "note": "두 낱말 사이 공백은 그대로 두었다. ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H195",
+      "lemma": "אוּלַי",
+      "translit": "ʾûlay",
+      "translitKo": "울라이",
+      "note": "모음 사이 l 은 선례 바르질라이·일라이대로 ㄹㄹ로 적었다."
+    },
+    {
+      "strong": "H1774",
+      "lemma": "דִּי זָהָב",
+      "translit": "dî zāhāb",
+      "translitKo": "디 자하브",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H6604",
+      "lemma": "פְּתוֹר",
+      "translit": "pĕtôr",
+      "translitKo": "페토르",
+      "note": ""
+    },
+    {
+      "strong": "H8404",
+      "lemma": "תַּבְעֵרָה",
+      "translit": "tabʿērâ",
+      "translitKo": "타브에라",
+      "note": "ע는 한글로 따로 적지 않았다(선례 에벤 하에제르)."
+    },
+    {
+      "strong": "H4917",
+      "lemma": "מִשְׁלַחַת",
+      "translit": "mišlaḥat",
+      "translitKo": "미쉬라하트",
+      "note": "음절 말 שׁ는 쉬로 적었고, 그 뒤 l 은 선례 미쉬로아흐(mišlôaḥ)대로 붙여 적지 않았다."
+    },
+    {
+      "strong": "H6489",
+      "lemma": "פְּקוֹד",
+      "translit": "pĕqôd",
+      "translitKo": "페코드",
+      "note": ""
+    },
+    {
+      "strong": "H5436",
+      "lemma": "סְבָאִי",
+      "translit": "sĕbāʾî",
+      "translitKo": "세바이",
+      "note": "묵음 א는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H5004",
+      "lemma": "נִאֻף",
+      "translit": "niʾup",
+      "translitKo": "니우프",
+      "note": "어말 פ는 베가드케파트 규칙대로 p로 적었다."
+    },
+    {
+      "strong": "H5482",
+      "lemma": "סְוֵנֵה",
+      "translit": "sĕwēnēh",
+      "translitKo": "세웨네",
+      "note": "자음 ו는 w로 보아 웨로 적었다. 마피크 없는 어말 ה는 모음 문자이므로 한글로 적지 않았다(선례 미츠페·마할레)."
+    },
+    {
+      "strong": "H8512",
+      "lemma": "תֵּל אָבִיב",
+      "translit": "tēl ʾābîb",
+      "translitKo": "텔 아비브",
+      "note": "두 낱말 사이 공백은 그대로 두었다."
+    },
+    {
+      "strong": "H2362",
+      "lemma": "חַוְרָן",
+      "translit": "ḥawrān",
+      "translitKo": "하우란",
+      "note": "음절 말 자음 ו는 선례 지우(zîw)대로 우로 적었다."
+    },
+    {
+      "strong": "H3625",
+      "lemma": "כֶּלַח",
+      "translit": "kelaḥ",
+      "translitKo": "켈라흐",
+      "note": ""
+    },
+    {
+      "strong": "H495",
+      "lemma": "אֶלָּסָר",
+      "translit": "ʾellāsār",
+      "translitKo": "엘라사르",
+      "note": ""
+    },
+    {
+      "strong": "H6255",
+      "lemma": "עַשְׁתְּרֹת קַרְנַיִם",
+      "translit": "ʿaštĕrōt qarnayim",
+      "translitKo": "아쉬테로트 카르나임",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 음절 말 שׁ는 쉬로, 어두 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H7740",
+      "lemma": "שָׁוֵה",
+      "translit": "šāwēh",
+      "translitKo": "샤웨",
+      "note": "자음 ו는 w로 보아 웨로 적었다. 마피크 없는 어말 ה는 한글로 적지 않았다."
+    },
+    {
+      "strong": "H364",
+      "lemma": "אֵיל פָּארָן",
+      "translit": "ʾêl pāʾrān",
+      "translitKo": "엘 파란",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 묵음 א는 선례 엔도르(ʿên-dōʾr)대로 한글로 적지 않았다."
+    },
+    {
+      "strong": "H5880",
+      "lemma": "עֵין מִשְׁפָּט",
+      "translit": "ʿên mišpāṭ",
+      "translitKo": "엔 미쉬파트",
+      "note": "두 낱말 사이 공백은 그대로 두었다. 어두 ע는 한글로 적지 않고, 음절 말 שׁ는 쉬로 적었다."
+    },
+    {
+      "strong": "H1334",
+      "lemma": "בָּתַר",
+      "translit": "bātar",
+      "translitKo": "바타르",
+      "note": ""
+    },
+    {
+      "strong": "H1567",
+      "lemma": "גַּלְעֵד",
+      "translit": "galʿēd",
+      "translitKo": "갈에드",
+      "note": "ע는 한글로 따로 적지 않았다(선례 엘아사)."
+    },
+    {
+      "strong": "H6075",
+      "lemma": "עָפַל",
+      "translit": "ʿāpal",
+      "translitKo": "아팔",
+      "note": "어두 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H3093",
+      "lemma": "יָהִיר",
+      "translit": "yāhîr",
+      "translitKo": "야히르",
+      "note": ""
+    },
+    {
+      "strong": "H7692",
+      "lemma": "שִׁגָּיוֹן",
+      "translit": "šiggāyôn",
+      "translitKo": "시가욘",
+      "note": "뒤에 모음이 오는 שׁ이므로 시로 적었다."
+    },
+    {
+      "strong": "H2711",
+      "lemma": "חֵקֶק",
+      "translit": "ḥēqeq",
+      "translitKo": "헤케크",
+      "note": ""
+    },
+    {
+      "strong": "H8356",
+      "lemma": "שָׁתָה",
+      "translit": "šātâ",
+      "translitKo": "샤타",
+      "note": ""
+    },
+    {
+      "strong": "H1365",
+      "lemma": "גַּבְהוּת",
+      "translit": "gabhût",
+      "translitKo": "가브후트",
+      "note": ""
+    },
+    {
+      "strong": "H7293",
+      "lemma": "רַהַב",
+      "translit": "rahab",
+      "translitKo": "라하브",
+      "note": ""
+    },
+    {
+      "strong": "H4718",
+      "lemma": "מַקֶּבֶת",
+      "translit": "maqqebet",
+      "translitKo": "마케베트",
+      "note": ""
+    },
+    {
+      "strong": "H5108",
+      "lemma": "נוֹב",
+      "translit": "nôb",
+      "translitKo": "노브",
+      "note": ""
+    },
+    {
+      "strong": "H7188",
+      "lemma": "קָשַׁח",
+      "translit": "qāšaḥ",
+      "translitKo": "카샤흐",
+      "note": ""
+    },
+    {
+      "strong": "H5779",
+      "lemma": "עוּץ",
+      "translit": "ʿûṣ",
+      "translitKo": "우츠",
+      "note": "어두 ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H3561",
+      "lemma": "כַּוָּן",
+      "translit": "kawwān",
+      "translitKo": "카완",
+      "note": "자음 ו는 w로 보아 와로 적었고, 다게쉬 포르테는 겹쳐 적지 않았다."
+    },
+    {
+      "strong": "H7679",
+      "lemma": "שָׂגָא",
+      "translit": "śāgāʾ",
+      "translitKo": "사가",
+      "note": "שׂ(ś)는 ㅅ로, 어말 묵음 א는 한글로 적지 않았다(선례 하야·셰레)."
+    },
+    {
+      "strong": "H8102",
+      "lemma": "שֶׁמֶץ",
+      "translit": "šemeṣ",
+      "translitKo": "셰메츠",
+      "note": "뒤에 모음이 오는 שׁ이므로 셰로 적었다."
+    },
+    {
+      "strong": "H7769",
+      "lemma": "שׁוּעַ",
+      "translit": "šûaʿ",
+      "translitKo": "슈아",
+      "note": "어말 후음 앞 furtive patach를 a로 살렸고, ע는 한글로 따로 적지 않았다."
+    },
+    {
+      "strong": "H7689",
+      "lemma": "שַׂגִּיא",
+      "translit": "śaggîʾ",
+      "translitKo": "사기",
+      "note": "שׂ(ś)는 ㅅ로, 어말 묵음 א는 한글로 적지 않았다."
+    },
+    {
+      "strong": "H3690",
+      "lemma": "כִּסְלָה",
+      "translit": "kislâ",
+      "translitKo": "키슬라",
+      "note": "자음 뒤 l 은 선례 시클루트·타클리트대로 앞 음절 받침 ㄹ로 붙여 적었다."
+    },
+    {
+      "strong": "H5165",
+      "lemma": "נֶחָמָה",
+      "translit": "neḥāmâ",
+      "translitKo": "네하마",
+      "note": ""
+    },
+    {
+      "strong": "H4792",
+      "lemma": "מֵרוֹם",
+      "translit": "mērôm",
+      "translitKo": "메롬",
+      "note": ""
+    },
+    {
+      "strong": "H1066",
+      "lemma": "בֹּכִים",
+      "translit": "bōkîm",
+      "translitKo": "보킴",
+      "note": "개역 관용 표기는 보김이나 학술 표기를 표제로 둔다."
+    }
+  ]
+}

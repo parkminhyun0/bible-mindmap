@@ -1,0 +1,138 @@
+{
+  "model": "gem37flash",
+  "rulings": [
+    {
+      "strong": "H6450",
+      "translit": "pas dammîm",
+      "translitKo": "파스 다밈",
+      "evidence": "src/data/koreanGlossTopBatch16.js (H5873 ʿên gannîm→엔 가님), src/data/koreanGlossTopBatch17.js (H8550 tummîm→투밈), WORKER_SPEC.md 규칙 2",
+      "note": "개역개정 관용 표기는 바스담밈이다. 다게쉬 포르테(mm)는 규칙 2에 따라 받침으로 겹쳐 적지 않아 다밈으로 표기한다."
+    },
+    {
+      "strong": "H3613",
+      "translit": "kālēb ʾeprātâ",
+      "translitKo": "칼레브 에프라타",
+      "evidence": "src/data/koreanGlossTopBatch14.js (H6159 ʿōrēb→오레브), src/data/koreanGlossTopBatch17.js (H171 ʾohŏlîʾāb→오홀리아브, H3114 yôyārîb→요야리브), WORKER_SPEC.md 규칙 1",
+      "note": "개역개정 관용 표기는 갈렙 에브라다다. 학술 표기는 어말 b를 브로 적는 선례(오홀리아브·요야리브·오레브)에 따라 칼레브 에프라타로 적는다."
+    },
+    {
+      "strong": "H4089",
+      "translit": "madmannâ",
+      "translitKo": "마드마나",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H2584 ḥannâ→하나), src/data/koreanGlossTopBatch15.js (H7067 qannāʾ→카나), src/data/koreanGlossTopBatch16.js (H5873 ʿên gannîm→엔 가님), WORKER_SPEC.md 규칙 2",
+      "note": "개역개정 관용 표기는 맛만나다. 다게쉬 포르테(nn)는 규칙 2에 따라 받침으로 겹쳐 적지 않아 마드마나로 표기한다."
+    },
+    {
+      "strong": "H1013",
+      "translit": "bêt-gādēr",
+      "translitKo": "베트가데르",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H1008 bêt-ʾēl→베트엘), src/data/koreanGlossTopBatch10.js (H62 bêt-maʿăkâ→베트마아카), src/data/koreanGlossTopBatch15.js (H5874 ʿên-dōʾr→엔도르, H7249 rab-sārîs→라브사리스)",
+      "note": "개역개정 관용 표기는 벧가델이다. 마케프로 이어진 합성 지명은 선례(베트엘·베트마아카·엔도르·라브사리스)에 따라 한글에서 붙여 적는다."
+    },
+    {
+      "strong": "H1011",
+      "translit": "bêt birʾî",
+      "translitKo": "베트 비르이",
+      "evidence": "src/data/koreanGlossTopBatch12.js (H1049 bêt ṣûr→베트 추르), src/data/koreanGlossTopBatch16.js (H1043 bêt ʿănāt→베트 아나트), src/data/koreanGlossTopBatch15.js (H8407 tiglat pilʾeser→티글라트 필에세르)",
+      "note": "개역개정 관용 표기는 벧비리다. 공백으로 구분된 두 단어이며 묵음 א(ʾ)는 한글로 따로 적지 않아 베트 비르이가 된다."
+    },
+    {
+      "strong": "H2712",
+      "translit": "ḥuqqōq",
+      "translitKo": "후코크",
+      "evidence": "src/data/koreanGlossTopBatch03.js (H2706 ḥōq→호크), src/data/koreanGlossTopBatch10.js (H4966 mātôq→마토크), src/data/koreanGlossTopBatch14.js (H2999 yabbōq→야보크), src/data/koreanGlossTopBatch15.js (H4689 māṣôq→마초크)",
+      "note": "개역개정 관용 표기는 훅곡이다. 어말 q를 크로 적는 일관된 선례(호크·마토크·야보크·마초크)에 따라 후코크로 적는다."
+    },
+    {
+      "strong": "H2540",
+      "translit": "ḥammôn",
+      "translitKo": "하몬",
+      "evidence": "src/data/koreanGlossTopBatch13.js (H2553 ḥammān→하만), src/data/koreanGlossTopBatch15.js (H2535 ḥammâ→하마), src/data/koreanGlossTopBatch16.js (H5873 ʿên gannîm→엔 가님), WORKER_SPEC.md 규칙 2",
+      "note": "개역개정 관용 표기는 함몬이다. 다게쉬 포르테(mm)는 규칙 2 및 하만(ḥammān)·하마(ḥammâ) 선례에 따라 받침으로 겹쳐 적지 않고 하몬으로 적는다."
+    },
+    {
+      "strong": "H658",
+      "translit": "ʾepes dammîm",
+      "translitKo": "에페스 다밈",
+      "evidence": "src/data/koreanGlossTopBatch16.js (H5873 ʿên gannîm→엔 가님), src/data/koreanGlossTopBatch17.js (H8550 tummîm→투밈), WORKER_SPEC.md 규칙 1, 2",
+      "note": "개역개정 관용 표기는 에베스담밈이다. 두 낱말 사이 공백을 유지하고, 다게쉬 포르테(mm)는 규칙 2에 따라 다밈으로 적는다."
+    },
+    {
+      "strong": "H5555",
+      "translit": "selaʿ hammaḥlĕqôt",
+      "translitKo": "셀라 하마흘레코트",
+      "evidence": "src/data/koreanGlossTopBatch11.js (H6914 hattaʾăwâ→하타아와), src/data/koreanGlossTopBatch13.js (H5899 hattĕmārîm→하테마림), WORKER_SPEC.md 규칙 2",
+      "note": "개역개정 관용 표기는 셀라하마흘곳이다. 정관사 뒤 다게쉬 포르테는 규칙 2에 따라 하마로 적고, ḥ 뒤 자음 l(ĕ)은 레로 풀어 셀라 하마흘레코트로 적는다."
+    },
+    {
+      "strong": "H1485",
+      "translit": "gûr-baʿal",
+      "translitKo": "구르바알",
+      "evidence": "src/data/koreanGlossTopBatch15.js (H5874 ʿên-dōʾr→엔도르, H7249 rab-sārîs→라브사리스, H634 ʾēsar-ḥaddôn→에사르하돈), src/data/koreanGlossTopBatch16.js (H137 ʾădōnî-bezeq→아도니베제크)",
+      "note": "개역개정 관용 표기는 구르바알이다. 마케프로 이어진 합성 지명은 선례(엔도르·라브사리스·에사르하돈·아도니베제크)에 따라 한글에서 붙여 적는다."
+    },
+    {
+      "strong": "H2431",
+      "translit": "ḥêlām",
+      "translitKo": "헬람",
+      "evidence": "src/data/koreanGlossTopBatch15.js (H4315 mêṭāb→메타브, H5874 ʿên-dōʾr→엔도르), src/data/koreanGlossTopBatch17.js (H2497 ḥēlōn→헬론, H3916 lêlyāʾ→렐야)",
+      "note": "개역개정 관용 표기는 헬람이다. 체레-요드(ê)는 에로 적는 선례(메타브·엔도르·렐야)와 l 앞 음절 모음 선례(헬론)에 따라 헬람으로 적는다."
+    },
+    {
+      "strong": "H4917",
+      "translit": "mišlaḥat",
+      "translitKo": "미쉬라하트",
+      "evidence": "src/data/koreanGlossTopBatch11.js (H4916 mišlôaḥ→미쉬로아흐), src/data/koreanGlossTopBatch02.js (H4940 mišpāḥâ→미쉬파하), WORKER_SPEC.md 규칙 3",
+      "note": "음절 말 שׁ는 규칙 3에 따라 쉬로 적으며, 후속 l 앞 표기는 동일 어근 선례인 미쉬로아흐(H4916 mišlôaḥ)에 따라 미쉬라하트로 적는다."
+    },
+    {
+      "strong": "H6255",
+      "translit": "ʿaštĕrōt qarnayim",
+      "translitKo": "아쉬테로트 카르나임",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H6252 ʿaštārôt→아쉬타로트), src/data/koreanGlossTopBatch11.js (H2060 waštî→와쉬티, H6914 qibrôt→키브로트), src/data/koreanGlossTopBatch14.js (H3672 kinnĕrôt→키네로트)",
+      "note": "개역개정 관용 표기는 아스드롯 가르나임이다. 어두 ע는 한글로 적지 않고, 음절 말 שׁ는 쉬로, 어말 -ōt는 아쉬타로트(H6252)·키네로트(H3672) 선례에 따라 로트로 적어 아쉬테로트 카르나임이 된다."
+    },
+    {
+      "strong": "H5880",
+      "translit": "ʿên mišpāṭ",
+      "translitKo": "엔 미쉬파트",
+      "evidence": "src/data/koreanGlossTopBatch10.js (H5872 ʿên gedî→엔 게디), src/data/koreanGlossTopBatch13.js (H5883 ʿên rōgēl→엔 로겔), src/data/koreanGlossTopBatch16.js (H5873 ʿên gannîm→엔 가님), WORKER_SPEC.md 규칙 3",
+      "note": "개역개정 관용 표기는 엔미스밧이다. עֵין은 엔 게디·엔 가님 선례대로 엔으로 적고, 음절 말 שׁ는 규칙 3에 따라 쉬로 적어 엔 미쉬파트가 된다."
+    },
+    {
+      "strong": "G1464",
+      "translit": "enkopḗ",
+      "translitKo": "엥코페",
+      "evidence": "src/data/koreanGlossTopBatch16.js (G1465 enkóptō→엥코프토), src/data/koreanGlossTopBatch15.js (G1461 enkentrízō→엥켄트리조), src/data/koreanGlossTopBatch13.js (G1458 enkaléō→엥칼레오), src/data/koreanGlossTopBatch08.js (G318 anánkē→아낭케)",
+      "note": "헬라어 γκ는 비음 [ŋk]으로 앞 음절 ㅇ 받침으로 적는 일관된 선례(동일 어근 선례인 G1465 enkóptō→엥코프토, G1461 enkentrízō→엥켄트리조)에 따라 엥코페로 적는다."
+    },
+    {
+      "strong": "G2585",
+      "translit": "kapēleúō",
+      "translitKo": "카펠류오",
+      "evidence": "src/data/koreanGlossTopBatch06.js (G2753 keleúō→켈류오), src/data/koreanGlossTopBatch07.js (G936 basileúō→바실류오), src/data/koreanGlossTopBatch09.js (G4531 saleúō→살류오), src/data/koreanGlossTopBatch14.js (G1011 bouleúō→불류오), WORKER_SPEC.md 명세",
+      "note": "ευ는 유 계열 한 음절로 적는 원칙과 -λεύω 동사의 일관된 선례(켈류오·바실류오·살류오·불류오)에 따라 카펠류오로 적는다."
+    },
+    {
+      "strong": "G5232",
+      "translit": "hyperauxánō",
+      "translitKo": "휘페라욱사노",
+      "evidence": "src/data/koreanGlossTopBatch07.js (G837 auxánō→아욱사노)",
+      "note": "αὐξάνω(G837)가 배포 데이터에서 아욱사노로 확정되어 있으므로, 합성어 ὑπεραυξάνω는 선례를 따라 휘페라욱사노로 적는다."
+    },
+    {
+      "strong": "G4725",
+      "translit": "stémma",
+      "translitKo": "스테마",
+      "evidence": "src/data/koreanGlossTopBatch14.js (G4348 próskomma→프로스코마), WORKER_SPEC.md 규칙 2",
+      "note": "중복 자음 비중복 원칙(규칙 2) 및 동일한 μμ 판정 선례인 프로스코마(G4348 próskomma→프로스코마: 'μμ를 한글에서 중복 표기하지 않는다')에 따라 스테마로 적는다."
+    },
+    {
+      "strong": "G4543",
+      "translit": "Samothráikē",
+      "translitKo": "사모트라이케",
+      "evidence": "src/data/koreanGlossTopBatch16.js (G103 áidō→아이도, G5535 chrḗizō→크레이조), src/data/koreanGlossTopBatch12.js (G4236 praiótēs→프라이오테스), src/data/koreanGlossTopBatch09.js (G3027 lēistḗs→레이스테스)",
+      "note": "개역개정 관용 표기는 사모드라게다. 학술 표기는 이오타 하기(ᾳ/ᾴ)를 '이'로 살려 적는 확정 선례(아이도·크레이조·프라이오테스·레이스테스)에 따라 사모트라이케로 적는다."
+    }
+  ]
+}

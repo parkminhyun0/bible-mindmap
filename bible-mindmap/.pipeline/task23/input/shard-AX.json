@@ -1,0 +1,906 @@
+{
+  "shard": "AX",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G2676",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κατάρτισις",
+      "translit": "katártisis",
+      "glossEn": "perfection",
+      "defEn": "thorough equipment (subjectively)"
+    },
+    {
+      "strong": "G2009",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπιτιμία",
+      "translit": "epitimía",
+      "glossEn": "punishment",
+      "defEn": "properly, esteem, i.e. citizenship; used (in the sense of G2008 (ἐπιτιμάω)) of a penalty"
+    },
+    {
+      "strong": "G2585",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καπηλεύω",
+      "translit": "kapēleúō",
+      "glossEn": "corrupt",
+      "defEn": "to retail, i.e. (by implication) to adulterate (figuratively)"
+    },
+    {
+      "strong": "G1795",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐντυπόω",
+      "translit": "entypóō",
+      "glossEn": "engrave",
+      "defEn": "to enstamp, i.e. engrave"
+    },
+    {
+      "strong": "G550",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀπειπόμην",
+      "translit": "apeipómēn",
+      "glossEn": "renounce",
+      "defEn": "to say off for oneself, i.e. disown"
+    },
+    {
+      "strong": "G1389",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "δολόω",
+      "translit": "dolóō",
+      "glossEn": "handle deceitfully",
+      "defEn": "to ensnare, i.e. (figuratively) adulterate"
+    },
+    {
+      "strong": "G826",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "αὐγάζω",
+      "translit": "augázō",
+      "glossEn": "shine",
+      "defEn": "to beam forth (figuratively)"
+    },
+    {
+      "strong": "G1873",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπακούω",
+      "translit": "epakoúō",
+      "glossEn": "hear",
+      "defEn": "to hearken (favorably) to"
+    },
+    {
+      "strong": "G4349",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προσκοπή",
+      "translit": "proskopḗ",
+      "glossEn": "offence",
+      "defEn": "a stumbling, i.e. (figuratively and concretely) occasion of sin"
+    },
+    {
+      "strong": "G1426",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "δυσφημία",
+      "translit": "dysphēmía",
+      "glossEn": "evil report",
+      "defEn": "defamation"
+    },
+    {
+      "strong": "G2162",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "εὐφημία",
+      "translit": "euphēmía",
+      "glossEn": "good report",
+      "defEn": "good language (\"euphemy\"), i.e. praise (repute)"
+    },
+    {
+      "strong": "G3352",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μετοχή",
+      "translit": "metochḗ",
+      "glossEn": "fellowship",
+      "defEn": "participation, i.e. intercourse"
+    },
+    {
+      "strong": "G4857",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "συμφώνησις",
+      "translit": "symphṓnēsis",
+      "glossEn": "concord",
+      "defEn": "accordance"
+    },
+    {
+      "strong": "G4783",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "συγκατάθεσις",
+      "translit": "synkatáthesis",
+      "glossEn": "agreement",
+      "defEn": "a deposition (of sentiment) in company with, i.e. (figuratively) accord with"
+    },
+    {
+      "strong": "G1704",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐμπεριπατέω",
+      "translit": "emperipatéō",
+      "glossEn": "walk in",
+      "defEn": "to perambulate on a place, i.e. (figuratively) to be occupied among persons"
+    },
+    {
+      "strong": "G1523",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "εἰσδέχομαι",
+      "translit": "eisdéchomai",
+      "glossEn": "receive",
+      "defEn": "to take into one's favor"
+    },
+    {
+      "strong": "G24",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀγανάκτησις",
+      "translit": "aganáktēsis",
+      "glossEn": "indignation",
+      "defEn": "indignation"
+    },
+    {
+      "strong": "G1641",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐλαττονέω",
+      "translit": "elattonéō",
+      "glossEn": "have lack",
+      "defEn": "to diminish, i.e. fall short"
+    },
+    {
+      "strong": "G100",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἁδρότης",
+      "translit": "hadrótēs",
+      "glossEn": "abundance",
+      "defEn": "plumpness, i.e. (figuratively) liberality"
+    },
+    {
+      "strong": "G4255",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προαιρέομαι",
+      "translit": "proairéomai",
+      "glossEn": "purpose",
+      "defEn": "to choose for oneself before another thing (prefer), i.e. (by implication) to propose (intend)"
+    },
+    {
+      "strong": "G3993",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πένης",
+      "translit": "pénēs",
+      "glossEn": "poor",
+      "defEn": "starving, i.e. indigent"
+    },
+    {
+      "strong": "G3467",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μυωπάζω",
+      "translit": "myōpázō",
+      "glossEn": "cannot see far off",
+      "defEn": "from G3700 (ὀπτάνομαι)); to shut the eyes, i.e. blink (see indistinctly)"
+    },
+    {
+      "strong": "G3024",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "λήθη",
+      "translit": "lḗthē",
+      "glossEn": "+ forget",
+      "defEn": "forgetfulness"
+    },
+    {
+      "strong": "G3919",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παρεισάγω",
+      "translit": "pareiságō",
+      "glossEn": "privily bring in",
+      "defEn": "to lead in aside, i.e. introduce surreptitiously"
+    },
+    {
+      "strong": "G5077",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τεφρόω",
+      "translit": "tephróō",
+      "glossEn": "turn to ashes",
+      "defEn": "to incinerate, i.e. consume"
+    },
+    {
+      "strong": "G5113",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τολμητής",
+      "translit": "tolmētḗs",
+      "glossEn": "presumptuous",
+      "defEn": "a daring (audacious) man"
+    },
+    {
+      "strong": "G3470",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μῶμος",
+      "translit": "mōmos",
+      "glossEn": "blemish",
+      "defEn": "a flaw or blot, i.e. (figuratively) disgraceful person"
+    },
+    {
+      "strong": "G1649",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἔλεγξις",
+      "translit": "élenxis",
+      "glossEn": "rebuke",
+      "defEn": "refutation, i.e. reproof"
+    },
+    {
+      "strong": "G3892",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παρανομία",
+      "translit": "paranomía",
+      "glossEn": "iniquity",
+      "defEn": "transgression"
+    },
+    {
+      "strong": "G3393",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μίασμα",
+      "translit": "míasma",
+      "glossEn": "pollution",
+      "defEn": "(morally) foulness (properly, the effect)"
+    },
+    {
+      "strong": "G6032",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐμπαιγμονή",
+      "translit": "",
+      "glossEn": "derision",
+      "defEn": ""
+    },
+    {
+      "strong": "G2626",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κατακλύζω",
+      "translit": "kataklýzō",
+      "glossEn": "overflow",
+      "defEn": "to dash (wash) down, i.e. (by implication) to deluge"
+    },
+    {
+      "strong": "G4761",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "στρεβλόω",
+      "translit": "streblóō",
+      "glossEn": "wrest",
+      "defEn": "to wrench, i.e. (specially), to torture (by the rack), but only figuratively, to pervert"
+    },
+    {
+      "strong": "G4740",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "στηριγμός",
+      "translit": "stērigmós",
+      "glossEn": "stedfastness",
+      "defEn": "stability (figuratively)"
+    },
+    {
+      "strong": "G5232",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ὑπεραυξάνω",
+      "translit": "hyperauxánō",
+      "glossEn": "grow exceedingly",
+      "defEn": "to increase above ordinary degree"
+    },
+    {
+      "strong": "G7013",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐγκαυχάομαι",
+      "translit": "",
+      "glossEn": "to boast of",
+      "defEn": ""
+    },
+    {
+      "strong": "G1730",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἔνδειγμα",
+      "translit": "éndeigma",
+      "glossEn": "manifest token",
+      "defEn": "an indication (concretely)"
+    },
+    {
+      "strong": "G5099",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τίνω",
+      "translit": "tínō",
+      "glossEn": "be punished with",
+      "defEn": "to pay a price, i.e. as a penalty"
+    },
+    {
+      "strong": "G2569",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καλοποιέω",
+      "translit": "kalopoiéō",
+      "glossEn": "well doing",
+      "defEn": "to do well, i.e. live virtuously"
+    },
+    {
+      "strong": "G4593",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "σημειόω",
+      "translit": "sēmeióō",
+      "glossEn": "note",
+      "defEn": "to distinguish, i.e. mark (for avoidance)"
+    },
+    {
+      "strong": "G3054",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "λογομαχέω",
+      "translit": "logomachéō",
+      "glossEn": "strive about words",
+      "defEn": "to be disputatious (on trifles)"
+    },
+    {
+      "strong": "G475",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀντιδιατίθεμαι",
+      "translit": "antidiatíthemai",
+      "glossEn": "that oppose themselves",
+      "defEn": "to set oneself opposite, i.e. be disputatious"
+    },
+    {
+      "strong": "G366",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀνανήφω",
+      "translit": "ananḗphō",
+      "glossEn": "recover self",
+      "defEn": "to become sober again, i.e. (figuratively) regain (one's) senses"
+    },
+    {
+      "strong": "G665",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀποτρέπω",
+      "translit": "apotrépō",
+      "glossEn": "turn away",
+      "defEn": "to deflect, i.e. (reflexively) avoid"
+    },
+    {
+      "strong": "G1133",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "γυναικάριον",
+      "translit": "gynaikárion",
+      "glossEn": "silly woman",
+      "defEn": "a little (i.e. foolish) woman"
+    },
+    {
+      "strong": "G2704",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταφθείρω",
+      "translit": "kataphtheírō",
+      "glossEn": "--corrupt, utterly perish",
+      "defEn": "to spoil entirely, i.e. (literally) to destroy; or (figuratively) to deprave;"
+    },
+    {
+      "strong": "G72",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀγωγή",
+      "translit": "agōgḗ",
+      "glossEn": "manner of life",
+      "defEn": "a bringing up, i.e. mode of living"
+    },
+    {
+      "strong": "G4104",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "πιστόω",
+      "translit": "pistóō",
+      "glossEn": "assure of",
+      "defEn": "to assure"
+    },
+    {
+      "strong": "G2002",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπισωρεύω",
+      "translit": "episōreúō",
+      "glossEn": "heap",
+      "defEn": "to accumulate further, i.e. (figuratively) seek additionally"
+    },
+    {
+      "strong": "G5383",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "φιλοπρωτεύω",
+      "translit": "philoprōteúō",
+      "glossEn": "love to have the preeminence",
+      "defEn": "to be fond of being first, i.e. ambitious of distinction"
+    },
+    {
+      "strong": "G4871",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "συναλίζω",
+      "translit": "synalízō",
+      "glossEn": "assemble together",
+      "defEn": "to accumulate, i.e. convene"
+    },
+    {
+      "strong": "G4401",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προχειροτονέω",
+      "translit": "procheirotonéō",
+      "glossEn": "choose before",
+      "defEn": "to elect in advance"
+    },
+    {
+      "strong": "G4581",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σελεύκεια",
+      "translit": "Seleúkeia",
+      "glossEn": "Seleucia",
+      "defEn": "Seleuceia, a place in Syria"
+    },
+    {
+      "strong": "G4529",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σαλαμίς",
+      "translit": "Salamís",
+      "glossEn": "Salamis",
+      "defEn": "Salamis, a place in Cyprus"
+    },
+    {
+      "strong": "G5159",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "τροποφορέω",
+      "translit": "tropophoréō",
+      "glossEn": "suffer the manners",
+      "defEn": "to endure one's habits"
+    },
+    {
+      "strong": "G2624",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κατακληροδοτέω",
+      "translit": "kataklērodotéō",
+      "glossEn": "divide by lot",
+      "defEn": "to be a giver of lots to each, i.e. (by implication) to apportion an estate"
+    },
+    {
+      "strong": "G4296",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προκηρύσσω",
+      "translit": "prokērýssō",
+      "glossEn": "before (first) preach",
+      "defEn": "to herald (i.e. proclaim) in advance"
+    },
+    {
+      "strong": "G1603",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐκπληρόω",
+      "translit": "ekplēróō",
+      "glossEn": "fulfill",
+      "defEn": "to accomplish entirely"
+    },
+    {
+      "strong": "G2707",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταφροντής",
+      "translit": "kataphrontḗs",
+      "glossEn": "despiser",
+      "defEn": "a contemner"
+    },
+    {
+      "strong": "G3071",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λυκαονία",
+      "translit": "Lykaonía",
+      "glossEn": "Lycaonia",
+      "defEn": "Lycaonia, a region of Asia Minor"
+    },
+    {
+      "strong": "G4725",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "στέμμα",
+      "translit": "stémma",
+      "glossEn": "garland",
+      "defEn": "a wreath for show"
+    },
+    {
+      "strong": "G3944",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παροίχομαι",
+      "translit": "paroíchomai",
+      "glossEn": "past",
+      "defEn": "to escape along, i.e. be gone"
+    },
+    {
+      "strong": "G825",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀττάλεια",
+      "translit": "Attáleia",
+      "glossEn": "Attalia",
+      "defEn": "Attaleia, a place in Pamphylia"
+    },
+    {
+      "strong": "G3926",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "παρενοχλέω",
+      "translit": "parenochléō",
+      "glossEn": "trouble",
+      "defEn": "to harass further, i.e. annoy"
+    },
+    {
+      "strong": "G234",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀλίσγεμα",
+      "translit": "alísgema",
+      "glossEn": "pollution",
+      "defEn": "(ceremonially) defilement"
+    },
+    {
+      "strong": "G384",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀνασκευάζω",
+      "translit": "anaskeuázō",
+      "glossEn": "subvert",
+      "defEn": "properly, to pack up (baggage), i.e. (by implication, and figuratively) to upset"
+    },
+    {
+      "strong": "G4543",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σαμοθρᾴκη",
+      "translit": "Samothráikē",
+      "glossEn": "Samothracia",
+      "defEn": "Samo-thrace (Samos of Thrace), an island in the Mediterranean"
+    },
+    {
+      "strong": "G2862",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "κολωνία",
+      "translit": "kolōnía",
+      "glossEn": "colony",
+      "defEn": "a Roman \"colony\" for veterans"
+    },
+    {
+      "strong": "G3132",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "μαντεύομαι",
+      "translit": "manteúomai",
+      "glossEn": "by soothsaying",
+      "defEn": "to divine, i.e. utter spells (under pretense of foretelling"
+    },
+    {
+      "strong": "G1874",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐπακροάομαι",
+      "translit": "epakroáomai",
+      "glossEn": "hear",
+      "defEn": "to listen (intently) to"
+    },
+    {
+      "strong": "G295",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀμφίπολις",
+      "translit": "Amphípolis",
+      "glossEn": "Amphipolis",
+      "defEn": "a city surrounded by a river; Amphipolis, a place in Macedonia"
+    },
+    {
+      "strong": "G624",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἀπολλωνία",
+      "translit": "Apollōnía",
+      "glossEn": "Apollonia",
+      "defEn": "from G622 (ἀπόλλυμι)); Apollonia, a place in Macedonia"
+    },
+    {
+      "strong": "G4345",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προσκληρόω",
+      "translit": "prosklēróō",
+      "glossEn": "consort with",
+      "defEn": "to give a common lot to, i.e. (figuratively) to associate with"
+    },
+    {
+      "strong": "G5386",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "φιλόσοφος",
+      "translit": "philósophos",
+      "glossEn": "philosopher",
+      "defEn": "fond of wise things, i.e. a \"philosopher\""
+    },
+    {
+      "strong": "G2604",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "καταγγελεύς",
+      "translit": "katangeleús",
+      "glossEn": "setter forth",
+      "defEn": "a proclaimer"
+    },
+    {
+      "strong": "G4326",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "προσδέομαι",
+      "translit": "prosdéomai",
+      "glossEn": "need",
+      "defEn": "to require additionally, i.e. want further"
+    },
+    {
+      "strong": "G374",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀναπείθω",
+      "translit": "anapeíthō",
+      "glossEn": "persuade",
+      "defEn": "to incite"
+    },
+    {
+      "strong": "G1246",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "διακατελέγχομαι",
+      "translit": "diakatelénchomai",
+      "glossEn": "convince",
+      "defEn": "to prove downright, i.e. confute"
+    },
+    {
+      "strong": "G1845",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐξορκιστής",
+      "translit": "exorkistḗs",
+      "glossEn": "exorcist",
+      "defEn": "one that binds by an oath (or spell), i.e. (by implication) an \"exorcist\" (conjurer)"
+    },
+    {
+      "strong": "G3511",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "νεωκόρος",
+      "translit": "neōkóros",
+      "glossEn": "worshipper",
+      "defEn": "a temple-servant, i.e. (by implication) a votary"
+    },
+    {
+      "strong": "G3934",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πάρθος",
+      "translit": "Párthos",
+      "glossEn": "Parthian",
+      "defEn": "a Parthian, i.e. inhabitant of Parthia"
+    },
+    {
+      "strong": "G3370",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μῆδος",
+      "translit": "Mēdos",
+      "glossEn": "Mede",
+      "defEn": "a Median, or inhabitant of Media"
+    },
+    {
+      "strong": "G1639",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἐλαμίτης",
+      "translit": "Elamítēs",
+      "glossEn": "Elamite",
+      "defEn": "an Elamite or Persian"
+    },
+    {
+      "strong": "G3033",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Λιβύη",
+      "translit": "Libýē",
+      "glossEn": "Libya",
+      "defEn": "Libye, a region of Africa"
+    },
+    {
+      "strong": "G2957",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κυρήνη",
+      "translit": "Kyrḗnē",
+      "glossEn": "Cyrene",
+      "defEn": "Cyrene, a region of Africa"
+    },
+    {
+      "strong": "G690",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἄραψ",
+      "translit": "Áraps",
+      "glossEn": "Arabian",
+      "defEn": "an Arab or native of Arabia"
+    },
+    {
+      "strong": "G1801",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐνωτίζομαι",
+      "translit": "enōtízomai",
+      "glossEn": "hearken",
+      "defEn": "to take in one's ear, i.e. to listen"
+    },
+    {
+      "strong": "G858",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἀφελότης",
+      "translit": "aphelótēs",
+      "glossEn": "singleness",
+      "defEn": "smoothness, i.e. (figuratively) simplicity"
+    },
+    {
+      "strong": "G1671",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ἑλλάς",
+      "translit": "Hellás",
+      "glossEn": "Greece",
+      "defEn": "Hellas (or Greece), a country of Europe"
+    },
+    {
+      "strong": "G3412",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Μιτυλήνη",
+      "translit": "Mitylḗnē",
+      "glossEn": "Mitylene",
+      "defEn": "Mitylene (or Mytilene), a town on the island of Lesbos"
+    },
+    {
+      "strong": "G5508",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Χίος",
+      "translit": "Chíos",
+      "glossEn": "Chios",
+      "defEn": "Chios, an island in the Mediterranean"
+    },
+    {
+      "strong": "G4544",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Σάμος",
+      "translit": "Sámos",
+      "glossEn": "Samos",
+      "defEn": "Samus, an island of the Mediterranean"
+    },
+    {
+      "strong": "G867",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἄφιξις",
+      "translit": "áphixis",
+      "glossEn": "departing",
+      "defEn": "properly, arrival, i.e. (by implication) departure"
+    },
+    {
+      "strong": "G2972",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Κώς",
+      "translit": "Kṓs",
+      "glossEn": "Cos",
+      "defEn": "Cos, an island in the Mediterranean"
+    },
+    {
+      "strong": "G4499",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Ῥόδος",
+      "translit": "Rhódos",
+      "glossEn": "Rhodes",
+      "defEn": "Rhodus, an island of the Mediterranean"
+    },
+    {
+      "strong": "G3959",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πάταρα",
+      "translit": "Pátara",
+      "glossEn": "Patara",
+      "defEn": "Patara, a place in Asia Minor"
+    },
+    {
+      "strong": "G4424",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "Πτολεμαΐς",
+      "translit": "Ptolemaḯs",
+      "glossEn": "Ptolemais",
+      "defEn": "Ptolemais, a place in Palestine"
+    },
+    {
+      "strong": "G4919",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "συνθρύπτω",
+      "translit": "synthrýptō",
+      "glossEn": "break",
+      "defEn": "to crush together, i.e. (figuratively) to dispirit"
+    },
+    {
+      "strong": "G1604",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "ἐκπλήρωσις",
+      "translit": "ekplḗrōsis",
+      "glossEn": "accomplishment",
+      "defEn": "completion"
+    },
+    {
+      "strong": "G2313",
+      "lang": "greek",
+      "count": 1,
+      "lemma": "θεομαχέω",
+      "translit": "theomachéō",
+      "glossEn": "fight against God",
+      "defEn": "to resist deity"
+    }
+  ]
+}

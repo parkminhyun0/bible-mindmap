@@ -1,0 +1,906 @@
+{
+  "shard": "AV",
+  "count": 100,
+  "items": [
+    {
+      "strong": "G5359",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "Φιλαδέλφεια",
+      "translit": "Philadélpheia",
+      "glossEn": "Philadelphia",
+      "defEn": "Philadelphia, a place in Asia Minor"
+    },
+    {
+      "strong": "G2166",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "Εὐφράτης",
+      "translit": "Euphrátēs",
+      "glossEn": "Euphrates",
+      "defEn": "Euphrates, a river of Asia"
+    },
+    {
+      "strong": "G4681",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "Σπανία",
+      "translit": "Spanía",
+      "glossEn": "Spain",
+      "defEn": "Spania, a region of Europe"
+    },
+    {
+      "strong": "G3533",
+      "lang": "greek",
+      "count": 2,
+      "lemma": "Νικόπολις",
+      "translit": "Nikópolis",
+      "glossEn": "Nicopolis",
+      "defEn": "victorious city; Nicopolis, a place in Macedonia"
+    },
+    {
+      "strong": "H5320",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נַפְתֻּחִים",
+      "translit": "",
+      "glossEn": "Naptuhim.",
+      "defEn": "Naphtuchim, an Egyptian tribe"
+    },
+    {
+      "strong": "H3695",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כַּסְלֻחִים",
+      "translit": "",
+      "glossEn": "Casluhim.",
+      "defEn": "Casluchim, a people cognate to the Egyptians"
+    },
+    {
+      "strong": "H2700",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֲצַרְמָוֶת",
+      "translit": "",
+      "glossEn": "Hazarmaveth.",
+      "defEn": "Chatsarmaveth, a place in Arabia"
+    },
+    {
+      "strong": "H3392",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יֶרַח",
+      "translit": "",
+      "glossEn": "Jerah.",
+      "defEn": "Jerach, an Arabian patriarch"
+    },
+    {
+      "strong": "H1853",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "דִּקְלָה",
+      "translit": "",
+      "glossEn": "Diklah.",
+      "defEn": "Diklah, a region of Arabia"
+    },
+    {
+      "strong": "H1838",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "דִּנְהָבָה",
+      "translit": "",
+      "glossEn": "Dinhaban.",
+      "defEn": "Dinhabah, an Edomitish town"
+    },
+    {
+      "strong": "H911",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בְּדַד",
+      "translit": "",
+      "glossEn": "Bedad.",
+      "defEn": "Bedad, an Edomite"
+    },
+    {
+      "strong": "H5762",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עֲוִית",
+      "translit": "",
+      "glossEn": "Avith.",
+      "defEn": "Avvith (or Avvoth), a place in Palestine"
+    },
+    {
+      "strong": "H6464",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פָּעוּ",
+      "translit": "",
+      "glossEn": "Pai, Pau.",
+      "defEn": "Pau or Pai, a place in Edom"
+    },
+    {
+      "strong": "H4308",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַטְרֵד",
+      "translit": "",
+      "glossEn": "Matred.",
+      "defEn": "Matred, an Edomitess"
+    },
+    {
+      "strong": "H3509",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְתֵת",
+      "translit": "",
+      "glossEn": "Jetheth. k",
+      "defEn": "Jetheth, an Edomite"
+    },
+    {
+      "strong": "H6450",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פַּס דַּמִּים",
+      "translit": "",
+      "glossEn": "Pas-dammim. Compare H658 (אֶפֶס דַּמִּים).",
+      "defEn": "Pas-Dammim, a place in Palestine"
+    },
+    {
+      "strong": "H7079",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "קְנָת",
+      "translit": "",
+      "glossEn": "Kenath.",
+      "defEn": "Kenath, a place East of the Jordan"
+    },
+    {
+      "strong": "H3613",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כָּלֵב אֶפְרָתָה",
+      "translit": "",
+      "glossEn": "Caleb-ephrathah.",
+      "defEn": "Caleb-Ephrathah, a place in Egypt (if the text is correct)"
+    },
+    {
+      "strong": "H3398",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יַרְחָע",
+      "translit": "",
+      "glossEn": "Jarha.",
+      "defEn": "Jarcha, an Egyptian"
+    },
+    {
+      "strong": "H4089",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַדְמַנָּה",
+      "translit": "",
+      "glossEn": "Madmannah.",
+      "defEn": "Madmannah, a place in Palestine"
+    },
+    {
+      "strong": "H1013",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית־גָּדֵר",
+      "translit": "",
+      "glossEn": "Beth-gader.",
+      "defEn": "Beth-Gader, a place in Palestine"
+    },
+    {
+      "strong": "H2702",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֲצַר סוּסִים",
+      "translit": "",
+      "glossEn": "Hazar-susim.",
+      "defEn": "Chatsar-Susim, a place in Palestine"
+    },
+    {
+      "strong": "H1011",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית בִּרְאִי",
+      "translit": "",
+      "glossEn": "Bethbirei.",
+      "defEn": "Beth-Biri, a place in Palestine"
+    },
+    {
+      "strong": "H438",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אַלּוֹן",
+      "translit": "",
+      "glossEn": "Allon.",
+      "defEn": "Allon, an Israelite, also a place in Palestine"
+    },
+    {
+      "strong": "H3361",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יׇקְמְעָם",
+      "translit": "",
+      "glossEn": "Jokmeam. Compare H3360 (יְקַמְעָם), H3362 (יׇקְנְעָם).",
+      "defEn": "Jokmeam, a place in Palestine"
+    },
+    {
+      "strong": "H2712",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֻקֹּק",
+      "translit": "",
+      "glossEn": "Hukkok, Hukok.",
+      "defEn": "Chukkok or Chukok, a place in Palestine"
+    },
+    {
+      "strong": "H2540",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חַמּוֹן",
+      "translit": "",
+      "glossEn": "Hammon.",
+      "defEn": "Chammon, the name of two places in Palestine"
+    },
+    {
+      "strong": "H7177",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "קַרְתָּה",
+      "translit": "",
+      "glossEn": "Kartah.",
+      "defEn": "Kartah, a place in Palestine"
+    },
+    {
+      "strong": "H1260",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֶּרֶד",
+      "translit": "",
+      "glossEn": "Bered.",
+      "defEn": "Bered, the name of a place south of Palestine, also of an Israelite"
+    },
+    {
+      "strong": "H242",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֻזֵּן שֶׁאֱרָה",
+      "translit": "",
+      "glossEn": "Uzzen-sherah.",
+      "defEn": "Uzzen-Sheerah, a place in Palestine"
+    },
+    {
+      "strong": "H7777",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שׁוּעָל",
+      "translit": "",
+      "glossEn": "Shual.",
+      "defEn": "Shual, the name of an Israelite and of a place in Palestine"
+    },
+    {
+      "strong": "H146",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אַדָּר",
+      "translit": "",
+      "glossEn": "Addar.",
+      "defEn": "Addar, a place in Palestine; also an Israelite"
+    },
+    {
+      "strong": "H1592",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גְּנֻבַת",
+      "translit": "",
+      "glossEn": "Genubath.",
+      "defEn": "Genubath, an Edomitish prince"
+    },
+    {
+      "strong": "H6868",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צְרֵדָה",
+      "translit": "",
+      "glossEn": "Zereda, Zeredathah.",
+      "defEn": "Tseredah, a place in Palestine"
+    },
+    {
+      "strong": "H3747",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כְּרִית",
+      "translit": "",
+      "glossEn": "Cherith.",
+      "defEn": "Kerith, a brook of Palestine"
+    },
+    {
+      "strong": "H8607",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תִּפְסַח",
+      "translit": "",
+      "glossEn": "Tipsah.",
+      "defEn": "Tiphsach, a place in Mesopotamia"
+    },
+    {
+      "strong": "H8412",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תַּדְמֹר",
+      "translit": "",
+      "glossEn": "Tadmor.",
+      "defEn": "Tadmor, a place near Palestine"
+    },
+    {
+      "strong": "H7436",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "רָמָתַיִם צוֹפִים",
+      "translit": "",
+      "glossEn": "Ramathaimzophim.",
+      "defEn": "Ramathajim-Tsophim, a place in Palestine"
+    },
+    {
+      "strong": "H6650",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צְבֹעִים",
+      "translit": "",
+      "glossEn": "Zeboim.",
+      "defEn": "Tseboim, a place in Palestine"
+    },
+    {
+      "strong": "H658",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֶפֶס דַּמִּים",
+      "translit": "",
+      "glossEn": "Ephes-dammim.",
+      "defEn": "Ephes-Dammim, a place in Palestine"
+    },
+    {
+      "strong": "H5555",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "סֶלַע הַמַּחְלְקוֹת",
+      "translit": "",
+      "glossEn": "Sela-hammalekoth.",
+      "defEn": "Sela-ham-Machlekoth, a place in Palestine"
+    },
+    {
+      "strong": "H1554",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גַּלִּים",
+      "translit": "",
+      "glossEn": "Gallim.",
+      "defEn": "Gallim, a place in Palestine"
+    },
+    {
+      "strong": "H3565",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כּוֹר עָשָׁן",
+      "translit": "",
+      "glossEn": "Chorashan.",
+      "defEn": "Cor-Ashan, a place in Palestine"
+    },
+    {
+      "strong": "H1033",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית כַּר",
+      "translit": "",
+      "glossEn": "Beth-car.",
+      "defEn": "Beth-Car, a place in Palestine"
+    },
+    {
+      "strong": "H6787",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "צְמָרַיִם",
+      "translit": "",
+      "glossEn": "Zemaraim.",
+      "defEn": "Tsemarajim, a place in Palestine"
+    },
+    {
+      "strong": "H3466",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יְשָׁנָה",
+      "translit": "",
+      "glossEn": "Jeshanah.",
+      "defEn": "Jeshanah, a place in Palestine"
+    },
+    {
+      "strong": "H66",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אַבֵל מַיִם",
+      "translit": "",
+      "glossEn": "Abel-maim.",
+      "defEn": "Abel-Majim, a place in Palestine"
+    },
+    {
+      "strong": "H1485",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גּוּר־בַּעַל",
+      "translit": "",
+      "glossEn": "Gur-baal.",
+      "defEn": "Gur-Baal, a place in Arabia"
+    },
+    {
+      "strong": "H3371",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יׇקְתְאֵל",
+      "translit": "",
+      "glossEn": "Joktheel.",
+      "defEn": "Joktheel, the name of a place in Palestine, and of one in Idumaea"
+    },
+    {
+      "strong": "H3575",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כּוּת",
+      "translit": "",
+      "glossEn": "Cuth.",
+      "defEn": "Cuth or Cuthah, a province of Assyria"
+    },
+    {
+      "strong": "H7316",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "רוּמָה",
+      "translit": "",
+      "glossEn": "Rumah.",
+      "defEn": "Rumah, a place in Palestine"
+    },
+    {
+      "strong": "H1190",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בַּעַל שָׁלִשָׁה",
+      "translit": "",
+      "glossEn": "Baal-shalisha.",
+      "defEn": "Baal of Shalishah, Baal-Shalishah, a place in Palestine"
+    },
+    {
+      "strong": "H549",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲמָנָה",
+      "translit": "",
+      "glossEn": "Amana.",
+      "defEn": "Amanah, a mountain near Damascus"
+    },
+    {
+      "strong": "H2431",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֵילָם",
+      "translit": "",
+      "glossEn": "Helam.",
+      "defEn": "Chelam, a place East of Palestine"
+    },
+    {
+      "strong": "H1178",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בַּעַל חָצוֹר",
+      "translit": "",
+      "glossEn": "Baal-hazor.",
+      "defEn": "Baal-Chatsor, a place in Palestine"
+    },
+    {
+      "strong": "H805",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֲשׁוּרִי",
+      "translit": "",
+      "glossEn": "Asshurim, Ashurites.",
+      "defEn": "an Ashurite (collectively) or inhabitant of Ashur, a district in Palestine"
+    },
+    {
+      "strong": "H2521",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֶלְקַת הַצֻּרִים",
+      "translit": "",
+      "glossEn": "Helkath-hazzurim.",
+      "defEn": "Chelkath Hats-tsurim, a place in Palestine"
+    },
+    {
+      "strong": "H8483",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תַּחְתִּים חׇדְשִׁי",
+      "translit": "",
+      "glossEn": "Tahtim-hodshi.",
+      "defEn": "Tachtim-Chodshi, a place in Palestine"
+    },
+    {
+      "strong": "H1664",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גִּתַּיִם",
+      "translit": "",
+      "glossEn": "Gittaim.",
+      "defEn": "Gittajim, a place in Palestine"
+    },
+    {
+      "strong": "H1268",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּרוֹתָה",
+      "translit": "",
+      "glossEn": "Berothah, Berothai.",
+      "defEn": "Berothah or Berothai, a place north of Palestine"
+    },
+    {
+      "strong": "H1040",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֵּית עֵדֶן",
+      "translit": "",
+      "glossEn": "Beth-eden.",
+      "defEn": "Beth-Eden, a place in Syria"
+    },
+    {
+      "strong": "H195",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אוּלַי",
+      "translit": "",
+      "glossEn": "Ulai.",
+      "defEn": "the Ulai (or Eulaeus), a river of Persia"
+    },
+    {
+      "strong": "H1774",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "דִּי זָהָב",
+      "translit": "",
+      "glossEn": "Dizahab.",
+      "defEn": "Dizahab, a place in the Desert"
+    },
+    {
+      "strong": "H6604",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פְּתוֹר",
+      "translit": "",
+      "glossEn": "Pethor.",
+      "defEn": "Pethor, a place in Mesopotamia"
+    },
+    {
+      "strong": "H8404",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תַּבְעֵרָה",
+      "translit": "",
+      "glossEn": "Taberah.",
+      "defEn": "Taberah, a place in the Desert"
+    },
+    {
+      "strong": "H4917",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מִשְׁלַחַת",
+      "translit": "",
+      "glossEn": "discharge, sending.",
+      "defEn": "a mission, i.e. (abstractly and favorable) release, or (concretely and unfavorable) an army"
+    },
+    {
+      "strong": "H6489",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "פְּקוֹד",
+      "translit": "",
+      "glossEn": "Pekod.",
+      "defEn": "Pekod, a symbolic name for Babylon"
+    },
+    {
+      "strong": "H5436",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "סְבָאִי",
+      "translit": "",
+      "glossEn": "Sabean.",
+      "defEn": "a Sebaite, or inhabitant of Seba"
+    },
+    {
+      "strong": "H5004",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נִאֻף",
+      "translit": "",
+      "glossEn": "adultery.",
+      "defEn": "adultery"
+    },
+    {
+      "strong": "H5482",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "סְוֵנֵה",
+      "translit": "",
+      "glossEn": "Syene.",
+      "defEn": "Seven, a place in Upper Egypt"
+    },
+    {
+      "strong": "H8512",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "תֵּל אָבִיב",
+      "translit": "",
+      "glossEn": "Tel-abib.",
+      "defEn": "Tel-Abib, a place in Chaldaea"
+    },
+    {
+      "strong": "H2362",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חַוְרָן",
+      "translit": "",
+      "glossEn": "Hauran.",
+      "defEn": "Chavran, a region East of the Jordan"
+    },
+    {
+      "strong": "H3625",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כֶּלַח",
+      "translit": "",
+      "glossEn": "Calah.",
+      "defEn": "Kelach, a place in Assyria"
+    },
+    {
+      "strong": "H495",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֶלָּסָר",
+      "translit": "",
+      "glossEn": "Ellasar.",
+      "defEn": "Ellasar, an early country of Asia"
+    },
+    {
+      "strong": "H6255",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עַשְׁתְּרֹת קַרְנַיִם",
+      "translit": "",
+      "glossEn": "Ashtoreth Karnaim.",
+      "defEn": "Ashteroth-Karnaim, a place East of the Jordan"
+    },
+    {
+      "strong": "H7740",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שָׁוֵה",
+      "translit": "",
+      "glossEn": "Shaveh.",
+      "defEn": "Shaveh, a place in Palestine"
+    },
+    {
+      "strong": "H364",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "אֵיל פָּארָן",
+      "translit": "",
+      "glossEn": "El-paran.",
+      "defEn": "El-Paran, a portion of the district of Paran"
+    },
+    {
+      "strong": "H5880",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עֵין מִשְׁפָּט",
+      "translit": "",
+      "glossEn": "En-mishpat.",
+      "defEn": "En-Mishpat, a place near Palestine"
+    },
+    {
+      "strong": "H1334",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בָּתַר",
+      "translit": "",
+      "glossEn": "divide.",
+      "defEn": "to chop up"
+    },
+    {
+      "strong": "H1567",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גַּלְעֵד",
+      "translit": "",
+      "glossEn": "Galeed.",
+      "defEn": "Galed, a memorial cairn East of the Jordan"
+    },
+    {
+      "strong": "H6075",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עָפַל",
+      "translit": "",
+      "glossEn": "be lifted up, presume.",
+      "defEn": "to swell; figuratively, be elated"
+    },
+    {
+      "strong": "H3093",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "יָהִיר",
+      "translit": "",
+      "glossEn": "haughty, proud.",
+      "defEn": "elated; hence, arrogant"
+    },
+    {
+      "strong": "H7692",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שִׁגָּיוֹן",
+      "translit": "",
+      "glossEn": "Shiggaion, Shigionoth.",
+      "defEn": "properly, aberration, i.e. (technically) a dithyramb or rambling poem"
+    },
+    {
+      "strong": "H2711",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "חֵקֶק",
+      "translit": "",
+      "glossEn": "decree, thought.",
+      "defEn": "an enactment, a resolution"
+    },
+    {
+      "strong": "H8356",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שָׁתָה",
+      "translit": "",
+      "glossEn": "foundation, purpose.",
+      "defEn": "a basis, i.e. (figuratively) political or moral support"
+    },
+    {
+      "strong": "H1365",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "גַּבְהוּת",
+      "translit": "",
+      "glossEn": "loftiness, lofty.",
+      "defEn": "pride"
+    },
+    {
+      "strong": "H7293",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "רַהַב",
+      "translit": "",
+      "glossEn": "proud, strength.",
+      "defEn": "bluster(-er)"
+    },
+    {
+      "strong": "H4718",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מַקֶּבֶת",
+      "translit": "",
+      "glossEn": "hammer, hole.",
+      "defEn": "properly, a perforator, i.e. a hammer (as piercing); also (intransitively) a perforation, i.e. a quarry"
+    },
+    {
+      "strong": "H5108",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נוֹב",
+      "translit": "",
+      "glossEn": "fruit.",
+      "defEn": "produce, literally or figuratively"
+    },
+    {
+      "strong": "H7188",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "קָשַׁח",
+      "translit": "",
+      "glossEn": "harden.",
+      "defEn": "to be (causatively, make) unfeeling"
+    },
+    {
+      "strong": "H5779",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "עוּץ",
+      "translit": "",
+      "glossEn": "take advice ((counsel) together).",
+      "defEn": "to consult"
+    },
+    {
+      "strong": "H3561",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כַּוָּן",
+      "translit": "",
+      "glossEn": "cake.",
+      "defEn": "something prepared, i.e. a sacrificial wafer"
+    },
+    {
+      "strong": "H7679",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שָׂגָא",
+      "translit": "",
+      "glossEn": "increase, magnify.",
+      "defEn": "to grow, i.e. (causatively) to enlarge, (figuratively) laud"
+    },
+    {
+      "strong": "H8102",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שֶׁמֶץ",
+      "translit": "",
+      "glossEn": "a little.",
+      "defEn": "an inkling"
+    },
+    {
+      "strong": "H7769",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שׁוּעַ",
+      "translit": "",
+      "glossEn": "cry, riches.",
+      "defEn": "a halloo"
+    },
+    {
+      "strong": "H7689",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "שַׂגִּיא",
+      "translit": "",
+      "glossEn": "excellent, great.",
+      "defEn": "(superlatively) mighty"
+    },
+    {
+      "strong": "H3690",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "כִּסְלָה",
+      "translit": "",
+      "glossEn": "confidence, folly.",
+      "defEn": "in a good sense, trust; in a bad one, silliness"
+    },
+    {
+      "strong": "H5165",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "נֶחָמָה",
+      "translit": "",
+      "glossEn": "comfort.",
+      "defEn": "consolation"
+    },
+    {
+      "strong": "H4792",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "מֵרוֹם",
+      "translit": "",
+      "glossEn": "Merom.",
+      "defEn": "Merom, a lake in Palestine"
+    },
+    {
+      "strong": "H1066",
+      "lang": "hebrew",
+      "count": 2,
+      "lemma": "בֹּכִים",
+      "translit": "",
+      "glossEn": "Bochim.",
+      "defEn": "Bo-kim, a place in Palestine"
+    }
+  ]
+}
