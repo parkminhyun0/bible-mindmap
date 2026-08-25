@@ -7,6 +7,7 @@
 // 5건, 어말 카마츠+헤 13건이 그렇게 들어와 있었다.
 //
 // 이 검증기는 데이터를 고치지 않는다. 어긋나면 실패시킨다.
+import fs from 'node:fs';
 import { KOREAN_GLOSS_BATCHES } from '../src/data/koreanGlossActive.js';
 
 const errors = [];
@@ -33,6 +34,25 @@ const decompose = (ch) => {
   if (c < 0 || c > 11171) return null;
   return { cho: CHO[Math.floor(c / 588)], jungIdx: Math.floor((c % 588) / 28), jong: JONG[c % 28] };
 };
+
+/* batchId 는 배치를 가리키는 유일한 이름이다. 실제로 batch 09~19 열 개가 모두
+   'top-frequency-batch-08' 을 달고 있었다 — 배치마다 도구를 복사해 쓰는데
+   consensus.mjs 에 `taskArg === 'task14' ? '08' : '07'` 같은 임시 분기가 박혀
+   그대로 따라다닌 탓이다. 검사가 잘못 적용되지는 않았지만 오류 메시지가 엉뚱한
+   배치를 가리켰다. 조용히 되돌아가지 않도록 파일을 직접 훑어 잡는다. */
+{
+  const dir = new URL('../src/data/', import.meta.url);
+  const seen = new Map();
+  for (const f of fs.readdirSync(dir).filter((x) => /^koreanGlossTopBatch\d+\.js$/.test(x)).sort()) {
+    const no = /Batch(\d+)\.js$/.exec(f)[1];
+    const want = `top-frequency-batch-${no}`;
+    const got = (/batchId: '([^']*)'/.exec(fs.readFileSync(new URL(f, dir), 'utf8')) || [])[1];
+    if (!got) { note(f, '-', 'batchId 가 없다'); continue; }
+    if (got !== want) note(f, '-', `batchId 가 파일과 다르다: ${got} (기대 ${want})`);
+    if (seen.has(got)) note(f, '-', `batchId 중복: ${got} — ${seen.get(got)} 와 같다`);
+    seen.set(got, f);
+  }
+}
 
 for (const { entries, meta } of KOREAN_GLOSS_BATCHES) {
   const batchId = meta?.batchId || 'unknown';
@@ -113,6 +133,25 @@ for (const { entries, meta } of KOREAN_GLOSS_BATCHES) {
 
 // --- 같은 lemma 는 사전 안에서 같게 적는다 ------------------------------
 const byLemma = new Map();
+/* batchId 는 배치를 가리키는 유일한 이름이다. 실제로 batch 09~19 열 개가 모두
+   'top-frequency-batch-08' 을 달고 있었다 — 배치마다 도구를 복사해 쓰는데
+   consensus.mjs 에 `taskArg === 'task14' ? '08' : '07'` 같은 임시 분기가 박혀
+   그대로 따라다닌 탓이다. 검사가 잘못 적용되지는 않았지만 오류 메시지가 엉뚱한
+   배치를 가리켰다. 조용히 되돌아가지 않도록 파일을 직접 훑어 잡는다. */
+{
+  const dir = new URL('../src/data/', import.meta.url);
+  const seen = new Map();
+  for (const f of fs.readdirSync(dir).filter((x) => /^koreanGlossTopBatch\d+\.js$/.test(x)).sort()) {
+    const no = /Batch(\d+)\.js$/.exec(f)[1];
+    const want = `top-frequency-batch-${no}`;
+    const got = (/batchId: '([^']*)'/.exec(fs.readFileSync(new URL(f, dir), 'utf8')) || [])[1];
+    if (!got) { note(f, '-', 'batchId 가 없다'); continue; }
+    if (got !== want) note(f, '-', `batchId 가 파일과 다르다: ${got} (기대 ${want})`);
+    if (seen.has(got)) note(f, '-', `batchId 중복: ${got} — ${seen.get(got)} 와 같다`);
+    seen.set(got, f);
+  }
+}
+
 for (const { entries, meta } of KOREAN_GLOSS_BATCHES) {
   if (!/^top-frequency-batch-/.test(meta?.batchId || '')) continue;
   for (const [strong, e] of Object.entries(entries)) {
