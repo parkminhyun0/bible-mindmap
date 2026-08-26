@@ -1,9 +1,8 @@
 {
   "name": "bible-mindmap-vercel-root-bridge",
   "private": true,
-  "workspaces": ["bible-mindmap"],
   "scripts": {
-    "build:lexicon": "npm run build:lexicon --workspace bible-mindmap",
-    "build": "npm run build --workspace bible-mindmap && rm -rf dist && cp -R bible-mindmap/dist dist"
+    "build:lexicon": "cd bible-mindmap && npm ci && npm run build:lexicon",
+    "build": "cd bible-mindmap && npm run build && cd .. && rm -rf dist && cp -R bible-mindmap/dist dist"
   }
 }
