@@ -1,6 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "git": {
-    "deploymentEnabled": false
-  }
+    "deploymentEnabled": true
+  },
+  "installCommand": "echo 'Static public-law preview: no install required'",
+  "buildCommand": "rm -rf dist && mkdir -p dist && cp -R public-law/. dist/",
+  "outputDirectory": "dist"
 }
